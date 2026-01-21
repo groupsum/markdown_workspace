@@ -78,3 +78,37 @@
   text-transform: uppercase; 
   font-weight: 900; 
 }
+
+.theme-micropress .project-create-modal {
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(255, 60, 0, 0.18),
+      rgba(255, 60, 0, 0.18) 12px,
+      rgba(0, 0, 0, 0.7) 12px,
+      rgba(0, 0, 0, 0.7) 24px
+    );
+}
+
+.theme-micropress .project-create-modal-surface {
+  background: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 12px 12px 0 #000000;
+}
+
+.theme-micropress .project-create-modal-header {
+  background: #000000;
+  color: #ffffff;
+  border-bottom: 3px solid var(--accent);
+}
+
+.theme-micropress .project-create-close {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px #000000;
+}
+
+.theme-micropress .project-input {
+  background: #ffffff;
+  border-color: #000000;
+}
