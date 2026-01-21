@@ -96,24 +96,30 @@
 .markdown-body figcaption { color: var(--fg-muted); font-size: 0.85em; text-align: center; }
 
 /* Table Styles */
-.markdown-body table {
+.markdown-body table,
+.markdown-body .md-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1em;
 }
 
-.markdown-body th, .markdown-body td {
+.markdown-body th,
+.markdown-body td,
+.markdown-body .md-table-header,
+.markdown-body .md-table-cell {
   border: 1px solid var(--border-color);
   padding: 6px 12px;
 }
 
-.markdown-body th {
+.markdown-body th,
+.markdown-body .md-table-header {
   background-color: var(--bg-inset);
   font-weight: 700;
   text-align: left;
 }
 
-.markdown-body caption {
+.markdown-body caption,
+.markdown-body .md-table-caption {
   caption-side: top;
   text-align: left;
   font-weight: 700;
@@ -121,16 +127,19 @@
   color: var(--fg-secondary);
 }
 
-.markdown-body thead th {
+.markdown-body thead th,
+.markdown-body .md-table-head .md-table-header {
   background: var(--bg-inset);
   color: var(--fg-primary);
 }
 
-.markdown-body tbody tr:nth-child(even) {
+.markdown-body tbody tr:nth-child(even),
+.markdown-body .md-table-body .md-table-row:nth-child(even) {
   background: var(--bg-panel);
 }
 
-.markdown-body tbody tr:nth-child(odd) {
+.markdown-body tbody tr:nth-child(odd),
+.markdown-body .md-table-body .md-table-row:nth-child(odd) {
   background: var(--bg-inset);
 }
 
