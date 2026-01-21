@@ -2,7 +2,7 @@
 import React from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout } from 'lucide-react';
+import { Plus, Minus, HardDrive, Layout, FolderPlus } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
@@ -18,6 +18,7 @@ interface WorkPaneProps {
   sidebarOpen: boolean;
   onSidebarToggle: (open: boolean) => void;
   onNewFile: () => void;
+  onNewFolder: () => void;
   onFileSelect: (id: string) => void;
   onFileHighlight: (id: string) => void;
   onFileMove: (fileId: string, targetFolderId: string | null) => void;
@@ -38,6 +39,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   sidebarOpen,
   onSidebarToggle,
   onNewFile,
+  onNewFolder,
   onFileSelect,
   onFileHighlight,
   onFileMove,
@@ -60,8 +62,11 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
              </span>
           </div>
           <div className="flex gap-1">
-            <button className="panel-icon-btn" title="New Node" onClick={onNewFile}>
+            <button className="panel-icon-btn" title="New File" onClick={onNewFile}>
               <Plus size={12}/>
+            </button>
+            <button className="panel-icon-btn" title="New Folder" onClick={onNewFolder}>
+              <FolderPlus size={12}/>
             </button>
             <button className="panel-icon-btn" title="Collapse" onClick={() => onSidebarToggle(false)}>
               <Minus size={12}/>

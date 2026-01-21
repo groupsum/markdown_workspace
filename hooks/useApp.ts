@@ -99,6 +99,18 @@ export const useApp = () => {
       });
   };
 
+  const promptNewFolder = () => {
+      console.log(`[useApp] Action: promptNewFolder initiated`);
+      if (!proj.activeProjectId) return;
+      promptInput('Create New Folder', 'folder-name', async (name) => {
+          console.log(`[useApp] Action: promptNewFolder callback executing -> ${name}`);
+          const newFolder = await fileSys.createNewFolder(name);
+          if (newFolder) {
+              fileSys.setSelectedExplorerId(newFolder.id);
+          }
+      });
+  };
+
   const saveCurrentFile = async () => {
       console.log(`[useApp] Action: saveCurrentFile initiated -> ${activeFile?.id}`);
       if (activeFile) {
@@ -179,6 +191,7 @@ export const useApp = () => {
       },
       saveCurrentFile,
       promptNewFile,
+      promptNewFolder,
       handleDownload,
       handleMoveFile: fileSys.moveFile,
       exportData,
