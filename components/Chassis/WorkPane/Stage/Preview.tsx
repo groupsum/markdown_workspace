@@ -50,11 +50,14 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
 
           // Tables
           table: ({node, ...props}) => <table className="md-table" {...props} />,
-          thead: ({node, ...props}) => <thead {...props} />,
-          tbody: ({node, ...props}) => <tbody {...props} />,
-          tr: ({node, ...props}) => <tr {...props} />,
-          th: ({node, ...props}) => <th {...props} />,
-          td: ({node, ...props}) => <td {...props} />,
+          thead: ({node, ...props}) => <thead className="md-table-head" {...props} />,
+          tbody: ({node, ...props}) => <tbody className="md-table-body" {...props} />,
+          tr: ({node, ...props}) => <tr className="md-table-row" {...props} />,
+          th: ({node, ...props}) => <th className="md-table-header" {...props} />,
+          td: ({node, ...props}) => <td className="md-table-cell" {...props} />,
+          caption: ({node, ...props}) => <caption className="md-table-caption" {...props} />,
+          colgroup: ({node, ...props}) => <colgroup className="md-table-columns" {...props} />,
+          col: ({node, ...props}) => <col className="md-table-column" {...props} />,
 
           // Checkbox (Input)
           input: ({node, ...props}) => {

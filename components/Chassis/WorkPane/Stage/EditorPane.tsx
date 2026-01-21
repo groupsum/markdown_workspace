@@ -260,6 +260,15 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
+                    table: ({node, ...props}) => <table className="md-table" {...props} />,
+                    thead: ({node, ...props}) => <thead className="md-table-head" {...props} />,
+                    tbody: ({node, ...props}) => <tbody className="md-table-body" {...props} />,
+                    tr: ({node, ...props}) => <tr className="md-table-row" {...props} />,
+                    th: ({node, ...props}) => <th className="md-table-header" {...props} />,
+                    td: ({node, ...props}) => <td className="md-table-cell" {...props} />,
+                    caption: ({node, ...props}) => <caption className="md-table-caption" {...props} />,
+                    colgroup: ({node, ...props}) => <colgroup className="md-table-columns" {...props} />,
+                    col: ({node, ...props}) => <col className="md-table-column" {...props} />,
                     code({node, inline, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '');
                       return !inline && match ? (
