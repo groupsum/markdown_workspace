@@ -127,53 +127,133 @@ class StorageService {
         id: 'welcome-md',
         projectId: defaultProjectId,
         parentId: null,
-        name: 'welcome.md',
+        name: 'intro.md',
         type: 'file',
-        content: `# Lattice Architect v2
+        content: `# Welcome to Lattice OS
 
-## Structural Mental Model
-
-The application follows a **"Metallic Chassis Rack System"** architecture. Components are slotted into the chassis as deterministic functional plates.
-
-\`\`\`text
-_______________________________________________________________________
-| [H] APP_HEADER (Tabs, System Status, Controls)                     |
-|_____________________________________________________________________|
-| [A] | [W] WORK_PANE (The Manifold)                                  |
-|     |_______________________________________________________________|
-| ACT | [E] EXPLORER    | [S] SPLIT_EDITOR / PREVIEW                  |
-| ION |                 |                                             |
-|     | (File Tree)     | (Markdown Input)    | (Rendered Output)     |
-| RAI |                 |                     |                       |
-| L   |                 |                     |                       |
-|_____|_________________|_____________________|_______________________|
-| [F] STATUS_BAR (Telemetry, Environment Meta, Scale)                 |
-|_____________________________________________________________________|
-\`\`\`
-
-## Component Definitions
-
-### 1. [H] App Header
-The **Control Deck**. Manages context switching via the Tab Bar, global UI scaling, and access to systemic settings.
-
-### 2. [A] Action Rail
-The **Primary Vertical Action Strip**. Contains high-frequency "Atomic Actions" (Toggle Explorer, New File, Git Mode, Download).
-
-### 3. [W] Work Pane
-The **Main Manifold**. Orchestrates the relationship between the File System and the Execution Stage.
-
-### 4. [E] Explorer
-A **Hierarchical File Browser**. Optimized for high-density scanning and drag-and-drop structural reorganization.
-
-### 5. [S] Editor / Preview
-The **Execution Core**. Supports a zero-navigation workflow with real-time GFM rendering and code-editor behaviors (shortcuts, undo/redo).
-
-### 6. [F] Status Bar
-The **Telemetry Surface**. Surfacing LN/COL coordinates, IndexedDB persistence health, and PWA version awareness.
+Start here to explore every Markdown element and get comfortable with the workspace.
 
 ---
 
-> "Structure is the only truth in a digital layout."`,
+## Quick Start
+
+1. **Create a file** using the action rail.
+2. **Edit Markdown** in the left pane.
+3. **Preview instantly** on the right.
+
+> Tip: This file is a living reference. Duplicate it and experiment freely.
+
+---
+
+## Text Formatting
+
+**Bold**, *italic*, ***bold italic***, ~~strikethrough~~, and \`inline code\`.
+
+Superscript-like text can be represented as ^caret^ and subscript as ~tilde~ in plain Markdown.
+
+---
+
+## Links & Images
+
+- Inline link: [Lattice docs](https://example.com)
+- Auto link: <https://example.com>
+
+![Placeholder image](https://placehold.co/600x200?text=Markdown+Preview)
+
+---
+
+## Lists
+
+### Unordered
+
+- Chassis
+  - Header
+  - Action Rail
+  - Work Pane
+
+### Ordered
+
+1. Capture
+2. Structure
+3. Ship
+
+### Task List
+
+- [x] Install the app
+- [x] Open intro.md
+- [ ] Create your first project
+
+---
+
+## Tables
+
+| Element | Purpose | Example |
+| --- | --- | --- |
+| Heading | Document structure | \`## Heading\` |
+| Code | Technical clarity | \`\`\`js\`\`\` |
+| Quote | Emphasis | \`> Insight\` |
+
+---
+
+## Code Blocks
+
+\`\`\`ts
+type FileNode = {
+  id: string;
+  name: string;
+  content?: string;
+};
+
+const welcome = (name: string) => \`Hello, \${name}!\`;
+\`\`\`
+
+---
+
+## Blockquotes
+
+> “Structure is the only truth in a digital layout.”
+>
+> — Lattice System Notes
+
+---
+
+## Horizontal Rules
+
+---
+
+## Footnotes
+
+Here is a statement with a footnote.[^1]
+
+[^1]: Footnotes keep details accessible but unobtrusive.
+
+---
+
+## Definition Lists (Extended Markdown)
+
+Term
+: Definition that expands on the term.
+
+---
+
+## HTML Interop
+
+<details>
+  <summary>Expandable details</summary>
+  You can embed HTML for special UI patterns.
+</details>
+
+---
+
+## Emoji
+
+🚀 ✅ 🔧
+
+---
+
+## Final Notes
+
+Welcome aboard! Use this document as a template to build your own Markdown knowledge base.`,
         lastModified: Date.now()
       });
 
