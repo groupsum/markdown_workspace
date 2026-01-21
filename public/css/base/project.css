@@ -280,6 +280,7 @@
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .theme-selector-meta {
