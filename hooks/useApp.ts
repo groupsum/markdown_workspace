@@ -132,6 +132,17 @@ export const useApp = () => {
       fileSys.exportHtmlNode(ui.theme);
   };
 
+  const handlePrint = () => {
+      console.log(`[useApp] Action: handlePrint initiated`);
+      if (!activeFile) return;
+      ui.setAppMode('work');
+      ui.setViewMode('preview');
+      ui.setSidebarOpen(false);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => window.print());
+      });
+  };
+
   const switchToProjectSelector = () => {
       console.log(`[useApp] Action: switchToProjectSelector`);
       proj.setActiveProjectId(null);
@@ -183,6 +194,7 @@ export const useApp = () => {
       handleMoveFile: fileSys.moveFile,
       exportData,
       handleHtmlExport,
+      handlePrint,
       setFiles: fileSys.setFiles,
       setTabs: tabs.setTabs,
       setActiveTabId: tabs.setActiveTabId,
