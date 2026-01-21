@@ -68,7 +68,7 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--app-gap);
   padding: var(--app-gap);
-  background: var(--bg-app);
+  background: var(--bg-inset);
   border: var(--border-width) solid var(--border-color);
 }
 

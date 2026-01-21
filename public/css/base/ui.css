@@ -106,19 +106,31 @@
   position: relative;
 }
 
-.view-toolbar {
-  height: 32px;
-  background: var(--bg-inset);
-  border-bottom: var(--border-width) solid var(--border-color);
+.editor-pane-shell {
+  flex: 1;
   display: flex;
-  align-items: center;
-  padding: 0 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-toolbar {
+  width: 36px;
+  height: 100%;
+  background: var(--bg-inset);
+  border-left: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 4px;
   z-index: 50;
+  flex-shrink: 0;
 }
 
 .view-toolbar-group {
   display: flex;
-  gap: 2px;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
 }
 
 .view-toolbar-btn {
@@ -135,10 +147,10 @@
 .view-toolbar-btn:disabled { opacity: 0.2; cursor: not-allowed; }
 
 .view-toolbar-divider {
-  width: 1px;
-  height: 16px;
+  width: 16px;
+  height: 1px;
   background: var(--border-color);
-  margin: 0 10px;
+  margin: 6px 0;
 }
 
 .editor-pane-body {

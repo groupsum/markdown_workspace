@@ -217,25 +217,25 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
         <div className="fixed inset-0 z-[9999] cursor-col-resize" style={{ userSelect: 'none' }} />
       )}
 
-      <div className="view-toolbar">
-         <div className="view-toolbar-group">
-           <button onClick={() => onViewModeChange('editor')} className={`view-toolbar-btn ${viewMode === 'editor' ? 'active' : ''}`} title="Editor Only"><Maximize2 size={12}/></button>
-           <button onClick={() => onViewModeChange('split')} className={`view-toolbar-btn ${viewMode === 'split' ? 'active' : ''}`} title="Split View"><Columns size={12}/></button>
-           <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
-           <div className="view-toolbar-divider"></div>
-           <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
-           <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
-           <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
-           <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>
-         </div>
-      </div>
-
-      <div className="editor-pane-body">
-        {(viewMode === 'editor' || viewMode === 'split') && (
-          <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${splitPos}%` : '100%' }}>
-            <div className="editor-layout-wrapper">
-              <div ref={lineNumbersRef} className="editor-gutter">
-                 {lineNumbers.map(n => <div key={n} className="line-num">{n}</div>)}
+      <div className="editor-pane-shell">
+        <div className="editor-pane-body">
+          {(viewMode === 'editor' || viewMode === 'split') && (
+            <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${splitPos}%` : '100%' }}>
+              <div className="editor-layout-wrapper">
+                <div ref={lineNumbersRef} className="editor-gutter">
+                   {lineNumbers.map(n => <div key={n} className="line-num">{n}</div>)}
+                </div>
+                <textarea
+                  ref={textareaRef}
+                  className="editor-textarea"
+                  value={history.present}
+                  onChange={(e) => updateContent(e.target.value)}
+                  onKeyUp={updateCursor}
+                  onClick={updateCursor}
+                  onScroll={handleScroll}
+                  spellCheck={false}
+                  placeholder="START_INPUT..."
+                />
               </div>
               <textarea
                 ref={textareaRef}
@@ -250,42 +250,55 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 placeholder="START_INPUT..."
               />
             </div>
-          </div>
-        )}
+          )}
 
-        {viewMode === 'split' && (
-          <div 
-            onMouseDown={handleMouseDown} 
-            className={`editor-splitter ${isDragging ? 'dragging' : ''}`}
-          >
-            <div className="editor-splitter-handle" />
-          </div>
-        )}
-
-        {(viewMode === 'preview' || viewMode === 'split') && (
-          <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${100 - splitPos}%` : '100%' }}>
-            <div className="preview-pane markdown-body p-8">
-              <ReactMarkdown 
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  code({node, inline, className, children, ...props}: any) {
-                    const match = /language-(\w+)/.exec(className || '');
-                    return !inline && match ? (
-                      <div className="md-code-block">
-                        <div className="md-code-header">{match[1]}</div>
-                        <SyntaxHighlighter style={syntaxThemeMap[theme] || tomorrow} language={match[1]} PreTag="div" {...props}>
-                          {String(children).replace(/\n$/, '')}
-                        </SyntaxHighlighter>
-                      </div>
-                    ) : <code className="md-inline-code" {...props}>{children}</code>
-                  }
-                }}
-              >
-                {history.present}
-              </ReactMarkdown>
+          {viewMode === 'split' && (
+            <div 
+              onMouseDown={handleMouseDown} 
+              className={`editor-splitter ${isDragging ? 'dragging' : ''}`}
+            >
+              <div className="editor-splitter-handle" />
             </div>
-          </div>
-        )}
+          )}
+
+          {(viewMode === 'preview' || viewMode === 'split') && (
+            <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${100 - splitPos}%` : '100%' }}>
+              <div className="preview-pane markdown-body p-8">
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    code({node, inline, className, children, ...props}: any) {
+                      const match = /language-(\w+)/.exec(className || '');
+                      return !inline && match ? (
+                        <div className="md-code-block">
+                          <div className="md-code-header">{match[1]}</div>
+                          <SyntaxHighlighter style={syntaxThemeMap[theme] || tomorrow} language={match[1]} PreTag="div" {...props}>
+                            {String(children).replace(/\n$/, '')}
+                          </SyntaxHighlighter>
+                        </div>
+                      ) : <code className="md-inline-code" {...props}>{children}</code>
+                    }
+                  }}
+                >
+                  {history.present}
+                </ReactMarkdown>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="view-toolbar" role="toolbar" aria-label="Work Pane Controls">
+           <div className="view-toolbar-group">
+             <button onClick={() => onViewModeChange('editor')} className={`view-toolbar-btn ${viewMode === 'editor' ? 'active' : ''}`} title="Editor Only"><Maximize2 size={12}/></button>
+             <button onClick={() => onViewModeChange('split')} className={`view-toolbar-btn ${viewMode === 'split' ? 'active' : ''}`} title="Split View"><Columns size={12}/></button>
+             <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
+             <div className="view-toolbar-divider"></div>
+             <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
+             <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
+             <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
+             <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>
+           </div>
+        </div>
       </div>
     </div>
   );
