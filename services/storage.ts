@@ -129,50 +129,71 @@ class StorageService {
         parentId: null,
         name: 'intro.md',
         type: 'file',
-        content: `# Welcome to Lattice Architect
+        content: `# Welcome to Lattice OS
 
-Start here, new operators. This intro is a **living demo** of every Markdown element the editor supports.
+Start here to explore every Markdown element and get comfortable with the workspace.
 
 ---
 
-## Headings (H2)
+## Quick Start
 
-### Heading Level 3
-#### Heading Level 4
-##### Heading Level 5
-###### Heading Level 6
+1. **Create a file** using the action rail.
+2. **Edit Markdown** in the left pane.
+3. **Preview instantly** on the right.
 
-## Emphasis & Inline Elements
+> Tip: This file is a living reference. Duplicate it and experiment freely.
 
-Mix **bold**, *italic*, ***bold italic***, ~~strikethrough~~, and <u>underline</u> in one sentence. Inline code looks like \`npm run dev\`.
+---
+
+## Text Formatting
+
+**Bold**, *italic*, ***bold italic***, ~~strikethrough~~, and \`inline code\`.
+
+Superscript-like text can be represented as ^caret^ and subscript as ~tilde~ in plain Markdown.
+
+---
 
 ## Links & Images
 
-- Link: [Lattice Architect Docs](https://example.com)
-- Image:
-  ![Sample schematic](https://placehold.co/600x200?text=Markdown+Preview)
+- Inline link: [Lattice docs](https://example.com)
+- Auto link: <https://example.com>
+
+![Placeholder image](https://placehold.co/600x200?text=Markdown+Preview)
+
+---
 
 ## Lists
 
-Unordered list:
-- Fast file creation
-- Split editor + preview
-  - Nested bullet
+### Unordered
 
-Ordered list:
-1. Create a file
-2. Write Markdown
-3. Export HTML
+- Chassis
+  - Header
+  - Action Rail
+  - Work Pane
 
-Task list:
+### Ordered
+
+1. Capture
+2. Structure
+3. Ship
+
+### Task List
+
 - [x] Install the app
-- [x] Open this intro
+- [x] Open intro.md
 - [ ] Create your first project
 
-## Blockquotes
+---
 
-> "Structure is the only truth in a digital layout."\
-> — Lattice Architect Manual
+## Tables
+
+| Element | Purpose | Example |
+| --- | --- | --- |
+| Heading | Document structure | \`## Heading\` |
+| Code | Technical clarity | \`\`\`js\`\`\` |
+| Quote | Emphasis | \`> Insight\` |
+
+---
 
 ## Code Blocks
 
@@ -182,33 +203,57 @@ type FileNode = {
   name: string;
   content?: string;
 };
+
+const welcome = (name: string) => \`Hello, \${name}!\`;
 \`\`\`
 
-## Tables
+---
 
-| Feature | Description | Shortcut |
-| --- | --- | --- |
-| New File | Create a markdown file | \`Ctrl/Cmd + N\` |
-| Search | Find text across files | \`Ctrl/Cmd + F\` |
-| Export | Download HTML | \`Ctrl/Cmd + E\` |
+## Blockquotes
 
-## Horizontal Rule
+> “Structure is the only truth in a digital layout.”
+>
+> — Lattice System Notes
+
+---
+
+## Horizontal Rules
 
 ---
 
 ## Footnotes
 
-You can add citations like this.[^1]
+Here is a statement with a footnote.[^1]
 
-[^1]: Footnotes help keep long explanations tidy.
-
-## Escaped Characters
-
-Use backslashes to escape symbols: \\*not italic\\* and \\# not a heading.
+[^1]: Footnotes keep details accessible but unobtrusive.
 
 ---
 
-Happy building!`,
+## Definition Lists (Extended Markdown)
+
+Term
+: Definition that expands on the term.
+
+---
+
+## HTML Interop
+
+<details>
+  <summary>Expandable details</summary>
+  You can embed HTML for special UI patterns.
+</details>
+
+---
+
+## Emoji
+
+🚀 ✅ 🔧
+
+---
+
+## Final Notes
+
+Welcome aboard! Use this document as a template to build your own Markdown knowledge base.`,
         lastModified: Date.now()
       });
 
