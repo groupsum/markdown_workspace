@@ -138,23 +138,46 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
 
         <div className="project-selector-body">
           {isCreating && (
-            <div className="p-4 bg-[var(--bg-app)]">
-              <form onSubmit={handleCreate} className="project-create-form">
-                <div className="project-input-group">
-                  <label className="project-input-label">Project_Identity_Tag</label>
-                  <input 
-                    autoFocus
-                    className="project-input"
-                    placeholder="E.G. NEURAL_INTERFACE_V1"
-                    value={newProjectName}
-                    onChange={e => setNewProjectName(e.target.value)}
-                  />
+            <div
+              className="project-create-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-create-title"
+              onClick={() => setIsCreating(false)}
+            >
+              <div
+                className="project-create-modal-surface"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="project-create-modal-header">
+                  <h2 id="project-create-title" className="project-create-title">
+                    Initialize_New_Vault
+                  </h2>
+                  <button
+                    type="button"
+                    className="project-create-close"
+                    onClick={() => setIsCreating(false)}
+                  >
+                    CLOSE
+                  </button>
                 </div>
-                <div className="project-form-actions">
-                  <button type="submit" className="project-btn-submit">INITIALIZE_CORE</button>
-                  <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">ABORT_CMD</button>
-                </div>
-              </form>
+                <form onSubmit={handleCreate} className="project-create-form">
+                  <div className="project-input-group">
+                    <label className="project-input-label">Project_Identity_Tag</label>
+                    <input
+                      autoFocus
+                      className="project-input"
+                      placeholder="E.G. NEURAL_INTERFACE_V1"
+                      value={newProjectName}
+                      onChange={e => setNewProjectName(e.target.value)}
+                    />
+                  </div>
+                  <div className="project-form-actions">
+                    <button type="submit" className="project-btn-submit">INITIALIZE_CORE</button>
+                    <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">ABORT_CMD</button>
+                  </div>
+                </form>
+              </div>
             </div>
           )}
 
