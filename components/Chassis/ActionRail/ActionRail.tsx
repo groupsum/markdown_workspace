@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown } from 'lucide-react';
 import { AppMode } from '../../../../types';
 
 interface ActionRailProps {
@@ -10,6 +10,7 @@ interface ActionRailProps {
   onToggleGit: () => void;
   onSwitchProject: () => void;
   onDownload: () => void;
+  onExportHtml: () => void;
   onCloudSync: () => void;
   className?: string;
 }
@@ -39,6 +40,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({
   onToggleGit,
   onSwitchProject,
   onDownload,
+  onExportHtml,
   onCloudSync,
   className = ""
 }) => {
@@ -76,6 +78,11 @@ export const ActionRail: React.FC<ActionRailProps> = ({
               onClick={onDownload}
               icon={<Download />}
               title="Download Workspace"
+            />
+            <ToolbarButton 
+              onClick={onExportHtml}
+              icon={<FileDown />}
+              title="Export HTML"
             />
             <ToolbarButton 
               onClick={onCloudSync}

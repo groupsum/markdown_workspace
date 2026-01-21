@@ -7,7 +7,7 @@ import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
 import { InputModal } from './components/Modals/InputModal';
 import { Footer } from './components/Chassis/Footer/Footer';
-import { Settings, Folder, GitBranch, Download, FilePlus, LayoutGrid, Plus, Minus, RefreshCw } from 'lucide-react';
+import { Settings, Folder, GitBranch, Download, FilePlus, LayoutGrid, Plus, Minus, RefreshCw, FileDown } from 'lucide-react';
 import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
@@ -66,6 +66,7 @@ const App: React.FC = () => {
     { id: 'save', label: 'Save Current File', action: actions.saveCurrentFile, icon: <Settings size={14}/> },
     { id: 'toggle-sidebar', label: 'Toggle Explorer', action: actions.toggleSidebar, icon: <Folder size={14}/> },
     { id: 'download', label: 'Download Current Item', action: actions.handleDownload, icon: <Download size={14}/> },
+    { id: 'export-html', label: 'Export HTML', action: actions.handleHtmlExport, icon: <FileDown size={14}/> },
     { id: 'git-mode', label: 'Toggle Git Operations', action: () => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git'), icon: <GitBranch size={14}/> },
     { id: 'switch-project', label: 'Switch Project', action: actions.switchToProjectSelector, icon: <LayoutGrid size={14}/> },
     { id: 'settings', label: 'System Settings', action: () => actions.setShowSettings(true), icon: <Settings size={14}/> },
@@ -118,6 +119,7 @@ const App: React.FC = () => {
           onToggleGit={() => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git')}
           onSwitchProject={actions.switchToProjectSelector}
           onDownload={actions.handleDownload}
+          onExportHtml={actions.handleHtmlExport}
           onCloudSync={() => actions.addToast('SYNC: CLOUD UNREACHABLE', 'warning')}
         />
 
