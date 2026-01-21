@@ -106,6 +106,17 @@ export const useApp = () => {
       }
   };
 
+  const selectTabByOffset = (offset: number) => {
+    if (tabs.tabs.length === 0) return;
+    const currentIndex = Math.max(tabs.tabs.findIndex(t => t.id === tabs.activeTabId), 0);
+    const nextIndex = (currentIndex + offset + tabs.tabs.length) % tabs.tabs.length;
+    const nextTab = tabs.tabs[nextIndex];
+    if (!nextTab) return;
+    tabs.setActiveTabId(nextTab.id);
+    ui.setAppMode('work');
+    fileSys.setSelectedExplorerId(nextTab.fileId);
+  };
+
   const handleDownload = () => {
       console.log(`[useApp] Action: handleDownload initiated`);
       fileSys.downloadNode();
@@ -185,12 +196,16 @@ export const useApp = () => {
       removeToast,
       toggleSidebar: () => ui.setSidebarOpen(!ui.sidebarOpen),
       adjustZoom: ui.adjustZoom,
+      selectNextTab: () => selectTabByOffset(1),
+      selectPreviousTab: () => selectTabByOffset(-1),
+      resetZoom: () => ui.setZoom(1),
       switchToProjectSelector,
       closeTab: (e: any, id: string) => { 
           console.log(`[useApp] Action: closeTab -> ${id}`);
           e.stopPropagation(); tabs.closeTab(id); 
       },
-      closeInputModal
+      closeInputModal,
+      highlightExplorerNode: fileSys.setSelectedExplorerId
     }
   };
 };

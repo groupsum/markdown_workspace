@@ -12,12 +12,38 @@ import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
 import { useApp } from './hooks/useApp';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { APP_VERSION } from './constants';
 
 const App: React.FC = () => {
   const { state, actions } = useApp();
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
+
+  useKeyboardShortcuts(
+    {
+      showPalette: state.showPalette,
+      showSettings: state.showSettings,
+      showInputModal: state.showInputModal,
+      hasActiveProject: Boolean(state.activeProjectId),
+      appMode: state.appMode
+    },
+    {
+      saveCurrentFile: actions.saveCurrentFile,
+      promptNewFile: actions.promptNewFile,
+      toggleSidebar: actions.toggleSidebar,
+      setShowPalette: actions.setShowPalette,
+      setShowSettings: actions.setShowSettings,
+      setViewMode: actions.setViewMode,
+      adjustZoom: actions.adjustZoom,
+      setZoom: actions.setZoom,
+      setAppMode: actions.setAppMode,
+      setSidebarOpen: actions.setSidebarOpen,
+      selectNextTab: actions.selectNextTab,
+      selectPreviousTab: actions.selectPreviousTab,
+      closeInputModal: actions.closeInputModal
+    }
+  );
 
   useEffect(() => {
     const handleUpdate = () => setUpdateAvailable(true);
@@ -40,11 +66,16 @@ const App: React.FC = () => {
     { id: 'save', label: 'Save Current File', action: actions.saveCurrentFile, icon: <Settings size={14}/> },
     { id: 'toggle-sidebar', label: 'Toggle Explorer', action: actions.toggleSidebar, icon: <Folder size={14}/> },
     { id: 'download', label: 'Download Current Item', action: actions.handleDownload, icon: <Download size={14}/> },
-    { id: 'git-mode', label: 'Git Operations', action: () => actions.setAppMode('git'), icon: <GitBranch size={14}/> },
+    { id: 'git-mode', label: 'Toggle Git Operations', action: () => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git'), icon: <GitBranch size={14}/> },
     { id: 'switch-project', label: 'Switch Project', action: actions.switchToProjectSelector, icon: <LayoutGrid size={14}/> },
     { id: 'settings', label: 'System Settings', action: () => actions.setShowSettings(true), icon: <Settings size={14}/> },
     { id: 'zoom-in', label: 'Zoom In', action: () => actions.adjustZoom(0.1), icon: <Plus size={14}/> },
     { id: 'zoom-out', label: 'Zoom Out', action: () => actions.adjustZoom(-0.1), icon: <Minus size={14}/> },
+    { id: 'view-editor', label: 'Editor View', action: () => actions.setViewMode('editor'), icon: <LayoutGrid size={14}/> },
+    { id: 'view-split', label: 'Split View', action: () => actions.setViewMode('split'), icon: <LayoutGrid size={14}/> },
+    { id: 'view-preview', label: 'Preview View', action: () => actions.setViewMode('preview'), icon: <LayoutGrid size={14}/> },
+    { id: 'next-tab', label: 'Next Tab', action: actions.selectNextTab, icon: <LayoutGrid size={14}/> },
+    { id: 'previous-tab', label: 'Previous Tab', action: actions.selectPreviousTab, icon: <LayoutGrid size={14}/> }
   ];
 
   if (state.loading) return <div className="boot-screen">BOOT SEQUENCE...</div>;
@@ -103,6 +134,7 @@ const App: React.FC = () => {
             onSidebarToggle={actions.setSidebarOpen}
             onNewFile={actions.promptNewFile}
             onFileSelect={actions.handleExplorerSelect}
+            onFileHighlight={actions.highlightExplorerNode}
             onFileMove={actions.handleMoveFile}
             onContentChange={actions.handleContentChange}
             onCursorChange={(l, c) => actions.setCursorPos({ line: l, col: c })}

@@ -19,6 +19,7 @@ interface WorkPaneProps {
   onSidebarToggle: (open: boolean) => void;
   onNewFile: () => void;
   onFileSelect: (id: string) => void;
+  onFileHighlight: (id: string) => void;
   onFileMove: (fileId: string, targetFolderId: string | null) => void;
   onContentChange: (content: string) => void;
   onCursorChange: (line: number, col: number) => void;
@@ -38,6 +39,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onSidebarToggle,
   onNewFile,
   onFileSelect,
+  onFileHighlight,
   onFileMove,
   onContentChange,
   onCursorChange,
@@ -73,6 +75,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             activeId={activeFile?.id || null} 
             selectedId={selectedExplorerId}
             onSelect={onFileSelect} 
+            onHighlight={onFileHighlight}
             onMove={onFileMove}
             searchQuery={searchQuery}
           />

@@ -161,6 +161,51 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     }
   };
 
+  const handleEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const meta = e.metaKey || e.ctrlKey;
+    if (!meta) return;
+
+    const key = e.key.toLowerCase();
+    if (key === 'b') {
+      e.preventDefault();
+      insertFormat('**', '**');
+      return;
+    }
+    if (key === 'i') {
+      e.preventDefault();
+      insertFormat('_', '_');
+      return;
+    }
+    if (key === 'z') {
+      e.preventDefault();
+      if (e.shiftKey) {
+        redo();
+      } else {
+        undo();
+      }
+      return;
+    }
+    if (key === 'y') {
+      e.preventDefault();
+      redo();
+      return;
+    }
+    if (key === '1') {
+      e.preventDefault();
+      onViewModeChange('editor');
+      return;
+    }
+    if (key === '2') {
+      e.preventDefault();
+      onViewModeChange('split');
+      return;
+    }
+    if (key === '3') {
+      e.preventDefault();
+      onViewModeChange('preview');
+    }
+  };
+
   if (!file) return null;
 
   const lineCount = (history.present.match(/\n/g) || []).length + 1;
@@ -192,6 +237,18 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                   placeholder="START_INPUT..."
                 />
               </div>
+              <textarea
+                ref={textareaRef}
+                className="editor-textarea"
+                value={history.present}
+                onChange={(e) => updateContent(e.target.value)}
+                onKeyDown={handleEditorKeyDown}
+                onKeyUp={updateCursor}
+                onClick={updateCursor}
+                onScroll={handleScroll}
+                spellCheck={false}
+                placeholder="START_INPUT..."
+              />
             </div>
           )}
 
