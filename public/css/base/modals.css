@@ -186,6 +186,69 @@
   font-family: var(--font-ui);
 }
 
+.settings-theme-controls {
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.settings-theme-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.settings-theme-label {
+  font-weight: 800;
+  color: var(--fg-muted);
+}
+
+.settings-theme-value {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--fg-primary);
+}
+
+.settings-theme-count {
+  padding: 4px 8px;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+
+.settings-theme-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.settings-theme-action-btn {
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  color: var(--fg-primary);
+  padding: 10px 14px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.settings-theme-action-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
 /* === COMMAND PALETTE === */
 .cmd-backdrop {
   position: fixed;

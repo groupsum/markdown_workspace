@@ -25,6 +25,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   if (!isOpen) return null;
 
   const [activeTab, setActiveTab] = useState<'visual' | 'git' | 'data' | 'keys'>('visual');
+  const themeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
+  const themeDef = THEMES[themeIndex];
+
+  const handleThemeStep = (direction: number) => {
+    const nextIndex = (themeIndex + direction + THEMES.length) % THEMES.length;
+    onThemeChange(THEMES[nextIndex].id);
+  };
 
   const handleGitChange = (key: keyof GitConfig, value: string) => {
     onGitConfigChange({ ...gitConfig, [key]: value });
@@ -95,6 +102,29 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       <span className="settings-theme-desc">{theme.description}</span>
                     </button>
                   ))}
+                </div>
+                <div className="settings-theme-controls">
+                  <div className="settings-theme-meta">
+                    <span className="settings-theme-label">ACTIVE_THEME</span>
+                    <span className="settings-theme-value">{themeDef.name}</span>
+                    <span className="settings-theme-count">{themeIndex + 1}/{THEMES.length}</span>
+                  </div>
+                  <div className="settings-theme-actions">
+                    <button
+                      type="button"
+                      className="settings-theme-action-btn"
+                      onClick={() => handleThemeStep(-1)}
+                    >
+                      PREV_THEME
+                    </button>
+                    <button
+                      type="button"
+                      className="settings-theme-action-btn settings-theme-action-btn-primary"
+                      onClick={() => handleThemeStep(1)}
+                    >
+                      NEXT_THEME
+                    </button>
+                  </div>
                 </div>
               </>
             )}

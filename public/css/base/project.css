@@ -223,6 +223,66 @@
   box-shadow: inset 6px 0 0 var(--accent);
 }
 
+.theme-popover-footer {
+  background: var(--bg-panel);
+  border-top: var(--border-width) solid var(--border-color);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theme-popover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.theme-meta-label {
+  color: var(--fg-muted);
+  font-weight: 800;
+}
+
+.theme-meta-value {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.theme-meta-count {
+  padding: 4px 8px;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+
+.theme-popover-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.theme-popover-btn {
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  color: var(--fg-primary);
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.theme-popover-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
 /* Creation Form */
 .project-create-form {
   background: var(--bg-panel);
