@@ -47,9 +47,44 @@
   display: contents;
 }
 
-.app-header { grid-area: top; background: var(--bg-panel); border-bottom: var(--border-width) solid var(--border-color); }
-.action-rail { grid-area: rail; background: var(--bg-inset); border-right: var(--border-width) solid var(--border-color); }
-.status-bar { grid-area: foot; background: var(--bg-panel); border-top: var(--border-width) solid var(--border-color); }
+.app-header {
+  grid-area: top;
+  background: var(--bg-panel);
+  border-bottom: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 10px;
+  gap: 10px;
+  z-index: 10;
+}
+
+.action-rail {
+  grid-area: rail;
+  background: var(--bg-inset);
+  border-right: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 4px;
+  gap: 6px;
+}
+
+.status-bar {
+  grid-area: foot;
+  background: var(--bg-panel);
+  border-top: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  height: var(--status-height);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  gap: 8px;
+}
 
 .workspace-manifold {
   grid-area: main;
@@ -78,6 +113,7 @@
   transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   border-right: var(--border-width) solid var(--border-color);
+  min-width: 160px;
 }
 
 .workspace-sidebar.is-collapsed {
@@ -96,7 +132,7 @@
 
 /* Panel Internal Styling */
 .workspace-panel-header {
-  height: 32px;
+  height: var(--panel-header-height);
   background: var(--bg-inset);
   border-bottom: var(--border-width) solid var(--border-color);
   display: flex;
@@ -104,6 +140,10 @@
   justify-content: space-between;
   padding: 0 10px;
   flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .workspace-panel-content {
@@ -112,14 +152,467 @@
 }
 
 .panel-icon-btn {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--fg-muted);
+  border: 1px solid transparent;
 }
-.panel-icon-btn:hover { color: var(--accent); }
+.panel-icon-btn:hover {
+  color: var(--fg-primary);
+  border-color: var(--border-color);
+  background: var(--bg-panel);
+}
+
+/* Header Composition */
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.header-left {
+  min-width: 200px;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  overflow: hidden;
+  border-left: var(--border-width) solid var(--border-color);
+}
+
+.header-right {
+  min-width: 200px;
+  justify-content: flex-end;
+  border-left: var(--border-width) solid var(--border-color);
+  padding-left: 12px;
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.header-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.header-brand-subtitle {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--fg-muted);
+}
+
+.header-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+}
+
+.header-btn:hover {
+  background: var(--bg-inset);
+}
+
+/* Action Rail */
+.rail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+}
+
+.rail-spacer {
+  flex: 1;
+}
+
+.rail-btn {
+  width: var(--rail-btn-size);
+  height: var(--rail-btn-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--fg-muted);
+  position: relative;
+}
+
+.rail-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2px;
+}
+
+.rail-btn:hover {
+  border-color: var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+}
+
+.rail-btn.is-active {
+  background: var(--accent);
+  border-color: var(--border-color);
+  color: #fff;
+}
+
+.rail-btn--status {
+  border-style: dashed;
+}
+
+/* Status Bar */
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-item__icon {
+  opacity: 0.7;
+}
+
+.status-label {
+  color: var(--fg-muted);
+}
+
+.status-kv {
+  font-weight: 800;
+}
+
+.status-sep {
+  width: 1px;
+  height: 12px;
+  background: var(--border-color);
+}
+
+.status-text-bold {
+  font-weight: 900;
+}
+
+.status-text--on {
+  color: var(--status-ok);
+}
+
+.status-online {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--status-ok);
+}
+
+.status-offline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--status-error);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px !important;
+  background: var(--accent);
+}
+
+.badge-unsaved {
+  padding: 2px 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-inset);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+/* Generic Panel Toolbar */
+.panel-toolbar {
+  height: var(--panel-header-height);
+  background: var(--bg-inset);
+  border-bottom: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Git Pane */
+.git-sidebar {
+  width: var(--sidebar-width);
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.git-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-panel);
+}
+
+.git-header-title,
+.git-diff-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.git-close-btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-panel);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.git-section-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.git-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.git-item {
+  display: grid;
+  grid-template-columns: 16px 1fr 16px 22px;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-inset);
+  font-size: 11px;
+}
+
+.git-item__status {
+  font-weight: 900;
+  text-align: center;
+}
+
+.git-stage-btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-panel);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.git-empty-msg {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.git-branch-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  padding: 6px 8px;
+  background: var(--bg-inset);
+  font-size: 10px;
+}
+
+.git-branch-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.git-branch-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg-muted);
+}
+
+.git-stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.git-commit-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.git-commit-input {
+  min-height: 80px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-panel);
+  padding: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-primary);
+}
+
+.git-commit-btn,
+.git-sync-btn {
+  border: 1px solid var(--border-color);
+  background: var(--bg-inset);
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.git-commit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.git-diff-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+}
+
+.git-diff-content {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+}
+
+.git-diff-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  color: var(--fg-muted);
+}
+
+.git-diff-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.git-legend-icon-del,
+.git-legend-icon-add {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.git-legend-icon-del {
+  background: rgba(255, 0, 0, 0.2);
+}
+
+.git-legend-icon-add {
+  background: rgba(0, 255, 0, 0.2);
+}
+
+.git-diff-container {
+  display: flex;
+  border: 1px solid var(--border-color);
+  background: var(--bg-inset);
+}
+
+.git-diff-gutter {
+  padding: 10px 6px;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+}
+
+.git-diff-code {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.git-diff-meta {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.diff-removed {
+  background: rgba(255, 0, 0, 0.08);
+  border-left: 2px solid rgba(255, 0, 0, 0.4);
+  padding: 2px 6px;
+}
+
+.diff-added {
+  background: rgba(0, 255, 0, 0.08);
+  border-left: 2px solid rgba(0, 255, 0, 0.4);
+  padding: 2px 6px;
+}
+
+.git-diff-placeholder {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
 /* Idle states */
 .workspace-idle-state {

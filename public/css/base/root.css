@@ -7,6 +7,9 @@
   --rail-width: 44px;
   --sidebar-width: 200px;
   --status-height: 24px;
+  --tab-height: var(--header-height);
+  --panel-header-height: 32px;
+  --rail-btn-size: 32px;
   
   /* Fallback Values: Ensures layout survives theme loading failure */
   --bg-app: #d1d5d9;     
@@ -30,6 +33,12 @@
   --app-gap: 1.5px; 
   --texture-opacity: 0.03;
   --editor-padding: 24px;
+  --file-indent-base: 12px;
+  --file-indent-unit: 12px;
+  --c-explorer-hover: rgba(0, 0, 0, 0.06);
+  --c-explorer-selected: var(--accent);
+  --c-explorer-selected-text: #ffffff;
+  --c-explorer-drag-bg: rgba(255, 255, 255, 0.08);
 
   /* Fonts - Industrial Stack */
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
