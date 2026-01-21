@@ -1,8 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout, FolderPlus } from 'lucide-react';
+import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
@@ -47,6 +47,9 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onCursorChange,
   onViewModeChange
 }) => {
+  const [expandAllSignal, setExpandAllSignal] = useState(0);
+  const [collapseAllSignal, setCollapseAllSignal] = useState(0);
+
   return (
     <section className="workspace-manifold">
       {/* THE REGISTRY (Explorer Plate) */}
@@ -62,6 +65,25 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
              </span>
           </div>
           <div className="flex gap-1">
+            <button
+              className="panel-icon-btn"
+              title="Expand All"
+              onClick={() => {
+                if (!sidebarOpen) {
+                  onSidebarToggle(true);
+                }
+                setExpandAllSignal(prev => prev + 1);
+              }}
+            >
+              <ChevronsDown size={12} />
+            </button>
+            <button
+              className="panel-icon-btn"
+              title="Collapse All"
+              onClick={() => setCollapseAllSignal(prev => prev + 1)}
+            >
+              <ChevronsUp size={12} />
+            </button>
             <button className="panel-icon-btn" title="New File" onClick={onNewFile}>
               <Plus size={12}/>
             </button>
@@ -83,6 +105,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             onHighlight={onFileHighlight}
             onMove={onFileMove}
             searchQuery={searchQuery}
+            expandAllSignal={expandAllSignal}
+            collapseAllSignal={collapseAllSignal}
           />
         </div>
       </aside>

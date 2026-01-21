@@ -3,14 +3,14 @@
 
 :root {
   /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
-  --header-height: 36px;
+  --header-height: 32px;
   --rail-width: 44px;
   --rail-height: 44px;
   --sidebar-width: 200px;
-  --status-height: 24px;
+  --status-height: 20px;
   --tab-height: var(--header-height);
-  --panel-header-height: 32px;
-  --rail-btn-size: 32px;
+  --panel-header-height: 30px;
+  --rail-btn-size: 30px;
   
   /* Fallback Values: Ensures layout survives theme loading failure */
   --bg-app: #c0c0c0;     

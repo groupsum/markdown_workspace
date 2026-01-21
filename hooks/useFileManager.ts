@@ -126,10 +126,18 @@ export const useFileManager = (
   const updateFileContent = useCallback((fileId: string, content: string) => {
     console.log(`[useFileManager] Action: updateFileContent (in memory) -> ${fileId}`);
     setUnsaved(true);
-    setFiles(prev => prev.map(f => 
-      f.id === fileId ? { ...f, content } : f
+    const updatedAt = Date.now();
+    setFiles(prev => prev.map(f =>
+      f.id === fileId ? { ...f, content, lastModified: updatedAt } : f
     ));
-  }, []);
+    const existing = files.find(f => f.id === fileId);
+    if (existing) {
+      const updatedFile = { ...existing, content, lastModified: updatedAt };
+      storage.saveFile(updatedFile).then(() => {
+        setUnsaved(false);
+      });
+    }
+  }, [files]);
 
   const moveFile = async (fileId: string, targetFolderId: string | null) => {
     console.log(`[useFileManager] Action: moveFile -> ${fileId} to folder -> ${targetFolderId}`);
