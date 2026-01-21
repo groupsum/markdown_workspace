@@ -1,0 +1,68 @@
+/* 
+   THEME: ACID-ETCHED TECTONIC ASSEMBLAGE
+   Deterministically applied via [data-theme="acid-etched"]
+*/
+
+:root[data-theme="acid-etched"] {
+  --bg-app: #f4f6f0;
+  --bg-panel: #ffffff;
+  --bg-inset: #e7eadc;
+
+  --border-color: #111111;
+  --border-width: 2px;
+
+  --fg-primary: #1a1a1a;
+  --fg-secondary: #2d3316;
+  --fg-muted: #6f7a54;
+
+  --accent: #ccff00;
+
+  --status-ok: #4ade80;
+  --status-warn: #f59e0b;
+  --status-error: #ef4444;
+
+  --app-gap: 2px;
+  --texture-opacity: 0.05;
+}
+
+.theme-acid-etched .app-header {
+  background: var(--bg-panel);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.theme-acid-etched .tab-item {
+  background: #e2e6d3;
+  color: var(--fg-secondary);
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.theme-acid-etched .tab-item.active {
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  border-bottom: 4px solid var(--accent);
+}
+
+.theme-acid-etched .action-rail {
+  background: #f0f3e6;
+}
+
+.theme-acid-etched .rail-btn.is-active {
+  background: var(--border-color);
+  color: var(--accent);
+}
+
+.theme-acid-etched .status-bar {
+  background: var(--border-color);
+  color: var(--bg-app);
+}
+
+.theme-acid-etched .status-text-bold {
+  color: var(--accent);
+}
+
+.theme-acid-etched .markdown-body h1 {
+  border-bottom: 4px solid var(--accent);
+  text-transform: uppercase;
+  font-weight: 900;
+}
