@@ -364,3 +364,80 @@
   border: var(--border-width) solid var(--border-color);
   text-transform: uppercase;
 }
+
+/* === Responsive Project Selector === */
+@media (max-width: 1200px) {
+  .project-selector-chassis {
+    width: 920px;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-selector-chassis {
+    width: 100%;
+    max-width: 92%;
+    height: 86vh;
+  }
+
+  .project-selector-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .theme-popover {
+    width: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-selector-chassis {
+    max-width: 100%;
+    height: 100%;
+    box-shadow: none;
+  }
+
+  .project-selector-top {
+    padding: 16px;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    height: auto;
+    min-height: 200px;
+  }
+
+  .project-btn-new {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .theme-popover {
+    position: fixed;
+    inset: 12px;
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1920px) {
+  .project-selector-chassis {
+    width: 1200px;
+    height: 78vh;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+}

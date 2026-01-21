@@ -1077,3 +1077,182 @@
   font-weight: 900;
 }
 .idle-action-btn:hover { background: var(--accent); color: white; }
+
+/* === Responsive Chassis === */
+@media (max-width: 1200px) {
+  :root {
+    --rail-width: 42px;
+    --sidebar-width: 190px;
+    --panel-header-height: 30px;
+    --app-gap: 3px;
+    --editor-padding: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --rail-width: 40px;
+    --sidebar-width: 180px;
+    --header-height: 40px;
+    --status-height: 22px;
+    --panel-header-height: 28px;
+    --rail-btn-size: 30px;
+    --editor-padding: 14px;
+  }
+
+  .header-right {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --rail-width: 100%;
+    --sidebar-width: 100%;
+    --header-height: 52px;
+    --status-height: 32px;
+    --panel-header-height: 28px;
+    --rail-btn-size: 36px;
+    --app-gap: 2px;
+    --editor-padding: 12px;
+  }
+
+  .chassis-scaler {
+    grid-template-areas:
+      "top"
+      "main"
+      "rail"
+      "foot";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height) var(--status-height);
+  }
+
+  .action-rail {
+    flex-direction: row;
+    border-right: 0;
+    border-top: var(--border-width) solid var(--border-color);
+    justify-content: space-between;
+    padding: 4px 6px;
+  }
+
+  .rail-group {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .rail-spacer {
+    flex: 1;
+  }
+
+  .app-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .header-left,
+  .header-right {
+    min-width: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-center {
+    order: 3;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .header-right {
+    border-left: 0;
+    border-top: var(--border-width) solid var(--border-color);
+    padding: 6px 0 0;
+    margin-top: 6px;
+  }
+
+  .header-brand-title {
+    font-size: 11px;
+  }
+
+  .header-brand-subtitle {
+    font-size: 8px;
+  }
+
+  .header-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .workspace-manifold,
+  .git-workspace {
+    flex-direction: column;
+  }
+
+  .workspace-sidebar,
+  .git-sidebar {
+    width: 100%;
+    min-width: 0;
+    height: 38vh;
+    border-right: 0;
+    border-bottom: var(--border-width) solid var(--border-color);
+  }
+
+  .workspace-sidebar.is-collapsed {
+    height: 0;
+    min-height: 0;
+    border-bottom-width: 0;
+  }
+
+  .git-sidebar {
+    height: 34vh;
+  }
+
+  .git-diff-view {
+    border-left: 0;
+    border-top: var(--border-width) solid var(--border-color);
+  }
+
+  .status-bar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 6px 8px;
+  }
+
+  .status-left,
+  .status-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --sidebar-width: 230px;
+    --rail-width: 48px;
+    --header-height: 40px;
+    --status-height: 26px;
+    --panel-header-height: 34px;
+    --rail-btn-size: 34px;
+    --app-gap: 5px;
+    --editor-padding: 22px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --sidebar-width: 260px;
+    --rail-width: 52px;
+    --header-height: 44px;
+    --status-height: 28px;
+    --panel-header-height: 36px;
+    --rail-btn-size: 36px;
+    --app-gap: 6px;
+    --editor-padding: 28px;
+  }
+
+  .chassis-scaler {
+    max-width: 1880px;
+    margin: 0 auto;
+  }
+}
