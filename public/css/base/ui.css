@@ -80,6 +80,7 @@
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
+  height: 28px;
 }
 
 .zoom-btn {
@@ -257,6 +258,10 @@
 .file-tree-item.selected {
   background: var(--c-explorer-selected);
   color: var(--c-explorer-selected-text);
+}
+
+.file-tree-item.is-active {
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 .file-tree-item.folder {

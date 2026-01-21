@@ -17,6 +17,7 @@ interface FileTreeProps {
 const FileItem: React.FC<{ 
   node: FileNode; 
   depth: number; 
+  activeId: string | null;
   selectedId: string | null; 
   onSelect: (id: string) => void;
   onMove: (fileId: string, targetFolderId: string | null) => void;
@@ -26,7 +27,7 @@ const FileItem: React.FC<{
   onToggleExpand: (id: string) => void;
   registerItem: (id: string, element: HTMLDivElement | null) => void;
 }> = (props) => {
-  const { node, depth, allFiles, selectedId, onSelect, onMove, expansionMap, visibilityMap, onToggleExpand, registerItem } = props;
+  const { node, depth, activeId, allFiles, selectedId, onSelect, onMove, expansionMap, visibilityMap, onToggleExpand, registerItem } = props;
   
   const {
     isDragOver,
@@ -44,6 +45,7 @@ const FileItem: React.FC<{
 
   const isExpanded = expansionMap.get(node.id) || false;
   const isVisible = visibilityMap.get(node.id) || false;
+  const isActive = node.id === activeId;
 
   if (!isVisible) return null;
 
@@ -58,8 +60,13 @@ const FileItem: React.FC<{
       <div 
         {...dnd}
         onClick={selectNode}
+        onDoubleClick={() => {
+          if (node.type === 'folder') {
+            onToggleExpand(node.id);
+          }
+        }}
         ref={(element) => registerItem(node.id, element)}
-        className={`file-tree-item ${isSelected ? 'selected' : ''} ${node.type === 'folder' ? 'folder' : ''}`}
+        className={`file-tree-item ${isSelected ? 'selected' : ''} ${isActive ? 'is-active' : ''} ${node.type === 'folder' ? 'folder' : ''}`}
         style={{ 
             paddingLeft: `calc(var(--file-indent-base) + ${depth} * var(--file-indent-unit))`,
             backgroundColor: isDragOver ? 'var(--c-explorer-drag-bg)' : undefined
@@ -89,6 +96,7 @@ const FileItem: React.FC<{
               key={child.id} 
               node={child} 
               depth={depth + 1} 
+              activeId={activeId}
               selectedId={selectedId}
               onSelect={onSelect}
               onMove={onMove}
@@ -105,7 +113,7 @@ const FileItem: React.FC<{
   );
 };
 
-export const FileTree: React.FC<FileTreeProps> = ({ files, selectedId, onSelect, onHighlight, onMove, searchQuery }) => {
+export const FileTree: React.FC<FileTreeProps> = ({ files, activeId, selectedId, onSelect, onHighlight, onMove, searchQuery }) => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const roots = files.filter(f => f.parentId === null);
   const { isDragOverRoot, handleRootDragOver, handleRootDragLeave, handleRootDrop } = useFileTreeDnD(onMove);
@@ -341,6 +349,7 @@ export const FileTree: React.FC<FileTreeProps> = ({ files, selectedId, onSelect,
           key={node.id} 
           node={node} 
           depth={0} 
+          activeId={activeId}
           selectedId={selectedId}
           onSelect={onSelect}
           onMove={onMove}

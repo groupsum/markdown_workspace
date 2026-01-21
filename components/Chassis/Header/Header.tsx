@@ -1,6 +1,6 @@
 import React from 'react';
 import { ZoomControl } from '../../UI/ZoomControl';
-import { Settings, X } from 'lucide-react';
+import { FilePlus, Settings, X } from 'lucide-react';
 import { FileNode, Tab, AppMode } from '../../../../types';
 import { ThemeDef } from '../../../../data/themes';
 
@@ -15,6 +15,7 @@ interface HeaderProps {
   onTabSelect: (tabId: string, fileId: string) => void;
   onTabClose: (e: React.MouseEvent, tabId: string) => void;
   onZoom: (delta: number) => void;
+  onNewFile: () => void;
   onOpenSettings: () => void;
   className?: string;
 }
@@ -30,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
   onTabSelect,
   onTabClose,
   onZoom,
+  onNewFile,
   onOpenSettings,
   className = ""
 }) => {
@@ -44,38 +46,47 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
         
-        <div className="header-center tab-bar">
-          {tabs.map(tab => {
-             const f = files.find(file => file.id === tab.fileId);
-             const isActive = activeTabId === tab.id;
-             const isExpanded = isActive && appMode === 'work';
-             
-             return (
-               <div 
-                 key={tab.id}
-                 onClick={() => onTabSelect(tab.id, tab.fileId)}
-                 className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}`}
-               >
-                 <span className="tab-label">{f?.name || 'Untitled'}</span>
-                 <button 
-                   onClick={(e) => onTabClose(e, tab.id)}
-                   className="tab-close"
-                   aria-label="Close tab"
+        <div className="header-center">
+          <div className="tab-bar header-tabs">
+            {tabs.map(tab => {
+               const f = files.find(file => file.id === tab.fileId);
+               const isActive = activeTabId === tab.id;
+               const isExpanded = isActive && appMode === 'work';
+               
+               return (
+                 <div 
+                   key={tab.id}
+                   onClick={() => onTabSelect(tab.id, tab.fileId)}
+                   className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}`}
                  >
-                   <X size={12} />
-                 </button>
-               </div>
-             )
-          })}
+                   <span className="tab-label">{f?.name || 'Untitled'}</span>
+                   <button 
+                     onClick={(e) => onTabClose(e, tab.id)}
+                     className="tab-close"
+                     aria-label="Close tab"
+                   >
+                     <X size={12} />
+                   </button>
+                 </div>
+               )
+            })}
+          </div>
         </div>
 
         <div className="header-right">
-           <div className="zoom-wrapper">
-             <ZoomControl zoom={zoom} onZoom={onZoom} />
-           </div>
-          <button className="header-btn" onClick={onOpenSettings} title="System Settings">
-            <Settings size={16} />
-          </button>
+          <div className="header-controls">
+            <div className="header-btn-group">
+              <button className="header-btn" onClick={onNewFile} title="New File">
+                <FilePlus size={16} />
+              </button>
+              <button className="header-btn" onClick={onOpenSettings} title="System Config">
+                <Settings size={16} />
+              </button>
+            </div>
+            <div className="zoom-wrapper">
+              <ZoomControl zoom={zoom} onZoom={onZoom} />
+            </div>
+          </div>
         </div>
       </header>
   );

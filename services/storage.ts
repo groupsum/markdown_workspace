@@ -177,6 +177,28 @@ The **Telemetry Surface**. Surfacing LN/COL coordinates, IndexedDB persistence h
         lastModified: Date.now()
       });
 
+      await this.saveFile({
+        id: 'system-notes',
+        projectId: defaultProjectId,
+        parentId: null,
+        name: 'system',
+        type: 'folder',
+        lastModified: Date.now()
+      });
+
+      await this.saveFile({
+        id: 'system-ops-md',
+        projectId: defaultProjectId,
+        parentId: 'system-notes',
+        name: 'operations.md',
+        type: 'file',
+        content: `# Operations Log
+
+- Folder scaffolding now supports collapsible nodes.
+- Use the header controls to create new files or open the config panel.`,
+        lastModified: Date.now()
+      });
+
       return defaultProject;
     }
     return null;
