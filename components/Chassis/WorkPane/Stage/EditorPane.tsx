@@ -8,6 +8,7 @@ import { Undo, Redo, Bold, Italic, Columns, Maximize2, Eye } from 'lucide-react'
 
 const syntaxThemeMap: Record<AppTheme, any> = {
   zinc: vs,
+  'anodized-billet': coy,
   micropress: coy,
   default: tomorrow
 };

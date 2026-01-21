@@ -13,7 +13,8 @@ const syntaxThemeMap: Record<AppTheme, any> = {
   cellulose: tomorrow,
   brutahaus: vs,
   graphite: coy,
-  pickle: tomorrow
+  pickle: tomorrow,
+  'anodized-billet': vs
 };
 
 interface PreviewPaneProps {
