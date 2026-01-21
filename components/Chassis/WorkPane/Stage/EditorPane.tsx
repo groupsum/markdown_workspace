@@ -223,6 +223,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                   className="editor-textarea"
                   value={history.present}
                   onChange={(e) => updateContent(e.target.value)}
+                  onKeyDown={handleEditorKeyDown}
                   onKeyUp={updateCursor}
                   onClick={updateCursor}
                   onScroll={handleScroll}
@@ -230,18 +231,6 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                   placeholder="START_INPUT..."
                 />
               </div>
-              <textarea
-                ref={textareaRef}
-                className="editor-textarea"
-                value={history.present}
-                onChange={(e) => updateContent(e.target.value)}
-                onKeyDown={handleEditorKeyDown}
-                onKeyUp={updateCursor}
-                onClick={updateCursor}
-                onScroll={handleScroll}
-                spellCheck={false}
-                placeholder="START_INPUT..."
-              />
             </div>
           )}
 
