@@ -214,6 +214,7 @@
 .settings-content-frame {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 6px 4px 4px;
 }
 
