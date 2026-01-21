@@ -2,20 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vs, vscDarkPlus, coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FileNode, AppTheme } from '../../../../../../types';
-
-const syntaxThemeMap: Record<AppTheme, any> = {
-  spiffpickle: vscDarkPlus,
-  plate: vs,
-  lithic: vscDarkPlus,
-  alumina: coy,
-  cellulose: tomorrow,
-  brutahaus: vs,
-  graphite: coy,
-  pickle: tomorrow,
-  'anodized-billet': vs
-};
+import { getSyntaxTheme } from '../../../../../../data/themes';
 
 interface PreviewPaneProps {
   content: string;
@@ -97,7 +85,7 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
                    <span>{match[1]}</span>
                 </div>
                 <SyntaxHighlighter
-                  style={syntaxThemeMap[theme] || vs}
+                  style={getSyntaxTheme(theme)}
                   language={match[1]}
                   PreTag="div"
                   customStyle={{ margin: 0, borderRadius: 0, border: 'none' }}
