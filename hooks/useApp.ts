@@ -94,7 +94,9 @@ export const useApp = () => {
           console.log(`[useApp] Action: promptNewFile callback executing -> ${name}`);
           const newFile = await fileSys.createNewFile(name);
           if (newFile) {
-              handleExplorerSelect(newFile.id);
+              ui.setAppMode('work');
+              fileSys.setSelectedExplorerId(newFile.id);
+              tabs.openTab(newFile.id);
           }
       });
   };

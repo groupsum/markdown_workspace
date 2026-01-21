@@ -54,8 +54,8 @@
   display: flex;
   align-items: center;
   height: var(--header-height);
-  padding: 0 10px;
-  gap: 10px;
+  padding: 0 8px;
+  gap: 8px;
   z-index: 10;
 }
 
@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px 4px;
+  padding: 4px 3px;
   gap: 6px;
 }
 
@@ -77,9 +77,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8px;
+  padding: 0 6px;
   height: var(--status-height);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -566,7 +566,7 @@
 }
 
 .header-left {
-  min-width: 140px;
+  min-width: 120px;
 }
 
 .header-center {
@@ -580,7 +580,7 @@
 }
 
 .header-right {
-  min-width: 220px;
+  min-width: 200px;
   justify-content: flex-end;
   border-left: var(--border-width) solid var(--border-color);
   padding-left: 12px;
@@ -597,14 +597,14 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .header-brand-subtitle {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -612,8 +612,8 @@
 }
 
 .header-btn {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -632,14 +632,14 @@
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .header-btn-group {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px;
+  gap: 2px;
+  padding: 1px;
   border: 1px solid var(--border-color);
   background: var(--bg-inset);
 }
@@ -1089,19 +1089,19 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   :root {
     --rail-width: 40px;
     --sidebar-width: 180px;
-    --header-height: 40px;
+    --header-height: 34px;
     --status-height: 22px;
     --panel-header-height: 28px;
-    --rail-btn-size: 30px;
+    --rail-btn-size: 28px;
     --editor-padding: 14px;
   }
 
   .header-right {
-    min-width: 180px;
+    min-width: 170px;
   }
 }
 
@@ -1109,12 +1109,13 @@
   :root {
     --rail-width: 100%;
     --sidebar-width: 100%;
-    --header-height: 52px;
-    --status-height: 32px;
+    --header-height: 44px;
+    --status-height: 24px;
     --panel-header-height: 28px;
-    --rail-btn-size: 36px;
+    --rail-btn-size: 32px;
     --app-gap: 2px;
     --editor-padding: 12px;
+    --rail-height: 40px;
   }
 
   .chassis-scaler {
@@ -1132,7 +1133,7 @@
     border-right: 0;
     border-top: var(--border-width) solid var(--border-color);
     justify-content: space-between;
-    padding: 4px 6px;
+    padding: 2px 4px;
   }
 
   .rail-group {
@@ -1147,15 +1148,15 @@
   .app-header {
     flex-wrap: wrap;
     height: auto;
-    padding: 8px;
+    padding: 6px;
     gap: 6px;
   }
 
   .header-left,
   .header-right {
     min-width: 0;
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    justify-content: flex-start;
   }
 
   .header-center {
@@ -1165,10 +1166,12 @@
   }
 
   .header-right {
+    margin-left: auto;
+    justify-content: flex-end;
     border-left: 0;
-    border-top: var(--border-width) solid var(--border-color);
-    padding: 6px 0 0;
-    margin-top: 6px;
+    border-top: 0;
+    padding: 0;
+    margin-top: 0;
   }
 
   .header-brand-title {
@@ -1180,8 +1183,8 @@
   }
 
   .header-btn {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .workspace-manifold,
@@ -1193,7 +1196,7 @@
   .git-sidebar {
     width: 100%;
     min-width: 0;
-    height: 38vh;
+    height: 100%;
     border-right: 0;
     border-bottom: var(--border-width) solid var(--border-color);
   }
@@ -1205,7 +1208,15 @@
   }
 
   .git-sidebar {
-    height: 34vh;
+    height: 100%;
+  }
+
+  .workspace-sidebar:not(.is-collapsed) + .workspace-stage {
+    display: none;
+  }
+
+  .git-diff-view {
+    display: none;
   }
 
   .git-diff-view {
@@ -1216,7 +1227,7 @@
   .status-bar {
     flex-wrap: wrap;
     height: auto;
-    padding: 6px 8px;
+    padding: 4px 6px;
   }
 
   .status-left,
@@ -1230,8 +1241,8 @@
   :root {
     --sidebar-width: 230px;
     --rail-width: 48px;
-    --header-height: 40px;
-    --status-height: 26px;
+    --header-height: 36px;
+    --status-height: 22px;
     --panel-header-height: 34px;
     --rail-btn-size: 34px;
     --app-gap: 5px;
@@ -1249,10 +1260,5 @@
     --rail-btn-size: 36px;
     --app-gap: 6px;
     --editor-padding: 28px;
-  }
-
-  .chassis-scaler {
-    max-width: 1880px;
-    margin: 0 auto;
   }
 }

@@ -1,5 +1,5 @@
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import JSZip from 'jszip';
 import { AppTheme, FileNode } from '../types';
 import { storage } from '../services/storage';
@@ -15,6 +15,7 @@ export const useFileManager = (
   const [files, setFiles] = useState<FileNode[]>([]);
   const [selectedExplorerId, setSelectedExplorerId] = useState<string | null>(null);
   const [unsaved, setUnsaved] = useState(false);
+  const autosaveTimers = useRef<Map<string, number>>(new Map());
 
   const loadFiles = async (projectId: string) => {
     console.log(`[useFileManager] Action: loadFiles for project -> ${projectId}`);
@@ -124,12 +125,28 @@ export const useFileManager = (
   };
 
   const updateFileContent = useCallback((fileId: string, content: string) => {
-    console.log(`[useFileManager] Action: updateFileContent (in memory) -> ${fileId}`);
+    console.log(`[useFileManager] Action: updateFileContent (auto-save) -> ${fileId}`);
     setUnsaved(true);
     setFiles(prev => prev.map(f => 
-      f.id === fileId ? { ...f, content } : f
+      f.id === fileId ? { ...f, content, lastModified: Date.now() } : f
     ));
-  }, []);
+
+    const existingTimer = autosaveTimers.current.get(fileId);
+    if (existingTimer) {
+      window.clearTimeout(existingTimer);
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      const file = files.find(f => f.id === fileId);
+      if (!file) return;
+      void storage.saveFile({ ...file, content, lastModified: Date.now() }).then(() => {
+        setUnsaved(false);
+      });
+      autosaveTimers.current.delete(fileId);
+    }, 500);
+
+    autosaveTimers.current.set(fileId, timeoutId);
+  }, [files]);
 
   const moveFile = async (fileId: string, targetFolderId: string | null) => {
     console.log(`[useFileManager] Action: moveFile -> ${fileId} to folder -> ${targetFolderId}`);
