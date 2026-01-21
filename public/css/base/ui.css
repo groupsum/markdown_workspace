@@ -9,19 +9,30 @@
   position: relative;
 }
 
-.view-toolbar {
-  height: 32px;
-  background: var(--bg-inset);
-  border-bottom: var(--border-width) solid var(--border-color);
+.editor-pane-shell {
+  flex: 1;
   display: flex;
+  min-height: 0;
+  position: relative;
+}
+
+.view-toolbar {
+  width: 36px;
+  background: var(--bg-inset);
+  border-left: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0 12px;
-  z-index: 50;
+  padding: 8px 6px;
+  gap: 8px;
+  z-index: 40;
 }
 
 .view-toolbar-group {
   display: flex;
-  gap: 2px;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
 }
 
 .view-toolbar-btn {
@@ -38,10 +49,10 @@
 .view-toolbar-btn:disabled { opacity: 0.2; cursor: not-allowed; }
 
 .view-toolbar-divider {
-  width: 1px;
-  height: 16px;
+  width: 18px;
+  height: 1px;
   background: var(--border-color);
-  margin: 0 10px;
+  margin: 6px 0;
 }
 
 .editor-pane-body {
@@ -49,6 +60,7 @@
   display: flex;
   overflow: hidden;
   background: var(--bg-app);
+  min-width: 0;
 }
 
 .editor-pane-column {
@@ -118,4 +130,173 @@
   flex: 1;
   overflow-y: auto;
   background: var(--bg-panel);
+}
+
+/* === HEADER === */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  flex: 0 0 auto;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.header-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 0 12px;
+}
+
+.header-btn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid transparent;
+  color: var(--fg-muted);
+}
+.header-btn:hover { border-color: var(--border-color); color: var(--fg-primary); }
+
+/* === ACTION RAIL === */
+.action-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  gap: 8px;
+  height: 100%;
+}
+
+.rail-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.rail-spacer { flex: 1; }
+
+.rail-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid transparent;
+  color: var(--fg-muted);
+}
+.rail-btn:hover { border-color: var(--border-color); color: var(--fg-primary); }
+.rail-btn.is-active { background: var(--border-color); color: var(--bg-panel); }
+
+/* === STATUS BAR === */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  gap: 12px;
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-item__icon {
+  color: var(--fg-muted);
+}
+
+.status-item--cursor {
+  font-family: var(--font-mono);
+}
+
+.status-kv {
+  font-weight: 700;
+}
+
+.status-label {
+  color: var(--fg-muted);
+  letter-spacing: 0.08em;
+}
+
+.status-text-bold {
+  font-weight: 800;
+  color: var(--fg-primary);
+}
+
+.status-text--on {
+  color: var(--status-ok);
+}
+
+.status-text--warn {
+  color: var(--status-warn);
+}
+
+.status-sep {
+  width: 1px;
+  height: 12px;
+  background: var(--border-color);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--status-ok);
+}
+
+.status-online,
+.status-offline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-unsaved {
+  padding: 2px 6px;
+  border: var(--border-width) solid var(--border-color);
+  font-weight: 800;
+  background: var(--bg-inset);
 }

@@ -30,14 +30,25 @@ export const Footer: React.FC<FooterProps> = ({
                     <span className="status-kv">LN {cursorLine}</span>
                     <span className="status-kv"> COL {cursorCol}</span>
                 </div>
-                {unsaved && (
-                    <span className="badge-unsaved">
-                        DIRTY
-                    </span>
-                )}
+                <div className="status-sep"></div>
+                <div className="status-item">
+                    <span className="status-label">ENC:</span>
+                    <span className="status-text-bold">UTF-8</span>
+                </div>
+                <div className="status-sep"></div>
+                <div className="status-item">
+                    <span className="status-label">AUTO-SAVE:</span>
+                    <span className="status-text-bold">ON</span>
+                </div>
             </div>
 
             <div className="status-right">
+                <div className="status-item">
+                    <span className={`status-text-bold ${unsaved ? 'status-text--warn' : 'status-text--on'}`}>
+                        {unsaved ? 'UNWRITTEN' : 'SAVED'}
+                    </span>
+                </div>
+                <div className="status-sep"></div>
                 <div className="status-item">
                     {online ? (
                       <div className="status-online">
@@ -55,13 +66,13 @@ export const Footer: React.FC<FooterProps> = ({
                 <div className="status-item">
                     <span className="status-label">PWA:</span>
                     <span className="status-text-bold status-text--on">
-                        STABLE
+                        v{version}
                     </span>
                 </div>
                 <div className="status-sep"></div>
-                <div className="status-item" title="App Version">
+                <div className="status-item" title="Sync Status">
                     <div className="status-dot"></div>
-                    <span className="status-text-bold">{version}</span>
+                    <span className="status-text-bold">SYNCED</span>
                 </div>
             </div>
         </footer>

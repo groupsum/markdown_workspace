@@ -53,3 +53,16 @@
   text-transform: uppercase; 
   font-weight: 900; 
 }
+
+.theme-micropress .editor-pane-shell {
+  position: relative;
+}
+
+.theme-micropress .view-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: auto;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+}
