@@ -10,6 +10,7 @@ export interface ThemeDef {
   url: string;
   syntaxTheme: {
     name: string;
+    palette: string;
     style: any;
   };
 }
@@ -23,6 +24,7 @@ export const THEMES: ThemeDef[] = [
     url: '/css/themes/theme-acid-etched.css',
     syntaxTheme: {
       name: 'VS Code Dark Plus',
+      palette: 'Electric green, neon cyan, deep slate on dark graphite.',
       style: vscDarkPlus
     }
   },
@@ -34,6 +36,7 @@ export const THEMES: ThemeDef[] = [
     url: '/css/themes/theme-zinc.css',
     syntaxTheme: {
       name: 'VS',
+      palette: 'Low-contrast graphite, zinc gray, cobalt-blue accents.',
       style: vs
     }
   },
@@ -45,6 +48,7 @@ export const THEMES: ThemeDef[] = [
     url: '/css/themes/theme-anodized-billet.css',
     syntaxTheme: {
       name: 'Coy',
+      palette: 'Cool aluminum neutrals with anodized azure highlights.',
       style: coy
     }
   },
@@ -56,6 +60,7 @@ export const THEMES: ThemeDef[] = [
     url: '/css/themes/theme-micropress.css',
     syntaxTheme: {
       name: 'Coy',
+      palette: 'Optical white base with safety orange and slate ink.',
       style: coy
     }
   },
@@ -67,6 +72,7 @@ export const THEMES: ThemeDef[] = [
     url: '/css/themes/theme-default.css',
     syntaxTheme: {
       name: 'Tomorrow',
+      palette: 'Balanced charcoal, soft graphite, and industrial teal.',
       style: tomorrow
     }
   }
@@ -74,4 +80,5 @@ export const THEMES: ThemeDef[] = [
 
 export const getThemeDef = (themeId: string) => THEMES.find((theme) => theme.id === themeId) || THEMES[0];
 
-export const getSyntaxTheme = (themeId: string) => getThemeDef(themeId).syntaxTheme.style;
+export const getSyntaxTheme = (themeId: string) => getThemeDef(themeId).syntaxTheme;
+export const getSyntaxThemeStyle = (themeId: string) => getSyntaxTheme(themeId).style;

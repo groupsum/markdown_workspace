@@ -5,6 +5,7 @@
   /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
   --header-height: 36px;
   --rail-width: 44px;
+  --rail-height: 44px;
   --sidebar-width: 200px;
   --status-height: 24px;
   --tab-height: var(--header-height);

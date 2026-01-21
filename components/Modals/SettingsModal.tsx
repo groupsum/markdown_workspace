@@ -117,6 +117,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                             </span>
                         </div>
                         <span className="settings-theme-desc">{theme.description}</span>
+                        <span className="text-[10px] uppercase text-[var(--fg-muted)]">
+                          CODE_SYNTAX • {theme.syntaxTheme.name}
+                        </span>
+                        <span className="text-[11px] text-[var(--fg-muted)]">
+                          {theme.syntaxTheme.palette}
+                        </span>
                       </button>
                     ))}
                   </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, Printer } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer } from 'lucide-react';
 import { AppMode } from '../../../../types';
 
 interface ActionRailProps {
@@ -7,6 +7,7 @@ interface ActionRailProps {
   appMode: AppMode;
   onToggleSidebar: () => void;
   onNewFile: () => void;
+  onNewFolder: () => void;
   onToggleGit: () => void;
   onSwitchProject: () => void;
   onDownload: () => void;
@@ -38,6 +39,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({
   appMode,
   onToggleSidebar,
   onNewFile,
+  onNewFolder,
   onToggleGit,
   onSwitchProject,
   onDownload,
@@ -59,6 +61,11 @@ export const ActionRail: React.FC<ActionRailProps> = ({
               onClick={onNewFile}
               icon={<FilePlus />}
               title="New File"
+            />
+            <ToolbarButton 
+              onClick={onNewFolder}
+              icon={<FolderPlus />}
+              title="New Folder"
             />
             <ToolbarButton 
               active={appMode === 'git'}

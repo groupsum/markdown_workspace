@@ -7,7 +7,7 @@ import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
 import { InputModal } from './components/Modals/InputModal';
 import { Footer } from './components/Chassis/Footer/Footer';
-import { Settings, Folder, GitBranch, Download, FilePlus, LayoutGrid, Plus, Minus, RefreshCw, FileDown, Printer } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer } from 'lucide-react';
 import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
@@ -64,6 +64,7 @@ const App: React.FC = () => {
 
   const commandActions = [
     { id: 'new-file', label: 'Create New File', action: actions.promptNewFile, icon: <FilePlus size={14}/> },
+    { id: 'new-folder', label: 'Create New Folder', action: actions.promptNewFolder, icon: <FolderPlus size={14}/> },
     { id: 'save', label: 'Save Current File', action: actions.saveCurrentFile, icon: <Settings size={14}/> },
     { id: 'toggle-sidebar', label: 'Toggle Explorer', action: actions.toggleSidebar, icon: <Folder size={14}/> },
     { id: 'download', label: 'Download Current Item', action: actions.handleDownload, icon: <Download size={14}/> },
@@ -108,6 +109,7 @@ const App: React.FC = () => {
         onTabClose={actions.closeTab}
         onZoom={actions.adjustZoom}
         onNewFile={actions.promptNewFile}
+        onNewFolder={actions.promptNewFolder}
         onOpenSettings={() => actions.setShowSettings(true)}
       />
 
@@ -118,6 +120,7 @@ const App: React.FC = () => {
           appMode={state.appMode}
           onToggleSidebar={actions.toggleSidebar}
           onNewFile={actions.promptNewFile}
+          onNewFolder={actions.promptNewFolder}
           onToggleGit={() => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git')}
           onSwitchProject={actions.switchToProjectSelector}
           onDownload={actions.handleDownload}
@@ -139,6 +142,7 @@ const App: React.FC = () => {
             sidebarOpen={state.sidebarOpen}
             onSidebarToggle={actions.setSidebarOpen}
             onNewFile={actions.promptNewFile}
+            onNewFolder={actions.promptNewFolder}
             onFileSelect={actions.handleExplorerSelect}
             onFileHighlight={actions.highlightExplorerNode}
             onFileMove={actions.handleMoveFile}
@@ -150,6 +154,7 @@ const App: React.FC = () => {
           <GitPane 
             files={state.files} 
             activeFile={state.activeFile} 
+            theme={state.theme}
             unsaved={state.unsaved} 
             onClose={() => actions.setAppMode('work')} 
           />
