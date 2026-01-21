@@ -118,6 +118,7 @@
 
 .workspace-sidebar.is-collapsed {
   width: 0;
+  min-width: 0;
   border-right-width: 0;
 }
 
@@ -573,12 +574,13 @@
   display: flex;
   align-items: stretch;
   height: 100%;
+  min-width: 0;
   overflow: hidden;
   padding-left: 6px;
 }
 
 .header-right {
-  min-width: 140px;
+  min-width: 220px;
   justify-content: flex-end;
   border-left: var(--border-width) solid var(--border-color);
   padding-left: 12px;
@@ -618,6 +620,28 @@
   border: 1px solid var(--border-color);
   background: var(--bg-panel);
   color: var(--fg-primary);
+}
+
+.header-tabs {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-inset);
 }
 
 .header-btn:hover {
