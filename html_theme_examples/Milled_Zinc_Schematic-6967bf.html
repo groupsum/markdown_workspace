@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spiffe pickle | High-Density Markdown</title>
+    <style>
+        :root {
+            /* Milled Zinc Schematic Palette */
+            --zinc-base: #e2e2e7;
+            --zinc-surface: #f4f4f5;
+            --zinc-deep: #27272a;
+            --zinc-edge: #000000;
+            --pickle-accent: #bef264;
+            --pickle-dark: #4d7c0f;
+            --text-main: #09090b;
+            --text-muted: #52525b;
+            --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: "JetBrains Mono", "IBM Plex Mono", Menlo, monospace;
+            
+            /* Sizing Tokens */
+            --top-bar-h: 36px;
+            --left-rail-w: 44px;
+            --footer-h: 24px;
+            --border-width: 1.5px;
+            --row-height: 28px;
+            --transition-fast: 0.1s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 0 !important; /* Brutalist Core */
+        }
+
+        body {
+            background-color: var(--zinc-base);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            font-size: 13px;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: grid;
+            grid-template-areas: 
+                "rail head"
+                "rail main"
+                "rail foot";
+            grid-template-columns: var(--left-rail-w) 1fr;
+            grid-template-rows: var(--top-bar-h) 1fr var(--footer-h);
+            border: var(--border-width) solid var(--zinc-edge);
+        }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--zinc-base); border-left: var(--border-width) solid var(--zinc-edge); }
+        ::-webkit-scrollbar-thumb { background: var(--zinc-deep); border: 2px solid var(--zinc-base); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--pickle-dark); }
+
+        /* APP TOP BAR */
+        .app-header {
+            grid-area: head;
+            background: var(--zinc-surface);
+            border-bottom: var(--border-width) solid var(--zinc-edge);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .brand {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand::before {
+            content: "";
+            display: block;
+            width: 12px;
+            height: 12px;
+            background: var(--pickle-accent);
+            border: 1px solid var(--zinc-edge);
+        }
+
+        .file-path {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            overflow: hidden;
+        }
+
+        .file-path input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: inherit;
+            font-weight: 600;
+            width: auto;
+            min-width: 50px;
+            padding: 2px 4px;
+        }
+
+        .file-path input:focus { outline: 1px solid var(--zinc-edge); background: #fff; }
+
+        .dirty-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--pickle-dark);
+            margin-left: 4px;
+            opacity: 0;
+        }
+
+        .is-dirty .dirty-indicator { opacity: 1; }
+
+        .app-meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            border: 1px solid var(--zinc-edge);
+            padding: 1px 4px;
+            background: var(--zinc-base);
+            text-transform: uppercase;
+        }
+
+        .badge.online { background: var(--pickle-accent); }
+
+        /* LEFT RAIL */
+        .left-rail {
+            grid-area: rail;
+            background: var(--zinc-deep);
+            border-right: var(--border-width) solid var(--zinc-edge);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            gap: 4px;
+        }
+
+        .rail-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--zinc-base);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .rail-btn:hover { border-color: var(--zinc-base); background: rgba(255,255,255,0.1); }
+        .rail-btn.active { background: var(--pickle-accent); color: var(--zinc-deep); border-color: var(--zinc-edge); }
+
+        .rail-btn svg { width: 18px; height: 18px; stroke-width: 2.5px; }
+
+        .rail-spacer { flex-grow: 1; }
+
+        /* WORKSPACE */
+        .workspace {
+            grid-area: main;
+            display: flex;
+            overflow: hidden;
+            background: var(--zinc-edge);
+            gap: var(--border-width);
+        }
+
+        /* FILE EXPLORER */
+        .explorer {
+            width: 200px;
+            min-width: 120px;
+            background: var(--zinc-surface);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .explorer-header {
+            padding: 4px 8px;
+            font-weight: 800;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--zinc-edge);
+            background: var(--zinc-base);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tree-item {
+            height: var(--row-height);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            gap: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 12px;
+        }
+
+        .tree-item:hover { background: rgba(0,0,0,0.05); }
+        .tree-item.selected { background: var(--zinc-edge); color: white; }
+        .tree-item.folder { font-weight: 700; color: var(--pickle-dark); }
+        .tree-item.folder.selected { color: var(--pickle-accent); }
+
+        /* EDITOR & PREVIEW */
+        .pane {
+            flex: 1;
+            background: white;
+            overflow: auto;
+            position: relative;
+        }
+
+        .editor-pane {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #editor {
+            flex-grow: 1;
+            border: none;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            background: #fafafa;
+            color: var(--zinc-deep);
+        }
+
+        .preview-pane {
+            padding: 40px;
+            background: #fff;
+            border-left: var(--border-width) solid var(--zinc-edge);
+        }
+
+        /* MARKDOWN STYLES */
+        .preview-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .preview-content h1 { font-size: 24px; border-bottom: 3px solid var(--zinc-edge); margin-bottom: 16px; padding-bottom: 4px; }
+        .preview-content h2 { font-size: 18px; margin: 24px 0 12px 0; background: var(--zinc-edge); color: #fff; padding: 2px 8px; display: inline-block; }
+        .preview-content p { margin-bottom: 12px; line-height: 1.5; }
+        .preview-content blockquote { border: 1px solid var(--zinc-edge); padding: 12px; background: var(--zinc-base); margin: 16px 0; position: relative; }
+        .preview-content blockquote::before { content: "“"; position: absolute; top: -10px; left: 10px; background: white; padding: 0 4px; font-weight: bold; }
+        .preview-content code { background: var(--zinc-base); padding: 2px 4px; font-family: var(--font-mono); font-size: 0.9em; border: 1px solid rgba(0,0,0,0.1); }
+        .preview-content pre { border: 1px solid var(--zinc-edge); background: #27272a; color: #fff; padding: 16px; margin: 16px 0; overflow-x: auto; }
+        .preview-content ul { padding-left: 20px; margin-bottom: 12px; }
+        .preview-content li { margin-bottom: 4px; }
+        .preview-content table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+        .preview-content th, .preview-content td { border: 1px solid var(--zinc-edge); padding: 6px 10px; text-align: left; }
+        .preview-content th { background: var(--zinc-base); font-weight: 800; }
+
+        /* FOOTER */
+        .app-footer {
+            grid-area: foot;
+            background: var(--zinc-surface);
+            border-top: var(--border-width) solid var(--zinc-edge);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 10px;
+            font-weight: 700;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+
+        .footer-item { display: flex; align-items: center; gap: 4px; }
+        .footer-spacer { flex-grow: 1; }
+        .zoom-control { display: flex; align-items: center; gap: 2px; border: 1px solid var(--zinc-edge); padding: 0 4px; background: #fff; }
+        .zoom-control button { border: none; background: transparent; cursor: pointer; font-weight: 900; padding: 0 4px; }
+
+        /* SPLITTER */
+        .resizer {
+            width: 4px;
+            background: var(--zinc-edge);
+            cursor: col-resize;
+            transition: background var(--transition-fast);
+        }
+        .resizer:hover { background: var(--pickle-accent); }
+
+        /* ACCESSIBILITY FOCUS */
+        button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--pickle-dark) !important;
+            outline-offset: -2px;
+        }
+
+        /* TOOLTIP SIMULATION */
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 100%;
+            margin-left: 8px;
+            background: var(--zinc-edge);
+            color: white;
+            padding: 4px 8px;
+            font-size: 10px;
+            white-space: nowrap;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="is-dirty">
+
+    <header class="app-header">
+        <div class="brand">spiffe pickle</div>
+        <div class="file-path">
+            <span>root/projects/</span>
+            <input type="text" value="milled-zinc-spec.md" aria-label="Filename">
+            <div class="dirty-indicator" title="Unsaved changes"></div>
+        </div>
+        <div class="app-meta">
+            <div class="badge">IndexedDB</div>
+            <div class="badge">v1.0.4-stable</div>
+            <div class="badge online">Online</div>
+        </div>
+    </header>
+
+    <nav class="left-rail">
+        <button class="rail-btn" data-tooltip="New File (Alt+N)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Open Folder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+        </button>
+        <div style="height: 1px; width: 24px; background: rgba(255,255,255,0.2); margin: 4px 0;"></div>
+        <button class="rail-btn active" data-tooltip="Explorer (Alt+B)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3h18v18H3zM9 3v18"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Split View (Alt+S)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M3 3h18v18H3z"/></svg>
+        </button>
+        <div class="rail-spacer"></div>
+        <button class="rail-btn" data-tooltip="Import/Export">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20L13 16M17 20L21 16"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </button>
+    </nav>
+
+    <main class="workspace">
+        <aside class="explorer" aria-label="File Explorer">
+            <div class="explorer-header">
+                <span>Explorer</span>
+                <span>[+]</span>
+            </div>
+            <div class="tree-item folder">
+                <span>▼</span> assets
+            </div>
+            <div class="tree-item" style="padding-left: 24px;">
+                <span>📄</span> logo.svg
+            </div>
+            <div class="tree-item folder">
+                <span>▼</span> docs
+            </div>
+            <div class="tree-item selected" style="padding-left: 24px;">
+                <span>📝</span> milled-zinc-spec.md
+            </div>
+            <div class="tree-item" style="padding-left: 24px;">
+                <span>📝</span> architecture.md
+            </div>
+            <div class="tree-item folder">
+                <span>▶</span> scripts
+            </div>
+            <div class="tree-item">
+                <span>⚙️</span> config.json
+            </div>
+        </aside>
+
+        <div class="resizer"></div>
+
+        <section class="pane editor-pane">
+            <textarea id="editor" spellcheck="false"># Milled Zinc Schematic
+
+This UI system uses a **high-density** layout inspired by industrial control panels and "Brutahaus" aesthetic.
+
+## Key Features
+- **Offline-First**: Built with Service Workers.
+- **Strict Borders**: No shadows, no radii.
+- **Pickle Accent**: High contrast green indicators.
+
+### Component Logic
+The `spiffe pickle` system leverages IndexedDB for local persistence.
+
+javascript
+const db = await spiffe.init('local_fs');
+await db.write('/docs/milled-zinc-spec.md', content);
+
+
+| Token | Value |
+|-------|-------|
+| Zinc | #f4f4f5 |
+| Pickle| #bef264 |
+</textarea>
+        </section>
+
+        <div class="resizer"></div>
+
+        <section class="pane preview-pane">
+            <div class="preview-content">
+                <h1>Milled Zinc Schematic</h1>
+                <p>This UI system uses a <strong>high-density</strong> layout inspired by industrial control panels and "Brutahaus" aesthetic.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Offline-First</strong>: Built with Service Workers.</li>
+                    <li><strong>Strict Borders</strong>: No shadows, no radii.</li>
+                    <li><strong>Pickle Accent</strong>: High contrast green indicators.</li>
+                </ul>
+
+                <h3>Component Logic</h3>
+                <p>The <code>spiffe pickle</code> system leverages IndexedDB for local persistence.</p>
+
+                <pre><code>const db = await spiffe.init('local_fs');
+await db.write('/docs/milled-zinc-spec.md', content);</code></pre>
+
+                <table>
+                    <thead>
+                        <tr><th>Token</th><th>Value</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Zinc</td><td>#f4f4f5</td></tr>
+                        <tr><td>Pickle</td><td>#bef264</td></tr>
+                    </tbody>
+                </table>
+
+                <blockquote>
+                    Brutalism in software is about making the underlying structure visible and the interactions honest.
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-item">Line: 12, Col: 45</div>
+        <div class="footer-item">Words: 142</div>
+        <div class="footer-spacer"></div>
+        <div class="footer-item">UTF-8</div>
+        <div class="footer-item">Markdown</div>
+        <div class="zoom-control">
+            <button aria-label="Zoom out">-</button>
+            <span>100%</span>
+            <button aria-label="Zoom in">+</button>
+        </div>
+        <div class="footer-item" style="color: var(--pickle-dark)">● SYNCED</div>
+    </footer>
+
+    <script>
+        // Simple Splitter Logic
+        const resizers = document.querySelectorAll('.resizer');
+        resizers.forEach(resizer => {
+            resizer.addEventListener('mousedown', initDrag);
+        });
+
+        function initDrag(e) {
+            const resizer = e.target;
+            const leftPane = resizer.previousElementSibling;
+            const startX = e.clientX;
+            const startWidth = leftPane.offsetWidth;
+
+            function doDrag(e) {
+                leftPane.style.width = (startWidth + e.clientX - startX) + 'px';
+            }
+
+            function stopDrag() {
+                window.removeEventListener('mousemove', doDrag);
+                window.removeEventListener('mouseup', stopDrag);
+            }
+
+            window.addEventListener('mousemove', doDrag);
+            window.addEventListener('mouseup', stopDrag);
+        }
+
+        // Editor Auto-Sync (Mock)
+        const editor = document.getElementById('editor');
+        editor.addEventListener('input', () => {
+            document.body.classList.add('is-dirty');
+        });
+
+        // Keybindings Simulation
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                document.body.classList.remove('is-dirty');
+                console.log('Saved to IndexedDB');
+            }
+        });
+    </script>
+</body>
+</html>

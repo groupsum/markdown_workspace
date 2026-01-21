@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTAHAUS /// MARKDOWN</title>
+    <style>
+        /* 
+         * CONCEPT: RAW AGGREGATE LATTICE
+         * STYLE: LITHIC BRUTALISM / WCAG-HAUS
+         */
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+        :root {
+            --stone-100: #f2f0ed;
+            --stone-200: #e6e2dd;
+            --stone-300: #d1cdc7;
+            --ink: #0a0a0a;
+            --ink-dim: #444;
+            --alert: #ff2a00; /* Safety Orange */
+            --focus: #0044ff; /* Hyper Blue */
+            --grid-line: 2px solid var(--ink);
+            --thin-line: 1px solid var(--ink);
+            
+            --font-ui: 'Space Grotesk', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+            
+            --base-unit: 8px;
+            --density: 1; /* Scalable UI density */
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        /* MATERIALITY: NOISE GRAIN */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            filter: url(#noiseFilter);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--stone-100);
+            color: var(--ink);
+            font-family: var(--font-ui);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-size: calc(14px * var(--density));
+        }
+
+        /* UTILS */
+        .mono { font-family: var(--font-code); }
+        .bold { font-weight: 700; }
+        .flex { display: flex; }
+        .hidden { display: none !important; }
+
+        /* SCROLLBARS: BLOCKY */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+            background: var(--stone-100);
+            border-left: var(--grid-line);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--ink);
+            border: 2px solid var(--stone-100);
+        }
+        ::-webkit-scrollbar-corner { background: var(--ink); }
+
+        /* --- LAYOUT GRID --- */
+        #app-root {
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Header, Main, Footer */
+            height: 100%;
+            width: 100%;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            height: 48px;
+            border-bottom: var(--grid-line);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--base-unit);
+            background: var(--stone-100);
+            user-select: none;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand span {
+            background: var(--ink);
+            color: var(--stone-100);
+            padding: 0 6px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .status-pill {
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            border: var(--thin-line);
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--alert);
+            border-radius: 50%; /* Just slightly round, mostly raw */
+            border: 1px solid var(--ink);
+        }
+        .status-dot.green { background: #00c040; }
+
+        /* --- WORKSPACE AREA --- */
+        .workspace {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* LEFT TOOLBAR (ICON STRIP) */
+        .activity-bar {
+            width: 48px;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            background: var(--stone-200);
+            padding-top: 8px;
+            z-index: 10;
+        }
+
+        .icon-btn {
+            width: 100%;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.1s steps(2);
+            position: relative;
+        }
+        
+        .icon-btn:hover { background: var(--ink); color: var(--stone-100); }
+        .icon-btn.active { 
+            background: var(--stone-100); 
+            box-shadow: inset 4px 0 0 var(--alert);
+        }
+        .icon-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* EXPLORER PANEL */
+        .explorer {
+            width: 220px;
+            border-right: var(--grid-line);
+            background: var(--stone-100);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .explorer.collapsed { width: 0; border-right: none; overflow: hidden; }
+
+        .panel-header {
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-bottom: var(--thin-line);
+            background: var(--stone-200);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            padding: 8px 0;
+            flex: 1;
+            overflow-y: auto;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+        }
+
+        .tree-item {
+            padding: 4px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .tree-item:hover { background: var(--stone-200); }
+        .tree-item.active { 
+            background: var(--ink); 
+            color: var(--stone-100); 
+        }
+        .folder-group { margin-left: 12px; border-left: 1px dotted var(--ink); }
+
+        /* EDITOR + PREVIEW CONTAINER */
+        .editors-wrap {
+            flex: 1;
+            display: flex;
+            background: #fff;
+        }
+
+        .pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0; /* Flexbox text truncation fix */
+            position: relative;
+        }
+
+        .pane-header {
+            height: 32px;
+            border-bottom: var(--thin-line);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            background: var(--stone-100);
+            font-size: 0.8rem;
+            color: var(--ink-dim);
+        }
+
+        .editor-surface {
+            flex: 1;
+            overflow: auto;
+            position: relative;
+            background: #fff;
+        }
+
+        /* TEXTAREA SIMULATION */
+        #raw-editor {
+            width: 100%;
+            height: 100%;
+            border: none;
+            resize: none;
+            padding: 24px 32px;
+            font-family: var(--font-code);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--ink);
+            background: transparent;
+            z-index: 2;
+            position: relative;
+        }
+        
+        #raw-editor:focus {
+            outline: none;
+            background: rgba(255, 255, 200, 0.1); /* Subtle highlight */
+        }
+
+        /* MARKDOWN PREVIEW */
+        .preview-content {
+            padding: 24px 48px;
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Brutalist Markdown Styles */
+        .preview-content h1 { font-size: 2.5rem; border-bottom: 4px solid var(--ink); padding-bottom: 8px; margin-top: 0; letter-spacing: -1px; }
+        .preview-content h2 { font-size: 1.8rem; border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+        .preview-content code { background: var(--stone-200); padding: 2px 6px; font-family: var(--font-code); font-size: 0.9em; }
+        .preview-content pre { background: var(--ink); color: var(--stone-100); padding: 16px; overflow-x: auto; border: 1px solid var(--ink); }
+        .preview-content blockquote { border-left: 6px solid var(--alert); margin: 0; padding-left: 16px; font-style: italic; background: var(--stone-100); padding: 12px; }
+        .preview-content ul { list-style-type: square; }
+
+        /* GUTTER */
+        .gutter {
+            width: 12px;
+            background: var(--stone-200);
+            border-left: var(--thin-line);
+            border-right: var(--thin-line);
+            cursor: col-resize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gutter-grip { width: 2px; height: 24px; background: var(--ink); box-shadow: 4px 0 0 var(--ink); }
+
+        /* --- FOOTER --- */
+        .footer {
+            height: 32px;
+            border-top: var(--grid-line);
+            background: var(--stone-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .footer-segment { display: flex; gap: 16px; align-items: center; }
+        .footer-item { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        .footer-item:hover { text-decoration: underline; }
+
+        /* UI SCALING SLIDER (Visual) */
+        .zoom-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: var(--thin-line);
+            padding: 0 4px;
+            background: #fff;
+        }
+        .zoom-btn { cursor: pointer; font-weight: bold; width: 16px; text-align: center; user-select: none; }
+        .zoom-btn:hover { color: var(--alert); }
+
+        /* ACCESSIBILITY FOCUS OVERRIDE */
+        *:focus-visible {
+            outline: 2px solid var(--focus);
+            outline-offset: -2px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .workspace { animation: reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    </style>
+</head>
+<body>
+    <!-- NOISE FILTER SVG -->
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/>
+        </filter>
+    </svg>
+    <div class="grain-overlay"></div>
+
+    <div id="app-root">
+        <!-- HEADER -->
+        <header class="top-bar">
+            <div class="brand">
+                <span>B</span> BRUTAHAUS
+            </div>
+            
+            <div class="top-actions">
+                <div class="status-pill" title="Storage Target">
+                    <div class="status-dot green"></div>
+                    INDEXED_DB
+                </div>
+                <div class="status-pill">
+                    v.2.0.4 [PWA]
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="workspace">
+            <!-- LEFT ACTIVITY BAR -->
+            <aside class="activity-bar">
+                <div class="icon-btn active" title="Explorer">
+                    <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                </div>
+                <div class="icon-btn" title="Search">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <div class="icon-btn" title="Git">
+                    <svg viewBox="0 0 24 24"><path d="M16.56 12.42L12 7.85l-4.56 4.57 1.41 1.41L11 11.66V15h2v-3.34l2.15 2.16 1.41-1.4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                </div>
+                <div style="flex:1"></div>
+                <div class="icon-btn" title="Settings">
+                    <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.15 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                </div>
+            </aside>
+
+            <!-- EXPLORER -->
+            <nav class="explorer" id="explorer">
+                <div class="panel-header">
+                    <span>Files</span>
+                    <span style="cursor:pointer" onclick="document.getElementById('explorer').classList.toggle('collapsed')">_</span>
+                </div>
+                <div class="file-tree">
+                    <div class="tree-item folder bold">▼ Project_Notes</div>
+                    <div class="folder-group">
+                        <div class="tree-item active">
+                            <span>📄</span> manifesto.md
+                        </div>
+                        <div class="tree-item">
+                            <span>📄</span> schema_v2.json
+                        </div>
+                        <div class="tree-item">
+                            <span>📄</span> styles.css
+                        </div>
+                    </div>
+                    <div class="tree-item folder bold" style="margin-top:8px">▶ Archive</div>
+                    <div class="tree-item folder bold">▶ Assets</div>
+                </div>
+            </nav>
+
+            <!-- MAIN EDITORS -->
+            <div class="editors-wrap">
+                <!-- CODE PANE -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="mono">manifesto.md</span>
+                    </div>
+                    <div class="editor-surface">
+                        <textarea id="raw-editor" spellcheck="false"># The Lithic Method
+
+## Core Principles
+The interface must possess physical weight. Digital does not mean ethereal. We build with **digital concrete**.
+
+> "Form follows function, but texture follows reality."
+
+### Checklist
+- [x] Visible Borders
+- [x] Monospaced Data
+- [ ] Rounded Corners (PROHIBITED)
+
+javascript
+const design = {
+  style: "brutalist",
+  edges: "sharp",
+  clarity: 1.0
+};
+
+
+This text is editable. The preview on the right updates as you type.
+</textarea>
+                    </div>
+                </div>
+
+                <!-- GUTTER -->
+                <div class="gutter">
+                    <div class="gutter-grip"></div>
+                </div>
+
+                <!-- PREVIEW PANE -->
+                <div class="pane">
+                    <div class="pane-header">
+                        <span class="mono">PREVIEW // READ-ONLY</span>
+                    </div>
+                    <div class="editor-surface preview-content" id="preview-render">
+                        <!-- JS renders here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-segment">
+                <div class="footer-item">master*</div>
+                <div class="footer-item">UTF-8</div>
+                <div class="footer-item">Markdown</div>
+            </div>
+            
+            <div class="footer-segment">
+                <div class="zoom-ctrl">
+                    <div class="zoom-btn" onclick="adjustScale(-0.1)">-</div>
+                    <span id="zoom-val">100%</span>
+                    <div class="zoom-btn" onclick="adjustScale(0.1)">+</div>
+                </div>
+                <div class="footer-item">Ln 12, Col 4</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple Markdown Parser for the Preview functionality
+        const editor = document.getElementById('raw-editor');
+        const preview = document.getElementById('preview-render');
+        const zoomVal = document.getElementById('zoom-val');
+
+        function parseMarkdown(text) {
+            let html = text
+                // Headers
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                // Blockquote
+                .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+                // Bold
+                .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                // Code Block
+                .replace(/([\s\S]*?)/gim, '<pre><code>$1</code></pre>')
+                // Checkbox (checked)
+                .replace(/- \[x\] (.*)/gim, '<div style="display:flex; gap:8px; align-items:center;"><div style="width:12px;height:12px;background:var(--ink)"></div> <span style="text-decoration:line-through; opacity:0.6">$1</span></div>')
+                // Checkbox (unchecked)
+                .replace(/- \[ \] (.*)/gim, '<div style="display:flex; gap:8px; align-items:center;"><div style="width:12px;height:12px;border:1px solid var(--ink)"></div> <span>$1</span></div>')
+                // Line breaks
+                .replace(/\n/gim, '<br />');
+            return html;
+        }
+
+        function updatePreview() {
+            preview.innerHTML = parseMarkdown(editor.value);
+        }
+
+        // Initialize
+        updatePreview();
+        editor.addEventListener('input', updatePreview);
+
+        // Density Scale Logic
+        let scale = 1.0;
+        function adjustScale(delta) {
+            scale = Math.max(0.7, Math.min(1.5, scale + delta));
+            document.documentElement.style.setProperty('--density', scale);
+            zoomVal.innerText = Math.round(scale * 100) + '%';
+        }
+
+        // Basic Split Screen Drag Logic (Visual only for demo)
+        const gutter = document.querySelector('.gutter');
+        gutter.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            // Just a visual cursor change for the demo component
+            document.body.style.cursor = 'col-resize';
+            const onUp = () => {
+                document.body.style.cursor = 'default';
+                window.removeEventListener('mouseup', onUp);
+            };
+            window.addEventListener('mouseup', onUp);
+        });
+
+    </script>
+</body>
+</html>

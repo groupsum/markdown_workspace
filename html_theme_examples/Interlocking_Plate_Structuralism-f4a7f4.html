@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIFFE PICKLE // Markdown Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* SPIFFE PICKLE TOKEN SYSTEM */
+            --bg-base: #fcfcfc;
+            --bg-plate-1: #ffffff;
+            --bg-plate-2: #f4f4f4;
+            --bg-plate-3: #ebebeb;
+            --accent: #22c55e; /* Pickle Green */
+            --accent-soft: #dcfce7;
+            --border-primary: #121212;
+            --text-primary: #121212;
+            --text-muted: #666666;
+            --selection: #000000;
+            --selection-text: #ffffff;
+            
+            --border-w: 1px;
+            --top-height: 38px;
+            --rail-width: 44px;
+            --footer-height: 26px;
+            --explorer-width: 220px;
+            
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --transition: 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* UTILS */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+        .mono { font-family: var(--font-mono); font-size: 11px; }
+
+        /* SCROLLBARS - BRUTALIST DENSITY */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-plate-2); border-left: var(--border-w) solid var(--border-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-primary); border: 1px solid var(--bg-plate-2); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* TOP BAR - PLATE 0 */
+        .top-bar {
+            height: var(--top-height);
+            border-bottom: var(--border-w) solid var(--border-primary);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            background: var(--bg-plate-1);
+            z-index: 50;
+        }
+
+        .brand {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-right: 16px;
+            border-right: var(--border-w) solid var(--border-primary);
+            height: 100%;
+        }
+
+        .brand svg { width: 16px; height: 16px; fill: var(--accent); }
+
+        .path-nav {
+            flex-grow: 1;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .file-name {
+            color: var(--text-primary);
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            cursor: text;
+        }
+
+        .file-name:focus { outline: none; border-bottom-color: var(--accent); color: var(--accent); }
+
+        .dirty-indicator {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 0;
+            margin-left: 4px;
+        }
+
+        .system-badges {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border: var(--border-w) solid var(--border-primary);
+            text-transform: uppercase;
+        }
+
+        .badge.online { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+        .badge.storage { background: var(--bg-plate-3); }
+
+        /* MAIN WRAPPER */
+        .app-core {
+            flex-grow: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* LEFT RAIL - ICON ONLY */
+        .left-rail {
+            width: var(--rail-width);
+            border-right: var(--border-w) solid var(--border-primary);
+            background: var(--bg-plate-1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0;
+            gap: 16px;
+            z-index: 40;
+        }
+
+        .rail-btn {
+            width: 32px;
+            height: 32px;
+            border: var(--border-w) solid transparent;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .rail-btn:hover { border-color: var(--border-primary); background: var(--bg-plate-2); }
+        .rail-btn.active { background: var(--accent); border-color: var(--border-primary); }
+        .rail-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+        .rail-btn.active svg { stroke: white; }
+
+        /* TOOLTIP SIMULATION */
+        .rail-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 100%;
+            margin-left: 12px;
+            background: var(--border-primary);
+            color: white;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-5px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .rail-btn:hover::after { opacity: 1; transform: translateX(0); }
+
+        /* EXPLORER PANE */
+        .explorer-pane {
+            width: var(--explorer-width);
+            background: var(--bg-plate-2);
+            border-right: var(--border-w) solid var(--border-primary);
+            display: flex;
+            flex-direction: column;
+            transition: width var(--transition);
+        }
+
+        .pane-header {
+            padding: 8px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-bottom: var(--border-w) solid var(--border-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tree-root {
+            list-style: none;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            gap: 8px;
+        }
+
+        .tree-item:hover { background: rgba(0,0,0,0.04); }
+        .tree-item.selected { background: var(--border-primary); color: white; }
+        .tree-item.folder { font-weight: 600; color: var(--text-muted); }
+        .tree-item.folder.selected { color: white; }
+        .tree-item svg { width: 12px; height: 12px; opacity: 0.6; }
+
+        /* WORKSPACE / SPLIT VIEW */
+        .workspace {
+            flex-grow: 1;
+            display: flex;
+            background: var(--bg-base);
+            position: relative;
+        }
+
+        .editor-container, .preview-container {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-plate-1);
+        }
+
+        .editor-container {
+            border-right: var(--border-w) solid var(--border-primary);
+        }
+
+        .view-header {
+            height: 28px;
+            border-bottom: var(--border-w) solid var(--border-primary);
+            background: var(--bg-plate-3);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* THE EDITOR (MOCKUP) */
+        .editor-surface {
+            flex-grow: 1;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            outline: none;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            tab-size: 4;
+            color: #232323;
+        }
+
+        .line-numbers {
+            width: 32px;
+            padding-right: 8px;
+            text-align: right;
+            color: #bbb;
+            user-select: none;
+            border-right: 1px solid var(--bg-plate-2);
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        .md-syntax { color: var(--accent); font-weight: 600; }
+        .md-link { color: #2563eb; text-decoration: underline; }
+
+        /* THE PREVIEW */
+        .preview-surface {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .preview-content h1 { font-size: 24px; font-weight: 800; border-bottom: 4px solid var(--border-primary); padding-bottom: 8px; margin-bottom: 24px; }
+        .preview-content h2 { font-size: 18px; font-weight: 800; margin: 32px 0 16px; border-left: 8px solid var(--accent); padding-left: 12px; }
+        .preview-content p { margin-bottom: 16px; line-height: 1.6; font-size: 14px; }
+        
+        .preview-content blockquote {
+            border: var(--border-w) solid var(--border-primary);
+            background: var(--bg-plate-2);
+            padding: 16px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .preview-content pre {
+            background: var(--text-primary);
+            color: white;
+            padding: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .preview-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        .preview-content th, .preview-content td {
+            border: var(--border-w) solid var(--border-primary);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .preview-content th { background: var(--bg-plate-3); font-weight: 800; }
+
+        .callout {
+            border: 2px solid var(--border-primary);
+            padding: 12px;
+            background: var(--accent-soft);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            height: var(--footer-height);
+            border-top: var(--border-w) solid var(--border-primary);
+            background: var(--bg-plate-1);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            justify-content: space-between;
+            z-index: 50;
+        }
+
+        .footer-left, .footer-right { display: flex; align-items: center; gap: 16px; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+
+        .ui-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ui-toggle:hover { color: var(--accent); }
+
+        .zoom-controls {
+            display: flex;
+            border: var(--border-w) solid var(--border-primary);
+            background: var(--bg-plate-2);
+        }
+
+        .zoom-btn {
+            padding: 0 8px;
+            height: 18px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .zoom-btn:first-child { border-right: var(--border-w) solid var(--border-primary); }
+
+        /* FOCUS RING */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: -2px;
+        }
+
+        /* SPLITTER */
+        .splitter {
+            width: 4px;
+            background: var(--bg-plate-2);
+            border-left: var(--border-w) solid var(--border-primary);
+            border-right: var(--border-w) solid var(--border-primary);
+            cursor: col-resize;
+            transition: background 0.2s;
+        }
+
+        .splitter:hover { background: var(--accent); }
+
+    </style>
+</head>
+<body>
+
+    <!-- TOP APP BAR -->
+    <header class="top-bar">
+        <div class="brand">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            SPIFFE PICKLE
+        </div>
+        <nav class="path-nav">
+            <span class="mono">~/documents/projects/</span>
+            <span class="file-name" contenteditable="true" spellcheck="false">specification_v2.md</span>
+            <div class="dirty-indicator" title="Unsaved Changes"></div>
+        </nav>
+        <div class="system-badges">
+            <span class="badge storage">IDB: Persistent</span>
+            <span class="badge">v1.0.4-stable</span>
+            <span class="badge online">Online / Synced</span>
+        </div>
+    </header>
+
+    <div class="app-core">
+        <!-- PRIMARY RAIL -->
+        <nav class="left-rail">
+            <button class="rail-btn active" data-tooltip="File Explorer">
+                <svg viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+            </button>
+            <button class="rail-btn" data-tooltip="Search (Ctrl+F)">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </button>
+            <button class="rail-btn" data-tooltip="New File (Ctrl+N)">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <div style="flex-grow: 1;"></div>
+            <button class="rail-btn" data-tooltip="Export / Import">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </button>
+            <button class="rail-btn" data-tooltip="Settings">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1V11a2 2 0 01-2-2 2 2 0 012-2v-.09A1.65 1.65 0 004.6 4.6a1.65 1.65 0 00.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51h.09a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            </button>
+        </nav>
+
+        <!-- EXPLORER -->
+        <aside class="explorer-pane" id="explorer">
+            <div class="pane-header">
+                <span>File Explorer</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <ul class="tree-root">
+                <li class="tree-item folder">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
+                    projects
+                </li>
+                <li class="tree-item" style="padding-left: 28px;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
+                    architecture.md
+                </li>
+                <li class="tree-item selected" style="padding-left: 28px;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
+                    specification_v2.md
+                </li>
+                <li class="tree-item" style="padding-left: 28px;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
+                    todo.md
+                </li>
+                <li class="tree-item folder">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
+                    archive
+                </li>
+            </ul>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="workspace">
+            <!-- EDITOR SECTION -->
+            <section class="editor-container">
+                <div class="view-header">Source Editor — Markdown</div>
+                <div class="editor-surface" contenteditable="true" spellcheck="false">
+<span class="line-numbers">1</span><span class="md-syntax">#</span> Specification V2
+<span class="line-numbers">2</span>
+<span class="line-numbers">3</span>This document outlines the <span class="md-syntax">**</span>Interlocking Plate Structuralism<span class="md-syntax">**</span>.
+<span class="line-numbers">4</span>
+<span class="line-numbers">5</span><span class="md-syntax">##</span> Design Principles
+<span class="line-numbers">6</span>
+<span class="line-numbers">7</span><span class="md-syntax">-</span> Flat Surfaces
+<span class="line-numbers">8</span><span class="md-syntax">-</span> High Density
+<span class="line-numbers">9</span><span class="md-syntax">-</span> Stark Contrast
+<span class="line-numbers">10</span>
+<span class="line-numbers">11</span><span class="md-syntax"></span>pickle
+<span class="line-numbers">12</span>config.mode = 'brutahaus';
+<span class="line-numbers">13</span>config.density = 1.0;
+<span class="line-numbers">14</span><span class="md-syntax"></span>
+<span class="line-numbers">15</span>
+<span class="line-numbers">16</span>Check out the <span class="md-link">[Internal Wiki](https://spiffe.local)</span>.</div>
+            </section>
+
+            <!-- SPLITTER -->
+            <div class="splitter" id="v-splitter"></div>
+
+            <!-- PREVIEW SECTION -->
+            <section class="preview-container">
+                <div class="view-header">Live Preview</div>
+                <div class="preview-surface">
+                    <div class="preview-content">
+                        <h1>Specification V2</h1>
+                        <p>This document outlines the <strong>Interlocking Plate Structuralism</strong> system, prioritizing scanability and mechanical UI feedback.</p>
+                        
+                        <div class="callout">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            <div>
+                                <strong>OFFLINE ENGINE READY</strong>
+                                <p style="margin:0; font-size: 12px;">Local storage is active via IndexedDB. Sync will resume automatically.</p>
+                            </div>
+                        </div>
+
+                        <h2>Design Principles</h2>
+                        <ul>
+                            <li>Flat Surfaces: No shadows, no gradients.</li>
+                            <li>High Density: Minimal padding between plates.</li>
+                            <li>Stark Contrast: Explicit borders define the hierarchy.</li>
+                        </ul>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Value</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--bg-plate-1</code></td>
+                                    <td>#ffffff</td>
+                                    <td>Primary Canvas</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--accent</code></td>
+                                    <td>#22c55e</td>
+                                    <td>Focus & Selection</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pre><code>config.mode = 'brutahaus';
+config.density = 1.0;</code></pre>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-left">
+            <span>Markdown (GFM)</span>
+            <div class="ui-toggle">UTF-8</div>
+            <div class="ui-toggle">Ln 12, Col 42</div>
+        </div>
+        <div class="footer-right">
+            <div class="ui-toggle">Auto-Save: ON</div>
+            <div class="zoom-controls">
+                <button class="zoom-btn" title="Zoom Out">-</button>
+                <span class="mono" style="padding: 0 6px; align-self: center;">100%</span>
+                <button class="zoom-btn" title="Zoom In">+</button>
+            </div>
+            <div class="ui-toggle" id="mode-toggle">Split View</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Interaction logic for the Structural UI
+        const railButtons = document.querySelectorAll('.rail-btn');
+        const explorer = document.getElementById('explorer');
+        const splitter = document.getElementById('v-splitter');
+        const workspace = document.querySelector('.workspace');
+
+        // Toggle Explorer
+        railButtons[0].addEventListener('click', () => {
+            const isHidden = explorer.style.width === '0px';
+            explorer.style.width = isHidden ? '220px' : '0px';
+            explorer.style.borderRightWidth = isHidden ? '1px' : '0px';
+        });
+
+        // Splitter logic (Simplified drag)
+        let isDragging = false;
+        splitter.addEventListener('mousedown', () => isDragging = true);
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const percentage = (e.clientX - 264) / (window.innerWidth - 264) * 100;
+            if (percentage > 20 && percentage < 80) {
+                document.querySelector('.editor-container').style.flex = `0 0 ${percentage}%`;
+            }
+        });
+        document.addEventListener('mouseup', () => isDragging = false);
+
+        // Selection Simulation
+        const treeItems = document.querySelectorAll('.tree-item');
+        treeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                treeItems.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+            });
+        });
+
+        // Accessibility: Keyboard Navigation for Tree
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'b') {
+                railButtons[0].click();
+            }
+        });
+    </script>
+</body>
+</html>

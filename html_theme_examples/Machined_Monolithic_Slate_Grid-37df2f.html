@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIFFPICKLE // PWA-MD</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg: #0c0c0c;
+            --panel: #1a1a1a;
+            --accent: #ffffff;
+            --border-color: #333333;
+            --border-heavy: 2px solid #000;
+            --border-thin: 1px solid #333;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --font-ui: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --sidebar-width: 48px;
+            --explorer-width: 240px;
+            --top-height: 32px;
+            --footer-height: 24px;
+            --zoom: 1;
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            overflow: hidden;
+            font-size: calc(13px * var(--zoom));
+        }
+
+        /* --- MACHINED SLATE OVERLAY --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* --- LAYOUT GRID --- */
+        .app-grid {
+            display: grid;
+            grid-template-areas: 
+                "top top top"
+                "side explorer main"
+                "side foot foot";
+            grid-template-columns: var(--sidebar-width) auto 1fr;
+            grid-template-rows: var(--top-height) 1fr var(--footer-height);
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* --- SHARED COMPONENT STYLES --- */
+        .panel {
+            background: var(--panel);
+            border: var(--border-thin);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- TOP BAR --- */
+        header {
+            grid-area: top;
+            background: #000;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            justify-content: space-between;
+            border-bottom: var(--border-heavy);
+            z-index: 100;
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .file-info {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 15px;
+        }
+
+        /* --- SIDEBAR (ICONS) --- */
+        aside.tool-bar {
+            grid-area: side;
+            background: #050505;
+            border-right: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            gap: 20px;
+        }
+
+        .tool-icon {
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .tool-icon:hover, .tool-icon.active {
+            color: var(--accent);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* --- EXPLORER --- */
+        .explorer {
+            grid-area: explorer;
+            width: var(--explorer-width);
+            background: #111;
+            border-right: var(--border-heavy);
+            transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .explorer.collapsed {
+            width: 0;
+            border-right: none;
+        }
+
+        .explorer-header {
+            padding: 8px 12px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: var(--border-thin);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            padding: 10px 0;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            overflow-y: auto;
+        }
+
+        .tree-item {
+            padding: 4px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 2px solid transparent;
+        }
+
+        .tree-item:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tree-item.active {
+            background: rgba(255,255,255,0.07);
+            border-left: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .folder { font-weight: bold; color: #aaa; }
+
+        /* --- MAIN CONTENT (EDITOR & PREVIEW) --- */
+        main {
+            grid-area: main;
+            display: flex;
+            position: relative;
+            background: #161616;
+        }
+
+        .editor-pane, .preview-pane {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pane-header {
+            height: 24px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #555;
+            border-bottom: var(--border-thin);
+        }
+
+        textarea#editor {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #ccc;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            padding: 20px;
+            resize: none;
+            width: 100%;
+            height: 100%;
+            tab-size: 4;
+        }
+
+        #preview {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            color: #ddd;
+            line-height: 1.7;
+            background: #1a1a1a;
+        }
+
+        /* --- BRUTAL MARKDOWN STYLING --- */
+        #preview h1, #preview h2, #preview h3 {
+            color: #fff;
+            margin-top: 1.5em;
+            text-transform: uppercase;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        #preview code {
+            font-family: var(--font-mono);
+            background: #000;
+            padding: 2px 5px;
+            border: 1px solid #333;
+        }
+
+        #preview blockquote {
+            border-left: 1px solid #555;
+            margin: 0;
+            padding-left: 20px;
+            font-style: italic;
+            color: #888;
+        }
+
+        #preview pre {
+            background: #000;
+            padding: 15px;
+            border: var(--border-thin);
+            overflow-x: auto;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            grid-area: foot;
+            background: #000;
+            border-top: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: #555;
+        }
+
+        .status-pill {
+            display: flex;
+            gap: 15px;
+        }
+
+        .status-pill span b { color: #888; font-weight: 500; }
+
+        /* --- SPLIT SCREEN MODES --- */
+        .mode-single-edit .preview-pane { display: none; }
+        .mode-single-view .editor-pane { display: none; }
+
+        /* --- UI ELEMENTS --- */
+        .resizer {
+            width: 4px;
+            cursor: col-resize;
+            background: #000;
+            transition: background 0.2s;
+        }
+        .resizer:hover { background: var(--accent); }
+
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid #333;
+            color: #888;
+            padding: 2px 6px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            cursor: pointer;
+        }
+        .btn-ghost:hover { border-color: #fff; color: #fff; }
+
+    </style>
+</head>
+<body class="mode-split">
+
+    <div class="app-grid">
+        <!-- TOP BAR -->
+        <header>
+            <div class="brand">SPIFFPICKLE // v1.0.4-stable</div>
+            <div class="file-info">
+                <span>FILE: <span id="cur-filename" style="color:white">INDEX.MD</span></span>
+                <span>SCHEMA: <span style="color:white">V2_LOCAL_STORAGE</span></span>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-ghost" onclick="adjustZoom(-0.1)">-</button>
+                <button class="btn-ghost" onclick="adjustZoom(0.1)">+</button>
+            </div>
+        </header>
+
+        <!-- SIDE TOOLBAR -->
+        <aside class="tool-bar">
+            <div class="tool-icon active" onclick="toggleExplorer()" title="Explorer"><i data-lucide="folder-closed"></i></div>
+            <div class="tool-icon" onclick="toggleMode()" title="Cycle View Modes"><i data-lucide="layout"></i></div>
+            <div class="tool-icon" title="Search"><i data-lucide="search"></i></div>
+            <div style="margin-top: auto;"></div>
+            <div class="tool-icon" onclick="exportFile()" title="Export Markdown"><i data-lucide="download"></i></div>
+            <div class="tool-icon" title="Settings"><i data-lucide="settings"></i></div>
+        </aside>
+
+        <!-- FILE EXPLORER -->
+        <div class="explorer" id="explorer">
+            <div class="explorer-header">
+                <span>Workspace</span>
+                <i data-lucide="plus" style="width:12px; cursor:pointer"></i>
+            </div>
+            <div class="file-tree">
+                <div class="tree-item folder"><i data-lucide="chevron-down" style="width:12px"></i> documents</div>
+                <div class="tree-item active" style="padding-left: 24px;"><i data-lucide="file-text" style="width:12px"></i> index.md</div>
+                <div class="tree-item" style="padding-left: 24px;"><i data-lucide="file-text" style="width:12px"></i> notes.md</div>
+                <div class="tree-item folder"><i data-lucide="chevron-right" style="width:12px"></i> archive</div>
+                <div class="tree-item folder"><i data-lucide="chevron-right" style="width:12px"></i> assets</div>
+            </div>
+        </div>
+
+        <!-- MAIN WORKSPACE -->
+        <main id="main-canvas">
+            <section class="editor-pane">
+                <div class="pane-header">Input_Stream</div>
+                <textarea id="editor" spellcheck="false"># Spiffpickle
+
+**Machined Monolithic Slate-Grid** 
+
+This is a high-fidelity, PWA-ready markdown interface. Built with "Brutahau" design principles.
+
+## Features
+- IndexedDB Persistence
+- LocalStorage Schema v2
+- Optical Typography
+- Split-pane Reactive Rendering
+
+javascript
+const spiffpickle = {
+  v: "1.0.4",
+  engine: "Brutalist-UI",
+  render: () => "Normalized"
+};
+
+
+> "Design is the silent ambassador of your brand."
+
+- [x] High-contrast grid
+- [x] Machined aesthetic
+- [ ] Direct IPFS export</textarea>
+            </section>
+
+            <div class="resizer"></div>
+
+            <section class="preview-pane">
+                <div class="pane-header">Output_Preview</div>
+                <div id="preview"></div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="status-pill">
+                <span><b>CHARS:</b> <span id="char-count">0</span></span>
+                <span><b>WORDS:</b> <span id="word-count">0</span></span>
+            </div>
+            <div class="status-pill">
+                <span><b>STATUS:</b> <span style="color:#00ff00">● SYNCHRONIZED</span></span>
+                <span><b>DB:</b> INDEXED_OK</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Init Lucide Icons
+        lucide.createIcons();
+
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const charCount = document.getElementById('char-count');
+        const wordCount = document.getElementById('word-count');
+        const explorer = document.getElementById('explorer');
+        const mainCanvas = document.body;
+
+        let currentZoom = 1.0;
+
+        // Markdown Logic
+        function updatePreview() {
+            const val = editor.value;
+            preview.innerHTML = marked.parse(val);
+            
+            // Update stats
+            charCount.innerText = val.length;
+            wordCount.innerText = val.trim() ? val.trim().split(/\s+/).length : 0;
+            
+            // Local Storage Auto-save
+            localStorage.setItem('spiffpickle_autosave', val);
+        }
+
+        editor.addEventListener('input', updatePreview);
+
+        // UI Toggles
+        function toggleExplorer() {
+            explorer.classList.toggle('collapsed');
+        }
+
+        let modeIndex = 0;
+        const modes = ['mode-split', 'mode-single-edit', 'mode-single-view'];
+        
+        function toggleMode() {
+            mainCanvas.classList.remove(...modes);
+            modeIndex = (modeIndex + 1) % modes.length;
+            mainCanvas.classList.add(modes[modeIndex]);
+        }
+
+        function adjustZoom(delta) {
+            currentZoom = Math.min(Math.max(0.7, currentZoom + delta), 1.5);
+            document.documentElement.style.setProperty('--zoom', currentZoom);
+        }
+
+        function exportFile() {
+            const blob = new Blob([editor.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'spiffpickle_export.md';
+            a.click();
+        }
+
+        // Keyboard Shortcuts
+        window.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                alert('Saved to IndexDB Schema');
+            }
+            if (e.ctrlKey && e.key === 'b') {
+                e.preventDefault();
+                toggleExplorer();
+            }
+        });
+
+        // Load Initial Content
+        const saved = localStorage.getItem('spiffpickle_autosave');
+        if (saved) {
+            editor.value = saved;
+        }
+        updatePreview();
+
+        // Simulate PWA - Registration stub
+        if ('serviceWorker' in navigator) {
+            console.log('Spiffpickle PWA: Service Worker Active');
+        }
+    </script>
+</body>
+</html>

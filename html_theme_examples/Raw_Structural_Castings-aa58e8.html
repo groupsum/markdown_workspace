@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTAHAUS // LITHIC EDITOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-stone: #e2e2df;
+            --bg-deep: #1a1a1a;
+            --accent: #ff4d00;
+            --border-width: 2px;
+            --panel-gap: 8px;
+            --ui-scale: 1;
+            --shadow-cast: 6px 6px 0px rgba(0,0,0,0.15);
+            --concrete-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--bg-stone);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--bg-deep);
+            display: flex;
+            flex-direction: column;
+            transform: scale(var(--ui-scale));
+            transform-origin: top left;
+        }
+
+        /* Materiality Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: var(--concrete-grain);
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Structural Layout */
+        .lithic-shell {
+            display: grid;
+            grid-template-columns: 50px 240px 1fr;
+            grid-template-rows: 1fr 30px;
+            height: 100vh;
+            background: #b5b5b2;
+            gap: var(--border-width);
+            border: var(--border-width) solid var(--bg-deep);
+        }
+
+        /* Narrow Icon Bar */
+        .icon-bar {
+            background: var(--bg-deep);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            gap: 25px;
+        }
+
+        .icon-bar div {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #555;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .icon-bar div:hover, .icon-bar div.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            transform: rotate(45deg);
+        }
+
+        /* File Browser (Brutahaus Style) */
+        .file-browser {
+            background: var(--bg-stone);
+            display: flex;
+            flex-direction: column;
+            border-right: var(--border-width) solid var(--bg-deep);
+            overflow-y: auto;
+        }
+
+        .pane-header {
+            padding: 12px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-bottom: var(--border-width) solid var(--bg-deep);
+            background: #d4d4d1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            padding: 10px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+        }
+
+        .tree-item {
+            padding: 6px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.1s;
+        }
+
+        .tree-item:hover {
+            background: #cccac6;
+        }
+
+        .tree-folder {
+            font-weight: 700;
+            color: #555;
+        }
+
+        .tree-file.active {
+            background: var(--bg-deep);
+            color: white;
+        }
+
+        /* Main Workspace */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg-deep);
+            gap: var(--border-width);
+        }
+
+        .workspace.single-mode {
+            grid-template-columns: 1fr 0px;
+        }
+
+        .pane {
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-container {
+            flex-grow: 1;
+            padding: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            outline: none;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            background: #fdfdfd;
+        }
+
+        .preview-container {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background: var(--bg-stone);
+            border-left: var(--border-width) solid var(--bg-deep);
+        }
+
+        .preview-container h1 { font-weight: 900; margin-bottom: 20px; text-transform: uppercase; border-left: 8px solid var(--accent); padding-left: 15px; }
+        .preview-container p { margin-bottom: 15px; }
+        .preview-container code { background: #d4d4d1; padding: 2px 4px; }
+
+        /* Status Bar */
+        .status-bar {
+            grid-column: 1 / -1;
+            background: var(--bg-deep);
+            color: #888;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            justify-content: space-between;
+            text-transform: uppercase;
+        }
+
+        .status-bar span { color: #aaa; }
+        .status-bar .accent-text { color: var(--accent); }
+
+        /* UI Controls */
+        .floating-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .btn-cast {
+            background: var(--bg-stone);
+            border: var(--border-width) solid var(--bg-deep);
+            padding: 8px 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 900;
+            font-size: 10px;
+            box-shadow: 4px 4px 0px var(--bg-deep);
+            transition: all 0.1s;
+        }
+
+        .btn-cast:active {
+            box-shadow: 0px 0px 0px var(--bg-deep);
+            transform: translate(4px, 4px);
+        }
+
+        .btn-cast:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tree-item { animation: reveal 0.4s ease forwards; opacity: 0; }
+        .tree-item:nth-child(1) { animation-delay: 0.1s; }
+        .tree-item:nth-child(2) { animation-delay: 0.15s; }
+        .tree-item:nth-child(3) { animation-delay: 0.2s; }
+        .tree-item:nth-child(4) { animation-delay: 0.25s; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--bg-deep); }
+
+    </style>
+</head>
+<body>
+
+    <div class="floating-controls">
+        <button class="btn-cast" onclick="toggleSplit()">SPLIT / SINGLE</button>
+        <button class="btn-cast" onclick="zoom(0.1)">ZOOM +</button>
+        <button class="btn-cast" onclick="zoom(-0.1)">ZOOM -</button>
+        <button class="btn-cast" style="background: var(--accent); color: white;" onclick="saveToDB()">SAVE TO INDEXDB</button>
+    </div>
+
+    <div class="lithic-shell">
+        <!-- Narrow Icons -->
+        <aside class="icon-bar">
+            <div class="active" title="Explorer"></div>
+            <div title="Search"></div>
+            <div title="Database"></div>
+            <div title="Settings" style="margin-top: auto; margin-bottom: 20px;"></div>
+        </aside>
+
+        <!-- File Browser -->
+        <nav class="file-browser">
+            <div class="pane-header">
+                <span>PROJECTS_01</span>
+                <span>[+]</span>
+            </div>
+            <div class="file-tree">
+                <div class="tree-item tree-folder">▽ /ARCHIVE</div>
+                <div class="tree-item tree-file" style="padding-left: 30px;">manifesto.md</div>
+                <div class="tree-item tree-file active" style="padding-left: 30px;">lithic_specs.md</div>
+                <div class="tree-item tree-folder">▷ /CONCRETE</div>
+                <div class="tree-item tree-folder">▷ /SYSTEM</div>
+                <div class="tree-item tree-file" style="padding-left: 30px;">export_log.txt</div>
+            </div>
+        </nav>
+
+        <!-- Editor & Preview -->
+        <section class="workspace" id="workspace">
+            <div class="pane">
+                <div class="pane-header">EDITOR // RAW_INPUT</div>
+                <div class="editor-container" contenteditable="true" id="editor" oninput="syncPreview()"># BRUTAHAUS LITHIC
+
+Building structural digital interfaces with raw materiality.
+
+## Technical Specifications
+- Auto-updating PWA 
+- Normalized IndexedDB Schema
+- Markdown Real-time Rendering
+
+### Principles
+1. Weight as hierarchy.
+2. Concrete textures via feTurbulence.
+3. High-contrast monolithic grids.
+
+js
+const material = 'CAST_IRON';
+const weight = 'HEAVY';
+
+
+Every keystroke is a casting in the digital mold.</div>
+            </div>
+            <div class="pane" id="preview-pane">
+                <div class="pane-header">PREVIEW // CAST_RENDER</div>
+                <div class="preview-container" id="preview">
+                    <!-- Markdown Rendered Here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="status-left">
+                PWA: <span class="accent-text">v2.4.0-STABLE</span> | 
+                STORAGE: <span id="storage-use">14.2kb</span> / 50mb | 
+                STATUS: <span style="color: #00ff00;">ONLINE</span>
+            </div>
+            <div class="status-right">
+                UTF-8 | LN: 12 COL: 42 | BRUTAHAUS_OS
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple MD Previewer logic
+        function syncPreview() {
+            const editor = document.getElementById('editor');
+            const preview = document.getElementById('preview');
+            let text = editor.innerText;
+
+            // Very basic MD parser for visual fidelity
+            let html = text
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                .replace(/\*(.*)\*/gim, '<i>$1</i>')
+                .replace(/([\s\S]*?)/g, '<pre><code>$1</code></pre>')
+                .replace(/\n/g, '<br>');
+
+            preview.innerHTML = html;
+            
+            // Auto-save to LocalStorage
+            localStorage.setItem('lithic_draft', text);
+        }
+
+        // Toggle Split Screen
+        function toggleSplit() {
+            const ws = document.getElementById('workspace');
+            ws.classList.toggle('single-mode');
+        }
+
+        // Zoom/Scale Logic
+        let currentScale = 1;
+        function zoom(delta) {
+            currentScale += delta;
+            document.documentElement.style.setProperty('--ui-scale', currentScale);
+        }
+
+        // IndexedDB Mock Persistence
+        function saveToDB() {
+            const storageEl = document.getElementById('storage-use');
+            const size = (document.getElementById('editor').innerText.length / 1024).toFixed(2);
+            storageEl.innerText = size + 'kb';
+            
+            // Visual feedback
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "CASTING DONE";
+            setTimeout(() => btn.innerText = originalText, 1000);
+        }
+
+        // Initialization
+        window.onload = () => {
+            const saved = localStorage.getItem('lithic_draft');
+            if(saved) document.getElementById('editor').innerText = saved;
+            syncPreview();
+        };
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                saveToDB();
+            }
+        });
+    </script>
+</body>
+</html>

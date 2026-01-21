@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETCHED TECTONIC WORKSPACE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --chassis-bg: #d4d4d8;
+            --plate-bg: #e4e4e7;
+            --heavy-divide: #18181b;
+            --etched-light: rgba(255, 255, 255, 0.8);
+            --etched-dark: rgba(0, 0, 0, 0.2);
+            --accent: #004dff;
+            --text-primary: #09090b;
+            --text-muted: #52525b;
+            --grid-size: 16px;
+            --panel-gap: 2px;
+            --radius-sharp: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            cursor: crosshair;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background: var(--chassis-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MATTE ARCHITECTURAL MICROGRID PLATEWORK */
+        .microgrid-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle, var(--etched-dark) 0.5px, transparent 0.5px),
+                linear-gradient(to right, var(--etched-dark) 0.1px, transparent 0.1px),
+                linear-gradient(to bottom, var(--etched-dark) 0.1px, transparent 0.1px);
+            background-size: 8px 8px, 64px 64px, 64px 64px;
+            opacity: 0.15;
+            z-index: 100;
+        }
+
+        /* SINGLE CHASSIS LAYOUT */
+        .tectonic-chassis {
+            display: grid;
+            grid-template-areas: 
+                "actionbar header"
+                "actionbar workspace"
+                "actionbar footer";
+            grid-template-columns: 48px 1fr;
+            grid-template-rows: 40px 1fr 28px;
+            height: 100vh;
+            gap: 0;
+            border: 4px solid var(--heavy-divide);
+            background: var(--heavy-divide);
+        }
+
+        /* PRESSED CHROME & ETCHED PANELS */
+        .panel {
+            background: var(--plate-bg);
+            border: 1px solid var(--heavy-divide);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-plate {
+            grid-area: header;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 24px;
+            background: linear-gradient(180deg, #f4f4f5 0%, #d4d4d8 100%);
+            box-shadow: inset 0 1px 0 var(--etched-light);
+        }
+
+        .action-bar {
+            grid-area: actionbar;
+            background: var(--heavy-divide);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            gap: 12px;
+        }
+
+        .workspace {
+            grid-area: workspace;
+            display: flex;
+            gap: var(--panel-gap);
+            background: var(--heavy-divide);
+        }
+
+        .footer-plate {
+            grid-area: footer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #27272a;
+            color: #a1a1aa;
+        }
+
+        /* INTERACTION ELEMENTS */
+        .btn-rack {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3f3f46;
+            border: 1px solid #52525b;
+            color: #fafafa;
+            transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-rack:hover {
+            background: #52525b;
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        .btn-rack:active, .btn-rack.active {
+            background: var(--accent);
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5);
+            transform: translateY(1px);
+        }
+
+        /* FILE EXPLORER (BAUHAUS STYLE) */
+        .file-explorer {
+            width: 240px;
+            height: 100%;
+            background: var(--plate-bg);
+            border-right: 2px solid var(--heavy-divide);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explorer-header {
+            padding: 8px 12px;
+            font-weight: 900;
+            font-size: 11px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--heavy-divide);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            padding: 8px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+
+        .tree-item {
+            padding: 4px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .tree-item:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .tree-item.active {
+            background: #fff;
+            box-shadow: inset 3px 0 0 var(--accent);
+        }
+
+        /* EDITOR SURFACES */
+        .editor-container {
+            flex: 1;
+            display: flex;
+            background: #fff;
+        }
+
+        .editor-pane, .preview-pane {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .editor-pane {
+            border-right: 1px solid var(--heavy-divide);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            background: #fafafa;
+        }
+
+        .preview-pane {
+            background: #fff;
+            color: #18181b;
+        }
+
+        /* OPTICAL TYPE STYLING */
+        h1, h2, h3 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-top: 0;
+        }
+
+        .type-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            background: var(--heavy-divide);
+            color: #fff;
+            border-radius: 2px;
+            font-size: 9px;
+            gap: 4px;
+        }
+
+        .status-pill.sync { background: #166534; }
+        .status-pill.dirty { background: #991b1b; }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: var(--plate-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--heavy-divide); }
+
+        /* TOOLTIP SIMULATION */
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 56px;
+            background: var(--heavy-divide);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+
+        .btn-rack:hover::after { opacity: 1; }
+
+    </style>
+</head>
+<body>
+    <div class="microgrid-overlay"></div>
+
+    <div class="tectonic-chassis">
+        <!-- ACTION TOOLBAR -->
+        <nav class="action-bar">
+            <button class="btn-rack active" data-tooltip="EXPLORER">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="btn-rack" data-tooltip="SEARCH">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <div style="flex: 1;"></div>
+            <button class="btn-rack" data-tooltip="STORAGE CONFIG">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v8"/><path d="m16 6-4 4-4-4"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/><path d="M10 18h.01"/></svg>
+            </button>
+            <button class="btn-rack" data-tooltip="SETTINGS">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </nav>
+
+        <!-- TOP BAR / HEADER -->
+        <header class="header-plate">
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+                <span class="type-label">File:</span>
+                <span style="font-weight: 900; font-size: 14px;">tectonic_specs_v4.md</span>
+                <div class="status-pill dirty">UNSAVED</div>
+            </div>
+            <div style="flex: 1;"></div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <span class="type-label">Storage Target:</span>
+                <span class="status-pill">INDEXED_DB // LOCAL</span>
+                <div style="width: 1px; height: 16px; background: var(--heavy-divide);"></div>
+                <span class="type-label">Scale:</span>
+                <span style="font-family: 'JetBrains Mono'; font-size: 11px;">100%</span>
+            </div>
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="workspace">
+            <aside class="file-explorer">
+                <div class="explorer-header">
+                    <span>Workspace</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+                <div class="file-tree">
+                    <div class="tree-item" style="color: var(--text-muted)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+                        <span>Architectures</span>
+                    </div>
+                    <div class="tree-item" style="padding-left: 32px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>pwa_hooks.ts</span>
+                    </div>
+                    <div class="tree-item active" style="padding-left: 32px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>tectonic_specs_v4.md</span>
+                    </div>
+                    <div class="tree-item" style="color: var(--text-muted)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"/></svg>
+                        <span>Assets</span>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="editor-container">
+                <section class="editor-pane">
+                    <div style="opacity: 0.3; font-size: 11px; margin-bottom: 20px;">01<br>02<br>03<br>04<br>05<br>06<br>07</div>
+                    <div style="position: absolute; top: 40px; left: 70px;">
+                        <span style="color: var(--accent);"># Architecture Specs</span><br>
+                        <br>
+                        ## Core Pillars<br>
+                        - Offline-first PWA<br>
+                        - Deterministic Client State<br>
+                        - **Zero-navigation Workflow**<br>
+                        <br>
+                        ## Materiality<br>
+                        The UI must reflect the `Etched Tectonic` metaphor. Use heavy divides and microgrid platework.
+                    </div>
+                </section>
+                <section class="preview-pane">
+                    <h1>Architecture Specs</h1>
+                    <h2 style="border-bottom: 2px solid var(--heavy-divide); padding-bottom: 8px;">Core Pillars</h2>
+                    <ul>
+                        <li>Offline-first PWA</li>
+                        <li>Deterministic Client State</li>
+                        <li><strong>Zero-navigation Workflow</strong></li>
+                    </ul>
+                    <h2>Materiality</h2>
+                    <p>The UI must reflect the <code>Etched Tectonic</code> metaphor. Use heavy divides and microgrid platework.</p>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER / STATUS -->
+        <footer class="footer-plate">
+            <div style="display: flex; gap: 16px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <div style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></div>
+                    <span>System Ready</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                    <span>Auto-update Enabled</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 24px;">
+                <span>Markdown L4</span>
+                <span>UTF-8</span>
+                <span style="color: #fff; background: var(--accent); padding: 0 4px;">v1.0.4-STABLE</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Subtle interaction: Toggle active state of buttons
+        document.querySelectorAll('.btn-rack').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.parentElement.classList.contains('action-bar')) {
+                    // Only toggle primary navigation icons
+                    document.querySelectorAll('.action-bar .btn-rack').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                }
+            });
+        });
+
+        // Simple sync indicator animation
+        const dirtyIndicator = document.querySelector('.status-pill.dirty');
+        setInterval(() => {
+            dirtyIndicator.style.opacity = dirtyIndicator.style.opacity === '0.5' ? '1' : '0.5';
+        }, 1000);
+    </script>
+</body>
+</html>

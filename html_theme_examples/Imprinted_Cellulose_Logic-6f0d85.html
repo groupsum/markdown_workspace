@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELLULOSE / MD</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #f0ede9;
+            --ink: #1a1a1a;
+            --accent: #ff4d00;
+            --accent-soft: rgba(255, 77, 0, 0.1);
+            --border-heavy: 3px solid var(--ink);
+            --border-light: 1px solid var(--ink);
+            --shadow-pressed: inset 4px 4px 0px rgba(0,0,0,0.1), inset -1px -1px 0px rgba(255,255,255,0.5);
+            --shadow-extrude: 4px 4px 0px var(--ink);
+            --transition: 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            /* Cellulose Texture Overlay */
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+        }
+
+        /* SVG Filters for Imprint Effect */
+        .ink-bleed {
+            filter: url(#ink-bleed);
+        }
+
+        /* Sidebar: Narrow Iconized */
+        nav.sidebar {
+            width: 64px;
+            height: 100%;
+            border-right: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            gap: 20px;
+            background: var(--bg-paper);
+            z-index: 100;
+        }
+
+        .side-btn {
+            width: 40px;
+            height: 40px;
+            border: var(--border-light);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .side-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .side-btn.active {
+            background: var(--ink);
+            color: var(--accent);
+            box-shadow: var(--shadow-pressed);
+            transform: translate(0, 0);
+        }
+
+        .side-btn svg { width: 20px; height: 20px; stroke-width: 2.5; fill: none; stroke: currentColor; }
+
+        /* File Browser */
+        .explorer {
+            width: 260px;
+            border-right: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-paper);
+        }
+
+        .panel-header {
+            padding: 24px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            border-bottom: var(--border-heavy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .file-item {
+            padding: 10px;
+            margin-bottom: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .file-item:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+        }
+
+        .file-item.active {
+            background: white;
+            border: var(--border-light);
+            box-shadow: 3px 3px 0 var(--accent);
+            font-weight: 500;
+        }
+
+        /* Main Workspace */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        header.top-bar {
+            height: 64px;
+            border-bottom: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            justify-content: space-between;
+            background: white;
+        }
+
+        .doc-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .view-modes {
+            display: flex;
+            gap: 1px;
+            background: var(--ink);
+            border: var(--border-light);
+        }
+
+        .mode-btn {
+            background: white;
+            border: none;
+            padding: 6px 14px;
+            font-family: inherit;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mode-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Editor & Preview Split */
+        .workspace-split {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .workspace-split.single-edit .preview-pane { display: none; }
+        .workspace-split.single-edit { grid-template-columns: 1fr; }
+        .workspace-split.single-preview .editor-pane { display: none; }
+        .workspace-split.single-preview { grid-template-columns: 1fr; }
+
+        .editor-pane, .preview-pane {
+            height: 100%;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .editor-pane {
+            border-right: var(--border-light);
+            background: #fafafa;
+        }
+
+        textarea#editor {
+            width: 100%;
+            height: 100%;
+            border: none;
+            resize: none;
+            background: transparent;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        /* Markdown Styling */
+        .preview-content {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #222;
+        }
+
+        .preview-content h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1; text-transform: uppercase; font-weight: 700; }
+        .preview-content h2 { font-size: 1.5rem; margin-top: 2rem; border-bottom: 2px solid var(--ink); display: inline-block; }
+        .preview-content p { margin-bottom: 1.5rem; }
+        .preview-content code { background: var(--accent-soft); padding: 2px 5px; font-family: 'JetBrains Mono'; font-size: 0.9em; }
+        .preview-content pre { background: var(--ink); color: #eee; padding: 20px; margin: 20px 0; border-radius: 0; overflow-x: auto; }
+        .preview-content blockquote { border-left: 8px solid var(--accent); padding-left: 20px; margin: 20px 0; font-style: italic; }
+
+        /* Brutahau Accent Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: white;
+            border: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 6px 6px 0 var(--ink);
+            transition: 0.1s;
+        }
+
+        .fab:active {
+            transform: translate(4px, 4px);
+            box-shadow: 2px 2px 0 var(--ink);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-paper); }
+        ::-webkit-scrollbar-thumb { background: var(--ink); border: 2px solid var(--bg-paper); }
+
+    </style>
+</head>
+<body>
+
+    <!-- SVG Texture Filters -->
+    <svg style="display:none;">
+        <filter id="ink-bleed">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.2" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="ink-bleed" />
+            <feComposite in="SourceGraphic" in2="ink-bleed" operator="atop" />
+        </filter>
+    </svg>
+
+    <nav class="sidebar">
+        <div class="side-btn active" title="Explorer">
+            <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="side-btn" title="Search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <div class="side-btn" title="Cloud Sync">
+            <svg viewBox="0 0 24 24"><path d="M17.5 19a5.5 5.5 0 0 1-4.47-8.72a6 6 0 1 0-10.03 2.72"/><polyline points="15 13 17 15 21 11"/></svg>
+        </div>
+        <div style="flex:1"></div>
+        <div class="side-btn" onclick="exportData()" title="Export Markdown">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="side-btn" title="Settings">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+    </nav>
+
+    <section class="explorer" id="fileExplorer">
+        <div class="panel-header">
+            <span>Documents</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="cursor:pointer;" onclick="newFile()"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </div>
+        <div class="file-list" id="fileList">
+            <!-- Files injected here -->
+        </div>
+    </section>
+
+    <main>
+        <header class="top-bar">
+            <div class="doc-title" id="currentDocTitle">manifesto.md</div>
+            <div class="view-modes">
+                <button class="mode-btn" onclick="setMode('single-edit', this)">Edit</button>
+                <button class="mode-btn active" onclick="setMode('split', this)">Split</button>
+                <button class="mode-btn" onclick="setMode('single-preview', this)">Read</button>
+            </div>
+        </header>
+
+        <div class="workspace-split" id="workspace">
+            <div class="editor-pane">
+                <textarea id="editor" spellcheck="false" placeholder="Begin imprinting..."></textarea>
+            </div>
+            <div class="preview-pane ink-bleed">
+                <div id="preview" class="preview-content"></div>
+            </div>
+        </div>
+    </main>
+
+    <button class="fab" onclick="saveCurrent()" title="Force Save">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+    </button>
+
+    <script>
+        // Imprinted Cellulose Logic SPA Core
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const fileList = document.getElementById('fileList');
+        const workspace = document.getElementById('workspace');
+        const docTitleDisplay = document.getElementById('currentDocTitle');
+
+        let documents = JSON.parse(localStorage.getItem('cellulose_docs')) || [
+            { id: 1, title: 'manifesto.md', content: '# CELLULOSE\n\n**Imprinted Logic** for the digital era.\n\n## Brutahau Principles\n1. Function over ornamentation.\n2. Heavy grids.\n3. Orange as a catalyst.\n\njs\nconsole.log("Ink meets Paper");\n\n\n> "Simplicity is the ultimate sophistication."' },
+            { id: 2, title: 'todo.md', content: '# Projects\n- [ ] Fix IndexedDB bridge\n- [ ] Add Risograph export shader' }
+        ];
+
+        let activeDocId = documents[0].id;
+
+        function init() {
+            renderFileList();
+            loadDoc(activeDocId);
+            
+            editor.addEventListener('input', () => {
+                const currentDoc = documents.find(d => d.id === activeDocId);
+                currentDoc.content = editor.value;
+                updatePreview();
+                saveToLocal();
+            });
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = '';
+            documents.forEach(doc => {
+                const item = document.createElement('div');
+                item.className = `file-item ${doc.id === activeDocId ? 'active' : ''}`;
+                item.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg> ${doc.title}`;
+                item.onclick = () => loadDoc(doc.id);
+                fileList.appendChild(item);
+            });
+        }
+
+        function loadDoc(id) {
+            activeDocId = id;
+            const doc = documents.find(d => d.id === id);
+            editor.value = doc.content;
+            docTitleDisplay.innerText = doc.title;
+            updatePreview();
+            renderFileList();
+        }
+
+        function updatePreview() {
+            preview.innerHTML = marked.parse(editor.value);
+        }
+
+        function setMode(mode, btn) {
+            workspace.className = `workspace-split ${mode}`;
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function newFile() {
+            const name = prompt("Filename:", "new-document.md");
+            if(name) {
+                const newDoc = { id: Date.now(), title: name, content: '# ' + name };
+                documents.push(newDoc);
+                loadDoc(newDoc.id);
+            }
+        }
+
+        function saveToLocal() {
+            localStorage.setItem('cellulose_docs', JSON.stringify(documents));
+        }
+
+        function saveCurrent() {
+            saveToLocal();
+            const fab = document.querySelector('.fab');
+            fab.style.background = '#00ff6a'; // Flash green success
+            setTimeout(() => fab.style.background = 'var(--accent)', 500);
+        }
+
+        function exportData() {
+            const blob = new Blob([editor.value], {type: "text/markdown"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = docTitleDisplay.innerText;
+            a.click();
+        }
+
+        // PWA Auto-update Logic (Mock)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                console.log('Cellulose PWA Logic Ready');
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

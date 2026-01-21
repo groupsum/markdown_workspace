@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    /* 
+     * FLASH UI: PRESSED CHROMIUM SEGMENTATION
+     * CONCEPT: Brutal-Bauhaus / Optical-Type / Paneled Y2K
+     * EXECUTION: Metallic rack layout, physical controls, localized contrast.
+     */
+
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;600;800&display=swap');
+
+    :root {
+        --chrome-base: #d8dbe0;
+        --chrome-light: #f0f2f5;
+        --chrome-dark: #b0b4ba;
+        --chrome-pressed: #c4c7cc;
+        
+        --surface-inset: #eef0f3;
+        --surface-matte: #e8eaed;
+        
+        --text-main: #1a1a1a;
+        --text-muted: #5f6368;
+        --text-mono: #2d2d2d;
+        
+        --accent-core: #0033ff; /* Necromanic Blue */
+        --accent-alert: #ff3300;
+        --accent-success: #00cc66;
+        
+        --border-heavy: 2px solid #8c9096;
+        --border-light: 1px solid #aeb2b8;
+        
+        --bevel-out: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #8c9096;
+        --bevel-in: inset 2px 2px 4px rgba(0,0,0,0.15), inset -1px -1px 2px rgba(255,255,255,0.9);
+        --bevel-chrome: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+        
+        --grid-pattern: radial-gradient(#9ca0a6 1px, transparent 1px);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--chrome-dark) var(--chrome-base);
+    }
+
+    body {
+        background-color: #111;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--text-main);
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- CHASSIS CONTAINER --- */
+    .chassis {
+        width: 98vw;
+        height: 96vh;
+        background: var(--chrome-base);
+        border: 1px solid #555;
+        border-radius: 4px;
+        box-shadow: 
+            0 0 0 4px #2a2a2a,
+            0 20px 50px rgba(0,0,0,0.6),
+            inset 0 1px 0 rgba(255,255,255,0.4);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* --- TOP BAR (RACK MOUNT STYLE) --- */
+    .top-deck {
+        height: 48px;
+        background: linear-gradient(to bottom, #e4e7eb, #cfd2d6);
+        border-bottom: var(--border-heavy);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        box-shadow: inset 0 1px 0 #fff;
+        z-index: 10;
+    }
+
+    .brand-plate {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        font-size: 14px;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #333;
+    }
+
+    .brand-plate span {
+        padding: 2px 6px;
+        background: #000;
+        color: #fff;
+        border-radius: 2px;
+        font-size: 11px;
+    }
+
+    .status-array {
+        display: flex;
+        gap: 8px;
+    }
+
+    .led-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        background: var(--chrome-pressed);
+        padding: 4px 8px;
+        border-radius: 2px;
+        box-shadow: var(--bevel-in);
+        border-bottom: 1px solid #fff;
+    }
+
+    .led {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #555;
+        box-shadow: 0 0 2px rgba(0,0,0,0.5) inset;
+    }
+    .led.active { background: var(--accent-success); box-shadow: 0 0 4px var(--accent-success); }
+    .led.warn { background: var(--accent-alert); box-shadow: 0 0 4px var(--accent-alert); }
+    .led.blue { background: var(--accent-core); box-shadow: 0 0 4px var(--accent-core); }
+
+    /* --- MAIN WORKSPACE --- */
+    .rack-mount {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+        background-color: var(--chrome-light);
+        background-image: var(--grid-pattern);
+        background-size: 8px 8px;
+    }
+
+    /* LEFT TOOLBAR */
+    .action-rail {
+        width: 50px;
+        background: #d0d3d8;
+        border-right: var(--border-heavy);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 12px;
+        gap: 12px;
+        box-shadow: inset -1px 0 2px rgba(0,0,0,0.1);
+    }
+
+    .rail-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        border: 1px solid #a0a4aa;
+        background: linear-gradient(145deg, #ffffff, #dcdcdc);
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.2), inset 1px 1px 0 rgba(255,255,255,0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.1s ease;
+        color: #444;
+    }
+    
+    .rail-btn:active, .rail-btn.active {
+        background: #c0c4c9;
+        box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
+        transform: translateY(1px);
+        color: #000;
+        border-color: #888;
+    }
+
+    /* FILE BROWSER */
+    .panel-explorer {
+        width: 240px;
+        background: var(--surface-inset);
+        border-right: var(--border-light);
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .panel-header {
+        padding: 8px 12px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        border-bottom: 1px solid #d0d3d8;
+        background: #e4e6e9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .file-tree {
+        flex: 1;
+        overflow-y: auto;
+        padding: 8px 0;
+    }
+
+    .tree-item {
+        padding: 6px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--text-main);
+        cursor: pointer;
+        border-left: 2px solid transparent;
+        transition: background 0.1s;
+    }
+
+    .tree-item:hover {
+        background: rgba(0,0,0,0.03);
+    }
+
+    .tree-item.active {
+        background: #fff;
+        border-left: 2px solid var(--accent-core);
+        font-weight: 500;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .tree-icon {
+        width: 14px;
+        opacity: 0.6;
+    }
+
+    /* EDITOR & PREVIEW AREA */
+    .workspace-split {
+        flex: 1;
+        display: flex;
+        position: relative;
+    }
+
+    .editor-pane {
+        flex: 1;
+        background: #fbfbfb;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid #ccc;
+    }
+
+    .preview-pane {
+        flex: 1;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pane-toolbar {
+        height: 36px;
+        background: #f0f2f5;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        font-size: 11px;
+        color: #666;
+        gap: 16px;
+    }
+
+    .tab-active {
+        background: #fbfbfb;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        font-weight: 600;
+        color: #000;
+        position: relative;
+        top: 1px;
+    }
+
+    .code-surface {
+        flex: 1;
+        padding: 24px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+        resize: none;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+
+    .markdown-render {
+        flex: 1;
+        padding: 32px;
+        overflow-y: auto;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .markdown-render h1 { font-size: 2em; margin-bottom: 0.5em; letter-spacing: -0.03em; font-weight: 700; }
+    .markdown-render p { font-size: 1.1em; line-height: 1.6; color: #444; margin-bottom: 1em; }
+    .markdown-render code { background: #eee; padding: 2px 4px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+
+    /* SPLIT HANDLE */
+    .split-handle {
+        width: 6px;
+        background: #d8dbe0;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #999;
+        cursor: col-resize;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        z-index: 5;
+    }
+    .grip-line { width: 2px; height: 2px; background: #888; box-shadow: 0 1px 0 #fff; }
+
+    /* --- FOOTER --- */
+    .footer-plate {
+        height: 32px;
+        background: #d8dbe0;
+        border-top: var(--border-light);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px;
+        font-size: 11px;
+        color: #444;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .storage-target {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 2px 8px;
+        background: rgba(255,255,255,0.4);
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+
+    .zoom-ctrl {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* ICONS (SVG PLACEHOLDERS) */
+    svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* --- DECORATIVE / MICROGRID OVERLAY --- */
+    .scan-lines {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.02) 50%);
+        background-size: 100% 3px;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    /* SCROLLBAR CUSTOMIZATION */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--chrome-base); border-left: 1px solid #bbb; }
+    ::-webkit-scrollbar-thumb { background: #999; border: 1px solid #fff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #777; }
+
+    /* UTILITY */
+    .dirty-dot {
+        width: 6px; height: 6px; background: var(--accent-alert); border-radius: 50%; display: inline-block; margin-left: 6px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="chassis">
+    <!-- Top Control Deck -->
+    <div class="top-deck">
+        <div class="brand-plate">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/></svg>
+            Hypertext<span>OS</span> / ARCHITECT
+        </div>
+        
+        <div class="status-array">
+            <div class="led-indicator" title="Service Worker Active">
+                <div class="led active"></div>
+                <span>OFFLINE_READY</span>
+            </div>
+            <div class="led-indicator" title="IndexedDB Connected">
+                <div class="led blue"></div>
+                <span>IDB_MOUNTED</span>
+            </div>
+            <div class="led-indicator">
+                <span>v2.4.0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="rack-mount">
+        <!-- Left Action Rail -->
+        <nav class="action-rail" aria-label="Primary Tools">
+            <button class="rail-btn active" title="File Explorer" aria-label="File Explorer">
+                <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+            </button>
+            <button class="rail-btn" title="Search" aria-label="Search Workspace">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+            <button class="rail-btn" title="Git Sync" aria-label="Version Control">
+                <svg viewBox="0 0 24 24"><path d="M19 3h-4c-1.1 0-2 .9-2 2v2h6V5c0-.55-.45-1-1-1zM7 3H3c-.55 0-1 .45-1 1v2h6V5c0-1.1-.9-2-2-2zm12 16h-4v2c0 1.1.9 2 2 2h4c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zM7 19H3c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h4c1.1 0 2-.9 2-2v-2H7zM5 9v6h2v-6H5zm12 0v6h2v-6h-2z"/></svg>
+            </button>
+            <div style="flex:1"></div>
+            <button class="rail-btn" title="Settings" aria-label="Settings">
+                <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.16 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.58 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+        </nav>
+
+        <!-- File Browser -->
+        <aside class="panel-explorer">
+            <div class="panel-header">
+                <span>Local Drive</span>
+                <svg style="width:12px; height:12px; cursor:pointer" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </div>
+            <ul class="file-tree">
+                <li class="tree-item">
+                    <svg class="tree-icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                    src
+                </li>
+                <li class="tree-item">
+                    <svg class="tree-icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                    components
+                </li>
+                <li class="tree-item active">
+                    <svg class="tree-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+                    architecture.md
+                    <div class="dirty-dot"></div>
+                </li>
+                <li class="tree-item">
+                    <svg class="tree-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+                    offline-strategy.md
+                </li>
+                <li class="tree-item">
+                    <svg class="tree-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+                    schema.json
+                </li>
+            </ul>
+            <div class="panel-header" style="border-top:1px solid #d0d3d8; margin-top:auto">
+                <span>Storage</span>
+                <span>84%</span>
+            </div>
+            <div style="height: 4px; background:#ddd; margin:0 12px 12px 12px; border-radius:2px; overflow:hidden">
+                <div style="width:84%; height:100%; background:var(--text-mono);"></div>
+            </div>
+        </aside>
+
+        <!-- Editor/Preview Split -->
+        <main class="workspace-split">
+            <!-- Editor -->
+            <section class="editor-pane">
+                <div class="pane-toolbar">
+                    <div class="tab-active">architecture.md</div>
+                    <div style="cursor:pointer">offline-strategy.md</div>
+                </div>
+                <textarea class="code-surface" spellcheck="false">
+# Application Architecture
+## Offline-first Progressive Web App (PWA)
+
+**Core Objective:**
+Deliver a deterministic client configuration surface with zero-navigation workflow.
+
+### Functional Surfaces
+1. Unified Markdown workspace
+2. Hierarchical file browsing
+3. IndexedDB as primary storage
+
+javascript
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(reg => console.log('Scope:', reg.scope));
+}
+
+
+The UI utilizes a **"Pressed Chromium"** aesthetic to differentiate functional zones.</textarea>
+            </section>
+
+            <div class="split-handle" title="Resize Panels">
+                <div class="grip-line"></div>
+                <div class="grip-line"></div>
+                <div class="grip-line"></div>
+            </div>
+
+            <!-- Preview -->
+            <section class="preview-pane">
+                <div class="pane-toolbar">
+                    <div style="margin-left:auto; display:flex; gap:8px">
+                        <svg style="opacity:0.5" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        <span style="font-weight:700; color:#000">LIVE</span>
+                    </div>
+                </div>
+                <div class="markdown-render">
+                    <h1>Application Architecture</h1>
+                    <h2 style="font-size:1.4em; margin-bottom:0.5em; color:#444;">Offline-first Progressive Web App (PWA)</h2>
+                    <p><strong>Core Objective:</strong><br>Deliver a deterministic client configuration surface with zero-navigation workflow.</p>
+                    <h3 style="font-size:1.2em; font-weight:700; margin-top:1em; margin-bottom:0.5em;">Functional Surfaces</h3>
+                    <ul style="padding-left:20px; margin-bottom:1em; line-height:1.6">
+                        <li>Unified Markdown workspace</li>
+                        <li>Hierarchical file browsing</li>
+                        <li>IndexedDB as primary storage</li>
+                    </ul>
+                    <code style="display:block; padding:12px; background:#f4f4f4; border:1px solid #ddd; color:#d63384; font-family:'JetBrains Mono'">// Service Worker Registration...</code>
+                    <p style="margin-top:1em">The UI utilizes a <strong>"Pressed Chromium"</strong> aesthetic to differentiate functional zones.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Status -->
+    <footer class="footer-plate">
+        <div style="display:flex; gap:16px;">
+            <div class="storage-target">
+                <svg style="width:10px; height:10px;" viewBox="0 0 24 24"><path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 19c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                IDB::Primary
+            </div>
+            <span>utf-8</span>
+            <span>Ln 12, Col 34</span>
+        </div>
+        
+        <div class="zoom-ctrl">
+            <span style="opacity:0.5">DENSITY:</span>
+            <span style="font-weight:700">100%</span>
+            <div style="display:flex; gap:2px; margin-left:4px">
+                <button style="border:1px solid #999; background:transparent; width:16px; height:16px; line-height:14px; text-align:center; font-size:10px; border-radius:2px; cursor:pointer">-</button>
+                <button style="border:1px solid #999; background:transparent; width:16px; height:16px; line-height:14px; text-align:center; font-size:10px; border-radius:2px; cursor:pointer">+</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay Effects -->
+    <div class="scan-lines"></div>
+</div>
+
+</body>
+</html>

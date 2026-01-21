@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIFFE PICKLE | Markdown Matrix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cold-Pressed Cardstock Tokens */
+            --bg-base: #f7f7f5;
+            --bg-surface: #ffffff;
+            --bg-active: #000000;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --text-inv: #ffffff;
+            --border-color: #000000;
+            --border-subtle: #d1d1cf;
+            --accent: #2c52ff;
+            --status-online: #00aa45;
+            --status-offline: #ff3e00;
+            --dirty: #ffaa00;
+
+            /* Spacing & Sizing */
+            --unit: 4px;
+            --thickness-thin: 1px;
+            --thickness-thick: 2px;
+            --rail-width: 48px;
+            --top-bar-h: 36px;
+            --footer-h: 28px;
+            --radius: 0px;
+
+            /* Density Control (Controlled via JS or CSS Variable) */
+            --ui-scale: 100%;
+            --space-xs: calc(var(--unit) * 1);
+            --space-s: calc(var(--unit) * 2);
+            --space-m: calc(var(--unit) * 4);
+            --font-size-base: 13px;
+            --font-size-ui: 11px;
+            
+            --z-rail: 100;
+            --z-top: 200;
+            --z-split: 50;
+        }
+
+        [data-density="80"] { --ui-scale: 80%; --font-size-base: 11px; --font-size-ui: 9px; }
+        [data-density="125"] { --ui-scale: 125%; --font-size-base: 15px; --font-size-ui: 13px; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-base);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* Texture Overlay */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+            opacity: 0.98;
+        }
+
+        /* --- LAYOUT --- */
+
+        .app-shell {
+            display: grid;
+            grid-template-areas: 
+                "top top"
+                "rail main"
+                "footer footer";
+            grid-template-columns: var(--rail-width) 1fr;
+            grid-template-rows: var(--top-bar-h) 1fr var(--footer-h);
+            height: 100vh;
+        }
+
+        /* --- TOP BAR --- */
+
+        .top-bar {
+            grid-area: top;
+            border-bottom: var(--thickness-thick) solid var(--border-color);
+            background: var(--bg-surface);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-s);
+            gap: var(--space-m);
+            font-size: var(--font-size-ui);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .app-brand {
+            font-weight: 800;
+            text-transform: uppercase;
+            border-right: var(--thickness-thin) solid var(--border-color);
+            padding-right: var(--space-m);
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-path {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-muted);
+        }
+
+        .file-name-input {
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: inherit;
+            color: var(--text-main);
+            padding: 2px 4px;
+            border-bottom: 1px dashed transparent;
+        }
+
+        .file-name-input:focus {
+            outline: none;
+            border-bottom-color: var(--accent);
+            background: rgba(0,0,0,0.05);
+        }
+
+        .dirty-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--dirty);
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .system-badges {
+            display: flex;
+            gap: 1px;
+            background: var(--border-color);
+            border: var(--thickness-thin) solid var(--border-color);
+        }
+
+        .badge {
+            background: var(--bg-surface);
+            padding: 2px 6px;
+            text-transform: uppercase;
+            font-size: 9px;
+            white-space: nowrap;
+        }
+
+        .badge-status-online { color: var(--status-online); }
+
+        /* --- LEFT RAIL --- */
+
+        .left-rail {
+            grid-area: rail;
+            border-right: var(--thickness-thick) solid var(--border-color);
+            background: var(--bg-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: var(--space-s);
+            z-index: var(--z-rail);
+        }
+
+        .rail-btn {
+            width: 32px;
+            height: 32px;
+            border: var(--thickness-thin) solid transparent;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-xs);
+            transition: all 0.05s steps(2);
+            position: relative;
+        }
+
+        .rail-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .rail-btn:hover {
+            border-color: var(--border-color);
+            background: var(--bg-base);
+        }
+
+        .rail-btn.active {
+            background: var(--bg-active);
+            color: var(--text-inv);
+        }
+
+        .rail-spacer { flex-grow: 1; }
+
+        /* Tooltip simple mockup */
+        .rail-btn:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 44px;
+            background: var(--bg-active);
+            color: var(--text-inv);
+            padding: 2px 6px;
+            white-space: nowrap;
+            font-size: 10px;
+            z-index: 1000;
+        }
+
+        /* --- WORKSPACE --- */
+
+        .workspace {
+            grid-area: main;
+            display: flex;
+            overflow: hidden;
+            background: var(--bg-base);
+        }
+
+        /* --- FILE EXPLORER --- */
+
+        .explorer-pane {
+            width: 220px;
+            border-right: var(--thickness-thin) solid var(--border-color);
+            background: var(--bg-surface);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .pane-header {
+            padding: 8px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-bottom: var(--thickness-thin) solid var(--border-color);
+            letter-spacing: 0.1em;
+            background: var(--bg-base);
+        }
+
+        .tree-root {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            height: 26px;
+            padding: 0 8px;
+            gap: 6px;
+            font-size: var(--font-size-ui);
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            user-select: none;
+        }
+
+        .tree-item:hover { background: var(--bg-base); }
+        .tree-item.selected {
+            background: var(--bg-active);
+            color: var(--text-inv);
+        }
+
+        .tree-item.folder { font-weight: 600; }
+        .tree-indent { width: 12px; }
+        
+        .tree-chevron {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid currentColor;
+            transform: rotate(-90deg);
+            transition: transform 0.1s;
+        }
+        .tree-item.open .tree-chevron { transform: rotate(0deg); }
+
+        /* --- CONTENT AREA & EDITOR --- */
+
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            position: relative;
+        }
+
+        .split-pane {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-container {
+            background: var(--bg-surface);
+            height: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .line-numbers {
+            width: 32px;
+            padding-top: var(--space-m);
+            border-right: var(--thickness-thin) solid var(--border-subtle);
+            color: #ccc;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-align: right;
+            padding-right: 8px;
+            user-select: none;
+        }
+
+        .code-editor {
+            flex-grow: 1;
+            border: none;
+            resize: none;
+            padding: var(--space-m);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .code-editor:focus { outline: none; }
+
+        .preview-container {
+            background: var(--bg-surface);
+            border-left: var(--thickness-thick) solid var(--border-color);
+            padding: calc(var(--space-m) * 2);
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* --- PREVIEW STYLES --- */
+
+        .markdown-render {
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-size: var(--font-size-base);
+        }
+
+        .markdown-render h1 { font-weight: 800; border-bottom: var(--thickness-thick) solid var(--border-color); padding-bottom: 4px; margin-bottom: 16px; text-transform: uppercase; font-size: 1.8em; }
+        .markdown-render h2 { font-weight: 800; margin: 24px 0 12px 0; font-size: 1.2em; text-transform: uppercase; border-left: 4px solid var(--border-color); padding-left: 12px;}
+        .markdown-render p { margin-bottom: 12px; }
+        .markdown-render code { background: #eee; padding: 2px 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+        
+        .markdown-render blockquote {
+            border: var(--thickness-thin) solid var(--border-color);
+            padding: 12px;
+            margin: 16px 0;
+            background: var(--bg-base);
+            position: relative;
+        }
+
+        .markdown-render pre {
+            background: var(--bg-active);
+            color: var(--text-inv);
+            padding: 16px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        /* --- FOOTER --- */
+
+        .footer {
+            grid-area: footer;
+            border-top: var(--thickness-thick) solid var(--border-color);
+            background: var(--bg-surface);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-s);
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            gap: var(--space-m);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .spacer { flex-grow: 1; }
+
+        .density-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: var(--thickness-thin) solid var(--border-subtle);
+            padding-left: var(--space-m);
+        }
+
+        .density-control input {
+            cursor: pointer;
+            accent-color: var(--text-main);
+        }
+
+        /* --- SPLITTER --- */
+
+        .splitter {
+            width: 8px;
+            background: transparent;
+            cursor: col-resize;
+            position: relative;
+            z-index: var(--z-split);
+            margin: 0 -4px;
+        }
+
+        .splitter:hover::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        /* --- ACCESSIBILITY FOCUS --- */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: -2px;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .app-shell { animation: fadeIn 0.3s ease-out; }
+
+    </style>
+</head>
+<body data-density="100">
+
+<div class="app-shell">
+    <!-- TOP BAR -->
+    <header class="top-bar">
+        <div class="app-brand">SPIFFE PICKLE</div>
+        <div class="file-path">
+            <span>/projects/offline-core/</span>
+            <input type="text" class="file-name-input" value="manifesto_v2.md">
+            <span class="dirty-indicator" title="Unsaved changes"></span>
+        </div>
+        <div class="system-badges">
+            <div class="badge">STORAGE: INDEXEDDB</div>
+            <div class="badge">PWA: 1.0.4-STABLE</div>
+            <div class="badge badge-status-online">STATUS: ONLINE</div>
+        </div>
+    </header>
+
+    <!-- LEFT RAIL -->
+    <aside class="left-rail">
+        <button class="rail-btn" data-tooltip="New File (Alt+N)">
+            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Save (Ctrl+S)">
+            <svg viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+        </button>
+        <div style="margin: 8px 0; width: 24px; border-top: 1px solid var(--border-color);"></div>
+        <button class="rail-btn active" data-tooltip="File Explorer">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Split View">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16h-7V5h7v14z"/></svg>
+        </button>
+        <div class="rail-spacer"></div>
+        <button class="rail-btn" data-tooltip="Import/Export">
+            <svg viewBox="0 0 24 24"><path d="M9 3L5 7h3v7h2V7h3L9 3zm10 18l4-4h-3v-7h-2v7h-3l4 4z"/></svg>
+        </button>
+        <button class="rail-btn" data-tooltip="Settings">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </button>
+    </aside>
+
+    <!-- WORKSPACE -->
+    <main class="workspace">
+        <!-- FILE EXPLORER -->
+        <nav class="explorer-pane">
+            <div class="pane-header">Project Explorer</div>
+            <div class="tree-root">
+                <div class="tree-item folder open">
+                    <span class="tree-chevron"></span>
+                    <span>src</span>
+                </div>
+                <div class="tree-item">
+                    <div class="tree-indent"></div>
+                    <span>index.html</span>
+                </div>
+                <div class="tree-item selected">
+                    <div class="tree-indent"></div>
+                    <span>manifesto_v2.md</span>
+                </div>
+                <div class="tree-item">
+                    <div class="tree-indent"></div>
+                    <span>styles.css</span>
+                </div>
+                <div class="tree-item folder">
+                    <span class="tree-chevron"></span>
+                    <span>assets</span>
+                </div>
+                <div class="tree-item">
+                    <div class="tree-indent"></div>
+                    <span>config.json</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="splitter"></div>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="content-area">
+            <section class="split-pane">
+                <div class="editor-container">
+                    <div class="line-numbers">
+                        1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11
+                    </div>
+                    <textarea class="code-editor" spellcheck="false"># SPIFFE PICKLE MANIFESTO
+
+Brutalism in software design is not about being "ugly"; it is about being **uncompromisingly functional**.
+
+## Core Tenets
+- Offline priority (Local-first)
+- Predictable interfaces
+- Zero abstraction visual language
+
+> "The grid is the only truth in a digital layout."
+
+js
+const density = (val) => {
+  document.body.dataset.density = val;
+}
+
+
+This is a draft of the new cardstock-driven UI framework.
+                    </textarea>
+                </div>
+            </section>
+
+            <div class="splitter"></div>
+
+            <section class="split-pane preview-container">
+                <div class="markdown-render">
+                    <h1>SPIFFE PICKLE MANIFESTO</h1>
+                    <p>Brutalism in software design is not about being "ugly"; it is about being <strong>uncompromisingly functional</strong>.</p>
+                    
+                    <h2>Core Tenets</h2>
+                    <ul>
+                        <li>Offline priority (Local-first)</li>
+                        <li>Predictable interfaces</li>
+                        <li>Zero abstraction visual language</li>
+                    </ul>
+
+                    <blockquote>
+                        "The grid is the only truth in a digital layout."
+                    </blockquote>
+
+                    <pre><code>const density = (val) => {
+  document.body.dataset.density = val;
+}</code></pre>
+
+                    <p>This is a draft of the new cardstock-driven UI framework.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="status-item">LINE: 11 / COL: 42</div>
+        <div class="status-item">UTF-8</div>
+        <div class="status-item">64 WORDS</div>
+        <div class="spacer"></div>
+        <div class="status-item">REDUCED MOTION: OFF</div>
+        <div class="density-control">
+            <span>DENSITY</span>
+            <input type="range" min="80" max="125" step="22.5" value="100" id="densitySlider">
+            <span id="densityVal">100%</span>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Density Control
+    const slider = document.getElementById('densitySlider');
+    const valText = document.getElementById('densityVal');
+    
+    slider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        // Snap to specific percentages for brutalist consistency
+        let snap;
+        if(val < 90) snap = 80;
+        else if(val > 110) snap = 125;
+        else snap = 100;
+        
+        document.body.setAttribute('data-density', snap);
+        valText.innerText = snap + '%';
+        slider.value = snap;
+    });
+
+    // Simple Splitter Drag Simulation (Visual Only)
+    const splitters = document.querySelectorAll('.splitter');
+    splitters.forEach(s => {
+        s.addEventListener('mousedown', (e) => {
+            const startX = e.clientX;
+            const prevWidth = s.previousElementSibling.offsetWidth;
+            
+            const mouseMoveHandler = (moveEvent) => {
+                const diff = moveEvent.clientX - startX;
+                s.previousElementSibling.style.width = (prevWidth + diff) + 'px';
+                s.previousElementSibling.style.flex = 'none';
+            };
+            
+            const mouseUpHandler = () => {
+                window.removeEventListener('mousemove', mouseMoveHandler);
+                window.removeEventListener('mouseup', mouseUpHandler);
+            };
+            
+            window.addEventListener('mousemove', mouseMoveHandler);
+            window.addEventListener('mouseup', mouseUpHandler);
+        });
+    });
+
+    // Toggle tree items
+    document.querySelectorAll('.tree-item.folder').forEach(folder => {
+        folder.addEventListener('click', () => {
+            folder.classList.toggle('open');
+        });
+    });
+</script>
+
+</body>
+</html>

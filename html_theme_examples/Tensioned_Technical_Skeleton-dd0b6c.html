@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIFFE PICKLE // MD-OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Tokens */
+            --bg-base: #ffffff;
+            --bg-alt: #f3f3f3;
+            --bg-active: #e2e2e2;
+            --bg-accent: #000000;
+            --text-main: #000000;
+            --text-muted: #666666;
+            --text-on-accent: #ffffff;
+            
+            --border-width: 1px;
+            --border-color: #000000;
+            --border-subtle: #cccccc;
+            
+            --status-green: #00cf42;
+            --status-orange: #ff6b00;
+            --status-blue: #0066ff;
+            
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius: 0px;
+            --z-rail: 100;
+            --z-top: 200;
+            
+            /* Density Controls (Injected via JS) */
+            --ui-scale: 1;
+            --space-xs: calc(4px * var(--ui-scale));
+            --space-sm: calc(8px * var(--ui-scale));
+            --space-md: calc(12px * var(--ui-scale));
+            --fs-ui: calc(11px * var(--ui-scale));
+            --fs-body: calc(13px * var(--ui-scale));
+            --rail-width: calc(40px * var(--ui-scale));
+            --row-height: calc(26px * var(--ui-scale));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: var(--fs-ui);
+            height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* UTILS */
+        .u-mono { font-family: var(--font-mono); }
+        .u-bold { font-weight: 800; }
+        .u-flex { display: flex; align-items: center; }
+        .u-border-r { border-right: var(--border-width) solid var(--border-color); }
+        .u-border-b { border-bottom: var(--border-width) solid var(--border-color); }
+        .u-border-l { border-left: var(--border-width) solid var(--border-color); }
+
+        /* TOP BAR */
+        header {
+            height: 32px;
+            background: var(--bg-base);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 var(--space-sm);
+            border-bottom: var(--border-width) solid var(--border-color);
+            z-index: var(--z-top);
+        }
+
+        .app-identity {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo {
+            background: var(--bg-accent);
+            color: var(--text-on-accent);
+            padding: 2px 6px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .path-crumbs {
+            display: flex;
+            gap: 4px;
+            color: var(--text-muted);
+        }
+
+        .filename-input {
+            border: none;
+            background: transparent;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--text-main);
+            width: auto;
+            min-width: 120px;
+            outline: none;
+            padding: 0 4px;
+        }
+
+        .filename-input:focus {
+            background: var(--bg-active);
+            box-shadow: inset 0 0 0 1px var(--border-color);
+        }
+
+        .dirty-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--status-orange);
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 1px;
+            background: var(--border-color);
+            height: 100%;
+        }
+
+        .badge {
+            background: var(--bg-base);
+            padding: 0 8px;
+            display: flex;
+            align-items: center;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge.active {
+            background: var(--status-green);
+            color: white;
+        }
+
+        /* MAIN LAYOUT */
+        main {
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* SIDE RAIL */
+        nav.rail {
+            width: var(--rail-width);
+            background: var(--bg-alt);
+            display: flex;
+            flex-direction: column;
+            border-right: var(--border-width) solid var(--border-color);
+            z-index: var(--z-rail);
+        }
+
+        .rail-btn {
+            width: 100%;
+            height: var(--rail-width);
+            border: none;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: var(--border-width) solid var(--border-color);
+            position: relative;
+        }
+
+        .rail-btn:hover {
+            background: var(--bg-base);
+        }
+
+        .rail-btn.selected {
+            background: var(--bg-accent);
+        }
+
+        .rail-btn.selected svg {
+            stroke: var(--text-on-accent);
+        }
+
+        .rail-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-main);
+            stroke-width: 2px;
+            fill: none;
+        }
+
+        /* EXPLORER */
+        .explorer {
+            width: 220px;
+            background: var(--bg-base);
+            border-right: var(--border-width) solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            height: var(--row-height);
+            background: var(--bg-alt);
+            border-bottom: var(--border-width) solid var(--border-color);
+            padding: 0 var(--space-sm);
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .tree-item {
+            height: var(--row-height);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            gap: var(--space-xs);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid transparent;
+        }
+
+        .tree-item:hover {
+            background: var(--bg-alt);
+            outline: 1px solid var(--border-color);
+            z-index: 1;
+        }
+
+        .tree-item.active {
+            background: var(--bg-active);
+            font-weight: 700;
+        }
+
+        .tree-item svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* WORKSPACE / SPLITTERS */
+        .workspace {
+            flex: 1;
+            display: flex;
+            background: var(--border-color);
+            gap: 1px;
+        }
+
+        .pane {
+            flex: 1;
+            background: var(--bg-base);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pane-title {
+            height: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: #fafafa;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0 var(--space-sm);
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+        }
+
+        /* EDITOR */
+        .editor-container {
+            flex: 1;
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: var(--fs-body);
+            line-height: 1.6;
+            outline: none;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .editor-container:focus {
+            box-shadow: inset 0 0 0 2px var(--status-blue);
+        }
+
+        /* PREVIEW */
+        .preview-container {
+            flex: 1;
+            padding: var(--space-md);
+            overflow-y: auto;
+            font-family: var(--font-sans);
+            line-height: 1.5;
+        }
+
+        .preview-container h1 { font-size: 1.8em; margin-bottom: 0.5em; font-weight: 800; border-bottom: 2px solid black; }
+        .preview-container h2 { font-size: 1.3em; margin-top: 1em; margin-bottom: 0.5em; text-transform: uppercase; }
+        .preview-container p { margin-bottom: 1em; }
+        .preview-container code { background: var(--bg-alt); padding: 2px 4px; font-family: var(--font-mono); font-size: 0.9em; border: 1px solid var(--border-subtle); }
+        .preview-container pre { background: var(--bg-alt); border: 1px solid var(--border-color); padding: var(--space-sm); margin: 1em 0; overflow-x: auto; }
+        .preview-container blockquote { border: 2px solid var(--border-color); padding: var(--space-sm); background: var(--bg-alt); margin: 1em 0; font-style: italic; }
+
+        /* FOOTER */
+        footer {
+            height: 24px;
+            background: var(--bg-base);
+            border-top: var(--border-width) solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 10px;
+        }
+
+        .footer-section {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .ctrl-group {
+            display: flex;
+            border: 1px solid var(--border-color);
+            height: 16px;
+        }
+
+        .ctrl-btn {
+            border: none;
+            background: var(--bg-base);
+            border-right: 1px solid var(--border-color);
+            padding: 0 4px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .ctrl-btn:last-child { border-right: none; }
+        .ctrl-btn:hover { background: var(--bg-accent); color: var(--text-on-accent); }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); border-left: 1px solid var(--border-color); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-accent); border: 2px solid var(--bg-base); }
+
+        /* INTERACTION STATES */
+        button:active { transform: translateY(1px); }
+        [contenteditable]:focus { outline: none; }
+
+        /* KEYBOARD FOCUS */
+        :focus-visible {
+            outline: 2px solid var(--status-blue) !important;
+            outline-offset: -2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="app-identity">
+            <div class="logo">SPIFFE PICKLE</div>
+            <div class="path-crumbs">
+                <span>projects</span> /
+                <span>research</span> /
+                <input type="text" class="filename-input" value="tensioned_skeleton.md" spellcheck="false">
+                <span class="dirty-dot"></span>
+            </div>
+        </div>
+        <div class="status-badges">
+            <div class="badge">Local</div>
+            <div class="badge active">IndexedDB</div>
+            <div class="badge">v1.0.4-stable</div>
+            <div class="badge" style="color: var(--status-green)">● Online</div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="rail">
+            <button class="rail-btn" title="New File (Ctrl+N)">
+                <svg viewBox="0 0 24 24" stroke-linecap="square"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <button class="rail-btn selected" title="Explorer (Ctrl+B)">
+                <svg viewBox="0 0 24 24" stroke-linecap="square"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="rail-btn" title="Search (Ctrl+F)">
+                <svg viewBox="0 0 24 24" stroke-linecap="square"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <div style="flex: 1;"></div>
+            <button class="rail-btn" title="Import/Export">
+                <svg viewBox="0 0 24 24" stroke-linecap="square"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </button>
+            <button class="rail-btn" title="Settings">
+                <svg viewBox="0 0 24 24" stroke-linecap="square"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </nav>
+
+        <section class="explorer">
+            <div class="panel-header">File Explorer</div>
+            <div class="tree-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                <span>archive</span>
+            </div>
+            <div class="tree-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                <span>research</span>
+            </div>
+            <div class="tree-item active" style="padding-left: 24px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                <span>tensioned_skeleton.md</span>
+            </div>
+            <div class="tree-item" style="padding-left: 24px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                <span>brutalist_audit.md</span>
+            </div>
+            <div class="tree-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                <span>templates</span>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <div class="pane">
+                <div class="pane-title">Editor <span style="margin-left: auto">Markdown</span></div>
+                <div class="editor-container" contenteditable="true" spellcheck="false"># Tensioned Skeleton Design System
+
+## Core Philosophies
+1. **Zero Radius**: Curvature is a decorative luxury.
+2. **Visible Seams**: Architecture should be exposed.
+3. **Density First**: Information over whitespace.
+
+css
+:root {
+  --radius: 0px;
+  --border: 1px solid black;
+}
+
+
+> "Design is the tension between the grid and the chaos."
+
+### To-Do List
+- [x] Define root tokens
+- [x] Implement panel splitter
+- [ ] Add storage inspector
+- [ ] Mobile touch optimizations
+
+This is a high-density environment designed for **Offline-First** usage. Data persists to IndexedDB automatically.</div>
+            </div>
+            <div class="pane">
+                <div class="pane-title">Preview <span style="margin-left: auto">Rendered</span></div>
+                <div class="preview-container">
+                    <h1>Tensioned Skeleton Design System</h1>
+                    <h2>Core Philosophies</h2>
+                    <ol>
+                        <li><strong>Zero Radius</strong>: Curvature is a decorative luxury.</li>
+                        <li><strong>Visible Seams</strong>: Architecture should be exposed.</li>
+                        <li><strong>Density First</strong>: Information over whitespace.</li>
+                    </ol>
+                    <pre><code>:root {
+  --radius: 0px;
+  --border: 1px solid black;
+}</code></pre>
+                    <blockquote>Design is the tension between the grid and the chaos.</blockquote>
+                    <h2>To-Do List</h2>
+                    <p>✓ Define root tokens<br>✓ Implement panel splitter<br>☐ Add storage inspector<br>☐ Mobile touch optimizations</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <span class="u-mono">LN: 12, COL: 4</span>
+            <span class="u-mono">UTF-8</span>
+            <span class="u-mono">WORDS: 84</span>
+        </div>
+        <div class="footer-section">
+            <span class="u-mono" id="scale-label">UI SCALE: 100%</span>
+            <div class="ctrl-group">
+                <button class="ctrl-btn" onclick="updateScale(-0.05)">-</button>
+                <button class="ctrl-btn" onclick="resetScale()">R</button>
+                <button class="ctrl-btn" onclick="updateScale(0.05)">+</button>
+            </div>
+            <div class="ctrl-group">
+                <button class="ctrl-btn">WRAP</button>
+                <button class="ctrl-btn">SPELL</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentScale = 1.0;
+        
+        function updateScale(delta) {
+            currentScale = Math.min(Math.max(currentScale + delta, 0.8), 1.25);
+            document.documentElement.style.setProperty('--ui-scale', currentScale);
+            document.getElementById('scale-label').innerText = `UI SCALE: ${Math.round(currentScale * 100)}%`;
+        }
+
+        function resetScale() {
+            currentScale = 1.0;
+            document.documentElement.style.setProperty('--ui-scale', 1.0);
+            document.getElementById('scale-label').innerText = `UI SCALE: 100%`;
+        }
+
+        // Simple Pane Toggle for Demo
+        document.querySelectorAll('.rail-btn').forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                if(index === 1) {
+                    const explorer = document.querySelector('.explorer');
+                    explorer.style.display = explorer.style.display === 'none' ? 'flex' : 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

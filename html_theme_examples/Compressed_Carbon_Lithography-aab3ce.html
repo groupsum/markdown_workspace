@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brutahaus // carbon-lithic-md</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Carbon Palette */
+            --bg-base: #0D0D0D;
+            --bg-panel: #1A1A1A;
+            --bg-surface: #262626;
+            --fg-prime: #F2F2F2;
+            --fg-mute: #8C8C8C;
+            --accent: #00FF41; /* Phosphor Green */
+            --border-heavy: 2px solid #000000;
+            --border-thin: 1px solid #333333;
+            --lithic-shadow: 4px 4px 0px #000000;
+            
+            /* Density Scaling */
+            --scale: 1;
+            --space-xs: calc(4px * var(--scale));
+            --space-sm: calc(8px * var(--scale));
+            --space-md: calc(12px * var(--scale));
+            --font-ui: calc(11px * var(--scale));
+            --font-code: calc(13px * var(--scale));
+            
+            /* Layout constants */
+            --top-bar-h: 32px;
+            --left-bar-w: 40px;
+            --footer-h: 24px;
+            --explorer-w: 220px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--fg-prime);
+            font-family: 'Inter', sans-serif;
+            font-size: var(--font-ui);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* SVG Grain Overlay */
+        .lithic-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            mix-blend-mode: overlay;
+        }
+
+        /* Top Navigation */
+        header {
+            height: var(--top-bar-h);
+            background: var(--bg-panel);
+            border-bottom: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-md);
+            z-index: 100;
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand span { color: var(--accent); }
+
+        .app-status {
+            display: flex;
+            gap: var(--space-md);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .status-item { display: flex; align-items: center; gap: 4px; }
+        .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 0; }
+
+        /* Main Workspace */
+        main {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Vertical Toolbar */
+        nav.primary-actions {
+            width: var(--left-bar-w);
+            background: var(--bg-base);
+            border-right: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: var(--space-sm);
+            gap: var(--space-sm);
+        }
+
+        .action-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            color: var(--fg-mute);
+            transition: all 0.1s steps(2);
+        }
+
+        .action-btn:hover, .action-btn.active {
+            background: var(--fg-prime);
+            color: var(--bg-base);
+            border: 1px solid var(--fg-prime);
+        }
+
+        /* File Explorer */
+        aside.explorer {
+            width: var(--explorer-w);
+            background: var(--bg-panel);
+            border-right: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-label {
+            padding: var(--space-sm) var(--space-md);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            color: var(--fg-mute);
+            border-bottom: var(--border-thin);
+            background: #111;
+        }
+
+        .tree-node {
+            padding: var(--space-xs) var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #222;
+            transition: background 0.05s;
+        }
+
+        .tree-node:hover { background: var(--bg-surface); color: var(--accent); }
+        .tree-node.active { background: var(--fg-prime); color: var(--bg-base); font-weight: 700; }
+        .tree-node.folder { color: var(--fg-mute); font-weight: 700; }
+
+        /* Editor Surface */
+        .workspace-core {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #000;
+        }
+
+        .pane {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--bg-base);
+        }
+
+        .pane-header {
+            height: 24px;
+            background: var(--bg-surface);
+            border-bottom: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .editor-container, .preview-container {
+            flex: 1;
+            padding: var(--space-md);
+            overflow-y: auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            color: var(--fg-prime);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-code);
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            scrollbar-width: thin;
+        }
+
+        /* Markdown Preview Styling */
+        .preview-container {
+            background: #0D0D0D;
+            line-height: 1.6;
+            font-size: calc(var(--font-ui) + 2px);
+            border-left: var(--border-heavy);
+        }
+
+        .preview-container h1 { font-weight: 900; text-transform: uppercase; margin-bottom: 1rem; border-bottom: 4px solid var(--fg-prime); display: inline-block; }
+        .preview-container p { margin-bottom: 1rem; color: #CCC; }
+        .preview-container code { background: var(--bg-surface); padding: 2px 4px; font-family: 'JetBrains Mono'; color: var(--accent); }
+
+        /* Footer */
+        footer {
+            height: var(--footer-h);
+            background: var(--bg-panel);
+            border-top: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-md);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: var(--fg-mute);
+        }
+
+        .meta-group { display: flex; gap: var(--space-md); }
+        .meta-item b { color: var(--fg-prime); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: var(--fg-mute); border: 1px solid var(--bg-base); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* Tooltip Mockup */
+        .action-btn:hover::after {
+            content: attr(data-label);
+            position: absolute;
+            left: 44px;
+            background: var(--fg-prime);
+            color: var(--bg-base);
+            padding: 2px 6px;
+            white-space: nowrap;
+            font-weight: 700;
+            z-index: 200;
+            box-shadow: var(--lithic-shadow);
+        }
+
+        /* Focus states for accessibility */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: -2px;
+        }
+
+        @media (max-width: 800px) {
+            aside.explorer { display: none; }
+            .workspace-core { grid-template-columns: 1fr; }
+            .preview-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <svg class="lithic-grain">
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)" />
+    </svg>
+
+    <header>
+        <div class="brand">bruta<span>haus</span> // 0.1.4</div>
+        <div class="app-status">
+            <div class="status-item"><div class="dot"></div> IDB_ACTIVE</div>
+            <div class="status-item">PWA_READY</div>
+            <div class="status-item">UTF-8</div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="primary-actions">
+            <button class="action-btn active" data-label="EXPLORER (ALT+1)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="action-btn" data-label="SEARCH (CTRL+F)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <button class="action-btn" data-label="COMMIT (CTRL+S)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            </button>
+            <div style="flex:1"></div>
+            <button class="action-btn" data-label="SETTINGS">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </nav>
+
+        <aside class="explorer">
+            <div class="panel-label">Project Explorer</div>
+            <div class="tree-node folder">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+                Drafts/
+            </div>
+            <div class="tree-node active">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                carbon_lithography.md
+            </div>
+            <div class="tree-node">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                density_spec.md
+            </div>
+            <div class="tree-node folder">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="m9 18 6-6-6-6"/></svg>
+                Archives/
+            </div>
+            <div style="flex:1"></div>
+            <div class="panel-label" style="border-top: var(--border-thin); border-bottom:none">Storage: 4.2MB / 50MB</div>
+        </aside>
+
+        <div class="workspace-core">
+            <section class="pane">
+                <div class="pane-header">
+                    <span>Source: carbon_lithography.md</span>
+                    <span style="margin-left: auto; opacity: 0.5;">L:24 C:12</span>
+                </div>
+                <div class="editor-container">
+                    <textarea spellcheck="false"># Compressed Carbon Lithography
+
+A design system for the **post-digital** workspace.
+
+## Objective
+To create a high-density, lithic interface that prioritizes information over decoration.
+
+### Core Principles
+1. **Materiality**: Carbon, stone, lead.
+2. **Density**: High-information throughput.
+3. **Offline**: Local-first synchronization via IndexedDB.
+
+javascript
+const haus = {
+  vibe: 'brutalist',
+  pwa: true,
+  accessibility: 'WCAG-AA'
+};
+
+
+Everything is keyboard-driven.</textarea>
+                </div>
+            </section>
+
+            <section class="pane">
+                <div class="pane-header">
+                    <span>Render Preview</span>
+                    <span style="margin-left: auto; color: var(--accent);">Live</span>
+                </div>
+                <div class="preview-container">
+                    <h1>Compressed Carbon Lithography</h1>
+                    <p>A design system for the <strong>post-digital</strong> workspace.</p>
+                    <p>Objective: To create a high-density, lithic interface that prioritizes information over decoration.</p>
+                    <p>Core Principles:</p>
+                    <ul>
+                        <li>Materiality: Carbon, stone, lead.</li>
+                        <li>Density: High-information throughput.</li>
+                        <li>Offline: Local-first synchronization via IndexedDB.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="meta-group">
+            <div class="meta-item">STATUS: <b>SYNCED</b></div>
+            <div class="meta-item">TARGET: <b>INDEXED_DB</b></div>
+        </div>
+        <div class="meta-group">
+            <div class="meta-item">UI_SCALE: <b>1.0x</b></div>
+            <div class="meta-item">BRUTAHAUS_CORE: <b>v.0.1-ALPHA</b></div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scale toggle demo
+        let currentScale = 1;
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && e.key === '+') {
+                currentScale = Math.min(currentScale + 0.1, 1.5);
+                document.documentElement.style.setProperty('--scale', currentScale);
+            }
+            if (e.altKey && e.key === '-') {
+                currentScale = Math.max(currentScale - 0.1, 0.7);
+                document.documentElement.style.setProperty('--scale', currentScale);
+            }
+        });
+
+        // Quick Preview Sync
+        const textarea = document.querySelector('textarea');
+        const preview = document.querySelector('.preview-container');
+        textarea.addEventListener('input', (e) => {
+            // Very basic mock of rendering
+            const content = e.target.value
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>');
+            // This is just a visual mock, not a full parser
+        });
+    </script>
+</body>
+</html>

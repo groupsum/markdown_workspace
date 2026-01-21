@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spiffe pickle | Industrial Markdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Spiffe Pickle Design Tokens */
+            --bg: #ffffff;
+            --surface: #f8f8f8;
+            --surface-milled: #ececec;
+            --border: #1a1a1a;
+            --border-dim: #d1d1d1;
+            --text: #1a1a1a;
+            --text-dim: #666666;
+            --accent: #0047ff;
+            --accent-hot: #ff4d00;
+            --accent-ok: #00a344;
+            --selection: #e0eaff;
+            --focus-ring: rgba(0, 71, 255, 0.4);
+            
+            --gap: 0px;
+            --b-width: 1.5px;
+            --rail-w: 44px;
+            --top-h: 36px;
+            --foot-h: 24px;
+            --sidebar-w: 220px;
+            
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: default;
+        }
+
+        body {
+            background: var(--surface-milled);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            height: 100vh;
+            overflow: hidden;
+            display: grid;
+            grid-template-areas: 
+                "rail top"
+                "rail main"
+                "rail foot";
+            grid-template-columns: var(--rail-w) 1fr;
+            grid-template-rows: var(--top-h) 1fr var(--foot-h);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Generic Milled Manifold Style */
+        .milled {
+            border: var(--b-width) solid var(--border);
+            background: var(--bg);
+        }
+
+        /* --- LEFT RAIL --- */
+        .rail {
+            grid-area: rail;
+            background: var(--surface-milled);
+            border-right: var(--b-width) solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            z-index: 100;
+        }
+
+        .rail-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            border: var(--b-width) solid transparent;
+            background: transparent;
+            transition: all 0.1s ease;
+        }
+
+        .rail-btn svg { width: 18px; height: 18px; fill: var(--text); }
+
+        .rail-btn:hover {
+            background: var(--bg);
+            border-color: var(--border);
+        }
+
+        .rail-btn.active {
+            background: var(--border);
+            border-color: var(--border);
+        }
+
+        .rail-btn.active svg { fill: var(--bg); }
+
+        .rail-spacer { flex-grow: 1; }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            grid-area: top;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            background: var(--bg);
+            border-bottom: var(--b-width) solid var(--border);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .app-title {
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 11px;
+            margin-right: 24px;
+            padding: 2px 6px;
+            background: var(--border);
+            color: var(--bg);
+        }
+
+        .file-path {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .filename-edit {
+            color: var(--text);
+            font-weight: 700;
+            border-bottom: 1px solid transparent;
+            outline: none;
+            padding: 2px 4px;
+        }
+
+        .filename-edit:focus {
+            border-bottom-color: var(--accent);
+            background: var(--surface);
+        }
+
+        .dirty-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-hot);
+            margin-left: 6px;
+            display: none;
+        }
+
+        .dirty .dirty-dot { display: block; }
+
+        .status-badges {
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge .dot { width: 8px; height: 8px; border: 1px solid var(--border); }
+        .badge.online .dot { background: var(--accent-ok); }
+        .badge.storage .dot { background: var(--accent); }
+
+        /* --- WORKSPACE --- */
+        .main-workspace {
+            grid-area: main;
+            display: flex;
+            overflow: hidden;
+            background: var(--surface-milled);
+        }
+
+        .explorer {
+            width: var(--sidebar-w);
+            min-width: 150px;
+            background: var(--surface);
+            border-right: var(--b-width) solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .explorer-header {
+            padding: 8px 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 10px;
+            border-bottom: 1px solid var(--border-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 12px;
+            gap: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid transparent;
+        }
+
+        .tree-item:hover { background: var(--surface-milled); }
+        .tree-item.selected {
+            background: var(--border);
+            color: var(--bg);
+        }
+
+        .tree-item svg { width: 14px; height: 14px; opacity: 0.7; }
+        .tree-item.selected svg { filter: invert(1); opacity: 1; }
+
+        .folder { font-weight: 700; color: var(--text-dim); }
+
+        /* RESIZER */
+        .resizer {
+            width: 6px;
+            cursor: col-resize;
+            background: var(--surface-milled);
+            border-right: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+        }
+        .resizer::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border-dim);
+        }
+
+        /* EDITOR & PREVIEW */
+        .pane-container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .editor-container, .preview-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-container {
+            border-right: var(--b-width) solid var(--border);
+        }
+
+        .pane-header {
+            height: 24px;
+            background: var(--surface-milled);
+            border-bottom: var(--b-width) solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            resize: none;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            outline: none;
+            background: var(--bg);
+            color: var(--text);
+            scrollbar-width: thin;
+        }
+
+        textarea::selection { background: var(--selection); }
+
+        .preview-content {
+            padding: 40px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background: var(--bg);
+            line-height: 1.5;
+        }
+
+        /* PREVIEW TYPOGRAPHY (Brutahaus) */
+        .preview-content h1 { font-size: 24px; font-weight: 900; margin-bottom: 16px; border-bottom: 4px solid var(--border); display: inline-block; padding-bottom: 4px; }
+        .preview-content h2 { font-size: 18px; font-weight: 900; margin-top: 24px; margin-bottom: 12px; text-transform: uppercase; }
+        .preview-content p { margin-bottom: 16px; }
+        .preview-content code { font-family: var(--font-mono); background: var(--surface-milled); padding: 2px 4px; border: 1px solid var(--border-dim); }
+        .preview-content pre { 
+            background: var(--surface); 
+            border: var(--b-width) solid var(--border); 
+            padding: 12px; 
+            margin: 16px 0;
+            font-family: var(--font-mono);
+            font-size: 12px;
+        }
+        .preview-content blockquote {
+            border-left: 8px solid var(--border);
+            padding: 8px 16px;
+            margin: 16px 0;
+            background: var(--surface);
+            font-style: italic;
+        }
+        .preview-content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px solid var(--accent);
+        }
+        .preview-content ul { padding-left: 18px; margin-bottom: 16px; }
+        .preview-content li { margin-bottom: 4px; }
+
+        /* --- FOOTER --- */
+        .footer {
+            grid-area: foot;
+            background: var(--surface-milled);
+            border-top: var(--b-width) solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-dim);
+        }
+
+        .footer-item {
+            padding: 0 10px;
+            border-right: 1px solid var(--border-dim);
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-item strong { color: var(--text); margin-left: 4px; }
+
+        .ui-controls {
+            margin-left: auto;
+            display: flex;
+            height: 100%;
+        }
+
+        .control-btn {
+            border: none;
+            background: transparent;
+            padding: 0 8px;
+            font-size: 10px;
+            font-weight: 700;
+            border-left: 1px solid var(--border-dim);
+            cursor: pointer;
+        }
+
+        .control-btn:hover { background: var(--bg); }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--surface-milled); }
+        ::-webkit-scrollbar-thumb { background: var(--border-dim); border: 2px solid var(--surface-milled); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border); }
+
+        /* FOCUS STATES */
+        .rail-btn:focus-visible, .control-btn:focus-visible, .tree-item:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: -2px;
+        }
+        
+        /* RESPONSIVE / MODES */
+        .split-active .preview-container { display: flex; }
+        .editor-only .preview-container { display: none; }
+        .preview-only .editor-container { display: none; }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(2px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .main-workspace > * { animation: fadeIn 0.2s ease-out; }
+
+    </style>
+</head>
+<body class="dirty">
+
+    <!-- LEFT RAIL -->
+    <nav class="rail" role="navigation" aria-label="Primary Actions">
+        <button class="rail-btn" title="New File (Alt+N)">
+            <svg viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+        </button>
+        <button class="rail-btn active" title="Explorer (Alt+B)">
+            <svg viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V8L14,2H6Z" /></svg>
+        </button>
+        <button class="rail-btn" title="Search (Alt+F)">
+            <svg viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        </button>
+        
+        <div class="rail-spacer"></div>
+
+        <button class="rail-btn" title="Import/Export">
+            <svg viewBox="0 0 24 24"><path d="M14,2L20,8V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2H14M18,20V9H13V4H6V20H18M12,12L16,16H13V19H11V16H8L12,12Z" /></svg>
+        </button>
+        <button class="rail-btn" title="Settings">
+            <svg viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.97 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.97 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>
+        </button>
+    </nav>
+
+    <!-- TOP BAR -->
+    <header class="top-bar">
+        <div class="app-title">SPIFFE PICKLE</div>
+        <div class="file-path" aria-label="Breadcrumbs">
+            <span>root</span>
+            <span>/</span>
+            <span>projects</span>
+            <span>/</span>
+            <span class="filename-edit" contenteditable="true" spellcheck="false">industrial_manifold.md</span>
+        </div>
+        <div class="dirty-dot" title="Unsaved changes"></div>
+
+        <div class="status-badges">
+            <div class="badge online" title="PWA Status: Online">
+                <div class="dot"></div>
+                <span>Sync Active</span>
+            </div>
+            <div class="badge storage" title="Storage: IndexedDB">
+                <div class="dot"></div>
+                <span>IndexedDB</span>
+            </div>
+            <div class="badge" style="opacity: 0.5">
+                <span>v1.2.4</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main-workspace split-active">
+        
+        <!-- SIDEBAR -->
+        <div class="explorer" id="explorer">
+            <div class="explorer-header">
+                <span>Explorer</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+            </div>
+            <div class="file-tree" role="tree">
+                <div class="tree-item folder" role="treeitem" aria-expanded="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
+                    projects
+                </div>
+                <div class="tree-item selected" style="padding-left: 28px;" role="treeitem">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V8L14,2H6Z" /></svg>
+                    industrial_manifold.md
+                </div>
+                <div class="tree-item" style="padding-left: 28px;" role="treeitem">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V8L14,2H6Z" /></svg>
+                    specification.md
+                </div>
+                <div class="tree-item folder" role="treeitem">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
+                    archive
+                </div>
+            </div>
+        </div>
+
+        <!-- SPLITTER -->
+        <div class="resizer" id="resizer"></div>
+
+        <!-- CONTENT AREA -->
+        <div class="pane-container">
+            
+            <!-- EDITOR -->
+            <section class="editor-container">
+                <div class="pane-header">Editor — Markdown</div>
+                <textarea id="markdown-input" spellcheck="false"># Industrial Manifold System
+
+A **spiffe pickle** implementation focusing on high-density data structures and brutalist UI patterns.
+
+## Performance Requirements
+- Offline-first via Service Workers
+- IndexedDB for large-scale blob storage
+- 60fps UI interactions
+- Full keyboard binding system
+
+## Layout Tokens
+- **Gap:** 0px (Milled contact)
+- **Border:** 1.5px Solid Black
+- **Radius:** 0px
+
+> "Efficiency is the only aesthetic."
+
+css
+.manifold {
+  display: grid;
+  milled-edges: true;
+}
+
+</textarea>
+            </section>
+
+            <!-- PREVIEW -->
+            <section class="preview-container">
+                <div class="pane-header">Preview — Rendered</div>
+                <div class="preview-content" id="preview-output">
+                    <h1>Industrial Manifold System</h1>
+                    <p>A <strong>spiffe pickle</strong> implementation focusing on high-density data structures and brutalist UI patterns.</p>
+                    
+                    <h2>Performance Requirements</h2>
+                    <ul>
+                        <li>Offline-first via Service Workers</li>
+                        <li>IndexedDB for large-scale blob storage</li>
+                        <li>60fps UI interactions</li>
+                        <li>Full keyboard binding system</li>
+                    </ul>
+
+                    <h2>Layout Tokens</h2>
+                    <ul>
+                        <li><strong>Gap:</strong> 0px (Milled contact)</li>
+                        <li><strong>Border:</strong> 1.5px Solid Black</li>
+                        <li><strong>Radius:</strong> 0px</li>
+                    </ul>
+
+                    <blockquote>"Efficiency is the only aesthetic."</blockquote>
+
+                    <pre><code>.manifold {
+  display: grid;
+  milled-edges: true;
+}</code></pre>
+                    
+                    <p>Check the <a href="#">documentation</a> for further machine specs.</p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-item">Line <strong>24</strong>, Col <strong>12</strong></div>
+        <div class="footer-item">UTF-8</div>
+        <div class="footer-item">MD</div>
+        <div class="footer-item" style="color: var(--accent-ok)">● STABLE</div>
+        
+        <div class="ui-controls">
+            <button class="control-btn" id="view-split">SPLIT</button>
+            <button class="control-btn" id="view-edit">EDIT</button>
+            <button class="control-btn" id="view-prev">PREV</button>
+            <button class="control-btn" title="UI Zoom Out">-</button>
+            <div class="footer-item">100%</div>
+            <button class="control-btn" title="UI Zoom In">+</button>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Splitter Logic
+        const resizer = document.getElementById('resizer');
+        const explorer = document.getElementById('explorer');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let offset = e.clientX - 44; // Minus rail width
+            if (offset > 100 && offset < 500) {
+                explorer.style.width = `${offset}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = 'default';
+        });
+
+        // Mode Switching
+        const workspace = document.querySelector('.main-workspace');
+        document.getElementById('view-split').addEventListener('click', () => {
+            workspace.className = 'main-workspace split-active';
+        });
+        document.getElementById('view-edit').addEventListener('click', () => {
+            workspace.className = 'main-workspace editor-only';
+        });
+        document.getElementById('view-prev').addEventListener('click', () => {
+            workspace.className = 'main-workspace preview-only';
+        });
+
+        // Keyboard Shortcuts Simulator
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && e.key === 'b') {
+                explorer.style.display = explorer.style.display === 'none' ? 'flex' : 'none';
+                resizer.style.display = explorer.style.display === 'none' ? 'none' : 'block';
+            }
+        });
+
+        // Console styling for that industrial feel
+        console.log("%c SPIFFE PICKLE %c System Initialized ", "background: #1a1a1a; color: #fff; font-weight: bold; padding: 2px 4px;", "background: #0047ff; color: #fff; padding: 2px 4px;");
+    </script>
+</body>
+</html>

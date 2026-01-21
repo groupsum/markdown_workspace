@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash UI - Anodized Billet Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --aluminum-base: #e0e2e5;
+            --aluminum-light: #f0f2f5;
+            --aluminum-dark: #c0c2c5;
+            --chrome-highlight: #ffffff;
+            --chrome-shadow: #8a8d91;
+            
+            --ink-main: #1a1a1a;
+            --ink-dim: #555555;
+            --ink-accent: #0044cc;
+            --ink-alert: #cc3300;
+            --ink-success: #008844;
+
+            --border-width: 1px;
+            --border-heavy: 2px;
+            
+            --bevel-out: 
+                inset 1px 1px 0px var(--chrome-highlight),
+                inset -1px -1px 0px var(--chrome-shadow);
+            
+            --bevel-in: 
+                inset 1px 1px 2px rgba(0,0,0,0.15),
+                inset -1px -1px 0px var(--chrome-highlight);
+
+            --panel-gap: 4px;
+            --grid-color: rgba(0, 68, 204, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--ink-dim) var(--aluminum-base);
+        }
+
+        body {
+            background-color: #d1d3d6;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--ink-main);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                radial-gradient(circle at 1px 1px, #a0a0a0 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+
+        /* --- THE CHASSIS (Main Container) --- */
+        .chassis {
+            width: 98vw;
+            height: 96vh;
+            background: var(--aluminum-base);
+            border: 1px solid var(--chrome-highlight);
+            box-shadow: 
+                0 0 0 1px var(--chrome-shadow),
+                10px 10px 30px rgba(0,0,0,0.2),
+                inset 0 0 0 1px rgba(255,255,255,0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        /* Decorative Screw Heads */
+        .screw {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ddd, #bbb);
+            box-shadow: inset 1px 1px 2px rgba(255,255,255,0.8), inset -1px -1px 2px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .screw::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 2px;
+            background: #999;
+            transform: translate(-50%, -50%) rotate(45deg);
+            box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5);
+        }
+        .sc-tl { top: 6px; left: 6px; }
+        .sc-tr { top: 6px; right: 6px; transform: rotate(90deg); }
+        .sc-bl { bottom: 6px; left: 6px; transform: rotate(45deg); }
+        .sc-br { bottom: 6px; right: 6px; transform: rotate(120deg); }
+
+        /* --- HEADER / TOP PLATE --- */
+        .header-plate {
+            height: 48px;
+            background: linear-gradient(to bottom, var(--aluminum-light), var(--aluminum-base));
+            border-bottom: var(--border-heavy) solid var(--chrome-shadow);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            justify-content: space-between;
+            box-shadow: var(--bevel-out);
+            z-index: 5;
+            user-select: none;
+        }
+
+        .brand-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .led-status {
+            width: 8px;
+            height: 8px;
+            background-color: var(--ink-success);
+            border-radius: 50%;
+            box-shadow: 0 0 5px var(--ink-success), inset 1px 1px 2px rgba(255,255,255,0.8);
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+
+        .app-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            color: var(--ink-dim);
+        }
+
+        .meta-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ink-dim);
+            background: rgba(0,0,0,0.03);
+            padding: 4px 8px;
+            border-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: var(--bevel-in);
+        }
+
+        /* --- WORKSPACE LAYOUT --- */
+        .workspace-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 48px 240px 1fr;
+            background: var(--aluminum-dark);
+            gap: 2px; /* Physical separation */
+            padding-top: 2px;
+        }
+
+        /* --- ACTION RAIL (Left) --- */
+        .action-rail {
+            background: var(--aluminum-base);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            border-right: 1px solid var(--chrome-shadow);
+            box-shadow: inset -1px 0 2px rgba(0,0,0,0.05);
+        }
+
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 12px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            transition: all 0.1s ease;
+            color: var(--ink-dim);
+        }
+
+        .icon-btn:hover {
+            background: var(--aluminum-light);
+            box-shadow: var(--bevel-out);
+            color: var(--ink-main);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .icon-btn:active, .icon-btn.active {
+            background: var(--aluminum-base);
+            box-shadow: var(--bevel-in);
+            transform: translateY(1px);
+            color: var(--ink-accent);
+        }
+
+        .icon-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2px;
+        }
+
+        /* --- FILE BROWSER --- */
+        .file-browser {
+            background: var(--aluminum-light);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--chrome-shadow);
+            position: relative;
+        }
+
+        .panel-header {
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-tree {
+            padding: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            overflow-y: auto;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 4px 6px;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-bottom: 2px;
+            color: var(--ink-dim);
+        }
+
+        .tree-item:hover {
+            background: rgba(0,0,0,0.05);
+            color: var(--ink-main);
+        }
+
+        .tree-item.active {
+            background: rgba(0, 68, 204, 0.1);
+            color: var(--ink-accent);
+            box-shadow: inset 0 0 0 1px rgba(0, 68, 204, 0.2);
+        }
+
+        .folder-icon {
+            margin-right: 8px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        /* --- MAIN STAGE (Split View) --- */
+        .main-stage {
+            background: #fdfdfd;
+            display: grid;
+            grid-template-columns: 1fr 4px 1fr;
+            position: relative;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* EDITOR */
+        .editor-pane {
+            padding: 24px 32px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #222;
+            overflow-y: auto;
+            outline: none;
+        }
+
+        .editor-pane h1 { font-size: 1.5em; margin-bottom: 0.5em; color: var(--ink-main); }
+        .editor-pane p { margin-bottom: 1em; color: #444; }
+        .editor-pane .code-block {
+            background: #f4f4f4;
+            padding: 12px;
+            border-left: 3px solid var(--ink-accent);
+            margin: 1em 0;
+            font-size: 0.85em;
+        }
+
+        /* SPLITTER */
+        .splitter {
+            background: var(--aluminum-base);
+            border-left: 1px solid var(--chrome-shadow);
+            border-right: 1px solid var(--chrome-highlight);
+            cursor: col-resize;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .splitter::after {
+            content: '';
+            height: 24px;
+            width: 2px;
+            border-left: 1px solid var(--chrome-highlight);
+            border-right: 1px solid var(--chrome-shadow);
+        }
+
+        /* PREVIEW */
+        .preview-pane {
+            background: #ffffff;
+            padding: 24px 32px;
+            overflow-y: auto;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .preview-pane h1 { font-weight: 600; font-size: 2rem; margin-bottom: 1rem; letter-spacing: -1px; }
+        .preview-pane p { line-height: 1.6; margin-bottom: 1.2rem; color: #333; }
+        .preview-pane blockquote {
+            border-left: 4px solid var(--ink-accent);
+            padding-left: 16px;
+            margin: 16px 0;
+            font-style: italic;
+            color: var(--ink-dim);
+        }
+
+        /* --- FOOTER / METADATA --- */
+        .footer-plate {
+            height: 32px;
+            background: var(--aluminum-base);
+            border-top: 1px solid var(--chrome-highlight);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--ink-dim);
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.02);
+            z-index: 5;
+        }
+
+        .status-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .status-tag {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.05);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .status-tag.dirty { color: var(--ink-alert); background: rgba(204, 51, 0, 0.1); }
+        .status-tag.sync { color: var(--ink-accent); background: rgba(0, 68, 204, 0.1); }
+
+        /* --- UTILS & MICRO-INTERACTIONS --- */
+        .caret {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--ink-accent);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: -2px;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Floating Controls in Preview */
+        .preview-controls {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+        }
+        .pill-btn {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.1s;
+        }
+        .pill-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--aluminum-base); border-left: 1px solid #ccc; }
+        ::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; border: 2px solid var(--aluminum-base); }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+        /* Focus states */
+        *:focus-visible {
+            outline: 2px solid var(--ink-accent);
+            outline-offset: -2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="chassis">
+        <!-- Decoration Screws -->
+        <div class="screw sc-tl"></div>
+        <div class="screw sc-tr"></div>
+        <div class="screw sc-bl"></div>
+        <div class="screw sc-br"></div>
+
+        <!-- Top Header -->
+        <header class="header-plate">
+            <div class="brand-cluster">
+                <div class="led-status" title="System Online"></div>
+                <span class="app-title">Lattice <span style="font-weight:300; opacity:0.6;">Architect</span></span>
+            </div>
+            
+            <div class="meta-display">
+                PWA: MOUNTED // v2.4.1
+            </div>
+
+            <div class="brand-cluster">
+                <button class="icon-btn" aria-label="Settings" title="Configuration Surface">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="workspace-grid">
+            
+            <!-- Left Action Rail -->
+            <nav class="action-rail" role="toolbar" aria-label="Primary Actions">
+                <button class="icon-btn active" aria-label="Files" title="Project Explorer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </button>
+                <button class="icon-btn" aria-label="Search" title="Global Scan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <button class="icon-btn" aria-label="Git" title="Version Control">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                </button>
+                
+                <div style="flex:1"></div>
+                
+                <button class="icon-btn" aria-label="Sync Status" title="Cloud Sync: Idle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path></svg>
+                </button>
+            </nav>
+
+            <!-- File Browser Panel -->
+            <aside class="file-browser">
+                <div class="panel-header">
+                    <span>EXPLORER</span>
+                    <span style="opacity:0.5; font-size:1.2em;">+</span>
+                </div>
+                <div class="file-tree">
+                    <div class="tree-item"><span class="folder-icon">▼</span> workspace-root</div>
+                    <div class="tree-item" style="padding-left: 20px;"><span class="folder-icon">▶</span> assets</div>
+                    <div class="tree-item" style="padding-left: 20px;"><span class="folder-icon">▼</span> content</div>
+                    <div class="tree-item active" style="padding-left: 36px;">architecture.md</div>
+                    <div class="tree-item" style="padding-left: 36px;">data-schema.json</div>
+                    <div class="tree-item" style="padding-left: 20px;"><span class="folder-icon">▶</span> scripts</div>
+                    <div class="tree-item"><span class="folder-icon">▶</span> config</div>
+                </div>
+            </aside>
+
+            <!-- Main Stage: Editor + Preview -->
+            <main class="main-stage">
+                
+                <!-- Markdown Editor -->
+                <div class="editor-pane" contenteditable="true" spellcheck="false">
+                    <h1>Application Architecture</h1>
+                    <p>Core Functional Surfaces<br>
+                    Unified Markdown workspace enabling <strong>zero-navigation workflow</strong>.</p>
+                    
+                    <div class="code-block">
+                        // configuration.js<br>
+                        export const config = {<br>
+                        &nbsp;&nbsp;storage: 'IndexedDB',<br>
+                        &nbsp;&nbsp;syncMode: 'optimistic',<br>
+                        &nbsp;&nbsp;offline: true<br>
+                        }<span class="caret"></span>
+                    </div>
+
+                    <p>Client-local operation (no required backend). Deterministic client configuration surface.</p>
+                </div>
+
+                <!-- Drag Handle -->
+                <div class="splitter" title="Resize Panels"></div>
+
+                <!-- Live Preview -->
+                <div class="preview-pane">
+                    <div class="preview-controls">
+                        <button class="pill-btn">Read Mode</button>
+                        <button class="pill-btn">Export</button>
+                    </div>
+                    <h1>Application Architecture</h1>
+                    <p>Core Functional Surfaces<br>
+                    Unified Markdown workspace enabling <strong>zero-navigation workflow</strong>.</p>
+                    <blockquote>
+                        Client-local operation. Deterministic client configuration surface.
+                    </blockquote>
+                    <p>The system utilizes <strong>IndexedDB</strong> as primary storage with a normalized schema structure.</p>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-plate">
+            <div class="status-group">
+                <div class="status-item">
+                    <span class="status-tag sync">IndexedDB</span>
+                </div>
+                <div class="status-item">
+                    <span>architecture.md</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-tag dirty">UNSAVED</span>
+                </div>
+            </div>
+            
+            <div class="status-group">
+                <div class="status-item">
+                    <span>Ln 14, Col 22</span>
+                </div>
+                <div class="status-item" title="UI Density">
+                    <span>100%</span>
+                </div>
+                <div class="status-item" title="Connection Status">
+                    <span>OFFLINE READY</span>
+                    <div style="width:6px; height:6px; background:var(--ink-success); border-radius:50%;"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Micro-interactions for buttons
+        const btns = document.querySelectorAll('.icon-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                btns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Simple tree toggle simulation
+        const treeItems = document.querySelectorAll('.tree-item');
+        treeItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // visual only for demo
+                document.querySelectorAll('.tree-item').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

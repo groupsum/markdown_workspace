@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spiffpickle — v0.1.4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* CYBER PICKLE LIGHT THEME PALETTE */
+            --bg-vellum: #fdfdf5;
+            --grid-line: rgba(45, 90, 39, 0.08);
+            --ink-black: #0a0c0a;
+            --pickle-bright: #00ff41;
+            --pickle-muted: #d4eec7;
+            --pickle-deep: #1a3a16;
+            --border-width: 2px;
+            --ui-scale: 1;
+            --font-size-base: calc(11px * var(--ui-scale));
+            --font-size-ui: calc(10px * var(--ui-scale));
+            --sidebar-width: 200px;
+            --toolbar-width: 36px;
+            --bar-height: 28px;
+            --transition-speed: 0.15s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--bg-vellum);
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--ink-black);
+            font-family: 'Inter', sans-serif;
+            font-size: var(--font-size-base);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* TYPOGRAPHY OVERRIDES (OPTICAL) */
+        h1, h2, h3 { font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+        code, pre, .editor { font-family: 'JetBrains Mono', monospace; font-variant-ligatures: none; }
+
+        /* LAYOUT COMPONENTS */
+        .top-bar {
+            height: var(--bar-height);
+            border-bottom: var(--border-width) solid var(--ink-black);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            gap: 16px;
+            background: var(--bg-vellum);
+            z-index: 100;
+        }
+
+        .app-brand {
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pickle-logo {
+            width: 12px;
+            height: 12px;
+            background: var(--pickle-bright);
+            border: 1px solid var(--ink-black);
+        }
+
+        .status-badge {
+            background: var(--pickle-muted);
+            padding: 2px 6px;
+            font-size: 9px;
+            font-weight: 700;
+            border: 1px solid var(--ink-black);
+            text-transform: uppercase;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* NARROW ICON TOOLBAR */
+        .icon-toolbar {
+            width: var(--toolbar-width);
+            border-right: var(--border-width) solid var(--ink-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            gap: 12px;
+            background: var(--bg-vellum);
+        }
+
+        .tool-btn {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--ink-black);
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-speed) cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .tool-btn:hover {
+            background: var(--pickle-bright);
+            box-shadow: 2px 2px 0 var(--ink-black);
+            transform: translate(-1px, -1px);
+        }
+
+        .tool-btn.active {
+            background: var(--ink-black);
+            color: var(--bg-vellum);
+        }
+
+        /* FILE EXPLORER */
+        .file-browser {
+            width: var(--sidebar-width);
+            border-right: var(--border-width) solid var(--ink-black);
+            display: flex;
+            flex-direction: column;
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(2px);
+            transition: width 0.2s ease;
+        }
+
+        .file-browser.collapsed {
+            width: 0;
+            overflow: hidden;
+            border-right: none;
+        }
+
+        .panel-header {
+            padding: 8px;
+            font-weight: 700;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--ink-black);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        .file-item {
+            padding: 4px 12px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+        }
+
+        .file-item:hover {
+            background: var(--pickle-muted);
+        }
+
+        .file-item.selected {
+            background: var(--pickle-bright);
+            font-weight: 700;
+        }
+
+        .folder-toggle::before {
+            content: '▲';
+            font-size: 8px;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        /* WORKSPACE / EDITOR */
+        .workspace {
+            flex: 1;
+            display: flex;
+            position: relative;
+        }
+
+        .pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 100px;
+            background: transparent;
+        }
+
+        .pane-divider {
+            width: var(--border-width);
+            background: var(--ink-black);
+            cursor: col-resize;
+            transition: background 0.2s;
+        }
+
+        .pane-divider:hover {
+            background: var(--pickle-bright);
+        }
+
+        .editor-area {
+            flex: 1;
+            padding: 24px;
+            outline: none;
+            border: none;
+            resize: none;
+            background: transparent;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ink-black);
+        }
+
+        .preview-area {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: var(--bg-vellum);
+            font-size: 13px;
+            line-height: 1.6;
+            border-left: 1px solid var(--ink-black);
+        }
+
+        /* MARKDOWN STYLING */
+        .preview-area h1 { border-bottom: 4px solid var(--ink-black); margin-bottom: 16px; padding-bottom: 4px; }
+        .preview-area h2 { border-bottom: 2px solid var(--ink-black); margin-top: 24px; margin-bottom: 8px; }
+        .preview-area p { margin-bottom: 12px; }
+        .preview-area code { background: var(--pickle-muted); padding: 2px 4px; font-weight: 500; }
+        .preview-area blockquote { border-left: 6px solid var(--pickle-bright); padding-left: 16px; font-style: italic; margin: 16px 0; }
+
+        /* FOOTER BAR */
+        .footer-bar {
+            height: var(--bar-height);
+            border-top: var(--border-width) solid var(--ink-black);
+            background: var(--bg-vellum);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .footer-segment {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .meta-label { color: rgba(0,0,0,0.5); margin-right: 4px; }
+        .meta-value { color: var(--ink-black); }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--ink-black); border: 2px solid var(--bg-vellum); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--pickle-bright); }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+        .file-item { animation: fadeIn 0.2s ease-out forwards; }
+
+        /* FOCUS STATES */
+        :focus-visible {
+            outline: 2px dashed var(--pickle-bright);
+            outline-offset: 2px;
+        }
+
+        /* ZOOM CONTROLS */
+        .zoom-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid var(--ink-black);
+            padding: 0 4px;
+            background: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="app-brand">
+            <div class="pickle-logo"></div>
+            SPIFFPICKLE
+        </div>
+        <div class="status-badge">local_indexed_db</div>
+        <div style="margin-left: auto; display: flex; gap: 8px;">
+            <span class="meta-label">FILE:</span>
+            <span class="meta-value" id="current-filename">manifesto.md</span>
+        </div>
+        <div class="zoom-indicator">
+            <button class="tool-btn" style="width:16px; height:16px; border:none;" onclick="adjustZoom(-0.1)">-</button>
+            <span id="zoom-level">100%</span>
+            <button class="tool-btn" style="width:16px; height:16px; border:none;" onclick="adjustZoom(0.1)">+</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="icon-toolbar">
+            <button class="tool-btn active" title="Explorer" onclick="toggleSidebar()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            </button>
+            <button class="tool-btn" title="New File">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+            </button>
+            <button class="tool-btn" title="Search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <div style="flex:1"></div>
+            <button class="tool-btn" title="Export">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </button>
+            <button class="tool-btn" title="Settings">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </aside>
+
+        <aside class="file-browser" id="file-browser">
+            <div class="panel-header">
+                EXPLORER
+                <span>(3)</span>
+            </div>
+            <div class="file-list">
+                <div class="file-item folder-toggle">PROJECT_ALPHA</div>
+                <div class="file-item selected" style="padding-left: 24px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    manifesto.md
+                </div>
+                <div class="file-item" style="padding-left: 24px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    roadmap.md
+                </div>
+                <div class="file-item">LICENSE.txt</div>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <section class="pane" id="editor-pane">
+                <div class="panel-header" style="background: rgba(0,255,65,0.05);">EDITOR</div>
+                <textarea class="editor-area" id="markdown-input" spellcheck="false"># SPIFFPICKLE MANIFESTO
+
+Brutalist UI for the drafting-grid obsessed.
+
+## Core Pillars
+1. **Offline First**: All data is stored in your local `IndexedDB` cluster.
+2. **Optical Type**: Clean lines, even at high density.
+3. **Cyber-Pickle**: High contrast accessibility.
+
+> "The grid is the skeleton of the drafting soul."
+
+### Feature Matrix
+- [x] PWA Auto-updates
+- [x] Split-screen rendering
+- [ ] Export to PDF (Draft)
+- [x] Local Storage schemas
+
+javascript
+const pickle = {
+  status: 'crisp',
+  density: 'high'
+};
+</textarea>
+            </section>
+            
+            <div class="pane-divider" id="resizer"></div>
+
+            <section class="pane" id="preview-pane">
+                <div class="panel-header">PREVIEW</div>
+                <div class="preview-area" id="markdown-preview">
+                    <!-- Markdown rendered here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer-bar">
+        <div class="footer-segment">
+            <span><span class="meta-label">LN</span> <span class="meta-value">42</span></span>
+            <span><span class="meta-label">COL</span> <span class="meta-value">12</span></span>
+            <span><span class="meta-label">WORDS</span> <span class="meta-value">84</span></span>
+        </div>
+        <div class="footer-segment">
+            <span id="sync-status">● SYNCED</span>
+            <span><span class="meta-label">PWA</span> <span class="meta-value">v0.1.4-beta</span></span>
+        </div>
+    </footer>
+
+    <script>
+        const editor = document.getElementById('markdown-input');
+        const preview = document.getElementById('markdown-preview');
+        const resizer = document.getElementById('resizer');
+        const editorPane = document.getElementById('editor-pane');
+        const fileBrowser = document.getElementById('file-browser');
+        const zoomText = document.getElementById('zoom-level');
+
+        let uiScale = 1;
+
+        // Simple Markdown Parser (Subset for Demo)
+        function renderMarkdown() {
+            let text = editor.value;
+            text = text.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            text = text.replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>');
+            text = text.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>');
+            text = text.replace(/\*(.*)\*/gim, '<em>$1</em>');
+            text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+            text = text.replace(/- \[x\] (.*)/gim, '<div style="color:var(--pickle-deep)">✔ $1</div>');
+            text = text.replace(/- \[ \] (.*)/gim, '<div>☐ $1</div>');
+            
+            // Code block simple simulation
+            text = text.replace(/javascript([\s\S]*?)/g, '<pre style="background:var(--ink-black); color:var(--pickle-bright); padding: 12px; margin: 12px 0;"><code>$1</code></pre>');
+            
+            // Paragraphs (naive)
+            const html = text.split('\n\n').map(p => {
+                if(p.startsWith('<h') || p.startsWith('<blockquote') || p.startsWith('<pre')) return p;
+                return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+
+            preview.innerHTML = html;
+        }
+
+        editor.addEventListener('input', renderMarkdown);
+        window.addEventListener('DOMContentLoaded', renderMarkdown);
+
+        // Resize Logic
+        let isResizing = false;
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            let offsetLeft = e.clientX - 236; // toolbar + explorer
+            if(offsetLeft > 100 && offsetLeft < (window.innerWidth - 300)) {
+                editorPane.style.flex = `0 0 ${offsetLeft}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = 'crosshair';
+        });
+
+        // UI Interactions
+        function toggleSidebar() {
+            fileBrowser.classList.toggle('collapsed');
+        }
+
+        function adjustZoom(delta) {
+            uiScale = Math.min(Math.max(0.5, uiScale + delta), 2);
+            document.documentElement.style.setProperty('--ui-scale', uiScale);
+            zoomText.innerText = `${Math.round(uiScale * 100)}%`;
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 's') {
+                    e.preventDefault();
+                    const badge = document.getElementById('sync-status');
+                    badge.innerText = 'SAVING...';
+                    badge.style.color = 'var(--pickle-bright)';
+                    setTimeout(() => {
+                        badge.innerText = '● SYNCED';
+                        badge.style.color = 'inherit';
+                    }, 800);
+                }
+                if (e.key === 'b') {
+                    e.preventDefault();
+                    toggleSidebar();
+                }
+            }
+        });
+
+        // Simulating persistence check
+        console.log("SPIFFPICKLE // DB Schema Normalized.");
+        console.log("Local Config: { theme: 'cyber-pickle-light', autoSave: true }");
+    </script>
+</body>
+</html>

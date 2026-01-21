@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALUMINA | ARCHITECTURAL WORKSPACE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #DEDEDE;
+            --bg-plate: #E8E8E8;
+            --bg-inset: #D1D1D1;
+            --border-heavy: #1A1A1A;
+            --border-light: #F5F5F5;
+            --accent-necromancy: #FF3E00;
+            --text-primary: #111111;
+            --text-secondary: #555555;
+            --microgrid: radial-gradient(circle, #000 0.5px, transparent 0.5px);
+            --grid-size: 12px 12px;
+            --chassis-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            --pressed-shadow: inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px rgba(255,255,255,0.8);
+            --optical-glow: 0 0 8px rgba(255, 62, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            background-image: var(--microgrid);
+            background-size: var(--grid-size);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--text-primary);
+            user-select: none;
+        }
+
+        /* THE SINGLE CHASSIS */
+        .chassis {
+            width: 96vw;
+            height: 92vh;
+            background: var(--bg-plate);
+            border: 2px solid var(--border-heavy);
+            display: grid;
+            grid-template-areas: 
+                "rail top top"
+                "rail browser work"
+                "rail status status";
+            grid-template-columns: 48px 240px 1fr;
+            grid-template-rows: 40px 1fr 32px;
+            position: relative;
+            box-shadow: var(--chassis-shadow);
+            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* TEXTURAL FX: MATTE ARCHITECTURAL PLATEWORK */
+        .chassis::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+            z-index: 10;
+        }
+
+        /* PRIMARY ACTION RAIL (Left) */
+        .action-rail {
+            grid-area: rail;
+            background: #D4D4D4;
+            border-right: 2px solid var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0;
+            gap: 20px;
+            z-index: 20;
+        }
+
+        .tool-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+            transition: all 0.1s;
+        }
+
+        .tool-icon:hover {
+            background: var(--bg-inset);
+            border: 1px solid var(--border-heavy);
+            box-shadow: var(--pressed-shadow);
+        }
+
+        .tool-icon.active {
+            background: var(--accent-necromancy);
+            color: white;
+            border-color: var(--border-heavy);
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            grid-area: top;
+            border-bottom: 2px solid var(--border-heavy);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            gap: 24px;
+        }
+
+        .top-bar .title {
+            color: var(--accent-necromancy);
+            font-weight: 900;
+        }
+
+        .top-bar .breadcrumb {
+            color: var(--text-secondary);
+        }
+
+        /* FILE BROWSER */
+        .browser {
+            grid-area: browser;
+            background: var(--bg-inset);
+            border-right: 2px solid var(--border-heavy);
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .browser-header {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .file-tree {
+            list-style: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+        }
+
+        .file-item {
+            padding: 4px 8px;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-item:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .file-item.selected {
+            background: var(--border-heavy);
+            color: white;
+        }
+
+        .folder::before { content: "□"; margin-right: 4px; }
+        .file::before { content: "—"; margin-right: 4px; }
+
+        /* WORKSPACE / EDITOR */
+        .workspace {
+            grid-area: work;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            overflow: hidden;
+        }
+
+        .pane {
+            height: 100%;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .editor-pane {
+            border-right: 1px solid var(--bg-base);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #333;
+            outline: none;
+            white-space: pre-wrap;
+        }
+
+        .preview-pane {
+            background: #F9F9F9;
+            font-family: 'Inter', sans-serif;
+            color: #111;
+        }
+
+        .preview-pane h1 {
+            font-weight: 900;
+            font-size: 2.4em;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5em;
+            text-transform: uppercase;
+        }
+
+        .preview-pane p {
+            margin-bottom: 1em;
+            line-height: 1.5;
+        }
+
+        /* STATUS DECK (Footer) */
+        .status-deck {
+            grid-area: status;
+            background: var(--border-heavy);
+            color: #888;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            gap: 20px;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .indicator {
+            width: 6px;
+            height: 6px;
+            background: #444;
+        }
+
+        .indicator.active {
+            background: #00FF41;
+            box-shadow: 0 0 5px #00FF41;
+        }
+
+        .indicator.warning {
+            background: var(--accent-necromancy);
+            box-shadow: 0 0 5px var(--accent-necromancy);
+        }
+
+        /* PRESSED CHROME BUTTONS */
+        .chrome-btn {
+            background: var(--bg-plate);
+            border: 1px solid var(--border-heavy);
+            padding: 4px 8px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 1px 1px 0px #fff;
+        }
+
+        .chrome-btn:active {
+            box-shadow: var(--pressed-shadow);
+            transform: translate(1px, 1px);
+        }
+
+        /* METALLIC DIVIDER */
+        .divider {
+            height: 2px;
+            background: var(--border-heavy);
+            width: 100%;
+            margin: 12px 0;
+        }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-inset); }
+        ::-webkit-scrollbar-thumb { background: var(--border-heavy); }
+
+        /* INTERACTIVE OVERLAYS */
+        .overlay-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 4px 8px;
+            background: var(--border-heavy);
+            color: white;
+            font-size: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .zoom-control {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .density-slider {
+            width: 60px;
+            height: 2px;
+            background: #444;
+            position: relative;
+        }
+        .density-slider::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            top: -3px;
+            left: 40%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="chassis">
+        <!-- ACTION RAIL -->
+        <nav class="action-rail">
+            <div class="tool-icon active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            </div>
+            <div class="tool-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </div>
+            <div class="tool-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <div style="margin-top: auto;" class="tool-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            </div>
+        </nav>
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <span class="title">ALUMINA_v4.0.1</span>
+            <span class="breadcrumb">FS / LOCAL_STORAGE / DRAFT_01.MD</span>
+            <div style="margin-left: auto; display: flex; gap: 8px;">
+                <button class="chrome-btn">COMMIT_CHANGES</button>
+                <button class="chrome-btn" style="background: var(--accent-necromancy); color: white;">EXPORT</button>
+            </div>
+        </header>
+
+        <!-- FILE BROWSER -->
+        <aside class="browser">
+            <div class="browser-header">
+                <span>Explorer</span>
+                <span>[+]</span>
+            </div>
+            <ul class="file-tree">
+                <li class="file-item folder">PROJECT_AXON</li>
+                <li class="file-item file">Architecture.md</li>
+                <li class="file-item file selected">Draft_01.md</li>
+                <li class="file-item folder">ASSETS</li>
+                <li class="file-item file">Schema_v2.json</li>
+                <li class="file-item file">Local_Init.sql</li>
+            </ul>
+            <div class="divider"></div>
+            <div class="browser-header">Storage</div>
+            <div class="file-tree">
+                <div class="file-item" style="color: var(--accent-necromancy)">● INDEXED_DB (92%)</div>
+                <div class="file-item">○ LOCAL_STORAGE</div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <section class="workspace">
+            <div class="pane editor-pane" contenteditable="true"># ARCHITECTURAL_OVERLAY
+
+## CORE_SPECIFICATIONS
+- **CHASSIS**: Pressed Alumina
+- **OS**: PWA / Offline-First
+- **ENGINE**: Deterministic Client Configuration
+
+The system operates on a zero-navigation workflow, ensuring that state transitions occur without document reloads. Local synchronization via IndexedDB provides sub-10ms latency for file operations.
+
+javascript
+const ALUMINA = {
+  material: 'Pressed Alumina',
+  density: 0.85,
+  pwa: true,
+  offlineFirst: true
+};
+
+
+The microgrid platework architecture supports high-density metadata surfacing without UI fragmentation.</div>
+            
+            <div class="pane preview-pane">
+                <div class="overlay-label">LIVE_PREVIEW</div>
+                <h1>Architectural_Overlay</h1>
+                <div class="divider"></div>
+                <h3>Core_Specifications</h3>
+                <ul>
+                    <li><strong>CHASSIS</strong>: Pressed Alumina</li>
+                    <li><strong>OS</strong>: PWA / Offline-First</li>
+                    <li><strong>ENGINE</strong>: Deterministic Client Configuration</li>
+                </ul>
+                <p>The system operates on a zero-navigation workflow, ensuring that state transitions occur without document reloads. Local synchronization via IndexedDB provides sub-10ms latency for file operations.</p>
+                <div style="background: #eee; padding: 15px; border-left: 4px solid var(--border-heavy); font-family: 'JetBrains Mono'; font-size: 11px;">
+                    const ALUMINA = { material: 'Pressed Alumina' };
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS DECK -->
+        <footer class="status-deck">
+            <div class="status-pill">
+                <div class="indicator active"></div>
+                PWA_READY
+            </div>
+            <div class="status-pill">
+                <div class="indicator warning"></div>
+                UNSAVED_BUFFERS [2]
+            </div>
+            <div class="status-pill">
+                MEM_USAGE: 42.4MB
+            </div>
+            <div class="status-pill">
+                UTF-8
+            </div>
+            <div class="zoom-control">
+                <span>DENSITY</span>
+                <div class="density-slider"></div>
+                <span>100%</span>
+            </div>
+            <div style="margin-left: 10px; color: #fff;">
+                V_4.0.1_STABLE
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Subtle interaction: Toggle density or file selection
+        document.querySelectorAll('.file-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.file-item.selected')?.classList.remove('selected');
+                item.classList.add('selected');
+            });
+        });
+
+        // Simple Editor -> Preview simulation
+        const editor = document.querySelector('.editor-pane');
+        const preview = document.querySelector('.preview-pane');
+        
+        editor.addEventListener('input', () => {
+            const unsavedIndicator = document.querySelectorAll('.indicator')[1];
+            unsavedIndicator.classList.add('warning');
+            // Logic for real markdown parsing would go here
+        });
+
+        // Keyboard navigation stub
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                const unsavedIndicator = document.querySelectorAll('.indicator')[1];
+                unsavedIndicator.classList.remove('warning');
+                unsavedIndicator.style.background = "#444";
+                unsavedIndicator.style.boxShadow = "none";
+                console.log("ALUMINA: BUFFER_FLUSH_SUCCESS");
+            }
+        });
+    </script>
+</body>
+</html>

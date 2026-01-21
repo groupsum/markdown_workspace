@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SpiffPickle v2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette: Industrial Chromium */
+            --chrome-light: #f2f2f2;
+            --chrome-mid: #dcdcdc;
+            --chrome-dark: #b0b0b0;
+            --chrome-sheen: rgba(255, 255, 255, 0.6);
+            --ink-black: #050505;
+            --safety-orange: #ff3300;
+            --terminal-green: #00ff41;
+            --blueprint-blue: #0044ff;
+            
+            /* Dimensions */
+            --header-h: 36px;
+            --footer-h: 24px;
+            --sidebar-w: 48px;
+            --explorer-w: 220px;
+            --border-width: 2px;
+            
+            /* Typography */
+            --font-ui: 'Archivo', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            scrollbar-width: thin;
+            scrollbar-color: var(--ink-black) var(--chrome-mid);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--chrome-mid);
+            color: var(--ink-black);
+            font-family: var(--font-ui);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: var(--header-h) 1fr var(--footer-h);
+            grid-template-columns: var(--sidebar-w) auto 1fr;
+            /* Y2K Brutalist Grid Lines */
+            gap: 0;
+        }
+
+        /* --- MATERIALITY: CHROMIUM PLATING --- */
+        .chrome-panel {
+            background: linear-gradient(135deg, var(--chrome-light) 0%, var(--chrome-mid) 100%);
+            position: relative;
+        }
+        
+        .chrome-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- BORDERS & EDGES --- */
+        .border-r { border-right: var(--border-width) solid var(--ink-black); }
+        .border-l { border-left: var(--border-width) solid var(--ink-black); }
+        .border-t { border-top: var(--border-width) solid var(--ink-black); }
+        .border-b { border-bottom: var(--border-width) solid var(--ink-black); }
+
+        /* --- HEADER --- */
+        #top-bar {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            z-index: 10;
+            user-select: none;
+        }
+
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            font-size: 14px;
+        }
+
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--terminal-green);
+            border: 1px solid var(--ink-black);
+            box-shadow: 0 0 4px var(--terminal-green);
+        }
+
+        .filename-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-family: var(--font-code);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink-black);
+            width: 200px;
+            text-align: center;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .filename-input:focus {
+            outline: none;
+            border-bottom-color: var(--safety-orange);
+            background: rgba(255,255,255,0.5);
+        }
+
+        .meta-data {
+            font-family: var(--font-code);
+            font-size: 10px;
+            display: flex;
+            gap: 12px;
+            opacity: 0.8;
+        }
+
+        /* --- SIDEBAR TOOLBAR --- */
+        #toolbar {
+            grid-row: 2 / 3;
+            grid-column: 1 / 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            gap: 8px;
+            z-index: 9;
+        }
+
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: var(--border-width) solid var(--ink-black);
+            background: var(--chrome-light);
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.1s;
+            position: relative;
+        }
+
+        .tool-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 2px 2px 0 var(--ink-black);
+            background: #fff;
+        }
+
+        .tool-btn:active {
+            transform: translate(0, 0);
+            box-shadow: none;
+            background: var(--chrome-dark);
+        }
+
+        .tool-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ink-black);
+        }
+
+        /* --- EXPLORER --- */
+        #explorer {
+            grid-row: 2 / 3;
+            grid-column: 2 / 3;
+            width: var(--explorer-w);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #explorer.collapsed {
+            width: 0;
+            border-right: none;
+        }
+
+        .explorer-header {
+            padding: 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            border-bottom: var(--border-width) solid var(--ink-black);
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .file-tree {
+            padding: 8px;
+            overflow-y: auto;
+            flex: 1;
+            font-family: var(--font-code);
+            font-size: 11px;
+        }
+
+        .tree-item {
+            padding: 4px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        
+        .tree-item:hover {
+            color: var(--blueprint-blue);
+            text-decoration: underline;
+        }
+
+        .folder-icon {
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--ink-black);
+            background: var(--chrome-dark);
+        }
+
+        /* --- MAIN WORKSPACE --- */
+        #workspace {
+            grid-row: 2 / 3;
+            grid-column: 3 / 4;
+            display: flex;
+            position: relative;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .pane {
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-width: 100px;
+        }
+
+        #editor-pane {
+            flex: 1;
+            background: #fafafa;
+        }
+
+        #preview-pane {
+            flex: 1;
+            background: #fff;
+            border-left: var(--border-width) solid var(--ink-black);
+        }
+
+        /* --- RESIZER --- */
+        .gutter {
+            width: 12px;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    var(--chrome-mid),
+                    var(--chrome-mid) 2px,
+                    var(--ink-black) 2px,
+                    var(--ink-black) 3px
+                );
+            cursor: col-resize;
+            border-left: var(--border-width) solid var(--ink-black);
+            border-right: var(--border-width) solid var(--ink-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            transition: filter 0.2s;
+        }
+        
+        .gutter:hover {
+            filter: invert(1);
+        }
+
+        /* --- EDITOR AREA --- */
+        textarea#code-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            resize: none;
+            padding: 20px;
+            font-family: var(--font-code);
+            font-size: 13px;
+            line-height: 1.6;
+            background: transparent;
+            color: var(--ink-black);
+            outline: none;
+        }
+
+        /* --- MARKDOWN RENDERING --- */
+        #markdown-output {
+            padding: 20px 40px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #markdown-output h1 { font-size: 2em; font-weight: 900; letter-spacing: -1px; margin-bottom: 0.5em; text-transform: uppercase; border-bottom: 4px solid var(--ink-black); padding-bottom: 8px; }
+        #markdown-output h2 { font-size: 1.5em; font-weight: 700; margin-top: 1.5em; border-left: 6px solid var(--safety-orange); padding-left: 12px; }
+        #markdown-output p { margin-bottom: 1em; text-align: justify; }
+        #markdown-output code { background: var(--chrome-mid); padding: 2px 4px; font-family: var(--font-code); border: 1px solid var(--ink-black); font-size: 0.9em; }
+        #markdown-output pre { background: var(--ink-black); color: var(--terminal-green); padding: 16px; border: 2px solid var(--ink-black); overflow-x: auto; }
+        #markdown-output blockquote { border-left: 2px solid var(--ink-black); margin-left: 0; padding-left: 16px; font-style: italic; background: var(--chrome-light); padding: 12px; }
+        #markdown-output ul { padding-left: 1em; list-style-type: square; }
+
+        /* --- FOOTER --- */
+        #footer-bar {
+            grid-column: 1 / -1;
+            grid-row: 3 / 4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            font-family: var(--font-code);
+            font-size: 10px;
+            text-transform: uppercase;
+            background: var(--ink-black);
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .footer-section {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .scale-control {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        
+        .scale-btn {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 0;
+            padding-bottom: 2px;
+        }
+        
+        .scale-btn:hover {
+            background: #fff;
+            color: var(--ink-black);
+        }
+
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--chrome-light);
+            border-left: 1px solid var(--ink-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--chrome-dark);
+            border: 1px solid var(--ink-black);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--safety-orange);
+        }
+        ::-webkit-scrollbar-corner {
+            background: var(--ink-black);
+        }
+
+        /* RESPONSIVE SPLIT */
+        @media (max-width: 768px) {
+            #preview-pane { display: none; }
+            .gutter { display: none; }
+            #explorer { position: absolute; height: calc(100vh - 60px); z-index: 50; background: var(--chrome-light); border-right: 2px solid #000; box-shadow: 10px 0 20px rgba(0,0,0,0.2); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header id="top-bar" class="chrome-panel border-b">
+        <div class="brand-block">
+            <div class="indicator-dot"></div>
+            <span>SpiffPickle</span>
+            <span style="font-weight:400; font-size:10px; border:1px solid #000; padding:0 4px; border-radius:0;">v2.0.4</span>
+        </div>
+        
+        <input type="text" class="filename-input" value="manifesto_draft_01.md" spellcheck="false">
+
+        <div class="meta-data">
+            <span>IDXDB: ON</span>
+            <span>LOCAL: SYNCED</span>
+            <span>MEM: 12MB</span>
+        </div>
+    </header>
+
+    <!-- SIDEBAR ICONS -->
+    <aside id="toolbar" class="chrome-panel border-r">
+        <div class="tool-btn" title="Toggle Explorer" onclick="toggleExplorer()">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+        </div>
+        <div class="tool-btn" title="Save">
+            <svg viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+        </div>
+        <div class="tool-btn" title="New File">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div style="flex:1"></div>
+        <div class="tool-btn" title="Settings">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </div>
+    </aside>
+
+    <!-- FILE EXPLORER -->
+    <section id="explorer" class="chrome-panel border-r">
+        <div class="explorer-header">
+            <span>root/user/docs</span>
+            <span style="cursor:pointer">_</span>
+        </div>
+        <div class="file-tree">
+            <div class="tree-item"><span class="folder-icon"></span> <span>projects</span></div>
+            <div style="padding-left: 16px;">
+                <div class="tree-item">↳ specifications.md</div>
+                <div class="tree-item" style="color:var(--blueprint-blue); font-weight:700;">↳ manifesto.md</div>
+                <div class="tree-item">↳ notes_temp.txt</div>
+            </div>
+            <div class="tree-item"><span class="folder-icon"></span> <span>archive</span></div>
+            <div class="tree-item"><span class="folder-icon"></span> <span>config</span></div>
+            <div class="tree-item">README.md</div>
+            <div class="tree-item">LICENSE</div>
+        </div>
+        <div class="explorer-header" style="border-top:2px solid #000; border-bottom:none;">
+            STORAGE: 45%
+        </div>
+    </section>
+
+    <!-- EDITOR / PREVIEW SPLIT -->
+    <main id="workspace">
+        <div id="editor-pane" class="pane">
+            <textarea id="code-input" spellcheck="false"># INDUSTRIAL BRUTALISM
+
+Welcome to **SpiffPickle**, the Y2K-compliant markdown environment for the discerning mechanist.
+
+## Core Directives
+1. **Materiality**: Interfaces should feel heavy.
+2. **Typography**: Legibility is the primary aesthetic.
+3. **Speed**: No lag. Pure input.
+
+### Code Example
+javascript
+function initSystem() {
+    const core = new ChromiumKernel();
+    core.mount('div#root');
+    console.log("System Optimal.");
+}
+
+
+> "The machine does not isolate man from the great problems of nature but plunges him more deeply into them." - Antoine de Saint-Exupéry
+
+---
+
+### Todo List
+- [x] Implement IndexedDB Schema
+- [ ] Fix resize handler for mobile
+- [ ] Export to PDF
+            </textarea>
+        </div>
+        
+        <div class="gutter" id="drag-handle">||</div>
+        
+        <div id="preview-pane" class="pane">
+            <div id="markdown-output">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer-bar" class="border-t">
+        <div class="footer-section">
+            <span>Ln 12, Col 44</span>
+            <span>UTF-8</span>
+            <span>Markdown</span>
+        </div>
+        <div class="footer-section scale-control">
+            <span>ZOOM</span>
+            <button class="scale-btn" onclick="zoomOut()">-</button>
+            <span id="zoom-level">100%</span>
+            <button class="scale-btn" onclick="zoomIn()">+</button>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Resizable Split Pane Logic ---
+        const handle = document.getElementById('drag-handle');
+        const editorPane = document.getElementById('editor-pane');
+        const workspace = document.getElementById('workspace');
+        let isResizing = false;
+
+        handle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+            handle.style.filter = 'invert(1)';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            // Calculate percentage
+            const containerOffset = workspace.offsetLeft;
+            const containerWidth = workspace.offsetWidth;
+            const pointerRelativeX = e.clientX - containerOffset;
+            
+            // Constrain
+            const minWidth = 100;
+            if (pointerRelativeX > minWidth && pointerRelativeX < containerWidth - minWidth) {
+                const newFlexBasis = (pointerRelativeX / containerWidth) * 100;
+                editorPane.style.flex = `0 0 ${newFlexBasis}%`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if(isResizing) {
+                isResizing = false;
+                document.body.style.cursor = 'default';
+                handle.style.filter = 'none';
+            }
+        });
+
+        // --- 2. Markdown Preview Simulation (Simple Regex for demo) ---
+        const input = document.getElementById('code-input');
+        const output = document.getElementById('markdown-output');
+
+        function renderMarkdown(text) {
+            let html = text
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+                .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                .replace(/\`\`\`([\s\S]*?)\`\`\`/gim, '<pre>$1</pre>')
+                .replace(/\`(?!\`)(.*?)\`/gim, '<code>$1</code>')
+                .replace(/\n/gim, '<br />');
+            return html;
+        }
+
+        input.addEventListener('input', (e) => {
+            output.innerHTML = renderMarkdown(e.target.value);
+        });
+
+        // Initial Render
+        output.innerHTML = renderMarkdown(input.value);
+
+        // --- 3. Toggle Explorer ---
+        const explorer = document.getElementById('explorer');
+        function toggleExplorer() {
+            explorer.classList.toggle('collapsed');
+        }
+
+        // --- 4. Zoom Logic ---
+        let zoom = 100;
+        const zoomDisplay = document.getElementById('zoom-level');
+        
+        function updateZoom() {
+            document.body.style.fontSize = `${(14 * (zoom/100))}px`; // Base scale
+            input.style.fontSize = `${(13 * (zoom/100))}px`;
+            output.style.fontSize = `${(14 * (zoom/100))}px`;
+            zoomDisplay.innerText = zoom + '%';
+        }
+
+        function zoomIn() {
+            if(zoom < 150) { zoom += 10; updateZoom(); }
+        }
+        function zoomOut() {
+            if(zoom > 70) { zoom -= 10; updateZoom(); }
+        }
+
+    </script>
+</body>
+</html>

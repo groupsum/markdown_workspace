@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spiffpickle | Brutahau Markdown</title>
+    <link rel="manifest" href="data:application/manifest+json,{'name':'spiffpickle','short_name':'spiffpickle','start_url':'.','display':'standalone'}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --bg: #e0e0e0;
+            --fg: #000000;
+            --accent: #ff4d00;
+            --panel-bg: #ffffff;
+            --border-width: 3px;
+            --sidebar-width: 240px;
+            --toolbar-width: 48px;
+            --top-height: 36px;
+            --footer-height: 28px;
+            --tectonic-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            --font-ui: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --zoom: 1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-ui);
+            font-size: 13px;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        /* HEAVY GAUGE TECTONIC LAYOUT */
+        .app-shell {
+            display: grid;
+            grid-template-columns: var(--toolbar-width) auto;
+            grid-template-rows: var(--top-height) 1fr var(--footer-height);
+            height: 100vh;
+            width: 100vw;
+            border: var(--border-width) solid var(--fg);
+            transform: scale(var(--zoom));
+            transform-origin: top left;
+        }
+
+        .top-bar {
+            grid-column: 1 / -1;
+            background: var(--fg);
+            color: var(--bg);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            justify-content: space-between;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: var(--border-width) solid var(--fg);
+        }
+
+        .toolbar {
+            grid-row: 2;
+            grid-column: 1;
+            background: var(--bg);
+            border-right: var(--border-width) solid var(--fg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            gap: 20px;
+        }
+
+        .main-container {
+            grid-row: 2;
+            grid-column: 2;
+            display: flex;
+            overflow: hidden;
+            background: #aaa; /* Heavy divider look */
+            gap: var(--border-width);
+        }
+
+        .file-explorer {
+            width: var(--sidebar-width);
+            background: var(--panel-bg);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .file-explorer.collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--border-width);
+            background: var(--fg);
+        }
+
+        .pane {
+            background: var(--panel-bg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pane-header {
+            padding: 4px 10px;
+            background: #eee;
+            border-bottom: var(--border-width) solid var(--fg);
+            font-weight: 800;
+            font-size: 10px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* EDITOR STYLING */
+        #editor {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            resize: none;
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            color: var(--fg);
+            background: var(--panel-bg);
+        }
+
+        #preview {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background: var(--panel-bg);
+            line-height: 1.6;
+        }
+
+        /* MARKDOWN ELEMENTS RENDERED */
+        #preview h1, #preview h2, #preview h3 {
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            border-bottom: 2px solid var(--fg);
+        }
+        #preview p { margin-bottom: 1rem; }
+        #preview code { background: #eee; padding: 2px 4px; font-family: var(--font-mono); }
+        #preview pre { background: var(--fg); color: var(--bg); padding: 15px; margin-bottom: 1rem; }
+        #preview blockquote { border-left: 8px solid var(--accent); padding-left: 15px; font-style: italic; }
+
+        .footer-bar {
+            grid-column: 1 / -1;
+            background: var(--bg);
+            border-top: var(--border-width) solid var(--fg);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            gap: 20px;
+        }
+
+        /* BUTTONS & UI */
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--fg);
+            background: var(--panel-bg);
+            box-shadow: 3px 3px 0px 0px var(--fg);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .tool-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px 0px var(--fg);
+        }
+
+        .tool-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px var(--fg);
+        }
+
+        .file-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-item:hover {
+            background: #f0f0f0;
+        }
+
+        .file-item.active {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .tectonic-divider {
+            width: 4px;
+            background: var(--fg);
+            cursor: col-resize;
+        }
+
+        .status-pill {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 0;
+        }
+
+        /* ANIMATIONS */
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pane { animation: reveal 0.4s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+
+        /* Y2K Paneled Layout adjustments */
+        .workspace.single-view {
+            grid-template-columns: 1fr;
+        }
+
+        .hidden { display: none !important; }
+
+    </style>
+</head>
+<body>
+
+<div class="app-shell" id="shell">
+    <header class="top-bar">
+        <div style="display:flex; align-items:center; gap:15px;">
+            <span>SPIFFPICKLE // V1.0.4</span>
+            <span style="font-weight:400; opacity:0.6;">INDEXED_DB_ACTIVE</span>
+        </div>
+        <div style="display:flex; gap:20px;">
+            <span id="current-filename">UNTITLED.MD</span>
+            <span>AUTO_SAVE: ON</span>
+        </div>
+    </header>
+
+    <aside class="toolbar">
+        <button class="tool-btn" onclick="toggleSidebar()" title="Toggle Browser">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M9 3v18"/></svg>
+        </button>
+        <button class="tool-btn" onclick="newFile()" title="New File">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button class="tool-btn" onclick="toggleSplit()" title="Toggle Preview">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="2" y="3" width="20" height="18" rx="0"/><path d="M12 3v18"/></svg>
+        </button>
+        <button class="tool-btn" onclick="exportFile()" title="Export Markdown">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </button>
+        <div style="flex:1"></div>
+        <button class="tool-btn" onclick="adjustZoom(0.1)" title="Zoom In">+</button>
+        <button class="tool-btn" onclick="adjustZoom(-0.1)" title="Zoom Out">-</button>
+    </aside>
+
+    <main class="main-container">
+        <nav class="file-explorer" id="sidebar">
+            <div class="pane-header">File Browser <span onclick="toggleSidebar()" style="cursor:pointer">×</span></div>
+            <div id="file-list">
+                <!-- Files injected here -->
+            </div>
+        </nav>
+
+        <section class="workspace" id="workspace">
+            <div class="pane" id="editor-pane">
+                <div class="pane-header">Source Editor</div>
+                <textarea id="editor" spellcheck="false" placeholder="Start typing brutalist markdown..."></textarea>
+            </div>
+            <div class="pane" id="preview-pane">
+                <div class="pane-header">Live Preview</div>
+                <div id="preview"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bar">
+        <div class="status-pill"><div class="dot"></div> LOCAL_STORAGE</div>
+        <div id="stats">LINES: 1 | WORDS: 0</div>
+        <div style="margin-left:auto">UTF-8</div>
+        <div>SCALE: <span id="zoom-val">100</span>%</div>
+    </footer>
+</div>
+
+<script>
+    // --- DATABASE LOGIC ---
+    let db;
+    const DB_NAME = "SpiffpickleDB";
+    const STORE_NAME = "files";
+    let currentFileId = null;
+    let zoomLevel = 1.0;
+
+    const request = indexedDB.open(DB_NAME, 1);
+    request.onupgradeneeded = (e) => {
+        db = e.target.result;
+        db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true });
+    };
+    request.onsuccess = (e) => {
+        db = e.target.result;
+        loadFileList();
+    };
+
+    // --- EDITOR LOGIC ---
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const stats = document.getElementById('stats');
+    const fileListEl = document.getElementById('file-list');
+    const workspace = document.getElementById('workspace');
+
+    editor.addEventListener('input', () => {
+        const val = editor.value;
+        preview.innerHTML = marked.parse(val);
+        updateStats();
+        autoSave();
+    });
+
+    function updateStats() {
+        const lines = editor.value.split('\n').length;
+        const words = editor.value.trim() === "" ? 0 : editor.value.trim().split(/\s+/).length;
+        stats.innerText = `LINES: ${lines} | WORDS: ${words}`;
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('collapsed');
+    }
+
+    function toggleSplit() {
+        const previewPane = document.getElementById('preview-pane');
+        previewPane.classList.toggle('hidden');
+        workspace.classList.toggle('single-view');
+    }
+
+    function adjustZoom(delta) {
+        zoomLevel = Math.min(Math.max(0.5, zoomLevel + delta), 2);
+        document.getElementById('shell').style.setProperty('--zoom', zoomLevel);
+        document.getElementById('zoom-val').innerText = Math.round(zoomLevel * 100);
+    }
+
+    // --- FILE OPERATIONS ---
+    async function newFile() {
+        const name = prompt("Filename:", "untitled.md") || "untitled.md";
+        const transaction = db.transaction([STORE_NAME], "readwrite");
+        const store = transaction.objectStore(STORE_NAME);
+        const file = { name, content: "# " + name, timestamp: Date.now() };
+        const req = store.add(file);
+        req.onsuccess = () => {
+            loadFileList();
+            openFile(req.result);
+        };
+    }
+
+    function loadFileList() {
+        const transaction = db.transaction([STORE_NAME], "readonly");
+        const store = transaction.objectStore(STORE_NAME);
+        const req = store.getAll();
+        req.onsuccess = () => {
+            fileListEl.innerHTML = '';
+            req.result.forEach(file => {
+                const div = document.createElement('div');
+                div.className = `file-item ${currentFileId === file.id ? 'active' : ''}`;
+                div.innerHTML = `<span>${file.name}</span> <small style="font-size:8px; opacity:0.5">${new Date(file.timestamp).toLocaleTimeString()}</small>`;
+                div.onclick = () => openFile(file.id);
+                fileListEl.appendChild(div);
+            });
+        };
+    }
+
+    function openFile(id) {
+        const transaction = db.transaction([STORE_NAME], "readonly");
+        const store = transaction.objectStore(STORE_NAME);
+        const req = store.get(id);
+        req.onsuccess = () => {
+            const file = req.result;
+            currentFileId = id;
+            editor.value = file.content;
+            preview.innerHTML = marked.parse(file.content);
+            document.getElementById('current-filename').innerText = file.name.toUpperCase();
+            loadFileList();
+            updateStats();
+        };
+    }
+
+    function autoSave() {
+        if (!currentFileId) return;
+        const transaction = db.transaction([STORE_NAME], "readwrite");
+        const store = transaction.objectStore(STORE_NAME);
+        const req = store.get(currentFileId);
+        req.onsuccess = () => {
+            const data = req.result;
+            data.content = editor.value;
+            data.timestamp = Date.now();
+            store.put(data);
+        };
+    }
+
+    function exportFile() {
+        const blob = new Blob([editor.value], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = document.getElementById('current-filename').innerText.toLowerCase();
+        a.click();
+    }
+
+    // Initialize state
+    setTimeout(() => {
+        if (!currentFileId) {
+            editor.value = "# WELCOME TO SPIFFPICKLE\n\nHeavy-gauge tectonic markdown editing.\n\n- Local First\n- IndexedDB Storage\n- Brutalist UI\n- High Performance";
+            preview.innerHTML = marked.parse(editor.value);
+        }
+    }, 500);
+
+</script>
+</body>
+</html>

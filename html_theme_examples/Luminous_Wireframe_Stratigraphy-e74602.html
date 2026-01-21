@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminous Stratigraphy Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #030304;
+            --bg-layer: #0a0a0c;
+            --grid-line: rgba(255, 255, 255, 0.03);
+            --wire-prim: #00f2ff; /* Cyan */
+            --wire-sec: #ff0055; /* Magenta */
+            --wire-dim: rgba(0, 242, 255, 0.3);
+            --text-main: #e0e0e0;
+            --text-muted: #666;
+            --glass: rgba(10, 10, 12, 0.6);
+            --shadow-pressed: inset 2px 2px 5px #000, inset -1px -1px 2px rgba(255,255,255,0.05);
+            --shadow-lift: 5px 5px 15px #000;
+            --font-ui: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--wire-dim) var(--bg-deep);
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* --- Layout Stratigraphy --- */
+        .app-shell {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            grid-template-rows: 50px 1fr 30px;
+            height: 100vh;
+            width: 100vw;
+            transform-origin: center;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* --- Global Borders/Decorations --- */
+        .stratum {
+            position: relative;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* --- Sidebar (Iconized) --- */
+        .sidebar {
+            grid-row: 1 / span 3;
+            border-right: 1px solid var(--wire-dim);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            color: var(--wire-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            color: var(--wire-prim);
+            text-shadow: 0 0 8px var(--wire-prim);
+        }
+
+        .icon-btn.active {
+            color: var(--wire-prim);
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--wire-dim);
+            box-shadow: var(--shadow-pressed);
+        }
+        
+        .icon-btn.active::after {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 10%;
+            height: 80%;
+            width: 2px;
+            background: var(--wire-prim);
+            box-shadow: 0 0 10px var(--wire-prim);
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--wire-dim);
+            background: rgba(3, 3, 4, 0.8);
+        }
+
+        .file-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filename-input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: var(--font-code);
+            font-size: 14px;
+            font-weight: 700;
+            width: 200px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .filename-input:focus {
+            outline: none;
+            border-bottom: 1px solid var(--wire-prim);
+            box-shadow: 0 4px 10px -5px var(--wire-dim);
+        }
+
+        .status-badge {
+            font-size: 9px;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border: 1px solid var(--wire-dim);
+            color: var(--wire-prim);
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-badge.unsaved {
+            border-color: var(--wire-sec);
+            color: var(--wire-sec);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.4); }
+            70% { box-shadow: 0 0 0 5px rgba(255, 0, 85, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-switch {
+            display: flex;
+            background: #000;
+            border: 1px solid var(--wire-dim);
+            padding: 2px;
+            border-radius: 0;
+            box-shadow: var(--shadow-pressed);
+        }
+
+        .toggle-opt {
+            padding: 4px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-code);
+        }
+
+        .toggle-opt.selected {
+            color: var(--bg-deep);
+            background: var(--wire-prim);
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--wire-dim);
+        }
+
+        /* --- Main Workspace --- */
+        .workspace {
+            grid-column: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split state by default */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Modes */
+        .mode-edit .workspace { grid-template-columns: 1fr 0; }
+        .mode-view .workspace { grid-template-columns: 0 1fr; }
+        
+        .panel {
+            overflow-y: auto;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .panel-editor {
+            background: rgba(0,0,0,0.3);
+            border-right: 1px solid var(--wire-dim);
+        }
+
+        .panel-preview {
+            background: linear-gradient(135deg, rgba(10,10,12,0.8), rgba(5,5,6,0.9));
+            padding: 40px;
+        }
+
+        /* --- Editor Styling --- */
+        .code-area {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            color: var(--text-main);
+            font-family: var(--font-code);
+            font-size: 14px;
+            line-height: 1.6;
+            border: none;
+            padding: 20px 20px 20px 60px; /* Space for line numbers */
+            resize: none;
+            outline: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .line-numbers {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 40px;
+            text-align: right;
+            color: var(--wire-dim);
+            font-family: var(--font-code);
+            font-size: 14px;
+            line-height: 1.6;
+            user-select: none;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        /* --- Preview Markdown Styling --- */
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            font-family: var(--font-ui);
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 1.5em;
+            letter-spacing: -0.5px;
+        }
+
+        .markdown-body h1 { 
+            border-bottom: 2px solid var(--wire-sec);
+            padding-bottom: 10px;
+            display: inline-block;
+            font-size: 2em;
+            text-shadow: 2px 2px 0px rgba(255,0,85,0.2);
+        }
+
+        .markdown-body p {
+            line-height: 1.7;
+            margin-bottom: 1.2em;
+            color: #ccc;
+        }
+
+        .markdown-body code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            font-family: var(--font-code);
+            color: var(--wire-prim);
+            font-size: 0.9em;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+
+        .markdown-body blockquote {
+            border-left: 3px solid var(--wire-sec);
+            padding-left: 15px;
+            margin-left: 0;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- File Browser Drawer (Collapsible) --- */
+        .file-drawer {
+            position: absolute;
+            left: 60px;
+            top: 50px;
+            bottom: 30px;
+            width: 250px;
+            background: #08080a;
+            border-right: 1px solid var(--wire-dim);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5;
+            padding: 20px;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .file-drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            font-family: var(--font-code);
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--wire-prim);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            letter-spacing: 2px;
+        }
+
+        .file-tree ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .file-tree li {
+            padding: 6px 0;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            color: #888;
+            transition: color 0.2s;
+        }
+
+        .file-tree li:hover {
+            color: var(--text-main);
+        }
+
+        .file-tree li.active {
+            color: var(--wire-prim);
+            font-weight: bold;
+        }
+        
+        .file-tree li.active::before {
+            content: '>';
+            margin-right: 8px;
+            color: var(--wire-sec);
+        }
+        
+        .folder-group summary {
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text-main);
+            font-weight: 600;
+            margin: 10px 0 5px;
+            list-style: none;
+        }
+        
+        .folder-group summary::marker {
+            display: none;
+        }
+        
+        .folder-group summary::before {
+            content: '+';
+            display: inline-block;
+            width: 15px;
+            color: var(--wire-dim);
+        }
+        
+        .folder-group[open] summary::before {
+            content: '-';
+            color: var(--wire-prim);
+        }
+
+        /* --- Footer / Zoom / Info --- */
+        .footer {
+            grid-column: 2;
+            background: var(--bg-deep);
+            border-top: 1px solid var(--wire-dim);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-family: var(--font-code);
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .zoom-btn {
+            background: transparent;
+            border: 1px solid var(--wire-dim);
+            color: var(--text-muted);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .zoom-btn:hover {
+            border-color: var(--wire-prim);
+            color: var(--wire-prim);
+        }
+
+        /* --- Wireframe Decor --- */
+        .hud-corner {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--wire-prim);
+            pointer-events: none;
+            z-index: 999;
+        }
+        .hud-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .hud-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+        .hud-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+        .hud-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--wire-dim);
+            border: 1px solid var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--wire-prim);
+        }
+
+    </style>
+</head>
+<body class="mode-split">
+
+    <!-- HUD Elements -->
+    <div class="hud-corner hud-tl"></div>
+    <div class="hud-corner hud-tr"></div>
+    <div class="hud-corner hud-bl"></div>
+    <div class="hud-corner hud-br"></div>
+
+    <div class="app-shell" id="appShell">
+        
+        <!-- Sidebar -->
+        <nav class="sidebar stratum">
+            <div class="icon-btn active" id="btn-files" title="File Browser">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <div class="icon-btn" title="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <div class="icon-btn" style="margin-top: auto;" title="Export">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <div class="icon-btn" title="Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+        </nav>
+
+        <!-- File Browser Drawer -->
+        <aside class="file-drawer" id="fileDrawer">
+            <div class="drawer-header">
+                <span>Local Storage</span>
+                <span>[IDB]</span>
+            </div>
+            <div class="file-tree">
+                <details class="folder-group" open>
+                    <summary>Projects</summary>
+                    <ul>
+                        <li class="active">manifesto_v2.md</li>
+                        <li>styles.css</li>
+                        <li>script.js</li>
+                    </ul>
+                </details>
+                <details class="folder-group" open>
+                    <summary>Archive</summary>
+                    <ul>
+                        <li>notes_2023.md</li>
+                        <li>ideas.txt</li>
+                    </ul>
+                </details>
+            </div>
+        </aside>
+
+        <!-- Top Bar -->
+        <header class="top-bar stratum">
+            <div class="file-meta">
+                <input type="text" class="filename-input" value="manifesto_v2.md" spellcheck="false">
+                <span class="status-badge">PWA v0.9.4</span>
+                <span class="status-badge unsaved">Storage Syncing...</span>
+            </div>
+
+            <div class="view-controls">
+                <div class="toggle-switch">
+                    <div class="toggle-opt" onclick="setMode('edit')">Edit</div>
+                    <div class="toggle-opt selected" onclick="setMode('split')">Split</div>
+                    <div class="toggle-opt" onclick="setMode('view')">View</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Workspace -->
+        <main class="workspace">
+            <div class="panel panel-editor">
+                <div class="line-numbers" id="lineNumbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
+                <textarea class="code-area" id="editor" spellcheck="false">
+# Brutahau Architecture
+
+The concept of **Digital Stratigraphy** relies on the visible layering of information planes. Unlike Material Design, which stacks paper, this stacks **light**.
+
+## Core Principles
+
+1. **Wireframe Visibility**: Do not hide the structure. The grid is the art.
+2. **Luminosity**: Data glows. Backgrounds recede into the void.
+3. **Typography**: Mono for truth, Sans for structure.
+
+> "To press a button is to interrupt a circuit of light."
+
+### Code Example
+javascript
+function renderStratum(depth) {
+    const light = depth * 0.5;
+    return `rgba(0, 242, 255, ${light})`;
+}
+
+
+## Next Steps
+- [ ] Implement IndexedDB
+- [ ] Add WebGL distortion
+- [x] Create CSS Grid Layout
+                </textarea>
+            </div>
+            <div class="panel panel-preview">
+                <div class="markdown-body" id="preview">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="stats">
+                LINES: <span id="lineCount">15</span> | CHARS: <span id="charCount">450</span> | LF
+            </div>
+            <div class="zoom-controls">
+                <span>SCALE</span>
+                <button class="zoom-btn" onclick="adjustZoom(-0.1)">-</button>
+                <span id="zoomLevel">100%</span>
+                <button class="zoom-btn" onclick="adjustZoom(0.1)">+</button>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Core Logic ---
+
+        const appShell = document.getElementById('appShell');
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const btnFiles = document.getElementById('btn-files');
+        const fileDrawer = document.getElementById('fileDrawer');
+        const zoomDisplay = document.getElementById('zoomLevel');
+        
+        let currentZoom = 1;
+
+        // Markdown Parser (Simplified for simulation)
+        function parseMarkdown(text) {
+            let html = text
+                // Headers
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                // Blockquotes
+                .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+                // Bold
+                .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+                // Code Block
+                .replace(/([^]+?)/gim, '<pre><code>$1</code></pre>')
+                // Inline Code
+                .replace(/`([^`]+)`/gim, '<code>$1</code>')
+                // Checkboxes
+                .replace(/- \[ \] (.*$)/gim, '<div style="color:var(--text-muted)">☐ $1</div>')
+                .replace(/- \[x\] (.*$)/gim, '<div style="color:var(--wire-prim)">☒ $1</div>')
+                // Line breaks
+                .replace(/\n/gim, '<br>');
+            return html;
+        }
+
+        function updatePreview() {
+            const text = editor.value;
+            preview.innerHTML = parseMarkdown(text);
+            
+            // Update stats
+            document.getElementById('charCount').innerText = text.length;
+            const lines = text.split('\n').length;
+            document.getElementById('lineCount').innerText = lines;
+            
+            // Update line numbers
+            lineNumbers.innerHTML = Array(lines).fill(0).map((_, i) => i + 1).join('<br>');
+        }
+
+        // --- Interactivity ---
+
+        // Editor Input
+        editor.addEventListener('input', updatePreview);
+        // Initial Load
+        updatePreview();
+
+        // Mode Switching
+        window.setMode = function(mode) {
+            document.body.className = 'mode-' + mode;
+            // Update UI toggles
+            document.querySelectorAll('.toggle-opt').forEach(el => {
+                el.classList.remove('selected');
+                if(el.innerText.toLowerCase() === mode) el.classList.add('selected');
+            });
+        }
+
+        // File Drawer Toggle
+        btnFiles.addEventListener('click', () => {
+            fileDrawer.classList.toggle('open');
+            btnFiles.classList.toggle('active');
+        });
+
+        // Zoom/Scale Logic
+        window.adjustZoom = function(delta) {
+            currentZoom += delta;
+            // Clamp zoom
+            if(currentZoom < 0.5) currentZoom = 0.5;
+            if(currentZoom > 1.5) currentZoom = 1.5;
+            
+            appShell.style.transform = `scale(${currentZoom})`;
+            zoomDisplay.innerText = Math.round(currentZoom * 100) + '%';
+        }
+
+        // Keyboard Shortcuts (Save simulation)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                const badge = document.querySelector('.status-badge.unsaved');
+                badge.innerText = "SAVED TO IDB";
+                badge.classList.remove('unsaved');
+                badge.style.borderColor = 'var(--wire-prim)';
+                badge.style.color = 'var(--wire-prim)';
+                badge.style.animation = 'none';
+                
+                setTimeout(() => {
+                    badge.innerText = "STORAGE SYNCED";
+                }, 1000);
+            }
+        });
+
+    </script>
+</body>
+</html>

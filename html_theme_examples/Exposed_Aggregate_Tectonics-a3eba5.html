@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTAHAUS // LITHIC-01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-aggregate: #c5c5c5;
+            --stone-900: #1a1a1a;
+            --stone-800: #2d2d2d;
+            --stone-600: #575757;
+            --stone-400: #a3a3a3;
+            --stone-200: #e5e5e5;
+            --accent: #ff4d00;
+            --border-heavy: 2px solid var(--stone-900);
+            --border-light: 1px solid rgba(0,0,0,0.15);
+            --texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            --sidebar-width: 240px;
+            --icon-bar-width: 48px;
+            --zoom: 1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-aggregate);
+            color: var(--stone-900);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-feature-settings: "tnum" 1, "kern" 1;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Material Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--texture);
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* UI Structure */
+        .top-bar {
+            height: 36px;
+            border-bottom: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 20px;
+            background: var(--stone-200);
+            z-index: 100;
+        }
+
+        .brand { font-weight: 900; letter-spacing: -0.05em; font-size: 14px; text-transform: uppercase; }
+        .file-path { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.7; flex-grow: 1; }
+        .system-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; display: flex; gap: 15px; }
+        .status-dot { width: 6px; height: 6px; background: var(--accent); display: inline-block; margin-right: 4px; border-radius: 50%; }
+
+        .main-container {
+            flex-grow: 1;
+            display: flex;
+            overflow: hidden;
+            transform: scale(var(--zoom));
+            transform-origin: top left;
+        }
+
+        /* Toolbar */
+        .icon-bar {
+            width: var(--icon-bar-width);
+            border-right: var(--border-heavy);
+            background: var(--stone-200);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            gap: 20px;
+        }
+
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.1s ease;
+        }
+        .tool-btn:hover { border: 1px solid var(--stone-900); background: white; }
+        .tool-btn.active { background: var(--stone-900); color: white; }
+
+        /* File Explorer */
+        .file-browser {
+            width: var(--sidebar-width);
+            border-right: var(--border-heavy);
+            background: #bdbdbd;
+            display: flex;
+            flex-direction: column;
+            transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .panel-header {
+            padding: 8px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: var(--border-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tree-view {
+            padding: 10px 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .tree-item {
+            padding: 4px 12px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .tree-item:hover { background: rgba(255,255,255,0.3); }
+        .tree-item.folder { font-weight: 700; color: var(--stone-800); }
+        .tree-item.file { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding-left: 24px; }
+        .tree-item.active { background: var(--stone-900); color: white; }
+
+        /* Editor Area */
+        .workspace {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+        }
+
+        .editor-pane, .preview-pane {
+            height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .editor-pane {
+            border-right: var(--border-light);
+            background: #fdfdfd;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            resize: none;
+            padding: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--stone-800);
+            background: transparent;
+            outline: none;
+        }
+
+        .preview-pane {
+            padding: 40px;
+            background: #ffffff;
+            color: var(--stone-900);
+            line-height: 1.5;
+        }
+
+        .preview-pane h1 { font-weight: 900; font-size: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.04em; }
+        .preview-pane p { margin-bottom: 1rem; font-size: 15px; }
+        .preview-pane code { background: var(--stone-200); padding: 2px 4px; font-family: 'JetBrains Mono'; font-size: 13px; }
+
+        /* Footer */
+        .footer-bar {
+            height: 28px;
+            border-top: var(--border-heavy);
+            background: var(--stone-900);
+            color: var(--stone-400);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            gap: 20px;
+        }
+
+        .footer-bar span { display: flex; align-items: center; gap: 5px; }
+        .footer-bar .accent-text { color: var(--accent); }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--stone-200); }
+        ::-webkit-scrollbar-thumb { background: var(--stone-900); }
+
+        /* Responsive/Modes */
+        .split-hidden .preview-pane { display: none; }
+        .split-hidden .workspace { grid-template-columns: 1fr; }
+        
+        .collapsed-explorer { width: 0; overflow: hidden; border-right: none; }
+
+        /* UI Utilities */
+        .lithic-btn {
+            background: none;
+            border: 1px solid var(--stone-900);
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .lithic-btn:hover { background: var(--stone-900); color: white; }
+
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="brand">Brutahaus</div>
+        <div class="file-path">/root/vault/tectonics_v1.md</div>
+        <div class="system-meta">
+            <span><span class="status-dot"></span>LOCAL STORAGE: SYNCED</span>
+            <span>INDEXDB: OPTIMIZED</span>
+            <span>V: 2.4.0-STABLE</span>
+        </div>
+    </header>
+
+    <main class="main-container" id="main-container">
+        
+        <nav class="icon-bar">
+            <div class="tool-btn active" title="Explorer" onclick="toggleExplorer()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+            </div>
+            <div class="tool-btn" title="New File">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            </div>
+            <div class="tool-btn" title="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div style="flex-grow: 1;"></div>
+            <div class="tool-btn" title="Settings">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+            </div>
+        </nav>
+
+        <aside class="file-browser" id="file-browser">
+            <div class="panel-header">
+                <span>Explorer</span>
+                <span style="opacity: 0.5">VAULT_01</span>
+            </div>
+            <div class="tree-view">
+                <div class="tree-item folder">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    DRAFTS
+                </div>
+                <div class="tree-item file">tectonics_v1.md</div>
+                <div class="tree-item file">aggregate_material.md</div>
+                <div class="tree-item folder">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    ARCHIVE
+                </div>
+                <div class="tree-item file">index_old.md</div>
+                <div class="tree-item file">schema_notes.txt</div>
+            </div>
+            <div class="panel-header" style="border-top: var(--border-light); border-bottom: none;">
+                <button class="lithic-btn" onclick="exportData()">Export JSON</button>
+            </div>
+        </aside>
+
+        <section class="workspace" id="workspace">
+            <div class="editor-pane">
+                <textarea id="markdown-input" spellcheck="false"># Exposed Aggregate Tectonics
+
+The Brutahaus philosophy dictates that the structure is the ornament. In this markdown editor, we treat data as the raw material.
+
+## Features
+- **Normalized IndexDB Schema**: All nodes are indexed for instantaneous retrieval.
+- **Lithic UI**: Poured concrete aesthetics with high-contrast typography.
+- **Auto-PWA**: Offline-first performance.
+
+javascript
+const schema = {
+  store: "lithic_blocks",
+  key: "uuid",
+  indices: ["timestamp", "tags"]
+};
+
+
+Everything is permanent until it is destroyed.</textarea>
+            </div>
+            <div class="preview-pane" id="preview-output">
+                <!-- Preview content rendered here -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-bar">
+        <span>UTF-8</span>
+        <span>LINE: <span class="accent-text" id="ln-count">14</span></span>
+        <span>COL: <span class="accent-text" id="col-count">2</span></span>
+        <span style="flex-grow: 1;"></span>
+        <span>ZOOM: <span id="zoom-val">100%</span></span>
+        <span>WORDS: 64</span>
+        <span class="accent-text">● SYNC READY</span>
+    </footer>
+
+    <script>
+        const input = document.getElementById('markdown-input');
+        const output = document.getElementById('preview-output');
+        const explorer = document.getElementById('file-browser');
+        const workspace = document.getElementById('workspace');
+        const zoomVal = document.getElementById('zoom-val');
+        
+        let currentZoom = 1;
+
+        // Simple Markdown Parser (Basic Simulation)
+        function renderMarkdown(text) {
+            let html = text
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gim, '<h2>$2</h2>')
+                .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                .replace(/`(.*)`/gim, '<code>$1</code>')
+                .replace(/\n$/gim, '<br />');
+            
+            output.innerHTML = html;
+        }
+
+        input.addEventListener('input', (e) => {
+            renderMarkdown(e.target.value);
+            saveToLocal();
+        });
+
+        // Toggle UI Panels
+        function toggleExplorer() {
+            explorer.classList.toggle('collapsed-explorer');
+        }
+
+        function toggleSplit() {
+            workspace.parentElement.classList.toggle('split-hidden');
+        }
+
+        // Zoom Logic
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === '=') {
+                e.preventDefault();
+                currentZoom += 0.1;
+                updateZoom();
+            }
+            if (e.ctrlKey && e.key === '-') {
+                e.preventDefault();
+                currentZoom -= 0.1;
+                updateZoom();
+            }
+        });
+
+        function updateZoom() {
+            document.documentElement.style.setProperty('--zoom', currentZoom);
+            zoomVal.innerText = Math.round(currentZoom * 100) + '%';
+        }
+
+        // Schema & Storage Mock
+        const LITHIC_SCHEMA = {
+            version: 1.2,
+            store: 'bruta_files',
+            storageMode: 'INDEXED_DB_PERSISTENT'
+        };
+
+        function saveToLocal() {
+            localStorage.setItem('lithic_buffer', input.value);
+            // Simulate IndexDB update
+            console.log("Atomic Write to IndexDB at " + new Date().toISOString());
+        }
+
+        function exportData() {
+            const blob = new Blob([input.value], {type: 'text/markdown'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'tectonics_export.md';
+            a.click();
+        }
+
+        // Init
+        renderMarkdown(input.value);
+
+        // Simulated PWA Service Worker Hook
+        if ('serviceWorker' in navigator) {
+            console.log('Lithic PWA Lifecycle: Active');
+        }
+    </script>
+</body>
+</html>

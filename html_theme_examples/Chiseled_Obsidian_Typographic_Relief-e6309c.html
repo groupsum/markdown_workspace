@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTAHAUS // OBSIDIAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --surface: #0f0f0f;
+            --border: #1a1a1a;
+            --text-primary: #e4e4e4;
+            --text-secondary: #666;
+            --accent: #3a3a3a;
+            --chisel-light: rgba(255, 255, 255, 0.04);
+            --chisel-dark: rgba(0, 0, 0, 0.8);
+            --sidebar-width: 48px;
+            --explorer-width: 220px;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        body, html {
+            height: 100%;
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow: hidden;
+            font-feature-settings: "ss01", "ss02", "cv01";
+        }
+
+        /* Chiseled Obsidian Texture */
+        .lithic-relief {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 
+                inset 1px 1px 0 var(--chisel-light),
+                1px 1px 2px var(--chisel-dark);
+        }
+
+        .engraved-text {
+            color: var(--text-secondary);
+            text-shadow: -1px -1px 0px rgba(0,0,0,0.8), 1px 1px 0px rgba(255,255,255,0.05);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.65rem;
+        }
+
+        /* Layout */
+        #app-shell {
+            display: grid;
+            grid-template-areas: 
+                "top top top"
+                "nav exp main"
+                "foot foot foot";
+            grid-template-columns: var(--sidebar-width) var(--explorer-width) 1fr;
+            grid-template-rows: 36px 1fr 28px;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            grid-area: top;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .pwa-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* Sidebar Nav */
+        .side-bar {
+            grid-area: nav;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 12px;
+            gap: 20px;
+            z-index: 90;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: var(--transition);
+            fill: currentColor;
+        }
+
+        .nav-icon:hover, .nav-icon.active {
+            opacity: 1;
+            filter: drop-shadow(0 0 4px rgba(255,255,255,0.2));
+        }
+
+        /* File Explorer */
+        .file-browser {
+            grid-area: exp;
+            background: #0c0c0c;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transition: width var(--transition);
+        }
+
+        .browser-header {
+            padding: 12px;
+            font-size: 0.7rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .folder {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            user-select: none;
+        }
+
+        .folder::before {
+            content: "◢";
+            font-size: 0.5rem;
+            transition: transform 0.1s;
+        }
+
+        .folder.collapsed::before {
+            transform: rotate(-90deg);
+        }
+
+        .file-item {
+            padding: 6px 12px 6px 32px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-item:hover {
+            background: var(--surface);
+        }
+
+        .file-item.active {
+            background: var(--surface);
+            border-left-color: #fff;
+            color: #fff;
+        }
+
+        /* Editor Main Area */
+        .main-editor {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-editor.single-view {
+            grid-template-columns: 1fr;
+        }
+
+        .main-editor.preview-only .editor-container {
+            display: none;
+        }
+
+        .editor-container, .preview-container {
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-container {
+            border-right: 1px solid var(--border);
+        }
+
+        textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding: 40px;
+            resize: none;
+            outline: none;
+            tab-size: 4;
+            caret-color: #fff;
+        }
+
+        .preview-container {
+            padding: 40px;
+            overflow-y: auto;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .preview-container h1 { color: #fff; margin-bottom: 1rem; font-weight: 900; letter-spacing: -0.04em; }
+        .preview-container h2 { color: #fff; margin: 1.5rem 0 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+        .preview-container code { background: var(--surface); padding: 2px 4px; font-family: var(--font-mono); font-size: 0.85rem; border-radius: 2px; }
+        .preview-container p { margin-bottom: 1rem; }
+
+        /* Footer */
+        .footer-bar {
+            grid-area: foot;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            background: var(--bg);
+        }
+
+        /* Utility */
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4caf50;
+            box-shadow: 0 0 5px #4caf50;
+        }
+
+        .btn-action {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            font-size: 0.65rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: var(--font-main);
+            font-weight: 700;
+        }
+
+        .btn-action:hover {
+            color: #fff;
+            border-color: #444;
+        }
+
+        /* Zoom Scale logic */
+        #editor-frame {
+            transform-origin: top left;
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Panel Resize Handle */
+        .resize-handle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            cursor: col-resize;
+            background: transparent;
+            z-index: 10;
+        }
+        
+        .resize-handle:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            #app-shell {
+                grid-template-areas: 
+                    "top top"
+                    "nav main"
+                    "foot foot";
+                grid-template-columns: var(--sidebar-width) 1fr;
+            }
+            .file-browser { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-shell">
+    <header class="top-bar">
+        <div class="engraved-text">BRUTAHAUS // CORE_V2.0.4</div>
+        <div class="pwa-meta">
+            <div class="status-pill">
+                <div class="dot"></div>
+                <span class="engraved-text" style="color: #888;">INDEXDB_SYNCED</span>
+            </div>
+            <span class="engraved-text" id="filename-display">README.md</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button class="btn-action" onclick="exportData()">Export</button>
+            <button class="btn-action" onclick="importData()">Import</button>
+        </div>
+    </header>
+
+    <aside class="side-bar">
+        <svg class="nav-icon active" viewBox="0 0 24 24" title="Editor View"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" onclick="toggleViewMode()" title="Split/Single Mode"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16h-7V5h7v14z"/></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" title="File Explorer"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+        <div style="margin-top: auto; padding-bottom: 20px;">
+            <svg class="nav-icon" viewBox="0 0 24 24" onclick="adjustZoom(0.1)" title="Zoom In"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM10 7H9v2H7v1h2v2h1v-2h2V9h-2V7z"/></svg>
+            <svg class="nav-icon" viewBox="0 0 24 24" onclick="adjustZoom(-0.1)" title="Zoom Out"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM7 9h5v1H7V9z"/></svg>
+        </div>
+    </aside>
+
+    <nav class="file-browser">
+        <div class="browser-header engraved-text">LOC_VOL_01</div>
+        <div class="folder" onclick="this.classList.toggle('collapsed')">Project_A</div>
+        <div class="file-item active" onclick="loadFile('README.md')">README.md</div>
+        <div class="file-item" onclick="loadFile('roadmap.md')">roadmap.md</div>
+        <div class="folder collapsed" onclick="this.classList.toggle('collapsed')">Assets</div>
+        <div class="folder" onclick="this.classList.toggle('collapsed')">Drafts</div>
+        <div class="file-item" onclick="loadFile('ideas.md')">ideas.md</div>
+    </nav>
+
+    <main class="main-editor" id="editor-frame">
+        <div class="editor-container">
+            <textarea id="markdown-input" spellcheck="false" placeholder="Begin chiseled input..."></textarea>
+        </div>
+        <div class="resize-handle"></div>
+        <div class="preview-container" id="preview-output">
+            <!-- Rendered content goes here -->
+        </div>
+    </main>
+
+    <footer class="footer-bar">
+        <div style="display: flex; gap: 20px;">
+            <span class="engraved-text">LN <span id="line-count">1</span>, COL <span id="col-count">1</span></span>
+            <span class="engraved-text">WORDS: <span id="word-count">0</span></span>
+        </div>
+        <div class="engraved-text">UTF-8 // NO_WRAP // SCALE: <span id="zoom-level">100%</span></div>
+    </footer>
+</div>
+
+<script>
+    /**
+     * BRUTAHAUS - LITHIC SPA ENGINE
+     * Implements minimalist Markdown parsing and IndexDB logic
+     */
+
+    const input = document.getElementById('markdown-input');
+    const preview = document.getElementById('preview-output');
+    const wordCount = document.getElementById('word-count');
+    const zoomText = document.getElementById('zoom-level');
+    const editorFrame = document.getElementById('editor-frame');
+    
+    let currentZoom = 1.0;
+    let db;
+
+    // Initialize IndexedDB
+    const initDB = () => {
+        const request = indexedDB.open("BrutaHausDB", 1);
+        request.onupgradeneeded = (e) => {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains('files')) {
+                db.createObjectStore('files', { keyPath: 'name' });
+            }
+        };
+        request.onsuccess = (e) => {
+            db = e.target.result;
+            loadInitialContent();
+        };
+    };
+
+    // Simple Markdown Parser (Basic implementation for standalone demo)
+    const parseMarkdown = (text) => {
+        let html = text
+            .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+            .replace(/\*\*(.*)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*)\*/g, '<em>$1</em>')
+            .replace(/`(.*?)`/g, '<code>$1</code>')
+            .replace(/\n/g, '<br>');
+        return html || '<p style="color: #444; font-style: italic;">Lithic output empty...</p>';
+    };
+
+    const updatePreview = () => {
+        const text = input.value;
+        preview.innerHTML = parseMarkdown(text);
+        
+        // Stats
+        const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+        wordCount.innerText = words;
+
+        // Auto-save to LocalStorage (Immediate) and Debounced IDB
+        localStorage.setItem('brutahaus_autosave', text);
+        saveToIDB('README.md', text);
+    };
+
+    const saveToIDB = (name, content) => {
+        if (!db) return;
+        const transaction = db.transaction(['files'], 'readwrite');
+        const store = transaction.objectStore('files');
+        store.put({ name, content, updated: Date.now() });
+    };
+
+    const loadInitialContent = () => {
+        const saved = localStorage.getItem('brutahaus_autosave');
+        if (saved) {
+            input.value = saved;
+            updatePreview();
+        } else {
+            input.value = "# WELCOME TO BRUTAHAUS\n\nChiseled Obsidian Typographic-Relief interface.\n\n- All-in-one SPA\n- Local First (IndexDB)\n- Chiseled Aesthetics\n\n**Start writing...**";
+            updatePreview();
+        }
+    };
+
+    // UI Controls
+    const toggleViewMode = () => {
+        const editor = document.querySelector('.main-editor');
+        if (editor.classList.contains('single-view')) {
+            editor.classList.remove('single-view');
+        } else {
+            editor.classList.add('single-view');
+        }
+    };
+
+    const adjustZoom = (delta) => {
+        currentZoom = Math.min(Math.max(0.7, currentZoom + delta), 1.5);
+        editorFrame.style.transform = `scale(${currentZoom})`;
+        zoomText.innerText = `${Math.round(currentZoom * 100)}%`;
+    };
+
+    const loadFile = (name) => {
+        document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById('filename-display').innerText = name;
+        // Logic to pull from IDB would go here
+    };
+
+    const exportData = () => {
+        const blob = new Blob([input.value], {type: 'text/markdown'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = document.getElementById('filename-display').innerText;
+        a.click();
+    };
+
+    // Event Listeners
+    input.addEventListener('input', updatePreview);
+    
+    // Keybindings (Cmd/Ctrl + S)
+    window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            console.log('Force Saved to IndexDB');
+        }
+    });
+
+    // Initialize
+    initDB();
+
+</script>
+</body>
+</html>

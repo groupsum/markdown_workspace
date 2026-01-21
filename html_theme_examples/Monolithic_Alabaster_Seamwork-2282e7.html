@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spiffe pickle | MD Editor</title>
+    <style>
+        :root {
+            /* Tokens */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #ebebeb;
+            --border-color: #1a1a1a;
+            --text-primary: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #000000;
+            --accent-glow: #ffff00;
+            --status-online: #00ca4e;
+            --status-offline: #ff605c;
+            --status-dirty: #ffbd44;
+            
+            --border-width: 1px;
+            --border-width-bold: 2px;
+            --radius: 0px;
+            
+            /* Scaling tokens */
+            --ui-scale: 1; 
+            --space-xs: calc(4px * var(--ui-scale));
+            --space-sm: calc(8px * var(--ui-scale));
+            --space-md: calc(12px * var(--ui-scale));
+            --space-lg: calc(16px * var(--ui-scale));
+            
+            --font-size-ui: calc(12px * var(--ui-scale));
+            --font-size-mono: calc(13px * var(--ui-scale));
+            --font-size-h1: calc(24px * var(--ui-scale));
+            
+            --z-rail: 100;
+            --z-top: 200;
+            --z-splitter: 50;
+
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: var(--font-size-ui);
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Layout */
+        .app-container {
+            display: grid;
+            grid-template-areas: 
+                "topbar topbar"
+                "rail workspace"
+                "footer footer";
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: auto 1fr;
+            height: 100vh;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            grid-area: topbar;
+            height: 40px;
+            background: var(--bg-primary);
+            border-bottom: var(--border-width-bold) solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-md);
+            gap: var(--space-lg);
+            z-index: var(--z-top);
+        }
+
+        .brand {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand svg { width: 18px; height: 18px; }
+
+        .current-file {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .file-path { color: var(--text-muted); }
+        .file-name {
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            padding: 2px 4px;
+            border-bottom: 1px dashed var(--text-muted);
+            outline: none;
+        }
+        .file-name:focus {
+            background: var(--accent-glow);
+            border-bottom-style: solid;
+        }
+
+        .dirty-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--status-dirty);
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+        .is-dirty .dirty-indicator { display: block; }
+
+        .top-meta {
+            display: flex;
+            gap: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .badge {
+            border: var(--border-width) solid var(--border-color);
+            padding: 2px 6px;
+            background: var(--bg-secondary);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--status-online);
+            margin-right: 4px;
+        }
+
+        /* Left Rail */
+        .left-rail {
+            grid-area: rail;
+            width: 48px;
+            background: var(--bg-secondary);
+            border-right: var(--border-width-bold) solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: var(--space-md);
+            gap: var(--space-sm);
+        }
+
+        .rail-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: var(--border-width) solid transparent;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .rail-btn:hover {
+            border-color: var(--border-color);
+            background: var(--bg-primary);
+        }
+
+        .rail-btn.active {
+            background: var(--border-color);
+            color: white;
+        }
+
+        .rail-btn svg { width: 20px; height: 20px; }
+
+        .rail-spacer { flex-grow: 1; }
+
+        /* Workspace Panels */
+        .workspace {
+            grid-area: workspace;
+            display: flex;
+            overflow: hidden;
+            background: var(--bg-tertiary);
+        }
+
+        .panel {
+            background: var(--bg-primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explorer {
+            width: 240px;
+            border-right: var(--border-width) solid var(--border-color);
+        }
+
+        .panel-header {
+            height: 32px;
+            background: var(--bg-secondary);
+            border-bottom: var(--border-width) solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tree-item {
+            height: 28px;
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            gap: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid transparent;
+        }
+
+        .tree-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .tree-item.selected {
+            background: var(--accent-glow);
+            border-bottom-color: var(--border-color);
+            font-weight: 600;
+        }
+
+        .tree-item svg { width: 14px; height: 14px; color: var(--text-muted); }
+
+        /* Splitters */
+        .splitter {
+            width: 8px;
+            background: var(--bg-tertiary);
+            cursor: col-resize;
+            transition: background 0.2s;
+            position: relative;
+            z-index: var(--z-splitter);
+        }
+        .splitter:hover { background: var(--border-color); }
+        .splitter::after {
+            content: '';
+            position: absolute;
+            left: 3px; top: 0; bottom: 0;
+            width: 2px; border-left: 1px solid var(--border-color);
+            opacity: 0.3;
+        }
+
+        /* Editor & Preview */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+        }
+
+        .editor-container, .preview-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .preview-container {
+            border-left: var(--border-width) solid var(--border-color);
+            background: var(--bg-primary);
+        }
+
+        .editor-textarea {
+            flex-grow: 1;
+            width: 100%;
+            border: none;
+            resize: none;
+            padding: var(--space-lg);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-mono);
+            line-height: 1.6;
+            outline: none;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .editor-textarea::selection {
+            background: var(--accent-glow);
+        }
+
+        /* Preview Typography */
+        .preview-body {
+            flex-grow: 1;
+            padding: var(--space-lg);
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+
+        .preview-body h1 { 
+            font-size: var(--font-size-h1); 
+            margin-bottom: var(--space-md); 
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+        .preview-body h2 { 
+            font-size: 1.2rem; 
+            margin: var(--space-lg) 0 var(--space-sm); 
+            text-transform: uppercase;
+            background: var(--bg-secondary);
+            padding: 4px;
+            display: inline-block;
+        }
+        .preview-body p { margin-bottom: var(--space-md); }
+        .preview-body code {
+            font-family: var(--font-mono);
+            background: var(--bg-secondary);
+            padding: 2px 4px;
+            border: 1px solid var(--border-color);
+        }
+        .preview-body pre {
+            background: var(--bg-secondary);
+            border: var(--border-width) solid var(--border-color);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            overflow-x: auto;
+        }
+        .preview-body blockquote {
+            border-left: 4px solid var(--border-color);
+            padding-left: var(--space-md);
+            margin: var(--space-md) 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            grid-area: footer;
+            height: 28px;
+            background: var(--bg-primary);
+            border-top: var(--border-width-bold) solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-sm);
+            gap: var(--space-lg);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            z-index: var(--z-top);
+        }
+
+        .footer-item { display: flex; align-items: center; gap: 4px; }
+
+        .scale-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+        
+        input[type="range"] {
+            appearance: none;
+            width: 80px;
+            height: 4px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--border-color);
+            cursor: pointer;
+        }
+
+        /* Responsive / State modifiers */
+        .hidden { display: none; }
+        
+        @media (max-width: 768px) {
+            .explorer { display: none; }
+            .preview-container { display: none; }
+            .main-content.preview-mode .preview-container { display: flex; }
+            .main-content.preview-mode .editor-container { display: none; }
+        }
+
+        /* Focus Rings */
+        *:focus-visible {
+            outline: 2px solid var(--border-color);
+            outline-offset: 2px;
+        }
+
+    </style>
+</head>
+<body class="is-dirty">
+
+    <div class="app-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="bevel"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <span>spiffe pickle</span>
+            </div>
+
+            <div class="current-file">
+                <span class="file-path">root/docs/</span>
+                <input type="text" class="file-name" value="architecture-notes.md" spellcheck="false">
+                <div class="dirty-indicator" title="Unsaved changes"></div>
+            </div>
+
+            <div class="top-meta">
+                <div class="badge">v2.4.1-stable</div>
+                <div class="badge">IndexedDB</div>
+                <div class="badge"><span class="status-dot"></span>Online</div>
+            </div>
+        </header>
+
+        <!-- Left Rail -->
+        <nav class="left-rail">
+            <button class="rail-btn" title="New File (Ctrl+N)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+            </button>
+            <button class="rail-btn active" title="Toggle Explorer (Ctrl+B)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="3" y="3" width="18" height="18" rx="0" ry="0"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+            </button>
+            <button class="rail-btn" title="Save (Ctrl+S)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            </button>
+            <div class="rail-spacer"></div>
+            <button class="rail-btn" title="Split View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><rect x="3" y="3" width="18" height="18" rx="0" ry="0"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+            </button>
+            <button class="rail-btn" title="Import/Export">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+            </button>
+            <button class="rail-btn" title="Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+        </nav>
+
+        <!-- Workspace -->
+        <main class="workspace">
+            <aside class="panel explorer" id="explorer">
+                <div class="panel-header">Explorer</div>
+                <div class="tree-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    <span>assets/</span>
+                </div>
+                <div class="tree-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    <span>drafts/</span>
+                </div>
+                <div class="tree-item selected">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                    <span>architecture-notes.md</span>
+                </div>
+                <div class="tree-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                    <span>todo.md</span>
+                </div>
+            </aside>
+
+            <div class="splitter" id="sidebar-resizer"></div>
+
+            <div class="main-content">
+                <section class="panel editor-container">
+                    <div class="panel-header">
+                        Editor
+                        <span style="margin-left: auto; opacity: 0.5;">Ln 42, Col 12</span>
+                    </div>
+                    <textarea class="editor-textarea" spellcheck="false"># Alabaster Seamwork Design
+
+This is a **monolithic** approach to UI.
+
+## Structural Rules
+1. Use crisp 1px lines.
+2. Avoid rounded corners.
+3. Contrast is paramount.
+
+> "The grid is the only truth."
+
+javascript
+const app = {
+  theme: 'brutalist',
+  offlineFirst: true,
+  density: 1.1
+};
+
+
+* High density
+* Offline sync
+* Hard seams</textarea>
+                </section>
+
+                <div class="splitter"></div>
+
+                <section class="panel preview-container">
+                    <div class="panel-header">Preview</div>
+                    <div class="preview-body">
+                        <h1>Alabaster Seamwork Design</h1>
+                        <p>This is a <strong>monolithic</strong> approach to UI.</p>
+                        <h2>Structural Rules</h2>
+                        <ol>
+                            <li>Use crisp 1px lines.</li>
+                            <li>Avoid rounded corners.</li>
+                            <li>Contrast is paramount.</li>
+                        </ol>
+                        <blockquote>"The grid is the only truth."</blockquote>
+                        <pre><code>const app = {
+  theme: 'brutalist',
+  offlineFirst: true,
+  density: 1.1
+};</code></pre>
+                        <ul>
+                            <li>High density</li>
+                            <li>Offline sync</li>
+                            <li>Hard seams</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L22 22m-5-10l4-4m-9 5l3-3"></path></svg>
+                UTF-8
+            </div>
+            <div class="footer-item">Markdown</div>
+            <div class="footer-item">
+                <span style="color: var(--status-online)">●</span> 
+                Sync: Ready
+            </div>
+
+            <div class="scale-control">
+                <span>Density</span>
+                <input type="range" min="0.8" max="1.25" step="0.05" value="1" id="scaleSlider">
+                <span id="scaleValue">100%</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple scale handling
+        const slider = document.getElementById('scaleSlider');
+        const scaleVal = document.getElementById('scaleValue');
+        const root = document.documentElement;
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            root.style.setProperty('--ui-scale', val);
+            scaleVal.textContent = Math.round(val * 100) + '%';
+        });
+
+        // Simple Panel Resizing (Simulated)
+        const splitter = document.getElementById('sidebar-resizer');
+        const explorer = document.getElementById('explorer');
+        let isResizing = false;
+
+        splitter.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.body.style.cursor = 'col-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            const offset = e.clientX - 48; // rail width
+            if (offset > 100 && offset < 500) {
+                explorer.style.width = offset + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.body.style.cursor = 'crosshair';
+        });
+
+        // Focus handling for Brutalist look
+        const ta = document.querySelector('.editor-textarea');
+        ta.addEventListener('focus', () => {
+            ta.parentElement.querySelector('.panel-header').style.background = 'var(--accent-glow)';
+        });
+        ta.addEventListener('blur', () => {
+            ta.parentElement.querySelector('.panel-header').style.background = 'var(--bg-secondary)';
+        });
+    </script>
+</body>
+</html>
