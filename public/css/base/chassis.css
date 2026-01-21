@@ -200,9 +200,18 @@
 }
 
 @media print {
+  @page {
+    size: auto;
+    margin: 12mm;
+  }
+
   body,
   .chassis-root {
     background: #fff;
+  }
+
+  body {
+    margin: 0;
   }
 
   .texture-overlay,
@@ -240,12 +249,43 @@
     overflow: visible;
   }
 
+  .editor-layout-wrapper,
+  .editor-textarea,
+  .editor-gutter,
+  .editor-splitter {
+    display: none !important;
+  }
+
   .editor-pane-container {
     height: auto;
   }
 
   .editor-pane-column {
     width: 100% !important;
+  }
+
+  .preview-pane {
+    background: transparent;
+    width: 100%;
+    max-width: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-sizing: border-box;
+  }
+
+  .preview-pane .markdown-body {
+    max-width: none;
+  }
+
+  .preview-pane table,
+  .preview-pane pre,
+  .preview-pane blockquote,
+  .preview-pane .md-code-block,
+  .preview-pane .md-table,
+  .preview-pane .md-table-row,
+  .preview-pane .md-table-cell {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
 
