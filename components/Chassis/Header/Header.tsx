@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusLed } from '../../UI/StatusLed';
 import { ZoomControl } from '../../UI/ZoomControl';
-import { Settings, Plus, X } from 'lucide-react';
+import { Settings, Plus, X, Search } from 'lucide-react';
 import { FileNode, Tab, AppMode, Project } from '../../../../types';
 import { ThemeDef } from '../../../../data/themes';
 
@@ -19,6 +19,7 @@ interface HeaderProps {
   onZoom: (delta: number) => void;
   onNewFile: () => void;
   onOpenSettings: () => void;
+  onOpenPalette: () => void;
   className?: string;
 }
 
@@ -36,6 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   onZoom,
   onNewFile,
   onOpenSettings,
+  onOpenPalette,
   className = ""
 }) => {
   return (
@@ -84,6 +86,9 @@ export const Header: React.FC<HeaderProps> = ({
            </div>
            <button className="header-btn" onClick={onNewFile} title="New File">
             <Plus size={16} />
+          </button>
+          <button className="header-btn" onClick={onOpenPalette} title="Command Palette">
+            <Search size={16} />
           </button>
           <button className="header-btn" onClick={onOpenSettings} title="System Settings">
             <Settings size={16} />

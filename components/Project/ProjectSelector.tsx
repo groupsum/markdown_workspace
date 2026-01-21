@@ -42,7 +42,13 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
     t.description.toLowerCase().includes(themeSearch.toLowerCase())
   );
 
-  const currentThemeDef = THEMES.find(t => t.id === currentTheme) || THEMES[0];
+  const currentThemeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
+  const currentThemeDef = THEMES[currentThemeIndex];
+
+  const handleThemeStep = (direction: number) => {
+    const nextIndex = (currentThemeIndex + direction + THEMES.length) % THEMES.length;
+    onThemeChange(THEMES[nextIndex].id);
+  };
 
   return (
     <main className="project-selector-stage">
@@ -93,6 +99,29 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                         <span className="theme-desc">{theme.description}</span>
                       </button>
                     ))}
+                  </div>
+                  <div className="theme-popover-footer">
+                    <div className="theme-popover-meta">
+                      <span className="theme-meta-label">ACTIVE_THEME</span>
+                      <span className="theme-meta-value">{currentThemeDef.name}</span>
+                      <span className="theme-meta-count">{currentThemeIndex + 1}/{THEMES.length}</span>
+                    </div>
+                    <div className="theme-popover-actions">
+                      <button
+                        type="button"
+                        className="theme-popover-btn"
+                        onClick={() => handleThemeStep(-1)}
+                      >
+                        PREV_THEME
+                      </button>
+                      <button
+                        type="button"
+                        className="theme-popover-btn theme-popover-btn-primary"
+                        onClick={() => handleThemeStep(1)}
+                      >
+                        NEXT_THEME
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout } from 'lucide-react';
 
 export interface ThemeDef {
   id: string;
@@ -10,6 +10,13 @@ export interface ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
+  {
+    id: 'acid-etched',
+    name: 'Acid Etched Tectonic',
+    description: 'Pickle-bright tectonic surfaces with high-contrast industrial borders.',
+    icon: <Sprout size={20} />,
+    url: '/css/themes/theme-acid-etched.css'
+  },
   {
     id: 'zinc',
     name: 'Milled Zinc',
