@@ -1,0 +1,105 @@
+/*
+   THEME: ANODIZED BILLET MICROSTRUCTURE
+   Deterministically applied via [data-theme="anodized-billet"]
+*/
+
+:root[data-theme="anodized-billet"] {
+  --bg-app: #d1d3d6;
+  --bg-panel: #e0e2e5;
+  --bg-inset: #f0f2f5;
+
+  --border-color: #8a8d91;
+  --border-width: 1.5px;
+
+  --fg-primary: #1a1a1a;
+  --fg-secondary: #3c3c3c;
+  --fg-muted: #555555;
+
+  --accent: #0044cc;
+
+  --status-ok: #008844;
+  --status-warn: #cc8a00;
+  --status-error: #cc3300;
+
+  --app-gap: 2px;
+  --texture-opacity: 0.05;
+}
+
+.theme-anodized-billet .app-header {
+  background: linear-gradient(to bottom, #f6f7f9, var(--bg-panel));
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.theme-anodized-billet .action-rail {
+  background: linear-gradient(to bottom, #eef1f4, var(--bg-panel));
+}
+
+.theme-anodized-billet .workspace-sidebar,
+.theme-anodized-billet .workspace-stage,
+.theme-anodized-billet .project-selector-chassis {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.theme-anodized-billet .view-toolbar,
+.theme-anodized-billet .workspace-panel-header,
+.theme-anodized-billet .project-selector-top {
+  background: linear-gradient(to bottom, #f7f8fa, var(--bg-inset));
+}
+
+.theme-anodized-billet .view-toolbar-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-anodized-billet .rail-btn.is-active {
+  background: var(--bg-panel);
+  color: var(--accent);
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.theme-anodized-billet .tab-item {
+  background: #f7f8fa;
+  border-right: var(--border-width) solid var(--border-color);
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.theme-anodized-billet .tab-item.active {
+  background: var(--bg-panel);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 2px rgba(0, 68, 204, 0.2);
+}
+
+.theme-anodized-billet .badge-unsaved {
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid #0b1e4f;
+}
+
+.theme-anodized-billet .project-btn-new {
+  background: var(--accent);
+  border-color: #002f8a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.theme-anodized-billet .project-card.is-active {
+  box-shadow: inset 0 0 0 3px rgba(0, 68, 204, 0.4);
+}
+
+.theme-anodized-billet .md-h1 {
+  border-bottom: 3px solid var(--border-color);
+  text-transform: uppercase;
+}
+
+.theme-anodized-billet .md-code-header {
+  background: #dfe3e8;
+  color: var(--fg-secondary);
+}
+
+.theme-anodized-billet .editor-splitter {
+  background: #c2c5c9;
+}
+
+.theme-anodized-billet .editor-splitter:hover,
+.theme-anodized-billet .editor-splitter.dragging {
+  background: var(--accent);
+}

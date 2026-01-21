@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Sprout } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout } from 'lucide-react';
 
 export interface ThemeDef {
   id: string;
@@ -23,6 +23,13 @@ export const THEMES: ThemeDef[] = [
     description: 'Precision industrial chassis. High density, low chrome, blue accents.',
     icon: <Cpu size={20} />,
     url: '/css/themes/theme-zinc.css'
+  },
+  {
+    id: 'anodized-billet',
+    name: 'Anodized Billet',
+    description: 'Brushed aluminum chassis with anodized blue signal accents.',
+    icon: <Layers size={20} />,
+    url: '/css/themes/theme-anodized-billet.css'
   },
   {
     id: 'micropress',
