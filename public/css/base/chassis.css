@@ -565,7 +565,7 @@
 }
 
 .header-left {
-  min-width: 200px;
+  min-width: 140px;
 }
 
 .header-center {
@@ -574,11 +574,11 @@
   align-items: stretch;
   height: 100%;
   overflow: hidden;
-  border-left: var(--border-width) solid var(--border-color);
+  padding-left: 6px;
 }
 
 .header-right {
-  min-width: 200px;
+  min-width: 140px;
   justify-content: flex-end;
   border-left: var(--border-width) solid var(--border-color);
   padding-left: 12px;
@@ -586,8 +586,8 @@
 
 .header-brand {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
 }
 
@@ -709,6 +709,10 @@
 
 .status-text--on {
   color: var(--status-ok);
+}
+
+.status-text--warn {
+  color: var(--status-warn);
 }
 
 .status-online {

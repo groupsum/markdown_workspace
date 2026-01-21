@@ -48,6 +48,22 @@
   border: 1px solid black;
 }
 
+.theme-micropress .view-toolbar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: auto;
+  width: auto;
+  padding: 6px;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+  z-index: 60;
+}
+
+.theme-micropress .view-toolbar-group {
+  gap: 4px;
+}
+
 .theme-micropress .markdown-body h1 { 
   border-bottom: 5px solid var(--border-color); 
   text-transform: uppercase; 

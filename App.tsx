@@ -63,7 +63,6 @@ const App: React.FC = () => {
     <div className="app-root">
       <Header 
         className="app-header"
-        currentProject={state.currentProject}
         currentThemeDef={state.currentThemeDef}
         tabs={state.tabs}
         files={state.files}
@@ -74,8 +73,6 @@ const App: React.FC = () => {
         onTabSelect={(tabId, fileId) => { actions.setActiveTabId(tabId); actions.setAppMode('work'); actions.setSelectedExplorerId(fileId); }}
         onTabClose={actions.closeTab}
         onZoom={actions.adjustZoom}
-        onNewFile={actions.promptNewFile}
-        onOpenPalette={() => actions.setShowPalette(true)}
         onOpenSettings={() => actions.setShowSettings(true)}
       />
 
