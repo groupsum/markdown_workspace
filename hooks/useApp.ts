@@ -127,6 +127,11 @@ export const useApp = () => {
       currentProject && fileSys.exportProjectData(currentProject.name);
   };
 
+  const handleHtmlExport = () => {
+      console.log(`[useApp] Action: handleHtmlExport initiated`);
+      fileSys.exportHtmlNode(ui.theme);
+  };
+
   const switchToProjectSelector = () => {
       console.log(`[useApp] Action: switchToProjectSelector`);
       proj.setActiveProjectId(null);
@@ -177,6 +182,7 @@ export const useApp = () => {
       handleDownload,
       handleMoveFile: fileSys.moveFile,
       exportData,
+      handleHtmlExport,
       setFiles: fileSys.setFiles,
       setTabs: tabs.setTabs,
       setActiveTabId: tabs.setActiveTabId,

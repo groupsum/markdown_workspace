@@ -1,8 +1,10 @@
 
 import { useState, useCallback } from 'react';
-import { FileNode } from '../types';
+import JSZip from 'jszip';
+import { AppTheme, FileNode } from '../types';
 import { storage } from '../services/storage';
 import { triggerDownload, compressFolder } from './fileSystem';
+import { createHtmlExport, getExportStyles, toHtmlFileName } from '../services/htmlExport';
 
 export const useFileManager = (
   activeProjectId: string | null,
@@ -137,6 +139,59 @@ export const useFileManager = (
     addToast('EXPORT COMPLETE', 'success');
   };
 
+  const exportHtmlNode = async (theme: AppTheme) => {
+    console.log(`[useFileManager] Action: exportHtmlNode -> selected -> ${selectedExplorerId}`);
+    if (!selectedExplorerId) {
+      addToast('SELECT FILE OR FOLDER TO EXPORT', 'warning');
+      return;
+    }
+
+    const selectedNode = files.find(f => f.id === selectedExplorerId);
+    if (!selectedNode) return;
+
+    const { coreCss, themeCss } = await getExportStyles();
+    const buildHtml = (node: FileNode) => createHtmlExport({
+      title: node.name,
+      content: node.content || '',
+      theme,
+      coreCss,
+      themeCss
+    });
+
+    if (selectedNode.type === 'file') {
+      const html = buildHtml(selectedNode);
+      triggerDownload(html, toHtmlFileName(selectedNode.name), 'text/html');
+      addToast('HTML EXPORT COMPLETE', 'success');
+      return;
+    }
+
+    console.log(`[useFileManager] Exporting HTML folder -> ${selectedNode.name}`);
+    addToast('EXPORTING HTML ARCHIVE...', 'info');
+    const zip = new JSZip();
+    const rootFolder = zip.folder(`${selectedNode.name}-html`);
+    const addFolderToZip = (folderId: string, currentFolder: JSZip) => {
+      const children = files.filter(f => f.parentId === folderId);
+      children.forEach(child => {
+        if (child.type === 'file') {
+          const html = buildHtml(child);
+          currentFolder.file(toHtmlFileName(child.name), html);
+        } else {
+          const nextFolder = currentFolder.folder(child.name);
+          if (nextFolder) {
+            addFolderToZip(child.id, nextFolder);
+          }
+        }
+      });
+    };
+
+    if (rootFolder) {
+      addFolderToZip(selectedNode.id, rootFolder);
+      const blob = await zip.generateAsync({ type: 'blob' });
+      triggerDownload(blob, `${selectedNode.name}-html.zip`, 'application/zip');
+      addToast('HTML ARCHIVE DOWNLOADED', 'success');
+    }
+  };
+
   return {
     files,
     setFiles,
@@ -150,6 +205,7 @@ export const useFileManager = (
     updateFileContent,
     moveFile,
     downloadNode,
-    exportProjectData
+    exportProjectData,
+    exportHtmlNode
   };
 };
