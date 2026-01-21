@@ -1,30 +1,65 @@
 /* 
    THEME: FACTORY DEFAULT
-   ID: default
+   Deterministically applied via [data-theme="default"]
 */
 
-:root {
-  --manifold-bg: #c0c0c0;
-  --plate-bg: #ececec;
-  --plate-inset: #dcdcdc;
-  --plate-border: #000000;
-  --plate-border-width: 2px;
-  
-  --ink-primary: #000000;
-  --ink-secondary: #333333;
-  --ink-muted: #666666;
-  
-  --accent-color: #ff3e00;
-  --accent-dim: #ff3e0044;
-  
-  --sys-ok: #00cc00;
-  --sys-warn: #ff8800;
-  --sys-error: #cc0000;
+:root[data-theme="default"] {
+  --bg-app: #c0c0c0;
+  --bg-panel: #ececec;
+  --bg-inset: #dcdcdc;
 
-  --texture-grain: 0.05;
+  --border-color: #000000;
+  --border-width: 2px;
+
+  --fg-primary: #000000;
+  --fg-secondary: #333333;
+  --fg-muted: #666666;
+
+  --accent: #ff3e00;
+
+  --status-ok: #00cc00;
+  --status-warn: #ff8800;
+  --status-error: #cc0000;
+
   --app-gap: 4px;
+  --texture-opacity: 0.05;
 }
 
-.tab-item {
-  border-bottom: none;
+.theme-default .app-header {
+  background: var(--bg-panel);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.theme-default .action-rail {
+  background: var(--bg-inset);
+}
+
+.theme-default .tab-item {
+  background: var(--bg-inset);
+  color: var(--fg-secondary);
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.theme-default .tab-item.active {
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  border-bottom: 3px solid var(--accent);
+}
+
+.theme-default .rail-btn.is-active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-default .badge-unsaved {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--border-color);
+}
+
+.theme-default .markdown-body h1 {
+  border-bottom: 4px solid var(--border-color);
+  text-transform: uppercase;
+  font-weight: 900;
 }

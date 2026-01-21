@@ -12,26 +12,26 @@
   --rail-btn-size: 32px;
   
   /* Fallback Values: Ensures layout survives theme loading failure */
-  --bg-app: #d1d5d9;     
-  --bg-panel: #ffffff;   
-  --bg-inset: #f3f4f6;   
+  --bg-app: #c0c0c0;     
+  --bg-panel: #ececec;   
+  --bg-inset: #dcdcdc;   
   
   --border-color: #000000;
-  --border-width: 1.5px;
+  --border-width: 2px;
   
   --fg-primary: #000000;
-  --fg-secondary: #1a1a1a;
-  --fg-muted: #52525b;
+  --fg-secondary: #333333;
+  --fg-muted: #666666;
   
-  --accent: #ff3c00;
+  --accent: #ff3e00;
   
-  --status-ok: #00ca4e;
-  --status-warn: #ffbd44;
-  --status-error: #ff605c;
+  --status-ok: #00cc00;
+  --status-warn: #ff8800;
+  --status-error: #cc0000;
 
   /* Structure Settings */
-  --app-gap: 1.5px; 
-  --texture-opacity: 0.03;
+  --app-gap: 4px; 
+  --texture-opacity: 0.05;
   --editor-padding: 24px;
   --file-indent-base: 12px;
   --file-indent-unit: 12px;

@@ -69,6 +69,10 @@
   box-shadow: inset 0 0 0 2px rgba(0, 68, 204, 0.2);
 }
 
+.theme-anodized-billet .status-bar {
+  background: linear-gradient(to bottom, #f6f7f9, var(--bg-panel));
+}
+
 .theme-anodized-billet .badge-unsaved {
   background: var(--accent);
   color: #ffffff;
@@ -85,7 +89,7 @@
   box-shadow: inset 0 0 0 3px rgba(0, 68, 204, 0.4);
 }
 
-.theme-anodized-billet .md-h1 {
+.theme-anodized-billet .markdown-body h1 {
   border-bottom: 3px solid var(--border-color);
   text-transform: uppercase;
 }

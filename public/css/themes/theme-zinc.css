@@ -38,6 +38,17 @@
   color: var(--fg-primary);
 }
 
+.theme-zinc .rail-btn.is-active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-zinc .badge-unsaved {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--border-color);
+}
+
 .theme-zinc .status-bar {
   background: #09090b;
   color: #71717a;
@@ -45,3 +56,9 @@
 }
 
 .theme-zinc .status-text-bold { color: #38bdf8; }
+
+.theme-zinc .markdown-body h1 {
+  border-bottom: 4px solid var(--accent);
+  text-transform: uppercase;
+  font-weight: 900;
+}
