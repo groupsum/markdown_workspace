@@ -13,57 +13,53 @@ const EXPORT_STYLE_OVERRIDES = `
     font-family: "Inter", "Segoe UI", system-ui, sans-serif;
     background: var(--bg-primary, #0d0f12);
     color: var(--fg-primary, #e9ecf1);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .export-shell {
-    max-width: 1100px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    align-items: center;
   }
 
-  .export-header {
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  .export-page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.75in;
+    box-sizing: border-box;
+    background: var(--bg-panel, #11151a);
+    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
   }
 
-  .export-header h1 {
-    font-size: 1.6rem;
-    margin: 0 0 8px;
-  }
-
-  .export-header p {
+  .export-page .markdown-body {
     margin: 0;
-    color: var(--fg-muted, #9aa3b2);
-    font-size: 0.9rem;
   }
 
-  .export-section {
-    background: var(--bg-secondary, rgba(255,255,255,0.04));
-    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
-    padding: 24px;
+  @page {
+    margin: 0.75in;
   }
 
-  .export-section h2 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+  @media print {
+    body.markdown-export {
+      padding: 0;
+      background: #fff;
+    }
 
-  .markdown-source {
-    white-space: pre-wrap;
-    word-break: break-word;
-    background: rgba(0,0,0,0.35);
-    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
-    padding: 16px;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.9rem;
-  }
+    .export-shell {
+      gap: 0;
+    }
 
-  .export-pane {
-    margin-top: 16px;
+    .export-page {
+      width: auto;
+      min-height: auto;
+      margin: 0;
+      border: none;
+      box-shadow: none;
+      page-break-after: always;
+    }
   }
 `;
 
@@ -75,41 +71,15 @@ const escapeHtml = (value: string) => value
   .replace(/'/g, '&#39;');
 
 const previewComponents = (theme: AppTheme) => ({
-  h1: ({node, ...props}: any) => <h1 className="md-h1" {...props} />,
-  h2: ({node, ...props}: any) => <h2 className="md-h2" {...props} />,
-  h3: ({node, ...props}: any) => <h3 className="md-h3" {...props} />,
-  h4: ({node, ...props}: any) => <h4 className="md-h4" {...props} />,
-  h5: ({node, ...props}: any) => <h5 className="md-h5" {...props} />,
-  h6: ({node, ...props}: any) => <h6 className="md-h6" {...props} />,
-  p: ({node, ...props}: any) => <p className="md-p" {...props} />,
-  strong: ({node, ...props}: any) => <strong className="md-strong" {...props} />,
-  em: ({node, ...props}: any) => <em className="md-em" {...props} />,
-  hr: ({node, ...props}: any) => <hr className="md-hr" {...props} />,
-  blockquote: ({node, ...props}: any) => <blockquote className="md-blockquote" {...props} />,
-  ul: ({node, ...props}: any) => <ul className="md-ul" {...props} />,
-  ol: ({node, ...props}: any) => <ol className="md-ol" {...props} />,
-  li: ({node, ...props}: any) => <li className="md-li" {...props} />,
   table: ({node, ...props}: any) => <table className="md-table" {...props} />,
-  thead: ({node, ...props}: any) => <thead {...props} />,
-  tbody: ({node, ...props}: any) => <tbody {...props} />,
-  tr: ({node, ...props}: any) => <tr {...props} />,
-  th: ({node, ...props}: any) => <th {...props} />,
-  td: ({node, ...props}: any) => <td {...props} />,
-  input: ({node, ...props}: any) => {
-    if (props.type === 'checkbox') {
-      return <input type="checkbox" className="md-checkbox" {...props} />;
-    }
-    return <input {...props} />;
-  },
-  a: ({node, href, ...props}: any) => (
-    <a
-      href={href}
-      className="md-link"
-      target={href?.startsWith('http') ? "_blank" : undefined}
-      rel={href?.startsWith('http') ? "noopener noreferrer" : undefined}
-      {...props}
-    />
-  ),
+  thead: ({node, ...props}: any) => <thead className="md-table-head" {...props} />,
+  tbody: ({node, ...props}: any) => <tbody className="md-table-body" {...props} />,
+  tr: ({node, ...props}: any) => <tr className="md-table-row" {...props} />,
+  th: ({node, ...props}: any) => <th className="md-table-header" {...props} />,
+  td: ({node, ...props}: any) => <td className="md-table-cell" {...props} />,
+  caption: ({node, ...props}: any) => <caption className="md-table-caption" {...props} />,
+  colgroup: ({node, ...props}: any) => <colgroup className="md-table-columns" {...props} />,
+  col: ({node, ...props}: any) => <col className="md-table-column" {...props} />,
   code: ({node, inline, className, children, ...props}: any) => {
     const match = /language-(\w+)/.exec(className || '');
     return !inline && match ? (
@@ -135,16 +105,8 @@ const previewComponents = (theme: AppTheme) => ({
   }
 });
 
-const renderPureMarkup = (content: string) => renderToStaticMarkup(
-  <div className="markdown-body export-pane export-pane--pure">
-    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-      {content}
-    </ReactMarkdown>
-  </div>
-);
-
 const renderPreviewMarkup = (content: string, theme: AppTheme) => renderToStaticMarkup(
-  <div className="markdown-body export-pane export-pane--preview">
+  <div className="markdown-body">
     <ReactMarkdown remarkPlugins={[remarkGfm]} components={previewComponents(theme)}>
       {content}
     </ReactMarkdown>
@@ -188,17 +150,15 @@ export const createHtmlExport = ({
   coreCss: string;
   themeCss: string;
 }) => {
-  const pureHtml = renderPureMarkup(content);
   const previewHtml = renderPreviewMarkup(content, theme);
-  const markdownHtml = `<pre class="markdown-source"><code>${escapeHtml(content)}</code></pre>`;
-  const safeTitle = title.replace(/\.md$/i, '');
+  const safeTitle = escapeHtml(title.replace(/\.md$/i, ''));
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="${theme}" class="theme-${theme}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${escapeHtml(safeTitle)} - HTML Export</title>
+  <title>${safeTitle} - Preview Export</title>
   <style>
 ${coreCss}
 ${themeCss}
@@ -207,23 +167,7 @@ ${EXPORT_STYLE_OVERRIDES}
 </head>
 <body class="markdown-export">
   <main class="export-shell">
-    <header class="export-header">
-      <h1>${escapeHtml(safeTitle)}</h1>
-      <p>Markdown source, pure render, and preview render exports.</p>
-    </header>
-
-    <section class="export-section">
-      <h2>Markdown Source</h2>
-      ${markdownHtml}
-    </section>
-
-    <section class="export-section">
-      <h2>Pure Render</h2>
-      ${pureHtml}
-    </section>
-
-    <section class="export-section">
-      <h2>Preview Render</h2>
+    <section class="export-page">
       ${previewHtml}
     </section>
   </main>

@@ -200,9 +200,15 @@
 }
 
 @media print {
+  @page {
+    margin: 0.5in;
+  }
+
   body,
   .chassis-root {
     background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .texture-overlay,
@@ -246,6 +252,11 @@
 
   .editor-pane-column {
     width: 100% !important;
+  }
+
+  .preview-pane {
+    padding: 0 !important;
+    background: transparent;
   }
 }
 
