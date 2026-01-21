@@ -7,7 +7,7 @@ import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
 import { InputModal } from './components/Modals/InputModal';
 import { Footer } from './components/Chassis/Footer/Footer';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw } from 'lucide-react';
 import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
