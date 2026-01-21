@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
 import { Undo, Redo, Bold, Italic, Columns, Maximize2, Eye } from 'lucide-react';
-import { getSyntaxTheme } from '../../../../data/themes';
+import { getSyntaxThemeStyle } from '../../../../data/themes';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -263,7 +263,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                       return !inline && match ? (
                         <div className="md-code-block">
                           <div className="md-code-header">{match[1]}</div>
-                          <SyntaxHighlighter style={getSyntaxTheme(theme)} language={match[1]} PreTag="div" {...props}>
+                          <SyntaxHighlighter style={getSyntaxThemeStyle(theme)} language={match[1]} PreTag="div" {...props}>
                             {String(children).replace(/\n$/, '')}
                           </SyntaxHighlighter>
                         </div>

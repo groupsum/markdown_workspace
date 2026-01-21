@@ -176,6 +176,12 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                           })}
                         </div>
                         <span className="theme-desc">{theme.description}</span>
+                        <span className="text-[10px] uppercase text-[var(--fg-muted)]">
+                          Code Syntax • {theme.syntaxTheme.name}
+                        </span>
+                        <span className="text-[11px] text-[var(--fg-muted)]">
+                          {theme.syntaxTheme.palette}
+                        </span>
                       </button>
                     ))}
                   </div>
