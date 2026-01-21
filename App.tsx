@@ -75,6 +75,7 @@ const App: React.FC = () => {
         onTabClose={actions.closeTab}
         onZoom={actions.adjustZoom}
         onNewFile={actions.promptNewFile}
+        onOpenPalette={() => actions.setShowPalette(true)}
         onOpenSettings={() => actions.setShowSettings(true)}
       />
 
