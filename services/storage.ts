@@ -127,53 +127,88 @@ class StorageService {
         id: 'welcome-md',
         projectId: defaultProjectId,
         parentId: null,
-        name: 'welcome.md',
+        name: 'intro.md',
         type: 'file',
-        content: `# Lattice Architect v2
+        content: `# Welcome to Lattice Architect
 
-## Structural Mental Model
-
-The application follows a **"Metallic Chassis Rack System"** architecture. Components are slotted into the chassis as deterministic functional plates.
-
-\`\`\`text
-_______________________________________________________________________
-| [H] APP_HEADER (Tabs, System Status, Controls)                     |
-|_____________________________________________________________________|
-| [A] | [W] WORK_PANE (The Manifold)                                  |
-|     |_______________________________________________________________|
-| ACT | [E] EXPLORER    | [S] SPLIT_EDITOR / PREVIEW                  |
-| ION |                 |                                             |
-|     | (File Tree)     | (Markdown Input)    | (Rendered Output)     |
-| RAI |                 |                     |                       |
-| L   |                 |                     |                       |
-|_____|_________________|_____________________|_______________________|
-| [F] STATUS_BAR (Telemetry, Environment Meta, Scale)                 |
-|_____________________________________________________________________|
-\`\`\`
-
-## Component Definitions
-
-### 1. [H] App Header
-The **Control Deck**. Manages context switching via the Tab Bar, global UI scaling, and access to systemic settings.
-
-### 2. [A] Action Rail
-The **Primary Vertical Action Strip**. Contains high-frequency "Atomic Actions" (Toggle Explorer, New File, Git Mode, Download).
-
-### 3. [W] Work Pane
-The **Main Manifold**. Orchestrates the relationship between the File System and the Execution Stage.
-
-### 4. [E] Explorer
-A **Hierarchical File Browser**. Optimized for high-density scanning and drag-and-drop structural reorganization.
-
-### 5. [S] Editor / Preview
-The **Execution Core**. Supports a zero-navigation workflow with real-time GFM rendering and code-editor behaviors (shortcuts, undo/redo).
-
-### 6. [F] Status Bar
-The **Telemetry Surface**. Surfacing LN/COL coordinates, IndexedDB persistence health, and PWA version awareness.
+Start here, new operators. This intro is a **living demo** of every Markdown element the editor supports.
 
 ---
 
-> "Structure is the only truth in a digital layout."`,
+## Headings (H2)
+
+### Heading Level 3
+#### Heading Level 4
+##### Heading Level 5
+###### Heading Level 6
+
+## Emphasis & Inline Elements
+
+Mix **bold**, *italic*, ***bold italic***, ~~strikethrough~~, and <u>underline</u> in one sentence. Inline code looks like \`npm run dev\`.
+
+## Links & Images
+
+- Link: [Lattice Architect Docs](https://example.com)
+- Image:
+  ![Sample schematic](https://placehold.co/600x200?text=Markdown+Preview)
+
+## Lists
+
+Unordered list:
+- Fast file creation
+- Split editor + preview
+  - Nested bullet
+
+Ordered list:
+1. Create a file
+2. Write Markdown
+3. Export HTML
+
+Task list:
+- [x] Install the app
+- [x] Open this intro
+- [ ] Create your first project
+
+## Blockquotes
+
+> "Structure is the only truth in a digital layout."\
+> — Lattice Architect Manual
+
+## Code Blocks
+
+\`\`\`ts
+type FileNode = {
+  id: string;
+  name: string;
+  content?: string;
+};
+\`\`\`
+
+## Tables
+
+| Feature | Description | Shortcut |
+| --- | --- | --- |
+| New File | Create a markdown file | \`Ctrl/Cmd + N\` |
+| Search | Find text across files | \`Ctrl/Cmd + F\` |
+| Export | Download HTML | \`Ctrl/Cmd + E\` |
+
+## Horizontal Rule
+
+---
+
+## Footnotes
+
+You can add citations like this.[^1]
+
+[^1]: Footnotes help keep long explanations tidy.
+
+## Escaped Characters
+
+Use backslashes to escape symbols: \\*not italic\\* and \\# not a heading.
+
+---
+
+Happy building!`,
         lastModified: Date.now()
       });
 
