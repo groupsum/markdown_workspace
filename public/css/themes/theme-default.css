@@ -1,0 +1,35 @@
+/* 
+   THEME: FACTORY DEFAULT
+   ID: default
+*/
+
+:root {
+  --manifold-bg: #c0c0c0;
+  --plate-bg: #ececec;
+  --plate-inset: #dcdcdc;
+  --plate-border: #000000;
+  --plate-border-width: 2px;
+  
+  --ink-primary: #000000;
+  --ink-secondary: #333333;
+  --ink-muted: #666666;
+  
+  --accent-color: #ff3e00;
+  --accent-dim: #ff3e0044;
+  
+  --sys-ok: #00cc00;
+  --sys-warn: #ff8800;
+  --sys-error: #cc0000;
+
+  --texture-grain: 0.05;
+  --app-gap: 4px;
+}
+
+/* Structural specific overrides for Default theme */
+.header-left { flex: 0 0 280px; display: flex; align-items: center; }
+.header-center { flex: 1; display: flex; height: 100%; overflow: hidden; border-left: var(--border-width) solid var(--border-color); }
+.header-right { flex: 0 0 280px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; border-left: var(--border-width) solid var(--border-color); padding-left: 12px; }
+
+.tab-item {
+  border-bottom: none;
+}

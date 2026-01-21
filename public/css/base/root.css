@@ -1,0 +1,73 @@
+
+/* Lattice Architect: Core Variable Contract */
+
+:root {
+  /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
+  --header-height: 36px;
+  --rail-width: 44px;
+  --sidebar-width: 200px;
+  --status-height: 24px;
+  
+  /* Fallback Values: Ensures layout survives theme loading failure */
+  --bg-app: #d1d5d9;     
+  --bg-panel: #ffffff;   
+  --bg-inset: #f3f4f6;   
+  
+  --border-color: #000000;
+  --border-width: 1.5px;
+  
+  --fg-primary: #000000;
+  --fg-secondary: #1a1a1a;
+  --fg-muted: #52525b;
+  
+  --accent: #ff3c00;
+  
+  --status-ok: #00ca4e;
+  --status-warn: #ffbd44;
+  --status-error: #ff605c;
+
+  /* Structure Settings */
+  --app-gap: 1.5px; 
+  --texture-opacity: 0.03;
+  --editor-padding: 24px;
+
+  /* Fonts - Industrial Stack */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', Menlo, monospace;
+  --font-head: 'Inter', sans-serif;
+}
+
+/* Base reset: The Chassis Grid logic is non-themeable for stability */
+body {
+  background-color: var(--bg-app);
+  color: var(--fg-primary);
+  font-family: var(--font-ui);
+  margin: 0;
+  overflow: hidden;
+  cursor: crosshair;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { 
+  box-sizing: border-box;
+  border-radius: 0 !important; /* Zero-radius mandate */
+}
+
+input, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Scrollbar Styling - Deterministic */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-app); border-left: var(--border-width) solid var(--border-color); }
+::-webkit-scrollbar-thumb { background: var(--fg-primary); border: 2px solid var(--bg-panel); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }

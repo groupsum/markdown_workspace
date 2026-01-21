@@ -1,0 +1,121 @@
+
+/* Lattice Architect: UI Component Implementation */
+
+/* === EDITOR COMPONENTS === */
+.editor-pane-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.view-toolbar {
+  height: 32px;
+  background: var(--bg-inset);
+  border-bottom: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 50;
+}
+
+.view-toolbar-group {
+  display: flex;
+  gap: 2px;
+}
+
+.view-toolbar-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  border: 1px solid transparent;
+}
+.view-toolbar-btn:hover:not(:disabled) { border-color: var(--border-color); color: var(--fg-primary); }
+.view-toolbar-btn.active { background: var(--border-color); color: white; }
+.view-toolbar-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+
+.view-toolbar-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-color);
+  margin: 0 10px;
+}
+
+.editor-pane-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-app);
+}
+
+.editor-pane-column {
+  height: 100%;
+  background: var(--bg-panel);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-layout-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.editor-gutter {
+  width: 48px;
+  background: var(--bg-inset);
+  border-right: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 16px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+  overflow-y: hidden;
+  user-select: none;
+}
+
+.line-num { height: 1.5rem; line-height: 1.5rem; }
+
+.editor-textarea {
+  flex: 1;
+  background: var(--bg-panel);
+  border: none;
+  resize: none;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5rem;
+  color: var(--fg-primary);
+  outline: none;
+  overflow-y: auto;
+}
+
+.editor-splitter {
+  width: var(--app-gap);
+  background: var(--border-color);
+  cursor: col-resize;
+  position: relative;
+  transition: background 0.1s;
+}
+.editor-splitter:hover, .editor-splitter.dragging { background: var(--accent); }
+
+.editor-splitter-handle {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px; height: 24px;
+  background: rgba(255,255,255,0.3);
+}
+
+.preview-pane {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-panel);
+}

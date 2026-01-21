@@ -1,0 +1,67 @@
+/* Lattice Architect: Markdown & GFM Rendering */
+
+/* MARKDOWN STYLES (Scoped) */
+.markdown-body {
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  font-family: var(--font-head);
+  color: var(--fg-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+
+.markdown-body h1 { font-size: 2em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+.markdown-body h2 { font-size: 1.5em; }
+.markdown-body p { margin-bottom: 1em; }
+.markdown-body code { font-family: var(--font-mono); background: var(--bg-inset); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.85em; }
+.markdown-body pre { background: var(--bg-inset); padding: 1em; overflow-x: auto; border-radius: 4px; }
+.markdown-body blockquote { border-left: 4px solid var(--accent); padding-left: 1em; color: var(--fg-muted); margin-left: 0; }
+.markdown-body ul, .markdown-body ol { padding-left: 2em; }
+.markdown-body a { color: var(--accent); text-decoration: underline; cursor: pointer; }
+.markdown-body img { max-width: 100%; }
+
+/* Table Styles */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+}
+
+.markdown-body th {
+  background-color: var(--bg-inset);
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Syntax Highlighting overrides */
+.markdown-body pre > div {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.md-code-block {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+
+.md-code-header {
+  background: var(--bg-inset);
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}

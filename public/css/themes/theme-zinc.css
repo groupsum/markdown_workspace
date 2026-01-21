@@ -1,0 +1,47 @@
+/* 
+   THEME: MILLED ZINC SCHEMATIC
+   Deterministically applied via [data-theme="zinc"]
+*/
+
+:root[data-theme="zinc"] {
+  --bg-app: #09090b;
+  --bg-panel: #e4e4e7;
+  --bg-inset: #a1a1aa;
+  
+  --border-color: #18181b;
+  --border-width: 1.5px;
+  
+  --fg-primary: #09090b;
+  --fg-secondary: #27272a;
+  --fg-muted: #52525b;
+  
+  --accent: #0ea5e9;
+  
+  --status-ok: #10b981;
+  --status-warn: #f59e0b;
+  --status-error: #ef4444;
+  
+  --app-gap: 1.5px;
+  --texture-opacity: 0.12;
+}
+
+.theme-zinc .app-header { background: #d4d4d8; }
+
+.theme-zinc .tab-item {
+  background: #a1a1aa;
+  color: #3f3f46;
+}
+
+.theme-zinc .tab-item.active {
+  background: var(--bg-panel);
+  border-bottom: 4px solid var(--accent);
+  color: var(--fg-primary);
+}
+
+.theme-zinc .status-bar {
+  background: #09090b;
+  color: #71717a;
+  border-top: 1px solid #27272a;
+}
+
+.theme-zinc .status-text-bold { color: #38bdf8; }

@@ -1,0 +1,55 @@
+/* 
+   THEME: OPTICAL MICRO PRESS
+   Deterministically applied via [data-theme="micropress"]
+*/
+
+:root[data-theme="micropress"] {
+  --bg-app: #000000;
+  --bg-panel: #ffffff;
+  --bg-inset: #f0f0f0;
+  
+  --border-color: #000000;
+  --border-width: 2.5px;
+  
+  --fg-primary: #000000;
+  --fg-secondary: #111111;
+  --fg-muted: #666666;
+  
+  --accent: #ff3c00; 
+  
+  --status-ok: #00ff41;
+  --status-warn: #ffcc00;
+  --status-error: #ff0000;
+  
+  --app-gap: 3px;
+  --texture-opacity: 0.08;
+}
+
+.theme-micropress .tab-item {
+  font-weight: 900;
+  background: #e0e0e0;
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.theme-micropress .tab-item.active {
+  background: var(--accent);
+  color: white;
+  border-bottom: none;
+}
+
+.theme-micropress .rail-btn.is-active {
+  background: var(--accent);
+  color: white;
+}
+
+.theme-micropress .badge-unsaved {
+  background: var(--accent);
+  color: white;
+  border: 1px solid black;
+}
+
+.theme-micropress .markdown-body h1 { 
+  border-bottom: 5px solid var(--border-color); 
+  text-transform: uppercase; 
+  font-weight: 900; 
+}

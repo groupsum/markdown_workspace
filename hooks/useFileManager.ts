@@ -1,0 +1,155 @@
+
+import { useState, useCallback } from 'react';
+import { FileNode } from '../types';
+import { storage } from '../services/storage';
+import { triggerDownload, compressFolder } from './fileSystem';
+
+export const useFileManager = (
+  activeProjectId: string | null,
+  addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
+) => {
+  console.log(`[useFileManager] Hook init. Active Project: ${activeProjectId}`);
+
+  const [files, setFiles] = useState<FileNode[]>([]);
+  const [selectedExplorerId, setSelectedExplorerId] = useState<string | null>(null);
+  const [unsaved, setUnsaved] = useState(false);
+
+  const loadFiles = async (projectId: string) => {
+    console.log(`[useFileManager] Action: loadFiles for project -> ${projectId}`);
+    const projectFiles = await storage.getAllFiles(projectId);
+    console.log(`[useFileManager] Loaded ${projectFiles.length} files from IDB`);
+    setFiles(projectFiles);
+    return projectFiles;
+  };
+
+  const createNewFile = async (name: string) => {
+    console.log(`[useFileManager] Action: createNewFile -> ${name}`);
+    if (!activeProjectId) return null;
+    
+    const finalName = name.endsWith('.md') ? name : `${name}.md`;
+    let parentId: string | null = null;
+    const selectedNode = files.find(f => f.id === selectedExplorerId);
+    if (selectedNode) {
+      if (selectedNode.type === 'folder') {
+        parentId = selectedNode.id;
+      } else {
+        parentId = selectedNode.parentId;
+      }
+    }
+
+    const duplicate = files.find(f => 
+      f.projectId === activeProjectId && 
+      f.parentId === parentId && 
+      f.name.toLowerCase() === finalName.toLowerCase()
+    );
+
+    if (duplicate) {
+        console.error(`[useFileManager] Duplicate found: ${finalName}`);
+        addToast(`ERROR: '${finalName}' ALREADY EXISTS`, 'warning');
+        return null;
+    }
+
+    const newFile: FileNode = {
+      id: `file-${Date.now()}`,
+      projectId: activeProjectId,
+      parentId: parentId,
+      name: finalName,
+      type: 'file',
+      content: `# ${name}\n\n`,
+      lastModified: Date.now()
+    };
+
+    console.log(`[useFileManager] Saving new file to IDB: ${newFile.id}`);
+    await storage.saveFile(newFile);
+    setFiles(prev => [...prev, newFile]);
+    addToast('NEW FILE CREATED', 'info');
+    return newFile;
+  };
+
+  const saveFile = async (file: FileNode) => {
+    console.log(`[useFileManager] Action: saveFile -> ${file.id}`);
+    await storage.saveFile({ ...file, lastModified: Date.now() });
+    setUnsaved(false);
+    addToast('FILE SAVED TO IDB', 'success');
+  };
+
+  const updateFileContent = useCallback((fileId: string, content: string) => {
+    console.log(`[useFileManager] Action: updateFileContent (in memory) -> ${fileId}`);
+    setUnsaved(true);
+    setFiles(prev => prev.map(f => 
+      f.id === fileId ? { ...f, content } : f
+    ));
+  }, []);
+
+  const moveFile = async (fileId: string, targetFolderId: string | null) => {
+    console.log(`[useFileManager] Action: moveFile -> ${fileId} to folder -> ${targetFolderId}`);
+    const file = files.find(f => f.id === fileId);
+    if (!file) return;
+    
+    if (file.type === 'folder' && targetFolderId) {
+      let currentId: string | null = targetFolderId;
+      while (currentId) {
+        if (currentId === fileId) {
+          console.warn("[useFileManager] Circular folder move detected");
+          addToast('CANNOT MOVE FOLDER INTO ITSELF', 'warning');
+          return;
+        }
+        const parent: FileNode | undefined = files.find(f => f.id === currentId);
+        currentId = parent ? parent.parentId : null;
+      }
+    }
+
+    const updatedFile = { ...file, parentId: targetFolderId };
+    await storage.saveFile(updatedFile);
+    setFiles(prev => prev.map(f => f.id === fileId ? updatedFile : f));
+    addToast('MOVED ITEM', 'info');
+  };
+
+  const downloadNode = async () => {
+    console.log(`[useFileManager] Action: downloadNode -> selected -> ${selectedExplorerId}`);
+    if (!selectedExplorerId) {
+       addToast('SELECT FILE OR FOLDER TO DOWNLOAD', 'warning');
+       return;
+    }
+
+    const selectedNode = files.find(f => f.id === selectedExplorerId);
+    if (!selectedNode) return;
+
+    if (selectedNode.type === 'file') {
+       triggerDownload(selectedNode.content || '', selectedNode.name, 'text/markdown');
+       addToast('DOWNLOAD STARTED', 'success');
+    } else {
+       console.log(`[useFileManager] Compressing folder -> ${selectedNode.name}`);
+       addToast('COMPRESSING FOLDER...', 'info');
+       const blob = await compressFolder(selectedNode, files);
+       if (blob) {
+         triggerDownload(blob, `${selectedNode.name}.zip`, 'application/zip');
+         addToast('ARCHIVE DOWNLOADED', 'success');
+       }
+    }
+  };
+
+  const exportProjectData = async (projectName: string) => {
+    console.log(`[useFileManager] Action: exportProjectData for project -> ${projectName}`);
+    const json = JSON.stringify(files, null, 2);
+    const name = `${projectName}-backup.json`;
+    triggerDownload(json, name, 'application/json');
+    addToast('EXPORT COMPLETE', 'success');
+  };
+
+  return {
+    files,
+    setFiles,
+    selectedExplorerId,
+    setSelectedExplorerId,
+    unsaved,
+    setUnsaved,
+    loadFiles,
+    createNewFile,
+    saveFile,
+    updateFileContent,
+    moveFile,
+    downloadNode,
+    exportProjectData
+  };
+};

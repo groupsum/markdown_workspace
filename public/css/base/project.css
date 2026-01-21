@@ -1,0 +1,253 @@
+
+/* Lattice Architect: Project & Theme Selection */
+
+.project-selector-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--bg-app); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-selector-chassis {
+  width: 1000px;
+  max-width: 90%;
+  height: 80vh;
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 16px 16px 0 rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: relative;
+}
+
+.project-selector-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: var(--bg-inset);
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.project-title { 
+  font-family: var(--font-head); 
+  font-size: 1.6rem; 
+  font-weight: 950; 
+  line-height: 1; 
+  margin: 0; 
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.project-subtitle { 
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--fg-muted); 
+  text-transform: uppercase;
+  margin: 6px 0 0 0; 
+  letter-spacing: 0.1em;
+}
+
+.project-selector-body {
+  flex: 1;
+  background: var(--bg-app); 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--app-gap);
+  background: var(--border-color); /* Lines between cards */
+}
+
+.project-card {
+  background: var(--bg-panel);
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  position: relative;
+  border-right: var(--app-gap) solid var(--border-color);
+  border-bottom: var(--app-gap) solid var(--border-color);
+}
+
+.project-card:hover {
+  background: var(--bg-inset);
+}
+
+.project-card.is-active {
+  box-shadow: inset 0 0 0 4px var(--accent);
+}
+
+.project-card-main {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-icon {
+  color: var(--accent);
+}
+
+.project-card-title {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--fg-primary);
+}
+
+.project-card-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.project-card-footer {
+  padding: 16px 24px;
+  border-top: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.project-btn-new {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 0 24px;
+  height: 44px;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 900;
+  border: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.05s;
+  text-transform: uppercase;
+}
+
+.project-btn-new:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.project-btn-new:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+/* THEME SELECTOR */
+.theme-toggle-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+}
+
+.theme-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 12px;
+  width: 360px;
+  background: var(--border-color);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 20px 20px 0 rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  gap: var(--app-gap);
+}
+
+.theme-popover-header {
+  padding: 0 20px;
+  height: 56px;
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-grid {
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-gap);
+}
+
+.theme-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--bg-panel);
+  text-align: left;
+}
+
+.theme-item:hover {
+  background: var(--bg-inset);
+}
+
+.theme-item.is-active {
+  background: var(--bg-inset);
+  box-shadow: inset 6px 0 0 var(--accent);
+}
+
+/* Creation Form */
+.project-create-form {
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  padding: 32px;
+}
+
+.project-input {
+  width: 100%;
+  padding: 16px;
+  background: var(--bg-inset);
+  border: var(--border-width) solid var(--border-color);
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.project-btn-submit {
+  flex: 1;
+  background: var(--accent);
+  color: white;
+  padding: 16px;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 900;
+  border: var(--border-width) solid var(--border-color);
+  text-transform: uppercase;
+}
