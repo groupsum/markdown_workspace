@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Project, AppTheme } from '../../types';
 import { THEMES } from '../../data/themes';
-import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Search, Zap } from 'lucide-react';
+import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap } from 'lucide-react';
 
 interface ProjectSelectorProps {
   projects: Project[];
@@ -25,8 +25,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
 }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [newProjectName, setNewProjectName] = useState('');
-  const [showThemeMatrix, setShowThemeMatrix] = useState(false);
-  const [themeSearch, setThemeSearch] = useState('');
+  const [showThemeModal, setShowThemeModal] = useState(false);
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,17 +36,12 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
     }
   };
 
-  const filteredThemes = THEMES.filter(t => 
-    t.name.toLowerCase().includes(themeSearch.toLowerCase()) || 
-    t.description.toLowerCase().includes(themeSearch.toLowerCase())
-  );
-
   const currentThemeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
   const currentThemeDef = THEMES[currentThemeIndex];
 
-  const handleThemeStep = (direction: number) => {
-    const nextIndex = (currentThemeIndex + direction + THEMES.length) % THEMES.length;
-    onThemeChange(THEMES[nextIndex].id);
+  const handleThemeSelect = (themeId: AppTheme) => {
+    onThemeChange(themeId);
+    setShowThemeModal(false);
   };
 
   return (
@@ -63,68 +57,12 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
           <div className="project-actions flex items-center gap-4">
             <div className="theme-selector-container">
               <button 
-                onClick={() => setShowThemeMatrix(!showThemeMatrix)}
-                className={`theme-toggle-btn ${showThemeMatrix ? 'is-active' : ''}`}
+                onClick={() => setShowThemeModal(true)}
+                className="theme-toggle-btn"
                 title={`Current Theme: ${currentThemeDef.name}`}
               >
                 {currentThemeDef.icon && React.cloneElement(currentThemeDef.icon as React.ReactElement<any>, { size: 18 })}
               </button>
-
-              {showThemeMatrix && (
-                <div className="theme-popover">
-                  <div className="theme-popover-header">
-                    <Search size={14} className="text-[var(--fg-muted)]"/>
-                    <input 
-                      autoFocus
-                      className="theme-search-input"
-                      placeholder="FILTER_THEMES..."
-                      value={themeSearch}
-                      onChange={(e) => setThemeSearch(e.target.value)}
-                    />
-                  </div>
-                  <div className="theme-grid">
-                    {filteredThemes.map(theme => (
-                      <button
-                        key={theme.id}
-                        onClick={() => { onThemeChange(theme.id); setShowThemeMatrix(false); }}
-                        className={`theme-item ${currentTheme === theme.id ? 'is-active' : ''}`}
-                      >
-                        <div className="theme-item-top">
-                          <span className="theme-name">{theme.name}</span>
-                          {theme.icon && React.cloneElement(theme.icon as React.ReactElement<any>, { 
-                            size: 14, 
-                            className: currentTheme === theme.id ? 'text-[var(--accent)]' : '' 
-                          })}
-                        </div>
-                        <span className="theme-desc">{theme.description}</span>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="theme-popover-footer">
-                    <div className="theme-popover-meta">
-                      <span className="theme-meta-label">ACTIVE_THEME</span>
-                      <span className="theme-meta-value">{currentThemeDef.name}</span>
-                      <span className="theme-meta-count">{currentThemeIndex + 1}/{THEMES.length}</span>
-                    </div>
-                    <div className="theme-popover-actions">
-                      <button
-                        type="button"
-                        className="theme-popover-btn"
-                        onClick={() => handleThemeStep(-1)}
-                      >
-                        PREV_THEME
-                      </button>
-                      <button
-                        type="button"
-                        className="theme-popover-btn theme-popover-btn-primary"
-                        onClick={() => handleThemeStep(1)}
-                      >
-                        NEXT_THEME
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
             <button 
@@ -172,11 +110,76 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                       onChange={e => setNewProjectName(e.target.value)}
                     />
                   </div>
+                  <div className="project-input-group">
+                    <label className="project-input-label">Assigned_Skin</label>
+                    <button
+                      type="button"
+                      onClick={() => setShowThemeModal(true)}
+                      className="project-theme-trigger"
+                    >
+                      <span className="project-theme-trigger-label">{currentThemeDef.name}</span>
+                      <span className="project-theme-trigger-meta">OPEN_THEME_MATRIX</span>
+                    </button>
+                  </div>
                   <div className="project-form-actions">
                     <button type="submit" className="project-btn-submit">INITIALIZE_CORE</button>
                     <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">ABORT_CMD</button>
                   </div>
                 </form>
+              </div>
+            </div>
+          )}
+
+          {showThemeModal && (
+            <div
+              className="theme-selector-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="theme-selector-title"
+              onClick={() => setShowThemeModal(false)}
+            >
+              <div
+                className="theme-selector-modal-surface"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="theme-selector-modal-header">
+                  <h2 id="theme-selector-title" className="theme-selector-title">
+                    Theme_Matrix
+                  </h2>
+                  <button
+                    type="button"
+                    className="theme-selector-close"
+                    onClick={() => setShowThemeModal(false)}
+                  >
+                    CLOSE
+                  </button>
+                </div>
+                <div className="theme-selector-modal-body">
+                  <div className="theme-selector-meta">
+                    <span className="theme-meta-label">ACTIVE_THEME</span>
+                    <span className="theme-meta-value">{currentThemeDef.name}</span>
+                    <span className="theme-meta-count">{currentThemeIndex + 1}/{THEMES.length}</span>
+                  </div>
+                  <div className="theme-modal-grid">
+                    {THEMES.map(theme => (
+                      <button
+                        key={theme.id}
+                        type="button"
+                        onClick={() => handleThemeSelect(theme.id)}
+                        className={`theme-modal-button ${currentTheme === theme.id ? 'is-active' : ''}`}
+                      >
+                        <div className="theme-modal-button-top">
+                          <span className="theme-name">{theme.name}</span>
+                          {theme.icon && React.cloneElement(theme.icon as React.ReactElement<any>, { 
+                            size: 18, 
+                            className: currentTheme === theme.id ? 'text-[var(--accent)]' : '' 
+                          })}
+                        </div>
+                        <span className="theme-desc">{theme.description}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
