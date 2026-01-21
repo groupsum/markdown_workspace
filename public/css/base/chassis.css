@@ -208,6 +208,8 @@
   body,
   .chassis-root {
     background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   body {
@@ -265,27 +267,8 @@
   }
 
   .preview-pane {
+    padding: 0 !important;
     background: transparent;
-    width: 100%;
-    max-width: none;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    box-sizing: border-box;
-  }
-
-  .preview-pane .markdown-body {
-    max-width: none;
-  }
-
-  .preview-pane table,
-  .preview-pane pre,
-  .preview-pane blockquote,
-  .preview-pane .md-code-block,
-  .preview-pane .md-table,
-  .preview-pane .md-table-row,
-  .preview-pane .md-table-cell {
-    break-inside: avoid;
-    page-break-inside: avoid;
   }
 }
 
