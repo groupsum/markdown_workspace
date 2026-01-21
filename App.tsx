@@ -106,8 +106,6 @@ const App: React.FC = () => {
         onTabSelect={(tabId, fileId) => { actions.setActiveTabId(tabId); actions.setAppMode('work'); actions.setSelectedExplorerId(fileId); }}
         onTabClose={actions.closeTab}
         onZoom={actions.adjustZoom}
-        onNewFile={actions.promptNewFile}
-        onNewFolder={actions.promptNewFolder}
         onOpenSettings={() => actions.setShowSettings(true)}
       />
 

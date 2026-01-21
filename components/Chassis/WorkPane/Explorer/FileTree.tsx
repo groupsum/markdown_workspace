@@ -12,6 +12,8 @@ interface FileTreeProps {
   onHighlight?: (id: string) => void;
   onMove: (fileId: string, targetFolderId: string | null) => void;
   searchQuery?: string;
+  expandAllSignal?: number;
+  collapseAllSignal?: number;
 }
 
 const FileItem: React.FC<{ 
@@ -113,7 +115,17 @@ const FileItem: React.FC<{
   );
 };
 
-export const FileTree: React.FC<FileTreeProps> = ({ files, activeId, selectedId, onSelect, onHighlight, onMove, searchQuery }) => {
+export const FileTree: React.FC<FileTreeProps> = ({
+  files,
+  activeId,
+  selectedId,
+  onSelect,
+  onHighlight,
+  onMove,
+  searchQuery,
+  expandAllSignal = 0,
+  collapseAllSignal = 0
+}) => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const roots = files.filter(f => f.parentId === null);
   const { isDragOverRoot, handleRootDragOver, handleRootDragLeave, handleRootDrop } = useFileTreeDnD(onMove);
@@ -124,7 +136,7 @@ export const FileTree: React.FC<FileTreeProps> = ({ files, activeId, selectedId,
   useEffect(() => {
     setExpandedIds(prev => {
       const next = new Set(prev);
-      files.filter(file => file.type === 'folder').forEach(file => {
+      files.filter(file => file.type === 'folder' && file.parentId === null).forEach(file => {
         if (!next.has(file.id)) {
           next.add(file.id);
         }
@@ -132,6 +144,16 @@ export const FileTree: React.FC<FileTreeProps> = ({ files, activeId, selectedId,
       return next;
     });
   }, [files]);
+
+  useEffect(() => {
+    if (expandAllSignal === 0 || normalizedQuery) return;
+    setExpandedIds(new Set(files.filter(file => file.type === 'folder').map(file => file.id)));
+  }, [expandAllSignal, files, normalizedQuery]);
+
+  useEffect(() => {
+    if (collapseAllSignal === 0 || normalizedQuery) return;
+    setExpandedIds(new Set());
+  }, [collapseAllSignal, normalizedQuery]);
 
   const { visibilityMap, expansionMap, visibleNodes } = useMemo(() => {
     const visibilityMap = new Map<string, boolean>();

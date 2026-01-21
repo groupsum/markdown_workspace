@@ -468,6 +468,20 @@
     box-shadow: none;
   }
 
+  .project-create-modal,
+  .theme-selector-modal {
+    padding: 0;
+  }
+
+  .project-create-modal-surface,
+  .theme-selector-modal-surface {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    box-shadow: none;
+    border-width: 0;
+  }
+
   .project-selector-top {
     padding: 16px;
   }

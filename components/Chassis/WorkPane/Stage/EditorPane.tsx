@@ -35,6 +35,9 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 }) => {
   const [splitPos, setSplitPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(
+    typeof window === 'undefined' ? 1024 : window.innerWidth
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
@@ -45,6 +48,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     future: []
   });
 
+  const isSplitAllowed = viewportWidth > 820;
+
   useEffect(() => {
     if (file && file.content !== history.present) {
       setHistory({
@@ -54,6 +59,18 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       });
     }
   }, [file?.id]);
+
+  useEffect(() => {
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isSplitAllowed && viewMode === 'split') {
+      onViewModeChange('editor');
+    }
+  }, [isSplitAllowed, viewMode, onViewModeChange]);
 
   const updateContent = (newContent: string, isHistoric: boolean = true) => {
     if (newContent === history.present) return;
@@ -190,7 +207,9 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     }
     if (key === '2') {
       e.preventDefault();
-      onViewModeChange('split');
+      if (isSplitAllowed) {
+        onViewModeChange('split');
+      }
       return;
     }
     if (key === '3') {
@@ -281,7 +300,14 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
         <div className="view-toolbar" role="toolbar" aria-label="Work Pane Controls">
            <div className="view-toolbar-group">
              <button onClick={() => onViewModeChange('editor')} className={`view-toolbar-btn ${viewMode === 'editor' ? 'active' : ''}`} title="Editor Only"><Maximize2 size={12}/></button>
-             <button onClick={() => onViewModeChange('split')} className={`view-toolbar-btn ${viewMode === 'split' ? 'active' : ''}`} title="Split View"><Columns size={12}/></button>
+             <button
+               onClick={() => onViewModeChange('split')}
+               className={`view-toolbar-btn view-toolbar-btn--split ${viewMode === 'split' ? 'active' : ''}`}
+               title="Split View"
+               disabled={!isSplitAllowed}
+             >
+               <Columns size={12}/>
+             </button>
              <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
              <div className="view-toolbar-divider"></div>
              <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
