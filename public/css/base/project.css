@@ -67,7 +67,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--app-gap);
-  background: var(--border-color); /* Lines between cards */
+  padding: var(--app-gap);
+  background: var(--bg-app);
+  border: var(--border-width) solid var(--border-color);
 }
 
 .project-card {
@@ -78,8 +80,7 @@
   cursor: pointer;
   transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   position: relative;
-  border-right: var(--app-gap) solid var(--border-color);
-  border-bottom: var(--app-gap) solid var(--border-color);
+  border: var(--border-width) solid var(--border-color);
 }
 
 .project-card:hover {
