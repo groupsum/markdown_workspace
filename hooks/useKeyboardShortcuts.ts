@@ -15,6 +15,7 @@ interface KeyboardShortcutActions {
   selectNextTab: () => void;
   selectPreviousTab: () => void;
   closeInputModal: () => void;
+  printPreview: () => void;
 }
 
 interface KeyboardShortcutState {
@@ -75,7 +76,13 @@ export const useKeyboardShortcuts = (
 
       if (!state.hasActiveProject) return;
 
-      if (meta && (key === 'k' || key === 'p')) {
+      if (meta && key === 'p') {
+        event.preventDefault();
+        actions.printPreview();
+        return;
+      }
+
+      if (meta && key === 'k') {
         event.preventDefault();
         actions.setShowPalette(true);
         return;

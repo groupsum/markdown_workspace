@@ -238,7 +238,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 <div className="settings-card settings-card-list bg-[var(--bg-inset)]">
                     {[
                       { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
-                      { label: 'COMMAND_PALETTE', key: 'CTRL/CMD+K • CTRL/CMD+P' },
+                      { label: 'COMMAND_PALETTE', key: 'CTRL/CMD+K' },
                       { label: 'NEW_FILE', key: 'CTRL/CMD+N' },
                       { label: 'TOGGLE_REGISTRY', key: 'CTRL/CMD+B' },
                       { label: 'FOCUS_REGISTRY', key: 'CTRL/CMD+SHIFT+E' },
@@ -255,7 +255,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       { label: 'TOGGLE_GIT_MODE', key: 'CTRL/CMD+SHIFT+G' },
                       { label: 'ZOOM_IN', key: 'CTRL/CMD++' },
                       { label: 'ZOOM_OUT', key: 'CTRL/CMD+-' },
-                      { label: 'RESET_ZOOM', key: 'CTRL/CMD+0' }
+                      { label: 'RESET_ZOOM', key: 'CTRL/CMD+0' },
+                      { label: 'PRINT_PREVIEW', key: 'CTRL/CMD+P' }
                     ].map((row, i) => (
                       <div key={i} className={`flex justify-between p-3 text-[11px] font-bold uppercase ${i !== 0 ? 'border-t border-[var(--border-color)]' : ''}`}>
                         <span className="text-[var(--fg-muted)]">{row.label}</span>
