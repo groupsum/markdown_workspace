@@ -212,12 +212,25 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <h3 className="settings-section-title">SYSTEM_KEY_MAP</h3>
                   <div className="flex flex-col border-[var(--border-width)] border-[var(--border-color)] bg-[var(--bg-inset)]">
                      {[
-                        { label: 'SAVE_BUFFER', key: 'CTRL+S' },
-                        { label: 'TOGGLE_REGISTRY', key: 'CTRL+B' },
-                        { label: 'SEARCH_MANIFEST', key: 'CTRL+P' },
-                        { label: 'FORMAT_BOLD', key: 'CTRL+B' },
-                        { label: 'FORMAT_ITALIC', key: 'CTRL+I' },
-                        { label: 'UNDO_OP', key: 'CTRL+Z' }
+                        { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
+                        { label: 'COMMAND_PALETTE', key: 'CTRL/CMD+K • CTRL/CMD+P' },
+                        { label: 'NEW_FILE', key: 'CTRL/CMD+N' },
+                        { label: 'TOGGLE_REGISTRY', key: 'CTRL/CMD+B' },
+                        { label: 'FOCUS_REGISTRY', key: 'CTRL/CMD+SHIFT+E' },
+                        { label: 'NEXT_TAB', key: 'CTRL/CMD+TAB' },
+                        { label: 'PREV_TAB', key: 'CTRL/CMD+SHIFT+TAB' },
+                        { label: 'VIEW_EDITOR', key: 'CTRL/CMD+1' },
+                        { label: 'VIEW_SPLIT', key: 'CTRL/CMD+2' },
+                        { label: 'VIEW_PREVIEW', key: 'CTRL/CMD+3' },
+                        { label: 'FORMAT_BOLD', key: 'CTRL/CMD+B' },
+                        { label: 'FORMAT_ITALIC', key: 'CTRL/CMD+I' },
+                        { label: 'UNDO_OP', key: 'CTRL/CMD+Z' },
+                        { label: 'REDO_OP', key: 'CTRL/CMD+SHIFT+Z' },
+                        { label: 'SETTINGS', key: 'CTRL/CMD+,' },
+                        { label: 'TOGGLE_GIT_MODE', key: 'CTRL/CMD+SHIFT+G' },
+                        { label: 'ZOOM_IN', key: 'CTRL/CMD++' },
+                        { label: 'ZOOM_OUT', key: 'CTRL/CMD+-' },
+                        { label: 'RESET_ZOOM', key: 'CTRL/CMD+0' }
                      ].map((row, i) => (
                         <div key={i} className={`flex justify-between p-3 text-[11px] font-bold uppercase ${i !== 0 ? 'border-t border-[var(--border-color)]' : ''}`}>
                            <span className="text-[var(--fg-muted)]">{row.label}</span>
