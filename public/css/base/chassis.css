@@ -33,6 +33,20 @@
   gap: var(--app-gap);
 }
 
+.chassis-body {
+  width: 100%;
+  height: 100%;
+  display: contents;
+}
+
+.app-root {
+  display: contents;
+}
+
+.app-grid {
+  display: contents;
+}
+
 .app-header { grid-area: top; background: var(--bg-panel); border-bottom: var(--border-width) solid var(--border-color); }
 .action-rail { grid-area: rail; background: var(--bg-inset); border-right: var(--border-width) solid var(--border-color); }
 .status-bar { grid-area: foot; background: var(--bg-panel); border-top: var(--border-width) solid var(--border-color); }
@@ -44,6 +58,15 @@
   overflow: hidden;
   gap: var(--app-gap);
   height: 100%;
+}
+
+.git-workspace {
+  grid-area: main;
+  height: 100%;
+  display: flex;
+  background-color: var(--bg-app);
+  overflow: hidden;
+  gap: var(--app-gap);
 }
 
 .workspace-sidebar {
