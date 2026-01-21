@@ -1,6 +1,6 @@
 import React from 'react';
 import { ZoomControl } from '../../UI/ZoomControl';
-import { FilePlus, Settings, X } from 'lucide-react';
+import { FilePlus, FolderPlus, Settings, X } from 'lucide-react';
 import { FileNode, Tab, AppMode } from '../../../../types';
 import { ThemeDef } from '../../../../data/themes';
 
@@ -16,6 +16,7 @@ interface HeaderProps {
   onTabClose: (e: React.MouseEvent, tabId: string) => void;
   onZoom: (delta: number) => void;
   onNewFile: () => void;
+  onNewFolder: () => void;
   onOpenSettings: () => void;
   className?: string;
 }
@@ -32,6 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
   onTabClose,
   onZoom,
   onNewFile,
+  onNewFolder,
   onOpenSettings,
   className = ""
 }) => {
@@ -78,6 +80,9 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="header-btn-group">
               <button className="header-btn" onClick={onNewFile} title="New File">
                 <FilePlus size={16} />
+              </button>
+              <button className="header-btn" onClick={onNewFolder} title="New Folder">
+                <FolderPlus size={16} />
               </button>
               <button className="header-btn" onClick={onOpenSettings} title="System Config">
                 <Settings size={16} />

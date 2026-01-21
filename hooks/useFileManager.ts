@@ -68,6 +68,54 @@ export const useFileManager = (
     return newFile;
   };
 
+  const createNewFolder = async (name: string) => {
+    console.log(`[useFileManager] Action: createNewFolder -> ${name}`);
+    if (!activeProjectId) return null;
+
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      addToast('FOLDER NAME REQUIRED', 'warning');
+      return null;
+    }
+
+    let parentId: string | null = null;
+    const selectedNode = files.find(f => f.id === selectedExplorerId);
+    if (selectedNode) {
+      if (selectedNode.type === 'folder') {
+        parentId = selectedNode.id;
+      } else {
+        parentId = selectedNode.parentId;
+      }
+    }
+
+    const duplicate = files.find(f => 
+      f.projectId === activeProjectId && 
+      f.parentId === parentId && 
+      f.name.toLowerCase() === trimmedName.toLowerCase()
+    );
+
+    if (duplicate) {
+      console.error(`[useFileManager] Duplicate folder found: ${trimmedName}`);
+      addToast(`ERROR: '${trimmedName}' ALREADY EXISTS`, 'warning');
+      return null;
+    }
+
+    const newFolder: FileNode = {
+      id: `folder-${Date.now()}`,
+      projectId: activeProjectId,
+      parentId: parentId,
+      name: trimmedName,
+      type: 'folder',
+      lastModified: Date.now()
+    };
+
+    console.log(`[useFileManager] Saving new folder to IDB: ${newFolder.id}`);
+    await storage.saveFile(newFolder);
+    setFiles(prev => [...prev, newFolder]);
+    addToast('NEW FOLDER CREATED', 'info');
+    return newFolder;
+  };
+
   const saveFile = async (file: FileNode) => {
     console.log(`[useFileManager] Action: saveFile -> ${file.id}`);
     await storage.saveFile({ ...file, lastModified: Date.now() });
@@ -201,6 +249,7 @@ export const useFileManager = (
     setUnsaved,
     loadFiles,
     createNewFile,
+    createNewFolder,
     saveFile,
     updateFileContent,
     moveFile,
