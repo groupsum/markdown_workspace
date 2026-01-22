@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Layout, GitBranch, Database, Keyboard, Download, Settings as SettingsIcon } from 'lucide-react';
+import { X, Layout, GitBranch, Database, Keyboard, Download, RefreshCw, Settings as SettingsIcon } from 'lucide-react';
 import { AppTheme, GitConfig } from '../../types';
 import { THEMES } from '../../data/themes';
 
@@ -11,6 +11,16 @@ interface SettingsModalProps {
   gitConfig: GitConfig;
   onGitConfigChange: (config: GitConfig) => void;
   onExport: () => void;
+  pwaState: {
+    canInstall: boolean;
+    updateAvailable: boolean;
+    isInstalled: boolean;
+    autoUpdateEnabled: boolean;
+    isSupported: boolean;
+  };
+  onPwaInstall: () => void;
+  onPwaUpdate: () => void;
+  onPwaAutoUpdateToggle: (enabled: boolean) => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ 
@@ -20,7 +30,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onThemeChange,
   gitConfig,
   onGitConfigChange,
-  onExport
+  onExport,
+  pwaState,
+  onPwaInstall,
+  onPwaUpdate,
+  onPwaAutoUpdateToggle
 }) => {
   if (!isOpen) return null;
 
@@ -42,6 +56,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const handleGitChange = (key: keyof GitConfig, value: string) => {
     onGitConfigChange({ ...gitConfig, [key]: value });
   };
+
+  const pwaStatusLabel = pwaState.isInstalled ? 'INSTALLED' : 'NOT_INSTALLED';
+  const pwaUpdateLabel = pwaState.updateAvailable ? 'UPDATE_READY' : 'UP_TO_DATE';
 
   return (
     <div className="modal-overlay">
@@ -209,6 +226,50 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <div className="settings-pane">
                 <h3 className="settings-section-title">STORAGE_MANAGEMENT</h3>
                 <div className="flex flex-col gap-4">
+                    <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="font-bold text-[11px] uppercase">PWA_DEPLOYMENT</span>
+                        <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{pwaStatusLabel}</span>
+                      </div>
+                      <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">
+                        Manage offline installation and apply background updates without blocking the active session.
+                      </p>
+                      <div className="pwa-status-grid">
+                        <div className="pwa-status-row">
+                          <span className="pwa-status-label">UPDATE_STATE</span>
+                          <span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{pwaUpdateLabel}</span>
+                        </div>
+                        <div className="pwa-status-row">
+                          <span className="pwa-status-label">SERVICE_WORKER</span>
+                          <span className="pwa-status-value">{pwaState.isSupported ? 'AVAILABLE' : 'UNAVAILABLE'}</span>
+                        </div>
+                      </div>
+                      <div className="settings-action-row">
+                        <button
+                          className="modal-btn flex-1"
+                          onClick={onPwaInstall}
+                          disabled={!pwaState.canInstall}
+                        >
+                          INSTALL_PWA
+                        </button>
+                        <button
+                          className="modal-btn flex-1 modal-btn-primary"
+                          onClick={onPwaUpdate}
+                          disabled={!pwaState.updateAvailable}
+                        >
+                          <RefreshCw size={14}/> APPLY_UPDATE
+                        </button>
+                      </div>
+                      <label className="pwa-toggle">
+                        <input
+                          type="checkbox"
+                          checked={pwaState.autoUpdateEnabled}
+                          onChange={(event) => onPwaAutoUpdateToggle(event.target.checked)}
+                        />
+                        <span className="pwa-toggle-indicator" />
+                        <span className="pwa-toggle-label">AUTO_UPDATE</span>
+                      </label>
+                    </div>
                     <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                       <div className="flex justify-between items-start mb-2">
                         <span className="font-bold text-[11px] uppercase">IDB_CORE_DUMP</span>

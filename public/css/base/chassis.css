@@ -832,6 +832,11 @@
   background: var(--bg-inset);
 }
 
+.header-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Action Rail */
 .rail-group {
   display: flex;
