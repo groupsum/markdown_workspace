@@ -411,9 +411,17 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                       return !inline && match ? (
                         <div className="md-code-block">
                           <div className="md-code-header">{match[1]}</div>
-                          <SyntaxHighlighter style={getSyntaxThemeStyle(theme)} language={match[1]} PreTag="div" {...props}>
-                            {String(children).replace(/\n$/, '')}
-                          </SyntaxHighlighter>
+                          <div className="md-code-surface">
+                            <SyntaxHighlighter
+                              style={getSyntaxThemeStyle(theme)}
+                              language={match[1]}
+                              PreTag="div"
+                              customStyle={{ margin: 0, borderRadius: 0, border: 'none', background: 'transparent', padding: 0 }}
+                              {...props}
+                            >
+                              {String(children).replace(/\n$/, '')}
+                            </SyntaxHighlighter>
+                          </div>
                         </div>
                       ) : <code className="md-inline-code" {...props}>{children}</code>
                     }
