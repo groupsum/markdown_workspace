@@ -55,7 +55,7 @@
   font-family: var(--font-head); 
   font-weight: 900; 
   text-transform: uppercase; 
-  font-size: 15px;
+  font-size: calc(15px * var(--ui-scale));
   letter-spacing: 0.1em;
   color: var(--fg-primary);
   display: flex;
@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   color: var(--fg-muted);
@@ -173,14 +173,14 @@
 
 .settings-content-kicker {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   letter-spacing: 0.2em;
   color: var(--fg-muted);
 }
 
 .settings-content-name {
   font-family: var(--font-head);
-  font-size: 14px;
+  font-size: calc(14px * var(--ui-scale));
   font-weight: 900;
   letter-spacing: 0.08em;
   color: var(--fg-primary);
@@ -198,7 +198,7 @@
 }
 
 .settings-content-meta-label {
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   letter-spacing: 0.2em;
   color: var(--fg-muted);
   font-weight: 900;
@@ -206,7 +206,7 @@
 
 .settings-content-meta-value {
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 900;
   color: var(--fg-primary);
 }
@@ -226,7 +226,7 @@
 
 .settings-section-title {
   font-family: var(--font-head);
-  font-size: 13px;
+  font-size: calc(13px * var(--ui-scale));
   text-transform: uppercase;
   margin-bottom: 8px;
   padding-bottom: 12px;
@@ -278,11 +278,11 @@
   font-family: var(--font-head);
   font-weight: 900; 
   text-transform: uppercase; 
-  font-size: 12px; 
+  font-size: calc(12px * var(--ui-scale)); 
 }
 
 .settings-theme-desc { 
-  font-size: 11px; 
+  font-size: calc(11px * var(--ui-scale)); 
   color: var(--fg-muted); 
   line-height: 1.5;
   font-family: var(--font-ui);
@@ -304,7 +304,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -316,7 +316,7 @@
 
 .settings-theme-value {
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 900;
   color: var(--fg-primary);
 }
@@ -326,7 +326,7 @@
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-inset);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   color: var(--fg-muted);
 }
 
@@ -341,7 +341,7 @@
   background: var(--bg-inset);
   color: var(--fg-primary);
   padding: 10px 14px;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -448,7 +448,7 @@
   flex: 1;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: calc(18px * var(--ui-scale));
   font-family: var(--font-mono);
   color: var(--fg-primary);
   outline: none;
@@ -461,7 +461,7 @@
   border: 1px solid var(--border-color);
   padding: 4px 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 900;
   color: var(--fg-muted);
 }
@@ -483,7 +483,7 @@
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: calc(13px * var(--ui-scale));
   font-weight: 700;
   text-transform: uppercase;
   transition: all 0.05s;
@@ -504,7 +504,7 @@
 }
 
 .cmd-item-type {
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   background: var(--bg-inset);
   color: var(--fg-muted);
   padding: 2px 8px;
@@ -522,7 +522,7 @@
   padding: 40px;
   text-align: center;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   color: var(--fg-muted);
   text-transform: uppercase;
 }
@@ -543,7 +543,7 @@
   color: var(--fg-primary);
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 15px;
+  font-size: calc(15px * var(--ui-scale));
   outline: none;
 }
 .modal-input:focus {
@@ -563,7 +563,7 @@
   padding: 10px 24px; 
   border: var(--border-width) solid var(--border-color); 
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   text-transform: uppercase;
   cursor: pointer; 
   font-weight: 900;
@@ -624,7 +624,7 @@
   }
 
   .modal-title {
-    font-size: 12px;
+    font-size: calc(12px * var(--ui-scale));
     letter-spacing: 0.08em;
   }
 
@@ -663,7 +663,7 @@
     flex: 1;
     justify-content: center;
     padding: 12px;
-    font-size: 10px;
+    font-size: calc(10px * var(--ui-scale));
     border-bottom: 0;
     border-right: var(--border-width) solid var(--border-color);
   }

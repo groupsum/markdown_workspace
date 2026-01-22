@@ -3,14 +3,15 @@
 
 :root {
   /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
-  --header-height: 32px;
-  --rail-width: 44px;
-  --rail-height: 44px;
-  --sidebar-width: 200px;
-  --status-height: 20px;
+  --ui-scale: 1;
+  --header-height: calc(32px * var(--ui-scale));
+  --rail-width: calc(44px * var(--ui-scale));
+  --rail-height: calc(44px * var(--ui-scale));
+  --sidebar-width: calc(200px * var(--ui-scale));
+  --status-height: calc(20px * var(--ui-scale));
   --tab-height: var(--header-height);
-  --panel-header-height: 30px;
-  --rail-btn-size: 30px;
+  --panel-header-height: calc(30px * var(--ui-scale));
+  --rail-btn-size: calc(30px * var(--ui-scale));
   
   /* Fallback Values: Ensures layout survives theme loading failure */
   --bg-app: #c0c0c0;     
@@ -31,11 +32,11 @@
   --status-error: #cc0000;
 
   /* Structure Settings */
-  --app-gap: 4px; 
+  --app-gap: calc(4px * var(--ui-scale)); 
   --texture-opacity: 0.05;
-  --editor-padding: 24px;
-  --file-indent-base: 12px;
-  --file-indent-unit: 12px;
+  --editor-padding: calc(24px * var(--ui-scale));
+  --file-indent-base: calc(12px * var(--ui-scale));
+  --file-indent-unit: calc(12px * var(--ui-scale));
   --c-explorer-hover: rgba(0, 0, 0, 0.06);
   --c-explorer-selected: var(--accent);
   --c-explorer-selected-text: #ffffff;
@@ -52,6 +53,7 @@ body {
   background-color: var(--bg-app);
   color: var(--fg-primary);
   font-family: var(--font-ui);
+  font-size: calc(12px * var(--ui-scale));
   margin: 0;
   overflow: hidden;
   cursor: crosshair;
@@ -74,6 +76,46 @@ button {
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.02em;
+}
+
+/* Scaled icon sizing for Lucide SVGs */
+svg.lucide {
+  display: inline-block;
+}
+
+svg.lucide[width="10"] {
+  width: calc(10px * var(--ui-scale));
+  height: calc(10px * var(--ui-scale));
+}
+
+svg.lucide[width="12"] {
+  width: calc(12px * var(--ui-scale));
+  height: calc(12px * var(--ui-scale));
+}
+
+svg.lucide[width="14"] {
+  width: calc(14px * var(--ui-scale));
+  height: calc(14px * var(--ui-scale));
+}
+
+svg.lucide[width="16"] {
+  width: calc(16px * var(--ui-scale));
+  height: calc(16px * var(--ui-scale));
+}
+
+svg.lucide[width="18"] {
+  width: calc(18px * var(--ui-scale));
+  height: calc(18px * var(--ui-scale));
+}
+
+svg.lucide[width="24"] {
+  width: calc(24px * var(--ui-scale));
+  height: calc(24px * var(--ui-scale));
+}
+
+svg.lucide[width="48"] {
+  width: calc(48px * var(--ui-scale));
+  height: calc(48px * var(--ui-scale));
 }
 
 /* Scrollbar Styling - Deterministic */
