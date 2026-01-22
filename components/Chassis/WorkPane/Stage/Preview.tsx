@@ -18,6 +18,17 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
   files,
   onNavigate
 }) => {
+  const mergeClassNames = (...classes: Array<string | undefined>) =>
+    classes.filter(Boolean).join(' ');
+
+  const withAlignment = (
+    align: string | undefined,
+    style?: React.CSSProperties
+  ): React.CSSProperties | undefined => {
+    if (!align) return style;
+    return { ...style, textAlign: align as React.CSSProperties['textAlign'] };
+  };
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href?: string) => {
     if (!href) return;
     if (href.startsWith('http://') || href.startsWith('https://')) return;
@@ -49,15 +60,61 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
           li: ({node, ...props}) => <li className="md-li" {...props} />,
 
           // Tables
-          table: ({node, ...props}) => <table className="md-table" {...props} />,
-          thead: ({node, ...props}) => <thead className="md-table-head" {...props} />,
-          tbody: ({node, ...props}) => <tbody className="md-table-body" {...props} />,
-          tr: ({node, ...props}) => <tr className="md-table-row" {...props} />,
-          th: ({node, ...props}) => <th className="md-table-header" {...props} />,
-          td: ({node, ...props}) => <td className="md-table-cell" {...props} />,
-          caption: ({node, ...props}) => <caption className="md-table-caption" {...props} />,
-          colgroup: ({node, ...props}) => <colgroup className="md-table-columns" {...props} />,
-          col: ({node, ...props}) => <col className="md-table-column" {...props} />,
+          table: ({node, className, children, ...props}: any) => {
+            const alignments = Array.isArray(node?.align) ? node.align : [];
+            return (
+              <table className={mergeClassNames('md-table', className)} {...props}>
+                {alignments.length > 0 && (
+                  <colgroup className="md-table-columns">
+                    {alignments.map((align: string | null, index: number) => (
+                      <col
+                        key={`col-${index}`}
+                        className="md-table-column"
+                        style={withAlignment(align ?? undefined)}
+                      />
+                    ))}
+                  </colgroup>
+                )}
+                {children}
+              </table>
+            );
+          },
+          thead: ({node, className, ...props}: any) => (
+            <thead className={mergeClassNames('md-table-head', className)} {...props} />
+          ),
+          tbody: ({node, className, ...props}: any) => (
+            <tbody className={mergeClassNames('md-table-body', className)} {...props} />
+          ),
+          tr: ({node, className, ...props}: any) => (
+            <tr className={mergeClassNames('md-table-row', className)} {...props} />
+          ),
+          th: ({node, className, align, style, ...props}: any) => (
+            <th
+              className={mergeClassNames('md-table-header', className)}
+              style={withAlignment(align, style)}
+              {...props}
+            />
+          ),
+          td: ({node, className, align, style, ...props}: any) => (
+            <td
+              className={mergeClassNames('md-table-cell', className)}
+              style={withAlignment(align, style)}
+              {...props}
+            />
+          ),
+          caption: ({node, className, ...props}: any) => (
+            <caption className={mergeClassNames('md-table-caption', className)} {...props} />
+          ),
+          colgroup: ({node, className, ...props}: any) => (
+            <colgroup className={mergeClassNames('md-table-columns', className)} {...props} />
+          ),
+          col: ({node, className, style, ...props}: any) => (
+            <col
+              className={mergeClassNames('md-table-column', className)}
+              style={style}
+              {...props}
+            />
+          ),
 
           // Checkbox (Input)
           input: ({node, ...props}) => {
