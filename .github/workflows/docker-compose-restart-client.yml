@@ -1,0 +1,38 @@
+name: Docker Compose Restart (Client)
+
+on:
+  workflow_run:
+    workflows:
+      - Build and Commit Client Dist
+    types:
+      - completed
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: dist-docker-restart-client
+  cancel-in-progress: false
+
+jobs:
+  restart-client:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: deployment
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stop client container
+        continue-on-error: true
+        run: docker-compose stop staticserve
+
+      - name: Stop client container
+        continue-on-error: true
+        run: docker-compose rm -f staticserve
+
+      - name: Prune docker images
+        continue-on-error: true
+        run: docker system prune -af
+
+      - name: Restart client container
+        run: docker-compose up -d --build --force-recreate --no-deps staticserve

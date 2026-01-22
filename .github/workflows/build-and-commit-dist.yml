@@ -1,0 +1,68 @@
+name: Build and Commit Client Dist
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "client/**"
+  workflow_dispatch:
+
+concurrency:
+  group: dist-docker-restart
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: shortlived
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for package.json
+        id: package-json
+        run: |
+          if [[ -f client/package.json ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No package.json found. Skipping npm build."
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        if: steps.package-json.outputs.present == 'true'
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        if: steps.package-json.outputs.present == 'true'
+        working-directory: client
+        run: npm install
+
+      - name: Install Vite
+        if: steps.package-json.outputs.present == 'true'
+        working-directory: client
+        run: npm install --save-dev vite
+
+      - name: Build
+        if: steps.package-json.outputs.present == 'true'
+        working-directory: client
+        run: npm run build
+
+      - name: Commit dist
+        if: steps.package-json.outputs.present == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A client/dist
+          if git diff --cached --quiet; then
+            echo "No dist changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(dist): update build output"
+          git push

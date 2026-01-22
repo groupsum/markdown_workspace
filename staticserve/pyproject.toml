@@ -1,0 +1,19 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "markdown-workspace-staticserve"
+version = "0.1.0"
+description = "Static FastAPI server for markdown-workspace."
+authors = [{ name = "Jacob Stewart", email = "jacob@groupsum.xyz" }]
+requires-python = ">=3.12,<4.0"
+dependencies = [
+  "fastapi",
+  "uvicorn",
+  "pydantic>=2.6,<3.0",
+  "httpx",
+]
+
+[tool.poetry]
+packages = [{ include = "staticserve" }]
