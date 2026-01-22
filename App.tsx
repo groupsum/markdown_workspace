@@ -7,18 +7,20 @@ import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
 import { InputModal } from './components/Modals/InputModal';
 import { Footer } from './components/Chassis/Footer/Footer';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw, CheckCircle } from 'lucide-react';
 import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
 import { useApp } from './hooks/useApp';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { usePwa } from './hooks/usePwa';
 import { APP_VERSION } from './constants';
 
 const App: React.FC = () => {
   const { state, actions } = useApp();
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
+  const { state: pwaState, actions: pwaActions } = usePwa();
 
   useKeyboardShortcuts(
     {
@@ -62,6 +64,34 @@ const App: React.FC = () => {
     };
   }, [actions]);
 
+  useEffect(() => {
+    setUpdateAvailable(pwaState.updateAvailable);
+  }, [pwaState.updateAvailable]);
+
+  const pwaAction = pwaState.canInstall
+    ? {
+        label: 'Install PWA',
+        title: 'Install Lattice Architect',
+        icon: <Download size={16} />,
+        onClick: pwaActions.promptInstall,
+        disabled: false
+      }
+    : pwaState.updateAvailable
+      ? {
+          label: 'Update PWA',
+          title: 'Update available',
+          icon: <RefreshCw size={16} />,
+          onClick: pwaActions.requestUpdate,
+          disabled: false
+        }
+      : {
+          label: 'PWA Installed',
+          title: 'PWA installed',
+          icon: <CheckCircle size={16} />,
+          onClick: undefined,
+          disabled: true
+        };
+
   const commandActions = [
     { id: 'new-file', label: 'Create New File', action: actions.promptNewFile, icon: <FilePlus size={14}/> },
     { id: 'new-folder', label: 'Create New Folder', action: actions.promptNewFolder, icon: <FolderPlus size={14}/> },
@@ -104,6 +134,7 @@ const App: React.FC = () => {
         activeTabId={state.activeTabId}
         appMode={state.appMode}
         zoom={state.zoom}
+        pwaAction={pwaAction}
         onSwitchProject={actions.switchToProjectSelector}
         onTabSelect={(tabId, fileId) => { actions.setActiveTabId(tabId); actions.setAppMode('work'); actions.setSelectedExplorerId(fileId); }}
         onTabClose={actions.closeTab}
@@ -175,7 +206,7 @@ const App: React.FC = () => {
       {updateAvailable && (
         <div className="update-banner">
           <span>ARCHITECTURE UPDATE READY</span>
-          <button onClick={() => window.location.reload()} className="update-btn">
+          <button onClick={pwaActions.requestUpdate} className="update-btn">
             <RefreshCw size={12} /> RELOAD
           </button>
         </div>
@@ -189,6 +220,10 @@ const App: React.FC = () => {
         gitConfig={actions.getActiveGitConfig()}
         onGitConfigChange={actions.handleGitConfigUpdate}
         onExport={actions.exportData}
+        pwaState={pwaState}
+        onPwaInstall={pwaActions.promptInstall}
+        onPwaUpdate={pwaActions.requestUpdate}
+        onPwaAutoUpdateToggle={pwaActions.toggleAutoUpdate}
       />
 
       <InputModal

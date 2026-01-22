@@ -11,6 +11,13 @@ interface HeaderProps {
   activeTabId: string | null;
   appMode: AppMode;
   zoom: number;
+  pwaAction?: {
+    label: string;
+    title: string;
+    icon: React.ReactNode;
+    onClick?: () => void;
+    disabled?: boolean;
+  };
   onSwitchProject: () => void;
   onTabSelect: (tabId: string, fileId: string) => void;
   onTabClose: (e: React.MouseEvent, tabId: string) => void;
@@ -26,6 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
   activeTabId,
   appMode,
   zoom,
+  pwaAction,
   onSwitchProject,
   onTabSelect,
   onTabClose,
@@ -77,6 +85,17 @@ export const Header: React.FC<HeaderProps> = ({
               <ZoomControl zoom={zoom} onZoom={onZoom} />
             </div>
             <div className="header-btn-group">
+              {pwaAction && (
+                <button
+                  className="header-btn"
+                  onClick={pwaAction.onClick}
+                  title={pwaAction.title}
+                  aria-label={pwaAction.label}
+                  disabled={pwaAction.disabled}
+                >
+                  {pwaAction.icon}
+                </button>
+              )}
               <button className="header-btn" onClick={onOpenSettings} title="System Config">
                 <Settings size={16} />
               </button>
