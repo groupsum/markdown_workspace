@@ -8,7 +8,7 @@ COPY ./staticserve /app/staticserve
 
 RUN uv pip install --system --no-cache-dir /app/staticserve
 
-COPY ./g2pterckdev/dist /app/dist
+COPY ./client/dist /app/dist
 
 EXPOSE 80
 
