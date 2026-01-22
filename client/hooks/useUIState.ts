@@ -27,7 +27,15 @@ export const useUIState = () => {
 
   // Initial theme sync on mount
   useEffect(() => {
-    themeService.initTheme();
+    let isMounted = true;
+    themeService.initTheme().then((resolvedTheme) => {
+      if (isMounted) {
+        setThemeState(resolvedTheme);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return {

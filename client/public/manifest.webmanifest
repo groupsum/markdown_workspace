@@ -4,8 +4,8 @@
   "description": "A high-density, offline-first Markdown workspace with a milled-zinc console aesthetic and hierarchical file management.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0b0f13",
-  "theme_color": "#e55b2d",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "/icons/icon-192.svg",

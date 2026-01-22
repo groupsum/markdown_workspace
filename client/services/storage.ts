@@ -2,9 +2,10 @@
 import { FileNode, Project } from '../types';
 
 const DB_NAME = 'LatticeDB';
-const DB_VERSION = 2; 
+const DB_VERSION = 3; 
 const STORE_FILES = 'files';
 const STORE_PROJECTS = 'projects';
+const STORE_SETTINGS = 'settings';
 
 class StorageService {
   private dbPromise: Promise<IDBDatabase>;
@@ -27,6 +28,9 @@ class StorageService {
         }
         if (!db.objectStoreNames.contains(STORE_PROJECTS)) {
           db.createObjectStore(STORE_PROJECTS, { keyPath: 'id' });
+        }
+        if (!db.objectStoreNames.contains(STORE_SETTINGS)) {
+          db.createObjectStore(STORE_SETTINGS, { keyPath: 'key' });
         }
       };
     });
@@ -105,6 +109,31 @@ class StorageService {
       const transaction = db.transaction(STORE_FILES, 'readwrite');
       const store = transaction.objectStore(STORE_FILES);
       const request = store.delete(id);
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => resolve();
+    });
+  }
+
+  async getSetting<T>(key: string): Promise<T | null> {
+    const db = await this.dbPromise;
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(STORE_SETTINGS, 'readonly');
+      const store = transaction.objectStore(STORE_SETTINGS);
+      const request = store.get(key);
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => {
+        const result = request.result as { key: string; value: T } | undefined;
+        resolve(result ? result.value : null);
+      };
+    });
+  }
+
+  async setSetting<T>(key: string, value: T): Promise<void> {
+    const db = await this.dbPromise;
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(STORE_SETTINGS, 'readwrite');
+      const store = transaction.objectStore(STORE_SETTINGS);
+      const request = store.put({ key, value, updatedAt: Date.now() });
       request.onerror = () => reject(request.error);
       request.onsuccess = () => resolve();
     });
