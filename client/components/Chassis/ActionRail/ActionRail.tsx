@@ -1,6 +1,6 @@
 import React from 'react';
 import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer } from 'lucide-react';
-import { AppMode } from '../../../../types';
+import { AppMode } from '../../../types';
 
 interface ActionRailProps {
   sidebarOpen: boolean;
