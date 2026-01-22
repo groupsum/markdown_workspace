@@ -296,7 +296,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             {activeTab === 'keys' && (
               <div className="settings-pane">
                 <h3 className="settings-section-title">SYSTEM_KEY_MAP</h3>
-                <div className="settings-card settings-card-list bg-[var(--bg-inset)]">
+                <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
                     {[
                       { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
                       { label: 'COMMAND_PALETTE', key: 'CTRL/CMD+K' },
@@ -319,9 +319,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       { label: 'RESET_ZOOM', key: 'CTRL/CMD+0' },
                       { label: 'PRINT_PREVIEW', key: 'CTRL/CMD+P' }
                     ].map((row, i) => (
-                      <div key={i} className={`flex justify-between p-3 text-[11px] font-bold uppercase ${i !== 0 ? 'border-t border-[var(--border-color)]' : ''}`}>
-                        <span className="text-[var(--fg-muted)]">{row.label}</span>
-                        <span className="text-[var(--accent)] font-mono">{row.key}</span>
+                      <div key={i} className="settings-keymap-item">
+                        <span className="settings-keymap-label text-[var(--fg-muted)]">{row.label}</span>
+                        <span className="settings-keymap-key text-[var(--accent)] font-mono">{row.key}</span>
                       </div>
                     ))}
                 </div>
