@@ -20,6 +20,11 @@
   --status-ok: #00ff41;
   --status-warn: #ffcc00;
   --status-error: #ff0000;
+
+  --table-header-bg: #000000;
+  --table-header-fg: #ffffff;
+  --table-row-primary-bg: #ffffff;
+  --table-row-secondary-bg: #f0f0f0;
   
   --app-gap: 3px;
   --texture-opacity: 0.08;

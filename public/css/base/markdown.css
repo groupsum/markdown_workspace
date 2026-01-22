@@ -6,6 +6,8 @@
   line-height: 1.6;
   font-size: calc(0.95rem * var(--ui-scale));
   color: var(--fg-primary);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .markdown-body h1,
@@ -113,7 +115,8 @@
 
 .markdown-body th,
 .markdown-body .md-table-header {
-  background-color: var(--bg-inset);
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
   font-weight: 700;
   text-align: left;
 }
@@ -129,18 +132,18 @@
 
 .markdown-body thead th,
 .markdown-body .md-table-head .md-table-header {
-  background: var(--bg-inset);
-  color: var(--fg-primary);
+  background: var(--table-header-bg);
+  color: var(--table-header-fg);
 }
 
 .markdown-body tbody tr:nth-child(even),
 .markdown-body .md-table-body .md-table-row:nth-child(even) {
-  background: var(--bg-panel);
+  background: var(--table-row-secondary-bg);
 }
 
 .markdown-body tbody tr:nth-child(odd),
 .markdown-body .md-table-body .md-table-row:nth-child(odd) {
-  background: var(--bg-inset);
+  background: var(--table-row-primary-bg);
 }
 
 /* Syntax Highlighting overrides */
