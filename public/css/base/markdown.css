@@ -153,8 +153,13 @@
 }
 
 .md-code-block {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-panel);
+  border: none;
+  border-radius: 6px;
   margin-bottom: 1em;
   overflow: hidden;
 }
@@ -167,6 +172,20 @@
   border-bottom: 1px solid var(--border-color);
   color: var(--fg-muted);
   text-transform: uppercase;
+}
+
+.md-code-surface {
+  background: var(--code-block-bg, var(--bg-inset));
+  padding: 12px 14px;
+  border-radius: 6px;
+}
+
+.md-code-surface pre,
+.md-code-surface pre > code,
+.md-code-surface > div {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 @media print {

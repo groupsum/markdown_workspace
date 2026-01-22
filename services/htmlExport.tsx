@@ -87,15 +87,17 @@ const previewComponents = (theme: AppTheme) => ({
         <div className="md-code-header">
           <span>{match[1]}</span>
         </div>
-        <SyntaxHighlighter
-          style={getSyntaxTheme(theme)}
-          language={match[1]}
-          PreTag="div"
-          customStyle={{ margin: 0, borderRadius: 0, border: 'none' }}
-          {...props}
-        >
-          {String(children).replace(/\n$/, '')}
-        </SyntaxHighlighter>
+        <div className="md-code-surface">
+          <SyntaxHighlighter
+            style={getSyntaxTheme(theme)}
+            language={match[1]}
+            PreTag="div"
+            customStyle={{ margin: 0, borderRadius: 0, border: 'none', background: 'transparent', padding: 0 }}
+            {...props}
+          >
+            {String(children).replace(/\n$/, '')}
+          </SyntaxHighlighter>
+        </div>
       </div>
     ) : (
       <code className="md-inline-code" {...props}>
