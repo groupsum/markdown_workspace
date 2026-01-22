@@ -24,8 +24,13 @@
   --fg-primary: #000000;
   --fg-secondary: #333333;
   --fg-muted: #666666;
-  
+
   --accent: #ff3e00;
+
+  --table-header-bg: var(--bg-inset);
+  --table-header-fg: var(--fg-primary);
+  --table-row-primary-bg: var(--bg-panel);
+  --table-row-secondary-bg: var(--bg-inset);
   
   --status-ok: #00cc00;
   --status-warn: #ff8800;

@@ -21,6 +21,11 @@
   --status-warn: #cc8a00;
   --status-error: #cc3300;
 
+  --table-header-bg: #f7f8fa;
+  --table-header-fg: #1a1a1a;
+  --table-row-primary-bg: #d1d6dc;
+  --table-row-secondary-bg: #eef0f3;
+
   --app-gap: 2px;
   --texture-opacity: 0.05;
 }

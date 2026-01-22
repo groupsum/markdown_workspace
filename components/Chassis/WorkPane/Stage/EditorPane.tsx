@@ -181,6 +181,79 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   };
 
   const handleEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Tab' && !e.metaKey && !e.ctrlKey) {
+      e.preventDefault();
+      const textarea = textareaRef.current;
+      if (!textarea) return;
+      const text = textarea.value;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+      const lineEnd = (() => {
+        const nextBreak = text.indexOf('\n', end);
+        return nextBreak === -1 ? text.length : nextBreak;
+      })();
+      const selectedBlock = text.slice(lineStart, lineEnd);
+      const lines = selectedBlock.split('\n');
+      const isMultiLine = lines.length > 1 || start !== end;
+      if (!isMultiLine) {
+        if (e.shiftKey) {
+          if (text[lineStart] === '\t') {
+            const updated = `${text.slice(0, lineStart)}${text.slice(lineStart + 1)}`;
+            updateContent(updated);
+            setTimeout(() => {
+              const nextPos = Math.max(start - 1, lineStart);
+              textarea.focus();
+              textarea.setSelectionRange(nextPos, nextPos);
+              updateCursor();
+            }, 0);
+            return;
+          }
+        }
+        const updated = `${text.slice(0, start)}\t${text.slice(end)}`;
+        updateContent(updated);
+        setTimeout(() => {
+          const nextPos = start + 1;
+          textarea.focus();
+          textarea.setSelectionRange(nextPos, nextPos);
+          updateCursor();
+        }, 0);
+        return;
+      }
+
+      let totalDelta = 0;
+      let firstLineDelta = 0;
+      const updatedLines = lines.map((line, index) => {
+        if (e.shiftKey) {
+          if (line.startsWith('\t')) {
+            if (index === 0) firstLineDelta = -1;
+            totalDelta -= 1;
+            return line.slice(1);
+          }
+          if (line.startsWith('  ')) {
+            if (index === 0) firstLineDelta = -2;
+            totalDelta -= 2;
+            return line.slice(2);
+          }
+          return line;
+        }
+        if (index === 0) firstLineDelta = 1;
+        totalDelta += 1;
+        return `\t${line}`;
+      });
+
+      const updated = `${text.slice(0, lineStart)}${updatedLines.join('\n')}${text.slice(lineEnd)}`;
+      updateContent(updated);
+      setTimeout(() => {
+        const nextStart = Math.max(lineStart, start + firstLineDelta);
+        const nextEnd = Math.max(nextStart, end + totalDelta);
+        textarea.focus();
+        textarea.setSelectionRange(nextStart, nextEnd);
+        updateCursor();
+      }, 0);
+      return;
+    }
+
     const meta = e.metaKey || e.ctrlKey;
     if (!meta) return;
 
