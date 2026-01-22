@@ -1,8 +1,8 @@
 import React from 'react';
 import { ZoomControl } from '../../UI/ZoomControl';
 import { Settings, X } from 'lucide-react';
-import { FileNode, Tab, AppMode } from '../../../../types';
-import { ThemeDef } from '../../../../data/themes';
+import { FileNode, Tab, AppMode } from '../../../types';
+import { ThemeDef } from '../../../data/themes';
 
 interface HeaderProps {
   currentThemeDef: ThemeDef;

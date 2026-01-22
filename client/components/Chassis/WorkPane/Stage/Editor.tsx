@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { ViewMode } from '../../../../../../types';
-import { useEditorMetrics } from '../../../../../../hooks/useEditorMetrics';
-import { useEditorShortcuts } from '../../../../../../hooks/useEditorShortcuts';
+import { ViewMode } from '../../../../types';
+import { useEditorMetrics } from '../../../../hooks/useEditorMetrics';
+import { useEditorShortcuts } from '../../../../hooks/useEditorShortcuts';
 
 interface EditorProps {
   content: string;
