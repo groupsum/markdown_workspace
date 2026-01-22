@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface ChassisProps {
   children: React.ReactNode;
@@ -19,18 +19,14 @@ export const Chassis: React.FC<ChassisProps> = ({
 }) => {
   const modeClass = `mode-${mode}`;
 
+  useEffect(() => {
+    document.documentElement.style.setProperty('--ui-scale', String(zoom));
+  }, [zoom]);
+
   return (
     <div className={`chassis-root ${modeClass} ${className}`}>
       <div className="texture-overlay" aria-hidden="true" />
-      <div 
-        className="chassis-scaler"
-        style={{ 
-          transform: `scale(${zoom})`,
-          transformOrigin: 'top center',
-          width: `${100 / zoom}%`,
-          height: `${100 / zoom}%`
-        }}
-      >
+      <div className="chassis-scaler">
         <div className="chassis-body">
              {children}
         </div>

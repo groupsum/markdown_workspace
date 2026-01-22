@@ -79,7 +79,7 @@
   justify-content: space-between;
   padding: 0 6px;
   height: var(--status-height);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -161,7 +161,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -284,7 +284,7 @@
   border-radius: 8px;
   text-transform: uppercase;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 700;
 }
 
@@ -297,7 +297,7 @@
 
 .git-branch-name {
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 900;
 }
 
@@ -325,7 +325,7 @@
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-head);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -338,13 +338,13 @@
   background: var(--bg-inset);
   border: var(--border-width) solid var(--border-color);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
 }
 
 .git-empty-msg {
   padding: 10px 12px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   color: var(--fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -370,7 +370,7 @@
   border-left: 3px solid var(--accent);
   border-radius: 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
 }
 
 .git-item__icon {
@@ -388,7 +388,7 @@
   padding: 2px 6px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-panel);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   font-weight: 900;
   letter-spacing: 0.08em;
 }
@@ -425,7 +425,7 @@
   border-radius: 8px;
   color: var(--fg-primary);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
 }
 
 .git-commit-btn {
@@ -437,7 +437,7 @@
   border: var(--border-width) solid var(--border-color);
   background: var(--accent);
   color: #fff;
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   border-radius: 8px;
 }
 
@@ -463,7 +463,7 @@
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-panel);
   color: var(--fg-primary);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   border-radius: 8px;
 }
 
@@ -482,7 +482,7 @@
 
 .git-diff-title {
   font-family: var(--font-head);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -494,7 +494,7 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   color: var(--fg-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -576,7 +576,7 @@
   min-height: 100%;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
 }
 
 .git-diff-grid {
@@ -602,7 +602,7 @@
 .git-diff-panel__header {
   padding: 8px 12px;
   font-family: var(--font-head);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 900;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -630,7 +630,7 @@
 
 .git-diff-meta {
   font-family: var(--font-head);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -682,7 +682,7 @@
   width: 18px;
   text-align: right;
   color: var(--fg-muted);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   flex-shrink: 0;
 }
 
@@ -696,7 +696,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-head);
-  font-size: 12px;
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 900;
   letter-spacing: 0.2em;
   color: var(--fg-muted);
@@ -714,7 +714,7 @@
   justify-content: space-between;
   padding: 0 10px;
   flex-shrink: 0;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -781,14 +781,14 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .header-brand-subtitle {
-  font-size: 8px;
+  font-size: calc(8px * var(--ui-scale));
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -858,8 +858,8 @@
 }
 
 .rail-btn svg {
-  width: 18px;
-  height: 18px;
+  width: calc(18px * var(--ui-scale));
+  height: calc(18px * var(--ui-scale));
   stroke-width: 2.2px;
 }
 
@@ -948,7 +948,7 @@
   padding: 2px 6px;
   border: 1px solid var(--border-color);
   background: var(--bg-inset);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   letter-spacing: 0.08em;
 }
 
@@ -961,7 +961,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1009,7 +1009,7 @@
 .git-section-title {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1034,7 +1034,7 @@
   background: var(--bg-panel);
   border-left: 3px solid var(--accent);
   border-radius: 8px;
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
 }
 
 .git-item__status {
@@ -1054,7 +1054,7 @@
 }
 
 .git-empty-msg {
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   text-transform: uppercase;
   color: var(--fg-muted);
   background: var(--bg-panel);
@@ -1070,7 +1070,7 @@
   border: 1px solid var(--border-color);
   padding: 10px 12px;
   background: var(--bg-panel);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   border-left: 3px solid var(--accent);
   border-radius: 8px;
 }
@@ -1108,7 +1108,7 @@
   background: var(--bg-panel);
   padding: 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   color: var(--fg-primary);
   border-radius: 8px;
 }
@@ -1118,7 +1118,7 @@
   border: 1px solid var(--border-color);
   background: var(--bg-inset);
   padding: 8px 10px;
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1150,7 +1150,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   color: var(--fg-muted);
 }
 
@@ -1186,7 +1186,7 @@
   background: var(--bg-panel);
   border-right: 1px solid var(--border-color);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   color: var(--fg-muted);
 }
 
@@ -1194,7 +1194,7 @@
   flex: 1;
   padding: 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1219,7 +1219,7 @@
 }
 
 .git-diff-placeholder {
-  font-size: 11px;
+  font-size: calc(11px * var(--ui-scale));
   text-transform: uppercase;
   color: var(--fg-muted);
   display: flex;
@@ -1253,14 +1253,14 @@
 .idle-primary {
   font-family: var(--font-head);
   font-weight: 950;
-  font-size: 24px;
+  font-size: calc(24px * var(--ui-scale));
   letter-spacing: -0.05em;
   text-transform: uppercase;
 }
 
 .idle-secondary {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: calc(9px * var(--ui-scale));
   color: var(--fg-muted);
   letter-spacing: 0.2em;
 }
@@ -1270,7 +1270,7 @@
   padding: 8px 16px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-inset);
-  font-size: 10px;
+  font-size: calc(10px * var(--ui-scale));
   font-weight: 900;
 }
 .idle-action-btn:hover { background: var(--accent); color: white; }
@@ -1375,11 +1375,11 @@
   }
 
   .header-brand-title {
-    font-size: 11px;
+    font-size: calc(11px * var(--ui-scale));
   }
 
   .header-brand-subtitle {
-    font-size: 8px;
+    font-size: calc(8px * var(--ui-scale));
   }
 
   .header-btn {
