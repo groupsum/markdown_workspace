@@ -1401,9 +1401,12 @@
   .git-sidebar {
     width: 100%;
     min-width: 0;
-    height: 100%;
+    height: auto;
+    max-height: 45%;
+    flex: 0 0 auto;
     border-right: 0;
     border-bottom: var(--border-width) solid var(--border-color);
+    overflow: auto;
   }
 
   .workspace-sidebar.is-collapsed {
@@ -1412,12 +1415,13 @@
     border-bottom-width: 0;
   }
 
-  .git-sidebar {
-    height: 100%;
+  .workspace-stage {
+    flex: 1 1 auto;
+    min-height: 0;
   }
 
-  .workspace-sidebar:not(.is-collapsed) + .workspace-stage {
-    display: none;
+  .git-sidebar {
+    height: auto;
   }
 
   .git-diff-view {
