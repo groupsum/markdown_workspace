@@ -1,5 +1,5 @@
 
-export const APP_VERSION = "v1.3.0";
+export const APP_VERSION = __APP_VERSION__;
 
 // Theme System Constants
 export const THEME_STORAGE_KEY = 'lattice-theme';
