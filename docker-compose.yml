@@ -6,8 +6,6 @@ services:
     build:
       context: .
       dockerfile: client/Dockerfile
-    ports:
-      - "8080:80"
     restart: unless-stopped
     networks:
       - dockerwp
