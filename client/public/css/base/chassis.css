@@ -1348,7 +1348,12 @@
   }
 
   .app-header {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand controls"
+      "tabs tabs";
+    align-items: center;
     height: auto;
     padding: 6px;
     gap: 6px;
@@ -1361,13 +1366,20 @@
     justify-content: space-between;
   }
 
+  .header-left {
+    grid-area: brand;
+  }
+
   .header-center {
-    order: 3;
+    grid-area: tabs;
     width: 100%;
     padding-left: 0;
+    border-top: var(--border-width) solid var(--border-color);
+    padding-top: 4px;
   }
 
   .header-right {
+    grid-area: controls;
     margin-left: auto;
     border-left: 0;
     border-top: 0;
