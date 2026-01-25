@@ -350,7 +350,10 @@ export const useApp = () => {
       setPersistSessionEnabled: ui.setPersistSessionEnabled,
       addToast,
       removeToast,
-      toggleSidebar: () => ui.setSidebarOpen(!ui.sidebarOpen),
+      toggleSidebar: () => {
+          ui.setSidebarOpen(!ui.sidebarOpen);
+          ui.setAppMode('work');
+      },
       adjustZoom: ui.adjustZoom,
       selectNextTab: () => selectTabByOffset(1),
       selectPreviousTab: () => selectTabByOffset(-1),
