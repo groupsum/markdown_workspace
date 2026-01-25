@@ -8,6 +8,34 @@ import { useProjectManager } from './useProjectManager';
 import { useFileManager } from './useFileManager';
 import { useTabManager } from './useTabManager';
 
+const SESSION_STORAGE_KEY = 'lattice-session-state';
+
+type SessionState = {
+  projectId: string;
+  tabFileIds: string[];
+  activeTabFileId: string | null;
+  selectedExplorerId: string | null;
+  theme: string;
+  zoom: number;
+  viewMode: string;
+  appMode: string;
+  sidebarOpen: boolean;
+  searchQuery: string;
+  autoSaveEnabled: boolean;
+  updatedAt: number;
+};
+
+const readSessionState = (): SessionState | null => {
+  const raw = window.localStorage.getItem(SESSION_STORAGE_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as SessionState;
+  } catch (error) {
+    console.warn('[useApp] Failed to parse stored session state', error);
+    return null;
+  }
+};
+
 /**
  * Main application orchestrator.
  */
@@ -22,7 +50,7 @@ export const useApp = () => {
 
   const ui = useUIState();
   const proj = useProjectManager(addToast);
-  const fileSys = useFileManager(proj.activeProjectId, addToast);
+  const fileSys = useFileManager(proj.activeProjectId, ui.autoSaveEnabled, addToast);
   const tabs = useTabManager();
 
   const activeTab = tabs.tabs.find(t => t.id === tabs.activeTabId);
@@ -46,11 +74,42 @@ export const useApp = () => {
     tabs.resetTabs();
     fileSys.setSelectedExplorerId(null);
 
+    const storedSession = ui.persistSessionEnabled ? readSessionState() : null;
+    let restoredSession = false;
+    if (storedSession && storedSession.projectId === projectId) {
+      const validIds = new Set(projectFiles.map(file => file.id));
+      const tabFileIds = storedSession.tabFileIds.filter(id => validIds.has(id));
+      if (tabFileIds.length > 0) {
+        tabs.setTabs(tabFileIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
+        const activeFileId = storedSession.activeTabFileId && validIds.has(storedSession.activeTabFileId)
+          ? storedSession.activeTabFileId
+          : tabFileIds[0];
+        tabs.setActiveTabId(activeFileId ? `tab-${activeFileId}` : null);
+        const selection = storedSession.selectedExplorerId && validIds.has(storedSession.selectedExplorerId)
+          ? storedSession.selectedExplorerId
+          : activeFileId ?? null;
+        fileSys.setSelectedExplorerId(selection);
+        ui.setAppMode(storedSession.appMode === 'git' ? 'git' : 'work');
+        ui.setViewMode(storedSession.viewMode === 'editor' || storedSession.viewMode === 'preview' ? storedSession.viewMode : 'split');
+        ui.setSidebarOpen(Boolean(storedSession.sidebarOpen));
+        if (typeof storedSession.zoom === 'number') {
+          ui.setZoom(storedSession.zoom);
+        }
+        if (typeof storedSession.searchQuery === 'string') {
+          ui.setSearchQuery(storedSession.searchQuery);
+        }
+        if (typeof storedSession.autoSaveEnabled === 'boolean') {
+          ui.setAutoSaveEnabled(storedSession.autoSaveEnabled);
+        }
+        restoredSession = true;
+      }
+    }
+
     const readme = projectFiles.find(f => f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md');
     const first = projectFiles.find(f => f.type === 'file');
     const target = readme || first;
 
-    if (target) {
+    if (target && !restoredSession) {
        console.log(`[useApp] Auto-opening initial file: ${target.name}`);
        tabs.openTab(target.id);
        fileSys.setSelectedExplorerId(target.id);
@@ -59,7 +118,59 @@ export const useApp = () => {
     proj.updateLastOpened(projectId);
     localStorage.setItem('lastProjectId', projectId);
     proj.setLoading(false);
-  }, [proj.setActiveProjectId, fileSys.loadFiles, tabs.resetTabs, tabs.openTab]);
+  }, [
+    proj.setActiveProjectId,
+    fileSys.loadFiles,
+    fileSys.setSelectedExplorerId,
+    tabs.resetTabs,
+    tabs.setTabs,
+    tabs.setActiveTabId,
+    tabs.openTab,
+    ui.persistSessionEnabled,
+    ui.setAppMode,
+    ui.setViewMode,
+    ui.setSidebarOpen,
+    ui.setZoom,
+    ui.setSearchQuery,
+    ui.setAutoSaveEnabled
+  ]);
+
+  useEffect(() => {
+    if (!ui.persistSessionEnabled) {
+      window.localStorage.removeItem(SESSION_STORAGE_KEY);
+      return;
+    }
+    if (!proj.activeProjectId) return;
+    const activeTabFileId = tabs.tabs.find(tab => tab.id === tabs.activeTabId)?.fileId ?? null;
+    const sessionState: SessionState = {
+      projectId: proj.activeProjectId,
+      tabFileIds: tabs.tabs.map(tab => tab.fileId),
+      activeTabFileId,
+      selectedExplorerId: fileSys.selectedExplorerId,
+      theme: ui.theme,
+      zoom: ui.zoom,
+      viewMode: ui.viewMode,
+      appMode: ui.appMode,
+      sidebarOpen: ui.sidebarOpen,
+      searchQuery: ui.searchQuery,
+      autoSaveEnabled: ui.autoSaveEnabled,
+      updatedAt: Date.now()
+    };
+    window.localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionState));
+  }, [
+    ui.persistSessionEnabled,
+    proj.activeProjectId,
+    tabs.tabs,
+    tabs.activeTabId,
+    fileSys.selectedExplorerId,
+    ui.theme,
+    ui.zoom,
+    ui.viewMode,
+    ui.appMode,
+    ui.sidebarOpen,
+    ui.searchQuery,
+    ui.autoSaveEnabled
+  ]);
 
   useEffect(() => {
     if (!proj.loading && proj.projects.length > 0 && !proj.activeProjectId) {
@@ -180,6 +291,8 @@ export const useApp = () => {
       appMode: ui.appMode,
       sidebarOpen: ui.sidebarOpen,
       searchQuery: ui.searchQuery,
+      autoSaveEnabled: ui.autoSaveEnabled,
+      persistSessionEnabled: ui.persistSessionEnabled,
       toasts,
       viewMode: ui.viewMode,
       cursorPos: ui.cursorPos,
@@ -225,6 +338,8 @@ export const useApp = () => {
       setSearchQuery: ui.setSearchQuery,
       setViewMode: ui.setViewMode,
       setCursorPos: ui.setCursorPos,
+      setAutoSaveEnabled: ui.setAutoSaveEnabled,
+      setPersistSessionEnabled: ui.setPersistSessionEnabled,
       addToast,
       removeToast,
       toggleSidebar: () => ui.setSidebarOpen(!ui.sidebarOpen),
