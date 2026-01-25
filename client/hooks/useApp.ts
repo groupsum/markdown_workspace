@@ -182,6 +182,14 @@ export const useApp = () => {
     }
   }, [proj.loading, proj.projects, proj.activeProjectId, loadProject]);
 
+  useEffect(() => {
+    if (proj.loading) return;
+    if (!proj.activeProjectId) return;
+    if (fileSys.files.length > 0) return;
+    console.log(`[useApp] Effect: Loading persisted project -> ${proj.activeProjectId}`);
+    loadProject(proj.activeProjectId);
+  }, [proj.loading, proj.activeProjectId, fileSys.files.length, loadProject]);
+
   const handleCreateProject = async (name: string) => {
       console.log(`[useApp] Action: handleCreateProject -> ${name}`);
       const newProj = await proj.createProject(name);
