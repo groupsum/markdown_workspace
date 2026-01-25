@@ -829,12 +829,13 @@
   }
 
   .settings-sidebar-btn {
-    flex: 1;
+    flex: 0 0 auto;
     justify-content: center;
     padding: 12px;
     font-size: calc(10px * var(--ui-scale));
     border-bottom: 0;
     border-right: var(--border-width) solid var(--border-color);
+    gap: 0;
   }
 
   .settings-sidebar-label {
