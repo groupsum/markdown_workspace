@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { X, Layout, GitBranch, Database, Keyboard, Download, RefreshCw, Settings as SettingsIcon } from 'lucide-react';
-import { AppTheme, GitConfig } from '../../types';
+import { X, Layout, GitBranch, Database, Keyboard, Download, RefreshCw, Settings as SettingsIcon, Monitor, Save } from 'lucide-react';
+import { AppTheme, AppMode, GitConfig, ViewMode } from '../../types';
 import { THEMES } from '../../data/themes';
 
 interface SettingsModalProps {
@@ -21,6 +21,18 @@ interface SettingsModalProps {
   onPwaInstall: () => void;
   onPwaUpdate: () => void;
   onPwaAutoUpdateToggle: (enabled: boolean) => void;
+  sessionState: {
+    currentProjectName: string | null;
+    tabCount: number;
+    activeTabName: string | null;
+    zoom: number;
+    viewMode: ViewMode;
+    appMode: AppMode;
+    autoSaveEnabled: boolean;
+    persistSessionEnabled: boolean;
+  };
+  onAutoSaveToggle: (enabled: boolean) => void;
+  onPersistSessionToggle: (enabled: boolean) => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ 
@@ -34,18 +46,22 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   pwaState,
   onPwaInstall,
   onPwaUpdate,
-  onPwaAutoUpdateToggle
+  onPwaAutoUpdateToggle,
+  sessionState,
+  onAutoSaveToggle,
+  onPersistSessionToggle
 }) => {
   if (!isOpen) return null;
 
-  const [activeTab, setActiveTab] = useState<'visual' | 'git' | 'data' | 'keys'>('visual');
+  const [activeTab, setActiveTab] = useState<'visual' | 'git' | 'data' | 'keys' | 'session'>('visual');
   const themeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
   const themeDef = THEMES[themeIndex];
   const tabMeta: Record<typeof activeTab, { label: string; code: string }> = {
     visual: { label: 'Visual Matrix', code: '01' },
     git: { label: 'Source Control', code: '02' },
     data: { label: 'Storage Ops', code: '03' },
-    keys: { label: 'Key Map', code: '04' }
+    keys: { label: 'Key Map', code: '04' },
+    session: { label: 'Session State', code: '05' }
   };
 
   const handleThemeStep = (direction: number) => {
@@ -78,26 +94,42 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <button 
               onClick={() => setActiveTab('visual')}
               className={`settings-sidebar-btn ${activeTab === 'visual' ? 'active' : ''}`}
+              title="Visual Matrix"
             >
-              <Layout size={14} /> 01_VISUALS
+              <Layout size={14} className="settings-sidebar-icon" />
+              <span className="settings-sidebar-label">01_VISUALS</span>
             </button>
             <button 
               onClick={() => setActiveTab('git')}
               className={`settings-sidebar-btn ${activeTab === 'git' ? 'active' : ''}`}
+              title="Source Control"
             >
-              <GitBranch size={14} /> 02_SOURCE_CTRL
+              <GitBranch size={14} className="settings-sidebar-icon" />
+              <span className="settings-sidebar-label">02_SOURCE_CTRL</span>
             </button>
             <button 
               onClick={() => setActiveTab('data')}
               className={`settings-sidebar-btn ${activeTab === 'data' ? 'active' : ''}`}
+              title="Storage Ops"
             >
-              <Database size={14} /> 03_STORAGE_IO
+              <Database size={14} className="settings-sidebar-icon" />
+              <span className="settings-sidebar-label">03_STORAGE_IO</span>
             </button>
             <button 
               onClick={() => setActiveTab('keys')}
               className={`settings-sidebar-btn ${activeTab === 'keys' ? 'active' : ''}`}
+              title="Key Map"
             >
-              <Keyboard size={14} /> 04_KEYMAP
+              <Keyboard size={14} className="settings-sidebar-icon" />
+              <span className="settings-sidebar-label">04_KEYMAP</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('session')}
+              className={`settings-sidebar-btn ${activeTab === 'session' ? 'active' : ''}`}
+              title="Session State"
+            >
+              <Monitor size={14} className="settings-sidebar-icon" />
+              <span className="settings-sidebar-label">05_SESSION</span>
             </button>
           </nav>
 
@@ -324,6 +356,84 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         <span className="settings-keymap-key text-[var(--accent)] font-mono">{row.key}</span>
                       </div>
                     ))}
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'session' && (
+              <div className="settings-pane">
+                <h3 className="settings-section-title">SESSION_RESTORE</h3>
+                <div className="flex flex-col gap-4">
+                  <div className="settings-card settings-card-stack">
+                    <div className="settings-session-grid">
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">ACTIVE_PROJECT</span>
+                        <span className="settings-session-value">{sessionState.currentProjectName ?? 'NONE'}</span>
+                      </div>
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">OPEN_TABS</span>
+                        <span className="settings-session-value">{sessionState.tabCount}</span>
+                      </div>
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">ACTIVE_TAB</span>
+                        <span className="settings-session-value">{sessionState.activeTabName ?? 'NONE'}</span>
+                      </div>
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">VIEW_MODE</span>
+                        <span className="settings-session-value">{sessionState.viewMode.toUpperCase()}</span>
+                      </div>
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">APP_MODE</span>
+                        <span className="settings-session-value">{sessionState.appMode.toUpperCase()}</span>
+                      </div>
+                      <div className="settings-session-item">
+                        <span className="settings-session-label">ZOOM_SCALE</span>
+                        <span className="settings-session-value">{sessionState.zoom.toFixed(2)}x</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <span className="font-bold text-[11px] uppercase flex items-center gap-2">
+                          <Save size={14} /> AUTO_SAVE
+                        </span>
+                        <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">
+                          Toggle instant persistence to local storage while editing.
+                        </p>
+                      </div>
+                      <label className="pwa-toggle">
+                        <input
+                          type="checkbox"
+                          checked={sessionState.autoSaveEnabled}
+                          onChange={(event) => onAutoSaveToggle(event.target.checked)}
+                        />
+                        <span className="pwa-toggle-indicator" />
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <span className="font-bold text-[11px] uppercase flex items-center gap-2">
+                          <Monitor size={14} /> RESTORE_SESSION
+                        </span>
+                        <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">
+                          Persist current project, tabs, and layout so reloads resume from the last session.
+                        </p>
+                      </div>
+                      <label className="pwa-toggle">
+                        <input
+                          type="checkbox"
+                          checked={sessionState.persistSessionEnabled}
+                          onChange={(event) => onPersistSessionToggle(event.target.checked)}
+                        />
+                        <span className="pwa-toggle-indicator" />
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

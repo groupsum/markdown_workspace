@@ -8,6 +8,7 @@ import { createHtmlExport, getExportStyles, toHtmlFileName } from '../services/h
 
 export const useFileManager = (
   activeProjectId: string | null,
+  autoSaveEnabled: boolean,
   addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
 ) => {
   console.log(`[useFileManager] Hook init. Active Project: ${activeProjectId}`);
@@ -130,14 +131,16 @@ export const useFileManager = (
     setFiles(prev => prev.map(f =>
       f.id === fileId ? { ...f, content, lastModified: updatedAt } : f
     ));
-    const existing = files.find(f => f.id === fileId);
-    if (existing) {
-      const updatedFile = { ...existing, content, lastModified: updatedAt };
-      storage.saveFile(updatedFile).then(() => {
-        setUnsaved(false);
-      });
+    if (autoSaveEnabled) {
+      const existing = files.find(f => f.id === fileId);
+      if (existing) {
+        const updatedFile = { ...existing, content, lastModified: updatedAt };
+        storage.saveFile(updatedFile).then(() => {
+          setUnsaved(false);
+        });
+      }
     }
-  }, [files]);
+  }, [autoSaveEnabled, files]);
 
   const moveFile = async (fileId: string, targetFolderId: string | null) => {
     console.log(`[useFileManager] Action: moveFile -> ${fileId} to folder -> ${targetFolderId}`);

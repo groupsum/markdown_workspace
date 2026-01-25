@@ -92,6 +92,13 @@ const App: React.FC = () => {
           disabled: true
         };
 
+  const activeTabName = (() => {
+    const activeTab = state.tabs.find((tab) => tab.id === state.activeTabId);
+    if (!activeTab) return null;
+    const activeFile = state.files.find((file) => file.id === activeTab.fileId);
+    return activeFile?.name ?? null;
+  })();
+
   const commandActions = [
     { id: 'new-file', label: 'Create New File', action: actions.promptNewFile, icon: <FilePlus size={14}/> },
     { id: 'new-folder', label: 'Create New Folder', action: actions.promptNewFolder, icon: <FolderPlus size={14}/> },
@@ -224,6 +231,18 @@ const App: React.FC = () => {
         onPwaInstall={pwaActions.promptInstall}
         onPwaUpdate={pwaActions.requestUpdate}
         onPwaAutoUpdateToggle={pwaActions.toggleAutoUpdate}
+        sessionState={{
+          currentProjectName: state.currentProject?.name ?? null,
+          tabCount: state.tabs.length,
+          activeTabName,
+          zoom: state.zoom,
+          viewMode: state.viewMode,
+          appMode: state.appMode,
+          autoSaveEnabled: state.autoSaveEnabled,
+          persistSessionEnabled: state.persistSessionEnabled
+        }}
+        onAutoSaveToggle={actions.setAutoSaveEnabled}
+        onPersistSessionToggle={actions.setPersistSessionEnabled}
       />
 
       <InputModal
