@@ -167,7 +167,8 @@
   flex: 1;
   display: flex;
   position: relative;
-  overflow: hidden;
+  flex-direction: column-reverse;
+  overflow: visible;
 }
 
 .view-toolbar {
@@ -318,7 +319,7 @@
     align-items: center;
     justify-content: flex-start;
     border-left: 0;
-    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: var(--border-width) solid var(--border-color);
   }
 
   .view-toolbar-group {

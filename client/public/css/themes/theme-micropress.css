@@ -79,6 +79,11 @@
   gap: 4px;
 }
 
+.theme-micropress .editor-pane-shell {
+  flex-direction: row;
+  overflow: hidden;
+}
+
 .theme-micropress .markdown-body h1 { 
   border-bottom: 5px solid var(--border-color); 
   text-transform: uppercase; 
