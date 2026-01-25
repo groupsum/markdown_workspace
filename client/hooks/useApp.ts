@@ -185,10 +185,10 @@ export const useApp = () => {
   useEffect(() => {
     if (proj.loading) return;
     if (!proj.activeProjectId) return;
-    if (fileSys.files.length > 0) return;
+    if (fileSys.loadedProjectId === proj.activeProjectId) return;
     console.log(`[useApp] Effect: Loading persisted project -> ${proj.activeProjectId}`);
     loadProject(proj.activeProjectId);
-  }, [proj.loading, proj.activeProjectId, fileSys.files.length, loadProject]);
+  }, [proj.loading, proj.activeProjectId, fileSys.loadedProjectId, loadProject]);
 
   const handleCreateProject = async (name: string) => {
       console.log(`[useApp] Action: handleCreateProject -> ${name}`);

@@ -16,12 +16,14 @@ export const useFileManager = (
   const [files, setFiles] = useState<FileNode[]>([]);
   const [selectedExplorerId, setSelectedExplorerId] = useState<string | null>(null);
   const [unsaved, setUnsaved] = useState(false);
+  const [loadedProjectId, setLoadedProjectId] = useState<string | null>(null);
 
   const loadFiles = async (projectId: string) => {
     console.log(`[useFileManager] Action: loadFiles for project -> ${projectId}`);
     const projectFiles = await storage.getAllFiles(projectId);
     console.log(`[useFileManager] Loaded ${projectFiles.length} files from IDB`);
     setFiles(projectFiles);
+    setLoadedProjectId(projectId);
     return projectFiles;
   };
 
@@ -258,6 +260,7 @@ export const useFileManager = (
     setSelectedExplorerId,
     unsaved,
     setUnsaved,
+    loadedProjectId,
     loadFiles,
     createNewFile,
     createNewFolder,
