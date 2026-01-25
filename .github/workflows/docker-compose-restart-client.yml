@@ -1,22 +1,21 @@
 name: Docker Compose Restart (Client)
 
 on:
-  workflow_run:
-    workflows:
-      - Build and Commit Client Dist
-    types:
-      - completed
+  push:
     branches:
       - master
+    paths:
+      - client/**
+      - docker-compose.yml
   workflow_dispatch:
 
+
 concurrency:
-  group: dist-docker-restart-client
+  group: dist-docker-restart-clien
   cancel-in-progress: false
 
 jobs:
   restart-client:
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     runs-on: deployment
     steps:
       - name: Checkout
@@ -24,15 +23,15 @@ jobs:
 
       - name: Stop client container
         continue-on-error: true
-        run: docker-compose stop staticserve
+        run: docker-compose stop markdown_workspace_client
 
       - name: Stop client container
         continue-on-error: true
-        run: docker-compose rm -f staticserve
+        run: docker-compose rm -f markdown_workspace_client
 
       - name: Prune docker images
         continue-on-error: true
         run: docker system prune -af
 
       - name: Restart client container
-        run: docker-compose up -d --build --force-recreate --no-deps staticserve
+        run: docker-compose up -d --build --force-recreate --no-deps markdown_workspace_client
