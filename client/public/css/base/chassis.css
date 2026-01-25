@@ -4,10 +4,14 @@
 .chassis-root {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
   background-color: var(--bg-app);
   overflow: hidden;
   border: var(--border-width) solid var(--border-color);
+  box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
 }
 
 .texture-overlay {

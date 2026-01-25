@@ -291,8 +291,12 @@
     flex-direction: column;
   }
 
-  .editor-pane-column {
+  .editor-pane-body .editor-pane-column {
     width: 100% !important;
+    height: 100%;
+  }
+
+  .editor-pane-body.is-split .editor-pane-column {
     height: 50%;
   }
 
