@@ -825,21 +825,27 @@
   .settings-sidebar {
     width: 100%;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 
   .settings-sidebar-btn {
-    flex: 0 0 auto;
+    flex: 1 1 0;
     justify-content: center;
-    padding: 12px;
+    padding: 10px 6px;
     font-size: calc(10px * var(--ui-scale));
     border-bottom: 0;
     border-right: var(--border-width) solid var(--border-color);
     gap: 0;
+    min-width: 0;
   }
 
   .settings-sidebar-label {
     display: none;
+  }
+
+  .settings-sidebar-icon {
+    width: 14px;
+    height: 14px;
   }
 
   .settings-sidebar-btn:last-child {
