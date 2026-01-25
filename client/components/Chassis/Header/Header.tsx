@@ -42,40 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
   className = ""
 }) => {
   return (
-      <header className={`app-header ${className}`}>
+    <header className={`app-header ${className}`}>
+      <div className="app-header-bar">
         <div className="header-left">
           <div className="header-brand" onClick={onSwitchProject} title="Switch Project">
             <span className="header-brand-title">
               {currentThemeDef.icon && React.cloneElement(currentThemeDef.icon as React.ReactElement<any>, { size: 16 })}
               {currentThemeDef.name}
             </span>
-          </div>
-        </div>
-        
-        <div className="header-center">
-          <div className="tab-bar header-tabs">
-            {tabs.map(tab => {
-               const f = files.find(file => file.id === tab.fileId);
-               const isActive = activeTabId === tab.id;
-               const isExpanded = isActive && appMode === 'work';
-               
-               return (
-                 <div 
-                   key={tab.id}
-                   onClick={() => onTabSelect(tab.id, tab.fileId)}
-                   className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}`}
-                 >
-                   <span className="tab-label">{f?.name || 'Untitled'}</span>
-                   <button 
-                     onClick={(e) => onTabClose(e, tab.id)}
-                     className="tab-close"
-                     aria-label="Close tab"
-                   >
-                     <X size={12} />
-                   </button>
-                 </div>
-               )
-            })}
           </div>
         </div>
 
@@ -102,6 +76,34 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
         </div>
-      </header>
+      </div>
+
+      <div className="header-center">
+        <div className="tab-bar header-tabs">
+          {tabs.map(tab => {
+             const f = files.find(file => file.id === tab.fileId);
+             const isActive = activeTabId === tab.id;
+             const isExpanded = isActive && appMode === 'work';
+
+             return (
+               <div
+                 key={tab.id}
+                 onClick={() => onTabSelect(tab.id, tab.fileId)}
+                 className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}`}
+               >
+                 <span className="tab-label">{f?.name || 'Untitled'}</span>
+                 <button
+                   onClick={(e) => onTabClose(e, tab.id)}
+                   className="tab-close"
+                   aria-label="Close tab"
+                 >
+                   <X size={12} />
+                 </button>
+               </div>
+             )
+          })}
+        </div>
+      </div>
+    </header>
   );
 };
