@@ -48,7 +48,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     future: []
   });
 
-  const isSplitAllowed = viewportWidth > 820;
+  const isSplitAllowed = viewportWidth > 900;
   const mergeClassNames = (...classes: Array<string | undefined>) =>
     classes.filter(Boolean).join(' ');
   const withAlignment = (
@@ -312,7 +312,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       )}
 
       <div className="editor-pane-shell">
-        <div className="editor-pane-body">
+        <div className={`editor-pane-body ${viewMode === 'split' ? 'is-split' : ''}`}>
           {(viewMode === 'editor' || viewMode === 'split') && (
             <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${splitPos}%` : '100%' }}>
               <div className="editor-layout-wrapper">
