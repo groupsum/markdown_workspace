@@ -1,11 +1,13 @@
 version: "3.9"
 
 services:
-  staticserve:
-    container_name: markdown_workspace_staticserve
+  client:
+    container_name: markdown_workspace_client
     build:
       context: .
-      dockerfile: staticserve/Dockerfile
+      dockerfile: client/Dockerfile
+    ports:
+      - "8080:80"
     restart: unless-stopped
     networks:
       - dockerwp
