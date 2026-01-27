@@ -26,6 +26,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   const [isCreating, setIsCreating] = useState(false);
   const [newProjectName, setNewProjectName] = useState('');
   const [showThemeModal, setShowThemeModal] = useState(false);
+  const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +43,13 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   const handleThemeSelect = (themeId: AppTheme) => {
     onThemeChange(themeId);
     setShowThemeModal(false);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (projectToDelete) {
+      onDeleteProject(projectToDelete.id);
+    }
+    setProjectToDelete(null);
   };
 
   return (
@@ -190,7 +198,57 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             </div>
           )}
 
-          <div className="project-grid p-4">
+          {projectToDelete && (
+            <div
+              className="project-delete-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-delete-title"
+              onClick={() => setProjectToDelete(null)}
+            >
+              <div
+                className="project-delete-modal-surface"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="project-delete-modal-header">
+                  <h2 id="project-delete-title" className="project-delete-title">
+                    Confirm_Project_Ejection
+                  </h2>
+                  <button
+                    type="button"
+                    className="project-delete-close"
+                    onClick={() => setProjectToDelete(null)}
+                  >
+                    CLOSE
+                  </button>
+                </div>
+                <div className="project-delete-modal-body">
+                  <p className="project-delete-message">
+                    Delete <span>{projectToDelete.name}</span>? This removes the vault record from the registry.
+                  </p>
+                  <p className="project-delete-warning">Stored files remain in local IDB storage.</p>
+                </div>
+                <div className="project-delete-actions">
+                  <button
+                    type="button"
+                    className="project-btn-cancel"
+                    onClick={() => setProjectToDelete(null)}
+                  >
+                    ABORT_CMD
+                  </button>
+                  <button
+                    type="button"
+                    className="project-btn-submit project-delete-confirm"
+                    onClick={handleDeleteConfirm}
+                  >
+                    PURGE_RECORD
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="project-grid">
             {projects.map(p => (
               <div 
                 key={p.id}
@@ -206,9 +264,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                       <button 
                         onClick={(e) => { 
                           e.stopPropagation(); 
-                          if(confirm('CONFIRM_EJECTION: Data remains in IDB but project record will be purged.')) {
-                            onDeleteProject(p.id);
-                          }
+                          setProjectToDelete(p);
                         }}
                         className="p-1.5 text-[var(--fg-muted)] hover:text-[var(--status-error)] transition-colors hover:bg-[var(--bg-inset)]"
                         title="Eject Project"
