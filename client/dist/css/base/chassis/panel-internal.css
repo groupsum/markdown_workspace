@@ -1,0 +1,35 @@
+/* Panel Internal Styling */
+.workspace-panel-header {
+  height: var(--panel-header-height);
+  background: var(--bg-inset);
+  border-bottom: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  flex-shrink: 0;
+  font-size: calc(10px * var(--ui-scale));
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.workspace-panel-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.panel-icon-btn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  border: 1px solid transparent;
+}
+.panel-icon-btn:hover {
+  color: var(--fg-primary);
+  border-color: var(--border-color);
+  background: var(--bg-panel);
+}

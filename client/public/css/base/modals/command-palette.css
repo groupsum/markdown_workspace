@@ -1,0 +1,121 @@
+/* === COMMAND PALETTE === */
+.cmd-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 3000;
+  display: flex;
+  justify-content: center;
+  padding-top: 15vh;
+}
+
+.cmd-palette {
+  width: 680px;
+  max-width: 95%;
+  background: var(--bg-app); /* The manifold color */
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 16px 16px 0 rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  max-height: 55vh;
+  gap: var(--app-gap);
+  padding: var(--app-gap);
+}
+
+.cmd-header {
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 64px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cmd-search-icon {
+  color: var(--accent);
+}
+
+.cmd-input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: calc(18px * var(--ui-scale));
+  font-family: var(--font-mono);
+  color: var(--fg-primary);
+  outline: none;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cmd-badge {
+  background: var(--bg-inset);
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  font-weight: 900;
+  color: var(--fg-muted);
+}
+
+.cmd-list {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.cmd-item {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ui-scale));
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.05s;
+}
+
+.cmd-item:hover {
+  background: var(--bg-inset);
+}
+
+.cmd-item.active {
+  background: var(--accent);
+  color: white;
+  transform: translateX(4px);
+}
+
+.cmd-item-text {
+  flex: 1;
+}
+
+.cmd-item-type {
+  font-size: calc(10px * var(--ui-scale));
+  background: var(--bg-inset);
+  color: var(--fg-muted);
+  padding: 2px 8px;
+  border: 1px solid var(--border-color);
+  font-weight: 900;
+}
+
+.cmd-item.active .cmd-item-type {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border-color: white;
+}
+
+.cmd-empty {
+  padding: 40px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: calc(12px * var(--ui-scale));
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}

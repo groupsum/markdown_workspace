@@ -1,0 +1,24 @@
+.git-sync-area {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: var(--border-width) solid var(--border-color);
+}
+
+.git-sync-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  font-size: calc(11px * var(--ui-scale));
+  border-radius: 8px;
+}
+
+.git-sync-btn:hover {
+  background: var(--bg-inset);
+}
+

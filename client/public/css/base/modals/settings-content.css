@@ -1,0 +1,76 @@
+.settings-content-frame {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6px 4px 4px;
+}
+
+.settings-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-section-title {
+  font-family: var(--font-head);
+  font-size: calc(13px * var(--ui-scale));
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: var(--border-width) solid var(--border-color);
+  color: var(--fg-primary);
+  letter-spacing: 0.05em;
+}
+
+.settings-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--app-gap);
+  background: var(--bg-app); /* Manifold within grid */
+  padding: 12px;
+  border: var(--border-width) solid var(--border-color);
+}
+
+.settings-theme-btn {
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  position: relative;
+}
+
+.settings-theme-btn:hover {
+  background: var(--bg-inset);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.settings-theme-btn.active {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.settings-theme-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.settings-theme-name { 
+  font-family: var(--font-head);
+  font-weight: 900; 
+  text-transform: uppercase; 
+  font-size: calc(12px * var(--ui-scale)); 
+}
+
+.settings-theme-desc { 
+  font-size: calc(11px * var(--ui-scale)); 
+  color: var(--fg-muted); 
+  line-height: 1.5;
+  font-family: var(--font-ui);
+}
