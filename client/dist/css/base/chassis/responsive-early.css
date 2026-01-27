@@ -1,0 +1,26 @@
+/* === Responsive Chassis === */
+@media (max-width: 1200px) {
+  :root {
+    --rail-width: 42px;
+    --sidebar-width: 190px;
+    --panel-header-height: 30px;
+    --app-gap: 3px;
+    --editor-padding: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --rail-width: 40px;
+    --sidebar-width: 180px;
+    --header-height: 34px;
+    --status-height: 22px;
+    --panel-header-height: 28px;
+    --rail-btn-size: 28px;
+    --editor-padding: 14px;
+  }
+
+  .header-right {
+    min-width: 170px;
+  }
+}
