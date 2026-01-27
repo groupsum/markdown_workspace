@@ -74,6 +74,17 @@
   z-index: 2000;
 }
 
+.project-delete-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2050;
+}
+
 .theme-selector-modal {
   position: fixed;
   inset: 0;
@@ -87,6 +98,15 @@
 
 .project-create-modal-surface {
   width: min(560px, 92vw);
+  background: var(--bg-panel);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-delete-modal-surface {
+  width: min(520px, 92vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
   box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
@@ -113,6 +133,15 @@
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
+.project-delete-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: var(--bg-inset);
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+
 .theme-selector-modal-header {
   display: flex;
   align-items: center;
@@ -123,6 +152,14 @@
 }
 
 .project-create-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: calc(1rem * var(--ui-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-delete-title {
   margin: 0;
   font-family: var(--font-head);
   font-size: calc(1rem * var(--ui-scale));
@@ -160,11 +197,64 @@
   letter-spacing: 0.08em;
 }
 
+.project-delete-close {
+  border: var(--border-width) solid var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  padding: 8px 12px;
+  font-size: calc(10px * var(--ui-scale));
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-delete-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: var(--border-width) solid var(--border-color);
+}
+
+.project-delete-message {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: calc(0.95rem * var(--ui-scale));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+
+.project-delete-message span {
+  color: var(--accent);
+}
+
+.project-delete-warning {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.project-delete-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  background: var(--bg-inset);
+}
+
+.project-delete-confirm {
+  border-color: var(--status-error);
+  color: var(--status-error);
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--app-gap);
-  padding: var(--app-gap);
+  gap: calc(var(--app-gap) * 4);
+  padding: calc(var(--app-gap) * 4);
   background: var(--bg-inset);
   border: var(--border-width) solid var(--border-color);
   flex: 1;
