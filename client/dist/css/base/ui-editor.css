@@ -1,0 +1,179 @@
+/* === EDITOR COMPONENTS === */
+.editor-pane-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.editor-pane-shell {
+  flex: 1;
+  display: flex;
+  position: relative;
+  flex-direction: column-reverse;
+  overflow: visible;
+}
+.view-toolbar {
+  width: 36px;
+  height: 100%;
+  background: var(--bg-inset);
+  border-left: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 4px;
+  z-index: 50;
+  flex-shrink: 0;
+}
+.view-toolbar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.view-toolbar-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  border: 1px solid transparent;
+}
+.view-toolbar-btn:hover:not(:disabled) {
+  border-color: var(--border-color);
+  color: var(--fg-primary);
+}
+.view-toolbar-btn.active {
+  background: var(--border-color);
+  color: white;
+}
+.view-toolbar-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+.view-toolbar-divider {
+  width: 16px;
+  height: 1px;
+  background: var(--border-color);
+  margin: 6px 0;
+}
+.editor-pane-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-app);
+}
+.editor-pane-column {
+  height: 100%;
+  background: var(--bg-panel);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.editor-layout-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.editor-gutter {
+  width: 48px;
+  background: var(--bg-inset);
+  border-right: var(--border-width) solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: calc(var(--editor-padding) - 8px) 8px;
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  color: var(--fg-muted);
+  overflow-y: hidden;
+  user-select: none;
+}
+.line-num {
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+.editor-textarea {
+  flex: 1;
+  background: var(--bg-panel);
+  border: none;
+  resize: none;
+  padding: var(--editor-padding);
+  font-family: var(--font-mono);
+  font-size: calc(13px * var(--ui-scale));
+  line-height: 1.5rem;
+  color: var(--fg-primary);
+  outline: none;
+  overflow-y: auto;
+}
+.editor-splitter {
+  width: var(--app-gap);
+  background: var(--border-color);
+  cursor: col-resize;
+  position: relative;
+  transition: background 0.1s;
+}
+.editor-splitter:hover,
+.editor-splitter.dragging {
+  background: var(--accent);
+}
+.editor-splitter-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.preview-pane {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-panel);
+}
+@media (max-width: 900px) {
+  .editor-pane-body {
+    flex-direction: column;
+  }
+  .editor-pane-body .editor-pane-column {
+    width: 100% !important;
+    height: 100%;
+  }
+  .editor-pane-body.is-split .editor-pane-column {
+    height: 50%;
+  }
+  .editor-splitter {
+    width: 100%;
+    height: var(--app-gap);
+    cursor: row-resize;
+  }
+  .editor-splitter-handle {
+    width: 24px;
+    height: 2px;
+  }
+  .view-toolbar {
+    width: 100%;
+    height: 36px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-left: 0;
+    border-bottom: var(--border-width) solid var(--border-color);
+  }
+  .view-toolbar-group {
+    flex-direction: row;
+  }
+}
+@media (max-width: 640px) {
+  .editor-gutter {
+    width: 40px;
+    font-size: calc(9px * var(--ui-scale));
+  }
+  .editor-textarea {
+    font-size: calc(12px * var(--ui-scale));
+  }
+  .view-toolbar-btn--split {
+    display: none;
+  }
+}
