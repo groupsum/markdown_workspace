@@ -1,0 +1,112 @@
+/* Lattice Architect: Project & Theme Selection - Creation Form */
+
+.project-create-form {
+  background: transparent;
+  border: none;
+  padding: 24px;
+}
+
+.project-input {
+  width: 100%;
+  padding: 16px;
+  background: var(--bg-inset);
+  border: var(--border-width) solid var(--border-color);
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: calc(16px * var(--ui-scale));
+  text-transform: uppercase;
+}
+
+.project-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-input-label {
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  font-weight: 800;
+}
+
+.project-theme-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 16px;
+  background: var(--bg-inset);
+  border: var(--border-width) solid var(--border-color);
+  text-transform: uppercase;
+}
+
+.project-theme-trigger-label {
+  font-family: var(--font-head);
+  font-size: calc(12px * var(--ui-scale));
+  letter-spacing: 0.08em;
+  color: var(--fg-primary);
+}
+
+.project-theme-trigger-meta {
+  font-family: var(--font-mono);
+  font-size: calc(9px * var(--ui-scale));
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+}
+
+.project-form-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.project-btn-submit {
+  flex: 1;
+  background: var(--accent);
+  color: white;
+  padding: 16px;
+  font-family: var(--font-head);
+  font-size: calc(12px * var(--ui-scale));
+  font-weight: 900;
+  border: var(--border-width) solid var(--border-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.project-btn-submit:hover {
+  background: var(--fg-primary);
+  color: var(--bg-panel);
+}
+
+.project-btn-submit:active {
+  transform: translate(2px, 2px);
+}
+
+.project-btn-cancel {
+  flex: 1;
+  padding: 16px;
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  border: var(--border-width) solid var(--border-color);
+  font-family: var(--font-head);
+  font-size: calc(12px * var(--ui-scale));
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.project-btn-cancel:hover {
+  background: var(--fg-primary);
+  color: var(--bg-panel);
+}
+
+.project-btn-cancel:active {
+  transform: translate(2px, 2px);
+}
