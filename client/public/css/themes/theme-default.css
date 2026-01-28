@@ -58,6 +58,54 @@
   color: #ffffff;
 }
 
+.theme-default .view-toolbar {
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.theme-default .editor-pane-container {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.theme-default .editor-pane-shell {
+  grid-row: 2;
+}
+
+.theme-default .view-toolbar {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  min-height: unset;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-right: 0;
+  border-bottom: var(--border-width) solid var(--border-color);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.theme-default .view-toolbar-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.theme-default .view-toolbar-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-default .view-toolbar-divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+  opacity: 0.6;
+}
+
 .theme-default .badge-unsaved {
   background: var(--accent);
   color: #ffffff;

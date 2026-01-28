@@ -49,6 +49,54 @@
   color: #ffffff;
 }
 
+.theme-zinc .view-toolbar {
+  background: #b7b7be;
+  box-shadow: inset 0 0 0 1px rgba(24, 24, 27, 0.35);
+  border-right: var(--border-width) solid var(--border-color);
+}
+
+.theme-zinc .editor-pane-container {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.theme-zinc .editor-pane-shell {
+  grid-row: 2;
+}
+
+.theme-zinc .view-toolbar {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  min-height: unset;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-right: 0;
+  border-bottom: var(--border-width) solid var(--border-color);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.theme-zinc .view-toolbar-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.theme-zinc .view-toolbar-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-zinc .view-toolbar-divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+  opacity: 0.6;
+}
+
 .theme-zinc .badge-unsaved {
   background: var(--accent);
   color: #ffffff;

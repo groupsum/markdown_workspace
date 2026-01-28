@@ -64,14 +64,15 @@
 }
 
 .theme-micropress .view-toolbar {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  height: auto;
-  width: auto;
-  padding: 6px;
+  position: relative;
+  top: auto;
+  right: auto;
+  height: 100%;
+  width: 40px;
+  padding: 10px 6px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-panel);
+  box-shadow: 6px 6px 0 #000000;
   z-index: 60;
 }
 
@@ -82,6 +83,14 @@
 .theme-micropress .editor-pane-shell {
   flex-direction: row;
   overflow: hidden;
+}
+
+@media (max-width: 900px), (max-height: 520px) {
+  .theme-micropress .view-toolbar {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
 }
 
 .theme-micropress .markdown-body h1 { 
