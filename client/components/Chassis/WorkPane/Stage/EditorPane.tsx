@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
 import { Undo, Redo, Bold, Italic, Columns, Maximize2, Eye } from 'lucide-react';
@@ -348,8 +349,20 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
             <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${100 - splitPos}%` : '100%' }}>
               <div className="preview-pane markdown-body p-8">
                 <ReactMarkdown 
-                  remarkPlugins={[remarkGfm]}
+                  remarkPlugins={[remarkGfm, remarkSupersub]}
                   components={{
+                    ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
+                    ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
+                    li: ({node, checked, ...props}) => {
+                      const isTask = typeof checked === 'boolean';
+                      return (
+                        <li
+                          className={mergeClassNames('md-li', isTask ? 'md-task-list-item' : undefined)}
+                          data-checked={isTask ? String(checked) : undefined}
+                          {...props}
+                        />
+                      );
+                    },
                     table: ({node, className, children, ...props}: any) => {
                       const alignments = Array.isArray(node?.align) ? node.align : [];
 
@@ -406,6 +419,12 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                         {...props}
                       />
                     ),
+                    input: ({node, ...props}) => {
+                      if (props.type === 'checkbox') {
+                        return <input type="checkbox" className="md-checkbox" {...props} />;
+                      }
+                      return <input {...props} />;
+                    },
                     code({node, inline, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '');
                       return !inline && match ? (
