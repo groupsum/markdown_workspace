@@ -44,7 +44,7 @@ export const useApp = () => {
 
   const { toasts, addToast, removeToast } = useToast();
   const { 
-    showInputModal, inputCallback, inputTitle, inputPlaceholder, 
+    showInputModal, inputCallback, inputTitle, inputPlaceholder, inputDefaultValue,
     promptInput, closeInputModal 
   } = useInputModal();
 
@@ -232,6 +232,40 @@ export const useApp = () => {
       });
   };
 
+  const promptRenameSelected = () => {
+      const selectedId = fileSys.selectedExplorerId;
+      if (!selectedId) {
+          addToast('SELECT FILE OR FOLDER TO RENAME', 'warning');
+          return;
+      }
+      const node = fileSys.files.find(f => f.id === selectedId);
+      if (!node) return;
+      const placeholder = node.type === 'file' ? 'filename.md' : 'folder-name';
+      const title = node.type === 'file' ? 'Rename File' : 'Rename Folder';
+      promptInput(title, placeholder, async (name) => {
+          await fileSys.renameNode(node.id, name);
+      }, node.name);
+  };
+
+  const deleteSelectedItem = async () => {
+      const selectedId = fileSys.selectedExplorerId;
+      if (!selectedId) {
+          addToast('SELECT FILE OR FOLDER TO DELETE', 'warning');
+          return;
+      }
+      const node = fileSys.files.find(f => f.id === selectedId);
+      if (!node) return;
+      const promptMessage = node.type === 'folder'
+        ? `DELETE FOLDER "${node.name}" AND ITS CONTENTS?`
+        : `DELETE FILE "${node.name}"?`;
+      if (!window.confirm(promptMessage)) return;
+      const deletedFileIds = await fileSys.deleteNode(selectedId);
+      if (deletedFileIds.length > 0) {
+          const tabsToClose = tabs.tabs.filter(tab => deletedFileIds.includes(tab.fileId));
+          tabsToClose.forEach(tab => tabs.closeTab(tab.id));
+      }
+  };
+
   const saveCurrentFile = async () => {
       console.log(`[useApp] Action: saveCurrentFile initiated -> ${activeFile?.id}`);
       if (activeFile) {
@@ -308,6 +342,7 @@ export const useApp = () => {
       inputCallback,
       inputTitle,
       inputPlaceholder,
+      inputDefaultValue,
       activeFile,
       currentProject,
       currentThemeDef
@@ -326,6 +361,8 @@ export const useApp = () => {
       saveCurrentFile,
       promptNewFile,
       promptNewFolder,
+      promptRenameSelected,
+      deleteSelectedItem,
       handleDownload,
       handleMoveFile: fileSys.moveFile,
       exportData,

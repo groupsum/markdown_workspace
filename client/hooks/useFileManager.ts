@@ -27,6 +27,84 @@ export const useFileManager = (
     return projectFiles;
   };
 
+  const normalizeFileName = (name: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) return '';
+    if (trimmed.toLowerCase().endsWith('.md')) return trimmed;
+    return `${trimmed}.md`;
+  };
+
+  const renameNode = async (nodeId: string, nextName: string) => {
+    if (!activeProjectId) return null;
+    const node = files.find(f => f.id === nodeId);
+    if (!node) return null;
+    const trimmed = nextName.trim();
+    if (!trimmed) {
+      addToast('NAME REQUIRED', 'warning');
+      return null;
+    }
+    const finalName = node.type === 'file' ? normalizeFileName(trimmed) : trimmed;
+    if (finalName === node.name) {
+      addToast('NAME UNCHANGED', 'info');
+      return node;
+    }
+    const duplicate = files.find(f =>
+      f.projectId === activeProjectId &&
+      f.parentId === node.parentId &&
+      f.id !== nodeId &&
+      f.name.toLowerCase() === finalName.toLowerCase()
+    );
+    if (duplicate) {
+      addToast(`ERROR: '${finalName}' ALREADY EXISTS`, 'warning');
+      return null;
+    }
+    const updatedNode = { ...node, name: finalName, lastModified: Date.now() };
+    await storage.saveFile(updatedNode);
+    setFiles(prev => prev.map(f => f.id === nodeId ? updatedNode : f));
+    addToast('ITEM RENAMED', 'success');
+    return updatedNode;
+  };
+
+  const deleteNode = async (nodeId: string) => {
+    const node = files.find(f => f.id === nodeId);
+    if (!node) return [];
+
+    const childrenMap = new Map<string | null, FileNode[]>();
+    files.forEach(file => {
+      const list = childrenMap.get(file.parentId) || [];
+      list.push(file);
+      childrenMap.set(file.parentId, list);
+    });
+
+    const idsToDelete: string[] = [nodeId];
+    const stack = [nodeId];
+    while (stack.length > 0) {
+      const currentId = stack.pop();
+      if (!currentId) continue;
+      const children = childrenMap.get(currentId) || [];
+      children.forEach(child => {
+        idsToDelete.push(child.id);
+        if (child.type === 'folder') {
+          stack.push(child.id);
+        }
+      });
+    }
+
+    await Promise.all(idsToDelete.map(id => storage.deleteFile(id)));
+    const deleteSet = new Set(idsToDelete);
+    const deletedFileIds = files.filter(f => deleteSet.has(f.id) && f.type === 'file').map(f => f.id);
+    setFiles(prev => prev.filter(f => !deleteSet.has(f.id)));
+    if (selectedExplorerId && deleteSet.has(selectedExplorerId)) {
+      setSelectedExplorerId(null);
+    }
+    if (idsToDelete.length > 1) {
+      addToast(`DELETED ${idsToDelete.length} ITEMS`, 'success');
+    } else {
+      addToast('ITEM DELETED', 'success');
+    }
+    return deletedFileIds;
+  };
+
   const createNewFile = async (name: string) => {
     console.log(`[useFileManager] Action: createNewFile -> ${name}`);
     if (!activeProjectId) return null;
@@ -264,6 +342,8 @@ export const useFileManager = (
     loadFiles,
     createNewFile,
     createNewFolder,
+    renameNode,
+    deleteNode,
     saveFile,
     updateFileContent,
     moveFile,

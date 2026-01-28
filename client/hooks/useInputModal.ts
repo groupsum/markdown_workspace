@@ -6,12 +6,14 @@ export const useInputModal = () => {
   const [inputCallback, setInputCallback] = useState<(value: string) => void>(() => {});
   const [inputTitle, setInputTitle] = useState('');
   const [inputPlaceholder, setInputPlaceholder] = useState('');
+  const [inputDefaultValue, setInputDefaultValue] = useState('');
 
-  const promptInput = useCallback((title: string, placeholder: string, callback: (val: string) => void) => {
+  const promptInput = useCallback((title: string, placeholder: string, callback: (val: string) => void, defaultValue = '') => {
       console.log(`[useInputModal] Action: promptInput -> Title: ${title}`);
       setInputTitle(title);
       setInputPlaceholder(placeholder);
       setInputCallback(() => callback);
+      setInputDefaultValue(defaultValue);
       setShowInputModal(true);
   }, []);
 
@@ -25,6 +27,7 @@ export const useInputModal = () => {
       inputCallback,
       inputTitle,
       inputPlaceholder,
+      inputDefaultValue,
       promptInput,
       closeInputModal
   };

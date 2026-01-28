@@ -10,6 +10,14 @@ interface UseFileItemProps {
   onMove: (fileId: string, targetFolderId: string | null) => void;
 }
 
+const sortNodes = (nodes: FileNode[]) =>
+  [...nodes].sort((a, b) => {
+    if (a.type !== b.type) {
+      return a.type === 'folder' ? -1 : 1;
+    }
+    return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+  });
+
 export const useFileItem = ({
   node,
   allFiles,
@@ -19,7 +27,7 @@ export const useFileItem = ({
 }: UseFileItemProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
 
-  const children = allFiles.filter(f => f.parentId === node.id);
+  const children = sortNodes(allFiles.filter(f => f.parentId === node.id));
   const isSelected = node.id === selectedId;
 
   const selectNode = (e: MouseEvent) => {

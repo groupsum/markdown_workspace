@@ -7,7 +7,7 @@ import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
 import { InputModal } from './components/Modals/InputModal';
 import { Footer } from './components/Chassis/Footer/Footer';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw, CheckCircle } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw, CheckCircle, Pencil, Trash2 } from 'lucide-react';
 import { Header } from './components/Chassis/Header/Header';
 import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
@@ -103,6 +103,8 @@ const App: React.FC = () => {
     { id: 'new-file', label: 'Create New File', action: actions.promptNewFile, icon: <FilePlus size={14}/> },
     { id: 'new-folder', label: 'Create New Folder', action: actions.promptNewFolder, icon: <FolderPlus size={14}/> },
     { id: 'save', label: 'Save Current File', action: actions.saveCurrentFile, icon: <Settings size={14}/> },
+    { id: 'rename', label: 'Rename Selected Item', action: actions.promptRenameSelected, icon: <Pencil size={14}/> },
+    { id: 'delete', label: 'Delete Selected Item', action: actions.deleteSelectedItem, icon: <Trash2 size={14}/> },
     { id: 'toggle-sidebar', label: 'Toggle Explorer', action: actions.toggleSidebar, icon: <Folder size={14}/> },
     { id: 'download', label: 'Download Current Item', action: actions.handleDownload, icon: <Download size={14}/> },
     { id: 'export-html', label: 'Export HTML', action: actions.handleHtmlExport, icon: <FileDown size={14}/> },
@@ -179,6 +181,8 @@ const App: React.FC = () => {
             onSidebarToggle={actions.setSidebarOpen}
             onNewFile={actions.promptNewFile}
             onNewFolder={actions.promptNewFolder}
+            onRenameSelected={actions.promptRenameSelected}
+            onDeleteSelected={actions.deleteSelectedItem}
             onFileSelect={actions.handleExplorerSelect}
             onFileHighlight={actions.highlightExplorerNode}
             onFileMove={actions.handleMoveFile}
@@ -251,6 +255,7 @@ const App: React.FC = () => {
         onSubmit={state.inputCallback}
         title={state.inputTitle}
         placeholder={state.inputPlaceholder}
+        defaultValue={state.inputDefaultValue}
       />
 
       <CommandPalette 
