@@ -67,11 +67,31 @@
 }
 .markdown-body ul,
 .markdown-body ol {
-  padding-left: 2em;
-  margin-bottom: 1em;
+  padding-left: 1.6em;
+  margin: 0 0 1em;
 }
 .markdown-body li {
   margin: 0.35em 0;
+}
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ul,
+.markdown-body ol ol {
+  margin: 0.4em 0 0.4em 0.25em;
+  padding-left: 1.5em;
+}
+.markdown-body .md-task-list-item {
+  list-style: none;
+  padding-left: 0.1em;
+}
+.markdown-body .md-task-list-item > .md-checkbox,
+.markdown-body .md-task-list-item > input[type="checkbox"] {
+  margin: 0.15em 0.6em 0 0;
+  transform: translateX(-0.35em);
+}
+.markdown-body .md-checkbox,
+.markdown-body input[type="checkbox"] {
+  vertical-align: middle;
 }
 .markdown-body li::marker {
   color: var(--fg-muted);
@@ -96,6 +116,19 @@
 .markdown-body img { max-width: 100%; }
 .markdown-body figure { margin: 1.5em 0; }
 .markdown-body figcaption { color: var(--fg-muted); font-size: calc(0.85em * var(--ui-scale)); text-align: center; }
+.markdown-body sup,
+.markdown-body sub {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.4em;
+}
+.markdown-body sub {
+  bottom: -0.2em;
+}
 
 /* Table Styles */
 .markdown-body table,

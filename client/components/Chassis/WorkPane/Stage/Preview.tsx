@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme } from '../../../../types';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
@@ -40,7 +41,7 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
   return (
     <div className="preview-pane markdown-body">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkSupersub]}
         components={{
           h1: ({node, ...props}) => <h1 className="md-h1" {...props} />,
           h2: ({node, ...props}) => <h2 className="md-h2" {...props} />,
@@ -57,7 +58,16 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
           // Lists
           ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
           ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
-          li: ({node, ...props}) => <li className="md-li" {...props} />,
+          li: ({node, checked, ...props}) => {
+            const isTask = typeof checked === 'boolean';
+            return (
+              <li
+                className={mergeClassNames('md-li', isTask ? 'md-task-list-item' : undefined)}
+                data-checked={isTask ? String(checked) : undefined}
+                {...props}
+              />
+            );
+          },
 
           // Tables
           table: ({node, className, children, ...props}: any) => {
@@ -118,10 +128,10 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
 
           // Checkbox (Input)
           input: ({node, ...props}) => {
-              if (props.type === 'checkbox') {
-                  return <input type="checkbox" className="md-checkbox" {...props} />;
-              }
-              return <input {...props} />;
+            if (props.type === 'checkbox') {
+              return <input type="checkbox" className="md-checkbox" {...props} />;
+            }
+            return <input {...props} />;
           },
 
           // Links

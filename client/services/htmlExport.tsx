@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { AppTheme } from '../types';
 import { getSyntaxTheme } from '../data/themes';
@@ -71,6 +72,15 @@ const escapeHtml = (value: string) => value
   .replace(/'/g, '&#39;');
 
 const previewComponents = (theme: AppTheme) => ({
+  ul: ({node, ...props}: any) => <ul className="md-ul" {...props} />,
+  ol: ({node, ...props}: any) => <ol className="md-ol" {...props} />,
+  li: ({node, checked, ...props}: any) => (
+    <li
+      className={`md-li${typeof checked === 'boolean' ? ' md-task-list-item' : ''}`}
+      data-checked={typeof checked === 'boolean' ? String(checked) : undefined}
+      {...props}
+    />
+  ),
   table: ({node, ...props}: any) => <table className="md-table" {...props} />,
   thead: ({node, ...props}: any) => <thead className="md-table-head" {...props} />,
   tbody: ({node, ...props}: any) => <tbody className="md-table-body" {...props} />,
@@ -80,6 +90,12 @@ const previewComponents = (theme: AppTheme) => ({
   caption: ({node, ...props}: any) => <caption className="md-table-caption" {...props} />,
   colgroup: ({node, ...props}: any) => <colgroup className="md-table-columns" {...props} />,
   col: ({node, ...props}: any) => <col className="md-table-column" {...props} />,
+  input: ({node, ...props}: any) => {
+    if (props.type === 'checkbox') {
+      return <input type="checkbox" className="md-checkbox" {...props} />;
+    }
+    return <input {...props} />;
+  },
   code: ({node, inline, className, children, ...props}: any) => {
     const match = /language-(\w+)/.exec(className || '');
     return !inline && match ? (
@@ -109,7 +125,7 @@ const previewComponents = (theme: AppTheme) => ({
 
 const renderPreviewMarkup = (content: string, theme: AppTheme) => renderToStaticMarkup(
   <div className="markdown-body">
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={previewComponents(theme)}>
+    <ReactMarkdown remarkPlugins={[remarkGfm, remarkSupersub]} components={previewComponents(theme)}>
       {content}
     </ReactMarkdown>
   </div>
