@@ -58,12 +58,12 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
           // Lists
           ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
           ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
-          li: ({node, checked, ...props}) => {
-            const isTask = typeof checked === 'boolean';
+          li: ({node, ...props}) => {
+            const isTask = typeof (node as { checked?: boolean })?.checked === 'boolean';
             return (
               <li
                 className={mergeClassNames('md-li', isTask ? 'md-task-list-item' : undefined)}
-                data-checked={isTask ? String(checked) : undefined}
+                data-checked={isTask ? String((node as { checked?: boolean }).checked) : undefined}
                 {...props}
               />
             );
