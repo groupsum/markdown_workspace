@@ -16,6 +16,14 @@ interface FileTreeProps {
   collapseAllSignal?: number;
 }
 
+const sortNodes = (nodes: FileNode[]) =>
+  [...nodes].sort((a, b) => {
+    if (a.type !== b.type) {
+      return a.type === 'folder' ? -1 : 1;
+    }
+    return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+  });
+
 const FileItem: React.FC<{ 
   node: FileNode; 
   depth: number; 
@@ -127,7 +135,6 @@ export const FileTree: React.FC<FileTreeProps> = ({
   collapseAllSignal = 0
 }) => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
-  const roots = files.filter(f => f.parentId === null);
   const { isDragOverRoot, handleRootDragOver, handleRootDragLeave, handleRootDrop } = useFileTreeDnD(onMove);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef(new Map<string, HTMLDivElement | null>());
@@ -155,7 +162,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
     setExpandedIds(new Set());
   }, [collapseAllSignal, normalizedQuery]);
 
-  const { visibilityMap, expansionMap, visibleNodes } = useMemo(() => {
+  const { visibilityMap, expansionMap, visibleNodes, sortedRoots } = useMemo(() => {
     const visibilityMap = new Map<string, boolean>();
     const expansionMap = new Map<string, boolean>();
     const childrenMap = new Map<string | null, FileNode[]>();
@@ -164,6 +171,10 @@ export const FileTree: React.FC<FileTreeProps> = ({
       const list = childrenMap.get(file.parentId) || [];
       list.push(file);
       childrenMap.set(file.parentId, list);
+    });
+
+    childrenMap.forEach((list, key) => {
+      childrenMap.set(key, sortNodes(list));
     });
 
     const matchesQuery = (node: FileNode) =>
@@ -203,12 +214,14 @@ export const FileTree: React.FC<FileTreeProps> = ({
       });
     };
 
-    walk(childrenMap.get(null) || [], 0);
+    const rootNodes = childrenMap.get(null) || [];
+    walk(rootNodes, 0);
 
     return {
       visibilityMap,
       expansionMap,
-      visibleNodes
+      visibleNodes,
+      sortedRoots: rootNodes
     };
   }, [files, expandedIds, normalizedQuery]);
 
@@ -366,7 +379,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
         }
       }}
     >
-      {roots.map(node => (
+      {sortedRoots.map(node => (
         <FileItem 
           key={node.id} 
           node={node} 

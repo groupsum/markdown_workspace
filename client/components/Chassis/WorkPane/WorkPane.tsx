@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown } from 'lucide-react';
+import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
@@ -19,6 +19,8 @@ interface WorkPaneProps {
   onSidebarToggle: (open: boolean) => void;
   onNewFile: () => void;
   onNewFolder: () => void;
+  onRenameSelected: () => void;
+  onDeleteSelected: () => void;
   onFileSelect: (id: string) => void;
   onFileHighlight: (id: string) => void;
   onFileMove: (fileId: string, targetFolderId: string | null) => void;
@@ -40,6 +42,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onSidebarToggle,
   onNewFile,
   onNewFolder,
+  onRenameSelected,
+  onDeleteSelected,
   onFileSelect,
   onFileHighlight,
   onFileMove,
@@ -49,6 +53,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
 }) => {
   const [expandAllSignal, setExpandAllSignal] = useState(0);
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
+  const hasSelection = Boolean(selectedExplorerId);
 
   return (
     <section className="workspace-manifold">
@@ -89,6 +94,22 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             </button>
             <button className="panel-icon-btn" title="New Folder" onClick={onNewFolder}>
               <FolderPlus size={12}/>
+            </button>
+            <button
+              className="panel-icon-btn"
+              title="Rename"
+              onClick={onRenameSelected}
+              disabled={!hasSelection}
+            >
+              <Pencil size={12} />
+            </button>
+            <button
+              className="panel-icon-btn"
+              title="Delete"
+              onClick={onDeleteSelected}
+              disabled={!hasSelection}
+            >
+              <Trash2 size={12} />
             </button>
             <button className="panel-icon-btn" title="Collapse" onClick={() => onSidebarToggle(false)}>
               <Minus size={12}/>
