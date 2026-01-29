@@ -16,7 +16,7 @@
   min-width: 0;
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: column-reverse;
   overflow: hidden;
 }
 .view-toolbar {
