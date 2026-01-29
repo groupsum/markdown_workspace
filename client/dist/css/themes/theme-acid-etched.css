@@ -71,6 +71,7 @@
 
 .theme-acid-etched .editor-pane-shell {
   grid-row: 2;
+  flex-direction: column-reverse;
 }
 
 .theme-acid-etched .view-toolbar {

@@ -62,6 +62,7 @@
 
 .theme-zinc .editor-pane-shell {
   grid-row: 2;
+  flex-direction: column-reverse;
 }
 
 .theme-zinc .view-toolbar {
