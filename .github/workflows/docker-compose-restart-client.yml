@@ -11,7 +11,7 @@ on:
 
 
 concurrency:
-  group: dist-docker-restart-clien
+  group: dist-docker-restart-client
   cancel-in-progress: false
 
 jobs:
