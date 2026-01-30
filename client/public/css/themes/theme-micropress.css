@@ -63,17 +63,26 @@
   border: 1px solid black;
 }
 
+.theme-micropress .editor-pane-container {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
 .theme-micropress .view-toolbar {
-  position: relative;
-  top: auto;
-  right: auto;
-  height: 100%;
-  width: 40px;
-  padding: 10px 6px;
+  position: absolute;
+  grid-column: 1;
+  grid-row: 1;
+  top: var(--viewbox-safe-top);
+  right: var(--viewbox-safe-right);
+  height: auto;
+  width: auto;
+  min-height: unset;
+  padding: 10px 8px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-panel);
   box-shadow: 6px 6px 0 #000000;
-  z-index: 60;
+  z-index: 70;
+  border-radius: 0;
 }
 
 .theme-micropress .view-toolbar-group {
@@ -83,13 +92,86 @@
 .theme-micropress .editor-pane-shell {
   flex-direction: row;
   overflow: hidden;
+  padding-top: calc(var(--viewbox-safe-top) + 4px);
+  padding-right: calc(56px + var(--viewbox-safe-right));
 }
 
-@media (max-width: 900px), (max-height: 520px) {
+@media (max-aspect-ratio: 3/4) {
   .theme-micropress .view-toolbar {
-    width: 100%;
-    height: auto;
+    top: var(--viewbox-safe-top);
+    right: 50%;
+    transform: translateX(50%);
+    flex-direction: row;
+    box-shadow: 4px 4px 0 #000000;
+  }
+
+  .theme-micropress .view-toolbar-group {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .theme-micropress .editor-pane-shell {
+    padding-top: calc(48px + var(--viewbox-safe-top));
+    padding-right: var(--viewbox-safe-right);
+  }
+}
+
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  .theme-micropress .view-toolbar {
+    box-shadow: 8px 8px 0 #000000;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  .theme-micropress .view-toolbar {
+    box-shadow: 10px 10px 0 #000000;
+    padding: 12px 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .theme-micropress .view-toolbar {
+    flex-direction: row;
+    padding: 8px 10px;
+  }
+
+  .theme-micropress .view-toolbar-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .theme-micropress .editor-pane-shell {
+    padding-right: var(--viewbox-safe-right);
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-micropress .view-toolbar {
+    right: var(--viewbox-safe-right);
+    transform: none;
+    padding: 6px 8px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .theme-micropress .view-toolbar {
+    padding: 12px 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .theme-micropress .view-toolbar {
+    padding: 14px 12px;
+  }
+}
+
+@media (max-height: 520px) {
+  .theme-micropress .view-toolbar {
     box-shadow: none;
+  }
+
+  .theme-micropress .editor-pane-shell {
+    padding-top: var(--viewbox-safe-top);
   }
 }
 

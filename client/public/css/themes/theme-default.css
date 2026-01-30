@@ -167,3 +167,71 @@
   background: #ffffff;
   border-color: #000000;
 }
+
+@media (max-aspect-ratio: 3/4) {
+  .theme-default .view-toolbar {
+    background: #d8d8d8;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .theme-default .view-toolbar {
+    border-bottom: 3px solid var(--accent);
+  }
+}
+
+@media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+  .theme-default .view-toolbar {
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  .theme-default .view-toolbar-group {
+    gap: 8px;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  .theme-default .view-toolbar-divider {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 900px) {
+  .theme-default .view-toolbar {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-default .view-toolbar-btn {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .theme-default .view-toolbar {
+    padding: 12px 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .theme-default .view-toolbar-group {
+    gap: 10px;
+  }
+}
+
+@media (max-height: 520px) {
+  .theme-default .view-toolbar-group {
+    gap: 4px;
+  }
+}
+
+@media (min-height: 900px) {
+  .theme-default .view-toolbar {
+    border-bottom-width: 3px;
+  }
+}
