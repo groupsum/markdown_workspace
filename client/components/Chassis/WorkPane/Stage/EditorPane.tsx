@@ -36,9 +36,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 }) => {
   const [splitPos, setSplitPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
-  const [viewportWidth, setViewportWidth] = useState(
-    typeof window === 'undefined' ? 1024 : window.innerWidth
-  );
+  const getViewportWidth = () => {
+    if (typeof window === 'undefined') return 1024;
+    return window.visualViewport?.width ?? document.documentElement.clientWidth ?? window.innerWidth;
+  };
+  const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
   const containerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
@@ -71,9 +73,17 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   }, [file?.id]);
 
   useEffect(() => {
-    const handleResize = () => setViewportWidth(window.innerWidth);
+    const handleResize = () => setViewportWidth(getViewportWidth());
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    window.visualViewport?.addEventListener('resize', handleResize);
+    window.visualViewport?.addEventListener('scroll', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      window.visualViewport?.removeEventListener('resize', handleResize);
+      window.visualViewport?.removeEventListener('scroll', handleResize);
+    };
   }, []);
 
   useEffect(() => {
