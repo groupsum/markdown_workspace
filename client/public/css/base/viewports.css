@@ -1,0 +1,139 @@
+/* Lattice Architect: Viewport & Aspect Ratio Matrix */
+
+:root {
+  --viewbox-aspect: square;
+  --viewbox-width: md;
+  --viewbox-height: md;
+  --viewbox-device: precision;
+  --viewbox-safe-top: 10px;
+  --viewbox-safe-right: 10px;
+  --viewbox-safe-bottom: 10px;
+  --viewbox-safe-left: 10px;
+}
+
+/* Aspect ratio bands (aspect first) */
+@media (max-aspect-ratio: 3/4) {
+  :root {
+    --viewbox-aspect: portrait;
+    --viewbox-safe-top: 8px;
+    --viewbox-safe-right: 8px;
+    --viewbox-safe-bottom: 12px;
+    --viewbox-safe-left: 8px;
+  }
+}
+
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  :root {
+    --viewbox-aspect: square;
+    --viewbox-safe-top: 10px;
+    --viewbox-safe-right: 10px;
+    --viewbox-safe-bottom: 10px;
+    --viewbox-safe-left: 10px;
+  }
+}
+
+@media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+  :root {
+    --viewbox-aspect: landscape;
+    --viewbox-safe-top: 12px;
+    --viewbox-safe-right: 12px;
+    --viewbox-safe-bottom: 12px;
+    --viewbox-safe-left: 12px;
+  }
+}
+
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  :root {
+    --viewbox-aspect: wide;
+    --viewbox-safe-top: 14px;
+    --viewbox-safe-right: 18px;
+    --viewbox-safe-bottom: 14px;
+    --viewbox-safe-left: 18px;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  :root {
+    --viewbox-aspect: ultrawide;
+    --viewbox-safe-top: 16px;
+    --viewbox-safe-right: 24px;
+    --viewbox-safe-bottom: 16px;
+    --viewbox-safe-left: 24px;
+  }
+}
+
+/* Viewbox size bands (viewbox second) */
+@media (max-width: 480px) {
+  :root {
+    --viewbox-width: xs;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --viewbox-width: sm;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --viewbox-width: md;
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --viewbox-width: lg;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --viewbox-width: xl;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --viewbox-width: xxl;
+  }
+}
+
+@media (max-height: 520px) {
+  :root {
+    --viewbox-height: short;
+    --viewbox-safe-top: 6px;
+    --viewbox-safe-bottom: 6px;
+  }
+}
+
+@media (max-height: 720px) {
+  :root {
+    --viewbox-height: compact;
+  }
+}
+
+@media (min-height: 900px) {
+  :root {
+    --viewbox-height: tall;
+  }
+}
+
+@media (min-height: 1200px) {
+  :root {
+    --viewbox-height: ultra-tall;
+  }
+}
+
+/* Device class (device third) */
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --viewbox-device: touch;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --viewbox-device: precision;
+  }
+}

@@ -168,3 +168,70 @@
   background: #e4e4e7;
   border-color: #18181b;
 }
+
+@media (max-aspect-ratio: 3/4) {
+  .theme-zinc .view-toolbar {
+    background: linear-gradient(90deg, #b7b7be, #c8c8cf);
+  }
+}
+
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
+  .theme-zinc .view-toolbar {
+    border-bottom: 2px solid var(--accent);
+  }
+}
+
+@media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+  .theme-zinc .view-toolbar {
+    box-shadow: inset 0 0 0 2px rgba(24, 24, 27, 0.3);
+  }
+}
+
+@media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  .theme-zinc .view-toolbar-group {
+    gap: 8px;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  .theme-zinc .view-toolbar-divider {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 900px) {
+  .theme-zinc .view-toolbar {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-zinc .view-toolbar-btn {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .theme-zinc .view-toolbar {
+    padding: 12px 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .theme-zinc .view-toolbar-group {
+    gap: 10px;
+  }
+}
+
+@media (max-height: 520px) {
+  .theme-zinc .view-toolbar-group {
+    gap: 4px;
+  }
+}
+
+@media (min-height: 900px) {
+  .theme-zinc .view-toolbar {
+    border-bottom-width: 2px;
+  }
+}

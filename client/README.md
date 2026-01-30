@@ -73,3 +73,34 @@ The always-available strip for environment awareness and health monitoring.
 - **Optical Type**: Typefaces are selected and scaled for maximum legibility in high-density, low-chrome environments.
 
 > "Structure is the only truth in a digital layout."
+
+---
+
+### 4. Viewport + Aspect Ratio Matrix
+
+Lattice Architect defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `client/public/css/base/viewports.css`.【F:client/public/css/base/viewports.css†L1-L120】
+
+**Aspect Ratio Bands (aspect first)**
+- **Portrait**: `max-aspect-ratio: 3/4`
+- **Square/Hybrid**: `min-aspect-ratio: 3/4` and `max-aspect-ratio: 4/3`
+- **Landscape**: `min-aspect-ratio: 4/3` and `max-aspect-ratio: 16/9`
+- **Wide**: `min-aspect-ratio: 16/9` and `max-aspect-ratio: 21/9`
+- **Ultra-wide**: `min-aspect-ratio: 21/9`
+
+**Viewbox Size Bands (viewbox second)**
+- **XS**: `max-width: 480px`
+- **SM**: `max-width: 640px`
+- **MD**: `max-width: 900px`
+- **LG**: `max-width: 1200px`
+- **XL**: `min-width: 1600px`
+- **XXL**: `min-width: 1920px`
+- **Short height**: `max-height: 520px`
+- **Compact height**: `max-height: 720px`
+- **Tall height**: `min-height: 900px`
+- **Ultra-tall height**: `min-height: 1200px`
+
+**Device Bands (device third)**
+- **Touch**: `(hover: none) and (pointer: coarse)`
+- **Precision**: `(hover: hover) and (pointer: fine)`
+
+Themes may reinterpret spacing, shadows, and toolbar layouts at each breakpoint, but they must use the same breakpoint definitions to preserve the shared viewport contract. The Micropress theme uses these bands to keep its floating view toolbar aligned with the editor body corner while other themes interpret the bands with their own visual treatments.【F:client/public/css/themes/theme-micropress.css†L66-L149】
