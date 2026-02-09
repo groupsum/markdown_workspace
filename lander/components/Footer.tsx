@@ -1,5 +1,6 @@
 import React from 'react';
 import { CloudOff, X } from 'lucide-react';
+import { links } from '../utils/links';
 
 interface FooterProps {
   setView: (view: string) => void;
@@ -27,13 +28,17 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
               <ul className="text-slate-600 dark:text-slate-400 font-medium space-y-3 text-sm">
                 <li><button onClick={() => setView('docs')} className="hover:text-indigo-600 transition-colors">Documentation</button></li>
                 <li><button onClick={() => setView('blog')} className="hover:text-indigo-600 transition-colors">Blog</button></li>
+                <li><a href={links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Live Demo</a></li>
+                <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">NPM Repo</a></li>
+                <li><a href={links.githubRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">GitHub Repo</a></li>
               </ul>
             </div>
             <div>
               <h2 className="mb-6 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Follow</h2>
               <ul className="text-slate-600 dark:text-slate-400 font-medium space-y-3 text-sm">
-                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a></li>
-                <li><a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">X.com</a></li>
+                <li><a href={links.github} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a></li>
+                <li><a href={links.x} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">X.com</a></li>
+                <li><a href={links.community} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Community</a></li>
               </ul>
             </div>
             <div>

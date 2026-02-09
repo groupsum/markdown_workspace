@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, WifiOff } from 'lucide-react';
+import { links } from '../utils/links';
 
 export const Hero: React.FC = () => {
   return (
@@ -25,11 +26,21 @@ export const Hero: React.FC = () => {
         </p>
         
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-          <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 transition-all shadow-lg shadow-indigo-500/30">
+          <a
+            href={links.npmRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 transition-all shadow-lg shadow-indigo-500/30"
+          >
             Install PWA
             <Download className="w-4 h-4 ml-2 -mr-1" />
           </a>
-          <a href="#demo" className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-slate-700 dark:text-slate-300 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 transition-all">
+          <a
+            href={links.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-slate-700 dark:text-slate-300 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 transition-all"
+          >
             Try Live Demo
           </a>
         </div>
