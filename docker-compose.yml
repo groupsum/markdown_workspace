@@ -9,6 +9,14 @@ services:
     restart: unless-stopped
     networks:
       - dockerwp
+  lander:
+    container_name: markdown_workspace_lander
+    build:
+      context: .
+      dockerfile: lander/Dockerfile
+    restart: unless-stopped
+    networks:
+      - dockerwp
 
 networks:
   dockerwp:
