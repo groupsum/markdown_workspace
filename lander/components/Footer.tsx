@@ -6,6 +6,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ setView }) => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -45,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
         </div>
         <hr className="my-8 border-slate-200 dark:border-slate-800" />
         <div className="text-center text-xs text-slate-500">
-          © 2024 MarkSpace. Designed for privacy.
+          © {currentYear} MarkSpace. Designed for privacy.
         </div>
       </div>
     </footer>
