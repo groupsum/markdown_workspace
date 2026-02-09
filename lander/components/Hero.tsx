@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900 transition-all shadow-lg shadow-indigo-500/30"
           >
-            Install PWA
+            Get from npm
             <Download className="w-4 h-4 ml-2 -mr-1" />
           </a>
           <a
@@ -42,6 +42,12 @@ export const Hero: React.FC = () => {
             className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-slate-700 dark:text-slate-300 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 transition-all"
           >
             Try Live Demo
+          </a>
+        </div>
+        <div className="mt-6 text-xs text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2">
+          <span className="uppercase tracking-widest text-[10px] text-slate-400 dark:text-slate-500">ESM CDN</span>
+          <a href={links.esmCdn} target="_blank" rel="noopener noreferrer" className="font-mono text-indigo-600 dark:text-indigo-400 hover:underline">
+            {links.esmCdn}
           </a>
         </div>
       </div>
