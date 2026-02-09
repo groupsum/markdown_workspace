@@ -13,6 +13,25 @@ const CORE_ASSETS = [
   '/css/index.css',
   '/css/themes/theme-micropress.css'
 ];
+const EXTERNAL_ASSETS = [
+  'https://cdn.tailwindcss.com',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+  'https://esm.sh/react@19.0.0',
+  'https://esm.sh/react-dom@19.0.0',
+  'https://esm.sh/react-dom@19.0.0/client',
+  'https://esm.sh/react@19.0.0/jsx-runtime',
+  'https://esm.sh/lucide-react@0.475.0',
+  'https://esm.sh/react-markdown@9.0.3?bundle',
+  'https://esm.sh/remark-gfm@4.0.1?bundle',
+  'https://esm.sh/remark-supersub@1.0.0?bundle',
+  'https://esm.sh/react-syntax-highlighter@15.6.1',
+  'https://esm.sh/react-syntax-highlighter@15.6.1/dist/esm/styles/prism',
+  'https://esm.sh/jszip@3.10.1',
+  'https://esm.sh/path@^0.12.7',
+  'https://esm.sh/url@^0.11.4',
+  'https://esm.sh/vite@^7.3.1',
+  'https://esm.sh/@vitejs/plugin-react@^5.1.2'
+];
 
 let metaState = {
   lastKnownGoodVersion: null,
@@ -79,7 +98,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CURRENT_CACHE);
-      await Promise.allSettled(CORE_ASSETS.map((asset) => cache.add(asset)));
+      const assetsToCache = CORE_ASSETS.concat(EXTERNAL_ASSETS);
+      await Promise.allSettled(assetsToCache.map((asset) => cache.add(asset)));
     })()
   );
 });
