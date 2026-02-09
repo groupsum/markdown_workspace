@@ -17,7 +17,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'lib/esm-entry.ts'),
+      entry: path.resolve(__dirname, 'lib/esm-entry.tsx'),
       name: 'MarkSpace',
       formats: ['es'],
       fileName: 'markspace'
