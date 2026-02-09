@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Github, CloudOff, Sun, Moon } from 'lucide-react';
+import { links } from '../utils/links';
 
 interface NavbarProps {
   isDark: boolean;
@@ -36,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme, currentView
           </button>
           
           <a
-            href="https://github.com"
+            href={links.githubRepo}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-slate-800 font-medium rounded-lg text-sm px-4 py-2 text-center items-center gap-2 transition-colors"
