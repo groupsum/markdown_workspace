@@ -1,4 +1,4 @@
-import { commonVars } from '../../env/common_vars';
+import { commonVars } from '../env/common_vars';
 
 const toLink = (value: string | undefined, fallback = '#') => value?.trim() || fallback;
 
