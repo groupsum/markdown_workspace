@@ -1,0 +1,36 @@
+name: Docker Compose Restart (Lander)
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - lander/**
+      - docker-compose.yml
+  workflow_dispatch:
+
+concurrency:
+  group: dist-docker-restart-lander
+  cancel-in-progress: false
+
+jobs:
+  restart-lander:
+    runs-on: deployment
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stop lander container
+        continue-on-error: true
+        run: docker-compose stop lander
+
+      - name: Remove lander container
+        continue-on-error: true
+        run: docker-compose rm -f lander
+
+      - name: Prune docker images
+        continue-on-error: true
+        run: docker system prune -af
+
+      - name: Restart lander container
+        run: docker-compose up -d --build --force-recreate --no-deps lander
