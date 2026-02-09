@@ -1,0 +1,54 @@
+---
+title: Installation
+slug: getting-started/installation
+section: Getting Started
+sectionOrder: 1
+order: 1
+toc: true
+---
+# Installation Guide
+
+MarkSpace is a Progressive Web App (PWA) and an npm-distributed client. Choose the workflow that matches how you ship your UI.
+
+## PWA Installation
+### Desktop (Chrome / Edge)
+1. Look for the install icon (computer with down arrow) in the right side of the URL bar.
+2. Click **Install MarkSpace**.
+3. Confirm the dialog. The app will launch in its own window.
+
+### Safari (macOS)
+1. Click the Share button.
+2. Select **Add to Dock**.
+
+### Mobile (iOS Safari)
+1. Tap the Share button at the bottom of the screen.
+2. Scroll down and tap **Add to Home Screen**.
+3. Tap **Add** in the top right corner.
+
+### Mobile (Android Chrome)
+1. Tap the three-dot menu in the top right.
+2. Select **Install app** or **Add to Home Screen**.
+3. Follow the on-screen prompts.
+
+## npm Package
+Install the published client package:
+
+```bash
+npm install @swarmauri/markspace
+```
+
+## ESM CDN (No iFrames)
+Load MarkSpace from an ESM CDN and mount it directly:
+
+```html
+<div id="markspace-root"></div>
+<script type="module">
+  import { mountMarkSpace } from "https://esm.sh/@swarmauri/markspace";
+
+  const root = document.getElementById("markspace-root");
+  mountMarkSpace(root);
+</script>
+```
+
+## Updates
+As a PWA, MarkSpace updates automatically in the background. You'll see a notification when a new version is ready.

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { contentFiles } from '../data/content';
-import { parseMarkdown, extractHeadings } from '../utils/markdownParser';
+import React, { useMemo, useState, useEffect } from 'react';
+import { useNavigate, useParams, NavLink } from 'react-router-dom';
+import { docs, docSections, docsBySlug } from '../data/docs';
+import { extractHeadings } from '../utils/markdownParser';
 import { MarkdownViewer } from './MarkdownViewer';
-import { ChevronRight, ChevronDown, Book, FileText } from 'lucide-react';
+import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
 interface DocItem {
   id: string;
@@ -11,8 +12,15 @@ interface DocItem {
 }
 
 export const DocsView: React.FC = () => {
-  const [activeDoc, setActiveDoc] = useState('docs/getting-started/installation');
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(['getting-started', 'usage']);
+  const { '*': slugParam } = useParams();
+  const navigate = useNavigate();
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!slugParam && docs.length > 0) {
+      navigate(`/docs/${docs[0].slug}`, { replace: true });
+    }
+  }, [slugParam, navigate]);
 
   const toggleCategory = (id: string) => {
     setExpandedCategories(prev => 
@@ -20,35 +28,42 @@ export const DocsView: React.FC = () => {
     );
   };
 
-  const docStructure: DocItem[] = [
-    {
-      id: 'getting-started',
-      title: 'Getting Started',
-      children: [
-        { id: 'docs/getting-started/installation', title: 'Installation' },
-        { id: 'docs/getting-started/configuration', title: 'Configuration' }
-      ]
-    },
-    {
-      id: 'usage',
-      title: 'Usage Guide',
-      children: [
-        { id: 'docs/usage/editor-basics', title: 'Editor Basics' },
-        { id: 'docs/usage/advanced-formatting', title: 'Formatting' }
-      ]
-    },
-    { id: 'docs/github-sync', title: 'GitHub Syncing' }
-  ];
+  const sections = useMemo(() => {
+    return Object.entries(docSections)
+      .map(([section, items]) => ({
+        id: section.toLowerCase().replace(/\s+/g, '-'),
+        title: section,
+        order: Math.min(...items.map(item => item.sectionOrder)),
+        children: items.map(item => ({
+          id: item.slug,
+          title: item.title
+        }))
+      }))
+      .sort((a, b) => a.order - b.order);
+  }, []);
 
-  const currentContent = contentFiles[activeDoc as keyof typeof contentFiles];
-  const { metadata, content } = parseMarkdown(currentContent || '# Document Not Found');
+  useEffect(() => {
+    if (sections.length > 0 && expandedCategories.length === 0) {
+      setExpandedCategories(sections.map(section => section.id));
+    }
+  }, [sections, expandedCategories.length]);
+
+  const docStructure: DocItem[] = sections.map(section => ({
+    id: section.id,
+    title: section.title,
+    children: section.children
+  }));
+
+  const activeSlug = slugParam || docs[0]?.slug;
+  const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
+  const content = currentDoc?.content || '# Document Not Found';
   const headings = extractHeadings(content);
 
   const renderNav = (items: DocItem[], level = 0) => {
     return items.map(item => {
       const hasChildren = item.children && item.children.length > 0;
       const isExpanded = expandedCategories.includes(item.id);
-      const isActive = activeDoc === item.id;
+      const isActive = activeSlug === item.id;
 
       return (
         <div key={item.id} className="mb-1">
@@ -71,8 +86,8 @@ export const DocsView: React.FC = () => {
               )}
             </div>
           ) : (
-            <button
-              onClick={() => setActiveDoc(item.id)}
+            <NavLink
+              to={`/docs/${item.id}`}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
                 isActive 
                   ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400' 
@@ -82,7 +97,7 @@ export const DocsView: React.FC = () => {
             >
               {isActive && <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />}
               <span className="truncate">{item.title}</span>
-            </button>
+            </NavLink>
           )}
         </div>
       );
@@ -111,7 +126,7 @@ export const DocsView: React.FC = () => {
           </div>
 
           {/* Table of Contents (Desktop) */}
-          {metadata.toc === 'true' && headings.length > 0 && (
+          {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (
             <aside className="hidden lg:block w-48 shrink-0">
               <div className="sticky top-8">
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">On this page</h4>
