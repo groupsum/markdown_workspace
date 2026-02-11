@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { AppTheme, AppMode, ViewMode } from '../types';
 import * as themeService from '../services/themeService';
+import { storage } from '../services/storage';
 
 const UI_STATE_KEY = 'lattice-ui-state';
 
@@ -9,11 +10,14 @@ type StoredUiState = {
   zoom: number;
   appMode: AppMode;
   sidebarOpen: boolean;
+  sidebarWidth: number;
   searchQuery: string;
   viewMode: ViewMode;
   autoSaveEnabled: boolean;
   persistSessionEnabled: boolean;
 };
+
+const DEFAULT_SIDEBAR_WIDTH = 280;
 
 const getStoredUiState = (): Partial<StoredUiState> => {
   const raw = window.localStorage.getItem(UI_STATE_KEY);
@@ -35,6 +39,7 @@ export const useUIState = () => {
   const [zoom, setZoom] = useState(storedUi.zoom ?? 1);
   const [appMode, setAppMode] = useState<AppMode>(storedUi.appMode ?? 'work');
   const [sidebarOpen, setSidebarOpen] = useState(storedUi.sidebarOpen ?? true);
+  const [sidebarWidth, setSidebarWidth] = useState(storedUi.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
   const [searchQuery, setSearchQuery] = useState(storedUi.searchQuery ?? '');
   const [viewMode, setViewMode] = useState<ViewMode>(storedUi.viewMode ?? 'split');
   const [cursorPos, setCursorPos] = useState({ line: 1, col: 1 });
@@ -56,13 +61,47 @@ export const useUIState = () => {
       zoom,
       appMode,
       sidebarOpen,
+      sidebarWidth,
       searchQuery,
       viewMode,
       autoSaveEnabled,
       persistSessionEnabled
     };
     window.localStorage.setItem(UI_STATE_KEY, JSON.stringify(payload));
-  }, [zoom, appMode, sidebarOpen, searchQuery, viewMode, autoSaveEnabled, persistSessionEnabled]);
+
+    storage.setSetting(UI_STATE_KEY, payload).catch((error) => {
+      console.warn('[useUIState] Failed to persist UI state in IndexedDB', error);
+    });
+  }, [zoom, appMode, sidebarOpen, sidebarWidth, searchQuery, viewMode, autoSaveEnabled, persistSessionEnabled]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    storage.getSetting<StoredUiState>(UI_STATE_KEY)
+      .then((storedState) => {
+        if (!isMounted || !storedState) {
+          return;
+        }
+
+        if (typeof storedState.zoom === 'number') setZoom(storedState.zoom);
+        if (storedState.appMode === 'work' || storedState.appMode === 'git') setAppMode(storedState.appMode);
+        if (typeof storedState.sidebarOpen === 'boolean') setSidebarOpen(storedState.sidebarOpen);
+        if (typeof storedState.sidebarWidth === 'number') setSidebarWidth(storedState.sidebarWidth);
+        if (typeof storedState.searchQuery === 'string') setSearchQuery(storedState.searchQuery);
+        if (storedState.viewMode === 'editor' || storedState.viewMode === 'split' || storedState.viewMode === 'preview') {
+          setViewMode(storedState.viewMode);
+        }
+        if (typeof storedState.autoSaveEnabled === 'boolean') setAutoSaveEnabled(storedState.autoSaveEnabled);
+        if (typeof storedState.persistSessionEnabled === 'boolean') setPersistSessionEnabled(storedState.persistSessionEnabled);
+      })
+      .catch((error) => {
+        console.warn('[useUIState] Failed to load UI state from IndexedDB', error);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Initial theme sync on mount
   useEffect(() => {
@@ -84,6 +123,7 @@ export const useUIState = () => {
     zoom, setZoom, adjustZoom,
     appMode, setAppMode,
     sidebarOpen, setSidebarOpen,
+    sidebarWidth, setSidebarWidth,
     searchQuery, setSearchQuery,
     viewMode, setViewMode,
     cursorPos, setCursorPos,
