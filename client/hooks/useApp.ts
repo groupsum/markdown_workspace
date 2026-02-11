@@ -20,6 +20,7 @@ type SessionState = {
   viewMode: string;
   appMode: string;
   sidebarOpen: boolean;
+  sidebarWidth: number;
   searchQuery: string;
   autoSaveEnabled: boolean;
   updatedAt: number;
@@ -92,6 +93,9 @@ export const useApp = () => {
         ui.setAppMode(storedSession.appMode === 'git' ? 'git' : 'work');
         ui.setViewMode(storedSession.viewMode === 'editor' || storedSession.viewMode === 'preview' ? storedSession.viewMode : 'split');
         ui.setSidebarOpen(Boolean(storedSession.sidebarOpen));
+        if (typeof storedSession.sidebarWidth === 'number') {
+          ui.setSidebarWidth(storedSession.sidebarWidth);
+        }
         if (typeof storedSession.zoom === 'number') {
           ui.setZoom(storedSession.zoom);
         }
@@ -130,6 +134,7 @@ export const useApp = () => {
     ui.setAppMode,
     ui.setViewMode,
     ui.setSidebarOpen,
+    ui.setSidebarWidth,
     ui.setZoom,
     ui.setSearchQuery,
     ui.setAutoSaveEnabled
@@ -152,6 +157,7 @@ export const useApp = () => {
       viewMode: ui.viewMode,
       appMode: ui.appMode,
       sidebarOpen: ui.sidebarOpen,
+      sidebarWidth: ui.sidebarWidth,
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
       updatedAt: Date.now()
@@ -168,6 +174,7 @@ export const useApp = () => {
     ui.viewMode,
     ui.appMode,
     ui.sidebarOpen,
+    ui.sidebarWidth,
     ui.searchQuery,
     ui.autoSaveEnabled
   ]);
@@ -332,6 +339,7 @@ export const useApp = () => {
       zoom: ui.zoom,
       appMode: ui.appMode,
       sidebarOpen: ui.sidebarOpen,
+      sidebarWidth: ui.sidebarWidth,
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
       persistSessionEnabled: ui.persistSessionEnabled,
@@ -380,6 +388,7 @@ export const useApp = () => {
       setZoom: ui.setZoom,
       setAppMode: ui.setAppMode,
       setSidebarOpen: ui.setSidebarOpen,
+      setSidebarWidth: ui.setSidebarWidth,
       setSearchQuery: ui.setSearchQuery,
       setViewMode: ui.setViewMode,
       setCursorPos: ui.setCursorPos,

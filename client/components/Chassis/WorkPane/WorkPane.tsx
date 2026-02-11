@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
 import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
@@ -16,7 +16,9 @@ interface WorkPaneProps {
   viewMode: ViewMode;
   currentThemeDef: ThemeDef;
   sidebarOpen: boolean;
+  sidebarWidth: number;
   onSidebarToggle: (open: boolean) => void;
+  onSidebarWidthChange: (width: number) => void;
   onNewFile: () => void;
   onNewFolder: () => void;
   onRenameSelected: () => void;
@@ -39,7 +41,9 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   viewMode,
   currentThemeDef,
   sidebarOpen,
+  sidebarWidth,
   onSidebarToggle,
+  onSidebarWidthChange,
   onNewFile,
   onNewFolder,
   onRenameSelected,
@@ -55,12 +59,53 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
   const hasSelection = Boolean(selectedExplorerId);
 
+  const sidebarResizeRef = useRef<{
+    startX: number;
+    startWidth: number;
+  } | null>(null);
+
+  useEffect(() => {
+    const onPointerMove = (event: PointerEvent) => {
+      const resizeState = sidebarResizeRef.current;
+      if (!resizeState) return;
+
+      const delta = event.clientX - resizeState.startX;
+      const nextWidth = Math.min(480, Math.max(180, resizeState.startWidth + delta));
+      onSidebarWidthChange(nextWidth);
+    };
+
+    const onPointerUp = () => {
+      if (!sidebarResizeRef.current) return;
+      sidebarResizeRef.current = null;
+      document.body.classList.remove('is-resizing-sidebar');
+    };
+
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      document.body.classList.remove('is-resizing-sidebar');
+    };
+  }, [onSidebarWidthChange]);
+
+  const handleSidebarResizeStart = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!sidebarOpen) return;
+    sidebarResizeRef.current = {
+      startX: event.clientX,
+      startWidth: sidebarWidth
+    };
+    document.body.classList.add('is-resizing-sidebar');
+  };
+
   return (
     <section className="workspace-manifold">
       {/* THE REGISTRY (Explorer Plate) */}
       <aside 
         className={`workspace-sidebar ${!sidebarOpen ? 'is-collapsed' : ''}`}
         aria-label="File Explorer"
+        style={{ width: sidebarOpen ? `${sidebarWidth}px` : undefined }}
       >
         <div className="workspace-panel-header">
           <div className="flex items-center gap-2 overflow-hidden">
@@ -131,6 +176,14 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
           />
         </div>
       </aside>
+
+      <div
+        className={`workspace-sidebar-resizer ${sidebarOpen ? '' : 'is-hidden'}`}
+        role="separator"
+        aria-label="Resize file explorer"
+        aria-orientation="vertical"
+        onPointerDown={handleSidebarResizeStart}
+      />
 
       {/* THE EXECUTION STAGE (Stage Plate) */}
       <main className="workspace-stage" role="main">
