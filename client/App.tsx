@@ -178,7 +178,9 @@ const App: React.FC = () => {
             viewMode={state.viewMode}
             currentThemeDef={state.currentThemeDef}
             sidebarOpen={state.sidebarOpen}
+            sidebarWidth={state.sidebarWidth}
             onSidebarToggle={actions.setSidebarOpen}
+            onSidebarWidthChange={actions.setSidebarWidth}
             onNewFile={actions.promptNewFile}
             onNewFolder={actions.promptNewFolder}
             onRenameSelected={actions.promptRenameSelected}
