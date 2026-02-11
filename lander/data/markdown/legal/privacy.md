@@ -1,4 +1,4 @@
-export const privacyContent = `---
+---
 title: Privacy Policy
 lastUpdated: 2024-05-20
 ---
@@ -15,4 +15,4 @@ While data is local, we support client-side encryption for sensitive documents.
 - **Key Storage**: Never stored, derived from your password.
 
 ## 3. GitHub Integration
-If you choose to sync with GitHub, the application uses your Personal Access Token (PAT) to communicate directly with the GitHub API. This token is stored locally and never sent to our servers.`;
+If you choose to sync with GitHub, the application uses your Personal Access Token (PAT) to communicate directly with the GitHub API. This token is stored locally and never sent to our servers.

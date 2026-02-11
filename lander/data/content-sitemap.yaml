@@ -1,0 +1,9 @@
+content:
+  - id: legal/privacy
+    file: ./markdown/legal/privacy.md
+  - id: legal/terms
+    file: ./markdown/legal/terms.md
+  - id: blog/local-first-future
+    file: ./markdown/blog/local-first-future.md
+  - id: blog/markdown-list-rendering-refresh
+    file: ./markdown/blog/markdown-list-rendering-refresh.md

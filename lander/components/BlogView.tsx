@@ -4,6 +4,24 @@ import { parseMarkdown } from '../utils/markdownParser';
 import { MarkdownViewer } from './MarkdownViewer';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
+const normalizeTitle = (value: string) =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/[\s\-]+/g, ' ');
+
+const removeDuplicateLeadingHeading = (content: string, title?: string) => {
+  if (!title) return content;
+
+  const headingMatch = content.match(/^#\s+(.+)\n*/);
+  if (!headingMatch) return content;
+
+  const headingText = headingMatch[1]?.trim() ?? '';
+  if (normalizeTitle(headingText) !== normalizeTitle(title)) return content;
+
+  return content.slice(headingMatch[0].length).trim();
+};
+
 export const BlogView: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
 
@@ -32,7 +50,7 @@ export const BlogView: React.FC = () => {
            </div>
            <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white">{post?.metadata.title}</h1>
         </div>
-        <MarkdownViewer content={post?.content || ''} />
+        <MarkdownViewer content={removeDuplicateLeadingHeading(post?.content || '', post?.metadata.title)} />
       </div>
     );
   }

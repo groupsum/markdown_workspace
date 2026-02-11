@@ -67,19 +67,34 @@
 }
 .markdown-body ul,
 .markdown-body ol {
-  padding-left: 1.6em;
-  margin: 0 0 1em;
+  margin: 0.6em 0 1em;
+  padding-left: 1.8em;
+}
+.markdown-body ul {
+  list-style: disc outside;
+}
+.markdown-body ol {
+  list-style: decimal outside;
 }
 .markdown-body li {
-  margin: 0.35em 0;
+  display: list-item;
+  margin: 0.3em 0;
+  padding-left: 0.15em;
+}
+.markdown-body li > p {
+  margin: 0.2em 0;
 }
 .markdown-body ul ul,
 .markdown-body ul ol,
 .markdown-body ol ul,
 .markdown-body ol ol {
-  margin: 0.4em 0 0.4em 0.25em;
+  margin: 0.35em 0 0.15em;
   padding-left: 1.5em;
 }
+.markdown-body ul ul { list-style-type: circle; }
+.markdown-body ul ul ul { list-style-type: square; }
+.markdown-body ol ol { list-style-type: lower-alpha; }
+.markdown-body ol ol ol { list-style-type: lower-roman; }
 .markdown-body .md-task-list-item {
   list-style: none;
   padding-left: 0.1em;
