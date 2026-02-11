@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
-import { Undo, Redo, Bold, Italic, Columns, Maximize2, Eye } from 'lucide-react';
+import { Undo, Redo, Bold, Italic, Strikethrough, Columns, Maximize2, Eye } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
 
 interface EditorPaneProps {
@@ -478,6 +478,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              <div className="view-toolbar-divider"></div>
              <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
              <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
+             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
              <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
              <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>
            </div>

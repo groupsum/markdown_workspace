@@ -1,4 +1,4 @@
-export const localFirstFutureContent = `---
+---
 title: Why Local-First is the Future
 date: 2024-05-15
 author: Jane Doe
@@ -15,4 +15,4 @@ Local-first software like MarkSpace gives you the best of both worlds: the relia
 
 ### Scientific Comparison
 If Cloud Efficiency is E~cloud~ and Local Efficiency is E~local~, then:
-E~total~ = E~local~ ^privacy^`;
+E~total~ = E~local~ ^privacy^
