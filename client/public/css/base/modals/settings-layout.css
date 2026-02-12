@@ -9,7 +9,7 @@
 }
 
 .settings-sidebar {
-  width: 220px;
+  width: 236px;
   background: linear-gradient(180deg, var(--bg-panel), var(--bg-inset));
   border: var(--border-width) solid var(--border-color);
   display: flex;
@@ -63,7 +63,7 @@
   flex: 1;
   background: linear-gradient(135deg, var(--bg-panel), var(--bg-inset));
   border: var(--border-width) solid var(--border-color);
-  padding: 24px;
+  padding: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

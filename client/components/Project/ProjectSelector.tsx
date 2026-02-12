@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Project, AppTheme } from '../../types';
 import { THEMES } from '../../data/themes';
-import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap } from 'lucide-react';
+import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap, AlertTriangle } from 'lucide-react';
 
 interface ProjectSelectorProps {
   projects: Project[];
@@ -223,6 +223,10 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                   </button>
                 </div>
                 <div className="project-delete-modal-body">
+                  <div className="project-delete-alert" aria-hidden="true">
+                    <AlertTriangle size={18} />
+                    <span>Destructive action</span>
+                  </div>
                   <p className="project-delete-message">
                     Delete <span>{projectToDelete.name}</span>? This removes the vault record from the registry.
                   </p>

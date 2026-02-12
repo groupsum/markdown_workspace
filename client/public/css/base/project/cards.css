@@ -6,7 +6,10 @@
   gap: calc(var(--app-gap) * 4);
   padding: calc(var(--app-gap) * 4);
   background: var(--bg-inset);
-  border: var(--border-width) solid var(--border-color);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-top: var(--border-width) solid var(--border-color);
   flex: 1;
   align-content: start;
 }

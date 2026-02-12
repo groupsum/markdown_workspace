@@ -5,8 +5,8 @@
   }
 
   .settings-modal {
-    width: min(92vw, 720px);
-    height: min(86vh, 640px);
+    width: min(96vw, 860px);
+    height: min(90vh, 700px);
     box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
   }
 

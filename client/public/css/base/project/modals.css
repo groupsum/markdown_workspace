@@ -43,7 +43,7 @@
 }
 
 .project-delete-modal-surface {
-  width: min(520px, 92vw);
+  width: min(560px, 92vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
   box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
@@ -103,6 +103,23 @@
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
+
+.project-delete-alert {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 10px;
+  border: var(--border-width) solid color-mix(in srgb, var(--status-error) 65%, var(--border-color));
+  background: color-mix(in srgb, var(--status-error) 14%, var(--bg-inset));
+  color: var(--status-error);
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
 .project-delete-message {
   margin: 0;
   font-family: var(--font-head);
@@ -128,11 +145,19 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+  flex-wrap: wrap;
   padding: 20px 24px;
   background: var(--bg-inset);
 }
 
 .project-delete-confirm {
   border-color: var(--status-error);
-  color: var(--status-error);
+  color: #fff;
+  background: var(--status-error);
 }
+
+.project-delete-confirm:hover {
+  background: color-mix(in srgb, var(--status-error) 82%, black);
+  color: #fff;
+}
+

@@ -149,7 +149,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="settings-content-frame">
               {activeTab === 'visual' && (
                 <div className="settings-pane">
-                  <h3 className="settings-section-title">THEME_MATRIX_SELECT</h3>
                   <div className="settings-grid-2">
                     {THEMES.map((theme) => (
                       <button
@@ -203,7 +202,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'git' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">GIT_PERSISTENCE_CONFIG</h3>
                 <div className="settings-card settings-card-stack">
                   <div className="flex flex-col gap-4">
                       <label className="flex flex-col gap-2">
@@ -256,7 +254,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'data' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">STORAGE_MANAGEMENT</h3>
                 <div className="flex flex-col gap-4">
                     <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                       <div className="flex justify-between items-start mb-2">
@@ -327,7 +324,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'keys' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SYSTEM_KEY_MAP</h3>
                 <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
                     {[
                       { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
@@ -362,7 +358,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'session' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SESSION_RESTORE</h3>
                 <div className="flex flex-col gap-4">
                   <div className="settings-card settings-card-stack">
                     <div className="settings-session-grid">
