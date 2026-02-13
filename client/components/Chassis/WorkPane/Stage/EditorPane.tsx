@@ -493,8 +493,6 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              <div className="view-toolbar-divider"></div>
              <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
              <div className="view-toolbar-divider"></div>
-           </div>
-           <div className="view-toolbar-group">
              <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
              <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
              <div className="view-toolbar-divider"></div>
