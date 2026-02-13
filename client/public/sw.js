@@ -71,6 +71,56 @@ const isFailedVersion = (version) => metaState.failedVersions.includes(version);
 
 const getCacheNameForVersion = (version) => `${CACHE_PREFIX}${version}`;
 
+const isAppCache = (name) => name.startsWith(CACHE_PREFIX);
+
+const findFallbackResponse = async (request, cacheNames) => {
+  for (const cacheName of cacheNames) {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+  }
+  return undefined;
+};
+
+const getFallbackCacheNames = async (activeCacheName) => {
+  const cacheNames = await caches.keys();
+  const appCacheNames = cacheNames.filter(isAppCache);
+  const prioritized = [];
+
+  if (activeCacheName && appCacheNames.includes(activeCacheName)) {
+    prioritized.push(activeCacheName);
+  }
+
+  if (CURRENT_CACHE !== activeCacheName && appCacheNames.includes(CURRENT_CACHE)) {
+    prioritized.push(CURRENT_CACHE);
+  }
+
+  if (metaState.lastKnownGoodVersion) {
+    const lastKnownGoodCache = getCacheNameForVersion(metaState.lastKnownGoodVersion);
+    if (!prioritized.includes(lastKnownGoodCache) && appCacheNames.includes(lastKnownGoodCache)) {
+      prioritized.push(lastKnownGoodCache);
+    }
+  }
+
+  appCacheNames.forEach((cacheName) => {
+    if (!prioritized.includes(cacheName)) {
+      prioritized.push(cacheName);
+    }
+  });
+
+  return prioritized;
+};
+
+const getCachedAppShell = async (activeCacheName) => {
+  const fallbackCacheNames = await getFallbackCacheNames(activeCacheName);
+  return (
+    (await findFallbackResponse('/index.html', fallbackCacheNames)) ||
+    (await findFallbackResponse('/', fallbackCacheNames))
+  );
+};
+
 const getActiveCacheName = () => {
   if (isFailedVersion(CURRENT_VERSION) && metaState.lastKnownGoodVersion) {
     return getCacheNameForVersion(metaState.lastKnownGoodVersion);
@@ -175,6 +225,11 @@ self.addEventListener('fetch', (event) => {
           if (cachedResponse) {
             return cachedResponse;
           }
+          const fallbackCacheNames = await getFallbackCacheNames(getActiveCacheName());
+          const crossCacheResponse = await findFallbackResponse(event.request, fallbackCacheNames);
+          if (crossCacheResponse) {
+            return crossCacheResponse;
+          }
           throw error;
         }
       })()
@@ -196,6 +251,10 @@ self.addEventListener('fetch', (event) => {
           const cachedResponse = await cache.match('/index.html');
           if (cachedResponse) {
             return cachedResponse;
+          }
+          const crossCacheAppShell = await getCachedAppShell(activeCacheName);
+          if (crossCacheAppShell) {
+            return crossCacheAppShell;
           }
           throw error;
         }
@@ -226,6 +285,10 @@ self.addEventListener('fetch', (event) => {
       const response = await fetchPromise;
       if (response) {
         return response;
+      }
+      const cachedAppShell = await getCachedAppShell(getActiveCacheName());
+      if (cachedAppShell) {
+        return cachedAppShell;
       }
       return caches.match('/index.html');
     })()
