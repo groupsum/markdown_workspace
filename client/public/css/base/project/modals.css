@@ -161,3 +161,22 @@
   border-color: var(--status-error);
   color: var(--status-error);
 }
+
+.project-delete-kicker {
+  margin: 0;
+  grid-column: 2;
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  letter-spacing: 0.14em;
+  color: var(--status-error);
+  text-transform: uppercase;
+}
+
+.project-delete-modal-surface {
+  overflow: hidden;
+}
+
+.project-delete-actions .project-btn-cancel,
+.project-delete-actions .project-btn-submit {
+  min-width: 160px;
+}
