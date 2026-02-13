@@ -101,7 +101,13 @@
 
   .workspace-manifold,
   .git-workspace {
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+
+  .app-grid.mode-work,
+  .app-grid.mode-git {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .workspace-sidebar,
@@ -146,5 +152,46 @@
   .status-right {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+
+@media (max-width: 640px) and (min-aspect-ratio: 4/3) {
+  :root {
+    --rail-width: 44px;
+    --rail-height: auto;
+  }
+
+  .chassis-scaler {
+    grid-template-areas:
+      "rail top"
+      "rail main"
+      "rail foot";
+    grid-template-columns: var(--rail-width) 1fr;
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--status-height);
+  }
+
+  .action-rail {
+    flex-direction: column;
+    border-top: 0;
+    border-right: var(--border-width) solid var(--border-color);
+    justify-content: flex-start;
+    padding: 4px 3px;
+  }
+
+  .rail-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .app-grid.mode-work,
+  .app-grid.mode-git {
+    display: contents;
+    flex-direction: initial;
+  }
+
+  .workspace-manifold,
+  .git-workspace {
+    flex-direction: row;
   }
 }
