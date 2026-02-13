@@ -136,3 +136,44 @@
   border-color: var(--status-error);
   color: var(--status-error);
 }
+
+.project-delete-modal-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-delete-modal-surface::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px dashed color-mix(in srgb, var(--status-error) 50%, var(--border-color));
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.project-delete-modal-header {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--status-error) 18%, var(--bg-inset)), var(--bg-inset));
+}
+
+.project-delete-modal-body {
+  gap: 16px;
+}
+
+.project-delete-warning {
+  border: 1px solid color-mix(in srgb, var(--status-error) 45%, var(--border-color));
+  background: color-mix(in srgb, var(--status-error) 10%, var(--bg-panel));
+  padding: 10px 12px;
+}
+
+.project-delete-actions {
+  border-top: var(--border-width) solid var(--border-color);
+}
+
+.project-delete-confirm {
+  background: color-mix(in srgb, var(--status-error) 14%, var(--bg-panel));
+}
+
+.project-delete-confirm:hover {
+  background: var(--status-error);
+  color: white;
+}

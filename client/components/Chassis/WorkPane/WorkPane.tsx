@@ -2,19 +2,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
-import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
+import { Plus, Minus, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
+import { FileNode, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
 interface WorkPaneProps {
-  currentProject: Project | undefined;
   files: FileNode[];
   activeFile: FileNode | null;
   selectedExplorerId: string | null;
   searchQuery: string;
   theme: AppTheme;
   viewMode: ViewMode;
-  currentThemeDef: ThemeDef;
   sidebarOpen: boolean;
   sidebarWidth: number;
   onSidebarToggle: (open: boolean) => void;
@@ -32,14 +30,12 @@ interface WorkPaneProps {
 }
 
 export const WorkPane: React.FC<WorkPaneProps> = ({
-  currentProject,
   files,
   activeFile,
   selectedExplorerId,
   searchQuery,
   theme,
   viewMode,
-  currentThemeDef,
   sidebarOpen,
   sidebarWidth,
   onSidebarToggle,
@@ -108,13 +104,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
         style={{ width: sidebarOpen ? `${sidebarWidth}px` : undefined }}
       >
         <div className="workspace-panel-header">
-          <div className="flex items-center gap-2 overflow-hidden">
-             <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
-             <span className="font-black text-[9px] uppercase tracking-widest truncate">
-               {currentProject?.name || 'REGISTRY'}
-             </span>
-          </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 ml-auto">
             <button
               className="panel-icon-btn"
               title="Expand All"

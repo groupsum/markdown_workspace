@@ -37,14 +37,14 @@
 
 .settings-keymap-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 12px;
   padding: 16px;
 }
 
 .settings-keymap-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
   border: var(--border-width) solid var(--border-color);
@@ -57,18 +57,20 @@
 }
 
 .settings-keymap-label {
-  flex: 1;
   min-width: 0;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .settings-keymap-key {
-  flex-shrink: 0;
   white-space: nowrap;
+  text-align: right;
+  padding-left: 12px;
 }
 
 .settings-session-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 12px;
 }
 

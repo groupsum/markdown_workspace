@@ -9,7 +9,7 @@
 }
 
 .settings-sidebar {
-  width: 220px;
+  width: 200px;
   background: linear-gradient(180deg, var(--bg-panel), var(--bg-inset));
   border: var(--border-width) solid var(--border-color);
   display: flex;
@@ -22,10 +22,10 @@
 .settings-sidebar-btn {
   width: 100%;
   text-align: left;
-  padding: 16px 20px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   font-size: calc(12px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
@@ -49,7 +49,7 @@
 .settings-sidebar-btn:hover {
   background: var(--bg-inset);
   color: var(--fg-primary);
-  transform: translateX(4px);
+  transform: none;
 }
 
 .settings-sidebar-btn.active {
@@ -98,6 +98,7 @@
 }
 
 .settings-content-kicker {
+  display: none;
   font-family: var(--font-mono);
   font-size: calc(10px * var(--ui-scale));
   letter-spacing: 0.2em;

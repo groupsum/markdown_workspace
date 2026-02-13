@@ -279,6 +279,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       insertFormat('_', '_');
       return;
     }
+    if (key === 'x' && e.shiftKey) {
+      e.preventDefault();
+      insertFormat('~~', '~~');
+      return;
+    }
     if (key === 'z') {
       e.preventDefault();
       if (e.shiftKey) {
@@ -319,7 +324,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   return (
     <div ref={containerRef} className="editor-pane-container">
       {isDragging && (
-        <div className="fixed inset-0 z-[9999] cursor-col-resize" style={{ userSelect: 'none' }} />
+        <div className="fixed inset-0 z-[9999]" style={{ userSelect: 'none' }} />
       )}
 
       <div className="editor-pane-shell">

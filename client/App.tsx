@@ -138,6 +138,7 @@ const App: React.FC = () => {
       <Header 
         className="app-header"
         currentThemeDef={state.currentThemeDef}
+        currentProjectName={state.currentProject?.name ?? null}
         tabs={state.tabs}
         files={state.files}
         activeTabId={state.activeTabId}
@@ -169,14 +170,12 @@ const App: React.FC = () => {
 
         {state.appMode === 'work' ? (
           <WorkPane 
-            currentProject={state.currentProject}
             files={state.files}
             activeFile={state.activeFile}
             selectedExplorerId={state.selectedExplorerId}
             searchQuery={state.searchQuery}
             theme={state.theme}
             viewMode={state.viewMode}
-            currentThemeDef={state.currentThemeDef}
             sidebarOpen={state.sidebarOpen}
             sidebarWidth={state.sidebarWidth}
             onSidebarToggle={actions.setSidebarOpen}

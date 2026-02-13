@@ -24,8 +24,8 @@
 }
 
 .settings-modal {
-  width: 920px;
-  height: 700px;
+  width: min(1120px, 96vw);
+  height: min(760px, 92vh);
   background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent 55%);
   border-width: calc(var(--border-width) + 1px);
   box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.65);

@@ -12,6 +12,7 @@
 }
 
 .settings-section-title {
+  display: none;
   font-family: var(--font-head);
   font-size: calc(13px * var(--ui-scale));
   text-transform: uppercase;

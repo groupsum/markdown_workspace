@@ -83,7 +83,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <div className="modal-header">
           <span className="modal-title">
             <SettingsIcon size={18} className="text-[var(--accent)]" />
-            System Configuration
+            System Config
           </span>
           <button onClick={onClose} className="modal-close"><X size={18} /></button>
         </div>
@@ -149,8 +149,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="settings-content-frame">
               {activeTab === 'visual' && (
                 <div className="settings-pane">
-                  <h3 className="settings-section-title">THEME_MATRIX_SELECT</h3>
-                  <div className="settings-grid-2">
+                    <div className="settings-grid-2">
                     {THEMES.map((theme) => (
                       <button
                         key={theme.id}
@@ -203,7 +202,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'git' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">GIT_PERSISTENCE_CONFIG</h3>
                 <div className="settings-card settings-card-stack">
                   <div className="flex flex-col gap-4">
                       <label className="flex flex-col gap-2">
@@ -256,7 +254,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'data' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">STORAGE_MANAGEMENT</h3>
                 <div className="flex flex-col gap-4">
                     <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                       <div className="flex justify-between items-start mb-2">
@@ -327,7 +324,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'keys' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SYSTEM_KEY_MAP</h3>
                 <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
                     {[
                       { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
@@ -342,6 +338,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       { label: 'VIEW_PREVIEW', key: 'CTRL/CMD+3' },
                       { label: 'FORMAT_BOLD', key: 'CTRL/CMD+B' },
                       { label: 'FORMAT_ITALIC', key: 'CTRL/CMD+I' },
+                      { label: 'FORMAT_STRIKETHROUGH', key: 'CTRL/CMD+SHIFT+X' },
                       { label: 'UNDO_OP', key: 'CTRL/CMD+Z' },
                       { label: 'REDO_OP', key: 'CTRL/CMD+SHIFT+Z' },
                       { label: 'SETTINGS', key: 'CTRL/CMD+,' },
@@ -362,7 +359,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'session' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SESSION_RESTORE</h3>
                 <div className="flex flex-col gap-4">
                   <div className="settings-card settings-card-stack">
                     <div className="settings-session-grid">

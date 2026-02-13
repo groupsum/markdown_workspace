@@ -91,6 +91,17 @@
   margin: 0.35em 0 0.15em;
   padding-left: 1.5em;
 }
+
+.markdown-body li > ul,
+.markdown-body li > ol {
+  list-style: none;
+  padding-left: 1.3em;
+}
+
+.markdown-body li > ul > li::marker,
+.markdown-body li > ol > li::marker {
+  content: '';
+}
 .markdown-body ul ul { list-style-type: circle; }
 .markdown-body ul ul ul { list-style-type: square; }
 .markdown-body ol ol { list-style-type: lower-alpha; }
