@@ -138,6 +138,7 @@ const App: React.FC = () => {
       <Header 
         className="app-header"
         currentThemeDef={state.currentThemeDef}
+        projectTitle={state.currentProject?.name || "PROJECT"}
         tabs={state.tabs}
         files={state.files}
         activeTabId={state.activeTabId}

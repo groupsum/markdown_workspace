@@ -49,7 +49,6 @@
 .settings-sidebar-btn:hover {
   background: var(--bg-inset);
   color: var(--fg-primary);
-  transform: translateX(4px);
 }
 
 .settings-sidebar-btn.active {

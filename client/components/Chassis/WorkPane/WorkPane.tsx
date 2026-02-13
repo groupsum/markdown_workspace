@@ -110,9 +110,6 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
         <div className="workspace-panel-header">
           <div className="flex items-center gap-2 overflow-hidden">
              <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
-             <span className="font-black text-[9px] uppercase tracking-widest truncate">
-               {currentProject?.name || 'REGISTRY'}
-             </span>
           </div>
           <div className="flex gap-1">
             <button
