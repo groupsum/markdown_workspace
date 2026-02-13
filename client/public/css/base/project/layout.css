@@ -19,7 +19,7 @@
   height: 80vh;
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent);
   display: flex;
   flex-direction: column;
   z-index: 10;
@@ -27,6 +27,7 @@
 }
 
 .project-selector-top {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,4 +61,13 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+}
+
+
+.project-selector-top::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 45%, transparent);
+  pointer-events: none;
 }

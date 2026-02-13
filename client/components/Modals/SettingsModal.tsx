@@ -57,11 +57,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const themeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
   const themeDef = THEMES[themeIndex];
   const tabMeta: Record<typeof activeTab, { label: string; code: string }> = {
-    visual: { label: 'Visual Matrix', code: '01' },
-    git: { label: 'Source Control', code: '02' },
-    data: { label: 'Storage Ops', code: '03' },
-    keys: { label: 'Key Map', code: '04' },
-    session: { label: 'Session State', code: '05' }
+    visual: { label: 'Visual Matrix', code: '' },
+    git: { label: 'Source Control', code: '' },
+    data: { label: 'Storage Ops', code: '' },
+    keys: { label: 'Key Map', code: '' },
+    session: { label: 'Session State', code: '' }
   };
 
   const handleThemeStep = (direction: number) => {
@@ -97,7 +97,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               title="Visual Matrix"
             >
               <Layout size={14} className="settings-sidebar-icon" />
-              <span className="settings-sidebar-label">01_VISUALS</span>
+              <span className="settings-sidebar-label">VISUALS</span>
             </button>
             <button 
               onClick={() => setActiveTab('git')}
@@ -105,7 +105,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               title="Source Control"
             >
               <GitBranch size={14} className="settings-sidebar-icon" />
-              <span className="settings-sidebar-label">02_SOURCE_CTRL</span>
+              <span className="settings-sidebar-label">SOURCE_CTRL</span>
             </button>
             <button 
               onClick={() => setActiveTab('data')}
@@ -113,7 +113,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               title="Storage Ops"
             >
               <Database size={14} className="settings-sidebar-icon" />
-              <span className="settings-sidebar-label">03_STORAGE_IO</span>
+              <span className="settings-sidebar-label">STORAGE_IO</span>
             </button>
             <button 
               onClick={() => setActiveTab('keys')}
@@ -121,7 +121,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               title="Key Map"
             >
               <Keyboard size={14} className="settings-sidebar-icon" />
-              <span className="settings-sidebar-label">04_KEYMAP</span>
+              <span className="settings-sidebar-label">KEYMAP</span>
             </button>
             <button
               onClick={() => setActiveTab('session')}
@@ -129,7 +129,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               title="Session State"
             >
               <Monitor size={14} className="settings-sidebar-icon" />
-              <span className="settings-sidebar-label">05_SESSION</span>
+              <span className="settings-sidebar-label">SESSION</span>
             </button>
           </nav>
 
@@ -137,7 +137,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="settings-content">
             <div className="settings-content-header">
               <div className="settings-content-title">
-                <span className="settings-content-kicker">{tabMeta[activeTab].code}_MODULE</span>
                 <span className="settings-content-name">{tabMeta[activeTab].label}</span>
               </div>
               <div className="settings-content-meta">
@@ -149,7 +148,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="settings-content-frame">
               {activeTab === 'visual' && (
                 <div className="settings-pane">
-                  <h3 className="settings-section-title">THEME_MATRIX_SELECT</h3>
+                  <h3 className="settings-section-title">Theme Selection</h3>
                   <div className="settings-grid-2">
                     {THEMES.map((theme) => (
                       <button
@@ -256,7 +255,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'data' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">STORAGE_MANAGEMENT</h3>
+                <h3 className="settings-section-title">Data & Backup</h3>
                 <div className="flex flex-col gap-4">
                     <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                       <div className="flex justify-between items-start mb-2">
@@ -327,7 +326,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'keys' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SYSTEM_KEY_MAP</h3>
+                <h3 className="settings-section-title">Keyboard Shortcuts</h3>
                 <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
                     {[
                       { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
@@ -362,7 +361,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
             {activeTab === 'session' && (
               <div className="settings-pane">
-                <h3 className="settings-section-title">SESSION_RESTORE</h3>
+                <h3 className="settings-section-title">Session Preferences</h3>
                 <div className="flex flex-col gap-4">
                   <div className="settings-card settings-card-stack">
                     <div className="settings-session-grid">

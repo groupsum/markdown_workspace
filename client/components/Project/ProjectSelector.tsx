@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Project, AppTheme } from '../../types';
 import { THEMES } from '../../data/themes';
-import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap } from 'lucide-react';
+import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap, AlertTriangle } from 'lucide-react';
 
 interface ProjectSelectorProps {
   projects: Project[];
@@ -58,7 +58,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       <div className="project-selector-chassis">
         <header className="project-selector-top">
           <div className="project-header-info">
-            <h1 className="project-title">Lattice_Vault_Registry</h1>
+            <h1 className="project-title">Project_Registry</h1>
             <p className="project-subtitle">MOUNT_WORKSPACE_OR_INIT_NEW_PLATE</p>
           </div>
           
@@ -223,10 +223,14 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                   </button>
                 </div>
                 <div className="project-delete-modal-body">
+                  <div className="project-delete-icon-wrap" aria-hidden="true">
+                    <AlertTriangle size={18} />
+                  </div>
                   <p className="project-delete-message">
-                    Delete <span>{projectToDelete.name}</span>? This removes the vault record from the registry.
+                    Delete <span>{projectToDelete.name}</span> from the registry?
                   </p>
-                  <p className="project-delete-warning">Stored files remain in local IDB storage.</p>
+                  <p className="project-delete-warning">This only removes the project record from the selector.</p>
+                  <p className="project-delete-meta">Workspace files remain in local IndexedDB storage unless manually purged.</p>
                 </div>
                 <div className="project-delete-actions">
                   <button
@@ -260,7 +264,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                     <div className="project-card-icon">
                       <Box size={24} strokeWidth={1.5} />
                     </div>
-                    {projects.length > 1 && (
+                    {(
                       <button 
                         onClick={(e) => { 
                           e.stopPropagation(); 

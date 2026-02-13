@@ -279,6 +279,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       insertFormat('_', '_');
       return;
     }
+    if (key === 'x' && e.shiftKey) {
+      e.preventDefault();
+      insertFormat('~~', '~~');
+      return;
+    }
     if (key === 'z') {
       e.preventDefault();
       if (e.shiftKey) {
@@ -363,14 +368,24 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                   components={{
                     ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
                     ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
-                    li: ({node, ...props}) => {
+                    li: ({node, children, ...props}) => {
                       const isTask = typeof (node as { checked?: boolean })?.checked === 'boolean';
+                      const childArray = React.Children.toArray(children);
+                      const hasNestedList = childArray.some((child) =>
+                        React.isValidElement(child) && (child.type === 'ul' || child.type === 'ol')
+                      );
                       return (
                         <li
-                          className={mergeClassNames('md-li', isTask ? 'md-task-list-item' : undefined)}
+                          className={mergeClassNames(
+                            'md-li',
+                            isTask ? 'md-task-list-item' : undefined,
+                            hasNestedList ? 'md-li-has-nested-list' : undefined
+                          )}
                           data-checked={isTask ? String((node as { checked?: boolean }).checked) : undefined}
                           {...props}
-                        />
+                        >
+                          {children}
+                        </li>
                       );
                     },
                     table: ({node, className, children, ...props}: any) => {

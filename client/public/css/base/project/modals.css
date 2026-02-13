@@ -37,13 +37,13 @@
   width: min(560px, 92vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.78), inset 0 0 0 1px color-mix(in srgb, var(--border-color) 60%, transparent);
   display: flex;
   flex-direction: column;
 }
 
 .project-delete-modal-surface {
-  width: min(520px, 92vw);
+  width: min(560px, 94vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
   box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
@@ -97,14 +97,16 @@
 
 .project-delete-modal-body {
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px 16px;
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .project-delete-message {
   margin: 0;
+  grid-column: 2;
   font-family: var(--font-head);
   font-size: calc(0.95rem * var(--ui-scale));
   letter-spacing: 0.06em;
@@ -118,10 +120,31 @@
 
 .project-delete-warning {
   margin: 0;
+  grid-column: 2;
   font-family: var(--font-mono);
   font-size: calc(10px * var(--ui-scale));
   text-transform: uppercase;
   color: var(--fg-muted);
+}
+
+.project-delete-meta {
+  margin: 0;
+  grid-column: 2;
+  font-family: var(--font-ui);
+  font-size: calc(11px * var(--ui-scale));
+  line-height: 1.45;
+  color: var(--fg-secondary);
+}
+
+.project-delete-icon-wrap {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid var(--status-error);
+  color: var(--status-error);
+  background: color-mix(in srgb, var(--status-error) 12%, var(--bg-panel));
 }
 
 .project-delete-actions {

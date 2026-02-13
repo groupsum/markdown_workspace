@@ -6,6 +6,7 @@ import { ThemeDef } from '../../../data/themes';
 
 interface HeaderProps {
   currentThemeDef: ThemeDef;
+  projectTitle: string;
   tabs: Tab[];
   files: FileNode[];
   activeTabId: string | null;
@@ -28,6 +29,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   currentThemeDef,
+  projectTitle,
   tabs,
   files,
   activeTabId,
@@ -47,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="header-brand" onClick={onSwitchProject} title="Switch Project">
             <span className="header-brand-title">
               {currentThemeDef.icon && React.cloneElement(currentThemeDef.icon as React.ReactElement<any>, { size: 16 })}
-              {currentThemeDef.name}
+              {projectTitle}
             </span>
           </div>
         </div>

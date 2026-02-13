@@ -61,7 +61,7 @@ body {
   font-size: calc(12px * var(--ui-scale));
   margin: 0;
   overflow: hidden;
-  cursor: crosshair;
+  cursor: default;
   -webkit-font-smoothing: antialiased;
 }
 
