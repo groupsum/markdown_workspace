@@ -37,7 +37,21 @@
   font-weight: 900;
 }
 
+.theme-default .chassis-scaler {
+  grid-template-areas:
+    "top top"
+    "rail main"
+    "foot foot";
+}
+
+.theme-default .app-header,
+.theme-default .status-bar {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
 .theme-default .action-rail {
+  grid-row: 2;
   background: var(--bg-inset);
 }
 

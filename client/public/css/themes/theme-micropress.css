@@ -31,6 +31,27 @@
   --texture-opacity: 0.08;
 }
 
+.theme-micropress .app-header {
+  background: var(--bg-panel);
+}
+
+.theme-micropress .chassis-scaler {
+  grid-template-areas:
+    "top top"
+    "rail main"
+    "foot foot";
+}
+
+.theme-micropress .app-header,
+.theme-micropress .status-bar {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.theme-micropress .action-rail {
+  grid-row: 2;
+}
+
 .theme-micropress .tab-item {
   font-weight: 900;
   background: #e0e0e0;
