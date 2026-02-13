@@ -9,12 +9,13 @@
   border: var(--border-width) solid var(--border-color);
   background: linear-gradient(145deg, var(--bg-panel), var(--bg-inset));
   color: var(--fg-primary);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent), 2px 2px 0 color-mix(in srgb, var(--border-color) 60%, transparent);
 }
 
 .theme-toggle-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent), 3px 3px 0 color-mix(in srgb, var(--border-color) 75%, transparent);
 }
 
 .theme-selector-modal-body {

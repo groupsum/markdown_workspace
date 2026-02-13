@@ -89,3 +89,27 @@
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   }
 }
+
+
+@media (max-width: 640px) {
+  .project-delete-modal {
+    padding: 0;
+  }
+
+  .project-delete-modal-surface {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    box-shadow: none;
+  }
+
+  .project-delete-modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .project-delete-message,
+  .project-delete-warning,
+  .project-delete-meta {
+    grid-column: 1;
+  }
+}
