@@ -160,6 +160,28 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  if (event.request.destination === 'style') {
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(getActiveCacheName());
+        try {
+          const response = await fetch(event.request);
+          if (response && response.status === 200) {
+            cache.put(event.request, response.clone());
+          }
+          return response;
+        } catch (error) {
+          const cachedResponse = await cache.match(event.request);
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          throw error;
+        }
+      })()
+    );
+    return;
+  }
+
   if (event.request.mode === 'navigate') {
     event.respondWith(
       (async () => {
