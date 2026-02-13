@@ -46,7 +46,7 @@
   width: min(560px, 94vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.72), inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent);
   display: flex;
   flex-direction: column;
 }
@@ -55,7 +55,7 @@
   width: min(720px, 94vw);
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.72), inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent);
   display: flex;
   flex-direction: column;
   max-height: 86vh;
@@ -68,7 +68,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  background: var(--bg-inset);
+  border-top: var(--border-width) solid var(--border-color);
+  background: linear-gradient(180deg, var(--bg-inset), color-mix(in srgb, var(--bg-inset) 72%, var(--bg-panel)));
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
@@ -89,7 +90,7 @@
   background: var(--bg-panel);
   color: var(--fg-primary);
   padding: 8px 12px;
-  font-size: calc(10px * var(--ui-scale));
+  font-size: calc(11px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -100,7 +101,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: 12px 16px;
+  gap: 16px 18px;
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
@@ -108,7 +109,7 @@
   margin: 0;
   grid-column: 2;
   font-family: var(--font-head);
-  font-size: calc(0.95rem * var(--ui-scale));
+  font-size: calc(1rem * var(--ui-scale));
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--fg-primary);
@@ -137,8 +138,8 @@
 }
 
 .project-delete-icon-wrap {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -152,6 +153,7 @@
   justify-content: flex-end;
   gap: 12px;
   padding: 20px 24px;
+  border-top: var(--border-width) solid var(--border-color);
   background: var(--bg-inset);
 }
 

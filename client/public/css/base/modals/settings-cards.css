@@ -44,8 +44,8 @@
 
 .settings-keymap-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
   gap: 12px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-panel);
@@ -63,8 +63,11 @@
 }
 
 .settings-keymap-key {
-  justify-self: end;
-  white-space: nowrap;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   padding: 4px 8px;
   border: var(--border-width) solid var(--border-color);
   background: var(--bg-inset);

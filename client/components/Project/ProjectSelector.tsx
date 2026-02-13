@@ -58,7 +58,6 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       <div className="project-selector-chassis">
         <header className="project-selector-top">
           <div className="project-header-info">
-            <h1 className="project-title">Project_Registry</h1>
             <p className="project-subtitle">MOUNT_WORKSPACE_OR_INIT_NEW_PLATE</p>
           </div>
           
@@ -67,7 +66,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               <button 
                 onClick={() => setShowThemeModal(true)}
                 className="theme-toggle-btn"
-                title={`Current Theme: ${currentThemeDef.name}`}
+                title="Project Theme"
               >
                 {currentThemeDef.icon && React.cloneElement(currentThemeDef.icon as React.ReactElement<any>, { size: 18 })}
               </button>
@@ -212,7 +211,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               >
                 <div className="project-delete-modal-header">
                   <h2 id="project-delete-title" className="project-delete-title">
-                    Confirm_Project_Ejection
+                    Delete Project
                   </h2>
                   <button
                     type="button"
@@ -227,10 +226,10 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                     <AlertTriangle size={18} />
                   </div>
                   <p className="project-delete-message">
-                    Delete <span>{projectToDelete.name}</span> from the registry?
+                    Delete <span>{projectToDelete.name}</span>?
                   </p>
-                  <p className="project-delete-warning">This only removes the project record from the selector.</p>
-                  <p className="project-delete-meta">Workspace files remain in local IndexedDB storage unless manually purged.</p>
+                  <p className="project-delete-warning">This removes the project entry from the selector view.</p>
+                  <p className="project-delete-meta">Local IndexedDB content remains available until manually cleared.</p>
                 </div>
                 <div className="project-delete-actions">
                   <button

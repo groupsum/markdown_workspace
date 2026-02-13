@@ -266,3 +266,10 @@
     page-break-inside: avoid;
   }
 }
+
+
+/* Show markers only at the deepest visible list level */
+.markdown-body li:has(> ul)::marker,
+.markdown-body li:has(> ol)::marker {
+  content: "";
+}
