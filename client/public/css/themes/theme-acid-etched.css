@@ -36,6 +36,23 @@
   text-transform: uppercase;
   font-weight: 900;
 }
+.theme-acid-etched .chassis-scaler {
+  grid-template-areas:
+    "top top"
+    "rail main"
+    "foot foot";
+}
+
+.theme-acid-etched .app-header,
+.theme-acid-etched .status-bar {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.theme-acid-etched .action-rail {
+  grid-row: 2;
+  background: #f0f3e6;
+}
 
 .theme-acid-etched .tab-item {
   background: #e2e6d3;
@@ -49,9 +66,6 @@
   border-bottom: 4px solid var(--accent);
 }
 
-.theme-acid-etched .action-rail {
-  background: #f0f3e6;
-}
 
 .theme-acid-etched .rail-btn.is-active {
   background: var(--border-color);
