@@ -111,7 +111,7 @@
 .markdown-body li::marker {
   color: var(--fg-muted);
 }
-.markdown-body .md-li-has-nested-list::marker {
+.markdown-body .md-li-nested-only::marker {
   content: '';
 }
 .markdown-body a {

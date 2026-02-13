@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
+import { Plus, Minus, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
@@ -108,9 +108,6 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
         style={{ width: sidebarOpen ? `${sidebarWidth}px` : undefined }}
       >
         <div className="workspace-panel-header">
-          <div className="flex items-center gap-2 overflow-hidden">
-             <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
-          </div>
           <div className="flex gap-1">
             <button
               className="panel-icon-btn"

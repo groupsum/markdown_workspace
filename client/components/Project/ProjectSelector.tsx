@@ -39,6 +39,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
 
   const currentThemeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
   const currentThemeDef = THEMES[currentThemeIndex];
+  const activeProjectName = projects.find((project) => project.id === activeProjectId)?.name || 'Project_Registry';
 
   const handleThemeSelect = (themeId: AppTheme) => {
     onThemeChange(themeId);
@@ -58,7 +59,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       <div className="project-selector-chassis">
         <header className="project-selector-top">
           <div className="project-header-info">
-            <h1 className="project-title">Project_Registry</h1>
+            <h1 className="project-title">{activeProjectName}</h1>
             <p className="project-subtitle">MOUNT_WORKSPACE_OR_INIT_NEW_PLATE</p>
           </div>
           

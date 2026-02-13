@@ -56,14 +56,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [activeTab, setActiveTab] = useState<'visual' | 'git' | 'data' | 'keys' | 'session'>('visual');
   const themeIndex = Math.max(THEMES.findIndex((theme) => theme.id === currentTheme), 0);
   const themeDef = THEMES[themeIndex];
-  const tabMeta: Record<typeof activeTab, { label: string; code: string }> = {
-    visual: { label: 'Visual Matrix', code: '' },
-    git: { label: 'Source Control', code: '' },
-    data: { label: 'Storage Ops', code: '' },
-    keys: { label: 'Key Map', code: '' },
-    session: { label: 'Session State', code: '' }
-  };
-
   const handleThemeStep = (direction: number) => {
     const nextIndex = (themeIndex + direction + THEMES.length) % THEMES.length;
     onThemeChange(THEMES[nextIndex].id);
@@ -135,20 +127,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           {/* Content */}
           <div className="settings-content">
-            <div className="settings-content-header">
-              <div className="settings-content-title">
-                <span className="settings-content-name">{tabMeta[activeTab].label}</span>
-              </div>
-              <div className="settings-content-meta">
-                <span className="settings-content-meta-label">ACTIVE_THEME</span>
-                <span className="settings-content-meta-value">{themeDef.name}</span>
-              </div>
-            </div>
-
             <div className="settings-content-frame">
               {activeTab === 'visual' && (
                 <div className="settings-pane">
-                  <h3 className="settings-section-title">Theme Selection</h3>
                   <div className="settings-grid-2">
                     {THEMES.map((theme) => (
                       <button
@@ -341,6 +322,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       { label: 'VIEW_PREVIEW', key: 'CTRL/CMD+3' },
                       { label: 'FORMAT_BOLD', key: 'CTRL/CMD+B' },
                       { label: 'FORMAT_ITALIC', key: 'CTRL/CMD+I' },
+                      { label: 'FORMAT_STRIKETHROUGH', key: 'CTRL/CMD+SHIFT+X' },
                       { label: 'UNDO_OP', key: 'CTRL/CMD+Z' },
                       { label: 'REDO_OP', key: 'CTRL/CMD+SHIFT+Z' },
                       { label: 'SETTINGS', key: 'CTRL/CMD+,' },

@@ -20,6 +20,8 @@
   background: var(--bg-panel);
   border: var(--border-width) solid var(--border-color);
   box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px color-mix(in srgb, var(--border-color) 55%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--border-color) 45%, transparent);
+  outline-offset: -6px;
   display: flex;
   flex-direction: column;
   z-index: 10;

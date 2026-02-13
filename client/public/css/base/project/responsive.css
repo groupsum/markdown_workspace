@@ -36,12 +36,14 @@
   }
 
   .project-create-modal,
-  .theme-selector-modal {
+  .theme-selector-modal,
+  .project-delete-modal {
     padding: 0;
   }
 
   .project-create-modal-surface,
-  .theme-selector-modal-surface {
+  .theme-selector-modal-surface,
+  .project-delete-modal-surface {
     width: 100%;
     height: 100%;
     max-height: none;

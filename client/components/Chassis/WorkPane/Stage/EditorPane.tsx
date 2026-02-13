@@ -374,12 +374,19 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                       const hasNestedList = childArray.some((child) =>
                         React.isValidElement(child) && (child.type === 'ul' || child.type === 'ol')
                       );
+                      const hasInlineContent = childArray.some((child) => {
+                        if (!React.isValidElement(child)) {
+                          return String(child ?? '').trim().length > 0;
+                        }
+                        return child.type !== 'ul' && child.type !== 'ol';
+                      });
                       return (
                         <li
                           className={mergeClassNames(
                             'md-li',
                             isTask ? 'md-task-list-item' : undefined,
-                            hasNestedList ? 'md-li-has-nested-list' : undefined
+                            hasNestedList ? 'md-li-has-nested-list' : undefined,
+                            hasNestedList && !hasInlineContent ? 'md-li-nested-only' : undefined
                           )}
                           data-checked={isTask ? String((node as { checked?: boolean }).checked) : undefined}
                           {...props}
@@ -493,7 +500,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              <div className="view-toolbar-divider"></div>
              <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
              <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
-             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
+             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough" aria-label="Apply strikethrough"><Strikethrough size={12}/></button>
              <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
              <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>
            </div>
