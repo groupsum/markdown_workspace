@@ -163,8 +163,8 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 </div>
                 <div className="theme-selector-modal-body">
                   <div className="theme-selector-meta">
-                    <span className="theme-meta-label">ACTIVE_THEME</span>
-                    <span className="theme-meta-value">{currentThemeDef.name}</span>
+                    <span className="theme-meta-label">PROJECT_TITLE</span>
+                    <span className="theme-meta-value">{newProjectName.trim() || 'UNTITLED_PROJECT'}</span>
                     <span className="theme-meta-count">{currentThemeIndex + 1}/{THEMES.length}</span>
                   </div>
                   <div className="theme-modal-grid">
@@ -223,8 +223,9 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 </div>
                 <div className="project-delete-modal-body">
                   <div className="project-delete-icon-wrap" aria-hidden="true">
-                    <AlertTriangle size={18} />
+                    <AlertTriangle size={20} />
                   </div>
+                  <p className="project-delete-kicker">DESTRUCTIVE_ACTION</p>
                   <p className="project-delete-message">
                     Delete <span>{projectToDelete.name}</span>?
                   </p>

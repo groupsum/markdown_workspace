@@ -380,6 +380,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                             isTask ? 'md-task-list-item' : undefined,
                             hasNestedList ? 'md-li-has-nested-list' : undefined
                           )}
+                          data-has-nested-list={hasNestedList ? 'true' : undefined}
                           data-checked={isTask ? String((node as { checked?: boolean }).checked) : undefined}
                           {...props}
                         >
@@ -490,11 +491,12 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              </button>
              <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
              <div className="view-toolbar-divider"></div>
+             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
+             <div className="view-toolbar-divider"></div>
            </div>
            <div className="view-toolbar-group">
              <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
              <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
-             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
              <div className="view-toolbar-divider"></div>
              <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
              <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>

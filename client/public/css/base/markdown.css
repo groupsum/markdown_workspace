@@ -111,8 +111,8 @@
 .markdown-body li::marker {
   color: var(--fg-muted);
 }
-.markdown-body .md-li-has-nested-list::marker {
-  content: '';
+.markdown-body li[data-has-nested-list="true"]::marker {
+  content: "";
 }
 .markdown-body a {
   color: var(--accent);
@@ -267,9 +267,3 @@
   }
 }
 
-
-/* Show markers only at the deepest visible list level */
-.markdown-body li:has(> ul)::marker,
-.markdown-body li:has(> ol)::marker {
-  content: "";
-}
