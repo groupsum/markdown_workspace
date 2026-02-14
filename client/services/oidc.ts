@@ -368,11 +368,6 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string): P
       code_verifier: pending.verifier
     });
 
-    const clientSecret = import.meta.env.VITE_OIDC_CLIENT_SECRET?.trim();
-    if (clientSecret) {
-      tokenBody.set('client_secret', clientSecret);
-    }
-
     let tokenResponse: Response;
     try {
       tokenResponse = await fetch(adapter.tokenEndpoint, {
@@ -389,7 +384,7 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string): P
       return {
         status: 'error',
         message:
-          'OIDC token exchange failed before reaching provider. This is usually caused by browser CORS restrictions. Configure a server-side OIDC proxy and retry.'
+          'OIDC token exchange failed before reaching provider. This is usually caused by browser CORS restrictions. For browser-only deployments, use a public OAuth/OIDC client with PKCE on a provider that allows token exchange from browser origins.'
       };
     }
 
