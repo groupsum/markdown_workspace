@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { X, Layout, GitBranch, Database, Keyboard, Download, RefreshCw, Settings as SettingsIcon, Monitor, Save } from 'lucide-react';
+import { OidcSignInSelector } from './OidcSignInSelector';
+import { RepositoryAutocomplete } from './RepositoryAutocomplete';
 import { AppTheme, AppMode, GitConfig, ViewMode } from '../../types';
 import { THEMES } from '../../data/themes';
 
@@ -203,45 +205,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <div className="settings-pane">
                                 <div className="settings-card settings-card-stack">
                   <div className="flex flex-col gap-4">
-                      <label className="flex flex-col gap-2">
-                        <span className="text-[10px] font-bold text-[var(--fg-muted)]">REPOSITORY URL</span>
-                        <input 
-                          className="modal-input !text-xs !py-3"
-                          value={gitConfig.repoUrl}
-                          onChange={e => handleGitChange('repoUrl', e.target.value)}
-                          placeholder="https://github.com/user/repo"
-                        />
-                      </label>
+                      <OidcSignInSelector
+                        gitConfig={gitConfig}
+                        onGitConfigChange={onGitConfigChange}
+                      />
+                      <RepositoryAutocomplete
+                        gitConfig={gitConfig}
+                        onRepoUrlChange={(value) => handleGitChange('repoUrl', value)}
+                      />
                       <label className="flex flex-col gap-2">
                         <span className="text-[10px] font-bold text-[var(--fg-muted)]">BRANCH</span>
-                        <input 
+                        <input
                           className="modal-input !text-xs !py-3"
                           value={gitConfig.branch}
                           onChange={e => handleGitChange('branch', e.target.value)}
                           placeholder="main"
                         />
                       </label>
-                      <div className="grid grid-cols-2 gap-4">
-                          <label className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold text-[var(--fg-muted)]">USERNAME</span>
-                            <input 
-                              className="modal-input !text-xs !py-3"
-                              value={gitConfig.username}
-                              onChange={e => handleGitChange('username', e.target.value)}
-                              placeholder="user"
-                            />
-                          </label>
-                          <label className="flex flex-col gap-2">
-                            <span className="text-[10px] font-bold text-[var(--fg-muted)]">PAT</span>
-                            <input 
-                              type="password"
-                              className="modal-input !text-xs !py-3"
-                              value={gitConfig.pat}
-                              onChange={e => handleGitChange('pat', e.target.value)}
-                              placeholder="ghp_..."
-                            />
-                          </label>
-                      </div>
                   </div>
                   <div className="settings-action-row">
                       <button className="modal-btn flex-1">TEST_LINK</button>
