@@ -2,6 +2,7 @@ import { AppTheme } from '../types';
 import { THEMES } from '../data/themes';
 import { THEME_STORAGE_KEY, DEFAULT_THEME_ID, THEME_STYLE_ELEMENT_ID } from '../constants';
 import { storage } from './storage';
+import { THEME_STYLESHEET_TEXT } from '../styles';
 
 export const getStoredTheme = (): AppTheme => {
   const stored = localStorage.getItem(THEME_STORAGE_KEY);
@@ -56,64 +57,33 @@ const updateThemeMeta = (themeId: AppTheme): void => {
   }
 };
 
-/**
- * Deterministically applies a theme by swapping the <link> tag's href.
- * Implements Strategy A: Zero runtime CSS injection.
- */
 export const setTheme = async (themeId: AppTheme): Promise<void> => {
   const root = document.documentElement;
-  const themeDef = THEMES.find(t => t.id === themeId) || THEMES.find(t => t.id === DEFAULT_THEME_ID) || THEMES[0];
-  const defaultDef = THEMES.find(t => t.id === DEFAULT_THEME_ID) || THEMES[0];
+  const nextTheme = THEME_STYLESHEET_TEXT[themeId] ? themeId : DEFAULT_THEME_ID;
 
-  const linkEl = document.getElementById(THEME_STYLE_ELEMENT_ID) as HTMLLinkElement;
-  
-  if (linkEl) {
-    const targetUrl = themeDef.url;
-    
-    // Deterministic swap
-    if (linkEl.getAttribute('href') !== targetUrl) {
-       // Clear previous error handlers
-       linkEl.onerror = null;
-       
-       // Explicit failure behavior: 404 fallback
-       linkEl.onerror = (e) => {
-         console.error(`[ThemeService] Failed to load theme file: ${targetUrl}. Falling back to default.`);
-         // Prevent infinite loops if default also fails
-         linkEl.onerror = null; 
-         linkEl.href = defaultDef.url;
-         root.setAttribute('data-theme', DEFAULT_THEME_ID);
-         localStorage.setItem(THEME_STORAGE_KEY, DEFAULT_THEME_ID);
-       };
-       
-       linkEl.href = targetUrl;
-    }
+  const themeStyleEl = document.getElementById(THEME_STYLE_ELEMENT_ID) as HTMLStyleElement | null;
+  if (themeStyleEl) {
+    themeStyleEl.textContent = THEME_STYLESHEET_TEXT[nextTheme] || THEME_STYLESHEET_TEXT.default;
   } else {
-    // Critical failure: Link element missing from DOM
-    console.error(`[ThemeService] Critical Error: Link element #${THEME_STYLE_ELEMENT_ID} missing from index.html.`);
+    console.error(`[ThemeService] Critical Error: Style element #${THEME_STYLE_ELEMENT_ID} missing from index.html.`);
   }
 
-  // Persistence & DOM State
-  localStorage.setItem(THEME_STORAGE_KEY, themeId);
-  storage.setSetting(THEME_STORAGE_KEY, themeId).catch((error) => {
+  localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  storage.setSetting(THEME_STORAGE_KEY, nextTheme).catch((error) => {
     console.warn('[ThemeService] Failed to persist theme to IndexedDB.', error);
   });
-  root.setAttribute('data-theme', themeId);
-  
-  // Clean up old theme classes for class-based styling consistency
+  root.setAttribute('data-theme', nextTheme);
+
   const classesToRemove = Array.from(root.classList).filter(cls => cls.startsWith('theme-'));
   classesToRemove.forEach(cls => root.classList.remove(cls));
-  root.classList.add(`theme-${themeId}`);
+  root.classList.add(`theme-${nextTheme}`);
 
-  updateThemeMeta(themeId);
+  updateThemeMeta(nextTheme);
 
-  // Dispatch systemic event for components that need to respond (e.g., Syntax Highlighters)
-  window.dispatchEvent(new CustomEvent('theme-changed', { detail: themeId }));
-  console.debug(`[ThemeService] Applied: ${themeId} :: ${themeDef.url}`);
+  window.dispatchEvent(new CustomEvent('theme-changed', { detail: nextTheme }));
+  console.debug(`[ThemeService] Applied: ${nextTheme}`);
 };
 
-/**
- * Bootstraps the theme system from local storage on app start.
- */
 export const initTheme = async (): Promise<AppTheme> => {
   const storedTheme = await getStoredThemeFromDb();
   const theme = storedTheme || getStoredTheme();

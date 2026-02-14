@@ -288,7 +288,7 @@ export const useFileManager = (
     const selectedNode = files.find(f => f.id === selectedExplorerId);
     if (!selectedNode) return;
 
-    const { coreCss, themeCss } = await getExportStyles();
+    const { coreCss, themeCss } = await getExportStyles(theme);
     const buildHtml = (node: FileNode) => createHtmlExport({
       title: node.name,
       content: node.content || '',

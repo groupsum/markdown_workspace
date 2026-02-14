@@ -6,6 +6,7 @@ import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { AppTheme } from '../types';
 import { getSyntaxTheme } from '../data/themes';
+import { CORE_STYLESHEET_TEXT, THEME_STYLESHEET_TEXT } from '../styles';
 
 const EXPORT_STYLE_OVERRIDES = `
   body.markdown-export {
@@ -131,24 +132,10 @@ const renderPreviewMarkup = (content: string, theme: AppTheme) => renderToStatic
   </div>
 );
 
-const getCssText = async (linkId: string): Promise<string> => {
-  const linkEl = document.getElementById(linkId) as HTMLLinkElement | null;
-  if (!linkEl?.href) return '';
-  try {
-    const response = await fetch(linkEl.href);
-    if (!response.ok) return '';
-    return await response.text();
-  } catch (error) {
-    console.warn(`[htmlExport] Failed to load CSS from ${linkEl.href}`, error);
-    return '';
-  }
-};
-
-export const getExportStyles = async (): Promise<{ coreCss: string; themeCss: string; }> => {
-  const coreCss = await getCssText('lattice-core');
-  const themeCss = await getCssText('lattice-theme');
-  return { coreCss, themeCss };
-};
+export const getExportStyles = async (theme: AppTheme): Promise<{ coreCss: string; themeCss: string; }> => ({
+  coreCss: CORE_STYLESHEET_TEXT,
+  themeCss: THEME_STYLESHEET_TEXT[theme] || THEME_STYLESHEET_TEXT.default
+});
 
 export const toHtmlFileName = (name: string) => {
   const base = name.replace(/\.md$/i, '');
