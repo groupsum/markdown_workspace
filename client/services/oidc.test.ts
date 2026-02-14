@@ -93,6 +93,31 @@ describe('completeOidcSignInFromCallback', () => {
     expect(result.credential?.idToken).toBe('url-id-token');
   });
 
+
+  it('returns a cors guidance error when token exchange request is blocked', async () => {
+    window.history.replaceState({}, '', '/auth/callback?state=abc123&code=xyz');
+    localStorage.setItem(
+      pendingKey,
+      JSON.stringify({
+        projectId: 'proj-1',
+        provider: 'github',
+        username: 'alice',
+        state: 'abc123',
+        verifier: 'verifier',
+        redirectUri: 'http://localhost:5173/auth/callback',
+        createdAt: Date.now()
+      })
+    );
+
+    global.fetch = vi.fn().mockRejectedValueOnce(new TypeError('Failed to fetch')) as unknown as typeof fetch;
+
+    const result = await completeOidcSignInFromCallback();
+
+    expect(result.status).toBe('error');
+    expect(result.message).toContain('browser CORS restrictions');
+    expect(localStorage.getItem(pendingKey)).toBeNull();
+  });
+
   it('exchanges code for access token and returns success', async () => {
     window.history.replaceState({}, '', '/auth/callback?state=abc123&code=xyz');
     localStorage.setItem(
