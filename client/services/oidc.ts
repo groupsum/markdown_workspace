@@ -1,5 +1,7 @@
 import { OidcCredential, OidcProviderId } from '../types';
 
+type OidcFlow = 'code' | 'implicit' | 'device';
+
 interface OidcPendingSession {
   projectId: string;
   provider: OidcProviderId;
@@ -9,7 +11,7 @@ interface OidcPendingSession {
   nonce?: string;
   redirectUri: string;
   createdAt: number;
-  flow: 'code' | 'implicit';
+  flow: OidcFlow;
 }
 
 interface OidcCallbackResult {
@@ -28,6 +30,7 @@ export interface OidcProviderAdapter {
   issuer: string;
   authorizeEndpoint: string;
   tokenEndpoint?: string;
+  deviceCodeEndpoint?: string;
   userInfoEndpoint?: string;
   defaultScopes: string[];
   createAuthorizationUrl: (args: {
@@ -36,7 +39,7 @@ export interface OidcProviderAdapter {
     state: string;
     codeChallenge?: string;
     nonce?: string;
-    flow: 'code' | 'implicit';
+    flow: OidcFlow;
   }) => string;
   createMockCredential: (username: string) => OidcCredential;
 }
@@ -68,6 +71,7 @@ const createAdapter = (config: {
   issuer: string;
   authorizeEndpoint: string;
   tokenEndpoint?: string;
+  deviceCodeEndpoint?: string;
   userInfoEndpoint?: string;
   defaultScopes: string[];
 }): OidcProviderAdapter => ({
@@ -113,7 +117,7 @@ const createAdapter = (config: {
  * - Fallback: Implicit (flow='implicit') to avoid token endpoint calls (many providers still allow it),
  *   but it is generally less desirable security-wise.
  *
- * Set VITE_OIDC_FLOW to 'code' or 'implicit'. Default is 'code' so callback query params
+ * Set VITE_OIDC_FLOW to 'code', 'implicit', or 'device'. Default is 'code' so callback query params
  * (`?code=...&state=...`) work out of the box with modern OIDC providers.
  */
 export const oidcAdapters: OidcProviderAdapter[] = [
@@ -123,6 +127,7 @@ export const oidcAdapters: OidcProviderAdapter[] = [
     issuer: 'https://github.com',
     authorizeEndpoint: 'https://github.com/login/oauth/authorize',
     tokenEndpoint: 'https://github.com/login/oauth/access_token',
+    deviceCodeEndpoint: 'https://github.com/login/device/code',
     userInfoEndpoint: 'https://api.github.com/user',
     defaultScopes: ['openid', 'repo', 'read:user']
   }),
@@ -274,21 +279,33 @@ export const isOidcCallbackRoute = () => {
   return window.location.pathname === callbackUrl.pathname;
 };
 
-const getOidcFlow = (): 'code' | 'implicit' => {
+const getOidcFlow = (): OidcFlow => {
   const raw = (import.meta.env.VITE_OIDC_FLOW || '').trim().toLowerCase();
   if (raw === 'code') return 'code';
   if (raw === 'implicit') return 'implicit';
+  if (raw === 'device') return 'device';
   // Default to modern Authorization Code + PKCE for provider compatibility.
   return 'code';
 };
 
-export const beginOidcSignIn = async (args: { projectId: string; provider: OidcProviderId; username: string }) => {
+export const beginOidcSignIn = async (args: { projectId: string; provider: OidcProviderId; username: string }): Promise<OidcCallbackResult> => {
   const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
   if (!clientId) throw new Error('OIDC client id is not configured.');
   const adapter = getOidcAdapter(args.provider);
   if (!adapter) throw new Error('Unsupported OIDC provider selected.');
 
   const flow = getOidcFlow();
+
+  if (flow === 'device') {
+    return runDeviceFlowSignIn({
+      adapter,
+      clientId,
+      projectId: args.projectId,
+      provider: args.provider,
+      username: args.username || 'user'
+    });
+  }
+
   const redirectUri = getOidcRedirectUri();
 
   const state = randomBase64Url(24);
@@ -338,10 +355,11 @@ export const beginOidcSignIn = async (args: { projectId: string; provider: OidcP
 
   if (!popup) {
     window.location.assign(authorizationUrl);
-    return;
+    return { status: 'idle' };
   }
 
   popup.focus();
+  return { status: 'idle' };
 };
 
 const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTokenPayload): Promise<OidcCredential> => {
@@ -392,6 +410,147 @@ const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTo
     expiresAt
   };
 };
+
+
+
+type DeviceCodePayload = {
+  device_code?: string;
+  user_code?: string;
+  verification_uri?: string;
+  verification_uri_complete?: string;
+  expires_in?: number;
+  interval?: number;
+  error?: string;
+  error_description?: string;
+};
+
+const wait = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+async function runDeviceFlowSignIn(args: {
+  adapter: OidcProviderAdapter;
+  clientId: string;
+  projectId: string;
+  provider: OidcProviderId;
+  username: string;
+}): Promise<OidcCallbackResult> {
+  if (!args.adapter.deviceCodeEndpoint) {
+    return {
+      status: 'error',
+      message: `${args.provider.toUpperCase()} device flow is not configured.`
+    };
+  }
+  if (!args.adapter.tokenEndpoint) {
+    return {
+      status: 'error',
+      message: 'OIDC token endpoint is not configured for this provider.'
+    };
+  }
+
+  let devicePayload: DeviceCodePayload;
+  try {
+    const deviceResponse = await fetch(args.adapter.deviceCodeEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        client_id: args.clientId,
+        scope: args.adapter.defaultScopes.join(' ')
+      }).toString(),
+      mode: 'cors',
+      credentials: 'omit'
+    });
+
+    devicePayload = (await parseTokenPayload(deviceResponse)) as DeviceCodePayload;
+  } catch (error) {
+    console.warn('[oidc] Device code request failed', error);
+    return {
+      status: 'error',
+      message: 'OIDC device authorization request failed before reaching provider. Ensure device flow endpoint CORS is enabled for your origin.'
+    };
+  }
+
+  if (!devicePayload.device_code) {
+    const details = devicePayload.error_description || devicePayload.error || 'Provider did not return a device code.';
+    return { status: 'error', message: `OIDC device authorization failed: ${details}` };
+  }
+
+  const verificationUrl = devicePayload.verification_uri_complete || devicePayload.verification_uri;
+  if (!verificationUrl) {
+    return { status: 'error', message: 'OIDC device authorization response is missing verification URL.' };
+  }
+
+  const popup = window.open(verificationUrl, 'oidc-device-verify', 'popup=yes,width=560,height=720,resizable=yes,scrollbars=yes');
+  if (!popup) {
+    window.location.assign(verificationUrl);
+  }
+
+  const pending: OidcPendingSession = {
+    projectId: args.projectId,
+    provider: args.provider,
+    username: args.username,
+    state: randomBase64Url(24),
+    redirectUri: getOidcRedirectUri(),
+    createdAt: Date.now(),
+    flow: 'device'
+  };
+
+  const expiresMs = Math.max(30, devicePayload.expires_in || 900) * 1000;
+  let intervalMs = Math.max(1000, (devicePayload.interval || 5) * 1000);
+  const deadline = Date.now() + expiresMs;
+
+  while (Date.now() < deadline) {
+    let tokenPayload: OidcTokenPayload;
+    try {
+      const tokenResponse = await fetch(args.adapter.tokenEndpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          client_id: args.clientId,
+          device_code: devicePayload.device_code,
+          grant_type: 'urn:ietf:params:oauth:grant-type:device_code'
+        }).toString(),
+        mode: 'cors',
+        credentials: 'omit'
+      });
+      tokenPayload = await parseTokenPayload(tokenResponse);
+    } catch (error) {
+      console.warn('[oidc] Device token polling failed', error);
+      return {
+        status: 'error',
+        message: 'OIDC device token polling failed before reaching provider. Ensure token endpoint CORS is enabled for your origin.'
+      };
+    }
+
+    if (tokenPayload.error === 'authorization_pending') {
+      await wait(intervalMs);
+      continue;
+    }
+    if (tokenPayload.error === 'slow_down') {
+      intervalMs += 5000;
+      await wait(intervalMs);
+      continue;
+    }
+    if (tokenPayload.error) {
+      const details = tokenPayload.error_description || tokenPayload.error;
+      return { status: 'error', message: `OIDC device authorization failed: ${details}` };
+    }
+
+    if (!tokenPayload.access_token) {
+      return { status: 'error', message: 'OIDC token response invalid: Provider did not return an access token.' };
+    }
+
+    const credential = await buildCredential(pending, tokenPayload);
+    await storeOidcCredential(args.projectId, credential);
+    return { status: 'success', projectId: args.projectId, provider: args.provider, credential };
+  }
+
+  return { status: 'error', message: 'OIDC device authorization timed out. Please retry.' };
+}
 
 export const completeOidcSignInFromCallback = async (callbackSearch?: string, callbackHash?: string): Promise<OidcCallbackResult> => {
   if (!callbackSearch && !isOidcCallbackRoute()) return { status: 'idle' };
