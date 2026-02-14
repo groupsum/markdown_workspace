@@ -24,6 +24,7 @@ export interface OidcProviderAdapter {
   issuer: string;
   authorizeEndpoint: string;
   tokenEndpoint: string;
+  userInfoEndpoint?: string;
   defaultScopes: string[];
   createAuthorizationUrl: (args: {
     clientId: string;
@@ -52,6 +53,7 @@ const createAdapter = (config: {
   issuer: string;
   authorizeEndpoint: string;
   tokenEndpoint: string;
+  userInfoEndpoint?: string;
   defaultScopes: string[];
 }): OidcProviderAdapter => ({
   ...config,
@@ -85,6 +87,7 @@ export const oidcAdapters: OidcProviderAdapter[] = [
     issuer: 'https://github.com',
     authorizeEndpoint: 'https://github.com/login/oauth/authorize',
     tokenEndpoint: 'https://github.com/login/oauth/access_token',
+    userInfoEndpoint: 'https://api.github.com/user',
     defaultScopes: ['openid', 'repo', 'read:user']
   }),
   createAdapter({
@@ -93,6 +96,7 @@ export const oidcAdapters: OidcProviderAdapter[] = [
     issuer: 'https://gitlab.com',
     authorizeEndpoint: 'https://gitlab.com/oauth/authorize',
     tokenEndpoint: 'https://gitlab.com/oauth/token',
+    userInfoEndpoint: 'https://gitlab.com/oauth/userinfo',
     defaultScopes: ['openid', 'profile', 'api']
   }),
   createAdapter({
@@ -101,6 +105,7 @@ export const oidcAdapters: OidcProviderAdapter[] = [
     issuer: 'https://gitea.com',
     authorizeEndpoint: 'https://gitea.com/login/oauth/authorize',
     tokenEndpoint: 'https://gitea.com/login/oauth/access_token',
+    userInfoEndpoint: 'https://gitea.com/login/oauth/userinfo',
     defaultScopes: ['openid', 'profile', 'repo']
   })
 ];
@@ -111,6 +116,7 @@ export const getOidcAdapter = (provider: OidcProviderId) => {
 
 const OIDC_CRED_PREFIX = 'lattice-oidc-cred-v1';
 const OIDC_PENDING_KEY = 'lattice-oidc-pending-v1';
+const OIDC_PENDING_TTL_MS = 1000 * 60 * 10;
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
@@ -264,6 +270,10 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
 
   try {
     const pending = JSON.parse(pendingRaw) as OidcPendingSession;
+    if (!pending.createdAt || Date.now() - pending.createdAt > OIDC_PENDING_TTL_MS) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: 'OIDC session expired. Please reconnect.' };
+    }
     if (pending.state !== state) {
       localStorage.removeItem(OIDC_PENDING_KEY);
       return { status: 'error', message: 'OIDC state validation failed.' };
@@ -275,7 +285,95 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
       return { status: 'error', message: 'OIDC provider is not available.' };
     }
 
-    const credential = adapter.createMockCredential(pending.username);
+    const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
+    if (!clientId) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: 'OIDC client id is not configured.' };
+    }
+
+    const tokenBody = new URLSearchParams({
+      grant_type: 'authorization_code',
+      code,
+      redirect_uri: pending.redirectUri,
+      client_id: clientId,
+      code_verifier: pending.verifier
+    });
+
+    const clientSecret = import.meta.env.VITE_OIDC_CLIENT_SECRET?.trim();
+    if (clientSecret) {
+      tokenBody.set('client_secret', clientSecret);
+    }
+
+    const tokenResponse = await fetch(adapter.tokenEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: tokenBody.toString()
+    });
+
+    if (!tokenResponse.ok) {
+      const reason = await tokenResponse.text();
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: `OIDC token exchange failed (${tokenResponse.status}): ${reason || tokenResponse.statusText}` };
+    }
+
+    const tokenPayload = (await tokenResponse.json()) as {
+      access_token?: string;
+      id_token?: string;
+      expires_in?: number;
+      token_type?: string;
+      error?: string;
+      error_description?: string;
+    };
+
+    if (!tokenPayload.access_token) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      const details = tokenPayload.error_description || tokenPayload.error || 'Provider did not return an access token.';
+      return { status: 'error', message: `OIDC token response invalid: ${details}` };
+    }
+
+    const issuedAt = Date.now();
+    const expiresAt = tokenPayload.expires_in ? issuedAt + tokenPayload.expires_in * 1000 : issuedAt + 60 * 60 * 1000;
+    let username = pending.username || 'user';
+    let subject = `${pending.provider}-${username}`;
+
+    if (adapter.userInfoEndpoint) {
+      const userResponse = await fetch(adapter.userInfoEndpoint, {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${tokenPayload.access_token}`
+        }
+      });
+
+      if (userResponse.ok) {
+        const profile = (await userResponse.json()) as Record<string, unknown>;
+        const profileUsername =
+          (typeof profile.preferred_username === 'string' && profile.preferred_username) ||
+          (typeof profile.username === 'string' && profile.username) ||
+          (typeof profile.login === 'string' && profile.login) ||
+          (typeof profile.name === 'string' && profile.name) ||
+          '';
+        const profileSubject =
+          (typeof profile.sub === 'string' && profile.sub) ||
+          (typeof profile.id === 'number' && String(profile.id)) ||
+          (typeof profile.id === 'string' && profile.id) ||
+          '';
+        username = profileUsername || username;
+        subject = profileSubject ? `${pending.provider}-${profileSubject}` : subject;
+      }
+    }
+
+    const credential: OidcCredential = {
+      provider: pending.provider,
+      username,
+      subject,
+      accessToken: tokenPayload.access_token,
+      idToken: tokenPayload.id_token,
+      issuedAt,
+      expiresAt
+    };
     await storeOidcCredential(pending.projectId, credential);
     localStorage.removeItem(OIDC_PENDING_KEY);
 

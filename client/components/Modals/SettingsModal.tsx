@@ -218,6 +218,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         projectId={projectId}
                         gitConfig={gitConfig}
                         onRepoUrlChange={(value) => handleGitChange('repoUrl', value)}
+                        onGitConfigChange={onGitConfigChange}
                       />
                       <label className="flex flex-col gap-2">
                         <span className="text-[10px] font-bold text-[var(--fg-muted)]">BRANCH</span>

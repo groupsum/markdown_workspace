@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { GitConfig } from '../../types';
-import { readOidcCredential } from '../../services/oidc';
+import { clearOidcCredential, readOidcCredential } from '../../services/oidc';
 import { getGitAdapterService } from '../../services/gitAdapter';
 
 interface RepositoryAutocompleteProps {
   projectId: string | null;
   gitConfig: GitConfig;
   onRepoUrlChange: (repoUrl: string) => void;
+  onGitConfigChange: (config: GitConfig) => void;
 }
 
 const normalizeRepoUrl = (value: string, host: string): string => {
@@ -26,7 +27,12 @@ const normalizeRepoUrl = (value: string, host: string): string => {
   return trimmed;
 };
 
-export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange }) => {
+const shouldInvalidateOidcSession = (message: string): boolean => {
+  const normalized = message.toLowerCase();
+  return normalized.includes('reconnect oidc') || normalized.includes('401') || normalized.includes('403') || normalized.includes('unauthorized') || normalized.includes('forbidden');
+};
+
+export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange, onGitConfigChange }) => {
   const gitAdapter = useMemo(() => getGitAdapterService(gitConfig.oidcProvider || 'github'), [gitConfig.oidcProvider]);
   const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl, gitAdapter.repoHost);
 
@@ -43,6 +49,19 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [createPending, setCreatePending] = useState(false);
+
+  const clearStaleSession = async (message: string) => {
+    if (!projectId || !shouldInvalidateOidcSession(message)) {
+      return;
+    }
+
+    clearOidcCredential(projectId);
+    onGitConfigChange({
+      ...gitConfig,
+      oidcConnected: false,
+      oidcSubject: ''
+    });
+  };
 
   useEffect(() => {
     const loadRepos = async () => {
@@ -63,6 +82,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         setRepoUrls(repos.map((repo) => repo.htmlUrl));
       } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to load repositories.';
+        await clearStaleSession(message);
         setError(message);
         setRepoUrls([]);
       } finally {
@@ -70,7 +90,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
       }
     };
 
-    loadRepos();
+    void loadRepos();
   }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitAdapter]);
 
   const filteredSuggestions = useMemo(() => {
@@ -112,6 +132,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
       setRepoUrls((prev) => Array.from(new Set([...prev, created.htmlUrl])).sort((a, b) => a.localeCompare(b)));
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to create repository.';
+      await clearStaleSession(message);
       setError(message);
     } finally {
       setCreatePending(false);
