@@ -35,6 +35,15 @@ export interface OidcProviderAdapter {
   createMockCredential: (username: string) => OidcCredential;
 }
 
+type OidcTokenPayload = {
+  access_token?: string;
+  id_token?: string;
+  expires_in?: number;
+  token_type?: string;
+  error?: string;
+  error_description?: string;
+};
+
 const buildPkceChallenge = async (verifier: string): Promise<string> => {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
   const b64 = btoa(String.fromCharCode(...new Uint8Array(digest)));
@@ -194,6 +203,37 @@ const getOidcRedirectUri = () => {
   return new URL(callbackPath, fqdn).toString();
 };
 
+const parseTokenPayload = async (response: Response): Promise<OidcTokenPayload> => {
+  const contentType = response.headers.get('content-type')?.toLowerCase() || '';
+
+  if (contentType.includes('application/json')) {
+    return (await response.json()) as OidcTokenPayload;
+  }
+
+  const rawBody = await response.text();
+  if (!rawBody) {
+    return {};
+  }
+
+  if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('text/plain')) {
+    const params = new URLSearchParams(rawBody);
+    return {
+      access_token: params.get('access_token') || undefined,
+      id_token: params.get('id_token') || undefined,
+      expires_in: params.get('expires_in') ? Number(params.get('expires_in')) : undefined,
+      token_type: params.get('token_type') || undefined,
+      error: params.get('error') || undefined,
+      error_description: params.get('error_description') || undefined
+    };
+  }
+
+  try {
+    return JSON.parse(rawBody) as OidcTokenPayload;
+  } catch {
+    return {};
+  }
+};
+
 export const isOidcCallbackRoute = () => {
   const callbackUrl = new URL(getOidcRedirectUri());
   return window.location.pathname === callbackUrl.pathname;
@@ -308,7 +348,8 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest'
       },
       body: tokenBody.toString()
     });
@@ -319,14 +360,7 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
       return { status: 'error', message: `OIDC token exchange failed (${tokenResponse.status}): ${reason || tokenResponse.statusText}` };
     }
 
-    const tokenPayload = (await tokenResponse.json()) as {
-      access_token?: string;
-      id_token?: string;
-      expires_in?: number;
-      token_type?: string;
-      error?: string;
-      error_description?: string;
-    };
+    const tokenPayload = await parseTokenPayload(tokenResponse);
 
     if (!tokenPayload.access_token) {
       localStorage.removeItem(OIDC_PENDING_KEY);

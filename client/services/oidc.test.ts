@@ -56,6 +56,43 @@ describe('completeOidcSignInFromCallback', () => {
     expect(localStorage.getItem(pendingKey)).toBeNull();
   });
 
+
+  it('parses urlencoded token responses from providers that do not return json', async () => {
+    window.history.replaceState({}, '', '/auth/callback?state=abc123&code=xyz');
+    localStorage.setItem(
+      pendingKey,
+      JSON.stringify({
+        projectId: 'proj-1',
+        provider: 'github',
+        username: 'alice',
+        state: 'abc123',
+        verifier: 'verifier',
+        redirectUri: 'http://localhost:5173/auth/callback',
+        createdAt: Date.now()
+      })
+    );
+
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        headers: {
+          get: () => 'application/x-www-form-urlencoded; charset=utf-8'
+        },
+        text: async () => 'access_token=url-token&expires_in=3600&id_token=url-id-token&token_type=bearer'
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ id: 42, login: 'alice-gh' })
+      }) as unknown as typeof fetch;
+
+    const result = await completeOidcSignInFromCallback();
+
+    expect(result.status).toBe('success');
+    expect(result.credential?.accessToken).toBe('url-token');
+    expect(result.credential?.idToken).toBe('url-id-token');
+  });
+
   it('exchanges code for access token and returns success', async () => {
     window.history.replaceState({}, '', '/auth/callback?state=abc123&code=xyz');
     localStorage.setItem(
@@ -75,6 +112,9 @@ describe('completeOidcSignInFromCallback', () => {
       .fn()
       .mockResolvedValueOnce({
         ok: true,
+        headers: {
+          get: () => 'application/json; charset=utf-8'
+        },
         json: async () => ({ access_token: 'abc-token', expires_in: 3600, id_token: 'id-token' })
       })
       .mockResolvedValueOnce({
