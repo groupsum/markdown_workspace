@@ -10,6 +10,9 @@ x-common-env: &common-env
   VITE_NPM_PACKAGE_NAME: ${VITE_NPM_PACKAGE_NAME:-@swarmauri/markspace}
   VITE_NPM_PACKAGE_PATH: ${VITE_NPM_PACKAGE_PATH:-swarmauri/markspace}
   VITE_NPM_ESM_CDN_URL: ${VITE_NPM_ESM_CDN_URL:-https://esm.sh/@swarmauri/markspace}
+  VITE_OIDC_CLIENT_ID: ${VITE_OIDC_CLIENT_ID:-}
+  VITE_OIDC_FQDN: ${VITE_OIDC_FQDN:-https://md.bz23.xyz}
+  VITE_OIDC_CALLBACK_PATH: ${VITE_OIDC_CALLBACK_PATH:-/auth/callback}
 
 services:
   client:
@@ -17,7 +20,11 @@ services:
     build:
       context: .
       dockerfile: client/Dockerfile
+      args:
+        <<: *common-env
     restart: unless-stopped
+    environment:
+      <<: *common-env
     networks:
       - dockerwp
   lander:

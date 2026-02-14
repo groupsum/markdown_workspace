@@ -12,6 +12,7 @@ interface SettingsModalProps {
   onThemeChange: (theme: AppTheme) => void;
   gitConfig: GitConfig;
   onGitConfigChange: (config: GitConfig) => void;
+  onOidcSignIn: () => void;
   onExport: () => void;
   pwaState: {
     canInstall: boolean;
@@ -44,6 +45,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onThemeChange,
   gitConfig,
   onGitConfigChange,
+  onOidcSignIn,
   onExport,
   pwaState,
   onPwaInstall,
@@ -208,6 +210,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       <OidcSignInSelector
                         gitConfig={gitConfig}
                         onGitConfigChange={onGitConfigChange}
+                        onOidcSignIn={onOidcSignIn}
                       />
                       <RepositoryAutocomplete
                         gitConfig={gitConfig}
