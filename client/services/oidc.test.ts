@@ -123,6 +123,44 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
     expect(localStorage.getItem(pendingKey)).toBeNull();
   });
 
+
+  it('completes code flow when provider returns code and state query params', async () => {
+    window.history.replaceState({}, '', '/auth/callback?code=abc-code&state=abc123');
+    localStorage.setItem(
+      pendingKey,
+      JSON.stringify({
+        projectId: 'proj-1',
+        provider: 'github',
+        username: 'alice',
+        state: 'abc123',
+        verifier: 'pkce-verifier',
+        redirectUri: 'http://localhost:5173/auth/callback',
+        createdAt: Date.now(),
+        flow: 'code'
+      })
+    );
+
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        headers: { get: () => 'application/json' },
+        json: async () => ({ access_token: 'code-token', id_token: 'id-token', expires_in: 3600 })
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ sub: '42', preferred_username: 'alice-gh' })
+      }) as unknown as typeof fetch;
+
+    const result = await completeOidcSignInFromCallback();
+
+    expect(result.status).toBe('success');
+    expect(result.credential?.accessToken).toBe('code-token');
+    expect(result.credential?.username).toBe('alice-gh');
+    expect(result.credential?.subject).toBe('github-42');
+    expect(localStorage.getItem(pendingKey)).toBeNull();
+  });
+
   it('posts callback params to opener when completing in popup window', async () => {
     window.history.replaceState({}, '', '/auth/callback#access_token=abc-token&state=abc123');
     localStorage.setItem(
