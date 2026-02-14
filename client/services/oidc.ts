@@ -246,6 +246,13 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
 
   const code = params.get('code');
   const state = params.get('state');
+
+  // Callback routes can be loaded directly (bookmark/refresh) without OAuth params.
+  // Treat this as idle to avoid repeatedly surfacing a warning toast.
+  if (!oauthError && !code && !state) {
+    return { status: 'idle' };
+  }
+
   if (!code || !state) {
     return { status: 'error', message: 'OIDC callback is missing code or state.' };
   }

@@ -1,5 +1,5 @@
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { beginOidcSignIn, completeOidcSignInFromCallback } from '../services/oidc';
 import { THEMES } from '../data/themes';
 import { useToast } from './useToast';
@@ -59,8 +59,13 @@ export const useApp = () => {
   const activeFile = activeTab ? fileSys.files.find(f => f.id === activeTab.fileId) || null : null;
   const currentProject = proj.projects.find(p => p.id === proj.activeProjectId);
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
+  const oidcCallbackHandledRef = useRef(false);
 
   useEffect(() => {
+    if (oidcCallbackHandledRef.current) {
+      return;
+    }
+    oidcCallbackHandledRef.current = true;
     const completeOidc = async () => {
       const result = await completeOidcSignInFromCallback();
       if (result.status === 'success' && result.projectId && result.credential) {
