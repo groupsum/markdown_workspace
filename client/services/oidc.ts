@@ -344,15 +344,25 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
       tokenBody.set('client_secret', clientSecret);
     }
 
-    const tokenResponse = await fetch(adapter.tokenEndpoint, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      body: tokenBody.toString()
-    });
+    let tokenResponse: Response;
+    try {
+      tokenResponse = await fetch(adapter.tokenEndpoint, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: tokenBody.toString()
+      });
+    } catch (error) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      console.warn('[oidc] Token exchange request failed', error);
+      return {
+        status: 'error',
+        message:
+          'OIDC token exchange failed before reaching provider. This is usually caused by browser CORS restrictions. Configure a server-side OIDC proxy and retry.'
+      };
+    }
 
     if (!tokenResponse.ok) {
       const reason = await tokenResponse.text();
