@@ -20,7 +20,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ messages, onDism
           className={`toast-message ${msg.type}`}
         >
           <span>{msg.message}</span>
-          <button onClick={() => onDismiss(msg.id)} className="toast-close-btn">×</button>
+          <button type="button" aria-label="Dismiss toast" onClick={() => onDismiss(msg.id)} className="toast-close-btn">×</button>
         </div>
       ))}
     </div>
