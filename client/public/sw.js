@@ -126,6 +126,17 @@ const getActiveCacheName = () => {
   return CURRENT_CACHE;
 };
 
+const isSuccessfulResponse = (response) => Boolean(response) && response.ok;
+
+const fetchAndCache = async ({ request, cache, cacheKey = request, allowOpaque = false }) => {
+  const response = await fetch(request);
+  if (isSuccessfulResponse(response) || (allowOpaque && response.type === 'opaque')) {
+    cache.put(cacheKey, response.clone());
+    return response;
+  }
+  return undefined;
+};
+
 const notifyClients = async (payload) => {
   const clients = await self.clients.matchAll({ type: 'window' });
   clients.forEach((client) => client.postMessage(payload));
@@ -152,6 +163,13 @@ self.addEventListener('install', (event) => {
   );
 });
 
+const CHECK_FOR_UPDATES_TAG = 'check-for-updates';
+
+const runUpdateCheck = async () => {
+  const clients = await self.clients.matchAll({ type: 'window' });
+  clients.forEach((client) => client.postMessage({ type: 'PWA_BACKGROUND_UPDATE_CHECK' }));
+};
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
@@ -163,6 +181,15 @@ self.addEventListener('activate', (event) => {
       }
       await Promise.all(keys.filter((key) => !keep.has(key)).map((key) => caches.delete(key)));
       await self.clients.claim();
+      if ('periodicSync' in self.registration) {
+        try {
+          await self.registration.periodicSync.register(CHECK_FOR_UPDATES_TAG, {
+            minInterval: 1000 * 60 * 30,
+          });
+        } catch {
+          // Ignore unsupported permission states.
+        }
+      }
       if (failureTimer) {
         clearTimeout(failureTimer);
       }
@@ -177,6 +204,20 @@ self.addEventListener('activate', (event) => {
       }
     })()
   );
+});
+
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag !== CHECK_FOR_UPDATES_TAG) {
+    return;
+  }
+  event.waitUntil(runUpdateCheck());
+});
+
+self.addEventListener('sync', (event) => {
+  if (event.tag !== CHECK_FOR_UPDATES_TAG) {
+    return;
+  }
+  event.waitUntil(runUpdateCheck());
 });
 
 self.addEventListener('message', (event) => {
@@ -213,9 +254,9 @@ self.addEventListener('fetch', (event) => {
       (async () => {
         const cache = await caches.open(getActiveCacheName());
         try {
-          const response = await fetch(event.request);
-          if (response && response.status === 200) {
-            cache.put(event.request, response.clone());
+          const response = await fetchAndCache({ request: event.request, cache, allowOpaque: true });
+          if (!response) {
+            throw new Error('Network responded without a cacheable stylesheet response');
           }
           return response;
         } catch (error) {
@@ -240,9 +281,15 @@ self.addEventListener('fetch', (event) => {
       (async () => {
         const activeCacheName = getActiveCacheName();
         try {
-          const response = await fetch(event.request);
           const cache = await caches.open(activeCacheName);
-          cache.put(event.request, response.clone());
+          const response = await fetchAndCache({
+            request: event.request,
+            cache,
+            cacheKey: '/index.html',
+          });
+          if (!response) {
+            throw new Error('Navigation response was not successful');
+          }
           return response;
         } catch (error) {
           const cache = await caches.open(activeCacheName);
@@ -266,14 +313,7 @@ self.addEventListener('fetch', (event) => {
       const cache = await caches.open(getActiveCacheName());
       const cachedResponse = await cache.match(event.request);
 
-      const fetchPromise = fetch(event.request)
-        .then((response) => {
-          if (response && response.status === 200) {
-            cache.put(event.request, response.clone());
-          }
-          return response;
-        })
-        .catch(() => undefined);
+      const fetchPromise = fetchAndCache({ request: event.request, cache, allowOpaque: true }).catch(() => undefined);
 
       if (cachedResponse) {
         event.waitUntil(fetchPromise);
