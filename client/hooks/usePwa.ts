@@ -130,6 +130,12 @@ export const usePwa = () => {
     navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(APP_VERSION)}`).then((registration) => {
       registrationRef.current = registration;
 
+      if ('sync' in registration) {
+        (registration as ServiceWorkerRegistration & { sync?: { register: (tag: string) => Promise<void> } }).sync
+          ?.register('check-for-updates')
+          .catch(() => undefined);
+      }
+
       if (registration.waiting) {
         const waitingVersion = getWorkerVersion(registration.waiting);
         if (!waitingVersion || !failedVersions.includes(waitingVersion)) {
@@ -187,6 +193,27 @@ export const usePwa = () => {
     registration.waiting.postMessage({ type: 'SKIP_WAITING' });
   }, [autoUpdateEnabled, updateAvailable, failedVersions]);
 
+
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) {
+      return;
+    }
+
+    const handleMessage = (event: MessageEvent) => {
+      const { data } = event;
+      if (!data || typeof data !== 'object') {
+        return;
+      }
+      if (data.type === 'PWA_BACKGROUND_UPDATE_CHECK') {
+        registrationRef.current?.update();
+      }
+    };
+
+    navigator.serviceWorker.addEventListener('message', handleMessage);
+    return () => {
+      navigator.serviceWorker.removeEventListener('message', handleMessage);
+    };
+  }, []);
   useEffect(() => {
     if (!('serviceWorker' in navigator)) {
       return;
