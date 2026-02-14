@@ -5,9 +5,11 @@ interface OidcPendingSession {
   provider: OidcProviderId;
   username: string;
   state: string;
-  verifier: string;
+  verifier?: string;
+  nonce?: string;
   redirectUri: string;
   createdAt: number;
+  flow: 'code' | 'implicit';
 }
 
 interface OidcCallbackResult {
@@ -25,14 +27,16 @@ export interface OidcProviderAdapter {
   label: string;
   issuer: string;
   authorizeEndpoint: string;
-  tokenEndpoint: string;
+  tokenEndpoint?: string;
   userInfoEndpoint?: string;
   defaultScopes: string[];
   createAuthorizationUrl: (args: {
     clientId: string;
     redirectUri: string;
     state: string;
-    codeChallenge: string;
+    codeChallenge?: string;
+    nonce?: string;
+    flow: 'code' | 'implicit';
   }) => string;
   createMockCredential: (username: string) => OidcCredential;
 }
@@ -63,21 +67,31 @@ const createAdapter = (config: {
   label: string;
   issuer: string;
   authorizeEndpoint: string;
-  tokenEndpoint: string;
+  tokenEndpoint?: string;
   userInfoEndpoint?: string;
   defaultScopes: string[];
 }): OidcProviderAdapter => ({
   ...config,
-  createAuthorizationUrl: ({ clientId, redirectUri, state, codeChallenge }) => {
+  createAuthorizationUrl: ({ clientId, redirectUri, state, codeChallenge, nonce, flow }) => {
+    const responseType = flow === 'implicit' ? 'token id_token' : 'code';
+
     const query = new URLSearchParams({
-      response_type: 'code',
+      response_type: responseType,
       client_id: clientId,
       redirect_uri: redirectUri,
       scope: config.defaultScopes.join(' '),
-      state,
-      code_challenge: codeChallenge,
-      code_challenge_method: 'S256'
+      state
     });
+
+    // OIDC implicit/hybrid requires a nonce; keep it even for code flow to be safe.
+    if (nonce) query.set('nonce', nonce);
+
+    if (flow === 'code') {
+      if (!codeChallenge) throw new Error('PKCE code challenge is required for code flow.');
+      query.set('code_challenge', codeChallenge);
+      query.set('code_challenge_method', 'S256');
+    }
+
     return `${config.authorizeEndpoint}?${query.toString()}`;
   },
   createMockCredential: (username) => ({
@@ -91,6 +105,16 @@ const createAdapter = (config: {
   })
 });
 
+/**
+ * IMPORTANT: For browser-only deployments (no proxy/server-side exchange), you must use
+ * an OIDC provider configured for SPAs (public client) and the provider must support the chosen flow.
+ *
+ * - Preferred: Authorization Code + PKCE (flow='code') *if* the provider's token endpoint allows CORS.
+ * - Fallback: Implicit (flow='implicit') to avoid token endpoint calls (many providers still allow it),
+ *   but it is generally less desirable security-wise.
+ *
+ * Set VITE_OIDC_FLOW to 'code' or 'implicit'. Default is 'implicit' to satisfy strict browser-only mode.
+ */
 export const oidcAdapters: OidcProviderAdapter[] = [
   createAdapter({
     id: 'github',
@@ -152,11 +176,7 @@ const deriveLocalKey = async (): Promise<CryptoKey> => {
 export const storeOidcCredential = async (projectId: string, credential: OidcCredential): Promise<void> => {
   const key = await deriveLocalKey();
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const ciphertext = await crypto.subtle.encrypt(
-    { name: 'AES-GCM', iv },
-    key,
-    encoder.encode(JSON.stringify(credential))
-  );
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoder.encode(JSON.stringify(credential)));
   const payload = {
     iv: Array.from(iv),
     data: Array.from(new Uint8Array(ciphertext))
@@ -213,9 +233,7 @@ const parseTokenPayload = async (response: Response): Promise<OidcTokenPayload> 
   }
 
   const rawBody = await response.text();
-  if (!rawBody) {
-    return {};
-  }
+  if (!rawBody) return {};
 
   if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('text/plain')) {
     const params = new URLSearchParams(rawBody);
@@ -236,36 +254,64 @@ const parseTokenPayload = async (response: Response): Promise<OidcTokenPayload> 
   }
 };
 
+const parseImplicitFragment = (hash: string): OidcTokenPayload & { state?: string } => {
+  const fragment = hash.startsWith('#') ? hash.slice(1) : hash;
+  const params = new URLSearchParams(fragment);
+  return {
+    access_token: params.get('access_token') || undefined,
+    id_token: params.get('id_token') || undefined,
+    expires_in: params.get('expires_in') ? Number(params.get('expires_in')) : undefined,
+    token_type: params.get('token_type') || undefined,
+    error: params.get('error') || undefined,
+    error_description: params.get('error_description') || undefined,
+    state: params.get('state') || undefined
+  };
+};
+
 export const isOidcCallbackRoute = () => {
   const callbackUrl = new URL(getOidcRedirectUri());
   return window.location.pathname === callbackUrl.pathname;
 };
 
-export const beginOidcSignIn = async (args: {
-  projectId: string;
-  provider: OidcProviderId;
-  username: string;
-}) => {
-  const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
-  if (!clientId) {
-    throw new Error('OIDC client id is not configured.');
-  }
-  const adapter = getOidcAdapter(args.provider);
-  if (!adapter) {
-    throw new Error('Unsupported OIDC provider selected.');
-  }
+const getOidcFlow = (): 'code' | 'implicit' => {
+  const raw = (import.meta.env.VITE_OIDC_FLOW || '').trim().toLowerCase();
+  if (raw === 'code') return 'code';
+  if (raw === 'implicit') return 'implicit';
+  // Strict browser-only default.
+  return 'implicit';
+};
 
-  const session = await createPkceSession();
+export const beginOidcSignIn = async (args: { projectId: string; provider: OidcProviderId; username: string }) => {
+  const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
+  if (!clientId) throw new Error('OIDC client id is not configured.');
+  const adapter = getOidcAdapter(args.provider);
+  if (!adapter) throw new Error('Unsupported OIDC provider selected.');
+
+  const flow = getOidcFlow();
   const redirectUri = getOidcRedirectUri();
+
+  const state = randomBase64Url(24);
+  const nonce = randomBase64Url(24);
+
+  let verifier: string | undefined;
+  let challenge: string | undefined;
+
+  if (flow === 'code') {
+    const pkce = await createPkceSession();
+    verifier = pkce.verifier;
+    challenge = pkce.challenge;
+  }
 
   const pendingSession: OidcPendingSession = {
     projectId: args.projectId,
     provider: args.provider,
     username: args.username || 'user',
-    state: session.state,
-    verifier: session.verifier,
+    state,
+    verifier,
+    nonce,
     redirectUri,
-    createdAt: Date.now()
+    createdAt: Date.now(),
+    flow
   };
 
   localStorage.setItem(OIDC_PENDING_KEY, JSON.stringify(pendingSession));
@@ -273,8 +319,10 @@ export const beginOidcSignIn = async (args: {
   const authorizationUrl = adapter.createAuthorizationUrl({
     clientId,
     redirectUri,
-    state: session.state,
-    codeChallenge: session.challenge
+    state,
+    codeChallenge: challenge,
+    nonce,
+    flow
   });
 
   const popupWidth = 560;
@@ -295,119 +343,16 @@ export const beginOidcSignIn = async (args: {
   popup.focus();
 };
 
-export const completeOidcSignInFromCallback = async (callbackSearch?: string): Promise<OidcCallbackResult> => {
-  if (!callbackSearch && !isOidcCallbackRoute()) {
-    return { status: 'idle' };
-  }
+const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTokenPayload): Promise<OidcCredential> => {
+  const issuedAt = Date.now();
+  const expiresAt = tokenPayload.expires_in ? issuedAt + tokenPayload.expires_in * 1000 : issuedAt + 60 * 60 * 1000;
 
-  const params = new URLSearchParams(callbackSearch ?? window.location.search);
-  const oauthError = params.get('error');
-  if (oauthError) {
-    localStorage.removeItem(OIDC_PENDING_KEY);
-    return { status: 'error', message: `OIDC sign-in failed: ${oauthError}` };
-  }
+  const adapter = getOidcAdapter(pending.provider);
+  let username = pending.username || 'user';
+  let subject = `${pending.provider}-${username}`;
 
-  const code = params.get('code');
-  const state = params.get('state');
-
-  // Callback routes can be loaded directly (bookmark/refresh) without OAuth params.
-  // Treat this as idle to avoid repeatedly surfacing a warning toast.
-  if (!oauthError && !code && !state) {
-    return { status: 'idle' };
-  }
-
-  if (!code || !state) {
-    return { status: 'error', message: 'OIDC callback is missing code or state.' };
-  }
-
-  if (!callbackSearch && window.opener && window.opener !== window) {
-    window.opener.postMessage(
-      {
-        type: OIDC_POPUP_EVENT_TYPE,
-        search: window.location.search
-      },
-      window.location.origin
-    );
-    window.close();
-    return { status: 'idle' };
-  }
-
-  const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
-  if (!pendingRaw) {
-    return { status: 'error', message: 'OIDC session could not be restored.' };
-  }
-
-  try {
-    const pending = JSON.parse(pendingRaw) as OidcPendingSession;
-    if (!pending.createdAt || Date.now() - pending.createdAt > OIDC_PENDING_TTL_MS) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      return { status: 'error', message: 'OIDC session expired. Please reconnect.' };
-    }
-    if (pending.state !== state) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      return { status: 'error', message: 'OIDC state validation failed.' };
-    }
-
-    const adapter = getOidcAdapter(pending.provider);
-    if (!adapter) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      return { status: 'error', message: 'OIDC provider is not available.' };
-    }
-
-    const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
-    if (!clientId) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      return { status: 'error', message: 'OIDC client id is not configured.' };
-    }
-
-    const tokenBody = new URLSearchParams({
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: pending.redirectUri,
-      client_id: clientId,
-      code_verifier: pending.verifier
-    });
-
-    let tokenResponse: Response;
+  if (adapter?.userInfoEndpoint && tokenPayload.access_token) {
     try {
-      tokenResponse = await fetch(adapter.tokenEndpoint, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: tokenBody.toString()
-      });
-    } catch (error) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      console.warn('[oidc] Token exchange request failed', error);
-      return {
-        status: 'error',
-        message:
-          'OIDC token exchange failed before reaching provider. This is usually caused by browser CORS restrictions. For browser-only deployments, use a public OAuth/OIDC client with PKCE on a provider that allows token exchange from browser origins.'
-      };
-    }
-
-    if (!tokenResponse.ok) {
-      const reason = await tokenResponse.text();
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      return { status: 'error', message: `OIDC token exchange failed (${tokenResponse.status}): ${reason || tokenResponse.statusText}` };
-    }
-
-    const tokenPayload = await parseTokenPayload(tokenResponse);
-
-    if (!tokenPayload.access_token) {
-      localStorage.removeItem(OIDC_PENDING_KEY);
-      const details = tokenPayload.error_description || tokenPayload.error || 'Provider did not return an access token.';
-      return { status: 'error', message: `OIDC token response invalid: ${details}` };
-    }
-
-    const issuedAt = Date.now();
-    const expiresAt = tokenPayload.expires_in ? issuedAt + tokenPayload.expires_in * 1000 : issuedAt + 60 * 60 * 1000;
-    let username = pending.username || 'user';
-    let subject = `${pending.provider}-${username}`;
-
-    if (adapter.userInfoEndpoint) {
       const userResponse = await fetch(adapter.userInfoEndpoint, {
         headers: {
           Accept: 'application/json',
@@ -431,31 +376,165 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string): P
         username = profileUsername || username;
         subject = profileSubject ? `${pending.provider}-${profileSubject}` : subject;
       }
+    } catch (error) {
+      console.warn('[oidc] userinfo request failed', error);
+    }
+  }
+
+  return {
+    provider: pending.provider,
+    username,
+    subject,
+    accessToken: tokenPayload.access_token || '',
+    idToken: tokenPayload.id_token,
+    issuedAt,
+    expiresAt
+  };
+};
+
+export const completeOidcSignInFromCallback = async (callbackSearch?: string, callbackHash?: string): Promise<OidcCallbackResult> => {
+  if (!callbackSearch && !isOidcCallbackRoute()) return { status: 'idle' };
+
+  const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
+  if (!pendingRaw) return { status: 'error', message: 'OIDC session could not be restored.' };
+
+  let pending: OidcPendingSession;
+  try {
+    pending = JSON.parse(pendingRaw) as OidcPendingSession;
+  } catch {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC session could not be restored.' };
+  }
+
+  if (!pending.createdAt || Date.now() - pending.createdAt > OIDC_PENDING_TTL_MS) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC session expired. Please reconnect.' };
+  }
+
+  // If invoked in popup without forwarded params, forward search+hash to opener.
+  if (!callbackSearch && window.opener && window.opener !== window) {
+    window.opener.postMessage(
+      {
+        type: OIDC_POPUP_EVENT_TYPE,
+        search: window.location.search,
+        hash: window.location.hash
+      },
+      window.location.origin
+    );
+    window.close();
+    return { status: 'idle' };
+  }
+
+  // Prefer forwarded params when parent processes popup callback.
+  const search = callbackSearch ?? window.location.search;
+  const hash = callbackHash ?? window.location.hash;
+  const params = new URLSearchParams(search);
+
+  const oauthError = params.get('error') || parseImplicitFragment(hash).error;
+  if (oauthError) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: `OIDC sign-in failed: ${oauthError}` };
+  }
+
+  // Implicit flow: tokens are delivered in URL fragment.
+  if (pending.flow === 'implicit') {
+    const fragment = parseImplicitFragment(hash);
+    const state = fragment.state;
+    if (!state || state !== pending.state) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: 'OIDC state validation failed.' };
+    }
+    if (!fragment.access_token) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      const details = fragment.error_description || fragment.error || 'Provider did not return an access token.';
+      return { status: 'error', message: `OIDC implicit response invalid: ${details}` };
     }
 
-    const credential: OidcCredential = {
-      provider: pending.provider,
-      username,
-      subject,
-      accessToken: tokenPayload.access_token,
-      idToken: tokenPayload.id_token,
-      issuedAt,
-      expiresAt
-    };
+    const credential = await buildCredential(pending, fragment);
     await storeOidcCredential(pending.projectId, credential);
     localStorage.removeItem(OIDC_PENDING_KEY);
 
-    return {
-      status: 'success',
-      projectId: pending.projectId,
-      provider: pending.provider,
-      credential
-    };
-  } catch (error) {
-    console.warn('[oidc] Failed to parse callback session', error);
-    localStorage.removeItem(OIDC_PENDING_KEY);
-    return { status: 'error', message: 'OIDC callback parsing failed.' };
+    // Clear hash to avoid leaking tokens via copy/paste or referrers.
+    window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+
+    return { status: 'success', projectId: pending.projectId, provider: pending.provider, credential };
   }
+
+  // Code + PKCE flow.
+  const code = params.get('code');
+  const state = params.get('state');
+
+  // Callback route can be loaded without OAuth params (bookmark/refresh).
+  if (!oauthError && !code && !state) return { status: 'idle' };
+
+  if (!code || !state) return { status: 'error', message: 'OIDC callback is missing code or state.' };
+
+  if (pending.state !== state) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC state validation failed.' };
+  }
+
+  const adapter = getOidcAdapter(pending.provider);
+  if (!adapter?.tokenEndpoint) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC token endpoint is not configured for this provider.' };
+  }
+
+  const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
+  if (!clientId) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC client id is not configured.' };
+  }
+
+  const tokenBody = new URLSearchParams({
+    grant_type: 'authorization_code',
+    code,
+    redirect_uri: pending.redirectUri,
+    client_id: clientId,
+    code_verifier: pending.verifier || ''
+  });
+
+  let tokenResponse: Response;
+  try {
+    tokenResponse = await fetch(adapter.tokenEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: tokenBody.toString(),
+      mode: 'cors',
+      credentials: 'omit'
+    });
+  } catch (error) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    console.warn('[oidc] Token exchange request failed', error);
+    return {
+      status: 'error',
+      message:
+        "OIDC token exchange failed before reaching provider. For strict browser-only deployments, either (1) use an OIDC provider whose token endpoint allows CORS for your origin, or (2) set VITE_OIDC_FLOW='implicit' to avoid token endpoint calls."
+    };
+  }
+
+  if (!tokenResponse.ok) {
+    const reason = await tokenResponse.text();
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: `OIDC token exchange failed (${tokenResponse.status}): ${reason || tokenResponse.statusText}` };
+  }
+
+  const tokenPayload = await parseTokenPayload(tokenResponse);
+
+  if (!tokenPayload.access_token) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    const details = tokenPayload.error_description || tokenPayload.error || 'Provider did not return an access token.';
+    return { status: 'error', message: `OIDC token response invalid: ${details}` };
+  }
+
+  const credential = await buildCredential(pending, tokenPayload);
+  await storeOidcCredential(pending.projectId, credential);
+  localStorage.removeItem(OIDC_PENDING_KEY);
+
+  return { status: 'success', projectId: pending.projectId, provider: pending.provider, credential };
 };
 
 export const getOidcPopupEventType = () => OIDC_POPUP_EVENT_TYPE;

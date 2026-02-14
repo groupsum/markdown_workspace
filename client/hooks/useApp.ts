@@ -113,10 +113,11 @@ export const useApp = () => {
         return;
       }
       const search = (event.data as { search?: string }).search;
-      if (!search || typeof search !== 'string') {
+      const hash = (event.data as { hash?: string }).hash;
+      if ((typeof search !== 'string' || !search) && (typeof hash !== 'string' || !hash)) {
         return;
       }
-      void completeOidcSignInFromCallback(search).then(applyOidcResult);
+      void completeOidcSignInFromCallback(typeof search === 'string' ? search : undefined, typeof hash === 'string' ? hash : undefined).then(applyOidcResult);
     };
 
     window.addEventListener('message', onMessage);
