@@ -231,6 +231,7 @@ const App: React.FC = () => {
         onClose={() => actions.setShowSettings(false)}
         currentTheme={state.theme}
         onThemeChange={actions.setTheme}
+        projectId={state.activeProjectId}
         gitConfig={actions.getActiveGitConfig()}
         onGitConfigChange={actions.handleGitConfigUpdate}
         onOidcSignIn={actions.handleOidcSignIn}

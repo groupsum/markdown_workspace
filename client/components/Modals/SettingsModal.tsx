@@ -10,6 +10,7 @@ interface SettingsModalProps {
   onClose: () => void;
   currentTheme: AppTheme;
   onThemeChange: (theme: AppTheme) => void;
+  projectId: string | null;
   gitConfig: GitConfig;
   onGitConfigChange: (config: GitConfig) => void;
   onOidcSignIn: () => void;
@@ -43,6 +44,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose, 
   currentTheme,
   onThemeChange,
+  projectId,
   gitConfig,
   onGitConfigChange,
   onOidcSignIn,
@@ -213,6 +215,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         onOidcSignIn={onOidcSignIn}
                       />
                       <RepositoryAutocomplete
+                        projectId={projectId}
                         gitConfig={gitConfig}
                         onRepoUrlChange={(value) => handleGitChange('repoUrl', value)}
                       />

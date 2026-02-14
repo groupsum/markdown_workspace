@@ -1,24 +1,126 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GitConfig } from '../../types';
+import { readOidcCredential } from '../../services/oidc';
+import { createGithubRepo, listGithubRepos } from '../../services/github';
 
 interface RepositoryAutocompleteProps {
+  projectId: string | null;
   gitConfig: GitConfig;
   onRepoUrlChange: (repoUrl: string) => void;
 }
 
-const providerBase: Record<string, string> = {
-  github: 'https://github.com',
-  gitlab: 'https://gitlab.com',
-  gitea: 'https://gitea.com'
+const normalizeRepoUrl = (value: string): string => {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  if (trimmed.startsWith('https://github.com/')) {
+    return trimmed.replace(/\.git$/, '');
+  }
+
+  if (/^[\w.-]+\/[\w.-]+$/.test(trimmed)) {
+    return `https://github.com/${trimmed}`;
+  }
+
+  return trimmed;
 };
 
-export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ gitConfig, onRepoUrlChange }) => {
-  const suggestions = useMemo(() => {
-    const base = gitConfig.oidcProvider ? providerBase[gitConfig.oidcProvider] : 'https://github.com';
-    const user = gitConfig.username || 'user';
-    const templates = ['repo', 'docs', 'playground', 'markdown-notes'];
-    return templates.map((name) => `${base}/${user}/${name}`);
-  }, [gitConfig.oidcProvider, gitConfig.username]);
+const getRepoNameFromValue = (value: string): string => {
+  const normalized = normalizeRepoUrl(value);
+  if (!normalized) {
+    return '';
+  }
+  const chunks = normalized.split('/').filter(Boolean);
+  return chunks.at(-1)?.toLowerCase() || '';
+};
+
+export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange }) => {
+  const [repoUrls, setRepoUrls] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [createPending, setCreatePending] = useState(false);
+
+  useEffect(() => {
+    const loadRepos = async () => {
+      if (!projectId || gitConfig.oidcProvider !== 'github' || !gitConfig.oidcConnected) {
+        setRepoUrls([]);
+        setError('');
+        return;
+      }
+
+      setLoading(true);
+      setError('');
+      try {
+        const credential = await readOidcCredential(projectId);
+        if (!credential?.accessToken) {
+          throw new Error('Connect OIDC to load repositories.');
+        }
+        const repos = await listGithubRepos(credential.accessToken);
+        setRepoUrls(repos.map((repo) => repo.html_url));
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Failed to load repositories.';
+        setError(message);
+        setRepoUrls([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRepos();
+  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected]);
+
+  const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl);
+
+  const filteredSuggestions = useMemo(() => {
+    const probe = normalizedInput.toLowerCase();
+    if (!probe) {
+      return repoUrls;
+    }
+    return repoUrls.filter((repo) => repo.toLowerCase().includes(probe));
+  }, [repoUrls, normalizedInput]);
+
+  const repoExists = useMemo(
+    () => repoUrls.some((repo) => repo.toLowerCase() === normalizedInput.toLowerCase()),
+    [repoUrls, normalizedInput]
+  );
+
+  const canCreateRepo =
+    gitConfig.oidcProvider === 'github' &&
+    gitConfig.oidcConnected &&
+    Boolean(projectId) &&
+    !repoExists &&
+    Boolean(getRepoNameFromValue(gitConfig.repoUrl));
+
+  const handleCreatePrivateRepo = async () => {
+    if (!projectId) {
+      return;
+    }
+
+    const repoName = getRepoNameFromValue(gitConfig.repoUrl);
+    if (!repoName) {
+      return;
+    }
+
+    setCreatePending(true);
+    setError('');
+
+    try {
+      const credential = await readOidcCredential(projectId);
+      if (!credential?.accessToken) {
+        throw new Error('Connect OIDC to create repositories.');
+      }
+
+      const created = await createGithubRepo(credential.accessToken, repoName);
+      onRepoUrlChange(created.html_url);
+      setRepoUrls((prev) => Array.from(new Set([...prev, created.html_url])).sort((a, b) => a.localeCompare(b)));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to create repository.';
+      setError(message);
+    } finally {
+      setCreatePending(false);
+    }
+  };
 
   return (
     <label className="flex flex-col gap-2">
@@ -28,13 +130,25 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         className="modal-input !text-xs !py-3"
         value={gitConfig.repoUrl}
         onChange={(e) => onRepoUrlChange(e.target.value)}
-        placeholder="https://provider/owner/repo"
+        placeholder="https://github.com/owner/repo"
       />
       <datalist id="repo-autocomplete">
-        {suggestions.map((repo) => (
+        {filteredSuggestions.map((repo) => (
           <option key={repo} value={repo} />
         ))}
       </datalist>
+      {loading && <span className="text-[10px] text-[var(--fg-muted)]">LOADING_REPOSITORIES…</span>}
+      {error && <span className="text-[10px] text-[var(--danger)]">{error.toUpperCase()}</span>}
+      {canCreateRepo && (
+        <button
+          type="button"
+          className="modal-btn modal-btn-primary"
+          onClick={handleCreatePrivateRepo}
+          disabled={createPending}
+        >
+          {createPending ? 'CREATING_PRIVATE_REPO…' : 'CREATE_PRIVATE_REPO'}
+        </button>
+      )}
     </label>
   );
 };
