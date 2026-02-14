@@ -233,6 +233,7 @@ const App: React.FC = () => {
         onThemeChange={actions.setTheme}
         gitConfig={actions.getActiveGitConfig()}
         onGitConfigChange={actions.handleGitConfigUpdate}
+        onOidcSignIn={actions.handleOidcSignIn}
         onExport={actions.exportData}
         pwaState={pwaState}
         onPwaInstall={pwaActions.promptInstall}

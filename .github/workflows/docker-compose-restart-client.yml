@@ -34,4 +34,8 @@ jobs:
         run: docker system prune -af
 
       - name: Restart client container
+        env:
+          VITE_OIDC_CLIENT_ID: ${{ secrets.VITE_OIDC_CLIENT_ID }}
+          VITE_OIDC_FQDN: ${{ vars.VITE_OIDC_FQDN || 'https://md.bz23.xyz' }}
+          VITE_OIDC_CALLBACK_PATH: ${{ vars.VITE_OIDC_CALLBACK_PATH || '/auth/callback' }}
         run: docker-compose up -d --build --force-recreate --no-deps client

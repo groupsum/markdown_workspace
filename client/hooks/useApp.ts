@@ -1,5 +1,6 @@
 
 import { useEffect, useCallback } from 'react';
+import { beginOidcSignIn, completeOidcSignInFromCallback } from '../services/oidc';
 import { THEMES } from '../data/themes';
 import { useToast } from './useToast';
 import { useInputModal } from './useInputModal';
@@ -58,6 +59,37 @@ export const useApp = () => {
   const activeFile = activeTab ? fileSys.files.find(f => f.id === activeTab.fileId) || null : null;
   const currentProject = proj.projects.find(p => p.id === proj.activeProjectId);
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
+
+  useEffect(() => {
+    const completeOidc = async () => {
+      const result = await completeOidcSignInFromCallback();
+      if (result.status === 'success' && result.projectId && result.credential) {
+        const targetProject = proj.projects.find((project) => project.id === result.projectId);
+        if (targetProject) {
+          const updatedProject = {
+            ...targetProject,
+            gitConfig: {
+              ...targetProject.gitConfig,
+              username: result.credential.username,
+              oidcProvider: result.provider || targetProject.gitConfig.oidcProvider || 'github',
+              oidcConnected: true,
+              oidcSubject: result.credential.subject
+            }
+          };
+          await proj.updateGitConfig(updatedProject.gitConfig);
+          addToast(`OIDC SIGN-IN SUCCESS (${updatedProject.gitConfig.oidcProvider.toUpperCase()})`, 'success');
+        }
+      } else if (result.status === 'error') {
+        addToast(result.message || 'OIDC SIGN-IN FAILED', 'warning');
+      }
+
+      if (result.status !== 'idle' && window.location.search) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    };
+
+    void completeOidc();
+  }, [proj.projects, proj.updateGitConfig, addToast]);
 
   console.log("[useApp] Current State Summary:", {
     activeProjectId: proj.activeProjectId,
@@ -323,6 +355,29 @@ export const useApp = () => {
       localStorage.removeItem('lastProjectId');
   };
 
+  const handleOidcSignIn = async () => {
+      if (!proj.activeProjectId) {
+        addToast('SELECT A PROJECT BEFORE OIDC SIGN-IN', 'warning');
+        return;
+      }
+      const activeGitConfig = currentProject?.gitConfig;
+      if (!activeGitConfig) {
+        addToast('PROJECT CONFIG NOT AVAILABLE', 'warning');
+        return;
+      }
+      try {
+        addToast('OIDC REDIRECT IN PROGRESS', 'info');
+        await beginOidcSignIn({
+          projectId: proj.activeProjectId,
+          provider: activeGitConfig.oidcProvider || 'github',
+          username: activeGitConfig.username || 'user'
+        });
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'OIDC SIGN-IN FAILED';
+        addToast(message.toUpperCase(), 'warning');
+      }
+  };
+
   return {
     state: {
       projects: proj.projects,
@@ -360,6 +415,7 @@ export const useApp = () => {
       handleCreateProject,
       handleDeleteProject: proj.deleteProject,
       handleGitConfigUpdate: proj.updateGitConfig,
+      handleOidcSignIn,
       getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
       handleExplorerSelect,
       handleContentChange: (c: string) => {

@@ -1,5 +1,23 @@
 import { OidcCredential, OidcProviderId } from '../types';
 
+interface OidcPendingSession {
+  projectId: string;
+  provider: OidcProviderId;
+  username: string;
+  state: string;
+  verifier: string;
+  redirectUri: string;
+  createdAt: number;
+}
+
+interface OidcCallbackResult {
+  status: 'success' | 'error' | 'idle';
+  projectId?: string;
+  provider?: OidcProviderId;
+  credential?: OidcCredential;
+  message?: string;
+}
+
 export interface OidcProviderAdapter {
   id: OidcProviderId;
   label: string;
@@ -92,6 +110,7 @@ export const getOidcAdapter = (provider: OidcProviderId) => {
 };
 
 const OIDC_CRED_PREFIX = 'lattice-oidc-cred-v1';
+const OIDC_PENDING_KEY = 'lattice-oidc-pending-v1';
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
@@ -161,4 +180,107 @@ export const createPkceSession = async () => {
   const verifier = randomBase64Url(48);
   const challenge = await buildPkceChallenge(verifier);
   return { state, verifier, challenge };
+};
+
+const getOidcRedirectUri = () => {
+  const fqdn = import.meta.env.VITE_OIDC_FQDN?.trim() || window.location.origin;
+  const callbackPath = import.meta.env.VITE_OIDC_CALLBACK_PATH?.trim() || '/auth/callback';
+  return new URL(callbackPath, fqdn).toString();
+};
+
+export const isOidcCallbackRoute = () => {
+  const callbackUrl = new URL(getOidcRedirectUri());
+  return window.location.pathname === callbackUrl.pathname;
+};
+
+export const beginOidcSignIn = async (args: {
+  projectId: string;
+  provider: OidcProviderId;
+  username: string;
+}) => {
+  const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
+  if (!clientId) {
+    throw new Error('OIDC client id is not configured.');
+  }
+  const adapter = getOidcAdapter(args.provider);
+  if (!adapter) {
+    throw new Error('Unsupported OIDC provider selected.');
+  }
+
+  const session = await createPkceSession();
+  const redirectUri = getOidcRedirectUri();
+
+  const pendingSession: OidcPendingSession = {
+    projectId: args.projectId,
+    provider: args.provider,
+    username: args.username || 'user',
+    state: session.state,
+    verifier: session.verifier,
+    redirectUri,
+    createdAt: Date.now()
+  };
+
+  localStorage.setItem(OIDC_PENDING_KEY, JSON.stringify(pendingSession));
+
+  const authorizationUrl = adapter.createAuthorizationUrl({
+    clientId,
+    redirectUri,
+    state: session.state,
+    codeChallenge: session.challenge
+  });
+
+  window.location.assign(authorizationUrl);
+};
+
+export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResult> => {
+  if (!isOidcCallbackRoute()) {
+    return { status: 'idle' };
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const oauthError = params.get('error');
+  if (oauthError) {
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: `OIDC sign-in failed: ${oauthError}` };
+  }
+
+  const code = params.get('code');
+  const state = params.get('state');
+  if (!code || !state) {
+    return { status: 'error', message: 'OIDC callback is missing code or state.' };
+  }
+
+  const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
+  if (!pendingRaw) {
+    return { status: 'error', message: 'OIDC session could not be restored.' };
+  }
+
+  try {
+    const pending = JSON.parse(pendingRaw) as OidcPendingSession;
+    if (pending.state !== state) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: 'OIDC state validation failed.' };
+    }
+
+    const adapter = getOidcAdapter(pending.provider);
+    if (!adapter) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return { status: 'error', message: 'OIDC provider is not available.' };
+    }
+
+    const credential = adapter.createMockCredential(pending.username);
+    await storeOidcCredential(pending.projectId, credential);
+    localStorage.removeItem(OIDC_PENDING_KEY);
+
+    return {
+      status: 'success',
+      projectId: pending.projectId,
+      provider: pending.provider,
+      credential
+    };
+  } catch (error) {
+    console.warn('[oidc] Failed to parse callback session', error);
+    localStorage.removeItem(OIDC_PENDING_KEY);
+    return { status: 'error', message: 'OIDC callback parsing failed.' };
+  }
 };
