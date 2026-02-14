@@ -1,6 +1,6 @@
 import type { GitAdapterService, GitRepo } from './gitAdapter';
 
-export interface GithubRepo {
+interface GiteaRepo {
   id: number;
   name: string;
   full_name: string;
@@ -8,7 +8,7 @@ export interface GithubRepo {
   private: boolean;
 }
 
-const GITHUB_API_BASE = 'https://api.github.com';
+const GITEA_API_BASE = 'https://gitea.com/api/v1';
 
 const parseJsonResponse = async <T>(response: Response, providerName: string): Promise<T> => {
   try {
@@ -40,24 +40,22 @@ const ensureResponse = async (response: Response) => {
   throw new Error(message);
 };
 
-const listGithubRepos = async (accessToken: string): Promise<GithubRepo[]> => {
-  const response = await fetch(`${GITHUB_API_BASE}/user/repos?per_page=100&affiliation=owner`, {
+const listGiteaRepos = async (accessToken: string): Promise<GiteaRepo[]> => {
+  const response = await fetch(`${GITEA_API_BASE}/user/repos?limit=100`, {
     headers: {
-      Accept: 'application/vnd.github+json',
       Authorization: `Bearer ${accessToken}`
     }
   });
 
   await ensureResponse(response);
-  const repos = await parseJsonResponse<GithubRepo[]>(response, 'GitHub API');
+  const repos = await parseJsonResponse<GiteaRepo[]>(response, 'Gitea API');
   return repos.sort((a, b) => a.full_name.localeCompare(b.full_name));
 };
 
-const createGithubRepo = async (accessToken: string, name: string, description = ''): Promise<GithubRepo> => {
-  const response = await fetch(`${GITHUB_API_BASE}/user/repos`, {
+const createGiteaRepo = async (accessToken: string, name: string, description = ''): Promise<GiteaRepo> => {
+  const response = await fetch(`${GITEA_API_BASE}/user/repos`, {
     method: 'POST',
     headers: {
-      Accept: 'application/vnd.github+json',
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json'
     },
@@ -70,10 +68,10 @@ const createGithubRepo = async (accessToken: string, name: string, description =
   });
 
   await ensureResponse(response);
-  return parseJsonResponse<GithubRepo>(response, 'GitHub API');
+  return parseJsonResponse<GiteaRepo>(response, 'Gitea API');
 };
 
-const toGitRepo = (repo: GithubRepo): GitRepo => ({
+const toGitRepo = (repo: GiteaRepo): GitRepo => ({
   id: repo.id,
   name: repo.name,
   fullName: repo.full_name,
@@ -81,9 +79,9 @@ const toGitRepo = (repo: GithubRepo): GitRepo => ({
   isPrivate: repo.private
 });
 
-export const createGithubAdapterService = (): GitAdapterService => ({
-  provider: 'github',
-  repoHost: 'github.com',
-  listRepos: async (accessToken) => (await listGithubRepos(accessToken)).map(toGitRepo),
-  createRepo: async (accessToken, name, description) => toGitRepo(await createGithubRepo(accessToken, name, description))
+export const createGiteaAdapterService = (): GitAdapterService => ({
+  provider: 'gitea',
+  repoHost: 'gitea.com',
+  listRepos: async (accessToken) => (await listGiteaRepos(accessToken)).map(toGitRepo),
+  createRepo: async (accessToken, name, description) => toGitRepo(await createGiteaRepo(accessToken, name, description))
 });
