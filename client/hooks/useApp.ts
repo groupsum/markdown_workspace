@@ -1,6 +1,6 @@
 
 import { useEffect, useCallback, useRef } from 'react';
-import { beginOidcSignIn, completeOidcSignInFromCallback } from '../services/oidc';
+import { beginOidcSignIn, completeOidcSignInFromCallback, getOidcPopupEventType } from '../services/oidc';
 import { THEMES } from '../data/themes';
 import { useToast } from './useToast';
 import { useInputModal } from './useInputModal';
@@ -61,6 +61,32 @@ export const useApp = () => {
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
   const oidcCallbackHandledRef = useRef(false);
 
+  const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
+    if (result.status === 'success' && result.projectId && result.credential) {
+      const targetProject = proj.projects.find((project) => project.id === result.projectId);
+      if (targetProject) {
+        const updatedProject = {
+          ...targetProject,
+          gitConfig: {
+            ...targetProject.gitConfig,
+            username: result.credential.username,
+            oidcProvider: result.provider || targetProject.gitConfig.oidcProvider || 'github',
+            oidcConnected: true,
+            oidcSubject: result.credential.subject
+          }
+        };
+        await proj.updateGitConfig(updatedProject.gitConfig);
+        addToast(`OIDC SIGN-IN SUCCESS (${updatedProject.gitConfig.oidcProvider.toUpperCase()})`, 'success');
+      }
+    } else if (result.status === 'error') {
+      addToast(result.message || 'OIDC SIGN-IN FAILED', 'warning');
+    }
+
+    if (result.status !== 'idle' && window.location.search) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, [proj.projects, proj.updateGitConfig, addToast]);
+
   useEffect(() => {
     if (oidcCallbackHandledRef.current) {
       return;
@@ -68,33 +94,36 @@ export const useApp = () => {
     oidcCallbackHandledRef.current = true;
     const completeOidc = async () => {
       const result = await completeOidcSignInFromCallback();
-      if (result.status === 'success' && result.projectId && result.credential) {
-        const targetProject = proj.projects.find((project) => project.id === result.projectId);
-        if (targetProject) {
-          const updatedProject = {
-            ...targetProject,
-            gitConfig: {
-              ...targetProject.gitConfig,
-              username: result.credential.username,
-              oidcProvider: result.provider || targetProject.gitConfig.oidcProvider || 'github',
-              oidcConnected: true,
-              oidcSubject: result.credential.subject
-            }
-          };
-          await proj.updateGitConfig(updatedProject.gitConfig);
-          addToast(`OIDC SIGN-IN SUCCESS (${updatedProject.gitConfig.oidcProvider.toUpperCase()})`, 'success');
-        }
-      } else if (result.status === 'error') {
-        addToast(result.message || 'OIDC SIGN-IN FAILED', 'warning');
-      }
-
-      if (result.status !== 'idle' && window.location.search) {
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
+      await applyOidcResult(result);
     };
 
     void completeOidc();
-  }, [proj.projects, proj.updateGitConfig, addToast]);
+  }, [applyOidcResult]);
+
+  useEffect(() => {
+    const eventType = getOidcPopupEventType();
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) {
+        return;
+      }
+      if (!event.data || typeof event.data !== 'object') {
+        return;
+      }
+      if ((event.data as { type?: string }).type !== eventType) {
+        return;
+      }
+      const search = (event.data as { search?: string }).search;
+      if (!search || typeof search !== 'string') {
+        return;
+      }
+      void completeOidcSignInFromCallback(search).then(applyOidcResult);
+    };
+
+    window.addEventListener('message', onMessage);
+    return () => {
+      window.removeEventListener('message', onMessage);
+    };
+  }, [applyOidcResult]);
 
   console.log("[useApp] Current State Summary:", {
     activeProjectId: proj.activeProjectId,
