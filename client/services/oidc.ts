@@ -429,6 +429,8 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string, ca
   const search = callbackSearch ?? window.location.search;
   const hash = callbackHash ?? window.location.hash;
   const params = new URLSearchParams(search);
+  const queryCode = params.get('code');
+  const queryState = params.get('state');
 
   const oauthError = params.get('error') || parseImplicitFragment(hash).error;
   if (oauthError) {
@@ -438,6 +440,15 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string, ca
 
   // Implicit flow: tokens are delivered in URL fragment.
   if (pending.flow === 'implicit') {
+    if (queryCode || queryState) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return {
+        status: 'error',
+        message:
+          "OIDC flow mismatch: provider returned code/state query params, but client is configured for implicit flow. Set VITE_OIDC_FLOW='code' (and ensure PKCE + token endpoint CORS are configured), then retry."
+      };
+    }
+
     const fragment = parseImplicitFragment(hash);
     const state = fragment.state;
     if (!state || state !== pending.state) {

@@ -69,6 +69,29 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
     expect(result.message).toBe('OIDC state validation failed.');
   });
 
+
+  it('returns flow mismatch error when implicit mode receives code callback params', async () => {
+    window.history.replaceState({}, '', '/auth/callback?code=abc-code&state=abc123');
+    localStorage.setItem(
+      pendingKey,
+      JSON.stringify({
+        projectId: 'proj-1',
+        provider: 'github',
+        username: 'alice',
+        state: 'abc123',
+        redirectUri: 'http://localhost:5173/auth/callback',
+        createdAt: Date.now(),
+        flow: 'implicit'
+      })
+    );
+
+    const result = await completeOidcSignInFromCallback();
+
+    expect(result.status).toBe('error');
+    expect(result.message).toContain('OIDC flow mismatch');
+    expect(localStorage.getItem(pendingKey)).toBeNull();
+  });
+
   it('stores credential and returns success from implicit hash response', async () => {
     window.history.replaceState({}, '', '/auth/callback#access_token=abc-token&id_token=id-token&expires_in=3600&state=abc123');
 
