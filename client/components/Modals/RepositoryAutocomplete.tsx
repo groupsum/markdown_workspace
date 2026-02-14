@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { GitConfig } from '../../types';
 import { readOidcCredential } from '../../services/oidc';
-import { createGithubRepo, listGithubRepos } from '../../services/github';
+import { getGitAdapterService } from '../../services/gitAdapter';
 
 interface RepositoryAutocompleteProps {
   projectId: string | null;
@@ -9,33 +9,36 @@ interface RepositoryAutocompleteProps {
   onRepoUrlChange: (repoUrl: string) => void;
 }
 
-const normalizeRepoUrl = (value: string): string => {
+const normalizeRepoUrl = (value: string, host: string): string => {
   const trimmed = value.trim();
   if (!trimmed) {
     return '';
   }
 
-  if (trimmed.startsWith('https://github.com/')) {
+  if (trimmed.startsWith(`https://${host}/`)) {
     return trimmed.replace(/\.git$/, '');
   }
 
   if (/^[\w.-]+\/[\w.-]+$/.test(trimmed)) {
-    return `https://github.com/${trimmed}`;
+    return `https://${host}/${trimmed}`;
   }
 
   return trimmed;
 };
 
-const getRepoNameFromValue = (value: string): string => {
-  const normalized = normalizeRepoUrl(value);
-  if (!normalized) {
-    return '';
-  }
-  const chunks = normalized.split('/').filter(Boolean);
-  return chunks.at(-1)?.toLowerCase() || '';
-};
-
 export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange }) => {
+  const gitAdapter = useMemo(() => getGitAdapterService(gitConfig.oidcProvider || 'github'), [gitConfig.oidcProvider]);
+  const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl, gitAdapter.repoHost);
+
+  const getRepoNameFromValue = (value: string): string => {
+    const normalized = normalizeRepoUrl(value, gitAdapter.repoHost);
+    if (!normalized) {
+      return '';
+    }
+    const chunks = normalized.split('/').filter(Boolean);
+    return chunks.at(-1)?.toLowerCase() || '';
+  };
+
   const [repoUrls, setRepoUrls] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -43,7 +46,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
 
   useEffect(() => {
     const loadRepos = async () => {
-      if (!projectId || gitConfig.oidcProvider !== 'github' || !gitConfig.oidcConnected) {
+      if (!projectId || !gitConfig.oidcProvider || !gitConfig.oidcConnected) {
         setRepoUrls([]);
         setError('');
         return;
@@ -56,8 +59,8 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         if (!credential?.accessToken) {
           throw new Error('Connect OIDC to load repositories.');
         }
-        const repos = await listGithubRepos(credential.accessToken);
-        setRepoUrls(repos.map((repo) => repo.html_url));
+        const repos = await gitAdapter.listRepos(credential.accessToken);
+        setRepoUrls(repos.map((repo) => repo.htmlUrl));
       } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to load repositories.';
         setError(message);
@@ -68,9 +71,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     };
 
     loadRepos();
-  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected]);
-
-  const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl);
+  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitAdapter]);
 
   const filteredSuggestions = useMemo(() => {
     const probe = normalizedInput.toLowerCase();
@@ -85,12 +86,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     [repoUrls, normalizedInput]
   );
 
-  const canCreateRepo =
-    gitConfig.oidcProvider === 'github' &&
-    gitConfig.oidcConnected &&
-    Boolean(projectId) &&
-    !repoExists &&
-    Boolean(getRepoNameFromValue(gitConfig.repoUrl));
+  const canCreateRepo = gitConfig.oidcConnected && Boolean(projectId) && !repoExists && Boolean(getRepoNameFromValue(gitConfig.repoUrl));
 
   const handleCreatePrivateRepo = async () => {
     if (!projectId) {
@@ -111,9 +107,9 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         throw new Error('Connect OIDC to create repositories.');
       }
 
-      const created = await createGithubRepo(credential.accessToken, repoName);
-      onRepoUrlChange(created.html_url);
-      setRepoUrls((prev) => Array.from(new Set([...prev, created.html_url])).sort((a, b) => a.localeCompare(b)));
+      const created = await gitAdapter.createRepo(credential.accessToken, repoName);
+      onRepoUrlChange(created.htmlUrl);
+      setRepoUrls((prev) => Array.from(new Set([...prev, created.htmlUrl])).sort((a, b) => a.localeCompare(b)));
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to create repository.';
       setError(message);
@@ -130,7 +126,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         className="modal-input !text-xs !py-3"
         value={gitConfig.repoUrl}
         onChange={(e) => onRepoUrlChange(e.target.value)}
-        placeholder="https://github.com/owner/repo"
+        placeholder={`https://${gitAdapter.repoHost}/owner/repo`}
       />
       <datalist id="repo-autocomplete">
         {filteredSuggestions.map((repo) => (
