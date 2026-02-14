@@ -28,6 +28,17 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({ gitConfi
         <Shield size={14} /> OIDC SIGN-IN
       </div>
 
+      <div className="rounded border border-[var(--border-color)] bg-[var(--bg-inset)] px-3 py-2">
+        <span className={`text-[10px] font-bold ${gitConfig.oidcConnected ? 'text-[var(--accent)]' : 'text-[var(--danger)]'}`}>
+          {gitConfig.oidcConnected ? 'AUTH_STATE: CONNECTED' : 'AUTH_STATE: DISCONNECTED'}
+        </span>
+        <p className="mt-1 text-[10px] text-[var(--fg-muted)]">
+          {gitConfig.oidcConnected
+            ? `SUBJECT: ${gitConfig.oidcSubject || 'UNKNOWN'}`
+            : 'OIDC session is missing or expired. Reconnect to continue provider operations.'}
+        </p>
+      </div>
+
       <label className="flex flex-col gap-2">
         <span className="text-[10px] font-bold text-[var(--fg-muted)]">OIDC PROVIDER</span>
         <select
