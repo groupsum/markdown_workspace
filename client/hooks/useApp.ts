@@ -402,11 +402,12 @@ export const useApp = () => {
       }
       try {
         addToast('OIDC REDIRECT IN PROGRESS', 'info');
-        await beginOidcSignIn({
+        const result = await beginOidcSignIn({
           projectId: proj.activeProjectId,
           provider: activeGitConfig.oidcProvider || 'github',
           username: activeGitConfig.username || 'user'
         });
+        await applyOidcResult(result);
       } catch (error) {
         const message = error instanceof Error ? error.message : 'OIDC SIGN-IN FAILED';
         addToast(message.toUpperCase(), 'warning');
