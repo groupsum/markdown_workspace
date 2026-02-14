@@ -13,6 +13,7 @@ x-common-env: &common-env
   VITE_OIDC_CLIENT_ID: ${VITE_OIDC_CLIENT_ID:-}
   VITE_OIDC_FQDN: ${VITE_OIDC_FQDN:-https://md.bz23.xyz}
   VITE_OIDC_CALLBACK_PATH: ${VITE_OIDC_CALLBACK_PATH:-/auth/callback}
+  VITE_OIDC_FLOW: ${VITE_OIDC_FLOW:-device}
 
 services:
   client:
