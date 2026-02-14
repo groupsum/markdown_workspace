@@ -113,7 +113,8 @@ const createAdapter = (config: {
  * - Fallback: Implicit (flow='implicit') to avoid token endpoint calls (many providers still allow it),
  *   but it is generally less desirable security-wise.
  *
- * Set VITE_OIDC_FLOW to 'code' or 'implicit'. Default is 'implicit' to satisfy strict browser-only mode.
+ * Set VITE_OIDC_FLOW to 'code' or 'implicit'. Default is 'code' so callback query params
+ * (`?code=...&state=...`) work out of the box with modern OIDC providers.
  */
 export const oidcAdapters: OidcProviderAdapter[] = [
   createAdapter({
@@ -277,8 +278,8 @@ const getOidcFlow = (): 'code' | 'implicit' => {
   const raw = (import.meta.env.VITE_OIDC_FLOW || '').trim().toLowerCase();
   if (raw === 'code') return 'code';
   if (raw === 'implicit') return 'implicit';
-  // Strict browser-only default.
-  return 'implicit';
+  // Default to modern Authorization Code + PKCE for provider compatibility.
+  return 'code';
 };
 
 export const beginOidcSignIn = async (args: { projectId: string; provider: OidcProviderId; username: string }) => {
@@ -395,6 +396,25 @@ const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTo
 export const completeOidcSignInFromCallback = async (callbackSearch?: string, callbackHash?: string): Promise<OidcCallbackResult> => {
   if (!callbackSearch && !isOidcCallbackRoute()) return { status: 'idle' };
 
+  // Prefer forwarded params when parent processes popup callback.
+  const search = callbackSearch ?? window.location.search;
+  const hash = callbackHash ?? window.location.hash;
+  const params = new URLSearchParams(search);
+  const fragment = parseImplicitFragment(hash);
+
+  const hasOidcCallbackParams = Boolean(
+    params.get('code') ||
+      params.get('state') ||
+      params.get('error') ||
+      fragment.access_token ||
+      fragment.id_token ||
+      fragment.state ||
+      fragment.error
+  );
+
+  // Callback route can be loaded without OAuth params (bookmark/refresh).
+  if (!hasOidcCallbackParams) return { status: 'idle' };
+
   const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
   if (!pendingRaw) return { status: 'error', message: 'OIDC session could not be restored.' };
 
@@ -425,12 +445,10 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string, ca
     return { status: 'idle' };
   }
 
-  // Prefer forwarded params when parent processes popup callback.
-  const search = callbackSearch ?? window.location.search;
-  const hash = callbackHash ?? window.location.hash;
-  const params = new URLSearchParams(search);
+  const queryCode = params.get('code');
+  const queryState = params.get('state');
 
-  const oauthError = params.get('error') || parseImplicitFragment(hash).error;
+  const oauthError = params.get('error') || fragment.error;
   if (oauthError) {
     localStorage.removeItem(OIDC_PENDING_KEY);
     return { status: 'error', message: `OIDC sign-in failed: ${oauthError}` };
@@ -438,7 +456,15 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string, ca
 
   // Implicit flow: tokens are delivered in URL fragment.
   if (pending.flow === 'implicit') {
-    const fragment = parseImplicitFragment(hash);
+    if (queryCode || queryState) {
+      localStorage.removeItem(OIDC_PENDING_KEY);
+      return {
+        status: 'error',
+        message:
+          "OIDC flow mismatch: provider returned code/state query params, but client is configured for implicit flow. Set VITE_OIDC_FLOW='code' (and ensure PKCE + token endpoint CORS are configured), then retry."
+      };
+    }
+
     const state = fragment.state;
     if (!state || state !== pending.state) {
       localStorage.removeItem(OIDC_PENDING_KEY);
