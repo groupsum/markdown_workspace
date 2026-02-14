@@ -10,8 +10,6 @@ const CORE_ASSETS = [
   '/favicon.svg',
   '/icons/icon-192.svg',
   '/icons/icon-512.svg',
-  '/css/index.css',
-  '/css/themes/theme-micropress.css'
 ];
 const EXTERNAL_ASSETS = [
   'https://cdn.tailwindcss.com',

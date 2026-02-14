@@ -78,7 +78,7 @@ The always-available strip for environment awareness and health monitoring.
 
 ### 4. Viewport + Aspect Ratio Matrix
 
-Lattice Architect defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `client/public/css/base/viewports.css`.【F:client/public/css/base/viewports.css†L1-L120】
+Lattice Architect defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `client/styles/base/viewports.css`.【F:client/styles/base/viewports.css†L1-L120】
 
 **Aspect Ratio Bands (aspect first)**
 - **Portrait**: `max-aspect-ratio: 3/4`
@@ -103,4 +103,4 @@ Lattice Architect defines a shared breakpoint contract in the core stylesheet so
 - **Touch**: `(hover: none) and (pointer: coarse)`
 - **Precision**: `(hover: hover) and (pointer: fine)`
 
-Themes may reinterpret spacing, shadows, and toolbar layouts at each breakpoint, but they must use the same breakpoint definitions to preserve the shared viewport contract. The Micropress theme uses these bands to keep its floating view toolbar aligned with the editor body corner while other themes interpret the bands with their own visual treatments.【F:client/public/css/themes/theme-micropress.css†L66-L149】
+Themes may reinterpret spacing, shadows, and toolbar layouts at each breakpoint, but they must use the same breakpoint definitions to preserve the shared viewport contract. The Micropress theme uses these bands to keep its floating view toolbar aligned with the editor body corner while other themes interpret the bands with their own visual treatments.【F:client/styles/themes/theme-micropress.css†L66-L149】
