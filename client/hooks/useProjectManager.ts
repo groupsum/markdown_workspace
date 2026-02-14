@@ -1,7 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Project, GitConfig } from '../types';
+import { Project, GitConfig, OidcProviderId } from '../types';
 import { storage } from '../services/storage';
+import { readOidcCredential } from '../services/oidc';
+
+
+const isOidcProvider = (value: string): value is OidcProviderId => {
+  return value === 'github' || value === 'gitlab' || value === 'gitea';
+};
 
 export const useProjectManager = (
   addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
@@ -17,11 +23,25 @@ export const useProjectManager = (
       console.log("[useProjectManager] Booting Project Management Layer...");
       await storage.seedInitialData();
       const allProjects = await storage.getProjects();
-      console.log(`[useProjectManager] Found ${allProjects.length} projects in IDB`);
-      setProjects(allProjects);
+      const normalizedProjects = await Promise.all(allProjects.map(async (project) => {
+        const credential = await readOidcCredential(project.id);
+        const providerCandidate = credential?.provider || project.gitConfig?.oidcProvider || '';
+        const oidcProvider: OidcProviderId = isOidcProvider(providerCandidate) ? providerCandidate : 'github';
+        const gitConfig: GitConfig = {
+          repoUrl: project.gitConfig?.repoUrl || '',
+          branch: project.gitConfig?.branch || 'main',
+          username: credential?.username || project.gitConfig?.username || '',
+          oidcProvider,
+          oidcConnected: Boolean(credential),
+          oidcSubject: credential?.subject || project.gitConfig?.oidcSubject || ''
+        };
+        return { ...project, gitConfig };
+      }));
+      console.log(`[useProjectManager] Found ${normalizedProjects.length} projects in IDB`);
+      setProjects(normalizedProjects);
       
       const lastId = localStorage.getItem('lastProjectId');
-      if (lastId && allProjects.find(p => p.id === lastId)) {
+      if (lastId && normalizedProjects.find(p => p.id === lastId)) {
          console.log(`[useProjectManager] Restoring active project context -> ${lastId}`);
          setActiveProjectId(lastId);
       }
@@ -35,7 +55,7 @@ export const useProjectManager = (
      const newProject: Project = {
          id: `proj-${Date.now()}`,
          name,
-         gitConfig: { repoUrl: '', branch: 'main', username: '', pat: '' },
+         gitConfig: { repoUrl: '', branch: 'main', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
          createdAt: Date.now(),
          lastOpened: Date.now()
      };

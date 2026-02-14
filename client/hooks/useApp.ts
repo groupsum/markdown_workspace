@@ -360,7 +360,7 @@ export const useApp = () => {
       handleCreateProject,
       handleDeleteProject: proj.deleteProject,
       handleGitConfigUpdate: proj.updateGitConfig,
-      getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', pat: '' },
+      getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
       handleExplorerSelect,
       handleContentChange: (c: string) => {
           console.log(`[useApp] Action: handleContentChange for file -> ${activeFile?.id}`);

@@ -36,7 +36,21 @@ export interface GitConfig {
   repoUrl: string;
   branch: string;
   username: string;
-  pat: string;
+  oidcProvider: OidcProviderId | '';
+  oidcConnected: boolean;
+  oidcSubject: string;
+}
+
+export type OidcProviderId = 'github' | 'gitlab' | 'gitea';
+
+export interface OidcCredential {
+  provider: OidcProviderId;
+  subject: string;
+  username: string;
+  accessToken: string;
+  idToken?: string;
+  expiresAt?: number;
+  issuedAt: number;
 }
 
 export interface KeyMap {
