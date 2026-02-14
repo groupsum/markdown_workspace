@@ -18,6 +18,8 @@ interface OidcCallbackResult {
   message?: string;
 }
 
+const OIDC_POPUP_EVENT_TYPE = 'lattice:oidc:callback';
+
 export interface OidcProviderAdapter {
   id: OidcProviderId;
   label: string;
@@ -275,15 +277,30 @@ export const beginOidcSignIn = async (args: {
     codeChallenge: session.challenge
   });
 
-  window.location.assign(authorizationUrl);
+  const popupWidth = 560;
+  const popupHeight = 720;
+  const left = Math.max(0, window.screenX + Math.round((window.outerWidth - popupWidth) / 2));
+  const top = Math.max(0, window.screenY + Math.round((window.outerHeight - popupHeight) / 2));
+  const popup = window.open(
+    authorizationUrl,
+    'oidc-connect',
+    `popup=yes,width=${popupWidth},height=${popupHeight},left=${left},top=${top},resizable=yes,scrollbars=yes`
+  );
+
+  if (!popup) {
+    window.location.assign(authorizationUrl);
+    return;
+  }
+
+  popup.focus();
 };
 
-export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResult> => {
-  if (!isOidcCallbackRoute()) {
+export const completeOidcSignInFromCallback = async (callbackSearch?: string): Promise<OidcCallbackResult> => {
+  if (!callbackSearch && !isOidcCallbackRoute()) {
     return { status: 'idle' };
   }
 
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(callbackSearch ?? window.location.search);
   const oauthError = params.get('error');
   if (oauthError) {
     localStorage.removeItem(OIDC_PENDING_KEY);
@@ -301,6 +318,18 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
 
   if (!code || !state) {
     return { status: 'error', message: 'OIDC callback is missing code or state.' };
+  }
+
+  if (!callbackSearch && window.opener && window.opener !== window) {
+    window.opener.postMessage(
+      {
+        type: OIDC_POPUP_EVENT_TYPE,
+        search: window.location.search
+      },
+      window.location.origin
+    );
+    window.close();
+    return { status: 'idle' };
   }
 
   const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
@@ -433,3 +462,5 @@ export const completeOidcSignInFromCallback = async (): Promise<OidcCallbackResu
     return { status: 'error', message: 'OIDC callback parsing failed.' };
   }
 };
+
+export const getOidcPopupEventType = () => OIDC_POPUP_EVENT_TYPE;
