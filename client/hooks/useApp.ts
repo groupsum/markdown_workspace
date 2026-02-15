@@ -368,6 +368,20 @@ export const useApp = () => {
       currentProject && fileSys.exportProjectData(currentProject.name);
   };
 
+  const restoreData = async (payload: string) => {
+      console.log(`[useApp] Action: restoreData initiated`);
+      const restoredFiles = await fileSys.restoreProjectData(payload);
+      if (!restoredFiles) return;
+      tabs.resetTabs();
+      const readme = restoredFiles.find(f => f.type === 'file' && (f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md'));
+      const first = restoredFiles.find(f => f.type === 'file');
+      const target = readme || first;
+      if (target) {
+        tabs.openTab(target.id);
+        fileSys.setSelectedExplorerId(target.id);
+      }
+  };
+
   const handleHtmlExport = () => {
       console.log(`[useApp] Action: handleHtmlExport initiated`);
       fileSys.exportHtmlNode(ui.theme);
@@ -470,6 +484,7 @@ export const useApp = () => {
       handleDownload,
       handleMoveFile: fileSys.moveFile,
       exportData,
+      restoreData,
       handleHtmlExport,
       handlePrint,
       setFiles: fileSys.setFiles,

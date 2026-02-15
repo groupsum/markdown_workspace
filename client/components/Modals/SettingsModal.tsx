@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Layout, GitBranch, Database, Keyboard, Download, RefreshCw, Settings as SettingsIcon, Monitor, Save } from 'lucide-react';
+import { X, Layout, GitBranch, Database, Keyboard, Download, Upload, RefreshCw, Settings as SettingsIcon, Monitor, Save } from 'lucide-react';
 import { OidcSignInSelector } from './OidcSignInSelector';
 import { RepositoryAutocomplete } from './RepositoryAutocomplete';
 import { AppTheme, AppMode, GitConfig, ViewMode } from '../../types';
@@ -15,6 +15,7 @@ interface SettingsModalProps {
   onGitConfigChange: (config: GitConfig) => void;
   onOidcSignIn: () => void;
   onExport: () => void;
+  onRestore: (payload: string) => Promise<void>;
   pwaState: {
     canInstall: boolean;
     updateAvailable: boolean;
@@ -49,6 +50,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onGitConfigChange,
   onOidcSignIn,
   onExport,
+  onRestore,
   pwaState,
   onPwaInstall,
   onPwaUpdate,
@@ -81,6 +83,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   const pwaStatusLabel = pwaState.isInstalled ? 'INSTALLED' : 'NOT_INSTALLED';
   const pwaUpdateLabel = pwaState.updateAvailable ? 'UPDATE_READY' : 'UP_TO_DATE';
+
+  const handleRestoreUpload: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    try {
+      const payload = await file.text();
+      await onRestore(payload);
+    } finally {
+      event.target.value = '';
+    }
+  };
 
   return (
     <div className="modal-overlay">
@@ -296,13 +309,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       </button>
                     </div>
                     
-                    <div className="settings-card settings-card-muted opacity-50 cursor-not-allowed">
+                    <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                       <div className="flex justify-between items-start mb-2">
                         <span className="font-bold text-[11px] uppercase">RESTORE_IMAGE</span>
-                        <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)]">LOCKED</span>
+                        <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">JSON</span>
                       </div>
-                      <p className="text-[11px] text-[var(--fg-muted)] mb-4">Restore workspace from a previously exported JSON image. (Module Pending)</p>
-                      <button disabled className="modal-btn w-full">INIT_RESTORE</button>
+                      <p className="text-[11px] text-[var(--fg-muted)] mb-4">Restore workspace from a previously exported JSON image.</p>
+                      <label className="modal-btn modal-btn-primary w-full flex items-center justify-center gap-2 cursor-pointer">
+                        <Upload size={14}/> INIT_RESTORE
+                        <input
+                          type="file"
+                          accept="application/json,.json"
+                          className="hidden"
+                          onChange={handleRestoreUpload}
+                        />
+                      </label>
                     </div>
                 </div>
               </div>

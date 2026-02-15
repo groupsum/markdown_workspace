@@ -278,6 +278,63 @@ export const useFileManager = (
     addToast('EXPORT COMPLETE', 'success');
   };
 
+  const restoreProjectData = async (payload: string) => {
+    if (!activeProjectId) {
+      addToast('NO ACTIVE PROJECT', 'warning');
+      return null;
+    }
+
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(payload);
+    } catch {
+      addToast('INVALID JSON IMAGE', 'warning');
+      return null;
+    }
+
+    if (!Array.isArray(parsed)) {
+      addToast('UNSUPPORTED BACKUP FORMAT', 'warning');
+      return null;
+    }
+
+    const now = Date.now();
+    const restoredFiles: FileNode[] = [];
+    for (const item of parsed) {
+      if (!item || typeof item !== 'object') {
+        addToast('UNSUPPORTED BACKUP FORMAT', 'warning');
+        return null;
+      }
+      const node = item as Partial<FileNode>;
+      if (!node.id || !node.name || !node.type) {
+        addToast('BACKUP IMAGE MISSING REQUIRED FIELDS', 'warning');
+        return null;
+      }
+      if (node.type !== 'file' && node.type !== 'folder') {
+        addToast('BACKUP IMAGE CONTAINS INVALID NODE TYPE', 'warning');
+        return null;
+      }
+
+      restoredFiles.push({
+        id: String(node.id),
+        projectId: activeProjectId,
+        parentId: typeof node.parentId === 'string' ? node.parentId : null,
+        name: String(node.name),
+        type: node.type,
+        content: typeof node.content === 'string' ? node.content : undefined,
+        lastModified: typeof node.lastModified === 'number' ? node.lastModified : now
+      });
+    }
+
+    const existingFiles = await storage.getAllFiles(activeProjectId);
+    await Promise.all(existingFiles.map((file) => storage.deleteFile(file.id)));
+    await Promise.all(restoredFiles.map((file) => storage.saveFile(file)));
+    setFiles(restoredFiles);
+    setSelectedExplorerId(null);
+    setUnsaved(false);
+    addToast(`RESTORE COMPLETE (${restoredFiles.length} ITEMS)`, 'success');
+    return restoredFiles;
+  };
+
   const exportHtmlNode = async (theme: AppTheme) => {
     console.log(`[useFileManager] Action: exportHtmlNode -> selected -> ${selectedExplorerId}`);
     if (!selectedExplorerId) {
@@ -349,6 +406,7 @@ export const useFileManager = (
     moveFile,
     downloadNode,
     exportProjectData,
+    restoreProjectData,
     exportHtmlNode
   };
 };
