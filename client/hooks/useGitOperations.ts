@@ -12,6 +12,7 @@ interface CommitRecord {
 interface PullRequestRecord {
   id: string;
   title: string;
+  body: string;
   sourceBranch: string;
   targetBranch: string;
   createdAt: number;
@@ -105,14 +106,15 @@ export const useGitOperations = (activeFile: FileNode | null, unsaved: boolean, 
     setSyncCounts((prev) => ({ behind: prev.behind, ahead: Math.max(0, prev.ahead - 1) }));
   };
 
-  const createPullRequest = (targetBranch = 'main') => {
-    if (!pullRequestTitle.trim() || currentBranch === targetBranch) {
+  const createPullRequest = (targetBranch = 'main', title = pullRequestTitle, body = '') => {
+    if (!title.trim() || currentBranch === targetBranch) {
       return;
     }
 
     const record: PullRequestRecord = {
       id: `pr-${Date.now()}`,
-      title: pullRequestTitle.trim(),
+      title: title.trim(),
+      body: body.trim(),
       sourceBranch: currentBranch,
       targetBranch,
       createdAt: Date.now()

@@ -133,7 +133,20 @@
     display: none;
   }
 
-  .git-diff-view {
+  .git-mobile-view-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 6px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    background: var(--bg-inset);
+  }
+
+  .git-workspace.mobile-show-sidebar .git-diff-view {
+    display: none;
+  }
+
+  .git-workspace.mobile-show-diff .git-sidebar {
     display: none;
   }
 
@@ -194,6 +207,15 @@
   .workspace-manifold,
   .git-workspace {
     flex-direction: row;
+  }
+
+  .git-mobile-view-switch {
+    display: none;
+  }
+
+  .git-workspace .git-sidebar,
+  .git-workspace .git-diff-view {
+    display: flex;
   }
 }
 

@@ -1,6 +1,28 @@
 import React, { useMemo, useState } from 'react';
 import { AppTheme, FileNode } from '../../../types';
-import { GitBranch, RefreshCw, Check, ArrowUpCircle, ArrowDownCircle, FileDiff, Columns, Eye, LayoutGrid, FileText, ChevronDown, ChevronRight, Undo2, GitPullRequest, ArrowDownToLine, ArrowUpToLine } from 'lucide-react';
+import {
+  GitBranch,
+  RefreshCw,
+  Check,
+  ArrowUpCircle,
+  ArrowDownCircle,
+  FileDiff,
+  Columns,
+  Eye,
+  LayoutGrid,
+  FileText,
+  ChevronDown,
+  ChevronRight,
+  Undo2,
+  GitPullRequest,
+  ArrowDownToLine,
+  ArrowUpToLine,
+  Plus,
+  X,
+  ChevronsUpDown,
+  Sparkles,
+  Send
+} from 'lucide-react';
 import { useGitOperations } from '../../../hooks/useGitOperations';
 import { PreviewPane } from '../WorkPane/Stage/Preview';
 
@@ -10,6 +32,8 @@ interface GitPaneProps {
   theme: AppTheme;
   unsaved: boolean;
 }
+
+const DEFAULT_PR_TITLE_PLACEHOLDER = 'feat: concise summary of branch changes';
 
 export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved }) => {
   const {
@@ -41,6 +65,10 @@ export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsa
   const [showSourceControl, setShowSourceControl] = useState(true);
   const [showStaged, setShowStaged] = useState(true);
   const [showChanges, setShowChanges] = useState(true);
+  const [mobileView, setMobileView] = useState<'changes' | 'diff'>('changes');
+  const [showPrModal, setShowPrModal] = useState(false);
+  const [pullRequestBody, setPullRequestBody] = useState('## Summary\n- \n\n## Testing\n- [ ]\n');
+  const [prTargetInput, setPrTargetInput] = useState('main');
 
   const diffModes = [
     { id: 'unified', label: 'Unified diff viewer', icon: <FileText size={14} /> },
@@ -87,8 +115,71 @@ export const status = "updated";
     return { newContent, oldContent };
   }, [activeFile]);
 
+  const pullRequestSuggestions = useMemo(() => {
+    const fileScope = changedFiles[0]?.name?.replace(/\.[^.]+$/, '') || 'workspace';
+    return [
+      `feat(${fileScope}): refine ${currentBranch} flow`,
+      `fix(${fileScope}): resolve ${currentBranch} regressions`,
+      `chore(${fileScope}): sync ${currentBranch}`,
+      latestCommit?.message || ''
+    ].filter(Boolean);
+  }, [changedFiles, currentBranch, latestCommit]);
+
+  const prTargetCandidates = useMemo(() => {
+    const query = prTargetInput.trim().toLowerCase();
+    return branches.filter((branch) => branch !== currentBranch && (!query || branch.toLowerCase().includes(query)));
+  }, [branches, currentBranch, prTargetInput]);
+
+  const targetBranch = useMemo(() => {
+    const exact = branches.find((branch) => branch.toLowerCase() === prTargetInput.trim().toLowerCase());
+    if (exact && exact !== currentBranch) {
+      return exact;
+    }
+    return prTargetCandidates[0] || 'main';
+  }, [branches, currentBranch, prTargetCandidates, prTargetInput]);
+
+  const openPrModal = () => {
+    const defaultTarget = branches.find((branch) => branch === 'main' && branch !== currentBranch)
+      || branches.find((branch) => branch !== currentBranch)
+      || 'main';
+    setPrTargetInput(defaultTarget);
+    setShowPrModal(true);
+  };
+
+  const handlePrTitleAutocomplete = () => {
+    const query = pullRequestTitle.trim().toLowerCase();
+    const next = pullRequestSuggestions.find((entry) => entry.toLowerCase().startsWith(query)) || pullRequestSuggestions[0];
+    if (next) {
+      setPullRequestTitle(next);
+    }
+  };
+
+  const submitPr = () => {
+    createPullRequest(targetBranch, pullRequestTitle, pullRequestBody);
+    setShowPrModal(false);
+  };
+
   return (
-    <div className="git-workspace">
+    <div className={`git-workspace ${mobileView === 'diff' ? 'mobile-show-diff' : 'mobile-show-sidebar'}`}>
+      <div className="git-mobile-view-switch" role="tablist" aria-label="Git mobile view toggle">
+        <button
+          type="button"
+          className={`git-mobile-toggle-btn ${mobileView === 'changes' ? 'is-active' : ''}`}
+          onClick={() => setMobileView('changes')}
+        >
+          <GitBranch size={14} />
+          <span>Ops</span>
+        </button>
+        <button
+          type="button"
+          className={`git-mobile-toggle-btn ${mobileView === 'diff' ? 'is-active' : ''}`}
+          onClick={() => setMobileView('diff')}
+        >
+          <FileDiff size={14} />
+          <span>Diff</span>
+        </button>
+      </div>
+
       <div className="git-sidebar">
         <div className="panel-toolbar git-header">
           <span className="git-header-title">
@@ -134,7 +225,7 @@ export const status = "updated";
                   onChange={(event) => setBranchInput(event.target.value)}
                 />
                 <button className="git-stage-btn" onClick={() => checkoutBranch(branchInput || currentBranch)} title="Checkout branch">
-                  CHECKOUT
+                  <ChevronsUpDown size={12} />
                 </button>
               </div>
           </div>
@@ -158,7 +249,7 @@ export const status = "updated";
                       <span className="git-item__name">{file?.name || fileId}</span>
                       <span className="git-item__status">A</span>
                       <button onClick={() => unstageFile(fileId)} className="git-stage-btn" title="Unstage File">
-                        UNSTAGE
+                        <X size={12} />
                       </button>
                     </div>
                   );
@@ -194,55 +285,47 @@ export const status = "updated";
           </div>
 
           <div className="git-commit-area">
-            <textarea 
+            <textarea
               className="git-commit-input"
               placeholder="Commit message..."
               value={commitMsg}
               onChange={(e) => setCommitMsg(e.target.value)}
             />
-            <button 
-              className="git-commit-btn"
-              disabled={changedFiles.length === 0 && stagedFiles.length === 0}
-              onClick={commit}
-            >
-              <Check size={14} /> COMMIT
-            </button>
-            <button
-              className="git-commit-btn"
-              disabled={!latestCommit}
-              onClick={undoCommit}
-            >
-              <Undo2 size={14} /> UNDO COMMIT
-            </button>
+            <div className="git-compact-actions">
+              <button
+                className="git-commit-btn"
+                disabled={changedFiles.length === 0 && stagedFiles.length === 0}
+                onClick={commit}
+              >
+                <Check size={14} /> Commit
+              </button>
+              <button
+                className="git-commit-btn"
+                disabled={!latestCommit}
+                onClick={undoCommit}
+              >
+                <Undo2 size={14} /> Undo
+              </button>
+            </div>
           </div>
-          
+
           <div className="git-sync-area">
              <button className="git-sync-btn" onClick={fetchRemote}>
-                <ArrowDownToLine size={14} /> FETCH
+                <ArrowDownToLine size={14} /> Fetch
              </button>
              <button className="git-sync-btn" onClick={pullRemote}>
-                <RefreshCw size={14} /> PULL
+                <RefreshCw size={14} /> Pull
              </button>
              <button className="git-sync-btn" onClick={pushRemote}>
-                <ArrowUpToLine size={14} /> PUSH
+                <ArrowUpToLine size={14} /> Push
              </button>
           </div>
 
           <div className="git-commit-area">
-            <input
-              className="git-commit-input"
-              placeholder="Pull request title"
-              value={pullRequestTitle}
-              onChange={(event) => setPullRequestTitle(event.target.value)}
-            />
-            <button
-              className="git-commit-btn"
-              onClick={() => createPullRequest('main')}
-              disabled={!pullRequestTitle.trim() || currentBranch === 'main'}
-            >
-              <GitPullRequest size={14} /> OPEN PR
+            <button className="git-commit-btn" onClick={openPrModal}>
+              <GitPullRequest size={14} /> PR
             </button>
-            <div className="git-empty-msg">PRs open: {pullRequests.length}</div>
+            <div className="git-empty-msg">Open PRs: {pullRequests.length}</div>
           </div>
         </div>
       </div>
@@ -400,6 +483,82 @@ export const status = "updated";
           )}
         </div>
       </div>
+
+      {showPrModal && (
+        <div className="modal-overlay" role="presentation" onClick={() => setShowPrModal(false)}>
+          <div className="modal-base input-modal git-pr-modal" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title"><GitPullRequest size={16} /> Open Pull Request</h2>
+              <button type="button" className="modal-close" onClick={() => setShowPrModal(false)} aria-label="Close pull request modal">
+                <X size={14} />
+              </button>
+            </div>
+            <div className="modal-content git-pr-modal-content">
+              <label className="git-pr-field-label" htmlFor="git-pr-title">Title</label>
+              <div className="git-pr-title-row">
+                <input
+                  id="git-pr-title"
+                  className="modal-input"
+                  placeholder={DEFAULT_PR_TITLE_PLACEHOLDER}
+                  value={pullRequestTitle}
+                  onChange={(event) => setPullRequestTitle(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Tab') {
+                      event.preventDefault();
+                      handlePrTitleAutocomplete();
+                    }
+                  }}
+                />
+                <button type="button" className="git-stage-btn" title="Autocomplete title" onClick={handlePrTitleAutocomplete}>
+                  <Sparkles size={12} />
+                </button>
+              </div>
+              <div className="git-pr-suggestions">
+                {pullRequestSuggestions.map((entry) => (
+                  <button key={entry} type="button" className="git-pr-suggestion-chip" onClick={() => setPullRequestTitle(entry)}>
+                    <Plus size={12} /> {entry}
+                  </button>
+                ))}
+              </div>
+
+              <label className="git-pr-field-label" htmlFor="git-pr-target">Target branch</label>
+              <input
+                id="git-pr-target"
+                className="modal-input"
+                value={prTargetInput}
+                placeholder="main"
+                onChange={(event) => setPrTargetInput(event.target.value)}
+              />
+              <div className="git-pr-target-list">
+                {prTargetCandidates.map((branch) => (
+                  <button key={branch} type="button" className="git-pr-target-btn" onClick={() => setPrTargetInput(branch)}>
+                    <GitBranch size={12} /> {branch}
+                  </button>
+                ))}
+              </div>
+
+              <label className="git-pr-field-label" htmlFor="git-pr-body">Body</label>
+              <textarea
+                id="git-pr-body"
+                className="git-commit-input git-pr-body"
+                value={pullRequestBody}
+                onChange={(event) => setPullRequestBody(event.target.value)}
+              />
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="modal-btn" onClick={() => setShowPrModal(false)}>Cancel</button>
+              <button
+                type="button"
+                className="modal-btn modal-btn-primary"
+                onClick={submitPr}
+                disabled={!pullRequestTitle.trim() || !targetBranch || targetBranch === currentBranch}
+              >
+                <Send size={12} /> Create PR to {targetBranch}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
