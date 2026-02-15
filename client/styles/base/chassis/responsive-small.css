@@ -18,7 +18,7 @@
       "rail"
       "foot";
     grid-template-columns: 1fr;
-    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height) var(--status-height);
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height) auto;
   }
 
   .action-rail {
@@ -145,7 +145,8 @@
   .status-bar {
     flex-wrap: wrap;
     height: auto;
-    padding: 4px 6px;
+    min-height: var(--status-height);
+    padding: 4px 6px calc(4px + env(safe-area-inset-bottom));
   }
 
   .status-left,
@@ -168,7 +169,7 @@
       "rail main"
       "rail foot";
     grid-template-columns: var(--rail-width) 1fr;
-    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--status-height);
+    grid-template-rows: var(--header-height) minmax(0, 1fr) auto;
   }
 
   .action-rail {

@@ -4,12 +4,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
 .status-item {
   display: flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
 }
 
 .status-item__icon {
@@ -71,3 +74,15 @@
   letter-spacing: 0.08em;
 }
 
+
+@media (max-width: 640px) {
+  .status-item--optional,
+  .status-item--cursor {
+    display: none;
+  }
+
+  .status-right {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+}

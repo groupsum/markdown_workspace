@@ -7,6 +7,8 @@ interface FooterProps {
     unsaved: boolean;
     version: string;
     online?: boolean;
+    isInstalled?: boolean;
+    updateAvailable?: boolean;
     className?: string;
 }
 
@@ -16,8 +18,12 @@ export const Footer: React.FC<FooterProps> = ({
   unsaved, 
   version, 
   online = true,
+  isInstalled = false,
+  updateAvailable = false,
   className = "" 
 }) => {
+    const shellLabel = isInstalled ? 'PWA' : 'BROWSER';
+
     return (
         <footer className={`status-bar ${className}`}>
             <div className="status-left">
@@ -31,14 +37,14 @@ export const Footer: React.FC<FooterProps> = ({
                     <span className="status-kv"> COL {cursorCol}</span>
                 </div>
                 <div className="status-sep"></div>
-                <div className="status-item" title="Encoding">
+                <div className="status-item status-item--optional" title="Encoding">
                     <span className="status-label">ENC:</span>
                     <span className="status-text-bold">UTF-8</span>
                 </div>
             </div>
 
             <div className="status-right">
-                <div className="status-item">
+                <div className="status-item status-item--optional">
                     <span className="status-label">AUTO-SAVE:</span>
                     <span className="status-text-bold status-text--on">ON</span>
                 </div>
@@ -68,6 +74,19 @@ export const Footer: React.FC<FooterProps> = ({
                     <span className="status-label">PWA VERSION:</span>
                     <span className="status-text-bold">{version}</span>
                 </div>
+                <div className="status-sep"></div>
+                <div className="status-item" title="Runtime shell">
+                    <span className="status-label">SHELL:</span>
+                    <span className="status-text-bold">{shellLabel}</span>
+                </div>
+                {updateAvailable && (
+                  <>
+                    <div className="status-sep"></div>
+                    <div className="status-item" title="Application update status">
+                      <span className="status-text-bold status-text--warn">UPDATE_READY</span>
+                    </div>
+                  </>
+                )}
             </div>
         </footer>
     );

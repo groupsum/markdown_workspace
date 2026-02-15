@@ -49,7 +49,10 @@ const App: React.FC = () => {
   );
 
   useEffect(() => {
-    const handleUpdate = () => setUpdateAvailable(true);
+    const handleUpdate = () => {
+      setUpdateAvailable(true);
+      actions.addToast('UPDATE READY: OPEN SETTINGS TO APPLY', 'info');
+    };
     const handleOnline = () => { setOnline(true); actions.addToast('SYSTEM ONLINE', 'success'); };
     const handleOffline = () => { setOnline(false); actions.addToast('SYSTEM OFFLINE', 'warning'); };
 
@@ -211,6 +214,8 @@ const App: React.FC = () => {
         unsaved={state.unsaved}
         version={APP_VERSION}
         online={online}
+        isInstalled={pwaState.isInstalled}
+        updateAvailable={pwaState.updateAvailable}
       />
     </div>
   );
@@ -220,7 +225,13 @@ const App: React.FC = () => {
       {updateAvailable && (
         <div className="update-banner">
           <span>ARCHITECTURE UPDATE READY</span>
-          <button onClick={pwaActions.requestUpdate} className="update-btn">
+          <button
+            onClick={() => {
+              actions.addToast('APPLYING UPDATE...', 'info');
+              pwaActions.requestUpdate();
+            }}
+            className="update-btn"
+          >
             <RefreshCw size={12} /> RELOAD
           </button>
         </div>
@@ -238,7 +249,10 @@ const App: React.FC = () => {
         onExport={actions.exportData}
         pwaState={pwaState}
         onPwaInstall={pwaActions.promptInstall}
-        onPwaUpdate={pwaActions.requestUpdate}
+        onPwaUpdate={() => {
+          actions.addToast('APPLYING UPDATE...', 'info');
+          pwaActions.requestUpdate();
+        }}
         onPwaAutoUpdateToggle={pwaActions.toggleAutoUpdate}
         sessionState={{
           currentProjectName: state.currentProject?.name ?? null,
