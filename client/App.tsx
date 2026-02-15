@@ -267,6 +267,22 @@ const App: React.FC = () => {
         }}
         onAutoSaveToggle={actions.setAutoSaveEnabled}
         onPersistSessionToggle={actions.setPersistSessionEnabled}
+        onTestLink={() => {
+          const activeGitConfig = actions.getActiveGitConfig();
+          const repoUrl = activeGitConfig.repoUrl.trim();
+
+          if (!repoUrl) {
+            actions.addToast('TEST LINK FAILED: REPOSITORY URL REQUIRED', 'warning');
+            return;
+          }
+
+          try {
+            const parsed = new URL(repoUrl);
+            actions.addToast(`TEST LINK OK: ${parsed.host}`, 'success');
+          } catch {
+            actions.addToast('TEST LINK FAILED: INVALID REPOSITORY URL', 'warning');
+          }
+        }}
       />
 
       <InputModal
