@@ -84,6 +84,6 @@ const toGitRepo = (repo: GithubRepo): GitRepo => ({
 export const createGithubAdapterService = (): GitAdapterService => ({
   provider: 'github',
   repoHost: 'github.com',
-  listRepos: async (accessToken) => (await listGithubRepos(accessToken)).map(toGitRepo),
-  createRepo: async (accessToken, name, description) => toGitRepo(await createGithubRepo(accessToken, name, description))
+  listRepos: async (token) => (await listGithubRepos(token)).map(toGitRepo),
+  createRepo: async (token, name, description) => toGitRepo(await createGithubRepo(token, name, description))
 });

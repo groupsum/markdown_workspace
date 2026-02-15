@@ -392,12 +392,16 @@ export const useApp = () => {
 
   const handleOidcSignIn = async () => {
       if (!proj.activeProjectId) {
-        addToast('SELECT A PROJECT BEFORE OIDC SIGN-IN', 'warning');
+        addToast('SELECT A PROJECT BEFORE AUTH SIGN-IN', 'warning');
         return;
       }
       const activeGitConfig = currentProject?.gitConfig;
       if (!activeGitConfig) {
         addToast('PROJECT CONFIG NOT AVAILABLE', 'warning');
+        return;
+      }
+      if (activeGitConfig.authMode !== 'oidc') {
+        addToast('OIDC SIGN-IN IS DISABLED WHEN AUTH MODE IS PAT', 'warning');
         return;
       }
       try {
@@ -452,7 +456,7 @@ export const useApp = () => {
       handleDeleteProject: proj.deleteProject,
       handleGitConfigUpdate: proj.updateGitConfig,
       handleOidcSignIn,
-      getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
+      getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', authMode: 'pat', patToken: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
       handleExplorerSelect,
       handleContentChange: (c: string) => {
           console.log(`[useApp] Action: handleContentChange for file -> ${activeFile?.id}`);

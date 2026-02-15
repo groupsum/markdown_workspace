@@ -82,6 +82,6 @@ const toGitRepo = (repo: GiteaRepo): GitRepo => ({
 export const createGiteaAdapterService = (): GitAdapterService => ({
   provider: 'gitea',
   repoHost: 'gitea.com',
-  listRepos: async (accessToken) => (await listGiteaRepos(accessToken)).map(toGitRepo),
-  createRepo: async (accessToken, name, description) => toGitRepo(await createGiteaRepo(accessToken, name, description))
+  listRepos: async (token) => (await listGiteaRepos(token)).map(toGitRepo),
+  createRepo: async (token, name, description) => toGitRepo(await createGiteaRepo(token, name, description))
 });
