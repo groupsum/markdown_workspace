@@ -247,6 +247,7 @@ const App: React.FC = () => {
         onGitConfigChange={actions.handleGitConfigUpdate}
         onOidcSignIn={actions.handleOidcSignIn}
         onExport={actions.exportData}
+        onRestore={actions.restoreData}
         pwaState={pwaState}
         onPwaInstall={pwaActions.promptInstall}
         onPwaUpdate={() => {
