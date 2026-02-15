@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { GitConfig } from '../../types';
 import { clearOidcCredential, readOidcCredential } from '../../services/oidc';
 import { getGitAdapterService } from '../../services/gitAdapter';
@@ -95,6 +95,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [createPending, setCreatePending] = useState(false);
+  const [lastUpdatedAt, setLastUpdatedAt] = useState<number | null>(null);
 
   const clearStaleSession = async (message: string) => {
     if (!projectId || gitConfig.authMode !== 'oidc' || !shouldInvalidateAuthSession(message)) {
@@ -109,44 +110,59 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     });
   };
 
-  useEffect(() => {
-    const loadRepos = async () => {
-      if (!projectId || (gitConfig.authMode === 'oidc' && !gitConfig.oidcProvider)) {
-        setRepoUrls([]);
-        setError('');
-        return;
-      }
-
-      if (gitConfig.authMode === 'oidc' && !gitConfig.oidcConnected) {
-        setRepoUrls([]);
-        setError('');
-        return;
-      }
-
-      if (gitConfig.authMode === 'pat' && !gitConfig.patToken.trim()) {
-        setRepoUrls([]);
-        setError('');
-        return;
-      }
-
-      setLoading(true);
+  const loadRepos = useCallback(async () => {
+    if (!projectId || (gitConfig.authMode === 'oidc' && !gitConfig.oidcProvider)) {
+      setRepoUrls([]);
       setError('');
-      try {
-        const token = await getAuthToken(projectId, gitConfig);
-        const repos = await gitAdapter.listRepos(token);
-        setRepoUrls(repos.map((repo) => repo.htmlUrl));
-      } catch (err) {
-        const message = err instanceof Error ? err.message : 'Failed to load repositories.';
-        await clearStaleSession(message);
-        setError(message);
-        setRepoUrls([]);
-      } finally {
-        setLoading(false);
-      }
+      return;
+    }
+
+    if (gitConfig.authMode === 'oidc' && !gitConfig.oidcConnected) {
+      setRepoUrls([]);
+      setError('');
+      return;
+    }
+
+    if (gitConfig.authMode === 'pat' && !gitConfig.patToken.trim()) {
+      setRepoUrls([]);
+      setError('');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    try {
+      const token = await getAuthToken(projectId, gitConfig);
+      const repos = await gitAdapter.listRepos(token);
+      setRepoUrls(repos.map((repo) => repo.htmlUrl));
+      setLastUpdatedAt(Date.now());
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to load repositories.';
+      await clearStaleSession(message);
+      setError(message);
+      setRepoUrls([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [projectId, gitConfig, gitAdapter]);
+
+  useEffect(() => {
+    void loadRepos();
+
+    const intervalId = window.setInterval(() => {
+      void loadRepos();
+    }, 60_000);
+
+    const handleManualRefresh = () => {
+      void loadRepos();
     };
 
-    void loadRepos();
-  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitConfig.authMode, gitConfig.patToken, gitAdapter]);
+    window.addEventListener('lattice:gh:refresh-repos', handleManualRefresh);
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener('lattice:gh:refresh-repos', handleManualRefresh);
+    };
+  }, [loadRepos]);
 
   const filteredSuggestions = useMemo(() => {
     const probe = normalizedInput.toLowerCase();
@@ -227,6 +243,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         ))}
       </datalist>
       {loading && <span className="text-[10px] text-[var(--fg-muted)]">LOADING_REPOSITORIES…</span>}
+      {!loading && lastUpdatedAt && <span className="text-[10px] text-[var(--fg-muted)]">UPDATED {new Date(lastUpdatedAt).toLocaleTimeString()}</span>}
       {error && <span className="text-[10px] text-[var(--danger)]">{error.toUpperCase()}</span>}
       {canCreateRepo && (
         <button

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { AppTheme, FileNode } from '../../../types';
+import { AppTheme, FileNode, GitConfig } from '../../../types';
 import {
   GitBranch,
   RefreshCw,
@@ -31,11 +31,15 @@ interface GitPaneProps {
   activeFile: FileNode | null;
   theme: AppTheme;
   unsaved: boolean;
+  projectId: string | null;
+  gitConfig: GitConfig;
+  cloudSyncTick: number;
+  onStatus: (message: string, level: 'success' | 'warning' | 'info') => void;
 }
 
 const DEFAULT_PR_TITLE_PLACEHOLDER = 'feat: concise summary of branch changes';
 
-export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved }) => {
+export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved, projectId, gitConfig, cloudSyncTick, onStatus }) => {
   const {
     branchInput,
     branches,
@@ -52,15 +56,15 @@ export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsa
     pushRemote,
     setBranchInput,
     setCommitMsg,
-    setCurrentBranch,
     setPullRequestTitle,
     stageFile,
     stagedFiles,
     syncCounts,
     undoCommit,
     unstageFile,
-    createPullRequest
-  } = useGitOperations(activeFile, unsaved);
+    createPullRequest,
+    opState
+  } = useGitOperations(activeFile, unsaved, projectId, gitConfig, onStatus, cloudSyncTick);
   const [diffMode, setDiffMode] = useState<'unified' | 'split' | 'unified-preview' | 'split-preview'>('unified');
   const [showSourceControl, setShowSourceControl] = useState(true);
   const [showStaged, setShowStaged] = useState(true);
@@ -201,7 +205,7 @@ export const status = "updated";
           <div className="git-branch-info">
              <div className="git-branch-row">
                 <GitBranch size={14} />
-                <span className="git-branch-name">{currentBranch}</span>
+                <span className="git-branch-name">{currentBranch || gitConfig.branch || "(no branch)"}</span>
              </div>
              <div className="git-branch-stats">
                 <span className="git-stat-item"><ArrowDownCircle size={12}/> {syncCounts.behind}</span>
@@ -212,8 +216,9 @@ export const status = "updated";
                   className="git-commit-input"
                   value={currentBranch}
                   aria-label="Current branch"
-                  onChange={(event) => setCurrentBranch(event.target.value)}
+                  onChange={(event) => checkoutBranch(event.target.value)}
                 >
+                  {branches.length === 0 && <option value="">No remote branches</option>}
                   {branches.map((branch) => (
                     <option key={branch} value={branch}>{branch}</option>
                   ))}
@@ -310,15 +315,22 @@ export const status = "updated";
           </div>
 
           <div className="git-sync-area">
-             <button className="git-sync-btn" onClick={fetchRemote}>
-                <ArrowDownToLine size={14} /> Fetch
+             <button className="git-sync-btn" onClick={() => void fetchRemote()} disabled={opState.fetching || opState.repoRefreshing}>
+                <ArrowDownToLine size={14} /> {opState.fetching || opState.repoRefreshing ? 'Fetching…' : 'Fetch'}
              </button>
-             <button className="git-sync-btn" onClick={pullRemote}>
-                <RefreshCw size={14} /> Pull
+             <button className="git-sync-btn" onClick={() => void pullRemote()} disabled={opState.pulling || opState.repoRefreshing}>
+                <RefreshCw size={14} /> {opState.pulling ? 'Pulling…' : 'Pull'}
              </button>
-             <button className="git-sync-btn" onClick={pushRemote}>
-                <ArrowUpToLine size={14} /> Push
+             <button className="git-sync-btn" onClick={() => void pushRemote()} disabled={opState.pushing || opState.repoRefreshing}>
+                <ArrowUpToLine size={14} /> {opState.pushing ? 'Pushing…' : 'Push'}
              </button>
+             <div className="git-empty-msg">
+               {opState.lastError
+                 ? `Sync error: ${opState.lastError}`
+                 : opState.lastSyncedAt
+                   ? `Last sync: ${new Date(opState.lastSyncedAt).toLocaleTimeString()}`
+                   : 'Sync idle'}
+             </div>
           </div>
 
           <div className="git-commit-area">

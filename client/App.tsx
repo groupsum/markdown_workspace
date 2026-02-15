@@ -20,6 +20,7 @@ const App: React.FC = () => {
   const { state, actions } = useApp();
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
+  const [cloudSyncTick, setCloudSyncTick] = useState(0);
   const { state: pwaState, actions: pwaActions } = usePwa();
 
   useKeyboardShortcuts(
@@ -168,7 +169,11 @@ const App: React.FC = () => {
           onDownload={actions.handleDownload}
           onExportHtml={actions.handleHtmlExport}
           onPrint={actions.handlePrint}
-          onCloudSync={() => actions.addToast('SYNC: CLOUD UNREACHABLE', 'warning')}
+          onCloudSync={() => {
+            setCloudSyncTick((prev) => prev + 1);
+            window.dispatchEvent(new CustomEvent('lattice:gh:refresh-repos'));
+            actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
+          }}
         />
 
         {state.appMode === 'work' ? (
@@ -201,7 +206,11 @@ const App: React.FC = () => {
             files={state.files} 
             activeFile={state.activeFile} 
             theme={state.theme}
-            unsaved={state.unsaved} 
+            unsaved={state.unsaved}
+            projectId={state.activeProjectId}
+            gitConfig={actions.getActiveGitConfig()}
+            cloudSyncTick={cloudSyncTick}
+            onStatus={actions.addToast}
           />
         )}
       </section>

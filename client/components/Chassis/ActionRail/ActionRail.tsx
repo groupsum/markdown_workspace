@@ -101,7 +101,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({
             <ToolbarButton 
               onClick={onCloudSync}
               icon={<Cloud />}
-              title="Cloud Sync (Mock)"
+              title="Cloud Sync"
               className="rail-btn--status"
             />
           </div>
