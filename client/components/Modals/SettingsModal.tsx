@@ -38,6 +38,7 @@ interface SettingsModalProps {
   };
   onAutoSaveToggle: (enabled: boolean) => void;
   onPersistSessionToggle: (enabled: boolean) => void;
+  onTestLink: () => void;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ 
@@ -57,7 +58,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onPwaAutoUpdateToggle,
   sessionState,
   onAutoSaveToggle,
-  onPersistSessionToggle
+  onPersistSessionToggle,
+  onTestLink
 }) => {
   if (!isOpen) return null;
 
@@ -244,7 +246,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       </label>
                   </div>
                   <div className="settings-action-row">
-                      <button className="modal-btn flex-1">TEST_LINK</button>
+                      <button type="button" className="modal-btn flex-1" onClick={onTestLink}>TEST_LINK</button>
                       <button className="modal-btn flex-1 modal-btn-primary">SAVE_CONFIG</button>
                   </div>
                 </div>
