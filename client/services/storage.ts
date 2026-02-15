@@ -146,7 +146,7 @@ class StorageService {
       const defaultProject: Project = {
           id: defaultProjectId,
           name: 'Core System',
-          gitConfig: { repoUrl: '', branch: 'main', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
+          gitConfig: { repoUrl: '', branch: 'main', username: '', authMode: 'pat', patToken: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
           lastOpened: Date.now(),
           createdAt: Date.now()
       };

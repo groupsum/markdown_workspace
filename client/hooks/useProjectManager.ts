@@ -9,6 +9,13 @@ const isOidcProvider = (value: string): value is OidcProviderId => {
   return value === 'github' || value === 'gitlab' || value === 'gitea';
 };
 
+const getDefaultAuthMode = (): 'oidc' | 'pat' => {
+  const mode = import.meta.env.VITE_AUTH_MODE?.toLowerCase();
+  return mode === 'oidc' ? 'oidc' : 'pat';
+};
+
+const getDefaultPatToken = (): string => import.meta.env.VITE_PAT_TOKEN?.trim() || '';
+
 export const useProjectManager = (
   addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
 ) => {
@@ -27,10 +34,15 @@ export const useProjectManager = (
         const credential = await readOidcCredential(project.id);
         const providerCandidate = credential?.provider || project.gitConfig?.oidcProvider || '';
         const oidcProvider: OidcProviderId = isOidcProvider(providerCandidate) ? providerCandidate : 'github';
+        const defaultAuthMode = getDefaultAuthMode();
         const gitConfig: GitConfig = {
           repoUrl: project.gitConfig?.repoUrl || '',
           branch: project.gitConfig?.branch || 'main',
           username: credential?.username || project.gitConfig?.username || '',
+          authMode: project.gitConfig?.authMode === 'oidc' || project.gitConfig?.authMode === 'pat'
+            ? project.gitConfig.authMode
+            : defaultAuthMode,
+          patToken: project.gitConfig?.patToken || getDefaultPatToken(),
           oidcProvider,
           oidcConnected: Boolean(credential),
           oidcSubject: credential?.subject || project.gitConfig?.oidcSubject || ''
@@ -55,7 +67,7 @@ export const useProjectManager = (
      const newProject: Project = {
          id: `proj-${Date.now()}`,
          name,
-         gitConfig: { repoUrl: '', branch: 'main', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
+         gitConfig: { repoUrl: '', branch: 'main', username: '', authMode: getDefaultAuthMode(), patToken: getDefaultPatToken(), oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
          createdAt: Date.now(),
          lastOpened: Date.now()
      };

@@ -27,9 +27,25 @@ const normalizeRepoUrl = (value: string, host: string): string => {
   return trimmed;
 };
 
-const shouldInvalidateOidcSession = (message: string): boolean => {
+const shouldInvalidateAuthSession = (message: string): boolean => {
   const normalized = message.toLowerCase();
-  return normalized.includes('reconnect oidc') || normalized.includes('401') || normalized.includes('403') || normalized.includes('unauthorized') || normalized.includes('forbidden');
+  return normalized.includes('401') || normalized.includes('403') || normalized.includes('unauthorized') || normalized.includes('forbidden');
+};
+
+const getAuthToken = async (projectId: string, gitConfig: GitConfig): Promise<string> => {
+  if (gitConfig.authMode === 'pat') {
+    const token = gitConfig.patToken.trim();
+    if (!token) {
+      throw new Error('Enter a PAT token to load repositories.');
+    }
+    return token;
+  }
+
+  const credential = await readOidcCredential(projectId);
+  if (!credential?.accessToken) {
+    throw new Error('Connect OIDC to load repositories.');
+  }
+  return credential.accessToken;
 };
 
 export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange, onGitConfigChange }) => {
@@ -51,7 +67,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
   const [createPending, setCreatePending] = useState(false);
 
   const clearStaleSession = async (message: string) => {
-    if (!projectId || !shouldInvalidateOidcSession(message)) {
+    if (!projectId || gitConfig.authMode !== 'oidc' || !shouldInvalidateAuthSession(message)) {
       return;
     }
 
@@ -65,7 +81,19 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
 
   useEffect(() => {
     const loadRepos = async () => {
-      if (!projectId || !gitConfig.oidcProvider || !gitConfig.oidcConnected) {
+      if (!projectId || !gitConfig.oidcProvider) {
+        setRepoUrls([]);
+        setError('');
+        return;
+      }
+
+      if (gitConfig.authMode === 'oidc' && !gitConfig.oidcConnected) {
+        setRepoUrls([]);
+        setError('');
+        return;
+      }
+
+      if (gitConfig.authMode === 'pat' && !gitConfig.patToken.trim()) {
         setRepoUrls([]);
         setError('');
         return;
@@ -74,11 +102,8 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
       setLoading(true);
       setError('');
       try {
-        const credential = await readOidcCredential(projectId);
-        if (!credential?.accessToken) {
-          throw new Error('Connect OIDC to load repositories.');
-        }
-        const repos = await gitAdapter.listRepos(credential.accessToken);
+        const token = await getAuthToken(projectId, gitConfig);
+        const repos = await gitAdapter.listRepos(token);
         setRepoUrls(repos.map((repo) => repo.htmlUrl));
       } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to load repositories.';
@@ -91,7 +116,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     };
 
     void loadRepos();
-  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitAdapter]);
+  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitConfig.authMode, gitConfig.patToken, gitAdapter]);
 
   const filteredSuggestions = useMemo(() => {
     const probe = normalizedInput.toLowerCase();
@@ -106,7 +131,11 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     [repoUrls, normalizedInput]
   );
 
-  const canCreateRepo = gitConfig.oidcConnected && Boolean(projectId) && !repoExists && Boolean(getRepoNameFromValue(gitConfig.repoUrl));
+  const canCreateRepo =
+    Boolean(projectId) &&
+    !repoExists &&
+    Boolean(getRepoNameFromValue(gitConfig.repoUrl)) &&
+    (gitConfig.authMode === 'pat' ? Boolean(gitConfig.patToken.trim()) : gitConfig.oidcConnected);
 
   const handleCreatePrivateRepo = async () => {
     if (!projectId) {
@@ -122,12 +151,8 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     setError('');
 
     try {
-      const credential = await readOidcCredential(projectId);
-      if (!credential?.accessToken) {
-        throw new Error('Connect OIDC to create repositories.');
-      }
-
-      const created = await gitAdapter.createRepo(credential.accessToken, repoName);
+      const token = await getAuthToken(projectId, gitConfig);
+      const created = await gitAdapter.createRepo(token, repoName);
       onRepoUrlChange(created.htmlUrl);
       setRepoUrls((prev) => Array.from(new Set([...prev, created.htmlUrl])).sort((a, b) => a.localeCompare(b)));
     } catch (err) {

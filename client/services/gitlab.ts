@@ -82,6 +82,6 @@ const toGitRepo = (project: GitlabProject): GitRepo => ({
 export const createGitlabAdapterService = (): GitAdapterService => ({
   provider: 'gitlab',
   repoHost: 'gitlab.com',
-  listRepos: async (accessToken) => (await listGitlabProjects(accessToken)).map(toGitRepo),
-  createRepo: async (accessToken, name, description) => toGitRepo(await createGitlabProject(accessToken, name, description))
+  listRepos: async (token) => (await listGitlabProjects(token)).map(toGitRepo),
+  createRepo: async (token, name, description) => toGitRepo(await createGitlabProject(token, name, description))
 });

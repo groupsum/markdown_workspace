@@ -36,10 +36,14 @@ export interface GitConfig {
   repoUrl: string;
   branch: string;
   username: string;
+  authMode: AuthMode;
+  patToken: string;
   oidcProvider: OidcProviderId | '';
   oidcConnected: boolean;
   oidcSubject: string;
 }
+
+export type AuthMode = 'oidc' | 'pat';
 
 export type OidcProviderId = 'github' | 'gitlab' | 'gitea';
 

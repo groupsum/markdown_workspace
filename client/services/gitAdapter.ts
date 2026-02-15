@@ -14,8 +14,8 @@ export interface GitRepo {
 export interface GitAdapterService {
   readonly provider: OidcProviderId;
   readonly repoHost: string;
-  listRepos: (accessToken: string) => Promise<GitRepo[]>;
-  createRepo: (accessToken: string, name: string, description?: string) => Promise<GitRepo>;
+  listRepos: (token: string) => Promise<GitRepo[]>;
+  createRepo: (token: string, name: string, description?: string) => Promise<GitRepo>;
 }
 
 const adapters: Record<OidcProviderId, GitAdapterService> = {
