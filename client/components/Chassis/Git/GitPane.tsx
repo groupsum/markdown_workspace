@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { AppTheme, FileNode } from '../../../types';
-import { GitBranch, RefreshCw, Check, ArrowUpCircle, ArrowDownCircle, FileDiff, Columns, Eye, LayoutGrid, FileText, ChevronDown, ChevronRight } from 'lucide-react';
+import { GitBranch, RefreshCw, Check, ArrowUpCircle, ArrowDownCircle, FileDiff, Columns, Eye, LayoutGrid, FileText, ChevronDown, ChevronRight, Undo2, GitPullRequest, ArrowDownToLine, ArrowUpToLine } from 'lucide-react';
 import { useGitOperations } from '../../../hooks/useGitOperations';
 import { PreviewPane } from '../WorkPane/Stage/Preview';
 
@@ -13,12 +13,29 @@ interface GitPaneProps {
 
 export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved }) => {
   const {
+    branchInput,
+    branches,
     commitMsg,
-    setCommitMsg,
-    stagedFiles,
+    currentBranch,
     changedFiles,
+    checkoutBranch,
+    commit,
+    fetchRemote,
+    latestCommit,
+    pullRemote,
+    pullRequestTitle,
+    pullRequests,
+    pushRemote,
+    setBranchInput,
+    setCommitMsg,
+    setCurrentBranch,
+    setPullRequestTitle,
     stageFile,
-    commit
+    stagedFiles,
+    syncCounts,
+    undoCommit,
+    unstageFile,
+    createPullRequest
   } = useGitOperations(activeFile, unsaved);
   const [diffMode, setDiffMode] = useState<'unified' | 'split' | 'unified-preview' | 'split-preview'>('unified');
   const [showSourceControl, setShowSourceControl] = useState(true);
@@ -93,12 +110,33 @@ export const status = "updated";
           <div className="git-branch-info">
              <div className="git-branch-row">
                 <GitBranch size={14} />
-                <span className="git-branch-name">main</span>
+                <span className="git-branch-name">{currentBranch}</span>
              </div>
              <div className="git-branch-stats">
-                <span className="git-stat-item"><ArrowDownCircle size={12}/> 0</span>
-                <span className="git-stat-item"><ArrowUpCircle size={12}/> 0</span>
+                <span className="git-stat-item"><ArrowDownCircle size={12}/> {syncCounts.behind}</span>
+                <span className="git-stat-item"><ArrowUpCircle size={12}/> {syncCounts.ahead}</span>
              </div>
+             <div className="git-branch-select-row">
+                <select
+                  className="git-commit-input"
+                  value={currentBranch}
+                  aria-label="Current branch"
+                  onChange={(event) => setCurrentBranch(event.target.value)}
+                >
+                  {branches.map((branch) => (
+                    <option key={branch} value={branch}>{branch}</option>
+                  ))}
+                </select>
+                <input
+                  className="git-commit-input"
+                  value={branchInput}
+                  placeholder="new-branch"
+                  onChange={(event) => setBranchInput(event.target.value)}
+                />
+                <button className="git-stage-btn" onClick={() => checkoutBranch(branchInput || currentBranch)} title="Checkout branch">
+                  CHECKOUT
+                </button>
+              </div>
           </div>
 
           <div className="git-section">
@@ -109,8 +147,23 @@ export const status = "updated";
               </span>
               <span>{stagedFiles.length}</span>
             </button>
-            {showStaged && stagedFiles.length === 0 && (
-              <div className="git-empty-msg">No staged changes</div>
+            {showStaged && stagedFiles.length === 0 && <div className="git-empty-msg">No staged changes</div>}
+            {showStaged && stagedFiles.length > 0 && (
+              <div className="git-list">
+                {stagedFiles.map((fileId) => {
+                  const file = files.find((candidate) => candidate.id === fileId);
+                  return (
+                    <div key={fileId} className="git-item">
+                      <FileDiff size={14} className="git-item__icon" />
+                      <span className="git-item__name">{file?.name || fileId}</span>
+                      <span className="git-item__status">A</span>
+                      <button onClick={() => unstageFile(fileId)} className="git-stage-btn" title="Unstage File">
+                        UNSTAGE
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
 
@@ -154,12 +207,42 @@ export const status = "updated";
             >
               <Check size={14} /> COMMIT
             </button>
+            <button
+              className="git-commit-btn"
+              disabled={!latestCommit}
+              onClick={undoCommit}
+            >
+              <Undo2 size={14} /> UNDO COMMIT
+            </button>
           </div>
           
           <div className="git-sync-area">
-             <button className="git-sync-btn">
-                <RefreshCw size={14} /> SYNC CHANGES
+             <button className="git-sync-btn" onClick={fetchRemote}>
+                <ArrowDownToLine size={14} /> FETCH
              </button>
+             <button className="git-sync-btn" onClick={pullRemote}>
+                <RefreshCw size={14} /> PULL
+             </button>
+             <button className="git-sync-btn" onClick={pushRemote}>
+                <ArrowUpToLine size={14} /> PUSH
+             </button>
+          </div>
+
+          <div className="git-commit-area">
+            <input
+              className="git-commit-input"
+              placeholder="Pull request title"
+              value={pullRequestTitle}
+              onChange={(event) => setPullRequestTitle(event.target.value)}
+            />
+            <button
+              className="git-commit-btn"
+              onClick={() => createPullRequest('main')}
+              disabled={!pullRequestTitle.trim() || currentBranch === 'main'}
+            >
+              <GitPullRequest size={14} /> OPEN PR
+            </button>
+            <div className="git-empty-msg">PRs open: {pullRequests.length}</div>
           </div>
         </div>
       </div>
