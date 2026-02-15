@@ -196,3 +196,13 @@
     flex-direction: row;
   }
 }
+
+
+@media (max-aspect-ratio: 3/4), (hover: none) and (pointer: coarse) {
+  .workspace-sidebar,
+  .git-sidebar {
+    width: 100vw;
+    max-width: 100%;
+    min-width: 0;
+  }
+}

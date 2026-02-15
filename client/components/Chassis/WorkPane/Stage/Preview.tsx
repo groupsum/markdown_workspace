@@ -56,8 +56,8 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
           blockquote: ({node, ...props}) => <blockquote className="md-blockquote" {...props} />,
           
           // Lists
-          ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
-          ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
+          ul: ({node, className, ...props}: any) => <ul className={mergeClassNames('md-ul', className)} {...props} />,
+          ol: ({node, className, ...props}: any) => <ol className={mergeClassNames('md-ol', className)} {...props} />,
           li: ({node, ...props}) => {
             const isTask = typeof (node as { checked?: boolean })?.checked === 'boolean';
             return (
@@ -127,11 +127,11 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
           ),
 
           // Checkbox (Input)
-          input: ({node, ...props}) => {
+          input: ({node, className, ...props}: any) => {
             if (props.type === 'checkbox') {
-              return <input type="checkbox" className="md-checkbox" {...props} />;
+              return <input type="checkbox" className={mergeClassNames('md-checkbox', className)} {...props} />;
             }
-            return <input {...props} />;
+            return <input className={className} {...props} />;
           },
 
           // Links
