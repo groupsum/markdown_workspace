@@ -21,6 +21,7 @@ This repository defines and maintains a markdown-driven workspace used to author
 - After capturing screenshots, agents must review them critically and continue iterating on UI/CSS until the result strongly aligns with prompt expectations.
 - The final result must exceed baseline UI/UX and CSS quality standards, delivering exceptional clarity, polish, and usability.
 - Capture all relevant views, modes, panes, and modals for each supported theme.
+- Always use screenshots to show all views, modes, panes, and modals for each and every theme such that we can validate each and every theme for each and every view, mode, pane, modal.
 
 ## Versioning and infrastructure constraints
 - Always increment the package version on every commit, using only minor or patch releases.
@@ -28,6 +29,8 @@ This repository defines and maintains a markdown-driven workspace used to author
 
 ## Aspect ratios and responsive support requirements
 Viewport and aspect ratio breakpoints are defined once in `client/public/css/base/viewports.css` and must remain consistent across themes. Themes are responsible for unique styling within each supported band.
+
+The contract includes portrait, square/hybrid, landscape, wide, and ultra-wide aspect ratios plus XS/SM/MD/LG/XL/XXL width tiers, short/compact/tall/ultra-tall height tiers, and touch/precision device classes.
 
 ### Required aspect ratio classes
 - Portrait
@@ -53,3 +56,8 @@ Viewport and aspect ratio breakpoints are defined once in `client/public/css/bas
 ### Required device view/input types
 - Touch-first devices
 - Precision pointer devices
+
+## Test tooling instructions
+- Do not run `pytest` or `peagen` unless instructed to.
+- If running `pytest` on the swarmauri-sdk, always run tests from `/workspace/swarmauri-sdk/pkgs` using: `uv run --package <member name> --directory <package directory name> pytest`.
+- If running `peagen`, use the `peagen` command and reference docs in `standards/peagen` as needed.
