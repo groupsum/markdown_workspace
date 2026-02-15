@@ -92,6 +92,14 @@ export const usePwa = () => {
     });
   }, []);
 
+  const promoteWaitingWorker = useCallback((registration: ServiceWorkerRegistration, shouldReload: boolean) => {
+    if (!registration.waiting) {
+      return;
+    }
+    shouldReloadRef.current = shouldReload;
+    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }, []);
+
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
@@ -187,11 +195,12 @@ export const usePwa = () => {
     const waitingVersion = getWorkerVersion(registration.waiting);
     if (waitingVersion && failedVersions.includes(waitingVersion)) {
       setUpdateAvailable(false);
+      promoteWaitingWorker(registration, false);
+      registration.update();
       return;
     }
-    shouldReloadRef.current = true;
-    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-  }, [autoUpdateEnabled, updateAvailable, failedVersions]);
+    promoteWaitingWorker(registration, true);
+  }, [autoUpdateEnabled, updateAvailable, failedVersions, promoteWaitingWorker]);
 
 
   useEffect(() => {
@@ -273,14 +282,15 @@ export const usePwa = () => {
       const waitingVersion = getWorkerVersion(registration.waiting);
       if (waitingVersion && failedVersions.includes(waitingVersion)) {
         setUpdateAvailable(false);
+        promoteWaitingWorker(registration, false);
+        registration.update();
         return;
       }
-      shouldReloadRef.current = true;
-      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      promoteWaitingWorker(registration, true);
       return;
     }
     registration.update();
-  }, [failedVersions]);
+  }, [failedVersions, promoteWaitingWorker]);
 
   const checkForUpdates = useCallback(() => {
     registrationRef.current?.update();
