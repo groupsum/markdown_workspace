@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { AppTheme, FileNode } from '../../../types';
-import { GitBranch, RefreshCw, Check, ArrowUpCircle, ArrowDownCircle, XCircle, FileDiff, Columns, Eye, LayoutGrid, FileText } from 'lucide-react';
+import { GitBranch, RefreshCw, Check, ArrowUpCircle, ArrowDownCircle, FileDiff, Columns, Eye, LayoutGrid, FileText, ChevronDown, ChevronRight } from 'lucide-react';
 import { useGitOperations } from '../../../hooks/useGitOperations';
 import { PreviewPane } from '../WorkPane/Stage/Preview';
 
@@ -9,10 +9,9 @@ interface GitPaneProps {
   activeFile: FileNode | null;
   theme: AppTheme;
   unsaved: boolean;
-  onClose: () => void;
 }
 
-export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved, onClose }) => {
+export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsaved }) => {
   const {
     commitMsg,
     setCommitMsg,
@@ -22,6 +21,9 @@ export const GitPane: React.FC<GitPaneProps> = ({ files, activeFile, theme, unsa
     commit
   } = useGitOperations(activeFile, unsaved);
   const [diffMode, setDiffMode] = useState<'unified' | 'split' | 'unified-preview' | 'split-preview'>('unified');
+  const [showSourceControl, setShowSourceControl] = useState(true);
+  const [showStaged, setShowStaged] = useState(true);
+  const [showChanges, setShowChanges] = useState(true);
 
   const diffModes = [
     { id: 'unified', label: 'Unified diff viewer', icon: <FileText size={14} /> },
@@ -76,10 +78,18 @@ export const status = "updated";
             <GitBranch size={14} className="git-header-icon"/>
             Source Control
           </span>
-          <button onClick={onClose} className="git-close-btn" title="Close"><XCircle size={14}/></button>
+          <button
+            type="button"
+            className="git-icon-btn"
+            title={showSourceControl ? 'Collapse Source Control' : 'Expand Source Control'}
+            aria-label={showSourceControl ? 'Collapse Source Control' : 'Expand Source Control'}
+            onClick={() => setShowSourceControl((prev) => !prev)}
+          >
+            {showSourceControl ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+          </button>
         </div>
 
-        <div className="git-body">
+        <div className={`git-body ${showSourceControl ? '' : 'is-collapsed'}`}>
           <div className="git-branch-info">
              <div className="git-branch-row">
                 <GitBranch size={14} />
@@ -92,19 +102,27 @@ export const status = "updated";
           </div>
 
           <div className="git-section">
-            <h3 className="git-section-title">
-              Staged Changes <span>{stagedFiles.length}</span>
-            </h3>
-            {stagedFiles.length === 0 && (
-               <div className="git-empty-msg">No staged changes</div>
+            <button type="button" className="git-section-title" onClick={() => setShowStaged((prev) => !prev)}>
+              <span className="git-section-title-text">
+                {showStaged ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                Staged Changes
+              </span>
+              <span>{stagedFiles.length}</span>
+            </button>
+            {showStaged && stagedFiles.length === 0 && (
+              <div className="git-empty-msg">No staged changes</div>
             )}
           </div>
 
           <div className="git-section">
-            <h3 className="git-section-title">
-              Changes <span>{changedFiles.length}</span>
-            </h3>
-            {changedFiles.length > 0 ? (
+            <button type="button" className="git-section-title" onClick={() => setShowChanges((prev) => !prev)}>
+              <span className="git-section-title-text">
+                {showChanges ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                Changes
+              </span>
+              <span>{changedFiles.length}</span>
+            </button>
+            {showChanges && changedFiles.length > 0 ? (
                <div className="git-list">
                  {changedFiles.map(f => (
                    <div key={f.id} className="git-item">
@@ -117,9 +135,9 @@ export const status = "updated";
                    </div>
                  ))}
                </div>
-            ) : (
+            ) : showChanges ? (
                <div className="git-empty-msg">Working tree clean</div>
-            )}
+            ) : null}
           </div>
 
           <div className="git-commit-area">

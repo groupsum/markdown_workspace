@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
-import { Undo, Redo, Bold, Italic, Strikethrough, Columns, Maximize2, Eye } from 'lucide-react';
+import { Undo, Redo, Bold, Italic, Underline, Strikethrough, Columns, Maximize2, Eye, List, ListChecks, SquareCheckBig, IndentIncrease, IndentDecrease } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
 
 interface EditorPaneProps {
@@ -36,6 +36,13 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 }) => {
   const [splitPos, setSplitPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [selectionState, setSelectionState] = useState({
+    hasSelection: false,
+    bold: false,
+    italic: false,
+    underline: false,
+    strike: false
+  });
   const getViewportWidth = () => {
     if (typeof window === 'undefined') return 1024;
     return window.visualViewport?.width ?? document.documentElement.clientWidth ?? window.innerWidth;
@@ -141,22 +148,127 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     onChange(next);
   };
 
-  const insertFormat = (startTag: string, endTag: string) => {
+  const detectWrapped = (value: string, start: number, end: number, startTag: string, endTag: string) => {
+    if (start === end) return false;
+    const before = value.slice(Math.max(0, start - startTag.length), start);
+    const after = value.slice(end, end + endTag.length);
+    return before === startTag && after === endTag;
+  };
+
+  const refreshSelectionState = () => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const hasSelection = start !== end;
+    const value = textarea.value;
+    setSelectionState({
+      hasSelection,
+      bold: hasSelection && detectWrapped(value, start, end, '**', '**'),
+      italic: hasSelection && detectWrapped(value, start, end, '_', '_'),
+      underline: hasSelection && detectWrapped(value, start, end, '<u>', '</u>'),
+      strike: hasSelection && detectWrapped(value, start, end, '~~', '~~')
+    });
+  };
+
+  const toggleInlineFormat = (startTag: string, endTag: string) => {
     const textarea = textareaRef.current;
     if (!textarea) return;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
     const text = textarea.value;
-    const before = text.substring(0, start);
-    const selection = text.substring(start, end);
-    const after = text.substring(end);
-    const newText = `${before}${startTag}${selection}${endTag}${after}`;
+    const isWrapped = detectWrapped(text, start, end, startTag, endTag);
+
+    let newText = text;
+    let nextStart = start;
+    let nextEnd = end;
+
+    if (isWrapped) {
+      const wrapperStart = start - startTag.length;
+      const wrapperEnd = end + endTag.length;
+      newText = `${text.slice(0, wrapperStart)}${text.slice(start, end)}${text.slice(wrapperEnd)}`;
+      nextStart = wrapperStart;
+      nextEnd = wrapperStart + (end - start);
+    } else {
+      const before = text.substring(0, start);
+      const selection = text.substring(start, end);
+      const after = text.substring(end);
+      newText = `${before}${startTag}${selection}${endTag}${after}`;
+      nextStart = start + startTag.length;
+      nextEnd = end + startTag.length;
+      if (start === end) {
+        nextEnd = nextStart;
+      }
+    }
+
     updateContent(newText);
     setTimeout(() => {
       textarea.focus();
-      textarea.setSelectionRange(start + startTag.length, end + startTag.length);
+      textarea.setSelectionRange(nextStart, nextEnd);
       updateCursor();
+      refreshSelectionState();
     }, 0);
+  };
+
+  const transformSelectedLines = (transformLine: (line: string) => string, preserveCursor = true) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    const text = textarea.value;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+    const nextBreak = text.indexOf('\n', end);
+    const lineEnd = nextBreak === -1 ? text.length : nextBreak;
+    const selectedBlock = text.slice(lineStart, lineEnd);
+    const updatedBlock = selectedBlock
+      .split('\n')
+      .map(transformLine)
+      .join('\n');
+    const updated = `${text.slice(0, lineStart)}${updatedBlock}${text.slice(lineEnd)}`;
+    updateContent(updated);
+    setTimeout(() => {
+      textarea.focus();
+      if (preserveCursor) {
+        const delta = updatedBlock.length - selectedBlock.length;
+        const nextStart = Math.max(lineStart, start);
+        const nextEnd = Math.max(nextStart, end + delta);
+        textarea.setSelectionRange(nextStart, nextEnd);
+      }
+      updateCursor();
+      refreshSelectionState();
+    }, 0);
+  };
+
+  const toggleBulletList = () => {
+    transformSelectedLines((line) => {
+      if (/^\s*[-*+]\s+/.test(line)) {
+        return line.replace(/^(\s*)[-*+]\s+/, '$1');
+      }
+      return line.replace(/^(\s*)/, '$1- ');
+    });
+  };
+
+  const applyCheckbox = () => {
+    transformSelectedLines((line) => {
+      if (/^\s*[-*+]\s+\[[ xX]\]\s+/.test(line)) return line;
+      if (/^\s*[-*+]\s+/.test(line)) {
+        return line.replace(/^(\s*)[-*+]\s+/, '$1- [ ] ');
+      }
+      return line.replace(/^(\s*)/, '$1- [ ] ');
+    });
+  };
+
+  const checkCheckbox = () => {
+    transformSelectedLines((line) => line.replace(/^(\s*[-*+]\s+)\[\s\]\s+/, '$1[x] '));
+  };
+
+  const indentSelectedLines = (dedent = false) => {
+    transformSelectedLines((line) => {
+      if (!dedent) return `\t${line}`;
+      if (line.startsWith('\t')) return line.slice(1);
+      if (line.startsWith('  ')) return line.slice(2);
+      return line;
+    });
   };
 
   const handleMouseDown = () => setIsDragging(true);
@@ -208,18 +320,17 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       const lines = selectedBlock.split('\n');
       const isMultiLine = lines.length > 1 || start !== end;
       if (!isMultiLine) {
-        if (e.shiftKey) {
-          if (text[lineStart] === '\t') {
-            const updated = `${text.slice(0, lineStart)}${text.slice(lineStart + 1)}`;
-            updateContent(updated);
-            setTimeout(() => {
-              const nextPos = Math.max(start - 1, lineStart);
-              textarea.focus();
-              textarea.setSelectionRange(nextPos, nextPos);
-              updateCursor();
-            }, 0);
-            return;
-          }
+        if (e.shiftKey && text[lineStart] === '\t') {
+          const updated = `${text.slice(0, lineStart)}${text.slice(lineStart + 1)}`;
+          updateContent(updated);
+          setTimeout(() => {
+            const nextPos = Math.max(start - 1, lineStart);
+            textarea.focus();
+            textarea.setSelectionRange(nextPos, nextPos);
+            updateCursor();
+            refreshSelectionState();
+          }, 0);
+          return;
         }
         const updated = `${text.slice(0, start)}\t${text.slice(end)}`;
         updateContent(updated);
@@ -228,6 +339,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
           textarea.focus();
           textarea.setSelectionRange(nextPos, nextPos);
           updateCursor();
+          refreshSelectionState();
         }, 0);
         return;
       }
@@ -261,6 +373,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
         textarea.focus();
         textarea.setSelectionRange(nextStart, nextEnd);
         updateCursor();
+        refreshSelectionState();
       }, 0);
       return;
     }
@@ -271,17 +384,22 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     const key = e.key.toLowerCase();
     if (key === 'b') {
       e.preventDefault();
-      insertFormat('**', '**');
+      toggleInlineFormat('**', '**');
       return;
     }
     if (key === 'i') {
       e.preventDefault();
-      insertFormat('_', '_');
+      toggleInlineFormat('_', '_');
+      return;
+    }
+    if (key === 'u') {
+      e.preventDefault();
+      toggleInlineFormat('<u>', '</u>');
       return;
     }
     if (key === 'x' && e.shiftKey) {
       e.preventDefault();
-      insertFormat('~~', '~~');
+      toggleInlineFormat('~~', '~~');
       return;
     }
     if (key === 'z') {
@@ -342,7 +460,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                   onChange={(e) => updateContent(e.target.value)}
                   onKeyDown={handleEditorKeyDown}
                   onKeyUp={updateCursor}
-                  onClick={updateCursor}
+                  onClick={() => {
+                    updateCursor();
+                    refreshSelectionState();
+                  }}
+                  onSelect={refreshSelectionState}
                   onScroll={handleScroll}
                   spellCheck={false}
                   placeholder="START_INPUT..."
@@ -366,21 +488,16 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm, remarkSupersub]}
                   components={{
-                    ul: ({node, ...props}) => <ul className="md-ul" {...props} />,
-                    ol: ({node, ...props}) => <ol className="md-ol" {...props} />,
+                    ul: ({node, className, ...props}: any) => <ul className={mergeClassNames('md-ul', className)} {...props} />,
+                    ol: ({node, className, ...props}: any) => <ol className={mergeClassNames('md-ol', className)} {...props} />,
                     li: ({node, children, ...props}) => {
                       const isTask = typeof (node as { checked?: boolean })?.checked === 'boolean';
-                      const hasNestedList = Array.isArray((node as any)?.children)
-                        ? (node as any).children.some((child: { type?: string }) => child?.type === 'list')
-                        : false;
                       return (
                         <li
                           className={mergeClassNames(
                             'md-li',
-                            isTask ? 'md-task-list-item' : undefined,
-                            hasNestedList ? 'md-li-has-nested-list' : undefined
+                            isTask ? 'md-task-list-item' : undefined
                           )}
-                          data-has-nested-list={hasNestedList ? 'true' : undefined}
                           data-checked={isTask ? String((node as { checked?: boolean }).checked) : undefined}
                           {...props}
                         >
@@ -444,11 +561,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                         {...props}
                       />
                     ),
-                    input: ({node, ...props}) => {
+                    input: ({node, className, ...props}: any) => {
                       if (props.type === 'checkbox') {
-                        return <input type="checkbox" className="md-checkbox" {...props} />;
+                        return <input type="checkbox" className={mergeClassNames('md-checkbox', className)} {...props} />;
                       }
-                      return <input {...props} />;
+                      return <input className={className} {...props} />;
                     },
                     code({node, inline, className, children, ...props}: any) {
                       const match = /language-(\w+)/.exec(className || '');
@@ -491,10 +608,16 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              </button>
              <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
              <div className="view-toolbar-divider"></div>
-             <button onClick={() => insertFormat('~~', '~~')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
+             <button onClick={() => toggleInlineFormat('~~', '~~')} className={`view-toolbar-btn ${selectionState.strike ? 'active' : ''}`} title="Strikethrough"><Strikethrough size={12}/></button>
              <div className="view-toolbar-divider"></div>
-             <button onClick={() => insertFormat('**', '**')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
-             <button onClick={() => insertFormat('_', '_')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
+             <button onClick={() => toggleInlineFormat('**', '**')} className={`view-toolbar-btn ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>
+             <button onClick={() => toggleInlineFormat('_', '_')} className={`view-toolbar-btn ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>
+             <button onClick={() => toggleInlineFormat('<u>', '</u>')} className={`view-toolbar-btn ${selectionState.underline ? 'active' : ''}`} title="Underline"><Underline size={12}/></button>
+             <button onClick={toggleBulletList} className="view-toolbar-btn" title="Bullet List"><List size={12}/></button>
+             <button onClick={applyCheckbox} className="view-toolbar-btn" title="Create Checkbox"><ListChecks size={12}/></button>
+             <button onClick={checkCheckbox} className="view-toolbar-btn" title="Check Checkbox"><SquareCheckBig size={12}/></button>
+             <button onClick={() => indentSelectedLines(false)} className="view-toolbar-btn" title="Indent"><IndentIncrease size={12}/></button>
+             <button onClick={() => indentSelectedLines(true)} className="view-toolbar-btn" title="Dedent"><IndentDecrease size={12}/></button>
              <div className="view-toolbar-divider"></div>
              <button onClick={undo} disabled={history.past.length === 0} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
              <button onClick={redo} disabled={history.future.length === 0} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>

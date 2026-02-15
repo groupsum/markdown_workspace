@@ -57,6 +57,17 @@
   letter-spacing: 0.08em;
   color: var(--fg-primary);
   margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.git-section-title:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .git-section-title span {

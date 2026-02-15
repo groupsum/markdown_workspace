@@ -202,7 +202,6 @@ const App: React.FC = () => {
             activeFile={state.activeFile} 
             theme={state.theme}
             unsaved={state.unsaved} 
-            onClose={() => actions.setAppMode('work')} 
           />
         )}
       </section>
