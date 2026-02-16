@@ -15,6 +15,49 @@ import { useApp } from './hooks/useApp';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { usePwa } from './hooks/usePwa';
 import { APP_VERSION } from './constants';
+import type { OidcProviderId } from './types';
+
+const PROVIDER_REPO_HOST: Record<OidcProviderId, string> = {
+  github: 'github.com',
+  gitlab: 'gitlab.com',
+  gitea: 'gitea.com'
+};
+
+const inferPatProvider = (token: string): OidcProviderId | null => {
+  const trimmed = token.trim().toLowerCase();
+  if (!trimmed) return null;
+
+  if (trimmed.startsWith('ghp_') || trimmed.startsWith('github_pat_') || trimmed.startsWith('gho_') || trimmed.startsWith('ghu_')) {
+    return 'github';
+  }
+
+  if (trimmed.startsWith('glpat-')) {
+    return 'gitlab';
+  }
+
+  return null;
+};
+
+const normalizeRepositoryUrl = (value: string, defaultHost: string): string => {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  if (/^[\w.-]+\/[\w.-]+(?:\.git)?$/.test(trimmed)) {
+    return `https://${defaultHost}/${trimmed}`;
+  }
+
+  if (/^[\w.-]+\.[\w.-]+\//.test(trimmed)) {
+    return `https://${trimmed}`;
+  }
+
+  return trimmed;
+};
 
 const App: React.FC = () => {
   const { state, actions } = useApp();
@@ -284,8 +327,15 @@ const App: React.FC = () => {
             return;
           }
 
+          const selectedProvider: OidcProviderId = activeGitConfig.authMode === 'pat'
+            ? inferPatProvider(activeGitConfig.patToken) || activeGitConfig.oidcProvider || 'github'
+            : activeGitConfig.oidcProvider || 'github';
+
+          const defaultHost = PROVIDER_REPO_HOST[selectedProvider];
+          const candidateUrl = normalizeRepositoryUrl(repoUrl, defaultHost);
+
           try {
-            const parsed = new URL(repoUrl);
+            const parsed = new URL(candidateUrl);
             actions.addToast(`TEST LINK OK: ${parsed.host}`, 'success');
           } catch {
             actions.addToast('TEST LINK FAILED: INVALID REPOSITORY URL', 'warning');
