@@ -50,6 +50,19 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({ gitConfi
 
       {gitConfig.authMode === 'pat' ? (
         <>
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-bold text-[var(--fg-muted)]">PAT PROVIDER</span>
+            <select
+              className="modal-input !text-xs !py-3"
+              value={selectedProviderId}
+              onChange={(e) => handleProviderSelect(e.target.value as OidcProviderId)}
+            >
+              {oidcAdapters.map((adapter) => (
+                <option key={adapter.id} value={adapter.id}>{adapter.label}</option>
+              ))}
+            </select>
+          </label>
+
           <div className="rounded border border-[var(--border-color)] bg-[var(--bg-inset)] px-3 py-2">
             <span className={`text-[10px] font-bold ${gitConfig.patToken.trim() ? 'text-[var(--accent)]' : 'text-[var(--danger)]'}`}>
               {gitConfig.patToken.trim() ? 'AUTH_STATE: TOKEN_READY' : 'AUTH_STATE: TOKEN_REQUIRED'}
