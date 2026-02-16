@@ -10,8 +10,11 @@ interface RepositoryAutocompleteProps {
   onGitConfigChange: (config: GitConfig) => void;
 }
 
-const PAT_REPO_PROVIDER = 'github' as const;
-const PAT_REPO_HOST = 'github.com';
+const PROVIDER_REPO_HOST = {
+  github: 'github.com',
+  gitlab: 'gitlab.com',
+  gitea: 'gitea.com'
+} as const;
 
 const normalizeRepoUrl = (value: string, host: string): string => {
   const trimmed = value.trim();
@@ -76,9 +79,11 @@ const getAuthToken = async (projectId: string, gitConfig: GitConfig): Promise<st
 };
 
 export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange, onGitConfigChange }) => {
+  const selectedProvider = gitConfig.oidcProvider || 'github';
+  const selectedRepoHost = PROVIDER_REPO_HOST[selectedProvider];
   const gitAdapter = useMemo(
-    () => getGitAdapterService(gitConfig.authMode === 'pat' ? PAT_REPO_PROVIDER : gitConfig.oidcProvider || 'github'),
-    [gitConfig.authMode, gitConfig.oidcProvider]
+    () => getGitAdapterService(gitConfig.authMode === 'pat' ? selectedProvider : gitConfig.oidcProvider || 'github'),
+    [gitConfig.authMode, gitConfig.oidcProvider, selectedProvider]
   );
   const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl, gitAdapter.repoHost);
 
@@ -178,21 +183,21 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
     }
 
     return Array.from(
-      new Set(filteredSuggestions.map((repo) => toOwnerRepo(repo, PAT_REPO_HOST)).filter(Boolean))
+      new Set(filteredSuggestions.map((repo) => toOwnerRepo(repo, selectedRepoHost)).filter(Boolean))
     );
-  }, [filteredSuggestions, gitConfig.authMode]);
+  }, [filteredSuggestions, gitConfig.authMode, selectedRepoHost]);
 
   const repoExists = useMemo(() => {
     if (gitConfig.authMode === 'pat') {
-      const candidate = toOwnerRepo(gitConfig.repoUrl, PAT_REPO_HOST).toLowerCase();
+      const candidate = toOwnerRepo(gitConfig.repoUrl, selectedRepoHost).toLowerCase();
       if (!candidate) {
         return false;
       }
-      return repoUrls.some((repo) => toOwnerRepo(repo, PAT_REPO_HOST).toLowerCase() === candidate);
+      return repoUrls.some((repo) => toOwnerRepo(repo, selectedRepoHost).toLowerCase() === candidate);
     }
 
     return repoUrls.some((repo) => repo.toLowerCase() === normalizedInput.toLowerCase());
-  }, [repoUrls, normalizedInput, gitConfig.authMode, gitConfig.repoUrl]);
+  }, [repoUrls, normalizedInput, gitConfig.authMode, gitConfig.repoUrl, selectedRepoHost]);
 
   const canCreateRepo =
     Boolean(projectId) &&
@@ -235,7 +240,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         className="modal-input !text-xs !py-3"
         value={gitConfig.repoUrl}
         onChange={(e) => onRepoUrlChange(e.target.value)}
-        placeholder={gitConfig.authMode === 'pat' ? 'owner/repo (defaults to github.com)' : `https://${gitAdapter.repoHost}/owner/repo`}
+        placeholder={gitConfig.authMode === 'pat' ? `owner/repo (defaults to ${selectedRepoHost})` : `https://${gitAdapter.repoHost}/owner/repo`}
       />
       <datalist id="repo-autocomplete">
         {renderedSuggestions.map((repo) => (
