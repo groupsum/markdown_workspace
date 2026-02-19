@@ -61,3 +61,7 @@ The contract includes portrait, square/hybrid, landscape, wide, and ultra-wide a
 - Do not run `pytest` or `peagen` unless instructed to.
 - If running `pytest` on the swarmauri-sdk, always run tests from `/workspace/swarmauri-sdk/pkgs` using: `uv run --package <member name> --directory <package directory name> pytest`.
 - If running `peagen`, use the `peagen` command and reference docs in `standards/peagen` as needed.
+
+## Agent TODO tracking note
+- Keep the active UI/UX checklist in `CHECKLIST.md` current as work progresses.
+- If a checklist item has not been implemented and verified, it must remain unchecked.
