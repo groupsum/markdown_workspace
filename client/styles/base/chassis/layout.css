@@ -177,3 +177,8 @@ body.is-resizing-sidebar * {
   cursor: col-resize !important;
   user-select: none !important;
 }
+
+
+body.keyboard-open .chassis-root {
+  padding-bottom: calc(env(safe-area-inset-bottom) + var(--keyboard-offset, 0px));
+}

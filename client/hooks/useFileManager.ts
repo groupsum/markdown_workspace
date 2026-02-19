@@ -388,6 +388,54 @@ export const useFileManager = (
     }
   };
 
+
+
+  const importMarkdownFiles = async (inputFiles: FileList | File[]) => {
+    if (!activeProjectId) return [];
+    const items = Array.from(inputFiles);
+    if (items.length === 0) return [];
+
+    let parentId: string | null = null;
+    const selectedNode = files.find((f) => f.id === selectedExplorerId);
+    if (selectedNode) {
+      parentId = selectedNode.type === 'folder' ? selectedNode.id : selectedNode.parentId;
+    }
+
+    const created: FileNode[] = [];
+    for (const file of items) {
+      const baseName = file.name.toLowerCase().endsWith('.md') ? file.name : `${file.name}.md`;
+      const existing = files.find((f) =>
+        f.projectId === activeProjectId &&
+        f.parentId === parentId &&
+        f.name.toLowerCase() === baseName.toLowerCase()
+      );
+      if (existing) {
+        continue;
+      }
+
+      const content = await file.text();
+      const newFile: FileNode = {
+        id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        projectId: activeProjectId,
+        parentId,
+        name: baseName,
+        type: 'file',
+        content,
+        lastModified: Date.now()
+      };
+      await storage.saveFile(newFile);
+      created.push(newFile);
+    }
+
+    if (created.length > 0) {
+      setFiles((prev) => [...prev, ...created]);
+      addToast(`IMPORTED ${created.length} MARKDOWN FILE${created.length > 1 ? 'S' : ''}`, 'success');
+    } else {
+      addToast('NO NEW MARKDOWN FILES IMPORTED', 'warning');
+    }
+
+    return created;
+  };
   return {
     files,
     setFiles,
@@ -407,6 +455,7 @@ export const useFileManager = (
     downloadNode,
     exportProjectData,
     restoreProjectData,
-    exportHtmlNode
+    exportHtmlNode,
+    importMarkdownFiles
   };
 };

@@ -24,6 +24,7 @@ type SessionState = {
   sidebarWidth: number;
   searchQuery: string;
   autoSaveEnabled: boolean;
+  showLineNumbers: boolean;
   updatedAt: number;
 };
 
@@ -227,6 +228,7 @@ export const useApp = () => {
       sidebarWidth: ui.sidebarWidth,
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
+      showLineNumbers: ui.showLineNumbers,
       updatedAt: Date.now()
     };
     window.localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionState));
@@ -382,6 +384,17 @@ export const useApp = () => {
       }
   };
 
+
+
+  const handleImportMarkdown = async (inputFiles: FileList | File[]) => {
+      const imported = await fileSys.importMarkdownFiles(inputFiles);
+      if (imported.length > 0) {
+        const first = imported[0];
+        tabs.openTab(first.id);
+        fileSys.setSelectedExplorerId(first.id);
+        ui.setAppMode('work');
+      }
+  };
   const handleHtmlExport = () => {
       console.log(`[useApp] Action: handleHtmlExport initiated`);
       fileSys.exportHtmlNode(ui.theme);
@@ -452,6 +465,7 @@ export const useApp = () => {
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
       persistSessionEnabled: ui.persistSessionEnabled,
+      showLineNumbers: ui.showLineNumbers,
       toasts,
       viewMode: ui.viewMode,
       cursorPos: ui.cursorPos,
@@ -486,6 +500,7 @@ export const useApp = () => {
       exportData,
       restoreData,
       handleHtmlExport,
+      handleImportMarkdown,
       handlePrint,
       setFiles: fileSys.setFiles,
       setTabs: tabs.setTabs,
@@ -505,6 +520,7 @@ export const useApp = () => {
       setCursorPos: ui.setCursorPos,
       setAutoSaveEnabled: ui.setAutoSaveEnabled,
       setPersistSessionEnabled: ui.setPersistSessionEnabled,
+      setShowLineNumbers: ui.setShowLineNumbers,
       addToast,
       removeToast,
       toggleSidebar: () => {

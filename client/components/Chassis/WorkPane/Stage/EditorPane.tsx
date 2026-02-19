@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
 import { Undo, Redo, Bold, Italic, Underline, Strikethrough, Columns, Maximize2, Eye, List, ListChecks, SquareCheckBig, IndentIncrease, IndentDecrease } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
+import { getListContinuationPrefix } from '../../../../hooks/formatting';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -16,7 +17,9 @@ interface EditorPaneProps {
   theme: AppTheme;
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
+  showLineNumbers: boolean;
 }
+
 
 interface HistoryState {
   past: string[];
@@ -32,7 +35,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   onNavigate,
   theme,
   viewMode,
-  onViewModeChange
+  onViewModeChange,
+  showLineNumbers
 }) => {
   const [splitPos, setSplitPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -255,7 +259,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
         return line.replace(/^(\s*)[-*+]\s+/, '$1- [ ] ');
       }
       return line.replace(/^(\s*)/, '$1- [ ] ');
-    });
+    }, false);
   };
 
   const checkCheckbox = () => {
@@ -304,6 +308,32 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   };
 
   const handleEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+
+    if (e.key === 'Enter' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const textarea = textareaRef.current;
+      if (!textarea) return;
+      const text = textarea.value;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+      const lineEnd = text.indexOf('\n', start);
+      const currentLine = text.slice(lineStart, lineEnd === -1 ? text.length : lineEnd);
+      const prefix = getListContinuationPrefix(currentLine);
+      if (!prefix) return;
+
+      e.preventDefault();
+      const updated = `${text.slice(0, start)}\n${prefix}${text.slice(end)}`;
+      const cursor = start + 1 + prefix.length;
+      updateContent(updated);
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(cursor, cursor);
+        updateCursor();
+        refreshSelectionState();
+      }, 0);
+      return;
+    }
+
     if (e.key === 'Tab' && !e.metaKey && !e.ctrlKey) {
       e.preventDefault();
       const textarea = textareaRef.current;
@@ -449,10 +479,12 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
         <div className={`editor-pane-body ${viewMode === 'split' ? 'is-split' : ''}`}>
           {(viewMode === 'editor' || viewMode === 'split') && (
             <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${splitPos}%` : '100%' }}>
-              <div className="editor-layout-wrapper">
-                <div ref={lineNumbersRef} className="editor-gutter">
-                   {lineNumbers.map(n => <div key={n} className="line-num">{n}</div>)}
-                </div>
+              <div className={`editor-layout-wrapper ${showLineNumbers ? "" : "hide-line-numbers"}`}>
+                {showLineNumbers && (
+                  <div ref={lineNumbersRef} className="editor-gutter">
+                     {lineNumbers.map(n => <div key={n} className="line-num">{n}</div>)}
+                  </div>
+                )}
                 <textarea
                   ref={textareaRef}
                   className="editor-textarea"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Chassis } from './components/Chassis/Chassis';
 import { GitPane } from './components/Chassis/Git/GitPane';
 import { CommandPalette } from './components/Modals/CommandPalette';
@@ -64,6 +64,7 @@ const App: React.FC = () => {
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
   const [cloudSyncTick, setCloudSyncTick] = useState(0);
+  const markdownImportRef = useRef<HTMLInputElement>(null);
   const { state: pwaState, actions: pwaActions } = usePwa();
 
   useKeyboardShortcuts(
@@ -114,6 +115,27 @@ const App: React.FC = () => {
   useEffect(() => {
     setUpdateAvailable(pwaState.updateAvailable);
   }, [pwaState.updateAvailable]);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+
+    const refreshKeyboardState = () => {
+      const offset = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
+      document.body.classList.toggle('keyboard-open', offset > 90);
+      document.documentElement.style.setProperty('--keyboard-offset', `${Math.round(offset)}px`);
+    };
+
+    refreshKeyboardState();
+    viewport.addEventListener('resize', refreshKeyboardState);
+    viewport.addEventListener('scroll', refreshKeyboardState);
+    return () => {
+      viewport.removeEventListener('resize', refreshKeyboardState);
+      viewport.removeEventListener('scroll', refreshKeyboardState);
+      document.body.classList.remove('keyboard-open');
+      document.documentElement.style.setProperty('--keyboard-offset', '0px');
+    };
+  }, []);
 
   const pwaAction = pwaState.canInstall
     ? {
@@ -211,6 +233,7 @@ const App: React.FC = () => {
           onSwitchProject={actions.switchToProjectSelector}
           onDownload={actions.handleDownload}
           onExportHtml={actions.handleHtmlExport}
+          onImportMarkdown={() => markdownImportRef.current?.click()}
           onPrint={actions.handlePrint}
           onCloudSync={() => {
             setCloudSyncTick((prev) => prev + 1);
@@ -243,6 +266,7 @@ const App: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(l, c) => actions.setCursorPos({ line: l, col: c })}
             onViewModeChange={actions.setViewMode}
+            showLineNumbers={state.showLineNumbers}
           />
         ) : (
           <GitPane 
@@ -257,6 +281,21 @@ const App: React.FC = () => {
           />
         )}
       </section>
+
+      <input
+        ref={markdownImportRef}
+        type="file"
+        accept=".md,text/markdown"
+        multiple
+        hidden
+        onChange={(event) => {
+          const files = event.target.files;
+          if (files && files.length > 0) {
+            void actions.handleImportMarkdown(files);
+          }
+          event.target.value = '';
+        }}
+      />
 
       <Footer 
         className="status-bar"
@@ -314,10 +353,12 @@ const App: React.FC = () => {
           viewMode: state.viewMode,
           appMode: state.appMode,
           autoSaveEnabled: state.autoSaveEnabled,
-          persistSessionEnabled: state.persistSessionEnabled
+          persistSessionEnabled: state.persistSessionEnabled,
+          showLineNumbers: state.showLineNumbers
         }}
         onAutoSaveToggle={actions.setAutoSaveEnabled}
         onPersistSessionToggle={actions.setPersistSessionEnabled}
+        onLineNumbersToggle={actions.setShowLineNumbers}
         onTestLink={() => {
           const activeGitConfig = actions.getActiveGitConfig();
           const repoUrl = activeGitConfig.repoUrl.trim();

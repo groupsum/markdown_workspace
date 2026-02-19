@@ -3,7 +3,7 @@
 /* MARKDOWN STYLES (Scoped) */
 .markdown-body {
   font-family: var(--font-ui);
-  line-height: 1.6;
+  line-height: var(--markdown-line-height);
   font-size: calc(0.95rem * var(--ui-scale));
   color: var(--fg-primary);
   overflow-wrap: anywhere;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer } from 'lucide-react';
+import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer, Upload } from 'lucide-react';
 import { AppMode } from '../../../types';
 
 interface ActionRailProps {
@@ -12,6 +12,7 @@ interface ActionRailProps {
   onSwitchProject: () => void;
   onDownload: () => void;
   onExportHtml: () => void;
+  onImportMarkdown: () => void;
   onPrint: () => void;
   onCloudSync: () => void;
   className?: string;
@@ -44,6 +45,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({
   onSwitchProject,
   onDownload,
   onExportHtml,
+  onImportMarkdown,
   onPrint,
   onCloudSync,
   className = ""
@@ -92,6 +94,11 @@ export const ActionRail: React.FC<ActionRailProps> = ({
               onClick={onExportHtml}
               icon={<FileDown />}
               title="Export HTML"
+            />
+            <ToolbarButton 
+              onClick={onImportMarkdown}
+              icon={<Upload />}
+              title="Import Markdown"
             />
             <ToolbarButton 
               onClick={onPrint}

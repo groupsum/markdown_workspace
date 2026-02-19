@@ -29,7 +29,9 @@ interface WorkPaneProps {
   onContentChange: (content: string) => void;
   onCursorChange: (line: number, col: number) => void;
   onViewModeChange: (mode: ViewMode) => void;
+  showLineNumbers: boolean;
 }
+
 
 export const WorkPane: React.FC<WorkPaneProps> = ({
   currentProject,
@@ -53,7 +55,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onFileMove,
   onContentChange,
   onCursorChange,
-  onViewModeChange
+  onViewModeChange,
+  showLineNumbers
 }) => {
   const [expandAllSignal, setExpandAllSignal] = useState(0);
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
@@ -194,6 +197,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             theme={theme}
             viewMode={viewMode}
             onViewModeChange={onViewModeChange}
+            showLineNumbers={showLineNumbers}
           />
         ) : (
           <div className="workspace-idle-state">
