@@ -1,71 +1,30 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 import { Chassis } from './components/Chassis/Chassis';
-import { GitPane } from './components/Chassis/Git/GitPane';
 import { CommandPalette } from './components/Modals/CommandPalette';
-import { ProjectSelector } from './components/Project/ProjectSelector';
+import { InputModal } from './components/Modals/InputModal';
 import { SettingsModal } from './components/Modals/SettingsModal';
 import { ToastContainer } from './components/UI/Toast';
-import { InputModal } from './components/Modals/InputModal';
-import { Footer } from './components/Chassis/Footer/Footer';
-import { Folder, FilePlus, GitBranch, LayoutGrid, Download, FileDown, FolderPlus, Printer, Settings, Plus, Minus, RefreshCw, CheckCircle, Pencil, Trash2 } from 'lucide-react';
-import { Header } from './components/Chassis/Header/Header';
-import { ActionRail } from './components/Chassis/ActionRail/ActionRail';
-import { WorkPane } from './components/Chassis/WorkPane/WorkPane';
+import { AppContent, buildPwaAction } from './app/AppContent';
+import {
+  buildCommandActions,
+  inferPatProvider,
+  normalizeRepositoryUrl,
+  PROVIDER_REPO_HOST
+} from './app/appConstants';
+import { useAppLifecycle } from './app/useAppLifecycle';
 import { useApp } from './hooks/useApp';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { usePwa } from './hooks/usePwa';
-import { APP_VERSION } from './constants';
 import type { OidcProviderId } from './types';
-
-const PROVIDER_REPO_HOST: Record<OidcProviderId, string> = {
-  github: 'github.com',
-  gitlab: 'gitlab.com',
-  gitea: 'gitea.com'
-};
-
-const inferPatProvider = (token: string): OidcProviderId | null => {
-  const trimmed = token.trim().toLowerCase();
-  if (!trimmed) return null;
-
-  if (trimmed.startsWith('ghp_') || trimmed.startsWith('github_pat_') || trimmed.startsWith('gho_') || trimmed.startsWith('ghu_')) {
-    return 'github';
-  }
-
-  if (trimmed.startsWith('glpat-')) {
-    return 'gitlab';
-  }
-
-  return null;
-};
-
-const normalizeRepositoryUrl = (value: string, defaultHost: string): string => {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return '';
-  }
-
-  if (/^https?:\/\//i.test(trimmed)) {
-    return trimmed;
-  }
-
-  if (/^[\w.-]+\/[\w.-]+(?:\.git)?$/.test(trimmed)) {
-    return `https://${defaultHost}/${trimmed}`;
-  }
-
-  if (/^[\w.-]+\.[\w.-]+\//.test(trimmed)) {
-    return `https://${trimmed}`;
-  }
-
-  return trimmed;
-};
 
 const App: React.FC = () => {
   const { state, actions } = useApp();
+  const { state: pwaState, actions: pwaActions } = usePwa();
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
   const [cloudSyncTick, setCloudSyncTick] = useState(0);
   const markdownImportRef = useRef<HTMLInputElement>(null);
-  const { state: pwaState, actions: pwaActions } = usePwa();
 
   useKeyboardShortcuts(
     {
@@ -93,242 +52,61 @@ const App: React.FC = () => {
     }
   );
 
-  useEffect(() => {
-    const handleUpdate = () => {
-      setUpdateAvailable(true);
-      actions.addToast('UPDATE READY: OPEN SETTINGS TO APPLY', 'info');
-    };
-    const handleOnline = () => { setOnline(true); actions.addToast('SYSTEM ONLINE', 'success'); };
-    const handleOffline = () => { setOnline(false); actions.addToast('SYSTEM OFFLINE', 'warning'); };
+  useAppLifecycle(actions, pwaState.updateAvailable, setUpdateAvailable, setOnline);
 
-    window.addEventListener('lattice-update-ready', handleUpdate);
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
-    return () => {
-      window.removeEventListener('lattice-update-ready', handleUpdate);
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, [actions]);
+  if (state.loading) {
+    return <div className="boot-screen">BOOT SEQUENCE...</div>;
+  }
 
-  useEffect(() => {
-    setUpdateAvailable(pwaState.updateAvailable);
-  }, [pwaState.updateAvailable]);
+  const pwaAction = buildPwaAction(pwaState, pwaActions);
+  const commandActions = buildCommandActions(actions, state.appMode);
+  const activeTabName =
+    state.files.find(
+      (file) => file.id === state.tabs.find((tab) => tab.id === state.activeTabId)?.fileId
+    )?.name ?? null;
 
-  useEffect(() => {
-    const viewport = window.visualViewport;
-    if (!viewport) return;
+  const handleTestLink = () => {
+    const activeGitConfig = actions.getActiveGitConfig();
+    const repoUrl = activeGitConfig.repoUrl.trim();
 
-    const refreshKeyboardState = () => {
-      const offset = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
-      document.body.classList.toggle('keyboard-open', offset > 90);
-      document.documentElement.style.setProperty('--keyboard-offset', `${Math.round(offset)}px`);
-    };
+    if (!repoUrl) {
+      actions.addToast('TEST LINK FAILED: REPOSITORY URL REQUIRED', 'warning');
+      return;
+    }
 
-    refreshKeyboardState();
-    viewport.addEventListener('resize', refreshKeyboardState);
-    viewport.addEventListener('scroll', refreshKeyboardState);
-    return () => {
-      viewport.removeEventListener('resize', refreshKeyboardState);
-      viewport.removeEventListener('scroll', refreshKeyboardState);
-      document.body.classList.remove('keyboard-open');
-      document.documentElement.style.setProperty('--keyboard-offset', '0px');
-    };
-  }, []);
+    const selectedProvider: OidcProviderId =
+      activeGitConfig.authMode === 'pat'
+        ? inferPatProvider(activeGitConfig.patToken) || activeGitConfig.oidcProvider || 'github'
+        : activeGitConfig.oidcProvider || 'github';
 
-  const pwaAction = pwaState.canInstall
-    ? {
-        label: 'Install PWA',
-        title: 'Install Lattice Architect',
-        icon: <Download size={16} />,
-        onClick: pwaActions.promptInstall,
-        disabled: false
-      }
-    : pwaState.updateAvailable
-      ? {
-          label: 'Update PWA',
-          title: 'Update available',
-          icon: <RefreshCw size={16} />,
-          onClick: pwaActions.requestUpdate,
-          disabled: false
-        }
-      : {
-          label: 'PWA Installed',
-          title: 'PWA installed',
-          icon: <CheckCircle size={16} />,
-          onClick: undefined,
-          disabled: true
-        };
+    const candidateUrl = normalizeRepositoryUrl(repoUrl, PROVIDER_REPO_HOST[selectedProvider]);
 
-  const activeTabName = (() => {
-    const activeTab = state.tabs.find((tab) => tab.id === state.activeTabId);
-    if (!activeTab) return null;
-    const activeFile = state.files.find((file) => file.id === activeTab.fileId);
-    return activeFile?.name ?? null;
-  })();
-
-  const commandActions = [
-    { id: 'new-file', label: 'Create New File', action: actions.promptNewFile, icon: <FilePlus size={14}/> },
-    { id: 'new-folder', label: 'Create New Folder', action: actions.promptNewFolder, icon: <FolderPlus size={14}/> },
-    { id: 'save', label: 'Save Current File', action: actions.saveCurrentFile, icon: <Settings size={14}/> },
-    { id: 'rename', label: 'Rename Selected Item', action: actions.promptRenameSelected, icon: <Pencil size={14}/> },
-    { id: 'delete', label: 'Delete Selected Item', action: actions.deleteSelectedItem, icon: <Trash2 size={14}/> },
-    { id: 'toggle-sidebar', label: 'Toggle Explorer', action: actions.toggleSidebar, icon: <Folder size={14}/> },
-    { id: 'download', label: 'Download Current Item', action: actions.handleDownload, icon: <Download size={14}/> },
-    { id: 'export-html', label: 'Export HTML', action: actions.handleHtmlExport, icon: <FileDown size={14}/> },
-    { id: 'print-preview', label: 'Print Preview', action: actions.handlePrint, icon: <Printer size={14}/> },
-    { id: 'git-mode', label: 'Toggle Git Operations', action: () => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git'), icon: <GitBranch size={14}/> },
-    { id: 'switch-project', label: 'Switch Project', action: actions.switchToProjectSelector, icon: <LayoutGrid size={14}/> },
-    { id: 'settings', label: 'System Settings', action: () => actions.setShowSettings(true), icon: <Settings size={14}/> },
-    { id: 'zoom-in', label: 'Zoom In', action: () => actions.adjustZoom(0.1), icon: <Plus size={14}/> },
-    { id: 'zoom-out', label: 'Zoom Out', action: () => actions.adjustZoom(-0.1), icon: <Minus size={14}/> },
-    { id: 'view-editor', label: 'Editor View', action: () => actions.setViewMode('editor'), icon: <LayoutGrid size={14}/> },
-    { id: 'view-split', label: 'Split View', action: () => actions.setViewMode('split'), icon: <LayoutGrid size={14}/> },
-    { id: 'view-preview', label: 'Preview View', action: () => actions.setViewMode('preview'), icon: <LayoutGrid size={14}/> },
-    { id: 'next-tab', label: 'Next Tab', action: actions.selectNextTab, icon: <LayoutGrid size={14}/> },
-    { id: 'previous-tab', label: 'Previous Tab', action: actions.selectPreviousTab, icon: <LayoutGrid size={14}/> }
-  ];
-
-  if (state.loading) return <div className="boot-screen">BOOT SEQUENCE...</div>;
-
-  const content = !state.activeProjectId ? (
-    <ProjectSelector 
-      projects={state.projects}
-      activeProjectId={state.activeProjectId}
-      onSelectProject={(p) => actions.loadProject(p.id)}
-      onCreateProject={actions.handleCreateProject}
-      onDeleteProject={actions.handleDeleteProject}
-      currentTheme={state.theme}
-      onThemeChange={actions.setTheme}
-    />
-  ) : (
-    <div className="app-root">
-      <Header 
-        className="app-header"
-        currentThemeDef={state.currentThemeDef}
-        projectTitle={state.currentProject?.name || "PROJECT"}
-        tabs={state.tabs}
-        files={state.files}
-        activeTabId={state.activeTabId}
-        appMode={state.appMode}
-        zoom={state.zoom}
-        pwaAction={pwaAction}
-        onSwitchProject={actions.switchToProjectSelector}
-        onTabSelect={(tabId, fileId) => { actions.setActiveTabId(tabId); actions.setAppMode('work'); actions.setSelectedExplorerId(fileId); }}
-        onTabClose={actions.closeTab}
-        onZoom={actions.adjustZoom}
-        onOpenSettings={() => actions.setShowSettings(true)}
-      />
-
-      <section className={`app-grid mode-${state.appMode}`}>
-        <ActionRail 
-          className="action-rail"
-          sidebarOpen={state.sidebarOpen}
-          appMode={state.appMode}
-          onToggleSidebar={actions.toggleSidebar}
-          onNewFile={actions.promptNewFile}
-          onNewFolder={actions.promptNewFolder}
-          onToggleGit={() => actions.setAppMode(state.appMode === 'git' ? 'work' : 'git')}
-          onSwitchProject={actions.switchToProjectSelector}
-          onDownload={actions.handleDownload}
-          onExportHtml={actions.handleHtmlExport}
-          onImportMarkdown={() => markdownImportRef.current?.click()}
-          onPrint={actions.handlePrint}
-          onCloudSync={() => {
-            setCloudSyncTick((prev) => prev + 1);
-            window.dispatchEvent(new CustomEvent('lattice:gh:refresh-repos'));
-            actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
-          }}
-        />
-
-        {state.appMode === 'work' ? (
-          <WorkPane 
-            currentProject={state.currentProject}
-            files={state.files}
-            activeFile={state.activeFile}
-            selectedExplorerId={state.selectedExplorerId}
-            searchQuery={state.searchQuery}
-            theme={state.theme}
-            viewMode={state.viewMode}
-            currentThemeDef={state.currentThemeDef}
-            sidebarOpen={state.sidebarOpen}
-            sidebarWidth={state.sidebarWidth}
-            onSidebarToggle={actions.setSidebarOpen}
-            onSidebarWidthChange={actions.setSidebarWidth}
-            onNewFile={actions.promptNewFile}
-            onNewFolder={actions.promptNewFolder}
-            onRenameSelected={actions.promptRenameSelected}
-            onDeleteSelected={actions.deleteSelectedItem}
-            onFileSelect={actions.handleExplorerSelect}
-            onFileHighlight={actions.highlightExplorerNode}
-            onFileMove={actions.handleMoveFile}
-            onContentChange={actions.handleContentChange}
-            onCursorChange={(l, c) => actions.setCursorPos({ line: l, col: c })}
-            onViewModeChange={actions.setViewMode}
-            showLineNumbers={state.showLineNumbers}
-          />
-        ) : (
-          <GitPane 
-            files={state.files} 
-            activeFile={state.activeFile} 
-            theme={state.theme}
-            unsaved={state.unsaved}
-            projectId={state.activeProjectId}
-            gitConfig={actions.getActiveGitConfig()}
-            cloudSyncTick={cloudSyncTick}
-            onStatus={actions.addToast}
-          />
-        )}
-      </section>
-
-      <input
-        ref={markdownImportRef}
-        type="file"
-        accept=".md,text/markdown"
-        multiple
-        hidden
-        onChange={(event) => {
-          const files = event.target.files;
-          if (files && files.length > 0) {
-            void actions.handleImportMarkdown(files);
-          }
-          event.target.value = '';
-        }}
-      />
-
-      <Footer 
-        className="status-bar"
-        cursorLine={state.cursorPos.line}
-        cursorCol={state.cursorPos.col}
-        unsaved={state.unsaved}
-        version={APP_VERSION}
-        online={online}
-        isInstalled={pwaState.isInstalled}
-        updateAvailable={pwaState.updateAvailable}
-      />
-    </div>
-  );
+    try {
+      actions.addToast(`TEST LINK OK: ${new URL(candidateUrl).host}`, 'success');
+    } catch {
+      actions.addToast('TEST LINK FAILED: INVALID REPOSITORY URL', 'warning');
+    }
+  };
 
   return (
-    <Chassis zoom={state.zoom} mode={state.activeProjectId ? "project" : "selector"}>
+    <Chassis zoom={state.zoom} mode={state.activeProjectId ? 'project' : 'selector'}>
       {updateAvailable && (
         <div className="update-banner">
           <span>ARCHITECTURE UPDATE READY</span>
           <button
+            className="update-btn"
             onClick={() => {
               actions.addToast('APPLYING UPDATE...', 'info');
               pwaActions.requestUpdate();
             }}
-            className="update-btn"
           >
             <RefreshCw size={12} /> RELOAD
           </button>
         </div>
       )}
-      
-      <SettingsModal 
-        isOpen={state.showSettings} 
+
+      <SettingsModal
+        isOpen={state.showSettings}
         onClose={() => actions.setShowSettings(false)}
         currentTheme={state.theme}
         onThemeChange={actions.setTheme}
@@ -359,29 +137,7 @@ const App: React.FC = () => {
         onAutoSaveToggle={actions.setAutoSaveEnabled}
         onPersistSessionToggle={actions.setPersistSessionEnabled}
         onLineNumbersToggle={actions.setShowLineNumbers}
-        onTestLink={() => {
-          const activeGitConfig = actions.getActiveGitConfig();
-          const repoUrl = activeGitConfig.repoUrl.trim();
-
-          if (!repoUrl) {
-            actions.addToast('TEST LINK FAILED: REPOSITORY URL REQUIRED', 'warning');
-            return;
-          }
-
-          const selectedProvider: OidcProviderId = activeGitConfig.authMode === 'pat'
-            ? inferPatProvider(activeGitConfig.patToken) || activeGitConfig.oidcProvider || 'github'
-            : activeGitConfig.oidcProvider || 'github';
-
-          const defaultHost = PROVIDER_REPO_HOST[selectedProvider];
-          const candidateUrl = normalizeRepositoryUrl(repoUrl, defaultHost);
-
-          try {
-            const parsed = new URL(candidateUrl);
-            actions.addToast(`TEST LINK OK: ${parsed.host}`, 'success');
-          } catch {
-            actions.addToast('TEST LINK FAILED: INVALID REPOSITORY URL', 'warning');
-          }
-        }}
+        onTestLink={handleTestLink}
       />
 
       <InputModal
@@ -393,7 +149,7 @@ const App: React.FC = () => {
         defaultValue={state.inputDefaultValue}
       />
 
-      <CommandPalette 
+      <CommandPalette
         isOpen={state.showPalette}
         onClose={() => actions.setShowPalette(false)}
         files={state.files}
@@ -402,7 +158,17 @@ const App: React.FC = () => {
       />
 
       <ToastContainer messages={state.toasts} onDismiss={actions.removeToast} />
-      {content}
+
+      <AppContent
+        state={state}
+        actions={actions}
+        pwaState={pwaState}
+        pwaAction={pwaAction}
+        online={online}
+        cloudSyncTick={cloudSyncTick}
+        setCloudSyncTick={setCloudSyncTick}
+        markdownImportRef={markdownImportRef}
+      />
     </Chassis>
   );
 };
