@@ -138,6 +138,21 @@ export const usePwa = () => {
     navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(APP_VERSION)}`).then((registration) => {
       registrationRef.current = registration;
 
+      const handleWaitingWorker = (shouldReloadWhenApplied: boolean) => {
+        const waitingVersion = getWorkerVersion(registration.waiting);
+        if (waitingVersion && failedVersions.includes(waitingVersion)) {
+          setUpdateAvailable(false);
+          promoteWaitingWorker(registration, false);
+          registration.update();
+          return;
+        }
+        if (autoUpdateEnabled) {
+          promoteWaitingWorker(registration, shouldReloadWhenApplied);
+          return;
+        }
+        announceUpdate();
+      };
+
       if ('sync' in registration) {
         (registration as ServiceWorkerRegistration & { sync?: { register: (tag: string) => Promise<void> } }).sync
           ?.register('check-for-updates')
@@ -145,10 +160,7 @@ export const usePwa = () => {
       }
 
       if (registration.waiting) {
-        const waitingVersion = getWorkerVersion(registration.waiting);
-        if (!waitingVersion || !failedVersions.includes(waitingVersion)) {
-          announceUpdate();
-        }
+        handleWaitingWorker(true);
       }
 
       registration.addEventListener('updatefound', () => {
@@ -159,10 +171,11 @@ export const usePwa = () => {
 
         installingWorker.addEventListener('statechange', () => {
           if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            const installingVersion = getWorkerVersion(installingWorker);
-            if (!installingVersion || !failedVersions.includes(installingVersion)) {
-              announceUpdate();
-            }
+            window.setTimeout(() => {
+              if (registration.waiting) {
+                handleWaitingWorker(true);
+              }
+            }, 0);
           }
         });
       });
@@ -178,7 +191,7 @@ export const usePwa = () => {
       navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
       window.clearInterval(updateInterval);
     };
-  }, [announceUpdate, failedVersions]);
+  }, [announceUpdate, autoUpdateEnabled, failedVersions, promoteWaitingWorker]);
 
   useEffect(() => {
     window.localStorage.setItem(AUTO_UPDATE_STORAGE_KEY, String(autoUpdateEnabled));
