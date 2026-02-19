@@ -35,9 +35,11 @@ interface SettingsModalProps {
     appMode: AppMode;
     autoSaveEnabled: boolean;
     persistSessionEnabled: boolean;
+    showLineNumbers: boolean;
   };
   onAutoSaveToggle: (enabled: boolean) => void;
   onPersistSessionToggle: (enabled: boolean) => void;
+  onLineNumbersToggle: (enabled: boolean) => void;
   onTestLink: () => void;
 }
 
@@ -59,6 +61,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   sessionState,
   onAutoSaveToggle,
   onPersistSessionToggle,
+  onLineNumbersToggle,
   onTestLink
 }) => {
   if (!isOpen) return null;
@@ -434,6 +437,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                           type="checkbox"
                           checked={sessionState.persistSessionEnabled}
                           onChange={(event) => onPersistSessionToggle(event.target.checked)}
+                        />
+                        <span className="pwa-toggle-indicator" />
+                      </label>
+                    </div>
+                  </div>
+
+
+                  <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <span className="font-bold text-[11px] uppercase flex items-center gap-2">
+                          <Layout size={14} /> LINE_NUMBERS
+                        </span>
+                        <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">
+                          Show or hide editor line count bars in the markdown editor gutter.
+                        </p>
+                      </div>
+                      <label className="pwa-toggle">
+                        <input
+                          type="checkbox"
+                          checked={sessionState.showLineNumbers}
+                          onChange={(event) => onLineNumbersToggle(event.target.checked)}
                         />
                         <span className="pwa-toggle-indicator" />
                       </label>

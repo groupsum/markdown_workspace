@@ -43,3 +43,9 @@ Viewport/aspect-ratio breakpoint variables are defined in:
 - `client/public/css/base/viewports.css`
 
 Themes must preserve this contract and only provide style differentiation per band.
+
+## Markdown/editor alignment contract (strict)
+- Editor line-height and rendered markdown line-height **must** use shared CSS tokens.
+- Line number gutter rhythm **must** match editor line-height token so line bars align across themes.
+- Tokens are defined in `client/styles/base/root.css` (`--editor-line-height`, `--markdown-line-height`, `--line-number-gutter-width`) and consumed by editor/markdown styles.
+- Any theme-level override must preserve equal line-height values between editor and markdown.

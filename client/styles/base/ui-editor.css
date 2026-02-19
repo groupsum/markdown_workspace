@@ -93,7 +93,7 @@
   position: relative;
 }
 .editor-gutter {
-  width: 48px;
+  width: var(--line-number-gutter-width);
   background: var(--bg-inset);
   border-right: var(--border-width) solid var(--border-color);
   display: flex;
@@ -108,7 +108,7 @@
 }
 .line-num {
   height: 1.5rem;
-  line-height: 1.5rem;
+  line-height: var(--editor-line-height);
 }
 .editor-textarea {
   flex: 1;
@@ -118,7 +118,7 @@
   padding: var(--editor-padding);
   font-family: var(--font-mono);
   font-size: calc(13px * var(--ui-scale));
-  line-height: 1.5rem;
+  line-height: var(--editor-line-height);
   color: var(--fg-primary);
   outline: none;
   overflow-y: auto;
@@ -235,7 +235,7 @@
 }
 @media (max-width: 640px) {
   .editor-gutter {
-    width: 40px;
+    width: calc(var(--line-number-gutter-width) - 4px);
     font-size: calc(9px * var(--ui-scale));
   }
   .editor-textarea {
@@ -244,4 +244,8 @@
   .view-toolbar-btn--split {
     display: none;
   }
+}
+
+.editor-layout-wrapper.hide-line-numbers .editor-textarea {
+  padding-left: calc(var(--editor-padding) + 2px);
 }

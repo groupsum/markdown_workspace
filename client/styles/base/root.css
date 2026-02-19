@@ -40,6 +40,10 @@
   --app-gap: calc(4px * var(--ui-scale)); 
   --texture-opacity: 0.05;
   --editor-padding: calc(24px * var(--ui-scale));
+  --editor-line-height: calc(1.5rem * var(--ui-scale));
+  --markdown-line-height: var(--editor-line-height);
+  --line-number-gutter-width: calc(36px * var(--ui-scale));
+  --mobile-rail-expanded-width: 100vw;
   --file-indent-base: calc(12px * var(--ui-scale));
   --file-indent-unit: calc(12px * var(--ui-scale));
   --c-explorer-hover: rgba(0, 0, 0, 0.06);

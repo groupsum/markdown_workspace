@@ -1,7 +1,7 @@
 @media (max-width: 640px) {
   :root {
-    --rail-width: 100%;
-    --sidebar-width: 100%;
+    --rail-width: var(--mobile-rail-expanded-width);
+    --sidebar-width: var(--mobile-rail-expanded-width);
     --header-height: 44px;
     --status-height: 24px;
     --panel-header-height: 28px;
