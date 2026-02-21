@@ -6,15 +6,12 @@
 - [x] when create a checkbox, only create it, do not select it after creation.
 - [x] on mobile UIX, raise footer and page up with the keyboard.
 - [x] when making UL or OLs, assume the next line is an LI and typeahead on enter. On second enter, if no LI content was included with the LI, then assume next line is not an LI.
-- [ ] Option to turn off line count bars.
-- [ ] line count must be aligned with editor when y-scrolled.
+- [x] Option to turn off line count bars.
+- [x] line count must be aligned with editor when y-scrolled.
 - [x] on mobile UIX, keep bars and panes in place. Panes shall be y-scrollable.
-- [ ] ability to import markdown files.
-- [ ] file explorer and git ops expandable rail on mobile UIX shall have full width. Use CSS tokens to align expandable rails like file explorer and git ops.
+- [x] ability to import markdown files.
+- [x] file explorer and git ops expandable rail on mobile UIX shall have full width. Use CSS tokens to align expandable rails like file explorer and git ops.
 - [x] when creating a new checkbox, maintain the focus on the line and line character. Do not move focus to the top of the editor.
 
 ## What remains to do
-- Add or verify full support for line count bar visibility toggles in all required contexts.
-- Verify and, if needed, tighten line count alignment with editor content while vertically scrolling.
-- Add markdown file import capability.
-- Ensure mobile expandable rails for file explorer and git ops are full-width and token-aligned.
+- None; all requested checklist items are now implemented and verified.
