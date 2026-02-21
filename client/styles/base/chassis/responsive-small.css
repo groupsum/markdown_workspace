@@ -1,7 +1,7 @@
 @media (max-width: 640px) {
   :root {
     --rail-width: var(--mobile-rail-expanded-width);
-    --sidebar-width: var(--mobile-rail-expanded-width);
+    --sidebar-width: var(--mobile-expandable-rail-width);
     --header-height: 44px;
     --status-height: 24px;
     --panel-header-height: 28px;
@@ -112,7 +112,8 @@
 
   .workspace-sidebar,
   .git-sidebar {
-    width: 100%;
+    width: var(--mobile-expandable-rail-width);
+    max-width: 100%;
     min-width: 0;
     height: 100%;
     border-right: 0;
@@ -223,7 +224,7 @@
 @media (max-aspect-ratio: 3/4), (hover: none) and (pointer: coarse) {
   .workspace-sidebar,
   .git-sidebar {
-    width: 100vw;
+    width: var(--mobile-expandable-rail-width);
     max-width: 100%;
     min-width: 0;
   }
