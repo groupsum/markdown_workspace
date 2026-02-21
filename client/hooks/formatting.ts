@@ -26,3 +26,7 @@ export const getListContinuationPrefix = (line: string): string | null => {
 
   return null;
 };
+
+export const isEmptyListItemLine = (line: string): boolean => {
+  return /^\s*(?:[-*+]\s+(?:\[[ xX]\]\s+)?|\d+\.\s+)$/.test(line);
+};

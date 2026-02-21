@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
 import { Undo, Redo, Bold, Italic, Underline, Strikethrough, Columns, Maximize2, Eye, List, ListChecks, SquareCheckBig, IndentIncrease, IndentDecrease } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
-import { getListContinuationPrefix } from '../../../../hooks/formatting';
+import { getListContinuationPrefix, isEmptyListItemLine } from '../../../../hooks/formatting';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -322,6 +322,19 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       if (!prefix) return;
 
       e.preventDefault();
+      if (isEmptyListItemLine(currentLine)) {
+        const updated = `${text.slice(0, lineStart)}\n${text.slice(end)}`;
+        const cursor = lineStart + 1;
+        updateContent(updated);
+        setTimeout(() => {
+          textarea.focus();
+          textarea.setSelectionRange(cursor, cursor);
+          updateCursor();
+          refreshSelectionState();
+        }, 0);
+        return;
+      }
+
       const updated = `${text.slice(0, start)}\n${prefix}${text.slice(end)}`;
       const cursor = start + 1 + prefix.length;
       updateContent(updated);
