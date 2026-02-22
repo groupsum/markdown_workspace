@@ -13,8 +13,8 @@
 - [x] git ops' expandable rail on mobile uix shall have full width. Use css tokens to align expandable rails like git ops.
 - [ ] file explorer expandable rail on mobile uix shall have full width. Use css tokens to align expandable rails like file explorer and git ops.
 - [ ] when creating a new checkbox, maintain the focus on the line and line character. Do not move focus to the top of the editor.
-- [ ] remove idb: persistent from the status bar footer.
-- [ ] remove state: saved. From statis bar footer. Simply autosave everything.
+- [x] remove idb: persistent from the status bar footer.
+- [x] remove state: saved. From statis bar footer. Simply autosave everything.
 - [ ] fix the header bar such that the install button is not present after pwa is installed. Also give the settings icon a very very small ampunt of extra top margin and right margin.
 - [ ] reverse the action rail on mobile uix portrait. Add css token for this, implement same value on all themes.
 - [ ] fix underlining

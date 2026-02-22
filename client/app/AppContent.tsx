@@ -178,7 +178,6 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
         className="status-bar"
         cursorLine={state.cursorPos.line}
         cursorCol={state.cursorPos.col}
-        unsaved={state.unsaved}
         version={APP_VERSION}
         online={online}
         isInstalled={pwaState.isInstalled}
