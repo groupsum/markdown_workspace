@@ -291,18 +291,53 @@ export const usePwa = () => {
     if (!registration) {
       return;
     }
-    if (registration.waiting) {
+
+    const promoteIfWaiting = () => {
+      if (!registration.waiting) {
+        return false;
+      }
+
       const waitingVersion = getWorkerVersion(registration.waiting);
       if (waitingVersion && failedVersions.includes(waitingVersion)) {
         setUpdateAvailable(false);
         promoteWaitingWorker(registration, false);
-        registration.update();
-        return;
+        void registration.update();
+        return true;
       }
+
       promoteWaitingWorker(registration, true);
+      return true;
+    };
+
+    if (promoteIfWaiting()) {
       return;
     }
-    registration.update();
+
+    const installingWorker = registration.installing;
+    if (installingWorker) {
+      installingWorker.addEventListener('statechange', () => {
+        if (installingWorker.state === 'installed') {
+          promoteIfWaiting();
+        }
+      });
+    }
+
+    void registration.update().then(() => {
+      if (promoteIfWaiting()) {
+        return;
+      }
+
+      const pendingWorker = registration.installing;
+      if (!pendingWorker) {
+        return;
+      }
+
+      pendingWorker.addEventListener('statechange', () => {
+        if (pendingWorker.state === 'installed') {
+          promoteIfWaiting();
+        }
+      });
+    }).catch(() => undefined);
   }, [failedVersions, promoteWaitingWorker]);
 
   const checkForUpdates = useCallback(() => {
