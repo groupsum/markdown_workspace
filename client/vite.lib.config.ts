@@ -13,6 +13,7 @@ export default defineConfig({
   plugins: [react()],
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
+    __APP_BUILD_ID__: JSON.stringify('library-build'),
     __PACKAGE_NAME__: JSON.stringify(commonVars.npmPackageName)
   },
   build: {

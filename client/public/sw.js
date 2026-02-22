@@ -36,6 +36,7 @@ let metaState = {
   failedVersions: []
 };
 let failureTimer = null;
+const UPDATE_HEALTH_TIMEOUT_MS = 1000 * 60;
 
 const readMeta = async () => {
   const cache = await caches.open(META_CACHE);
@@ -153,6 +154,34 @@ const markVersionFailed = async (version) => {
   clients.forEach((client) => client.navigate(client.url));
 };
 
+const scheduleFailureCheck = async () => {
+  if (failureTimer) {
+    clearTimeout(failureTimer);
+    failureTimer = null;
+  }
+
+  if (
+    !metaState.lastKnownGoodVersion ||
+    metaState.lastKnownGoodVersion === CURRENT_VERSION ||
+    isFailedVersion(CURRENT_VERSION)
+  ) {
+    return;
+  }
+
+  const windowClients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+  if (!windowClients.length) {
+    return;
+  }
+
+  failureTimer = setTimeout(async () => {
+    const activeClients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (!activeClients.length || metaState.lastKnownGoodVersion === CURRENT_VERSION) {
+      return;
+    }
+    await markVersionFailed(CURRENT_VERSION);
+  }, UPDATE_HEALTH_TIMEOUT_MS);
+};
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
@@ -190,18 +219,7 @@ self.addEventListener('activate', (event) => {
           // Ignore unsupported permission states.
         }
       }
-      if (failureTimer) {
-        clearTimeout(failureTimer);
-      }
-      if (
-        metaState.lastKnownGoodVersion &&
-        metaState.lastKnownGoodVersion !== CURRENT_VERSION &&
-        !isFailedVersion(CURRENT_VERSION)
-      ) {
-        failureTimer = setTimeout(() => {
-          markVersionFailed(CURRENT_VERSION);
-        }, 15000);
-      }
+      await scheduleFailureCheck();
     })()
   );
 });

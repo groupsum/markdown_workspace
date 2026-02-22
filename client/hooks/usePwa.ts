@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { APP_VERSION } from '../constants';
+import { APP_BUILD_ID, APP_VERSION } from '../constants';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -120,6 +120,8 @@ export const usePwa = () => {
     };
   }, []);
 
+  const serviceWorkerBuildVersion = useMemo(() => `${APP_VERSION}-${APP_BUILD_ID}`, []);
+
   useEffect(() => {
     if (!('serviceWorker' in navigator)) {
       return undefined;
@@ -135,7 +137,7 @@ export const usePwa = () => {
 
     navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
 
-    navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(APP_VERSION)}`).then((registration) => {
+    navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(serviceWorkerBuildVersion)}`).then((registration) => {
       registrationRef.current = registration;
 
       const handleWaitingWorker = (shouldReloadWhenApplied: boolean) => {
@@ -191,7 +193,7 @@ export const usePwa = () => {
       navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
       window.clearInterval(updateInterval);
     };
-  }, [announceUpdate, autoUpdateEnabled, failedVersions, promoteWaitingWorker]);
+  }, [announceUpdate, autoUpdateEnabled, failedVersions, promoteWaitingWorker, serviceWorkerBuildVersion]);
 
   useEffect(() => {
     window.localStorage.setItem(AUTO_UPDATE_STORAGE_KEY, String(autoUpdateEnabled));
@@ -216,6 +218,7 @@ export const usePwa = () => {
   }, [autoUpdateEnabled, updateAvailable, failedVersions, promoteWaitingWorker]);
 
 
+
   useEffect(() => {
     if (!('serviceWorker' in navigator)) {
       return;
@@ -236,6 +239,7 @@ export const usePwa = () => {
       navigator.serviceWorker.removeEventListener('message', handleMessage);
     };
   }, []);
+
   useEffect(() => {
     if (!('serviceWorker' in navigator)) {
       return;
@@ -258,12 +262,12 @@ export const usePwa = () => {
   }, [addFailedVersion]);
 
   useEffect(() => {
-    markVersionAsHealthy(APP_VERSION);
+    markVersionAsHealthy(serviceWorkerBuildVersion);
     if (!('serviceWorker' in navigator)) {
       return;
     }
     const notifyReady = () => {
-      const message = { type: 'CLIENT_READY', version: APP_VERSION };
+      const message = { type: 'CLIENT_READY', version: serviceWorkerBuildVersion };
       if (navigator.serviceWorker.controller) {
         navigator.serviceWorker.controller.postMessage(message);
         return;
@@ -273,7 +277,7 @@ export const usePwa = () => {
       }).catch(() => undefined);
     };
     notifyReady();
-  }, [markVersionAsHealthy]);
+  }, [markVersionAsHealthy, serviceWorkerBuildVersion]);
 
   const promptInstall = useCallback(async () => {
     if (!installPrompt) {

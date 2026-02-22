@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
       plugins: [react()],
       define: {
         __APP_VERSION__: JSON.stringify(packageJson.version),
+        __APP_BUILD_ID__: JSON.stringify(env.VITE_APP_BUILD_ID || String(Date.now())),
         __PACKAGE_NAME__: JSON.stringify(commonVars.npmPackageName),
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
