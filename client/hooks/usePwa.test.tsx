@@ -95,6 +95,23 @@ describe('usePwa requestUpdate', () => {
     cleanup();
   });
 
+
+
+  it('registers the service worker with a build-specific token', async () => {
+    const { serviceWorker } = setupServiceWorker();
+
+    render(<HookHarness onReady={() => undefined} />);
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(serviceWorker.register).toHaveBeenCalledTimes(1);
+    const [swUrl] = serviceWorker.register.mock.calls[0];
+    expect(swUrl).toContain('/sw.js?version=');
+    const versionToken = decodeURIComponent(swUrl.split('version=')[1]);
+    expect(versionToken).toMatch(/^.+-.+$/);
+  });
   it('promotes a currently-installing worker once it reaches waiting', async () => {
     const { registration } = setupServiceWorker();
     const installing = createWorker('1.3.75');
