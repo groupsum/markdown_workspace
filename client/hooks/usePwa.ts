@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { APP_VERSION } from '../constants';
+import { APP_BUILD_ID, APP_VERSION } from '../constants';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -135,7 +135,9 @@ export const usePwa = () => {
 
     navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
 
-    navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(APP_VERSION)}`).then((registration) => {
+    const workerToken = `${APP_VERSION}-${APP_BUILD_ID}`;
+
+    navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(workerToken)}`).then((registration) => {
       registrationRef.current = registration;
 
       const handleWaitingWorker = (shouldReloadWhenApplied: boolean) => {
