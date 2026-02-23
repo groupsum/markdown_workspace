@@ -11,7 +11,7 @@
 - [x] on mobile uix, keep bars and panes in place. Panes shall be y scrollable.
 - [x] ability to import markdown files
 - [x] git ops' expandable rail on mobile uix shall have full width. Use css tokens to align expandable rails like git ops.
-- [ ] file explorer expandable rail on mobile uix shall have full width. Use css tokens to align expandable rails like file explorer and git ops.
+- [x] file explorer expandable rail on mobile uix shall have full width. Use css tokens to align expandable rails like file explorer and git ops.
 - [x] when creating a new checkbox, maintain the focus on the line and line character. Do not move focus to the top of the editor.
 - [x] remove idb: persistent from the status bar footer.
 - [x] remove state: saved. From statis bar footer. Simply autosave everything.
