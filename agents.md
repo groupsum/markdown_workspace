@@ -18,6 +18,8 @@ This repository defines and maintains a markdown-driven workspace used to author
 
 ## Screenshots and visual QA workflow
 - Agents must take screenshots of every component and view they change.
+- Multiple screenshots are required for each updated view, modal, or interactive object to capture the states being interacted with.
+- If a component or view is added, updated, or changed, agents must capture multiple screenshots of that view state progression; a single screenshot of the first app view is not satisfactory.
 - After capturing screenshots, agents must review them critically and continue iterating on UI/CSS until the result strongly aligns with prompt expectations.
 - The final result must exceed baseline UI/UX and CSS quality standards, delivering exceptional clarity, polish, and usability.
 - Capture all relevant views, modes, panes, and modals for each supported theme.
