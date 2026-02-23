@@ -30,6 +30,7 @@ const ToolbarButton: React.FC<{
         onClick={onClick}
         title={title}
         aria-label={title}
+        aria-pressed={active === undefined ? undefined : active}
     >
         {icon}
     </button>

@@ -60,6 +60,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
 }) => {
   const [expandAllSignal, setExpandAllSignal] = useState(0);
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
   const hasSelection = Boolean(selectedExplorerId);
 
   const sidebarResizeRef = useRef<{
@@ -93,6 +94,21 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
     };
   }, [onSidebarWidthChange]);
 
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 640px), (hover: none) and (pointer: coarse)');
+    const syncLayoutMode = () => setIsCompactLayout(mediaQuery.matches);
+
+    syncLayoutMode();
+    mediaQuery.addEventListener('change', syncLayoutMode);
+
+    return () => mediaQuery.removeEventListener('change', syncLayoutMode);
+  }, []);
+
   const handleSidebarResizeStart = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!sidebarOpen) return;
     sidebarResizeRef.current = {
@@ -108,7 +124,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
       <aside 
         className={`workspace-sidebar ${!sidebarOpen ? 'is-collapsed' : ''}`}
         aria-label="File Explorer"
-        style={{ width: sidebarOpen ? `${sidebarWidth}px` : undefined }}
+        style={{ width: sidebarOpen && !isCompactLayout ? `${sidebarWidth}px` : undefined }}
       >
         <div className="workspace-panel-header">
           <div className="flex items-center gap-2 overflow-hidden">
