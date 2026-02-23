@@ -170,6 +170,12 @@
   }
 }
 
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .status-bar {
+    display: none;
+  }
+}
+
 
 @media (max-width: 640px) and (min-aspect-ratio: 4/3) {
   :root {
