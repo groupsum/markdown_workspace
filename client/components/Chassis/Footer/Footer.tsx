@@ -57,12 +57,10 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
                 <div className="status-sep"></div>
                 <div className="status-item">
-                    <span className="status-label">PWA VERSION:</span>
                     <span className="status-text-bold">{version}</span>
                 </div>
                 <div className="status-sep"></div>
                 <div className="status-item" title="Runtime shell">
-                    <span className="status-label">SHELL:</span>
                     <span className="status-text-bold">{shellLabel}</span>
                 </div>
                 {updateAvailable && (

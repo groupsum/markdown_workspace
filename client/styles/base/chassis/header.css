@@ -82,6 +82,8 @@
   align-items: center;
   gap: 2px;
   padding: 1px;
+  margin-top: 1px;
+  margin-right: 1px;
   border: 1px solid var(--border-color);
   background: var(--bg-inset);
 }
@@ -95,7 +97,3 @@
   cursor: not-allowed;
 }
 
-.header-btn--settings {
-  margin-top: 1px;
-  margin-right: 1px;
-}

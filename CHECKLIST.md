@@ -25,3 +25,7 @@
 - [ ] hide the status footer bar on mobile uix portrait.
 - [ ] hide keyboard mappings modal view tab on mobile uix
 - [ ] show gesture mappings view tab on mobile uix
+- [x] on mobile status bar, hide separators for compact layout readability.
+- [x] on status bar, remove the `PWA_VERSION` label and show version value only.
+- [x] on status bar, remove the `SHELL` label and show shell value only.
+- [x] apply settings-icon spacing via `header-btn-group` margins (not `header-btn--settings`).

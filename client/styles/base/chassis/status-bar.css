@@ -77,7 +77,8 @@
 
 @media (max-width: 640px) {
   .status-item--optional,
-  .status-item--cursor {
+  .status-item--cursor,
+  .status-sep {
     display: none;
   }
 
