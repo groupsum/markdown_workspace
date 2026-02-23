@@ -20,7 +20,7 @@
 - [ ] fix underlining
 - [x] make anondized billet the default theme
 - [ ] fix filetabs on mobile uix portrait.
-- [ ] hide the status bar on mobile uix landscape
+- [x] hide the status bar on mobile uix landscape
 - [ ] update the system config to show the pwa version there.
 - [ ] hide the status footer bar on mobile uix portrait.
 - [ ] hide keyboard mappings modal view tab on mobile uix
