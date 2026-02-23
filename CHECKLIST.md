@@ -18,7 +18,7 @@
 - [x] fix the header bar such that the install button is not present after pwa is installed. Also give the settings icon a very very small ampunt of extra top margin and right margin.
 - [ ] reverse the action rail on mobile uix portrait. Add css token for this, implement same value on all themes.
 - [ ] fix underlining
-- [ ] make anondized billet the default theme
+- [x] make anondized billet the default theme
 - [ ] fix filetabs on mobile uix portrait.
 - [ ] hide the status bar on mobile uix landscape
 - [ ] update the system config to show the pwa version there.
