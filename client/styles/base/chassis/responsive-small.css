@@ -218,6 +218,10 @@
   .git-workspace .git-diff-view {
     display: flex;
   }
+
+  .status-bar {
+    display: none;
+  }
 }
 
 
