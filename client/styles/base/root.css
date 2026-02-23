@@ -41,7 +41,8 @@
   --texture-opacity: 0.05;
   --editor-padding: calc(24px * var(--ui-scale));
   --editor-line-height: calc(1.5rem * var(--ui-scale));
-  --markdown-line-height: var(--editor-line-height);
+  --editor-line-rhythm: var(--editor-line-height);
+  --markdown-line-height: var(--editor-line-rhythm);
   --line-number-gutter-width: calc(30px * var(--ui-scale));
   --mobile-rail-expanded-width: 100vw;
   --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Download, RefreshCw } from 'lucide-react';
+import { Download, RefreshCw } from 'lucide-react';
 import { Header } from '../components/Chassis/Header/Header';
 import { ActionRail } from '../components/Chassis/ActionRail/ActionRail';
 import { WorkPane } from '../components/Chassis/WorkPane/WorkPane';
@@ -29,13 +29,7 @@ export const buildPwaAction = (pwaState: any, pwaActions: any) => {
     };
   }
 
-  return {
-    label: 'PWA Installed',
-    title: 'PWA installed',
-    icon: <CheckCircle size={16} />,
-    onClick: undefined,
-    disabled: true
-  };
+  return null;
 };
 
 interface AppContentProps {

@@ -8,14 +8,16 @@ const read = (relativePath: string) =>
 describe('markdown/editor alignment token contract', () => {
   it('keeps markdown line height bound to editor line height token', () => {
     const rootCss = read('./base/root.css');
-    expect(rootCss).toContain('--markdown-line-height: var(--editor-line-height);');
+    expect(rootCss).toContain('--editor-line-rhythm: var(--editor-line-height);');
+    expect(rootCss).toContain('--markdown-line-height: var(--editor-line-rhythm);');
   });
 
   it('uses shared tokens for editor and markdown rhythm', () => {
     const editorCss = read('./base/ui-editor.css');
     const markdownCss = read('./base/markdown.css');
 
-    expect(editorCss).toContain('line-height: var(--editor-line-height);');
+    expect(editorCss).toContain('line-height: var(--editor-line-rhythm);');
+    expect(editorCss).toContain('height: var(--editor-line-rhythm);');
     expect(markdownCss).toContain('line-height: var(--markdown-line-height);');
     expect(editorCss).toContain('width: var(--line-number-gutter-width);');
   });
