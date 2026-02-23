@@ -4,7 +4,8 @@ import { Wifi, WifiOff } from 'lucide-react';
 interface FooterProps {
     cursorLine: number;
     cursorCol: number;
-    version: string;
+    shellVersion: string;
+    buildId: string;
     online?: boolean;
     isInstalled?: boolean;
     updateAvailable?: boolean;
@@ -14,13 +15,15 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ 
   cursorLine, 
   cursorCol, 
-  version, 
+  shellVersion,
+  buildId,
   online = true,
   isInstalled = false,
   updateAvailable = false,
   className = "" 
 }) => {
     const shellLabel = isInstalled ? 'PWA' : 'BROWSER';
+    const runtimeLabel = `${shellLabel}: v${shellVersion}:${buildId}`;
 
     return (
         <footer className={`status-bar ${className}`}>
@@ -56,12 +59,8 @@ export const Footer: React.FC<FooterProps> = ({
                     )}
                 </div>
                 <div className="status-sep"></div>
-                <div className="status-item">
-                    <span className="status-text-bold">{version}</span>
-                </div>
-                <div className="status-sep"></div>
                 <div className="status-item" title="Runtime shell">
-                    <span className="status-text-bold">{shellLabel}</span>
+                    <span className="status-text-bold">{runtimeLabel}</span>
                 </div>
                 {updateAvailable && (
                   <>
