@@ -94,3 +94,8 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.header-btn--settings {
+  margin-top: 1px;
+  margin-right: 1px;
+}

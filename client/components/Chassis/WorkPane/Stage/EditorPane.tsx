@@ -253,13 +253,41 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   };
 
   const applyCheckbox = () => {
-    transformSelectedLines((line) => {
-      if (/^\s*[-*+]\s+\[[ xX]\]\s+/.test(line)) return line;
-      if (/^\s*[-*+]\s+/.test(line)) {
-        return line.replace(/^(\s*)[-*+]\s+/, '$1- [ ] ');
-      }
-      return line.replace(/^(\s*)/, '$1- [ ] ');
-    }, false);
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const text = textarea.value;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const lineStart = text.lastIndexOf('\n', start - 1) + 1;
+    const nextBreak = text.indexOf('\n', end);
+    const lineEnd = nextBreak === -1 ? text.length : nextBreak;
+    const selectedBlock = text.slice(lineStart, lineEnd);
+
+    let firstLinePrefixDelta = 0;
+    const updatedBlock = selectedBlock
+      .split('\n')
+      .map((line, index) => {
+        if (/^\s*[-*+]\s+\[[ xX]\]\s+/.test(line)) return line;
+        const updatedLine = /^\s*[-*+]\s+/.test(line)
+          ? line.replace(/^(\s*)[-*+]\s+/, '$1- [ ] ')
+          : line.replace(/^(\s*)/, '$1- [ ] ');
+        if (index === 0) {
+          firstLinePrefixDelta = updatedLine.length - line.length;
+        }
+        return updatedLine;
+      })
+      .join('\n');
+
+    const updated = `${text.slice(0, lineStart)}${updatedBlock}${text.slice(lineEnd)}`;
+    const cursor = Math.max(lineStart, start + Math.max(0, firstLinePrefixDelta));
+    updateContent(updated);
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(cursor, cursor);
+      updateCursor();
+      refreshSelectionState();
+    }, 0);
   };
 
   const checkCheckbox = () => {

@@ -107,8 +107,8 @@
   user-select: none;
 }
 .line-num {
-  height: 1.5rem;
-  line-height: var(--editor-line-height);
+  height: var(--editor-line-rhythm);
+  line-height: var(--editor-line-rhythm);
 }
 .editor-textarea {
   flex: 1;
@@ -118,7 +118,7 @@
   padding: var(--editor-padding);
   font-family: var(--font-mono);
   font-size: calc(13px * var(--ui-scale));
-  line-height: var(--editor-line-height);
+  line-height: var(--editor-line-rhythm);
   color: var(--fg-primary);
   outline: none;
   overflow-y: auto;

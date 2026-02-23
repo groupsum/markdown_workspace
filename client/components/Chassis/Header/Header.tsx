@@ -98,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {pwaAction.icon}
                 </button>
               )}
-              <button className="header-btn" onClick={onOpenSettings} title="System Config">
+              <button className="header-btn header-btn--settings" onClick={onOpenSettings} title="System Config">
                 <Settings size={16} />
               </button>
             </div>
