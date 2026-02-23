@@ -270,16 +270,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       </p>
                       <div className="pwa-status-grid">
                         <div className="pwa-status-row">
-                          <span className="pwa-status-label">UPDATE_STATE</span>
-                          <span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{pwaUpdateLabel}</span>
-                        </div>
-                        <div className="pwa-status-row">
-                          <span className="pwa-status-label">SERVICE_WORKER</span>
-                          <span className="pwa-status-value">{pwaState.isSupported ? 'AVAILABLE' : 'UNAVAILABLE'}</span>
-                        </div>
-                        <div className="pwa-status-row">
-                          <span className="pwa-status-label">PWA_VERSION</span>
-                          <span className="pwa-status-value">{APP_VERSION}</span>
+                          <span className="pwa-status-label">UPDATE/SW/VERSION</span>
+                          <span className="pwa-status-value pwa-status-inline-values">
+                            <span className={pwaState.updateAvailable ? 'is-ready' : ''}>{pwaUpdateLabel}</span>
+                            <span>{pwaState.isSupported ? 'SW:AVAILABLE' : 'SW:UNAVAILABLE'}</span>
+                            <span>{`VER:${APP_VERSION}`}</span>
+                          </span>
                         </div>
                       </div>
                       <div className="settings-action-row">

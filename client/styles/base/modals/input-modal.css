@@ -96,7 +96,19 @@
   color: var(--fg-primary);
 }
 
-.pwa-status-value.is-ready {
+.pwa-status-inline-values {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pwa-status-inline-values > span + span::before {
+  content: '|';
+  color: var(--fg-muted);
+  margin-right: 8px;
+}
+
+.pwa-status-inline-values .is-ready {
   color: var(--accent);
 }
 
