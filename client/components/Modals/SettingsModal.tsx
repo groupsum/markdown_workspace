@@ -4,6 +4,7 @@ import { OidcSignInSelector } from './OidcSignInSelector';
 import { RepositoryAutocomplete } from './RepositoryAutocomplete';
 import { AppTheme, AppMode, GitConfig, ViewMode } from '../../types';
 import { THEMES } from '../../data/themes';
+import { APP_VERSION } from '../../constants';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -275,6 +276,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         <div className="pwa-status-row">
                           <span className="pwa-status-label">SERVICE_WORKER</span>
                           <span className="pwa-status-value">{pwaState.isSupported ? 'AVAILABLE' : 'UNAVAILABLE'}</span>
+                        </div>
+                        <div className="pwa-status-row">
+                          <span className="pwa-status-label">PWA_VERSION</span>
+                          <span className="pwa-status-value">{APP_VERSION}</span>
                         </div>
                       </div>
                       <div className="settings-action-row">

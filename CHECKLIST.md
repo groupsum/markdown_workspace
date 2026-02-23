@@ -21,8 +21,8 @@
 - [x] make anondized billet the default theme
 - [ ] fix filetabs on mobile uix portrait.
 - [x] hide the status bar on mobile uix landscape
-- [ ] update the system config to show the pwa version there.
-- [x] hide the status footer bar on mobile uix portrait.
+- [x] update the system config to show the pwa version there.
+- [ ] hide the status footer bar on mobile uix portrait.
 - [ ] hide keyboard mappings modal view tab on mobile uix
 - [ ] show gesture mappings view tab on mobile uix
 - [x] on mobile status bar, hide separators for compact layout readability.
