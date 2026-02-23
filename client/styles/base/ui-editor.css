@@ -246,6 +246,19 @@
   }
 }
 
+@media (max-width: 900px) and (hover: none) and (pointer: coarse) {
+  .view-toolbar {
+    border-bottom: 0 !important;
+    border-top: var(--border-width) solid var(--border-color) !important;
+  }
+}
+
+@media (max-width: 900px) and (hover: none) and (pointer: coarse) and (orientation: landscape) {
+  .editor-pane-shell {
+    flex-direction: column;
+  }
+}
+
 .editor-layout-wrapper.hide-line-numbers .editor-textarea {
   padding-left: calc(var(--editor-padding) + 2px);
 }
