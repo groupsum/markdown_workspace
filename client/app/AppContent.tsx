@@ -6,7 +6,7 @@ import { WorkPane } from '../components/Chassis/WorkPane/WorkPane';
 import { GitPane } from '../components/Chassis/Git/GitPane';
 import { Footer } from '../components/Chassis/Footer/Footer';
 import { ProjectSelector } from '../components/Project/ProjectSelector';
-import { APP_VERSION } from '../constants';
+import { APP_BUILD_ID, APP_VERSION } from '../constants';
 
 export const buildPwaAction = (pwaState: any, pwaActions: any) => {
   if (pwaState.canInstall) {
@@ -172,7 +172,8 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
         className="status-bar"
         cursorLine={state.cursorPos.line}
         cursorCol={state.cursorPos.col}
-        version={APP_VERSION}
+        shellVersion={APP_VERSION}
+        buildId={APP_BUILD_ID}
         online={online}
         isInstalled={pwaState.isInstalled}
         updateAvailable={pwaState.updateAvailable}
