@@ -67,3 +67,21 @@ The contract includes portrait, square/hybrid, landscape, wide, and ultra-wide a
 ## Agent TODO tracking note
 - Keep the active UI/UX checklist in `CHECKLIST.md` current as work progresses.
 - If a checklist item has not been implemented and verified, it must remain unchecked.
+
+## Mandatory autonomous test-loop protocol
+- Always execute work in fast, decisive bursts.
+- For every task, follow this sequence before and during implementation: review prior notes, review current features, create a plan, notate the plan, execute, test, verify, repeat.
+- Prior notes must be reviewed from `AGENT_NOTES.md` at the start of each burst.
+- Plans and outcomes must be recorded in `AGENT_NOTES.md`.
+- The full loop specification in `TEST_LOOP_WORKFLOW.md` is required process guidance and must be followed.
+- During implementation cycles that involve runnable services, perform this minimum sequence:
+  1. start uvicorn backend;
+  2. start `admin_client` and `public_client`;
+  3. exercise hooks and GUI in both clients;
+  4. inspect network capture (headers/payloads/responses sent and received);
+  5. determine whether failures occurred and why;
+  6. remediate;
+  7. repeat until issues are resolved.
+- After issue resolution, assess each project for gaps, errors, issues, and potential change requests.
+- Document change requests, feature requests, and bugs as self-notes in `AGENT_NOTES.md`.
+- Update this `agents.md` file whenever procedure expectations evolve, so future runs inherit the same discipline.
