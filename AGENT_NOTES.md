@@ -21,6 +21,8 @@
 - 2026-02-24: Added `TEST_LOOP_WORKFLOW.md` with required 0-14 loop behavior.
 - 2026-02-24: Updated `agents.md` to permanently enforce the autonomous loop protocol.
 
+- 2026-02-24 20:45:12: Plan: Update screenshot guidance to require all aspect ratios and 5+ captures per ratio.
+- 2026-02-24 20:46:03: Updated `client/THEME_SCREENSHOTS.md` with mandatory aspect-ratio coverage and per-ratio minimum screenshot counts.
 ## Network/PCAP review notes
 - 2026-02-24: No runtime services or traffic capture executed in this documentation-and-tooling update.
 
