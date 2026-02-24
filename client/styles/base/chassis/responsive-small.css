@@ -231,6 +231,12 @@
   }
 }
 
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .status-bar {
+    display: none;
+  }
+}
+
 
 @media (max-aspect-ratio: 3/4), (hover: none) and (pointer: coarse) {
   .workspace-sidebar,
