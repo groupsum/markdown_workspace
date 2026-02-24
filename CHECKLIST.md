@@ -16,13 +16,12 @@
 - [x] remove idb: persistent from the status bar footer.
 - [x] remove state: saved. From statis bar footer. Simply autosave everything.
 - [x] fix the header bar such that the install button is not present after pwa is installed. Also give the settings icon a very very small ampunt of extra top margin and right margin.
-- [ ] reverse the action rail on mobile uix portrait. Add css token for this, implement same value on all themes.
+- [x] reverse the action rail on mobile uix portrait. Add css token for this, implement same value on all themes.
 - [ ] fix underlining
 - [x] make anondized billet the default theme
 - [ ] fix filetabs on mobile uix portrait.
 - [x] hide the status bar on mobile uix landscape
 - [x] update the system config to show the pwa version there.
-- [ ] hide the status footer bar on mobile uix portrait.
 - [ ] hide keyboard mappings modal view tab on mobile uix
 - [ ] show gesture mappings view tab on mobile uix
 - [x] on mobile status bar, hide separators for compact layout readability.

@@ -46,6 +46,7 @@
   --line-number-gutter-width: calc(30px * var(--ui-scale));
   --mobile-rail-expanded-width: 100vw;
   --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);
+  --mobile-action-rail-direction: row;
   --file-indent-base: calc(12px * var(--ui-scale));
   --file-indent-unit: calc(12px * var(--ui-scale));
   --c-explorer-hover: rgba(0, 0, 0, 0.06);

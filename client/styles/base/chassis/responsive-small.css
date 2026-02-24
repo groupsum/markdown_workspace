@@ -9,6 +9,7 @@
     --app-gap: 2px;
     --editor-padding: 12px;
     --rail-height: 40px;
+    --mobile-action-rail-direction: row;
   }
 
   .chassis-scaler {
@@ -22,7 +23,7 @@
   }
 
   .action-rail {
-    flex-direction: row;
+    flex-direction: var(--mobile-action-rail-direction);
     border-right: 0;
     border-top: var(--border-width) solid var(--border-color);
     justify-content: space-between;
@@ -228,6 +229,12 @@
 
   .status-bar {
     display: none;
+  }
+}
+
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  :root {
+    --mobile-action-rail-direction: row-reverse;
   }
 }
 
