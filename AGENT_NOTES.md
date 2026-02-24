@@ -2,30 +2,34 @@
 
 ## Prior notes review
 - 2026-02-24: No prior autonomous loop notes existed; initialized this running log.
+- 2026-02-24: Reviewed the existing loop/process guidance before beginning this burst.
 
 ## Active execution plan
 - 2026-02-24:
   1. Review repository instructions and current workflow expectations.
-  2. Add a formal autonomous test-loop workflow document.
-  3. Update `agents.md` so future work must follow the loop.
-  4. Validate docs, then commit and prepare PR summary.
+  2. Add a lightweight script that inserts a timestamped run-log entry into `AGENT_NOTES.md`.
+  3. Document script usage in loop workflow guidance.
+  4. Validate formatting changes, then commit and prepare PR summary.
 
 ## Run log
+- 2026-02-24: Added `scripts/log_execution_burst.sh` to scaffold `AGENT_NOTES.md` and prepend timestamped run-log entries.
+- 2026-02-24: Updated `TEST_LOOP_WORKFLOW.md` with a helper command reference for fast note capture.
+- 2026-02-24: Reviewed `agents.md` and checklist constraints before making changes.
 - 2026-02-24: Reviewed `agents.md` and `CHECKLIST.md` guidance before changes.
 - 2026-02-24: Added `TEST_LOOP_WORKFLOW.md` with required 0-14 loop behavior.
 - 2026-02-24: Updated `agents.md` to permanently enforce the autonomous loop protocol.
 
 ## Network/PCAP review notes
-- 2026-02-24: No runtime services or traffic capture executed in this documentation-only update.
+- 2026-02-24: No runtime services or traffic capture executed in this documentation-and-tooling update.
 
 ## Open issues
-- None identified in this documentation-only change.
+- None identified in this documentation-and-tooling change.
 
 ## Change requests
-- Consider adding a lightweight script that scaffolds loop entries in `AGENT_NOTES.md` for each execution burst.
+- Consider adding a pre-commit check that validates `AGENT_NOTES.md` includes a current-day run-log entry when files are modified.
 
 ## Feature requests
-- Consider a standard network capture checklist template for backend/client verification loops.
+- Add an optional `--plan` mode to `scripts/log_execution_burst.sh` to prepend plan entries in addition to run-log entries.
 
 ## Bugs
-- None recorded during this documentation update.
+- None recorded during this documentation-and-tooling update.

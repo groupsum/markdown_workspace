@@ -44,3 +44,11 @@ Work in fast, decisive bursts and repeat this loop until all known issues are re
 - A run log entry (what was run, what failed/passed, what changed).
 - A network review note for relevant requests/responses.
 - A closure entry listing remaining issues or confirming zero open issues.
+
+## Optional helper command
+Use the helper script to prepend a timestamped run-log entry quickly:
+
+```bash
+./scripts/log_execution_burst.sh AGENT_NOTES.md "Summarize this execution burst"
+```
+
