@@ -49,6 +49,7 @@ Work in fast, decisive bursts and repeat this loop until all known issues are re
 Use the helper script to prepend a timestamped run-log entry quickly:
 
 ```bash
+./scripts/log_execution_burst.sh --plan AGENT_NOTES.md "Plan this burst"
 ./scripts/log_execution_burst.sh AGENT_NOTES.md "Summarize this execution burst"
 ```
 
