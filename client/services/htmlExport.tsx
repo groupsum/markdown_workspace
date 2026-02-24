@@ -20,10 +20,7 @@ const EXPORT_STYLE_OVERRIDES = `
   }
 
   .export-shell {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
+    display: block;
   }
 
   .export-page {
@@ -34,6 +31,15 @@ const EXPORT_STYLE_OVERRIDES = `
     background: var(--bg-panel, #11151a);
     border: 1px solid var(--border-color, rgba(255,255,255,0.1));
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    margin: 0 auto 32px;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .export-page:last-child {
+    margin-bottom: 0;
+    break-after: auto;
+    page-break-after: auto;
   }
 
   .export-page .markdown-body {
@@ -51,7 +57,7 @@ const EXPORT_STYLE_OVERRIDES = `
     }
 
     .export-shell {
-      gap: 0;
+      display: block;
     }
 
     .export-page {
@@ -60,10 +66,18 @@ const EXPORT_STYLE_OVERRIDES = `
       margin: 0;
       border: none;
       box-shadow: none;
+      break-after: page;
       page-break-after: always;
+    }
+
+    .export-page:last-child {
+      break-after: auto;
+      page-break-after: auto;
     }
   }
 `;
+
+export const EXPORT_PAGE_BREAK_PATTERN = /\n(?:\s*<!--\s*pagebreak\s*-->\s*\n|\f\n?)/gi;
 
 const escapeHtml = (value: string) => value
   .replace(/&/g, '&amp;')
@@ -132,6 +146,11 @@ const renderPreviewMarkup = (content: string, theme: AppTheme) => renderToStatic
   </div>
 );
 
+export const splitMarkdownIntoPages = (content: string): string[] => content
+  .split(EXPORT_PAGE_BREAK_PATTERN)
+  .map((segment) => segment.trim())
+  .filter(Boolean);
+
 export const getExportStyles = async (theme: AppTheme): Promise<{ coreCss: string; themeCss: string; }> => ({
   coreCss: CORE_STYLESHEET_TEXT,
   themeCss: THEME_STYLESHEET_TEXT[theme] || THEME_STYLESHEET_TEXT.default
@@ -155,7 +174,11 @@ export const createHtmlExport = ({
   coreCss: string;
   themeCss: string;
 }) => {
-  const previewHtml = renderPreviewMarkup(content, theme);
+  const previewPages = splitMarkdownIntoPages(content);
+  const pageContents = previewPages.length > 0 ? previewPages : [''];
+  const previewHtml = pageContents
+    .map((pageContent) => `<section class="export-page">${renderPreviewMarkup(pageContent, theme)}</section>`)
+    .join('\n');
   const safeTitle = escapeHtml(title.replace(/\.md$/i, ''));
 
   return `<!DOCTYPE html>
@@ -172,9 +195,7 @@ ${EXPORT_STYLE_OVERRIDES}
 </head>
 <body class="markdown-export">
   <main class="export-shell">
-    <section class="export-page">
-      ${previewHtml}
-    </section>
+    ${previewHtml}
   </main>
 </body>
 </html>`;
