@@ -158,8 +158,9 @@
 
   .status-bar {
     flex-wrap: nowrap;
-    height: var(--status-height);
-    min-height: var(--status-height);
+    box-sizing: border-box;
+    height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
+    min-height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
     padding: 0 6px max(0px, env(safe-area-inset-bottom));
     overflow: hidden;
   }
@@ -238,5 +239,11 @@
     width: var(--mobile-expandable-rail-width);
     max-width: 100%;
     min-width: 0;
+  }
+}
+
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .chassis-root {
+    padding-bottom: 0;
   }
 }

@@ -23,6 +23,19 @@
 
 - 2026-02-24 20:45:12: Plan: Update screenshot guidance to require all aspect ratios and 5+ captures per ratio.
 - 2026-02-24 20:46:03: Updated `client/THEME_SCREENSHOTS.md` with mandatory aspect-ratio coverage and per-ratio minimum screenshot counts.
+
+- 2026-02-24 21:05:00: Plan: Fix mobile portrait footer status bar so it sits flush at the viewport bottom including safe-area insets.
+- 2026-02-24 21:10:00: Updated mobile portrait status-bar sizing/padding and chassis bottom padding behavior to anchor footer to the bottom edge.
+
+- 2026-02-24 21:35:00: Plan: Refine footer anchoring fix by limiting chassis padding override to portrait-only mobile and re-validate across multiple aspect-ratio classes.
+- 2026-02-24 21:42:00: Updated responsive-small rules to portrait-scope chassis bottom padding override and removed keyboard-specific duplicate override.
+
+- 2026-02-24 22:05:00: Plan: Fix project selector card layout so single-card states do not leave empty phantom columns in portrait/small viewports.
+- 2026-02-24 22:12:00: Switched project grid to auto-fit minmax patterns for base and responsive breakpoints to collapse unused columns and let cards fill available width.
+
+- 2026-02-24 22:40:00: Plan: Enforce 3-card visibility in short landscape project selector view with compact card body+footer sizing.
+- 2026-02-24 22:52:00: Added short-height landscape project-grid rule with fixed 3 columns and compact card/footer metrics to keep full card content in-view.
+
 ## Network/PCAP review notes
 - 2026-02-24: No runtime services or traffic capture executed in this documentation-and-tooling update.
 

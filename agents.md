@@ -85,3 +85,16 @@ The contract includes portrait, square/hybrid, landscape, wide, and ultra-wide a
 - After issue resolution, assess each project for gaps, errors, issues, and potential change requests.
 - Document change requests, feature requests, and bugs as self-notes in `AGENT_NOTES.md`.
 - Update this `agents.md` file whenever procedure expectations evolve, so future runs inherit the same discipline.
+
+## 2026-02-24 Mobile footer follow-up addendum
+- For mobile footer/status-bar fixes, scope portrait-only behavior to portrait aspect-ratio media queries whenever possible; avoid broad small-screen overrides that alter non-portrait layouts.
+- Visual QA for responsive fixes must include at least 5 screenshots spanning at least 3 aspect-ratio classes, including the modified aspect ratio.
+- When safe-area insets are involved, validate both default and alternate viewport states to ensure no footer lift/gap regression.
+
+## 2026-02-24 Project grid layout addendum
+- In selector grids, prefer `auto-fit` over `auto-fill` when empty tracks would create visible dead space for low-card-count states.
+- Validate 1-card and multi-card states during responsive QA so layout behavior is consistent at every supported aspect class.
+
+## 2026-02-24 Short-height grid-fit addendum
+- For short landscape selectors, enforce explicit card-column targets when requested (e.g., 3-up) instead of relying on implicit auto-fit behavior.
+- Card compaction must preserve visibility of both card body and card footer at target viewport class.
