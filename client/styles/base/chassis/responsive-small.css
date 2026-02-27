@@ -243,7 +243,25 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  :root {
+    --rail-height: 0px;
+  }
+
   .chassis-root {
-    padding-bottom: 0;
+    padding-bottom: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
+    border-bottom-width: 0;
+  }
+
+  .status-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
+    min-height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
+    padding: 0 6px max(0px, env(safe-area-inset-bottom));
+    z-index: 40;
   }
 }

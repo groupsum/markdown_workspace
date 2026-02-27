@@ -36,6 +36,26 @@
 - 2026-02-24 22:40:00: Plan: Enforce 3-card visibility in short landscape project selector view with compact card body+footer sizing.
 - 2026-02-24 22:52:00: Added short-height landscape project-grid rule with fixed 3 columns and compact card/footer metrics to keep full card content in-view.
 
+- 2026-02-27 03:32:54: Plan: Fix portrait mobile status bar bottom anchoring so no background gap appears beneath footer/status area.
+- 2026-02-27 03:32:54: Scoped portrait mobile status bar safe-area handling to offset container inset bleed and keep footer flush to viewport bottom.
+- 2026-02-27 03:32:54: Captured responsive visual QA screenshots across portrait, square, landscape, and wide aspect classes after the footer anchoring fix.
+
+- 2026-02-27 03:42:02: Plan: Remove remaining portrait mobile bottom strip so status bar sits exactly at viewport bottom with no exposed chassis background.
+- 2026-02-27 03:42:02: Updated portrait mobile chassis/footer rules to remove root bottom border and keep status bar safe-area padding without negative offset hacks.
+- 2026-02-27 03:42:02: Re-ran portrait/square/landscape/wide screenshot QA to verify bottom anchoring behavior.
+
+- 2026-02-27 05:11:09: Plan: Eliminate persistent portrait bottom gap by enabling full-bleed viewport safe-area behavior on mobile.
+- 2026-02-27 05:11:09: Added `viewport-fit=cover` to the viewport meta tag so the app can extend into safe-area regions and footer anchoring can reach the physical bottom edge.
+- 2026-02-27 05:11:09: Revalidated portrait/square/landscape/wide screenshots after viewport safe-area fix.
+
+- 2026-02-27 05:15:32: Plan: Resolve persistent portrait footer gap by anchoring the status bar to the viewport bottom independently from grid row sizing.
+- 2026-02-27 05:15:32: Updated portrait-mobile footer behavior to use fixed bottom anchoring with explicit safe-area height/padding and matching chassis bottom padding reservation.
+- 2026-02-27 05:15:32: Re-captured 5 responsive screenshots (portrait x2, square, landscape, wide) to verify no bottom gap regression.
+
+- 2026-02-27 05:27:09: Plan: Set portrait mobile action-rail row height token to `0px` so the requested aspect-ratio layout removes rail-row height.
+- 2026-02-27 05:27:09: Added portrait-only `--rail-height: 0px` override in small/portrait responsive rules while preserving fixed-bottom status-bar anchoring.
+- 2026-02-27 05:27:09: Captured updated responsive screenshots across portrait/square/landscape/wide for rail-height verification.
+
 ## Network/PCAP review notes
 - 2026-02-24: No runtime services or traffic capture executed in this documentation-and-tooling update.
 
