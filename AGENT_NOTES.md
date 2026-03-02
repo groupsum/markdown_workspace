@@ -76,3 +76,6 @@
 - 2026-03-02 12:00:00: Plan: Move view toolbar to bottom for touch/mobile portrait while preserving non-portrait theme layouts.
 - 2026-03-02 12:00:00: Added a portrait-touch override in shared editor CSS that forces themed toolbars into bottom row placement with safe-area bottom padding.
 - 2026-03-02 12:00:00: Captured multi-aspect screenshots (portrait/square/landscape/wide/ultrawide) to validate toolbar placement.
+- 2026-03-02 13:45:42: Plan: Increment publishable package versions and capture mobile editor workspace screenshots for new-file flow.
+- 2026-03-02 13:45:42: Bumped `client` and `lander` package versions via patch release increments.
+- 2026-03-02 13:45:42: Captured mobile editor screenshots showing workspace load, opening a new file, and typing into the editor.
