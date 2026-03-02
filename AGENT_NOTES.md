@@ -79,3 +79,40 @@
 - 2026-03-02 13:45:42: Plan: Increment publishable package versions and capture mobile editor workspace screenshots for new-file flow.
 - 2026-03-02 13:45:42: Bumped `client` and `lander` package versions via patch release increments.
 - 2026-03-02 13:45:42: Captured mobile editor screenshots showing workspace load, opening a new file, and typing into the editor.
+
+- 2026-03-02 14:12:52: Plan: Keep mobile portrait view toolbar anchored at bottom row and expand screenshot coverage for responsive QA.
+- 2026-03-02 14:12:52: Updated `theme-micropress` portrait rules so the toolbar uses the bottom grid row with safe-area bottom padding instead of top floating placement.
+- 2026-03-02 14:12:52: Captured expanded multi-aspect screenshots to verify toolbar placement behavior after the fix.
+
+- 2026-03-02 14:23:57: Refined portrait-touch toolbar override in shared editor CSS and micropress theme to enforce bottom anchoring behavior and maintain editor content spacing.
+- 2026-03-02 14:23:57: Rebuilt client and captured 6 responsive screenshots (portrait x2, square, landscape, wide, ultrawide) for toolbar placement QA evidence.
+
+- 2026-03-02 14:37:28: Plan: Fix portrait mobile view-toolbar anchoring regression by removing pointer-gated media conditions and re-validate with expanded screenshot coverage.
+- 2026-03-02 14:37:28: Updated shared and micropress portrait media queries to `max-width + max-aspect-ratio` and adjusted bottom anchor offset to include safe-area inset.
+
+- 2026-03-02 14:41:06: Revalidated portrait toolbar placement and captured expanded evidence set (10 screenshots) across micropress/default/zinc plus square/landscape/wide aspect classes.
+- 2026-03-02 14:41:06: Bumped `client` and `lander` package versions via patch increments and refreshed package-lock metadata.
+
+- 2026-03-02 14:53:40: Plan: Keep portrait mobile view-toolbar at bottom while preventing overlap with action rail; replace fixed overlay behavior with in-pane bottom-row placement.
+- 2026-03-02 14:53:40: Updated portrait mobile editor/theme rules so toolbar renders in the pane bottom row (non-overlay), restored portrait rail height, and captured expanded 10-shot QA set across themes/aspect classes.
+- 2026-03-02 14:53:40: Bumped `client`/`lander` package versions and refreshed lockfiles after validation build.
+
+- 2026-03-02 15:11:06: Plan: Keep portrait toolbar bottom-aligned even when sidebar is expanded, so toolbar remains visible and never overlaps the action rail.
+- 2026-03-02 15:11:06: Added portrait mobile sidebar+stage coexistence rule so the stage (with toolbar bottom row) remains visible with sidebar open; captured 10 new screenshots including sidebar-open/collapsed theme states.
+- 2026-03-02 15:11:06: Bumped package versions and lockfiles after validation build.
+
+- 2026-03-02 20:59:53: Plan: Enforce exact portrait stacking order (editor/preview content -> view toolbar -> action rail -> status bar) across themes.
+- 2026-03-02 20:59:53: Added portrait bottom-row overrides for default/zinc/acid/anodized themes and refined portrait workspace stacking so action rail remains below the editor toolbar while sidebar can stay visible above stage.
+- 2026-03-02 20:59:53: Captured an expanded 14-screenshot QA set across three themes and five aspect classes, then bumped package versions and lockfiles.
+
+- 2026-03-02 21:16:55: Plan: Remove residual portrait gap between action rail and status bar while preserving editor->toolbar->rail->status ordering.
+- 2026-03-02 21:16:55: Replaced portrait fixed-footer status bar behavior with in-flow status row positioning to eliminate the rail/status gap and captured an extensive 14-shot QA set across themes/aspect classes.
+- 2026-03-02 21:16:55: Bumped package versions and lockfiles after validation build.
+
+- 2026-03-02 21:28:55: Plan: Remove remaining portrait gap beneath status bar at viewport bottom.
+- 2026-03-02 21:28:55: Set portrait status bar to in-flow positioning with zero chassis bottom padding and no bottom border bleed so the status bar sits flush to the viewbox bottom; captured 13 screenshot QA set.
+- 2026-03-02 21:28:55: Bumped package versions and lockfiles after validation build.
+
+- 2026-03-02 21:45:28: Plan: eliminate any remaining portrait seam under status bar by removing portrait grid row gap between rail and status rows.
+- 2026-03-02 21:45:28: Added portrait `row-gap: 0` on chassis scaler and revalidated 13 screenshots across themes/aspects confirming status bar sits flush to viewbox bottom.
+- 2026-03-02 21:45:28: Bumped package versions and lockfiles after validation build.

@@ -247,27 +247,31 @@
 }
 
 
-@media (max-aspect-ratio: 3/4) and (hover: none) and (pointer: coarse) {
-  :root[data-theme] .editor-pane-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .editor-pane-container {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: minmax(0, 1fr) auto !important;
   }
 
-  :root[data-theme] .editor-pane-shell {
-    grid-column: 1;
-    grid-row: 1;
+  .editor-pane-shell {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
     flex-direction: column;
     padding-top: 0;
     padding-right: 0;
+    padding-bottom: 0;
   }
 
-  :root[data-theme] .view-toolbar {
-    position: relative;
-    top: auto;
+  .view-toolbar {
+    position: relative !important;
+    left: auto;
     right: auto;
-    transform: none;
-    grid-column: 1;
-    grid-row: 2;
+    bottom: auto;
+    top: auto !important;
+    transform: none !important;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
     width: 100%;
     height: auto;
     min-height: unset;
@@ -281,9 +285,10 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding: 8px 6px calc(8px + env(safe-area-inset-bottom, 0px));
+    z-index: 1;
   }
 
-  :root[data-theme] .view-toolbar-group {
+  .view-toolbar-group {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
