@@ -180,9 +180,28 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .chassis-scaler {
+    row-gap: 0;
+  }
+
   :root {
     --header-height: 78px;
     --tab-height: 30px;
+  }
+
+  .workspace-manifold,
+  .git-workspace {
+    flex-direction: column;
+  }
+
+  .workspace-sidebar:not(.is-collapsed) {
+    height: min(42%, 280px);
+  }
+
+  .workspace-sidebar:not(.is-collapsed) + .workspace-stage {
+    display: flex;
+    min-height: 0;
+    flex: 1;
   }
 }
 
@@ -250,25 +269,21 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
-  :root {
-    --rail-height: 0px;
-  }
-
   .chassis-root {
-    padding-bottom: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
+    padding-bottom: 0;
     border-bottom-width: 0;
   }
 
   .status-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
     width: 100%;
     margin: 0;
     height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
     min-height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
     padding: 0 6px max(0px, env(safe-area-inset-bottom));
-    z-index: 40;
+    z-index: auto;
   }
 }
