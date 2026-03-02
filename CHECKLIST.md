@@ -19,7 +19,7 @@
 - [ ] reverse the action rail on mobile uix portrait. Add css token for this, implement same value on all themes.
 - [ ] fix underlining
 - [x] make anondized billet the default theme
-- [ ] fix filetabs on mobile uix portrait.
+- [x] fix filetabs on mobile uix portrait.
 - [x] hide the status bar on mobile uix landscape
 - [x] update the system config to show the pwa version there.
 - [ ] hide the status footer bar on mobile uix portrait.

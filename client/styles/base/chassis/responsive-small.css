@@ -179,6 +179,13 @@
   }
 }
 
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  :root {
+    --header-height: 78px;
+    --tab-height: 30px;
+  }
+}
+
 @media (max-width: 640px) and (min-aspect-ratio: 4/3) {
   :root {
     --rail-width: 44px;
