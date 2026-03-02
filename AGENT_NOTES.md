@@ -70,3 +70,6 @@
 
 ## Bugs
 - None recorded during this documentation-and-tooling update.
+
+- 2026-03-02 11:17:13: Plan: Fix portrait mobile header tab visibility by allocating explicit tab-row height in portrait-only mobile media rules.
+- 2026-03-02 11:17:13: Added portrait-only mobile `--header-height` and `--tab-height` overrides so the tab strip remains visible in the two-row mobile header layout.
