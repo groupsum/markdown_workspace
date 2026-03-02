@@ -73,3 +73,6 @@
 
 - 2026-03-02 11:17:13: Plan: Fix portrait mobile header tab visibility by allocating explicit tab-row height in portrait-only mobile media rules.
 - 2026-03-02 11:17:13: Added portrait-only mobile `--header-height` and `--tab-height` overrides so the tab strip remains visible in the two-row mobile header layout.
+- 2026-03-02 12:00:00: Plan: Move view toolbar to bottom for touch/mobile portrait while preserving non-portrait theme layouts.
+- 2026-03-02 12:00:00: Added a portrait-touch override in shared editor CSS that forces themed toolbars into bottom row placement with safe-area bottom padding.
+- 2026-03-02 12:00:00: Captured multi-aspect screenshots (portrait/square/landscape/wide/ultrawide) to validate toolbar placement.
