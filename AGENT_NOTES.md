@@ -116,3 +116,20 @@
 - 2026-03-02 21:45:28: Plan: eliminate any remaining portrait seam under status bar by removing portrait grid row gap between rail and status rows.
 - 2026-03-02 21:45:28: Added portrait `row-gap: 0` on chassis scaler and revalidated 13 screenshots across themes/aspects confirming status bar sits flush to viewbox bottom.
 - 2026-03-02 21:45:28: Bumped package versions and lockfiles after validation build.
+
+- 2026-03-03 01:14:31: Plan: Produce extensive mobile landscape markdown-editor screenshots (excluding project selector) including keyboard-activated states and document capture protocol updates.
+- 2026-03-03 01:14:31: Captured 8 landscape mobile markdown-editor screenshots spanning split/editor/preview states plus 3 keyboard-active simulated viewport states.
+- 2026-03-03 01:14:31: Updated `client/THEME_SCREENSHOTS.md` with a dedicated landscape editor capture protocol to keep future runs aligned with this request type.
+
+- 2026-03-03 01:21:42: Plan: In mobile landscape when keyboard is open and viewport is half-height, move markdown toolbar to the right edge and stack controls vertically.
+- 2026-03-03 01:21:42: Implement base editor responsive override keyed on `body.keyboard-open` + coarse landscape short-height constraints, then revalidate with screenshots/build.
+- 2026-03-03 01:25:53: Added landscape keyboard-open short-height CSS override to dock the editor toolbar at right edge with vertical control stacking (including bold/italic buttons).
+- 2026-03-03 01:25:53: Rebuilt client and captured 8 landscape markdown-editor screenshots in keyboard-open states confirming right-side vertical toolbar behavior.
+- 2026-03-03 01:36:51: Plan: Keep bold/italic controls visible in landscape half-height keyboard-open mode by prioritizing their order in the right-side vertical toolbar.
+- 2026-03-03 01:36:51: Added bold/italic-specific toolbar classes and keyboard-open landscape ordering rules; captured 8 landscape editor screenshots confirming right-side vertical bold/italic visibility.
+- 2026-03-03 01:36:51: Bumped package versions and lockfiles after the toolbar visibility fix validation build.
+- 2026-03-03 01:50:18: Plan: Keep landscape mobile editor toolbar right-docked and vertical for both keyboard-open half-height and full-height states.
+- 2026-03-03 01:50:18: Replaced keyboard-open-only landscape override with a mobile-landscape-wide override plus short-height compaction so bold/italic remain vertical on the right in both states.
+- 2026-03-03 01:58:30: Finalized landscape mobile toolbar behavior so right-side vertical bold/italic controls persist in both full-height (keyboard-closed) and half-height (keyboard-open) editor states.
+- 2026-03-03 01:58:30: Captured 8 landscape editor screenshots covering split/editor/preview for full-height and keyboard-open states; validated right-side vertical toolbar behavior in both modes.
+- 2026-03-03 01:58:30: Bumped package versions and lockfiles after final landscape toolbar behavior verification build.
