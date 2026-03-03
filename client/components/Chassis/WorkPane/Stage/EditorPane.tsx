@@ -682,9 +682,9 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
              <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
              <div className="view-toolbar-divider"></div>
              <button onClick={() => toggleInlineFormat('~~', '~~')} className={`view-toolbar-btn ${selectionState.strike ? 'active' : ''}`} title="Strikethrough"><Strikethrough size={12}/></button>
-             <div className="view-toolbar-divider"></div>
-             <button onClick={() => toggleInlineFormat('**', '**')} className={`view-toolbar-btn ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>
-             <button onClick={() => toggleInlineFormat('_', '_')} className={`view-toolbar-btn ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>
+             <div className="view-toolbar-divider view-toolbar-divider--pre-inline"></div>
+             <button onClick={() => toggleInlineFormat('**', '**')} className={`view-toolbar-btn view-toolbar-btn--bold ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>
+             <button onClick={() => toggleInlineFormat('_', '_')} className={`view-toolbar-btn view-toolbar-btn--italic ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>
              <button onClick={() => toggleInlineFormat('<u>', '</u>')} className={`view-toolbar-btn ${selectionState.underline ? 'active' : ''}`} title="Underline"><Underline size={12}/></button>
              <button onClick={toggleBulletList} className="view-toolbar-btn" title="Bullet List"><List size={12}/></button>
              <button onClick={applyCheckbox} className="view-toolbar-btn" title="Create Checkbox"><ListChecks size={12}/></button>
