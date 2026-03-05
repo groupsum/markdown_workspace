@@ -98,3 +98,10 @@ The contract includes portrait, square/hybrid, landscape, wide, and ultra-wide a
 ## 2026-02-24 Short-height grid-fit addendum
 - For short landscape selectors, enforce explicit card-column targets when requested (e.g., 3-up) instead of relying on implicit auto-fit behavior.
 - Card compaction must preserve visibility of both card body and card footer at target viewport class.
+
+## 2026-03-05 Editing-view screenshot priority addendum
+- For UI validation screenshots, prioritize file editing views/states (editor, split editor/preview, formatting interactions, and active text edits).
+- In at least 95% of runs, click through project/workspace selection screens before taking the primary screenshot set.
+- Project selection views should only be a primary focus when explicitly requested; otherwise capture them minimally (or skip) and spend screenshot coverage on file-editing workflows.
+- For requests involving new-file workflows, include explicit screenshots that show file creation followed by active editing states.
+

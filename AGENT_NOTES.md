@@ -133,3 +133,24 @@
 - 2026-03-03 01:58:30: Finalized landscape mobile toolbar behavior so right-side vertical bold/italic controls persist in both full-height (keyboard-closed) and half-height (keyboard-open) editor states.
 - 2026-03-03 01:58:30: Captured 8 landscape editor screenshots covering split/editor/preview for full-height and keyboard-open states; validated right-side vertical toolbar behavior in both modes.
 - 2026-03-03 01:58:30: Bumped package versions and lockfiles after final landscape toolbar behavior verification build.
+
+- 2026-03-05 02:30:28: Plan: In mobile portrait, remove the separator between strikethrough and bold in the editor toolbar and capture extensive create/edit-new-file screenshots.
+- 2026-03-05 02:30:28: Added portrait-only CSS override to hide `.view-toolbar-divider--pre-inline`, removing the divider between strikethrough and bold on mobile portrait.
+- 2026-03-05 02:30:28: Captured 6 mobile portrait screenshots covering initial view, entering workspace, new-file creation, active editing, toolbar formatting actions, and final edited state.
+- 2026-03-05 02:30:28: Bumped `client` and `lander` package versions (patch) and rebuilt client to validate the change.
+- 2026-03-05 02:37:41: Plan: Address screenshot feedback by updating repo screenshot policy to prioritize file-editing views and recapture mobile portrait evidence focused on create/edit flows.
+- 2026-03-05 02:37:41: Updated `agents.md` with a new editing-view screenshot-priority addendum (click through project selection by default, focus coverage on editor states).
+- 2026-03-05 02:37:41: Re-captured an editing-focused mobile portrait screenshot set (8 captures) that clicks through selection screens and emphasizes new-file creation + active editor states.
+- 2026-03-05 02:37:41: Bumped `client` and `lander` package versions (patch) and rebuilt `client` successfully after policy update.
+- 2026-03-05 02:44:43: Plan: Provide a proper mobile portrait screenshot set focused on file editing views/states (not project selection) per latest review feedback.
+- 2026-03-05 02:44:43: Captured 10 mobile portrait screenshots centered on active file editing (typing, bold/strike adjacency, italic/underline/list edits, preview/editor mode checks).
+- 2026-03-05 03:01:57: Plan: Keep the mobile portrait toolbar on a single horizontal line so Redo remains on the same line as the other controls, then capture extensive editing-focused proof screenshots.
+- 2026-03-05 03:01:57: Updated portrait mobile toolbar group to `flex-wrap: nowrap` so toolbar controls stay on a single horizontal row and Redo no longer wraps to a second line.
+- 2026-03-05 03:01:57: Captured 13 editing-focused mobile portrait screenshots proving toolbar alignment and Redo/Undo interactions.
+- 2026-03-05 03:01:57: Bumped `client`/`lander` versions and rebuilt `client` to validate the responsive toolbar adjustment.
+- 2026-03-05 03:01:57: Re-captured a final 12-image mobile portrait editing screenshot set after the nowrap fix, including toolbar left/mid/right scroll positions and Undo/Redo action states as proof.
+- 2026-03-05 03:10:56: Plan: Fix remaining mobile portrait redo wrap by overriding theme-level toolbar-group wrapping in each theme's portrait mobile media query, then recapture proof screenshots.
+- 2026-03-05 03:10:56: Added portrait-mobile `flex-wrap: nowrap` overrides for `.view-toolbar-group` in default, zinc, acid-etched, anodized-billet, and micropress theme media queries to prevent theme-level wrap regressions.
+- 2026-03-05 03:10:56: Captured a 12-image multi-theme mobile portrait screenshot set (left/right toolbar positions plus undo/redo action states) confirming Redo remains on the same row.
+- 2026-03-05 03:10:56: Bumped `client`/`lander` package versions and rebuilt `client` after the theme-level wrap fix.
+- 2026-03-05 03:10:56: Re-ran targeted micropress portrait captures after a transient browser crash and verified Undo/Redo remain on the same single-row toolbar in right-scroll state.

@@ -191,7 +191,7 @@
   }
   .view-toolbar-group {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
   }
   .view-toolbar-divider {
@@ -290,8 +290,12 @@
 
   .view-toolbar-group {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
+  }
+
+  .view-toolbar-divider--pre-inline {
+    display: none;
   }
 }
 

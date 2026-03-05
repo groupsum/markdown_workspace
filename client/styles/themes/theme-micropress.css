@@ -118,6 +118,10 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+
+  .theme-micropress .view-toolbar-group {
+    flex-wrap: nowrap;
+  }
   .theme-micropress .editor-pane-container {
     display: flex;
     flex-direction: column;
@@ -153,7 +157,7 @@
 
   .theme-micropress .view-toolbar-group {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .theme-micropress .editor-pane-shell {
