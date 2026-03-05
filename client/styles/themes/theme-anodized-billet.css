@@ -288,6 +288,10 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+
+  .theme-anodized-billet .view-toolbar-group {
+    flex-wrap: nowrap;
+  }
   .theme-anodized-billet .editor-pane-container {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1fr) auto;

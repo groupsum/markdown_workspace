@@ -259,6 +259,10 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+
+  .theme-acid-etched .view-toolbar-group {
+    flex-wrap: nowrap;
+  }
   .theme-acid-etched .editor-pane-container {
     grid-template-columns: 1fr;
     grid-template-rows: minmax(0, 1fr) auto;
