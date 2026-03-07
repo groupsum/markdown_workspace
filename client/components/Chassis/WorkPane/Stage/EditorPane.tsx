@@ -56,6 +56,9 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     return window.visualViewport?.width ?? document.documentElement.clientWidth ?? window.innerWidth;
   };
   const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
+  const [viewportHeight, setViewportHeight] = useState(
+    () => window.visualViewport?.height ?? window.innerHeight
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
@@ -66,7 +69,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     future: []
   });
 
-  const isSplitAllowed = viewportWidth > 900;
+  const isMobileLandscape = viewportWidth <= 1024 && viewportWidth > viewportHeight;
+  const isSplitAllowed = viewportWidth > 900 || isMobileLandscape;
   const mergeClassNames = (...classes: Array<string | undefined>) =>
     classes.filter(Boolean).join(' ');
   const withAlignment = (
@@ -88,7 +92,10 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   }, [file?.id]);
 
   useEffect(() => {
-    const handleResize = () => setViewportWidth(getViewportWidth());
+    const handleResize = () => {
+      setViewportWidth(getViewportWidth());
+      setViewportHeight(window.visualViewport?.height ?? window.innerHeight);
+    };
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
     window.visualViewport?.addEventListener('resize', handleResize);
