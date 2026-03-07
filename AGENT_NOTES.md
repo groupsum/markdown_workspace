@@ -178,3 +178,9 @@
 
 - 2026-03-07 11:44:00: Plan: Re-capture screenshot evidence using the correct theme storage key (`lattice-theme`) so Pressed Chromium is definitively applied in every capture.
 - 2026-03-07 11:44:00: Captured new Pressed Chromium screenshots across aspect classes and app workflows after verifying `document.documentElement[data-theme] == "pressed-chromium"`.
+- 2026-03-07 11:46:42: Plan: Add a new ferrous monolith theme from HTML examples, register it in theme metadata/stylesheet maps, and capture exhaustive screenshots across all aspect ratios and major app functionality with the new theme active.
+- 2026-03-07 11:52:00: Implemented new `ferrous-monolith` theme from `Machined_Ferrous_Monolith-aa4c80.html`, wired it into theme registry + stylesheet map, and bumped client version to 1.3.136.
+- 2026-03-07 11:52:00: Captured new-theme screenshots across portrait/square/landscape/wide/ultrawide ratios and functional views (preview mode, git mode, settings modal, command palette, new-file modal, project selector), verifying `data-theme="ferrous-monolith"` before capture.
+- 2026-03-07 12:01:53: Plan: Reduce visible graininess/noise in `ferrous-monolith` by softening chassis texture layers while preserving the dark machined aesthetic, then re-capture aspect-ratio screenshots for validation.
+- 2026-03-07 12:03:45: Reduced ferrous theme grain by lowering texture opacity and replacing the dense repeating microgrid with a smoother radial+linear background blend on `.chassis-shell`.
+- 2026-03-07 12:03:45: Re-captured full-ratio and workflow screenshots with `data-theme="ferrous-monolith"`; reran `npm run build` (still blocked by pre-existing TS errors in `hooks/useApp.ts`).
