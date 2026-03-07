@@ -197,3 +197,6 @@
 - 2026-03-07 13:26:48: Updated `client/hooks/useApp.ts` to type `findInitialFile` against `FileNode[]`, restoring `.id` access compatibility in auto-open and restore flows.
 - 2026-03-07 13:26:48: Bumped package versions (`client` 1.3.139, `lander` 0.0.42) per repository versioning policy and regenerated package locks.
 - 2026-03-07 13:26:48: Validation: `npm run build` now passes in `client` (Vite chunk-size warning only).
+- 2026-03-08 00:00:00: Plan: Adjust mobile portrait UI so the default `--rail-height` token is `1px` instead of a larger rail row value.
+- 2026-03-08 00:00:00: Updated `client/styles/base/chassis/responsive-small.css` portrait media root tokens to set `--rail-height: 1px`.
+- 2026-03-08 00:00:00: Bumped `client` and `lander` package versions (patch) and regenerated package-lock files per repository versioning policy.
