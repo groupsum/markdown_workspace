@@ -162,3 +162,6 @@
 - 2026-03-07 06:40:00: Bumped `client` and `lander` package versions (patch) for this UI/CSS change.
 - 2026-03-07 07:05:00: Plan: Rework top-bar spacing fix to target the in-app highest bar (work/git modes) and avoid broad header container offsets.
 - 2026-03-07 07:05:00: Reverted global `.app-header` padding change; added mode-scoped top/right spacing adjustments on `.header-controls` and `.header-btn-group` for app views.
+- 2026-03-07 07:20:00: Plan: In mobile portrait UI, set `.header-btn-group` right margin to 10px for improved control spacing near the right edge.
+- 2026-03-07 07:20:00: Added portrait-mobile override in `responsive-small.css` so `.header-btn-group` (including work/git mode variants) uses `margin-right: 10px`.
+- 2026-03-07 07:20:00: Bumped `client` and `lander` package versions (patch) for this UI/CSS change.

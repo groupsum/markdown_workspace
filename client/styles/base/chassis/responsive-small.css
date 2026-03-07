@@ -180,6 +180,12 @@
 }
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .header-btn-group,
+  .app-grid.mode-work .header-btn-group,
+  .app-grid.mode-git .header-btn-group {
+    margin-right: 10px;
+  }
+
   .chassis-scaler {
     row-gap: 0;
   }
