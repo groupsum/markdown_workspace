@@ -193,6 +193,7 @@
   :root {
     --header-height: 78px;
     --tab-height: 30px;
+    --rail-height: 1px;
   }
 
   .workspace-manifold,
