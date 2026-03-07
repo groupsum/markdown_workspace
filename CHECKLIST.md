@@ -1,6 +1,7 @@
 # UI/UX Implementation Checklist
 
 ## Requested items
+- [x] on mobile landscape split screen, keep split panes side-by-side in one row with editor on the left and previewer on the right.
 - [x] md line and editor width alignment and strict rule in style guide and tests. Use tokens to ensure alignment between the line height of these elements on all themes.
 - [ ] on mobile uix, the view toolbar/editor tool bar shall be directly above the footer bar
 - [x] when create a checkbox, only create it, do not select it after creation, do not jump to the top of the file. After creating the type cursor should be ahead of the checkbox by one whitespace
