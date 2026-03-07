@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { getListContinuationPrefix, isEmptyListItemLine } from './formatting';
+import {
+  getListContinuationPrefix,
+  isEmptyListItemLine,
+  normalizeEmptyListItemsForPreview
+} from './formatting';
 
 describe('getListContinuationPrefix', () => {
   it('continues unordered lists', () => {
@@ -37,5 +41,18 @@ describe('isEmptyListItemLine', () => {
     expect(isEmptyListItemLine('- item')).toBe(false);
     expect(isEmptyListItemLine('2. value')).toBe(false);
     expect(isEmptyListItemLine('- [ ] task')).toBe(false);
+  });
+});
+
+
+describe('normalizeEmptyListItemsForPreview', () => {
+  it('preserves bullet-only list items by injecting invisible content', () => {
+    const markdown = `# test\n\n1. ad\n\t- \n`;
+    expect(normalizeEmptyListItemsForPreview(markdown)).toContain('\t- &nbsp;');
+  });
+
+  it('does not mutate code fences', () => {
+    const markdown = '```md\n- \n```';
+    expect(normalizeEmptyListItemsForPreview(markdown)).toBe(markdown);
   });
 });
