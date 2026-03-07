@@ -21,6 +21,7 @@
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   font-weight: 700;
+  line-height: var(--markdown-heading-line-height);
 }
 
 .markdown-body h1 { font-size: calc(2em * var(--ui-scale)); border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }

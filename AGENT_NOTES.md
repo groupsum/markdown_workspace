@@ -197,3 +197,7 @@
 - 2026-03-07 13:26:48: Updated `client/hooks/useApp.ts` to type `findInitialFile` against `FileNode[]`, restoring `.id` access compatibility in auto-open and restore flows.
 - 2026-03-07 13:26:48: Bumped package versions (`client` 1.3.139, `lander` 0.0.42) per repository versioning policy and regenerated package locks.
 - 2026-03-07 13:26:48: Validation: `npm run build` now passes in `client` (Vite chunk-size warning only).
+
+- 2026-03-07 14:05:00: Plan: Tie markdown heading vertical line spacing directly to zoom-controlled rhythm tokens so wrapped long H1 lines breathe consistently as zoom changes.
+- 2026-03-07 14:05:00: Added `--markdown-heading-line-height` token in `root.css`, applied it to markdown headings in `markdown.css`, and expanded alignment token tests to guard the new contract.
+- 2026-03-07 14:05:00: Bumped `client` and `lander` package versions (patch) and captured 150% zoom screenshot evidence with a deliberately lengthy H1 in file editing/preview view.
