@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers, Sprout, Disc3 } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon } from 'lucide-react';
 import { vs, coy, tomorrow, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface ThemeDef {
@@ -17,6 +17,20 @@ export interface ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
+
+  {
+    id: 'ferrous-monolith',
+    name: 'Machined Ferrous Monolith',
+    description: 'Dark ferrous slab chassis with cyan instrumentation and oxide highlights.',
+    icon: <Hexagon size={20} />,
+    themeColor: '#00f3ff',
+    backgroundColor: '#0a0a0a',
+    syntaxTheme: {
+      name: 'VS Code Dark Plus',
+      palette: 'Near-black iron, cyan signal accents, and oxide warning highlights.',
+      style: vscDarkPlus
+    }
+  },
 
   {
     id: 'pressed-chromium',

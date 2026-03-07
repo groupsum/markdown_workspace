@@ -32,6 +32,7 @@ For each screenshot set above, verify all shipped themes are represented during 
 - micropress
 - default
 - pressed-chromium
+- ferrous-monolith
 
 These captures are required for validating responsive behavior and theme rendering consistency after UI or stylesheet changes.
 
