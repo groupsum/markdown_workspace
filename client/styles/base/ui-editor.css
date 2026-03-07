@@ -307,6 +307,29 @@
 }
 
 @media (max-width: 1024px) and (orientation: landscape) {
+  .editor-pane-body {
+    flex-direction: row;
+  }
+
+  .editor-pane-body .editor-pane-column {
+    height: 100%;
+  }
+
+  .editor-pane-body.is-split .editor-pane-column {
+    height: 100%;
+  }
+
+  .editor-splitter {
+    width: var(--app-gap);
+    height: auto;
+    cursor: col-resize;
+  }
+
+  .editor-splitter-handle {
+    width: 2px;
+    height: 24px;
+  }
+
   .editor-pane-container {
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr !important;

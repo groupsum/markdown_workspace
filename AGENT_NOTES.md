@@ -13,6 +13,10 @@
   4. Validate formatting changes, then commit and prepare PR summary.
 
 ## Run log
+- 2026-03-07 22:43:26: Plan: Keep mobile landscape split view in a single row for split-screen widths so editor stays left and preview stays right.
+- 2026-03-07 22:43:26: Updated landscape mobile editor CSS to force split pane row direction and vertical splitter behavior, overriding stacked-column mobile defaults.
+- 2026-03-07 22:43:26: Captured landscape split-view screenshots (standard + narrower split-screen) and rebuilt client for verification.
+
 - 2026-02-24 20:31:47: Implemented --plan mode and added documentation example.
 - 2026-02-24: Added `scripts/log_execution_burst.sh` to scaffold `AGENT_NOTES.md` and prepend timestamped run-log entries.
 - 2026-02-24: Updated `TEST_LOOP_WORKFLOW.md` with a helper command reference for fast note capture.
