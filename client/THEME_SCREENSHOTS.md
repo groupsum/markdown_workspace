@@ -31,6 +31,7 @@ For each screenshot set above, verify all shipped themes are represented during 
 - anodized-billet
 - micropress
 - default
+- pressed-chromium
 
 These captures are required for validating responsive behavior and theme rendering consistency after UI or stylesheet changes.
 
@@ -42,3 +43,8 @@ When a request asks for mobile landscape editor QA (excluding project selection)
 - Capture markdown editor states (split, editor-only, preview-only) with active document content visible.
 - Include at least 3 keyboard-active states by keeping editor focus and reducing viewport height while still in landscape orientation.
 - Do not substitute project grid screenshots for editor workflow screenshots.
+
+### Theme-forcing note for automated capture
+
+- When forcing a theme in automation, write `localStorage["lattice-theme"] = "<theme-id>"` before reload (not `markspace_theme`).
+- Verify the applied theme by checking `document.documentElement.getAttribute("data-theme")` before capturing screenshots.

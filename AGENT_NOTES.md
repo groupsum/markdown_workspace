@@ -170,3 +170,11 @@
 - 2026-03-07 09:10:37: Rebuilt `client` successfully (`npm run build`), captured mobile-landscape editor screenshot evidence, and bumped `client`/`lander` package versions (patch) per repository versioning policy.
 - 2026-03-07 09:30:48: Plan: On first/default load, automatically enter Core System and open intro.md by default.
 - 2026-03-07 09:30:48: Updated app startup selection logic to open last project when available, otherwise auto-enter Core System (or first project fallback), and prioritized `intro.md` as initial tab target before README/WELCOME files.
+- 2026-03-07 10:26:37: Plan: Create and register a new UI theme derived from the HTML example `Pressed_Chromium_Segmentation-c52719.html`.
+- 2026-03-07 10:26:37: Added `pressed-chromium` theme stylesheet with chrome/pressed control tokens and registered it in theme metadata + stylesheet injection map.
+
+- 2026-03-07 11:26:00: Plan: Address PR feedback by capturing exhaustive Pressed Chromium screenshots across all aspect-ratio classes and major app workflows (project selection, editor modes, git, settings, command palette).
+- 2026-03-07 11:26:00: Captured Pressed Chromium screenshot set covering portrait/square/landscape/wide/ultrawide plus functionality states (new file modal, editor, preview, split, git mode, settings tabs, command palette, switch project).
+
+- 2026-03-07 11:44:00: Plan: Re-capture screenshot evidence using the correct theme storage key (`lattice-theme`) so Pressed Chromium is definitively applied in every capture.
+- 2026-03-07 11:44:00: Captured new Pressed Chromium screenshots across aspect classes and app workflows after verifying `document.documentElement[data-theme] == "pressed-chromium"`.
