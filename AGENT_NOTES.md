@@ -184,3 +184,8 @@
 - 2026-03-07 12:01:53: Plan: Reduce visible graininess/noise in `ferrous-monolith` by softening chassis texture layers while preserving the dark machined aesthetic, then re-capture aspect-ratio screenshots for validation.
 - 2026-03-07 12:03:45: Reduced ferrous theme grain by lowering texture opacity and replacing the dense repeating microgrid with a smoother radial+linear background blend on `.chassis-shell`.
 - 2026-03-07 12:03:45: Re-captured full-ratio and workflow screenshots with `data-theme="ferrous-monolith"`; reran `npm run build` (still blocked by pre-existing TS errors in `hooks/useApp.ts`).
+- 2026-03-07 12:31:37: Plan: Create a new production theme from one of the final HTML examples (`Heavy_Gauge_Tectonic_Partitioning-13a032.html`), wire it into runtime theme registries, then capture full aspect-ratio and functionality screenshots with the new theme active.
+- 2026-03-07 12:31:37: Added `theme-heavy-gauge-tectonic.css`, registered `heavy-gauge-tectonic` in `client/data/themes.tsx` and `client/styles/index.tsx`, and updated shipped-theme screenshot checklist coverage.
+- 2026-03-07 12:31:37: Captured screenshot sets with `data-theme="heavy-gauge-tectonic"` across portrait, square, landscape, wide, and ultra-wide viewports while covering editor/split/preview, git mode, settings modal, command palette, and file-creation modal.
+- 2026-03-07 12:31:37: Network/PCAP review note: no backend/API traffic capture required for this local CSS/theme implementation; validation focused on client-side rendering and interaction states.
+- 2026-03-07 12:31:37: Closure: no additional open issues discovered during new-theme integration; only pre-existing TypeScript build errors in `client/hooks/useApp.ts` remain.

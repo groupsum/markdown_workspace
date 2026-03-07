@@ -33,6 +33,7 @@ For each screenshot set above, verify all shipped themes are represented during 
 - default
 - pressed-chromium
 - ferrous-monolith
+- heavy-gauge-tectonic
 
 These captures are required for validating responsive behavior and theme rendering consistency after UI or stylesheet changes.
 

@@ -5,6 +5,7 @@ import acidEtchedThemeCssText from './themes/theme-acid-etched.css?inline';
 import anodizedBilletThemeCssText from './themes/theme-anodized-billet.css?inline';
 import defaultThemeCssText from './themes/theme-default.css?inline';
 import ferrousMonolithThemeCssText from './themes/theme-ferrous-monolith.css?inline';
+import heavyGaugeTectonicThemeCssText from './themes/theme-heavy-gauge-tectonic.css?inline';
 import galvanizedCellularThemeCssText from './themes/theme-galvanized-cellular.css?inline';
 import micropressThemeCssText from './themes/theme-micropress.css?inline';
 import pressedChromiumThemeCssText from './themes/theme-pressed-chromium.css?inline';
@@ -15,6 +16,7 @@ export const THEME_STYLESHEET_TEXT = {
   'anodized-billet': anodizedBilletThemeCssText,
   default: defaultThemeCssText,
   'ferrous-monolith': ferrousMonolithThemeCssText,
+  'heavy-gauge-tectonic': heavyGaugeTectonicThemeCssText,
   'galvanized-cellular': galvanizedCellularThemeCssText,
   micropress: micropressThemeCssText,
   'pressed-chromium': pressedChromiumThemeCssText,
