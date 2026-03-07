@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon, Factory } from 'lucide-react';
 import { vs, coy, tomorrow, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface ThemeDef {
@@ -29,6 +29,20 @@ export const THEMES: ThemeDef[] = [
       name: 'VS Code Dark Plus',
       palette: 'Near-black iron, cyan signal accents, and oxide warning highlights.',
       style: vscDarkPlus
+    }
+  },
+
+  {
+    id: 'galvanized-cellular',
+    name: 'Galvanized Cellular Monolith',
+    description: 'Brutalist galvanized workbench with high-contrast structure and olive signal accents.',
+    icon: <Factory size={20} />,
+    themeColor: '#3b6b2a',
+    backgroundColor: '#f5f7f2',
+    syntaxTheme: {
+      name: 'Coy',
+      palette: 'Pale galvanized surfaces, dark structure, olive accents.',
+      style: coy
     }
   },
 
