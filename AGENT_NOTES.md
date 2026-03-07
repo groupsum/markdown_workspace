@@ -201,3 +201,6 @@
 - 2026-03-07 14:05:00: Plan: Tie markdown heading vertical line spacing directly to zoom-controlled rhythm tokens so wrapped long H1 lines breathe consistently as zoom changes.
 - 2026-03-07 14:05:00: Added `--markdown-heading-line-height` token in `root.css`, applied it to markdown headings in `markdown.css`, and expanded alignment token tests to guard the new contract.
 - 2026-03-07 14:05:00: Bumped `client` and `lander` package versions (patch) and captured 150% zoom screenshot evidence with a deliberately lengthy H1 in file editing/preview view.
+- 2026-03-08 00:00:00: Plan: Adjust mobile portrait UI so the default `--rail-height` token is `1px` instead of a larger rail row value.
+- 2026-03-08 00:00:00: Updated `client/styles/base/chassis/responsive-small.css` portrait media root tokens to set `--rail-height: 1px`.
+- 2026-03-08 00:00:00: Bumped `client` and `lander` package versions (patch) and regenerated package-lock files per repository versioning policy.
