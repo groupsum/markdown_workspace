@@ -157,3 +157,8 @@
 - 2026-03-07 06:04:03: Plan: Fix markdown preview parsing so an empty nested bullet (`\t- `) under an ordered item does not get promoted into an unintended `<h2>` heading.
 - 2026-03-07 06:04:03: Added `normalizeEmptyListItemsForPreview` and applied it to both `EditorPane` and shared `PreviewPane` markdown renders so empty bullet markers become explicit list-item content (`&nbsp;`) before parsing.
 - 2026-03-07 06:04:03: Added/updated vitest coverage for normalization + preview rendering regression, ran full `npm run test:run`, and captured editor/preview screenshots with DOM proof (`preview_h2_count 0`, `preview_li_count 2`).
+- 2026-03-07 06:40:00: Plan: Fix highest-bar (header) spacing by increasing top margin/offset and right-edge breathing room for the right-most control group.
+- 2026-03-07 06:40:00: Adjusted header top-bar padding and header button-group top/right margins to align controls and remove right-edge crowding.
+- 2026-03-07 06:40:00: Bumped `client` and `lander` package versions (patch) for this UI/CSS change.
+- 2026-03-07 07:05:00: Plan: Rework top-bar spacing fix to target the in-app highest bar (work/git modes) and avoid broad header container offsets.
+- 2026-03-07 07:05:00: Reverted global `.app-header` padding change; added mode-scoped top/right spacing adjustments on `.header-controls` and `.header-btn-group` for app views.

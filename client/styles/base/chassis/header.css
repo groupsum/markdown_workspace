@@ -88,6 +88,16 @@
   background: var(--bg-inset);
 }
 
+.app-grid.mode-work .header-controls,
+.app-grid.mode-git .header-controls {
+  margin-top: 1px;
+}
+
+.app-grid.mode-work .header-btn-group,
+.app-grid.mode-git .header-btn-group {
+  margin-right: 3px;
+}
+
 .header-btn:hover {
   background: var(--bg-inset);
 }
@@ -96,4 +106,3 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
-
