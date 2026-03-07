@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon, PanelTop } from 'lucide-react';
 import { vs, coy, tomorrow, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface ThemeDef {
@@ -17,6 +17,20 @@ export interface ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
+
+  {
+    id: 'heavy-gauge-tectonic',
+    name: 'Heavy Gauge Tectonic',
+    description: 'High-contrast tectonic slab partitioning with bold orange signal accents.',
+    icon: <PanelTop size={20} />,
+    themeColor: '#ff4d00',
+    backgroundColor: '#dddddd',
+    syntaxTheme: {
+      name: 'VS',
+      palette: 'Stamped neutral plates, graphite seams, and safety-orange highlights.',
+      style: vs
+    }
+  },
 
   {
     id: 'ferrous-monolith',
