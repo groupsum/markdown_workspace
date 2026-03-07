@@ -168,3 +168,5 @@
 - 2026-03-07 09:10:37: Plan: In mobile landscape editor UI, hide toolbar divider elements while keeping split-view control enabled and interactive.
 - 2026-03-07 09:10:37: Updated base editor landscape media rules to hide `.view-toolbar-divider`/`.view-toolbar-divider--pre-inline`; moved split-button hide rule to portrait-only mobile; updated split-eligibility logic to allow split in mobile landscape based on viewport orientation.
 - 2026-03-07 09:10:37: Rebuilt `client` successfully (`npm run build`), captured mobile-landscape editor screenshot evidence, and bumped `client`/`lander` package versions (patch) per repository versioning policy.
+- 2026-03-07 09:30:48: Plan: On first/default load, automatically enter Core System and open intro.md by default.
+- 2026-03-07 09:30:48: Updated app startup selection logic to open last project when available, otherwise auto-enter Core System (or first project fallback), and prioritized `intro.md` as initial tab target before README/WELCOME files.
