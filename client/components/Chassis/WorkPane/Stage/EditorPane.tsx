@@ -6,7 +6,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
 import { Undo, Redo, Bold, Italic, Underline, Strikethrough, Columns, Maximize2, Eye, List, ListChecks, SquareCheckBig, IndentIncrease, IndentDecrease } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
-import { getListContinuationPrefix, isEmptyListItemLine } from '../../../../hooks/formatting';
+import {
+  getListContinuationPrefix,
+  isEmptyListItemLine,
+  normalizeEmptyListItemsForPreview
+} from '../../../../hooks/formatting';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -661,7 +665,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                     }
                   }}
                 >
-                  {history.present}
+                  {normalizeEmptyListItemsForPreview(history.present)}
                 </ReactMarkdown>
               </div>
             </div>

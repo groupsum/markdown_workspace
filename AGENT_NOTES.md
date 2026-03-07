@@ -154,3 +154,6 @@
 - 2026-03-05 03:10:56: Captured a 12-image multi-theme mobile portrait screenshot set (left/right toolbar positions plus undo/redo action states) confirming Redo remains on the same row.
 - 2026-03-05 03:10:56: Bumped `client`/`lander` package versions and rebuilt `client` after the theme-level wrap fix.
 - 2026-03-05 03:10:56: Re-ran targeted micropress portrait captures after a transient browser crash and verified Undo/Redo remain on the same single-row toolbar in right-scroll state.
+- 2026-03-07 06:04:03: Plan: Fix markdown preview parsing so an empty nested bullet (`\t- `) under an ordered item does not get promoted into an unintended `<h2>` heading.
+- 2026-03-07 06:04:03: Added `normalizeEmptyListItemsForPreview` and applied it to both `EditorPane` and shared `PreviewPane` markdown renders so empty bullet markers become explicit list-item content (`&nbsp;`) before parsing.
+- 2026-03-07 06:04:03: Added/updated vitest coverage for normalization + preview rendering regression, ran full `npm run test:run`, and captured editor/preview screenshots with DOM proof (`preview_h2_count 0`, `preview_li_count 2`).

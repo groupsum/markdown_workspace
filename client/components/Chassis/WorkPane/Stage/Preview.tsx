@@ -5,6 +5,7 @@ import remarkSupersub from 'remark-supersub';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FileNode, AppTheme } from '../../../../types';
 import { getSyntaxThemeStyle } from '../../../../data/themes';
+import { normalizeEmptyListItemsForPreview } from '../../../../hooks/formatting';
 
 interface PreviewPaneProps {
   content: string;
@@ -173,8 +174,8 @@ export const PreviewPane: React.FC<PreviewPaneProps> = ({
             );
           },
         }}
-      >
-        {content}
+>
+        {normalizeEmptyListItemsForPreview(content)}
       </ReactMarkdown>
     </div>
   );
