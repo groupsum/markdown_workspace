@@ -241,13 +241,13 @@
   .editor-textarea {
     font-size: calc(12px * var(--ui-scale));
   }
-  .view-toolbar-btn--split {
-    display: none;
-  }
 }
 
 
 @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .view-toolbar-btn--split {
+    display: none;
+  }
   .editor-pane-container {
     display: grid !important;
     grid-template-columns: 1fr !important;
@@ -366,10 +366,9 @@
     margin: 6px 0;
   }
 
-  .view-toolbar-divider {
-    width: 18px;
-    height: 1px;
-    margin: 6px 0;
+  .view-toolbar-divider,
+  .view-toolbar-divider--pre-inline {
+    display: none;
   }
 }
 
