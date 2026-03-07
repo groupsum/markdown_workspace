@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers, Sprout } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout, Disc3 } from 'lucide-react';
 import { vs, coy, tomorrow, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface ThemeDef {
@@ -17,6 +17,20 @@ export interface ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
+
+  {
+    id: 'pressed-chromium',
+    name: 'Pressed Chromium',
+    description: 'Rack-mounted chrome segmentation with pressed controls and cobalt signal accents.',
+    icon: <Disc3 size={20} />,
+    themeColor: '#0033ff',
+    backgroundColor: '#d8dbe0',
+    syntaxTheme: {
+      name: 'VS',
+      palette: 'Chromed neutrals with cobalt-blue signal highlights.',
+      style: vs
+    }
+  },
   {
     id: 'acid-etched',
     name: 'Acid Etched Tectonic',
