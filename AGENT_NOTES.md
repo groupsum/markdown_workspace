@@ -189,3 +189,7 @@
 - 2026-03-07 12:31:37: Captured screenshot sets with `data-theme="heavy-gauge-tectonic"` across portrait, square, landscape, wide, and ultra-wide viewports while covering editor/split/preview, git mode, settings modal, command palette, and file-creation modal.
 - 2026-03-07 12:31:37: Network/PCAP review note: no backend/API traffic capture required for this local CSS/theme implementation; validation focused on client-side rendering and interaction states.
 - 2026-03-07 12:31:37: Closure: no additional open issues discovered during new-theme integration; only pre-existing TypeScript build errors in `client/hooks/useApp.ts` remain.
+- 2026-03-07 13:26:48: Plan: Fix current client build failure caused by `findInitialFile` returning objects typed without `id`, then re-run production build validation.
+- 2026-03-07 13:26:48: Updated `client/hooks/useApp.ts` to type `findInitialFile` against `FileNode[]`, restoring `.id` access compatibility in auto-open and restore flows.
+- 2026-03-07 13:26:48: Bumped package versions (`client` 1.3.139, `lander` 0.0.42) per repository versioning policy and regenerated package locks.
+- 2026-03-07 13:26:48: Validation: `npm run build` now passes in `client` (Vite chunk-size warning only).

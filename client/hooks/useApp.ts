@@ -8,11 +8,12 @@ import { useUIState } from './useUIState';
 import { useProjectManager } from './useProjectManager';
 import { useFileManager } from './useFileManager';
 import { useTabManager } from './useTabManager';
+import { FileNode } from '../types';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
 const DEFAULT_PROJECT_NAME = 'Core System';
 
-const findInitialFile = (files: Array<{ name: string; type: string }>) => {
+const findInitialFile = (files: FileNode[]) => {
   const prioritizedNames = ['intro.md', 'readme.md', 'welcome.md'];
   for (const fileName of prioritizedNames) {
     const matched = files.find((file) => file.type === 'file' && file.name.toLowerCase() === fileName);
