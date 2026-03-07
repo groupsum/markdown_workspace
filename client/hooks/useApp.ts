@@ -10,6 +10,16 @@ import { useFileManager } from './useFileManager';
 import { useTabManager } from './useTabManager';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
+const DEFAULT_PROJECT_NAME = 'Core System';
+
+const findInitialFile = (files: Array<{ name: string; type: string }>) => {
+  const prioritizedNames = ['intro.md', 'readme.md', 'welcome.md'];
+  for (const fileName of prioritizedNames) {
+    const matched = files.find((file) => file.type === 'file' && file.name.toLowerCase() === fileName);
+    if (matched) return matched;
+  }
+  return files.find((file) => file.type === 'file');
+};
 
 type SessionState = {
   projectId: string;
@@ -177,9 +187,7 @@ export const useApp = () => {
       }
     }
 
-    const readme = projectFiles.find(f => f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md');
-    const first = projectFiles.find(f => f.type === 'file');
-    const target = readme || first;
+    const target = findInitialFile(projectFiles);
 
     if (target && !restoredSession) {
        console.log(`[useApp] Auto-opening initial file: ${target.name}`);
@@ -254,6 +262,12 @@ export const useApp = () => {
         console.log(`[useApp] Effect: Attempting auto-restore project -> ${lastId}`);
         if (lastId && proj.projects.find(p => p.id === lastId)) {
             loadProject(lastId);
+            return;
+        }
+        const defaultProject = proj.projects.find((project) => project.name === DEFAULT_PROJECT_NAME) || proj.projects[0];
+        if (defaultProject) {
+          console.log(`[useApp] Effect: Opening default project -> ${defaultProject.id}`);
+          loadProject(defaultProject.id);
         }
     }
   }, [proj.loading, proj.projects, proj.activeProjectId, loadProject]);
@@ -375,9 +389,7 @@ export const useApp = () => {
       const restoredFiles = await fileSys.restoreProjectData(payload);
       if (!restoredFiles) return;
       tabs.resetTabs();
-      const readme = restoredFiles.find(f => f.type === 'file' && (f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md'));
-      const first = restoredFiles.find(f => f.type === 'file');
-      const target = readme || first;
+      const target = findInitialFile(restoredFiles);
       if (target) {
         tabs.openTab(target.id);
         fileSys.setSelectedExplorerId(target.id);
