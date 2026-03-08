@@ -204,3 +204,14 @@
 - 2026-03-08 00:00:00: Plan: Adjust mobile portrait UI so the default `--rail-height` token is `1px` instead of a larger rail row value.
 - 2026-03-08 00:00:00: Updated `client/styles/base/chassis/responsive-small.css` portrait media root tokens to set `--rail-height: 1px`.
 - 2026-03-08 00:00:00: Bumped `client` and `lander` package versions (patch) and regenerated package-lock files per repository versioning policy.
+
+- 2026-03-08 02:30:18: Plan: Fix desktop-width (>=1024px) editor pane visibility regressions by making the top-toolbar editor layout the shared default in base editor CSS instead of per-theme overrides.
+- 2026-03-08 02:30:18: Implemented base `ui-editor.css` default layout parity with stable themes (toolbar row above editor shell), preventing theme-specific wide-screen pane disappearance.
+- 2026-03-08 02:30:18: Bumped `client` and `lander` package versions (patch) and regenerated lockfiles per repository versioning policy.
+- 2026-03-08 02:30:18: Validation: `npm run build` passes in `client`.
+
+- 2026-03-08 05:02:29: Plan: Harden desktop (>=1024px) editor-pane layout by adding explicit desktop guardrails in base editor CSS and produce viewport screenshot matrix across required aspect classes including 951x462.
+- 2026-03-08 05:02:29: Added desktop media-query safeguards in `client/styles/base/ui-editor.css` to keep top toolbar row + editor shell structure stable at larger widths.
+- 2026-03-08 05:02:29: Captured screenshot matrix for affected themes (`galvanized-cellular`, `heavy-gauge-tectonic`, `ferrous-monolith`, `pressed-chromium`) across portrait, square, landscape, wide, ultrawide, and 951x462 viewport sizes.
+- 2026-03-08 05:02:29: Network/PCAP review note: no backend/API capture required for this CSS-only remediation; validation performed via client rendering checks and screenshot artifacts.
+- 2026-03-08 05:02:29: Bumped `client` and `lander` package versions (patch), regenerated lockfiles, and validated with `npm run build` in `client`.
