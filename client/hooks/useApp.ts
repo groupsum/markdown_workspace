@@ -1,5 +1,5 @@
 
-import { useEffect, useCallback, useRef } from 'react';
+import { useEffect, useCallback, useRef, useState } from 'react';
 import { beginOidcSignIn, completeOidcSignInFromCallback, getOidcPopupEventType } from '../services/oidc';
 import { THEMES } from '../data/themes';
 import { useToast } from './useToast';
@@ -63,6 +63,7 @@ export const useApp = () => {
   } = useInputModal();
 
   const ui = useUIState();
+  const [showProjectSelector, setShowProjectSelector] = useState(false);
   const proj = useProjectManager(addToast);
   const fileSys = useFileManager(proj.activeProjectId, ui.autoSaveEnabled, addToast);
   const tabs = useTabManager();
@@ -148,6 +149,7 @@ export const useApp = () => {
 
   const loadProject = useCallback(async (projectId: string) => {
     console.log(`[useApp] Action: loadProject -> ${projectId}`);
+    setShowProjectSelector(false);
     proj.setLoading(true);
     proj.setActiveProjectId(projectId);
     const projectFiles = await fileSys.loadFiles(projectId);
@@ -258,7 +260,7 @@ export const useApp = () => {
   ]);
 
   useEffect(() => {
-    if (!proj.loading && proj.projects.length > 0 && !proj.activeProjectId) {
+    if (!proj.loading && proj.projects.length > 0 && !proj.activeProjectId && !showProjectSelector) {
         const lastId = localStorage.getItem('lastProjectId');
         console.log(`[useApp] Effect: Attempting auto-restore project -> ${lastId}`);
         if (lastId && proj.projects.find(p => p.id === lastId)) {
@@ -271,7 +273,7 @@ export const useApp = () => {
           loadProject(defaultProject.id);
         }
     }
-  }, [proj.loading, proj.projects, proj.activeProjectId, loadProject]);
+  }, [proj.loading, proj.projects, proj.activeProjectId, loadProject, showProjectSelector]);
 
   useEffect(() => {
     if (proj.loading) return;
@@ -426,8 +428,7 @@ export const useApp = () => {
 
   const switchToProjectSelector = () => {
       console.log(`[useApp] Action: switchToProjectSelector`);
-      proj.setActiveProjectId(null);
-      localStorage.removeItem('lastProjectId');
+      setShowProjectSelector(true);
   };
 
   const handleOidcSignIn = async () => {
@@ -489,7 +490,8 @@ export const useApp = () => {
       inputDefaultValue,
       activeFile,
       currentProject,
-      currentThemeDef
+      currentThemeDef,
+      showProjectSelector
     },
     actions: {
       loadProject,

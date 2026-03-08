@@ -204,3 +204,8 @@
 - 2026-03-08 00:00:00: Plan: Adjust mobile portrait UI so the default `--rail-height` token is `1px` instead of a larger rail row value.
 - 2026-03-08 00:00:00: Updated `client/styles/base/chassis/responsive-small.css` portrait media root tokens to set `--rail-height: 1px`.
 - 2026-03-08 00:00:00: Bumped `client` and `lander` package versions (patch) and regenerated package-lock files per repository versioning policy.
+
+- 2026-03-08 00:30:00: Plan: Make editor/work view the default on fresh load while keeping project selector accessible via the switch-project action in-header/action-rail.
+- 2026-03-08 00:30:00: Added a dedicated `showProjectSelector` UI flag in `useApp` so selector display is explicit user intent; default bootstrap now keeps auto-loading a project into editor view, while selector mode opens only when requested and closes after project selection.
+- 2026-03-08 00:30:00: Updated `AppContent` selector gate to respect the new explicit selector flag (`state.showProjectSelector`) in addition to missing active project state.
+- 2026-03-08 00:30:00: Validation plan: run client production build and capture updated editor-first runtime screenshot evidence.
