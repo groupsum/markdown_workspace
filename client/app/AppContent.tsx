@@ -55,7 +55,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
     markdownImportRef
   } = props;
 
-  if (!state.activeProjectId) {
+  if (!state.activeProjectId || state.showProjectSelector) {
     return (
       <ProjectSelector
         projects={state.projects}

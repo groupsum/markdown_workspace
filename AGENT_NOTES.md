@@ -215,3 +215,7 @@
 - 2026-03-08 05:02:29: Captured screenshot matrix for affected themes (`galvanized-cellular`, `heavy-gauge-tectonic`, `ferrous-monolith`, `pressed-chromium`) across portrait, square, landscape, wide, ultrawide, and 951x462 viewport sizes.
 - 2026-03-08 05:02:29: Network/PCAP review note: no backend/API capture required for this CSS-only remediation; validation performed via client rendering checks and screenshot artifacts.
 - 2026-03-08 05:02:29: Bumped `client` and `lander` package versions (patch), regenerated lockfiles, and validated with `npm run build` in `client`.
+- 2026-03-08 00:30:00: Plan: Make editor/work view the default on fresh load while keeping project selector accessible via the switch-project action in-header/action-rail.
+- 2026-03-08 00:30:00: Added a dedicated `showProjectSelector` UI flag in `useApp` so selector display is explicit user intent; default bootstrap now keeps auto-loading a project into editor view, while selector mode opens only when requested and closes after project selection.
+- 2026-03-08 00:30:00: Updated `AppContent` selector gate to respect the new explicit selector flag (`state.showProjectSelector`) in addition to missing active project state.
+- 2026-03-08 00:30:00: Validation plan: run client production build and capture updated editor-first runtime screenshot evidence.
