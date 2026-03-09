@@ -38,6 +38,20 @@ describe('createHtmlExport', () => {
     expect(html).toContain('break-after: page;');
   });
 
+  it('exports preview-specific markdown class names and normalized empty list items', () => {
+    const html = createHtmlExport({
+      title: 'preview.md',
+      content: '# Heading\n\n\t-\n\n[link](https://example.com)',
+      theme: 'default',
+      coreCss,
+      themeCss
+    });
+
+    expect(html).toContain('class="md-h1"');
+    expect(html).toContain('class="md-link"');
+    expect(html).toContain('&amp;nbsp;');
+  });
+
   it('creates one empty page for blank markdown so PDF print still renders', () => {
     const html = createHtmlExport({
       title: 'blank.md',

@@ -222,3 +222,7 @@
 - 2026-03-09 00:00:00: Plan: Ensure print/export flows render all markdown content across multiple pages while preserving page breaks.
 - 2026-03-09 00:00:00: Updated print stylesheet to remove fixed viewport-height/overflow clipping so print layouts can paginate naturally and include full content.
 - 2026-03-09 00:00:00: Bumped client package patch version after the print-layout change.
+- 2026-03-09 11:58:04: Plan: Fix HTML export + print backgrounds to span full multi-page output and align HTML export rendering with the in-app preview so all content/styles are preserved.
+- 2026-03-09 11:58:04: Updated `client/services/htmlExport.tsx` to use full-preview markdown classes/normalization and continuous export background styling across pages.
+- 2026-03-09 11:58:04: Updated `client/styles/base/chassis/print.css` to keep themed print background coverage through full document height, including multi-page output.
+- 2026-03-09 11:58:04: Added export regression coverage in `client/services/htmlExport.test.tsx` for preview class output and normalized empty list items.

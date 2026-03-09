@@ -7,13 +7,14 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { AppTheme } from '../types';
 import { getSyntaxTheme } from '../data/themes';
 import { CORE_STYLESHEET_TEXT, THEME_STYLESHEET_TEXT } from '../styles';
+import { normalizeEmptyListItemsForPreview } from '../hooks/formatting';
 
 const EXPORT_STYLE_OVERRIDES = `
   body.markdown-export {
     margin: 0;
-    padding: 32px;
+    min-height: 100vh;
     font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-    background: var(--bg-primary, #0d0f12);
+    background: var(--bg-panel, #11151a);
     color: var(--fg-primary, #e9ecf1);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -21,6 +22,9 @@ const EXPORT_STYLE_OVERRIDES = `
 
   .export-shell {
     display: block;
+    padding: 32px;
+    min-height: 100vh;
+    box-sizing: border-box;
   }
 
   .export-page {
@@ -28,7 +32,7 @@ const EXPORT_STYLE_OVERRIDES = `
     min-height: 11in;
     padding: 0.75in;
     box-sizing: border-box;
-    background: var(--bg-panel, #11151a);
+    background: transparent;
     border: 1px solid var(--border-color, rgba(255,255,255,0.1));
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     margin: 0 auto 32px;
@@ -44,6 +48,7 @@ const EXPORT_STYLE_OVERRIDES = `
 
   .export-page .markdown-body {
     margin: 0;
+    background: transparent;
   }
 
   @page {
@@ -53,11 +58,14 @@ const EXPORT_STYLE_OVERRIDES = `
   @media print {
     body.markdown-export {
       padding: 0;
-      background: #fff;
+      background: var(--bg-panel, #11151a);
+      min-height: auto;
     }
 
     .export-shell {
       display: block;
+      padding: 0;
+      min-height: auto;
     }
 
     .export-page {
@@ -87,6 +95,17 @@ const escapeHtml = (value: string) => value
   .replace(/'/g, '&#39;');
 
 const previewComponents = (theme: AppTheme) => ({
+  h1: ({node, ...props}: any) => <h1 className="md-h1" {...props} />,
+  h2: ({node, ...props}: any) => <h2 className="md-h2" {...props} />,
+  h3: ({node, ...props}: any) => <h3 className="md-h3" {...props} />,
+  h4: ({node, ...props}: any) => <h4 className="md-h4" {...props} />,
+  h5: ({node, ...props}: any) => <h5 className="md-h5" {...props} />,
+  h6: ({node, ...props}: any) => <h6 className="md-h6" {...props} />,
+  p: ({node, ...props}: any) => <p className="md-p" {...props} />,
+  strong: ({node, ...props}: any) => <strong className="md-strong" {...props} />,
+  em: ({node, ...props}: any) => <em className="md-em" {...props} />,
+  hr: ({node, ...props}: any) => <hr className="md-hr" {...props} />,
+  blockquote: ({node, ...props}: any) => <blockquote className="md-blockquote" {...props} />,
   ul: ({node, ...props}: any) => <ul className="md-ul" {...props} />,
   ol: ({node, ...props}: any) => <ol className="md-ol" {...props} />,
   li: ({node, checked, ...props}: any) => (
@@ -111,6 +130,7 @@ const previewComponents = (theme: AppTheme) => ({
     }
     return <input {...props} />;
   },
+  a: ({node, ...props}: any) => <a className="md-link" {...props} />,
   code: ({node, inline, className, children, ...props}: any) => {
     const match = /language-(\w+)/.exec(className || '');
     return !inline && match ? (
@@ -141,7 +161,7 @@ const previewComponents = (theme: AppTheme) => ({
 const renderPreviewMarkup = (content: string, theme: AppTheme) => renderToStaticMarkup(
   <div className="markdown-body">
     <ReactMarkdown remarkPlugins={[remarkGfm, remarkSupersub]} components={previewComponents(theme)}>
-      {content}
+      {normalizeEmptyListItemsForPreview(content)}
     </ReactMarkdown>
   </div>
 );
