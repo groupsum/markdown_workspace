@@ -219,3 +219,6 @@
 - 2026-03-08 00:30:00: Added a dedicated `showProjectSelector` UI flag in `useApp` so selector display is explicit user intent; default bootstrap now keeps auto-loading a project into editor view, while selector mode opens only when requested and closes after project selection.
 - 2026-03-08 00:30:00: Updated `AppContent` selector gate to respect the new explicit selector flag (`state.showProjectSelector`) in addition to missing active project state.
 - 2026-03-08 00:30:00: Validation plan: run client production build and capture updated editor-first runtime screenshot evidence.
+- 2026-03-09 00:00:00: Plan: Ensure print/export flows render all markdown content across multiple pages while preserving page breaks.
+- 2026-03-09 00:00:00: Updated print stylesheet to remove fixed viewport-height/overflow clipping so print layouts can paginate naturally and include full content.
+- 2026-03-09 00:00:00: Bumped client package patch version after the print-layout change.
