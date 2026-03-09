@@ -226,3 +226,6 @@
 - 2026-03-09 11:58:04: Updated `client/services/htmlExport.tsx` to use full-preview markdown classes/normalization and continuous export background styling across pages.
 - 2026-03-09 11:58:04: Updated `client/styles/base/chassis/print.css` to keep themed print background coverage through full document height, including multi-page output.
 - 2026-03-09 11:58:04: Added export regression coverage in `client/services/htmlExport.test.tsx` for preview class output and normalized empty list items.
+- 2026-03-09 12:48:30: Plan: Fix startup restore so last active project, last active file, and open tabs reliably reload after app refresh/startup.
+- 2026-03-09 12:48:30: Updated `client/hooks/useApp.ts` to persist dedicated restore keys (`lastProjectId`, `lattice-last-open-tab-file-ids`, `lattice-last-active-file-id`), guard writes until the target project files are loaded, and prioritize those persisted tab/file keys during `loadProject` restore.
+- 2026-03-09 12:48:30: Validation: `npm run build` passes in `client`; browser automation confirms active project + active file + open tabs remain identical before/after reload.
