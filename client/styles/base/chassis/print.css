@@ -9,13 +9,13 @@
   #root {
     width: 100% !important;
     height: auto !important;
-    min-height: 0 !important;
+    min-height: 100% !important;
     overflow: visible !important;
   }
 
   body,
   .chassis-root {
-    background: #fff;
+    background: var(--bg-panel, #11151a) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -41,7 +41,7 @@
     border: none;
     width: 100% !important;
     height: auto !important;
-    min-height: 0 !important;
+    min-height: 100% !important;
     overflow: visible !important;
     padding: 0 !important;
   }
@@ -93,6 +93,10 @@
 
   .preview-pane {
     padding: 0 !important;
-    background: transparent;
+    background: transparent !important;
+  }
+
+  .markdown-body {
+    background: transparent !important;
   }
 }
