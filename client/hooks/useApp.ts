@@ -11,6 +11,9 @@ import { useTabManager } from './useTabManager';
 import { FileNode } from '../types';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
+const LAST_PROJECT_ID_KEY = 'lastProjectId';
+const LAST_ACTIVE_FILE_ID_KEY = 'lattice-last-active-file-id';
+const LAST_OPEN_TAB_FILE_IDS_KEY = 'lattice-last-open-tab-file-ids';
 const DEFAULT_PROJECT_NAME = 'Core System';
 
 const findInitialFile = (files: FileNode[]) => {
@@ -73,6 +76,7 @@ export const useApp = () => {
   const currentProject = proj.projects.find(p => p.id === proj.activeProjectId);
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
   const oidcCallbackHandledRef = useRef(false);
+  const restoringProjectRef = useRef(false);
 
   const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
     if (result.status === 'success' && result.projectId && result.credential) {
@@ -149,28 +153,57 @@ export const useApp = () => {
 
   const loadProject = useCallback(async (projectId: string) => {
     console.log(`[useApp] Action: loadProject -> ${projectId}`);
+    restoringProjectRef.current = true;
     setShowProjectSelector(false);
     proj.setLoading(true);
-    proj.setActiveProjectId(projectId);
-    const projectFiles = await fileSys.loadFiles(projectId);
-    tabs.resetTabs();
-    fileSys.setSelectedExplorerId(null);
+    try {
+      proj.setActiveProjectId(projectId);
+      const projectFiles = await fileSys.loadFiles(projectId);
+      tabs.resetTabs();
+      fileSys.setSelectedExplorerId(null);
 
-    const storedSession = ui.persistSessionEnabled ? readSessionState() : null;
-    let restoredSession = false;
-    if (storedSession && storedSession.projectId === projectId) {
+      const storedSession = ui.persistSessionEnabled ? readSessionState() : null;
+      let restoredSession = false;
       const validIds = new Set(projectFiles.map(file => file.id));
-      const tabFileIds = storedSession.tabFileIds.filter(id => validIds.has(id));
-      if (tabFileIds.length > 0) {
-        tabs.setTabs(tabFileIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
-        const activeFileId = storedSession.activeTabFileId && validIds.has(storedSession.activeTabFileId)
-          ? storedSession.activeTabFileId
-          : tabFileIds[0];
+
+      const rawTabIds = window.localStorage.getItem(LAST_OPEN_TAB_FILE_IDS_KEY);
+      let persistedTabIds: string[] = [];
+      if (rawTabIds) {
+        try {
+          const parsed = JSON.parse(rawTabIds) as unknown;
+          if (Array.isArray(parsed)) {
+            persistedTabIds = parsed.filter((id): id is string => typeof id === 'string' && validIds.has(id));
+          }
+        } catch (error) {
+          console.warn('[useApp] Failed to parse stored open-tab state', error);
+        }
+      }
+      const persistedActiveId = window.localStorage.getItem(LAST_ACTIVE_FILE_ID_KEY);
+      if (persistedTabIds.length > 0) {
+        tabs.setTabs(persistedTabIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
+        const activeFileId = persistedActiveId && validIds.has(persistedActiveId) ? persistedActiveId : persistedTabIds[0];
         tabs.setActiveTabId(activeFileId ? `tab-${activeFileId}` : null);
-        const selection = storedSession.selectedExplorerId && validIds.has(storedSession.selectedExplorerId)
-          ? storedSession.selectedExplorerId
-          : activeFileId ?? null;
-        fileSys.setSelectedExplorerId(selection);
+        fileSys.setSelectedExplorerId(activeFileId ?? null);
+        restoredSession = true;
+      }
+
+      if (!restoredSession && storedSession && storedSession.projectId === projectId) {
+        const tabFileIds = storedSession.tabFileIds.filter(id => validIds.has(id));
+        if (tabFileIds.length > 0) {
+          tabs.setTabs(tabFileIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
+          const activeFileId = storedSession.activeTabFileId && validIds.has(storedSession.activeTabFileId)
+            ? storedSession.activeTabFileId
+            : tabFileIds[0];
+          tabs.setActiveTabId(activeFileId ? `tab-${activeFileId}` : null);
+          const selection = storedSession.selectedExplorerId && validIds.has(storedSession.selectedExplorerId)
+            ? storedSession.selectedExplorerId
+            : activeFileId ?? null;
+          fileSys.setSelectedExplorerId(selection);
+          restoredSession = true;
+        }
+      }
+
+      if (storedSession && storedSession.projectId === projectId) {
         ui.setAppMode(storedSession.appMode === 'git' ? 'git' : 'work');
         ui.setViewMode(storedSession.viewMode === 'editor' || storedSession.viewMode === 'preview' ? storedSession.viewMode : 'split');
         ui.setSidebarOpen(Boolean(storedSession.sidebarOpen));
@@ -186,21 +219,22 @@ export const useApp = () => {
         if (typeof storedSession.autoSaveEnabled === 'boolean') {
           ui.setAutoSaveEnabled(storedSession.autoSaveEnabled);
         }
-        restoredSession = true;
       }
+
+      const target = findInitialFile(projectFiles);
+
+      if (target && !restoredSession) {
+        console.log(`[useApp] Auto-opening initial file: ${target.name}`);
+        tabs.openTab(target.id);
+        fileSys.setSelectedExplorerId(target.id);
+      }
+
+      proj.updateLastOpened(projectId);
+      localStorage.setItem(LAST_PROJECT_ID_KEY, projectId);
+    } finally {
+      proj.setLoading(false);
+      restoringProjectRef.current = false;
     }
-
-    const target = findInitialFile(projectFiles);
-
-    if (target && !restoredSession) {
-       console.log(`[useApp] Auto-opening initial file: ${target.name}`);
-       tabs.openTab(target.id);
-       fileSys.setSelectedExplorerId(target.id);
-    }
-
-    proj.updateLastOpened(projectId);
-    localStorage.setItem('lastProjectId', projectId);
-    proj.setLoading(false);
   }, [
     proj.setActiveProjectId,
     fileSys.loadFiles,
@@ -222,10 +256,24 @@ export const useApp = () => {
   useEffect(() => {
     if (!ui.persistSessionEnabled) {
       window.localStorage.removeItem(SESSION_STORAGE_KEY);
-      return;
     }
     if (!proj.activeProjectId) return;
+    if (fileSys.loadedProjectId !== proj.activeProjectId) return;
+    if (proj.loading || restoringProjectRef.current) return;
     const activeTabFileId = tabs.tabs.find(tab => tab.id === tabs.activeTabId)?.fileId ?? null;
+
+    window.localStorage.setItem(LAST_PROJECT_ID_KEY, proj.activeProjectId);
+    window.localStorage.setItem(LAST_OPEN_TAB_FILE_IDS_KEY, JSON.stringify(tabs.tabs.map((tab) => tab.fileId)));
+    if (activeTabFileId) {
+      window.localStorage.setItem(LAST_ACTIVE_FILE_ID_KEY, activeTabFileId);
+    } else {
+      window.localStorage.removeItem(LAST_ACTIVE_FILE_ID_KEY);
+    }
+
+    if (!ui.persistSessionEnabled) {
+      return;
+    }
+
     const sessionState: SessionState = {
       projectId: proj.activeProjectId,
       tabFileIds: tabs.tabs.map(tab => tab.fileId),
@@ -245,7 +293,9 @@ export const useApp = () => {
     window.localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionState));
   }, [
     ui.persistSessionEnabled,
+    proj.loading,
     proj.activeProjectId,
+    fileSys.loadedProjectId,
     tabs.tabs,
     tabs.activeTabId,
     fileSys.selectedExplorerId,
@@ -261,7 +311,7 @@ export const useApp = () => {
 
   useEffect(() => {
     if (!proj.loading && proj.projects.length > 0 && !proj.activeProjectId && !showProjectSelector) {
-        const lastId = localStorage.getItem('lastProjectId');
+        const lastId = localStorage.getItem(LAST_PROJECT_ID_KEY);
         console.log(`[useApp] Effect: Attempting auto-restore project -> ${lastId}`);
         if (lastId && proj.projects.find(p => p.id === lastId)) {
             loadProject(lastId);
