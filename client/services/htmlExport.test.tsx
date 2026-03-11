@@ -64,6 +64,34 @@ describe('createHtmlExport', () => {
     expect((html.match(/class="export-page"/g) || []).length).toBe(1);
     expect(html).toContain('<div class="markdown-body"></div>');
   });
+
+  it('includes html and print styles that preserve scrolling html export and paged PDF export', () => {
+    const html = createHtmlExport({
+      title: 'styled.md',
+      content: '# Long Report\n\nparagraph',
+      theme: 'default',
+      coreCss,
+      themeCss
+    });
+
+    expect(html).toContain('body.markdown-export');
+    expect(html).toContain('overflow-y: auto;');
+    expect(html).toContain('@media print');
+    expect(html).toContain('page-break-after: always;');
+    expect(html).toContain('min-height: calc(297mm - 24mm);');
+  });
+
+  it('uses first markdown h1 as escaped html title for PDF print window metadata', () => {
+    const html = createHtmlExport({
+      title: 'fallback.md',
+      content: '# <Plan> & "Results"\n\nBody',
+      theme: 'default',
+      coreCss,
+      themeCss
+    });
+
+    expect(html).toContain('<title>Plan &amp; Results - Preview Export</title>');
+  });
 });
 
 
@@ -78,5 +106,9 @@ describe('export title naming', () => {
 
   it('uses preferred title for html filename', () => {
     expect(toHtmlFileName('origin-file.md', '# Results and Discussion')).toBe('Results and Discussion.html');
+  });
+
+  it('sanitizes invalid filename characters from derived h1 title', () => {
+    expect(toHtmlFileName('origin-file.md', '# Sprint: Q1/Q2 *Results*')).toBe('Sprint Q1Q2 Results.html');
   });
 });

@@ -252,3 +252,9 @@
 - 2026-03-11 06:35:00: Added `client/styles/zoomBehavior.test.ts` to assert fixed chassis tokens and retained zoom scaling for text/icons/buttons.
 - 2026-03-11 06:35:00: Validation: `npm run test:run -- zoomBehavior alignmentTokens` and `npm run build` pass in `client`; captured zoom-control screenshots at default, 130%, and 70% UI zoom.
 - 2026-03-11 06:35:00: Bumped package versions (`client` 1.3.148, `lander` 0.0.48) and regenerated lockfiles per repository versioning policy.
+- 2026-03-11 06:47:05: Plan: Expand export regression coverage with targeted test cases for HTML-export markup and print/PDF-oriented style/title behavior, then run the focused client test suite.
+- 2026-03-11 06:47:05: Added HTML/PDF export regression tests in `client/services/htmlExport.test.tsx` covering print-specific CSS blocks, page-break semantics, export-title escaping/sanitization, and filename sanitization.
+- 2026-03-11 06:47:05: Validation: `npm run test:run -- services/htmlExport.test.tsx` passes in `client` (12/12 tests).
+- 2026-03-11 06:47:05: Network/PCAP review: Not applicable for this unit-test-only change (no runtime service calls exercised).
+- 2026-03-11 06:47:05: Open issues: None identified for HTML/PDF export behavior after targeted regression tests.
+- 2026-03-11 06:47:05: Bumped `client` package version to 1.3.149 per repository versioning policy.
