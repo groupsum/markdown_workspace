@@ -233,3 +233,8 @@
 - 2026-03-11 00:00:00: Added `client/i18n.ts` with locale detection + message dictionaries (English, Spanish, French, Portuguese, Urdu) and `_...` key naming, then integrated translated labels into AppContent, ActionRail, and command palette action definitions.
 - 2026-03-11 00:00:00: Bumped `client` package version to 1.3.147 and updated lockfile metadata per repository versioning policy.
 - 2026-03-11 00:00:00: Validation: `npm run build` passes in `client` (existing Vite chunk-size warning only).
+- 2026-03-11 06:35:00: Plan: Repair zoom regression so UI zoom scales text/labels/icons/buttons without scaling chassis dimensions, then add regression tests and capture zoom-control screenshot evidence.
+- 2026-03-11 06:35:00: Updated `client/styles/base/root.css` to keep structural chassis tokens (`header/rail/sidebar/status/panel/gap`) fixed in px while preserving `--ui-scale` for content-level typography/icons/controls.
+- 2026-03-11 06:35:00: Added `client/styles/zoomBehavior.test.ts` to assert fixed chassis tokens and retained zoom scaling for text/icons/buttons.
+- 2026-03-11 06:35:00: Validation: `npm run test:run -- zoomBehavior alignmentTokens` and `npm run build` pass in `client`; captured zoom-control screenshots at default, 130%, and 70% UI zoom.
+- 2026-03-11 06:35:00: Bumped package versions (`client` 1.3.148, `lander` 0.0.48) and regenerated lockfiles per repository versioning policy.
