@@ -258,3 +258,9 @@
 - 2026-03-11 07:20:00: Validation: `npm run build` passes in `client` after inline-code typography adjustments (existing Vite chunk-size warning only).
 - 2026-03-11 07:20:00: Captured per-theme screenshot set (12 themes) in active editor/preview workflow to validate single-backtick inline-code sizing consistency across all shipped themes.
 - 2026-03-11 07:20:00: Bumped package versions (`client` 1.3.149, `lander` 0.0.50) and updated lockfiles per repository versioning policy.
+- 2026-03-11 06:47:05: Plan: Expand export regression coverage with targeted test cases for HTML-export markup and print/PDF-oriented style/title behavior, then run the focused client test suite.
+- 2026-03-11 06:47:05: Added HTML/PDF export regression tests in `client/services/htmlExport.test.tsx` covering print-specific CSS blocks, page-break semantics, export-title escaping/sanitization, and filename sanitization.
+- 2026-03-11 06:47:05: Validation: `npm run test:run -- services/htmlExport.test.tsx` passes in `client` (12/12 tests).
+- 2026-03-11 06:47:05: Network/PCAP review: Not applicable for this unit-test-only change (no runtime service calls exercised).
+- 2026-03-11 06:47:05: Open issues: None identified for HTML/PDF export behavior after targeted regression tests.
+- 2026-03-11 06:47:05: Bumped `client` package version to 1.3.149 per repository versioning policy.
