@@ -356,7 +356,7 @@ export const useFileManager = (
 
     if (selectedNode.type === 'file') {
       const html = buildHtml(selectedNode);
-      triggerDownload(html, toHtmlFileName(selectedNode.name), 'text/html');
+      triggerDownload(html, toHtmlFileName(selectedNode.name, selectedNode.content || ''), 'text/html');
       addToast('HTML EXPORT COMPLETE', 'success');
       return;
     }
@@ -370,7 +370,7 @@ export const useFileManager = (
       children.forEach(child => {
         if (child.type === 'file') {
           const html = buildHtml(child);
-          currentFolder.file(toHtmlFileName(child.name), html);
+          currentFolder.file(toHtmlFileName(child.name, child.content || ''), html);
         } else {
           const nextFolder = currentFolder.folder(child.name);
           if (nextFolder) {

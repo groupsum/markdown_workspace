@@ -9,6 +9,7 @@ import heavyGaugeTectonicThemeCssText from './themes/theme-heavy-gauge-tectonic.
 import galvanizedCellularThemeCssText from './themes/theme-galvanized-cellular.css?inline';
 import micropressThemeCssText from './themes/theme-micropress.css?inline';
 import pressedChromiumThemeCssText from './themes/theme-pressed-chromium.css?inline';
+import researchScienceThemeCssText from './themes/theme-research-science.css?inline';
 import zincThemeCssText from './themes/theme-zinc.css?inline';
 
 export const THEME_STYLESHEET_TEXT = {
@@ -20,6 +21,7 @@ export const THEME_STYLESHEET_TEXT = {
   'galvanized-cellular': galvanizedCellularThemeCssText,
   micropress: micropressThemeCssText,
   'pressed-chromium': pressedChromiumThemeCssText,
+  'research-science': researchScienceThemeCssText,
   zinc: zincThemeCssText
 } as const;
 
