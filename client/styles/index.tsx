@@ -8,7 +8,9 @@ import ferrousMonolithThemeCssText from './themes/theme-ferrous-monolith.css?inl
 import heavyGaugeTectonicThemeCssText from './themes/theme-heavy-gauge-tectonic.css?inline';
 import galvanizedCellularThemeCssText from './themes/theme-galvanized-cellular.css?inline';
 import micropressThemeCssText from './themes/theme-micropress.css?inline';
+import opticalVellumDraftingGridThemeCssText from './themes/theme-optical-vellum-drafting-grid.css?inline';
 import pressedChromiumThemeCssText from './themes/theme-pressed-chromium.css?inline';
+import tensionedTechnicalSkeletonThemeCssText from './themes/theme-tensioned-technical-skeleton.css?inline';
 import zincThemeCssText from './themes/theme-zinc.css?inline';
 
 export const THEME_STYLESHEET_TEXT = {
@@ -19,7 +21,9 @@ export const THEME_STYLESHEET_TEXT = {
   'heavy-gauge-tectonic': heavyGaugeTectonicThemeCssText,
   'galvanized-cellular': galvanizedCellularThemeCssText,
   micropress: micropressThemeCssText,
+  'optical-vellum-drafting-grid': opticalVellumDraftingGridThemeCssText,
   'pressed-chromium': pressedChromiumThemeCssText,
+  'tensioned-technical-skeleton': tensionedTechnicalSkeletonThemeCssText,
   zinc: zincThemeCssText
 } as const;
 
