@@ -10,32 +10,37 @@ import { CORE_STYLESHEET_TEXT, THEME_STYLESHEET_TEXT } from '../styles';
 import { normalizeEmptyListItemsForPreview } from '../hooks/formatting';
 
 const EXPORT_STYLE_OVERRIDES = `
+  html,
   body.markdown-export {
     margin: 0;
-    min-height: 100vh;
-    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-    background: var(--bg-panel, #11151a);
+    min-height: 100%;
+    background: var(--bg-app, #0b0f14);
     color: var(--fg-primary, #e9ecf1);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
+  body.markdown-export {
+    overflow-y: auto;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  }
+
   .export-shell {
     display: block;
-    padding: 32px;
-    min-height: 100vh;
     box-sizing: border-box;
+    width: min(100%, 980px);
+    margin: 0 auto;
+    padding: 24px;
   }
 
   .export-page {
-    width: 8.5in;
-    min-height: 11in;
-    padding: 0.75in;
+    width: 100%;
     box-sizing: border-box;
-    background: transparent;
+    background: var(--bg-panel, #11151a);
     border: 1px solid var(--border-color, rgba(255,255,255,0.1));
-    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    margin: 0 auto 32px;
+    box-shadow: 0 16px 42px rgba(0,0,0,0.3);
+    margin: 0 0 20px 0;
+    padding: 24px;
     break-after: page;
     page-break-after: always;
   }
@@ -52,28 +57,31 @@ const EXPORT_STYLE_OVERRIDES = `
   }
 
   @page {
-    margin: 0.75in;
+    margin: 12mm;
   }
 
   @media print {
+    html,
     body.markdown-export {
-      padding: 0;
-      background: var(--bg-panel, #11151a);
+      background: var(--bg-app, #0b0f14) !important;
       min-height: auto;
+      overflow: visible;
     }
 
     .export-shell {
-      display: block;
+      width: auto;
       padding: 0;
-      min-height: auto;
+      margin: 0;
     }
 
     .export-page {
       width: auto;
-      min-height: auto;
       margin: 0;
       border: none;
       box-shadow: none;
+      padding: 10mm;
+      min-height: calc(297mm - 24mm);
+      background: var(--bg-panel, #11151a) !important;
       break-after: page;
       page-break-after: always;
     }
@@ -93,6 +101,32 @@ const escapeHtml = (value: string) => value
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');
+
+const sanitizeFileSegment = (value: string) => value
+  .trim()
+  .replace(/[\\/:*?"<>|]/g, '')
+  .replace(/\s+/g, ' ')
+  .slice(0, 120)
+  .trim();
+
+const normalizeFallbackName = (fallbackName: string) => {
+  const withoutMd = fallbackName.replace(/\.md$/i, '');
+  return sanitizeFileSegment(withoutMd) || 'untitled';
+};
+
+export const getPreferredExportTitle = (content: string, fallbackName: string): string => {
+  const lines = content.split(/\r?\n/);
+  for (const line of lines) {
+    const h1 = line.match(/^\s*#\s+(.+?)\s*$/);
+    if (h1?.[1]) {
+      const cleaned = sanitizeFileSegment(h1[1].replace(/[*_`~\[\]()]/g, '').trim());
+      if (cleaned) {
+        return cleaned;
+      }
+    }
+  }
+  return normalizeFallbackName(fallbackName);
+};
 
 const previewComponents = (theme: AppTheme) => ({
   h1: ({node, ...props}: any) => <h1 className="md-h1" {...props} />,
@@ -176,9 +210,9 @@ export const getExportStyles = async (theme: AppTheme): Promise<{ coreCss: strin
   themeCss: THEME_STYLESHEET_TEXT[theme] || THEME_STYLESHEET_TEXT.default
 });
 
-export const toHtmlFileName = (name: string) => {
-  const base = name.replace(/\.md$/i, '');
-  return `${base}.html`;
+export const toHtmlFileName = (name: string, content = '') => {
+  const preferredTitle = getPreferredExportTitle(content, name);
+  return `${preferredTitle}.html`;
 };
 
 export const createHtmlExport = ({
@@ -199,7 +233,8 @@ export const createHtmlExport = ({
   const previewHtml = pageContents
     .map((pageContent) => `<section class="export-page">${renderPreviewMarkup(pageContent, theme)}</section>`)
     .join('\n');
-  const safeTitle = escapeHtml(title.replace(/\.md$/i, ''));
+  const preferredTitle = getPreferredExportTitle(content, title);
+  const safeTitle = escapeHtml(preferredTitle);
 
   return `<!DOCTYPE html>
 <html lang="en" data-theme="${theme}" class="theme-${theme}">

@@ -11,11 +11,12 @@
     height: auto !important;
     min-height: 100% !important;
     overflow: visible !important;
+    background: var(--bg-app, #0b0f14) !important;
   }
 
   body,
   .chassis-root {
-    background: var(--bg-panel, #11151a) !important;
+    background: var(--bg-app, #0b0f14) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -97,6 +98,9 @@
   }
 
   .markdown-body {
-    background: transparent !important;
+    background: var(--bg-panel, #11151a) !important;
+    padding: 10mm !important;
+    box-sizing: border-box;
+    margin: 0 !important;
   }
 }

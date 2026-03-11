@@ -229,6 +229,20 @@
 - 2026-03-09 12:48:30: Plan: Fix startup restore so last active project, last active file, and open tabs reliably reload after app refresh/startup.
 - 2026-03-09 12:48:30: Updated `client/hooks/useApp.ts` to persist dedicated restore keys (`lastProjectId`, `lattice-last-open-tab-file-ids`, `lattice-last-active-file-id`), guard writes until the target project files are loaded, and prioritize those persisted tab/file keys during `loadProject` restore.
 - 2026-03-09 12:48:30: Validation: `npm run build` passes in `client`; browser automation confirms active project + active file + open tabs remain identical before/after reload.
+- 2026-03-11 00:00:00: Plan: Add a new publication-focused `research-science` theme tailored to arXiv research publishers, wire it into runtime theme selection, and validate with client build + visual evidence.
+- 2026-03-11 00:00:00: Implemented `research-science` theme metadata in `client/data/themes.tsx`, added stylesheet registration in `client/styles/index.tsx`, and created `client/styles/themes/theme-research-science.css` with scholarly typography, citation-blue accents, and paper-like surfaces.
+- 2026-03-11 00:00:00: Validation plan: run `npm run build` in `client`, capture browser screenshot of the new theme, then bump package versions per repo policy.
+- 2026-03-11 00:00:00: Validation: `npm run build` passes in `client` after adding the new theme (bundle-size warning only).
+- 2026-03-11 00:00:00: Captured screenshot artifact for the new `research-science` theme from the running client UI.
+- 2026-03-11 00:00:00: Bumped package versions (`client` 1.3.147, `lander` 0.0.48) and refreshed lockfiles per repository versioning policy.
+- 2026-03-11 00:30:00: Plan: Fix print/PDF and HTML export rendering so all preview content is preserved with page-break support, theme background fidelity, scrollable HTML output, and H1-based export titles.
+- 2026-03-11 00:30:00: Updated `client/services/htmlExport.tsx` to enforce scrollable HTML export layout, preserve full content across page sections, keep theme backgrounds in print, add explicit printable content padding, and derive title/filename from first H1 with filename fallback.
+- 2026-03-11 00:30:00: Updated `client/styles/base/chassis/print.css` and `client/hooks/useApp.ts` so in-app PDF printing keeps full-page content flow, applies theme background + inner content padding, and uses first-H1 title for PDF output naming.
+- 2026-03-11 00:30:00: Added export naming regression tests in `client/services/htmlExport.test.tsx`; validation includes targeted vitest run + client production build + screenshot evidence matrix.
+- 2026-03-11 00:30:00: Validation: `npm run test:run -- services/htmlExport.test.tsx` passes (9/9 tests).
+- 2026-03-11 00:30:00: Validation: `npm run build` passes in `client` after export/print remediations (chunk-size warning only).
+- 2026-03-11 00:30:00: Captured extensive screenshot evidence for screen + print media states across wide and portrait viewports, including long-content scroll and theme-background verification.
+- 2026-03-11 00:30:00: Bumped package versions (`client` 1.3.148, `lander` 0.0.49) and updated lockfiles per repository policy.
 - 2026-03-11 00:00:00: Plan: Implement baseline i18n support by introducing underscore-prefixed translation keys and wiring common UI labels/tooltips through a shared translator with en/es/fr/pt/ur locales.
 - 2026-03-11 00:00:00: Added `client/i18n.ts` with locale detection + message dictionaries (English, Spanish, French, Portuguese, Urdu) and `_...` key naming, then integrated translated labels into AppContent, ActionRail, and command palette action definitions.
 - 2026-03-11 00:00:00: Bumped `client` package version to 1.3.147 and updated lockfile metadata per repository versioning policy.
