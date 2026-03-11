@@ -5,8 +5,8 @@
 
 :root[data-theme="optical-vellum-drafting-grid"] {
   --bg-app: #fdfdf5;
-  --bg-panel: #f8f9ef;
-  --bg-inset: #eef2de;
+  --bg-panel: #fdfdf5;
+  --bg-inset: #d4eec7;
   --code-block-bg: #151815;
 
   --border-color: #0a0c0a;
@@ -14,18 +14,18 @@
 
   --fg-primary: #0a0c0a;
   --fg-secondary: #1a3a16;
-  --fg-muted: #456040;
+  --fg-muted: rgba(10, 12, 10, 0.5);
 
   --accent: #00ff41;
 
   --status-ok: #00ff41;
-  --status-warn: #6ebf4b;
+  --status-warn: #d4eec7;
   --status-error: #bb2f2f;
 
-  --table-header-bg: #eaf2df;
+  --table-header-bg: rgba(0, 255, 65, 0.05);
   --table-header-fg: #0a0c0a;
   --table-row-primary-bg: #fdfdf5;
-  --table-row-secondary-bg: #f3f6ea;
+  --table-row-secondary-bg: #d4eec7;
 
   --texture-opacity: 0.08;
 }
@@ -98,7 +98,7 @@
 .theme-optical-vellum-drafting-grid .view-toolbar,
 .theme-optical-vellum-drafting-grid .project-header,
 .theme-optical-vellum-drafting-grid .workspace-panel-header {
-  background: #f2f5e5;
+  background: rgba(0, 255, 65, 0.05);
   border-bottom-color: #0a0c0a;
 }
 
@@ -144,6 +144,12 @@
 .theme-optical-vellum-drafting-grid .status-value,
 .theme-optical-vellum-drafting-grid .status-led-dot.ok {
   color: #1a3a16;
+}
+
+.theme-optical-vellum-drafting-grid .status-label,
+.theme-optical-vellum-drafting-grid .status-meta,
+.theme-optical-vellum-drafting-grid .status-separator {
+  color: rgba(10, 12, 10, 0.5);
 }
 
 .theme-optical-vellum-drafting-grid .project-create-modal-surface,
