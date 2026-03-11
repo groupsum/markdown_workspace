@@ -1,0 +1,72 @@
+.extension-panel-overlay--openai {
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 56px 24px 24px;
+}
+
+.extension-panel-surface--openai {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel);
+}
+
+.extension-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.extension-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  min-height: 420px;
+}
+
+.extension-thread {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--border-subtle);
+  padding: 10px;
+  background: var(--bg-inset);
+}
+
+.extension-empty {
+  opacity: 0.75;
+}
+
+.extension-message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid var(--border-subtle);
+  white-space: pre-wrap;
+}
+
+.extension-message--assistant {
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-panel));
+}
+
+.extension-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.extension-input-row textarea {
+  resize: vertical;
+  width: 100%;
+  background: var(--bg-inset);
+  color: var(--fg-primary);
+  border: 1px solid var(--border-strong);
+  padding: 8px;
+}
+
+.extension-send-btn {
+  align-self: flex-end;
+}

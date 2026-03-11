@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { Chassis } from './components/Chassis/Chassis';
 import { CommandPalette } from './components/Modals/CommandPalette';
@@ -17,6 +17,7 @@ import { useApp } from './hooks/useApp';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { usePwa } from './hooks/usePwa';
 import type { OidcProviderId } from './types';
+import { getExtensionPlugin } from './extensions/plugins';
 
 const App: React.FC = () => {
   const { state, actions } = useApp();
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [online, setOnline] = useState(navigator.onLine);
   const [cloudSyncTick, setCloudSyncTick] = useState(0);
+  const [activeExtensionId, setActiveExtensionId] = useState<string | null>(null);
   const markdownImportRef = useRef<HTMLInputElement>(null);
 
   useKeyboardShortcuts(
@@ -54,12 +56,34 @@ const App: React.FC = () => {
 
   useAppLifecycle(actions, pwaState.updateAvailable, setUpdateAvailable, setOnline);
 
+
+  useEffect(() => {
+    const handleOpenAssistantPanel = (event: Event) => {
+      const customEvent = event as CustomEvent<{ extensionId?: string }>;
+      const extensionId = customEvent.detail?.extensionId;
+      if (!extensionId) {
+        return;
+      }
+      if (getExtensionPlugin(extensionId)) {
+        setActiveExtensionId(extensionId);
+      }
+    };
+
+    window.addEventListener('lattice:extension:open-panel', handleOpenAssistantPanel as EventListener);
+    return () => {
+      window.removeEventListener('lattice:extension:open-panel', handleOpenAssistantPanel as EventListener);
+    };
+  }, []);
+
   if (state.loading) {
     return <div className="boot-screen">BOOT SEQUENCE...</div>;
   }
 
   const pwaAction = buildPwaAction(pwaState, pwaActions);
   const commandActions = buildCommandActions(actions, state.appMode);
+
+  const activeExtensionPlugin = activeExtensionId ? getExtensionPlugin(activeExtensionId) : null;
+
   const activeTabName =
     state.files.find(
       (file) => file.id === state.tabs.find((tab) => tab.id === state.activeTabId)?.fileId
@@ -156,6 +180,15 @@ const App: React.FC = () => {
         onSelectFile={actions.handleExplorerSelect}
         actions={commandActions}
       />
+      {activeExtensionPlugin ? (
+        <activeExtensionPlugin.Panel
+          isOpen={true}
+          onClose={() => setActiveExtensionId(null)}
+          onToast={actions.addToast}
+          service={activeExtensionPlugin.service}
+        />
+      ) : null}
+
 
       <ToastContainer messages={state.toasts} onDismiss={actions.removeToast} />
 

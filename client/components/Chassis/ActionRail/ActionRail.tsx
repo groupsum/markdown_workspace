@@ -1,6 +1,7 @@
 import React from 'react';
 import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer, Upload } from 'lucide-react';
 import { AppMode } from '../../../types';
+import type { ActionRailExtensionButton } from '../../../services/actionRailExtensions';
 
 interface ActionRailProps {
   sidebarOpen: boolean;
@@ -15,6 +16,7 @@ interface ActionRailProps {
   onImportMarkdown: () => void;
   onPrint: () => void;
   onCloudSync: () => void;
+  extensionButtons?: ActionRailExtensionButton[];
   className?: string;
 }
 
@@ -49,8 +51,12 @@ export const ActionRail: React.FC<ActionRailProps> = ({
   onImportMarkdown,
   onPrint,
   onCloudSync,
+  extensionButtons = [],
   className = ""
 }) => {
+  const topExtensions = extensionButtons.filter((button) => button.group === 'top');
+  const bottomExtensions = extensionButtons.filter((button) => button.group === 'bottom');
+
   return (
         <nav className={`action-rail ${className}`} aria-label="Primary Actions">
           <div className="rail-group rail-group--top">
@@ -76,6 +82,15 @@ export const ActionRail: React.FC<ActionRailProps> = ({
               icon={<GitBranch />}
               title="Git Operations"
             />
+            {topExtensions.map((button) => (
+              <ToolbarButton
+                key={button.id}
+                onClick={button.onClick}
+                icon={button.icon}
+                title={button.title}
+                className={button.className}
+              />
+            ))}
           </div>
           
           <div className="rail-spacer" />
@@ -112,6 +127,15 @@ export const ActionRail: React.FC<ActionRailProps> = ({
               title="Cloud Sync"
               className="rail-btn--status"
             />
+            {bottomExtensions.map((button) => (
+              <ToolbarButton
+                key={button.id}
+                onClick={button.onClick}
+                icon={button.icon}
+                title={button.title}
+                className={button.className}
+              />
+            ))}
           </div>
         </nav>
   );

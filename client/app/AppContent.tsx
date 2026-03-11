@@ -7,6 +7,7 @@ import { GitPane } from '../components/Chassis/Git/GitPane';
 import { Footer } from '../components/Chassis/Footer/Footer';
 import { ProjectSelector } from '../components/Project/ProjectSelector';
 import { APP_BUILD_ID, APP_VERSION } from '../constants';
+import { resolveActionRailExtensionButtons } from '../services/actionRailExtensions';
 
 export const buildPwaAction = (pwaState: any, pwaActions: any) => {
   if (pwaState.canInstall) {
@@ -54,6 +55,8 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
     setCloudSyncTick,
     markdownImportRef
   } = props;
+
+  const extensionButtons = resolveActionRailExtensionButtons(actions.addToast);
 
   if (!state.activeProjectId || state.showProjectSelector) {
     return (
@@ -111,6 +114,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
             window.dispatchEvent(new CustomEvent('lattice:gh:refresh-repos'));
             actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
           }}
+          extensionButtons={extensionButtons}
         />
 
         {state.appMode === 'work' ? (
