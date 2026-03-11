@@ -1,0 +1,197 @@
+export type Locale = 'en' | 'es' | 'fr' | 'pt' | 'ur';
+
+const LOCALE_STORAGE_KEY = 'lattice-locale';
+
+const MESSAGES: Record<Locale, Record<string, string>> = {
+  en: {
+    _install_pwa: 'Install PWA',
+    _install_lattice_architect: 'Install Lattice Architect',
+    _update_pwa: 'Update PWA',
+    _update_available: 'Update available',
+    _project: 'PROJECT',
+    _github_cloud_sync_requested: 'GITHUB CLOUD SYNC REQUESTED',
+    _primary_actions: 'Primary Actions',
+    _toggle_explorer: 'Toggle Explorer',
+    _new_file: 'New File',
+    _new_folder: 'New Folder',
+    _git_operations: 'Git Operations',
+    _switch_project: 'Switch Project',
+    _download_workspace: 'Download Workspace',
+    _export_html: 'Export HTML',
+    _import_markdown: 'Import Markdown',
+    _print_preview: 'Print Preview',
+    _cloud_sync: 'Cloud Sync',
+    _create_new_file: 'Create New File',
+    _create_new_folder: 'Create New Folder',
+    _save_current_file: 'Save Current File',
+    _rename_selected_item: 'Rename Selected Item',
+    _delete_selected_item: 'Delete Selected Item',
+    _download_current_item: 'Download Current Item',
+    _toggle_git_operations: 'Toggle Git Operations',
+    _system_settings: 'System Settings',
+    _zoom_in: 'Zoom In',
+    _zoom_out: 'Zoom Out',
+    _editor_view: 'Editor View',
+    _split_view: 'Split View',
+    _preview_view: 'Preview View',
+    _next_tab: 'Next Tab',
+    _previous_tab: 'Previous Tab'
+  },
+  es: {
+    _install_pwa: 'Instalar PWA',
+    _install_lattice_architect: 'Instalar Lattice Architect',
+    _update_pwa: 'Actualizar PWA',
+    _update_available: 'Actualización disponible',
+    _project: 'PROYECTO',
+    _github_cloud_sync_requested: 'SINCRONIZACIÓN EN LA NUBE DE GITHUB SOLICITADA',
+    _primary_actions: 'Acciones principales',
+    _toggle_explorer: 'Alternar explorador',
+    _new_file: 'Nuevo archivo',
+    _new_folder: 'Nueva carpeta',
+    _git_operations: 'Operaciones Git',
+    _switch_project: 'Cambiar proyecto',
+    _download_workspace: 'Descargar espacio de trabajo',
+    _export_html: 'Exportar HTML',
+    _import_markdown: 'Importar Markdown',
+    _print_preview: 'Vista previa de impresión',
+    _cloud_sync: 'Sincronización en la nube',
+    _create_new_file: 'Crear nuevo archivo',
+    _create_new_folder: 'Crear nueva carpeta',
+    _save_current_file: 'Guardar archivo actual',
+    _rename_selected_item: 'Renombrar elemento seleccionado',
+    _delete_selected_item: 'Eliminar elemento seleccionado',
+    _download_current_item: 'Descargar elemento actual',
+    _toggle_git_operations: 'Alternar operaciones Git',
+    _system_settings: 'Ajustes del sistema',
+    _zoom_in: 'Acercar',
+    _zoom_out: 'Alejar',
+    _editor_view: 'Vista del editor',
+    _split_view: 'Vista dividida',
+    _preview_view: 'Vista previa',
+    _next_tab: 'Pestaña siguiente',
+    _previous_tab: 'Pestaña anterior'
+  },
+  fr: {
+    _install_pwa: 'Installer la PWA',
+    _install_lattice_architect: 'Installer Lattice Architect',
+    _update_pwa: 'Mettre à jour la PWA',
+    _update_available: 'Mise à jour disponible',
+    _project: 'PROJET',
+    _github_cloud_sync_requested: 'SYNCHRONISATION CLOUD GITHUB DEMANDÉE',
+    _primary_actions: 'Actions principales',
+    _toggle_explorer: 'Basculer l’explorateur',
+    _new_file: 'Nouveau fichier',
+    _new_folder: 'Nouveau dossier',
+    _git_operations: 'Opérations Git',
+    _switch_project: 'Changer de projet',
+    _download_workspace: 'Télécharger l’espace de travail',
+    _export_html: 'Exporter HTML',
+    _import_markdown: 'Importer Markdown',
+    _print_preview: 'Aperçu avant impression',
+    _cloud_sync: 'Synchronisation cloud',
+    _create_new_file: 'Créer un nouveau fichier',
+    _create_new_folder: 'Créer un nouveau dossier',
+    _save_current_file: 'Enregistrer le fichier actuel',
+    _rename_selected_item: 'Renommer l’élément sélectionné',
+    _delete_selected_item: 'Supprimer l’élément sélectionné',
+    _download_current_item: 'Télécharger l’élément actuel',
+    _toggle_git_operations: 'Basculer les opérations Git',
+    _system_settings: 'Paramètres système',
+    _zoom_in: 'Zoom avant',
+    _zoom_out: 'Zoom arrière',
+    _editor_view: 'Vue éditeur',
+    _split_view: 'Vue partagée',
+    _preview_view: 'Aperçu',
+    _next_tab: 'Onglet suivant',
+    _previous_tab: 'Onglet précédent'
+  },
+  pt: {
+    _install_pwa: 'Instalar PWA',
+    _install_lattice_architect: 'Instalar Lattice Architect',
+    _update_pwa: 'Atualizar PWA',
+    _update_available: 'Atualização disponível',
+    _project: 'PROJETO',
+    _github_cloud_sync_requested: 'SINCRONIZAÇÃO NA NUVEM DO GITHUB SOLICITADA',
+    _primary_actions: 'Ações principais',
+    _toggle_explorer: 'Alternar explorador',
+    _new_file: 'Novo arquivo',
+    _new_folder: 'Nova pasta',
+    _git_operations: 'Operações Git',
+    _switch_project: 'Trocar projeto',
+    _download_workspace: 'Baixar espaço de trabalho',
+    _export_html: 'Exportar HTML',
+    _import_markdown: 'Importar Markdown',
+    _print_preview: 'Visualizar impressão',
+    _cloud_sync: 'Sincronização em nuvem',
+    _create_new_file: 'Criar novo arquivo',
+    _create_new_folder: 'Criar nova pasta',
+    _save_current_file: 'Salvar arquivo atual',
+    _rename_selected_item: 'Renomear item selecionado',
+    _delete_selected_item: 'Excluir item selecionado',
+    _download_current_item: 'Baixar item atual',
+    _toggle_git_operations: 'Alternar operações Git',
+    _system_settings: 'Configurações do sistema',
+    _zoom_in: 'Aumentar zoom',
+    _zoom_out: 'Diminuir zoom',
+    _editor_view: 'Visualização do editor',
+    _split_view: 'Visualização dividida',
+    _preview_view: 'Visualização prévia',
+    _next_tab: 'Próxima aba',
+    _previous_tab: 'Aba anterior'
+  },
+  ur: {
+    _install_pwa: 'پی ڈبلیو اے انسٹال کریں',
+    _install_lattice_architect: 'لیٹس آرکیٹیکٹ انسٹال کریں',
+    _update_pwa: 'پی ڈبلیو اے اپ ڈیٹ کریں',
+    _update_available: 'اپ ڈیٹ دستیاب ہے',
+    _project: 'پروجیکٹ',
+    _github_cloud_sync_requested: 'گٹ ہب کلاؤڈ ہم وقت سازی کی درخواست بھیج دی گئی',
+    _primary_actions: 'بنیادی اعمال',
+    _toggle_explorer: 'ایکسپلورر ٹوگل کریں',
+    _new_file: 'نئی فائل',
+    _new_folder: 'نیا فولڈر',
+    _git_operations: 'گٹ آپریشنز',
+    _switch_project: 'پروجیکٹ تبدیل کریں',
+    _download_workspace: 'ورک اسپیس ڈاؤن لوڈ کریں',
+    _export_html: 'ایچ ٹی ایم ایل برآمد کریں',
+    _import_markdown: 'مارک ڈاؤن درآمد کریں',
+    _print_preview: 'پرنٹ پیش منظر',
+    _cloud_sync: 'کلاؤڈ ہم وقت سازی',
+    _create_new_file: 'نئی فائل بنائیں',
+    _create_new_folder: 'نیا فولڈر بنائیں',
+    _save_current_file: 'موجودہ فائل محفوظ کریں',
+    _rename_selected_item: 'منتخب آئٹم کا نام بدلیں',
+    _delete_selected_item: 'منتخب آئٹم حذف کریں',
+    _download_current_item: 'موجودہ آئٹم ڈاؤن لوڈ کریں',
+    _toggle_git_operations: 'گٹ آپریشنز ٹوگل کریں',
+    _system_settings: 'سسٹم ترتیبات',
+    _zoom_in: 'زوم اِن',
+    _zoom_out: 'زوم آؤٹ',
+    _editor_view: 'ایڈیٹر منظر',
+    _split_view: 'تقسیم شدہ منظر',
+    _preview_view: 'پیش منظر',
+    _next_tab: 'اگلا ٹیب',
+    _previous_tab: 'پچھلا ٹیب'
+  }
+};
+
+const normalizeLocale = (value: string | null | undefined): Locale => {
+  const base = (value || '').toLowerCase().split('-')[0];
+  if (base === 'es' || base === 'fr' || base === 'pt' || base === 'ur') return base;
+  return 'en';
+};
+
+export const getLocale = (): Locale => {
+  if (typeof window === 'undefined') return 'en';
+  return normalizeLocale(window.localStorage.getItem(LOCALE_STORAGE_KEY) || window.navigator.language);
+};
+
+export const setLocale = (locale: Locale): void => {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+};
+
+export const t = (key: keyof typeof MESSAGES.en): string => {
+  const locale = getLocale();
+  return MESSAGES[locale][key] || MESSAGES.en[key] || key;
+};

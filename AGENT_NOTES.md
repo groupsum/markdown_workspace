@@ -229,3 +229,7 @@
 - 2026-03-09 12:48:30: Plan: Fix startup restore so last active project, last active file, and open tabs reliably reload after app refresh/startup.
 - 2026-03-09 12:48:30: Updated `client/hooks/useApp.ts` to persist dedicated restore keys (`lastProjectId`, `lattice-last-open-tab-file-ids`, `lattice-last-active-file-id`), guard writes until the target project files are loaded, and prioritize those persisted tab/file keys during `loadProject` restore.
 - 2026-03-09 12:48:30: Validation: `npm run build` passes in `client`; browser automation confirms active project + active file + open tabs remain identical before/after reload.
+- 2026-03-11 00:00:00: Plan: Implement baseline i18n support by introducing underscore-prefixed translation keys and wiring common UI labels/tooltips through a shared translator with en/es/fr/pt/ur locales.
+- 2026-03-11 00:00:00: Added `client/i18n.ts` with locale detection + message dictionaries (English, Spanish, French, Portuguese, Urdu) and `_...` key naming, then integrated translated labels into AppContent, ActionRail, and command palette action definitions.
+- 2026-03-11 00:00:00: Bumped `client` package version to 1.3.147 and updated lockfile metadata per repository versioning policy.
+- 2026-03-11 00:00:00: Validation: `npm run build` passes in `client` (existing Vite chunk-size warning only).
