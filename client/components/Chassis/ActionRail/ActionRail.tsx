@@ -1,6 +1,7 @@
 import React from 'react';
 import { Folder, FilePlus, GitBranch, LayoutGrid, Download, Cloud, FileDown, FolderPlus, Printer, Upload } from 'lucide-react';
 import { AppMode } from '../../../types';
+import { t } from '../../../i18n';
 
 interface ActionRailProps {
   sidebarOpen: boolean;
@@ -52,29 +53,29 @@ export const ActionRail: React.FC<ActionRailProps> = ({
   className = ""
 }) => {
   return (
-        <nav className={`action-rail ${className}`} aria-label="Primary Actions">
+        <nav className={`action-rail ${className}`} aria-label={t('_primary_actions')}>
           <div className="rail-group rail-group--top">
             <ToolbarButton 
               active={sidebarOpen && appMode === 'work'}
               onClick={onToggleSidebar}
               icon={<Folder />}
-              title="Toggle Explorer"
+              title={t('_toggle_explorer')}
             />
             <ToolbarButton 
               onClick={onNewFile}
               icon={<FilePlus />}
-              title="New File"
+              title={t('_new_file')}
             />
             <ToolbarButton 
               onClick={onNewFolder}
               icon={<FolderPlus />}
-              title="New Folder"
+              title={t('_new_folder')}
             />
             <ToolbarButton 
               active={appMode === 'git'}
               onClick={onToggleGit}
               icon={<GitBranch />}
-              title="Git Operations"
+              title={t('_git_operations')}
             />
           </div>
           
@@ -84,32 +85,32 @@ export const ActionRail: React.FC<ActionRailProps> = ({
             <ToolbarButton 
               onClick={onSwitchProject}
               icon={<LayoutGrid />}
-              title="Switch Project"
+              title={t('_switch_project')}
             />
             <ToolbarButton 
               onClick={onDownload}
               icon={<Download />}
-              title="Download Workspace"
+              title={t('_download_workspace')}
             />
             <ToolbarButton 
               onClick={onExportHtml}
               icon={<FileDown />}
-              title="Export HTML"
+              title={t('_export_html')}
             />
             <ToolbarButton 
               onClick={onImportMarkdown}
               icon={<Upload />}
-              title="Import Markdown"
+              title={t('_import_markdown')}
             />
             <ToolbarButton 
               onClick={onPrint}
               icon={<Printer />}
-              title="Print Preview"
+              title={t('_print_preview')}
             />
             <ToolbarButton 
               onClick={onCloudSync}
               icon={<Cloud />}
-              title="Cloud Sync"
+              title={t('_cloud_sync')}
               className="rail-btn--status"
             />
           </div>

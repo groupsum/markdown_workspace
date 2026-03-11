@@ -7,12 +7,13 @@ import { GitPane } from '../components/Chassis/Git/GitPane';
 import { Footer } from '../components/Chassis/Footer/Footer';
 import { ProjectSelector } from '../components/Project/ProjectSelector';
 import { APP_BUILD_ID, APP_VERSION } from '../constants';
+import { t } from '../i18n';
 
 export const buildPwaAction = (pwaState: any, pwaActions: any) => {
   if (pwaState.canInstall) {
     return {
-      label: 'Install PWA',
-      title: 'Install Lattice Architect',
+      label: t('_install_pwa'),
+      title: t('_install_lattice_architect'),
       icon: <Download size={16} />,
       onClick: pwaActions.promptInstall,
       disabled: false
@@ -21,8 +22,8 @@ export const buildPwaAction = (pwaState: any, pwaActions: any) => {
 
   if (pwaState.updateAvailable) {
     return {
-      label: 'Update PWA',
-      title: 'Update available',
+      label: t('_update_pwa'),
+      title: t('_update_available'),
       icon: <RefreshCw size={16} />,
       onClick: pwaActions.requestUpdate,
       disabled: false
@@ -74,7 +75,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
       <Header
         className="app-header"
         currentThemeDef={state.currentThemeDef}
-        projectTitle={state.currentProject?.name || 'PROJECT'}
+        projectTitle={state.currentProject?.name || t('_project')}
         tabs={state.tabs}
         files={state.files}
         activeTabId={state.activeTabId}
@@ -109,7 +110,7 @@ export const AppContent: React.FC<AppContentProps> = (props) => {
           onCloudSync={() => {
             setCloudSyncTick((prev) => prev + 1);
             window.dispatchEvent(new CustomEvent('lattice:gh:refresh-repos'));
-            actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
+            actions.addToast(t('_github_cloud_sync_requested'), 'info');
           }}
         />
 
