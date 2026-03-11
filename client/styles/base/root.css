@@ -4,13 +4,14 @@
 :root {
   /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
   --ui-scale: 1;
-  --header-height: calc(32px * var(--ui-scale));
-  --rail-width: calc(44px * var(--ui-scale));
-  --rail-height: calc(44px * var(--ui-scale));
-  --sidebar-width: calc(200px * var(--ui-scale));
-  --status-height: calc(20px * var(--ui-scale));
+  /* Chassis dimensions remain fixed so the shell always fits the viewport at every zoom level. */
+  --header-height: 32px;
+  --rail-width: 44px;
+  --rail-height: 44px;
+  --sidebar-width: 200px;
+  --status-height: 20px;
   --tab-height: var(--header-height);
-  --panel-header-height: calc(30px * var(--ui-scale));
+  --panel-header-height: 30px;
   --rail-btn-size: calc(30px * var(--ui-scale));
   
   /* Fallback Values: Ensures layout survives theme loading failure */
@@ -37,7 +38,7 @@
   --status-error: #cc0000;
 
   /* Structure Settings */
-  --app-gap: calc(4px * var(--ui-scale)); 
+  --app-gap: 4px;
   --texture-opacity: 0.05;
   --editor-padding: calc(24px * var(--ui-scale));
   --editor-line-height: calc(1.5rem * var(--ui-scale));

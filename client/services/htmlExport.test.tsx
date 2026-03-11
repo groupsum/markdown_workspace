@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createHtmlExport, splitMarkdownIntoPages } from './htmlExport';
+import { createHtmlExport, getPreferredExportTitle, splitMarkdownIntoPages, toHtmlFileName } from './htmlExport';
 
 const coreCss = '/* core */';
 const themeCss = '/* theme */';
@@ -63,5 +63,20 @@ describe('createHtmlExport', () => {
 
     expect((html.match(/class="export-page"/g) || []).length).toBe(1);
     expect(html).toContain('<div class="markdown-body"></div>');
+  });
+});
+
+
+describe('export title naming', () => {
+  it('uses first markdown h1 for preferred export title', () => {
+    expect(getPreferredExportTitle('# Research Methods\n\nBody', 'fallback.md')).toBe('Research Methods');
+  });
+
+  it('falls back to filename when markdown has no h1', () => {
+    expect(getPreferredExportTitle('no headings', 'origin-file.md')).toBe('origin-file');
+  });
+
+  it('uses preferred title for html filename', () => {
+    expect(toHtmlFileName('origin-file.md', '# Results and Discussion')).toBe('Results and Discussion.html');
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon, Factory, PanelTop } from 'lucide-react';
+import { Tablet, Cpu, Layout, Layers, Sprout, Disc3, Hexagon, Factory, PanelTop, FlaskConical } from 'lucide-react';
 import { vs, coy, tomorrow, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface ThemeDef {
@@ -153,6 +153,21 @@ export const THEMES: ThemeDef[] = [
       style: coy
     }
   },
+
+  {
+    id: 'research-science',
+    name: 'Research Science',
+    description: 'Publication-first academic reading environment tuned for arXiv research publishers.',
+    icon: <FlaskConical size={20} />,
+    themeColor: '#1f3b73',
+    backgroundColor: '#f7f9fc',
+    syntaxTheme: {
+      name: 'Coy',
+      palette: 'Paper-white surfaces, deep ink typography, and citation-blue accents.',
+      style: coy
+    }
+  },
+
   {
     id: 'default',
     name: 'Factory Default',

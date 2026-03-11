@@ -9,6 +9,7 @@ import { useProjectManager } from './useProjectManager';
 import { useFileManager } from './useFileManager';
 import { useTabManager } from './useTabManager';
 import { FileNode } from '../types';
+import { getPreferredExportTitle } from '../services/htmlExport';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
 const LAST_PROJECT_ID_KEY = 'lastProjectId';
@@ -468,12 +469,23 @@ export const useApp = () => {
   const handlePrint = () => {
       console.log(`[useApp] Action: handlePrint initiated`);
       if (!activeFile) return;
+      const previousTitle = document.title;
+      const printTitle = getPreferredExportTitle(activeFile.content || '', activeFile.name);
+      document.title = printTitle;
       ui.setAppMode('work');
       ui.setViewMode('preview');
       ui.setSidebarOpen(false);
+
+      const cleanupAfterPrint = () => {
+        document.title = previousTitle;
+        window.removeEventListener('afterprint', cleanupAfterPrint);
+      };
+
+      window.addEventListener('afterprint', cleanupAfterPrint, { once: true });
       requestAnimationFrame(() => {
         requestAnimationFrame(() => window.print());
       });
+      window.setTimeout(() => cleanupAfterPrint(), 1500);
   };
 
   const switchToProjectSelector = () => {
