@@ -19,6 +19,34 @@ export interface ThemeDef {
 export const THEMES: ThemeDef[] = [
 
   {
+    id: 'tensioned-technical-skeleton',
+    name: 'Tensioned Technical Skeleton',
+    description: 'Monochrome technical frame with tensioned structure and restrained signal color.',
+    icon: <Layout size={20} />,
+    themeColor: '#000000',
+    backgroundColor: '#ffffff',
+    syntaxTheme: {
+      name: 'VS',
+      palette: 'White drafting field, black frame lines, orange and blue utility signals.',
+      style: vs
+    }
+  },
+
+  {
+    id: 'optical-vellum-drafting-grid',
+    name: 'Optical Vellum Drafting Grid',
+    description: 'Vellum drafting substrate with optical grid lines and bright pickle-green accents.',
+    icon: <Tablet size={20} />,
+    themeColor: '#00ff41',
+    backgroundColor: '#fdfdf5',
+    syntaxTheme: {
+      name: 'Coy',
+      palette: 'Vellum cream, technical ink, translucent green guidance grid.',
+      style: coy
+    }
+  },
+
+  {
     id: 'heavy-gauge-tectonic',
     name: 'Heavy Gauge Tectonic',
     description: 'High-contrast tectonic slab partitioning with bold orange signal accents.',
