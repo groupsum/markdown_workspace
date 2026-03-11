@@ -252,6 +252,12 @@
 - 2026-03-11 06:35:00: Added `client/styles/zoomBehavior.test.ts` to assert fixed chassis tokens and retained zoom scaling for text/icons/buttons.
 - 2026-03-11 06:35:00: Validation: `npm run test:run -- zoomBehavior alignmentTokens` and `npm run build` pass in `client`; captured zoom-control screenshots at default, 130%, and 70% UI zoom.
 - 2026-03-11 06:35:00: Bumped package versions (`client` 1.3.148, `lander` 0.0.48) and regenerated lockfiles per repository versioning policy.
+- 2026-03-11 07:20:00: Plan: Reduce inline markdown code (single backtick spans) typography to be near paragraph sizing across all themes so inline ticks no longer read oversized/tall.
+- 2026-03-11 07:20:00: Updated `client/styles/base/markdown.css` inline-code selector to target only non-`pre` code spans and tuned inline-code padding/font-size/line-height for compact, paragraph-adjacent rhythm while preserving theme color tokens.
+- 2026-03-11 07:20:00: Validation plan: run `npm run build` in `client`, then capture per-theme preview screenshots showing inline code sizing in editing/preview workflows.
+- 2026-03-11 07:20:00: Validation: `npm run build` passes in `client` after inline-code typography adjustments (existing Vite chunk-size warning only).
+- 2026-03-11 07:20:00: Captured per-theme screenshot set (12 themes) in active editor/preview workflow to validate single-backtick inline-code sizing consistency across all shipped themes.
+- 2026-03-11 07:20:00: Bumped package versions (`client` 1.3.149, `lander` 0.0.50) and updated lockfiles per repository versioning policy.
 - 2026-03-11 06:47:05: Plan: Expand export regression coverage with targeted test cases for HTML-export markup and print/PDF-oriented style/title behavior, then run the focused client test suite.
 - 2026-03-11 06:47:05: Added HTML/PDF export regression tests in `client/services/htmlExport.test.tsx` covering print-specific CSS blocks, page-break semantics, export-title escaping/sanitization, and filename sanitization.
 - 2026-03-11 06:47:05: Validation: `npm run test:run -- services/htmlExport.test.tsx` passes in `client` (12/12 tests).
