@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const BASE_UI_SCALE_MULTIPLIER = 1.1;
+const BASE_UI_SCALE_MULTIPLIER = 1.2;
 
 interface ChassisProps {
   children: React.ReactNode;

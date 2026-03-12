@@ -275,3 +275,6 @@
 - 2026-03-12 00:20:00: Follow-up plan: tighten zoom ceiling from 200% to 175% per review feedback while preserving 70% minimum and 1.1 baseline scaling.
 - 2026-03-12 00:20:00: Updated `client/hooks/useUIState.ts` `MAX_ZOOM` constant to `1.75` so zoom controls clamp at 175%.
 - 2026-03-12 00:20:00: Extended `client/styles/zoomBehavior.test.ts` with a regression check asserting the 175% cap constant.
+- 2026-03-12 00:00:00: Plan: tighten zoom bounds (70%-150%), update baseline/default UI scaling, and enforce cross-theme heading margin/zoom contracts with automated tests and screenshots.
+- 2026-03-12 00:00:00: Updated zoom constants and chassis scale multiplier, set root default `--ui-scale` to 1.3, tuned `.zoom-control` default typography, and changed base markdown `h1` top margin to `0.25em`.
+- 2026-03-12 00:00:00: Expanded `zoomBehavior.test.ts` to validate min/max zoom tokens, default ui-scale mapping behavior, theme stylesheet coverage, and heading margin-top guardrails for all themes.

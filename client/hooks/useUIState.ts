@@ -20,7 +20,7 @@ type StoredUiState = {
 
 const DEFAULT_SIDEBAR_WIDTH = 280;
 const MIN_ZOOM = 0.7;
-const MAX_ZOOM = 1.75;
+const MAX_ZOOM = 1.5;
 
 const getStoredUiState = (): Partial<StoredUiState> => {
   const raw = window.localStorage.getItem(UI_STATE_KEY);
