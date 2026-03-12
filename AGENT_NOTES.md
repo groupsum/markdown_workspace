@@ -267,3 +267,11 @@
 - 2026-03-11 08:10:00: Plan: Increment all package versions in this workspace (client + lander) using patch bumps and refresh lockfiles.
 - 2026-03-11 08:10:00: Ran `npm version patch --no-git-tag-version` in `client` and `lander`; versions are now `client@1.3.150` and `lander@0.0.51` with synchronized `package-lock.json` updates.
 - 2026-03-11 08:10:00: Validation: Verified bumped versions in both package manifests and lockfiles via `git diff`.
+- 2026-03-12 00:00:00: Plan: Increase effective UI size at 100% zoom by 1.1x, expand zoom range to 70%-200%, and retune inline single-backtick markdown code sizing/line-height so it stays near paragraph text (+~1px).
+- 2026-03-12 00:00:00: Updated `client/components/Chassis/Chassis.tsx` to apply a baseline `1.1` multiplier when mapping zoom control values into the `--ui-scale` CSS variable.
+- 2026-03-12 00:00:00: Updated `client/hooks/useUIState.ts` zoom clamping to `MIN_ZOOM=0.7` and `MAX_ZOOM=2`, including initial-state and persisted-state normalization.
+- 2026-03-12 00:00:00: Updated `client/styles/base/markdown.css` inline code (`:not(pre) > code`) typography to `font-size: calc(1em + 1px)` and `line-height: 1.35` for paragraph-adjacent rhythm across themes.
+- 2026-03-12 00:00:00: Added/updated style contract tests in `client/styles/zoomBehavior.test.ts` and `client/styles/alignmentTokens.test.ts` for baseline zoom multiplier and inline-code sizing tokens.
+- 2026-03-12 00:20:00: Follow-up plan: tighten zoom ceiling from 200% to 175% per review feedback while preserving 70% minimum and 1.1 baseline scaling.
+- 2026-03-12 00:20:00: Updated `client/hooks/useUIState.ts` `MAX_ZOOM` constant to `1.75` so zoom controls clamp at 175%.
+- 2026-03-12 00:20:00: Extended `client/styles/zoomBehavior.test.ts` with a regression check asserting the 175% cap constant.

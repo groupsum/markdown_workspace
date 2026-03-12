@@ -23,4 +23,11 @@ describe('markdown/editor alignment token contract', () => {
     expect(markdownCss).toContain('line-height: var(--markdown-heading-line-height);');
     expect(editorCss).toContain('width: var(--line-number-gutter-width);');
   });
+
+  it('keeps inline single-backtick code close to paragraph sizing', () => {
+    const markdownCss = read('./base/markdown.css');
+
+    expect(markdownCss).toContain('font-size: calc(1em + 1px);');
+    expect(markdownCss).toContain('line-height: 1.35;');
+  });
 });

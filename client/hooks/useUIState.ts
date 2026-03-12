@@ -19,6 +19,8 @@ type StoredUiState = {
 };
 
 const DEFAULT_SIDEBAR_WIDTH = 280;
+const MIN_ZOOM = 0.7;
+const MAX_ZOOM = 1.75;
 
 const getStoredUiState = (): Partial<StoredUiState> => {
   const raw = window.localStorage.getItem(UI_STATE_KEY);
@@ -37,7 +39,10 @@ export const useUIState = () => {
   const [showPalette, setShowPalette] = useState(false);
   
   const [theme, setThemeState] = useState<AppTheme>(() => themeService.getStoredTheme());
-  const [zoom, setZoom] = useState(storedUi.zoom ?? 1);
+  const [zoom, setZoom] = useState(() => {
+    const initialZoom = storedUi.zoom ?? 1;
+    return Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, initialZoom));
+  });
   const [appMode, setAppMode] = useState<AppMode>(storedUi.appMode ?? 'work');
   const [sidebarOpen, setSidebarOpen] = useState(storedUi.sidebarOpen ?? true);
   const [sidebarWidth, setSidebarWidth] = useState(storedUi.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
@@ -54,7 +59,7 @@ export const useUIState = () => {
   };
 
   const adjustZoom = (delta: number) => {
-    const newZoom = Math.max(0.7, Math.min(1.5, zoom + delta));
+    const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom + delta));
     setZoom(newZoom);
   };
 
@@ -86,7 +91,9 @@ export const useUIState = () => {
           return;
         }
 
-        if (typeof storedState.zoom === 'number') setZoom(storedState.zoom);
+        if (typeof storedState.zoom === 'number') {
+          setZoom(Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, storedState.zoom)));
+        }
         if (storedState.appMode === 'work' || storedState.appMode === 'git') setAppMode(storedState.appMode);
         if (typeof storedState.sidebarOpen === 'boolean') setSidebarOpen(storedState.sidebarOpen);
         if (typeof storedState.sidebarWidth === 'number') setSidebarWidth(storedState.sidebarWidth);
