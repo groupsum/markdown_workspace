@@ -85,14 +85,14 @@
   font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
-  height: 24px;
+  height: var(--zoom-control-height);
 }
 
 .zoom-btn {
   border: none;
   background: transparent;
-  width: 16px;
-  height: 16px;
+  width: var(--zoom-btn-size);
+  height: var(--zoom-btn-size);
   display: flex;
   align-items: center;
   justify-content: center;

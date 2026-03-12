@@ -4,6 +4,14 @@
 */
 
 :root[data-theme="ferrous-monolith"] {
+  /* Keep chassis geometry viewport-fit across zoom levels for every theme. */
+  --header-height: 32px;
+  --rail-width: 44px;
+  --rail-height: 44px;
+  --sidebar-width: 200px;
+  --status-height: 20px;
+  --panel-header-height: 30px;
+
   --bg-app: #0a0a0a;
   --bg-panel: #141414;
   --bg-inset: #1a1a1a;

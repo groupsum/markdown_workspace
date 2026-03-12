@@ -54,8 +54,8 @@
 }
 
 .header-btn {
-  width: 24px;
-  height: 24px;
+  width: var(--header-btn-size);
+  height: var(--header-btn-size);
   display: flex;
   align-items: center;
   justify-content: center;

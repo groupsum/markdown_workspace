@@ -4,6 +4,14 @@
 */
 
 :root[data-theme="pressed-chromium"] {
+  /* Keep chassis geometry viewport-fit across zoom levels for every theme. */
+  --header-height: 32px;
+  --rail-width: 44px;
+  --rail-height: 44px;
+  --sidebar-width: 200px;
+  --status-height: 20px;
+  --panel-header-height: 30px;
+
   --bg-app: #d8dbe0;
   --bg-panel: #f0f2f5;
   --bg-inset: #e8eaed;
