@@ -3,7 +3,7 @@
 
 :root {
   /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
-  --ui-scale: 1;
+  --ui-scale: 1.3;
   /* Chassis dimensions remain fixed so the shell always fits the viewport at every zoom level. */
   --header-height: 32px;
   --rail-width: 44px;
