@@ -18,6 +18,20 @@ describe('zoom scaling boundaries', () => {
     expect(rootCss).toContain('--app-gap: 4px;');
   });
 
+
+  it('caps zoom controls at 175%', () => {
+    const uiStateTs = read('../hooks/useUIState.ts');
+
+    expect(uiStateTs).toContain('const MAX_ZOOM = 1.75;');
+  });
+
+  it('applies a 1.1 baseline scale at 100% zoom', () => {
+    const chassisTsx = read('../components/Chassis/Chassis.tsx');
+
+    expect(chassisTsx).toContain('const BASE_UI_SCALE_MULTIPLIER = 1.1;');
+    expect(chassisTsx).toContain("document.documentElement.style.setProperty('--ui-scale', String(zoom * BASE_UI_SCALE_MULTIPLIER));");
+  });
+
   it('continues scaling typography, icons, and controls with --ui-scale', () => {
     const rootCss = read('./base/root.css');
     const tabsCss = read('./base/ui-tabs.css');

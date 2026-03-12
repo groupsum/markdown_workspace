@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+const BASE_UI_SCALE_MULTIPLIER = 1.1;
+
 interface ChassisProps {
   children: React.ReactNode;
   zoom: number;
@@ -20,7 +22,7 @@ export const Chassis: React.FC<ChassisProps> = ({
   const modeClass = `mode-${mode}`;
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--ui-scale', String(zoom));
+    document.documentElement.style.setProperty('--ui-scale', String(zoom * BASE_UI_SCALE_MULTIPLIER));
   }, [zoom]);
 
   return (

@@ -45,8 +45,8 @@
   background: var(--bg-inset);
   padding: 0.08em 0.34em;
   border-radius: 3px;
-  font-size: calc(1.06em * var(--ui-scale));
-  line-height: 1.25;
+  font-size: calc(1em + 1px);
+  line-height: 1.35;
   color: var(--fg-secondary);
 }
 .markdown-body pre {
