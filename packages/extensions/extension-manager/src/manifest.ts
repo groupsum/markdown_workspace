@@ -21,8 +21,8 @@ export const extensionManagerManifest: ExtensionManifest = {
   capabilities: ["view.register", "actionRail.register"],
   compatibility: {
     manifestVersion: 1,
-    hostApi: "1.0.0",
-    runtime: "1.0.0",
+    hostApi: "1.0.1",
+    runtime: "1.0.1",
     app: ">=1.3.49",
     themeContract: "1.0.0",
   },

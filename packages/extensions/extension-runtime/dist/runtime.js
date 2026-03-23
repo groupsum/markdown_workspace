@@ -160,6 +160,11 @@ export function createExtensionRuntime(options) {
     const transport = options.transport ?? (typeof fetch === "function" ? createFetchExtensionArtifactTransport() : undefined);
     let started = false;
     let installedRehydrated = false;
+    let snapshotCache = null;
+    const emitSnapshotChange = () => {
+        snapshotCache = null;
+        emitter.emit();
+    };
     const listCatalogEntries = () => Array.from(externalCatalogEntries.values())
         .map((registered) => {
         const policyIssues = evaluateCatalogEntryPolicy(registered.entry, options.trustPolicy);
@@ -206,11 +211,16 @@ export function createExtensionRuntime(options) {
             lastError: state?.lastError ?? null,
         };
     });
-    const getSnapshot = () => ({
-        started,
-        extensions: listStates(),
-        catalogEntries: listCatalogEntries(),
-    });
+    const getSnapshot = () => {
+        if (snapshotCache)
+            return snapshotCache;
+        snapshotCache = {
+            started,
+            extensions: listStates(),
+            catalogEntries: listCatalogEntries(),
+        };
+        return snapshotCache;
+    };
     const ensureState = (entry) => {
         const existing = states.get(entry.id);
         if (existing) {
@@ -241,7 +251,7 @@ export function createExtensionRuntime(options) {
             state.diagnostics.push(record);
         }
         await options.host.diagnostics.publish(extensionId, record);
-        emitter.emit();
+        emitSnapshotChange();
     };
     const clearDiagnostics = async (extensionId) => {
         const state = states.get(extensionId);
@@ -249,7 +259,7 @@ export function createExtensionRuntime(options) {
             state.diagnostics = [];
         }
         await options.host.diagnostics.clear(extensionId);
-        emitter.emit();
+        emitSnapshotChange();
     };
     const assertRegistrationCapability = (state, capability) => {
         const hostGranted = new Set(options.host.environment.grantedCapabilities ?? state.entry.manifest.capabilities);
@@ -362,7 +372,7 @@ export function createExtensionRuntime(options) {
         state.activationTask = (async () => {
             state.enabled = true;
             state.status = "activating";
-            emitter.emit();
+            emitSnapshotChange();
             await clearDiagnostics(state.entry.id);
             const hostGranted = new Set(options.host.environment.grantedCapabilities ?? state.entry.manifest.capabilities);
             const grantedCapabilities = state.entry.manifest.capabilities.filter((capability) => hostGranted.has(capability));
@@ -412,7 +422,7 @@ export function createExtensionRuntime(options) {
             }
             finally {
                 state.activationTask = null;
-                emitter.emit();
+                emitSnapshotChange();
             }
         })();
         return await state.activationTask;
@@ -420,14 +430,14 @@ export function createExtensionRuntime(options) {
     const deactivateState = async (state) => {
         if (state.status !== "active" && !state.activeContext) {
             state.status = state.enabled ? "registered" : "disabled";
-            emitter.emit();
+            emitSnapshotChange();
             return;
         }
         if (state.deactivationTask)
             return await state.deactivationTask;
         state.deactivationTask = (async () => {
             state.status = "deactivating";
-            emitter.emit();
+            emitSnapshotChange();
             try {
                 if (state.loadedModule?.deactivate && state.activeContext) {
                     await state.loadedModule.deactivate(state.activeContext);
@@ -450,7 +460,7 @@ export function createExtensionRuntime(options) {
             }
             finally {
                 state.deactivationTask = null;
-                emitter.emit();
+                emitSnapshotChange();
             }
         })();
         return await state.deactivationTask;
@@ -494,7 +504,7 @@ export function createExtensionRuntime(options) {
         const persistedEnabled = await options.storage.get(getExtensionEnabledStateKey(record.manifest.id));
         state.enabled = persistedEnabled ?? record.manifest.enabledByDefault;
         await applyStateFromEntry(state);
-        emitter.emit();
+        emitSnapshotChange();
     };
     const rehydrateInstalledExtensions = async () => {
         if (installedRehydrated) {
@@ -542,7 +552,7 @@ export function createExtensionRuntime(options) {
             const state = ensureState(registered);
             state.enabled = registered.manifest.enabledByDefault;
             void applyStateFromEntry(state);
-            emitter.emit();
+            emitSnapshotChange();
             if (started && state.enabled && registered.activation === "eager") {
                 void activateState(state);
             }
@@ -551,7 +561,7 @@ export function createExtensionRuntime(options) {
                     void deactivateState(state);
                     disposable.dispose();
                     states.delete(registered.id);
-                    emitter.emit();
+                    emitSnapshotChange();
                 },
             };
         },
@@ -574,13 +584,13 @@ export function createExtensionRuntime(options) {
                 });
                 addedEntryIds.push(entry.entryId);
             }
-            emitter.emit();
+            emitSnapshotChange();
             return {
                 dispose() {
                     for (const entryId of addedEntryIds) {
                         externalCatalogEntries.delete(entryId);
                     }
-                    emitter.emit();
+                    emitSnapshotChange();
                 },
             };
         },
@@ -604,7 +614,7 @@ export function createExtensionRuntime(options) {
                 state.enabled = persisted ?? entry.manifest.enabledByDefault;
                 await applyStateFromEntry(state);
             }
-            emitter.emit();
+            emitSnapshotChange();
             for (const entry of registry.list()) {
                 const state = ensureState(entry);
                 if (!state.enabled)
@@ -615,7 +625,7 @@ export function createExtensionRuntime(options) {
                     await activateState(state);
                 }
             }
-            emitter.emit();
+            emitSnapshotChange();
         },
         async stop() {
             const active = Array.from(states.values()).filter((state) => state.status === "active" || state.activeContext);
@@ -623,7 +633,7 @@ export function createExtensionRuntime(options) {
                 await deactivateState(state);
             }
             started = false;
-            emitter.emit();
+            emitSnapshotChange();
         },
         async activate(id) {
             const entry = registry.get(id);
@@ -665,7 +675,7 @@ export function createExtensionRuntime(options) {
                     await activateState(state);
                 }
             }
-            emitter.emit();
+            emitSnapshotChange();
         },
         isEnabled(id) {
             return states.get(id)?.enabled ?? registry.get(id)?.manifest.enabledByDefault ?? false;
@@ -742,7 +752,7 @@ export function createExtensionRuntime(options) {
             await options.storage.remove(getInstalledExtensionRecordKey(id));
             await options.storage.remove(getInstalledExtensionModuleKey(id));
             await writeInstalledIndex((await readInstalledIndex()).filter((value) => value !== id));
-            emitter.emit();
+            emitSnapshotChange();
         },
         getConfigurationStore(extensionId) {
             return createExtensionConfigurationStore(extensionId, options.storage);

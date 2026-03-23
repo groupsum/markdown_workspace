@@ -28,7 +28,7 @@ export function buildThemePreset(metadata, tokens) {
             name: metadata.themeName.trim() || "Custom Theme",
             description: metadata.description.trim() || undefined,
             author: metadata.author.trim() || undefined,
-            version: "1.0.0",
+            version: "1.0.1",
         },
         tokens,
     };

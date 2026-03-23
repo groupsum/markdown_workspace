@@ -510,7 +510,7 @@ describe('extension-manager', () => {
     expect(screen.getByText('actionRail.register')).toBeInTheDocument();
     expect(screen.getByText('settings.read')).toBeInTheDocument();
     expect(screen.getByText('One or more compatibility issues were detected.')).toBeInTheDocument();
-    expect(screen.getByText(/Expected app version/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Expected app to satisfy/).length).toBeGreaterThan(0);
 
     await runtime.stop();
   });
@@ -542,7 +542,7 @@ describe('extension-manager', () => {
 
     expect(await screen.findByText('Last error')).toBeInTheDocument();
     expect(screen.getByText('Activation exploded.')).toBeInTheDocument();
-    expect(screen.getByText(/EXT_RUNTIME_ACTIVATION/)).toBeInTheDocument();
+    expect(screen.getByText(/EXT_RUNTIME_ACTIVATE_FAILED/)).toBeInTheDocument();
 
     await runtime.stop();
   });
