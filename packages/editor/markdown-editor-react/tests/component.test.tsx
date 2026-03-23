@@ -2,7 +2,7 @@
 import "@testing-library/jest-dom/vitest";
 import "@markdown-workspace/testing/vitest-setup";
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { MarkdownSourceEditor } from "../src/index.js";
 
@@ -31,7 +31,7 @@ describe("MarkdownSourceEditor", () => {
     render(<Harness />);
     const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
     expect(editor).toHaveValue("controlled text");
-    screen.getByRole("button", { name: "swap" }).click();
+    fireEvent.click(screen.getByRole("button", { name: "swap" }));
     expect(editor).toHaveValue("external update");
   });
 });

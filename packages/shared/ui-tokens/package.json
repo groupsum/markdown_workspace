@@ -61,5 +61,6 @@
     "./styles/markdown.css": "./src/styles/markdown.css"
   },
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>"
 }

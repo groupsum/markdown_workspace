@@ -395,6 +395,14 @@ const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTo
 export const completeOidcSignInFromCallback = async (callbackSearch?: string, callbackHash?: string): Promise<OidcCallbackResult> => {
   if (!callbackSearch && !isOidcCallbackRoute()) return { status: 'idle' };
 
+  const search = callbackSearch ?? window.location.search;
+  const hash = callbackHash ?? window.location.hash;
+  const params = new URLSearchParams(search);
+
+  // Callback route can be loaded without OAuth params (bookmark/refresh).
+  const hasNoCallbackParams = !params.get('error') && !params.get('code') && !params.get('state') && !hash;
+  if (hasNoCallbackParams) return { status: 'idle' };
+
   const pendingRaw = localStorage.getItem(OIDC_PENDING_KEY);
   if (!pendingRaw) return { status: 'error', message: 'OIDC session could not be restored.' };
 
@@ -426,10 +434,6 @@ export const completeOidcSignInFromCallback = async (callbackSearch?: string, ca
   }
 
   // Prefer forwarded params when parent processes popup callback.
-  const search = callbackSearch ?? window.location.search;
-  const hash = callbackHash ?? window.location.hash;
-  const params = new URLSearchParams(search);
-
   const oauthError = params.get('error') || parseImplicitFragment(hash).error;
   if (oauthError) {
     localStorage.removeItem(OIDC_PENDING_KEY);
