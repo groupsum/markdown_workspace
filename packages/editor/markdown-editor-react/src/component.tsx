@@ -136,7 +136,9 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         end: textarea.selectionEnd,
         direction: textarea.selectionDirection ?? "none",
       }, textarea.value.length);
-      if (!selectionEquals(selectionRef.current, nextSelection)) {
+      const didSelectionChange = !selectionEquals(selectionRef.current, nextSelection);
+      selectionRef.current = nextSelection;
+      if (didSelectionChange) {
         setSelection(nextSelection);
         onSelectionChange?.(nextSelection);
       }
@@ -150,6 +152,8 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       options: { historic?: boolean; focus?: boolean } = {},
     ) => {
       const normalizedSelection = normalizeSelection(nextSelection, nextValue.length);
+      draftValueRef.current = nextValue;
+      selectionRef.current = normalizedSelection;
       setDraftValue(nextValue);
       setSelection(normalizedSelection);
       pendingSelectionRef.current = normalizedSelection;
@@ -304,9 +308,10 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
     }, [disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
 
     const lineCount = React.useMemo(() => {
-      const matches = draftValue.match(/\n/g);
+      const displayValue = isControlled ? (value ?? "") : draftValue;
+      const matches = displayValue.match(/\n/g);
       return (matches?.length ?? 0) + 1;
-    }, [draftValue]);
+    }, [draftValue, isControlled, value]);
 
     const mergedThemeStyle = React.useMemo(
       () => ({
@@ -338,7 +343,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
           <textarea
             ref={textareaRef}
             className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName)}
-            value={draftValue}
+            value={isControlled ? (value ?? "") : draftValue}
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             onClick={syncSelectionFromTextarea}

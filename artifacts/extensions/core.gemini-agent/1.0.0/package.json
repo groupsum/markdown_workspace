@@ -92,5 +92,6 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "browserInstallable": false,
-  "bundledBy": "tools/extensions/build-installable-extensions.mjs"
+  "bundledBy": "tools/extensions/build-installable-extensions.mjs",
+  "author": "Jacob Stewart <jacob@swarmauri.com>"
 }

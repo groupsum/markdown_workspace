@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -83,5 +83,6 @@
     "release:evidence": "node ./tools/release/generate-release-evidence.mjs",
     "release:prepare": "npm run pack:packages && npm run publish:extensions && npm run conformance && npm run release:evidence",
     "validate:extension-artifacts": "node ./tools/conformance/validate-extension-artifacts.mjs"
-  }
+  },
+  "author": "Jacob Stewart <jacob@swarmauri.com>"
 }
