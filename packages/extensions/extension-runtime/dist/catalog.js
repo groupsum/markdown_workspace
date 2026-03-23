@@ -77,6 +77,9 @@ export async function verifyTextIntegrity(value, integrity) {
     const digest = await digestText(value, integrity.algorithm);
     return digest.toLowerCase() === integrity.digest.toLowerCase();
 }
+function toArrayBuffer(bytes) {
+    return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+}
 export async function verifySignedManifest(signedManifest, signers) {
     const signer = signers.find((candidate) => candidate.keyId === signedManifest.signature.keyId && candidate.algorithm === signedManifest.signature.algorithm) ?? null;
     if (!signer) {
@@ -86,7 +89,7 @@ export async function verifySignedManifest(signedManifest, signers) {
         throw new Error("Web Crypto SubtleCrypto is required for extension manifest signature verification.");
     }
     const key = await globalThis.crypto.subtle.importKey("jwk", signer.publicKeyJwk, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
-    const verified = await globalThis.crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, key, base64UrlToBytes(signedManifest.signature.signature), textEncoder.encode(canonicalizeJson(signedManifest.manifest)));
+    const verified = await globalThis.crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, key, toArrayBuffer(base64UrlToBytes(signedManifest.signature.signature)), toArrayBuffer(textEncoder.encode(canonicalizeJson(signedManifest.manifest))));
     if (!verified) {
         throw new Error(`Signature verification failed for '${signedManifest.manifest.id}'.`);
     }

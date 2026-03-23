@@ -100,7 +100,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       pendingSelectionRef.current = nextSelection;
     }, [documentKey]);
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
       if (!isControlled || value === undefined) return;
       if (value === draftValueRef.current) return;
       const nextSelection = normalizeSelection(selectionRef.current, value.length);
@@ -265,6 +265,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
 
     const handleKeyDown = React.useCallback((event: KeyboardEvent<HTMLTextAreaElement>) => {
       if (disabled) return;
+      syncSelectionFromTextarea();
       const meta = event.metaKey || event.ctrlKey;
       const key = event.key.toLowerCase();
 
@@ -300,7 +301,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         event.preventDefault();
         executeCommand("redo");
       }
-    }, [disabled, executeCommand, indentUnit]);
+    }, [disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
 
     const lineCount = React.useMemo(() => {
       const matches = draftValue.match(/\n/g);
