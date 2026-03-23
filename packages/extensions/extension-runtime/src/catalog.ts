@@ -109,6 +109,10 @@ export interface VerifiedSignedManifest {
   readonly signatureVerified: boolean;
 }
 
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
+}
+
 export async function verifySignedManifest(
   signedManifest: SignedExtensionManifest,
   signers: readonly TrustedExtensionSigner[],
@@ -130,8 +134,8 @@ export async function verifySignedManifest(
   const verified = await globalThis.crypto.subtle.verify(
     { name: "ECDSA", hash: "SHA-256" },
     key,
-    base64UrlToBytes(signedManifest.signature.signature),
-    textEncoder.encode(canonicalizeJson(signedManifest.manifest)),
+    toArrayBuffer(base64UrlToBytes(signedManifest.signature.signature)),
+    toArrayBuffer(textEncoder.encode(canonicalizeJson(signedManifest.manifest))),
   );
   if (!verified) {
     throw new Error(`Signature verification failed for '${signedManifest.manifest.id}'.`);
