@@ -31,7 +31,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --install-strategy=nested
 
       - name: Generate workspace matrices
         run: npm run ci:package-matrices

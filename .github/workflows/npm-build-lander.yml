@@ -16,7 +16,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --install-strategy=nested
 
       - name: Build lander
         run: npm run build:lander
