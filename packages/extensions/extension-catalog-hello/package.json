@@ -1,6 +1,6 @@
 {
   "name": "@demo-markdown-workspace/extension-catalog-hello",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,8 +23,8 @@
   ],
   "description": "Sample third-party external extension used to validate catalog discovery, installation, trust, and runtime activation.",
   "dependencies": {
-    "@markdown-workspace/extension-host": "1.0.0",
-    "@markdown-workspace/extension-manifest": "1.0.0"
+    "@markdown-workspace/extension-host": "^1.0.1",
+    "@markdown-workspace/extension-manifest": "^1.0.0"
   },
   "scripts": {
     "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/extension-host",

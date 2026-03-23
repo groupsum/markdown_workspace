@@ -1,6 +1,6 @@
 {
   "name": "@markdown-workspace/extension-gemini-agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,9 +23,9 @@
   ],
   "description": "First-party Gemini workflow extension for Markdown Workspace with read-only document operations, draft-based writeback, and a bundled operator view.",
   "dependencies": {
-    "@markdown-workspace/extension-host": "1.0.0",
-    "@markdown-workspace/extension-manifest": "1.0.0",
-    "@markdown-workspace/extension-runtime": "1.0.0"
+    "@markdown-workspace/extension-host": "^1.0.1",
+    "@markdown-workspace/extension-manifest": "^1.0.0",
+    "@markdown-workspace/extension-runtime": "^1.0.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",

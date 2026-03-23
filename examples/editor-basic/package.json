@@ -1,7 +1,7 @@
 {
   "name": "@markdown-workspace/example-editor-basic",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,9 @@
     "lint": "npm run typecheck"
   },
   "dependencies": {
-    "@markdown-workspace/markdown-editor-react": "1.0.0",
-    "@markdown-workspace/markdown-renderer-react": "1.0.0",
-    "@markdown-workspace/ui-tokens": "1.0.0",
+    "@markdown-workspace/markdown-editor-react": "^1.0.2",
+    "@markdown-workspace/markdown-renderer-react": "^1.0.1",
+    "@markdown-workspace/ui-tokens": "^1.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
