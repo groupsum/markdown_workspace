@@ -4,7 +4,7 @@ export const extensionCatalogHelloManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: "external.catalog-hello",
   packageName: "@demo-markdown-workspace/extension-catalog-hello",
-  version: "1.0.0",
+  version: "1.0.1",
   displayName: {
     defaultMessage: "Catalog Hello",
     key: "manifest.displayName",
@@ -25,8 +25,8 @@ export const extensionCatalogHelloManifest: ExtensionManifest = {
   capabilities: ["view.register", "actionRail.register", "notification.publish", "settings.read"],
   compatibility: {
     manifestVersion: 1,
-    hostApi: "1.0.0",
-    runtime: "1.0.0",
+    hostApi: "1.0.1",
+    runtime: "1.0.1",
     app: ">=0.1.0",
     themeContract: "1.0.0"
   },
