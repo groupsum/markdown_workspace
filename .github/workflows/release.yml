@@ -42,7 +42,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --install-strategy=nested
 
       - name: Prepare release artifacts
         run: npm run release:prepare

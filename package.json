@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -58,7 +58,7 @@
     "typecheck:extensions": "npm run typecheck -w @markdown-workspace/extension-runtime && npm run typecheck -w @markdown-workspace/extension-manager && npm run typecheck -w @markdown-workspace/extension-gemini-agent && npm run typecheck -w @markdown-workspace/extension-theme-studio && npm run typecheck -w @demo-markdown-workspace/extension-catalog-hello",
     "lint:extensions": "npm run lint -w @markdown-workspace/extension-runtime && npm run lint -w @markdown-workspace/extension-manager && npm run lint -w @markdown-workspace/extension-gemini-agent && npm run lint -w @markdown-workspace/extension-theme-studio && npm run lint -w @demo-markdown-workspace/extension-catalog-hello",
     "changeset": "npx @changesets/cli",
-    "ci:install": "npm ci",
+    "ci:install": "npm ci --install-strategy=nested",
     "ci:lint": "npm run lint",
     "ci:typecheck": "npm run typecheck",
     "ci:build": "npm run build",
