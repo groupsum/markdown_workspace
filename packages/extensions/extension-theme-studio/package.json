@@ -1,6 +1,6 @@
 {
   "name": "@markdown-workspace/extension-theme-studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,13 +23,13 @@
   ],
   "description": "First-party theme authoring extension for Markdown Workspace with token inspection, live renderer/editor previews, apply/revert flow, and export helpers.",
   "dependencies": {
-    "@markdown-workspace/extension-host": "1.0.0",
-    "@markdown-workspace/extension-manifest": "1.0.0",
-    "@markdown-workspace/extension-runtime": "1.0.0",
-    "@markdown-workspace/theme-contract": "1.0.0",
-    "@markdown-workspace/ui-tokens": "1.0.0",
-    "@markdown-workspace/markdown-renderer-react": "1.0.0",
-    "@markdown-workspace/markdown-editor-react": "1.0.0",
+    "@markdown-workspace/extension-host": "^1.0.1",
+    "@markdown-workspace/extension-manifest": "^1.0.0",
+    "@markdown-workspace/extension-runtime": "^1.0.1",
+    "@markdown-workspace/theme-contract": "^1.0.0",
+    "@markdown-workspace/ui-tokens": "^1.0.1",
+    "@markdown-workspace/markdown-renderer-react": "^1.0.1",
+    "@markdown-workspace/markdown-editor-react": "^1.0.2",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {
