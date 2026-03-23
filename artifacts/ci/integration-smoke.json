@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-03-22T16:43:07.397Z",
+  "kind": "integration-smoke",
+  "ok": true,
+  "checks": [
+    {
+      "name": "client-depends-on-runtime-and-first-party-extensions",
+      "pass": true,
+      "detail": {
+        "@markdown-workspace/extension-gemini-agent": "1.0.0",
+        "@markdown-workspace/extension-host": "1.0.0",
+        "@markdown-workspace/extension-manager": "1.0.0",
+        "@markdown-workspace/extension-manifest": "1.0.0",
+        "@markdown-workspace/extension-runtime": "1.0.0",
+        "@markdown-workspace/i18n": "1.0.0",
+        "@markdown-workspace/icons": "1.0.0",
+        "@markdown-workspace/markdown-editor-react": "1.0.0",
+        "@markdown-workspace/markdown-renderer-core": "1.0.0",
+        "@markdown-workspace/markdown-renderer-react": "1.0.0",
+        "@markdown-workspace/theme-contract": "1.0.0",
+        "@markdown-workspace/ui-tokens": "1.0.0",
+        "jszip": "^3.10.1",
+        "lucide-react": "^0.475.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-syntax-highlighter": "^15.6.1",
+        "@markdown-workspace/extension-theme-studio": "1.0.0"
+      }
+    },
+    {
+      "name": "lander-depends-on-shared-renderer-packages",
+      "pass": true,
+      "detail": {
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4",
+        "react-router-dom": "^7.9.3",
+        "lucide-react": "^0.563.0",
+        "@markdown-workspace/markdown-renderer-core": "1.0.0",
+        "@markdown-workspace/markdown-renderer-react": "1.0.0",
+        "@markdown-workspace/ui-tokens": "1.0.0"
+      }
+    },
+    {
+      "name": "renderer-example-exists",
+      "pass": true,
+      "detail": "examples/renderer-basic"
+    },
+    {
+      "name": "editor-example-exists",
+      "pass": true,
+      "detail": "examples/editor-basic"
+    }
+  ],
+  "failures": []
+}

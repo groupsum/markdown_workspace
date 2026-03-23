@@ -1,0 +1,31 @@
+export const MARKDOWN_WORKSPACE_THEME_CLASS_NAMES = [
+    "markdown-body",
+    "md-task-list-item",
+    "md-checkbox",
+    "md-table",
+    "md-table-header",
+    "md-table-cell",
+    "md-table-caption",
+    "md-table-head",
+    "md-table-body",
+    "md-table-row",
+    "md-code-block",
+    "md-code-header",
+    "md-code-surface",
+];
+export const MARKDOWN_WORKSPACE_THEME_CLASSES = [
+    { name: "markdown-body", selector: ".markdown-body", scope: "renderer", description: "Root scope class for rendered markdown content.", stability: "stable" },
+    { name: "md-task-list-item", selector: ".md-task-list-item", scope: "renderer", description: "Task list item wrapper.", stability: "stable" },
+    { name: "md-checkbox", selector: ".md-checkbox", scope: "renderer", description: "Task list checkbox element.", stability: "stable" },
+    { name: "md-table", selector: ".md-table", scope: "renderer", description: "Portable markdown table root class.", stability: "stable" },
+    { name: "md-table-header", selector: ".md-table-header", scope: "renderer", description: "Portable markdown table header cell class.", stability: "stable" },
+    { name: "md-table-cell", selector: ".md-table-cell", scope: "renderer", description: "Portable markdown table body cell class.", stability: "stable" },
+    { name: "md-table-caption", selector: ".md-table-caption", scope: "renderer", description: "Portable markdown table caption class.", stability: "stable" },
+    { name: "md-table-head", selector: ".md-table-head", scope: "renderer", description: "Portable markdown table head section class.", stability: "stable" },
+    { name: "md-table-body", selector: ".md-table-body", scope: "renderer", description: "Portable markdown table body section class.", stability: "stable" },
+    { name: "md-table-row", selector: ".md-table-row", scope: "renderer", description: "Portable markdown table row class.", stability: "stable" },
+    { name: "md-code-block", selector: ".md-code-block", scope: "renderer", description: "Portable fenced code block container.", stability: "stable" },
+    { name: "md-code-header", selector: ".md-code-header", scope: "renderer", description: "Portable fenced code header.", stability: "stable" },
+    { name: "md-code-surface", selector: ".md-code-surface", scope: "renderer", description: "Portable fenced code surface.", stability: "stable" },
+];
+//# sourceMappingURL=classes.js.map

@@ -1,0 +1,2 @@
+export const EXTENSION_CATALOG_HELLO_VERSION = "1.0.0";
+//# sourceMappingURL=version.js.map

@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-03-22T19:46:39.801Z",
+  "validator": "tools/conformance/validate-compatibility.mjs",
+  "ok": true,
+  "workspaceVersions": {
+    "client": "1.3.49",
+    "extensionHost": "1.0.0",
+    "extensionRuntime": "1.0.0",
+    "themeContract": "1.0.0"
+  },
+  "results": [
+    {
+      "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "1.0.0",
+        "runtime": "1.0.0",
+        "app": ">=0.1.0",
+        "themeContract": "1.0.0"
+      }
+    },
+    {
+      "packageName": "@markdown-workspace/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "1.0.0",
+        "runtime": "1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "1.0.0",
+        "renderer": ">=1.0.0",
+        "editor": ">=1.0.0"
+      }
+    },
+    {
+      "packageName": "@markdown-workspace/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "1.0.0",
+        "runtime": "1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "1.0.0"
+      }
+    },
+    {
+      "packageName": "@markdown-workspace/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "1.0.0",
+        "runtime": "1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "1.0.0",
+        "renderer": "1.0.0",
+        "editor": "1.0.0"
+      }
+    }
+  ]
+}

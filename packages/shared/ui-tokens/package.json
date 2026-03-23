@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "src/styles",
+    "README.md"
+  ],
+  "name": "@markdown-workspace/ui-tokens",
+  "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for Markdown Workspace packages and applications.",
+  "sideEffects": [
+    "./src/styles/*.css"
+  ],
+  "keywords": [
+    "markdown-workspace",
+    "shared",
+    "css",
+    "tokens",
+    "themes"
+  ],
+  "dependencies": {
+    "@markdown-workspace/theme-contract": "1.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    },
+    "./classes": {
+      "types": "./dist/classes.d.ts",
+      "import": "./dist/classes.js"
+    },
+    "./theme-map": {
+      "types": "./dist/theme-map.d.ts",
+      "import": "./dist/theme-map.js"
+    },
+    "./styles/index.css": "./src/styles/index.css",
+    "./styles/root.css": "./src/styles/root.css",
+    "./styles/markdown.css": "./src/styles/markdown.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

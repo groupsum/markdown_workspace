@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-03-22T19:46:40.242Z",
+  "validator": "tools/conformance/validate-package-exports.mjs",
+  "ok": true,
+  "results": [
+    {
+      "packageName": "@swarmauri/markspace",
+      "path": "apps/client",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "markspace---local-first-markdown-workspace",
+      "path": "apps/lander",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/example-editor-basic",
+      "path": "examples/editor-basic",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/example-renderer-basic",
+      "path": "examples/renderer-basic",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-host",
+      "path": "packages/contracts/extension-host",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-manifest",
+      "path": "packages/contracts/extension-manifest",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/theme-contract",
+      "path": "packages/contracts/theme-contract",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/markdown-editor-core",
+      "path": "packages/editor/markdown-editor-core",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/markdown-editor-react",
+      "path": "packages/editor/markdown-editor-react",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-runtime",
+      "path": "packages/extensions/extension-runtime",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/markdown-renderer-core",
+      "path": "packages/renderer/markdown-renderer-core",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/markdown-renderer-react",
+      "path": "packages/renderer/markdown-renderer-react",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/i18n",
+      "path": "packages/shared/i18n",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/icons",
+      "path": "packages/shared/icons",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/testing",
+      "path": "packages/shared/testing",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/ui-tokens",
+      "path": "packages/shared/ui-tokens",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

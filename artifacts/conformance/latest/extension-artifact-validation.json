@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-03-22T19:46:40.256Z",
+  "ok": true,
+  "catalogEntries": [
+    {
+      "entryId": "external.catalog-hello@1.0.0",
+      "extensionId": "external.catalog-hello",
+      "manifestExists": true,
+      "signedManifestExists": true,
+      "moduleExists": true,
+      "manifestIntegrityVerified": true,
+      "moduleIntegrityVerified": true,
+      "signatureVerified": true,
+      "trustedBySamplePolicy": true,
+      "issues": []
+    }
+  ]
+}

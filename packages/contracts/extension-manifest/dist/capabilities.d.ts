@@ -1,0 +1,3 @@
+export declare const EXTENSION_CAPABILITIES: readonly ["workspace.read", "workspace.write", "editor.read", "editor.write", "selection.read", "settings.read", "settings.write", "theme.read", "theme.write", "command.invoke", "network.fetch", "notification.publish", "actionRail.register", "view.register", "component.register"];
+export type ExtensionCapability = typeof EXTENSION_CAPABILITIES[number];
+//# sourceMappingURL=capabilities.d.ts.map

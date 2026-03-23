@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-03-22T16:43:22.187Z",
+  "generator": "tools/release/generate-release-evidence.mjs",
+  "workspacePackageCount": 19,
+  "publishableWorkspaceCount": 16,
+  "git": {
+    "sha": null,
+    "ref": null,
+    "runId": null
+  },
+  "inputs": {
+    "packReport": "artifacts/packs/pack-report.json",
+    "extensionCatalog": "artifacts/extensions/catalog.json",
+    "conformanceStatus": "artifacts/conformance/latest/conformance-status.json"
+  },
+  "packages": [
+    {
+      "name": "@swarmauri/markspace",
+      "version": "1.3.49",
+      "path": "apps/client",
+      "category": "app"
+    },
+    {
+      "name": "@markdown-workspace/extension-host",
+      "version": "1.0.0",
+      "path": "packages/contracts/extension-host",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/extension-manifest",
+      "version": "1.0.0",
+      "path": "packages/contracts/extension-manifest",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/theme-contract",
+      "version": "1.0.0",
+      "path": "packages/contracts/theme-contract",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/markdown-editor-core",
+      "version": "1.0.0",
+      "path": "packages/editor/markdown-editor-core",
+      "category": "editor"
+    },
+    {
+      "name": "@markdown-workspace/markdown-editor-react",
+      "version": "1.0.0",
+      "path": "packages/editor/markdown-editor-react",
+      "category": "editor"
+    },
+    {
+      "name": "@markdown-workspace/extension-gemini-agent",
+      "version": "1.0.0",
+      "path": "packages/extensions/extension-gemini-agent",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-manager",
+      "version": "1.0.0",
+      "path": "packages/extensions/extension-manager",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-runtime",
+      "version": "1.0.0",
+      "path": "packages/extensions/extension-runtime",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-theme-studio",
+      "version": "1.0.0",
+      "path": "packages/extensions/extension-theme-studio",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/markdown-renderer-core",
+      "version": "1.0.0",
+      "path": "packages/renderer/markdown-renderer-core",
+      "category": "renderer"
+    },
+    {
+      "name": "@markdown-workspace/markdown-renderer-react",
+      "version": "1.0.0",
+      "path": "packages/renderer/markdown-renderer-react",
+      "category": "renderer"
+    },
+    {
+      "name": "@markdown-workspace/i18n",
+      "version": "1.0.0",
+      "path": "packages/shared/i18n",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/icons",
+      "version": "1.0.0",
+      "path": "packages/shared/icons",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/testing",
+      "version": "1.0.0",
+      "path": "packages/shared/testing",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/ui-tokens",
+      "version": "1.0.0",
+      "path": "packages/shared/ui-tokens",
+      "category": "shared"
+    }
+  ]
+}

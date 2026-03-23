@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "keywords": [
+    "markdown-workspace",
+    "contracts",
+    "typescript"
+  ],
+  "name": "@markdown-workspace/extension-host",
+  "description": "Stable host API, lifecycle, and context contracts for Markdown Workspace extensions.",
+  "dependencies": {
+    "@markdown-workspace/extension-manifest": "^1.0.0",
+    "@markdown-workspace/theme-contract": "^1.0.0"
+  },
+  "scripts": {
+    "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/theme-contract",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run typecheck",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./primitives": {
+      "types": "./dist/primitives.d.ts",
+      "import": "./dist/primitives.js"
+    },
+    "./registration": {
+      "types": "./dist/registration.d.ts",
+      "import": "./dist/registration.js"
+    },
+    "./host": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js"
+    },
+    "./context": {
+      "types": "./dist/context.d.ts",
+      "import": "./dist/context.js"
+    },
+    "./lifecycle": {
+      "types": "./dist/lifecycle.d.ts",
+      "import": "./dist/lifecycle.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

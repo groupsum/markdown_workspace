@@ -1,0 +1,32 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "stripInternal": true,
+    "baseUrl": "../../..",
+    "paths": {
+      "@markdown-workspace/extension-manifest": [
+        "packages/contracts/extension-manifest/dist/index.d.ts"
+      ],
+      "@markdown-workspace/extension-host": [
+        "packages/contracts/extension-host/dist/index.d.ts"
+      ],
+      "@markdown-workspace/theme-contract": [
+        "packages/contracts/theme-contract/dist/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "tests"
+  ]
+}

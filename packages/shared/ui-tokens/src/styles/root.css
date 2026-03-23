@@ -1,0 +1,129 @@
+/* Lattice Architect: Core Variable Contract */
+
+:root {
+  /* Layout Dimensions - Structural Chassis (Hardcoded/Deterministic) */
+  --ui-scale: 1;
+  --header-height: calc(32px * var(--ui-scale));
+  --rail-width: calc(44px * var(--ui-scale));
+  --rail-height: calc(44px * var(--ui-scale));
+  --sidebar-width: calc(200px * var(--ui-scale));
+  --status-height: calc(20px * var(--ui-scale));
+  --tab-height: var(--header-height);
+  --panel-header-height: calc(30px * var(--ui-scale));
+  --rail-btn-size: calc(30px * var(--ui-scale));
+  
+  /* Fallback Values: Ensures layout survives theme loading failure */
+  --bg-app: #c0c0c0;     
+  --bg-panel: #ececec;   
+  --bg-inset: #dcdcdc;   
+  
+  --border-color: #000000;
+  --border-width: 2px;
+  
+  --fg-primary: #000000;
+  --fg-secondary: #333333;
+  --fg-muted: #666666;
+
+  --accent: #ff3e00;
+
+  --table-header-bg: var(--bg-inset);
+  --table-header-fg: var(--fg-primary);
+  --table-row-primary-bg: var(--bg-panel);
+  --table-row-secondary-bg: var(--bg-inset);
+  
+  --status-ok: #00cc00;
+  --status-warn: #ff8800;
+  --status-error: #cc0000;
+
+  /* Structure Settings */
+  --app-gap: calc(4px * var(--ui-scale)); 
+  --texture-opacity: 0.05;
+  --editor-padding: calc(24px * var(--ui-scale));
+  --file-indent-base: calc(12px * var(--ui-scale));
+  --file-indent-unit: calc(12px * var(--ui-scale));
+  --c-explorer-hover: rgba(0, 0, 0, 0.06);
+  --c-explorer-selected: var(--accent);
+  --c-explorer-selected-text: #ffffff;
+  --c-explorer-drag-bg: rgba(255, 255, 255, 0.08);
+
+  /* Fonts - Industrial Stack */
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', Menlo, monospace;
+  --font-head: 'Inter', sans-serif;
+}
+
+/* Base reset: The Chassis Grid logic is non-themeable for stability */
+body {
+  background-color: var(--bg-app);
+  color: var(--fg-primary);
+  font-family: var(--font-ui);
+  font-size: calc(12px * var(--ui-scale));
+  margin: 0;
+  overflow: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { 
+  box-sizing: border-box;
+  border-radius: 0 !important; /* Zero-radius mandate */
+}
+
+input, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Scaled icon sizing for Lucide SVGs */
+svg.lucide {
+  display: inline-block;
+}
+
+svg.lucide[width="10"] {
+  width: calc(10px * var(--ui-scale));
+  height: calc(10px * var(--ui-scale));
+}
+
+svg.lucide[width="12"] {
+  width: calc(12px * var(--ui-scale));
+  height: calc(12px * var(--ui-scale));
+}
+
+svg.lucide[width="14"] {
+  width: calc(14px * var(--ui-scale));
+  height: calc(14px * var(--ui-scale));
+}
+
+svg.lucide[width="16"] {
+  width: calc(16px * var(--ui-scale));
+  height: calc(16px * var(--ui-scale));
+}
+
+svg.lucide[width="18"] {
+  width: calc(18px * var(--ui-scale));
+  height: calc(18px * var(--ui-scale));
+}
+
+svg.lucide[width="24"] {
+  width: calc(24px * var(--ui-scale));
+  height: calc(24px * var(--ui-scale));
+}
+
+svg.lucide[width="48"] {
+  width: calc(48px * var(--ui-scale));
+  height: calc(48px * var(--ui-scale));
+}
+
+/* Scrollbar Styling - Deterministic */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-app); border-left: var(--border-width) solid var(--border-color); }
+::-webkit-scrollbar-thumb { background: var(--fg-primary); border: 2px solid var(--bg-panel); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }

@@ -17,20 +17,16 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
-        working-directory: client
         run: npm ci
 
       - name: Build client
-        working-directory: client
         env:
           VITE_OIDC_CLIENT_ID: ${{ secrets.VITE_OIDC_CLIENT_ID }}
           VITE_OIDC_FQDN: ${{ vars.VITE_OIDC_FQDN || 'https://md.bz23.xyz' }}
           VITE_OIDC_CALLBACK_PATH: ${{ vars.VITE_OIDC_CALLBACK_PATH || '/auth/callback' }}
-          VITE_OIDC_FLOW: ${{ vars.VITE_OIDC_FLOW || 'device' }}
-        run: npm run build
+        run: npm run build:client
 
       - name: Publish to npm
-        working-directory: client
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: npm publish --workspace apps/client

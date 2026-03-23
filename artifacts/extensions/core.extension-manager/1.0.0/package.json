@@ -1,0 +1,74 @@
+{
+  "name": "@markdown-workspace/extension-manager",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "markdown-workspace",
+    "extension",
+    "manager",
+    "runtime",
+    "react"
+  ],
+  "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring Markdown Workspace extensions.",
+  "dependencies": {
+    "@markdown-workspace/extension-host": "1.0.0",
+    "@markdown-workspace/extension-manifest": "1.0.0",
+    "@markdown-workspace/extension-runtime": "1.0.0",
+    "lucide-react": "^0.475.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@markdown-workspace/testing": "1.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "jsdom": "^25.0.1",
+    "vitest": "^2.1.8"
+  },
+  "scripts": {
+    "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/extension-host && npm run build -w @markdown-workspace/extension-runtime",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "vitest run tests/extension-manager.test.tsx --pool=forks --minWorkers=1 --maxWorkers=1",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "browserInstallable": false,
+  "bundledBy": "tools/extensions/build-installable-extensions.mjs"
+}

@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-03-22T19:46:29.294Z",
+  "artifact": {
+    "id": "core.extension-manager",
+    "packageName": "@markdown-workspace/extension-manager",
+    "version": "1.0.0",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.extension-manager/1.0.0",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "generatedAt": "2026-03-22T19:46:28.936Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "bb9fccb7e4017c9cee577b75893bcd5c9baeaa32ef0726e50759b5b291830bf9"
+    },
+    {
+      "path": "integrity.json",
+      "sha256": "d4bbcd473ccb9450d2ff6ca0e07a585255048d5f93ec36b5821b29c7dcf7f456"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "f131590a196023b8423ed9cbee36bf5bed5c84215c4d32b878929965f25ce32d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "7189f02a01b0cd6d5eb8eba57cdd8dbeb5d0db103e07a1d54c06214c89f9b45f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "be863ad7d1a9701d1f80e99a8ed785aa2b5a24db8d8dac4c90a0e8536a730312"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "sha256": "f809b62706833840fda9c4f788d124ffc688d0d1620dffb438fe4681c2ec040c"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "be9b985d18c9426cb5231a1dce895bdb96c95480b33087a700d5414f3becd7dc"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

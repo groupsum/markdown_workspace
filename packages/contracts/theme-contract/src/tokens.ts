@@ -1,0 +1,100 @@
+export const MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES = [
+  "ui-scale",
+  "header-height",
+  "rail-width",
+  "rail-height",
+  "sidebar-width",
+  "status-height",
+  "tab-height",
+  "panel-header-height",
+  "rail-btn-size",
+  "bg-app",
+  "bg-panel",
+  "bg-inset",
+  "border-color",
+  "border-width",
+  "fg-primary",
+  "fg-secondary",
+  "fg-muted",
+  "accent",
+  "table-header-bg",
+  "table-header-fg",
+  "table-row-primary-bg",
+  "table-row-secondary-bg",
+  "status-ok",
+  "status-warn",
+  "status-error",
+  "app-gap",
+  "texture-opacity",
+  "editor-padding",
+  "file-indent-base",
+  "file-indent-unit",
+  "c-explorer-hover",
+  "c-explorer-selected",
+  "c-explorer-selected-text",
+  "c-explorer-drag-bg",
+  "font-ui",
+  "font-mono",
+  "font-head",
+] as const;
+
+export type MarkdownWorkspaceThemeTokenName = typeof MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES[number];
+
+export type ThemeTokenCategory =
+  | "layout"
+  | "color"
+  | "status"
+  | "spacing"
+  | "interaction"
+  | "typography";
+
+export interface ThemeTokenDefinition {
+  readonly name: MarkdownWorkspaceThemeTokenName;
+  readonly cssCustomProperty: `--${string}`;
+  readonly category: ThemeTokenCategory;
+  readonly description: string;
+  readonly defaultValue: string;
+  readonly stability: "stable" | "experimental";
+}
+
+export const MARKDOWN_WORKSPACE_THEME_TOKENS = [
+  { name: "ui-scale", cssCustomProperty: "--ui-scale", category: "layout", description: "Global UI scale multiplier.", defaultValue: "1", stability: "stable" },
+  { name: "header-height", cssCustomProperty: "--header-height", category: "layout", description: "Header height for the application shell.", defaultValue: "calc(32px * var(--ui-scale))", stability: "stable" },
+  { name: "rail-width", cssCustomProperty: "--rail-width", category: "layout", description: "Action rail width.", defaultValue: "calc(44px * var(--ui-scale))", stability: "stable" },
+  { name: "rail-height", cssCustomProperty: "--rail-height", category: "layout", description: "Action rail row height.", defaultValue: "calc(44px * var(--ui-scale))", stability: "stable" },
+  { name: "sidebar-width", cssCustomProperty: "--sidebar-width", category: "layout", description: "Sidebar width.", defaultValue: "calc(200px * var(--ui-scale))", stability: "stable" },
+  { name: "status-height", cssCustomProperty: "--status-height", category: "layout", description: "Status bar height.", defaultValue: "calc(20px * var(--ui-scale))", stability: "stable" },
+  { name: "tab-height", cssCustomProperty: "--tab-height", category: "layout", description: "Tab strip height.", defaultValue: "var(--header-height)", stability: "stable" },
+  { name: "panel-header-height", cssCustomProperty: "--panel-header-height", category: "layout", description: "Panel header height.", defaultValue: "calc(30px * var(--ui-scale))", stability: "stable" },
+  { name: "rail-btn-size", cssCustomProperty: "--rail-btn-size", category: "layout", description: "Action rail button size.", defaultValue: "calc(30px * var(--ui-scale))", stability: "stable" },
+  { name: "bg-app", cssCustomProperty: "--bg-app", category: "color", description: "Top-level application background.", defaultValue: "#c0c0c0", stability: "stable" },
+  { name: "bg-panel", cssCustomProperty: "--bg-panel", category: "color", description: "Panel background.", defaultValue: "#ececec", stability: "stable" },
+  { name: "bg-inset", cssCustomProperty: "--bg-inset", category: "color", description: "Inset surface background.", defaultValue: "#dcdcdc", stability: "stable" },
+  { name: "border-color", cssCustomProperty: "--border-color", category: "color", description: "Primary border color.", defaultValue: "#000000", stability: "stable" },
+  { name: "border-width", cssCustomProperty: "--border-width", category: "layout", description: "Primary border width.", defaultValue: "2px", stability: "stable" },
+  { name: "fg-primary", cssCustomProperty: "--fg-primary", category: "color", description: "Primary foreground color.", defaultValue: "#000000", stability: "stable" },
+  { name: "fg-secondary", cssCustomProperty: "--fg-secondary", category: "color", description: "Secondary foreground color.", defaultValue: "#333333", stability: "stable" },
+  { name: "fg-muted", cssCustomProperty: "--fg-muted", category: "color", description: "Muted foreground color.", defaultValue: "#666666", stability: "stable" },
+  { name: "accent", cssCustomProperty: "--accent", category: "color", description: "Accent color.", defaultValue: "#ff3e00", stability: "stable" },
+  { name: "table-header-bg", cssCustomProperty: "--table-header-bg", category: "color", description: "Markdown table header background.", defaultValue: "var(--bg-inset)", stability: "stable" },
+  { name: "table-header-fg", cssCustomProperty: "--table-header-fg", category: "color", description: "Markdown table header foreground.", defaultValue: "var(--fg-primary)", stability: "stable" },
+  { name: "table-row-primary-bg", cssCustomProperty: "--table-row-primary-bg", category: "color", description: "Odd markdown table row background.", defaultValue: "var(--bg-panel)", stability: "stable" },
+  { name: "table-row-secondary-bg", cssCustomProperty: "--table-row-secondary-bg", category: "color", description: "Even markdown table row background.", defaultValue: "var(--bg-inset)", stability: "stable" },
+  { name: "status-ok", cssCustomProperty: "--status-ok", category: "status", description: "Success status color.", defaultValue: "#00cc00", stability: "stable" },
+  { name: "status-warn", cssCustomProperty: "--status-warn", category: "status", description: "Warning status color.", defaultValue: "#ff8800", stability: "stable" },
+  { name: "status-error", cssCustomProperty: "--status-error", category: "status", description: "Error status color.", defaultValue: "#cc0000", stability: "stable" },
+  { name: "app-gap", cssCustomProperty: "--app-gap", category: "spacing", description: "Primary gap between shell regions.", defaultValue: "calc(4px * var(--ui-scale))", stability: "stable" },
+  { name: "texture-opacity", cssCustomProperty: "--texture-opacity", category: "interaction", description: "Texture overlay opacity.", defaultValue: "0.05", stability: "stable" },
+  { name: "editor-padding", cssCustomProperty: "--editor-padding", category: "spacing", description: "Editor inner padding.", defaultValue: "calc(24px * var(--ui-scale))", stability: "stable" },
+  { name: "file-indent-base", cssCustomProperty: "--file-indent-base", category: "spacing", description: "Base indentation for file tree items.", defaultValue: "calc(12px * var(--ui-scale))", stability: "stable" },
+  { name: "file-indent-unit", cssCustomProperty: "--file-indent-unit", category: "spacing", description: "Incremental indentation for nested file tree items.", defaultValue: "calc(12px * var(--ui-scale))", stability: "stable" },
+  { name: "c-explorer-hover", cssCustomProperty: "--c-explorer-hover", category: "interaction", description: "Explorer hover background.", defaultValue: "rgba(0, 0, 0, 0.06)", stability: "stable" },
+  { name: "c-explorer-selected", cssCustomProperty: "--c-explorer-selected", category: "interaction", description: "Explorer selected background.", defaultValue: "var(--accent)", stability: "stable" },
+  { name: "c-explorer-selected-text", cssCustomProperty: "--c-explorer-selected-text", category: "interaction", description: "Explorer selected foreground.", defaultValue: "#ffffff", stability: "stable" },
+  { name: "c-explorer-drag-bg", cssCustomProperty: "--c-explorer-drag-bg", category: "interaction", description: "Explorer drag surface background.", defaultValue: "rgba(255, 255, 255, 0.08)", stability: "stable" },
+  { name: "font-ui", cssCustomProperty: "--font-ui", category: "typography", description: "UI font stack.", defaultValue: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", stability: "stable" },
+  { name: "font-mono", cssCustomProperty: "--font-mono", category: "typography", description: "Monospace font stack.", defaultValue: "'JetBrains Mono', 'IBM Plex Mono', Menlo, monospace", stability: "stable" },
+  { name: "font-head", cssCustomProperty: "--font-head", category: "typography", description: "Heading font stack.", defaultValue: "'Inter', sans-serif", stability: "stable" },
+] as const satisfies readonly ThemeTokenDefinition[];
+
+export type MarkdownWorkspaceThemeTokenMap = Readonly<Record<MarkdownWorkspaceThemeTokenName, string>>;

@@ -16,9 +16,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: client
         run: npm ci
 
       - name: Run tests
-        working-directory: client
-        run: npm test
+        run: npm run test

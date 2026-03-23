@@ -1,0 +1,61 @@
+@import url("@markdown-workspace/ui-tokens/styles/root.css");
+@import url("@markdown-workspace/markdown-editor-react/styles/default.css");
+@import url("@markdown-workspace/markdown-renderer-react/styles/default.css");
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: #0f1216;
+  color: #e6edf5;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.example-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.example-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.toolbar button {
+  background: #1a2028;
+  color: #e6edf5;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.editor-card,
+.preview-card {
+  min-height: 480px;
+  background: #151a21;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.preview-card {
+  padding: 20px;
+}
+
+@media (max-width: 900px) {
+  .example-grid {
+    grid-template-columns: 1fr;
+  }
+}

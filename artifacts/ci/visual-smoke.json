@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-03-22T16:43:07.536Z",
+  "kind": "visual-smoke",
+  "ok": true,
+  "snapshots": [
+    {
+      "path": "packages/shared/ui-tokens/src/styles/root.css",
+      "sha256": "6a085986a88a089ceda222c205d75b4cc91674dc88051c67de6a1bc34f218129"
+    },
+    {
+      "path": "packages/shared/ui-tokens/src/styles/markdown.css",
+      "sha256": "6982aa47d94a9179420c9e5c385078da6b9c438674b0433c32011394fa12ab2b"
+    },
+    {
+      "path": "packages/renderer/markdown-renderer-react/src/styles/default.css",
+      "sha256": "d24286ab1b74638ff1141bd5bce404436d3709dd964d1df907433e8f02d3a884"
+    },
+    {
+      "path": "packages/editor/markdown-editor-react/src/styles/default.css",
+      "sha256": "33a683f552f1b1cd30e384a929531d8cd8bae0df9b7954e3e7acacee914023cf"
+    }
+  ],
+  "failures": [],
+  "note": "This checkpoint captures asset-level visual snapshots as deterministic SHA-256 digests. Pixel-level regression remains a future enhancement."
+}

@@ -1,0 +1,19 @@
+@import url("@markdown-workspace/ui-tokens/styles/root.css");
+@import url("@markdown-workspace/markdown-renderer-react/styles/default.css");
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: #0f1216;
+  color: #e6edf5;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.example-shell {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}

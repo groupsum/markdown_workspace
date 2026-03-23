@@ -10,19 +10,16 @@ x-common-env: &common-env
   VITE_NPM_PACKAGE_NAME: ${VITE_NPM_PACKAGE_NAME:-@swarmauri/markspace}
   VITE_NPM_PACKAGE_PATH: ${VITE_NPM_PACKAGE_PATH:-swarmauri/markspace}
   VITE_NPM_ESM_CDN_URL: ${VITE_NPM_ESM_CDN_URL:-https://esm.sh/@swarmauri/markspace}
-  VITE_AUTH_MODE: ${VITE_AUTH_MODE:-pat}
-  VITE_PAT_TOKEN: ${VITE_PAT_TOKEN:-}
   VITE_OIDC_CLIENT_ID: ${VITE_OIDC_CLIENT_ID:-}
   VITE_OIDC_FQDN: ${VITE_OIDC_FQDN:-https://md.bz23.xyz}
   VITE_OIDC_CALLBACK_PATH: ${VITE_OIDC_CALLBACK_PATH:-/auth/callback}
-  VITE_OIDC_FLOW: ${VITE_OIDC_FLOW:-device}
 
 services:
   client:
     container_name: markdown_workspace_client
     build:
       context: .
-      dockerfile: client/Dockerfile
+      dockerfile: apps/client/Dockerfile
       args:
         <<: *common-env
     restart: unless-stopped
@@ -34,7 +31,7 @@ services:
     container_name: markdown_workspace_lander
     build:
       context: .
-      dockerfile: lander/Dockerfile
+      dockerfile: apps/lander/Dockerfile
       args:
         <<: *common-env
     restart: unless-stopped

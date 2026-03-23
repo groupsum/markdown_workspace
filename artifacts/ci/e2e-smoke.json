@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-03-22T16:43:07.466Z",
+  "kind": "e2e-smoke",
+  "ok": true,
+  "checks": [
+    {
+      "name": "file:apps/client/src/extensions/runtime/ExtensionRuntimeProvider.tsx",
+      "pass": true,
+      "detail": "present"
+    },
+    {
+      "name": "file:packages/extensions/extension-manager/src/createExtensionManagerBundledEntry.tsx",
+      "pass": true,
+      "detail": "present"
+    },
+    {
+      "name": "file:packages/extensions/extension-gemini-agent/src/createGeminiAgentBundledEntry.tsx",
+      "pass": true,
+      "detail": "present"
+    },
+    {
+      "name": "file:packages/extensions/extension-theme-studio/src/createThemeStudioBundledEntry.tsx",
+      "pass": true,
+      "detail": "present"
+    },
+    {
+      "name": "file:apps/client/src/shell/ActionRailHost.tsx",
+      "pass": true,
+      "detail": "present"
+    },
+    {
+      "name": "provider-registers-extension-manager",
+      "pass": true,
+      "detail": "extension-manager"
+    },
+    {
+      "name": "provider-registers-gemini",
+      "pass": true,
+      "detail": "extension-gemini-agent"
+    },
+    {
+      "name": "provider-registers-theme-studio",
+      "pass": true,
+      "detail": "extension-theme-studio"
+    }
+  ],
+  "failures": [],
+  "note": "This checkpoint uses static structural end-to-end smoke assertions. Full browser-driven E2E remains a later hardening step."
+}

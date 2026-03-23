@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-03-22T19:46:29.078Z",
+  "generator": "tools/extensions/build-installable-extensions.mjs",
+  "ok": true,
+  "artifacts": [
+    {
+      "id": "external.catalog-hello",
+      "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+      "version": "1.0.0",
+      "kind": "external",
+      "artifactPath": "artifacts/extensions/external.catalog-hello/1.0.0",
+      "entryModulePath": "dist/index.js",
+      "supportedLocales": [
+        "en"
+      ],
+      "generatedAt": "2026-03-22T19:46:28.682Z"
+    },
+    {
+      "id": "core.gemini-agent",
+      "packageName": "@markdown-workspace/extension-gemini-agent",
+      "version": "1.0.0",
+      "kind": "bundled",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.0.0",
+      "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
+      "supportedLocales": [
+        "en",
+        "es"
+      ],
+      "generatedAt": "2026-03-22T19:46:28.824Z"
+    },
+    {
+      "id": "core.extension-manager",
+      "packageName": "@markdown-workspace/extension-manager",
+      "version": "1.0.0",
+      "kind": "bundled",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.0.0",
+      "entryModulePath": "dist/index.js",
+      "supportedLocales": [
+        "en",
+        "es"
+      ],
+      "generatedAt": "2026-03-22T19:46:28.936Z"
+    },
+    {
+      "id": "core.theme-studio",
+      "packageName": "@markdown-workspace/extension-theme-studio",
+      "version": "1.0.0",
+      "kind": "bundled",
+      "artifactPath": "artifacts/extensions/core.theme-studio/1.0.0",
+      "entryModulePath": "dist/index.js",
+      "supportedLocales": [
+        "en",
+        "es"
+      ],
+      "generatedAt": "2026-03-22T19:46:29.078Z"
+    }
+  ],
+  "failures": []
+}

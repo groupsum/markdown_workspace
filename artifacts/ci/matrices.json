@@ -1,0 +1,154 @@
+{
+  "generatedAt": "2026-03-22T16:43:07.290Z",
+  "packageGroups": [
+    {
+      "name": "contracts",
+      "build": "build:contracts",
+      "lint": "lint:contracts",
+      "typecheck": "typecheck:contracts",
+      "test": "test:contracts"
+    },
+    {
+      "name": "shared",
+      "build": "build:shared",
+      "lint": "lint:shared",
+      "typecheck": "typecheck:shared",
+      "test": "test:shared"
+    },
+    {
+      "name": "renderer",
+      "build": "build:renderer",
+      "lint": "lint:renderer",
+      "typecheck": "typecheck:renderer",
+      "test": "test:renderer"
+    },
+    {
+      "name": "editor",
+      "build": "build:editor",
+      "lint": "lint:editor",
+      "typecheck": "typecheck:editor",
+      "test": "test:editor"
+    },
+    {
+      "name": "extensions",
+      "build": "build:extensions",
+      "lint": "lint:extensions",
+      "typecheck": "typecheck:extensions",
+      "test": "test:extensions"
+    }
+  ],
+  "apps": [
+    {
+      "name": "@swarmauri/markspace",
+      "path": "apps/client",
+      "build": "build:client",
+      "lint": "lint:client",
+      "typecheck": "typecheck:client",
+      "test": "test:client"
+    },
+    {
+      "name": "markspace---local-first-markdown-workspace",
+      "path": "apps/lander",
+      "build": "build:lander",
+      "lint": "lint:lander",
+      "typecheck": "typecheck:lander",
+      "test": ""
+    }
+  ],
+  "publishablePackages": [
+    {
+      "name": "@swarmauri/markspace",
+      "path": "apps/client",
+      "category": "app"
+    },
+    {
+      "name": "@markdown-workspace/extension-host",
+      "path": "packages/contracts/extension-host",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/extension-manifest",
+      "path": "packages/contracts/extension-manifest",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/theme-contract",
+      "path": "packages/contracts/theme-contract",
+      "category": "contract"
+    },
+    {
+      "name": "@markdown-workspace/markdown-editor-core",
+      "path": "packages/editor/markdown-editor-core",
+      "category": "editor"
+    },
+    {
+      "name": "@markdown-workspace/markdown-editor-react",
+      "path": "packages/editor/markdown-editor-react",
+      "category": "editor"
+    },
+    {
+      "name": "@markdown-workspace/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-runtime",
+      "path": "packages/extensions/extension-runtime",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "category": "extension"
+    },
+    {
+      "name": "@markdown-workspace/markdown-renderer-core",
+      "path": "packages/renderer/markdown-renderer-core",
+      "category": "renderer"
+    },
+    {
+      "name": "@markdown-workspace/markdown-renderer-react",
+      "path": "packages/renderer/markdown-renderer-react",
+      "category": "renderer"
+    },
+    {
+      "name": "@markdown-workspace/i18n",
+      "path": "packages/shared/i18n",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/icons",
+      "path": "packages/shared/icons",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/testing",
+      "path": "packages/shared/testing",
+      "category": "shared"
+    },
+    {
+      "name": "@markdown-workspace/ui-tokens",
+      "path": "packages/shared/ui-tokens",
+      "category": "shared"
+    }
+  ],
+  "extensionArtifacts": [
+    {
+      "name": "@markdown-workspace/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent"
+    },
+    {
+      "name": "@markdown-workspace/extension-manager",
+      "path": "packages/extensions/extension-manager"
+    },
+    {
+      "name": "@markdown-workspace/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio"
+    }
+  ]
+}

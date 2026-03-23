@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-03-22T19:46:39.739Z",
+  "validator": "tools/conformance/validate-extension-manifests.mjs",
+  "ok": true,
+  "results": [
+    {
+      "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "manifestId": "external.catalog-hello",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "manifestId": "core.gemini-agent",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "manifestId": "core.extension-manager",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@markdown-workspace/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "manifestId": "core.theme-studio",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

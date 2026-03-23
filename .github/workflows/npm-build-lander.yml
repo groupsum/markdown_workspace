@@ -16,9 +16,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: lander
-        run: npm install
+        run: npm ci
 
       - name: Build lander
-        working-directory: lander
-        run: npm run build
+        run: npm run build:lander

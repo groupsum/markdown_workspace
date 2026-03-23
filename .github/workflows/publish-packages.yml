@@ -1,0 +1,72 @@
+name: Publish Packages
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.changeset/**'
+      - 'apps/client/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: publish-packages-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify workspace
+        run: npm run ci:workspace:verify
+
+      - name: Pack publishable workspaces
+        run: npm run pack:packages
+
+      - name: Generate release evidence
+        run: npm run release:evidence
+
+      - name: Version or publish with Changesets
+        uses: changesets/action@v1
+        with:
+          version: npm run release:version
+          publish: npm run publish:packages
+          commit: 'chore(release): version packages'
+          title: 'chore(release): version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Upload package publish evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-publish-evidence
+          path: |
+            artifacts/packs
+            artifacts/releases/latest

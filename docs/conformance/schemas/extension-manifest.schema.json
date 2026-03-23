@@ -1,0 +1,929 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markdown-workspace.dev/schemas/extension-manifest.schema.json",
+  "title": "Markdown Workspace Extension Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestVersion",
+    "id",
+    "packageName",
+    "version",
+    "displayName",
+    "description",
+    "kind",
+    "icon",
+    "enabledByDefault",
+    "capabilities",
+    "compatibility",
+    "entry",
+    "contributions"
+  ],
+  "properties": {
+    "manifestVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:\\.[a-z0-9-]+)+$"
+    },
+    "packageName": {
+      "type": "string",
+      "pattern": "^@[a-z0-9-]+/[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "displayName": {
+      "$ref": "#/$defs/i18nLabel"
+    },
+    "description": {
+      "$ref": "#/$defs/i18nLabel"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "bundled",
+        "external"
+      ]
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "icon": {
+      "$ref": "#/$defs/iconDescriptor"
+    },
+    "enabledByDefault": {
+      "type": "boolean"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "workspace.read",
+          "workspace.write",
+          "editor.read",
+          "editor.write",
+          "selection.read",
+          "settings.read",
+          "settings.write",
+          "theme.read",
+          "theme.write",
+          "command.invoke",
+          "network.fetch",
+          "notification.publish",
+          "actionRail.register",
+          "view.register",
+          "component.register"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "compatibility": {
+      "$ref": "#/$defs/compatibility"
+    },
+    "entry": {
+      "$ref": "#/$defs/entry"
+    },
+    "contributions": {
+      "$ref": "#/$defs/contributions"
+    },
+    "settingsSchema": {
+      "$ref": "#/$defs/settingsSchema"
+    },
+    "i18n": {
+      "$ref": "#/$defs/i18nDefinition"
+    },
+    "distribution": {
+      "$ref": "#/$defs/distribution"
+    },
+    "integrity": {
+      "$ref": "#/$defs/integrity"
+    },
+    "support": {
+      "$ref": "#/$defs/support"
+    }
+  },
+  "$defs": {
+    "i18nLabel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "defaultMessage"
+      ],
+      "properties": {
+        "defaultMessage": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "values": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "digest"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": [
+            "sha256",
+            "sha384",
+            "sha512"
+          ]
+        },
+        "digest": {
+          "type": "string"
+        }
+      }
+    },
+    "iconDescriptor": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "name"
+          ],
+          "properties": {
+            "kind": {
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "svg"
+          ],
+          "properties": {
+            "kind": {
+              "const": "svg"
+            },
+            "svg": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "path"
+          ],
+          "properties": {
+            "kind": {
+              "const": "asset"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestVersion",
+        "hostApi",
+        "runtime"
+      ],
+      "properties": {
+        "manifestVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hostApi": {
+          "type": "string"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "app": {
+          "type": "string"
+        },
+        "themeContract": {
+          "type": "string"
+        },
+        "renderer": {
+          "type": "string"
+        },
+        "editor": {
+          "type": "string"
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "export"
+      ],
+      "properties": {
+        "module": {
+          "type": "string"
+        },
+        "export": {
+          "type": "string"
+        }
+      }
+    },
+    "commandContribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "category": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "shortcut": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enablement": {
+          "type": "string"
+        }
+      }
+    },
+    "viewContribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "location"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "icon": {
+          "$ref": "#/$defs/iconDescriptor"
+        },
+        "location": {
+          "type": "string",
+          "enum": [
+            "main",
+            "panel",
+            "modal",
+            "sidebar",
+            "inspector"
+          ]
+        },
+        "route": {
+          "type": "string"
+        },
+        "canBePinned": {
+          "type": "boolean"
+        },
+        "allowMultiple": {
+          "type": "boolean"
+        }
+      }
+    },
+    "componentContribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "slot"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "slot": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        }
+      }
+    },
+    "actionRailTarget": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "viewId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "view"
+            },
+            "viewId": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "commandId"
+          ],
+          "properties": {
+            "kind": {
+              "const": "command"
+            },
+            "commandId": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "actionRailContribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "icon",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "icon": {
+          "$ref": "#/$defs/iconDescriptor"
+        },
+        "order": {
+          "type": "number"
+        },
+        "group": {
+          "type": "string",
+          "enum": [
+            "workspace.primary",
+            "workspace.secondary",
+            "assistant",
+            "appearance",
+            "extensions",
+            "system"
+          ]
+        },
+        "target": {
+          "$ref": "#/$defs/actionRailTarget"
+        }
+      }
+    },
+    "settingsSectionContribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "order": {
+          "type": "number"
+        },
+        "schemaPath": {
+          "type": "string"
+        }
+      }
+    },
+    "contributions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commands",
+        "views",
+        "components",
+        "actionRail",
+        "settingsSections"
+      ],
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/commandContribution"
+          }
+        },
+        "views": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/viewContribution"
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/componentContribution"
+          }
+        },
+        "actionRail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/actionRailContribution"
+          }
+        },
+        "settingsSections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/settingsSectionContribution"
+          }
+        }
+      }
+    },
+    "settingsSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "order": {
+          "type": "number"
+        }
+      }
+    },
+    "settingsOption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "label"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "label": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        }
+      }
+    },
+    "settingsFieldBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "kind",
+        "label"
+      ],
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "boolean",
+            "string",
+            "number",
+            "integer",
+            "select",
+            "multiselect",
+            "secret",
+            "json"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "sectionId": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "user",
+            "workspace",
+            "session"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "restartRequired": {
+          "type": "boolean"
+        },
+        "visibilityExpression": {
+          "type": "string"
+        }
+      }
+    },
+    "booleanField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/settingsFieldBase"
+        },
+        {
+          "type": "object",
+          "required": [
+            "defaultValue"
+          ],
+          "properties": {
+            "kind": {
+              "const": "boolean"
+            },
+            "defaultValue": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "stringField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/settingsFieldBase"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "string",
+                "secret"
+              ]
+            },
+            "defaultValue": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            },
+            "multiline": {
+              "type": "boolean"
+            },
+            "minLength": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maxLength": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "pattern": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "numberField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/settingsFieldBase"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "number",
+                "integer"
+              ]
+            },
+            "defaultValue": {
+              "type": "number"
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "step": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "selectField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/settingsFieldBase"
+        },
+        {
+          "type": "object",
+          "required": [
+            "options"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "select",
+                "multiselect"
+              ]
+            },
+            "defaultValue": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/settingsOption"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "jsonField": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/settingsFieldBase"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "json"
+            },
+            "defaultValue": {},
+            "schemaUri": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "settingsField": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/booleanField"
+        },
+        {
+          "$ref": "#/$defs/stringField"
+        },
+        {
+          "$ref": "#/$defs/numberField"
+        },
+        {
+          "$ref": "#/$defs/selectField"
+        },
+        {
+          "$ref": "#/$defs/jsonField"
+        }
+      ]
+    },
+    "settingsSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "fields"
+      ],
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "description": {
+          "$ref": "#/$defs/i18nLabel"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/settingsSection"
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/settingsField"
+          }
+        }
+      }
+    },
+    "localeCatalogReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locale",
+        "path"
+      ],
+      "properties": {
+        "locale": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "integrity": {
+          "$ref": "#/$defs/integrity"
+        }
+      }
+    },
+    "i18nDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "defaultLocale",
+        "supportedLocales"
+      ],
+      "properties": {
+        "defaultLocale": {
+          "type": "string"
+        },
+        "supportedLocales": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "catalogs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/localeCatalogReference"
+          }
+        }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel",
+        "format"
+      ],
+      "properties": {
+        "channel": {
+          "type": "string",
+          "enum": [
+            "bundled",
+            "catalog"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "const": "esm"
+        },
+        "moduleUrl": {
+          "type": "string"
+        },
+        "manifestUrl": {
+          "type": "string"
+        },
+        "integrity": {
+          "$ref": "#/$defs/integrity"
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "level"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "experimental",
+            "active",
+            "deprecated",
+            "internal"
+          ]
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "official",
+            "community"
+          ]
+        },
+        "owner": {
+          "type": "string"
+        },
+        "documentationUrl": {
+          "type": "string"
+        },
+        "supportChannel": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

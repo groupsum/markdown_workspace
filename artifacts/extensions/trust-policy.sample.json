@@ -1,0 +1,31 @@
+{
+  "allowUnsigned": false,
+  "allowIntegrityOnly": false,
+  "allowedPublishers": [
+    "demo-catalog"
+  ],
+  "allowedPackageNames": [
+    "@demo-markdown-workspace/extension-catalog-hello"
+  ],
+  "allowedExtensionIds": [
+    "external.catalog-hello"
+  ],
+  "trustedSigners": [
+    {
+      "keyId": "dev-ecdsa-p256-sha256",
+      "algorithm": "ecdsa-p256-sha256",
+      "publicKeyJwk": {
+        "key_ops": [
+          "verify"
+        ],
+        "ext": true,
+        "kty": "EC",
+        "x": "kHS3RiQuDrBINHRvVC7aIbxgb4r5l9lxxqCsQjY46u8",
+        "y": "zuzgrsVr3rGMZhiqiBZrJvcY-v7vo81MrY_vU5RYwWc",
+        "crv": "P-256"
+      },
+      "publisher": "demo-catalog",
+      "label": "Development sample signer"
+    }
+  ]
+}

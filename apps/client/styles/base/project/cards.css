@@ -1,0 +1,104 @@
+/* Lattice Architect: Project & Theme Selection - Cards */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: calc(var(--app-gap) * 4);
+  padding: calc(var(--app-gap) * 4);
+  background: var(--bg-inset);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-color) 50%, transparent);
+  flex: 1;
+  align-content: start;
+}
+
+.project-card {
+  background: var(--bg-panel);
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  position: relative;
+  border: var(--border-width) solid var(--border-color);
+}
+
+.project-card:hover {
+  background: var(--bg-inset);
+}
+
+.project-card.is-active {
+  box-shadow: inset 0 0 0 4px var(--accent);
+}
+
+.project-card-main {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-icon {
+  color: var(--accent);
+}
+
+.project-card-title {
+  font-family: var(--font-head);
+  font-size: calc(1.25rem * var(--ui-scale));
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--fg-primary);
+}
+
+.project-card-meta {
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.project-card-footer {
+  padding: 16px 24px;
+  border-top: var(--border-width) solid var(--border-color);
+  background: var(--bg-inset);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: calc(9px * var(--ui-scale));
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.project-btn-new {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 0 24px;
+  height: 44px;
+  font-family: var(--font-head);
+  font-size: calc(12px * var(--ui-scale));
+  font-weight: 900;
+  border: var(--border-width) solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.05s;
+  text-transform: uppercase;
+}
+
+.project-btn-new:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.project-btn-new:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}

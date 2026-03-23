@@ -1,0 +1,18 @@
+@import url("@markdown-workspace/ui-tokens/styles/markdown.css");
+
+.markdown-body {
+  color: var(--mw-fg-primary, var(--fg-primary, inherit));
+  font-family: var(--mw-font-ui, var(--font-ui, inherit));
+}
+
+.markdown-body .md-inline-code {
+  color: var(--mw-code-fg, var(--fg-primary, inherit));
+  background: var(--mw-code-bg, rgba(255, 255, 255, 0.04));
+  border-color: var(--mw-code-border, rgba(255, 255, 255, 0.12));
+}
+
+.markdown-body .md-code-block,
+.markdown-body .md-code-surface {
+  background: var(--mw-code-bg, rgba(255, 255, 255, 0.04));
+  border-color: var(--mw-code-border, rgba(255, 255, 255, 0.12));
+}
