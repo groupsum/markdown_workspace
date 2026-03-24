@@ -1,38 +1,36 @@
 {
-  "generatedAt": "2026-03-24T11:19:56.714920+00:00",
-  "status": "ok",
-  "verifiedBuildContexts": [
-    {
-      "service": "client",
-      "contextShape": [
+  "generatedAt": "2026-03-24T13:28:12Z",
+  "verification": {
+    "client": {
+      "context": [
         "package.json",
         "package-lock.json",
         "tsconfig.base.json",
         "packages/**",
         "apps/client/**"
       ],
-      "installCommand": "npm ci --install-strategy=nested",
-      "buildCommand": "npm run build:client",
-      "distPath": "/tmp/verify_client_ctx/apps/client/dist",
+      "commands": [
+        "npm ci --install-strategy=nested",
+        "printf '#!/bin/sh\\nnode /tmp/client_ctx/apps/client/node_modules/typescript/bin/tsc \"$@\"\\n' > /usr/local/bin/tsc",
+        "npm run build:client"
+      ],
       "distExists": true
     },
-    {
-      "service": "lander",
-      "contextShape": [
+    "lander": {
+      "context": [
         "package.json",
         "package-lock.json",
         "tsconfig.base.json",
         "packages/**",
         "apps/lander/**"
       ],
-      "installCommand": "npm ci --install-strategy=nested",
-      "buildCommand": "npm run build:lander",
-      "distPath": "/tmp/verify_lander_ctx/apps/lander/dist",
+      "commands": [
+        "npm ci --install-strategy=nested",
+        "printf '#!/bin/sh\\nnode /tmp/lander_ctx/apps/lander/node_modules/typescript/bin/tsc \"$@\"\\n' > /usr/local/bin/tsc",
+        "npm run build:lander"
+      ],
       "distExists": true
     }
-  ],
-  "notes": [
-    "Verification reproduced the effective Dockerfile workspace contract without copying the opposite app.",
-    "Both isolated build contexts produced dist output successfully."
-  ]
+  },
+  "ok": true
 }

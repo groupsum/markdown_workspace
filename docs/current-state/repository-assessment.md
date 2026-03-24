@@ -125,3 +125,9 @@ The image build now installs with `npm ci --install-strategy=nested` and runs th
 That keeps the client image independent from the lander app source, and the lander image independent from the client app source, while still making the required shared workspace packages available to TypeScript and Vite during image builds.
 
 The Docker Compose restart workflows were also widened so they trigger when shared packages or root workspace manifests change, not only when the app directory itself changes.
+
+### Docker TypeScript toolchain remediation
+
+The client and lander Docker build contexts intentionally copy only one app plus the shared workspace packages. Under `npm ci --install-strategy=nested`, build-only CLIs such as `tsc` are only present in the app workspace that declares them. Several shared packages invoke `tsc` directly during `build`, so Docker builds would fail with `sh: tsc: not found` even though the target app itself had TypeScript installed.
+
+This checkpoint fixes that by materializing a Docker-local `/usr/local/bin/tsc` wrapper that points at the copied app workspace's installed TypeScript binary before the root workspace build runs. That preserves the isolated app build contexts while making shared package builds succeed in the compose/GitHub workflow images.

@@ -21,6 +21,7 @@ COPY packages ./packages
 COPY apps/lander ./apps/lander
 
 RUN npm ci --install-strategy=nested
+RUN printf '#!/bin/sh\nnode /app/apps/lander/node_modules/typescript/bin/tsc "$@"\n' > /usr/local/bin/tsc && chmod +x /usr/local/bin/tsc
 RUN npm run build:lander
 
 FROM nginx:1.27-alpine
