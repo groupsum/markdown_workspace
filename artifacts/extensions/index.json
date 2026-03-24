@@ -1,58 +1,58 @@
 {
-  "generatedAt": "2026-03-22T19:46:29.078Z",
+  "generatedAt": "2026-03-24T02:51:58.028Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "ok": true,
   "artifacts": [
     {
       "id": "external.catalog-hello",
       "packageName": "@demo-markdown-workspace/extension-catalog-hello",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "external",
-      "artifactPath": "artifacts/extensions/external.catalog-hello/1.0.0",
+      "artifactPath": "artifacts/extensions/external.catalog-hello/1.0.1",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-03-22T19:46:28.682Z"
+      "generatedAt": "2026-03-24T02:51:57.914Z"
     },
     {
       "id": "core.gemini-agent",
       "packageName": "@markdown-workspace/extension-gemini-agent",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.0.0",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.0.1",
       "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-03-22T19:46:28.824Z"
+      "generatedAt": "2026-03-24T02:51:57.951Z"
     },
     {
       "id": "core.extension-manager",
       "packageName": "@markdown-workspace/extension-manager",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.extension-manager/1.0.0",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.0.1",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-03-22T19:46:28.936Z"
+      "generatedAt": "2026-03-24T02:51:57.985Z"
     },
     {
       "id": "core.theme-studio",
       "packageName": "@markdown-workspace/extension-theme-studio",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.theme-studio/1.0.0",
+      "artifactPath": "artifacts/extensions/core.theme-studio/1.0.1",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-03-22T19:46:29.078Z"
+      "generatedAt": "2026-03-24T02:51:58.028Z"
     }
   ],
   "failures": []

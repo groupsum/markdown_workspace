@@ -1,0 +1,5 @@
+export const EXTENSION_MANAGER_EXTENSION_ID = "core.extension-manager";
+export const EXTENSION_MANAGER_VIEW_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.view`;
+export const EXTENSION_MANAGER_COMMAND_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.open`;
+export const EXTENSION_MANAGER_RAIL_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.rail`;
+//# sourceMappingURL=constants.js.map
