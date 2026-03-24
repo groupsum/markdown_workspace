@@ -1,6 +1,4 @@
 import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
-import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
-import { EXTENSION_RUNTIME_VERSION } from "@markdown-workspace/extension-runtime";
 import { THEME_CONTRACT_VERSION } from "@markdown-workspace/theme-contract";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
@@ -24,8 +22,8 @@ export const extensionManagerManifest: ExtensionManifest = {
   capabilities: ["view.register", "actionRail.register"],
   compatibility: {
     manifestVersion: 1,
-    hostApi: EXTENSION_HOST_API_VERSION,
-    runtime: EXTENSION_RUNTIME_VERSION,
+    hostApi: "1.0.1",
+    runtime: "1.0.1",
     app: ">=1.3.49",
     themeContract: THEME_CONTRACT_VERSION,
   },

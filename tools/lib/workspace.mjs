@@ -218,6 +218,11 @@ export function looksLikeExtensionManifest(value) {
 }
 
 export async function loadExtensionManifestForPackage(workspacePackage) {
+  const artifactManifest = await loadExtensionManifestFromArtifacts(workspacePackage);
+  if (artifactManifest) {
+    return artifactManifest;
+  }
+
   const manifestExport = workspacePackage.packageJson.exports?.['./manifest'];
   if (!manifestExport) {
     return null;
@@ -236,14 +241,49 @@ export async function loadExtensionManifestForPackage(workspacePackage) {
     return null;
   }
 
-  const manifestModule = await import(pathToFileURL(manifestPath).href);
-  if (looksLikeExtensionManifest(manifestModule.default)) {
-    return manifestModule.default;
+  try {
+    const manifestModule = await import(pathToFileURL(manifestPath).href);
+    if (looksLikeExtensionManifest(manifestModule.default)) {
+      return manifestModule.default;
+    }
+
+    for (const exportedValue of Object.values(manifestModule)) {
+      if (looksLikeExtensionManifest(exportedValue)) {
+        return exportedValue;
+      }
+    }
+  } catch {
+    return null;
   }
 
-  for (const exportedValue of Object.values(manifestModule)) {
-    if (looksLikeExtensionManifest(exportedValue)) {
-      return exportedValue;
+  return null;
+}
+
+async function loadExtensionManifestFromArtifacts(workspacePackage) {
+  const artifactsRoot = path.join(repoRoot, 'artifacts', 'extensions');
+  if (!(await pathExists(artifactsRoot))) {
+    return null;
+  }
+
+  const extensionDirs = await fs.readdir(artifactsRoot, { withFileTypes: true });
+  for (const extensionDir of extensionDirs) {
+    if (!extensionDir.isDirectory()) {
+      continue;
+    }
+
+    const versionDir = path.join(artifactsRoot, extensionDir.name, workspacePackage.packageJson.version);
+    const manifestPath = path.join(versionDir, 'manifest.json');
+    if (!(await pathExists(manifestPath))) {
+      continue;
+    }
+
+    try {
+      const manifest = await readJson(manifestPath);
+      if (looksLikeExtensionManifest(manifest) && manifest.packageName === workspacePackage.packageJson.name) {
+        return manifest;
+      }
+    } catch {
+      // Ignore malformed artifact files and continue searching.
     }
   }
 
