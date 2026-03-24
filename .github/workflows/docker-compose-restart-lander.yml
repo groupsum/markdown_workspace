@@ -6,6 +6,10 @@ on:
       - master
     paths:
       - apps/lander/**
+      - packages/**
+      - package.json
+      - package-lock.json
+      - tsconfig.base.json
       - docker-compose.yml
   workflow_dispatch:
 

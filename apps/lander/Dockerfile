@@ -17,14 +17,11 @@ ENV VITE_DEMO_URL=$VITE_DEMO_URL \
   VITE_NPM_REPO_URL=$VITE_NPM_REPO_URL
 
 COPY package.json package-lock.json tsconfig.base.json ./
-COPY apps/client/package.json ./apps/client/package.json
-COPY apps/lander/package.json ./apps/lander/package.json
-
-RUN npm ci --workspace apps/lander
-
+COPY packages ./packages
 COPY apps/lander ./apps/lander
 
-RUN npm run build --workspace apps/lander
+RUN npm ci --install-strategy=nested
+RUN npm run build:lander
 
 FROM nginx:1.27-alpine
 

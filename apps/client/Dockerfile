@@ -11,14 +11,11 @@ ENV VITE_OIDC_CLIENT_ID=$VITE_OIDC_CLIENT_ID \
   VITE_OIDC_CALLBACK_PATH=$VITE_OIDC_CALLBACK_PATH
 
 COPY package.json package-lock.json tsconfig.base.json ./
-COPY apps/client/package.json ./apps/client/package.json
-COPY apps/lander/package.json ./apps/lander/package.json
-
-RUN npm ci --workspace apps/client
-
+COPY packages ./packages
 COPY apps/client ./apps/client
 
-RUN npm run build --workspace apps/client
+RUN npm ci --install-strategy=nested
+RUN npm run build:client
 
 FROM nginx:1.27-alpine
 

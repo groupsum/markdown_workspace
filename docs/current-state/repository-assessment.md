@@ -102,3 +102,26 @@ The repository is stronger and publish-stable after these fixes, but several hon
 This checkpoint is **not independently certified** as “certifiably fully featured” or “certifiably fully RFC compliant” in any external standards-body sense.
 
 Within the repository’s own internal conformance model, this checkpoint now restores the publish path, regenerates current evidence artifacts, and aligns the compatibility checks with the documented API-baseline contract semantics.
+
+## Docker and compose workflow remediation
+
+The client and lander Dockerfiles previously copied only the root manifest, lockfile, and one app manifest before invoking a single-workspace build. That left the internal workspace packages unavailable inside the image build context, which caused:
+
+- `TS2307` module resolution failures for `@markdown-workspace/*` packages
+- secondary type-shape errors caused by missing or stale declaration resolution
+- failing Docker Compose restart workflows whenever the image build reached `npm run build --workspace apps/client` or `npm run build --workspace apps/lander`
+
+This checkpoint updates both Dockerfiles so each image build now copies:
+
+- the root `package.json`, `package-lock.json`, and `tsconfig.base.json`
+- the full `packages/` workspace tree
+- only the target app (`apps/client` for client, `apps/lander` for lander)
+
+The image build now installs with `npm ci --install-strategy=nested` and runs the authoritative root build target:
+
+- client: `npm run build:client`
+- lander: `npm run build:lander`
+
+That keeps the client image independent from the lander app source, and the lander image independent from the client app source, while still making the required shared workspace packages available to TypeScript and Vite during image builds.
+
+The Docker Compose restart workflows were also widened so they trigger when shared packages or root workspace manifests change, not only when the app directory itself changes.
