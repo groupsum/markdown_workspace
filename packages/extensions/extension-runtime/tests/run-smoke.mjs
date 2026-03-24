@@ -13,6 +13,8 @@ import {
 } from '../dist/storage.js';
 import { validateExtensionManifest } from '../dist/validation.js';
 import { evaluateExtensionCompatibility } from '../dist/compatibility.js';
+import { EXTENSION_RUNTIME_VERSION } from '../dist/version.js';
+import { EXTENSION_HOST_API_VERSION } from '../../../contracts/extension-host/dist/version.js';
 
 const createManifest = (id, overrides = {}) => ({
   manifestVersion: 1,
@@ -27,8 +29,8 @@ const createManifest = (id, overrides = {}) => ({
   capabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish'],
   compatibility: {
     manifestVersion: 1,
-    hostApi: '1.0.0',
-    runtime: '1.0.0',
+    hostApi: EXTENSION_HOST_API_VERSION,
+    runtime: EXTENSION_RUNTIME_VERSION,
     app: '>=0.1.0',
     themeContract: '1.0.0',
   },
@@ -63,7 +65,7 @@ const createHost = () => {
   return {
     diagnostics,
     host: {
-      apiVersion: '1.0.0',
+      apiVersion: EXTENSION_HOST_API_VERSION,
       commands: { async execute() {}, async list() { return []; } },
       views: { async open() {}, async close() {}, async focus() {}, async list() { return []; } },
       actionRail: { async list() { return []; }, async reveal() {}, async setBadge() {} },
@@ -109,7 +111,7 @@ const createHost = () => {
         platform: 'web',
         mode: 'test',
         hostVersion: '0.1.0',
-        runtimeVersion: '1.0.0',
+        runtimeVersion: EXTENSION_RUNTIME_VERSION,
         grantedCapabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish'],
       },
     },
@@ -293,11 +295,11 @@ assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessa
   const { host, diagnostics } = createHost();
   const { sink } = createSink();
   const runtime = createExtensionRuntime({ host, registrationSink: sink, storage: createInMemoryExtensionRuntimeStorage() });
-  const manifest = createManifest('incompatible', { compatibility: { manifestVersion: 1, hostApi: '2.0.0', runtime: '1.0.0', app: '>=0.1.0', themeContract: '1.0.0' } });
+  const manifest = createManifest('incompatible', { compatibility: { manifestVersion: 1, hostApi: '2.0.0', runtime: EXTENSION_RUNTIME_VERSION, app: '>=0.1.0', themeContract: '1.0.0' } });
   runtime.registerBundledExtension({ manifest, activation: 'eager', load: async () => ({ manifest, activate() {} }) });
   await runtime.start();
   assert.equal(runtime.get(manifest.id)?.status, 'incompatible');
-  assert.equal(evaluateExtensionCompatibility(manifest, { hostApiVersion: host.apiVersion, hostVersion: host.environment.hostVersion, runtimeVersion: '1.0.0', themeContractVersion: '1.0.0' }).compatible, false);
+  assert.equal(evaluateExtensionCompatibility(manifest, { hostApiVersion: host.apiVersion, hostVersion: host.environment.hostVersion, runtimeVersion: EXTENSION_RUNTIME_VERSION, themeContractVersion: '1.0.0' }).compatible, false);
   assert.ok((diagnostics[manifest.id] ?? []).length > 0);
 }
 
@@ -411,7 +413,7 @@ assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessa
     compatibility: {
       manifestVersion: 1,
       hostApi: '9.0.0',
-      runtime: '1.0.0',
+      runtime: EXTENSION_RUNTIME_VERSION,
       app: '>=0.1.0',
       themeContract: '1.0.0',
     },

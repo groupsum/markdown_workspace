@@ -8,7 +8,9 @@ import type {
   RegisteredSettingsSection,
   RegisteredView,
 } from "@markdown-workspace/extension-host";
+import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
 import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import { EXTENSION_RUNTIME_VERSION } from "../src/version.js";
 import { createExtensionRuntime } from "../src/runtime.js";
 import { evaluateExtensionCompatibility } from "../src/compatibility.js";
 import { createInMemoryExtensionRuntimeStorage, getExtensionConfigKey } from "../src/storage.js";
@@ -28,8 +30,8 @@ const createManifest = (id: string, overrides: Partial<ExtensionManifest> = {}):
   capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write", "notification.publish"],
   compatibility: {
     manifestVersion: 1,
-    hostApi: "1.0.0",
-    runtime: "1.0.0",
+    hostApi: EXTENSION_HOST_API_VERSION,
+    runtime: EXTENSION_RUNTIME_VERSION,
     app: ">=0.1.0",
     themeContract: "1.0.0",
   },
@@ -52,7 +54,7 @@ const createHost = () => {
   const diagnostics: Record<string, { code: string; message: string }[]> = {};
 
   const host: ExtensionHost = {
-    apiVersion: "1.0.0",
+    apiVersion: EXTENSION_HOST_API_VERSION,
     commands: {
       async execute() { return undefined; },
       async list() { return []; },
@@ -130,7 +132,7 @@ const createHost = () => {
       platform: "web",
       mode: "test",
       hostVersion: "0.1.0",
-      runtimeVersion: "1.0.0",
+      runtimeVersion: EXTENSION_RUNTIME_VERSION,
       grantedCapabilities: [
         "view.register",
         "actionRail.register",
@@ -247,7 +249,7 @@ describe("extension-runtime", () => {
       compatibility: {
         manifestVersion: 1,
         hostApi: "2.0.0",
-        runtime: "1.0.0",
+        runtime: EXTENSION_RUNTIME_VERSION,
         app: ">=0.1.0",
         themeContract: "1.0.0",
       },
@@ -260,7 +262,7 @@ describe("extension-runtime", () => {
     expect(evaluateExtensionCompatibility(manifest, {
       hostApiVersion: host.apiVersion,
       hostVersion: host.environment.hostVersion,
-      runtimeVersion: "1.0.0",
+      runtimeVersion: EXTENSION_RUNTIME_VERSION,
       themeContractVersion: "1.0.0",
     }).compatible).toBe(false);
   });
