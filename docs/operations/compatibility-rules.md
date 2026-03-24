@@ -48,6 +48,8 @@ External installable extensions must also pass:
 6. capability evaluation
 7. activation
 
+Contract compatibility is evaluated against the supported **API/contract baselines** (for example host API, runtime API, manifest schema, and theme contract), and extension declarations may use semver ranges such as `^1.0.0`. Patch-level package releases must not be treated as incompatible when they still satisfy the declared API baseline.
+
 ## Baselines established in this checkpoint
 
 - extension manifest version baseline: `1`

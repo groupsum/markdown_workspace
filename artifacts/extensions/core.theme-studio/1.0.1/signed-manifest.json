@@ -30,12 +30,12 @@
     ],
     "compatibility": {
       "manifestVersion": 1,
-      "hostApi": "1.0.1",
-      "runtime": "1.0.1",
+      "hostApi": "^1.0.0",
+      "runtime": "^1.0.0",
       "app": ">=1.3.49",
-      "themeContract": "1.0.0",
-      "renderer": "1.0.0",
-      "editor": "1.0.0"
+      "themeContract": "^1.0.0",
+      "renderer": "^1.0.0",
+      "editor": "^1.0.0"
     },
     "entry": {
       "module": "./index.js",
@@ -270,7 +270,7 @@
   "signature": {
     "keyId": "dev-ecdsa-p256-sha256",
     "algorithm": "ecdsa-p256-sha256",
-    "signature": "lb1X5Y9uVlbpYkTP3uquCSiuGIlZD82xkPObS50sjAjJ4Cf4Ou9M8M-GVXvJxLLP_O5NabsNtrhdpQaotk387Q",
-    "signedAt": "2026-03-24T02:52:14.024Z"
+    "signature": "X8Nkc_bHq1cbwn4klbacqBo34kdUe3XBFLF7i0Qoe6tc15rArlkAM4TBecmSmKt3MOfsAZTB3gkjq2cnoXn3fw",
+    "signedAt": "2026-03-24T07:47:27.735Z"
   }
 }

@@ -36,6 +36,9 @@ jobs:
       - name: Generate workspace matrices
         run: npm run ci:package-matrices
 
+      - name: Build workspace
+        run: npm run ci:build
+
       - name: Run integration smoke
         run: npm run test:integration
 

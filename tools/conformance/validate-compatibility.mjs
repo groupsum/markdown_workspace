@@ -1,21 +1,73 @@
+import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import {
   ensureDir,
   isCliEntry,
   loadExtensionManifestForPackage,
   loadWorkspacePackages,
+  pathExists,
   repoRoot,
   satisfiesRange,
   writeJson,
 } from '../lib/workspace.mjs';
 
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+async function readExportedLiteral(workspacePackage, exportName) {
+  if (!workspacePackage) {
+    return null;
+  }
+
+  const candidates = [
+    path.join(workspacePackage.dir, 'src', 'version.ts'),
+    path.join(workspacePackage.dir, 'dist', 'version.js'),
+  ];
+
+  for (const candidate of candidates) {
+    if (!(await pathExists(candidate))) {
+      continue;
+    }
+
+    const text = await fs.readFile(candidate, 'utf8');
+    const pattern = new RegExp(
+      `export\\s+const\\s+${escapeRegExp(exportName)}\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'|(\\d+))`,
+    );
+    const match = text.match(pattern);
+    if (!match) {
+      continue;
+    }
+    if (match[1] != null) {
+      return match[1];
+    }
+    if (match[2] != null) {
+      return match[2];
+    }
+    if (match[3] != null) {
+      return Number.parseInt(match[3], 10);
+    }
+  }
+
+  return null;
+}
+
 export async function runCompatibilityValidation() {
   const workspaces = await loadWorkspacePackages();
   const byName = new Map(workspaces.map((workspacePackage) => [workspacePackage.packageJson.name, workspacePackage]));
   const clientPackage = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/client');
+  const manifestContractPackage = byName.get('@markdown-workspace/extension-manifest');
   const hostPackage = byName.get('@markdown-workspace/extension-host');
   const runtimePackage = byName.get('@markdown-workspace/extension-runtime');
   const themeContractPackage = byName.get('@markdown-workspace/theme-contract');
+
+  const platformBaselines = {
+    client: clientPackage?.packageJson.version ?? null,
+    manifestVersion: (await readExportedLiteral(manifestContractPackage, 'EXTENSION_MANIFEST_VERSION')) ?? 1,
+    hostApi: (await readExportedLiteral(hostPackage, 'EXTENSION_HOST_API_VERSION')) ?? hostPackage?.packageJson.version ?? null,
+    runtime: (await readExportedLiteral(runtimePackage, 'EXTENSION_RUNTIME_VERSION')) ?? runtimePackage?.packageJson.version ?? null,
+    themeContract: (await readExportedLiteral(themeContractPackage, 'THEME_CONTRACT_VERSION')) ?? themeContractPackage?.packageJson.version ?? null,
+  };
 
   const extensionPackages = workspaces.filter(
     (workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@markdown-workspace/extension-runtime',
@@ -30,17 +82,28 @@ export async function runCompatibilityValidation() {
     if (!manifest) {
       errors.push('No compiled manifest available for compatibility validation.');
     } else {
-      if (hostPackage && manifest.compatibility?.hostApi && manifest.compatibility.hostApi !== hostPackage.packageJson.version) {
-        errors.push(`Host API compatibility ${manifest.compatibility.hostApi} does not match workspace host package version ${hostPackage.packageJson.version}.`);
+      if (platformBaselines.manifestVersion != null && manifest.compatibility?.manifestVersion !== platformBaselines.manifestVersion) {
+        errors.push(
+          `Manifest compatibility version ${manifest.compatibility?.manifestVersion} does not match supported manifest schema version ${platformBaselines.manifestVersion}.`,
+        );
       }
-      if (runtimePackage && manifest.compatibility?.runtime && manifest.compatibility.runtime !== runtimePackage.packageJson.version) {
-        errors.push(`Runtime compatibility ${manifest.compatibility.runtime} does not match workspace runtime version ${runtimePackage.packageJson.version}.`);
+      if (platformBaselines.hostApi && manifest.compatibility?.hostApi && !satisfiesRange(platformBaselines.hostApi, manifest.compatibility.hostApi)) {
+        errors.push(`Host API baseline ${platformBaselines.hostApi} does not satisfy manifest hostApi requirement ${manifest.compatibility.hostApi}.`);
       }
-      if (themeContractPackage && manifest.compatibility?.themeContract && manifest.compatibility.themeContract !== themeContractPackage.packageJson.version) {
-        errors.push(`Theme contract compatibility ${manifest.compatibility.themeContract} does not match workspace theme contract version ${themeContractPackage.packageJson.version}.`);
+      if (platformBaselines.runtime && manifest.compatibility?.runtime && !satisfiesRange(platformBaselines.runtime, manifest.compatibility.runtime)) {
+        errors.push(`Runtime baseline ${platformBaselines.runtime} does not satisfy manifest runtime requirement ${manifest.compatibility.runtime}.`);
       }
-      if (clientPackage && manifest.compatibility?.app && !satisfiesRange(clientPackage.packageJson.version, manifest.compatibility.app)) {
-        errors.push(`Client version ${clientPackage.packageJson.version} does not satisfy manifest app range ${manifest.compatibility.app}.`);
+      if (
+        platformBaselines.themeContract &&
+        manifest.compatibility?.themeContract &&
+        !satisfiesRange(platformBaselines.themeContract, manifest.compatibility.themeContract)
+      ) {
+        errors.push(
+          `Theme contract baseline ${platformBaselines.themeContract} does not satisfy manifest themeContract requirement ${manifest.compatibility.themeContract}.`,
+        );
+      }
+      if (platformBaselines.client && manifest.compatibility?.app && !satisfiesRange(platformBaselines.client, manifest.compatibility.app)) {
+        errors.push(`Client version ${platformBaselines.client} does not satisfy manifest app range ${manifest.compatibility.app}.`);
       }
       if (!Array.isArray(manifest.capabilities) || manifest.capabilities.length === 0) {
         warnings.push('Manifest does not declare any capabilities.');
@@ -70,12 +133,7 @@ export async function runCompatibilityValidation() {
     generatedAt: new Date().toISOString(),
     validator: 'tools/conformance/validate-compatibility.mjs',
     ok: results.every((result) => result.compatible),
-    workspaceVersions: {
-      client: clientPackage?.packageJson.version ?? null,
-      extensionHost: hostPackage?.packageJson.version ?? null,
-      extensionRuntime: runtimePackage?.packageJson.version ?? null,
-      themeContract: themeContractPackage?.packageJson.version ?? null,
-    },
+    platformBaselines,
     results,
   };
 

@@ -1,73 +1,32 @@
 # Current certification status
 
-Date: 2026-03-22
+Date: 2026-03-24
 
 ## Summary
 
-This repository checkpoint is a **Phase 13 third-party extension distribution and certification checkpoint**.
+This repository checkpoint is a **publish-stability remediation checkpoint** built on the Phase 13 extension-distribution work.
 
-It is **not yet independently certified** as:
+It is **not independently certified** as:
 - certifiably fully featured
 - certifiably fully RFC compliant
 
-## What is complete in this checkpoint
+## What is now true in this checkpoint
 
-- root workspace package graph
-- normalized `apps/client` and `apps/lander`
-- implemented contract packages
-- implemented shared packages
-- implemented renderer packages
-- implemented editor packages
-- implemented first-party extension packages:
-  - `@markdown-workspace/extension-runtime`
-  - `@markdown-workspace/extension-manager`
-  - `@markdown-workspace/extension-gemini-agent`
-  - `@markdown-workspace/extension-theme-studio`
-- implemented sample external extension package:
-  - `@demo-markdown-workspace/extension-catalog-hello`
-- client extension-ready host architecture from Phase 6
-- runtime-proven bundled extension loading from Phase 7 onward
-- i18n and theme interop hardening from Phase 9
-- first workflow extensions delivered in Phases 10 and 11
-- Phase 12 operational layer:
-  - root CI workflow
-  - root conformance workflow
-  - Changesets-based package version/publish workflow
-  - extension artifact bundle/integrity workflow
-  - release evidence workflow
-  - generated conformance artifacts
-  - generated extension artifact catalog and integrity metadata
-  - generated release evidence artifacts
-- Phase 13 external distribution layer:
-  - extension catalog format
-  - signed manifest format
-  - trusted signer metadata
-  - integrity-checked ESM artifact bundles
-  - runtime install/update/remove flows
-  - local cache and rehydration for installed extensions
-  - trust-policy and allowlist model
-  - third-party authoring documentation
-  - extension certification checklist
-  - conformance tests for external artifact verification
+- publish compatibility validation is aligned to API/contract baselines instead of package patch-version equality
+- extension manifests now declare semver compatibility ranges for the platform contracts they target
+- extension artifacts are regenerated and re-signed during conformance instead of relying on stale committed digests
+- the publish-extensions workflow now runs explicit compatibility validation
+- the conformance workflow now builds the workspace before manifest and compatibility validators execute
+- current evidence artifacts have been regenerated from the updated source state
 
-## What was directly verified in this checkpoint
-
-- extension runtime smoke tests, including external install/update/remove/cache scenarios
-- sample external extension smoke test
-- runtime and sample external package dry-run pack validation
-- external artifact bundle generation
-- external artifact signing
-- external artifact validation
-- conformance artifact generation with all current checks passing
-
-## Why independent certification is not claimed
+## Why independent certification is still not claimed
 
 - no independent certifier evaluated this checkpoint
-- no formally scoped RFC corpus was declared and tested end-to-end
-- production signing-key management and live hosted catalog deployment were not exercised from this container
-- client UI for broad external catalog management remains less complete than the runtime and tooling surface
+- no formally declared external RFC corpus was audited end-to-end
+- production signing infrastructure was not exercised with live managed keys from this container
+- broader product hardening work remains outside this checkpoint, especially around exhaustive browser automation and visual certification depth
 
-## Current honest status
+## Honest status
 
-This checkpoint completes the internal Phase 13 implementation plan and generates real evidence artifacts.
-It is a strong repository checkpoint, but it is **not a substitute for independent certification or an externally scoped RFC audit**.
+This update restores repository-internal publishability and conformance evidence generation.
+It should be treated as a stronger, corrected checkpoint rather than an external certification claim.

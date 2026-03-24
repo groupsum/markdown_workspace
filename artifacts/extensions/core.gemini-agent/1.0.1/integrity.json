@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T02:52:14.019Z",
+  "generatedAt": "2026-03-24T07:47:27.724Z",
   "artifact": {
     "id": "core.gemini-agent",
     "packageName": "@markdown-workspace/extension-gemini-agent",
@@ -11,20 +11,20 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-03-24T02:51:57.951Z"
+    "generatedAt": "2026-03-24T07:47:27.179Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "5231ffc4a6d353e9fb94b938198dfa9fa6dc3848f779ed18b084e0f2c51e9cba"
+      "sha256": "31abe94fcd76cfab716d0c4bcbc7263bc20957527c677443b5e395e38474c507"
     },
     {
       "path": "LICENSE",
-      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
     },
     {
       "path": "manifest.json",
-      "sha256": "baf654d1d6418f752110eb7821e6f359ea356cea86d6d854a93aa82cd40f41b7"
+      "sha256": "ed95391fee67dd930bb1be11e9d43d31b073abbdd8a963a1e995dd09ed6ae349"
     },
     {
       "path": "package.json",
@@ -36,7 +36,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "e08bc797d27c7816a80a57415f56edf9a5b890b49afffe99f6a757cd0cb16649"
+      "sha256": "08ed671123d8302c279d6d241335dc3eb8841cee3807bd65fd243265a67af584"
     }
   ],
   "provenance": {

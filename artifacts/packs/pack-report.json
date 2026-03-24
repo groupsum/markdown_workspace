@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-22T16:43:22.072Z",
+  "generatedAt": "2026-03-24T07:47:11.968Z",
   "ok": true,
   "packed": [
     {
@@ -7,14 +7,14 @@
       "path": "apps/client",
       "packed": [
         {
-          "id": "@swarmauri/markspace@1.3.49",
+          "id": "@swarmauri/markspace@1.3.51",
           "name": "@swarmauri/markspace",
-          "version": "1.3.49",
-          "size": 506051,
-          "unpackedSize": 1635731,
-          "shasum": "0d8f2a9757bc6df1bf0d6463d23ae4767b973056",
-          "integrity": "sha512-ayV2iVgiUn64LeSZUawtRLRnZYxBblVxZWQ8yMoQFIJdaCD8M3XjJ1uczLQFqZFY8zm9KrLboF6A6+SZMW6v8g==",
-          "filename": "swarmauri-markspace-1.3.49.tgz",
+          "version": "1.3.51",
+          "size": 506083,
+          "unpackedSize": 1635868,
+          "shasum": "57d79ef366c41b11339fc2b99359e0dbb267f992",
+          "integrity": "sha512-EW6VwwrknrYm1lcEAY8comRDSoSFtrg+HacimEUI+FXnVx7lF9pjvxeUXG3YYJSuBwqN6mj3458k/mLoUbI+eg==",
+          "filename": "swarmauri-markspace-1.3.51.tgz",
           "files": [
             {
               "path": "README.md",
@@ -63,7 +63,7 @@
             },
             {
               "path": "package.json",
-              "size": 2138,
+              "size": 2275,
               "mode": 420
             }
           ],
@@ -77,14 +77,14 @@
       "path": "packages/contracts/extension-host",
       "packed": [
         {
-          "id": "@markdown-workspace/extension-host@1.0.0",
+          "id": "@markdown-workspace/extension-host@1.0.1",
           "name": "@markdown-workspace/extension-host",
-          "version": "1.0.0",
-          "size": 6140,
-          "unpackedSize": 25476,
-          "shasum": "70cab45d4b40f3df8b9bcb566b9972e384fd64ea",
-          "integrity": "sha512-kV32EzCFyz5G36aNAPL+1PEOmRiD5VgaXikDEQ1BiGmYbJN9zh/n9CtW5w5J5r6QFdkEbqod3eEXr5zu0f4WeQ==",
-          "filename": "markdown-workspace-extension-host-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 6184,
+          "unpackedSize": 25600,
+          "shasum": "938af2cba56157d9c14cb059b3c9d1a6314da3ee",
+          "integrity": "sha512-IEXsXPgNsrdsRQ4NLvZBjVPU+XNHHQQpac8+podEw9alkYxJhmptNqNEI9DAE2Po1D0DZzgVX6/VGbG+q2OweA==",
+          "filename": "markdown-workspace-extension-host-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -218,7 +218,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 140,
+              "size": 145,
               "mode": 420
             },
             {
@@ -233,7 +233,7 @@
             },
             {
               "path": "package.json",
-              "size": 1769,
+              "size": 1888,
               "mode": 420
             }
           ],
@@ -250,15 +250,15 @@
           "id": "@markdown-workspace/extension-manifest@1.0.0",
           "name": "@markdown-workspace/extension-manifest",
           "version": "1.0.0",
-          "size": 6771,
-          "unpackedSize": 27588,
-          "shasum": "fb8fc7dd7289019c5dc6037225c19f7a1e8ea0ac",
-          "integrity": "sha512-t6WoVJL+uBORbLcAm3wRCgzHL0edZRnvATZ5XiWTGb6KgYfUfuzQ0iXLt0RuKhDVLdXxpd22ERiJ22jwMzxgqA==",
+          "size": 7723,
+          "unpackedSize": 33932,
+          "shasum": "46f7f19e5e058be3b96e4685eda3ed86243ea18e",
+          "integrity": "sha512-0TtbtEs13JeT5EPPalyiS7BiYp+LBZuyZV5xSw40nOX1MwGp5q/ZAv+179B1rcJidH7l4J9CLC0gJe7iJ4DK9A==",
           "filename": "markdown-workspace-extension-manifest-1.0.0.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 959,
+              "size": 1082,
               "mode": 420
             },
             {
@@ -279,6 +279,26 @@
             {
               "path": "dist/capabilities.js.map",
               "size": 331,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.d.ts",
+              "size": 1756,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.d.ts.map",
+              "size": 1654,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.js",
+              "size": 86,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.js.map",
+              "size": 147,
               "mode": 420
             },
             {
@@ -323,12 +343,12 @@
             },
             {
               "path": "dist/entry.d.ts",
-              "size": 421,
+              "size": 462,
               "mode": 420
             },
             {
               "path": "dist/entry.d.ts.map",
-              "size": 488,
+              "size": 531,
               "mode": 420
             },
             {
@@ -383,22 +403,22 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 378,
+              "size": 440,
               "mode": 420
             },
             {
               "path": "dist/index.d.ts.map",
-              "size": 341,
+              "size": 385,
               "mode": 420
             },
             {
               "path": "dist/index.js",
-              "size": 376,
+              "size": 438,
               "mode": 420
             },
             {
               "path": "dist/index.js.map",
-              "size": 339,
+              "size": 383,
               "mode": 420
             },
             {
@@ -462,6 +482,26 @@
               "mode": 420
             },
             {
+              "path": "dist/signature.d.ts",
+              "size": 857,
+              "mode": 420
+            },
+            {
+              "path": "dist/signature.d.ts.map",
+              "size": 788,
+              "mode": 420
+            },
+            {
+              "path": "dist/signature.js",
+              "size": 106,
+              "mode": 420
+            },
+            {
+              "path": "dist/signature.js.map",
+              "size": 163,
+              "mode": 420
+            },
+            {
               "path": "dist/support.d.ts",
               "size": 435,
               "mode": 420
@@ -488,7 +528,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 286,
+              "size": 306,
               "mode": 420
             },
             {
@@ -503,11 +543,11 @@
             },
             {
               "path": "package.json",
-              "size": 2008,
+              "size": 2356,
               "mode": 420
             }
           ],
-          "entryCount": 50,
+          "entryCount": 58,
           "bundled": []
         }
       ]
@@ -520,10 +560,10 @@
           "id": "@markdown-workspace/theme-contract@1.0.0",
           "name": "@markdown-workspace/theme-contract",
           "version": "1.0.0",
-          "size": 10090,
-          "unpackedSize": 65882,
-          "shasum": "9e9c46bd77a2511a7e61e3ca0bcb898cc048f861",
-          "integrity": "sha512-yYupqavMusxZ891G1OgQ1icbBlha6cbHXbjWboNBe/0+OHZ+Su3zFhC0ZJ635Inzh/tP6QwRIZnALeRqm8OJTg==",
+          "size": 10148,
+          "unpackedSize": 66001,
+          "shasum": "17713ba098ac90be871ab2067fbe5c5c63741a76",
+          "integrity": "sha512-fFb3xmJFbOasyj2MpWSj0WEl+nofQWZrP4OxxMoFrahws0yB/3qjYEH2wG0XqjkzG4vELeKZef+B0UW/asWk1A==",
           "filename": "markdown-workspace-theme-contract-1.0.0.tgz",
           "files": [
             {
@@ -658,7 +698,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 140,
+              "size": 145,
               "mode": 420
             },
             {
@@ -673,7 +713,7 @@
             },
             {
               "path": "package.json",
-              "size": 1473,
+              "size": 1587,
               "mode": 420
             }
           ],
@@ -687,14 +727,14 @@
       "path": "packages/editor/markdown-editor-core",
       "packed": [
         {
-          "id": "@markdown-workspace/markdown-editor-core@1.0.0",
+          "id": "@markdown-workspace/markdown-editor-core@1.0.1",
           "name": "@markdown-workspace/markdown-editor-core",
-          "version": "1.0.0",
-          "size": 7957,
-          "unpackedSize": 34555,
-          "shasum": "048f5d03cdf588b2225eeac52e3859b4915fbed1",
-          "integrity": "sha512-zK9/4/BsbSJzV1tQL6elzgOm7Fm0keXpqiEag67LaJ1i/fwFn2A3mZ1wHsZ35QlnHcXzmsd1cJ+Opw2WFpPSGw==",
-          "filename": "markdown-workspace-markdown-editor-core-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 8010,
+          "unpackedSize": 34681,
+          "shasum": "7eab808ea1df701c1b7de3d57ebd0315364ba971",
+          "integrity": "sha512-GiUge87G/KinrKOGJtwezjazGmTdw/Wp3Vw7GZCUzxUu5MWyG5OyeR6IyUN3XNwfoM24QezdUhuXNeeyLQDLAA==",
+          "filename": "markdown-workspace-markdown-editor-core-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -863,7 +903,7 @@
             },
             {
               "path": "package.json",
-              "size": 1760,
+              "size": 1886,
               "mode": 420
             }
           ],
@@ -877,14 +917,14 @@
       "path": "packages/editor/markdown-editor-react",
       "packed": [
         {
-          "id": "@markdown-workspace/markdown-editor-react@1.0.0",
+          "id": "@markdown-workspace/markdown-editor-react@1.0.2",
           "name": "@markdown-workspace/markdown-editor-react",
-          "version": "1.0.0",
-          "size": 8985,
-          "unpackedSize": 38317,
-          "shasum": "17588fd3abc83b3b02d50c4d2cf4fc98cbdd1df2",
-          "integrity": "sha512-IDojGNHoFuhaEl/2SHzJmF6Gl49pJE59L5tfuLqeRXjHPCDJPsLDN/VRaLubuaCReXRPoMI+BnyR5p5FysGPKg==",
-          "filename": "markdown-workspace-markdown-editor-react-1.0.0.tgz",
+          "version": "1.0.2",
+          "size": 9047,
+          "unpackedSize": 38444,
+          "shasum": "cc9d5c60370eed29c403e62f9b09893a1cb85308",
+          "integrity": "sha512-d0cAhtWyKR3V16JLgcd+X2g7NIcGyDv3O2brfeaNhqyEWsFdTU0JT9YQKv7p5z3sHNfJjVE3WAzkQNN0XRjf2g==",
+          "filename": "markdown-workspace-markdown-editor-react-1.0.2.tgz",
           "files": [
             {
               "path": "README.md",
@@ -993,7 +1033,7 @@
             },
             {
               "path": "package.json",
-              "size": 1780,
+              "size": 1907,
               "mode": 420
             },
             {
@@ -1008,18 +1048,108 @@
       ]
     },
     {
+      "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "packed": [
+        {
+          "id": "@demo-markdown-workspace/extension-catalog-hello@1.0.1",
+          "name": "@demo-markdown-workspace/extension-catalog-hello",
+          "version": "1.0.1",
+          "size": 3529,
+          "unpackedSize": 11101,
+          "shasum": "528386da7f4c8c34d319c50c5c09534277d478e3",
+          "integrity": "sha512-dZymAdXE0TiveDQhhMUI+7xnhUyLYP/wx591Qns1pIjBuViMF60xBSz14o5q4sEIeG+HQQwfl05HKHzNolRb1g==",
+          "filename": "demo-markdown-workspace-extension-catalog-hello-1.0.1.tgz",
+          "files": [
+            {
+              "path": "README.md",
+              "size": 465,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts",
+              "size": 261,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts.map",
+              "size": 236,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js",
+              "size": 1222,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js.map",
+              "size": 996,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts",
+              "size": 236,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts.map",
+              "size": 221,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js",
+              "size": 3324,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js.map",
+              "size": 2105,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts",
+              "size": 101,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts.map",
+              "size": 139,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js",
+              "size": 91,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js.map",
+              "size": 147,
+              "mode": 420
+            },
+            {
+              "path": "package.json",
+              "size": 1557,
+              "mode": 420
+            }
+          ],
+          "entryCount": 14,
+          "bundled": []
+        }
+      ]
+    },
+    {
       "packageName": "@markdown-workspace/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent",
       "packed": [
         {
-          "id": "@markdown-workspace/extension-gemini-agent@1.0.0",
+          "id": "@markdown-workspace/extension-gemini-agent@1.0.1",
           "name": "@markdown-workspace/extension-gemini-agent",
-          "version": "1.0.0",
-          "size": 30664,
-          "unpackedSize": 150763,
-          "shasum": "25761484b3147ccf925f67f82533065e0f795577",
-          "integrity": "sha512-DwOfocBqo8+lTDfcYWeQ18I7y5rKh10heuJsCt/+GB42AQOoFBsaAKjg6DdV3wfKcxGNUZG8X8wlP9cFg2/a/w==",
-          "filename": "markdown-workspace-extension-gemini-agent-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 30699,
+          "unpackedSize": 150975,
+          "shasum": "c3efa87a0b437be23264f3390ba848505dc8d5aa",
+          "integrity": "sha512-mSmE2g6jlGGe/n1gEoVUd1ZeHerE3r346HXMqsdDWopreZH5KnP/h5Sl6x8PyMrWFS3UVR/CecEEKBVJfieS0w==",
+          "filename": "markdown-workspace-extension-gemini-agent-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -1053,7 +1183,7 @@
             },
             {
               "path": "dist/constants.d.ts.map",
-              "size": 1025,
+              "size": 1074,
               "mode": 420
             },
             {
@@ -1113,7 +1243,7 @@
             },
             {
               "path": "dist/i18n.d.ts.map",
-              "size": 405,
+              "size": 418,
               "mode": 420
             },
             {
@@ -1198,7 +1328,7 @@
             },
             {
               "path": "dist/manifest.js",
-              "size": 13177,
+              "size": 13178,
               "mode": 420
             },
             {
@@ -1328,7 +1458,7 @@
             },
             {
               "path": "package.json",
-              "size": 2596,
+              "size": 2745,
               "mode": 420
             }
           ],
@@ -1342,18 +1472,18 @@
       "path": "packages/extensions/extension-manager",
       "packed": [
         {
-          "id": "@markdown-workspace/extension-manager@1.0.0",
+          "id": "@markdown-workspace/extension-manager@1.0.1",
           "name": "@markdown-workspace/extension-manager",
-          "version": "1.0.0",
-          "size": 18736,
-          "unpackedSize": 90543,
-          "shasum": "1334d37a873b1429b1a42fbdd75d614efb2dcd46",
-          "integrity": "sha512-4mYdiYqzGvqeVekD7oKlNP+dBtGP7auiZvbrucT8mnWzCoUwIrZrto+t1929ZxZ+7v9oJgaQx0/cXYSO194c6Q==",
-          "filename": "markdown-workspace-extension-manager-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 18839,
+          "unpackedSize": 90809,
+          "shasum": "ea426c30d7373c329d9a9bc969c11c144ebbfd09",
+          "integrity": "sha512-CvokgKhTULyRPyBn/CP+FBM1MGomSWFeRhZ3JHScO26WKkHuAAg5ejpLE28zmLvTlyQp2s3T8qPDU40DSQP7cA==",
+          "filename": "markdown-workspace-extension-manager-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1171,
+              "size": 1306,
               "mode": 420
             },
             {
@@ -1588,7 +1718,7 @@
             },
             {
               "path": "dist/manifest.js",
-              "size": 3741,
+              "size": 3744,
               "mode": 420
             },
             {
@@ -1638,7 +1768,7 @@
             },
             {
               "path": "package.json",
-              "size": 2089,
+              "size": 2217,
               "mode": 420
             }
           ],
@@ -1652,18 +1782,38 @@
       "path": "packages/extensions/extension-runtime",
       "packed": [
         {
-          "id": "@markdown-workspace/extension-runtime@1.0.0",
+          "id": "@markdown-workspace/extension-runtime@1.0.1",
           "name": "@markdown-workspace/extension-runtime",
-          "version": "1.0.0",
-          "size": 17829,
-          "unpackedSize": 94810,
-          "shasum": "98ad05b07336a10f508965d3ce73b0a97517189e",
-          "integrity": "sha512-TmnEp6a310om0jwus1Hib8NrNc0uG2Ro08YXbTPLhBuFmDF0oOJ0uTSzLdUgQ7kzYVdojMI18cIaAVaSLi3NaA==",
-          "filename": "markdown-workspace-extension-runtime-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 28807,
+          "unpackedSize": 153354,
+          "shasum": "c131ce703acf3627cb15e98cd9a5687987a0272f",
+          "integrity": "sha512-LLn0O4A7WThMNQLLRevmS9Aq1RQ/uTJyF8ikOpW25kLwaDDgG9In4/ONaeaw/95IBK7aQs7AhIZWS1FWr4Yd9g==",
+          "filename": "markdown-workspace-extension-runtime-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 590,
+              "size": 1296,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.d.ts",
+              "size": 2404,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.d.ts.map",
+              "size": 1795,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.js",
+              "size": 11260,
+              "mode": 420
+            },
+            {
+              "path": "dist/catalog.js.map",
+              "size": 11521,
               "mode": 420
             },
             {
@@ -1688,22 +1838,22 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 282,
+              "size": 312,
               "mode": 420
             },
             {
               "path": "dist/index.d.ts.map",
-              "size": 274,
+              "size": 295,
               "mode": 420
             },
             {
               "path": "dist/index.js",
-              "size": 280,
+              "size": 310,
               "mode": 420
             },
             {
               "path": "dist/index.js.map",
-              "size": 272,
+              "size": 293,
               "mode": 420
             },
             {
@@ -1728,22 +1878,22 @@
             },
             {
               "path": "dist/registry.d.ts",
-              "size": 527,
+              "size": 760,
               "mode": 420
             },
             {
               "path": "dist/registry.d.ts.map",
-              "size": 427,
+              "size": 599,
               "mode": 420
             },
             {
               "path": "dist/registry.js",
-              "size": 1438,
+              "size": 1924,
               "mode": 420
             },
             {
               "path": "dist/registry.js.map",
-              "size": 1451,
+              "size": 2006,
               "mode": 420
             },
             {
@@ -1753,47 +1903,47 @@
             },
             {
               "path": "dist/runtime.d.ts.map",
-              "size": 231,
+              "size": 232,
               "mode": 420
             },
             {
               "path": "dist/runtime.js",
-              "size": 27097,
+              "size": 38184,
               "mode": 420
             },
             {
               "path": "dist/runtime.js.map",
-              "size": 25023,
+              "size": 34306,
               "mode": 420
             },
             {
               "path": "dist/storage.d.ts",
-              "size": 758,
+              "size": 1060,
               "mode": 420
             },
             {
               "path": "dist/storage.d.ts.map",
-              "size": 570,
+              "size": 773,
               "mode": 420
             },
             {
               "path": "dist/storage.js",
-              "size": 2143,
+              "size": 2522,
               "mode": 420
             },
             {
               "path": "dist/storage.js.map",
-              "size": 2290,
+              "size": 2572,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts",
-              "size": 4590,
+              "size": 8310,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts.map",
-              "size": 4071,
+              "size": 7102,
               "mode": 420
             },
             {
@@ -1818,12 +1968,12 @@
             },
             {
               "path": "dist/validation.js",
-              "size": 2607,
+              "size": 3045,
               "mode": 420
             },
             {
               "path": "dist/validation.js.map",
-              "size": 2443,
+              "size": 2784,
               "mode": 420
             },
             {
@@ -1833,7 +1983,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 140,
+              "size": 145,
               "mode": 420
             },
             {
@@ -1848,11 +1998,11 @@
             },
             {
               "path": "package.json",
-              "size": 2240,
+              "size": 2478,
               "mode": 420
             }
           ],
-          "entryCount": 38,
+          "entryCount": 42,
           "bundled": []
         }
       ]
@@ -1862,14 +2012,14 @@
       "path": "packages/extensions/extension-theme-studio",
       "packed": [
         {
-          "id": "@markdown-workspace/extension-theme-studio@1.0.0",
+          "id": "@markdown-workspace/extension-theme-studio@1.0.1",
           "name": "@markdown-workspace/extension-theme-studio",
-          "version": "1.0.0",
-          "size": 24342,
-          "unpackedSize": 125665,
-          "shasum": "9d1ff0fea1f638bdf406f81869e84ffdc3b664cd",
-          "integrity": "sha512-fq/+IkD1zRhjzb318n1nJWFNcANigSZ0i/NJgNC8jE4HTEwcpkw/WgjKy5Dt42UJRNaYqyKLvIZMw6Zgv+/FLw==",
-          "filename": "markdown-workspace-extension-theme-studio-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 24459,
+          "unpackedSize": 125917,
+          "shasum": "f7a3907c9f3b677c9f09a9de4d829e08251d82af",
+          "integrity": "sha512-oURE0oTZKFv7CdE9ete8501iuACJvEYPvzgLqIOpMFTdt4IEa6eFDJqlR2tYmRL6qYqoh0Y2mv2su3n1rx2ctw==",
+          "filename": "markdown-workspace-extension-theme-studio-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -1948,7 +2098,7 @@
             },
             {
               "path": "dist/export.js",
-              "size": 4086,
+              "size": 4181,
               "mode": 420
             },
             {
@@ -2048,7 +2198,7 @@
             },
             {
               "path": "dist/manifest.js",
-              "size": 6356,
+              "size": 6361,
               "mode": 420
             },
             {
@@ -2138,7 +2288,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 90,
+              "size": 91,
               "mode": 420
             },
             {
@@ -2148,7 +2298,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 80,
+              "size": 81,
               "mode": 420
             },
             {
@@ -2158,7 +2308,7 @@
             },
             {
               "path": "package.json",
-              "size": 2906,
+              "size": 3056,
               "mode": 420
             }
           ],
@@ -2175,10 +2325,10 @@
           "id": "@markdown-workspace/markdown-renderer-core@1.0.0",
           "name": "@markdown-workspace/markdown-renderer-core",
           "version": "1.0.0",
-          "size": 9049,
-          "unpackedSize": 38770,
-          "shasum": "5fd091c40ca60b766cc9016774e757f458e31bf6",
-          "integrity": "sha512-QOEEHzBC6xTzh4IUi+PEoOamZsR6DtPatf9Ms70DK2LqbTsQdm+C1R/TMseGmlqtpX6IPFiPgW3HHYef9huX6Q==",
+          "size": 9095,
+          "unpackedSize": 38908,
+          "shasum": "4fdf09ce73135d39ba09a961069733f2660c28a4",
+          "integrity": "sha512-fFvP5zaKAB4CZaIRsIQYktSdq1USBM3mlpCyO2xlcnfsv/mux85ehd0OXr3MTM47w65nApHJWxjSQ33TGzujFA==",
           "filename": "markdown-workspace-markdown-renderer-core-1.0.0.tgz",
           "files": [
             {
@@ -2368,7 +2518,7 @@
             },
             {
               "path": "package.json",
-              "size": 2109,
+              "size": 2247,
               "mode": 420
             }
           ],
@@ -2382,14 +2532,14 @@
       "path": "packages/renderer/markdown-renderer-react",
       "packed": [
         {
-          "id": "@markdown-workspace/markdown-renderer-react@1.0.0",
+          "id": "@markdown-workspace/markdown-renderer-react@1.0.1",
           "name": "@markdown-workspace/markdown-renderer-react",
-          "version": "1.0.0",
-          "size": 6284,
-          "unpackedSize": 26560,
-          "shasum": "0a9e2fd9c47bfa241d28352a52d549a74cb5f787",
-          "integrity": "sha512-RM9Q0GWGpldeVatnFxrmYAo3JO1ac1Fpw9dZQXIxnv34EDPh1ijDLsHmMpE4iviWBd0xr0k4etmjlnsmcqxBQA==",
-          "filename": "markdown-workspace-markdown-renderer-react-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 6410,
+          "unpackedSize": 26694,
+          "shasum": "08f9750fcf90d3465e4e30781cd392f4d9dc8bea",
+          "integrity": "sha512-VjzOo/S3jpe0fRf6OJKpC8v3zVdHPjsZPTU8zlEEE/6q9SZfUsnbCC0Rpa0aRkO0xM8bn8UDRk1WNwjmpHgHzQ==",
+          "filename": "markdown-workspace-markdown-renderer-react-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -2518,7 +2668,7 @@
             },
             {
               "path": "package.json",
-              "size": 2007,
+              "size": 2141,
               "mode": 420
             },
             {
@@ -2540,10 +2690,10 @@
           "id": "@markdown-workspace/i18n@1.0.0",
           "name": "@markdown-workspace/i18n",
           "version": "1.0.0",
-          "size": 5567,
-          "unpackedSize": 21477,
-          "shasum": "409272f8af2a22caf14383278fa3841d218cf003",
-          "integrity": "sha512-vfD0wBvIqqEDqIaLy5k6AenidbRXL7rtqO0OWunCaKOT7p6Wgk7aaYwX1Ah/SMyKfSYYyoA/ph1/Mo6tvj52nw==",
+          "size": 5613,
+          "unpackedSize": 21588,
+          "shasum": "eef1c9b0f02053c24d86532aec2e26faae599397",
+          "integrity": "sha512-Cmb4y8pXHI5af+p2w7gOlc6x9IszpCxkMN34hU6owvvbzAHxiRW9tjGI38LHfkCjm71/T9yYQlOXPicg7Dpngg==",
           "filename": "markdown-workspace-i18n-1.0.0.tgz",
           "files": [
             {
@@ -2673,7 +2823,7 @@
             },
             {
               "path": "package.json",
-              "size": 1382,
+              "size": 1493,
               "mode": 420
             }
           ],
@@ -2690,10 +2840,10 @@
           "id": "@markdown-workspace/icons@1.0.0",
           "name": "@markdown-workspace/icons",
           "version": "1.0.0",
-          "size": 3884,
-          "unpackedSize": 19324,
-          "shasum": "974ddacf67b5ea34227aea7bfb92b3c9de49d7b0",
-          "integrity": "sha512-znzY78Rdae4oDKu6wmCcbNMaRakcNyHGy0mNfrRSoFSxmQ9Q80IMJUo522sYzCRQese005n3KQwMV8Nzg+YAkg==",
+          "size": 3927,
+          "unpackedSize": 19422,
+          "shasum": "d17f7f39f4dde4c47828bffa38f3a5c655193aa4",
+          "integrity": "sha512-3h63cGYe6DqeeHGhINdfYho6wRzpAmZU8AuI50iUVYHojjVlYzjdZ20nmg7WezeoXoB89NU26L/wqEb+e98hgw==",
           "filename": "markdown-workspace-icons-1.0.0.tgz",
           "files": [
             {
@@ -2763,7 +2913,7 @@
             },
             {
               "path": "package.json",
-              "size": 1030,
+              "size": 1128,
               "mode": 420
             }
           ],
@@ -2780,10 +2930,10 @@
           "id": "@markdown-workspace/testing@1.0.0",
           "name": "@markdown-workspace/testing",
           "version": "1.0.0",
-          "size": 3281,
-          "unpackedSize": 10649,
-          "shasum": "ce19401d4c778c034ca3509e2a64408624d2189a",
-          "integrity": "sha512-fQnLvfaBGe0T70hk/N2iasQEq+WZPgrqaGEVKjXc3kkSPBDxwRocyNXDma3mki6XYpf4X6zv1ySZ3nIlQVwX4A==",
+          "size": 3326,
+          "unpackedSize": 10758,
+          "shasum": "cd4399687fce1336e4fc43caa16a4ea3de930acf",
+          "integrity": "sha512-po7cR+AYiGuJn6QHOasDWS2oR5IA+ciaIFuvkw1rmqb857mQjHLcGsCwQFpPdkrqPhYLr51UVAwbMm9b+XJYvg==",
           "filename": "markdown-workspace-testing-1.0.0.tgz",
           "files": [
             {
@@ -2893,7 +3043,7 @@
             },
             {
               "path": "package.json",
-              "size": 1268,
+              "size": 1377,
               "mode": 420
             }
           ],
@@ -2907,14 +3057,14 @@
       "path": "packages/shared/ui-tokens",
       "packed": [
         {
-          "id": "@markdown-workspace/ui-tokens@1.0.0",
+          "id": "@markdown-workspace/ui-tokens@1.0.1",
           "name": "@markdown-workspace/ui-tokens",
-          "version": "1.0.0",
-          "size": 8897,
-          "unpackedSize": 41920,
-          "shasum": "e051129c88d558a4107c7b071ce59048cc538d06",
-          "integrity": "sha512-UtkIJh8oKoLCrWwv6JLftMglON6Q7W8uF2uzngkDn+ngHNww7+Yu4ZAHN/LFUK3joCRsyZkAIg5Y4rpfqCqVWQ==",
-          "filename": "markdown-workspace-ui-tokens-1.0.0.tgz",
+          "version": "1.0.1",
+          "size": 8941,
+          "unpackedSize": 42043,
+          "shasum": "f669448e6d90f5913e148077fe188ac1e4bd23fd",
+          "integrity": "sha512-rTZwXNFRCwUiY1ag4FCaFzB+nralhGj+Fvkj1ied1V4kscsKTc99RFydHtTq9ozXyn4I1ltyYujDUBKxZrHEkQ==",
+          "filename": "markdown-workspace-ui-tokens-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
@@ -3008,7 +3158,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 140,
+              "size": 145,
               "mode": 420
             },
             {
@@ -3023,7 +3173,7 @@
             },
             {
               "path": "package.json",
-              "size": 1636,
+              "size": 1754,
               "mode": 420
             },
             {

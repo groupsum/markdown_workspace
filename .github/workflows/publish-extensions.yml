@@ -41,6 +41,9 @@ jobs:
       - name: Build extension packages
         run: npm run build:extensions
 
+      - name: Validate extension compatibility
+        run: npm run validate:compatibility
+
       - name: Generate browser-installable extension artifacts
         run: npm run extension:bundle
 
@@ -61,6 +64,7 @@ jobs:
             extension-artifacts.tgz
             artifacts/extensions
             artifacts/conformance/latest/extension-artifact-integrity.json
+            artifacts/conformance/latest/compatibility-matrix.json
             artifacts/conformance/latest/extension-artifact-validation.json
             artifacts/conformance/latest/extension-trust-policy.json
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T02:52:14.009Z",
+  "generatedAt": "2026-03-24T07:47:27.714Z",
   "artifact": {
     "id": "external.catalog-hello",
     "packageName": "@demo-markdown-workspace/extension-catalog-hello",
@@ -10,20 +10,20 @@
     "supportedLocales": [
       "en"
     ],
-    "generatedAt": "2026-03-24T02:51:57.914Z"
+    "generatedAt": "2026-03-24T07:47:27.074Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "7eb9b4b9521e4f7b0afc8c023d3b9b8f88a01063c3f6398f3076386e267fbd19"
+      "sha256": "e1976cab4af65c58a490a48ecf03eeb56f8731aacae6ae9b2686f8ea267be74c"
     },
     {
       "path": "LICENSE",
-      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
     },
     {
       "path": "manifest.json",
-      "sha256": "a48724e907dee88b33de7ace87284946cdd761da3fb466919ccc98fb79c28c48"
+      "sha256": "5498c7733ed36b9b0f8536672e105d19e9fb7ceee452dfbcdc6e7edd03d9d37f"
     },
     {
       "path": "package.json",
@@ -35,7 +35,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "a3cdb444983c39012643a27e64a83cd8ac2fb628f839569d2dfec553d0debbfe"
+      "sha256": "b7adcafcf4d974d3749cbbe4efcb086fc7ed4661ed4e8be62c56dd734cc635b2"
     }
   ],
   "provenance": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T02:52:14.022Z",
+  "generatedAt": "2026-03-24T07:47:27.732Z",
   "artifact": {
     "id": "core.extension-manager",
     "packageName": "@markdown-workspace/extension-manager",
@@ -11,20 +11,20 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-03-24T02:51:57.985Z"
+    "generatedAt": "2026-03-24T07:47:27.227Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "5b60363939a54399b8551170af1c671632d4964363a44a2e9e781b641efb2a01"
+      "sha256": "44afcbda2f12b0e976c29832d470801a9db1058fc8333912e3e497fcc9274e2d"
     },
     {
       "path": "LICENSE",
-      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
     },
     {
       "path": "manifest.json",
-      "sha256": "e388de6c3da8169c57189051caba8e9d5371242eade2f1ab2ef0c9f76130b205"
+      "sha256": "ced2565f4cdf18264a687ca9007696f0e9ad9413186e1503ac7260a3004799e2"
     },
     {
       "path": "package.json",
@@ -36,7 +36,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "ff5525c0faa7ee0fec772422d87175815efa32cec0f233d9ab3a444fd16aa5fa"
+      "sha256": "63ca508d85567d54f01d1b671e3d80114d4b0dda4f52a9921e50ef5fa7916b06"
     }
   ],
   "provenance": {

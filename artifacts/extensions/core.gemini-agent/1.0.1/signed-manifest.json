@@ -48,12 +48,12 @@
     ],
     "compatibility": {
       "manifestVersion": 1,
-      "hostApi": "1.0.1",
-      "runtime": "1.0.1",
+      "hostApi": "^1.0.0",
+      "runtime": "^1.0.0",
       "app": ">=1.3.49",
-      "themeContract": "1.0.0",
-      "renderer": ">=1.0.0",
-      "editor": ">=1.0.0"
+      "themeContract": "^1.0.0",
+      "renderer": "^1.0.0",
+      "editor": "^1.0.0"
     },
     "entry": {
       "module": "./createGeminiAgentBundledEntry.js",
@@ -454,7 +454,7 @@
   "signature": {
     "keyId": "dev-ecdsa-p256-sha256",
     "algorithm": "ecdsa-p256-sha256",
-    "signature": "QSpLWCSKVXLrmlJ_Sxo3_Q4h4uK_xUxoA3MtxosLHY9UsttM1L51gGv8pDCsiSWojM42uiqUGGps-wIy0Garag",
-    "signedAt": "2026-03-24T02:52:14.013Z"
+    "signature": "jRDoA3RRXAJ-vZnPVc4QpDSn7xnLyNL5zc4Gb0BPCWNLROxowD1pPcL7QYhV9ooSq8vqj_DN0w51QZt6bsSeoQ",
+    "signedAt": "2026-03-24T07:47:27.720Z"
   }
 }

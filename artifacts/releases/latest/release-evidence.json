@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-22T16:43:22.187Z",
+  "generatedAt": "2026-03-24T07:47:12.130Z",
   "generator": "tools/release/generate-release-evidence.mjs",
-  "workspacePackageCount": 19,
-  "publishableWorkspaceCount": 16,
+  "workspacePackageCount": 20,
+  "publishableWorkspaceCount": 17,
   "git": {
     "sha": null,
     "ref": null,
@@ -16,13 +16,13 @@
   "packages": [
     {
       "name": "@swarmauri/markspace",
-      "version": "1.3.49",
+      "version": "1.3.51",
       "path": "apps/client",
       "category": "app"
     },
     {
       "name": "@markdown-workspace/extension-host",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/contracts/extension-host",
       "category": "contract"
     },
@@ -40,37 +40,43 @@
     },
     {
       "name": "@markdown-workspace/markdown-editor-core",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/editor/markdown-editor-core",
       "category": "editor"
     },
     {
       "name": "@markdown-workspace/markdown-editor-react",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "path": "packages/editor/markdown-editor-react",
       "category": "editor"
     },
     {
+      "name": "@demo-markdown-workspace/extension-catalog-hello",
+      "version": "1.0.1",
+      "path": "packages/extensions/extension-catalog-hello",
+      "category": "extension"
+    },
+    {
       "name": "@markdown-workspace/extension-gemini-agent",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/extensions/extension-gemini-agent",
       "category": "extension"
     },
     {
       "name": "@markdown-workspace/extension-manager",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/extensions/extension-manager",
       "category": "extension"
     },
     {
       "name": "@markdown-workspace/extension-runtime",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/extensions/extension-runtime",
       "category": "extension"
     },
     {
       "name": "@markdown-workspace/extension-theme-studio",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/extensions/extension-theme-studio",
       "category": "extension"
     },
@@ -82,7 +88,7 @@
     },
     {
       "name": "@markdown-workspace/markdown-renderer-react",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/renderer/markdown-renderer-react",
       "category": "renderer"
     },
@@ -106,7 +112,7 @@
     },
     {
       "name": "@markdown-workspace/ui-tokens",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "packages/shared/ui-tokens",
       "category": "shared"
     }

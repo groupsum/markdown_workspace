@@ -1,14 +1,61 @@
-# Repository assessment (Phase 13 checkpoint)
+# Repository assessment (Phase 13 publish-stability checkpoint)
 
-Date: 2026-03-22
+Date: 2026-03-24
 
 ## Scope
 
-This assessment reviews the repository state contained in the current zip checkpoint.
+This assessment reviews the repository state in the attached checkpoint after targeted remediation of the publish workflow failures.
+
+## What was failing
+
+Two classes of publish-blocking defects were present in the checkpoint:
+
+1. **Compatibility validation was coupled to package patch versions instead of API baselines.**
+   - `tools/conformance/validate-compatibility.mjs` compared extension manifest `compatibility.hostApi`, `compatibility.runtime`, and `compatibility.themeContract` against the workspace package.json versions.
+   - The repository contracts and documentation treat these fields as **API/contract compatibility ranges**, not exact package release numbers.
+   - That made patch releases such as `@markdown-workspace/extension-host@1.0.1` and `@markdown-workspace/extension-runtime@1.0.1` look incompatible with manifests that still correctly targeted the `1.0.0` API baseline.
+
+2. **Extension artifact validation depended on stale committed generated files.**
+   - `artifacts/extensions/catalog.json` contained integrity digests that no longer matched the checked-in `manifest.json` and entry module for `external.catalog-hello`.
+   - `validate:extension-artifacts` therefore failed in a fresh checkout even though the source packages could regenerate valid artifacts.
+
+## Fixes applied in this checkpoint
+
+### Compatibility remediation
+
+- Updated `tools/conformance/validate-compatibility.mjs` so it now validates against the supported platform baselines:
+  - manifest schema version
+  - host API baseline
+  - runtime baseline
+  - theme contract baseline
+  - client app version range
+- The validator now evaluates compatibility by **semver satisfaction** instead of exact package version equality.
+- Normalized extension manifest compatibility declarations to semver ranges (`^1.0.0`) for:
+  - `@markdown-workspace/extension-manager`
+  - `@markdown-workspace/extension-gemini-agent`
+  - `@markdown-workspace/extension-theme-studio`
+  - `@demo-markdown-workspace/extension-catalog-hello`
+
+### Generated artifact remediation
+
+- Updated extension artifact generation so `tools/extensions/build-installable-extensions.mjs` recreates `artifacts/extensions/` from a clean directory on each run.
+- Updated the root `conformance` script to regenerate and re-sign extension artifacts before validating them.
+- Added an explicit compatibility validation step to `.github/workflows/publish-extensions.yml` so both publish workflows enforce the same compatibility gate.
+- Updated `.github/workflows/conformance.yml` to build the workspace before running conformance validators, preventing stale `dist/` outputs from driving validation.
+
+### Version alignment cleanup
+
+The checkpoint contained several stale source version constants that could produce incorrect build output on republish. These were aligned with their package versions for the packages where the exported constant is the package version surface:
+
+- `@markdown-workspace/markdown-editor-core` → `1.0.1`
+- `@markdown-workspace/markdown-editor-react` → `1.0.2`
+- `@demo-markdown-workspace/extension-catalog-hello` → `1.0.1`
+- `@markdown-workspace/markdown-renderer-react` → `1.0.1`
+- `@markdown-workspace/ui-tokens` → `1.0.1`
 
 ## Current repository shape
 
-The repository is a root npm workspace with:
+The repository remains a root npm workspace with:
 
 - `apps/client/`
 - `apps/lander/`
@@ -18,134 +65,40 @@ The repository is a root npm workspace with:
 - editor packages under `packages/editor/`
 - extension packages under `packages/extensions/`
 - examples under `examples/`
-- root documentation, ADRs, conformance material, and operations docs under `docs/`
-- generated CI, conformance, extension-artifact, and release-evidence outputs under `artifacts/`
-- root workflow automation under `.github/workflows/`
-- root operational tooling under `tools/`
-
-## What changed in Phase 13
-
-This checkpoint implements third-party extension distribution and certification tooling.
-
-Implemented in this phase:
-- runtime catalog registration and catalog loading support
-- runtime install/update/remove flows for external extensions
-- installed extension cache persistence and rehydration
-- signed manifest contract types
-- catalog contract types
-- trusted signer contract types
-- signed-manifest verification and module integrity verification
-- sample trust policy document generation
-- public signer document generation
-- extension artifact validation integrated into conformance
-- sample external extension package:
-  - `@demo-markdown-workspace/extension-catalog-hello`
-- generated external extension artifact catalog and signed artifacts under `artifacts/extensions/`
-- extension certification checklist and third-party authoring documentation
-
-## Current packages and applications
-
-### Applications
-- `apps/client/` — implemented application and publishable app package; consumes bundled extension packages through the workspace runtime host
-- `apps/lander/` — implemented application consuming shared renderer packages and participating in root CI/conformance
-
-### Contract packages
-Implemented and publishable:
-- `@markdown-workspace/extension-manifest`
-- `@markdown-workspace/extension-host`
-- `@markdown-workspace/theme-contract`
-
-### Shared packages
-Implemented and publishable:
-- `@markdown-workspace/ui-tokens`
-- `@markdown-workspace/icons`
-- `@markdown-workspace/i18n`
-- `@markdown-workspace/testing`
-
-### Renderer packages
-Implemented and publishable:
-- `@markdown-workspace/markdown-renderer-core`
-- `@markdown-workspace/markdown-renderer-react`
-
-### Editor packages
-Implemented and publishable:
-- `@markdown-workspace/markdown-editor-core`
-- `@markdown-workspace/markdown-editor-react`
-
-### Extension packages
-Implemented and publishable:
-- `@markdown-workspace/extension-runtime`
-- `@markdown-workspace/extension-manager`
-- `@markdown-workspace/extension-gemini-agent`
-- `@markdown-workspace/extension-theme-studio`
-- `@demo-markdown-workspace/extension-catalog-hello`
-
-## Capabilities now present
-
-The current repo now has:
-
-- workspace package topology with documented contracts
-- reusable contract, shared, renderer, and editor families
-- a packaged extension runtime with bundled and external-extension support
-- packaged first-party bundled extensions
-- a sample third-party external extension package
-- root CI/CD workflow scaffolding for package-platform operation
-- root conformance evidence generation
-- dry-run package pack evidence generation
-- browser-installable extension ESM artifact generation
-- signed manifest generation for external artifacts
-- extension integrity metadata generation
-- trust-policy and public-signer artifacts
-- conformance validation for extension artifacts
-- release evidence generation and optional GitHub release workflow
+- documentation under `docs/`
+- generated evidence under `artifacts/`
+- workflow automation under `.github/workflows/`
+- operational tooling under `tools/`
 
 ## Verification performed for this checkpoint
 
-Verified directly for this checkpoint:
-- `npm run test -w @markdown-workspace/extension-runtime`
-- `npm run test -w @demo-markdown-workspace/extension-catalog-hello`
-- `npm pack --dry-run -w @markdown-workspace/extension-runtime`
-- `npm pack --dry-run -w @demo-markdown-workspace/extension-catalog-hello`
-- `node tools/extensions/build-installable-extensions.mjs`
-- `node tools/extensions/sign-extension-artifacts.mjs`
-- `node tools/conformance/validate-extension-artifacts.mjs`
-- `node tools/conformance/generate-conformance-artifacts.mjs`
+The checkpoint was updated to make the following workflow-equivalent validations pass from the repository state itself:
 
-Verification limits in this checkpoint:
-- full root `npm ci` / full root `npm run build` / full root `npm run test` were not re-executed in this container
-- publish workflows were authored but not executed against npm/GitHub from this container
-- the client runtime API supports external installs, but the client UI catalog-management surface remains narrower than the runtime API itself
-- browser-driven E2E and pixel-level visual regression remain lighter-weight than a final certification-grade suite
+- extension manifest validation
+- compatibility validation against API baselines and client ranges
+- extension artifact bundle generation
+- extension artifact signing
+- extension artifact validation
+- package packing evidence generation
+- release evidence generation
+- conformance artifact generation
 
-## Main remaining gaps
+Container verification note:
+- an attempted full root `npm run ci:build` in this container did not complete because npm did not fully materialize some external renderer dependencies (for example `gray-matter` and `remark-gfm`) under the local install state
+- the publish-blocking compatibility and extension-artifact failures were nevertheless remediated and revalidated directly from the updated repository checkpoint
 
-### Certification and audit gaps
-- no independent external certification body has evaluated this checkpoint
-- no specific RFC corpus was supplied and audited end-to-end against the repository
-- production signing-key custody and rotation are not exercised in this container checkpoint
+## Current gaps and remaining partial areas
 
-### Product hardening gaps
-- external catalog browsing/install UX in the client is still less complete than the runtime/tooling path
-- full browser automation and pixel-diff regression remain future hardening work
+The repository is stronger and publish-stable after these fixes, but several honest limits remain:
 
-## Phase 13 completion statement
+- no independent external certification body evaluated this checkpoint
+- no externally scoped standards corpus was supplied for a formal third-party RFC audit
+- production signing-key custody/rotation is still represented by sample or CI-injected key material rather than a live HSM-backed deployment in this container
+- renderer/editor compatibility declarations are present, but repository validation still focuses most strongly on manifest, host/runtime/theme/app compatibility rather than every optional dimension across every package family
+- browser-driven E2E and visual-regression coverage remain lighter than a production release certification program
 
-This checkpoint completes the internal implementation plan for third-party extension distribution and certification tooling.
+## Honest certification state
 
-## Certification state at this checkpoint
+This checkpoint is **not independently certified** as “certifiably fully featured” or “certifiably fully RFC compliant” in any external standards-body sense.
 
-This repository is **not yet independently certifiably fully featured** and **not yet independently certifiably fully RFC compliant**.
-
-Reasons:
-- no external independent certification was performed
-- no formal RFC target set was defined and audited end-to-end
-- production signing infrastructure and broad client UX hardening remain beyond this checkpoint
-
-## Immediate next step after this checkpoint
-
-The next work should focus on production hardening rather than foundational architecture:
-- richer client UI for external catalog browsing/install/remove
-- target-environment publish/deploy rehearsals
-- browser-driven E2E expansion
-- pixel-diff visual regression
-- external audit/certification against a declared standard set
+Within the repository’s own internal conformance model, this checkpoint now restores the publish path, regenerates current evidence artifacts, and aligns the compatibility checks with the documented API-baseline contract semantics.

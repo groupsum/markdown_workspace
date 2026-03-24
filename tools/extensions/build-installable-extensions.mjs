@@ -8,6 +8,7 @@ import {
   loadWorkspacePackages,
   pathExists,
   repoRoot,
+  resetDir,
   writeJson,
   writeText,
 } from '../lib/workspace.mjs';
@@ -32,7 +33,7 @@ export async function buildInstallableExtensions() {
   const failures = [];
 
   const artifactsRoot = path.join(repoRoot, 'artifacts', 'extensions');
-  await ensureDir(artifactsRoot);
+  await resetDir(artifactsRoot);
 
   for (const workspacePackage of extensionPackages) {
     const manifest = await loadExtensionManifestForPackage(workspacePackage);
