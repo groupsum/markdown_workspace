@@ -44,7 +44,7 @@ jobs:
         run: npm ci --install-strategy=nested
 
       - name: Verify workspace
-        run: npm run ci:workspace:verify
+        run: npm run ci:workspace:verify:publish
 
       - name: Pack publishable workspaces
         run: npm run pack:packages
