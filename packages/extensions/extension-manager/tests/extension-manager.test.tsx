@@ -56,8 +56,8 @@ function createManifest(overrides: Partial<ExtensionManifest> & Pick<ExtensionMa
     capabilities: ['view.register', 'actionRail.register', 'notification.publish', 'settings.read', 'settings.write'],
     compatibility: {
       manifestVersion: 1,
-      hostApi: '1.0.0',
-      runtime: '1.0.0',
+      hostApi: '1.0.1',
+      runtime: '1.0.1',
       app: '>=1.3.49',
       themeContract: '1.0.0',
     },
@@ -108,7 +108,7 @@ function createHostHarness(): HostHarness {
   };
 
   const host: ExtensionHost = {
-    apiVersion: '1.0.0',
+    apiVersion: '1.0.1',
     commands: {
       async execute(id: string): Promise<unknown> {
         const command = commands.find((candidate) => candidate.id === id);
@@ -217,7 +217,7 @@ function createHostHarness(): HostHarness {
       platform: 'web',
       mode: 'test',
       hostVersion: '1.3.49',
-      runtimeVersion: '1.0.0',
+      runtimeVersion: '1.0.1',
       grantedCapabilities: [
         'view.register',
         'actionRail.register',
