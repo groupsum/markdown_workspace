@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-03-24T02:52:14.027Z",
+  "artifact": {
+    "id": "core.theme-studio",
+    "packageName": "@markdown-workspace/extension-theme-studio",
+    "version": "1.0.1",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.theme-studio/1.0.1",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "generatedAt": "2026-03-24T02:51:58.028Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "a9d90b1f98191059d0e7c8bd3042668e50cc8ead41d18d46611a86fe9c2438ea"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "d275b8bf781df6407dac8768c7f3701f73e2dff15b0119cc39bd91e6bf756fe9"
+    },
+    {
+      "path": "package.json",
+      "sha256": "dae3ef410d1559198cc61f04abaf694cb2db731ef7142d97c6f6fc0a5e38ae0c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d85f21698f03c5cc24249ad19842c785dda8715056b0f50204712b00bffaa0db"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "899dd3e3c464eb49ff30a18142f0830a42e1ddfa4072a3b8fa38d4ef126b2204"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}
