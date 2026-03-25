@@ -2,7 +2,7 @@ import type React from "react";
 import {
   createRendererThemeBridgeVariableRecord,
   type ThemeTokenOverrides,
-} from "@markdown-workspace/ui-tokens/theme-map";
+} from "@mdwrk/ui-tokens/theme-map";
 import type { MarkdownRendererThemeVariables } from "./types.js";
 
 export function createMarkdownRendererThemeStyle(

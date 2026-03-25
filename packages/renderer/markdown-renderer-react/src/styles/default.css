@@ -1,4 +1,4 @@
-@import url("@markdown-workspace/ui-tokens/styles/markdown.css");
+@import url("@mdwrk/ui-tokens/styles/markdown.css");
 
 .markdown-body {
   color: var(--mw-fg-primary, var(--fg-primary, inherit));

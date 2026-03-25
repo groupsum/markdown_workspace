@@ -1,4 +1,4 @@
-import type { Disposable, ExtensionConfigurationStore } from "@markdown-workspace/extension-host";
+import type { Disposable, ExtensionConfigurationStore } from "@mdwrk/extension-host";
 import type { ExtensionRuntimeStorage } from "./types.js";
 
 export const EXTENSION_ENABLED_STATE_KEY_SUFFIX = "enabled" as const;

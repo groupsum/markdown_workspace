@@ -1,6 +1,6 @@
 import React from "react";
-import type { MarkdownWorkspaceExtension } from "@markdown-workspace/extension-host";
-import type { BundledExtensionCatalogEntry } from "@markdown-workspace/extension-runtime";
+import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
+import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import {
   GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID,
   GEMINI_AGENT_COMMAND_OPEN_ID,

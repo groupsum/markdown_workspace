@@ -7,7 +7,7 @@ import { MarkdownRenderer } from "../src/component.js";
 import { createMarkdownRendererThemeStyle } from "../src/theme.js";
 import { renderMarkdownToStaticHtml, renderMarkdownToStaticHtmlDocument } from "../src/server.js";
 
-describe("@markdown-workspace/markdown-renderer-react", () => {
+describe("@mdwrk/markdown-renderer-react", () => {
   it("renders markdown headings and paragraphs", () => {
     render(<MarkdownRenderer markdown={`# Title\n\nParagraph`} />);
     expect(screen.getByText("Title")).toBeInTheDocument();

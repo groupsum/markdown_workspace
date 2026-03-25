@@ -4,7 +4,7 @@ import { THEME_STUDIO_VERSION } from "./version.js";
 export const themeStudioManifest = {
     manifestVersion: 1,
     id: THEME_STUDIO_EXTENSION_ID,
-    packageName: "@markdown-workspace/extension-theme-studio",
+    packageName: "@mdwrk/extension-theme-studio",
     version: THEME_STUDIO_VERSION,
     displayName: themeStudioLabels.manifestDisplayName,
     description: themeStudioLabels.manifestDescription,

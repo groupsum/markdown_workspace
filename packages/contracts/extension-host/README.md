@@ -1,4 +1,4 @@
-# @markdown-workspace/extension-host
+# @mdwrk/extension-host
 
 Stable host API, lifecycle, context, and registration contracts for Markdown Workspace extensions.
 
@@ -41,7 +41,7 @@ Use:
 ## Build
 
 ```bash
-npm run build -w @markdown-workspace/extension-host
+npm run build -w @mdwrk/extension-host
 ```
 
 ## Publishability

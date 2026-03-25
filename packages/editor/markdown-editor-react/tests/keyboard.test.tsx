@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import "@testing-library/jest-dom/vitest";
-import "@markdown-workspace/testing/vitest-setup";
+import "@mdwrk/testing/vitest-setup";
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";

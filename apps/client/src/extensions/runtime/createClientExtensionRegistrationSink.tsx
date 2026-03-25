@@ -1,7 +1,7 @@
 import React from 'react';
-import type { ExtensionRuntimeRegistrationSink } from '@markdown-workspace/extension-runtime';
+import type { ExtensionRuntimeRegistrationSink } from '@mdwrk/extension-runtime';
 import type { ClientRuntimeServices } from '../../app/runtime/clientRuntimeTypes';
-import type { RegisteredCommand, RegisteredSettingsSection, RegisteredView } from '@markdown-workspace/extension-host';
+import type { RegisteredCommand, RegisteredSettingsSection, RegisteredView } from '@mdwrk/extension-host';
 import { ExtensionViewErrorBoundary } from './ExtensionViewErrorBoundary';
 
 function createSettingsSectionPlaceholder(extensionId: string, section: RegisteredSettingsSection): React.ReactNode {

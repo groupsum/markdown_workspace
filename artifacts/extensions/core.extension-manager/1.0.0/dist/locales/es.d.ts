@@ -1,3 +1,3 @@
-import type { ExtensionLocaleCatalog } from "@markdown-workspace/extension-host";
+import type { ExtensionLocaleCatalog } from "@mdwrk/extension-host";
 export declare const extensionManagerEsCatalog: ExtensionLocaleCatalog;
 //# sourceMappingURL=es.d.ts.map

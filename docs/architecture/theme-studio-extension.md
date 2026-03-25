@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`@markdown-workspace/extension-theme-studio` is the first-party theme authoring extension package for Markdown Workspace.
+`@mdwrk/extension-theme-studio` is the first-party theme authoring extension package for Markdown Workspace.
 
 It exists to prove that theme authoring can be delivered through the formal extension host APIs rather than through client-local DOM patching or direct imports from app internals.
 
@@ -10,7 +10,7 @@ It exists to prove that theme authoring can be delivered through the formal exte
 
 The package currently provides:
 
-- token inspection against `@markdown-workspace/theme-contract`
+- token inspection against `@mdwrk/theme-contract`
 - token editing through host theme draft APIs
 - renderer/editor live preview surfaces using the shared portable packages
 - class/token relationship inspection derived from the formal class and bridge definitions
@@ -26,13 +26,13 @@ The package currently provides:
 
 The package depends on:
 
-- `@markdown-workspace/extension-manifest`
-- `@markdown-workspace/extension-host`
-- `@markdown-workspace/extension-runtime`
-- `@markdown-workspace/theme-contract`
-- `@markdown-workspace/ui-tokens`
-- `@markdown-workspace/markdown-renderer-react`
-- `@markdown-workspace/markdown-editor-react`
+- `@mdwrk/extension-manifest`
+- `@mdwrk/extension-host`
+- `@mdwrk/extension-runtime`
+- `@mdwrk/theme-contract`
+- `@mdwrk/ui-tokens`
+- `@mdwrk/markdown-renderer-react`
+- `@mdwrk/markdown-editor-react`
 
 The package does **not** import `apps/client` internals.
 

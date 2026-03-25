@@ -1,5 +1,5 @@
-import type { ExtensionHost } from '@markdown-workspace/extension-host';
-import { EXTENSION_RUNTIME_VERSION } from '@markdown-workspace/extension-runtime';
+import type { ExtensionHost } from '@mdwrk/extension-host';
+import { EXTENSION_RUNTIME_VERSION } from '@mdwrk/extension-runtime';
 import { APP_VERSION } from '../../../constants';
 import type { ActiveEditorBridge } from '../../features/editor/activeEditorBridge';
 import type { ClientDiagnosticsService } from '../../features/diagnostics/clientDiagnosticsService';

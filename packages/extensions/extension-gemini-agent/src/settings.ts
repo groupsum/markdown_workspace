@@ -1,4 +1,4 @@
-import type { ExtensionConfigurationStore } from "@markdown-workspace/extension-host";
+import type { ExtensionConfigurationStore } from "@mdwrk/extension-host";
 import {
   GEMINI_AGENT_DEFAULT_SETTINGS,
   GEMINI_AGENT_SETTING_ALLOW_WRITEBACK,

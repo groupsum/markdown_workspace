@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import '@markdown-workspace/testing/vitest-setup';
+import '@mdwrk/testing/vitest-setup';
 
 import React from 'react';
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { ExtensionManifest, I18nLabel } from '@markdown-workspace/extension-manifest';
+import type { ExtensionManifest, I18nLabel } from '@mdwrk/extension-manifest';
 import type {
   DiagnosticRecord,
   Disposable,
@@ -15,16 +15,16 @@ import type {
   RegisteredCommand,
   RegisteredSettingsSection,
   RegisteredView,
-} from '@markdown-workspace/extension-host';
-import { EXTENSION_HOST_API_VERSION } from '@markdown-workspace/extension-host';
+} from '@mdwrk/extension-host';
+import { EXTENSION_HOST_API_VERSION } from '@mdwrk/extension-host';
 import {
   EXTENSION_RUNTIME_VERSION,
   createExtensionRuntime,
   createInMemoryExtensionRuntimeStorage,
   type BundledExtensionCatalogEntry,
   type ExtensionRuntimeRegistrationSink,
-} from '@markdown-workspace/extension-runtime';
-import { THEME_CONTRACT_VERSION } from '@markdown-workspace/theme-contract';
+} from '@mdwrk/extension-runtime';
+import { THEME_CONTRACT_VERSION } from '@mdwrk/theme-contract';
 import {
   createExtensionManagerBundledEntry,
   EXTENSION_MANAGER_VIEW_ID,
@@ -342,7 +342,7 @@ describe('extension-manager', () => {
 
     const inventoryManifest = createManifest({
       id: 'core.inventory',
-      packageName: '@markdown-workspace/inventory',
+      packageName: '@mdwrk/inventory',
       displayName: { defaultMessage: 'Inventory Extension' },
       description: { defaultMessage: 'Inventory test extension.' },
     });
@@ -385,7 +385,7 @@ describe('extension-manager', () => {
 
     const manifest = createManifest({
       id: 'core.toggle',
-      packageName: '@markdown-workspace/toggle',
+      packageName: '@mdwrk/toggle',
       displayName: { defaultMessage: 'Toggle Extension' },
       description: { defaultMessage: 'Toggle test extension.' },
     });
@@ -428,7 +428,7 @@ describe('extension-manager', () => {
 
     const manifest = createManifest({
       id: 'core.settings-form',
-      packageName: '@markdown-workspace/settings-form',
+      packageName: '@mdwrk/settings-form',
       displayName: { defaultMessage: 'Settings Form Extension' },
       description: { defaultMessage: 'Settings form test extension.' },
       settingsSchema: {
@@ -492,7 +492,7 @@ describe('extension-manager', () => {
 
     const manifest = createManifest({
       id: 'core.permissions',
-      packageName: '@markdown-workspace/permissions',
+      packageName: '@mdwrk/permissions',
       displayName: { defaultMessage: 'Permissions Extension' },
       description: { defaultMessage: 'Permission and compatibility test extension.' },
       capabilities: ['view.register', 'actionRail.register', 'settings.read'],
@@ -528,7 +528,7 @@ describe('extension-manager', () => {
 
     const manifest = createManifest({
       id: 'core.failing',
-      packageName: '@markdown-workspace/failing',
+      packageName: '@mdwrk/failing',
       displayName: { defaultMessage: 'Failing Extension' },
       description: { defaultMessage: 'Fails during activation.' },
     });

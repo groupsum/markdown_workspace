@@ -1,10 +1,10 @@
 import React from 'react';
-import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@markdown-workspace/markdown-renderer-react';
+import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markdown-renderer-react';
 import './styles.css';
 
 const markdown = `# Portable Markdown Renderer
 
-This example is rendered through **@markdown-workspace/markdown-renderer-react**.
+This example is rendered through **@mdwrk/markdown-renderer-react**.
 
 - GFM checklists
 - tables

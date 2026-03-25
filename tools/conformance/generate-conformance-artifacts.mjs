@@ -24,7 +24,7 @@ export async function generateConformanceArtifacts() {
   const artifactReport = await validateExtensionArtifacts();
 
   const extensionCatalog = [];
-  for (const workspacePackage of workspaces.filter((candidate) => candidate.category === 'extension' && candidate.packageJson.name !== '@markdown-workspace/extension-runtime')) {
+  for (const workspacePackage of workspaces.filter((candidate) => candidate.category === 'extension' && candidate.packageJson.name !== '@mdwrk/extension-runtime')) {
     const manifest = await loadExtensionManifestForPackage(workspacePackage);
     if (!manifest) {
       continue;

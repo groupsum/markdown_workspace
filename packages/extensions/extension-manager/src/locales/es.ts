@@ -1,4 +1,4 @@
-import type { ExtensionLocaleCatalog } from "@markdown-workspace/extension-host";
+import type { ExtensionLocaleCatalog } from "@mdwrk/extension-host";
 
 export const extensionManagerEsCatalog: ExtensionLocaleCatalog = {
   locale: "es",

@@ -1,7 +1,7 @@
 import React from "react";
-import { MarkdownSourceEditor, createMarkdownEditorThemeStyleFromThemeTokens } from "@markdown-workspace/markdown-editor-react";
-import { MarkdownRenderer, createMarkdownRendererThemeStyleFromThemeTokens } from "@markdown-workspace/markdown-renderer-react";
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
+import { MarkdownSourceEditor, createMarkdownEditorThemeStyleFromThemeTokens } from "@mdwrk/markdown-editor-react";
+import { MarkdownRenderer, createMarkdownRendererThemeStyleFromThemeTokens } from "@mdwrk/markdown-renderer-react";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
 import { Download, Eye, Package, RefreshCw, RotateCcw, Save, X } from "lucide-react";
 import { THEME_STUDIO_SAMPLE_MARKDOWN } from "../constants.js";
 import { themeStudioLabels } from "../i18n.js";

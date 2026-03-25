@@ -28,12 +28,12 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
-          '@markdown-workspace/ui-tokens': path.resolve(__dirname, '../../packages/shared/ui-tokens/src'),
-          '@markdown-workspace/i18n': path.resolve(__dirname, '../../packages/shared/i18n/src'),
-          '@markdown-workspace/icons': path.resolve(__dirname, '../../packages/shared/icons/src'),
-          '@markdown-workspace/extension-manifest': path.resolve(__dirname, '../../packages/contracts/extension-manifest/src'),
-          '@markdown-workspace/extension-host': path.resolve(__dirname, '../../packages/contracts/extension-host/src'),
-          '@markdown-workspace/theme-contract': path.resolve(__dirname, '../../packages/contracts/theme-contract/src'),
+          '@mdwrk/ui-tokens': path.resolve(__dirname, '../../packages/shared/ui-tokens/src'),
+          '@mdwrk/i18n': path.resolve(__dirname, '../../packages/shared/i18n/src'),
+          '@mdwrk/icons': path.resolve(__dirname, '../../packages/shared/icons/src'),
+          '@mdwrk/extension-manifest': path.resolve(__dirname, '../../packages/contracts/extension-manifest/src'),
+          '@mdwrk/extension-host': path.resolve(__dirname, '../../packages/contracts/extension-host/src'),
+          '@mdwrk/theme-contract': path.resolve(__dirname, '../../packages/contracts/theme-contract/src'),
         }
       }
     };

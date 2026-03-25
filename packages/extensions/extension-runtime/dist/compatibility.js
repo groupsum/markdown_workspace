@@ -1,6 +1,6 @@
-import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
-import { EXTENSION_MANIFEST_VERSION, EXTENSION_RUNTIME_API_BASELINE, } from "@markdown-workspace/extension-manifest";
-import { THEME_CONTRACT_VERSION } from "@markdown-workspace/theme-contract";
+import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
+import { EXTENSION_MANIFEST_VERSION, EXTENSION_RUNTIME_API_BASELINE, } from "@mdwrk/extension-manifest";
+import { THEME_CONTRACT_VERSION } from "@mdwrk/theme-contract";
 const parseVersion = (value) => {
     const match = value.trim().match(/^(\d+)\.(\d+)\.(\d+)/);
     if (!match)

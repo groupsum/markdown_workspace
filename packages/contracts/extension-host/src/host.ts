@@ -3,7 +3,7 @@ import type {
   ExtensionCapability,
   I18nLabel,
   ViewContributionDescriptor,
-} from "@markdown-workspace/extension-manifest";
+} from "@mdwrk/extension-manifest";
 import type {
   MarkdownWorkspaceThemeClassName,
   MarkdownWorkspaceThemeTokenMap,
@@ -13,7 +13,7 @@ import type {
   ThemeClassDefinition,
   ThemePreset,
   ThemeTokenDefinition,
-} from "@markdown-workspace/theme-contract";
+} from "@mdwrk/theme-contract";
 import type { Disposable, MaybePromise } from "./primitives.js";
 
 export interface HostCommandApi {

@@ -1,4 +1,4 @@
-import type { ExtensionCatalogDocument, ExtensionCatalogEntry, ExtensionIntegrity, ExtensionManifest, SignedExtensionManifest, TrustedExtensionSigner } from "@markdown-workspace/extension-manifest";
+import type { ExtensionCatalogDocument, ExtensionCatalogEntry, ExtensionIntegrity, ExtensionManifest, SignedExtensionManifest, TrustedExtensionSigner } from "@mdwrk/extension-manifest";
 import type { ExtensionArtifactTransport, ExtensionRuntimeTrustPolicy, RegisteredExternalCatalogEntry } from "./types.js";
 export declare const EXTENSION_CATALOG_SIGNED_MANIFEST_SCHEMA_VERSION: 1;
 export declare const createExtensionCatalogEntryId: (extensionId: string, version: string) => string;

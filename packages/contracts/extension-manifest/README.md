@@ -1,4 +1,4 @@
-# @markdown-workspace/extension-manifest
+# @mdwrk/extension-manifest
 
 Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for Markdown Workspace extensions.
 
@@ -32,7 +32,7 @@ This package is the authoring source of truth for extension metadata and manifes
 ## Build
 
 ```bash
-npm run build -w @markdown-workspace/extension-manifest
+npm run build -w @mdwrk/extension-manifest
 ```
 
 ## Publishability

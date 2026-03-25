@@ -1,4 +1,4 @@
-import { type MarkdownWorkspaceThemeTokenMap, type ThemePreset } from "@markdown-workspace/theme-contract";
+import { type MarkdownWorkspaceThemeTokenMap, type ThemePreset } from "@mdwrk/theme-contract";
 import type { ThemeStudioExportArtifacts, ThemeStudioMetadata, ThemeStudioPackageArtifact, ThemeStudioResolvedSettings } from "./types.js";
 export declare function sanitizeThemeIdentifier(value: string): string;
 export declare function sanitizePackageName(value: string): string;

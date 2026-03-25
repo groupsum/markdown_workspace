@@ -25,7 +25,7 @@ function createCatalogEntryId(extensionId, version) {
 export async function buildInstallableExtensions() {
   const workspaces = await loadWorkspacePackages();
   const extensionPackages = workspaces.filter(
-    (workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@markdown-workspace/extension-runtime',
+    (workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@mdwrk/extension-runtime',
   );
 
   const allArtifacts = [];

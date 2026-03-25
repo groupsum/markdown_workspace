@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ActionRailGroup } from '@markdown-workspace/extension-manifest';
+import type { ActionRailGroup } from '@mdwrk/extension-manifest';
 
 export interface ActionRailItemModel {
   readonly id: string;

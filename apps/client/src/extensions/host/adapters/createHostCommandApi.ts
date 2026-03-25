@@ -1,4 +1,4 @@
-import type { HostCommandApi } from '@markdown-workspace/extension-host';
+import type { HostCommandApi } from '@mdwrk/extension-host';
 import type { CommandRegistry } from '../../../features/commands/commandRegistry';
 
 export function createHostCommandApi(commands: CommandRegistry): HostCommandApi {

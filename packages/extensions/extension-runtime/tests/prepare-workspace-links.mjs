@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, '..');
-const nodeModulesRoot = path.join(packageRoot, 'node_modules', '@markdown-workspace');
+const nodeModulesRoot = path.join(packageRoot, 'node_modules', '@mdwrk');
 const links = {
   'extension-manifest': path.resolve(packageRoot, '../../contracts/extension-manifest'),
   'extension-host': path.resolve(packageRoot, '../../contracts/extension-host'),

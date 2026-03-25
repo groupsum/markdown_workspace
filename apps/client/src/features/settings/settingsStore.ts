@@ -1,4 +1,4 @@
-import type { Disposable, JsonValue } from '@markdown-workspace/extension-host';
+import type { Disposable, JsonValue } from '@mdwrk/extension-host';
 import { storage } from '../../../services/storage';
 
 export interface HostSettingsStore {

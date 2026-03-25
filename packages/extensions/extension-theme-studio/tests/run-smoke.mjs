@@ -114,7 +114,7 @@ assert.ok(relationships.some((entry) => entry.bridgeTarget === 'editor'));
 const exportsBundle = buildThemeStudioExports({
   themeId: 'custom-theme',
   themeName: 'Custom Theme',
-  packageName: '@markdown-workspace/theme-custom-theme',
+  packageName: '@mdwrk/theme-custom-theme',
   author: 'Markdown Workspace',
   description: 'Generated theme',
 }, tokenMap, defaultSettings);

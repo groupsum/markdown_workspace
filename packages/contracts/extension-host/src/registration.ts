@@ -4,7 +4,7 @@ import type {
   ComponentContributionDescriptor,
   SettingsSectionContributionDescriptor,
   ViewContributionDescriptor,
-} from "@markdown-workspace/extension-manifest";
+} from "@mdwrk/extension-manifest";
 
 export type ViewRenderer<Props = unknown> = (props: Props) => unknown;
 export type ComponentRenderer<Props = unknown> = (props: Props) => unknown;

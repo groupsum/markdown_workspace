@@ -1,5 +1,5 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionLocaleCatalogLoader } from "@markdown-workspace/extension-host";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionLocaleCatalogLoader } from "@mdwrk/extension-host";
 export declare const themeStudioLabel: (suffix: string, defaultMessage: string, description?: string) => I18nLabel;
 export declare const themeStudioLabels: {
     readonly manifestDisplayName: I18nLabel;

@@ -1,4 +1,4 @@
-# @markdown-workspace/extension-theme-studio
+# @mdwrk/extension-theme-studio
 
 First-party Theme Studio extension package for Markdown Workspace.
 
@@ -14,7 +14,7 @@ First-party Theme Studio extension package for Markdown Workspace.
 
 This package is implemented for the Phase 11 checkpoint.
 
-It is intended to be consumed as a bundled first-party extension through `@markdown-workspace/extension-runtime`.
+It is intended to be consumed as a bundled first-party extension through `@mdwrk/extension-runtime`.
 
 ## Certification note
 

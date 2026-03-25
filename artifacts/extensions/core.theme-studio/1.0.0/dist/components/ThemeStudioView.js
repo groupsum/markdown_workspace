@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from "react";
-import { MarkdownSourceEditor, createMarkdownEditorThemeStyleFromThemeTokens } from "@markdown-workspace/markdown-editor-react";
-import { MarkdownRenderer, createMarkdownRendererThemeStyleFromThemeTokens } from "@markdown-workspace/markdown-renderer-react";
+import { MarkdownSourceEditor, createMarkdownEditorThemeStyleFromThemeTokens } from "@mdwrk/markdown-editor-react";
+import { MarkdownRenderer, createMarkdownRendererThemeStyleFromThemeTokens } from "@mdwrk/markdown-renderer-react";
 import { Download, Eye, Package, RefreshCw, RotateCcw, Save, X } from "lucide-react";
 import { THEME_STUDIO_SAMPLE_MARKDOWN } from "../constants.js";
 import { themeStudioLabels } from "../i18n.js";

@@ -11,13 +11,13 @@
     "stripInternal": true,
     "baseUrl": "../../..",
     "paths": {
-      "@markdown-workspace/extension-manifest": [
+      "@mdwrk/extension-manifest": [
         "packages/contracts/extension-manifest/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-host": [
+      "@mdwrk/extension-host": [
         "packages/contracts/extension-host/dist/index.d.ts"
       ],
-      "@markdown-workspace/theme-contract": [
+      "@mdwrk/theme-contract": [
         "packages/contracts/theme-contract/dist/index.d.ts"
       ]
     }

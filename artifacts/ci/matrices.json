@@ -39,7 +39,7 @@
   ],
   "apps": [
     {
-      "name": "@swarmauri/markspace",
+      "name": "@mdwrk/markspace",
       "path": "apps/client",
       "build": "build:client",
       "lint": "lint:client",
@@ -57,97 +57,97 @@
   ],
   "publishablePackages": [
     {
-      "name": "@swarmauri/markspace",
+      "name": "@mdwrk/markspace",
       "path": "apps/client",
       "category": "app"
     },
     {
-      "name": "@markdown-workspace/extension-host",
+      "name": "@mdwrk/extension-host",
       "path": "packages/contracts/extension-host",
       "category": "contract"
     },
     {
-      "name": "@markdown-workspace/extension-manifest",
+      "name": "@mdwrk/extension-manifest",
       "path": "packages/contracts/extension-manifest",
       "category": "contract"
     },
     {
-      "name": "@markdown-workspace/theme-contract",
+      "name": "@mdwrk/theme-contract",
       "path": "packages/contracts/theme-contract",
       "category": "contract"
     },
     {
-      "name": "@markdown-workspace/markdown-editor-core",
+      "name": "@mdwrk/markdown-editor-core",
       "path": "packages/editor/markdown-editor-core",
       "category": "editor"
     },
     {
-      "name": "@markdown-workspace/markdown-editor-react",
+      "name": "@mdwrk/markdown-editor-react",
       "path": "packages/editor/markdown-editor-react",
       "category": "editor"
     },
     {
-      "name": "@markdown-workspace/extension-gemini-agent",
+      "name": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent",
       "category": "extension"
     },
     {
-      "name": "@markdown-workspace/extension-manager",
+      "name": "@mdwrk/extension-manager",
       "path": "packages/extensions/extension-manager",
       "category": "extension"
     },
     {
-      "name": "@markdown-workspace/extension-runtime",
+      "name": "@mdwrk/extension-runtime",
       "path": "packages/extensions/extension-runtime",
       "category": "extension"
     },
     {
-      "name": "@markdown-workspace/extension-theme-studio",
+      "name": "@mdwrk/extension-theme-studio",
       "path": "packages/extensions/extension-theme-studio",
       "category": "extension"
     },
     {
-      "name": "@markdown-workspace/markdown-renderer-core",
+      "name": "@mdwrk/markdown-renderer-core",
       "path": "packages/renderer/markdown-renderer-core",
       "category": "renderer"
     },
     {
-      "name": "@markdown-workspace/markdown-renderer-react",
+      "name": "@mdwrk/markdown-renderer-react",
       "path": "packages/renderer/markdown-renderer-react",
       "category": "renderer"
     },
     {
-      "name": "@markdown-workspace/i18n",
+      "name": "@mdwrk/i18n",
       "path": "packages/shared/i18n",
       "category": "shared"
     },
     {
-      "name": "@markdown-workspace/icons",
+      "name": "@mdwrk/icons",
       "path": "packages/shared/icons",
       "category": "shared"
     },
     {
-      "name": "@markdown-workspace/testing",
+      "name": "@mdwrk/testing",
       "path": "packages/shared/testing",
       "category": "shared"
     },
     {
-      "name": "@markdown-workspace/ui-tokens",
+      "name": "@mdwrk/ui-tokens",
       "path": "packages/shared/ui-tokens",
       "category": "shared"
     }
   ],
   "extensionArtifacts": [
     {
-      "name": "@markdown-workspace/extension-gemini-agent",
+      "name": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent"
     },
     {
-      "name": "@markdown-workspace/extension-manager",
+      "name": "@mdwrk/extension-manager",
       "path": "packages/extensions/extension-manager"
     },
     {
-      "name": "@markdown-workspace/extension-theme-studio",
+      "name": "@mdwrk/extension-theme-studio",
       "path": "packages/extensions/extension-theme-studio"
     }
   ]

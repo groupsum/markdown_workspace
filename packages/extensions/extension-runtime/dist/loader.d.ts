@@ -1,4 +1,4 @@
-import type { MarkdownWorkspaceExtension } from "@markdown-workspace/extension-host";
+import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { RegisteredRuntimeExtensionCatalogEntry } from "./types.js";
 export interface ExtensionLoader {
     load(entry: RegisteredRuntimeExtensionCatalogEntry): Promise<MarkdownWorkspaceExtension>;

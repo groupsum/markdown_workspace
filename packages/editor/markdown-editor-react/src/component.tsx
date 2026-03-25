@@ -14,7 +14,7 @@ import {
   replaceHistoryPresent,
   resetHistoryState,
   undoHistory,
-} from "@markdown-workspace/markdown-editor-core";
+} from "@mdwrk/markdown-editor-core";
 import type {
   MarkdownEditorBuiltinCommandId,
   MarkdownEditorCommandOptions,
@@ -22,7 +22,7 @@ import type {
   MarkdownEditorHistoryState,
   MarkdownEditorSelection,
   MarkdownEditorSnapshot,
-} from "@markdown-workspace/markdown-editor-core";
+} from "@mdwrk/markdown-editor-core";
 import { createMarkdownEditorThemeStyle } from "./theme.js";
 import type { MarkdownSourceEditorHandle, MarkdownSourceEditorProps } from "./types.js";
 

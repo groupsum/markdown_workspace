@@ -4,7 +4,7 @@ import { GEMINI_AGENT_EXTENSION_VERSION } from "./version.js";
 export const geminiAgentManifest = {
     manifestVersion: 1,
     id: GEMINI_AGENT_EXTENSION_ID,
-    packageName: "@markdown-workspace/extension-gemini-agent",
+    packageName: "@mdwrk/extension-gemini-agent",
     version: GEMINI_AGENT_EXTENSION_VERSION,
     displayName: geminiAgentLabels.manifestDisplayName,
     description: geminiAgentLabels.manifestDescription,

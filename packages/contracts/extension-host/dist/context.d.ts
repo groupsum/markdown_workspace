@@ -1,4 +1,4 @@
-import type { ExtensionCapability, ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionCapability, ExtensionManifest } from "@mdwrk/extension-manifest";
 import type { ExtensionLocaleCatalog, ExtensionLocaleCatalogLoader, ExtensionHost, HostEnvironment } from "./host.js";
 import type { Disposable, JsonValue } from "./primitives.js";
 import type { RegisteredActionRailItem, RegisteredCommand, RegisteredComponent, RegisteredSettingsSection, RegisteredView } from "./registration.js";

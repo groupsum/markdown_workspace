@@ -5,12 +5,12 @@
 The portable editor family provides reusable source-mode editing primitives and a React editing surface that can be consumed by the main client or by third-party applications.
 
 Implemented packages:
-- `@markdown-workspace/markdown-editor-core`
-- `@markdown-workspace/markdown-editor-react`
+- `@mdwrk/markdown-editor-core`
+- `@mdwrk/markdown-editor-react`
 
 ## Package split
 
-### `@markdown-workspace/markdown-editor-core`
+### `@mdwrk/markdown-editor-core`
 Owns:
 - document snapshot types
 - selection and cursor contracts
@@ -21,7 +21,7 @@ Owns:
 - host-facing editor API contracts
 - stable editor semantic class names
 
-### `@markdown-workspace/markdown-editor-react`
+### `@mdwrk/markdown-editor-react`
 Owns:
 - `MarkdownSourceEditor`
 - controlled/uncontrolled value handling
@@ -43,7 +43,7 @@ The main client now consumes editing through the editor package boundary rather 
 The React package exports a theme bridge through `createMarkdownEditorThemeStyle()` and an optional stylesheet:
 
 ```css
-@import url("@markdown-workspace/markdown-editor-react/styles/default.css");
+@import url("@mdwrk/markdown-editor-react/styles/default.css");
 ```
 
 The editor family uses stable semantic class names and CSS custom properties so that:

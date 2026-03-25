@@ -1,6 +1,6 @@
 import React from "react";
-import type { MarkdownWorkspaceExtension } from "@markdown-workspace/extension-host";
-import type { BundledExtensionCatalogEntry } from "@markdown-workspace/extension-runtime";
+import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
+import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import type { ExtensionManagerEntryOptions } from "./types.js";
 import { ExtensionManagerView } from "./components/ExtensionManagerView.js";
 import {

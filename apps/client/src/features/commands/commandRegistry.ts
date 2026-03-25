@@ -1,5 +1,5 @@
-import type { I18nLabel, ExtensionIcon } from '@markdown-workspace/extension-manifest';
-import type { Disposable, RegisteredCommand } from '@markdown-workspace/extension-host';
+import type { I18nLabel, ExtensionIcon } from '@mdwrk/extension-manifest';
+import type { Disposable, RegisteredCommand } from '@mdwrk/extension-host';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
 export interface ClientCommandDefinition extends RegisteredCommand {

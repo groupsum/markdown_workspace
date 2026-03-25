@@ -18,7 +18,7 @@
     "contracts",
     "typescript"
   ],
-  "name": "@markdown-workspace/extension-manifest",
+  "name": "@mdwrk/extension-manifest",
   "description": "Normative manifest, capability, settings, i18n, and contribution contracts for Markdown Workspace extensions.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -87,5 +87,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

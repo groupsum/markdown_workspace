@@ -6,7 +6,7 @@ This document describes the implemented portable renderer family added in Phase 
 
 ## Implemented packages
 
-### `@markdown-workspace/markdown-renderer-core`
+### `@mdwrk/markdown-renderer-core`
 
 Responsibilities:
 - frontmatter parsing
@@ -23,7 +23,7 @@ Primary exports:
 - `createHtmlDocument`
 - `renderMarkdownToHtmlDocument`
 
-### `@markdown-workspace/markdown-renderer-react`
+### `@mdwrk/markdown-renderer-react`
 
 Responsibilities:
 - React `<MarkdownRenderer />`
@@ -45,11 +45,11 @@ Primary exports:
 Applications and future extensions consume the renderer family as follows:
 
 ```text
-apps/client ─┬─> @markdown-workspace/markdown-renderer-react
-             └─> @markdown-workspace/markdown-renderer-core
+apps/client ─┬─> @mdwrk/markdown-renderer-react
+             └─> @mdwrk/markdown-renderer-core
 
-apps/lander ─┬─> @markdown-workspace/markdown-renderer-react
-             └─> @markdown-workspace/markdown-renderer-core
+apps/lander ─┬─> @mdwrk/markdown-renderer-react
+             └─> @mdwrk/markdown-renderer-core
 ```
 
 The React package depends on the core package. Applications should not reimplement markdown rendering once they have adopted these packages.
@@ -60,7 +60,7 @@ The renderer family does not depend on application-local stylesheets.
 
 Instead:
 - semantic class names remain stable
-- default stylesheet imports `@markdown-workspace/ui-tokens/styles/markdown.css`
+- default stylesheet imports `@mdwrk/ui-tokens/styles/markdown.css`
 - host applications can apply a theme bridge using CSS variables or inline theme style records
 
 ## Interop goal

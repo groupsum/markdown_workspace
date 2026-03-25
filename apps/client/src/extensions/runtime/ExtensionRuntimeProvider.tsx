@@ -1,8 +1,8 @@
 import React from 'react';
-import { createExtensionRuntime } from '@markdown-workspace/extension-runtime';
-import { createExtensionManagerBundledEntry } from '@markdown-workspace/extension-manager';
-import { createGeminiAgentBundledEntry } from '@markdown-workspace/extension-gemini-agent';
-import { createThemeStudioBundledEntry } from '@markdown-workspace/extension-theme-studio';
+import { createExtensionRuntime } from '@mdwrk/extension-runtime';
+import { createExtensionManagerBundledEntry } from '@mdwrk/extension-manager';
+import { createGeminiAgentBundledEntry } from '@mdwrk/extension-gemini-agent';
+import { createThemeStudioBundledEntry } from '@mdwrk/extension-theme-studio';
 import { useClientExtensionHost, useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsPanel';
 import { ExtensionRuntimeContextProvider } from './ExtensionRuntimeContext';

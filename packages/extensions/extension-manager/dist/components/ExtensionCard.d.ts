@@ -1,5 +1,5 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionRuntime, ExtensionRuntimeExtensionSnapshot } from "@markdown-workspace/extension-runtime";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionRuntime, ExtensionRuntimeExtensionSnapshot } from "@mdwrk/extension-runtime";
 export interface ExtensionCardProps {
     readonly extension: ExtensionRuntimeExtensionSnapshot;
     readonly runtime: ExtensionRuntime;

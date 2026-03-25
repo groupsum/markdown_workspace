@@ -1,4 +1,4 @@
-import type { DiagnosticRecord } from '@markdown-workspace/extension-host';
+import type { DiagnosticRecord } from '@mdwrk/extension-host';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
 export interface ClientDiagnosticsSnapshot {

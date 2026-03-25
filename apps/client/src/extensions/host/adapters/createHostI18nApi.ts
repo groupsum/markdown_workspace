@@ -3,7 +3,7 @@ import type {
   ExtensionLocaleCatalog,
   ExtensionLocaleCatalogLoader,
   HostI18nApi,
-} from '@markdown-workspace/extension-host';
+} from '@mdwrk/extension-host';
 import type { ClientI18nService } from '../../../features/i18n/clientI18nService';
 
 function qualifyMessageKey(extensionId: string, key: string): string {

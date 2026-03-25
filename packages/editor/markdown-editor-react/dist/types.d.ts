@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { MarkdownEditorBuiltinCommandId, MarkdownEditorCommandOptions, MarkdownEditorHistoryState, MarkdownEditorHostEditApi, MarkdownEditorSelection, MarkdownEditorSnapshot } from "@markdown-workspace/markdown-editor-core";
+import type { MarkdownEditorBuiltinCommandId, MarkdownEditorCommandOptions, MarkdownEditorHistoryState, MarkdownEditorHostEditApi, MarkdownEditorSelection, MarkdownEditorSnapshot } from "@mdwrk/markdown-editor-core";
 import type { MarkdownEditorThemeVariables } from "./theme.js";
 export interface MarkdownSourceEditorProps {
     readonly value?: string;

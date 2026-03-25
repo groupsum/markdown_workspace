@@ -6,7 +6,7 @@ Normative for the target extension platform.
 
 ## Sources of truth
 
-- TypeScript contract package: `@markdown-workspace/extension-manifest`
+- TypeScript contract package: `@mdwrk/extension-manifest`
 - Machine-readable schema: `docs/conformance/schemas/extension-manifest.schema.json`
 
 ## Purpose
@@ -211,7 +211,7 @@ Use to declare stability/support posture such as `experimental`, `active`, or `d
 {
   "manifestVersion": 1,
   "id": "core.gemini-agent",
-  "packageName": "@markdown-workspace/extension-gemini-agent",
+  "packageName": "@mdwrk/extension-gemini-agent",
   "version": "0.1.0",
   "displayName": {
     "key": "core.gemini-agent.manifest.displayName",

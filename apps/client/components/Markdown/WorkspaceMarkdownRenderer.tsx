@@ -1,5 +1,5 @@
 import React from 'react';
-import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@markdown-workspace/markdown-renderer-react';
+import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markdown-renderer-react';
 import { getSyntaxThemeStyle } from '../../data/themes';
 import type { AppTheme, FileNode } from '../../types';
 

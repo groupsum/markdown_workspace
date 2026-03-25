@@ -1,5 +1,5 @@
-import type { HostEditorApi, SelectionRange } from '@markdown-workspace/extension-host';
-import { replaceSelection } from '@markdown-workspace/markdown-editor-core';
+import type { HostEditorApi, SelectionRange } from '@mdwrk/extension-host';
+import { replaceSelection } from '@mdwrk/markdown-editor-core';
 import type { ClientRuntimeBridge } from '../../../app/runtime/clientRuntimeTypes';
 import type { ActiveEditorBridge } from '../../../features/editor/activeEditorBridge';
 

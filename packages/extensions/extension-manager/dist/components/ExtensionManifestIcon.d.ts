@@ -1,4 +1,4 @@
-import type { ExtensionIcon } from "@markdown-workspace/extension-manifest";
+import type { ExtensionIcon } from "@mdwrk/extension-manifest";
 export interface ExtensionManifestIconProps {
     readonly icon: ExtensionIcon;
     readonly size?: number;

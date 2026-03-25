@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ExtensionSettingField, ExtensionSettingsSchema } from '@markdown-workspace/extension-manifest';
+import type { ExtensionSettingField, ExtensionSettingsSchema } from '@mdwrk/extension-manifest';
 
 export interface SettingsSchemaRendererProps {
   readonly schema: ExtensionSettingsSchema;

@@ -1,5 +1,5 @@
 {
-  "name": "@swarmauri/markspace",
+  "name": "@mdwrk/markspace",
   "private": false,
   "version": "1.3.51",
   "type": "module",
@@ -28,24 +28,24 @@
     "access": "public"
   },
   "dependencies": {
-    "@markdown-workspace/extension-gemini-agent": "^1.0.1",
-    "@markdown-workspace/extension-host": "^1.0.1",
-    "@markdown-workspace/extension-manager": "^1.0.1",
-    "@markdown-workspace/extension-manifest": "^1.0.0",
-    "@markdown-workspace/extension-runtime": "^1.0.1",
-    "@markdown-workspace/i18n": "^1.0.0",
-    "@markdown-workspace/icons": "^1.0.0",
-    "@markdown-workspace/markdown-editor-react": "^1.0.2",
-    "@markdown-workspace/markdown-renderer-core": "^1.0.0",
-    "@markdown-workspace/markdown-renderer-react": "^1.0.1",
-    "@markdown-workspace/theme-contract": "^1.0.0",
-    "@markdown-workspace/ui-tokens": "^1.0.1",
+    "@mdwrk/extension-gemini-agent": "^1.0.1",
+    "@mdwrk/extension-host": "^1.0.1",
+    "@mdwrk/extension-manager": "^1.0.1",
+    "@mdwrk/extension-manifest": "^1.0.0",
+    "@mdwrk/extension-runtime": "^1.0.1",
+    "@mdwrk/i18n": "^1.0.0",
+    "@mdwrk/icons": "^1.0.0",
+    "@mdwrk/markdown-editor-react": "^1.0.2",
+    "@mdwrk/markdown-renderer-core": "^1.0.0",
+    "@mdwrk/markdown-renderer-react": "^1.0.1",
+    "@mdwrk/theme-contract": "^1.0.0",
+    "@mdwrk/ui-tokens": "^1.0.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",
-    "@markdown-workspace/extension-theme-studio": "^1.0.1"
+    "@mdwrk/extension-theme-studio": "^1.0.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -69,5 +69,5 @@
     "node": ">=20 <23",
     "npm": ">=10"
   },
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

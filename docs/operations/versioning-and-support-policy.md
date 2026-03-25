@@ -5,14 +5,14 @@
 ### Scope
 All new workspace packages shall use the npm scope:
 
-- `@markdown-workspace/*`
+- `@mdwrk/*`
 
 ### Package names
 Use descriptive, stable, lowercase kebab-case names.
 
 Examples:
-- `@markdown-workspace/extension-runtime`
-- `@markdown-workspace/markdown-renderer-react`
+- `@mdwrk/extension-runtime`
+- `@mdwrk/markdown-renderer-react`
 
 ### Extension ids
 Use dot-separated ids that are stable across refactors.

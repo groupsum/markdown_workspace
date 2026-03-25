@@ -1,4 +1,4 @@
-import type { ExtensionCapability, ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionCapability, ExtensionManifest } from "@mdwrk/extension-manifest";
 import type {
   ExtensionLocaleCatalog,
   ExtensionLocaleCatalogLoader,

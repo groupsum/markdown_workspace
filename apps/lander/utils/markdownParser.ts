@@ -2,7 +2,7 @@ import {
   extractMarkdownHeadings,
   parseMarkdownDocument,
   type ParsedMarkdownDocument,
-} from '@markdown-workspace/markdown-renderer-core';
+} from '@mdwrk/markdown-renderer-core';
 
 export interface ParsedMarkdown {
   metadata: Record<string, any>;

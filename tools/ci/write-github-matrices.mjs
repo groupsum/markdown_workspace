@@ -33,7 +33,7 @@ export async function generateMatrices() {
     }));
 
   const extensionArtifacts = workspaces
-    .filter((workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@markdown-workspace/extension-runtime')
+    .filter((workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@mdwrk/extension-runtime')
     .map((workspacePackage) => ({
       name: workspacePackage.packageJson.name,
       path: workspacePackage.relativeDir,

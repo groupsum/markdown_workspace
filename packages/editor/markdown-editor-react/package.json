@@ -1,5 +1,5 @@
 {
-  "name": "@markdown-workspace/markdown-editor-react",
+  "name": "@mdwrk/markdown-editor-react",
   "version": "1.0.2",
   "type": "module",
   "license": "Apache-2.0",
@@ -25,15 +25,15 @@
   ],
   "description": "React bindings, textarea editor surface, command wiring, history integration, and theme bridge for the Markdown Workspace portable markdown editor.",
   "dependencies": {
-    "@markdown-workspace/markdown-editor-core": "^1.0.1",
-    "@markdown-workspace/ui-tokens": "^1.0.1"
+    "@mdwrk/markdown-editor-core": "^1.0.1",
+    "@mdwrk/ui-tokens": "^1.0.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@markdown-workspace/testing": "^1.0.0",
+    "@mdwrk/testing": "^1.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.8",
@@ -69,5 +69,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

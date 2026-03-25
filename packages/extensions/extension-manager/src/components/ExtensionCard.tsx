@@ -1,6 +1,6 @@
 import React from "react";
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionRuntime, ExtensionRuntimeExtensionSnapshot } from "@markdown-workspace/extension-runtime";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionRuntime, ExtensionRuntimeExtensionSnapshot } from "@mdwrk/extension-runtime";
 import { AlertTriangle, CheckCircle2, ChevronsUpDown, CircleSlash2, Power, PowerOff } from "lucide-react";
 import { extensionManagerLabels } from "../i18n.js";
 import { ExtensionManifestIcon } from "./ExtensionManifestIcon.js";

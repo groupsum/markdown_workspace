@@ -1,4 +1,4 @@
-import { EXTENSION_MANIFEST_VERSION, type ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import { EXTENSION_MANIFEST_VERSION, type ExtensionManifest } from "@mdwrk/extension-manifest";
 import type { ExtensionRuntimeManifestValidationIssue } from "./types.js";
 
 const isNonEmptyString = (value: unknown): value is string => typeof value === "string" && value.trim().length > 0;

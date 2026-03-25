@@ -1,4 +1,4 @@
-import type { HostNotificationApi } from '@markdown-workspace/extension-host';
+import type { HostNotificationApi } from '@mdwrk/extension-host';
 import type { ClientNotificationService } from '../../../features/notifications/clientNotificationService';
 
 export function createHostNotificationApi(notifications: ClientNotificationService): HostNotificationApi {

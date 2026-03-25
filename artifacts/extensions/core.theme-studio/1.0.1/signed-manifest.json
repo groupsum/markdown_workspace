@@ -3,7 +3,7 @@
   "manifest": {
     "manifestVersion": 1,
     "id": "core.theme-studio",
-    "packageName": "@markdown-workspace/extension-theme-studio",
+    "packageName": "@mdwrk/extension-theme-studio",
     "version": "1.0.1",
     "displayName": {
       "key": "core.theme-studio.manifest.displayName",
@@ -248,7 +248,7 @@
             "key": "core.theme-studio.settings.fields.packagePrefix.description",
             "defaultMessage": "Prefix used when scaffolding theme package artifacts."
           },
-          "defaultValue": "@markdown-workspace/theme-"
+          "defaultValue": "@mdwrk/theme-"
         },
         {
           "key": "defaultAuthor",

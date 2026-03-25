@@ -27,30 +27,30 @@ This checkpoint completes the **Phase 13 third-party extension distribution and 
 ## Implemented packages
 
 ### Contracts
-- `@markdown-workspace/extension-manifest`
-- `@markdown-workspace/extension-host`
-- `@markdown-workspace/theme-contract`
+- `@mdwrk/extension-manifest`
+- `@mdwrk/extension-host`
+- `@mdwrk/theme-contract`
 
 ### Shared
-- `@markdown-workspace/ui-tokens`
-- `@markdown-workspace/icons`
-- `@markdown-workspace/i18n`
-- `@markdown-workspace/testing`
+- `@mdwrk/ui-tokens`
+- `@mdwrk/icons`
+- `@mdwrk/i18n`
+- `@mdwrk/testing`
 
 ### Renderer
-- `@markdown-workspace/markdown-renderer-core`
-- `@markdown-workspace/markdown-renderer-react`
+- `@mdwrk/markdown-renderer-core`
+- `@mdwrk/markdown-renderer-react`
 
 ### Editor
-- `@markdown-workspace/markdown-editor-core`
-- `@markdown-workspace/markdown-editor-react`
+- `@mdwrk/markdown-editor-core`
+- `@mdwrk/markdown-editor-react`
 
 ### Extensions
-- `@markdown-workspace/extension-runtime`
-- `@markdown-workspace/extension-manager`
-- `@markdown-workspace/extension-gemini-agent`
-- `@markdown-workspace/extension-theme-studio`
-- `@demo-markdown-workspace/extension-catalog-hello` — sample third-party external extension used to prove the formal catalog path
+- `@mdwrk/extension-runtime`
+- `@mdwrk/extension-manager`
+- `@mdwrk/extension-gemini-agent`
+- `@mdwrk/extension-theme-studio`
+- `@mdwrk/extension-catalog-hello` — sample third-party external extension used to prove the formal catalog path
 
 ## Generated external-distribution artifacts
 

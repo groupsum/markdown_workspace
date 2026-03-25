@@ -1,4 +1,4 @@
-import type { HostWorkspaceApi, WorkspaceFileSummary } from '@markdown-workspace/extension-host';
+import type { HostWorkspaceApi, WorkspaceFileSummary } from '@mdwrk/extension-host';
 import type { FileNode } from '../../../../types';
 import type { ClientRuntimeBridge } from '../../../app/runtime/clientRuntimeTypes';
 

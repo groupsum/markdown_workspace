@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ExtensionRuntime } from '@markdown-workspace/extension-runtime';
+import type { ExtensionRuntime } from '@mdwrk/extension-runtime';
 
 const ExtensionRuntimeContext = React.createContext<ExtensionRuntime | null>(null);
 

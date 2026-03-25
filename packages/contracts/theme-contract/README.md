@@ -1,4 +1,4 @@
-# @markdown-workspace/theme-contract
+# @mdwrk/theme-contract
 
 Portable token, class-name, and bridge-variable contract for Markdown Workspace themes, renderers, editors, and extensions.
 
@@ -52,7 +52,7 @@ Examples:
 ## Build
 
 ```bash
-npm run build -w @markdown-workspace/theme-contract
+npm run build -w @mdwrk/theme-contract
 ```
 
 ## Publishability

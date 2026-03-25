@@ -1,5 +1,5 @@
-import { MARKDOWN_WORKSPACE_THEME_CLASSES, } from "@markdown-workspace/theme-contract/classes";
-export { MARKDOWN_WORKSPACE_THEME_CLASS_NAMES, MARKDOWN_WORKSPACE_THEME_CLASSES, } from "@markdown-workspace/theme-contract/classes";
+import { MARKDOWN_WORKSPACE_THEME_CLASSES, } from "@mdwrk/theme-contract/classes";
+export { MARKDOWN_WORKSPACE_THEME_CLASS_NAMES, MARKDOWN_WORKSPACE_THEME_CLASSES, } from "@mdwrk/theme-contract/classes";
 export const MARKDOWN_WORKSPACE_RENDERER_HELPER_CLASS_NAMES = Object.freeze(MARKDOWN_WORKSPACE_THEME_CLASSES
     .filter((definition) => definition.scope === "renderer")
     .map((definition) => definition.name));

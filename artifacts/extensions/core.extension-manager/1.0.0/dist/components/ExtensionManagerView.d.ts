@@ -1,5 +1,5 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionRuntime } from "@markdown-workspace/extension-runtime";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionRuntime } from "@mdwrk/extension-runtime";
 export interface ExtensionManagerViewProps {
     readonly runtime: ExtensionRuntime;
     readonly close: () => Promise<void>;

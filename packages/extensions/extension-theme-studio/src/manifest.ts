@@ -1,4 +1,4 @@
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   THEME_STUDIO_COMMAND_OPEN_ID,
   THEME_STUDIO_DEFAULT_SETTINGS,
@@ -19,7 +19,7 @@ import { THEME_STUDIO_VERSION } from "./version.js";
 export const themeStudioManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: THEME_STUDIO_EXTENSION_ID,
-  packageName: "@markdown-workspace/extension-theme-studio",
+  packageName: "@mdwrk/extension-theme-studio",
   version: THEME_STUDIO_VERSION,
   displayName: themeStudioLabels.manifestDisplayName,
   description: themeStudioLabels.manifestDescription,

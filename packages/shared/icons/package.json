@@ -12,7 +12,7 @@
     "dist",
     "README.md"
   ],
-  "name": "@markdown-workspace/icons",
+  "name": "@mdwrk/icons",
   "description": "Shared icon identifiers and icon metadata for Markdown Workspace applications and packages.",
   "sideEffects": false,
   "keywords": [
@@ -43,5 +43,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

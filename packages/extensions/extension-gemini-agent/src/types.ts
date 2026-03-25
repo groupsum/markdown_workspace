@@ -1,4 +1,4 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
 import type {
   ActiveDocument,
   ExtensionContext,
@@ -6,7 +6,7 @@ import type {
   SelectionRange,
   WorkspaceFileSummary,
   WorkspaceProjectSummary,
-} from "@markdown-workspace/extension-host";
+} from "@mdwrk/extension-host";
 
 export type GeminiAgentIntent = "idle" | "summarize-current-file" | "rewrite-selection" | "custom-prompt";
 export type GeminiAgentWritebackMode = "selection" | "document";

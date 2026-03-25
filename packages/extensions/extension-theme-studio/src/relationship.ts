@@ -2,7 +2,7 @@ import type {
   MarkdownWorkspaceThemeTokenName,
   ThemeBridgeVariableDefinition,
   ThemeClassDefinition,
-} from "@markdown-workspace/theme-contract";
+} from "@mdwrk/theme-contract";
 import type { ThemeStudioClassRelationship } from "./types.js";
 
 const unique = (values: readonly MarkdownWorkspaceThemeTokenName[]) => Array.from(new Set(values));

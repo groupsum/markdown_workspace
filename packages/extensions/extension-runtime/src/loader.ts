@@ -1,4 +1,4 @@
-import type { MarkdownWorkspaceExtension } from "@markdown-workspace/extension-host";
+import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import { validateExtensionManifest } from "./validation.js";
 import type { RegisteredRuntimeExtensionCatalogEntry } from "./types.js";
 

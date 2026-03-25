@@ -5,7 +5,7 @@ import type {
   ExtensionManifest,
   SignedExtensionManifest,
   TrustedExtensionSigner,
-} from "@markdown-workspace/extension-manifest";
+} from "@mdwrk/extension-manifest";
 import type {
   ExtensionArtifactTransport,
   ExtensionRuntimeTrustPolicy,

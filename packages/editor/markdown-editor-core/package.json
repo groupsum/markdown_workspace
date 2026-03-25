@@ -1,5 +1,5 @@
 {
-  "name": "@markdown-workspace/markdown-editor-core",
+  "name": "@mdwrk/markdown-editor-core",
   "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
@@ -24,7 +24,7 @@
   "description": "Portable source-mode markdown editor state, selection transforms, command model, and undo/redo history for Markdown Workspace.",
   "dependencies": {},
   "devDependencies": {
-    "@markdown-workspace/markdown-renderer-core": "^1.0.0",
+    "@mdwrk/markdown-renderer-core": "^1.0.0",
     "vitest": "^2.1.8"
   },
   "scripts": {
@@ -70,5 +70,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

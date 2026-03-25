@@ -2,7 +2,7 @@
   "generatedAt": "2026-03-24T07:47:28.771Z",
   "packages": [
     {
-      "name": "@swarmauri/markspace",
+      "name": "@mdwrk/markspace",
       "version": "1.3.51",
       "path": "apps/client",
       "category": "app",
@@ -16,126 +16,126 @@
       "publishable": false
     },
     {
-      "name": "@markdown-workspace/example-editor-basic",
+      "name": "@mdwrk/example-editor-basic",
       "version": "0.1.1",
       "path": "examples/editor-basic",
       "category": "example",
       "publishable": false
     },
     {
-      "name": "@markdown-workspace/example-renderer-basic",
+      "name": "@mdwrk/example-renderer-basic",
       "version": "0.1.1",
       "path": "examples/renderer-basic",
       "category": "example",
       "publishable": false
     },
     {
-      "name": "@markdown-workspace/extension-host",
+      "name": "@mdwrk/extension-host",
       "version": "1.0.1",
       "path": "packages/contracts/extension-host",
       "category": "contract",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/extension-manifest",
+      "name": "@mdwrk/extension-manifest",
       "version": "1.0.0",
       "path": "packages/contracts/extension-manifest",
       "category": "contract",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/theme-contract",
+      "name": "@mdwrk/theme-contract",
       "version": "1.0.0",
       "path": "packages/contracts/theme-contract",
       "category": "contract",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/markdown-editor-core",
+      "name": "@mdwrk/markdown-editor-core",
       "version": "1.0.1",
       "path": "packages/editor/markdown-editor-core",
       "category": "editor",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/markdown-editor-react",
+      "name": "@mdwrk/markdown-editor-react",
       "version": "1.0.2",
       "path": "packages/editor/markdown-editor-react",
       "category": "editor",
       "publishable": true
     },
     {
-      "name": "@demo-markdown-workspace/extension-catalog-hello",
+      "name": "@mdwrk/extension-catalog-hello",
       "version": "1.0.1",
       "path": "packages/extensions/extension-catalog-hello",
       "category": "extension",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/extension-gemini-agent",
+      "name": "@mdwrk/extension-gemini-agent",
       "version": "1.0.1",
       "path": "packages/extensions/extension-gemini-agent",
       "category": "extension",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/extension-manager",
+      "name": "@mdwrk/extension-manager",
       "version": "1.0.1",
       "path": "packages/extensions/extension-manager",
       "category": "extension",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/extension-runtime",
+      "name": "@mdwrk/extension-runtime",
       "version": "1.0.1",
       "path": "packages/extensions/extension-runtime",
       "category": "extension",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/extension-theme-studio",
+      "name": "@mdwrk/extension-theme-studio",
       "version": "1.0.1",
       "path": "packages/extensions/extension-theme-studio",
       "category": "extension",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/markdown-renderer-core",
+      "name": "@mdwrk/markdown-renderer-core",
       "version": "1.0.0",
       "path": "packages/renderer/markdown-renderer-core",
       "category": "renderer",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/markdown-renderer-react",
+      "name": "@mdwrk/markdown-renderer-react",
       "version": "1.0.1",
       "path": "packages/renderer/markdown-renderer-react",
       "category": "renderer",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/i18n",
+      "name": "@mdwrk/i18n",
       "version": "1.0.0",
       "path": "packages/shared/i18n",
       "category": "shared",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/icons",
+      "name": "@mdwrk/icons",
       "version": "1.0.0",
       "path": "packages/shared/icons",
       "category": "shared",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/testing",
+      "name": "@mdwrk/testing",
       "version": "1.0.0",
       "path": "packages/shared/testing",
       "category": "shared",
       "publishable": true
     },
     {
-      "name": "@markdown-workspace/ui-tokens",
+      "name": "@mdwrk/ui-tokens",
       "version": "1.0.1",
       "path": "packages/shared/ui-tokens",
       "category": "shared",

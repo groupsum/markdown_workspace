@@ -1,5 +1,5 @@
 {
-  "name": "@demo-markdown-workspace/extension-catalog-hello",
+  "name": "@mdwrk/extension-catalog-hello",
   "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
@@ -23,11 +23,11 @@
   ],
   "description": "Sample third-party external extension used to validate catalog discovery, installation, trust, and runtime activation.",
   "dependencies": {
-    "@markdown-workspace/extension-host": "^1.0.1",
-    "@markdown-workspace/extension-manifest": "^1.0.0"
+    "@mdwrk/extension-host": "^1.0.1",
+    "@mdwrk/extension-manifest": "^1.0.0"
   },
   "scripts": {
-    "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/extension-host",
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host",
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
@@ -50,5 +50,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

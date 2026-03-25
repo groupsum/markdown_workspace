@@ -1,8 +1,8 @@
 import React from 'react';
-import type { ExtensionManifest } from '@markdown-workspace/extension-manifest';
+import type { ExtensionManifest } from '@mdwrk/extension-manifest';
 import type { ClientViewRenderProps } from '../../../features/views/viewRegistry';
-import type { MarkdownWorkspaceExtension } from '@markdown-workspace/extension-host';
-import type { BundledExtensionCatalogEntry } from '@markdown-workspace/extension-runtime';
+import type { MarkdownWorkspaceExtension } from '@mdwrk/extension-host';
+import type { BundledExtensionCatalogEntry } from '@mdwrk/extension-runtime';
 
 const extensionId = 'core.runtime-smoke';
 const viewId = `${extensionId}.view`;
@@ -12,7 +12,7 @@ const railId = `${extensionId}.rail`;
 const manifest: ExtensionManifest = {
   manifestVersion: 1,
   id: extensionId,
-  packageName: '@markdown-workspace/runtime-smoke-bundled',
+  packageName: '@mdwrk/runtime-smoke-bundled',
   version: '1.0.0',
   displayName: { defaultMessage: 'Runtime Smoke Extension' },
   description: { defaultMessage: 'Bundled runtime smoke extension proving runtime activation, view registration, action rail wiring, and extension settings persistence.' },

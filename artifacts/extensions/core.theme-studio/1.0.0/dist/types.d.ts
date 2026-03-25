@@ -1,6 +1,6 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionConfigurationStore, ExtensionContext } from "@markdown-workspace/extension-host";
-import type { MarkdownWorkspaceThemeClassName, MarkdownWorkspaceThemeTokenMap, MarkdownWorkspaceThemeTokenName, ThemeBridgeTarget, ThemeBridgeVariableDefinition, ThemeClassDefinition, ThemePreset, ThemeTokenDefinition } from "@markdown-workspace/theme-contract";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionConfigurationStore, ExtensionContext } from "@mdwrk/extension-host";
+import type { MarkdownWorkspaceThemeClassName, MarkdownWorkspaceThemeTokenMap, MarkdownWorkspaceThemeTokenName, ThemeBridgeTarget, ThemeBridgeVariableDefinition, ThemeClassDefinition, ThemePreset, ThemeTokenDefinition } from "@mdwrk/theme-contract";
 export type ThemeStudioExportTarget = "host" | ThemeBridgeTarget;
 export interface ThemeStudioResolvedSettings {
     readonly autoPreviewOnEdit: boolean;

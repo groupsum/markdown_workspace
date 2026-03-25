@@ -1,5 +1,5 @@
 {
-  "name": "@markdown-workspace/extension-gemini-agent",
+  "name": "@mdwrk/extension-gemini-agent",
   "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
@@ -23,16 +23,16 @@
   ],
   "description": "First-party Gemini workflow extension for Markdown Workspace with read-only document operations, draft-based writeback, and a bundled operator view.",
   "dependencies": {
-    "@markdown-workspace/extension-host": "^1.0.1",
-    "@markdown-workspace/extension-manifest": "^1.0.0",
-    "@markdown-workspace/extension-runtime": "^1.0.1"
+    "@mdwrk/extension-host": "^1.0.1",
+    "@mdwrk/extension-manifest": "^1.0.0",
+    "@mdwrk/extension-runtime": "^1.0.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "scripts": {
-    "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/extension-host && npm run build -w @markdown-workspace/extension-runtime",
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host && npm run build -w @mdwrk/extension-runtime",
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
@@ -91,5 +91,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

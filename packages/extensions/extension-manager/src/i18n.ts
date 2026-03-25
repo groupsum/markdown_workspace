@@ -1,5 +1,5 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionLocaleCatalogLoader } from "@markdown-workspace/extension-host";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionLocaleCatalogLoader } from "@mdwrk/extension-host";
 import { EXTENSION_MANAGER_EXTENSION_ID } from "./constants.js";
 
 const key = (suffix: string) => `${EXTENSION_MANAGER_EXTENSION_ID}.${suffix}`;

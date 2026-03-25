@@ -1,4 +1,4 @@
-import { createRendererThemeBridgeVariableRecord, } from "@markdown-workspace/ui-tokens/theme-map";
+import { createRendererThemeBridgeVariableRecord, } from "@mdwrk/ui-tokens/theme-map";
 export function createMarkdownRendererThemeStyle(variables = {}) {
     return {
         ["--mw-fg-primary"]: variables.foreground ?? "var(--fg-primary, #e9ecf1)",

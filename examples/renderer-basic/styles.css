@@ -1,5 +1,5 @@
-@import url("@markdown-workspace/ui-tokens/styles/root.css");
-@import url("@markdown-workspace/markdown-renderer-react/styles/default.css");
+@import url("@mdwrk/ui-tokens/styles/root.css");
+@import url("@mdwrk/markdown-renderer-react/styles/default.css");
 
 :root {
   color-scheme: dark;

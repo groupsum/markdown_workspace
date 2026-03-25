@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, '..');
-const nodeModulesRoot = path.join(packageRoot, 'node_modules', '@markdown-workspace');
+const nodeModulesRoot = path.join(packageRoot, 'node_modules', '@mdwrk');
 const links = {
   'theme-contract': path.resolve(packageRoot, '../../contracts/theme-contract'),
 };

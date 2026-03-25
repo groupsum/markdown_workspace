@@ -29,7 +29,7 @@ Avoid introducing tokens that encode one specific component implementation unles
 ## Class naming rules
 
 ### Stable theme-contract classes
-The stable cross-package class contract is defined in `@markdown-workspace/theme-contract` and re-exported by `@markdown-workspace/ui-tokens`.
+The stable cross-package class contract is defined in `@mdwrk/theme-contract` and re-exported by `@mdwrk/ui-tokens`.
 
 Examples:
 - `.markdown-body`
@@ -53,14 +53,14 @@ Examples:
 - `.md-ul`, `.md-ol`, `.md-li`
 - `.md-table-columns`, `.md-table-column`
 
-These helper classes are exported by `@markdown-workspace/ui-tokens` so renderer packages and applications can share them without depending on `apps/client`.
+These helper classes are exported by `@mdwrk/ui-tokens` so renderer packages and applications can share them without depending on `apps/client`.
 
 ## Stability guidance
 
-- **stable**: documented in `@markdown-workspace/theme-contract`; safe for package-to-package interoperability
+- **stable**: documented in `@mdwrk/theme-contract`; safe for package-to-package interoperability
 - **provisional**: extracted from the current client and reusable now, but not yet frozen as part of the formal theme contract
 
 ## Package sources of truth
 
-- normative contract: `@markdown-workspace/theme-contract`
-- implemented CSS and helper classes: `@markdown-workspace/ui-tokens`
+- normative contract: `@mdwrk/theme-contract`
+- implemented CSS and helper classes: `@mdwrk/ui-tokens`
