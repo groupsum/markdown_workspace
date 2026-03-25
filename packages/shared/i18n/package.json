@@ -12,7 +12,7 @@
     "dist",
     "README.md"
   ],
-  "name": "@markdown-workspace/i18n",
+  "name": "@mdwrk/i18n",
   "description": "Shared message descriptors, locale catalogs, and locale registry helpers for Markdown Workspace packages.",
   "sideEffects": false,
   "keywords": [
@@ -56,5 +56,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

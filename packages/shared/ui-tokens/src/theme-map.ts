@@ -2,11 +2,11 @@ import {
   MARKDOWN_WORKSPACE_THEME_TOKENS,
   type MarkdownWorkspaceThemeTokenMap,
   type MarkdownWorkspaceThemeTokenName,
-} from "@markdown-workspace/theme-contract/tokens";
+} from "@mdwrk/theme-contract/tokens";
 import {
   getThemeBridgeDefinitions,
   type ThemeBridgeTarget,
-} from "@markdown-workspace/theme-contract/bridges";
+} from "@mdwrk/theme-contract/bridges";
 
 export type ThemeTokenOverrides = Partial<Record<MarkdownWorkspaceThemeTokenName, string>>;
 

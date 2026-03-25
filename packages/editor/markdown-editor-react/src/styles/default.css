@@ -1,4 +1,4 @@
-@import url("@markdown-workspace/ui-tokens/styles/root.css");
+@import url("@mdwrk/ui-tokens/styles/root.css");
 
 .mw-editor {
   background: var(--mwe-bg-surface, var(--bg-panel, #11151a));

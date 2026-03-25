@@ -1,4 +1,4 @@
-import type { HostActionRailApi } from '@markdown-workspace/extension-host';
+import type { HostActionRailApi } from '@mdwrk/extension-host';
 import type { ActionRailRegistry } from '../../../features/action-rail/actionRailRegistry';
 
 export function createHostActionRailApi(actionRail: ActionRailRegistry): HostActionRailApi {

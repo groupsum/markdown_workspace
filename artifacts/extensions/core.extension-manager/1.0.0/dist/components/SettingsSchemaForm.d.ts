@@ -1,5 +1,5 @@
-import type { ExtensionSettingsSchema, I18nLabel } from "@markdown-workspace/extension-manifest";
-import type { ExtensionRuntime } from "@markdown-workspace/extension-runtime";
+import type { ExtensionSettingsSchema, I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionRuntime } from "@mdwrk/extension-runtime";
 export interface SettingsSchemaFormProps {
     readonly runtime: ExtensionRuntime;
     readonly extensionId: string;

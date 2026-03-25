@@ -3,8 +3,8 @@ import type {
   ExtensionSettingField,
   ExtensionSettingsSchema,
   I18nLabel,
-} from "@markdown-workspace/extension-manifest";
-import type { ExtensionRuntime } from "@markdown-workspace/extension-runtime";
+} from "@mdwrk/extension-manifest";
+import type { ExtensionRuntime } from "@mdwrk/extension-runtime";
 import { extensionManagerLabels } from "../i18n.js";
 
 const defaultValueForField = (field: ExtensionSettingField): unknown => {

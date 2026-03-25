@@ -1,5 +1,5 @@
-import type { ExtensionIcon } from '@markdown-workspace/extension-manifest';
-import type { Disposable, RegisteredActionRailItem } from '@markdown-workspace/extension-host';
+import type { ExtensionIcon } from '@mdwrk/extension-manifest';
+import type { Disposable, RegisteredActionRailItem } from '@mdwrk/extension-host';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
 export interface ClientActionRailItem extends RegisteredActionRailItem {

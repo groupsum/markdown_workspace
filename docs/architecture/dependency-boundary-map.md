@@ -24,13 +24,13 @@ Applications are the composition layer and may depend on multiple package famili
 Contracts must remain implementation-light and free of app-specific dependencies.
 
 ### Rule 4 — extensions depend on host contracts, not app internals
-Extension packages consume `@markdown-workspace/extension-host` and related contracts instead of importing client components/hooks directly.
+Extension packages consume `@mdwrk/extension-host` and related contracts instead of importing client components/hooks directly.
 
 ### Rule 5 — renderer/editor remain independently reusable
 Renderer and editor packages may depend on shared/contract packages, but not on applications or extension packages unless explicitly documented.
 
 ### Rule 6 — shared style packages define reusable styling surfaces
-`@markdown-workspace/ui-tokens` owns the extracted styling surface. Applications may import it and override its tokens, but reusable packages must not import application-local stylesheets.
+`@mdwrk/ui-tokens` owns the extracted styling surface. Applications may import it and override its tokens, but reusable packages must not import application-local stylesheets.
 
 ### Rule 7 — external catalog artifacts are deployment outputs, not package dependencies
 Browser-installable third-party extensions are consumed through signed catalog entries and integrity-checked ESM artifacts. Applications and packages do not depend on those artifact directories at build time.

@@ -1,5 +1,5 @@
-import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
-import { THEME_CONTRACT_VERSION } from "@markdown-workspace/theme-contract";
+import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
+import { THEME_CONTRACT_VERSION } from "@mdwrk/theme-contract";
 import { createFetchExtensionArtifactTransport, evaluateCatalogEntryPolicy, fetchInstallableCatalogPayload, validateCatalogDocument, } from "./catalog.js";
 import { evaluateExtensionCompatibility } from "./compatibility.js";
 import { createExtensionLoader } from "./loader.js";

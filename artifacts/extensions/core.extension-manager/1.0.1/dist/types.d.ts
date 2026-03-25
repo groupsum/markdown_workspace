@@ -1,4 +1,4 @@
-import type { ExtensionRuntime } from "@markdown-workspace/extension-runtime";
+import type { ExtensionRuntime } from "@mdwrk/extension-runtime";
 export interface ExtensionManagerEntryOptions {
     readonly runtime: ExtensionRuntime;
 }

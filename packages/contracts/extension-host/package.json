@@ -18,14 +18,14 @@
     "contracts",
     "typescript"
   ],
-  "name": "@markdown-workspace/extension-host",
+  "name": "@mdwrk/extension-host",
   "description": "Stable host API, lifecycle, and context contracts for Markdown Workspace extensions.",
   "dependencies": {
-    "@markdown-workspace/extension-manifest": "^1.0.0",
-    "@markdown-workspace/theme-contract": "^1.0.0"
+    "@mdwrk/extension-manifest": "^1.0.0",
+    "@mdwrk/theme-contract": "^1.0.0"
   },
   "scripts": {
-    "build:deps": "npm run build -w @markdown-workspace/extension-manifest && npm run build -w @markdown-workspace/theme-contract",
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/theme-contract",
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
@@ -64,5 +64,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

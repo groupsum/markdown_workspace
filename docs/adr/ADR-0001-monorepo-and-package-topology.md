@@ -15,7 +15,7 @@ Adopt a root npm workspace with the following top-level structure:
 - `docs/`
 - `examples/`
 
-Adopt the npm scope `@markdown-workspace/*` for new packages.
+Adopt the npm scope `@mdwrk/*` for new packages.
 
 ## Consequences
 

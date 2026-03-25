@@ -7,7 +7,7 @@ import {
   renderMarkdownToHtmlDocument,
 } from "../src/index.js";
 
-describe("@markdown-workspace/markdown-renderer-core", () => {
+describe("@mdwrk/markdown-renderer-core", () => {
   it("parses frontmatter and headings", () => {
     const parsed = parseMarkdownDocument(`---\ntitle: Test\n---\n\n# Alpha\n\n## Beta\n\nParagraph`);
     expect(parsed.metadata.title).toBe("Test");

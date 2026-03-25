@@ -1,4 +1,4 @@
-import type { I18nLabel } from "@markdown-workspace/extension-manifest";
+import type { I18nLabel } from "@mdwrk/extension-manifest";
 import { collectGeminiAgentContext, getPrimarySelectionText, hasActiveDocumentContext, hasSelectedTextContext } from "./context.js";
 import { geminiAgentLabels } from "./i18n.js";
 import { buildGeminiPrompt } from "./prompt.js";

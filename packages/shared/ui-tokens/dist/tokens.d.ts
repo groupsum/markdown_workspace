@@ -1,5 +1,5 @@
-import { type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition } from "@markdown-workspace/theme-contract/tokens";
-export { MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES, MARKDOWN_WORKSPACE_THEME_TOKENS, type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition, } from "@markdown-workspace/theme-contract/tokens";
+import { type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition } from "@mdwrk/theme-contract/tokens";
+export { MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES, MARKDOWN_WORKSPACE_THEME_TOKENS, type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition, } from "@mdwrk/theme-contract/tokens";
 export type MarkdownWorkspaceUiTokenName = MarkdownWorkspaceThemeTokenName;
 export type MarkdownWorkspaceUiTokenMap = MarkdownWorkspaceThemeTokenMap;
 export type UiTokenDefinition = ThemeTokenDefinition;

@@ -1,4 +1,4 @@
-import type { Disposable } from "@markdown-workspace/extension-host";
+import type { Disposable } from "@mdwrk/extension-host";
 import type {
   BundledExtensionCatalogEntry,
   InstalledExtensionCatalogEntry,

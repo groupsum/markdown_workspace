@@ -4,7 +4,7 @@ import {
   createMarkdownEditorThemeStyle,
   type MarkdownSourceEditorHandle,
   type MarkdownSourceEditorProps,
-} from '@markdown-workspace/markdown-editor-react';
+} from '@mdwrk/markdown-editor-react';
 import type { AppTheme } from '../../types';
 
 export interface WorkspaceMarkdownEditorProps extends Omit<MarkdownSourceEditorProps, 'themeStyle' | 'themeVariables'> {

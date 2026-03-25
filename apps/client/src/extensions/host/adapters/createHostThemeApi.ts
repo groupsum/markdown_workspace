@@ -7,13 +7,13 @@ import {
   type MarkdownWorkspaceThemeTokenName,
   type ThemeBridgeTarget,
   type ThemePreset,
-} from '@markdown-workspace/theme-contract';
-import type { HostThemeApi } from '@markdown-workspace/extension-host';
+} from '@mdwrk/theme-contract';
+import type { HostThemeApi } from '@mdwrk/extension-host';
 import {
   createThemeBridgeVariableRecord,
   renderThemeBridgeCssVariables,
   renderThemeCssVariables,
-} from '@markdown-workspace/ui-tokens/theme-map';
+} from '@mdwrk/ui-tokens/theme-map';
 import type { ClientRuntimeBridge } from '../../../app/runtime/clientRuntimeTypes';
 
 const tokenMap = new Map(MARKDOWN_WORKSPACE_THEME_TOKENS.map((definition) => [definition.name, definition]));

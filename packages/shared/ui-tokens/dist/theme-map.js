@@ -1,5 +1,5 @@
-import { MARKDOWN_WORKSPACE_THEME_TOKENS, } from "@markdown-workspace/theme-contract/tokens";
-import { getThemeBridgeDefinitions, } from "@markdown-workspace/theme-contract/bridges";
+import { MARKDOWN_WORKSPACE_THEME_TOKENS, } from "@mdwrk/theme-contract/tokens";
+import { getThemeBridgeDefinitions, } from "@mdwrk/theme-contract/bridges";
 export function createMarkdownWorkspaceThemeTokenMap(overrides = {}) {
     return Object.freeze(Object.fromEntries(MARKDOWN_WORKSPACE_THEME_TOKENS.map((definition) => [
         definition.name,

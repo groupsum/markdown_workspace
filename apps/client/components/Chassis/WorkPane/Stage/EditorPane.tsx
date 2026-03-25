@@ -6,7 +6,7 @@ import {
   type MarkdownEditorBuiltinCommandId,
   type MarkdownEditorHistoryState,
   type MarkdownSourceEditorHandle,
-} from '@markdown-workspace/markdown-editor-react';
+} from '@mdwrk/markdown-editor-react';
 import { WorkspaceMarkdownRenderer } from '../../../Markdown/WorkspaceMarkdownRenderer';
 import { WorkspaceMarkdownEditor } from '../../../Markdown/WorkspaceMarkdownEditor';
 import { useActiveEditorBridge } from '../../../../src/features/editor/activeEditorBridge';

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { MarkdownSourceEditorHandle } from '@markdown-workspace/markdown-editor-react';
+import type { MarkdownSourceEditorHandle } from '@mdwrk/markdown-editor-react';
 
 export interface ActiveEditorSnapshot {
   readonly fileId: string | null;

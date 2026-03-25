@@ -3,13 +3,13 @@ import {
   MarkdownSourceEditor,
   createMarkdownEditorThemeStyle,
   type MarkdownSourceEditorHandle,
-} from '@markdown-workspace/markdown-editor-react';
-import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@markdown-workspace/markdown-renderer-react';
+} from '@mdwrk/markdown-editor-react';
+import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markdown-renderer-react';
 import './styles.css';
 
 const initialMarkdown = `# Portable Markdown Editor
 
-This example uses **@markdown-workspace/markdown-editor-react** with the shared renderer package on the right.
+This example uses **@mdwrk/markdown-editor-react** with the shared renderer package on the right.
 
 - Ctrl/Cmd+B: bold
 - Ctrl/Cmd+I: italic

@@ -74,7 +74,7 @@ export async function runExportValidation() {
       }
     }
 
-    if (workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@markdown-workspace/extension-runtime') {
+    if (workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@mdwrk/extension-runtime') {
       if (!pkg.exports?.['./manifest']) {
         errors.push('Extension package must export ./manifest.');
       }

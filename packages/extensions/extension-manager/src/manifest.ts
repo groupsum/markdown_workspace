@@ -1,4 +1,4 @@
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
   EXTENSION_MANAGER_EXTENSION_ID,
@@ -11,7 +11,7 @@ import { EXTENSION_MANAGER_VERSION } from "./version.js";
 export const extensionManagerManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: EXTENSION_MANAGER_EXTENSION_ID,
-  packageName: "@markdown-workspace/extension-manager",
+  packageName: "@mdwrk/extension-manager",
   version: EXTENSION_MANAGER_VERSION,
   displayName: extensionManagerLabels.manifestDisplayName,
   description: extensionManagerLabels.manifestDescription,

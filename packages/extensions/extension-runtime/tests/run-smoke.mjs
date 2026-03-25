@@ -17,7 +17,7 @@ import { evaluateExtensionCompatibility } from '../dist/compatibility.js';
 const createManifest = (id, overrides = {}) => ({
   manifestVersion: 1,
   id,
-  packageName: `@markdown-workspace/${id}`,
+  packageName: `@mdwrk/${id}`,
   version: '1.0.0',
   displayName: { defaultMessage: id },
   description: { defaultMessage: `${id} description` },

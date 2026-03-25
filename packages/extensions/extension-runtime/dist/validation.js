@@ -1,4 +1,4 @@
-import { EXTENSION_MANIFEST_VERSION } from "@markdown-workspace/extension-manifest";
+import { EXTENSION_MANIFEST_VERSION } from "@mdwrk/extension-manifest";
 const isNonEmptyString = (value) => typeof value === "string" && value.trim().length > 0;
 export function validateExtensionManifest(manifest) {
     const issues = [];

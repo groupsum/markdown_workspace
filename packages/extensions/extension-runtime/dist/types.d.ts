@@ -1,5 +1,5 @@
-import type { ExtensionCapability, ExtensionCatalogDocument, ExtensionCatalogEntry, ExtensionIntegrity, ExtensionManifest, I18nLabel, SignedExtensionManifest, TrustedExtensionSigner } from "@markdown-workspace/extension-manifest";
-import type { DiagnosticRecord, Disposable, ExtensionConfigurationStore, ExtensionHost, MarkdownWorkspaceExtension, RegisteredActionRailItem, RegisteredCommand, RegisteredComponent, RegisteredSettingsSection, RegisteredView } from "@markdown-workspace/extension-host";
+import type { ExtensionCapability, ExtensionCatalogDocument, ExtensionCatalogEntry, ExtensionIntegrity, ExtensionManifest, I18nLabel, SignedExtensionManifest, TrustedExtensionSigner } from "@mdwrk/extension-manifest";
+import type { DiagnosticRecord, Disposable, ExtensionConfigurationStore, ExtensionHost, MarkdownWorkspaceExtension, RegisteredActionRailItem, RegisteredCommand, RegisteredComponent, RegisteredSettingsSection, RegisteredView } from "@mdwrk/extension-host";
 export type ExtensionActivationMode = "eager" | "lazy";
 export type ExtensionCatalogSource = "bundled" | "installed";
 export type ExtensionRuntimeStatus = "registered" | "disabled" | "activating" | "active" | "deactivating" | "error" | "incompatible";

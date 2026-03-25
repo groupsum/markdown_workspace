@@ -1,4 +1,4 @@
-import type { ExtensionConfigurationStore } from "@markdown-workspace/extension-host";
+import type { ExtensionConfigurationStore } from "@mdwrk/extension-host";
 import {
   THEME_STUDIO_DEFAULT_SETTINGS,
   THEME_STUDIO_SETTING_AUTO_PREVIEW,

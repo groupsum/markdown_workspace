@@ -6,7 +6,7 @@ import type {
   MarkdownEditorHostEditApi,
   MarkdownEditorSelection,
   MarkdownEditorSnapshot,
-} from "@markdown-workspace/markdown-editor-core";
+} from "@mdwrk/markdown-editor-core";
 import type { MarkdownEditorThemeVariables } from "./theme.js";
 
 export interface MarkdownSourceEditorProps {

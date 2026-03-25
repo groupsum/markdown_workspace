@@ -56,10 +56,10 @@ export async function runCompatibilityValidation() {
   const workspaces = await loadWorkspacePackages();
   const byName = new Map(workspaces.map((workspacePackage) => [workspacePackage.packageJson.name, workspacePackage]));
   const clientPackage = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/client');
-  const manifestContractPackage = byName.get('@markdown-workspace/extension-manifest');
-  const hostPackage = byName.get('@markdown-workspace/extension-host');
-  const runtimePackage = byName.get('@markdown-workspace/extension-runtime');
-  const themeContractPackage = byName.get('@markdown-workspace/theme-contract');
+  const manifestContractPackage = byName.get('@mdwrk/extension-manifest');
+  const hostPackage = byName.get('@mdwrk/extension-host');
+  const runtimePackage = byName.get('@mdwrk/extension-runtime');
+  const themeContractPackage = byName.get('@mdwrk/theme-contract');
 
   const platformBaselines = {
     client: clientPackage?.packageJson.version ?? null,
@@ -70,7 +70,7 @@ export async function runCompatibilityValidation() {
   };
 
   const extensionPackages = workspaces.filter(
-    (workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@markdown-workspace/extension-runtime',
+    (workspacePackage) => workspacePackage.category === 'extension' && workspacePackage.packageJson.name !== '@mdwrk/extension-runtime',
   );
 
   const results = [];

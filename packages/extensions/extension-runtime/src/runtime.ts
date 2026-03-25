@@ -1,4 +1,4 @@
-import type { ExtensionCapability } from "@markdown-workspace/extension-manifest";
+import type { ExtensionCapability } from "@mdwrk/extension-manifest";
 import type {
   DiagnosticRecord,
   Disposable,
@@ -19,9 +19,9 @@ import type {
   HostWorkspaceApi,
   MarkdownWorkspaceExtension,
   RegisteredComponent,
-} from "@markdown-workspace/extension-host";
-import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
-import { THEME_CONTRACT_VERSION } from "@markdown-workspace/theme-contract";
+} from "@mdwrk/extension-host";
+import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
+import { THEME_CONTRACT_VERSION } from "@mdwrk/theme-contract";
 import {
   createFetchExtensionArtifactTransport,
   evaluateCatalogEntryPolicy,

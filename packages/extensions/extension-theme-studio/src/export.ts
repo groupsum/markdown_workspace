@@ -1,5 +1,5 @@
-import { createEmptyThemePreset, type MarkdownWorkspaceThemeTokenMap, type ThemePreset } from "@markdown-workspace/theme-contract";
-import { renderThemeBridgeCssVariables, renderThemeCssVariables } from "@markdown-workspace/ui-tokens/theme-map";
+import { createEmptyThemePreset, type MarkdownWorkspaceThemeTokenMap, type ThemePreset } from "@mdwrk/theme-contract";
+import { renderThemeBridgeCssVariables, renderThemeCssVariables } from "@mdwrk/ui-tokens/theme-map";
 import type {
   ThemeStudioExportArtifacts,
   ThemeStudioMetadata,
@@ -18,7 +18,7 @@ export function sanitizeThemeIdentifier(value: string): string {
 export function sanitizePackageName(value: string): string {
   const trimmed = value.trim();
   if (!trimmed) {
-    return "@markdown-workspace/theme-custom-theme";
+    return "@mdwrk/theme-custom-theme";
   }
   return trimmed
     .replace(/\s+/g, "-")

@@ -1,11 +1,11 @@
-import type { I18nLabel } from '@markdown-workspace/extension-manifest';
+import type { I18nLabel } from '@mdwrk/extension-manifest';
 import {
   createLocaleRegistry,
   createNamespacedLocaleCatalog,
   loadLocaleCatalogs,
   type LocaleCatalog,
   type LocaleCatalogLoaderDefinition,
-} from '@markdown-workspace/i18n';
+} from '@mdwrk/i18n';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
 export interface ClientI18nSnapshot {

@@ -1,9 +1,9 @@
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 
 export const extensionCatalogHelloManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: "external.catalog-hello",
-  packageName: "@demo-markdown-workspace/extension-catalog-hello",
+  packageName: "@mdwrk/extension-catalog-hello",
   version: "1.0.1",
   displayName: {
     defaultMessage: "Catalog Hello",

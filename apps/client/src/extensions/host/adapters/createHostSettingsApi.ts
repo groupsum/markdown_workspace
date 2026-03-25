@@ -1,4 +1,4 @@
-import type { HostSettingsApi } from '@markdown-workspace/extension-host';
+import type { HostSettingsApi } from '@mdwrk/extension-host';
 import type { HostSettingsStore } from '../../../features/settings/settingsStore';
 
 export function createHostSettingsApi(store: HostSettingsStore): HostSettingsApi {

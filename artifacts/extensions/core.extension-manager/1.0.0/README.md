@@ -1,4 +1,4 @@
-# @markdown-workspace/extension-manager
+# @mdwrk/extension-manager
 
 First-party bundled operator console extension for Markdown Workspace.
 

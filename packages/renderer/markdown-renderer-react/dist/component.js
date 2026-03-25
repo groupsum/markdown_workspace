@@ -4,8 +4,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkSupersub from "remark-supersub";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { DEFAULT_MARKDOWN_RENDERER_CLASS_NAMES } from "@markdown-workspace/markdown-renderer-core/class-names";
-import { slugifyHeading } from "@markdown-workspace/markdown-renderer-core/slug";
+import { DEFAULT_MARKDOWN_RENDERER_CLASS_NAMES } from "@mdwrk/markdown-renderer-core/class-names";
+import { slugifyHeading } from "@mdwrk/markdown-renderer-core/slug";
 import { createMarkdownRendererThemeStyle } from "./theme.js";
 const mergeClassNames = (...values) => values.filter(Boolean).join(" ");
 function getDefaultLinkAttributes(href) {

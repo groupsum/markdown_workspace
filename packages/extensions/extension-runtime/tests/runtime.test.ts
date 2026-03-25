@@ -7,8 +7,8 @@ import type {
   RegisteredCommand,
   RegisteredSettingsSection,
   RegisteredView,
-} from "@markdown-workspace/extension-host";
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+} from "@mdwrk/extension-host";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import { createExtensionRuntime } from "../src/runtime.js";
 import { evaluateExtensionCompatibility } from "../src/compatibility.js";
 import { createInMemoryExtensionRuntimeStorage, getExtensionConfigKey } from "../src/storage.js";
@@ -18,7 +18,7 @@ import type { ExtensionRuntimeRegistrationSink } from "../src/types.js";
 const createManifest = (id: string, overrides: Partial<ExtensionManifest> = {}): ExtensionManifest => ({
   manifestVersion: 1,
   id,
-  packageName: `@markdown-workspace/${id}`,
+  packageName: `@mdwrk/${id}`,
   version: "1.0.0",
   displayName: { defaultMessage: id },
   description: { defaultMessage: `${id} description` },

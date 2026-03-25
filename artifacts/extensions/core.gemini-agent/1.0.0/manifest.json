@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "core.gemini-agent",
-  "packageName": "@markdown-workspace/extension-gemini-agent",
+  "packageName": "@mdwrk/extension-gemini-agent",
   "version": "1.0.0",
   "displayName": {
     "key": "core.gemini-agent.manifest.displayName",

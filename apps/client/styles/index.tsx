@@ -1,7 +1,7 @@
-import '@markdown-workspace/ui-tokens/styles/index.css';
+import '@mdwrk/ui-tokens/styles/index.css';
 import './index.css';
 
-import sharedPrimitiveCssText from '@markdown-workspace/ui-tokens/styles/index.css?inline';
+import sharedPrimitiveCssText from '@mdwrk/ui-tokens/styles/index.css?inline';
 import localCoreCssText from './index.css?inline';
 import acidEtchedThemeCssText from './themes/theme-acid-etched.css?inline';
 import anodizedBilletThemeCssText from './themes/theme-anodized-billet.css?inline';

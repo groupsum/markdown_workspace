@@ -1,5 +1,5 @@
-import { createHtmlDocument } from '@markdown-workspace/markdown-renderer-core';
-import { renderMarkdownToStaticHtml } from '@markdown-workspace/markdown-renderer-react';
+import { createHtmlDocument } from '@mdwrk/markdown-renderer-core';
+import { renderMarkdownToStaticHtml } from '@mdwrk/markdown-renderer-react';
 import { AppTheme } from '../types';
 import { CORE_STYLESHEET_TEXT, THEME_STYLESHEET_TEXT } from '../styles';
 

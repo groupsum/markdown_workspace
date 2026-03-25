@@ -1,5 +1,5 @@
 {
-  "name": "@markdown-workspace/markdown-renderer-core",
+  "name": "@mdwrk/markdown-renderer-core",
   "version": "1.0.0",
   "type": "module",
   "license": "Apache-2.0",
@@ -83,5 +83,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

@@ -4,14 +4,14 @@
 
 This document defines how extension packages use host capabilities safely and portably.
 
-The normative contract source is `@markdown-workspace/extension-host`.
+The normative contract source is `@mdwrk/extension-host`.
 
 ## Rule 1 — use host contracts, not app internals
 
 Extension packages must consume:
-- `@markdown-workspace/extension-host`
-- `@markdown-workspace/extension-manifest`
-- `@markdown-workspace/theme-contract`
+- `@mdwrk/extension-host`
+- `@mdwrk/extension-manifest`
+- `@mdwrk/theme-contract`
 
 Extension packages must **not** import from:
 - `apps/client/*`

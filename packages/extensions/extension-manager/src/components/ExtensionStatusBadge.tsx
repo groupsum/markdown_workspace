@@ -1,5 +1,5 @@
 import React from "react";
-import type { ExtensionRuntimeExtensionSnapshot } from "@markdown-workspace/extension-runtime";
+import type { ExtensionRuntimeExtensionSnapshot } from "@mdwrk/extension-runtime";
 
 export interface ExtensionStatusBadgeProps {
   readonly status: ExtensionRuntimeExtensionSnapshot["status"];

@@ -1,4 +1,4 @@
-import type { Disposable, RegisteredView } from '@markdown-workspace/extension-host';
+import type { Disposable, RegisteredView } from '@mdwrk/extension-host';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
 export interface ClientViewRenderProps {

@@ -1,4 +1,4 @@
-import { createEditorThemeBridgeVariableRecord, } from "@markdown-workspace/ui-tokens/theme-map";
+import { createEditorThemeBridgeVariableRecord, } from "@mdwrk/ui-tokens/theme-map";
 export function createMarkdownEditorThemeStyle(variables = {}) {
     return {
         ["--mwe-bg-surface"]: variables.background ?? "var(--bg-panel, #11151a)",

@@ -1,6 +1,6 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { createHtmlDocument } from "@markdown-workspace/markdown-renderer-core/html";
+import { createHtmlDocument } from "@mdwrk/markdown-renderer-core/html";
 import { MarkdownRenderer } from "./component.js";
 import type { MarkdownRendererProps } from "./types.js";
 

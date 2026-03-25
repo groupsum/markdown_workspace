@@ -1,5 +1,5 @@
-import type { I18nLabel } from '@markdown-workspace/extension-manifest';
-import type { HostNotificationOptions } from '@markdown-workspace/extension-host';
+import type { I18nLabel } from '@mdwrk/extension-manifest';
+import type { HostNotificationOptions } from '@mdwrk/extension-host';
 
 export interface ClientNotificationBridge {
   addToast(message: string, type: 'info' | 'warning' | 'success'): void;

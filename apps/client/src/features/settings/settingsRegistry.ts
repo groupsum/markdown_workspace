@@ -1,5 +1,5 @@
-import type { ExtensionIcon, ExtensionSettingsSchema, I18nLabel } from '@markdown-workspace/extension-manifest';
-import type { Disposable, RegisteredSettingsSection } from '@markdown-workspace/extension-host';
+import type { ExtensionIcon, ExtensionSettingsSchema, I18nLabel } from '@mdwrk/extension-manifest';
+import type { Disposable, RegisteredSettingsSection } from '@mdwrk/extension-host';
 import type { ReactNode } from 'react';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 

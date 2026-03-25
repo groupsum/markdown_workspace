@@ -13,7 +13,7 @@
     "src/styles",
     "README.md"
   ],
-  "name": "@markdown-workspace/ui-tokens",
+  "name": "@mdwrk/ui-tokens",
   "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for Markdown Workspace packages and applications.",
   "sideEffects": [
     "./src/styles/*.css"
@@ -26,7 +26,7 @@
     "themes"
   ],
   "dependencies": {
-    "@markdown-workspace/theme-contract": "^1.0.0"
+    "@mdwrk/theme-contract": "^1.0.0"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -62,5 +62,5 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "external.catalog-hello",
-  "packageName": "@demo-markdown-workspace/extension-catalog-hello",
+  "packageName": "@mdwrk/extension-catalog-hello",
   "version": "1.0.0",
   "displayName": {
     "defaultMessage": "Catalog Hello",

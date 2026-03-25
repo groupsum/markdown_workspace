@@ -19,7 +19,7 @@ export const THEME_STUDIO_DEFAULT_SETTINGS: ThemeStudioResolvedSettings = {
   autoPreviewOnEdit: true,
   defaultExportTarget: "host",
   compactCss: false,
-  packageNamePrefix: "@markdown-workspace/theme-",
+  packageNamePrefix: "@mdwrk/theme-",
   defaultAuthor: "Markdown Workspace",
 };
 

@@ -1,4 +1,4 @@
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID,
   GEMINI_AGENT_COMMAND_OPEN_ID,
@@ -18,7 +18,7 @@ import { GEMINI_AGENT_EXTENSION_VERSION } from "./version.js";
 export const geminiAgentManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: GEMINI_AGENT_EXTENSION_ID,
-  packageName: "@markdown-workspace/extension-gemini-agent",
+  packageName: "@mdwrk/extension-gemini-agent",
   version: GEMINI_AGENT_EXTENSION_VERSION,
   displayName: geminiAgentLabels.manifestDisplayName,
   description: geminiAgentLabels.manifestDescription,

@@ -13,8 +13,8 @@ export async function runIntegrationSmoke() {
   const byName = new Map(workspaces.map((workspacePackage) => [workspacePackage.packageJson.name, workspacePackage]));
   const client = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/client');
   const lander = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/lander');
-  const rendererExample = byName.get('@markdown-workspace/example-renderer-basic');
-  const editorExample = byName.get('@markdown-workspace/example-editor-basic');
+  const rendererExample = byName.get('@mdwrk/example-renderer-basic');
+  const editorExample = byName.get('@mdwrk/example-editor-basic');
 
   const checks = [];
   const failures = [];
@@ -29,10 +29,10 @@ export async function runIntegrationSmoke() {
   record(
     'client-depends-on-runtime-and-first-party-extensions',
     Boolean(
-      client?.packageJson.dependencies?.['@markdown-workspace/extension-runtime'] &&
-        client.packageJson.dependencies['@markdown-workspace/extension-manager'] &&
-        client.packageJson.dependencies['@markdown-workspace/extension-gemini-agent'] &&
-        client.packageJson.dependencies['@markdown-workspace/extension-theme-studio'],
+      client?.packageJson.dependencies?.['@mdwrk/extension-runtime'] &&
+        client.packageJson.dependencies['@mdwrk/extension-manager'] &&
+        client.packageJson.dependencies['@mdwrk/extension-gemini-agent'] &&
+        client.packageJson.dependencies['@mdwrk/extension-theme-studio'],
     ),
     client?.packageJson.dependencies ?? null,
   );
@@ -40,9 +40,9 @@ export async function runIntegrationSmoke() {
   record(
     'lander-depends-on-shared-renderer-packages',
     Boolean(
-      lander?.packageJson.dependencies?.['@markdown-workspace/markdown-renderer-core'] &&
-        lander.packageJson.dependencies['@markdown-workspace/markdown-renderer-react'] &&
-        lander.packageJson.dependencies['@markdown-workspace/ui-tokens'],
+      lander?.packageJson.dependencies?.['@mdwrk/markdown-renderer-core'] &&
+        lander.packageJson.dependencies['@mdwrk/markdown-renderer-react'] &&
+        lander.packageJson.dependencies['@mdwrk/ui-tokens'],
     ),
     lander?.packageJson.dependencies ?? null,
   );

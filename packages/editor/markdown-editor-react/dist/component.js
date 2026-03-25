@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from "react";
-import { DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES, applyBuiltinMarkdownCommand, canRedoHistory, canUndoHistory, computeCursorPosition, createSelection, createHistoryState, normalizeSelection, pushHistoryEntry, redoHistory, replaceHistoryPresent, resetHistoryState, undoHistory, } from "@markdown-workspace/markdown-editor-core";
+import { DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES, applyBuiltinMarkdownCommand, canRedoHistory, canUndoHistory, computeCursorPosition, createSelection, createHistoryState, normalizeSelection, pushHistoryEntry, redoHistory, replaceHistoryPresent, resetHistoryState, undoHistory, } from "@mdwrk/markdown-editor-core";
 import { createMarkdownEditorThemeStyle } from "./theme.js";
 const mergeClassNames = (...values) => values.filter(Boolean).join(" ");
 function selectionEquals(a, b) {

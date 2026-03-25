@@ -5,7 +5,7 @@
     "demo-catalog"
   ],
   "allowedPackageNames": [
-    "@demo-markdown-workspace/extension-catalog-hello"
+    "@mdwrk/extension-catalog-hello"
   ],
   "allowedExtensionIds": [
     "external.catalog-hello"

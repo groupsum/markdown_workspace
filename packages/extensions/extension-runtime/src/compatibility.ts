@@ -1,10 +1,10 @@
-import { EXTENSION_HOST_API_VERSION } from "@markdown-workspace/extension-host";
+import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
 import {
   EXTENSION_MANIFEST_VERSION,
   EXTENSION_RUNTIME_API_BASELINE,
   type ExtensionManifest,
-} from "@markdown-workspace/extension-manifest";
-import { THEME_CONTRACT_VERSION } from "@markdown-workspace/theme-contract";
+} from "@mdwrk/extension-manifest";
+import { THEME_CONTRACT_VERSION } from "@mdwrk/theme-contract";
 import type { ExtensionRuntimeCompatibilityIssue, ExtensionRuntimeCompatibilityResult } from "./types.js";
 
 interface CompatibilityContext {

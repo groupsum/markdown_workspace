@@ -1,4 +1,4 @@
-import type { ExtensionHost, SelectionRange } from "@markdown-workspace/extension-host";
+import type { ExtensionHost, SelectionRange } from "@mdwrk/extension-host";
 import type { GeminiAgentContextSnapshot } from "./types.js";
 
 function hasSelectionText(selection: SelectionRange): boolean {

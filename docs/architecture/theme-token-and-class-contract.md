@@ -4,7 +4,7 @@
 
 The normative TypeScript package is:
 
-- `@markdown-workspace/theme-contract`
+- `@mdwrk/theme-contract`
 
 This package defines:
 - token names
@@ -108,7 +108,7 @@ Examples:
 - `--mwe-font-mono`
 - `--mwe-editor-padding`
 
-These bridge definitions are exported from `@markdown-workspace/theme-contract/bridges` and materialized through `@markdown-workspace/ui-tokens/theme-map`.
+These bridge definitions are exported from `@mdwrk/theme-contract/bridges` and materialized through `@mdwrk/ui-tokens/theme-map`.
 
 ## Derivation in the current repo
 
@@ -133,7 +133,7 @@ Reusable packages target the shared contract directly and remain independent of 
 A third-party application can implement the same tokens/classes with its own styling system and either:
 - emit host token variables
 - emit renderer/editor bridge variables directly
-- generate CSS blocks from `@markdown-workspace/ui-tokens/theme-map`
+- generate CSS blocks from `@mdwrk/ui-tokens/theme-map`
 
 ## Contract rules
 

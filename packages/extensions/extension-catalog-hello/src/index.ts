@@ -1,5 +1,5 @@
 export * from "./version.js";
-import type { MarkdownWorkspaceExtension } from "@markdown-workspace/extension-host";
+import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import { extensionCatalogHelloManifest } from "./manifest.js";
 
 export const extensionCatalogHello: MarkdownWorkspaceExtension = {

@@ -14,7 +14,7 @@ export const THEME_STUDIO_DEFAULT_SETTINGS = {
     autoPreviewOnEdit: true,
     defaultExportTarget: "host",
     compactCss: false,
-    packageNamePrefix: "@markdown-workspace/theme-",
+    packageNamePrefix: "@mdwrk/theme-",
     defaultAuthor: "Markdown Workspace",
 };
 export const THEME_STUDIO_SAMPLE_MARKDOWN = `# Theme Studio Preview

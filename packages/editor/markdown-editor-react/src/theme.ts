@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import {
   createEditorThemeBridgeVariableRecord,
   type ThemeTokenOverrides,
-} from "@markdown-workspace/ui-tokens/theme-map";
+} from "@mdwrk/ui-tokens/theme-map";
 
 export interface MarkdownEditorThemeVariables {
   readonly background?: string;

@@ -1,4 +1,4 @@
-# @demo-markdown-workspace/extension-catalog-hello
+# @mdwrk/extension-catalog-hello
 
 Sample third-party extension package used to prove the external catalog distribution path.
 

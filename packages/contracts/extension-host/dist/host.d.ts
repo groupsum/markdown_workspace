@@ -1,5 +1,5 @@
-import type { ActionRailContributionDescriptor, ExtensionCapability, I18nLabel, ViewContributionDescriptor } from "@markdown-workspace/extension-manifest";
-import type { MarkdownWorkspaceThemeClassName, MarkdownWorkspaceThemeTokenMap, MarkdownWorkspaceThemeTokenName, ThemeBridgeTarget, ThemeBridgeVariableDefinition, ThemeClassDefinition, ThemePreset, ThemeTokenDefinition } from "@markdown-workspace/theme-contract";
+import type { ActionRailContributionDescriptor, ExtensionCapability, I18nLabel, ViewContributionDescriptor } from "@mdwrk/extension-manifest";
+import type { MarkdownWorkspaceThemeClassName, MarkdownWorkspaceThemeTokenMap, MarkdownWorkspaceThemeTokenName, ThemeBridgeTarget, ThemeBridgeVariableDefinition, ThemeClassDefinition, ThemePreset, ThemeTokenDefinition } from "@mdwrk/theme-contract";
 import type { Disposable, MaybePromise } from "./primitives.js";
 export interface HostCommandApi {
     execute<T = unknown>(id: string, ...args: unknown[]): Promise<T>;

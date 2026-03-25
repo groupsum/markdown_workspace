@@ -93,15 +93,15 @@ Extension-specific types that do not belong in host contracts.
 ## Package authoring rules
 
 - extension packages must not import app internals directly
-- extension packages consume host contracts from `@markdown-workspace/extension-host`
-- extension packages consume manifest contracts from `@markdown-workspace/extension-manifest`
+- extension packages consume host contracts from `@mdwrk/extension-host`
+- extension packages consume manifest contracts from `@mdwrk/extension-manifest`
 - styling must target the shared token/class contract, not app-local stylesheet internals
 - all user-visible labels must be localizable
 - all extensions must provide an icon descriptor
 
 ## Initial first-party package list
 
-- `@markdown-workspace/extension-runtime`
-- `@markdown-workspace/extension-manager`
-- `@markdown-workspace/extension-gemini-agent`
-- `@markdown-workspace/extension-theme-studio`
+- `@mdwrk/extension-runtime`
+- `@mdwrk/extension-manager`
+- `@mdwrk/extension-gemini-agent`
+- `@mdwrk/extension-theme-studio`

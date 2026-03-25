@@ -7,7 +7,7 @@ import type {
   I18nLabel,
   SignedExtensionManifest,
   TrustedExtensionSigner,
-} from "@markdown-workspace/extension-manifest";
+} from "@mdwrk/extension-manifest";
 import type {
   DiagnosticRecord,
   Disposable,
@@ -19,7 +19,7 @@ import type {
   RegisteredComponent,
   RegisteredSettingsSection,
   RegisteredView,
-} from "@markdown-workspace/extension-host";
+} from "@mdwrk/extension-host";
 
 export type ExtensionActivationMode = "eager" | "lazy";
 

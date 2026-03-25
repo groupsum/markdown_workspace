@@ -1,4 +1,4 @@
-import type { HostViewApi } from '@markdown-workspace/extension-host';
+import type { HostViewApi } from '@mdwrk/extension-host';
 import type { ViewRegistry } from '../../../features/views/viewRegistry';
 
 export function createHostViewApi(views: ViewRegistry): HostViewApi {

@@ -1,4 +1,4 @@
-import type { ExtensionHost } from '@markdown-workspace/extension-host';
+import type { ExtensionHost } from '@mdwrk/extension-host';
 import type { useApp } from '../../../hooks/useApp';
 import type { usePwa } from '../../../hooks/usePwa';
 import type { ActionRailRegistry } from '../../features/action-rail/actionRailRegistry';

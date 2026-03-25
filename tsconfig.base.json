@@ -19,94 +19,94 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@markdown-workspace/extension-manifest": [
+      "@mdwrk/extension-manifest": [
         "packages/contracts/extension-manifest/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-manifest/*": [
+      "@mdwrk/extension-manifest/*": [
         "packages/contracts/extension-manifest/dist/*"
       ],
-      "@markdown-workspace/extension-host": [
+      "@mdwrk/extension-host": [
         "packages/contracts/extension-host/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-host/*": [
+      "@mdwrk/extension-host/*": [
         "packages/contracts/extension-host/dist/*"
       ],
-      "@markdown-workspace/theme-contract": [
+      "@mdwrk/theme-contract": [
         "packages/contracts/theme-contract/dist/index.d.ts"
       ],
-      "@markdown-workspace/theme-contract/*": [
+      "@mdwrk/theme-contract/*": [
         "packages/contracts/theme-contract/dist/*"
       ],
-      "@markdown-workspace/ui-tokens": [
+      "@mdwrk/ui-tokens": [
         "packages/shared/ui-tokens/dist/index.d.ts"
       ],
-      "@markdown-workspace/ui-tokens/*": [
+      "@mdwrk/ui-tokens/*": [
         "packages/shared/ui-tokens/dist/*"
       ],
-      "@markdown-workspace/icons": [
+      "@mdwrk/icons": [
         "packages/shared/icons/dist/index.d.ts"
       ],
-      "@markdown-workspace/icons/*": [
+      "@mdwrk/icons/*": [
         "packages/shared/icons/dist/*"
       ],
-      "@markdown-workspace/i18n": [
+      "@mdwrk/i18n": [
         "packages/shared/i18n/dist/index.d.ts"
       ],
-      "@markdown-workspace/i18n/*": [
+      "@mdwrk/i18n/*": [
         "packages/shared/i18n/dist/*"
       ],
-      "@markdown-workspace/testing": [
+      "@mdwrk/testing": [
         "packages/shared/testing/dist/index.d.ts"
       ],
-      "@markdown-workspace/testing/*": [
+      "@mdwrk/testing/*": [
         "packages/shared/testing/dist/*"
       ],
-      "@markdown-workspace/markdown-renderer-core": [
+      "@mdwrk/markdown-renderer-core": [
         "packages/renderer/markdown-renderer-core/dist/index.d.ts"
       ],
-      "@markdown-workspace/markdown-renderer-core/*": [
+      "@mdwrk/markdown-renderer-core/*": [
         "packages/renderer/markdown-renderer-core/dist/*"
       ],
-      "@markdown-workspace/markdown-renderer-react": [
+      "@mdwrk/markdown-renderer-react": [
         "packages/renderer/markdown-renderer-react/dist/index.d.ts"
       ],
-      "@markdown-workspace/markdown-renderer-react/*": [
+      "@mdwrk/markdown-renderer-react/*": [
         "packages/renderer/markdown-renderer-react/dist/*"
       ],
-      "@markdown-workspace/markdown-editor-core": [
+      "@mdwrk/markdown-editor-core": [
         "packages/editor/markdown-editor-core/dist/index.d.ts"
       ],
-      "@markdown-workspace/markdown-editor-core/*": [
+      "@mdwrk/markdown-editor-core/*": [
         "packages/editor/markdown-editor-core/dist/*"
       ],
-      "@markdown-workspace/markdown-editor-react": [
+      "@mdwrk/markdown-editor-react": [
         "packages/editor/markdown-editor-react/dist/index.d.ts"
       ],
-      "@markdown-workspace/markdown-editor-react/*": [
+      "@mdwrk/markdown-editor-react/*": [
         "packages/editor/markdown-editor-react/dist/*"
       ],
-      "@markdown-workspace/extension-runtime": [
+      "@mdwrk/extension-runtime": [
         "packages/extensions/extension-runtime/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-runtime/*": [
+      "@mdwrk/extension-runtime/*": [
         "packages/extensions/extension-runtime/dist/*"
       ],
-      "@markdown-workspace/extension-manager": [
+      "@mdwrk/extension-manager": [
         "packages/extensions/extension-manager/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-manager/*": [
+      "@mdwrk/extension-manager/*": [
         "packages/extensions/extension-manager/dist/*"
       ],
-      "@markdown-workspace/extension-gemini-agent": [
+      "@mdwrk/extension-gemini-agent": [
         "packages/extensions/extension-gemini-agent/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-gemini-agent/*": [
+      "@mdwrk/extension-gemini-agent/*": [
         "packages/extensions/extension-gemini-agent/dist/*"
       ],
-      "@markdown-workspace/extension-theme-studio": [
+      "@mdwrk/extension-theme-studio": [
         "packages/extensions/extension-theme-studio/dist/index.d.ts"
       ],
-      "@markdown-workspace/extension-theme-studio/*": [
+      "@mdwrk/extension-theme-studio/*": [
         "packages/extensions/extension-theme-studio/dist/*"
       ]
     }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { renderMarkdownToHtml } from "@markdown-workspace/markdown-renderer-core";
+import { renderMarkdownToHtml } from "@mdwrk/markdown-renderer-core";
 import { applyBuiltinMarkdownCommand } from "../src/index.js";
 
 describe("renderer/editor roundtrip", () => {

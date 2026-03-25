@@ -4,7 +4,7 @@ This document describes the Phase 10 first-party Gemini workflow extension packa
 
 ## Package
 
-- package: `@markdown-workspace/extension-gemini-agent`
+- package: `@mdwrk/extension-gemini-agent`
 - path: `packages/extensions/extension-gemini-agent/`
 - type: bundled first-party extension package
 

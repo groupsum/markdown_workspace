@@ -19,7 +19,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-      '@markdown-workspace/ui-tokens': path.resolve(__dirname, '../../packages/shared/ui-tokens/src'),
+      '@mdwrk/ui-tokens': path.resolve(__dirname, '../../packages/shared/ui-tokens/src'),
     }
   },
   build: {

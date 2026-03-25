@@ -1,4 +1,4 @@
-# @markdown-workspace/i18n
+# @mdwrk/i18n
 
 Shared message descriptor, locale catalog, locale loader, and locale registry helpers for Markdown Workspace packages.
 
@@ -16,7 +16,7 @@ import {
   createLocaleRegistry,
   createNamespacedLocaleCatalog,
   loadLocaleCatalogs,
-} from "@markdown-workspace/i18n";
+} from "@mdwrk/i18n";
 
 const registry = createLocaleRegistry({ defaultLocale: "en", fallbackLocale: "en" });
 

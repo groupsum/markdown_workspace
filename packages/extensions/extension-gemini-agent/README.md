@@ -1,4 +1,4 @@
-# @markdown-workspace/extension-gemini-agent
+# @mdwrk/extension-gemini-agent
 
 First-party Gemini workflow extension for Markdown Workspace.
 
@@ -22,4 +22,4 @@ The extension can:
 
 ## Packaging
 
-This package is publishable as an npm package and bundled into `apps/client` through `@markdown-workspace/extension-runtime`.
+This package is publishable as an npm package and bundled into `apps/client` through `@mdwrk/extension-runtime`.

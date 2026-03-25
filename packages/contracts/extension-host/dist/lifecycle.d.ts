@@ -1,4 +1,4 @@
-import type { ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import type { ExtensionContext } from "./context.js";
 import type { Disposable, MaybePromise } from "./primitives.js";
 export interface ExtensionActivationResult {

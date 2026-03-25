@@ -1,5 +1,5 @@
 import React from "react";
-import type { ExtensionIcon } from "@markdown-workspace/extension-manifest";
+import type { ExtensionIcon } from "@mdwrk/extension-manifest";
 import * as LucideIcons from "lucide-react";
 import { AppWindow, FileQuestion } from "lucide-react";
 

@@ -1,4 +1,4 @@
-import { type ExtensionManifest } from "@markdown-workspace/extension-manifest";
+import { type ExtensionManifest } from "@mdwrk/extension-manifest";
 import type { ExtensionRuntimeCompatibilityResult } from "./types.js";
 interface CompatibilityContext {
     readonly hostApiVersion: string;

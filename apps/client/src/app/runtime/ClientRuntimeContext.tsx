@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ExtensionHost } from '@markdown-workspace/extension-host';
+import type { ExtensionHost } from '@mdwrk/extension-host';
 import { createActionRailRegistry } from '../../features/action-rail/actionRailRegistry';
 import { createCommandRegistry } from '../../features/commands/commandRegistry';
 import { createActiveEditorBridge, ActiveEditorBridgeProvider } from '../../features/editor/activeEditorBridge';

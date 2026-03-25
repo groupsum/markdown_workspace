@@ -4,7 +4,7 @@ import {
   type MarkdownWorkspaceThemeTokenMap,
   type MarkdownWorkspaceThemeTokenName,
   type ThemeTokenDefinition,
-} from "@markdown-workspace/theme-contract/tokens";
+} from "@mdwrk/theme-contract/tokens";
 
 export {
   MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES,
@@ -12,7 +12,7 @@ export {
   type MarkdownWorkspaceThemeTokenMap,
   type MarkdownWorkspaceThemeTokenName,
   type ThemeTokenDefinition,
-} from "@markdown-workspace/theme-contract/tokens";
+} from "@mdwrk/theme-contract/tokens";
 
 export type MarkdownWorkspaceUiTokenName = MarkdownWorkspaceThemeTokenName;
 export type MarkdownWorkspaceUiTokenMap = MarkdownWorkspaceThemeTokenMap;

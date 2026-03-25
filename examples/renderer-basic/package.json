@@ -1,5 +1,5 @@
 {
-  "name": "@markdown-workspace/example-renderer-basic",
+  "name": "@mdwrk/example-renderer-basic",
   "private": true,
   "version": "0.1.1",
   "type": "module",
@@ -10,8 +10,8 @@
     "lint": "npm run typecheck"
   },
   "dependencies": {
-    "@markdown-workspace/markdown-renderer-react": "^1.0.1",
-    "@markdown-workspace/ui-tokens": "^1.0.1",
+    "@mdwrk/markdown-renderer-react": "^1.0.1",
+    "@mdwrk/ui-tokens": "^1.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -23,5 +23,5 @@
     "vite": "^6.4.1"
   },
   "license": "Apache-2.0",
-  "author": "Jacob Stewart <jacob@swarmauri.com>"
+  "author": "Jacob Stewart <jacob@mdwrk.com>"
 }

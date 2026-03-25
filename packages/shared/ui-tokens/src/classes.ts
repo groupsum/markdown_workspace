@@ -3,14 +3,14 @@ import {
   MARKDOWN_WORKSPACE_THEME_CLASSES,
   type MarkdownWorkspaceThemeClassName,
   type ThemeClassDefinition,
-} from "@markdown-workspace/theme-contract/classes";
+} from "@mdwrk/theme-contract/classes";
 
 export {
   MARKDOWN_WORKSPACE_THEME_CLASS_NAMES,
   MARKDOWN_WORKSPACE_THEME_CLASSES,
   type MarkdownWorkspaceThemeClassName,
   type ThemeClassDefinition,
-} from "@markdown-workspace/theme-contract/classes";
+} from "@mdwrk/theme-contract/classes";
 
 export const MARKDOWN_WORKSPACE_RENDERER_HELPER_CLASS_NAMES = Object.freeze(
   MARKDOWN_WORKSPACE_THEME_CLASSES

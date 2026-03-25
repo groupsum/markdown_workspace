@@ -1,4 +1,4 @@
-# @markdown-workspace/icons
+# @mdwrk/icons
 
 Shared icon identifiers and icon metadata for Markdown Workspace applications and packages.
 
@@ -7,7 +7,7 @@ This package does not force a rendering library. Instead it provides a stable ic
 ## Example
 
 ```ts
-import { getWorkspaceIconDefinition } from "@markdown-workspace/icons";
+import { getWorkspaceIconDefinition } from "@mdwrk/icons";
 
 const icon = getWorkspaceIconDefinition("extension.manager");
 // => { id: "extension.manager", lucideName: "Puzzle", ... }
