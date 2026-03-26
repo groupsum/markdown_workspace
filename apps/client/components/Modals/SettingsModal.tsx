@@ -14,6 +14,11 @@ interface SettingsModalProps {
   readonly onClose: () => void;
   readonly sections: readonly SettingsModalSection[];
   readonly activeThemeLabel?: string;
+  readonly labels?: {
+    readonly title?: string;
+    readonly activeTheme?: string;
+    readonly exitConfig?: string;
+  };
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -21,6 +26,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose,
   sections,
   activeThemeLabel,
+  labels,
 }) => {
   const orderedSections = useMemo(() => [...sections], [sections]);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(orderedSections[0]?.id ?? null);
@@ -43,7 +49,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <div className="modal-header">
           <span className="modal-title">
             <SettingsIcon size={18} className="text-[var(--accent)]" />
-            System Configuration
+            {labels?.title ?? 'System Configuration'}
           </span>
           <button onClick={onClose} className="modal-close"><X size={18} /></button>
         </div>
@@ -71,7 +77,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
               {activeThemeLabel && (
                 <div className="settings-content-meta">
-                  <span className="settings-content-meta-label">ACTIVE_THEME</span>
+                  <span className="settings-content-meta-label">{labels?.activeTheme ?? 'ACTIVE_THEME'}</span>
                   <span className="settings-content-meta-value">{activeThemeLabel}</span>
                 </div>
               )}
@@ -84,7 +90,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         <footer className="modal-footer">
-          <button onClick={onClose} className="modal-btn">EXIT_CONFIG</button>
+          <button onClick={onClose} className="modal-btn">{labels?.exitConfig ?? 'EXIT_CONFIG'}</button>
         </footer>
       </div>
     </div>

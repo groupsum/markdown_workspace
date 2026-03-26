@@ -15,6 +15,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       messages: {
         'core.command-palette.title': 'Command Palette',
         'core.settings.title': 'System Configuration',
+        'core.settings.activeTheme': 'ACTIVE_THEME',
+        'core.settings.exit': 'EXIT_CONFIG',
         'core.git.title': 'Git Operations',
       },
     });

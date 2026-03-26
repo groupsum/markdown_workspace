@@ -46,6 +46,11 @@ export const SettingsView: React.FC = () => {
       onClose={() => { void services.views.close('core.settings'); }}
       sections={sections}
       activeThemeLabel={runtime.app.state.currentThemeDef.name}
+      labels={{
+        title: services.i18n.format({ defaultMessage: 'System Configuration', key: 'core.settings.title' }),
+        activeTheme: services.i18n.format({ defaultMessage: 'ACTIVE_THEME', key: 'core.settings.activeTheme' }),
+        exitConfig: services.i18n.format({ defaultMessage: 'EXIT_CONFIG', key: 'core.settings.exit' }),
+      }}
     />
   );
 };
