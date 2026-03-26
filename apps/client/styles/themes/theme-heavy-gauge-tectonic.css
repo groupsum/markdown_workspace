@@ -1,0 +1,175 @@
+/*
+   THEME: HEAVY GAUGE TECTONIC
+   Source reference: client/html_theme_examples/Heavy_Gauge_Tectonic_Partitioning-13a032.html
+*/
+
+:root[data-theme="heavy-gauge-tectonic"] {
+  --bg-app: #dddddd;
+  --bg-panel: #f8f8f8;
+  --bg-inset: #ececec;
+  --code-block-bg: #101010;
+
+  --border-color: #121212;
+  --border-width: 2px;
+
+  --fg-primary: #080808;
+  --fg-secondary: #2b2b2b;
+  --fg-muted: #5a5a5a;
+
+  --accent: #ff4d00;
+
+  --status-ok: #007a4a;
+  --status-warn: #cc8500;
+  --status-error: #d32f2f;
+
+  --table-header-bg: #ebebeb;
+  --table-header-fg: #080808;
+  --table-row-primary-bg: #f9f9f9;
+  --table-row-secondary-bg: #efefef;
+
+  --texture-opacity: 0.02;
+}
+
+.theme-heavy-gauge-tectonic .chassis-shell {
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(180deg, #efefef 0%, #dcdcdc 100%);
+}
+
+.theme-heavy-gauge-tectonic .app-header,
+.theme-heavy-gauge-tectonic .status-bar {
+  background: #0f0f0f;
+  color: #f5f5f5;
+  border-color: #000000;
+}
+
+.theme-heavy-gauge-tectonic .action-rail,
+.theme-heavy-gauge-tectonic .workspace-sidebar,
+.theme-heavy-gauge-tectonic .workspace-stage,
+.theme-heavy-gauge-tectonic .project-selector-chassis {
+  background: #f3f3f3;
+  border-color: #121212;
+}
+
+.theme-heavy-gauge-tectonic .header-btn,
+.theme-heavy-gauge-tectonic .tab-item,
+.theme-heavy-gauge-tectonic .rail-btn,
+.theme-heavy-gauge-tectonic .view-toolbar-btn,
+.theme-heavy-gauge-tectonic .mode-btn,
+.theme-heavy-gauge-tectonic .project-btn,
+.theme-heavy-gauge-tectonic .project-btn-new,
+.theme-heavy-gauge-tectonic .input-modal-action,
+.theme-heavy-gauge-tectonic .project-modal-action,
+.theme-heavy-gauge-tectonic .theme-selector-action,
+.theme-heavy-gauge-tectonic .command-palette-item {
+  background: #ffffff;
+  color: #111111;
+  border-color: #121212;
+  box-shadow: 3px 3px 0 #121212;
+}
+
+.theme-heavy-gauge-tectonic .header-btn:hover,
+.theme-heavy-gauge-tectonic .tab-item:hover,
+.theme-heavy-gauge-tectonic .rail-btn:hover,
+.theme-heavy-gauge-tectonic .view-toolbar-btn:hover,
+.theme-heavy-gauge-tectonic .mode-btn:hover,
+.theme-heavy-gauge-tectonic .project-btn:hover,
+.theme-heavy-gauge-tectonic .input-modal-action:hover,
+.theme-heavy-gauge-tectonic .project-modal-action:hover,
+.theme-heavy-gauge-tectonic .theme-selector-action:hover,
+.theme-heavy-gauge-tectonic .command-palette-item:hover {
+  background: #ff4d00;
+  color: #ffffff;
+}
+
+.theme-heavy-gauge-tectonic .header-btn:active,
+.theme-heavy-gauge-tectonic .tab-item.active,
+.theme-heavy-gauge-tectonic .rail-btn.is-active,
+.theme-heavy-gauge-tectonic .view-toolbar-btn.active,
+.theme-heavy-gauge-tectonic .mode-btn.active,
+.theme-heavy-gauge-tectonic .project-btn.is-active {
+  color: #ffffff;
+  border-color: #121212;
+  background: #ff4d00;
+  box-shadow: inset 0 0 0 1px #121212;
+}
+
+.theme-heavy-gauge-tectonic .panel-toolbar,
+.theme-heavy-gauge-tectonic .view-toolbar,
+.theme-heavy-gauge-tectonic .project-header,
+.theme-heavy-gauge-tectonic .workspace-panel-header {
+  background: #e5e5e5;
+  border-bottom-color: #121212;
+}
+
+.theme-heavy-gauge-tectonic .editor-pane,
+.theme-heavy-gauge-tectonic .editor-textarea,
+.theme-heavy-gauge-tectonic .workspace-editor,
+.theme-heavy-gauge-tectonic .preview-pane,
+.theme-heavy-gauge-tectonic .workspace-preview,
+.theme-heavy-gauge-tectonic .markdown-body {
+  background: #ffffff;
+  color: #0f0f0f;
+}
+
+.theme-heavy-gauge-tectonic .markdown-body blockquote {
+  border-left-color: #ff4d00;
+}
+
+.theme-heavy-gauge-tectonic .markdown-body code {
+  background: #efefef;
+  color: #111111;
+}
+
+.theme-heavy-gauge-tectonic .markdown-body pre,
+.theme-heavy-gauge-tectonic .workspace-preview pre,
+.theme-heavy-gauge-tectonic .preview-pane pre {
+  background: #101010;
+  color: #f7f7f7;
+  border: 2px solid #121212;
+}
+
+.theme-heavy-gauge-tectonic .markdown-body a,
+.theme-heavy-gauge-tectonic .status-value,
+.theme-heavy-gauge-tectonic .status-led-dot.ok {
+  color: #ff4d00;
+}
+
+.theme-heavy-gauge-tectonic .status-led-dot.error {
+  box-shadow: 0 0 8px rgba(211, 47, 47, 0.45);
+}
+
+.theme-heavy-gauge-tectonic .project-create-modal-surface,
+.theme-heavy-gauge-tectonic .theme-selector-modal-surface,
+.theme-heavy-gauge-tectonic .input-modal-surface,
+.theme-heavy-gauge-tectonic .command-palette-surface,
+.theme-heavy-gauge-tectonic .settings-modal-surface {
+  background: #f4f4f4;
+  border: 2px solid #121212;
+  box-shadow: 8px 8px 0 #121212;
+}
+
+.theme-heavy-gauge-tectonic .project-create-modal-header,
+.theme-heavy-gauge-tectonic .theme-selector-modal-header,
+.theme-heavy-gauge-tectonic .input-modal-header,
+.theme-heavy-gauge-tectonic .settings-modal-header,
+.theme-heavy-gauge-tectonic .command-palette-header {
+  background: #121212;
+  color: #f5f5f5;
+  border-bottom-color: #121212;
+}
+
+.theme-heavy-gauge-tectonic .project-input,
+.theme-heavy-gauge-tectonic .command-palette-input,
+.theme-heavy-gauge-tectonic .settings-input,
+.theme-heavy-gauge-tectonic .settings-select {
+  background: #ffffff;
+  border-color: #121212;
+  color: #121212;
+}
+
+.theme-heavy-gauge-tectonic .project-input::placeholder,
+.theme-heavy-gauge-tectonic .command-palette-input::placeholder {
+  color: #666666;
+}

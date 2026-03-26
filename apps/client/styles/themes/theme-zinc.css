@@ -251,3 +251,27 @@
     border-bottom-width: 2px;
   }
 }
+
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+
+  .theme-zinc .view-toolbar-group {
+    flex-wrap: nowrap;
+  }
+  .theme-zinc .editor-pane-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .theme-zinc .editor-pane-shell {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: column;
+  }
+
+  .theme-zinc .view-toolbar {
+    grid-column: 1;
+    grid-row: 2;
+    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: 0;
+  }
+}
