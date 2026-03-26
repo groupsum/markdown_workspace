@@ -1,0 +1,16 @@
+# Project-scoped Codex MCP configuration
+# This file is shared by Codex CLI and IDE extension for this trusted project.
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+startup_timeout_sec = 20
+tool_timeout_sec = 90
+enabled = true
+
+[mcp_servers.chrome_devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+startup_timeout_sec = 20
+tool_timeout_sec = 90
+enabled = true
