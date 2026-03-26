@@ -2,6 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { createClientI18nService } from './clientI18nService';
 
 describe('client i18n service', () => {
+  it('returns a stable snapshot reference until locale changes', () => {
+    const service = createClientI18nService('en');
+
+    const firstSnapshot = service.getSnapshot();
+    const secondSnapshot = service.getSnapshot();
+
+    expect(secondSnapshot).toBe(firstSnapshot);
+
+    service.setLocale('es');
+    const thirdSnapshot = service.getSnapshot();
+
+    expect(thirdSnapshot).not.toBe(firstSnapshot);
+    expect(thirdSnapshot.locale).toBe('es');
+  });
+
   it('registers catalogs and formats labels', () => {
     const service = createClientI18nService('en');
     service.registerCatalog({
