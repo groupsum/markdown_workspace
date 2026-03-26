@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Tab } from '../types';
 
 export const useTabManager = () => {
@@ -8,36 +8,42 @@ export const useTabManager = () => {
   const [tabs, setTabs] = useState<Tab[]>([]);
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
 
-  const openTab = (fileId: string) => {
+  const openTab = useCallback((fileId: string) => {
     console.log(`[useTabManager] Action: openTab for file -> ${fileId}`);
-    const existingTab = tabs.find(t => t.fileId === fileId);
-    if (existingTab) {
-      console.log(`[useTabManager] Tab already exists, switching to -> ${existingTab.id}`);
-      setActiveTabId(existingTab.id);
-    } else {
+    setTabs((prevTabs) => {
+      const existingTab = prevTabs.find((tab) => tab.fileId === fileId);
+      if (existingTab) {
+        console.log(`[useTabManager] Tab already exists, switching to -> ${existingTab.id}`);
+        setActiveTabId(existingTab.id);
+        return prevTabs;
+      }
+
       const newTab = { id: `tab-${fileId}`, fileId };
       console.log(`[useTabManager] Creating new tab -> ${newTab.id}`);
-      setTabs(prev => [...prev, newTab]);
       setActiveTabId(newTab.id);
-    }
-  };
+      return [...prevTabs, newTab];
+    });
+  }, []);
 
-  const closeTab = (tabId: string) => {
+  const closeTab = useCallback((tabId: string) => {
     console.log(`[useTabManager] Action: closeTab -> ${tabId}`);
-    const newTabs = tabs.filter(t => t.id !== tabId);
-    setTabs(newTabs);
-    if (activeTabId === tabId) {
-      const nextTabId = newTabs.length > 0 ? newTabs[newTabs.length - 1].id : null;
-      console.log(`[useTabManager] Closing active tab, switching to next -> ${nextTabId}`);
-      setActiveTabId(nextTabId);
-    }
-  };
+    setTabs((prevTabs) => {
+      const nextTabs = prevTabs.filter((tab) => tab.id !== tabId);
+      setActiveTabId((currentActiveTabId) => {
+        if (currentActiveTabId !== tabId) return currentActiveTabId;
+        const nextTabId = nextTabs.length > 0 ? nextTabs[nextTabs.length - 1].id : null;
+        console.log(`[useTabManager] Closing active tab, switching to next -> ${nextTabId}`);
+        return nextTabId;
+      });
+      return nextTabs;
+    });
+  }, []);
 
-  const resetTabs = () => {
+  const resetTabs = useCallback(() => {
     console.log("[useTabManager] Action: resetTabs (full clear)");
     setTabs([]);
     setActiveTabId(null);
-  };
+  }, []);
 
   return {
     tabs,

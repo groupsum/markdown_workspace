@@ -18,14 +18,14 @@ export const useFileManager = (
   const [unsaved, setUnsaved] = useState(false);
   const [loadedProjectId, setLoadedProjectId] = useState<string | null>(null);
 
-  const loadFiles = async (projectId: string) => {
+  const loadFiles = useCallback(async (projectId: string) => {
     console.log(`[useFileManager] Action: loadFiles for project -> ${projectId}`);
     const projectFiles = await storage.getAllFiles(projectId);
     console.log(`[useFileManager] Loaded ${projectFiles.length} files from IDB`);
     setFiles(projectFiles);
     setLoadedProjectId(projectId);
     return projectFiles;
-  };
+  }, []);
 
   const normalizeFileName = (name: string) => {
     const trimmed = name.trim();
