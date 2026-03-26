@@ -84,11 +84,14 @@
     "publish:packages:changesets": "npx @changesets/cli publish",
     "release:evidence": "node ./tools/release/generate-release-evidence.mjs",
     "release:prepare": "npm run pack:packages && npm run publish:extensions && npm run conformance && npm run release:evidence",
-    "validate:extension-artifacts": "node ./tools/conformance/validate-extension-artifacts.mjs"
+    "validate:extension-artifacts": "node ./tools/conformance/validate-extension-artifacts.mjs",
+    "mcp:setup": "bash ./tools/mcp/setup-mcp.sh",
+    "mcp:proof": "node ./tools/mcp/prove-mcp-setup.mjs"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",
   "devDependencies": {
+    "playwright": "^1.58.2",
     "typescript": "5.9.3"
   }
 }
