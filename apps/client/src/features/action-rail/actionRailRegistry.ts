@@ -36,6 +36,7 @@ export function createActionRailRegistry(): ActionRailRegistry {
   const badges = new Map<string, number | null>();
   let lastRevealedId: string | null = null;
   const emitter = createStoreEmitter();
+  let cachedSnapshot: ActionRailRegistrySnapshot | null = null;
 
   const listItems = () =>
     Array.from(items.values())
@@ -49,17 +50,25 @@ export function createActionRailRegistry(): ActionRailRegistry {
       })
       .map((item) => ({ ...item, badge: badges.get(item.id) ?? null }));
 
+  const emitChange = (): void => {
+    cachedSnapshot = null;
+    emitter.emit();
+  };
+
   return {
     getSnapshot(): ActionRailRegistrySnapshot {
-      return {
-        items: listItems(),
-        lastRevealedId,
-      };
+      if (!cachedSnapshot) {
+        cachedSnapshot = {
+          items: listItems(),
+          lastRevealedId,
+        };
+      }
+      return cachedSnapshot;
     },
     subscribe: emitter.subscribe,
     register(item: ClientActionRailItem): Disposable {
       items.set(item.id, item);
-      emitter.emit();
+      emitChange();
       return {
         dispose(): void {
           if (items.get(item.id) === item) {
@@ -68,7 +77,7 @@ export function createActionRailRegistry(): ActionRailRegistry {
             if (lastRevealedId === item.id) {
               lastRevealedId = null;
             }
-            emitter.emit();
+            emitChange();
           }
         },
       };
@@ -81,11 +90,11 @@ export function createActionRailRegistry(): ActionRailRegistry {
     },
     async setBadge(id: string, value: number | null): Promise<void> {
       badges.set(id, value);
-      emitter.emit();
+      emitChange();
     },
     async reveal(id: string): Promise<void> {
       lastRevealedId = id;
-      emitter.emit();
+      emitChange();
     },
   };
 }
