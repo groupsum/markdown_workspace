@@ -6,8 +6,8 @@ This inventory reflects the current workspace package topology and implementatio
 
 | Path | Package name | Kind | Status |
 |---|---|---|---|
-| `apps/client/` | `@mdwrk/markspace` | app + published package | implemented |
-| `apps/lander/` | `markspace---local-first-markdown-workspace` | app | implemented |
+| `apps/client/` | `@mdwrk/mdwrkspace` | app + published package | implemented |
+| `apps/lander/` | `mdwrkspace---local-first-markdown-workspace` | app | implemented |
 
 ## Contract packages
 

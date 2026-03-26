@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
           <div className="bg-indigo-600 p-2 rounded-lg">
             <CloudOff className="w-6 h-6 text-white" />
           </div>
-          <span className="self-center text-2xl font-bold whitespace-nowrap text-slate-900 dark:text-white">MarkSpace</span>
+          <span className="self-center text-2xl font-bold whitespace-nowrap text-slate-900 dark:text-white">MdWrkSpace</span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-2 rtl:space-x-reverse items-center">
            <button

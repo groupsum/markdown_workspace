@@ -1,7 +1,7 @@
 export const resizableFileBrowserContent = `---
 title: Resizable File Browser + IndexedDB Preferences
 date: 2026-02-11
-author: MarkSpace Engineering
+author: MdWrkSpace Engineering
 excerpt: We shipped a drag-resizable file explorer and now persist that layout preference automatically in IndexedDB.
 ---
 # Resizable File Browser + IndexedDB Preferences

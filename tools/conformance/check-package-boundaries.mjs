@@ -111,7 +111,7 @@ export async function runBoundaryCheck() {
           continue;
         }
 
-        if (specifier.startsWith('node:') || (!specifier.startsWith('@mdwrk/') && !specifier.startsWith('@mdwrk/markspace') && !specifier.startsWith('markspace---'))) {
+        if (specifier.startsWith('node:') || (!specifier.startsWith('@mdwrk/') && !specifier.startsWith('@mdwrk/mdwrkspace') && !specifier.startsWith('mdwrkspace---'))) {
           continue;
         }
 

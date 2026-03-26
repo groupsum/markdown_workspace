@@ -25,9 +25,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/esm-entry.tsx'),
-      name: 'MarkSpace',
+      name: 'MdWrkSpace',
       formats: ['es'],
-      fileName: 'markspace'
+      fileName: 'mdwrkspace'
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react-dom/client']

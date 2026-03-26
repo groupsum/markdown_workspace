@@ -1,6 +1,6 @@
 # markdown_workspace
 
-`markdown_workspace` is a multi-package workspace for the Markspace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.
+`markdown_workspace` is a multi-package workspace for the MdWrkSpace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.
 
 ## Repository structure
 

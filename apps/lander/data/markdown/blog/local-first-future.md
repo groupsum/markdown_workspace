@@ -9,9 +9,9 @@ excerpt: Exploring the shift from cloud-centric to user-centric data storage.
 For the last decade, we've lived in the "Cloud Era." Every app we use stores our data on someone else's computer.
 
 ## The Local-First Solution
-Local-first software like MarkSpace gives you the best of both worlds: the reliability of local software with the optional sync capabilities of the cloud.
+Local-first software like MdWrkSpace gives you the best of both worlds: the reliability of local software with the optional sync capabilities of the cloud.
 
-> "Your data should outlive your apps." — MarkSpace Philosophy
+> "Your data should outlive your apps." — MdWrkSpace Philosophy
 
 ### Scientific Comparison
 If Cloud Efficiency is E~cloud~ and Local Efficiency is E~local~, then:

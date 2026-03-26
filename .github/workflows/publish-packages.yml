@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - '.changeset/**'
-      - 'apps/client/**'
+      - 'apps/**'
       - 'packages/**'
       - 'package.json'
       - 'package-lock.json'
