@@ -36,7 +36,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci --install-strategy=nested
+        run: npm run ci:install
 
       - name: Build extension packages
         run: npm run build:extensions

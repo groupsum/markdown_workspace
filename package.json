@@ -58,7 +58,7 @@
     "typecheck:extensions": "npm run typecheck -w @mdwrk/extension-runtime && npm run typecheck -w @mdwrk/extension-manager && npm run typecheck -w @mdwrk/extension-gemini-agent && npm run typecheck -w @mdwrk/extension-theme-studio && npm run typecheck -w @mdwrk/extension-catalog-hello",
     "lint:extensions": "npm run lint -w @mdwrk/extension-runtime && npm run lint -w @mdwrk/extension-manager && npm run lint -w @mdwrk/extension-gemini-agent && npm run lint -w @mdwrk/extension-theme-studio && npm run lint -w @mdwrk/extension-catalog-hello",
     "changeset": "npx @changesets/cli",
-    "ci:install": "npm ci --install-strategy=nested",
+    "ci:install": "npm ci",
     "ci:lint": "npm run lint",
     "ci:typecheck": "npm run typecheck",
     "ci:build": "npm run build",
@@ -80,7 +80,8 @@
     "publish:extensions": "npm run build:extensions && npm run extension:bundle && npm run extension:sign",
     "release:status": "npx @changesets/cli status",
     "release:version": "npx @changesets/cli version",
-    "publish:packages": "npx @changesets/cli publish",
+    "publish:packages": "node ./tools/release/run-publish.mjs",
+    "publish:packages:changesets": "npx @changesets/cli publish",
     "release:evidence": "node ./tools/release/generate-release-evidence.mjs",
     "release:prepare": "npm run pack:packages && npm run publish:extensions && npm run conformance && npm run release:evidence",
     "validate:extension-artifacts": "node ./tools/conformance/validate-extension-artifacts.mjs"

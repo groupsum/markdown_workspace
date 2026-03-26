@@ -48,6 +48,8 @@ Operational scripts:
 - `npm run release:version`
 - `npm run publish:packages`
 
+In CI, package publication is opt-in and only runs when `NPM_PUBLISH_ENABLED=true` and a publish-capable `NPM_TOKEN` is configured.
+
 ## Baseline contract versions established in Phase 2
 
 - extension manifest schema version: `1`

@@ -28,7 +28,8 @@ Root release scripts:
 - workspace verification
 - dry-run pack evidence generation
 - release evidence generation
-- Changesets versioning or publication
+- Changesets release-PR/version orchestration
+- npm publication only when `NPM_PUBLISH_ENABLED=true` and `NPM_TOKEN` is available
 
 ## Extension artifact flow
 

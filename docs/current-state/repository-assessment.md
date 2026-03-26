@@ -117,7 +117,7 @@ This checkpoint updates both Dockerfiles so each image build now copies:
 - the full `packages/` workspace tree
 - only the target app (`apps/client` for client, `apps/lander` for lander)
 
-The image build now installs with `npm ci --install-strategy=nested` and runs the authoritative root build target:
+The image build now installs with `npm run ci:install` and runs the authoritative root build target:
 
 - client: `npm run build:client`
 - lander: `npm run build:lander`
@@ -128,6 +128,6 @@ The Docker Compose restart workflows were also widened so they trigger when shar
 
 ### Docker TypeScript toolchain remediation
 
-The client and lander Docker build contexts intentionally copy only one app plus the shared workspace packages. Under `npm ci --install-strategy=nested`, build-only CLIs such as `tsc` are only present in the app workspace that declares them. Several shared packages invoke `tsc` directly during `build`, so Docker builds would fail with `sh: tsc: not found` even though the target app itself had TypeScript installed.
+The client and lander Docker build contexts intentionally copy only one app plus the shared workspace packages. Under `npm run ci:install`, build-only CLIs such as `tsc` are only present in the app workspace that declares them. Several shared packages invoke `tsc` directly during `build`, so Docker builds would fail with `sh: tsc: not found` even though the target app itself had TypeScript installed.
 
 This checkpoint fixes that by materializing a Docker-local `/usr/local/bin/tsc` wrapper that points at the copied app workspace's installed TypeScript binary before the root workspace build runs. That preserves the isolated app build contexts while making shared package builds succeed in the compose/GitHub workflow images.

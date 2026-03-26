@@ -11,3 +11,5 @@ Operational notes for this checkpoint:
   - `npm run publish:packages`
 
 This checkpoint wires the repository for Changesets-based versioning, release notes, and publish automation.
+
+CI publication is intentionally guarded: GitHub Actions only attempt npm publication when `NPM_PUBLISH_ENABLED=true` and `NPM_TOKEN` is present.
