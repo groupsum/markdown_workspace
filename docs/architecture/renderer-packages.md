@@ -6,7 +6,7 @@ This document describes the implemented portable renderer family added in Phase 
 
 ## Implemented packages
 
-### `@mdwrk/markdown-renderer-core`
+### `mdwrk/markdown-renderer-core`
 
 Responsibilities:
 - frontmatter parsing
@@ -23,7 +23,7 @@ Primary exports:
 - `createHtmlDocument`
 - `renderMarkdownToHtmlDocument`
 
-### `@mdwrk/markdown-renderer-react`
+### `mdwrk/markdown-renderer-react`
 
 Responsibilities:
 - React `<MarkdownRenderer />`
@@ -60,7 +60,7 @@ The renderer family does not depend on application-local stylesheets.
 
 Instead:
 - semantic class names remain stable
-- default stylesheet imports `@mdwrk/ui-tokens/styles/markdown.css`
+- default stylesheet imports `mdwrk/ui-tokens/styles/markdown.css`
 - host applications can apply a theme bridge using CSS variables or inline theme style records
 
 ## Interop goal

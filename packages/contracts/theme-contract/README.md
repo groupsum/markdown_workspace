@@ -1,4 +1,4 @@
-# @mdwrk/theme-contract
+# mdwrk/theme-contract
 
 Portable token, class-name, and bridge-variable contract for Markdown Workspace themes, renderers, editors, and extensions.
 

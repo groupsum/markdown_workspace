@@ -41,7 +41,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         setHistory(resetHistoryState(nextValue, nextSelection, historyLimit));
         pendingSelectionRef.current = nextSelection;
     }, [documentKey]);
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         if (!isControlled || value === undefined)
             return;
         if (value === draftValueRef.current)
@@ -79,7 +79,9 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             end: textarea.selectionEnd,
             direction: textarea.selectionDirection ?? "none",
         }, textarea.value.length);
-        if (!selectionEquals(selectionRef.current, nextSelection)) {
+        const didSelectionChange = !selectionEquals(selectionRef.current, nextSelection);
+        selectionRef.current = nextSelection;
+        if (didSelectionChange) {
             setSelection(nextSelection);
             onSelectionChange?.(nextSelection);
         }
@@ -88,6 +90,8 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
     }, [emitCursor, onSelectionChange]);
     const commitValue = React.useCallback((nextValue, nextSelection, options = {}) => {
         const normalizedSelection = normalizeSelection(nextSelection, nextValue.length);
+        draftValueRef.current = nextValue;
+        selectionRef.current = normalizedSelection;
         setDraftValue(nextValue);
         setSelection(normalizedSelection);
         pendingSelectionRef.current = normalizedSelection;
@@ -196,6 +200,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
     const handleKeyDown = React.useCallback((event) => {
         if (disabled)
             return;
+        syncSelectionFromTextarea();
         const meta = event.metaKey || event.ctrlKey;
         const key = event.key.toLowerCase();
         if (!meta && event.key === "Tab") {
@@ -229,17 +234,18 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             event.preventDefault();
             executeCommand("redo");
         }
-    }, [disabled, executeCommand, indentUnit]);
+    }, [disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
     const lineCount = React.useMemo(() => {
-        const matches = draftValue.match(/\n/g);
+        const displayValue = isControlled ? (value ?? "") : draftValue;
+        const matches = displayValue.match(/\n/g);
         return (matches?.length ?? 0) + 1;
-    }, [draftValue]);
+    }, [draftValue, isControlled, value]);
     const mergedThemeStyle = React.useMemo(() => ({
         ...createMarkdownEditorThemeStyle(themeVariables),
         ...themeStyle,
         ...style,
     }), [style, themeStyle, themeVariables]);
-    return (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.root, "editor-stage", className), style: mergedThemeStyle, children: _jsxs("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper"), children: [showLineNumbers ? (_jsx("div", { ref: gutterRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.gutter, "editor-gutter", gutterClassName), "aria-hidden": "true", children: Array.from({ length: lineCount }, (_, index) => (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.lineNumber, "line-num", lineNumberClassName), children: index + 1 }, index + 1))) })) : null, _jsx("textarea", { ref: textareaRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName), value: draftValue, onChange: handleTextareaChange, onKeyDown: handleKeyDown, onClick: syncSelectionFromTextarea, onKeyUp: syncSelectionFromTextarea, onSelect: syncSelectionFromTextarea, onScroll: (event) => {
+    return (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.root, "editor-stage", className), style: mergedThemeStyle, children: _jsxs("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper"), children: [showLineNumbers ? (_jsx("div", { ref: gutterRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.gutter, "editor-gutter", gutterClassName), "aria-hidden": "true", children: Array.from({ length: lineCount }, (_, index) => (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.lineNumber, "line-num", lineNumberClassName), children: index + 1 }, index + 1))) })) : null, _jsx("textarea", { ref: textareaRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName), value: isControlled ? (value ?? "") : draftValue, onChange: handleTextareaChange, onKeyDown: handleKeyDown, onClick: syncSelectionFromTextarea, onKeyUp: syncSelectionFromTextarea, onSelect: syncSelectionFromTextarea, onScroll: (event) => {
                         if (gutterRef.current) {
                             gutterRef.current.scrollTop = event.currentTarget.scrollTop;
                         }

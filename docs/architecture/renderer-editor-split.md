@@ -25,12 +25,12 @@ Extensions can target rendering and editing through separate contracts.
 ## Package plan
 
 ### Renderer packages
-- `@mdwrk/markdown-renderer-core`
-- `@mdwrk/markdown-renderer-react`
+- `mdwrk/markdown-renderer-core`
+- `mdwrk/markdown-renderer-react`
 
 ### Editor packages
-- `@mdwrk/markdown-editor-core`
-- `@mdwrk/markdown-editor-react`
+- `mdwrk/markdown-editor-core`
+- `mdwrk/markdown-editor-react`
 
 ## Renderer responsibilities
 

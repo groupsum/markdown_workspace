@@ -5,8 +5,8 @@
 This document defines the normative lifecycle for Markdown Workspace extensions.
 
 The TypeScript contract source of truth is:
-- `@mdwrk/extension-host`
-- `@mdwrk/extension-manifest`
+- `mdwrk/extension-host`
+- `mdwrk/extension-manifest`
 
 ## Lifecycle phases
 

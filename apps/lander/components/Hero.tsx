@@ -22,7 +22,7 @@ export const Hero: React.FC = () => {
         </h1>
         
         <p className="mb-8 text-lg font-normal text-slate-600 dark:text-slate-400 lg:text-xl sm:px-16 lg:px-48">
-          Write, organize, and sync without a server. MarkSpace runs entirely in your browser using local database technology. Connect to GitHub when you want to sync, stay offline when you don't.
+          Write, organize, and sync without a server. MdWrkSpace runs entirely in your browser using local database technology. Connect to GitHub when you want to sync, stay offline when you don't.
         </p>
         
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">

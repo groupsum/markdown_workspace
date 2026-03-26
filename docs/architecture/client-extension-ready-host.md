@@ -4,7 +4,7 @@
 
 Phase 6 restructures `apps/client` so the client shell itself uses the same registries and host-safe abstractions that future extension packages will target.
 
-This phase does **not** implement the standalone `@mdwrk/extension-runtime` package yet. It creates the application-side host surfaces required before that package can be introduced.
+This phase does **not** implement the standalone `mdwrk/extension-runtime` package yet. It creates the application-side host surfaces required before that package can be introduced.
 
 ## Implemented internal layout
 
@@ -221,7 +221,7 @@ The editor bridge is the supported path for host-mediated editor access until th
 Phase 6 is intentionally incomplete relative to the final extension platform.
 
 Still missing:
-- standalone `@mdwrk/extension-runtime` package
+- standalone `mdwrk/extension-runtime` package
 - packaged Extension Manager
 - packaged Gemini Agent extension
 - packaged Theme Studio extension

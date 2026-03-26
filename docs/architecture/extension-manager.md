@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`@mdwrk/extension-manager` is the first packaged first-party bundled extension. It proves that the shared runtime can load a real packaged extension that contributes commands, views, action-rail entries, diagnostics, and schema-driven settings forms.
+`mdwrk/extension-manager` is the first packaged first-party bundled extension. It proves that the shared runtime can load a real packaged extension that contributes commands, views, action-rail entries, diagnostics, and schema-driven settings forms.
 
 ## Responsibilities
 
@@ -22,7 +22,7 @@ The Extension Manager package currently provides:
 
 ## Current runtime integration
 
-`apps/client` registers the packaged Extension Manager through the shared `@mdwrk/extension-runtime` package during client boot. The client no longer needs a hardcoded local operator console to browse runtime state.
+`apps/client` registers the packaged Extension Manager through the shared `mdwrk/extension-runtime` package during client boot. The client no longer needs a hardcoded local operator console to browse runtime state.
 
 The manager already distinguishes runtime source `bundled` vs `installed` for extensions that have been installed through the formal external catalog path.
 

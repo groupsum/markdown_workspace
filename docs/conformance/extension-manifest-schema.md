@@ -6,7 +6,7 @@ Normative for the target extension platform.
 
 ## Sources of truth
 
-- TypeScript contract package: `@mdwrk/extension-manifest`
+- TypeScript contract package: `mdwrk/extension-manifest`
 - Machine-readable schema: `docs/conformance/schemas/extension-manifest.schema.json`
 
 ## Purpose

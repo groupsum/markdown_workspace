@@ -5,11 +5,11 @@ x-common-env: &common-env
   VITE_GITHUB_URL: ${VITE_GITHUB_URL:-https://github.com/example}
   VITE_X_URL: ${VITE_X_URL:-https://x.com/example}
   VITE_COMMUNITY_URL: ${VITE_COMMUNITY_URL:-https://community.example.com}
-  VITE_GITHUB_REPO_URL: ${VITE_GITHUB_REPO_URL:-https://github.com/mdwrk/markspace}
-  VITE_NPM_REPO_URL: ${VITE_NPM_REPO_URL:-https://www.npmjs.com/package/@mdwrk/markspace}
-  VITE_NPM_PACKAGE_NAME: ${VITE_NPM_PACKAGE_NAME:-@mdwrk/markspace}
-  VITE_NPM_PACKAGE_PATH: ${VITE_NPM_PACKAGE_PATH:-mdwrk/markspace}
-  VITE_NPM_ESM_CDN_URL: ${VITE_NPM_ESM_CDN_URL:-https://esm.sh/@mdwrk/markspace}
+  VITE_GITHUB_REPO_URL: ${VITE_GITHUB_REPO_URL:-https://github.com/mdwrk/mdwrkspace}
+  VITE_NPM_REPO_URL: ${VITE_NPM_REPO_URL:-https://www.npmjs.com/package/@mdwrk/mdwrkspace}
+  VITE_NPM_PACKAGE_NAME: ${VITE_NPM_PACKAGE_NAME:-@mdwrk/mdwrkspace}
+  VITE_NPM_PACKAGE_PATH: ${VITE_NPM_PACKAGE_PATH:-mdwrk/mdwrkspace}
+  VITE_NPM_ESM_CDN_URL: ${VITE_NPM_ESM_CDN_URL:-https://esm.sh/@mdwrk/mdwrkspace}
   VITE_OIDC_CLIENT_ID: ${VITE_OIDC_CLIENT_ID:-}
   VITE_OIDC_FQDN: ${VITE_OIDC_FQDN:-https://md.bz23.xyz}
   VITE_OIDC_CALLBACK_PATH: ${VITE_OIDC_CALLBACK_PATH:-/auth/callback}

@@ -1,13 +1,13 @@
-# @mdwrk/testing
+# mdwrk/testing
 
 Shared browser and timing test helpers for Markdown Workspace packages.
 
 ## Exports
 
-- `@mdwrk/testing` — browser and timing helpers
-- `@mdwrk/testing/browser` — memory storage and browser stubs
-- `@mdwrk/testing/timing` — async timing helpers
-- `@mdwrk/testing/vitest-setup` — installs common jsdom-friendly browser stubs
+- `mdwrk/testing` — browser and timing helpers
+- `mdwrk/testing/browser` — memory storage and browser stubs
+- `mdwrk/testing/timing` — async timing helpers
+- `mdwrk/testing/vitest-setup` — installs common jsdom-friendly browser stubs
 
 ## Example
 

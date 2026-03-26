@@ -1,4 +1,4 @@
-# @mdwrk/ui-tokens
+# mdwrk/ui-tokens
 
 Shared CSS tokens, root variables, markdown/editor class names, and theme mapping helpers for Markdown Workspace applications and packages.
 
@@ -6,22 +6,22 @@ Shared CSS tokens, root variables, markdown/editor class names, and theme mappin
 
 - the reusable root CSS variable contract
 - the reusable markdown rendering stylesheet
-- token and class-name re-exports aligned to `@mdwrk/theme-contract`
+- token and class-name re-exports aligned to `mdwrk/theme-contract`
 - theme CSS generation helpers for first-party and third-party consumers
 - renderer/editor bridge variable helpers
 
 ## CSS entry points
 
-- `@mdwrk/ui-tokens/styles/index.css`
-- `@mdwrk/ui-tokens/styles/root.css`
-- `@mdwrk/ui-tokens/styles/markdown.css`
+- `mdwrk/ui-tokens/styles/index.css`
+- `mdwrk/ui-tokens/styles/root.css`
+- `mdwrk/ui-tokens/styles/markdown.css`
 
 ## TypeScript entry points
 
-- `@mdwrk/ui-tokens`
-- `@mdwrk/ui-tokens/tokens`
-- `@mdwrk/ui-tokens/classes`
-- `@mdwrk/ui-tokens/theme-map`
+- `mdwrk/ui-tokens`
+- `mdwrk/ui-tokens/tokens`
+- `mdwrk/ui-tokens/classes`
+- `mdwrk/ui-tokens/theme-map`
 
 ## Example
 
@@ -53,4 +53,4 @@ const rendererCss = renderThemeBridgeCssVariables(
 
 ## Contract alignment
 
-The exported token names, theme classes, and bridge definitions align with `@mdwrk/theme-contract`. That keeps the implemented styling primitives aligned with the normative contract package.
+The exported token names, theme classes, and bridge definitions align with `mdwrk/theme-contract`. That keeps the implemented styling primitives aligned with the normative contract package.

@@ -1,4 +1,4 @@
-# @mdwrk/icons
+# mdwrk/icons
 
 Shared icon identifiers and icon metadata for Markdown Workspace applications and packages.
 

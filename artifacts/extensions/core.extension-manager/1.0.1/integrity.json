@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T07:47:27.732Z",
+  "generatedAt": "2026-03-26T02:05:51.834Z",
   "artifact": {
     "id": "core.extension-manager",
     "packageName": "@mdwrk/extension-manager",
@@ -11,32 +11,32 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-03-24T07:47:27.227Z"
+    "generatedAt": "2026-03-26T02:05:51.437Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "44afcbda2f12b0e976c29832d470801a9db1058fc8333912e3e497fcc9274e2d"
+      "sha256": "5b409c2c269ad5b526dfcdca923e2ad99839a48606797b478f2831db1f42e815"
     },
     {
       "path": "LICENSE",
-      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
     },
     {
       "path": "manifest.json",
-      "sha256": "ced2565f4cdf18264a687ca9007696f0e9ad9413186e1503ac7260a3004799e2"
+      "sha256": "cdc1057ee18782d24efc36db9665b8cfeb3a002e83cbc307c08b48ff144fdc9d"
     },
     {
       "path": "package.json",
-      "sha256": "4c578a33082d79b93ba6a2aa8fa215683c60fdd0885370a7f1789513bf2acc07"
+      "sha256": "443797f590b8e4f7721641afce04e24f6df9c5b46d410e52bc3088becfb75a08"
     },
     {
       "path": "README.md",
-      "sha256": "be863ad7d1a9701d1f80e99a8ed785aa2b5a24db8d8dac4c90a0e8536a730312"
+      "sha256": "153524b50ee72ad1a87e77dd0b96da96629234702af28e6b7fbe5afd37335bf5"
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "63ca508d85567d54f01d1b671e3d80114d4b0dda4f52a9921e50ef5fa7916b06"
+      "sha256": "c88aacfadbca032e6d32d24325f15c76c9b6942b475d1519ededb939d6c445fb"
     }
   ],
   "provenance": {

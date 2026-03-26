@@ -1,4 +1,4 @@
-# @mdwrk/markdown-editor-react
+# mdwrk/markdown-editor-react
 
 React bindings for the portable Markdown Workspace source-mode editor.
 
@@ -19,7 +19,7 @@ React bindings for the portable Markdown Workspace source-mode editor.
 - `createMarkdownEditorThemeStyleFromThemeTokens`
 - `useMarkdownSourceEditorTheme`
 - `MarkdownSourceEditorHandle`
-- re-exports from `@mdwrk/markdown-editor-core`
+- re-exports from `mdwrk/markdown-editor-core`
 
 ## Optional stylesheet
 

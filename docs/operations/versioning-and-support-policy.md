@@ -11,8 +11,8 @@ All new workspace packages shall use the npm scope:
 Use descriptive, stable, lowercase kebab-case names.
 
 Examples:
-- `@mdwrk/extension-runtime`
-- `@mdwrk/markdown-renderer-react`
+- `mdwrk/extension-runtime`
+- `mdwrk/markdown-renderer-react`
 
 ### Extension ids
 Use dot-separated ids that are stable across refactors.

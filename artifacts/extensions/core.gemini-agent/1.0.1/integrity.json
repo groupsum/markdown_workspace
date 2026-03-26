@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T07:47:27.724Z",
+  "generatedAt": "2026-03-26T02:05:51.829Z",
   "artifact": {
     "id": "core.gemini-agent",
     "packageName": "@mdwrk/extension-gemini-agent",
@@ -11,32 +11,32 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-03-24T07:47:27.179Z"
+    "generatedAt": "2026-03-26T02:05:51.372Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "31abe94fcd76cfab716d0c4bcbc7263bc20957527c677443b5e395e38474c507"
+      "sha256": "9bd374694253ec1304385fdb1f138d08e4664c668bc625710e0b8790531811ea"
     },
     {
       "path": "LICENSE",
-      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
     },
     {
       "path": "manifest.json",
-      "sha256": "ed95391fee67dd930bb1be11e9d43d31b073abbdd8a963a1e995dd09ed6ae349"
+      "sha256": "3983491f1ee91fd220b296c4325d0b7f4d347ba49bacccecec3943b7dcaea69b"
     },
     {
       "path": "package.json",
-      "sha256": "05cb4dc57e3ab78dc94d31c07b6c891cfb193eb852a8596d9a1cca97fae2959e"
+      "sha256": "f5c078d01d2cdb1b5682ab2db68dd0cc807fa20f8d44f79748cffedf0ccbff7f"
     },
     {
       "path": "README.md",
-      "sha256": "9fdf8ebdded8febfbbd3c7139527972e48d76e4a525dbbc2b2eb44cc29adbc7c"
+      "sha256": "de0d25bfe8d4ad161d21f672dbdfe3bbafa0ca4b2511fa8137b65ebc46bc632d"
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "08ed671123d8302c279d6d241335dc3eb8841cee3807bd65fd243265a67af584"
+      "sha256": "93c388007203a6d4278a95a94d2514659d6c22d7358d4067f180c78024ed5302"
     }
   ],
   "provenance": {

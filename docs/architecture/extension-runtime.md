@@ -8,11 +8,11 @@ The markdown workspace client supports a formal hosted extension system rather t
 
 Phase 2 implemented the contract packages that runtime and extension packages target:
 
-- `@mdwrk/extension-manifest`
-- `@mdwrk/extension-host`
-- `@mdwrk/theme-contract`
+- `mdwrk/extension-manifest`
+- `mdwrk/extension-host`
+- `mdwrk/theme-contract`
 
-By Phase 13, `@mdwrk/extension-manifest` also exports:
+By Phase 13, `mdwrk/extension-manifest` also exports:
 - catalog document contracts
 - signed-manifest contracts
 - trusted-signer contracts
@@ -25,7 +25,7 @@ Phase 6 refactored `apps/client` into an extension-ready host with registry-driv
 
 The runtime package is:
 
-- `@mdwrk/extension-runtime`
+- `mdwrk/extension-runtime`
 
 It now provides:
 - bundled extension registry
@@ -63,7 +63,7 @@ A bundled runtime smoke extension is included to prove:
 
 Phase 8 adds:
 
-- `@mdwrk/extension-manager`
+- `mdwrk/extension-manager`
 
 This proves that the runtime can load a real packaged first-party extension that contributes:
 - a view

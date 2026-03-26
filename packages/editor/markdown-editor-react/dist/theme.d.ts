@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { ThemeTokenOverrides } from "@mdwrk/ui-tokens/theme-map";
+import { type ThemeTokenOverrides } from "@mdwrk/ui-tokens/theme-map";
 export interface MarkdownEditorThemeVariables {
     readonly background?: string;
     readonly gutterBackground?: string;

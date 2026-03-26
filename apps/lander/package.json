@@ -1,5 +1,5 @@
 {
-  "name": "markspace---local-first-markdown-workspace",
+  "name": "@mdwrk/lander",
   "private": true,
   "version": "0.0.11",
   "type": "module",
@@ -26,5 +26,6 @@
     "vite": "^6.2.0"
   },
   "license": "Apache-2.0",
-  "author": "Jacob Stewart <jacob@mdwrk.com>"
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
 }

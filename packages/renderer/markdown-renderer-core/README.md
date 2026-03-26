@@ -1,4 +1,4 @@
-# @mdwrk/markdown-renderer-core
+# mdwrk/markdown-renderer-core
 
 Portable markdown parsing and semantic HTML rendering.
 

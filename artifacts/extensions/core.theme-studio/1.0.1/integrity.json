@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T07:47:27.741Z",
+  "generatedAt": "2026-03-26T02:05:51.840Z",
   "artifact": {
     "id": "core.theme-studio",
     "packageName": "@mdwrk/extension-theme-studio",
@@ -11,32 +11,32 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-03-24T07:47:27.289Z"
+    "generatedAt": "2026-03-26T02:05:51.477Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "f2bea45dfbf3b495fa3dfb82c4ba6f057752c48eb683b456d9483a5cf85d3a35"
+      "sha256": "68a26f6bdb0819d77635ec40efd1124c1600cf8e31f841cb3eee83bbf4296fa6"
     },
     {
       "path": "LICENSE",
-      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
     },
     {
       "path": "manifest.json",
-      "sha256": "0a4199fd3dd2617da354d950e0ed9cee251f834762928a2690b7dc84fe2d23a7"
+      "sha256": "0dab5b1b8d80e8b6604d91a913fe98250c97a9cb579aa3d894aa03d0fc4ebb6f"
     },
     {
       "path": "package.json",
-      "sha256": "dae3ef410d1559198cc61f04abaf694cb2db731ef7142d97c6f6fc0a5e38ae0c"
+      "sha256": "892126ee8d1ae9150a7ed06f7306901758add720bd457b5f767cd77c38fdc9f4"
     },
     {
       "path": "README.md",
-      "sha256": "d85f21698f03c5cc24249ad19842c785dda8715056b0f50204712b00bffaa0db"
+      "sha256": "eb57d423c4b47ac76b441e73996554a551ef12d4476dca6e39b1f49b17eb5451"
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "8e05251b9e4abd40f58f4d63d1162297b59adacac5fb6778bb22ab9632980252"
+      "sha256": "191762f3c9dd0f9ef2943bc2831c458f02858b18817ad05eb29b906c890ac911"
     }
   ],
   "provenance": {

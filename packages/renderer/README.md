@@ -4,13 +4,13 @@ This package family contains the portable Markdown rendering stack for Markdown 
 
 ## Packages
 
-- `@mdwrk/markdown-renderer-core`
+- `mdwrk/markdown-renderer-core`
   - markdown parsing
   - frontmatter parsing
   - heading extraction
   - semantic HTML rendering
   - HTML document serialization
-- `@mdwrk/markdown-renderer-react`
+- `mdwrk/markdown-renderer-react`
   - React `<MarkdownRenderer />`
   - static server rendering helpers
   - default semantic component mapping

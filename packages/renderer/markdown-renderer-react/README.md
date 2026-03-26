@@ -1,4 +1,4 @@
-# @mdwrk/markdown-renderer-react
+# mdwrk/markdown-renderer-react
 
 React bindings for the Markdown Workspace portable markdown renderer.
 

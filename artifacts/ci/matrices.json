@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-22T16:43:07.290Z",
+  "generatedAt": "2026-03-26T02:01:08.471Z",
   "packageGroups": [
     {
       "name": "contracts",
@@ -39,7 +39,7 @@
   ],
   "apps": [
     {
-      "name": "@mdwrk/markspace",
+      "name": "@mdwrk/mdwrkspace",
       "path": "apps/client",
       "build": "build:client",
       "lint": "lint:client",
@@ -47,7 +47,7 @@
       "test": "test:client"
     },
     {
-      "name": "markspace---local-first-markdown-workspace",
+      "name": "@mdwrk/lander",
       "path": "apps/lander",
       "build": "build:lander",
       "lint": "lint:lander",
@@ -57,7 +57,7 @@
   ],
   "publishablePackages": [
     {
-      "name": "@mdwrk/markspace",
+      "name": "@mdwrk/mdwrkspace",
       "path": "apps/client",
       "category": "app"
     },
@@ -85,6 +85,11 @@
       "name": "@mdwrk/markdown-editor-react",
       "path": "packages/editor/markdown-editor-react",
       "category": "editor"
+    },
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "category": "extension"
     },
     {
       "name": "@mdwrk/extension-gemini-agent",
@@ -138,6 +143,10 @@
     }
   ],
   "extensionArtifacts": [
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello"
+    },
     {
       "name": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent"

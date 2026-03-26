@@ -5,12 +5,12 @@
 The portable editor family provides reusable source-mode editing primitives and a React editing surface that can be consumed by the main client or by third-party applications.
 
 Implemented packages:
-- `@mdwrk/markdown-editor-core`
-- `@mdwrk/markdown-editor-react`
+- `mdwrk/markdown-editor-core`
+- `mdwrk/markdown-editor-react`
 
 ## Package split
 
-### `@mdwrk/markdown-editor-core`
+### `mdwrk/markdown-editor-core`
 Owns:
 - document snapshot types
 - selection and cursor contracts
@@ -21,7 +21,7 @@ Owns:
 - host-facing editor API contracts
 - stable editor semantic class names
 
-### `@mdwrk/markdown-editor-react`
+### `mdwrk/markdown-editor-react`
 Owns:
 - `MarkdownSourceEditor`
 - controlled/uncontrolled value handling

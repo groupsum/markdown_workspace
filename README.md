@@ -1,6 +1,6 @@
 # markdown_workspace
 
-`markdown_workspace` is a multi-package workspace for the Markspace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.
+`markdown_workspace` is a multi-package workspace for the MdWrkSpace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.
 
 ## Repository structure
 
@@ -27,30 +27,30 @@ This checkpoint completes the **Phase 13 third-party extension distribution and 
 ## Implemented packages
 
 ### Contracts
-- `@mdwrk/extension-manifest`
-- `@mdwrk/extension-host`
-- `@mdwrk/theme-contract`
+- `mdwrk/extension-manifest`
+- `mdwrk/extension-host`
+- `mdwrk/theme-contract`
 
 ### Shared
-- `@mdwrk/ui-tokens`
-- `@mdwrk/icons`
-- `@mdwrk/i18n`
-- `@mdwrk/testing`
+- `mdwrk/ui-tokens`
+- `mdwrk/icons`
+- `mdwrk/i18n`
+- `mdwrk/testing`
 
 ### Renderer
-- `@mdwrk/markdown-renderer-core`
-- `@mdwrk/markdown-renderer-react`
+- `mdwrk/markdown-renderer-core`
+- `mdwrk/markdown-renderer-react`
 
 ### Editor
-- `@mdwrk/markdown-editor-core`
-- `@mdwrk/markdown-editor-react`
+- `mdwrk/markdown-editor-core`
+- `mdwrk/markdown-editor-react`
 
 ### Extensions
-- `@mdwrk/extension-runtime`
-- `@mdwrk/extension-manager`
-- `@mdwrk/extension-gemini-agent`
-- `@mdwrk/extension-theme-studio`
-- `@mdwrk/extension-catalog-hello` — sample third-party external extension used to prove the formal catalog path
+- `mdwrk/extension-runtime`
+- `mdwrk/extension-manager`
+- `mdwrk/extension-gemini-agent`
+- `mdwrk/extension-theme-studio`
+- `mdwrk/extension-catalog-hello` — sample third-party external extension used to prove the formal catalog path
 
 ## Generated external-distribution artifacts
 

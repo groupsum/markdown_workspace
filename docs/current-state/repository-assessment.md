@@ -13,7 +13,7 @@ Two classes of publish-blocking defects were present in the checkpoint:
 1. **Compatibility validation was coupled to package patch versions instead of API baselines.**
    - `tools/conformance/validate-compatibility.mjs` compared extension manifest `compatibility.hostApi`, `compatibility.runtime`, and `compatibility.themeContract` against the workspace package.json versions.
    - The repository contracts and documentation treat these fields as **API/contract compatibility ranges**, not exact package release numbers.
-   - That made patch releases such as `@mdwrk/extension-host@1.0.1` and `@mdwrk/extension-runtime@1.0.1` look incompatible with manifests that still correctly targeted the `1.0.0` API baseline.
+   - That made patch releases such as `mdwrk/extension-host@1.0.1` and `mdwrk/extension-runtime@1.0.1` look incompatible with manifests that still correctly targeted the `1.0.0` API baseline.
 
 2. **Extension artifact validation depended on stale committed generated files.**
    - `artifacts/extensions/catalog.json` contained integrity digests that no longer matched the checked-in `manifest.json` and entry module for `external.catalog-hello`.
@@ -31,10 +31,10 @@ Two classes of publish-blocking defects were present in the checkpoint:
   - client app version range
 - The validator now evaluates compatibility by **semver satisfaction** instead of exact package version equality.
 - Normalized extension manifest compatibility declarations to semver ranges (`^1.0.0`) for:
-  - `@mdwrk/extension-manager`
-  - `@mdwrk/extension-gemini-agent`
-  - `@mdwrk/extension-theme-studio`
-  - `@mdwrk/extension-catalog-hello`
+  - `mdwrk/extension-manager`
+  - `mdwrk/extension-gemini-agent`
+  - `mdwrk/extension-theme-studio`
+  - `mdwrk/extension-catalog-hello`
 
 ### Generated artifact remediation
 
@@ -47,11 +47,11 @@ Two classes of publish-blocking defects were present in the checkpoint:
 
 The checkpoint contained several stale source version constants that could produce incorrect build output on republish. These were aligned with their package versions for the packages where the exported constant is the package version surface:
 
-- `@mdwrk/markdown-editor-core` → `1.0.1`
-- `@mdwrk/markdown-editor-react` → `1.0.2`
-- `@mdwrk/extension-catalog-hello` → `1.0.1`
-- `@mdwrk/markdown-renderer-react` → `1.0.1`
-- `@mdwrk/ui-tokens` → `1.0.1`
+- `mdwrk/markdown-editor-core` → `1.0.1`
+- `mdwrk/markdown-editor-react` → `1.0.2`
+- `mdwrk/extension-catalog-hello` → `1.0.1`
+- `mdwrk/markdown-renderer-react` → `1.0.1`
+- `mdwrk/ui-tokens` → `1.0.1`
 
 ## Current repository shape
 

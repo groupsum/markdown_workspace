@@ -1,4 +1,4 @@
-# @mdwrk/i18n
+# mdwrk/i18n
 
 Shared message descriptor, locale catalog, locale loader, and locale registry helpers for Markdown Workspace packages.
 

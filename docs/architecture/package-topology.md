@@ -42,45 +42,45 @@ Applications may depend on packages. Packages may **not** depend on applications
 ### Contracts
 Normative interfaces and schemas.
 
-- `@mdwrk/extension-manifest` — implemented
-- `@mdwrk/extension-host` — implemented
-- `@mdwrk/theme-contract` — implemented
+- `mdwrk/extension-manifest` — implemented
+- `mdwrk/extension-host` — implemented
+- `mdwrk/theme-contract` — implemented
 
 These packages are intended to remain implementation-light and stable.
 
 ### Shared
 Cross-cutting primitives that remain app-agnostic.
 
-- `@mdwrk/ui-tokens`
-- `@mdwrk/icons`
-- `@mdwrk/i18n`
-- `@mdwrk/testing`
+- `mdwrk/ui-tokens`
+- `mdwrk/icons`
+- `mdwrk/i18n`
+- `mdwrk/testing`
 
 Status in Phase 3: concrete shared packages are implemented and publishable.
 
 ### Renderer
 Portable markdown rendering packages.
 
-- `@mdwrk/markdown-renderer-core`
-- `@mdwrk/markdown-renderer-react`
+- `mdwrk/markdown-renderer-core`
+- `mdwrk/markdown-renderer-react`
 
 Status in Phase 3: family directory exists; concrete packages not yet implemented.
 
 ### Editor
 Portable markdown editing packages.
 
-- `@mdwrk/markdown-editor-core`
-- `@mdwrk/markdown-editor-react`
+- `mdwrk/markdown-editor-core`
+- `mdwrk/markdown-editor-react`
 
 Status in Phase 3: family directory exists; concrete packages not yet implemented.
 
 ### Extensions
 Publishable extension packages and extension runtime.
 
-- `@mdwrk/extension-runtime`
-- `@mdwrk/extension-manager`
-- `@mdwrk/extension-gemini-agent`
-- `@mdwrk/extension-theme-studio`
+- `mdwrk/extension-runtime`
+- `mdwrk/extension-manager`
+- `mdwrk/extension-gemini-agent`
+- `mdwrk/extension-theme-studio`
 
 Status in Phase 3: family directory exists; concrete packages not yet implemented.
 
@@ -134,5 +134,5 @@ Examples:
 Phase 3 extends the concrete package families under `packages/`:
 - contract packages remain implemented and publishable
 - shared packages are now implemented and publishable
-- the client imports shared styling primitives from `@mdwrk/ui-tokens`
+- the client imports shared styling primitives from `mdwrk/ui-tokens`
 - token/class naming and theme mapping guidance now exist for package consumers

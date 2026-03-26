@@ -1,4 +1,4 @@
-# @mdwrk/extension-host
+# mdwrk/extension-host
 
 Stable host API, lifecycle, context, and registration contracts for Markdown Workspace extensions.
 

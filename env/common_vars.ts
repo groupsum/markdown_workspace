@@ -1,6 +1,6 @@
 export const commonVars = {
-  npmPackageName: '@mdwrk/markspace',
-  npmPackagePath: 'mdwrk/markspace',
-  githubRepoPath: 'mdwrk/markspace',
+  npmPackageName: '@mdwrk/mdwrkspace',
+  npmPackagePath: 'mdwrk/mdwrkspace',
+  githubRepoPath: 'mdwrk/mdwrkspace',
   esmCdnBaseUrl: 'https://esm.sh'
 };

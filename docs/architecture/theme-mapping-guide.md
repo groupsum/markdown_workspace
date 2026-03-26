@@ -6,7 +6,7 @@ This guide explains how first-party applications and third-party consumers shoul
 
 ## Recommended model
 
-Applications should treat `@mdwrk/ui-tokens` as the reusable styling surface and map local theme values onto the shared token names.
+Applications should treat `mdwrk/ui-tokens` as the reusable styling surface and map local theme values onto the shared token names.
 Renderer and editor packages then inherit those values through the standardized bridge variables.
 
 ## First-party mapping
@@ -23,7 +23,7 @@ The Markdown Workspace client already uses CSS custom properties such as:
 - `--font-mono`
 - `--editor-padding`
 
-Because those names are exported through `@mdwrk/theme-contract` and `@mdwrk/ui-tokens`, first-party apps can continue overriding the same variables in theme-specific stylesheets.
+Because those names are exported through `mdwrk/theme-contract` and `mdwrk/ui-tokens`, first-party apps can continue overriding the same variables in theme-specific stylesheets.
 
 ## Renderer and editor bridge mapping
 
@@ -63,7 +63,7 @@ const rendererCss = renderThemeBridgeCssVariables('renderer', {
 
 A third-party implementer should:
 
-1. import `@mdwrk/ui-tokens/styles/index.css`
+1. import `mdwrk/ui-tokens/styles/index.css`
 2. apply overrides for the shared host variables on a wrapper selector
 3. optionally emit bridge variables for renderer/editor scopes programmatically
 

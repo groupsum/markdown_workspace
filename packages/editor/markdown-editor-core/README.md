@@ -1,4 +1,4 @@
-# @mdwrk/markdown-editor-core
+# mdwrk/markdown-editor-core
 
 Portable source-mode markdown editor primitives for Markdown Workspace.
 

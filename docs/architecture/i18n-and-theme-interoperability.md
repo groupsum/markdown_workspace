@@ -7,9 +7,9 @@ This document describes the Phase 9 interoperability baseline for localization a
 ## i18n interoperability model
 
 The normative pieces are:
-- `@mdwrk/extension-manifest` for keyed `I18nLabel` descriptors
-- `@mdwrk/extension-host` for host i18n registration and locale loading
-- `@mdwrk/i18n` for locale registries, fallback chains, namespaced catalogs, and loader helpers
+- `mdwrk/extension-manifest` for keyed `I18nLabel` descriptors
+- `mdwrk/extension-host` for host i18n registration and locale loading
+- `mdwrk/i18n` for locale registries, fallback chains, namespaced catalogs, and loader helpers
 
 ### Required extension behavior
 
@@ -42,8 +42,8 @@ The shared i18n registry resolves locale chains in this order:
 ## Theme interoperability model
 
 The normative pieces are:
-- `@mdwrk/theme-contract` for tokens, classes, and bridge definitions
-- `@mdwrk/ui-tokens` for concrete token and bridge generation helpers
+- `mdwrk/theme-contract` for tokens, classes, and bridge definitions
+- `mdwrk/ui-tokens` for concrete token and bridge generation helpers
 - renderer/editor React packages for host-token and bridge-based style helpers
 
 ### Required package behavior
@@ -71,8 +71,8 @@ Phase 9 introduces or finalizes:
 - package-local locale loader registration in the client i18n service
 - host i18n adapter support for extension locale loaders
 - keyed and localized labels in the packaged Extension Manager
-- renderer/editor bridge definitions in `@mdwrk/theme-contract`
-- bridge CSS generation helpers in `@mdwrk/ui-tokens`
+- renderer/editor bridge definitions in `mdwrk/theme-contract`
+- bridge CSS generation helpers in `mdwrk/ui-tokens`
 - renderer/editor package helper exports that materialize bridge style objects from token overrides
 
 ## Remaining limitations
