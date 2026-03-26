@@ -26,6 +26,7 @@ export interface SettingsRegistry extends ObservableStore<SettingsRegistrySnapsh
 export function createSettingsRegistry(): SettingsRegistry {
   const sections = new Map<string, ClientSettingsSection>();
   const emitter = createStoreEmitter();
+  let snapshot: SettingsRegistrySnapshot = { sections: [] };
 
   const ordered = () =>
     Array.from(sections.values()).sort((left, right) => {
@@ -35,20 +36,24 @@ export function createSettingsRegistry(): SettingsRegistry {
       if (orderDelta !== 0) return orderDelta;
       return left.title.defaultMessage.localeCompare(right.title.defaultMessage);
     });
+  const emitSnapshot = () => {
+    snapshot = { sections: ordered() };
+    emitter.emit();
+  };
 
   return {
     getSnapshot(): SettingsRegistrySnapshot {
-      return { sections: ordered() };
+      return snapshot;
     },
     subscribe: emitter.subscribe,
     register(section: ClientSettingsSection): Disposable {
       sections.set(section.id, section);
-      emitter.emit();
+      emitSnapshot();
       return {
         dispose(): void {
           if (sections.get(section.id) === section) {
             sections.delete(section.id);
-            emitter.emit();
+            emitSnapshot();
           }
         },
       };

@@ -43,6 +43,12 @@ export function createViewRegistry(): ViewRegistry {
   const inputs = new Map<string, unknown>();
   let activeViewId: string | null = null;
   const emitter = createStoreEmitter();
+  let snapshot: ViewRegistrySnapshot = {
+    views: [],
+    openViewIds: [],
+    activeViewId: null,
+    inputs: Object.freeze({}),
+  };
 
   const buildSnapshot = (): ViewRegistrySnapshot => ({
     views: Array.from(views.values()).sort(byTitle),
@@ -50,15 +56,19 @@ export function createViewRegistry(): ViewRegistry {
     activeViewId,
     inputs: Object.freeze(Object.fromEntries(inputs.entries())),
   });
+  const emitSnapshot = () => {
+    snapshot = buildSnapshot();
+    emitter.emit();
+  };
 
   return {
     getSnapshot(): ViewRegistrySnapshot {
-      return buildSnapshot();
+      return snapshot;
     },
     subscribe: emitter.subscribe,
     register(view: ClientViewDefinition): Disposable {
       views.set(view.id, view);
-      emitter.emit();
+      emitSnapshot();
       return {
         dispose(): void {
           if (views.get(view.id) === view) {
@@ -68,7 +78,7 @@ export function createViewRegistry(): ViewRegistry {
             if (activeViewId === view.id) {
               activeViewId = null;
             }
-            emitter.emit();
+            emitSnapshot();
           }
         },
       };
@@ -95,7 +105,7 @@ export function createViewRegistry(): ViewRegistry {
         inputs.set(id, input);
       }
       activeViewId = id;
-      emitter.emit();
+      emitSnapshot();
       await view.onOpen?.(input);
     },
     async close(id: string): Promise<void> {
@@ -108,7 +118,7 @@ export function createViewRegistry(): ViewRegistry {
       if (activeViewId === id) {
         activeViewId = null;
       }
-      emitter.emit();
+      emitSnapshot();
       await view.onClose?.();
     },
     async focus(id: string): Promise<void> {
@@ -116,7 +126,7 @@ export function createViewRegistry(): ViewRegistry {
         return;
       }
       activeViewId = id;
-      emitter.emit();
+      emitSnapshot();
       await views.get(id)?.onFocus?.();
     },
   };
