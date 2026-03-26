@@ -14,25 +14,34 @@ export interface ClientDiagnosticsService extends ObservableStore<ClientDiagnost
 export function createClientDiagnosticsService(): ClientDiagnosticsService {
   const records = new Map<string, DiagnosticRecord[]>();
   const emitter = createStoreEmitter();
+  let cachedSnapshot: ClientDiagnosticsSnapshot | null = null;
 
   const snapshot = (): ClientDiagnosticsSnapshot => ({
     records: Object.freeze(Object.fromEntries(Array.from(records.entries()).map(([key, value]) => [key, Object.freeze([...value])])))
   });
 
+  const emitChange = (): void => {
+    cachedSnapshot = null;
+    emitter.emit();
+  };
+
   return {
     getSnapshot(): ClientDiagnosticsSnapshot {
-      return snapshot();
+      if (!cachedSnapshot) {
+        cachedSnapshot = snapshot();
+      }
+      return cachedSnapshot;
     },
     subscribe: emitter.subscribe,
     async publish(extensionId: string, record: DiagnosticRecord): Promise<void> {
       const bucket = records.get(extensionId) ?? [];
       bucket.push(record);
       records.set(extensionId, bucket);
-      emitter.emit();
+      emitChange();
     },
     async clear(extensionId: string): Promise<void> {
       records.delete(extensionId);
-      emitter.emit();
+      emitChange();
     },
     list(extensionId?: string): readonly DiagnosticRecord[] {
       if (extensionId) {

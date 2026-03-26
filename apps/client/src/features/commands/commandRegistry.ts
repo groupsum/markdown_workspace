@@ -23,24 +23,33 @@ const compareLabels = (a: I18nLabel, b: I18nLabel) => a.defaultMessage.localeCom
 export function createCommandRegistry(): CommandRegistry {
   const commands = new Map<string, ClientCommandDefinition>();
   const emitter = createStoreEmitter();
+  let cachedSnapshot: CommandRegistrySnapshot | null = null;
 
   const snapshot = (): CommandRegistrySnapshot => ({
     commands: Array.from(commands.values()).sort((left, right) => compareLabels(left.title, right.title)),
   });
 
+  const emitChange = (): void => {
+    cachedSnapshot = null;
+    emitter.emit();
+  };
+
   return {
     getSnapshot(): CommandRegistrySnapshot {
-      return snapshot();
+      if (!cachedSnapshot) {
+        cachedSnapshot = snapshot();
+      }
+      return cachedSnapshot;
     },
     subscribe: emitter.subscribe,
     register(command: ClientCommandDefinition): Disposable {
       commands.set(command.id, command);
-      emitter.emit();
+      emitChange();
       return {
         dispose(): void {
           if (commands.get(command.id) === command) {
             commands.delete(command.id);
-            emitter.emit();
+            emitChange();
           }
         },
       };
