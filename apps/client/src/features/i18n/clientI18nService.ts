@@ -32,6 +32,12 @@ export function createClientI18nService(defaultLocale = 'en'): ClientI18nService
   const registry = createLocaleRegistry({ defaultLocale, fallbackLocale: defaultLocale });
   const emitter = createStoreEmitter();
   const loaders = new Map<string, RegisteredCatalogLoader>();
+  let cachedSnapshot: ClientI18nSnapshot | null = { locale: registry.getLocale() };
+
+  const emitChange = (): void => {
+    cachedSnapshot = { locale: registry.getLocale() };
+    emitter.emit();
+  };
 
   const ensureLocale = async (locale = registry.getLocale()): Promise<void> => {
     const tasks = Array.from(loaders.values()).map(async (entry) => {
@@ -51,12 +57,15 @@ export function createClientI18nService(defaultLocale = 'en'): ClientI18nService
     });
 
     await Promise.all(tasks);
-    emitter.emit();
+    emitChange();
   };
 
   return {
     getSnapshot(): ClientI18nSnapshot {
-      return { locale: registry.getLocale() };
+      if (!cachedSnapshot) {
+        cachedSnapshot = { locale: registry.getLocale() };
+      }
+      return cachedSnapshot;
     },
     subscribe: emitter.subscribe,
     getLocale(): string {
@@ -65,16 +74,16 @@ export function createClientI18nService(defaultLocale = 'en'): ClientI18nService
     setLocale(locale: string): void {
       registry.setLocale(locale);
       void ensureLocale(locale);
-      emitter.emit();
+      emitChange();
     },
     ensureLocale,
     registerCatalog(catalog: LocaleCatalog): void {
       registry.registerCatalog(catalog);
-      emitter.emit();
+      emitChange();
     },
     registerNamespacedCatalog(namespace: string, catalog: LocaleCatalog): void {
       registry.registerCatalog(createNamespacedLocaleCatalog(namespace, catalog.locale, catalog.messages));
-      emitter.emit();
+      emitChange();
     },
     registerCatalogLoader(namespace: string, definition: LocaleCatalogLoaderDefinition): () => void {
       const entry: RegisteredCatalogLoader = {
