@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -78,8 +78,8 @@
     "extension:bundle": "node ./tools/extensions/build-installable-extensions.mjs",
     "extension:sign": "node ./tools/extensions/sign-extension-artifacts.mjs",
     "publish:extensions": "npm run build:extensions && npm run extension:bundle && npm run extension:sign",
-    "release:status": "npx @changesets/cli status",
-    "release:version": "npx @changesets/cli version",
+    "release:status": "node ./tools/release/run-changesets.mjs status",
+    "release:version": "node ./tools/release/run-changesets.mjs version",
     "publish:packages": "node ./tools/release/run-publish.mjs",
     "publish:packages:changesets": "npx @changesets/cli publish",
     "release:evidence": "node ./tools/release/generate-release-evidence.mjs",
