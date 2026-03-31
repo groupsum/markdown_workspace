@@ -52,6 +52,14 @@ jobs:
       - name: Generate release evidence
         run: npm run release:evidence
 
+      - name: Validate release PR token configuration
+        run: |
+          if [ -z "${{ secrets.CHANGESETS_GITHUB_TOKEN }}" ]; then
+            echo "::warning::CHANGESETS_GITHUB_TOKEN is not configured. Falling back to GITHUB_TOKEN, which cannot create pull requests when 'Allow GitHub Actions to create and approve pull requests' is disabled in repository/org settings."
+          else
+            echo "Using CHANGESETS_GITHUB_TOKEN for release PR creation."
+          fi
+
       - name: Create or update release pull request
         id: changesets
         uses: changesets/action@v1
@@ -59,8 +67,9 @@ jobs:
           version: npm run release:version
           commit: 'chore(release): version packages'
           title: 'chore(release): version packages'
+          github-token: ${{ secrets.CHANGESETS_GITHUB_TOKEN != '' && secrets.CHANGESETS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN != '' && secrets.CHANGESETS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Determine npm publish readiness
         id: publish_gate
