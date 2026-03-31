@@ -65,6 +65,7 @@ export const useApp = () => {
   const currentProject = proj.projects.find(p => p.id === proj.activeProjectId);
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
   const oidcCallbackHandledRef = useRef(false);
+  const projectLoadInFlightRef = useRef<string | null>(null);
 
   const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
     if (result.status === 'success' && result.projectId && result.credential) {
@@ -140,63 +141,73 @@ export const useApp = () => {
   });
 
   const loadProject = useCallback(async (projectId: string) => {
+    if (projectLoadInFlightRef.current === projectId) {
+      return;
+    }
+    projectLoadInFlightRef.current = projectId;
     console.log(`[useApp] Action: loadProject -> ${projectId}`);
-    proj.setLoading(true);
-    proj.setActiveProjectId(projectId);
-    const projectFiles = await fileSys.loadFiles(projectId);
-    tabs.resetTabs();
-    fileSys.setSelectedExplorerId(null);
+    try {
+      proj.setLoading(true);
+      proj.setActiveProjectId(projectId);
+      const projectFiles = await fileSys.loadFiles(projectId);
+      tabs.resetTabs();
+      fileSys.setSelectedExplorerId(null);
 
-    const storedSession = ui.persistSessionEnabled ? readSessionState() : null;
-    let restoredSession = false;
-    if (storedSession && storedSession.projectId === projectId) {
-      const validIds = new Set(projectFiles.map(file => file.id));
-      const tabFileIds = storedSession.tabFileIds.filter(id => validIds.has(id));
-      if (tabFileIds.length > 0) {
-        tabs.setTabs(tabFileIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
-        const activeFileId = storedSession.activeTabFileId && validIds.has(storedSession.activeTabFileId)
-          ? storedSession.activeTabFileId
-          : tabFileIds[0];
-        tabs.setActiveTabId(activeFileId ? `tab-${activeFileId}` : null);
-        const selection = storedSession.selectedExplorerId && validIds.has(storedSession.selectedExplorerId)
-          ? storedSession.selectedExplorerId
-          : activeFileId ?? null;
-        fileSys.setSelectedExplorerId(selection);
-        ui.setAppMode(storedSession.appMode === 'git' ? 'git' : 'work');
-        ui.setViewMode(storedSession.viewMode === 'editor' || storedSession.viewMode === 'preview' ? storedSession.viewMode : 'split');
-        ui.setSidebarOpen(Boolean(storedSession.sidebarOpen));
-        if (typeof storedSession.sidebarWidth === 'number') {
-          ui.setSidebarWidth(storedSession.sidebarWidth);
+      const storedSession = ui.persistSessionEnabled ? readSessionState() : null;
+      let restoredSession = false;
+      if (storedSession && storedSession.projectId === projectId) {
+        const validIds = new Set(projectFiles.map(file => file.id));
+        const tabFileIds = storedSession.tabFileIds.filter(id => validIds.has(id));
+        if (tabFileIds.length > 0) {
+          tabs.setTabs(tabFileIds.map((id) => ({ id: `tab-${id}`, fileId: id })));
+          const activeFileId = storedSession.activeTabFileId && validIds.has(storedSession.activeTabFileId)
+            ? storedSession.activeTabFileId
+            : tabFileIds[0];
+          tabs.setActiveTabId(activeFileId ? `tab-${activeFileId}` : null);
+          const selection = storedSession.selectedExplorerId && validIds.has(storedSession.selectedExplorerId)
+            ? storedSession.selectedExplorerId
+            : activeFileId ?? null;
+          fileSys.setSelectedExplorerId(selection);
+          ui.setAppMode(storedSession.appMode === 'git' ? 'git' : 'work');
+          ui.setViewMode(storedSession.viewMode === 'editor' || storedSession.viewMode === 'preview' ? storedSession.viewMode : 'split');
+          ui.setSidebarOpen(Boolean(storedSession.sidebarOpen));
+          if (typeof storedSession.sidebarWidth === 'number') {
+            ui.setSidebarWidth(storedSession.sidebarWidth);
+          }
+          if (typeof storedSession.zoom === 'number') {
+            ui.setZoom(storedSession.zoom);
+          }
+          if (typeof storedSession.searchQuery === 'string') {
+            ui.setSearchQuery(storedSession.searchQuery);
+          }
+          if (typeof storedSession.autoSaveEnabled === 'boolean') {
+            ui.setAutoSaveEnabled(storedSession.autoSaveEnabled);
+          }
+          if (typeof storedSession.showLineNumbers === 'boolean') {
+            ui.setShowLineNumbers(storedSession.showLineNumbers);
+          }
+          restoredSession = true;
         }
-        if (typeof storedSession.zoom === 'number') {
-          ui.setZoom(storedSession.zoom);
-        }
-        if (typeof storedSession.searchQuery === 'string') {
-          ui.setSearchQuery(storedSession.searchQuery);
-        }
-        if (typeof storedSession.autoSaveEnabled === 'boolean') {
-          ui.setAutoSaveEnabled(storedSession.autoSaveEnabled);
-        }
-        if (typeof storedSession.showLineNumbers === 'boolean') {
-          ui.setShowLineNumbers(storedSession.showLineNumbers);
-        }
-        restoredSession = true;
+      }
+
+      const readme = projectFiles.find(f => f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md');
+      const first = projectFiles.find(f => f.type === 'file');
+      const target = readme || first;
+
+      if (target && !restoredSession) {
+        console.log(`[useApp] Auto-opening initial file: ${target.name}`);
+        tabs.openTab(target.id);
+        fileSys.setSelectedExplorerId(target.id);
+      }
+
+      proj.updateLastOpened(projectId);
+      localStorage.setItem('lastProjectId', projectId);
+      proj.setLoading(false);
+    } finally {
+      if (projectLoadInFlightRef.current === projectId) {
+        projectLoadInFlightRef.current = null;
       }
     }
-
-    const readme = projectFiles.find(f => f.name.toLowerCase() === 'readme.md' || f.name.toLowerCase() === 'welcome.md');
-    const first = projectFiles.find(f => f.type === 'file');
-    const target = readme || first;
-
-    if (target && !restoredSession) {
-       console.log(`[useApp] Auto-opening initial file: ${target.name}`);
-       tabs.openTab(target.id);
-       fileSys.setSelectedExplorerId(target.id);
-    }
-
-    proj.updateLastOpened(projectId);
-    localStorage.setItem('lastProjectId', projectId);
-    proj.setLoading(false);
   }, [
     proj.setActiveProjectId,
     fileSys.loadFiles,
