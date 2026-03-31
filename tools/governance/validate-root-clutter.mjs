@@ -50,6 +50,7 @@ const allowlist = new Set([
   'eslint.config.mjs',
   'examples',
   'gfm-spec.txt',
+  'node_modules',
   'package-lock.json',
   'package.json',
   'packages',

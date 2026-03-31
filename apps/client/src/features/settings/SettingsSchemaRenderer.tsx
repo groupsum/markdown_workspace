@@ -1,11 +1,12 @@
 import React from 'react';
 import type { ExtensionSettingField, ExtensionSettingsSchema, I18nLabel } from '@mdwrk/extension-manifest';
+import type { JsonValue } from '@mdwrk/extension-host';
 
 export interface SettingsSchemaValueStore {
-  get<T = unknown>(key: string): Promise<T | null>;
-  set<T = unknown>(key: string, value: T): Promise<void>;
+  get<T extends JsonValue = JsonValue>(key: string): Promise<T | null>;
+  set<T extends JsonValue = JsonValue>(key: string, value: T): Promise<void>;
   remove?(key: string): Promise<void>;
-  watch<T = unknown>(key: string, listener: (value: T | null) => void): { dispose(): void };
+  watch<T extends JsonValue = JsonValue>(key: string, listener: (value: T | null) => void): { dispose(): void };
 }
 
 export interface SettingsSchemaRendererProps {
