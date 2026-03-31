@@ -2,6 +2,8 @@
 
 Shared message descriptor, locale catalog, locale loader, and locale registry helpers for Markdown Workspace packages.
 
+Phase 10 also adds the shared core shell locale helpers used by the client app to restore the shipped core locales `en`, `es`, `fr`, `pt`, and `ur`.
+
 ## Core features
 
 - keyed message descriptors
@@ -39,3 +41,12 @@ registry.resolve({
   defaultMessage: "Extension Manager",
 });
 ```
+
+## Core shell locale helpers
+
+This package now also exports:
+
+- `CORE_SHELL_SUPPORTED_LOCALES`
+- `CORE_SHELL_LOCALE_LOADER_DEFINITION`
+
+These helpers are used by the client runtime to register the core shell locale inventory and to resolve locale fallbacks for the restored language selector surfaces.

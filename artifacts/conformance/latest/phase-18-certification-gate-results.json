@@ -1,0 +1,192 @@
+{
+  "generatedAt": "2026-03-30T21:31:20.243Z",
+  "phase": 18,
+  "basis": "Gate B — certification closure from RC artifacts (continuation checkpoint)",
+  "inheritedEvidence": {
+    "phase12ClosureSuitePath": "artifacts/conformance/latest/phase-12-closure-suite-results.json",
+    "phase16CertificationPolicyPath": "artifacts/conformance/latest/phase-16-certification-gate-results.json",
+    "phase17GateBPath": "artifacts/conformance/latest/phase-17-certification-gate-results.json"
+  },
+  "laneStatuses": {
+    "commonmarkOfficialCorpusLane": {
+      "status": "blocked",
+      "summary": "404/652 official CommonMark corpus cases passed.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-commonmark-official-summary.json"
+      ],
+      "notes": []
+    },
+    "gfmOfficialCorpusLane": {
+      "status": "blocked",
+      "summary": "414/672 official GFM corpus cases passed.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-gfm-official-summary.json"
+      ],
+      "notes": []
+    },
+    "optionalExtensionProfileLanes": {
+      "status": "green",
+      "summary": "8/8 claimed optional-profile checks passed.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-optional-profile-summary.json"
+      ],
+      "notes": []
+    },
+    "editorKeyboardLane": {
+      "status": "green",
+      "summary": "17/17 editor keyboard/command smoke checks remain green.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json",
+        "artifacts/conformance/latest/phase-12-editor-core-smoke.txt",
+        "artifacts/conformance/latest/phase-12-editor-react-smoke.txt"
+      ],
+      "notes": []
+    },
+    "toolbarSelectionLane": {
+      "status": "green",
+      "summary": "40/40 toolbar/selection structural checks remain green from the Phase 5 checkpoint artifact.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json"
+      ],
+      "notes": []
+    },
+    "previewExportLane": {
+      "status": "green",
+      "summary": "71/71 preview/export checks remain green, plus 5/5 current app preview/export checks.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-6-preview-export-results.json",
+        "artifacts/conformance/latest/phase-12-preview-export-lane.json"
+      ],
+      "notes": []
+    },
+    "accessibilityLane": {
+      "status": "green",
+      "summary": "Accessibility-adjacent evidence remains green across preview/export (5/5), shell parity (11/11), and i18n (23/23) artifacts.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-6-preview-export-results.json",
+        "artifacts/conformance/latest/phase-7-shell-parity-node-results.json",
+        "artifacts/conformance/latest/phase-10-i18n-parity-node-results.json"
+      ],
+      "notes": []
+    },
+    "browserMatrixLane": {
+      "status": "blocked",
+      "summary": "Playwright browser execution is configured but the current checkpoint environment does not provide a complete browser matrix run.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-browser-matrix-report.json"
+      ],
+      "notes": []
+    },
+    "visualRegressionLane": {
+      "status": "blocked",
+      "summary": "Static HTML visual baselines are present, but a browser-driven pixel-diff run has not been executed in this environment.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-visual-regression-report.json"
+      ],
+      "notes": []
+    },
+    "packedTarballInstallLane": {
+      "status": "blocked",
+      "summary": "Full release-set tarball install remains blocked in the current environment. See the log for the current failure mode.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-18-packed-release-set-install-report.json",
+        "artifacts/conformance/latest/phase-18-packed-release-set-install-log.txt"
+      ],
+      "notes": []
+    },
+    "extensionActivationCompatibilityLane": {
+      "status": "green",
+      "summary": "Manifest validation (4), compatibility (4), signed artifact verification (1), and runtime smoke (pass) were evaluated.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-extension-compatibility-manifest.json",
+        "artifacts/conformance/latest/extension-artifact-validation.json",
+        "artifacts/conformance/latest/phase-12-extension-runtime-smoke.txt"
+      ],
+      "notes": []
+    },
+    "docsContractBoundaryLane": {
+      "status": "green",
+      "summary": "193/193 documentation/evidence checks remain green and current package boundary/export validations also passed.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-11-package-evidence.json",
+        "artifacts/conformance/latest/phase-11-package-evidence-node-results.json"
+      ],
+      "notes": []
+    }
+  },
+  "hardClosureRules": {
+    "noUnresolvedP0MarkdownConformanceFailures": {
+      "status": "blocked",
+      "note": "Hard markdown closure remains blocked because the official corpus lanes still fail (CommonMark: 248, GFM: 258, optional profiles: 0)."
+    },
+    "noUnresolvedP0UIXParityFailures": {
+      "status": "green",
+      "note": "The living v1→v2 parity ledger no longer shows open user-visible P0 parity rows and the shell/settings/theme/i18n/package evidence checkpoint artifacts remain green."
+    },
+    "noUnresolvedForbiddenBoundaryViolations": {
+      "status": "green",
+      "note": "Package boundary validation reported no violations."
+    },
+    "noUnsignedUnverifiedExtensionArtifactWhenSigningIsRequired": {
+      "status": "green",
+      "note": "Signed catalog artifacts validated successfully against the generated trust policy."
+    },
+    "noReleaseSetPackageLackingDocsTestsExamplesSupportStatus": {
+      "status": "green",
+      "note": "Phase 11 package documentation/evidence matrix recorded no failing workspace entries."
+    }
+  },
+  "summary": {
+    "greenLaneCount": 7,
+    "blockedLaneCount": 5,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "blockers": {
+    "certificationGate": [
+      {
+        "id": "commonmarkOfficialCorpusLane",
+        "detail": "404/652 official CommonMark corpus cases passed."
+      },
+      {
+        "id": "gfmOfficialCorpusLane",
+        "detail": "414/672 official GFM corpus cases passed."
+      },
+      {
+        "id": "browserMatrixLane",
+        "detail": "Playwright browser execution is configured but the current checkpoint environment does not provide a complete browser matrix run."
+      },
+      {
+        "id": "visualRegressionLane",
+        "detail": "Static HTML visual baselines are present, but a browser-driven pixel-diff run has not been executed in this environment."
+      },
+      {
+        "id": "packedTarballInstallLane",
+        "detail": "Full release-set tarball install remains blocked in the current environment. See the log for the current failure mode."
+      },
+      {
+        "id": "noUnresolvedP0MarkdownConformanceFailures",
+        "detail": "Hard markdown closure remains blocked because the official corpus lanes still fail (CommonMark: 248, GFM: 258, optional profiles: 0)."
+      }
+    ]
+  },
+  "improvementOverPhase17": {
+    "commonmark": {
+      "phase17Passed": 360,
+      "phase18Passed": 404,
+      "deltaPassed": 44,
+      "phase17Failed": 292,
+      "phase18Failed": 248,
+      "deltaFailed": -44
+    },
+    "gfm": {
+      "phase17Passed": 370,
+      "phase18Passed": 414,
+      "deltaPassed": 44,
+      "phase17Failed": 302,
+      "phase18Failed": 258,
+      "deltaFailed": -44
+    }
+  }
+}

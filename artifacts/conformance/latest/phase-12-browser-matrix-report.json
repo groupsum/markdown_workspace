@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-03-29T17:01:18.444Z",
+  "kind": "browser-matrix-report",
+  "status": "blocked",
+  "requiredBrowsers": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "playwrightAvailable": false,
+  "browsers": {
+    "chromium": {
+      "available": true,
+      "binary": "/usr/bin/chromium"
+    },
+    "firefox": {
+      "available": false,
+      "binary": null
+    },
+    "webkit": {
+      "available": false,
+      "binary": null
+    }
+  },
+  "reason": "The provided checkpoint container does not include a full Playwright/browser matrix. Existing structural smoke scripts remain available, but a true browser matrix lane cannot be marked green here."
+}

@@ -1,0 +1,246 @@
+{
+  "phase": 8,
+  "generatedAt": "2026-03-28T08:21:24.672Z",
+  "boundary": "settings-data-session-git-and-extension-settings-parity",
+  "commands": {
+    "settingsParity": "node apps/client/tests/phase8-settings-data-git-parity.mjs --json",
+    "checkpointGenerator": "node tools/conformance/generate-phase8-settings-data-git-checkpoint.mjs"
+  },
+  "results": {
+    "settingsParity": {
+      "phase": 8,
+      "generatedAt": "2026-03-28T08:21:24.615Z",
+      "total": 34,
+      "passed": 34,
+      "failed": 0,
+      "checks": [
+        {
+          "id": "git.types.auth-mode-and-pat-token",
+          "pass": true
+        },
+        {
+          "id": "git.service.provider-normalization",
+          "pass": true
+        },
+        {
+          "id": "git.settings.auth-mode-selector",
+          "pass": true
+        },
+        {
+          "id": "git.settings.pat-status-and-input",
+          "pass": true
+        },
+        {
+          "id": "git.settings.repo-autocomplete-refresh-and-timestamp",
+          "pass": true
+        },
+        {
+          "id": "git.settings.pat-shorthand-and-create-repo",
+          "pass": true
+        },
+        {
+          "id": "git.settings.panel-wired-actions",
+          "pass": true
+        },
+        {
+          "id": "git.useapp-functional-actions",
+          "pass": true
+        },
+        {
+          "id": "git.useapp-refresh-dispatch-and-oidc-guard",
+          "pass": true
+        },
+        {
+          "id": "data.settings.restore-ui",
+          "pass": true
+        },
+        {
+          "id": "data.settings.secondary-version-display",
+          "pass": true
+        },
+        {
+          "id": "data.file-manager.export-envelope",
+          "pass": true
+        },
+        {
+          "id": "data.file-manager.restore-flow",
+          "pass": true
+        },
+        {
+          "id": "data.useapp.restore-open-file-flow",
+          "pass": true
+        },
+        {
+          "id": "session.settings.autosave-toggle",
+          "pass": true
+        },
+        {
+          "id": "session.settings.persist-session-toggle",
+          "pass": true
+        },
+        {
+          "id": "session.settings.line-numbers-toggle",
+          "pass": true
+        },
+        {
+          "id": "extension.settings.store-backed-rendering",
+          "pass": true
+        },
+        {
+          "id": "extension.settings.renderer.multiline",
+          "pass": true
+        },
+        {
+          "id": "extension.settings.renderer.multiselect",
+          "pass": true
+        },
+        {
+          "id": "extension.settings.renderer.numeric-constraints",
+          "pass": true
+        },
+        {
+          "id": "extension.settings.registration-sink",
+          "pass": true
+        },
+        {
+          "id": "extension.manager.manifest-settings-capability-and-section",
+          "pass": true
+        },
+        {
+          "id": "extension.manager.bundled-schema-registration",
+          "pass": true
+        },
+        {
+          "id": "extension.theme-studio.bundled-schema-registration",
+          "pass": true
+        },
+        {
+          "id": "extension.gemini.bundled-schema-registration",
+          "pass": true
+        },
+        {
+          "id": "versions.client",
+          "pass": true
+        },
+        {
+          "id": "versions.extension-manager",
+          "pass": true
+        },
+        {
+          "id": "versions.extension-theme-studio",
+          "pass": true
+        },
+        {
+          "id": "versions.extension-gemini-agent",
+          "pass": true
+        },
+        {
+          "id": "versions.i18n",
+          "pass": true
+        },
+        {
+          "id": "node-modules.extension-manager.settings-updated",
+          "pass": true
+        },
+        {
+          "id": "node-modules.theme-studio.settings-updated",
+          "pass": true
+        },
+        {
+          "id": "node-modules.gemini.settings-updated",
+          "pass": true
+        }
+      ],
+      "packageVersions": {
+        "client": "1.4.0",
+        "extensionManager": "1.1.0",
+        "extensionThemeStudio": "1.1.0",
+        "extensionGeminiAgent": "1.1.0",
+        "i18n": "1.1.0"
+      },
+      "nodeModuleVersions": {
+        "extensionManager": "1.1.0",
+        "extensionThemeStudio": "1.1.0",
+        "extensionGeminiAgent": "1.1.0",
+        "i18n": "1.1.0"
+      }
+    }
+  },
+  "aggregate": {
+    "totalChecks": 34,
+    "totalPassed": 34,
+    "totalFailed": 0,
+    "structuralAudit": {
+      "total": 31,
+      "passed": 31,
+      "failed": 0
+    }
+  },
+  "structuralAudit": {
+    "dataSettingsPanel": {
+      "path": "apps/client/src/features/settings/DataSettingsPanel.tsx",
+      "restoreButtonPresent": true,
+      "restoreActionPresent": true,
+      "secondaryVersionVisible": true,
+      "indexedDbExportRetained": true
+    },
+    "gitSettingsPanel": {
+      "path": "apps/client/src/features/settings/GitSettingsPanel.tsx",
+      "authModeVisible": true,
+      "testLinkWired": true,
+      "saveConfigWired": true,
+      "refreshReposWired": true
+    },
+    "appActions": {
+      "path": "apps/client/hooks/useApp.ts",
+      "restoreDataActionPresent": true,
+      "refreshDispatchPresent": true,
+      "saveConfigFunctional": true,
+      "oidcGuardPresent": true
+    },
+    "fileManager": {
+      "path": "apps/client/hooks/useFileManager.ts",
+      "restoreFlowPresent": true,
+      "exportEnvelopePresent": true,
+      "restoreValidationPresent": true
+    },
+    "sessionSettings": {
+      "path": "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "autoSaveTogglePresent": true,
+      "restoreSessionTogglePresent": true,
+      "lineNumbersTogglePresent": true
+    },
+    "settingsHost": {
+      "path": "apps/client/src/shell/SettingsView.tsx",
+      "extensionStoreBound": true,
+      "formatLabelBound": true
+    },
+    "settingsRenderer": {
+      "path": "apps/client/src/features/settings/SettingsSchemaRenderer.tsx",
+      "multilineSupportPresent": true,
+      "numericConstraintsPresent": true,
+      "multiselectPresent": true,
+      "storeSupportPresent": true
+    },
+    "extensionRegistrationSink": {
+      "path": "apps/client/src/extensions/runtime/createClientExtensionRegistrationSink.tsx",
+      "schemaPropagationPresent": true,
+      "placeholderOnlyWhenNoSchema": true
+    },
+    "bundledExtensions": {
+      "managerManifestPath": "packages/extensions/extension-manager/dist/manifest.js",
+      "managerCapabilitiesUpdated": true,
+      "managerSettingsSectionPresent": true,
+      "managerSchemaRegistrationPresent": true,
+      "themeStudioSchemaRegistrationPresent": true,
+      "geminiSchemaRegistrationPresent": true
+    }
+  },
+  "packageVersions": {
+    "client": "1.4.0",
+    "i18n": "1.1.0",
+    "extensionManager": "1.1.0",
+    "extensionThemeStudio": "1.1.0",
+    "extensionGeminiAgent": "1.1.0"
+  }
+}

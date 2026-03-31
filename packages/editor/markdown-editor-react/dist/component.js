@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from "react";
-import { DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES, applyBuiltinMarkdownCommand, canRedoHistory, canUndoHistory, computeCursorPosition, createSelection, createHistoryState, normalizeSelection, pushHistoryEntry, redoHistory, replaceHistoryPresent, resetHistoryState, undoHistory, } from "@mdwrk/markdown-editor-core";
+import { DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES, applyBuiltinMarkdownCommand, canRedoHistory, canUndoHistory, computeCursorPosition, computeSelectionFormatState, createSelection, createHistoryState, insertListContinuation, normalizeSelection, pushHistoryEntry, redoHistory, replaceHistoryPresent, resetHistoryState, undoHistory, } from "@mdwrk/markdown-editor-core";
 import { createMarkdownEditorThemeStyle } from "./theme.js";
 const mergeClassNames = (...values) => values.filter(Boolean).join(" ");
 function selectionEquals(a, b) {
@@ -9,7 +9,7 @@ function selectionEquals(a, b) {
 function snapshotFromState(value, selection) {
     return { value, selection };
 }
-export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEditor({ value, defaultValue, documentKey, onChange, onSelectionChange, onCursorChange, onHistoryChange, onCommand, className, style, themeStyle, placeholder = "Start typing...", spellCheck = false, autoFocus = false, disabled = false, showLineNumbers = true, historyLimit = 100, textareaClassName, gutterClassName, lineNumberClassName, indentUnit = "\t", themeVariables, }, ref) {
+export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEditor({ value, defaultValue, documentKey, onChange, onSelectionChange, onSelectionFormatChange, onCursorChange, onHistoryChange, onCommand, className, style, themeStyle, placeholder = "Start typing...", spellCheck = false, autoFocus = false, disabled = false, showLineNumbers = true, historyLimit = 100, textareaClassName, gutterClassName, lineNumberClassName, indentUnit = "	", themeVariables, }, ref) {
     const isControlled = value !== undefined;
     const initialValue = React.useMemo(() => value ?? defaultValue ?? "", []);
     const [draftValue, setDraftValue] = React.useState(initialValue);
@@ -70,6 +70,9 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         const cursor = computeCursorPosition(nextValue, nextSelection.end);
         onCursorChange?.(cursor.line, cursor.column);
     }, [onCursorChange]);
+    const emitSelectionFormat = React.useCallback((nextValue, nextSelection) => {
+        onSelectionFormatChange?.(computeSelectionFormatState(nextValue, nextSelection));
+    }, [onSelectionFormatChange]);
     const syncSelectionFromTextarea = React.useCallback(() => {
         const textarea = textareaRef.current;
         if (!textarea)
@@ -86,8 +89,9 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             onSelectionChange?.(nextSelection);
         }
         emitCursor(textarea.value, nextSelection);
+        emitSelectionFormat(textarea.value, nextSelection);
         return nextSelection;
-    }, [emitCursor, onSelectionChange]);
+    }, [emitCursor, emitSelectionFormat, onSelectionChange]);
     const commitValue = React.useCallback((nextValue, nextSelection, options = {}) => {
         const normalizedSelection = normalizeSelection(nextSelection, nextValue.length);
         draftValueRef.current = nextValue;
@@ -103,10 +107,11 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         onChange?.(nextValue);
         onSelectionChange?.(normalizedSelection);
         emitCursor(nextValue, normalizedSelection);
+        emitSelectionFormat(nextValue, normalizedSelection);
         if (options.focus) {
             requestAnimationFrame(() => textareaRef.current?.focus());
         }
-    }, [emitCursor, onChange, onSelectionChange]);
+    }, [emitCursor, emitSelectionFormat, onChange, onSelectionChange]);
     const applyEditResult = React.useCallback((result, options) => {
         if (!result.changed && options?.historic !== false)
             return snapshotFromState(draftValueRef.current, selectionRef.current);
@@ -123,6 +128,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             onChange?.(nextHistory.present.value);
             onSelectionChange?.(nextHistory.present.selection);
             emitCursor(nextHistory.present.value, nextHistory.present.selection);
+            emitSelectionFormat(nextHistory.present.value, nextHistory.present.selection);
             onCommand?.(command);
             return nextHistory.present;
         }
@@ -135,6 +141,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             onChange?.(nextHistory.present.value);
             onSelectionChange?.(nextHistory.present.selection);
             emitCursor(nextHistory.present.value, nextHistory.present.selection);
+            emitSelectionFormat(nextHistory.present.value, nextHistory.present.selection);
             onCommand?.(command);
             return nextHistory.present;
         }
@@ -144,7 +151,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         const snapshot = applyEditResult(result, { focus: true });
         onCommand?.(command);
         return snapshot;
-    }, [applyEditResult, emitCursor, indentUnit, onChange, onCommand, onSelectionChange]);
+    }, [applyEditResult, emitCursor, emitSelectionFormat, indentUnit, onChange, onCommand, onSelectionChange]);
     React.useImperativeHandle(ref, () => ({
         focus() {
             textareaRef.current?.focus();
@@ -161,6 +168,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             pendingSelectionRef.current = normalized;
             onSelectionChange?.(normalized);
             emitCursor(draftValueRef.current, normalized);
+            emitSelectionFormat(draftValueRef.current, normalized);
         },
         applyEdit(result, options) {
             applyEditResult(result, { historic: options?.historic, focus: true });
@@ -187,7 +195,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
                 focus: true,
             });
         },
-    }), [applyEditResult, commitValue, emitCursor, executeCommand, onSelectionChange]);
+    }), [applyEditResult, commitValue, emitCursor, emitSelectionFormat, executeCommand, onSelectionChange]);
     const handleTextareaChange = React.useCallback((event) => {
         const nextValue = event.currentTarget.value;
         const nextSelection = normalizeSelection({
@@ -203,6 +211,12 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         syncSelectionFromTextarea();
         const meta = event.metaKey || event.ctrlKey;
         const key = event.key.toLowerCase();
+        if (!meta && event.key === "Enter") {
+            event.preventDefault();
+            const result = insertListContinuation(draftValueRef.current, selectionRef.current);
+            applyEditResult(result, { focus: true });
+            return;
+        }
         if (!meta && event.key === "Tab") {
             event.preventDefault();
             executeCommand(event.shiftKey ? "outdent" : "indent", { indentUnit });
@@ -234,7 +248,7 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             event.preventDefault();
             executeCommand("redo");
         }
-    }, [disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
+    }, [applyEditResult, disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
     const lineCount = React.useMemo(() => {
         const displayValue = isControlled ? (value ?? "") : draftValue;
         const matches = displayValue.match(/\n/g);
@@ -249,6 +263,6 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
                         if (gutterRef.current) {
                             gutterRef.current.scrollTop = event.currentTarget.scrollTop;
                         }
-                    }, spellCheck: spellCheck, autoFocus: autoFocus, disabled: disabled, placeholder: placeholder, "data-testid": "markdown-source-editor" })] }) }));
+                    }, spellCheck: spellCheck, autoFocus: autoFocus, disabled: disabled, placeholder: placeholder, wrap: "off", "data-testid": "markdown-source-editor" })] }) }));
 });
 //# sourceMappingURL=component.js.map

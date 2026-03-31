@@ -10,13 +10,16 @@ This package family contains the runtime, first-party extension packages, and a 
 - `packages/extensions/extension-theme-studio/` — first-party theme authoring extension
 - `packages/extensions/extension-catalog-hello/` — sample third-party external extension package used to validate the formal catalog path
 
-## Current state
+## Phase 11 documentation/evidence status
 
-The runtime, Extension Manager, Gemini Agent, and Theme Studio packages are implemented.
-Phase 13 adds:
-- external catalog registration
-- signed-manifest and integrity verification
-- install/update/remove/cache flows for external extensions
-- a sample external extension package and artifact set
+Each extension package now has:
 
-The remaining work is now primarily production hardening and independent certification, not foundational package architecture.
+- a package README
+- generated API/reference docs under `docs/reference/packages/`
+- manifest/compatibility evidence in the Phase 11 package matrix
+- lifecycle/integration test evidence in the Phase 11 package artifact set
+
+## Reference docs
+
+- `docs/reference/workspace-package-certification-matrix.md`
+- `docs/reference/package-boundary-map.md`

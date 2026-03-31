@@ -1,0 +1,84 @@
+{
+  "phase": 4,
+  "generatedAt": "2026-03-28T01:27:31.410Z",
+  "checkpointType": "optional-profile-boundary-checkpoint",
+  "packages": {
+    "rendererCore": {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-core"
+    },
+    "rendererReact": {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-react"
+    },
+    "editorCore": {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.0.1",
+      "path": "packages/editor/markdown-editor-core"
+    },
+    "editorReact": {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.0.2",
+      "path": "packages/editor/markdown-editor-react"
+    }
+  },
+  "optionalProfiles": {
+    "inScope": [
+      "front-matter",
+      "footnotes",
+      "definition-lists",
+      "math",
+      "superscript",
+      "subscript",
+      "smart-punctuation"
+    ],
+    "outOfScope": [
+      "citations",
+      "markdown-in-html",
+      "underline-custom"
+    ]
+  },
+  "evidence": {
+    "rendererCoreOptionalCommand": "node packages/renderer/markdown-renderer-core/tests/optional-profiles.mjs --json",
+    "rendererReactOptionalCommand": "node packages/renderer/markdown-renderer-react/tests/optional-profile-surface.mjs --json",
+    "editorCoreCommand": "node packages/editor/markdown-editor-core/tests/run-smoke.mjs --json",
+    "editorReactCommand": "node packages/editor/markdown-editor-react/tests/run-smoke.mjs --json",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-4-optional-profiles-results.json",
+    "appPaths": [
+      "apps/client/components/Markdown/WorkspaceMarkdownRenderer.tsx",
+      "apps/client/services/htmlExport.tsx",
+      "apps/client/src/features/markdownProfiles/MarkdownProfileSettingsPanel.tsx",
+      "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx"
+    ]
+  },
+  "summary": {
+    "totalChecks": 24,
+    "totalPassed": 24,
+    "totalFailed": 0,
+    "rendererCoreOptionalCases": 8,
+    "rendererReactOptionalChecks": 4
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "named optional-profile registry in the renderer core",
+    "policy-aware front matter, footnotes, definition lists, math, superscript, subscript, and smart punctuation rendering",
+    "experimental citations and markdown-in-html warnings with explicit out-of-boundary status",
+    "React renderer and static-document propagation for optional profiles",
+    "editor-core optional-profile command surface",
+    "client settings, preview, export, and toolbar alignment for optional profiles"
+  ],
+  "knownLimits": [
+    "This checkpoint does not yet prove final frozen-target CommonMark/GFM closure example-by-example.",
+    "Citations remain outside the certified optional-profile boundary because bibliography resolution is not implemented.",
+    "Markdown-in-html remains outside the certified optional-profile boundary because it depends on trusted HTML policy and is still experimental.",
+    "Broader v1-to-v2 UIX parity gaps remain outside the Phase 4 boundary.",
+    "The provided zip still lacks some external app/example toolchain dependencies needed for full app-wide build/typecheck/test closure."
+  ]
+}

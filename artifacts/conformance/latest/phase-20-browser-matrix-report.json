@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-03-31T05:51:17.787Z",
+  "requiredEngines": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "baseUrl": "http://127.0.0.1:4173",
+  "chromiumChecks": [
+    {
+      "browser": "chromium",
+      "id": "shell-boots",
+      "pass": false,
+      "detail": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4173/\nCall log:\n  - navigating to \"http://127.0.0.1:4173/\", waiting until \"load\"\n"
+    },
+    {
+      "browser": "chromium",
+      "id": "preview-surface-reachable",
+      "pass": false,
+      "detail": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4173/\nCall log:\n  - navigating to \"http://127.0.0.1:4173/\", waiting until \"load\"\n"
+    },
+    {
+      "browser": "chromium",
+      "id": "settings-surface-reachable",
+      "pass": false,
+      "detail": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4173/\nCall log:\n  - navigating to \"http://127.0.0.1:4173/\", waiting until \"load\"\n"
+    }
+  ],
+  "chromiumPassed": 0,
+  "chromiumTotal": 3,
+  "engineProbes": [
+    {
+      "browser": "firefox",
+      "status": "blocked",
+      "detail": "browserType.launch: Executable doesn't exist at /home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "browser": "webkit",
+      "status": "blocked",
+      "detail": "browserType.launch: Executable doesn't exist at /home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+    }
+  ],
+  "laneStatus": "blocked",
+  "reason": "The browser matrix remains blocked because the Chromium app smoke checks could not navigate to the local app in this environment and Firefox/WebKit browser binaries are unavailable.",
+  "serverOutput": {
+    "stdout": "",
+    "stderr": "127.0.0.1 - - [31/Mar/2026 05:51:13] \"GET / HTTP/1.1\" 200 -\n"
+  }
+}

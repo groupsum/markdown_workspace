@@ -1,0 +1,470 @@
+
+> markdown_workspace@0.1.5 conformance
+> npm run validate:manifests && npm run validate:compatibility && npm run validate:boundaries && npm run validate:exports && npm run extension:bundle && npm run extension:sign && npm run validate:extension-artifacts && node ./tools/conformance/generate-conformance-artifacts.mjs
+
+
+> markdown_workspace@0.1.5 validate:manifests
+> node ./tools/conformance/validate-extension-manifests.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:16.112Z",
+  "validator": "tools/conformance/validate-extension-manifests.mjs",
+  "ok": true,
+  "results": [
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "manifestId": "external.catalog-hello",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "manifestId": "core.gemini-agent",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "manifestId": "core.extension-manager",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "manifestId": "core.theme-studio",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}
+
+> markdown_workspace@0.1.5 validate:compatibility
+> node ./tools/conformance/validate-compatibility.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:16.385Z",
+  "validator": "tools/conformance/validate-compatibility.mjs",
+  "ok": true,
+  "platformBaselines": {
+    "client": "1.4.0",
+    "manifestVersion": 1,
+    "hostApi": "1.0.0",
+    "runtime": "1.0.0",
+    "themeContract": "1.1.0"
+  },
+  "results": [
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=0.1.0",
+        "themeContract": "^1.0.0"
+      }
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "^1.0.0",
+        "renderer": "^1.0.0",
+        "editor": "^1.0.0"
+      }
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "^1.0.0"
+      }
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "declaredCompatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=1.3.49",
+        "themeContract": "^1.0.0",
+        "renderer": "^1.0.0",
+        "editor": "^1.0.0"
+      }
+    }
+  ]
+}
+
+> markdown_workspace@0.1.5 validate:boundaries
+> node ./tools/conformance/check-package-boundaries.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:16.810Z",
+  "checker": "tools/conformance/check-package-boundaries.mjs",
+  "ok": true,
+  "scannedFileCount": 429,
+  "violations": []
+}
+
+> markdown_workspace@0.1.5 validate:exports
+> node ./tools/conformance/validate-package-exports.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:17.074Z",
+  "validator": "tools/conformance/validate-package-exports.mjs",
+  "ok": true,
+  "results": [
+    {
+      "packageName": "@mdwrk/mdwrkspace",
+      "path": "apps/client",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander",
+      "path": "apps/lander",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/example-editor-basic",
+      "path": "examples/editor-basic",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/example-renderer-basic",
+      "path": "examples/renderer-basic",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-host",
+      "path": "packages/contracts/extension-host",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-manifest",
+      "path": "packages/contracts/extension-manifest",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/theme-contract",
+      "path": "packages/contracts/theme-contract",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-core",
+      "path": "packages/editor/markdown-editor-core",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-react",
+      "path": "packages/editor/markdown-editor-react",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-runtime",
+      "path": "packages/extensions/extension-runtime",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-core",
+      "path": "packages/renderer/markdown-renderer-core",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-react",
+      "path": "packages/renderer/markdown-renderer-react",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/i18n",
+      "path": "packages/shared/i18n",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/icons",
+      "path": "packages/shared/icons",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/testing",
+      "path": "packages/shared/testing",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/ui-tokens",
+      "path": "packages/shared/ui-tokens",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}
+
+> markdown_workspace@0.1.5 extension:bundle
+> node ./tools/extensions/build-installable-extensions.mjs
+
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-03-29T17:01:17.475Z",
+  "generator": "tools/extensions/build-installable-extensions.mjs",
+  "baseUrl": "./",
+  "ok": true,
+  "extensions": [
+    {
+      "entryId": "external.catalog-hello@1.0.1",
+      "extensionId": "external.catalog-hello",
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "version": "1.0.1",
+      "displayName": {
+        "defaultMessage": "Catalog Hello",
+        "key": "manifest.displayName",
+        "description": "Display name for the sample external catalog extension."
+      },
+      "description": {
+        "defaultMessage": "Sample third-party extension installed from a signed external catalog artifact.",
+        "key": "manifest.description",
+        "description": "Description for the sample external catalog extension."
+      },
+      "publisher": "demo-catalog",
+      "icon": {
+        "kind": "svg",
+        "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 6h16v12H4z\"/><path d=\"M9 10h6\"/><path d=\"M9 14h6\"/></svg>"
+      },
+      "categories": [
+        "sample",
+        "external"
+      ],
+      "keywords": [
+        "hello",
+        "catalog",
+        "sample"
+      ],
+      "capabilities": [
+        "view.register",
+        "actionRail.register",
+        "notification.publish",
+        "settings.read"
+      ],
+      "compatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=0.1.0",
+        "themeContract": "^1.0.0"
+      },
+      "supportedLocales": [
+        "en"
+      ],
+      "urls": {
+        "manifest": "artifacts/extensions/external.catalog-hello/1.0.1/manifest.json",
+        "signedManifest": "artifacts/extensions/external.catalog-hello/1.0.1/signed-manifest.json",
+        "module": "artifacts/extensions/external.catalog-hello/1.0.1/dist/index.js",
+        "integrity": "artifacts/extensions/external.catalog-hello/1.0.1/integrity.json"
+      },
+      "integrity": {
+        "manifest": {
+          "algorithm": "sha256",
+          "digest": "e5a9ba9db3fbcae684e1d70e18742740ac8a98c232e3fcabcae9bd6d35230303"
+        },
+        "module": {
+          "algorithm": "sha256",
+          "digest": "92e150b975f628ca2af2221e9ede0ff391a5283ab395bf1b794a65277ba217e6"
+        }
+      },
+      "support": {
+        "status": "experimental",
+        "level": "community",
+        "owner": "demo-catalog"
+      }
+    }
+  ],
+  "failures": []
+}
+
+> markdown_workspace@0.1.5 extension:sign
+> node ./tools/extensions/sign-extension-artifacts.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:17.702Z",
+  "signer": "tools/extensions/sign-extension-artifacts.mjs",
+  "ok": true,
+  "signedEntries": [
+    {
+      "id": "external.catalog-hello",
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "version": "1.0.1",
+      "artifactPath": "artifacts/extensions/external.catalog-hello/1.0.1",
+      "digestCount": 6,
+      "signedManifestPath": "artifacts/extensions/external.catalog-hello/1.0.1/signed-manifest.json"
+    },
+    {
+      "id": "core.gemini-agent",
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.0",
+      "digestCount": 6,
+      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.0/signed-manifest.json"
+    },
+    {
+      "id": "core.extension-manager",
+      "packageName": "@mdwrk/extension-manager",
+      "version": "1.1.0",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.0",
+      "digestCount": 6,
+      "signedManifestPath": "artifacts/extensions/core.extension-manager/1.1.0/signed-manifest.json"
+    },
+    {
+      "id": "core.theme-studio",
+      "packageName": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0",
+      "artifactPath": "artifacts/extensions/core.theme-studio/1.1.0",
+      "digestCount": 6,
+      "signedManifestPath": "artifacts/extensions/core.theme-studio/1.1.0/signed-manifest.json"
+    }
+  ],
+  "note": "This checkpoint generates ECDSA P-256 signed manifests plus SHA-256 integrity metadata. Production deployments should inject a managed signing key through CI secrets or HSM-backed workflows."
+}
+
+> markdown_workspace@0.1.5 validate:extension-artifacts
+> node ./tools/conformance/validate-extension-artifacts.mjs
+
+{
+  "generatedAt": "2026-03-29T17:01:17.931Z",
+  "ok": true,
+  "catalogEntries": [
+    {
+      "entryId": "external.catalog-hello@1.0.1",
+      "extensionId": "external.catalog-hello",
+      "manifestExists": true,
+      "signedManifestExists": true,
+      "moduleExists": true,
+      "manifestIntegrityVerified": true,
+      "moduleIntegrityVerified": true,
+      "signatureVerified": true,
+      "trustedBySamplePolicy": true,
+      "issues": []
+    }
+  ]
+}
+{
+  "generatedAt": "2026-03-29T17:01:18.291Z",
+  "ok": true,
+  "checks": {
+    "extensionManifests": true,
+    "compatibilityMatrix": true,
+    "packageBoundaries": true,
+    "packageExports": true,
+    "extensionArtifacts": true
+  },
+  "notes": [
+    "Static conformance evidence is generated in-repo for checkpointing.",
+    "Full browser-driven E2E and pixel-level visual regression remain future hardening work.",
+    "Third-party external artifact verification now checks signed manifests, module integrity, and sample trust-policy alignment."
+  ]
+}

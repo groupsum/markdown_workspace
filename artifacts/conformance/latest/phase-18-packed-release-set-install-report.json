@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-03-30T21:31:20.238Z",
+  "status": "blocked",
+  "tarballCount": 17,
+  "tarballs": [
+    "mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz",
+    "mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz",
+    "mdwrk-extension-host-1.0.1.tgz",
+    "mdwrk-extension-manager-1.1.0-rc.1.tgz",
+    "mdwrk-extension-manifest-1.0.0.tgz",
+    "mdwrk-extension-runtime-1.1.0-rc.1.tgz",
+    "mdwrk-extension-theme-studio-1.1.0-rc.1.tgz",
+    "mdwrk-i18n-1.1.0-rc.1.tgz",
+    "mdwrk-icons-1.0.0.tgz",
+    "mdwrk-markdown-editor-core-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-editor-react-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz",
+    "mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
+    "mdwrk-testing-1.0.0.tgz",
+    "mdwrk-theme-contract-1.1.0-rc.1.tgz",
+    "mdwrk-ui-tokens-1.2.0-rc.1.tgz"
+  ],
+  "reason": "Full release-set tarball install remains blocked in the current environment. See the log for the current failure mode.",
+  "installStatus": 1,
+  "phase": 18,
+  "note": "Blocked state carried forward pending a full release-set packed install rerun in the required environment."
+}

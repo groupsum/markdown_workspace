@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-03-31T05:49:05.453Z",
+  "artifact": {
+    "id": "core.extension-manager",
+    "packageName": "@mdwrk/extension-manager",
+    "version": "1.1.0-rc.1",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.extension-manager/1.1.0-rc.1",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "generatedAt": "2026-03-31T05:49:04.884Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "addcf088a360d0be8eebb27ec9ad31cdf67e0bb1b68944a437d328c188ee1135"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "360dd655845870c2b0291741516cd21672f99d889e5d4a99c19cfe8a153e7d4f"
+    },
+    {
+      "path": "package.json",
+      "sha256": "c88b80d4989426040c82c89046c94e5887ff2e8e94fd3a556801dd6845f93935"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1e296e8071c95c753859ad9423c556bbf3a9669d9e38ac06570750eecdae0de7"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "234f7051237c50039baf6644c3b72f56f89fde92a660e0f55ec97bbc1ff6ed98"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

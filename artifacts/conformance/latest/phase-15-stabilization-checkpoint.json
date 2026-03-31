@@ -1,0 +1,35 @@
+{
+  "phase": 15,
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "checkpointType": "post-release-stabilization-and-support-window-checkpoint",
+  "basedOn": {
+    "phase12": "strict-conformance-closure-suite",
+    "phase13": "rc-freeze-versioning-and-promotion-prep",
+    "phase14": "promotion-and-release"
+  },
+  "evidence": {
+    "resultsPath": "artifacts/conformance/latest/phase-15-stabilization-results.json",
+    "supportWindowPolicyPath": "artifacts/conformance/latest/phase-15-support-window-policy.json",
+    "monitoringMatrixPath": "artifacts/conformance/latest/phase-15-monitoring-matrix.json",
+    "evidenceIntegrityManifestPath": "artifacts/conformance/latest/phase-15-evidence-integrity-manifest.json",
+    "roadmapPath": "artifacts/conformance/latest/phase-15-follow-on-roadmap.md",
+    "minimumClosureChecklistPath": "artifacts/conformance/latest/phase-15-minimum-closure-checklist.md",
+    "supportBundlePath": "artifacts/releases/support-window-rc.1"
+  },
+  "summary": {
+    "greenChecks": 15,
+    "blockedChecks": 2,
+    "totalChecks": 17
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false,
+    "publicReleaseExists": false
+  },
+  "knownLimits": [
+    "No public published release exists in the current environment, so the support window is policy-defined for the prepared bundle rather than enforced on live published npm artifacts.",
+    "The repository still cannot claim final success because publication remains blocked and earlier strict-closure blockers are still recorded in Phase 12 and Phase 14 evidence.",
+    "This checkpoint preserves and hardens the evidence chain, but it does not convert the Phase 14 promotion bundle into an actual public release."
+  ]
+}

@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { MarkdownEditorBuiltinCommandId, MarkdownEditorCommandOptions, MarkdownEditorHistoryState, MarkdownEditorHostEditApi, MarkdownEditorSelection, MarkdownEditorSnapshot } from "@mdwrk/markdown-editor-core";
+import type { MarkdownEditorBuiltinCommandId, MarkdownEditorCommandOptions, MarkdownEditorHistoryState, MarkdownEditorHostEditApi, MarkdownEditorSelectionFormatState, MarkdownEditorSelection, MarkdownEditorSnapshot } from "@mdwrk/markdown-editor-core";
 import type { MarkdownEditorThemeVariables } from "./theme.js";
 export interface MarkdownSourceEditorProps {
     readonly value?: string;
@@ -7,6 +7,7 @@ export interface MarkdownSourceEditorProps {
     readonly documentKey?: string | number;
     readonly onChange?: (value: string) => void;
     readonly onSelectionChange?: (selection: MarkdownEditorSelection) => void;
+    readonly onSelectionFormatChange?: (state: MarkdownEditorSelectionFormatState) => void;
     readonly onCursorChange?: (line: number, column: number) => void;
     readonly onHistoryChange?: (history: MarkdownEditorHistoryState) => void;
     readonly onCommand?: (command: MarkdownEditorBuiltinCommandId) => void;

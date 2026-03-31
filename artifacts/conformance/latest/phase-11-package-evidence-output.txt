@@ -1,0 +1,23 @@
+phase11 workspace packages: 20
+phase11 checks: 193/193 passing
+
+@mdwrk/extension-host :: 7/7 passing :: docs/reference/packages/mdwrk-extension-host.md
+@mdwrk/extension-manifest :: 7/7 passing :: docs/reference/packages/mdwrk-extension-manifest.md
+@mdwrk/theme-contract :: 7/7 passing :: docs/reference/packages/mdwrk-theme-contract.md
+@mdwrk/i18n :: 7/7 passing :: docs/reference/packages/mdwrk-i18n.md
+@mdwrk/icons :: 7/7 passing :: docs/reference/packages/mdwrk-icons.md
+@mdwrk/testing :: 7/7 passing :: docs/reference/packages/mdwrk-testing.md
+@mdwrk/ui-tokens :: 7/7 passing :: docs/reference/packages/mdwrk-ui-tokens.md
+@mdwrk/markdown-renderer-core :: 7/7 passing :: docs/reference/packages/mdwrk-markdown-renderer-core.md
+@mdwrk/markdown-renderer-react :: 7/7 passing :: docs/reference/packages/mdwrk-markdown-renderer-react.md
+@mdwrk/markdown-editor-core :: 7/7 passing :: docs/reference/packages/mdwrk-markdown-editor-core.md
+@mdwrk/markdown-editor-react :: 7/7 passing :: docs/reference/packages/mdwrk-markdown-editor-react.md
+@mdwrk/extension-catalog-hello :: 15/15 passing :: docs/reference/packages/mdwrk-extension-catalog-hello.md
+@mdwrk/extension-gemini-agent :: 15/15 passing :: docs/reference/packages/mdwrk-extension-gemini-agent.md
+@mdwrk/extension-manager :: 15/15 passing :: docs/reference/packages/mdwrk-extension-manager.md
+@mdwrk/extension-runtime :: 7/7 passing :: docs/reference/packages/mdwrk-extension-runtime.md
+@mdwrk/extension-theme-studio :: 15/15 passing :: docs/reference/packages/mdwrk-extension-theme-studio.md
+@mdwrk/lander :: 12/12 passing :: docs/reference/apps/mdwrk-lander.md
+@mdwrk/mdwrkspace :: 12/12 passing :: docs/reference/apps/mdwrk-mdwrkspace.md
+@mdwrk/example-editor-basic :: 12/12 passing :: docs/reference/examples/mdwrk-example-editor-basic.md
+@mdwrk/example-renderer-basic :: 13/13 passing :: docs/reference/examples/mdwrk-example-renderer-basic.md

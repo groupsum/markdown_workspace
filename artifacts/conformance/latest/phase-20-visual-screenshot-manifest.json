@@ -1,0 +1,104 @@
+{
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "entries": [
+    {
+      "themeId": "tensioned-technical-skeleton",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/tensioned-technical-skeleton.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/tensioned-technical-skeleton.png",
+      "baselineHash": "986cccb458d1b9b251edc606e5db2c3e6a82ec447ca59f18229fdb1b0a15b867",
+      "candidateHash": "986cccb458d1b9b251edc606e5db2c3e6a82ec447ca59f18229fdb1b0a15b867"
+    },
+    {
+      "themeId": "optical-vellum-drafting-grid",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/optical-vellum-drafting-grid.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/optical-vellum-drafting-grid.png",
+      "baselineHash": "8f296c249fec16f3cec13efbda57eddf5acc2051d921f8f05232b0e801ac5344",
+      "candidateHash": "8f296c249fec16f3cec13efbda57eddf5acc2051d921f8f05232b0e801ac5344"
+    },
+    {
+      "themeId": "heavy-gauge-tectonic",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/heavy-gauge-tectonic.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/heavy-gauge-tectonic.png",
+      "baselineHash": "c52fd1977cf335c51e60d819cd7e8841ee4e5e91fb9886277202f6f24464c20f",
+      "candidateHash": "c52fd1977cf335c51e60d819cd7e8841ee4e5e91fb9886277202f6f24464c20f"
+    },
+    {
+      "themeId": "ferrous-monolith",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/ferrous-monolith.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/ferrous-monolith.png",
+      "baselineHash": "32465e8aaf0c93ac879fd729f889240fa829d30aa97c29a251c110e8348e5939",
+      "candidateHash": "32465e8aaf0c93ac879fd729f889240fa829d30aa97c29a251c110e8348e5939"
+    },
+    {
+      "themeId": "galvanized-cellular",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/galvanized-cellular.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/galvanized-cellular.png",
+      "baselineHash": "35e36d21528471c5e5078fd4deb3da93499a61639c91ba206f7ae6afa3779760",
+      "candidateHash": "35e36d21528471c5e5078fd4deb3da93499a61639c91ba206f7ae6afa3779760"
+    },
+    {
+      "themeId": "pressed-chromium",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/pressed-chromium.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/pressed-chromium.png",
+      "baselineHash": "5d5b2cab5e49ae2c5cc800a49e0d35a8f2e2ee11439255b6ccfef998542844df",
+      "candidateHash": "5d5b2cab5e49ae2c5cc800a49e0d35a8f2e2ee11439255b6ccfef998542844df"
+    },
+    {
+      "themeId": "acid-etched",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/acid-etched.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/acid-etched.png",
+      "baselineHash": "82dac1d403765a7414a44a6147567a7dde9217a723575066fe992c4fe6241e02",
+      "candidateHash": "82dac1d403765a7414a44a6147567a7dde9217a723575066fe992c4fe6241e02"
+    },
+    {
+      "themeId": "zinc",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/zinc.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/zinc.png",
+      "baselineHash": "4de87af1eb611bdfd606528a0c323694379d160775ddf10ac48fbcdc9e081e92",
+      "candidateHash": "4de87af1eb611bdfd606528a0c323694379d160775ddf10ac48fbcdc9e081e92"
+    },
+    {
+      "themeId": "anodized-billet",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/anodized-billet.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/anodized-billet.png",
+      "baselineHash": "073ed349dd38a1c2b632a241199b7b2739f514e594604b21608774a19e4a0868",
+      "candidateHash": "073ed349dd38a1c2b632a241199b7b2739f514e594604b21608774a19e4a0868"
+    },
+    {
+      "themeId": "micropress",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/micropress.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/micropress.png",
+      "baselineHash": "15962b2f58eb6cc945a45c352321345f2743b44073046a1fed8f7a1f75ce8b0f",
+      "candidateHash": "15962b2f58eb6cc945a45c352321345f2743b44073046a1fed8f7a1f75ce8b0f"
+    },
+    {
+      "themeId": "research-science",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/research-science.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/research-science.png",
+      "baselineHash": "058313f4c68dd9114cce8fc6391e788c051a6a8b5fe5cbf964898f3730208a0c",
+      "candidateHash": "058313f4c68dd9114cce8fc6391e788c051a6a8b5fe5cbf964898f3730208a0c"
+    },
+    {
+      "themeId": "default",
+      "ok": true,
+      "baselinePath": "artifacts/conformance/latest/phase-20-visual-regression/baseline/default.png",
+      "candidatePath": "artifacts/conformance/latest/phase-20-visual-regression/candidate/default.png",
+      "baselineHash": "faf0aee700e70ac0dc9641fc139fc584a3980e68c474c055cb3f40f17ca55235",
+      "candidateHash": "faf0aee700e70ac0dc9641fc139fc584a3980e68c474c055cb3f40f17ca55235"
+    }
+  ]
+}

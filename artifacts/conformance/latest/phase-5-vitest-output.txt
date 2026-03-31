@@ -1,0 +1,7 @@
+Phase 5 note: file-based Vitest suites were added for the editor-core and editor-react packages, but this checkpoint did not execute them through a local Vitest binary because the provided zip does not ship a locally resolvable `vitest` executable in `node_modules/.bin`, and an attempted `npx vitest` fallback required registry access that is not available in this environment.
+
+Executed Phase 5 evidence therefore uses the package smoke lanes instead:
+- npm run test -w @mdwrk/markdown-editor-core
+- npm run test -w @mdwrk/markdown-editor-react
+- node packages/editor/markdown-editor-core/tests/run-smoke.mjs --json
+- node packages/editor/markdown-editor-react/tests/run-smoke.mjs --json

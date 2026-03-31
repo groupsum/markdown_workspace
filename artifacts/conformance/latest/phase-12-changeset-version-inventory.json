@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-03-29T17:01:18.484Z",
+  "rootVersion": "0.1.5",
+  "changesets": [
+    "README.md"
+  ],
+  "workspacePackages": [
+    {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client",
+      "category": "app",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander",
+      "version": "0.0.11",
+      "path": "apps/lander",
+      "category": "app",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/example-editor-basic",
+      "version": "0.1.1",
+      "path": "examples/editor-basic",
+      "category": "example",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/example-renderer-basic",
+      "version": "0.1.1",
+      "path": "examples/renderer-basic",
+      "category": "example",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/extension-host",
+      "version": "1.0.1",
+      "path": "packages/contracts/extension-host",
+      "category": "contract",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-manifest",
+      "version": "1.0.0",
+      "path": "packages/contracts/extension-manifest",
+      "category": "contract",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/theme-contract",
+      "version": "1.1.0",
+      "path": "packages/contracts/theme-contract",
+      "category": "contract",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0",
+      "path": "packages/editor/markdown-editor-core",
+      "category": "editor",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0",
+      "path": "packages/editor/markdown-editor-react",
+      "category": "editor",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "version": "1.0.1",
+      "path": "packages/extensions/extension-catalog-hello",
+      "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-gemini-agent",
+      "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-manager",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-manager",
+      "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-runtime",
+      "version": "1.0.1",
+      "path": "packages/extensions/extension-runtime",
+      "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-theme-studio",
+      "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-core",
+      "category": "renderer",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-react",
+      "category": "renderer",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0",
+      "path": "packages/shared/i18n",
+      "category": "shared",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/icons",
+      "version": "1.0.0",
+      "path": "packages/shared/icons",
+      "category": "shared",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/testing",
+      "version": "1.0.0",
+      "path": "packages/shared/testing",
+      "category": "shared",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0",
+      "path": "packages/shared/ui-tokens",
+      "category": "shared",
+      "publishable": true
+    }
+  ]
+}

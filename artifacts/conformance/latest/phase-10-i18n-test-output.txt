@@ -1,0 +1,9 @@
+
+> @mdwrk/i18n@1.1.0 test
+> npm run build && node ./tests/run-smoke.mjs
+
+
+> @mdwrk/i18n@1.1.0 build
+> tsc -p tsconfig.json
+
+shared-i18n smoke: ok

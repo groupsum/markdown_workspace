@@ -68,6 +68,18 @@ export declare const MARKDOWN_WORKSPACE_THEME_BRIDGES: readonly [{
     readonly description: "Renderer monospace font bridge.";
     readonly stability: "stable";
 }, {
+    readonly target: "renderer";
+    readonly cssCustomProperty: "--mw-line-height";
+    readonly sourceToken: "markdown-line-height";
+    readonly description: "Renderer body line-height bridge.";
+    readonly stability: "stable";
+}, {
+    readonly target: "renderer";
+    readonly cssCustomProperty: "--mw-heading-line-height";
+    readonly sourceToken: "markdown-heading-line-height";
+    readonly description: "Renderer heading line-height bridge.";
+    readonly stability: "stable";
+}, {
     readonly target: "editor";
     readonly cssCustomProperty: "--mwe-bg-surface";
     readonly sourceToken: "bg-panel";
@@ -114,6 +126,18 @@ export declare const MARKDOWN_WORKSPACE_THEME_BRIDGES: readonly [{
     readonly cssCustomProperty: "--mwe-editor-padding";
     readonly sourceToken: "editor-padding";
     readonly description: "Editor padding bridge.";
+    readonly stability: "stable";
+}, {
+    readonly target: "editor";
+    readonly cssCustomProperty: "--mwe-line-height";
+    readonly sourceToken: "editor-line-rhythm";
+    readonly description: "Editor line-height bridge.";
+    readonly stability: "stable";
+}, {
+    readonly target: "editor";
+    readonly cssCustomProperty: "--mwe-gutter-width";
+    readonly sourceToken: "line-number-gutter-width";
+    readonly description: "Editor line-number gutter-width bridge.";
     readonly stability: "stable";
 }];
 export declare const MARKDOWN_WORKSPACE_RENDERER_THEME_BRIDGES: readonly ThemeBridgeVariableDefinition[];

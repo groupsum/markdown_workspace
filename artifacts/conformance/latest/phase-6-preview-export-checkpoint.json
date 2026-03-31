@@ -1,0 +1,64 @@
+{
+  "phase": 6,
+  "generatedAt": "2026-03-28T05:00:18.612Z",
+  "checkpointType": "preview-export-and-render-policy-checkpoint",
+  "packages": {
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client"
+    },
+    "rendererCore": {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-core"
+    },
+    "rendererReact": {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-react"
+    }
+  },
+  "evidence": {
+    "rootRendererCommand": "npm run test:renderer",
+    "clientPolicyCommand": "node apps/client/tests/phase6-preview-export-policy.mjs --json",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-6-preview-export-results.json",
+    "auditedPaths": [
+      "packages/renderer/markdown-renderer-core/src/engine.ts",
+      "packages/renderer/markdown-renderer-react/src/server.tsx",
+      "apps/client/components/Markdown/WorkspaceMarkdownRenderer.tsx",
+      "apps/client/services/htmlExport.tsx",
+      "apps/client/services/markdownPreviewPolicy.js",
+      "apps/client/components/Chassis/WorkPane/Stage/Preview.tsx",
+      "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx"
+    ]
+  },
+  "summary": {
+    "totalChecks": 71,
+    "passedChecks": 71,
+    "failedChecks": 0,
+    "structuralAuditChecks": 29,
+    "structuralAuditPassed": 29,
+    "structuralAuditFailed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "explicit preview/export raw HTML policy modes in the reusable renderer family",
+    "root-level html-handling audit attributes in rendered output",
+    "restored empty-list-item normalization for preview/export parity",
+    "internal Markdown link resolution and pending-hash navigation in the active preview shell",
+    "HTML export rewriting for relative Markdown file links",
+    "accessible task-checkbox semantics in preview markup",
+    "preview/export advisory surfaces that make policy and boundary warnings visible"
+  ],
+  "knownLimits": [
+    "This checkpoint does not yet prove final frozen-target CommonMark/GFM closure example-by-example.",
+    "Citations and markdown-in-html remain outside the currently certified optional-profile boundary even though structural support and warnings exist.",
+    "Broader v1-to-v2 UIX parity gaps remain outside the Phase 6 boundary, especially Git/settings, theme exposure, language selection, and status/action-rail work.",
+    "The provided zip still lacks some external app/example toolchain dependencies needed for full app-wide build/typecheck/test closure."
+  ]
+}

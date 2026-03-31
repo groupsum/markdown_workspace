@@ -31,4 +31,22 @@ describe("MarkdownSourceEditor keyboard behavior", () => {
     fireEvent.keyDown(editor, { key: "Tab", shiftKey: true });
     expect(editor.value).toBe("alpha\nbeta");
   });
+
+  it("continues list items on Enter", () => {
+    render(<MarkdownSourceEditor defaultValue="- alpha" />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(editor.value.length, editor.value.length);
+    fireEvent.keyDown(editor, { key: "Enter" });
+    expect(editor.value).toBe("- alpha\n- ");
+  });
+
+  it("terminates empty task list items on Enter", () => {
+    render(<MarkdownSourceEditor defaultValue="- [ ] " />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(editor.value.length, editor.value.length);
+    fireEvent.keyDown(editor, { key: "Enter" });
+    expect(editor.value).toBe("");
+  });
 });

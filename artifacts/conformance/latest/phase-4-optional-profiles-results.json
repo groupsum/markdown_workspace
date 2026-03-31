@@ -1,0 +1,351 @@
+{
+  "phase": 4,
+  "generatedAt": "2026-03-28T01:27:31.409Z",
+  "boundary": "optional-profiles",
+  "commands": {
+    "rendererCoreOptionalProfiles": "node packages/renderer/markdown-renderer-core/tests/optional-profiles.mjs --json",
+    "rendererReactOptionalProfiles": "node packages/renderer/markdown-renderer-react/tests/optional-profile-surface.mjs --json",
+    "editorCoreSmoke": "node packages/editor/markdown-editor-core/tests/run-smoke.mjs --json",
+    "editorReactSmoke": "node packages/editor/markdown-editor-react/tests/run-smoke.mjs --json"
+  },
+  "results": {
+    "rendererCoreOptionalProfiles": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "results": [
+        {
+          "id": "front-matter-metadata",
+          "description": "front matter metadata is extracted while YAML is omitted from rendered output",
+          "passed": true
+        },
+        {
+          "id": "footnotes",
+          "description": "footnote references and definitions render into a linked footnotes section",
+          "passed": true
+        },
+        {
+          "id": "definition-lists",
+          "description": "definition lists render to dl/dt/dd structures",
+          "passed": true
+        },
+        {
+          "id": "math-inline-and-block",
+          "description": "math profile renders inline and block math wrappers",
+          "passed": true
+        },
+        {
+          "id": "superscript-subscript",
+          "description": "superscript and subscript extensions render semantic sup/sub tags",
+          "passed": true
+        },
+        {
+          "id": "smart-punctuation",
+          "description": "smart punctuation transforms quotes, dashes, and ellipses in text nodes",
+          "passed": true
+        },
+        {
+          "id": "citations-experimental",
+          "description": "citations render structurally while remaining outside the certified optional boundary",
+          "passed": true
+        },
+        {
+          "id": "markdown-in-html-experimental",
+          "description": "markdown-in-html requires trusted HTML and renders marked containers experimentally",
+          "passed": true
+        }
+      ]
+    },
+    "rendererReactOptionalProfiles": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "results": [
+        {
+          "id": "component-definition-list",
+          "description": "MarkdownRenderer emits definition list markup",
+          "passed": true
+        },
+        {
+          "id": "component-math-inline",
+          "description": "MarkdownRenderer emits inline math wrappers",
+          "passed": true
+        },
+        {
+          "id": "component-footnotes",
+          "description": "MarkdownRenderer emits footnote references and footnote sections",
+          "passed": true
+        },
+        {
+          "id": "document-export-extensions",
+          "description": "Static HTML document export preserves optional profile rendering",
+          "passed": true
+        }
+      ]
+    },
+    "editorCoreSmoke": {
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "results": [
+        {
+          "id": "bold-command",
+          "description": "bold command wraps selected content in strong markers",
+          "passed": true
+        },
+        {
+          "id": "task-list-selection",
+          "description": "task-list command prefixes each selected line with unchecked task syntax",
+          "passed": true
+        },
+        {
+          "id": "task-list-upgrade",
+          "description": "task-list command upgrades existing list items in place",
+          "passed": true
+        },
+        {
+          "id": "optional-profile-commands",
+          "description": "optional-profile commands emit structural Markdown syntax",
+          "passed": true
+        },
+        {
+          "id": "front-matter-command",
+          "description": "front-matter command inserts a YAML front matter scaffold at the top of the document",
+          "passed": true
+        },
+        {
+          "id": "indent-outdent",
+          "description": "indent and outdent commands preserve line structure",
+          "passed": true
+        },
+        {
+          "id": "selection-and-cursor-helpers",
+          "description": "selection normalization and cursor helpers remain stable",
+          "passed": true
+        },
+        {
+          "id": "history",
+          "description": "history push/undo/redo remains operational",
+          "passed": true
+        },
+        {
+          "id": "renderer-roundtrip",
+          "description": "editor output round-trips through the renderer core",
+          "passed": true
+        }
+      ]
+    },
+    "editorReactSmoke": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "results": [
+        {
+          "id": "editor-root",
+          "description": "MarkdownSourceEditor renders the root editor container",
+          "passed": true
+        },
+        {
+          "id": "gutter",
+          "description": "MarkdownSourceEditor renders the gutter when line numbers are enabled",
+          "passed": true
+        },
+        {
+          "id": "textarea-value",
+          "description": "MarkdownSourceEditor preserves the initial markdown value",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "totalChecks": 24,
+    "totalPassed": 24,
+    "totalFailed": 0
+  },
+  "appAudit": {
+    "workspaceMarkdownRenderer": {
+      "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.tsx",
+      "profileConfigHookPresent": true,
+      "extensionsPropWired": true,
+      "trustedHtmlPreviewWired": true,
+      "previewWarningsPresent": true
+    },
+    "htmlExport": {
+      "path": "apps/client/services/htmlExport.tsx",
+      "profileConfigReadPresent": true,
+      "extensionsPropWired": true,
+      "trustedHtmlExportWired": true,
+      "exportWarningsPresent": true
+    },
+    "settingsPanel": {
+      "path": "apps/client/src/features/markdownProfiles/MarkdownProfileSettingsPanel.tsx",
+      "settingsPanelExists": true,
+      "inScopeSectionPresent": true,
+      "experimentalSectionPresent": true,
+      "trustedHtmlTogglePresent": true
+    },
+    "settingsRegistration": {
+      "path": "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "markdownProfilesSectionRegistered": true,
+      "markdownProfilesTitleRegistered": true
+    },
+    "editorPane": {
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx",
+      "inlineMathToolbarActionPresent": true,
+      "footnoteToolbarActionPresent": true,
+      "superscriptToolbarActionPresent": true,
+      "subscriptToolbarActionPresent": true
+    }
+  },
+  "exampleAudit": {
+    "rendererBasic": {
+      "path": "examples/renderer-basic/App.tsx",
+      "optionalExtensionsWired": true,
+      "showsDefinitionList": true,
+      "showsMath": true,
+      "showsFootnote": true
+    },
+    "editorBasic": {
+      "path": "examples/editor-basic/App.tsx",
+      "previewExtensionsWired": true,
+      "inlineMathButtonPresent": true,
+      "footnoteButtonPresent": true
+    }
+  },
+  "profileStatusMatrix": [
+    {
+      "id": "front-matter",
+      "name": "Metadata / Front Matter",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "footnotes",
+      "name": "Footnotes",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "definition-lists",
+      "name": "Definition Lists",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ]
+    },
+    {
+      "id": "math",
+      "name": "Math",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "citations",
+      "name": "Citations",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "superscript",
+      "name": "Superscript",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "subscript",
+      "name": "Subscript",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ]
+    },
+    {
+      "id": "smart-punctuation",
+      "name": "Smart Punctuation",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ]
+    },
+    {
+      "id": "markdown-in-html",
+      "name": "Markdown inside HTML blocks",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ]
+    },
+    {
+      "id": "underline-custom",
+      "name": "Underline (custom extension only)",
+      "enabledByDefault": false,
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": false,
+      "implementedSurfaces": [
+        "policy-only"
+      ]
+    }
+  ]
+}

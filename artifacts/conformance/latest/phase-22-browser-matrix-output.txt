@@ -1,0 +1,182 @@
+Phase 22 Playwright browser-matrix runner
+baseURL: http://127.0.0.1:4321
+laneStatus: blocked
+reason: Chromium executed real Playwright browser checks successfully, but the full browser matrix remains blocked because Firefox and WebKit executables are unavailable.
+
+{
+  "generatedAt": "2026-03-31T09:46:02.128Z",
+  "phase": 22,
+  "executionMode": "playwright-library-real-browser-matrix",
+  "server": {
+    "baseURL": "http://127.0.0.1:4321",
+    "port": "4321",
+    "startedByRunner": true
+  },
+  "manifestPath": "artifacts/conformance/latest/phase-22-playwright-test-manifest.json",
+  "installReportPath": "artifacts/conformance/latest/phase-22-browser-install-report.json",
+  "laneStatus": "blocked",
+  "reason": "Chromium executed real Playwright browser checks successfully, but the full browser matrix remains blocked because Firefox and WebKit executables are unavailable.",
+  "browserAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/firefox",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/firefox-esr",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/epiphany-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.1/MiniBrowser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.0/MiniBrowser",
+          "source": "system-fallback"
+        }
+      ]
+    }
+  ],
+  "browserResults": [
+    {
+      "browser": "chromium",
+      "executablePath": "/usr/bin/chromium",
+      "executedCaseCount": 6,
+      "passedCaseCount": 6,
+      "failedCaseCount": 0,
+      "ok": true,
+      "caseResults": [
+        {
+          "id": "shell-smoke::shell boots and exposes key chrome surfaces",
+          "specPath": "apps/client/tests/playwright/shell-smoke.spec.ts",
+          "status": "passed",
+          "durationMs": 995
+        },
+        {
+          "id": "preview-export::preview/export surfaces remain reachable",
+          "specPath": "apps/client/tests/playwright/preview-export.spec.ts",
+          "status": "passed",
+          "durationMs": 782
+        },
+        {
+          "id": "settings-and-i18n::settings and theme/language selectors are reachable",
+          "specPath": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
+          "status": "passed",
+          "durationMs": 727
+        },
+        {
+          "id": "browser-matrix::shell chrome boots",
+          "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts",
+          "status": "passed",
+          "durationMs": 703
+        },
+        {
+          "id": "browser-matrix::preview surface remains reachable",
+          "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts",
+          "status": "passed",
+          "durationMs": 699
+        },
+        {
+          "id": "browser-matrix::settings probe remains reachable",
+          "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts",
+          "status": "passed",
+          "durationMs": 714
+        }
+      ],
+      "status": "passed",
+      "policyGuard": {
+        "active": false,
+        "policyDir": "/etc/chromium/policies/managed",
+        "backupDir": "/tmp/mdwrk-chromium-policy-geN2r9",
+        "movedEntries": [
+          ".policy_merge",
+          ".policy_merge_backup",
+          "000_policy_merge.json"
+        ],
+        "skippedReason": null,
+        "restoreErrors": []
+      }
+    },
+    {
+      "browser": "firefox",
+      "status": "unavailable",
+      "executablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "executedCaseCount": 0,
+      "passedCaseCount": 0,
+      "failedCaseCount": 0
+    },
+    {
+      "browser": "webkit",
+      "status": "unavailable",
+      "executablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "executedCaseCount": 0,
+      "passedCaseCount": 0,
+      "failedCaseCount": 0
+    }
+  ],
+  "summary": {
+    "expectedMatrixCaseCount": 18,
+    "executedCases": 6,
+    "passedCases": 6,
+    "failedCases": 0,
+    "passedBrowsers": 1,
+    "failedBrowsers": 0,
+    "unavailableBrowsers": 2
+  }
+}

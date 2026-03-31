@@ -39,6 +39,13 @@
   --app-gap: calc(4px * var(--ui-scale)); 
   --texture-opacity: 0.05;
   --editor-padding: calc(24px * var(--ui-scale));
+  --editor-line-height: calc(1.5rem * var(--ui-scale));
+  --editor-line-rhythm: var(--editor-line-height);
+  --markdown-line-height: var(--editor-line-rhythm);
+  --markdown-heading-line-height: calc(1.1 + ((var(--ui-scale) - 1) * 0.35));
+  --line-number-gutter-width: calc(30px * var(--ui-scale));
+  --mobile-rail-expanded-width: 100vw;
+  --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);
   --file-indent-base: calc(12px * var(--ui-scale));
   --file-indent-unit: calc(12px * var(--ui-scale));
   --c-explorer-hover: rgba(0, 0, 0, 0.06);

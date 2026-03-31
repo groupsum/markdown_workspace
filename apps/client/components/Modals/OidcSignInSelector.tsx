@@ -1,7 +1,6 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
 import { GitConfig, OidcProviderId } from '../../types';
-import { oidcAdapters } from '../../services/oidc';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 interface OidcSignInSelectorProps {
   gitConfig: GitConfig;
@@ -9,63 +8,86 @@ interface OidcSignInSelectorProps {
   onOidcSignIn: () => void;
 }
 
-const DEFAULT_PROVIDER: OidcProviderId = 'github';
+const PROVIDERS: readonly OidcProviderId[] = ['github', 'gitlab', 'gitea'];
 
-export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({ gitConfig, onGitConfigChange, onOidcSignIn }) => {
-  const selectedProviderId: OidcProviderId = gitConfig.oidcProvider || DEFAULT_PROVIDER;
-
-  const handleProviderSelect = (provider: OidcProviderId) => {
-    onGitConfigChange({ ...gitConfig, oidcProvider: provider });
-  };
-
-  const handleUsernameChange = (username: string) => {
-    onGitConfigChange({ ...gitConfig, username });
-  };
+export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({
+  gitConfig,
+  onGitConfigChange,
+  onOidcSignIn,
+}) => {
+  const { t } = useClientI18n();
+  const patReady = gitConfig.patToken.trim().length > 0;
 
   return (
     <div className="settings-card settings-card-stack">
-      <div className="flex items-center gap-2 text-[11px] uppercase font-bold text-[var(--fg-muted)]">
-        <Shield size={14} /> OIDC SIGN-IN
-      </div>
+      <div className="flex flex-col gap-4">
+        <label className="flex flex-col gap-2">
+          <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.auth-mode', 'Authentication Mode')}</span>
+          <select
+            className="modal-input !text-xs !py-3"
+            value={gitConfig.authMode}
+            onChange={(event) => onGitConfigChange({
+              ...gitConfig,
+              authMode: event.target.value as GitConfig['authMode'],
+              oidcProvider: gitConfig.oidcProvider || 'github',
+            })}
+          >
+            <option value="oidc">{t('core.settings.git.auth-mode.oidc', 'OIDC')}</option>
+            <option value="pat">{t('core.settings.git.auth-mode.pat', 'PAT')}</option>
+          </select>
+        </label>
 
-      <div className="rounded border border-[var(--border-color)] bg-[var(--bg-inset)] px-3 py-2">
-        <span className={`text-[10px] font-bold ${gitConfig.oidcConnected ? 'text-[var(--accent)]' : 'text-[var(--danger)]'}`}>
-          {gitConfig.oidcConnected ? 'AUTH_STATE: CONNECTED' : 'AUTH_STATE: DISCONNECTED'}
-        </span>
-        <p className="mt-1 text-[10px] text-[var(--fg-muted)]">
-          {gitConfig.oidcConnected
-            ? `SUBJECT: ${gitConfig.oidcSubject || 'UNKNOWN'}`
-            : 'OIDC session is missing or expired. Reconnect to continue provider operations.'}
-        </p>
-      </div>
+        <label className="flex flex-col gap-2">
+          <span className="text-[10px] font-bold text-[var(--fg-muted)]">OIDC PROVIDER</span>
+          <select
+            className="modal-input !text-xs !py-3"
+            value={gitConfig.oidcProvider || 'github'}
+            onChange={(event) => {
+              const provider = event.target.value as OidcProviderId;
+              onGitConfigChange({ ...gitConfig, oidcProvider: provider });
+            }}
+          >
+            {PROVIDERS.map((provider) => (
+              <option key={provider} value={provider}>{provider.toUpperCase()}</option>
+            ))}
+          </select>
+        </label>
 
-      <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)]">OIDC PROVIDER</span>
-        <select
-          className="modal-input !text-xs !py-3"
-          value={selectedProviderId}
-          onChange={(e) => handleProviderSelect(e.target.value as OidcProviderId)}
-        >
-          {oidcAdapters.map((adapter) => (
-            <option key={adapter.id} value={adapter.id}>{adapter.label}</option>
-          ))}
-        </select>
-      </label>
+        {gitConfig.authMode === 'pat' && (
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-bold text-[var(--fg-muted)]">PAT TOKEN</span>
+            <input
+              className="modal-input !text-xs !py-3"
+              type="password"
+              value={gitConfig.patToken}
+              onChange={(event) => onGitConfigChange({ ...gitConfig, authMode: 'pat', patToken: event.target.value })}
+              placeholder="ghp_..."
+            />
+          </label>
+        )}
 
-      <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)]">USERNAME</span>
-        <input
-          className="modal-input !text-xs !py-3"
-          value={gitConfig.username}
-          onChange={(e) => handleUsernameChange(e.target.value)}
-          placeholder="user"
-        />
-      </label>
+        <label className="flex flex-col gap-2">
+          <span className="text-[10px] font-bold text-[var(--fg-muted)]">USERNAME</span>
+          <input
+            className="modal-input !text-xs !py-3"
+            value={gitConfig.username}
+            onChange={(event) => onGitConfigChange({ ...gitConfig, authMode: gitConfig.authMode, username: event.target.value })}
+            placeholder="user"
+          />
+        </label>
 
-      <div className="settings-action-row">
-        <button className="modal-btn flex-1 modal-btn-primary" onClick={onOidcSignIn}>
-          {gitConfig.oidcConnected ? 'RECONNECT_OIDC' : 'CONNECT_OIDC'}
-        </button>
+        <div className="settings-session-grid">
+          <div className="settings-session-item"><span className="settings-session-label">OIDC</span><span className="settings-session-value">{gitConfig.oidcConnected ? 'CONNECTED' : 'DISCONNECTED'}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">PROVIDER</span><span className="settings-session-value">{(gitConfig.oidcProvider || 'github').toUpperCase()}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">SUBJECT</span><span className="settings-session-value">{gitConfig.oidcSubject || 'NONE'}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">TOKEN</span><span className="settings-session-value">{patReady ? 'TOKEN_READY' : 'TOKEN_REQUIRED'}</span></div>
+        </div>
+
+        {gitConfig.authMode === 'oidc' && (
+          <button type="button" className="modal-btn modal-btn-primary" onClick={onOidcSignIn}>
+            {t('core.settings.git.oidc.sign-in', 'OIDC_SIGN_IN')}
+          </button>
+        )}
       </div>
     </div>
   );

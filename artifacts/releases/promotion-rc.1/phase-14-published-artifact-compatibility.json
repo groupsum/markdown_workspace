@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "publishedArtifactsVerified": false,
+  "blocked": true,
+  "reason": "No published npm artifacts exist for this checkpoint environment. The strongest available evidence remains the RC tarball validation recorded in Phase 13.",
+  "phase13Evidence": {
+    "packedInstallReportPath": "artifacts/conformance/latest/phase-13-packed-install-report.json",
+    "appExampleValidationPath": "artifacts/conformance/latest/phase-13-app-and-example-validation.json"
+  }
+}

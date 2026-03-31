@@ -1,0 +1,243 @@
+{
+  "phase": 9,
+  "generatedAt": "2026-03-28T10:16:31.583Z",
+  "kind": "static-html-visual-baselines",
+  "note": "These are repository-generated static HTML visual baselines. Browser-captured image regression remains a later release-closure task in the provided environment.",
+  "count": 12,
+  "smokeThemeIds": [
+    "default",
+    "research-science",
+    "heavy-gauge-tectonic"
+  ],
+  "baselines": [
+    {
+      "themeId": "tensioned-technical-skeleton",
+      "name": "Tensioned Technical Skeleton",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/tensioned-technical-skeleton.html",
+      "syntaxThemeName": "VS",
+      "syntaxStyleKey": "vs",
+      "designReferenceFile": "Tensioned_Technical_Skeleton-dd0b6c.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "3b7639872beef5ea1a9304cab38e6057bd843f1050e750d30ba65b4acba80015"
+    },
+    {
+      "themeId": "optical-vellum-drafting-grid",
+      "name": "Optical Vellum Drafting Grid",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/optical-vellum-drafting-grid.html",
+      "syntaxThemeName": "Coy",
+      "syntaxStyleKey": "coy",
+      "designReferenceFile": "Optical_Vellum_Drafting_Grid-e36ea6.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "165406efe7b7a8f14811e954b08fed3116950f71db64643040d29d5622110d5f"
+    },
+    {
+      "themeId": "heavy-gauge-tectonic",
+      "name": "Heavy Gauge Tectonic",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/heavy-gauge-tectonic.html",
+      "syntaxThemeName": "VS",
+      "syntaxStyleKey": "vs",
+      "designReferenceFile": "Heavy_Gauge_Tectonic_Partitioning-13a032.html",
+      "smokeTheme": true,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "f70c80e8c981a1fb524d00de395e4a88e5bfa1125c382973500924a502dbafec"
+    },
+    {
+      "themeId": "ferrous-monolith",
+      "name": "Machined Ferrous Monolith",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/ferrous-monolith.html",
+      "syntaxThemeName": "VS Code Dark Plus",
+      "syntaxStyleKey": "vscDarkPlus",
+      "designReferenceFile": "Machined_Ferrous_Monolith-aa4c80.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "3bd6644e2614277db3abb80c3d935390986c7c5f7dea5590e4f1ac493bafd6df"
+    },
+    {
+      "themeId": "galvanized-cellular",
+      "name": "Galvanized Cellular Monolith",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/galvanized-cellular.html",
+      "syntaxThemeName": "Coy",
+      "syntaxStyleKey": "coy",
+      "designReferenceFile": "Galvanized_Cellular_Monolith-e65338.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "66c5dc9f02ee327baa61a9300acc1f6b791e6b2c52944c758abfe960781c3303"
+    },
+    {
+      "themeId": "pressed-chromium",
+      "name": "Pressed Chromium",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/pressed-chromium.html",
+      "syntaxThemeName": "VS",
+      "syntaxStyleKey": "vs",
+      "designReferenceFile": "Pressed_Chromium_Segmentation-c52719.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "fffb40ca62218d4483888d2353297b6c9ec1f8bc8314026847e662e2d6785768"
+    },
+    {
+      "themeId": "acid-etched",
+      "name": "Acid Etched Tectonic",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/acid-etched.html",
+      "syntaxThemeName": "VS Code Dark Plus",
+      "syntaxStyleKey": "vscDarkPlus",
+      "designReferenceFile": "Acid_Etched_Tectonic_Assemblage-3cec1b.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "18a660ed18e8953aeae254edafcc97a6597096df3d6a5d7e8897316695d51ae3"
+    },
+    {
+      "themeId": "zinc",
+      "name": "Milled Zinc",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/zinc.html",
+      "syntaxThemeName": "VS",
+      "syntaxStyleKey": "vs",
+      "designReferenceFile": "Milled_Zinc_Schematic-6967bf.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "0cbe706f3b3c8601641199cfa38d07efab23e77d8db21774651a9232a67fdcd1"
+    },
+    {
+      "themeId": "anodized-billet",
+      "name": "Anodized Billet",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/anodized-billet.html",
+      "syntaxThemeName": "Coy",
+      "syntaxStyleKey": "coy",
+      "designReferenceFile": "Anodized_Billet_Microstructure-d462ea.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "ed8bbaa6819c078d2c75b4c258f48cd9b08df37fac177e89fe83b48908cfe0d2"
+    },
+    {
+      "themeId": "micropress",
+      "name": "Optical Micro Press",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/micropress.html",
+      "syntaxThemeName": "Coy",
+      "syntaxStyleKey": "coy",
+      "designReferenceFile": "Optical_High_Contrast_Micro_Press-9aad37.html",
+      "smokeTheme": false,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "3cb86f81b8e18a4ba32be03b3658dcb08c3a32a6934e9a8fd174656aac9be6a5"
+    },
+    {
+      "themeId": "research-science",
+      "name": "Research Science",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/research-science.html",
+      "syntaxThemeName": "Coy",
+      "syntaxStyleKey": "coy",
+      "designReferenceFile": null,
+      "smokeTheme": true,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "66af7391d8d0755b7e99a5169a758dd0d3193cfa4297028e2016fcfd4401ac16"
+    },
+    {
+      "themeId": "default",
+      "name": "Factory Default",
+      "relativePath": "artifacts/conformance/latest/phase-9-theme-baselines/default.html",
+      "syntaxThemeName": "Tomorrow",
+      "syntaxStyleKey": "tomorrow",
+      "designReferenceFile": null,
+      "smokeTheme": true,
+      "surfaces": [
+        "header",
+        "action-rail",
+        "editor",
+        "preview",
+        "status-bar",
+        "settings",
+        "syntax-sample"
+      ],
+      "sha256": "f1361c6d7ca2bf9a06355d7c6c2e099ec1c15183d6504903b4ded4f63a4d338f"
+    }
+  ],
+  "indexPath": "artifacts/conformance/latest/phase-9-theme-baselines/index.html"
+}

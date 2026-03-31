@@ -1,0 +1,12 @@
+phase7 shell parity: 11/11 passed
+PASS footer.runtime-label
+PASS footer.update-ready
+PASS action-rail.localized-aria-label
+PASS action-rail.aria-pressed
+PASS import-flow.command-and-rail
+PASS import-flow.file-input
+PASS import-flow.file-manager
+PASS split-policy.source
+PASS split-policy.landscape-allows
+PASS split-policy.portrait-blocks
+PASS cloud-sync.refresh-event

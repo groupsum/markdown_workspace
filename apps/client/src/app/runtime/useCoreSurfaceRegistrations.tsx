@@ -1,8 +1,11 @@
 import React from 'react';
 import type { ClientRuntimeBridge, ClientRuntimeServices } from './clientRuntimeTypes';
-import { OidcSignInSelector } from '../../../components/Modals/OidcSignInSelector';
-import { RepositoryAutocomplete } from '../../../components/Modals/RepositoryAutocomplete';
 import { THEMES } from '../../../data/themes';
+import { MarkdownProfileSettingsPanel } from '../../features/markdownProfiles/MarkdownProfileSettingsPanel';
+import { LanguageSettingsPanel } from '../../features/i18n/LanguageSettingsPanel';
+import { GIT_REPO_REFRESH_REQUEST_EVENT } from '../../../constants';
+import { GitSettingsPanel } from '../../features/settings/GitSettingsPanel';
+import { DataSettingsPanel } from '../../features/settings/DataSettingsPanel';
 import { CommandPaletteView } from '../../shell/CommandPaletteView';
 import { SettingsView } from '../../shell/SettingsView';
 
@@ -14,72 +17,120 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       locale: 'en',
       messages: {
         'core.command-palette.title': 'Command Palette',
-        'core.settings.title': 'System Configuration',
-        'core.git.title': 'Git Operations',
+        'core.command-palette.description': 'Search files and execute commands.',
+        'core.views.settings.title': 'System Configuration',
+        'core.views.settings.description': 'Application and workspace settings.',
+        'core.views.git.title': 'Git Operations',
+        'core.views.git.description': 'Source control workspace.',
+        'core.action-rail.aria-label': 'Primary Actions',
+        'core.import-markdown.title': 'Import Markdown',
+        'core.settings.visual.title': 'Visual Matrix',
+        'core.settings.visual.description': 'Theme presets and visual surfaces.',
+        'core.settings.visual.active-theme': 'ACTIVE_THEME',
+        'core.settings.markdown-profiles.title': 'Markdown Profiles',
+        'core.settings.markdown-profiles.description': 'Optional Markdown feature profiles and trust policy.',
+        'core.settings.sections.git.title': 'Source Control',
+        'core.settings.sections.git.description': 'Repository and identity settings.',
+        'core.settings.sections.data.title': 'Storage Ops',
+        'core.settings.sections.data.description': 'PWA deployment and export controls.',
+        'core.settings.sections.keymap.title': 'Key Map',
+        'core.settings.sections.keymap.description': 'Host keyboard bindings backed by the command registry.',
+        'core.settings.sections.session.title': 'Session State',
+        'core.settings.sections.session.description': 'Session and persistence controls.',
+        'core.commands.new-file': 'Create New File',
+        'core.commands.new-folder': 'Create New Folder',
+        'core.commands.save-current-file': 'Save Current File',
+        'core.commands.rename-selected': 'Rename Selected Item',
+        'core.commands.delete-selected': 'Delete Selected Item',
+        'core.commands.toggle-explorer': 'Toggle Explorer',
+        'core.commands.download-workspace': 'Download Workspace',
+        'core.commands.export-html': 'Export HTML',
+        'core.commands.print-preview': 'Print Preview',
+        'core.commands.toggle-git-pane': 'Toggle Git Operations',
+        'core.commands.switch-project': 'Switch Project',
+        'core.commands.open-settings': 'System Settings',
+        'core.commands.open-command-palette': 'Open Command Palette',
+        'core.commands.zoom-in': 'Zoom In',
+        'core.commands.zoom-out': 'Zoom Out',
+        'core.commands.zoom-reset': 'Reset Zoom',
+        'core.commands.view-editor': 'Editor View',
+        'core.commands.view-split': 'Split View',
+        'core.commands.view-preview': 'Preview View',
+        'core.commands.next-tab': 'Next Tab',
+        'core.commands.previous-tab': 'Previous Tab',
+        'core.commands.focus-explorer': 'Focus Explorer',
+        'core.commands.cloud-sync': 'Cloud Sync (Mock)',
       },
     });
 
     const commandDisposables = [
       services.commands.register({
         id: 'core.new-file',
-        title: label('Create New File'),
+        title: label('Create New File', 'core.commands.new-file'),
         execute: () => runtime.getSnapshot().app.actions.promptNewFile(),
         icon: { kind: 'lucide', name: 'FilePlus' },
         keywords: ['file', 'create', 'new'],
       }),
       services.commands.register({
         id: 'core.new-folder',
-        title: label('Create New Folder'),
+        title: label('Create New Folder', 'core.commands.new-folder'),
         execute: () => runtime.getSnapshot().app.actions.promptNewFolder(),
         icon: { kind: 'lucide', name: 'FolderPlus' },
         keywords: ['folder', 'create', 'new'],
       }),
       services.commands.register({
         id: 'core.save-current-file',
-        title: label('Save Current File'),
+        title: label('Save Current File', 'core.commands.save-current-file'),
         execute: () => runtime.getSnapshot().app.actions.saveCurrentFile(),
         icon: { kind: 'lucide', name: 'Save' },
         keywords: ['save', 'write'],
       }),
       services.commands.register({
         id: 'core.rename-selected',
-        title: label('Rename Selected Item'),
+        title: label('Rename Selected Item', 'core.commands.rename-selected'),
         execute: () => runtime.getSnapshot().app.actions.promptRenameSelected(),
         icon: { kind: 'lucide', name: 'Pencil' },
       }),
       services.commands.register({
         id: 'core.delete-selected',
-        title: label('Delete Selected Item'),
+        title: label('Delete Selected Item', 'core.commands.delete-selected'),
         execute: () => runtime.getSnapshot().app.actions.deleteSelectedItem(),
         icon: { kind: 'lucide', name: 'Trash2' },
       }),
       services.commands.register({
         id: 'core.toggle-explorer',
-        title: label('Toggle Explorer'),
+        title: label('Toggle Explorer', 'core.commands.toggle-explorer'),
         execute: () => runtime.getSnapshot().app.actions.toggleSidebar(),
         icon: { kind: 'lucide', name: 'Folder' },
       }),
       services.commands.register({
         id: 'core.download-workspace',
-        title: label('Download Workspace'),
+        title: label('Download Workspace', 'core.commands.download-workspace'),
         execute: () => runtime.getSnapshot().app.actions.handleDownload(),
         icon: { kind: 'lucide', name: 'Download' },
       }),
       services.commands.register({
         id: 'core.export-html',
-        title: label('Export HTML'),
+        title: label('Export HTML', 'core.commands.export-html'),
         execute: () => runtime.getSnapshot().app.actions.handleHtmlExport(),
         icon: { kind: 'lucide', name: 'FileDown' },
       }),
       services.commands.register({
         id: 'core.print-preview',
-        title: label('Print Preview'),
+        title: label('Print Preview', 'core.commands.print-preview'),
         execute: () => runtime.getSnapshot().app.actions.handlePrint(),
         icon: { kind: 'lucide', name: 'Printer' },
       }),
       services.commands.register({
+        id: 'core.import-markdown',
+        title: label('Import Markdown', 'core.import-markdown.title'),
+        execute: () => runtime.getSnapshot().app.actions.requestMarkdownImport(),
+        icon: { kind: 'lucide', name: 'Upload' },
+        keywords: ['import', 'markdown', 'upload'],
+      }),
+      services.commands.register({
         id: 'core.toggle-git-pane',
-        title: label('Toggle Git Operations'),
+        title: label('Toggle Git Operations', 'core.commands.toggle-git-pane'),
         execute: async () => {
           const { app } = runtime.getSnapshot();
           if (app.state.appMode === 'git') {
@@ -92,73 +143,73 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.commands.register({
         id: 'core.switch-project',
-        title: label('Switch Project'),
+        title: label('Switch Project', 'core.commands.switch-project'),
         execute: () => runtime.getSnapshot().app.actions.switchToProjectSelector(),
         icon: { kind: 'lucide', name: 'LayoutGrid' },
       }),
       services.commands.register({
         id: 'core.open-settings',
-        title: label('System Settings'),
+        title: label('System Settings', 'core.commands.open-settings'),
         execute: () => services.views.open('core.settings'),
         icon: { kind: 'lucide', name: 'Settings' },
       }),
       services.commands.register({
         id: 'core.open-command-palette',
-        title: label('Open Command Palette'),
+        title: label('Open Command Palette', 'core.commands.open-command-palette'),
         execute: () => services.views.open('core.command-palette'),
         icon: { kind: 'lucide', name: 'Command' },
       }),
       services.commands.register({
         id: 'core.zoom-in',
-        title: label('Zoom In'),
+        title: label('Zoom In', 'core.commands.zoom-in'),
         execute: () => runtime.getSnapshot().app.actions.adjustZoom(0.1),
         icon: { kind: 'lucide', name: 'Plus' },
       }),
       services.commands.register({
         id: 'core.zoom-out',
-        title: label('Zoom Out'),
+        title: label('Zoom Out', 'core.commands.zoom-out'),
         execute: () => runtime.getSnapshot().app.actions.adjustZoom(-0.1),
         icon: { kind: 'lucide', name: 'Minus' },
       }),
       services.commands.register({
         id: 'core.zoom-reset',
-        title: label('Reset Zoom'),
+        title: label('Reset Zoom', 'core.commands.zoom-reset'),
         execute: () => runtime.getSnapshot().app.actions.setZoom(1),
         icon: { kind: 'lucide', name: 'Monitor' },
       }),
       services.commands.register({
         id: 'core.view-editor',
-        title: label('Editor View'),
+        title: label('Editor View', 'core.commands.view-editor'),
         execute: () => runtime.getSnapshot().app.actions.setViewMode('editor'),
         icon: { kind: 'lucide', name: 'LayoutGrid' },
       }),
       services.commands.register({
         id: 'core.view-split',
-        title: label('Split View'),
+        title: label('Split View', 'core.commands.view-split'),
         execute: () => runtime.getSnapshot().app.actions.setViewMode('split'),
         icon: { kind: 'lucide', name: 'Columns' },
       }),
       services.commands.register({
         id: 'core.view-preview',
-        title: label('Preview View'),
+        title: label('Preview View', 'core.commands.view-preview'),
         execute: () => runtime.getSnapshot().app.actions.setViewMode('preview'),
         icon: { kind: 'lucide', name: 'Eye' },
       }),
       services.commands.register({
         id: 'core.next-tab',
-        title: label('Next Tab'),
+        title: label('Next Tab', 'core.commands.next-tab'),
         execute: () => runtime.getSnapshot().app.actions.selectNextTab(),
         icon: { kind: 'lucide', name: 'ArrowRight' },
       }),
       services.commands.register({
         id: 'core.previous-tab',
-        title: label('Previous Tab'),
+        title: label('Previous Tab', 'core.commands.previous-tab'),
         execute: () => runtime.getSnapshot().app.actions.selectPreviousTab(),
         icon: { kind: 'lucide', name: 'ArrowRight' },
       }),
       services.commands.register({
         id: 'core.focus-explorer',
-        title: label('Focus Explorer'),
+        title: label('Focus Explorer', 'core.commands.focus-explorer'),
         execute: () => {
           runtime.getSnapshot().app.actions.setSidebarOpen(true);
           requestAnimationFrame(() => {
@@ -170,8 +221,11 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.commands.register({
         id: 'core.cloud-sync',
-        title: label('Cloud Sync (Mock)'),
-        execute: () => runtime.getSnapshot().app.actions.addToast('SYNC: CLOUD UNREACHABLE', 'warning'),
+        title: label('Cloud Sync (Mock)', 'core.commands.cloud-sync'),
+        execute: () => {
+          window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
+          runtime.getSnapshot().app.actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
+        },
         icon: { kind: 'lucide', name: 'Cloud' },
       }),
     ];
@@ -180,7 +234,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       services.views.register({
         id: 'core.command-palette',
         title: label('Command Palette', 'core.command-palette.title'),
-        description: label('Search files and execute commands.'),
+        description: label('Search files and execute commands.', 'core.command-palette.description'),
         location: 'modal',
         canBePinned: false,
         allowMultiple: false,
@@ -190,8 +244,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.views.register({
         id: 'core.settings',
-        title: label('System Configuration', 'core.settings.title'),
-        description: label('Application and workspace settings.'),
+        title: label('System Configuration', 'core.views.settings.title'),
+        description: label('Application and workspace settings.', 'core.views.settings.description'),
         location: 'modal',
         canBePinned: false,
         allowMultiple: false,
@@ -201,8 +255,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.views.register({
         id: 'core.git-pane',
-        title: label('Git Operations', 'core.git.title'),
-        description: label('Source control workspace.'),
+        title: label('Git Operations', 'core.views.git.title'),
+        description: label('Source control workspace.', 'core.views.git.description'),
         location: 'main',
         canBePinned: true,
         allowMultiple: false,
@@ -215,7 +269,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
     const railDisposables = [
       services.actionRail.register({
         id: 'core.toggle-explorer',
-        title: label('Toggle Explorer'),
+        title: label('Toggle Explorer', 'core.commands.toggle-explorer'),
         icon: { kind: 'lucide', name: 'Folder' },
         group: 'workspace.primary',
         order: 10,
@@ -252,7 +306,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.actionRail.register({
         id: 'core.switch-project',
-        title: label('Switch Project'),
+        title: label('Switch Project', 'core.commands.switch-project'),
         icon: { kind: 'lucide', name: 'LayoutGrid' },
         group: 'workspace.secondary',
         order: 10,
@@ -260,7 +314,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.actionRail.register({
         id: 'core.download-workspace',
-        title: label('Download Workspace'),
+        title: label('Download Workspace', 'core.commands.download-workspace'),
         icon: { kind: 'lucide', name: 'Download' },
         group: 'workspace.secondary',
         order: 20,
@@ -268,15 +322,23 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.actionRail.register({
         id: 'core.export-html',
-        title: label('Export HTML'),
+        title: label('Export HTML', 'core.commands.export-html'),
         icon: { kind: 'lucide', name: 'FileDown' },
         group: 'workspace.secondary',
         order: 30,
         target: { kind: 'command', commandId: 'core.export-html' },
       }),
       services.actionRail.register({
+        id: 'core.import-markdown',
+        title: label('Import Markdown', 'core.import-markdown.title'),
+        icon: { kind: 'lucide', name: 'Upload' },
+        group: 'workspace.secondary',
+        order: 35,
+        target: { kind: 'command', commandId: 'core.import-markdown' },
+      }),
+      services.actionRail.register({
         id: 'core.print-preview',
-        title: label('Print Preview'),
+        title: label('Print Preview', 'core.commands.print-preview'),
         icon: { kind: 'lucide', name: 'Printer' },
         group: 'workspace.secondary',
         order: 40,
@@ -284,7 +346,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.actionRail.register({
         id: 'core.cloud-sync',
-        title: label('Cloud Sync (Mock)'),
+        title: label('Cloud Sync (Mock)', 'core.commands.cloud-sync'),
         icon: { kind: 'lucide', name: 'Cloud' },
         group: 'system',
         order: 10,
@@ -295,8 +357,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
     const settingsDisposables = [
       services.settingsRegistry.register({
         id: 'core.settings.visual',
-        title: label('Visual Matrix'),
-        description: label('Theme presets and visual surfaces.'),
+        title: label('Visual Matrix', 'core.settings.visual.title'),
+        description: label('Theme presets and visual surfaces.', 'core.settings.visual.description'),
         order: 10,
         panel: 'visual',
         icon: { kind: 'lucide', name: 'Layout' },
@@ -344,113 +406,45 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         },
       }),
       services.settingsRegistry.register({
+        id: 'core.settings.markdown-profiles',
+        title: label('Markdown Profiles', 'core.markdown-profiles.title'),
+        description: label('Optional Markdown feature profiles and trust policy.', 'core.settings.markdown-profiles.description'),
+        order: 15,
+        panel: 'advanced',
+        icon: { kind: 'lucide', name: 'FileText' },
+        render: () => <MarkdownProfileSettingsPanel />,
+      }),
+      services.settingsRegistry.register({
         id: 'core.settings.git',
-        title: label('Source Control'),
-        description: label('Repository and identity settings.'),
+        title: label('Source Control', 'core.settings.sections.git.title'),
+        description: label('Repository and identity settings.', 'core.settings.sections.git.description'),
         order: 20,
         panel: 'git',
         icon: { kind: 'lucide', name: 'GitBranch' },
-        render: () => {
-          const snapshot = runtime.getSnapshot();
-          const gitConfig = snapshot.app.actions.getActiveGitConfig();
-          const handleGitChange = (key: keyof typeof gitConfig, value: string) => {
-            void snapshot.app.actions.handleGitConfigUpdate({ ...gitConfig, [key]: value });
-          };
-          return (
-            <div className="settings-pane">
-              <div className="settings-card settings-card-stack">
-                <div className="flex flex-col gap-4">
-                  <OidcSignInSelector
-                    gitConfig={gitConfig}
-                    onGitConfigChange={snapshot.app.actions.handleGitConfigUpdate}
-                    onOidcSignIn={snapshot.app.actions.handleOidcSignIn}
-                  />
-                  <RepositoryAutocomplete
-                    projectId={snapshot.app.state.activeProjectId}
-                    gitConfig={gitConfig}
-                    onRepoUrlChange={(value) => handleGitChange('repoUrl', value)}
-                    onGitConfigChange={snapshot.app.actions.handleGitConfigUpdate}
-                  />
-                  <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)]">BRANCH</span>
-                    <input
-                      className="modal-input !text-xs !py-3"
-                      value={gitConfig.branch}
-                      onChange={(event) => handleGitChange('branch', event.target.value)}
-                      placeholder="main"
-                    />
-                  </label>
-                </div>
-                <div className="settings-action-row">
-                  <button className="modal-btn flex-1">TEST_LINK</button>
-                  <button className="modal-btn flex-1 modal-btn-primary">SAVE_CONFIG</button>
-                </div>
-              </div>
-            </div>
-          );
-        },
+        render: () => <GitSettingsPanel />,
       }),
       services.settingsRegistry.register({
         id: 'core.settings.data',
-        title: label('Storage Ops'),
-        description: label('PWA deployment and export controls.'),
+        title: label('Storage Ops', 'core.settings.sections.data.title'),
+        description: label('PWA deployment and export controls.', 'core.settings.sections.data.description'),
         order: 30,
         panel: 'data',
         icon: { kind: 'lucide', name: 'Database' },
-        render: () => {
-          const snapshot = runtime.getSnapshot();
-          const pwaState = snapshot.pwa.state;
-          const pwaActions = snapshot.pwa.actions;
-          const pwaStatusLabel = pwaState.isInstalled ? 'INSTALLED' : 'NOT_INSTALLED';
-          const pwaUpdateLabel = pwaState.updateAvailable ? 'UPDATE_READY' : 'UP_TO_DATE';
-          return (
-            <div className="settings-pane">
-              <div className="flex flex-col gap-4">
-                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-bold text-[11px] uppercase">PWA_DEPLOYMENT</span>
-                    <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{pwaStatusLabel}</span>
-                  </div>
-                  <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">Manage offline installation and apply background updates without blocking the active session.</p>
-                  <div className="pwa-status-grid">
-                    <div className="pwa-status-row"><span className="pwa-status-label">UPDATE_STATE</span><span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{pwaUpdateLabel}</span></div>
-                    <div className="pwa-status-row"><span className="pwa-status-label">SERVICE_WORKER</span><span className="pwa-status-value">{pwaState.isSupported ? 'AVAILABLE' : 'UNAVAILABLE'}</span></div>
-                  </div>
-                  <div className="settings-action-row">
-                    <button className="modal-btn flex-1" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>INSTALL_PWA</button>
-                    <button className="modal-btn flex-1 modal-btn-primary" onClick={pwaActions.requestUpdate} disabled={!pwaState.updateAvailable}>APPLY_UPDATE</button>
-                  </div>
-                  <label className="pwa-toggle">
-                    <input type="checkbox" checked={pwaState.autoUpdateEnabled} onChange={(event) => pwaActions.toggleAutoUpdate(event.target.checked)} />
-                    <span className="pwa-toggle-indicator" />
-                    <span className="pwa-toggle-label">AUTO_UPDATE</span>
-                  </label>
-                </div>
-                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-bold text-[11px] uppercase">IDB_CORE_DUMP</span>
-                    <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">JSON</span>
-                  </div>
-                  <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">Extract entire IndexedDB workspace including files and metadata to a portable archive.</p>
-                  <button onClick={snapshot.app.actions.exportData} className="modal-btn modal-btn-primary w-full flex items-center justify-center gap-2">EXECUTE_EXPORT</button>
-                </div>
-                <div className="settings-card settings-card-muted opacity-50 cursor-not-allowed">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-bold text-[11px] uppercase">RESTORE_IMAGE</span>
-                    <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)]">LOCKED</span>
-                  </div>
-                  <p className="text-[11px] text-[var(--fg-muted)] mb-4">Restore workspace from a previously exported JSON image. (Module Pending)</p>
-                  <button disabled className="modal-btn w-full">INIT_RESTORE</button>
-                </div>
-              </div>
-            </div>
-          );
-        },
+        render: () => <DataSettingsPanel />,
+      }),
+      services.settingsRegistry.register({
+        id: 'core.settings.language',
+        title: label('Language & Locale', 'core.settings.language.title'),
+        description: label('Select the interface language used by the core shell.', 'core.settings.language.description'),
+        order: 35,
+        panel: 'language',
+        icon: { kind: 'lucide', name: 'Languages' },
+        render: () => <LanguageSettingsPanel />,
       }),
       services.settingsRegistry.register({
         id: 'core.settings.keys',
-        title: label('Key Map'),
-        description: label('Host keyboard bindings backed by the command registry.'),
+        title: label('Key Map', 'core.settings.sections.keymap.title'),
+        description: label('Host keyboard bindings backed by the command registry.', 'core.settings.sections.keymap.description'),
         order: 40,
         panel: 'keys',
         icon: { kind: 'lucide', name: 'Keyboard' },
@@ -491,8 +485,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.settingsRegistry.register({
         id: 'core.settings.session',
-        title: label('Session State'),
-        description: label('Session and persistence controls.'),
+        title: label('Session State', 'core.settings.sections.session.title'),
+        description: label('Session and persistence controls.', 'core.settings.sections.session.description'),
         order: 50,
         panel: 'session',
         icon: { kind: 'lucide', name: 'Monitor' },
@@ -531,6 +525,18 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     </div>
                     <label className="pwa-toggle">
                       <input type="checkbox" checked={snapshot.app.state.persistSessionEnabled} onChange={(event) => snapshot.app.actions.setPersistSessionEnabled(event.target.checked)} />
+                      <span className="pwa-toggle-indicator" />
+                    </label>
+                  </div>
+                </div>
+                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">LINE_NUMBERS</span>
+                      <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">Show or hide the editor gutter line numbers for the current workspace session.</p>
+                    </div>
+                    <label className="pwa-toggle">
+                      <input type="checkbox" checked={snapshot.app.state.showLineNumbers} onChange={(event) => snapshot.app.actions.setShowLineNumbers(event.target.checked)} />
                       <span className="pwa-toggle-indicator" />
                     </label>
                   </div>

@@ -1,1 +1,1 @@
-export const THEME_STUDIO_VERSION = "1.0.1";
+export const THEME_STUDIO_VERSION = "1.1.0-rc.1";

@@ -1,2 +1,2 @@
-export declare const UI_TOKENS_PACKAGE_VERSION: "1.0.1";
+export declare const UI_TOKENS_VERSION = "1.2.0-rc.1";
 //# sourceMappingURL=version.d.ts.map

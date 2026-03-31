@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-03-29T19:58:02Z",
+  "ok": false,
+  "subsetPortableInstall": {
+    "ok": true,
+    "packages": [
+      "@mdwrk/theme-contract",
+      "@mdwrk/ui-tokens",
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/i18n"
+    ],
+    "mode": "executed"
+  },
+  "fullAppInstall": {
+    "ok": false,
+    "blocked": true,
+    "reason": "Current environment did not support a clean end-to-end RC app install from tarballs."
+  },
+  "notes": [
+    "The portable subset install lane executed successfully from RC tarballs.",
+    "The broader app/example acceptance lane is represented in this checkpoint by structural validation against RC tarball manifests rather than a green full install."
+  ]
+}

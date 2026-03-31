@@ -15,6 +15,7 @@ interface WorkPaneProps {
   theme: AppTheme;
   viewMode: ViewMode;
   currentThemeDef: ThemeDef;
+  showLineNumbers: boolean;
   sidebarOpen: boolean;
   sidebarWidth: number;
   onSidebarToggle: (open: boolean) => void;
@@ -40,6 +41,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   theme,
   viewMode,
   currentThemeDef,
+  showLineNumbers,
   sidebarOpen,
   sidebarWidth,
   onSidebarToggle,
@@ -194,6 +196,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             theme={theme}
             viewMode={viewMode}
             onViewModeChange={onViewModeChange}
+            showLineNumbers={showLineNumbers}
           />
         ) : (
           <div className="workspace-idle-state">

@@ -30,6 +30,7 @@ body {
   gap: 8px;
   margin-bottom: 12px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .toolbar button {
@@ -39,6 +40,14 @@ body {
   border-radius: 6px;
   padding: 8px 12px;
   cursor: pointer;
+}
+
+.toolbar-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: none;
 }
 
 .editor-card,
@@ -58,4 +67,27 @@ body {
   .example-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.toolbar-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.toolbar-select select {
+  background: #1a2028;
+  color: #e6edf5;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.profile-toggle-row {
+  margin-top: -4px;
+}
+
+.preview-card {
+  padding: 20px;
 }

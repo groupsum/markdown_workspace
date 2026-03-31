@@ -1,0 +1,18 @@
+# Phase 12 packed tarball install lane
+
+## subset install (portable packages only)
+$ npm install --ignore-scripts mdwrk-theme-contract-1.1.0.tgz mdwrk-ui-tokens-1.2.0.tgz
+
+added 2 packages, and audited 3 packages in 887ms
+
+found 0 vulnerabilities
+
+
+## full app install attempt
+$ npm install --ignore-scripts mdwrk-mdwrkspace-1.4.0.tgz
+npm error code ETARGET
+npm error notarget No matching version found for @mdwrk/extension-gemini-agent@^1.1.0.
+npm error notarget In most cases you or one of your dependencies are requesting
+npm error notarget a package version that doesn't exist.
+npm error A complete log of this run can be found in: /home/oai/.npm/_logs/2026-03-29T17_01_20_907Z-debug-0.log
+

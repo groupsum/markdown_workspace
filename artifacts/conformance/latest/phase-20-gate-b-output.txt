@@ -1,0 +1,12 @@
+# Phase 20 Gate B checkpoint
+
+CommonMark official: 434/652 passing (218 failing)
+GFM official: 444/672 passing (228 failing)
+Optional profiles: 8/8 passing
+Visual regression: green
+Packed release-set install: green
+Browser matrix: blocked
+Certification gate summary: 9/12 lanes green
+Hard closure rules: 4/5 green
+
+This checkpoint materially improves the evidence bundle, but certification remains blocked by the full official CommonMark/GFM corpus lanes and the full browser matrix requirement.

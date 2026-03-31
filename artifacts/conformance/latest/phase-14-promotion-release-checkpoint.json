@@ -1,0 +1,27 @@
+{
+  "phase": 14,
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "checkpointType": "promotion-and-release-checkpoint",
+  "releaseTrain": "rc.1",
+  "workspaceVersion": "0.2.0-rc.1",
+  "publishOrderGroupCount": 7,
+  "publishedArtifactsCompleted": false,
+  "docsArtifactsAgree": true,
+  "evidenceBundlePath": "artifacts/releases/promotion-rc.1/final-evidence-bundle.tar.gz",
+  "extensionArtifactBundlePath": "artifacts/releases/promotion-rc.1/extension-artifact-bundle.tar.gz",
+  "promotionBundlePath": "artifacts/releases/promotion-rc.1",
+  "claimLanguage": {
+    "repositoryInternalOnly": false,
+    "repositoryInternalPlusExternalMarkdownTarget": false,
+    "effectiveStatement": "No final certification claim is made in this checkpoint. The strongest honest statement is repository-internal release-readiness evidence only."
+  },
+  "blockers": [
+    "Browser matrix remains blocked in the current environment.",
+    "Browser-driven visual regression remains blocked in the current environment.",
+    "The hard closure rule for full frozen-target corpus closure remains blocked.",
+    "Publish readiness remains blocked without an npm auth token.",
+    "Skipping npm publish because no NPM token is available.",
+    "Git tag creation was not executed because the checkpoint zip does not include a Git repository and release blockers remain.",
+    "GitHub release creation was not executed because the checkpoint environment has no repository remote/auth context and release blockers remain."
+  ]
+}

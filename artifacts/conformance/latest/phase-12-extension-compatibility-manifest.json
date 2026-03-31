@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-03-29T17:01:23.109Z",
+  "manifestValidation": {
+    "generatedAt": "2026-03-29T17:01:01.724Z",
+    "validator": "tools/conformance/validate-extension-manifests.mjs",
+    "ok": true,
+    "results": [
+      {
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "path": "packages/extensions/extension-catalog-hello",
+        "manifestId": "external.catalog-hello",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-gemini-agent",
+        "path": "packages/extensions/extension-gemini-agent",
+        "manifestId": "core.gemini-agent",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-manager",
+        "path": "packages/extensions/extension-manager",
+        "manifestId": "core.extension-manager",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-theme-studio",
+        "path": "packages/extensions/extension-theme-studio",
+        "manifestId": "core.theme-studio",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  },
+  "compatibilityValidation": {
+    "generatedAt": "2026-03-29T17:01:01.837Z",
+    "validator": "tools/conformance/validate-compatibility.mjs",
+    "ok": true,
+    "platformBaselines": {
+      "client": "1.4.0",
+      "manifestVersion": 1,
+      "hostApi": "1.0.0",
+      "runtime": "1.0.0",
+      "themeContract": "1.1.0"
+    },
+    "results": [
+      {
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "path": "packages/extensions/extension-catalog-hello",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=0.1.0",
+          "themeContract": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-gemini-agent",
+        "path": "packages/extensions/extension-gemini-agent",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-manager",
+        "path": "packages/extensions/extension-manager",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-theme-studio",
+        "path": "packages/extensions/extension-theme-studio",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      }
+    ]
+  },
+  "artifactValidation": {
+    "generatedAt": "2026-03-29T17:01:15.554Z",
+    "ok": true,
+    "catalogEntries": [
+      {
+        "entryId": "external.catalog-hello@1.0.1",
+        "extensionId": "external.catalog-hello",
+        "manifestExists": true,
+        "signedManifestExists": true,
+        "moduleExists": true,
+        "manifestIntegrityVerified": true,
+        "moduleIntegrityVerified": true,
+        "signatureVerified": true,
+        "trustedBySamplePolicy": true,
+        "issues": []
+      }
+    ]
+  },
+  "runtimeSmoke": {
+    "ok": true,
+    "note": "Extension runtime smoke passed."
+  }
+}

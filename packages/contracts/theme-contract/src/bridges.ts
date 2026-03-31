@@ -21,6 +21,8 @@ export const MARKDOWN_WORKSPACE_THEME_BRIDGES = [
   { target: "renderer", cssCustomProperty: "--mw-code-border", sourceToken: "border-color", description: "Renderer code border bridge.", stability: "stable" },
   { target: "renderer", cssCustomProperty: "--mw-font-ui", sourceToken: "font-ui", description: "Renderer UI font bridge.", stability: "stable" },
   { target: "renderer", cssCustomProperty: "--mw-font-mono", sourceToken: "font-mono", description: "Renderer monospace font bridge.", stability: "stable" },
+  { target: "renderer", cssCustomProperty: "--mw-line-height", sourceToken: "markdown-line-height", description: "Renderer body line-height bridge.", stability: "stable" },
+  { target: "renderer", cssCustomProperty: "--mw-heading-line-height", sourceToken: "markdown-heading-line-height", description: "Renderer heading line-height bridge.", stability: "stable" },
   { target: "editor", cssCustomProperty: "--mwe-bg-surface", sourceToken: "bg-panel", description: "Editor surface background bridge.", stability: "stable" },
   { target: "editor", cssCustomProperty: "--mwe-bg-gutter", sourceToken: "bg-inset", description: "Editor gutter background bridge.", stability: "stable" },
   { target: "editor", cssCustomProperty: "--mwe-border-color", sourceToken: "border-color", description: "Editor border bridge.", stability: "stable" },
@@ -29,6 +31,8 @@ export const MARKDOWN_WORKSPACE_THEME_BRIDGES = [
   { target: "editor", cssCustomProperty: "--mwe-accent", sourceToken: "accent", description: "Editor accent bridge.", stability: "stable" },
   { target: "editor", cssCustomProperty: "--mwe-font-mono", sourceToken: "font-mono", description: "Editor monospace font bridge.", stability: "stable" },
   { target: "editor", cssCustomProperty: "--mwe-editor-padding", sourceToken: "editor-padding", description: "Editor padding bridge.", stability: "stable" },
+  { target: "editor", cssCustomProperty: "--mwe-line-height", sourceToken: "editor-line-rhythm", description: "Editor line-height bridge.", stability: "stable" },
+  { target: "editor", cssCustomProperty: "--mwe-gutter-width", sourceToken: "line-number-gutter-width", description: "Editor line-number gutter-width bridge.", stability: "stable" },
 ] as const satisfies readonly ThemeBridgeVariableDefinition[];
 
 export const MARKDOWN_WORKSPACE_RENDERER_THEME_BRIDGES = MARKDOWN_WORKSPACE_THEME_BRIDGES.filter(

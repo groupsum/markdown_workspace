@@ -1,4 +1,4 @@
-export declare const MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES: readonly ["ui-scale", "header-height", "rail-width", "rail-height", "sidebar-width", "status-height", "tab-height", "panel-header-height", "rail-btn-size", "bg-app", "bg-panel", "bg-inset", "border-color", "border-width", "fg-primary", "fg-secondary", "fg-muted", "accent", "table-header-bg", "table-header-fg", "table-row-primary-bg", "table-row-secondary-bg", "status-ok", "status-warn", "status-error", "app-gap", "texture-opacity", "editor-padding", "file-indent-base", "file-indent-unit", "c-explorer-hover", "c-explorer-selected", "c-explorer-selected-text", "c-explorer-drag-bg", "font-ui", "font-mono", "font-head"];
+export declare const MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES: readonly ["ui-scale", "header-height", "rail-width", "rail-height", "sidebar-width", "status-height", "tab-height", "panel-header-height", "rail-btn-size", "bg-app", "bg-panel", "bg-inset", "border-color", "border-width", "fg-primary", "fg-secondary", "fg-muted", "accent", "table-header-bg", "table-header-fg", "table-row-primary-bg", "table-row-secondary-bg", "status-ok", "status-warn", "status-error", "app-gap", "texture-opacity", "editor-padding", "editor-line-height", "editor-line-rhythm", "markdown-line-height", "markdown-heading-line-height", "line-number-gutter-width", "mobile-rail-expanded-width", "mobile-expandable-rail-width", "file-indent-base", "file-indent-unit", "c-explorer-hover", "c-explorer-selected", "c-explorer-selected-text", "c-explorer-drag-bg", "font-ui", "font-mono", "font-head"];
 export type MarkdownWorkspaceThemeTokenName = typeof MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES[number];
 export type ThemeTokenCategory = "layout" | "color" | "status" | "spacing" | "interaction" | "typography";
 export interface ThemeTokenDefinition {
@@ -204,6 +204,55 @@ export declare const MARKDOWN_WORKSPACE_THEME_TOKENS: readonly [{
     readonly category: "spacing";
     readonly description: "Editor inner padding.";
     readonly defaultValue: "calc(24px * var(--ui-scale))";
+    readonly stability: "stable";
+}, {
+    readonly name: "editor-line-height";
+    readonly cssCustomProperty: "--editor-line-height";
+    readonly category: "typography";
+    readonly description: "Base editor line height.";
+    readonly defaultValue: "calc(1.5rem * var(--ui-scale))";
+    readonly stability: "stable";
+}, {
+    readonly name: "editor-line-rhythm";
+    readonly cssCustomProperty: "--editor-line-rhythm";
+    readonly category: "typography";
+    readonly description: "Shared editor line rhythm used by the textarea and gutter.";
+    readonly defaultValue: "var(--editor-line-height)";
+    readonly stability: "stable";
+}, {
+    readonly name: "markdown-line-height";
+    readonly cssCustomProperty: "--markdown-line-height";
+    readonly category: "typography";
+    readonly description: "Base Markdown body line height.";
+    readonly defaultValue: "var(--editor-line-rhythm)";
+    readonly stability: "stable";
+}, {
+    readonly name: "markdown-heading-line-height";
+    readonly cssCustomProperty: "--markdown-heading-line-height";
+    readonly category: "typography";
+    readonly description: "Markdown heading line height.";
+    readonly defaultValue: "calc(1.1 + ((var(--ui-scale) - 1) * 0.35))";
+    readonly stability: "stable";
+}, {
+    readonly name: "line-number-gutter-width";
+    readonly cssCustomProperty: "--line-number-gutter-width";
+    readonly category: "layout";
+    readonly description: "Width of the editor line-number gutter.";
+    readonly defaultValue: "calc(30px * var(--ui-scale))";
+    readonly stability: "stable";
+}, {
+    readonly name: "mobile-rail-expanded-width";
+    readonly cssCustomProperty: "--mobile-rail-expanded-width";
+    readonly category: "layout";
+    readonly description: "Expanded width for the rail on narrow mobile layouts.";
+    readonly defaultValue: "100vw";
+    readonly stability: "stable";
+}, {
+    readonly name: "mobile-expandable-rail-width";
+    readonly cssCustomProperty: "--mobile-expandable-rail-width";
+    readonly category: "layout";
+    readonly description: "Token used by responsive layouts for expandable rail width.";
+    readonly defaultValue: "var(--mobile-rail-expanded-width)";
     readonly stability: "stable";
 }, {
     readonly name: "file-indent-base";

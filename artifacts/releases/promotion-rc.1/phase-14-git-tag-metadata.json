@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "requestedTag": "v0.2.0-rc.1",
+  "created": false,
+  "blocked": true,
+  "gitRepositoryPresent": false,
+  "reason": "Git tag creation was not executed because the checkpoint zip does not include a Git repository and release blockers remain."
+}

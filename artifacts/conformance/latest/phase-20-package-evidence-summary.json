@@ -1,0 +1,32 @@
+{
+  "total": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "id": "matrix-present",
+      "description": "workspace package certification matrix exists",
+      "passed": true
+    },
+    {
+      "id": "boundary-map-present",
+      "description": "package boundary map exists",
+      "passed": true
+    },
+    {
+      "id": "apps-docs-present",
+      "description": "app docs for mdwrkspace and lander exist",
+      "passed": true
+    },
+    {
+      "id": "editor-example-phase11-features",
+      "description": "editor example demonstrates theme support, line numbers, task insertion, and profile toggles",
+      "passed": true
+    },
+    {
+      "id": "renderer-example-phase11-features",
+      "description": "renderer example demonstrates GFM and optional extension rendering",
+      "passed": true
+    }
+  ]
+}

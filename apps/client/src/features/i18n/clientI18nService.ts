@@ -8,6 +8,8 @@ import {
 } from '@mdwrk/i18n';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
+export const CORE_LOCALE_STORAGE_KEY = 'mdwrk.core.locale';
+
 export interface ClientI18nSnapshot {
   readonly locale: string;
 }
@@ -28,8 +30,23 @@ export interface ClientI18nService extends ObservableStore<ClientI18nSnapshot> {
   format(label: I18nLabel | string): string;
 }
 
+function readPersistedLocale(defaultLocale: string): string {
+  if (typeof window === 'undefined') {
+    return defaultLocale;
+  }
+  return window.localStorage.getItem(CORE_LOCALE_STORAGE_KEY) ?? defaultLocale;
+}
+
+function persistLocale(locale: string): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  window.localStorage.setItem(CORE_LOCALE_STORAGE_KEY, locale);
+}
+
 export function createClientI18nService(defaultLocale = 'en'): ClientI18nService {
   const registry = createLocaleRegistry({ defaultLocale, fallbackLocale: defaultLocale });
+  registry.setLocale(readPersistedLocale(defaultLocale));
   const emitter = createStoreEmitter();
   const loaders = new Map<string, RegisteredCatalogLoader>();
   let cachedSnapshot: ClientI18nSnapshot | null = { locale: registry.getLocale() };
@@ -73,6 +90,7 @@ export function createClientI18nService(defaultLocale = 'en'): ClientI18nService
     },
     setLocale(locale: string): void {
       registry.setLocale(locale);
+      persistLocale(registry.getLocale());
       void ensureLocale(locale);
       emitChange();
     },

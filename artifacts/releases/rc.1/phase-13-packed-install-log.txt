@@ -1,0 +1,11 @@
+# Phase 13 RC tarball install verification
+
+## subset install (portable subset)
+$ npm install --ignore-scripts mdwrk-theme-contract-1.1.0-rc.1.tgz mdwrk-ui-tokens-1.2.0-rc.1.tgz mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz mdwrk-markdown-editor-core-1.1.0-rc.1.tgz mdwrk-i18n-1.1.0-rc.1.tgz
+
+added 5 packages, and audited 6 packages in 2s
+
+found 0 vulnerabilities
+
+## full app install attempt
+Blocked in the current environment. A prior attempt hit registry / environment constraints before the full private/public RC set could be resolved cleanly. Phase 13 therefore treats the full app/example validation lane as structural tarball validation against package manifests rather than a green end-to-end install lane.

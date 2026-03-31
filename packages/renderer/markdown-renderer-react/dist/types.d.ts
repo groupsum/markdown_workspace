@@ -1,4 +1,5 @@
 import type React from "react";
+import type { MarkdownHtmlHandlingMode, MarkdownLinkAttributeResult, MarkdownOptionalProfileId, MarkdownProfileId } from "@mdwrk/markdown-renderer-core";
 export interface MarkdownRendererThemeVariables {
     readonly foreground?: string;
     readonly foregroundMuted?: string;
@@ -10,10 +11,8 @@ export interface MarkdownRendererThemeVariables {
     readonly codeBorder?: string;
     readonly fontUi?: string;
     readonly fontMono?: string;
-}
-export interface MarkdownLinkAttributeResult {
-    readonly target?: string;
-    readonly rel?: string;
+    readonly lineHeight?: string;
+    readonly headingLineHeight?: string;
 }
 export interface MarkdownRendererProps {
     readonly markdown: string;
@@ -24,5 +23,25 @@ export interface MarkdownRendererProps {
     readonly getLinkAttributes?: (href?: string) => MarkdownLinkAttributeResult | undefined;
     readonly components?: Record<string, React.ComponentType<any>>;
     readonly syntaxTheme?: Record<string, React.CSSProperties>;
+    readonly htmlHandling?: MarkdownHtmlHandlingMode;
+    readonly profile?: MarkdownProfileId;
+    readonly extensions?: readonly MarkdownOptionalProfileId[];
+    readonly sourcePositionAttributes?: boolean;
+}
+export interface RenderMarkdownToStaticHtmlProps {
+    readonly markdown: string;
+    readonly htmlHandling?: MarkdownHtmlHandlingMode;
+    readonly profile?: MarkdownProfileId;
+    readonly extensions?: readonly MarkdownOptionalProfileId[];
+    readonly sourcePositionAttributes?: boolean;
+    readonly getLinkAttributes?: (href?: string) => MarkdownLinkAttributeResult | undefined;
+}
+export interface RenderMarkdownToStaticHtmlDocumentProps extends RenderMarkdownToStaticHtmlProps {
+    readonly title: string;
+    readonly lang?: string;
+    readonly dataTheme?: string;
+    readonly htmlClassName?: string;
+    readonly bodyClassName?: string;
+    readonly stylesheets?: readonly string[];
 }
 //# sourceMappingURL=types.d.ts.map

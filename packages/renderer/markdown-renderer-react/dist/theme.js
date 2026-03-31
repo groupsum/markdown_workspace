@@ -11,6 +11,8 @@ export function createMarkdownRendererThemeStyle(variables = {}) {
         ["--mw-code-border"]: variables.codeBorder ?? "var(--border-color, rgba(255,255,255,0.12))",
         ["--mw-font-ui"]: variables.fontUi ?? 'var(--font-ui, "Inter", "Segoe UI", system-ui, sans-serif)',
         ["--mw-font-mono"]: variables.fontMono ?? 'var(--font-mono, "Fira Code", ui-monospace, monospace)',
+        ["--mw-line-height"]: variables.lineHeight ?? "var(--markdown-line-height, 1.6)",
+        ["--mw-heading-line-height"]: variables.headingLineHeight ?? "var(--markdown-heading-line-height, 1.1)",
     };
 }
 export function createMarkdownRendererThemeVariablesFromThemeTokens(overrides = {}) {

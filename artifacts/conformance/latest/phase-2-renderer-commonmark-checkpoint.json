@@ -1,0 +1,41 @@
+{
+  "phase": 2,
+  "generatedAt": "2026-03-27T18:56:53.742Z",
+  "checkpointType": "renderer-commonmark-core-checkpoint",
+  "rendererPackages": {
+    "core": {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-core"
+    },
+    "react": {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-react"
+    }
+  },
+  "evidence": {
+    "rendererTestCommand": "npm run test:renderer",
+    "commonmarkSubsetResultsPath": "artifacts/conformance/latest/phase-2-commonmark-subset-results.json",
+    "goldenAstPath": "packages/renderer/markdown-renderer-core/tests/golden/commonmark-phase2-sample.ast.json",
+    "goldenHtmlPath": "packages/renderer/markdown-renderer-core/tests/golden/commonmark-phase2-sample.html"
+  },
+  "commonmarkSubset": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "portable internal Markdown AST",
+    "CommonMark-core-oriented block and inline parsing",
+    "policy-controlled raw HTML handling",
+    "source-position rendering attributes",
+    "self-contained committed renderer dist",
+    "React wrapper backed by core renderer"
+  ]
+}

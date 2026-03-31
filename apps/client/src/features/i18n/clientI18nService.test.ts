@@ -1,5 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { CORE_SHELL_LOCALE_LOADER_DEFINITION } from '@mdwrk/i18n';
 import { createClientI18nService } from './clientI18nService';
+
+const storage = new Map<string, string>();
+
+beforeEach(() => {
+  storage.clear();
+  vi.stubGlobal('window', {
+    localStorage: {
+      getItem: (key: string) => storage.get(key) ?? null,
+      setItem: (key: string, value: string) => { storage.set(key, value); },
+    },
+  });
+});
 
 describe('client i18n service', () => {
   it('returns a stable snapshot reference until locale changes', () => {
@@ -58,5 +71,18 @@ describe('client i18n service', () => {
       key: 'core.extension-manager.views.manager.title',
       defaultMessage: 'Extension Manager',
     })).toBe('Administrador de extensiones');
+  });
+
+  it('persists locale selection and loads shared core shell catalogs', async () => {
+    storage.set('mdwrk.core.locale', 'pt');
+    const service = createClientI18nService('en');
+    service.registerCatalogLoader('core', CORE_SHELL_LOCALE_LOADER_DEFINITION);
+    await service.ensureLocale();
+
+    expect(service.getLocale()).toBe('pt');
+    expect(service.format({ key: 'core.settings.language.title', defaultMessage: 'Language & Locale' })).toBe('Idioma e localidade');
+
+    service.setLocale('ur');
+    expect(storage.get('mdwrk.core.locale')).toBe('ur');
   });
 });

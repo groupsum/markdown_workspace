@@ -1,0 +1,46 @@
+Phase 21 Playwright browser-matrix runner
+list: node /mnt/data/phase21_work/markdown_workspace/node_modules/playwright/cli.js test -c /mnt/data/phase21_work/markdown_workspace/playwright.config.ts /mnt/data/phase21_work/markdown_workspace/apps/client/tests/playwright --list
+run: node /mnt/data/phase21_work/markdown_workspace/node_modules/playwright/cli.js test -c /mnt/data/phase21_work/markdown_workspace/playwright.config.ts /mnt/data/phase21_work/markdown_workspace/apps/client/tests/playwright --reporter=list
+laneStatus: blocked
+reason: Playwright browser-matrix tests are wired, but one or more required browser executables are not available in this environment.
+
+--- playwright list stdout ---
+Listing tests:
+  [chromium] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots
+  [chromium] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable
+  [chromium] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable
+  [chromium] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable
+  [chromium] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable
+  [chromium] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces
+  [firefox] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots
+  [firefox] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable
+  [firefox] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable
+  [firefox] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable
+  [firefox] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable
+  [firefox] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces
+  [webkit] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots
+  [webkit] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable
+  [webkit] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable
+  [webkit] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable
+  [webkit] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable
+  [webkit] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces
+Total: 18 tests in 4 files
+
+
+--- playwright list stderr ---
+
+
+--- chromium smoke stdout ---
+
+
+--- chromium smoke stderr ---
+page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4317/
+Call log:
+  - navigating to "http://127.0.0.1:4317/", waiting until "domcontentloaded"
+
+    at /mnt/data/phase21_work/markdown_workspace/tools/ci/playwright-chromium-smoke.mjs:61:14
+
+--- playwright execution skipped ---
+Execution skipped because one or more required browser executables are missing.
+
+

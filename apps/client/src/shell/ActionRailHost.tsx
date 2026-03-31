@@ -7,9 +7,10 @@ import { renderExtensionIcon } from './iconRenderer';
 export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) => {
   const services = useClientRuntimeServices();
   const host = useClientExtensionHost();
-  const snapshot = useSyncExternalStore(services.actionRail.subscribe, services.actionRail.getSnapshot, services.actionRail.getSnapshot);
+  const actionRailSnapshot = useSyncExternalStore(services.actionRail.subscribe, services.actionRail.getSnapshot, services.actionRail.getSnapshot);
+  const localeSnapshot = useSyncExternalStore(services.i18n.subscribe, services.i18n.getSnapshot, services.i18n.getSnapshot);
 
-  const items = React.useMemo<ActionRailItemModel[]>(() => snapshot.items.map((item) => ({
+  const items = React.useMemo<ActionRailItemModel[]>(() => actionRailSnapshot.items.map((item) => ({
     id: item.id,
     title: services.i18n.format(item.title),
     icon: renderExtensionIcon(item.icon),
@@ -24,7 +25,12 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
         await host.commands.execute(item.target.commandId);
       }
     },
-  })), [host.commands, host.views, services.i18n, snapshot.items]);
+  })), [actionRailSnapshot.items, host.commands, host.views, services.i18n, localeSnapshot.locale]);
 
-  return <ActionRail className={className} items={items} />;
+  const ariaLabel = React.useMemo(
+    () => services.i18n.format({ key: 'core.action-rail.aria-label', defaultMessage: 'Primary Actions' }),
+    [localeSnapshot.locale, services.i18n],
+  );
+
+  return <ActionRail className={className} items={items} ariaLabel={ariaLabel} />;
 };

@@ -1,0 +1,196 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "releaseTrain": "rc.1",
+  "rootVersion": "0.2.0-rc.1",
+  "groups": [
+    {
+      "order": 1,
+      "id": "contracts",
+      "description": "Publish contract baselines before all dependents.",
+      "packages": [
+        {
+          "name": "@mdwrk/extension-host",
+          "version": "1.0.1",
+          "path": "packages/contracts/extension-host",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/extension-manifest",
+          "version": "1.0.0",
+          "path": "packages/contracts/extension-manifest",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/theme-contract",
+          "version": "1.1.0-rc.1",
+          "path": "packages/contracts/theme-contract",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "id": "shared",
+      "description": "Publish shared packages next so renderer/editor/extensions can resolve stable ranges.",
+      "packages": [
+        {
+          "name": "@mdwrk/i18n",
+          "version": "1.1.0-rc.1",
+          "path": "packages/shared/i18n",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/icons",
+          "version": "1.0.0",
+          "path": "packages/shared/icons",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/testing",
+          "version": "1.0.0",
+          "path": "packages/shared/testing",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/ui-tokens",
+          "version": "1.2.0-rc.1",
+          "path": "packages/shared/ui-tokens",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "id": "renderer",
+      "description": "Publish renderer family before editor/examples/apps that consume it.",
+      "packages": [
+        {
+          "name": "@mdwrk/markdown-renderer-core",
+          "version": "1.1.0-rc.1",
+          "path": "packages/renderer/markdown-renderer-core",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/markdown-renderer-react",
+          "version": "1.1.0-rc.1",
+          "path": "packages/renderer/markdown-renderer-react",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "id": "editor",
+      "description": "Publish editor family after renderer and shared packages.",
+      "packages": [
+        {
+          "name": "@mdwrk/markdown-editor-core",
+          "version": "1.1.0-rc.1",
+          "path": "packages/editor/markdown-editor-core",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/markdown-editor-react",
+          "version": "1.1.0-rc.1",
+          "path": "packages/editor/markdown-editor-react",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "id": "extensions",
+      "description": "Publish extension runtime and bundled extensions after contracts/shared/editor/renderer families.",
+      "packages": [
+        {
+          "name": "@mdwrk/extension-catalog-hello",
+          "version": "1.1.0-rc.1",
+          "path": "packages/extensions/extension-catalog-hello",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/extension-gemini-agent",
+          "version": "1.1.0-rc.1",
+          "path": "packages/extensions/extension-gemini-agent",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/extension-manager",
+          "version": "1.1.0-rc.1",
+          "path": "packages/extensions/extension-manager",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/extension-runtime",
+          "version": "1.1.0-rc.1",
+          "path": "packages/extensions/extension-runtime",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/extension-theme-studio",
+          "version": "1.1.0-rc.1",
+          "path": "packages/extensions/extension-theme-studio",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "id": "examples",
+      "description": "Examples are validation packages and remain non-published in this environment.",
+      "packages": [
+        {
+          "name": "@mdwrk/example-editor-basic",
+          "version": "0.1.1-rc.1",
+          "path": "examples/editor-basic",
+          "publishable": false,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/example-renderer-basic",
+          "version": "0.1.1-rc.1",
+          "path": "examples/renderer-basic",
+          "publishable": false,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "id": "apps",
+      "description": "Apps are promoted after library families; only public app packages are publish candidates.",
+      "packages": [
+        {
+          "name": "@mdwrk/mdwrkspace",
+          "version": "1.4.0-rc.1",
+          "path": "apps/client",
+          "publishable": true,
+          "publishStatus": "publish-blocked"
+        },
+        {
+          "name": "@mdwrk/lander",
+          "version": "0.0.11-rc.1",
+          "path": "apps/lander",
+          "publishable": false,
+          "publishStatus": "publish-blocked"
+        }
+      ]
+    }
+  ]
+}

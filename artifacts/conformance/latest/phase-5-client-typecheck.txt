@@ -1,0 +1,51 @@
+
+> @mdwrk/mdwrkspace@1.4.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+components/Chassis/Footer/Footer.tsx(2,41): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Chassis/Git/GitPane.tsx(3,132): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Chassis/Header/Header.tsx(3,29): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Chassis/WorkPane/Explorer/FileTree.tsx(3,53): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Chassis/WorkPane/Stage/EditorPane.tsx(16,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Chassis/WorkPane/WorkPane.tsx(5,102): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Modals/CommandPalette.tsx(3,55): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Modals/InputModal.tsx(2,19): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Modals/OidcSignInSelector.tsx(2,24): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Modals/SettingsModal.tsx(2,45): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/Project/ProjectSelector.tsx(5,85): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/UI/ZoomControl.tsx(2,29): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+data/themes.tsx(2,53): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+data/themes.tsx(3,48): error TS2307: Cannot find module 'react-syntax-highlighter/dist/esm/styles/prism' or its corresponding type declarations.
+hooks/fileSystem.ts(1,19): error TS2307: Cannot find module 'jszip' or its corresponding type declarations.
+hooks/useFileManager.ts(3,19): error TS2307: Cannot find module 'jszip' or its corresponding type declarations.
+hooks/useToast.test.tsx(3,41): error TS2307: Cannot find module '@testing-library/react' or its corresponding type declarations.
+hooks/useToast.test.tsx(4,53): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+services/oidc.test.ts(2,65): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+services/oidc.test.ts(8,25): error TS2304: Cannot find name 'global'.
+services/oidc.test.ts(21,5): error TS2304: Cannot find name 'global'.
+services/oidc.test.ts(88,5): error TS2304: Cannot find name 'global'.
+services/oidc.ts(223,28): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+services/oidc.ts(224,36): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+services/oidc.ts(277,28): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+services/oidc.ts(285,32): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+services/oidc.ts(487,32): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/extensions/host/createClientExtensionHost.ts(57,25): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/extensions/runtime/ExtensionViewErrorBoundary.tsx(23,15): error TS2339: Property 'props' does not exist on type 'ExtensionViewErrorBoundary'.
+src/extensions/runtime/ExtensionViewErrorBoundary.tsx(23,46): error TS2339: Property 'props' does not exist on type 'ExtensionViewErrorBoundary'.
+src/extensions/runtime/ExtensionViewErrorBoundary.tsx(42,75): error TS2339: Property 'props' does not exist on type 'ExtensionViewErrorBoundary'.
+src/extensions/runtime/ExtensionViewErrorBoundary.tsx(51,17): error TS2339: Property 'props' does not exist on type 'ExtensionViewErrorBoundary'.
+src/features/action-rail/actionRailRegistry.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/features/commands/commandRegistry.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/features/i18n/clientI18nService.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/features/settings/SettingsSchemaRenderer.test.tsx(3,43): error TS2307: Cannot find module '@testing-library/react' or its corresponding type declarations.
+src/features/settings/SettingsSchemaRenderer.test.tsx(4,42): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/features/views/viewRegistry.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/shell/AppShell.tsx(2,50): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/shell/iconRenderer.tsx(48,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 2
+npm error path /mnt/data/mdv2p5work/apps/client
+npm error workspace @mdwrk/mdwrkspace@1.4.0
+npm error location /mnt/data/mdv2p5work/apps/client
+npm error command failed
+npm error command sh -c tsc --noEmit -p tsconfig.json

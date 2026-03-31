@@ -1,32 +1,43 @@
-# mdwrk/markdown-editor-react
+# @mdwrk/markdown-editor-react
 
-React bindings for the portable Markdown Workspace source-mode editor.
+React bindings for the portable Markdown Workspace source editor.
 
-## Responsibilities
+## Public responsibilities
 
 - `MarkdownSourceEditor` React component
-- controlled and uncontrolled value modes
-- textarea selection + cursor synchronization
-- keyboard shortcuts and built-in command wiring
-- undo/redo integration on top of the core package
-- theme variable bridge and optional default stylesheet
+- controlled and uncontrolled editor modes
+- keyboard shortcut and command wiring
+- line-number gutter support
+- theme bridge/style helpers
+- stylesheet entry for package consumers
 
-## Key exports
+## Typed public exports
 
-- `MarkdownSourceEditor`
-- `createMarkdownEditorThemeStyle`
-- `createMarkdownEditorThemeVariablesFromThemeTokens`
-- `createMarkdownEditorThemeStyleFromThemeTokens`
-- `useMarkdownSourceEditorTheme`
-- `MarkdownSourceEditorHandle`
-- re-exports from `mdwrk/markdown-editor-core`
+- root module: `@mdwrk/markdown-editor-react`
+- `./types`
+- `./theme`
+- `./version`
+- `./styles/default.css`
 
-## Optional stylesheet
+## Integration fixtures / examples
 
-```css
-@import url("@mdwrk/markdown-editor-react/styles/default.css");
-```
+- reusable consumer: `examples/editor-basic/`
+- client integration: Phase 5 authoring checkpoint
+- line-number + task/list example coverage in the editor example app
 
-## Status
+## Semver / compatibility
 
-Implemented in the Phase 9 checkpoint. The package is publishable. Repository-wide certification remains pending later phases.
+- current version: `1.1.0`
+- depends on `@mdwrk/markdown-editor-core` public exports rather than private workspace editor wiring
+
+## Release evidence
+
+- typed exports in `package.json`
+- build/typecheck/test scripts in `package.json`
+- checkpoint evidence in `artifacts/conformance/latest/`
+
+## API/reference docs
+
+See the generated reference page at:
+
+- `docs/reference/packages/mdwrk-markdown-editor-react.md`

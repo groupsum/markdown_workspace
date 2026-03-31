@@ -15,6 +15,7 @@ export interface MarkdownEditorThemeVariables {
   readonly padding?: string;
   readonly lineHeight?: string;
   readonly fontSize?: string;
+  readonly gutterWidth?: string;
 }
 
 export function createMarkdownEditorThemeStyle(
@@ -29,8 +30,9 @@ export function createMarkdownEditorThemeStyle(
     ["--mwe-accent" as any]: variables.accent ?? "var(--accent, #7c9cff)",
     ["--mwe-font-mono" as any]: variables.fontMono ?? 'var(--font-mono, "Fira Code", ui-monospace, monospace)',
     ["--mwe-editor-padding" as any]: variables.padding ?? "var(--editor-padding, 16px)",
-    ["--mwe-line-height" as any]: variables.lineHeight ?? "1.5rem",
+    ["--mwe-line-height" as any]: variables.lineHeight ?? "var(--editor-line-rhythm, var(--editor-line-height, 1.5rem))",
     ["--mwe-font-size" as any]: variables.fontSize ?? "calc(13px * var(--ui-scale, 1))",
+    ["--mwe-gutter-width" as any]: variables.gutterWidth ?? "var(--line-number-gutter-width, 48px)",
   };
 }
 
@@ -45,8 +47,9 @@ export function createMarkdownEditorThemeStyleFromThemeTokens(
 ): CSSProperties {
   return {
     ...createMarkdownEditorThemeVariablesFromThemeTokens(overrides),
-    ["--mwe-line-height" as any]: "1.5rem",
+    ["--mwe-line-height" as any]: "var(--editor-line-rhythm, var(--editor-line-height, 1.5rem))",
     ["--mwe-font-size" as any]: "calc(13px * var(--ui-scale, 1))",
+    ["--mwe-gutter-width" as any]: "var(--line-number-gutter-width, 48px)",
   };
 }
 

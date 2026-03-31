@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-03-27T00:00:00Z",
+  "checkpoint": "phase-0-certification-target-freeze",
+  "status": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternalRfcCompliant": false,
+    "markdownSpecCompliant": false
+  },
+  "frozenTargets": {
+    "normativeCore": {
+      "name": "CommonMark",
+      "version": "0.31.2"
+    },
+    "defaultProfile": {
+      "name": "GFM",
+      "version": "0.29-gfm"
+    },
+    "optionalProfiles": [
+      "front-matter",
+      "footnotes",
+      "definition-lists",
+      "math",
+      "citations",
+      "superscript",
+      "subscript",
+      "smart-punctuation",
+      "markdown-in-html"
+    ]
+  },
+  "policyDecisions": {
+    "underline": "extension-only",
+    "previewHeadingIds": "keep-v2-slugified-ids",
+    "tabBehavior": "keep-structural-indent-default"
+  },
+  "documentation": [
+    "docs/conformance/markdown-targets.md",
+    "docs/conformance/markdown-profile-matrix.json",
+    "docs/conformance/certification-boundary.md",
+    "docs/adr/ADR-0007-markdown-target-freeze-and-certification-boundary.md",
+    "docs/current-state/phase-0-certification-freeze-assessment.md",
+    "docs/current-state/v1-v2-gap-ledger.md"
+  ],
+  "openClosureCategories": [
+    "commonmark-gfm-corpus-closure",
+    "optional-profile-closure",
+    "v1-v2-uix-parity-closure",
+    "settings-git-theme-i18n-completeness",
+    "browser-visual-packed-artifact-evidence-depth"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/example-renderer-basic",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.1-rc.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,8 @@
     "lint": "npm run typecheck"
   },
   "dependencies": {
-    "@mdwrk/markdown-renderer-react": "^1.0.1",
-    "@mdwrk/ui-tokens": "^1.0.1",
+    "@mdwrk/markdown-renderer-react": "^1.1.0-rc.1",
+    "@mdwrk/ui-tokens": "^1.2.0-rc.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -1,0 +1,62 @@
+{
+  "phase": 20,
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "checkpointType": "gate-b-certification-closure-rerun",
+  "summary": {
+    "greenLaneCount": 9,
+    "blockedLaneCount": 3,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "advancementOverPhase19": {
+    "commonmark": {
+      "phase19Passed": 434,
+      "phase20Passed": 434,
+      "deltaPassed": 0,
+      "phase19Failed": 218,
+      "phase20Failed": 218,
+      "deltaFailed": 0
+    },
+    "gfm": {
+      "phase19Passed": 444,
+      "phase20Passed": 444,
+      "deltaPassed": 0,
+      "phase19Failed": 228,
+      "phase20Failed": 228,
+      "deltaFailed": 0
+    },
+    "visualRegressionLane": {
+      "phase19Status": "blocked",
+      "phase20Status": "green"
+    },
+    "packedTarballInstallLane": {
+      "phase19Status": "blocked",
+      "phase20Status": "green"
+    },
+    "browserMatrixLane": {
+      "phase19Status": "blocked",
+      "phase20Status": "blocked"
+    },
+    "shellParity": {
+      "phase20Passed": 11,
+      "phase20Total": 11
+    },
+    "settingsParity": {
+      "phase20Passed": 34,
+      "phase20Total": 34
+    }
+  },
+  "evidence": {
+    "commonmark": "artifacts/conformance/latest/phase-20-commonmark-official-summary.json",
+    "gfm": "artifacts/conformance/latest/phase-20-gfm-official-summary.json",
+    "optionalProfiles": "artifacts/conformance/latest/phase-20-optional-profile-summary.json",
+    "results": "artifacts/conformance/latest/phase-20-certification-gate-results.json",
+    "checklist": "artifacts/conformance/latest/phase-20-certification-gate-checklist.md"
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  }
+}

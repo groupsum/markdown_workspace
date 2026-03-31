@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ExtensionSettingsSchema } from '@mdwrk/extension-manifest';
 import type { ExtensionRuntimeRegistrationSink } from '@mdwrk/extension-runtime';
 import type { ClientRuntimeServices } from '../../app/runtime/clientRuntimeTypes';
 import type { RegisteredCommand, RegisteredSettingsSection, RegisteredView } from '@mdwrk/extension-host';
@@ -28,7 +29,7 @@ function createSettingsSectionPlaceholder(extensionId: string, section: Register
             </div>
           )}
         </div>
-        <p className="text-[10px] uppercase text-[var(--fg-muted)]">Settings section renderers beyond schema-backed placeholders are deferred to later extension phases.</p>
+        <p className="text-[10px] uppercase text-[var(--fg-muted)]">Settings renderer unavailable for this extension section.</p>
       </div>
     </div>
   );
@@ -75,11 +76,14 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
       return services.actionRail.register(item);
     },
     registerSettingsSection(extensionId: string, section: RegisteredSettingsSection) {
+      const schema = (section as RegisteredSettingsSection & { schema?: ExtensionSettingsSchema }).schema;
       return services.settingsRegistry.register({
         ...section,
         panel: 'extensions',
         icon: { kind: 'lucide', name: 'Puzzle' },
-        render: () => createSettingsSectionPlaceholder(extensionId, section),
+        extensionId,
+        schema,
+        render: schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section),
       });
     },
   };

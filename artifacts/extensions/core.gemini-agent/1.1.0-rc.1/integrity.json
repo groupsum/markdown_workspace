@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-03-31T05:49:05.446Z",
+  "artifact": {
+    "id": "core.gemini-agent",
+    "packageName": "@mdwrk/extension-gemini-agent",
+    "version": "1.1.0-rc.1",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.0-rc.1",
+    "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "generatedAt": "2026-03-31T05:49:04.811Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "9d616861561c0517938ce9d334ad50033a27555cc07c52c9f298d29fdacc2a1d"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "9b6fb9a12890ef9db088bd9f967acd42aad3bbf208a79758e55da9fa733663bd"
+    },
+    {
+      "path": "package.json",
+      "sha256": "1615fe6804ac96134231b0b12d9f4faaa11a8b307d721bffb86f90fdb639f223"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c63a6cf7c3a7b79b22a0d4f84930d8c705536383ecd02f16f879a90c8d7618c7"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "bebfe08fe3bf47fa3c1a81f30a1f317d2b41a672cc4ae9bf02e431465a47f50c"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

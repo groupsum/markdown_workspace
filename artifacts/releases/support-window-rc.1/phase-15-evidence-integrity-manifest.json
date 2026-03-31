@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "trainId": "promotion-rc.1",
+  "immutableIntent": true,
+  "note": "This manifest preserves the SHA-256 digests of the release-evidence chain carried forward from Phases 12 through 14 plus the promotion bundle contents.",
+  "fileCount": 70,
+  "files": [
+    {
+      "path": "artifacts/conformance/latest/phase-12-browser-matrix-report.json",
+      "bytes": 670,
+      "sha256": "03b7d88d65f486c6bc32e8c25d85f3dffa39a7a3767daf3ea61dd06335544e45"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-certification-checklist.md",
+      "bytes": 2667,
+      "sha256": "af391fa59a9f581002076bb29121e25eb24035ccd31190654a85f94c37fbaf4e"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-changeset-version-inventory.json",
+      "bytes": 3816,
+      "sha256": "1a0b6a03fbe6ef5a15be81ab7a3229e134028e555aa3b1b1c9750a25884b8f88"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-closure-suite-checkpoint.json",
+      "bytes": 775,
+      "sha256": "656144c1257f784913aa522ff646c5e14f06f88650e51b2c05d22875c24e3836"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-closure-suite-output.txt",
+      "bytes": 7748,
+      "sha256": "a1f586bbc4f99ac91b1afc3eea2b47f98a30640af71f7d5f9cd40c271b3fd62d"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-closure-suite-results.json",
+      "bytes": 7749,
+      "sha256": "0b547d8e2657c370a41de494a8228cafc2e630d9bea2ef9320d33e068b61534a"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-commonmark-corpus-summary.json",
+      "bytes": 5137,
+      "sha256": "ee58261dd6aaac4e7e761a189cd5512923471c13eadfdb1a93e4510e5660cacd"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-conformance-command-output.txt",
+      "bytes": 13490,
+      "sha256": "5361a14021358dba38262c5456a5c8eb96ecf06d3332b4634a2567a79912a698"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-editor-core-smoke.txt",
+      "bytes": 31,
+      "sha256": "e4b03d706377c98e0dd0a6769dfb3792f023f50b2669f4da00587f5d958252cb"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-editor-react-smoke.txt",
+      "bytes": 32,
+      "sha256": "fab0f287a69b7b2178920c2c037ddc6afdbebf3cb148097afd623229448065d8"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-extension-compatibility-manifest.json",
+      "bytes": 3950,
+      "sha256": "d8f3c2abbbe89e3e773e5687ddc3c880abf147e3c5707f989ae1ad74ed05317a"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-extension-runtime-smoke.txt",
+      "bytes": 37,
+      "sha256": "8a50a4129d6b6ca450dbebb442652a9145c474aa13c19bd5821289bedaecb256"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-gfm-corpus-summary.json",
+      "bytes": 3130,
+      "sha256": "817f32ac921dbf07647a0d18f74c9683e8866e5de21efd726070e0473f5cffec"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-i18n-smoke.txt",
+      "bytes": 22,
+      "sha256": "13e4d9e830d71cb8577472fac656918583eac384b010687841d5ea2699b62a0e"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-optional-profile-lanes.json",
+      "bytes": 1374,
+      "sha256": "d941a07bf4a75495ac0ed3df6c611ef6bbd6fe31f9771d4838552f8e08db8afd"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-packed-tarball-install-log.txt",
+      "bytes": 695,
+      "sha256": "982a05f052e3c6eb56f584dd19d7babe29f6179c3d2123c06f03c98b23cc1364"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-packed-tarball-install-report.json",
+      "bytes": 604,
+      "sha256": "e61d10cd94710a6f49cf6bba7fe88ffd5915cb2d3f34ba5ba5f1c51375e23b69"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-preview-export-lane.json",
+      "bytes": 935,
+      "sha256": "e7f558ef5d093d614a6add896787ce3b32de774073b5bfff0a7285125c7b255a"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-release-evidence-bundle-manifest.json",
+      "bytes": 4434,
+      "sha256": "e2dacd6df559a322bbfada99b1f7a0ad9382d507b0b17a5b2b5dfdb217f660a5"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-release-notes-draft.md",
+      "bytes": 2485,
+      "sha256": "dc73be7d5fe8219cecd72d0408644850df367b265fd43bc7bc86b5361e36a1a7"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-snapshot-manifests.json",
+      "bytes": 539,
+      "sha256": "b3e8286a34c2fde40d8d968e43dd298c1c1ecbb4e8aab632e5643ba4602d87ad"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-ui-tokens-smoke.txt",
+      "bytes": 198,
+      "sha256": "d34b4ccdf776cbb384c23210367cadbb69df1500131a45e03e7ccae78c2f256a"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-12-visual-regression-report.json",
+      "bytes": 1510,
+      "sha256": "741de1a47377dade5b39ded8061d30d7c6b53527cc7356ca30bd09d31d64305d"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-app-and-example-validation.json",
+      "bytes": 1317,
+      "sha256": "86c2917767edb400f9ebf7fc92dc4eb0bcb49663521d4d4d81ed53cac33caf39"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-internal-range-audit.json",
+      "bytes": 17041,
+      "sha256": "b5a834d07433555977ea2cd417bcee704202c409590f6ca447b391b40046a365"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-packed-install-log.txt",
+      "bytes": 715,
+      "sha256": "ed0f3264a95ff3c285c8112e0dc2effa981c5eb6ccc24f1fba6f701aacbe6c20"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-packed-install-report.json",
+      "bytes": 742,
+      "sha256": "eb99e7b61805025ef38540d462bd6e31fe242ab4b9b283e294ddbb8f97c1ab72"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-private-pack-report.json",
+      "bytes": 1198,
+      "sha256": "af1c64cf184d47cc9cde90406967d6e2b392ffc55b0fe201b86ffe7a12527347"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-rc-acceptance-checklist.md",
+      "bytes": 1398,
+      "sha256": "079c8833710cbe0a0b3511e7ff474ef25911dcb13fb2e7839882d8b8a4188289"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-rc-tarball-catalog.json",
+      "bytes": 7221,
+      "sha256": "b73fd9c73693e6f85d28f96ed784dbcbb77a17e1ce3a385d51a7172198a17031"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-rc-train-checkpoint.json",
+      "bytes": 2401,
+      "sha256": "a37412daf8e5941292125bcd600cd2b7f2176ef995c83a299b2608c65eaa382f"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-rc-train-results.json",
+      "bytes": 7243,
+      "sha256": "ef388819d3e377f6ee06185da7d2142d18064e9403ace9d2c75b1a661d2d521c"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-release-notes-draft.md",
+      "bytes": 2191,
+      "sha256": "f7f623bb8e7090220b538ad0b370b1b16f91351e4225291568392b6b61a1670a"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-release-status.json",
+      "bytes": 983,
+      "sha256": "d91376d08ae232ade5fa1436bec95f74710ff74e8c166a4ba0981bd76d38de76"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-release-status.txt",
+      "bytes": 1157,
+      "sha256": "5539f48a8c7951db372acdb02e5d0b4f1beb1f675e895e82625df4d4abad10a8"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-13-version-inventory.json",
+      "bytes": 6990,
+      "sha256": "cfdfc9e7305c4e55a5f9714572ceaad01cf95ba704ba3a7417733e74a6458628"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-extension-catalog.json",
+      "bytes": 4849,
+      "sha256": "17f79e7343fa9b5611a4f7efec21b10ff3a6f7b0580fcd138b94a19d8d1b829c"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-git-tag-metadata.json",
+      "bytes": 292,
+      "sha256": "eb06d9f878cf0bfb5c6dd18fc66903defe7096d09cc728ced0a2045d7a91a7d9"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-github-release-metadata.json",
+      "bytes": 391,
+      "sha256": "970f79ad793269e469e5d47b08fa1f158e5c6e448709513eee6b9baeb13bfc4e"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-promotion-release-checkpoint.json",
+      "bytes": 1497,
+      "sha256": "e524535d5cabd16ef2a6d93cd8274a70eed428d8fefd9cfd67ead5b6d71d47c4"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-promotion-release-results.json",
+      "bytes": 17928,
+      "sha256": "96a87b363c7f76cfa50522811df7a467c6b58abb326e2e1e94174c37a24680f3"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-publish-order.json",
+      "bytes": 5964,
+      "sha256": "52cb54b517d284859cba309ef9f20422d5c818ed1207b11ef2ce0467ab8b04b4"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-publish-output.txt",
+      "bytes": 3641,
+      "sha256": "90a971b0faab6577bfa7209252562af9aa320fc630b2ca33bde93d57377e5d51"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-published-artifact-compatibility.json",
+      "bytes": 507,
+      "sha256": "07fd4080e07209dbe7ec23062a1023e04e8afd25cb332bb311404774f26212d7"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-published-packages.json",
+      "bytes": 5277,
+      "sha256": "dcb11f8e93c57673d00de3340a51b45e311ee91c03a674be896843fcbd062241"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-release-evidence-output.txt",
+      "bytes": 3349,
+      "sha256": "22afbe3233974b5c8c93b970a7f7e7bb0596c52889bfea6467b3af788a2d07c2"
+    },
+    {
+      "path": "artifacts/conformance/latest/phase-14-release-notes.md",
+      "bytes": 3208,
+      "sha256": "e6b4cd451f51ae45aecedabb3dce489d2d55fdff0efecc943eb09c595e9f7862"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/bundle-manifest.json",
+      "bytes": 4482,
+      "sha256": "33590ddb4c83b5d1112d4afe1d73412fb4364ea1a3a7aa84ab925635500b06af"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/extension-artifact-bundle.tar.gz",
+      "bytes": 108451,
+      "sha256": "689b1013131f8b75569a0ee312a685d421fb77ba48a809a612326e27482220dd"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/final-evidence-bundle.tar.gz",
+      "bytes": 17812,
+      "sha256": "454bdc537c533cee409d306629209e78495d5c093b25c86a1242df50da2bfabe"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/package-inventory.json",
+      "bytes": 3907,
+      "sha256": "0f144181d94ab204472e819b0aa11f421f370dbdf78b22560a6e6e8b2f549b07"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-12-closure-suite-checkpoint.json",
+      "bytes": 775,
+      "sha256": "656144c1257f784913aa522ff646c5e14f06f88650e51b2c05d22875c24e3836"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-12-closure-suite-results.json",
+      "bytes": 7749,
+      "sha256": "0b547d8e2657c370a41de494a8228cafc2e630d9bea2ef9320d33e068b61534a"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-app-and-example-validation.json",
+      "bytes": 1317,
+      "sha256": "86c2917767edb400f9ebf7fc92dc4eb0bcb49663521d4d4d81ed53cac33caf39"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-packed-install-log.txt",
+      "bytes": 715,
+      "sha256": "ed0f3264a95ff3c285c8112e0dc2effa981c5eb6ccc24f1fba6f701aacbe6c20"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-packed-install-report.json",
+      "bytes": 742,
+      "sha256": "eb99e7b61805025ef38540d462bd6e31fe242ab4b9b283e294ddbb8f97c1ab72"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-rc-tarball-catalog.json",
+      "bytes": 7221,
+      "sha256": "b73fd9c73693e6f85d28f96ed784dbcbb77a17e1ce3a385d51a7172198a17031"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-rc-train-checkpoint.json",
+      "bytes": 2401,
+      "sha256": "a37412daf8e5941292125bcd600cd2b7f2176ef995c83a299b2608c65eaa382f"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-rc-train-results.json",
+      "bytes": 7243,
+      "sha256": "ef388819d3e377f6ee06185da7d2142d18064e9403ace9d2c75b1a661d2d521c"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-13-version-inventory.json",
+      "bytes": 6990,
+      "sha256": "cfdfc9e7305c4e55a5f9714572ceaad01cf95ba704ba3a7417733e74a6458628"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-extension-catalog.json",
+      "bytes": 4849,
+      "sha256": "17f79e7343fa9b5611a4f7efec21b10ff3a6f7b0580fcd138b94a19d8d1b829c"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-git-tag-metadata.json",
+      "bytes": 292,
+      "sha256": "eb06d9f878cf0bfb5c6dd18fc66903defe7096d09cc728ced0a2045d7a91a7d9"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-github-release-metadata.json",
+      "bytes": 391,
+      "sha256": "970f79ad793269e469e5d47b08fa1f158e5c6e448709513eee6b9baeb13bfc4e"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-publish-order.json",
+      "bytes": 5964,
+      "sha256": "52cb54b517d284859cba309ef9f20422d5c818ed1207b11ef2ce0467ab8b04b4"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-published-artifact-compatibility.json",
+      "bytes": 507,
+      "sha256": "07fd4080e07209dbe7ec23062a1023e04e8afd25cb332bb311404774f26212d7"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-published-packages.json",
+      "bytes": 5277,
+      "sha256": "dcb11f8e93c57673d00de3340a51b45e311ee91c03a674be896843fcbd062241"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/phase-14-release-notes.md",
+      "bytes": 3208,
+      "sha256": "e6b4cd451f51ae45aecedabb3dce489d2d55fdff0efecc943eb09c595e9f7862"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/publish-readiness.json",
+      "bytes": 3550,
+      "sha256": "f1cc53eeecb4448e6294a772056e4a8fbb6f65038a790d7edfd7b2e13a0206d5"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/README.md",
+      "bytes": 309,
+      "sha256": "d3f819644a0ba691721740049c13df224c04a973f58a8a43fa6c62edef13aef3"
+    },
+    {
+      "path": "artifacts/releases/promotion-rc.1/release-evidence.json",
+      "bytes": 3244,
+      "sha256": "95e6f92e258eaef6e09efb166d48141c8870133fe70f05f4b652475432b8b2a1"
+    }
+  ]
+}

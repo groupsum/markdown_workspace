@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Download, RefreshCw } from 'lucide-react';
+import { Download, RefreshCw } from 'lucide-react';
 import { Chassis } from '../../components/Chassis/Chassis';
 import { Footer } from '../../components/Chassis/Footer/Footer';
 import { GitPane } from '../../components/Chassis/Git/GitPane';
@@ -8,43 +8,48 @@ import { WorkPane } from '../../components/Chassis/WorkPane/WorkPane';
 import { InputModal } from '../../components/Modals/InputModal';
 import { ProjectSelector } from '../../components/Project/ProjectSelector';
 import { ToastContainer } from '../../components/UI/Toast';
-import { APP_VERSION } from '../../constants';
+import { APP_BUILD_ID, APP_VERSION, MARKDOWN_IMPORT_REQUEST_EVENT } from '../../constants';
+import { useClientI18n } from '../features/i18n/useClientI18n';
 import { ActionRailHost } from './ActionRailHost';
 import { ViewLayerHost } from './ViewLayerHost';
 import { useClientRuntimeServices, useClientRuntimeSnapshot } from '../app/runtime/ClientRuntimeContext';
 
 export const AppShell: React.FC = () => {
   const runtime = useClientRuntimeSnapshot();
+  const markdownImportRef = React.useRef<HTMLInputElement>(null);
   const services = useClientRuntimeServices();
+  const { t } = useClientI18n();
   const { state, actions } = runtime.app;
   const { state: pwaState, actions: pwaActions } = runtime.pwa;
 
   const pwaAction = pwaState.canInstall
     ? {
-        label: 'Install PWA',
-        title: 'Install Lattice Architect',
+        label: t('core.header.pwa.install.label', 'Install PWA'),
+        title: t('core.header.pwa.install.title', 'Install MdWrkSpace'),
         icon: <Download size={16} />,
         onClick: pwaActions.promptInstall,
         disabled: false,
       }
     : pwaState.updateAvailable
       ? {
-          label: 'Update PWA',
-          title: 'Update available',
+          label: t('core.header.pwa.update.label', 'Update PWA'),
+          title: t('core.header.pwa.update.title', 'Apply the latest update'),
           icon: <RefreshCw size={16} />,
           onClick: pwaActions.requestUpdate,
           disabled: false,
         }
-      : {
-          label: 'PWA Installed',
-          title: 'PWA installed',
-          icon: <CheckCircle size={16} />,
-          onClick: undefined,
-          disabled: true,
-        };
+      : null;
+
+  React.useEffect(() => {
+    const handleImportRequest = () => markdownImportRef.current?.click();
+    window.addEventListener(MARKDOWN_IMPORT_REQUEST_EVENT, handleImportRequest);
+    return () => {
+      window.removeEventListener(MARKDOWN_IMPORT_REQUEST_EVENT, handleImportRequest);
+    };
+  }, []);
 
   if (state.loading) {
-    return <div className="boot-screen">BOOT SEQUENCE...</div>;
+    return <div className="boot-screen">{t('core.boot.sequence', 'BOOT SEQUENCE...')}</div>;
   }
 
   const content = !state.activeProjectId ? (
@@ -68,7 +73,7 @@ export const AppShell: React.FC = () => {
         activeTabId={state.activeTabId}
         appMode={state.appMode}
         zoom={state.zoom}
-        pwaAction={pwaAction}
+        pwaAction={pwaAction ?? undefined}
         onSwitchProject={actions.switchToProjectSelector}
         onTabSelect={(tabId, fileId) => {
           actions.setActiveTabId(tabId);
@@ -92,6 +97,7 @@ export const AppShell: React.FC = () => {
             theme={state.theme}
             viewMode={state.viewMode}
             currentThemeDef={state.currentThemeDef}
+            showLineNumbers={state.showLineNumbers}
             sidebarOpen={state.sidebarOpen}
             sidebarWidth={state.sidebarWidth}
             onSidebarToggle={actions.setSidebarOpen}
@@ -118,13 +124,32 @@ export const AppShell: React.FC = () => {
         )}
       </section>
 
+      <input
+        ref={markdownImportRef}
+        type="file"
+        accept=".md,.markdown,text/markdown,text/plain"
+        multiple
+        hidden
+        onChange={(event) => {
+          const files = event.target.files;
+          if (files && files.length > 0) {
+            void actions.handleImportMarkdown(files);
+          }
+          event.currentTarget.value = '';
+        }}
+      />
+
       <Footer
         className="status-bar"
         cursorLine={state.cursorPos.line}
         cursorCol={state.cursorPos.col}
         unsaved={state.unsaved}
-        version={APP_VERSION}
+        shellVersion={APP_VERSION}
+        buildId={APP_BUILD_ID}
         online={runtime.online}
+        isInstalled={pwaState.isInstalled}
+        updateAvailable={runtime.updateAvailable || pwaState.updateAvailable}
+        autoSaveEnabled={state.autoSaveEnabled}
       />
     </div>
   );
@@ -133,9 +158,9 @@ export const AppShell: React.FC = () => {
     <Chassis zoom={state.zoom} mode={state.activeProjectId ? 'project' : 'selector'}>
       {runtime.updateAvailable && (
         <div className="update-banner">
-          <span>ARCHITECTURE UPDATE READY</span>
+          <span>{t('core.update-banner.ready', 'ARCHITECTURE UPDATE READY')}</span>
           <button onClick={pwaActions.requestUpdate} className="update-btn">
-            <RefreshCw size={12} /> RELOAD
+            <RefreshCw size={12} /> {t('core.update-banner.reload', 'RELOAD')}
           </button>
         </div>
       )}

@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-03-31T09:46:02.128Z",
+  "phase": 22,
+  "testsRoot": "apps/client/tests/playwright",
+  "specFiles": [
+    "apps/client/tests/playwright/shell-smoke.spec.ts",
+    "apps/client/tests/playwright/preview-export.spec.ts",
+    "apps/client/tests/playwright/settings-and-i18n.spec.ts",
+    "apps/client/tests/playwright/browser-matrix.spec.ts"
+  ],
+  "logicalCaseCount": 6,
+  "requiredProjects": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "expectedMatrixCaseCount": 18,
+  "browserAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/firefox",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/firefox-esr",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/epiphany-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.1/MiniBrowser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.0/MiniBrowser",
+          "source": "system-fallback"
+        }
+      ]
+    }
+  ],
+  "logicalCases": [
+    {
+      "id": "shell-smoke::shell boots and exposes key chrome surfaces",
+      "specPath": "apps/client/tests/playwright/shell-smoke.spec.ts"
+    },
+    {
+      "id": "preview-export::preview/export surfaces remain reachable",
+      "specPath": "apps/client/tests/playwright/preview-export.spec.ts"
+    },
+    {
+      "id": "settings-and-i18n::settings and theme/language selectors are reachable",
+      "specPath": "apps/client/tests/playwright/settings-and-i18n.spec.ts"
+    },
+    {
+      "id": "browser-matrix::shell chrome boots",
+      "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts"
+    },
+    {
+      "id": "browser-matrix::preview surface remains reachable",
+      "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts"
+    },
+    {
+      "id": "browser-matrix::settings probe remains reachable",
+      "specPath": "apps/client/tests/playwright/browser-matrix.spec.ts"
+    }
+  ]
+}

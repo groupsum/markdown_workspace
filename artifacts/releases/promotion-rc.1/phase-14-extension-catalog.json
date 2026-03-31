@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "releaseTrain": "rc.1",
+  "promotionStatus": "blocked",
+  "sourceCatalogPath": "artifacts/extensions/catalog.json",
+  "signingPolicy": "Artifacts remain signed where signing is required by current repository policy.",
+  "catalog": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-03-29T19:54:06.193Z",
+    "generator": "tools/extensions/build-installable-extensions.mjs",
+    "baseUrl": "./",
+    "ok": true,
+    "extensions": [
+      {
+        "entryId": "external.catalog-hello@1.1.0-rc.1",
+        "extensionId": "external.catalog-hello",
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "version": "1.1.0-rc.1",
+        "displayName": {
+          "defaultMessage": "Catalog Hello",
+          "key": "manifest.displayName",
+          "description": "Display name for the sample external catalog extension."
+        },
+        "description": {
+          "defaultMessage": "Sample third-party extension installed from a signed external catalog artifact.",
+          "key": "manifest.description",
+          "description": "Description for the sample external catalog extension."
+        },
+        "publisher": "demo-catalog",
+        "icon": {
+          "kind": "svg",
+          "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 6h16v12H4z\"/><path d=\"M9 10h6\"/><path d=\"M9 14h6\"/></svg>"
+        },
+        "categories": [
+          "sample",
+          "external"
+        ],
+        "keywords": [
+          "hello",
+          "catalog",
+          "sample"
+        ],
+        "capabilities": [
+          "view.register",
+          "actionRail.register",
+          "notification.publish",
+          "settings.read"
+        ],
+        "compatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=0.1.0",
+          "themeContract": "^1.0.0"
+        },
+        "supportedLocales": [
+          "en"
+        ],
+        "urls": {
+          "manifest": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/manifest.json",
+          "signedManifest": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/signed-manifest.json",
+          "module": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/dist/index.js",
+          "integrity": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/integrity.json"
+        },
+        "integrity": {
+          "manifest": {
+            "algorithm": "sha256",
+            "digest": "804f968bffd6d9603c984b9b4a8db51a46578013f6adc802590a3d5dc5a06c0d"
+          },
+          "module": {
+            "algorithm": "sha256",
+            "digest": "92e150b975f628ca2af2221e9ede0ff391a5283ab395bf1b794a65277ba217e6"
+          }
+        },
+        "support": {
+          "status": "experimental",
+          "level": "community",
+          "owner": "demo-catalog"
+        }
+      }
+    ],
+    "failures": []
+  },
+  "index": {
+    "generatedAt": "2026-03-29T19:54:06.193Z",
+    "generator": "tools/extensions/build-installable-extensions.mjs",
+    "ok": true,
+    "artifacts": [
+      {
+        "id": "external.catalog-hello",
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "version": "1.1.0-rc.1",
+        "kind": "external",
+        "artifactPath": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1",
+        "entryModulePath": "dist/index.js",
+        "supportedLocales": [
+          "en"
+        ],
+        "generatedAt": "2026-03-29T19:54:05.848Z"
+      },
+      {
+        "id": "core.gemini-agent",
+        "packageName": "@mdwrk/extension-gemini-agent",
+        "version": "1.1.0-rc.1",
+        "kind": "bundled",
+        "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.0-rc.1",
+        "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "generatedAt": "2026-03-29T19:54:05.966Z"
+      },
+      {
+        "id": "core.extension-manager",
+        "packageName": "@mdwrk/extension-manager",
+        "version": "1.1.0-rc.1",
+        "kind": "bundled",
+        "artifactPath": "artifacts/extensions/core.extension-manager/1.1.0-rc.1",
+        "entryModulePath": "dist/index.js",
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "generatedAt": "2026-03-29T19:54:06.071Z"
+      },
+      {
+        "id": "core.theme-studio",
+        "packageName": "@mdwrk/extension-theme-studio",
+        "version": "1.1.0-rc.1",
+        "kind": "bundled",
+        "artifactPath": "artifacts/extensions/core.theme-studio/1.1.0-rc.1",
+        "entryModulePath": "dist/index.js",
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "generatedAt": "2026-03-29T19:54:06.193Z"
+      }
+    ],
+    "failures": []
+  }
+}

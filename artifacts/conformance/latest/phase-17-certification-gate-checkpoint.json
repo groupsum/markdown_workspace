@@ -1,0 +1,32 @@
+{
+  "phase": 17,
+  "generatedAt": "2026-03-30T09:30:07.439Z",
+  "checkpointType": "gate-b-certification-closure-rerun",
+  "packageEvidencePassed": 193,
+  "rcEvidenceOk": true,
+  "certificationPolicyModel": "certify-first-then-promote",
+  "officialCorpus": {
+    "commonmark": {
+      "total": 652,
+      "passed": 360,
+      "failed": 292
+    },
+    "gfm": {
+      "total": 672,
+      "passed": 370,
+      "failed": 302
+    }
+  },
+  "summary": {
+    "greenLaneCount": 7,
+    "blockedLaneCount": 5,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  }
+}

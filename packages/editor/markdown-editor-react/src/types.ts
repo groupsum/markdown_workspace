@@ -4,6 +4,7 @@ import type {
   MarkdownEditorCommandOptions,
   MarkdownEditorHistoryState,
   MarkdownEditorHostEditApi,
+  MarkdownEditorSelectionFormatState,
   MarkdownEditorSelection,
   MarkdownEditorSnapshot,
 } from "@mdwrk/markdown-editor-core";
@@ -15,6 +16,7 @@ export interface MarkdownSourceEditorProps {
   readonly documentKey?: string | number;
   readonly onChange?: (value: string) => void;
   readonly onSelectionChange?: (selection: MarkdownEditorSelection) => void;
+  readonly onSelectionFormatChange?: (state: MarkdownEditorSelectionFormatState) => void;
   readonly onCursorChange?: (line: number, column: number) => void;
   readonly onHistoryChange?: (history: MarkdownEditorHistoryState) => void;
   readonly onCommand?: (command: MarkdownEditorBuiltinCommandId) => void;

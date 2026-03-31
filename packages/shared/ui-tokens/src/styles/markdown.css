@@ -3,7 +3,7 @@
 /* MARKDOWN STYLES (Scoped) */
 .markdown-body {
   font-family: var(--font-ui);
-  line-height: 1.6;
+  line-height: var(--markdown-line-height);
   font-size: calc(0.95rem * var(--ui-scale));
   color: var(--fg-primary);
   overflow-wrap: anywhere;
@@ -18,9 +18,10 @@
 .markdown-body h6 {
   font-family: var(--font-head);
   color: var(--fg-primary);
-  margin-top: 1.5em;
+  margin-top: 0.25em;
   margin-bottom: 0.5em;
   font-weight: 700;
+  line-height: var(--markdown-heading-line-height);
 }
 
 .markdown-body h1 { font-size: calc(2em * var(--ui-scale)); border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
@@ -146,6 +147,82 @@
 }
 .markdown-body sub {
   bottom: -0.2em;
+}
+
+.markdown-body .md-footnote-reference {
+  margin-left: 0.1em;
+}
+
+.markdown-body .md-footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--fg-secondary);
+  font-size: calc(0.9rem * var(--ui-scale));
+}
+
+.markdown-body .md-footnotes ol {
+  padding-left: 1.5rem;
+}
+
+.markdown-body .md-footnote-backlink {
+  margin-left: 0.5rem;
+  font-size: 0.9em;
+}
+
+.markdown-body .md-definition-list {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) 1fr;
+  gap: 0.5rem 1rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.markdown-body .md-definition-term {
+  font-weight: 700;
+}
+
+.markdown-body .md-definition-description {
+  margin: 0;
+}
+
+.markdown-body .md-definition-description > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-body .md-math-inline code,
+.markdown-body .md-math-block code {
+  font-family: var(--font-mono);
+}
+
+.markdown-body .md-math-inline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.2em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.markdown-body .md-math-block {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-inset);
+}
+
+.markdown-body .md-math-block pre {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.markdown-body .md-citation {
+  font-style: normal;
+  color: var(--fg-secondary);
+  background: color-mix(in srgb, var(--fg-secondary) 12%, transparent);
+  border-radius: 4px;
+  padding: 0 0.25em;
 }
 
 /* Table Styles */

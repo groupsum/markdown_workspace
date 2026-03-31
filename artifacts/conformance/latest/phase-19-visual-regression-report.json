@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-03-30T22:15:20.751Z",
+  "status": "blocked",
+  "staticVisualBaselines": {
+    "count": 12,
+    "smokeThemeIds": [
+      "default",
+      "research-science",
+      "heavy-gauge-tectonic"
+    ],
+    "indexPath": "artifacts/conformance/latest/phase-9-theme-baselines/index.html"
+  },
+  "playwrightConfigPresent": true,
+  "playwrightSpecs": [
+    "preview-export.spec.ts",
+    "settings-and-i18n.spec.ts",
+    "shell-smoke.spec.ts"
+  ],
+  "reason": "Static HTML visual baselines are present, but a browser-driven pixel-diff run has not been executed in this environment.",
+  "phase": 19,
+  "note": "Blocked state carried forward pending a real browser-driven visual-diff run."
+}

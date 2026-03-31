@@ -1,0 +1,111 @@
+{
+  "phase": 7,
+  "generatedAt": "2026-03-28T06:23:49.820Z",
+  "boundary": "shell-parity-header-status-action-rail-layout",
+  "commands": {
+    "shellParity": "node apps/client/tests/phase7-shell-parity.mjs --json",
+    "checkpointGenerator": "node tools/conformance/generate-phase7-shell-checkpoint.mjs"
+  },
+  "results": {
+    "shellParity": {
+      "phase": 7,
+      "generatedAt": "2026-03-28T06:23:49.798Z",
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "checks": [
+        {
+          "id": "footer.runtime-label",
+          "pass": true
+        },
+        {
+          "id": "footer.update-ready",
+          "pass": true
+        },
+        {
+          "id": "action-rail.localized-aria-label",
+          "pass": true
+        },
+        {
+          "id": "action-rail.aria-pressed",
+          "pass": true
+        },
+        {
+          "id": "import-flow.command-and-rail",
+          "pass": true
+        },
+        {
+          "id": "import-flow.file-input",
+          "pass": true
+        },
+        {
+          "id": "import-flow.file-manager",
+          "pass": true
+        },
+        {
+          "id": "split-policy.source",
+          "pass": true
+        },
+        {
+          "id": "split-policy.landscape-allows",
+          "pass": true
+        },
+        {
+          "id": "split-policy.portrait-blocks",
+          "pass": true
+        },
+        {
+          "id": "cloud-sync.refresh-event",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "totalChecks": 11,
+    "totalPassed": 11,
+    "totalFailed": 0,
+    "structuralAudit": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0
+    }
+  },
+  "structuralAudit": {
+    "footer": {
+      "path": "apps/client/components/Chassis/Footer/Footer.tsx",
+      "runtimeLabelPresent": true,
+      "updateBadgePresent": true
+    },
+    "actionRail": {
+      "path": "apps/client/components/Chassis/ActionRail/ActionRail.tsx",
+      "localizedAriaPropPresent": true,
+      "ariaPressedPresent": true
+    },
+    "actionRailHost": {
+      "path": "apps/client/src/shell/ActionRailHost.tsx",
+      "localeAwareRerenderPresent": true
+    },
+    "appShell": {
+      "path": "apps/client/src/shell/AppShell.tsx",
+      "hiddenImportInputPresent": true,
+      "buildIdPropForwarded": true
+    },
+    "coreRegistrations": {
+      "path": "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "importCommandPresent": true,
+      "importRailItemPresent": true,
+      "cloudSyncRefreshEventPresent": true
+    },
+    "useApp": {
+      "path": "apps/client/hooks/useApp.ts",
+      "requestMarkdownImportActionPresent": true,
+      "handleImportMarkdownActionPresent": true
+    },
+    "splitViewPolicy": {
+      "path": "apps/client/src/features/layout/splitViewPolicy.ts",
+      "helperPresent": true,
+      "editorPaneUsesHelper": true
+    }
+  }
+}

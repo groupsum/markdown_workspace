@@ -1,1 +1,1 @@
-export const MARKDOWN_RENDERER_CORE_VERSION = "1.0.0";
+export const MARKDOWN_RENDERER_CORE_VERSION = "1.1.0-rc.1";

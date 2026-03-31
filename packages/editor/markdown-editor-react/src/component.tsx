@@ -6,8 +6,10 @@ import {
   canRedoHistory,
   canUndoHistory,
   computeCursorPosition,
+  computeSelectionFormatState,
   createSelection,
   createHistoryState,
+  insertListContinuation,
   normalizeSelection,
   pushHistoryEntry,
   redoHistory,
@@ -44,6 +46,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       documentKey,
       onChange,
       onSelectionChange,
+      onSelectionFormatChange,
       onCursorChange,
       onHistoryChange,
       onCommand,
@@ -59,7 +62,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       textareaClassName,
       gutterClassName,
       lineNumberClassName,
-      indentUnit = "\t",
+      indentUnit = "	",
       themeVariables,
     },
     ref,
@@ -128,6 +131,10 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       onCursorChange?.(cursor.line, cursor.column);
     }, [onCursorChange]);
 
+    const emitSelectionFormat = React.useCallback((nextValue: string, nextSelection: MarkdownEditorSelection) => {
+      onSelectionFormatChange?.(computeSelectionFormatState(nextValue, nextSelection));
+    }, [onSelectionFormatChange]);
+
     const syncSelectionFromTextarea = React.useCallback(() => {
       const textarea = textareaRef.current;
       if (!textarea) return createSelection(0, 0);
@@ -143,8 +150,9 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         onSelectionChange?.(nextSelection);
       }
       emitCursor(textarea.value, nextSelection);
+      emitSelectionFormat(textarea.value, nextSelection);
       return nextSelection;
-    }, [emitCursor, onSelectionChange]);
+    }, [emitCursor, emitSelectionFormat, onSelectionChange]);
 
     const commitValue = React.useCallback((
       nextValue: string,
@@ -165,10 +173,11 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       onChange?.(nextValue);
       onSelectionChange?.(normalizedSelection);
       emitCursor(nextValue, normalizedSelection);
+      emitSelectionFormat(nextValue, normalizedSelection);
       if (options.focus) {
         requestAnimationFrame(() => textareaRef.current?.focus());
       }
-    }, [emitCursor, onChange, onSelectionChange]);
+    }, [emitCursor, emitSelectionFormat, onChange, onSelectionChange]);
 
     const applyEditResult = React.useCallback((result: MarkdownEditorEditResult, options?: { historic?: boolean; focus?: boolean }) => {
       if (!result.changed && options?.historic !== false) return snapshotFromState(draftValueRef.current, selectionRef.current);
@@ -189,6 +198,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         onChange?.(nextHistory.present.value);
         onSelectionChange?.(nextHistory.present.selection);
         emitCursor(nextHistory.present.value, nextHistory.present.selection);
+        emitSelectionFormat(nextHistory.present.value, nextHistory.present.selection);
         onCommand?.(command);
         return nextHistory.present;
       }
@@ -201,6 +211,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         onChange?.(nextHistory.present.value);
         onSelectionChange?.(nextHistory.present.selection);
         emitCursor(nextHistory.present.value, nextHistory.present.selection);
+        emitSelectionFormat(nextHistory.present.value, nextHistory.present.selection);
         onCommand?.(command);
         return nextHistory.present;
       }
@@ -211,7 +222,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       const snapshot = applyEditResult(result, { focus: true });
       onCommand?.(command);
       return snapshot;
-    }, [applyEditResult, emitCursor, indentUnit, onChange, onCommand, onSelectionChange]);
+    }, [applyEditResult, emitCursor, emitSelectionFormat, indentUnit, onChange, onCommand, onSelectionChange]);
 
     React.useImperativeHandle(ref, () => ({
       focus(): void {
@@ -229,6 +240,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         pendingSelectionRef.current = normalized;
         onSelectionChange?.(normalized);
         emitCursor(draftValueRef.current, normalized);
+        emitSelectionFormat(draftValueRef.current, normalized);
       },
       applyEdit(result: MarkdownEditorEditResult, options?: { historic?: boolean }): void {
         applyEditResult(result, { historic: options?.historic, focus: true });
@@ -255,7 +267,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
           focus: true,
         });
       },
-    }), [applyEditResult, commitValue, emitCursor, executeCommand, onSelectionChange]);
+    }), [applyEditResult, commitValue, emitCursor, emitSelectionFormat, executeCommand, onSelectionChange]);
 
     const handleTextareaChange = React.useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
       const nextValue = event.currentTarget.value;
@@ -272,6 +284,13 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       syncSelectionFromTextarea();
       const meta = event.metaKey || event.ctrlKey;
       const key = event.key.toLowerCase();
+
+      if (!meta && event.key === "Enter") {
+        event.preventDefault();
+        const result = insertListContinuation(draftValueRef.current, selectionRef.current);
+        applyEditResult(result, { focus: true });
+        return;
+      }
 
       if (!meta && event.key === "Tab") {
         event.preventDefault();
@@ -305,7 +324,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         event.preventDefault();
         executeCommand("redo");
       }
-    }, [disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
+    }, [applyEditResult, disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
 
     const lineCount = React.useMemo(() => {
       const displayValue = isControlled ? (value ?? "") : draftValue;
@@ -358,6 +377,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
             autoFocus={autoFocus}
             disabled={disabled}
             placeholder={placeholder}
+            wrap="off"
             data-testid="markdown-source-editor"
           />
         </div>

@@ -15,6 +15,7 @@ export interface ActionRailItemModel {
 
 interface ActionRailProps {
   readonly items: readonly ActionRailItemModel[];
+  readonly ariaLabel?: string;
   readonly className?: string;
 }
 
@@ -34,6 +35,7 @@ const ToolbarButton: React.FC<ActionRailItemModel> = ({
     }}
     title={title}
     aria-label={title}
+    aria-pressed={active === undefined ? undefined : active}
     disabled={disabled}
     type="button"
   >
@@ -44,12 +46,12 @@ const ToolbarButton: React.FC<ActionRailItemModel> = ({
 
 const isTopGroup = (group: ActionRailGroup | undefined) => group === 'workspace.primary' || group === 'assistant';
 
-export const ActionRail: React.FC<ActionRailProps> = ({ items, className = '' }) => {
+export const ActionRail: React.FC<ActionRailProps> = ({ items, ariaLabel = 'Primary Actions', className = '' }) => {
   const topItems = items.filter((item) => isTopGroup(item.group));
   const bottomItems = items.filter((item) => !isTopGroup(item.group));
 
   return (
-    <nav className={`action-rail ${className}`} aria-label="Primary Actions">
+    <nav className={`action-rail ${className}`} aria-label={ariaLabel}>
       <div className="rail-group rail-group--top">
         {topItems.map((item) => (
           <ToolbarButton key={item.id} {...item} />

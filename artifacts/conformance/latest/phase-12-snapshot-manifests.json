@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-03-29T17:01:18.447Z",
+  "snapshotSets": [
+    {
+      "id": "ci-visual-smoke-digests",
+      "type": "asset-digests",
+      "source": "artifacts/ci/visual-smoke.json",
+      "count": 4
+    },
+    {
+      "id": "phase-9-theme-html-baselines",
+      "type": "static-html-visual-baselines",
+      "source": "artifacts/conformance/latest/phase-9-theme-visual-baselines.json",
+      "count": 12,
+      "smokeThemeIds": [
+        "default",
+        "research-science",
+        "heavy-gauge-tectonic"
+      ]
+    }
+  ]
+}

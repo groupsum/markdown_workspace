@@ -1,0 +1,43 @@
+{
+  "phase": 9,
+  "generatedAt": "2026-03-28T10:16:31.585Z",
+  "mode": "static-baseline-smoke",
+  "note": "The provided zip environment does not include a browser-driven packed-example lane. This artifact records structural smoke over the generated theme baseline pages for the required smoke themes and example package presence.",
+  "smokeThemeIds": [
+    "default",
+    "research-science",
+    "heavy-gauge-tectonic"
+  ],
+  "examplePackages": [
+    {
+      "name": "@mdwrk/example-editor-basic",
+      "path": "examples/editor-basic",
+      "present": true
+    },
+    {
+      "name": "@mdwrk/example-renderer-basic",
+      "path": "examples/renderer-basic",
+      "present": true
+    }
+  ],
+  "checks": [
+    {
+      "themeId": "default",
+      "baselinePresent": true,
+      "baselinePath": "artifacts/conformance/latest/phase-9-theme-baselines/default.html"
+    },
+    {
+      "themeId": "research-science",
+      "baselinePresent": true,
+      "baselinePath": "artifacts/conformance/latest/phase-9-theme-baselines/research-science.html"
+    },
+    {
+      "themeId": "heavy-gauge-tectonic",
+      "baselinePresent": true,
+      "baselinePath": "artifacts/conformance/latest/phase-9-theme-baselines/heavy-gauge-tectonic.html"
+    }
+  ],
+  "total": 3,
+  "passed": 3,
+  "failed": 0
+}

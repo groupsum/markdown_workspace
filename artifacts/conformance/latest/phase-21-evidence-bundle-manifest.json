@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-03-31T07:36:06Z",
+  "phase": 21,
+  "documents": [
+    "PHASE_21_CHECKPOINT_SUMMARY.md",
+    "docs/conformance/current-certification-status.md",
+    "docs/current-state/phase-21-markdown-and-playwright-assessment.md",
+    "docs/conformance/phase-21-markdown-lane-deltas.md"
+  ],
+  "artifacts": [
+    "artifacts/conformance/latest/phase-21-commonmark-official-summary.json",
+    "artifacts/conformance/latest/phase-21-commonmark-official-output.txt",
+    "artifacts/conformance/latest/phase-21-gfm-official-summary.json",
+    "artifacts/conformance/latest/phase-21-gfm-official-output.txt",
+    "artifacts/conformance/latest/phase-21-optional-profile-summary.json",
+    "artifacts/conformance/latest/phase-21-playwright-test-manifest.json",
+    "artifacts/conformance/latest/phase-21-browser-matrix-report.json",
+    "artifacts/conformance/latest/phase-21-browser-matrix-output.txt",
+    "artifacts/conformance/latest/phase-21-markdown-lane-deltas.json",
+    "artifacts/conformance/latest/phase-21-markdown-lane-deltas.md",
+    "artifacts/conformance/latest/phase-21-certification-gate-results.json",
+    "artifacts/conformance/latest/phase-21-certification-gate-checkpoint.json",
+    "artifacts/conformance/latest/phase-21-certification-gate-checklist.md"
+  ]
+}

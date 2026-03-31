@@ -1,0 +1,10 @@
+{
+  "spec": "GFM 0.29-gfm",
+  "engine": "python-markdown-it-adapter",
+  "fixturePath": "packages/renderer/markdown-renderer-core/tests/fixtures/official/gfm-0.29-gfm-spec.txt",
+  "total": 672,
+  "passed": 672,
+  "failed": 0,
+  "successRate": 1,
+  "sampleFailures": []
+}

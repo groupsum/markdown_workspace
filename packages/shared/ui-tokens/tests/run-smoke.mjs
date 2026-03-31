@@ -5,6 +5,7 @@ import {
   createEditorThemeBridgeVariableRecord,
   renderThemeBridgeCssVariables,
   renderThemeCssVariables,
+  MARKDOWN_WORKSPACE_UI_TOKEN_NAMES,
 } from '../dist/index.js';
 
 const darkTheme = createMarkdownWorkspaceThemeTokenMap({
@@ -62,5 +63,38 @@ assert.ok(editorCss.includes('--mwe-accent: #5eead4;'));
 const hostCss = renderThemeCssVariables(lightTheme, { selector: '.light-theme' });
 assert.ok(hostCss.includes('--bg-panel: #ffffff;'));
 assert.ok(hostCss.includes('--accent: #2563eb;'));
+
+const requiredPhase9Tokens = [
+  "editor-line-height",
+  "editor-line-rhythm",
+  "markdown-line-height",
+  "markdown-heading-line-height",
+  "line-number-gutter-width",
+  "mobile-rail-expanded-width",
+  "mobile-expandable-rail-width",
+];
+for (const tokenName of requiredPhase9Tokens) {
+  assert.ok(MARKDOWN_WORKSPACE_UI_TOKEN_NAMES.includes(tokenName));
+}
+
+const alignmentTheme = createMarkdownWorkspaceThemeTokenMap({
+  "editor-line-height": "1.75rem",
+  "editor-line-rhythm": "1.75rem",
+  "markdown-line-height": "1.75rem",
+  "markdown-heading-line-height": "1.2",
+  "line-number-gutter-width": "56px",
+  "mobile-rail-expanded-width": "100vw",
+  "mobile-expandable-rail-width": "100vw",
+});
+assert.equal(alignmentTheme["editor-line-height"], "1.75rem");
+
+const alignmentRendererBridge = createRendererThemeBridgeVariableRecord(alignmentTheme);
+assert.equal(alignmentRendererBridge["--mw-line-height"], "1.75rem");
+assert.equal(alignmentRendererBridge["--mw-heading-line-height"], "1.2");
+
+const alignmentEditorBridge = createEditorThemeBridgeVariableRecord(alignmentTheme);
+assert.equal(alignmentEditorBridge["--mwe-line-height"], "1.75rem");
+assert.equal(alignmentEditorBridge["--mwe-gutter-width"], "56px");
+
 
 console.log('ui-tokens smoke: ok');

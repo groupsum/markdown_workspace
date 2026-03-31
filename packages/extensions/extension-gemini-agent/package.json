@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-gemini-agent",
-  "version": "1.0.1",
+  "version": "1.1.0-rc.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -25,7 +25,7 @@
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.1",
     "@mdwrk/extension-manifest": "^1.0.0",
-    "@mdwrk/extension-runtime": "^1.0.1"
+    "@mdwrk/extension-runtime": "^1.1.0-rc.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",

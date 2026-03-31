@@ -3,7 +3,27 @@
   "changelog": false,
   "commit": false,
   "fixed": [],
-  "linked": [],
+  "linked": [
+    [
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-renderer-react"
+    ],
+    [
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/markdown-editor-react"
+    ],
+    [
+      "@mdwrk/i18n",
+      "@mdwrk/ui-tokens"
+    ],
+    [
+      "@mdwrk/extension-runtime",
+      "@mdwrk/extension-manager",
+      "@mdwrk/extension-theme-studio",
+      "@mdwrk/extension-gemini-agent",
+      "@mdwrk/extension-catalog-hello"
+    ]
+  ],
   "access": "public",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",

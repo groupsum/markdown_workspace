@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/markdown-editor-react",
-  "version": "1.0.2",
+  "version": "1.1.0-rc.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -25,8 +25,8 @@
   ],
   "description": "React bindings, textarea editor surface, command wiring, history integration, and theme bridge for the Markdown Workspace portable markdown editor.",
   "dependencies": {
-    "@mdwrk/markdown-editor-core": "^1.0.1",
-    "@mdwrk/ui-tokens": "^1.0.1"
+    "@mdwrk/markdown-editor-core": "^1.1.0-rc.1",
+    "@mdwrk/ui-tokens": "^1.2.0-rc.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -45,7 +45,7 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "vitest run",
+    "test": "node ./tests/run-smoke.mjs",
     "prepack": "npm run build"
   },
   "exports": {

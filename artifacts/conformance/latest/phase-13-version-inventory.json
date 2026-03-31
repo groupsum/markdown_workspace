@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-03-29T20:04:12Z",
+  "rootVersion": "0.2.0-rc.1",
+  "changesets": [
+    {
+      "file": "phase13-client-rc.md",
+      "packages": [
+        {
+          "name": "@mdwrk/mdwrkspace",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/lander",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/example-editor-basic",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/example-renderer-basic",
+          "bump": "patch"
+        }
+      ],
+      "summary": "Cut the RC.1 line for the app/example validation surfaces and verify them against tarballs rather than workspace symlinks."
+    },
+    {
+      "file": "phase13-editor-rc.md",
+      "packages": [
+        {
+          "name": "@mdwrk/markdown-editor-core",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/markdown-editor-react",
+          "bump": "patch"
+        }
+      ],
+      "summary": "Cut the RC.1 line for the editor family from the current feature-bearing baseline and validate downstream consumers against tarballs rather than workspace links."
+    },
+    {
+      "file": "phase13-extension-rc.md",
+      "packages": [
+        {
+          "name": "@mdwrk/extension-runtime",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/extension-manager",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/extension-theme-studio",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/extension-gemini-agent",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/extension-catalog-hello",
+          "bump": "patch"
+        }
+      ],
+      "summary": "Cut the RC.1 line for the extension family and regenerate installable artifacts, signatures, and compatibility evidence from the RC train."
+    },
+    {
+      "file": "phase13-renderer-rc.md",
+      "packages": [
+        {
+          "name": "@mdwrk/markdown-renderer-core",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/markdown-renderer-react",
+          "bump": "patch"
+        }
+      ],
+      "summary": "Cut the RC.1 line for the renderer family from the current feature-bearing baseline and validate downstream consumers against tarballs rather than workspace links."
+    },
+    {
+      "file": "phase13-shared-theme-rc.md",
+      "packages": [
+        {
+          "name": "@mdwrk/theme-contract",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/ui-tokens",
+          "bump": "patch"
+        },
+        {
+          "name": "@mdwrk/i18n",
+          "bump": "patch"
+        }
+      ],
+      "summary": "Cut the RC.1 line for the shared/theme family after the Phase 9 and Phase 10 behavior expansions and align internal dependents to semver-compatible RC ranges."
+    }
+  ],
+  "workspaces": [
+    {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0-rc.1",
+      "path": "apps/client",
+      "category": "app",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/lander",
+      "version": "0.0.11-rc.1",
+      "path": "apps/lander",
+      "category": "app",
+      "publishable": false,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/example-editor-basic",
+      "version": "0.1.1-rc.1",
+      "path": "examples/editor-basic",
+      "category": "example",
+      "publishable": false,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/example-renderer-basic",
+      "version": "0.1.1-rc.1",
+      "path": "examples/renderer-basic",
+      "category": "example",
+      "publishable": false,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-host",
+      "version": "1.0.1",
+      "path": "packages/contracts/extension-host",
+      "category": "contract",
+      "publishable": true,
+      "rc": false
+    },
+    {
+      "name": "@mdwrk/extension-manifest",
+      "version": "1.0.0",
+      "path": "packages/contracts/extension-manifest",
+      "category": "contract",
+      "publishable": true,
+      "rc": false
+    },
+    {
+      "name": "@mdwrk/theme-contract",
+      "version": "1.1.0-rc.1",
+      "path": "packages/contracts/theme-contract",
+      "category": "contract",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0-rc.1",
+      "path": "packages/editor/markdown-editor-core",
+      "category": "editor",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0-rc.1",
+      "path": "packages/editor/markdown-editor-react",
+      "category": "editor",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "version": "1.1.0-rc.1",
+      "path": "packages/extensions/extension-catalog-hello",
+      "category": "extension",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0-rc.1",
+      "path": "packages/extensions/extension-gemini-agent",
+      "category": "extension",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-manager",
+      "version": "1.1.0-rc.1",
+      "path": "packages/extensions/extension-manager",
+      "category": "extension",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-runtime",
+      "version": "1.1.0-rc.1",
+      "path": "packages/extensions/extension-runtime",
+      "category": "extension",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0-rc.1",
+      "path": "packages/extensions/extension-theme-studio",
+      "category": "extension",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0-rc.1",
+      "path": "packages/renderer/markdown-renderer-core",
+      "category": "renderer",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0-rc.1",
+      "path": "packages/renderer/markdown-renderer-react",
+      "category": "renderer",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0-rc.1",
+      "path": "packages/shared/i18n",
+      "category": "shared",
+      "publishable": true,
+      "rc": true
+    },
+    {
+      "name": "@mdwrk/icons",
+      "version": "1.0.0",
+      "path": "packages/shared/icons",
+      "category": "shared",
+      "publishable": true,
+      "rc": false
+    },
+    {
+      "name": "@mdwrk/testing",
+      "version": "1.0.0",
+      "path": "packages/shared/testing",
+      "category": "shared",
+      "publishable": true,
+      "rc": false
+    },
+    {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0-rc.1",
+      "path": "packages/shared/ui-tokens",
+      "category": "shared",
+      "publishable": true,
+      "rc": true
+    }
+  ],
+  "rcCount": 16
+}

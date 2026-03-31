@@ -1,15 +1,30 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FileNode, AppTheme, ViewMode } from '../../../../types';
-import { Undo, Redo, Bold, Italic, Strikethrough, Columns, Maximize2, Eye } from 'lucide-react';
+import {
+  Undo,
+  Redo,
+  Bold,
+  Italic,
+  Strikethrough,
+  List,
+  ListChecks,
+  Columns,
+  Maximize2,
+  Eye,
+  IndentIncrease,
+  IndentDecrease,
+} from 'lucide-react';
 import {
   createHistoryState,
   type MarkdownEditorBuiltinCommandId,
   type MarkdownEditorHistoryState,
+  type MarkdownEditorSelectionFormatState,
   type MarkdownSourceEditorHandle,
 } from '@mdwrk/markdown-editor-react';
 import { WorkspaceMarkdownRenderer } from '../../../Markdown/WorkspaceMarkdownRenderer';
 import { WorkspaceMarkdownEditor } from '../../../Markdown/WorkspaceMarkdownEditor';
 import { useActiveEditorBridge } from '../../../../src/features/editor/activeEditorBridge';
+import { isSplitViewAllowedForViewport } from '../../../../src/features/layout/splitViewPolicy';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -20,7 +35,16 @@ interface EditorPaneProps {
   theme: AppTheme;
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
+  showLineNumbers: boolean;
 }
+
+const DEFAULT_SELECTION_STATE: MarkdownEditorSelectionFormatState = {
+  bold: false,
+  italic: false,
+  strikethrough: false,
+  bulletList: false,
+  taskList: false,
+};
 
 export const EditorPane: React.FC<EditorPaneProps> = ({
   file,
@@ -31,6 +55,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   theme,
   viewMode,
   onViewModeChange,
+  showLineNumbers,
 }) => {
   const [splitPos, setSplitPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -39,15 +64,20 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     return window.visualViewport?.width ?? document.documentElement.clientWidth ?? window.innerWidth;
   };
   const [viewportWidth, setViewportWidth] = useState(getViewportWidth);
+  const [viewportHeight, setViewportHeight] = useState(() => window.visualViewport?.height ?? window.innerHeight);
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef = useRef<MarkdownSourceEditorHandle>(null);
   const activeEditorBridge = useActiveEditorBridge();
   const [historyState, setHistoryState] = useState<MarkdownEditorHistoryState>(createHistoryState(file?.content ?? ''));
+  const [selectionState, setSelectionState] = useState<MarkdownEditorSelectionFormatState>(DEFAULT_SELECTION_STATE);
 
-  const isSplitAllowed = viewportWidth > 900;
+  const isSplitAllowed = isSplitViewAllowedForViewport({ width: viewportWidth, height: viewportHeight });
 
   useEffect(() => {
-    const handleResize = () => setViewportWidth(getViewportWidth());
+    const handleResize = () => {
+      setViewportWidth(getViewportWidth());
+      setViewportHeight(window.visualViewport?.height ?? window.innerHeight);
+    };
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
     window.visualViewport?.addEventListener('resize', handleResize);
@@ -68,6 +98,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 
   useEffect(() => {
     setHistoryState(createHistoryState(file?.content ?? ''));
+    setSelectionState(DEFAULT_SELECTION_STATE);
   }, [file?.id]);
 
   useEffect(() => {
@@ -135,6 +166,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 onChange={onChange}
                 onCursorChange={onCursorChange}
                 onHistoryChange={setHistoryState}
+                onSelectionFormatChange={setSelectionState}
+                showLineNumbers={showLineNumbers}
                 theme={theme}
                 placeholder="START_INPUT..."
               />
@@ -156,6 +189,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 markdown={file.content ?? ''}
                 theme={theme}
                 files={files}
+                currentFile={file}
                 onNavigate={onNavigate}
                 className="preview-pane p-8"
               />
@@ -176,10 +210,18 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
             </button>
             <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>
             <div className="view-toolbar-divider"></div>
-            <button onClick={() => runCommand('strikethrough')} className="view-toolbar-btn" title="Strikethrough"><Strikethrough size={12}/></button>
+            <button onClick={() => runCommand('strikethrough')} className={`view-toolbar-btn ${selectionState.strikethrough ? 'active' : ''}`} title="Strikethrough"><Strikethrough size={12}/></button>
+            <button onClick={() => runCommand('bullet-list')} className={`view-toolbar-btn ${selectionState.bulletList ? 'active' : ''}`} title="Bullet List"><List size={12}/></button>
+            <button onClick={() => runCommand('task-list')} className={`view-toolbar-btn ${selectionState.taskList ? 'active' : ''}`} title="Task List"><ListChecks size={12}/></button>
+            <button onClick={() => runCommand('indent')} className="view-toolbar-btn" title="Indent"><IndentIncrease size={12}/></button>
+            <button onClick={() => runCommand('outdent')} className="view-toolbar-btn" title="Outdent"><IndentDecrease size={12}/></button>
+            <button onClick={() => runCommand('inline-math')} className="view-toolbar-btn" title="Inline Math"><span className="text-[10px] font-mono">$x$</span></button>
+            <button onClick={() => runCommand('footnote')} className="view-toolbar-btn" title="Footnote"><span className="text-[10px] font-mono">fn</span></button>
+            <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><span className="text-[10px] font-mono">x²</span></button>
+            <button onClick={() => runCommand('subscript')} className="view-toolbar-btn" title="Subscript"><span className="text-[10px] font-mono">x₂</span></button>
             <div className="view-toolbar-divider"></div>
-            <button onClick={() => runCommand('bold')} className="view-toolbar-btn" title="Bold"><Bold size={12}/></button>
-            <button onClick={() => runCommand('italic')} className="view-toolbar-btn" title="Italic"><Italic size={12}/></button>
+            <button onClick={() => runCommand('bold')} className={`view-toolbar-btn ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>
+            <button onClick={() => runCommand('italic')} className={`view-toolbar-btn ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>
             <div className="view-toolbar-divider"></div>
             <button onClick={() => runCommand('undo')} disabled={!commandState.canUndo} className="view-toolbar-btn" title="Undo"><Undo size={12}/></button>
             <button onClick={() => runCommand('redo')} disabled={!commandState.canRedo} className="view-toolbar-btn" title="Redo"><Redo size={12}/></button>

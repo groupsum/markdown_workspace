@@ -3,6 +3,16 @@
 .markdown-body {
   color: var(--mw-fg-primary, var(--fg-primary, inherit));
   font-family: var(--mw-font-ui, var(--font-ui, inherit));
+  line-height: var(--mw-line-height, var(--markdown-line-height, 1.6));
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  line-height: var(--mw-heading-line-height, var(--markdown-heading-line-height, 1.1));
 }
 
 .markdown-body .md-inline-code {

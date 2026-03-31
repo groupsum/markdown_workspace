@@ -19,6 +19,8 @@ export function createMarkdownRendererThemeStyle(
     ["--mw-code-border" as any]: variables.codeBorder ?? "var(--border-color, rgba(255,255,255,0.12))",
     ["--mw-font-ui" as any]: variables.fontUi ?? 'var(--font-ui, "Inter", "Segoe UI", system-ui, sans-serif)',
     ["--mw-font-mono" as any]: variables.fontMono ?? 'var(--font-mono, "Fira Code", ui-monospace, monospace)',
+    ["--mw-line-height" as any]: variables.lineHeight ?? "var(--markdown-line-height, 1.6)",
+    ["--mw-heading-line-height" as any]: variables.headingLineHeight ?? "var(--markdown-heading-line-height, 1.1)",
   };
 }
 

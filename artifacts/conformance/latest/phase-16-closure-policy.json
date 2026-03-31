@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "model": "certify-first-then-promote",
+  "certificationGate": {
+    "purpose": "All strict conformance, parity, package-boundary, and evidence lanes must be green from RC artifacts before the repository may claim certification.",
+    "excludes": [
+      "publish from validated RC artifacts",
+      "live support window on published artifacts",
+      "Git tag execution",
+      "GitHub release execution",
+      "published-artifact runtime compatibility"
+    ]
+  },
+  "promotionGate": {
+    "purpose": "Only after certification is complete may the repository publish, tag, create the GitHub release, and run the live post-release support window on published artifacts.",
+    "includes": [
+      "publish from validated RC artifacts",
+      "published-artifact runtime compatibility",
+      "Git tag creation",
+      "GitHub release creation",
+      "live support window on published artifacts"
+    ]
+  },
+  "claimLanguage": {
+    "repositoryInternalFullyFeatured": "repository-internal certifiably fully featured",
+    "repositoryInternalCompliant": "repository-internal certifiably compliant",
+    "externalMarkdownTarget": "externally frozen CommonMark/GFM markdown target conformance for the declared profile set",
+    "note": "No broader standards language may be used unless the evidence actually supports it."
+  },
+  "requiredBrowserTool": {
+    "name": "Playwright Test",
+    "purpose": "canonical real-browser matrix, accessibility, and visual-regression execution engine for final closure lanes"
+  }
+}

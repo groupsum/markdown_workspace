@@ -1,0 +1,235 @@
+{
+  "phase": 9,
+  "generatedAt": "2026-03-31T05:51:09.405Z",
+  "total": 51,
+  "passed": 51,
+  "failed": 0,
+  "themeCatalog": {
+    "count": 12,
+    "ids": [
+      "tensioned-technical-skeleton",
+      "optical-vellum-drafting-grid",
+      "heavy-gauge-tectonic",
+      "ferrous-monolith",
+      "galvanized-cellular",
+      "pressed-chromium",
+      "acid-etched",
+      "zinc",
+      "anodized-billet",
+      "micropress",
+      "research-science",
+      "default"
+    ],
+    "smokeThemeIds": [
+      "default",
+      "research-science",
+      "heavy-gauge-tectonic"
+    ]
+  },
+  "checks": [
+    {
+      "id": "theme.catalog.count.12",
+      "pass": true
+    },
+    {
+      "id": "theme.catalog.unique-ids",
+      "pass": true
+    },
+    {
+      "id": "theme.catalog.metadata-version-present",
+      "pass": true
+    },
+    {
+      "id": "theme.registry.tsx.uses-theme-catalog",
+      "pass": true
+    },
+    {
+      "id": "theme.selector.project-surface-uses-themes",
+      "pass": true
+    },
+    {
+      "id": "theme.selector.settings-surface-uses-themes",
+      "pass": true
+    },
+    {
+      "id": "theme.stylesheet-registry.count.12",
+      "pass": true
+    },
+    {
+      "id": "theme.assets.count.12",
+      "pass": true
+    },
+    {
+      "id": "theme.assets.match-catalog",
+      "pass": true
+    },
+    {
+      "id": "theme.service.supports-all-registered-themes",
+      "pass": true
+    },
+    {
+      "id": "theme.export.supports-all-registered-themes",
+      "pass": true
+    },
+    {
+      "id": "theme.responsive-mobile-tokens-used",
+      "pass": true
+    },
+    {
+      "id": "bridge.renderer.line-height-contract",
+      "pass": true
+    },
+    {
+      "id": "bridge.editor.line-height-and-gutter-contract",
+      "pass": true
+    },
+    {
+      "id": "renderer.theme-helper.exposes-line-height",
+      "pass": true
+    },
+    {
+      "id": "renderer.styles.consume-bridge-line-heights",
+      "pass": true
+    },
+    {
+      "id": "editor.styles.consume-gutter-and-line-height-bridges",
+      "pass": true
+    },
+    {
+      "id": "ui-tokens.smoke.covers-phase9-tokens",
+      "pass": true
+    },
+    {
+      "id": "markdown.css.uses-markdown-line-height-tokens",
+      "pass": true
+    },
+    {
+      "id": "phase9.smoke-theme-ids.present",
+      "pass": true
+    },
+    {
+      "id": "theme.required.research-science",
+      "pass": true
+    },
+    {
+      "id": "theme.required.ferrous-monolith",
+      "pass": true
+    },
+    {
+      "id": "theme.required.tensioned-technical-skeleton",
+      "pass": true
+    },
+    {
+      "id": "theme.required.optical-vellum-drafting-grid",
+      "pass": true
+    },
+    {
+      "id": "theme.required.heavy-gauge-tectonic",
+      "pass": true
+    },
+    {
+      "id": "theme.required.galvanized-cellular",
+      "pass": true
+    },
+    {
+      "id": "theme.required.pressed-chromium",
+      "pass": true
+    },
+    {
+      "id": "token.contract.editor-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.contract.editor-line-rhythm",
+      "pass": true
+    },
+    {
+      "id": "token.contract.line-number-gutter-width",
+      "pass": true
+    },
+    {
+      "id": "token.contract.markdown-heading-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.contract.markdown-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.contract.mobile-expandable-rail-width",
+      "pass": true
+    },
+    {
+      "id": "token.contract.mobile-rail-expanded-width",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.editor-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.editor-line-rhythm",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.line-number-gutter-width",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.markdown-heading-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.markdown-line-height",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.mobile-expandable-rail-width",
+      "pass": true
+    },
+    {
+      "id": "token.root-css.mobile-rail-expanded-width",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.tensioned-technical-skeleton",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.optical-vellum-drafting-grid",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.heavy-gauge-tectonic",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.ferrous-monolith",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.galvanized-cellular",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.pressed-chromium",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.acid-etched",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.zinc",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.anodized-billet",
+      "pass": true
+    },
+    {
+      "id": "theme.design-reference.micropress",
+      "pass": true
+    }
+  ]
+}

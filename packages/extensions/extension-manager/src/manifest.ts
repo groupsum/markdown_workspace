@@ -18,7 +18,7 @@ export const extensionManagerManifest: ExtensionManifest = {
   kind: "bundled",
   icon: { kind: "lucide", name: "Puzzle" },
   enabledByDefault: true,
-  capabilities: ["view.register", "actionRail.register"],
+  capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -73,7 +73,15 @@ export const extensionManagerManifest: ExtensionManifest = {
         },
       },
     ],
-    settingsSections: [],
+    settingsSections: [
+      {
+        id: `${EXTENSION_MANAGER_EXTENSION_ID}.settings`,
+        title: extensionManagerLabels.settingsTitle,
+        description: extensionManagerLabels.viewDescription,
+        order: 10,
+        schemaPath: "manifest.settingsSchema",
+      },
+    ],
   },
   settingsSchema: {
     version: 1,

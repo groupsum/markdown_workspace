@@ -1,0 +1,217 @@
+{
+  "generatedAt": "2026-03-29T20:06:40.896Z",
+  "ok": true,
+  "releaseStatus": {
+    "generatedAt": "2026-03-29T19:58:02Z",
+    "command": "npm run release:status",
+    "commandOk": false,
+    "mode": "manual-fallback",
+    "note": "Changesets CLI status did not execute successfully in the current environment; a manual fallback summary was generated from the committed changesets and RC versions.",
+    "changesetCount": 5,
+    "changedPackageCount": 16,
+    "changedPackages": [
+      "@mdwrk/example-editor-basic",
+      "@mdwrk/example-renderer-basic",
+      "@mdwrk/extension-catalog-hello",
+      "@mdwrk/extension-gemini-agent",
+      "@mdwrk/extension-manager",
+      "@mdwrk/extension-runtime",
+      "@mdwrk/extension-theme-studio",
+      "@mdwrk/i18n",
+      "@mdwrk/lander",
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/markdown-editor-react",
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-renderer-react",
+      "@mdwrk/mdwrkspace",
+      "@mdwrk/theme-contract",
+      "@mdwrk/ui-tokens"
+    ],
+    "rawOutputPath": "artifacts/conformance/latest/phase-13-release-status.txt"
+  },
+  "versionInventorySummary": {
+    "rootVersion": "0.2.0-rc.1",
+    "changesetCount": 5,
+    "changedPackageCount": 16,
+    "rcWorkspaceCount": 16,
+    "workspaceCount": 20
+  },
+  "internalRangeAudit": {
+    "ok": true,
+    "entryCount": 50,
+    "workspaceProtocolFailures": 0,
+    "rangeFailures": 0
+  },
+  "tarballs": {
+    "publicCount": 17,
+    "privateCount": 3,
+    "publicPackages": [
+      "@mdwrk/extension-catalog-hello",
+      "@mdwrk/extension-gemini-agent",
+      "@mdwrk/extension-host",
+      "@mdwrk/extension-manager",
+      "@mdwrk/extension-manifest",
+      "@mdwrk/extension-runtime",
+      "@mdwrk/extension-theme-studio",
+      "@mdwrk/i18n",
+      "@mdwrk/icons",
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/markdown-editor-react",
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-renderer-react",
+      "@mdwrk/mdwrkspace",
+      "@mdwrk/testing",
+      "@mdwrk/theme-contract",
+      "@mdwrk/ui-tokens"
+    ],
+    "privatePackages": [
+      "@mdwrk/example-editor-basic",
+      "@mdwrk/example-renderer-basic",
+      "@mdwrk/lander"
+    ],
+    "catalogOk": true
+  },
+  "releaseEvidence": {
+    "releaseEvidencePath": "artifacts/releases/latest/release-evidence.json",
+    "publishReadinessPath": "artifacts/releases/latest/publish-readiness.json",
+    "publishReady": false,
+    "publishReadinessMode": "ci-disabled"
+  },
+  "packedInstall": {
+    "generatedAt": "2026-03-29T19:58:02Z",
+    "ok": false,
+    "subsetPortableInstall": {
+      "ok": true,
+      "packages": [
+        "@mdwrk/theme-contract",
+        "@mdwrk/ui-tokens",
+        "@mdwrk/markdown-renderer-core",
+        "@mdwrk/markdown-editor-core",
+        "@mdwrk/i18n"
+      ],
+      "mode": "executed"
+    },
+    "fullAppInstall": {
+      "ok": false,
+      "blocked": true,
+      "reason": "Current environment did not support a clean end-to-end RC app install from tarballs."
+    },
+    "notes": [
+      "The portable subset install lane executed successfully from RC tarballs.",
+      "The broader app/example acceptance lane is represented in this checkpoint by structural validation against RC tarball manifests rather than a green full install."
+    ]
+  },
+  "appExampleValidation": {
+    "generatedAt": "2026-03-29T19:58:02Z",
+    "ok": true,
+    "entries": [
+      {
+        "packageName": "@mdwrk/mdwrkspace",
+        "tarballPath": "artifacts/packs/mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
+        "expectedVersion": "1.4.0-rc.1",
+        "actualVersion": "1.4.0-rc.1",
+        "workspaceProtocolDeps": [],
+        "rangeMismatches": [],
+        "ok": true
+      },
+      {
+        "packageName": "@mdwrk/lander",
+        "tarballPath": "artifacts/packs/private/mdwrk-lander-0.0.11-rc.1.tgz",
+        "expectedVersion": "0.0.11-rc.1",
+        "actualVersion": "0.0.11-rc.1",
+        "workspaceProtocolDeps": [],
+        "rangeMismatches": [],
+        "ok": true
+      },
+      {
+        "packageName": "@mdwrk/example-editor-basic",
+        "tarballPath": "artifacts/packs/private/mdwrk-example-editor-basic-0.1.1-rc.1.tgz",
+        "expectedVersion": "0.1.1-rc.1",
+        "actualVersion": "0.1.1-rc.1",
+        "workspaceProtocolDeps": [],
+        "rangeMismatches": [],
+        "ok": true
+      },
+      {
+        "packageName": "@mdwrk/example-renderer-basic",
+        "tarballPath": "artifacts/packs/private/mdwrk-example-renderer-basic-0.1.1-rc.1.tgz",
+        "expectedVersion": "0.1.1-rc.1",
+        "actualVersion": "0.1.1-rc.1",
+        "workspaceProtocolDeps": [],
+        "rangeMismatches": [],
+        "ok": true
+      }
+    ],
+    "mode": "tarball-manifest-validation"
+  },
+  "acceptance": {
+    "ok": false,
+    "items": [
+      {
+        "id": "changesets-complete",
+        "ok": true,
+        "detail": "Five Phase 13 release-family changesets are committed."
+      },
+      {
+        "id": "release-status-generated",
+        "ok": true,
+        "detail": "A release:status summary exists via manual fallback because the Changesets CLI could not execute in this environment."
+      },
+      {
+        "id": "rc-versions-generated",
+        "ok": true,
+        "detail": "The root workspace and affected families carry RC.1 versions."
+      },
+      {
+        "id": "internal-ranges-updated",
+        "ok": true,
+        "detail": "Internal dependency ranges use semver-compatible RC ranges instead of workspace protocol links."
+      },
+      {
+        "id": "tarballs-rebuilt",
+        "ok": true,
+        "detail": "Public and private RC tarball sets were rebuilt."
+      },
+      {
+        "id": "extension-artifacts-regenerated",
+        "ok": true,
+        "detail": "Extension artifacts and signatures were regenerated from the RC line."
+      },
+      {
+        "id": "release-evidence-regenerated",
+        "ok": true,
+        "detail": "Release evidence and publish-readiness records were regenerated from the RC line."
+      },
+      {
+        "id": "packed-install-verified",
+        "ok": false,
+        "detail": "The portable subset tarball install lane is green, but the broader app install lane remains blocked in this environment."
+      },
+      {
+        "id": "apps-examples-validated-against-tarballs",
+        "ok": true,
+        "detail": "App and example validation against RC tarball manifests is green."
+      },
+      {
+        "id": "no-release-blocker-remains",
+        "ok": false,
+        "detail": "Browser matrix, browser-driven visual regression, full frozen-target corpus closure, and publish readiness remain blocked."
+      },
+      {
+        "id": "artifact-catalogs-match-version-inventory",
+        "ok": true,
+        "detail": "Tarball catalogs and package inventory were regenerated from the current RC line."
+      }
+    ]
+  },
+  "remainingBlockers": [
+    "Browser matrix remains blocked in the current environment.",
+    "Browser-driven visual regression remains blocked in the current environment.",
+    "The hard closure rule for full frozen-target corpus closure remains blocked.",
+    "Publish readiness remains blocked without an npm auth token."
+  ],
+  "packageInventorySummary": {
+    "packageCount": 20,
+    "publishableCount": 17
+  }
+}

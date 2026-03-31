@@ -1,0 +1,589 @@
+{
+  "phase": 6,
+  "generatedAt": "2026-03-28T05:00:18.612Z",
+  "boundary": "preview-export-and-render-policy",
+  "commands": {
+    "rendererCoreSmoke": "node packages/renderer/markdown-renderer-core/tests/run-smoke.mjs --json",
+    "rendererCoreCommonMark": "node packages/renderer/markdown-renderer-core/tests/commonmark-core-corpus.mjs --json",
+    "rendererCoreGfm": "node packages/renderer/markdown-renderer-core/tests/gfm-default-profile.mjs --json",
+    "rendererCoreOptional": "node packages/renderer/markdown-renderer-core/tests/optional-profiles.mjs --json",
+    "rendererCorePreviewExport": "node packages/renderer/markdown-renderer-core/tests/preview-export-policy.mjs --json",
+    "rendererReactSmoke": "node packages/renderer/markdown-renderer-react/tests/run-smoke.mjs --json",
+    "rendererReactGfm": "node packages/renderer/markdown-renderer-react/tests/gfm-surface.mjs --json",
+    "rendererReactOptional": "node packages/renderer/markdown-renderer-react/tests/optional-profile-surface.mjs --json",
+    "rendererReactPreviewExport": "node packages/renderer/markdown-renderer-react/tests/preview-export-policy.mjs --json",
+    "clientPreviewExport": "node apps/client/tests/phase6-preview-export-policy.mjs --json"
+  },
+  "results": {
+    "rendererCoreSmoke": {
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "results": [
+        {
+          "id": "frontmatter-parse",
+          "description": "parseMarkdownDocument extracts metadata and headings",
+          "passed": true
+        },
+        {
+          "id": "heading-extraction",
+          "description": "extractMarkdownHeadings honors minimum depth filters",
+          "passed": true
+        },
+        {
+          "id": "ast-shape",
+          "description": "parseMarkdownToAst returns a root with heading and paragraph nodes",
+          "passed": true
+        },
+        {
+          "id": "render-sourcepos-and-gfm-features",
+          "description": "renderMarkdownToHtmlSync emits source positions, task markup, and code-block markup",
+          "passed": true
+        },
+        {
+          "id": "escape-html-mode",
+          "description": "escape mode emits raw HTML as text",
+          "passed": true
+        },
+        {
+          "id": "trusted-html-mode",
+          "description": "allow-trusted mode passes raw HTML through",
+          "passed": true
+        },
+        {
+          "id": "async-render",
+          "description": "renderMarkdownToHtml resolves asynchronously",
+          "passed": true
+        },
+        {
+          "id": "html-fragment-document",
+          "description": "createHtmlDocument wraps body HTML in a document shell",
+          "passed": true
+        },
+        {
+          "id": "render-document-sync",
+          "description": "renderMarkdownToHtmlDocumentSync returns a complete HTML document",
+          "passed": true
+        }
+      ]
+    },
+    "rendererCoreCommonMark": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "results": [
+        {
+          "id": "tabs-indented-code",
+          "section": "Tabs",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<pre><code>foo\tbaz\t\tbim</code></pre>",
+          "actualHtml": "<pre><code>foo\tbaz\t\tbim</code></pre>"
+        },
+        {
+          "id": "thematic-break",
+          "section": "Thematic breaks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<hr />",
+          "actualHtml": "<hr />"
+        },
+        {
+          "id": "atx-heading",
+          "section": "ATX headings",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<h1>foo</h1>",
+          "actualHtml": "<h1>foo</h1>"
+        },
+        {
+          "id": "setext-heading",
+          "section": "Setext headings",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<h2>Foo</h2>",
+          "actualHtml": "<h2>Foo</h2>"
+        },
+        {
+          "id": "paragraph-soft-break",
+          "section": "Soft line breaks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p>foo\nbar</p>",
+          "actualHtml": "<p>foo\nbar</p>"
+        },
+        {
+          "id": "paragraph-hard-break",
+          "section": "Hard line breaks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p>foo<br />bar</p>",
+          "actualHtml": "<p>foo<br />bar</p>"
+        },
+        {
+          "id": "blockquote",
+          "section": "Block quotes",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<blockquote><p>foo\nbar</p></blockquote>",
+          "actualHtml": "<blockquote><p>foo\nbar</p></blockquote>"
+        },
+        {
+          "id": "unordered-list",
+          "section": "Lists",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<ul><li>one</li><li>two</li></ul>",
+          "actualHtml": "<ul><li>one</li><li>two</li></ul>"
+        },
+        {
+          "id": "ordered-list",
+          "section": "Lists",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<ol><li>one</li><li>two</li></ol>",
+          "actualHtml": "<ol><li>one</li><li>two</li></ol>"
+        },
+        {
+          "id": "fenced-code-info",
+          "section": "Fenced code blocks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<pre><code>console.log(1)</code></pre>",
+          "actualHtml": "<pre><code>console.log(1)</code></pre>"
+        },
+        {
+          "id": "indented-code",
+          "section": "Indented code blocks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<pre><code>a simple\n  indented code block</code></pre>",
+          "actualHtml": "<pre><code>a simple\n  indented code block</code></pre>"
+        },
+        {
+          "id": "emphasis-strong",
+          "section": "Emphasis and strong emphasis",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><em>em</em> and <strong>strong</strong></p>",
+          "actualHtml": "<p><em>em</em> and <strong>strong</strong></p>"
+        },
+        {
+          "id": "inline-code",
+          "section": "Code spans",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><code>code</code></p>",
+          "actualHtml": "<p><code>code</code></p>"
+        },
+        {
+          "id": "links",
+          "section": "Links",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+          "actualHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>"
+        },
+        {
+          "id": "reference-links",
+          "section": "Reference links",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>",
+          "actualHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>"
+        },
+        {
+          "id": "image",
+          "section": "Images",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><img src=\"/img.png\" alt=\"alt\" title=\"title\" /></p>",
+          "actualHtml": "<p><img src=\"/img.png\" alt=\"alt\" title=\"title\" /></p>"
+        },
+        {
+          "id": "autolink",
+          "section": "Autolinks",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><a href=\"https://example.com\">https://example.com</a></p>",
+          "actualHtml": "<p><a href=\"https://example.com\">https://example.com</a></p>"
+        },
+        {
+          "id": "entity-and-escape",
+          "section": "Backslash escapes",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p>*literal* &amp;</p>",
+          "actualHtml": "<p>*literal* &amp;</p>"
+        },
+        {
+          "id": "raw-html-trusted",
+          "section": "Raw HTML",
+          "htmlHandling": "allow-trusted",
+          "passed": true,
+          "expectedHtml": "<p><del><em>foo</em></del></p>",
+          "actualHtml": "<p><del><em>foo</em></del></p>"
+        },
+        {
+          "id": "raw-html-escaped",
+          "section": "Raw HTML",
+          "htmlHandling": "escape",
+          "passed": true,
+          "expectedHtml": "<p>&lt;del&gt;<em>foo</em>&lt;/del&gt;</p>",
+          "actualHtml": "<p>&lt;del&gt;<em>foo</em>&lt;/del&gt;</p>"
+        }
+      ]
+    },
+    "rendererCoreGfm": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "results": [
+        {
+          "id": "gfm-strikethrough",
+          "section": "Strikethrough",
+          "passed": true,
+          "expectedHtml": "<p><del>done</del></p>",
+          "actualHtml": "<p><del>done</del></p>"
+        },
+        {
+          "id": "gfm-task-list",
+          "section": "Task lists",
+          "passed": true,
+          "expectedHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><input type=\"checkbox\" checked /> done</li><li data-task=\"true\" data-checked=\"false\"><input type=\"checkbox\" /> todo</li></ul>",
+          "actualHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><input type=\"checkbox\" checked /> done</li><li data-task=\"true\" data-checked=\"false\"><input type=\"checkbox\" /> todo</li></ul>"
+        },
+        {
+          "id": "gfm-autolink-literal-url",
+          "section": "Autolink literals",
+          "passed": true,
+          "expectedHtml": "<p>Visit <a href=\"https://example.com/path?q=1\">https://example.com/path?q=1</a>.</p>",
+          "actualHtml": "<p>Visit <a href=\"https://example.com/path?q=1\">https://example.com/path?q=1</a>.</p>"
+        },
+        {
+          "id": "gfm-autolink-literal-www",
+          "section": "Autolink literals",
+          "passed": true,
+          "expectedHtml": "<p><a href=\"http://www.example.com\">www.example.com</a>, still text</p>",
+          "actualHtml": "<p><a href=\"http://www.example.com\">www.example.com</a>, still text</p>"
+        },
+        {
+          "id": "gfm-autolink-literal-email",
+          "section": "Autolink literals",
+          "passed": true,
+          "expectedHtml": "<p>Contact <a href=\"mailto:docs@example.com\">docs@example.com</a>!</p>",
+          "actualHtml": "<p>Contact <a href=\"mailto:docs@example.com\">docs@example.com</a>!</p>"
+        },
+        {
+          "id": "gfm-table-alignment",
+          "section": "Tables",
+          "passed": true,
+          "expectedHtml": "<table><colgroup><col style=\"text-align:left\" /><col style=\"text-align:right\" /><col style=\"text-align:center\" /></colgroup><thead><tr><th align=\"left\">Left</th><th align=\"right\">Right</th><th align=\"center\">Center</th></tr></thead><tbody><tr><td align=\"left\">a</td><td align=\"right\">b</td><td align=\"center\">c</td></tr></tbody></table>",
+          "actualHtml": "<table><colgroup><col style=\"text-align:left\" /><col style=\"text-align:right\" /><col style=\"text-align:center\" /></colgroup><thead><tr><th align=\"left\">Left</th><th align=\"right\">Right</th><th align=\"center\">Center</th></tr></thead><tbody><tr><td align=\"left\">a</td><td align=\"right\">b</td><td align=\"center\">c</td></tr></tbody></table>"
+        },
+        {
+          "id": "gfm-table-escaped-pipe-and-code-span",
+          "section": "Tables",
+          "passed": true,
+          "expectedHtml": "<table><colgroup><col /><col /></colgroup><thead><tr><th>Text</th><th>Code</th></tr></thead><tbody><tr><td>literal | pipe</td><td><code>a|b</code></td></tr></tbody></table>",
+          "actualHtml": "<table><colgroup><col /><col /></colgroup><thead><tr><th>Text</th><th>Code</th></tr></thead><tbody><tr><td>literal | pipe</td><td><code>a|b</code></td></tr></tbody></table>"
+        }
+      ]
+    },
+    "rendererCoreOptional": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "results": [
+        {
+          "id": "front-matter-metadata",
+          "description": "front matter metadata is extracted while YAML is omitted from rendered output",
+          "passed": true
+        },
+        {
+          "id": "footnotes",
+          "description": "footnote references and definitions render into a linked footnotes section",
+          "passed": true
+        },
+        {
+          "id": "definition-lists",
+          "description": "definition lists render to dl/dt/dd structures",
+          "passed": true
+        },
+        {
+          "id": "math-inline-and-block",
+          "description": "math profile renders inline and block math wrappers",
+          "passed": true
+        },
+        {
+          "id": "superscript-subscript",
+          "description": "superscript and subscript extensions render semantic sup/sub tags",
+          "passed": true
+        },
+        {
+          "id": "smart-punctuation",
+          "description": "smart punctuation transforms quotes, dashes, and ellipses in text nodes",
+          "passed": true
+        },
+        {
+          "id": "citations-experimental",
+          "description": "citations render structurally while remaining outside the certified optional boundary",
+          "passed": true
+        },
+        {
+          "id": "markdown-in-html-experimental",
+          "description": "markdown-in-html requires trusted HTML and renders marked containers experimentally",
+          "passed": true
+        }
+      ]
+    },
+    "rendererCorePreviewExport": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "results": [
+        {
+          "id": "sanitize-inline-html-and-unsafe-urls",
+          "description": "sanitize mode strips active inline HTML, blocks blocked tags, and rewrites unsafe URLs",
+          "passed": true
+        },
+        {
+          "id": "sanitize-markdown-link-and-image-destinations",
+          "description": "sanitize mode rewrites unsafe markdown link and image destinations",
+          "passed": true
+        },
+        {
+          "id": "root-carries-html-handling-attribute",
+          "description": "rendered root wrapper records the resolved html handling mode",
+          "passed": true
+        },
+        {
+          "id": "task-checkbox-accessibility-semantics",
+          "description": "task checkboxes expose aria semantics in preview markup",
+          "passed": true
+        },
+        {
+          "id": "document-export-corpus-coverage",
+          "description": "HTML document export preserves raw-html policy plus tables, tasks, footnotes, math, and citations",
+          "passed": true
+        }
+      ]
+    },
+    "rendererReactSmoke": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "results": [
+        {
+          "id": "theme-style",
+          "description": "Theme bridge maps foreground and accent tokens",
+          "passed": true
+        },
+        {
+          "id": "component-render",
+          "description": "MarkdownRenderer renders semantic wrapper markup",
+          "passed": true
+        },
+        {
+          "id": "static-html-render",
+          "description": "renderMarkdownToStaticHtml returns HTML with rendered links",
+          "passed": true
+        },
+        {
+          "id": "document-render",
+          "description": "renderMarkdownToStaticHtmlDocument returns a complete HTML document",
+          "passed": true
+        }
+      ]
+    },
+    "rendererReactGfm": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "results": [
+        {
+          "id": "component-strikethrough",
+          "description": "MarkdownRenderer emits <del> for ~~text~~",
+          "passed": true
+        },
+        {
+          "id": "component-task-checkbox",
+          "description": "MarkdownRenderer emits task-list checkbox markup",
+          "passed": true
+        },
+        {
+          "id": "component-table",
+          "description": "MarkdownRenderer emits tables with alignment metadata",
+          "passed": true
+        },
+        {
+          "id": "component-literal-autolink",
+          "description": "MarkdownRenderer turns literal URLs into anchors",
+          "passed": true
+        },
+        {
+          "id": "document-export",
+          "description": "Static HTML document export preserves default GFM rendering",
+          "passed": true
+        }
+      ]
+    },
+    "rendererReactOptional": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "results": [
+        {
+          "id": "component-definition-list",
+          "description": "MarkdownRenderer emits definition list markup",
+          "passed": true
+        },
+        {
+          "id": "component-math-inline",
+          "description": "MarkdownRenderer emits inline math wrappers",
+          "passed": true
+        },
+        {
+          "id": "component-footnotes",
+          "description": "MarkdownRenderer emits footnote references and footnote sections",
+          "passed": true
+        },
+        {
+          "id": "document-export-extensions",
+          "description": "Static HTML document export preserves optional profile rendering",
+          "passed": true
+        }
+      ]
+    },
+    "rendererReactPreviewExport": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "results": [
+        {
+          "id": "component-sanitize-html-policy",
+          "description": "MarkdownRenderer sanitizes dangerous HTML when requested",
+          "passed": true
+        },
+        {
+          "id": "component-task-accessibility",
+          "description": "MarkdownRenderer preserves task accessibility semantics from the core renderer",
+          "passed": true
+        },
+        {
+          "id": "document-export-policy-corpus",
+          "description": "Static HTML document export preserves tables, tasks, footnotes, math, citations, and sanitized HTML policy",
+          "passed": true
+        },
+        {
+          "id": "sanitize-markdown-url-surfaces",
+          "description": "MarkdownRenderer sanitizes unsafe markdown link and image destinations",
+          "passed": true
+        }
+      ]
+    },
+    "clientPreviewExport": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "results": [
+        {
+          "id": "normalize-empty-list-items",
+          "description": "empty list items are normalized for preview while fenced code stays unchanged",
+          "passed": true
+        },
+        {
+          "id": "same-document-hash-resolution",
+          "description": "same-document hash links resolve without file navigation",
+          "passed": true
+        },
+        {
+          "id": "relative-markdown-file-resolution",
+          "description": "relative markdown file links resolve against the current file path",
+          "passed": true
+        },
+        {
+          "id": "default-html-handling-policy",
+          "description": "client preview/export policy defaults to sanitize unless trusted mode is enabled",
+          "passed": true
+        },
+        {
+          "id": "export-markdown-link-rewrite",
+          "description": "rendered markdown links are rewritten from .md to .html for HTML export",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "totalChecks": 71,
+    "totalPassed": 71,
+    "totalFailed": 0,
+    "structuralAudit": {
+      "total": 29,
+      "passed": 29,
+      "failed": 0
+    }
+  },
+  "structuralAudit": {
+    "rendererCore": {
+      "path": "packages/renderer/markdown-renderer-core/src/engine.ts",
+      "sanitizeModeTypePresent": true,
+      "sanitizeHtmlFragmentPresent": true,
+      "blockedInlineTagHandlingPresent": true,
+      "unsafeUrlSanitizationPresent": true,
+      "htmlHandlingDataAttributePresent": true,
+      "accessibleTaskSemanticsPresent": true,
+      "htmlSanitizeBranchPresent": true
+    },
+    "rendererReact": {
+      "path": "packages/renderer/markdown-renderer-react/src/server.tsx",
+      "serverUsesCoreRenderer": true,
+      "serverUsesCoreHtmlDocument": true
+    },
+    "workspaceMarkdownRenderer": {
+      "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.tsx",
+      "usesRendererPackage": true,
+      "normalizesEmptyListItems": true,
+      "resolvesHtmlHandlingPolicy": true,
+      "policyAdvisoryPresent": true,
+      "currentFileAware": true,
+      "internalLinkResolutionPresent": true,
+      "pendingHashSupportPresent": true
+    },
+    "htmlExport": {
+      "path": "apps/client/services/htmlExport.tsx",
+      "usesRendererPackage": true,
+      "normalizesEmptyListItems": true,
+      "resolvesHtmlHandlingPolicy": true,
+      "rewritesMarkdownLinks": true,
+      "exportPolicyAdvisoryPresent": true
+    },
+    "previewPolicyHelpers": {
+      "path": "apps/client/services/markdownPreviewPolicy.js",
+      "normalizationPresent": true,
+      "htmlHandlingResolverPresent": true,
+      "internalHrefResolverPresent": true,
+      "exportLinkRewritePresent": true,
+      "hashScrollPresent": true
+    },
+    "previewPane": {
+      "path": "apps/client/components/Chassis/WorkPane/Stage/Preview.tsx",
+      "currentFilePropDeclared": true,
+      "currentFilePropForwarded": true
+    },
+    "editorPane": {
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx",
+      "currentFileForwardedToPreview": true
+    }
+  },
+  "currentState": {
+    "clientTypecheckClosed": false,
+    "clientTypecheckArtifact": "artifacts/conformance/latest/phase-5-client-typecheck.txt",
+    "clientTypecheckNotes": [
+      "The client app still has unresolved external dependency/toolchain holes in the provided zip.",
+      "The Phase 6 preview/export closures are source-complete and evidence-backed, but the overall app typecheck remains open because lucide-react, jszip, vitest, and ImportMeta.env declarations are not fully available in the provided checkpoint environment.",
+      "No showLineNumbers-specific regression remains in the recorded app typecheck log from the earlier checkpoint."
+    ]
+  }
+}

@@ -41,6 +41,13 @@ The token contract publishes canonical names such as:
 - `font-ui`
 - `font-mono`
 - `editor-padding`
+- `editor-line-height`
+- `editor-line-rhythm`
+- `line-number-gutter-width`
+- `markdown-line-height`
+- `markdown-heading-line-height`
+- `mobile-rail-expanded-width`
+- `mobile-expandable-rail-width`
 
 Each token definition includes:
 - canonical token name
@@ -96,6 +103,8 @@ Examples:
 - `--mw-code-border`
 - `--mw-font-ui`
 - `--mw-font-mono`
+- `--mw-line-height`
+- `--mw-heading-line-height`
 
 ### Editor bridge variables
 Examples:
@@ -107,6 +116,8 @@ Examples:
 - `--mwe-accent`
 - `--mwe-font-mono`
 - `--mwe-editor-padding`
+- `--mwe-line-height`
+- `--mwe-gutter-width`
 
 These bridge definitions are exported from `mdwrk/theme-contract/bridges` and materialized through `mdwrk/ui-tokens/theme-map`.
 
@@ -120,6 +131,7 @@ The initial renderer class contract is derived from:
 
 The initial editor class contract is derived from:
 - the extracted portable editor package and the client editing surface after Phase 5
+- the Phase 9 token/bridge closure for rhythm alignment and responsive shell width
 
 ## Consumer model
 

@@ -1,0 +1,53 @@
+{
+  "phase": 7,
+  "generatedAt": "2026-03-31T05:51:09.209Z",
+  "total": 11,
+  "passed": 11,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "footer.runtime-label",
+      "pass": true
+    },
+    {
+      "id": "footer.update-ready",
+      "pass": true
+    },
+    {
+      "id": "action-rail.localized-aria-label",
+      "pass": true
+    },
+    {
+      "id": "action-rail.aria-pressed",
+      "pass": true
+    },
+    {
+      "id": "import-flow.command-and-rail",
+      "pass": true
+    },
+    {
+      "id": "import-flow.file-input",
+      "pass": true
+    },
+    {
+      "id": "import-flow.file-manager",
+      "pass": true
+    },
+    {
+      "id": "split-policy.source",
+      "pass": true
+    },
+    {
+      "id": "split-policy.landscape-allows",
+      "pass": true
+    },
+    {
+      "id": "split-policy.portrait-blocks",
+      "pass": true
+    },
+    {
+      "id": "cloud-sync.refresh-event",
+      "pass": true
+    }
+  ]
+}

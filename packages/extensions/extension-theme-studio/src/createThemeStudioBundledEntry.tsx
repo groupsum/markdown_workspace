@@ -76,6 +76,7 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             description: themeStudioLabels.settingsDescription,
             order: 20,
             schemaPath: "manifest.settingsSchema",
+            ...({ schema: themeStudioManifest.settingsSchema } as never),
           });
 
           await context.host.diagnostics.publish(context.extensionId, {

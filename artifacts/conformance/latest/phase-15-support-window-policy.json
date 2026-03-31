@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "trainId": "promotion-rc.1",
+  "window": {
+    "startDate": "2026-03-30",
+    "endDate": "2026-04-13",
+    "durationDays": 14,
+    "type": "short-post-release-compatibility-window",
+    "liveOnPublishedArtifacts": false,
+    "note": "The repository does not have a public published release in this environment. This policy therefore applies to the prepared promotion bundle and RC train artifacts rather than to live published npm artifacts."
+  },
+  "acceptedChanges": {
+    "defaultRule": "patch-only-on-released-train",
+    "nextMinorException": "Only when a deliberate next-minor train is explicitly opened and documented.",
+    "disallowedWithoutNewTrain": [
+      "feature expansion on the released train",
+      "contract boundary drift",
+      "claim-language expansion without new evidence"
+    ]
+  },
+  "monitoringFocus": [
+    "extension activation failures",
+    "theme regressions",
+    "i18n regressions",
+    "release artifact compatibility drift"
+  ],
+  "preservedEvidenceRoots": [
+    "artifacts/conformance/latest",
+    "artifacts/releases/promotion-rc.1",
+    "artifacts/releases/support-window-rc.1"
+  ],
+  "releaseClaimPolicy": {
+    "allowClaimSuccess": false,
+    "reason": "The minimum closure checklist is not fully green because there is still no actual published release and earlier strict-closure blockers remain recorded in the evidence."
+  }
+}

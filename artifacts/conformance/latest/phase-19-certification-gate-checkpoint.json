@@ -1,0 +1,42 @@
+{
+  "phase": 19,
+  "generatedAt": "2026-03-30T22:15:20.753Z",
+  "checkpointType": "gate-b-certification-closure-continuation",
+  "summary": {
+    "greenLaneCount": 7,
+    "blockedLaneCount": 5,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "improvementOverPhase18": {
+    "commonmark": {
+      "phase18Passed": 404,
+      "phase19Passed": 434,
+      "deltaPassed": 30,
+      "phase18Failed": 248,
+      "phase19Failed": 218,
+      "deltaFailed": -30
+    },
+    "gfm": {
+      "phase18Passed": 414,
+      "phase19Passed": 444,
+      "deltaPassed": 30,
+      "phase18Failed": 258,
+      "phase19Failed": 228,
+      "deltaFailed": -30
+    }
+  },
+  "evidence": {
+    "commonmark": "artifacts/conformance/latest/phase-19-commonmark-official-summary.json",
+    "gfm": "artifacts/conformance/latest/phase-19-gfm-official-summary.json",
+    "optionalProfiles": "artifacts/conformance/latest/phase-19-optional-profile-summary.json",
+    "results": "artifacts/conformance/latest/phase-19-certification-gate-results.json",
+    "checklist": "artifacts/conformance/latest/phase-19-certification-gate-checklist.md"
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  }
+}

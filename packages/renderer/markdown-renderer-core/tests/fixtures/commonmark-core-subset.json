@@ -1,0 +1,124 @@
+[
+  {
+    "id": "tabs-indented-code",
+    "section": "Tabs",
+    "markdown": "\tfoo\tbaz\t\tbim\n",
+    "expectedHtml": "<pre><code>foo\tbaz\t\tbim</code></pre>"
+  },
+  {
+    "id": "thematic-break",
+    "section": "Thematic breaks",
+    "markdown": "***\n",
+    "expectedHtml": "<hr />"
+  },
+  {
+    "id": "atx-heading",
+    "section": "ATX headings",
+    "markdown": "# foo\n",
+    "expectedHtml": "<h1>foo</h1>"
+  },
+  {
+    "id": "setext-heading",
+    "section": "Setext headings",
+    "markdown": "Foo\n---\n",
+    "expectedHtml": "<h2>Foo</h2>"
+  },
+  {
+    "id": "paragraph-soft-break",
+    "section": "Soft line breaks",
+    "markdown": "foo\nbar\n",
+    "expectedHtml": "<p>foo\nbar</p>"
+  },
+  {
+    "id": "paragraph-hard-break",
+    "section": "Hard line breaks",
+    "markdown": "foo\\\nbar\n",
+    "expectedHtml": "<p>foo<br />bar</p>"
+  },
+  {
+    "id": "blockquote",
+    "section": "Block quotes",
+    "markdown": "> foo\n> bar\n",
+    "expectedHtml": "<blockquote><p>foo\nbar</p></blockquote>"
+  },
+  {
+    "id": "unordered-list",
+    "section": "Lists",
+    "markdown": "- one\n- two\n",
+    "expectedHtml": "<ul><li>one</li><li>two</li></ul>"
+  },
+  {
+    "id": "ordered-list",
+    "section": "Lists",
+    "markdown": "1. one\n2. two\n",
+    "expectedHtml": "<ol><li>one</li><li>two</li></ol>"
+  },
+  {
+    "id": "fenced-code-info",
+    "section": "Fenced code blocks",
+    "markdown": "```js\nconsole.log(1)\n```\n",
+    "expectedHtml": "<pre><code class=\"language-js\">console.log(1)</code></pre>"
+  },
+  {
+    "id": "indented-code",
+    "section": "Indented code blocks",
+    "markdown": "    a simple\n      indented code block\n",
+    "expectedHtml": "<pre><code>a simple\n  indented code block</code></pre>"
+  },
+  {
+    "id": "emphasis-strong",
+    "section": "Emphasis and strong emphasis",
+    "markdown": "*em* and **strong**\n",
+    "expectedHtml": "<p><em>em</em> and <strong>strong</strong></p>"
+  },
+  {
+    "id": "inline-code",
+    "section": "Code spans",
+    "markdown": "`code`\n",
+    "expectedHtml": "<p><code>code</code></p>"
+  },
+  {
+    "id": "links",
+    "section": "Links",
+    "markdown": "[foo](/url \"title\")\n",
+    "expectedHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>"
+  },
+  {
+    "id": "reference-links",
+    "section": "Reference links",
+    "markdown": "[foo][bar]\n\n[bar]: /url \"title\"\n",
+    "expectedHtml": "<p><a href=\"/url\" title=\"title\">foo</a></p>"
+  },
+  {
+    "id": "image",
+    "section": "Images",
+    "markdown": "![alt](/img.png \"title\")\n",
+    "expectedHtml": "<p><img src=\"/img.png\" alt=\"alt\" title=\"title\" /></p>"
+  },
+  {
+    "id": "autolink",
+    "section": "Autolinks",
+    "markdown": "<https://example.com>\n",
+    "expectedHtml": "<p><a href=\"https://example.com\">https://example.com</a></p>"
+  },
+  {
+    "id": "entity-and-escape",
+    "section": "Backslash escapes",
+    "markdown": "\\*literal* &amp;\n",
+    "expectedHtml": "<p>*literal* &amp;</p>"
+  },
+  {
+    "id": "raw-html-trusted",
+    "section": "Raw HTML",
+    "markdown": "<del>*foo*</del>\n",
+    "htmlHandling": "allow-trusted",
+    "expectedHtml": "<p><del><em>foo</em></del></p>"
+  },
+  {
+    "id": "raw-html-escaped",
+    "section": "Raw HTML",
+    "markdown": "<del>*foo*</del>\n",
+    "htmlHandling": "escape",
+    "expectedHtml": "<p>&lt;del&gt;<em>foo</em>&lt;/del&gt;</p>"
+  }
+]

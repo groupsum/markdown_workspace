@@ -1,0 +1,11 @@
+
+> markdown_workspace@0.2.0-rc.1 release:status
+> node ./tools/release/run-changesets.mjs status
+
+🦋  [31merror[39m Error: Failed to find where HEAD diverged from "master". Does "master" exist and it's synced with remote?
+🦋  [31merror[39m     at getDivergedCommit (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/git/dist/changesets-git.cjs.js:63:11)
+🦋  [31merror[39m     at async getChangedFilesSince (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/git/dist/changesets-git.cjs.js:189:22)
+🦋  [31merror[39m     at async Object.getChangedPackagesSinceRef (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/git/dist/changesets-git.cjs.js:229:24)
+🦋  [31merror[39m     at async getVersionableChangedPackages (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/cli/dist/changesets-cli.cjs.js:235:27)
+🦋  [31merror[39m     at async status (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/cli/dist/changesets-cli.cjs.js:1158:27)
+🦋  [31merror[39m     at async run (/home/oai/.npm/_npx/c21dc4ee7bbf9939/node_modules/@changesets/cli/dist/changesets-cli.cjs.js:1481:11)

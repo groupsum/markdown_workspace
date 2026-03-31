@@ -1,0 +1,1023 @@
+{
+  "phase": 11,
+  "generatedAt": "2026-03-28T20:22:08.969Z",
+  "summary": {
+    "workspaceCount": 20,
+    "totalChecks": 193,
+    "passedChecks": 193,
+    "failedChecks": 0
+  },
+  "packageResults": [
+    {
+      "name": "@mdwrk/extension-host",
+      "version": "1.0.1",
+      "category": "contract",
+      "path": "packages/contracts/extension-host",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./primitives",
+        "./registration",
+        "./host",
+        "./context",
+        "./lifecycle"
+      ],
+      "tests": [],
+      "fixtures": [
+        "packages/extensions/extension-runtime/tests/runtime.test.ts",
+        "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+        "packages/extensions/extension-theme-studio/tests/run-smoke.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-host.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-manifest",
+      "version": "1.0.0",
+      "category": "contract",
+      "path": "packages/contracts/extension-manifest",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./manifest",
+        "./settings",
+        "./capabilities",
+        "./compatibility",
+        "./contributions",
+        "./entry",
+        "./i18n",
+        "./icon",
+        "./integrity",
+        "./support",
+        "./catalog",
+        "./signature"
+      ],
+      "tests": [],
+      "fixtures": [
+        "packages/extensions/extension-catalog-hello/tests/run-smoke.mjs",
+        "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+        "packages/extensions/extension-manager/tests/extension-manager.test.tsx"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-manifest.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/theme-contract",
+      "version": "1.1.0",
+      "category": "contract",
+      "path": "packages/contracts/theme-contract",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./tokens",
+        "./classes",
+        "./compatibility",
+        "./themes",
+        "./bridges"
+      ],
+      "tests": [],
+      "fixtures": [
+        "packages/shared/ui-tokens/tests/run-smoke.mjs",
+        "artifacts/conformance/latest/phase-9-theme-parity-results.json",
+        "packages/extensions/extension-theme-studio/tests/run-smoke.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-theme-contract.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0",
+      "category": "shared",
+      "path": "packages/shared/i18n",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./registry",
+        "./format",
+        "./loaders"
+      ],
+      "tests": [
+        "packages/shared/i18n/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "apps/client/tests/phase10-i18n-parity.mjs",
+        "packages/extensions/extension-manager/src/i18n.ts"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-i18n.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/icons",
+      "version": "1.0.0",
+      "category": "shared",
+      "path": "packages/shared/icons",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./catalog"
+      ],
+      "tests": [],
+      "fixtures": [
+        "apps/client/src/shell/iconRenderer.tsx",
+        "packages/extensions/extension-manager/src/manifest.ts"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-icons.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/testing",
+      "version": "1.0.0",
+      "category": "shared",
+      "path": "packages/shared/testing",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./browser",
+        "./timing",
+        "./vitest-setup"
+      ],
+      "tests": [],
+      "fixtures": [
+        "packages/editor/markdown-editor-react/tests/component.test.tsx",
+        "packages/extensions/extension-manager/tests/extension-manager.test.tsx"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-testing.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0",
+      "category": "shared",
+      "path": "packages/shared/ui-tokens",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./tokens",
+        "./classes",
+        "./theme-map",
+        "./styles/index.css",
+        "./styles/root.css",
+        "./styles/markdown.css"
+      ],
+      "tests": [
+        "packages/shared/ui-tokens/tests/prepare-workspace-links.mjs",
+        "packages/shared/ui-tokens/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "examples/editor-basic/App.tsx",
+        "examples/renderer-basic/App.tsx",
+        "packages/shared/ui-tokens/tests/run-smoke.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-ui-tokens.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "category": "renderer",
+      "path": "packages/renderer/markdown-renderer-core",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./class-names",
+        "./slug",
+        "./frontmatter",
+        "./headings",
+        "./pipeline",
+        "./html",
+        "./engine"
+      ],
+      "tests": [
+        "packages/renderer/markdown-renderer-core/tests/commonmark-core-corpus.mjs",
+        "packages/renderer/markdown-renderer-core/tests/generate-phase2-golden.mjs",
+        "packages/renderer/markdown-renderer-core/tests/gfm-default-profile.mjs",
+        "packages/renderer/markdown-renderer-core/tests/html.test.ts",
+        "packages/renderer/markdown-renderer-core/tests/negative-cases.mjs",
+        "packages/renderer/markdown-renderer-core/tests/optional-profiles.mjs",
+        "packages/renderer/markdown-renderer-core/tests/preview-export-policy.mjs",
+        "packages/renderer/markdown-renderer-core/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "examples/renderer-basic/App.tsx",
+        "packages/renderer/markdown-renderer-core/tests/commonmark-core-corpus.mjs",
+        "packages/renderer/markdown-renderer-core/tests/gfm-default-profile.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-markdown-renderer-core.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "category": "renderer",
+      "path": "packages/renderer/markdown-renderer-react",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./theme",
+        "./server",
+        "./styles/default.css"
+      ],
+      "tests": [
+        "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
+        "packages/renderer/markdown-renderer-react/tests/gfm-surface.mjs",
+        "packages/renderer/markdown-renderer-react/tests/optional-profile-surface.mjs",
+        "packages/renderer/markdown-renderer-react/tests/preview-export-policy.mjs",
+        "packages/renderer/markdown-renderer-react/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "examples/renderer-basic/App.tsx",
+        "apps/client/tests/phase6-preview-export-policy.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-markdown-renderer-react.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0",
+      "category": "editor",
+      "path": "packages/editor/markdown-editor-core",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./class-names",
+        "./selection",
+        "./transforms",
+        "./commands",
+        "./history"
+      ],
+      "tests": [
+        "packages/editor/markdown-editor-core/tests/commands.test.ts",
+        "packages/editor/markdown-editor-core/tests/history.test.ts",
+        "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
+        "packages/editor/markdown-editor-core/tests/run-smoke.mjs",
+        "packages/editor/markdown-editor-core/tests/selection.test.ts",
+        "packages/editor/markdown-editor-core/tests/transforms.test.ts"
+      ],
+      "fixtures": [
+        "examples/editor-basic/App.tsx",
+        "packages/editor/markdown-editor-core/tests/commands.test.ts"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-markdown-editor-core.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0",
+      "category": "editor",
+      "path": "packages/editor/markdown-editor-react",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./theme",
+        "./styles/default.css"
+      ],
+      "tests": [
+        "packages/editor/markdown-editor-react/tests/component.test.tsx",
+        "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
+        "packages/editor/markdown-editor-react/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "examples/editor-basic/App.tsx",
+        "packages/editor/markdown-editor-react/tests/component.test.tsx"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-markdown-editor-react.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "version": "1.0.1",
+      "category": "extension",
+      "path": "packages/extensions/extension-catalog-hello",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./manifest",
+        "./version"
+      ],
+      "tests": [
+        "packages/extensions/extension-catalog-hello/tests/integration.mjs",
+        "packages/extensions/extension-catalog-hello/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "packages/extensions/extension-catalog-hello/tests/integration.mjs",
+        "artifacts/extensions/external.catalog-hello/1.0.1"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-catalog-hello.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "validManifest": true,
+        "capabilityDocs": true,
+        "settingsSchemaDocs": true,
+        "i18nReadyLabels": true,
+        "lifecycleTests": true,
+        "hostRuntimeIntegrationTests": true,
+        "compatibilityDeclared": true,
+        "installConfigurationGuidance": true
+      },
+      "summary": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0
+      },
+      "manifest": {
+        "id": "external.catalog-hello",
+        "kind": "external",
+        "capabilities": [
+          "view.register",
+          "actionRail.register",
+          "notification.publish",
+          "settings.read"
+        ],
+        "supportedLocales": [
+          "en"
+        ],
+        "settingsSections": [],
+        "hasSettingsSchema": true,
+        "compatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=0.1.0",
+          "themeContract": "^1.0.0"
+        }
+      },
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0",
+      "category": "extension",
+      "path": "packages/extensions/extension-gemini-agent",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./constants",
+        "./manifest",
+        "./i18n",
+        "./settings",
+        "./context",
+        "./prompt",
+        "./provider",
+        "./service",
+        "./bundled"
+      ],
+      "tests": [
+        "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+        "apps/client/src/extensions/runtime/bundled/index.ts"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-gemini-agent.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "validManifest": true,
+        "capabilityDocs": true,
+        "settingsSchemaDocs": true,
+        "i18nReadyLabels": true,
+        "lifecycleTests": true,
+        "hostRuntimeIntegrationTests": true,
+        "compatibilityDeclared": true,
+        "installConfigurationGuidance": true
+      },
+      "summary": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0
+      },
+      "manifest": {
+        "id": "core.gemini-agent",
+        "kind": "bundled",
+        "capabilities": [
+          "workspace.read",
+          "editor.read",
+          "editor.write",
+          "selection.read",
+          "settings.read",
+          "settings.write",
+          "notification.publish",
+          "command.invoke",
+          "actionRail.register",
+          "view.register",
+          "network.fetch"
+        ],
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "settingsSections": [
+          "core.gemini-agent.settings"
+        ],
+        "hasSettingsSchema": true,
+        "compatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      },
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-manager",
+      "version": "1.1.0",
+      "category": "extension",
+      "path": "packages/extensions/extension-manager",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./manifest",
+        "./types"
+      ],
+      "tests": [
+        "packages/extensions/extension-manager/tests/extension-manager.test.tsx"
+      ],
+      "fixtures": [
+        "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
+        "apps/client/src/extensions/runtime/createClientExtensionRegistrationSink.tsx"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-manager.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "validManifest": true,
+        "capabilityDocs": true,
+        "settingsSchemaDocs": true,
+        "i18nReadyLabels": true,
+        "lifecycleTests": true,
+        "hostRuntimeIntegrationTests": true,
+        "compatibilityDeclared": true,
+        "installConfigurationGuidance": true
+      },
+      "summary": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0
+      },
+      "manifest": {
+        "id": "core.extension-manager",
+        "kind": "bundled",
+        "capabilities": [
+          "view.register",
+          "actionRail.register",
+          "settings.read",
+          "settings.write"
+        ],
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "settingsSections": [
+          "core.extension-manager.settings"
+        ],
+        "hasSettingsSchema": true,
+        "compatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0"
+        }
+      },
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-runtime",
+      "version": "1.0.1",
+      "category": "extension",
+      "path": "packages/extensions/extension-runtime",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./types",
+        "./compatibility",
+        "./registry",
+        "./loader",
+        "./runtime",
+        "./storage",
+        "./validation",
+        "./catalog"
+      ],
+      "tests": [
+        "packages/extensions/extension-runtime/tests/prepare-workspace-links.mjs",
+        "packages/extensions/extension-runtime/tests/run-smoke.mjs",
+        "packages/extensions/extension-runtime/tests/runtime.test.ts"
+      ],
+      "fixtures": [
+        "packages/extensions/extension-runtime/tests/runtime.test.ts",
+        "packages/extensions/extension-catalog-hello/tests/integration.mjs"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-runtime.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true
+      },
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0",
+      "category": "extension",
+      "path": "packages/extensions/extension-theme-studio",
+      "publishable": true,
+      "exports": [
+        ".",
+        "./version",
+        "./constants",
+        "./manifest",
+        "./settings",
+        "./service",
+        "./types",
+        "./exports",
+        "./relationships",
+        "./bundled"
+      ],
+      "tests": [
+        "packages/extensions/extension-theme-studio/tests/run-smoke.mjs"
+      ],
+      "fixtures": [
+        "packages/extensions/extension-theme-studio/tests/run-smoke.mjs",
+        "apps/client/src/extensions/runtime/bundled/index.ts"
+      ],
+      "docPath": "docs/reference/packages/mdwrk-extension-theme-studio.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "validManifest": true,
+        "capabilityDocs": true,
+        "settingsSchemaDocs": true,
+        "i18nReadyLabels": true,
+        "lifecycleTests": true,
+        "hostRuntimeIntegrationTests": true,
+        "compatibilityDeclared": true,
+        "installConfigurationGuidance": true
+      },
+      "summary": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0
+      },
+      "manifest": {
+        "id": "core.theme-studio",
+        "kind": "bundled",
+        "capabilities": [
+          "theme.read",
+          "theme.write",
+          "settings.read",
+          "settings.write",
+          "notification.publish",
+          "view.register",
+          "actionRail.register"
+        ],
+        "supportedLocales": [
+          "en",
+          "es"
+        ],
+        "settingsSections": [
+          "core.theme-studio.settings"
+        ],
+        "hasSettingsSchema": true,
+        "compatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      },
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/lander",
+      "version": "0.0.11",
+      "category": "app",
+      "path": "apps/lander",
+      "publishable": false,
+      "exports": [],
+      "tests": [],
+      "fixtures": [
+        "docs/apps/lander-app.md",
+        "apps/lander/README.md"
+      ],
+      "docPath": "docs/reference/apps/mdwrk-lander.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "configDocExists": true,
+        "boundaryMapExists": true,
+        "deployDocExists": true,
+        "conformanceDocExists": true,
+        "supportOwnershipDocumented": true
+      },
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "category": "app",
+      "path": "apps/client",
+      "publishable": true,
+      "exports": [
+        "."
+      ],
+      "tests": [
+        "apps/client/tests/phase10-i18n-parity.mjs",
+        "apps/client/tests/phase11-package-evidence.mjs",
+        "apps/client/tests/phase6-preview-export-policy.mjs",
+        "apps/client/tests/phase7-shell-parity.mjs",
+        "apps/client/tests/phase7-shell-parity.test.tsx",
+        "apps/client/tests/phase8-settings-data-git-parity.mjs",
+        "apps/client/tests/phase9-theme-parity.mjs"
+      ],
+      "fixtures": [
+        "docs/apps/mdwrkspace-app.md",
+        "apps/client/tests/phase10-i18n-parity.mjs",
+        "apps/client/tests/phase11-package-evidence.mjs"
+      ],
+      "docPath": "docs/reference/apps/mdwrk-mdwrkspace.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "configDocExists": true,
+        "boundaryMapExists": true,
+        "deployDocExists": true,
+        "conformanceDocExists": true,
+        "supportOwnershipDocumented": true
+      },
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/example-editor-basic",
+      "version": "0.1.1",
+      "category": "example",
+      "path": "examples/editor-basic",
+      "publishable": false,
+      "exports": [],
+      "tests": [],
+      "fixtures": [
+        "docs/examples/editor-basic-example.md",
+        "examples/editor-basic/App.tsx"
+      ],
+      "docPath": "docs/reference/examples/mdwrk-example-editor-basic.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "listContinuation": true,
+        "taskInsertion": true,
+        "lineNumbers": true,
+        "themeSupport": true,
+        "profileToggles": true
+      },
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    },
+    {
+      "name": "@mdwrk/example-renderer-basic",
+      "version": "0.1.1",
+      "category": "example",
+      "path": "examples/renderer-basic",
+      "publishable": false,
+      "exports": [],
+      "tests": [],
+      "fixtures": [
+        "docs/examples/renderer-basic-example.md",
+        "examples/renderer-basic/App.tsx"
+      ],
+      "docPath": "docs/reference/examples/mdwrk-example-renderer-basic.md",
+      "checks": {
+        "readmeExists": true,
+        "typedPublicExports": true,
+        "apiDocGenerated": true,
+        "examplesOrFixtures": true,
+        "semverDeclared": true,
+        "releaseEvidenceDocumented": true,
+        "boundaryClean": true,
+        "commonmarkCore": true,
+        "gfmTables": true,
+        "gfmTasks": true,
+        "gfmStrike": true,
+        "gfmAutolinks": true,
+        "optionalExtensions": true
+      },
+      "summary": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0
+      },
+      "manifest": null,
+      "boundaryLeakage": []
+    }
+  ],
+  "referenceDocs": [
+    "docs/reference/packages/mdwrk-extension-host.md",
+    "docs/reference/packages/mdwrk-extension-manifest.md",
+    "docs/reference/packages/mdwrk-theme-contract.md",
+    "docs/reference/packages/mdwrk-i18n.md",
+    "docs/reference/packages/mdwrk-icons.md",
+    "docs/reference/packages/mdwrk-testing.md",
+    "docs/reference/packages/mdwrk-ui-tokens.md",
+    "docs/reference/packages/mdwrk-markdown-renderer-core.md",
+    "docs/reference/packages/mdwrk-markdown-renderer-react.md",
+    "docs/reference/packages/mdwrk-markdown-editor-core.md",
+    "docs/reference/packages/mdwrk-markdown-editor-react.md",
+    "docs/reference/packages/mdwrk-extension-catalog-hello.md",
+    "docs/reference/packages/mdwrk-extension-gemini-agent.md",
+    "docs/reference/packages/mdwrk-extension-manager.md",
+    "docs/reference/packages/mdwrk-extension-runtime.md",
+    "docs/reference/packages/mdwrk-extension-theme-studio.md",
+    "docs/reference/apps/mdwrk-lander.md",
+    "docs/reference/apps/mdwrk-mdwrkspace.md",
+    "docs/reference/examples/mdwrk-example-editor-basic.md",
+    "docs/reference/examples/mdwrk-example-renderer-basic.md"
+  ],
+  "matrixPath": "docs/reference/workspace-package-certification-matrix.md",
+  "boundaryMapPath": "docs/reference/package-boundary-map.md",
+  "releaseEvidencePath": "docs/operations/release-evidence-phase11.md",
+  "rawExampleEvidence": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "results": [
+      {
+        "id": "matrix-present",
+        "description": "workspace package certification matrix exists",
+        "passed": true
+      },
+      {
+        "id": "boundary-map-present",
+        "description": "package boundary map exists",
+        "passed": true
+      },
+      {
+        "id": "apps-docs-present",
+        "description": "app docs for mdwrkspace and lander exist",
+        "passed": true
+      },
+      {
+        "id": "editor-example-phase11-features",
+        "description": "editor example demonstrates theme support, line numbers, task insertion, and profile toggles",
+        "passed": true
+      },
+      {
+        "id": "renderer-example-phase11-features",
+        "description": "renderer example demonstrates GFM and optional extension rendering",
+        "passed": true
+      }
+    ]
+  }
+}

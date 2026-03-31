@@ -1,0 +1,59 @@
+{
+  "phase": 10,
+  "generatedAt": "2026-03-28T15:03:02.041Z",
+  "checkpointType": "i18n-language-ux-and-catalog-coverage-checkpoint",
+  "packages": {
+    "i18n": {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0",
+      "path": "packages/shared/i18n"
+    },
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client"
+    }
+  },
+  "evidence": {
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-10-i18n-results.json",
+    "nodeResultsArtifactPath": "artifacts/conformance/latest/phase-10-i18n-parity-node-results.json",
+    "humanReadableOutputPath": "artifacts/conformance/latest/phase-10-i18n-parity-output.txt",
+    "i18nTestOutputPath": "artifacts/conformance/latest/phase-10-i18n-test-output.txt",
+    "auditedPaths": [
+      "packages/shared/i18n/src/core-shell.ts",
+      "apps/client/src/features/i18n/clientI18nService.ts",
+      "apps/client/src/features/i18n/LanguageSelector.tsx",
+      "apps/client/src/features/i18n/LanguageSettingsPanel.tsx",
+      "apps/client/src/app/runtime/ClientRuntimeContext.tsx",
+      "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "apps/client/components/Project/ProjectSelector.tsx",
+      "apps/client/components/Chassis/Header/Header.tsx",
+      "apps/client/components/Chassis/Footer/Footer.tsx",
+      "apps/client/components/Modals/SettingsModal.tsx"
+    ]
+  },
+  "summary": {
+    "totalChecks": 23,
+    "passedChecks": 23,
+    "failedChecks": 0,
+    "structuralAuditChecks": 26,
+    "structuralAuditPassed": 26,
+    "structuralAuditFailed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "restored core shell locale inventory for en/es/fr/pt/ur in the shared i18n package",
+    "added a visible language selector in settings and an optional compact selector in the project selector surface",
+    "wired locale choice to persistence through the client i18n service plus the settings store",
+    "broadened catalog-driven shell coverage for header, footer/status, settings, action-rail, and core settings panels",
+    "kept extension-specific locale catalogs inside extension packages while ensuring schema-backed settings labels can flow through the host formatter"
+  ],
+  "knownLimits": [
+    "Visible language selection is now restored, but full translation breadth across every project-selector and modal string is still broader than the explicitly audited shell/settings/action-rail/header/status boundary for this checkpoint.",
+    "The repository still does not yet close full frozen-target CommonMark/GFM corpus evidence, browser-driven visual regression, or promotion/release closure."
+  ]
+}

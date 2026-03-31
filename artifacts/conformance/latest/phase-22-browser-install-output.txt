@@ -1,0 +1,213 @@
+Phase 22 Playwright browser installation attempts
+
+Environment: {
+  "os": "Debian GNU/Linux 13 (trixie)",
+  "node": "v22.16.0",
+  "npm": "10.9.2",
+  "chromiumVersion": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+  "firefoxVersion": "not installed",
+  "firefoxEsrVersion": "not installed",
+  "webkitEpiphanyVersion": "not installed"
+}
+
+Before/after availability: [
+  {
+    "browser": "chromium",
+    "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+    "resolvedExecutablePath": "/usr/bin/chromium",
+    "resolvedFrom": "system-fallback",
+    "executableExists": true,
+    "candidates": [
+      {
+        "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+        "source": "playwright-cache"
+      },
+      {
+        "path": "/usr/bin/chromium",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/bin/chromium-browser",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/bin/google-chrome",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/bin/google-chrome-stable",
+        "source": "system-fallback"
+      }
+    ]
+  },
+  {
+    "browser": "firefox",
+    "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+    "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+    "resolvedFrom": "unavailable",
+    "executableExists": false,
+    "candidates": [
+      {
+        "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+        "source": "playwright-cache"
+      },
+      {
+        "path": "/usr/bin/firefox",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/bin/firefox-esr",
+        "source": "system-fallback"
+      }
+    ]
+  },
+  {
+    "browser": "webkit",
+    "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+    "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+    "resolvedFrom": "unavailable",
+    "executableExists": false,
+    "candidates": [
+      {
+        "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+        "source": "playwright-cache"
+      },
+      {
+        "path": "/usr/bin/epiphany-browser",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/libexec/webkit2gtk-4.1/MiniBrowser",
+        "source": "system-fallback"
+      },
+      {
+        "path": "/usr/libexec/webkit2gtk-4.0/MiniBrowser",
+        "source": "system-fallback"
+      }
+    ]
+  }
+]
+
+--- with-deps command ---
+node ./node_modules/playwright/cli.js install --with-deps chromium firefox webkit
+exitCode: 1
+failureClass: apt-dns-resolution-failure
+
+Installing dependencies...
+Ign:1 http://deb.debian.org/debian trixie InRelease
+Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+Ign:1 http://deb.debian.org/debian trixie InRelease
+Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+Ign:1 http://deb.debian.org/debian trixie InRelease
+Ign:2 http://deb.debian.org/debian trixie-updates InRelease
+Ign:3 http://deb.debian.org/debian-security trixie-security InRelease
+Err:1 http://deb.debian.org/debian trixie InRelease
+  Temporary failure resolving 'deb.debian.org'
+Err:3 http://deb.debian.org/debian-security trixie-security InRelease
+  Temporary failure resolving 'deb.debian.org'
+Err:2 http://deb.debian.org/debian trixie-updates InRelease
+  Temporary failure resolving 'deb.debian.org'
+Reading package lists...
+W: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  Temporary failure resolving 'deb.debian.org'
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package libsecret-1-0 is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+Package fonts-freefont-ttf is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+Package fonts-ipafont-gothic is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+Package fonts-wqy-zenhei is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+Package xfonts-scalable is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+E: Unable to locate package fonts-unifont
+E: Package 'xfonts-scalable' has no installation candidate
+E: Package 'fonts-ipafont-gothic' has no installation candidate
+E: Package 'fonts-wqy-zenhei' has no installation candidate
+E: Unable to locate package fonts-tlwg-loma-otf
+E: Package 'fonts-freefont-ttf' has no installation candidate
+E: Unable to locate package libdbus-glib-1-2
+E: Unable to locate package libenchant-2-2
+E: Unable to locate package libevdev2
+E: Unable to locate package libgles2
+E: Unable to locate package libgtk-4-1
+E: Unable to locate package libmanette-0.2-0
+E: Couldn't find any package by glob 'libmanette-0.2-0'
+E: Couldn't find any package by regex 'libmanette-0.2-0'
+E: Unable to locate package libnotify4
+E: Unable to locate package libopengl0
+E: Package 'libsecret-1-0' has no installation candidate
+E: Unable to locate package libwoff1
+Failed to install browsers
+Error: Installation process exited with code: 100
+
+
+--- browser-only command ---
+node ./node_modules/playwright/cli.js install chromium firefox webkit
+exitCode: 1
+failureClass: browser-cdn-dns-resolution-failure
+
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip
+Error: getaddrinfo EAI_AGAIN cdn.playwright.dev
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.playwright.dev'
+}
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip
+Error: getaddrinfo EAI_AGAIN cdn.playwright.dev
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.playwright.dev'
+}
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip
+Error: getaddrinfo EAI_AGAIN cdn.playwright.dev
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.playwright.dev'
+}
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip
+Error: getaddrinfo EAI_AGAIN cdn.playwright.dev
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.playwright.dev'
+}
+Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip
+Error: getaddrinfo EAI_AGAIN cdn.playwright.dev
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {
+  errno: -3001,
+  code: 'EAI_AGAIN',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.playwright.dev'
+}
+Failed to install browsers
+Error: Failed to download Chrome for Testing 145.0.7632.6 (playwright chromium v1208), caused by
+Error: Download failure, code=1
+    at ChildProcess.<anonymous> (/mnt/data/phase22_repo/markdown_workspace/node_modules/playwright-core/lib/server/registry/browserFetcher.js:96:32)
+    at ChildProcess.emit (node:events:518:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+

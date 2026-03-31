@@ -1,0 +1,56 @@
+{
+  "total": 7,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "id": "gfm-strikethrough",
+      "section": "Strikethrough",
+      "passed": true,
+      "expectedHtml": "<p><del>done</del></p>",
+      "actualHtml": "<p><del>done</del></p>"
+    },
+    {
+      "id": "gfm-task-list",
+      "section": "Task lists",
+      "passed": true,
+      "expectedHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><input type=\"checkbox\" checked /> done</li><li data-task=\"true\" data-checked=\"false\"><input type=\"checkbox\" /> todo</li></ul>",
+      "actualHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><input type=\"checkbox\" checked /> done</li><li data-task=\"true\" data-checked=\"false\"><input type=\"checkbox\" /> todo</li></ul>"
+    },
+    {
+      "id": "gfm-autolink-literal-url",
+      "section": "Autolink literals",
+      "passed": true,
+      "expectedHtml": "<p>Visit <a href=\"https://example.com/path?q=1\">https://example.com/path?q=1</a>.</p>",
+      "actualHtml": "<p>Visit <a href=\"https://example.com/path?q=1\">https://example.com/path?q=1</a>.</p>"
+    },
+    {
+      "id": "gfm-autolink-literal-www",
+      "section": "Autolink literals",
+      "passed": true,
+      "expectedHtml": "<p><a href=\"http://www.example.com\">www.example.com</a>, still text</p>",
+      "actualHtml": "<p><a href=\"http://www.example.com\">www.example.com</a>, still text</p>"
+    },
+    {
+      "id": "gfm-autolink-literal-email",
+      "section": "Autolink literals",
+      "passed": true,
+      "expectedHtml": "<p>Contact <a href=\"mailto:docs@example.com\">docs@example.com</a>!</p>",
+      "actualHtml": "<p>Contact <a href=\"mailto:docs@example.com\">docs@example.com</a>!</p>"
+    },
+    {
+      "id": "gfm-table-alignment",
+      "section": "Tables",
+      "passed": true,
+      "expectedHtml": "<table><colgroup><col style=\"text-align:left\" /><col style=\"text-align:right\" /><col style=\"text-align:center\" /></colgroup><thead><tr><th align=\"left\">Left</th><th align=\"right\">Right</th><th align=\"center\">Center</th></tr></thead><tbody><tr><td align=\"left\">a</td><td align=\"right\">b</td><td align=\"center\">c</td></tr></tbody></table>",
+      "actualHtml": "<table><colgroup><col style=\"text-align:left\" /><col style=\"text-align:right\" /><col style=\"text-align:center\" /></colgroup><thead><tr><th align=\"left\">Left</th><th align=\"right\">Right</th><th align=\"center\">Center</th></tr></thead><tbody><tr><td align=\"left\">a</td><td align=\"right\">b</td><td align=\"center\">c</td></tr></tbody></table>"
+    },
+    {
+      "id": "gfm-table-escaped-pipe-and-code-span",
+      "section": "Tables",
+      "passed": true,
+      "expectedHtml": "<table><colgroup><col /><col /></colgroup><thead><tr><th>Text</th><th>Code</th></tr></thead><tbody><tr><td>literal | pipe</td><td><code>a|b</code></td></tr></tbody></table>",
+      "actualHtml": "<table><colgroup><col /><col /></colgroup><thead><tr><th>Text</th><th>Code</th></tr></thead><tbody><tr><td>literal | pipe</td><td><code>a|b</code></td></tr></tbody></table>"
+    }
+  ]
+}

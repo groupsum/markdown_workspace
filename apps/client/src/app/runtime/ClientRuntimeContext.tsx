@@ -1,4 +1,5 @@
 import React from 'react';
+import { CORE_SHELL_LOCALE_LOADER_DEFINITION } from '@mdwrk/i18n';
 import type { ExtensionHost } from '@mdwrk/extension-host';
 import { createActionRailRegistry } from '../../features/action-rail/actionRailRegistry';
 import { createCommandRegistry } from '../../features/commands/commandRegistry';
@@ -36,6 +37,7 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
     const settingsRegistry = createSettingsRegistry();
     const settingsStore = createHostSettingsStore();
     const i18n = createClientI18nService('en');
+    i18n.registerCatalogLoader('core', CORE_SHELL_LOCALE_LOADER_DEFINITION);
     const diagnostics = createClientDiagnosticsService();
     const activeEditor = createActiveEditorBridge();
     const notifications = createClientNotificationService(
@@ -68,6 +70,22 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
       extensionHost,
     };
   }, [runtimeBridge]);
+
+  React.useEffect(() => {
+    let active = true;
+    const syncLocale = async () => {
+      const storedLocale = await services.settingsStore.get<string>('core.locale');
+      if (!active) return;
+      if (storedLocale) {
+        services.i18n.setLocale(storedLocale);
+      }
+      await services.i18n.ensureLocale(services.i18n.getLocale());
+    };
+    void syncLocale();
+    return () => {
+      active = false;
+    };
+  }, [services.i18n, services.settingsStore]);
 
   useCoreSurfaceRegistrations(runtimeBridge, services);
 

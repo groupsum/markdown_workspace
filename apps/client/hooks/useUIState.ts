@@ -15,6 +15,7 @@ type StoredUiState = {
   viewMode: ViewMode;
   autoSaveEnabled: boolean;
   persistSessionEnabled: boolean;
+  showLineNumbers: boolean;
 };
 
 const DEFAULT_SIDEBAR_WIDTH = 280;
@@ -45,6 +46,7 @@ export const useUIState = () => {
   const [cursorPos, setCursorPos] = useState({ line: 1, col: 1 });
   const [autoSaveEnabled, setAutoSaveEnabled] = useState(storedUi.autoSaveEnabled ?? true);
   const [persistSessionEnabled, setPersistSessionEnabled] = useState(storedUi.persistSessionEnabled ?? true);
+  const [showLineNumbers, setShowLineNumbers] = useState(storedUi.showLineNumbers ?? true);
 
   const setTheme = async (newTheme: AppTheme) => {
     await themeService.setTheme(newTheme);
@@ -65,14 +67,15 @@ export const useUIState = () => {
       searchQuery,
       viewMode,
       autoSaveEnabled,
-      persistSessionEnabled
+      persistSessionEnabled,
+      showLineNumbers,
     };
     window.localStorage.setItem(UI_STATE_KEY, JSON.stringify(payload));
 
     storage.setSetting(UI_STATE_KEY, payload).catch((error) => {
       console.warn('[useUIState] Failed to persist UI state in IndexedDB', error);
     });
-  }, [zoom, appMode, sidebarOpen, sidebarWidth, searchQuery, viewMode, autoSaveEnabled, persistSessionEnabled]);
+  }, [zoom, appMode, sidebarOpen, sidebarWidth, searchQuery, viewMode, autoSaveEnabled, persistSessionEnabled, showLineNumbers]);
 
   useEffect(() => {
     let isMounted = true;
@@ -93,6 +96,7 @@ export const useUIState = () => {
         }
         if (typeof storedState.autoSaveEnabled === 'boolean') setAutoSaveEnabled(storedState.autoSaveEnabled);
         if (typeof storedState.persistSessionEnabled === 'boolean') setPersistSessionEnabled(storedState.persistSessionEnabled);
+        if (typeof storedState.showLineNumbers === 'boolean') setShowLineNumbers(storedState.showLineNumbers);
       })
       .catch((error) => {
         console.warn('[useUIState] Failed to load UI state from IndexedDB', error);
@@ -103,7 +107,6 @@ export const useUIState = () => {
     };
   }, []);
 
-  // Initial theme sync on mount
   useEffect(() => {
     let isMounted = true;
     themeService.initTheme().then((resolvedTheme) => {
@@ -128,6 +131,7 @@ export const useUIState = () => {
     viewMode, setViewMode,
     cursorPos, setCursorPos,
     autoSaveEnabled, setAutoSaveEnabled,
-    persistSessionEnabled, setPersistSessionEnabled
+    persistSessionEnabled, setPersistSessionEnabled,
+    showLineNumbers, setShowLineNumbers,
   };
 };

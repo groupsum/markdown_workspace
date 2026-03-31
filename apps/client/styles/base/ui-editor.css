@@ -34,7 +34,7 @@
   padding: 10px 6px;
   z-index: 50;
   flex-shrink: 0;
-  overflow-y: auto;
+  overflow: auto;
   overscroll-behavior: contain;
 }
 .view-toolbar-group {
@@ -93,7 +93,7 @@
   position: relative;
 }
 .editor-gutter {
-  width: 48px;
+  width: var(--line-number-gutter-width);
   background: var(--bg-inset);
   border-right: var(--border-width) solid var(--border-color);
   display: flex;
@@ -107,8 +107,8 @@
   user-select: none;
 }
 .line-num {
-  height: 1.5rem;
-  line-height: 1.5rem;
+  height: var(--editor-line-rhythm);
+  line-height: var(--editor-line-rhythm);
 }
 .editor-textarea {
   flex: 1;
@@ -118,10 +118,10 @@
   padding: var(--editor-padding);
   font-family: var(--font-mono);
   font-size: calc(13px * var(--ui-scale));
-  line-height: 1.5rem;
+  line-height: var(--editor-line-rhythm);
   color: var(--fg-primary);
   outline: none;
-  overflow-y: auto;
+  overflow: auto;
 }
 .editor-splitter {
   width: var(--app-gap);
@@ -145,7 +145,7 @@
 }
 .preview-pane {
   flex: 1;
-  overflow-y: auto;
+  overflow: auto;
   background: var(--bg-panel);
 }
 @media (max-width: 900px) {
@@ -170,6 +170,9 @@
     width: 100%;
     height: var(--app-gap);
     cursor: row-resize;
+  }
+  .editor-gutter {
+    width: calc(var(--line-number-gutter-width) - 4px);
   }
   .editor-splitter-handle {
     width: 24px;

@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-03-29T20:06:40.914Z",
+  "bundle": "rc.1",
+  "files": [
+    "phase-13-rc-train-checkpoint.json",
+    "phase-13-rc-train-results.json",
+    "phase-13-release-status.json",
+    "phase-13-release-status.txt",
+    "phase-13-version-inventory.json",
+    "phase-13-internal-range-audit.json",
+    "phase-13-private-pack-report.json",
+    "phase-13-rc-tarball-catalog.json",
+    "phase-13-packed-install-report.json",
+    "phase-13-packed-install-log.txt",
+    "phase-13-app-and-example-validation.json",
+    "phase-13-release-notes-draft.md",
+    "phase-13-rc-acceptance-checklist.md",
+    "package-inventory.json",
+    "release-evidence.json",
+    "publish-readiness.json"
+  ]
+}

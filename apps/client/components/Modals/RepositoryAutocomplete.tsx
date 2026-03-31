@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { GIT_REPO_REFRESH_REQUEST_EVENT } from '../../constants';
 import { GitConfig } from '../../types';
-import { clearOidcCredential, readOidcCredential } from '../../services/oidc';
 import { getGitAdapterService } from '../../services/gitAdapter';
+import { getAuthToken } from '../../services/gitConfig';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 interface RepositoryAutocompleteProps {
   projectId: string | null;
@@ -10,129 +12,83 @@ interface RepositoryAutocompleteProps {
   onGitConfigChange: (config: GitConfig) => void;
 }
 
-const normalizeRepoUrl = (value: string, host: string): string => {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return '';
-  }
-
-  if (trimmed.startsWith(`https://${host}/`)) {
-    return trimmed.replace(/\.git$/, '');
-  }
-
-  if (/^[\w.-]+\/[\w.-]+$/.test(trimmed)) {
-    return `https://${host}/${trimmed}`;
-  }
-
-  return trimmed;
-};
-
-const shouldInvalidateOidcSession = (message: string): boolean => {
-  const normalized = message.toLowerCase();
-  return normalized.includes('reconnect oidc') || normalized.includes('401') || normalized.includes('403') || normalized.includes('unauthorized') || normalized.includes('forbidden');
-};
-
-export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ projectId, gitConfig, onRepoUrlChange, onGitConfigChange }) => {
-  const gitAdapter = useMemo(() => getGitAdapterService(gitConfig.oidcProvider || 'github'), [gitConfig.oidcProvider]);
-  const normalizedInput = normalizeRepoUrl(gitConfig.repoUrl, gitAdapter.repoHost);
-
-  const getRepoNameFromValue = (value: string): string => {
-    const normalized = normalizeRepoUrl(value, gitAdapter.repoHost);
-    if (!normalized) {
-      return '';
-    }
-    const chunks = normalized.split('/').filter(Boolean);
-    return chunks.at(-1)?.toLowerCase() || '';
-  };
-
+export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
+  projectId,
+  gitConfig,
+  onRepoUrlChange,
+  onGitConfigChange,
+}) => {
+  const { t } = useClientI18n();
   const [repoUrls, setRepoUrls] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [createPending, setCreatePending] = useState(false);
+  const [lastUpdatedAt, setLastUpdatedAt] = useState<number | null>(null);
 
-  const clearStaleSession = async (message: string) => {
-    if (!projectId || !shouldInvalidateOidcSession(message)) {
-      return;
-    }
-
-    clearOidcCredential(projectId);
-    onGitConfigChange({
-      ...gitConfig,
-      oidcConnected: false,
-      oidcSubject: ''
-    });
-  };
+  const provider = gitConfig.oidcProvider || 'github';
+  const gitAdapter = useMemo(() => getGitAdapterService(provider), [provider]);
+  const selectedRepoHost = gitAdapter.repoHost;
+  const canLoadRepos = Boolean(projectId) && (gitConfig.authMode === 'pat' ? Boolean(gitConfig.patToken.trim()) : gitConfig.oidcConnected);
 
   useEffect(() => {
+    let cancelled = false;
     const loadRepos = async () => {
-      if (!projectId || !gitConfig.oidcProvider || !gitConfig.oidcConnected) {
+      if (!projectId || !canLoadRepos) {
         setRepoUrls([]);
-        setError('');
+        setLastUpdatedAt(null);
         return;
       }
-
       setLoading(true);
       setError('');
       try {
-        const credential = await readOidcCredential(projectId);
-        if (!credential?.accessToken) {
-          throw new Error('Connect OIDC to load repositories.');
+        const accessToken = await getAuthToken(projectId, gitConfig);
+        const repos = await gitAdapter.listRepos(accessToken);
+        if (!cancelled) {
+          setRepoUrls(repos.map((repo) => repo.htmlUrl));
+          setLastUpdatedAt(Date.now());
         }
-        const repos = await gitAdapter.listRepos(credential.accessToken);
-        setRepoUrls(repos.map((repo) => repo.htmlUrl));
       } catch (err) {
-        const message = err instanceof Error ? err.message : 'Failed to load repositories.';
-        await clearStaleSession(message);
-        setError(message);
-        setRepoUrls([]);
+        if (!cancelled) {
+          const message = err instanceof Error ? err.message : t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES…');
+          setError(message);
+          setRepoUrls([]);
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
 
     void loadRepos();
-  }, [projectId, gitConfig.oidcProvider, gitConfig.oidcConnected, gitAdapter]);
+    const handleRefresh = () => { void loadRepos(); };
+    window.addEventListener(GIT_REPO_REFRESH_REQUEST_EVENT, handleRefresh);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(GIT_REPO_REFRESH_REQUEST_EVENT, handleRefresh);
+    };
+  }, [canLoadRepos, gitAdapter, gitConfig, projectId, t]);
 
   const filteredSuggestions = useMemo(() => {
-    const probe = normalizedInput.toLowerCase();
-    if (!probe) {
-      return repoUrls;
-    }
+    const probe = gitConfig.repoUrl.trim().toLowerCase();
+    if (!probe) return repoUrls;
     return repoUrls.filter((repo) => repo.toLowerCase().includes(probe));
-  }, [repoUrls, normalizedInput]);
-
-  const repoExists = useMemo(
-    () => repoUrls.some((repo) => repo.toLowerCase() === normalizedInput.toLowerCase()),
-    [repoUrls, normalizedInput]
-  );
-
-  const canCreateRepo = gitConfig.oidcConnected && Boolean(projectId) && !repoExists && Boolean(getRepoNameFromValue(gitConfig.repoUrl));
+  }, [gitConfig.repoUrl, repoUrls]);
 
   const handleCreatePrivateRepo = async () => {
-    if (!projectId) {
-      return;
-    }
-
-    const repoName = getRepoNameFromValue(gitConfig.repoUrl);
-    if (!repoName) {
-      return;
-    }
-
+    if (!projectId || !gitConfig.repoUrl.trim()) return;
+    const repoName = gitConfig.repoUrl.split('/').filter(Boolean).at(-1) || gitConfig.repoUrl.trim();
     setCreatePending(true);
     setError('');
-
     try {
-      const credential = await readOidcCredential(projectId);
-      if (!credential?.accessToken) {
-        throw new Error('Connect OIDC to create repositories.');
-      }
-
-      const created = await gitAdapter.createRepo(credential.accessToken, repoName);
+      const accessToken = await getAuthToken(projectId, gitConfig);
+      const created = await gitAdapter.createRepo(accessToken, repoName.replace(/\.git$/i, ''));
       onRepoUrlChange(created.htmlUrl);
-      setRepoUrls((prev) => Array.from(new Set([...prev, created.htmlUrl])).sort((a, b) => a.localeCompare(b)));
+      onGitConfigChange({ ...gitConfig, oidcProvider: provider });
+      setRepoUrls((previous) => Array.from(new Set([...previous, created.htmlUrl])));
+      setLastUpdatedAt(Date.now());
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to create repository.';
-      await clearStaleSession(message);
       setError(message);
     } finally {
       setCreatePending(false);
@@ -146,24 +102,27 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({ 
         list="repo-autocomplete"
         className="modal-input !text-xs !py-3"
         value={gitConfig.repoUrl}
-        onChange={(e) => onRepoUrlChange(e.target.value)}
-        placeholder={`https://${gitAdapter.repoHost}/owner/repo`}
+        onChange={(event) => onRepoUrlChange(event.target.value)}
+        placeholder={`https://${selectedRepoHost}/owner/repo`}
       />
       <datalist id="repo-autocomplete">
         {filteredSuggestions.map((repo) => (
           <option key={repo} value={repo} />
         ))}
       </datalist>
-      {loading && <span className="text-[10px] text-[var(--fg-muted)]">LOADING_REPOSITORIES…</span>}
+      {loading && <span className="text-[10px] text-[var(--fg-muted)]">{t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES…')}</span>}
+      {lastUpdatedAt && <span className="text-[10px] text-[var(--fg-muted)]">UPDATED {new Date(lastUpdatedAt).toLocaleTimeString()}</span>}
       {error && <span className="text-[10px] text-[var(--danger)]">{error.toUpperCase()}</span>}
-      {canCreateRepo && (
-        <button
-          type="button"
-          className="modal-btn modal-btn-primary"
-          onClick={handleCreatePrivateRepo}
-          disabled={createPending}
-        >
-          {createPending ? 'CREATING_PRIVATE_REPO…' : 'CREATE_PRIVATE_REPO'}
+      {!canLoadRepos && (
+        <span className="text-[10px] text-[var(--fg-muted)]">
+          {gitConfig.authMode === 'pat'
+            ? t('core.settings.git.pat.required', 'ENTER A PAT TO LOAD REPOSITORIES.')
+            : t('core.settings.git.oidc.required', 'CONNECT OIDC TO LOAD REPOSITORIES.')}
+        </span>
+      )}
+      {Boolean(projectId && gitConfig.repoUrl.trim()) && !repoUrls.includes(gitConfig.repoUrl.trim()) && (
+        <button type="button" className="modal-btn modal-btn-primary" onClick={handleCreatePrivateRepo} disabled={createPending}>
+          {createPending ? t('core.settings.git.creating', 'CREATING_PRIVATE_REPO…') : t('core.settings.git.create-private-repo', 'CREATE_PRIVATE_REPO')}
         </button>
       )}
     </label>

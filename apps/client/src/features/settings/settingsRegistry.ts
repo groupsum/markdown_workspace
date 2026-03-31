@@ -10,6 +10,7 @@ export interface ClientSettingsSection extends RegisteredSettingsSection {
   readonly panel: SettingsPanelId;
   readonly icon?: ExtensionIcon;
   readonly schema?: ExtensionSettingsSchema;
+  readonly extensionId?: string;
   readonly render?: () => ReactNode;
 }
 

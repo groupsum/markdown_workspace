@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-03-31T09:49:52Z",
+  "phase": 22,
+  "executionMode": "manual-playwright-cli-install-attempts",
+  "environment": {
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "node": "v22.16.0",
+    "npm": "10.9.2",
+    "chromiumVersion": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+    "firefoxVersion": "not installed",
+    "firefoxEsrVersion": "not installed",
+    "webkitEpiphanyVersion": "not installed"
+  },
+  "beforeAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/firefox",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/firefox-esr",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/epiphany-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.1/MiniBrowser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.0/MiniBrowser",
+          "source": "system-fallback"
+        }
+      ]
+    }
+  ],
+  "afterAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/firefox",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/firefox-esr",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/epiphany-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.1/MiniBrowser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/libexec/webkit2gtk-4.0/MiniBrowser",
+          "source": "system-fallback"
+        }
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "label": "with-deps",
+      "command": "node ./node_modules/playwright/cli.js install --with-deps chromium firefox webkit",
+      "exitCode": 1,
+      "failureClass": "apt-dns-resolution-failure",
+      "stdout": "Installing dependencies...\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nErr:1 http://deb.debian.org/debian trixie InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:3 http://deb.debian.org/debian-security trixie-security InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:2 http://deb.debian.org/debian trixie-updates InRelease\n  Temporary failure resolving 'deb.debian.org'\nReading package lists...\nW: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Temporary failure resolving 'deb.debian.org'\nW: Failed to fetch http://deb.debian.org/debian/dists/trixie-updates/InRelease  Temporary failure resolving 'deb.debian.org'\nW: Failed to fetch http://deb.debian.org/debian-security/dists/trixie-security/InRelease  Temporary failure resolving 'deb.debian.org'\nW: Some index files failed to download. They have been ignored, or old ones used instead.\nReading package lists...\nBuilding dependency tree...\nReading state information...\nPackage libsecret-1-0 is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\n\nPackage fonts-freefont-ttf is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\n\nPackage fonts-ipafont-gothic is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\n\nPackage fonts-wqy-zenhei is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\n\nPackage xfonts-scalable is not available, but is referred to by another package.\nThis may mean that the package is missing, has been obsoleted, or\nis only available from another source\n\nE: Unable to locate package fonts-unifont\nE: Package 'xfonts-scalable' has no installation candidate\nE: Package 'fonts-ipafont-gothic' has no installation candidate\nE: Package 'fonts-wqy-zenhei' has no installation candidate\nE: Unable to locate package fonts-tlwg-loma-otf\nE: Package 'fonts-freefont-ttf' has no installation candidate\nE: Unable to locate package libdbus-glib-1-2\nE: Unable to locate package libenchant-2-2\nE: Unable to locate package libevdev2\nE: Unable to locate package libgles2\nE: Unable to locate package libgtk-4-1\nE: Unable to locate package libmanette-0.2-0\nE: Couldn't find any package by glob 'libmanette-0.2-0'\nE: Couldn't find any package by regex 'libmanette-0.2-0'\nE: Unable to locate package libnotify4\nE: Unable to locate package libopengl0\nE: Package 'libsecret-1-0' has no installation candidate\nE: Unable to locate package libwoff1\nFailed to install browsers\nError: Installation process exited with code: 100\n",
+      "stderr": ""
+    },
+    {
+      "label": "browser-only",
+      "command": "node ./node_modules/playwright/cli.js install chromium firefox webkit",
+      "exitCode": 1,
+      "failureClass": "browser-cdn-dns-resolution-failure",
+      "stdout": "Downloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip\nError: getaddrinfo EAI_AGAIN cdn.playwright.dev\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {\n  errno: -3001,\n  code: 'EAI_AGAIN',\n  syscall: 'getaddrinfo',\n  hostname: 'cdn.playwright.dev'\n}\nDownloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip\nError: getaddrinfo EAI_AGAIN cdn.playwright.dev\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {\n  errno: -3001,\n  code: 'EAI_AGAIN',\n  syscall: 'getaddrinfo',\n  hostname: 'cdn.playwright.dev'\n}\nDownloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip\nError: getaddrinfo EAI_AGAIN cdn.playwright.dev\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {\n  errno: -3001,\n  code: 'EAI_AGAIN',\n  syscall: 'getaddrinfo',\n  hostname: 'cdn.playwright.dev'\n}\nDownloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip\nError: getaddrinfo EAI_AGAIN cdn.playwright.dev\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {\n  errno: -3001,\n  code: 'EAI_AGAIN',\n  syscall: 'getaddrinfo',\n  hostname: 'cdn.playwright.dev'\n}\nDownloading Chrome for Testing 145.0.7632.6 (playwright chromium v1208) from https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux64.zip\nError: getaddrinfo EAI_AGAIN cdn.playwright.dev\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:internal/dns/promises:101:17) {\n  errno: -3001,\n  code: 'EAI_AGAIN',\n  syscall: 'getaddrinfo',\n  hostname: 'cdn.playwright.dev'\n}\nFailed to install browsers\nError: Failed to download Chrome for Testing 145.0.7632.6 (playwright chromium v1208), caused by\nError: Download failure, code=1\n    at ChildProcess.<anonymous> (/mnt/data/phase22_repo/markdown_workspace/node_modules/playwright-core/lib/server/registry/browserFetcher.js:96:32)\n    at ChildProcess.emit (node:events:518:28)\n    at ChildProcess._handle.onexit (node:internal/child_process:293:12)\n",
+      "stderr": ""
+    }
+  ],
+  "installSucceeded": false
+}

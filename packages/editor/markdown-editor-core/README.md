@@ -1,34 +1,46 @@
-# mdwrk/markdown-editor-core
+# @mdwrk/markdown-editor-core
 
-Portable source-mode markdown editor primitives for Markdown Workspace.
+Portable source-mode Markdown editor primitives for Markdown Workspace.
 
-## Responsibilities
+## Public responsibilities
 
-- document snapshot and selection types
 - selection transforms
 - formatting commands
+- list/task insertion helpers
 - indent/outdent helpers
-- undo/redo history state
-- host-facing editor controller contracts
+- history state and undo/redo primitives
+- editor class-name contract
 
-## Scope
+## Typed public exports
 
-This package does not depend on React or DOM rendering. It is suitable for browser hosts, React bindings, and future non-React adapters.
+- root module: `@mdwrk/markdown-editor-core`
+- `./types`
+- `./class-names`
+- `./selection`
+- `./transforms`
+- `./commands`
+- `./history`
+- `./version`
 
-## Key exports
+## Integration fixtures / examples
 
-- `createHistoryState`
-- `resetHistoryState`
-- `pushHistoryEntry`
-- `undoHistory`
-- `redoHistory`
-- `applyBuiltinMarkdownCommand`
-- `wrapSelection`
-- `indentSelection`
-- `outdentSelection`
-- `computeCursorPosition`
-- `DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES`
+- reusable consumer: `examples/editor-basic/`
+- client integration: Phase 5 authoring checkpoint
+- list/task/continuation behavior demonstrated in the editor example and package-level tests
 
-## Status
+## Semver / compatibility
 
-Implemented in the Phase 5 checkpoint. This package is publishable, but repository-wide certification is still pending later phases.
+- current version: `1.1.0`
+- package boundary: editor logic only; no React or app-shell dependency
+
+## Release evidence
+
+- typed exports in `package.json`
+- build/typecheck/test scripts in `package.json`
+- checkpoint evidence in `artifacts/conformance/latest/`
+
+## API/reference docs
+
+See the generated reference page at:
+
+- `docs/reference/packages/mdwrk-markdown-editor-core.md`

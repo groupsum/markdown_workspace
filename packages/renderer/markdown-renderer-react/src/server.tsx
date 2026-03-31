@@ -1,31 +1,31 @@
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { createHtmlDocument } from "@mdwrk/markdown-renderer-core/html";
-import { MarkdownRenderer } from "./component.js";
-import type { MarkdownRendererProps } from "./types.js";
+import { renderMarkdownToHtmlSync } from "@mdwrk/markdown-renderer-core";
+import { renderMarkdownToHtmlDocumentSync } from "@mdwrk/markdown-renderer-core/html";
+import type { RenderMarkdownToStaticHtmlDocumentProps, RenderMarkdownToStaticHtmlProps } from "./types.js";
 
-export function renderMarkdownToStaticHtml(props: MarkdownRendererProps): string {
-  return renderToStaticMarkup(<MarkdownRenderer {...props} />);
+export function renderMarkdownToStaticHtml(props: RenderMarkdownToStaticHtmlProps): string {
+  const { markdown, htmlHandling, profile = "gfm-default", extensions, sourcePositionAttributes, getLinkAttributes } = props;
+  return renderMarkdownToHtmlSync(markdown, {
+    htmlHandling,
+    profile,
+    extensions,
+    sourcePositionAttributes,
+    getLinkAttributes,
+  });
 }
 
-export function renderMarkdownToStaticHtmlDocument(
-  props: MarkdownRendererProps & {
-    readonly title: string;
-    readonly lang?: string;
-    readonly dataTheme?: string;
-    readonly bodyClassName?: string;
-    readonly htmlClassName?: string;
-    readonly stylesheets?: readonly string[];
-  },
-): string {
-  const { title, lang, dataTheme, bodyClassName, htmlClassName, stylesheets, ...rendererProps } = props;
-  return createHtmlDocument({
+export function renderMarkdownToStaticHtmlDocument(props: RenderMarkdownToStaticHtmlDocumentProps): string {
+  const { title, lang, dataTheme, bodyClassName, htmlClassName, stylesheets, markdown, htmlHandling, profile = "gfm-default", extensions, sourcePositionAttributes, getLinkAttributes } = props;
+  return renderMarkdownToHtmlDocumentSync(markdown, {
     title,
-    bodyHtml: renderMarkdownToStaticHtml(rendererProps),
     lang,
     dataTheme,
     bodyClassName,
     htmlClassName,
     stylesheets,
+    htmlHandling,
+    profile,
+    extensions,
+    sourcePositionAttributes,
+    getLinkAttributes,
   });
 }

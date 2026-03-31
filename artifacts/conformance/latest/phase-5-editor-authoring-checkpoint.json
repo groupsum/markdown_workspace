@@ -1,0 +1,72 @@
+{
+  "phase": 5,
+  "generatedAt": "2026-03-31T05:48:59.215Z",
+  "checkpointType": "editor-semantics-and-authoring-ux-checkpoint",
+  "packages": {
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0-rc.1",
+      "path": "apps/client"
+    },
+    "editorCore": {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0-rc.1",
+      "path": "packages/editor/markdown-editor-core"
+    },
+    "editorReact": {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0-rc.1",
+      "path": "packages/editor/markdown-editor-react"
+    },
+    "uiTokens": {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0-rc.1",
+      "path": "packages/shared/ui-tokens"
+    }
+  },
+  "evidence": {
+    "editorCoreCommand": "node packages/editor/markdown-editor-core/tests/run-smoke.mjs --json",
+    "editorReactCommand": "node packages/editor/markdown-editor-react/tests/run-smoke.mjs --json",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-5-editor-authoring-results.json",
+    "clientTypecheckArtifactPath": "artifacts/conformance/latest/phase-5-client-typecheck.txt",
+    "appPaths": [
+      "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx",
+      "apps/client/components/Chassis/WorkPane/WorkPane.tsx",
+      "apps/client/src/shell/AppShell.tsx",
+      "apps/client/hooks/useUIState.ts",
+      "apps/client/hooks/useApp.ts",
+      "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "apps/client/styles/base/ui-editor.css",
+      "packages/shared/ui-tokens/src/styles/root.css",
+      "packages/shared/ui-tokens/src/styles/markdown.css",
+      "examples/editor-basic/App.tsx"
+    ]
+  },
+  "summary": {
+    "totalTestChecks": 17,
+    "passedTestChecks": 17,
+    "failedTestChecks": 0,
+    "structuralAuditChecks": 40,
+    "structuralAuditPassed": 40,
+    "structuralAuditFailed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "bullet-list, task-list, indent, and outdent authoring commands in the portable editor family",
+    "Enter continuation and termination behavior for ordered, unordered, and task list items",
+    "selection-state format detection for toolbar active highlighting",
+    "shell-exposed and persisted line-number toggle wiring",
+    "editor and markdown rhythm token restoration for gutter fidelity",
+    "example-level coverage for bullet/task/indent/outdent and line-number toggling"
+  ],
+  "knownLimits": [
+    "This checkpoint does not yet close broader v1-to-v2 regressions outside the Phase 5 boundary, including Git PAT parity, restore-from-JSON, theme exposure parity, language selection, and status/action-rail parity.",
+    "The client app still does not typecheck end-to-end in the provided zip because of unresolved external dependency/toolchain holes unrelated to the Phase 5 editor-source changes.",
+    "This checkpoint is not final frozen-target CommonMark/GFM certification closure; it closes the editor semantics and authoring UX lane only.",
+    "Underline remains outside the standard Markdown authoring model and was not implemented as __...__."
+  ]
+}

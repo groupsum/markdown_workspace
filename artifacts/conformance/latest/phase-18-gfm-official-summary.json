@@ -1,0 +1,185 @@
+{
+  "spec": "GFM 0.29-gfm",
+  "fixturePath": "packages/renderer/markdown-renderer-core/tests/fixtures/official/gfm-0.29-gfm-spec.txt",
+  "total": 672,
+  "passed": 414,
+  "failed": 258,
+  "successRate": 0.6161,
+  "sampleFailures": [
+    {
+      "id": 5,
+      "section": "example",
+      "markdown": "- foo\n\n\t\tbar",
+      "expected": "<ul><li><p>foo</p><pre><code>  bar</code></pre></li></ul>",
+      "actual": "<ul><li><p>foo</p><pre><code>bar</code></pre></li></ul>"
+    },
+    {
+      "id": 6,
+      "section": "example",
+      "markdown": ">\t\tfoo",
+      "expected": "<blockquote><pre><code>  foo</code></pre></blockquote>",
+      "actual": "<blockquote><pre><code>foo</code></pre></blockquote>"
+    },
+    {
+      "id": 7,
+      "section": "example",
+      "markdown": "-\t\tfoo",
+      "expected": "<ul><li><pre><code>  foo</code></pre></li></ul>",
+      "actual": "<ul><li>foo</li></ul>"
+    },
+    {
+      "id": 9,
+      "section": "example",
+      "markdown": " - foo\n   - bar\n\t - baz",
+      "expected": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul></li></ul></li></ul>",
+      "actual": "<ul><li><p>foo</p><ul><li><p>bar</p><ul><li>baz</li></ul></li></ul></li></ul>"
+    },
+    {
+      "id": 18,
+      "section": "example",
+      "markdown": "    ***",
+      "expected": "<pre><code>***</code></pre>",
+      "actual": "<hr />"
+    },
+    {
+      "id": 82,
+      "section": "example",
+      "markdown": "    chunk1\n      \n      chunk2",
+      "expected": "<pre><code>chunk1\n  \n  chunk2</code></pre>",
+      "actual": "<pre><code>chunk1\n\n  chunk2</code></pre>"
+    },
+    {
+      "id": 101,
+      "section": "example",
+      "markdown": " ```\n aaa\naaa\n```",
+      "expected": "<pre><code>aaa\naaa</code></pre>",
+      "actual": "<pre><code> aaa\naaa</code></pre>"
+    },
+    {
+      "id": 102,
+      "section": "example",
+      "markdown": "  ```\naaa\n  aaa\naaa\n  ```",
+      "expected": "<pre><code>aaa\naaa\naaa</code></pre>",
+      "actual": "<pre><code>aaa\n  aaa\naaa</code></pre>"
+    },
+    {
+      "id": 103,
+      "section": "example",
+      "markdown": "   ```\n   aaa\n    aaa\n  aaa\n   ```",
+      "expected": "<pre><code>aaa\n aaa\naaa</code></pre>",
+      "actual": "<pre><code>   aaa\n    aaa\n  aaa</code></pre>"
+    },
+    {
+      "id": 108,
+      "section": "example",
+      "markdown": "``` ```\naaa",
+      "expected": "<p><code> </code>\naaa</p>",
+      "actual": "<pre><code>aaa</code></pre>"
+    },
+    {
+      "id": 115,
+      "section": "example",
+      "markdown": "``` aa ```\nfoo",
+      "expected": "<p><code>aa</code>\nfoo</p>",
+      "actual": "<pre><code>foo</code></pre>"
+    },
+    {
+      "id": 118,
+      "section": "example",
+      "markdown": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>",
+      "expected": "<table><tr><td><pre>\n**Hello**,\n<p><em>world</em>.\n</pre></p></td></tr></table>",
+      "actual": "<table><tr><td><pre>\n**Hello**,<p><em>world</em>.</p></pre></td></tr></table>"
+    },
+    {
+      "id": 120,
+      "section": "example",
+      "markdown": " <div>\n  *hello*\n         <foo><a>",
+      "expected": "*hello*\n         <foo><a>",
+      "actual": "<div>\n  *hello*\n         <foo><a>"
+    },
+    {
+      "id": 121,
+      "section": "example",
+      "markdown": "</div>\n*foo*",
+      "expected": "</div>\n*foo*",
+      "actual": "</div><p><em>foo</em></p>"
+    },
+    {
+      "id": 123,
+      "section": "example",
+      "markdown": "<div id=\"foo\"\n  class=\"bar\">\n</div>",
+      "expected": "",
+      "actual": "<div></div>"
+    },
+    {
+      "id": 124,
+      "section": "example",
+      "markdown": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>",
+      "expected": "",
+      "actual": "<div></div>"
+    },
+    {
+      "id": 125,
+      "section": "example",
+      "markdown": "<div>\n*foo*\n\n*bar*",
+      "expected": "*foo*\n<p><em>bar</em></p>",
+      "actual": "<div>\n*foo*<p><em>bar</em></p>"
+    },
+    {
+      "id": 129,
+      "section": "example",
+      "markdown": "<div><a href=\"bar\">*foo*</a></div>",
+      "expected": "<a href=\"bar\">*foo*</a>",
+      "actual": "<div><a href=\"bar\">*foo*</a></div>"
+    },
+    {
+      "id": 131,
+      "section": "example",
+      "markdown": "<div></div>\n``` c\nint x = 33;\n```",
+      "expected": "</div>\n``` c\nint x = 33;\n```",
+      "actual": "<div></div>\n``` c\nint x = 33;\n```"
+    },
+    {
+      "id": 143,
+      "section": "example",
+      "markdown": "> <div>\n> foo\n\nbar",
+      "expected": "<blockquote><div>\nfoo\n</blockquote><p>bar</p>",
+      "actual": "<blockquote><div>\nfoo</blockquote><p>bar</p>"
+    },
+    {
+      "id": 146,
+      "section": "example",
+      "markdown": "<!-- foo -->*bar*\n*baz*",
+      "expected": "<!-- foo -->*bar*\n<p><em>baz</em></p>",
+      "actual": "<!-- foo -->*bar*<p><em>baz</em></p>"
+    },
+    {
+      "id": 152,
+      "section": "example",
+      "markdown": "  <!-- foo -->\n\n    <!-- foo -->",
+      "expected": "<!-- foo --><pre><code>&lt;!-- foo --&gt;</code></pre>",
+      "actual": "<!-- foo -->    <!-- foo -->"
+    },
+    {
+      "id": 153,
+      "section": "example",
+      "markdown": "  <div>\n\n    <div>",
+      "expected": "<pre><code>&lt;div&gt;</code></pre>",
+      "actual": "<div>    <div>"
+    },
+    {
+      "id": 154,
+      "section": "example",
+      "markdown": "Foo\n<div>\nbar\n</div>",
+      "expected": "<p>Foo</p><div>\nbar",
+      "actual": "<p>Foo</p><div>\nbar\n</div>"
+    },
+    {
+      "id": 155,
+      "section": "example",
+      "markdown": "<div>\nbar\n</div>\n*foo*",
+      "expected": "bar\n</div>\n*foo*",
+      "actual": "<div>\nbar\n</div>\n*foo*"
+    }
+  ]
+}

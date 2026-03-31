@@ -1,0 +1,219 @@
+{
+  "phase": 10,
+  "generatedAt": "2026-03-28T15:03:02.041Z",
+  "boundary": "i18n-language-ux-and-catalog-coverage",
+  "commands": {
+    "sharedI18nTest": "npm run test -w @mdwrk/i18n",
+    "phase10I18nParity": "node apps/client/tests/phase10-i18n-parity.mjs --json",
+    "checkpointGenerator": "node tools/conformance/generate-phase10-i18n-checkpoint.mjs"
+  },
+  "results": {
+    "sharedI18nTest": {
+      "ok": true,
+      "artifactPath": "artifacts/conformance/latest/phase-10-i18n-test-output.txt"
+    },
+    "phase10NodeResults": {
+      "phase": 10,
+      "generatedAt": "2026-03-28T15:03:02.012Z",
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "locales": [
+        {
+          "id": "en",
+          "nativeName": "English"
+        },
+        {
+          "id": "es",
+          "nativeName": "Español"
+        },
+        {
+          "id": "fr",
+          "nativeName": "Français"
+        },
+        {
+          "id": "pt",
+          "nativeName": "Português"
+        },
+        {
+          "id": "ur",
+          "nativeName": "اردو"
+        }
+      ],
+      "checks": [
+        {
+          "id": "locale.count",
+          "description": "Core shell restores five supported locales.",
+          "pass": true
+        },
+        {
+          "id": "locale.loaders",
+          "description": "Shared i18n exports locale loaders for en/es/fr/pt/ur.",
+          "pass": true
+        },
+        {
+          "id": "locale.es.translation",
+          "description": "Spanish core shell translation resolves action-rail aria-label.",
+          "pass": true
+        },
+        {
+          "id": "locale.fr.translation",
+          "description": "French core shell translation resolves settings title.",
+          "pass": true
+        },
+        {
+          "id": "locale.pt.translation",
+          "description": "Portuguese core shell translation resolves status runtime browser.",
+          "pass": true
+        },
+        {
+          "id": "locale.ur.translation",
+          "description": "Urdu core shell translation resolves status runtime browser.",
+          "pass": true
+        },
+        {
+          "id": "client.service.persistence.key",
+          "description": "Client i18n service persists locale using a dedicated storage key.",
+          "pass": true
+        },
+        {
+          "id": "client.service.persistence.set",
+          "description": "Client i18n service writes locale to localStorage on setLocale.",
+          "pass": true
+        },
+        {
+          "id": "runtime.core-loader",
+          "description": "Runtime provider registers shared core locale loaders and restores persisted locale from settings store.",
+          "pass": true
+        },
+        {
+          "id": "settings.language.panel",
+          "description": "Language settings panel is registered in core settings surfaces.",
+          "pass": true
+        },
+        {
+          "id": "project.selector.language.entry",
+          "description": "Project selector exposes a visible language selector entry.",
+          "pass": true
+        },
+        {
+          "id": "header.uses-i18n",
+          "description": "Header strings are catalog-driven through useClientI18n.",
+          "pass": true
+        },
+        {
+          "id": "footer.uses-i18n",
+          "description": "Footer/status strings are catalog-driven through useClientI18n.",
+          "pass": true
+        },
+        {
+          "id": "settings.modal.uses-i18n",
+          "description": "Settings modal surfaces catalog-driven strings.",
+          "pass": true
+        },
+        {
+          "id": "data.settings.uses-i18n",
+          "description": "Data settings strings are catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "git.settings.uses-i18n",
+          "description": "Git settings strings are catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "oidc.selector.uses-i18n",
+          "description": "OIDC auth selector strings are catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "repo.autocomplete.uses-i18n",
+          "description": "Repository autocomplete status strings are catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "markdown.profiles.uses-i18n",
+          "description": "Markdown profile settings strings are catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "action.rail.localized.nav",
+          "description": "Action-rail navigation aria-label is catalog-driven.",
+          "pass": true
+        },
+        {
+          "id": "settings.renderer.format-label",
+          "description": "Schema-backed settings renderer and settings view support localized labels via formatLabel.",
+          "pass": true
+        },
+        {
+          "id": "core.commands.keyed",
+          "description": "Core command and settings titles use i18n keys for action-rail/settings coverage.",
+          "pass": true
+        },
+        {
+          "id": "extension.catalogs.exist",
+          "description": "Bundled extension packages keep extension-specific locale catalogs.",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "totalChecks": 23,
+    "totalPassed": 23,
+    "totalFailed": 0,
+    "structuralAudit": {
+      "total": 26,
+      "passed": 26,
+      "failed": 0
+    }
+  },
+  "packageVersions": {
+    "i18n": "1.1.0",
+    "client": "1.4.0",
+    "extensionManager": "1.1.0",
+    "geminiAgent": "1.1.0",
+    "themeStudio": "1.1.0"
+  },
+  "structuralAudit": {
+    "sharedI18n": {
+      "coreLocalesRestored": true,
+      "coreLoaderExported": true,
+      "packageVersionPinned": true
+    },
+    "clientLocaleService": {
+      "persistenceKeyPresent": true,
+      "persistedSetLocale": true,
+      "runtimeCoreLoaderRegistered": true,
+      "runtimeRestoresStoredLocale": true
+    },
+    "visibleLanguageUx": {
+      "languageSelectorComponentPresent": true,
+      "settingsPanelPresent": true,
+      "projectSelectorEntryPresent": true,
+      "appVersionPinned": true
+    },
+    "catalogDrivenShellStrings": {
+      "headerUsesI18n": true,
+      "footerUsesI18n": true,
+      "settingsModalUsesI18n": true,
+      "actionRailNavLocalized": true,
+      "coreSettingsRegistryLanguageSection": true
+    },
+    "settingsPanelsCoverage": {
+      "dataSettingsLocalized": true,
+      "gitSettingsLocalized": true,
+      "oidcSelectorLocalized": true,
+      "repoAutocompleteLocalized": true,
+      "markdownProfilesLocalized": true
+    },
+    "extensionSettingsCoverage": {
+      "rendererSupportsLocalizedLabels": true,
+      "settingsViewPassesFormatLabel": true,
+      "runtimeRegistrationSupportsSchemaSections": true,
+      "bundledExtensionCatalogsPresent": true,
+      "bundledExtensionVersionsStable": true
+    }
+  }
+}

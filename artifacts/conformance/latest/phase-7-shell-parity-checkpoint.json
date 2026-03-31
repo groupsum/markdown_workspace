@@ -1,0 +1,50 @@
+{
+  "phase": 7,
+  "generatedAt": "2026-03-28T06:23:49.821Z",
+  "checkpointType": "shell-parity-checkpoint",
+  "packages": {
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client"
+    }
+  },
+  "evidence": {
+    "shellParityCommand": "node apps/client/tests/phase7-shell-parity.mjs --json",
+    "generatorCommand": "node tools/conformance/generate-phase7-shell-checkpoint.mjs",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-7-shell-parity-results.json",
+    "auditedPaths": [
+      "apps/client/components/Chassis/Footer/Footer.tsx",
+      "apps/client/components/Chassis/ActionRail/ActionRail.tsx",
+      "apps/client/src/shell/ActionRailHost.tsx",
+      "apps/client/src/shell/AppShell.tsx",
+      "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "apps/client/hooks/useApp.ts",
+      "apps/client/src/features/layout/splitViewPolicy.ts"
+    ]
+  },
+  "summary": {
+    "totalChecks": 11,
+    "passedChecks": 11,
+    "failedChecks": 0,
+    "structuralAuditChecks": 14,
+    "structuralAuditPassed": 14,
+    "structuralAuditFailed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "status bar runtime shell label, build identifier, and update-ready badge parity",
+    "import-markdown action-rail button, command registration, and hidden-file-input shell bridge",
+    "localized action-rail navigation aria-label with locale-aware host rerendering",
+    "v1 mobile-landscape split-view heuristic parity through a reusable split-view policy helper",
+    "cloud-sync refresh-event dispatch restored at the shell command surface"
+  ],
+  "knownLimits": [
+    "This checkpoint does not yet close the remaining Git PAT, restore-from-JSON, theme exposure, language-selection, or extension-settings gaps.",
+    "This checkpoint improves shell parity but does not yet complete final repository-wide certification or full frozen-target Markdown corpus closure."
+  ]
+}

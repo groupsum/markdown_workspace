@@ -22,7 +22,7 @@
   "description": "Stable host API, lifecycle, and context contracts for Markdown Workspace extensions.",
   "dependencies": {
     "@mdwrk/extension-manifest": "^1.0.0",
-    "@mdwrk/theme-contract": "^1.0.0"
+    "@mdwrk/theme-contract": "^1.1.0-rc.1"
   },
   "scripts": {
     "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/theme-contract",

@@ -1,0 +1,183 @@
+{
+  "manifestVersion": 1,
+  "id": "core.extension-manager",
+  "packageName": "@mdwrk/extension-manager",
+  "version": "1.1.0-rc.1",
+  "displayName": {
+    "key": "core.extension-manager.manifest.displayName",
+    "defaultMessage": "Extension Manager"
+  },
+  "description": {
+    "key": "core.extension-manager.manifest.description",
+    "defaultMessage": "Bundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions."
+  },
+  "kind": "bundled",
+  "icon": {
+    "kind": "lucide",
+    "name": "Puzzle"
+  },
+  "enabledByDefault": true,
+  "capabilities": [
+    "view.register",
+    "actionRail.register",
+    "settings.read",
+    "settings.write"
+  ],
+  "compatibility": {
+    "manifestVersion": 1,
+    "hostApi": "^1.0.0",
+    "runtime": "^1.0.0",
+    "app": ">=1.3.49",
+    "themeContract": "^1.0.0"
+  },
+  "entry": {
+    "module": "./index.js",
+    "export": "createExtensionManagerBundledEntry"
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "catalogs": [
+      {
+        "locale": "en",
+        "path": "./locales/en.js"
+      },
+      {
+        "locale": "es",
+        "path": "./locales/es.js"
+      }
+    ]
+  },
+  "contributions": {
+    "commands": [
+      {
+        "id": "core.extension-manager.open",
+        "title": {
+          "key": "core.extension-manager.commands.open.title",
+          "defaultMessage": "Open Extension Manager"
+        },
+        "description": {
+          "key": "core.extension-manager.commands.open.description",
+          "defaultMessage": "Open the bundled extension operator console."
+        },
+        "icon": {
+          "kind": "lucide",
+          "name": "Puzzle"
+        },
+        "keywords": [
+          "extension",
+          "manager",
+          "bundled"
+        ]
+      }
+    ],
+    "views": [
+      {
+        "id": "core.extension-manager.view",
+        "title": {
+          "key": "core.extension-manager.views.manager.title",
+          "defaultMessage": "Extension Manager"
+        },
+        "description": {
+          "key": "core.extension-manager.views.manager.description",
+          "defaultMessage": "Browse installed extensions, toggle enablement, inspect permissions, and edit extension settings."
+        },
+        "icon": {
+          "kind": "lucide",
+          "name": "Puzzle"
+        },
+        "location": "modal",
+        "allowMultiple": false,
+        "canBePinned": false
+      }
+    ],
+    "components": [],
+    "actionRail": [
+      {
+        "id": "core.extension-manager.rail",
+        "title": {
+          "key": "core.extension-manager.rail.title",
+          "defaultMessage": "Extensions"
+        },
+        "icon": {
+          "kind": "lucide",
+          "name": "Puzzle"
+        },
+        "group": "extensions",
+        "order": 0,
+        "target": {
+          "kind": "view",
+          "viewId": "core.extension-manager.view"
+        }
+      }
+    ],
+    "settingsSections": [
+      {
+        "id": "core.extension-manager.settings",
+        "title": {
+          "key": "core.extension-manager.settings.title",
+          "defaultMessage": "Extension Manager Preferences"
+        },
+        "description": {
+          "key": "core.extension-manager.views.manager.description",
+          "defaultMessage": "Browse installed extensions, toggle enablement, inspect permissions, and edit extension settings."
+        },
+        "order": 10,
+        "schemaPath": "manifest.settingsSchema"
+      }
+    ]
+  },
+  "settingsSchema": {
+    "version": 1,
+    "title": {
+      "key": "core.extension-manager.settings.title",
+      "defaultMessage": "Extension Manager Preferences"
+    },
+    "sections": [
+      {
+        "id": "display",
+        "title": {
+          "key": "core.extension-manager.settings.sections.display.title",
+          "defaultMessage": "Display"
+        },
+        "description": {
+          "key": "core.extension-manager.settings.sections.display.description",
+          "defaultMessage": "Controls the default information density for the extension manager."
+        }
+      }
+    ],
+    "fields": [
+      {
+        "key": "showCompatibilityByDefault",
+        "kind": "boolean",
+        "sectionId": "display",
+        "label": {
+          "key": "core.extension-manager.settings.fields.showCompatibilityByDefault.label",
+          "defaultMessage": "Show compatibility details by default"
+        },
+        "description": {
+          "key": "core.extension-manager.settings.fields.showCompatibilityByDefault.description",
+          "defaultMessage": "Expand compatibility information for each extension when the manager opens."
+        },
+        "defaultValue": true
+      },
+      {
+        "key": "showDiagnosticsByDefault",
+        "kind": "boolean",
+        "sectionId": "display",
+        "label": {
+          "key": "core.extension-manager.settings.fields.showDiagnosticsByDefault.label",
+          "defaultMessage": "Show diagnostics by default"
+        },
+        "description": {
+          "key": "core.extension-manager.settings.fields.showDiagnosticsByDefault.description",
+          "defaultMessage": "Expand runtime diagnostics for each extension when the manager opens."
+        },
+        "defaultValue": true
+      }
+    ]
+  }
+}

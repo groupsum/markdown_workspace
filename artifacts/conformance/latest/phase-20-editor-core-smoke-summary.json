@@ -1,0 +1,67 @@
+{
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "results": [
+    {
+      "id": "bold-command",
+      "description": "bold command wraps selected content in strong markers",
+      "passed": true
+    },
+    {
+      "id": "bullet-list-selection",
+      "description": "bullet-list command toggles unordered list prefixes for selected lines",
+      "passed": true
+    },
+    {
+      "id": "task-list-selection",
+      "description": "task-list command prefixes each selected line with unchecked task syntax",
+      "passed": true
+    },
+    {
+      "id": "task-list-upgrade",
+      "description": "task-list command upgrades existing list items in place",
+      "passed": true
+    },
+    {
+      "id": "list-continuation",
+      "description": "Enter continuation inserts or terminates list prefixes deterministically",
+      "passed": true
+    },
+    {
+      "id": "optional-profile-commands",
+      "description": "optional-profile commands emit structural Markdown syntax",
+      "passed": true
+    },
+    {
+      "id": "front-matter-command",
+      "description": "front-matter command inserts a YAML front matter scaffold at the top of the document",
+      "passed": true
+    },
+    {
+      "id": "indent-outdent",
+      "description": "indent and outdent commands preserve line structure",
+      "passed": true
+    },
+    {
+      "id": "selection-state",
+      "description": "selection formatting helpers detect inline wrappers and list state",
+      "passed": true
+    },
+    {
+      "id": "selection-and-cursor-helpers",
+      "description": "selection normalization and cursor helpers remain stable",
+      "passed": true
+    },
+    {
+      "id": "history",
+      "description": "history push/undo/redo remains operational",
+      "passed": true
+    },
+    {
+      "id": "renderer-roundtrip",
+      "description": "editor output round-trips through the renderer core",
+      "passed": true
+    }
+  ]
+}

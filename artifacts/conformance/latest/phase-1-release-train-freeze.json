@@ -1,0 +1,348 @@
+{
+  "generatedAt": "2026-03-27T00:00:00Z",
+  "checkpoint": "phase-1-release-train-freeze",
+  "status": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternalRfcCompliant": false,
+    "markdownSpecCompliant": false
+  },
+  "workspaceRoot": {
+    "currentVersion": "0.1.5",
+    "plannedVersionLine": "0.2.0"
+  },
+  "linkedChangesetGroups": [
+    [
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-renderer-react"
+    ],
+    [
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/markdown-editor-react"
+    ],
+    [
+      "@mdwrk/i18n",
+      "@mdwrk/ui-tokens"
+    ],
+    [
+      "@mdwrk/extension-runtime",
+      "@mdwrk/extension-manager",
+      "@mdwrk/extension-theme-studio",
+      "@mdwrk/extension-gemini-agent",
+      "@mdwrk/extension-catalog-hello"
+    ]
+  ],
+  "compatibilityBaselines": {
+    "node": ">=20 <23",
+    "npm": ">=10",
+    "manifestVersion": 1,
+    "hostApi": "1.0.0",
+    "runtime": "1.0.0",
+    "themeContract": "1.0.0",
+    "reactPeer": "^19.0.0",
+    "markdownCore": "CommonMark 0.31.2",
+    "markdownDefaultProfile": "GFM 0.29-gfm",
+    "policyLocks": [
+      "contract baselines remain compatibility anchors",
+      "internal dependency ranges remain semver-compatible, not exact-patch pinned",
+      "activation compatibility continues to validate manifest, host/runtime, theme contract, and capability grants",
+      "packed tarball install validation is a mandatory release gate"
+    ]
+  },
+  "packages": [
+    {
+      "packageName": "markdown_workspace",
+      "path": ".",
+      "currentVersion": "0.1.5",
+      "plannedVersionLine": "0.2.0",
+      "releaseGroup": "workspace-root",
+      "ownerLane": "Repository Operations",
+      "semverPolicy": "Minor for certification-program train changes; patch for tooling/docs-only repository changes.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + workspace-release-policy.v2",
+      "promotionPath": "policy-freeze -> changeset orchestration -> release evidence -> repository promotion",
+      "publishable": false,
+      "notes": "Root workspace release-train controller; not published to npm."
+    },
+    {
+      "packageName": "@mdwrk/mdwrkspace",
+      "path": "apps/client",
+      "currentVersion": "1.3.52",
+      "plannedVersionLine": "1.4.0",
+      "releaseGroup": "apps",
+      "ownerLane": "Client Workspace",
+      "semverPolicy": "Minor for feature-bearing UIX/markdown capability expansion; patch for fixes and dependency uplift.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1 + baseline.contract.theme-v1",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish -> app promotion",
+      "publishable": true,
+      "notes": "Primary client application and published package."
+    },
+    {
+      "packageName": "@mdwrk/lander",
+      "path": "apps/lander",
+      "currentVersion": "0.0.11",
+      "plannedVersionLine": "0.0.12 (default) / 0.1.0 if public document semantics change",
+      "releaseGroup": "apps",
+      "ownerLane": "Documentation Site",
+      "semverPolicy": "Patch for dependency-only uplift; 0.1.0 when renderer/export/document semantics visibly change.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + baseline.markdown.core-cm0312-gfm029 + baseline.shared.ui-tokens-theme-v1",
+      "promotionPath": "dependency uplift -> ci:workspace:verify -> static-site build -> site promotion",
+      "publishable": false,
+      "notes": "Private app; release tracked as deployment artifact, not npm publication."
+    },
+    {
+      "packageName": "@mdwrk/extension-host",
+      "path": "packages/contracts/extension-host",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.0.x (hold host API baseline)",
+      "releaseGroup": "contracts",
+      "ownerLane": "Platform Contracts",
+      "semverPolicy": "Compatibility anchor. Stay on 1.0.x unless the public host API contract changes.",
+      "compatibilityDeclaration": "baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.theme-v1",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Host API compatibility anchor."
+    },
+    {
+      "packageName": "@mdwrk/extension-manifest",
+      "path": "packages/contracts/extension-manifest",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.0.x (hold contract baseline)",
+      "releaseGroup": "contracts",
+      "ownerLane": "Platform Contracts",
+      "semverPolicy": "Compatibility anchor. Stay on 1.0.x unless the public manifest schema contract changes.",
+      "compatibilityDeclaration": "baseline.contract.manifest-v1",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Schema/manifest compatibility anchor."
+    },
+    {
+      "packageName": "@mdwrk/theme-contract",
+      "path": "packages/contracts/theme-contract",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.0.x (hold theme-contract baseline)",
+      "releaseGroup": "contracts",
+      "ownerLane": "Platform Contracts",
+      "semverPolicy": "Compatibility anchor. Stay on 1.0.x unless the theme contract changes.",
+      "compatibilityDeclaration": "baseline.contract.theme-v1",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Theme contract compatibility anchor."
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-core",
+      "path": "packages/editor/markdown-editor-core",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "editor",
+      "ownerLane": "Markdown Authoring",
+      "semverPolicy": "Minor for authoring command/behavior expansion; patch for correctness fixes. Linked with editor React binding.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.markdown.authoring-policy.phase0",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Normative editor command/model package."
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-react",
+      "path": "packages/editor/markdown-editor-react",
+      "currentVersion": "1.0.2",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "editor",
+      "ownerLane": "Markdown Authoring",
+      "semverPolicy": "Minor for authoring command/behavior expansion; patch for correctness fixes. Linked with editor core.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + editor-core:^1.0.1 + ui-tokens:^1.0.1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "React binding for editor family."
+    },
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "extensions",
+      "ownerLane": "Extension Platform",
+      "semverPolicy": "Minor when the sample external-extension path expands; patch for fixes. Linked with extension runtime family for the certification train.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> extension bundle/sign -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Sample external extension package kept in-repo to prove the catalog path."
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "extensions",
+      "ownerLane": "Extension Platform",
+      "semverPolicy": "Minor for host/runtime/settings/i18n surface expansion; patch for fixes. Linked with extension runtime family.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> extension bundle/sign -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "First-party bundled extension."
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "extensions",
+      "ownerLane": "Extension Platform",
+      "semverPolicy": "Minor for host/runtime/settings/i18n surface expansion; patch for fixes. Linked with extension runtime family.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> extension bundle/sign -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "First-party bundled extension."
+    },
+    {
+      "packageName": "@mdwrk/extension-runtime",
+      "path": "packages/extensions/extension-runtime",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "extensions",
+      "ownerLane": "Extension Platform",
+      "semverPolicy": "Minor for runtime/settings/i18n/host-facing capability expansion; patch for fixes. Linked with the first-party extension family.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1 + baseline.contract.theme-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> extension bundle/sign -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Extension runtime platform package."
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "extensions",
+      "ownerLane": "Extension Platform",
+      "semverPolicy": "Minor for host/runtime/settings/i18n surface expansion; patch for fixes. Linked with extension runtime family.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + baseline.contract.manifest-v1 + baseline.contract.host-api-v1 + baseline.contract.runtime-v1 + baseline.contract.theme-v1 + ui-tokens:^1.0.1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> extension bundle/sign -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "First-party bundled extension."
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-core",
+      "path": "packages/renderer/markdown-renderer-core",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "renderer",
+      "ownerLane": "Markdown Runtime",
+      "semverPolicy": "Minor for Markdown/profile/render capability expansion; patch for conformance and correctness fixes. Linked with renderer React binding.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.markdown.core-cm0312-gfm029",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Normative core renderer package."
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-react",
+      "path": "packages/renderer/markdown-renderer-react",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "renderer",
+      "ownerLane": "Markdown Runtime",
+      "semverPolicy": "Minor for Markdown/profile/render capability expansion; patch for conformance and correctness fixes. Linked with renderer core.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.markdown.core-cm0312-gfm029 + baseline.client.react19 + renderer-core:^1.0.0 + ui-tokens:^1.0.1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "React binding for renderer family."
+    },
+    {
+      "packageName": "@mdwrk/i18n",
+      "path": "packages/shared/i18n",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "shared",
+      "ownerLane": "Shared Primitives",
+      "semverPolicy": "Minor when locale registry or catalog surfaces expand; patch for fixes. Linked with ui-tokens for the shared certification train.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.shared.i18n-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Shared locale registry/catalog package."
+    },
+    {
+      "packageName": "@mdwrk/icons",
+      "path": "packages/shared/icons",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.0.1 (default patch)",
+      "releaseGroup": "shared",
+      "ownerLane": "Shared Primitives",
+      "semverPolicy": "Patch by default; move to minor only if the public icon API expands.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.shared.workspace-internal",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Shared icons package."
+    },
+    {
+      "packageName": "@mdwrk/testing",
+      "path": "packages/shared/testing",
+      "currentVersion": "1.0.0",
+      "plannedVersionLine": "1.0.1 (default patch)",
+      "releaseGroup": "shared",
+      "ownerLane": "Shared Primitives",
+      "semverPolicy": "Patch by default; move to minor only if the public test helper API expands.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.shared.workspace-internal",
+      "promotionPath": "changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Shared testing helpers package."
+    },
+    {
+      "packageName": "@mdwrk/ui-tokens",
+      "path": "packages/shared/ui-tokens",
+      "currentVersion": "1.0.1",
+      "plannedVersionLine": "1.1.0",
+      "releaseGroup": "shared",
+      "ownerLane": "Shared Primitives",
+      "semverPolicy": "Minor when token or bridge surfaces expand; patch for fixes. Linked with i18n for the shared certification train.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.contract.theme-v1",
+      "promotionPath": "linked changeset -> ci:workspace:verify:publish -> pack -> release evidence -> npm publish",
+      "publishable": true,
+      "notes": "Shared tokens and theme bridge package."
+    },
+    {
+      "packageName": "@mdwrk/example-editor-basic",
+      "path": "examples/editor-basic",
+      "currentVersion": "0.1.1",
+      "plannedVersionLine": "0.1.2 (default) / 0.2.0 if the example API surface expands",
+      "releaseGroup": "examples",
+      "ownerLane": "Developer Experience",
+      "semverPolicy": "Patch for dependency refresh or demo fixes; minor when the demo surface materially expands.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + @mdwrk/markdown-editor-react:^1.0.2 + @mdwrk/markdown-renderer-react:^1.0.1",
+      "promotionPath": "dependency uplift -> ci:workspace:verify -> example build/smoke -> demo refresh",
+      "publishable": false,
+      "notes": "Validation-only example for editor package family."
+    },
+    {
+      "packageName": "@mdwrk/example-renderer-basic",
+      "path": "examples/renderer-basic",
+      "currentVersion": "0.1.1",
+      "plannedVersionLine": "0.1.2 (default) / 0.2.0 if the example API surface expands",
+      "releaseGroup": "examples",
+      "ownerLane": "Developer Experience",
+      "semverPolicy": "Patch for dependency refresh or demo fixes; minor when the demo surface materially expands.",
+      "compatibilityDeclaration": "baseline.node20-npm10 + baseline.client.react19 + @mdwrk/markdown-renderer-react:^1.0.1",
+      "promotionPath": "dependency uplift -> ci:workspace:verify -> example build/smoke -> demo refresh",
+      "publishable": false,
+      "notes": "Validation-only example for renderer package family."
+    }
+  ],
+  "documentation": [
+    "docs/operations/version-train.md",
+    "docs/operations/release-groups.md",
+    "docs/operations/compatibility-baselines.md",
+    "docs/current-state/phase-1-release-train-freeze-assessment.md",
+    "docs/adr/ADR-0008-release-train-groups-and-compatibility-baselines.md"
+  ],
+  "currentStateNotes": [
+    "This checkpoint freezes the Phase 1 release train and compatibility policy but does not execute version bumps.",
+    "The repository remains not yet certifiably fully featured and not yet fully Markdown spec compliant.",
+    "Packed tarball install validation is frozen as a required release gate, but the final dedicated install-evidence lane remains a later closure item."
+  ],
+  "auditArtifacts": {
+    "packageReleaseMatrix": "artifacts/conformance/latest/package-release-matrix.json",
+    "packageGraphAudit": "artifacts/conformance/latest/phase-1-package-graph-audit.json"
+  },
+  "auditSummary": {
+    "auditedAgainstWorkspacePackageGraph": true,
+    "allWorkspacePackagesMapped": true,
+    "linkedChangesetGroupsMatchFreezePlan": true,
+    "noExactPinnedInternalWorkspaceDependencies": true
+  }
+}

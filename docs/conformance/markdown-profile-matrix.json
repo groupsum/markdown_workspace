@@ -1,0 +1,310 @@
+{
+  "version": 1,
+  "checkpoint": {
+    "phase": "phase-4-optional-profile-checkpoint",
+    "date": "2026-03-28"
+  },
+  "referenceBaselines": {
+    "uixParity": {
+      "reference": "markdown_workspace_v1",
+      "implementationBase": "markdown_workspace_v2",
+      "policy": "Use v1 as the parity reference for concrete feature regressions; keep v2 net improvements."
+    }
+  },
+  "targets": {
+    "normativeCore": {
+      "id": "commonmark-0.31.2",
+      "name": "CommonMark",
+      "version": "0.31.2",
+      "enabledByDefault": true,
+      "featureFamilies": [
+        "block-inline-parse-model",
+        "indentation-and-container-rules",
+        "blank-lines-soft-breaks-hard-breaks",
+        "paragraphs",
+        "thematic-breaks",
+        "atx-headings",
+        "setext-headings",
+        "block-quotes",
+        "ordered-lists",
+        "unordered-lists",
+        "tight-loose-list-behavior",
+        "indented-code-blocks",
+        "fenced-code-blocks",
+        "code-spans",
+        "emphasis",
+        "strong-emphasis",
+        "inline-links",
+        "reference-links",
+        "link-definitions",
+        "autolinks",
+        "images",
+        "backslash-escapes",
+        "entity-and-character-references",
+        "raw-html-syntax"
+      ],
+      "implementationProfileId": "commonmark-core"
+    },
+    "defaultProfile": {
+      "id": "gfm-0.29-gfm-default",
+      "name": "GitHub Flavored Markdown",
+      "version": "0.29-gfm",
+      "extends": "commonmark-0.31.2",
+      "enabledByDefault": true,
+      "featureFamilies": [
+        "tables",
+        "task-list-items",
+        "strikethrough",
+        "autolink-literals"
+      ],
+      "implementationProfileId": "gfm-default"
+    }
+  },
+  "profiles": [
+    {
+      "id": "front-matter",
+      "name": "Metadata / Front Matter",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "yaml-front-matter",
+        "document-metadata"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Parses YAML front matter into document metadata and omits the YAML block from rendered Markdown output."
+      ]
+    },
+    {
+      "id": "footnotes",
+      "name": "Footnotes",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "footnote-references",
+        "footnote-definitions",
+        "backlinks"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Renders linked footnote references, footnote sections, and backlinks."
+      ]
+    },
+    {
+      "id": "definition-lists",
+      "name": "Definition Lists",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "term-definition-blocks"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ],
+      "phase4Notes": [
+        "Renders <dl>/<dt>/<dd> structures in the Phase 4 checkpoint."
+      ]
+    },
+    {
+      "id": "math",
+      "name": "Math",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "inline-math",
+        "display-math"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Math rendering is structural in this checkpoint; equations are not yet typeset by KaTeX or MathJax."
+      ]
+    },
+    {
+      "id": "citations",
+      "name": "Citations",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "citation-keys",
+        "bibliography-resolution"
+      ],
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Citation keys render structurally, but bibliography resolution remains outside the certified boundary."
+      ]
+    },
+    {
+      "id": "superscript",
+      "name": "Superscript",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "superscript-inline"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Superscript renders semantic <sup> tags in the Phase 4 checkpoint."
+      ]
+    },
+    {
+      "id": "subscript",
+      "name": "Subscript",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "subscript-inline"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings",
+        "editor-command"
+      ],
+      "phase4Notes": [
+        "Subscript renders semantic <sub> tags in the Phase 4 checkpoint."
+      ]
+    },
+    {
+      "id": "smart-punctuation",
+      "name": "Smart Punctuation",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "typographic-quotes",
+        "typographic-dashes",
+        "ellipsis-transforms"
+      ],
+      "certificationBoundaryStatus": "in-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ],
+      "phase4Notes": [
+        "Smart punctuation transforms straight quotes, dashes, and ellipses in text nodes."
+      ]
+    },
+    {
+      "id": "markdown-in-html",
+      "name": "Markdown inside HTML blocks",
+      "tier": "optional",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "markdown-inside-html-containers"
+      ],
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": true,
+      "implementedSurfaces": [
+        "parser",
+        "preview",
+        "export",
+        "settings"
+      ],
+      "phase4Notes": [
+        "Requires trusted HTML preview/export and remains experimental in this checkpoint."
+      ]
+    },
+    {
+      "id": "underline-custom",
+      "name": "Underline (custom extension only)",
+      "tier": "custom-extension",
+      "enabledByDefault": false,
+      "featureFamilies": [
+        "underline-command",
+        "html-u-element-passthrough"
+      ],
+      "notes": [
+        "Underline is not part of CommonMark core.",
+        "Underline is not part of the default GFM profile.",
+        "The token sequence __text__ remains strong emphasis, not underline."
+      ],
+      "certificationBoundaryStatus": "out-of-scope",
+      "toggleable": false,
+      "implementedSurfaces": [
+        "policy-only"
+      ],
+      "phase4Notes": [
+        "Underline remains a custom extension concept only and is not part of the certified Markdown boundary."
+      ]
+    }
+  ],
+  "policies": {
+    "rawHtml": {
+      "parseSurfaceRecognized": true,
+      "untrustedPreviewMode": "sanitize",
+      "trustedPreviewMode": "allow-by-policy",
+      "exportMode": "explicit-policy-required"
+    },
+    "previewHeadings": {
+      "slugIds": true,
+      "regressToNoIds": false,
+      "stabilityRequirement": "deterministic-within-release-line"
+    },
+    "editorTabs": {
+      "defaultMode": "structural-indent-outdent",
+      "allowLiteralSpacesPreference": true,
+      "forceLegacyLiteralSpacesEverywhere": false
+    },
+    "uixParity": {
+      "referenceBaseline": "v1",
+      "implementationBase": "v2",
+      "reimplementOnlyConcreteRegressions": true,
+      "keepNetV2Improvements": true
+    }
+  },
+  "claimRules": {
+    "markdownSpecCompliant": "Allowed only for the frozen CommonMark core, the default GFM profile, and any optional profile explicitly named here and backed by tests/evidence.",
+    "certifiablyFullyFeatured": "Allowed only when package/app certification criteria are satisfied and the relevant markdown/uix closure items are green.",
+    "repositoryInternalRfcCompliant": "Allowed only against the repository ADRs, contracts, schemas, conformance rules, and the frozen markdown target adopted in this checkpoint."
+  }
+}

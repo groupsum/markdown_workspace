@@ -1,0 +1,59 @@
+{
+  "phase": 13,
+  "generatedAt": "2026-03-29T20:06:40.897Z",
+  "checkpointType": "rc-freeze-versioning-and-promotion-prep",
+  "rcTag": "rc.1",
+  "releaseBlockersRemain": true,
+  "acceptanceOk": false,
+  "rootVersion": "0.2.0-rc.1",
+  "affectedPackages": [
+    "@mdwrk/example-editor-basic",
+    "@mdwrk/example-renderer-basic",
+    "@mdwrk/extension-catalog-hello",
+    "@mdwrk/extension-gemini-agent",
+    "@mdwrk/extension-manager",
+    "@mdwrk/extension-runtime",
+    "@mdwrk/extension-theme-studio",
+    "@mdwrk/i18n",
+    "@mdwrk/lander",
+    "@mdwrk/markdown-editor-core",
+    "@mdwrk/markdown-editor-react",
+    "@mdwrk/markdown-renderer-core",
+    "@mdwrk/markdown-renderer-react",
+    "@mdwrk/mdwrkspace",
+    "@mdwrk/theme-contract",
+    "@mdwrk/ui-tokens"
+  ],
+  "artifactPaths": {
+    "releaseStatus": "artifacts/conformance/latest/phase-13-release-status.json",
+    "versionInventory": "artifacts/conformance/latest/phase-13-version-inventory.json",
+    "internalRangeAudit": "artifacts/conformance/latest/phase-13-internal-range-audit.json",
+    "privatePackReport": "artifacts/conformance/latest/phase-13-private-pack-report.json",
+    "tarballCatalog": "artifacts/conformance/latest/phase-13-rc-tarball-catalog.json",
+    "packedInstallReport": "artifacts/conformance/latest/phase-13-packed-install-report.json",
+    "appExampleValidation": "artifacts/conformance/latest/phase-13-app-and-example-validation.json",
+    "releaseNotesDraft": "artifacts/conformance/latest/phase-13-release-notes-draft.md",
+    "acceptanceChecklist": "artifacts/conformance/latest/phase-13-rc-acceptance-checklist.md",
+    "releaseBundle": "artifacts/releases/rc.1/"
+  },
+  "summary": {
+    "changesetCount": 5,
+    "changedPackageCount": 16,
+    "publicTarballCount": 17,
+    "privateTarballCount": 3,
+    "portableSubsetInstallGreen": true,
+    "appTarballStructuralValidationGreen": true,
+    "promotionAccepted": false
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "knownLimits": [
+    "Browser matrix remains blocked in the current environment.",
+    "Browser-driven visual regression remains blocked in the current environment.",
+    "The hard closure rule for full frozen-target corpus closure remains blocked.",
+    "Publish readiness remains blocked without an npm auth token."
+  ]
+}

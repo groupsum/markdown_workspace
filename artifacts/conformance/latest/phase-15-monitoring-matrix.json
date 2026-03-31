@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "trainId": "promotion-rc.1",
+  "monitors": [
+    {
+      "id": "extension-activation-failures",
+      "signal": "Extension activation diagnostics, manifest/runtime compatibility failures, activation-time exceptions.",
+      "severity": "release-blocker-if-widespread",
+      "owner": "extension-runtime / bundled-extension maintainers",
+      "action": "Accept patch-only fixes on the released train or move to a deliberate next minor if the fix expands behavior."
+    },
+    {
+      "id": "theme-regressions",
+      "signal": "Theme selector drift, hidden shipped themes, token/bridge mismatches, visual baseline diffs.",
+      "severity": "high",
+      "owner": "theme-contract / ui-tokens / app shell maintainers",
+      "action": "Patch-only correction on the released train when parity or token contract stability regresses."
+    },
+    {
+      "id": "i18n-regressions",
+      "signal": "Locale switch persistence failures, missing core catalog keys, action/header/status strings falling out of catalogs.",
+      "severity": "high",
+      "owner": "i18n / app shell maintainers",
+      "action": "Patch-only correction on the released train while preserving locale boundary and message-key stability."
+    },
+    {
+      "id": "artifact-compatibility-drift",
+      "signal": "Release artifact install/activation/runtime incompatibility compared with the Phase 13 and Phase 14 evidence bundles.",
+      "severity": "release-blocker",
+      "owner": "release engineering",
+      "action": "Escalate immediately; do not widen claim language until evidence is regenerated."
+    }
+  ]
+}

@@ -1,16 +1,20 @@
 # Package topology
 
+Date: 2026-03-27
+
 ## Decision summary
 
-The repository is a root npm workspace with explicit application, package, documentation, and example boundaries.
+The repository is a root npm workspace with explicit application, package, documentation, artifact, and example boundaries.
+Applications compose packages; packages do not depend on applications.
 
-## Current repository structure after Phase 3
+## Current repository structure
 
 ```text
 markdown_workspace/
   package.json
   package-lock.json
   tsconfig.base.json
+  .changeset/
   .github/
   docs/
   apps/
@@ -22,11 +26,27 @@ markdown_workspace/
       extension-host/
       theme-contract/
     shared/
+      ui-tokens/
+      icons/
+      i18n/
+      testing/
     renderer/
+      markdown-renderer-core/
+      markdown-renderer-react/
     editor/
+      markdown-editor-core/
+      markdown-editor-react/
     extensions/
+      extension-runtime/
+      extension-manager/
+      extension-gemini-agent/
+      extension-theme-studio/
+      extension-catalog-hello/
   examples/
-  env/
+    editor-basic/
+    renderer-basic/
+  tools/
+  artifacts/
 ```
 
 ## Package families
@@ -34,60 +54,59 @@ markdown_workspace/
 ### Applications
 Deployable products only.
 
-- `apps/client`
-- `apps/lander`
+- `apps/client` → `@mdwrk/mdwrkspace`
+- `apps/lander` → `@mdwrk/lander`
 
 Applications may depend on packages. Packages may **not** depend on applications.
 
 ### Contracts
 Normative interfaces and schemas.
 
-- `mdwrk/extension-manifest` — implemented
-- `mdwrk/extension-host` — implemented
-- `mdwrk/theme-contract` — implemented
+- `@mdwrk/extension-manifest`
+- `@mdwrk/extension-host`
+- `@mdwrk/theme-contract`
 
 These packages are intended to remain implementation-light and stable.
 
 ### Shared
 Cross-cutting primitives that remain app-agnostic.
 
-- `mdwrk/ui-tokens`
-- `mdwrk/icons`
-- `mdwrk/i18n`
-- `mdwrk/testing`
-
-Status in Phase 3: concrete shared packages are implemented and publishable.
+- `@mdwrk/ui-tokens`
+- `@mdwrk/icons`
+- `@mdwrk/i18n`
+- `@mdwrk/testing`
 
 ### Renderer
 Portable markdown rendering packages.
 
-- `mdwrk/markdown-renderer-core`
-- `mdwrk/markdown-renderer-react`
-
-Status in Phase 3: family directory exists; concrete packages not yet implemented.
+- `@mdwrk/markdown-renderer-core`
+- `@mdwrk/markdown-renderer-react`
 
 ### Editor
 Portable markdown editing packages.
 
-- `mdwrk/markdown-editor-core`
-- `mdwrk/markdown-editor-react`
-
-Status in Phase 3: family directory exists; concrete packages not yet implemented.
+- `@mdwrk/markdown-editor-core`
+- `@mdwrk/markdown-editor-react`
 
 ### Extensions
 Publishable extension packages and extension runtime.
 
-- `mdwrk/extension-runtime`
-- `mdwrk/extension-manager`
-- `mdwrk/extension-gemini-agent`
-- `mdwrk/extension-theme-studio`
+- `@mdwrk/extension-runtime`
+- `@mdwrk/extension-manager`
+- `@mdwrk/extension-gemini-agent`
+- `@mdwrk/extension-theme-studio`
+- `@mdwrk/extension-catalog-hello`
 
-Status in Phase 3: family directory exists; concrete packages not yet implemented.
+### Examples
+Validation and demo packages.
+
+- `@mdwrk/example-editor-basic`
+- `@mdwrk/example-renderer-basic`
 
 ## Naming rules
 
 ### npm scope
-All new workspace packages use the npm scope:
+All workspace packages use the npm scope:
 
 - `@mdwrk/*`
 
@@ -108,12 +127,13 @@ Examples:
 
 ## Ownership rules
 
-- `apps/*` own product composition, routing, deployment, and end-user assembly.
-- `packages/contracts/*` own normative interfaces and schemas.
-- `packages/shared/*` own reusable primitives.
-- `packages/renderer/*` own markdown rendering.
-- `packages/editor/*` own markdown editing.
-- `packages/extensions/*` own the extension runtime or extension packages.
+- `apps/*` own product composition, routing, deployment, and end-user assembly
+- `packages/contracts/*` own normative interfaces and schemas
+- `packages/shared/*` own reusable primitives
+- `packages/renderer/*` own markdown rendering
+- `packages/editor/*` own markdown editing
+- `packages/extensions/*` own the extension runtime or extension packages
+- `examples/*` own validation/demo surfaces only
 
 ## Import rules
 
@@ -129,10 +149,6 @@ Examples:
 - shared packages importing from apps
 - extension packages importing from app internals directly
 
-## Phase 3 outcomes
+## Current-state note
 
-Phase 3 extends the concrete package families under `packages/`:
-- contract packages remain implemented and publishable
-- shared packages are now implemented and publishable
-- the client imports shared styling primitives from `mdwrk/ui-tokens`
-- token/class naming and theme mapping guidance now exist for package consumers
+The release-ownership and promotion details for these package families are frozen separately in `docs/operations/release-groups.md`.

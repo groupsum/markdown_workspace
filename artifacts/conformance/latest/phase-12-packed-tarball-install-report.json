@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-03-29T17:01:23.108Z",
+  "kind": "packed-tarball-install",
+  "status": "blocked",
+  "packReportPath": "artifacts/packs/pack-report.json",
+  "subsetInstall": {
+    "ok": true,
+    "targetPackages": [
+      "@mdwrk/theme-contract",
+      "@mdwrk/ui-tokens"
+    ]
+  },
+  "fullAppInstallAttempt": {
+    "ok": false,
+    "targetPackage": "@mdwrk/mdwrkspace",
+    "reason": "The current environment cannot resolve every registry dependency required to install the app tarball end-to-end."
+  },
+  "packReportSummary": {
+    "ok": true,
+    "packedCount": 17,
+    "failureCount": 0
+  }
+}

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Project, AppTheme } from '../../types';
 import { THEMES } from '../../data/themes';
 import { Box, Plus, GitBranch, Clock, ArrowRight, Trash2, Zap, AlertTriangle } from 'lucide-react';
+import { LanguageSelector } from '../../src/features/i18n/LanguageSelector';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 interface ProjectSelectorProps {
   projects: Project[];
@@ -23,6 +25,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   currentTheme,
   onThemeChange
 }) => {
+  const { t } = useClientI18n();
   const [isCreating, setIsCreating] = useState(false);
   const [newProjectName, setNewProjectName] = useState('');
   const [showThemeModal, setShowThemeModal] = useState(false);
@@ -58,7 +61,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       <div className="project-selector-chassis">
         <header className="project-selector-top">
           <div className="project-header-info">
-            <p className="project-subtitle">MOUNT_WORKSPACE_OR_INIT_NEW_PLATE</p>
+            <p className="project-subtitle">{t('core.project-selector.subtitle', 'MOUNT_WORKSPACE_OR_INIT_NEW_PLATE')}</p>
           </div>
           
           <div className="project-actions flex items-center gap-4">
@@ -66,17 +69,19 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               <button 
                 onClick={() => setShowThemeModal(true)}
                 className="theme-toggle-btn"
-                title="Project Theme"
+                title={t('core.project-selector.theme.title', 'Project Theme')}
               >
                 {currentThemeDef.icon && React.cloneElement(currentThemeDef.icon as React.ReactElement<any>, { size: 18 })}
               </button>
             </div>
 
+            <LanguageSelector compact />
+
             <button 
               onClick={() => setIsCreating(true)}
               className="project-btn-new"
             >
-              <Plus size={14} /> NEW_VAULT
+              <Plus size={14} /> {t('core.project-selector.new-vault', 'NEW_VAULT')}
             </button>
           </div>
         </header>
@@ -125,7 +130,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                       className="project-theme-trigger"
                     >
                       <span className="project-theme-trigger-label">{currentThemeDef.name}</span>
-                      <span className="project-theme-trigger-meta">OPEN_THEME_MATRIX</span>
+                      <span className="project-theme-trigger-meta">OPEN_{t('core.project-selector.theme.matrix', 'THEME_MATRIX')}</span>
                     </button>
                   </div>
                   <div className="project-form-actions">

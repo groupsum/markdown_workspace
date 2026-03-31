@@ -11,6 +11,7 @@ export interface MarkdownEditorThemeVariables {
     readonly padding?: string;
     readonly lineHeight?: string;
     readonly fontSize?: string;
+    readonly gutterWidth?: string;
 }
 export declare function createMarkdownEditorThemeStyle(variables?: MarkdownEditorThemeVariables): CSSProperties;
 export declare function createMarkdownEditorThemeVariablesFromThemeTokens(overrides?: ThemeTokenOverrides): Readonly<Record<`--${string}`, string>>;

@@ -1,0 +1,566 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "phase": 14,
+  "ok": false,
+  "summary": {
+    "greenChecks": 12,
+    "blockedChecks": 4,
+    "totalChecks": 16
+  },
+  "publishOrder": {
+    "generatedAt": "2026-03-30T02:30:48.319Z",
+    "releaseTrain": "rc.1",
+    "rootVersion": "0.2.0-rc.1",
+    "groups": [
+      {
+        "order": 1,
+        "id": "contracts",
+        "description": "Publish contract baselines before all dependents.",
+        "packages": [
+          {
+            "name": "@mdwrk/extension-host",
+            "version": "1.0.1",
+            "path": "packages/contracts/extension-host",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/extension-manifest",
+            "version": "1.0.0",
+            "path": "packages/contracts/extension-manifest",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/theme-contract",
+            "version": "1.1.0-rc.1",
+            "path": "packages/contracts/theme-contract",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "id": "shared",
+        "description": "Publish shared packages next so renderer/editor/extensions can resolve stable ranges.",
+        "packages": [
+          {
+            "name": "@mdwrk/i18n",
+            "version": "1.1.0-rc.1",
+            "path": "packages/shared/i18n",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/icons",
+            "version": "1.0.0",
+            "path": "packages/shared/icons",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/testing",
+            "version": "1.0.0",
+            "path": "packages/shared/testing",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/ui-tokens",
+            "version": "1.2.0-rc.1",
+            "path": "packages/shared/ui-tokens",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "id": "renderer",
+        "description": "Publish renderer family before editor/examples/apps that consume it.",
+        "packages": [
+          {
+            "name": "@mdwrk/markdown-renderer-core",
+            "version": "1.1.0-rc.1",
+            "path": "packages/renderer/markdown-renderer-core",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/markdown-renderer-react",
+            "version": "1.1.0-rc.1",
+            "path": "packages/renderer/markdown-renderer-react",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "id": "editor",
+        "description": "Publish editor family after renderer and shared packages.",
+        "packages": [
+          {
+            "name": "@mdwrk/markdown-editor-core",
+            "version": "1.1.0-rc.1",
+            "path": "packages/editor/markdown-editor-core",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/markdown-editor-react",
+            "version": "1.1.0-rc.1",
+            "path": "packages/editor/markdown-editor-react",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "id": "extensions",
+        "description": "Publish extension runtime and bundled extensions after contracts/shared/editor/renderer families.",
+        "packages": [
+          {
+            "name": "@mdwrk/extension-catalog-hello",
+            "version": "1.1.0-rc.1",
+            "path": "packages/extensions/extension-catalog-hello",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/extension-gemini-agent",
+            "version": "1.1.0-rc.1",
+            "path": "packages/extensions/extension-gemini-agent",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/extension-manager",
+            "version": "1.1.0-rc.1",
+            "path": "packages/extensions/extension-manager",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/extension-runtime",
+            "version": "1.1.0-rc.1",
+            "path": "packages/extensions/extension-runtime",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/extension-theme-studio",
+            "version": "1.1.0-rc.1",
+            "path": "packages/extensions/extension-theme-studio",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "id": "examples",
+        "description": "Examples are validation packages and remain non-published in this environment.",
+        "packages": [
+          {
+            "name": "@mdwrk/example-editor-basic",
+            "version": "0.1.1-rc.1",
+            "path": "examples/editor-basic",
+            "publishable": false,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/example-renderer-basic",
+            "version": "0.1.1-rc.1",
+            "path": "examples/renderer-basic",
+            "publishable": false,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      },
+      {
+        "order": 7,
+        "id": "apps",
+        "description": "Apps are promoted after library families; only public app packages are publish candidates.",
+        "packages": [
+          {
+            "name": "@mdwrk/mdwrkspace",
+            "version": "1.4.0-rc.1",
+            "path": "apps/client",
+            "publishable": true,
+            "publishStatus": "publish-blocked"
+          },
+          {
+            "name": "@mdwrk/lander",
+            "version": "0.0.11-rc.1",
+            "path": "apps/lander",
+            "publishable": false,
+            "publishStatus": "publish-blocked"
+          }
+        ]
+      }
+    ]
+  },
+  "publishReadiness": {
+    "generatedAt": "2026-03-30T02:30:47.873Z",
+    "generator": "tools/release/run-publish.mjs",
+    "mode": "ci-disabled",
+    "hasAuthToken": false,
+    "attemptedPublish": false,
+    "skipped": true,
+    "ok": true,
+    "reason": "Skipping npm publish because no NPM token is available.",
+    "scopes": [
+      "@mdwrk"
+    ],
+    "publishablePackages": [
+      {
+        "name": "@mdwrk/mdwrkspace",
+        "version": "1.4.0-rc.1",
+        "path": "apps/client",
+        "category": "app",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-host",
+        "version": "1.0.1",
+        "path": "packages/contracts/extension-host",
+        "category": "contract",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-manifest",
+        "version": "1.0.0",
+        "path": "packages/contracts/extension-manifest",
+        "category": "contract",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/theme-contract",
+        "version": "1.1.0-rc.1",
+        "path": "packages/contracts/theme-contract",
+        "category": "contract",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/markdown-editor-core",
+        "version": "1.1.0-rc.1",
+        "path": "packages/editor/markdown-editor-core",
+        "category": "editor",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/markdown-editor-react",
+        "version": "1.1.0-rc.1",
+        "path": "packages/editor/markdown-editor-react",
+        "category": "editor",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-catalog-hello",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-catalog-hello",
+        "category": "extension",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-gemini-agent",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-gemini-agent",
+        "category": "extension",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-manager",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-manager",
+        "category": "extension",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-runtime",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-runtime",
+        "category": "extension",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/extension-theme-studio",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-theme-studio",
+        "category": "extension",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/markdown-renderer-core",
+        "version": "1.1.0-rc.1",
+        "path": "packages/renderer/markdown-renderer-core",
+        "category": "renderer",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/markdown-renderer-react",
+        "version": "1.1.0-rc.1",
+        "path": "packages/renderer/markdown-renderer-react",
+        "category": "renderer",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/i18n",
+        "version": "1.1.0-rc.1",
+        "path": "packages/shared/i18n",
+        "category": "shared",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/icons",
+        "version": "1.0.0",
+        "path": "packages/shared/icons",
+        "category": "shared",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/testing",
+        "version": "1.0.0",
+        "path": "packages/shared/testing",
+        "category": "shared",
+        "access": "public"
+      },
+      {
+        "name": "@mdwrk/ui-tokens",
+        "version": "1.2.0-rc.1",
+        "path": "packages/shared/ui-tokens",
+        "category": "shared",
+        "access": "public"
+      }
+    ]
+  },
+  "releaseEvidence": {
+    "generatedAt": "2026-03-30T02:30:48.241Z",
+    "generator": "tools/release/generate-release-evidence.mjs",
+    "workspacePackageCount": 20,
+    "publishableWorkspaceCount": 17,
+    "git": {
+      "sha": null,
+      "ref": null,
+      "runId": null
+    },
+    "inputs": {
+      "packReport": "artifacts/packs/pack-report.json",
+      "extensionCatalog": "artifacts/extensions/catalog.json",
+      "conformanceStatus": "artifacts/conformance/latest/conformance-status.json"
+    },
+    "packages": [
+      {
+        "name": "@mdwrk/mdwrkspace",
+        "version": "1.4.0-rc.1",
+        "path": "apps/client",
+        "category": "app"
+      },
+      {
+        "name": "@mdwrk/extension-host",
+        "version": "1.0.1",
+        "path": "packages/contracts/extension-host",
+        "category": "contract"
+      },
+      {
+        "name": "@mdwrk/extension-manifest",
+        "version": "1.0.0",
+        "path": "packages/contracts/extension-manifest",
+        "category": "contract"
+      },
+      {
+        "name": "@mdwrk/theme-contract",
+        "version": "1.1.0-rc.1",
+        "path": "packages/contracts/theme-contract",
+        "category": "contract"
+      },
+      {
+        "name": "@mdwrk/markdown-editor-core",
+        "version": "1.1.0-rc.1",
+        "path": "packages/editor/markdown-editor-core",
+        "category": "editor"
+      },
+      {
+        "name": "@mdwrk/markdown-editor-react",
+        "version": "1.1.0-rc.1",
+        "path": "packages/editor/markdown-editor-react",
+        "category": "editor"
+      },
+      {
+        "name": "@mdwrk/extension-catalog-hello",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-catalog-hello",
+        "category": "extension"
+      },
+      {
+        "name": "@mdwrk/extension-gemini-agent",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-gemini-agent",
+        "category": "extension"
+      },
+      {
+        "name": "@mdwrk/extension-manager",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-manager",
+        "category": "extension"
+      },
+      {
+        "name": "@mdwrk/extension-runtime",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-runtime",
+        "category": "extension"
+      },
+      {
+        "name": "@mdwrk/extension-theme-studio",
+        "version": "1.1.0-rc.1",
+        "path": "packages/extensions/extension-theme-studio",
+        "category": "extension"
+      },
+      {
+        "name": "@mdwrk/markdown-renderer-core",
+        "version": "1.1.0-rc.1",
+        "path": "packages/renderer/markdown-renderer-core",
+        "category": "renderer"
+      },
+      {
+        "name": "@mdwrk/markdown-renderer-react",
+        "version": "1.1.0-rc.1",
+        "path": "packages/renderer/markdown-renderer-react",
+        "category": "renderer"
+      },
+      {
+        "name": "@mdwrk/i18n",
+        "version": "1.1.0-rc.1",
+        "path": "packages/shared/i18n",
+        "category": "shared"
+      },
+      {
+        "name": "@mdwrk/icons",
+        "version": "1.0.0",
+        "path": "packages/shared/icons",
+        "category": "shared"
+      },
+      {
+        "name": "@mdwrk/testing",
+        "version": "1.0.0",
+        "path": "packages/shared/testing",
+        "category": "shared"
+      },
+      {
+        "name": "@mdwrk/ui-tokens",
+        "version": "1.2.0-rc.1",
+        "path": "packages/shared/ui-tokens",
+        "category": "shared"
+      }
+    ]
+  },
+  "phase12Checkpoint": {
+    "path": "artifacts/conformance/latest/phase-12-closure-suite-checkpoint.json",
+    "blockedLanes": null,
+    "blockedHardClosureRules": 1
+  },
+  "phase13PromotionPrep": {
+    "path": "artifacts/conformance/latest/phase-13-rc-train-results.json",
+    "remainingBlockers": [
+      "Browser matrix remains blocked in the current environment.",
+      "Browser-driven visual regression remains blocked in the current environment.",
+      "The hard closure rule for full frozen-target corpus closure remains blocked.",
+      "Publish readiness remains blocked without an npm auth token."
+    ],
+    "acceptanceOk": false
+  },
+  "extensionCatalog": {
+    "path": "artifacts/conformance/latest/phase-14-extension-catalog.json",
+    "extensionCount": 1
+  },
+  "bundles": {
+    "promotionRoot": "artifacts/releases/promotion-rc.1",
+    "extensionArtifactBundle": "artifacts/releases/promotion-rc.1/extension-artifact-bundle.tar.gz",
+    "finalEvidenceBundle": "artifacts/releases/promotion-rc.1/final-evidence-bundle.tar.gz"
+  },
+  "checks": [
+    {
+      "id": "publish-order-generated",
+      "ok": true,
+      "detail": "Publish order was generated in dependency order from the current package inventory."
+    },
+    {
+      "id": "release-evidence-regenerated",
+      "ok": true,
+      "detail": "Release evidence and publish-readiness were regenerated from the current checkout."
+    },
+    {
+      "id": "updated-extension-catalog-generated",
+      "ok": true,
+      "detail": "A promotion-scoped extension catalog wrapper was generated from the current extension catalog."
+    },
+    {
+      "id": "extension-artifact-bundle-created",
+      "ok": true,
+      "detail": "A tarball bundle of the current extension artifacts was created."
+    },
+    {
+      "id": "final-evidence-bundle-created",
+      "ok": true,
+      "detail": "A final evidence tarball was created from the current checkpoint artifacts."
+    },
+    {
+      "id": "release-notes-generated",
+      "ok": true,
+      "detail": "Phase 14 release notes were generated with boundaries, baselines, and waivers."
+    },
+    {
+      "id": "claim-language-explicit",
+      "ok": true,
+      "detail": "Release notes explicitly state that no final certification claim is made and that no external frozen markdown target conformance claim is made."
+    },
+    {
+      "id": "git-tag-metadata-generated",
+      "ok": true,
+      "detail": "Git tag metadata was generated locally even though no actual tag was created."
+    },
+    {
+      "id": "github-release-metadata-generated",
+      "ok": true,
+      "detail": "GitHub release metadata was generated locally even though no actual release was created."
+    },
+    {
+      "id": "docs-artifacts-agree",
+      "ok": true,
+      "detail": "Generated docs and artifacts agree that promotion is blocked rather than complete."
+    },
+    {
+      "id": "artifact-catalogs-match-rc-inventory",
+      "ok": true,
+      "detail": "Tarball and package catalogs remain aligned with the RC inventory."
+    },
+    {
+      "id": "rc-tarball-compatibility-preserved",
+      "ok": true,
+      "detail": "RC tarball validation evidence remains green for the validated subset."
+    },
+    {
+      "id": "published-npm-packages",
+      "ok": false,
+      "detail": "Skipping npm publish because no NPM token is available."
+    },
+    {
+      "id": "git-tag-created",
+      "ok": false,
+      "detail": "Git tag creation was not executed because the checkpoint zip does not include a Git repository and release blockers remain."
+    },
+    {
+      "id": "github-release-created",
+      "ok": false,
+      "detail": "GitHub release creation was not executed because the checkpoint environment has no repository remote/auth context and release blockers remain."
+    },
+    {
+      "id": "published-artifact-runtime-compatibility",
+      "ok": false,
+      "detail": "No published npm artifacts exist for this checkpoint environment. The strongest available evidence remains the RC tarball validation recorded in Phase 13."
+    }
+  ]
+}

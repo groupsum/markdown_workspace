@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-03-31T07:36:06Z",
+  "phase": 21,
+  "checkpointType": "markdown delta + Playwright browser-matrix implementation checkpoint",
+  "certificationReady": false,
+  "resultsPath": "artifacts/conformance/latest/phase-21-certification-gate-results.json",
+  "summaryPath": "PHASE_21_CHECKPOINT_SUMMARY.md",
+  "currentStatusDocPath": "docs/conformance/current-certification-status.md",
+  "assessmentDocPath": "docs/current-state/phase-21-markdown-and-playwright-assessment.md"
+}

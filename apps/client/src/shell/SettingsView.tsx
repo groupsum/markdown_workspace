@@ -2,12 +2,14 @@ import React from 'react';
 import { useSyncExternalStore } from 'react';
 import { SettingsModal, type SettingsModalSection } from '../../components/Modals/SettingsModal';
 import { useClientRuntimeServices, useClientRuntimeSnapshot } from '../app/runtime/ClientRuntimeContext';
+import { useExtensionRuntime } from '../extensions/runtime/ExtensionRuntimeContext';
 import { renderExtensionIcon } from './iconRenderer';
 import { SettingsSchemaRenderer } from '../features/settings/SettingsSchemaRenderer';
 
 export const SettingsView: React.FC = () => {
   const runtime = useClientRuntimeSnapshot();
   const services = useClientRuntimeServices();
+  const extensionRuntime = useExtensionRuntime();
   const sectionsSnapshot = useSyncExternalStore(
     services.settingsRegistry.subscribe,
     services.settingsRegistry.getSnapshot,
@@ -26,10 +28,13 @@ export const SettingsView: React.FC = () => {
         return section.render();
       }
       if (section.schema) {
+        const store = section.extensionId ? extensionRuntime.getConfigurationStore(section.extensionId) : undefined;
         return (
           <SettingsSchemaRenderer
             schema={section.schema}
             values={schemaValues}
+            store={store}
+            formatLabel={services.i18n.format}
             onChange={(key, value) => {
               setSchemaValues((current) => ({ ...current, [key]: value }));
             }}
@@ -38,7 +43,7 @@ export const SettingsView: React.FC = () => {
       }
       return null;
     },
-  })), [schemaValues, sectionsSnapshot.sections, services.i18n]);
+  })), [extensionRuntime, schemaValues, sectionsSnapshot.sections, services.i18n]);
 
   return (
     <SettingsModal

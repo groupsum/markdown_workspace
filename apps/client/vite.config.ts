@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     const packageJson = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf-8'));
+    const buildId = env.BUILD_ID || env.GITHUB_SHA || 'dev';
     return {
       server: {
         port: 3000,
@@ -21,6 +22,7 @@ export default defineConfig(({ mode }) => {
       plugins: [react()],
       define: {
         __APP_VERSION__: JSON.stringify(packageJson.version),
+        __APP_BUILD_ID__: JSON.stringify(buildId),
         __PACKAGE_NAME__: JSON.stringify(commonVars.npmPackageName),
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)

@@ -1,0 +1,74 @@
+{
+  "phase": 8,
+  "generatedAt": "2026-03-28T08:21:24.672Z",
+  "checkpointType": "settings-data-session-git-parity-checkpoint",
+  "packages": {
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client"
+    },
+    "sharedI18n": {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0",
+      "path": "packages/shared/i18n"
+    },
+    "extensionManager": {
+      "name": "@mdwrk/extension-manager",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-manager"
+    },
+    "extensionThemeStudio": {
+      "name": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-theme-studio"
+    },
+    "extensionGeminiAgent": {
+      "name": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0",
+      "path": "packages/extensions/extension-gemini-agent"
+    }
+  },
+  "evidence": {
+    "settingsParityCommand": "node apps/client/tests/phase8-settings-data-git-parity.mjs --json",
+    "generatorCommand": "node tools/conformance/generate-phase8-settings-data-git-checkpoint.mjs",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-8-settings-data-git-results.json",
+    "auditedPaths": [
+      "apps/client/src/features/settings/DataSettingsPanel.tsx",
+      "apps/client/src/features/settings/GitSettingsPanel.tsx",
+      "apps/client/hooks/useApp.ts",
+      "apps/client/hooks/useFileManager.ts",
+      "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "apps/client/src/shell/SettingsView.tsx",
+      "apps/client/src/features/settings/SettingsSchemaRenderer.tsx",
+      "apps/client/src/extensions/runtime/createClientExtensionRegistrationSink.tsx",
+      "packages/extensions/extension-manager/dist/manifest.js"
+    ]
+  },
+  "summary": {
+    "totalChecks": 34,
+    "passedChecks": 34,
+    "failedChecks": 0,
+    "structuralAuditChecks": 31,
+    "structuralAuditPassed": 31,
+    "structuralAuditFailed": 0
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "restore workspace from JSON and real restore-state flow",
+    "secondary PWA version visibility inside settings",
+    "PAT versus OIDC auth mode, PAT token/status, provider normalization, and manual/automatic repository refresh",
+    "functional TEST_LINK and SAVE_CONFIG settings actions",
+    "real schema-backed extension settings forms with persistence, multiline, numeric, and multiselect support",
+    "extension manager settings section registration and bundled schema propagation"
+  ],
+  "knownLimits": [
+    "This checkpoint still does not close theme exposure parity, visible language selection parity, or the remaining final Markdown corpus/release-evidence closures.",
+    "The provided zip environment still lacks the complete browser-test dependency surface for final client-side Vitest/browser closure.",
+    "Bundled extension distribution artifacts included elsewhere in the repository have not been republished on a new release line in this checkpoint."
+  ]
+}

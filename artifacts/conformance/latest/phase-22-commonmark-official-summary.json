@@ -1,0 +1,10 @@
+{
+  "spec": "CommonMark 0.31.2",
+  "engine": "python-markdown-it-adapter",
+  "fixturePath": "packages/renderer/markdown-renderer-core/tests/fixtures/official/commonmark-0.31.2-spec.txt",
+  "total": 652,
+  "passed": 652,
+  "failed": 0,
+  "successRate": 1,
+  "sampleFailures": []
+}

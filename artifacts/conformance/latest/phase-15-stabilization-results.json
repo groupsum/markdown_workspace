@@ -1,0 +1,198 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "phase": 15,
+  "ok": false,
+  "summary": {
+    "greenChecks": 15,
+    "blockedChecks": 2,
+    "totalChecks": 17
+  },
+  "supportWindowPolicy": {
+    "generatedAt": "2026-03-30T00:00:00Z",
+    "trainId": "promotion-rc.1",
+    "window": {
+      "startDate": "2026-03-30",
+      "endDate": "2026-04-13",
+      "durationDays": 14,
+      "type": "short-post-release-compatibility-window",
+      "liveOnPublishedArtifacts": false,
+      "note": "The repository does not have a public published release in this environment. This policy therefore applies to the prepared promotion bundle and RC train artifacts rather than to live published npm artifacts."
+    },
+    "acceptedChanges": {
+      "defaultRule": "patch-only-on-released-train",
+      "nextMinorException": "Only when a deliberate next-minor train is explicitly opened and documented.",
+      "disallowedWithoutNewTrain": [
+        "feature expansion on the released train",
+        "contract boundary drift",
+        "claim-language expansion without new evidence"
+      ]
+    },
+    "monitoringFocus": [
+      "extension activation failures",
+      "theme regressions",
+      "i18n regressions",
+      "release artifact compatibility drift"
+    ],
+    "preservedEvidenceRoots": [
+      "artifacts/conformance/latest",
+      "artifacts/releases/promotion-rc.1",
+      "artifacts/releases/support-window-rc.1"
+    ],
+    "releaseClaimPolicy": {
+      "allowClaimSuccess": false,
+      "reason": "The minimum closure checklist is not fully green because there is still no actual published release and earlier strict-closure blockers remain recorded in the evidence."
+    }
+  },
+  "monitoringMatrix": {
+    "generatedAt": "2026-03-30T00:00:00Z",
+    "trainId": "promotion-rc.1",
+    "monitors": [
+      {
+        "id": "extension-activation-failures",
+        "signal": "Extension activation diagnostics, manifest/runtime compatibility failures, activation-time exceptions.",
+        "severity": "release-blocker-if-widespread",
+        "owner": "extension-runtime / bundled-extension maintainers",
+        "action": "Accept patch-only fixes on the released train or move to a deliberate next minor if the fix expands behavior."
+      },
+      {
+        "id": "theme-regressions",
+        "signal": "Theme selector drift, hidden shipped themes, token/bridge mismatches, visual baseline diffs.",
+        "severity": "high",
+        "owner": "theme-contract / ui-tokens / app shell maintainers",
+        "action": "Patch-only correction on the released train when parity or token contract stability regresses."
+      },
+      {
+        "id": "i18n-regressions",
+        "signal": "Locale switch persistence failures, missing core catalog keys, action/header/status strings falling out of catalogs.",
+        "severity": "high",
+        "owner": "i18n / app shell maintainers",
+        "action": "Patch-only correction on the released train while preserving locale boundary and message-key stability."
+      },
+      {
+        "id": "artifact-compatibility-drift",
+        "signal": "Release artifact install/activation/runtime incompatibility compared with the Phase 13 and Phase 14 evidence bundles.",
+        "severity": "release-blocker",
+        "owner": "release engineering",
+        "action": "Escalate immediately; do not widen claim language until evidence is regenerated."
+      }
+    ]
+  },
+  "evidenceIntegrity": {
+    "fileCount": 70,
+    "immutableBundle": {
+      "path": "artifacts/releases/support-window-rc.1/immutable-evidence-bundle.tar.gz",
+      "sha256": "012112bab1df0d63248fccfbc1c38d680a8c9a89bcf4130871d469645869f505"
+    }
+  },
+  "roadmap": {
+    "path": "artifacts/conformance/latest/phase-15-follow-on-roadmap.md"
+  },
+  "minimumClosureChecklist": {
+    "path": "artifacts/conformance/latest/phase-15-minimum-closure-checklist.md",
+    "finalSuccessAllowed": false
+  },
+  "inheritedBlockers": {
+    "phase12BlockedHardClosureRules": 1,
+    "phase13RemainingBlockers": [
+      "Browser matrix remains blocked in the current environment.",
+      "Browser-driven visual regression remains blocked in the current environment.",
+      "The hard closure rule for full frozen-target corpus closure remains blocked.",
+      "Publish readiness remains blocked without an npm auth token."
+    ],
+    "phase14BlockedChecks": [
+      "published-npm-packages",
+      "git-tag-created",
+      "github-release-created",
+      "published-artifact-runtime-compatibility"
+    ]
+  },
+  "packageInventoryCount": 20,
+  "versionInventoryCount": 16,
+  "checks": [
+    {
+      "id": "support-window-policy-generated",
+      "ok": true,
+      "detail": "Support-window policy was generated."
+    },
+    {
+      "id": "support-window-short-duration",
+      "ok": true,
+      "detail": "Support-window duration is 14 days."
+    },
+    {
+      "id": "patch-only-rule-declared",
+      "ok": true,
+      "detail": "Patch-only rule is declared for the train."
+    },
+    {
+      "id": "next-minor-exception-declared",
+      "ok": true,
+      "detail": "Next-minor exception rule is documented."
+    },
+    {
+      "id": "monitor-extension-activation-failures",
+      "ok": true,
+      "detail": "Monitoring matrix covers extension activation failures."
+    },
+    {
+      "id": "monitor-theme-regressions",
+      "ok": true,
+      "detail": "Monitoring matrix covers theme regressions."
+    },
+    {
+      "id": "monitor-i18n-regressions",
+      "ok": true,
+      "detail": "Monitoring matrix covers i18n regressions."
+    },
+    {
+      "id": "evidence-integrity-manifest-generated",
+      "ok": true,
+      "detail": "Evidence integrity manifest covers 70 files."
+    },
+    {
+      "id": "immutable-support-bundle-created",
+      "ok": true,
+      "detail": "Immutable evidence bundle tarball was created."
+    },
+    {
+      "id": "support-window-bundle-manifest-created",
+      "ok": true,
+      "detail": "Support-window bundle manifest was created."
+    },
+    {
+      "id": "follow-on-roadmap-generated",
+      "ok": true,
+      "detail": "Follow-on roadmap items were documented."
+    },
+    {
+      "id": "minimum-closure-checklist-generated",
+      "ok": true,
+      "detail": "Minimum closure checklist was generated."
+    },
+    {
+      "id": "minimum-closure-checklist-shows-publish-blocked",
+      "ok": true,
+      "detail": "Checklist honestly records publication as still blocked."
+    },
+    {
+      "id": "v1-regression-restoration-recorded",
+      "ok": true,
+      "detail": "Checklist records the restored v1 UIX regressions."
+    },
+    {
+      "id": "v2-improvements-recorded",
+      "ok": true,
+      "detail": "Checklist records the retained v2 improvements."
+    },
+    {
+      "id": "live-published-support-window-active",
+      "ok": false,
+      "detail": "No public published release exists in this environment, so the support window is policy-defined for the prepared bundle rather than live on published npm artifacts."
+    },
+    {
+      "id": "final-success-claim-available",
+      "ok": false,
+      "detail": "The repository may not yet claim final success because the publish step and earlier strict-closure blockers remain unresolved."
+    }
+  ]
+}

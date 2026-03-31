@@ -49,4 +49,26 @@ describe("@mdwrk/markdown-renderer-react", () => {
     expect(html).toContain("<!DOCTYPE html>");
     expect(html).toContain("markdown-export");
   });
+
+  it("renders default GFM features in the React surface", () => {
+    render(
+      <MarkdownRenderer
+        markdown={[
+          "~~done~~",
+          "",
+          "- [x] checked",
+          "",
+          "| A | B |",
+          "| --- | --- |",
+          "| 1 | https://example.com |",
+        ].join("\n")}
+      />,
+    );
+
+    expect(screen.getByText("done").tagName.toLowerCase()).toBe("del");
+    expect(screen.getByRole("checkbox")).toBeDisabled();
+    expect(screen.getByRole("table")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "https://example.com" })).toHaveAttribute("href", "https://example.com");
+  });
+
 });

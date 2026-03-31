@@ -28,6 +28,15 @@ export type MarkdownEditorBuiltinCommandId =
   | "bold"
   | "italic"
   | "strikethrough"
+  | "bullet-list"
+  | "task-list"
+  | "front-matter"
+  | "footnote"
+  | "inline-math"
+  | "block-math"
+  | "superscript"
+  | "subscript"
+  | "citation"
   | "indent"
   | "outdent"
   | "undo"
@@ -42,6 +51,14 @@ export interface MarkdownEditorEditResult {
   readonly value: string;
   readonly selection: MarkdownEditorSelection;
   readonly changed: boolean;
+}
+
+export interface MarkdownEditorSelectionFormatState {
+  readonly bold: boolean;
+  readonly italic: boolean;
+  readonly strikethrough: boolean;
+  readonly bulletList: boolean;
+  readonly taskList: boolean;
 }
 
 export interface MarkdownEditorHistoryStatus {

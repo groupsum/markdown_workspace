@@ -69,3 +69,13 @@ Third-party consumers should be able to:
 - import the core package for parsing or HTML generation without React
 - import the React package for UI rendering
 - apply either Markdown Workspace theme tokens or their own theme variables
+
+## Phase 2 checkpoint note
+
+The current checkpoint advances the renderer family to a committed self-contained Phase 2 renderer baseline. The committed dist now provides a portable internal AST, policy-controlled raw HTML handling, source-position attribute support, and an executable renderer test lane in the provided zip.
+
+
+## Phase 3 checkpoint note
+
+The current checkpoint also adds an executable default-GFM lane on top of the Phase 2 renderer baseline.
+The renderer family now explicitly supports the default profile features frozen in Phase 0: tables, task list items, strikethrough, and autolink literals.

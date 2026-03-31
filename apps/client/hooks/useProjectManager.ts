@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { Project, GitConfig, OidcProviderId } from '../types';
 import { storage } from '../services/storage';
 import { readOidcCredential } from '../services/oidc';
-
+import { DEFAULT_AUTH_MODE, DEFAULT_PROVIDER, getDefaultGitConfig } from '../services/gitConfig';
 
 const isOidcProvider = (value: string): value is OidcProviderId => {
   return value === 'github' || value === 'gitlab' || value === 'gitea';
@@ -12,7 +11,7 @@ const isOidcProvider = (value: string): value is OidcProviderId => {
 export const useProjectManager = (
   addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
 ) => {
-  console.log("[useProjectManager] Hook init");
+  console.log('[useProjectManager] Hook init');
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
@@ -20,82 +19,85 @@ export const useProjectManager = (
 
   useEffect(() => {
     const boot = async () => {
-      console.log("[useProjectManager] Booting Project Management Layer...");
+      console.log('[useProjectManager] Booting Project Management Layer...');
       await storage.seedInitialData();
       const allProjects = await storage.getProjects();
       const normalizedProjects = await Promise.all(allProjects.map(async (project) => {
         const credential = await readOidcCredential(project.id);
         const providerCandidate = credential?.provider || project.gitConfig?.oidcProvider || '';
-        const oidcProvider: OidcProviderId = isOidcProvider(providerCandidate) ? providerCandidate : 'github';
+        const oidcProvider: OidcProviderId = isOidcProvider(providerCandidate) ? providerCandidate : DEFAULT_PROVIDER;
+        const authMode = project.gitConfig?.authMode === 'oidc' || project.gitConfig?.authMode === 'pat'
+          ? project.gitConfig.authMode
+          : credential ? 'oidc' : DEFAULT_AUTH_MODE;
         const gitConfig: GitConfig = {
           repoUrl: project.gitConfig?.repoUrl || '',
           branch: project.gitConfig?.branch || 'main',
           username: credential?.username || project.gitConfig?.username || '',
+          authMode,
+          patToken: project.gitConfig?.patToken || '',
           oidcProvider,
           oidcConnected: Boolean(credential),
-          oidcSubject: credential?.subject || project.gitConfig?.oidcSubject || ''
+          oidcSubject: credential?.subject || project.gitConfig?.oidcSubject || '',
         };
         return { ...project, gitConfig };
       }));
       console.log(`[useProjectManager] Found ${normalizedProjects.length} projects in IDB`);
       setProjects(normalizedProjects);
-      
+
       const lastId = localStorage.getItem('lastProjectId');
-      if (lastId && normalizedProjects.find(p => p.id === lastId)) {
-         console.log(`[useProjectManager] Restoring active project context -> ${lastId}`);
-         setActiveProjectId(lastId);
+      if (lastId && normalizedProjects.find((project) => project.id === lastId)) {
+        console.log(`[useProjectManager] Restoring active project context -> ${lastId}`);
+        setActiveProjectId(lastId);
       }
       setLoading(false);
     };
-    boot();
+    void boot();
   }, []);
 
   const createProject = async (name: string) => {
-     console.log(`[useProjectManager] Action: createProject -> ${name}`);
-     const newProject: Project = {
-         id: `proj-${Date.now()}`,
-         name,
-         gitConfig: { repoUrl: '', branch: 'main', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
-         createdAt: Date.now(),
-         lastOpened: Date.now()
-     };
-     await storage.saveProject(newProject);
-     setProjects(prev => [...prev, newProject]);
-     addToast('PROJECT CREATED', 'success');
-     return newProject;
+    console.log(`[useProjectManager] Action: createProject -> ${name}`);
+    const newProject: Project = {
+      id: `proj-${Date.now()}`,
+      name,
+      gitConfig: getDefaultGitConfig(),
+      createdAt: Date.now(),
+      lastOpened: Date.now(),
+    };
+    await storage.saveProject(newProject);
+    setProjects((prev) => [...prev, newProject]);
+    addToast('PROJECT CREATED', 'success');
+    return newProject;
   };
 
   const deleteProject = async (id: string) => {
-     console.log(`[useProjectManager] Action: deleteProject -> ${id}`);
-     await storage.deleteProject(id);
-     setProjects(prev => prev.filter(p => p.id !== id));
-     if (activeProjectId === id) {
-         console.log("[useProjectManager] Active project deleted, clearing context");
-         setActiveProjectId(null);
-         localStorage.removeItem('lastProjectId');
-     }
-     addToast('PROJECT DELETED', 'info');
+    console.log(`[useProjectManager] Action: deleteProject -> ${id}`);
+    await storage.deleteProject(id);
+    setProjects((prev) => prev.filter((project) => project.id !== id));
+    if (activeProjectId === id) {
+      console.log('[useProjectManager] Active project deleted, clearing context');
+      setActiveProjectId(null);
+      localStorage.removeItem('lastProjectId');
+    }
+    addToast('PROJECT DELETED', 'info');
   };
 
   const updateGitConfig = async (config: GitConfig) => {
-      console.log(`[useProjectManager] Action: updateGitConfig for ${activeProjectId}`);
-      if (!activeProjectId) return;
-      const current = projects.find(p => p.id === activeProjectId);
-      if (current) {
-          const updated = { ...current, gitConfig: config };
-          await storage.saveProject(updated);
-          setProjects(prev => prev.map(p => p.id === activeProjectId ? updated : p));
-      }
+    console.log(`[useProjectManager] Action: updateGitConfig for ${activeProjectId}`);
+    if (!activeProjectId) return;
+    const current = projects.find((project) => project.id === activeProjectId);
+    if (!current) return;
+    const updated = { ...current, gitConfig: config };
+    await storage.saveProject(updated);
+    setProjects((prev) => prev.map((project) => project.id === activeProjectId ? updated : project));
   };
 
   const updateLastOpened = async (projectId: string) => {
-      console.log(`[useProjectManager] Action: updateLastOpened -> ${projectId}`);
-      const current = projects.find(p => p.id === projectId);
-      if (current) {
-          const updated = { ...current, lastOpened: Date.now() };
-          await storage.saveProject(updated);
-          setProjects(prev => prev.map(p => p.id === projectId ? updated : p));
-      }
+    console.log(`[useProjectManager] Action: updateLastOpened -> ${projectId}`);
+    const current = projects.find((project) => project.id === projectId);
+    if (!current) return;
+    const updated = { ...current, lastOpened: Date.now() };
+    await storage.saveProject(updated);
+    setProjects((prev) => prev.map((project) => project.id === projectId ? updated : project));
   };
 
   return {
@@ -107,6 +109,6 @@ export const useProjectManager = (
     createProject,
     deleteProject,
     updateGitConfig,
-    updateLastOpened
+    updateLastOpened,
   };
 };

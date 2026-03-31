@@ -272,10 +272,83 @@ export const useFileManager = (
 
   const exportProjectData = async (projectName: string) => {
     console.log(`[useFileManager] Action: exportProjectData for project -> ${projectName}`);
-    const json = JSON.stringify(files, null, 2);
+    const payload = {
+      format: 'mdwrk/project-backup',
+      version: 2,
+      exportedAt: Date.now(),
+      project: {
+        id: activeProjectId,
+        name: projectName,
+      },
+      files,
+    };
+    const json = JSON.stringify(payload, null, 2);
     const name = `${projectName}-backup.json`;
     triggerDownload(json, name, 'application/json');
     addToast('EXPORT COMPLETE', 'success');
+  };
+
+  const restoreProjectData = async (payload: string) => {
+    if (!activeProjectId) {
+      addToast('NO ACTIVE PROJECT', 'warning');
+      return null;
+    }
+
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(payload);
+    } catch {
+      addToast('INVALID JSON IMAGE', 'warning');
+      return null;
+    }
+
+    const rawFiles = Array.isArray(parsed)
+      ? parsed
+      : parsed && typeof parsed === 'object' && Array.isArray((parsed as { files?: unknown[] }).files)
+        ? (parsed as { files: unknown[] }).files
+        : null;
+
+    if (!rawFiles) {
+      addToast('UNSUPPORTED BACKUP FORMAT', 'warning');
+      return null;
+    }
+
+    const now = Date.now();
+    const restoredFiles: FileNode[] = [];
+    for (const item of rawFiles) {
+      if (!item || typeof item !== 'object') {
+        addToast('UNSUPPORTED BACKUP FORMAT', 'warning');
+        return null;
+      }
+      const node = item as Partial<FileNode>;
+      if (!node.id || !node.name || !node.type) {
+        addToast('BACKUP IMAGE MISSING REQUIRED FIELDS', 'warning');
+        return null;
+      }
+      if (node.type !== 'file' && node.type !== 'folder') {
+        addToast('BACKUP IMAGE CONTAINS INVALID NODE TYPE', 'warning');
+        return null;
+      }
+
+      restoredFiles.push({
+        id: String(node.id),
+        projectId: activeProjectId,
+        parentId: typeof node.parentId === 'string' ? node.parentId : null,
+        name: String(node.name),
+        type: node.type,
+        content: typeof node.content === 'string' ? node.content : undefined,
+        lastModified: typeof node.lastModified === 'number' ? node.lastModified : now,
+      });
+    }
+
+    const existingFiles = await storage.getAllFiles(activeProjectId);
+    await Promise.all(existingFiles.map((file) => storage.deleteFile(file.id)));
+    await Promise.all(restoredFiles.map((file) => storage.saveFile(file)));
+    setFiles(restoredFiles);
+    setSelectedExplorerId(null);
+    setUnsaved(false);
+    addToast(`RESTORE COMPLETE (${restoredFiles.length} ITEMS)`, 'success');
+    return restoredFiles;
   };
 
   const exportHtmlNode = async (theme: AppTheme) => {
@@ -331,6 +404,57 @@ export const useFileManager = (
     }
   };
 
+
+  const importMarkdownFiles = async (inputFiles: FileList | File[]) => {
+    if (!activeProjectId) return [];
+    const items = Array.from(inputFiles);
+    if (items.length === 0) return [];
+
+    let parentId: string | null = null;
+    const selectedNode = files.find((file) => file.id === selectedExplorerId);
+    if (selectedNode) {
+      parentId = selectedNode.type === 'folder' ? selectedNode.id : selectedNode.parentId;
+    }
+
+    const created: FileNode[] = [];
+    for (const inputFile of items) {
+      const lowerName = inputFile.name.toLowerCase();
+      const baseName = lowerName.endsWith('.md') || lowerName.endsWith('.markdown')
+        ? inputFile.name
+        : `${inputFile.name}.md`;
+      const existing = files.find((file) =>
+        file.projectId === activeProjectId &&
+        file.parentId === parentId &&
+        file.name.toLowerCase() === baseName.toLowerCase()
+      );
+      if (existing) {
+        continue;
+      }
+
+      const content = await inputFile.text();
+      const newFile: FileNode = {
+        id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        projectId: activeProjectId,
+        parentId,
+        name: baseName,
+        type: 'file',
+        content,
+        lastModified: Date.now(),
+      };
+      await storage.saveFile(newFile);
+      created.push(newFile);
+    }
+
+    if (created.length > 0) {
+      setFiles((previous) => [...previous, ...created]);
+      addToast(`IMPORTED ${created.length} MARKDOWN FILE${created.length > 1 ? 'S' : ''}`, 'success');
+    } else {
+      addToast('NO NEW MARKDOWN FILES IMPORTED', 'warning');
+    }
+
+    return created;
+  };
+
   return {
     files,
     setFiles,
@@ -349,6 +473,8 @@ export const useFileManager = (
     moveFile,
     downloadNode,
     exportProjectData,
-    exportHtmlNode
+    exportHtmlNode,
+    importMarkdownFiles,
+    restoreProjectData
   };
 };

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "gfm-task-list",
+    "section": "Task lists",
+    "passed": false,
+    "expectedHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><p><input type=\"checkbox\" checked /> done</p></li><li data-task=\"true\" data-checked=\"false\"><p><input type=\"checkbox\" /> todo</p></li></ul>",
+    "actualHtml": "<ul data-task-list=\"true\"><li data-task=\"true\" data-checked=\"true\"><input type=\"checkbox\" checked /> done</li><li data-task=\"true\" data-checked=\"false\"><input type=\"checkbox\" /> todo</li></ul>"
+  }
+]

@@ -9,8 +9,9 @@ export function createMarkdownEditorThemeStyle(variables = {}) {
         ["--mwe-accent"]: variables.accent ?? "var(--accent, #7c9cff)",
         ["--mwe-font-mono"]: variables.fontMono ?? 'var(--font-mono, "Fira Code", ui-monospace, monospace)',
         ["--mwe-editor-padding"]: variables.padding ?? "var(--editor-padding, 16px)",
-        ["--mwe-line-height"]: variables.lineHeight ?? "1.5rem",
+        ["--mwe-line-height"]: variables.lineHeight ?? "var(--editor-line-rhythm, var(--editor-line-height, 1.5rem))",
         ["--mwe-font-size"]: variables.fontSize ?? "calc(13px * var(--ui-scale, 1))",
+        ["--mwe-gutter-width"]: variables.gutterWidth ?? "var(--line-number-gutter-width, 48px)",
     };
 }
 export function createMarkdownEditorThemeVariablesFromThemeTokens(overrides = {}) {
@@ -19,8 +20,9 @@ export function createMarkdownEditorThemeVariablesFromThemeTokens(overrides = {}
 export function createMarkdownEditorThemeStyleFromThemeTokens(overrides = {}) {
     return {
         ...createMarkdownEditorThemeVariablesFromThemeTokens(overrides),
-        ["--mwe-line-height"]: "1.5rem",
+        ["--mwe-line-height"]: "var(--editor-line-rhythm, var(--editor-line-height, 1.5rem))",
         ["--mwe-font-size"]: "calc(13px * var(--ui-scale, 1))",
+        ["--mwe-gutter-width"]: "var(--line-number-gutter-width, 48px)",
     };
 }
 export function useMarkdownSourceEditorTheme(variables = {}) {

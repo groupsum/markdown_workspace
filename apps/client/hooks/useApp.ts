@@ -8,6 +8,10 @@ import { useUIState } from './useUIState';
 import { useProjectManager } from './useProjectManager';
 import { useFileManager } from './useFileManager';
 import { useTabManager } from './useTabManager';
+import { GIT_REPO_REFRESH_REQUEST_EVENT, MARKDOWN_IMPORT_REQUEST_EVENT } from '../constants';
+import { buildNormalizedGitConfig, getAuthToken, getDefaultGitConfig } from '../services/gitConfig';
+import { getGitAdapterService } from '../services/gitAdapter';
+import type { GitConfig } from '../types';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
 
@@ -24,6 +28,7 @@ type SessionState = {
   sidebarWidth: number;
   searchQuery: string;
   autoSaveEnabled: boolean;
+  showLineNumbers: boolean;
   updatedAt: number;
 };
 
@@ -172,6 +177,9 @@ export const useApp = () => {
         if (typeof storedSession.autoSaveEnabled === 'boolean') {
           ui.setAutoSaveEnabled(storedSession.autoSaveEnabled);
         }
+        if (typeof storedSession.showLineNumbers === 'boolean') {
+          ui.setShowLineNumbers(storedSession.showLineNumbers);
+        }
         restoredSession = true;
       }
     }
@@ -204,7 +212,8 @@ export const useApp = () => {
     ui.setSidebarWidth,
     ui.setZoom,
     ui.setSearchQuery,
-    ui.setAutoSaveEnabled
+    ui.setAutoSaveEnabled,
+    ui.setShowLineNumbers
   ]);
 
   useEffect(() => {
@@ -227,6 +236,7 @@ export const useApp = () => {
       sidebarWidth: ui.sidebarWidth,
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
+      showLineNumbers: ui.showLineNumbers,
       updatedAt: Date.now()
     };
     window.localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionState));
@@ -243,7 +253,8 @@ export const useApp = () => {
     ui.sidebarOpen,
     ui.sidebarWidth,
     ui.searchQuery,
-    ui.autoSaveEnabled
+    ui.autoSaveEnabled,
+    ui.showLineNumbers
   ]);
 
   useEffect(() => {
@@ -368,6 +379,29 @@ export const useApp = () => {
       currentProject && fileSys.exportProjectData(currentProject.name);
   };
 
+  const restoreData = async (payload: string) => {
+      console.log('[useApp] Action: restoreData initiated');
+      const restoredFiles = await fileSys.restoreProjectData(payload);
+      if (!restoredFiles) return;
+      tabs.resetTabs();
+      const target = restoredFiles.find((file) => file.name.toLowerCase() === 'readme.md' || file.name.toLowerCase() === 'welcome.md')
+        || restoredFiles.find((file) => file.type === 'file');
+      if (target) {
+        tabs.openTab(target.id);
+        fileSys.setSelectedExplorerId(target.id);
+      }
+  };
+
+  const handleImportMarkdown = async (inputFiles: FileList | File[]) => {
+      const imported = await fileSys.importMarkdownFiles(inputFiles);
+      if (imported.length > 0) {
+        const firstImportedFile = imported[0];
+        tabs.openTab(firstImportedFile.id);
+        fileSys.setSelectedExplorerId(firstImportedFile.id);
+        ui.setAppMode('work');
+      }
+  };
+
   const handleHtmlExport = () => {
       console.log(`[useApp] Action: handleHtmlExport initiated`);
       fileSys.exportHtmlNode(ui.theme);
@@ -384,6 +418,58 @@ export const useApp = () => {
       });
   };
 
+  const handleGitConfigUpdate = async (config: GitConfig) => {
+      await proj.updateGitConfig(config);
+  };
+
+  const handleGitConfigSave = async (config: GitConfig) => {
+      if (!proj.activeProjectId) {
+        addToast('NO ACTIVE PROJECT', 'warning');
+        return null;
+      }
+      const normalized = buildNormalizedGitConfig(config);
+      await proj.updateGitConfig(normalized);
+      window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
+      addToast('GIT CONFIG SAVED', 'success');
+      return normalized;
+  };
+
+  const refreshGitRepositories = () => {
+      window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
+      addToast('REPOSITORY REFRESH REQUESTED', 'info');
+  };
+
+  const testGitLink = async (config: GitConfig) => {
+      if (!proj.activeProjectId) {
+        addToast('NO ACTIVE PROJECT', 'warning');
+        return false;
+      }
+      try {
+        const normalized = buildNormalizedGitConfig(config);
+        await proj.updateGitConfig(normalized);
+        const provider = normalized.oidcProvider || 'github';
+        const adapter = getGitAdapterService(provider);
+        const token = await getAuthToken(proj.activeProjectId, normalized);
+        const repos = await adapter.listRepos(token);
+        if (normalized.repoUrl.trim()) {
+          const candidate = normalized.repoUrl.trim().toLowerCase();
+          const repoMatch = repos.some((repo) => repo.htmlUrl.toLowerCase() === candidate || repo.fullName.toLowerCase() === candidate.replace(`https://${adapter.repoHost}/`, ''));
+          if (!repoMatch) {
+            addToast('AUTH OK, REPO NOT FOUND IN ACCESSIBLE SET', 'warning');
+            window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
+            return false;
+          }
+        }
+        addToast(`LINK VERIFIED (${provider.toUpperCase()})`, 'success');
+        window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
+        return true;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'LINK TEST FAILED';
+        addToast(message.toUpperCase(), 'warning');
+        return false;
+      }
+  };
+
   const switchToProjectSelector = () => {
       console.log(`[useApp] Action: switchToProjectSelector`);
       proj.setActiveProjectId(null);
@@ -398,6 +484,10 @@ export const useApp = () => {
       const activeGitConfig = currentProject?.gitConfig;
       if (!activeGitConfig) {
         addToast('PROJECT CONFIG NOT AVAILABLE', 'warning');
+        return;
+      }
+      if (activeGitConfig.authMode !== 'oidc') {
+        addToast('OIDC SIGN-IN IS DISABLED WHEN AUTH MODE IS PAT', 'warning');
         return;
       }
       try {
@@ -433,6 +523,7 @@ export const useApp = () => {
       searchQuery: ui.searchQuery,
       autoSaveEnabled: ui.autoSaveEnabled,
       persistSessionEnabled: ui.persistSessionEnabled,
+      showLineNumbers: ui.showLineNumbers,
       toasts,
       viewMode: ui.viewMode,
       cursorPos: ui.cursorPos,
@@ -449,9 +540,12 @@ export const useApp = () => {
       loadProject,
       handleCreateProject,
       handleDeleteProject: proj.deleteProject,
-      handleGitConfigUpdate: proj.updateGitConfig,
+      handleGitConfigUpdate,
       handleOidcSignIn,
-      getActiveGitConfig: () => currentProject?.gitConfig || { repoUrl: '', branch: '', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
+      getActiveGitConfig: () => currentProject?.gitConfig || getDefaultGitConfig(),
+      handleGitConfigSave,
+      testGitLink,
+      refreshGitRepositories,
       handleExplorerSelect,
       handleContentChange: (c: string) => {
           console.log(`[useApp] Action: handleContentChange for file -> ${activeFile?.id}`);
@@ -465,6 +559,8 @@ export const useApp = () => {
       handleDownload,
       handleMoveFile: fileSys.moveFile,
       exportData,
+      restoreData,
+      handleImportMarkdown,
       handleHtmlExport,
       handlePrint,
       setFiles: fileSys.setFiles,
@@ -485,8 +581,16 @@ export const useApp = () => {
       setCursorPos: ui.setCursorPos,
       setAutoSaveEnabled: ui.setAutoSaveEnabled,
       setPersistSessionEnabled: ui.setPersistSessionEnabled,
+      setShowLineNumbers: ui.setShowLineNumbers,
       addToast,
       removeToast,
+      requestMarkdownImport: () => {
+          if (!proj.activeProjectId) {
+              addToast('SELECT A PROJECT BEFORE IMPORT', 'warning');
+              return;
+          }
+          window.dispatchEvent(new CustomEvent(MARKDOWN_IMPORT_REQUEST_EVENT));
+      },
       toggleSidebar: () => {
           ui.setSidebarOpen(!ui.sidebarOpen);
           ui.setAppMode('work');

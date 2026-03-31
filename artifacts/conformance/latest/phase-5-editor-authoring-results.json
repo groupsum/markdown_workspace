@@ -1,0 +1,201 @@
+{
+  "phase": 5,
+  "generatedAt": "2026-03-31T05:48:59.214Z",
+  "boundary": "editor-semantics-and-authoring-ux",
+  "commands": {
+    "editorCoreSmoke": "node packages/editor/markdown-editor-core/tests/run-smoke.mjs --json",
+    "editorReactSmoke": "node packages/editor/markdown-editor-react/tests/run-smoke.mjs --json"
+  },
+  "results": {
+    "editorCoreSmoke": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "results": [
+        {
+          "id": "bold-command",
+          "description": "bold command wraps selected content in strong markers",
+          "passed": true
+        },
+        {
+          "id": "bullet-list-selection",
+          "description": "bullet-list command toggles unordered list prefixes for selected lines",
+          "passed": true
+        },
+        {
+          "id": "task-list-selection",
+          "description": "task-list command prefixes each selected line with unchecked task syntax",
+          "passed": true
+        },
+        {
+          "id": "task-list-upgrade",
+          "description": "task-list command upgrades existing list items in place",
+          "passed": true
+        },
+        {
+          "id": "list-continuation",
+          "description": "Enter continuation inserts or terminates list prefixes deterministically",
+          "passed": true
+        },
+        {
+          "id": "optional-profile-commands",
+          "description": "optional-profile commands emit structural Markdown syntax",
+          "passed": true
+        },
+        {
+          "id": "front-matter-command",
+          "description": "front-matter command inserts a YAML front matter scaffold at the top of the document",
+          "passed": true
+        },
+        {
+          "id": "indent-outdent",
+          "description": "indent and outdent commands preserve line structure",
+          "passed": true
+        },
+        {
+          "id": "selection-state",
+          "description": "selection formatting helpers detect inline wrappers and list state",
+          "passed": true
+        },
+        {
+          "id": "selection-and-cursor-helpers",
+          "description": "selection normalization and cursor helpers remain stable",
+          "passed": true
+        },
+        {
+          "id": "history",
+          "description": "history push/undo/redo remains operational",
+          "passed": true
+        },
+        {
+          "id": "renderer-roundtrip",
+          "description": "editor output round-trips through the renderer core",
+          "passed": true
+        }
+      ]
+    },
+    "editorReactSmoke": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "results": [
+        {
+          "id": "editor-root",
+          "description": "MarkdownSourceEditor renders the root editor container",
+          "passed": true
+        },
+        {
+          "id": "gutter",
+          "description": "MarkdownSourceEditor renders the gutter when line numbers are enabled",
+          "passed": true
+        },
+        {
+          "id": "gutter-optional",
+          "description": "MarkdownSourceEditor can suppress the gutter when line numbers are disabled",
+          "passed": true
+        },
+        {
+          "id": "textarea-value",
+          "description": "MarkdownSourceEditor preserves the initial markdown value",
+          "passed": true
+        },
+        {
+          "id": "textarea-wrap-off",
+          "description": "MarkdownSourceEditor disables soft wrapping so gutter rhythm matches logical lines",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "aggregate": {
+    "testChecks": {
+      "total": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    "structuralAudit": {
+      "total": 40,
+      "passed": 40,
+      "failed": 0
+    }
+  },
+  "appAudit": {
+    "editorPane": {
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx",
+      "bulletListToolbarActionPresent": true,
+      "taskListToolbarActionPresent": true,
+      "indentToolbarActionPresent": true,
+      "outdentToolbarActionPresent": true,
+      "selectionStateWired": true,
+      "lineNumbersPropWired": true,
+      "activeBoldClassPresent": true,
+      "activeItalicClassPresent": true,
+      "activeStrikeClassPresent": true,
+      "activeBulletClassPresent": true,
+      "activeTaskClassPresent": true
+    },
+    "workPane": {
+      "path": "apps/client/components/Chassis/WorkPane/WorkPane.tsx",
+      "propDeclared": true,
+      "propForwarded": true
+    },
+    "appShell": {
+      "path": "apps/client/src/shell/AppShell.tsx",
+      "showLineNumbersPropPassed": true
+    },
+    "uiState": {
+      "path": "apps/client/hooks/useUIState.ts",
+      "stateFieldPresent": true,
+      "localStoragePersisted": true,
+      "indexedDbRestorePresent": true
+    },
+    "useApp": {
+      "path": "apps/client/hooks/useApp.ts",
+      "sessionStateFieldPresent": true,
+      "restorePresent": true,
+      "persistPresent": true,
+      "stateExposurePresent": true,
+      "actionExposurePresent": true
+    },
+    "settings": {
+      "path": "apps/client/src/app/runtime/useCoreSurfaceRegistrations.tsx",
+      "lineNumbersCardPresent": true,
+      "lineNumbersToggleWired": true
+    },
+    "uiEditorCss": {
+      "path": "apps/client/styles/base/ui-editor.css",
+      "gutterWidthTokenPresent": true,
+      "gutterRhythmPresent": true,
+      "textareaRhythmPresent": true
+    },
+    "uiTokens": {
+      "rootPath": "packages/shared/ui-tokens/src/styles/root.css",
+      "markdownPath": "packages/shared/ui-tokens/src/styles/markdown.css",
+      "editorLineHeightPresent": true,
+      "editorLineRhythmPresent": true,
+      "markdownLineHeightPresent": true,
+      "markdownHeadingLineHeightPresent": true,
+      "lineNumberGutterWidthPresent": true,
+      "markdownBodyUsesToken": true,
+      "headingUsesToken": true
+    },
+    "example": {
+      "path": "examples/editor-basic/App.tsx",
+      "bulletButtonPresent": true,
+      "taskButtonPresent": true,
+      "indentButtonPresent": true,
+      "outdentButtonPresent": true,
+      "lineNumbersTogglePresent": true,
+      "editorPropWired": true
+    }
+  },
+  "currentState": {
+    "clientTypecheckClosed": false,
+    "clientTypecheckArtifact": "artifacts/conformance/latest/phase-5-client-typecheck.txt",
+    "clientTypecheckNotes": [
+      "The client app still has unresolved external dependency/toolchain holes in the provided zip.",
+      "The Phase 5 showLineNumbers session-state wiring is present in source, but the overall app typecheck remains open because lucide-react, jszip, vitest, and ImportMeta.env declarations are not fully available in the provided checkpoint environment.",
+      "No showLineNumbers-specific typecheck failure was observed in the recorded Phase 5 client typecheck output."
+    ]
+  }
+}

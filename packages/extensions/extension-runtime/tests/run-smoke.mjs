@@ -30,7 +30,7 @@ const createManifest = (id, overrides = {}) => ({
     hostApi: '1.0.0',
     runtime: '1.0.0',
     app: '>=0.1.0',
-    themeContract: '1.0.0',
+    themeContract: '^1.0.0',
   },
   entry: {
     module: `./${id}.js`,
@@ -413,7 +413,7 @@ assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessa
       hostApi: '9.0.0',
       runtime: '1.0.0',
       app: '>=0.1.0',
-      themeContract: '1.0.0',
+      themeContract: '^1.0.0',
     },
   });
   const moduleCode = createExternalModuleCode(manifest, 'Incompatible');

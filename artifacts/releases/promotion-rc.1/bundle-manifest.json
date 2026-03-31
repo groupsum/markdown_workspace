@@ -1,0 +1,117 @@
+{
+  "generatedAt": "2026-03-30T02:30:48.319Z",
+  "releaseTrain": "rc.1",
+  "promotionStatus": "blocked",
+  "files": [
+    {
+      "file": "artifacts/releases/promotion-rc.1/extension-artifact-bundle.tar.gz",
+      "size": 108451,
+      "sha256": "689b1013131f8b75569a0ee312a685d421fb77ba48a809a612326e27482220dd"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/final-evidence-bundle.tar.gz",
+      "size": 17812,
+      "sha256": "454bdc537c533cee409d306629209e78495d5c093b25c86a1242df50da2bfabe"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/package-inventory.json",
+      "size": 3907,
+      "sha256": "0f144181d94ab204472e819b0aa11f421f370dbdf78b22560a6e6e8b2f549b07"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-12-closure-suite-checkpoint.json",
+      "size": 775,
+      "sha256": "656144c1257f784913aa522ff646c5e14f06f88650e51b2c05d22875c24e3836"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-12-closure-suite-results.json",
+      "size": 7749,
+      "sha256": "0b547d8e2657c370a41de494a8228cafc2e630d9bea2ef9320d33e068b61534a"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-app-and-example-validation.json",
+      "size": 1317,
+      "sha256": "86c2917767edb400f9ebf7fc92dc4eb0bcb49663521d4d4d81ed53cac33caf39"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-packed-install-log.txt",
+      "size": 715,
+      "sha256": "ed0f3264a95ff3c285c8112e0dc2effa981c5eb6ccc24f1fba6f701aacbe6c20"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-packed-install-report.json",
+      "size": 742,
+      "sha256": "eb99e7b61805025ef38540d462bd6e31fe242ab4b9b283e294ddbb8f97c1ab72"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-rc-tarball-catalog.json",
+      "size": 7221,
+      "sha256": "b73fd9c73693e6f85d28f96ed784dbcbb77a17e1ce3a385d51a7172198a17031"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-rc-train-checkpoint.json",
+      "size": 2401,
+      "sha256": "a37412daf8e5941292125bcd600cd2b7f2176ef995c83a299b2608c65eaa382f"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-rc-train-results.json",
+      "size": 7243,
+      "sha256": "ef388819d3e377f6ee06185da7d2142d18064e9403ace9d2c75b1a661d2d521c"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-13-version-inventory.json",
+      "size": 6990,
+      "sha256": "cfdfc9e7305c4e55a5f9714572ceaad01cf95ba704ba3a7417733e74a6458628"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-extension-catalog.json",
+      "size": 4849,
+      "sha256": "17f79e7343fa9b5611a4f7efec21b10ff3a6f7b0580fcd138b94a19d8d1b829c"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-git-tag-metadata.json",
+      "size": 292,
+      "sha256": "eb06d9f878cf0bfb5c6dd18fc66903defe7096d09cc728ced0a2045d7a91a7d9"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-github-release-metadata.json",
+      "size": 391,
+      "sha256": "970f79ad793269e469e5d47b08fa1f158e5c6e448709513eee6b9baeb13bfc4e"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-publish-order.json",
+      "size": 5964,
+      "sha256": "52cb54b517d284859cba309ef9f20422d5c818ed1207b11ef2ce0467ab8b04b4"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-published-artifact-compatibility.json",
+      "size": 507,
+      "sha256": "07fd4080e07209dbe7ec23062a1023e04e8afd25cb332bb311404774f26212d7"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-published-packages.json",
+      "size": 5277,
+      "sha256": "dcb11f8e93c57673d00de3340a51b45e311ee91c03a674be896843fcbd062241"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/phase-14-release-notes.md",
+      "size": 3208,
+      "sha256": "e6b4cd451f51ae45aecedabb3dce489d2d55fdff0efecc943eb09c595e9f7862"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/publish-readiness.json",
+      "size": 3550,
+      "sha256": "f1cc53eeecb4448e6294a772056e4a8fbb6f65038a790d7edfd7b2e13a0206d5"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/README.md",
+      "size": 309,
+      "sha256": "d3f819644a0ba691721740049c13df224c04a973f58a8a43fa6c62edef13aef3"
+    },
+    {
+      "file": "artifacts/releases/promotion-rc.1/release-evidence.json",
+      "size": 3244,
+      "sha256": "95e6f92e258eaef6e09efb166d48141c8870133fe70f05f4b652475432b8b2a1"
+    }
+  ]
+}

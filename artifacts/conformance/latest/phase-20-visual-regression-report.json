@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "laneStatus": "green",
+  "summary": "12/12 browser-rendered visual-diff checks passed across the Phase 9 theme baseline set using Chromium.",
+  "note": "This lane uses real Chromium rendering via Playwright and compares two independently captured screenshot passes for the repository-generated theme baseline HTML pages.",
+  "manifestPath": "artifacts/conformance/latest/phase-20-visual-screenshot-manifest.json",
+  "screenshotIndexPath": "artifacts/conformance/latest/phase-20-visual-regression/index.json"
+}

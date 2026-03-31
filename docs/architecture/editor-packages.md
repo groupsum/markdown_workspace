@@ -53,3 +53,9 @@ The editor family uses stable semantic class names and CSS custom properties so 
 ## Current limitations
 
 This phase implements a source-mode editor only. It does not introduce a rich WYSIWYG editor or extension-aware editing surfaces yet.
+
+
+## Phase 3 checkpoint note
+
+The current checkpoint adds a task-list command in the core editor command set and example/client wiring that aligns the source editor with the default GFM profile.
+This is useful authoring progress, but it is not yet the full later-phase editor/UIX parity closure.

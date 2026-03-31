@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-03-29T17:01:18.446Z",
+  "kind": "visual-regression-report",
+  "status": "blocked",
+  "structuralVisualSmoke": {
+    "generatedAt": "2026-03-29T17:01:02.471Z",
+    "kind": "visual-smoke",
+    "ok": true,
+    "snapshots": [
+      {
+        "path": "packages/shared/ui-tokens/src/styles/root.css",
+        "sha256": "677e713d627e8a2077346e9fba439a0efcc5d825173d077da175a87050176228"
+      },
+      {
+        "path": "packages/shared/ui-tokens/src/styles/markdown.css",
+        "sha256": "f60f34699b501797a6fb4c5995d51800b747f9203604c76fcb8854bac1904d50"
+      },
+      {
+        "path": "packages/renderer/markdown-renderer-react/src/styles/default.css",
+        "sha256": "27ed194ca302de5de4f9a73f57229258ad7d362f1c2c08da012c4881e64f5446"
+      },
+      {
+        "path": "packages/editor/markdown-editor-react/src/styles/default.css",
+        "sha256": "bca54c56b09820633fb14338c1eff0c970dd5375a5f2041e90923cbb47397199"
+      }
+    ],
+    "failures": [],
+    "note": "This checkpoint captures asset-level visual snapshots as deterministic SHA-256 digests. Pixel-level regression remains a future enhancement."
+  },
+  "staticThemeBaselines": {
+    "count": 12,
+    "smokeThemeIds": [
+      "default",
+      "research-science",
+      "heavy-gauge-tectonic"
+    ],
+    "indexPath": "artifacts/conformance/latest/phase-9-theme-baselines/index.html"
+  },
+  "reason": "Static CSS digests and HTML baselines are present, but there is no browser-captured pixel diff run in this environment."
+}

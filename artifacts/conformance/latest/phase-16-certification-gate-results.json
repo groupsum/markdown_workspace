@@ -1,0 +1,253 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "phase": 16,
+  "policy": {
+    "generatedAt": "2026-03-30T00:00:00Z",
+    "model": "certify-first-then-promote",
+    "certificationGate": {
+      "purpose": "All strict conformance, parity, package-boundary, and evidence lanes must be green from RC artifacts before the repository may claim certification.",
+      "excludes": [
+        "publish from validated RC artifacts",
+        "live support window on published artifacts",
+        "Git tag execution",
+        "GitHub release execution",
+        "published-artifact runtime compatibility"
+      ]
+    },
+    "promotionGate": {
+      "purpose": "Only after certification is complete may the repository publish, tag, create the GitHub release, and run the live post-release support window on published artifacts.",
+      "includes": [
+        "publish from validated RC artifacts",
+        "published-artifact runtime compatibility",
+        "Git tag creation",
+        "GitHub release creation",
+        "live support window on published artifacts"
+      ]
+    },
+    "claimLanguage": {
+      "repositoryInternalFullyFeatured": "repository-internal certifiably fully featured",
+      "repositoryInternalCompliant": "repository-internal certifiably compliant",
+      "externalMarkdownTarget": "externally frozen CommonMark/GFM markdown target conformance for the declared profile set",
+      "note": "No broader standards language may be used unless the evidence actually supports it."
+    },
+    "requiredBrowserTool": {
+      "name": "Playwright Test",
+      "purpose": "canonical real-browser matrix, accessibility, and visual-regression execution engine for final closure lanes"
+    }
+  },
+  "certificationGate": {
+    "totalChecks": 20,
+    "greenChecks": 16,
+    "blockedChecks": 4,
+    "certificationReady": false,
+    "checks": [
+      {
+        "id": "policy-split-certification-vs-promotion",
+        "ok": true,
+        "detail": "Phase 16 explicitly splits certification closure from promotion/release execution."
+      },
+      {
+        "id": "claim-language-frozen",
+        "ok": true,
+        "detail": "Phase 16 explicitly freezes the final claim language to repository-internal certification plus the externally frozen CommonMark/GFM target only."
+      },
+      {
+        "id": "commonmark-corpus-lane-green",
+        "ok": true,
+        "detail": "20/20 CommonMark corpus cases passed in the current subset lane."
+      },
+      {
+        "id": "gfm-corpus-lane-green",
+        "ok": true,
+        "detail": "7/7 default GFM corpus cases passed in the current subset lane."
+      },
+      {
+        "id": "optional-profile-lanes-green",
+        "ok": true,
+        "detail": "8/8 optional profile cases passed in the current named-extension lane."
+      },
+      {
+        "id": "editor-keyboard-lane-green",
+        "ok": true,
+        "detail": "17/17 editor keyboard/command smoke checks remain green."
+      },
+      {
+        "id": "toolbar-selection-lane-green",
+        "ok": true,
+        "detail": "40/40 toolbar/selection structural checks remain green from the Phase 5 checkpoint artifact."
+      },
+      {
+        "id": "preview-export-lane-green",
+        "ok": true,
+        "detail": "71/71 preview/export checks remain green, plus 5/5 current app preview/export checks."
+      },
+      {
+        "id": "accessibility-lane-green",
+        "ok": true,
+        "detail": "Accessibility-adjacent evidence remains green across preview/export (5/5), shell parity (11/11), and i18n (23/23) artifacts."
+      },
+      {
+        "id": "browser-matrix-lane-green",
+        "ok": false,
+        "detail": "The provided checkpoint container does not include a full Playwright/browser matrix. Existing structural smoke scripts remain available, but a true browser matrix lane cannot be marked green here."
+      },
+      {
+        "id": "visual-regression-lane-green",
+        "ok": false,
+        "detail": "Static CSS digests and HTML baselines are present, but there is no browser-captured pixel diff run in this environment."
+      },
+      {
+        "id": "packed-tarball-install-lane-green",
+        "ok": false,
+        "detail": "Portable subset install succeeded, but the full app tarball install remains blocked by unavailable registry dependencies in this environment."
+      },
+      {
+        "id": "extension-activation-compatibility-lane-green",
+        "ok": true,
+        "detail": "Manifest validation (4), compatibility (4), signed artifact verification (1), and runtime smoke (pass) were evaluated."
+      },
+      {
+        "id": "docs-contract-boundary-lane-green",
+        "ok": true,
+        "detail": "193/193 documentation/evidence checks remain green and current package boundary/export validations also passed."
+      },
+      {
+        "id": "no-unresolved-p0-markdown-conformance-failures",
+        "ok": false,
+        "detail": "Executed subset lanes are green, but the repository still does not run a full official end-to-end frozen CommonMark/GFM corpus and optional-profile closure across the entire declared boundary."
+      },
+      {
+        "id": "no-unresolved-p0-uix-parity-failures",
+        "ok": true,
+        "detail": "The living v1→v2 parity ledger no longer shows open user-visible P0 parity rows and the shell/settings/theme/i18n/package evidence checkpoint artifacts remain green."
+      },
+      {
+        "id": "no-unresolved-forbidden-boundary-violations",
+        "ok": true,
+        "detail": "Package boundary validation reported no violations."
+      },
+      {
+        "id": "no-unsigned-or-unverified-extension-artifact",
+        "ok": true,
+        "detail": "Signed catalog artifacts validated successfully against the generated trust policy."
+      },
+      {
+        "id": "no-release-set-package-lacking-docs-tests-examples-support-status",
+        "ok": true,
+        "detail": "Phase 11 package documentation/evidence matrix recorded no failing workspace entries."
+      },
+      {
+        "id": "rc-validation-from-packed-artifacts-still-green",
+        "ok": true,
+        "detail": "The repository still carries the Phase 13 RC validation evidence and tarball inventory as the basis for certification-from-RC artifacts."
+      }
+    ],
+    "blockers": [
+      {
+        "id": "browser-matrix-lane-green",
+        "detail": "The provided checkpoint container does not include a full Playwright/browser matrix. Existing structural smoke scripts remain available, but a true browser matrix lane cannot be marked green here."
+      },
+      {
+        "id": "visual-regression-lane-green",
+        "detail": "Static CSS digests and HTML baselines are present, but there is no browser-captured pixel diff run in this environment."
+      },
+      {
+        "id": "packed-tarball-install-lane-green",
+        "detail": "Portable subset install succeeded, but the full app tarball install remains blocked by unavailable registry dependencies in this environment."
+      },
+      {
+        "id": "no-unresolved-p0-markdown-conformance-failures",
+        "detail": "Executed subset lanes are green, but the repository still does not run a full official end-to-end frozen CommonMark/GFM corpus and optional-profile closure across the entire declared boundary."
+      }
+    ]
+  },
+  "promotionGate": {
+    "totalChecks": 6,
+    "greenChecks": 1,
+    "blockedChecks": 5,
+    "promotionReady": false,
+    "checks": [
+      {
+        "id": "publish-from-validated-rc-artifacts",
+        "ok": false,
+        "detail": "Promotion remains blocked because no publish step has been executed from the validated RC artifacts in this environment."
+      },
+      {
+        "id": "published-artifact-runtime-compatibility",
+        "ok": false,
+        "detail": "No published npm artifacts exist for this checkpoint environment. The strongest available evidence remains the RC tarball validation recorded in Phase 13."
+      },
+      {
+        "id": "git-tag-created",
+        "ok": false,
+        "detail": "Git tag creation was not executed because the checkpoint zip does not include a Git repository and release blockers remain."
+      },
+      {
+        "id": "github-release-created",
+        "ok": false,
+        "detail": "GitHub release creation was not executed because the checkpoint environment has no repository remote/auth context and release blockers remain."
+      },
+      {
+        "id": "live-support-window-on-published-artifacts",
+        "ok": false,
+        "detail": "No public published release exists in this environment, so the support window is policy-defined for the prepared bundle rather than live on published npm artifacts."
+      },
+      {
+        "id": "patch-only-rule-prepared",
+        "ok": true,
+        "detail": "Patch-only rule is declared for the train."
+      }
+    ],
+    "blockers": [
+      {
+        "id": "publish-from-validated-rc-artifacts",
+        "detail": "Promotion remains blocked because no publish step has been executed from the validated RC artifacts in this environment."
+      },
+      {
+        "id": "published-artifact-runtime-compatibility",
+        "detail": "No published npm artifacts exist for this checkpoint environment. The strongest available evidence remains the RC tarball validation recorded in Phase 13."
+      },
+      {
+        "id": "git-tag-created",
+        "detail": "Git tag creation was not executed because the checkpoint zip does not include a Git repository and release blockers remain."
+      },
+      {
+        "id": "github-release-created",
+        "detail": "GitHub release creation was not executed because the checkpoint environment has no repository remote/auth context and release blockers remain."
+      },
+      {
+        "id": "live-support-window-on-published-artifacts",
+        "detail": "No public published release exists in this environment, so the support window is policy-defined for the prepared bundle rather than live on published npm artifacts."
+      }
+    ]
+  },
+  "inheritedEvidence": {
+    "phase12": {
+      "closureSuitePath": "artifacts/conformance/latest/phase-12-closure-suite-results.json",
+      "blockedLanes": [
+        "browserMatrixLane",
+        "visualRegressionLane",
+        "packedTarballInstallLane"
+      ],
+      "blockedHardClosureRules": [
+        "noUnresolvedP0MarkdownConformanceFailures"
+      ]
+    },
+    "phase14": {
+      "promotionResultsPath": "artifacts/conformance/latest/phase-14-promotion-release-results.json",
+      "blockedChecks": [
+        "published-npm-packages",
+        "git-tag-created",
+        "github-release-created",
+        "published-artifact-runtime-compatibility"
+      ]
+    },
+    "phase15": {
+      "stabilizationResultsPath": "artifacts/conformance/latest/phase-15-stabilization-results.json",
+      "blockedChecks": [
+        "live-published-support-window-active",
+        "final-success-claim-available"
+      ]
+    }
+  }
+}

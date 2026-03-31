@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { X, Settings as SettingsIcon } from 'lucide-react';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 export interface SettingsModalSection {
   readonly id: string;
@@ -22,6 +23,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   sections,
   activeThemeLabel,
 }) => {
+  const { t } = useClientI18n();
   const orderedSections = useMemo(() => [...sections], [sections]);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(orderedSections[0]?.id ?? null);
 
@@ -43,9 +45,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         <div className="modal-header">
           <span className="modal-title">
             <SettingsIcon size={18} className="text-[var(--accent)]" />
-            System Configuration
+            {t('core.views.settings.title', 'System Configuration')}
           </span>
-          <button onClick={onClose} className="modal-close"><X size={18} /></button>
+          <button onClick={onClose} className="modal-close" aria-label={t('core.settings.modal.close', 'Close settings')}><X size={18} /></button>
         </div>
 
         <div className="settings-layout">
@@ -71,7 +73,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
               {activeThemeLabel && (
                 <div className="settings-content-meta">
-                  <span className="settings-content-meta-label">ACTIVE_THEME</span>
+                  <span className="settings-content-meta-label">{t('core.settings.visual.active-theme', 'ACTIVE_THEME')}</span>
                   <span className="settings-content-meta-value">{activeThemeLabel}</span>
                 </div>
               )}
@@ -84,7 +86,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         <footer className="modal-footer">
-          <button onClick={onClose} className="modal-btn">EXIT_CONFIG</button>
+          <button onClick={onClose} className="modal-btn">{t('core.settings.modal.exit', 'EXIT_CONFIG')}</button>
         </footer>
       </div>
     </div>

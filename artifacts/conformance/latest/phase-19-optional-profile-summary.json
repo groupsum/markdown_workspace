@@ -1,0 +1,47 @@
+{
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "results": [
+    {
+      "id": "front-matter-metadata",
+      "description": "front matter metadata is extracted while YAML is omitted from rendered output",
+      "passed": true
+    },
+    {
+      "id": "footnotes",
+      "description": "footnote references and definitions render into a linked footnotes section",
+      "passed": true
+    },
+    {
+      "id": "definition-lists",
+      "description": "definition lists render to dl/dt/dd structures",
+      "passed": true
+    },
+    {
+      "id": "math-inline-and-block",
+      "description": "math profile renders inline and block math wrappers",
+      "passed": true
+    },
+    {
+      "id": "superscript-subscript",
+      "description": "superscript and subscript extensions render semantic sup/sub tags",
+      "passed": true
+    },
+    {
+      "id": "smart-punctuation",
+      "description": "smart punctuation transforms quotes, dashes, and ellipses in text nodes",
+      "passed": true
+    },
+    {
+      "id": "citations-experimental",
+      "description": "citations render structurally while remaining outside the certified optional boundary",
+      "passed": true
+    },
+    {
+      "id": "markdown-in-html-experimental",
+      "description": "markdown-in-html requires trusted HTML and renders marked containers experimentally",
+      "passed": true
+    }
+  ]
+}

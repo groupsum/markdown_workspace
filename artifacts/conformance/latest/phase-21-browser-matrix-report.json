@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-03-31T07:30:14.171Z",
+  "executionMode": "playwright-test-with-chromium-smoke",
+  "configPath": "playwright.config.ts",
+  "testsRoot": "apps/client/tests/playwright",
+  "manifestPath": "artifacts/conformance/latest/phase-21-playwright-test-manifest.json",
+  "requiredProjects": [
+    "chromium",
+    "firefox",
+    "webkit"
+  ],
+  "browserAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        }
+      ]
+    }
+  ],
+  "laneStatus": "blocked",
+  "reason": "Playwright browser-matrix tests are wired, but one or more required browser executables are not available in this environment.",
+  "chromiumSmoke": {
+    "command": "node tools/ci/playwright-chromium-smoke.mjs",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4317/\nCall log:\n  - navigating to \"http://127.0.0.1:4317/\", waiting until \"domcontentloaded\"\n\n    at /mnt/data/phase21_work/markdown_workspace/tools/ci/playwright-chromium-smoke.mjs:61:14"
+  },
+  "execution": null
+}

@@ -1,0 +1,150 @@
+export declare function parseMarkdownToAst(markdown: any, options?: {}): {
+    type: string;
+    children: any[];
+    references: any;
+    metadata: Readonly<{}>;
+    footnotes: readonly any[];
+    activeExtensions: readonly import("./types.js").MarkdownOptionalProfileId[];
+    warnings: readonly any[];
+    position: {
+        start: {
+            line: any;
+            column: any;
+            offset: any;
+        };
+        end: {
+            line: any;
+            column: any;
+            offset: any;
+        };
+    };
+};
+export declare function extractHeadingNodesFromAst(ast: any, options?: {}): readonly any[];
+export declare function parseSimpleFrontmatter(raw: any, options?: {}): Readonly<{
+    raw: any;
+    content: string;
+    metadata: Readonly<{}>;
+    headings: readonly any[];
+    excerpt: string;
+}>;
+export declare function renderAstToHtml(ast: any, options?: {}): string;
+export declare function renderMarkdownToHtmlSync(markdown: any, options?: {}): string;
+export declare function renderMarkdownToHtml(markdown: any, options?: {}): Promise<string>;
+export declare function createMarkdownProcessor(options?: {}): {
+    classNames: Readonly<{
+        root: string;
+        heading1: string;
+        heading2: string;
+        heading3: string;
+        heading4: string;
+        heading5: string;
+        heading6: string;
+        paragraph: string;
+        strong: string;
+        emphasis: string;
+        strikethrough: string;
+        superscript: string;
+        subscript: string;
+        citation: string;
+        footnoteReference: string;
+        footnotes: string;
+        footnoteBacklink: string;
+        definitionList: string;
+        definitionTerm: string;
+        definitionDescription: string;
+        mathInline: string;
+        mathBlock: string;
+        hr: string;
+        blockquote: string;
+        listUnordered: string;
+        listOrdered: string;
+        listItem: string;
+        taskListItem: string;
+        checkbox: string;
+        link: string;
+        inlineCode: string;
+        table: string;
+        tableHead: string;
+        tableBody: string;
+        tableRow: string;
+        tableHeader: string;
+        tableCell: string;
+        tableCaption: string;
+        tableColumns: string;
+        tableColumn: string;
+        codeBlock: string;
+        codeHeader: string;
+        codeSurface: string;
+    }>;
+    processor: {
+        process(markdown: any): Promise<string>;
+        parse(markdown: any): {
+            type: string;
+            children: any[];
+            references: any;
+            metadata: Readonly<{}>;
+            footnotes: readonly any[];
+            activeExtensions: readonly import("./types.js").MarkdownOptionalProfileId[];
+            warnings: readonly any[];
+            position: {
+                start: {
+                    line: any;
+                    column: any;
+                    offset: any;
+                };
+                end: {
+                    line: any;
+                    column: any;
+                    offset: any;
+                };
+            };
+        };
+    };
+};
+export declare function getDefaultMarkdownRemarkPlugins(): any[];
+export declare function getDefaultMarkdownRendererClassNames(): Readonly<{
+    root: string;
+    heading1: string;
+    heading2: string;
+    heading3: string;
+    heading4: string;
+    heading5: string;
+    heading6: string;
+    paragraph: string;
+    strong: string;
+    emphasis: string;
+    strikethrough: string;
+    superscript: string;
+    subscript: string;
+    citation: string;
+    footnoteReference: string;
+    footnotes: string;
+    footnoteBacklink: string;
+    definitionList: string;
+    definitionTerm: string;
+    definitionDescription: string;
+    mathInline: string;
+    mathBlock: string;
+    hr: string;
+    blockquote: string;
+    listUnordered: string;
+    listOrdered: string;
+    listItem: string;
+    taskListItem: string;
+    checkbox: string;
+    link: string;
+    inlineCode: string;
+    table: string;
+    tableHead: string;
+    tableBody: string;
+    tableRow: string;
+    tableHeader: string;
+    tableCell: string;
+    tableCaption: string;
+    tableColumns: string;
+    tableColumn: string;
+    codeBlock: string;
+    codeHeader: string;
+    codeSurface: string;
+}>;
+//# sourceMappingURL=engine.d.ts.map

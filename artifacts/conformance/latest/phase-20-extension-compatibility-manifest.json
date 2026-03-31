@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "manifestValidation": {
+    "generatedAt": "2026-03-31T05:49:06.097Z",
+    "validator": "tools/conformance/validate-extension-manifests.mjs",
+    "ok": true,
+    "results": [
+      {
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "path": "packages/extensions/extension-catalog-hello",
+        "manifestId": "external.catalog-hello",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-gemini-agent",
+        "path": "packages/extensions/extension-gemini-agent",
+        "manifestId": "core.gemini-agent",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-manager",
+        "path": "packages/extensions/extension-manager",
+        "manifestId": "core.extension-manager",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "packageName": "@mdwrk/extension-theme-studio",
+        "path": "packages/extensions/extension-theme-studio",
+        "manifestId": "core.theme-studio",
+        "valid": true,
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  },
+  "compatibilityValidation": {
+    "generatedAt": "2026-03-31T05:49:06.148Z",
+    "validator": "tools/conformance/validate-compatibility.mjs",
+    "ok": true,
+    "platformBaselines": {
+      "client": "1.4.0-rc.1",
+      "manifestVersion": 1,
+      "hostApi": "1.0.0",
+      "runtime": "1.1.0-rc.1",
+      "themeContract": "1.1.0-rc.1"
+    },
+    "results": [
+      {
+        "packageName": "@mdwrk/extension-catalog-hello",
+        "path": "packages/extensions/extension-catalog-hello",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=0.1.0",
+          "themeContract": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-gemini-agent",
+        "path": "packages/extensions/extension-gemini-agent",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-manager",
+        "path": "packages/extensions/extension-manager",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0"
+        }
+      },
+      {
+        "packageName": "@mdwrk/extension-theme-studio",
+        "path": "packages/extensions/extension-theme-studio",
+        "compatible": true,
+        "errors": [],
+        "warnings": [],
+        "declaredCompatibility": {
+          "manifestVersion": 1,
+          "hostApi": "^1.0.0",
+          "runtime": "^1.0.0",
+          "app": ">=1.3.49",
+          "themeContract": "^1.0.0",
+          "renderer": "^1.0.0",
+          "editor": "^1.0.0"
+        }
+      }
+    ]
+  },
+  "artifactValidation": {
+    "generatedAt": "2026-03-31T05:49:06.524Z",
+    "ok": true,
+    "catalogEntries": [
+      {
+        "entryId": "external.catalog-hello@1.1.0-rc.1",
+        "extensionId": "external.catalog-hello",
+        "manifestExists": true,
+        "signedManifestExists": true,
+        "moduleExists": true,
+        "manifestIntegrityVerified": true,
+        "moduleIntegrityVerified": true,
+        "signatureVerified": true,
+        "trustedBySamplePolicy": true,
+        "issues": []
+      }
+    ]
+  },
+  "runtimeSmoke": {
+    "ok": true,
+    "note": "Integration and extension-host structural smokes remained green in the current checkpoint."
+  }
+}

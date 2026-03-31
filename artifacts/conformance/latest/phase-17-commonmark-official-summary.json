@@ -1,0 +1,185 @@
+{
+  "spec": "CommonMark 0.31.2",
+  "fixturePath": "packages/renderer/markdown-renderer-core/tests/fixtures/official/commonmark-0.31.2-spec.txt",
+  "total": 652,
+  "passed": 360,
+  "failed": 292,
+  "successRate": 0.5521,
+  "sampleFailures": [
+    {
+      "id": 5,
+      "section": "example",
+      "markdown": "- foo\n\n\t\tbar",
+      "expected": "<ul><li><p>foo</p><pre><code>  bar</code></pre></li></ul>",
+      "actual": "<ul><li><p>foo</p><pre><code>bar</code></pre></li></ul>"
+    },
+    {
+      "id": 6,
+      "section": "example",
+      "markdown": ">\t\tfoo",
+      "expected": "<blockquote><pre><code>  foo</code></pre></blockquote>",
+      "actual": "<blockquote><pre><code>\tfoo</code></pre></blockquote>"
+    },
+    {
+      "id": 7,
+      "section": "example",
+      "markdown": "-\t\tfoo",
+      "expected": "<ul><li><pre><code>  foo</code></pre></li></ul>",
+      "actual": "<ul><li>foo</li></ul>"
+    },
+    {
+      "id": 9,
+      "section": "example",
+      "markdown": " - foo\n   - bar\n\t - baz",
+      "expected": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul></li></ul></li></ul>",
+      "actual": "<ul><li><p>foo</p><ul><li>bar</li></ul><ul><li>baz</li></ul></li></ul>"
+    },
+    {
+      "id": 11,
+      "section": "example",
+      "markdown": "*\t*\t*\t",
+      "expected": "<hr />",
+      "actual": "<ul><li><ul><li><ul><li></li></ul></li></ul></li></ul>"
+    },
+    {
+      "id": 13,
+      "section": "example",
+      "markdown": "\\\t\\A\\a\\ \\3\\φ\\«",
+      "expected": "<p>\\\t\\A\\a\\ \\3\\φ\\«</p>",
+      "actual": "<p>\tAa 3φ«</p>"
+    },
+    {
+      "id": 17,
+      "section": "example",
+      "markdown": "`` \\[\\` ``",
+      "expected": "<p><code>\\[\\`</code></p>",
+      "actual": "<p><code> \\[\\` </code></p>"
+    },
+    {
+      "id": 20,
+      "section": "example",
+      "markdown": "<https://example.com?find=\\*>",
+      "expected": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>",
+      "actual": "<p><a href=\"https://example.com?find=\\*\">https://example.com?find=\\*</a></p>"
+    },
+    {
+      "id": 22,
+      "section": "example",
+      "markdown": "[foo](/bar\\* \"ti\\*tle\")",
+      "expected": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>",
+      "actual": "<p><a href=\"/bar\\*\" title=\"ti\\*tle\">foo</a></p>"
+    },
+    {
+      "id": 23,
+      "section": "example",
+      "markdown": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"",
+      "expected": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>",
+      "actual": "<p><a href=\"/bar\\*\" title=\"ti\\*tle\">foo</a></p>"
+    },
+    {
+      "id": 24,
+      "section": "example",
+      "markdown": "``` foo\\+bar\nfoo\n```",
+      "expected": "<pre><code>foo</code></pre>",
+      "actual": "<pre><div>foo\\+bar</div><div><code>foo</code></pre>"
+    },
+    {
+      "id": 25,
+      "section": "example",
+      "markdown": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;",
+      "expected": "<p>  &amp; © Æ Ď\n¾ ℋ ⅆ\n∲ ≧̸</p>",
+      "actual": "<p>  &amp; © &amp;AElig; &amp;Dcaron;\n&amp;frac34; &amp;HilbertSpace; &amp;DifferentialD;\n&amp;ClockwiseContourIntegral; &amp;ngE;</p>"
+    },
+    {
+      "id": 26,
+      "section": "example",
+      "markdown": "&#35; &#1234; &#992; &#0;",
+      "expected": "<p># Ӓ Ϡ �</p>",
+      "actual": "<p># Ӓ Ϡ \u0000</p>"
+    },
+    {
+      "id": 27,
+      "section": "example",
+      "markdown": "&#X22; &#XD06; &#xcab;",
+      "expected": "<p>&quot; ആ ಫ</p>",
+      "actual": "<p>&amp;#X22; &amp;#XD06; ಫ</p>"
+    },
+    {
+      "id": 32,
+      "section": "example",
+      "markdown": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")",
+      "expected": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
+      "actual": "<p><a href=\"/f&amp;ouml;&amp;ouml;\" title=\"f&amp;ouml;&amp;ouml;\">foo</a></p>"
+    },
+    {
+      "id": 33,
+      "section": "example",
+      "markdown": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"",
+      "expected": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"föö\">foo</a></p>",
+      "actual": "<p><a href=\"/f&amp;ouml;&amp;ouml;\" title=\"f&amp;ouml;&amp;ouml;\">foo</a></p>"
+    },
+    {
+      "id": 34,
+      "section": "example",
+      "markdown": "``` f&ouml;&ouml;\nfoo\n```",
+      "expected": "<pre><code>foo</code></pre>",
+      "actual": "<pre><div>f&amp;ouml;&amp;ouml;</div><div><code>foo</code></pre>"
+    },
+    {
+      "id": 48,
+      "section": "example",
+      "markdown": "    ***",
+      "expected": "<pre><code>***</code></pre>",
+      "actual": "<hr />"
+    },
+    {
+      "id": 49,
+      "section": "example",
+      "markdown": "Foo\n    ***",
+      "expected": "<p>Foo\n***</p>",
+      "actual": "<p>Foo</p><hr />"
+    },
+    {
+      "id": 55,
+      "section": "example",
+      "markdown": "_ _ _ _ a\n\na------\n\n---a---",
+      "expected": "<p>_ _ _ _ a</p><p>a------</p><p>---a---</p>",
+      "actual": "<p><em> </em> <em> </em> a</p><p>a------</p><p>---a---</p>"
+    },
+    {
+      "id": 56,
+      "section": "example",
+      "markdown": " *-*",
+      "expected": "<p><em>-</em></p>",
+      "actual": "<p> <em>-</em></p>"
+    },
+    {
+      "id": 60,
+      "section": "example",
+      "markdown": "* Foo\n* * *\n* Bar",
+      "expected": "<ul><li>Foo</li></ul><hr /><ul><li>Bar</li></ul>",
+      "actual": "<ul><li>Foo</li><li><ul><li>*</li></ul></li><li>Bar</li></ul>"
+    },
+    {
+      "id": 70,
+      "section": "example",
+      "markdown": "foo\n    # bar",
+      "expected": "<p>foo\n# bar</p>",
+      "actual": "<p>foo\n    # bar</p>"
+    },
+    {
+      "id": 79,
+      "section": "example",
+      "markdown": "## \n#\n### ###",
+      "expected": "<h2></h2><h1></h1><h3></h3>",
+      "actual": "<h2></h2><h1></h1><h3>###</h3>"
+    },
+    {
+      "id": 87,
+      "section": "example",
+      "markdown": "Foo\n    ---",
+      "expected": "<p>Foo\n---</p>",
+      "actual": "<h2>Foo</h2>"
+    }
+  ]
+}

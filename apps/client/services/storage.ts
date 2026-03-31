@@ -1,5 +1,6 @@
 
 import { FileNode, Project } from '../types';
+import { getDefaultGitConfig } from './gitConfig';
 
 const DB_NAME = 'LatticeDB';
 const DB_VERSION = 3; 
@@ -146,7 +147,7 @@ class StorageService {
       const defaultProject: Project = {
           id: defaultProjectId,
           name: 'Core System',
-          gitConfig: { repoUrl: '', branch: 'main', username: '', oidcProvider: 'github', oidcConnected: false, oidcSubject: '' },
+          gitConfig: getDefaultGitConfig(),
           lastOpened: Date.now(),
           createdAt: Date.now()
       };

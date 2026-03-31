@@ -10,3 +10,9 @@ Included artifact families:
 - `releases/latest/`
 
 These artifacts were generated locally for checkpointing and should be regenerated in CI for authoritative release evidence.
+
+
+Phase 18 adds improved official CommonMark/GFM corpus summaries and an updated Gate B continuation evidence bundle under `artifacts/conformance/latest/phase-18-*`.
+
+
+Phase 18 adds improved official CommonMark/GFM corpus summaries and an updated Gate B continuation evidence bundle under `artifacts/conformance/latest/phase-18-*`.

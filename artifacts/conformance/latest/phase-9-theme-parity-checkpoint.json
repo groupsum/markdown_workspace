@@ -1,0 +1,68 @@
+{
+  "phase": 9,
+  "generatedAt": "2026-03-28T10:16:31.682Z",
+  "checkpointType": "theme-inventory-token-contract-and-visual-parity-checkpoint",
+  "packages": {
+    "client": {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0",
+      "path": "apps/client"
+    },
+    "themeContract": {
+      "name": "@mdwrk/theme-contract",
+      "version": "1.1.0",
+      "path": "packages/contracts/theme-contract"
+    },
+    "uiTokens": {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0",
+      "path": "packages/shared/ui-tokens"
+    }
+  },
+  "evidence": {
+    "themeParityCommand": "node apps/client/tests/phase9-theme-parity.mjs --json",
+    "uiTokensTestCommand": "npm run test -w @mdwrk/ui-tokens",
+    "checkpointGenerator": "node tools/conformance/generate-phase9-theme-checkpoint.mjs",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-9-theme-parity-results.json",
+    "visualBaselineArtifactPath": "artifacts/conformance/latest/phase-9-theme-visual-baselines.json",
+    "packedExampleSmokeArtifactPath": "artifacts/conformance/latest/phase-9-packed-example-smoke.json"
+  },
+  "summary": {
+    "totalChecks": 51,
+    "passedChecks": 51,
+    "failedChecks": 0,
+    "structuralAuditChecks": 18,
+    "structuralAuditPassed": 18,
+    "structuralAuditFailed": 0,
+    "selectableThemeCount": 12
+  },
+  "restoredThemeIds": [
+    "research-science",
+    "ferrous-monolith",
+    "tensioned-technical-skeleton",
+    "optical-vellum-drafting-grid",
+    "heavy-gauge-tectonic",
+    "galvanized-cellular",
+    "pressed-chromium"
+  ],
+  "restoredTokenIds": [
+    "editor-line-height",
+    "editor-line-rhythm",
+    "line-number-gutter-width",
+    "markdown-heading-line-height",
+    "markdown-line-height",
+    "mobile-expandable-rail-width",
+    "mobile-rail-expanded-width"
+  ],
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "knownLimits": [
+    "Visible language-selection parity and broader core locale restoration remain open for the next checkpoint band.",
+    "The repository still does not prove a full end-to-end frozen-target CommonMark/GFM corpus closure example-by-example.",
+    "The visual baselines in this checkpoint are repository-generated static HTML evidence pages rather than browser-captured PNG screenshots.",
+    "Packed tarball install evidence, refreshed pack artifacts, and promotion/release closures remain ahead of this checkpoint."
+  ]
+}

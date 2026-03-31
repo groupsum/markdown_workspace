@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-03-26T02:05:52.727Z",
+  "generatedAt": "2026-03-31T05:49:06.528Z",
   "extensions": [
     {
       "id": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.0.1",
+      "version": "1.1.0-rc.1",
       "enabledByDefault": true,
       "capabilities": [
         "view.register",
@@ -26,7 +26,7 @@
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.0.1",
+      "version": "1.1.0-rc.1",
       "enabledByDefault": true,
       "capabilities": [
         "workspace.read",
@@ -58,11 +58,13 @@
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.0.1",
+      "version": "1.1.0-rc.1",
       "enabledByDefault": true,
       "capabilities": [
         "view.register",
-        "actionRail.register"
+        "actionRail.register",
+        "settings.read",
+        "settings.write"
       ],
       "locales": [
         "en",
@@ -79,7 +81,7 @@
     {
       "id": "core.theme-studio",
       "packageName": "@mdwrk/extension-theme-studio",
-      "version": "1.0.1",
+      "version": "1.1.0-rc.1",
       "enabledByDefault": true,
       "capabilities": [
         "theme.read",

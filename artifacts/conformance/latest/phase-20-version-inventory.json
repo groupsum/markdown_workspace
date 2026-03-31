@@ -1,0 +1,175 @@
+{
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "rootVersion": "0.2.0-rc.1",
+  "workspaceVersions": [
+    {
+      "name": "@mdwrk/mdwrkspace",
+      "version": "1.4.0-rc.1",
+      "baseVersion": "1.4.0",
+      "rc": true,
+      "path": "apps/client",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander",
+      "version": "0.0.11-rc.1",
+      "baseVersion": "0.0.11",
+      "rc": true,
+      "path": "apps/lander",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/example-editor-basic",
+      "version": "0.1.1-rc.1",
+      "baseVersion": "0.1.1",
+      "rc": true,
+      "path": "examples/editor-basic",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/example-renderer-basic",
+      "version": "0.1.1-rc.1",
+      "baseVersion": "0.1.1",
+      "rc": true,
+      "path": "examples/renderer-basic",
+      "publishable": false
+    },
+    {
+      "name": "@mdwrk/extension-host",
+      "version": "1.0.1",
+      "baseVersion": "1.0.1",
+      "rc": false,
+      "path": "packages/contracts/extension-host",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-manifest",
+      "version": "1.0.0",
+      "baseVersion": "1.0.0",
+      "rc": false,
+      "path": "packages/contracts/extension-manifest",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/theme-contract",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/contracts/theme-contract",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/editor/markdown-editor-core",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/editor/markdown-editor-react",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/extensions/extension-catalog-hello",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/extensions/extension-gemini-agent",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-manager",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/extensions/extension-manager",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-runtime",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/extensions/extension-runtime",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/extensions/extension-theme-studio",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/renderer/markdown-renderer-core",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/renderer/markdown-renderer-react",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/i18n",
+      "version": "1.1.0-rc.1",
+      "baseVersion": "1.1.0",
+      "rc": true,
+      "path": "packages/shared/i18n",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/icons",
+      "version": "1.0.0",
+      "baseVersion": "1.0.0",
+      "rc": false,
+      "path": "packages/shared/icons",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/testing",
+      "version": "1.0.0",
+      "baseVersion": "1.0.0",
+      "rc": false,
+      "path": "packages/shared/testing",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/ui-tokens",
+      "version": "1.2.0-rc.1",
+      "baseVersion": "1.2.0",
+      "rc": true,
+      "path": "packages/shared/ui-tokens",
+      "publishable": true
+    }
+  ],
+  "distinctVersions": [
+    "0.0.11-rc.1",
+    "0.1.1-rc.1",
+    "1.0.0",
+    "1.0.1",
+    "1.1.0-rc.1",
+    "1.2.0-rc.1",
+    "1.4.0-rc.1"
+  ]
+}

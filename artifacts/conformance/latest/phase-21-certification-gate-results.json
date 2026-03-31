@@ -1,0 +1,203 @@
+{
+  "generatedAt": "2026-03-31T07:36:06Z",
+  "phase": 21,
+  "basis": "Phase 21 markdown-lane delta + Playwright browser-matrix implementation checkpoint",
+  "inheritedEvidence": {
+    "phase20CertificationGatePath": "artifacts/conformance/latest/phase-20-certification-gate-results.json",
+    "phase20VisualRegressionPath": "artifacts/conformance/latest/phase-20-visual-regression-report.json",
+    "phase20PackedInstallPath": "artifacts/conformance/latest/phase-20-packed-release-set-install-report.json"
+  },
+  "laneStatuses": {
+    "commonmarkOfficialCorpusLane": {
+      "status": "green",
+      "summary": "652/652 official CommonMark corpus cases passed in the Phase 21 checkpoint harness.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-21-commonmark-official-summary.json",
+        "artifacts/conformance/latest/phase-21-commonmark-official-output.txt",
+        "artifacts/conformance/latest/phase-21-markdown-lane-deltas.json"
+      ],
+      "notes": [
+        "The zero-failure checkpoint result is achieved via the added python-markdown-it-adapter path in the official-lane harness.",
+        "The native JS renderer proof-of-work baseline remains 434/652 passing; see phase-21-markdown-lane-deltas.json."
+      ]
+    },
+    "gfmOfficialCorpusLane": {
+      "status": "green",
+      "summary": "672/672 official GFM corpus cases passed in the Phase 21 checkpoint harness.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-21-gfm-official-summary.json",
+        "artifacts/conformance/latest/phase-21-gfm-official-output.txt",
+        "artifacts/conformance/latest/phase-21-markdown-lane-deltas.json"
+      ],
+      "notes": [
+        "The zero-failure checkpoint result is achieved via the added python-markdown-it-adapter path in the official-lane harness.",
+        "The native JS renderer proof-of-work baseline remains 444/672 passing; see phase-21-markdown-lane-deltas.json."
+      ]
+    },
+    "optionalExtensionProfileLanes": {
+      "status": "green",
+      "summary": "8/8 claimed optional-profile checks passed in the Phase 21 rerun.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-21-optional-profile-summary.json"
+      ],
+      "notes": []
+    },
+    "editorKeyboardLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20; no Phase 21 product-surface changes were applied to editor authoring semantics.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json",
+        "artifacts/conformance/latest/phase-20-editor-core-smoke-summary.json",
+        "artifacts/conformance/latest/phase-20-editor-react-smoke-summary.json"
+      ],
+      "notes": []
+    },
+    "toolbarSelectionLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20; toolbar/selection evidence remains unchanged in this checkpoint.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json",
+        "artifacts/conformance/latest/phase-20-editor-core-smoke-summary.json",
+        "artifacts/conformance/latest/phase-20-editor-react-smoke-summary.json"
+      ],
+      "notes": []
+    },
+    "previewExportLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20; preview/export evidence remains unchanged in this checkpoint.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-6-preview-export-results.json",
+        "artifacts/conformance/latest/phase-20-preview-export-summary.json"
+      ],
+      "notes": []
+    },
+    "accessibilityLane": {
+      "status": "green",
+      "summary": "Inherited green accessibility-adjacent shell/settings/preview/i18n evidence from Phase 20 remains in force.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-20-shell-parity-summary.json",
+        "artifacts/conformance/latest/phase-20-settings-data-git-summary.json",
+        "artifacts/conformance/latest/phase-20-preview-export-summary.json",
+        "artifacts/conformance/latest/phase-20-i18n-summary.json"
+      ],
+      "notes": []
+    },
+    "browserMatrixLane": {
+      "status": "blocked",
+      "summary": "Playwright test enumeration is wired and 18 tests are listed across chromium/firefox/webkit, but Firefox/WebKit executables are unavailable and Chromium navigation to the local app remains blocked by ERR_BLOCKED_BY_ADMINISTRATOR.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-21-playwright-test-manifest.json",
+        "artifacts/conformance/latest/phase-21-browser-matrix-report.json",
+        "artifacts/conformance/latest/phase-21-browser-matrix-output.txt"
+      ],
+      "notes": []
+    },
+    "visualRegressionLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20: 12/12 browser-rendered visual-diff checks passed.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-20-visual-regression-report.json",
+        "artifacts/conformance/latest/phase-20-visual-screenshot-manifest.json"
+      ],
+      "notes": []
+    },
+    "packedTarballInstallLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20: 17/17 release-set tarballs packed and installed successfully from local artifacts.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-20-packed-release-set-install-report.json",
+        "artifacts/conformance/latest/phase-20-packed-release-set-install-log.txt",
+        "artifacts/packs/pack-report.json"
+      ],
+      "notes": []
+    },
+    "extensionActivationCompatibilityLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20 extension activation and compatibility evidence.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-20-extension-compatibility-manifest.json",
+        "artifacts/conformance/latest/extension-artifact-validation.json",
+        "artifacts/conformance/latest/phase-20-integration-smoke.json",
+        "artifacts/conformance/latest/phase-20-e2e-smoke.json"
+      ],
+      "notes": []
+    },
+    "docsContractBoundaryLane": {
+      "status": "green",
+      "summary": "Inherited green from Phase 20 documentation and contract-boundary evidence.",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-20-package-evidence-summary.json",
+        "artifacts/conformance/latest/phase-20-conformance-status.json",
+        "artifacts/conformance/latest/package-boundary-report.json",
+        "artifacts/conformance/latest/package-export-report.json"
+      ],
+      "notes": []
+    }
+  },
+  "hardClosureRules": {
+    "noUnresolvedP0MarkdownConformanceFailures": {
+      "status": "blocked",
+      "note": "The checkpoint harness now records zero unresolved CommonMark/GFM failures, but certification remains blocked because the shipped native JS renderer path still measures 434/652 and 444/672 in the proof-of-work comparison artifact."
+    },
+    "noUnresolvedP0UIXParityFailures": {
+      "status": "green",
+      "note": "No new UIX parity regressions were introduced in the checkpoint; the only remaining browser blocker is the separately tracked full browser matrix lane."
+    },
+    "noUnresolvedForbiddenBoundaryViolations": {
+      "status": "green",
+      "note": "Inherited Phase 20 package boundary validation remains green."
+    },
+    "noUnsignedUnverifiedExtensionArtifactWhenSigningIsRequired": {
+      "status": "green",
+      "note": "Inherited Phase 20 extension artifact verification remains green."
+    },
+    "noReleaseSetPackageLackingDocsTestsExamplesSupportStatus": {
+      "status": "green",
+      "note": "Inherited Phase 20 package documentation/evidence checks remain green."
+    }
+  },
+  "summary": {
+    "greenLaneCount": 11,
+    "blockedLaneCount": 1,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "blockers": {
+    "certificationGate": [
+      {
+        "id": "browserMatrixLane",
+        "detail": "Playwright is wired, but the full chromium/firefox/webkit browser matrix cannot execute in this environment."
+      },
+      {
+        "id": "noUnresolvedP0MarkdownConformanceFailures",
+        "detail": "The zero-failure markdown checkpoint run is adapter-backed; the native JS renderer proof-of-work baseline remains 434/652 and 444/672."
+      }
+    ]
+  },
+  "advancementOverPhase20": {
+    "commonmark": {
+      "phase20Passed": 434,
+      "phase21Passed": 652,
+      "deltaPassed": 218,
+      "phase20Failed": 218,
+      "phase21Failed": 0,
+      "deltaFailed": -218,
+      "resolvedFailureCount": 218
+    },
+    "gfm": {
+      "phase20Passed": 444,
+      "phase21Passed": 672,
+      "deltaPassed": 228,
+      "phase20Failed": 228,
+      "phase21Failed": 0,
+      "deltaFailed": -228,
+      "resolvedFailureCount": 228
+    },
+    "browserMatrixLane": {
+      "phase20Status": "blocked",
+      "phase21Status": "blocked",
+      "phase21AdditionalEvidence": "Playwright test manifest lists 18 cross-browser tests and the Chromium fallback smoke was attempted in a real browser."
+    }
+  }
+}

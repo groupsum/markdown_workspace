@@ -1,0 +1,14 @@
+# Phase 17 Gate B closure rerun
+
+CommonMark official: 360/652 passing
+GFM official: 370/672 passing
+Optional profiles: 8/8 passing
+Certification gate summary: 7/12 lanes green, 4/5 hard rules green
+
+Blocked certification items:
+- commonmarkOfficialCorpusLane: 360/652 official CommonMark corpus cases passed.
+- gfmOfficialCorpusLane: 370/672 official GFM corpus cases passed.
+- browserMatrixLane: Playwright browser execution is configured but the current checkpoint environment does not provide a complete browser matrix run.
+- visualRegressionLane: Static HTML visual baselines are present, but a browser-driven pixel-diff run has not been executed in this environment.
+- packedTarballInstallLane: Full release-set tarball install remains blocked in the current environment. See the log for the current failure mode.
+- noUnresolvedP0MarkdownConformanceFailures: Hard closure remains blocked because the full official corpus lanes still have unresolved failures (CommonMark: 292, GFM: 302, optional profiles: 0).

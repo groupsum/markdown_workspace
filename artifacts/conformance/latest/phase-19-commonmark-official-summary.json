@@ -1,0 +1,185 @@
+{
+  "spec": "CommonMark 0.31.2",
+  "fixturePath": "packages/renderer/markdown-renderer-core/tests/fixtures/official/commonmark-0.31.2-spec.txt",
+  "total": 652,
+  "passed": 434,
+  "failed": 218,
+  "successRate": 0.6656,
+  "sampleFailures": [
+    {
+      "id": 6,
+      "section": "example",
+      "markdown": ">\t\tfoo",
+      "expected": "<blockquote><pre><code>  foo</code></pre></blockquote>",
+      "actual": "<blockquote><pre><code>foo</code></pre></blockquote>"
+    },
+    {
+      "id": 7,
+      "section": "example",
+      "markdown": "-\t\tfoo",
+      "expected": "<ul><li><pre><code>  foo</code></pre></li></ul>",
+      "actual": "<ul><li>foo</li></ul>"
+    },
+    {
+      "id": 9,
+      "section": "example",
+      "markdown": " - foo\n   - bar\n\t - baz",
+      "expected": "<ul><li>foo\n<ul><li>bar\n<ul><li>baz</li></ul></li></ul></li></ul>",
+      "actual": "<ul><li>foo<ul><li>bar<ul><li>baz</li></ul></li></ul></li></ul>"
+    },
+    {
+      "id": 148,
+      "section": "example",
+      "markdown": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>",
+      "expected": "<table><tr><td><pre>\n**Hello**,\n<p><em>world</em>.\n</pre></p></td></tr></table>",
+      "actual": "<table><tr><td><pre>\n**Hello**,<p><em>world</em>.</p></pre></td></tr></table>"
+    },
+    {
+      "id": 150,
+      "section": "example",
+      "markdown": " <div>\n  *hello*\n         <foo><a>",
+      "expected": "*hello*\n         <foo><a>",
+      "actual": "<div>\n  *hello*\n         <foo><a>"
+    },
+    {
+      "id": 151,
+      "section": "example",
+      "markdown": "</div>\n*foo*",
+      "expected": "</div>\n*foo*",
+      "actual": "</div><p><em>foo</em></p>"
+    },
+    {
+      "id": 153,
+      "section": "example",
+      "markdown": "<div id=\"foo\"\n  class=\"bar\">\n</div>",
+      "expected": "",
+      "actual": "<div></div>"
+    },
+    {
+      "id": 154,
+      "section": "example",
+      "markdown": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>",
+      "expected": "",
+      "actual": "<div></div>"
+    },
+    {
+      "id": 155,
+      "section": "example",
+      "markdown": "<div>\n*foo*\n\n*bar*",
+      "expected": "*foo*\n<p><em>bar</em></p>",
+      "actual": "<div>\n*foo*<p><em>bar</em></p>"
+    },
+    {
+      "id": 159,
+      "section": "example",
+      "markdown": "<div><a href=\"bar\">*foo*</a></div>",
+      "expected": "<a href=\"bar\">*foo*</a>",
+      "actual": "<div><a href=\"bar\">*foo*</a></div>"
+    },
+    {
+      "id": 161,
+      "section": "example",
+      "markdown": "<div></div>\n``` c\nint x = 33;\n```",
+      "expected": "</div>\n``` c\nint x = 33;\n```",
+      "actual": "<div></div>\n``` c\nint x = 33;\n```"
+    },
+    {
+      "id": 174,
+      "section": "example",
+      "markdown": "> <div>\n> foo\n\nbar",
+      "expected": "<blockquote><div>\nfoo\n</blockquote><p>bar</p>",
+      "actual": "<blockquote><div>\nfoo</blockquote><p>bar</p>"
+    },
+    {
+      "id": 177,
+      "section": "example",
+      "markdown": "<!-- foo -->*bar*\n*baz*",
+      "expected": "<!-- foo -->*bar*\n<p><em>baz</em></p>",
+      "actual": "<!-- foo -->*bar*<p><em>baz</em></p>"
+    },
+    {
+      "id": 184,
+      "section": "example",
+      "markdown": "  <div>\n\n    <div>",
+      "expected": "<pre><code>&lt;div&gt;</code></pre>",
+      "actual": "<div><pre><code>&lt;div&gt;</code></pre>"
+    },
+    {
+      "id": 185,
+      "section": "example",
+      "markdown": "Foo\n<div>\nbar\n</div>",
+      "expected": "<p>Foo</p><div>\nbar",
+      "actual": "<p>Foo</p><div>\nbar\n</div>"
+    },
+    {
+      "id": 186,
+      "section": "example",
+      "markdown": "<div>\nbar\n</div>\n*foo*",
+      "expected": "bar\n</div>\n*foo*",
+      "actual": "<div>\nbar\n</div>\n*foo*"
+    },
+    {
+      "id": 187,
+      "section": "example",
+      "markdown": "Foo\n<a href=\"bar\">\nbaz",
+      "expected": "<p>Foo\n<a href=\"bar\">\nbaz</p>",
+      "actual": "<p>Foo</p><a href=\"bar\">\nbaz"
+    },
+    {
+      "id": 188,
+      "section": "example",
+      "markdown": "<div>\n\n*Emphasized* text.\n\n</div>",
+      "expected": "<p><em>Emphasized</em> text.</p>",
+      "actual": "<div><p><em>Emphasized</em> text.</p></div>"
+    },
+    {
+      "id": 189,
+      "section": "example",
+      "markdown": "<div>\n*Emphasized* text.\n</div>",
+      "expected": "*Emphasized* text.",
+      "actual": "<div>\n*Emphasized* text.\n</div>"
+    },
+    {
+      "id": 191,
+      "section": "example",
+      "markdown": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>",
+      "expected": "<table>\n  <tr><pre><code>&lt;td&gt;\n  Hi\n&lt;/td&gt;</code></pre>\n  </tr></table>",
+      "actual": "<table>  <tr><pre><code>&lt;td&gt;\n  Hi\n&lt;/td&gt;</code></pre>  </tr></table>"
+    },
+    {
+      "id": 193,
+      "section": "example",
+      "markdown": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]",
+      "expected": "<p><a href=\"/url\" title=\"the title\">foo</a></p>",
+      "actual": "<pre><code>       'the title'  </code></pre><p><a href=\"/url\">foo</a></p>"
+    },
+    {
+      "id": 194,
+      "section": "example",
+      "markdown": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]",
+      "expected": "<p><a href=\"my_(url)\" title=\"title (with parens)\">Foo*bar]</a></p>",
+      "actual": "<p>[Foo*bar]]:my_(url) 'title (with parens)'</p><p>[Foo*bar]]</p>"
+    },
+    {
+      "id": 195,
+      "section": "example",
+      "markdown": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]",
+      "expected": "<p><a href=\"my%20url\" title=\"title\">Foo bar</a></p>",
+      "actual": "<p>'title'</p><p><a href=\"my%20url\">Foo bar</a></p>"
+    },
+    {
+      "id": 208,
+      "section": "example",
+      "markdown": "[\nfoo\n]: /url\nbar",
+      "expected": "<p>bar</p>",
+      "actual": "<p>[\nfoo\n]: /url\nbar</p>"
+    },
+    {
+      "id": 214,
+      "section": "example",
+      "markdown": "# [Foo]\n[foo]: /url\n> bar",
+      "expected": "<h1><a href=\"/url\">Foo</a></h1><blockquote><p>bar</p></blockquote>",
+      "actual": "<h1>[Foo]</h1><blockquote><p>bar</p></blockquote>"
+    }
+  ]
+}

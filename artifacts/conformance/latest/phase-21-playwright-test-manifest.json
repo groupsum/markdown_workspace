@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-03-31T07:30:14.171Z",
+  "configPath": "playwright.config.ts",
+  "testsRoot": "apps/client/tests/playwright",
+  "listCommand": "node /mnt/data/phase21_work/markdown_workspace/node_modules/playwright/cli.js test -c /mnt/data/phase21_work/markdown_workspace/playwright.config.ts /mnt/data/phase21_work/markdown_workspace/apps/client/tests/playwright --list",
+  "listExitCode": 0,
+  "listStdout": "Listing tests:\n  [chromium] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots\n  [chromium] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable\n  [chromium] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable\n  [chromium] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable\n  [chromium] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable\n  [chromium] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces\n  [firefox] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots\n  [firefox] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable\n  [firefox] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable\n  [firefox] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable\n  [firefox] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable\n  [firefox] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces\n  [webkit] › browser-matrix.spec.ts:4:3 › browser matrix surfaces › shell chrome boots\n  [webkit] › browser-matrix.spec.ts:10:3 › browser matrix surfaces › preview surface remains reachable\n  [webkit] › browser-matrix.spec.ts:15:3 › browser matrix surfaces › settings probe remains reachable\n  [webkit] › preview-export.spec.ts:3:1 › preview/export surfaces remain reachable\n  [webkit] › settings-and-i18n.spec.ts:3:1 › settings and theme/language selectors are reachable\n  [webkit] › shell-smoke.spec.ts:3:1 › shell boots and exposes key chrome surfaces\nTotal: 18 tests in 4 files\n",
+  "listStderr": "",
+  "browserAvailability": [
+    {
+      "browser": "chromium",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executableExists": true,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome",
+          "source": "playwright-cache"
+        },
+        {
+          "path": "/usr/bin/chromium",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/chromium-browser",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome",
+          "source": "system-fallback"
+        },
+        {
+          "path": "/usr/bin/google-chrome-stable",
+          "source": "system-fallback"
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/firefox-1509/firefox/firefox",
+          "source": "playwright-cache"
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "playwrightExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedExecutablePath": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+      "resolvedFrom": "unavailable",
+      "executableExists": false,
+      "candidates": [
+        {
+          "path": "/home/oai/.cache/ms-playwright/webkit-2248/pw_run.sh",
+          "source": "playwright-cache"
+        }
+      ]
+    }
+  ]
+}

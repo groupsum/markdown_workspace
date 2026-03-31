@@ -1,0 +1,32 @@
+{
+  "total": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "id": "editor-root",
+      "description": "MarkdownSourceEditor renders the root editor container",
+      "passed": true
+    },
+    {
+      "id": "gutter",
+      "description": "MarkdownSourceEditor renders the gutter when line numbers are enabled",
+      "passed": true
+    },
+    {
+      "id": "gutter-optional",
+      "description": "MarkdownSourceEditor can suppress the gutter when line numbers are disabled",
+      "passed": true
+    },
+    {
+      "id": "textarea-value",
+      "description": "MarkdownSourceEditor preserves the initial markdown value",
+      "passed": true
+    },
+    {
+      "id": "textarea-wrap-off",
+      "description": "MarkdownSourceEditor disables soft wrapping so gutter rhythm matches logical lines",
+      "passed": true
+    }
+  ]
+}

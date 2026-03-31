@@ -1,0 +1,77 @@
+{
+  "phase": 3,
+  "generatedAt": "2026-03-27T20:33:56.638Z",
+  "checkpointType": "default-gfm-profile-checkpoint",
+  "defaultProfile": {
+    "id": "gfm-default",
+    "specReference": "GitHub Flavored Markdown 0.29-gfm on top of CommonMark 0.31.2",
+    "enabledByDefaultFeatures": [
+      "tables",
+      "task-list-items",
+      "strikethrough",
+      "autolink-literals"
+    ]
+  },
+  "packages": {
+    "rendererCore": {
+      "name": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-core"
+    },
+    "rendererReact": {
+      "name": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0",
+      "path": "packages/renderer/markdown-renderer-react"
+    },
+    "editorCore": {
+      "name": "@mdwrk/markdown-editor-core",
+      "version": "1.0.1",
+      "path": "packages/editor/markdown-editor-core"
+    },
+    "editorReact": {
+      "name": "@mdwrk/markdown-editor-react",
+      "version": "1.0.2",
+      "path": "packages/editor/markdown-editor-react"
+    }
+  },
+  "evidence": {
+    "namedTestLane": "npm run test:renderer:gfm",
+    "rendererPackageCommand": "npm run test -w @mdwrk/markdown-renderer-react",
+    "editorCoreCommand": "npm run test -w @mdwrk/markdown-editor-core",
+    "editorReactCommand": "npm run test -w @mdwrk/markdown-editor-react",
+    "resultsArtifactPath": "artifacts/conformance/latest/phase-3-gfm-default-profile-results.json",
+    "appAdapterPaths": [
+      "apps/client/components/Markdown/WorkspaceMarkdownRenderer.tsx",
+      "apps/client/services/htmlExport.tsx",
+      "apps/client/components/Chassis/WorkPane/Stage/EditorPane.tsx"
+    ]
+  },
+  "summary": {
+    "totalChecks": 26,
+    "totalPassed": 26,
+    "totalFailed": 0,
+    "rendererCoreGfmCases": 7,
+    "rendererReactGfmChecks": 5
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  },
+  "implementedFocusAreas": [
+    "default GFM profile activation in renderer core and React renderer",
+    "GFM tables with alignment metadata and stable HTML output",
+    "GFM task list items with preview classes and checkbox semantics",
+    "GFM strikethrough rendering through <del>",
+    "GFM autolink literal rendering for URL, www, and email forms",
+    "default-GFM export/document pipeline propagation",
+    "editor-core task-list command for source authoring",
+    "client and example wrapper alignment to the default GFM profile"
+  ],
+  "knownLimits": [
+    "This checkpoint does not yet prove full frozen-target GFM corpus closure.",
+    "Clipboard and browser-native paste behavior for complex tables are not yet separately certified in a browser lane.",
+    "The provided zip still lacks some external app/example toolchain dependencies needed for full app-wide build/typecheck/test closure.",
+    "Broader v1-to-v2 UIX parity gaps remain outside the Phase 3 boundary."
+  ]
+}

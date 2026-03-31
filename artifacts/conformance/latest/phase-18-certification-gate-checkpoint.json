@@ -1,0 +1,48 @@
+{
+  "phase": 18,
+  "generatedAt": "2026-03-30T21:31:20.243Z",
+  "checkpointType": "gate-b-certification-closure-continuation",
+  "certificationPolicyModel": "certify-first-then-promote",
+  "officialCorpus": {
+    "commonmark": {
+      "total": 652,
+      "passed": 404,
+      "failed": 248
+    },
+    "gfm": {
+      "total": 672,
+      "passed": 414,
+      "failed": 258
+    }
+  },
+  "summary": {
+    "greenLaneCount": 7,
+    "blockedLaneCount": 5,
+    "greenHardClosureRules": 4,
+    "blockedHardClosureRules": 1,
+    "certificationReady": false
+  },
+  "improvementOverPhase17": {
+    "commonmark": {
+      "phase17Passed": 360,
+      "phase18Passed": 404,
+      "deltaPassed": 44,
+      "phase17Failed": 292,
+      "phase18Failed": 248,
+      "deltaFailed": -44
+    },
+    "gfm": {
+      "phase17Passed": 370,
+      "phase18Passed": 414,
+      "deltaPassed": 44,
+      "phase17Failed": 302,
+      "phase18Failed": 258,
+      "deltaFailed": -44
+    }
+  },
+  "currentState": {
+    "certifiablyFullyFeatured": false,
+    "repositoryInternallyRfcCompliant": false,
+    "fullyMarkdownSpecCompliant": false
+  }
+}

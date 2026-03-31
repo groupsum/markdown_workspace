@@ -129,6 +129,7 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             description: geminiAgentLabels.settingsDescription,
             order: 10,
             schemaPath: "manifest.settingsSchema",
+            ...({ schema: geminiAgentManifest.settingsSchema } as never),
           });
 
           await context.host.diagnostics.publish(context.extensionId, {

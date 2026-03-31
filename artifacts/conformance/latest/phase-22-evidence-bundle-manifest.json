@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-03-31T09:49:52Z",
+  "phase": 22,
+  "checkpointSummary": "Phase 22 browser installation attempts + real Chromium Playwright execution checkpoint",
+  "artifacts": [
+    "artifacts/conformance/latest/phase-22-commonmark-official-summary.json",
+    "artifacts/conformance/latest/phase-22-gfm-official-summary.json",
+    "artifacts/conformance/latest/phase-22-optional-profile-summary.json",
+    "artifacts/conformance/latest/phase-22-playwright-test-manifest.json",
+    "artifacts/conformance/latest/phase-22-browser-matrix-report.json",
+    "artifacts/conformance/latest/phase-22-browser-matrix-output.txt",
+    "artifacts/conformance/latest/phase-22-browser-matrix-delta.json",
+    "artifacts/conformance/latest/phase-22-browser-install-report.json",
+    "artifacts/conformance/latest/phase-22-browser-install-output.txt",
+    "artifacts/conformance/latest/phase-22-certification-gate-results.json",
+    "artifacts/conformance/latest/phase-22-certification-gate-checklist.md"
+  ]
+}

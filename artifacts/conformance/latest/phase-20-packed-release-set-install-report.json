@@ -1,0 +1,222 @@
+{
+  "generatedAt": "2026-03-31T05:51:40.818Z",
+  "ok": true,
+  "tarballCount": 17,
+  "tarballs": [
+    "mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz",
+    "mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz",
+    "mdwrk-extension-host-1.0.1.tgz",
+    "mdwrk-extension-manager-1.1.0-rc.1.tgz",
+    "mdwrk-extension-manifest-1.0.0.tgz",
+    "mdwrk-extension-runtime-1.1.0-rc.1.tgz",
+    "mdwrk-extension-theme-studio-1.1.0-rc.1.tgz",
+    "mdwrk-i18n-1.1.0-rc.1.tgz",
+    "mdwrk-icons-1.0.0.tgz",
+    "mdwrk-markdown-editor-core-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-editor-react-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz",
+    "mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz",
+    "mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
+    "mdwrk-testing-1.0.0.tgz",
+    "mdwrk-theme-contract-1.1.0-rc.1.tgz",
+    "mdwrk-ui-tokens-1.2.0-rc.1.tgz"
+  ],
+  "packedWorkspaceCount": 17,
+  "packedWorkspaces": [
+    {
+      "packageName": "@mdwrk/mdwrkspace",
+      "path": "apps/client",
+      "fileName": "mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
+      "unpackedSize": 5446959
+    },
+    {
+      "packageName": "@mdwrk/extension-host",
+      "path": "packages/contracts/extension-host",
+      "fileName": "mdwrk-extension-host-1.0.1.tgz",
+      "unpackedSize": 25695
+    },
+    {
+      "packageName": "@mdwrk/extension-manifest",
+      "path": "packages/contracts/extension-manifest",
+      "fileName": "mdwrk-extension-manifest-1.0.0.tgz",
+      "unpackedSize": 34335
+    },
+    {
+      "packageName": "@mdwrk/theme-contract",
+      "path": "packages/contracts/theme-contract",
+      "fileName": "mdwrk-theme-contract-1.1.0-rc.1.tgz",
+      "unpackedSize": 73788
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-core",
+      "path": "packages/editor/markdown-editor-core",
+      "fileName": "mdwrk-markdown-editor-core-1.1.0-rc.1.tgz",
+      "unpackedSize": 56045
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-react",
+      "path": "packages/editor/markdown-editor-react",
+      "fileName": "mdwrk-markdown-editor-react-1.1.0-rc.1.tgz",
+      "unpackedSize": 42541
+    },
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "fileName": "mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz",
+      "unpackedSize": 12490
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "fileName": "mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz",
+      "unpackedSize": 153015
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "fileName": "mdwrk-extension-manager-1.1.0-rc.1.tgz",
+      "unpackedSize": 92395
+    },
+    {
+      "packageName": "@mdwrk/extension-runtime",
+      "path": "packages/extensions/extension-runtime",
+      "fileName": "mdwrk-extension-runtime-1.1.0-rc.1.tgz",
+      "unpackedSize": 155196
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "path": "packages/extensions/extension-theme-studio",
+      "fileName": "mdwrk-extension-theme-studio-1.1.0-rc.1.tgz",
+      "unpackedSize": 127429
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-core",
+      "path": "packages/renderer/markdown-renderer-core",
+      "fileName": "mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz",
+      "unpackedSize": 230591
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-react",
+      "path": "packages/renderer/markdown-renderer-react",
+      "fileName": "mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz",
+      "unpackedSize": 20259
+    },
+    {
+      "packageName": "@mdwrk/i18n",
+      "path": "packages/shared/i18n",
+      "fileName": "mdwrk-i18n-1.1.0-rc.1.tgz",
+      "unpackedSize": 44002
+    },
+    {
+      "packageName": "@mdwrk/icons",
+      "path": "packages/shared/icons",
+      "fileName": "mdwrk-icons-1.0.0.tgz",
+      "unpackedSize": 19693
+    },
+    {
+      "packageName": "@mdwrk/testing",
+      "path": "packages/shared/testing",
+      "fileName": "mdwrk-testing-1.0.0.tgz",
+      "unpackedSize": 10829
+    },
+    {
+      "packageName": "@mdwrk/ui-tokens",
+      "path": "packages/shared/ui-tokens",
+      "fileName": "mdwrk-ui-tokens-1.2.0-rc.1.tgz",
+      "unpackedSize": 46579
+    }
+  ],
+  "packFailures": [],
+  "savedDependencyCount": 17,
+  "savedDependencies": [
+    {
+      "name": "@mdwrk/extension-catalog-hello",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-gemini-agent",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-host",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-host-1.0.1.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-manager",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-manager-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-manifest",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-manifest-1.0.0.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-runtime",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-runtime-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/extension-theme-studio",
+      "spec": "file:../../artifacts/packs/mdwrk-extension-theme-studio-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/i18n",
+      "spec": "file:../../artifacts/packs/mdwrk-i18n-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/icons",
+      "spec": "file:../../artifacts/packs/mdwrk-icons-1.0.0.tgz"
+    },
+    {
+      "name": "@mdwrk/markdown-editor-core",
+      "spec": "file:../../artifacts/packs/mdwrk-markdown-editor-core-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/markdown-editor-react",
+      "spec": "file:../../artifacts/packs/mdwrk-markdown-editor-react-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-core",
+      "spec": "file:../../artifacts/packs/mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/markdown-renderer-react",
+      "spec": "file:../../artifacts/packs/mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/mdwrkspace",
+      "spec": "file:../../artifacts/packs/mdwrk-mdwrkspace-1.4.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/testing",
+      "spec": "file:../../artifacts/packs/mdwrk-testing-1.0.0.tgz"
+    },
+    {
+      "name": "@mdwrk/theme-contract",
+      "spec": "file:../../artifacts/packs/mdwrk-theme-contract-1.1.0-rc.1.tgz"
+    },
+    {
+      "name": "@mdwrk/ui-tokens",
+      "spec": "file:../../artifacts/packs/mdwrk-ui-tokens-1.2.0-rc.1.tgz"
+    }
+  ],
+  "installedMdwrkPackageCount": 17,
+  "installedMdwrkPackages": [
+    "@mdwrk/extension-catalog-hello",
+    "@mdwrk/extension-gemini-agent",
+    "@mdwrk/extension-host",
+    "@mdwrk/extension-manager",
+    "@mdwrk/extension-manifest",
+    "@mdwrk/extension-runtime",
+    "@mdwrk/extension-theme-studio",
+    "@mdwrk/i18n",
+    "@mdwrk/icons",
+    "@mdwrk/markdown-editor-core",
+    "@mdwrk/markdown-editor-react",
+    "@mdwrk/markdown-renderer-core",
+    "@mdwrk/markdown-renderer-react",
+    "@mdwrk/mdwrkspace",
+    "@mdwrk/testing",
+    "@mdwrk/theme-contract",
+    "@mdwrk/ui-tokens"
+  ],
+  "note": "The full publishable release set packed successfully and installed together from local tarballs in a clean validation directory."
+}

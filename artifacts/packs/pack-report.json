@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-26T02:06:07.280Z",
+  "generatedAt": "2026-03-31T05:52:17.667Z",
   "ok": true,
   "packed": [
     {
@@ -7,97 +7,112 @@
       "path": "apps/client",
       "packed": [
         {
-          "id": "@mdwrk/mdwrkspace@1.3.51",
+          "id": "@mdwrk/mdwrkspace@1.4.0-rc.1",
           "name": "@mdwrk/mdwrkspace",
-          "version": "1.3.51",
-          "size": 850631,
-          "unpackedSize": 3735731,
-          "shasum": "50aa828ffef40777f4a9824175e7c4b42c4548e0",
-          "integrity": "sha512-g/qQzmEVm5oxkE58AAIMuZt24KPpIKA2qNxxXmnpkMztDM7a2d5ifAWHajx9JDTaz0nifx/Vay0DgJJVYzJPkA==",
-          "filename": "mdwrk-markspace-1.3.51.tgz",
+          "version": "1.4.0-rc.1",
+          "size": 1353375,
+          "unpackedSize": 5446959,
+          "shasum": "cb689e18de280d713f815f68c48c4b1c17c3c4af",
+          "integrity": "sha512-1AoY+o4NpTwjBHhr9lp6F7Lzxk2dCbydBxuaSUWBtyD5n8RqZB5qSHnB0tOaQT9VEvlTnd8rFTCRQ5yijE6yyw==",
+          "filename": "mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 5759,
+              "size": 5865,
+              "mode": 420
+            },
+            {
+              "path": "dist/assets/index-Dw2wbOGu.js",
+              "size": 1541824,
+              "mode": 420
+            },
+            {
+              "path": "dist/assets/index-k20WbMLy.css",
+              "size": 69621,
               "mode": 420
             },
             {
               "path": "dist/en-BlzdGtuY.js",
-              "size": 2916,
+              "size": 2969,
               "mode": 420
             },
             {
               "path": "dist/en-By8I4mXs.js",
-              "size": 1423,
+              "size": 1452,
               "mode": 420
             },
             {
               "path": "dist/en-ClsGDxfD.js",
-              "size": 6824,
+              "size": 6923,
               "mode": 420
             },
             {
               "path": "dist/es-B5IZFwGp.js",
-              "size": 3157,
+              "size": 3210,
               "mode": 420
             },
             {
               "path": "dist/es-Bzp0qZ24.js",
-              "size": 3444,
+              "size": 3500,
               "mode": 420
             },
             {
               "path": "dist/es-Ct01NcRs.js",
-              "size": 1510,
+              "size": 1539,
               "mode": 420
             },
             {
               "path": "dist/esm-entry-4cxl0H9w.js",
-              "size": 3625463,
+              "size": 3721091,
               "mode": 420
             },
             {
               "path": "dist/favicon.svg",
-              "size": 785,
+              "size": 804,
               "mode": 420
             },
             {
               "path": "dist/icons/icon-192.svg",
-              "size": 785,
+              "size": 804,
               "mode": 420
             },
             {
               "path": "dist/icons/icon-512.svg",
-              "size": 785,
+              "size": 804,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.html",
+              "size": 3252,
               "mode": 420
             },
             {
               "path": "dist/manifest.webmanifest",
-              "size": 581,
+              "size": 605,
               "mode": 420
             },
             {
               "path": "dist/mdwrkspace.css",
-              "size": 69620,
+              "size": 69621,
               "mode": 420
             },
             {
               "path": "dist/mdwrkspace.js",
-              "size": 148,
+              "size": 155,
               "mode": 420
             },
             {
               "path": "dist/sw.js",
-              "size": 10471,
+              "size": 10805,
               "mode": 420
             },
             {
               "path": "package.json",
-              "size": 2060,
+              "size": 2115,
               "mode": 420
             }
           ],
-          "entryCount": 16,
+          "entryCount": 19,
           "bundled": []
         }
       ]
@@ -110,20 +125,20 @@
           "id": "@mdwrk/extension-host@1.0.1",
           "name": "@mdwrk/extension-host",
           "version": "1.0.1",
-          "size": 6196,
-          "unpackedSize": 25410,
-          "shasum": "0ce2f520ceeba7e24fce74e6ab2b95b0ba97e9bd",
-          "integrity": "sha512-lXyyHsbJjLga7QoV5tUEdIjgRTvQXeBh3oDIBWbyOXE3wtYyq8HHhRi1d3wsNaQXmuUfZ8IyImE4QwJoeIC5jA==",
+          "size": 6213,
+          "unpackedSize": 25695,
+          "shasum": "528cb051ba8501f04f045e12a20b4c98656fb956",
+          "integrity": "sha512-SbdEMP53v7bTR5ndbM1QvbWFAIEXsotK7nIHYJJ/0OEMQ9Bli45U6rIZa5cOEWpRDcNOgGF5TvRS5GhZc3cx2Q==",
           "filename": "mdwrk-extension-host-1.0.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1305,
+              "size": 1354,
               "mode": 420
             },
             {
               "path": "dist/context.d.ts",
-              "size": 1653,
+              "size": 1679,
               "mode": 420
             },
             {
@@ -133,7 +148,7 @@
             },
             {
               "path": "dist/context.js",
-              "size": 46,
+              "size": 47,
               "mode": 420
             },
             {
@@ -143,7 +158,7 @@
             },
             {
               "path": "dist/host.d.ts",
-              "size": 6499,
+              "size": 6647,
               "mode": 420
             },
             {
@@ -153,7 +168,7 @@
             },
             {
               "path": "dist/host.js",
-              "size": 43,
+              "size": 44,
               "mode": 420
             },
             {
@@ -163,7 +178,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 222,
+              "size": 228,
               "mode": 420
             },
             {
@@ -173,7 +188,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 220,
+              "size": 226,
               "mode": 420
             },
             {
@@ -183,7 +198,7 @@
             },
             {
               "path": "dist/lifecycle.d.ts",
-              "size": 678,
+              "size": 691,
               "mode": 420
             },
             {
@@ -193,7 +208,7 @@
             },
             {
               "path": "dist/lifecycle.js",
-              "size": 48,
+              "size": 49,
               "mode": 420
             },
             {
@@ -203,7 +218,7 @@
             },
             {
               "path": "dist/primitives.d.ts",
-              "size": 342,
+              "size": 351,
               "mode": 420
             },
             {
@@ -213,7 +228,7 @@
             },
             {
               "path": "dist/primitives.js",
-              "size": 49,
+              "size": 50,
               "mode": 420
             },
             {
@@ -223,7 +238,7 @@
             },
             {
               "path": "dist/registration.d.ts",
-              "size": 934,
+              "size": 950,
               "mode": 420
             },
             {
@@ -233,7 +248,7 @@
             },
             {
               "path": "dist/registration.js",
-              "size": 51,
+              "size": 52,
               "mode": 420
             },
             {
@@ -243,7 +258,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 95,
+              "size": 96,
               "mode": 420
             },
             {
@@ -253,7 +268,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 86,
+              "size": 87,
               "mode": 420
             },
             {
@@ -263,7 +278,7 @@
             },
             {
               "path": "package.json",
-              "size": 1790,
+              "size": 1795,
               "mode": 420
             }
           ],
@@ -280,20 +295,20 @@
           "id": "@mdwrk/extension-manifest@1.0.0",
           "name": "@mdwrk/extension-manifest",
           "version": "1.0.0",
-          "size": 7742,
-          "unpackedSize": 33836,
-          "shasum": "f03066ed179cdb792c37db0d0cea504a0307406d",
-          "integrity": "sha512-wRi+e5SLjEHyrfU3n3BYeLd618T0pMtXMVgtkWCtTrdXFnLryviCecMiZmtaK4wIE/n5b1jwnSpwTHIA3O4s+g==",
+          "size": 7752,
+          "unpackedSize": 34335,
+          "shasum": "3a9b5070fb5123b7b637d62f342d12c8f703cd7a",
+          "integrity": "sha512-e3isGQ6iv2v0SuauIackvjRggjBpz2p26khU5+X/H0CvBky8FK/ZRZ88F+PhODWH9rg4t2VVF9N4KZrs1acdNw==",
           "filename": "mdwrk-extension-manifest-1.0.0.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1055,
+              "size": 1095,
               "mode": 420
             },
             {
               "path": "dist/capabilities.d.ts",
-              "size": 442,
+              "size": 444,
               "mode": 420
             },
             {
@@ -303,7 +318,7 @@
             },
             {
               "path": "dist/capabilities.js",
-              "size": 414,
+              "size": 431,
               "mode": 420
             },
             {
@@ -313,7 +328,7 @@
             },
             {
               "path": "dist/catalog.d.ts",
-              "size": 1756,
+              "size": 1798,
               "mode": 420
             },
             {
@@ -323,7 +338,7 @@
             },
             {
               "path": "dist/catalog.js",
-              "size": 86,
+              "size": 87,
               "mode": 420
             },
             {
@@ -333,7 +348,7 @@
             },
             {
               "path": "dist/compatibility.d.ts",
-              "size": 671,
+              "size": 682,
               "mode": 420
             },
             {
@@ -343,7 +358,7 @@
             },
             {
               "path": "dist/compatibility.js",
-              "size": 52,
+              "size": 53,
               "mode": 420
             },
             {
@@ -353,7 +368,7 @@
             },
             {
               "path": "dist/contributions.d.ts",
-              "size": 2174,
+              "size": 2233,
               "mode": 420
             },
             {
@@ -363,7 +378,7 @@
             },
             {
               "path": "dist/contributions.js",
-              "size": 52,
+              "size": 53,
               "mode": 420
             },
             {
@@ -373,7 +388,7 @@
             },
             {
               "path": "dist/entry.d.ts",
-              "size": 462,
+              "size": 475,
               "mode": 420
             },
             {
@@ -383,7 +398,7 @@
             },
             {
               "path": "dist/entry.js",
-              "size": 44,
+              "size": 45,
               "mode": 420
             },
             {
@@ -393,7 +408,7 @@
             },
             {
               "path": "dist/i18n.d.ts",
-              "size": 657,
+              "size": 674,
               "mode": 420
             },
             {
@@ -403,7 +418,7 @@
             },
             {
               "path": "dist/i18n.js",
-              "size": 43,
+              "size": 44,
               "mode": 420
             },
             {
@@ -413,7 +428,7 @@
             },
             {
               "path": "dist/icon.d.ts",
-              "size": 411,
+              "size": 424,
               "mode": 420
             },
             {
@@ -423,7 +438,7 @@
             },
             {
               "path": "dist/icon.js",
-              "size": 43,
+              "size": 44,
               "mode": 420
             },
             {
@@ -433,7 +448,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 440,
+              "size": 453,
               "mode": 420
             },
             {
@@ -443,7 +458,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 438,
+              "size": 451,
               "mode": 420
             },
             {
@@ -453,7 +468,7 @@
             },
             {
               "path": "dist/integrity.d.ts",
-              "size": 344,
+              "size": 350,
               "mode": 420
             },
             {
@@ -463,7 +478,7 @@
             },
             {
               "path": "dist/integrity.js",
-              "size": 115,
+              "size": 116,
               "mode": 420
             },
             {
@@ -473,7 +488,7 @@
             },
             {
               "path": "dist/manifest.d.ts",
-              "size": 1771,
+              "size": 1808,
               "mode": 420
             },
             {
@@ -483,7 +498,7 @@
             },
             {
               "path": "dist/manifest.js",
-              "size": 47,
+              "size": 48,
               "mode": 420
             },
             {
@@ -493,7 +508,7 @@
             },
             {
               "path": "dist/settings.d.ts",
-              "size": 2597,
+              "size": 2662,
               "mode": 420
             },
             {
@@ -503,7 +518,7 @@
             },
             {
               "path": "dist/settings.js",
-              "size": 203,
+              "size": 213,
               "mode": 420
             },
             {
@@ -513,7 +528,7 @@
             },
             {
               "path": "dist/signature.d.ts",
-              "size": 857,
+              "size": 878,
               "mode": 420
             },
             {
@@ -523,7 +538,7 @@
             },
             {
               "path": "dist/signature.js",
-              "size": 106,
+              "size": 107,
               "mode": 420
             },
             {
@@ -533,7 +548,7 @@
             },
             {
               "path": "dist/support.d.ts",
-              "size": 435,
+              "size": 444,
               "mode": 420
             },
             {
@@ -543,7 +558,7 @@
             },
             {
               "path": "dist/support.js",
-              "size": 46,
+              "size": 47,
               "mode": 420
             },
             {
@@ -553,7 +568,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 339,
+              "size": 344,
               "mode": 420
             },
             {
@@ -563,7 +578,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 235,
+              "size": 239,
               "mode": 420
             },
             {
@@ -573,7 +588,7 @@
             },
             {
               "path": "package.json",
-              "size": 2287,
+              "size": 2379,
               "mode": 420
             }
           ],
@@ -587,38 +602,38 @@
       "path": "packages/contracts/theme-contract",
       "packed": [
         {
-          "id": "@mdwrk/theme-contract@1.0.0",
+          "id": "@mdwrk/theme-contract@1.1.0-rc.1",
           "name": "@mdwrk/theme-contract",
-          "version": "1.0.0",
-          "size": 10165,
-          "unpackedSize": 65933,
-          "shasum": "61a8af90483a7c1d731bf831d3c9dee819a3e103",
-          "integrity": "sha512-UDHVe4YxjB/B9J7OuRUGeswfcCD7q1Xr6qs6m2c0J9qZ1lCPVP40NiNNvJUPQK9EbnBLfp0DGINW8j+vEuFUYA==",
-          "filename": "mdwrk-theme-contract-1.0.0.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 11193,
+          "unpackedSize": 73788,
+          "shasum": "0c603a8e74191994e9700e5fced071d626035db1",
+          "integrity": "sha512-6Xls20a8TdftiZOH4QPfRrugkfS/Aw1HZIsDtXt7KIqokccjL4knYzL7HDVbUj+4LlhvHyebxSSWbS1dDDalGw==",
+          "filename": "mdwrk-theme-contract-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1368,
+              "size": 1656,
               "mode": 420
             },
             {
               "path": "dist/bridges.d.ts",
-              "size": 4803,
+              "size": 5770,
               "mode": 420
             },
             {
               "path": "dist/bridges.d.ts.map",
-              "size": 750,
+              "size": 774,
               "mode": 420
             },
             {
               "path": "dist/bridges.js",
-              "size": 3420,
+              "size": 4139,
               "mode": 420
             },
             {
               "path": "dist/bridges.js.map",
-              "size": 2600,
+              "size": 3076,
               "mode": 420
             },
             {
@@ -703,27 +718,27 @@
             },
             {
               "path": "dist/tokens.d.ts",
-              "size": 11161,
+              "size": 13530,
               "mode": 420
             },
             {
               "path": "dist/tokens.d.ts.map",
-              "size": 931,
+              "size": 980,
               "mode": 420
             },
             {
               "path": "dist/tokens.js",
-              "size": 7892,
+              "size": 9764,
               "mode": 420
             },
             {
               "path": "dist/tokens.js.map",
-              "size": 5702,
+              "size": 6778,
               "mode": 420
             },
             {
               "path": "dist/version.d.ts",
-              "size": 91,
+              "size": 96,
               "mode": 420
             },
             {
@@ -733,7 +748,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 82,
+              "size": 87,
               "mode": 420
             },
             {
@@ -743,7 +758,7 @@
             },
             {
               "path": "package.json",
-              "size": 1546,
+              "size": 1551,
               "mode": 420
             }
           ],
@@ -757,18 +772,18 @@
       "path": "packages/editor/markdown-editor-core",
       "packed": [
         {
-          "id": "@mdwrk/markdown-editor-core@1.0.1",
+          "id": "@mdwrk/markdown-editor-core@1.1.0-rc.1",
           "name": "@mdwrk/markdown-editor-core",
-          "version": "1.0.1",
-          "size": 8016,
-          "unpackedSize": 34602,
-          "shasum": "cc9c0f4330079a8dd1e184a90cd4d5e96d743208",
-          "integrity": "sha512-RvekbHNLLa9XcSCytNisR7JoyQomrp747kcF7p+8ViYdeMLorrQmadxkA5MbSuhK5kFfW5Zxc3bce765vzxPgg==",
-          "filename": "mdwrk-markdown-editor-core-1.0.1.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 11542,
+          "unpackedSize": 56045,
+          "shasum": "6522f97e2e4fef3b24d8656d9e6f0b032435bbac",
+          "integrity": "sha512-sO2OKXLrA42TNZ6yFktYd1WRmJ9HNFwRiFpaZJDN4iT/As1uWn+JnZt/LEEa69EmMi2lBBvLRm/B9O86RGbeXQ==",
+          "filename": "mdwrk-markdown-editor-core-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 867,
+              "size": 1115,
               "mode": 420
             },
             {
@@ -798,17 +813,17 @@
             },
             {
               "path": "dist/commands.d.ts.map",
-              "size": 375,
+              "size": 376,
               "mode": 420
             },
             {
               "path": "dist/commands.js",
-              "size": 1275,
+              "size": 2693,
               "mode": 420
             },
             {
               "path": "dist/commands.js.map",
-              "size": 1129,
+              "size": 2239,
               "mode": 420
             },
             {
@@ -873,32 +888,32 @@
             },
             {
               "path": "dist/transforms.d.ts",
-              "size": 531,
+              "size": 1452,
               "mode": 420
             },
             {
               "path": "dist/transforms.d.ts.map",
-              "size": 465,
+              "size": 1142,
               "mode": 420
             },
             {
               "path": "dist/transforms.js",
-              "size": 3833,
+              "size": 11617,
               "mode": 420
             },
             {
               "path": "dist/transforms.js.map",
-              "size": 4315,
+              "size": 12914,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts",
-              "size": 1725,
+              "size": 2076,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts.map",
-              "size": 1545,
+              "size": 1843,
               "mode": 420
             },
             {
@@ -913,7 +928,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 98,
+              "size": 103,
               "mode": 420
             },
             {
@@ -923,7 +938,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 88,
+              "size": 93,
               "mode": 420
             },
             {
@@ -933,7 +948,7 @@
             },
             {
               "path": "package.json",
-              "size": 1821,
+              "size": 1847,
               "mode": 420
             }
           ],
@@ -947,18 +962,18 @@
       "path": "packages/editor/markdown-editor-react",
       "packed": [
         {
-          "id": "@mdwrk/markdown-editor-react@1.0.2",
+          "id": "@mdwrk/markdown-editor-react@1.1.0-rc.1",
           "name": "@mdwrk/markdown-editor-react",
-          "version": "1.0.2",
-          "size": 9300,
-          "unpackedSize": 39486,
-          "shasum": "5df2fe0532496e9e52355d1dd315b21e029bc3f1",
-          "integrity": "sha512-9JpV3KbsT2xLhlgoZTWKrRPMMnVBK9Ee0SKvxc6ucXyxImUD1SP3UvGEEaGb9YWV9s+Kpij7gNb1qm2NjsiOKw==",
-          "filename": "mdwrk-markdown-editor-react-1.0.2.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 9833,
+          "unpackedSize": 42541,
+          "shasum": "e5fafbdbc5dda2c8ceee321f20350033453f6506",
+          "integrity": "sha512-UYO7MoiJ7yJX05wF0mbt47S2xhCkzyL/TmLLNW61k3THtJJkM6aHTp7TBc3GGGc5FgsoaW3G6EBG4eQtRxd/QQ==",
+          "filename": "mdwrk-markdown-editor-react-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 940,
+              "size": 1127,
               "mode": 420
             },
             {
@@ -973,12 +988,12 @@
             },
             {
               "path": "dist/component.js",
-              "size": 12971,
+              "size": 14002,
               "mode": 420
             },
             {
               "path": "dist/component.js.map",
-              "size": 12076,
+              "size": 12945,
               "mode": 420
             },
             {
@@ -1003,37 +1018,772 @@
             },
             {
               "path": "dist/theme.d.ts",
-              "size": 1028,
+              "size": 1063,
               "mode": 420
             },
             {
               "path": "dist/theme.d.ts.map",
-              "size": 923,
+              "size": 964,
               "mode": 420
             },
             {
               "path": "dist/theme.js",
-              "size": 1606,
+              "size": 1885,
               "mode": 420
             },
             {
               "path": "dist/theme.js.map",
-              "size": 1113,
+              "size": 1208,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts",
-              "size": 1836,
+              "size": 1964,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts.map",
-              "size": 1742,
+              "size": 1825,
               "mode": 420
             },
             {
               "path": "dist/types.js",
               "size": 44,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.js.map",
+              "size": 102,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts",
+              "size": 104,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts.map",
+              "size": 139,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js",
+              "size": 94,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js.map",
+              "size": 147,
+              "mode": 420
+            },
+            {
+              "path": "package.json",
+              "size": 1848,
+              "mode": 420
+            },
+            {
+              "path": "src/styles/default.css",
+              "size": 2032,
+              "mode": 420
+            }
+          ],
+          "entryCount": 23,
+          "bundled": []
+        }
+      ]
+    },
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "path": "packages/extensions/extension-catalog-hello",
+      "packed": [
+        {
+          "id": "@mdwrk/extension-catalog-hello@1.1.0-rc.1",
+          "name": "@mdwrk/extension-catalog-hello",
+          "version": "1.1.0-rc.1",
+          "size": 4158,
+          "unpackedSize": 12490,
+          "shasum": "03873577209667aaa652da7f8d028cd7eeaa370a",
+          "integrity": "sha512-fnMO4UCSzXDXO2ntgntQL5hSB2xTpYKI57Z2dMUNi08Ey/2zEkLSZh3o6ZlwaPz12NuW60gp23DQ3qpNijWHkg==",
+          "filename": "mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz",
+          "files": [
+            {
+              "path": "README.md",
+              "size": 1902,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts",
+              "size": 252,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts.map",
+              "size": 236,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js",
+              "size": 1248,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js.map",
+              "size": 996,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts",
+              "size": 226,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts.map",
+              "size": 221,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js",
+              "size": 3311,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js.map",
+              "size": 2105,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts",
+              "size": 106,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts.map",
+              "size": 139,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js",
+              "size": 96,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js.map",
+              "size": 147,
+              "mode": 420
+            },
+            {
+              "path": "package.json",
+              "size": 1505,
+              "mode": 420
+            }
+          ],
+          "entryCount": 14,
+          "bundled": []
+        }
+      ]
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "path": "packages/extensions/extension-gemini-agent",
+      "packed": [
+        {
+          "id": "@mdwrk/extension-gemini-agent@1.1.0-rc.1",
+          "name": "@mdwrk/extension-gemini-agent",
+          "version": "1.1.0-rc.1",
+          "size": 31189,
+          "unpackedSize": 153015,
+          "shasum": "4ea5ff640a5d56bbfe3b23aa1b045322120932d6",
+          "integrity": "sha512-o5pJUOUL13+61qxXEiHqgqy17nmiaZmxZNXOFoMW6xG/G3zKlSmN8A0cg3Y85sGnY2husIEOg1i4hSoMtX0hIg==",
+          "filename": "mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz",
+          "files": [
+            {
+              "path": "README.md",
+              "size": 1831,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/GeminiAgentView.d.ts",
+              "size": 174,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/GeminiAgentView.d.ts.map",
+              "size": 251,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/GeminiAgentView.js",
+              "size": 9918,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/GeminiAgentView.js.map",
+              "size": 8710,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.d.ts",
+              "size": 2136,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.d.ts.map",
+              "size": 1074,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.js",
+              "size": 2462,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.js.map",
+              "size": 1572,
+              "mode": 420
+            },
+            {
+              "path": "dist/context.d.ts",
+              "size": 558,
+              "mode": 420
+            },
+            {
+              "path": "dist/context.d.ts.map",
+              "size": 447,
+              "mode": 420
+            },
+            {
+              "path": "dist/context.js",
+              "size": 1066,
+              "mode": 420
+            },
+            {
+              "path": "dist/context.js.map",
+              "size": 1129,
+              "mode": 420
+            },
+            {
+              "path": "dist/createGeminiAgentBundledEntry.d.ts",
+              "size": 319,
+              "mode": 420
+            },
+            {
+              "path": "dist/createGeminiAgentBundledEntry.d.ts.map",
+              "size": 311,
+              "mode": 420
+            },
+            {
+              "path": "dist/createGeminiAgentBundledEntry.js",
+              "size": 6512,
+              "mode": 420
+            },
+            {
+              "path": "dist/createGeminiAgentBundledEntry.js.map",
+              "size": 4204,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.d.ts",
+              "size": 3340,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.d.ts.map",
+              "size": 418,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.js",
+              "size": 7131,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.js.map",
+              "size": 3873,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts",
+              "size": 447,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts.map",
+              "size": 360,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js",
+              "size": 445,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js.map",
+              "size": 358,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.d.ts",
+              "size": 8154,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.d.ts.map",
+              "size": 236,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.js",
+              "size": 7306,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.js.map",
+              "size": 2390,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.d.ts",
+              "size": 4172,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.d.ts.map",
+              "size": 193,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.js",
+              "size": 3711,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.js.map",
+              "size": 1339,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts",
+              "size": 790,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts.map",
+              "size": 460,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js",
+              "size": 13418,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js.map",
+              "size": 7147,
+              "mode": 420
+            },
+            {
+              "path": "dist/prompt.d.ts",
+              "size": 318,
+              "mode": 420
+            },
+            {
+              "path": "dist/prompt.d.ts.map",
+              "size": 302,
+              "mode": 420
+            },
+            {
+              "path": "dist/prompt.js",
+              "size": 2054,
+              "mode": 420
+            },
+            {
+              "path": "dist/prompt.js.map",
+              "size": 1926,
+              "mode": 420
+            },
+            {
+              "path": "dist/provider.d.ts",
+              "size": 985,
+              "mode": 420
+            },
+            {
+              "path": "dist/provider.d.ts.map",
+              "size": 824,
+              "mode": 420
+            },
+            {
+              "path": "dist/provider.js",
+              "size": 3378,
+              "mode": 420
+            },
+            {
+              "path": "dist/provider.js.map",
+              "size": 2904,
+              "mode": 420
+            },
+            {
+              "path": "dist/service.d.ts",
+              "size": 233,
+              "mode": 420
+            },
+            {
+              "path": "dist/service.d.ts.map",
+              "size": 230,
+              "mode": 420
+            },
+            {
+              "path": "dist/service.js",
+              "size": 8310,
+              "mode": 420
+            },
+            {
+              "path": "dist/service.js.map",
+              "size": 6913,
+              "mode": 420
+            },
+            {
+              "path": "dist/settings.d.ts",
+              "size": 302,
+              "mode": 420
+            },
+            {
+              "path": "dist/settings.d.ts.map",
+              "size": 282,
+              "mode": 420
+            },
+            {
+              "path": "dist/settings.js",
+              "size": 2582,
+              "mode": 420
+            },
+            {
+              "path": "dist/settings.js.map",
+              "size": 2055,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.d.ts",
+              "size": 4047,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.d.ts.map",
+              "size": 3771,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.js",
+              "size": 45,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.js.map",
+              "size": 102,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts",
+              "size": 105,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.d.ts.map",
+              "size": 139,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js",
+              "size": 95,
+              "mode": 420
+            },
+            {
+              "path": "dist/version.js.map",
+              "size": 147,
+              "mode": 420
+            },
+            {
+              "path": "package.json",
+              "size": 2604,
+              "mode": 420
+            }
+          ],
+          "entryCount": 62,
+          "bundled": []
+        }
+      ]
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "path": "packages/extensions/extension-manager",
+      "packed": [
+        {
+          "id": "@mdwrk/extension-manager@1.1.0-rc.1",
+          "name": "@mdwrk/extension-manager",
+          "version": "1.1.0-rc.1",
+          "size": 19221,
+          "unpackedSize": 92395,
+          "shasum": "68c533557e13702b715642948a24d379915d769c",
+          "integrity": "sha512-0vSfTeJyoK4KyX66xa3RvkIophtsKF9NqiT0cDoIxoz1hyOxRib7wN2QLnnDmRlAU2csl/waKhhNJ1nfaN4fgg==",
+          "filename": "mdwrk-extension-manager-1.1.0-rc.1.tgz",
+          "files": [
+            {
+              "path": "README.md",
+              "size": 1879,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionCard.d.ts",
+              "size": 606,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionCard.d.ts.map",
+              "size": 594,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionCard.js",
+              "size": 9393,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionCard.js.map",
+              "size": 8725,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManagerView.d.ts",
+              "size": 591,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManagerView.d.ts.map",
+              "size": 630,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManagerView.js",
+              "size": 3572,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManagerView.js.map",
+              "size": 2741,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManifestIcon.d.ts",
+              "size": 313,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManifestIcon.d.ts.map",
+              "size": 369,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManifestIcon.js",
+              "size": 769,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionManifestIcon.js.map",
+              "size": 845,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionStatusBadge.d.ts",
+              "size": 331,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionStatusBadge.d.ts.map",
+              "size": 345,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionStatusBadge.js",
+              "size": 510,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/ExtensionStatusBadge.js.map",
+              "size": 458,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/SettingsSchemaForm.d.ts",
+              "size": 514,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/SettingsSchemaForm.d.ts.map",
+              "size": 533,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/SettingsSchemaForm.js",
+              "size": 9348,
+              "mode": 420
+            },
+            {
+              "path": "dist/components/SettingsSchemaForm.js.map",
+              "size": 10229,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.d.ts",
+              "size": 362,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.d.ts.map",
+              "size": 255,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.js",
+              "size": 365,
+              "mode": 420
+            },
+            {
+              "path": "dist/constants.js.map",
+              "size": 321,
+              "mode": 420
+            },
+            {
+              "path": "dist/createExtensionManagerBundledEntry.d.ts",
+              "size": 338,
+              "mode": 420
+            },
+            {
+              "path": "dist/createExtensionManagerBundledEntry.d.ts.map",
+              "size": 320,
+              "mode": 420
+            },
+            {
+              "path": "dist/createExtensionManagerBundledEntry.js",
+              "size": 3510,
+              "mode": 420
+            },
+            {
+              "path": "dist/createExtensionManagerBundledEntry.js.map",
+              "size": 2040,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.d.ts",
+              "size": 2312,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.d.ts.map",
+              "size": 400,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.js",
+              "size": 4697,
+              "mode": 420
+            },
+            {
+              "path": "dist/i18n.js.map",
+              "size": 2923,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts",
+              "size": 301,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.d.ts.map",
+              "size": 255,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js",
+              "size": 299,
+              "mode": 420
+            },
+            {
+              "path": "dist/index.js.map",
+              "size": 253,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.d.ts",
+              "size": 175,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.d.ts.map",
+              "size": 198,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.js",
+              "size": 3168,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/en.js.map",
+              "size": 1261,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.d.ts",
+              "size": 175,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.d.ts.map",
+              "size": 198,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.js",
+              "size": 3409,
+              "mode": 420
+            },
+            {
+              "path": "dist/locales/es.js.map",
+              "size": 1265,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts",
+              "size": 325,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.d.ts.map",
+              "size": 283,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js",
+              "size": 4082,
+              "mode": 420
+            },
+            {
+              "path": "dist/manifest.js.map",
+              "size": 2482,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.d.ts",
+              "size": 195,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.d.ts.map",
+              "size": 219,
+              "mode": 420
+            },
+            {
+              "path": "dist/types.js",
+              "size": 45,
               "mode": 420
             },
             {
@@ -1048,432 +1798,7 @@
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 139,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js",
-              "size": 89,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js.map",
-              "size": 147,
-              "mode": 420
-            },
-            {
-              "path": "package.json",
-              "size": 1817,
-              "mode": 420
-            },
-            {
-              "path": "src/styles/default.css",
-              "size": 1766,
-              "mode": 420
-            }
-          ],
-          "entryCount": 23,
-          "bundled": []
-        }
-      ]
-    },
-    {
-      "packageName": "@mdwrk/extension-catalog-hello",
-      "path": "packages/extensions/extension-catalog-hello",
-      "packed": [
-        {
-          "id": "@mdwrk/extension-catalog-hello@1.0.1",
-          "name": "@mdwrk/extension-catalog-hello",
-          "version": "1.0.1",
-          "size": 3528,
-          "unpackedSize": 10949,
-          "shasum": "bada70485dba18d2eec0fc03a6c28b269c3bc551",
-          "integrity": "sha512-qgUUn9i9Q4ROrPUMOFaks/bmdnuLkWdzRKsd7+f6kSwPSLd+jMJvdAOuuPAp7KkRMSBy6+GzvumIe/l5OX1vfQ==",
-          "filename": "mdwrk-extension-catalog-hello-1.0.1.tgz",
-          "files": [
-            {
-              "path": "README.md",
-              "size": 446,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts",
-              "size": 248,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts.map",
-              "size": 236,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js",
-              "size": 1222,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js.map",
-              "size": 996,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts",
-              "size": 223,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts.map",
-              "size": 221,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js",
-              "size": 3306,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js.map",
-              "size": 2105,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts",
-              "size": 101,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts.map",
-              "size": 139,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js",
-              "size": 91,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js.map",
-              "size": 147,
-              "mode": 420
-            },
-            {
-              "path": "package.json",
-              "size": 1468,
-              "mode": 420
-            }
-          ],
-          "entryCount": 14,
-          "bundled": []
-        }
-      ]
-    },
-    {
-      "packageName": "@mdwrk/extension-gemini-agent",
-      "path": "packages/extensions/extension-gemini-agent",
-      "packed": [
-        {
-          "id": "@mdwrk/extension-gemini-agent@1.0.1",
-          "name": "@mdwrk/extension-gemini-agent",
-          "version": "1.0.1",
-          "size": 30699,
-          "unpackedSize": 150679,
-          "shasum": "6f14bd92bf0e8d2248040c186b4c274065cd6077",
-          "integrity": "sha512-wDXIq4BUXM56nhMsGB3bceXAE69ZiJ0MggovyncVq6gGBNiu58TFAP3vxbDO+9CuHxgreZxTHFaxvZ4FuIQxDg==",
-          "filename": "mdwrk-extension-gemini-agent-1.0.1.tgz",
-          "files": [
-            {
-              "path": "README.md",
-              "size": 934,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/GeminiAgentView.d.ts",
-              "size": 172,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/GeminiAgentView.d.ts.map",
-              "size": 251,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/GeminiAgentView.js",
-              "size": 9848,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/GeminiAgentView.js.map",
-              "size": 8710,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.d.ts",
-              "size": 2111,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.d.ts.map",
-              "size": 1074,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.js",
-              "size": 2422,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.js.map",
-              "size": 1572,
-              "mode": 420
-            },
-            {
-              "path": "dist/context.d.ts",
-              "size": 552,
-              "mode": 420
-            },
-            {
-              "path": "dist/context.d.ts.map",
-              "size": 447,
-              "mode": 420
-            },
-            {
-              "path": "dist/context.js",
-              "size": 1039,
-              "mode": 420
-            },
-            {
-              "path": "dist/context.js.map",
-              "size": 1129,
-              "mode": 420
-            },
-            {
-              "path": "dist/createGeminiAgentBundledEntry.d.ts",
-              "size": 316,
-              "mode": 420
-            },
-            {
-              "path": "dist/createGeminiAgentBundledEntry.d.ts.map",
-              "size": 311,
-              "mode": 420
-            },
-            {
-              "path": "dist/createGeminiAgentBundledEntry.js",
-              "size": 6444,
-              "mode": 420
-            },
-            {
-              "path": "dist/createGeminiAgentBundledEntry.js.map",
-              "size": 4204,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.d.ts",
-              "size": 3271,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.d.ts.map",
-              "size": 418,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.js",
-              "size": 7051,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.js.map",
-              "size": 3873,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts",
-              "size": 435,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts.map",
-              "size": 360,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js",
-              "size": 433,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js.map",
-              "size": 358,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.d.ts",
-              "size": 8058,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.d.ts.map",
-              "size": 236,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.js",
-              "size": 7210,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.js.map",
-              "size": 2390,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.d.ts",
-              "size": 4119,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.d.ts.map",
-              "size": 193,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.js",
-              "size": 3658,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.js.map",
-              "size": 1339,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts",
-              "size": 786,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts.map",
-              "size": 460,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js",
-              "size": 13165,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js.map",
-              "size": 7147,
-              "mode": 420
-            },
-            {
-              "path": "dist/prompt.d.ts",
-              "size": 316,
-              "mode": 420
-            },
-            {
-              "path": "dist/prompt.d.ts.map",
-              "size": 302,
-              "mode": 420
-            },
-            {
-              "path": "dist/prompt.js",
-              "size": 2019,
-              "mode": 420
-            },
-            {
-              "path": "dist/prompt.js.map",
-              "size": 1926,
-              "mode": 420
-            },
-            {
-              "path": "dist/provider.d.ts",
-              "size": 965,
-              "mode": 420
-            },
-            {
-              "path": "dist/provider.d.ts.map",
-              "size": 824,
-              "mode": 420
-            },
-            {
-              "path": "dist/provider.js",
-              "size": 3298,
-              "mode": 420
-            },
-            {
-              "path": "dist/provider.js.map",
-              "size": 2904,
-              "mode": 420
-            },
-            {
-              "path": "dist/service.d.ts",
-              "size": 231,
-              "mode": 420
-            },
-            {
-              "path": "dist/service.d.ts.map",
-              "size": 230,
-              "mode": 420
-            },
-            {
-              "path": "dist/service.js",
-              "size": 8135,
-              "mode": 420
-            },
-            {
-              "path": "dist/service.js.map",
-              "size": 6913,
-              "mode": 420
-            },
-            {
-              "path": "dist/settings.d.ts",
-              "size": 299,
-              "mode": 420
-            },
-            {
-              "path": "dist/settings.d.ts.map",
-              "size": 282,
-              "mode": 420
-            },
-            {
-              "path": "dist/settings.js",
-              "size": 2552,
-              "mode": 420
-            },
-            {
-              "path": "dist/settings.js.map",
-              "size": 2055,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.d.ts",
-              "size": 3945,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.d.ts.map",
-              "size": 3771,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.js",
-              "size": 44,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.js.map",
-              "size": 102,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts",
-              "size": 100,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts.map",
-              "size": 139,
+              "size": 145,
               "mode": 420
             },
             {
@@ -1483,322 +1808,12 @@
             },
             {
               "path": "dist/version.js.map",
-              "size": 147,
-              "mode": 420
-            },
-            {
-              "path": "package.json",
-              "size": 2594,
-              "mode": 420
-            }
-          ],
-          "entryCount": 62,
-          "bundled": []
-        }
-      ]
-    },
-    {
-      "packageName": "@mdwrk/extension-manager",
-      "path": "packages/extensions/extension-manager",
-      "packed": [
-        {
-          "id": "@mdwrk/extension-manager@1.0.1",
-          "name": "@mdwrk/extension-manager",
-          "version": "1.0.1",
-          "size": 18833,
-          "unpackedSize": 90445,
-          "shasum": "39b49d6bfcc75ae89480e7e0351b42a12d0fa4d3",
-          "integrity": "sha512-dsA8w6ipcXiDoS5I1aLqNBJYmjtBYKX1BZ3gIkgLAqcfZouQbujcgAYZH3WUKBcC2zGHPIASmIVBGWcZtXHIJw==",
-          "filename": "mdwrk-extension-manager-1.0.1.tgz",
-          "files": [
-            {
-              "path": "README.md",
-              "size": 1292,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionCard.d.ts",
-              "size": 594,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionCard.d.ts.map",
-              "size": 594,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionCard.js",
-              "size": 9322,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionCard.js.map",
-              "size": 8725,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManagerView.d.ts",
-              "size": 579,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManagerView.d.ts.map",
-              "size": 630,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManagerView.js",
-              "size": 3557,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManagerView.js.map",
-              "size": 2741,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManifestIcon.d.ts",
-              "size": 307,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManifestIcon.d.ts.map",
-              "size": 369,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManifestIcon.js",
-              "size": 755,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionManifestIcon.js.map",
-              "size": 845,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionStatusBadge.d.ts",
-              "size": 326,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionStatusBadge.d.ts.map",
-              "size": 345,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionStatusBadge.js",
-              "size": 499,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/ExtensionStatusBadge.js.map",
-              "size": 458,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/SettingsSchemaForm.d.ts",
-              "size": 505,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/SettingsSchemaForm.d.ts.map",
-              "size": 533,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/SettingsSchemaForm.js",
-              "size": 9219,
-              "mode": 420
-            },
-            {
-              "path": "dist/components/SettingsSchemaForm.js.map",
-              "size": 10229,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.d.ts",
-              "size": 358,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.d.ts.map",
-              "size": 255,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.js",
-              "size": 361,
-              "mode": 420
-            },
-            {
-              "path": "dist/constants.js.map",
-              "size": 321,
-              "mode": 420
-            },
-            {
-              "path": "dist/createExtensionManagerBundledEntry.d.ts",
-              "size": 335,
-              "mode": 420
-            },
-            {
-              "path": "dist/createExtensionManagerBundledEntry.d.ts.map",
-              "size": 320,
-              "mode": 420
-            },
-            {
-              "path": "dist/createExtensionManagerBundledEntry.js",
-              "size": 3052,
-              "mode": 420
-            },
-            {
-              "path": "dist/createExtensionManagerBundledEntry.js.map",
-              "size": 2040,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.d.ts",
-              "size": 2261,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.d.ts.map",
-              "size": 400,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.js",
-              "size": 4635,
-              "mode": 420
-            },
-            {
-              "path": "dist/i18n.js.map",
-              "size": 2923,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts",
-              "size": 294,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.d.ts.map",
-              "size": 255,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js",
-              "size": 292,
-              "mode": 420
-            },
-            {
-              "path": "dist/index.js.map",
-              "size": 253,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.d.ts",
-              "size": 173,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.d.ts.map",
-              "size": 198,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.js",
-              "size": 3118,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/en.js.map",
-              "size": 1261,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.d.ts",
-              "size": 173,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.d.ts.map",
-              "size": 198,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.js",
-              "size": 3359,
-              "mode": 420
-            },
-            {
-              "path": "dist/locales/es.js.map",
-              "size": 1265,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts",
-              "size": 322,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.d.ts.map",
-              "size": 283,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js",
-              "size": 3731,
-              "mode": 420
-            },
-            {
-              "path": "dist/manifest.js.map",
-              "size": 2482,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.d.ts",
-              "size": 191,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.d.ts.map",
-              "size": 219,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.js",
-              "size": 44,
-              "mode": 420
-            },
-            {
-              "path": "dist/types.js.map",
-              "size": 102,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts",
-              "size": 94,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.d.ts.map",
-              "size": 145,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js",
-              "size": 85,
-              "mode": 420
-            },
-            {
-              "path": "dist/version.js.map",
               "size": 148,
               "mode": 420
             },
             {
               "path": "package.json",
-              "size": 2075,
+              "size": 2085,
               "mode": 420
             }
           ],
@@ -1812,23 +1827,23 @@
       "path": "packages/extensions/extension-runtime",
       "packed": [
         {
-          "id": "@mdwrk/extension-runtime@1.0.1",
+          "id": "@mdwrk/extension-runtime@1.1.0-rc.1",
           "name": "@mdwrk/extension-runtime",
-          "version": "1.0.1",
-          "size": 28810,
-          "unpackedSize": 153018,
-          "shasum": "28f3ad8e212731cb366ed5fc3c721b6910a9840a",
-          "integrity": "sha512-0AW2/sHIP3ewnGiU2SHtKBMDpgwskfdJ8V/S2osex1BJ2OWhBasYnFdsdpVnCWraxSAicqLPCPcTS9oxCw8aRg==",
-          "filename": "mdwrk-extension-runtime-1.0.1.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 29080,
+          "unpackedSize": 155196,
+          "shasum": "251164c2ee9fc2f7a69aa68ef3e5f2d3d8aed127",
+          "integrity": "sha512-ketzEGo2m6xGjvSvggsd/oUOlH7BZwlkBmcX0q1dwtIzLZPMoRCqkdWcIoMVd6Btug1qUh075J1/Odgida/cdQ==",
+          "filename": "mdwrk-extension-runtime-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1282,
+              "size": 1864,
               "mode": 420
             },
             {
               "path": "dist/catalog.d.ts",
-              "size": 2391,
+              "size": 2419,
               "mode": 420
             },
             {
@@ -1838,7 +1853,7 @@
             },
             {
               "path": "dist/catalog.js",
-              "size": 11260,
+              "size": 11503,
               "mode": 420
             },
             {
@@ -1848,7 +1863,7 @@
             },
             {
               "path": "dist/compatibility.d.ts",
-              "size": 641,
+              "size": 652,
               "mode": 420
             },
             {
@@ -1858,7 +1873,7 @@
             },
             {
               "path": "dist/compatibility.js",
-              "size": 4277,
+              "size": 4384,
               "mode": 420
             },
             {
@@ -1868,7 +1883,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 312,
+              "size": 321,
               "mode": 420
             },
             {
@@ -1878,7 +1893,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 310,
+              "size": 319,
               "mode": 420
             },
             {
@@ -1888,7 +1903,7 @@
             },
             {
               "path": "dist/loader.d.ts",
-              "size": 380,
+              "size": 386,
               "mode": 420
             },
             {
@@ -1898,7 +1913,7 @@
             },
             {
               "path": "dist/loader.js",
-              "size": 1591,
+              "size": 1624,
               "mode": 420
             },
             {
@@ -1908,7 +1923,7 @@
             },
             {
               "path": "dist/registry.d.ts",
-              "size": 747,
+              "size": 758,
               "mode": 420
             },
             {
@@ -1918,7 +1933,7 @@
             },
             {
               "path": "dist/registry.js",
-              "size": 1924,
+              "size": 1975,
               "mode": 420
             },
             {
@@ -1928,7 +1943,7 @@
             },
             {
               "path": "dist/runtime.d.ts",
-              "size": 214,
+              "size": 216,
               "mode": 420
             },
             {
@@ -1938,7 +1953,7 @@
             },
             {
               "path": "dist/runtime.js",
-              "size": 38158,
+              "size": 38922,
               "mode": 420
             },
             {
@@ -1948,7 +1963,7 @@
             },
             {
               "path": "dist/storage.d.ts",
-              "size": 1047,
+              "size": 1059,
               "mode": 420
             },
             {
@@ -1958,7 +1973,7 @@
             },
             {
               "path": "dist/storage.js",
-              "size": 2522,
+              "size": 2584,
               "mode": 420
             },
             {
@@ -1968,7 +1983,7 @@
             },
             {
               "path": "dist/types.d.ts",
-              "size": 8284,
+              "size": 8455,
               "mode": 420
             },
             {
@@ -1978,7 +1993,7 @@
             },
             {
               "path": "dist/types.js",
-              "size": 44,
+              "size": 45,
               "mode": 420
             },
             {
@@ -1988,7 +2003,7 @@
             },
             {
               "path": "dist/validation.d.ts",
-              "size": 315,
+              "size": 318,
               "mode": 420
             },
             {
@@ -1998,7 +2013,7 @@
             },
             {
               "path": "dist/validation.js",
-              "size": 3032,
+              "size": 3085,
               "mode": 420
             },
             {
@@ -2008,7 +2023,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 94,
+              "size": 99,
               "mode": 420
             },
             {
@@ -2018,7 +2033,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 85,
+              "size": 90,
               "mode": 420
             },
             {
@@ -2028,7 +2043,7 @@
             },
             {
               "path": "package.json",
-              "size": 2338,
+              "size": 2348,
               "mode": 420
             }
           ],
@@ -2042,23 +2057,23 @@
       "path": "packages/extensions/extension-theme-studio",
       "packed": [
         {
-          "id": "@mdwrk/extension-theme-studio@1.0.1",
+          "id": "@mdwrk/extension-theme-studio@1.1.0-rc.1",
           "name": "@mdwrk/extension-theme-studio",
-          "version": "1.0.1",
-          "size": 24399,
-          "unpackedSize": 125333,
-          "shasum": "31a3eb01c278139a00fba3afcc8bb8699fd90ad2",
-          "integrity": "sha512-8X4FrilETf8oVO9wErewFAkSpmvUASiRsw/BtZ/ZX6jQ9ZEa1Jz+OKe4RljvBDx+0cG5yUkOdp3xAly18y3bWw==",
-          "filename": "mdwrk-extension-theme-studio-1.0.1.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 24884,
+          "unpackedSize": 127429,
+          "shasum": "f101ee5c21d32b4ad0cadf5128d66754b0c4f911",
+          "integrity": "sha512-2uIIP/T5/XiVEtByR4EXAdz0vKGKBfIUgxznKs5MIfT9q+0mU4UiO9ZLrsYpaqjmAo7PEQVf6kgkytikes+5Fg==",
+          "filename": "mdwrk-extension-theme-studio-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 843,
+              "size": 1847,
               "mode": 420
             },
             {
               "path": "dist/components/ThemeStudioView.d.ts",
-              "size": 420,
+              "size": 428,
               "mode": 420
             },
             {
@@ -2068,7 +2083,7 @@
             },
             {
               "path": "dist/components/ThemeStudioView.js",
-              "size": 16545,
+              "size": 16619,
               "mode": 420
             },
             {
@@ -2078,7 +2093,7 @@
             },
             {
               "path": "dist/constants.d.ts",
-              "size": 1416,
+              "size": 1431,
               "mode": 420
             },
             {
@@ -2088,7 +2103,7 @@
             },
             {
               "path": "dist/constants.js",
-              "size": 1452,
+              "size": 1480,
               "mode": 420
             },
             {
@@ -2098,7 +2113,7 @@
             },
             {
               "path": "dist/createThemeStudioBundledEntry.d.ts",
-              "size": 224,
+              "size": 226,
               "mode": 420
             },
             {
@@ -2108,7 +2123,7 @@
             },
             {
               "path": "dist/createThemeStudioBundledEntry.js",
-              "size": 3653,
+              "size": 3721,
               "mode": 420
             },
             {
@@ -2118,7 +2133,7 @@
             },
             {
               "path": "dist/export.d.ts",
-              "size": 953,
+              "size": 964,
               "mode": 420
             },
             {
@@ -2128,7 +2143,7 @@
             },
             {
               "path": "dist/export.js",
-              "size": 4047,
+              "size": 4142,
               "mode": 420
             },
             {
@@ -2138,7 +2153,7 @@
             },
             {
               "path": "dist/i18n.d.ts",
-              "size": 3621,
+              "size": 3702,
               "mode": 420
             },
             {
@@ -2148,7 +2163,7 @@
             },
             {
               "path": "dist/i18n.js",
-              "size": 8340,
+              "size": 8432,
               "mode": 420
             },
             {
@@ -2158,7 +2173,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 360,
+              "size": 370,
               "mode": 420
             },
             {
@@ -2168,7 +2183,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 358,
+              "size": 368,
               "mode": 420
             },
             {
@@ -2178,7 +2193,7 @@
             },
             {
               "path": "dist/locales/en.d.ts",
-              "size": 776,
+              "size": 782,
               "mode": 420
             },
             {
@@ -2188,7 +2203,7 @@
             },
             {
               "path": "dist/locales/en.js",
-              "size": 2016,
+              "size": 2042,
               "mode": 420
             },
             {
@@ -2198,7 +2213,7 @@
             },
             {
               "path": "dist/locales/es.d.ts",
-              "size": 872,
+              "size": 878,
               "mode": 420
             },
             {
@@ -2208,7 +2223,7 @@
             },
             {
               "path": "dist/locales/es.js",
-              "size": 2103,
+              "size": 2129,
               "mode": 420
             },
             {
@@ -2218,7 +2233,7 @@
             },
             {
               "path": "dist/manifest.d.ts",
-              "size": 302,
+              "size": 305,
               "mode": 420
             },
             {
@@ -2228,7 +2243,7 @@
             },
             {
               "path": "dist/manifest.js",
-              "size": 6348,
+              "size": 6502,
               "mode": 420
             },
             {
@@ -2238,7 +2253,7 @@
             },
             {
               "path": "dist/relationship.d.ts",
-              "size": 461,
+              "size": 464,
               "mode": 420
             },
             {
@@ -2248,7 +2263,7 @@
             },
             {
               "path": "dist/relationship.js",
-              "size": 918,
+              "size": 935,
               "mode": 420
             },
             {
@@ -2258,7 +2273,7 @@
             },
             {
               "path": "dist/service.d.ts",
-              "size": 231,
+              "size": 233,
               "mode": 420
             },
             {
@@ -2268,7 +2283,7 @@
             },
             {
               "path": "dist/service.js",
-              "size": 10173,
+              "size": 10388,
               "mode": 420
             },
             {
@@ -2278,7 +2293,7 @@
             },
             {
               "path": "dist/settings.d.ts",
-              "size": 365,
+              "size": 368,
               "mode": 420
             },
             {
@@ -2288,7 +2303,7 @@
             },
             {
               "path": "dist/settings.js",
-              "size": 1333,
+              "size": 1351,
               "mode": 420
             },
             {
@@ -2298,7 +2313,7 @@
             },
             {
               "path": "dist/types.d.ts",
-              "size": 3596,
+              "size": 3674,
               "mode": 420
             },
             {
@@ -2308,7 +2323,7 @@
             },
             {
               "path": "dist/types.js",
-              "size": 44,
+              "size": 45,
               "mode": 420
             },
             {
@@ -2318,7 +2333,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 90,
+              "size": 95,
               "mode": 420
             },
             {
@@ -2328,7 +2343,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 80,
+              "size": 85,
               "mode": 420
             },
             {
@@ -2338,7 +2353,7 @@
             },
             {
               "path": "package.json",
-              "size": 2804,
+              "size": 2834,
               "mode": 420
             }
           ],
@@ -2352,18 +2367,18 @@
       "path": "packages/renderer/markdown-renderer-core",
       "packed": [
         {
-          "id": "@mdwrk/markdown-renderer-core@1.0.0",
+          "id": "@mdwrk/markdown-renderer-core@1.1.0-rc.1",
           "name": "@mdwrk/markdown-renderer-core",
-          "version": "1.0.0",
-          "size": 9105,
-          "unpackedSize": 38829,
-          "shasum": "3941e2ee74b5f59df1aafbd763d795326bae1c8c",
-          "integrity": "sha512-rQCh2MBvEavJ69tl2EMsFQ9S6fsql0BYgGoYG+diNRpCOcQa4Qz/udZaALZ71k+b2PB1MSAd8CwBuJFeRZERKg==",
-          "filename": "mdwrk-markdown-renderer-core-1.0.0.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 40801,
+          "unpackedSize": 230591,
+          "shasum": "5e5d1b93ab466d2ea1089bea78bf0de3471d49a3",
+          "integrity": "sha512-ra5c40SBG4vphGdzCYa+1OYvRi3z07nnTfx6ipRoTjpkxcvN8PzTudxTB2q18x5f+/J7Ql9QuZZmieTi/Nzv0w==",
+          "filename": "mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 442,
+              "size": 1400,
               "mode": 420
             },
             {
@@ -2378,112 +2393,152 @@
             },
             {
               "path": "dist/class-names.js",
-              "size": 1392,
+              "size": 1857,
               "mode": 420
             },
             {
               "path": "dist/class-names.js.map",
-              "size": 1108,
+              "size": 1382,
+              "mode": 420
+            },
+            {
+              "path": "dist/engine.d.ts",
+              "size": 4297,
+              "mode": 420
+            },
+            {
+              "path": "dist/engine.d.ts.map",
+              "size": 666,
+              "mode": 420
+            },
+            {
+              "path": "dist/engine.js",
+              "size": 91932,
+              "mode": 420
+            },
+            {
+              "path": "dist/engine.js.map",
+              "size": 94535,
               "mode": 420
             },
             {
               "path": "dist/frontmatter.d.ts",
-              "size": 229,
+              "size": 241,
               "mode": 420
             },
             {
               "path": "dist/frontmatter.d.ts.map",
-              "size": 274,
+              "size": 175,
               "mode": 420
             },
             {
               "path": "dist/frontmatter.js",
-              "size": 563,
+              "size": 203,
               "mode": 420
             },
             {
               "path": "dist/frontmatter.js.map",
-              "size": 624,
+              "size": 267,
               "mode": 420
             },
             {
               "path": "dist/headings.d.ts",
-              "size": 258,
+              "size": 132,
               "mode": 420
             },
             {
               "path": "dist/headings.d.ts.map",
-              "size": 258,
+              "size": 165,
               "mode": 420
             },
             {
               "path": "dist/headings.js",
-              "size": 1045,
+              "size": 269,
               "mode": 420
             },
             {
               "path": "dist/headings.js.map",
-              "size": 1178,
+              "size": 300,
               "mode": 420
             },
             {
               "path": "dist/html.d.ts",
-              "size": 343,
+              "size": 295,
               "mode": 420
             },
             {
               "path": "dist/html.d.ts.map",
-              "size": 314,
+              "size": 253,
               "mode": 420
             },
             {
               "path": "dist/html.js",
-              "size": 1771,
+              "size": 2223,
               "mode": 420
             },
             {
               "path": "dist/html.js.map",
-              "size": 1661,
+              "size": 2027,
               "mode": 420
             },
             {
               "path": "dist/index.d.ts",
-              "size": 277,
+              "size": 376,
               "mode": 420
             },
             {
               "path": "dist/index.d.ts.map",
-              "size": 274,
+              "size": 338,
               "mode": 420
             },
             {
               "path": "dist/index.js",
-              "size": 275,
+              "size": 374,
               "mode": 420
             },
             {
               "path": "dist/index.js.map",
-              "size": 272,
+              "size": 336,
               "mode": 420
             },
             {
               "path": "dist/pipeline.d.ts",
-              "size": 534,
+              "size": 497,
               "mode": 420
             },
             {
               "path": "dist/pipeline.d.ts.map",
-              "size": 478,
+              "size": 373,
               "mode": 420
             },
             {
               "path": "dist/pipeline.js",
-              "size": 9115,
+              "size": 468,
               "mode": 420
             },
             {
               "path": "dist/pipeline.js.map",
-              "size": 7029,
+              "size": 389,
+              "mode": 420
+            },
+            {
+              "path": "dist/profiles.d.ts",
+              "size": 2790,
+              "mode": 420
+            },
+            {
+              "path": "dist/profiles.d.ts.map",
+              "size": 818,
+              "mode": 420
+            },
+            {
+              "path": "dist/profiles.js",
+              "size": 2631,
+              "mode": 420
+            },
+            {
+              "path": "dist/profiles.js.map",
+              "size": 1841,
               "mode": 420
             },
             {
@@ -2508,12 +2563,12 @@
             },
             {
               "path": "dist/types.d.ts",
-              "size": 2257,
+              "size": 5841,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts.map",
-              "size": 2405,
+              "size": 6025,
               "mode": 420
             },
             {
@@ -2528,7 +2583,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 100,
+              "size": 105,
               "mode": 420
             },
             {
@@ -2538,7 +2593,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 90,
+              "size": 95,
               "mode": 420
             },
             {
@@ -2548,11 +2603,11 @@
             },
             {
               "path": "package.json",
-              "size": 2182,
+              "size": 2594,
               "mode": 420
             }
           ],
-          "entryCount": 38,
+          "entryCount": 46,
           "bundled": []
         }
       ]
@@ -2562,38 +2617,38 @@
       "path": "packages/renderer/markdown-renderer-react",
       "packed": [
         {
-          "id": "@mdwrk/markdown-renderer-react@1.0.1",
+          "id": "@mdwrk/markdown-renderer-react@1.1.0-rc.1",
           "name": "@mdwrk/markdown-renderer-react",
-          "version": "1.0.1",
-          "size": 6422,
-          "unpackedSize": 26401,
-          "shasum": "d8581c6325fc66e03d7e3d64d0bc60b22c1e84a1",
-          "integrity": "sha512-Psuj1tqOuFIzxBhpV+xgx8t8vVyCG8AubIWTsi4a45XAxIRA3gpncIgVKI+zOzoK+RQvJemp4vAi/B4/ogavyg==",
-          "filename": "mdwrk-markdown-renderer-react-1.0.1.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 5618,
+          "unpackedSize": 20259,
+          "shasum": "235e33782939b9b70f20ed35ea9ba9f91e942591",
+          "integrity": "sha512-pmknRJyoWM10uWf8TnSZimdIE5ksyo8k4w9DYLCw4Y8fV3NFg786ucKrOgI2L1y3iipkuJj6DpNMb6Cwa8Xv1g==",
+          "filename": "mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 517,
+              "size": 1245,
               "mode": 420
             },
             {
               "path": "dist/component.d.ts",
-              "size": 309,
+              "size": 397,
               "mode": 420
             },
             {
               "path": "dist/component.d.ts.map",
-              "size": 353,
+              "size": 422,
               "mode": 420
             },
             {
               "path": "dist/component.js",
-              "size": 6968,
+              "size": 1600,
               "mode": 420
             },
             {
               "path": "dist/component.js.map",
-              "size": 5947,
+              "size": 1468,
               "mode": 420
             },
             {
@@ -2618,22 +2673,22 @@
             },
             {
               "path": "dist/server.d.ts",
-              "size": 496,
+              "size": 360,
               "mode": 420
             },
             {
               "path": "dist/server.d.ts.map",
-              "size": 530,
+              "size": 280,
               "mode": 420
             },
             {
               "path": "dist/server.js",
-              "size": 774,
+              "size": 1109,
               "mode": 420
             },
             {
               "path": "dist/server.js.map",
-              "size": 629,
+              "size": 820,
               "mode": 420
             },
             {
@@ -2648,22 +2703,22 @@
             },
             {
               "path": "dist/theme.js",
-              "size": 1442,
+              "size": 1645,
               "mode": 420
             },
             {
               "path": "dist/theme.js.map",
-              "size": 940,
+              "size": 1052,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts",
-              "size": 1081,
+              "size": 2109,
               "mode": 420
             },
             {
               "path": "dist/types.d.ts.map",
-              "size": 1264,
+              "size": 2132,
               "mode": 420
             },
             {
@@ -2678,7 +2733,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 101,
+              "size": 106,
               "mode": 420
             },
             {
@@ -2688,7 +2743,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 91,
+              "size": 96,
               "mode": 420
             },
             {
@@ -2698,12 +2753,12 @@
             },
             {
               "path": "package.json",
-              "size": 2056,
+              "size": 2237,
               "mode": 420
             },
             {
               "path": "src/styles/default.css",
-              "size": 603,
+              "size": 881,
               "mode": 420
             }
           ],
@@ -2717,18 +2772,38 @@
       "path": "packages/shared/i18n",
       "packed": [
         {
-          "id": "@mdwrk/i18n@1.0.0",
+          "id": "@mdwrk/i18n@1.1.0-rc.1",
           "name": "@mdwrk/i18n",
-          "version": "1.0.0",
-          "size": 5626,
-          "unpackedSize": 21523,
-          "shasum": "2e4a261b39a11489ed7285b0ced26460fd8ca396",
-          "integrity": "sha512-Aad3siCvixrz5nzdHUcsQcO4bFkRJoodnMTHAcXYJSSsTtofrzo6zBMv74v2ie5yqRxCiz0US+Lz3sKDqQZuNA==",
-          "filename": "mdwrk-i18n-1.0.0.tgz",
+          "version": "1.1.0-rc.1",
+          "size": 10978,
+          "unpackedSize": 44002,
+          "shasum": "97b5c661d43f61d4717b43a0c4fc74769849fce9",
+          "integrity": "sha512-PGUnh2PilRAykNx26zQqGSx4RZu4luhUmDLCTnBcc7VkhnKQWaprwjuZzoX4VQ/CWDwZXemU6NFpM8mnYZsMbA==",
+          "filename": "mdwrk-i18n-1.1.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1085,
+              "size": 1538,
+              "mode": 420
+            },
+            {
+              "path": "dist/core-shell.d.ts",
+              "size": 388,
+              "mode": 420
+            },
+            {
+              "path": "dist/core-shell.d.ts.map",
+              "size": 351,
+              "mode": 420
+            },
+            {
+              "path": "dist/core-shell.js",
+              "size": 15328,
+              "mode": 420
+            },
+            {
+              "path": "dist/core-shell.js.map",
+              "size": 5832,
               "mode": 420
             },
             {
@@ -2753,22 +2828,22 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 183,
+              "size": 216,
               "mode": 420
             },
             {
               "path": "dist/index.d.ts.map",
-              "size": 207,
+              "size": 230,
               "mode": 420
             },
             {
               "path": "dist/index.js",
-              "size": 181,
+              "size": 214,
               "mode": 420
             },
             {
               "path": "dist/index.js.map",
-              "size": 205,
+              "size": 228,
               "mode": 420
             },
             {
@@ -2833,7 +2908,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 89,
+              "size": 94,
               "mode": 420
             },
             {
@@ -2843,7 +2918,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 80,
+              "size": 85,
               "mode": 420
             },
             {
@@ -2853,11 +2928,11 @@
             },
             {
               "path": "package.json",
-              "size": 1455,
+              "size": 1460,
               "mode": 420
             }
           ],
-          "entryCount": 26,
+          "entryCount": 30,
           "bundled": []
         }
       ]
@@ -2870,20 +2945,20 @@
           "id": "@mdwrk/icons@1.0.0",
           "name": "@mdwrk/icons",
           "version": "1.0.0",
-          "size": 3940,
-          "unpackedSize": 19370,
-          "shasum": "990034fe842a1389cf3c74417b82bf0f6e884b80",
-          "integrity": "sha512-rlvskggcFyzr9uYV6GRRyXliov9isuEtgePM0ZxgTIoxjIoRsDXpchnobw28FHmd5wFxYL5hivuqPDalkQloYA==",
+          "size": 3954,
+          "unpackedSize": 19693,
+          "shasum": "4a4926f46486466c831ee45f3da6a67a0134a3ef",
+          "integrity": "sha512-eQc2+CBhWD1WlUNqtyf1QCKCdufgpd+73uAGc7a6csCO0Iq8X8KV9E02B0icBG9Cr9qfLnlYaid/8+oKsj/yEA==",
           "filename": "mdwrk-icons-1.0.0.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 563,
+              "size": 577,
               "mode": 420
             },
             {
               "path": "dist/catalog.d.ts",
-              "size": 6967,
+              "size": 7147,
               "mode": 420
             },
             {
@@ -2893,7 +2968,7 @@
             },
             {
               "path": "dist/catalog.js",
-              "size": 5102,
+              "size": 5177,
               "mode": 420
             },
             {
@@ -2903,7 +2978,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 95,
+              "size": 97,
               "mode": 420
             },
             {
@@ -2913,7 +2988,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 93,
+              "size": 95,
               "mode": 420
             },
             {
@@ -2923,7 +2998,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 90,
+              "size": 91,
               "mode": 420
             },
             {
@@ -2933,7 +3008,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 81,
+              "size": 82,
               "mode": 420
             },
             {
@@ -2943,7 +3018,7 @@
             },
             {
               "path": "package.json",
-              "size": 1103,
+              "size": 1151,
               "mode": 420
             }
           ],
@@ -2960,20 +3035,20 @@
           "id": "@mdwrk/testing@1.0.0",
           "name": "@mdwrk/testing",
           "version": "1.0.0",
-          "size": 3330,
-          "unpackedSize": 10626,
-          "shasum": "32202e0a2e1a7700e54313f62f0addd29755e978",
-          "integrity": "sha512-jMLmxOLVQRYQTKw7hkPJiz6fa+OYLMv78PlW35GMFN+Lj7LAWFUyIY9jL8Fqjsu+sKNZ/Yw7YqEZYzofjx10+Q==",
+          "size": 3346,
+          "unpackedSize": 10829,
+          "shasum": "38738aaeec8a7e9b57838882defd06c2a01a48ca",
+          "integrity": "sha512-GbKty1WAyhBs0L0VmO3FFx3YAM4zDzJ4URUOTNpa7JdBdrB/iiAhPtU8zieBLs3hhWiL53CQviwCt+LUhcza9g==",
           "filename": "mdwrk-testing-1.0.0.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 486,
+              "size": 503,
               "mode": 420
             },
             {
               "path": "dist/browser.d.ts",
-              "size": 477,
+              "size": 487,
               "mode": 420
             },
             {
@@ -2983,7 +3058,7 @@
             },
             {
               "path": "dist/browser.js",
-              "size": 1359,
+              "size": 1406,
               "mode": 420
             },
             {
@@ -2993,7 +3068,7 @@
             },
             {
               "path": "dist/index.d.ts",
-              "size": 124,
+              "size": 127,
               "mode": 420
             },
             {
@@ -3003,7 +3078,7 @@
             },
             {
               "path": "dist/index.js",
-              "size": 122,
+              "size": 125,
               "mode": 420
             },
             {
@@ -3013,7 +3088,7 @@
             },
             {
               "path": "dist/timing.d.ts",
-              "size": 150,
+              "size": 152,
               "mode": 420
             },
             {
@@ -3023,7 +3098,7 @@
             },
             {
               "path": "dist/timing.js",
-              "size": 199,
+              "size": 205,
               "mode": 420
             },
             {
@@ -3033,7 +3108,7 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 92,
+              "size": 93,
               "mode": 420
             },
             {
@@ -3043,7 +3118,7 @@
             },
             {
               "path": "dist/version.js",
-              "size": 83,
+              "size": 84,
               "mode": 420
             },
             {
@@ -3053,7 +3128,7 @@
             },
             {
               "path": "dist/vitest-setup.d.ts",
-              "size": 220,
+              "size": 224,
               "mode": 420
             },
             {
@@ -3063,7 +3138,7 @@
             },
             {
               "path": "dist/vitest-setup.js",
-              "size": 1422,
+              "size": 1472,
               "mode": 420
             },
             {
@@ -3073,7 +3148,7 @@
             },
             {
               "path": "package.json",
-              "size": 1341,
+              "size": 1400,
               "mode": 420
             }
           ],
@@ -3087,18 +3162,18 @@
       "path": "packages/shared/ui-tokens",
       "packed": [
         {
-          "id": "@mdwrk/ui-tokens@1.0.1",
+          "id": "@mdwrk/ui-tokens@1.2.0-rc.1",
           "name": "@mdwrk/ui-tokens",
-          "version": "1.0.1",
-          "size": 8938,
-          "unpackedSize": 41664,
-          "shasum": "1c11f39c2fe2c264093526b778a7defed1bc80a5",
-          "integrity": "sha512-kPl5LVaHGKO3WHKKKjESAudQPIdJpY0WSHVd6cErNbSZOxd0KZuhKDbZ6vVdx2ZSjd3zaBmuKOePEIZ57VTyKg==",
-          "filename": "mdwrk-ui-tokens-1.0.1.tgz",
+          "version": "1.2.0-rc.1",
+          "size": 9805,
+          "unpackedSize": 46579,
+          "shasum": "c47c1f7a5185fa3d39df04b2d5128dd14379d78e",
+          "integrity": "sha512-glI+qI5g57DRUjAuk2as/VJ/Py6niuS/zI+0pFfaKbnSPE6casaCcErMFBJHBxhK8N0SueIoIqc7QYGM6iQHlw==",
+          "filename": "mdwrk-ui-tokens-1.2.0-rc.1.tgz",
           "files": [
             {
               "path": "README.md",
-              "size": 1453,
+              "size": 1727,
               "mode": 420
             },
             {
@@ -3163,12 +3238,12 @@
             },
             {
               "path": "dist/tokens.d.ts",
-              "size": 11980,
+              "size": 14546,
               "mode": 420
             },
             {
               "path": "dist/tokens.d.ts.map",
-              "size": 855,
+              "size": 904,
               "mode": 420
             },
             {
@@ -3183,42 +3258,42 @@
             },
             {
               "path": "dist/version.d.ts",
-              "size": 94,
+              "size": 92,
               "mode": 420
             },
             {
               "path": "dist/version.d.ts.map",
-              "size": 145,
+              "size": 139,
               "mode": 420
             },
             {
               "path": "dist/version.js",
-              "size": 85,
+              "size": 82,
               "mode": 420
             },
             {
               "path": "dist/version.js.map",
-              "size": 148,
+              "size": 147,
               "mode": 420
             },
             {
               "path": "package.json",
-              "size": 1697,
+              "size": 1707,
               "mode": 420
             },
             {
               "path": "src/styles/index.css",
-              "size": 123,
+              "size": 126,
               "mode": 420
             },
             {
               "path": "src/styles/markdown.css",
-              "size": 6611,
+              "size": 8230,
               "mode": 420
             },
             {
               "path": "src/styles/root.css",
-              "size": 3532,
+              "size": 3938,
               "mode": 420
             }
           ],

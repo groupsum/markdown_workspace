@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-31T09:49:52Z",
+  "phase": 22,
+  "comparison": {
+    "previousCheckpoint": "phase-21",
+    "currentCheckpoint": "phase-22"
+  },
+  "phase21": {
+    "laneStatus": "blocked",
+    "reason": "Playwright browser-matrix tests are wired, but one or more required browser executables are not available in this environment.",
+    "expectedMatrixCaseCount": 18,
+    "executedCases": 0,
+    "passedCases": 0,
+    "failedCases": 0,
+    "chromiumSmokeExitCode": 1,
+    "chromiumSmokeError": "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:4317/\nCall log:\n  - navigating to \"http://127.0.0.1:4317/\", waiting until \"domcontentloaded\"\n\n    at /mnt/data/phase21_work/markdown_workspace/tools/ci/playwright-chromium-smoke.mjs:61:14",
+    "firefoxAvailable": false,
+    "webkitAvailable": false
+  },
+  "phase22": {
+    "laneStatus": "blocked",
+    "reason": "Chromium executed real Playwright browser checks successfully, but the full browser matrix remains blocked because Firefox and WebKit executables are unavailable.",
+    "expectedMatrixCaseCount": 18,
+    "executedCases": 6,
+    "passedCases": 6,
+    "failedCases": 0,
+    "passedBrowsers": 1,
+    "unavailableBrowsers": 2,
+    "chromium": {
+      "available": true,
+      "resolvedExecutablePath": "/usr/bin/chromium",
+      "resolvedFrom": "system-fallback",
+      "executedCaseCount": 6,
+      "passedCaseCount": 6,
+      "failedCaseCount": 0,
+      "policyGuardMovedEntries": [
+        ".policy_merge",
+        ".policy_merge_backup",
+        "000_policy_merge.json"
+      ]
+    },
+    "firefoxAvailable": false,
+    "webkitAvailable": false
+  },
+  "delta": {
+    "laneStatusChanged": false,
+    "executedCasesDelta": 6,
+    "passedCasesDelta": 6,
+    "failedCasesDelta": 0,
+    "chromiumMovedFromSmokeFailureToPassingLogicalCases": true,
+    "firefoxAvailabilityChanged": false,
+    "webkitAvailabilityChanged": false
+  }
+}

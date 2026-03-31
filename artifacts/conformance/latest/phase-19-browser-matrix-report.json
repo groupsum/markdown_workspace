@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-03-30T22:15:20.750Z",
+  "status": "blocked",
+  "playwrightInstalled": true,
+  "playwrightConfigPresent": true,
+  "playwrightSpecs": [
+    "preview-export.spec.ts",
+    "settings-and-i18n.spec.ts",
+    "shell-smoke.spec.ts"
+  ],
+  "browsers": {
+    "chromium": "/usr/bin/chromium",
+    "firefox": null,
+    "webkit": null
+  },
+  "reason": "Playwright browser execution is configured but the current checkpoint environment does not provide a complete browser matrix run.",
+  "phase": 19,
+  "note": "Blocked state carried forward pending a real browser-capable environment."
+}

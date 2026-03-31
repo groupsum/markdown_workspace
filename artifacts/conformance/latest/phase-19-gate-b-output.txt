@@ -1,0 +1,9 @@
+# Phase 19 Gate B continuation checkpoint
+
+CommonMark official: 434/652 passing (218 failing)
+GFM official: 444/672 passing (228 failing)
+Optional profiles: 8/8 passing
+Certification gate summary: 7/12 lanes green
+Hard closure rules: 4/5 green
+
+The checkpoint improves the official CommonMark and GFM lanes further, but certification remains blocked.

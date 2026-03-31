@@ -1,0 +1,135 @@
+# Phase 20 packed release-set install log
+
+Generated at: 2026-03-31T05:51:40.818Z
+Pack ok: True
+Tarball count: 17
+Installed @mdwrk packages: 17
+
+## npm init stdout
+Wrote to /mnt/data/markdown_workspace/.tmp/phase20-install-test/package.json:
+
+{
+  "name": "phase20-install-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+## npm init stderr
+
+
+## npm install stdout
+
+added 60 packages, and audited 61 packages in 12s
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+4 moderate severity vulnerabilities
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+
+## npm install stderr
+
+
+## Saved dependencies
+[
+  {
+    "name": "@mdwrk/extension-catalog-hello",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-gemini-agent",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-host",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-host-1.0.1.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-manager",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-manager-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-manifest",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-manifest-1.0.0.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-runtime",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-runtime-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/extension-theme-studio",
+    "spec": "file:../../artifacts/packs/mdwrk-extension-theme-studio-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/i18n",
+    "spec": "file:../../artifacts/packs/mdwrk-i18n-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/icons",
+    "spec": "file:../../artifacts/packs/mdwrk-icons-1.0.0.tgz"
+  },
+  {
+    "name": "@mdwrk/markdown-editor-core",
+    "spec": "file:../../artifacts/packs/mdwrk-markdown-editor-core-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/markdown-editor-react",
+    "spec": "file:../../artifacts/packs/mdwrk-markdown-editor-react-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/markdown-renderer-core",
+    "spec": "file:../../artifacts/packs/mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/markdown-renderer-react",
+    "spec": "file:../../artifacts/packs/mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/mdwrkspace",
+    "spec": "file:../../artifacts/packs/mdwrk-mdwrkspace-1.4.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/testing",
+    "spec": "file:../../artifacts/packs/mdwrk-testing-1.0.0.tgz"
+  },
+  {
+    "name": "@mdwrk/theme-contract",
+    "spec": "file:../../artifacts/packs/mdwrk-theme-contract-1.1.0-rc.1.tgz"
+  },
+  {
+    "name": "@mdwrk/ui-tokens",
+    "spec": "file:../../artifacts/packs/mdwrk-ui-tokens-1.2.0-rc.1.tgz"
+  }
+]
+
+## Installed @mdwrk packages
+[
+  "@mdwrk/extension-catalog-hello",
+  "@mdwrk/extension-gemini-agent",
+  "@mdwrk/extension-host",
+  "@mdwrk/extension-manager",
+  "@mdwrk/extension-manifest",
+  "@mdwrk/extension-runtime",
+  "@mdwrk/extension-theme-studio",
+  "@mdwrk/i18n",
+  "@mdwrk/icons",
+  "@mdwrk/markdown-editor-core",
+  "@mdwrk/markdown-editor-react",
+  "@mdwrk/markdown-renderer-core",
+  "@mdwrk/markdown-renderer-react",
+  "@mdwrk/mdwrkspace",
+  "@mdwrk/testing",
+  "@mdwrk/theme-contract",
+  "@mdwrk/ui-tokens"
+]

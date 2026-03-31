@@ -1,0 +1,32 @@
+{
+  "total": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "id": "normalize-empty-list-items",
+      "description": "empty list items are normalized for preview while fenced code stays unchanged",
+      "passed": true
+    },
+    {
+      "id": "same-document-hash-resolution",
+      "description": "same-document hash links resolve without file navigation",
+      "passed": true
+    },
+    {
+      "id": "relative-markdown-file-resolution",
+      "description": "relative markdown file links resolve against the current file path",
+      "passed": true
+    },
+    {
+      "id": "default-html-handling-policy",
+      "description": "client preview/export policy defaults to sanitize unless trusted mode is enabled",
+      "passed": true
+    },
+    {
+      "id": "export-markdown-link-rewrite",
+      "description": "rendered markdown links are rewritten from .md to .html for HTML export",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-03-29T17:01:23.117Z",
+  "bundleContents": {
+    "commonMarkSummary": "artifacts/conformance/latest/phase-12-commonmark-corpus-summary.json",
+    "gfmSummary": "artifacts/conformance/latest/phase-12-gfm-corpus-summary.json",
+    "optionalProfileSummary": "artifacts/conformance/latest/phase-12-optional-profile-lanes.json",
+    "previewExportSummary": "artifacts/conformance/latest/phase-12-preview-export-lane.json",
+    "snapshotManifest": "artifacts/conformance/latest/phase-12-snapshot-manifests.json",
+    "browserMatrixReport": "artifacts/conformance/latest/phase-12-browser-matrix-report.json",
+    "visualRegressionReport": "artifacts/conformance/latest/phase-12-visual-regression-report.json",
+    "packedTarballInstallReport": "artifacts/conformance/latest/phase-12-packed-tarball-install-report.json",
+    "packedTarballInstallLog": "artifacts/conformance/latest/phase-12-packed-tarball-install-log.txt",
+    "extensionCompatibilityManifest": "artifacts/conformance/latest/phase-12-extension-compatibility-manifest.json",
+    "packageInventory": "artifacts/conformance/latest/package-inventory.json",
+    "changesetVersionInventory": "artifacts/conformance/latest/phase-12-changeset-version-inventory.json",
+    "releaseNotesDraft": "artifacts/conformance/latest/phase-12-release-notes-draft.md",
+    "certificationChecklist": "artifacts/conformance/latest/phase-12-certification-checklist.md"
+  },
+  "closureLanes": {
+    "commonmarkCorpusLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-commonmark-corpus-summary.json"
+      ]
+    },
+    "gfmCorpusLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-gfm-corpus-summary.json"
+      ]
+    },
+    "optionalExtensionProfileLanes": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-optional-profile-lanes.json"
+      ]
+    },
+    "editorKeyboardLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json",
+        "artifacts/conformance/latest/phase-12-editor-core-smoke.txt",
+        "artifacts/conformance/latest/phase-12-editor-react-smoke.txt"
+      ]
+    },
+    "toolbarSelectionLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-5-editor-authoring-results.json"
+      ]
+    },
+    "previewExportLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-6-preview-export-results.json",
+        "artifacts/conformance/latest/phase-12-preview-export-lane.json"
+      ]
+    },
+    "accessibilityLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-6-preview-export-results.json",
+        "artifacts/conformance/latest/phase-7-shell-parity-node-results.json",
+        "artifacts/conformance/latest/phase-10-i18n-parity-node-results.json"
+      ]
+    },
+    "browserMatrixLane": {
+      "status": "blocked",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-browser-matrix-report.json",
+        "artifacts/ci/integration-smoke.json",
+        "artifacts/ci/e2e-smoke.json"
+      ]
+    },
+    "visualRegressionLane": {
+      "status": "blocked",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-visual-regression-report.json",
+        "artifacts/conformance/latest/phase-9-theme-visual-baselines.json",
+        "artifacts/ci/visual-smoke.json"
+      ]
+    },
+    "packedTarballInstallLane": {
+      "status": "blocked",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-packed-tarball-install-report.json",
+        "artifacts/conformance/latest/phase-12-packed-tarball-install-log.txt",
+        "artifacts/packs/pack-report.json"
+      ]
+    },
+    "extensionActivationCompatibilityLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-12-extension-compatibility-manifest.json",
+        "artifacts/conformance/latest/extension-artifact-validation.json",
+        "artifacts/conformance/latest/phase-12-extension-runtime-smoke.txt"
+      ]
+    },
+    "docsContractBoundaryLane": {
+      "status": "green",
+      "artifacts": [
+        "artifacts/conformance/latest/phase-11-package-evidence.json",
+        "artifacts/conformance/latest/phase-11-package-evidence-node-results.json"
+      ]
+    }
+  }
+}

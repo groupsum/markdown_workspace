@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-03-30T00:00:00Z",
+  "trainId": "promotion-rc.1",
+  "supportRoot": "artifacts/releases/support-window-rc.1",
+  "immutableEvidenceBundle": {
+    "path": "artifacts/releases/support-window-rc.1/immutable-evidence-bundle.tar.gz",
+    "sha256": "012112bab1df0d63248fccfbc1c38d680a8c9a89bcf4130871d469645869f505"
+  },
+  "includedPolicyArtifacts": [
+    "artifacts/releases/support-window-rc.1/phase-15-support-window-policy.json",
+    "artifacts/releases/support-window-rc.1/phase-15-monitoring-matrix.json",
+    "artifacts/releases/support-window-rc.1/phase-15-evidence-integrity-manifest.json",
+    "artifacts/releases/support-window-rc.1/phase-15-follow-on-roadmap.md",
+    "artifacts/releases/support-window-rc.1/phase-15-minimum-closure-checklist.md",
+    "artifacts/releases/support-window-rc.1/phase-14-final-evidence-bundle.tar.gz"
+  ]
+}

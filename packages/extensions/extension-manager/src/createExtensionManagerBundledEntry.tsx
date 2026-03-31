@@ -65,6 +65,15 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
             },
           });
 
+          context.registerSettingsSection({
+            id: `${context.extensionId}.settings`,
+            title: extensionManagerLabels.settingsTitle,
+            description: extensionManagerLabels.viewDescription,
+            order: 10,
+            schemaPath: 'manifest.settingsSchema',
+            ...({ schema: extensionManagerManifest.settingsSchema } as never),
+          });
+
           await context.host.diagnostics.publish(context.extensionId, {
             severity: "info",
             code: "EXT_MANAGER_READY",

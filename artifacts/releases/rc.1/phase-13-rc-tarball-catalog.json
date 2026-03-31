@@ -1,0 +1,189 @@
+{
+  "generatedAt": "2026-03-29T19:58:02Z",
+  "ok": true,
+  "publicTarballs": [
+    {
+      "packageName": "@mdwrk/extension-catalog-hello",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "f8e568a1595812870c197e79126118bacb0868e5b73a209404f5a19987f60bba",
+      "size": 4144,
+      "path": "artifacts/packs/mdwrk-extension-catalog-hello-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-gemini-agent",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "87ffe4fea84623e0a8406ce9e7e9c82e305012fc253867f57e0f2f811576c548",
+      "size": 31190,
+      "path": "artifacts/packs/mdwrk-extension-gemini-agent-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-host",
+      "version": "1.0.1",
+      "filename": "mdwrk-extension-host-1.0.1.tgz",
+      "destination": "public",
+      "sha256": "2470c39348c4dbffb028d033533476f2889c75d25e847cc12a4eb628040eb91f",
+      "size": 6205,
+      "path": "artifacts/packs/mdwrk-extension-host-1.0.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-manager",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-extension-manager-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "2ed4eac55f0c5bae435d734e7704d6ff0f889c6f09ae0762002f8303ff87a186",
+      "size": 19219,
+      "path": "artifacts/packs/mdwrk-extension-manager-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-manifest",
+      "version": "1.0.0",
+      "filename": "mdwrk-extension-manifest-1.0.0.tgz",
+      "destination": "public",
+      "sha256": "908871dde0a92e6de64e1f00cdbc2fa7597f5d53765f26389ac89bc9ad45785d",
+      "size": 7754,
+      "path": "artifacts/packs/mdwrk-extension-manifest-1.0.0.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-runtime",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-extension-runtime-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "6788c3a0671e702beef806db33782900f12ac2687dea8a42adc48ea0d8f33ed2",
+      "size": 29082,
+      "path": "artifacts/packs/mdwrk-extension-runtime-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/extension-theme-studio",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-extension-theme-studio-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "ef23d2ea5b1ab89b70745979f66bba51464636cf895839b15cf3f283fe973fc7",
+      "size": 24883,
+      "path": "artifacts/packs/mdwrk-extension-theme-studio-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/i18n",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-i18n-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "62754c16b45b782228b1c82a894109933d5cb94ad0663ab60c9bb5cbd67fa9b1",
+      "size": 10992,
+      "path": "artifacts/packs/mdwrk-i18n-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/icons",
+      "version": "1.0.0",
+      "filename": "mdwrk-icons-1.0.0.tgz",
+      "destination": "public",
+      "sha256": "985316bb9b9469a806d03eaab7ae758e4e4fc50c1700a8f67087e61767cffb0b",
+      "size": 3953,
+      "path": "artifacts/packs/mdwrk-icons-1.0.0.tgz"
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-core",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-markdown-editor-core-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "03497c6d758281dbe509728d07cc9776c4902ad42f3d95ca489dff52b6e373b8",
+      "size": 11544,
+      "path": "artifacts/packs/mdwrk-markdown-editor-core-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/markdown-editor-react",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-markdown-editor-react-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "c594f6a9c4a3c063221196695a5f97e185495f88c4df0a08b01652d371690104",
+      "size": 9833,
+      "path": "artifacts/packs/mdwrk-markdown-editor-react-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-core",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "418131e1b23bbb462d955dc50d742dd5f3376568a2ee91c30eaf2fb190ea2cb8",
+      "size": 37654,
+      "path": "artifacts/packs/mdwrk-markdown-renderer-core-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/markdown-renderer-react",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "77593bff0e19ae97f3907787549f05708c7259c9ed22c2e8af8065c163a8290f",
+      "size": 5617,
+      "path": "artifacts/packs/mdwrk-markdown-renderer-react-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/mdwrkspace",
+      "version": "1.4.0-rc.1",
+      "filename": "mdwrk-mdwrkspace-1.4.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "fdf4ddcb64dba63eda1e3cd8c68e4da11ca1359b9f2562858bbef2bd5cbbd240",
+      "size": 1353380,
+      "path": "artifacts/packs/mdwrk-mdwrkspace-1.4.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/testing",
+      "version": "1.0.0",
+      "filename": "mdwrk-testing-1.0.0.tgz",
+      "destination": "public",
+      "sha256": "c6041af696eef90443c5a9b34b4b6a3867bcd747fa53cf4391d0a4e93c4e2a1c",
+      "size": 3348,
+      "path": "artifacts/packs/mdwrk-testing-1.0.0.tgz"
+    },
+    {
+      "packageName": "@mdwrk/theme-contract",
+      "version": "1.1.0-rc.1",
+      "filename": "mdwrk-theme-contract-1.1.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "fe8083722ffcf0fa4e7d90110014d3cb72c31ef91fb96ee7be6ce0e39d4ffac6",
+      "size": 11195,
+      "path": "artifacts/packs/mdwrk-theme-contract-1.1.0-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/ui-tokens",
+      "version": "1.2.0-rc.1",
+      "filename": "mdwrk-ui-tokens-1.2.0-rc.1.tgz",
+      "destination": "public",
+      "sha256": "969ae4cce9d1da9b9f7deff9db70e77f5bf7652a191b2e1987049c254a60e4ae",
+      "size": 9808,
+      "path": "artifacts/packs/mdwrk-ui-tokens-1.2.0-rc.1.tgz"
+    }
+  ],
+  "privateTarballs": [
+    {
+      "packageName": "@mdwrk/example-editor-basic",
+      "version": "0.1.1-rc.1",
+      "filename": "mdwrk-example-editor-basic-0.1.1-rc.1.tgz",
+      "destination": "private",
+      "sha256": "94bbf56ef86e1e5b0f958ecb4c65186ac56cebf82669865b8999a214ae401520",
+      "size": 352761,
+      "path": "artifacts/packs/private/mdwrk-example-editor-basic-0.1.1-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/example-renderer-basic",
+      "version": "0.1.1-rc.1",
+      "filename": "mdwrk-example-renderer-basic-0.1.1-rc.1.tgz",
+      "destination": "private",
+      "sha256": "a492c24ce43d321538a518d2ef273ef9e51bafb639ac0cef6e69cbab29919d8c",
+      "size": 691353,
+      "path": "artifacts/packs/private/mdwrk-example-renderer-basic-0.1.1-rc.1.tgz"
+    },
+    {
+      "packageName": "@mdwrk/lander",
+      "version": "0.0.11-rc.1",
+      "filename": "mdwrk-lander-0.0.11-rc.1.tgz",
+      "destination": "private",
+      "sha256": "a11a6ecfcb5c940ae205fecdd7cd7bc5bc5910b76331cf7283f82e514640c462",
+      "size": 883932,
+      "path": "artifacts/packs/private/mdwrk-lander-0.0.11-rc.1.tgz"
+    }
+  ],
+  "total": 20
+}
