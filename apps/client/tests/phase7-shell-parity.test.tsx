@@ -1,12 +1,18 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
 import React from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { FilePlus } from 'lucide-react';
 import { Footer } from '../components/Chassis/Footer/Footer';
 import { ActionRail } from '../components/Chassis/ActionRail/ActionRail';
 import { isMobileLandscapeViewport, isSplitViewAllowedForViewport } from '../src/features/layout/splitViewPolicy';
+
+vi.mock('../src/features/i18n/useClientI18n', () => ({
+  useClientI18n: () => ({
+    t: (_key: string, fallback: string) => fallback,
+  }),
+}));
 
 describe('Phase 7 shell parity', () => {
   it('renders runtime shell label, build identifier, and update-ready badge in the status bar', () => {
