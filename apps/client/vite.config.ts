@@ -19,6 +19,10 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
       },
+      test: {
+        include: ['**/*.{test,spec}.{ts,tsx}'],
+        exclude: ['**/node_modules/**', 'tests/playwright/**', 'tests/playwright-*/**'],
+      },
       plugins: [react()],
       define: {
         __APP_VERSION__: JSON.stringify(packageJson.version),

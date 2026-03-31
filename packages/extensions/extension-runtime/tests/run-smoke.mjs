@@ -27,8 +27,8 @@ const createManifest = (id, overrides = {}) => ({
   capabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish'],
   compatibility: {
     manifestVersion: 1,
-    hostApi: '1.0.0',
-    runtime: '1.0.0',
+    hostApi: '^1.0.0',
+    runtime: '^1.0.0',
     app: '>=0.1.0',
     themeContract: '^1.0.0',
   },
