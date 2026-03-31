@@ -3,7 +3,7 @@ import type { Disposable, RegisteredSettingsSection } from '@mdwrk/extension-hos
 import type { ReactNode } from 'react';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
 
-export type SettingsPanelId = 'visual' | 'git' | 'data' | 'keys' | 'session' | 'extensions' | 'advanced';
+export type SettingsPanelId = 'visual' | 'git' | 'data' | 'language' | 'keys' | 'session' | 'extensions' | 'advanced';
 
 export interface ClientSettingsSection extends RegisteredSettingsSection {
   readonly title: I18nLabel;

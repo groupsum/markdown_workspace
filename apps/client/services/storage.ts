@@ -10,8 +10,17 @@ const STORE_SETTINGS = 'settings';
 
 class StorageService {
   private dbPromise: Promise<IDBDatabase>;
+  private readonly indexedDbAvailable: boolean;
+  private readonly memoryProjects = new Map<string, Project>();
+  private readonly memoryFiles = new Map<string, FileNode>();
+  private readonly memorySettings = new Map<string, unknown>();
 
   constructor() {
+    this.indexedDbAvailable = typeof indexedDB !== 'undefined';
+    if (!this.indexedDbAvailable) {
+      this.dbPromise = Promise.resolve(null as unknown as IDBDatabase);
+      return;
+    }
     this.dbPromise = new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
       request.onerror = () => reject(request.error);
@@ -38,6 +47,9 @@ class StorageService {
   }
 
   async getProjects(): Promise<Project[]> {
+    if (!this.indexedDbAvailable) {
+      return Array.from(this.memoryProjects.values());
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_PROJECTS, 'readonly');
@@ -49,6 +61,10 @@ class StorageService {
   }
 
   async saveProject(project: Project): Promise<void> {
+    if (!this.indexedDbAvailable) {
+      this.memoryProjects.set(project.id, project);
+      return;
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_PROJECTS, 'readwrite');
@@ -60,6 +76,15 @@ class StorageService {
   }
 
   async deleteProject(projectId: string): Promise<void> {
+      if (!this.indexedDbAvailable) {
+        this.memoryProjects.delete(projectId);
+        for (const [id, file] of this.memoryFiles.entries()) {
+          if (file.projectId === projectId) {
+            this.memoryFiles.delete(id);
+          }
+        }
+        return;
+      }
       const db = await this.dbPromise;
       return new Promise((resolve, reject) => {
         const transaction = db.transaction([STORE_PROJECTS, STORE_FILES], 'readwrite');
@@ -82,6 +107,9 @@ class StorageService {
   }
 
   async getAllFiles(projectId: string): Promise<FileNode[]> {
+    if (!this.indexedDbAvailable) {
+      return Array.from(this.memoryFiles.values()).filter((file) => file.projectId === projectId);
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_FILES, 'readonly');
@@ -94,6 +122,10 @@ class StorageService {
   }
 
   async saveFile(file: FileNode): Promise<void> {
+    if (!this.indexedDbAvailable) {
+      this.memoryFiles.set(file.id, file);
+      return;
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_FILES, 'readwrite');
@@ -105,6 +137,10 @@ class StorageService {
   }
 
   async deleteFile(id: string): Promise<void> {
+    if (!this.indexedDbAvailable) {
+      this.memoryFiles.delete(id);
+      return;
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_FILES, 'readwrite');
@@ -116,6 +152,9 @@ class StorageService {
   }
 
   async getSetting<T>(key: string): Promise<T | null> {
+    if (!this.indexedDbAvailable) {
+      return (this.memorySettings.get(key) as T | undefined) ?? null;
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_SETTINGS, 'readonly');
@@ -130,6 +169,10 @@ class StorageService {
   }
 
   async setSetting<T>(key: string, value: T): Promise<void> {
+    if (!this.indexedDbAvailable) {
+      this.memorySettings.set(key, value);
+      return;
+    }
     const db = await this.dbPromise;
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(STORE_SETTINGS, 'readwrite');

@@ -8,9 +8,9 @@
     "build": "tsc && vite build",
     "build:lib": "tsc && vite build --config vite.lib.config.ts",
     "preview": "vite preview",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:run": "vitest run",
+    "test": "vitest --exclude 'tests/playwright/**' --exclude 'tests/playwright-file/**' --exclude 'tests/playwright-inline/**'",
+    "test:ui": "vitest --ui --exclude 'tests/playwright/**' --exclude 'tests/playwright-file/**' --exclude 'tests/playwright-inline/**'",
+    "test:run": "vitest run --exclude 'tests/playwright/**' --exclude 'tests/playwright-file/**' --exclude 'tests/playwright-inline/**'",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "prepack": "npm run build:lib"
@@ -33,6 +33,7 @@
     "@mdwrk/extension-manager": "^1.1.0-rc.1",
     "@mdwrk/extension-manifest": "^1.0.0",
     "@mdwrk/extension-runtime": "^1.1.0-rc.1",
+    "@mdwrk/extension-theme-studio": "^1.1.0-rc.1",
     "@mdwrk/i18n": "^1.1.0-rc.1",
     "@mdwrk/icons": "^1.0.0",
     "@mdwrk/markdown-editor-react": "^1.1.0-rc.1",
@@ -44,10 +45,10 @@
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-syntax-highlighter": "^15.6.1",
-    "@mdwrk/extension-theme-studio": "^1.1.0-rc.1"
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",

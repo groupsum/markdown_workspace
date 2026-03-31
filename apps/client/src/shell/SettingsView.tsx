@@ -4,7 +4,7 @@ import { SettingsModal, type SettingsModalSection } from '../../components/Modal
 import { useClientRuntimeServices, useClientRuntimeSnapshot } from '../app/runtime/ClientRuntimeContext';
 import { useExtensionRuntime } from '../extensions/runtime/ExtensionRuntimeContext';
 import { renderExtensionIcon } from './iconRenderer';
-import { SettingsSchemaRenderer } from '../features/settings/SettingsSchemaRenderer';
+import { SettingsSchemaRenderer, type SettingsSchemaValueStore } from '../features/settings/SettingsSchemaRenderer';
 
 export const SettingsView: React.FC = () => {
   const runtime = useClientRuntimeSnapshot();
@@ -28,7 +28,9 @@ export const SettingsView: React.FC = () => {
         return section.render();
       }
       if (section.schema) {
-        const store = section.extensionId ? extensionRuntime.getConfigurationStore(section.extensionId) : undefined;
+        const store = section.extensionId
+          ? (extensionRuntime.getConfigurationStore(section.extensionId) as unknown as SettingsSchemaValueStore)
+          : undefined;
         return (
           <SettingsSchemaRenderer
             schema={section.schema}

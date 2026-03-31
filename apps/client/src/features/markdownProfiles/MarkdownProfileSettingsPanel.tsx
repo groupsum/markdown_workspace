@@ -80,7 +80,7 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
                   />
                   <div className="flex flex-col gap-1">
                     <span className="text-[12px] font-semibold">{definition.name}</span>
-                    {definition.notes?.map((note) => (
+                    {'notes' in definition && Array.isArray(definition.notes) && definition.notes.map((note) => (
                       <span key={note} className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{note}</span>
                     ))}
                     <span className="text-[10px] uppercase text-[var(--accent)]">{enabled ? t('core.settings.markdown-profiles.enabled', 'ENABLED') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>
@@ -111,7 +111,7 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
                   />
                   <div className="flex flex-col gap-1">
                     <span className="text-[12px] font-semibold">{definition.name}</span>
-                    {definition.notes?.map((note) => (
+                    {'notes' in definition && Array.isArray(definition.notes) && definition.notes.map((note) => (
                       <span key={note} className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{note}</span>
                     ))}
                     <span className="text-[10px] uppercase text-[var(--fg-muted)]">{enabled ? t('core.settings.markdown-profiles.enabled-warning', 'ENABLED_WITH_WARNING') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>

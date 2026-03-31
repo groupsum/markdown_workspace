@@ -71,7 +71,6 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
             description: extensionManagerLabels.viewDescription,
             order: 10,
             schemaPath: 'manifest.settingsSchema',
-            ...({ schema: extensionManagerManifest.settingsSchema } as never),
           });
 
           await context.host.diagnostics.publish(context.extensionId, {
