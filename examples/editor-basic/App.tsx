@@ -10,7 +10,7 @@ import './styles.css';
 type OptionalExtensionId = 'definition-lists' | 'math' | 'footnotes';
 type ThemePresetId = 'default' | 'research-science' | 'industrial';
 
-const THEME_PRESETS: Record<ThemePresetId, { label: string; editor: Record<string, string>; renderer: Record<string, string> }> = {
+const THEME_PRESETS: Record<ThemePresetId, { label: string; editor: React.CSSProperties; renderer: React.CSSProperties }> = {
   default: {
     label: 'Default dark',
     editor: createMarkdownEditorThemeStyle(),
@@ -25,7 +25,6 @@ const THEME_PRESETS: Record<ThemePresetId, { label: string; editor: Record<strin
       accent: '#224f9c',
       border: 'rgba(16, 33, 63, 0.14)',
       gutterBackground: '#eef2f7',
-      gutterForeground: '#506179',
       lineHeight: '1.75rem',
       gutterWidth: '64px',
     }),
@@ -50,7 +49,6 @@ const THEME_PRESETS: Record<ThemePresetId, { label: string; editor: Record<strin
       accent: '#ff7a00',
       border: 'rgba(255,255,255,0.16)',
       gutterBackground: '#0a0d11',
-      gutterForeground: '#8c97a5',
       lineHeight: '1.85rem',
       gutterWidth: '68px',
     }),

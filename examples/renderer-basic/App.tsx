@@ -5,7 +5,7 @@ import './styles.css';
 type OptionalExtensionId = 'definition-lists' | 'math' | 'footnotes';
 type ThemePresetId = 'default' | 'research-science' | 'industrial';
 
-const THEME_PRESETS: Record<ThemePresetId, { label: string; style: Record<string, string> }> = {
+const THEME_PRESETS: Record<ThemePresetId, { label: string; style: React.CSSProperties }> = {
   default: {
     label: 'Default dark',
     style: createMarkdownRendererThemeStyle(),

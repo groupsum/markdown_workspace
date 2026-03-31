@@ -70,14 +70,14 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             },
           });
 
-          context.registerSettingsSection({
+          context.registerSettingsSection(({
             id: `${context.extensionId}.settings`,
             title: themeStudioLabels.settingsTitle,
             description: themeStudioLabels.settingsDescription,
             order: 20,
             schemaPath: "manifest.settingsSchema",
-            ...({ schema: themeStudioManifest.settingsSchema } as never),
-          });
+            schema: themeStudioManifest.settingsSchema,
+          } as unknown) as never);
 
           await context.host.diagnostics.publish(context.extensionId, {
             severity: "info",

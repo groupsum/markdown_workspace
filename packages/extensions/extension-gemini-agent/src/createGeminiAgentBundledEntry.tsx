@@ -123,14 +123,14 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             },
           });
 
-          context.registerSettingsSection({
+          context.registerSettingsSection(({
             id: `${context.extensionId}.settings`,
             title: geminiAgentLabels.settingsTitle,
             description: geminiAgentLabels.settingsDescription,
             order: 10,
             schemaPath: "manifest.settingsSchema",
-            ...({ schema: geminiAgentManifest.settingsSchema } as never),
-          });
+            schema: geminiAgentManifest.settingsSchema,
+          } as unknown) as never);
 
           await context.host.diagnostics.publish(context.extensionId, {
             severity: "info",

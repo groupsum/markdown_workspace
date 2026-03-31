@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.1-rc.1",
+  "version": "0.2.2-rc.1",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -102,6 +102,7 @@
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "playwright": "^1.58.2",
     "typescript": "5.9.3"
   },
