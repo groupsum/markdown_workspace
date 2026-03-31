@@ -197,3 +197,7 @@ The repository is better specified than before, but it is not yet represented as
 - `docs/current-state/phase-18-gate-b-assessment.md` — current Gate B continuation assessment.
 - `docs/conformance/gate-b-certification-closure-phase18.md` — Phase 18 Gate B continuation record.
 - `artifacts/conformance/latest/phase-18-certification-gate-checkpoint.json` — machine-readable Phase 18 certification-gate summary.
+
+## Repository governance specs
+
+Repository governance requirements are centralized in [`../specs/README.md`](../specs/README.md), and enforced by CI through `npm run test:governance`.

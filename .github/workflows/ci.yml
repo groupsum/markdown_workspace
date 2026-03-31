@@ -67,6 +67,25 @@ jobs:
       - name: Typecheck workspace
         run: npm run ci:typecheck
 
+  governance:
+    name: Repository governance checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm run ci:install
+
+      - name: Run governance validation suite
+        run: npm run test:governance
+
   package-matrix:
     name: Package group verify (${{ matrix.group.name }})
     needs: discover

@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.0-rc.1",
+  "version": "0.2.1",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -89,7 +89,15 @@
     "mcp:proof": "node ./tools/mcp/prove-mcp-setup.mjs",
     "test:renderer:gfm": "npm run test:gfm -w @mdwrk/markdown-renderer-core",
     "test:renderer:optional-profiles": "npm run test:optional-profiles -w @mdwrk/markdown-renderer-core",
-    "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs"
+    "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs",
+    "test:tree-validation": "node ./tools/governance/validate-tree.mjs",
+    "test:doc-pointer-validation": "node ./tools/governance/validate-doc-pointers.mjs",
+    "test:root-clutter-validation": "node ./tools/governance/validate-root-clutter.mjs",
+    "test:generated-artifact-protection": "node ./tools/governance/validate-generated-artifacts.mjs",
+    "test:claim-language-lint": "node ./tools/governance/lint-claim-language.mjs",
+    "test:wip-notes-validation": "node ./tools/governance/validate-wip-notes.mjs",
+    "test:release-note-validation": "node ./tools/governance/validate-release-notes.mjs",
+    "test:governance": "npm run test:tree-validation && npm run test:doc-pointer-validation && npm run test:root-clutter-validation && npm run test:generated-artifact-protection && npm run test:claim-language-lint && npm run test:wip-notes-validation && npm run test:release-note-validation"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",

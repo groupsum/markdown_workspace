@@ -21,3 +21,9 @@ node_modules
 *.sln
 *.sw?
 *.zip
+
+# Python generated artifacts
+__pycache__/
+*.pyc
+
+.tmp/
