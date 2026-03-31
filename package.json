@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.0-rc.1",
+  "version": "0.2.1-rc.1",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -89,7 +89,15 @@
     "mcp:proof": "node ./tools/mcp/prove-mcp-setup.mjs",
     "test:renderer:gfm": "npm run test:gfm -w @mdwrk/markdown-renderer-core",
     "test:renderer:optional-profiles": "npm run test:optional-profiles -w @mdwrk/markdown-renderer-core",
-    "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs"
+    "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs",
+    "validate:tree": "node ./tools/governance/validate-tree.mjs",
+    "validate:doc-pointers": "node ./tools/governance/validate-doc-pointers.mjs",
+    "validate:root-clutter": "node ./tools/governance/validate-root-clutter.mjs",
+    "validate:generated-artifacts": "node ./tools/governance/validate-generated-artifacts.mjs",
+    "lint:claim-language": "node ./tools/governance/lint-claim-language.mjs",
+    "validate:wip-notes": "node ./tools/governance/validate-wip-notes.mjs",
+    "validate:release-notes": "node ./tools/governance/validate-release-notes.mjs",
+    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",
@@ -104,10 +112,9 @@
     "example": "examples"
   },
   "dependencies": {
-    "markspace---local-first-markdown-workspace": "^0.0.11",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "keywords": [],
-  "license": "ISC"
+  "license": "Apache-2.0"
 }
