@@ -1,5 +1,7 @@
 import type { ExtensionHost } from '@mdwrk/extension-host';
 import { EXTENSION_RUNTIME_VERSION } from '@mdwrk/extension-runtime';
+import { MARKDOWN_EDITOR_REACT_VERSION } from '@mdwrk/markdown-editor-react';
+import { MARKDOWN_RENDERER_REACT_VERSION } from '@mdwrk/markdown-renderer-react';
 import { APP_VERSION } from '../../../constants';
 import type { ActiveEditorBridge } from '../../features/editor/activeEditorBridge';
 import type { ClientDiagnosticsService } from '../../features/diagnostics/clientDiagnosticsService';
@@ -57,6 +59,8 @@ export function createClientExtensionHost(deps: ClientExtensionHostDependencies)
       mode: import.meta.env.DEV ? 'development' : 'production',
       hostVersion: APP_VERSION,
       runtimeVersion: EXTENSION_RUNTIME_VERSION,
+      rendererVersion: MARKDOWN_RENDERER_REACT_VERSION,
+      editorVersion: MARKDOWN_EDITOR_REACT_VERSION,
       grantedCapabilities: [
         'workspace.read',
         'workspace.write',

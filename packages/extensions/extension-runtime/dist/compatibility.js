@@ -70,6 +70,8 @@ export function evaluateExtensionCompatibility(manifest, context = {
     hostVersion: "0.0.0",
     runtimeVersion: EXTENSION_RUNTIME_API_BASELINE,
     themeContractVersion: THEME_CONTRACT_VERSION,
+    rendererVersion: undefined,
+    editorVersion: undefined,
 }) {
     const issues = [];
     if (manifest.manifestVersion !== EXTENSION_MANIFEST_VERSION) {
@@ -85,8 +87,8 @@ export function evaluateExtensionCompatibility(manifest, context = {
         ["runtime", manifest.compatibility.runtime, context.runtimeVersion],
         ["app", manifest.compatibility.app, context.hostVersion],
         ["themeContract", manifest.compatibility.themeContract, context.themeContractVersion],
-        ["renderer", manifest.compatibility.renderer, "0.0.0"],
-        ["editor", manifest.compatibility.editor, "0.0.0"],
+        ["renderer", manifest.compatibility.renderer, context.rendererVersion ?? "0.0.0"],
+        ["editor", manifest.compatibility.editor, context.editorVersion ?? "0.0.0"],
     ];
     for (const [target, expected, actual] of checks) {
         if (expected == null)

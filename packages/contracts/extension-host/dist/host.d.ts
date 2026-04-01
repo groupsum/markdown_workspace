@@ -129,6 +129,8 @@ export interface HostEnvironment {
     readonly mode: "development" | "production" | "test";
     readonly hostVersion: string;
     readonly runtimeVersion: string;
+    readonly rendererVersion?: string;
+    readonly editorVersion?: string;
     readonly grantedCapabilities?: readonly ExtensionCapability[];
 }
 export interface ExtensionHost {
