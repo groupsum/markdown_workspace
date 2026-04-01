@@ -52,49 +52,24 @@ jobs:
       - name: Generate release evidence
         run: npm run release:evidence
 
+      - name: Validate release PR token configuration
+        run: |
+          if [ -z "${{ secrets.CHANGESETS_GITHUB_TOKEN }}" ]; then
+            echo "::warning::CHANGESETS_GITHUB_TOKEN is not configured. Falling back to GITHUB_TOKEN, which cannot create pull requests when 'Allow GitHub Actions to create and approve pull requests' is disabled in repository/org settings."
+          else
+            echo "Using CHANGESETS_GITHUB_TOKEN for release PR creation."
+          fi
+
       - name: Create or update release pull request
         id: changesets
-        if: ${{ secrets.CHANGESETS_GITHUB_TOKEN != '' }}
         uses: changesets/action@v1
         with:
           version: npm run release:version
           commit: 'chore(release): version packages'
           title: 'chore(release): version packages'
-          github-token: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
+          github-token: ${{ secrets.CHANGESETS_GITHUB_TOKEN != '' && secrets.CHANGESETS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN }}
-
-      - name: Version packages directly on default branch (no PR token)
-        id: changesets_direct
-        if: ${{ secrets.CHANGESETS_GITHUB_TOKEN == '' }}
-        run: |
-          echo "CHANGESETS_GITHUB_TOKEN is not configured; using direct versioning mode without creating a pull request."
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          npm run release:version
-
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "hasChangesets=false" >> "$GITHUB_OUTPUT"
-            echo "No pending changesets found."
-            exit 0
-          fi
-
-          git add -A
-          git commit -m "chore(release): version packages"
-          git push
-          echo "hasChangesets=true" >> "$GITHUB_OUTPUT"
-          echo "Version updates committed directly to ${GITHUB_REF_NAME}."
-
-      - name: Resolve changesets state
-        id: changesets_state
-        run: |
-          if [ -n "${{ steps.changesets.outputs.hasChangesets }}" ]; then
-            echo "hasChangesets=${{ steps.changesets.outputs.hasChangesets }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "hasChangesets=${{ steps.changesets_direct.outputs.hasChangesets }}" >> "$GITHUB_OUTPUT"
-          fi
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN != '' && secrets.CHANGESETS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Determine npm publish readiness
         id: publish_gate
@@ -116,7 +91,7 @@ jobs:
           fi
 
       - name: Publish packages to npm
-        if: ${{ steps.changesets_state.outputs.hasChangesets == 'false' && steps.publish_gate.outputs.ready == 'true' }}
+        if: ${{ steps.changesets.outputs.hasChangesets == 'false' && steps.publish_gate.outputs.ready == 'true' }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -124,7 +99,7 @@ jobs:
         run: npm run publish:packages
 
       - name: Skip npm publish
-        if: ${{ steps.changesets_state.outputs.hasChangesets == 'false' && steps.publish_gate.outputs.ready != 'true' }}
+        if: ${{ steps.changesets.outputs.hasChangesets == 'false' && steps.publish_gate.outputs.ready != 'true' }}
         run: echo "Package publication skipped after versioning/evidence generation because npm publishing is not enabled for this repository."
 
       - name: Upload package publish evidence
