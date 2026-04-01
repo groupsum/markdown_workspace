@@ -49,6 +49,7 @@
   font-size: var(--mwe-font-size, 13px);
   line-height: var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)));
   padding: var(--mwe-editor-padding, 16px);
+  text-wrap: auto;
   outline: none;
 }
 
