@@ -193,6 +193,8 @@ export function createExtensionRuntime(options) {
             hostVersion: options.host.environment.hostVersion,
             runtimeVersion: EXTENSION_RUNTIME_VERSION,
             themeContractVersion: THEME_CONTRACT_VERSION,
+            rendererVersion: options.host.environment.rendererVersion,
+            editorVersion: options.host.environment.editorVersion,
         });
         return {
             id: entry.id,
@@ -337,6 +339,8 @@ export function createExtensionRuntime(options) {
             hostVersion: options.host.environment.hostVersion,
             runtimeVersion: EXTENSION_RUNTIME_VERSION,
             themeContractVersion: THEME_CONTRACT_VERSION,
+            rendererVersion: options.host.environment.rendererVersion,
+            editorVersion: options.host.environment.editorVersion,
         });
         state.status = !compatibility.compatible
             ? "incompatible"
@@ -360,6 +364,8 @@ export function createExtensionRuntime(options) {
             hostVersion: options.host.environment.hostVersion,
             runtimeVersion: EXTENSION_RUNTIME_VERSION,
             themeContractVersion: THEME_CONTRACT_VERSION,
+            rendererVersion: options.host.environment.rendererVersion,
+            editorVersion: options.host.environment.editorVersion,
         });
         if (!compatibility.compatible) {
             state.status = "incompatible";

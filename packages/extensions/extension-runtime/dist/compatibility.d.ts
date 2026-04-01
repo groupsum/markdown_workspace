@@ -5,6 +5,8 @@ interface CompatibilityContext {
     readonly hostVersion: string;
     readonly runtimeVersion: string;
     readonly themeContractVersion: string;
+    readonly rendererVersion?: string;
+    readonly editorVersion?: string;
 }
 export declare function satisfiesVersionRange(actual: string, range: string | number | undefined): boolean;
 export declare function evaluateExtensionCompatibility(manifest: ExtensionManifest, context?: CompatibilityContext): ExtensionRuntimeCompatibilityResult;
