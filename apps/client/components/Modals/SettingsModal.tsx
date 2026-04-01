@@ -24,6 +24,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   activeThemeLabel,
 }) => {
   const { t } = useClientI18n();
+  const resolveSidebarLabel = React.useCallback((section: SettingsModalSection): string => {
+    const fallbackLabel = section.title.toUpperCase().replace(/\s+/g, '_');
+    const messageKey = `core.settings.sidebar.${section.id}.label`;
+    return t(messageKey, fallbackLabel);
+  }, [t]);
   const orderedSections = useMemo(() => [...sections], [sections]);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(orderedSections[0]?.id ?? null);
 
@@ -61,7 +66,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 title={section.title}
               >
                 <span className="settings-sidebar-icon">{section.icon}</span>
-                <span className="settings-sidebar-label">{section.title.toUpperCase().replace(/\s+/g, '_')}</span>
+                <span className="settings-sidebar-label">{resolveSidebarLabel(section)}</span>
               </button>
             ))}
           </nav>
