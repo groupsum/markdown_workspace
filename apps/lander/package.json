@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/lander",
   "private": true,
-  "version": "0.0.11-rc.1",
+  "version": "0.0.11",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,9 +15,9 @@
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.9.3",
     "lucide-react": "^0.563.0",
-    "@mdwrk/markdown-renderer-core": "^1.1.0-rc.1",
-    "@mdwrk/markdown-renderer-react": "^1.1.0-rc.1",
-    "@mdwrk/ui-tokens": "^1.2.0-rc.1"
+    "@mdwrk/markdown-renderer-core": "^1.1.0",
+    "@mdwrk/markdown-renderer-react": "^1.1.0",
+    "@mdwrk/ui-tokens": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
