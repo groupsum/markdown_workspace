@@ -4,9 +4,19 @@
     margin: 12mm;
   }
 
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    background: var(--bg-app, #0b0f14) !important;
+  }
+
   body,
   .chassis-root {
-    background: #fff;
+    background: var(--bg-app, #0b0f14) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -30,24 +40,41 @@
 
   .chassis-root {
     border: none;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    padding: 0 !important;
   }
 
   .chassis-scaler {
     grid-template-areas: "main";
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     gap: 0;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .chassis-body,
+  .workspace-manifold,
+  .workspace-stage,
+  .editor-pane-container,
+  .editor-pane-shell,
+  .editor-pane-body,
+  .editor-pane-column,
+  .preview-pane,
+  .markdown-body {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
   }
 
   .workspace-manifold {
     gap: 0;
-  }
-
-  .workspace-stage,
-  .editor-pane-shell,
-  .editor-pane-body,
-  .preview-pane {
-    overflow: visible;
+    display: block;
   }
 
   .editor-layout-wrapper,
@@ -67,6 +94,13 @@
 
   .preview-pane {
     padding: 0 !important;
-    background: transparent;
+    background: transparent !important;
+  }
+
+  .markdown-body {
+    background: var(--bg-panel, #11151a) !important;
+    padding: 10mm !important;
+    box-sizing: border-box;
+    margin: 0 !important;
   }
 }

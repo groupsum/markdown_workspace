@@ -82,7 +82,7 @@
   border: 1px solid var(--border-color);
   padding: 2px 4px;
   background: var(--bg-inset);
-  font-size: calc(10px * var(--ui-scale));
+  font-size: calc(12px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
   height: 24px;

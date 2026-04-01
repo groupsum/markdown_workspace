@@ -38,23 +38,6 @@
   color: var(--accent);
 }
 
-.git-close-btn {
-  width: 26px;
-  height: 26px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--fg-muted);
-  background: var(--bg-panel);
-  border: var(--border-width) solid var(--border-color);
-  border-radius: 6px;
-}
-
-.git-close-btn:hover {
-  color: var(--fg-primary);
-  border-color: var(--border-color);
-}
-
 .git-body {
   flex: 1;
   display: flex;
@@ -63,5 +46,22 @@
   padding: 12px;
   overflow-y: auto;
   background: transparent;
+}
+
+.git-body.is-collapsed {
+  display: none;
+}
+
+.git-section-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.git-section-title-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
