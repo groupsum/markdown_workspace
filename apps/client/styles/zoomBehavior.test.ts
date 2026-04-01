@@ -30,17 +30,15 @@ describe('zoom scaling boundaries', () => {
   it('enforces zoom bounds at 70% minimum and 150% maximum', () => {
     const uiStateTs = read('../hooks/useUIState.ts');
 
-    expect(uiStateTs).toContain('const MIN_ZOOM = 0.7;');
-    expect(uiStateTs).toContain('const MAX_ZOOM = 1.5;');
+    expect(uiStateTs).toContain('Math.max(0.7, Math.min(1.5, zoom + delta))');
   });
 
-  it('uses a 1.2 baseline UI scale so 100% zoom maps to ui-scale 1.2', () => {
+  it('applies zoom directly to --ui-scale in chassis effect', () => {
     const rootCss = read('./base/root.css');
     const chassisTsx = read('../components/Chassis/Chassis.tsx');
 
     expect(rootCss).toContain('--ui-scale: 1.3;');
-    expect(chassisTsx).toContain('const BASE_UI_SCALE_MULTIPLIER = 1.2;');
-    expect(chassisTsx).toContain("document.documentElement.style.setProperty('--ui-scale', String(zoom * BASE_UI_SCALE_MULTIPLIER));");
+    expect(chassisTsx).toContain("document.documentElement.style.setProperty('--ui-scale', String(zoom));");
   });
 
   it('continues scaling typography, icons, and controls with --ui-scale', () => {
