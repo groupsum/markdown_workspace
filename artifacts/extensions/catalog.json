@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-03-31T05:49:05.000Z",
+  "generatedAt": "2026-04-01T00:40:47.119Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "baseUrl": "./",
   "ok": true,
   "extensions": [
     {
-      "entryId": "external.catalog-hello@1.1.0-rc.1",
+      "entryId": "external.catalog-hello@1.1.0",
       "extensionId": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.0-rc.1",
+      "version": "1.1.0",
       "displayName": {
         "defaultMessage": "Catalog Hello",
         "key": "manifest.displayName",
@@ -51,19 +51,19 @@
         "en"
       ],
       "urls": {
-        "manifest": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/manifest.json",
-        "signedManifest": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/signed-manifest.json",
-        "module": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/dist/index.js",
-        "integrity": "artifacts/extensions/external.catalog-hello/1.1.0-rc.1/integrity.json"
+        "manifest": "artifacts/extensions/external.catalog-hello/1.1.0/manifest.json",
+        "signedManifest": "artifacts/extensions/external.catalog-hello/1.1.0/signed-manifest.json",
+        "module": "artifacts/extensions/external.catalog-hello/1.1.0/dist/index.js",
+        "integrity": "artifacts/extensions/external.catalog-hello/1.1.0/integrity.json"
       },
       "integrity": {
         "manifest": {
           "algorithm": "sha256",
-          "digest": "804f968bffd6d9603c984b9b4a8db51a46578013f6adc802590a3d5dc5a06c0d"
+          "digest": "8b5693320833a81395d5798eb4cce87c66beb30814336dda37dad5afbab491e9"
         },
         "module": {
           "algorithm": "sha256",
-          "digest": "92e150b975f628ca2af2221e9ede0ff391a5283ab395bf1b794a65277ba217e6"
+          "digest": "eb13f1209a49bf72f23eafe6cc06f5eba7f58759502dd78c7f34386093b0a335"
         }
       },
       "support": {
