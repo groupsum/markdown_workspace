@@ -30,6 +30,9 @@ export const DEFAULT_MARKDOWN_PROFILE_CONFIG: MarkdownProfileConfig = Object.fre
   trustedHtmlPreview: false,
 });
 
+let lastLocalStorageRawConfig: string | null = null;
+let lastLocalStorageNormalizedConfig: MarkdownProfileConfig = DEFAULT_MARKDOWN_PROFILE_CONFIG;
+
 async function getStorageService() {
   try {
     if (typeof indexedDB === 'undefined') {
@@ -82,12 +85,23 @@ export function readStoredMarkdownProfileConfigSync(): MarkdownProfileConfig {
 
   const raw = window.localStorage.getItem(MARKDOWN_PROFILE_CONFIG_LOCAL_STORAGE_KEY);
   if (!raw) {
+    lastLocalStorageRawConfig = null;
+    lastLocalStorageNormalizedConfig = DEFAULT_MARKDOWN_PROFILE_CONFIG;
     return DEFAULT_MARKDOWN_PROFILE_CONFIG;
   }
 
+  if (raw === lastLocalStorageRawConfig) {
+    return lastLocalStorageNormalizedConfig;
+  }
+
   try {
-    return normalizeMarkdownProfileConfig(JSON.parse(raw));
+    const normalized = normalizeMarkdownProfileConfig(JSON.parse(raw));
+    lastLocalStorageRawConfig = raw;
+    lastLocalStorageNormalizedConfig = normalized;
+    return normalized;
   } catch {
+    lastLocalStorageRawConfig = null;
+    lastLocalStorageNormalizedConfig = DEFAULT_MARKDOWN_PROFILE_CONFIG;
     return DEFAULT_MARKDOWN_PROFILE_CONFIG;
   }
 }
