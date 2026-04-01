@@ -1,5 +1,5 @@
 import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
-import { THEME_CONTRACT_VERSION } from "@mdwrk/theme-contract";
+import { EXTENSION_RUNTIME_API_BASELINE, THEME_CONTRACT_BASELINE, } from "@mdwrk/extension-manifest";
 import { createFetchExtensionArtifactTransport, evaluateCatalogEntryPolicy, fetchInstallableCatalogPayload, validateCatalogDocument, } from "./catalog.js";
 import { evaluateExtensionCompatibility } from "./compatibility.js";
 import { createExtensionLoader } from "./loader.js";
@@ -191,8 +191,8 @@ export function createExtensionRuntime(options) {
         const compatibility = evaluateExtensionCompatibility(entry.manifest, {
             hostApiVersion: options.host.apiVersion || EXTENSION_HOST_API_VERSION,
             hostVersion: options.host.environment.hostVersion,
-            runtimeVersion: EXTENSION_RUNTIME_VERSION,
-            themeContractVersion: THEME_CONTRACT_VERSION,
+            runtimeVersion: EXTENSION_RUNTIME_API_BASELINE,
+            themeContractVersion: THEME_CONTRACT_BASELINE,
             rendererVersion: options.host.environment.rendererVersion,
             editorVersion: options.host.environment.editorVersion,
         });
@@ -337,8 +337,8 @@ export function createExtensionRuntime(options) {
         const compatibility = evaluateExtensionCompatibility(state.entry.manifest, {
             hostApiVersion: options.host.apiVersion || EXTENSION_HOST_API_VERSION,
             hostVersion: options.host.environment.hostVersion,
-            runtimeVersion: EXTENSION_RUNTIME_VERSION,
-            themeContractVersion: THEME_CONTRACT_VERSION,
+            runtimeVersion: EXTENSION_RUNTIME_API_BASELINE,
+            themeContractVersion: THEME_CONTRACT_BASELINE,
             rendererVersion: options.host.environment.rendererVersion,
             editorVersion: options.host.environment.editorVersion,
         });
@@ -362,8 +362,8 @@ export function createExtensionRuntime(options) {
         const compatibility = evaluateExtensionCompatibility(state.entry.manifest, {
             hostApiVersion: options.host.apiVersion || EXTENSION_HOST_API_VERSION,
             hostVersion: options.host.environment.hostVersion,
-            runtimeVersion: EXTENSION_RUNTIME_VERSION,
-            themeContractVersion: THEME_CONTRACT_VERSION,
+            runtimeVersion: EXTENSION_RUNTIME_API_BASELINE,
+            themeContractVersion: THEME_CONTRACT_BASELINE,
             rendererVersion: options.host.environment.rendererVersion,
             editorVersion: options.host.environment.editorVersion,
         });
@@ -704,8 +704,10 @@ export function createExtensionRuntime(options) {
             const compatibility = evaluateExtensionCompatibility(payload.manifest, {
                 hostApiVersion: options.host.apiVersion || EXTENSION_HOST_API_VERSION,
                 hostVersion: options.host.environment.hostVersion,
-                runtimeVersion: EXTENSION_RUNTIME_VERSION,
-                themeContractVersion: THEME_CONTRACT_VERSION,
+                runtimeVersion: EXTENSION_RUNTIME_API_BASELINE,
+                themeContractVersion: THEME_CONTRACT_BASELINE,
+                rendererVersion: options.host.environment.rendererVersion,
+                editorVersion: options.host.environment.editorVersion,
             });
             if (!compatibility.compatible) {
                 throw new Error(`Extension '${payload.manifest.id}' is incompatible with this host: ${compatibility.issues.map((issue) => issue.message).join(" ")}`);

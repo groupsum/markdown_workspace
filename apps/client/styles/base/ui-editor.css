@@ -85,7 +85,8 @@
 .editor-pane-column {
   height: 100%;
   background: var(--bg-panel);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
