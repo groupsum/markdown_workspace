@@ -1,9 +1,11 @@
 /* Lattice Architect: Aggregate Manifest */
 /* Static CSS - Zero Runtime Processing Required */
 
-/* Shared package styles are imported from styles/index.tsx to keep package assets reusable. */
+/* Order matters: Root defines variables, UI uses them, Themes override them */
+@import url("./base/root.css");
 @import url("./base/viewports.css");
 @import url("./base/ui.css");
 @import url("./base/chassis.css");
+@import url("./base/markdown.css");
 @import url("./base/project.css");
 @import url("./base/modals.css");

@@ -14,6 +14,9 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--fg-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .git-diff-legend {
