@@ -1,0 +1,19 @@
+
+> markdown_workspace@0.2.4 test:markdown-profile-snapshot
+> npm run test:run -w apps/client -- src/features/markdownProfiles/profileConfig.test.ts
+
+
+> @mdwrk/mdwrkspace@1.4.2 test:run
+> vitest run src/features/markdownProfiles/profileConfig.test.ts
+
+
+ RUN  v2.1.9 /workspace/markdown_workspace/apps/client
+
+ ✓ src/features/markdownProfiles/profileConfig.test.ts (2 tests) 8ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  02:21:31
+   Duration  1.06s (transform 379ms, setup 0ms, collect 462ms, tests 8ms, environment 0ms, prepare 154ms)
+
+

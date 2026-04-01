@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.3",
+  "version": "0.2.4",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -73,7 +73,7 @@
     "validate:compatibility": "node ./tools/conformance/validate-compatibility.mjs",
     "validate:boundaries": "node ./tools/conformance/check-package-boundaries.mjs",
     "validate:exports": "node ./tools/conformance/validate-package-exports.mjs",
-    "conformance": "npm run validate:manifests && npm run validate:compatibility && npm run validate:boundaries && npm run validate:exports && npm run extension:bundle && npm run extension:sign && npm run validate:extension-artifacts && node ./tools/conformance/generate-conformance-artifacts.mjs",
+    "conformance": "npm run validate:manifests && npm run validate:compatibility && npm run validate:boundaries && npm run validate:exports && npm run extension:bundle && npm run extension:sign && npm run validate:extension-artifacts && npm run claim:markdown-profile-snapshot && node ./tools/conformance/generate-conformance-artifacts.mjs",
     "pack:packages": "node ./tools/release/pack-workspaces.mjs",
     "extension:bundle": "node ./tools/extensions/build-installable-extensions.mjs",
     "extension:sign": "node ./tools/extensions/sign-extension-artifacts.mjs",
@@ -90,6 +90,8 @@
     "test:renderer:gfm": "npm run test:gfm -w @mdwrk/markdown-renderer-core",
     "test:renderer:optional-profiles": "npm run test:optional-profiles -w @mdwrk/markdown-renderer-core",
     "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs",
+    "test:markdown-profile-snapshot": "npm run test:run -w apps/client -- src/features/markdownProfiles/profileConfig.test.ts",
+    "claim:markdown-profile-snapshot": "node ./tools/conformance/generate-markdown-profile-snapshot-claim.mjs",
     "validate:tree": "node ./tools/governance/validate-tree.mjs",
     "validate:doc-pointers": "node ./tools/governance/validate-doc-pointers.mjs",
     "validate:root-clutter": "node ./tools/governance/validate-root-clutter.mjs",

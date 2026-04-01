@@ -51,6 +51,14 @@ jobs:
       - name: Run conformance validators
         run: npm run conformance
 
+      - name: Upload markdown profile claim evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-profile-claim
+          path: |
+            artifacts/conformance/latest/markdown-profile-snapshot-claim.json
+            artifacts/conformance/latest/markdown-profile-snapshot-claim-output.txt
+
       - name: Upload conformance bundle
         uses: actions/upload-artifact@v4
         with:

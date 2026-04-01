@@ -87,6 +87,17 @@ jobs:
       - name: Run governance validations
         run: npm run ci:governance
 
+      - name: Run markdown profile claims gate
+        run: npm run claim:markdown-profile-snapshot
+
+      - name: Upload markdown profile claim evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: markdown-profile-claim
+          path: |
+            artifacts/conformance/latest/markdown-profile-snapshot-claim.json
+            artifacts/conformance/latest/markdown-profile-snapshot-claim-output.txt
+
   package-matrix:
     name: Package group verify (${{ matrix.group.name }})
     needs: discover

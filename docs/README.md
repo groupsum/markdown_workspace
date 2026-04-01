@@ -91,6 +91,7 @@ This directory contains the architecture, current-state, conformance, and operat
 - `conformance/optional-profiles-phase4.md` — Phase 4 optional-profile checkpoint scope, in-scope vs out-of-scope profiles, evidence, and limits.
 - `conformance/editor-authoring-phase5.md` — Phase 5 editor-authoring checkpoint scope, evidence, and limits.
 - `conformance/preview-export-phase6.md` — Phase 6 preview/export/render-policy checkpoint scope, evidence, and limits.
+- `conformance/markdown-profile-snapshot-claim.md` — claim and gate definition for stable markdown-profile snapshots during toggle operations.
 - `conformance/shell-parity-phase7.md` — Phase 7 shell parity checkpoint scope, evidence, and limits.
 - `conformance/settings-data-git-phase8.md` — Phase 8 settings/data/session/Git parity checkpoint scope, evidence, and limits.
 - `conformance/theme-parity-phase9.md` — Phase 9 theme inventory, token contract, and visual parity checkpoint scope, evidence, and limits.

@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-04-01T02:21:32.389Z",
+  "claimId": "markdown-profile-snapshot-stability",
+  "gateId": "gate-markdown-profile-snapshot-stability",
+  "status": "green",
+  "command": "npm run test:markdown-profile-snapshot",
+  "evidence": [
+    "apps/client/src/features/markdownProfiles/profileConfig.ts",
+    "apps/client/src/features/markdownProfiles/profileConfig.test.ts"
+  ]
+}
