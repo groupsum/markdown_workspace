@@ -4,7 +4,7 @@ export const extensionCatalogHelloManifest: ExtensionManifest = {
   manifestVersion: 1,
   id: "external.catalog-hello",
   packageName: "@mdwrk/extension-catalog-hello",
-  version: "1.1.0",
+  version: "1.1.1",
   displayName: {
     defaultMessage: "Catalog Hello",
     key: "manifest.displayName",

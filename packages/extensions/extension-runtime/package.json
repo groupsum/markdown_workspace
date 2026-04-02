@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-runtime",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,9 +23,9 @@
   ],
   "description": "Runtime registry, loader, compatibility checks, activation lifecycle, and persisted state for Markdown Workspace extensions.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.1",
-    "@mdwrk/extension-manifest": "^1.0.0",
-    "@mdwrk/theme-contract": "^1.1.0"
+    "@mdwrk/extension-host": "^1.0.2",
+    "@mdwrk/extension-manifest": "^1.0.1",
+    "@mdwrk/theme-contract": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {

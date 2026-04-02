@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -26,7 +26,7 @@
     "themes"
   ],
   "dependencies": {
-    "@mdwrk/theme-contract": "^1.1.0"
+    "@mdwrk/theme-contract": "^1.1.1"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

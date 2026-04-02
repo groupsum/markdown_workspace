@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/mdwrkspace",
   "private": false,
-  "version": "1.4.3",
+  "version": "1.4.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -28,24 +28,24 @@
     "access": "public"
   },
   "dependencies": {
-    "@mdwrk/extension-gemini-agent": "^1.1.0",
-    "@mdwrk/extension-host": "^1.0.1",
-    "@mdwrk/extension-manager": "^1.1.0",
-    "@mdwrk/extension-manifest": "^1.0.0",
-    "@mdwrk/extension-runtime": "^1.1.0",
-    "@mdwrk/i18n": "^1.2.0",
-    "@mdwrk/icons": "^1.0.0",
-    "@mdwrk/markdown-editor-react": "^1.1.0",
-    "@mdwrk/markdown-renderer-core": "^1.1.0",
-    "@mdwrk/markdown-renderer-react": "^1.1.0",
-    "@mdwrk/theme-contract": "^1.1.0",
-    "@mdwrk/ui-tokens": "^1.2.0",
+    "@mdwrk/extension-gemini-agent": "^1.1.1",
+    "@mdwrk/extension-host": "^1.0.2",
+    "@mdwrk/extension-manager": "^1.1.1",
+    "@mdwrk/extension-manifest": "^1.0.1",
+    "@mdwrk/extension-runtime": "^1.1.1",
+    "@mdwrk/i18n": "^1.2.1",
+    "@mdwrk/icons": "^1.0.1",
+    "@mdwrk/markdown-editor-react": "^1.1.1",
+    "@mdwrk/markdown-renderer-core": "^1.1.1",
+    "@mdwrk/markdown-renderer-react": "^1.1.1",
+    "@mdwrk/theme-contract": "^1.1.1",
+    "@mdwrk/ui-tokens": "^1.2.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",
-    "@mdwrk/extension-theme-studio": "^1.1.0"
+    "@mdwrk/extension-theme-studio": "^1.1.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",

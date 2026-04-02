@@ -79,6 +79,11 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
     }
   };
 
+  const stopSummaryToggle = (event: { preventDefault: () => void; stopPropagation: () => void }): void => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   const enableLabel = formatLabel(extensionManagerLabels.actionEnable);
   const disableLabel = formatLabel(extensionManagerLabels.actionDisable);
   const activateLabel = formatLabel(extensionManagerLabels.actionActivate);
@@ -86,7 +91,9 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
 
   return (
     <article className="settings-card settings-card-stack" style={{ display: "grid", gap: 14 }}>
-      <header style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "start" }}>
+      <details open style={{ display: "grid", gap: 12 }}>
+        <summary style={{ listStyle: "none", cursor: "pointer" }}>
+          <header style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "start" }}>
         <div style={{ display: "inline-flex", width: 30, height: 30, borderRadius: 8, alignItems: "center", justifyContent: "center", border: "1px solid var(--border-primary)" }}>
           <ExtensionManifestIcon icon={extension.manifest.icon} size={18} />
         </div>
@@ -104,20 +111,22 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
           <button
             className="modal-btn"
-            onClick={() => void toggleEnabled()}
+            onClick={(event) => { stopSummaryToggle(event); void toggleEnabled(); }}
             disabled={busy}
             aria-label={`${extension.enabled ? disableLabel : enableLabel} ${extension.id}`}
+            title={extension.enabled ? disableLabel : enableLabel}
           >
-            {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />} {extension.enabled ? disableLabel : enableLabel}
+            {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />}
           </button>
-          <button className="modal-btn modal-btn-primary" onClick={() => void activate()} disabled={busy || !extension.enabled}>
-            {activateLabel}
+          <button className="modal-btn modal-btn-primary" onClick={(event) => { stopSummaryToggle(event); void activate(); }} disabled={busy || !extension.enabled} aria-label={`${activateLabel} ${extension.id}`} title={activateLabel}>
+            <CheckCircle2 size={14} />
           </button>
-          <button className="modal-btn" onClick={() => void deactivate()} disabled={busy || extension.status !== "active"}>
-            {deactivateLabel}
+          <button className="modal-btn" onClick={(event) => { stopSummaryToggle(event); void deactivate(); }} disabled={busy || extension.status !== "active"} aria-label={`${deactivateLabel} ${extension.id}`} title={deactivateLabel}>
+            <CircleSlash2 size={14} />
           </button>
         </div>
-      </header>
+          </header>
+        </summary>
 
       <div className="settings-session-grid">
         <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{extension.manifest.packageName}</span></div>
@@ -192,6 +201,7 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
           </div>
         </details>
       )}
+      </details>
     </article>
   );
 };
