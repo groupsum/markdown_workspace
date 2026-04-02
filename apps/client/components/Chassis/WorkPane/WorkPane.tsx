@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FileTree } from './Explorer/FileTree';
 import { EditorPane } from './Stage/EditorPane';
-import { Plus, Minus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
+import { Plus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
 
@@ -154,9 +154,6 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
               disabled={!hasSelection}
             >
               <Trash2 size={12} />
-            </button>
-            <button className="panel-icon-btn" title="Collapse" onClick={() => onSidebarToggle(false)}>
-              <Minus size={12}/>
             </button>
           </div>
         </div>
