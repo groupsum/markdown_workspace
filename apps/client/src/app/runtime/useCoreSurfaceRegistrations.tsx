@@ -301,7 +301,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         icon: { kind: 'lucide', name: 'GitBranch' },
         group: 'workspace.primary',
         order: 40,
-        target: { kind: 'view', viewId: 'core.git-pane' },
+        target: { kind: 'command', commandId: 'core.toggle-git-pane' },
         isActive: () => runtime.getSnapshot().app.state.appMode === 'git',
       }),
       services.actionRail.register({
