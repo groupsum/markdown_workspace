@@ -11,7 +11,7 @@ import type {
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import { createExtensionRuntime } from "../src/runtime.js";
 import { evaluateExtensionCompatibility } from "../src/compatibility.js";
-import { createInMemoryExtensionRuntimeStorage, getExtensionConfigKey } from "../src/storage.js";
+import { createInMemoryExtensionRuntimeStorage, getExtensionActivationStateKey, getExtensionConfigKey } from "../src/storage.js";
 import { validateExtensionManifest } from "../src/validation.js";
 import type { ExtensionRuntimeRegistrationSink } from "../src/types.js";
 
@@ -331,5 +331,39 @@ describe("extension-runtime", () => {
     await runtime.activate(manifest.id);
     expect(runtime.get(manifest.id)?.status).toBe("active");
     expect(activated).toBe(1);
+  });
+
+  it("rehydrates lazy activation intent from storage", async () => {
+    const { host } = createHost();
+    const { sink } = createSink();
+    const storage = createInMemoryExtensionRuntimeStorage();
+    const manifest = createManifest("lazy-persisted");
+    let activated = 0;
+
+    const registerRuntime = () => {
+      const runtime = createExtensionRuntime({ host, registrationSink: sink, storage });
+      runtime.registerBundledExtension({
+        manifest,
+        activation: "lazy",
+        load: async () => ({
+          manifest,
+          async activate() {
+            activated += 1;
+          },
+        }),
+      });
+      return runtime;
+    };
+
+    const firstRuntime = registerRuntime();
+    await firstRuntime.start();
+    await firstRuntime.activate(manifest.id);
+    expect(await storage.get(getExtensionActivationStateKey(manifest.id))).toBe(true);
+    expect(activated).toBe(1);
+
+    const secondRuntime = registerRuntime();
+    await secondRuntime.start();
+    expect(secondRuntime.get(manifest.id)?.status).toBe("active");
+    expect(activated).toBe(2);
   });
 });

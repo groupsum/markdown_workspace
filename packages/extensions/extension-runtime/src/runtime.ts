@@ -37,6 +37,7 @@ import { createExtensionRegistry } from "./registry.js";
 import {
   createExtensionConfigurationStore,
   EXTENSION_INSTALL_INDEX_KEY,
+  getExtensionActivationStateKey,
   getExtensionEnabledStateKey,
   getInstalledExtensionModuleKey,
   getInstalledExtensionRecordKey,
@@ -737,7 +738,8 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
         const state = ensureState(entry);
         if (!state.enabled) continue;
         if (state.status === "incompatible") continue;
-        if (entry.activation === "eager") {
+        const persistedActive = await options.storage.get<boolean>(getExtensionActivationStateKey(entry.id));
+        if (persistedActive || entry.activation === "eager") {
           await activateState(state);
         }
       }
@@ -760,6 +762,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       if (!state.enabled) {
         await this.setEnabled(id, true);
       }
+      await options.storage.set(getExtensionActivationStateKey(id), true);
       await activateState(state);
     },
     async ensureActivated(id: string): Promise<void> {
@@ -771,6 +774,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
         return;
       }
       const state = ensureState(entry);
+      await options.storage.set(getExtensionActivationStateKey(id), false);
       await deactivateState(state);
     },
     async setEnabled(id: string, enabled: boolean): Promise<void> {
@@ -782,6 +786,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       state.enabled = enabled;
       await options.storage.set(getExtensionEnabledStateKey(id), enabled);
       if (!enabled) {
+        await options.storage.set(getExtensionActivationStateKey(id), false);
         await deactivateState(state);
         state.status = "disabled";
       } else {
@@ -869,6 +874,8 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       states.delete(id);
       await options.storage.remove(getInstalledExtensionRecordKey(id));
       await options.storage.remove(getInstalledExtensionModuleKey(id));
+      await options.storage.remove(getExtensionEnabledStateKey(id));
+      await options.storage.remove(getExtensionActivationStateKey(id));
       await writeInstalledIndex((await readInstalledIndex()).filter((value) => value !== id));
       emitSnapshotChange();
     },

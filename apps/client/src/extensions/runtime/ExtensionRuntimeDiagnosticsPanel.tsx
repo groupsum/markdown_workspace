@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSyncExternalStore } from 'react';
+import { CircleSlash2, Power, PowerOff } from 'lucide-react';
 import { useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { useExtensionRuntime } from './ExtensionRuntimeContext';
 
@@ -15,8 +16,12 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
         {runtimeSnapshot.extensions.map((extension) => {
           const hostDiagnostics = diagnosticsSnapshot.records[extension.id] ?? [];
           return (
-            <div key={extension.id} className="settings-card settings-card-stack">
-              <div className="settings-session-grid">
+            <details key={extension.id} className="settings-card settings-card-stack" open>
+              <summary className="flex items-center justify-between cursor-pointer">
+                <span className="font-bold text-[11px] uppercase">{services.i18n.format(extension.manifest.displayName)}</span>
+                <span className="text-[10px] uppercase text-[var(--fg-muted)]">{extension.status.toUpperCase()}</span>
+              </summary>
+              <div className="settings-session-grid mt-3">
                 <div className="settings-session-item"><span className="settings-session-label">EXTENSION</span><span className="settings-session-value">{services.i18n.format(extension.manifest.displayName)}</span></div>
                 <div className="settings-session-item"><span className="settings-session-label">ID</span><span className="settings-session-value">{extension.id}</span></div>
                 <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{extension.status.toUpperCase()}</span></div>
@@ -26,9 +31,9 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <button className="modal-btn" onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}>{extension.enabled ? 'DISABLE' : 'ENABLE'}</button>
-                <button className="modal-btn modal-btn-primary" onClick={() => void runtime.activate(extension.id)} disabled={!extension.enabled}>ACTIVATE</button>
-                <button className="modal-btn" onClick={() => void runtime.deactivate(extension.id)} disabled={extension.status !== 'active'}>DEACTIVATE</button>
+                <button className="modal-btn" title={extension.enabled ? 'Disable extension' : 'Enable extension'} aria-label={extension.enabled ? 'Disable extension' : 'Enable extension'} onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}>{extension.enabled ? <PowerOff size={14} /> : <Power size={14} />}</button>
+                <button className="modal-btn modal-btn-primary" title="Activate extension" aria-label="Activate extension" onClick={() => void runtime.activate(extension.id)} disabled={!extension.enabled}><Power size={14} /></button>
+                <button className="modal-btn" title="Deactivate extension" aria-label="Deactivate extension" onClick={() => void runtime.deactivate(extension.id)} disabled={extension.status !== 'active'}><CircleSlash2 size={14} /></button>
               </div>
 
               {extension.missingCapabilities.length > 0 && (
@@ -63,7 +68,7 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
                   </ul>
                 </div>
               )}
-            </div>
+            </details>
           );
         })}
       </div>

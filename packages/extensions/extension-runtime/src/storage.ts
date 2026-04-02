@@ -2,11 +2,13 @@ import type { Disposable, ExtensionConfigurationStore } from "@mdwrk/extension-h
 import type { ExtensionRuntimeStorage } from "./types.js";
 
 export const EXTENSION_ENABLED_STATE_KEY_SUFFIX = "enabled" as const;
+export const EXTENSION_ACTIVATION_STATE_KEY_SUFFIX = "active" as const;
 export const EXTENSION_CONFIG_KEY_SEGMENT = "config" as const;
 export const EXTENSION_INSTALL_SEGMENT = "install" as const;
 export const EXTENSION_INSTALL_INDEX_KEY = `ext:${EXTENSION_INSTALL_SEGMENT}:index` as const;
 
 export const getExtensionEnabledStateKey = (extensionId: string): string => `ext:${extensionId}:${EXTENSION_ENABLED_STATE_KEY_SUFFIX}`;
+export const getExtensionActivationStateKey = (extensionId: string): string => `ext:${extensionId}:${EXTENSION_ACTIVATION_STATE_KEY_SUFFIX}`;
 export const getExtensionConfigKey = (extensionId: string, key: string): string => `ext:${extensionId}:${EXTENSION_CONFIG_KEY_SEGMENT}:${key}`;
 export const getInstalledExtensionRecordKey = (extensionId: string): string => `ext:${extensionId}:${EXTENSION_INSTALL_SEGMENT}:record`;
 export const getInstalledExtensionModuleKey = (extensionId: string): string => `ext:${extensionId}:${EXTENSION_INSTALL_SEGMENT}:module`;

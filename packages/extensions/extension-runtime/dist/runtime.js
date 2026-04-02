@@ -4,7 +4,7 @@ import { createFetchExtensionArtifactTransport, evaluateCatalogEntryPolicy, fetc
 import { evaluateExtensionCompatibility } from "./compatibility.js";
 import { createExtensionLoader } from "./loader.js";
 import { createExtensionRegistry } from "./registry.js";
-import { createExtensionConfigurationStore, EXTENSION_INSTALL_INDEX_KEY, getExtensionEnabledStateKey, getInstalledExtensionModuleKey, getInstalledExtensionRecordKey, } from "./storage.js";
+import { createExtensionConfigurationStore, EXTENSION_INSTALL_INDEX_KEY, getExtensionActivationStateKey, getExtensionEnabledStateKey, getInstalledExtensionModuleKey, getInstalledExtensionRecordKey, } from "./storage.js";
 import { EXTENSION_RUNTIME_VERSION } from "./version.js";
 const createEmitter = () => {
     const listeners = new Set();
@@ -627,7 +627,8 @@ export function createExtensionRuntime(options) {
                     continue;
                 if (state.status === "incompatible")
                     continue;
-                if (entry.activation === "eager") {
+                const persistedActive = await options.storage.get(getExtensionActivationStateKey(entry.id));
+                if (persistedActive || entry.activation === "eager") {
                     await activateState(state);
                 }
             }
@@ -650,6 +651,7 @@ export function createExtensionRuntime(options) {
             if (!state.enabled) {
                 await this.setEnabled(id, true);
             }
+            await options.storage.set(getExtensionActivationStateKey(id), true);
             await activateState(state);
         },
         async ensureActivated(id) {
@@ -661,6 +663,7 @@ export function createExtensionRuntime(options) {
                 return;
             }
             const state = ensureState(entry);
+            await options.storage.set(getExtensionActivationStateKey(id), false);
             await deactivateState(state);
         },
         async setEnabled(id, enabled) {
@@ -672,6 +675,7 @@ export function createExtensionRuntime(options) {
             state.enabled = enabled;
             await options.storage.set(getExtensionEnabledStateKey(id), enabled);
             if (!enabled) {
+                await options.storage.set(getExtensionActivationStateKey(id), false);
                 await deactivateState(state);
                 state.status = "disabled";
             }
@@ -759,6 +763,8 @@ export function createExtensionRuntime(options) {
             states.delete(id);
             await options.storage.remove(getInstalledExtensionRecordKey(id));
             await options.storage.remove(getInstalledExtensionModuleKey(id));
+            await options.storage.remove(getExtensionEnabledStateKey(id));
+            await options.storage.remove(getExtensionActivationStateKey(id));
             await writeInstalledIndex((await readInstalledIndex()).filter((value) => value !== id));
             emitSnapshotChange();
         },

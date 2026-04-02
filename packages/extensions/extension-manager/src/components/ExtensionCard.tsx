@@ -83,41 +83,48 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
   const disableLabel = formatLabel(extensionManagerLabels.actionDisable);
   const activateLabel = formatLabel(extensionManagerLabels.actionActivate);
   const deactivateLabel = formatLabel(extensionManagerLabels.actionDeactivate);
+  const detailsOpenByDefault = defaults.showCompatibility || defaults.showDiagnostics || extension.status === "error" || !extension.compatibility.compatible;
 
   return (
-    <article className="settings-card settings-card-stack" style={{ display: "grid", gap: 14 }}>
-      <header style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "start" }}>
-        <div style={{ display: "inline-flex", width: 30, height: 30, borderRadius: 8, alignItems: "center", justifyContent: "center", border: "1px solid var(--border-primary)" }}>
-          <ExtensionManifestIcon icon={extension.manifest.icon} size={18} />
-        </div>
-        <div style={{ display: "grid", gap: 4 }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-            <strong style={{ fontSize: 14 }}>{formatLabel(extension.manifest.displayName)}</strong>
-            <span style={pillStyle}>{extension.source === "bundled" ? formatLabel(extensionManagerLabels.sourceBundled) : formatLabel(extensionManagerLabels.sourceInstalled)}</span>
-            <ExtensionStatusBadge status={extension.status} />
+    <details className="settings-card settings-card-stack" style={{ display: "grid", gap: 14 }} defaultOpen={detailsOpenByDefault}>
+      <summary style={{ listStyle: "none", cursor: "pointer" }}>
+        <header style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "center" }}>
+          <div style={{ display: "inline-flex", width: 30, height: 30, borderRadius: 8, alignItems: "center", justifyContent: "center", border: "1px solid var(--border-primary)" }}>
+            <ExtensionManifestIcon icon={extension.manifest.icon} size={18} />
           </div>
-          <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{extension.id}</span>
-          <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.6 }}>
-            {formatLabel(extension.manifest.description)}
-          </p>
-        </div>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
+          <div style={{ display: "grid", gap: 4 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+              <strong style={{ fontSize: 14 }}>{formatLabel(extension.manifest.displayName)}</strong>
+              <span style={pillStyle}>{extension.source === "bundled" ? formatLabel(extensionManagerLabels.sourceBundled) : formatLabel(extensionManagerLabels.sourceInstalled)}</span>
+              <ExtensionStatusBadge status={extension.status} />
+            </div>
+            <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{extension.id}</span>
+          </div>
+          <ChevronsUpDown size={14} />
+        </header>
+      </summary>
+
+      <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.6 }}>
+        {formatLabel(extension.manifest.description)}
+      </p>
+
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "flex-end" }}>
           <button
             className="modal-btn"
             onClick={() => void toggleEnabled()}
             disabled={busy}
             aria-label={`${extension.enabled ? disableLabel : enableLabel} ${extension.id}`}
+            title={extension.enabled ? disableLabel : enableLabel}
           >
-            {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />} {extension.enabled ? disableLabel : enableLabel}
+            {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />}
           </button>
-          <button className="modal-btn modal-btn-primary" onClick={() => void activate()} disabled={busy || !extension.enabled}>
-            {activateLabel}
+          <button className="modal-btn modal-btn-primary" onClick={() => void activate()} disabled={busy || !extension.enabled} aria-label={activateLabel} title={activateLabel}>
+            <Power size={14} />
           </button>
-          <button className="modal-btn" onClick={() => void deactivate()} disabled={busy || extension.status !== "active"}>
-            {deactivateLabel}
+          <button className="modal-btn" onClick={() => void deactivate()} disabled={busy || extension.status !== "active"} aria-label={deactivateLabel} title={deactivateLabel}>
+            <CircleSlash2 size={14} />
           </button>
-        </div>
-      </header>
+      </div>
 
       <div className="settings-session-grid">
         <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{extension.manifest.packageName}</span></div>
@@ -192,6 +199,6 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
           </div>
         </details>
       )}
-    </article>
+    </details>
   );
 };
