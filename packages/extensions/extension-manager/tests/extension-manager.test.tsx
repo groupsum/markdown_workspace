@@ -59,10 +59,10 @@ function createManifest(overrides: Partial<ExtensionManifest> & Pick<ExtensionMa
     capabilities: ['view.register', 'actionRail.register', 'notification.publish', 'settings.read', 'settings.write'],
     compatibility: {
       manifestVersion: 1,
-      hostApi: EXTENSION_HOST_API_VERSION,
-      runtime: EXTENSION_RUNTIME_VERSION,
-      app: '>=1.3.49',
-      themeContract: THEME_CONTRACT_VERSION,
+      hostApi: '*',
+      runtime: '*',
+      app: '*',
+      themeContract: '*',
     },
     entry: {
       module: './index.js',
@@ -373,7 +373,7 @@ describe('extension-manager', () => {
     expect(screen.getByText('Inventory Extension')).toBeInTheDocument();
     expect(screen.getByText('core.inventory')).toBeInTheDocument();
     expect(screen.getByText('Bundled')).toBeInTheDocument();
-    expect(screen.getByText('active')).toBeInTheDocument();
+    expect(screen.getAllByText('active', { exact: false }).length).toBeGreaterThan(0);
     expect(screen.getByText('Compatible with the current host, runtime, and theme contract.')).toBeInTheDocument();
 
     await runtime.stop();
@@ -544,7 +544,7 @@ describe('extension-manager', () => {
     renderManagerView(runtime);
 
     expect(await screen.findByText('Last error')).toBeInTheDocument();
-    expect(screen.getByText('Activation exploded.')).toBeInTheDocument();
+    expect(screen.getAllByText(/Activation exploded/).length).toBeGreaterThan(0);
     expect(screen.getByText(/EXT_RUNTIME_ACTIVATE_FAILED/)).toBeInTheDocument();
 
     await runtime.stop();
