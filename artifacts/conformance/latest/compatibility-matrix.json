@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-04-01T00:40:48.399Z",
+  "generatedAt": "2026-04-02T04:47:34.713Z",
   "validator": "tools/conformance/validate-compatibility.mjs",
   "ok": true,
   "platformBaselines": {
-    "client": "1.4.2",
+    "client": "1.4.4",
     "manifestVersion": 1,
     "hostApi": "1.0.0",
     "runtime": "1.1.0",
