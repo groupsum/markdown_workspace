@@ -20,6 +20,10 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     host,
     registrationSink,
     storage: services.settingsStore,
+    trustPolicy: {
+      allowUnsigned: true,
+      allowIntegrityOnly: true,
+    },
   }), [host, registrationSink, services.settingsStore]);
 
   const bundledEntries = React.useMemo(() => [

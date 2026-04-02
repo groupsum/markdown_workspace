@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSyncExternalStore } from 'react';
 import { Download, RefreshCw } from 'lucide-react';
 import { Chassis } from '../../components/Chassis/Chassis';
 import { Footer } from '../../components/Chassis/Footer/Footer';
@@ -18,9 +19,18 @@ export const AppShell: React.FC = () => {
   const runtime = useClientRuntimeSnapshot();
   const markdownImportRef = React.useRef<HTMLInputElement>(null);
   const services = useClientRuntimeServices();
+  const viewSnapshot = useSyncExternalStore(services.views.subscribe, services.views.getSnapshot, services.views.getSnapshot);
   const { t } = useClientI18n();
   const { state, actions } = runtime.app;
   const { state: pwaState, actions: pwaActions } = runtime.pwa;
+  const activeWorkspaceViewId =
+    viewSnapshot.activeViewId && viewSnapshot.openViewIds.includes(viewSnapshot.activeViewId)
+      ? viewSnapshot.activeViewId
+      : null;
+  const workspaceView =
+    viewSnapshot.views.find((view) => view.id === activeWorkspaceViewId && view.location === 'main' && view.id !== 'core.git-pane')
+    ?? viewSnapshot.views.find((view) => view.location === 'main' && view.id !== 'core.git-pane' && viewSnapshot.openViewIds.includes(view.id))
+    ?? null;
 
   const pwaAction = pwaState.canInstall
     ? {
@@ -113,6 +123,17 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            workspaceSurface={
+              workspaceView
+                ? workspaceView.render({
+                    viewId: workspaceView.id,
+                    input: viewSnapshot.inputs[workspaceView.id],
+                    isOpen: true,
+                    close: () => services.views.close(workspaceView.id),
+                    focus: () => services.views.focus(workspaceView.id),
+                  }) as React.ReactNode
+                : undefined
+            }
           />
         ) : (
           <GitPane

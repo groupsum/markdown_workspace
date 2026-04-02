@@ -24,6 +24,9 @@ export const DEFAULT_WORKSPACE_PREFERENCES: WorkspacePreferences = Object.freeze
   printBackground: 'theme',
 });
 
+let cachedWorkspacePreferencesRaw: string | null = null;
+let cachedWorkspacePreferencesSnapshot: WorkspacePreferences = DEFAULT_WORKSPACE_PREFERENCES;
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
@@ -64,14 +67,23 @@ export function readWorkspacePreferencesSync(): WorkspacePreferences {
   }
 
   const raw = window.localStorage.getItem(WORKSPACE_PREFERENCES_STORAGE_KEY);
+  if (raw === cachedWorkspacePreferencesRaw) {
+    return cachedWorkspacePreferencesSnapshot;
+  }
   if (!raw) {
-    return DEFAULT_WORKSPACE_PREFERENCES;
+    cachedWorkspacePreferencesRaw = null;
+    cachedWorkspacePreferencesSnapshot = DEFAULT_WORKSPACE_PREFERENCES;
+    return cachedWorkspacePreferencesSnapshot;
   }
 
   try {
-    return normalizeWorkspacePreferences(JSON.parse(raw));
+    cachedWorkspacePreferencesRaw = raw;
+    cachedWorkspacePreferencesSnapshot = normalizeWorkspacePreferences(JSON.parse(raw));
+    return cachedWorkspacePreferencesSnapshot;
   } catch {
-    return DEFAULT_WORKSPACE_PREFERENCES;
+    cachedWorkspacePreferencesRaw = raw;
+    cachedWorkspacePreferencesSnapshot = DEFAULT_WORKSPACE_PREFERENCES;
+    return cachedWorkspacePreferencesSnapshot;
   }
 }
 
@@ -85,7 +97,10 @@ function dispatchWorkspacePreferencesEvent(preferences: WorkspacePreferences): v
 export function writeWorkspacePreferences(value: WorkspacePreferences): WorkspacePreferences {
   const normalized = normalizeWorkspacePreferences(value);
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem(WORKSPACE_PREFERENCES_STORAGE_KEY, JSON.stringify(normalized));
+    const raw = JSON.stringify(normalized);
+    window.localStorage.setItem(WORKSPACE_PREFERENCES_STORAGE_KEY, raw);
+    cachedWorkspacePreferencesRaw = raw;
+    cachedWorkspacePreferencesSnapshot = normalized;
     dispatchWorkspacePreferencesEvent(normalized);
   }
   return normalized;

@@ -48,6 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 6px;
 }
 
 .tab-close:hover {
@@ -81,7 +82,8 @@
   gap: 4px;
   border: 1px solid var(--border-color);
   padding: 2px 4px;
-  background: var(--bg-inset);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-inset) 90%, transparent);
   font-size: calc(12px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
@@ -89,7 +91,8 @@
 }
 
 .zoom-btn {
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
   background: transparent;
   width: 16px;
   height: 16px;
@@ -99,14 +102,26 @@
   color: var(--fg-primary);
 }
 
+.zoom-btn:hover:not(:disabled),
+.zoom-display:hover {
+  border-color: var(--border-color);
+  background: var(--bg-panel);
+}
+
+.zoom-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .zoom-display {
   min-width: 42px;
   text-align: center;
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
   background: transparent;
   color: inherit;
   font: inherit;
-  padding: 0;
+  padding: 0 6px;
 }
 
 @media (max-width: 640px) {

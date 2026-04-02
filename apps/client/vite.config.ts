@@ -40,6 +40,14 @@ export default defineConfig(({ mode }) => {
           '@mdwrk/extension-manifest': path.resolve(__dirname, '../../packages/contracts/extension-manifest/src'),
           '@mdwrk/extension-host': path.resolve(__dirname, '../../packages/contracts/extension-host/src'),
           '@mdwrk/theme-contract': path.resolve(__dirname, '../../packages/contracts/theme-contract/src'),
+          '@mdwrk/extension-runtime': path.resolve(__dirname, '../../packages/extensions/extension-runtime/src'),
+          '@mdwrk/extension-manager': path.resolve(__dirname, '../../packages/extensions/extension-manager/src'),
+          '@mdwrk/extension-theme-studio': path.resolve(__dirname, '../../packages/extensions/extension-theme-studio/src'),
+          '@mdwrk/markdown-renderer-react': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-react/src'),
+          '@mdwrk/markdown-editor-react': path.resolve(__dirname, '../../packages/editor/markdown-editor-react/src'),
+          '@mdwrk/markdown-renderer-core': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-core/src'),
+          '@mdwrk/markdown-editor-core': path.resolve(__dirname, '../../packages/editor/markdown-editor-core/src'),
+          'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react'),
         }
       }
     };

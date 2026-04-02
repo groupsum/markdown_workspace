@@ -3,6 +3,8 @@ import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markd
 import { getSyntaxThemeStyle } from '../../data/themes';
 import type { AppTheme, FileNode } from '../../types';
 import { getMarkdownProfileWarnings, useMarkdownProfileConfig } from '../../src/features/markdownProfiles/profileConfig';
+import { useWorkspacePreferences } from '../../src/features/preferences/workspacePreferences';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 import {
   isExternalHref,
   normalizeEmptyListItemsForPreview,
@@ -31,6 +33,8 @@ export function WorkspaceMarkdownRenderer({
   className,
 }: WorkspaceMarkdownRendererProps): React.JSX.Element {
   const profileConfig = useMarkdownProfileConfig();
+  const workspacePreferences = useWorkspacePreferences();
+  const { t } = useClientI18n();
   const normalizedMarkdown = React.useMemo(
     () => normalizeEmptyListItemsForPreview(markdown),
     [markdown],
@@ -55,7 +59,7 @@ export function WorkspaceMarkdownRenderer({
     }
   }, [normalizedMarkdown]);
 
-  const showPolicyAdvisory = warnings.length > 0 || htmlHandling !== 'allow-trusted';
+  const showPolicyAdvisory = !workspacePreferences.hidePreviewPolicy && (warnings.length > 0 || htmlHandling !== 'allow-trusted');
 
   return (
     <div
@@ -76,9 +80,11 @@ export function WorkspaceMarkdownRenderer({
             lineHeight: 1.5,
           }}
         >
-          <strong style={{ display: 'block', marginBottom: 6, color: 'var(--fg-primary)' }}>PREVIEW_POLICY</strong>
+          <strong style={{ display: 'block', marginBottom: 6, color: 'var(--fg-primary)' }}>
+            {t('core.preview.policy.title', 'Preview Policy')}
+          </strong>
           <div style={{ marginBottom: warnings.length > 0 ? 8 : 0 }}>
-            HTML_HANDLING: {htmlHandling.toUpperCase()}
+            {t('core.preview.policy.htmlHandling', 'HTML handling')}: {htmlHandling.toUpperCase()}
           </div>
           {warnings.length > 0 && (
             <ul style={{ margin: 0, paddingLeft: 16 }}>

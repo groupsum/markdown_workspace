@@ -9,6 +9,7 @@ import {
   rewriteRenderedMarkdownLinksForHtmlExport,
 } from './markdownPreviewPolicy.js';
 import { readWorkspacePreferencesSync } from '../src/features/preferences/workspacePreferences';
+import { resolveExportMessage } from '../src/features/i18n/exportLocalization';
 
 const EXPORT_STYLE_OVERRIDES = `
   body.markdown-export {
@@ -53,6 +54,22 @@ const EXPORT_STYLE_OVERRIDES = `
 
   .export-page .markdown-body {
     margin: 0;
+    max-width: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .export-page pre,
+  .export-page code,
+  .export-page table,
+  .export-page img,
+  .export-page svg {
+    max-width: 100%;
+  }
+
+  .export-page pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 
   .export-advisory {
@@ -77,6 +94,7 @@ const EXPORT_STYLE_OVERRIDES = `
     font-size: 12px;
     line-height: 1.55;
     color: var(--fg-muted, #b7beca);
+    overflow-wrap: anywhere;
   }
 
   @page {
@@ -157,15 +175,15 @@ export const createHtmlExport = ({
     ? []
     : [
         htmlHandling === 'allow-trusted'
-          ? 'Raw HTML passthrough is enabled for this export.'
-          : 'Raw HTML is sanitized for this export unless trusted HTML mode is explicitly enabled.',
+          ? resolveExportMessage('core.export.policy.allowTrusted', 'Raw HTML passthrough is enabled for this export.')
+          : resolveExportMessage('core.export.policy.sanitize', 'Raw HTML is sanitized for this export unless trusted HTML mode is explicitly enabled.'),
         ...warnings.map((warning) => warning.message),
       ];
 
   const advisoryHtml = advisoryItems.length > 0
     ? `
       <aside class="export-advisory" data-markdown-html-handling="${escapeHtml(htmlHandling)}">
-        <span class="export-advisory-title">EXPORT_POLICY</span>
+        <span class="export-advisory-title">${escapeHtml(resolveExportMessage('core.export.policy.title', 'Export Policy'))}</span>
         <ul>
           ${advisoryItems.map((message) => `<li>${escapeHtml(message)}</li>`).join('')}
         </ul>

@@ -98,10 +98,24 @@
   }
 
   .markdown-body {
-    background: var(--bg-panel, #11151a) !important;
+    background: var(--bg-app, #0b0f14) !important;
     padding: 10mm !important;
     box-sizing: border-box;
     margin: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  .markdown-body pre,
+  .markdown-body code,
+  .markdown-body table,
+  .markdown-body img,
+  .markdown-body svg {
+    max-width: 100% !important;
+  }
+
+  .markdown-body pre {
+    white-space: pre-wrap !important;
   }
 
   body[data-print-background="plain"],

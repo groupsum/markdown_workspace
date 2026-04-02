@@ -10,6 +10,8 @@ export interface LanguagePackArtifact {
 
 const LANGUAGE_PACKS_STORAGE_KEY = 'mdwrk.language-packs.v1';
 const LANGUAGE_PACKS_EVENT = 'mdwrk:language-packs';
+let cachedLanguagePackRaw: string | null = null;
+let cachedLanguagePackSnapshot: readonly LanguagePackArtifact[] = [];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
@@ -44,19 +46,30 @@ export function readStoredLanguagePacksSync(): readonly LanguagePackArtifact[] {
     return [];
   }
   const raw = window.localStorage.getItem(LANGUAGE_PACKS_STORAGE_KEY);
+  if (raw === cachedLanguagePackRaw) {
+    return cachedLanguagePackSnapshot;
+  }
   if (!raw) {
-    return [];
+    cachedLanguagePackRaw = null;
+    cachedLanguagePackSnapshot = [];
+    return cachedLanguagePackSnapshot;
   }
   try {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) {
-      return [];
+      cachedLanguagePackRaw = raw;
+      cachedLanguagePackSnapshot = [];
+      return cachedLanguagePackSnapshot;
     }
-    return parsed
+    cachedLanguagePackRaw = raw;
+    cachedLanguagePackSnapshot = parsed
       .map(normalizeLanguagePackArtifact)
       .filter((entry): entry is LanguagePackArtifact => Boolean(entry));
+    return cachedLanguagePackSnapshot;
   } catch {
-    return [];
+    cachedLanguagePackRaw = raw;
+    cachedLanguagePackSnapshot = [];
+    return cachedLanguagePackSnapshot;
   }
 }
 
@@ -68,6 +81,8 @@ function writeStoredLanguagePacks(packs: readonly LanguagePackArtifact[]): reado
 
   if (typeof window !== 'undefined') {
     window.localStorage.setItem(LANGUAGE_PACKS_STORAGE_KEY, JSON.stringify(next));
+    cachedLanguagePackRaw = JSON.stringify(next);
+    cachedLanguagePackSnapshot = next;
     window.dispatchEvent(new CustomEvent(LANGUAGE_PACKS_EVENT));
   }
 

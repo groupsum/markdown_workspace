@@ -30,6 +30,7 @@ interface WorkPaneProps {
   onContentChange: (content: string) => void;
   onCursorChange: (line: number, col: number) => void;
   onViewModeChange: (mode: ViewMode) => void;
+  workspaceSurface?: React.ReactNode;
 }
 
 export const WorkPane: React.FC<WorkPaneProps> = ({
@@ -55,7 +56,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onFileMove,
   onContentChange,
   onCursorChange,
-  onViewModeChange
+  onViewModeChange,
+  workspaceSurface
 }) => {
   const [expandAllSignal, setExpandAllSignal] = useState(0);
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
@@ -183,7 +185,9 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
 
       {/* THE EXECUTION STAGE (Stage Plate) */}
       <main className="workspace-stage" role="main">
-        {activeFile ? (
+        {workspaceSurface ? (
+          workspaceSurface
+        ) : activeFile ? (
           <EditorPane 
             file={activeFile} 
             files={files}

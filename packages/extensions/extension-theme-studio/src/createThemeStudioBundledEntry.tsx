@@ -46,9 +46,9 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             title: themeStudioLabels.viewTitle,
             description: themeStudioLabels.viewDescription,
             icon: { kind: "lucide", name: "Palette" },
-            location: "modal",
+            location: "main",
             allowMultiple: false,
-            canBePinned: false,
+            canBePinned: true,
             render: (props) => (
               <ThemeStudioView
                 service={service}

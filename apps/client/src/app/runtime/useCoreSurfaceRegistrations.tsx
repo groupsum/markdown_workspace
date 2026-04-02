@@ -49,6 +49,9 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.sidebar.core.settings.language.label': 'LANGUAGE_&_LOCALE',
         'core.settings.sidebar.core.settings.session.label': 'SESSION_STATE',
         'core.settings.sidebar.core.settings.visual.label': 'VISUAL_MATRIX',
+        'core.preview.policy.title': 'Preview Policy',
+        'core.preview.policy.htmlHandling': 'HTML handling',
+        'core.export.policy.title': 'Export Policy',
         'core.commands.new-file': 'Create New File',
         'core.commands.new-folder': 'Create New Folder',
         'core.commands.save-current-file': 'Save Current File',
@@ -71,7 +74,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.commands.next-tab': 'Next Tab',
         'core.commands.previous-tab': 'Previous Tab',
         'core.commands.focus-explorer': 'Focus Explorer',
-        'core.commands.cloud-sync': 'Cloud Sync (Mock)',
+        'core.commands.cloud-sync': 'GitHub Configurations',
       },
     });
 
@@ -233,7 +236,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.commands.register({
         id: 'core.cloud-sync',
-        title: label('Cloud Sync (Mock)', 'core.commands.cloud-sync'),
+        title: label('GitHub Configurations', 'core.commands.cloud-sync'),
         execute: () => {
           void services.views.open('core.settings', { sectionId: 'core.settings.git' });
           window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
@@ -359,7 +362,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.actionRail.register({
         id: 'core.cloud-sync',
-        title: label('Cloud Sync (Mock)', 'core.commands.cloud-sync'),
+        title: label('GitHub Configurations', 'core.commands.cloud-sync'),
         icon: { kind: 'lucide', name: 'Cloud' },
         group: 'system',
         order: 10,

@@ -280,6 +280,17 @@ export const useApp = () => {
   }, [proj.loading, proj.projects, proj.activeProjectId, loadProject]);
 
   useEffect(() => {
+    const clearPrintAttributes = () => {
+      document.body.removeAttribute('data-print-background');
+    };
+    window.addEventListener('afterprint', clearPrintAttributes);
+    return () => {
+      window.removeEventListener('afterprint', clearPrintAttributes);
+      clearPrintAttributes();
+    };
+  }, []);
+
+  useEffect(() => {
     if (proj.loading) return;
     if (!proj.activeProjectId) return;
     if (fileSys.loadedProjectId === proj.activeProjectId) return;

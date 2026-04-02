@@ -26,6 +26,7 @@ import { WorkspaceMarkdownEditor } from '../../../Markdown/WorkspaceMarkdownEdit
 import { useActiveEditorBridge } from '../../../../src/features/editor/activeEditorBridge';
 import { isSplitViewAllowedForViewport } from '../../../../src/features/layout/splitViewPolicy';
 import { useWorkspacePreferences } from '../../../../src/features/preferences/workspacePreferences';
+import { TableBuilderModal } from './TableBuilderModal';
 
 interface EditorPaneProps {
   file: FileNode | null;
@@ -187,32 +188,14 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       )}
 
       {showTableBuilder && (
-        <div className="modal-overlay">
-          <div className="modal-base" style={{ width: 'min(420px, 92vw)' }}>
-            <div className="modal-header">
-              <span className="modal-title">INSERT_TABLE</span>
-              <button type="button" onClick={() => setShowTableBuilder(false)} className="modal-close">X</button>
-            </div>
-            <div className="settings-pane">
-              <div className="settings-card settings-card-stack">
-                <div className="settings-grid-2">
-                  <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">ROWS</span>
-                    <input className="modal-input !text-xs !py-3" type="number" min={1} max={12} value={tableRows} onChange={(event) => setTableRows(Number(event.target.value) || 1)} />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">COLUMNS</span>
-                    <input className="modal-input !text-xs !py-3" type="number" min={1} max={8} value={tableColumns} onChange={(event) => setTableColumns(Number(event.target.value) || 1)} />
-                  </label>
-                </div>
-                <div className="settings-action-row">
-                  <button type="button" className="modal-btn" onClick={() => setShowTableBuilder(false)}>CANCEL</button>
-                  <button type="button" className="modal-btn modal-btn-primary" onClick={insertTable}>INSERT</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TableBuilderModal
+          rows={tableRows}
+          columns={tableColumns}
+          onRowsChange={setTableRows}
+          onColumnsChange={setTableColumns}
+          onClose={() => setShowTableBuilder(false)}
+          onInsert={insertTable}
+        />
       )}
 
       <div className="editor-pane-shell">
@@ -271,7 +254,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
               </button>
             )}
             {!isToolbarHidden('view-preview') && <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>}
-            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert Table"><span className="text-[10px] font-mono">n:m</span></button>}
+            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="text-[10px] font-mono">n:m</span></button>}
             <div className="view-toolbar-divider"></div>
             {!isToolbarHidden('strikethrough') && <button onClick={() => runCommand('strikethrough')} className={`view-toolbar-btn ${selectionState.strikethrough ? 'active' : ''}`} title="Strikethrough"><Strikethrough size={12}/></button>}
             {!isToolbarHidden('bullet-list') && <button onClick={() => runCommand('bullet-list')} className={`view-toolbar-btn ${selectionState.bulletList ? 'active' : ''}`} title="Bullet List"><List size={12}/></button>}

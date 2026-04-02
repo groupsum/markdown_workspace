@@ -22,7 +22,7 @@
 .settings-sidebar-btn {
   width: 100%;
   text-align: left;
-  padding: 16px 20px;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -30,8 +30,9 @@
   font-weight: 800;
   text-transform: uppercase;
   color: var(--fg-muted);
+  border: 0;
   border-bottom: var(--border-width) solid var(--border-color);
-  transition: all 0.1s;
+  transition: background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
   background: transparent;
   position: relative;
 }
@@ -52,7 +53,7 @@
 }
 
 .settings-sidebar-btn.active {
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent) 82%, var(--bg-panel));
   color: white;
   border-bottom-color: var(--border-color);
   box-shadow: inset 4px 0 0 var(--fg-primary);

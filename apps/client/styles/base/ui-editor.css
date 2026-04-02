@@ -31,7 +31,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px 6px;
+  padding: 8px 8px;
   z-index: 50;
   flex-shrink: 0;
   overflow-x: auto;
@@ -48,21 +48,25 @@
   width: 100%;
 }
 .view-toolbar-btn {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--fg-muted);
-  border: 1px solid transparent;
+  border: 1px solid color-mix(in srgb, var(--border-color) 58%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg-panel) 78%, transparent);
 }
 .view-toolbar-btn:hover:not(:disabled) {
-  border-color: var(--border-color);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border-color));
+  background: var(--bg-panel);
   color: var(--fg-primary);
 }
 .view-toolbar-btn.active {
-  background: var(--border-color);
+  background: color-mix(in srgb, var(--accent) 78%, var(--bg-panel));
   color: white;
+  border-color: color-mix(in srgb, var(--accent) 82%, var(--border-color));
 }
 .view-toolbar-btn:disabled {
   opacity: 0.2;
@@ -71,7 +75,7 @@
 .view-toolbar-divider {
   width: 1px;
   height: 18px;
-  background: var(--border-color);
+  background: color-mix(in srgb, var(--border-color) 70%, transparent);
   margin: 6px 0;
 }
 .editor-pane-body {
