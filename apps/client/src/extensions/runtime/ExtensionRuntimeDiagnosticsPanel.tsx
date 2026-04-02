@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle2, CircleSlash2, Power, PowerOff } from 'lucide-react';
 import { useSyncExternalStore } from 'react';
 import { useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { useExtensionRuntime } from './ExtensionRuntimeContext';
@@ -26,9 +27,32 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <button className="modal-btn" onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}>{extension.enabled ? 'DISABLE' : 'ENABLE'}</button>
-                <button className="modal-btn modal-btn-primary" onClick={() => void runtime.activate(extension.id)} disabled={!extension.enabled}>ACTIVATE</button>
-                <button className="modal-btn" onClick={() => void runtime.deactivate(extension.id)} disabled={extension.status !== 'active'}>DEACTIVATE</button>
+                <button
+                  className="modal-btn"
+                  onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}
+                  aria-label={`${extension.enabled ? 'DISABLE' : 'ENABLE'} ${extension.id}`}
+                  title={extension.enabled ? 'DISABLE' : 'ENABLE'}
+                >
+                  {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />}
+                </button>
+                <button
+                  className="modal-btn modal-btn-primary"
+                  onClick={() => void runtime.activate(extension.id)}
+                  disabled={!extension.enabled}
+                  aria-label={`ACTIVATE ${extension.id}`}
+                  title="ACTIVATE"
+                >
+                  <CheckCircle2 size={14} />
+                </button>
+                <button
+                  className="modal-btn"
+                  onClick={() => void runtime.deactivate(extension.id)}
+                  disabled={extension.status !== 'active'}
+                  aria-label={`DEACTIVATE ${extension.id}`}
+                  title="DEACTIVATE"
+                >
+                  <CircleSlash2 size={14} />
+                </button>
               </div>
 
               {extension.missingCapabilities.length > 0 && (

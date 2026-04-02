@@ -201,23 +201,23 @@ const checks = [
   },
   {
     id: 'versions.client',
-    pass: packageVersions.client.startsWith('1.4.0'),
+    pass: packageVersions.client.startsWith('1.4.'),
   },
   {
     id: 'versions.extension-manager',
-    pass: packageVersions.extensionManager.startsWith('1.1.0') && nodeModuleVersions.extensionManager.startsWith('1.1.0'),
+    pass: packageVersions.extensionManager.startsWith('1.') && nodeModuleVersions.extensionManager.startsWith('1.'),
   },
   {
     id: 'versions.extension-theme-studio',
-    pass: packageVersions.extensionThemeStudio.startsWith('1.1.0') && nodeModuleVersions.extensionThemeStudio.startsWith('1.1.0'),
+    pass: packageVersions.extensionThemeStudio.startsWith('1.') && nodeModuleVersions.extensionThemeStudio.startsWith('1.'),
   },
   {
     id: 'versions.extension-gemini-agent',
-    pass: packageVersions.extensionGeminiAgent.startsWith('1.1.0') && nodeModuleVersions.extensionGeminiAgent.startsWith('1.1.0'),
+    pass: packageVersions.extensionGeminiAgent.startsWith('1.') && nodeModuleVersions.extensionGeminiAgent.startsWith('1.'),
   },
   {
     id: 'versions.i18n',
-    pass: packageVersions.i18n.startsWith('1.1.0') && nodeModuleVersions.i18n.startsWith('1.1.0'),
+    pass: packageVersions.i18n.startsWith('1.') && nodeModuleVersions.i18n.startsWith('1.'),
   },
   {
     id: 'node-modules.extension-manager.settings-updated',

@@ -4,7 +4,7 @@ import { createFetchExtensionArtifactTransport, evaluateCatalogEntryPolicy, fetc
 import { evaluateExtensionCompatibility } from "./compatibility.js";
 import { createExtensionLoader } from "./loader.js";
 import { createExtensionRegistry } from "./registry.js";
-import { createExtensionConfigurationStore, EXTENSION_INSTALL_INDEX_KEY, getExtensionEnabledStateKey, getInstalledExtensionModuleKey, getInstalledExtensionRecordKey, } from "./storage.js";
+import { createExtensionConfigurationStore, EXTENSION_INSTALL_INDEX_KEY, getExtensionActiveStateKey, getExtensionEnabledStateKey, getInstalledExtensionModuleKey, getInstalledExtensionRecordKey, } from "./storage.js";
 import { EXTENSION_RUNTIME_VERSION } from "./version.js";
 const createEmitter = () => {
     const listeners = new Set();
@@ -627,7 +627,8 @@ export function createExtensionRuntime(options) {
                     continue;
                 if (state.status === "incompatible")
                     continue;
-                if (entry.activation === "eager") {
+                const persistedActive = await options.storage.get(getExtensionActiveStateKey(entry.id));
+                if (entry.activation === "eager" || persistedActive) {
                     await activateState(state);
                 }
             }
@@ -651,6 +652,7 @@ export function createExtensionRuntime(options) {
                 await this.setEnabled(id, true);
             }
             await activateState(state);
+            await options.storage.set(getExtensionActiveStateKey(id), true);
         },
         async ensureActivated(id) {
             await this.activate(id);
@@ -662,6 +664,7 @@ export function createExtensionRuntime(options) {
             }
             const state = ensureState(entry);
             await deactivateState(state);
+            await options.storage.remove(getExtensionActiveStateKey(id));
         },
         async setEnabled(id, enabled) {
             const entry = registry.get(id);
@@ -673,12 +676,14 @@ export function createExtensionRuntime(options) {
             await options.storage.set(getExtensionEnabledStateKey(id), enabled);
             if (!enabled) {
                 await deactivateState(state);
+                await options.storage.remove(getExtensionActiveStateKey(id));
                 state.status = "disabled";
             }
             else {
                 state.status = entry.activation === "eager" && started ? "activating" : "registered";
                 if (started && entry.activation === "eager") {
                     await activateState(state);
+                    await options.storage.set(getExtensionActiveStateKey(id), true);
                 }
             }
             emitSnapshotChange();
@@ -757,6 +762,8 @@ export function createExtensionRuntime(options) {
             installedRegistrationDisposables.delete(id);
             registry.unregister(id);
             states.delete(id);
+            await options.storage.remove(getExtensionEnabledStateKey(id));
+            await options.storage.remove(getExtensionActiveStateKey(id));
             await options.storage.remove(getInstalledExtensionRecordKey(id));
             await options.storage.remove(getInstalledExtensionModuleKey(id));
             await writeInstalledIndex((await readInstalledIndex()).filter((value) => value !== id));

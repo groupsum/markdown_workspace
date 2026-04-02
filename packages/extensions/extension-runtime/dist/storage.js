@@ -1,8 +1,10 @@
 export const EXTENSION_ENABLED_STATE_KEY_SUFFIX = "enabled";
+export const EXTENSION_ACTIVE_STATE_KEY_SUFFIX = "active";
 export const EXTENSION_CONFIG_KEY_SEGMENT = "config";
 export const EXTENSION_INSTALL_SEGMENT = "install";
 export const EXTENSION_INSTALL_INDEX_KEY = `ext:${EXTENSION_INSTALL_SEGMENT}:index`;
 export const getExtensionEnabledStateKey = (extensionId) => `ext:${extensionId}:${EXTENSION_ENABLED_STATE_KEY_SUFFIX}`;
+export const getExtensionActiveStateKey = (extensionId) => `ext:${extensionId}:${EXTENSION_ACTIVE_STATE_KEY_SUFFIX}`;
 export const getExtensionConfigKey = (extensionId, key) => `ext:${extensionId}:${EXTENSION_CONFIG_KEY_SEGMENT}:${key}`;
 export const getInstalledExtensionRecordKey = (extensionId) => `ext:${extensionId}:${EXTENSION_INSTALL_SEGMENT}:record`;
 export const getInstalledExtensionModuleKey = (extensionId) => `ext:${extensionId}:${EXTENSION_INSTALL_SEGMENT}:module`;

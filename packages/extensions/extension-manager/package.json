@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-manager",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,9 +23,9 @@
   ],
   "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring Markdown Workspace extensions.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.1",
-    "@mdwrk/extension-manifest": "^1.0.0",
-    "@mdwrk/extension-runtime": "^1.1.0",
+    "@mdwrk/extension-host": "^1.0.2",
+    "@mdwrk/extension-manifest": "^1.0.1",
+    "@mdwrk/extension-runtime": "^1.1.1",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {
@@ -33,7 +33,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@mdwrk/testing": "^1.0.0",
+    "@mdwrk/testing": "^1.0.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.8",
