@@ -102,6 +102,11 @@
 .zoom-display {
   min-width: 42px;
   text-align: center;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
 }
 
 @media (max-width: 640px) {

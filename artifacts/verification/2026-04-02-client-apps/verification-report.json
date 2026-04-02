@@ -1,0 +1,252 @@
+{
+  "generatedAt": "2026-04-02T18:43:44.748Z",
+  "outputDir": "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps",
+  "client": {
+    "screenshots": [],
+    "themes": [
+      {
+        "id": "tensioned-technical-skeleton",
+        "name": "Tensioned Technical Skeleton",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Tensioned Technical Skeleton' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "optical-vellum-drafting-grid",
+        "name": "Optical Vellum Drafting Grid",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Optical Vellum Drafting Grid' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "heavy-gauge-tectonic",
+        "name": "Heavy Gauge Tectonic",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Heavy Gauge Tectonic' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "ferrous-monolith",
+        "name": "Machined Ferrous Monolith",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Machined Ferrous Monolith' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "galvanized-cellular",
+        "name": "Galvanized Cellular Monolith",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Galvanized Cellular Monolith' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "pressed-chromium",
+        "name": "Pressed Chromium",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Pressed Chromium' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "acid-etched",
+        "name": "Acid Etched Tectonic",
+        "captured": [
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\01-selector.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\02-selector-theme-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\03-selector-create-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\04-selector-delete-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\05-workspace-editor.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\06-workspace-split.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\07-workspace-preview.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\08-settings-visual.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\acid-etched\\10-command-palette-runtime-smoke.png"
+        ],
+        "checks": [
+          "selector visible",
+          "workspace mounted",
+          "settings modal opens",
+          "extension runtime section not found"
+        ],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "id": "zinc",
+        "name": "Milled Zinc",
+        "captured": [
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\01-selector.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\02-selector-theme-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\03-selector-create-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\04-selector-delete-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\05-workspace-editor.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\06-workspace-split.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\07-workspace-preview.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\08-settings-visual.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\zinc\\10-command-palette-runtime-smoke.png"
+        ],
+        "checks": [
+          "selector visible",
+          "workspace mounted",
+          "settings modal opens",
+          "extension runtime section not found"
+        ],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "id": "anodized-billet",
+        "name": "Anodized Billet",
+        "captured": [
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\01-selector.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\02-selector-theme-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\03-selector-create-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\04-selector-delete-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\05-workspace-editor.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\06-workspace-split.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\07-workspace-preview.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\08-settings-visual.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\anodized-billet\\10-command-palette-runtime-smoke.png"
+        ],
+        "checks": [
+          "selector visible",
+          "workspace mounted",
+          "settings modal opens",
+          "extension runtime section not found"
+        ],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "id": "micropress",
+        "name": "Optical Micro Press",
+        "captured": [
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\01-selector.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\02-selector-theme-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\03-selector-create-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\04-selector-delete-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\05-workspace-editor.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\06-workspace-split.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\07-workspace-preview.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\08-settings-visual.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\micropress\\10-command-palette-runtime-smoke.png"
+        ],
+        "checks": [
+          "selector visible",
+          "workspace mounted",
+          "settings modal opens",
+          "extension runtime section not found"
+        ],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "id": "research-science",
+        "name": "Research Science",
+        "captured": [],
+        "checks": [],
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Research Science' }).first()\u001b[22m\n"
+      },
+      {
+        "id": "default",
+        "name": "Factory Default",
+        "captured": [
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\01-selector.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\02-selector-theme-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\03-selector-create-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\04-selector-delete-modal.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\05-workspace-editor.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\06-workspace-split.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\07-workspace-preview.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\08-settings-visual.png",
+          "E:\\swarmauri_github\\markdown_workspace\\artifacts\\verification\\2026-04-02-client-apps\\client\\default\\10-command-palette-runtime-smoke.png"
+        ],
+        "checks": [
+          "selector visible",
+          "workspace mounted",
+          "settings modal opens",
+          "extension runtime section not found"
+        ],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      }
+    ],
+    "issues": [
+      {
+        "theme": "tensioned-technical-skeleton",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Tensioned Technical Skeleton' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "optical-vellum-drafting-grid",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Optical Vellum Drafting Grid' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "heavy-gauge-tectonic",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Heavy Gauge Tectonic' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "ferrous-monolith",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Machined Ferrous Monolith' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "galvanized-cellular",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Galvanized Cellular Monolith' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "pressed-chromium",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Pressed Chromium' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "acid-etched",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "theme": "zinc",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "theme": "anodized-billet",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "theme": "micropress",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      },
+      {
+        "theme": "research-science",
+        "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.theme-modal-button').filter({ hasText: 'Research Science' }).first()\u001b[22m\n"
+      },
+      {
+        "theme": "default",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-title') to be visible\u001b[22m\n"
+      }
+    ]
+  },
+  "lander": {
+    "screenshots": [],
+    "modes": [
+      {
+        "mode": "light",
+        "captured": [],
+        "checks": [],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('nav') to be visible\u001b[22m\n"
+      },
+      {
+        "mode": "dark",
+        "captured": [],
+        "checks": [],
+        "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('nav') to be visible\u001b[22m\n"
+      }
+    ],
+    "issues": [
+      {
+        "mode": "light",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('nav') to be visible\u001b[22m\n"
+      },
+      {
+        "mode": "dark",
+        "message": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('nav') to be visible\u001b[22m\n"
+      }
+    ]
+  },
+  "summary": {
+    "clientThemeCount": 12,
+    "clientScreenshotCount": 0,
+    "landerModeCount": 2,
+    "landerScreenshotCount": 0,
+    "issueCount": 14
+  }
+}

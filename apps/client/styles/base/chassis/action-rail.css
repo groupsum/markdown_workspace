@@ -12,15 +12,17 @@
 }
 
 .rail-btn {
-  width: var(--rail-btn-size);
-  height: var(--rail-btn-size);
+  width: 100%;
+  min-height: var(--rail-btn-size);
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   background: transparent;
   border: 1px solid transparent;
   color: var(--fg-muted);
   position: relative;
+  padding: 6px;
 }
 
 .rail-btn svg {
@@ -43,4 +45,11 @@
 
 .rail-btn--status {
   border-style: dashed;
+}
+
+.rail-btn-label {
+  display: inline-flex;
+  font-size: calc(9px * var(--ui-scale));
+  line-height: 1.2;
+  text-align: left;
 }

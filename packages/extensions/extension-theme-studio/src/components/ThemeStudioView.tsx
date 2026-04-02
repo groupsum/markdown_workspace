@@ -61,6 +61,7 @@ function downloadTextFile(filename: string, content: string, mimeType = "text/pl
 export const ThemeStudioView: React.FC<ThemeStudioViewProps> = ({ service, close, formatLabel }) => {
   const snapshot = React.useSyncExternalStore(service.subscribe, service.getSnapshot, service.getSnapshot);
   const [exportTarget, setExportTarget] = React.useState<"host" | "renderer" | "editor">("host");
+  const importRef = React.useRef<HTMLInputElement>(null);
 
   const effectiveTokens = React.useMemo(
     () => mergeTokens(snapshot.currentTokens as Record<string, string> | null, snapshot.draftTokens as Record<string, string>),
@@ -77,6 +78,16 @@ export const ThemeStudioView: React.FC<ThemeStudioViewProps> = ({ service, close
 
   const runExport = async (): Promise<void> => {
     await service.generateExports(exportTarget);
+  };
+
+  const importPackage = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    try {
+      await service.importPackageArtifact(await file.text());
+    } finally {
+      event.target.value = "";
+    }
   };
 
   const handleMetadataChange = (key: "themeName" | "themeId" | "packageName" | "author" | "description", value: string) => {
@@ -101,11 +112,13 @@ export const ThemeStudioView: React.FC<ThemeStudioViewProps> = ({ service, close
           </div>
           <div className="settings-modal-actions">
             <button className="modal-btn" onClick={() => void service.refresh()} disabled={snapshot.busy}><RefreshCw size={14} /> {formatLabel(themeStudioLabels.actionRefresh)}</button>
+            <button className="modal-btn" onClick={() => importRef.current?.click()} disabled={snapshot.busy}><Package size={14} /> IMPORT_PACKAGE</button>
             <button className="modal-btn" onClick={() => void service.preview()} disabled={snapshot.busy}><Eye size={14} /> {formatLabel(themeStudioLabels.actionPreview)}</button>
             <button className="modal-btn modal-btn-primary" onClick={() => void service.apply()} disabled={snapshot.busy}><Save size={14} /> {formatLabel(themeStudioLabels.actionApply)}</button>
             <button className="modal-btn" onClick={() => void service.revert()} disabled={snapshot.busy}><RotateCcw size={14} /> {formatLabel(themeStudioLabels.actionRevert)}</button>
             <button className="modal-btn" onClick={() => void close()}><X size={14} /> {formatLabel(themeStudioLabels.actionClose)}</button>
           </div>
+          <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={(event) => { void importPackage(event); }} />
         </div>
 
         <div className="settings-modal-body" style={{ display: "grid", gap: 16 }}>

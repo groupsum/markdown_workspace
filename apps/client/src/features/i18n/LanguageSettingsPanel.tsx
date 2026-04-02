@@ -2,10 +2,14 @@ import React from 'react';
 import { CORE_SHELL_SUPPORTED_LOCALES } from '@mdwrk/i18n';
 import { LanguageSelector } from './LanguageSelector';
 import { useClientI18n } from './useClientI18n';
+import { useStoredLanguagePacks } from './languagePackStore';
 
 export const LanguageSettingsPanel: React.FC = () => {
   const { locale, t } = useClientI18n();
-  const activeLocale = CORE_SHELL_SUPPORTED_LOCALES.find((entry) => entry.id === locale) ?? CORE_SHELL_SUPPORTED_LOCALES[0];
+  const languagePacks = useStoredLanguagePacks();
+  const activeLocale = CORE_SHELL_SUPPORTED_LOCALES.find((entry) => entry.id === locale)
+    ?? languagePacks.map((entry) => ({ id: entry.locale, nativeName: entry.label })).find((entry) => entry.id === locale)
+    ?? CORE_SHELL_SUPPORTED_LOCALES[0];
 
   return (
     <div className="settings-pane">

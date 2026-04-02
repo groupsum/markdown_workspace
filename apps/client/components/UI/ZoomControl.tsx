@@ -4,9 +4,10 @@ import { Minus, Plus } from 'lucide-react';
 interface ZoomControlProps {
     zoom: number;
     onZoom: (delta: number) => void;
+    onReset?: () => void;
 }
 
-export const ZoomControl: React.FC<ZoomControlProps> = ({ zoom, onZoom }) => {
+export const ZoomControl: React.FC<ZoomControlProps> = ({ zoom, onZoom, onReset }) => {
     return (
         <div className="zoom-control">
             <button 
@@ -16,9 +17,14 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({ zoom, onZoom }) => {
             >
                 <Minus size={12} />
             </button>
-            <div className="zoom-display">
+            <button
+                type="button"
+                className="zoom-display"
+                title="Reset Zoom"
+                onClick={onReset}
+            >
                 {Math.round(zoom * 100)}%
-            </div>
+            </button>
             <button 
                 onClick={() => onZoom(0.1)} 
                 className="zoom-btn" 

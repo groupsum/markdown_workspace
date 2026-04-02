@@ -25,6 +25,7 @@ interface HeaderProps {
   onTabClose: (e: React.MouseEvent, tabId: string) => void;
   onZoom: (delta: number) => void;
   onOpenSettings: () => void;
+  onResetZoom: () => void;
   className?: string;
 }
 
@@ -42,6 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
   onTabClose,
   onZoom,
   onOpenSettings,
+  onResetZoom,
   className = '',
 }) => {
   const { t } = useClientI18n();
@@ -86,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="header-right">
         <div className="header-controls">
           <div className="zoom-wrapper">
-            <ZoomControl zoom={zoom} onZoom={onZoom} />
+            <ZoomControl zoom={zoom} onZoom={onZoom} onReset={onResetZoom} />
           </div>
           <div className="header-btn-group">
             {pwaAction && (

@@ -8,6 +8,8 @@ import { GitSettingsPanel } from '../../features/settings/GitSettingsPanel';
 import { DataSettingsPanel } from '../../features/settings/DataSettingsPanel';
 import { CommandPaletteView } from '../../shell/CommandPaletteView';
 import { SettingsView } from '../../shell/SettingsView';
+import { LanguagePackManagerPanel } from '../../features/i18n/LanguagePackManagerPanel';
+import { WorkspacePreferencesPanel } from '../../features/preferences/WorkspacePreferencesPanel';
 
 const label = (defaultMessage: string, key?: string) => ({ defaultMessage, key });
 
@@ -233,8 +235,9 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         id: 'core.cloud-sync',
         title: label('Cloud Sync (Mock)', 'core.commands.cloud-sync'),
         execute: () => {
+          void services.views.open('core.settings', { sectionId: 'core.settings.git' });
           window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
-          runtime.getSnapshot().app.actions.addToast('GITHUB CLOUD SYNC REQUESTED', 'info');
+          runtime.getSnapshot().app.actions.addToast('OPENED GITHUB CONFIGURATION', 'info');
         },
         icon: { kind: 'lucide', name: 'Cloud' },
       }),
@@ -452,6 +455,15 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         render: () => <LanguageSettingsPanel />,
       }),
       services.settingsRegistry.register({
+        id: 'core.settings.language-packs',
+        title: label('Language Packs'),
+        description: label('Import, export, and activate portable language packs.'),
+        order: 36,
+        panel: 'language',
+        icon: { kind: 'lucide', name: 'Languages' },
+        render: () => <LanguagePackManagerPanel />,
+      }),
+      services.settingsRegistry.register({
         id: 'core.settings.keys',
         title: label('Key Map', 'core.settings.sections.keymap.title'),
         description: label('Host keyboard bindings backed by the command registry.', 'core.settings.sections.keymap.description'),
@@ -555,6 +567,15 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
             </div>
           );
         },
+      }),
+      services.settingsRegistry.register({
+        id: 'core.settings.workspace-preferences',
+        title: label('Workspace Preferences'),
+        description: label('Configure rails, editor toolbar visibility, and export/print policy display.'),
+        order: 60,
+        panel: 'session',
+        icon: { kind: 'lucide', name: 'SlidersHorizontal' },
+        render: () => <WorkspacePreferencesPanel />,
       }),
     ];
 

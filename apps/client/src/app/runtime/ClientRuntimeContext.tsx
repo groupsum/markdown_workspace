@@ -13,6 +13,7 @@ import { createViewRegistry } from '../../features/views/viewRegistry';
 import { createClientExtensionHost } from '../../extensions/host';
 import type { ClientRuntimeBridge, ClientRuntimeServices, ClientRuntimeSnapshot } from './clientRuntimeTypes';
 import { useCoreSurfaceRegistrations } from './useCoreSurfaceRegistrations';
+import { readStoredLanguagePacksSync } from '../../features/i18n/languagePackStore';
 
 const ClientRuntimeSnapshotContext = React.createContext<ClientRuntimeSnapshot | null>(null);
 const ClientRuntimeServicesContext = React.createContext<ClientRuntimeServices | null>(null);
@@ -75,6 +76,12 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
     let active = true;
     const syncLocale = async () => {
       const storedLocale = await services.settingsStore.get<string>('core.locale');
+      for (const pack of readStoredLanguagePacksSync()) {
+        services.i18n.registerCatalog({
+          locale: pack.locale,
+          messages: pack.messages,
+        });
+      }
       if (!active) return;
       if (storedLocale) {
         services.i18n.setLocale(storedLocale);

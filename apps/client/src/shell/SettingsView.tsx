@@ -10,6 +10,11 @@ export const SettingsView: React.FC = () => {
   const runtime = useClientRuntimeSnapshot();
   const services = useClientRuntimeServices();
   const extensionRuntime = useExtensionRuntime();
+  const viewSnapshot = React.useSyncExternalStore(
+    services.views.subscribe,
+    services.views.getSnapshot,
+    services.views.getSnapshot,
+  );
   const sectionsSnapshot = useSyncExternalStore(
     services.settingsRegistry.subscribe,
     services.settingsRegistry.getSnapshot,
@@ -45,12 +50,22 @@ export const SettingsView: React.FC = () => {
     },
   })), [extensionRuntime, schemaValues, sectionsSnapshot.sections, services.i18n]);
 
+  const initialSectionId = React.useMemo(() => {
+    const input = viewSnapshot.inputs['core.settings'];
+    if (!input || typeof input !== 'object') {
+      return null;
+    }
+    const requestedSectionId = (input as { sectionId?: unknown }).sectionId;
+    return typeof requestedSectionId === 'string' ? requestedSectionId : null;
+  }, [viewSnapshot.inputs]);
+
   return (
     <SettingsModal
       isOpen
       onClose={() => { void services.views.close('core.settings'); }}
       sections={sections}
       activeThemeLabel={runtime.app.state.currentThemeDef.name}
+      initialSectionId={initialSectionId}
     />
   );
 };

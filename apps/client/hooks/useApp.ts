@@ -12,6 +12,7 @@ import { GIT_REPO_REFRESH_REQUEST_EVENT, MARKDOWN_IMPORT_REQUEST_EVENT } from '.
 import { buildNormalizedGitConfig, getAuthToken, getDefaultGitConfig } from '../services/gitConfig';
 import { getGitAdapterService } from '../services/gitAdapter';
 import type { GitConfig } from '../types';
+import { readWorkspacePreferencesSync } from '../src/features/preferences/workspacePreferences';
 
 const SESSION_STORAGE_KEY = 'lattice-session-state';
 
@@ -421,12 +422,14 @@ export const useApp = () => {
   const handlePrint = () => {
       console.log(`[useApp] Action: handlePrint initiated`);
       if (!activeFile) return;
+      const workspacePreferences = readWorkspacePreferencesSync();
       ui.setAppMode('work');
       ui.setViewMode('preview');
       ui.setSidebarOpen(false);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => window.print());
       });
+      document.body.setAttribute('data-print-background', workspacePreferences.printBackground);
   };
 
   const handleGitConfigUpdate = async (config: GitConfig) => {

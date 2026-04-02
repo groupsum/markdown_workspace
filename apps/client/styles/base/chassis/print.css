@@ -103,4 +103,20 @@
     box-sizing: border-box;
     margin: 0 !important;
   }
+
+  body[data-print-background="plain"],
+  body[data-print-background="plain"] .chassis-root,
+  body[data-print-background="plain"] .markdown-body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  body[data-print-background="plain"] .markdown-body {
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  }
+
+  body[data-print-background="grayscale"] .chassis-root,
+  body[data-print-background="grayscale"] .markdown-body {
+    filter: grayscale(1);
+  }
 }

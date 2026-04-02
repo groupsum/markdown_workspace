@@ -2,6 +2,7 @@ import React from 'react';
 import { CORE_SHELL_SUPPORTED_LOCALES } from '@mdwrk/i18n';
 import { useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { useClientI18n } from './useClientI18n';
+import { useStoredLanguagePacks } from './languagePackStore';
 
 interface LanguageSelectorProps {
   readonly compact?: boolean;
@@ -10,8 +11,16 @@ interface LanguageSelectorProps {
 export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = false }) => {
   const services = useClientRuntimeServices();
   const { locale, setLocale, t } = useClientI18n();
+  const languagePacks = useStoredLanguagePacks();
 
-  const currentLocale = CORE_SHELL_SUPPORTED_LOCALES.find((entry) => entry.id === locale) ?? CORE_SHELL_SUPPORTED_LOCALES[0];
+  const options = React.useMemo(() => [
+    ...CORE_SHELL_SUPPORTED_LOCALES.map((entry) => ({ id: entry.id, nativeName: entry.nativeName })),
+    ...languagePacks
+      .filter((pack) => !CORE_SHELL_SUPPORTED_LOCALES.some((entry) => entry.id === pack.locale))
+      .map((pack) => ({ id: pack.locale, nativeName: pack.label })),
+  ], [languagePacks]);
+
+  const currentLocale = options.find((entry) => entry.id === locale) ?? options[0];
 
   return (
     <label className={`flex ${compact ? 'items-center gap-2' : 'flex-col gap-2'}`}>
@@ -26,7 +35,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = fa
           void services.settingsStore.set('core.locale', nextLocale);
         }}
       >
-        {CORE_SHELL_SUPPORTED_LOCALES.map((entry) => (
+        {options.map((entry) => (
           <option key={entry.id} value={entry.id}>{entry.nativeName}</option>
         ))}
       </select>

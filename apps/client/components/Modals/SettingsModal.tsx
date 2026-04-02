@@ -15,6 +15,7 @@ interface SettingsModalProps {
   readonly onClose: () => void;
   readonly sections: readonly SettingsModalSection[];
   readonly activeThemeLabel?: string;
+  readonly initialSectionId?: string | null;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -22,6 +23,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose,
   sections,
   activeThemeLabel,
+  initialSectionId,
 }) => {
   const { t } = useClientI18n();
   const resolveSidebarLabel = React.useCallback((section: SettingsModalSection): string => {
@@ -34,10 +36,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   useEffect(() => {
     if (!isOpen) return;
+    if (initialSectionId && orderedSections.some((section) => section.id === initialSectionId)) {
+      setActiveSectionId(initialSectionId);
+      return;
+    }
     if (!activeSectionId || !orderedSections.some((section) => section.id === activeSectionId)) {
       setActiveSectionId(orderedSections[0]?.id ?? null);
     }
-  }, [activeSectionId, isOpen, orderedSections]);
+  }, [activeSectionId, initialSectionId, isOpen, orderedSections]);
 
   if (!isOpen) return null;
 

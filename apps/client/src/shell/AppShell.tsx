@@ -82,6 +82,7 @@ export const AppShell: React.FC = () => {
         }}
         onTabClose={actions.closeTab}
         onZoom={actions.adjustZoom}
+        onResetZoom={actions.resetZoom}
         onOpenSettings={() => { void services.views.open('core.settings'); }}
       />
 

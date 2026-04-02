@@ -228,5 +228,29 @@ export function createThemeStudioService(deps: ThemeStudioServiceDependencies): 
       await deps.context.host.notifications.info(themeStudioLabels.notificationExported);
       return exports;
     },
+    async importPackageArtifact(payload) {
+      const parsed = JSON.parse(payload) as { files?: Array<{ path?: string; content?: string }> };
+      const themeFile = parsed.files?.find((entry) => typeof entry.path === 'string' && entry.path.startsWith('themes/') && entry.path.endsWith('.json'));
+      if (!themeFile?.content) {
+        throw new Error('Theme package artifact is missing a themes/*.json preset payload.');
+      }
+      const preset = JSON.parse(themeFile.content) as {
+        metadata?: Partial<ThemeStudioMetadata> & { id?: string; name?: string };
+        tokens?: MarkdownWorkspaceThemeTokenMap;
+      };
+      setSnapshot({
+        metadata: {
+          themeId: sanitizeThemeIdentifier(preset.metadata?.themeId ?? preset.metadata?.id ?? snapshot.metadata.themeId),
+          themeName: preset.metadata?.themeName ?? preset.metadata?.name ?? snapshot.metadata.themeName,
+          packageName: snapshot.metadata.packageName,
+          author: preset.metadata?.author ?? snapshot.metadata.author,
+          description: preset.metadata?.description ?? snapshot.metadata.description,
+        },
+        draftTokens: preset.tokens ?? {},
+        lastError: null,
+        infoMessage: format(themeStudioLabels.statusReady),
+      });
+      await deps.context.host.theme.previewTheme(preset.tokens ?? {});
+    },
   };
 }

@@ -85,6 +85,7 @@ export interface ThemeStudioService {
   revert(): Promise<void>;
   updateMetadata(patch: Partial<ThemeStudioMetadata>): Promise<void>;
   generateExports(target?: ThemeStudioExportTarget): Promise<ThemeStudioExportArtifacts>;
+  importPackageArtifact(payload: string): Promise<void>;
 }
 
 export interface ThemeStudioReadSettingsOptions {

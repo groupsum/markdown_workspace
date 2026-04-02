@@ -17,9 +17,14 @@ interface ActionRailProps {
   readonly items: readonly ActionRailItemModel[];
   readonly ariaLabel?: string;
   readonly className?: string;
+  readonly displayMode?: 'icon-only' | 'labeled';
 }
 
-const ToolbarButton: React.FC<ActionRailItemModel> = ({
+interface ToolbarButtonProps extends ActionRailItemModel {
+  readonly displayMode?: 'icon-only' | 'labeled';
+}
+
+const ToolbarButton: React.FC<ToolbarButtonProps> = ({
   active,
   disabled,
   onClick,
@@ -27,6 +32,7 @@ const ToolbarButton: React.FC<ActionRailItemModel> = ({
   title,
   badge,
   className = '',
+  displayMode = 'icon-only',
 }) => (
   <button
     className={`rail-btn ${active ? 'is-active' : ''} ${className}`}
@@ -40,13 +46,14 @@ const ToolbarButton: React.FC<ActionRailItemModel> = ({
     type="button"
   >
     {icon}
+    {displayMode === 'labeled' && <span className="rail-btn-label">{title}</span>}
     {typeof badge === 'number' && badge > 0 && <span className="rail-btn-badge">{badge}</span>}
   </button>
 );
 
 const isTopGroup = (group: ActionRailGroup | undefined) => group === 'workspace.primary' || group === 'assistant';
 
-export const ActionRail: React.FC<ActionRailProps> = ({ items, ariaLabel = 'Primary Actions', className = '' }) => {
+export const ActionRail: React.FC<ActionRailProps> = ({ items, ariaLabel = 'Primary Actions', className = '', displayMode = 'icon-only' }) => {
   const topItems = items.filter((item) => isTopGroup(item.group));
   const bottomItems = items.filter((item) => !isTopGroup(item.group));
 
@@ -54,7 +61,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({ items, ariaLabel = 'Prim
     <nav className={`action-rail ${className}`} aria-label={ariaLabel}>
       <div className="rail-group rail-group--top">
         {topItems.map((item) => (
-          <ToolbarButton key={item.id} {...item} />
+          <ToolbarButton key={item.id} {...item} displayMode={displayMode} />
         ))}
       </div>
 
@@ -62,7 +69,7 @@ export const ActionRail: React.FC<ActionRailProps> = ({ items, ariaLabel = 'Prim
 
       <div className="rail-group rail-group--bottom">
         {bottomItems.map((item) => (
-          <ToolbarButton key={item.id} {...item} />
+          <ToolbarButton key={item.id} {...item} displayMode={displayMode} />
         ))}
       </div>
     </nav>
