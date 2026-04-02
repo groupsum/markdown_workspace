@@ -97,6 +97,12 @@
       "@mdwrk/extension-manager/*": [
         "packages/extensions/extension-manager/dist/*"
       ],
+      "@mdwrk/extension-language-pack-studio": [
+        "packages/extensions/extension-language-pack-studio/src/index.ts"
+      ],
+      "@mdwrk/extension-language-pack-studio/*": [
+        "packages/extensions/extension-language-pack-studio/src/*"
+      ],
       "@mdwrk/extension-gemini-agent": [
         "packages/extensions/extension-gemini-agent/dist/index.d.ts"
       ],
@@ -108,6 +114,9 @@
       ],
       "@mdwrk/extension-theme-studio/*": [
         "packages/extensions/extension-theme-studio/dist/*"
+      ],
+      "lucide-react": [
+        "apps/client/node_modules/lucide-react"
       ]
     }
   }

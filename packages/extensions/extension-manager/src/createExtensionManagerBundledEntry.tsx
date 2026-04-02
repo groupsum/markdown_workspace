@@ -5,6 +5,8 @@ import type { ExtensionManagerEntryOptions } from "./types.js";
 import { ExtensionManagerView } from "./components/ExtensionManagerView.js";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
+  EXTENSION_MANAGER_MODAL_COMMAND_ID,
+  EXTENSION_MANAGER_MODAL_VIEW_ID,
   EXTENSION_MANAGER_RAIL_ID,
   EXTENSION_MANAGER_VIEW_ID,
   extensionManagerManifest,
@@ -31,12 +33,43 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
               await context.host.views.open(EXTENSION_MANAGER_VIEW_ID);
             },
           });
+          context.registerCommand({
+            id: EXTENSION_MANAGER_MODAL_COMMAND_ID,
+            title: extensionManagerLabels.commandOpenQuickTitle,
+            description: extensionManagerLabels.commandOpenQuickDescription,
+            icon: { kind: "lucide", name: "SquareMenu" },
+            execute: async () => {
+              await context.host.views.open(EXTENSION_MANAGER_MODAL_VIEW_ID);
+            },
+          });
 
           context.registerView({
             id: EXTENSION_MANAGER_VIEW_ID,
             title: extensionManagerLabels.viewTitle,
             description: extensionManagerLabels.viewDescription,
             icon: { kind: "lucide", name: "Puzzle" },
+            location: "main",
+            allowMultiple: false,
+            canBePinned: true,
+            render: (props) => (
+              <ExtensionManagerView
+                runtime={options.runtime}
+                close={() => (props as { close: () => Promise<void> }).close()}
+                formatLabel={context.host.i18n.format}
+                mode="pane"
+                openQuickActions={() => context.host.views.open(EXTENSION_MANAGER_MODAL_VIEW_ID)}
+                defaultSettings={{
+                  showCompatibility: true,
+                  showDiagnostics: true,
+                }}
+              />
+            ),
+          });
+          context.registerView({
+            id: EXTENSION_MANAGER_MODAL_VIEW_ID,
+            title: extensionManagerLabels.modalTitle,
+            description: extensionManagerLabels.modalDescription,
+            icon: { kind: "lucide", name: "SquareMenu" },
             location: "modal",
             allowMultiple: false,
             canBePinned: false,
@@ -45,6 +78,7 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
                 runtime={options.runtime}
                 close={() => (props as { close: () => Promise<void> }).close()}
                 formatLabel={context.host.i18n.format}
+                mode="modal"
                 defaultSettings={{
                   showCompatibility: true,
                   showDiagnostics: true,

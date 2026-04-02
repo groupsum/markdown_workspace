@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
           '@mdwrk/theme-contract': path.resolve(__dirname, '../../packages/contracts/theme-contract/src'),
           '@mdwrk/extension-runtime': path.resolve(__dirname, '../../packages/extensions/extension-runtime/src'),
           '@mdwrk/extension-manager': path.resolve(__dirname, '../../packages/extensions/extension-manager/src'),
+          '@mdwrk/extension-language-pack-studio': path.resolve(__dirname, '../../packages/extensions/extension-language-pack-studio/src'),
           '@mdwrk/extension-theme-studio': path.resolve(__dirname, '../../packages/extensions/extension-theme-studio/src'),
           '@mdwrk/markdown-renderer-react': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-react/src'),
           '@mdwrk/markdown-editor-react': path.resolve(__dirname, '../../packages/editor/markdown-editor-react/src'),

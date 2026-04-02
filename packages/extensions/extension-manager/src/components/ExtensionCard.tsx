@@ -151,7 +151,9 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
         </div>
       </section>
 
-      <details open={showCompatibility} onToggle={(event) => setShowCompatibility((event.currentTarget as HTMLDetailsElement).open)}>
+      <details open={showCompatibility} onToggle={(event) => {
+        setShowCompatibility((event.currentTarget as HTMLDetailsElement).open);
+      }}>
         <summary style={detailSummaryStyle}><ChevronsUpDown size={12} style={{ display: "inline-flex", marginRight: 6 }} />{formatLabel(extensionManagerLabels.labelCompatibility)}</summary>
         <div style={{ display: "grid", gap: 8, marginTop: 10 }}>
           <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>
@@ -167,7 +169,9 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
         </div>
       </details>
 
-      <details open={showDiagnostics} onToggle={(event) => setShowDiagnostics((event.currentTarget as HTMLDetailsElement).open)}>
+      <details open={showDiagnostics} onToggle={(event) => {
+        setShowDiagnostics((event.currentTarget as HTMLDetailsElement).open);
+      }}>
         <summary style={detailSummaryStyle}><ChevronsUpDown size={12} style={{ display: "inline-flex", marginRight: 6 }} />{formatLabel(extensionManagerLabels.labelHealth)}</summary>
         <div style={{ display: "grid", gap: 8, marginTop: 10 }}>
           {extension.lastError && (
@@ -189,7 +193,9 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
       </details>
 
       {extension.manifest.settingsSchema && (
-        <details open={showSettings} onToggle={(event) => setShowSettings((event.currentTarget as HTMLDetailsElement).open)}>
+        <details open={showSettings} onToggle={(event) => {
+          setShowSettings((event.currentTarget as HTMLDetailsElement).open);
+        }}>
           <summary style={detailSummaryStyle}><ChevronsUpDown size={12} style={{ display: "inline-flex", marginRight: 6 }} />{formatLabel(extensionManagerLabels.labelSettings)}</summary>
           <div style={{ marginTop: 10 }}>
             <SettingsSchemaForm

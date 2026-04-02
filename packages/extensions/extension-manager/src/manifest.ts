@@ -2,6 +2,8 @@ import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
   EXTENSION_MANAGER_EXTENSION_ID,
+  EXTENSION_MANAGER_MODAL_COMMAND_ID,
+  EXTENSION_MANAGER_MODAL_VIEW_ID,
   EXTENSION_MANAGER_RAIL_ID,
   EXTENSION_MANAGER_VIEW_ID,
 } from "./constants.js";
@@ -47,6 +49,13 @@ export const extensionManagerManifest: ExtensionManifest = {
         icon: { kind: "lucide", name: "Puzzle" },
         keywords: ["extension", "manager", "bundled"],
       },
+      {
+        id: EXTENSION_MANAGER_MODAL_COMMAND_ID,
+        title: extensionManagerLabels.commandOpenQuickTitle,
+        description: extensionManagerLabels.commandOpenQuickDescription,
+        icon: { kind: "lucide", name: "SquareMenu" },
+        keywords: ["extension", "manager", "quick", "modal"],
+      },
     ],
     views: [
       {
@@ -54,6 +63,15 @@ export const extensionManagerManifest: ExtensionManifest = {
         title: extensionManagerLabels.viewTitle,
         description: extensionManagerLabels.viewDescription,
         icon: { kind: "lucide", name: "Puzzle" },
+        location: "main",
+        allowMultiple: false,
+        canBePinned: true,
+      },
+      {
+        id: EXTENSION_MANAGER_MODAL_VIEW_ID,
+        title: extensionManagerLabels.modalTitle,
+        description: extensionManagerLabels.modalDescription,
+        icon: { kind: "lucide", name: "SquareMenu" },
         location: "modal",
         allowMultiple: false,
         canBePinned: false,
@@ -117,6 +135,8 @@ export const extensionManagerManifest: ExtensionManifest = {
 export {
   EXTENSION_MANAGER_COMMAND_ID,
   EXTENSION_MANAGER_EXTENSION_ID,
+  EXTENSION_MANAGER_MODAL_COMMAND_ID,
+  EXTENSION_MANAGER_MODAL_VIEW_ID,
   EXTENSION_MANAGER_RAIL_ID,
   EXTENSION_MANAGER_VIEW_ID,
 } from "./constants.js";

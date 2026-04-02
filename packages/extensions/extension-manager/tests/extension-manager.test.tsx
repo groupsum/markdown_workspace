@@ -27,6 +27,7 @@ import {
 import { THEME_CONTRACT_VERSION } from '@mdwrk/theme-contract';
 import {
   createExtensionManagerBundledEntry,
+  EXTENSION_MANAGER_MODAL_VIEW_ID,
   EXTENSION_MANAGER_VIEW_ID,
   extensionManagerManifest,
 } from '../src/index';
@@ -326,6 +327,9 @@ describe('extension-manager', () => {
     expect(runtime.get(extensionManagerManifest.id)?.status).toBe('active');
     expect(harness.commands.some((command) => command.id === extensionManagerManifest.contributions.commands[0]?.id)).toBe(true);
     expect(harness.views.some((view) => view.id === EXTENSION_MANAGER_VIEW_ID)).toBe(true);
+    expect(harness.views.some((view) => view.id === EXTENSION_MANAGER_MODAL_VIEW_ID)).toBe(true);
+    expect(harness.views.find((view) => view.id === EXTENSION_MANAGER_VIEW_ID)?.location).toBe('main');
+    expect(harness.views.find((view) => view.id === EXTENSION_MANAGER_MODAL_VIEW_ID)?.location).toBe('modal');
     expect(harness.railItems.some((item) => item.id === extensionManagerManifest.contributions.actionRail[0]?.id)).toBe(true);
     expect(harness.diagnostics[extensionManagerManifest.id]?.some((record) => record.code === 'EXT_MANAGER_READY')).toBe(true);
 

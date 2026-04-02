@@ -5,6 +5,7 @@ import { chromium } from 'playwright';
 
 const distDir = path.resolve('E:/swarmauri_github/markdown_workspace/apps/client/dist');
 const outputRoot = path.resolve('E:/swarmauri_github/markdown_workspace/artifacts/screenshots/theme-matrix');
+const languagePackSamplePath = path.resolve('E:/swarmauri_github/markdown_workspace/packages/extensions/extension-language-pack-studio/sample-packs/de.language-pack.json');
 const PORT = 4181;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const CHROME_PATH = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
@@ -89,6 +90,7 @@ async function closeModal(page) {
   const closeButtons = [
     page.locator('button:has-text("Close")').first(),
     page.locator('button:has-text("CLOSE")').first(),
+    page.locator('button:has-text("EXIT")').first(),
     page.locator('button:has-text("EXIT_CONFIG")').first(),
     page.locator('button[aria-label*="Close"]').first(),
   ];
@@ -186,9 +188,67 @@ async function captureThemeViewport(browser, themeId, viewport) {
   const extensionsButton = page.locator('button[title="Extensions"]').first();
   if (await extensionsButton.isVisible().catch(() => false)) {
     await extensionsButton.click();
-    await page.locator('[data-testid="extension-manager-modal"]').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'extension-manager-modal');
-    await closeModal(page);
+    await page.locator('[data-testid="extension-manager-pane"]').waitFor({ state: 'visible' });
+    await screenshot(page, themeId, viewport.id, 'extension-manager-pane');
+    const extensionQuickButton = page.locator('[data-testid="extension-manager-pane"] button:has-text("Quick Actions")').first();
+    if (await extensionQuickButton.isVisible().catch(() => false)) {
+      await extensionQuickButton.click();
+      await page.locator('[data-testid="extension-manager-modal"]').waitFor({ state: 'visible' });
+      await screenshot(page, themeId, viewport.id, 'extension-manager-modal');
+      await closeModal(page);
+    }
+    const extensionClose = page.locator('[data-testid="extension-manager-pane"] button:has-text("Close")').first();
+    if (await extensionClose.isVisible().catch(() => false)) {
+      await extensionClose.click();
+      await page.waitForTimeout(150);
+    }
+  }
+
+  const languagePackButton = page.locator('button[title="Language Packs"]').first();
+  if (await languagePackButton.isVisible().catch(() => false)) {
+    await languagePackButton.click();
+    await page.locator('[data-testid="language-pack-studio-pane"]').waitFor({ state: 'visible' });
+    await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane');
+    const languagePackInput = page.locator('[data-testid="language-pack-studio-pane"] input[type="file"]').first();
+    await languagePackInput.setInputFiles(languagePackSamplePath);
+    await page.waitForTimeout(250);
+    await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-imported');
+    const usePackButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("USE")').first();
+    if (await usePackButton.isVisible().catch(() => false)) {
+      await usePackButton.click();
+      await page.waitForTimeout(250);
+      await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-active');
+    }
+    const quickManagerButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("QUICK_MANAGER")').first();
+    if (await quickManagerButton.isVisible().catch(() => false)) {
+      await quickManagerButton.click();
+      await page.locator('[data-testid="language-pack-manager-modal"]').waitFor({ state: 'visible' });
+      await screenshot(page, themeId, viewport.id, 'language-pack-manager-modal');
+      const languageManagerExit = page.locator('[data-testid="language-pack-manager-modal"] button:has-text("EXIT")').first();
+      if (await languageManagerExit.isVisible().catch(() => false)) {
+        await languageManagerExit.click();
+        await page.waitForTimeout(150);
+      } else {
+        await closeModal(page);
+      }
+    }
+    await page.locator('[data-testid="language-pack-studio-pane"] input').nth(1).fill('it-demo');
+    await page.locator('[data-testid="language-pack-studio-pane"] input').nth(2).fill('Italiano Demo');
+    await page.locator('[data-testid="language-pack-studio-pane"] textarea').first().fill('{\n  "core.views.settings.title": "Configurazione di sistema"\n}');
+    await page.locator('[data-testid="language-pack-studio-pane"] button:has-text("CREATE_AND_EXPORT")').click();
+    await page.waitForTimeout(250);
+    await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-created');
+    const removePackButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("REMOVE")').first();
+    if (await removePackButton.isVisible().catch(() => false)) {
+      await removePackButton.click();
+      await page.waitForTimeout(250);
+      await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-removed');
+    }
+    const languagePackClose = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("CLOSE")').first();
+    if (await languagePackClose.isVisible().catch(() => false)) {
+      await languagePackClose.click();
+      await page.waitForTimeout(150);
+    }
   }
 
   const themeStudioButton = page.locator('button[title="Theme Studio"]').first();

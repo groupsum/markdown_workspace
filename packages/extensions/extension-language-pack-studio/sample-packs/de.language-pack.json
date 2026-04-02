@@ -1,0 +1,19 @@
+{
+  "kind": "mdwrk-language-pack",
+  "version": 1,
+  "locale": "de",
+  "label": "Deutsch Experimental",
+  "enabled": true,
+  "messages": {
+    "core.views.settings.title": "Systemkonfiguration",
+    "core.views.settings.description": "Anwendungs- und Arbeitsbereichseinstellungen.",
+    "core.settings.language.title": "Sprache und Gebietsschema",
+    "core.settings.language.description": "Wählen Sie die Oberflächensprache des Hauptsystems.",
+    "core.commands.new-file": "Neue Datei erstellen",
+    "core.commands.new-folder": "Neuen Ordner erstellen",
+    "core.commands.toggle-git-pane": "Git-Operationen",
+    "core.commands.switch-project": "Projekt wechseln",
+    "core.commands.download-workspace": "Arbeitsbereich herunterladen",
+    "core.import-markdown.title": "Markdown importieren"
+  }
+}

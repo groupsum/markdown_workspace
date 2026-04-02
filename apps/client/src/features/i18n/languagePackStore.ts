@@ -5,6 +5,7 @@ export interface LanguagePackArtifact {
   readonly version: 1;
   readonly locale: string;
   readonly label: string;
+  readonly enabled: boolean;
   readonly messages: Readonly<Record<string, string>>;
 }
 
@@ -37,6 +38,7 @@ export function normalizeLanguagePackArtifact(value: unknown): LanguagePackArtif
     version: 1,
     locale,
     label: label || locale,
+    enabled: value.enabled !== false,
     messages,
   };
 }
@@ -131,4 +133,15 @@ export function useStoredLanguagePacks(): readonly LanguagePackArtifact[] {
     readStoredLanguagePacksSync,
     readStoredLanguagePacksSync,
   );
+}
+
+export function setStoredLanguagePackEnabled(locale: string, enabled: boolean): readonly LanguagePackArtifact[] {
+  const targetLocale = locale.trim().toLowerCase();
+  return writeStoredLanguagePacks(
+    readStoredLanguagePacksSync().map((entry) => entry.locale === targetLocale ? { ...entry, enabled } : entry),
+  );
+}
+
+export function readEnabledLanguagePacksSync(): readonly LanguagePackArtifact[] {
+  return readStoredLanguagePacksSync().filter((entry) => entry.enabled);
 }

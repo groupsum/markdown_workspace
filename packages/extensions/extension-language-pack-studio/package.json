@@ -1,0 +1,40 @@
+{
+  "name": "@mdwrk/extension-language-pack-studio",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "sample-packs"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@mdwrk/extension-host": "^1.0.2",
+    "@mdwrk/extension-manifest": "^1.0.1",
+    "lucide-react": "^0.475.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

@@ -16,6 +16,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = fa
   const options = React.useMemo(() => [
     ...CORE_SHELL_SUPPORTED_LOCALES.map((entry) => ({ id: entry.id, nativeName: entry.nativeName })),
     ...languagePacks
+      .filter((pack) => pack.enabled)
       .filter((pack) => !CORE_SHELL_SUPPORTED_LOCALES.some((entry) => entry.id === pack.locale))
       .map((pack) => ({ id: pack.locale, nativeName: pack.label })),
   ], [languagePacks]);

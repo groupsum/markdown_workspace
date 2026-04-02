@@ -1,9 +1,12 @@
 import React from 'react';
 import { createExtensionRuntime } from '@mdwrk/extension-runtime';
+import { createLanguagePackStudioBundledEntry } from '@mdwrk/extension-language-pack-studio';
 import { createExtensionManagerBundledEntry } from '@mdwrk/extension-manager';
 import { createGeminiAgentBundledEntry } from '@mdwrk/extension-gemini-agent';
 import { createThemeStudioBundledEntry } from '@mdwrk/extension-theme-studio';
 import { useClientExtensionHost, useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
+import { createLanguagePackStudioController } from '../../features/i18n/languagePackStudioController';
+import { loadWorkspaceLanguageTokenCatalog } from '../../features/i18n/languageTokenCatalog';
 import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsPanel';
 import { ExtensionRuntimeContextProvider } from './ExtensionRuntimeContext';
 import { createClientExtensionRegistrationSink } from './createClientExtensionRegistrationSink';
@@ -16,6 +19,11 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
   const host = useClientExtensionHost();
 
   const registrationSink = React.useMemo(() => createClientExtensionRegistrationSink(services), [services]);
+  const languagePackController = React.useMemo(() => createLanguagePackStudioController({
+    i18n: services.i18n,
+    settingsStore: services.settingsStore,
+    loadTokenCatalog: loadWorkspaceLanguageTokenCatalog,
+  }), [services.i18n, services.settingsStore]);
   const runtime = React.useMemo(() => createExtensionRuntime({
     host,
     registrationSink,
@@ -28,10 +36,11 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
 
   const bundledEntries = React.useMemo(() => [
     createExtensionManagerBundledEntry({ runtime }),
+    createLanguagePackStudioBundledEntry({ controller: languagePackController }),
     createGeminiAgentBundledEntry(),
     createThemeStudioBundledEntry(),
     runtimeSmokeExtensionEntry,
-  ], [runtime]);
+  ], [languagePackController, runtime]);
 
   React.useEffect(() => {
     const disposables = bundledEntries.map((entry) => runtime.registerBundledExtension(entry));
