@@ -10,7 +10,7 @@ import {
 import { themeStudioLabels, themeStudioLocaleLoader } from "./i18n.js";
 import { themeStudioManifest } from "./manifest.js";
 import { createThemeStudioService } from "./service.js";
-import { ThemeStudioView } from "./components/ThemeStudioView.js";
+import { ThemeStudioSidebar, ThemeStudioView } from "./components/ThemeStudioView.js";
 import { ThemeStudioSettingsPanel } from "./components/ThemeStudioSettingsPanel.js";
 
 export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
@@ -42,7 +42,7 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             },
           });
 
-          context.registerView({
+          context.registerView(({
             id: THEME_STUDIO_VIEW_ID,
             title: themeStudioLabels.viewTitle,
             description: themeStudioLabels.viewDescription,
@@ -55,9 +55,18 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
                 service={service}
                 close={() => (props as { close: () => Promise<void> }).close()}
                 formatLabel={context.host.i18n.format}
+                shellSidebarOpen={(props as { workspaceSidebarOpen?: boolean }).workspaceSidebarOpen}
+                onShellSidebarToggle={(props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen}
+                embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-          });
+            renderSidebar: () => (
+              <ThemeStudioSidebar
+                service={service}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
+          } as unknown) as never);
 
           context.registerActionRailItem({
             id: THEME_STUDIO_RAIL_ID,

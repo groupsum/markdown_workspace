@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T00:40:47.635Z",
+  "generatedAt": "2026-04-03T21:02:35.585Z",
   "signers": [
     {
       "keyId": "dev-ecdsa-p256-sha256",
@@ -10,8 +10,8 @@
         ],
         "ext": true,
         "kty": "EC",
-        "x": "MQJe7uUGB6_JIWLaoZYU3qibdPjpUdEJFoj0eeSZI0I",
-        "y": "6cWucy87WUAr5l5vfJNpuT5HYMQamOX2Q0BUDYvuoPA",
+        "x": "lsMmvZIM5F-E06qTi6pdwTueyjEcpJgyDq2K21DmQ1A",
+        "y": "1EAj-VCF2HATjkhVxKirABl_yl8DEeipgqxMrhKPHTQ",
         "crv": "P-256"
       },
       "publisher": "demo-catalog",

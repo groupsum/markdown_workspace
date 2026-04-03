@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T04:47:34.193Z",
+  "generatedAt": "2026-04-03T21:02:30.933Z",
   "validator": "tools/conformance/validate-extension-manifests.mjs",
   "ok": true,
   "results": [
@@ -15,6 +15,14 @@
       "packageName": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent",
       "manifestId": "core.gemini-agent",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-language-pack-studio",
+      "path": "packages/extensions/extension-language-pack-studio",
+      "manifestId": "core.language-pack-studio",
       "valid": true,
       "errors": [],
       "warnings": []

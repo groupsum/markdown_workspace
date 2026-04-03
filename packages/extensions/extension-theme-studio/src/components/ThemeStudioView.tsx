@@ -1,4 +1,4 @@
-import { type CSSProperties, type FC, useDeferredValue, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { type CSSProperties, type FC, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { MarkdownSourceEditor, createMarkdownEditorThemeStyleFromThemeTokens } from "@mdwrk/markdown-editor-react";
 import { MarkdownRenderer, createMarkdownRendererThemeStyleFromThemeTokens } from "@mdwrk/markdown-renderer-react";
 import type { I18nLabel } from "@mdwrk/extension-manifest";
@@ -20,6 +20,9 @@ export interface ThemeStudioViewProps {
   readonly service: ThemeStudioService;
   readonly close: () => Promise<void>;
   readonly formatLabel: (label: I18nLabel | string) => string;
+  readonly shellSidebarOpen?: boolean;
+  readonly onShellSidebarToggle?: (open: boolean) => void;
+  readonly embedBrowserInShellSidebar?: boolean;
 }
 
 const sectionTitleStyle: CSSProperties = {
@@ -55,6 +58,56 @@ const codeBlockStyle: CSSProperties = {
 
 const mergeTokens = (current: Record<string, string> | null, draft: Record<string, string>) => ({ ...(current ?? {}), ...draft });
 
+type ThemeBrowserState = {
+  readonly browserQuery: string;
+  readonly sidebarSection: "metadata" | "tokens" | "relationships" | "exports";
+  readonly selectedTokenName: string | null;
+  readonly selectedRelationshipClass: string | null;
+};
+
+type ThemeBrowserStore = {
+  getSnapshot(): ThemeBrowserState;
+  subscribe(listener: () => void): () => void;
+  setState(update: Partial<ThemeBrowserState>): void;
+};
+
+const createThemeBrowserStore = (): ThemeBrowserStore => {
+  let state: ThemeBrowserState = {
+    browserQuery: "",
+    sidebarSection: "metadata",
+    selectedTokenName: null,
+    selectedRelationshipClass: null,
+  };
+  const listeners = new Set<() => void>();
+  return {
+    getSnapshot: () => state,
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => listeners.delete(listener);
+    },
+    setState(update) {
+      state = { ...state, ...update };
+      listeners.forEach((listener) => listener());
+    },
+  };
+};
+
+const themeBrowserStores = new WeakMap<ThemeStudioService, ThemeBrowserStore>();
+const getThemeBrowserStore = (service: ThemeStudioService): ThemeBrowserStore => {
+  let store = themeBrowserStores.get(service);
+  if (!store) {
+    store = createThemeBrowserStore();
+    themeBrowserStores.set(service, store);
+  }
+  return store;
+};
+
+function useThemeBrowserState(service: ThemeStudioService) {
+  const store = getThemeBrowserStore(service);
+  const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot);
+  return { state, setState: store.setState };
+}
+
 function downloadTextFile(filename: string, content: string, mimeType = "text/plain;charset=utf-8"): void {
   if (typeof window === "undefined") return;
   const blob = new Blob([content], { type: mimeType });
@@ -66,17 +119,122 @@ function downloadTextFile(filename: string, content: string, mimeType = "text/pl
   URL.revokeObjectURL(url);
 }
 
-export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, formatLabel }) => {
+export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "formatLabel">> = ({ service }) => {
+  const snapshot = useSyncExternalStore(service.subscribe, service.getSnapshot, service.getSnapshot);
+  const { state: browserState, setState: setBrowserState } = useThemeBrowserState(service);
+  const deferredBrowserQuery = browserState.browserQuery.trim().toLowerCase();
+  const browserTokens = useMemo(
+    () => snapshot.tokenDefinitions.filter((definition) => {
+      if (!deferredBrowserQuery) return true;
+      const haystack = `${definition.name} ${definition.category} ${definition.description}`.toLowerCase();
+      return haystack.includes(deferredBrowserQuery);
+    }),
+    [deferredBrowserQuery, snapshot.tokenDefinitions],
+  );
+  const browserRelationships = useMemo(
+    () => snapshot.relationships.filter((relationship) => {
+      if (!deferredBrowserQuery) return true;
+      const haystack = `${relationship.className} ${relationship.selector} ${relationship.scope} ${relationship.bridgeTarget}`.toLowerCase();
+      return haystack.includes(deferredBrowserQuery);
+    }),
+    [deferredBrowserQuery, snapshot.relationships],
+  );
+
+  return (
+    <div className="workspace-panel-content" style={{ display: "grid", gap: 12, padding: 12 }}>
+      <div className="settings-card settings-card-stack">
+        <div className="settings-session-grid">
+          <div className="settings-session-item"><span className="settings-session-label">THEME_ID</span><span className="settings-session-value">{snapshot.metadata.themeId}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{snapshot.tokenDefinitions.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">RELATIONSHIPS</span><span className="settings-session-value">{snapshot.relationships.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{snapshot.busy ? "BUSY" : "READY"}</span></div>
+        </div>
+        <div className="settings-chip-row">
+          <span className="settings-chip">THEME_BROWSER</span>
+          <span className="settings-chip">{snapshot.tokenDefinitions.length} TOKENS</span>
+          <span className="settings-chip">{snapshot.relationships.length} RELATIONSHIPS</span>
+        </div>
+      </div>
+      <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
+        <input
+          style={fieldStyle}
+          value={browserState.browserQuery}
+          onChange={(event) => setBrowserState({ browserQuery: event.currentTarget.value })}
+          placeholder="Filter tokens, selectors, exports"
+          aria-label="Filter theme browser"
+        />
+        {[
+          ["metadata", "Metadata"],
+          ["tokens", `Tokens (${browserTokens.length})`],
+          ["relationships", `Relationships (${browserRelationships.length})`],
+          ["exports", "Exports"],
+        ].map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            className={`settings-sidebar-btn ${browserState.sidebarSection === value ? "active" : ""}`}
+            onClick={() => setBrowserState({
+              sidebarSection: value as ThemeBrowserState["sidebarSection"],
+              selectedTokenName: value === "tokens" ? browserState.selectedTokenName : null,
+              selectedRelationshipClass: value === "relationships" ? browserState.selectedRelationshipClass : null,
+            })}
+          >
+            {label}
+          </button>
+        ))}
+        <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
+          <span className="settings-session-label">TOKEN_BROWSER</span>
+          {browserTokens.slice(0, 12).map((definition) => (
+            <button
+              key={definition.name}
+              type="button"
+              className={`settings-sidebar-btn ${browserState.selectedTokenName === definition.name ? "active" : ""}`}
+              onClick={() => setBrowserState({ sidebarSection: "tokens", selectedTokenName: definition.name, selectedRelationshipClass: null })}
+              style={{ justifyContent: "space-between", gap: 10 }}
+            >
+              <span style={{ textAlign: "left" }}>{definition.name}</span>
+              <span className="settings-session-label">{definition.category}</span>
+            </button>
+          ))}
+          {browserTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No tokens match.</span>}
+        </div>
+        <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
+          <span className="settings-session-label">RELATIONSHIP_BROWSER</span>
+          {browserRelationships.slice(0, 12).map((relationship) => (
+            <button
+              key={relationship.className}
+              type="button"
+              className={`settings-sidebar-btn ${browserState.selectedRelationshipClass === relationship.className ? "active" : ""}`}
+              onClick={() => setBrowserState({ sidebarSection: "relationships", selectedRelationshipClass: relationship.className, selectedTokenName: null })}
+              style={{ justifyContent: "space-between", gap: 10 }}
+            >
+              <span style={{ textAlign: "left" }}>{relationship.className}</span>
+              <span className="settings-session-label">{relationship.bridgeTarget}</span>
+            </button>
+          ))}
+          {browserRelationships.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No relationships match.</span>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
+  service,
+  close,
+  formatLabel,
+  shellSidebarOpen,
+  onShellSidebarToggle,
+  embedBrowserInShellSidebar = false,
+}) => {
   const snapshot = useSyncExternalStore(service.subscribe, service.getSnapshot, service.getSnapshot);
   const [exportTarget, setExportTarget] = useState<"host" | "renderer" | "editor">("host");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
-  const [sidebarSection, setSidebarSection] = useState<"metadata" | "tokens" | "relationships" | "exports">("metadata");
-  const [browserQuery, setBrowserQuery] = useState("");
-  const [selectedTokenName, setSelectedTokenName] = useState<string | null>(null);
-  const [selectedRelationshipClass, setSelectedRelationshipClass] = useState<string | null>(null);
   const [importInput, setImportInput] = useState<HTMLInputElement | null>(null);
-  const deferredBrowserQuery = useDeferredValue(browserQuery.trim().toLowerCase());
+  const { state: browserState, setState: setBrowserState } = useThemeBrowserState(service);
+  const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
+  const deferredBrowserQuery = browserState.browserQuery.trim().toLowerCase();
 
   const effectiveTokens = useMemo(
     () => mergeTokens(snapshot.currentTokens as Record<string, string> | null, snapshot.draftTokens as Record<string, string>),
@@ -102,17 +260,17 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
     [deferredBrowserQuery, snapshot.relationships],
   );
   const visibleTokenDefinitions = useMemo(() => {
-    if (selectedTokenName) {
-      return browserTokens.filter((definition) => definition.name === selectedTokenName);
+    if (browserState.selectedTokenName) {
+      return browserTokens.filter((definition) => definition.name === browserState.selectedTokenName);
     }
     return browserTokens;
-  }, [browserTokens, selectedTokenName]);
+  }, [browserState.selectedTokenName, browserTokens]);
   const visibleRelationships = useMemo(() => {
-    if (selectedRelationshipClass) {
-      return browserRelationships.filter((relationship) => relationship.className === selectedRelationshipClass);
+    if (browserState.selectedRelationshipClass) {
+      return browserRelationships.filter((relationship) => relationship.className === browserState.selectedRelationshipClass);
     }
     return browserRelationships;
-  }, [browserRelationships, selectedRelationshipClass]);
+  }, [browserRelationships, browserState.selectedRelationshipClass]);
 
   useEffect(() => {
     void service.refresh();
@@ -146,7 +304,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
 
   const inspectorPane = (
     <div style={{ display: "grid", gap: 16 }}>
-      {(sidebarSection === "metadata" || layoutMode === "split") && (
+      {(browserState.sidebarSection === "metadata" || layoutMode === "split") && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 8 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
             <span style={sectionTitleStyle}>{formatLabel(themeStudioLabels.metadataTitle)}</span>
@@ -163,7 +321,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
         </div>
       )}
 
-      {(sidebarSection === "tokens" || layoutMode === "split") && (
+      {(browserState.sidebarSection === "tokens" || layoutMode === "split") && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div>
             <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
@@ -197,7 +355,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
         </div>
       )}
 
-      {(sidebarSection === "relationships" || layoutMode === "split") && (
+      {(browserState.sidebarSection === "relationships" || layoutMode === "split") && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div>
             <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.classInspectorTitle)}</div>
@@ -222,7 +380,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
         </div>
       )}
 
-      {(sidebarSection === "exports" || layoutMode === "split") && (
+      {(browserState.sidebarSection === "exports" || layoutMode === "split") && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
             <div>
@@ -263,7 +421,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
     <div className="theme-studio-pane editor-pane-container" data-testid="theme-studio-pane" role="region" aria-label={formatLabel(themeStudioLabels.viewTitle)}>
       <div className="view-toolbar" aria-label="Theme Studio toolbar">
         <div className="view-toolbar-group">
-          <button type="button" className={`view-toolbar-btn ${sidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => setSidebarOpen((current) => !current)}>
+          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
             SB
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
@@ -290,92 +448,9 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
       <div className="editor-pane-shell">
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={(event) => { void importPackage(event); }} />
         <div className="editor-pane-body is-split">
-          {sidebarOpen && (
+          {!embedBrowserInShellSidebar && sidebarOpen && (
             <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(300px, 26vw)", padding: 12, gap: 12 }}>
-              <div className="settings-card settings-card-stack">
-                <div className="settings-session-grid">
-                  <div className="settings-session-item"><span className="settings-session-label">THEME_ID</span><span className="settings-session-value">{snapshot.metadata.themeId}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{snapshot.tokenDefinitions.length}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">RELATIONSHIPS</span><span className="settings-session-value">{snapshot.relationships.length}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{snapshot.busy ? "BUSY" : "READY"}</span></div>
-                </div>
-                <div className="settings-chip-row">
-                  <span className="settings-chip">{snapshot.tokenDefinitions.length} TOKENS</span>
-                  <span className="settings-chip">{snapshot.relationships.length} RELATIONSHIPS</span>
-                  <span className="settings-chip">PANE_ONLY</span>
-                </div>
-              </div>
-              <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
-                <div style={{ display: "grid", gap: 6 }}>
-                  <span className="settings-session-label">THEME_BROWSER</span>
-                  <input
-                    style={fieldStyle}
-                    value={browserQuery}
-                    onChange={(event) => setBrowserQuery(event.currentTarget.value)}
-                    placeholder="Filter tokens, selectors, exports"
-                    aria-label="Filter theme browser"
-                  />
-                </div>
-                {[
-                  ["metadata", "Metadata"],
-                  ["tokens", `Tokens (${browserTokens.length})`],
-                  ["relationships", `Relationships (${browserRelationships.length})`],
-                  ["exports", "Exports"],
-                ].map(([value, label]) => (
-                  <button
-                    key={value}
-                    type="button"
-                    className={`settings-sidebar-btn ${sidebarSection === value ? "active" : ""}`}
-                    onClick={() => {
-                      setSidebarSection(value as "metadata" | "tokens" | "relationships" | "exports");
-                      if (value !== "tokens") setSelectedTokenName(null);
-                      if (value !== "relationships") setSelectedRelationshipClass(null);
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-                <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
-                  <span className="settings-session-label">TOKEN_BROWSER</span>
-                  {browserTokens.slice(0, 12).map((definition) => (
-                    <button
-                      key={definition.name}
-                      type="button"
-                      className={`settings-sidebar-btn ${selectedTokenName === definition.name ? "active" : ""}`}
-                      onClick={() => {
-                        setSidebarSection("tokens");
-                        setSelectedTokenName(definition.name);
-                        setSelectedRelationshipClass(null);
-                      }}
-                      style={{ justifyContent: "space-between", gap: 10 }}
-                    >
-                      <span style={{ textAlign: "left" }}>{definition.name}</span>
-                      <span className="settings-session-label">{definition.category}</span>
-                    </button>
-                  ))}
-                  {browserTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No tokens match.</span>}
-                </div>
-                <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
-                  <span className="settings-session-label">RELATIONSHIP_BROWSER</span>
-                  {browserRelationships.slice(0, 12).map((relationship) => (
-                    <button
-                      key={relationship.className}
-                      type="button"
-                      className={`settings-sidebar-btn ${selectedRelationshipClass === relationship.className ? "active" : ""}`}
-                      onClick={() => {
-                        setSidebarSection("relationships");
-                        setSelectedRelationshipClass(relationship.className);
-                        setSelectedTokenName(null);
-                      }}
-                      style={{ justifyContent: "space-between", gap: 10 }}
-                    >
-                      <span style={{ textAlign: "left" }}>{relationship.className}</span>
-                      <span className="settings-session-label">{relationship.bridgeTarget}</span>
-                    </button>
-                  ))}
-                  {browserRelationships.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No relationships match.</span>}
-                </div>
-              </div>
+              <ThemeStudioSidebar service={service} formatLabel={formatLabel} />
             </aside>
           )}
 
@@ -395,7 +470,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({ service, close, form
               </div>
             </div>
 
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(0, 1.08fr) minmax(360px, 0.92fr)" : "minmax(0, 1fr)" }}>
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(420px, 1.05fr) minmax(360px, 0.95fr)" : "minmax(0, 1fr)" }}>
               <div style={{ display: "grid", gap: 16 }}>
                 {inspectorPane}
               </div>

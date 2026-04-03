@@ -2,7 +2,7 @@ import React from "react";
 import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import type { ExtensionManagerEntryOptions } from "./types.js";
-import { ExtensionManagerView } from "./components/ExtensionManagerView.js";
+import { ExtensionManagerSidebar, ExtensionManagerView } from "./components/ExtensionManagerView.js";
 import { ExtensionManagerSettingsPanel } from "./components/ExtensionManagerSettingsPanel.js";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
@@ -33,7 +33,7 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
             },
           });
 
-          context.registerView({
+          context.registerView(({
             id: EXTENSION_MANAGER_VIEW_ID,
             title: extensionManagerLabels.viewTitle,
             description: extensionManagerLabels.viewDescription,
@@ -50,9 +50,18 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
                   showCompatibility: true,
                   showDiagnostics: true,
                 }}
+                shellSidebarOpen={(props as { workspaceSidebarOpen?: boolean }).workspaceSidebarOpen}
+                onShellSidebarToggle={(props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen}
+                embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-          });
+            renderSidebar: () => (
+              <ExtensionManagerSidebar
+                runtime={options.runtime}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
+          } as unknown) as never);
 
           context.registerActionRailItem({
             id: EXTENSION_MANAGER_RAIL_ID,

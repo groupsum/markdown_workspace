@@ -31,6 +31,17 @@ export const AppShell: React.FC = () => {
     viewSnapshot.views.find((view) => view.id === activeWorkspaceViewId && view.location === 'main' && view.id !== 'core.git-pane')
     ?? viewSnapshot.views.find((view) => view.location === 'main' && view.id !== 'core.git-pane' && viewSnapshot.openViewIds.includes(view.id))
     ?? null;
+  const workspaceViewRenderProps = workspaceView
+    ? {
+        viewId: workspaceView.id,
+        input: viewSnapshot.inputs[workspaceView.id],
+        isOpen: true,
+        workspaceSidebarOpen: state.sidebarOpen,
+        setWorkspaceSidebarOpen: actions.setSidebarOpen,
+        close: () => services.views.close(workspaceView.id),
+        focus: () => services.views.focus(workspaceView.id),
+      }
+    : null;
 
   const pwaAction = pwaState.canInstall
     ? {
@@ -123,15 +134,17 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            workspaceSidebarSurface={
+              workspaceView && workspaceViewRenderProps && workspaceView.renderSidebar
+                ? workspaceView.renderSidebar(workspaceViewRenderProps) as React.ReactNode
+                : undefined
+            }
+            workspaceSidebarLabel={
+              workspaceView?.renderSidebar ? `${workspaceView.title.defaultMessage} Browser` : undefined
+            }
             workspaceSurface={
-              workspaceView
-                ? workspaceView.render({
-                    viewId: workspaceView.id,
-                    input: viewSnapshot.inputs[workspaceView.id],
-                    isOpen: true,
-                    close: () => services.views.close(workspaceView.id),
-                    focus: () => services.views.focus(workspaceView.id),
-                  }) as React.ReactNode
+              workspaceView && workspaceViewRenderProps
+                ? workspaceView.render(workspaceViewRenderProps) as React.ReactNode
                 : undefined
             }
           />

@@ -8,6 +8,8 @@ This claim covers the shell architecture and persistence rules for Theme Studio,
 - each surface must expose grouped extension-wide actions through `view-toolbar`, `view-toolbar-group`, and `view-toolbar-btn`
 - each surface must support a collapsible `workspace-sidebar`-backed shell plus single-pane and split-screen layouts using `editor-pane-column`
 - each surface must implement a dedicated browser sidebar for its domain objects: themes, language packs, and extensions/catalog entries
+- when active in the workspace shell, each browser sidebar must occupy the shared sidebar slot in place of the file explorer
+- Theme Studio must render the theme editor on the left stage pane and the previewer on the right stage pane in split mode
 - built-in and installed language packs must be visible together, and any language pack including built-ins can be enabled or disabled
 - imported language packs and installed extensions must persist through IndexedDB-backed device storage
 - extension-contributed UI labels must remain format-driven and resolve through an `en` fallback

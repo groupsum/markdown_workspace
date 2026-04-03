@@ -5,12 +5,15 @@ export interface ClientViewRenderProps {
   readonly viewId: string;
   readonly input: unknown;
   readonly isOpen: boolean;
+  readonly workspaceSidebarOpen?: boolean;
+  setWorkspaceSidebarOpen?(open: boolean): void;
   close(): Promise<void>;
   focus(): Promise<void>;
 }
 
 export interface ClientViewDefinition extends Omit<RegisteredView, 'render'> {
   readonly render: (props: ClientViewRenderProps) => unknown;
+  readonly renderSidebar?: (props: ClientViewRenderProps) => unknown;
   readonly onOpen?: (input?: unknown) => void | Promise<void>;
   readonly onClose?: () => void | Promise<void>;
   readonly onFocus?: () => void | Promise<void>;

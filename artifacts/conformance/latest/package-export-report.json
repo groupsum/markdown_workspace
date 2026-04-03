@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T00:40:48.612Z",
+  "generatedAt": "2026-04-03T21:02:33.564Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -90,6 +90,16 @@
       "ok": true,
       "errors": [],
       "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-language-pack-studio",
+      "path": "packages/extensions/extension-language-pack-studio",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Publishable package should declare a prepack script."
+      ]
     },
     {
       "packageName": "@mdwrk/extension-manager",

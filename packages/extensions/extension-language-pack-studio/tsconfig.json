@@ -5,9 +5,17 @@
     "outDir": "dist",
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "stripInternal": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "dist"
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-01T02:21:32.389Z",
+  "generatedAt": "2026-04-03T21:02:37.054Z",
   "claimId": "markdown-profile-snapshot-stability",
   "gateId": "gate-markdown-profile-snapshot-stability",
-  "status": "green",
+  "status": "blocked",
   "command": "npm run test:markdown-profile-snapshot",
   "evidence": [
     "apps/client/src/features/markdownProfiles/profileConfig.ts",

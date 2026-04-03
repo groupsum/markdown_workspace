@@ -72,7 +72,15 @@ export const languagePackStudioManifest: ExtensionManifest = {
         title: languagePackStudioLabels.settingsTitle,
         description: languagePackStudioLabels.settingsDescription,
         order: 30,
+        schemaPath: "manifest.settingsSchema",
       }
     ]
+  },
+  settingsSchema: {
+    version: 1,
+    title: languagePackStudioLabels.settingsTitle,
+    description: languagePackStudioLabels.settingsDescription,
+    sections: [],
+    fields: [],
   }
 };

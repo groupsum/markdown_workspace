@@ -42,47 +42,174 @@ export interface LanguagePackStudioViewProps {
   readonly controller: LanguagePackStudioController;
   readonly close: () => Promise<void>;
   readonly formatLabel: (label: I18nLabel | string) => string;
+  readonly shellSidebarOpen?: boolean;
+  readonly onShellSidebarToggle?: (open: boolean) => void;
+  readonly embedBrowserInShellSidebar?: boolean;
 }
 
-export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ controller, close, formatLabel: _formatLabel }) => {
+type LanguageBrowserFilter = "all" | "built-in" | "installed" | "disabled";
+type LanguageBrowserState = {
+  readonly browserQuery: string;
+  readonly browserFilter: LanguageBrowserFilter;
+  readonly selectedLocale: string | null;
+};
+
+type LanguageBrowserStore = {
+  getSnapshot(): LanguageBrowserState;
+  subscribe(listener: () => void): () => void;
+  setState(update: Partial<LanguageBrowserState>): void;
+};
+
+const createLanguageBrowserStore = (): LanguageBrowserStore => {
+  let state: LanguageBrowserState = { browserQuery: "", browserFilter: "all", selectedLocale: null };
+  const listeners = new Set<() => void>();
+  return {
+    getSnapshot: () => state,
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => listeners.delete(listener);
+    },
+    setState(update) {
+      state = { ...state, ...update };
+      listeners.forEach((listener) => listener());
+    },
+  };
+};
+
+const languageBrowserStores = new WeakMap<LanguagePackStudioController, LanguageBrowserStore>();
+
+const getLanguageBrowserStore = (controller: LanguagePackStudioController): LanguageBrowserStore => {
+  let store = languageBrowserStores.get(controller);
+  if (!store) {
+    store = createLanguageBrowserStore();
+    languageBrowserStores.set(controller, store);
+  }
+  return store;
+};
+
+function useLanguageBrowserState(controller: LanguagePackStudioController) {
+  const store = getLanguageBrowserStore(controller);
+  const state = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot);
+  return { state, setState: store.setState };
+}
+
+function LanguagePackBrowserSidebar({
+  controller,
+  snapshot,
+}: {
+  controller: LanguagePackStudioController;
+  snapshot: LanguagePackStudioSnapshot;
+}) {
+  const { state, setState } = useLanguageBrowserState(controller);
+  const deferredBrowserQuery = useDeferredValue(state.browserQuery.trim().toLowerCase());
+  const builtInPackCount = snapshot.packs.filter((pack) => pack.source === "built-in").length;
+  const installedPackCount = snapshot.packs.filter((pack) => pack.source === "installed").length;
+  const filteredPacks = useMemo(() => snapshot.packs.filter((pack) => {
+    if (state.browserFilter === "built-in" && pack.source !== "built-in") return false;
+    if (state.browserFilter === "installed" && pack.source !== "installed") return false;
+    if (state.browserFilter === "disabled" && pack.enabled) return false;
+    if (!deferredBrowserQuery) return true;
+    const haystack = `${pack.locale} ${pack.label} ${pack.source} ${pack.enabled ? "enabled" : "disabled"}`.toLowerCase();
+    return haystack.includes(deferredBrowserQuery);
+  }), [deferredBrowserQuery, snapshot.packs, state.browserFilter]);
+
+  return (
+    <div className="workspace-panel-content" style={{ display: "grid", gap: 12, padding: 12 }}>
+      <div className="settings-card settings-card-stack">
+        <div className="settings-session-grid">
+          <div className="settings-session-item"><span className="settings-session-label">PACKS</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">ENABLED</span><span className="settings-session-value">{snapshot.packs.filter((pack) => pack.enabled).length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">BUILT_IN</span><span className="settings-session-value">{builtInPackCount}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
+        </div>
+        <div className="settings-chip-row">
+          <span className="settings-chip">LANGUAGE_BROWSER</span>
+          <span className="settings-chip">INDEXEDDB</span>
+          <span className="settings-chip">BUILT_IN + INSTALLED</span>
+        </div>
+      </div>
+
+      <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
+        <input
+          style={denseInputStyle}
+          value={state.browserQuery}
+          onChange={(event) => setState({ browserQuery: event.target.value })}
+          placeholder="Filter locale, label, source"
+          aria-label="Filter language browser"
+        />
+        <div className="settings-chip-row">
+          {[
+            ["all", `ALL ${snapshot.packs.length}`],
+            ["built-in", `BUILT_IN ${builtInPackCount}`],
+            ["installed", `INSTALLED ${installedPackCount}`],
+            ["disabled", `DISABLED ${snapshot.packs.filter((pack) => !pack.enabled).length}`],
+          ].map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              className={`view-toolbar-btn ${state.browserFilter === value ? "active" : ""}`}
+              onClick={() => setState({ browserFilter: value as LanguageBrowserFilter })}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        {filteredPacks.map((pack) => (
+          <button
+            key={`${pack.source}:${pack.locale}`}
+            type="button"
+            className={`settings-sidebar-btn ${state.selectedLocale === pack.locale ? "active" : ""}`}
+            onClick={() => setState({ selectedLocale: pack.locale })}
+            style={{ justifyContent: "space-between", gap: 10 }}
+          >
+            <span style={{ textAlign: "left" }}>{pack.label}</span>
+            <span className="settings-session-label">{pack.source === "built-in" ? "BUILT_IN" : pack.enabled ? "INSTALLED" : "DISABLED"}</span>
+          </button>
+        ))}
+        {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No language packs match the current browser filter.</span>}
+      </div>
+    </div>
+  );
+}
+
+export const LanguagePackStudioSidebar: FC<Pick<LanguagePackStudioViewProps, "controller">> = ({ controller }) => {
+  const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot) as LanguagePackStudioSnapshot;
+  return <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} />;
+};
+
+export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
+  controller,
+  close,
+  formatLabel: _formatLabel,
+  shellSidebarOpen,
+  onShellSidebarToggle,
+  embedBrowserInShellSidebar = false,
+}) => {
   const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot) as LanguagePackStudioSnapshot;
   const [importInput, setImportInput] = useState<HTMLInputElement | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [selectedLocale, setSelectedLocale] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
-  const [browserQuery, setBrowserQuery] = useState("");
-  const [browserFilter, setBrowserFilter] = useState<"all" | "built-in" | "installed" | "disabled">("all");
   const [draftLocale, setDraftLocale] = useState("custom");
   const [draftLabel, setDraftLabel] = useState("Custom Language Pack");
   const [draftMessages, setDraftMessages] = useState('{\n  "core.views.settings.title": "System Configuration"\n}');
-  const deferredBrowserQuery = useDeferredValue(browserQuery.trim().toLowerCase());
+  const { state: browserState, setState: setBrowserState } = useLanguageBrowserState(controller);
+  const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
 
   useEffect(() => {
-    if (selectedLocale && snapshot.packs.some((pack) => pack.locale === selectedLocale)) {
+    if (browserState.selectedLocale && snapshot.packs.some((pack) => pack.locale === browserState.selectedLocale)) {
       return;
     }
-    setSelectedLocale(snapshot.packs[0]?.locale ?? null);
-  }, [selectedLocale, snapshot.packs]);
+    setBrowserState({ selectedLocale: snapshot.packs[0]?.locale ?? null });
+  }, [browserState.selectedLocale, setBrowserState, snapshot.packs]);
 
-  const selectedPack = snapshot.packs.find((pack) => pack.locale === selectedLocale) ?? null;
+  const selectedPack = snapshot.packs.find((pack) => pack.locale === browserState.selectedLocale) ?? null;
   const missingKeys = useMemo(() => {
     if (!selectedPack || selectedPack.source === "built-in") {
       return [];
     }
     return snapshot.tokens.filter((token) => !(token.key in selectedPack.messages));
   }, [selectedPack, snapshot.tokens]);
-  const filteredPacks = useMemo(() => snapshot.packs.filter((pack) => {
-    if (browserFilter === "built-in" && pack.source !== "built-in") return false;
-    if (browserFilter === "installed" && pack.source !== "installed") return false;
-    if (browserFilter === "disabled" && pack.enabled) return false;
-    if (!deferredBrowserQuery) return true;
-    const haystack = `${pack.locale} ${pack.label} ${pack.source} ${pack.enabled ? "enabled" : "disabled"}`.toLowerCase();
-    return haystack.includes(deferredBrowserQuery);
-  }), [browserFilter, deferredBrowserQuery, snapshot.packs]);
-  const builtInPackCount = snapshot.packs.filter((pack) => pack.source === "built-in").length;
-  const installedPackCount = snapshot.packs.filter((pack) => pack.source === "installed").length;
-
   const handleImport = async (event: { target: { files?: FileList | null; value: string } }) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -101,7 +228,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
       const messages = JSON.parse(draftMessages) as Record<string, string>;
       const pack = await controller.createArtifact({ locale: draftLocale, label: draftLabel, messages, enabled: true });
       downloadJson(`${pack.locale}.language-pack.json`, pack);
-      setSelectedLocale(pack.locale);
+      setBrowserState({ selectedLocale: pack.locale });
       setError(null);
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Failed to create language pack.");
@@ -112,8 +239,13 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
     <div className="language-pack-studio-pane editor-pane-container" data-testid="language-pack-studio-pane">
       <div className="view-toolbar" aria-label="Language Pack Studio toolbar">
         <div className="view-toolbar-group">
-          <button type="button" className={`view-toolbar-btn ${sidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => setSidebarOpen((current) => !current)}>
-            {sidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
+          <button
+            type="button"
+            className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`}
+            title="Toggle sidebar"
+            onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}
+          >
+            {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
             <Square size={14} />
@@ -145,65 +277,10 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
       <div className="editor-pane-shell">
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={handleImport} />
         <div className="editor-pane-body is-split">
-          {sidebarOpen && (
+          {!embedBrowserInShellSidebar && sidebarOpen && (
             <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
-              <div className="settings-card settings-card-stack">
-                <div className="settings-session-grid">
-                  <div className="settings-session-item"><span className="settings-session-label">PACKS</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">ENABLED</span><span className="settings-session-value">{snapshot.packs.filter((pack) => pack.enabled).length}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">BUILT_IN</span><span className="settings-session-value">{snapshot.packs.filter((pack) => pack.source === "built-in").length}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
-                </div>
-                {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
-                <div className="settings-chip-row">
-                  <span className="settings-chip">{snapshot.packs.filter((pack) => pack.enabled).length} ENABLED</span>
-                  <span className="settings-chip">{snapshot.packs.filter((pack) => pack.source === "built-in").length} BUILT_IN</span>
-                  <span className="settings-chip">EN_FALLBACK</span>
-                </div>
-              </div>
-
-              <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
-                <div style={{ display: "grid", gap: 6 }}>
-                  <span className="settings-session-label">LANGUAGE_BROWSER</span>
-                  <input
-                    style={denseInputStyle}
-                    value={browserQuery}
-                    onChange={(event) => setBrowserQuery(event.target.value)}
-                    placeholder="Filter locale, label, source"
-                    aria-label="Filter language browser"
-                  />
-                  <div className="settings-chip-row">
-                    {[
-                      ["all", `ALL ${snapshot.packs.length}`],
-                      ["built-in", `BUILT_IN ${builtInPackCount}`],
-                      ["installed", `INSTALLED ${installedPackCount}`],
-                      ["disabled", `DISABLED ${snapshot.packs.filter((pack) => !pack.enabled).length}`],
-                    ].map(([value, label]) => (
-                      <button
-                        key={value}
-                        type="button"
-                        className={`view-toolbar-btn ${browserFilter === value ? "active" : ""}`}
-                        onClick={() => setBrowserFilter(value as "all" | "built-in" | "installed" | "disabled")}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                {filteredPacks.map((pack) => (
-                  <button
-                    key={`${pack.source}:${pack.locale}`}
-                    type="button"
-                    className={`settings-sidebar-btn ${selectedLocale === pack.locale ? "active" : ""}`}
-                    onClick={() => setSelectedLocale(pack.locale)}
-                    style={{ justifyContent: "space-between", gap: 10 }}
-                  >
-                    <span style={{ textAlign: "left" }}>{pack.label}</span>
-                    <span className="settings-session-label">{pack.source === "built-in" ? "BUILT_IN" : pack.enabled ? "INSTALLED" : "DISABLED"}</span>
-                  </button>
-                ))}
-                {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No language packs match the current browser filter.</span>}
-              </div>
+              <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} />
+              {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
             </aside>
           )}
 

@@ -1,39 +1,47 @@
 {
-  "generatedAt": "2026-04-01T00:40:47.636Z",
+  "generatedAt": "2026-04-03T21:02:35.586Z",
   "signer": "tools/extensions/sign-extension-artifacts.mjs",
   "ok": true,
   "signedEntries": [
     {
       "id": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.0",
-      "artifactPath": "artifacts/extensions/external.catalog-hello/1.1.0",
-      "digestCount": 6,
-      "signedManifestPath": "artifacts/extensions/external.catalog-hello/1.1.0/signed-manifest.json"
+      "version": "1.1.1",
+      "artifactPath": "artifacts/extensions/external.catalog-hello/1.1.1",
+      "digestCount": 7,
+      "signedManifestPath": "artifacts/extensions/external.catalog-hello/1.1.1/signed-manifest.json"
     },
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.0",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.0",
-      "digestCount": 6,
-      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.0/signed-manifest.json"
+      "version": "1.1.1",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.1",
+      "digestCount": 7,
+      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.1/signed-manifest.json"
+    },
+    {
+      "id": "core.language-pack-studio",
+      "packageName": "@mdwrk/extension-language-pack-studio",
+      "version": "1.0.3",
+      "artifactPath": "artifacts/extensions/core.language-pack-studio/1.0.3",
+      "digestCount": 7,
+      "signedManifestPath": "artifacts/extensions/core.language-pack-studio/1.0.3/signed-manifest.json"
     },
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.1.0",
-      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.0",
-      "digestCount": 6,
-      "signedManifestPath": "artifacts/extensions/core.extension-manager/1.1.0/signed-manifest.json"
+      "version": "1.1.6",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.6",
+      "digestCount": 7,
+      "signedManifestPath": "artifacts/extensions/core.extension-manager/1.1.6/signed-manifest.json"
     },
     {
       "id": "core.theme-studio",
       "packageName": "@mdwrk/extension-theme-studio",
-      "version": "1.1.0",
-      "artifactPath": "artifacts/extensions/core.theme-studio/1.1.0",
-      "digestCount": 6,
-      "signedManifestPath": "artifacts/extensions/core.theme-studio/1.1.0/signed-manifest.json"
+      "version": "1.1.5",
+      "artifactPath": "artifacts/extensions/core.theme-studio/1.1.5",
+      "digestCount": 7,
+      "signedManifestPath": "artifacts/extensions/core.theme-studio/1.1.5/signed-manifest.json"
     }
   ],
   "note": "This checkpoint generates ECDSA P-256 signed manifests plus SHA-256 integrity metadata. Production deployments should inject a managed signing key through CI secrets or HSM-backed workflows."

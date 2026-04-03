@@ -1,7 +1,7 @@
 import React from "react";
 import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
-import { LanguagePackStudioView } from "./components/LanguagePackStudioView.js";
+import { LanguagePackStudioSidebar, LanguagePackStudioView } from "./components/LanguagePackStudioView.js";
 import { LanguagePackStudioSettingsPanel } from "./components/LanguagePackStudioSettingsPanel.js";
 import {
   LANGUAGE_PACK_STUDIO_COMMAND_ID,
@@ -33,7 +33,7 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
             },
           });
 
-          context.registerView({
+          context.registerView(({
             id: LANGUAGE_PACK_STUDIO_VIEW_ID,
             title: languagePackStudioLabels.viewTitle,
             description: languagePackStudioLabels.viewDescription,
@@ -46,9 +46,17 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
                 controller={options.controller}
                 close={() => (props as { close: () => Promise<void> }).close()}
                 formatLabel={context.host.i18n.format}
+                shellSidebarOpen={(props as { workspaceSidebarOpen?: boolean }).workspaceSidebarOpen}
+                onShellSidebarToggle={(props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen}
+                embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-          });
+            renderSidebar: () => (
+              <LanguagePackStudioSidebar
+                controller={options.controller}
+              />
+            ),
+          } as unknown) as never);
 
           context.registerActionRailItem({
             id: LANGUAGE_PACK_STUDIO_RAIL_ID,

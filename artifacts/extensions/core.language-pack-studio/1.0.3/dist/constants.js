@@ -1,0 +1,5 @@
+export const LANGUAGE_PACK_STUDIO_EXTENSION_ID = "core.language-pack-studio";
+export const LANGUAGE_PACK_STUDIO_VIEW_ID = `${LANGUAGE_PACK_STUDIO_EXTENSION_ID}.view`;
+export const LANGUAGE_PACK_STUDIO_COMMAND_ID = `${LANGUAGE_PACK_STUDIO_EXTENSION_ID}.open`;
+export const LANGUAGE_PACK_STUDIO_RAIL_ID = `${LANGUAGE_PACK_STUDIO_EXTENSION_ID}.rail`;
+//# sourceMappingURL=constants.js.map

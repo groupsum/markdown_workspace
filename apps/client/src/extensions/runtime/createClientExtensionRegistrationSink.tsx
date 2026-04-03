@@ -56,6 +56,7 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
       });
     },
     registerView(extensionId: string, view: RegisteredView) {
+      const sidebarRenderer = (view as RegisteredView & { renderSidebar?: (props: unknown) => React.ReactNode }).renderSidebar;
       return services.views.register({
         ...view,
         render: (props) => (
@@ -63,6 +64,13 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
             {view.render(props) as React.ReactNode}
           </ExtensionViewErrorBoundary>
         ),
+        renderSidebar: sidebarRenderer
+          ? (props) => (
+              <ExtensionViewErrorBoundary extensionId={extensionId} diagnostics={services.diagnostics}>
+                {sidebarRenderer(props)}
+              </ExtensionViewErrorBoundary>
+            )
+          : undefined,
       });
     },
     registerComponent(_extensionId, _component) {
