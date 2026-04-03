@@ -29,24 +29,27 @@ export const SettingsView: React.FC = () => {
     icon: renderExtensionIcon(section.icon, 14),
     panel: section.panel,
     render: () => {
+      const schemaRenderer = section.schema ? (
+        <SettingsSchemaRenderer
+          schema={section.schema}
+          values={schemaValues}
+          store={section.extensionId ? extensionRuntime.getConfigurationStore(section.extensionId) : undefined}
+          formatLabel={services.i18n.format}
+          onChange={(key, value) => {
+            setSchemaValues((current) => ({ ...current, [key]: value }));
+          }}
+        />
+      ) : null;
+
       if (section.render) {
-        return section.render();
-      }
-      if (section.schema) {
-        const store = section.extensionId ? extensionRuntime.getConfigurationStore(section.extensionId) : undefined;
         return (
-          <SettingsSchemaRenderer
-            schema={section.schema}
-            values={schemaValues}
-            store={store}
-            formatLabel={services.i18n.format}
-            onChange={(key, value) => {
-              setSchemaValues((current) => ({ ...current, [key]: value }));
-            }}
-          />
+          <>
+            {section.render()}
+            {schemaRenderer}
+          </>
         );
       }
-      return null;
+      return schemaRenderer;
     },
   })), [extensionRuntime, schemaValues, sectionsSnapshot.sections, services.i18n]);
 

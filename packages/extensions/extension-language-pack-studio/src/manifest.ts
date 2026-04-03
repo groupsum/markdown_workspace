@@ -66,6 +66,13 @@ export const languagePackStudioManifest: ExtensionManifest = {
         target: { kind: "view", viewId: LANGUAGE_PACK_STUDIO_VIEW_ID }
       }
     ],
-    settingsSections: []
+    settingsSections: [
+      {
+        id: `${LANGUAGE_PACK_STUDIO_EXTENSION_ID}.settings`,
+        title: languagePackStudioLabels.settingsTitle,
+        description: languagePackStudioLabels.settingsDescription,
+        order: 30,
+      }
+    ]
   }
 };

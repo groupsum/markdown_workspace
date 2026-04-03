@@ -1,0 +1,202 @@
+// @vitest-environment jsdom
+import '@testing-library/jest-dom/vitest';
+import React from 'react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
+import { ExtensionManagerView } from '../../../../../packages/extensions/extension-manager/src/components/ExtensionManagerView';
+import { ExtensionManagerSettingsPanel } from '../../../../../packages/extensions/extension-manager/src/components/ExtensionManagerSettingsPanel';
+import { ThemeStudioView } from '../../../../../packages/extensions/extension-theme-studio/src/components/ThemeStudioView';
+import { ThemeStudioSettingsPanel } from '../../../../../packages/extensions/extension-theme-studio/src/components/ThemeStudioSettingsPanel';
+import { LanguagePackStudioView } from '../../../../../packages/extensions/extension-language-pack-studio/src/components/LanguagePackStudioView';
+import { LanguagePackStudioSettingsPanel } from '../../../../../packages/extensions/extension-language-pack-studio/src/components/LanguagePackStudioSettingsPanel';
+
+const formatLabel = (label: { defaultMessage?: string } | string): string =>
+  typeof label === 'string' ? label : (label.defaultMessage ?? '');
+
+describe('extension workspace surfaces', () => {
+  it('renders extension manager as a pane surface with workspace-sidebar and layout toggles', async () => {
+    const managerSnapshot = {
+      extensions: [
+        {
+          id: 'core.demo',
+          source: 'bundled',
+          status: 'active',
+          enabled: true,
+          activation: 'eager',
+          diagnostics: [],
+          grantedCapabilities: [],
+          missingCapabilities: [],
+          compatibility: { compatible: true, issues: [] },
+          manifest: {
+            id: 'core.demo',
+            packageName: '@mdwrk/demo',
+            version: '1.0.0',
+            icon: { kind: 'lucide', name: 'Puzzle' },
+            displayName: { defaultMessage: 'Demo Extension' },
+            description: { defaultMessage: 'Demo description' },
+          },
+        },
+      ],
+      catalogEntries: [],
+    };
+    const runtime = {
+      subscribe: () => () => {},
+      getSnapshot: () => managerSnapshot,
+      installFromCatalogEntry: vi.fn(),
+      removeInstalledExtension: vi.fn(),
+      setEnabled: vi.fn(),
+      activate: vi.fn(),
+      deactivate: vi.fn(),
+      getConfigurationStore: vi.fn(() => ({ get: vi.fn(async () => null), set: vi.fn(async () => {}) })),
+    } as any;
+
+    const view = render(
+      <ExtensionManagerView
+        runtime={runtime}
+        close={vi.fn(async () => {})}
+        formatLabel={formatLabel}
+      />,
+    );
+
+    expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
+    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(screen.getByLabelText('Filter extension browser')).toBeInTheDocument();
+
+    fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
+    await waitFor(() => expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument());
+
+    fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
+    await waitFor(() => expect(screen.getByText('Catalog Browser')).toBeInTheDocument());
+
+    fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
+    await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());
+  });
+
+  it('renders theme studio as a pane surface with workspace-sidebar and layout toggles', async () => {
+    const themeSnapshot = {
+      busy: false,
+      infoMessage: 'Ready',
+      lastError: null,
+      metadata: {
+        themeName: 'Test Theme',
+        themeId: 'test-theme',
+        packageName: '@mdwrk/test-theme',
+        author: 'MdWrk',
+        description: 'Theme test',
+      },
+      tokenDefinitions: [{ name: '--bg-app', category: 'surface', description: 'BG', defaultValue: '#000' }],
+      currentTokens: { '--bg-app': '#111' },
+      draftTokens: {},
+      relationships: [{ className: '.workspace', bridgeTarget: 'host', selector: '.workspace', scope: 'host' }],
+      lastExports: null,
+    };
+    const service = {
+      subscribe: () => () => {},
+      getSnapshot: () => themeSnapshot,
+      refresh: vi.fn(async () => {}),
+      readSettings: vi.fn(async () => ({ defaultExportTarget: 'host' })),
+      preview: vi.fn(async () => {}),
+      apply: vi.fn(async () => {}),
+      revert: vi.fn(async () => {}),
+      generateExports: vi.fn(async () => {}),
+      importPackageArtifact: vi.fn(async () => {}),
+      updateMetadata: vi.fn(async () => {}),
+      setDraftToken: vi.fn(async () => {}),
+    } as any;
+
+    const view = render(
+      <ThemeStudioView
+        service={service}
+        close={vi.fn(async () => {})}
+        formatLabel={formatLabel}
+      />,
+    );
+
+    expect(screen.queryByTestId('theme-studio-modal')).not.toBeInTheDocument();
+    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(screen.getByLabelText('Filter theme browser')).toBeInTheDocument();
+
+    fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
+    await waitFor(() => expect(screen.queryByText('PREVIEW')).not.toBeInTheDocument());
+
+    fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
+    await waitFor(() => expect(screen.getByText('PREVIEW')).toBeInTheDocument());
+  });
+
+  it('renders language pack studio as a pane surface with workspace-sidebar and layout toggles', async () => {
+    const languageSnapshot = {
+      activeLocale: 'en',
+      loadingTokens: false,
+      tokens: [{ key: 'core.views.settings.title', defaultMessage: 'System Configuration', source: 'core' }],
+      packs: [
+        { locale: 'en', label: 'English', enabled: true, messages: {}, source: 'built-in' },
+        { locale: 'de', label: 'Deutsch', enabled: true, messages: { 'core.views.settings.title': 'Systemkonfiguration' }, source: 'installed' },
+      ],
+    };
+    const controller = {
+      subscribe: () => () => {},
+      getSnapshot: () => languageSnapshot,
+      importArtifact: vi.fn(async () => {}),
+      createArtifact: vi.fn(async () => ({ locale: 'it', label: 'Italiano', enabled: true, messages: {}, source: 'installed' })),
+      activate: vi.fn(async () => {}),
+      remove: vi.fn(async () => {}),
+      setEnabled: vi.fn(async () => {}),
+      setAllEnabled: vi.fn(async () => {}),
+      exportArtifact: vi.fn(() => null),
+    } as any;
+
+    const view = render(
+      <LanguagePackStudioView
+        controller={controller}
+        close={vi.fn(async () => {})}
+        formatLabel={formatLabel}
+      />,
+    );
+
+    expect(screen.queryByTestId('language-pack-manager-modal')).not.toBeInTheDocument();
+    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(screen.getByLabelText('Filter language browser')).toBeInTheDocument();
+
+    fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
+    await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());
+
+    fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
+    fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
+    expect(controller.setAllEnabled).not.toHaveBeenCalled();
+  });
+
+  it('renders settings-menu content for extension manager, theme studio, and language pack studio', () => {
+    const managerSnapshot = { extensions: [], catalogEntries: [] };
+    const managerRuntime = {
+      subscribe: () => () => {},
+      getSnapshot: () => managerSnapshot,
+    } as any;
+    const themeSnapshot = {
+      busy: false,
+      metadata: { themeId: 'test-theme' },
+      tokenDefinitions: [],
+      relationships: [],
+    };
+    const themeService = {
+      subscribe: () => () => {},
+      getSnapshot: () => themeSnapshot,
+    } as any;
+    const languageSnapshot = { activeLocale: 'en', packs: [], tokens: [], loadingTokens: false };
+    const languageController = {
+      subscribe: () => () => {},
+      getSnapshot: () => languageSnapshot,
+    } as any;
+
+    render(
+      <>
+        <ExtensionManagerSettingsPanel runtime={managerRuntime} open={vi.fn(async () => {})} formatLabel={formatLabel} />
+        <ThemeStudioSettingsPanel service={themeService} open={vi.fn(async () => {})} formatLabel={formatLabel} />
+        <LanguagePackStudioSettingsPanel controller={languageController} open={vi.fn(async () => {})} formatLabel={formatLabel} />
+      </>,
+    );
+
+    expect(screen.getByText('OPEN_MANAGER')).toBeInTheDocument();
+    expect(screen.getAllByText('OPEN_STUDIO').length).toBe(2);
+    expect(screen.getAllByText('INDEXEDDB').length).toBeGreaterThan(1);
+  });
+});

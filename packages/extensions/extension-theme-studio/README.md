@@ -16,7 +16,7 @@ First-party Theme Studio extension package for Markdown Workspace.
 - preview renderer/editor bridge behavior against shared package contracts
 - apply or revert theme drafts through host theme APIs
 - export theme presets as JSON, CSS, and theme-package scaffold artifacts
-- register commands, a modal view, an action-rail item, and a settings section
+- register commands, a pane-first workspace view, an action-rail item, and settings-menu content
 
 ## Settings schema
 

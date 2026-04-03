@@ -77,13 +77,14 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
     },
     registerSettingsSection(extensionId: string, section: RegisteredSettingsSection) {
       const schema = (section as RegisteredSettingsSection & { schema?: ExtensionSettingsSchema }).schema;
+      const render = (section as RegisteredSettingsSection & { render?: () => React.ReactNode }).render;
       return services.settingsRegistry.register({
         ...section,
         panel: 'extensions',
         icon: { kind: 'lucide', name: 'Puzzle' },
         extensionId,
         schema,
-        render: schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section),
+        render: render ?? (schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section)),
       });
     },
   };

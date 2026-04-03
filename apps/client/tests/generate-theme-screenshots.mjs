@@ -43,6 +43,23 @@ async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
 }
 
+async function withFileRetry(action, attempts = 5) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await action();
+    } catch (error) {
+      lastError = error;
+      const code = typeof error === 'object' && error ? error.code : undefined;
+      if ((code !== 'EBUSY' && code !== 'UNKNOWN') || attempt === attempts) {
+        throw error;
+      }
+      await new Promise((resolve) => setTimeout(resolve, attempt * 250));
+    }
+  }
+  throw lastError;
+}
+
 function contentType(filePath) {
   if (filePath.endsWith('.html')) return 'text/html; charset=utf-8';
   if (filePath.endsWith('.js')) return 'application/javascript; charset=utf-8';
@@ -77,12 +94,13 @@ async function startStaticServer(rootDir) {
 async function screenshot(page, themeId, viewportId, name) {
   const targetDir = path.join(outputRoot, viewportId, themeId);
   await ensureDir(targetDir);
-  await page.screenshot({
-    path: path.join(targetDir, `${sanitize(name)}.jpg`),
+  const targetPath = path.join(targetDir, `${sanitize(name)}.jpg`);
+  await withFileRetry(() => page.screenshot({
+    path: targetPath,
     type: 'jpeg',
     quality: 70,
     fullPage: true,
-  });
+  }));
 }
 
 async function capturePaneModes(page, themeId, viewportId, rootSelector, prefix) {

@@ -109,6 +109,11 @@ export const LanguagePackManagerPanel: React.FC = () => {
             <div className="settings-session-item"><span className="settings-session-label">ENABLED</span><span className="settings-session-value">{packs.filter((pack) => pack.enabled).length}</span></div>
             <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{locale}</span></div>
           </div>
+          <div className="settings-chip-row">
+            <span className="settings-chip">{packs.filter((pack) => pack.source === 'built-in').length} BUILT_IN</span>
+            <span className="settings-chip">{packs.filter((pack) => pack.source === 'installed').length} INSTALLED</span>
+            <span className="settings-chip">INDEXEDDB</span>
+          </div>
         </div>
 
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">

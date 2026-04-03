@@ -2,12 +2,13 @@ import React from "react";
 import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import { LanguagePackStudioView } from "./components/LanguagePackStudioView.js";
+import { LanguagePackStudioSettingsPanel } from "./components/LanguagePackStudioSettingsPanel.js";
 import {
   LANGUAGE_PACK_STUDIO_COMMAND_ID,
   LANGUAGE_PACK_STUDIO_RAIL_ID,
   LANGUAGE_PACK_STUDIO_VIEW_ID,
 } from "./constants.js";
-import { languagePackStudioLabels } from "./i18n.js";
+import { languagePackStudioLabels, languagePackStudioLocaleLoader } from "./i18n.js";
 import { languagePackStudioManifest } from "./manifest.js";
 import type { LanguagePackStudioEntryOptions } from "./types.js";
 
@@ -19,6 +20,9 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
       const extension: MarkdownWorkspaceExtension = {
         manifest: languagePackStudioManifest,
         async activate(context) {
+          context.registerLocaleCatalogLoader(languagePackStudioLocaleLoader);
+          await context.host.i18n.ensureLocale();
+
           context.registerCommand({
             id: LANGUAGE_PACK_STUDIO_COMMAND_ID,
             title: languagePackStudioLabels.commandOpenTitle,
@@ -54,6 +58,20 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
             order: 10,
             target: { kind: "view", viewId: LANGUAGE_PACK_STUDIO_VIEW_ID },
           });
+
+          context.registerSettingsSection(({
+            id: `${context.extensionId}.settings`,
+            title: languagePackStudioLabels.settingsTitle,
+            description: languagePackStudioLabels.settingsDescription,
+            order: 30,
+            render: () => (
+              <LanguagePackStudioSettingsPanel
+                controller={options.controller}
+                open={() => context.host.views.open(LANGUAGE_PACK_STUDIO_VIEW_ID)}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
+          } as unknown) as never);
         },
       };
       return extension;

@@ -1,4 +1,4 @@
-import { type CSSProperties, type FC, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { type CSSProperties, type FC, useDeferredValue, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { I18nLabel } from "@mdwrk/extension-manifest";
 import {
   Columns2,
@@ -51,9 +51,12 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
   const [selectedLocale, setSelectedLocale] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
+  const [browserQuery, setBrowserQuery] = useState("");
+  const [browserFilter, setBrowserFilter] = useState<"all" | "built-in" | "installed" | "disabled">("all");
   const [draftLocale, setDraftLocale] = useState("custom");
   const [draftLabel, setDraftLabel] = useState("Custom Language Pack");
   const [draftMessages, setDraftMessages] = useState('{\n  "core.views.settings.title": "System Configuration"\n}');
+  const deferredBrowserQuery = useDeferredValue(browserQuery.trim().toLowerCase());
 
   useEffect(() => {
     if (selectedLocale && snapshot.packs.some((pack) => pack.locale === selectedLocale)) {
@@ -69,6 +72,16 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
     }
     return snapshot.tokens.filter((token) => !(token.key in selectedPack.messages));
   }, [selectedPack, snapshot.tokens]);
+  const filteredPacks = useMemo(() => snapshot.packs.filter((pack) => {
+    if (browserFilter === "built-in" && pack.source !== "built-in") return false;
+    if (browserFilter === "installed" && pack.source !== "installed") return false;
+    if (browserFilter === "disabled" && pack.enabled) return false;
+    if (!deferredBrowserQuery) return true;
+    const haystack = `${pack.locale} ${pack.label} ${pack.source} ${pack.enabled ? "enabled" : "disabled"}`.toLowerCase();
+    return haystack.includes(deferredBrowserQuery);
+  }), [browserFilter, deferredBrowserQuery, snapshot.packs]);
+  const builtInPackCount = snapshot.packs.filter((pack) => pack.source === "built-in").length;
+  const installedPackCount = snapshot.packs.filter((pack) => pack.source === "installed").length;
 
   const handleImport = async (event: { target: { files?: FileList | null; value: string } }) => {
     const file = event.target.files?.[0];
@@ -108,6 +121,8 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
             <SplitSquareHorizontal size={14} />
           </button>
+        </div>
+        <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Import pack" onClick={() => importInput?.click()}>
             <Upload size={14} />
@@ -118,6 +133,8 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
           <button type="button" className="view-toolbar-btn" title="Disable all packs" onClick={() => { void controller.setAllEnabled(false); }}>
             <PowerOff size={14} />
           </button>
+        </div>
+        <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Close studio" onClick={() => void close()}>
             <X size={14} />
@@ -129,7 +146,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={handleImport} />
         <div className="editor-pane-body is-split">
           {sidebarOpen && (
-            <aside className="editor-pane-column" style={{ width: "min(320px, 28vw)", borderRight: "1px solid var(--border-color)", padding: 12, gap: 12 }}>
+            <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
               <div className="settings-card settings-card-stack">
                 <div className="settings-session-grid">
                   <div className="settings-session-item"><span className="settings-session-label">PACKS</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
@@ -138,10 +155,42 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
                   <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
                 </div>
                 {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
+                <div className="settings-chip-row">
+                  <span className="settings-chip">{snapshot.packs.filter((pack) => pack.enabled).length} ENABLED</span>
+                  <span className="settings-chip">{snapshot.packs.filter((pack) => pack.source === "built-in").length} BUILT_IN</span>
+                  <span className="settings-chip">EN_FALLBACK</span>
+                </div>
               </div>
 
               <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
-                {snapshot.packs.map((pack) => (
+                <div style={{ display: "grid", gap: 6 }}>
+                  <span className="settings-session-label">LANGUAGE_BROWSER</span>
+                  <input
+                    style={denseInputStyle}
+                    value={browserQuery}
+                    onChange={(event) => setBrowserQuery(event.target.value)}
+                    placeholder="Filter locale, label, source"
+                    aria-label="Filter language browser"
+                  />
+                  <div className="settings-chip-row">
+                    {[
+                      ["all", `ALL ${snapshot.packs.length}`],
+                      ["built-in", `BUILT_IN ${builtInPackCount}`],
+                      ["installed", `INSTALLED ${installedPackCount}`],
+                      ["disabled", `DISABLED ${snapshot.packs.filter((pack) => !pack.enabled).length}`],
+                    ].map(([value, label]) => (
+                      <button
+                        key={value}
+                        type="button"
+                        className={`view-toolbar-btn ${browserFilter === value ? "active" : ""}`}
+                        onClick={() => setBrowserFilter(value as "all" | "built-in" | "installed" | "disabled")}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {filteredPacks.map((pack) => (
                   <button
                     key={`${pack.source}:${pack.locale}`}
                     type="button"
@@ -153,6 +202,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
                     <span className="settings-session-label">{pack.source === "built-in" ? "BUILT_IN" : pack.enabled ? "INSTALLED" : "DISABLED"}</span>
                   </button>
                 ))}
+                {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No language packs match the current browser filter.</span>}
               </div>
             </aside>
           )}
@@ -165,10 +215,10 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({ contro
                   <strong style={{ fontSize: 14 }}>Workspace language packs</strong>
                   <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>Built-in and installed locale packs share one high-density manager surface.</span>
                 </div>
-                <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
-                  <button type="button" className="modal-btn" onClick={() => importInput?.click()}><Upload size={14} /> IMPORT</button>
-                  <button type="button" className="modal-btn" onClick={() => { void controller.setAllEnabled(false); }}><PowerOff size={14} /> DISABLE_ALL</button>
-                  <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.setAllEnabled(true); }}><Power size={14} /> ENABLE_ALL</button>
+                <div className="settings-chip-row">
+                  <span className="settings-chip">INDEXEDDB</span>
+                  <span className="settings-chip">BUILT_IN + INSTALLED</span>
+                  <span className="settings-chip">PANE_ONLY</span>
                 </div>
               </div>
             </div>

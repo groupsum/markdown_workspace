@@ -11,6 +11,7 @@ import { themeStudioLabels, themeStudioLocaleLoader } from "./i18n.js";
 import { themeStudioManifest } from "./manifest.js";
 import { createThemeStudioService } from "./service.js";
 import { ThemeStudioView } from "./components/ThemeStudioView.js";
+import { ThemeStudioSettingsPanel } from "./components/ThemeStudioSettingsPanel.js";
 
 export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
   return {
@@ -77,6 +78,13 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             order: 20,
             schemaPath: "manifest.settingsSchema",
             schema: themeStudioManifest.settingsSchema,
+            render: () => (
+              <ThemeStudioSettingsPanel
+                service={service}
+                open={() => context.host.views.open(THEME_STUDIO_VIEW_ID)}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
           } as unknown) as never);
 
           await context.host.diagnostics.publish(context.extensionId, {

@@ -3,6 +3,7 @@ import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import type { ExtensionManagerEntryOptions } from "./types.js";
 import { ExtensionManagerView } from "./components/ExtensionManagerView.js";
+import { ExtensionManagerSettingsPanel } from "./components/ExtensionManagerSettingsPanel.js";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
   EXTENSION_MANAGER_RAIL_ID,
@@ -72,6 +73,13 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
             order: 10,
             schemaPath: 'manifest.settingsSchema',
             schema: extensionManagerManifest.settingsSchema,
+            render: () => (
+              <ExtensionManagerSettingsPanel
+                runtime={options.runtime}
+                open={() => context.host.views.open(EXTENSION_MANAGER_VIEW_ID)}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
           } as unknown) as never);
 
           await context.host.diagnostics.publish(context.extensionId, {

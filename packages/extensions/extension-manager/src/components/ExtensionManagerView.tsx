@@ -94,12 +94,26 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
   const [treeState, setTreeState] = useState({ extensions: true, catalog: true });
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
+  const [browserQuery, setBrowserQuery] = useState("");
+  const [browserScope, setBrowserScope] = useState<"all" | "extensions" | "catalog">("all");
 
   const installedIds = useMemo(
     () => new Set(snapshot.extensions.filter((extension) => extension.source === "installed").map((extension) => extension.id)),
     [snapshot.extensions],
   );
   const browserNodes = useMemo(() => createBrowserNodes(snapshot, formatLabel), [snapshot, formatLabel]);
+  const filteredExtensionNodes = useMemo(() => browserNodes.extensions.filter((node) => {
+    if (browserScope === "catalog") return false;
+    if (!browserQuery.trim()) return true;
+    const query = browserQuery.trim().toLowerCase();
+    return `${node.title} ${node.subtitle} ${node.extension.status}`.toLowerCase().includes(query);
+  }), [browserNodes.extensions, browserQuery, browserScope]);
+  const filteredCatalogNodes = useMemo(() => browserNodes.catalogEntries.filter((node) => {
+    if (browserScope === "extensions") return false;
+    if (!browserQuery.trim()) return true;
+    const query = browserQuery.trim().toLowerCase();
+    return `${node.title} ${node.subtitle} ${node.catalogEntry.catalogId}`.toLowerCase().includes(query);
+  }), [browserNodes.catalogEntries, browserQuery, browserScope]);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -258,6 +272,8 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
             2P
           </button>
+        </div>
+        <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Import extension package" onClick={() => importInput?.click()}>
             IMP
@@ -265,6 +281,8 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
           <button type="button" className="view-toolbar-btn" title="Export catalog snapshot" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
             EXP
           </button>
+        </div>
+        <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Close manager" onClick={() => void close()}>
             CLOSE
@@ -276,20 +294,59 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={handleImportPortablePackage} />
         <div className="editor-pane-body is-split">
           {sidebarOpen && (
-            <aside className="editor-pane-column" style={{ width: "min(320px, 28vw)", borderRight: "1px solid var(--border-color)", padding: 12, gap: 12 }}>
+            <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
               <div className="settings-card settings-card-stack">
                 <StatsGrid snapshot={snapshot} formatLabel={formatLabel} />
                 {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
+                <div className="settings-chip-row">
+                  <span className="settings-chip">{snapshot.extensions.filter((extension) => extension.source === "installed").length} INSTALLED</span>
+                  <span className="settings-chip">{snapshot.catalogEntries.length} CATALOG</span>
+                  <span className="settings-chip">INDEXEDDB</span>
+                </div>
               </div>
 
               <div className="settings-card settings-card-stack" style={{ gap: 12 }}>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <span className="settings-session-label">EXTENSION_BROWSER</span>
+                  <input
+                    style={{
+                      width: "100%",
+                      border: "1px solid var(--border-primary)",
+                      background: "var(--surface-elevated, var(--bg-panel))",
+                      color: "var(--fg-primary)",
+                      borderRadius: 8,
+                      padding: "8px 10px",
+                      fontSize: 11,
+                    }}
+                    value={browserQuery}
+                    onChange={(event) => setBrowserQuery(event.currentTarget.value)}
+                    placeholder="Filter extensions or catalog entries"
+                    aria-label="Filter extension browser"
+                  />
+                  <div className="settings-chip-row">
+                    {[
+                      ["all", `ALL ${browserNodes.extensions.length + browserNodes.catalogEntries.length}`],
+                      ["extensions", `EXT ${browserNodes.extensions.length}`],
+                      ["catalog", `CAT ${browserNodes.catalogEntries.length}`],
+                    ].map(([value, label]) => (
+                      <button
+                        key={value}
+                        type="button"
+                        className={`view-toolbar-btn ${browserScope === value ? "active" : ""}`}
+                        onClick={() => setBrowserScope(value as "all" | "extensions" | "catalog")}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <details open={treeState.extensions} onToggle={(event) => {
                   const nextOpen = (event.currentTarget as HTMLDetailsElement).open;
                   setTreeState((current) => ({ ...current, extensions: nextOpen }));
                 }}>
                   <summary style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer" }}>{formatLabel(extensionManagerLabels.paneTreeExtensions)}</summary>
                   <div style={{ display: "grid", gap: 6, marginTop: 8 }}>
-                    {browserNodes.extensions.map((node) => (
+                    {filteredExtensionNodes.map((node) => (
                       <button
                         key={node.id}
                         type="button"
@@ -301,6 +358,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
                         <span className="settings-session-label">{node.extension.status}</span>
                       </button>
                     ))}
+                    {filteredExtensionNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No extensions match the current browser filter.</span>}
                   </div>
                 </details>
                 <details open={treeState.catalog} onToggle={(event) => {
@@ -309,8 +367,8 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
                 }}>
                   <summary style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer" }}>{formatLabel(extensionManagerLabels.paneTreeCatalog)}</summary>
                   <div style={{ display: "grid", gap: 6, marginTop: 8 }}>
-                    {browserNodes.catalogEntries.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.emptyCatalog)}</span>}
-                    {browserNodes.catalogEntries.map((node) => (
+                    {filteredCatalogNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{browserQuery.trim() || browserScope === "catalog" || browserScope === "all" ? "No catalog entries match the current browser filter." : formatLabel(extensionManagerLabels.emptyCatalog)}</span>}
+                    {filteredCatalogNodes.map((node) => (
                       <button
                         key={node.id}
                         type="button"
@@ -336,9 +394,10 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
                   <strong style={{ fontSize: 14 }}>{formatLabel(extensionManagerLabels.headerTitle)}</strong>
                   <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
                 </div>
-                <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
-                  <button type="button" className="modal-btn" onClick={() => importInput?.click()}>{formatLabel(extensionManagerLabels.actionImport)}</button>
-                  <button type="button" className="modal-btn" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>{formatLabel(extensionManagerLabels.actionExport)}</button>
+                <div className="settings-chip-row">
+                  <span className="settings-chip">PANE_ONLY</span>
+                  <span className="settings-chip">SPLIT + SINGLE</span>
+                  <span className="settings-chip">SETTINGS_CONTENT</span>
                 </div>
               </div>
             </div>

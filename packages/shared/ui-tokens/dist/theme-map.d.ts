@@ -1,6 +1,6 @@
 import { type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName } from "@mdwrk/theme-contract/tokens";
 import { type ThemeBridgeTarget } from "@mdwrk/theme-contract/bridges";
-export type ThemeTokenOverrides = Partial<Record<MarkdownWorkspaceThemeTokenName, string>>;
+export declare type ThemeTokenOverrides = Partial<Record<MarkdownWorkspaceThemeTokenName, string>>;
 export interface ThemeCssVariableRenderOptions {
     readonly selector?: string;
     readonly indent?: string;

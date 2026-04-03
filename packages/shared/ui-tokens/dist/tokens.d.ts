@@ -1,8 +1,8 @@
 import { type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition } from "@mdwrk/theme-contract/tokens";
 export { MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES, MARKDOWN_WORKSPACE_THEME_TOKENS, type MarkdownWorkspaceThemeTokenMap, type MarkdownWorkspaceThemeTokenName, type ThemeTokenDefinition, } from "@mdwrk/theme-contract/tokens";
-export type MarkdownWorkspaceUiTokenName = MarkdownWorkspaceThemeTokenName;
-export type MarkdownWorkspaceUiTokenMap = MarkdownWorkspaceThemeTokenMap;
-export type UiTokenDefinition = ThemeTokenDefinition;
+export declare type MarkdownWorkspaceUiTokenName = MarkdownWorkspaceThemeTokenName;
+export declare type MarkdownWorkspaceUiTokenMap = MarkdownWorkspaceThemeTokenMap;
+export declare type UiTokenDefinition = ThemeTokenDefinition;
 export declare const MARKDOWN_WORKSPACE_UI_TOKEN_NAMES: readonly ["ui-scale", "header-height", "rail-width", "rail-height", "sidebar-width", "status-height", "tab-height", "panel-header-height", "rail-btn-size", "bg-app", "bg-panel", "bg-inset", "border-color", "border-width", "fg-primary", "fg-secondary", "fg-muted", "accent", "table-header-bg", "table-header-fg", "table-row-primary-bg", "table-row-secondary-bg", "status-ok", "status-warn", "status-error", "app-gap", "texture-opacity", "editor-padding", "editor-line-height", "editor-line-rhythm", "markdown-line-height", "markdown-heading-line-height", "line-number-gutter-width", "mobile-rail-expanded-width", "mobile-expandable-rail-width", "file-indent-base", "file-indent-unit", "c-explorer-hover", "c-explorer-selected", "c-explorer-selected-text", "c-explorer-drag-bg", "font-ui", "font-mono", "font-head"];
 export declare const MARKDOWN_WORKSPACE_UI_TOKENS: readonly [{
     readonly name: "ui-scale";
@@ -314,5 +314,5 @@ export declare const MARKDOWN_WORKSPACE_UI_TOKENS: readonly [{
     readonly stability: "stable";
 }];
 export declare const MARKDOWN_WORKSPACE_TOKEN_DEFAULTS: Readonly<Readonly<Record<"ui-scale" | "header-height" | "rail-width" | "rail-height" | "sidebar-width" | "status-height" | "tab-height" | "panel-header-height" | "rail-btn-size" | "bg-app" | "bg-panel" | "bg-inset" | "border-color" | "border-width" | "fg-primary" | "fg-secondary" | "fg-muted" | "accent" | "table-header-bg" | "table-header-fg" | "table-row-primary-bg" | "table-row-secondary-bg" | "status-ok" | "status-warn" | "status-error" | "app-gap" | "texture-opacity" | "editor-padding" | "editor-line-height" | "editor-line-rhythm" | "markdown-line-height" | "markdown-heading-line-height" | "line-number-gutter-width" | "mobile-rail-expanded-width" | "mobile-expandable-rail-width" | "file-indent-base" | "file-indent-unit" | "c-explorer-hover" | "c-explorer-selected" | "c-explorer-selected-text" | "c-explorer-drag-bg" | "font-ui" | "font-mono" | "font-head", string>>>;
-export declare const MARKDOWN_WORKSPACE_TOKEN_CSS_CUSTOM_PROPERTIES: readonly ThemeTokenDefinition["cssCustomProperty"][];
+export declare const MARKDOWN_WORKSPACE_TOKEN_CSS_CUSTOM_PROPERTIES: readonly `--${string}`[];
 //# sourceMappingURL=tokens.d.ts.map

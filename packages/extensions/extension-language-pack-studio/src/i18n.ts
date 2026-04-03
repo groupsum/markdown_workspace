@@ -1,7 +1,8 @@
 import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { ExtensionLocaleCatalogLoader } from "@mdwrk/extension-host";
 
 const key = (suffix: string) => `core.language-pack-studio.${suffix}`;
-const label = (suffix: string, defaultMessage: string): I18nLabel => ({
+export const label = (suffix: string, defaultMessage: string): I18nLabel => ({
   key: key(suffix),
   defaultMessage,
 });
@@ -14,4 +15,14 @@ export const languagePackStudioLabels = {
   viewTitle: label("views.main.title", "Language Pack Studio"),
   viewDescription: label("views.main.description", "Browse installed language packs, inspect missing tokens, and create or export locale artifacts."),
   railTitle: label("rail.title", "Language Packs"),
+  settingsTitle: label("settings.title", "Language Pack Studio"),
+  settingsDescription: label("settings.description", "Language-pack inventory, enablement, token auditing, and workspace authoring shortcuts."),
 } as const;
+
+export const languagePackStudioLocaleLoader: ExtensionLocaleCatalogLoader = {
+  defaultLocale: "en",
+  fallbackLocale: "en",
+  loaders: {
+    en: async () => (await import("./locales/en.js")).languagePackStudioEnCatalog,
+  },
+};
