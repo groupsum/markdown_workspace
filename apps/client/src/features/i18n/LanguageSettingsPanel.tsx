@@ -1,5 +1,4 @@
 import React from 'react';
-import { CORE_SHELL_SUPPORTED_LOCALES } from '@mdwrk/i18n';
 import { LanguageSelector } from './LanguageSelector';
 import { useClientI18n } from './useClientI18n';
 import { useStoredLanguagePacks } from './languagePackStore';
@@ -7,9 +6,7 @@ import { useStoredLanguagePacks } from './languagePackStore';
 export const LanguageSettingsPanel: React.FC = () => {
   const { locale, t } = useClientI18n();
   const languagePacks = useStoredLanguagePacks();
-  const activeLocale = CORE_SHELL_SUPPORTED_LOCALES.find((entry) => entry.id === locale)
-    ?? languagePacks.map((entry) => ({ id: entry.locale, nativeName: entry.label })).find((entry) => entry.id === locale)
-    ?? CORE_SHELL_SUPPORTED_LOCALES[0];
+  const activeLocale = languagePacks.find((entry) => entry.locale === locale) ?? languagePacks[0];
 
   return (
     <div className="settings-pane">
@@ -23,11 +20,11 @@ export const LanguageSettingsPanel: React.FC = () => {
           <div className="settings-session-grid">
             <div className="settings-session-item">
               <span className="settings-session-label">{t('core.settings.language.current', 'Current Language')}</span>
-              <span className="settings-session-value">{activeLocale.nativeName}</span>
+              <span className="settings-session-value">{activeLocale?.label ?? 'English'}</span>
             </div>
             <div className="settings-session-item">
               <span className="settings-session-label">LOCALE_ID</span>
-              <span className="settings-session-value">{activeLocale.id}</span>
+              <span className="settings-session-value">{activeLocale?.locale ?? 'en'}</span>
             </div>
           </div>
         </div>

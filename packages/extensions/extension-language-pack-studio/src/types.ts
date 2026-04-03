@@ -5,6 +5,7 @@ export interface LanguagePackStudioArtifact {
   readonly label: string;
   readonly enabled: boolean;
   readonly messages: Readonly<Record<string, string>>;
+  readonly source: 'built-in' | 'installed';
 }
 
 export interface LanguagePackTokenDefinition {
@@ -33,6 +34,7 @@ export interface LanguagePackStudioController {
   activate(locale: string): Promise<void>;
   remove(locale: string): Promise<void>;
   setEnabled(locale: string, enabled: boolean): Promise<void>;
+  setAllEnabled(enabled: boolean): Promise<void>;
   exportArtifact(locale: string): LanguagePackStudioArtifact | null;
 }
 

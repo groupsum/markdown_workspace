@@ -181,11 +181,8 @@ export async function createPortableExtensionCatalogRegistration(
     catalog: {
       schemaVersion: 1,
       generatedAt: new Date().toISOString(),
-      generator: "portable-extension-package",
       baseUrl: "./",
-      ok: true,
       extensions: [catalogEntry],
-      failures: [],
     },
     baseUrl: manifestUrl,
     revoke() {

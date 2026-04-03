@@ -1,26 +1,27 @@
-import React, { useSyncExternalStore } from "react";
+import { type FC, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { I18nLabel } from "@mdwrk/extension-manifest";
 import {
-  createPortableExtensionCatalogRegistration,
-  normalizePortableExtensionPackageArtifact,
   type ExtensionRuntime,
   type ExtensionRuntimeCatalogEntrySnapshot,
   type ExtensionRuntimeExtensionSnapshot,
 } from "@mdwrk/extension-runtime";
-import { Boxes, Download, PackageOpen, SquareMenu, Trash2, Upload } from "lucide-react";
+import {
+  createPortableExtensionCatalogRegistration,
+  normalizePortableExtensionPackageArtifact,
+} from "@mdwrk/extension-runtime";
 import { extensionManagerLabels } from "../i18n.js";
 import { ExtensionCard } from "./ExtensionCard.js";
 
-type BrowserNode =
+type ExtensionBrowserNode =
   | { kind: "extension"; id: string; title: string; subtitle: string; extension: ExtensionRuntimeExtensionSnapshot }
-  | { kind: "catalog"; id: string; title: string; subtitle: string; catalogEntry: ExtensionRuntimeCatalogEntrySnapshot };
+  ;
+type CatalogBrowserNode = { kind: "catalog"; id: string; title: string; subtitle: string; catalogEntry: ExtensionRuntimeCatalogEntrySnapshot };
+type BrowserNode = ExtensionBrowserNode | CatalogBrowserNode;
 
 export interface ExtensionManagerViewProps {
   readonly runtime: ExtensionRuntime;
   readonly close: () => Promise<void>;
   readonly formatLabel: (label: I18nLabel | string) => string;
-  readonly mode?: "pane" | "modal";
-  readonly openQuickActions?: () => Promise<void>;
   readonly defaultSettings?: {
     readonly showCompatibility?: boolean;
     readonly showDiagnostics?: boolean;
@@ -40,7 +41,7 @@ function downloadJson(filename: string, value: unknown): void {
 function createBrowserNodes(
   snapshot: ReturnType<ExtensionRuntime["getSnapshot"]>,
   formatLabel: (label: I18nLabel | string) => string,
-): { extensions: BrowserNode[]; catalogEntries: BrowserNode[] } {
+): { extensions: ExtensionBrowserNode[]; catalogEntries: CatalogBrowserNode[] } {
   return {
     extensions: snapshot.extensions.map((extension) => ({
       kind: "extension",
@@ -76,44 +77,44 @@ function StatsGrid({
   );
 }
 
-export const ExtensionManagerView: React.FC<ExtensionManagerViewProps> = ({
+export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
   runtime,
   close,
   formatLabel,
-  mode = "pane",
-  openQuickActions,
   defaultSettings,
 }) => {
   const snapshot = useSyncExternalStore(runtime.subscribe, runtime.getSnapshot, runtime.getSnapshot) as ReturnType<ExtensionRuntime["getSnapshot"]>;
-  const defaults = React.useMemo(() => ({
+  const defaults = useMemo(() => ({
     showCompatibility: defaultSettings?.showCompatibility ?? true,
     showDiagnostics: defaultSettings?.showDiagnostics ?? true,
   }), [defaultSettings]);
-  const importRef = React.useRef<HTMLInputElement>(null);
-  const [busyEntryId, setBusyEntryId] = React.useState<string | null>(null);
-  const [error, setError] = React.useState<string | null>(null);
-  const [treeState, setTreeState] = React.useState({ extensions: true, catalog: true });
+  const [importInput, setImportInput] = useState<HTMLInputElement | null>(null);
+  const [busyEntryId, setBusyEntryId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [treeState, setTreeState] = useState({ extensions: true, catalog: true });
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
 
-  const installedIds = React.useMemo(
+  const installedIds = useMemo(
     () => new Set(snapshot.extensions.filter((extension) => extension.source === "installed").map((extension) => extension.id)),
     [snapshot.extensions],
   );
-  const browserNodes = React.useMemo(() => createBrowserNodes(snapshot, formatLabel), [snapshot, formatLabel]);
-  const [selectedNodeId, setSelectedNodeId] = React.useState<string | null>(null);
+  const browserNodes = useMemo(() => createBrowserNodes(snapshot, formatLabel), [snapshot, formatLabel]);
+  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedNodeId && [...browserNodes.extensions, ...browserNodes.catalogEntries].some((node) => node.id === selectedNodeId)) {
       return;
     }
     setSelectedNodeId(browserNodes.extensions[0]?.id ?? browserNodes.catalogEntries[0]?.id ?? null);
   }, [browserNodes.catalogEntries, browserNodes.extensions, selectedNodeId]);
 
-  const selectedNode = React.useMemo(
+  const selectedNode = useMemo(
     () => [...browserNodes.extensions, ...browserNodes.catalogEntries].find((node) => node.id === selectedNodeId) ?? null,
     [browserNodes.catalogEntries, browserNodes.extensions, selectedNodeId],
   );
 
-  const handleImportPortablePackage = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImportPortablePackage = async (event: { target: { files?: FileList | null; value: string } }) => {
     const file = event.target.files?.[0];
     if (!file) return;
     try {
@@ -160,135 +161,128 @@ export const ExtensionManagerView: React.FC<ExtensionManagerViewProps> = ({
     }
   };
 
-  const renderImportCard = () => (
-    <div className="settings-card settings-card-stack">
-      <div style={{ display: "grid", gap: 10 }}>
-        <div style={{ display: "flex", alignItems: "start", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-          <div style={{ display: "grid", gap: 6 }}>
-            <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.importTitle)}</strong>
-            <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>
-              {formatLabel(extensionManagerLabels.importDescription)}
-            </span>
+  const detailsPane = (
+    <div style={{ display: "grid", gap: 16 }}>
+      {!selectedNode && (
+        <div className="settings-card settings-card-stack">
+          <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.emptyTreeSelection)}</span>
+        </div>
+      )}
+      {selectedNode?.kind === "catalog" && (
+        <div className="settings-card settings-card-stack">
+          <strong style={{ fontSize: 12 }}>{selectedNode.title}</strong>
+          <div className="settings-session-grid">
+            <div className="settings-session-item"><span className="settings-session-label">ENTRY_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.entryId}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{selectedNode.catalogEntry.packageName}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelVersion)}</span><span className="settings-session-value">{selectedNode.catalogEntry.version}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">CATALOG_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.catalogId}</span></div>
           </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <button type="button" className="modal-btn" onClick={() => importRef.current?.click()}>
-              <Upload size={14} /> {formatLabel(extensionManagerLabels.actionImport)}
-            </button>
+          <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(selectedNode.catalogEntry.description)}</p>
+          <div className="settings-action-row" style={{ padding: 8 }}>
             <button
               type="button"
-              className="modal-btn"
-              onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)}
-              disabled={snapshot.catalogEntries.length === 0}
+              className="modal-btn modal-btn-primary"
+              onClick={() => void installCatalogEntry(selectedNode.catalogEntry.entryId)}
+              disabled={busyEntryId === selectedNode.catalogEntry.entryId || !selectedNode.catalogEntry.policyTrusted}
             >
-              <Download size={14} /> {formatLabel(extensionManagerLabels.actionExport)}
+              {selectedNode.catalogEntry.installed ? "UPDATE" : "INSTALL"}
             </button>
           </div>
         </div>
-        <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={handleImportPortablePackage} />
-        {error && <span style={{ fontSize: 11, color: "var(--status-error)" }}>{error}</span>}
+      )}
+      {selectedNode?.kind === "extension" && (
+        <div style={{ display: "grid", gap: 12 }}>
+          <ExtensionCard
+            extension={selectedNode.extension}
+            runtime={runtime}
+            formatLabel={formatLabel}
+            defaults={defaults}
+          />
+          {installedIds.has(selectedNode.extension.id) && (
+            <div className="settings-action-row" style={{ justifyContent: "flex-end", padding: 8 }}>
+              <button
+                type="button"
+                className="modal-btn"
+                onClick={() => void removeInstalledExtension(selectedNode.extension.id)}
+                disabled={busyEntryId === selectedNode.extension.id}
+              >
+                {formatLabel(extensionManagerLabels.actionRemove)}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+
+  const catalogPane = (
+      <div className="settings-card settings-card-stack">
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span className="settings-session-label">CATALOG</span>
+          <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.catalogEntriesTitle)}</strong>
+        </div>
+      <div style={{ display: "grid", gap: 10 }}>
+        {snapshot.catalogEntries.map((entry) => (
+          <div key={entry.entryId} className="settings-session-item" style={{ alignItems: "start" }}>
+            <div style={{ display: "grid", gap: 4 }}>
+              <span className="settings-session-label">{formatLabel(entry.displayName)}</span>
+              <span className="settings-session-value">{entry.packageName}@{entry.version}</span>
+            </div>
+            <div className="settings-action-row" style={{ padding: 8 }}>
+              <button type="button" className="modal-btn" onClick={() => setSelectedNodeId(entry.entryId)}>INSPECT</button>
+              <button
+                type="button"
+                className="modal-btn modal-btn-primary"
+                onClick={() => void installCatalogEntry(entry.entryId)}
+                disabled={busyEntryId === entry.entryId || !entry.policyTrusted}
+              >
+                {entry.installed ? "UPDATE" : "INSTALL"}
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 
-  if (mode === "modal") {
-    return (
-      <div className="modal-overlay" data-testid="extension-manager-modal">
-        <div className="modal-base settings-modal" style={{ width: "min(760px, 94vw)" }}>
-          <div className="modal-header">
-            <div style={{ display: "grid", gap: 4 }}>
-              <span className="modal-title">{formatLabel(extensionManagerLabels.modalTitle)}</span>
-              <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(extensionManagerLabels.modalDescription)}</span>
-            </div>
-            <button type="button" onClick={() => void close()} className="modal-close">{formatLabel(extensionManagerLabels.actionExit)}</button>
-          </div>
-          <div className="settings-content-frame" style={{ maxHeight: "70vh", overflow: "auto" }}>
-            <div className="settings-pane" style={{ display: "grid", gap: 16 }}>
-              <div className="settings-card settings-card-stack">
-                <StatsGrid snapshot={snapshot} formatLabel={formatLabel} />
-              </div>
-              {renderImportCard()}
-              <div className="settings-card settings-card-stack">
-                <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.quickActionsTitle)}</strong>
-                <div style={{ display: "grid", gap: 10 }}>
-                  {snapshot.extensions.map((extension) => (
-                    <div key={extension.id} className="settings-session-item" style={{ alignItems: "start" }}>
-                      <div style={{ display: "grid", gap: 4 }}>
-                        <span className="settings-session-label">{formatLabel(extension.manifest.displayName)}</span>
-                        <span className="settings-session-value">{extension.id}</span>
-                      </div>
-                      <div className="settings-action-row">
-                        <button type="button" className="modal-btn" onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}>
-                          {extension.enabled ? formatLabel(extensionManagerLabels.actionDisable) : formatLabel(extensionManagerLabels.actionEnable)}
-                        </button>
-                        <button type="button" className="modal-btn modal-btn-primary" onClick={() => void runtime.activate(extension.id)} disabled={!extension.enabled}>
-                          {formatLabel(extensionManagerLabels.actionActivate)}
-                        </button>
-                        {installedIds.has(extension.id) && (
-                          <button type="button" className="modal-btn" onClick={() => void removeInstalledExtension(extension.id)} disabled={busyEntryId === extension.id}>
-                            <Trash2 size={14} /> {formatLabel(extensionManagerLabels.actionRemove)}
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <footer className="modal-footer">
-            <button type="button" onClick={() => void close()} className="modal-btn modal-btn-primary">{formatLabel(extensionManagerLabels.actionClose)}</button>
-          </footer>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      className="extension-manager-pane"
-      data-testid="extension-manager-pane"
-      role="region"
-      aria-label={formatLabel(extensionManagerLabels.viewTitle)}
-      style={{ display: "grid", gridTemplateRows: "auto 1fr", minHeight: "100%", background: "var(--bg-canvas)" }}
-    >
-      <div
-        className="workspace-panel-header"
-        style={{ alignItems: "flex-start", gap: 16, flexWrap: "wrap", height: "auto", minHeight: "var(--panel-header-height)", padding: "12px 10px" }}
-      >
-        <div style={{ display: "grid", gap: 4 }}>
-          <span className="settings-modal-kicker">EXTENSION_MANAGER</span>
-          <strong className="settings-modal-title">{formatLabel(extensionManagerLabels.headerTitle)}</strong>
-          <span className="settings-modal-subtitle">{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
-        </div>
-        <div className="settings-modal-actions" style={{ marginLeft: "auto", flexWrap: "wrap", justifyContent: "flex-end" }}>
-          {openQuickActions && (
-            <button type="button" className="modal-btn" onClick={() => void openQuickActions()}>
-              <SquareMenu size={14} /> {formatLabel(extensionManagerLabels.paneQuickModal)}
-            </button>
-          )}
-          <button type="button" className="modal-btn" onClick={() => importRef.current?.click()}>
-            <Upload size={14} /> {formatLabel(extensionManagerLabels.actionImport)}
+    <div className="extension-manager-pane editor-pane-container" data-testid="extension-manager-pane" role="region" aria-label={formatLabel(extensionManagerLabels.viewTitle)}>
+      <div className="view-toolbar" aria-label="Extension Manager toolbar">
+        <div className="view-toolbar-group">
+          <button type="button" className={`view-toolbar-btn ${sidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => setSidebarOpen((current) => !current)}>
+            SB
           </button>
-          <button type="button" className="modal-btn" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
-            <Download size={14} /> {formatLabel(extensionManagerLabels.actionExport)}
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
+            1P
           </button>
-          <button type="button" className="modal-btn" onClick={() => void close()}>{formatLabel(extensionManagerLabels.actionClose)}</button>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
+            2P
+          </button>
+          <span className="view-toolbar-divider" />
+          <button type="button" className="view-toolbar-btn" title="Import extension package" onClick={() => importInput?.click()}>
+            IMP
+          </button>
+          <button type="button" className="view-toolbar-btn" title="Export catalog snapshot" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
+            EXP
+          </button>
+          <span className="view-toolbar-divider" />
+          <button type="button" className="view-toolbar-btn" title="Close manager" onClick={() => void close()}>
+            CLOSE
+          </button>
         </div>
-        <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={handleImportPortablePackage} />
       </div>
 
-      <div className="workspace-panel-content" style={{ overflow: "auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "320px minmax(0, 1fr)", minHeight: "100%" }}>
-          <aside style={{ borderRight: "1px solid var(--border-color)", display: "grid", gridTemplateRows: "auto 1fr", minWidth: 0 }}>
-            <div className="settings-pane" style={{ padding: 12 }}>
+      <div className="editor-pane-shell">
+        <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={handleImportPortablePackage} />
+        <div className="editor-pane-body is-split">
+          {sidebarOpen && (
+            <aside className="editor-pane-column" style={{ width: "min(320px, 28vw)", borderRight: "1px solid var(--border-color)", padding: 12, gap: 12 }}>
               <div className="settings-card settings-card-stack">
-                <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.paneTreeTitle)}</strong>
                 <StatsGrid snapshot={snapshot} formatLabel={formatLabel} />
+                {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
               </div>
-              {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
-            </div>
-            <div className="workspace-panel-content" style={{ padding: "0 12px 12px", overflow: "auto" }}>
-              <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
+
+              <div className="settings-card settings-card-stack" style={{ gap: 12 }}>
                 <details open={treeState.extensions} onToggle={(event) => {
                   const nextOpen = (event.currentTarget as HTMLDetailsElement).open;
                   setTreeState((current) => ({ ...current, extensions: nextOpen }));
@@ -325,93 +319,48 @@ export const ExtensionManagerView: React.FC<ExtensionManagerViewProps> = ({
                         style={{ justifyContent: "space-between" }}
                       >
                         <span style={{ textAlign: "left" }}>{node.title}</span>
-                        <span className="settings-session-label">{node.catalogEntry.installed ? "installed" : "catalog"}</span>
+                        <span className="settings-session-label">{node.catalogEntry.installed ? "INSTALLED" : "CATALOG"}</span>
                       </button>
                     ))}
                   </div>
                 </details>
               </div>
-            </div>
-          </aside>
+            </aside>
+          )}
 
-          <div className="settings-pane" style={{ padding: 16, display: "grid", gap: 16, alignContent: "start" }}>
-            {renderImportCard()}
-            {!selectedNode && (
-              <div className="settings-card settings-card-stack">
-                <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.emptyTreeSelection)}</span>
-              </div>
-            )}
-            {selectedNode?.kind === "catalog" && (
-              <div className="settings-card settings-card-stack">
-                <strong style={{ fontSize: 12 }}>{selectedNode.title}</strong>
-                <div className="settings-session-grid">
-                  <div className="settings-session-item"><span className="settings-session-label">ENTRY_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.entryId}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{selectedNode.catalogEntry.packageName}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelVersion)}</span><span className="settings-session-value">{selectedNode.catalogEntry.version}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">CATALOG_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.catalogId}</span></div>
+          <div className="editor-pane-column" style={{ flex: 1, padding: 16, gap: 16 }}>
+            <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+                <div style={{ display: "grid", gap: 4 }}>
+                  <span className="settings-session-label">EXTENSION_MANAGER</span>
+                  <strong style={{ fontSize: 14 }}>{formatLabel(extensionManagerLabels.headerTitle)}</strong>
+                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
                 </div>
-                <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(selectedNode.catalogEntry.description)}</p>
-                <div className="settings-action-row">
-                  <button
-                    type="button"
-                    className="modal-btn modal-btn-primary"
-                    onClick={() => void installCatalogEntry(selectedNode.catalogEntry.entryId)}
-                    disabled={busyEntryId === selectedNode.catalogEntry.entryId || !selectedNode.catalogEntry.policyTrusted}
-                  >
-                    <PackageOpen size={14} /> {selectedNode.catalogEntry.installed ? "Update" : "Install"}
-                  </button>
+                <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
+                  <button type="button" className="modal-btn" onClick={() => importInput?.click()}>{formatLabel(extensionManagerLabels.actionImport)}</button>
+                  <button type="button" className="modal-btn" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>{formatLabel(extensionManagerLabels.actionExport)}</button>
                 </div>
-              </div>
-            )}
-            {selectedNode?.kind === "extension" && (
-              <div style={{ display: "grid", gap: 12 }}>
-                <ExtensionCard
-                  extension={selectedNode.extension}
-                  runtime={runtime}
-                  formatLabel={formatLabel}
-                  defaults={defaults}
-                />
-                {installedIds.has(selectedNode.extension.id) && (
-                  <div className="settings-action-row" style={{ justifyContent: "flex-end" }}>
-                    <button
-                      type="button"
-                      className="modal-btn"
-                      onClick={() => void removeInstalledExtension(selectedNode.extension.id)}
-                      disabled={busyEntryId === selectedNode.extension.id}
-                    >
-                      <Trash2 size={14} /> {formatLabel(extensionManagerLabels.actionRemove)}
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-            <div className="settings-card settings-card-stack">
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Boxes size={16} />
-                <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.catalogEntriesTitle)}</strong>
-              </div>
-              <div style={{ display: "grid", gap: 10 }}>
-                {snapshot.catalogEntries.map((entry) => (
-                  <div key={entry.entryId} className="settings-session-item" style={{ alignItems: "start" }}>
-                    <div style={{ display: "grid", gap: 4 }}>
-                      <span className="settings-session-label">{formatLabel(entry.displayName)}</span>
-                      <span className="settings-session-value">{entry.packageName}@{entry.version}</span>
-                    </div>
-                    <div className="settings-action-row">
-                      <button type="button" className="modal-btn" onClick={() => setSelectedNodeId(entry.entryId)}>Inspect</button>
-                      <button
-                        type="button"
-                        className="modal-btn modal-btn-primary"
-                        onClick={() => void installCatalogEntry(entry.entryId)}
-                        disabled={busyEntryId === entry.entryId || !entry.policyTrusted}
-                      >
-                        <PackageOpen size={14} /> {entry.installed ? "Update" : "Install"}
-                      </button>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
+
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(0, 1.1fr) minmax(320px, 0.9fr)" : "minmax(0, 1fr)" }}>
+              <div style={{ display: "grid", gap: 16 }}>
+                {detailsPane}
+              </div>
+              {layoutMode === "split" && (
+                <div style={{ display: "grid", gap: 16 }}>
+                  <div className="settings-card settings-card-stack">
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span className="settings-session-label">CATALOG</span>
+                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Catalog Browser</strong>
+                    </div>
+                    {catalogPane}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {layoutMode === "single" && catalogPane}
           </div>
         </div>
       </div>

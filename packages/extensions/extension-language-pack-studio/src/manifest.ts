@@ -2,8 +2,6 @@ import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   LANGUAGE_PACK_STUDIO_COMMAND_ID,
   LANGUAGE_PACK_STUDIO_EXTENSION_ID,
-  LANGUAGE_PACK_STUDIO_MODAL_COMMAND_ID,
-  LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID,
   LANGUAGE_PACK_STUDIO_RAIL_ID,
   LANGUAGE_PACK_STUDIO_VIEW_ID,
 } from "./constants.js";
@@ -32,6 +30,11 @@ export const languagePackStudioManifest: ExtensionManifest = {
     module: "./index.js",
     export: "createLanguagePackStudioBundledEntry",
   },
+  i18n: {
+    defaultLocale: "en",
+    supportedLocales: ["en"],
+    catalogs: [{ locale: "en", path: "./locales/en.js" }],
+  },
   contributions: {
     commands: [
       {
@@ -39,12 +42,6 @@ export const languagePackStudioManifest: ExtensionManifest = {
         title: languagePackStudioLabels.commandOpenTitle,
         description: languagePackStudioLabels.commandOpenDescription,
         icon: { kind: "lucide", name: "Languages" },
-      },
-      {
-        id: LANGUAGE_PACK_STUDIO_MODAL_COMMAND_ID,
-        title: languagePackStudioLabels.commandOpenQuickTitle,
-        description: languagePackStudioLabels.commandOpenQuickDescription,
-        icon: { kind: "lucide", name: "SquareMenu" },
       }
     ],
     views: [
@@ -56,15 +53,6 @@ export const languagePackStudioManifest: ExtensionManifest = {
         location: "main",
         allowMultiple: false,
         canBePinned: true,
-      },
-      {
-        id: LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID,
-        title: languagePackStudioLabels.modalTitle,
-        description: languagePackStudioLabels.modalDescription,
-        icon: { kind: "lucide", name: "SquareMenu" },
-        location: "modal",
-        allowMultiple: false,
-        canBePinned: false,
       }
     ],
     components: [],

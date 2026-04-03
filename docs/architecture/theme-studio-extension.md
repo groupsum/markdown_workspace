@@ -13,6 +13,9 @@ The package currently provides:
 - token inspection against `mdwrk/theme-contract`
 - token editing through host theme draft APIs
 - renderer/editor live preview surfaces using the shared portable packages
+- a workspace-pane surface with a dedicated collapsible sidebar
+- single-pane and split-screen authoring layouts
+- a grouped view-toolbar for preview/apply/revert/import/export actions
 - class/token relationship inspection derived from the formal class and bridge definitions
 - preview, apply, and revert actions
 - export generation for:
@@ -41,7 +44,7 @@ The package does **not** import `apps/client` internals.
 The bundled entry registers:
 
 - one command to open Theme Studio
-- one modal view
+- one main workspace view
 - one appearance-group action-rail item
 - one settings section backed by the manifest schema
 - one extension-local service for token state, preview/apply/revert flows, and export generation
@@ -61,7 +64,9 @@ This is sufficient for a first-party checkpoint and for downstream packaging exp
 
 ## Current limitations
 
-This checkpoint does not yet provide:
+This checkpoint does not provide a standalone modal workflow for Theme Studio.
+
+It also does not yet provide:
 
 - a zip/tarball package exporter inside the extension UI
 - third-party distribution or catalog publishing

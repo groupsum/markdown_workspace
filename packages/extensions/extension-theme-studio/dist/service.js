@@ -211,6 +211,27 @@ export function createThemeStudioService(deps) {
             await deps.context.host.notifications.info(themeStudioLabels.notificationExported);
             return exports;
         },
+        async importPackageArtifact(payload) {
+            const parsed = JSON.parse(payload);
+            const themeFile = parsed.files?.find((entry) => typeof entry.path === 'string' && entry.path.startsWith('themes/') && entry.path.endsWith('.json'));
+            if (!themeFile?.content) {
+                throw new Error('Theme package artifact is missing a themes/*.json preset payload.');
+            }
+            const preset = JSON.parse(themeFile.content);
+            setSnapshot({
+                metadata: {
+                    themeId: sanitizeThemeIdentifier(preset.metadata?.themeId ?? preset.metadata?.id ?? snapshot.metadata.themeId),
+                    themeName: preset.metadata?.themeName ?? preset.metadata?.name ?? snapshot.metadata.themeName,
+                    packageName: snapshot.metadata.packageName,
+                    author: preset.metadata?.author ?? snapshot.metadata.author,
+                    description: preset.metadata?.description ?? snapshot.metadata.description,
+                },
+                draftTokens: preset.tokens ?? {},
+                lastError: null,
+                infoMessage: format(themeStudioLabels.statusReady),
+            });
+            await deps.context.host.theme.previewTheme(preset.tokens ?? {});
+        },
     };
 }
 //# sourceMappingURL=service.js.map

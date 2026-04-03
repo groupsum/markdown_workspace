@@ -35,9 +35,9 @@ export function createThemeStudioBundledEntry() {
                         title: themeStudioLabels.viewTitle,
                         description: themeStudioLabels.viewDescription,
                         icon: { kind: "lucide", name: "Palette" },
-                        location: "modal",
+                        location: "main",
                         allowMultiple: false,
-                        canBePinned: false,
+                        canBePinned: true,
                         render: (props) => (_jsx(ThemeStudioView, { service: service, close: () => props.close(), formatLabel: context.host.i18n.format })),
                     });
                     context.registerActionRailItem({

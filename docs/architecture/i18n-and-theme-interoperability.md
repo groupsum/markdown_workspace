@@ -18,6 +18,7 @@ Extensions should:
 - register locale catalogs or locale catalog loaders through `ExtensionContext`
 - use host formatting for all user-visible UI labels
 - keep message keys namespaced to the extension id
+- provide an `en` fallback path for every user-facing extension surface
 
 ### Locale loading model
 
@@ -26,6 +27,7 @@ An extension may register:
 - a default locale
 - a fallback locale
 - locale-specific lazy loaders
+- installed locale catalogs restored from IndexedDB-backed device persistence
 
 The loader path is intended for:
 - bundled first-party extensions with per-locale chunks
@@ -71,6 +73,7 @@ Phase 9 introduces or finalizes:
 - package-local locale loader registration in the client i18n service
 - host i18n adapter support for extension locale loaders
 - keyed and localized labels in the packaged Extension Manager
+- built-in and installed language-pack management in a shared workspace-pane flow
 - renderer/editor bridge definitions in `mdwrk/theme-contract`
 - bridge CSS generation helpers in `mdwrk/ui-tokens`
 - renderer/editor package helper exports that materialize bridge style objects from token overrides

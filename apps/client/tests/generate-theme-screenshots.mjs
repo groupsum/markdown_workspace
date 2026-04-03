@@ -85,6 +85,34 @@ async function screenshot(page, themeId, viewportId, name) {
   });
 }
 
+async function capturePaneModes(page, themeId, viewportId, rootSelector, prefix) {
+  await screenshot(page, themeId, viewportId, `${prefix}-split`);
+
+  const singleButton = page.locator(`${rootSelector} button[title="Single pane"]`).first();
+  if (await singleButton.isVisible().catch(() => false)) {
+    await singleButton.click();
+    await page.waitForTimeout(150);
+    await screenshot(page, themeId, viewportId, `${prefix}-single`);
+  }
+
+  const splitButton = page.locator(`${rootSelector} button[title="Split screen"]`).first();
+  if (await splitButton.isVisible().catch(() => false)) {
+    await splitButton.click();
+    await page.waitForTimeout(150);
+    await screenshot(page, themeId, viewportId, `${prefix}-split-restored`);
+  }
+
+  const sidebarButton = page.locator(`${rootSelector} button[title="Toggle sidebar"]`).first();
+  if (await sidebarButton.isVisible().catch(() => false)) {
+    await sidebarButton.click();
+    await page.waitForTimeout(150);
+    await screenshot(page, themeId, viewportId, `${prefix}-sidebar-collapsed`);
+    await sidebarButton.click();
+    await page.waitForTimeout(150);
+    await screenshot(page, themeId, viewportId, `${prefix}-sidebar-restored`);
+  }
+}
+
 async function closeModal(page) {
   await page.keyboard.press('Escape').catch(() => {});
   const closeButtons = [
@@ -189,15 +217,8 @@ async function captureThemeViewport(browser, themeId, viewport) {
   if (await extensionsButton.isVisible().catch(() => false)) {
     await extensionsButton.click();
     await page.locator('[data-testid="extension-manager-pane"]').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'extension-manager-pane');
-    const extensionQuickButton = page.locator('[data-testid="extension-manager-pane"] button:has-text("Quick Actions")').first();
-    if (await extensionQuickButton.isVisible().catch(() => false)) {
-      await extensionQuickButton.click();
-      await page.locator('[data-testid="extension-manager-modal"]').waitFor({ state: 'visible' });
-      await screenshot(page, themeId, viewport.id, 'extension-manager-modal');
-      await closeModal(page);
-    }
-    const extensionClose = page.locator('[data-testid="extension-manager-pane"] button:has-text("Close")').first();
+    await capturePaneModes(page, themeId, viewport.id, '[data-testid="extension-manager-pane"]', 'extension-manager-pane');
+    const extensionClose = page.locator('[data-testid="extension-manager-pane"] button[title="Close manager"]').first();
     if (await extensionClose.isVisible().catch(() => false)) {
       await extensionClose.click();
       await page.waitForTimeout(150);
@@ -208,7 +229,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
   if (await languagePackButton.isVisible().catch(() => false)) {
     await languagePackButton.click();
     await page.locator('[data-testid="language-pack-studio-pane"]').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane');
+    await capturePaneModes(page, themeId, viewport.id, '[data-testid="language-pack-studio-pane"]', 'language-pack-studio-pane');
     const languagePackInput = page.locator('[data-testid="language-pack-studio-pane"] input[type="file"]').first();
     await languagePackInput.setInputFiles(languagePackSamplePath);
     await page.waitForTimeout(250);
@@ -218,19 +239,6 @@ async function captureThemeViewport(browser, themeId, viewport) {
       await usePackButton.click();
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-active');
-    }
-    const quickManagerButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("QUICK_MANAGER")').first();
-    if (await quickManagerButton.isVisible().catch(() => false)) {
-      await quickManagerButton.click();
-      await page.locator('[data-testid="language-pack-manager-modal"]').waitFor({ state: 'visible' });
-      await screenshot(page, themeId, viewport.id, 'language-pack-manager-modal');
-      const languageManagerExit = page.locator('[data-testid="language-pack-manager-modal"] button:has-text("EXIT")').first();
-      if (await languageManagerExit.isVisible().catch(() => false)) {
-        await languageManagerExit.click();
-        await page.waitForTimeout(150);
-      } else {
-        await closeModal(page);
-      }
     }
     await page.locator('[data-testid="language-pack-studio-pane"] input').nth(1).fill('it-demo');
     await page.locator('[data-testid="language-pack-studio-pane"] input').nth(2).fill('Italiano Demo');
@@ -244,7 +252,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-removed');
     }
-    const languagePackClose = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("CLOSE")').first();
+    const languagePackClose = page.locator('[data-testid="language-pack-studio-pane"] button[title="Close studio"]').first();
     if (await languagePackClose.isVisible().catch(() => false)) {
       await languagePackClose.click();
       await page.waitForTimeout(150);
@@ -255,8 +263,8 @@ async function captureThemeViewport(browser, themeId, viewport) {
   if (await themeStudioButton.isVisible().catch(() => false)) {
     await themeStudioButton.click();
     await page.locator('[data-testid="theme-studio-pane"]').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'theme-studio-pane');
-    const themeStudioClose = page.locator('[data-testid="theme-studio-pane"] button:has-text("Close")').first();
+    await capturePaneModes(page, themeId, viewport.id, '[data-testid="theme-studio-pane"]', 'theme-studio-pane');
+    const themeStudioClose = page.locator('[data-testid="theme-studio-pane"] button[title="Close studio"]').first();
     if (await themeStudioClose.isVisible().catch(() => false)) {
       await themeStudioClose.click();
       await page.waitForTimeout(150);

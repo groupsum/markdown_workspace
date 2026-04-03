@@ -26,9 +26,9 @@ export function createExtensionManagerBundledEntry(options) {
                         title: extensionManagerLabels.viewTitle,
                         description: extensionManagerLabels.viewDescription,
                         icon: { kind: "lucide", name: "Puzzle" },
-                        location: "modal",
+                        location: "main",
                         allowMultiple: false,
-                        canBePinned: false,
+                        canBePinned: true,
                         render: (props) => (_jsx(ExtensionManagerView, { runtime: options.runtime, close: () => props.close(), formatLabel: context.host.i18n.format, defaultSettings: {
                                 showCompatibility: true,
                                 showDiagnostics: true,

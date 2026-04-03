@@ -1,9 +1,11 @@
 import type { ClientI18nService } from './clientI18nService';
 import type { LanguagePackArtifact } from './languagePackStore';
 import {
+  initializeLanguagePackStore,
   normalizeLanguagePackArtifact,
   readStoredLanguagePacksSync,
   removeStoredLanguagePack,
+  setAllStoredLanguagePackEnabled,
   setStoredLanguagePackEnabled,
   subscribeStoredLanguagePacks,
   upsertStoredLanguagePack,
@@ -30,6 +32,7 @@ export interface LanguagePackStudioController {
   activate(locale: string): Promise<void>;
   remove(locale: string): Promise<void>;
   setEnabled(locale: string, enabled: boolean): Promise<void>;
+  setAllEnabled(enabled: boolean): Promise<void>;
   exportArtifact(locale: string): LanguagePackArtifact | null;
 }
 
@@ -71,6 +74,9 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
       listener();
     }
   });
+  void initializeLanguagePackStore().then(() => {
+    emit();
+  });
 
   return {
     getSnapshot() {
@@ -95,7 +101,7 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
       if (!parsed) {
         throw new Error('Invalid language pack artifact.');
       }
-      upsertStoredLanguagePack(parsed);
+      await upsertStoredLanguagePack(parsed);
       if (parsed.enabled) {
         options.i18n.registerCatalog({ locale: parsed.locale, messages: parsed.messages });
         await options.i18n.ensureLocale(parsed.locale);
@@ -115,7 +121,7 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
       if (!pack) {
         throw new Error('Locale and at least one message are required.');
       }
-      upsertStoredLanguagePack(pack);
+      await upsertStoredLanguagePack(pack);
       if (pack.enabled) {
         options.i18n.registerCatalog({ locale: pack.locale, messages: pack.messages });
         await options.i18n.ensureLocale(pack.locale);
@@ -129,7 +135,9 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
         throw new Error(`Unknown locale: ${locale}`);
       }
       if (target.enabled) {
-        options.i18n.registerCatalog({ locale: target.locale, messages: target.messages });
+        if (Object.keys(target.messages).length > 0) {
+          options.i18n.registerCatalog({ locale: target.locale, messages: target.messages });
+        }
         options.i18n.setLocale(target.locale);
         await options.i18n.ensureLocale(target.locale);
         await options.settingsStore.set('core.locale', target.locale);
@@ -138,7 +146,11 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
     },
     async remove(locale) {
       const activeLocale = options.i18n.getLocale();
-      removeStoredLanguagePack(locale);
+      const target = readStoredLanguagePacksSync().find((pack) => pack.locale === locale);
+      if (!target || target.source === 'built-in') {
+        return;
+      }
+      await removeStoredLanguagePack(locale);
       if (activeLocale === locale) {
         options.i18n.setLocale('en');
         await options.i18n.ensureLocale('en');
@@ -147,9 +159,9 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
       emit();
     },
     async setEnabled(locale, enabled) {
-      setStoredLanguagePackEnabled(locale, enabled);
+      await setStoredLanguagePackEnabled(locale, enabled);
       const target = readStoredLanguagePacksSync().find((pack) => pack.locale === locale);
-      if (enabled && target) {
+      if (enabled && target && Object.keys(target.messages).length > 0) {
         options.i18n.registerCatalog({ locale: target.locale, messages: target.messages });
         await options.i18n.ensureLocale(target.locale);
       }
@@ -160,8 +172,23 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
       }
       emit();
     },
+    async setAllEnabled(enabled) {
+      const next = await setAllStoredLanguagePackEnabled(enabled);
+      for (const pack of next) {
+        if (pack.enabled && Object.keys(pack.messages).length > 0) {
+          options.i18n.registerCatalog({ locale: pack.locale, messages: pack.messages });
+        }
+      }
+      if (!next.some((pack) => pack.locale === options.i18n.getLocale() && pack.enabled)) {
+        options.i18n.setLocale('en');
+        await options.i18n.ensureLocale('en');
+        await options.settingsStore.set('core.locale', 'en');
+      }
+      emit();
+    },
     exportArtifact(locale) {
-      return readStoredLanguagePacksSync().find((pack) => pack.locale === locale) ?? null;
+      const target = readStoredLanguagePacksSync().find((pack) => pack.locale === locale) ?? null;
+      return target?.source === 'installed' ? target : null;
     },
   };
 }

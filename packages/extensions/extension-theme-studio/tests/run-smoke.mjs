@@ -102,6 +102,9 @@ const context = {
 assert.equal(themeStudioManifest.id, 'core.theme-studio');
 assert.ok(themeStudioManifest.capabilities.includes('theme.write'));
 assert.ok(themeStudioManifest.contributions.actionRail.some((item) => item.id === 'core.theme-studio.rail'));
+assert.equal(themeStudioManifest.contributions.views.length, 1);
+assert.equal(themeStudioManifest.contributions.views[0]?.location, 'main');
+assert.ok(!themeStudioManifest.contributions.views.some((view) => view.location === 'modal'));
 
 const defaultSettings = await readThemeStudioSettings(config);
 assert.equal(defaultSettings.autoPreviewOnEdit, true);

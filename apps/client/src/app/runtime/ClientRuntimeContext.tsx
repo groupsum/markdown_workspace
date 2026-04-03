@@ -13,7 +13,7 @@ import { createViewRegistry } from '../../features/views/viewRegistry';
 import { createClientExtensionHost } from '../../extensions/host';
 import type { ClientRuntimeBridge, ClientRuntimeServices, ClientRuntimeSnapshot } from './clientRuntimeTypes';
 import { useCoreSurfaceRegistrations } from './useCoreSurfaceRegistrations';
-import { readEnabledLanguagePacksSync } from '../../features/i18n/languagePackStore';
+import { initializeLanguagePackStore, readEnabledLanguagePacksSync } from '../../features/i18n/languagePackStore';
 
 const ClientRuntimeSnapshotContext = React.createContext<ClientRuntimeSnapshot | null>(null);
 const ClientRuntimeServicesContext = React.createContext<ClientRuntimeServices | null>(null);
@@ -75,16 +75,25 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
   React.useEffect(() => {
     let active = true;
     const syncLocale = async () => {
+      await initializeLanguagePackStore();
       const storedLocale = await services.settingsStore.get<string>('core.locale');
       for (const pack of readEnabledLanguagePacksSync()) {
-        services.i18n.registerCatalog({
-          locale: pack.locale,
-          messages: pack.messages,
-        });
+        if (Object.keys(pack.messages).length > 0) {
+          services.i18n.registerCatalog({
+            locale: pack.locale,
+            messages: pack.messages,
+          });
+        }
       }
       if (!active) return;
-      if (storedLocale) {
+      const localeAllowed = storedLocale
+        ? readEnabledLanguagePacksSync().some((pack) => pack.locale === storedLocale)
+        : false;
+      if (storedLocale && localeAllowed) {
         services.i18n.setLocale(storedLocale);
+      } else if (storedLocale && !localeAllowed) {
+        services.i18n.setLocale('en');
+        await services.settingsStore.set('core.locale', 'en');
       }
       await services.i18n.ensureLocale(services.i18n.getLocale());
     };

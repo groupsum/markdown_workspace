@@ -1,6 +1,4 @@
 export const EXTENSION_MANAGER_EXTENSION_ID = "core.extension-manager" as const;
 export const EXTENSION_MANAGER_VIEW_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.view` as const;
-export const EXTENSION_MANAGER_MODAL_VIEW_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.modal` as const;
 export const EXTENSION_MANAGER_COMMAND_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.open` as const;
-export const EXTENSION_MANAGER_MODAL_COMMAND_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.open-quick` as const;
 export const EXTENSION_MANAGER_RAIL_ID = `${EXTENSION_MANAGER_EXTENSION_ID}.rail` as const;

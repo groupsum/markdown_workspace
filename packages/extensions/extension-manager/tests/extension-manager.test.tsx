@@ -27,7 +27,6 @@ import {
 import { THEME_CONTRACT_VERSION } from '@mdwrk/theme-contract';
 import {
   createExtensionManagerBundledEntry,
-  EXTENSION_MANAGER_MODAL_VIEW_ID,
   EXTENSION_MANAGER_VIEW_ID,
   extensionManagerManifest,
 } from '../src/index';
@@ -327,9 +326,7 @@ describe('extension-manager', () => {
     expect(runtime.get(extensionManagerManifest.id)?.status).toBe('active');
     expect(harness.commands.some((command) => command.id === extensionManagerManifest.contributions.commands[0]?.id)).toBe(true);
     expect(harness.views.some((view) => view.id === EXTENSION_MANAGER_VIEW_ID)).toBe(true);
-    expect(harness.views.some((view) => view.id === EXTENSION_MANAGER_MODAL_VIEW_ID)).toBe(true);
     expect(harness.views.find((view) => view.id === EXTENSION_MANAGER_VIEW_ID)?.location).toBe('main');
-    expect(harness.views.find((view) => view.id === EXTENSION_MANAGER_MODAL_VIEW_ID)?.location).toBe('modal');
     expect(harness.railItems.some((item) => item.id === extensionManagerManifest.contributions.actionRail[0]?.id)).toBe(true);
     expect(harness.diagnostics[extensionManagerManifest.id]?.some((record) => record.code === 'EXT_MANAGER_READY')).toBe(true);
 
@@ -357,7 +354,7 @@ describe('extension-manager', () => {
         context.registerView({
           id: 'core.inventory.view',
           title: { defaultMessage: 'Inventory View' },
-          location: 'modal',
+          location: 'main',
           render: () => null,
         });
         context.registerActionRailItem({
@@ -379,6 +376,41 @@ describe('extension-manager', () => {
     expect(screen.getByText('Bundled')).toBeInTheDocument();
     expect(screen.getAllByText('active', { exact: false }).length).toBeGreaterThan(0);
     expect(screen.getByText('Compatible with the current host, runtime, and theme contract.')).toBeInTheDocument();
+
+    await runtime.stop();
+  });
+
+  it('uses a pane-only workspace layout with toolbar-controlled sidebar and split modes', async () => {
+    const harness = createHostHarness();
+    const runtime = createExtensionRuntime({
+      host: harness.host,
+      registrationSink: createRegistrationSink(harness),
+      storage: createInMemoryExtensionRuntimeStorage(),
+    });
+
+    const inventoryManifest = createManifest({
+      id: 'core.layout-check',
+      packageName: '@mdwrk/layout-check',
+      displayName: { defaultMessage: 'Layout Check Extension' },
+      description: { defaultMessage: 'Layout verification extension.' },
+    });
+
+    runtime.registerBundledExtension(createBundledEntry({ manifest: inventoryManifest }));
+    await runtime.start();
+    const view = renderManagerView(runtime);
+
+    expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
+    expect(view.container.querySelector('aside.editor-pane-column')).not.toBeNull();
+    expect(screen.getByText('Catalog Browser')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /toggle sidebar/i }));
+    await waitFor(() => expect(view.container.querySelector('aside.editor-pane-column')).toBeNull());
+
+    fireEvent.click(screen.getByRole('button', { name: /single pane/i }));
+    await waitFor(() => expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument());
+
+    fireEvent.click(screen.getByRole('button', { name: /split screen/i }));
+    await waitFor(() => expect(screen.getByText('Catalog Browser')).toBeInTheDocument());
 
     await runtime.stop();
   });

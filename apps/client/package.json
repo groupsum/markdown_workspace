@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/mdwrkspace",
   "private": false,
-  "version": "1.4.7",
+  "version": "1.4.8",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -30,10 +30,10 @@
   "dependencies": {
     "@mdwrk/extension-gemini-agent": "^1.1.1",
     "@mdwrk/extension-host": "^1.0.2",
-    "@mdwrk/extension-language-pack-studio": "^1.0.0",
-    "@mdwrk/extension-manager": "^1.1.3",
+    "@mdwrk/extension-language-pack-studio": "^1.0.1",
+    "@mdwrk/extension-manager": "^1.1.4",
     "@mdwrk/extension-manifest": "^1.0.1",
-    "@mdwrk/extension-runtime": "^1.1.1",
+    "@mdwrk/extension-runtime": "^1.1.3",
     "@mdwrk/i18n": "^1.2.1",
     "@mdwrk/icons": "^1.0.1",
     "@mdwrk/markdown-editor-react": "^1.1.1",
@@ -46,7 +46,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",
-    "@mdwrk/extension-theme-studio": "^1.1.2"
+    "@mdwrk/extension-theme-studio": "^1.1.3"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",

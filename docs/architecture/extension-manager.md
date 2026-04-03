@@ -10,8 +10,10 @@ The Extension Manager package currently provides:
 
 - a manifest-compliant bundled extension package
 - a packaged activation entry point
-- an Extension Manager modal view
+- a workspace-pane Extension Manager view rendered in the main shell
 - an action-rail contribution in the `extensions` group
+- a view-toolbar with extension-wide actions grouped as toolbar buttons
+- a collapsible manager sidebar and single-pane / split-screen layouts
 - inventory of bundled and installed runtime extensions known to the runtime
 - enabled/disabled controls
 - activate/deactivate controls
@@ -19,16 +21,17 @@ The Extension Manager package currently provides:
 - capability display
 - runtime health and diagnostics display
 - schema-driven settings rendering for extensions that declare `settingsSchema`
+- IndexedDB-backed persistence for imported or installed extensions
 
 ## Current runtime integration
 
 `apps/client` registers the packaged Extension Manager through the shared `mdwrk/extension-runtime` package during client boot. The client no longer needs a hardcoded local operator console to browse runtime state.
 
-The manager already distinguishes runtime source `bundled` vs `installed` for extensions that have been installed through the formal external catalog path.
+The manager now distinguishes runtime source `bundled` vs `installed` for extensions that have been installed through the formal external catalog path, and it persists installed artifacts through the shared device-local IndexedDB layer.
 
 ## Current scope limits
 
-This checkpoint does **not** yet make the manager UI the only way to drive external catalog installs. The runtime API and conformance tooling are ahead of the client-facing catalog-browsing UX.
+This checkpoint removes the standalone manager modal. Extension management must happen through workspace panes, settings content, and shell sidebars instead of modal-only flows.
 
 Remaining UX hardening opportunities include:
 - richer catalog discovery and search

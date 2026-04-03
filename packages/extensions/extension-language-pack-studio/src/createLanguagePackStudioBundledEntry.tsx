@@ -4,8 +4,6 @@ import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import { LanguagePackStudioView } from "./components/LanguagePackStudioView.js";
 import {
   LANGUAGE_PACK_STUDIO_COMMAND_ID,
-  LANGUAGE_PACK_STUDIO_MODAL_COMMAND_ID,
-  LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID,
   LANGUAGE_PACK_STUDIO_RAIL_ID,
   LANGUAGE_PACK_STUDIO_VIEW_ID,
 } from "./constants.js";
@@ -30,15 +28,7 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
               await context.host.views.open(LANGUAGE_PACK_STUDIO_VIEW_ID);
             },
           });
-          context.registerCommand({
-            id: LANGUAGE_PACK_STUDIO_MODAL_COMMAND_ID,
-            title: languagePackStudioLabels.commandOpenQuickTitle,
-            description: languagePackStudioLabels.commandOpenQuickDescription,
-            icon: { kind: "lucide", name: "SquareMenu" },
-            execute: async () => {
-              await context.host.views.open(LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID);
-            },
-          });
+
           context.registerView({
             id: LANGUAGE_PACK_STUDIO_VIEW_ID,
             title: languagePackStudioLabels.viewTitle,
@@ -51,29 +41,11 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
               <LanguagePackStudioView
                 controller={options.controller}
                 close={() => (props as { close: () => Promise<void> }).close()}
-                openQuickActions={() => context.host.views.open(LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID)}
                 formatLabel={context.host.i18n.format}
-                mode="pane"
               />
             ),
           });
-          context.registerView({
-            id: LANGUAGE_PACK_STUDIO_MODAL_VIEW_ID,
-            title: languagePackStudioLabels.modalTitle,
-            description: languagePackStudioLabels.modalDescription,
-            icon: { kind: "lucide", name: "SquareMenu" },
-            location: "modal",
-            allowMultiple: false,
-            canBePinned: false,
-            render: (props) => (
-              <LanguagePackStudioView
-                controller={options.controller}
-                close={() => (props as { close: () => Promise<void> }).close()}
-                formatLabel={context.host.i18n.format}
-                mode="modal"
-              />
-            ),
-          });
+
           context.registerActionRailItem({
             id: LANGUAGE_PACK_STUDIO_RAIL_ID,
             title: languagePackStudioLabels.railTitle,

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Download, Languages, Power, PowerOff, Trash2, Upload } from 'lucide-react';
+import { Download, Languages, PanelLeftClose, PanelLeftOpen, Power, PowerOff, Trash2, Upload } from 'lucide-react';
 import { useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { useClientI18n } from './useClientI18n';
 import {
+  initializeLanguagePackStore,
   normalizeLanguagePackArtifact,
   removeStoredLanguagePack,
+  setAllStoredLanguagePackEnabled,
   setStoredLanguagePackEnabled,
   upsertStoredLanguagePack,
   useStoredLanguagePacks,
@@ -31,14 +33,20 @@ export const LanguagePackManagerPanel: React.FC = () => {
   const importRef = React.useRef<HTMLInputElement>(null);
   const [error, setError] = React.useState<string | null>(null);
 
+  React.useEffect(() => {
+    void initializeLanguagePackStore();
+  }, []);
+
   const activatePack = React.useCallback(async (pack: LanguagePackArtifact) => {
     if (!pack.enabled) {
       return;
     }
-    services.i18n.registerCatalog({
-      locale: pack.locale,
-      messages: pack.messages,
-    });
+    if (Object.keys(pack.messages).length > 0) {
+      services.i18n.registerCatalog({
+        locale: pack.locale,
+        messages: pack.messages,
+      });
+    }
     setLocale(pack.locale);
     await services.i18n.ensureLocale(pack.locale);
     void services.settingsStore.set('core.locale', pack.locale);
@@ -53,7 +61,7 @@ export const LanguagePackManagerPanel: React.FC = () => {
       if (!parsed) {
         throw new Error('Invalid language pack artifact.');
       }
-      upsertStoredLanguagePack(parsed);
+      await upsertStoredLanguagePack(parsed);
       if (parsed.enabled) {
         services.i18n.registerCatalog({
           locale: parsed.locale,
@@ -83,8 +91,11 @@ export const LanguagePackManagerPanel: React.FC = () => {
               <button type="button" className="modal-btn" onClick={() => importRef.current?.click()}>
                 <Upload size={14} /> IMPORT_PACK
               </button>
-              <button type="button" className="modal-btn" onClick={() => { void services.views.open('core.language-pack-studio.modal'); }}>
-                <Languages size={14} /> QUICK_MANAGER
+              <button type="button" className="modal-btn" onClick={() => { void setAllStoredLanguagePackEnabled(false); }}>
+                <PanelLeftClose size={14} /> DISABLE_ALL
+              </button>
+              <button type="button" className="modal-btn" onClick={() => { void setAllStoredLanguagePackEnabled(true); }}>
+                <PanelLeftOpen size={14} /> ENABLE_ALL
               </button>
               <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void services.views.open('core.language-pack-studio.view'); }}>
                 <Languages size={14} /> OPEN_STUDIO
@@ -105,17 +116,17 @@ export const LanguagePackManagerPanel: React.FC = () => {
             {packs.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">NO_IMPORTED_LANGUAGE_PACKS</span>}
             {packs.map((pack) => (
               <div key={pack.locale} className="settings-session-item">
-                <span className="settings-session-label">{pack.label}</span>
-                <span className="settings-session-value">{pack.locale}</span>
+                <span className="settings-session-label">{pack.source.toUpperCase()}</span>
+                <span className="settings-session-value">{pack.label} · {pack.locale}</span>
                 <div className="settings-action-row">
-                  <button type="button" className="modal-btn" onClick={() => setStoredLanguagePackEnabled(pack.locale, !pack.enabled)}>
+                  <button type="button" className="modal-btn" onClick={() => { void setStoredLanguagePackEnabled(pack.locale, !pack.enabled); }}>
                     {pack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {pack.enabled ? 'DISABLE' : 'ENABLE'}
                   </button>
                   <button type="button" className="modal-btn" onClick={() => { void activatePack(pack); }} disabled={!pack.enabled || locale === pack.locale}>USE_PACK</button>
-                  <button type="button" className="modal-btn" onClick={() => downloadJson(`${pack.locale}.language-pack.json`, pack)}>
+                  <button type="button" className="modal-btn" onClick={() => downloadJson(`${pack.locale}.language-pack.json`, pack)} disabled={pack.source !== 'installed'}>
                     <Download size={14} /> EXPORT
                   </button>
-                  <button type="button" className="modal-btn" onClick={() => removeStoredLanguagePack(pack.locale)}>
+                  <button type="button" className="modal-btn" onClick={() => { void removeStoredLanguagePack(pack.locale); }} disabled={pack.source !== 'installed'}>
                     <Trash2 size={14} /> REMOVE
                   </button>
                 </div>
