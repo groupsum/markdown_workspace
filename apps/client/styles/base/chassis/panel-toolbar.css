@@ -1,12 +1,16 @@
 /* Generic Panel Toolbar */
 .panel-toolbar {
   height: var(--panel-header-height);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background: var(--bg-inset);
   border-bottom: var(--border-width) solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
+  overflow: hidden;
   font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;
