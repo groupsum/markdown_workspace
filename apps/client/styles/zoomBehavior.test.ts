@@ -37,7 +37,7 @@ describe('zoom scaling boundaries', () => {
     const rootCss = read('./base/root.css');
     const chassisTsx = read('../components/Chassis/Chassis.tsx');
 
-    expect(rootCss).toContain('--ui-scale: 1.3;');
+    expect(rootCss).toContain('--ui-scale: 1;');
     expect(chassisTsx).toContain("document.documentElement.style.setProperty('--ui-scale', String(zoom));");
   });
 
