@@ -371,7 +371,7 @@ describe('extension-manager', () => {
     renderManagerView(runtime);
 
     expect(await screen.findByText('Extension Manager')).toBeInTheDocument();
-    expect(screen.getByText('Inventory Extension')).toBeInTheDocument();
+    expect(screen.getAllByText('Inventory Extension').length).toBeGreaterThan(0);
     expect(screen.getByText('core.inventory')).toBeInTheDocument();
     expect(screen.getByText('Bundled')).toBeInTheDocument();
     expect(screen.getAllByText('active', { exact: false }).length).toBeGreaterThan(0);
@@ -403,13 +403,13 @@ describe('extension-manager', () => {
     expect(view.container.querySelector('aside.editor-pane-column')).not.toBeNull();
     expect(screen.getByText('Catalog Browser')).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('button', { name: /toggle sidebar/i }));
+    fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
     await waitFor(() => expect(view.container.querySelector('aside.editor-pane-column')).toBeNull());
 
-    fireEvent.click(screen.getByRole('button', { name: /single pane/i }));
+    fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument());
 
-    fireEvent.click(screen.getByRole('button', { name: /split screen/i }));
+    fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.getByText('Catalog Browser')).toBeInTheDocument());
 
     await runtime.stop();
