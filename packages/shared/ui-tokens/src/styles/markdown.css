@@ -2,6 +2,7 @@
 
 /* MARKDOWN STYLES (Scoped) */
 .markdown-body {
+  width: 80vw;
   font-family: var(--font-ui);
   line-height: var(--markdown-line-height);
   font-size: calc(0.95rem * var(--ui-scale));
