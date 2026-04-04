@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T21:02:35.580Z",
+  "generatedAt": "2026-04-04T05:54:08.516Z",
   "artifact": {
     "id": "core.extension-manager",
     "packageName": "@mdwrk/extension-manager",
@@ -11,12 +11,12 @@
       "en",
       "es"
     ],
-    "generatedAt": "2026-04-03T21:02:34.745Z"
+    "generatedAt": "2026-04-04T05:54:07.466Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "f0b1d811afd55758fe71852b1542caf27dd10d10314b9f4190842a7888e0338d"
+      "sha256": "4f13322773a258882c703599049b5c2c9cb9ecf6f0c69856f5941c069408034b"
     },
     {
       "path": "LICENSE",
@@ -32,7 +32,7 @@
     },
     {
       "path": "portable-package.json",
-      "sha256": "c7083c9b80f586ed11003aff9bbe47bf49224b1c18ffcfca6a06eb5bd4e29cf6"
+      "sha256": "3249d464a6bb3e290d78bf60bd648b8a0cb518e86742dc6d8bedc8fb996196ad"
     },
     {
       "path": "README.md",
@@ -40,7 +40,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "edf0f25fde5bd3d0165ec228faa082785d5ce8b3333e44ef5c6f9f58fe9434e8"
+      "sha256": "bc6f44fecdda08b53d153c948ab218a9a884dd2ffdf6cf66eb33355700fa89ce"
     }
   ],
   "provenance": {

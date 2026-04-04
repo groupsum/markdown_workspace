@@ -40,7 +40,7 @@ const allowlist = new Set([
   'PHASE_22_CHECKPOINT_SUMMARY.md',
   'README.md',
   'STYLE_GUIDE.md',
-  'agents.md',
+  'AGENTS.md',
   'apps',
   'artifacts',
   'commonmark-spec.txt',

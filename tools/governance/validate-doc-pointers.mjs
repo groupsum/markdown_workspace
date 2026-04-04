@@ -12,7 +12,7 @@ const requiredPointers = [
   'CONTRIBUTING.md',
   'CODE_OF_CONDUCT.md',
   'LICENSE',
-  'agents.md'
+  'AGENTS.md'
 ];
 
 for (const pointer of requiredPointers) {

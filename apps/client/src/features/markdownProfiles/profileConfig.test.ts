@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { describe, expect, it, beforeEach, afterEach } from 'vitest';
 import {
   MARKDOWN_PROFILE_CONFIG_LOCAL_STORAGE_KEY,

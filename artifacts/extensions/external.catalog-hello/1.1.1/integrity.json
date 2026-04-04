@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T21:02:35.562Z",
+  "generatedAt": "2026-04-04T05:54:08.498Z",
   "artifact": {
     "id": "external.catalog-hello",
     "packageName": "@mdwrk/extension-catalog-hello",
@@ -10,12 +10,12 @@
     "supportedLocales": [
       "en"
     ],
-    "generatedAt": "2026-04-03T21:02:34.411Z"
+    "generatedAt": "2026-04-04T05:54:07.147Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "23a827481471382a5138bc8131ffae53c8bd34aae9ca9d32a7bcf804954f19ec"
+      "sha256": "43858a3fb7e4c624ac1d54c230d34ac75fa43792adb7106ea86b56ce901bf183"
     },
     {
       "path": "LICENSE",
@@ -31,7 +31,7 @@
     },
     {
       "path": "portable-package.json",
-      "sha256": "963ba10fb95d4d9e0a0ff3ffa2e6e5bf0c6be83c60e175bd0af90d8014d094ea"
+      "sha256": "6df4e1c20cd3f3d0c36e29249afbffcf222b93ade57d75749a443409c1413e07"
     },
     {
       "path": "README.md",
@@ -39,7 +39,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "ac7e9fc55662a40751439af271119377e4f2ab35daecb65c123e0b794fb3a74a"
+      "sha256": "cfbe1ce43696fa507b5c6fe2946d7c02d9748db3cee2c68c3972f8e7485882f0"
     }
   ],
   "provenance": {

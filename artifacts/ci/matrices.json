@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T04:47:35.233Z",
+  "generatedAt": "2026-04-04T05:54:01.506Z",
   "packageGroups": [
     {
       "name": "contracts",
@@ -97,6 +97,11 @@
       "category": "extension"
     },
     {
+      "name": "@mdwrk/extension-language-pack-studio",
+      "path": "packages/extensions/extension-language-pack-studio",
+      "category": "extension"
+    },
+    {
       "name": "@mdwrk/extension-manager",
       "path": "packages/extensions/extension-manager",
       "category": "extension"
@@ -150,6 +155,10 @@
     {
       "name": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent"
+    },
+    {
+      "name": "@mdwrk/extension-language-pack-studio",
+      "path": "packages/extensions/extension-language-pack-studio"
     },
     {
       "name": "@mdwrk/extension-manager",

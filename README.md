@@ -52,13 +52,13 @@ npm run ci:governance
 - Workspace docs index: `docs/README.md`
 - Repository specs index: `specs/README.md`
 - Repository governance spec: `specs/repository-governance-spec.md`
-- Agents guidance: `agents.md`
+- Agents guidance: `AGENTS.md`
 - Contribution guide: `CONTRIBUTING.md`
 - Code of conduct: `CODE_OF_CONDUCT.md`
 - License text: `LICENSE`
 
 ## Community and Governance Files
-- `agents.md` defines repository-specific operating constraints for automation agents.
+- `AGENTS.md` defines repository-specific operating constraints for automation agents.
 - `CONTRIBUTING.md` documents contributor workflow and required checks.
 - `CODE_OF_CONDUCT.md` defines behavior standards for participation.
 

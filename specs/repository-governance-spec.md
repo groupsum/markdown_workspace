@@ -8,7 +8,7 @@ This specification defines repository cleanliness, documentation governance, and
 
 ### 1) Tree validation
 - Required top-level directories must exist: `apps`, `packages`, `docs`, `tools`, `specs`, `.github`.
-- Required governance files must exist: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `LICENSE`, `agents.md`, `specs/README.md`.
+- Required governance files must exist: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `LICENSE`, `AGENTS.md`, `specs/README.md`.
 
 ### 2) Doc-pointer validation
 - Root `README.md` must contain a `## Documentation Pointers` section.
@@ -18,7 +18,7 @@ This specification defines repository cleanliness, documentation governance, and
   - `CONTRIBUTING.md`
   - `CODE_OF_CONDUCT.md`
   - `LICENSE`
-  - `agents.md`
+  - `AGENTS.md`
 
 ### 3) Root-clutter validation
 - Top-level repository files and folders are restricted to the allowlist in `tools/governance/validate-root-clutter.mjs`.
