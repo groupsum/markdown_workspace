@@ -99,6 +99,9 @@ export interface GeminiAgentViewProps {
   readonly formatLabel: (label: I18nLabel | string) => string;
   readonly service: GeminiAgentService;
   readonly input?: GeminiAgentViewInput | null;
+  readonly shellSidebarOpen?: boolean;
+  readonly onShellSidebarToggle?: (open: boolean) => void;
+  readonly embedBrowserInShellSidebar?: boolean;
 }
 
 export type GeminiFetchLike = (input: string, init?: {

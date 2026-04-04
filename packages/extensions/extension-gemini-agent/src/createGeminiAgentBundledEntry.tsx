@@ -16,7 +16,7 @@ import { geminiAgentManifest } from "./manifest.js";
 import { createGeminiTextProvider } from "./provider.js";
 import { createGeminiAgentService } from "./service.js";
 import type { GeminiAgentEntryOptions, GeminiAgentViewInput } from "./types.js";
-import { GeminiAgentView } from "./components/GeminiAgentView.js";
+import { GeminiAgentSidebar, GeminiAgentView } from "./components/GeminiAgentView.js";
 
 export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions = {}): BundledExtensionCatalogEntry {
   return {
@@ -93,23 +93,32 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             },
           });
 
-          context.registerView({
+          context.registerView(({
             id: GEMINI_AGENT_VIEW_ID,
             title: geminiAgentLabels.viewTitle,
             description: geminiAgentLabels.viewDescription,
             icon: { kind: "lucide", name: "Bot" },
-            location: "modal",
+            location: "main",
             allowMultiple: false,
-            canBePinned: false,
+            canBePinned: true,
             render: (props) => (
               <GeminiAgentView
                 close={() => (props as { close: () => Promise<void> }).close()}
                 formatLabel={context.host.i18n.format}
                 service={service}
                 input={((props as { input?: unknown }).input ?? null) as GeminiAgentViewInput | null}
+                shellSidebarOpen={(props as { workspaceSidebarOpen?: boolean }).workspaceSidebarOpen}
+                onShellSidebarToggle={(props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen}
+                embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-          });
+            renderSidebar: () => (
+              <GeminiAgentSidebar
+                service={service}
+                formatLabel={context.host.i18n.format}
+              />
+            ),
+          } as unknown) as never);
 
           context.registerActionRailItem({
             id: GEMINI_AGENT_RAIL_ID,
