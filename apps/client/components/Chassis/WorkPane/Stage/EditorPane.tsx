@@ -254,13 +254,13 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
               </button>
             )}
             {!isToolbarHidden('view-preview') && <button onClick={() => onViewModeChange('preview')} className={`view-toolbar-btn ${viewMode === 'preview' ? 'active' : ''}`} title="Preview Only"><Eye size={12}/></button>}
-            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="text-[10px] font-mono">n:m</span></button>}
             <div className="view-toolbar-divider"></div>
             {!isToolbarHidden('strikethrough') && <button onClick={() => runCommand('strikethrough')} className={`view-toolbar-btn ${selectionState.strikethrough ? 'active' : ''}`} title="Strikethrough"><Strikethrough size={12}/></button>}
             {!isToolbarHidden('bullet-list') && <button onClick={() => runCommand('bullet-list')} className={`view-toolbar-btn ${selectionState.bulletList ? 'active' : ''}`} title="Bullet List"><List size={12}/></button>}
             {!isToolbarHidden('task-list') && <button onClick={() => runCommand('task-list')} className={`view-toolbar-btn ${selectionState.taskList ? 'active' : ''}`} title="Task List"><ListChecks size={12}/></button>}
             {!isToolbarHidden('indent') && <button onClick={() => runCommand('indent')} className="view-toolbar-btn" title="Indent"><IndentIncrease size={12}/></button>}
             {!isToolbarHidden('outdent') && <button onClick={() => runCommand('outdent')} className="view-toolbar-btn" title="Outdent"><IndentDecrease size={12}/></button>}
+            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="text-[10px] font-mono">n:m</span></button>}
             {!isToolbarHidden('inline-math') && <button onClick={() => runCommand('inline-math')} className="view-toolbar-btn" title="Inline Math"><span className="text-[10px] font-mono">$x$</span></button>}
             {!isToolbarHidden('footnote') && <button onClick={() => runCommand('footnote')} className="view-toolbar-btn" title="Footnote"><span className="text-[10px] font-mono">fn</span></button>}
             {!isToolbarHidden('superscript') && <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><span className="text-[10px] font-mono">x2</span></button>}
