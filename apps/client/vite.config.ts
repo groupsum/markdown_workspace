@@ -48,7 +48,6 @@ export default defineConfig(({ mode }) => {
           '@mdwrk/markdown-editor-react': path.resolve(__dirname, '../../packages/editor/markdown-editor-react/src'),
           '@mdwrk/markdown-renderer-core': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-core/src'),
           '@mdwrk/markdown-editor-core': path.resolve(__dirname, '../../packages/editor/markdown-editor-core/src'),
-          'lucide-react': path.resolve(__dirname, 'node_modules/lucide-react'),
         }
       }
     };
