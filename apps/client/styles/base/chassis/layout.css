@@ -54,6 +54,10 @@
   display: contents;
 }
 
+.update-banner {
+  display: none !important;
+}
+
 .app-header {
   grid-area: top;
   background: var(--bg-panel);
