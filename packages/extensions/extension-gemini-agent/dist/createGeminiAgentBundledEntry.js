@@ -4,7 +4,7 @@ import { geminiAgentLabels, geminiAgentLocaleLoader } from "./i18n.js";
 import { geminiAgentManifest } from "./manifest.js";
 import { createGeminiTextProvider } from "./provider.js";
 import { createGeminiAgentService } from "./service.js";
-import { GeminiAgentView } from "./components/GeminiAgentView.js";
+import { GeminiAgentSidebar, GeminiAgentView } from "./components/GeminiAgentView.js";
 export function createGeminiAgentBundledEntry(options = {}) {
     return {
         manifest: geminiAgentManifest,
@@ -77,10 +77,11 @@ export function createGeminiAgentBundledEntry(options = {}) {
                         title: geminiAgentLabels.viewTitle,
                         description: geminiAgentLabels.viewDescription,
                         icon: { kind: "lucide", name: "Bot" },
-                        location: "modal",
+                        location: "main",
                         allowMultiple: false,
-                        canBePinned: false,
-                        render: (props) => (_jsx(GeminiAgentView, { close: () => props.close(), formatLabel: context.host.i18n.format, service: service, input: (props.input ?? null) })),
+                        canBePinned: true,
+                        render: (props) => (_jsx(GeminiAgentView, { close: () => props.close(), formatLabel: context.host.i18n.format, service: service, input: (props.input ?? null), shellSidebarOpen: props.workspaceSidebarOpen, onShellSidebarToggle: props.setWorkspaceSidebarOpen, embedBrowserInShellSidebar: Boolean(props.setWorkspaceSidebarOpen) })),
+                        renderSidebar: () => (_jsx(GeminiAgentSidebar, { service: service, formatLabel: context.host.i18n.format })),
                     });
                     context.registerActionRailItem({
                         id: GEMINI_AGENT_RAIL_ID,
