@@ -38,7 +38,7 @@ describe('ActionRailHost', () => {
     cleanup();
   });
 
-  it('keeps the explorer rail inactive while a workspace view owns the sidebar', () => {
+  it('keeps the explorer rail active while a workspace view is open', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {
@@ -90,7 +90,7 @@ describe('ActionRailHost', () => {
     render(<ActionRailHost />);
 
     const [explorerButton, geminiButton] = screen.getAllByRole('button');
-    expect(explorerButton).toHaveAttribute('aria-pressed', 'false');
+    expect(explorerButton).toHaveAttribute('aria-pressed', 'true');
     expect(geminiButton).toHaveAttribute('aria-pressed', 'true');
   });
 
@@ -98,7 +98,6 @@ describe('ActionRailHost', () => {
     const close = vi.fn(async () => {});
     const setAppMode = vi.fn();
     const setSidebarOpen = vi.fn();
-    const toggleSidebar = vi.fn();
 
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
@@ -136,7 +135,7 @@ describe('ActionRailHost', () => {
         actions: {
           setAppMode,
           setSidebarOpen,
-          toggleSidebar,
+          toggleSidebar: vi.fn(),
         },
       },
     });
@@ -147,8 +146,70 @@ describe('ActionRailHost', () => {
     await waitFor(() => {
       expect(close).toHaveBeenCalledWith('core.theme-studio.view');
       expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).toHaveBeenCalledWith(true);
-      expect(toggleSidebar).not.toHaveBeenCalled();
+      expect(setSidebarOpen).toHaveBeenCalledWith(false);
+    });
+  });
+
+  it('opens a workspace view without changing the explorer sidebar state when it is already open', async () => {
+    const open = vi.fn(async () => {});
+    const setAppMode = vi.fn();
+    const setSidebarOpen = vi.fn();
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'core.toggle-explorer',
+          title: { defaultMessage: 'Explorer' },
+          icon: { kind: 'lucide', name: 'Folder' },
+          group: 'workspace.primary',
+          target: { kind: 'command', commandId: 'core.toggle-explorer' },
+          isActive: () => true,
+        },
+        {
+          id: 'extension.gemini-agent.rail',
+          title: { defaultMessage: 'Gemini' },
+          icon: { kind: 'lucide', name: 'Bot' },
+          group: 'assistant',
+          target: { kind: 'view', viewId: 'core.gemini-agent.view' },
+        },
+      ],
+      views: [
+        {
+          id: 'core.gemini-agent.view',
+          title: { defaultMessage: 'Gemini' },
+          location: 'main',
+          render: () => null,
+          renderSidebar: () => null,
+        },
+      ],
+      openViewIds: [],
+      activeViewId: null,
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute: vi.fn(async () => {}) },
+      views: { open, close: vi.fn(async () => {}), focus: vi.fn(async () => {}) },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: true,
+        },
+        actions: {
+          setAppMode,
+          setSidebarOpen,
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+    fireEvent.click(screen.getByRole('button', { name: 'Gemini' }));
+
+    await waitFor(() => {
+      expect(setAppMode).toHaveBeenCalledWith('work');
+      expect(setSidebarOpen).not.toHaveBeenCalled();
+      expect(open).toHaveBeenCalledWith('core.gemini-agent.view');
     });
   });
 

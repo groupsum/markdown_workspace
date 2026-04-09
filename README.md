@@ -10,7 +10,7 @@
 
 </div>
 
-`markdown_workspace` is a multi-package workspace for the MdWrkSpace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
+`markdown_workspace` is a multi-package workspace for the MdWork client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
 
 ## Table of Contents
 - [Repository Overview](#repository-overview)

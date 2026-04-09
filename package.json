@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.21",
+  "version": "0.2.23",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -109,7 +109,7 @@
     "playwright": "^1.58.2",
     "typescript": "5.9.3"
   },
-  "description": "`markdown_workspace` is a multi-package workspace for the MdWrkSpace client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.",
+  "description": "`markdown_workspace` is a multi-package workspace for the MdWork client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and the repository operations layer required to run the codebase as a package platform.",
   "main": "index.js",
   "directories": {
     "doc": "docs",

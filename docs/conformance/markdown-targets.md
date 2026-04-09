@@ -104,7 +104,7 @@ This keeps the stronger v2 editing model while allowing a future preference if b
 
 ## UIX parity policy: v1 reference, v2 implementation base
 
-For the MdWrkSpace client application:
+For the MdWork client application:
 
 - **v1 is the end-user parity reference** for concrete features that existed and were lost in v2.
 - **v2 is the implementation base** and should keep its net architectural improvements.

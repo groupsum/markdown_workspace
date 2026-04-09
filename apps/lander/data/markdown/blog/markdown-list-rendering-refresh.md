@@ -1,7 +1,7 @@
 ---
 title: Markdown Lists + Strikethrough Toolbar Update
 date: 2026-02-11
-author: MdWrkSpace Engineering
+author: MdWork Engineering
 excerpt: We added a one-click strikethrough button and improved list rendering so plaintext markdown lists preview cleanly.
 ---
 # Markdown Lists + Strikethrough Toolbar Update

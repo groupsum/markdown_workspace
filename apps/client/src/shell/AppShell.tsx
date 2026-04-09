@@ -46,7 +46,7 @@ export const AppShell: React.FC = () => {
   const pwaAction = pwaState.canInstall
     ? {
         label: t('core.header.pwa.install.label', 'Install PWA'),
-        title: t('core.header.pwa.install.title', 'Install MdWrkSpace'),
+        title: t('core.header.pwa.install.title', 'Install MdWork'),
         icon: <Download size={16} />,
         onClick: pwaActions.promptInstall,
         disabled: false,
@@ -193,7 +193,7 @@ export const AppShell: React.FC = () => {
     <Chassis zoom={state.zoom} mode={state.activeProjectId ? 'project' : 'selector'}>
       {runtime.updateAvailable && (
         <div className="update-banner">
-          <span>{t('core.update-banner.ready', 'ARCHITECTURE UPDATE READY')}</span>
+          <span>{t('core.update-banner.ready', 'MDWORK UPDATE READY')}</span>
           <button onClick={pwaActions.requestUpdate} className="update-btn">
             <RefreshCw size={12} /> {t('core.update-banner.reload', 'RELOAD')}
           </button>

@@ -1,4 +1,4 @@
-# MdWrkSpace lander
+# MdWork lander
 
 This package contains the public-facing lander application for the Markdown Workspace repository.
 

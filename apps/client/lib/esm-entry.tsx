@@ -5,7 +5,7 @@ import { initTheme } from '../services/themeService';
 
 export const mountMdWrkSpace = (root: HTMLElement) => {
   if (!root) {
-    throw new Error('MdWrkSpace mount failed: target root element not found.');
+    throw new Error('MdWork mount failed: target root element not found.');
   }
 
   initTheme();
@@ -18,6 +18,8 @@ export const mountMdWrkSpace = (root: HTMLElement) => {
 
   return () => appRoot.unmount();
 };
+
+export const mountMdWork = mountMdWrkSpace;
 
 
 export { App };

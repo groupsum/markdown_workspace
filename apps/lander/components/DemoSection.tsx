@@ -23,7 +23,7 @@ You can use **Bold**, *Italic*, ~~Strikethrough~~, or even ^Superscript^ and ~Su
 ## 4. Code Blocks
 \`\`\`typescript
 const app = {
-  name: "MdWrkSpace",
+  name: "MdWork",
   localFirst: true,
   privacy: "Maximum"
 };

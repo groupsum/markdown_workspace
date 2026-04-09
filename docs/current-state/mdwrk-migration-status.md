@@ -6,7 +6,7 @@ This repository is operating as the MdWrk workspace and package platform.
 
 - published npm package scope remains the valid npm scope `@mdwrk/*`
 - human-readable package references are standardized as `mdwrk/*`
-- user-facing branding is standardized as `MdWrkSpace` or `MdWrk`
+- user-facing branding is standardized as `MdWork` or `MdWrk`
 - package metadata now points at the MdWrk organization website (`https://mdwrk.com`)
 - package authorship metadata now uses `Jacob Stewart <jacob@swarmauri.com>`
 - no `swarmauri` organization/package references remain in source or docs; the remaining `swarmauri.com` string is the author email supplied for package metadata

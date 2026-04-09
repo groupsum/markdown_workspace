@@ -18,7 +18,7 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => (
       <div className="max-w-screen-xl mx-auto px-4 text-center">
          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Your Data Stays on <span className="text-indigo-600 dark:text-indigo-400">Your Device</span></h2>
          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 text-lg">
-            MdWrkSpace utilizes IndexedDB to store your workspaces directly in your browser. 
+            MdWork utilizes IndexedDB to store your workspaces directly in your browser. 
             No AI servers scan your content, no trackers follow your keys.
          </p>
          <div className="inline-flex items-center justify-center px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-700 dark:text-slate-300 text-sm shadow-sm">

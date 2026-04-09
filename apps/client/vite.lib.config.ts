@@ -27,7 +27,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/esm-entry.tsx'),
-      name: 'MdWrkSpace',
+      name: 'MdWork',
       formats: ['es'],
       fileName: 'mdwrkspace'
     },

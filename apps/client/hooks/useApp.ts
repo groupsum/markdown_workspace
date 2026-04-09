@@ -14,7 +14,7 @@ import { getGitAdapterService } from '../services/gitAdapter';
 import type { GitConfig } from '../types';
 import { readWorkspacePreferencesSync } from '../src/features/preferences/workspacePreferences';
 
-const SESSION_STORAGE_KEY = 'lattice-session-state';
+const SESSION_STORAGE_KEY = 'mdwork-session-state';
 
 type SessionState = {
   projectId: string;

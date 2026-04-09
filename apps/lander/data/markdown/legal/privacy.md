@@ -4,7 +4,7 @@ lastUpdated: 2024-05-20
 ---
 # Privacy Policy
 
-At **MdWrkSpace**, we believe privacy is a fundamental human right. Our software is designed so that your data never touches our servers.
+At **MdWork**, we believe privacy is a fundamental human right. Our software is designed so that your data never touches our servers.
 
 ## 1. Data Collection
 We do not collect, store, or process any of your personal data. All markdown files created in the application are stored locally in your browser's IndexedDB.
