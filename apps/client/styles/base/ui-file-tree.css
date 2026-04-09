@@ -9,6 +9,9 @@
   font-size: calc(11px * var(--ui-scale));
   color: var(--fg-secondary);
 }
+.file-tree-container.is-drag-over-root {
+  background: var(--c-explorer-drag-bg);
+}
 
 .file-tree-item {
   display: flex;
@@ -23,6 +26,22 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+.file-tree-item.is-drag-over {
+  background: var(--c-explorer-drag-bg);
+}
+.file-tree-item-depth-0 { padding-left: calc(var(--file-indent-base) + 0 * var(--file-indent-unit)); }
+.file-tree-item-depth-1 { padding-left: calc(var(--file-indent-base) + 1 * var(--file-indent-unit)); }
+.file-tree-item-depth-2 { padding-left: calc(var(--file-indent-base) + 2 * var(--file-indent-unit)); }
+.file-tree-item-depth-3 { padding-left: calc(var(--file-indent-base) + 3 * var(--file-indent-unit)); }
+.file-tree-item-depth-4 { padding-left: calc(var(--file-indent-base) + 4 * var(--file-indent-unit)); }
+.file-tree-item-depth-5 { padding-left: calc(var(--file-indent-base) + 5 * var(--file-indent-unit)); }
+.file-tree-item-depth-6 { padding-left: calc(var(--file-indent-base) + 6 * var(--file-indent-unit)); }
+.file-tree-item-depth-7 { padding-left: calc(var(--file-indent-base) + 7 * var(--file-indent-unit)); }
+.file-tree-item-depth-8 { padding-left: calc(var(--file-indent-base) + 8 * var(--file-indent-unit)); }
+.file-tree-item-depth-9 { padding-left: calc(var(--file-indent-base) + 9 * var(--file-indent-unit)); }
+.file-tree-item-depth-10 { padding-left: calc(var(--file-indent-base) + 10 * var(--file-indent-unit)); }
+.file-tree-item-depth-11 { padding-left: calc(var(--file-indent-base) + 11 * var(--file-indent-unit)); }
+.file-tree-item-depth-12 { padding-left: calc(var(--file-indent-base) + 12 * var(--file-indent-unit)); }
 
 .file-tree-item:hover {
   background: var(--c-explorer-hover);

@@ -137,7 +137,7 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                     <label key={field.key} className="flex flex-col gap-2">
                       <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
                       <select
-                        className="modal-input !text-xs !py-3"
+                        className="modal-input modal-input--multiselect !text-xs !py-3"
                         value={typeof value === 'string' ? value : String(field.defaultValue ?? '')}
                         onChange={(event) => { void writeValue(field, event.target.value); }}
                       >
@@ -162,7 +162,6 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                           const selected = Array.from<HTMLOptionElement>(event.currentTarget.selectedOptions).map((option) => option.value);
                           void writeValue(field, selected);
                         }}
-                        style={{ minHeight: 96 }}
                       >
                         {field.options.map((option) => (
                           <option key={option.value} value={option.value}>{formatLabel(option.label)}</option>
@@ -178,11 +177,10 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                     <label key={field.key} className="flex flex-col gap-2">
                       <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
                       <textarea
-                        className="modal-input !text-xs !py-3"
+                        className="modal-input modal-input--textarea !text-xs !py-3"
                         value={String(value ?? '')}
                         onChange={(event) => { void writeValue(field, event.target.value); }}
                         placeholder={placeholder}
-                        style={{ minHeight: 96, resize: 'vertical' }}
                       />
                       {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
                     </label>
@@ -194,9 +192,8 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                     <label key={field.key} className="flex flex-col gap-2">
                       <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
                       <textarea
-                        className="modal-input !text-xs !py-3 font-mono"
+                        className="modal-input modal-input--json !text-xs !py-3 font-mono"
                         value={jsonText[field.key] ?? JSON.stringify(value ?? {}, null, 2)}
-                        style={{ minHeight: 144 }}
                         onChange={(event) => {
                           const nextText = event.target.value;
                           setJsonText((current) => ({ ...current, [field.key]: nextText }));

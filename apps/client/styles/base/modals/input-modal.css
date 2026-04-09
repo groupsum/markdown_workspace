@@ -21,6 +21,16 @@
   border-color: var(--accent);
   background: var(--bg-panel);
 }
+.modal-input--multiselect {
+  min-height: 96px;
+}
+.modal-input--textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+.modal-input--json {
+  min-height: 144px;
+}
 .modal-footer {
   padding: 16px 20px;
   background: var(--bg-inset);
@@ -170,5 +180,15 @@
 .pwa-toggle input:checked + .pwa-toggle-indicator::after {
   transform: translateX(16px);
   background: var(--accent);
+}
+.extension-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-primary);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 

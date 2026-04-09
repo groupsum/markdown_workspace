@@ -1,4 +1,4 @@
-/* Lattice Architect: Modals & Overlays */
+/* MdWork: Modals & Overlays */
 
 .modal-overlay {
   position: fixed;
@@ -21,6 +21,9 @@
   max-width: 100%;
   position: relative;
   overflow: hidden;
+}
+.modal-base.modal-base--table-builder {
+  width: min(420px, 92vw);
 }
 
 .settings-modal {

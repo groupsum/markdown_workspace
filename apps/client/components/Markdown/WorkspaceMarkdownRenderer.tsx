@@ -68,26 +68,15 @@ export function WorkspaceMarkdownRenderer({
       data-markdown-html-handling={htmlHandling}
     >
       {showPolicyAdvisory && (
-        <aside
-          className="workspace-markdown-renderer-warning"
-          style={{
-            margin: '0 0 12px',
-            padding: '12px 14px',
-            border: '1px solid var(--border-color)',
-            background: 'var(--bg-panel)',
-            color: 'var(--fg-muted)',
-            fontSize: '11px',
-            lineHeight: 1.5,
-          }}
-        >
-          <strong style={{ display: 'block', marginBottom: 6, color: 'var(--fg-primary)' }}>
+        <aside className="workspace-markdown-renderer-warning">
+          <strong className="workspace-markdown-renderer-warning-title">
             {t('core.preview.policy.title', 'Preview Policy')}
           </strong>
-          <div style={{ marginBottom: warnings.length > 0 ? 8 : 0 }}>
+          <div className={`workspace-markdown-renderer-warning-summary ${warnings.length > 0 ? 'has-list' : ''}`}>
             {t('core.preview.policy.htmlHandling', 'HTML handling')}: {htmlHandling.toUpperCase()}
           </div>
           {warnings.length > 0 && (
-            <ul style={{ margin: 0, paddingLeft: 16 }}>
+            <ul className="workspace-markdown-renderer-warning-list">
               {warnings.map((warning) => (
                 <li key={`${warning.scope}:${warning.code}`}>{warning.message}</li>
               ))}

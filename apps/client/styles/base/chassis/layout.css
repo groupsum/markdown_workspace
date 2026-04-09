@@ -1,5 +1,5 @@
 
-/* Lattice Architect: Chassis & Structural Layout */
+/* MdWork: Chassis & Structural Layout */
 
 .chassis-root {
   position: relative;
@@ -132,6 +132,22 @@
   min-width: 160px;
   max-width: min(40vw, 420px);
 }
+.workspace-sidebar--width-180 { width: 180px; }
+.workspace-sidebar--width-200 { width: 200px; }
+.workspace-sidebar--width-220 { width: 220px; }
+.workspace-sidebar--width-240 { width: 240px; }
+.workspace-sidebar--width-260 { width: 260px; }
+.workspace-sidebar--width-280 { width: 280px; }
+.workspace-sidebar--width-300 { width: 300px; }
+.workspace-sidebar--width-320 { width: 320px; }
+.workspace-sidebar--width-340 { width: 340px; }
+.workspace-sidebar--width-360 { width: 360px; }
+.workspace-sidebar--width-380 { width: 380px; }
+.workspace-sidebar--width-400 { width: 400px; }
+.workspace-sidebar--width-420 { width: 420px; }
+.workspace-sidebar--width-440 { width: 440px; }
+.workspace-sidebar--width-460 { width: 460px; }
+.workspace-sidebar--width-480 { width: 480px; }
 
 .workspace-sidebar.is-collapsed {
   width: 0;

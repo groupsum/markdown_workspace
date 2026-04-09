@@ -96,6 +96,40 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  flex: 1 1 100%;
+}
+.editor-pane-column--split-left-20 { flex-basis: 20%; }
+.editor-pane-column--split-left-25 { flex-basis: 25%; }
+.editor-pane-column--split-left-30 { flex-basis: 30%; }
+.editor-pane-column--split-left-35 { flex-basis: 35%; }
+.editor-pane-column--split-left-40 { flex-basis: 40%; }
+.editor-pane-column--split-left-45 { flex-basis: 45%; }
+.editor-pane-column--split-left-50 { flex-basis: 50%; }
+.editor-pane-column--split-left-55 { flex-basis: 55%; }
+.editor-pane-column--split-left-60 { flex-basis: 60%; }
+.editor-pane-column--split-left-65 { flex-basis: 65%; }
+.editor-pane-column--split-left-70 { flex-basis: 70%; }
+.editor-pane-column--split-left-75 { flex-basis: 75%; }
+.editor-pane-column--split-left-80 { flex-basis: 80%; }
+.editor-pane-column--split-right-20 { flex-basis: 20%; }
+.editor-pane-column--split-right-25 { flex-basis: 25%; }
+.editor-pane-column--split-right-30 { flex-basis: 30%; }
+.editor-pane-column--split-right-35 { flex-basis: 35%; }
+.editor-pane-column--split-right-40 { flex-basis: 40%; }
+.editor-pane-column--split-right-45 { flex-basis: 45%; }
+.editor-pane-column--split-right-50 { flex-basis: 50%; }
+.editor-pane-column--split-right-55 { flex-basis: 55%; }
+.editor-pane-column--split-right-60 { flex-basis: 60%; }
+.editor-pane-column--split-right-65 { flex-basis: 65%; }
+.editor-pane-column--split-right-70 { flex-basis: 70%; }
+.editor-pane-column--split-right-75 { flex-basis: 75%; }
+.editor-pane-column--split-right-80 { flex-basis: 80%; }
+.editor-splitter-drag-shield {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  cursor: col-resize;
+  user-select: none;
 }
 .editor-layout-wrapper {
   flex: 1;
@@ -159,6 +193,30 @@
   flex: 1;
   overflow-y: auto;
   background: var(--bg-panel);
+}
+.workspace-markdown-renderer-warning {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-panel);
+  color: var(--fg-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.workspace-markdown-renderer-warning-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--fg-primary);
+}
+.workspace-markdown-renderer-warning-summary {
+  margin-bottom: 0;
+}
+.workspace-markdown-renderer-warning-summary.has-list {
+  margin-bottom: 8px;
+}
+.workspace-markdown-renderer-warning-list {
+  margin: 0;
+  padding-left: 16px;
 }
 @media (max-width: 900px) {
   .editor-pane-container {

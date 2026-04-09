@@ -53,7 +53,7 @@ export const Editor: React.FC<EditorProps> = ({
           className="editor-gutter"
         >
            {lineHeights.map((h, i) => (
-             <div key={i} style={{ height: h }}>{i + 1}</div>
+             <div key={i} className="line-num">{i + 1}</div>
            ))}
         </div>
 

@@ -24,6 +24,8 @@ const sortNodes = (nodes: FileNode[]) =>
     return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
   });
 
+const getDepthClassName = (depth: number): string => `file-tree-item-depth-${Math.max(0, Math.min(12, depth))}`;
+
 const FileItem: React.FC<{ 
   node: FileNode; 
   depth: number; 
@@ -76,11 +78,7 @@ const FileItem: React.FC<{
           }
         }}
         ref={(element) => registerItem(node.id, element)}
-        className={`file-tree-item ${isSelected ? 'selected' : ''} ${isActive ? 'is-active' : ''} ${node.type === 'folder' ? 'folder' : ''}`}
-        style={{ 
-            paddingLeft: `calc(var(--file-indent-base) + ${depth} * var(--file-indent-unit))`,
-            backgroundColor: isDragOver ? 'var(--c-explorer-drag-bg)' : undefined
-        }}
+        className={`file-tree-item ${getDepthClassName(depth)} ${isSelected ? 'selected' : ''} ${isActive ? 'is-active' : ''} ${node.type === 'folder' ? 'folder' : ''} ${isDragOver ? 'is-drag-over' : ''}`}
         id={`file-tree-item-${node.id}`}
         role="treeitem"
         aria-selected={isSelected}
@@ -364,8 +362,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
   return (
     <div 
       ref={containerRef}
-      className="file-tree-container"
-      style={{ backgroundColor: isDragOverRoot ? 'var(--c-explorer-drag-bg)' : 'transparent' }}
+      className={`file-tree-container ${isDragOverRoot ? 'is-drag-over-root' : ''}`}
       onDragOver={handleRootDragOver}
       onDragLeave={handleRootDragLeave}
       onDrop={handleRootDrop}

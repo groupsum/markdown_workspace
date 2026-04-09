@@ -35,6 +35,12 @@ interface WorkPaneProps {
   workspaceSurface?: React.ReactNode;
 }
 
+const getSidebarWidthClassName = (width: number): string => {
+  const clamped = Math.min(480, Math.max(180, width));
+  const snapped = Math.round(clamped / 20) * 20;
+  return `workspace-sidebar--width-${snapped}`;
+};
+
 export const WorkPane: React.FC<WorkPaneProps> = ({
   currentProject,
   files,
@@ -110,10 +116,9 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   return (
     <section className="workspace-manifold">
       {/* THE REGISTRY (Explorer Plate) */}
-      <aside 
-        className={`workspace-sidebar ${!sidebarOpen ? 'is-collapsed' : ''}`}
+      <aside
+        className={`workspace-sidebar ${getSidebarWidthClassName(sidebarWidth)} ${!sidebarOpen ? 'is-collapsed' : ''}`}
         aria-label={workspaceSidebarLabel ?? 'File Explorer'}
-        style={{ width: sidebarOpen ? `${sidebarWidth}px` : undefined }}
       >
         {workspaceSidebarSurface ? (
           workspaceSidebarSurface

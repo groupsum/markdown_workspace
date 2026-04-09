@@ -18,7 +18,7 @@ export const TableBuilderModal: React.FC<TableBuilderModalProps> = ({
   onInsert,
 }) => (
   <div className="modal-overlay">
-    <div className="modal-base" style={{ width: 'min(420px, 92vw)' }}>
+    <div className="modal-base modal-base--table-builder">
       <div className="modal-header">
         <span className="modal-title">INSERT_TABLE_NxM</span>
         <button type="button" onClick={onClose} className="modal-close">X</button>
