@@ -43,6 +43,10 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
           if (openWorkspaceViewIds.length > 0) {
             await Promise.all(openWorkspaceViewIds.map((viewId) => host.views.close(viewId)));
             runtime.app.actions.setAppMode('work');
+            if (!runtime.app.state.sidebarOpen) {
+              runtime.app.actions.setSidebarOpen(true);
+            }
+            return;
           }
           runtime.app.actions.setSidebarOpen(!runtime.app.state.sidebarOpen);
           return;
@@ -54,15 +58,11 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
           if (workspaceScopedView) {
             const isTargetActive = viewSnapshot.activeViewId === targetViewId;
             const isTargetOpen = viewSnapshot.openViewIds.includes(targetViewId);
-            const hasWorkspaceSidebar = Boolean(targetView?.renderSidebar);
             if (isTargetActive && isTargetOpen) {
               await host.views.close(targetViewId);
               return;
             }
             runtime.app.actions.setAppMode('work');
-            if (hasWorkspaceSidebar && !runtime.app.state.sidebarOpen) {
-              runtime.app.actions.setSidebarOpen(true);
-            }
           }
           await host.views.open(item.target.viewId);
         } else {

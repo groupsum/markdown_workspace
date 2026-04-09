@@ -147,8 +147,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         id: 'core.toggle-git-pane',
         title: label('Toggle Git Operations', 'core.commands.toggle-git-pane'),
         execute: async () => {
-          const { app } = runtime.getSnapshot();
-          if (app.state.appMode === 'git') {
+          const viewSnapshot = services.views.getSnapshot();
+          if (viewSnapshot.openViewIds.includes('core.git-pane')) {
             await services.views.close('core.git-pane');
           } else {
             await services.views.open('core.git-pane');
@@ -292,7 +292,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         target: { kind: 'command', commandId: 'core.toggle-explorer' },
         isActive: () => {
           const snapshot = runtime.getSnapshot();
-          return snapshot.app.state.sidebarOpen && snapshot.app.state.appMode === 'work';
+          return snapshot.app.state.sidebarOpen;
         },
       }),
       services.actionRail.register({
@@ -318,7 +318,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         group: 'workspace.primary',
         order: 40,
         target: { kind: 'command', commandId: 'core.toggle-git-pane' },
-        isActive: () => runtime.getSnapshot().app.state.appMode === 'git',
+        isActive: () => services.views.getSnapshot().openViewIds.includes('core.git-pane'),
       }),
       services.actionRail.register({
         id: 'core.switch-project',

@@ -1,7 +1,7 @@
 # LATTICE ARCHITECT v2
 ## Deterministic Markdown Rack System
 
-Lattice Architect is an offline-first, high-density Markdown workspace built on the **"Metallic Chassis Rack System"** philosophy. The interface is treated as a physical industrial console where functional surfaces (Plates) are slotted into a rigid structural grid (Chassis).
+MdWork is an offline-first, high-density Markdown workspace built on the **"Metallic Chassis Rack System"** philosophy. The interface is treated as a physical industrial console where functional surfaces (Plates) are slotted into a rigid structural grid (Chassis).
 
 ---
 
@@ -78,7 +78,7 @@ The always-available strip for environment awareness and health monitoring.
 
 ### 4. Viewport + Aspect Ratio Matrix
 
-Lattice Architect defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `apps/client/styles/base/viewports.css`.【F:apps/client/styles/base/viewports.css†L1-L120】
+MdWork defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `apps/client/styles/base/viewports.css`.【F:apps/client/styles/base/viewports.css†L1-L120】
 
 **Aspect Ratio Bands (aspect first)**
 - **Portrait**: `max-aspect-ratio: 3/4`

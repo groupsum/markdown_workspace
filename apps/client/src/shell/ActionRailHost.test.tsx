@@ -146,7 +146,63 @@ describe('ActionRailHost', () => {
     await waitFor(() => {
       expect(close).toHaveBeenCalledWith('core.theme-studio.view');
       expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).toHaveBeenCalledWith(false);
+      expect(setSidebarOpen).not.toHaveBeenCalled();
+    });
+  });
+
+  it('returns to the file explorer and reopens the tree when it was collapsed', async () => {
+    const close = vi.fn(async () => {});
+    const setAppMode = vi.fn();
+    const setSidebarOpen = vi.fn();
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'core.toggle-explorer',
+          title: { defaultMessage: 'Explorer' },
+          icon: { kind: 'lucide', name: 'Folder' },
+          group: 'workspace.primary',
+          target: { kind: 'command', commandId: 'core.toggle-explorer' },
+          isActive: () => false,
+        },
+      ],
+      views: [
+        {
+          id: 'core.gemini-agent.view',
+          title: { defaultMessage: 'Gemini' },
+          location: 'main',
+          render: () => null,
+          renderSidebar: () => null,
+        },
+      ],
+      openViewIds: ['core.gemini-agent.view'],
+      activeViewId: 'core.gemini-agent.view',
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute: vi.fn(async () => {}) },
+      views: { open: vi.fn(async () => {}), close, focus: vi.fn(async () => {}) },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: false,
+        },
+        actions: {
+          setAppMode,
+          setSidebarOpen,
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+    fireEvent.click(screen.getByRole('button', { name: 'Explorer' }));
+
+    await waitFor(() => {
+      expect(close).toHaveBeenCalledWith('core.gemini-agent.view');
+      expect(setAppMode).toHaveBeenCalledWith('work');
+      expect(setSidebarOpen).toHaveBeenCalledWith(true);
     });
   });
 
@@ -194,6 +250,61 @@ describe('ActionRailHost', () => {
         state: {
           appMode: 'work',
           sidebarOpen: true,
+        },
+        actions: {
+          setAppMode,
+          setSidebarOpen,
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+    fireEvent.click(screen.getByRole('button', { name: 'Gemini' }));
+
+    await waitFor(() => {
+      expect(setAppMode).toHaveBeenCalledWith('work');
+      expect(setSidebarOpen).not.toHaveBeenCalled();
+      expect(open).toHaveBeenCalledWith('core.gemini-agent.view');
+    });
+  });
+
+  it('opens a workspace view without opening the explorer tree when it is collapsed', async () => {
+    const open = vi.fn(async () => {});
+    const setAppMode = vi.fn();
+    const setSidebarOpen = vi.fn();
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'extension.gemini-agent.rail',
+          title: { defaultMessage: 'Gemini' },
+          icon: { kind: 'lucide', name: 'Bot' },
+          group: 'assistant',
+          target: { kind: 'view', viewId: 'core.gemini-agent.view' },
+        },
+      ],
+      views: [
+        {
+          id: 'core.gemini-agent.view',
+          title: { defaultMessage: 'Gemini' },
+          location: 'main',
+          render: () => null,
+          renderSidebar: () => null,
+        },
+      ],
+      openViewIds: [],
+      activeViewId: null,
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute: vi.fn(async () => {}) },
+      views: { open, close: vi.fn(async () => {}), focus: vi.fn(async () => {}) },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: false,
         },
         actions: {
           setAppMode,

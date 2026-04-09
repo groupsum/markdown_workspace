@@ -20,7 +20,7 @@ const getStoredThemeFromDb = async (): Promise<AppTheme | null> => {
 };
 
 const buildFaviconSvg = (accentColor: string, backgroundColor: string): string => `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lattice Architect">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MdWork">
     <rect width="512" height="512" rx="96" fill="${backgroundColor}"/>
     <rect x="96" y="96" width="320" height="320" rx="48" fill="${accentColor}" opacity="0.12"/>
     <g stroke="${accentColor}" stroke-width="22" stroke-linecap="square">
