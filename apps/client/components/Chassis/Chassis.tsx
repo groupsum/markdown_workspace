@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface ChassisProps {
   children: React.ReactNode;
@@ -7,10 +7,11 @@ interface ChassisProps {
   className?: string;
 }
 
-/**
- * The Chassis provides the high-level layout skeleton.
- * Theme variables are inherited from document.documentElement.
- */
+const getZoomScaleClassName = (zoom: number): string => {
+  const clamped = Math.min(1.5, Math.max(0.7, zoom));
+  return `ui-scale-${Math.round(clamped * 100)}`;
+};
+
 export const Chassis: React.FC<ChassisProps> = ({ 
   children, 
   zoom, 
@@ -18,13 +19,10 @@ export const Chassis: React.FC<ChassisProps> = ({
   className = "" 
 }) => {
   const modeClass = `mode-${mode}`;
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--ui-scale', String(zoom));
-  }, [zoom]);
+  const zoomClass = getZoomScaleClassName(zoom);
 
   return (
-    <div className={`chassis-root ${modeClass} ${className}`}>
+    <div className={`chassis-root ${modeClass} ${zoomClass} ${className}`}>
       <div className="texture-overlay" aria-hidden="true" />
       <div className="chassis-scaler">
         <div className="chassis-body">

@@ -161,7 +161,7 @@ const checks = [
     id: 'extension.settings.renderer.multiline',
     pass: settingsSchemaRendererText.includes("field.multiline")
       && settingsSchemaRendererText.includes('<textarea')
-      && settingsSchemaRendererText.includes("style={{ minHeight: 96, resize: 'vertical' }}"),
+      && settingsSchemaRendererText.includes('modal-input--textarea'),
   },
   {
     id: 'extension.settings.renderer.multiselect',

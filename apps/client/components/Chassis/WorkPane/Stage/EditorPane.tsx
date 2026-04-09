@@ -48,6 +48,11 @@ const DEFAULT_SELECTION_STATE: MarkdownEditorSelectionFormatState = {
   taskList: false,
 };
 
+const getSplitBand = (value: number): number => {
+  const clamped = Math.min(80, Math.max(20, value));
+  return Math.round(clamped / 5) * 5;
+};
+
 export const EditorPane: React.FC<EditorPaneProps> = ({
   file,
   files,
@@ -122,24 +127,26 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       const rect = containerRef.current.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const percentage = Math.max(20, Math.min(80, (x / rect.width) * 100));
-      setSplitPos(percentage);
+      setSplitPos(getSplitBand(percentage));
     };
     const handleMouseUp = () => setIsDragging(false);
 
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
-      document.body.style.userSelect = 'none';
+      document.body.classList.add('is-resizing-sidebar');
     } else {
-      document.body.style.userSelect = '';
+      document.body.classList.remove('is-resizing-sidebar');
     }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
-      document.body.style.userSelect = '';
+      document.body.classList.remove('is-resizing-sidebar');
     };
   }, [isDragging]);
+
+  const splitBand = getSplitBand(splitPos);
 
   const commandState = useMemo(
     () => ({
@@ -184,7 +191,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   return (
     <div ref={containerRef} className="editor-pane-container">
       {isDragging && (
-        <div className="fixed inset-0 z-[9999] cursor-col-resize" style={{ userSelect: 'none' }} />
+        <div className="editor-splitter-drag-shield" />
       )}
 
       {showTableBuilder && (
@@ -201,7 +208,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       <div className="editor-pane-shell">
         <div className={`editor-pane-body ${viewMode === 'split' ? 'is-split' : ''}`}>
           {(viewMode === 'editor' || viewMode === 'split') && (
-            <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${splitPos}%` : '100%' }}>
+            <div className={`editor-pane-column ${viewMode === 'split' ? `editor-pane-column--split-left-${splitBand}` : ''}`}>
               <WorkspaceMarkdownEditor
                 ref={editorRef}
                 documentKey={file.id}
@@ -227,7 +234,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
           )}
 
           {(viewMode === 'preview' || viewMode === 'split') && (
-            <div className="editor-pane-column" style={{ width: viewMode === 'split' ? `${100 - splitPos}%` : '100%' }}>
+            <div className={`editor-pane-column ${viewMode === 'split' ? `editor-pane-column--split-right-${100 - splitBand}` : ''}`}>
               <WorkspaceMarkdownRenderer
                 markdown={file.content ?? ''}
                 theme={theme}

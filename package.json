@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.23",
+  "version": "0.2.24",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -73,7 +73,8 @@
     "validate:compatibility": "node ./tools/conformance/validate-compatibility.mjs",
     "validate:boundaries": "node ./tools/conformance/check-package-boundaries.mjs",
     "validate:exports": "node ./tools/conformance/validate-package-exports.mjs",
-    "conformance": "npm run validate:manifests && npm run validate:compatibility && npm run validate:boundaries && npm run validate:exports && npm run extension:bundle && npm run extension:sign && npm run validate:extension-artifacts && npm run claim:markdown-profile-snapshot && node ./tools/conformance/generate-conformance-artifacts.mjs",
+    "validate:component-styles": "node ./tools/conformance/validate-component-classname-styling.mjs",
+    "conformance": "npm run validate:manifests && npm run validate:compatibility && npm run validate:boundaries && npm run validate:exports && npm run validate:component-styles && npm run extension:bundle && npm run extension:sign && npm run validate:extension-artifacts && npm run claim:markdown-profile-snapshot && node ./tools/conformance/generate-conformance-artifacts.mjs",
     "pack:packages": "node ./tools/release/pack-workspaces.mjs",
     "extension:bundle": "node ./tools/extensions/build-installable-extensions.mjs",
     "extension:sign": "node ./tools/extensions/sign-extension-artifacts.mjs",
