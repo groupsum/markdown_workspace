@@ -45,7 +45,7 @@
     "build": "node -e \"console.log('dist is committed in this checkpoint')\"",
     "typecheck": "node -e \"console.log('typecheck deferred in this checkpoint')\"",
     "lint": "node -e \"console.log('lint deferred in this checkpoint')\"",
-    "test": "node ./tests/gfm-surface.mjs && node ./tests/optional-profile-surface.mjs && node ./tests/preview-export-policy.mjs && node ./tests/run-smoke.mjs",
+    "test": "node ./tests/prepare-workspace-links.mjs && node ./tests/gfm-surface.mjs && node ./tests/optional-profile-surface.mjs && node ./tests/preview-export-policy.mjs && node ./tests/run-smoke.mjs",
     "prepack": "node -e \"console.log('prepack uses committed dist')\"",
     "test:optional-profiles": "node ./tests/optional-profile-surface.mjs"
   },

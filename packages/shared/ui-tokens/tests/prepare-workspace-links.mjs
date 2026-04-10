@@ -11,10 +11,25 @@ const links = {
 };
 
 await fs.mkdir(nodeModulesRoot, { recursive: true });
+const isWindows = process.platform === 'win32';
+const linkKind = isWindows ? 'junction' : 'dir';
+
 for (const [name, target] of Object.entries(links)) {
   const linkPath = path.join(nodeModulesRoot, name);
   try {
     await fs.rm(linkPath, { recursive: true, force: true });
   } catch {}
-  await fs.symlink(target, linkPath, 'dir');
+
+  try {
+    await fs.symlink(target, linkPath, linkKind);
+  } catch (error) {
+    // On Windows, symlink creation can fail under restricted environments.
+    // Fall back to a real directory copy so imports still resolve during tests.
+    if (error && (error.code === 'EISDIR' || error.code === 'EPERM')) {
+      await fs.cp(target, linkPath, { recursive: true, force: true });
+      continue;
+    }
+
+    throw error;
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T05:54:07.563Z",
+  "generatedAt": "2026-04-10T21:56:33.917Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "ok": true,
   "artifacts": [
@@ -13,20 +13,20 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-04-04T05:54:07.147Z"
+      "generatedAt": "2026-04-10T21:56:33.587Z"
     },
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.1",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.2",
       "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-04-04T05:54:07.268Z"
+      "generatedAt": "2026-04-10T21:56:33.677Z"
     },
     {
       "id": "core.language-pack-studio",
@@ -38,20 +38,20 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-04-04T05:54:07.367Z"
+      "generatedAt": "2026-04-10T21:56:33.753Z"
     },
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.1.6",
+      "version": "1.1.7",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.6",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.7",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-04-04T05:54:07.466Z"
+      "generatedAt": "2026-04-10T21:56:33.836Z"
     },
     {
       "id": "core.theme-studio",
@@ -64,7 +64,7 @@
         "en",
         "es"
       ],
-      "generatedAt": "2026-04-04T05:54:07.563Z"
+      "generatedAt": "2026-04-10T21:56:33.917Z"
     }
   ],
   "failures": []

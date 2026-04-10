@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-04T05:54:07.563Z",
+  "generatedAt": "2026-04-10T21:56:33.917Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "baseUrl": "./",
   "ok": true,
@@ -63,7 +63,7 @@
         },
         "module": {
           "algorithm": "sha256",
-          "digest": "92e150b975f628ca2af2221e9ede0ff391a5283ab395bf1b794a65277ba217e6"
+          "digest": "eb13f1209a49bf72f23eafe6cc06f5eba7f58759502dd78c7f34386093b0a335"
         }
       },
       "support": {

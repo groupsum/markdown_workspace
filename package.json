@@ -58,7 +58,7 @@
     "typecheck:extensions": "npm run typecheck -w @mdwrk/extension-runtime && npm run typecheck -w @mdwrk/extension-manager && npm run typecheck -w @mdwrk/extension-gemini-agent && npm run typecheck -w @mdwrk/extension-theme-studio && npm run typecheck -w @mdwrk/extension-catalog-hello",
     "lint:extensions": "npm run lint -w @mdwrk/extension-runtime && npm run lint -w @mdwrk/extension-manager && npm run lint -w @mdwrk/extension-gemini-agent && npm run lint -w @mdwrk/extension-theme-studio && npm run lint -w @mdwrk/extension-catalog-hello",
     "changeset": "npx @changesets/cli",
-    "ci:install": "npm ci",
+    "ci:install": "node ./tools/ci/install-dependencies.mjs",
     "ci:lint": "npm run lint",
     "ci:typecheck": "npm run typecheck",
     "ci:build": "npm run build",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T05:54:08.524Z",
+  "generatedAt": "2026-04-10T21:56:34.308Z",
   "signer": "tools/extensions/sign-extension-artifacts.mjs",
   "ok": true,
   "signedEntries": [
@@ -14,10 +14,10 @@
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.1",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.1",
+      "version": "1.1.2",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.2",
       "digestCount": 7,
-      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.1/signed-manifest.json"
+      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.2/signed-manifest.json"
     },
     {
       "id": "core.language-pack-studio",
@@ -30,10 +30,10 @@
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.1.6",
-      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.6",
+      "version": "1.1.7",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.7",
       "digestCount": 7,
-      "signedManifestPath": "artifacts/extensions/core.extension-manager/1.1.6/signed-manifest.json"
+      "signedManifestPath": "artifacts/extensions/core.extension-manager/1.1.7/signed-manifest.json"
     },
     {
       "id": "core.theme-studio",

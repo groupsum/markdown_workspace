@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-03-31T05:51:10.354Z",
+  "generatedAt": "2026-04-10T21:52:56.357Z",
   "kind": "visual-smoke",
   "ok": true,
   "snapshots": [
     {
       "path": "packages/shared/ui-tokens/src/styles/root.css",
-      "sha256": "677e713d627e8a2077346e9fba439a0efcc5d825173d077da175a87050176228"
+      "sha256": "97283fb556261ab83e4336bc2f1b98458f9f3c8c19c24483ed874d8ba8a2c9fe"
     },
     {
       "path": "packages/shared/ui-tokens/src/styles/markdown.css",
-      "sha256": "f60f34699b501797a6fb4c5995d51800b747f9203604c76fcb8854bac1904d50"
+      "sha256": "f92ca250eaa70813faebff95bfec8fe239b900d210436c35a3be8e2ef05fca8a"
     },
     {
       "path": "packages/renderer/markdown-renderer-react/src/styles/default.css",
@@ -17,7 +17,7 @@
     },
     {
       "path": "packages/editor/markdown-editor-react/src/styles/default.css",
-      "sha256": "bca54c56b09820633fb14338c1eff0c970dd5375a5f2041e90923cbb47397199"
+      "sha256": "aac4ef15194d1f541837f26420d96fdce354b437fa1313a258f8569abad1cd65"
     }
   ],
   "failures": [],

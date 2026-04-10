@@ -8,8 +8,11 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 const artifactRoot = path.join(repoRoot, 'artifacts', 'conformance', 'latest');
 
-const command = 'npm';
-const args = ['run', 'test:markdown-profile-snapshot'];
+const npmExecPath = process.env.npm_execpath;
+const command = process.execPath;
+const args = npmExecPath
+  ? [npmExecPath, 'run', 'test:markdown-profile-snapshot']
+  : ['node_modules/npm/bin/npm-cli.js', 'run', 'test:markdown-profile-snapshot'];
 
 let ok = true;
 let output = '';
