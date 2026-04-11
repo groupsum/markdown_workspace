@@ -23,13 +23,8 @@ export const AppShell: React.FC = () => {
   const { t } = useClientI18n();
   const { state, actions } = runtime.app;
   const { state: pwaState, actions: pwaActions } = runtime.pwa;
-  const activeWorkspaceViewId =
-    viewSnapshot.activeViewId && viewSnapshot.openViewIds.includes(viewSnapshot.activeViewId)
-      ? viewSnapshot.activeViewId
-      : null;
   const workspaceView =
-    viewSnapshot.views.find((view) => view.id === activeWorkspaceViewId && view.location === 'main' && view.id !== 'core.git-pane')
-    ?? viewSnapshot.views.find((view) => view.location === 'main' && view.id !== 'core.git-pane' && viewSnapshot.openViewIds.includes(view.id))
+    viewSnapshot.views.find((view) => view.id === viewSnapshot.activeMainViewId && view.id !== 'core.git-pane')
     ?? null;
   const workspaceViewRenderProps = workspaceView
     ? {

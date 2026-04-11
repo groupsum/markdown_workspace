@@ -1,5 +1,6 @@
 import type { Disposable, RegisteredView } from '@mdwrk/extension-host';
 import { createStoreEmitter, type ObservableStore } from '../common/observable';
+import type { AppMode } from '../../../types';
 
 export interface ClientViewRenderProps {
   readonly viewId: string;
@@ -23,6 +24,7 @@ export interface ViewRegistrySnapshot {
   readonly views: readonly ClientViewDefinition[];
   readonly openViewIds: readonly string[];
   readonly activeViewId: string | null;
+  readonly activeMainViewId: string | null;
   readonly inputs: Readonly<Record<string, unknown>>;
 }
 
@@ -33,6 +35,7 @@ export interface ViewRegistry extends ObservableStore<ViewRegistrySnapshot> {
   isOpen(id: string): boolean;
   getInput(id: string): unknown;
   open(id: string, input?: unknown): Promise<void>;
+  toggle(id: string, input?: unknown): Promise<void>;
   close(id: string): Promise<void>;
   focus(id: string): Promise<void>;
 }
@@ -40,7 +43,34 @@ export interface ViewRegistry extends ObservableStore<ViewRegistrySnapshot> {
 const byTitle = (left: ClientViewDefinition, right: ClientViewDefinition) =>
   left.title.defaultMessage.localeCompare(right.title.defaultMessage);
 
-export function createViewRegistry(): ViewRegistry {
+interface ViewRegistryOptions {
+  readonly resolveAppMode?: (view: ClientViewDefinition) => AppMode | null;
+  readonly onAppModeChange?: (mode: AppMode) => void;
+}
+
+const getActiveMainViewId = (
+  views: Map<string, ClientViewDefinition>,
+  openViewIds: Set<string>,
+  activeViewId: string | null,
+): string | null => {
+  if (activeViewId) {
+    const activeView = views.get(activeViewId);
+    if (activeView?.location === 'main' && openViewIds.has(activeViewId)) {
+      return activeViewId;
+    }
+  }
+
+  for (const viewId of openViewIds.values()) {
+    const view = views.get(viewId);
+    if (view?.location === 'main') {
+      return viewId;
+    }
+  }
+
+  return null;
+};
+
+export function createViewRegistry(options: ViewRegistryOptions = {}): ViewRegistry {
   const views = new Map<string, ClientViewDefinition>();
   const openViewIds = new Set<string>();
   const inputs = new Map<string, unknown>();
@@ -52,12 +82,65 @@ export function createViewRegistry(): ViewRegistry {
     views: Array.from(views.values()).sort(byTitle),
     openViewIds: Array.from(openViewIds.values()),
     activeViewId,
+    activeMainViewId: getActiveMainViewId(views, openViewIds, activeViewId),
     inputs: Object.freeze(Object.fromEntries(inputs.entries())),
   });
 
   const emitChange = (): void => {
     cachedSnapshot = null;
     emitter.emit();
+  };
+
+  const setAppModeForView = (view: ClientViewDefinition | undefined): void => {
+    const nextMode = view ? (options.resolveAppMode?.(view) ?? null) : 'work';
+    if (nextMode) {
+      options.onAppModeChange?.(nextMode);
+    }
+  };
+
+  const closeViewInternal = async (id: string): Promise<void> => {
+    const view = views.get(id);
+    if (!view || !openViewIds.has(id)) {
+      return;
+    }
+
+    openViewIds.delete(id);
+    inputs.delete(id);
+    if (activeViewId === id) {
+      activeViewId = null;
+    }
+
+    emitChange();
+    await view.onClose?.();
+  };
+
+  const openViewInternal = async (id: string, input?: unknown): Promise<void> => {
+    const view = views.get(id);
+    if (!view) {
+      throw new Error(`View not found: ${id}`);
+    }
+    if (view.location === 'main') {
+      const openMainViewIds = Array.from(openViewIds.values()).filter((viewId) => {
+        if (viewId === id) {
+          return false;
+        }
+        return views.get(viewId)?.location === 'main';
+      });
+
+      for (const viewId of openMainViewIds) {
+        await closeViewInternal(viewId);
+      }
+    }
+    if (!view.allowMultiple) {
+      openViewIds.add(id);
+      inputs.set(id, input);
+    }
+    activeViewId = id;
+    emitChange();
+    if (view.location === 'main') {
+      setAppModeForView(view);
+    }
+    await view.onOpen?.(input);
   };
 
   return {
@@ -80,6 +163,9 @@ export function createViewRegistry(): ViewRegistry {
             if (activeViewId === view.id) {
               activeViewId = null;
             }
+            if (view.location === 'main') {
+              setAppModeForView(undefined);
+            }
             emitChange();
           }
         },
@@ -98,30 +184,31 @@ export function createViewRegistry(): ViewRegistry {
       return inputs.get(id);
     },
     async open(id: string, input?: unknown): Promise<void> {
+      await openViewInternal(id, input);
+    },
+    async toggle(id: string, input?: unknown): Promise<void> {
       const view = views.get(id);
       if (!view) {
         throw new Error(`View not found: ${id}`);
       }
-      if (!view.allowMultiple) {
-        openViewIds.add(id);
-        inputs.set(id, input);
+
+      if (view.location === 'main' && openViewIds.has(id) && activeViewId === id) {
+        await closeViewInternal(id);
+        setAppModeForView(undefined);
+        return;
       }
-      activeViewId = id;
-      emitChange();
-      await view.onOpen?.(input);
+
+      await openViewInternal(id, input);
     },
     async close(id: string): Promise<void> {
       const view = views.get(id);
       if (!view) {
         return;
       }
-      openViewIds.delete(id);
-      inputs.delete(id);
-      if (activeViewId === id) {
-        activeViewId = null;
+      await closeViewInternal(id);
+      if (view.location === 'main') {
+        setAppModeForView(undefined);
       }
-      emitChange();
-      await view.onClose?.();
     },
     async focus(id: string): Promise<void> {
       if (!views.has(id)) {
@@ -129,6 +216,10 @@ export function createViewRegistry(): ViewRegistry {
       }
       activeViewId = id;
       emitChange();
+      const view = views.get(id);
+      if (view?.location === 'main' && openViewIds.has(id)) {
+        setAppModeForView(view);
+      }
       await views.get(id)?.onFocus?.();
     },
   };

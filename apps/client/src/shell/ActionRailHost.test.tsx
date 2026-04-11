@@ -38,7 +38,7 @@ describe('ActionRailHost', () => {
     cleanup();
   });
 
-  it('keeps the explorer rail active while a workspace view is open', () => {
+  it('marks the explorer rail inactive while a main workspace view is open', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {
@@ -71,7 +71,6 @@ describe('ActionRailHost', () => {
     }));
     mockUseClientExtensionHost.mockReturnValue({
       commands: { execute: vi.fn(async () => {}) },
-      views: { open: vi.fn(async () => {}), close: vi.fn(async () => {}), focus: vi.fn(async () => {}) },
     });
     mockUseClientRuntimeSnapshot.mockReturnValue({
       app: {
@@ -90,14 +89,12 @@ describe('ActionRailHost', () => {
     render(<ActionRailHost />);
 
     const [explorerButton, geminiButton] = screen.getAllByRole('button');
-    expect(explorerButton).toHaveAttribute('aria-pressed', 'true');
+    expect(explorerButton).toHaveAttribute('aria-pressed', 'false');
     expect(geminiButton).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('returns to the file explorer when its rail button is clicked from a workspace view', async () => {
-    const close = vi.fn(async () => {});
-    const setAppMode = vi.fn();
-    const setSidebarOpen = vi.fn();
+  it('routes the explorer rail through the command registry', async () => {
+    const execute = vi.fn(async () => {});
 
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
@@ -121,10 +118,10 @@ describe('ActionRailHost', () => {
       ],
       openViewIds: ['core.theme-studio.view'],
       activeViewId: 'core.theme-studio.view',
+      activeMainViewId: 'core.theme-studio.view',
     }));
     mockUseClientExtensionHost.mockReturnValue({
-      commands: { execute: vi.fn(async () => {}) },
-      views: { open: vi.fn(async () => {}), close, focus: vi.fn(async () => {}) },
+      commands: { execute },
     });
     mockUseClientRuntimeSnapshot.mockReturnValue({
       app: {
@@ -133,8 +130,6 @@ describe('ActionRailHost', () => {
           sidebarOpen: true,
         },
         actions: {
-          setAppMode,
-          setSidebarOpen,
           toggleSidebar: vi.fn(),
         },
       },
@@ -144,17 +139,11 @@ describe('ActionRailHost', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Explorer' }));
 
     await waitFor(() => {
-      expect(close).toHaveBeenCalledWith('core.theme-studio.view');
-      expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).not.toHaveBeenCalled();
+      expect(execute).toHaveBeenCalledWith('core.toggle-explorer');
     });
   });
 
-  it('returns to the file explorer and reopens the tree when it was collapsed', async () => {
-    const close = vi.fn(async () => {});
-    const setAppMode = vi.fn();
-    const setSidebarOpen = vi.fn();
-
+  it('marks the explorer rail active only when no main view is active and the sidebar is open', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {
@@ -163,53 +152,35 @@ describe('ActionRailHost', () => {
           icon: { kind: 'lucide', name: 'Folder' },
           group: 'workspace.primary',
           target: { kind: 'command', commandId: 'core.toggle-explorer' },
-          isActive: () => false,
+          isActive: () => true,
         },
       ],
-      views: [
-        {
-          id: 'core.gemini-agent.view',
-          title: { defaultMessage: 'Gemini' },
-          location: 'main',
-          render: () => null,
-          renderSidebar: () => null,
-        },
-      ],
-      openViewIds: ['core.gemini-agent.view'],
-      activeViewId: 'core.gemini-agent.view',
+      views: [],
+      openViewIds: [],
+      activeViewId: null,
+      activeMainViewId: null,
     }));
     mockUseClientExtensionHost.mockReturnValue({
       commands: { execute: vi.fn(async () => {}) },
-      views: { open: vi.fn(async () => {}), close, focus: vi.fn(async () => {}) },
     });
     mockUseClientRuntimeSnapshot.mockReturnValue({
       app: {
         state: {
           appMode: 'work',
-          sidebarOpen: false,
+          sidebarOpen: true,
         },
         actions: {
-          setAppMode,
-          setSidebarOpen,
           toggleSidebar: vi.fn(),
         },
       },
     });
 
     render(<ActionRailHost />);
-    fireEvent.click(screen.getByRole('button', { name: 'Explorer' }));
-
-    await waitFor(() => {
-      expect(close).toHaveBeenCalledWith('core.gemini-agent.view');
-      expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).toHaveBeenCalledWith(true);
-    });
+    expect(screen.getByRole('button', { name: 'Explorer' })).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('opens a workspace view without changing the explorer sidebar state when it is already open', async () => {
-    const open = vi.fn(async () => {});
-    const setAppMode = vi.fn();
-    const setSidebarOpen = vi.fn();
+  it('routes rail view clicks through the centralized toggle path', async () => {
+    const toggle = vi.fn(async () => {});
 
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
@@ -240,10 +211,11 @@ describe('ActionRailHost', () => {
       ],
       openViewIds: [],
       activeViewId: null,
+      activeMainViewId: null,
+      toggle,
     }));
     mockUseClientExtensionHost.mockReturnValue({
       commands: { execute: vi.fn(async () => {}) },
-      views: { open, close: vi.fn(async () => {}), focus: vi.fn(async () => {}) },
     });
     mockUseClientRuntimeSnapshot.mockReturnValue({
       app: {
@@ -252,8 +224,6 @@ describe('ActionRailHost', () => {
           sidebarOpen: true,
         },
         actions: {
-          setAppMode,
-          setSidebarOpen,
           toggleSidebar: vi.fn(),
         },
       },
@@ -263,71 +233,11 @@ describe('ActionRailHost', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Gemini' }));
 
     await waitFor(() => {
-      expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).not.toHaveBeenCalled();
-      expect(open).toHaveBeenCalledWith('core.gemini-agent.view');
+      expect(toggle).toHaveBeenCalledWith('core.gemini-agent.view');
     });
   });
 
-  it('opens a workspace view without opening the explorer tree when it is collapsed', async () => {
-    const open = vi.fn(async () => {});
-    const setAppMode = vi.fn();
-    const setSidebarOpen = vi.fn();
-
-    mockUseClientRuntimeServices.mockReturnValue(createServices({
-      actionRailItems: [
-        {
-          id: 'extension.gemini-agent.rail',
-          title: { defaultMessage: 'Gemini' },
-          icon: { kind: 'lucide', name: 'Bot' },
-          group: 'assistant',
-          target: { kind: 'view', viewId: 'core.gemini-agent.view' },
-        },
-      ],
-      views: [
-        {
-          id: 'core.gemini-agent.view',
-          title: { defaultMessage: 'Gemini' },
-          location: 'main',
-          render: () => null,
-          renderSidebar: () => null,
-        },
-      ],
-      openViewIds: [],
-      activeViewId: null,
-    }));
-    mockUseClientExtensionHost.mockReturnValue({
-      commands: { execute: vi.fn(async () => {}) },
-      views: { open, close: vi.fn(async () => {}), focus: vi.fn(async () => {}) },
-    });
-    mockUseClientRuntimeSnapshot.mockReturnValue({
-      app: {
-        state: {
-          appMode: 'work',
-          sidebarOpen: false,
-        },
-        actions: {
-          setAppMode,
-          setSidebarOpen,
-          toggleSidebar: vi.fn(),
-        },
-      },
-    });
-
-    render(<ActionRailHost />);
-    fireEvent.click(screen.getByRole('button', { name: 'Gemini' }));
-
-    await waitFor(() => {
-      expect(setAppMode).toHaveBeenCalledWith('work');
-      expect(setSidebarOpen).not.toHaveBeenCalled();
-      expect(open).toHaveBeenCalledWith('core.gemini-agent.view');
-    });
-  });
-
-  it('closes the active workspace view when its rail button is clicked again', () => {
-    const close = vi.fn(async () => {});
-    const setAppMode = vi.fn();
-    const setSidebarOpen = vi.fn();
+  it('keeps an active main-view rail button pressed while that view is open', () => {
 
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
@@ -350,10 +260,10 @@ describe('ActionRailHost', () => {
       ],
       openViewIds: ['core.gemini-agent.view'],
       activeViewId: 'core.gemini-agent.view',
+      activeMainViewId: 'core.gemini-agent.view',
     }));
     mockUseClientExtensionHost.mockReturnValue({
       commands: { execute: vi.fn(async () => {}) },
-      views: { open: vi.fn(async () => {}), close, focus: vi.fn(async () => {}) },
     });
     mockUseClientRuntimeSnapshot.mockReturnValue({
       app: {
@@ -362,19 +272,13 @@ describe('ActionRailHost', () => {
           sidebarOpen: true,
         },
         actions: {
-          setAppMode,
-          setSidebarOpen,
           toggleSidebar: vi.fn(),
         },
       },
     });
 
     render(<ActionRailHost />);
-    fireEvent.click(screen.getByRole('button', { name: 'Gemini' }));
-
-    expect(close).toHaveBeenCalledWith('core.gemini-agent.view');
-    expect(setAppMode).not.toHaveBeenCalled();
-    expect(setSidebarOpen).not.toHaveBeenCalled();
+    expect(screen.getByRole('button', { name: 'Gemini' })).toHaveAttribute('aria-pressed', 'true');
   });
 });
 
@@ -383,17 +287,22 @@ function createServices({
   views,
   openViewIds,
   activeViewId,
+  activeMainViewId = activeViewId,
+  toggle = vi.fn(async () => {}),
 }: {
   actionRailItems: any[];
   views: any[];
   openViewIds: string[];
   activeViewId: string | null;
+  activeMainViewId?: string | null;
+  toggle?: any;
 }) {
   const actionRailSnapshot = { items: actionRailItems };
   const viewSnapshot = {
     views,
     openViewIds,
     activeViewId,
+    activeMainViewId,
     inputs: {},
   };
   const localeSnapshot = { locale: 'en' };
@@ -406,6 +315,7 @@ function createServices({
     views: {
       subscribe: () => () => {},
       getSnapshot: () => viewSnapshot,
+      toggle,
     },
     i18n: {
       subscribe: () => () => {},

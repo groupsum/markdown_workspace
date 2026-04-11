@@ -115,7 +115,17 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       services.commands.register({
         id: 'core.toggle-explorer',
         title: label('Toggle Explorer', 'core.commands.toggle-explorer'),
-        execute: () => runtime.getSnapshot().app.actions.toggleSidebar(),
+        execute: async () => {
+          const snapshot = services.views.getSnapshot();
+          if (snapshot.activeMainViewId) {
+            await services.views.close(snapshot.activeMainViewId);
+            if (!runtime.getSnapshot().app.state.sidebarOpen) {
+              runtime.getSnapshot().app.actions.setSidebarOpen(true);
+            }
+            return;
+          }
+          runtime.getSnapshot().app.actions.toggleSidebar();
+        },
         icon: { kind: 'lucide', name: 'Folder' },
       }),
       services.commands.register({
@@ -146,14 +156,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       services.commands.register({
         id: 'core.toggle-git-pane',
         title: label('Toggle Git Operations', 'core.commands.toggle-git-pane'),
-        execute: async () => {
-          const viewSnapshot = services.views.getSnapshot();
-          if (viewSnapshot.openViewIds.includes('core.git-pane')) {
-            await services.views.close('core.git-pane');
-          } else {
-            await services.views.open('core.git-pane');
-          }
-        },
+        execute: async () => { await services.views.toggle('core.git-pane'); },
         icon: { kind: 'lucide', name: 'GitBranch' },
       }),
       services.commands.register({
@@ -277,8 +280,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         canBePinned: true,
         allowMultiple: false,
         render: () => null,
-        onOpen: () => runtime.getSnapshot().app.actions.setAppMode('git'),
-        onClose: () => runtime.getSnapshot().app.actions.setAppMode('work'),
       }),
     ];
 
@@ -292,7 +293,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         target: { kind: 'command', commandId: 'core.toggle-explorer' },
         isActive: () => {
           const snapshot = runtime.getSnapshot();
-          return snapshot.app.state.sidebarOpen;
+          const viewSnapshot = services.views.getSnapshot();
+          return !viewSnapshot.activeMainViewId && snapshot.app.state.sidebarOpen;
         },
       }),
       services.actionRail.register({

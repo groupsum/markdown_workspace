@@ -13,12 +13,6 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
   const actionRailSnapshot = useSyncExternalStore(services.actionRail.subscribe, services.actionRail.getSnapshot, services.actionRail.getSnapshot);
   const viewSnapshot = useSyncExternalStore(services.views.subscribe, services.views.getSnapshot, services.views.getSnapshot);
   const localeSnapshot = useSyncExternalStore(services.i18n.subscribe, services.i18n.getSnapshot, services.i18n.getSnapshot);
-  const openWorkspaceViewIds = React.useMemo(
-    () => viewSnapshot.views
-      .filter((view) => view.location === 'main' && view.id !== 'core.git-pane' && viewSnapshot.openViewIds.includes(view.id))
-      .map((view) => view.id),
-    [viewSnapshot.openViewIds, viewSnapshot.views],
-  );
 
   const items = React.useMemo<ActionRailItemModel[]>(() => actionRailSnapshot.items
     .filter((item) => !preferences.hiddenActionRailButtons.includes(item.id))
@@ -29,7 +23,7 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       badge: item.badge,
       active: (() => {
         if (item.id === 'core.toggle-explorer') {
-          return item.isActive?.() ?? false;
+          return !viewSnapshot.activeMainViewId && runtime.app.state.sidebarOpen;
         }
         if (item.target.kind === 'view') {
           return viewSnapshot.activeViewId === item.target.viewId && viewSnapshot.openViewIds.includes(item.target.viewId);
@@ -39,37 +33,13 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       disabled: item.isDisabled?.() ?? false,
       group: item.group,
       onClick: async () => {
-        if (item.target.kind === 'command' && item.target.commandId === 'core.toggle-explorer') {
-          if (openWorkspaceViewIds.length > 0) {
-            await Promise.all(openWorkspaceViewIds.map((viewId) => host.views.close(viewId)));
-            runtime.app.actions.setAppMode('work');
-            if (!runtime.app.state.sidebarOpen) {
-              runtime.app.actions.setSidebarOpen(true);
-            }
-            return;
-          }
-          runtime.app.actions.setSidebarOpen(!runtime.app.state.sidebarOpen);
-          return;
-        }
         if (item.target.kind === 'view') {
-          const targetViewId = item.target.viewId;
-          const targetView = viewSnapshot.views.find((view) => view.id === targetViewId);
-          const workspaceScopedView = targetView?.location === 'main';
-          if (workspaceScopedView) {
-            const isTargetActive = viewSnapshot.activeViewId === targetViewId;
-            const isTargetOpen = viewSnapshot.openViewIds.includes(targetViewId);
-            if (isTargetActive && isTargetOpen) {
-              await host.views.close(targetViewId);
-              return;
-            }
-            runtime.app.actions.setAppMode('work');
-          }
-          await host.views.open(item.target.viewId);
+          await services.views.toggle(item.target.viewId);
         } else {
           await host.commands.execute(item.target.commandId);
         }
       },
-    })), [actionRailSnapshot.items, host.commands, host.views, localeSnapshot.locale, openWorkspaceViewIds, preferences.hiddenActionRailButtons, runtime.app.actions, runtime.app.state.sidebarOpen, services.i18n, viewSnapshot.activeViewId, viewSnapshot.openViewIds, viewSnapshot.views]);
+    })), [actionRailSnapshot.items, host.commands, localeSnapshot.locale, preferences.hiddenActionRailButtons, runtime.app.state.sidebarOpen, services.i18n, services.views, viewSnapshot.activeMainViewId, viewSnapshot.activeViewId, viewSnapshot.openViewIds]);
 
   const ariaLabel = React.useMemo(
     () => services.i18n.format({ key: 'core.action-rail.aria-label', defaultMessage: 'Primary Actions' }),

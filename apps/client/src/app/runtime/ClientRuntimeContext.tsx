@@ -33,7 +33,17 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
 
   const services = React.useMemo<ClientRuntimeServices>(() => {
     const commands = createCommandRegistry();
-    const views = createViewRegistry();
+    const views = createViewRegistry({
+      resolveAppMode: (view) => {
+        if (view.location !== 'main') {
+          return null;
+        }
+        return view.id === 'core.git-pane' ? 'git' : 'work';
+      },
+      onAppModeChange: (mode) => {
+        snapshotRef.current.app.actions.setAppMode(mode);
+      },
+    });
     const actionRail = createActionRailRegistry();
     const settingsRegistry = createSettingsRegistry();
     const settingsStore = createHostSettingsStore();
