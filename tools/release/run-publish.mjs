@@ -31,6 +31,48 @@ function publishMode() {
   return envFlag('NPM_PUBLISH_ENABLED') ? 'ci-enabled' : 'ci-disabled';
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function runChangesetsPublish({ maxAttempts = 3, initialRetryDelayMs = 3000 } = {}) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      await new Promise((resolve, reject) => {
+        const child = spawn('npx', ['@changesets/cli', 'publish'], {
+          cwd: repoRoot,
+          env: process.env,
+          stdio: 'inherit',
+          shell: process.platform === 'win32',
+        });
+
+        child.on('error', reject);
+        child.on('exit', (code, signal) => {
+          if (code === 0) {
+            resolve();
+            return;
+          }
+          reject(new Error(signal ? `changesets publish terminated with signal ${signal}.` : `changesets publish exited with code ${code}.`));
+        });
+      });
+      return;
+    } catch (error) {
+      lastError = error;
+      if (attempt >= maxAttempts) {
+        break;
+      }
+      const delayMs = initialRetryDelayMs * (2 ** (attempt - 1));
+      console.warn(`changesets publish attempt ${attempt} failed: ${error.message}`);
+      console.warn(`Retrying in ${delayMs}ms (attempt ${attempt + 1} of ${maxAttempts})...`);
+      await sleep(delayMs);
+    }
+  }
+
+  throw lastError;
+}
+
 export async function runPublish() {
   const workspaces = await loadWorkspacePackages();
   const publishablePackages = workspaces
@@ -80,23 +122,7 @@ export async function runPublish() {
   }
 
   try {
-    await new Promise((resolve, reject) => {
-      const child = spawn('npx', ['@changesets/cli', 'publish'], {
-        cwd: repoRoot,
-        env: process.env,
-        stdio: 'inherit',
-        shell: process.platform === 'win32',
-      });
-
-      child.on('error', reject);
-      child.on('exit', (code, signal) => {
-        if (code === 0) {
-          resolve();
-          return;
-        }
-        reject(new Error(signal ? `changesets publish terminated with signal ${signal}.` : `changesets publish exited with code ${code}.`));
-      });
-    });
+    await runChangesetsPublish();
   } catch (error) {
     report.ok = false;
     report.reason = error.message;
