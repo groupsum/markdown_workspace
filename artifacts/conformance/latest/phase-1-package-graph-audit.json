@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-27T17:57:19.983Z",
+  "generatedAt": "2026-04-13T01:46:10.559Z",
   "checkpoint": "phase-1-release-train-freeze",
   "status": {
     "certifiablyFullyFeatured": false,
@@ -8,8 +8,8 @@
   },
   "counts": {
     "releaseUnitsDocumented": 21,
-    "workspacePackagesDetected": 20,
-    "auditedReleaseUnitsDetected": 21,
+    "workspacePackagesDetected": 21,
+    "auditedReleaseUnitsDetected": 22,
     "releaseGroupCounts": {
       "workspace-root": 1,
       "apps": 2,
@@ -33,7 +33,7 @@
     }
   },
   "assertions": {
-    "allWorkspacePackagesMapped": true,
+    "allWorkspacePackagesMapped": false,
     "noUnexpectedDeclaredPackages": true,
     "allPackagesHaveRequiredPhase1Metadata": true,
     "linkedChangesetGroupsMatchFreezePlan": true,
@@ -81,7 +81,13 @@
       "@mdwrk/extension-catalog-hello"
     ]
   ],
-  "unmappedWorkspacePackages": [],
+  "unmappedWorkspacePackages": [
+    {
+      "packageName": "@mdwrk/extension-language-pack-studio",
+      "path": "packages/extensions/extension-language-pack-studio",
+      "currentVersion": "1.0.4"
+    }
+  ],
   "extraDeclaredPackages": [],
   "packagesMissingMetadata": [],
   "exactPinnedInternalWorkspaceDependencies": [],

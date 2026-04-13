@@ -1,1 +1,1 @@
-export const LANGUAGE_PACK_STUDIO_VERSION = "1.0.3";
+export const LANGUAGE_PACK_STUDIO_VERSION = "1.0.4";
