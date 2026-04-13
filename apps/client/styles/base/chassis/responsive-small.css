@@ -162,7 +162,8 @@
     height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
     min-height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
     padding: 0 6px max(0px, env(safe-area-inset-bottom));
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .status-left {
@@ -175,7 +176,8 @@
     flex: 1;
     justify-content: flex-end;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 
