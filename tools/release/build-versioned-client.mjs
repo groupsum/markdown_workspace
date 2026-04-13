@@ -150,7 +150,7 @@ const resolveSelectedVersion = (manifest) => {
 
 const goToVersion = (version) => {
   window.localStorage.setItem(SELECTED_VERSION_STORAGE_KEY, version);
-  const target = new URL('./client/versions/' + encodeURIComponent(version) + '/', window.location.href);
+  const target = new URL('./client/versions/' + encodeURIComponent(version) + '/index.html', window.location.href);
   if (window.location.href !== target.href) {
     window.location.replace(target);
   }

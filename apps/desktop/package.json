@@ -30,8 +30,23 @@
       "output": "dist/electron"
     },
     "files": [
-      "dist/**/*",
-      "../client/dist/**/*",
+      {
+        "from": "dist",
+        "to": "dist",
+        "filter": [
+          "main.js",
+          "main.js.map",
+          "preload.js",
+          "preload.js.map"
+        ]
+      },
+      {
+        "from": "../client/dist",
+        "to": "client/dist",
+        "filter": [
+          "**/*"
+        ]
+      },
       "package.json"
     ],
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",

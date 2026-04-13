@@ -11,10 +11,15 @@ type ExternalMarkdownFile = {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientDistDir = path.resolve(__dirname, '../../client/dist');
-const clientIndexPath = path.join(clientDistDir, 'index.html');
 const preloadPath = path.join(__dirname, 'preload.js');
 const isDev = Boolean(process.env.MDWRK_CLIENT_DEV_URL);
+
+function getClientIndexPath(): string {
+  const clientDistDir = app.isPackaged
+    ? path.resolve(__dirname, '../client/dist')
+    : path.resolve(__dirname, '../../client/dist');
+  return path.join(clientDistDir, 'index.html');
+}
 
 let mainWindow: BrowserWindow | null = null;
 let pendingOpenPaths: string[] = [];
@@ -167,7 +172,7 @@ async function createWindow(): Promise<void> {
   if (isDev) {
     await mainWindow.loadURL(process.env.MDWRK_CLIENT_DEV_URL as string);
   } else {
-    await mainWindow.loadFile(clientIndexPath);
+    await mainWindow.loadFile(getClientIndexPath());
   }
 
   mainWindow.on('closed', () => {
