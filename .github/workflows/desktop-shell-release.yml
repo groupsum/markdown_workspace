@@ -24,8 +24,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+        include:
+          - runner: ubuntu-latest
+            platform: linux
+          - runner: windows-latest
+            platform: windows
+          - runner: macos-latest
+            platform: darwin
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,13 +46,15 @@ jobs:
         run: npm run ci:install
 
       - name: Build release artifacts
+        env:
+          MDWRK_SHELL_PLATFORM: ${{ matrix.platform }}
         run: npm run ci:desktop:release
 
       - name: Upload desktop artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-shell-${{ matrix.os }}
-          path: apps/desktop/dist/**
+          name: desktop-shell-${{ matrix.platform }}
+          path: apps/desktop/dist/electron/**
 
   android-release:
     runs-on: ubuntu-latest
@@ -78,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: desktop-shell-android
-          path: apps/desktop/android/app/build/outputs/**
+          path: apps/desktop/dist/android/**
 
   github-release:
     if: ${{ inputs.publish_release && inputs.tag != '' }}

@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.28",
+  "version": "0.2.29",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -26,6 +26,10 @@
     "build:client": "npm run build:shared && npm run build:renderer && npm run build:editor && npm run build:extensions && npm run build -w apps/client",
     "build:desktop": "npm run build:client && npm run build -w apps/desktop",
     "build:desktop:dist": "npm run build:client && npm run dist -w apps/desktop",
+    "build:desktop:win": "npm run build:client && npm run dist:win -w apps/desktop",
+    "build:desktop:linux": "npm run build:client && npm run dist:linux -w apps/desktop",
+    "build:desktop:mac": "npm run build:client && npm run dist:mac -w apps/desktop",
+    "build:android": "npm run build:client && npm run android:prepare -w apps/desktop",
     "build:client:lib": "npm run build:shared && npm run build:renderer && npm run build:editor && npm run build:extensions && npm run build:lib -w apps/client",
     "build:lander": "npm run build:shared && npm run build:renderer && npm run build -w apps/lander",
     "test": "npm run test:contracts && npm run test:shared && npm run test:renderer && npm run test:editor && npm run test:extensions && npm run test:client",

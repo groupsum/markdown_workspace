@@ -50,6 +50,7 @@ The client is therefore the host integration layer, not the source of truth for 
 - preview command: `npm run preview -w @mdwrk/mdwrkspace`
 - library build command: `npm run build:lib -w @mdwrk/mdwrkspace`
 - deploy semantics are documented through the PWA/update and static asset pipeline already present in the repo
+- native shell deployment targets are documented in `docs/apps/desktop-shell-app.md`
 
 ## Conformance record
 

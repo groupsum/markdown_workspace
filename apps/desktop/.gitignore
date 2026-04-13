@@ -1,0 +1,15 @@
+dist/
+node_modules/
+android/
+
+# Electron builder diagnostics
+builder-debug.yml
+latest*.yml
+
+# Native packaging outputs
+*.blockmap
+*.dmg
+*.exe
+*.AppImage
+*.aab
+*.apk

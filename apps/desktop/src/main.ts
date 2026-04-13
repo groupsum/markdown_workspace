@@ -40,7 +40,10 @@ async function readMarkdownFiles(pathsToRead: readonly string[]): Promise<Extern
 }
 
 function queueOpenPaths(pathsToQueue: readonly string[]): void {
-  if (pathsToQueue.length === 0) return;
+  if (pathsToQueue.length === 0) {
+    return;
+  }
+
   pendingOpenPaths = Array.from(new Set([...pendingOpenPaths, ...normalizeMarkdownPaths(pathsToQueue)]));
 }
 
@@ -51,7 +54,9 @@ async function deliverOpenPaths(pathsToOpen: readonly string[]): Promise<void> {
   }
 
   const files = await readMarkdownFiles(pathsToOpen);
-  if (files.length === 0) return;
+  if (files.length === 0) {
+    return;
+  }
 
   if (mainWindow.webContents.isLoading()) {
     queueOpenPaths(pathsToOpen);
@@ -62,14 +67,20 @@ async function deliverOpenPaths(pathsToOpen: readonly string[]): Promise<void> {
 }
 
 async function flushPendingOpenPaths(): Promise<void> {
-  if (pendingOpenPaths.length === 0) return;
+  if (pendingOpenPaths.length === 0) {
+    return;
+  }
+
   const nextPaths = pendingOpenPaths;
   pendingOpenPaths = [];
   await deliverOpenPaths(nextPaths);
 }
 
 async function pickMarkdownFiles(): Promise<ExternalMarkdownFile[]> {
-  if (!mainWindow) return [];
+  if (!mainWindow) {
+    return [];
+  }
+
   const result = await dialog.showOpenDialog(mainWindow, {
     title: 'Open Markdown Files',
     properties: ['openFile', 'multiSelections'],
@@ -89,7 +100,7 @@ function buildMenu(): void {
       label: 'File',
       submenu: [
         {
-          label: 'Open Markdown…',
+          label: 'Open Markdown...',
           accelerator: 'CmdOrCtrl+O',
           click: async () => {
             const files = await pickMarkdownFiles();
@@ -113,11 +124,11 @@ function buildMenu(): void {
       label: 'View',
       submenu: [
         { role: 'reload' },
-        { role: 'toggledevtools' },
+        { role: 'toggleDevTools' },
         { type: 'separator' },
-        { role: 'resetzoom' },
-        { role: 'zoomin' },
-        { role: 'zoomout' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
       ],
     },
     {

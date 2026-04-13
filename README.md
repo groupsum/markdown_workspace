@@ -10,7 +10,7 @@
 
 </div>
 
-`markdown_workspace` is a multi-package workspace for the MdWork client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
+`markdown_workspace` is a multi-package workspace for the MdWork client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
 
 Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
 
@@ -24,6 +24,11 @@ Retained client-version delivery and PWA version-state behavior are documented i
 
 ## Repository Overview
 This repository contains application shells, package workspaces, extension runtime and extension distribution tooling, conformance gates, and release automation.
+
+The native shell layer deploys the client bundle as:
+
+- Electron on Windows, macOS, and Linux
+- Capacitor on Android
 
 ## Repository Structure
 - `apps/` — deployable applications (`client`, `lander`)
@@ -52,6 +57,7 @@ npm run ci:governance
 
 ## Documentation Pointers
 - Workspace docs index: `docs/README.md`
+- Desktop shell reference: `docs/apps/desktop-shell-app.md`
 - Repository specs index: `specs/README.md`
 - Repository governance spec: `specs/repository-governance-spec.md`
 - Agents guidance: `AGENTS.md`

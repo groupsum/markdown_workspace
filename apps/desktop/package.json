@@ -1,14 +1,22 @@
 {
   "name": "@mdwrk/desktop",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "description": "Native shell wrapper for the MdWork client on Electron desktop and Capacitor Android.",
   "type": "module",
   "main": "./dist/main.js",
   "scripts": {
     "dev": "node ./scripts/dev.mjs",
     "build": "tsc -p tsconfig.json",
-    "dist": "npm run build && electron-builder",
+    "dist": "npm run build && electron-builder --publish never",
+    "dist:win": "npm run build && electron-builder --win nsis --publish never",
+    "dist:linux": "npm run build && electron-builder --linux AppImage --publish never",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip --publish never",
+    "dist:all": "npm run build && electron-builder --win nsis --linux AppImage --mac dmg zip --publish never",
     "publish": "npm run build && electron-builder --publish always",
+    "publish:win": "npm run build && electron-builder --win nsis --publish always",
+    "publish:linux": "npm run build && electron-builder --linux AppImage --publish always",
+    "publish:mac": "npm run build && electron-builder --mac dmg zip --publish always",
     "android:prepare": "node ./scripts/android-prepare.mjs",
     "android:release": "node ./scripts/android-release.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
@@ -18,13 +26,15 @@
     "appId": "com.mdwrk.desktop",
     "productName": "MdWork Desktop",
     "directories": {
-      "buildResources": "build"
+      "buildResources": "build",
+      "output": "dist/electron"
     },
     "files": [
       "dist/**/*",
       "../client/dist/**/*",
       "package.json"
     ],
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "fileAssociations": [
       {
         "ext": "md",
@@ -43,25 +53,42 @@
       "target": "nsis"
     },
     "mac": {
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "linux": {
-      "target": "AppImage"
-    }
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "releaseType": "release"
+      }
+    ]
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",
     "@capacitor/cli": "^7.4.3",
-    "@capacitor/core": "^7.4.3",
-    "electron": "^37.2.6"
+    "@capacitor/core": "^7.4.3"
   },
   "devDependencies": {
     "@types/node": "^24.6.1",
+    "electron": "^37.2.6",
     "electron-builder": "^26.0.12",
     "typescript": "^5.9.3",
     "wait-on": "^8.0.3"
   },
   "license": "Apache-2.0",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swarmauri/markdown_workspace.git"
+  }
 }

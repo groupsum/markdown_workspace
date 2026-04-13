@@ -19,8 +19,42 @@ env:
   NODE_VERSION: '20'
 
 jobs:
-  publish:
-    runs-on: ${{ inputs.target == 'android' && 'ubuntu-latest' || 'macos-latest' }}
+  publish-desktop:
+    if: ${{ inputs.target == 'desktop' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            platform: linux
+          - runner: windows-latest
+            platform: windows
+          - runner: macos-latest
+            platform: darwin
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm run ci:install
+
+      - name: Publish shell artifacts
+        env:
+          MDWRK_SHELL_TARGET: desktop
+          MDWRK_SHELL_PLATFORM: ${{ matrix.platform }}
+          GH_TOKEN: ${{ github.token }}
+        run: npm run ci:desktop:publish
+
+  publish-android:
+    if: ${{ inputs.target == 'android' }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +66,6 @@ jobs:
           cache: npm
 
       - name: Setup Java
-        if: ${{ inputs.target == 'android' }}
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -43,6 +76,6 @@ jobs:
 
       - name: Publish shell artifacts
         env:
-          MDWRK_SHELL_TARGET: ${{ inputs.target }}
+          MDWRK_SHELL_TARGET: android
           GH_TOKEN: ${{ github.token }}
         run: npm run ci:desktop:publish
