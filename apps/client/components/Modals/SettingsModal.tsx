@@ -5,6 +5,7 @@ import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 export interface SettingsModalSection {
   readonly id: string;
   readonly title: string;
+  readonly description?: string;
   readonly icon?: React.ReactNode;
   readonly panel?: string;
   readonly render: () => React.ReactNode;
@@ -26,12 +27,32 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   initialSectionId,
 }) => {
   const { t } = useClientI18n();
+  const resolvePanelLabel = React.useCallback((panel: string | undefined): string => {
+    if (!panel) return t('core.settings.group.general', 'GENERAL');
+    const fallbackLabel = panel.toUpperCase().replace(/[_\s]+/g, ' ');
+    const messageKey = `core.settings.group.${panel}`;
+    return t(messageKey, fallbackLabel);
+  }, [t]);
   const resolveSidebarLabel = React.useCallback((section: SettingsModalSection): string => {
     const fallbackLabel = section.title.toUpperCase().replace(/\s+/g, '_');
     const messageKey = `core.settings.sidebar.${section.id}.label`;
     return t(messageKey, fallbackLabel);
   }, [t]);
   const orderedSections = useMemo(() => [...sections], [sections]);
+  const groupedSections = useMemo(() => orderedSections.reduce<Array<{ panel: string; label: string; sections: SettingsModalSection[] }>>((groups, section) => {
+    const panel = section.panel ?? 'general';
+    const previous = groups.at(-1);
+    if (!previous || previous.panel !== panel) {
+      groups.push({
+        panel,
+        label: resolvePanelLabel(panel),
+        sections: [section],
+      });
+      return groups;
+    }
+    previous.sections.push(section);
+    return groups;
+  }, []), [orderedSections, resolvePanelLabel]);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(orderedSections[0]?.id ?? null);
 
   useEffect(() => {
@@ -63,31 +84,60 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
         <div className="settings-layout">
           <nav className="settings-sidebar">
-            {orderedSections.map((section) => (
-              <button
-                key={section.id}
-                type="button"
-                onClick={() => setActiveSectionId(section.id)}
-                className={`settings-sidebar-btn ${activeSection.id === section.id ? 'active' : ''}`}
-                title={section.title}
-              >
-                <span className="settings-sidebar-icon">{section.icon}</span>
-                <span className="settings-sidebar-label">{resolveSidebarLabel(section)}</span>
-              </button>
-            ))}
+            <div className="settings-sidebar-overview">
+              <span className="settings-sidebar-overview-label">{t('core.settings.nav.title', 'SETTINGS')}</span>
+              <span className="settings-sidebar-overview-count">{orderedSections.length}</span>
+            </div>
+            <div className="settings-sidebar-groups">
+              {groupedSections.map((group) => (
+                <div key={group.panel} className="settings-sidebar-group">
+                  <div className="settings-sidebar-group-label">{group.label}</div>
+                  <div className="settings-sidebar-group-items">
+                    {group.sections.map((section) => (
+                      <button
+                        key={section.id}
+                        type="button"
+                        onClick={() => setActiveSectionId(section.id)}
+                        className={`settings-sidebar-btn ${activeSection.id === section.id ? 'active' : ''}`}
+                        title={section.title}
+                        aria-label={section.title}
+                      >
+                        <span className="settings-sidebar-icon">{section.icon}</span>
+                        <span className="settings-sidebar-text">
+                          <span className="settings-sidebar-label">{resolveSidebarLabel(section)}</span>
+                          {section.description ? (
+                            <span className="settings-sidebar-caption">{section.description}</span>
+                          ) : null}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </nav>
 
           <div className="settings-content">
             <div className="settings-content-header">
               <div className="settings-content-title">
+                <span className="settings-content-kicker">{resolvePanelLabel(activeSection.panel)}</span>
                 <span className="settings-content-name">{activeSection.title}</span>
+                {activeSection.description ? (
+                  <p className="settings-content-description">{activeSection.description}</p>
+                ) : null}
               </div>
-              {activeThemeLabel && (
-                <div className="settings-content-meta">
-                  <span className="settings-content-meta-label">{t('core.settings.visual.active-theme', 'ACTIVE_THEME')}</span>
-                  <span className="settings-content-meta-value">{activeThemeLabel}</span>
+              <div className="settings-content-meta">
+                <div className="settings-content-meta-chip">
+                  <span className="settings-content-meta-label">{t('core.settings.meta.section', 'SECTION')}</span>
+                  <span className="settings-content-meta-value">{orderedSections.findIndex((section) => section.id === activeSection.id) + 1}/{orderedSections.length}</span>
                 </div>
-              )}
+                {activeThemeLabel && (
+                  <div className="settings-content-meta-chip">
+                    <span className="settings-content-meta-label">{t('core.settings.visual.active-theme', 'ACTIVE_THEME')}</span>
+                    <span className="settings-content-meta-value">{activeThemeLabel}</span>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="settings-content-frame">

@@ -1,20 +1,10 @@
 .settings-card {
-  border: var(--border-width) solid var(--border-color);
-  background: var(--bg-panel);
+  border: 1px solid color-mix(in srgb, var(--border-color) 38%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--bg-panel) 88%, var(--bg-inset));
   padding: 18px;
   position: relative;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-color) 50%, transparent);
-}
-
-.settings-card::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-inset);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 .settings-card-stack {
@@ -47,8 +37,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
-  border: var(--border-width) solid var(--border-color);
-  background: var(--bg-panel);
+  border: 1px solid color-mix(in srgb, var(--border-color) 34%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-panel) 90%, var(--bg-inset));
   padding: 12px;
   text-transform: uppercase;
   font-size: calc(11px * var(--ui-scale));
@@ -69,8 +60,9 @@
   white-space: nowrap;
   overflow-wrap: normal;
   padding: 4px 8px;
-  border: var(--border-width) solid var(--border-color);
-  background: var(--bg-inset);
+  border: 1px solid color-mix(in srgb, var(--border-color) 42%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-inset) 88%, transparent);
 }
 
 .settings-session-grid {
@@ -81,7 +73,7 @@
 
 .settings-session-item {
   padding: 6px 8px;
-  border: var(--border-width) solid var(--border-color);
+  border: 1px solid color-mix(in srgb, var(--border-color) 34%, transparent);
   background: color-mix(in srgb, var(--bg-panel) 82%, var(--bg-inset));
   display: flex;
   flex-direction: column;
@@ -110,11 +102,11 @@
 .settings-action-row {
   display: flex;
   gap: 8px;
-  background: var(--bg-inset);
-  border: var(--border-width) solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-inset) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-color) 28%, transparent);
   padding: 8px;
   flex-wrap: wrap;
-  border-radius: 8px;
+  border-radius: 14px;
 }
 
 .settings-chip-row {

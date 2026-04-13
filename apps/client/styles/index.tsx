@@ -1,6 +1,7 @@
 import './index.css';
 
 import coreCssText from './index.css?inline';
+import shellStructureCssText from './base/shell-structure.css?inline';
 import acidEtchedThemeCssText from './themes/theme-acid-etched.css?inline';
 import anodizedBilletThemeCssText from './themes/theme-anodized-billet.css?inline';
 import defaultThemeCssText from './themes/theme-default.css?inline';
@@ -14,19 +15,21 @@ import tensionedTechnicalSkeletonThemeCssText from './themes/theme-tensioned-tec
 import researchScienceThemeCssText from './themes/theme-research-science.css?inline';
 import zincThemeCssText from './themes/theme-zinc.css?inline';
 
+const withShellStructure = (themeCssText: string): string => `${themeCssText}\n${shellStructureCssText}`;
+
 export const THEME_STYLESHEET_TEXT = {
-  'acid-etched': acidEtchedThemeCssText,
-  'anodized-billet': anodizedBilletThemeCssText,
-  default: defaultThemeCssText,
-  'ferrous-monolith': ferrousMonolithThemeCssText,
-  'heavy-gauge-tectonic': heavyGaugeTectonicThemeCssText,
-  'galvanized-cellular': galvanizedCellularThemeCssText,
-  micropress: micropressThemeCssText,
-  'optical-vellum-drafting-grid': opticalVellumDraftingGridThemeCssText,
-  'pressed-chromium': pressedChromiumThemeCssText,
-  'tensioned-technical-skeleton': tensionedTechnicalSkeletonThemeCssText,
-  'research-science': researchScienceThemeCssText,
-  zinc: zincThemeCssText
+  'acid-etched': withShellStructure(acidEtchedThemeCssText),
+  'anodized-billet': withShellStructure(anodizedBilletThemeCssText),
+  default: withShellStructure(defaultThemeCssText),
+  'ferrous-monolith': withShellStructure(ferrousMonolithThemeCssText),
+  'heavy-gauge-tectonic': withShellStructure(heavyGaugeTectonicThemeCssText),
+  'galvanized-cellular': withShellStructure(galvanizedCellularThemeCssText),
+  micropress: withShellStructure(micropressThemeCssText),
+  'optical-vellum-drafting-grid': withShellStructure(opticalVellumDraftingGridThemeCssText),
+  'pressed-chromium': withShellStructure(pressedChromiumThemeCssText),
+  'tensioned-technical-skeleton': withShellStructure(tensionedTechnicalSkeletonThemeCssText),
+  'research-science': withShellStructure(researchScienceThemeCssText),
+  zinc: withShellStructure(zincThemeCssText)
 } as const;
 
 export const CORE_STYLESHEET_TEXT = coreCssText;

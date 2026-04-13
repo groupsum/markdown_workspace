@@ -125,10 +125,14 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
         ) : (
           <>
             <div className="workspace-panel-header">
-              <div className="flex items-center gap-2 overflow-hidden">
-                 <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
+              <div className="workspace-panel-title">
+                <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
+                <div className="workspace-panel-title-text">
+                  <span className="workspace-panel-kicker">Workspace</span>
+                  <span className="workspace-panel-name">{currentProject?.name ?? workspaceSidebarLabel ?? 'File Explorer'}</span>
+                </div>
               </div>
-              <div className="flex gap-1">
+              <div className="workspace-panel-actions">
                 <button
                   className="panel-icon-btn"
                   title="Expand All"

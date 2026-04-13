@@ -1,0 +1,343 @@
+/* Canonical shell structure: layout and responsive behavior live here, not in theme CSS. */
+
+:root[data-theme] .chassis-scaler {
+  grid-template-areas:
+    "rail top"
+    "rail main"
+    "rail foot";
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  grid-template-rows: var(--header-height) minmax(0, 1fr) var(--status-height);
+  min-width: 0;
+  min-height: 0;
+}
+
+:root[data-theme] .app-header,
+:root[data-theme] .status-bar {
+  grid-column: auto;
+  width: auto;
+}
+
+:root[data-theme] .app-header {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(0, 1.6fr) auto;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
+  padding: 0 12px;
+}
+
+:root[data-theme] .header-left,
+:root[data-theme] .header-center,
+:root[data-theme] .header-right {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+:root[data-theme] .header-left {
+  overflow: hidden;
+}
+
+:root[data-theme] .header-brand {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:root[data-theme] .header-brand-title {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:root[data-theme] .header-center {
+  overflow: hidden;
+  padding-left: 0;
+}
+
+:root[data-theme] .header-tabs,
+:root[data-theme] .tab-bar {
+  min-width: 0;
+  width: 100%;
+}
+
+:root[data-theme] .tab-bar {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+:root[data-theme] .tab-item {
+  min-width: 0;
+  max-width: min(220px, 28vw);
+}
+
+:root[data-theme] .tab-label {
+  min-width: 0;
+  max-width: none;
+  flex: 1;
+}
+
+:root[data-theme] .header-right {
+  justify-content: flex-end;
+  padding-left: 12px;
+  border-left: var(--border-width) solid color-mix(in srgb, var(--border-color) 70%, transparent);
+}
+
+:root[data-theme] .header-controls,
+:root[data-theme] .zoom-wrapper,
+:root[data-theme] .header-btn-group {
+  flex-shrink: 0;
+}
+
+:root[data-theme] .header-controls {
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+:root[data-theme] .workspace-manifold,
+:root[data-theme] .git-workspace {
+  min-width: 0;
+  min-height: 0;
+}
+
+:root[data-theme] .workspace-sidebar {
+  min-width: 220px;
+  max-width: min(40vw, 420px);
+}
+
+:root[data-theme] .workspace-panel-header,
+:root[data-theme] .panel-toolbar {
+  min-width: 0;
+  min-height: var(--panel-header-height);
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  overflow: hidden;
+}
+
+:root[data-theme] .workspace-panel-title {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+:root[data-theme] .workspace-panel-title-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:root[data-theme] .workspace-panel-kicker {
+  font-size: calc(7px * var(--ui-scale));
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 800;
+}
+
+:root[data-theme] .workspace-panel-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: calc(10px * var(--ui-scale));
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--fg-primary);
+}
+
+:root[data-theme] .workspace-panel-actions {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+:root[data-theme] .workspace-panel-content,
+:root[data-theme] .workspace-stage,
+:root[data-theme] .editor-pane-container,
+:root[data-theme] .editor-pane-shell,
+:root[data-theme] .editor-pane-body,
+:root[data-theme] .editor-pane-column {
+  min-width: 0;
+  min-height: 0;
+}
+
+:root[data-theme] .workspace-stage {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+:root[data-theme] .editor-pane-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+:root[data-theme] .editor-pane-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+}
+
+:root[data-theme] .view-toolbar {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 8px 10px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: var(--border-width) solid var(--border-color);
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-shadow: none;
+  transform: none;
+  z-index: 2;
+}
+
+:root[data-theme] .view-toolbar-group {
+  width: max-content;
+  min-width: max-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+
+:root[data-theme] .view-toolbar-btn {
+  flex: 0 0 auto;
+}
+
+:root[data-theme] .view-toolbar-divider,
+:root[data-theme] .view-toolbar-divider--pre-inline {
+  display: block;
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+}
+
+:root[data-theme] .editor-pane-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+:root[data-theme] .editor-pane-column {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  :root[data-theme] .app-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand controls"
+      "tabs tabs";
+    gap: 6px;
+    height: auto;
+    padding: 6px 8px;
+  }
+
+  :root[data-theme] .header-left {
+    grid-area: brand;
+  }
+
+  :root[data-theme] .header-center {
+    grid-area: tabs;
+    border-top: var(--border-width) solid color-mix(in srgb, var(--border-color) 65%, transparent);
+    padding-top: 6px;
+  }
+
+  :root[data-theme] .header-right {
+    grid-area: controls;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  :root[data-theme] .editor-pane-body {
+    flex-direction: column;
+  }
+
+  :root[data-theme] .editor-pane-body.is-split .editor-pane-column {
+    height: 50%;
+  }
+
+  :root[data-theme] .editor-splitter {
+    width: 100%;
+    height: var(--app-gap);
+    cursor: row-resize;
+  }
+
+  :root[data-theme] .editor-splitter-handle {
+    width: 24px;
+    height: 2px;
+  }
+}
+
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  :root[data-theme] .chassis-scaler {
+    grid-template-areas:
+      "top"
+      "main"
+      "rail"
+      "foot";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height) auto;
+  }
+
+  :root[data-theme] .workspace-manifold,
+  :root[data-theme] .git-workspace {
+    flex-direction: column;
+  }
+
+  :root[data-theme] .workspace-sidebar,
+  :root[data-theme] .git-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :root[data-theme] .workspace-sidebar:not(.is-collapsed) {
+    height: min(42%, 280px);
+  }
+
+  :root[data-theme] .workspace-sidebar:not(.is-collapsed) + .workspace-stage {
+    display: flex;
+    flex: 1;
+  }
+
+  :root[data-theme] .editor-pane-shell {
+    flex-direction: column;
+  }
+
+  :root[data-theme] .view-toolbar {
+    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: 0;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+}

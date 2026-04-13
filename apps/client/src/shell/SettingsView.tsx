@@ -26,6 +26,7 @@ export const SettingsView: React.FC = () => {
   const sections = React.useMemo<SettingsModalSection[]>(() => sectionsSnapshot.sections.map((section) => ({
     id: section.id,
     title: services.i18n.format(section.title),
+    description: section.description ? services.i18n.format(section.description) : undefined,
     icon: renderExtensionIcon(section.icon, 14),
     panel: section.panel,
     render: () => {
