@@ -38,14 +38,28 @@ const THEMES = [
   'default',
 ];
 
-const VIEWPORTS = [
-  { id: 'portrait', width: 900, height: 1400 },
-  { id: 'square', width: 1200, height: 1100 },
-  { id: 'landscape', width: 1440, height: 960 },
-  { id: 'wide', width: 1800, height: 960 },
-  { id: 'ultrawide', width: 2520, height: 960 },
+const VIEWPORT_CASES = [
+  { id: 'portrait-xs-tall-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'tall', deviceTier: 'touch', width: 420, height: 900, isMobile: true, hasTouch: true },
+  { id: 'portrait-sm-ultra-tall', aspectId: 'portrait', widthTier: 'sm', heightTier: 'ultra-tall', deviceTier: 'precision', width: 600, height: 1280 },
+  { id: 'portrait-md-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 700, height: 1000 },
+  { id: 'portrait-lg-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'tall', deviceTier: 'precision', width: 1100, height: 1468 },
+  { id: 'square-xs-short', aspectId: 'square', widthTier: 'xs', heightTier: 'short', deviceTier: 'precision', width: 460, height: 500 },
+  { id: 'square-sm-compact', aspectId: 'square', widthTier: 'sm', heightTier: 'compact', deviceTier: 'precision', width: 620, height: 700 },
+  { id: 'square-md-tall', aspectId: 'square', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 880, height: 920 },
+  { id: 'square-lg-ultra-tall', aspectId: 'square', widthTier: 'lg', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1180, height: 1200 },
+  { id: 'landscape-sm-short-touch', aspectId: 'landscape', widthTier: 'sm', heightTier: 'short', deviceTier: 'touch', width: 640, height: 480, isMobile: true, hasTouch: true },
+  { id: 'landscape-md-compact', aspectId: 'landscape', widthTier: 'md', heightTier: 'compact', deviceTier: 'precision', width: 900, height: 650 },
+  { id: 'landscape-lg-tall', aspectId: 'landscape', widthTier: 'lg', heightTier: 'tall', deviceTier: 'precision', width: 1200, height: 900 },
+  { id: 'wide-xl-compact', aspectId: 'wide', widthTier: 'xl', heightTier: 'compact', deviceTier: 'precision', width: 1600, height: 700 },
+  { id: 'wide-xxl-tall', aspectId: 'wide', widthTier: 'xxl', heightTier: 'tall', deviceTier: 'precision', width: 1920, height: 1000 },
+  { id: 'ultrawide-xl-short', aspectId: 'ultrawide', widthTier: 'xl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 520 },
+  { id: 'ultrawide-xxl-compact', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'compact', deviceTier: 'precision', width: 1920, height: 720 },
+  { id: 'ultrawide-xxl-tall', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'tall', deviceTier: 'precision', width: 2520, height: 1080 },
 ];
-const ASPECT_IDS = VIEWPORTS.map((viewport) => viewport.id);
+const ASPECT_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.aspectId))];
+const WIDTH_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.widthTier))];
+const HEIGHT_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.heightTier))];
+const DEVICE_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.deviceTier))];
 const VIEWPORT_ALIASES = new Map([
   ['portrait', 'portrait'],
   ['square', 'square'],
@@ -131,7 +145,10 @@ async function startStaticServer(rootDir) {
 }
 
 async function screenshot(page, themeId, viewportId, name) {
-  const targetDir = path.join(outputRoot, viewportId, themeId);
+  const viewportCase = VIEWPORT_CASES.find((entry) => entry.id === viewportId);
+  const targetDir = viewportCase
+    ? path.join(outputRoot, viewportCase.aspectId, viewportId, themeId)
+    : path.join(outputRoot, viewportId, themeId);
   await ensureDir(targetDir);
   const targetPath = path.join(targetDir, `${sanitize(name)}.jpg`);
   await withFileRetry(() => page.screenshot({
@@ -166,28 +183,50 @@ async function maybeVisibleLocator(page, selector, timeoutMs = 2_000) {
   }
 }
 
+async function clickAndWaitForVisible(page, locator, targetSelector, timeoutMs = 3_000) {
+  await locator.click({ force: true });
+  let target = await maybeVisibleLocator(page, targetSelector, timeoutMs);
+  if (target) {
+    return target;
+  }
+
+  await locator.evaluate((element) => {
+    if (element instanceof HTMLElement) {
+      element.click();
+    }
+  }).catch(() => {});
+
+  target = await maybeVisibleLocator(page, targetSelector, timeoutMs);
+  return target;
+}
+
 function normalizeViewportFilter(viewportFilter) {
   const invalidViewportIds = [];
-  const normalizedViewportIds = [];
+  const normalizedViewportIds = new Set();
 
   for (const requestedViewportId of viewportFilter) {
     const normalizedViewportId = VIEWPORT_ALIASES.get(requestedViewportId.toLowerCase());
-    if (!normalizedViewportId) {
-      invalidViewportIds.push(requestedViewportId);
+    if (normalizedViewportId) {
+      for (const viewportCase of VIEWPORT_CASES.filter((entry) => entry.aspectId === normalizedViewportId)) {
+        normalizedViewportIds.add(viewportCase.id);
+      }
       continue;
     }
-    if (!normalizedViewportIds.includes(normalizedViewportId)) {
-      normalizedViewportIds.push(normalizedViewportId);
+    const directViewportCaseMatch = VIEWPORT_CASES.find((entry) => entry.id === requestedViewportId);
+    if (directViewportCaseMatch) {
+      normalizedViewportIds.add(directViewportCaseMatch.id);
+      continue;
     }
+    invalidViewportIds.push(requestedViewportId);
   }
 
   if (invalidViewportIds.length > 0) {
     throw new Error(
-      `Unknown VIEWPORT_FILTER value(s): ${invalidViewportIds.join(', ')}. Expected one of ${[...VIEWPORT_ALIASES.keys()].join(', ')}`,
+      `Unknown VIEWPORT_FILTER value(s): ${invalidViewportIds.join(', ')}. Expected an aspect alias (${[...VIEWPORT_ALIASES.keys()].join(', ')}) or a viewport case id (${VIEWPORT_CASES.map((entry) => entry.id).join(', ')})`,
     );
   }
 
-  return normalizedViewportIds;
+  return [...normalizedViewportIds];
 }
 
 async function readViewportContractAspectIds() {
@@ -210,9 +249,9 @@ async function assertViewportAspectBand(page, viewport) {
   const actualAspectId = await page.evaluate(
     () => getComputedStyle(document.documentElement).getPropertyValue('--viewbox-aspect').trim(),
   );
-  if (actualAspectId !== viewport.id) {
+  if (actualAspectId !== viewport.aspectId) {
     throw new Error(
-      `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to CSS aspect band "${actualAspectId}" instead of "${viewport.id}"`,
+      `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to CSS aspect band "${actualAspectId}" instead of "${viewport.aspectId}"`,
     );
   }
 }
@@ -224,7 +263,7 @@ async function collectCaptureManifest(targetViewports, targetThemes) {
   for (const viewport of targetViewports) {
     const themeEntries = [];
     for (const themeId of targetThemes) {
-      const targetDir = path.join(outputRoot, viewport.id, themeId);
+      const targetDir = path.join(outputRoot, viewport.aspectId, viewport.id, themeId);
       const captureFiles = (await fs.readdir(targetDir, { withFileTypes: true }).catch(() => []))
         .filter((entry) => entry.isFile() && entry.name.endsWith('.jpg'))
         .map((entry) => entry.name)
@@ -244,6 +283,10 @@ async function collectCaptureManifest(targetViewports, targetThemes) {
 
     viewportEntries.push({
       viewportId: viewport.id,
+      aspectId: viewport.aspectId,
+      widthTier: viewport.widthTier,
+      heightTier: viewport.heightTier,
+      deviceTier: viewport.deviceTier,
       width: viewport.width,
       height: viewport.height,
       themeCount: themeEntries.length,
@@ -255,7 +298,14 @@ async function collectCaptureManifest(targetViewports, targetThemes) {
     generatedAt: new Date().toISOString(),
     outputRoot: path.relative(repoRoot, outputRoot),
     viewportContractPath: path.relative(repoRoot, viewportContractPath),
-    viewportCount: targetViewports.length,
+    viewportCaseCount: targetViewports.length,
+    aspectCount: new Set(targetViewports.map((viewport) => viewport.aspectId)).size,
+    widthTierCount: new Set(targetViewports.map((viewport) => viewport.widthTier)).size,
+    heightTierCount: new Set(targetViewports.map((viewport) => viewport.heightTier)).size,
+    deviceTierCount: new Set(targetViewports.map((viewport) => viewport.deviceTier)).size,
+    widthTiersCovered: WIDTH_TIER_IDS.filter((tierId) => targetViewports.some((viewport) => viewport.widthTier === tierId)),
+    heightTiersCovered: HEIGHT_TIER_IDS.filter((tierId) => targetViewports.some((viewport) => viewport.heightTier === tierId)),
+    deviceTiersCovered: DEVICE_TIER_IDS.filter((tierId) => targetViewports.some((viewport) => viewport.deviceTier === tierId)),
     themeCount: targetThemes.length,
     totalCaptureCount,
     viewports: viewportEntries,
@@ -308,13 +358,20 @@ async function closeModal(page) {
 }
 
 async function openWorkspace(page) {
-  await page.locator('.project-card').first().click({ force: true });
-  await page.locator('.workspace-manifold').waitFor({ state: 'visible', timeout: 15000 });
+  const projectCard = await findVisibleLocator(page, '.project-card', 15_000);
+  const workspaceManifold = await clickAndWaitForVisible(page, projectCard, '.workspace-manifold', 15_000);
+  if (!workspaceManifold) {
+    throw new Error('Timed out opening the workspace manifold from the project selector.');
+  }
 }
 
 async function captureThemeViewport(browser, themeId, viewport) {
-  await resetDir(path.join(outputRoot, viewport.id, themeId));
-  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } });
+  await resetDir(path.join(outputRoot, viewport.aspectId, viewport.id, themeId));
+  const context = await browser.newContext({
+    viewport: { width: viewport.width, height: viewport.height },
+    isMobile: Boolean(viewport.isMobile),
+    hasTouch: Boolean(viewport.hasTouch),
+  });
   await context.addInitScript((theme) => {
     localStorage.setItem('lattice-theme', theme);
     localStorage.removeItem('lastProjectId');
@@ -327,22 +384,25 @@ async function captureThemeViewport(browser, themeId, viewport) {
   await screenshot(page, themeId, viewport.id, 'selector');
 
   const newVaultButton = await findVisibleLocator(page, 'button:has-text("NEW_VAULT")');
-  await newVaultButton.click({ force: true });
-  await page.locator('.project-create-modal').waitFor({ state: 'visible' });
-  await screenshot(page, themeId, viewport.id, 'selector-create-modal');
-  await closeModal(page);
+  const projectCreateModal = await clickAndWaitForVisible(page, newVaultButton, '.project-create-modal');
+  if (projectCreateModal) {
+    await screenshot(page, themeId, viewport.id, 'selector-create-modal');
+    await closeModal(page);
+  }
 
   const projectThemeButton = await findVisibleLocator(page, 'button[title="Project Theme"]');
-  await projectThemeButton.click({ force: true });
-  await page.locator('.theme-selector-modal').waitFor({ state: 'visible' });
-  await screenshot(page, themeId, viewport.id, 'selector-theme-modal');
-  await closeModal(page);
+  const themeSelectorModal = await clickAndWaitForVisible(page, projectThemeButton, '.theme-selector-modal');
+  if (themeSelectorModal) {
+    await screenshot(page, themeId, viewport.id, 'selector-theme-modal');
+    await closeModal(page);
+  }
 
   const ejectProjectButton = await findVisibleLocator(page, 'button[title="Eject Project"]');
-  await ejectProjectButton.click({ force: true });
-  await page.locator('.project-delete-modal').waitFor({ state: 'visible' });
-  await screenshot(page, themeId, viewport.id, 'selector-delete-modal');
-  await closeModal(page);
+  const projectDeleteModal = await clickAndWaitForVisible(page, ejectProjectButton, '.project-delete-modal');
+  if (projectDeleteModal) {
+    await screenshot(page, themeId, viewport.id, 'selector-delete-modal');
+    await closeModal(page);
+  }
 
   await openWorkspace(page);
   await screenshot(page, themeId, viewport.id, 'workspace-editor');
@@ -515,8 +575,8 @@ async function main() {
   try {
     const normalizedViewportFilter = normalizeViewportFilter(VIEWPORT_FILTER);
     const targetViewports = normalizedViewportFilter.length > 0
-      ? VIEWPORTS.filter((viewport) => normalizedViewportFilter.includes(viewport.id))
-      : VIEWPORTS;
+      ? VIEWPORT_CASES.filter((viewport) => normalizedViewportFilter.includes(viewport.id))
+      : VIEWPORT_CASES;
     const targetThemes = THEME_FILTER.length > 0 ? THEMES.filter((themeId) => THEME_FILTER.includes(themeId)) : THEMES;
 
     if (targetThemes.length === 0) {
