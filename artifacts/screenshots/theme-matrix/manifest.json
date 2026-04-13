@@ -1,0 +1,214 @@
+{
+  "generatedAt": "2026-04-13T07:45:58.567Z",
+  "outputRoot": "artifacts\\screenshots\\theme-matrix",
+  "viewportContractPath": "apps\\client\\styles\\base\\viewports.css",
+  "viewportCount": 5,
+  "themeCount": 1,
+  "totalCaptureCount": 134,
+  "viewports": [
+    {
+      "viewportId": "portrait",
+      "width": 900,
+      "height": 1400,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 13,
+          "captures": [
+            "extension-manager-modal.jpg",
+            "language-pack-manager-modal.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "theme-studio-modal.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "square",
+      "width": 1200,
+      "height": 1100,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 31,
+          "captures": [
+            "extension-manager-pane-sidebar-collapsed.jpg",
+            "extension-manager-pane-sidebar-restored.jpg",
+            "extension-manager-pane-single.jpg",
+            "extension-manager-pane-split-restored.jpg",
+            "extension-manager-pane-split.jpg",
+            "language-pack-studio-pane-active.jpg",
+            "language-pack-studio-pane-created.jpg",
+            "language-pack-studio-pane-imported.jpg",
+            "language-pack-studio-pane-removed.jpg",
+            "language-pack-studio-pane-sidebar-collapsed.jpg",
+            "language-pack-studio-pane-sidebar-restored.jpg",
+            "language-pack-studio-pane-single.jpg",
+            "language-pack-studio-pane-split-restored.jpg",
+            "language-pack-studio-pane-split.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "table-builder-modal.jpg",
+            "theme-studio-pane-sidebar-collapsed.jpg",
+            "theme-studio-pane-sidebar-restored.jpg",
+            "theme-studio-pane-single.jpg",
+            "theme-studio-pane-split-restored.jpg",
+            "theme-studio-pane-split.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg",
+            "workspace-split.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "landscape",
+      "width": 1440,
+      "height": 960,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 31,
+          "captures": [
+            "extension-manager-pane-sidebar-collapsed.jpg",
+            "extension-manager-pane-sidebar-restored.jpg",
+            "extension-manager-pane-single.jpg",
+            "extension-manager-pane-split-restored.jpg",
+            "extension-manager-pane-split.jpg",
+            "language-pack-studio-pane-active.jpg",
+            "language-pack-studio-pane-created.jpg",
+            "language-pack-studio-pane-imported.jpg",
+            "language-pack-studio-pane-removed.jpg",
+            "language-pack-studio-pane-sidebar-collapsed.jpg",
+            "language-pack-studio-pane-sidebar-restored.jpg",
+            "language-pack-studio-pane-single.jpg",
+            "language-pack-studio-pane-split-restored.jpg",
+            "language-pack-studio-pane-split.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "table-builder-modal.jpg",
+            "theme-studio-pane-sidebar-collapsed.jpg",
+            "theme-studio-pane-sidebar-restored.jpg",
+            "theme-studio-pane-single.jpg",
+            "theme-studio-pane-split-restored.jpg",
+            "theme-studio-pane-split.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg",
+            "workspace-split.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "wide",
+      "width": 1800,
+      "height": 960,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 31,
+          "captures": [
+            "extension-manager-pane-sidebar-collapsed.jpg",
+            "extension-manager-pane-sidebar-restored.jpg",
+            "extension-manager-pane-single.jpg",
+            "extension-manager-pane-split-restored.jpg",
+            "extension-manager-pane-split.jpg",
+            "language-pack-studio-pane-active.jpg",
+            "language-pack-studio-pane-created.jpg",
+            "language-pack-studio-pane-imported.jpg",
+            "language-pack-studio-pane-removed.jpg",
+            "language-pack-studio-pane-sidebar-collapsed.jpg",
+            "language-pack-studio-pane-sidebar-restored.jpg",
+            "language-pack-studio-pane-single.jpg",
+            "language-pack-studio-pane-split-restored.jpg",
+            "language-pack-studio-pane-split.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "table-builder-modal.jpg",
+            "theme-studio-pane-sidebar-collapsed.jpg",
+            "theme-studio-pane-sidebar-restored.jpg",
+            "theme-studio-pane-single.jpg",
+            "theme-studio-pane-split-restored.jpg",
+            "theme-studio-pane-split.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg",
+            "workspace-split.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "ultrawide",
+      "width": 2520,
+      "height": 960,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 28,
+          "captures": [
+            "extension-manager-pane-sidebar-collapsed.jpg",
+            "extension-manager-pane-sidebar-restored.jpg",
+            "extension-manager-pane-single.jpg",
+            "extension-manager-pane-split-restored.jpg",
+            "extension-manager-pane-split.jpg",
+            "language-pack-studio-pane-active.jpg",
+            "language-pack-studio-pane-created.jpg",
+            "language-pack-studio-pane-imported.jpg",
+            "language-pack-studio-pane-removed.jpg",
+            "language-pack-studio-pane-sidebar-collapsed.jpg",
+            "language-pack-studio-pane-sidebar-restored.jpg",
+            "language-pack-studio-pane-single.jpg",
+            "language-pack-studio-pane-split-restored.jpg",
+            "language-pack-studio-pane-split.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-github-configurations.jpg",
+            "table-builder-modal.jpg",
+            "theme-studio-pane-sidebar-collapsed.jpg",
+            "theme-studio-pane-sidebar-restored.jpg",
+            "theme-studio-pane-single.jpg",
+            "theme-studio-pane-split-restored.jpg",
+            "theme-studio-pane-split.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg",
+            "workspace-split.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}
