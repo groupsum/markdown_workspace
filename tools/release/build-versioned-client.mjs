@@ -64,6 +64,50 @@ const copyDir = async (source, target) => {
 
 const relativeFromRoot = (...segments) => segments.join('/').replaceAll('\\', '/');
 
+const rewriteFileSafeRelativePaths = async (targetPath, replacer) => {
+  const sourceText = await fs.readFile(targetPath, 'utf-8');
+  const nextText = replacer(sourceText);
+  if (nextText !== sourceText) {
+    await fs.writeFile(targetPath, nextText, 'utf-8');
+  }
+};
+
+const rewriteVersionedClientForRelativeHosting = async () => {
+  const versionPrefix = `/client/versions/${appVersion}/`;
+  const stack = [versionOutDir];
+
+  while (stack.length > 0) {
+    const currentDir = stack.pop();
+    const entries = await fs.readdir(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const nextPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(nextPath);
+        continue;
+      }
+
+      if (!/\.(?:html|js|css|json|webmanifest)$/i.test(entry.name)) {
+        continue;
+      }
+
+      await rewriteFileSafeRelativePaths(nextPath, (sourceText) => sourceText.replaceAll(versionPrefix, './'));
+    }
+  }
+
+  const versionManifestWebPath = path.join(versionOutDir, 'manifest.webmanifest');
+  const manifestWeb = JSON.parse(await fs.readFile(versionManifestWebPath, 'utf-8'));
+  manifestWeb.start_url = './';
+  if (Array.isArray(manifestWeb.icons)) {
+    manifestWeb.icons = manifestWeb.icons.map((icon) => ({
+      ...icon,
+      src: typeof icon.src === 'string' && icon.src.startsWith('/')
+        ? `.${icon.src}`
+        : icon.src,
+    }));
+  }
+  await fs.writeFile(versionManifestWebPath, JSON.stringify(manifestWeb, null, 2), 'utf-8');
+};
+
 const writeBootstrapFiles = async (manifest) => {
   const bootstrapHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -85,10 +129,10 @@ const writeBootstrapFiles = async (manifest) => {
     <h1>MdWork</h1>
     <p id="bootstrap-status">Resolving retained client version...</p>
   </main>
-  <script type="module" src="/bootstrap.js"></script>
+  <script type="module" src="./bootstrap.js"></script>
 </body>
 </html>`;
-  const bootstrapJs = `const INDEX_PATH = '/client/versions/index.json';
+  const bootstrapJs = `const INDEX_PATH = new URL('./client/versions/index.json', window.location.href);
 const SELECTED_VERSION_STORAGE_KEY = 'lattice-selected-client-version';
 const statusNode = document.getElementById('bootstrap-status');
 
@@ -106,8 +150,8 @@ const resolveSelectedVersion = (manifest) => {
 
 const goToVersion = (version) => {
   window.localStorage.setItem(SELECTED_VERSION_STORAGE_KEY, version);
-  const target = '/client/versions/' + encodeURIComponent(version) + '/';
-  if (window.location.pathname !== target) {
+  const target = new URL('./client/versions/' + encodeURIComponent(version) + '/', window.location.href);
+  if (window.location.href !== target.href) {
     window.location.replace(target);
   }
 };
@@ -154,6 +198,7 @@ if (retainedSourceRoot) {
 }
 
 await run('node', [viteBin, 'build', '--configLoader', 'runner']);
+await rewriteVersionedClientForRelativeHosting();
 
 const nextEntries = [
   {
