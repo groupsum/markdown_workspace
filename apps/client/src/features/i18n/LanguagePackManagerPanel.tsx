@@ -37,6 +37,10 @@ export const LanguagePackManagerPanel: React.FC = () => {
     void initializeLanguagePackStore();
   }, []);
 
+  const builtInCount = packs.filter((pack) => pack.source === 'built-in').length;
+  const installedCount = packs.filter((pack) => pack.source === 'installed').length;
+  const enabledCount = packs.filter((pack) => pack.enabled).length;
+
   const activatePack = React.useCallback(async (pack: LanguagePackArtifact) => {
     if (!pack.enabled) {
       return;
@@ -97,33 +101,53 @@ export const LanguagePackManagerPanel: React.FC = () => {
               <button type="button" className="modal-btn" onClick={() => { void setAllStoredLanguagePackEnabled(true); }}>
                 <PanelLeftOpen size={14} /> ENABLE_ALL
               </button>
-              <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void services.views.open('core.language-pack-studio.view'); }}>
+              <button
+                type="button"
+                className="modal-btn modal-btn-primary"
+                onClick={() => {
+                  void services.views.close('core.settings');
+                  void services.views.open('core.language-pack-studio.view');
+                }}
+              >
                 <Languages size={14} /> OPEN_STUDIO
               </button>
             </div>
           </div>
           <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={handleImport} />
           {error && <p className="text-[11px] text-[var(--status-error)]">{error}</p>}
-          <div className="settings-session-grid">
-            <div className="settings-session-item"><span className="settings-session-label">PACKS</span><span className="settings-session-value">{packs.length}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">ENABLED</span><span className="settings-session-value">{packs.filter((pack) => pack.enabled).length}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{locale}</span></div>
+          <div className="settings-inline-stats">
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Packs</span><span className="settings-inline-stat-value">{packs.length}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Enabled</span><span className="settings-inline-stat-value">{enabledCount}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Active</span><span className="settings-inline-stat-value">{locale}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Built In</span><span className="settings-inline-stat-value">{builtInCount}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Installed</span><span className="settings-inline-stat-value">{installedCount}</span></span>
           </div>
           <div className="settings-chip-row">
-            <span className="settings-chip">{packs.filter((pack) => pack.source === 'built-in').length} BUILT_IN</span>
-            <span className="settings-chip">{packs.filter((pack) => pack.source === 'installed').length} INSTALLED</span>
+            <span className="settings-chip">{builtInCount} BUILT_IN</span>
+            <span className="settings-chip">{installedCount} INSTALLED</span>
             <span className="settings-chip">INDEXEDDB</span>
           </div>
         </div>
 
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
-          <div className="flex flex-col gap-3">
+          <div className="settings-list">
             {packs.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">NO_IMPORTED_LANGUAGE_PACKS</span>}
             {packs.map((pack) => (
-              <div key={pack.locale} className="settings-session-item">
-                <span className="settings-session-label">{pack.source.toUpperCase()}</span>
-                <span className="settings-session-value">{pack.label} · {pack.locale}</span>
-                <div className="settings-action-row">
+              <div key={pack.locale} className="settings-list-row">
+                <div className="settings-list-row-main">
+                  <div className="settings-list-row-title">
+                    <span>{pack.label}</span>
+                    <span className="settings-chip">{pack.locale}</span>
+                    <span className="settings-chip">{pack.source === 'built-in' ? 'BUILT_IN' : 'INSTALLED'}</span>
+                    <span className="settings-chip">{pack.enabled ? 'ENABLED' : 'DISABLED'}</span>
+                  </div>
+                  <div className="settings-list-row-subtitle">
+                    {pack.source === 'built-in'
+                      ? 'Bundled with the core shell catalog.'
+                      : 'Stored in IndexedDB and available for export, activation, and removal.'}
+                  </div>
+                </div>
+                <div className="settings-list-row-actions">
                   <button type="button" className="modal-btn" onClick={() => { void setStoredLanguagePackEnabled(pack.locale, !pack.enabled); }}>
                     {pack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {pack.enabled ? 'DISABLE' : 'ENABLE'}
                   </button>

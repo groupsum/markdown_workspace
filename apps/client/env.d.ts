@@ -37,6 +37,7 @@ interface DesktopShellApi {
   movePath(payload: { path: string; targetFolderPath: string }): Promise<{ path: string }>;
   getLaunchMarkdownFiles(): Promise<DesktopMarkdownFile[]>;
   onOpenMarkdownFiles(listener: (files: DesktopMarkdownFile[]) => void): () => void;
+  onMountProjectDirectory(listener: (snapshot: DesktopWorkspaceSnapshot) => void): () => void;
   onSaveActiveMarkdownRequested(listener: () => void): () => void;
 }
 

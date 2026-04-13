@@ -149,9 +149,18 @@
     0 10px 24px color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
+.settings-sidebar-btn[data-active="true"] {
+  outline: 0;
+}
+
 .settings-sidebar-btn.active .settings-sidebar-icon {
   background: color-mix(in srgb, var(--accent) 18%, transparent);
   color: var(--accent);
+}
+
+.settings-sidebar-btn.active .settings-sidebar-label,
+.settings-sidebar-btn.active .settings-sidebar-caption {
+  color: var(--fg-primary);
 }
 
 .settings-content {

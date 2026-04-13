@@ -66,6 +66,12 @@ export const GitSettingsPanel: React.FC = () => {
             onGitConfigChange={handleDraftChange}
           />
 
+          <div className="settings-inline-stats">
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Auth Mode</span><span className="settings-inline-stat-value">{draft.authMode.toUpperCase()}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Provider</span><span className="settings-inline-stat-value">{provider.toUpperCase()}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Host</span><span className="settings-inline-stat-value">{PROVIDER_REPO_HOST[provider]}</span></span>
+          </div>
+
           <label className="flex flex-col gap-2">
             <span className="text-[10px] font-bold text-[var(--fg-muted)]">BRANCH</span>
             <input
@@ -76,11 +82,15 @@ export const GitSettingsPanel: React.FC = () => {
             />
           </label>
 
-          <div className="settings-session-grid">
-            <div className="settings-session-item"><span className="settings-session-label">AUTH_MODE</span><span className="settings-session-value">{draft.authMode.toUpperCase()}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">PROVIDER</span><span className="settings-session-value">{provider.toUpperCase()}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">REPO_HOST</span><span className="settings-session-value">{PROVIDER_REPO_HOST[provider]}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">NORMALIZED_REPO</span><span className="settings-session-value">{normalizedRepo || 'UNSET'}</span></div>
+          <div className="settings-list-row">
+            <div className="settings-list-row-main">
+              <div className="settings-list-row-title">NORMALIZED_REPOSITORY</div>
+              <div className="settings-list-row-subtitle">{normalizedRepo || 'UNSET'}</div>
+            </div>
+            <div className="settings-list-row-actions">
+              <span className="settings-chip">{provider.toUpperCase()}</span>
+              <span className="settings-chip">{draft.branch || 'MAIN'}</span>
+            </div>
           </div>
         </div>
 

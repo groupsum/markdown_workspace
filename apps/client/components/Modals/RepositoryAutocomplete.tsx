@@ -49,7 +49,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
         }
       } catch (err) {
         if (!cancelled) {
-          const message = err instanceof Error ? err.message : t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES…');
+          const message = err instanceof Error ? err.message : t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES...');
           setError(message);
           setRepoUrls([]);
         }
@@ -96,35 +96,74 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
   };
 
   return (
-    <label className="flex flex-col gap-2">
-      <span className="text-[10px] font-bold text-[var(--fg-muted)]">REPOSITORY URL</span>
-      <input
-        list="repo-autocomplete"
-        className="modal-input !text-xs !py-3"
-        value={gitConfig.repoUrl}
-        onChange={(event) => onRepoUrlChange(event.target.value)}
-        placeholder={`https://${selectedRepoHost}/owner/repo`}
-      />
-      <datalist id="repo-autocomplete">
-        {filteredSuggestions.map((repo) => (
-          <option key={repo} value={repo} />
-        ))}
-      </datalist>
-      {loading && <span className="text-[10px] text-[var(--fg-muted)]">{t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES…')}</span>}
-      {lastUpdatedAt && <span className="text-[10px] text-[var(--fg-muted)]">UPDATED {new Date(lastUpdatedAt).toLocaleTimeString()}</span>}
-      {error && <span className="text-[10px] text-[var(--danger)]">{error.toUpperCase()}</span>}
-      {!canLoadRepos && (
-        <span className="text-[10px] text-[var(--fg-muted)]">
-          {gitConfig.authMode === 'pat'
-            ? t('core.settings.git.pat.required', 'ENTER A PAT TO LOAD REPOSITORIES.')
-            : t('core.settings.git.oidc.required', 'CONNECT OIDC TO LOAD REPOSITORIES.')}
-        </span>
+    <div className="flex flex-col gap-3">
+      <label className="flex flex-col gap-2">
+        <span className="text-[10px] font-bold text-[var(--fg-muted)]">REPOSITORY URL</span>
+        <input
+          list="repo-autocomplete"
+          className="modal-input !text-xs !py-3"
+          value={gitConfig.repoUrl}
+          onChange={(event) => onRepoUrlChange(event.target.value)}
+          placeholder={`https://${selectedRepoHost}/owner/repo`}
+        />
+        <datalist id="repo-autocomplete">
+          {filteredSuggestions.map((repo) => (
+            <option key={repo} value={repo} />
+          ))}
+        </datalist>
+      </label>
+
+      <div className="settings-inline-stats">
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Loaded</span><span className="settings-inline-stat-value">{repoUrls.length}</span></span>
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Matches</span><span className="settings-inline-stat-value">{filteredSuggestions.length}</span></span>
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Host</span><span className="settings-inline-stat-value">{selectedRepoHost}</span></span>
+      </div>
+
+      {(loading || lastUpdatedAt || error || !canLoadRepos) && (
+        <div className="settings-list">
+          {loading && (
+            <div className="settings-list-row">
+              <div className="settings-list-row-main">
+                <div className="settings-list-row-title">{t('core.settings.git.loading-repositories', 'LOADING_REPOSITORIES...')}</div>
+              </div>
+            </div>
+          )}
+          {lastUpdatedAt && (
+            <div className="settings-list-row">
+              <div className="settings-list-row-main">
+                <div className="settings-list-row-title">LAST_REFRESH</div>
+                <div className="settings-list-row-subtitle">{new Date(lastUpdatedAt).toLocaleTimeString()}</div>
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="settings-list-row">
+              <div className="settings-list-row-main">
+                <div className="settings-list-row-title">ERROR</div>
+                <div className="settings-list-row-subtitle">{error.toUpperCase()}</div>
+              </div>
+            </div>
+          )}
+          {!canLoadRepos && (
+            <div className="settings-list-row">
+              <div className="settings-list-row-main">
+                <div className="settings-list-row-title">AUTH REQUIRED</div>
+                <div className="settings-list-row-subtitle">
+                  {gitConfig.authMode === 'pat'
+                    ? t('core.settings.git.pat.required', 'ENTER A PAT TO LOAD REPOSITORIES.')
+                    : t('core.settings.git.oidc.required', 'CONNECT OIDC TO LOAD REPOSITORIES.')}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       )}
+
       {Boolean(projectId && gitConfig.repoUrl.trim()) && !repoUrls.includes(gitConfig.repoUrl.trim()) && (
         <button type="button" className="modal-btn modal-btn-primary" onClick={handleCreatePrivateRepo} disabled={createPending}>
-          {createPending ? t('core.settings.git.creating', 'CREATING_PRIVATE_REPO…') : t('core.settings.git.create-private-repo', 'CREATE_PRIVATE_REPO')}
+          {createPending ? t('core.settings.git.creating', 'CREATING_PRIVATE_REPO...') : t('core.settings.git.create-private-repo', 'CREATE_PRIVATE_REPO')}
         </button>
       )}
-    </label>
+    </div>
   );
 };

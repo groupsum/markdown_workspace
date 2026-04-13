@@ -47,6 +47,13 @@ const desktopShell = {
       ipcRenderer.removeListener('desktop:open-markdown-files', wrapped);
     };
   },
+  onMountProjectDirectory: (listener: (snapshot: DesktopWorkspaceSnapshot) => void) => {
+    const wrapped = (_event: Electron.IpcRendererEvent, snapshot: DesktopWorkspaceSnapshot) => listener(snapshot);
+    ipcRenderer.on('desktop:mount-project-directory', wrapped);
+    return () => {
+      ipcRenderer.removeListener('desktop:mount-project-directory', wrapped);
+    };
+  },
   onSaveActiveMarkdownRequested: (listener: () => void) => {
     const wrapped = () => listener();
     ipcRenderer.on('desktop:save-active-markdown', wrapped);

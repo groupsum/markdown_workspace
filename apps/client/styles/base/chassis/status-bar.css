@@ -13,6 +13,7 @@
   align-items: center;
   gap: 4px;
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .status-item__icon {
@@ -35,6 +36,20 @@
 
 .status-text-bold {
   font-weight: 900;
+}
+
+.status-runtime {
+  overflow: visible;
+  max-width: none;
+}
+
+.status-item--release,
+.status-item--network,
+.status-item--autosave,
+.status-item--encoding,
+.status-item--cursor,
+.status-item--storage {
+  display: flex;
 }
 
 .status-text--on {
@@ -76,14 +91,59 @@
 
 
 @media (max-width: 640px) {
-  .status-item--optional,
-  .status-item--cursor,
-  .status-sep {
-    display: none;
-  }
-
-  .status-right {
+  .status-bar {
     justify-content: flex-start;
     gap: 6px;
+    overflow: hidden;
+  }
+
+  .status-left,
+  .status-right {
+    flex-wrap: nowrap;
+    gap: 6px;
+    min-width: 0;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .status-kv,
+  .status-label,
+  .status-text-bold {
+    font-size: calc(8px * var(--ui-scale));
+  }
+
+  .status-sep {
+    display: block;
+  }
+
+  .status-item--release {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .status-item--encoding,
+  .status-item--autosave,
+  .status-left .status-sep:first-of-type,
+  .status-left .status-sep:last-of-type {
+    display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .status-item--storage,
+  .status-item--cursor,
+  .status-item--network,
+  .status-right > .status-sep:nth-of-type(1),
+  .status-right > .status-sep:nth-of-type(2),
+  .status-right > .status-sep:nth-of-type(3),
+  .status-left > .status-sep {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .status-item--state {
+    display: none;
   }
 }

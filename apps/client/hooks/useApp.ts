@@ -372,37 +372,6 @@ export const useApp = () => {
   }, [flushPendingDesktopFiles]);
 
   useEffect(() => {
-    if (!window.desktopShell) {
-      return;
-    }
-
-    let isMounted = true;
-
-    window.desktopShell.getLaunchMarkdownFiles()
-      .then((files) => {
-        if (isMounted) {
-          queueDesktopFiles(files);
-        }
-      })
-      .catch((error) => {
-        console.warn('[useApp] Failed to read launch markdown files', error);
-      });
-
-    const unsubscribeOpen = window.desktopShell.onOpenMarkdownFiles((files) => {
-      queueDesktopFiles(files);
-    });
-    const unsubscribeSave = window.desktopShell.onSaveActiveMarkdownRequested(() => {
-      void saveCurrentFile();
-    });
-
-    return () => {
-      isMounted = false;
-      unsubscribeOpen();
-      unsubscribeSave();
-    };
-  }, [queueDesktopFiles, saveCurrentFile]);
-
-  useEffect(() => {
     const clearPrintAttributes = () => {
       document.body.removeAttribute('data-print-background');
     };
@@ -439,6 +408,29 @@ export const useApp = () => {
     await loadProject(newProj.id);
   }, [fileSys, loadProject, proj]);
 
+  const mountFilesystemSnapshotToProject = useCallback(async (snapshot: DesktopWorkspaceSnapshot, projectId: string) => {
+    const targetProject = proj.projects.find((project) => project.id === projectId);
+    if (!targetProject) {
+      await createFilesystemProjectFromSnapshot(snapshot);
+      return;
+    }
+
+    const mountedProject = {
+      ...targetProject,
+      sourceKind: 'filesystem' as const,
+      rootPath: snapshot.rootPath,
+      lastOpened: Date.now(),
+    };
+
+    await proj.updateProject(mountedProject);
+    await fileSys.importFilesystemWorkspace(projectId, snapshot, {
+      rootPath: snapshot.rootPath,
+      sourceKind: 'filesystem',
+    });
+    await loadProject(projectId);
+    addToast(`MOUNTED ${snapshot.name.toUpperCase()} TO ${mountedProject.name.toUpperCase()}`, 'success');
+  }, [addToast, createFilesystemProjectFromSnapshot, fileSys, loadProject, proj]);
+
   const openDesktopProjectFolder = useCallback(async () => {
     if (!window.desktopShell) {
       addToast('DESKTOP SHELL REQUIRED', 'warning');
@@ -450,12 +442,16 @@ export const useApp = () => {
       if (!snapshot) {
         return;
       }
+      if (proj.activeProjectId) {
+        await mountFilesystemSnapshotToProject(snapshot, proj.activeProjectId);
+        return;
+      }
       await createFilesystemProjectFromSnapshot(snapshot);
     } catch (error) {
       const message = error instanceof Error ? error.message : 'OPEN FOLDER FAILED';
       addToast(message.toUpperCase(), 'warning');
     }
-  }, [addToast, createFilesystemProjectFromSnapshot]);
+  }, [addToast, createFilesystemProjectFromSnapshot, mountFilesystemSnapshotToProject, proj.activeProjectId]);
 
   const createDesktopProject = useCallback(async (name: string) => {
     if (!window.desktopShell) {
@@ -552,6 +548,45 @@ export const useApp = () => {
           await fileSys.saveFile(activeFile);
       }
   }
+
+  useEffect(() => {
+    if (!window.desktopShell) {
+      return;
+    }
+
+    let isMounted = true;
+
+    window.desktopShell.getLaunchMarkdownFiles()
+      .then((files) => {
+        if (isMounted) {
+          queueDesktopFiles(files);
+        }
+      })
+      .catch((error) => {
+        console.warn('[useApp] Failed to read launch markdown files', error);
+      });
+
+    const unsubscribeOpen = window.desktopShell.onOpenMarkdownFiles((files) => {
+      queueDesktopFiles(files);
+    });
+    const unsubscribeMount = window.desktopShell.onMountProjectDirectory((snapshot) => {
+      if (proj.activeProjectId) {
+        void mountFilesystemSnapshotToProject(snapshot, proj.activeProjectId);
+        return;
+      }
+      void createFilesystemProjectFromSnapshot(snapshot);
+    });
+    const unsubscribeSave = window.desktopShell.onSaveActiveMarkdownRequested(() => {
+      void saveCurrentFile();
+    });
+
+    return () => {
+      isMounted = false;
+      unsubscribeOpen();
+      unsubscribeMount();
+      unsubscribeSave();
+    };
+  }, [createFilesystemProjectFromSnapshot, mountFilesystemSnapshotToProject, proj.activeProjectId, queueDesktopFiles]);
 
   const selectTabByOffset = (offset: number) => {
     if (tabs.tabs.length === 0) return;

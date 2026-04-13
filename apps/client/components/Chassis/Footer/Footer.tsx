@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer className={`status-bar ${className}`}>
       <div className="status-left">
-        <div className="status-item" title={t('core.status.storage.title', 'Storage Status')}>
+        <div className="status-item status-item--storage" title={t('core.status.storage.title', 'Storage Status')}>
           <Database size={12} className="status-item__icon" />
           <span className="status-text-bold">{t('core.status.storage.persistent', 'IDB: PERSISTENT')}</span>
         </div>
@@ -48,28 +48,28 @@ export const Footer: React.FC<FooterProps> = ({
           <span className="status-kv"> COL {cursorCol}</span>
         </div>
         <div className="status-sep"></div>
-        <div className="status-item" title={t('core.status.encoding.title', 'Encoding')}>
+        <div className="status-item status-item--encoding" title={t('core.status.encoding.title', 'Encoding')}>
           <span className="status-label">{t('core.status.encoding', 'ENC:')}</span>
           <span className="status-text-bold">UTF-8</span>
         </div>
       </div>
 
       <div className="status-right">
-        <div className="status-item">
+        <div className="status-item status-item--autosave">
           <span className="status-label">{t('core.status.auto-save', 'AUTO-SAVE:')}</span>
           <span className={`status-text-bold ${autoSaveEnabled ? 'status-text--on' : 'status-text--warn'}`}>
             {autoSaveEnabled ? 'ON' : 'OFF'}
           </span>
         </div>
         <div className="status-sep"></div>
-        <div className="status-item">
+        <div className="status-item status-item--state">
           <span className="status-label">{t('core.status.state', 'STATE:')}</span>
           <span className={`status-text-bold ${unsaved ? 'status-text--warn' : 'status-text--on'}`}>
             {unsaved ? t('core.status.state.unsaved', 'UNWRITTEN') : t('core.status.state.saved', 'SAVED')}
           </span>
         </div>
         <div className="status-sep"></div>
-        <div className="status-item">
+        <div className="status-item status-item--network">
           {online ? (
             <div className="status-online">
               <Wifi size={12} />
@@ -83,13 +83,13 @@ export const Footer: React.FC<FooterProps> = ({
           )}
         </div>
         <div className="status-sep"></div>
-        <div className="status-item" title={t('core.status.runtime.title', 'Runtime shell')}>
+        <div className="status-item status-runtime" title={t('core.status.runtime.title', 'Runtime shell')}>
           <span className="status-text-bold">{runtimeLabel}</span>
         </div>
         {latestAvailable && !updateAvailable && (
           <>
             <div className="status-sep"></div>
-            <div className="status-item" title={t('core.status.release.title', 'Retained release status')}>
+            <div className="status-item status-item--release" title={t('core.status.release.title', 'Retained release status')}>
               <span className="status-text-bold status-text--warn">{t('core.status.release.newer', 'NEWER_VERSION_AVAILABLE')}</span>
             </div>
           </>
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
         {updateAvailable && (
           <>
             <div className="status-sep"></div>
-            <div className="status-item" title={t('core.status.update.title', 'Application update status')}>
+            <div className="status-item status-item--release" title={t('core.status.update.title', 'Application update status')}>
               <span className="status-text-bold status-text--warn">{t('core.status.update-ready', 'UPDATE_READY')}</span>
             </div>
           </>

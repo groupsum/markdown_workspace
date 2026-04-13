@@ -107,6 +107,11 @@ export const useProjectManager = (
     setProjects((prev) => prev.map((project) => project.id === projectId ? updated : project));
   };
 
+  const updateProject = async (project: Project) => {
+    await storage.saveProject(project);
+    setProjects((prev) => prev.map((candidate) => candidate.id === project.id ? project : candidate));
+  };
+
   return {
     projects,
     activeProjectId,
@@ -115,6 +120,7 @@ export const useProjectManager = (
     setActiveProjectId,
     createProject,
     deleteProject,
+    updateProject,
     updateGitConfig,
     updateLastOpened,
   };

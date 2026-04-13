@@ -57,14 +57,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
   useEffect(() => {
     if (!isOpen) return;
-    if (initialSectionId && orderedSections.some((section) => section.id === initialSectionId)) {
-      setActiveSectionId(initialSectionId);
-      return;
-    }
     if (!activeSectionId || !orderedSections.some((section) => section.id === activeSectionId)) {
       setActiveSectionId(orderedSections[0]?.id ?? null);
     }
-  }, [activeSectionId, initialSectionId, isOpen, orderedSections]);
+  }, [activeSectionId, isOpen, orderedSections]);
+
+  useEffect(() => {
+    if (!isOpen || !initialSectionId) return;
+    if (!orderedSections.some((section) => section.id === initialSectionId)) return;
+    setActiveSectionId(initialSectionId);
+  }, [initialSectionId, isOpen, orderedSections]);
 
   if (!isOpen) return null;
 
@@ -99,8 +101,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         type="button"
                         onClick={() => setActiveSectionId(section.id)}
                         className={`settings-sidebar-btn ${activeSection.id === section.id ? 'active' : ''}`}
+                        data-active={activeSection.id === section.id ? 'true' : 'false'}
                         title={section.title}
                         aria-label={section.title}
+                        aria-pressed={activeSection.id === section.id}
+                        aria-current={activeSection.id === section.id ? 'page' : undefined}
                       >
                         <span className="settings-sidebar-icon">{section.icon}</span>
                         <span className="settings-sidebar-text">

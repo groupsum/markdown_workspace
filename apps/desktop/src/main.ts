@@ -213,6 +213,16 @@ function buildMenu(): void {
           },
         },
         {
+          label: 'Mount Workspace Folder...',
+          accelerator: 'CmdOrCtrl+Shift+O',
+          click: async () => {
+            const snapshot = await pickProjectDirectory();
+            if (snapshot) {
+              mainWindow?.webContents.send('desktop:mount-project-directory', snapshot);
+            }
+          },
+        },
+        {
           label: 'Save Active Markdown',
           accelerator: 'CmdOrCtrl+Shift+S',
           click: () => {

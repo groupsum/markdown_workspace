@@ -241,7 +241,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 files={files}
                 currentFile={file}
                 onNavigate={onNavigate}
-                className="preview-pane p-8"
+                className="preview-pane"
               />
             </div>
           )}

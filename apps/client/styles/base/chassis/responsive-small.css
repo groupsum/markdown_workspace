@@ -167,14 +167,14 @@
   }
 
   .status-left {
-    display: none;
+    display: flex;
   }
 
   .status-right {
     width: auto;
     min-width: 0;
-    flex: 1;
-    justify-content: flex-end;
+    flex: 0 0 auto;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
@@ -262,9 +262,6 @@
     display: flex;
   }
 
-  .status-bar {
-    display: none;
-  }
 }
 
 

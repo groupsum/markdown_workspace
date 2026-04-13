@@ -72,18 +72,19 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
             {inScopeProfiles.map((definition) => {
               const enabled = config.enabledExtensions.includes(definition.id);
               return (
-                <label key={definition.id} className="flex items-start gap-3 rounded border border-[var(--border-color)] bg-[var(--bg-panel)] px-3 py-3">
+                <label key={definition.id} className="settings-check">
                   <input
+                    className="settings-check-input"
                     type="checkbox"
                     checked={enabled}
                     onChange={() => updateExtensions(definition.id)}
                   />
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[12px] font-semibold">{definition.name}</span>
+                  <div className="settings-check-content">
+                    <span className="settings-check-title">{definition.name}</span>
                     {('notes' in definition ? definition.notes : undefined)?.map((note) => (
-                      <span key={note} className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{note}</span>
+                      <span key={note} className="settings-check-copy">{note}</span>
                     ))}
-                    <span className="text-[10px] uppercase text-[var(--accent)]">{enabled ? t('core.settings.markdown-profiles.enabled', 'ENABLED') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>
+                    <span className="settings-check-meta">{enabled ? t('core.settings.markdown-profiles.enabled', 'ENABLED') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>
                   </div>
                 </label>
               );
@@ -103,18 +104,19 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
             {experimentalProfiles.map((definition) => {
               const enabled = config.enabledExtensions.includes(definition.id);
               return (
-                <label key={definition.id} className="flex items-start gap-3 rounded border border-[var(--border-color)] bg-[var(--bg-panel)] px-3 py-3">
+                <label key={definition.id} className="settings-check">
                   <input
+                    className="settings-check-input"
                     type="checkbox"
                     checked={enabled}
                     onChange={() => updateExtensions(definition.id)}
                   />
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[12px] font-semibold">{definition.name}</span>
+                  <div className="settings-check-content">
+                    <span className="settings-check-title">{definition.name}</span>
                     {('notes' in definition ? definition.notes : undefined)?.map((note) => (
-                      <span key={note} className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{note}</span>
+                      <span key={note} className="settings-check-copy">{note}</span>
                     ))}
-                    <span className="text-[10px] uppercase text-[var(--fg-muted)]">{enabled ? t('core.settings.markdown-profiles.enabled-warning', 'ENABLED_WITH_WARNING') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>
+                    <span className="settings-check-meta">{enabled ? t('core.settings.markdown-profiles.enabled-warning', 'ENABLED_WITH_WARNING') : t('core.settings.markdown-profiles.disabled', 'DISABLED')}</span>
                   </div>
                 </label>
               );
