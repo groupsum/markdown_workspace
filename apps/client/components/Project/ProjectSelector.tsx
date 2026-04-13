@@ -11,11 +11,13 @@ interface ProjectSelectorProps {
   activeProjectId: string | null;
   onSelectProject: (project: Project) => void;
   onCreateProject: (name: string) => void;
+  onCreateDesktopProject?: (name: string) => void;
   onDeleteProject: (id: string) => void;
   currentTheme: AppTheme;
   onThemeChange: (theme: AppTheme) => void;
   showDesktopOpen?: boolean;
   onOpenDesktopFile?: () => void;
+  onOpenDesktopProject?: () => void;
 }
 
 export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
@@ -23,11 +25,13 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   activeProjectId,
   onSelectProject,
   onCreateProject,
+  onCreateDesktopProject,
   onDeleteProject,
   currentTheme,
   onThemeChange,
   showDesktopOpen = false,
-  onOpenDesktopFile
+  onOpenDesktopFile,
+  onOpenDesktopProject
 }) => {
   const { t } = useClientI18n();
   const [isCreating, setIsCreating] = useState(false);
@@ -38,7 +42,11 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
     if (newProjectName.trim()) {
-      onCreateProject(newProjectName.trim());
+      if (showDesktopOpen && onCreateDesktopProject) {
+        onCreateDesktopProject(newProjectName.trim());
+      } else {
+        onCreateProject(newProjectName.trim());
+      }
       setNewProjectName('');
       setIsCreating(false);
     }
@@ -96,6 +104,15 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 <ArrowRight size={14} /> {t('core.project-selector.open-markdown', 'OPEN_MARKDOWN')}
               </button>
             ) : null}
+            {showDesktopOpen && onOpenDesktopProject ? (
+              <button
+                type="button"
+                onClick={onOpenDesktopProject}
+                className="project-btn-new"
+              >
+                <Box size={14} /> {t('core.project-selector.open-folder', 'OPEN_FOLDER')}
+              </button>
+            ) : null}
           </div>
         </header>
 
@@ -146,8 +163,15 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                       <span className="project-theme-trigger-meta">OPEN_{t('core.project-selector.theme.matrix', 'THEME_MATRIX')}</span>
                     </button>
                   </div>
+                  {showDesktopOpen ? (
+                    <p className="project-create-note">
+                      DESKTOP PROJECTS ARE CREATED AS REAL FOLDERS ON YOUR DESKTOP AND SYNCED INTO THE WORKSPACE.
+                    </p>
+                  ) : null}
                   <div className="project-form-actions">
-                    <button type="submit" className="project-btn-submit">INITIALIZE_CORE</button>
+                    <button type="submit" className="project-btn-submit">
+                      {showDesktopOpen ? 'CREATE_DESKTOP_CORE' : 'INITIALIZE_CORE'}
+                    </button>
                     <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">ABORT_CMD</button>
                   </div>
                 </form>
@@ -298,7 +322,12 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                   
                   <h3 className="project-card-title mt-4">{p.name}</h3>
                   <div className="project-card-meta mt-2">
-                    {p.gitConfig.repoUrl ? (
+                    {p.sourceKind === 'filesystem' && p.rootPath ? (
+                      <div className="flex items-center gap-1 opacity-80">
+                        <Box size={10} />
+                        <span>{p.rootPath}</span>
+                      </div>
+                    ) : p.gitConfig.repoUrl ? (
                       <><GitBranch size={12} /> <span>{p.gitConfig.repoUrl.split('/').pop()}</span></>
                     ) : (
                       <div className="flex items-center gap-1 opacity-60">

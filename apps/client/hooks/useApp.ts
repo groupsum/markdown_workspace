@@ -39,6 +39,12 @@ type DesktopMarkdownFile = {
   content: string;
 };
 
+type DesktopWorkspaceSnapshot = {
+  rootPath: string;
+  name: string;
+  entries: DesktopWorkspaceEntry[];
+};
+
 const readSessionState = (): SessionState | null => {
   const raw = window.localStorage.getItem(SESSION_STORAGE_KEY);
   if (!raw) return null;
@@ -64,12 +70,12 @@ export const useApp = () => {
 
   const ui = useUIState();
   const proj = useProjectManager(addToast);
-  const fileSys = useFileManager(proj.activeProjectId, ui.autoSaveEnabled, addToast);
+  const currentProject = proj.projects.find(p => p.id === proj.activeProjectId) ?? null;
+  const fileSys = useFileManager(proj.activeProjectId, currentProject, ui.autoSaveEnabled, addToast);
   const tabs = useTabManager();
 
   const activeTab = tabs.tabs.find(t => t.id === tabs.activeTabId);
   const activeFile = activeTab ? fileSys.files.find(f => f.id === activeTab.fileId) || null : null;
-  const currentProject = proj.projects.find(p => p.id === proj.activeProjectId);
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
   const oidcCallbackHandledRef = useRef(false);
   const projectLoadInFlightRef = useRef<string | null>(null);
@@ -157,6 +163,14 @@ export const useApp = () => {
     try {
       proj.setLoading(true);
       proj.setActiveProjectId(projectId);
+      const targetProject = proj.projects.find((project) => project.id === projectId) ?? null;
+      if (targetProject?.sourceKind === 'filesystem' && targetProject.rootPath && window.desktopShell) {
+        const snapshot = await window.desktopShell.readProjectDirectory({ rootPath: targetProject.rootPath });
+        await fileSys.importFilesystemWorkspace(projectId, snapshot, {
+          rootPath: snapshot.rootPath,
+          sourceKind: 'filesystem',
+        });
+      }
       const projectFiles = await fileSys.loadFiles(projectId);
       tabs.resetTabs();
       fileSys.setSelectedExplorerId(null);
@@ -217,8 +231,10 @@ export const useApp = () => {
       }
     }
   }, [
+    proj.projects,
     proj.setActiveProjectId,
     fileSys.loadFiles,
+    fileSys.importFilesystemWorkspace,
     fileSys.setSelectedExplorerId,
     tabs.resetTabs,
     tabs.setTabs,
@@ -410,6 +426,55 @@ export const useApp = () => {
       const newProj = await proj.createProject(name);
       loadProject(newProj.id);
   };
+
+  const createFilesystemProjectFromSnapshot = useCallback(async (snapshot: DesktopWorkspaceSnapshot) => {
+    const newProj = await proj.createProject(snapshot.name, {
+      sourceKind: 'filesystem',
+      rootPath: snapshot.rootPath,
+    });
+    await fileSys.importFilesystemWorkspace(newProj.id, snapshot, {
+      rootPath: snapshot.rootPath,
+      sourceKind: 'filesystem',
+    });
+    await loadProject(newProj.id);
+  }, [fileSys, loadProject, proj]);
+
+  const openDesktopProjectFolder = useCallback(async () => {
+    if (!window.desktopShell) {
+      addToast('DESKTOP SHELL REQUIRED', 'warning');
+      return;
+    }
+
+    try {
+      const snapshot = await window.desktopShell.openProjectDirectory();
+      if (!snapshot) {
+        return;
+      }
+      await createFilesystemProjectFromSnapshot(snapshot);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'OPEN FOLDER FAILED';
+      addToast(message.toUpperCase(), 'warning');
+    }
+  }, [addToast, createFilesystemProjectFromSnapshot]);
+
+  const createDesktopProject = useCallback(async (name: string) => {
+    if (!window.desktopShell) {
+      handleCreateProject(name);
+      return;
+    }
+
+    try {
+      const desktopPath = await window.desktopShell.getDesktopPath();
+      const snapshot = await window.desktopShell.createProjectDirectory({
+        name,
+        parentPath: desktopPath,
+      });
+      await createFilesystemProjectFromSnapshot(snapshot);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'DESKTOP PROJECT CREATE FAILED';
+      addToast(message.toUpperCase(), 'warning');
+    }
+  }, [addToast, createFilesystemProjectFromSnapshot]);
 
   const handleExplorerSelect = (fileId: string) => {
       console.log(`[useApp] Action: handleExplorerSelect -> ${fileId}`);
@@ -690,6 +755,8 @@ export const useApp = () => {
     actions: {
       loadProject,
       handleCreateProject,
+      createDesktopProject,
+      openDesktopProjectFolder,
       handleDeleteProject: proj.deleteProject,
       handleGitConfigUpdate,
       handleOidcSignIn,

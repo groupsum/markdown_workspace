@@ -15,6 +15,7 @@
   box-sizing: border-box;
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
+  min-width: 0;
 }
 
 .texture-overlay {
@@ -38,6 +39,8 @@
   height: 100%;
   background-color: var(--bg-app); /* The manifold background color */
   gap: var(--app-gap);
+  min-width: 0;
+  min-height: 0;
 }
 
 .chassis-body {
@@ -109,6 +112,7 @@
   gap: var(--app-gap);
   height: 100%;
   min-width: 0;
+  min-height: 0;
 }
 
 .git-workspace {
@@ -164,6 +168,7 @@
   flex-direction: column;
   overflow: hidden;
   min-width: 0;
+  min-height: 0;
 }
 
 .git-sidebar,

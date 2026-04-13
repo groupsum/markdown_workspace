@@ -9,6 +9,20 @@ type ExternalMarkdownFile = {
   content: string;
 };
 
+type DesktopWorkspaceEntry = {
+  path: string;
+  relativePath: string;
+  name: string;
+  type: 'file' | 'folder';
+  content?: string;
+};
+
+type DesktopWorkspaceSnapshot = {
+  rootPath: string;
+  name: string;
+  entries: DesktopWorkspaceEntry[];
+};
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const preloadPath = path.join(__dirname, 'preload.js');
@@ -35,6 +49,15 @@ function normalizeMarkdownPaths(candidates: readonly string[]): string[] {
     .map((candidate) => path.resolve(candidate));
 }
 
+async function pathExists(candidate: string): Promise<boolean> {
+  try {
+    await fs.access(candidate);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function readMarkdownFiles(pathsToRead: readonly string[]): Promise<ExternalMarkdownFile[]> {
   const uniquePaths = Array.from(new Set(normalizeMarkdownPaths(pathsToRead)));
   return Promise.all(uniquePaths.map(async (filePath) => ({
@@ -42,6 +65,63 @@ async function readMarkdownFiles(pathsToRead: readonly string[]): Promise<Extern
     name: path.basename(filePath),
     content: await fs.readFile(filePath, 'utf8'),
   })));
+}
+
+async function collectWorkspaceEntries(rootPath: string): Promise<DesktopWorkspaceEntry[]> {
+  const normalizedRootPath = path.resolve(rootPath);
+  const entries: DesktopWorkspaceEntry[] = [];
+
+  const visitDirectory = async (directoryPath: string): Promise<boolean> => {
+    const dirents = await fs.readdir(directoryPath, { withFileTypes: true });
+    let hasMarkdownDescendant = false;
+
+    for (const dirent of dirents) {
+      const absolutePath = path.join(directoryPath, dirent.name);
+      const relativePath = path.relative(normalizedRootPath, absolutePath);
+
+      if (dirent.isDirectory()) {
+        const childHasMarkdown = await visitDirectory(absolutePath);
+        if (childHasMarkdown) {
+          entries.push({
+            path: absolutePath,
+            relativePath,
+            name: dirent.name,
+            type: 'folder',
+          });
+          hasMarkdownDescendant = true;
+        }
+        continue;
+      }
+
+      if (!dirent.isFile() || !isMarkdownPath(dirent.name)) {
+        continue;
+      }
+
+      entries.push({
+        path: absolutePath,
+        relativePath,
+        name: dirent.name,
+        type: 'file',
+        content: await fs.readFile(absolutePath, 'utf8'),
+      });
+      hasMarkdownDescendant = true;
+    }
+
+    return hasMarkdownDescendant;
+  };
+
+  await visitDirectory(normalizedRootPath);
+
+  return entries.sort((left, right) => left.relativePath.localeCompare(right.relativePath));
+}
+
+async function readMarkdownWorkspace(rootPath: string): Promise<DesktopWorkspaceSnapshot> {
+  const normalizedRootPath = path.resolve(rootPath);
+  return {
+    rootPath: normalizedRootPath,
+    name: path.basename(normalizedRootPath),
+    entries: await collectWorkspaceEntries(normalizedRootPath),
+  };
 }
 
 function queueOpenPaths(pathsToQueue: readonly string[]): void {
@@ -97,6 +177,24 @@ async function pickMarkdownFiles(): Promise<ExternalMarkdownFile[]> {
   }
 
   return readMarkdownFiles(result.filePaths);
+}
+
+async function pickProjectDirectory(): Promise<DesktopWorkspaceSnapshot | null> {
+  if (!mainWindow) {
+    return null;
+  }
+
+  const result = await dialog.showOpenDialog(mainWindow, {
+    title: 'Open Markdown Workspace Folder',
+    defaultPath: app.getPath('desktop'),
+    properties: ['openDirectory'],
+  });
+
+  if (result.canceled || result.filePaths.length === 0) {
+    return null;
+  }
+
+  return readMarkdownWorkspace(result.filePaths[0]);
 }
 
 function buildMenu(): void {
@@ -222,6 +320,71 @@ ipcMain.handle('desktop:save-markdown-file', async (_event, payload: { path: str
 
   await fs.writeFile(payload.path, payload.content, 'utf8');
   return { path: payload.path };
+});
+
+ipcMain.handle('desktop:get-desktop-path', async () => app.getPath('desktop'));
+
+ipcMain.handle('desktop:open-project-directory', async () => pickProjectDirectory());
+
+ipcMain.handle('desktop:read-project-directory', async (_event, payload: { rootPath: string }) => {
+  if (!payload?.rootPath) {
+    throw new Error('A rootPath is required to read a desktop workspace.');
+  }
+
+  return readMarkdownWorkspace(payload.rootPath);
+});
+
+ipcMain.handle('desktop:create-project-directory', async (_event, payload: { name: string; parentPath?: string }) => {
+  const rawName = payload?.name?.trim();
+  if (!rawName) {
+    throw new Error('A project name is required to create a desktop workspace.');
+  }
+
+  const parentPath = path.resolve(payload.parentPath?.trim() || app.getPath('desktop'));
+  const rootPath = path.join(parentPath, rawName);
+  if (await pathExists(rootPath)) {
+    throw new Error(`The folder "${rawName}" already exists.`);
+  }
+
+  await fs.mkdir(rootPath, { recursive: true });
+  return readMarkdownWorkspace(rootPath);
+});
+
+ipcMain.handle('desktop:create-directory', async (_event, payload: { path: string }) => {
+  if (!payload?.path) {
+    throw new Error('A path is required to create a directory.');
+  }
+
+  await fs.mkdir(payload.path, { recursive: true });
+  return { path: payload.path };
+});
+
+ipcMain.handle('desktop:rename-path', async (_event, payload: { path: string; nextPath: string }) => {
+  if (!payload?.path || !payload?.nextPath) {
+    throw new Error('Both source and destination paths are required to rename a filesystem node.');
+  }
+
+  await fs.rename(payload.path, payload.nextPath);
+  return { path: payload.nextPath };
+});
+
+ipcMain.handle('desktop:delete-path', async (_event, payload: { path: string }) => {
+  if (!payload?.path) {
+    throw new Error('A path is required to delete a filesystem node.');
+  }
+
+  await fs.rm(payload.path, { recursive: true, force: false });
+  return { path: payload.path };
+});
+
+ipcMain.handle('desktop:move-path', async (_event, payload: { path: string; targetFolderPath: string }) => {
+  if (!payload?.path || !payload?.targetFolderPath) {
+    throw new Error('Both a source path and target folder path are required to move a filesystem node.');
+  }
+
+  const nextPath = path.join(payload.targetFolderPath, path.basename(payload.path));
+  await fs.rename(payload.path, nextPath);
+  return { path: nextPath };
 });
 
 app.whenReady().then(async () => {

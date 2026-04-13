@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import './styles';
 import { initTheme } from './services/themeService';
 import { THEME_STYLE_ELEMENT_ID } from './constants';
 import { DEFAULT_THEME_STYLESHEET_TEXT } from './styles';

@@ -17,6 +17,8 @@ export interface Project {
   gitConfig: GitConfig;
   lastOpened: number;
   createdAt: number;
+  sourceKind?: 'indexeddb' | 'filesystem';
+  rootPath?: string;
 }
 
 export interface FileSystemState {

@@ -82,11 +82,13 @@ export const AppShell: React.FC = () => {
       activeProjectId={state.activeProjectId}
       onSelectProject={(project) => actions.loadProject(project.id)}
       onCreateProject={actions.handleCreateProject}
+      onCreateDesktopProject={actions.createDesktopProject}
       onDeleteProject={actions.handleDeleteProject}
       currentTheme={state.theme}
       onThemeChange={actions.setTheme}
       showDesktopOpen={Boolean(window.desktopShell)}
       onOpenDesktopFile={actions.openMarkdownFromHost}
+      onOpenDesktopProject={actions.openDesktopProjectFolder}
     />
   ) : (
     <div className="app-root">

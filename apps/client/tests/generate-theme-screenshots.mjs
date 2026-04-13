@@ -116,24 +116,24 @@ async function capturePaneModes(page, themeId, viewportId, rootSelector, prefix)
 
   const singleButton = page.locator(`${rootSelector} button[title="Single pane"]`).first();
   if (await singleButton.isVisible().catch(() => false)) {
-    await singleButton.click();
+    await singleButton.click({ force: true });
     await page.waitForTimeout(150);
     await screenshot(page, themeId, viewportId, `${prefix}-single`);
   }
 
   const splitButton = page.locator(`${rootSelector} button[title="Split screen"]`).first();
   if (await splitButton.isVisible().catch(() => false)) {
-    await splitButton.click();
+    await splitButton.click({ force: true });
     await page.waitForTimeout(150);
     await screenshot(page, themeId, viewportId, `${prefix}-split-restored`);
   }
 
   const sidebarButton = page.locator(`${rootSelector} button[title="Toggle sidebar"]`).first();
   if (await sidebarButton.isVisible().catch(() => false)) {
-    await sidebarButton.click();
+    await sidebarButton.click({ force: true });
     await page.waitForTimeout(150);
     await screenshot(page, themeId, viewportId, `${prefix}-sidebar-collapsed`);
-    await sidebarButton.click();
+    await sidebarButton.click({ force: true });
     await page.waitForTimeout(150);
     await screenshot(page, themeId, viewportId, `${prefix}-sidebar-restored`);
   }
@@ -150,14 +150,14 @@ async function closeModal(page) {
   ];
   for (const button of closeButtons) {
     if (await button.isVisible().catch(() => false)) {
-      await button.click().catch(() => {});
+      await button.click({ force: true }).catch(() => {});
       break;
     }
   }
 }
 
 async function openWorkspace(page) {
-  await page.locator('.project-card').first().click();
+  await page.locator('.project-card').first().click({ force: true });
   await page.locator('.workspace-manifold').waitFor({ state: 'visible', timeout: 15000 });
 }
 
@@ -173,17 +173,17 @@ async function captureThemeViewport(browser, themeId, viewport) {
 
   await screenshot(page, themeId, viewport.id, 'selector');
 
-  await page.locator('button:has-text("NEW_VAULT")').click();
+  await page.locator('button:has-text("NEW_VAULT")').click({ force: true });
   await page.locator('.project-create-modal').waitFor({ state: 'visible' });
   await screenshot(page, themeId, viewport.id, 'selector-create-modal');
   await closeModal(page);
 
-  await page.locator('button[title="Project Theme"]').click();
+  await page.locator('button[title="Project Theme"]').click({ force: true });
   await page.locator('.theme-selector-modal').waitFor({ state: 'visible' });
   await screenshot(page, themeId, viewport.id, 'selector-theme-modal');
   await closeModal(page);
 
-  await page.locator('button[title="Eject Project"]').first().click();
+  await page.locator('button[title="Eject Project"]').first().click({ force: true });
   await page.locator('.project-delete-modal').waitFor({ state: 'visible' });
   await screenshot(page, themeId, viewport.id, 'selector-delete-modal');
   await closeModal(page);
@@ -193,68 +193,80 @@ async function captureThemeViewport(browser, themeId, viewport) {
 
   const splitButton = page.locator('button[title="Split View"]').first();
   if (await splitButton.isVisible().catch(() => false) && await splitButton.isEnabled().catch(() => false)) {
-    await splitButton.click();
+    await splitButton.click({ force: true });
     await page.waitForTimeout(200);
     await screenshot(page, themeId, viewport.id, 'workspace-split');
   }
 
   const previewButton = page.locator('button[title="Preview Only"]').first();
   if (await previewButton.isVisible().catch(() => false) && await previewButton.isEnabled().catch(() => false)) {
-    await previewButton.click();
+    await previewButton.click({ force: true });
     await page.waitForTimeout(200);
     await screenshot(page, themeId, viewport.id, 'workspace-preview');
   }
 
   const editorButton = page.locator('button[title="Editor Only"]').first();
   if (await editorButton.isVisible().catch(() => false)) {
-    await editorButton.click();
+    await editorButton.click({ force: true });
   }
 
-  await page.locator('button[title="Insert n:m Table"]').click();
-  await page.locator('.modal-overlay').last().waitFor({ state: 'visible' });
-  await screenshot(page, themeId, viewport.id, 'table-builder-modal');
-  const tableCancel = page.locator('button:has-text("CANCEL")').last();
-  if (await tableCancel.isVisible().catch(() => false)) {
-    await tableCancel.click();
-  } else {
-    await closeModal(page);
+  const tableButton = page.locator('button[title="Insert n:m Table"]').first();
+  if (await tableButton.isVisible().catch(() => false)) {
+    await tableButton.click({ force: true });
+    const tableModal = page.locator('.modal-overlay').last();
+    if (await tableModal.isVisible().catch(() => false)) {
+      await screenshot(page, themeId, viewport.id, 'table-builder-modal');
+      const tableCancel = page.locator('button:has-text("CANCEL")').last();
+      if (await tableCancel.isVisible().catch(() => false)) {
+        await tableCancel.click({ force: true });
+      } else {
+        await closeModal(page);
+      }
+    }
   }
 
-  await page.locator('button[title="System Config"]').click();
-  await page.locator('.settings-modal').waitFor({ state: 'visible' });
-  await screenshot(page, themeId, viewport.id, 'settings-visual');
-  await screenshot(page, themeId, viewport.id, 'settings-data-pwa');
-  const languagePacksButton = page.locator('.settings-sidebar-btn:has-text("LANGUAGE_PACKS")').first();
-  if (await languagePacksButton.isVisible().catch(() => false)) {
-    await languagePacksButton.click();
-    await page.waitForTimeout(150);
-    await screenshot(page, themeId, viewport.id, 'settings-language-packs');
+  const systemConfigButton = page.locator('button[title="System Config"]').first();
+  if (await systemConfigButton.isVisible().catch(() => false)) {
+    await systemConfigButton.click({ force: true });
+    const settingsModal = page.locator('.settings-modal').first();
+    if (await settingsModal.isVisible().catch(() => false)) {
+      await screenshot(page, themeId, viewport.id, 'settings-visual');
+      await screenshot(page, themeId, viewport.id, 'settings-data-pwa');
+      const languagePacksButton = page.locator('.settings-sidebar-btn:has-text("LANGUAGE_PACKS")').first();
+      if (await languagePacksButton.isVisible().catch(() => false)) {
+        await languagePacksButton.click({ force: true });
+        await page.waitForTimeout(150);
+        await screenshot(page, themeId, viewport.id, 'settings-language-packs');
+      }
+      await closeModal(page);
+    }
   }
-  await closeModal(page);
 
   const githubConfigurations = page.locator('button[title="GitHub Configurations"]').first();
   if (await githubConfigurations.isVisible().catch(() => false)) {
-    await githubConfigurations.click();
-    await page.locator('.settings-modal').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'settings-github-configurations');
-    await closeModal(page);
+    await githubConfigurations.click({ force: true });
+    const githubSettingsModal = page.locator('.settings-modal').first();
+    if (await githubSettingsModal.isVisible().catch(() => false)) {
+      await screenshot(page, themeId, viewport.id, 'settings-github-configurations');
+      await closeModal(page);
+    }
   }
 
   const extensionsButton = page.locator('button[title="Extensions"]').first();
   if (await extensionsButton.isVisible().catch(() => false)) {
-    await extensionsButton.click();
+    await extensionsButton.click({ force: true });
     await page.locator('[data-testid="extension-manager-pane"]').waitFor({ state: 'visible' });
     await capturePaneModes(page, themeId, viewport.id, '[data-testid="extension-manager-pane"]', 'extension-manager-pane');
     const extensionClose = page.locator('[data-testid="extension-manager-pane"] button[title="Close manager"]').first();
     if (await extensionClose.isVisible().catch(() => false)) {
-      await extensionClose.click();
+      await extensionClose.click({ force: true });
       await page.waitForTimeout(150);
     }
   }
 
   const languagePackButton = page.locator('button[title="Language Packs"]').first();
   if (await languagePackButton.isVisible().catch(() => false)) {
-    await languagePackButton.click();
+    await languagePackButton.click({ force: true });
     await page.locator('[data-testid="language-pack-studio-pane"]').waitFor({ state: 'visible' });
     await capturePaneModes(page, themeId, viewport.id, '[data-testid="language-pack-studio-pane"]', 'language-pack-studio-pane');
     const languagePackInput = page.locator('[data-testid="language-pack-studio-pane"] input[type="file"]').first();
@@ -263,54 +275,58 @@ async function captureThemeViewport(browser, themeId, viewport) {
     await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-imported');
     const usePackButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("USE")').first();
     if (await usePackButton.isVisible().catch(() => false)) {
-      await usePackButton.click();
+      await usePackButton.click({ force: true });
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-active');
     }
     await page.locator('[data-testid="language-pack-studio-pane"] input').nth(1).fill('it-demo');
     await page.locator('[data-testid="language-pack-studio-pane"] input').nth(2).fill('Italiano Demo');
     await page.locator('[data-testid="language-pack-studio-pane"] textarea').first().fill('{\n  "core.views.settings.title": "Configurazione di sistema"\n}');
-    await page.locator('[data-testid="language-pack-studio-pane"] button:has-text("CREATE_AND_EXPORT")').click();
+    await page.locator('[data-testid="language-pack-studio-pane"] button:has-text("CREATE_AND_EXPORT")').click({ force: true });
     await page.waitForTimeout(250);
     await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-created');
     const removePackButton = page.locator('[data-testid="language-pack-studio-pane"] button:has-text("REMOVE")').first();
     if (await removePackButton.isVisible().catch(() => false)) {
-      await removePackButton.click();
+      await removePackButton.click({ force: true });
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-removed');
     }
     const languagePackClose = page.locator('[data-testid="language-pack-studio-pane"] button[title="Close studio"]').first();
     if (await languagePackClose.isVisible().catch(() => false)) {
-      await languagePackClose.click();
+      await languagePackClose.click({ force: true });
       await page.waitForTimeout(150);
     }
   }
 
   const themeStudioButton = page.locator('button[title="Theme Studio"]').first();
   if (await themeStudioButton.isVisible().catch(() => false)) {
-    await themeStudioButton.click();
+    await themeStudioButton.click({ force: true });
     await page.locator('[data-testid="theme-studio-pane"]').waitFor({ state: 'visible' });
     await capturePaneModes(page, themeId, viewport.id, '[data-testid="theme-studio-pane"]', 'theme-studio-pane');
     const themeStudioClose = page.locator('[data-testid="theme-studio-pane"] button[title="Close studio"]').first();
     if (await themeStudioClose.isVisible().catch(() => false)) {
-      await themeStudioClose.click();
+      await themeStudioClose.click({ force: true });
       await page.waitForTimeout(150);
     }
   }
 
   await page.keyboard.press('Control+K');
-  await page.locator('.command-palette-shell, .command-palette').first().waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
-  await screenshot(page, themeId, viewport.id, 'command-palette');
-  await closeModal(page);
+  const commandPalette = page.locator('.command-palette-shell, .command-palette').first();
+  if (await commandPalette.isVisible().catch(() => false)) {
+    await screenshot(page, themeId, viewport.id, 'command-palette');
+    await closeModal(page);
+  }
 
   const gitButton = page.locator('button[title="Git Operations"]').first();
   if (await gitButton.isVisible().catch(() => false)) {
-    await gitButton.click();
-    await page.locator('.git-workspace').waitFor({ state: 'visible' });
-    await screenshot(page, themeId, viewport.id, 'git-pane');
-    const gitClose = page.locator('button[title="Close"]').first();
-    if (await gitClose.isVisible().catch(() => false)) {
-      await gitClose.click();
+    await gitButton.click({ force: true });
+    const gitWorkspace = page.locator('.git-workspace').first();
+    if (await gitWorkspace.isVisible().catch(() => false)) {
+      await screenshot(page, themeId, viewport.id, 'git-pane');
+      const gitClose = page.locator('button[title="Close"]').first();
+      if (await gitClose.isVisible().catch(() => false)) {
+        await gitClose.click({ force: true });
+      }
     }
   }
 

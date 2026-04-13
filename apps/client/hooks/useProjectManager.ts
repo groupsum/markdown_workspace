@@ -4,6 +4,11 @@ import { storage } from '../services/storage';
 import { readOidcCredential } from '../services/oidc';
 import { DEFAULT_AUTH_MODE, DEFAULT_PROVIDER, getDefaultGitConfig } from '../services/gitConfig';
 
+type CreateProjectOptions = {
+  sourceKind?: 'indexeddb' | 'filesystem';
+  rootPath?: string;
+};
+
 const isOidcProvider = (value: string): value is OidcProviderId => {
   return value === 'github' || value === 'gitlab' || value === 'gitea';
 };
@@ -54,12 +59,14 @@ export const useProjectManager = (
     void boot();
   }, []);
 
-  const createProject = async (name: string) => {
+  const createProject = async (name: string, options?: CreateProjectOptions) => {
     console.log(`[useProjectManager] Action: createProject -> ${name}`);
     const newProject: Project = {
       id: `proj-${Date.now()}`,
       name,
       gitConfig: getDefaultGitConfig(),
+      sourceKind: options?.sourceKind ?? 'indexeddb',
+      rootPath: options?.rootPath,
       createdAt: Date.now(),
       lastOpened: Date.now(),
     };

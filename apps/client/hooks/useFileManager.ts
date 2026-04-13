@@ -1,7 +1,6 @@
-
 import { useState, useCallback } from 'react';
 import JSZip from 'jszip';
-import { AppTheme, FileNode } from '../types';
+import { AppTheme, FileNode, Project } from '../types';
 import { storage } from '../services/storage';
 import { triggerDownload, compressFolder } from './fileSystem';
 import { createHtmlExport, getExportStyles, toHtmlFileName } from '../services/htmlExport';
@@ -13,8 +12,69 @@ type ImportedMarkdownRecord = {
   sourceKind?: 'filesystem';
 };
 
+type ProjectFileOptions = {
+  rootPath?: string;
+  sourceKind?: 'indexeddb' | 'filesystem';
+};
+
+type FilesystemWorkspaceSnapshot = DesktopWorkspaceSnapshot;
+
+const normalizeFileName = (name: string) => {
+  const trimmed = name.trim();
+  if (!trimmed) return '';
+  if (trimmed.toLowerCase().endsWith('.md')) return trimmed;
+  return `${trimmed}.md`;
+};
+
+const normalizeRelativePath = (value: string) => value.replace(/\\/g, '/');
+
+const joinPathSegments = (...parts: string[]) => normalizeRelativePath(
+  parts
+    .filter(Boolean)
+    .join('/')
+    .replace(/\/+/g, '/')
+    .replace(/\/\.\//g, '/')
+);
+
+const getParentPath = (value: string) => {
+  const normalized = normalizeRelativePath(value);
+  const index = normalized.lastIndexOf('/');
+  if (index <= 0) {
+    return '';
+  }
+  return normalized.slice(0, index);
+};
+
+const joinDesktopPath = (...parts: string[]) => joinPathSegments(...parts);
+
+const getNodeRelativePath = (node: FileNode, allFiles: FileNode[]): string => {
+  const parts: string[] = [node.name];
+  let cursor = node.parentId ? allFiles.find((candidate) => candidate.id === node.parentId) ?? null : null;
+
+  while (cursor) {
+    parts.unshift(cursor.name);
+    cursor = cursor.parentId ? allFiles.find((candidate) => candidate.id === cursor.parentId) ?? null : null;
+  }
+
+  return normalizeRelativePath(parts.join('/'));
+};
+
+const buildPathByNodeIdMap = (allFiles: FileNode[]) => {
+  const map = new Map<string, string>();
+  const folders = [...allFiles]
+    .filter((file) => file.type === 'folder')
+    .sort((left, right) => getNodeRelativePath(left, allFiles).localeCompare(getNodeRelativePath(right, allFiles)));
+
+  folders.forEach((folder) => {
+    map.set(getNodeRelativePath(folder, allFiles), folder.id);
+  });
+
+  return map;
+};
+
 export const useFileManager = (
   activeProjectId: string | null,
+  activeProject: Project | null,
   autoSaveEnabled: boolean,
   addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
 ) => {
@@ -25,6 +85,10 @@ export const useFileManager = (
   const [unsaved, setUnsaved] = useState(false);
   const [loadedProjectId, setLoadedProjectId] = useState<string | null>(null);
 
+  const projectSourceKind = activeProject?.sourceKind ?? 'indexeddb';
+  const projectRootPath = activeProject?.rootPath;
+  const isFilesystemProject = projectSourceKind === 'filesystem' && Boolean(projectRootPath) && Boolean(window.desktopShell);
+
   const loadFiles = useCallback(async (projectId: string) => {
     console.log(`[useFileManager] Action: loadFiles for project -> ${projectId}`);
     const projectFiles = await storage.getAllFiles(projectId);
@@ -34,11 +98,19 @@ export const useFileManager = (
     return projectFiles;
   }, []);
 
-  const normalizeFileName = (name: string) => {
-    const trimmed = name.trim();
-    if (!trimmed) return '';
-    if (trimmed.toLowerCase().endsWith('.md')) return trimmed;
-    return `${trimmed}.md`;
+  const replacePathPrefix = (candidate: string | undefined, currentPrefix: string, nextPrefix: string): string | undefined => {
+    if (!candidate) {
+      return candidate;
+    }
+    const normalizedCandidate = normalizeRelativePath(candidate);
+    const normalizedCurrentPrefix = normalizeRelativePath(currentPrefix);
+    if (normalizedCandidate === normalizedCurrentPrefix) {
+      return normalizeRelativePath(nextPrefix);
+    }
+    if (!normalizedCandidate.startsWith(`${normalizedCurrentPrefix}/`)) {
+      return candidate;
+    }
+    return normalizeRelativePath(`${nextPrefix}${normalizedCandidate.slice(normalizedCurrentPrefix.length)}`);
   };
 
   const renameNode = async (nodeId: string, nextName: string) => {
@@ -65,9 +137,46 @@ export const useFileManager = (
       addToast(`ERROR: '${finalName}' ALREADY EXISTS`, 'warning');
       return null;
     }
-    const updatedNode = { ...node, name: finalName, lastModified: Date.now() };
+
+    const currentRelativePath = getNodeRelativePath(node, files);
+    const nextRelativePath = joinPathSegments(getParentPath(currentRelativePath), finalName);
+    const currentPath = node.sourcePath;
+    const nextPath = currentPath ? joinDesktopPath(getParentPath(currentPath), finalName) : undefined;
+
+    if (isFilesystemProject && currentPath && nextPath) {
+      await window.desktopShell!.renamePath({ path: currentPath, nextPath });
+    }
+
+    const updatedNode = {
+      ...node,
+      name: finalName,
+      lastModified: Date.now(),
+      sourceKind: node.sourceKind ?? (isFilesystemProject ? 'filesystem' : 'indexeddb'),
+      sourcePath: nextPath ?? node.sourcePath,
+    };
+
+    const descendantUpdates = node.type === 'folder'
+      ? files
+          .filter((file) => file.id !== node.id)
+          .filter((file) => {
+            const relativePath = getNodeRelativePath(file, files);
+            return relativePath.startsWith(`${currentRelativePath}/`);
+          })
+          .map((file) => ({
+            ...file,
+            sourcePath: replacePathPrefix(file.sourcePath, currentPath ?? currentRelativePath, nextPath ?? nextRelativePath),
+          }))
+      : [];
+
     await storage.saveFile(updatedNode);
-    setFiles(prev => prev.map(f => f.id === nodeId ? updatedNode : f));
+    await Promise.all(descendantUpdates.map((file) => storage.saveFile(file)));
+    const descendantMap = new Map(descendantUpdates.map((file) => [file.id, file]));
+    setFiles(prev => prev.map(f => {
+      if (f.id === nodeId) {
+        return updatedNode;
+      }
+      return descendantMap.get(f.id) ?? f;
+    }));
     addToast('ITEM RENAMED', 'success');
     return updatedNode;
   };
@@ -97,6 +206,10 @@ export const useFileManager = (
       });
     }
 
+    if (isFilesystemProject && node.sourcePath) {
+      await window.desktopShell!.deletePath({ path: node.sourcePath });
+    }
+
     await Promise.all(idsToDelete.map(id => storage.deleteFile(id)));
     const deleteSet = new Set(idsToDelete);
     const deletedFileIds = files.filter(f => deleteSet.has(f.id) && f.type === 'file').map(f => f.id);
@@ -115,44 +228,67 @@ export const useFileManager = (
   const createNewFile = async (name: string) => {
     console.log(`[useFileManager] Action: createNewFile -> ${name}`);
     if (!activeProjectId) return null;
-    
-    const finalName = name.endsWith('.md') ? name : `${name}.md`;
+
+    const finalName = normalizeFileName(name);
+    if (!finalName) {
+      addToast('FILE NAME REQUIRED', 'warning');
+      return null;
+    }
+
     let parentId: string | null = null;
+    let parentPath: string | undefined = projectRootPath;
     const selectedNode = files.find(f => f.id === selectedExplorerId);
     if (selectedNode) {
       if (selectedNode.type === 'folder') {
         parentId = selectedNode.id;
+        parentPath = selectedNode.sourcePath ?? parentPath;
       } else {
         parentId = selectedNode.parentId;
+        const parentNode = selectedNode.parentId ? files.find((file) => file.id === selectedNode.parentId) : null;
+        parentPath = parentNode?.sourcePath ?? parentPath;
       }
     }
 
-    const duplicate = files.find(f => 
-      f.projectId === activeProjectId && 
-      f.parentId === parentId && 
+    const duplicate = files.find(f =>
+      f.projectId === activeProjectId &&
+      f.parentId === parentId &&
       f.name.toLowerCase() === finalName.toLowerCase()
     );
 
     if (duplicate) {
-        console.error(`[useFileManager] Duplicate found: ${finalName}`);
-        addToast(`ERROR: '${finalName}' ALREADY EXISTS`, 'warning');
-        return null;
+      console.error(`[useFileManager] Duplicate found: ${finalName}`);
+      addToast(`ERROR: '${finalName}' ALREADY EXISTS`, 'warning');
+      return null;
+    }
+
+    const fileContent = `# ${finalName.replace(/\.md$/i, '')}\n\n`;
+    const sourcePath = isFilesystemProject && parentPath
+      ? joinDesktopPath(parentPath, finalName)
+      : undefined;
+
+    if (isFilesystemProject && sourcePath) {
+      await window.desktopShell!.saveMarkdownFile({
+        path: sourcePath,
+        content: fileContent,
+      });
     }
 
     const newFile: FileNode = {
       id: `file-${Date.now()}`,
       projectId: activeProjectId,
-      parentId: parentId,
+      parentId,
       name: finalName,
       type: 'file',
-      content: `# ${name}\n\n`,
-      lastModified: Date.now()
+      content: fileContent,
+      lastModified: Date.now(),
+      sourceKind: isFilesystemProject ? 'filesystem' : 'indexeddb',
+      sourcePath,
     };
 
     console.log(`[useFileManager] Saving new file to IDB: ${newFile.id}`);
     await storage.saveFile(newFile);
     setFiles(prev => [...prev, newFile]);
-    addToast('NEW FILE CREATED', 'info');
+    addToast(isFilesystemProject ? 'NEW FILE CREATED ON DISK' : 'NEW FILE CREATED', 'info');
     return newFile;
   };
 
@@ -167,18 +303,22 @@ export const useFileManager = (
     }
 
     let parentId: string | null = null;
+    let parentPath: string | undefined = projectRootPath;
     const selectedNode = files.find(f => f.id === selectedExplorerId);
     if (selectedNode) {
       if (selectedNode.type === 'folder') {
         parentId = selectedNode.id;
+        parentPath = selectedNode.sourcePath ?? parentPath;
       } else {
         parentId = selectedNode.parentId;
+        const parentNode = selectedNode.parentId ? files.find((file) => file.id === selectedNode.parentId) : null;
+        parentPath = parentNode?.sourcePath ?? parentPath;
       }
     }
 
-    const duplicate = files.find(f => 
-      f.projectId === activeProjectId && 
-      f.parentId === parentId && 
+    const duplicate = files.find(f =>
+      f.projectId === activeProjectId &&
+      f.parentId === parentId &&
       f.name.toLowerCase() === trimmedName.toLowerCase()
     );
 
@@ -188,19 +328,29 @@ export const useFileManager = (
       return null;
     }
 
+    const sourcePath = isFilesystemProject && parentPath
+      ? joinDesktopPath(parentPath, trimmedName)
+      : undefined;
+
+    if (isFilesystemProject && sourcePath) {
+      await window.desktopShell!.createDirectory({ path: sourcePath });
+    }
+
     const newFolder: FileNode = {
       id: `folder-${Date.now()}`,
       projectId: activeProjectId,
-      parentId: parentId,
+      parentId,
       name: trimmedName,
       type: 'folder',
-      lastModified: Date.now()
+      lastModified: Date.now(),
+      sourceKind: isFilesystemProject ? 'filesystem' : 'indexeddb',
+      sourcePath,
     };
 
     console.log(`[useFileManager] Saving new folder to IDB: ${newFolder.id}`);
     await storage.saveFile(newFolder);
     setFiles(prev => [...prev, newFolder]);
-    addToast('NEW FOLDER CREATED', 'info');
+    addToast(isFilesystemProject ? 'NEW FOLDER CREATED ON DISK' : 'NEW FOLDER CREATED', 'info');
     return newFolder;
   };
 
@@ -213,10 +363,12 @@ export const useFileManager = (
         path: updatedFile.sourcePath,
         content: updatedFile.content ?? '',
       });
+      setFiles(prev => prev.map(candidate => candidate.id === updatedFile.id ? updatedFile : candidate));
       addToast('FILE SAVED TO DISK + IDB', 'success');
       setUnsaved(false);
       return;
     }
+    setFiles(prev => prev.map(candidate => candidate.id === updatedFile.id ? updatedFile : candidate));
     setUnsaved(false);
     addToast('FILE SAVED TO IDB', 'success');
   };
@@ -232,7 +384,13 @@ export const useFileManager = (
       const existing = files.find(f => f.id === fileId);
       if (existing) {
         const updatedFile = { ...existing, content, lastModified: updatedAt };
-        storage.saveFile(updatedFile).then(() => {
+        storage.saveFile(updatedFile).then(async () => {
+          if (updatedFile.type === 'file' && updatedFile.sourceKind === 'filesystem' && updatedFile.sourcePath && window.desktopShell) {
+            await window.desktopShell.saveMarkdownFile({
+              path: updatedFile.sourcePath,
+              content: updatedFile.content ?? '',
+            });
+          }
           setUnsaved(false);
         });
       }
@@ -243,12 +401,12 @@ export const useFileManager = (
     console.log(`[useFileManager] Action: moveFile -> ${fileId} to folder -> ${targetFolderId}`);
     const file = files.find(f => f.id === fileId);
     if (!file) return;
-    
+
     if (file.type === 'folder' && targetFolderId) {
       let currentId: string | null = targetFolderId;
       while (currentId) {
         if (currentId === fileId) {
-          console.warn("[useFileManager] Circular folder move detected");
+          console.warn('[useFileManager] Circular folder move detected');
           addToast('CANNOT MOVE FOLDER INTO ITSELF', 'warning');
           return;
         }
@@ -257,9 +415,42 @@ export const useFileManager = (
       }
     }
 
-    const updatedFile = { ...file, parentId: targetFolderId };
+    const targetFolder = targetFolderId ? files.find(candidate => candidate.id === targetFolderId) ?? null : null;
+    const targetFolderPath = targetFolder?.sourcePath ?? projectRootPath;
+    const currentPath = file.sourcePath;
+    let nextPath = currentPath;
+
+    if (isFilesystemProject && currentPath && targetFolderPath) {
+      const result = await window.desktopShell!.movePath({
+        path: currentPath,
+        targetFolderPath,
+      });
+      nextPath = result.path;
+    }
+
+    const updatedFile = { ...file, parentId: targetFolderId, sourcePath: nextPath };
+    const currentRelativePath = getNodeRelativePath(file, files);
+    const nextRelativePath = getNodeRelativePath(updatedFile, files.map(candidate => candidate.id === file.id ? updatedFile : candidate));
+
+    const descendantUpdates = file.type === 'folder'
+      ? files
+          .filter(candidate => candidate.id !== file.id)
+          .filter(candidate => getNodeRelativePath(candidate, files).startsWith(`${currentRelativePath}/`))
+          .map(candidate => ({
+            ...candidate,
+            sourcePath: replacePathPrefix(candidate.sourcePath, currentPath ?? currentRelativePath, nextPath ?? nextRelativePath),
+          }))
+      : [];
+
     await storage.saveFile(updatedFile);
-    setFiles(prev => prev.map(f => f.id === fileId ? updatedFile : f));
+    await Promise.all(descendantUpdates.map(candidate => storage.saveFile(candidate)));
+    const descendantMap = new Map(descendantUpdates.map(candidate => [candidate.id, candidate]));
+    setFiles(prev => prev.map(candidate => {
+      if (candidate.id === fileId) {
+        return updatedFile;
+      }
+      return descendantMap.get(candidate.id) ?? candidate;
+    }));
     addToast('MOVED ITEM', 'info');
   };
 
@@ -355,6 +546,8 @@ export const useFileManager = (
         type: node.type,
         content: typeof node.content === 'string' ? node.content : undefined,
         lastModified: typeof node.lastModified === 'number' ? node.lastModified : now,
+        sourceKind: node.sourceKind,
+        sourcePath: node.sourcePath,
       });
     }
 
@@ -420,7 +613,6 @@ export const useFileManager = (
       addToast('HTML ARCHIVE DOWNLOADED', 'success');
     }
   };
-
 
   const importMarkdownRecords = async (projectId: string, items: ImportedMarkdownRecord[]) => {
     if (items.length === 0) return [];
@@ -500,6 +692,74 @@ export const useFileManager = (
     return imported;
   };
 
+  const importFilesystemWorkspace = async (
+    projectId: string,
+    snapshot: FilesystemWorkspaceSnapshot,
+    options?: ProjectFileOptions
+  ) => {
+    const existingFiles = await storage.getAllFiles(projectId);
+    if (existingFiles.length > 0) {
+      await Promise.all(existingFiles.map((file) => storage.deleteFile(file.id)));
+    }
+
+    const folderEntries = snapshot.entries
+      .filter((entry) => entry.type === 'folder')
+      .sort((left, right) => left.relativePath.localeCompare(right.relativePath));
+    const fileEntries = snapshot.entries
+      .filter((entry) => entry.type === 'file')
+      .sort((left, right) => left.relativePath.localeCompare(right.relativePath));
+
+    const nextFiles: FileNode[] = [];
+    const pathByNodeId = new Map<string, string>();
+    const folderIdByRelativePath = new Map<string, string>();
+
+    folderEntries.forEach((entry) => {
+      const normalizedRelativePath = normalizeRelativePath(entry.relativePath);
+      const parentRelativePath = getParentPath(normalizedRelativePath) || '.';
+      const parentId = parentRelativePath === '.' ? null : folderIdByRelativePath.get(parentRelativePath) ?? null;
+      const node: FileNode = {
+        id: `folder-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        projectId,
+        parentId,
+        name: entry.name,
+        type: 'folder',
+        lastModified: Date.now(),
+        sourceKind: options?.sourceKind ?? 'filesystem',
+        sourcePath: entry.path,
+      };
+      folderIdByRelativePath.set(normalizedRelativePath, node.id);
+      pathByNodeId.set(node.id, normalizedRelativePath);
+      nextFiles.push(node);
+    });
+
+    fileEntries.forEach((entry) => {
+      const normalizedRelativePath = normalizeRelativePath(entry.relativePath);
+      const parentRelativePath = getParentPath(normalizedRelativePath) || '.';
+      const parentId = parentRelativePath === '.' ? null : folderIdByRelativePath.get(parentRelativePath) ?? null;
+      const node: FileNode = {
+        id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        projectId,
+        parentId,
+        name: entry.name,
+        type: 'file',
+        content: entry.content ?? '',
+        lastModified: Date.now(),
+        sourceKind: options?.sourceKind ?? 'filesystem',
+        sourcePath: entry.path,
+      };
+      pathByNodeId.set(node.id, normalizedRelativePath);
+      nextFiles.push(node);
+    });
+
+    await Promise.all(nextFiles.map((file) => storage.saveFile(file)));
+    if (projectId === loadedProjectId || projectId === activeProjectId) {
+      setFiles(nextFiles);
+      setLoadedProjectId(projectId);
+    }
+    addToast(`SYNCED ${nextFiles.filter((file) => file.type === 'file').length} WORKSPACE FILES`, 'success');
+    return nextFiles;
+  };
+
   const importMarkdownFiles = async (inputFiles: FileList | File[]) => {
     if (!activeProjectId) return [];
     const items = await Promise.all(Array.from(inputFiles).map(async (inputFile) => ({
@@ -513,6 +773,33 @@ export const useFileManager = (
   const importExternalMarkdownFiles = async (projectId: string, inputFiles: readonly ImportedMarkdownRecord[]) => {
     return importMarkdownRecords(projectId, [...inputFiles]);
   };
+
+  const getFilesystemRootForSelection = useCallback(() => {
+    if (!isFilesystemProject || !projectRootPath) {
+      return null;
+    }
+
+    const selectedNode = selectedExplorerId ? files.find((file) => file.id === selectedExplorerId) ?? null : null;
+    if (!selectedNode) {
+      return {
+        projectRootPath,
+        parentId: null as string | null,
+      };
+    }
+
+    if (selectedNode.type === 'folder') {
+      return {
+        projectRootPath: selectedNode.sourcePath ?? projectRootPath,
+        parentId: selectedNode.id,
+      };
+    }
+
+    const parentNode = selectedNode.parentId ? files.find((file) => file.id === selectedNode.parentId) ?? null : null;
+    return {
+      projectRootPath: parentNode?.sourcePath ?? projectRootPath,
+      parentId: selectedNode.parentId,
+    };
+  }, [files, isFilesystemProject, projectRootPath, selectedExplorerId]);
 
   return {
     files,
@@ -535,6 +822,8 @@ export const useFileManager = (
     exportHtmlNode,
     importMarkdownFiles,
     importExternalMarkdownFiles,
-    restoreProjectData
+    importFilesystemWorkspace,
+    restoreProjectData,
+    getFilesystemRootForSelection,
   };
 };

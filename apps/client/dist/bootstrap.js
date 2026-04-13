@@ -9,7 +9,7 @@ const setStatus = (message) => {
 const resolveSelectedVersion = (manifest) => {
   const available = Array.isArray(manifest.available) ? manifest.available : [];
   const stored = window.localStorage.getItem(SELECTED_VERSION_STORAGE_KEY);
-  const latest = manifest.latest || available[0]?.version || "1.4.20";
+  const latest = manifest.latest || available[0]?.version || "1.4.21";
   const storedEntry = stored ? available.find((entry) => entry.version === stored && entry.isSelectable) : null;
   return storedEntry?.version || latest;
 };

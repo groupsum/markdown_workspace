@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/desktop",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Native shell wrapper for the MdWork client on Electron desktop and Capacitor Android.",
   "type": "module",
   "main": "./dist/main.js",

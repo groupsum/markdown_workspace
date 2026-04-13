@@ -149,6 +149,7 @@ class StorageService {
           id: defaultProjectId,
           name: 'Core System',
           gitConfig: getDefaultGitConfig(),
+          sourceKind: 'indexeddb',
           lastOpened: Date.now(),
           createdAt: Date.now()
       };

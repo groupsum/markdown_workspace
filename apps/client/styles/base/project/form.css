@@ -4,6 +4,9 @@
   background: transparent;
   border: none;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .project-input {
@@ -58,8 +61,19 @@
   color: var(--fg-muted);
 }
 
+.project-create-note {
+  margin: 0;
+  padding: 12px 14px;
+  border: var(--border-width) solid color-mix(in srgb, var(--accent) 45%, var(--border-color));
+  background: color-mix(in srgb, var(--bg-inset) 86%, transparent);
+  color: var(--fg-secondary);
+  font-family: var(--font-mono);
+  font-size: calc(10px * var(--ui-scale));
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
 .project-form-actions {
-  margin-top: 24px;
   display: flex;
   gap: 12px;
   align-items: stretch;
