@@ -7,6 +7,8 @@ export interface FileNode {
   type: 'file' | 'folder';
   content?: string;
   lastModified: number;
+  sourceKind?: 'indexeddb' | 'filesystem';
+  sourcePath?: string;
 }
 
 export interface Project {

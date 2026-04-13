@@ -75,6 +75,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.commands.previous-tab': 'Previous Tab',
         'core.commands.focus-explorer': 'Focus Explorer',
         'core.commands.cloud-sync': 'GitHub Configurations',
+        'core.commands.open-host-file': 'Open Markdown File',
       },
     });
 
@@ -152,6 +153,13 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         execute: () => runtime.getSnapshot().app.actions.requestMarkdownImport(),
         icon: { kind: 'lucide', name: 'Upload' },
         keywords: ['import', 'markdown', 'upload'],
+      }),
+      services.commands.register({
+        id: 'core.open-host-file',
+        title: label('Open Markdown File', 'core.commands.open-host-file'),
+        execute: () => runtime.getSnapshot().app.actions.openMarkdownFromHost(),
+        icon: { kind: 'lucide', name: 'FolderOpen' },
+        keywords: ['open', 'markdown', 'desktop'],
       }),
       services.commands.register({
         id: 'core.toggle-git-pane',
@@ -345,6 +353,14 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         group: 'workspace.secondary',
         order: 30,
         target: { kind: 'command', commandId: 'core.export-html' },
+      }),
+      services.actionRail.register({
+        id: 'core.open-host-file',
+        title: label('Open Markdown File', 'core.commands.open-host-file'),
+        icon: { kind: 'lucide', name: 'FolderOpen' },
+        group: 'workspace.secondary',
+        order: 34,
+        target: { kind: 'command', commandId: 'core.open-host-file' },
       }),
       services.actionRail.register({
         id: 'core.import-markdown',

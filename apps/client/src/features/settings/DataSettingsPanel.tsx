@@ -11,7 +11,6 @@ export const DataSettingsPanel: React.FC = () => {
   const pwaState = runtime.pwa.state;
   const pwaActions = runtime.pwa.actions;
   const pwaStatusLabel = pwaState.isInstalled ? t('core.settings.data.pwa.installed', 'INSTALLED') : t('core.settings.data.pwa.not-installed', 'NOT_INSTALLED');
-  const pwaUpdateLabel = pwaState.updateAvailable ? t('core.status.update-ready', 'UPDATE_READY') : t('core.settings.data.pwa.up-to-date', 'UP_TO_DATE');
 
   const handleRestoreUpload: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     const file = event.target.files?.[0];
@@ -34,8 +33,14 @@ export const DataSettingsPanel: React.FC = () => {
           </div>
           <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">{t('core.settings.data.description', 'PWA deployment and export controls.')}</p>
           <div className="pwa-status-grid">
-            <div className="pwa-status-row"><span className="pwa-status-label">UPDATE_STATE</span><span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{pwaUpdateLabel}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">UPDATE_STATE</span><span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{pwaState.versionStatusLabel}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">SERVICE_WORKER</span><span className="pwa-status-value">{pwaState.isSupported ? 'AVAILABLE' : 'UNAVAILABLE'}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">RUNNING_VERSION</span><span className="pwa-status-value">{pwaState.runningVersion}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">INSTALLED_VERSION</span><span className="pwa-status-value">{pwaState.installedVersion ?? 'UNCONTROLLED'}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">SELECTED_VERSION</span><span className="pwa-status-value">{pwaState.selectedVersion}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">LATEST_VERSION</span><span className="pwa-status-value">{pwaState.latestVersion}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">STORAGE_SCHEMA</span><span className="pwa-status-value">{pwaState.localStorageSchema}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">COMPATIBILITY</span><span className="pwa-status-value">{pwaState.compatibilityState}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">APP_VERSION</span><span className="pwa-status-value">{APP_VERSION}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">BUILD_ID</span><span className="pwa-status-value">{APP_BUILD_ID}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">PACKAGE</span><span className="pwa-status-value">{APP_PACKAGE_NAME}</span></div>
@@ -44,6 +49,35 @@ export const DataSettingsPanel: React.FC = () => {
             <button className="modal-btn flex-1" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>{t('core.settings.data.pwa.install', 'INSTALL_PWA')}</button>
             <button className="modal-btn flex-1 modal-btn-primary" onClick={pwaActions.requestUpdate} disabled={!pwaState.updateAvailable}>{t('core.settings.data.pwa.update', 'APPLY_UPDATE')}</button>
           </div>
+          <div className="settings-action-row">
+            <button className="modal-btn flex-1" onClick={() => void pwaActions.checkForUpdates()} disabled={pwaState.isCheckingForUpdates}>{t('core.settings.data.pwa.check', 'CHECK_FOR_UPDATES')}</button>
+            <button className="modal-btn flex-1" onClick={pwaActions.switchToLatest} disabled={pwaState.isLatest}>{t('core.settings.data.pwa.switch-latest', 'SWITCH_TO_LATEST')}</button>
+          </div>
+          <label className="settings-field">
+            <span className="settings-label">RETAINED_VERSION</span>
+            <select
+              className="settings-select"
+              value={pwaState.selectedVersion}
+              onChange={(event) => pwaActions.switchToVersion(event.target.value)}
+            >
+              {pwaState.availableVersions.map((entry) => {
+                const suffix = entry.disabled
+                  ? entry.blocked
+                    ? 'FAILED_VERSION_BLOCKED'
+                    : entry.compatible
+                      ? 'DISABLED'
+                      : 'INCOMPATIBLE_WITH_LOCAL_DATA'
+                  : entry.version === pwaState.latestVersion
+                    ? 'LATEST'
+                    : 'RETAINED';
+                return (
+                  <option key={entry.version} value={entry.version} disabled={entry.disabled}>
+                    {`${entry.version} | ${entry.storageSchema} | ${suffix}`}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
           <label className="pwa-toggle">
             <input type="checkbox" checked={pwaState.autoUpdateEnabled} onChange={(event) => pwaActions.toggleAutoUpdate(event.target.checked)} />
             <span className="pwa-toggle-indicator" />

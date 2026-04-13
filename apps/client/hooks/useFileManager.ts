@@ -6,6 +6,13 @@ import { storage } from '../services/storage';
 import { triggerDownload, compressFolder } from './fileSystem';
 import { createHtmlExport, getExportStyles, toHtmlFileName } from '../services/htmlExport';
 
+type ImportedMarkdownRecord = {
+  name: string;
+  content: string;
+  sourcePath?: string;
+  sourceKind?: 'filesystem';
+};
+
 export const useFileManager = (
   activeProjectId: string | null,
   autoSaveEnabled: boolean,
@@ -199,7 +206,17 @@ export const useFileManager = (
 
   const saveFile = async (file: FileNode) => {
     console.log(`[useFileManager] Action: saveFile -> ${file.id}`);
-    await storage.saveFile({ ...file, lastModified: Date.now() });
+    const updatedFile = { ...file, lastModified: Date.now() };
+    await storage.saveFile(updatedFile);
+    if (updatedFile.type === 'file' && updatedFile.sourceKind === 'filesystem' && updatedFile.sourcePath && window.desktopShell) {
+      await window.desktopShell.saveMarkdownFile({
+        path: updatedFile.sourcePath,
+        content: updatedFile.content ?? '',
+      });
+      addToast('FILE SAVED TO DISK + IDB', 'success');
+      setUnsaved(false);
+      return;
+    }
     setUnsaved(false);
     addToast('FILE SAVED TO IDB', 'success');
   };
@@ -405,25 +422,48 @@ export const useFileManager = (
   };
 
 
-  const importMarkdownFiles = async (inputFiles: FileList | File[]) => {
-    if (!activeProjectId) return [];
-    const items = Array.from(inputFiles);
+  const importMarkdownRecords = async (projectId: string, items: ImportedMarkdownRecord[]) => {
     if (items.length === 0) return [];
 
     let parentId: string | null = null;
-    const selectedNode = files.find((file) => file.id === selectedExplorerId);
-    if (selectedNode) {
-      parentId = selectedNode.type === 'folder' ? selectedNode.id : selectedNode.parentId;
+    if (projectId === activeProjectId) {
+      const selectedNode = files.find((file) => file.id === selectedExplorerId);
+      if (selectedNode) {
+        parentId = selectedNode.type === 'folder' ? selectedNode.id : selectedNode.parentId;
+      }
     }
 
-    const created: FileNode[] = [];
-    for (const inputFile of items) {
-      const lowerName = inputFile.name.toLowerCase();
+    const nextFiles = projectId === loadedProjectId ? [...files] : await storage.getAllFiles(projectId);
+    const imported: FileNode[] = [];
+
+    for (const item of items) {
+      const lowerName = item.name.toLowerCase();
       const baseName = lowerName.endsWith('.md') || lowerName.endsWith('.markdown')
-        ? inputFile.name
-        : `${inputFile.name}.md`;
-      const existing = files.find((file) =>
-        file.projectId === activeProjectId &&
+        ? item.name
+        : `${item.name}.md`;
+
+      const bySourcePathIndex = item.sourcePath
+        ? nextFiles.findIndex((file) => file.projectId === projectId && file.sourcePath === item.sourcePath)
+        : -1;
+
+      if (bySourcePathIndex >= 0) {
+        const current = nextFiles[bySourcePathIndex];
+        const updated: FileNode = {
+          ...current,
+          name: baseName,
+          content: item.content,
+          lastModified: Date.now(),
+          sourceKind: item.sourceKind ?? current.sourceKind ?? 'indexeddb',
+          sourcePath: item.sourcePath ?? current.sourcePath,
+        };
+        await storage.saveFile(updated);
+        nextFiles[bySourcePathIndex] = updated;
+        imported.push(updated);
+        continue;
+      }
+
+      const existing = nextFiles.find((file) =>
+        file.projectId === projectId &&
         file.parentId === parentId &&
         file.name.toLowerCase() === baseName.toLowerCase()
       );
@@ -431,28 +471,47 @@ export const useFileManager = (
         continue;
       }
 
-      const content = await inputFile.text();
       const newFile: FileNode = {
         id: `file-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        projectId: activeProjectId,
+        projectId,
         parentId,
         name: baseName,
         type: 'file',
-        content,
+        content: item.content,
         lastModified: Date.now(),
+        sourceKind: item.sourceKind ?? 'indexeddb',
+        sourcePath: item.sourcePath,
       };
       await storage.saveFile(newFile);
-      created.push(newFile);
+      nextFiles.push(newFile);
+      imported.push(newFile);
     }
 
-    if (created.length > 0) {
-      setFiles((previous) => [...previous, ...created]);
-      addToast(`IMPORTED ${created.length} MARKDOWN FILE${created.length > 1 ? 'S' : ''}`, 'success');
+    if (projectId === loadedProjectId) {
+      setFiles(nextFiles);
+    }
+
+    if (imported.length > 0) {
+      addToast(`IMPORTED ${imported.length} MARKDOWN FILE${imported.length > 1 ? 'S' : ''}`, 'success');
     } else {
       addToast('NO NEW MARKDOWN FILES IMPORTED', 'warning');
     }
 
-    return created;
+    return imported;
+  };
+
+  const importMarkdownFiles = async (inputFiles: FileList | File[]) => {
+    if (!activeProjectId) return [];
+    const items = await Promise.all(Array.from(inputFiles).map(async (inputFile) => ({
+      name: inputFile.name,
+      content: await inputFile.text(),
+    })));
+
+    return importMarkdownRecords(activeProjectId, items);
+  };
+
+  const importExternalMarkdownFiles = async (projectId: string, inputFiles: readonly ImportedMarkdownRecord[]) => {
+    return importMarkdownRecords(projectId, [...inputFiles]);
   };
 
   return {
@@ -475,6 +534,7 @@ export const useFileManager = (
     exportProjectData,
     exportHtmlNode,
     importMarkdownFiles,
+    importExternalMarkdownFiles,
     restoreProjectData
   };
 };

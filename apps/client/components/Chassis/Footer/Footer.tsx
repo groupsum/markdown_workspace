@@ -11,6 +11,7 @@ interface FooterProps {
   online?: boolean;
   isInstalled?: boolean;
   updateAvailable?: boolean;
+  latestAvailable?: boolean;
   autoSaveEnabled?: boolean;
   className?: string;
 }
@@ -24,6 +25,7 @@ export const Footer: React.FC<FooterProps> = ({
   online = true,
   isInstalled = false,
   updateAvailable = false,
+  latestAvailable = false,
   autoSaveEnabled = true,
   className = '',
 }) => {
@@ -84,6 +86,14 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="status-item" title={t('core.status.runtime.title', 'Runtime shell')}>
           <span className="status-text-bold">{runtimeLabel}</span>
         </div>
+        {latestAvailable && !updateAvailable && (
+          <>
+            <div className="status-sep"></div>
+            <div className="status-item" title={t('core.status.release.title', 'Retained release status')}>
+              <span className="status-text-bold status-text--warn">{t('core.status.release.newer', 'NEWER_VERSION_AVAILABLE')}</span>
+            </div>
+          </>
+        )}
         {updateAvailable && (
           <>
             <div className="status-sep"></div>

@@ -18,7 +18,6 @@ export interface ClientRuntimeSnapshot {
   readonly app: ClientAppController;
   readonly pwa: ClientPwaController;
   readonly online: boolean;
-  readonly updateAvailable: boolean;
   readonly activeTabName: string | null;
 }
 

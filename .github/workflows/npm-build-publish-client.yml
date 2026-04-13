@@ -24,7 +24,14 @@ jobs:
           VITE_OIDC_CLIENT_ID: ${{ secrets.VITE_OIDC_CLIENT_ID }}
           VITE_OIDC_FQDN: ${{ vars.VITE_OIDC_FQDN || 'https://md.bz23.xyz' }}
           VITE_OIDC_CALLBACK_PATH: ${{ vars.VITE_OIDC_CALLBACK_PATH || '/auth/callback' }}
+          CLIENT_RETAINED_SOURCE_DIR: apps/client/.retained-client
         run: npm run build:client
+
+      - name: Upload retained client bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: retained-client-dist
+          path: apps/client/dist
 
       - name: Determine npm publish readiness
         id: publish_gate

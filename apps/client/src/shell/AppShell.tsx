@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSyncExternalStore } from 'react';
-import { Download, RefreshCw } from 'lucide-react';
+import { Download, RefreshCw, ArrowUpCircle } from 'lucide-react';
 import { Chassis } from '../../components/Chassis/Chassis';
 import { Footer } from '../../components/Chassis/Footer/Footer';
 import { GitPane } from '../../components/Chassis/Git/GitPane';
@@ -49,11 +49,19 @@ export const AppShell: React.FC = () => {
     : pwaState.updateAvailable
       ? {
           label: t('core.header.pwa.update.label', 'Update PWA'),
-          title: t('core.header.pwa.update.title', 'Apply the latest update'),
+          title: t('core.header.pwa.update.title', 'Apply the waiting build for this selected version'),
           icon: <RefreshCw size={16} />,
           onClick: pwaActions.requestUpdate,
           disabled: false,
         }
+      : !pwaState.isLatest
+        ? {
+            label: t('core.header.pwa.latest.label', 'Switch To Latest'),
+            title: t('core.header.pwa.latest.title', 'Navigate to the latest retained compatible version'),
+            icon: <ArrowUpCircle size={16} />,
+            onClick: pwaActions.switchToLatest,
+            disabled: false,
+          }
       : null;
 
   React.useEffect(() => {
@@ -77,6 +85,8 @@ export const AppShell: React.FC = () => {
       onDeleteProject={actions.handleDeleteProject}
       currentTheme={state.theme}
       onThemeChange={actions.setTheme}
+      showDesktopOpen={Boolean(window.desktopShell)}
+      onOpenDesktopFile={actions.openMarkdownFromHost}
     />
   ) : (
     <div className="app-root">
@@ -178,7 +188,8 @@ export const AppShell: React.FC = () => {
         buildId={APP_BUILD_ID}
         online={runtime.online}
         isInstalled={pwaState.isInstalled}
-        updateAvailable={runtime.updateAvailable || pwaState.updateAvailable}
+        updateAvailable={pwaState.updateAvailable}
+        latestAvailable={!pwaState.isLatest}
         autoSaveEnabled={state.autoSaveEnabled}
       />
     </div>
@@ -186,9 +197,9 @@ export const AppShell: React.FC = () => {
 
   return (
     <Chassis zoom={state.zoom} mode={state.activeProjectId ? 'project' : 'selector'}>
-      {runtime.updateAvailable && (
+      {pwaState.updateAvailable && (
         <div className="update-banner">
-          <span>{t('core.update-banner.ready', 'MDWORK UPDATE READY')}</span>
+          <span>{t('core.update-banner.ready', 'UPDATE READY FOR SELECTED VERSION')}</span>
           <button onClick={pwaActions.requestUpdate} className="update-btn">
             <RefreshCw size={12} /> {t('core.update-banner.reload', 'RELOAD')}
           </button>

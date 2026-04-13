@@ -1,15 +1,20 @@
-const CACHE_PREFIX = 'lattice-architect-';
+const SCOPE_URL = new URL(self.registration.scope);
+const SCOPE_PATH = SCOPE_URL.pathname.endsWith('/') ? SCOPE_URL.pathname : `${SCOPE_URL.pathname}/`;
+const SCOPE_KEY = SCOPE_PATH.replace(/[^\w-]+/g, '_');
+const VERSION_MATCH = SCOPE_PATH.match(/\/client\/versions\/([^/]+)\//);
+const CURRENT_VERSION = VERSION_MATCH?.[1] || 'dev';
+const CACHE_PREFIX = `lattice-architect-${SCOPE_KEY}-`;
 const META_CACHE = 'lattice-architect-meta';
-const META_KEY = '/pwa-meta';
-const CURRENT_VERSION = new URL(self.location.href).searchParams.get('version') || 'dev';
+const META_KEY = `/pwa-meta/${SCOPE_KEY}`;
 const CURRENT_CACHE = `${CACHE_PREFIX}${CURRENT_VERSION}`;
+const INDEX_CACHE_KEY = `${SCOPE_PATH}index.html`;
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-  '/favicon.svg',
-  '/icons/icon-192.svg',
-  '/icons/icon-512.svg',
+  SCOPE_PATH,
+  INDEX_CACHE_KEY,
+  `${SCOPE_PATH}manifest.webmanifest`,
+  `${SCOPE_PATH}favicon.svg`,
+  `${SCOPE_PATH}icons/icon-192.svg`,
+  `${SCOPE_PATH}icons/icon-512.svg`,
 ];
 const EXTERNAL_ASSETS = [
   'https://cdn.tailwindcss.com',
@@ -69,53 +74,19 @@ const isFailedVersion = (version) => metaState.failedVersions.includes(version);
 
 const getCacheNameForVersion = (version) => `${CACHE_PREFIX}${version}`;
 
-const isAppCache = (name) => name.startsWith(CACHE_PREFIX);
-
-const findFallbackResponse = async (request, cacheNames) => {
-  for (const cacheName of cacheNames) {
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(request);
-    if (cachedResponse) {
-      return cachedResponse;
-    }
+const normalizeRequest = (request) => {
+  if (typeof request === 'string') {
+    return request;
   }
-  return undefined;
-};
-
-const getFallbackCacheNames = async (activeCacheName) => {
-  const cacheNames = await caches.keys();
-  const appCacheNames = cacheNames.filter(isAppCache);
-  const prioritized = [];
-
-  if (activeCacheName && appCacheNames.includes(activeCacheName)) {
-    prioritized.push(activeCacheName);
-  }
-
-  if (CURRENT_CACHE !== activeCacheName && appCacheNames.includes(CURRENT_CACHE)) {
-    prioritized.push(CURRENT_CACHE);
-  }
-
-  if (metaState.lastKnownGoodVersion) {
-    const lastKnownGoodCache = getCacheNameForVersion(metaState.lastKnownGoodVersion);
-    if (!prioritized.includes(lastKnownGoodCache) && appCacheNames.includes(lastKnownGoodCache)) {
-      prioritized.push(lastKnownGoodCache);
-    }
-  }
-
-  appCacheNames.forEach((cacheName) => {
-    if (!prioritized.includes(cacheName)) {
-      prioritized.push(cacheName);
-    }
-  });
-
-  return prioritized;
+  const url = new URL(request.url);
+  return url.toString();
 };
 
 const getCachedAppShell = async (activeCacheName) => {
-  const fallbackCacheNames = await getFallbackCacheNames(activeCacheName);
+  const cache = await caches.open(activeCacheName);
   return (
-    (await findFallbackResponse('/index.html', fallbackCacheNames)) ||
-    (await findFallbackResponse('/', fallbackCacheNames))
+    (await cache.match(INDEX_CACHE_KEY)) ||
+    (await cache.match(SCOPE_PATH))
   );
 };
 
@@ -131,7 +102,7 @@ const isSuccessfulResponse = (response) => Boolean(response) && response.ok;
 const fetchAndCache = async ({ request, cache, cacheKey = request, allowOpaque = false }) => {
   const response = await fetch(request);
   if (isSuccessfulResponse(response) || (allowOpaque && response.type === 'opaque')) {
-    cache.put(cacheKey, response.clone());
+    await cache.put(cacheKey, response.clone());
     return response;
   }
   return undefined;
@@ -179,7 +150,11 @@ self.addEventListener('activate', (event) => {
       if (metaState.lastKnownGoodVersion) {
         keep.add(getCacheNameForVersion(metaState.lastKnownGoodVersion));
       }
-      await Promise.all(keys.filter((key) => !keep.has(key)).map((key) => caches.delete(key)));
+      await Promise.all(
+        keys
+          .filter((key) => key.startsWith(CACHE_PREFIX) && !keep.has(key))
+          .map((key) => caches.delete(key))
+      );
       await self.clients.claim();
       if ('periodicSync' in self.registration) {
         try {
@@ -264,11 +239,6 @@ self.addEventListener('fetch', (event) => {
           if (cachedResponse) {
             return cachedResponse;
           }
-          const fallbackCacheNames = await getFallbackCacheNames(getActiveCacheName());
-          const crossCacheResponse = await findFallbackResponse(event.request, fallbackCacheNames);
-          if (crossCacheResponse) {
-            return crossCacheResponse;
-          }
           throw error;
         }
       })()
@@ -285,7 +255,7 @@ self.addEventListener('fetch', (event) => {
           const response = await fetchAndCache({
             request: event.request,
             cache,
-            cacheKey: '/index.html',
+            cacheKey: INDEX_CACHE_KEY,
           });
           if (!response) {
             throw new Error('Navigation response was not successful');
@@ -293,13 +263,13 @@ self.addEventListener('fetch', (event) => {
           return response;
         } catch (error) {
           const cache = await caches.open(activeCacheName);
-          const cachedResponse = await cache.match('/index.html');
+          const cachedResponse = await cache.match(INDEX_CACHE_KEY);
           if (cachedResponse) {
             return cachedResponse;
           }
-          const crossCacheAppShell = await getCachedAppShell(activeCacheName);
-          if (crossCacheAppShell) {
-            return crossCacheAppShell;
+          const cachedAppShell = await getCachedAppShell(activeCacheName);
+          if (cachedAppShell) {
+            return cachedAppShell;
           }
           throw error;
         }
@@ -311,9 +281,9 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     (async () => {
       const cache = await caches.open(getActiveCacheName());
-      const cachedResponse = await cache.match(event.request);
-
-      const fetchPromise = fetchAndCache({ request: event.request, cache, allowOpaque: true }).catch(() => undefined);
+      const cacheKey = normalizeRequest(event.request);
+      const cachedResponse = await cache.match(cacheKey) || await cache.match(event.request);
+      const fetchPromise = fetchAndCache({ request: event.request, cache, cacheKey, allowOpaque: true }).catch(() => undefined);
 
       if (cachedResponse) {
         event.waitUntil(fetchPromise);
@@ -328,7 +298,7 @@ self.addEventListener('fetch', (event) => {
       if (cachedAppShell) {
         return cachedAppShell;
       }
-      return caches.match('/index.html');
+      return caches.match(INDEX_CACHE_KEY);
     })()
   );
 });

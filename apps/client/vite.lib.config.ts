@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { commonVars } from './env/common_vars';
+import { STORAGE_SCHEMA_VERSION } from './storageSchema';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,6 +18,7 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __APP_BUILD_ID__: JSON.stringify(buildId),
+    __APP_STORAGE_SCHEMA__: JSON.stringify(STORAGE_SCHEMA_VERSION),
     __PACKAGE_NAME__: JSON.stringify(commonVars.npmPackageName)
   },
 

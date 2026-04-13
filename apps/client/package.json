@@ -1,11 +1,11 @@
 {
   "name": "@mdwrk/mdwrkspace",
   "private": false,
-  "version": "1.4.19",
+  "version": "1.4.20",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && node ../../tools/release/build-versioned-client.mjs",
     "build:lib": "tsc && vite build --config vite.lib.config.ts",
     "preview": "vite preview",
     "test": "vitest",

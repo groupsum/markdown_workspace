@@ -33,6 +33,12 @@ type SessionState = {
   updatedAt: number;
 };
 
+type DesktopMarkdownFile = {
+  path: string;
+  name: string;
+  content: string;
+};
+
 const readSessionState = (): SessionState | null => {
   const raw = window.localStorage.getItem(SESSION_STORAGE_KEY);
   if (!raw) return null;
@@ -67,6 +73,7 @@ export const useApp = () => {
   const currentThemeDef = THEMES.find(t => t.id === ui.theme) || THEMES[0];
   const oidcCallbackHandledRef = useRef(false);
   const projectLoadInFlightRef = useRef<string | null>(null);
+  const pendingDesktopFilesRef = useRef<DesktopMarkdownFile[]>([]);
 
   const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
     if (result.status === 'success' && result.projectId && result.credential) {
@@ -228,6 +235,71 @@ export const useApp = () => {
     ui.setShowLineNumbers
   ]);
 
+  const flushPendingDesktopFiles = useCallback(async () => {
+    if (proj.loading || proj.projects.length === 0) {
+      return;
+    }
+
+    const pendingFiles = pendingDesktopFilesRef.current;
+    if (pendingFiles.length === 0) {
+      return;
+    }
+
+    pendingDesktopFilesRef.current = [];
+
+    const lastProjectId = localStorage.getItem('lastProjectId');
+    const preferredProjectId = proj.activeProjectId
+      ?? ((lastProjectId && proj.projects.find((project) => project.id === lastProjectId)?.id) ?? null)
+      ?? proj.projects[0]?.id
+      ?? null;
+
+    if (!preferredProjectId) {
+      pendingDesktopFilesRef.current = pendingFiles;
+      return;
+    }
+
+    if (proj.activeProjectId !== preferredProjectId || fileSys.loadedProjectId !== preferredProjectId) {
+      await loadProject(preferredProjectId);
+    }
+
+    const imported = await fileSys.importExternalMarkdownFiles(
+      preferredProjectId,
+      pendingFiles.map((file) => ({
+        name: file.name,
+        content: file.content,
+        sourceKind: 'filesystem',
+        sourcePath: file.path,
+      })),
+    );
+
+    if (imported.length > 0) {
+      await fileSys.loadFiles(preferredProjectId);
+      const firstImportedFile = imported[0];
+      tabs.openTab(firstImportedFile.id);
+      fileSys.setSelectedExplorerId(firstImportedFile.id);
+      ui.setAppMode('work');
+    }
+  }, [
+    proj.loading,
+    proj.projects,
+    proj.activeProjectId,
+    fileSys.loadedProjectId,
+    fileSys.loadFiles,
+    fileSys.importExternalMarkdownFiles,
+    fileSys.setSelectedExplorerId,
+    loadProject,
+    tabs.openTab,
+    ui.setAppMode,
+  ]);
+
+  const queueDesktopFiles = useCallback((incomingFiles: readonly DesktopMarkdownFile[]) => {
+    if (incomingFiles.length === 0) {
+      return;
+    }
+    pendingDesktopFilesRef.current = [...pendingDesktopFilesRef.current, ...incomingFiles];
+    void flushPendingDesktopFiles();
+  }, [flushPendingDesktopFiles]);
+
   useEffect(() => {
     if (!ui.persistSessionEnabled) {
       window.localStorage.removeItem(SESSION_STORAGE_KEY);
@@ -278,6 +350,41 @@ export const useApp = () => {
         }
     }
   }, [proj.loading, proj.projects, proj.activeProjectId, loadProject]);
+
+  useEffect(() => {
+    void flushPendingDesktopFiles();
+  }, [flushPendingDesktopFiles]);
+
+  useEffect(() => {
+    if (!window.desktopShell) {
+      return;
+    }
+
+    let isMounted = true;
+
+    window.desktopShell.getLaunchMarkdownFiles()
+      .then((files) => {
+        if (isMounted) {
+          queueDesktopFiles(files);
+        }
+      })
+      .catch((error) => {
+        console.warn('[useApp] Failed to read launch markdown files', error);
+      });
+
+    const unsubscribeOpen = window.desktopShell.onOpenMarkdownFiles((files) => {
+      queueDesktopFiles(files);
+    });
+    const unsubscribeSave = window.desktopShell.onSaveActiveMarkdownRequested(() => {
+      void saveCurrentFile();
+    });
+
+    return () => {
+      isMounted = false;
+      unsubscribeOpen();
+      unsubscribeSave();
+    };
+  }, [queueDesktopFiles, saveCurrentFile]);
 
   useEffect(() => {
     const clearPrintAttributes = () => {
@@ -374,12 +481,12 @@ export const useApp = () => {
       }
   };
 
-  const saveCurrentFile = async () => {
+  async function saveCurrentFile(): Promise<void> {
       console.log(`[useApp] Action: saveCurrentFile initiated -> ${activeFile?.id}`);
       if (activeFile) {
           await fileSys.saveFile(activeFile);
       }
-  };
+  }
 
   const selectTabByOffset = (offset: number) => {
     if (tabs.tabs.length === 0) return;
@@ -422,6 +529,25 @@ export const useApp = () => {
         tabs.openTab(firstImportedFile.id);
         fileSys.setSelectedExplorerId(firstImportedFile.id);
         ui.setAppMode('work');
+      }
+  };
+
+  const openMarkdownFromHost = async () => {
+      if (!window.desktopShell) {
+        if (!proj.activeProjectId) {
+          addToast('SELECT A PROJECT BEFORE IMPORT', 'warning');
+          return;
+        }
+        window.dispatchEvent(new CustomEvent(MARKDOWN_IMPORT_REQUEST_EVENT));
+        return;
+      }
+
+      try {
+        const files = await window.desktopShell.openMarkdownFiles();
+        queueDesktopFiles(files);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'MARKDOWN OPEN FAILED';
+        addToast(message.toUpperCase(), 'warning');
       }
   };
 
@@ -586,6 +712,7 @@ export const useApp = () => {
       exportData,
       restoreData,
       handleImportMarkdown,
+      openMarkdownFromHost,
       handleHtmlExport,
       handlePrint,
       setFiles: fileSys.setFiles,
@@ -610,6 +737,10 @@ export const useApp = () => {
       addToast,
       removeToast,
       requestMarkdownImport: () => {
+          if (window.desktopShell) {
+              void openMarkdownFromHost();
+              return;
+          }
           if (!proj.activeProjectId) {
               addToast('SELECT A PROJECT BEFORE IMPORT', 'warning');
               return;

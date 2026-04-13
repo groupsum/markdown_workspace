@@ -15,14 +15,38 @@ export async function generateMatrices() {
 
   const apps = workspaces
     .filter((workspacePackage) => workspacePackage.category === 'app')
-    .map((workspacePackage) => ({
-      name: workspacePackage.packageJson.name,
-      path: workspacePackage.relativeDir,
-      build: workspacePackage.relativeDir.endsWith('client') ? 'build:client' : 'build:lander',
-      lint: workspacePackage.relativeDir.endsWith('client') ? 'lint:client' : 'lint:lander',
-      typecheck: workspacePackage.relativeDir.endsWith('client') ? 'typecheck:client' : 'typecheck:lander',
-      test: workspacePackage.relativeDir.endsWith('client') ? 'test:client' : '',
-    }));
+    .map((workspacePackage) => {
+      if (workspacePackage.relativeDir === 'apps/client') {
+        return {
+          name: workspacePackage.packageJson.name,
+          path: workspacePackage.relativeDir,
+          build: 'build:client',
+          lint: 'lint:client',
+          typecheck: 'typecheck:client',
+          test: 'test:client',
+        };
+      }
+
+      if (workspacePackage.relativeDir === 'apps/desktop') {
+        return {
+          name: workspacePackage.packageJson.name,
+          path: workspacePackage.relativeDir,
+          build: 'build:desktop',
+          lint: 'lint:desktop',
+          typecheck: 'typecheck:desktop',
+          test: '',
+        };
+      }
+
+      return {
+        name: workspacePackage.packageJson.name,
+        path: workspacePackage.relativeDir,
+        build: 'build:lander',
+        lint: 'lint:lander',
+        typecheck: 'typecheck:lander',
+        test: '',
+      };
+    });
 
   const publishablePackages = workspaces
     .filter((workspacePackage) => workspacePackage.publishable)

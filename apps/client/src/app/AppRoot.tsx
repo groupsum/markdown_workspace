@@ -15,10 +15,8 @@ export const AppRoot: React.FC = () => {
   const app = useApp();
   const pwa = usePwa();
   const [online, setOnline] = React.useState(navigator.onLine);
-  const [updateAvailable, setUpdateAvailable] = React.useState(false);
 
   React.useEffect(() => {
-    const handleUpdate = () => setUpdateAvailable(true);
     const handleOnline = () => {
       setOnline(true);
       app.actions.addToast('SYSTEM ONLINE', 'success');
@@ -28,20 +26,14 @@ export const AppRoot: React.FC = () => {
       app.actions.addToast('SYSTEM OFFLINE', 'warning');
     };
 
-    window.addEventListener('lattice-update-ready', handleUpdate);
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
     return () => {
-      window.removeEventListener('lattice-update-ready', handleUpdate);
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, [app.actions]);
-
-  React.useEffect(() => {
-    setUpdateAvailable(pwa.state.updateAvailable);
-  }, [pwa.state.updateAvailable]);
 
   const activeTabName = React.useMemo(() => {
     const activeTab = app.state.tabs.find((tab) => tab.id === app.state.activeTabId);
@@ -56,7 +48,6 @@ export const AppRoot: React.FC = () => {
         app,
         pwa,
         online,
-        updateAvailable,
         activeTabName,
       }}
     >

@@ -1,6 +1,21 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { APP_VERSION } from '../constants';
+import {
+  APP_STORAGE_SCHEMA,
+  APP_VERSION,
+} from '../constants';
+import {
+  type ClientVersionEntry,
+  type ClientVersionManifest,
+  deriveInstalledVersion,
+  deriveVersionStatusLabel,
+  fetchVersionManifest,
+  getCurrentVersionBasePath,
+  isVersionCompatible,
+  readLocalStorageSchema,
+  recordLocalStorageSchema,
+  writeSelectedVersion,
+} from '../src/pwa/versionManifest';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -44,16 +59,30 @@ const writeFailedVersions = (versions: string[]) => {
   window.localStorage.setItem(FAILED_VERSIONS_STORAGE_KEY, JSON.stringify(versions));
 };
 
-const getWorkerVersion = (worker: ServiceWorker | null) => {
+const resolveWorkerVersion = (worker: ServiceWorker | null) => {
   if (!worker) {
     return null;
   }
   try {
-    return new URL(worker.scriptURL).searchParams.get('version');
+    const match = new URL(worker.scriptURL).pathname.match(/\/client\/versions\/([^/]+)\/sw\.js$/);
+    return match?.[1] ?? null;
   } catch {
     return null;
   }
 };
+
+const normalizeVersionManifest = (manifest: ClientVersionManifest | null): ClientVersionManifest => ({
+  latest: manifest?.latest ?? APP_VERSION,
+  available: manifest?.available?.length
+    ? manifest.available
+    : [{
+        version: APP_VERSION,
+        buildId: 'local-build',
+        releasedAt: new Date(0).toISOString(),
+        storageSchema: APP_STORAGE_SCHEMA,
+        isSelectable: true,
+      }],
+});
 
 export const usePwa = () => {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -61,8 +90,16 @@ export const usePwa = () => {
   const [isInstalled, setIsInstalled] = useState(getStandaloneStatus());
   const [autoUpdateEnabled, setAutoUpdateEnabled] = useState(getInitialAutoUpdate());
   const [failedVersions, setFailedVersions] = useState<string[]>(readFailedVersions());
+  const [versionManifest, setVersionManifest] = useState<ClientVersionManifest>(() => normalizeVersionManifest(null));
+  const [isCheckingForUpdates, setIsCheckingForUpdates] = useState(false);
   const registrationRef = useRef<ServiceWorkerRegistration | null>(null);
   const shouldReloadRef = useRef(false);
+  const currentVersionBasePath = getCurrentVersionBasePath(APP_VERSION);
+  const localStorageSchema = readLocalStorageSchema();
+
+  const runningVersion = APP_VERSION;
+  const selectedVersion = APP_VERSION;
+  const latestVersion = versionManifest.latest ?? APP_VERSION;
 
   const announceUpdate = useCallback(() => {
     setUpdateAvailable(true);
@@ -91,6 +128,60 @@ export const usePwa = () => {
       return next;
     });
   }, []);
+
+  const refreshVersionManifest = useCallback(async () => {
+    const manifest = normalizeVersionManifest(await fetchVersionManifest().catch(() => null));
+    setVersionManifest(manifest);
+    return manifest;
+  }, []);
+
+  const availableVersions = useMemo(() => versionManifest.available.map((entry) => {
+    const compatible = isVersionCompatible(entry, localStorageSchema);
+    const blocked = failedVersions.includes(entry.version);
+    return {
+      ...entry,
+      compatible,
+      blocked,
+      disabled: !entry.isSelectable || !compatible || blocked,
+    };
+  }), [failedVersions, localStorageSchema, versionManifest.available]);
+
+  const selectedVersionEntry = useMemo(
+    () => availableVersions.find((entry) => entry.version === selectedVersion) ?? null,
+    [availableVersions, selectedVersion],
+  );
+  const selectedCompatible = selectedVersionEntry ? selectedVersionEntry.compatible : localStorageSchema === APP_STORAGE_SCHEMA;
+  const installedVersion = deriveInstalledVersion(registrationRef.current);
+  const isLatest = selectedVersion === latestVersion;
+  const failedBlocked = failedVersions.includes(selectedVersion);
+  const versionStatusLabel = deriveVersionStatusLabel({
+    updateAvailable,
+    selectedVersion,
+    latestVersion,
+    selectedCompatible,
+    failedBlocked,
+  });
+  const compatibilityState = selectedCompatible ? 'COMPATIBLE' : 'INCOMPATIBLE_WITH_LOCAL_DATA';
+
+  const syncUpdateAvailability = useCallback(() => {
+    const registration = registrationRef.current;
+    if (!registration?.waiting) {
+      setUpdateAvailable(false);
+      return;
+    }
+    const waitingVersion = resolveWorkerVersion(registration.waiting);
+    if (waitingVersion !== selectedVersion || (waitingVersion && failedVersions.includes(waitingVersion))) {
+      setUpdateAvailable(false);
+      return;
+    }
+    announceUpdate();
+  }, [announceUpdate, failedVersions, selectedVersion]);
+
+  useEffect(() => {
+    recordLocalStorageSchema(APP_STORAGE_SCHEMA);
+    writeSelectedVersion(APP_VERSION);
+    void refreshVersionManifest();
+  }, [refreshVersionManifest]);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -127,7 +218,7 @@ export const usePwa = () => {
 
     navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
 
-    navigator.serviceWorker.register(`/sw.js?version=${encodeURIComponent(APP_VERSION)}`).then((registration) => {
+    navigator.serviceWorker.register(`${currentVersionBasePath}sw.js`, { scope: currentVersionBasePath }).then((registration) => {
       registrationRef.current = registration;
 
       if ('sync' in registration) {
@@ -137,10 +228,7 @@ export const usePwa = () => {
       }
 
       if (registration.waiting) {
-        const waitingVersion = getWorkerVersion(registration.waiting);
-        if (!waitingVersion || !failedVersions.includes(waitingVersion)) {
-          announceUpdate();
-        }
+        syncUpdateAvailability();
       }
 
       registration.addEventListener('updatefound', () => {
@@ -151,26 +239,24 @@ export const usePwa = () => {
 
         installingWorker.addEventListener('statechange', () => {
           if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            const installingVersion = getWorkerVersion(installingWorker);
-            if (!installingVersion || !failedVersions.includes(installingVersion)) {
-              announceUpdate();
-            }
+            syncUpdateAvailability();
           }
         });
       });
 
-      registration.update();
+      void registration.update().then(() => syncUpdateAvailability()).catch(() => undefined);
     });
 
     const updateInterval = window.setInterval(() => {
-      registrationRef.current?.update();
+      void refreshVersionManifest();
+      registrationRef.current?.update().catch(() => undefined);
     }, 1000 * 60 * 30);
 
     return () => {
       navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
       window.clearInterval(updateInterval);
     };
-  }, [announceUpdate, failedVersions]);
+  }, [currentVersionBasePath, refreshVersionManifest, syncUpdateAvailability]);
 
   useEffect(() => {
     window.localStorage.setItem(AUTO_UPDATE_STORAGE_KEY, String(autoUpdateEnabled));
@@ -184,15 +270,14 @@ export const usePwa = () => {
     if (!registration?.waiting) {
       return;
     }
-    const waitingVersion = getWorkerVersion(registration.waiting);
-    if (waitingVersion && failedVersions.includes(waitingVersion)) {
+    const waitingVersion = resolveWorkerVersion(registration.waiting);
+    if (waitingVersion !== selectedVersion || (waitingVersion && failedVersions.includes(waitingVersion))) {
       setUpdateAvailable(false);
       return;
     }
     shouldReloadRef.current = true;
     registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-  }, [autoUpdateEnabled, updateAvailable, failedVersions]);
-
+  }, [autoUpdateEnabled, failedVersions, selectedVersion, updateAvailable]);
 
   useEffect(() => {
     if (!('serviceWorker' in navigator)) {
@@ -205,24 +290,8 @@ export const usePwa = () => {
         return;
       }
       if (data.type === 'PWA_BACKGROUND_UPDATE_CHECK') {
-        registrationRef.current?.update();
-      }
-    };
-
-    navigator.serviceWorker.addEventListener('message', handleMessage);
-    return () => {
-      navigator.serviceWorker.removeEventListener('message', handleMessage);
-    };
-  }, []);
-  useEffect(() => {
-    if (!('serviceWorker' in navigator)) {
-      return;
-    }
-
-    const handleMessage = (event: MessageEvent) => {
-      const { data } = event;
-      if (!data || typeof data !== 'object') {
-        return;
+        void refreshVersionManifest();
+        registrationRef.current?.update().then(() => syncUpdateAvailability()).catch(() => undefined);
       }
       if (data.type === 'PWA_UPDATE_FAILED' && typeof data.version === 'string') {
         addFailedVersion(data.version);
@@ -233,7 +302,7 @@ export const usePwa = () => {
     return () => {
       navigator.serviceWorker.removeEventListener('message', handleMessage);
     };
-  }, [addFailedVersion]);
+  }, [addFailedVersion, refreshVersionManifest, syncUpdateAvailability]);
 
   useEffect(() => {
     markVersionAsHealthy(APP_VERSION);
@@ -266,29 +335,50 @@ export const usePwa = () => {
 
   const requestUpdate = useCallback(() => {
     const registration = registrationRef.current;
-    if (!registration) {
+    if (!registration?.waiting) {
       return;
     }
-    if (registration.waiting) {
-      const waitingVersion = getWorkerVersion(registration.waiting);
-      if (waitingVersion && failedVersions.includes(waitingVersion)) {
-        setUpdateAvailable(false);
-        return;
-      }
-      shouldReloadRef.current = true;
-      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+    const waitingVersion = resolveWorkerVersion(registration.waiting);
+    if (waitingVersion !== selectedVersion || (waitingVersion && failedVersions.includes(waitingVersion))) {
+      setUpdateAvailable(false);
       return;
     }
-    registration.update();
-  }, [failedVersions]);
+    shouldReloadRef.current = true;
+    registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+  }, [failedVersions, selectedVersion]);
 
-  const checkForUpdates = useCallback(() => {
-    registrationRef.current?.update();
-  }, []);
+  const checkForUpdates = useCallback(async () => {
+    setIsCheckingForUpdates(true);
+    try {
+      await refreshVersionManifest();
+      await registrationRef.current?.update();
+      syncUpdateAvailability();
+    } finally {
+      setIsCheckingForUpdates(false);
+    }
+  }, [refreshVersionManifest, syncUpdateAvailability]);
 
   const toggleAutoUpdate = useCallback((enabled: boolean) => {
     setAutoUpdateEnabled(enabled);
   }, []);
+
+  const switchToVersion = useCallback((version: string) => {
+    const targetVersion = availableVersions.find((entry) => entry.version === version);
+    if (!targetVersion || targetVersion.disabled) {
+      return;
+    }
+    writeSelectedVersion(version);
+    window.location.assign(getCurrentVersionBasePath(version));
+  }, [availableVersions]);
+
+  const switchToLatest = useCallback(() => {
+    const latestEntry = availableVersions.find((entry) => entry.version === latestVersion);
+    if (!latestEntry || latestEntry.disabled || latestVersion === selectedVersion) {
+      return;
+    }
+    writeSelectedVersion(latestVersion);
+    window.location.assign(getCurrentVersionBasePath(latestVersion));
+  }, [availableVersions, latestVersion, selectedVersion]);
 
   const canInstall = useMemo(() => Boolean(installPrompt) && !isInstalled, [installPrompt, isInstalled]);
 
@@ -298,13 +388,25 @@ export const usePwa = () => {
       updateAvailable,
       isInstalled,
       autoUpdateEnabled,
-      isSupported: 'serviceWorker' in navigator
+      isSupported: 'serviceWorker' in navigator,
+      isCheckingForUpdates,
+      runningVersion,
+      installedVersion,
+      selectedVersion,
+      latestVersion,
+      isLatest,
+      compatibilityState,
+      versionStatusLabel,
+      localStorageSchema,
+      availableVersions,
     },
     actions: {
       promptInstall,
       requestUpdate,
       checkForUpdates,
-      toggleAutoUpdate
+      toggleAutoUpdate,
+      switchToVersion,
+      switchToLatest,
     }
   };
 };

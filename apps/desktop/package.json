@@ -1,0 +1,67 @@
+{
+  "name": "@mdwrk/desktop",
+  "private": true,
+  "version": "0.0.2",
+  "type": "module",
+  "main": "./dist/main.js",
+  "scripts": {
+    "dev": "node ./scripts/dev.mjs",
+    "build": "tsc -p tsconfig.json",
+    "dist": "npm run build && electron-builder",
+    "publish": "npm run build && electron-builder --publish always",
+    "android:prepare": "node ./scripts/android-prepare.mjs",
+    "android:release": "node ./scripts/android-release.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck"
+  },
+  "build": {
+    "appId": "com.mdwrk.desktop",
+    "productName": "MdWork Desktop",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "../client/dist/**/*",
+      "package.json"
+    ],
+    "fileAssociations": [
+      {
+        "ext": "md",
+        "name": "Markdown Document",
+        "description": "Open Markdown files in MdWork Desktop",
+        "role": "Editor"
+      },
+      {
+        "ext": "markdown",
+        "name": "Markdown Document",
+        "description": "Open Markdown files in MdWork Desktop",
+        "role": "Editor"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "electron": "^37.2.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.1",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.9.3",
+    "wait-on": "^8.0.3"
+  },
+  "license": "Apache-2.0",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}

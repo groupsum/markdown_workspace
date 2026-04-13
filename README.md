@@ -12,6 +12,8 @@
 
 `markdown_workspace` is a multi-package workspace for the MdWork client, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
 
+Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
+
 ## Table of Contents
 - [Repository Overview](#repository-overview)
 - [Repository Structure](#repository-structure)

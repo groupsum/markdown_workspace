@@ -14,6 +14,8 @@ interface ProjectSelectorProps {
   onDeleteProject: (id: string) => void;
   currentTheme: AppTheme;
   onThemeChange: (theme: AppTheme) => void;
+  showDesktopOpen?: boolean;
+  onOpenDesktopFile?: () => void;
 }
 
 export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
@@ -23,7 +25,9 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   onCreateProject,
   onDeleteProject,
   currentTheme,
-  onThemeChange
+  onThemeChange,
+  showDesktopOpen = false,
+  onOpenDesktopFile
 }) => {
   const { t } = useClientI18n();
   const [isCreating, setIsCreating] = useState(false);
@@ -83,6 +87,15 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             >
               <Plus size={14} /> {t('core.project-selector.new-vault', 'NEW_VAULT')}
             </button>
+            {showDesktopOpen && onOpenDesktopFile ? (
+              <button
+                type="button"
+                onClick={onOpenDesktopFile}
+                className="project-btn-new"
+              >
+                <ArrowRight size={14} /> {t('core.project-selector.open-markdown', 'OPEN_MARKDOWN')}
+              </button>
+            ) : null}
           </div>
         </header>
 

@@ -1,9 +1,10 @@
 
 import { FileNode, Project } from '../types';
 import { getDefaultGitConfig } from './gitConfig';
+import { STORAGE_SCHEMA_VERSION } from '../storageSchema';
 
-const DB_NAME = 'LatticeDB';
-const DB_VERSION = 3; 
+export const DB_NAME = 'LatticeDB';
+export const DB_VERSION = 3;
 const STORE_FILES = 'files';
 const STORE_PROJECTS = 'projects';
 const STORE_SETTINGS = 'settings';

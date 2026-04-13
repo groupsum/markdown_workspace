@@ -72,11 +72,19 @@ function contentType(filePath) {
 
 async function startStaticServer(rootDir) {
   const server = http.createServer(async (req, res) => {
-    const requestPath = req.url === '/' ? '/index.html' : req.url;
-    const filePath = path.join(rootDir, requestPath.split('?')[0]);
+    const requestPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+    const filePath = path.join(rootDir, requestPath);
     try {
-      const stat = await fs.stat(filePath).catch(() => fs.stat(path.join(rootDir, 'index.html')));
-      const resolvedPath = stat.isDirectory() ? path.join(filePath, 'index.html') : filePath;
+      let resolvedPath = filePath;
+      const stat = await fs.stat(filePath).catch(() => null);
+      if (stat?.isDirectory()) {
+        resolvedPath = path.join(filePath, 'index.html');
+      } else if (!stat) {
+        const versionMatch = requestPath.match(/^\/client\/versions\/([^/]+)\//);
+        resolvedPath = versionMatch
+          ? path.join(rootDir, 'client', 'versions', versionMatch[1], 'index.html')
+          : path.join(rootDir, 'index.html');
+      }
       const body = await fs.readFile(resolvedPath);
       res.statusCode = 200;
       res.setHeader('content-type', contentType(resolvedPath));
@@ -215,6 +223,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
   await page.locator('button[title="System Config"]').click();
   await page.locator('.settings-modal').waitFor({ state: 'visible' });
   await screenshot(page, themeId, viewport.id, 'settings-visual');
+  await screenshot(page, themeId, viewport.id, 'settings-data-pwa');
   const languagePacksButton = page.locator('.settings-sidebar-btn:has-text("LANGUAGE_PACKS")').first();
   if (await languagePacksButton.isVisible().catch(() => false)) {
     await languagePacksButton.click();

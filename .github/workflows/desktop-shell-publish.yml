@@ -1,0 +1,48 @@
+name: Desktop Shell Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Publish target'
+        required: false
+        default: desktop
+        type: choice
+        options:
+          - desktop
+          - android
+
+permissions:
+  contents: write
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  publish:
+    runs-on: ${{ inputs.target == 'android' && 'ubuntu-latest' || 'macos-latest' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Setup Java
+        if: ${{ inputs.target == 'android' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm run ci:install
+
+      - name: Publish shell artifacts
+        env:
+          MDWRK_SHELL_TARGET: ${{ inputs.target }}
+          GH_TOKEN: ${{ github.token }}
+        run: npm run ci:desktop:publish

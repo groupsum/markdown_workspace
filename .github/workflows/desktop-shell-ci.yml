@@ -1,0 +1,78 @@
+name: Desktop Shell CI
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'apps/client/**'
+      - 'apps/desktop/**'
+      - 'tools/ci/build-desktop-shell.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+  pull_request:
+    paths:
+      - 'apps/client/**'
+      - 'apps/desktop/**'
+      - 'tools/ci/build-desktop-shell.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  desktop-build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm run ci:install
+
+      - name: Typecheck desktop shell
+        run: npm run typecheck:desktop
+
+      - name: Build desktop shell
+        run: npm run ci:desktop:build
+
+  android-prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm run ci:install
+
+      - name: Prepare Android shell
+        env:
+          MDWRK_SHELL_TARGET: android
+        run: npm run ci:desktop:build
