@@ -20,6 +20,45 @@ type DesktopWorkspaceSnapshot = {
   entries: DesktopWorkspaceEntry[];
 };
 
+const pendingOpenMarkdownFiles: ExternalMarkdownFile[] = [];
+const openMarkdownListeners = new Set<(files: ExternalMarkdownFile[]) => void>();
+
+const drainPendingOpenMarkdownFiles = (): ExternalMarkdownFile[] => {
+  if (pendingOpenMarkdownFiles.length === 0) {
+    return [];
+  }
+  const drained = [...pendingOpenMarkdownFiles];
+  pendingOpenMarkdownFiles.length = 0;
+  return drained;
+};
+
+const bufferOpenMarkdownFiles = (files: ExternalMarkdownFile[] | null | undefined) => {
+  if (!files || files.length === 0) {
+    return;
+  }
+
+  pendingOpenMarkdownFiles.push(...files);
+  const drained = drainPendingOpenMarkdownFiles();
+  if (drained.length === 0 || openMarkdownListeners.size === 0) {
+    pendingOpenMarkdownFiles.push(...drained);
+    return;
+  }
+
+  openMarkdownListeners.forEach((listener) => listener(drained));
+};
+
+ipcRenderer.on('desktop:open-markdown-files', (_event, files: ExternalMarkdownFile[]) => {
+  bufferOpenMarkdownFiles(files);
+});
+
+void ipcRenderer.invoke('desktop:get-launch-markdown-files')
+  .then((files: ExternalMarkdownFile[]) => {
+    bufferOpenMarkdownFiles(files);
+  })
+  .catch(() => {
+    // Ignore early launch-buffer failures; renderer can still request again later.
+  });
+
 const desktopShell = {
   isDesktop: true,
   openMarkdownFiles: (): Promise<ExternalMarkdownFile[]> => ipcRenderer.invoke('desktop:open-markdown-files'),
@@ -39,12 +78,19 @@ const desktopShell = {
     ipcRenderer.invoke('desktop:delete-path', payload),
   movePath: (payload: { path: string; targetFolderPath: string }): Promise<{ path: string }> =>
     ipcRenderer.invoke('desktop:move-path', payload),
-  getLaunchMarkdownFiles: (): Promise<ExternalMarkdownFile[]> => ipcRenderer.invoke('desktop:get-launch-markdown-files'),
+  getLaunchMarkdownFiles: async (): Promise<ExternalMarkdownFile[]> => {
+    const files = await ipcRenderer.invoke('desktop:get-launch-markdown-files');
+    bufferOpenMarkdownFiles(files);
+    return drainPendingOpenMarkdownFiles();
+  },
   onOpenMarkdownFiles: (listener: (files: ExternalMarkdownFile[]) => void) => {
-    const wrapped = (_event: Electron.IpcRendererEvent, files: ExternalMarkdownFile[]) => listener(files);
-    ipcRenderer.on('desktop:open-markdown-files', wrapped);
+    openMarkdownListeners.add(listener);
+    const pendingFiles = drainPendingOpenMarkdownFiles();
+    if (pendingFiles.length > 0) {
+      listener(pendingFiles);
+    }
     return () => {
-      ipcRenderer.removeListener('desktop:open-markdown-files', wrapped);
+      openMarkdownListeners.delete(listener);
     };
   },
   onMountProjectDirectory: (listener: (snapshot: DesktopWorkspaceSnapshot) => void) => {

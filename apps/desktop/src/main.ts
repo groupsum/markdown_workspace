@@ -28,10 +28,30 @@ const __dirname = path.dirname(__filename);
 const preloadPath = path.join(__dirname, 'preload.js');
 const isDev = Boolean(process.env.MDWRK_CLIENT_DEV_URL);
 
-function getClientIndexPath(): string {
-  const clientDistDir = app.isPackaged
+function getClientDistDir(): string {
+  return app.isPackaged
     ? path.resolve(__dirname, '../client/dist')
     : path.resolve(__dirname, '../../client/dist');
+}
+
+async function getClientIndexPath(): Promise<string> {
+  const clientDistDir = getClientDistDir();
+  const versionManifestPath = path.join(clientDistDir, 'client', 'versions', 'index.json');
+
+  try {
+    const manifest = JSON.parse(await fs.readFile(versionManifestPath, 'utf8')) as {
+      latest?: string;
+      available?: Array<{ version?: string }>;
+    };
+    const latestVersion = manifest.latest || manifest.available?.[0]?.version;
+    if (latestVersion) {
+      const versionedIndexPath = path.join(clientDistDir, 'client', 'versions', latestVersion, 'index.html');
+      if (await pathExists(versionedIndexPath)) {
+        return versionedIndexPath;
+      }
+    }
+  } catch {}
+
   return path.join(clientDistDir, 'index.html');
 }
 
@@ -43,10 +63,43 @@ function isMarkdownPath(candidate: string): boolean {
   return ext === '.md' || ext === '.markdown';
 }
 
+function stripWrappingQuotes(value: string): string {
+  return value.replace(/^"(.*)"$/u, '$1').trim();
+}
+
+function normalizeMarkdownPathCandidate(candidate: string): string | null {
+  const trimmed = stripWrappingQuotes(candidate);
+  if (!trimmed) {
+    return null;
+  }
+
+  // Ignore known switch-style launch arguments and installer flags.
+  if (trimmed.startsWith('--') || (/^\/[A-Za-z]/u.test(trimmed) && !trimmed.includes('\\'))) {
+    return null;
+  }
+
+  const normalized = path.normalize(trimmed);
+  if (!isMarkdownPath(normalized)) {
+    return null;
+  }
+
+  return path.resolve(normalized);
+}
+
 function normalizeMarkdownPaths(candidates: readonly string[]): string[] {
-  return candidates
-    .filter((candidate) => Boolean(candidate) && isMarkdownPath(candidate))
-    .map((candidate) => path.resolve(candidate));
+  return Array.from(new Set(
+    candidates
+      .map((candidate) => normalizeMarkdownPathCandidate(candidate))
+      .filter((candidate): candidate is string => Boolean(candidate)),
+  ));
+}
+
+async function resolveMarkdownPaths(candidates: readonly string[]): Promise<string[]> {
+  const normalizedPaths = normalizeMarkdownPaths(candidates);
+  const existing = await Promise.all(normalizedPaths.map(async (candidate) => (
+    await pathExists(candidate) ? candidate : null
+  )));
+  return existing.filter((candidate): candidate is string => Boolean(candidate));
 }
 
 async function pathExists(candidate: string): Promise<boolean> {
@@ -59,7 +112,7 @@ async function pathExists(candidate: string): Promise<boolean> {
 }
 
 async function readMarkdownFiles(pathsToRead: readonly string[]): Promise<ExternalMarkdownFile[]> {
-  const uniquePaths = Array.from(new Set(normalizeMarkdownPaths(pathsToRead)));
+  const uniquePaths = await resolveMarkdownPaths(pathsToRead);
   return Promise.all(uniquePaths.map(async (filePath) => ({
     path: filePath,
     name: path.basename(filePath),
@@ -269,18 +322,14 @@ async function createWindow(): Promise<void> {
       preload: preloadPath,
       contextIsolation: true,
       nodeIntegration: false,
-      sandbox: true,
+      sandbox: false,
     },
-  });
-
-  mainWindow.webContents.on('did-finish-load', () => {
-    void flushPendingOpenPaths();
   });
 
   if (isDev) {
     await mainWindow.loadURL(process.env.MDWRK_CLIENT_DEV_URL as string);
   } else {
-    await mainWindow.loadFile(getClientIndexPath());
+    await mainWindow.loadFile(await getClientIndexPath());
   }
 
   mainWindow.on('closed', () => {
@@ -399,7 +448,6 @@ ipcMain.handle('desktop:move-path', async (_event, payload: { path: string; targ
 
 app.whenReady().then(async () => {
   buildMenu();
-
   const initialPaths = normalizeMarkdownPaths(process.argv.slice(1));
   queueOpenPaths(initialPaths);
 

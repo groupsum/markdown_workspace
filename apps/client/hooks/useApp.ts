@@ -15,6 +15,7 @@ import type { GitConfig } from '../types';
 import { readWorkspacePreferencesSync } from '../src/features/preferences/workspacePreferences';
 
 const SESSION_STORAGE_KEY = 'mdwork-session-state';
+const DESKTOP_IMPORT_PROJECT_NAME = 'Desktop Imports';
 
 type SessionState = {
   projectId: string;
@@ -263,20 +264,20 @@ export const useApp = () => {
 
     pendingDesktopFilesRef.current = [];
 
-    const lastProjectId = localStorage.getItem('lastProjectId');
-    const preferredProjectId = proj.activeProjectId
-      ?? ((lastProjectId && proj.projects.find((project) => project.id === lastProjectId)?.id) ?? null)
-      ?? proj.projects[0]?.id
-      ?? null;
+    let preferredProjectId = proj.projects.find((project) => project.name === DESKTOP_IMPORT_PROJECT_NAME)?.id ?? null;
+
+    if (!preferredProjectId) {
+      const desktopImportProject = await proj.createProject(DESKTOP_IMPORT_PROJECT_NAME);
+      preferredProjectId = desktopImportProject.id;
+    }
 
     if (!preferredProjectId) {
       pendingDesktopFilesRef.current = pendingFiles;
       return;
     }
 
-    if (proj.activeProjectId !== preferredProjectId || fileSys.loadedProjectId !== preferredProjectId) {
-      await loadProject(preferredProjectId);
-    }
+    proj.setActiveProjectId(preferredProjectId);
+    localStorage.setItem('lastProjectId', preferredProjectId);
 
     const imported = await fileSys.importExternalMarkdownFiles(
       preferredProjectId,
@@ -289,6 +290,7 @@ export const useApp = () => {
     );
 
     if (imported.length > 0) {
+      tabs.resetTabs();
       await fileSys.loadFiles(preferredProjectId);
       const firstImportedFile = imported[0];
       tabs.openTab(firstImportedFile.id);
@@ -298,12 +300,13 @@ export const useApp = () => {
   }, [
     proj.loading,
     proj.projects,
-    proj.activeProjectId,
+    proj.createProject,
+    proj.setActiveProjectId,
     fileSys.loadedProjectId,
     fileSys.loadFiles,
     fileSys.importExternalMarkdownFiles,
     fileSys.setSelectedExplorerId,
-    loadProject,
+    tabs.resetTabs,
     tabs.openTab,
     ui.setAppMode,
   ]);
