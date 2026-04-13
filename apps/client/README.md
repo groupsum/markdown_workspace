@@ -88,16 +88,22 @@ MdWork defines a shared breakpoint contract in the core stylesheet so every them
 - **Ultra-wide**: `min-aspect-ratio: 21/9`
 
 **Viewbox Size Bands (viewbox second)**
-- **XS**: `max-width: 480px`
-- **SM**: `max-width: 640px`
-- **MD**: `max-width: 900px`
-- **LG**: `max-width: 1200px`
-- **XL**: `min-width: 1600px`
-- **XXL**: `min-width: 1920px`
-- **Short height**: `max-height: 520px`
-- **Compact height**: `max-height: 720px`
-- **Tall height**: `min-height: 900px`
-- **Ultra-tall height**: `min-height: 1200px`
+- **XXS**: `max-width: 359px`
+- **XS**: `min-width: 360px` and `max-width: 479px`
+- **SM**: `min-width: 480px` and `max-width: 599px`
+- **MD**: `min-width: 600px` and `max-width: 767px`
+- **LG**: `min-width: 768px` and `max-width: 1023px`
+- **XL**: `min-width: 1024px` and `max-width: 1439px`
+- **XXL**: `min-width: 1440px` and `max-width: 1919px`
+- **XXXL**: `min-width: 1920px`
+- **XX-short height**: `max-height: 359px`
+- **X-short height**: `min-height: 360px` and `max-height: 479px`
+- **Short height**: `min-height: 480px` and `max-height: 599px`
+- **Compact height**: `min-height: 600px` and `max-height: 719px`
+- **Medium height**: `min-height: 720px` and `max-height: 899px`
+- **Tall height**: `min-height: 900px` and `max-height: 1079px`
+- **X-tall height**: `min-height: 1080px` and `max-height: 1279px`
+- **Ultra-tall height**: `min-height: 1280px`
 
 **Device Bands (device third)**
 - **Touch**: `(hover: none) and (pointer: coarse)`

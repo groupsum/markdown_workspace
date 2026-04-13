@@ -1,41 +1,47 @@
 {
-  "generatedAt": "2026-04-13T08:01:56.534Z",
+  "generatedAt": "2026-04-13T08:19:09.567Z",
   "outputRoot": "artifacts\\screenshots\\theme-matrix",
   "viewportContractPath": "apps\\client\\styles\\base\\viewports.css",
-  "viewportCaseCount": 16,
+  "viewportCaseCount": 15,
   "aspectCount": 5,
-  "widthTierCount": 6,
-  "heightTierCount": 4,
+  "widthTierCount": 8,
+  "heightTierCount": 8,
   "deviceTierCount": 2,
   "widthTiersCovered": [
+    "xxs",
     "xs",
     "sm",
     "md",
     "lg",
     "xl",
-    "xxl"
+    "xxl",
+    "xxxl"
   ],
   "heightTiersCovered": [
-    "tall",
-    "ultra-tall",
     "short",
-    "compact"
+    "compact",
+    "medium",
+    "tall",
+    "x-tall",
+    "ultra-tall",
+    "xx-short",
+    "x-short"
   ],
   "deviceTiersCovered": [
     "touch",
     "precision"
   ],
   "themeCount": 1,
-  "totalCaptureCount": 396,
+  "totalCaptureCount": 350,
   "viewports": [
     {
-      "viewportId": "portrait-xs-tall-touch",
+      "viewportId": "portrait-xxs-short-touch",
       "aspectId": "portrait",
-      "widthTier": "xs",
-      "heightTier": "tall",
+      "widthTier": "xxs",
+      "heightTier": "short",
       "deviceTier": "touch",
-      "width": 420,
-      "height": 900,
+      "width": 320,
+      "height": 560,
       "themeCount": 1,
       "themes": [
         {
@@ -77,13 +83,61 @@
       ]
     },
     {
-      "viewportId": "portrait-sm-ultra-tall",
+      "viewportId": "portrait-xs-compact-touch",
+      "aspectId": "portrait",
+      "widthTier": "xs",
+      "heightTier": "compact",
+      "deviceTier": "touch",
+      "width": 420,
+      "height": 640,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 30,
+          "captures": [
+            "extension-manager-pane-sidebar-collapsed.jpg",
+            "extension-manager-pane-sidebar-restored.jpg",
+            "extension-manager-pane-single.jpg",
+            "extension-manager-pane-split-restored.jpg",
+            "extension-manager-pane-split.jpg",
+            "language-pack-studio-pane-active.jpg",
+            "language-pack-studio-pane-created.jpg",
+            "language-pack-studio-pane-imported.jpg",
+            "language-pack-studio-pane-removed.jpg",
+            "language-pack-studio-pane-sidebar-collapsed.jpg",
+            "language-pack-studio-pane-sidebar-restored.jpg",
+            "language-pack-studio-pane-single.jpg",
+            "language-pack-studio-pane-split-restored.jpg",
+            "language-pack-studio-pane-split.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "table-builder-modal.jpg",
+            "theme-studio-pane-sidebar-collapsed.jpg",
+            "theme-studio-pane-sidebar-restored.jpg",
+            "theme-studio-pane-single.jpg",
+            "theme-studio-pane-split-restored.jpg",
+            "theme-studio-pane-split.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "portrait-sm-medium-touch",
       "aspectId": "portrait",
       "widthTier": "sm",
-      "heightTier": "ultra-tall",
-      "deviceTier": "precision",
-      "width": 600,
-      "height": 1280,
+      "heightTier": "medium",
+      "deviceTier": "touch",
+      "width": 560,
+      "height": 800,
       "themeCount": 1,
       "themes": [
         {
@@ -156,13 +210,44 @@
       ]
     },
     {
-      "viewportId": "portrait-lg-tall",
+      "viewportId": "portrait-lg-x-tall",
       "aspectId": "portrait",
       "widthTier": "lg",
-      "heightTier": "tall",
+      "heightTier": "x-tall",
       "deviceTier": "precision",
-      "width": 1100,
-      "height": 1468,
+      "width": 768,
+      "height": 1100,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 13,
+          "captures": [
+            "extension-manager-modal.jpg",
+            "language-pack-manager-modal.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "theme-studio-modal.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "portrait-xl-ultra-tall",
+      "aspectId": "portrait",
+      "widthTier": "xl",
+      "heightTier": "ultra-tall",
+      "deviceTier": "precision",
+      "width": 1024,
+      "height": 1400,
       "themeCount": 1,
       "themes": [
         {
@@ -188,13 +273,44 @@
       ]
     },
     {
-      "viewportId": "square-xs-short",
+      "viewportId": "square-xxs-xx-short",
+      "aspectId": "square",
+      "widthTier": "xxs",
+      "heightTier": "xx-short",
+      "deviceTier": "precision",
+      "width": 320,
+      "height": 340,
+      "themeCount": 1,
+      "themes": [
+        {
+          "themeId": "default",
+          "captureCount": 13,
+          "captures": [
+            "extension-manager-modal.jpg",
+            "language-pack-manager-modal.jpg",
+            "selector-create-modal.jpg",
+            "selector-delete-modal.jpg",
+            "selector-theme-modal.jpg",
+            "selector.jpg",
+            "settings-data-pwa.jpg",
+            "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
+            "theme-studio-modal.jpg",
+            "workspace-editor.jpg",
+            "workspace-preview.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "viewportId": "square-xs-x-short",
       "aspectId": "square",
       "widthTier": "xs",
-      "heightTier": "short",
+      "heightTier": "x-short",
       "deviceTier": "precision",
-      "width": 460,
-      "height": 500,
+      "width": 420,
+      "height": 440,
       "themeCount": 1,
       "themes": [
         {
@@ -219,13 +335,13 @@
       ]
     },
     {
-      "viewportId": "square-sm-compact",
+      "viewportId": "square-sm-short",
       "aspectId": "square",
       "widthTier": "sm",
-      "heightTier": "compact",
+      "heightTier": "short",
       "deviceTier": "precision",
-      "width": 620,
-      "height": 700,
+      "width": 560,
+      "height": 580,
       "themeCount": 1,
       "themes": [
         {
@@ -250,13 +366,13 @@
       ]
     },
     {
-      "viewportId": "square-md-tall",
+      "viewportId": "square-md-compact",
       "aspectId": "square",
       "widthTier": "md",
-      "heightTier": "tall",
+      "heightTier": "compact",
       "deviceTier": "precision",
-      "width": 880,
-      "height": 920,
+      "width": 680,
+      "height": 700,
       "themeCount": 1,
       "themes": [
         {
@@ -298,18 +414,18 @@
       ]
     },
     {
-      "viewportId": "square-lg-ultra-tall",
+      "viewportId": "square-lg-medium",
       "aspectId": "square",
       "widthTier": "lg",
-      "heightTier": "ultra-tall",
+      "heightTier": "medium",
       "deviceTier": "precision",
-      "width": 1180,
-      "height": 1200,
+      "width": 820,
+      "height": 860,
       "themeCount": 1,
       "themes": [
         {
           "themeId": "default",
-          "captureCount": 31,
+          "captureCount": 30,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -340,101 +456,19 @@
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
             "workspace-editor.jpg",
-            "workspace-preview.jpg",
-            "workspace-split.jpg"
+            "workspace-preview.jpg"
           ]
         }
       ]
     },
     {
-      "viewportId": "landscape-sm-short-touch",
+      "viewportId": "landscape-xl-tall",
       "aspectId": "landscape",
-      "widthTier": "sm",
-      "heightTier": "short",
-      "deviceTier": "touch",
-      "width": 640,
-      "height": 480,
-      "themeCount": 1,
-      "themes": [
-        {
-          "themeId": "default",
-          "captureCount": 14,
-          "captures": [
-            "extension-manager-modal.jpg",
-            "language-pack-manager-modal.jpg",
-            "selector-create-modal.jpg",
-            "selector-delete-modal.jpg",
-            "selector-theme-modal.jpg",
-            "selector.jpg",
-            "settings-data-pwa.jpg",
-            "settings-github-configurations.jpg",
-            "settings-language-packs.jpg",
-            "settings-visual.jpg",
-            "theme-studio-modal.jpg",
-            "workspace-editor.jpg",
-            "workspace-preview.jpg",
-            "workspace-split.jpg"
-          ]
-        }
-      ]
-    },
-    {
-      "viewportId": "landscape-md-compact",
-      "aspectId": "landscape",
-      "widthTier": "md",
-      "heightTier": "compact",
-      "deviceTier": "precision",
-      "width": 900,
-      "height": 650,
-      "themeCount": 1,
-      "themes": [
-        {
-          "themeId": "default",
-          "captureCount": 31,
-          "captures": [
-            "extension-manager-pane-sidebar-collapsed.jpg",
-            "extension-manager-pane-sidebar-restored.jpg",
-            "extension-manager-pane-single.jpg",
-            "extension-manager-pane-split-restored.jpg",
-            "extension-manager-pane-split.jpg",
-            "language-pack-studio-pane-active.jpg",
-            "language-pack-studio-pane-created.jpg",
-            "language-pack-studio-pane-imported.jpg",
-            "language-pack-studio-pane-removed.jpg",
-            "language-pack-studio-pane-sidebar-collapsed.jpg",
-            "language-pack-studio-pane-sidebar-restored.jpg",
-            "language-pack-studio-pane-single.jpg",
-            "language-pack-studio-pane-split-restored.jpg",
-            "language-pack-studio-pane-split.jpg",
-            "selector-create-modal.jpg",
-            "selector-delete-modal.jpg",
-            "selector-theme-modal.jpg",
-            "selector.jpg",
-            "settings-data-pwa.jpg",
-            "settings-github-configurations.jpg",
-            "settings-language-packs.jpg",
-            "settings-visual.jpg",
-            "table-builder-modal.jpg",
-            "theme-studio-pane-sidebar-collapsed.jpg",
-            "theme-studio-pane-sidebar-restored.jpg",
-            "theme-studio-pane-single.jpg",
-            "theme-studio-pane-split-restored.jpg",
-            "theme-studio-pane-split.jpg",
-            "workspace-editor.jpg",
-            "workspace-preview.jpg",
-            "workspace-split.jpg"
-          ]
-        }
-      ]
-    },
-    {
-      "viewportId": "landscape-lg-tall",
-      "aspectId": "landscape",
-      "widthTier": "lg",
+      "widthTier": "xl",
       "heightTier": "tall",
       "deviceTier": "precision",
-      "width": 1200,
-      "height": 900,
+      "width": 1280,
+      "height": 960,
       "themeCount": 1,
       "themes": [
         {
@@ -477,67 +511,18 @@
       ]
     },
     {
-      "viewportId": "wide-xl-compact",
-      "aspectId": "wide",
-      "widthTier": "xl",
-      "heightTier": "compact",
-      "deviceTier": "precision",
-      "width": 1600,
-      "height": 700,
-      "themeCount": 1,
-      "themes": [
-        {
-          "themeId": "default",
-          "captureCount": 31,
-          "captures": [
-            "extension-manager-pane-sidebar-collapsed.jpg",
-            "extension-manager-pane-sidebar-restored.jpg",
-            "extension-manager-pane-single.jpg",
-            "extension-manager-pane-split-restored.jpg",
-            "extension-manager-pane-split.jpg",
-            "language-pack-studio-pane-active.jpg",
-            "language-pack-studio-pane-created.jpg",
-            "language-pack-studio-pane-imported.jpg",
-            "language-pack-studio-pane-removed.jpg",
-            "language-pack-studio-pane-sidebar-collapsed.jpg",
-            "language-pack-studio-pane-sidebar-restored.jpg",
-            "language-pack-studio-pane-single.jpg",
-            "language-pack-studio-pane-split-restored.jpg",
-            "language-pack-studio-pane-split.jpg",
-            "selector-create-modal.jpg",
-            "selector-delete-modal.jpg",
-            "selector-theme-modal.jpg",
-            "selector.jpg",
-            "settings-data-pwa.jpg",
-            "settings-github-configurations.jpg",
-            "settings-language-packs.jpg",
-            "settings-visual.jpg",
-            "table-builder-modal.jpg",
-            "theme-studio-pane-sidebar-collapsed.jpg",
-            "theme-studio-pane-sidebar-restored.jpg",
-            "theme-studio-pane-single.jpg",
-            "theme-studio-pane-split-restored.jpg",
-            "theme-studio-pane-split.jpg",
-            "workspace-editor.jpg",
-            "workspace-preview.jpg",
-            "workspace-split.jpg"
-          ]
-        }
-      ]
-    },
-    {
-      "viewportId": "wide-xxl-tall",
+      "viewportId": "wide-xxl-medium",
       "aspectId": "wide",
       "widthTier": "xxl",
-      "heightTier": "tall",
+      "heightTier": "medium",
       "deviceTier": "precision",
-      "width": 1920,
-      "height": 1000,
+      "width": 1600,
+      "height": 800,
       "themeCount": 1,
       "themes": [
         {
           "themeId": "default",
-          "captureCount": 28,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -557,7 +542,10 @@
             "selector-delete-modal.jpg",
             "selector-theme-modal.jpg",
             "selector.jpg",
+            "settings-data-pwa.jpg",
             "settings-github-configurations.jpg",
+            "settings-language-packs.jpg",
+            "settings-visual.jpg",
             "table-builder-modal.jpg",
             "theme-studio-pane-sidebar-collapsed.jpg",
             "theme-studio-pane-sidebar-restored.jpg",
@@ -572,9 +560,9 @@
       ]
     },
     {
-      "viewportId": "ultrawide-xl-short",
+      "viewportId": "ultrawide-xxl-short",
       "aspectId": "ultrawide",
-      "widthTier": "xl",
+      "widthTier": "xxl",
       "heightTier": "short",
       "deviceTier": "precision",
       "width": 1600,
@@ -621,59 +609,13 @@
       ]
     },
     {
-      "viewportId": "ultrawide-xxl-compact",
+      "viewportId": "ultrawide-xxxl-x-short",
       "aspectId": "ultrawide",
-      "widthTier": "xxl",
-      "heightTier": "compact",
+      "widthTier": "xxxl",
+      "heightTier": "x-short",
       "deviceTier": "precision",
-      "width": 1920,
-      "height": 720,
-      "themeCount": 1,
-      "themes": [
-        {
-          "themeId": "default",
-          "captureCount": 28,
-          "captures": [
-            "extension-manager-pane-sidebar-collapsed.jpg",
-            "extension-manager-pane-sidebar-restored.jpg",
-            "extension-manager-pane-single.jpg",
-            "extension-manager-pane-split-restored.jpg",
-            "extension-manager-pane-split.jpg",
-            "language-pack-studio-pane-active.jpg",
-            "language-pack-studio-pane-created.jpg",
-            "language-pack-studio-pane-imported.jpg",
-            "language-pack-studio-pane-removed.jpg",
-            "language-pack-studio-pane-sidebar-collapsed.jpg",
-            "language-pack-studio-pane-sidebar-restored.jpg",
-            "language-pack-studio-pane-single.jpg",
-            "language-pack-studio-pane-split-restored.jpg",
-            "language-pack-studio-pane-split.jpg",
-            "selector-create-modal.jpg",
-            "selector-delete-modal.jpg",
-            "selector-theme-modal.jpg",
-            "selector.jpg",
-            "settings-github-configurations.jpg",
-            "table-builder-modal.jpg",
-            "theme-studio-pane-sidebar-collapsed.jpg",
-            "theme-studio-pane-sidebar-restored.jpg",
-            "theme-studio-pane-single.jpg",
-            "theme-studio-pane-split-restored.jpg",
-            "theme-studio-pane-split.jpg",
-            "workspace-editor.jpg",
-            "workspace-preview.jpg",
-            "workspace-split.jpg"
-          ]
-        }
-      ]
-    },
-    {
-      "viewportId": "ultrawide-xxl-tall",
-      "aspectId": "ultrawide",
-      "widthTier": "xxl",
-      "heightTier": "tall",
-      "deviceTier": "precision",
-      "width": 2520,
-      "height": 1080,
+      "width": 2200,
+      "height": 470,
       "themeCount": 1,
       "themes": [
         {

@@ -39,22 +39,21 @@ const THEMES = [
 ];
 
 const VIEWPORT_CASES = [
-  { id: 'portrait-xs-tall-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'tall', deviceTier: 'touch', width: 420, height: 900, isMobile: true, hasTouch: true },
-  { id: 'portrait-sm-ultra-tall', aspectId: 'portrait', widthTier: 'sm', heightTier: 'ultra-tall', deviceTier: 'precision', width: 600, height: 1280 },
+  { id: 'portrait-xxs-short-touch', aspectId: 'portrait', widthTier: 'xxs', heightTier: 'short', deviceTier: 'touch', width: 320, height: 560, isMobile: true, hasTouch: true },
+  { id: 'portrait-xs-compact-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'compact', deviceTier: 'touch', width: 420, height: 640, isMobile: true, hasTouch: true },
+  { id: 'portrait-sm-medium-touch', aspectId: 'portrait', widthTier: 'sm', heightTier: 'medium', deviceTier: 'touch', width: 560, height: 800, isMobile: true, hasTouch: true },
   { id: 'portrait-md-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 700, height: 1000 },
-  { id: 'portrait-lg-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'tall', deviceTier: 'precision', width: 1100, height: 1468 },
-  { id: 'square-xs-short', aspectId: 'square', widthTier: 'xs', heightTier: 'short', deviceTier: 'precision', width: 460, height: 500 },
-  { id: 'square-sm-compact', aspectId: 'square', widthTier: 'sm', heightTier: 'compact', deviceTier: 'precision', width: 620, height: 700 },
-  { id: 'square-md-tall', aspectId: 'square', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 880, height: 920 },
-  { id: 'square-lg-ultra-tall', aspectId: 'square', widthTier: 'lg', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1180, height: 1200 },
-  { id: 'landscape-sm-short-touch', aspectId: 'landscape', widthTier: 'sm', heightTier: 'short', deviceTier: 'touch', width: 640, height: 480, isMobile: true, hasTouch: true },
-  { id: 'landscape-md-compact', aspectId: 'landscape', widthTier: 'md', heightTier: 'compact', deviceTier: 'precision', width: 900, height: 650 },
-  { id: 'landscape-lg-tall', aspectId: 'landscape', widthTier: 'lg', heightTier: 'tall', deviceTier: 'precision', width: 1200, height: 900 },
-  { id: 'wide-xl-compact', aspectId: 'wide', widthTier: 'xl', heightTier: 'compact', deviceTier: 'precision', width: 1600, height: 700 },
-  { id: 'wide-xxl-tall', aspectId: 'wide', widthTier: 'xxl', heightTier: 'tall', deviceTier: 'precision', width: 1920, height: 1000 },
-  { id: 'ultrawide-xl-short', aspectId: 'ultrawide', widthTier: 'xl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 520 },
-  { id: 'ultrawide-xxl-compact', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'compact', deviceTier: 'precision', width: 1920, height: 720 },
-  { id: 'ultrawide-xxl-tall', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'tall', deviceTier: 'precision', width: 2520, height: 1080 },
+  { id: 'portrait-lg-x-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'x-tall', deviceTier: 'precision', width: 768, height: 1100 },
+  { id: 'portrait-xl-ultra-tall', aspectId: 'portrait', widthTier: 'xl', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1024, height: 1400 },
+  { id: 'square-xxs-xx-short', aspectId: 'square', widthTier: 'xxs', heightTier: 'xx-short', deviceTier: 'precision', width: 320, height: 340 },
+  { id: 'square-xs-x-short', aspectId: 'square', widthTier: 'xs', heightTier: 'x-short', deviceTier: 'precision', width: 420, height: 440 },
+  { id: 'square-sm-short', aspectId: 'square', widthTier: 'sm', heightTier: 'short', deviceTier: 'precision', width: 560, height: 580 },
+  { id: 'square-md-compact', aspectId: 'square', widthTier: 'md', heightTier: 'compact', deviceTier: 'precision', width: 680, height: 700 },
+  { id: 'square-lg-medium', aspectId: 'square', widthTier: 'lg', heightTier: 'medium', deviceTier: 'precision', width: 820, height: 860 },
+  { id: 'landscape-xl-tall', aspectId: 'landscape', widthTier: 'xl', heightTier: 'tall', deviceTier: 'precision', width: 1280, height: 960 },
+  { id: 'wide-xxl-medium', aspectId: 'wide', widthTier: 'xxl', heightTier: 'medium', deviceTier: 'precision', width: 1600, height: 800 },
+  { id: 'ultrawide-xxl-short', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 520 },
+  { id: 'ultrawide-xxxl-x-short', aspectId: 'ultrawide', widthTier: 'xxxl', heightTier: 'x-short', deviceTier: 'precision', width: 2200, height: 470 },
 ];
 const ASPECT_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.aspectId))];
 const WIDTH_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.widthTier))];
@@ -229,29 +228,84 @@ function normalizeViewportFilter(viewportFilter) {
   return [...normalizedViewportIds];
 }
 
-async function readViewportContractAspectIds() {
+async function readViewportContract() {
   const viewportContractCss = await fs.readFile(viewportContractPath, 'utf8');
   const declaredAspectIds = new Set(
     [...viewportContractCss.matchAll(/--viewbox-aspect:\s*([a-z-]+)\s*;/g)].map((match) => match[1]),
   );
+  const declaredWidthTierIds = new Set(
+    [...viewportContractCss.matchAll(/--viewbox-width:\s*([a-z-]+)\s*;/g)].map((match) => match[1]),
+  );
+  const declaredHeightTierIds = new Set(
+    [...viewportContractCss.matchAll(/--viewbox-height:\s*([a-z-]+)\s*;/g)].map((match) => match[1]),
+  );
+  const declaredDeviceTierIds = new Set(
+    [...viewportContractCss.matchAll(/--viewbox-device:\s*([a-z-]+)\s*;/g)].map((match) => match[1]),
+  );
 
   const missingAspectIds = ASPECT_IDS.filter((aspectId) => !declaredAspectIds.has(aspectId));
+  const missingWidthTierIds = WIDTH_TIER_IDS.filter((tierId) => !declaredWidthTierIds.has(tierId));
+  const missingHeightTierIds = HEIGHT_TIER_IDS.filter((tierId) => !declaredHeightTierIds.has(tierId));
+  const missingDeviceTierIds = DEVICE_TIER_IDS.filter((tierId) => !declaredDeviceTierIds.has(tierId));
+
   if (missingAspectIds.length > 0) {
     throw new Error(
       `Viewport contract ${path.relative(repoRoot, viewportContractPath)} is missing aspect bands required by the screenshot matrix: ${missingAspectIds.join(', ')}`,
     );
   }
+  if (missingWidthTierIds.length > 0) {
+    throw new Error(
+      `Viewport contract ${path.relative(repoRoot, viewportContractPath)} is missing width tiers required by the screenshot matrix: ${missingWidthTierIds.join(', ')}`,
+    );
+  }
+  if (missingHeightTierIds.length > 0) {
+    throw new Error(
+      `Viewport contract ${path.relative(repoRoot, viewportContractPath)} is missing height tiers required by the screenshot matrix: ${missingHeightTierIds.join(', ')}`,
+    );
+  }
+  if (missingDeviceTierIds.length > 0) {
+    throw new Error(
+      `Viewport contract ${path.relative(repoRoot, viewportContractPath)} is missing device tiers required by the screenshot matrix: ${missingDeviceTierIds.join(', ')}`,
+    );
+  }
 
-  return [...declaredAspectIds];
+  return {
+    aspectIds: [...declaredAspectIds],
+    widthTierIds: [...declaredWidthTierIds],
+    heightTierIds: [...declaredHeightTierIds],
+    deviceTierIds: [...declaredDeviceTierIds],
+  };
 }
 
-async function assertViewportAspectBand(page, viewport) {
-  const actualAspectId = await page.evaluate(
-    () => getComputedStyle(document.documentElement).getPropertyValue('--viewbox-aspect').trim(),
-  );
+async function assertViewportContractBands(page, viewport) {
+  const resolvedBands = await page.evaluate(() => {
+    const style = getComputedStyle(document.documentElement);
+    return {
+      aspectId: style.getPropertyValue('--viewbox-aspect').trim(),
+      widthTier: style.getPropertyValue('--viewbox-width').trim(),
+      heightTier: style.getPropertyValue('--viewbox-height').trim(),
+      deviceTier: style.getPropertyValue('--viewbox-device').trim(),
+    };
+  });
+  const actualAspectId = resolvedBands.aspectId;
   if (actualAspectId !== viewport.aspectId) {
     throw new Error(
       `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to CSS aspect band "${actualAspectId}" instead of "${viewport.aspectId}"`,
+    );
+  }
+  if (resolvedBands.widthTier !== viewport.widthTier) {
+    throw new Error(
+      `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to width tier "${resolvedBands.widthTier}" instead of "${viewport.widthTier}"`,
+    );
+  }
+  if (resolvedBands.heightTier !== viewport.heightTier) {
+    throw new Error(
+      `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to height tier "${resolvedBands.heightTier}" instead of "${viewport.heightTier}"`,
+    );
+  }
+  if (resolvedBands.deviceTier !== viewport.deviceTier) {
+    throw new Error(
+      `Viewport ${viewport.id} (${viewport.width}x${viewport.height}) resolved to device tier "${resolvedBands.deviceTier}" instead of "${viewport.deviceTier}"`,
     );
   }
 }
@@ -379,7 +433,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
   const page = await context.newPage();
   await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
   await page.locator('.project-grid').waitFor({ state: 'visible', timeout: 30000 });
-  await assertViewportAspectBand(page, viewport);
+  await assertViewportContractBands(page, viewport);
 
   await screenshot(page, themeId, viewport.id, 'selector');
 
@@ -569,7 +623,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
 
 async function main() {
   await ensureDir(outputRoot);
-  await readViewportContractAspectIds();
+  await readViewportContract();
   const server = await startStaticServer(distDir);
   const browser = await chromium.launch({ headless: true, executablePath: CHROME_PATH });
   try {
