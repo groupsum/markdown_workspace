@@ -51,7 +51,7 @@ jobs:
       - name: Build desktop shell
         run: npm run ci:desktop:build
 
-  android-prepare:
+  android-apk-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -72,7 +72,77 @@ jobs:
       - name: Install dependencies
         run: npm run ci:install
 
-      - name: Prepare Android shell
+      - name: Build Android release APK
         env:
           MDWRK_SHELL_TARGET: android
-        run: npm run ci:desktop:build
+        run: npm run ci:desktop:release
+
+      - name: Resolve APK metadata
+        id: apk_meta
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          APK_PATH=$(find apps/desktop/dist/android -type f -name '*.apk' | head -n 1)
+          if [[ -z "${APK_PATH}" ]]; then
+            echo "No APK generated under apps/desktop/dist/android" >&2
+            exit 1
+          fi
+
+          BUILD_TOOLS_DIR=$(find "${ANDROID_HOME}/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)
+          if [[ -z "${BUILD_TOOLS_DIR}" ]]; then
+            echo "Android build-tools directory not found under ${ANDROID_HOME}/build-tools" >&2
+            exit 1
+          fi
+
+          BADGING="$(${BUILD_TOOLS_DIR}/aapt dump badging "${APK_PATH}")"
+          APP_ID=$(printf '%s\n' "${BADGING}" | sed -n "s/^package: name='\([^']*\)'.*/\1/p" | head -n 1)
+          LAUNCHABLE_ACTIVITY=$(printf '%s\n' "${BADGING}" | sed -n "s/^launchable-activity: name='\([^']*\)'.*/\1/p" | head -n 1)
+
+          if [[ -z "${APP_ID}" ]]; then
+            echo "Unable to extract app id from APK badging" >&2
+            exit 1
+          fi
+
+          {
+            echo "apk_path=${APK_PATH}"
+            echo "build_tools_dir=${BUILD_TOOLS_DIR}"
+            echo "app_id=${APP_ID}"
+            echo "launchable_activity=${LAUNCHABLE_ACTIVITY}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Verify APK structure and signature
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          "${{ steps.apk_meta.outputs.build_tools_dir }}/zipalign" -c -p 4 "${{ steps.apk_meta.outputs.apk_path }}"
+          "${{ steps.apk_meta.outputs.build_tools_dir }}/apksigner" verify --verbose --print-certs "${{ steps.apk_meta.outputs.apk_path }}"
+
+      - name: Boot Android emulator and smoke-test APK launch
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: |
+            set -euo pipefail
+            adb wait-for-device
+            adb install -r "${{ steps.apk_meta.outputs.apk_path }}"
+
+            if [[ -n "${{ steps.apk_meta.outputs.launchable_activity }}" ]]; then
+              adb shell am start -W -n "${{ steps.apk_meta.outputs.app_id }}/${{ steps.apk_meta.outputs.launchable_activity }}"
+            else
+              adb shell monkey -p "${{ steps.apk_meta.outputs.app_id }}" -c android.intent.category.LAUNCHER 1
+            fi
+
+            sleep 8
+            PID=$(adb shell pidof "${{ steps.apk_meta.outputs.app_id }}" | tr -d '\r' || true)
+            if [[ -z "${PID}" ]]; then
+              echo "App process did not remain running after launch" >&2
+              adb logcat -d | tail -n 200
+              exit 1
+            fi
+
+            adb shell am force-stop "${{ steps.apk_meta.outputs.app_id }}"
