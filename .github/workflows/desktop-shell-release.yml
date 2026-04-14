@@ -50,7 +50,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: desktop-shell-${{ matrix.platform }}
-          path: apps/desktop/dist/electron/**
+          path: |
+            apps/desktop/dist/electron/**/*.AppImage
+            apps/desktop/dist/electron/**/*.dmg
+            apps/desktop/dist/electron/**/*.exe
+            apps/desktop/dist/electron/**/*.zip
 
   android-release:
     runs-on: ubuntu-latest
@@ -82,7 +86,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: desktop-shell-android
-          path: apps/desktop/dist/android/**
+          path: |
+            apps/desktop/dist/android/**/*.aab
+            apps/desktop/dist/android/**/*.apk
 
   github-release:
     if: ${{ inputs.publish_release }}
@@ -115,4 +121,10 @@ jobs:
         with:
           tag_name: ${{ steps.release_meta.outputs.tag }}
           name: ${{ steps.release_meta.outputs.name }}
-          files: release-artifacts/**/*
+          files: |
+            release-artifacts/**/*.AppImage
+            release-artifacts/**/*.aab
+            release-artifacts/**/*.apk
+            release-artifacts/**/*.dmg
+            release-artifacts/**/*.exe
+            release-artifacts/**/*.zip
