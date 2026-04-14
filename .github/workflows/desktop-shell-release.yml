@@ -8,10 +8,6 @@ on:
         required: false
         default: false
         type: boolean
-      tag:
-        description: 'Optional Git tag or release tag'
-        required: false
-        type: string
 
 permissions:
   contents: write
@@ -89,10 +85,26 @@ jobs:
           path: apps/desktop/dist/android/**
 
   github-release:
-    if: ${{ inputs.publish_release && inputs.tag != '' }}
+    if: ${{ inputs.publish_release }}
     needs: [desktop-release, android-release]
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve release metadata
+        id: release_meta
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+          NAME="MD workspace desktop ${VERSION}"
+          {
+            echo "version=${VERSION}"
+            echo "tag=${TAG}"
+            echo "name=${NAME}"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -101,6 +113,6 @@ jobs:
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.tag }}
-          name: ${{ inputs.tag }}
+          tag_name: ${{ steps.release_meta.outputs.tag }}
+          name: ${{ steps.release_meta.outputs.name }}
           files: release-artifacts/**/*
