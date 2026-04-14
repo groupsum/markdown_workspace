@@ -54,6 +54,7 @@ jobs:
             apps/desktop/dist/electron/**/*.AppImage
             apps/desktop/dist/electron/**/*.dmg
             apps/desktop/dist/electron/**/*.exe
+            !apps/desktop/dist/electron/**/elevate.exe
             apps/desktop/dist/electron/**/*.zip
 
   android-release:
@@ -127,4 +128,5 @@ jobs:
             release-artifacts/**/*.apk
             release-artifacts/**/*.dmg
             release-artifacts/**/*.exe
+            !release-artifacts/**/elevate.exe
             release-artifacts/**/*.zip

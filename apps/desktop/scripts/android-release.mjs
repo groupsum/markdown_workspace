@@ -11,7 +11,7 @@ const androidRoot = path.join(desktopRoot, 'android');
 const distRoot = path.join(desktopRoot, 'dist', 'android');
 const gradleExecutable = process.platform === 'win32' ? 'gradlew.bat' : './gradlew';
 
-const child = spawn(gradleExecutable, ['bundleRelease'], {
+const child = spawn(gradleExecutable, ['bundleRelease', 'assembleRelease'], {
   cwd: androidRoot,
   stdio: 'inherit',
   shell: process.platform === 'win32',
