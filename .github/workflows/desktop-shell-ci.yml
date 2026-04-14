@@ -116,8 +116,38 @@ jobs:
         run: |
           set -euo pipefail
 
-          "${{ steps.apk_meta.outputs.build_tools_dir }}/zipalign" -c -p 4 "${{ steps.apk_meta.outputs.apk_path }}"
-          "${{ steps.apk_meta.outputs.build_tools_dir }}/apksigner" verify --verbose --print-certs "${{ steps.apk_meta.outputs.apk_path }}"
+          BUILD_TOOLS_DIR="${{ steps.apk_meta.outputs.build_tools_dir }}"
+          SOURCE_APK="${{ steps.apk_meta.outputs.apk_path }}"
+          VERIFY_APK="${SOURCE_APK}"
+
+          if [[ "${SOURCE_APK}" == *"-unsigned.apk" ]]; then
+            DEBUG_KEYSTORE="${HOME}/.android/debug.keystore"
+            if [[ ! -f "${DEBUG_KEYSTORE}" ]]; then
+              mkdir -p "$(dirname "${DEBUG_KEYSTORE}")"
+              keytool -genkeypair \
+                -keystore "${DEBUG_KEYSTORE}" \
+                -storepass android \
+                -keypass android \
+                -alias androiddebugkey \
+                -keyalg RSA \
+                -keysize 2048 \
+                -validity 10000 \
+                -dname "CN=Android Debug,O=Android,C=US"
+            fi
+
+            VERIFY_APK="$(dirname "${SOURCE_APK}")/$(basename "${SOURCE_APK}" .apk)-ci-signed.apk"
+            "${BUILD_TOOLS_DIR}/apksigner" sign \
+              --ks "${DEBUG_KEYSTORE}" \
+              --ks-key-alias androiddebugkey \
+              --ks-pass pass:android \
+              --key-pass pass:android \
+              --out "${VERIFY_APK}" \
+              "${SOURCE_APK}"
+          fi
+
+          "${BUILD_TOOLS_DIR}/zipalign" -c -p 4 "${VERIFY_APK}"
+          "${BUILD_TOOLS_DIR}/apksigner" verify --verbose --print-certs "${VERIFY_APK}"
+          echo "verify_apk_path=${VERIFY_APK}" >> "$GITHUB_ENV"
 
       - name: Boot Android emulator and smoke-test APK launch
         uses: reactivecircus/android-emulator-runner@v2
@@ -129,7 +159,7 @@ jobs:
           script: |
             set -euo pipefail
             adb wait-for-device
-            adb install -r "${{ steps.apk_meta.outputs.apk_path }}"
+            adb install -r "${verify_apk_path:-${{ steps.apk_meta.outputs.apk_path }}}"
 
             if [[ -n "${{ steps.apk_meta.outputs.launchable_activity }}" ]]; then
               adb shell am start -W -n "${{ steps.apk_meta.outputs.app_id }}/${{ steps.apk_meta.outputs.launchable_activity }}"
