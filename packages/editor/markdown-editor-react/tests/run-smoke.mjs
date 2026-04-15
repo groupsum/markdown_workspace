@@ -50,10 +50,11 @@ const checks = [
     },
   },
   {
-    id: 'textarea-wrap-off',
-    description: 'MarkdownSourceEditor disables soft wrapping so gutter rhythm matches logical lines',
+    id: 'textarea-wrap-soft',
+    description: 'MarkdownSourceEditor enables soft wrapping and defaults to an 80-column target',
     test() {
-      assert.match(html, /wrap="off"/);
+      assert.match(html, /wrap="soft"/);
+      assert.match(html, /cols="80"/);
     },
   },
 ];

@@ -12,7 +12,8 @@
   min-height: 320px;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid var(--mwe-border-color, var(--border-color, rgba(255,255,255,0.12)));
   background: var(--mwe-bg-surface, var(--bg-panel, #11151a));
 }
@@ -41,6 +42,7 @@
   flex: 1 1 auto;
   min-height: 320px;
   width: 100%;
+  max-width: 100%;
   border: none;
   resize: none;
   background: var(--mwe-bg-surface, var(--bg-panel, #11151a));
@@ -49,7 +51,10 @@
   font-size: var(--mwe-font-size, 13px);
   line-height: var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)));
   padding: var(--mwe-editor-padding, 16px);
-  text-wrap: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: normal;
+  overflow-x: hidden;
   outline: none;
 }
 
