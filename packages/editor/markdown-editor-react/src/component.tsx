@@ -25,10 +25,14 @@ import type {
   MarkdownEditorSelection,
   MarkdownEditorSnapshot,
 } from "@mdwrk/markdown-editor-core";
+import { measureNaturalWidth, prepareWithSegments } from "@chenglou/pretext";
 import { createMarkdownEditorThemeStyle } from "./theme.js";
 import type { MarkdownSourceEditorHandle, MarkdownSourceEditorProps } from "./types.js";
 
 const mergeClassNames = (...values: Array<string | undefined>) => values.filter(Boolean).join(" ");
+const WRAP_MEASUREMENT_SAMPLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const MIN_WRAP_COLUMN = 24;
+const MAX_WRAP_COLUMN = 320;
 
 function selectionEquals(a: MarkdownEditorSelection, b: MarkdownEditorSelection): boolean {
   return a.start === b.start && a.end === b.end && (a.direction ?? "none") === (b.direction ?? "none");
@@ -79,6 +83,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
     const selectionRef = React.useRef(selection);
     const historyRef = React.useRef(history);
     const pendingSelectionRef = React.useRef<MarkdownEditorSelection | null>(null);
+    const [wrapColumn, setWrapColumn] = React.useState<number>(80);
 
     React.useEffect(() => {
       draftValueRef.current = draftValue;
@@ -125,6 +130,38 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       }
       pendingSelectionRef.current = null;
     }, [draftValue, selection]);
+
+    React.useLayoutEffect(() => {
+      const textarea = textareaRef.current;
+      if (!textarea || typeof window === "undefined" || typeof ResizeObserver === "undefined") return;
+
+      const updateWrapColumn = () => {
+        const computed = window.getComputedStyle(textarea);
+        const availableWidth = textarea.clientWidth;
+        if (availableWidth <= 0) return;
+
+        const measuredFont = [
+          computed.fontStyle,
+          computed.fontVariant,
+          computed.fontWeight,
+          computed.fontSize,
+          computed.fontFamily,
+        ].join(" ");
+        const prepared = prepareWithSegments(WRAP_MEASUREMENT_SAMPLE, measuredFont);
+        const naturalWidth = measureNaturalWidth(prepared);
+        const averageGlyphWidth = naturalWidth / WRAP_MEASUREMENT_SAMPLE.length;
+        const nextWrapColumn = Number.isFinite(averageGlyphWidth) && averageGlyphWidth > 0
+          ? Math.max(MIN_WRAP_COLUMN, Math.min(MAX_WRAP_COLUMN, Math.floor(availableWidth / averageGlyphWidth)))
+          : 80;
+
+        setWrapColumn((current) => (current === nextWrapColumn ? current : nextWrapColumn));
+      };
+
+      updateWrapColumn();
+      const observer = new ResizeObserver(updateWrapColumn);
+      observer.observe(textarea);
+      return () => observer.disconnect();
+    }, []);
 
     const emitCursor = React.useCallback((nextValue: string, nextSelection: MarkdownEditorSelection) => {
       const cursor = computeCursorPosition(nextValue, nextSelection.end);
@@ -377,7 +414,8 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
             autoFocus={autoFocus}
             disabled={disabled}
             placeholder={placeholder}
-            wrap="off"
+            wrap="soft"
+            cols={wrapColumn}
             data-testid="markdown-source-editor"
           />
         </div>
