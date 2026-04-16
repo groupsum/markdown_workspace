@@ -1,0 +1,2625 @@
+{
+  "schema_version": 4,
+  "repo": {
+    "id": "repo:example",
+    "name": "example",
+    "version": "0.1.0"
+  },
+  "tooling": {
+    "ssot_registry_version": "0.2.2",
+    "initialized_with_version": "0.2.2",
+    "last_upgraded_from_version": "0.2.2"
+  },
+  "paths": {
+    "ssot_root": ".ssot",
+    "schema_root": ".ssot/schemas",
+    "adr_root": ".ssot/adr",
+    "spec_root": ".ssot/specs",
+    "graph_root": ".ssot/graphs",
+    "evidence_root": ".ssot/evidence",
+    "release_root": ".ssot/releases",
+    "report_root": ".ssot/reports",
+    "cache_root": ".ssot/cache"
+  },
+  "program": {
+    "active_boundary_id": "bnd:default",
+    "active_release_id": "rel:0.1.0"
+  },
+  "guard_policies": {
+    "claim_closure": {
+      "require_implemented_features": true,
+      "require_linked_tests_passing": true,
+      "require_linked_evidence_passing": true,
+      "require_claim_evidence_tier_alignment": true,
+      "forbid_failed_or_stale_evidence": true
+    },
+    "certification": {
+      "require_release_status_draft_or_candidate": true,
+      "require_frozen_boundary": true,
+      "require_release_claim_coverage_for_boundary_features": true,
+      "require_boundary_features_current_or_explicit": true,
+      "require_feature_target_tiers_met": true,
+      "forbid_open_release_blocking_issues": true,
+      "forbid_active_release_blocking_risks": true
+    },
+    "promotion": {
+      "require_release_status_certified": true,
+      "require_release_snapshot_hashes": true
+    },
+    "publication": {
+      "require_release_status_promoted": true
+    },
+    "lifecycle": {
+      "require_replacement_or_note_for_deprecation": true,
+      "forbid_obsolete_or_removed_in_active_boundary": true,
+      "require_feature_absent_for_removed": true
+    }
+  },
+  "document_id_reservations": {
+    "adr": [
+      {
+        "owner": "ssot-core",
+        "start": 1,
+        "end": 999,
+        "immutable": true,
+        "deletable": false,
+        "assignable_by_repo": false
+      },
+      {
+        "owner": "repo-local-default",
+        "start": 1000,
+        "end": 4999,
+        "immutable": false,
+        "deletable": true,
+        "assignable_by_repo": true
+      }
+    ],
+    "spec": [
+      {
+        "owner": "ssot-core",
+        "start": 1,
+        "end": 999,
+        "immutable": true,
+        "deletable": false,
+        "assignable_by_repo": false
+      },
+      {
+        "owner": "repo-local-default",
+        "start": 1000,
+        "end": 4999,
+        "immutable": false,
+        "deletable": true,
+        "assignable_by_repo": true
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "feat:cross-cutting",
+      "title": "Cross-cutting repository feature set",
+      "description": "Feature inventory entry for cross-cutting.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-services-oidc.test.ts",
+        "tst:apps-client-src-pwa-versionmanifest.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-zoombehavior.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-action-rail",
+      "title": "Client feature: action-rail",
+      "description": "Feature inventory entry for client-action-rail.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-action-rail"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-commands",
+      "title": "Client feature: commands",
+      "description": "Feature inventory entry for client-commands.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-commands"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-common",
+      "title": "Client feature: common",
+      "description": "Feature inventory entry for client-common.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-diagnostics",
+      "title": "Client feature: diagnostics",
+      "description": "Feature inventory entry for client-diagnostics.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-diagnostics"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-editor",
+      "title": "Client feature: editor",
+      "description": "Feature inventory entry for client-editor.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-extensions",
+      "title": "Client feature: extensions",
+      "description": "Feature inventory entry for client-extensions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-i18n",
+      "title": "Client feature: i18n",
+      "description": "Feature inventory entry for client-i18n.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-i18n"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-layout",
+      "title": "Client feature: layout",
+      "description": "Feature inventory entry for client-layout.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-markdownprofiles",
+      "title": "Client feature: markdownprofiles",
+      "description": "Feature inventory entry for client-markdownprofiles.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-markdownprofiles"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-notifications",
+      "title": "Client feature: notifications",
+      "description": "Feature inventory entry for client-notifications.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-notifications"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-preferences",
+      "title": "Client feature: preferences",
+      "description": "Feature inventory entry for client-preferences.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-preferences"
+      ],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:client-settings",
+      "title": "Client feature: settings",
+      "description": "Feature inventory entry for client-settings.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-views",
+      "title": "Client feature: views",
+      "description": "Feature inventory entry for client-views.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-views"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-views-viewregistry.test.ts"
+      ],
+      "requires": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "tst:apps-client-hooks-useapp.test.tsx",
+      "title": "useApp.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/hooks/useApp.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-useapp.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-hooks-usetabmanager.test.tsx",
+      "title": "useTabManager.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/hooks/useTabManager.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-usetabmanager.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-hooks-usetoast.test.tsx",
+      "title": "useToast.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/hooks/useToast.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-usetoast.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-services-oidc.test.ts",
+      "title": "oidc.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/services/oidc.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-oidc.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+      "title": "actionRailRegistry.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
+      "feature_ids": [
+        "feat:client-action-rail"
+      ],
+      "claim_ids": [
+        "clm:client-action-rail"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-commands-commandregistry.test.ts",
+      "title": "commandRegistry.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/commands/commandRegistry.test.ts",
+      "feature_ids": [
+        "feat:client-commands"
+      ],
+      "claim_ids": [
+        "clm:client-commands"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-commands-commandregistry.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "title": "extensionWorkspaceSurfaces.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
+      "feature_ids": [
+        "feat:client-extensions"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
+      "title": "clientI18nService.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/i18n/clientI18nService.test.ts",
+      "feature_ids": [
+        "feat:client-i18n"
+      ],
+      "claim_ids": [
+        "clm:client-i18n"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-i18n-clienti18nservice.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+      "title": "languagePackStudioController.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
+      "feature_ids": [
+        "feat:client-i18n"
+      ],
+      "claim_ids": [
+        "clm:client-i18n"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "title": "profileConfig.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
+      "feature_ids": [
+        "feat:client-markdownprofiles"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "title": "DataSettingsPanel.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
+      "feature_ids": [
+        "feat:client-settings"
+      ],
+      "claim_ids": [
+        "clm:client-settings"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+      "title": "SettingsSchemaRenderer.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
+      "feature_ids": [
+        "feat:client-settings"
+      ],
+      "claim_ids": [
+        "clm:client-settings"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-features-views-viewregistry.test.ts",
+      "title": "viewRegistry.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/features/views/viewRegistry.test.ts",
+      "feature_ids": [
+        "feat:client-views"
+      ],
+      "claim_ids": [
+        "clm:client-views"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-views-viewregistry.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-pwa-versionmanifest.test.ts",
+      "title": "versionManifest.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/pwa/versionManifest.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-pwa-versionmanifest.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-shell-actionrailhost.test.tsx",
+      "title": "ActionRailHost.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/shell/ActionRailHost.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-shell-actionrailhost.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-styles-alignmenttokens.test.ts",
+      "title": "alignmentTokens.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/styles/alignmentTokens.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-alignmenttokens.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-styles-chassisfittoscreen.test.ts",
+      "title": "chassisFitToScreen.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/styles/chassisFitToScreen.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-chassisfittoscreen.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-styles-zoombehavior.test.ts",
+      "title": "zoomBehavior.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/styles/zoomBehavior.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-zoombehavior.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+      "title": "phase7-shell-parity.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/tests/phase7-shell-parity.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "title": "file-baseline.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+      "title": "inline.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright-inline/inline.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "title": "browser-matrix.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-preview-export.spec.ts",
+      "title": "preview-export.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright/preview-export.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-preview-export.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+      "title": "settings-and-i18n.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "title": "shell-smoke.spec.ts",
+      "status": "passing",
+      "kind": "e2e",
+      "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "title": "commands.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+      "title": "history.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "title": "roundtrip.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "title": "selection.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "title": "transforms.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "title": "component.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "title": "keyboard.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "title": "extension-manager.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+      "title": "runtime.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "title": "html.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "title": "component.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "clm:cross-cutting",
+      "title": "Claim for Cross-cutting repository feature set",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Cross-cutting repository feature set is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-services-oidc.test.ts",
+        "tst:apps-client-src-pwa-versionmanifest.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-zoombehavior.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-useapp.test.tsx",
+        "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-services-oidc.test.ts",
+        "evd:apps-client-src-pwa-versionmanifest.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-styles-alignmenttokens.test.ts",
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-styles-zoombehavior.test.ts",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "evd:apps-client-tests-playwright-preview-export.spec.ts",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "clm:client-action-rail",
+      "title": "Claim for Client feature: action-rail",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: action-rail is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-action-rail"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ]
+    },
+    {
+      "id": "clm:client-commands",
+      "title": "Claim for Client feature: commands",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: commands is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-commands"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-commands-commandregistry.test.ts"
+      ]
+    },
+    {
+      "id": "clm:client-common",
+      "title": "Claim for Client feature: common",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: common is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-common"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-diagnostics",
+      "title": "Claim for Client feature: diagnostics",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: diagnostics is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-diagnostics"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-editor",
+      "title": "Claim for Client feature: editor",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: editor is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-editor"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-extensions",
+      "title": "Claim for Client feature: extensions",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: extensions is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ]
+    },
+    {
+      "id": "clm:client-i18n",
+      "title": "Claim for Client feature: i18n",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: i18n is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-i18n"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ]
+    },
+    {
+      "id": "clm:client-layout",
+      "title": "Claim for Client feature: layout",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: layout is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-layout"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-markdownprofiles",
+      "title": "Claim for Client feature: markdownprofiles",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: markdownprofiles is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-markdownprofiles"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ]
+    },
+    {
+      "id": "clm:client-notifications",
+      "title": "Claim for Client feature: notifications",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: notifications is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-notifications"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-preferences",
+      "title": "Claim for Client feature: preferences",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: preferences is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-preferences"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:client-settings",
+      "title": "Claim for Client feature: settings",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: settings is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "clm:client-views",
+      "title": "Claim for Client feature: views",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client feature: views is represented by repository tests and source surfaces.",
+      "feature_ids": [
+        "feat:client-views"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-views-viewregistry.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-features-views-viewregistry.test.ts"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evd:apps-client-hooks-useapp.test.tsx",
+      "title": "Evidence: useApp.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useApp.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-hooks-usetabmanager.test.tsx",
+      "title": "Evidence: useTabManager.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useTabManager.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-hooks-usetoast.test.tsx",
+      "title": "Evidence: useToast.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useToast.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-services-oidc.test.ts",
+      "title": "Evidence: oidc.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/services/oidc.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+      "title": "Evidence: actionRailRegistry.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-action-rail"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-commands-commandregistry.test.ts",
+      "title": "Evidence: commandRegistry.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/commands/commandRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-commands"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "title": "Evidence: extensionWorkspaceSurfaces.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+      "title": "Evidence: clientI18nService.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/i18n/clientI18nService.test.ts",
+      "claim_ids": [
+        "clm:client-i18n"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-clienti18nservice.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+      "title": "Evidence: languagePackStudioController.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
+      "claim_ids": [
+        "clm:client-i18n"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "title": "Evidence: profileConfig.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
+      "claim_ids": [
+        "clm:client-markdownprofiles"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "title": "Evidence: DataSettingsPanel.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
+      "claim_ids": [
+        "clm:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+      "title": "Evidence: SettingsSchemaRenderer.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
+      "claim_ids": [
+        "clm:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-views-viewregistry.test.ts",
+      "title": "Evidence: viewRegistry.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/views/viewRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-views"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-views-viewregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-pwa-versionmanifest.test.ts",
+      "title": "Evidence: versionManifest.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/pwa/versionManifest.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-pwa-versionmanifest.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-shell-actionrailhost.test.tsx",
+      "title": "Evidence: ActionRailHost.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/shell/ActionRailHost.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-shell-actionrailhost.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-alignmenttokens.test.ts",
+      "title": "Evidence: alignmentTokens.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/alignmentTokens.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-chassisfittoscreen.test.ts",
+      "title": "Evidence: chassisFitToScreen.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/chassisFitToScreen.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-zoombehavior.test.ts",
+      "title": "Evidence: zoomBehavior.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/zoomBehavior.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-zoombehavior.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+      "title": "Evidence: phase7-shell-parity.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/phase7-shell-parity.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "title": "Evidence: file-baseline.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+      "title": "Evidence: inline.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright-inline/inline.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "title": "Evidence: browser-matrix.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-preview-export.spec.ts",
+      "title": "Evidence: preview-export.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/preview-export.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+      "title": "Evidence: settings-and-i18n.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "title": "Evidence: shell-smoke.spec.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "title": "Evidence: commands.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+      "title": "Evidence: history.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "title": "Evidence: roundtrip.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "title": "Evidence: selection.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "title": "Evidence: transforms.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "title": "Evidence: component.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "title": "Evidence: keyboard.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "title": "Evidence: extension-manager.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+      "title": "Evidence: runtime.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "title": "Evidence: html.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "title": "Evidence: component.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ]
+    }
+  ],
+  "issues": [],
+  "risks": [],
+  "boundaries": [
+    {
+      "id": "bnd:default",
+      "title": "Default boundary",
+      "status": "draft",
+      "frozen": false,
+      "feature_ids": []
+    }
+  ],
+  "releases": [
+    {
+      "id": "rel:0.1.0",
+      "version": "0.1.0",
+      "status": "draft",
+      "boundary_id": "bnd:default",
+      "claim_ids": [],
+      "evidence_ids": []
+    }
+  ],
+  "adrs": [
+    {
+      "id": "adr:0001",
+      "number": 1,
+      "slug": "canonical-json-registry",
+      "title": "Canonical registry is a single JSON document",
+      "path": ".ssot/adr/ADR-0001-canonical-json-registry.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "9f5bb7d2ee345837ed30579c9e494a239f470855776ba5dc10e1e5285ec75997",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0002",
+      "number": 2,
+      "slug": "features-are-targetable-units",
+      "title": "Features are the targetable units",
+      "path": ".ssot/adr/ADR-0002-features-are-targetable-units.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "c088e2e19d94b2751b170bff365d71361ee505e67c6467718b9dba9819fa98cb",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0003",
+      "number": 3,
+      "slug": "issues-are-plannable-work-items",
+      "title": "Issues are plannable work items",
+      "path": ".ssot/adr/ADR-0003-issues-are-plannable-work-items.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "5f9facd077de1b597cd92f881be2f24e7d2a84c53fbafadaa8d90e5a6fd43d36",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0004",
+      "number": 4,
+      "slug": "entity-centric-registry-derived-graph",
+      "title": "Entity-centric registry with a derived graph export",
+      "path": ".ssot/adr/ADR-0004-entity-centric-registry-derived-graph.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "9070a9343059aeb88c9c814eb6b09779259655b64db1c72c8dc87b67a5e0208b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0005",
+      "number": 5,
+      "slug": "normalized-prefixed-ids",
+      "title": "Normalized prefixed IDs",
+      "path": ".ssot/adr/ADR-0005-normalized-prefixed-ids.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "1b3ac2ec39ede1aa4f393d70ba284d76e5fb8be43aaf76bed3461b5c0d8bf790",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0006",
+      "number": 6,
+      "slug": "claim-status-vs-tier",
+      "title": "Claim status and claim tier are orthogonal",
+      "path": ".ssot/adr/ADR-0006-claim-status-vs-tier.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "77b436414b489d834b4cfc3c9e73d3109253c1e69e4c5177773ba1b2e1a049b9",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0007",
+      "number": 7,
+      "slug": "feature-implementation-vs-lifecycle",
+      "title": "Feature implementation state is separate from lifecycle state",
+      "path": ".ssot/adr/ADR-0007-feature-implementation-vs-lifecycle.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "1d9827f1d9ac80e21c9eb01860525546a12414b6d4dd59f85e2d1bfe3d9386f2",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0008",
+      "number": 8,
+      "slug": "immutable-boundary-and-release-snapshots",
+      "title": "Immutable boundary and release snapshots",
+      "path": ".ssot/adr/ADR-0008-immutable-boundary-and-release-snapshots.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "05cdcfecdd0291bf70d83df6f759234a6e030bee813f9ffccc281339f1020020",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0009",
+      "number": 9,
+      "slug": "fail-closed-guards",
+      "title": "Fail-closed guards",
+      "path": ".ssot/adr/ADR-0009-fail-closed-guards.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "b3e4968a2407889f0a369cb4cd09aa6b22e25a6404d4aeda17ef9d8b39f639b8",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0010",
+      "number": 10,
+      "slug": "generated-projections-are-non-canonical",
+      "title": "Generated projections are non-canonical",
+      "path": ".ssot/adr/ADR-0010-generated-projections-are-non-canonical.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "9384cc13dad85dc2ee3d65405edf92ae0cb8c90874db52beba33fa63f1fb1aad",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0011",
+      "number": 11,
+      "slug": "explicit-schema-versioning",
+      "title": "Explicit schema versioning",
+      "path": ".ssot/adr/ADR-0011-explicit-schema-versioning.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "476d6d2c6e8bd6f6775492f11f2de3f26b77545dda62bd6e78e34ff37b53ed4e",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:0012",
+      "number": 12,
+      "slug": "portable-core-repo-specific-evidence-adapters",
+      "title": "Portable core with repo-specific evidence generation outside the core",
+      "path": ".ssot/adr/ADR-0012-portable-core-repo-specific-evidence-adapters.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "ba8ea2c1e20eda7094c2cf92c9fd63427c1ef3edf9c18d2f43357e761101ba79",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1001",
+      "number": 1001,
+      "slug": "monorepo-topology",
+      "title": "ADR-0001: monorepo and package topology",
+      "path": ".ssot/adr/ADR-1001-monorepo-topology.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "2ac998ec4d6c2d274599f4fbacfb13bb452eee1cbcb8e891e1bb8588e9c4ddfe",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1002",
+      "number": 1002,
+      "slug": "runtime-manifest",
+      "title": "ADR-0002: extension runtime and manifest",
+      "path": ".ssot/adr/ADR-1002-runtime-manifest.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "f06e42b65b8d6d7fd68d019e2d2d6c4700c6e28e5865b12c5da236cd67e4dd7f",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1003",
+      "number": 1003,
+      "slug": "renderer-editor-split",
+      "title": "ADR-0003: renderer/editor package split",
+      "path": ".ssot/adr/ADR-1003-renderer-editor-split.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "06e3a2bc9b7c63796b03b920f091a08c0e94923530375d2d858673353d502651",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1004",
+      "number": 1004,
+      "slug": "theme-contract",
+      "title": "ADR-0004: theme token and class contract",
+      "path": ".ssot/adr/ADR-1004-theme-contract.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "653b1001e04544a880624e2dd44eac8146198b579370aec53e28be75ee43f945",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1005",
+      "number": 1005,
+      "slug": "extension-distribution",
+      "title": "ADR-0005: extension distribution model",
+      "path": ".ssot/adr/ADR-1005-extension-distribution.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "987cf0814e62ea32e49d975a75882e7008f4de449a3d54af7e6a1d026b981e60",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1006",
+      "number": 1006,
+      "slug": "release-conformance",
+      "title": "ADR-0006: release, versioning, and conformance",
+      "path": ".ssot/adr/ADR-1006-release-conformance.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "2dbab1a8c2224df85ff9499791515eb81bd9701acbc41f83e3381e94edef2b05",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1007",
+      "number": 1007,
+      "slug": "markdown-boundary",
+      "title": "ADR-0007: Markdown target freeze and certification boundary",
+      "path": ".ssot/adr/ADR-1007-markdown-boundary.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "e2fe2419f4b764d9ac682a792d40939f50ac9151f191be42a10dcddb7d5cf82b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1008",
+      "number": 1008,
+      "slug": "release-trains",
+      "title": "ADR-0008: release-train groups and compatibility baselines",
+      "path": ".ssot/adr/ADR-1008-release-trains.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "96199155331fdd00885d4b123a7dea288bd2049c97840a388bb893bc14328e3c",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1009",
+      "number": 1009,
+      "slug": "commonmark-checkpoint",
+      "title": "ADR-0009 \u2014 renderer CommonMark-core Phase 2 checkpoint",
+      "path": ".ssot/adr/ADR-1009-commonmark-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "976cb18f4c9858bded4f5dc78c2c34e42e58ee06549b557367623e8e002905a4",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1010",
+      "number": 1010,
+      "slug": "gfm-checkpoint",
+      "title": "ADR-0010 \u2014 default GFM profile Phase 3 checkpoint",
+      "path": ".ssot/adr/ADR-1010-gfm-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "a96ace13fb0d3ba7a30f2669fcfe82b7c9a67ca5cda4ad09ab4d449551073e68",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1011",
+      "number": 1011,
+      "slug": "optional-profiles-checkpoint",
+      "title": "ADR-0011: Optional profile boundary Phase 4 checkpoint",
+      "path": ".ssot/adr/ADR-1011-optional-profiles-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "7cb2e012f6ed8d6f1bcee38658545782ac337c2cbed0f1848f8d78a31fd52be1",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1012",
+      "number": 1012,
+      "slug": "editor-authoring-checkpoint",
+      "title": "ADR-0012 \u2014 editor semantics and authoring UX Phase 5 checkpoint",
+      "path": ".ssot/adr/ADR-1012-editor-authoring-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "944479373eba7d7518c3104baf2a37bba68d3f8f8c1ebce59f7bb5d06b75533a",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1013",
+      "number": 1013,
+      "slug": "preview-export-checkpoint",
+      "title": "ADR-0013 \u2014 preview, export, and render-policy Phase 6 checkpoint",
+      "path": ".ssot/adr/ADR-1013-preview-export-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "3545a5092d4a197e13c991b9250bc1185d6c8a6ce29ec81d265918e506f0cd1a",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1014",
+      "number": 1014,
+      "slug": "shell-parity-checkpoint",
+      "title": "ADR-0014: Shell parity Phase 7 checkpoint",
+      "path": ".ssot/adr/ADR-1014-shell-parity-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "d529578a5995743f8c42daa070ceb3f954f335b9f9739967e10503db349a07b9",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1015",
+      "number": 1015,
+      "slug": "settings-git-checkpoint",
+      "title": "ADR-0015 \u2014 Phase 8 settings, data, session, and Git parity checkpoint",
+      "path": ".ssot/adr/ADR-1015-settings-git-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "869e19a9045e8342632b5e9423934c371c4c66681158822f24ff169bf019fdff",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1016",
+      "number": 1016,
+      "slug": "theme-parity-checkpoint",
+      "title": "ADR-0016 \u2014 Phase 9 theme inventory, token contract, and visual parity checkpoint",
+      "path": ".ssot/adr/ADR-1016-theme-parity-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "e5c7321a743cc4fea01569e3acef8b2e66dc67e84b4037ef8007db35da16004b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1017",
+      "number": 1017,
+      "slug": "i18n-checkpoint",
+      "title": "ADR-0017 \u2014 Phase 10 i18n, language UX, and catalog coverage checkpoint",
+      "path": ".ssot/adr/ADR-1017-i18n-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "ac4d873c11eb0c1bf81a15d776ef4724bba1892a3e775ba151b8b7f34dae510f",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1018",
+      "number": 1018,
+      "slug": "docs-evidence-checkpoint",
+      "title": "ADR-0018 \u2014 Phase 11 package documentation, examples, contract boundaries, and evidence checkpoint",
+      "path": ".ssot/adr/ADR-1018-docs-evidence-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "e06880aa53e15e21c4c29ade6f5cf340fb5399c6bb024f8bdf9ae68169f60f0b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1019",
+      "number": 1019,
+      "slug": "closure-suite-checkpoint",
+      "title": "ADR-0019 \u2014 strict conformance closure suite Phase 12 checkpoint",
+      "path": ".ssot/adr/ADR-1019-closure-suite-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "584bff6ced168e9e3b411253cb433223dce35b17de4c950c443a3b7353344528",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1020",
+      "number": 1020,
+      "slug": "rc-freeze-checkpoint",
+      "title": "ADR-0020 \u2014 RC freeze, versioning, and promotion prep (Phase 13 checkpoint)",
+      "path": ".ssot/adr/ADR-1020-rc-freeze-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "74d0c2ef1b17676f1be0a59d2f310368eb56b44ca6ea31dadbac5f30e5b0d190",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1021",
+      "number": 1021,
+      "slug": "promotion-checkpoint",
+      "title": "ADR-0021 \u2014 promotion and release Phase 14 checkpoint",
+      "path": ".ssot/adr/ADR-1021-promotion-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "326917e294b923d0af62dddb4241a52c057b6ba679f374b2bbecf577fde28511",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1022",
+      "number": 1022,
+      "slug": "stabilization-checkpoint",
+      "title": "ADR-0022 \u2014 Phase 15 post-release stabilization and support-window checkpoint",
+      "path": ".ssot/adr/ADR-1022-stabilization-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "d9647eee3f01af403a6c5992de5fdce45f0ba886fc927ff0c2695f2fa33ef73e",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1023",
+      "number": 1023,
+      "slug": "certification-gate-checkpoint",
+      "title": "ADR-0023 \u2014 Certification before promotion (Phase 16 checkpoint)",
+      "path": ".ssot/adr/ADR-1023-certification-gate-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "0b49f539bcea5cd680809248b4ccb393e81bba66efabb4628da600588ce1e35b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1024",
+      "number": 1024,
+      "slug": "gateb-rerun-checkpoint",
+      "title": "ADR-0024 \u2014 Gate B certification-closure rerun checkpoint",
+      "path": ".ssot/adr/ADR-1024-gateb-rerun-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "5a2a4cfa65cd742d5e1fbfdd9a00581c36875d96c7f7e19b61ed188d9038e115",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1025",
+      "number": 1025,
+      "slug": "gateb-continuation-checkpoint",
+      "title": "ADR-0025 \u2014 Gate B certification-closure continuation Phase 18 checkpoint",
+      "path": ".ssot/adr/ADR-1025-gateb-continuation-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "bf83907f6dfdc0a59cd9be067c6fd44c3482ee5ecb50244c6840771f26c16b69",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1026",
+      "number": 1026,
+      "slug": "gateb-followup-checkpoint",
+      "title": "ADR-0026: Gate B certification-closure continuation (Phase 19 checkpoint)",
+      "path": ".ssot/adr/ADR-1026-gateb-followup-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "2de65877b62374632551c304b7036fd96c1c304b5eb9e3bb505ac6a4ae6417e0",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    },
+    {
+      "id": "adr:1027",
+      "number": 1027,
+      "slug": "gateb-final-rerun-checkpoint",
+      "title": "ADR-0027: Gate B certification-closure rerun (Phase 20 checkpoint)",
+      "path": ".ssot/adr/ADR-1027-gateb-final-rerun-checkpoint.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "3b406443729c967ccfccbb1f1f51637a4693deca39b0de8f87d511fd6c9d4b57",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": []
+    }
+  ],
+  "specs": [
+    {
+      "id": "spc:0001",
+      "number": 1,
+      "slug": "registry-core",
+      "title": "Registry core",
+      "path": ".ssot/specs/SPEC-0001-registry-core.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "2244e964a2e98cbb8c96959e80f94fbb6684825aa41f64e34d9bc918cb229b35",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0002",
+      "number": 2,
+      "slug": "cli",
+      "title": "CLI",
+      "path": ".ssot/specs/SPEC-0002-cli.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "921aecf6cf292ef841c49c73b45ab8a38bdae817ef850097a870dc5241473c39",
+      "kind": "operational"
+    },
+    {
+      "id": "spc:0003",
+      "number": 3,
+      "slug": "graph-model",
+      "title": "Graph model",
+      "path": ".ssot/specs/SPEC-0003-graph-model.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "dbf7093288b63b1fd3a1f38d60b66147d93c27511487de992ee0d59efb43b744",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0004",
+      "number": 4,
+      "slug": "feature-lifecycle",
+      "title": "Feature lifecycle",
+      "path": ".ssot/specs/SPEC-0004-feature-lifecycle.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "93f42169b551989e38f00598f899e6bfd9fc443a15467da77ead51c5bd01d02e",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0005",
+      "number": 5,
+      "slug": "claim-statuses",
+      "title": "Claim statuses",
+      "path": ".ssot/specs/SPEC-0005-claim-statuses.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "a22501ba039e61a6f438d50685a3e33a7928fb37179f4a8da31c8c3420ed9683",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0006",
+      "number": 6,
+      "slug": "claim-tiers",
+      "title": "Claim tiers",
+      "path": ".ssot/specs/SPEC-0006-claim-tiers.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "a86608fc0ae4b045cdf59257e666f0254df9a26f2dd93897628fafc142169163",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0007",
+      "number": 7,
+      "slug": "snapshots-and-reports",
+      "title": "Snapshots and reports",
+      "path": ".ssot/specs/SPEC-0007-snapshots-and-reports.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "47d3d3298a978e525b315a779db920714946011ccda92a0caf2e2a5d72cd21cb",
+      "kind": "operational"
+    },
+    {
+      "id": "spc:0008",
+      "number": 8,
+      "slug": "repo-policy",
+      "title": "Repository policy",
+      "path": ".ssot/specs/SPEC-0008-repo-policy.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "6e80832275da7d4c3609cbef3e39c1128bd14d559cdf315f78982dcc8f91edbf",
+      "kind": "operational"
+    },
+    {
+      "id": "spc:0009",
+      "number": 9,
+      "slug": "gates-and-fences",
+      "title": "Gates and fences",
+      "path": ".ssot/specs/SPEC-0009-gates-and-fences.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "20ad0cb68eafaef7c0095136eef6ebe9b0704b5ad3d81211039ef73745bc02af",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0010",
+      "number": 10,
+      "slug": "id-normalization",
+      "title": "ID normalization",
+      "path": ".ssot/specs/SPEC-0010-id-normalization.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "a217c496f8534f78906cf589ec07f14f3babfbf900d848a94bb58202ea06044f",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0011",
+      "number": 11,
+      "slug": "file-tree",
+      "title": "File tree",
+      "path": ".ssot/specs/SPEC-0011-file-tree.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "739d774289548e1d10e9c20dd88d24e774b1ddfd68cdc16bf8424481ef4b705b",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0012",
+      "number": 12,
+      "slug": "planning-horizons",
+      "title": "Planning horizons",
+      "path": ".ssot/specs/SPEC-0012-planning-horizons.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "bd748f1d15321d770410ed04ebfe4e6e558e02a30bfbd4e4bddce327f2f7f2d0",
+      "kind": "normative"
+    },
+    {
+      "id": "spc:0013",
+      "number": 13,
+      "slug": "python-api",
+      "title": "Python API",
+      "path": ".ssot/specs/SPEC-0013-python-api.md",
+      "origin": "ssot-core",
+      "managed": true,
+      "immutable": true,
+      "package_version": "0.2.2",
+      "content_sha256": "a18bcc7c72373487d8cd4a88b93b605ca6a46703dbd8d5fa5d9f8c86937348da",
+      "kind": "operational"
+    },
+    {
+      "id": "spc:2001",
+      "number": 2001,
+      "slug": "specs-index",
+      "title": "Specs",
+      "path": ".ssot/specs/SPEC-2001-specs-index.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "7a5a03ddc75b7acb57f2ddc41bee82585445666c5c946af12adcf11f995127d2",
+      "kind": "repo-local"
+    },
+    {
+      "id": "spc:2002",
+      "number": 2002,
+      "slug": "repository-governance",
+      "title": "Repository Governance Specification",
+      "path": ".ssot/specs/SPEC-2002-repository-governance.md",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.2",
+      "content_sha256": "d8d09b407d9b0c509d20dc9c32d97d84fb9affd018c90775997e3bd7735399be",
+      "kind": "repo-local"
+    }
+  ]
+}
