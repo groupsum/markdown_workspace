@@ -82,6 +82,24 @@ export const useApp = () => {
   const projectLoadInFlightRef = useRef<string | null>(null);
   const pendingDesktopFilesRef = useRef<DesktopMarkdownFile[]>([]);
 
+  const focusImportedDesktopFiles = useCallback((importedFiles: readonly { id: string }[]) => {
+    if (importedFiles.length === 0) {
+      return;
+    }
+
+    importedFiles.forEach((file) => {
+      tabs.openTab(file.id);
+    });
+
+    const activeImportedFile = importedFiles[importedFiles.length - 1];
+    if (!activeImportedFile) {
+      return;
+    }
+
+    fileSys.setSelectedExplorerId(activeImportedFile.id);
+    ui.setAppMode('work');
+  }, [fileSys.setSelectedExplorerId, tabs.openTab, ui.setAppMode]);
+
   const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
     if (result.status === 'success' && result.projectId && result.credential) {
       const targetProject = proj.projects.find((project) => project.id === result.projectId);
@@ -276,8 +294,12 @@ export const useApp = () => {
       return;
     }
 
-    proj.setActiveProjectId(preferredProjectId);
-    localStorage.setItem('lastProjectId', preferredProjectId);
+    const shouldSwitchProject = proj.activeProjectId !== preferredProjectId;
+
+    if (shouldSwitchProject) {
+      proj.setActiveProjectId(preferredProjectId);
+      localStorage.setItem('lastProjectId', preferredProjectId);
+    }
 
     const imported = await fileSys.importExternalMarkdownFiles(
       preferredProjectId,
@@ -290,25 +312,26 @@ export const useApp = () => {
     );
 
     if (imported.length > 0) {
-      tabs.resetTabs();
-      await fileSys.loadFiles(preferredProjectId);
-      const firstImportedFile = imported[0];
-      tabs.openTab(firstImportedFile.id);
-      fileSys.setSelectedExplorerId(firstImportedFile.id);
-      ui.setAppMode('work');
+      const isImportProjectLoaded = fileSys.loadedProjectId === preferredProjectId;
+
+      if (!shouldSwitchProject && isImportProjectLoaded) {
+        focusImportedDesktopFiles(imported);
+        return;
+      }
+
+      await loadProject(preferredProjectId);
+      focusImportedDesktopFiles(imported);
     }
   }, [
+    focusImportedDesktopFiles,
+    loadProject,
+    proj.activeProjectId,
     proj.loading,
     proj.projects,
     proj.createProject,
     proj.setActiveProjectId,
     fileSys.loadedProjectId,
-    fileSys.loadFiles,
     fileSys.importExternalMarkdownFiles,
-    fileSys.setSelectedExplorerId,
-    tabs.resetTabs,
-    tabs.openTab,
-    ui.setAppMode,
   ]);
 
   const queueDesktopFiles = useCallback((incomingFiles: readonly DesktopMarkdownFile[]) => {
