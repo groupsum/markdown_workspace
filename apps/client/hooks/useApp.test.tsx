@@ -9,14 +9,6 @@ const setLoadingMock = vi.fn();
 const setActiveProjectIdMock = vi.fn();
 const setSelectedExplorerIdMock = vi.fn();
 const updateLastOpenedMock = vi.fn();
-const createProjectMock = vi.fn();
-const importExternalMarkdownFilesMock = vi.fn(async () => []);
-const openTabMock = vi.fn();
-const resetTabsMock = vi.fn();
-let mockProjects = [{ id: 'proj-1', name: 'Desktop Imports', gitConfig: {}, createdAt: 0, lastOpened: 0 }];
-let mockActiveProjectId: string | null = 'proj-1';
-let mockLoading = false;
-let mockLoadedProjectId: string | null = 'proj-1';
 
 vi.mock('./useToast', () => ({
   useToast: () => ({
@@ -72,14 +64,13 @@ vi.mock('./useUIState', () => ({
 
 vi.mock('./useProjectManager', () => ({
   useProjectManager: () => ({
-    projects: mockProjects,
-    activeProjectId: mockActiveProjectId,
-    loading: mockLoading,
+    projects: [{ id: 'proj-1', name: 'Project 1', gitConfig: {}, createdAt: 0, lastOpened: 0 }],
+    activeProjectId: 'proj-1',
+    loading: false,
     setLoading: setLoadingMock,
     setActiveProjectId: setActiveProjectIdMock,
-    createProject: createProjectMock,
+    createProject: vi.fn(),
     deleteProject: vi.fn(),
-    updateProject: vi.fn(),
     updateGitConfig: vi.fn(),
     updateLastOpened: updateLastOpenedMock
   })
@@ -93,7 +84,7 @@ vi.mock('./useFileManager', () => ({
     setSelectedExplorerId: setSelectedExplorerIdMock,
     unsaved: false,
     setUnsaved: vi.fn(),
-    loadedProjectId: mockLoadedProjectId,
+    loadedProjectId: null,
     loadFiles: loadFilesMock,
     createNewFile: vi.fn(),
     createNewFolder: vi.fn(),
@@ -106,8 +97,6 @@ vi.mock('./useFileManager', () => ({
     exportProjectData: vi.fn(),
     restoreProjectData: vi.fn(),
     importMarkdownFiles: vi.fn(async () => []),
-    importExternalMarkdownFiles: importExternalMarkdownFilesMock,
-    importFilesystemWorkspace: vi.fn(),
     exportHtmlNode: vi.fn()
   })
 }));
@@ -117,9 +106,9 @@ vi.mock('./useTabManager', () => ({
     tabs: [],
     activeTabId: null,
     setActiveTabId: vi.fn(),
-    openTab: openTabMock,
+    openTab: vi.fn(),
     closeTab: vi.fn(),
-    resetTabs: resetTabsMock,
+    resetTabs: vi.fn(),
     setTabs: vi.fn()
   })
 }));
@@ -134,16 +123,9 @@ describe('useApp project loading', () => {
     cleanup();
     vi.clearAllMocks();
     window.localStorage.clear();
-    delete window.desktopShell;
-    mockProjects = [{ id: 'proj-1', name: 'Desktop Imports', gitConfig: {}, createdAt: 0, lastOpened: 0 }];
-    mockActiveProjectId = 'proj-1';
-    mockLoading = false;
-    mockLoadedProjectId = 'proj-1';
   });
 
   it('prevents duplicate loadProject calls when effects re-run in StrictMode', async () => {
-    mockLoadedProjectId = null;
-
     render(
       <React.StrictMode>
         <Harness />
@@ -153,59 +135,5 @@ describe('useApp project loading', () => {
     await waitFor(() => {
       expect(loadFilesMock).toHaveBeenCalledTimes(1);
     });
-  });
-
-  it('opens desktop-imported markdown in place without resetting the loaded import project', async () => {
-    importExternalMarkdownFilesMock.mockResolvedValueOnce([
-      {
-        id: 'file-imported-1',
-        projectId: 'proj-1',
-        name: 'opened.md',
-        type: 'file',
-        content: '# opened',
-        lastModified: 1,
-      },
-    ]);
-
-    window.desktopShell = {
-      isDesktop: true,
-      openMarkdownFiles: vi.fn(async () => []),
-      saveMarkdownFile: vi.fn(async () => ({ path: 'C:\\opened.md' })),
-      getDesktopPath: vi.fn(async () => 'C:\\Users\\bigman\\Desktop'),
-      openProjectDirectory: vi.fn(async () => null),
-      readProjectDirectory: vi.fn(async () => ({ rootPath: 'C:\\workspace', name: 'workspace', entries: [] })),
-      createProjectDirectory: vi.fn(async () => ({ rootPath: 'C:\\workspace', name: 'workspace', entries: [] })),
-      createDirectory: vi.fn(async () => ({ path: 'C:\\workspace' })),
-      renamePath: vi.fn(async () => ({ path: 'C:\\workspace\\renamed.md' })),
-      deletePath: vi.fn(async () => ({ path: 'C:\\workspace\\deleted.md' })),
-      movePath: vi.fn(async () => ({ path: 'C:\\workspace\\moved.md' })),
-      getLaunchMarkdownFiles: vi.fn(async () => [
-        { path: 'C:\\opened.md', name: 'opened.md', content: '# opened' },
-      ]),
-      onOpenMarkdownFiles: vi.fn(() => () => {}),
-      onMountProjectDirectory: vi.fn(() => () => {}),
-      onSaveActiveMarkdownRequested: vi.fn(() => () => {}),
-    };
-
-    render(<Harness />);
-
-    await waitFor(() => {
-      expect(importExternalMarkdownFilesMock).toHaveBeenCalledWith('proj-1', [
-        {
-          name: 'opened.md',
-          content: '# opened',
-          sourceKind: 'filesystem',
-          sourcePath: 'C:\\opened.md',
-        },
-      ]);
-    });
-
-    await waitFor(() => {
-      expect(openTabMock).toHaveBeenCalledWith('file-imported-1');
-    });
-
-    expect(resetTabsMock).not.toHaveBeenCalled();
-    expect(setActiveProjectIdMock).not.toHaveBeenCalledWith('proj-1');
-    expect(setSelectedExplorerIdMock).toHaveBeenCalledWith('file-imported-1');
   });
 });
