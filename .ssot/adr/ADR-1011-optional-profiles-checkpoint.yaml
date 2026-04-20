@@ -1,0 +1,79 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1011"
+number: 1011
+slug: "optional-profiles-checkpoint"
+title: "ADR-0011: Optional profile boundary Phase 4 checkpoint"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-28"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0011: Optional profile boundary Phase 4 checkpoint
+  
+  Date: 2026-03-28
+  Status: Accepted
+  
+  The repository now freezes the Phase 4 optional-profile boundary as follows:
+  
+  ### In-scope optional profiles for the Phase 4 checkpoint
+  
+  - front matter / metadata
+  - footnotes
+  - definition lists
+  - math
+  - superscript
+  - subscript
+  - smart punctuation
+  
+  These profiles are now:
+  
+  - named in the renderer family
+  - toggleable through app configuration
+  - propagated through preview and export wrappers
+  - represented in editor command surfaces where a checkpoint UX exists
+  - covered by executable package-level evidence
+  
+  ### Explicitly out-of-scope optional profiles for the Phase 4 checkpoint
+  
+  - citations
+  - markdown-in-html
+  
+  These remain named and toggleable, but they are **not** part of the certified optional-profile boundary in this checkpoint.
+  
+  Reasons:
+  
+  - citations still lack bibliography resolution
+  - markdown-in-html depends on trusted HTML policy and remains experimental in this checkpoint
+  
+  ## Context
+  
+  The Phase 0 target freeze named a set of optional Markdown profiles that could be claimed only if they were explicitly named, toggleable, and fully tested.
+  
+  By the end of the Phase 3 checkpoint, the repository had executable CommonMark-core and default-GFM lanes, but optional-profile support was still not formally closed.
+  
+  ## Implementation Notes
+  
+  The Phase 4 checkpoint adds:
+  
+  - a reusable optional-profile registry in the renderer core
+  - app-level settings and persistence for profile toggles and trusted HTML behavior
+  - profile-aware preview/export routing
+  - warnings when experimental profiles or trusted-HTML-dependent profiles affect preview/export behavior
+  
+  ## Non Decisions
+  
+  This ADR does **not** close:
+  
+  - full frozen-target CommonMark/GFM corpus closure
+  - full UIX parity closure for the client app
+  - Git/settings, restore/import, theme exposure, language selection, or extension-settings closure
+  - bibliography resolution for citations
+  - final trusted HTML certification policy for markdown-in-html

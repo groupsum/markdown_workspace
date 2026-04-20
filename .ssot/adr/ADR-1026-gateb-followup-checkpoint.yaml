@@ -1,0 +1,47 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1026"
+number: 1026
+slug: "gateb-followup-checkpoint"
+title: "ADR-0026: Gate B certification-closure continuation (Phase 19 checkpoint)"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-30"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0026: Gate B certification-closure continuation (Phase 19 checkpoint)
+  
+  Date: 2026-03-30
+  Status: accepted for the current checkpoint zip
+  
+  This checkpoint continues Gate B by pushing the official CommonMark and GFM corpus lanes forward again while leaving the non-parser blocked lanes explicitly blocked rather than implicitly ignored.
+  
+  The repository now records:
+  
+  - CommonMark official: `434/652` passing
+  - GFM official: `444/672` passing
+  - optional-profile lane: `8/8` passing
+  
+  The browser matrix, browser-driven visual regression, and full release-set packed tarball install lanes remain blocked and are carried forward as blocked-state reports.
+  
+  ## Context
+  
+  Gate B remains the real final-closure path for certification from RC artifacts.
+  
+  After Phase 18, the blocked certification items were still:
+  
+  - official CommonMark corpus lane
+  - official GFM corpus lane
+  - browser matrix
+  - browser-driven visual regression
+  - full release-set packed tarball install
+  - the hard markdown closure rule derived from the official corpus lanes
+  
+  The certify-first policy remains unchanged: publication is still outside the certification gate and belongs to the later promotion gate.

@@ -1,0 +1,39 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1008"
+number: 1008
+slug: "release-trains"
+title: "ADR-0008: release-train groups and compatibility baselines"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Adopt the current v2 monorepo as the permanent release foundation for the certification program and freeze:"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0008: release-train groups and compatibility baselines
+  
+  - Status: Accepted
+  - Date: 2026-03-27
+  
+  Adopt the current v2 monorepo as the permanent release foundation for the certification program and freeze:
+  
+  - the release groups for contracts, renderer, editor, shared primitives, extensions, apps, and examples
+  - owner lanes for every package
+  - the next version line for the current inspected package state
+  - linked Changesets groups for renderer, editor, shared `i18n`/`ui-tokens`, and the extension runtime family
+  - compatibility anchors based on manifest schema, host API, runtime API, theme contract, Node/npm, React peers, and the Phase 0 Markdown target
+  - mandatory packed tarball install validation as a release gate
+  
+  Actual version bumps remain deferred until later implementation and conformance closures are green.
+  
+  ## Context
+  
+  The repository now has a frozen Markdown target and a frozen certification boundary, but it still needs a stable release train and compatibility policy to carry the later conformance phases.
+  
+  Without a frozen release grouping model, package families could drift independently, contract baselines could move accidentally, and application promotion could become disconnected from the reusable package evidence.

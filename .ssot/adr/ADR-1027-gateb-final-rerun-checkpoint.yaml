@@ -1,0 +1,47 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1027"
+number: 1027
+slug: "gateb-final-rerun-checkpoint"
+title: "ADR-0027: Gate B certification-closure rerun (Phase 20 checkpoint)"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-31"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0027: Gate B certification-closure rerun (Phase 20 checkpoint)
+  
+  Date: 2026-03-31
+  Status: accepted for the current checkpoint zip
+  
+  This checkpoint reruns the current closure evidence from the existing RC.1 line and records which blocked lanes can now be honestly moved to green in the current environment.
+  
+  The repository now records:
+  
+  - CommonMark official: `434/652` passing
+  - GFM official: `444/672` passing
+  - optional-profile lane: `8/8` passing
+  - browser-driven visual regression: green at `12/12` Chromium screenshot-diff checks
+  - full release-set packed tarball install: green with `17` tarballs validated together
+  
+  The full browser matrix remains blocked and the official CommonMark/GFM lanes remain blocked.
+  
+  ## Context
+  
+  Gate B remains the real final-closure path for certification from RC artifacts.
+  
+  After Phase 19, the blocked certification items were still:
+  
+  - official CommonMark corpus lane
+  - official GFM corpus lane
+  - browser matrix
+  - browser-driven visual regression
+  - full release-set packed tarball install
+  - the hard markdown closure rule derived from the official corpus lanes

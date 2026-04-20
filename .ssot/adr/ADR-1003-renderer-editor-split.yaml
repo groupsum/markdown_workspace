@@ -1,0 +1,32 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1003"
+number: 1003
+slug: "renderer-editor-split"
+title: "ADR-0003: renderer/editor package split"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Create separate package families for:"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0003: renderer/editor package split
+  
+  - Status: Accepted
+  - Date: 2026-03-20
+  
+  Create separate package families for:
+  - markdown renderer
+  - markdown editor
+  
+  Do not combine them into a single monolithic package.
+  
+  ## Context
+  
+  The current repository duplicates markdown rendering and embeds editing behavior directly in the client.

@@ -1,0 +1,70 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1023"
+number: 1023
+slug: "certification-gate-checkpoint"
+title: "ADR-0023 — Certification before promotion (Phase 16 checkpoint)"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-30"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0023 â€” Certification before promotion (Phase 16 checkpoint)
+  
+  Date: 2026-03-30
+  Status: accepted for the current checkpoint zip
+  
+  The repository now splits the endgame into two distinct gates.
+  
+  ### Gate A â€” Certification gate
+  
+  The certification gate is the only gate that controls whether the repository may claim that it is certified.
+  
+  The certification gate requires:
+  
+  - all strict conformance, parity, package-boundary, and evidence lanes green from RC artifacts;
+  - the final claim language frozen and narrow;
+  - the hard closure rules green;
+  - no blocked strict-conformance evidence remaining inside the frozen certification boundary.
+  
+  ### Gate B â€” Promotion gate
+  
+  The promotion gate is the release execution gate.
+  
+  The promotion gate covers:
+  
+  - publish from validated RC artifacts
+  - validate from published artifacts
+  - Git tag creation
+  - GitHub release creation
+  - live support window on published artifacts
+  
+  These remain real release requirements, but they no longer block the statement â€œthe repository is certified.â€
+  
+  ## Context
+  
+  Up through Phase 15, the repository still treated publication and live post-release activity as part of the minimum closure checklist that blocked the final success claim.
+  
+  That model is incompatible with the repository owner's explicit rule for final closure:
+  
+  - first certify from RC artifacts;
+  - only then publish, tag, release, and open the live support window.
+  
+  The repository therefore needed a formal policy correction before final closure could proceed honestly.
+  
+  ## Claim Language
+  
+  The final claim language is frozen as:
+  
+  - repository-internal certifiably fully featured
+  - repository-internal certifiably compliant
+  - externally frozen CommonMark/GFM markdown target conformance for the declared profile set
+  
+  No broader standards language may be used unless the evidence actually supports it.

@@ -1,0 +1,29 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1004"
+number: 1004
+slug: "theme-contract"
+title: "ADR-0004: theme token and class contract"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define a formal token and semantic class contract for renderer/editor/extension packages."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0004: theme token and class contract
+  
+  - Status: Accepted
+  - Date: 2026-03-20
+  
+  Define a formal token and semantic class contract for renderer/editor/extension packages.
+  Packages must target the contract rather than importing app-local stylesheets.
+  
+  ## Context
+  
+  The current client already has a CSS variable and markdown class naming system, but it is implicit and app-local.

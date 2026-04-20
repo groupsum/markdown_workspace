@@ -1,0 +1,60 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1010"
+number: 1010
+slug: "gfm-checkpoint"
+title: "ADR-0010 — default GFM profile Phase 3 checkpoint"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-27"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0010 â€” default GFM profile Phase 3 checkpoint
+  
+  Date: 2026-03-27
+  Status: Accepted
+  
+  For this Phase 3 checkpoint the repository now treats **`gfm-default`** as an executable, named, default rendering profile layered on top of the Phase 2 CommonMark-core renderer baseline.
+  
+  This checkpoint adopts the following concrete decisions:
+  
+  - `@mdwrk/markdown-renderer-core` hardens default-profile parsing and rendering for GFM tables, task list items, strikethrough, and literal autolinks
+  - `@mdwrk/markdown-renderer-react` renders through the core engine with default `profile="gfm-default"` behavior
+  - the repository adds a named executable GFM test lane through `npm run test:renderer:gfm`
+  - the client markdown preview wrapper and HTML export adapter explicitly select `gfm-default`
+  - the editor working tree adds a task-list command and toolbar/example wiring as the first concrete authoring surface aligned with the default GFM profile
+  
+  ## Context
+  
+  The Phase 0 certification freeze established that the product default is not bare CommonMark. It is **CommonMark 0.31.2 plus the default GFM profile**.
+  
+  After the Phase 2 checkpoint, the renderer family had executable CommonMark-core evidence, but the repository still lacked an explicit default-profile closure lane covering:
+  
+  - tables
+  - task list items
+  - strikethrough
+  - autolink literals
+  
+  The client wrappers and examples also did not yet make that default profile explicit end-to-end.
+  
+  ## Why This Is The Right Checkpoint Decision
+  
+  This checkpoint makes the frozen default profile explicit in code, not only in documentation.
+  
+  It also creates executable evidence that the current checkpoint handles the most important GFM default-profile deltas above CommonMark core, while staying inside the dependency surface available in the provided zip.
+  
+  ## Follow On Work
+  
+  The next closure steps after this checkpoint remain:
+  
+  - full official GFM corpus integration where feasible within the frozen target
+  - broader editor-authoring parity closures from the v1â†’v2 gap ledger
+  - package/app/browser release-candidate evidence depth
+  - optional-profile closures beyond the default GFM profile

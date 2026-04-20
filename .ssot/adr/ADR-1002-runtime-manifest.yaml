@@ -1,0 +1,33 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1002"
+number: 1002
+slug: "runtime-manifest"
+title: "ADR-0002: extension runtime and manifest"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Adopt a hosted extension runtime with:"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0002: extension runtime and manifest
+  
+  - Status: Accepted
+  - Date: 2026-03-20
+  
+  Adopt a hosted extension runtime with:
+  - a formal extension manifest contract
+  - a stable host API
+  - lifecycle-driven activation/deactivation
+  - contribution registries for commands, views, rail entries, and settings
+  - bundled first-party extensions plus future external installable extensions
+  
+  ## Context
+  
+  The client must support installable, configurable, localizable extensions with services, components, views, hooks, icons, and action-rail integration.

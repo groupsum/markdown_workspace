@@ -1,0 +1,67 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1014"
+number: 1014
+slug: "shell-parity-checkpoint"
+title: "ADR-0014: Shell parity Phase 7 checkpoint"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Date: 2026-03-28"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0014: Shell parity Phase 7 checkpoint
+  
+  Date: 2026-03-28
+  Status: Accepted
+  
+  We restore the missing v1 shell affordances inside the v2 shell architecture rather than reintroducing the v1 shell implementation wholesale.
+  
+  The accepted implementation decisions for this checkpoint are:
+  
+  1. Keep the registry-driven shell, but restore v1 parity at the shell surface.
+  2. Restore status-bar parity by surfacing:
+     - runtime shell label (`BROWSER` vs `PWA`)
+     - shell version
+     - build identifier
+     - update-ready badge
+  3. Restore Import Markdown as a first-class core command and action-rail item.
+  4. Bridge the import action through a hidden shell file input so the command surface remains decoupled from DOM file-picking mechanics.
+  5. Restore localized action-rail navigation semantics by letting the ActionRail host subscribe to locale changes and recompute the rail `aria-label`.
+  6. Restore v1 split-view parity through a reusable policy helper rather than hard-coding the rule back into the editor pane.
+  7. Restore repository-refresh event dispatch at the cloud-sync command surface, even though broader Git PAT/settings parity remains outside this phase.
+  
+  ## Context
+  
+  The v2 shell architecture is stronger than v1 because it is registry-driven and extension-ready, but the v1â†’v2 parity review identified several concrete shell regressions that still blocked any honest â€œfully featured UIXâ€ claim.
+  
+  The concrete regressions for this phase were:
+  
+  - missing status-bar runtime shell label
+  - missing status-bar build identifier
+  - missing status-bar update-ready badge
+  - missing Import Markdown rail action
+  - missing localized action-rail navigation `aria-label`
+  - stricter-than-v1 split-view gating on mobile landscape
+  
+  The repository also needed to preserve the v2 improvements rather than regress them:
+  
+  - registry-driven shell composition
+  - extension-injected rail items
+  - reusable renderer/editor package split
+  - top update banner and general shell modernization
+  
+  ## Evidence
+  
+  This checkpoint is backed by:
+  
+  - `node apps/client/tests/phase7-shell-parity.mjs --json`
+  - `node tools/conformance/generate-phase7-shell-checkpoint.mjs`
+  - `artifacts/conformance/latest/phase-7-shell-parity-checkpoint.json`
+  - `artifacts/conformance/latest/phase-7-shell-parity-results.json`

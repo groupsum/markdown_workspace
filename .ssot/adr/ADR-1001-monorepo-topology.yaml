@@ -1,0 +1,34 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1001"
+number: 1001
+slug: "monorepo-topology"
+title: "ADR-0001: monorepo and package topology"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Adopt a root npm workspace with the following top-level structure:"
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0001: monorepo and package topology
+  
+  - Status: Accepted
+  - Date: 2026-03-20
+  
+  Adopt a root npm workspace with the following top-level structure:
+  - `apps/`
+  - `packages/`
+  - `docs/`
+  - `examples/`
+  
+  Adopt the npm scope `@mdwrk/*` for new packages.
+  
+  ## Context
+  
+  The repository currently has two top-level app roots and no formal workspace package topology. This blocks sustainable package growth, extension packaging, and CI/CD scale.

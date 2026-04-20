@@ -1,0 +1,29 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1006"
+number: 1006
+slug: "release-conformance"
+title: "ADR-0006: release, versioning, and conformance"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Adopt SemVer for publishable packages and define repository-internal conformance criteria for apps, reusable packages, and extensions."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  ## Decision
+  
+  # ADR-0006: release, versioning, and conformance
+  
+  - Status: Accepted
+  - Date: 2026-03-20
+  
+  Adopt SemVer for publishable packages and define repository-internal conformance criteria for apps, reusable packages, and extensions.
+  A package is only certifiably fully featured when its implementation and evidence satisfy the documented criteria.
+  
+  ## Context
+  
+  A multi-package repository requires a shared versioning and certification model to make releases trustworthy.
