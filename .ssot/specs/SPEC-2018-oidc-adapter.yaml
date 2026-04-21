@@ -1,0 +1,32 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2018"
+number: 2018
+slug: "oidc-adapter"
+title: "OIDC Adapter Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define the shared adapter contract used by MdWrk OIDC integrations."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # OIDC Adapter Specification
+  
+  ## Purpose
+  
+  Define the shared adapter contract used by MdWrk OIDC integrations.
+  
+  ## Requirements
+  
+  - Each OIDC integration must have one targetable SSOT feature.
+  - The shared OIDC adapter must isolate provider configuration, token acquisition, refresh, revocation, and failure handling.
+  - Git OIDC and agent-extension OIDC must use separate scopes and storage namespaces.
+  - OIDC tokens must not be shared across integrations unless a future ADR explicitly permits it.
+  - The adapter must fail closed when configuration, redirect, token, or provider validation fails.
+  - UI surfaces must report auth state without exposing tokens or provider secrets.
+  - Persistence behavior must comply with the frontend state persistence specification.
+spec_kind: "normative"

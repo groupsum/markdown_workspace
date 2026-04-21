@@ -1,0 +1,30 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2004"
+number: 2004
+slug: "commonmark-conformance"
+title: "CommonMark Conformance Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define the CommonMark conformance requirements for MdWrk parser, renderer, preview, and export surfaces."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # CommonMark Conformance Specification
+  
+  ## Purpose
+  
+  Define the CommonMark conformance requirements for MdWrk parser, renderer, preview, and export surfaces.
+  
+  ## Requirements
+  
+  - CommonMark 0.31.2 remains the frozen normative core.
+  - CommonMark tests must be distinguishable from GFM and custom-profile tests.
+  - Failures must identify whether they are parser, renderer, preview, export, or adapter failures.
+  - CommonMark behavior must remain available when GFM and MdWrk additive profiles are disabled.
+  - CommonMark certification claims require evidence from the official corpus lane or an explicitly scoped substitute approved by ADR.
+spec_kind: "normative"

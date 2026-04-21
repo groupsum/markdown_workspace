@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1033"
+number: 1033
+slug: "mdwrk-checklist-traceability"
+title: "ADR-0033: MdWrk checklist-to-feature traceability"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk checklist items shall be represented as SSOT features linked to the SPEC that governs their expected behavior. Existing broad features may remain, but actionable checklist work must have stable targetable feature IDs."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1033: MdWrk checklist-to-feature traceability
+  
+  ## Decision
+  
+  MdWrk checklist items shall be represented as SSOT features linked to the SPEC that governs their expected behavior. Existing broad features may remain, but actionable checklist work must have stable targetable feature IDs.
+  
+  ## Scope
+  
+  - Mobile UIX, editor behavior, line count alignment, status/header bars, themes, action rail mappings, file/Git operations, MDWRK desktop/shell work, and documentation work.
+  - Features may be backlog, current, partial, implemented, or out of bounds.
+  
+  ## Consequences
+  
+  - Checklists can be evaluated through SSOT feature planning instead of free-text notes.
+  - Future test and evidence links can attach directly to the target feature.

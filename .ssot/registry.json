@@ -161,7 +161,12 @@
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2007",
+        "spc:2008",
+        "spc:2010",
+        "spc:2016"
+      ]
     },
     {
       "id": "feat:client-action-rail",
@@ -187,7 +192,9 @@
         "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2007"
+      ]
     },
     {
       "id": "feat:client-commands",
@@ -213,7 +220,9 @@
         "tst:apps-client-src-features-commands-commandregistry.test.ts"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2007"
+      ]
     },
     {
       "id": "feat:client-common",
@@ -311,7 +320,9 @@
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2010"
+      ]
     },
     {
       "id": "feat:client-i18n",
@@ -338,7 +349,9 @@
         "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2014"
+      ]
     },
     {
       "id": "feat:client-layout",
@@ -388,7 +401,10 @@
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005"
+      ]
     },
     {
       "id": "feat:client-notifications",
@@ -463,7 +479,10 @@
         "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2008",
+        "spc:2007"
+      ]
     },
     {
       "id": "feat:client-views",
@@ -489,7 +508,2074 @@
         "tst:apps-client-src-features-views-viewregistry.test.ts"
       ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2007"
+      ]
+    },
+    {
+      "id": "feat:mdwrk-custom-parser-profile",
+      "title": "CFM custom parser profile",
+      "description": "Define and implement the CFM additive custom parser behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:custom-flavored-markdown-profile"
+      ]
+    },
+    {
+      "id": "feat:mdwrk-custom-previewer-profiles",
+      "title": "CFM custom previewer profiles",
+      "description": "Define CFM additive custom previewer behavior layered above CommonMark and GFM.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:custom-flavored-markdown-profile"
+      ]
+    },
+    {
+      "id": "feat:commonmark-conformance-profile",
+      "title": "CommonMark Markdown profile",
+      "description": "Treat CommonMark as its own targetable Markdown profile and conformance baseline for parser, renderer, preview, and export.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2004"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:custom-flavored-markdown-profile",
+      "title": "CFM Markdown profile",
+      "description": "Treat Custom Flavored Markdown as the MdWrk additive Markdown profile above CommonMark and GFM.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:gfm-profile",
+        "feat:commonmark-conformance-profile"
+      ]
+    },
+    {
+      "id": "feat:mdwrk-desktop-app-shell",
+      "title": "MdWrk desktop app shell",
+      "description": "Desktop app shell boundary, packaging, version, and host behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-folder-mounting",
+      "title": "Desktop folder mounting and filesystem loading",
+      "description": "Mount folders and load content through desktop filesystem-backed APIs.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-tabs",
+      "title": "Desktop app tabs",
+      "description": "Fix and govern tabs in the desktop app.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-runtime-extension-default",
+      "title": "Desktop runtime extension production defaults",
+      "description": "Ensure runtime extension defaults are development-only unless production explicitly enables them.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-platform",
+      "title": "Extension platform lifecycle",
+      "description": "Shared extension creation, compatibility, options, publishing, install, import, disable, remove, and runtime lifecycle.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager",
+      "title": "Extension Manager extension",
+      "description": "Extension Manager extension feature coverage.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-gemini-agent",
+      "title": "Gemini Agent extension",
+      "description": "Gemini Agent extension, including agent auth boundaries.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2012",
+        "spc:2009",
+        "spc:2018"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-theme-studio",
+      "title": "Theme Studio extension",
+      "description": "Theme Studio extension and theme-token compatibility.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2013",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-language-pack-studio",
+      "title": "Language Pack Studio extension",
+      "description": "Language Pack Studio extension and language-pack compatibility.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2014"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-catalog-hello",
+      "title": "Catalog Hello extension",
+      "description": "Catalog Hello example extension and smoke coverage.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2015"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-authoring-publishing",
+      "title": "Extension authoring and publishing",
+      "description": "Author, package, publish, and compatibility-check extensions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2017"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-install-import-remove-disable",
+      "title": "Extension install import remove disable",
+      "description": "Install, import, remove, and disable extension workflows.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-keyboard-viewport",
+      "title": "Mobile keyboard viewport lift",
+      "description": "Raise footer and page with the visual keyboard on mobile UIX.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-fixed-shell-scrollable-panes",
+      "title": "Mobile fixed shell with scrollable panes",
+      "description": "Keep bars and panes in place while panes own vertical scrolling on mobile UIX.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-file-explorer-rail-full-width",
+      "title": "Mobile file explorer rail full width",
+      "description": "Make the file explorer expandable rail full width on mobile using shared CSS tokens.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-git-rail-full-width",
+      "title": "Mobile Git rail full width",
+      "description": "Keep Git ops expandable rail full width on mobile using shared CSS tokens.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2009"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-action-rail-portrait-order",
+      "title": "Mobile action rail portrait order",
+      "description": "Reverse the action rail on mobile portrait using a theme-stable CSS token.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-filetabs-portrait",
+      "title": "Mobile portrait file tabs",
+      "description": "Fix file tabs on mobile UIX portrait.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-statusbar-landscape-hidden",
+      "title": "Mobile landscape status bar hidden",
+      "description": "Hide the status bar on mobile UIX landscape.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-status-footer-portrait-hidden",
+      "title": "Mobile portrait status footer hidden",
+      "description": "Hide the status footer bar on mobile UIX portrait.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-keyboard-mappings-tab-hidden",
+      "title": "Mobile keyboard mappings tab hidden",
+      "description": "Hide keyboard mappings modal view tab on mobile UIX.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-gesture-mappings-tab",
+      "title": "Mobile gesture mappings tab",
+      "description": "Show gesture mappings view tab on mobile UIX.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mobile-visual-keyboard-half-screen",
+      "title": "Mobile visual keyboard half-screen",
+      "description": "Support MdWrk half-screen layout when mobile visual keyboard is active.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2016"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-list-continuation",
+      "title": "Editor list continuation typeahead",
+      "description": "Continue ul and ol list items on Enter and terminate after an empty second Enter.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2003"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-checkbox-focus-preservation",
+      "title": "Editor checkbox focus preservation",
+      "description": "Maintain current line and character focus when creating a new checkbox.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-underline-policy",
+      "title": "Editor underline policy",
+      "description": "Fix underline behavior while preserving standard Markdown semantics unless custom profile enables it.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-text-wrap",
+      "title": "Editor text wrap",
+      "description": "Provide MdWrk editor text wrap behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-line-count-bar-toggle",
+      "title": "Editor line count bar toggle",
+      "description": "Option to turn off line count bars.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-line-count-scroll-alignment",
+      "title": "Editor line count scroll alignment",
+      "description": "Keep line count aligned with editor when y-scrolled.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:statusbar-hide-idb-persistent",
+      "title": "Hide idb persistent status text",
+      "description": "Remove idb persistent from the status bar footer.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:statusbar-autosave-saved-state",
+      "title": "Autosave without saved-state footer",
+      "description": "Remove saved state from status footer and autosave everything.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:statusbar-separators",
+      "title": "Status bar separators",
+      "description": "Fix separators on the status bar.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:pwa-install-button-state",
+      "title": "PWA install button installed state",
+      "description": "Remove install button after PWA is installed.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:header-settings-icon-spacing",
+      "title": "Header settings icon spacing",
+      "description": "Add small top and right margin to the settings icon.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:pwa-version-system-config",
+      "title": "PWA version in system config",
+      "description": "Show PWA version in system configuration.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:theme-default-anodized-billet",
+      "title": "Default Anodized Billet theme",
+      "description": "Make Anodized Billet the default theme.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2013"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:action-rail-icon-mappings",
+      "title": "Action rail icon mappings settings",
+      "description": "Add settings for action rail icon mappings.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:markdown-file-import",
+      "title": "Markdown file import",
+      "description": "Import markdown files into the workspace.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2003"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-view-toolbar-scroll",
+      "title": "MdWrk view toolbar y-scroll",
+      "description": "Add y-scroll behavior on the view toolbar.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-shell-fixed-fit-screen",
+      "title": "MdWrk shell fixed fit-to-screen",
+      "description": "Fix app header and status bar fixed positioning and screen fit.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:frontend-settings-persistence",
+      "title": "Frontend settings persistence",
+      "description": "Persist user settings and configuration across browser, PWA, desktop, and extension scopes.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-persistence",
+      "title": "Workspace persistence",
+      "description": "Persist workspace state, imported files, mounted folders, and tabs according to shell backend.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:indexeddb-vs-filesystem-persistence",
+      "title": "IndexedDB versus filesystem persistence",
+      "description": "Separate browser/PWA IndexedDB state from desktop filesystem-backed persistence.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:cloud-persistence-out-of-bounds",
+      "title": "Cloud persistence out of bounds",
+      "description": "Keep cloud persistence explicitly out of bounds.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "out_of_bounds",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:git-ops-persistence",
+      "title": "Git operations persistence",
+      "description": "Persist Git operation state independently from workspace content.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2009"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:git-ops-oidc",
+      "title": "Git operations OIDC",
+      "description": "Scope OIDC tokens and auth state to Git operations.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2009",
+        "spc:2018"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:oidc-adapter"
+      ]
+    },
+    {
+      "id": "feat:agent-extension-oidc",
+      "title": "Agent extension OIDC",
+      "description": "Scope OIDC tokens and auth state to agent extensions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2009",
+        "spc:2012",
+        "spc:2018"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:oidc-adapter"
+      ]
+    },
+    {
+      "id": "feat:docs-text-wrap-previewer",
+      "title": "Document text wrap previewer feature",
+      "description": "Document MdWrk text wrap previewer behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2016"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-checkbox-autocomplete",
+      "title": "Document checkbox autocomplete feature",
+      "description": "Document MdWrk checkbox autocomplete behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2016"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-view-toolbar",
+      "title": "Document view toolbar features",
+      "description": "Document MdWrk view toolbar behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:gfm-profile",
+      "title": "GFM Markdown profile",
+      "description": "Treat GitHub Flavored Markdown as its own targetable Markdown profile layered on CommonMark.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": [
+        "feat:commonmark-conformance-profile"
+      ]
+    },
+    {
+      "id": "feat:oidc-adapter",
+      "title": "OIDC adapter",
+      "description": "Shared OIDC adapter for provider configuration, token lifecycle, auth state, and fail-closed behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2018",
+        "spc:2009",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:ssot-registry-model-governance",
+      "title": "SSOT registry model governance",
+      "description": "Track repo-local expectations for registry structure, schema upgrades, and validation.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0600",
+        "spc:0607",
+        "spc:2002"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:ssot-graph-export-governance",
+      "title": "SSOT graph export governance",
+      "description": "Generate and validate graph exports for ADR, SPEC, and feature relationships.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0602",
+        "spc:0606"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:ssot-release-snapshot-reports",
+      "title": "SSOT release snapshot reports",
+      "description": "Produce release, boundary, and certification snapshot reports.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0606",
+        "spc:0608"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:repo-governance-validation",
+      "title": "Repository governance validation",
+      "description": "Track root clutter, doc pointers, generated artifact guards, changeset rules, and claim-language lint.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0607",
+        "spc:2002"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:spec-coverage-index",
+      "title": "SPEC coverage index",
+      "description": "Track whether every active product area has ADR, SPEC, and feature coverage.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2001",
+        "spc:2002",
+        "spc:0610"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:profile-boundary-resolution",
+      "title": "Profile boundary resolution",
+      "description": "Define SSOT profile bundles for CM, GFM, CFM, CFM parser behavior, and CFM previewer behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0614",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:markdown-profile-evidence-lanes",
+      "title": "Markdown profile evidence lanes",
+      "description": "Create evidence lanes for CM, GFM, CFM, parser behavior, and previewer behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0608",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-export-profile-disclosure",
+      "title": "Preview export profile disclosure",
+      "description": "Ensure preview and export report active parser and previewer profiles.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:markdown-profile-settings-persistence",
+      "title": "Markdown profile settings persistence",
+      "description": "Persist profile selections across browser, PWA, and desktop shells.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-packaging-versioning",
+      "title": "Desktop packaging and versioning",
+      "description": "Track desktop packaging, app version visibility, and update metadata.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-preload-host-api",
+      "title": "Desktop preload host API",
+      "description": "Govern preload and host APIs exposed to the desktop shell.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-window-state-persistence",
+      "title": "Desktop window state persistence",
+      "description": "Persist desktop window, tab, and workspace shell state.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-filesystem-permissions",
+      "title": "Desktop filesystem permissions",
+      "description": "Govern mounted folder permissions and failure states.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-breakpoint-token-contract",
+      "title": "UIX breakpoint token contract",
+      "description": "Define shared CSS breakpoint and layout tokens.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-command-palette-responsive",
+      "title": "UIX command palette responsive behavior",
+      "description": "Govern command palette behavior across devices and orientations.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-extension-view-modes",
+      "title": "UIX extension view modes",
+      "description": "Define extension view modes, compact states, and pane placement.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-iconized-compaction",
+      "title": "UIX iconized compaction",
+      "description": "Govern iconized controls and compact mobile and desktop UI states.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:persistence-diagnostics-mode",
+      "title": "Persistence diagnostics mode",
+      "description": "Show storage backend details only in diagnostics, not normal footer UI.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-open-tabs-persistence",
+      "title": "Workspace open tabs persistence",
+      "description": "Persist open tabs distinctly from workspace files.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-settings-namespace",
+      "title": "Extension settings namespace",
+      "description": "Namespace extension settings by extension ID and compatibility version.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:oidc-token-boundary-audit",
+      "title": "OIDC token boundary audit",
+      "description": "Verify Git OIDC and agent OIDC scopes stay separate.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2009",
+        "spc:2018"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manifest-compatibility-gate",
+      "title": "Extension manifest compatibility gate",
+      "description": "Validate manifest compatibility before activation.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-capability-permissions",
+      "title": "Extension capability permissions",
+      "description": "Define and enforce extension capability permissions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-settings-schema-rendering",
+      "title": "Extension settings schema rendering",
+      "description": "Render extension options from schemas consistently.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-runtime-isolation",
+      "title": "Extension runtime isolation",
+      "description": "Fail closed on runtime errors without breaking other extensions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-retention-policy",
+      "title": "Extension retention policy",
+      "description": "Define settings and data retention on disable versus remove.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2008"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-markdown-profile-architecture",
+      "title": "Document Markdown profile architecture",
+      "description": "Document CM, GFM, CFM, CFM parser behavior, and CFM previewer behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-desktop-app-boundary",
+      "title": "Document desktop app boundary",
+      "description": "Document desktop-specific behavior and persistence.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2006"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-uix-responsive-contract",
+      "title": "Document UIX responsive contract",
+      "description": "Document UIX layout tokens, breakpoints, and device modes.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2007"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:docs-extension-authoring-guide",
+      "title": "Document extension authoring guide",
+      "description": "Document extension creation, compatibility, publishing, install, import, remove, and disable flows.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2010"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
     }
   ],
   "tests": [
@@ -2526,6 +4612,102 @@
       "supersedes": [],
       "superseded_by": [],
       "status_notes": []
+    },
+    {
+      "id": "adr:1028",
+      "number": 1028,
+      "slug": "mdwrk-parser-preview-profiles",
+      "title": "ADR-0028: MdWrk custom parser and preview profiles",
+      "path": ".ssot/adr/ADR-1028-mdwrk-parser-preview-profiles.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "156657904014c6462b001d372561d4835aa11929ff441695fda73763ec8f7bf9",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1029",
+      "number": 1029,
+      "slug": "mdwrk-desktop-app",
+      "title": "ADR-0029: MdWrk desktop app boundary",
+      "path": ".ssot/adr/ADR-1029-mdwrk-desktop-app.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "b161295e896fd99d277e9a0c6d6e1c4ffdad0cbc1d2a7f8ee407a82baba68be3",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1030",
+      "number": 1030,
+      "slug": "mdwrk-extension-platform",
+      "title": "ADR-0030: MdWrk extension platform and extension contracts",
+      "path": ".ssot/adr/ADR-1030-mdwrk-extension-platform.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "661a6a492425bac3e9c802ccccfcecd97ee8743d98d6ce56b171a34ca92c2180",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1031",
+      "number": 1031,
+      "slug": "mdwrk-uix-responsive-design",
+      "title": "ADR-0031: MdWrk UIX responsive design boundary",
+      "path": ".ssot/adr/ADR-1031-mdwrk-uix-responsive-design.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "7e343b13bc0ccc577a176df0789c3713132063fb4602e97b52c5fed95c81e7c7",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1032",
+      "number": 1032,
+      "slug": "mdwrk-frontend-state-persistence",
+      "title": "ADR-0032: MdWrk frontend state and persistence boundaries",
+      "path": ".ssot/adr/ADR-1032-mdwrk-frontend-state-persistence.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "6e111673addab3dbc490c314e3160033616ce5441a9bd18f3ffe04854c292359",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1033",
+      "number": 1033,
+      "slug": "mdwrk-checklist-traceability",
+      "title": "ADR-0033: MdWrk checklist-to-feature traceability",
+      "path": ".ssot/adr/ADR-1033-mdwrk-checklist-traceability.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "390345cfb1534e92d795847ecc2e11b8ddf75a496c7288401c6320df6a8ca825",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
     }
   ],
   "specs": [
@@ -2817,6 +4999,278 @@
       "supersedes": [],
       "superseded_by": [],
       "status_notes": []
+    },
+    {
+      "id": "spc:2003",
+      "number": 2003,
+      "slug": "mdwrk-markdown-profile-architecture",
+      "title": "MdWrk Markdown Profile Architecture Specification",
+      "path": ".ssot/specs/SPEC-2003-mdwrk-markdown-profile-architecture.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "56467b127fa37cec9e045d0694d05526693b709f7d1c5582dc68d81ba4399ec7",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2004",
+      "number": 2004,
+      "slug": "commonmark-conformance",
+      "title": "CommonMark Conformance Specification",
+      "path": ".ssot/specs/SPEC-2004-commonmark-conformance.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "5ad17283bf9e9751debb042db9ca806cf2fbcd5710d9ee357fd11a24a6b13b7c",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2005",
+      "number": 2005,
+      "slug": "custom-flavored-markdown",
+      "title": "Custom Flavored Markdown Specification",
+      "path": ".ssot/specs/SPEC-2005-custom-flavored-markdown.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "f327ae73e1891b515403464e9b991fd779b246e071c39acb12ddc505487dc573",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2006",
+      "number": 2006,
+      "slug": "mdwrk-desktop-app",
+      "title": "MdWrk Desktop App Specification",
+      "path": ".ssot/specs/SPEC-2006-mdwrk-desktop-app.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "a6d08f91e28cd895949a2f9dc7422f08e1f82516be99bd44c656b67938e51e01",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2007",
+      "number": 2007,
+      "slug": "mdwrk-uix-responsive-design",
+      "title": "MdWrk UIX Responsive Design Specification",
+      "path": ".ssot/specs/SPEC-2007-mdwrk-uix-responsive-design.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "8f87d28ef26f0b24e83b13e468b051b01241efe03f596166db0e0357babfac52",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2008",
+      "number": 2008,
+      "slug": "mdwrk-frontend-state-persistence",
+      "title": "MdWrk Frontend State Persistence Specification",
+      "path": ".ssot/specs/SPEC-2008-mdwrk-frontend-state-persistence.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "2e1197af9a6bb81df1ac304b3eacb75a38bdfcd5986087e0e63e5c65be54be95",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2009",
+      "number": 2009,
+      "slug": "mdwrk-git-oidc-agent-auth",
+      "title": "MdWrk Git, OIDC, and Agent Auth Specification",
+      "path": ".ssot/specs/SPEC-2009-mdwrk-git-oidc-agent-auth.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "54f09ebdc3332fcc86ec588d11d3804af7a6280858a1bbbc5e78e55224ee2f66",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2010",
+      "number": 2010,
+      "slug": "mdwrk-extension-platform",
+      "title": "MdWrk Extension Platform Specification",
+      "path": ".ssot/specs/SPEC-2010-mdwrk-extension-platform.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "4d65a6ce5304f5ff3c35d60ba1ae8e32dfe9e092fedf105a3898afc60d428b15",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2011",
+      "number": 2011,
+      "slug": "extension-manager",
+      "title": "Extension Manager Specification",
+      "path": ".ssot/specs/SPEC-2011-extension-manager.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "f4be2d37bea8826d55e00a2b542559fdc24a00f231879031d1bc9e7483309aa6",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2012",
+      "number": 2012,
+      "slug": "gemini-agent-extension",
+      "title": "Gemini Agent Extension Specification",
+      "path": ".ssot/specs/SPEC-2012-gemini-agent-extension.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "069feb306d32ced640cb3264cadcb0d107b873ccde46a8c902ed251e4d08ff97",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2013",
+      "number": 2013,
+      "slug": "theme-studio-extension",
+      "title": "Theme Studio Extension Specification",
+      "path": ".ssot/specs/SPEC-2013-theme-studio-extension.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "d9daf5e30c6bae97242554308d1d11834f2b3c0df214d27a5f9358d27069475e",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2014",
+      "number": 2014,
+      "slug": "language-pack-studio-extension",
+      "title": "Language Pack Studio Extension Specification",
+      "path": ".ssot/specs/SPEC-2014-language-pack-studio-extension.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "898d0fc6f1789a8e76c59f5ef03d18e368b7d23201bcb471c2d54cda58b44ba1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2015",
+      "number": 2015,
+      "slug": "catalog-hello-extension",
+      "title": "Catalog Hello Extension Specification",
+      "path": ".ssot/specs/SPEC-2015-catalog-hello-extension.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "7e375e0490146bbaa16899829742f38c8710181c4454ec93d517e83fe9cdcc8d",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2016",
+      "number": 2016,
+      "slug": "mdwrk-editor-authoring-behavior",
+      "title": "MdWrk Editor Authoring Behavior Specification",
+      "path": ".ssot/specs/SPEC-2016-mdwrk-editor-authoring-behavior.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "886a1fa01a2ce3b166e0052abab133bc6f39ffc943bad73ca6b94fbe22ed21b5",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
+    },
+    {
+      "id": "spc:2017",
+      "number": 2017,
+      "slug": "mdwrk-documentation",
+      "title": "MdWrk Documentation Specification",
+      "path": ".ssot/specs/SPEC-2017-mdwrk-documentation.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "f57c9633fee7e19eaf2ea0b25f58177ba2b1d611bb834bd62985320f1d74b139",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "operational"
+    },
+    {
+      "id": "spc:2018",
+      "number": 2018,
+      "slug": "oidc-adapter",
+      "title": "OIDC Adapter Specification",
+      "path": ".ssot/specs/SPEC-2018-oidc-adapter.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.10",
+      "content_sha256": "1722f2c40b73a9a81a2ca1d3466f08376413d9bb63344868b17618b5e62b25e7",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative"
     }
   ],
   "profiles": []

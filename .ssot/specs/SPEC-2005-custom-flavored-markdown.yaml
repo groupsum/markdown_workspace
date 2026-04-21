@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2005"
+number: 2005
+slug: "custom-flavored-markdown"
+title: "Custom Flavored Markdown Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define CFM, the Custom Flavored Markdown profile."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Custom Flavored Markdown Specification
+  
+  ## Purpose
+  
+  Define CFM, the Custom Flavored Markdown profile.
+  
+  ## Requirements
+  
+  - CFM is additive to CommonMark and GFM.
+  - CFM behavior must be opt-in unless a future ADR changes the default profile.
+  - CFM syntax and preview affordances must be documented as CFM-specific.
+  - CFM must preserve round-trip behavior for source text unless a transform is explicitly user-invoked.
+  - CFM preview/export must disclose active custom profile behavior.
+  - CFM features require parser, previewer, settings, and evidence coverage before release claims.
+spec_kind: "normative"

@@ -1,0 +1,30 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2012"
+number: 2012
+slug: "gemini-agent-extension"
+title: "Gemini Agent Extension Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define requirements for the Gemini Agent extension."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Gemini Agent Extension Specification
+  
+  ## Purpose
+  
+  Define requirements for the Gemini Agent extension.
+  
+  ## Requirements
+  
+  - The extension must declare agent capabilities through the extension manifest.
+  - Agent OIDC must be scoped to the agent extension.
+  - Prompt, provider, service, settings, and view surfaces must be version-compatible with the host.
+  - The extension must fail closed when required auth or provider configuration is missing.
+  - The extension must respect user settings and disable/remove lifecycle rules.
+spec_kind: "normative"

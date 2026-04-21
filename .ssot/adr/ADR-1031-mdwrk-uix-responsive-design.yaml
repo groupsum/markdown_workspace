@@ -1,0 +1,35 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1031"
+number: 1031
+slug: "mdwrk-uix-responsive-design"
+title: "ADR-0031: MdWrk UIX responsive design boundary"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk UIX shall be governed by explicit responsive, device, orientation, and compaction contracts. Layout behavior must be specified through CSS tokens and stable class contracts rather than one-off component overrides."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1031: MdWrk UIX responsive design boundary
+  
+  ## Decision
+  
+  MdWrk UIX shall be governed by explicit responsive, device, orientation, and compaction contracts. Layout behavior must be specified through CSS tokens and stable class contracts rather than one-off component overrides.
+  
+  ## Scope
+  
+  - Interoperability across browser, PWA, and desktop shells.
+  - Command palettes, panes, extension view modes, action rails, file rails, and status/header bars.
+  - CSS layout class names and tokenized dimensions.
+  - Aspect ratios, view sizes, breakpoints, ultra-wide behavior, portrait and landscape behavior.
+  - Mobile half-screen behavior when the visual keyboard is active.
+  - Iconized and compacted UI states.
+  
+  ## Consequences
+  
+  - Checklist UIX work items become targetable features linked to the responsive UIX SPEC.
+  - Device-specific quirks must be encoded as named requirements and covered by responsive evidence.

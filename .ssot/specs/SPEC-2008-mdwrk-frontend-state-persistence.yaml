@@ -1,0 +1,32 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2008"
+number: 2008
+slug: "mdwrk-frontend-state-persistence"
+title: "MdWrk Frontend State Persistence Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define frontend settings, workspace, shell, Git, and extension persistence rules."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Frontend State Persistence Specification
+  
+  ## Purpose
+  
+  Define frontend settings, workspace, shell, Git, and extension persistence rules.
+  
+  ## Requirements
+  
+  - User settings and configuration must autosave without exposing misleading saved-state footer text.
+  - Browser and PWA persistence may use IndexedDB and web storage, with visible implementation details hidden from status UI unless diagnostic mode is active.
+  - Desktop persistence may use filesystem-backed state.
+  - Workspace persistence must distinguish mounted folders, imported files, open tabs, and transient editor state.
+  - Cloud persistence is out of bounds.
+  - Extension settings must be namespaced by extension ID and version compatibility rules.
+  - Git operation state must be persisted separately from workspace content.
+spec_kind: "normative"

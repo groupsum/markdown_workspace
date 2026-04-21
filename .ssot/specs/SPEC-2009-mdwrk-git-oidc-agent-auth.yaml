@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2009"
+number: 2009
+slug: "mdwrk-git-oidc-agent-auth"
+title: "MdWrk Git, OIDC, and Agent Auth Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define Git operation persistence and authentication boundaries."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Git, OIDC, and Agent Auth Specification
+  
+  ## Purpose
+  
+  Define Git operation persistence and authentication boundaries.
+  
+  ## Requirements
+  
+  - Git operation state must be recoverable after app reload where supported.
+  - Git OIDC tokens must be scoped to Git operations.
+  - Agent extension OIDC tokens must be scoped to the agent extension.
+  - Git and agent auth state must not be shared without explicit user consent and a future ADR.
+  - Auth status must not leak into unrelated UI surfaces.
+  - Extension auth configuration must be disableable and removable with the extension.
+spec_kind: "normative"

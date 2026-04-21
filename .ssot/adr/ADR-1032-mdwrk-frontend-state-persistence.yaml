@@ -1,0 +1,35 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1032"
+number: 1032
+slug: "mdwrk-frontend-state-persistence"
+title: "ADR-0032: MdWrk frontend state and persistence boundaries"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk frontend behavior shall distinguish user settings, workspace state, shell state, Git state, and extension state. Persistence backends must be explicit: browser/PWA persistence uses web storage and IndexedDB policies, desktop persistence may use filesystem-backed state, and cloud persistence is out of bounds."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1032: MdWrk frontend state and persistence boundaries
+  
+  ## Decision
+  
+  MdWrk frontend behavior shall distinguish user settings, workspace state, shell state, Git state, and extension state. Persistence backends must be explicit: browser/PWA persistence uses web storage and IndexedDB policies, desktop persistence may use filesystem-backed state, and cloud persistence is out of bounds.
+  
+  ## Scope
+  
+  - User settings and configuration.
+  - Settings persistence and workspace persistence.
+  - Browser/PWA IndexedDB persistence.
+  - Desktop filesystem persistence.
+  - Git operation state, OIDC, and agent extension OIDC.
+  - Extension compatibility with persisted state.
+  
+  ## Consequences
+  
+  - Features must identify their persistence scope.
+  - OIDC flows must be scoped per subsystem and must not share tokens across Git and agent extensions without an explicit future ADR.

@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2016"
+number: 2016
+slug: "mdwrk-editor-authoring-behavior"
+title: "MdWrk Editor Authoring Behavior Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define editor authoring behaviors that need targetable SSOT features."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Editor Authoring Behavior Specification
+  
+  ## Purpose
+  
+  Define editor authoring behaviors that need targetable SSOT features.
+  
+  ## Requirements
+  
+  - Ordered and unordered list continuation must typeahead on Enter and terminate on a second empty item.
+  - Checkbox creation must preserve focus, line, and character position.
+  - Text wrapping must be configurable where supported.
+  - Underline behavior must not claim standard Markdown semantics unless a custom profile enables it.
+  - Line count bars must be hideable and y-scroll aligned with editor content.
+  - Visual keyboard mode must preserve editor usability on mobile.
+spec_kind: "normative"

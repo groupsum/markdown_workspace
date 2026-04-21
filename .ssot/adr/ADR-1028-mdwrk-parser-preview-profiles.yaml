@@ -1,0 +1,34 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1028"
+number: 1028
+slug: "mdwrk-parser-preview-profiles"
+title: "ADR-0028: MdWrk custom parser and preview profiles"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "CFM shall define custom parser and custom previewer behavior as an additive profile layered above the frozen CommonMark and GFM profiles. CommonMark remains the normative core, GFM remains the default Markdown product profile, and CFM behavior must be named, gated, and testable as an explicit extension of those profiles."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1028: CFM custom parser and preview profiles
+  
+  ## Decision
+  
+  CFM shall define custom parser and custom previewer behavior as an additive profile layered above the frozen CommonMark and GFM profiles. CommonMark remains the normative core, GFM remains the default Markdown product profile, and CFM behavior must be named, gated, and testable as an explicit extension of those profiles.
+  
+  ## Scope
+  
+  - Define CFM parser profile behavior without weakening CommonMark or GFM conformance claims.
+  - Define CFM previewer profile behavior as a rendering policy, not as an implicit change to Markdown parsing.
+  - Treat CFM as Custom Flavored Markdown: the named custom additive profile that may include custom syntax, rendering affordances, or extension-provided transforms.
+  - Keep unsupported custom behavior out of default CommonMark/GFM certification language.
+  
+  ## Consequences
+  
+  - Every custom profile needs a SPEC, feature record, and evidence lane before it can be claimed.
+  - Profile selection must be persisted and visible to settings/import/export surfaces.
+  - Preview/export must report which parser and previewer profiles were active.

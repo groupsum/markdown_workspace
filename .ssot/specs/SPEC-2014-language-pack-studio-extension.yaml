@@ -1,0 +1,30 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2014"
+number: 2014
+slug: "language-pack-studio-extension"
+title: "Language Pack Studio Extension Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define requirements for the Language Pack Studio extension."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Language Pack Studio Extension Specification
+  
+  ## Purpose
+  
+  Define requirements for the Language Pack Studio extension.
+  
+  ## Requirements
+  
+  - Language packs must use stable locale IDs and token catalogs.
+  - Sample packs must be importable and validate against the language-pack schema.
+  - Studio edits must preserve missing-token diagnostics.
+  - Settings and view surfaces must respect host i18n APIs.
+  - Language Pack Studio must remain compatible with the shared extension platform.
+spec_kind: "normative"

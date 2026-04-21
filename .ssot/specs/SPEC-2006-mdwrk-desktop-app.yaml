@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2006"
+number: 2006
+slug: "mdwrk-desktop-app"
+title: "MdWrk Desktop App Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define desktop app requirements for MdWrk."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Desktop App Specification
+  
+  ## Purpose
+  
+  Define desktop app requirements for MdWrk.
+  
+  ## Requirements
+  
+  - Desktop app behavior must fit the screen and keep app header/status surfaces fixed where specified.
+  - Desktop tabs must preserve expected app-level navigation behavior.
+  - Folder mounting and filesystem loading must use desktop filesystem APIs, not browser-only assumptions.
+  - Runtime extensions may be development-only by default, but production defaults must be explicit.
+  - Desktop version and shell identity must be visible where system configuration requires it.
+  - Desktop evidence must be tracked separately from browser and PWA evidence when behavior diverges.
+spec_kind: "normative"

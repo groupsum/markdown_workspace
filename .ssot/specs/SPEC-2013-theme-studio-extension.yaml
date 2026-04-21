@@ -1,0 +1,30 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2013"
+number: 2013
+slug: "theme-studio-extension"
+title: "Theme Studio Extension Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define requirements for the Theme Studio extension."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Theme Studio Extension Specification
+  
+  ## Purpose
+  
+  Define requirements for the Theme Studio extension.
+  
+  ## Requirements
+  
+  - Theme edits must map to supported theme tokens and CSS contracts.
+  - Exported themes must be versioned and importable.
+  - Theme relationship and preview behavior must be deterministic.
+  - Theme settings must persist through extension-scoped settings.
+  - Theme Studio must not bypass the shared UIX token contract.
+spec_kind: "normative"

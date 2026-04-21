@@ -1,0 +1,29 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2015"
+number: 2015
+slug: "catalog-hello-extension"
+title: "Catalog Hello Extension Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define requirements for the Catalog Hello extension."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Catalog Hello Extension Specification
+  
+  ## Purpose
+  
+  Define requirements for the Catalog Hello extension.
+  
+  ## Requirements
+  
+  - The extension must remain a minimal catalog and runtime smoke example.
+  - It must validate manifest compatibility.
+  - It must exercise extension installation and runtime registration without privileged capabilities.
+  - It must be safe as a bundled example and as an imported catalog entry.
+spec_kind: "normative"

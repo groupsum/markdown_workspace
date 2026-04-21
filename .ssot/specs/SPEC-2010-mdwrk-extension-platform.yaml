@@ -1,0 +1,32 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2010"
+number: 2010
+slug: "mdwrk-extension-platform"
+title: "MdWrk Extension Platform Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define general extension creation, compatibility, options, lifecycle, publishing, installing, importing, disabling, and removal requirements."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Extension Platform Specification
+  
+  ## Purpose
+  
+  Define general extension creation, compatibility, options, lifecycle, publishing, installing, importing, disabling, and removal requirements.
+  
+  ## Requirements
+  
+  - Extensions must declare manifest metadata, compatibility, contribution points, capabilities, settings schema, and view modes.
+  - Extension types must be explicit and host-rendered through stable contracts.
+  - Publishing must produce versioned, integrity-checkable artifacts.
+  - Installing and importing must validate manifest compatibility before activation.
+  - Disabling must preserve settings unless removal explicitly deletes them.
+  - Removing must clean runtime registration and leave user data according to the extension retention policy.
+  - Extension options must be schema-driven and persist through namespaced settings.
+spec_kind: "normative"

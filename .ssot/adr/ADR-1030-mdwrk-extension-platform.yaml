@@ -1,0 +1,34 @@
+schema_version: "0.1.0"
+kind: "adr"
+id: "adr:1030"
+number: 1030
+slug: "mdwrk-extension-platform"
+title: "ADR-0030: MdWrk extension platform and extension contracts"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk extensions shall be governed by a shared platform contract plus per-extension SPECs. The shared contract covers manifest shape, compatibility, contribution points, settings, installation, disabling, removal, publishing, and runtime isolation. Each bundled extension gets its own SPEC so feature planning can target it independently."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1030: MdWrk extension platform and extension contracts
+  
+  ## Decision
+  
+  MdWrk extensions shall be governed by a shared platform contract plus per-extension SPECs. The shared contract covers manifest shape, compatibility, contribution points, settings, installation, disabling, removal, publishing, and runtime isolation. Each bundled extension gets its own SPEC so feature planning can target it independently.
+  
+  ## Scope
+  
+  - Extension runtime, manifest, host, catalog, and manager behavior.
+  - Extension types and view modes.
+  - Extension options and settings schema compatibility.
+  - Import, install, publish, disable, remove, and compatibility checks.
+  - Extension-specific requirements for Extension Manager, Gemini Agent, Theme Studio, Language Pack Studio, and Catalog Hello.
+  
+  ## Consequences
+  
+  - All extension features must link to either the shared extension SPEC or the relevant per-extension SPEC.
+  - Agent extensions that use OIDC must use explicit auth boundaries and must not inherit Git credentials implicitly.

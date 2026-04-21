@@ -1,0 +1,31 @@
+schema_version: "0.1.0"
+kind: "spec"
+id: "spc:2017"
+number: 2017
+slug: "mdwrk-documentation"
+title: "MdWrk Documentation Specification"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define documentation requirements for new MdWrk behaviors."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Documentation Specification
+  
+  ## Purpose
+  
+  Define documentation requirements for new MdWrk behaviors.
+  
+  ## Requirements
+  
+  - Custom parser and previewer profile behavior must be documented.
+  - Text wrap preview behavior must be documented.
+  - Checkbox autocomplete behavior must be documented.
+  - View toolbar behavior must be documented.
+  - Extension authoring, compatibility, publishing, installation, disabling, removal, and options must be documented.
+  - Documentation must state when behavior is browser, PWA, desktop, or extension-specific.
+spec_kind: "operational"
