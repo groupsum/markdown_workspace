@@ -31,3 +31,4 @@ body: |-
   - Ultra-wide layouts must preserve readable pane widths and explicit aspect-ratio rules.
   - Command palettes, extension views, panes, iconized controls, and compact modes must remain interoperable.
 spec_kind: "normative"
+adr_ids: []

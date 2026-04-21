@@ -27,3 +27,4 @@ body: |-
   - It must exercise extension installation and runtime registration without privileged capabilities.
   - It must be safe as a bundled example and as an imported catalog entry.
 spec_kind: "normative"
+adr_ids: []

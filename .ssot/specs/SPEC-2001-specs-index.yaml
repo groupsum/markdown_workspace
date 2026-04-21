@@ -30,3 +30,4 @@ body: |-
   - CI runs all governance checks through `npm run ci:governance`.
   - Validation failures include explicit pointers back to the relevant specification.
 spec_kind: "local-policy"
+adr_ids: []

@@ -68,3 +68,4 @@ body: |-
   - CI must execute all governance checks in pull requests and pushes.
   - Failure messages must reference this specification file to guide maintainers.
 spec_kind: "local-policy"
+adr_ids: []

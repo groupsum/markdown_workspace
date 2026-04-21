@@ -30,3 +30,4 @@ body: |-
   - UI surfaces must report auth state without exposing tokens or provider secrets.
   - Persistence behavior must comply with the frontend state persistence specification.
 spec_kind: "normative"
+adr_ids: []

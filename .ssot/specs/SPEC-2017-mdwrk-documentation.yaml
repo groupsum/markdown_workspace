@@ -29,3 +29,4 @@ body: |-
   - Extension authoring, compatibility, publishing, installation, disabling, removal, and options must be documented.
   - Documentation must state when behavior is browser, PWA, desktop, or extension-specific.
 spec_kind: "operational"
+adr_ids: []

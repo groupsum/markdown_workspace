@@ -28,3 +28,4 @@ body: |-
   - Theme settings must persist through extension-scoped settings.
   - Theme Studio must not bypass the shared UIX token contract.
 spec_kind: "normative"
+adr_ids: []

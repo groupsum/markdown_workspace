@@ -28,3 +28,4 @@ body: |-
   - Settings and view surfaces must respect host i18n APIs.
   - Language Pack Studio must remain compatible with the shared extension platform.
 spec_kind: "normative"
+adr_ids: []

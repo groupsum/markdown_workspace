@@ -30,3 +30,4 @@ body: |-
   - Profile state must be visible in settings, export, preview, and conformance evidence.
   - A custom profile cannot broaden CommonMark or GFM claims unless its evidence lane proves that claim.
 spec_kind: "normative"
+adr_ids: []

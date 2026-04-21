@@ -30,3 +30,4 @@ body: |-
   - Extension settings must be namespaced by extension ID and version compatibility rules.
   - Git operation state must be persisted separately from workspace content.
 spec_kind: "normative"
+adr_ids: []

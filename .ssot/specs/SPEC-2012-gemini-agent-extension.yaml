@@ -28,3 +28,4 @@ body: |-
   - The extension must fail closed when required auth or provider configuration is missing.
   - The extension must respect user settings and disable/remove lifecycle rules.
 spec_kind: "normative"
+adr_ids: []

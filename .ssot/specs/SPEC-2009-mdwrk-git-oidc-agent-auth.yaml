@@ -29,3 +29,4 @@ body: |-
   - Auth status must not leak into unrelated UI surfaces.
   - Extension auth configuration must be disableable and removable with the extension.
 spec_kind: "normative"
+adr_ids: []

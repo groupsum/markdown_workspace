@@ -28,3 +28,4 @@ body: |-
   - CommonMark behavior must remain available when GFM and MdWrk additive profiles are disabled.
   - CommonMark certification claims require evidence from the official corpus lane or an explicitly scoped substitute approved by ADR.
 spec_kind: "normative"
+adr_ids: []

@@ -29,3 +29,4 @@ body: |-
   - Desktop version and shell identity must be visible where system configuration requires it.
   - Desktop evidence must be tracked separately from browser and PWA evidence when behavior diverges.
 spec_kind: "normative"
+adr_ids: []

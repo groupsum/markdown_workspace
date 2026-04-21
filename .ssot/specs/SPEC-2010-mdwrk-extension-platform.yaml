@@ -30,3 +30,4 @@ body: |-
   - Removing must clean runtime registration and leave user data according to the extension retention policy.
   - Extension options must be schema-driven and persist through namespaced settings.
 spec_kind: "normative"
+adr_ids: []
