@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2021"
+number: 2021
+slug: "toast-notification-behavior-contract"
+title: "Toast And Notification Behavior Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Toast and notification behavior must deduplicate repeated messages by relevant type, allow user dismissal, and avoid blocking shell or editor interaction. Notifications that communicate shell or extension state must remain accessible and predictable."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2021: Toast And Notification Behavior Contract
+  
+  ## Requirements
+  
+  Toast and notification behavior must deduplicate repeated messages by relevant type, allow user dismissal, and avoid blocking shell or editor interaction. Notifications that communicate shell or extension state must remain accessible and predictable.
+  
+  ## Evidence
+  
+  Evidence must cover duplicate suppression, dismissal behavior, and notification behavior used by shell and extension flows.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1034"
+  - "adr:1047"

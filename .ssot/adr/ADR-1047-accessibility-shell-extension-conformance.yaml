@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1047"
+number: 1047
+slug: "accessibility-shell-extension-conformance"
+title: "ADR-0047: Accessibility as shell and extension conformance"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, and extensions. Keyboard reachability, focus management, ARIA naming, status communication, contrast, and extension UI accessibility shall be part of acceptance evidence."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1047: Accessibility as shell and extension conformance
+  
+  ## Decision
+  
+  MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, and extensions. Keyboard reachability, focus management, ARIA naming, status communication, contrast, and extension UI accessibility shall be part of acceptance evidence.
+  
+  ## Scope
+  
+  - Keyboard navigation and shortcut behavior.
+  - Focus order, focus restoration, and modal focus handling.
+  - ARIA labels and screen-reader names for shell controls.
+  - Status and update announcements where appropriate.
+  - Extension-provided UI surfaces and settings forms.
+  
+  ## Consequences
+  
+  - UI and extension features cannot be considered complete without accessibility evidence.
+  - Shell and extension specs must include accessibility obligations.
+  - Regression tests should cover behavior that can be asserted without visual inspection.

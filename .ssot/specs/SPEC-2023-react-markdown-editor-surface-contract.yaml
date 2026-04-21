@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2023"
+number: 2023
+slug: "react-markdown-editor-surface-contract"
+title: "React Markdown Editor Surface Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The React editor surface must adapt editor core behavior without redefining core markdown semantics. It must support controlled and uncontrolled rendering, optional line-number gutter display, selection format-state emission, keyboard shortcuts, indentation keys, list continuation, and task-list termination."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2023: React Markdown Editor Surface Contract
+  
+  ## Requirements
+  
+  The React editor surface must adapt editor core behavior without redefining core markdown semantics. It must support controlled and uncontrolled rendering, optional line-number gutter display, selection format-state emission, keyboard shortcuts, indentation keys, list continuation, and task-list termination.
+  
+  ## Evidence
+  
+  Evidence must cover component rendering modes, gutter suppression, selection events, and keyboard behavior.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1035"
+  - "adr:1012"
+  - "adr:1047"

@@ -1,0 +1,28 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2027"
+number: 2027
+slug: "oidc-browser-flow-contract"
+title: "OIDC Browser Flow Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Browser OIDC callback handling must return idle for routes without callback parameters, clear stale pending sessions, reject state mismatches, persist successful implicit-flow credentials, and forward callback parameters to an opener when completing inside a popup window."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2027: OIDC Browser Flow Contract
+  
+  ## Requirements
+  
+  Browser OIDC callback handling must return idle for routes without callback parameters, clear stale pending sessions, reject state mismatches, persist successful implicit-flow credentials, and forward callback parameters to an opener when completing inside a popup window.
+  
+  ## Evidence
+  
+  Evidence must cover idle callbacks, stale session cleanup, mismatch errors, credential storage, and popup messaging.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1039"

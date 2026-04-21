@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2034"
+number: 2034
+slug: "native-filesystem-shell-behavior"
+title: "Native Filesystem Shell Behavior"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Native filesystem shells must support markdown file open, markdown file save, launch-file import, project directory open, directory read, project directory creation, create directory, rename path, delete path, move path, and host-initiated save-active-file events where the host grants permission."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2034: Native Filesystem Shell Behavior
+  
+  ## Requirements
+  
+  Native filesystem shells must support markdown file open, markdown file save, launch-file import, project directory open, directory read, project directory creation, create directory, rename path, delete path, move path, and host-initiated save-active-file events where the host grants permission.
+  
+  ## Evidence
+  
+  Evidence must cover successful native operations, permission or validation failures, path preservation, mounted folder refresh behavior, and fallback behavior when the native host API is absent.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1042"
+  - "adr:1029"
+  - "adr:1044"

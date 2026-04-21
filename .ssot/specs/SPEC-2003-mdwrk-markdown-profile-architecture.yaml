@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2003"
 number: 2003
@@ -11,7 +11,11 @@ tags: []
 summary: "Define the parser and previewer profile architecture for CommonMark, GFM, and CFM."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded Markdown profile architecture with export disclosure and CM/GFM/CFM evidence lane requirements."
+    at: "2026-04-21T09:20:20Z"
 references: []
 body: |-
   # MdWrk Markdown Profile Architecture Specification
@@ -29,5 +33,13 @@ body: |-
   - CFM means Custom Flavored Markdown and is the named custom additive profile.
   - Profile state must be visible in settings, export, preview, and conformance evidence.
   - A custom profile cannot broaden CommonMark or GFM claims unless its evidence lane proves that claim.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Markdown profile architecture shall explicitly govern CM, GFM, and CFM as separate targetable profiles. CFM remains additive to CM and GFM and must not weaken external conformance claims.
+  
+  Profile state must be visible in settings, preview, export, and evidence surfaces when profile choice can affect parser, renderer, previewer, or generated artifact behavior. SPEC-2040 governs export profile disclosure.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1028"
+  - "adr:1045"

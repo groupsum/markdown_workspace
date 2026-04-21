@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2024"
+number: 2024
+slug: "markdown-renderer-contract"
+title: "Markdown Renderer Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Renderer core must own frontmatter parsing, heading extraction, GFM feature rendering, fenced code rendering, semantic HTML generation, and HTML document serialization. React renderer must own presentation, link interception, static HTML rendering, and theme style bridging."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2024: Markdown Renderer Contract
+  
+  ## Requirements
+  
+  Renderer core must own frontmatter parsing, heading extraction, GFM feature rendering, fenced code rendering, semantic HTML generation, and HTML document serialization. React renderer must own presentation, link interception, static HTML rendering, and theme style bridging.
+  
+  ## Evidence
+  
+  Evidence must cover parser outputs, HTML serialization, React rendering, link interception, static HTML surfaces, and default GFM behavior.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1036"
+  - "adr:1013"
+  - "adr:1028"

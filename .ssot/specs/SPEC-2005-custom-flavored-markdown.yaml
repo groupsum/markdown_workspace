@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2005"
 number: 2005
@@ -11,7 +11,11 @@ tags: []
 summary: "Define CFM, the Custom Flavored Markdown profile."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded CFM spec with parser, previewer, extension, and export disclosure obligations."
+    at: "2026-04-21T09:20:21Z"
 references: []
 body: |-
   # Custom Flavored Markdown Specification
@@ -28,5 +32,13 @@ body: |-
   - CFM must preserve round-trip behavior for source text unless a transform is explicitly user-invoked.
   - CFM preview/export must disclose active custom profile behavior.
   - CFM features require parser, previewer, settings, and evidence coverage before release claims.
+  
+  ## 2026 SSOT Coverage Update
+  
+  CFM is the single MdWrk custom flavored markdown profile. CFM parser behavior, CFM previewer behavior, extension-provided transforms, and generated artifact behavior must remain additive to CM and GFM.
+  
+  CFM behavior must be named, gated, configurable where appropriate, and disclosed in preview/export/conformance surfaces whenever it affects output.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1028"
+  - "adr:1045"

@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1028"
 number: 1028
@@ -11,7 +11,11 @@ tags: []
 summary: "CFM shall define custom parser and custom previewer behavior as an additive profile layered above the frozen CommonMark and GFM profiles. CommonMark remains the normative core, GFM remains the default Markdown product profile, and CFM behavior must be named, gated, and testable as an explicit extension of those profiles."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded CFM profile ADR with preview/export profile disclosure requirements."
+    at: "2026-04-21T09:08:25Z"
 references: []
 body: |-
   # ADR-1028: CFM custom parser and preview profiles
@@ -32,3 +36,9 @@ body: |-
   - Every custom profile needs a SPEC, feature record, and evidence lane before it can be claimed.
   - Profile selection must be persisted and visible to settings/import/export surfaces.
   - Preview/export must report which parser and previewer profiles were active.
+  
+  ## 2026 SSOT Coverage Update
+  
+  CFM profile behavior shall be disclosed on preview, export, and conformance evidence surfaces whenever active parser or previewer behavior affects output. CM, GFM, and CFM remain separately targetable profiles.
+  
+  CFM parser behavior, CFM previewer behavior, and extension-provided profile effects must be additive to the CM and GFM baselines and must not silently weaken external conformance claims.

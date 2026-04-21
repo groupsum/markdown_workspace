@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1029"
 number: 1029
@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk shall treat the desktop app as a first-class shell with its own filesystem, packaging, update, and persistence boundary. The desktop app may reuse the client UIX and extension runtime, but desktop-only capabilities must be explicit and must not leak into browser or PWA assumptions."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded desktop boundary with shell taxonomy and native host adapter distinctions."
+    at: "2026-04-21T09:08:25Z"
 references: []
 body: |-
   # ADR-1029: MdWrk desktop app boundary
@@ -32,3 +36,9 @@ body: |-
   
   - Desktop features require SPEC links and evidence separate from browser/PWA evidence.
   - Filesystem persistence is in scope for desktop; cloud persistence remains out of bounds unless a future ADR changes that.
+  
+  ## 2026 SSOT Coverage Update
+  
+  The desktop boundary shall distinguish Electron desktop from other native shells. Electron desktop is the desktop packaging target; Capacitor Android is a separate mobile native shell support boundary even when it shares the desktop app package workspace.
+  
+  Desktop-only behavior must flow through a typed host adapter for file open, file save, launch files, mounted directories, filesystem mutations, and host menu events. Desktop evidence remains separate from browser, PWA, and Android evidence.

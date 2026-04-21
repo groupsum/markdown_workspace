@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1013"
 number: 1013
@@ -11,12 +11,16 @@ tags: []
 summary: "Date: 2026-03-28"
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded preview/export checkpoint with artifact boundary and profile-disclosure requirements."
+    at: "2026-04-21T09:08:23Z"
 references: []
 body: |-
   ## Decision
   
-  # ADR-0013 â€” preview, export, and render-policy Phase 6 checkpoint
+  # ADR-0013 Ã¢â‚¬â€ preview, export, and render-policy Phase 6 checkpoint
   
   Date: 2026-03-28
   Status: Accepted
@@ -37,7 +41,7 @@ body: |-
   
   ## Context
   
-  The Phase 0 target freeze and the v1â†’v2 gap analysis established that the repository could not claim a fully featured UIX or a trustworthy Markdown-rendering surface while preview and export behavior still depended on implicit HTML handling and app-local rendering shortcuts.
+  The Phase 0 target freeze and the v1Ã¢â€ â€™v2 gap analysis established that the repository could not claim a fully featured UIX or a trustworthy Markdown-rendering surface while preview and export behavior still depended on implicit HTML handling and app-local rendering shortcuts.
   
   At the end of Phase 5, the repository still had open preview/export-policy gaps in the active v2 shell:
   
@@ -54,7 +58,7 @@ body: |-
   
   This checkpoint closes the preview/export-policy items that were both:
   
-  - explicitly called out by the v1â†’v2 regression ledger or by the Phase 6 plan; and
+  - explicitly called out by the v1Ã¢â€ â€™v2 regression ledger or by the Phase 6 plan; and
   - reasonably closeable inside the reusable renderer family and the active v2 preview/export adapters without first solving unrelated Git/settings/theme/i18n release work.
   
   It also keeps the reusable renderer family as the authoritative rendering surface, which prevents the app shell from silently diverging from the package certification boundary.
@@ -68,3 +72,11 @@ body: |-
   - status bar / action rail / broader shell parity closure
   - stricter conformance corpus integration and RC evidence depth
   - promotion and release closure
+  
+  ## 2026 SSOT Coverage Update
+  
+  The preview/export boundary shall explicitly include preview, HTML export, markdown download, print, and generated report surfaces. These surfaces are derived artifacts, not canonical workspace state.
+  
+  The checkpoint now requires future SPEC coverage for export profile disclosure: active CM, GFM, and CFM parser and previewer profiles must be visible where preview/export behavior can affect output.
+  
+  Import behavior remains out of this ADR's artifact scope except when an exported artifact is deliberately imported back into workspace state.

@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2039"
+number: 2039
+slug: "export-download-print-preview-contract"
+title: "Export, Download, Print, And Preview Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Preview, HTML export, markdown download, print, and generated reporting surfaces must be reachable through governed shell commands or views. Generated artifacts are derived outputs and must not become canonical workspace state unless explicitly imported."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2039: Export, Download, Print, And Preview Contract
+  
+  ## Requirements
+  
+  Preview, HTML export, markdown download, print, and generated reporting surfaces must be reachable through governed shell commands or views. Generated artifacts are derived outputs and must not become canonical workspace state unless explicitly imported.
+  
+  ## Evidence
+  
+  Evidence must cover preview reachability, export reachability, download behavior, print behavior where testable, artifact naming, failure states, and shell command accessibility.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1045"
+  - "adr:1013"

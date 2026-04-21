@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2040"
+number: 2040
+slug: "export-profile-disclosure-contract"
+title: "Export Profile Disclosure Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Preview and export surfaces must disclose active CM, GFM, and CFM parser and previewer profiles whenever profile selection can affect output. Profile disclosure must be visible in reports or UI surfaces that claim conformance or generated artifact fidelity."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2040: Export Profile Disclosure Contract
+  
+  ## Requirements
+  
+  Preview and export surfaces must disclose active CM, GFM, and CFM parser and previewer profiles whenever profile selection can affect output. Profile disclosure must be visible in reports or UI surfaces that claim conformance or generated artifact fidelity.
+  
+  ## Evidence
+  
+  Evidence must cover profile selection, preview disclosure, export disclosure, conformance reports, and failure labeling by parser, renderer, preview, export, or adapter boundary.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1045"
+  - "adr:1028"
+  - "adr:1013"

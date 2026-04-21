@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1016"
 number: 1016
@@ -11,12 +11,16 @@ tags: []
 summary: "Date: 2026-03-28"
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded theme parity checkpoint with zoom, accessibility, contrast, focus, and CSS contract obligations."
+    at: "2026-04-21T09:08:24Z"
 references: []
 body: |-
   ## Decision
   
-  # ADR-0016 â€” Phase 9 theme inventory, token contract, and visual parity checkpoint
+  # ADR-0016 Ã¢â‚¬â€ Phase 9 theme inventory, token contract, and visual parity checkpoint
   
   Date: 2026-03-28
   Status: accepted for the current checkpoint zip
@@ -66,7 +70,7 @@ body: |-
   
   ## Context
   
-  The v1â†’v2 audit established that v2 shipped twelve theme CSS assets but only exposed five of them in the active selector registry.
+  The v1Ã¢â€ â€™v2 audit established that v2 shipped twelve theme CSS assets but only exposed five of them in the active selector registry.
   The audit also established that several rhythm and responsive-width tokens remained outside the formal portable contract even though similar values already existed in app-local CSS.
   
   After Phase 8, the dominant remaining visual/UIX parity gap was therefore:
@@ -92,3 +96,9 @@ body: |-
   - `artifacts/conformance/latest/phase-9-theme-parity-checkpoint.json`
   - `artifacts/conformance/latest/phase-9-theme-visual-baselines.json`
   - `artifacts/conformance/latest/phase-9-packed-example-smoke.json`
+  
+  ## 2026 SSOT Coverage Update
+  
+  Theme parity shall include CSS contract evidence for zoom behavior, chassis fit, editor/preview rhythm, status/header constraints, focus visibility, and contrast-sensitive tokens.
+  
+  Themes may differ visually, but they must preserve shared UIX token semantics for scale, layout regions, action rail sizing, pane behavior, and accessibility affordances. Theme updates that alter token meanings require matching UIX contract evidence.

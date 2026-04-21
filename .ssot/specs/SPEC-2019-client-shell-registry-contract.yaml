@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2019"
+number: 2019
+slug: "client-shell-registry-contract"
+title: "Client Shell Registry Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The client shell must compose commands, views, action rail entries, command palette entries, and extension workspace surfaces through registries. Main views must be exclusive when required, modal views must preserve modal open semantics, and rail interactions must route through centralized command or view toggle paths."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2019: Client Shell Registry Contract
+  
+  ## Requirements
+  
+  The client shell must compose commands, views, action rail entries, command palette entries, and extension workspace surfaces through registries. Main views must be exclusive when required, modal views must preserve modal open semantics, and rail interactions must route through centralized command or view toggle paths.
+  
+  ## Evidence
+  
+  Evidence must cover command execution, view open/close/toggle behavior, action rail active state, extension workspace placement, and shell chrome reachability.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1034"
+  - "adr:1014"

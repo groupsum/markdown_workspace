@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1042"
+number: 1042
+slug: "native-shell-adapter-contract"
+title: "ADR-0042: Native shell adapter contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk native shells shall expose host capabilities through typed adapter APIs rather than direct shell-specific assumptions in client components. The Electron desktop bridge and future native bridges shall provide explicit capabilities for file open, file save, directory mount, filesystem operations, and host events."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1042: Native shell adapter contract
+  
+  ## Decision
+  
+  MdWrk native shells shall expose host capabilities through typed adapter APIs rather than direct shell-specific assumptions in client components. The Electron desktop bridge and future native bridges shall provide explicit capabilities for file open, file save, directory mount, filesystem operations, and host events.
+  
+  ## Scope
+  
+  - Host adapter detection and capability checks.
+  - Desktop markdown file open and save flows.
+  - Project directory mount, read, create, rename, delete, and move flows.
+  - Host menu events such as open, mount, and save-active-file requests.
+  
+  ## Consequences
+  
+  - Client behavior can degrade clearly when native capabilities are unavailable.
+  - Native shells can add capabilities without changing browser behavior.
+  - Host adapters require SPEC coverage for API shape and failure states.

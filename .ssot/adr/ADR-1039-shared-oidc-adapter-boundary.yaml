@@ -1,0 +1,36 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1039"
+number: 1039
+slug: "shared-oidc-adapter-boundary"
+title: "ADR-0039: Shared OIDC adapter boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall place browser OIDC callback handling, popup forwarding, pending-session cleanup, state validation, and credential persistence behind a shared OIDC adapter boundary. Git and agent authentication features shall consume this boundary instead of duplicating token flow logic."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1039: Shared OIDC adapter boundary
+  
+  ## Decision
+  
+  MdWrk shall place browser OIDC callback handling, popup forwarding, pending-session cleanup, state validation, and credential persistence behind a shared OIDC adapter boundary. Git and agent authentication features shall consume this boundary instead of duplicating token flow logic.
+  
+  ## Scope
+  
+  - Browser implicit-flow callback parsing.
+  - Idle routes without OIDC parameters.
+  - Stale pending session cleanup.
+  - State mismatch rejection.
+  - Popup opener callback forwarding.
+  - Credential persistence and token boundary separation.
+  
+  ## Consequences
+  
+  - Auth flows fail closed when callback or state data is invalid.
+  - Git and agent OIDC features can be evidenced independently while sharing adapter behavior.
+  - The OIDC adapter SPEC remains the common contract for shell auth behavior.

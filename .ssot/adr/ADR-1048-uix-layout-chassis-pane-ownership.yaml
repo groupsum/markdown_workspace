@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1048"
+number: 1048
+slug: "uix-layout-chassis-pane-ownership"
+title: "ADR-0048: UIX layout chassis and pane ownership"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall govern the application chassis as a set of named layout regions with explicit ownership rules. Header, status footer, action rail, sidebars, tabs, panes, editor, preview, and extension views shall use shared layout contracts for sizing, scrolling, compaction, and responsive behavior."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1048: UIX layout chassis and pane ownership
+  
+  ## Decision
+  
+  MdWrk shall govern the application chassis as a set of named layout regions with explicit ownership rules. Header, status footer, action rail, sidebars, tabs, panes, editor, preview, and extension views shall use shared layout contracts for sizing, scrolling, compaction, and responsive behavior.
+  
+  ## Scope
+  
+  - Header, status footer, action rail, sidebar, tab strip, and pane regions.
+  - Editor, preview, split, modal, and extension view placement.
+  - Fixed shell chrome and pane-owned vertical scrolling.
+  - Mobile portrait, mobile landscape, visual keyboard, tablet, desktop, and ultra-wide layouts.
+  - Shared CSS class names and layout tokens.
+  
+  ## Consequences
+  
+  - Layout changes must preserve region ownership and scroll ownership.
+  - Responsive behavior can be tested through matrix evidence.
+  - Extension view modes must compose with shell layout instead of defining isolated layouts.

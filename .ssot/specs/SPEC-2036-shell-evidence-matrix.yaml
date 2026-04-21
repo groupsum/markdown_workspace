@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2036"
+number: 2036
+slug: "shell-evidence-matrix"
+title: "Shell Evidence Matrix"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Shell evidence must be tracked per shell and per capability. Browser, PWA, Electron desktop, and Android evidence must not be conflated when persistence, filesystem, install/update, viewport, or native host behavior differs."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2036: Shell Evidence Matrix
+  
+  ## Requirements
+  
+  Shell evidence must be tracked per shell and per capability. Browser, PWA, Electron desktop, and Android evidence must not be conflated when persistence, filesystem, install/update, viewport, or native host behavior differs.
+  
+  ## Evidence
+  
+  Evidence rows must identify shell, viewport or host target, capability, test kind, pass status, and linked feature or claim where available.
+spec_kind: "operational"
+adr_ids:
+  - "adr:1041"
+  - "adr:1043"
+  - "adr:1040"

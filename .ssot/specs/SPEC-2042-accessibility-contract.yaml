@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2042"
+number: 2042
+slug: "accessibility-contract"
+title: "Accessibility Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Accessibility requirements must cover keyboard reachability, focus order, focus restoration, modal semantics, command palette accessibility, ARIA labels, screen-reader names, status communication, contrast-sensitive token behavior, and extension UI obligations."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2042: Accessibility Contract
+  
+  ## Requirements
+  
+  Accessibility requirements must cover keyboard reachability, focus order, focus restoration, modal semantics, command palette accessibility, ARIA labels, screen-reader names, status communication, contrast-sensitive token behavior, and extension UI obligations.
+  
+  ## Evidence
+  
+  Evidence must cover keyboard behavior, labels for interactive controls, modal and command palette behavior, extension settings forms, and any status announcements that can be tested reliably.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1047"
+  - "adr:1014"
+  - "adr:1030"

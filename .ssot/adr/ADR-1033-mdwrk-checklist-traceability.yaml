@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1033"
 number: 1033
@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk checklist items shall be represented as SSOT features linked to the SPEC that governs their expected behavior. Existing broad features may remain, but actionable checklist work must have stable targetable feature IDs."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded checklist traceability ADR with new feature coverage domains."
+    at: "2026-04-21T09:08:26Z"
 references: []
 body: |-
   # ADR-1033: MdWrk checklist-to-feature traceability
@@ -29,3 +33,9 @@ body: |-
   
   - Checklists can be evaluated through SSOT feature planning instead of free-text notes.
   - Future test and evidence links can attach directly to the target feature.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Checklist-to-feature traceability shall cover shell taxonomy, native host adapters, Android support, import flows, export/download/print artifacts, zoom behavior, accessibility behavior, UIX chassis layout, responsive matrix behavior, extension lifecycle, OIDC adapter behavior, and markdown profile disclosure.
+  
+  Each actionable checklist item should map to a feature and governing SPEC. Broad ADRs may define decisions, but implementation work remains targetable through feature IDs with tests and evidence.

@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2028"
+number: 2028
+slug: "uix-css-token-chassis-contract"
+title: "UIX CSS Token And Chassis Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "UIX CSS tokens must govern editor and markdown rhythm, chassis dimensions, header constraints, status bar behavior, zoom-independent layout dimensions, and theme-wide token availability. Themes may vary visual treatment but must preserve shared token meaning."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2028: UIX CSS Token And Chassis Contract
+  
+  ## Requirements
+  
+  UIX CSS tokens must govern editor and markdown rhythm, chassis dimensions, header constraints, status bar behavior, zoom-independent layout dimensions, and theme-wide token availability. Themes may vary visual treatment but must preserve shared token meaning.
+  
+  ## Evidence
+  
+  Evidence must cover alignment tokens, chassis fit, status overflow behavior, zoom token contracts, theme token availability, and markdown spacing constraints.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1040"
+  - "adr:1031"
+  - "adr:1048"

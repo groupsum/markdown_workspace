@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2007"
 number: 2007
@@ -11,7 +11,11 @@ tags: []
 summary: "Define responsive UIX behavior across desktop, browser, PWA, mobile portrait, mobile landscape, tablets, and ultra-wide layouts."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded UIX responsive design with chassis, zoom, accessibility, and responsive matrix obligations."
+    at: "2026-04-21T09:20:22Z"
 references: []
 body: |-
   # MdWrk UIX Responsive Design Specification
@@ -30,5 +34,16 @@ body: |-
   - Mobile landscape may hide status footer surfaces when vertical space is constrained.
   - Ultra-wide layouts must preserve readable pane widths and explicit aspect-ratio rules.
   - Command palettes, extension views, panes, iconized controls, and compact modes must remain interoperable.
+  
+  ## 2026 SSOT Coverage Update
+  
+  UIX responsive design shall govern named chassis regions: header, status footer, action rail, sidebars, tab strip, editor panes, preview panes, modal layers, and extension views.
+  
+  UIX conformance includes zoom behavior, accessibility behavior, fixed shell chrome, pane-owned scrolling, iconized compaction, breakpoint tokens, visual-keyboard half-screen behavior, ultra-wide behavior, and shell-specific responsive matrix evidence.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1031"
+  - "adr:1040"
+  - "adr:1046"
+  - "adr:1047"
+  - "adr:1048"

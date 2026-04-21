@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2029"
+number: 2029
+slug: "extension-runtime-contract"
+title: "Extension Runtime Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The extension runtime must validate manifests, activate and deactivate extensions, persist namespaced configuration, reject incompatible extensions, isolate runtime errors, support lazy activation, and prevent one extension failure from breaking unrelated extensions."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2029: Extension Runtime Contract
+  
+  ## Requirements
+  
+  The extension runtime must validate manifests, activate and deactivate extensions, persist namespaced configuration, reject incompatible extensions, isolate runtime errors, support lazy activation, and prevent one extension failure from breaking unrelated extensions.
+  
+  ## Evidence
+  
+  Evidence must cover manifest validation, lifecycle behavior, config persistence, compatibility rejection, error containment, and lazy activation.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1030"
+  - "adr:1002"

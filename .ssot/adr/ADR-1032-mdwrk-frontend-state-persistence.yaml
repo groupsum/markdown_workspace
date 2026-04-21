@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1032"
 number: 1032
@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk frontend behavior shall distinguish user settings, workspace state, shell state, Git state, and extension state. Persistence backends must be explicit: browser/PWA persistence uses web storage and IndexedDB policies, desktop persistence may use filesystem-backed state, and cloud persistence is out of bounds."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded persistence boundary with import, export artifact, shell-specific persistence, and zoom state rules."
+    at: "2026-04-21T09:08:26Z"
 references: []
 body: |-
   # ADR-1032: MdWrk frontend state and persistence boundaries
@@ -33,3 +37,9 @@ body: |-
   
   - Features must identify their persistence scope.
   - OIDC flows must be scoped per subsystem and must not share tokens across Git and agent extensions without an explicit future ADR.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Frontend persistence shall distinguish imported markdown files, mounted filesystem workspaces, open tabs, transient editor state, generated export artifacts, shell state, user settings, extension settings, Git state, OIDC state, and zoom state.
+  
+  Generated preview/export/download/print artifacts are derived outputs and must not be treated as canonical workspace state unless explicitly imported. Browser and PWA persistence remain web-storage/IndexedDB backed; Electron desktop may use filesystem-backed workspace state through host adapters; Android requires its own native storage policy before full support is claimed.

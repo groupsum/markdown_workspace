@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2011"
 number: 2011
@@ -11,7 +11,11 @@ tags: []
 summary: "Define requirements for the Extension Manager extension."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded extension manager spec with pane layout, settings rendering, permissions, compatibility, and diagnostics requirements."
+    at: "2026-04-21T09:20:23Z"
 references: []
 body: |-
   # Extension Manager Specification
@@ -27,5 +31,14 @@ body: |-
   - It must render extension settings schemas consistently.
   - It must show compatibility and status without blocking unrelated extensions.
   - It must respect the shared extension platform specification.
+  
+  ## 2026 SSOT Coverage Update
+  
+  The extension manager shall govern installed, bundled, imported, disabled, incompatible, and catalog entries. It must expose install, import, disable, enable, remove, inspect, settings, permission, compatibility, health, and diagnostics flows.
+  
+  The manager surface must support pane-only workspace layouts, toolbar-controlled sidebar/split modes, schema-driven settings forms, persistence through runtime restarts, and accessibility obligations.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1030"
+  - "adr:1047"
+  - "adr:1048"

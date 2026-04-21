@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2030"
+number: 2030
+slug: "extension-manager-surface-contract"
+title: "Extension Manager Surface Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The extension manager must register bundled manager entries, render extension inventory, support pane-only workspace layout, expose sidebar and split controls, persist enabled-state toggles, render schema-driven settings, persist config values, and surface permissions, compatibility issues, health, and diagnostics."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2030: Extension Manager Surface Contract
+  
+  ## Requirements
+  
+  The extension manager must register bundled manager entries, render extension inventory, support pane-only workspace layout, expose sidebar and split controls, persist enabled-state toggles, render schema-driven settings, persist config values, and surface permissions, compatibility issues, health, and diagnostics.
+  
+  ## Evidence
+  
+  Evidence must cover manager registration, inventory rendering, layout controls, enabled-state persistence, settings persistence, permission reporting, compatibility reporting, and activation-failure diagnostics.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1030"
+  - "adr:1047"
+  - "adr:1048"

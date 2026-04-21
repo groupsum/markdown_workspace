@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1031"
 number: 1031
@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk UIX shall be governed by explicit responsive, device, orientation, and compaction contracts. Layout behavior must be specified through CSS tokens and stable class contracts rather than one-off component overrides."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded UIX responsive boundary with chassis layout, zoom, accessibility, and responsive matrix obligations."
+    at: "2026-04-21T09:08:26Z"
 references: []
 body: |-
   # ADR-1031: MdWrk UIX responsive design boundary
@@ -33,3 +37,9 @@ body: |-
   
   - Checklist UIX work items become targetable features linked to the responsive UIX SPEC.
   - Device-specific quirks must be encoded as named requirements and covered by responsive evidence.
+  
+  ## 2026 SSOT Coverage Update
+  
+  The UIX boundary shall govern the application chassis as named layout regions: header, status footer, action rail, sidebars, tab strip, editor panes, preview panes, modal layers, and extension views.
+  
+  UIX conformance shall include responsive matrix behavior across browser, PWA, Electron desktop, Android where in scope, mobile portrait, mobile landscape, tablet, desktop, ultra-wide, and visual-keyboard modes. Zoom, accessibility, fixed chrome, pane-owned scrolling, and layout token behavior are part of the UIX contract.

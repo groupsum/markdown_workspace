@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2020"
+number: 2020
+slug: "workspace-tabs-project-loading-contract"
+title: "Workspace Tabs And Project Loading Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Workspace loading must prevent duplicate project loads, preserve desktop imported markdown sessions, and distinguish open tabs from persisted workspace files. Tab open, dedupe, close, active-tab fallback, and imported-file behavior must be deterministic across supported shells."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2020: Workspace Tabs And Project Loading Contract
+  
+  ## Requirements
+  
+  Workspace loading must prevent duplicate project loads, preserve desktop imported markdown sessions, and distinguish open tabs from persisted workspace files. Tab open, dedupe, close, active-tab fallback, and imported-file behavior must be deterministic across supported shells.
+  
+  ## Evidence
+  
+  Evidence must cover strict-mode project loading, repeated file opens, active tab fallback, desktop imported markdown, and workspace state restoration.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1032"
+  - "adr:1044"

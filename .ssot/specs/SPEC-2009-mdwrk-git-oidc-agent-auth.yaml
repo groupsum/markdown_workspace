@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2009"
 number: 2009
@@ -11,7 +11,11 @@ tags: []
 summary: "Define Git operation persistence and authentication boundaries."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded auth spec with shared OIDC adapter and token boundary obligations."
+    at: "2026-04-21T09:20:22Z"
 references: []
 body: |-
   # MdWrk Git, OIDC, and Agent Auth Specification
@@ -28,5 +32,12 @@ body: |-
   - Git and agent auth state must not be shared without explicit user consent and a future ADR.
   - Auth status must not leak into unrelated UI surfaces.
   - Extension auth configuration must be disableable and removable with the extension.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Git OIDC and agent OIDC flows shall consume the shared OIDC adapter boundary. Provider configuration, callback handling, popup forwarding, pending-session cleanup, state validation, credential persistence, and token boundary separation must be specified and evidenced.
+  
+  Git and agent token scopes must remain separate. OIDC failures must fail closed and report actionable shell-visible states.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1039"

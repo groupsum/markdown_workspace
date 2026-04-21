@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2041"
+number: 2041
+slug: "ui-zoom-scale-contract"
+title: "UI Zoom And Scale Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "UI zoom must support bounded increment, decrement, reset, and persisted user preference behavior. Chassis dimension tokens must remain independent from zoom scale while typography, icons, and controls continue to scale through shared UI scale tokens across themes."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2041: UI Zoom And Scale Contract
+  
+  ## Requirements
+  
+  UI zoom must support bounded increment, decrement, reset, and persisted user preference behavior. Chassis dimension tokens must remain independent from zoom scale while typography, icons, and controls continue to scale through shared UI scale tokens across themes.
+  
+  ## Evidence
+  
+  Evidence must cover minimum and maximum bounds, reset behavior, scale classes, token availability per theme, chassis independence, and user-facing control reachability.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1046"
+  - "adr:1040"
+  - "adr:1031"

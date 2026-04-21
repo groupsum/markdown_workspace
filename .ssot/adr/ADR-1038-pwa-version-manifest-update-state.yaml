@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1038"
+number: 1038
+slug: "pwa-version-manifest-update-state"
+title: "ADR-0038: PWA version manifest and update-state model"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall govern PWA version selection and update state through an explicit version manifest model. The shell shall expose running, selected, installed, latest, compatibility, and update-ready state through controlled settings and status surfaces."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1038: PWA version manifest and update-state model
+  
+  ## Decision
+  
+  MdWrk shall govern PWA version selection and update state through an explicit version manifest model. The shell shall expose running, selected, installed, latest, compatibility, and update-ready state through controlled settings and status surfaces.
+  
+  ## Scope
+  
+  - Default latest-version selection.
+  - Saved version reuse and fallback when missing or incompatible.
+  - Service worker update-ready, failed, and blocked state precedence.
+  - PWA install, update, check, switch, and auto-update controls.
+  
+  ## Consequences
+  
+  - PWA version behavior becomes testable without relying only on browser installation state.
+  - Status and settings surfaces must report version state consistently.
+  - Persistence and shell specs must include version manifest behavior.

@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1034"
+number: 1034
+slug: "client-shell-registry-orchestration"
+title: "ADR-0034: Client shell registry orchestration"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall compose client shell behavior through registries for commands, views, action rail entries, and extension workspace surfaces. Shell interactions shall route through centralized open, close, toggle, and execute paths instead of ad hoc component-local wiring."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1034: Client shell registry orchestration
+  
+  ## Decision
+  
+  MdWrk shall compose client shell behavior through registries for commands, views, action rail entries, and extension workspace surfaces. Shell interactions shall route through centralized open, close, toggle, and execute paths instead of ad hoc component-local wiring.
+  
+  ## Scope
+  
+  - Command registry execution and command palette exposure.
+  - View registry open, close, toggle, modal, and main-view semantics.
+  - Action rail active state and command/view routing.
+  - Extension workspace surfaces that mount into panes, settings, or modal views.
+  
+  ## Consequences
+  
+  - Shell behavior can be tested as registry state and routing behavior.
+  - Extensions can contribute shell affordances without bypassing core shell contracts.
+  - SPECs must define registry semantics before features claim shell conformance.

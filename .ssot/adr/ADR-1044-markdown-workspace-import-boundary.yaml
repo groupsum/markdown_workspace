@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1044"
+number: 1044
+slug: "markdown-workspace-import-boundary"
+title: "ADR-0044: Markdown and workspace import boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall govern markdown file imports, desktop host-opened files, and workspace folder mounts as distinct import boundaries. Imported markdown content, mounted filesystem projects, and transient open-file sessions shall be represented explicitly so persistence, tab behavior, and failure states remain predictable."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1044: Markdown and workspace import boundary
+  
+  ## Decision
+  
+  MdWrk shall govern markdown file imports, desktop host-opened files, and workspace folder mounts as distinct import boundaries. Imported markdown content, mounted filesystem projects, and transient open-file sessions shall be represented explicitly so persistence, tab behavior, and failure states remain predictable.
+  
+  ## Scope
+  
+  - Browser markdown file import.
+  - Desktop open-markdown-file flows.
+  - Desktop launch files and host open events.
+  - Mounted project directory loading.
+  - Imported-file persistence and duplicate handling.
+  
+  ## Consequences
+  
+  - Import behavior can be tested independently from export and persistence behavior.
+  - Desktop filesystem projects can retain source paths while browser imports remain web-storage backed.
+  - SPECs must define encoding, naming, duplicate, and permission failure rules.

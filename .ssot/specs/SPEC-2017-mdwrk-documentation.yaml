@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2017"
 number: 2017
@@ -11,7 +11,11 @@ tags: []
 summary: "Define documentation requirements for new MdWrk behaviors."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded documentation spec with shell-specific, accessibility, profile, import/export, zoom, and extension documentation requirements."
+    at: "2026-04-21T09:20:23Z"
 references: []
 body: |-
   # MdWrk Documentation Specification
@@ -28,5 +32,15 @@ body: |-
   - View toolbar behavior must be documented.
   - Extension authoring, compatibility, publishing, installation, disabling, removal, and options must be documented.
   - Documentation must state when behavior is browser, PWA, desktop, or extension-specific.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Documentation must state when behavior is browser, PWA, Electron desktop, Android, extension-specific, or shared. Documentation must cover CM/GFM/CFM profile architecture, checkbox/list autocomplete, text wrap previewer behavior, view toolbar behavior, import/export behavior, zoom behavior, accessibility behavior, and extension authoring lifecycle.
+  
+  Docs must avoid claiming support for shell-specific behavior unless the matching SPEC, feature, tests, and evidence exist.
 spec_kind: "operational"
-adr_ids: []
+adr_ids:
+  - "adr:1018"
+  - "adr:1033"
+  - "adr:1041"
+  - "adr:1047"

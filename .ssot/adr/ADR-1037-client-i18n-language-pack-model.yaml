@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1037"
+number: 1037
+slug: "client-i18n-language-pack-model"
+title: "ADR-0037: Client i18n catalog and language-pack model"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall treat client i18n catalogs and portable language packs as first-class shell infrastructure. Locale resolution, fallback behavior, persisted locale selection, built-in catalog loading, and language pack lifecycle flows shall be governed as product behavior."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1037: Client i18n catalog and language-pack model
+  
+  ## Decision
+  
+  MdWrk shall treat client i18n catalogs and portable language packs as first-class shell infrastructure. Locale resolution, fallback behavior, persisted locale selection, built-in catalog loading, and language pack lifecycle flows shall be governed as product behavior.
+  
+  ## Scope
+  
+  - Core shell catalog registration and namespace loading.
+  - Locale fallback chains and persisted locale settings.
+  - Portable language pack import, activation, export, disable, remove, and bulk operations.
+  - Language Pack Studio behavior that affects shell language state.
+  
+  ## Consequences
+  
+  - Shell text is governed through catalogs rather than ad hoc literals.
+  - Language packs require lifecycle, persistence, and fallback evidence.
+  - Extension and settings surfaces must participate in the same i18n model.

@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1045"
+number: 1045
+slug: "preview-export-print-download-artifact-boundary"
+title: "ADR-0045: Preview, export, print, and download artifact boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall treat preview, HTML export, markdown download, print, and generated reports as derived artifact surfaces. These surfaces may disclose parser and previewer profile state, but they do not become canonical workspace state."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1045: Preview, export, print, and download artifact boundary
+  
+  ## Decision
+  
+  MdWrk shall treat preview, HTML export, markdown download, print, and generated reports as derived artifact surfaces. These surfaces may disclose parser and previewer profile state, but they do not become canonical workspace state.
+  
+  ## Scope
+  
+  - Preview reachability and active profile disclosure.
+  - HTML export and static document serialization.
+  - Markdown download behavior.
+  - Print behavior.
+  - Generated artifact naming, status, and failure handling.
+  
+  ## Consequences
+  
+  - Exported artifacts can be regenerated from canonical workspace content.
+  - Profile disclosure becomes part of export and preview conformance.
+  - Persistence specs must avoid treating generated artifacts as source-of-truth files unless explicitly imported back.

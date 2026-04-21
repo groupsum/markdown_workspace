@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2031"
+number: 2031
+slug: "browser-e2e-conformance-matrix"
+title: "Browser E2E Conformance Matrix"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Browser E2E conformance must verify shell boot, key chrome surfaces, inline HTML render, file-open baseline, preview/export reachability, settings and i18n reachability, and browser matrix probes for shell chrome, preview, and settings."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2031: Browser E2E Conformance Matrix
+  
+  ## Requirements
+  
+  Browser E2E conformance must verify shell boot, key chrome surfaces, inline HTML render, file-open baseline, preview/export reachability, settings and i18n reachability, and browser matrix probes for shell chrome, preview, and settings.
+  
+  ## Evidence
+  
+  Evidence must come from Playwright or equivalent browser automation and must identify the browser shell, route, viewport, and surface under test.
+spec_kind: "operational"
+adr_ids:
+  - "adr:1019"
+  - "adr:1024"
+  - "adr:1041"

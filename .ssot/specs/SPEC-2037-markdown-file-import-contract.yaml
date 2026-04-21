@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2037"
+number: 2037
+slug: "markdown-file-import-contract"
+title: "Markdown File Import Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Markdown file import must accept supported markdown file types, preserve readable names, handle duplicate imports deterministically, apply encoding assumptions consistently, create or update workspace state predictably, and report validation or read failures to the user."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2037: Markdown File Import Contract
+  
+  ## Requirements
+  
+  Markdown file import must accept supported markdown file types, preserve readable names, handle duplicate imports deterministically, apply encoding assumptions consistently, create or update workspace state predictably, and report validation or read failures to the user.
+  
+  ## Evidence
+  
+  Evidence must cover browser import, desktop host-open import, duplicate names, invalid input, imported project placement, and tab activation behavior.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1044"
+  - "adr:1032"

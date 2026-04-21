@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1030"
 number: 1030
@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk extensions shall be governed by a shared platform contract plus per-extension SPECs. The shared contract covers manifest shape, compatibility, contribution points, settings, installation, disabling, removal, publishing, and runtime isolation. Each bundled extension gets its own SPEC so feature planning can target it independently."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded extension platform ADR with accessibility, import/install lifecycle, and shell surface obligations."
+    at: "2026-04-21T09:08:25Z"
 references: []
 body: |-
   # ADR-1030: MdWrk extension platform and extension contracts
@@ -32,3 +36,9 @@ body: |-
   
   - All extension features must link to either the shared extension SPEC or the relevant per-extension SPEC.
   - Agent extensions that use OIDC must use explicit auth boundaries and must not inherit Git credentials implicitly.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Extension platform conformance shall include extension authoring, publishing, importing, installing, enabling, disabling, removing, settings retention, compatibility gates, runtime isolation, and capability permission checks.
+  
+  Extension UI surfaces must meet shell accessibility requirements and must compose with shell view modes, command palette entries, action rail entries, pane layouts, and settings schemas instead of defining incompatible UI islands.

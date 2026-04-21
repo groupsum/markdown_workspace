@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1036"
+number: 1036
+slug: "renderer-core-react-boundary"
+title: "ADR-0036: Renderer core and React renderer boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall separate markdown rendering responsibilities between renderer core and React renderer packages. Renderer core owns parsing, heading extraction, GFM rendering behavior, and HTML document serialization. React renderer owns component presentation, link interception, static HTML surfaces, and theme style bridging."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1036: Renderer core and React renderer boundary
+  
+  ## Decision
+  
+  MdWrk shall separate markdown rendering responsibilities between renderer core and React renderer packages. Renderer core owns parsing, heading extraction, GFM rendering behavior, and HTML document serialization. React renderer owns component presentation, link interception, static HTML surfaces, and theme style bridging.
+  
+  ## Scope
+  
+  - Frontmatter and heading parsing.
+  - GFM features, fenced code, and semantic HTML generation.
+  - Static HTML body and full document serialization.
+  - React rendering, link interception, and theme bridge behavior.
+  
+  ## Consequences
+  
+  - Preview and export behavior can share renderer core behavior.
+  - React surfaces can evolve without changing parser and serializer semantics.
+  - SPECs must distinguish renderer core obligations from React adapter obligations.

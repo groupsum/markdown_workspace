@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1040"
+number: 1040
+slug: "css-contract-tests-uix-conformance-gates"
+title: "ADR-0040: CSS contract tests as UIX conformance gates"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall treat CSS contract tests as UIX conformance gates for layout, theme, zoom, and editor-preview alignment behavior. Token contracts and CSS layout invariants shall be testable requirements, not visual preferences."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1040: CSS contract tests as UIX conformance gates
+  
+  ## Decision
+  
+  MdWrk shall treat CSS contract tests as UIX conformance gates for layout, theme, zoom, and editor-preview alignment behavior. Token contracts and CSS layout invariants shall be testable requirements, not visual preferences.
+  
+  ## Scope
+  
+  - Editor and markdown rhythm alignment tokens.
+  - Chassis fit-to-screen behavior.
+  - Header and status bar constraints.
+  - Zoom token behavior and theme availability.
+  - Markdown spacing constraints shared across themes.
+  
+  ## Consequences
+  
+  - UIX changes require contract evidence when they alter tokens or layout behavior.
+  - Themes must preserve shared contract variables even when visual treatments differ.
+  - CSS regressions can block UIX conformance claims.

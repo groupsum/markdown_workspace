@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2044"
+number: 2044
+slug: "responsive-layout-matrix-contract"
+title: "Responsive Layout Matrix Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Responsive layout behavior must be specified across browser, PWA, Electron desktop, Android when in scope, mobile portrait, mobile landscape, tablet, desktop, ultra-wide, and visual-keyboard modes. Breakpoint tokens, pane sizing, compaction, iconized controls, half-screen keyboard behavior, and orientation-specific shell rules must be stable."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2044: Responsive Layout Matrix Contract
+  
+  ## Requirements
+  
+  Responsive layout behavior must be specified across browser, PWA, Electron desktop, Android when in scope, mobile portrait, mobile landscape, tablet, desktop, ultra-wide, and visual-keyboard modes. Breakpoint tokens, pane sizing, compaction, iconized controls, half-screen keyboard behavior, and orientation-specific shell rules must be stable.
+  
+  ## Evidence
+  
+  Evidence must identify shell, viewport, orientation, breakpoint band, visual-keyboard state where relevant, and affected shell regions.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1048"
+  - "adr:1041"
+  - "adr:1031"

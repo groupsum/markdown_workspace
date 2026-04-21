@@ -170,8 +170,8 @@
     },
     {
       "id": "feat:client-action-rail",
-      "title": "Client feature: action-rail",
-      "description": "Feature inventory entry for client-action-rail.",
+      "title": "Client action rail",
+      "description": "Register, order, route, and expose action rail items through shell services.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -189,17 +189,21 @@
         "clm:client-action-rail"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx"
       ],
       "requires": [],
       "spec_ids": [
-        "spc:2007"
+        "spc:2007",
+        "spc:2019",
+        "spc:2028",
+        "spc:2042"
       ]
     },
     {
       "id": "feat:client-commands",
-      "title": "Client feature: commands",
-      "description": "Feature inventory entry for client-commands.",
+      "title": "Client command registry",
+      "description": "Register and execute client commands through the shell command registry.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -217,18 +221,20 @@
         "clm:client-commands"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+        "tst:apps-client-src-features-commands-commandregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx"
       ],
       "requires": [],
       "spec_ids": [
-        "spc:2007"
+        "spc:2007",
+        "spc:2019"
       ]
     },
     {
       "id": "feat:client-common",
-      "title": "Client feature: common",
-      "description": "Feature inventory entry for client-common.",
-      "implementation_status": "absent",
+      "title": "Client common runtime hooks",
+      "description": "Track common client hooks for app loading, tabs, and toasts.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -236,7 +242,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -244,15 +250,23 @@
       "claim_ids": [
         "clm:client-common"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2019",
+        "spc:2020",
+        "spc:2021"
+      ]
     },
     {
       "id": "feat:client-diagnostics",
-      "title": "Client feature: diagnostics",
-      "description": "Feature inventory entry for client-diagnostics.",
-      "implementation_status": "absent",
+      "title": "Client diagnostics",
+      "description": "Surface extension and shell diagnostics through client-visible views.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -260,7 +274,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -268,15 +282,20 @@
       "claim_ids": [
         "clm:client-diagnostics"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2021",
+        "spc:2030"
+      ]
     },
     {
       "id": "feat:client-editor",
-      "title": "Client feature: editor",
-      "description": "Feature inventory entry for client-editor.",
-      "implementation_status": "absent",
+      "title": "Client editor",
+      "description": "Expose editor core and React editor behavior in the client feature inventory.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -284,7 +303,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -292,14 +311,26 @@
       "claim_ids": [
         "clm:client-editor"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2016",
+        "spc:2022",
+        "spc:2023"
+      ]
     },
     {
       "id": "feat:client-extensions",
-      "title": "Client feature: extensions",
-      "description": "Feature inventory entry for client-extensions.",
+      "title": "Client extension surfaces",
+      "description": "Render extension workspace and settings surfaces through the client shell.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -317,17 +348,21 @@
         "clm:client-extensions"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
       ],
       "requires": [],
       "spec_ids": [
-        "spc:2010"
+        "spc:2010",
+        "spc:2030",
+        "spc:2042"
       ]
     },
     {
       "id": "feat:client-i18n",
-      "title": "Client feature: i18n",
-      "description": "Feature inventory entry for client-i18n.",
+      "title": "Client i18n",
+      "description": "Provide catalog registration, locale fallback, persistence, and language pack workflows.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -346,18 +381,20 @@
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
-        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
       ],
       "requires": [],
       "spec_ids": [
-        "spc:2014"
+        "spc:2014",
+        "spc:2025"
       ]
     },
     {
       "id": "feat:client-layout",
-      "title": "Client feature: layout",
-      "description": "Feature inventory entry for client-layout.",
-      "implementation_status": "absent",
+      "title": "Client layout",
+      "description": "Maintain UIX chassis layout, CSS alignment tokens, zoom, and shell chrome layout behavior.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -365,7 +402,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -373,14 +410,29 @@
       "claim_ids": [
         "clm:client-layout"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-zoombehavior.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2007",
+        "spc:2028",
+        "spc:2041",
+        "spc:2043",
+        "spc:2044"
+      ]
     },
     {
       "id": "feat:client-markdownprofiles",
-      "title": "Client feature: markdownprofiles",
-      "description": "Feature inventory entry for client-markdownprofiles.",
+      "title": "Client markdown profiles",
+      "description": "Persist and expose markdown profile configuration snapshots.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -403,14 +455,15 @@
       "requires": [],
       "spec_ids": [
         "spc:2003",
-        "spc:2005"
+        "spc:2005",
+        "spc:2040"
       ]
     },
     {
       "id": "feat:client-notifications",
-      "title": "Client feature: notifications",
-      "description": "Feature inventory entry for client-notifications.",
-      "implementation_status": "absent",
+      "title": "Client notifications",
+      "description": "Provide deduplicated and dismissible notification toasts.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -418,7 +471,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -426,15 +479,21 @@
       "claim_ids": [
         "clm:client-notifications"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2021",
+        "spc:2042",
+        "spc:2007"
+      ]
     },
     {
       "id": "feat:client-preferences",
-      "title": "Client feature: preferences",
-      "description": "Feature inventory entry for client-preferences.",
-      "implementation_status": "absent",
+      "title": "Client preferences",
+      "description": "Persist user-facing profile, settings, data, and version preferences.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -442,7 +501,7 @@
         "effective_release_id": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -450,14 +509,23 @@
       "claim_ids": [
         "clm:client-preferences"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:apps-client-src-pwa-versionmanifest.test.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ],
       "requires": [],
-      "spec_ids": []
+      "spec_ids": [
+        "spc:2008",
+        "spc:2026"
+      ]
     },
     {
       "id": "feat:client-settings",
-      "title": "Client feature: settings",
-      "description": "Feature inventory entry for client-settings.",
+      "title": "Client settings",
+      "description": "Render settings schemas and data settings actions across UI and persistence surfaces.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -476,18 +544,21 @@
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
-        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
       ],
       "requires": [],
       "spec_ids": [
         "spc:2008",
-        "spc:2007"
+        "spc:2007",
+        "spc:2030",
+        "spc:2026"
       ]
     },
     {
       "id": "feat:client-views",
-      "title": "Client feature: views",
-      "description": "Feature inventory entry for client-views.",
+      "title": "Client view registry",
+      "description": "Open, close, toggle, and coordinate modal and main workspace views.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -505,11 +576,15 @@
         "clm:client-views"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-views-viewregistry.test.ts"
+        "tst:apps-client-src-features-views-viewregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx"
       ],
       "requires": [],
       "spec_ids": [
-        "spc:2007"
+        "spc:2007",
+        "spc:2019",
+        "spc:2030",
+        "spc:2043"
       ]
     },
     {
@@ -567,15 +642,15 @@
     {
       "id": "feat:commonmark-conformance-profile",
       "title": "CommonMark Markdown profile",
-      "description": "Treat CommonMark as its own targetable Markdown profile and conformance baseline for parser, renderer, preview, and export.",
-      "implementation_status": "absent",
+      "description": "Track CommonMark baseline behavior covered by current renderer/editor smoke evidence.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -583,15 +658,21 @@
       "spec_ids": [
         "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:custom-flavored-markdown-profile",
       "title": "CFM Markdown profile",
-      "description": "Treat Custom Flavored Markdown as the MdWrk additive Markdown profile above CommonMark and GFM.",
-      "implementation_status": "absent",
+      "description": "Track the CFM profile as an additive profile above CommonMark and GFM.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -607,8 +688,15 @@
         "spc:2005",
         "spc:2003"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
       "requires": [
         "feat:gfm-profile",
         "feat:commonmark-conformance-profile"
@@ -641,24 +729,30 @@
       "id": "feat:desktop-folder-mounting",
       "title": "Desktop folder mounting and filesystem loading",
       "description": "Mount folders and load content through desktop filesystem-backed APIs.",
-      "implementation_status": "absent",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2006",
-        "spc:2008"
+        "spc:2008",
+        "spc:2038",
+        "spc:2034"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -712,48 +806,59 @@
     {
       "id": "feat:extension-platform",
       "title": "Extension platform lifecycle",
-      "description": "Shared extension creation, compatibility, options, publishing, install, import, disable, remove, and runtime lifecycle.",
-      "implementation_status": "absent",
+      "description": "Govern extension runtime lifecycle, manifest compatibility, config persistence, and isolation.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
-        "slot": null,
-        "target_claim_tier": "T2",
-        "target_lifecycle_stage": "active"
-      },
-      "spec_ids": [
-        "spc:2010"
-      ],
-      "claim_ids": [],
-      "test_ids": [],
-      "requires": []
-    },
-    {
-      "id": "feat:extension-manager",
-      "title": "Extension Manager extension",
-      "description": "Extension Manager extension feature coverage.",
-      "implementation_status": "absent",
-      "lifecycle": {
-        "stage": "active",
-        "replacement_feature_ids": [],
-        "note": null
-      },
-      "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2010",
-        "spc:2011"
+        "spc:2029"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager",
+      "title": "Extension manager",
+      "description": "Manage bundled extension entries, inventory, panes, settings, permissions, compatibility, health, and diagnostics.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -785,15 +890,15 @@
     {
       "id": "feat:extension-theme-studio",
       "title": "Theme Studio extension",
-      "description": "Theme Studio extension and theme-token compatibility.",
-      "implementation_status": "absent",
+      "description": "Expose Theme Studio as an extension workspace and settings surface.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -801,34 +906,48 @@
       "spec_ids": [
         "spc:2010",
         "spc:2013",
-        "spc:2007"
+        "spc:2007",
+        "spc:2030"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:extension-language-pack-studio",
       "title": "Language Pack Studio extension",
-      "description": "Language Pack Studio extension and language-pack compatibility.",
-      "implementation_status": "absent",
+      "description": "Import, activate, export, disable, re-enable, and remove language pack artifacts.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2010",
-        "spc:2014"
+        "spc:2014",
+        "spc:2025",
+        "spc:2030"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1494,25 +1613,31 @@
     {
       "id": "feat:markdown-file-import",
       "title": "Markdown file import",
-      "description": "Import markdown files into the workspace.",
-      "implementation_status": "absent",
+      "description": "Import markdown files through browser and native shell pathways while preserving source metadata.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2008",
-        "spc:2003"
+        "spc:2003",
+        "spc:2037",
+        "spc:2038"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1541,25 +1666,34 @@
     {
       "id": "feat:mdwrk-shell-fixed-fit-screen",
       "title": "MdWrk shell fixed fit-to-screen",
-      "description": "Fix app header and status bar fixed positioning and screen fit.",
-      "implementation_status": "absent",
+      "description": "Keep app header and status chrome inside the shell chassis while panes own scrolling.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2007",
-        "spc:2006"
+        "spc:2006",
+        "spc:2028",
+        "spc:2043",
+        "spc:2044"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
       "requires": []
     },
     {
@@ -1589,24 +1723,31 @@
       "id": "feat:workspace-persistence",
       "title": "Workspace persistence",
       "description": "Persist workspace state, imported files, mounted folders, and tabs according to shell backend.",
-      "implementation_status": "absent",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2008",
-        "spc:2006"
+        "spc:2006",
+        "spc:2020",
+        "spc:2038"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1808,8 +1949,8 @@
     {
       "id": "feat:gfm-profile",
       "title": "GFM Markdown profile",
-      "description": "Treat GitHub Flavored Markdown as its own targetable Markdown profile layered on CommonMark.",
-      "implementation_status": "absent",
+      "description": "Track GitHub Flavored Markdown behavior covered by current renderer evidence.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1823,10 +1964,17 @@
       },
       "spec_ids": [
         "spc:2003",
-        "spc:2005"
+        "spc:2005",
+        "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
       "requires": [
         "feat:commonmark-conformance-profile"
       ]
@@ -1834,15 +1982,15 @@
     {
       "id": "feat:oidc-adapter",
       "title": "OIDC adapter",
-      "description": "Shared OIDC adapter for provider configuration, token lifecycle, auth state, and fail-closed behavior.",
-      "implementation_status": "absent",
+      "description": "Shared OIDC adapter for browser callback parsing, state validation, popup forwarding, credential storage, and fail-closed behavior.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1850,10 +1998,15 @@
       "spec_ids": [
         "spc:2018",
         "spc:2009",
-        "spc:2008"
+        "spc:2008",
+        "spc:2027"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ],
       "requires": []
     },
     {
@@ -1981,15 +2134,15 @@
     {
       "id": "feat:profile-boundary-resolution",
       "title": "Profile boundary resolution",
-      "description": "Define SSOT profile bundles for CM, GFM, CFM, CFM parser behavior, and CFM previewer behavior.",
-      "implementation_status": "absent",
+      "description": "Resolve Markdown profile boundaries for CM, GFM, and CFM configuration.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2000,8 +2153,15 @@
         "spc:2004",
         "spc:2005"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2033,15 +2193,15 @@
     {
       "id": "feat:preview-export-profile-disclosure",
       "title": "Preview export profile disclosure",
-      "description": "Ensure preview and export report active parser and previewer profiles.",
-      "implementation_status": "absent",
+      "description": "Track disclosure of parser and previewer profiles across preview and export surfaces.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2049,24 +2209,30 @@
       "spec_ids": [
         "spc:2003",
         "spc:2005",
-        "spc:2008"
+        "spc:2008",
+        "spc:2039",
+        "spc:2040"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:markdown-profile-settings-persistence",
       "title": "Markdown profile settings persistence",
-      "description": "Persist profile selections across browser, PWA, and desktop shells.",
-      "implementation_status": "absent",
+      "description": "Persist markdown profile selections and emit stable configuration snapshots.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2075,8 +2241,12 @@
         "spc:2003",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-markdownprofiles"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ],
       "requires": []
     },
     {
@@ -2105,25 +2275,30 @@
     {
       "id": "feat:desktop-preload-host-api",
       "title": "Desktop preload host API",
-      "description": "Govern preload and host APIs exposed to the desktop shell.",
-      "implementation_status": "absent",
+      "description": "Govern host APIs exposed through desktop preload and client shell adapters.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2006",
-        "spc:2010"
+        "spc:2010",
+        "spc:2033"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2177,24 +2352,32 @@
     {
       "id": "feat:uix-breakpoint-token-contract",
       "title": "UIX breakpoint token contract",
-      "description": "Define shared CSS breakpoint and layout tokens.",
-      "implementation_status": "absent",
+      "description": "Define and validate CSS breakpoint and responsive layout token coverage.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
-        "spc:2007"
+        "spc:2007",
+        "spc:2028",
+        "spc:2044"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
+      ],
       "requires": []
     },
     {
@@ -2223,25 +2406,32 @@
     {
       "id": "feat:uix-extension-view-modes",
       "title": "UIX extension view modes",
-      "description": "Define extension view modes, compact states, and pane placement.",
-      "implementation_status": "absent",
+      "description": "Render extension view modes, compact states, pane placement, and workspace sidebar controls.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2007",
-        "spc:2010"
+        "spc:2010",
+        "spc:2030",
+        "spc:2043"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2293,49 +2483,60 @@
     {
       "id": "feat:workspace-open-tabs-persistence",
       "title": "Workspace open tabs persistence",
-      "description": "Persist open tabs distinctly from workspace files.",
-      "implementation_status": "absent",
+      "description": "Track open tabs distinctly from workspace files, with current coverage for tab semantics.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2008",
-        "spc:2006"
+        "spc:2006",
+        "spc:2020"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ],
       "requires": []
     },
     {
       "id": "feat:extension-settings-namespace",
       "title": "Extension settings namespace",
-      "description": "Namespace extension settings by extension ID and compatibility version.",
-      "implementation_status": "absent",
+      "description": "Persist extension configuration under namespaced compatibility-aware keys.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2008",
-        "spc:2010"
+        "spc:2010",
+        "spc:2029"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2365,94 +2566,118 @@
     {
       "id": "feat:extension-manifest-compatibility-gate",
       "title": "Extension manifest compatibility gate",
-      "description": "Validate manifest compatibility before activation.",
-      "implementation_status": "absent",
+      "description": "Validate manifests and reject incompatible extensions before activation.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
-        "slot": null,
-        "target_claim_tier": "T2",
-        "target_lifecycle_stage": "active"
-      },
-      "spec_ids": [
-        "spc:2010"
-      ],
-      "claim_ids": [],
-      "test_ids": [],
-      "requires": []
-    },
-    {
-      "id": "feat:extension-capability-permissions",
-      "title": "Extension capability permissions",
-      "description": "Define and enforce extension capability permissions.",
-      "implementation_status": "absent",
-      "lifecycle": {
-        "stage": "active",
-        "replacement_feature_ids": [],
-        "note": null
-      },
-      "plan": {
-        "horizon": "backlog",
-        "slot": null,
-        "target_claim_tier": "T2",
-        "target_lifecycle_stage": "active"
-      },
-      "spec_ids": [
-        "spc:2010"
-      ],
-      "claim_ids": [],
-      "test_ids": [],
-      "requires": []
-    },
-    {
-      "id": "feat:extension-settings-schema-rendering",
-      "title": "Extension settings schema rendering",
-      "description": "Render extension options from schemas consistently.",
-      "implementation_status": "absent",
-      "lifecycle": {
-        "stage": "active",
-        "replacement_feature_ids": [],
-        "note": null
-      },
-      "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
         "spc:2010",
-        "spc:2011"
+        "spc:2029"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
-      "id": "feat:extension-runtime-isolation",
-      "title": "Extension runtime isolation",
-      "description": "Fail closed on runtime errors without breaking other extensions.",
-      "implementation_status": "absent",
+      "id": "feat:extension-capability-permissions",
+      "title": "Extension capability permissions",
+      "description": "Display and enforce granted and missing extension permissions.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
-        "spc:2010"
+        "spc:2010",
+        "spc:2030"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-settings-schema-rendering",
+      "title": "Extension settings schema rendering",
+      "description": "Render and persist schema-driven extension settings forms.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-settings",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-runtime-isolation",
+      "title": "Extension runtime isolation",
+      "description": "Contain runtime errors so failed extensions do not break other extensions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2029"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2576,6 +2801,788 @@
       "claim_ids": [],
       "test_ids": [],
       "requires": []
+    },
+    {
+      "id": "feat:client-shell-registry-orchestration",
+      "title": "Client shell registry orchestration",
+      "description": "Orchestrate action rail, command registry, view registry, and shell view state through the client runtime registry.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2019",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "tst:apps-client-src-features-commands-commandregistry.test.ts",
+        "tst:apps-client-src-features-views-viewregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-tab-management",
+      "title": "Workspace tab management",
+      "description": "Open, de-duplicate, activate, and close workspace file tabs.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2020",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-project-loading",
+      "title": "Workspace project loading",
+      "description": "Load active projects without duplicate load effects and preserve loaded project state.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2020",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-launch-markdown-import",
+      "title": "Desktop launch markdown import",
+      "description": "Import launch-opened markdown files from the desktop shell without resetting project or tab state.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2037",
+        "spc:2038",
+        "spc:2034",
+        "spc:2033",
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:toast-notification-behavior",
+      "title": "Toast notification behavior",
+      "description": "Deduplicate toast messages and provide accessible dismissal behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2021",
+        "spc:2042",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-notifications"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-core-command-model",
+      "title": "Editor core command model",
+      "description": "Apply editor core commands, history, selection, roundtrip, and transform semantics.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2022",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:react-markdown-editor-surface",
+      "title": "React Markdown editor surface",
+      "description": "Expose controlled and uncontrolled editor surfaces, keyboard behavior, selection state, and line gutter controls.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2023",
+        "spc:2016",
+        "spc:2042"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:markdown-renderer-core",
+      "title": "Markdown renderer core",
+      "description": "Parse and render markdown, headings, GFM constructs, fenced code, and HTML documents in the renderer core.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2024",
+        "spc:2004",
+        "spc:2005"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:markdown-renderer-react",
+      "title": "Markdown renderer React surface",
+      "description": "Render markdown and static HTML through the React renderer surface with link interception and theme bridging.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:pwa-version-manifest",
+      "title": "PWA version manifest",
+      "description": "Resolve selected PWA versions, compatibility fallback, and update-state labels from the version manifest.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2026",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-preferences"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-pwa-versionmanifest.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:oidc-browser-flow",
+      "title": "OIDC browser flow",
+      "description": "Complete browser OIDC callbacks, stale-session cleanup, state validation, credential storage, and popup forwarding.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2027",
+        "spc:2018",
+        "spc:2009"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-css-token-chassis-contract",
+      "title": "UIX CSS token and chassis contract",
+      "description": "Keep shared CSS tokens, line rhythm, app header, and chassis fit-to-screen behavior stable.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2028",
+        "spc:2043",
+        "spc:2044",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-zoom-scale",
+      "title": "UIX zoom and scale behavior",
+      "description": "Constrain zoom bounds and separate UI scale from chassis dimensions across theme stylesheets.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2041",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-zoombehavior.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:accessibility-shell-baseline",
+      "title": "Accessibility shell baseline",
+      "description": "Maintain shell-visible ARIA labels, pressed state, and dismissible UI controls across core shell surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2042",
+        "spc:2007",
+        "spc:2010"
+      ],
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:browser-e2e-conformance-matrix",
+      "title": "Browser E2E conformance matrix",
+      "description": "Keep browser, static file, inline HTML, shell, settings, and preview/export smoke surfaces reachable.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2031"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:shell-evidence-matrix",
+      "title": "Shell evidence matrix",
+      "description": "Collect shell parity and browser evidence across runtime labels, chrome, static file, and inline HTML paths.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2036",
+        "spc:2031"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-runtime-activation-lifecycle",
+      "title": "Extension runtime activation lifecycle",
+      "description": "Validate manifests and govern extension activation, deactivation, lazy activation, config persistence, compatibility, and runtime error containment.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2029",
+        "spc:2010"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager-pane-layout",
+      "title": "Extension manager pane layout",
+      "description": "Render extension manager inventory and pane-only workspace layout with sidebar and split controls.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2030",
+        "spc:2011",
+        "spc:2043"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager-enabled-state-persistence",
+      "title": "Extension manager enabled-state persistence",
+      "description": "Persist enabled and disabled extension state through runtime restarts.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2030",
+        "spc:2011",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager-health-diagnostics",
+      "title": "Extension manager health diagnostics",
+      "description": "Expose extension health and diagnostics when activation fails.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2030",
+        "spc:2011"
+      ],
+      "claim_ids": [
+        "clm:client-diagnostics",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:shell-taxonomy-runtime-detection",
+      "title": "Shell taxonomy and runtime detection",
+      "description": "Expose runtime shell labels, build identifiers, update-ready status, and shell-specific heuristics.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2032",
+        "spc:2036",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:host-capability-adapter",
+      "title": "Host capability adapter",
+      "description": "Route desktop host file capabilities through a shell adapter boundary.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2033",
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:native-filesystem-shell-behavior",
+      "title": "Native filesystem shell behavior",
+      "description": "Cover native shell markdown file open and static filesystem rendering behavior.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2034",
+        "spc:2033",
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-export-artifact-generation",
+      "title": "Preview export artifact generation",
+      "description": "Keep preview/export surfaces and HTML artifact generation reachable.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2039",
+        "spc:2024",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-responsive-layout-matrix",
+      "title": "UIX responsive layout matrix",
+      "description": "Track responsive layout behavior across browser matrix, shell parity, file, and inline HTML evidence.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2044",
+        "spc:2031",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:android-shell-support",
+      "title": "Android shell support",
+      "description": "Define and track the Android shell contract as a separate native shell target.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2035"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
     }
   ],
   "tests": [
@@ -2586,10 +3593,20 @@
       "kind": "unit",
       "path": "apps/client/hooks/useApp.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:workspace-project-loading",
+        "feat:desktop-launch-markdown-import",
+        "feat:host-capability-adapter",
+        "feat:native-filesystem-shell-behavior",
+        "feat:client-common",
+        "feat:markdown-file-import",
+        "feat:workspace-persistence",
+        "feat:desktop-preload-host-api",
+        "feat:desktop-folder-mounting"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-common"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx"
@@ -2602,10 +3619,15 @@
       "kind": "unit",
       "path": "apps/client/hooks/useTabManager.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:workspace-tab-management",
+        "feat:client-common",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-common"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-usetabmanager.test.tsx"
@@ -2618,10 +3640,18 @@
       "kind": "unit",
       "path": "apps/client/hooks/useToast.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:toast-notification-behavior",
+        "feat:accessibility-shell-baseline",
+        "feat:client-notifications",
+        "feat:client-common"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-notifications",
+        "clm:client-layout",
+        "clm:client-extensions",
+        "clm:client-common"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-usetoast.test.tsx"
@@ -2634,7 +3664,9 @@
       "kind": "unit",
       "path": "apps/client/services/oidc.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:oidc-browser-flow",
+        "feat:oidc-adapter"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -2650,10 +3682,13 @@
       "kind": "unit",
       "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
       "feature_ids": [
-        "feat:client-action-rail"
+        "feat:client-action-rail",
+        "feat:client-shell-registry-orchestration"
       ],
       "claim_ids": [
-        "clm:client-action-rail"
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts"
@@ -2666,10 +3701,13 @@
       "kind": "unit",
       "path": "apps/client/src/features/commands/commandRegistry.test.ts",
       "feature_ids": [
-        "feat:client-commands"
+        "feat:client-commands",
+        "feat:client-shell-registry-orchestration"
       ],
       "claim_ids": [
-        "clm:client-commands"
+        "clm:client-commands",
+        "clm:client-action-rail",
+        "clm:client-views"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-commands-commandregistry.test.ts"
@@ -2682,10 +3720,19 @@
       "kind": "unit",
       "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
       "feature_ids": [
-        "feat:client-extensions"
+        "feat:client-extensions",
+        "feat:accessibility-shell-baseline",
+        "feat:extension-manager-pane-layout",
+        "feat:extension-manager",
+        "feat:extension-theme-studio",
+        "feat:extension-language-pack-studio",
+        "feat:uix-extension-view-modes"
       ],
       "claim_ids": [
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-i18n"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -2714,10 +3761,12 @@
       "kind": "unit",
       "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
       "feature_ids": [
-        "feat:client-i18n"
+        "feat:client-i18n",
+        "feat:extension-language-pack-studio"
       ],
       "claim_ids": [
-        "clm:client-i18n"
+        "clm:client-i18n",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
@@ -2730,10 +3779,16 @@
       "kind": "unit",
       "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
       "feature_ids": [
-        "feat:client-markdownprofiles"
+        "feat:client-markdownprofiles",
+        "feat:client-preferences",
+        "feat:markdown-profile-settings-persistence",
+        "feat:profile-boundary-resolution",
+        "feat:custom-flavored-markdown-profile"
       ],
       "claim_ids": [
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:client-preferences",
+        "clm:cross-cutting"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
@@ -2746,10 +3801,12 @@
       "kind": "unit",
       "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
       "feature_ids": [
-        "feat:client-settings"
+        "feat:client-settings",
+        "feat:client-preferences"
       ],
       "claim_ids": [
-        "clm:client-settings"
+        "clm:client-settings",
+        "clm:client-preferences"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
@@ -2762,10 +3819,14 @@
       "kind": "unit",
       "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
       "feature_ids": [
-        "feat:client-settings"
+        "feat:client-settings",
+        "feat:client-preferences",
+        "feat:extension-settings-schema-rendering"
       ],
       "claim_ids": [
-        "clm:client-settings"
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
@@ -2778,10 +3839,13 @@
       "kind": "unit",
       "path": "apps/client/src/features/views/viewRegistry.test.ts",
       "feature_ids": [
-        "feat:client-views"
+        "feat:client-views",
+        "feat:client-shell-registry-orchestration"
       ],
       "claim_ids": [
-        "clm:client-views"
+        "clm:client-views",
+        "clm:client-action-rail",
+        "clm:client-commands"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-views-viewregistry.test.ts"
@@ -2794,10 +3858,13 @@
       "kind": "unit",
       "path": "apps/client/src/pwa/versionManifest.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:pwa-version-manifest",
+        "feat:client-preferences"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-preferences"
       ],
       "evidence_ids": [
         "evd:apps-client-src-pwa-versionmanifest.test.ts"
@@ -2810,10 +3877,21 @@
       "kind": "unit",
       "path": "apps/client/src/shell/ActionRailHost.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:client-shell-registry-orchestration",
+        "feat:accessibility-shell-baseline",
+        "feat:client-action-rail",
+        "feat:client-commands",
+        "feat:client-views"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:apps-client-src-shell-actionrailhost.test.tsx"
@@ -2826,10 +3904,14 @@
       "kind": "unit",
       "path": "apps/client/styles/alignmentTokens.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:client-layout",
+        "feat:uix-breakpoint-token-contract"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-alignmenttokens.test.ts"
@@ -2842,10 +3924,15 @@
       "kind": "unit",
       "path": "apps/client/styles/chassisFitToScreen.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:client-layout",
+        "feat:uix-breakpoint-token-contract",
+        "feat:mdwrk-shell-fixed-fit-screen"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-chassisfittoscreen.test.ts"
@@ -2858,10 +3945,13 @@
       "kind": "unit",
       "path": "apps/client/styles/zoomBehavior.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-zoom-scale",
+        "feat:client-layout"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-zoombehavior.test.ts"
@@ -2874,10 +3964,23 @@
       "kind": "unit",
       "path": "apps/client/tests/phase7-shell-parity.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:client-shell-registry-orchestration",
+        "feat:uix-css-token-chassis-contract",
+        "feat:accessibility-shell-baseline",
+        "feat:shell-evidence-matrix",
+        "feat:shell-taxonomy-runtime-detection",
+        "feat:uix-responsive-layout-matrix",
+        "feat:client-layout"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-phase7-shell-parity.test.tsx"
@@ -2890,10 +3993,19 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:shell-evidence-matrix",
+        "feat:native-filesystem-shell-behavior",
+        "feat:uix-responsive-layout-matrix",
+        "feat:client-layout",
+        "feat:mdwrk-shell-fixed-fit-screen"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-common"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-file-file-baseline.spec.ts"
@@ -2906,10 +4018,17 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright-inline/inline.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:shell-evidence-matrix",
+        "feat:uix-responsive-layout-matrix",
+        "feat:client-layout",
+        "feat:mdwrk-shell-fixed-fit-screen"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-inline-inline.spec.ts"
@@ -2922,10 +4041,18 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:shell-evidence-matrix",
+        "feat:shell-taxonomy-runtime-detection",
+        "feat:uix-responsive-layout-matrix",
+        "feat:client-layout",
+        "feat:uix-breakpoint-token-contract"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-browser-matrix.spec.ts"
@@ -2938,7 +4065,10 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright/preview-export.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -2954,10 +4084,19 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:client-i18n",
+        "feat:client-settings",
+        "feat:client-preferences",
+        "feat:extension-theme-studio"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-i18n",
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts"
@@ -2970,10 +4109,16 @@
       "kind": "e2e",
       "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:uix-css-token-chassis-contract",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:shell-evidence-matrix",
+        "feat:shell-taxonomy-runtime-detection",
+        "feat:client-layout"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -2986,10 +4131,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:editor-core-command-model",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-commands.test.ts"
@@ -3002,10 +4150,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:editor-core-command-model",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-history.test.ts"
@@ -3018,10 +4169,16 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:editor-core-command-model",
+        "feat:markdown-renderer-core",
+        "feat:client-editor",
+        "feat:commonmark-conformance-profile"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:client-markdownprofiles"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
@@ -3034,10 +4191,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:editor-core-command-model",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-selection.test.ts"
@@ -3050,10 +4210,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:editor-core-command-model",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts"
@@ -3066,10 +4229,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:react-markdown-editor-surface",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-component.test.tsx"
@@ -3082,10 +4248,13 @@
       "kind": "unit",
       "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:react-markdown-editor-surface",
+        "feat:client-editor"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
@@ -3098,10 +4267,28 @@
       "kind": "unit",
       "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:accessibility-shell-baseline",
+        "feat:extension-manager-pane-layout",
+        "feat:extension-manager-enabled-state-persistence",
+        "feat:extension-manager-health-diagnostics",
+        "feat:client-extensions",
+        "feat:client-diagnostics",
+        "feat:extension-manager",
+        "feat:extension-manifest-compatibility-gate",
+        "feat:extension-capability-permissions",
+        "feat:extension-settings-schema-rendering",
+        "feat:extension-runtime-isolation",
+        "feat:extension-settings-namespace",
+        "feat:uix-extension-view-modes"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions",
+        "clm:client-diagnostics",
+        "clm:client-settings"
       ],
       "evidence_ids": [
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
@@ -3114,10 +4301,17 @@
       "kind": "unit",
       "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:extension-runtime-activation-lifecycle",
+        "feat:client-extensions",
+        "feat:extension-platform",
+        "feat:extension-manifest-compatibility-gate",
+        "feat:extension-runtime-isolation",
+        "feat:extension-settings-namespace"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-extensions"
       ],
       "evidence_ids": [
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts"
@@ -3130,10 +4324,17 @@
       "kind": "unit",
       "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:markdown-renderer-core",
+        "feat:preview-export-artifact-generation",
+        "feat:profile-boundary-resolution",
+        "feat:commonmark-conformance-profile",
+        "feat:gfm-profile",
+        "feat:custom-flavored-markdown-profile"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles"
       ],
       "evidence_ids": [
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts"
@@ -3146,10 +4347,16 @@
       "kind": "unit",
       "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:markdown-renderer-react",
+        "feat:preview-export-artifact-generation",
+        "feat:profile-boundary-resolution",
+        "feat:gfm-profile",
+        "feat:custom-flavored-markdown-profile"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles"
       ],
       "evidence_ids": [
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
@@ -3165,7 +4372,19 @@
       "kind": "capability",
       "description": "Cross-cutting repository feature set is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:cross-cutting"
+        "feat:cross-cutting",
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:oidc-browser-flow",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:shell-evidence-matrix",
+        "feat:preview-export-artifact-generation",
+        "feat:oidc-adapter",
+        "feat:profile-boundary-resolution",
+        "feat:commonmark-conformance-profile",
+        "feat:gfm-profile",
+        "feat:custom-flavored-markdown-profile",
+        "feat:preview-export-profile-disclosure"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -3194,7 +4413,8 @@
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -3223,7 +4443,8 @@
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
       ]
     },
     {
@@ -3234,13 +4455,22 @@
       "kind": "capability",
       "description": "Client feature: action-rail is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-action-rail"
+        "feat:client-action-rail",
+        "feat:client-shell-registry-orchestration"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "tst:apps-client-src-features-commands-commandregistry.test.ts",
+        "tst:apps-client-src-features-views-viewregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
       ]
     },
     {
@@ -3251,13 +4481,22 @@
       "kind": "capability",
       "description": "Client feature: commands is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-commands"
+        "feat:client-commands",
+        "feat:client-shell-registry-orchestration"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+        "tst:apps-client-src-features-commands-commandregistry.test.ts",
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "tst:apps-client-src-features-views-viewregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-src-features-commands-commandregistry.test.ts"
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
       ]
     },
     {
@@ -3268,10 +4507,30 @@
       "kind": "capability",
       "description": "Client feature: common is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-common"
+        "feat:client-common",
+        "feat:workspace-tab-management",
+        "feat:workspace-project-loading",
+        "feat:desktop-launch-markdown-import",
+        "feat:host-capability-adapter",
+        "feat:native-filesystem-shell-behavior",
+        "feat:markdown-file-import",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence",
+        "feat:desktop-preload-host-api",
+        "feat:desktop-folder-mounting"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evd:apps-client-hooks-useapp.test.tsx",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-hooks-usetoast.test.tsx"
+      ]
     },
     {
       "id": "clm:client-diagnostics",
@@ -3281,10 +4540,15 @@
       "kind": "capability",
       "description": "Client feature: diagnostics is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-diagnostics"
+        "feat:client-diagnostics",
+        "feat:extension-manager-health-diagnostics"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
     },
     {
       "id": "clm:client-editor",
@@ -3294,10 +4558,28 @@
       "kind": "capability",
       "description": "Client feature: editor is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-core-command-model",
+        "feat:react-markdown-editor-surface"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ]
     },
     {
       "id": "clm:client-extensions",
@@ -3307,13 +4589,44 @@
       "kind": "capability",
       "description": "Client feature: extensions is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-extensions"
+        "feat:client-extensions",
+        "feat:accessibility-shell-baseline",
+        "feat:extension-runtime-activation-lifecycle",
+        "feat:extension-manager-pane-layout",
+        "feat:extension-manager-enabled-state-persistence",
+        "feat:extension-manager-health-diagnostics",
+        "feat:extension-platform",
+        "feat:extension-manager",
+        "feat:extension-manifest-compatibility-gate",
+        "feat:extension-capability-permissions",
+        "feat:extension-settings-schema-rendering",
+        "feat:extension-runtime-isolation",
+        "feat:extension-settings-namespace",
+        "feat:extension-theme-studio",
+        "feat:extension-language-pack-studio",
+        "feat:uix-extension-view-modes"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
       ],
       "evidence_ids": [
-        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
       ]
     },
     {
@@ -3324,15 +4637,20 @@
       "kind": "capability",
       "description": "Client feature: i18n is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-i18n"
+        "feat:client-i18n",
+        "feat:extension-language-pack-studio"
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
-        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
-        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ]
     },
     {
@@ -3343,10 +4661,44 @@
       "kind": "capability",
       "description": "Client feature: layout is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-layout"
+        "feat:client-layout",
+        "feat:uix-css-token-chassis-contract",
+        "feat:uix-zoom-scale",
+        "feat:accessibility-shell-baseline",
+        "feat:shell-evidence-matrix",
+        "feat:shell-taxonomy-runtime-detection",
+        "feat:uix-responsive-layout-matrix",
+        "feat:uix-breakpoint-token-contract",
+        "feat:mdwrk-shell-fixed-fit-screen"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+        "tst:apps-client-styles-zoombehavior.test.ts",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-alignmenttokens.test.ts",
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+        "evd:apps-client-styles-zoombehavior.test.ts",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
     },
     {
       "id": "clm:client-markdownprofiles",
@@ -3356,13 +4708,24 @@
       "kind": "capability",
       "description": "Client feature: markdownprofiles is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-markdownprofiles"
+        "feat:client-markdownprofiles",
+        "feat:markdown-profile-settings-persistence",
+        "feat:profile-boundary-resolution",
+        "feat:commonmark-conformance-profile",
+        "feat:gfm-profile",
+        "feat:custom-flavored-markdown-profile"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
       ],
       "evidence_ids": [
-        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
       ]
     },
     {
@@ -3373,10 +4736,24 @@
       "kind": "capability",
       "description": "Client feature: notifications is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-notifications"
+        "feat:client-notifications",
+        "feat:toast-notification-behavior",
+        "feat:accessibility-shell-baseline"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
     },
     {
       "id": "clm:client-preferences",
@@ -3386,10 +4763,23 @@
       "kind": "capability",
       "description": "Client feature: preferences is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-preferences"
+        "feat:client-preferences",
+        "feat:pwa-version-manifest"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-src-pwa-versionmanifest.test.ts",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-pwa-versionmanifest.test.ts",
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ]
     },
     {
       "id": "clm:client-settings",
@@ -3399,15 +4789,20 @@
       "kind": "capability",
       "description": "Client feature: settings is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-settings"
+        "feat:client-settings",
+        "feat:extension-settings-schema-rendering"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
-        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
-        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
       ]
     },
     {
@@ -3418,13 +4813,22 @@
       "kind": "capability",
       "description": "Client feature: views is represented by repository tests and source surfaces.",
       "feature_ids": [
-        "feat:client-views"
+        "feat:client-views",
+        "feat:client-shell-registry-orchestration"
       ],
       "test_ids": [
-        "tst:apps-client-src-features-views-viewregistry.test.ts"
+        "tst:apps-client-src-features-views-viewregistry.test.ts",
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "tst:apps-client-src-features-commands-commandregistry.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-src-features-views-viewregistry.test.ts"
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
       ]
     }
   ],
@@ -3437,7 +4841,8 @@
       "tier": "T2",
       "path": "apps/client/hooks/useApp.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-common"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx"
@@ -3451,7 +4856,8 @@
       "tier": "T2",
       "path": "apps/client/hooks/useTabManager.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-common"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetabmanager.test.tsx"
@@ -3465,7 +4871,11 @@
       "tier": "T2",
       "path": "apps/client/hooks/useToast.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-notifications",
+        "clm:client-layout",
+        "clm:client-extensions",
+        "clm:client-common"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetoast.test.tsx"
@@ -3493,7 +4903,9 @@
       "tier": "T2",
       "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
       "claim_ids": [
-        "clm:client-action-rail"
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views"
       ],
       "test_ids": [
         "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
@@ -3507,7 +4919,9 @@
       "tier": "T2",
       "path": "apps/client/src/features/commands/commandRegistry.test.ts",
       "claim_ids": [
-        "clm:client-commands"
+        "clm:client-commands",
+        "clm:client-action-rail",
+        "clm:client-views"
       ],
       "test_ids": [
         "tst:apps-client-src-features-commands-commandregistry.test.ts"
@@ -3521,7 +4935,10 @@
       "tier": "T2",
       "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
       "claim_ids": [
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-i18n"
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -3549,7 +4966,8 @@
       "tier": "T2",
       "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
       "claim_ids": [
-        "clm:client-i18n"
+        "clm:client-i18n",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
@@ -3563,7 +4981,9 @@
       "tier": "T2",
       "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
       "claim_ids": [
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:client-preferences",
+        "clm:cross-cutting"
       ],
       "test_ids": [
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
@@ -3577,7 +4997,8 @@
       "tier": "T2",
       "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
       "claim_ids": [
-        "clm:client-settings"
+        "clm:client-settings",
+        "clm:client-preferences"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
@@ -3591,7 +5012,9 @@
       "tier": "T2",
       "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
       "claim_ids": [
-        "clm:client-settings"
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
@@ -3605,7 +5028,9 @@
       "tier": "T2",
       "path": "apps/client/src/features/views/viewRegistry.test.ts",
       "claim_ids": [
-        "clm:client-views"
+        "clm:client-views",
+        "clm:client-action-rail",
+        "clm:client-commands"
       ],
       "test_ids": [
         "tst:apps-client-src-features-views-viewregistry.test.ts"
@@ -3619,7 +5044,8 @@
       "tier": "T2",
       "path": "apps/client/src/pwa/versionManifest.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-preferences"
       ],
       "test_ids": [
         "tst:apps-client-src-pwa-versionmanifest.test.ts"
@@ -3633,7 +5059,13 @@
       "tier": "T2",
       "path": "apps/client/src/shell/ActionRailHost.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:apps-client-src-shell-actionrailhost.test.tsx"
@@ -3647,7 +5079,8 @@
       "tier": "T2",
       "path": "apps/client/styles/alignmentTokens.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts"
@@ -3661,7 +5094,8 @@
       "tier": "T2",
       "path": "apps/client/styles/chassisFitToScreen.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-styles-chassisfittoscreen.test.ts"
@@ -3675,7 +5109,8 @@
       "tier": "T2",
       "path": "apps/client/styles/zoomBehavior.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-styles-zoombehavior.test.ts"
@@ -3689,7 +5124,13 @@
       "tier": "T2",
       "path": "apps/client/tests/phase7-shell-parity.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:apps-client-tests-phase7-shell-parity.test.tsx"
@@ -3703,7 +5144,9 @@
       "tier": "T2",
       "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-common"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
@@ -3717,7 +5160,8 @@
       "tier": "T2",
       "path": "apps/client/tests/playwright-inline/inline.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-inline-inline.spec.ts"
@@ -3731,7 +5175,8 @@
       "tier": "T2",
       "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
@@ -3759,7 +5204,11 @@
       "tier": "T2",
       "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-i18n",
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
@@ -3773,7 +5222,8 @@
       "tier": "T2",
       "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -3787,7 +5237,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
@@ -3801,7 +5252,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-history.test.ts"
@@ -3815,7 +5267,9 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:client-markdownprofiles"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
@@ -3829,7 +5283,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-selection.test.ts"
@@ -3843,7 +5298,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
@@ -3857,7 +5313,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
@@ -3871,7 +5328,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-editor"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
@@ -3885,7 +5343,12 @@
       "tier": "T2",
       "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions",
+        "clm:client-diagnostics",
+        "clm:client-settings"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
@@ -3899,7 +5362,8 @@
       "tier": "T2",
       "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-extensions"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
@@ -3913,7 +5377,8 @@
       "tier": "T2",
       "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts"
@@ -3927,7 +5392,8 @@
       "tier": "T2",
       "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
@@ -4382,12 +5848,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.2",
-      "content_sha256": "4f1561e8f21fe842a31037ee005acf67a2c1cbe14714b6dd8762016d141d6f2e",
+      "package_version": "0.2.11",
+      "content_sha256": "d3c3bd451b2e01f9b3946edff3d289f64ed6896016133f38d0cdfbc97a1776cf",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded preview/export checkpoint with artifact boundary and profile-disclosure requirements.",
+          "at": "2026-04-21T09:08:23Z"
+        }
+      ]
     },
     {
       "id": "adr:1014",
@@ -4398,12 +5870,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.2",
-      "content_sha256": "cedc47509a30ec0af6d1ee4e935fd70d13fb612e672ddc6930c277debd2f2311",
+      "package_version": "0.2.11",
+      "content_sha256": "f90570b58a50ef7295d63e7c8e3e8f0bf555aea3d4f193c873a3062429cdc96d",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded shell parity checkpoint with shell taxonomy, accessibility, import/export reachability, and zoom expectations.",
+          "at": "2026-04-21T09:08:24Z"
+        }
+      ]
     },
     {
       "id": "adr:1015",
@@ -4430,12 +5908,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.2",
-      "content_sha256": "efbc1594a0325c98dc4b23036cbd99b07be6d8d006179a0ab5f6c320d5ee0110",
+      "package_version": "0.2.11",
+      "content_sha256": "81453cc846f474b8362ac842c1160ddaf1266a37623435cc5072657c5cd3dbb4",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded theme parity checkpoint with zoom, accessibility, contrast, focus, and CSS contract obligations.",
+          "at": "2026-04-21T09:08:24Z"
+        }
+      ]
     },
     {
       "id": "adr:1017",
@@ -4622,12 +6106,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "156657904014c6462b001d372561d4835aa11929ff441695fda73763ec8f7bf9",
+      "package_version": "0.2.11",
+      "content_sha256": "d3a6cca5c46ed365b4db0dc00134bfd718626c3409bf5195762446a2f278a047",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded CFM profile ADR with preview/export profile disclosure requirements.",
+          "at": "2026-04-21T09:08:25Z"
+        }
+      ]
     },
     {
       "id": "adr:1029",
@@ -4638,12 +6128,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "b161295e896fd99d277e9a0c6d6e1c4ffdad0cbc1d2a7f8ee407a82baba68be3",
+      "package_version": "0.2.11",
+      "content_sha256": "9c7581d101769abbacc5f36fbacee1edef8c1ba556bd488284ca0b1f8b85f161",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded desktop boundary with shell taxonomy and native host adapter distinctions.",
+          "at": "2026-04-21T09:08:25Z"
+        }
+      ]
     },
     {
       "id": "adr:1030",
@@ -4654,12 +6150,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "661a6a492425bac3e9c802ccccfcecd97ee8743d98d6ce56b171a34ca92c2180",
+      "package_version": "0.2.11",
+      "content_sha256": "43b4495b2f16f570503de567ead65d656bdf709c9fd6c2c0e874d8a16d808ca6",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded extension platform ADR with accessibility, import/install lifecycle, and shell surface obligations.",
+          "at": "2026-04-21T09:08:25Z"
+        }
+      ]
     },
     {
       "id": "adr:1031",
@@ -4670,12 +6172,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "7e343b13bc0ccc577a176df0789c3713132063fb4602e97b52c5fed95c81e7c7",
+      "package_version": "0.2.11",
+      "content_sha256": "df8509b51392eccc9d4cf2683a850e70437f7cc0ee1edb301709564e44f3f66f",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded UIX responsive boundary with chassis layout, zoom, accessibility, and responsive matrix obligations.",
+          "at": "2026-04-21T09:08:26Z"
+        }
+      ]
     },
     {
       "id": "adr:1032",
@@ -4686,12 +6194,18 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "6e111673addab3dbc490c314e3160033616ce5441a9bd18f3ffe04854c292359",
+      "package_version": "0.2.11",
+      "content_sha256": "bd093f8226378be77b9f2b44c3cfff5c93bc23da5ad8ea3051ee9d8210eed14f",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded persistence boundary with import, export artifact, shell-specific persistence, and zoom state rules.",
+          "at": "2026-04-21T09:08:26Z"
+        }
+      ]
     },
     {
       "id": "adr:1033",
@@ -4702,9 +6216,255 @@
       "origin": "repo-local",
       "managed": false,
       "immutable": false,
-      "package_version": "0.2.10",
-      "content_sha256": "390345cfb1534e92d795847ecc2e11b8ddf75a496c7288401c6320df6a8ca825",
+      "package_version": "0.2.11",
+      "content_sha256": "20c1b5da7c4b7f1f517a4bd1660d7b73dc98da9f6a13cadd3c90c6d05276fb3b",
       "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Expanded checklist traceability ADR with new feature coverage domains.",
+          "at": "2026-04-21T09:08:26Z"
+        }
+      ]
+    },
+    {
+      "id": "adr:1034",
+      "number": 1034,
+      "slug": "client-shell-registry-orchestration",
+      "title": "ADR-0034: Client shell registry orchestration",
+      "path": ".ssot/adr/ADR-1034-client-shell-registry-orchestration.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "421843517e340b0976bcd8d457fbe453ffaed2c9b08efe6c5f39ae48b05b284d",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1035",
+      "number": 1035,
+      "slug": "editor-core-transform-model",
+      "title": "ADR-0035: Editor core transform model",
+      "path": ".ssot/adr/ADR-1035-editor-core-transform-model.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "54075833dd5324e4c75a501421f63fb77df9622366f4e434ea8ca8a5aaaa598b",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1036",
+      "number": 1036,
+      "slug": "renderer-core-react-boundary",
+      "title": "ADR-0036: Renderer core and React renderer boundary",
+      "path": ".ssot/adr/ADR-1036-renderer-core-react-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "efbba2e7650254353fbe9ecad3ed952d9359171f557fe0dd8ba4e04c120f846e",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1037",
+      "number": 1037,
+      "slug": "client-i18n-language-pack-model",
+      "title": "ADR-0037: Client i18n catalog and language-pack model",
+      "path": ".ssot/adr/ADR-1037-client-i18n-language-pack-model.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1f9e75a68991fa1f4a0c5f25fa924728f0706b387ad3cafe95bef349fcb258f5",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1038",
+      "number": 1038,
+      "slug": "pwa-version-manifest-update-state",
+      "title": "ADR-0038: PWA version manifest and update-state model",
+      "path": ".ssot/adr/ADR-1038-pwa-version-manifest-update-state.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "93749eee3f357ae1b9413e09af4aa631b5875a7e2471a71d2f5528204948fb15",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1039",
+      "number": 1039,
+      "slug": "shared-oidc-adapter-boundary",
+      "title": "ADR-0039: Shared OIDC adapter boundary",
+      "path": ".ssot/adr/ADR-1039-shared-oidc-adapter-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "a4a8cad52d6804c9b045d50d37960c9db482e5bdf52b95b102e33d08d9b02691",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1040",
+      "number": 1040,
+      "slug": "css-contract-tests-uix-conformance-gates",
+      "title": "ADR-0040: CSS contract tests as UIX conformance gates",
+      "path": ".ssot/adr/ADR-1040-css-contract-tests-uix-conformance-gates.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "f4052563d7e7bfcd17b6367de2285386c33f31daed06f5876f432699787ce1a2",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1041",
+      "number": 1041,
+      "slug": "mdwrk-shell-taxonomy-host-capability-boundary",
+      "title": "ADR-0041: MdWrk shell taxonomy and host capability boundary",
+      "path": ".ssot/adr/ADR-1041-mdwrk-shell-taxonomy-host-capability-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "4ca6de52ddccefd6224367cf4c96289221443e75ad04d72d079c1b95a17d0e25",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1042",
+      "number": 1042,
+      "slug": "native-shell-adapter-contract",
+      "title": "ADR-0042: Native shell adapter contract",
+      "path": ".ssot/adr/ADR-1042-native-shell-adapter-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "b1cc2001148cbe11da0c7493d5e013bc4f0753de3aef6a168d9077e5d04df9de",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1043",
+      "number": 1043,
+      "slug": "mobile-native-shell-support-boundary",
+      "title": "ADR-0043: Mobile native shell support boundary",
+      "path": ".ssot/adr/ADR-1043-mobile-native-shell-support-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "dedd704c239db25091b1935dedeb40ea992d5d6a344e4970611b8b44eb6517e5",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1044",
+      "number": 1044,
+      "slug": "markdown-workspace-import-boundary",
+      "title": "ADR-0044: Markdown and workspace import boundary",
+      "path": ".ssot/adr/ADR-1044-markdown-workspace-import-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ca8f6cb92a082aa9cf1f74a9a7cdd212926b403e8b25bceacf2b76dff91ed40a",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1045",
+      "number": 1045,
+      "slug": "preview-export-print-download-artifact-boundary",
+      "title": "ADR-0045: Preview, export, print, and download artifact boundary",
+      "path": ".ssot/adr/ADR-1045-preview-export-print-download-artifact-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "aa0459de489ba8bfc9398c7dbe73934f6902c9f705c2ae21b4dbada9eb68ec51",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1046",
+      "number": 1046,
+      "slug": "ui-zoom-scale-token-model",
+      "title": "ADR-0046: UI zoom and scale token model",
+      "path": ".ssot/adr/ADR-1046-ui-zoom-scale-token-model.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ba60a3a2a1ee1008264dd8c5ada6c66b7a8fddb9c173681bf2cab56a44962185",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1047",
+      "number": 1047,
+      "slug": "accessibility-shell-extension-conformance",
+      "title": "ADR-0047: Accessibility as shell and extension conformance",
+      "path": ".ssot/adr/ADR-1047-accessibility-shell-extension-conformance.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "53b4046f4d44bd61b3b03cb2c67ea80c81764322b0b253610542330d6bdf14a7",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1048",
+      "number": 1048,
+      "slug": "uix-layout-chassis-pane-ownership",
+      "title": "ADR-0048: UIX layout chassis and pane ownership",
+      "path": ".ssot/adr/ADR-1048-uix-layout-chassis-pane-ownership.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "688f8710f87d65b7476667c338d38793789701006298d18bed7945540486133f",
+      "status": "draft",
       "supersedes": [],
       "superseded_by": [],
       "status_notes": []
@@ -5027,13 +6787,22 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "cc06a5fb0f142625d8926b33775ffe2cb74faa5bcef64cc58dd60fb57c575e66",
+      "content_sha256": "2b73a071b48b44a5daef383e10d3329497496c124b12bba9589c6296ccc92144",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded Markdown profile architecture with export disclosure and CM/GFM/CFM evidence lane requirements.",
+          "at": "2026-04-21T09:20:20Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1028",
+        "adr:1045"
+      ]
     },
     {
       "id": "spc:2004",
@@ -5045,13 +6814,23 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "83dc1445c9f74e0dd690454b5bcc787b83a26c66f84ffa8c56c699a221369427",
+      "content_sha256": "4b23ab0cd59aef428fbdd1a1c3b863944eb5adc419a70ad8905eda2bbf97a198",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded CommonMark conformance with profile-disclosure and export/preview failure labeling requirements.",
+          "at": "2026-04-21T09:20:21Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1009",
+        "adr:1028",
+        "adr:1045"
+      ]
     },
     {
       "id": "spc:2005",
@@ -5063,13 +6842,22 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "32c8b79be44068dbb61190636aa4d18aeee6a55d34ad916aad0d0741d7c58666",
+      "content_sha256": "87b602c2abf8a7f407a25a46785ccae77f048775ce3fef368a00e38c0205f917",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded CFM spec with parser, previewer, extension, and export disclosure obligations.",
+          "at": "2026-04-21T09:20:21Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1028",
+        "adr:1045"
+      ]
     },
     {
       "id": "spc:2006",
@@ -5081,13 +6869,24 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "8de9dff1fc4044fa69e2f2e67d4bf8bbac12e592ae92315eae89e4c734a47d4e",
+      "content_sha256": "3bf494e63766ede001d69017d5bc3a075e73aa851253db284aae34080b0d93dc",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded desktop app spec with shell taxonomy, native host adapter, and filesystem import/mount boundaries.",
+          "at": "2026-04-21T09:20:21Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1029",
+        "adr:1041",
+        "adr:1042",
+        "adr:1044"
+      ]
     },
     {
       "id": "spc:2007",
@@ -5099,13 +6898,25 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "19eb833a086359bdcd1a9276190e6e9138b4489974f09383b29427fc32384c54",
+      "content_sha256": "611a35c4897b9ecc7baa01c82e29e17cea1e26958324e22d2deee774b0acf65b",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded UIX responsive design with chassis, zoom, accessibility, and responsive matrix obligations.",
+          "at": "2026-04-21T09:20:22Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1031",
+        "adr:1040",
+        "adr:1046",
+        "adr:1047",
+        "adr:1048"
+      ]
     },
     {
       "id": "spc:2008",
@@ -5117,13 +6928,25 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "5c85cc066d99f7b5b51a7b42ba2786c39d28b6276432482c7a3270fb0e87f0cf",
+      "content_sha256": "13453a4f7079f0b278ca0fbf859052fcb1dd957f9057955dafbbf368f915d5ed",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded persistence spec with imported files, mounted folders, exported artifacts, PWA version, and zoom state.",
+          "at": "2026-04-21T09:20:22Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1032",
+        "adr:1038",
+        "adr:1044",
+        "adr:1045",
+        "adr:1046"
+      ]
     },
     {
       "id": "spc:2009",
@@ -5135,13 +6958,21 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "1a98031b59f674281330ba94814bbca346d3c1fe2539839bd57b2c7f70503153",
+      "content_sha256": "8f319f700a5f744e7a13c1c230071fdf069dcce02b36a386040e0aa50a4916e8",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded auth spec with shared OIDC adapter and token boundary obligations.",
+          "at": "2026-04-21T09:20:22Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1039"
+      ]
     },
     {
       "id": "spc:2010",
@@ -5153,13 +6984,23 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "d0197a5235e2abf16512de6d841f3a62b0ed3bcaf37b395215445238e20b1388",
+      "content_sha256": "0ffed61ca45a485d42f66660c54468fdb1d2ad84573c0a0f568295a5aa3e216b",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded extension platform spec with accessibility, lifecycle, permissions, settings, and shell surface requirements.",
+          "at": "2026-04-21T09:20:23Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1030",
+        "adr:1047",
+        "adr:1048"
+      ]
     },
     {
       "id": "spc:2011",
@@ -5171,13 +7012,23 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "58b1018cded2cf099135277106def8b5905e0de559e804799c59e282bf3a38bb",
+      "content_sha256": "6330446ebd457284abf37a7f40110f7a30d5841fda5f593cfddf2fc3d56b1857",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded extension manager spec with pane layout, settings rendering, permissions, compatibility, and diagnostics requirements.",
+          "at": "2026-04-21T09:20:23Z"
+        }
+      ],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1030",
+        "adr:1047",
+        "adr:1048"
+      ]
     },
     {
       "id": "spc:2012",
@@ -5279,13 +7130,24 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "4bb82f89304db76bba62d664c675643ab3d561e646e6025347aed6d3405e50d8",
+      "content_sha256": "bef706402182534b08f9c071ebc2d44012192246a48d23d3e5f90ae04cb0dc66",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded documentation spec with shell-specific, accessibility, profile, import/export, zoom, and extension documentation requirements.",
+          "at": "2026-04-21T09:20:23Z"
+        }
+      ],
       "kind": "operational",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1018",
+        "adr:1033",
+        "adr:1041",
+        "adr:1047"
+      ]
     },
     {
       "id": "spc:2018",
@@ -5297,13 +7159,581 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "89cba24efcffba61d9d071e06ed4933d868b1efa2c3855cbe2c7d7669b3d2571",
+      "content_sha256": "ad300b6d8d94b5a8466f1ea2e4ba14dceb7f35b9969efbc43c57fa16c8363451",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Expanded OIDC adapter spec with browser flow and per-OIDC feature boundaries.",
+          "at": "2026-04-21T09:20:24Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1039"
+      ]
+    },
+    {
+      "id": "spc:2019",
+      "number": 2019,
+      "slug": "client-shell-registry-contract",
+      "title": "Client Shell Registry Contract",
+      "path": ".ssot/specs/SPEC-2019-client-shell-registry-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ba7114dbdd22a2b1c3a0624abf5d0d3b63a891f739181f86377fbb9f8fe8fc75",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
       "status_notes": [],
       "kind": "normative",
-      "adr_ids": []
+      "adr_ids": [
+        "adr:1034",
+        "adr:1014"
+      ]
+    },
+    {
+      "id": "spc:2020",
+      "number": 2020,
+      "slug": "workspace-tabs-project-loading-contract",
+      "title": "Workspace Tabs And Project Loading Contract",
+      "path": ".ssot/specs/SPEC-2020-workspace-tabs-project-loading-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e5d59ee87558100992e4cf934de9d246efc42217d1c72a4a8c795cf166898d0b",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1032",
+        "adr:1044"
+      ]
+    },
+    {
+      "id": "spc:2021",
+      "number": 2021,
+      "slug": "toast-notification-behavior-contract",
+      "title": "Toast And Notification Behavior Contract",
+      "path": ".ssot/specs/SPEC-2021-toast-notification-behavior-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "7c9103e674b700593d6cf709dd3db3db88668ccf3f3e6c1d29017eb91b927ad1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1034",
+        "adr:1047"
+      ]
+    },
+    {
+      "id": "spc:2022",
+      "number": 2022,
+      "slug": "editor-core-command-transform-contract",
+      "title": "Editor Core Command And Transform Contract",
+      "path": ".ssot/specs/SPEC-2022-editor-core-command-transform-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "a39e4beff260e7b2c1c52c00d0987d07635e6a3cbd28b556060db43234a9e023",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1035",
+        "adr:1012"
+      ]
+    },
+    {
+      "id": "spc:2023",
+      "number": 2023,
+      "slug": "react-markdown-editor-surface-contract",
+      "title": "React Markdown Editor Surface Contract",
+      "path": ".ssot/specs/SPEC-2023-react-markdown-editor-surface-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "fc9fef57e9257819d30f3c7e5674a8d44c2061d7c49dc885f660f5c9402cac18",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1035",
+        "adr:1012",
+        "adr:1047"
+      ]
+    },
+    {
+      "id": "spc:2024",
+      "number": 2024,
+      "slug": "markdown-renderer-contract",
+      "title": "Markdown Renderer Contract",
+      "path": ".ssot/specs/SPEC-2024-markdown-renderer-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1feb1602520db00a5cd1b7ec8b47d4825ae792347d30b43aaa1ab711d4ca8d7b",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1036",
+        "adr:1013",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2025",
+      "number": 2025,
+      "slug": "client-i18n-language-pack-contract",
+      "title": "Client I18N And Language Pack Contract",
+      "path": ".ssot/specs/SPEC-2025-client-i18n-language-pack-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "132659a2cef9f3bc85d29517160085a33c989f53167fc545adba635aa3e5a1b6",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1037",
+        "adr:1017"
+      ]
+    },
+    {
+      "id": "spc:2026",
+      "number": 2026,
+      "slug": "pwa-version-manifest-contract",
+      "title": "PWA Version Manifest Contract",
+      "path": ".ssot/specs/SPEC-2026-pwa-version-manifest-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e45449cf85bec74bc8cd894220ecab47aa629c45a5d80310540cf10187ae3c86",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1038",
+        "adr:1014",
+        "adr:1015"
+      ]
+    },
+    {
+      "id": "spc:2027",
+      "number": 2027,
+      "slug": "oidc-browser-flow-contract",
+      "title": "OIDC Browser Flow Contract",
+      "path": ".ssot/specs/SPEC-2027-oidc-browser-flow-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "7f26bf24c0f0c3d2d25cfdc1e75406bdf8d1652dbc3b2103a7a8697d458213f9",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1039"
+      ]
+    },
+    {
+      "id": "spc:2028",
+      "number": 2028,
+      "slug": "uix-css-token-chassis-contract",
+      "title": "UIX CSS Token And Chassis Contract",
+      "path": ".ssot/specs/SPEC-2028-uix-css-token-chassis-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ad16d635d3a3369a028597d77f57f72321bbeb7e349bb8da410f258cd43100d5",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1040",
+        "adr:1031",
+        "adr:1048"
+      ]
+    },
+    {
+      "id": "spc:2029",
+      "number": 2029,
+      "slug": "extension-runtime-contract",
+      "title": "Extension Runtime Contract",
+      "path": ".ssot/specs/SPEC-2029-extension-runtime-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "d8a9502e8df0637019fdbededa0bbafffb5dc23bdfc2ee0c22f895cd1fe345ad",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1030",
+        "adr:1002"
+      ]
+    },
+    {
+      "id": "spc:2030",
+      "number": 2030,
+      "slug": "extension-manager-surface-contract",
+      "title": "Extension Manager Surface Contract",
+      "path": ".ssot/specs/SPEC-2030-extension-manager-surface-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e224deb6db1bfee1b55fcb3c6523314f4063baa11f85d70b7ee3024feb91fcbe",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1030",
+        "adr:1047",
+        "adr:1048"
+      ]
+    },
+    {
+      "id": "spc:2031",
+      "number": 2031,
+      "slug": "browser-e2e-conformance-matrix",
+      "title": "Browser E2E Conformance Matrix",
+      "path": ".ssot/specs/SPEC-2031-browser-e2e-conformance-matrix.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e55a5789d82f034107a2f51849eaeccd643c01205d18f62e35b37c6c771b0011",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "operational",
+      "adr_ids": [
+        "adr:1019",
+        "adr:1024",
+        "adr:1041"
+      ]
+    },
+    {
+      "id": "spc:2032",
+      "number": 2032,
+      "slug": "shell-taxonomy-runtime-detection",
+      "title": "Shell Taxonomy And Runtime Detection",
+      "path": ".ssot/specs/SPEC-2032-shell-taxonomy-runtime-detection.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "a9fab7c9b668905fedb7d3000ba9641143b9488b67e25d8d64744e29bea226b3",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1041",
+        "adr:1014"
+      ]
+    },
+    {
+      "id": "spc:2033",
+      "number": 2033,
+      "slug": "host-capability-adapter",
+      "title": "Host Capability Adapter",
+      "path": ".ssot/specs/SPEC-2033-host-capability-adapter.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "019b0a99ad08f83cc00a17c6609afbde1683aebea1e74a0ccad493fb42cfd230",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1042",
+        "adr:1029",
+        "adr:1041"
+      ]
+    },
+    {
+      "id": "spc:2034",
+      "number": 2034,
+      "slug": "native-filesystem-shell-behavior",
+      "title": "Native Filesystem Shell Behavior",
+      "path": ".ssot/specs/SPEC-2034-native-filesystem-shell-behavior.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "727358ba13bcbbadb821be59b558125eb9faa92972fe439a5d8f99387a9e21f5",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1042",
+        "adr:1029",
+        "adr:1044"
+      ]
+    },
+    {
+      "id": "spc:2035",
+      "number": 2035,
+      "slug": "android-shell-contract",
+      "title": "Android Shell Contract",
+      "path": ".ssot/specs/SPEC-2035-android-shell-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "26dbd063ee46b882dfc481d9303a16c8dbd33c7ec5ec31f6804cd65af9c7fbdc",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1043",
+        "adr:1041"
+      ]
+    },
+    {
+      "id": "spc:2036",
+      "number": 2036,
+      "slug": "shell-evidence-matrix",
+      "title": "Shell Evidence Matrix",
+      "path": ".ssot/specs/SPEC-2036-shell-evidence-matrix.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e253a326bd0bc0e58f07f3ac578aade758b3203ba6e9e1a89506d3943f92c49c",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "operational",
+      "adr_ids": [
+        "adr:1041",
+        "adr:1043",
+        "adr:1040"
+      ]
+    },
+    {
+      "id": "spc:2037",
+      "number": 2037,
+      "slug": "markdown-file-import-contract",
+      "title": "Markdown File Import Contract",
+      "path": ".ssot/specs/SPEC-2037-markdown-file-import-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "979051c9a3d09d9bb6621e8666933292e1793c0d1fec5b850fdd8a85fbf29ec2",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1044",
+        "adr:1032"
+      ]
+    },
+    {
+      "id": "spc:2038",
+      "number": 2038,
+      "slug": "workspace-import-folder-mount-contract",
+      "title": "Workspace Import And Folder Mount Contract",
+      "path": ".ssot/specs/SPEC-2038-workspace-import-folder-mount-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "df630e509f25da8f98bba39e928d377d6a4e16df833e6f641cdda059fba0f158",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1044",
+        "adr:1029",
+        "adr:1032"
+      ]
+    },
+    {
+      "id": "spc:2039",
+      "number": 2039,
+      "slug": "export-download-print-preview-contract",
+      "title": "Export, Download, Print, And Preview Contract",
+      "path": ".ssot/specs/SPEC-2039-export-download-print-preview-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "daffac729d43148ebd53f5aedf78182506375202285635a80428e8568ba8763e",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1045",
+        "adr:1013"
+      ]
+    },
+    {
+      "id": "spc:2040",
+      "number": 2040,
+      "slug": "export-profile-disclosure-contract",
+      "title": "Export Profile Disclosure Contract",
+      "path": ".ssot/specs/SPEC-2040-export-profile-disclosure-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "46e79d5724cd0fdae1352119c2a95ced1c204699e50072eb95f48f36c68b0481",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1045",
+        "adr:1028",
+        "adr:1013"
+      ]
+    },
+    {
+      "id": "spc:2041",
+      "number": 2041,
+      "slug": "ui-zoom-scale-contract",
+      "title": "UI Zoom And Scale Contract",
+      "path": ".ssot/specs/SPEC-2041-ui-zoom-scale-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1460d2a9658cd5798a531a0cd35bd0ba70b5d63d58597fdcbaed514ce4b118a7",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1046",
+        "adr:1040",
+        "adr:1031"
+      ]
+    },
+    {
+      "id": "spc:2042",
+      "number": 2042,
+      "slug": "accessibility-contract",
+      "title": "Accessibility Contract",
+      "path": ".ssot/specs/SPEC-2042-accessibility-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "a3e89f5b8655d549b8ffd920ae1d79b7850c8dbe9bdc336c48e3065edae10dc6",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1047",
+        "adr:1014",
+        "adr:1030"
+      ]
+    },
+    {
+      "id": "spc:2043",
+      "number": 2043,
+      "slug": "uix-chassis-layout-contract",
+      "title": "UIX Chassis Layout Contract",
+      "path": ".ssot/specs/SPEC-2043-uix-chassis-layout-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "949e2ce24b425fa9397666967c8458740bf65ab74522427cc57e548a9ba2ef5e",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1048",
+        "adr:1031",
+        "adr:1040"
+      ]
+    },
+    {
+      "id": "spc:2044",
+      "number": 2044,
+      "slug": "responsive-layout-matrix-contract",
+      "title": "Responsive Layout Matrix Contract",
+      "path": ".ssot/specs/SPEC-2044-responsive-layout-matrix-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "9eadeaba3fd5efd7d9082f30f3fee87941f62c98892fb92bd8c2b10d3b5981f1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1048",
+        "adr:1041",
+        "adr:1031"
+      ]
     }
   ],
   "profiles": []

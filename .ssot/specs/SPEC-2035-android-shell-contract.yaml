@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2035"
+number: 2035
+slug: "android-shell-contract"
+title: "Android Shell Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The Android shell must define its Capacitor packaging flow, markdown file intent handling, storage model, visual keyboard behavior, supported native capabilities, unsupported capability states, and release evidence requirements before Android is promoted to supported status."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2035: Android Shell Contract
+  
+  ## Requirements
+  
+  The Android shell must define its Capacitor packaging flow, markdown file intent handling, storage model, visual keyboard behavior, supported native capabilities, unsupported capability states, and release evidence requirements before Android is promoted to supported status.
+  
+  ## Evidence
+  
+  Evidence must cover Capacitor prepare/release behavior, Android intent filters, mobile viewport behavior, file access constraints, and native-shell status reporting.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1043"
+  - "adr:1041"

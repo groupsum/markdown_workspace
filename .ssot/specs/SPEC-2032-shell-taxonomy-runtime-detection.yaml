@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2032"
+number: 2032
+slug: "shell-taxonomy-runtime-detection"
+title: "Shell Taxonomy And Runtime Detection"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shell taxonomy must define browser, PWA, Electron desktop, and Capacitor Android support states. Runtime detection must produce stable shell labels, install/update visibility rules, capability detection results, and unsupported capability behavior."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2032: Shell Taxonomy And Runtime Detection
+  
+  ## Requirements
+  
+  MdWrk shell taxonomy must define browser, PWA, Electron desktop, and Capacitor Android support states. Runtime detection must produce stable shell labels, install/update visibility rules, capability detection results, and unsupported capability behavior.
+  
+  ## Evidence
+  
+  Evidence must cover runtime labels, PWA installed detection, desktop host capability detection, and shell-specific status or settings display rules.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1041"
+  - "adr:1014"

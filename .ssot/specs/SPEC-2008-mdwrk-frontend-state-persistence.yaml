@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2008"
 number: 2008
@@ -11,7 +11,11 @@ tags: []
 summary: "Define frontend settings, workspace, shell, Git, and extension persistence rules."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded persistence spec with imported files, mounted folders, exported artifacts, PWA version, and zoom state."
+    at: "2026-04-21T09:20:22Z"
 references: []
 body: |-
   # MdWrk Frontend State Persistence Specification
@@ -29,5 +33,16 @@ body: |-
   - Cloud persistence is out of bounds.
   - Extension settings must be namespaced by extension ID and version compatibility rules.
   - Git operation state must be persisted separately from workspace content.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Frontend persistence shall distinguish imported markdown files, mounted filesystem folders, open tabs, transient editor state, user settings, shell state, PWA version selection, zoom state, Git state, OIDC state, and extension state.
+  
+  Generated preview/export/download/print artifacts are derived outputs and must not be treated as canonical workspace state unless explicitly imported. Browser and PWA use web storage and IndexedDB policies; Electron desktop may use filesystem-backed state through host adapters; Android requires a separate native storage policy.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1032"
+  - "adr:1038"
+  - "adr:1044"
+  - "adr:1045"
+  - "adr:1046"

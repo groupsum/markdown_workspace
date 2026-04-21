@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1041"
+number: 1041
+slug: "mdwrk-shell-taxonomy-host-capability-boundary"
+title: "ADR-0041: MdWrk shell taxonomy and host capability boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall define supported shells explicitly and separate shared client shell behavior from host-only capabilities. Browser, PWA, Electron desktop, and Capacitor Android shells shall reuse the shared client shell where possible while declaring capability differences through host adapters."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1041: MdWrk shell taxonomy and host capability boundary
+  
+  ## Decision
+  
+  MdWrk shall define supported shells explicitly and separate shared client shell behavior from host-only capabilities. Browser, PWA, Electron desktop, and Capacitor Android shells shall reuse the shared client shell where possible while declaring capability differences through host adapters.
+  
+  ## Scope
+  
+  - Browser shell runtime behavior.
+  - PWA installed-shell runtime behavior.
+  - Electron desktop shell runtime behavior.
+  - Capacitor Android shell runtime behavior.
+  - Runtime labels, capability detection, and unsupported capability states.
+  
+  ## Consequences
+  
+  - Shell-specific behavior must be documented and tested per shell.
+  - Shared UIX and extension behavior remains portable across host shells.
+  - Native-only features must not leak into browser or PWA assumptions.

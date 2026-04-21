@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2010"
 number: 2010
@@ -11,7 +11,11 @@ tags: []
 summary: "Define general extension creation, compatibility, options, lifecycle, publishing, installing, importing, disabling, and removal requirements."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Expanded extension platform spec with accessibility, lifecycle, permissions, settings, and shell surface requirements."
+    at: "2026-04-21T09:20:23Z"
 references: []
 body: |-
   # MdWrk Extension Platform Specification
@@ -29,5 +33,14 @@ body: |-
   - Disabling must preserve settings unless removal explicitly deletes them.
   - Removing must clean runtime registration and leave user data according to the extension retention policy.
   - Extension options must be schema-driven and persist through namespaced settings.
+  
+  ## 2026 SSOT Coverage Update
+  
+  Extension platform requirements shall include manifest compatibility gates, capability permissions, runtime isolation, schema-driven settings, settings namespaces, retention on disable versus remove, publishing/import/install/remove/disable flows, and lifecycle evidence.
+  
+  Extension UI surfaces must satisfy shell accessibility requirements and compose with command palette entries, action rail mappings, extension view modes, panes, compact states, and settings surfaces.
 spec_kind: "normative"
-adr_ids: []
+adr_ids:
+  - "adr:1030"
+  - "adr:1047"
+  - "adr:1048"

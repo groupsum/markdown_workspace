@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2043"
+number: 2043
+slug: "uix-chassis-layout-contract"
+title: "UIX Chassis Layout Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The UIX chassis must define ownership for header, status footer, action rail, sidebar, tab strip, editor pane, preview pane, modal layer, and extension views. Fixed chrome must remain fixed where required, panes must own vertical scrolling, and layout class names and tokens must remain stable."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2043: UIX Chassis Layout Contract
+  
+  ## Requirements
+  
+  The UIX chassis must define ownership for header, status footer, action rail, sidebar, tab strip, editor pane, preview pane, modal layer, and extension views. Fixed chrome must remain fixed where required, panes must own vertical scrolling, and layout class names and tokens must remain stable.
+  
+  ## Evidence
+  
+  Evidence must cover shell region placement, scroll ownership, tab behavior, sidebars, action rail state, split view, extension pane layout, and fixed fit-to-screen behavior.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1048"
+  - "adr:1031"
+  - "adr:1040"

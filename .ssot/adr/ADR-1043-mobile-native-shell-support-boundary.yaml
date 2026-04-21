@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1043"
+number: 1043
+slug: "mobile-native-shell-support-boundary"
+title: "ADR-0043: Mobile native shell support boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall define mobile native shell support as a distinct support boundary from browser mobile UIX. Capacitor Android may reuse the shared client shell, but Android file intents, storage access, visual keyboard behavior, and release packaging require explicit evidence before being treated as fully supported."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1043: Mobile native shell support boundary
+  
+  ## Decision
+  
+  MdWrk shall define mobile native shell support as a distinct support boundary from browser mobile UIX. Capacitor Android may reuse the shared client shell, but Android file intents, storage access, visual keyboard behavior, and release packaging require explicit evidence before being treated as fully supported.
+  
+  ## Scope
+  
+  - Capacitor Android configuration and release scripts.
+  - Android markdown file intent handling.
+  - Mobile native storage and file access constraints.
+  - Visual keyboard and mobile viewport behavior in native shells.
+  
+  ## Consequences
+  
+  - Android support can be tracked as experimental, planned, or supported without ambiguity.
+  - Mobile browser and mobile native behavior can diverge when platform APIs require it.
+  - Android evidence must be separate from desktop and web evidence.

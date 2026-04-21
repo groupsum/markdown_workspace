@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2033"
+number: 2033
+slug: "host-capability-adapter"
+title: "Host Capability Adapter"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Host capability adapters must expose typed APIs for native features and must be discovered before use. Unsupported capabilities must fail with clear shell-visible states. Host adapters must not be required for browser and PWA-only behavior."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2033: Host Capability Adapter
+  
+  ## Requirements
+  
+  Host capability adapters must expose typed APIs for native features and must be discovered before use. Unsupported capabilities must fail with clear shell-visible states. Host adapters must not be required for browser and PWA-only behavior.
+  
+  ## Evidence
+  
+  Evidence must cover capability detection, missing-adapter failure states, host file actions, host directory actions, and host event subscriptions.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1042"
+  - "adr:1029"
+  - "adr:1041"

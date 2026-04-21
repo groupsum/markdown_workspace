@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2038"
+number: 2038
+slug: "workspace-import-folder-mount-contract"
+title: "Workspace Import And Folder Mount Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Workspace import and folder mount behavior must distinguish browser-imported projects from native filesystem-mounted projects. Mounted folders must preserve root paths, read directory snapshots, preserve file source paths, and support refresh or mutation through host adapters when available."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2038: Workspace Import And Folder Mount Contract
+  
+  ## Requirements
+  
+  Workspace import and folder mount behavior must distinguish browser-imported projects from native filesystem-mounted projects. Mounted folders must preserve root paths, read directory snapshots, preserve file source paths, and support refresh or mutation through host adapters when available.
+  
+  ## Evidence
+  
+  Evidence must cover mounted folder open, filesystem-backed loading, imported workspace persistence, permission failure states, and open tab restoration.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1044"
+  - "adr:1029"
+  - "adr:1032"

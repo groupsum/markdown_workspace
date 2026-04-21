@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1046"
+number: 1046
+slug: "ui-zoom-scale-token-model"
+title: "ADR-0046: UI zoom and scale token model"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall model UI zoom through bounded scale tokens that apply to typography, icons, and controls while preserving chassis fit and fixed layout dimensions. Zoom behavior shall be shared across themes and shells through stable CSS variables and shell commands."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1046: UI zoom and scale token model
+  
+  ## Decision
+  
+  MdWrk shall model UI zoom through bounded scale tokens that apply to typography, icons, and controls while preserving chassis fit and fixed layout dimensions. Zoom behavior shall be shared across themes and shells through stable CSS variables and shell commands.
+  
+  ## Scope
+  
+  - Zoom minimum, maximum, increment, decrement, and reset behavior.
+  - CSS scale tokens and theme token availability.
+  - Chassis dimension independence from zoom scale.
+  - Typography, icon, and control scaling expectations.
+  - Zoom persistence where user settings require it.
+  
+  ## Consequences
+  
+  - Zoom changes must preserve fit-to-screen and responsive layout contracts.
+  - Themes cannot implement incompatible zoom models.
+  - Accessibility and UIX specs must include zoom behavior as an interaction contract.

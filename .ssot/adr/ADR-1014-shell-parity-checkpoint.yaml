@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "adr"
 id: "adr:1014"
 number: 1014
@@ -11,7 +11,11 @@ tags: []
 summary: "Date: 2026-03-28"
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Expanded shell parity checkpoint with shell taxonomy, accessibility, import/export reachability, and zoom expectations."
+    at: "2026-04-21T09:08:24Z"
 references: []
 body: |-
   ## Decision
@@ -39,7 +43,7 @@ body: |-
   
   ## Context
   
-  The v2 shell architecture is stronger than v1 because it is registry-driven and extension-ready, but the v1â†’v2 parity review identified several concrete shell regressions that still blocked any honest â€œfully featured UIXâ€ claim.
+  The v2 shell architecture is stronger than v1 because it is registry-driven and extension-ready, but the v1Ã¢â€ â€™v2 parity review identified several concrete shell regressions that still blocked any honest Ã¢â‚¬Å“fully featured UIXÃ¢â‚¬Â claim.
   
   The concrete regressions for this phase were:
   
@@ -65,3 +69,9 @@ body: |-
   - `node tools/conformance/generate-phase7-shell-checkpoint.mjs`
   - `artifacts/conformance/latest/phase-7-shell-parity-checkpoint.json`
   - `artifacts/conformance/latest/phase-7-shell-parity-results.json`
+  
+  ## 2026 SSOT Coverage Update
+  
+  Shell parity shall be evaluated against the explicit MdWrk shell taxonomy: browser, PWA, Electron desktop, and Capacitor Android when Android is in scope. Runtime labels, install/update affordances, and host capability visibility must be defined per shell.
+  
+  Shell parity also includes accessibility reachability, command palette reachability, import/export reachability, and zoom control reachability. A shell that exposes a feature must expose it through the shared command/view/rail model unless a host adapter SPEC grants a native exception.
