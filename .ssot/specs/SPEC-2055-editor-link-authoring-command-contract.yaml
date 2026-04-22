@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2055"
+number: 2055
+slug: "editor-link-authoring-command-contract"
+title: "Editor Link Authoring Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The editor link authoring command must support converting selected text into Markdown inline-link syntax, seeding an empty link when no text is selected, and avoiding nested link corruption when the cursor is already inside an existing link. This is planned authoring behavior until direct command implementation and tests exist."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2055: Editor Link Authoring Command Contract
+  
+  ## Requirements
+  
+  The editor link authoring command must support converting selected text into Markdown inline-link syntax, seeding an empty link when no text is selected, and avoiding nested link corruption when the cursor is already inside an existing link. This is planned authoring behavior until direct command implementation and tests exist.
+  
+  ## Evidence
+  
+  Evidence must include preview policy tests, renderer link-interception tests, editor command tests where implemented, and explicit absent feature status where authoring behavior is planned but not yet built.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1013"
+  - "adr:1036"
+  - "adr:1028"

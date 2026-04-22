@@ -397,6 +397,10 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
         assertRegistrationCapability(state, "view.register");
         return registerDisposable(options.registrationSink.registerView(state.entry.id, view));
       },
+      registerWorkspaceModule(module) {
+        assertRegistrationCapability(state, "view.register");
+        return registerDisposable(options.registrationSink.registerWorkspaceModule(state.entry.id, module));
+      },
       registerComponent(component) {
         assertRegistrationCapability(state, "component.register");
         state.components.set(component.id, component);

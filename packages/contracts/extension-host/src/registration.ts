@@ -4,6 +4,9 @@ import type {
   ComponentContributionDescriptor,
   SettingsSectionContributionDescriptor,
   ViewContributionDescriptor,
+  WorkspaceModuleContributionDescriptor,
+  ExtensionIcon,
+  ExtensionSettingsSchema,
 } from "@mdwrk/extension-manifest";
 
 export type ViewRenderer<Props = unknown> = (props: Props) => unknown;
@@ -15,12 +18,27 @@ export interface RegisteredCommand extends CommandContributionDescriptor {
 
 export interface RegisteredView extends ViewContributionDescriptor {
   render: ViewRenderer;
+  renderSidebar?: ViewRenderer;
 }
 
 export interface RegisteredComponent extends ComponentContributionDescriptor {
   render: ComponentRenderer;
 }
 
-export interface RegisteredSettingsSection extends SettingsSectionContributionDescriptor {}
+export interface RegisteredWorkspaceModule extends WorkspaceModuleContributionDescriptor {
+  render: ViewRenderer;
+  renderExplorer: ViewRenderer;
+}
 
-export interface RegisteredActionRailItem extends ActionRailContributionDescriptor {}
+export interface RegisteredSettingsSection extends SettingsSectionContributionDescriptor {
+  readonly panel?: string;
+  readonly icon?: ExtensionIcon;
+  readonly schema?: ExtensionSettingsSchema;
+  readonly render?: () => unknown;
+}
+
+export interface RegisteredActionRailItem extends ActionRailContributionDescriptor {
+  readonly tooltip?: string;
+  readonly isActive?: () => boolean;
+  readonly isDisabled?: () => boolean;
+}

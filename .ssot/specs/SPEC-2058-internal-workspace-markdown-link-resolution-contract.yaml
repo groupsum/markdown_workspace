@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2058"
+number: 2058
+slug: "internal-workspace-markdown-link-resolution-contract"
+title: "Internal Workspace Markdown Link Resolution Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Internal workspace Markdown link resolution must map relative, normalized, and basename Markdown destinations to workspace file IDs when possible. Unresolved internal links must fall back without corrupting workspace state."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2058: Internal Workspace Markdown Link Resolution Contract
+  
+  ## Requirements
+  
+  Internal workspace Markdown link resolution must map relative, normalized, and basename Markdown destinations to workspace file IDs when possible. Unresolved internal links must fall back without corrupting workspace state.
+  
+  ## Evidence
+  
+  Evidence must include preview/export policy tests, React renderer link interception evidence, or explicit partial feature status where browser-level coverage is broad rather than behavior-specific.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1013"
+  - "adr:1036"
+  - "adr:1045"

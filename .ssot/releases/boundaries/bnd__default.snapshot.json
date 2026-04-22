@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-04-22T09:14:06Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "3a4b49abe0c60eacccb2b5b8c7df6754018afd6b7b067a97cdaa39ed7d5c5535",
+  "boundary": {
+    "id": "bnd:default",
+    "title": "Default boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [],
+    "profile_ids": []
+  },
+  "features": [],
+  "summary": {
+    "boundary_id": "bnd:default",
+    "feature_count": 0,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}

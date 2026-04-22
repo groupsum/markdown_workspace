@@ -38,7 +38,7 @@ export const ClientRuntimeProvider: React.FC<ClientRuntimeProviderProps> = ({ sn
         if (view.location !== 'main') {
           return null;
         }
-        return view.id === 'core.git-pane' ? 'git' : 'work';
+        return 'work';
       },
       onAppModeChange: (mode) => {
         snapshotRef.current.app.actions.setAppMode(mode);

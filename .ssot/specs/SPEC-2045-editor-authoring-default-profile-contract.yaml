@@ -1,0 +1,34 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2045"
+number: 2045
+slug: "editor-authoring-default-profile-contract"
+title: "Editor Authoring Default Profile Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The editor authoring default profile defines the default governed authoring capability surface for the Markdown editor. It must include the active editor command model, React editor surface, renderer roundtrip surface, link authoring and preview navigation surfaces, and view toolbar controls that are available by default in the workspace editor."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2045: Editor Authoring Default Profile Contract
+  
+  ## Requirements
+  
+  The editor authoring default profile defines the default governed authoring capability surface for the Markdown editor. It must include the active editor command model, React editor surface, renderer roundtrip surface, link authoring and preview navigation surfaces, and view toolbar controls that are available by default in the workspace editor.
+  
+  The profile must distinguish CommonMark, GFM, optional profile, CFM, and application-only authoring behavior. It must not imply that optional or CFM-only commands are part of CommonMark or the default GFM profile unless the governing profile specifications explicitly say so.
+  
+  ## Evidence
+  
+  Evidence for this profile must be assembled from linked feature tests, renderer/editor roundtrip tests, preview/export policy tests, and toolbar or responsive UIX evidence where available. Features without direct proof must remain absent or partial until linked evidence is added.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1036"
+  - "adr:1013"
+  - "adr:1028"

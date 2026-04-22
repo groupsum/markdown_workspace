@@ -49,6 +49,8 @@ For release ownership, SemVer policy, compatibility declarations, and promotion 
 | Path | Package name | Kind | Publishable | Status |
 |---|---|---|---|---|
 | `packages/extensions/extension-runtime/` | `@mdwrk/extension-runtime` | extension runtime | yes | implemented |
+| `packages/extensions/extension-workspace-files/` | `@mdwrk/extension-workspace-files` | first-party workspace-module extension | yes | implemented |
+| `packages/extensions/extension-git-ops/` | `@mdwrk/extension-git-ops` | first-party workspace-module extension | yes | implemented |
 | `packages/extensions/extension-manager/` | `@mdwrk/extension-manager` | first-party extension | yes | implemented |
 | `packages/extensions/extension-gemini-agent/` | `@mdwrk/extension-gemini-agent` | first-party extension | yes | implemented |
 | `packages/extensions/extension-theme-studio/` | `@mdwrk/extension-theme-studio` | first-party extension | yes | implemented |

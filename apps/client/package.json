@@ -30,11 +30,13 @@
   },
   "dependencies": {
     "@mdwrk/extension-gemini-agent": "^1.1.1",
+    "@mdwrk/extension-git-ops": "^1.0.0",
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-language-pack-studio": "^1.0.3",
     "@mdwrk/extension-manager": "^1.1.6",
     "@mdwrk/extension-manifest": "^1.0.1",
     "@mdwrk/extension-runtime": "^1.1.3",
+    "@mdwrk/extension-workspace-files": "^1.0.0",
     "@mdwrk/i18n": "^1.2.1",
     "@mdwrk/icons": "^1.0.1",
     "@mdwrk/markdown-editor-react": "^1.1.1",

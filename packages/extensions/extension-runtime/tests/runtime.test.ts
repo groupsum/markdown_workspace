@@ -7,6 +7,7 @@ import type {
   RegisteredCommand,
   RegisteredSettingsSection,
   RegisteredView,
+  RegisteredWorkspaceModule,
 } from "@mdwrk/extension-host";
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import { createExtensionRuntime } from "../src/runtime.js";
@@ -105,6 +106,8 @@ const createHost = () => {
     },
     i18n: {
       async getLocale() { return "en"; },
+      async setLocale() {},
+      async ensureLocale() {},
       format(label) { return typeof label === "string" ? label : label.defaultMessage; },
       registerCatalog(extensionId, catalog) {
         localeCatalogs.push({ extensionId, catalog });
@@ -149,6 +152,7 @@ const createSink = () => {
   const views: RegisteredView[] = [];
   const rail: RegisteredActionRailItem[] = [];
   const settings: RegisteredSettingsSection[] = [];
+  const workspaceModules: RegisteredWorkspaceModule[] = [];
 
   const sink: ExtensionRuntimeRegistrationSink = {
     registerCommand(_extensionId, command) {
@@ -157,6 +161,10 @@ const createSink = () => {
     },
     registerView(_extensionId, view) {
       views.push(view);
+      return { dispose() {} };
+    },
+    registerWorkspaceModule(_extensionId, module) {
+      workspaceModules.push(module);
       return { dispose() {} };
     },
     registerActionRailItem(_extensionId, item) {
@@ -169,7 +177,7 @@ const createSink = () => {
     },
   };
 
-  return { sink, commands, views, rail, settings };
+  return { sink, commands, views, rail, settings, workspaceModules };
 };
 
 describe("extension-runtime", () => {
@@ -177,6 +185,41 @@ describe("extension-runtime", () => {
     const invalid = createManifest("invalid", { displayName: { defaultMessage: "" } });
     const issues = validateExtensionManifest(invalid);
     expect(issues.some((issue) => issue.path === "displayName.defaultMessage")).toBe(true);
+  });
+
+  it("requires workspace modules to declare settings and supported layouts", () => {
+    const invalid = createManifest("invalid-workspace-module", {
+      contributions: {
+        commands: [],
+        views: [
+          {
+            id: "invalid-workspace-module.view",
+            title: { defaultMessage: "Invalid" },
+            location: "main",
+          },
+        ],
+        components: [],
+        actionRail: [],
+        settingsSections: [],
+        workspaceModules: [
+          {
+            id: "invalid-workspace-module.module",
+            title: { defaultMessage: "Invalid" },
+            primaryViewId: "invalid-workspace-module.view",
+            explorerViewId: "",
+            supportedLayouts: ["grid" as never],
+            defaultLayout: "grid" as never,
+            settingsSectionId: "missing",
+            capabilityProfiles: ["workspace.module.base"],
+            actions: [],
+          },
+        ],
+      },
+    });
+    const issues = validateExtensionManifest(invalid);
+    expect(issues.some((issue) => issue.path.endsWith("settingsSectionId"))).toBe(true);
+    expect(issues.some((issue) => issue.path.endsWith("explorerViewId"))).toBe(true);
+    expect(issues.some((issue) => issue.path.endsWith("supportedLayouts"))).toBe(true);
   });
 
   it("activates and deactivates extensions", async () => {
@@ -215,6 +258,69 @@ describe("extension-runtime", () => {
 
     await runtime.deactivate(manifest.id);
     expect(runtime.get(manifest.id)?.status).toBe("registered");
+  });
+
+  it("registers workspace modules through the runtime sink", async () => {
+    const { host } = createHost();
+    const { sink, workspaceModules } = createSink();
+    const storage = createInMemoryExtensionRuntimeStorage();
+    const runtime = createExtensionRuntime({ host, registrationSink: sink, storage });
+    const manifest = createManifest("workspace-module", {
+      contributions: {
+        commands: [],
+        views: [
+          {
+            id: "workspace-module.view",
+            title: { defaultMessage: "Workspace Module" },
+            location: "main",
+          },
+          {
+            id: "workspace-module.explorer",
+            title: { defaultMessage: "Workspace Module Explorer" },
+            location: "sidebar",
+          },
+        ],
+        components: [],
+        actionRail: [],
+        settingsSections: [
+          {
+            id: "workspace-module.settings",
+            title: { defaultMessage: "Workspace Module Settings" },
+          },
+        ],
+        workspaceModules: [
+          {
+            id: "workspace-module.module",
+            title: { defaultMessage: "Workspace Module" },
+            primaryViewId: "workspace-module.view",
+            explorerViewId: "workspace-module.explorer",
+            supportedLayouts: ["single", "split"],
+            defaultLayout: "split",
+            settingsSectionId: "workspace-module.settings",
+            capabilityProfiles: ["workspace.module.base"],
+            actions: [],
+          },
+        ],
+      },
+    });
+
+    runtime.registerBundledExtension({
+      manifest,
+      activation: "eager",
+      load: async () => ({
+        manifest,
+        async activate(context) {
+          context.registerWorkspaceModule({
+            ...manifest.contributions.workspaceModules![0],
+            render: () => null,
+            renderExplorer: () => null,
+          });
+        },
+      }),
+    });
+
+    await runtime.start();
+    expect(workspaceModules.map((module) => module.id)).toContain("workspace-module.module");
   });
 
   it("persists extension config with namespaced keys", async () => {

@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2061"
+number: 2061
+slug: "markdown-html-export-link-rewrite-contract"
+title: "Markdown To HTML Export Link Rewrite Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "HTML export must rewrite internal Markdown file links from .md or .markdown destinations to .html targets while preserving hash fragments. Hash-only and external links must remain stable under export."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2061: Markdown To HTML Export Link Rewrite Contract
+  
+  ## Requirements
+  
+  HTML export must rewrite internal Markdown file links from .md or .markdown destinations to .html targets while preserving hash fragments. Hash-only and external links must remain stable under export.
+  
+  ## Evidence
+  
+  Evidence must include preview/export policy tests, React renderer link interception evidence, or explicit partial feature status where browser-level coverage is broad rather than behavior-specific.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1013"
+  - "adr:1036"
+  - "adr:1045"

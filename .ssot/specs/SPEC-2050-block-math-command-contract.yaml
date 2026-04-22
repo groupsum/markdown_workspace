@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2050"
+number: 2050
+slug: "block-math-command-contract"
+title: "Block Math Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The block math editor command must wrap selected text or seed a display math block using double-dollar delimiters. It is optional-profile authoring behavior and remains distinct from renderer typesetting support."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2050: Block Math Command Contract
+  
+  ## Requirements
+  
+  The block math editor command must wrap selected text or seed a display math block using double-dollar delimiters. It is optional-profile authoring behavior and remains distinct from renderer typesetting support.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1028"

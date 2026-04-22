@@ -2,6 +2,7 @@ import { EXTENSION_MANIFEST_VERSION, type ExtensionManifest } from "@mdwrk/exten
 import type { ExtensionRuntimeManifestValidationIssue } from "./types.js";
 
 const isNonEmptyString = (value: unknown): value is string => typeof value === "string" && value.trim().length > 0;
+const WORKSPACE_MODULE_LAYOUTS = new Set(["single", "left", "right", "split"]);
 
 export function validateExtensionManifest(manifest: ExtensionManifest): readonly ExtensionRuntimeManifestValidationIssue[] {
   const issues: ExtensionRuntimeManifestValidationIssue[] = [];
@@ -52,6 +53,46 @@ export function validateExtensionManifest(manifest: ExtensionManifest): readonly
     for (const key of keys) {
       if (!Array.isArray(manifest.contributions[key])) {
         issues.push({ path: `contributions.${key}`, message: `contributions.${key} must be an array.` });
+      }
+    }
+
+    if (manifest.contributions.workspaceModules !== undefined) {
+      if (!Array.isArray(manifest.contributions.workspaceModules)) {
+        issues.push({ path: "contributions.workspaceModules", message: "contributions.workspaceModules must be an array." });
+      } else {
+        const settingsIds = new Set((manifest.contributions.settingsSections ?? []).map((section) => section.id));
+        const viewIds = new Set((manifest.contributions.views ?? []).map((view) => view.id));
+        for (const [index, module] of manifest.contributions.workspaceModules.entries()) {
+          const path = `contributions.workspaceModules.${index}`;
+          if (!isNonEmptyString(module.id)) issues.push({ path: `${path}.id`, message: "Workspace module id must be a non-empty string." });
+          if (!isNonEmptyString(module.primaryViewId)) issues.push({ path: `${path}.primaryViewId`, message: "Workspace module primaryViewId is required." });
+          if (!isNonEmptyString(module.explorerViewId)) issues.push({ path: `${path}.explorerViewId`, message: "Workspace module explorerViewId is required." });
+          if (!isNonEmptyString(module.settingsSectionId)) {
+            issues.push({ path: `${path}.settingsSectionId`, message: "Workspace module settingsSectionId is required." });
+          } else if (!settingsIds.has(module.settingsSectionId)) {
+            issues.push({ path: `${path}.settingsSectionId`, message: "Workspace module settingsSectionId must reference a registered settings section." });
+          }
+          if (module.primaryViewId && !viewIds.has(module.primaryViewId)) {
+            issues.push({ path: `${path}.primaryViewId`, message: "Workspace module primaryViewId must reference a contributed view." });
+          }
+          if (module.explorerViewId && !viewIds.has(module.explorerViewId)) {
+            issues.push({ path: `${path}.explorerViewId`, message: "Workspace module explorerViewId must reference a contributed view." });
+          }
+          if (!Array.isArray(module.supportedLayouts) || module.supportedLayouts.length === 0) {
+            issues.push({ path: `${path}.supportedLayouts`, message: "Workspace module supportedLayouts must contain at least one layout." });
+          } else {
+            for (const layout of module.supportedLayouts) {
+              if (!WORKSPACE_MODULE_LAYOUTS.has(layout)) {
+                issues.push({ path: `${path}.supportedLayouts`, message: `Unsupported workspace module layout '${String(layout)}'.` });
+              }
+            }
+          }
+          if (!WORKSPACE_MODULE_LAYOUTS.has(module.defaultLayout)) {
+            issues.push({ path: `${path}.defaultLayout`, message: `Unsupported workspace module defaultLayout '${String(module.defaultLayout)}'.` });
+          } else if (Array.isArray(module.supportedLayouts) && !module.supportedLayouts.includes(module.defaultLayout)) {
+            issues.push({ path: `${path}.defaultLayout`, message: "Workspace module defaultLayout must be included in supportedLayouts." });
+          }
+        }
       }
     }
   }

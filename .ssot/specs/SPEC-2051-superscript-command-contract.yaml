@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2051"
+number: 2051
+slug: "superscript-command-contract"
+title: "Superscript Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The superscript editor command must wrap selected text or seed superscript syntax for the optional superscript profile. It is not CommonMark or default GFM behavior."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2051: Superscript Command Contract
+  
+  ## Requirements
+  
+  The superscript editor command must wrap selected text or seed superscript syntax for the optional superscript profile. It is not CommonMark or default GFM behavior.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1028"

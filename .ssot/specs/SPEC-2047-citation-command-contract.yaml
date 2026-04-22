@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2047"
+number: 2047
+slug: "citation-command-contract"
+title: "Citation Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The citation editor command must wrap or seed citation-key authoring syntax without claiming bibliography resolution. Citation behavior remains an optional/out-of-scope profile surface until direct evidence promotes it."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2047: Citation Command Contract
+  
+  ## Requirements
+  
+  The citation editor command must wrap or seed citation-key authoring syntax without claiming bibliography resolution. Citation behavior remains an optional/out-of-scope profile surface until direct evidence promotes it.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1028"

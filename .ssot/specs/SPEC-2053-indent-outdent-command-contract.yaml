@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2053"
+number: 2053
+slug: "indent-outdent-command-contract"
+title: "Indent And Outdent Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Indent and outdent commands must operate through the editor core command model, preserve selection coherently, and support structural Markdown authoring workflows. These commands are editor behavior rather than Markdown profile syntax."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2053: Indent And Outdent Command Contract
+  
+  ## Requirements
+  
+  Indent and outdent commands must operate through the editor core command model, preserve selection coherently, and support structural Markdown authoring workflows. These commands are editor behavior rather than Markdown profile syntax.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"

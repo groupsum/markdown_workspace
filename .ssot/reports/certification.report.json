@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "registry_path": ".ssot/registry.json",
+  "release": {
+    "release_id": "rel:0.1.0",
+    "passed": true,
+    "failures": [],
+    "warnings": [],
+    "claims": [],
+    "evidence": [],
+    "profiles": [],
+    "boundary": {
+      "id": "bnd:default",
+      "profile_ids": [],
+      "resolved_feature_ids": []
+    },
+    "summary": {
+      "boundary_id": "bnd:default",
+      "boundary_feature_count": 0,
+      "boundary_profile_count": 0,
+      "release_claim_count": 0,
+      "release_evidence_count": 0
+    }
+  },
+  "boundary_scope": {
+    "boundary_id": "bnd:default",
+    "profile_ids": [],
+    "feature_ids": []
+  },
+  "summary": {
+    "counts": {
+      "features": 126,
+      "profiles": 0,
+      "tests": 36,
+      "claims": 14,
+      "evidence": 36,
+      "issues": 0,
+      "risks": 0,
+      "boundaries": 1,
+      "releases": 1,
+      "adrs": 62,
+      "specs": 59
+    },
+    "profile_status": {
+      "passing": 0,
+      "failing": 0,
+      "draft": 0
+    }
+  }
+}

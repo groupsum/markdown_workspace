@@ -48,7 +48,7 @@ The following groups are now frozen in `.changeset/config.json`:
 | renderer | `@mdwrk/markdown-renderer-core`, `@mdwrk/markdown-renderer-react` | rendering behavior must stay aligned across core and React binding |
 | editor | `@mdwrk/markdown-editor-core`, `@mdwrk/markdown-editor-react` | authoring behavior must stay aligned across core and React binding |
 | shared certification pair | `@mdwrk/i18n`, `@mdwrk/ui-tokens` | the certification train treats locale and token/UI bridge changes as a coordinated shared-platform surface |
-| extension runtime family | `@mdwrk/extension-runtime`, `@mdwrk/extension-manager`, `@mdwrk/extension-theme-studio`, `@mdwrk/extension-gemini-agent`, `@mdwrk/extension-catalog-hello` | runtime-facing extension platform changes must remain compatible across the family |
+| extension runtime family | `@mdwrk/extension-runtime`, `@mdwrk/extension-workspace-files`, `@mdwrk/extension-git-ops`, `@mdwrk/extension-manager`, `@mdwrk/extension-theme-studio`, `@mdwrk/extension-gemini-agent`, `@mdwrk/extension-catalog-hello` | runtime-facing extension platform changes must remain compatible across the family |
 
 ## Packages intentionally not linked
 

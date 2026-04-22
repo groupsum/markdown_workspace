@@ -2,8 +2,15 @@ import React from 'react';
 import type { ExtensionSettingsSchema } from '@mdwrk/extension-manifest';
 import type { ExtensionRuntimeRegistrationSink } from '@mdwrk/extension-runtime';
 import type { ClientRuntimeServices } from '../../app/runtime/clientRuntimeTypes';
-import type { RegisteredCommand, RegisteredSettingsSection, RegisteredView } from '@mdwrk/extension-host';
+import type { RegisteredCommand, RegisteredSettingsSection, RegisteredView, RegisteredWorkspaceModule } from '@mdwrk/extension-host';
 import { ExtensionViewErrorBoundary } from './ExtensionViewErrorBoundary';
+import type { SettingsPanelId } from '../../features/settings/settingsRegistry';
+
+const SETTINGS_PANELS = new Set<SettingsPanelId>(['visual', 'git', 'data', 'language', 'keys', 'session', 'extensions', 'advanced']);
+
+function resolveSettingsPanel(panel: string | undefined): SettingsPanelId {
+  return panel && SETTINGS_PANELS.has(panel as SettingsPanelId) ? (panel as SettingsPanelId) : 'extensions';
+}
 
 function createSettingsSectionPlaceholder(extensionId: string, section: RegisteredSettingsSection): React.ReactNode {
   return (
@@ -56,7 +63,6 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
       });
     },
     registerView(extensionId: string, view: RegisteredView) {
-      const sidebarRenderer = (view as RegisteredView & { renderSidebar?: (props: unknown) => React.ReactNode }).renderSidebar;
       return services.views.register({
         ...view,
         render: (props) => (
@@ -64,13 +70,34 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
             {view.render(props) as React.ReactNode}
           </ExtensionViewErrorBoundary>
         ),
-        renderSidebar: sidebarRenderer
+        renderSidebar: view.renderSidebar
           ? (props) => (
               <ExtensionViewErrorBoundary extensionId={extensionId} diagnostics={services.diagnostics}>
-                {sidebarRenderer(props)}
+                {view.renderSidebar?.(props)}
               </ExtensionViewErrorBoundary>
             )
           : undefined,
+      });
+    },
+    registerWorkspaceModule(extensionId: string, module: RegisteredWorkspaceModule) {
+      return services.views.register({
+        id: module.primaryViewId,
+        title: module.title,
+        description: module.description,
+        icon: module.icon,
+        location: 'main',
+        allowMultiple: false,
+        canBePinned: true,
+        render: (props) => (
+          <ExtensionViewErrorBoundary extensionId={extensionId} diagnostics={services.diagnostics}>
+            {module.render(props) as React.ReactNode}
+          </ExtensionViewErrorBoundary>
+        ),
+        renderSidebar: (props) => (
+          <ExtensionViewErrorBoundary extensionId={extensionId} diagnostics={services.diagnostics}>
+            {module.renderExplorer(props) as React.ReactNode}
+          </ExtensionViewErrorBoundary>
+        ),
       });
     },
     registerComponent(_extensionId, _component) {
@@ -88,8 +115,8 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
       const render = (section as RegisteredSettingsSection & { render?: () => React.ReactNode }).render;
       return services.settingsRegistry.register({
         ...section,
-        panel: 'extensions',
-        icon: { kind: 'lucide', name: 'Puzzle' },
+        panel: resolveSettingsPanel(section.panel),
+        icon: section.icon ?? { kind: 'lucide', name: 'Puzzle' },
         extensionId,
         schema,
         render: render ?? (schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section)),

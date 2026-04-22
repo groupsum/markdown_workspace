@@ -4,7 +4,6 @@ import { THEMES } from '../../../data/themes';
 import { MarkdownProfileSettingsPanel } from '../../features/markdownProfiles/MarkdownProfileSettingsPanel';
 import { LanguageSettingsPanel } from '../../features/i18n/LanguageSettingsPanel';
 import { GIT_REPO_REFRESH_REQUEST_EVENT } from '../../../constants';
-import { GitSettingsPanel } from '../../features/settings/GitSettingsPanel';
 import { DataSettingsPanel } from '../../features/settings/DataSettingsPanel';
 import { CommandPaletteView } from '../../shell/CommandPaletteView';
 import { SettingsView } from '../../shell/SettingsView';
@@ -81,93 +80,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
 
     const commandDisposables = [
       services.commands.register({
-        id: 'core.new-file',
-        title: label('Create New File', 'core.commands.new-file'),
-        execute: () => runtime.getSnapshot().app.actions.promptNewFile(),
-        icon: { kind: 'lucide', name: 'FilePlus' },
-        keywords: ['file', 'create', 'new'],
-      }),
-      services.commands.register({
-        id: 'core.new-folder',
-        title: label('Create New Folder', 'core.commands.new-folder'),
-        execute: () => runtime.getSnapshot().app.actions.promptNewFolder(),
-        icon: { kind: 'lucide', name: 'FolderPlus' },
-        keywords: ['folder', 'create', 'new'],
-      }),
-      services.commands.register({
-        id: 'core.save-current-file',
-        title: label('Save Current File', 'core.commands.save-current-file'),
-        execute: () => runtime.getSnapshot().app.actions.saveCurrentFile(),
-        icon: { kind: 'lucide', name: 'Save' },
-        keywords: ['save', 'write'],
-      }),
-      services.commands.register({
-        id: 'core.rename-selected',
-        title: label('Rename Selected Item', 'core.commands.rename-selected'),
-        execute: () => runtime.getSnapshot().app.actions.promptRenameSelected(),
-        icon: { kind: 'lucide', name: 'Pencil' },
-      }),
-      services.commands.register({
-        id: 'core.delete-selected',
-        title: label('Delete Selected Item', 'core.commands.delete-selected'),
-        execute: () => runtime.getSnapshot().app.actions.deleteSelectedItem(),
-        icon: { kind: 'lucide', name: 'Trash2' },
-      }),
-      services.commands.register({
-        id: 'core.toggle-explorer',
-        title: label('Toggle Explorer', 'core.commands.toggle-explorer'),
-        execute: async () => {
-          const snapshot = services.views.getSnapshot();
-          if (snapshot.activeMainViewId) {
-            await services.views.close(snapshot.activeMainViewId);
-            if (!runtime.getSnapshot().app.state.sidebarOpen) {
-              runtime.getSnapshot().app.actions.setSidebarOpen(true);
-            }
-            return;
-          }
-          runtime.getSnapshot().app.actions.toggleSidebar();
-        },
-        icon: { kind: 'lucide', name: 'Folder' },
-      }),
-      services.commands.register({
-        id: 'core.download-workspace',
-        title: label('Download Workspace', 'core.commands.download-workspace'),
-        execute: () => runtime.getSnapshot().app.actions.handleDownload(),
-        icon: { kind: 'lucide', name: 'Download' },
-      }),
-      services.commands.register({
-        id: 'core.export-html',
-        title: label('Export HTML', 'core.commands.export-html'),
-        execute: () => runtime.getSnapshot().app.actions.handleHtmlExport(),
-        icon: { kind: 'lucide', name: 'FileDown' },
-      }),
-      services.commands.register({
-        id: 'core.print-preview',
-        title: label('Print Preview', 'core.commands.print-preview'),
-        execute: () => runtime.getSnapshot().app.actions.handlePrint(),
-        icon: { kind: 'lucide', name: 'Printer' },
-      }),
-      services.commands.register({
-        id: 'core.import-markdown',
-        title: label('Import Markdown', 'core.import-markdown.title'),
-        execute: () => runtime.getSnapshot().app.actions.requestMarkdownImport(),
-        icon: { kind: 'lucide', name: 'Upload' },
-        keywords: ['import', 'markdown', 'upload'],
-      }),
-      services.commands.register({
-        id: 'core.open-host-file',
-        title: label('Open Markdown File', 'core.commands.open-host-file'),
-        execute: () => runtime.getSnapshot().app.actions.openMarkdownFromHost(),
-        icon: { kind: 'lucide', name: 'FolderOpen' },
-        keywords: ['open', 'markdown', 'desktop'],
-      }),
-      services.commands.register({
-        id: 'core.toggle-git-pane',
-        title: label('Toggle Git Operations', 'core.commands.toggle-git-pane'),
-        execute: async () => { await services.views.toggle('core.git-pane'); },
-        icon: { kind: 'lucide', name: 'GitBranch' },
-      }),
-      services.commands.register({
         id: 'core.switch-project',
         title: label('Switch Project', 'core.commands.switch-project'),
         execute: () => runtime.getSnapshot().app.actions.switchToProjectSelector(),
@@ -204,24 +116,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         icon: { kind: 'lucide', name: 'Monitor' },
       }),
       services.commands.register({
-        id: 'core.view-editor',
-        title: label('Editor View', 'core.commands.view-editor'),
-        execute: () => runtime.getSnapshot().app.actions.setViewMode('editor'),
-        icon: { kind: 'lucide', name: 'LayoutGrid' },
-      }),
-      services.commands.register({
-        id: 'core.view-split',
-        title: label('Split View', 'core.commands.view-split'),
-        execute: () => runtime.getSnapshot().app.actions.setViewMode('split'),
-        icon: { kind: 'lucide', name: 'Columns' },
-      }),
-      services.commands.register({
-        id: 'core.view-preview',
-        title: label('Preview View', 'core.commands.view-preview'),
-        execute: () => runtime.getSnapshot().app.actions.setViewMode('preview'),
-        icon: { kind: 'lucide', name: 'Eye' },
-      }),
-      services.commands.register({
         id: 'core.next-tab',
         title: label('Next Tab', 'core.commands.next-tab'),
         execute: () => runtime.getSnapshot().app.actions.selectNextTab(),
@@ -232,18 +126,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         title: label('Previous Tab', 'core.commands.previous-tab'),
         execute: () => runtime.getSnapshot().app.actions.selectPreviousTab(),
         icon: { kind: 'lucide', name: 'ArrowRight' },
-      }),
-      services.commands.register({
-        id: 'core.focus-explorer',
-        title: label('Focus Explorer', 'core.commands.focus-explorer'),
-        execute: () => {
-          runtime.getSnapshot().app.actions.setSidebarOpen(true);
-          requestAnimationFrame(() => {
-            const explorer = document.querySelector<HTMLElement>('.file-tree-container');
-            explorer?.focus();
-          });
-        },
-        icon: { kind: 'lucide', name: 'Folder' },
       }),
       services.commands.register({
         id: 'core.cloud-sync',
@@ -280,56 +162,9 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         onOpen: () => runtime.getSnapshot().app.actions.setShowSettings(true),
         onClose: () => runtime.getSnapshot().app.actions.setShowSettings(false),
       }),
-      services.views.register({
-        id: 'core.git-pane',
-        title: label('Git Operations', 'core.views.git.title'),
-        description: label('Source control workspace.', 'core.views.git.description'),
-        location: 'main',
-        canBePinned: true,
-        allowMultiple: false,
-        render: () => null,
-      }),
     ];
 
     const railDisposables = [
-      services.actionRail.register({
-        id: 'core.toggle-explorer',
-        title: label('Toggle Explorer', 'core.commands.toggle-explorer'),
-        icon: { kind: 'lucide', name: 'Folder' },
-        group: 'workspace.primary',
-        order: 10,
-        target: { kind: 'command', commandId: 'core.toggle-explorer' },
-        isActive: () => {
-          const snapshot = runtime.getSnapshot();
-          const viewSnapshot = services.views.getSnapshot();
-          return !viewSnapshot.activeMainViewId && snapshot.app.state.sidebarOpen;
-        },
-      }),
-      services.actionRail.register({
-        id: 'core.new-file',
-        title: label('New File'),
-        icon: { kind: 'lucide', name: 'FilePlus' },
-        group: 'workspace.primary',
-        order: 20,
-        target: { kind: 'command', commandId: 'core.new-file' },
-      }),
-      services.actionRail.register({
-        id: 'core.new-folder',
-        title: label('New Folder'),
-        icon: { kind: 'lucide', name: 'FolderPlus' },
-        group: 'workspace.primary',
-        order: 30,
-        target: { kind: 'command', commandId: 'core.new-folder' },
-      }),
-      services.actionRail.register({
-        id: 'core.git-pane-rail',
-        title: label('Git Operations'),
-        icon: { kind: 'lucide', name: 'GitBranch' },
-        group: 'workspace.primary',
-        order: 40,
-        target: { kind: 'command', commandId: 'core.toggle-git-pane' },
-        isActive: () => services.views.getSnapshot().openViewIds.includes('core.git-pane'),
-      }),
       services.actionRail.register({
         id: 'core.switch-project',
         title: label('Switch Project', 'core.commands.switch-project'),
@@ -337,46 +172,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         group: 'workspace.secondary',
         order: 10,
         target: { kind: 'command', commandId: 'core.switch-project' },
-      }),
-      services.actionRail.register({
-        id: 'core.download-workspace',
-        title: label('Download Workspace', 'core.commands.download-workspace'),
-        icon: { kind: 'lucide', name: 'Download' },
-        group: 'workspace.secondary',
-        order: 20,
-        target: { kind: 'command', commandId: 'core.download-workspace' },
-      }),
-      services.actionRail.register({
-        id: 'core.export-html',
-        title: label('Export HTML', 'core.commands.export-html'),
-        icon: { kind: 'lucide', name: 'FileDown' },
-        group: 'workspace.secondary',
-        order: 30,
-        target: { kind: 'command', commandId: 'core.export-html' },
-      }),
-      services.actionRail.register({
-        id: 'core.open-host-file',
-        title: label('Open Markdown File', 'core.commands.open-host-file'),
-        icon: { kind: 'lucide', name: 'FolderOpen' },
-        group: 'workspace.secondary',
-        order: 34,
-        target: { kind: 'command', commandId: 'core.open-host-file' },
-      }),
-      services.actionRail.register({
-        id: 'core.import-markdown',
-        title: label('Import Markdown', 'core.import-markdown.title'),
-        icon: { kind: 'lucide', name: 'Upload' },
-        group: 'workspace.secondary',
-        order: 35,
-        target: { kind: 'command', commandId: 'core.import-markdown' },
-      }),
-      services.actionRail.register({
-        id: 'core.print-preview',
-        title: label('Print Preview', 'core.commands.print-preview'),
-        icon: { kind: 'lucide', name: 'Printer' },
-        group: 'workspace.secondary',
-        order: 40,
-        target: { kind: 'command', commandId: 'core.print-preview' },
       }),
       services.actionRail.register({
         id: 'core.cloud-sync',
@@ -447,15 +242,6 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         panel: 'advanced',
         icon: { kind: 'lucide', name: 'FileText' },
         render: () => <MarkdownProfileSettingsPanel />,
-      }),
-      services.settingsRegistry.register({
-        id: 'core.settings.git',
-        title: label('Source Control', 'core.settings.sections.git.title'),
-        description: label('Repository and identity settings.', 'core.settings.sections.git.description'),
-        order: 20,
-        panel: 'git',
-        icon: { kind: 'lucide', name: 'GitBranch' },
-        render: () => <GitSettingsPanel />,
       }),
       services.settingsRegistry.register({
         id: 'core.settings.data',

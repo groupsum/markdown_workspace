@@ -19,6 +19,7 @@ import type {
   RegisteredComponent,
   RegisteredSettingsSection,
   RegisteredView,
+  RegisteredWorkspaceModule,
 } from "@mdwrk/extension-host";
 
 export type ExtensionActivationMode = "eager" | "lazy";
@@ -67,6 +68,7 @@ export interface ExtensionRuntimeStorage {
 export interface ExtensionRuntimeRegistrationSink {
   registerCommand(extensionId: string, command: RegisteredCommand): Disposable;
   registerView(extensionId: string, view: RegisteredView): Disposable;
+  registerWorkspaceModule(extensionId: string, module: RegisteredWorkspaceModule): Disposable;
   registerComponent?(extensionId: string, component: RegisteredComponent): Disposable;
   registerActionRailItem(extensionId: string, item: RegisteredActionRailItem): Disposable;
   registerSettingsSection(extensionId: string, section: RegisteredSettingsSection): Disposable;

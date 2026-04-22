@@ -38,6 +38,8 @@ markdown_workspace/
       markdown-editor-react/
     extensions/
       extension-runtime/
+      extension-workspace-files/
+      extension-git-ops/
       extension-manager/
       extension-gemini-agent/
       extension-theme-studio/
@@ -92,6 +94,8 @@ Portable markdown editing packages.
 Publishable extension packages and extension runtime.
 
 - `@mdwrk/extension-runtime`
+- `@mdwrk/extension-workspace-files`
+- `@mdwrk/extension-git-ops`
 - `@mdwrk/extension-manager`
 - `@mdwrk/extension-gemini-agent`
 - `@mdwrk/extension-theme-studio`
@@ -121,6 +125,8 @@ Examples:
 Extension ids are stable dot-separated identifiers independent of folder names.
 
 Examples:
+- `core.workspace-files`
+- `core.git-ops`
 - `core.extension-manager`
 - `core.gemini-agent`
 - `core.theme-studio`

@@ -3583,6 +3583,1302 @@
       "claim_ids": [],
       "test_ids": [],
       "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-view-editor",
+      "title": "Editor toolbar view editor icon",
+      "description": "Expose the editor-only view toolbar icon and route it to editor view mode.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2023",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-view-split",
+      "title": "Editor toolbar split view icon",
+      "description": "Expose the split-view toolbar icon and disable it when viewport policy disallows split view.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2023",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-view-preview",
+      "title": "Editor toolbar preview icon",
+      "description": "Expose the preview-only toolbar icon and route it to preview view mode.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2023",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-strikethrough",
+      "title": "Editor toolbar strikethrough icon",
+      "description": "Expose the strikethrough toolbar icon and dispatch the strikethrough command.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-bullet-list",
+      "title": "Editor toolbar bullet list icon",
+      "description": "Expose the bullet-list toolbar icon and dispatch unordered list command behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-task-list",
+      "title": "Editor toolbar task list icon",
+      "description": "Expose the task-list toolbar icon and dispatch task list command behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2016",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-indent",
+      "title": "Editor toolbar indent icon",
+      "description": "Expose the indent toolbar icon and dispatch structural indentation.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2053",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-outdent",
+      "title": "Editor toolbar outdent icon",
+      "description": "Expose the outdent toolbar icon and dispatch structural outdentation.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2053",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-insert-table",
+      "title": "Editor toolbar insert table icon",
+      "description": "Expose the insert table toolbar icon and open table insertion behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2003",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-inline-math",
+      "title": "Editor toolbar inline math icon",
+      "description": "Expose the inline math toolbar icon and dispatch inline math command behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2049",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-footnote",
+      "title": "Editor toolbar footnote icon",
+      "description": "Expose the footnote toolbar icon and dispatch footnote authoring behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2048",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-superscript",
+      "title": "Editor toolbar superscript icon",
+      "description": "Expose the superscript toolbar icon and dispatch superscript authoring behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2051",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-subscript",
+      "title": "Editor toolbar subscript icon",
+      "description": "Expose the subscript toolbar icon and dispatch subscript authoring behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2052",
+        "spc:2022"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-bold",
+      "title": "Editor toolbar bold icon",
+      "description": "Expose the bold toolbar icon and dispatch strong emphasis authoring behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-italic",
+      "title": "Editor toolbar italic icon",
+      "description": "Expose the italic toolbar icon and dispatch emphasis authoring behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-undo",
+      "title": "Editor toolbar undo icon",
+      "description": "Expose the undo toolbar icon and disable it when no undo history exists.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2023"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-redo",
+      "title": "Editor toolbar redo icon",
+      "description": "Expose the redo toolbar icon and disable it when no redo history exists.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2023"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-command-front-matter",
+      "title": "Editor front matter command",
+      "description": "Track front matter insertion as a default authoring profile command.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2046",
+        "spc:2022",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-command-citation",
+      "title": "Editor citation command",
+      "description": "Track citation key authoring as an optional profile command without bibliography-resolution claims.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2047",
+        "spc:2022",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-command-block-math",
+      "title": "Editor block math command",
+      "description": "Track display math authoring through the editor command model.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2050",
+        "spc:2022",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-command-insert-tab",
+      "title": "Editor insert tab command",
+      "description": "Track insert-tab command behavior under the repository structural indentation policy.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2054",
+        "spc:2022",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-responsive-placement",
+      "title": "Editor toolbar responsive placement",
+      "description": "Track toolbar placement across desktop, mobile portrait, mobile landscape, and aspect-ratio scenarios.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-hidden-button-preference",
+      "title": "Editor toolbar hidden button preference",
+      "description": "Track user preference hiding for individual editor toolbar buttons.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-preferences"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-active-state-display",
+      "title": "Editor toolbar active state display",
+      "description": "Track active visual state for selected mode and formatting toolbar buttons.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2042"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-disabled-state-display",
+      "title": "Editor toolbar disabled state display",
+      "description": "Track disabled visual and interaction state for split, undo, and redo controls.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2042"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-command-dispatch",
+      "title": "Editor toolbar command dispatch",
+      "description": "Track dispatch from toolbar icons into editor core commands and view-mode handlers.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2022",
+        "spc:2023"
+      ],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-split-view-eligibility",
+      "title": "Editor toolbar split view eligibility",
+      "description": "Track viewport-driven split-view availability and disabled split icon behavior.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-split-resizing",
+      "title": "Editor toolbar split resizing",
+      "description": "Track editor and preview split resizing behavior and split band constraints.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2043"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-overflow-scroll",
+      "title": "Editor toolbar overflow scroll",
+      "description": "Track toolbar overflow and scroll behavior under compact viewport sizes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-divider-grouping",
+      "title": "Editor toolbar divider grouping",
+      "description": "Track divider grouping between mode, command, formatting, and history toolbar controls.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-selected-text-wrap",
+      "title": "Editor selected text link wrapping",
+      "description": "Convert selected text into Markdown inline-link syntax.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2055",
+        "spc:2004"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-empty-selection-stub",
+      "title": "Editor empty selection link stub",
+      "description": "Seed Markdown inline-link syntax when no text is selected.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2055",
+        "spc:2004"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-existing-edit",
+      "title": "Editor existing link edit",
+      "description": "Edit an existing Markdown link under cursor without nesting or corrupting link syntax.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2055",
+        "spc:2004"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-url-paste-wrap",
+      "title": "Editor pasted URL link wrapping",
+      "description": "Wrap selected text with a pasted URL as Markdown inline-link syntax.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2055",
+        "spc:2004"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-internal-file-authoring",
+      "title": "Editor internal file link authoring",
+      "description": "Author internal workspace Markdown file links through an editor link affordance.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2055",
+        "spc:2058"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-link-hash-authoring",
+      "title": "Editor hash link authoring",
+      "description": "Author same-document and file-plus-hash Markdown link destinations.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2056",
+        "spc:2055"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-external-pass-through",
+      "title": "Preview external link pass through",
+      "description": "Allow external preview links to follow external handling rather than workspace navigation interception.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2060",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-internal-file-navigation",
+      "title": "Preview internal file link navigation",
+      "description": "Resolve internal Markdown file links and navigate within workspace file state.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2058",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-same-document-hash-scroll",
+      "title": "Preview same document hash scroll",
+      "description": "Scroll hash-only preview links within the current preview without switching files.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2056",
+        "spc:2057",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-cross-file-hash-scroll",
+      "title": "Preview cross file hash scroll",
+      "description": "Navigate to an internal Markdown file and then scroll to the requested hash target.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2059",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-export-rewrite",
+      "title": "Preview export Markdown link rewrite",
+      "description": "Rewrite internal Markdown links to HTML targets during export while preserving hash fragments.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2061",
+        "spc:2039",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-unsafe-url-policy",
+      "title": "Preview unsafe URL policy",
+      "description": "Apply preview and export URL safety policy to unsafe link and URL-bearing destinations.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2060",
+        "spc:2039",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -3783,7 +5079,8 @@
         "feat:client-preferences",
         "feat:markdown-profile-settings-persistence",
         "feat:profile-boundary-resolution",
-        "feat:custom-flavored-markdown-profile"
+        "feat:custom-flavored-markdown-profile",
+        "feat:editor-toolbar-hidden-button-preference"
       ],
       "claim_ids": [
         "clm:client-markdownprofiles",
@@ -3907,7 +5204,15 @@
         "feat:cross-cutting",
         "feat:uix-css-token-chassis-contract",
         "feat:client-layout",
-        "feat:uix-breakpoint-token-contract"
+        "feat:uix-breakpoint-token-contract",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -3928,7 +5233,15 @@
         "feat:uix-css-token-chassis-contract",
         "feat:client-layout",
         "feat:uix-breakpoint-token-contract",
-        "feat:mdwrk-shell-fixed-fit-screen"
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4048,7 +5361,15 @@
         "feat:shell-taxonomy-runtime-detection",
         "feat:uix-responsive-layout-matrix",
         "feat:client-layout",
-        "feat:uix-breakpoint-token-contract"
+        "feat:uix-breakpoint-token-contract",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4068,7 +5389,13 @@
         "feat:cross-cutting",
         "feat:browser-e2e-conformance-matrix",
         "feat:preview-export-artifact-generation",
-        "feat:preview-export-profile-disclosure"
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-unsafe-url-policy"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -4114,7 +5441,15 @@
         "feat:browser-e2e-conformance-matrix",
         "feat:shell-evidence-matrix",
         "feat:shell-taxonomy-runtime-detection",
-        "feat:client-layout"
+        "feat:client-layout",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4133,7 +5468,25 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:editor-core-command-model",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-command-insert-tab",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4152,7 +5505,9 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:editor-core-command-model",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-undo",
+        "feat:editor-toolbar-redo"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4193,7 +5548,25 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:editor-core-command-model",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-command-insert-tab",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4212,7 +5585,25 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:editor-core-command-model",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-command-insert-tab",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4231,7 +5622,26 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:react-markdown-editor-surface",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-insert-table",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-toolbar-undo",
+        "feat:editor-toolbar-redo",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4250,7 +5660,22 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:react-markdown-editor-surface",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4330,7 +5755,13 @@
         "feat:profile-boundary-resolution",
         "feat:commonmark-conformance-profile",
         "feat:gfm-profile",
-        "feat:custom-flavored-markdown-profile"
+        "feat:custom-flavored-markdown-profile",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-unsafe-url-policy"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4352,7 +5783,13 @@
         "feat:preview-export-artifact-generation",
         "feat:profile-boundary-resolution",
         "feat:gfm-profile",
-        "feat:custom-flavored-markdown-profile"
+        "feat:custom-flavored-markdown-profile",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-unsafe-url-policy"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -4384,7 +5821,13 @@
         "feat:commonmark-conformance-profile",
         "feat:gfm-profile",
         "feat:custom-flavored-markdown-profile",
-        "feat:preview-export-profile-disclosure"
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-unsafe-url-policy"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -4560,7 +6003,32 @@
       "feature_ids": [
         "feat:client-editor",
         "feat:editor-core-command-model",
-        "feat:react-markdown-editor-surface"
+        "feat:react-markdown-editor-surface",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-insert-table",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-toolbar-undo",
+        "feat:editor-toolbar-redo",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-command-insert-tab",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
@@ -4669,7 +6137,17 @@
         "feat:shell-taxonomy-runtime-detection",
         "feat:uix-responsive-layout-matrix",
         "feat:uix-breakpoint-token-contract",
-        "feat:mdwrk-shell-fixed-fit-screen"
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -4764,7 +6242,8 @@
       "description": "Client feature: preferences is represented by repository tests and source surfaces.",
       "feature_ids": [
         "feat:client-preferences",
-        "feat:pwa-version-manifest"
+        "feat:pwa-version-manifest",
+        "feat:editor-toolbar-hidden-button-preference"
       ],
       "test_ids": [
         "tst:apps-client-src-pwa-versionmanifest.test.ts",
@@ -5406,8 +6885,8 @@
     {
       "id": "bnd:default",
       "title": "Default boundary",
-      "status": "draft",
-      "frozen": false,
+      "status": "frozen",
+      "frozen": true,
       "feature_ids": [],
       "profile_ids": []
     }
@@ -5416,7 +6895,7 @@
     {
       "id": "rel:0.1.0",
       "version": "0.1.0",
-      "status": "draft",
+      "status": "published",
       "boundary_id": "bnd:default",
       "claim_ids": [],
       "evidence_ids": []
@@ -7734,7 +9213,469 @@
         "adr:1041",
         "adr:1031"
       ]
+    },
+    {
+      "id": "spc:2045",
+      "number": 2045,
+      "slug": "editor-authoring-default-profile-contract",
+      "title": "Editor Authoring Default Profile Contract",
+      "path": ".ssot/specs/SPEC-2045-editor-authoring-default-profile-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "868e780348368de22f431422dd86c8d936f09db4caf24874f91cdaf4b23b47ba",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1036",
+        "adr:1013",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2046",
+      "number": 2046,
+      "slug": "front-matter-command-contract",
+      "title": "Front Matter Command Contract",
+      "path": ".ssot/specs/SPEC-2046-front-matter-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e25c82a42a504873cc3d0e079daedb3a0ea6a97f7aed6966402f679a2947731c",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2047",
+      "number": 2047,
+      "slug": "citation-command-contract",
+      "title": "Citation Command Contract",
+      "path": ".ssot/specs/SPEC-2047-citation-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "b0fc915f7ccb39b53c8a99130257b00269aae23f0c548cb5f45f6bc82bd40b0d",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2048",
+      "number": 2048,
+      "slug": "footnote-command-contract",
+      "title": "Footnote Command Contract",
+      "path": ".ssot/specs/SPEC-2048-footnote-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "b542e32831a660146783e7064f6d451f8ce0f5990342418157726d0dbf4a0705",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2049",
+      "number": 2049,
+      "slug": "inline-math-command-contract",
+      "title": "Inline Math Command Contract",
+      "path": ".ssot/specs/SPEC-2049-inline-math-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1e53da40fe832644af2c4eca4c669ef33862efc82a5fc7fbfd3defd517c5c1ce",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2050",
+      "number": 2050,
+      "slug": "block-math-command-contract",
+      "title": "Block Math Command Contract",
+      "path": ".ssot/specs/SPEC-2050-block-math-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "c3f5e36083fbc16cc3deb771459e036628fd62635deb2b73f1a3b403b13b3773",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2051",
+      "number": 2051,
+      "slug": "superscript-command-contract",
+      "title": "Superscript Command Contract",
+      "path": ".ssot/specs/SPEC-2051-superscript-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "e99a76ff349581d8f54739c2324a581d93c99af3644a5d9d08ddd8c0c09fa600",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2052",
+      "number": 2052,
+      "slug": "subscript-command-contract",
+      "title": "Subscript Command Contract",
+      "path": ".ssot/specs/SPEC-2052-subscript-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "64803a8c7c582f90557b2efef14ce34df6e2ed63c4f5e421bbc2c7a054954780",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2053",
+      "number": 2053,
+      "slug": "indent-outdent-command-contract",
+      "title": "Indent And Outdent Command Contract",
+      "path": ".ssot/specs/SPEC-2053-indent-outdent-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "75e683d7d13d09017b9ae70e1c3d4dac223306e552d9ea42ba64c80f7f8b4365",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035"
+      ]
+    },
+    {
+      "id": "spc:2054",
+      "number": 2054,
+      "slug": "insert-tab-command-contract",
+      "title": "Insert Tab Command Contract",
+      "path": ".ssot/specs/SPEC-2054-insert-tab-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "81c06c01d2f8a8e8c1462a20d1edf7854b920011137e466c818b26957633440c",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1035"
+      ]
+    },
+    {
+      "id": "spc:2055",
+      "number": 2055,
+      "slug": "editor-link-authoring-command-contract",
+      "title": "Editor Link Authoring Command Contract",
+      "path": ".ssot/specs/SPEC-2055-editor-link-authoring-command-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "f99c3c6d7c3dbe9bb6c26df10a1043bbb696010b3be95ca2cc931b207ca29151",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2056",
+      "number": 2056,
+      "slug": "hash-link-authoring-destination-contract",
+      "title": "Hash Link Authoring And Destination Contract",
+      "path": ".ssot/specs/SPEC-2056-hash-link-authoring-destination-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "65c348e61fd56e899cd38b026da1dbcaae56baaf2aa092a8b04e83612bc91c43",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2057",
+      "number": 2057,
+      "slug": "link-click-preview-navigation-contract",
+      "title": "Link Click Preview Navigation Contract",
+      "path": ".ssot/specs/SPEC-2057-link-click-preview-navigation-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "bb054d3e6b482db94dab5f8e3cf66f7de6bdac89de5695bbfdfd414adb9d4ce9",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1028"
+      ]
+    },
+    {
+      "id": "spc:2058",
+      "number": 2058,
+      "slug": "internal-workspace-markdown-link-resolution-contract",
+      "title": "Internal Workspace Markdown Link Resolution Contract",
+      "path": ".ssot/specs/SPEC-2058-internal-workspace-markdown-link-resolution-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ad97a8b4d650800a3b85bd86c1ed07763f726b6f0f8f5892a3e7be16d570d447",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1045"
+      ]
+    },
+    {
+      "id": "spc:2059",
+      "number": 2059,
+      "slug": "cross-file-hash-navigation-contract",
+      "title": "Cross File Hash Navigation Contract",
+      "path": ".ssot/specs/SPEC-2059-cross-file-hash-navigation-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1601b6694a56ee0b9c5b9d225f79b29d5373b1f3ca814614b11493671c5e4b41",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1045"
+      ]
+    },
+    {
+      "id": "spc:2060",
+      "number": 2060,
+      "slug": "external-link-pass-through-unsafe-url-policy-contract",
+      "title": "External Link Pass Through And Unsafe URL Policy Contract",
+      "path": ".ssot/specs/SPEC-2060-external-link-pass-through-unsafe-url-policy-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "03813114a623f8726f6ff13330a7e0928739e0865c0a37b42ae4f09b4c6f8237",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1045"
+      ]
+    },
+    {
+      "id": "spc:2061",
+      "number": 2061,
+      "slug": "markdown-html-export-link-rewrite-contract",
+      "title": "Markdown To HTML Export Link Rewrite Contract",
+      "path": ".ssot/specs/SPEC-2061-markdown-html-export-link-rewrite-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "d2284bfe23abbc2d9fa1be630be4df1283271f23321e4a16d343aa482d019866",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1013",
+        "adr:1036",
+        "adr:1045"
+      ]
+    },
+    {
+      "id": "spc:2062",
+      "number": 2062,
+      "slug": "editor-view-toolbar-responsive-behavior-contract",
+      "title": "Editor View Toolbar Responsive Behavior Contract",
+      "path": ".ssot/specs/SPEC-2062-editor-view-toolbar-responsive-behavior-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "2663b1f6e59cd28d20b290f39e424cba09de183678f282095624aa9bf36fcbbe",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1012",
+        "adr:1031",
+        "adr:1040",
+        "adr:1048"
+      ]
     }
   ],
-  "profiles": []
+  "profiles": [
+    {
+      "id": "prf:editor-authoring-default",
+      "title": "Editor Authoring Default Profile",
+      "description": "Default governed capability profile for Markdown editor authoring, link behavior, preview navigation, and view toolbar surfaces.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:client-editor",
+        "feat:editor-core-command-model",
+        "feat:react-markdown-editor-surface",
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-split",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-insert-table",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-italic",
+        "feat:editor-toolbar-undo",
+        "feat:editor-toolbar-redo",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-citation",
+        "feat:editor-command-block-math",
+        "feat:editor-command-insert-tab",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-command-dispatch",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-link-selected-text-wrap",
+        "feat:editor-link-empty-selection-stub",
+        "feat:editor-link-existing-edit",
+        "feat:editor-link-url-paste-wrap",
+        "feat:editor-link-internal-file-authoring",
+        "feat:editor-link-hash-authoring",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-unsafe-url-policy"
+      ],
+      "profile_ids": [],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": true
+      }
+    }
+  ]
 }

@@ -12,6 +12,7 @@ import type {
   RegisteredComponent,
   RegisteredSettingsSection,
   RegisteredView,
+  RegisteredWorkspaceModule,
 } from "./registration.js";
 
 export interface ExtensionConfigurationStore {
@@ -31,6 +32,7 @@ export interface ExtensionContext {
 
   registerCommand(command: RegisteredCommand): Disposable;
   registerView(view: RegisteredView): Disposable;
+  registerWorkspaceModule(module: RegisteredWorkspaceModule): Disposable;
   registerComponent(component: RegisteredComponent): Disposable;
   registerActionRailItem(item: RegisteredActionRailItem): Disposable;
   registerSettingsSection(section: RegisteredSettingsSection): Disposable;

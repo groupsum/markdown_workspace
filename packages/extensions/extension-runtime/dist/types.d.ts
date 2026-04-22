@@ -1,5 +1,5 @@
 import type { ExtensionCapability, ExtensionCatalogDocument, ExtensionCatalogEntry, ExtensionIntegrity, ExtensionManifest, I18nLabel, SignedExtensionManifest, TrustedExtensionSigner } from "@mdwrk/extension-manifest";
-import type { DiagnosticRecord, Disposable, ExtensionConfigurationStore, ExtensionHost, MarkdownWorkspaceExtension, RegisteredActionRailItem, RegisteredCommand, RegisteredComponent, RegisteredSettingsSection, RegisteredView } from "@mdwrk/extension-host";
+import type { DiagnosticRecord, Disposable, ExtensionConfigurationStore, ExtensionHost, MarkdownWorkspaceExtension, RegisteredActionRailItem, RegisteredCommand, RegisteredComponent, RegisteredSettingsSection, RegisteredView, RegisteredWorkspaceModule } from "@mdwrk/extension-host";
 export type ExtensionActivationMode = "eager" | "lazy";
 export type ExtensionCatalogSource = "bundled" | "installed";
 export type ExtensionRuntimeStatus = "registered" | "disabled" | "activating" | "active" | "deactivating" | "error" | "incompatible";
@@ -31,6 +31,7 @@ export interface ExtensionRuntimeStorage {
 export interface ExtensionRuntimeRegistrationSink {
     registerCommand(extensionId: string, command: RegisteredCommand): Disposable;
     registerView(extensionId: string, view: RegisteredView): Disposable;
+    registerWorkspaceModule(extensionId: string, module: RegisteredWorkspaceModule): Disposable;
     registerComponent?(extensionId: string, component: RegisteredComponent): Disposable;
     registerActionRailItem(extensionId: string, item: RegisteredActionRailItem): Disposable;
     registerSettingsSection(extensionId: string, section: RegisteredSettingsSection): Disposable;

@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2057"
+number: 2057
+slug: "link-click-preview-navigation-contract"
+title: "Link Click Preview Navigation Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Preview link clicking must distinguish external links, same-document hash links, internal workspace Markdown links, and cross-file hash links. Same-document hash links must scroll the current preview without switching files; file links must navigate through workspace state when resolvable."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2057: Link Click Preview Navigation Contract
+  
+  ## Requirements
+  
+  Preview link clicking must distinguish external links, same-document hash links, internal workspace Markdown links, and cross-file hash links. Same-document hash links must scroll the current preview without switching files; file links must navigate through workspace state when resolvable.
+  
+  ## Evidence
+  
+  Evidence must include preview policy tests, renderer link-interception tests, editor command tests where implemented, and explicit absent feature status where authoring behavior is planned but not yet built.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1013"
+  - "adr:1036"
+  - "adr:1028"

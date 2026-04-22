@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2048"
+number: 2048
+slug: "footnote-command-contract"
+title: "Footnote Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The footnote editor command must create footnote reference syntax for authoring. It must be governed separately from parser, preview, export, and backlink behavior, while remaining linkable to the optional footnotes profile."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2048: Footnote Command Contract
+  
+  ## Requirements
+  
+  The footnote editor command must create footnote reference syntax for authoring. It must be governed separately from parser, preview, export, and backlink behavior, while remaining linkable to the optional footnotes profile.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1028"

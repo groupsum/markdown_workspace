@@ -28,6 +28,26 @@ export interface ComponentContributionDescriptor {
     readonly slot: string;
     readonly order?: number;
 }
+export type WorkspaceModuleLayout = "single" | "left" | "right" | "split";
+export type WorkspaceModuleCapabilityProfile = "workspace.module.base" | "workspace.module.read" | "workspace.module.write" | "workspace.module.provider" | "workspace.module.diagnostics";
+export interface WorkspaceModuleActionDescriptor {
+    readonly commandId: string;
+    readonly role?: "primary" | "secondary" | "toolbar" | "explorer" | "settings";
+    readonly order?: number;
+}
+export interface WorkspaceModuleContributionDescriptor {
+    readonly id: string;
+    readonly title: I18nLabel;
+    readonly description?: I18nLabel;
+    readonly icon?: ExtensionIcon;
+    readonly primaryViewId: string;
+    readonly explorerViewId: string;
+    readonly supportedLayouts: readonly WorkspaceModuleLayout[];
+    readonly defaultLayout: WorkspaceModuleLayout;
+    readonly settingsSectionId: string;
+    readonly capabilityProfiles: readonly WorkspaceModuleCapabilityProfile[];
+    readonly actions: readonly WorkspaceModuleActionDescriptor[];
+}
 export type ActionRailTarget = {
     readonly kind: "view";
     readonly viewId: string;
@@ -54,6 +74,7 @@ export interface ExtensionContributions {
     readonly commands: readonly CommandContributionDescriptor[];
     readonly views: readonly ViewContributionDescriptor[];
     readonly components: readonly ComponentContributionDescriptor[];
+    readonly workspaceModules?: readonly WorkspaceModuleContributionDescriptor[];
     readonly actionRail: readonly ActionRailContributionDescriptor[];
     readonly settingsSections: readonly SettingsSectionContributionDescriptor[];
 }

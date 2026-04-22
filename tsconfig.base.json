@@ -91,6 +91,18 @@
       "@mdwrk/extension-runtime/*": [
         "packages/extensions/extension-runtime/dist/*"
       ],
+      "@mdwrk/extension-workspace-files": [
+        "packages/extensions/extension-workspace-files/src/index.ts"
+      ],
+      "@mdwrk/extension-workspace-files/*": [
+        "packages/extensions/extension-workspace-files/src/*"
+      ],
+      "@mdwrk/extension-git-ops": [
+        "packages/extensions/extension-git-ops/src/index.ts"
+      ],
+      "@mdwrk/extension-git-ops/*": [
+        "packages/extensions/extension-git-ops/src/*"
+      ],
       "@mdwrk/extension-manager": [
         "packages/extensions/extension-manager/dist/index.d.ts"
       ],

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "published_snapshot",
+  "generated_at": "2026-04-22T09:14:21Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "1c2f8c499841f3f0b4a453e27ea5fa1503fb311caa4d9295a4d81f5f10ea1160",
+  "release": {
+    "id": "rel:0.1.0",
+    "version": "0.1.0",
+    "status": "published",
+    "boundary_id": "bnd:default",
+    "claim_ids": [],
+    "evidence_ids": []
+  },
+  "boundary": {
+    "id": "bnd:default",
+    "title": "Default boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [],
+    "profile_ids": []
+  },
+  "claims": [],
+  "evidence": [],
+  "summary": {
+    "release_id": "rel:0.1.0",
+    "version": "0.1.0",
+    "status": "published",
+    "claim_count": 0,
+    "evidence_count": 0
+  }
+}

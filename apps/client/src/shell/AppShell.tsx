@@ -3,7 +3,6 @@ import { useSyncExternalStore } from 'react';
 import { Download, RefreshCw, ArrowUpCircle } from 'lucide-react';
 import { Chassis } from '../../components/Chassis/Chassis';
 import { Footer } from '../../components/Chassis/Footer/Footer';
-import { GitPane } from '../../components/Chassis/Git/GitPane';
 import { Header } from '../../components/Chassis/Header/Header';
 import { WorkPane } from '../../components/Chassis/WorkPane/WorkPane';
 import { InputModal } from '../../components/Modals/InputModal';
@@ -24,7 +23,7 @@ export const AppShell: React.FC = () => {
   const { state, actions } = runtime.app;
   const { state: pwaState, actions: pwaActions } = runtime.pwa;
   const workspaceView =
-    viewSnapshot.views.find((view) => view.id === viewSnapshot.activeMainViewId && view.id !== 'core.git-pane')
+    viewSnapshot.views.find((view) => view.id === viewSnapshot.activeMainViewId)
     ?? null;
   const workspaceViewRenderProps = workspaceView
     ? {
@@ -156,12 +155,30 @@ export const AppShell: React.FC = () => {
             }
           />
         ) : (
-          <GitPane
+          <WorkPane
+            currentProject={state.currentProject}
             files={state.files}
             activeFile={state.activeFile}
+            selectedExplorerId={state.selectedExplorerId}
+            searchQuery={state.searchQuery}
             theme={state.theme}
-            unsaved={state.unsaved}
-            onClose={() => { void services.views.close('core.git-pane'); }}
+            viewMode={state.viewMode}
+            currentThemeDef={state.currentThemeDef}
+            showLineNumbers={state.showLineNumbers}
+            sidebarOpen={state.sidebarOpen}
+            sidebarWidth={state.sidebarWidth}
+            onSidebarToggle={actions.setSidebarOpen}
+            onSidebarWidthChange={actions.setSidebarWidth}
+            onNewFile={actions.promptNewFile}
+            onNewFolder={actions.promptNewFolder}
+            onRenameSelected={actions.promptRenameSelected}
+            onDeleteSelected={actions.deleteSelectedItem}
+            onFileSelect={actions.handleExplorerSelect}
+            onFileHighlight={actions.highlightExplorerNode}
+            onFileMove={actions.handleMoveFile}
+            onContentChange={actions.handleContentChange}
+            onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
+            onViewModeChange={actions.setViewMode}
           />
         )}
       </section>

@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2046"
+number: 2046
+slug: "front-matter-command-contract"
+title: "Front Matter Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The front matter editor command must insert a YAML front matter block at the document start only when one is not already present. The command belongs to the editor authoring default profile as an optional-profile authoring affordance and must not be treated as CommonMark or default GFM syntax."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2046: Front Matter Command Contract
+  
+  ## Requirements
+  
+  The front matter editor command must insert a YAML front matter block at the document start only when one is not already present. The command belongs to the editor authoring default profile as an optional-profile authoring affordance and must not be treated as CommonMark or default GFM syntax.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
+  - "adr:1028"

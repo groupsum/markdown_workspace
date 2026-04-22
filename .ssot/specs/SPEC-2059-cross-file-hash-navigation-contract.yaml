@@ -1,0 +1,30 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2059"
+number: 2059
+slug: "cross-file-hash-navigation-contract"
+title: "Cross File Hash Navigation Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Cross-file hash navigation must navigate to the resolved workspace Markdown file and preserve the requested hash until the destination preview can scroll to the matching heading or named anchor."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2059: Cross File Hash Navigation Contract
+  
+  ## Requirements
+  
+  Cross-file hash navigation must navigate to the resolved workspace Markdown file and preserve the requested hash until the destination preview can scroll to the matching heading or named anchor.
+  
+  ## Evidence
+  
+  Evidence must include preview/export policy tests, React renderer link interception evidence, or explicit partial feature status where browser-level coverage is broad rather than behavior-specific.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1013"
+  - "adr:1036"
+  - "adr:1045"

@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2054"
+number: 2054
+slug: "insert-tab-command-contract"
+title: "Insert Tab Command Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The insert-tab command must route through the editor command model and follow the repository tab policy: structural indentation is the default authoring behavior while literal-space preferences may be added later."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2054: Insert Tab Command Contract
+  
+  ## Requirements
+  
+  The insert-tab command must route through the editor command model and follow the repository tab policy: structural indentation is the default authoring behavior while literal-space preferences may be added later.
+  
+  ## Evidence
+  
+  Evidence must include command transform tests, selection-state tests, React editor command dispatch tests, or explicit absent/partial feature status when behavior lacks direct proof.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1012"
+  - "adr:1035"
