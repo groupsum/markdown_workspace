@@ -102,8 +102,12 @@ const context = {
 assert.equal(themeStudioManifest.id, 'core.theme-studio');
 assert.ok(themeStudioManifest.capabilities.includes('theme.write'));
 assert.ok(themeStudioManifest.contributions.actionRail.some((item) => item.id === 'core.theme-studio.rail'));
-assert.equal(themeStudioManifest.contributions.views.length, 1);
-assert.equal(themeStudioManifest.contributions.views[0]?.location, 'main');
+assert.equal(themeStudioManifest.contributions.workspaceModules.length, 1);
+assert.equal(themeStudioManifest.contributions.workspaceModules[0]?.primaryViewId, 'core.theme-studio.view');
+assert.equal(themeStudioManifest.contributions.workspaceModules[0]?.explorerViewId, 'core.theme-studio.explorer');
+assert.ok(themeStudioManifest.contributions.workspaceModules[0]?.settingsSectionId);
+assert.ok(themeStudioManifest.contributions.views.some((view) => view.id === 'core.theme-studio.view' && view.location === 'main'));
+assert.ok(themeStudioManifest.contributions.views.some((view) => view.id === 'core.theme-studio.explorer' && view.location === 'sidebar'));
 assert.ok(!themeStudioManifest.contributions.views.some((view) => view.location === 'modal'));
 
 const defaultSettings = await readThemeStudioSettings(config);

@@ -23,7 +23,7 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       badge: item.badge,
       active: (() => {
         if (item.id === 'core.toggle-explorer') {
-          return !viewSnapshot.activeMainViewId && runtime.app.state.sidebarOpen;
+          return runtime.app.state.sidebarOpen;
         }
         if (item.target.kind === 'view') {
           return viewSnapshot.activeViewId === item.target.viewId && viewSnapshot.openViewIds.includes(item.target.viewId);

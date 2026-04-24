@@ -2,6 +2,8 @@ import type { ThemeStudioResolvedSettings } from "./types.js";
 
 export const THEME_STUDIO_EXTENSION_ID = "core.theme-studio" as const;
 export const THEME_STUDIO_VIEW_ID = `${THEME_STUDIO_EXTENSION_ID}.view` as const;
+export const THEME_STUDIO_EXPLORER_VIEW_ID = `${THEME_STUDIO_EXTENSION_ID}.explorer` as const;
+export const THEME_STUDIO_MODULE_ID = `${THEME_STUDIO_EXTENSION_ID}.module` as const;
 export const THEME_STUDIO_RAIL_ID = `${THEME_STUDIO_EXTENSION_ID}.rail` as const;
 export const THEME_STUDIO_COMMAND_OPEN_ID = `${THEME_STUDIO_EXTENSION_ID}.open` as const;
 export const THEME_STUDIO_SERVICE_TOKEN = `${THEME_STUDIO_EXTENSION_ID}.service` as const;

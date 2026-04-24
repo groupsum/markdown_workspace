@@ -882,6 +882,7 @@ export const useApp = () => {
       adjustZoom: ui.adjustZoom,
       selectNextTab: () => selectTabByOffset(1),
       selectPreviousTab: () => selectTabByOffset(-1),
+      reorderTab: tabs.reorderTab,
       resetZoom: () => ui.setZoom(1),
       switchToProjectSelector,
       closeTab: (e: any, id: string) => { 

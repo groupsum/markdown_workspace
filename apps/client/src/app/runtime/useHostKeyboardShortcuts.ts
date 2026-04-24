@@ -2,13 +2,6 @@ import React from 'react';
 import { useSyncExternalStore } from 'react';
 import { useClientRuntimeServices, useClientRuntimeSnapshot } from './ClientRuntimeContext';
 
-const isEditableTarget = (target: EventTarget | null) => {
-  if (!(target instanceof HTMLElement)) return false;
-  if (target.isContentEditable) return true;
-  const tagName = target.tagName.toLowerCase();
-  return tagName === 'input' || tagName === 'textarea' || tagName === 'select';
-};
-
 export const useHostKeyboardShortcuts = (): void => {
   const runtime = useClientRuntimeSnapshot();
   const services = useClientRuntimeServices();
@@ -21,7 +14,6 @@ export const useHostKeyboardShortcuts = (): void => {
       const key = event.key.toLowerCase();
       const meta = event.metaKey || event.ctrlKey;
       const shift = event.shiftKey;
-      const targetEditable = isEditableTarget(event.target);
       const commandPaletteOpen = viewSnapshot.openViewIds.includes('core.command-palette');
       const settingsOpen = viewSnapshot.openViewIds.includes('core.settings');
       const modalOpen = commandPaletteOpen || settingsOpen || runtime.app.state.showInputModal;
@@ -79,7 +71,7 @@ export const useHostKeyboardShortcuts = (): void => {
         return;
       }
 
-      if (meta && key === 'b' && !targetEditable) {
+      if (meta && shift && key === 'b') {
         event.preventDefault();
         void services.commands.execute('core.toggle-explorer');
         return;

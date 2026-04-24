@@ -52,6 +52,7 @@ export const useEditorShortcuts = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.defaultPrevented) return;
       if (!textareaRef.current || document.activeElement !== textareaRef.current) return;
       if ((e.ctrlKey || e.metaKey)) {
         if (e.key === 'z') {
@@ -67,11 +68,11 @@ export const useEditorShortcuts = ({
           console.log("[useEditorShortcuts] Keyboard: Redo (Ctrl+Y)");
           e.preventDefault();
           redo();
-        } else if (e.key === 'b') {
+        } else if (!e.altKey && !e.shiftKey && e.key === 'b') {
           console.log("[useEditorShortcuts] Keyboard: Format Bold (Ctrl+B)");
           e.preventDefault();
           insertFormat('**', '**');
-        } else if (e.key === 'i') {
+        } else if (!e.altKey && e.key === 'i') {
           console.log("[useEditorShortcuts] Keyboard: Format Italic (Ctrl+I)");
           e.preventDefault();
           insertFormat('_', '_');

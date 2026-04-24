@@ -1,0 +1,9 @@
+export declare const GIT_OPS_EXTENSION_ID = "core.git-ops";
+export declare const GIT_OPS_MODULE_ID = "core.git-ops.module";
+export declare const GIT_OPS_PRIMARY_VIEW_ID = "core.git-pane";
+export declare const GIT_OPS_EXPLORER_VIEW_ID = "core.git-ops.explorer";
+export declare const GIT_OPS_SETTINGS_SECTION_ID = "core.settings.git";
+export declare const GIT_OPS_COMMAND_TOGGLE_ID = "core.toggle-git-pane";
+export declare const GIT_OPS_COMMAND_REFRESH_ID = "core.git-ops.refresh";
+export declare const GIT_OPS_RAIL_ID = "core.git-pane-rail";
+//# sourceMappingURL=constants.d.ts.map

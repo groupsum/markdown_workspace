@@ -23,6 +23,7 @@ interface HeaderProps {
   onSwitchProject: () => void;
   onTabSelect: (tabId: string, fileId: string) => void;
   onTabClose: (e: React.MouseEvent, tabId: string) => void;
+  onTabReorder: (draggedTabId: string, targetTabId: string) => void;
   onZoom: (delta: number) => void;
   onOpenSettings: () => void;
   onResetZoom: () => void;
@@ -41,12 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
   onSwitchProject,
   onTabSelect,
   onTabClose,
+  onTabReorder,
   onZoom,
   onOpenSettings,
   onResetZoom,
   className = '',
 }) => {
   const { t } = useClientI18n();
+  const [draggingTabId, setDraggingTabId] = React.useState<string | null>(null);
 
   return (
     <header className={`app-header ${className}`}>
@@ -68,12 +71,34 @@ export const Header: React.FC<HeaderProps> = ({
             return (
               <div
                 key={tab.id}
+                draggable
                 onClick={() => onTabSelect(tab.id, tab.fileId)}
-                className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''}`}
+                onDragStart={(event) => {
+                  event.dataTransfer.setData('text/plain', tab.id);
+                  event.dataTransfer.effectAllowed = 'move';
+                  setDraggingTabId(tab.id);
+                }}
+                onDragOver={(event) => {
+                  if (draggingTabId && draggingTabId !== tab.id) {
+                    event.preventDefault();
+                    event.dataTransfer.dropEffect = 'move';
+                  }
+                }}
+                onDrop={(event) => {
+                  event.preventDefault();
+                  const draggedTabId = event.dataTransfer.getData('text/plain') || draggingTabId;
+                  if (draggedTabId && draggedTabId !== tab.id) {
+                    onTabReorder(draggedTabId, tab.id);
+                  }
+                  setDraggingTabId(null);
+                }}
+                onDragEnd={() => setDraggingTabId(null)}
+                className={`tab-item ${isActive ? 'active' : ''} ${isExpanded ? 'expanded' : ''} ${draggingTabId === tab.id ? 'is-dragging' : ''} ${draggingTabId && draggingTabId !== tab.id ? 'is-drop-target' : ''}`}
               >
                 <span className="tab-label">{file?.name || 'Untitled'}</span>
                 <button
                   onClick={(event) => onTabClose(event, tab.id)}
+                  onDragStart={(event) => event.preventDefault()}
                   className="tab-close"
                   aria-label={t('core.header.tab.close', 'Close tab')}
                 >

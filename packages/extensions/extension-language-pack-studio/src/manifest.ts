@@ -1,7 +1,9 @@
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   LANGUAGE_PACK_STUDIO_COMMAND_ID,
+  LANGUAGE_PACK_STUDIO_EXPLORER_VIEW_ID,
   LANGUAGE_PACK_STUDIO_EXTENSION_ID,
+  LANGUAGE_PACK_STUDIO_MODULE_ID,
   LANGUAGE_PACK_STUDIO_RAIL_ID,
   LANGUAGE_PACK_STUDIO_VIEW_ID,
 } from "./constants.js";
@@ -18,7 +20,8 @@ export const languagePackStudioManifest: ExtensionManifest = {
   kind: "bundled",
   icon: { kind: "lucide", name: "Languages" },
   enabledByDefault: true,
-  capabilities: ["view.register", "actionRail.register"],
+  capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write"],
+  capabilityPresetIds: ["workspace.module.standard"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -54,8 +57,36 @@ export const languagePackStudioManifest: ExtensionManifest = {
         allowMultiple: false,
         canBePinned: true,
       }
+      ,
+      {
+        id: LANGUAGE_PACK_STUDIO_EXPLORER_VIEW_ID,
+        title: { defaultMessage: "Language Pack Browser" },
+        description: { defaultMessage: "Built-in and installed language pack browser." },
+        icon: { kind: "lucide", name: "Languages" },
+        location: "sidebar",
+        allowMultiple: false,
+        canBePinned: true,
+      }
     ],
     components: [],
+    workspaceModules: [
+      {
+        id: LANGUAGE_PACK_STUDIO_MODULE_ID,
+        title: languagePackStudioLabels.viewTitle,
+        description: languagePackStudioLabels.viewDescription,
+        icon: { kind: "lucide", name: "Languages" },
+        primaryViewId: LANGUAGE_PACK_STUDIO_VIEW_ID,
+        explorerViewId: LANGUAGE_PACK_STUDIO_EXPLORER_VIEW_ID,
+        supportedLayouts: ["single", "left", "right", "split"],
+        defaultLayout: "split",
+        settingsSectionId: `${LANGUAGE_PACK_STUDIO_EXTENSION_ID}.settings`,
+        capabilityProfiles: ["workspace.module.base"],
+        capabilityPresetIds: ["workspace.module.standard"],
+        actions: [
+          { commandId: LANGUAGE_PACK_STUDIO_COMMAND_ID, role: "primary", order: 10 },
+        ],
+      },
+    ],
     actionRail: [
       {
         id: LANGUAGE_PACK_STUDIO_RAIL_ID,

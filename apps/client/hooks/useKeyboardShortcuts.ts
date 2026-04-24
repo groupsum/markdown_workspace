@@ -26,13 +26,6 @@ interface KeyboardShortcutState {
   appMode: AppMode;
 }
 
-const isEditableTarget = (target: EventTarget | null) => {
-  if (!(target instanceof HTMLElement)) return false;
-  if (target.isContentEditable) return true;
-  const tagName = target.tagName.toLowerCase();
-  return tagName === 'input' || tagName === 'textarea' || tagName === 'select';
-};
-
 export const useKeyboardShortcuts = (
   state: KeyboardShortcutState,
   actions: KeyboardShortcutActions
@@ -45,7 +38,6 @@ export const useKeyboardShortcuts = (
       const meta = event.metaKey || event.ctrlKey;
       const shift = event.shiftKey;
       const isModalOpen = state.showPalette || state.showSettings || state.showInputModal;
-      const targetEditable = isEditableTarget(event.target);
 
       if (key === 'escape') {
         if (state.showPalette) {
@@ -100,7 +92,7 @@ export const useKeyboardShortcuts = (
         return;
       }
 
-      if (meta && key === 'b' && !targetEditable) {
+      if (meta && shift && key === 'b') {
         event.preventDefault();
         actions.toggleSidebar();
         return;

@@ -24,7 +24,7 @@ const createManifest = (id: string, overrides: Partial<ExtensionManifest> = {}):
   displayName: { defaultMessage: id },
   description: { defaultMessage: `${id} description` },
   kind: "bundled",
-  icon: { kind: "lucide", name: "Puzzle" },
+  icon: { kind: "lucide", name: "Plug" },
   enabledByDefault: true,
   capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write", "notification.publish"],
   compatibility: {
@@ -243,7 +243,7 @@ describe("extension-runtime", () => {
         context.registerActionRailItem({
           id: `${manifest.id}.rail`,
           title: { defaultMessage: "Runtime Smoke" },
-          icon: { kind: "lucide", name: "Puzzle" },
+          icon: { kind: "lucide", name: "Plug" },
           target: { kind: "view", viewId: `${manifest.id}.view` },
         });
       },

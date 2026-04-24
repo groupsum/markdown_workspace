@@ -22,19 +22,13 @@ export function createExtensionManagerBundledEntry(options) {
                             await context.host.views.open(EXTENSION_MANAGER_VIEW_ID);
                         },
                     });
-                    context.registerView({
-                        id: EXTENSION_MANAGER_VIEW_ID,
-                        title: extensionManagerLabels.viewTitle,
-                        description: extensionManagerLabels.viewDescription,
-                        icon: { kind: "lucide", name: "Puzzle" },
-                        location: "main",
-                        allowMultiple: false,
-                        canBePinned: true,
+                    context.registerWorkspaceModule({
+                        ...extensionManagerManifest.contributions.workspaceModules[0],
                         render: (props) => (_jsx(ExtensionManagerView, { runtime: options.runtime, close: () => props.close(), formatLabel: context.host.i18n.format, defaultSettings: {
                                 showCompatibility: true,
                                 showDiagnostics: true,
                             }, shellSidebarOpen: props.workspaceSidebarOpen, onShellSidebarToggle: props.setWorkspaceSidebarOpen, embedBrowserInShellSidebar: Boolean(props.setWorkspaceSidebarOpen) })),
-                        renderSidebar: () => (_jsx(ExtensionManagerSidebar, { runtime: options.runtime, formatLabel: context.host.i18n.format })),
+                        renderExplorer: () => (_jsx(ExtensionManagerSidebar, { runtime: options.runtime, formatLabel: context.host.i18n.format })),
                     });
                     context.registerActionRailItem({
                         id: EXTENSION_MANAGER_RAIL_ID,

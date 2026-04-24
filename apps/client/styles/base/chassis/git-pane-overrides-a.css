@@ -19,6 +19,12 @@
   background: transparent;
 }
 
+.git-source-control-browser {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .git-header-title,
 .git-diff-title {
   display: flex;

@@ -9,6 +9,10 @@ import {
   RefreshCw,
   RotateCcw,
   Save,
+  Sidebar,
+  SidebarOpen,
+  SplitSquareHorizontal,
+  Square,
   X,
 } from "lucide-react";
 import { THEME_STUDIO_SAMPLE_MARKDOWN } from "../constants.js";
@@ -57,6 +61,49 @@ const codeBlockStyle: CSSProperties = {
 };
 
 const mergeTokens = (current: Record<string, string> | null, draft: Record<string, string>) => ({ ...(current ?? {}), ...draft });
+
+const getSplitBand = (value: number): number => {
+  const clamped = Math.min(80, Math.max(20, value));
+  return Math.round(clamped / 5) * 5;
+};
+
+function useWorkspaceModuleSplit(defaultPosition = 55) {
+  const [splitPos, setSplitPos] = useState(defaultPosition);
+  const [isDragging, setIsDragging] = useState(false);
+  const [splitContainer, setSplitContainer] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!isDragging || !splitContainer) return;
+      const rect = splitContainer.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      const x = event.clientX - rect.left;
+      setSplitPos(getSplitBand((x / rect.width) * 100));
+    };
+    const handleMouseUp = () => setIsDragging(false);
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      document.body.classList.add("is-resizing-sidebar");
+    } else {
+      document.body.classList.remove("is-resizing-sidebar");
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.body.classList.remove("is-resizing-sidebar");
+    };
+  }, [isDragging, splitContainer]);
+
+  return {
+    splitBand: getSplitBand(splitPos),
+    isDragging,
+    splitContainerRef: setSplitContainer,
+    startSplitDrag: () => setIsDragging(true),
+  };
+}
 
 type ThemeBrowserState = {
   readonly browserQuery: string;
@@ -232,6 +279,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
   const [importInput, setImportInput] = useState<HTMLInputElement | null>(null);
+  const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const { state: browserState, setState: setBrowserState } = useThemeBrowserState(service);
   const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
   const deferredBrowserQuery = browserState.browserQuery.trim().toLowerCase();
@@ -417,18 +465,36 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
     </div>
   );
 
+  const previewPane = (
+    <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
+      <div>
+        <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.previewTitle)}</div>
+        <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>{formatLabel(themeStudioLabels.previewDescription)}</p>
+      </div>
+      <div style={{ display: "grid", gap: 12 }}>
+        <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, padding: 12 }}>
+          <MarkdownRenderer markdown={THEME_STUDIO_SAMPLE_MARKDOWN} themeStyle={rendererThemeStyle} />
+        </div>
+        <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, overflow: "hidden" }}>
+          <MarkdownSourceEditor value={THEME_STUDIO_SAMPLE_MARKDOWN} disabled showLineNumbers themeStyle={editorThemeStyle} />
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="theme-studio-pane editor-pane-container" data-testid="theme-studio-pane" role="region" aria-label={formatLabel(themeStudioLabels.viewTitle)}>
+      {isDragging && <div className="editor-splitter-drag-shield" />}
       <div className="view-toolbar" aria-label="Theme Studio toolbar">
         <div className="view-toolbar-group">
           <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
-            SB
+            {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
-            1P
+            <Square size={14} />
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
-            2P
+            <SplitSquareHorizontal size={14} />
           </button>
         </div>
         <div className="view-toolbar-group">
@@ -470,44 +536,23 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
               </div>
             </div>
 
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(420px, 1.05fr) minmax(360px, 0.95fr)" : "minmax(0, 1fr)" }}>
-              <div style={{ display: "grid", gap: 16 }}>
-                {inspectorPane}
-              </div>
-
-              {layoutMode === "split" && (
-                <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span className="settings-session-label">PREVIEW</span>
-                    <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(themeStudioLabels.previewTitle)}</strong>
-                  </div>
-                  <div style={{ display: "grid", gap: 12 }}>
-                    <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, padding: 12 }}>
-                      <MarkdownRenderer markdown={THEME_STUDIO_SAMPLE_MARKDOWN} themeStyle={rendererThemeStyle} />
-                    </div>
-                    <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, overflow: "hidden" }}>
-                      <MarkdownSourceEditor value={THEME_STUDIO_SAMPLE_MARKDOWN} disabled showLineNumbers themeStyle={editorThemeStyle} />
-                    </div>
-                  </div>
+            {layoutMode === "split" ? (
+              <div ref={splitContainerRef} className="editor-pane-body is-split" style={{ background: "transparent" }}>
+                <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
+                  {inspectorPane}
                 </div>
-              )}
-            </div>
-
-            {layoutMode === "single" && (
-              <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
-                <div>
-                  <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.previewTitle)}</div>
-                  <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>{formatLabel(themeStudioLabels.previewDescription)}</p>
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Theme Studio panes">
+                  <div className="editor-splitter-handle" />
                 </div>
-                <div style={{ display: "grid", gap: 12 }}>
-                  <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, padding: 12 }}>
-                    <MarkdownRenderer markdown={THEME_STUDIO_SAMPLE_MARKDOWN} themeStyle={rendererThemeStyle} />
-                  </div>
-                  <div style={{ border: "1px solid var(--border-primary)", borderRadius: 8, overflow: "hidden" }}>
-                    <MarkdownSourceEditor value={THEME_STUDIO_SAMPLE_MARKDOWN} disabled showLineNumbers themeStyle={editorThemeStyle} />
-                  </div>
+                <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
+                  {previewPane}
                 </div>
               </div>
+            ) : (
+              <>
+                <div style={{ display: "grid", gap: 16 }}>{inspectorPane}</div>
+                {previewPane}
+              </>
             )}
           </div>
         </div>

@@ -284,7 +284,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                 { label: 'SAVE_BUFFER', key: 'CTRL/CMD+S' },
                 { label: 'COMMAND_PALETTE', key: 'CTRL/CMD+K' },
                 { label: 'NEW_FILE', key: 'CTRL/CMD+N' },
-                { label: 'TOGGLE_REGISTRY', key: 'CTRL/CMD+B' },
+                { label: 'TOGGLE_WORKSPACE_PANEL', key: 'CTRL/CMD+SHIFT+B' },
                 { label: 'FOCUS_REGISTRY', key: 'CTRL/CMD+SHIFT+E' },
                 { label: 'NEXT_TAB', key: 'CTRL/CMD+TAB' },
                 { label: 'PREV_TAB', key: 'CTRL/CMD+SHIFT+TAB' },

@@ -7,6 +7,13 @@ const mergeClassNames = (...values) => values.filter(Boolean).join(" ");
 const WRAP_MEASUREMENT_SAMPLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const MIN_WRAP_COLUMN = 24;
 const MAX_WRAP_COLUMN = 320;
+const EDITOR_LINE_HEIGHT_CSS = "var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)))";
+function estimateVisualRows(line, wrapColumn) {
+    if (!line)
+        return 1;
+    const expanded = line.replace(/\t/g, "    ");
+    return Math.max(1, Math.ceil(expanded.length / Math.max(MIN_WRAP_COLUMN, wrapColumn)));
+}
 function selectionEquals(a, b) {
     return a.start === b.start && a.end === b.end && (a.direction ?? "none") === (b.direction ?? "none");
 }
@@ -258,7 +265,9 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
         }
         if (!meta)
             return;
-        if (key === "b") {
+        if (event.altKey)
+            return;
+        if (key === "b" && !event.shiftKey) {
             event.preventDefault();
             executeCommand("bold");
             return;
@@ -283,17 +292,26 @@ export const MarkdownSourceEditor = React.forwardRef(function MarkdownSourceEdit
             executeCommand("redo");
         }
     }, [applyEditResult, disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
+    const displayValue = isControlled ? (value ?? "") : draftValue;
+    const visualLineRows = React.useMemo(() => {
+        return displayValue.split("\n").map((line) => estimateVisualRows(line, wrapColumn));
+    }, [displayValue, wrapColumn]);
     const lineCount = React.useMemo(() => {
-        const displayValue = isControlled ? (value ?? "") : draftValue;
         const matches = displayValue.match(/\n/g);
         return (matches?.length ?? 0) + 1;
-    }, [draftValue, isControlled, value]);
+    }, [displayValue]);
     const mergedThemeStyle = React.useMemo(() => ({
         ...createMarkdownEditorThemeStyle(themeVariables),
         ...themeStyle,
         ...style,
     }), [style, themeStyle, themeVariables]);
-    return (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.root, "editor-stage", className), style: mergedThemeStyle, children: _jsxs("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper"), children: [showLineNumbers ? (_jsx("div", { ref: gutterRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.gutter, "editor-gutter", gutterClassName), "aria-hidden": "true", children: Array.from({ length: lineCount }, (_, index) => (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.lineNumber, "line-num", lineNumberClassName), children: index + 1 }, index + 1))) })) : null, _jsx("textarea", { ref: textareaRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName), value: isControlled ? (value ?? "") : draftValue, onChange: handleTextareaChange, onKeyDown: handleKeyDown, onClick: syncSelectionFromTextarea, onKeyUp: syncSelectionFromTextarea, onSelect: syncSelectionFromTextarea, onScroll: (event) => {
+    return (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.root, "editor-stage", className), style: mergedThemeStyle, children: _jsxs("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper"), children: [showLineNumbers ? (_jsx("div", { ref: gutterRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.gutter, "editor-gutter", gutterClassName), "aria-hidden": "true", children: Array.from({ length: lineCount }, (_, index) => {
+                        const rowSpan = visualLineRows[index] ?? 1;
+                        return (_jsx("div", { className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.lineNumber, "line-num", lineNumberClassName), style: {
+                                height: `calc(${EDITOR_LINE_HEIGHT_CSS} * ${rowSpan})`,
+                                lineHeight: EDITOR_LINE_HEIGHT_CSS,
+                            }, children: index + 1 }, index + 1));
+                    }) })) : null, _jsx("textarea", { ref: textareaRef, className: mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName), value: isControlled ? (value ?? "") : draftValue, onChange: handleTextareaChange, onKeyDown: handleKeyDown, onClick: syncSelectionFromTextarea, onKeyUp: syncSelectionFromTextarea, onSelect: syncSelectionFromTextarea, onScroll: (event) => {
                         if (gutterRef.current) {
                             gutterRef.current.scrollTop = event.currentTarget.scrollTop;
                         }

@@ -24,16 +24,10 @@ export function createLanguagePackStudioBundledEntry(options) {
                             await context.host.views.open(LANGUAGE_PACK_STUDIO_VIEW_ID);
                         },
                     });
-                    context.registerView({
-                        id: LANGUAGE_PACK_STUDIO_VIEW_ID,
-                        title: languagePackStudioLabels.viewTitle,
-                        description: languagePackStudioLabels.viewDescription,
-                        icon: { kind: "lucide", name: "Languages" },
-                        location: "main",
-                        allowMultiple: false,
-                        canBePinned: true,
+                    context.registerWorkspaceModule({
+                        ...languagePackStudioManifest.contributions.workspaceModules[0],
                         render: (props) => (_jsx(LanguagePackStudioView, { controller: options.controller, close: () => props.close(), formatLabel: context.host.i18n.format, shellSidebarOpen: props.workspaceSidebarOpen, onShellSidebarToggle: props.setWorkspaceSidebarOpen, embedBrowserInShellSidebar: Boolean(props.setWorkspaceSidebarOpen) })),
-                        renderSidebar: () => (_jsx(LanguagePackStudioSidebar, { controller: options.controller })),
+                        renderExplorer: () => (_jsx(LanguagePackStudioSidebar, { controller: options.controller })),
                     });
                     context.registerActionRailItem({
                         id: LANGUAGE_PACK_STUDIO_RAIL_ID,

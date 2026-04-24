@@ -7,6 +7,7 @@ export * from "./i18n.js";
 export * from "./icon.js";
 export * from "./integrity.js";
 export * from "./manifest.js";
+export * from "./presets.js";
 export * from "./settings.js";
 export * from "./signature.js";
 export * from "./support.js";

@@ -73,7 +73,7 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
         renderSidebar: view.renderSidebar
           ? (props) => (
               <ExtensionViewErrorBoundary extensionId={extensionId} diagnostics={services.diagnostics}>
-                {view.renderSidebar?.(props)}
+                {view.renderSidebar?.(props) as React.ReactNode}
               </ExtensionViewErrorBoundary>
             )
           : undefined,
@@ -116,7 +116,7 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
       return services.settingsRegistry.register({
         ...section,
         panel: resolveSettingsPanel(section.panel),
-        icon: section.icon ?? { kind: 'lucide', name: 'Puzzle' },
+        icon: section.icon ?? { kind: 'lucide', name: 'Settings' },
         extensionId,
         schema,
         render: render ?? (schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section)),

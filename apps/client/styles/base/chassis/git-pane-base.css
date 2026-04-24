@@ -48,6 +48,12 @@
   background: transparent;
 }
 
+.git-source-control-browser {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .git-body.is-collapsed {
   display: none;
 }

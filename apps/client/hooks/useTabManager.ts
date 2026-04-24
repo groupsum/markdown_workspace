@@ -53,6 +53,24 @@ export const useTabManager = () => {
     setState({ tabs: [], activeTabId: null });
   }, []);
 
+  const reorderTab = useCallback((draggedTabId: string, targetTabId: string) => {
+    if (draggedTabId === targetTabId) return;
+    setState((prevState) => {
+      const fromIndex = prevState.tabs.findIndex((tab) => tab.id === draggedTabId);
+      const toIndex = prevState.tabs.findIndex((tab) => tab.id === targetTabId);
+      if (fromIndex < 0 || toIndex < 0) {
+        return prevState;
+      }
+      const nextTabs = [...prevState.tabs];
+      const [movedTab] = nextTabs.splice(fromIndex, 1);
+      if (!movedTab) {
+        return prevState;
+      }
+      nextTabs.splice(toIndex, 0, movedTab);
+      return { ...prevState, tabs: nextTabs };
+    });
+  }, []);
+
   return {
     tabs: state.tabs,
     activeTabId: state.activeTabId,
@@ -61,6 +79,7 @@ export const useTabManager = () => {
     },
     openTab,
     closeTab,
+    reorderTab,
     resetTabs,
     setTabs: (tabs: Tab[]) => {
       setState((prevState) => ({ ...prevState, tabs }));

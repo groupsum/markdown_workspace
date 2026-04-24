@@ -15,6 +15,7 @@ import type {
   RegisteredCommand,
   RegisteredSettingsSection,
   RegisteredView,
+  RegisteredWorkspaceModule,
 } from '@mdwrk/extension-host';
 import { EXTENSION_HOST_API_VERSION } from '@mdwrk/extension-host';
 import {
@@ -38,6 +39,7 @@ interface HostHarness {
   host: ExtensionHost;
   commands: RegisteredCommand[];
   views: RegisteredView[];
+  workspaceModules: RegisteredWorkspaceModule[];
   railItems: RegisteredActionRailItem[];
   settingsSections: RegisteredSettingsSection[];
   notifications: string[];
@@ -82,6 +84,7 @@ function createManifest(overrides: Partial<ExtensionManifest> & Pick<ExtensionMa
 function createHostHarness(): HostHarness {
   const commands: RegisteredCommand[] = [];
   const views: RegisteredView[] = [];
+  const workspaceModules: RegisteredWorkspaceModule[] = [];
   const railItems: RegisteredActionRailItem[] = [];
   const settingsSections: RegisteredSettingsSection[] = [];
   const notifications: string[] = [];
@@ -231,7 +234,7 @@ function createHostHarness(): HostHarness {
     },
   };
 
-  return { host, commands, views, railItems, settingsSections, notifications, diagnostics, setGrantedCapabilities(capabilities) { (host as unknown as { environment: ExtensionHost['environment'] }).environment = { ...host.environment, grantedCapabilities: capabilities as never }; } };
+  return { host, commands, views, workspaceModules, railItems, settingsSections, notifications, diagnostics, setGrantedCapabilities(capabilities) { (host as unknown as { environment: ExtensionHost['environment'] }).environment = { ...host.environment, grantedCapabilities: capabilities as never }; } };
 }
 
 function createRegistrationSink(harness: HostHarness): ExtensionRuntimeRegistrationSink {
@@ -248,6 +251,26 @@ function createRegistrationSink(harness: HostHarness): ExtensionRuntimeRegistrat
       return { dispose() {
         const index = harness.views.indexOf(view);
         if (index >= 0) harness.views.splice(index, 1);
+      } };
+    },
+    registerWorkspaceModule(_extensionId, module) {
+      harness.workspaceModules.push(module);
+      harness.views.push({
+        id: module.primaryViewId,
+        title: module.title,
+        description: module.description,
+        icon: module.icon,
+        location: 'main',
+        allowMultiple: false,
+        canBePinned: true,
+        render: module.render,
+        renderSidebar: module.renderExplorer,
+      });
+      return { dispose() {
+        const moduleIndex = harness.workspaceModules.indexOf(module);
+        if (moduleIndex >= 0) harness.workspaceModules.splice(moduleIndex, 1);
+        const viewIndex = harness.views.findIndex((view) => view.id === module.primaryViewId);
+        if (viewIndex >= 0) harness.views.splice(viewIndex, 1);
       } };
     },
     registerActionRailItem(_extensionId, item) {

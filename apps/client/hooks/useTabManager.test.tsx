@@ -42,4 +42,18 @@ describe('useTabManager', () => {
     expect(result.current.tabs).toEqual([{ id: 'tab-file-1', fileId: 'file-1' }]);
     expect(result.current.activeTabId).toBe('tab-file-1');
   });
+
+  it('reorders tabs without changing the active tab', () => {
+    const { result } = renderHook(() => useTabManager());
+
+    act(() => {
+      result.current.openTab('file-1');
+      result.current.openTab('file-2');
+      result.current.openTab('file-3');
+      result.current.reorderTab('tab-file-3', 'tab-file-1');
+    });
+
+    expect(result.current.tabs.map((tab) => tab.fileId)).toEqual(['file-3', 'file-1', 'file-2']);
+    expect(result.current.activeTabId).toBe('tab-file-3');
+  });
 });

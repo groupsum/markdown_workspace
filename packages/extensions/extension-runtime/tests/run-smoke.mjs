@@ -13,6 +13,11 @@ import {
 } from '../dist/storage.js';
 import { validateExtensionManifest } from '../dist/validation.js';
 import { evaluateExtensionCompatibility } from '../dist/compatibility.js';
+import {
+  composeCapabilityPresetSet,
+  evaluateCapabilityPresetSet,
+  recommendCapabilityPresets,
+} from '../../../contracts/extension-manifest/dist/index.js';
 
 const createManifest = (id, overrides = {}) => ({
   manifestVersion: 1,
@@ -22,7 +27,7 @@ const createManifest = (id, overrides = {}) => ({
   displayName: { defaultMessage: id },
   description: { defaultMessage: `${id} description` },
   kind: 'bundled',
-  icon: { kind: 'lucide', name: 'Puzzle' },
+  icon: { kind: 'lucide', name: 'Plug' },
   enabledByDefault: true,
   capabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish'],
   compatibility: {
@@ -121,14 +126,17 @@ const createSink = () => {
   const views = [];
   const rail = [];
   const settings = [];
+  const workspaceModules = [];
   return {
     commands,
     views,
     rail,
     settings,
+    workspaceModules,
     sink: {
       registerCommand(_extensionId, command) { commands.push(command); return { dispose() {} }; },
       registerView(_extensionId, view) { views.push(view); return { dispose() {} }; },
+      registerWorkspaceModule(_extensionId, module) { workspaceModules.push(module); return { dispose() {} }; },
       registerActionRailItem(_extensionId, item) { rail.push(item); return { dispose() {} }; },
       registerSettingsSection(_extensionId, section) { settings.push(section); return { dispose() {} }; },
     },
@@ -235,7 +243,7 @@ function createExternalModuleCode(manifest, message = 'Hello from external exten
     '  manifest,',
     '  async activate(context) {',
     `    context.registerView({ id: '${manifest.id}.view', title: { defaultMessage: 'External View' }, description: { defaultMessage: 'External view' }, location: 'panel', allowMultiple: false, render: () => ${JSON.stringify(message)} });`,
-    `    context.registerActionRailItem({ id: '${manifest.id}.rail', title: { defaultMessage: 'External Rail' }, icon: { kind: 'lucide', name: 'Puzzle' }, target: { kind: 'view', viewId: '${manifest.id}.view' }, group: 'extensions' });`,
+    `    context.registerActionRailItem({ id: '${manifest.id}.rail', title: { defaultMessage: 'External Rail' }, icon: { kind: 'lucide', name: 'Plug' }, target: { kind: 'view', viewId: '${manifest.id}.view' }, group: 'extensions' });`,
     `    await context.host.notifications.info(${JSON.stringify(message)});`,
     '  },',
     '};',
@@ -246,6 +254,56 @@ function createExternalModuleCode(manifest, message = 'Hello from external exten
 // manifest validation
 const invalidIssues = validateExtensionManifest(createManifest('invalid', { displayName: { defaultMessage: '' } }));
 assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessage'));
+
+// capability preset advisory helpers
+{
+  const manifest = createManifest('preset-writer', {
+    capabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'workspace.read', 'workspace.write', 'editor.read', 'editor.write', 'selection.read'],
+    capabilityPresetIds: ['workspace.module.writer'],
+    contributions: {
+      commands: [],
+      views: [
+        { id: 'preset-writer.view', title: { defaultMessage: 'Writer' }, location: 'main' },
+        { id: 'preset-writer.explorer', title: { defaultMessage: 'Writer Explorer' }, location: 'sidebar' },
+      ],
+      components: [],
+      workspaceModules: [
+        {
+          id: 'preset-writer.module',
+          title: { defaultMessage: 'Writer' },
+          primaryViewId: 'preset-writer.view',
+          explorerViewId: 'preset-writer.explorer',
+          supportedLayouts: ['single', 'split'],
+          defaultLayout: 'split',
+          settingsSectionId: 'preset-writer.settings',
+          capabilityProfiles: ['workspace.module.base', 'workspace.module.read', 'workspace.module.write'],
+          capabilityPresetIds: ['workspace.module.writer'],
+          actions: [],
+        },
+      ],
+      actionRail: [
+        { id: 'preset-writer.rail', title: { defaultMessage: 'Writer' }, icon: { kind: 'lucide', name: 'Plug' }, target: { kind: 'view', viewId: 'preset-writer.view' } },
+      ],
+      settingsSections: [
+        { id: 'preset-writer.settings', title: { defaultMessage: 'Writer Settings' } },
+      ],
+    },
+  });
+
+  const composed = composeCapabilityPresetSet(['workspace.module.writer', 'workspace.module.writer']);
+  assert.deepEqual(composed.ids, ['workspace.module.writer']);
+  assert.ok(composed.profileIds.includes('workspace.module.write'));
+  assert.ok(composed.recommendedCapabilities.includes('workspace.write'));
+  assert.deepEqual(recommendCapabilityPresets(manifest), ['workspace.module.writer']);
+  assert.equal(evaluateCapabilityPresetSet(manifest, ['workspace.module.writer']).gaps.length, 0);
+
+  const missingCapability = evaluateCapabilityPresetSet(
+    { ...manifest, capabilities: manifest.capabilities.filter((capability) => capability !== 'workspace.write') },
+    ['workspace.module.writer'],
+  );
+  assert.ok(missingCapability.gaps.some((gap) => gap.kind === 'missing-capability' && gap.id === 'workspace.write'));
+  assert.ok(evaluateCapabilityPresetSet(manifest, ['unknown.preset']).gaps.some((gap) => gap.kind === 'unknown-preset'));
+}
 
 // activation/deactivation lifecycle
 {
@@ -260,7 +318,7 @@ assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessa
       manifest,
       async activate(context) {
         context.registerView({ id: `${manifest.id}.view`, title: { defaultMessage: 'Runtime Smoke' }, description: { defaultMessage: 'Smoke view' }, location: 'modal', allowMultiple: false, render: () => null });
-        context.registerActionRailItem({ id: `${manifest.id}.rail`, title: { defaultMessage: 'Runtime Smoke' }, icon: { kind: 'lucide', name: 'Puzzle' }, target: { kind: 'view', viewId: `${manifest.id}.view` } });
+        context.registerActionRailItem({ id: `${manifest.id}.rail`, title: { defaultMessage: 'Runtime Smoke' }, icon: { kind: 'lucide', name: 'Plug' }, target: { kind: 'view', viewId: `${manifest.id}.view` } });
       },
     }),
   });

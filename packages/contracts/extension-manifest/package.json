@@ -48,6 +48,10 @@
       "types": "./dist/capabilities.d.ts",
       "import": "./dist/capabilities.js"
     },
+    "./presets": {
+      "types": "./dist/presets.d.ts",
+      "import": "./dist/presets.js"
+    },
     "./compatibility": {
       "types": "./dist/compatibility.d.ts",
       "import": "./dist/compatibility.js"

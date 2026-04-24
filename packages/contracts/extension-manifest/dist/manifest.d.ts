@@ -5,6 +5,7 @@ import type { ExtensionEntrypoint, ExtensionDistribution } from "./entry.js";
 import type { ExtensionI18nDefinition, I18nLabel } from "./i18n.js";
 import type { ExtensionIcon } from "./icon.js";
 import type { ExtensionIntegrity } from "./integrity.js";
+import type { CapabilityPresetId } from "./presets.js";
 import type { ExtensionSettingsSchema } from "./settings.js";
 import type { ExtensionSupportDeclaration } from "./support.js";
 import type { ExtensionManifestVersion } from "./version.js";
@@ -26,6 +27,7 @@ export interface ExtensionManifest {
     readonly icon: ExtensionIcon;
     readonly enabledByDefault: boolean;
     readonly capabilities: readonly ExtensionCapability[];
+    readonly capabilityPresetIds?: readonly CapabilityPresetId[];
     readonly compatibility: ExtensionCompatibility;
     readonly entry: ExtensionEntrypoint;
     readonly contributions: ExtensionContributions;

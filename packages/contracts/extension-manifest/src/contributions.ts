@@ -1,5 +1,6 @@
 import type { I18nLabel } from "./i18n.js";
 import type { ExtensionIcon } from "./icon.js";
+import type { CapabilityPresetId } from "./presets.js";
 
 export type ActionRailGroup =
   | "workspace.primary"
@@ -65,6 +66,7 @@ export interface WorkspaceModuleContributionDescriptor {
   readonly defaultLayout: WorkspaceModuleLayout;
   readonly settingsSectionId: string;
   readonly capabilityProfiles: readonly WorkspaceModuleCapabilityProfile[];
+  readonly capabilityPresetIds?: readonly CapabilityPresetId[];
   readonly actions: readonly WorkspaceModuleActionDescriptor[];
 }
 

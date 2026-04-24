@@ -31,16 +31,10 @@ export function createThemeStudioBundledEntry() {
                             await context.host.views.open(THEME_STUDIO_VIEW_ID);
                         },
                     });
-                    context.registerView({
-                        id: THEME_STUDIO_VIEW_ID,
-                        title: themeStudioLabels.viewTitle,
-                        description: themeStudioLabels.viewDescription,
-                        icon: { kind: "lucide", name: "Palette" },
-                        location: "main",
-                        allowMultiple: false,
-                        canBePinned: true,
+                    context.registerWorkspaceModule({
+                        ...themeStudioManifest.contributions.workspaceModules[0],
                         render: (props) => (_jsx(ThemeStudioView, { service: service, close: () => props.close(), formatLabel: context.host.i18n.format, shellSidebarOpen: props.workspaceSidebarOpen, onShellSidebarToggle: props.setWorkspaceSidebarOpen, embedBrowserInShellSidebar: Boolean(props.setWorkspaceSidebarOpen) })),
-                        renderSidebar: () => (_jsx(ThemeStudioSidebar, { service: service, formatLabel: context.host.i18n.format })),
+                        renderExplorer: () => (_jsx(ThemeStudioSidebar, { service: service, formatLabel: context.host.i18n.format })),
                     });
                     context.registerActionRailItem({
                         id: THEME_STUDIO_RAIL_ID,

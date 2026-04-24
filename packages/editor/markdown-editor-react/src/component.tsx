@@ -33,6 +33,13 @@ const mergeClassNames = (...values: Array<string | undefined>) => values.filter(
 const WRAP_MEASUREMENT_SAMPLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const MIN_WRAP_COLUMN = 24;
 const MAX_WRAP_COLUMN = 320;
+const EDITOR_LINE_HEIGHT_CSS = "var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)))";
+
+function estimateVisualRows(line: string, wrapColumn: number): number {
+  if (!line) return 1;
+  const expanded = line.replace(/\t/g, "    ");
+  return Math.max(1, Math.ceil(expanded.length / Math.max(MIN_WRAP_COLUMN, wrapColumn)));
+}
 
 function selectionEquals(a: MarkdownEditorSelection, b: MarkdownEditorSelection): boolean {
   return a.start === b.start && a.end === b.end && (a.direction ?? "none") === (b.direction ?? "none");
@@ -336,8 +343,9 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       }
 
       if (!meta) return;
+      if ((event as unknown as { readonly altKey?: boolean }).altKey) return;
 
-      if (key === "b") {
+      if (key === "b" && !event.shiftKey) {
         event.preventDefault();
         executeCommand("bold");
         return;
@@ -363,11 +371,16 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       }
     }, [applyEditResult, disabled, executeCommand, indentUnit, syncSelectionFromTextarea]);
 
+    const displayValue = isControlled ? (value ?? "") : draftValue;
+
+    const visualLineRows = React.useMemo(() => {
+      return displayValue.split("\n").map((line) => estimateVisualRows(line, wrapColumn));
+    }, [displayValue, wrapColumn]);
+
     const lineCount = React.useMemo(() => {
-      const displayValue = isControlled ? (value ?? "") : draftValue;
       const matches = displayValue.match(/\n/g);
       return (matches?.length ?? 0) + 1;
-    }, [draftValue, isControlled, value]);
+    }, [displayValue]);
 
     const mergedThemeStyle = React.useMemo(
       () => ({
@@ -386,14 +399,21 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
         <div className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper")}>
           {showLineNumbers ? (
             <div ref={gutterRef} className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.gutter, "editor-gutter", gutterClassName)} aria-hidden="true">
-              {Array.from({ length: lineCount }, (_, index) => (
+              {Array.from({ length: lineCount }, (_, index) => {
+                const rowSpan = visualLineRows[index] ?? 1;
+                return (
                 <div
                   key={index + 1}
                   className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.lineNumber, "line-num", lineNumberClassName)}
+                  style={{
+                    height: `calc(${EDITOR_LINE_HEIGHT_CSS} * ${rowSpan})`,
+                    lineHeight: EDITOR_LINE_HEIGHT_CSS,
+                  }}
                 >
                   {index + 1}
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : null}
           <textarea

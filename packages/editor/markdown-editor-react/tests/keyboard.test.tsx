@@ -20,6 +20,15 @@ describe("MarkdownSourceEditor keyboard behavior", () => {
     expect(editor.value).toBe("**hello**");
   });
 
+  it("does not consume Ctrl+Shift+B so the host can toggle the workspace panel", () => {
+    render(<MarkdownSourceEditor defaultValue="hello" />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(0, 5);
+    fireEvent.keyDown(editor, { key: "b", ctrlKey: true, shiftKey: true });
+    expect(editor.value).toBe("hello");
+  });
+
   it("indents and outdents with Tab and Shift+Tab", () => {
     render(<MarkdownSourceEditor defaultValue={"alpha\nbeta"} />);
     const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;

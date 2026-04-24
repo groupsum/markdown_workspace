@@ -43,7 +43,19 @@ export const workspaceFilesManifest: ExtensionManifest = {
   kind: "bundled",
   icon: { kind: "lucide", name: "Folder" },
   enabledByDefault: true,
-  capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write", "notification.publish"],
+  capabilities: [
+    "view.register",
+    "actionRail.register",
+    "settings.read",
+    "settings.write",
+    "notification.publish",
+    "workspace.read",
+    "workspace.write",
+    "editor.read",
+    "editor.write",
+    "selection.read",
+  ],
+  capabilityPresetIds: ["workspace.module.writer"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -108,6 +120,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
         defaultLayout: "split",
         settingsSectionId: WORKSPACE_FILES_SETTINGS_SECTION_ID,
         capabilityProfiles: ["workspace.module.base", "workspace.module.read", "workspace.module.write"],
+        capabilityPresetIds: ["workspace.module.writer"],
         actions: [
           { commandId: WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID, role: "explorer", order: 10 },
           { commandId: WORKSPACE_FILES_COMMAND_NEW_FILE_ID, role: "explorer", order: 20 },

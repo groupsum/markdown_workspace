@@ -11,6 +11,7 @@ This package is the authoring source of truth for extension metadata and manifes
 - manifest version constants
 - extension manifest interface
 - capabilities
+- advisory capability preset descriptors and composition helpers
 - contribution descriptors
 - settings schema types
 - i18n label types
@@ -28,6 +29,12 @@ This package is the authoring source of truth for extension metadata and manifes
 - manifest validators
 - catalog/signing tooling
 - documentation and schema tooling
+
+## Capability Presets
+
+`capabilities` remain the runtime permission boundary. Presets are authoring and testing shortcuts only: they recommend API capabilities, workspace-module shape profiles, and contribution kinds, but they do not grant permissions and do not block activation.
+
+Use `capabilityPresetIds` on a manifest or workspace module to communicate the intended profile set. Use `composeCapabilityPresetSet`, `recommendCapabilityPresets`, and `evaluateCapabilityPresetSet` in tests/docs to check advisory gaps without changing runtime security policy.
 
 ## Build
 

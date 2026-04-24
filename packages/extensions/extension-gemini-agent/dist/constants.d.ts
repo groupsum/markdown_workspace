@@ -1,6 +1,8 @@
 import type { GeminiAgentIntent, GeminiAgentResolvedSettings } from "./types.js";
 export declare const GEMINI_AGENT_EXTENSION_ID = "core.gemini-agent";
 export declare const GEMINI_AGENT_VIEW_ID = "core.gemini-agent.view";
+export declare const GEMINI_AGENT_EXPLORER_VIEW_ID = "core.gemini-agent.explorer";
+export declare const GEMINI_AGENT_MODULE_ID = "core.gemini-agent.module";
 export declare const GEMINI_AGENT_RAIL_ID = "core.gemini-agent.rail";
 export declare const GEMINI_AGENT_SERVICE_TOKEN = "core.gemini-agent.service";
 export declare const GEMINI_AGENT_COMMAND_OPEN_ID = "core.gemini-agent.open";

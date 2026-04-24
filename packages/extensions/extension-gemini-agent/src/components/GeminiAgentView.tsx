@@ -2,6 +2,35 @@ import React from "react";
 import { geminiAgentLabels } from "../i18n.js";
 import type { GeminiAgentViewProps } from "../types.js";
 
+type IconName = "sidebar" | "sidebar-open" | "single" | "split" | "close";
+
+function ToolbarIcon({ name }: { readonly name: IconName }) {
+  const common = {
+    width: 14,
+    height: 14,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  if (name === "sidebar") {
+    return <svg {...common}><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg>;
+  }
+  if (name === "sidebar-open") {
+    return <svg {...common}><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M15 3v18" /></svg>;
+  }
+  if (name === "single") {
+    return <svg {...common}><rect width="16" height="16" x="4" y="4" rx="2" /></svg>;
+  }
+  if (name === "split") {
+    return <svg {...common}><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M12 3v18" /></svg>;
+  }
+  return <svg {...common}><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>;
+}
+
 const cardStyle: React.CSSProperties = {
   display: "grid",
   gap: 10,
@@ -35,6 +64,48 @@ const textareaStyle: React.CSSProperties = {
   lineHeight: 1.6,
   resize: "vertical",
 };
+
+const getSplitBand = (value: number): number => {
+  const clamped = Math.min(80, Math.max(20, value));
+  return Math.round(clamped / 5) * 5;
+};
+
+function useWorkspaceModuleSplit(defaultPosition = 55) {
+  const [splitPos, setSplitPos] = React.useState(defaultPosition);
+  const [isDragging, setIsDragging] = React.useState(false);
+  const splitContainerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!isDragging || !splitContainerRef.current) return;
+      const rect = splitContainerRef.current.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      setSplitPos(getSplitBand(((event.clientX - rect.left) / rect.width) * 100));
+    };
+    const handleMouseUp = () => setIsDragging(false);
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      document.body.classList.add("is-resizing-sidebar");
+    } else {
+      document.body.classList.remove("is-resizing-sidebar");
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.body.classList.remove("is-resizing-sidebar");
+    };
+  }, [isDragging]);
+
+  return {
+    splitBand: getSplitBand(splitPos),
+    isDragging,
+    splitContainerRef,
+    startSplitDrag: () => setIsDragging(true),
+  };
+}
 
 export const GeminiAgentSidebar: React.FC<Pick<GeminiAgentViewProps, "service" | "formatLabel">> = ({ service, formatLabel }) => {
   const snapshot = React.useSyncExternalStore(service.subscribe, service.getSnapshot, service.getSnapshot);
@@ -70,6 +141,7 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
   const [settingsSummary, setSettingsSummary] = React.useState<Record<string, unknown> | null>(null);
   const [sidebarOpen, setSidebarOpen] = React.useState(true);
   const [layoutMode, setLayoutMode] = React.useState<"single" | "split">("split");
+  const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const lastIntentRef = React.useRef<string | null>(null);
 
   React.useEffect(() => {
@@ -103,24 +175,71 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
   const configured = Boolean(settingsSummary?.endpoint) && (settingsSummary?.authMode === "none" || Boolean(settingsSummary?.hasApiKey));
   const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
 
+  const promptPane = (
+    <div className="settings-pane" style={{ display: "grid", gap: 14 }}>
+      <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 10 }}>
+        <label style={{ display: "grid", gap: 8 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelPrompt)}</span>
+          <textarea
+            value={prompt}
+            placeholder={formatLabel(geminiAgentLabels.statusPromptPlaceholder)}
+            style={textareaStyle}
+            onChange={(event) => setPrompt(event.currentTarget.value)}
+          />
+        </label>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button className="modal-btn modal-btn-primary" disabled={snapshot.busy} onClick={() => void service.runIntent("custom-prompt", prompt)}>{formatLabel(geminiAgentLabels.panelRunPrompt)}</button>
+          <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("summarize-current-file")}>{formatLabel(geminiAgentLabels.panelSummarize)}</button>
+          <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("rewrite-selection", prompt)}>{formatLabel(geminiAgentLabels.panelRewriteSelection)}</button>
+          <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.refreshContext()}>{formatLabel(geminiAgentLabels.panelRefresh)}</button>
+          <button className="modal-btn" onClick={() => service.clearResult()}>{formatLabel(geminiAgentLabels.panelClearResult)}</button>
+        </div>
+      </div>
+      <div style={cardStyle}>
+        <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelResponse)}</span>
+        <pre style={{ margin: 0, whiteSpace: "pre-wrap", fontFamily: "var(--font-mono, monospace)", fontSize: 12, lineHeight: 1.6 }}>{snapshot.lastResponse?.text ?? ""}</pre>
+      </div>
+    </div>
+  );
+
+  const draftPane = (
+    <div style={cardStyle}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
+        <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelDraft)}</span>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("selection")}>{formatLabel(geminiAgentLabels.panelApplySelection)}</button>
+          <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("document")}>{formatLabel(geminiAgentLabels.panelReplaceDocument)}</button>
+          <button className="modal-btn" onClick={() => service.clearDraft()}>{formatLabel(geminiAgentLabels.panelClearDraft)}</button>
+        </div>
+      </div>
+      <textarea
+        value={snapshot.pendingDraft ?? ""}
+        style={{ ...textareaStyle, minHeight: 180 }}
+        onChange={(event) => service.updateDraft(event.currentTarget.value)}
+      />
+      {snapshot.writebackBlockedReason && <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{snapshot.writebackBlockedReason}</p>}
+    </div>
+  );
+
   return (
     <div className="extension-manager-pane editor-pane-container" role="region" aria-label={formatLabel(geminiAgentLabels.viewTitle)}>
+      {isDragging && <div className="editor-splitter-drag-shield" />}
       <div className="view-toolbar" aria-label="Gemini Agent toolbar">
         <div className="view-toolbar-group">
           <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
-            SB
+            <ToolbarIcon name={effectiveSidebarOpen ? "sidebar-open" : "sidebar"} />
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
-            1P
+            <ToolbarIcon name="single" />
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
-            2P
+            <ToolbarIcon name="split" />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Close Gemini Agent" onClick={() => void close()}>
-            CLOSE
+            <ToolbarIcon name="close" />
           </button>
         </div>
       </div>
@@ -155,68 +274,23 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
                 <span style={pillStyle}>{snapshot.busy ? formatLabel(geminiAgentLabels.statusRunning) : formatLabel(geminiAgentLabels.statusIdle)}</span>
               </div>
             </div>
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(0, 1.1fr) minmax(320px, 0.9fr)" : "minmax(0, 1fr)" }}>
-              <div className="settings-pane" style={{ display: "grid", gap: 14 }}>
-                <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 10 }}>
-                  <label style={{ display: "grid", gap: 8 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelPrompt)}</span>
-                    <textarea
-                      value={prompt}
-                      placeholder={formatLabel(geminiAgentLabels.statusPromptPlaceholder)}
-                      style={textareaStyle}
-                      onChange={(event) => setPrompt(event.currentTarget.value)}
-                    />
-                  </label>
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    <button className="modal-btn modal-btn-primary" disabled={snapshot.busy} onClick={() => void service.runIntent("custom-prompt", prompt)}>{formatLabel(geminiAgentLabels.panelRunPrompt)}</button>
-                    <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("summarize-current-file")}>{formatLabel(geminiAgentLabels.panelSummarize)}</button>
-                    <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("rewrite-selection", prompt)}>{formatLabel(geminiAgentLabels.panelRewriteSelection)}</button>
-                    <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.refreshContext()}>{formatLabel(geminiAgentLabels.panelRefresh)}</button>
-                    <button className="modal-btn" onClick={() => service.clearResult()}>{formatLabel(geminiAgentLabels.panelClearResult)}</button>
-                  </div>
+            {layoutMode === "split" ? (
+              <div ref={splitContainerRef} className="editor-pane-body is-split" style={{ background: "transparent" }}>
+                <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
+                  {promptPane}
                 </div>
-                <div style={cardStyle}>
-                  <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelResponse)}</span>
-                  <pre style={{ margin: 0, whiteSpace: "pre-wrap", fontFamily: "var(--font-mono, monospace)", fontSize: 12, lineHeight: 1.6 }}>{snapshot.lastResponse?.text ?? ""}</pre>
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Gemini Agent panes">
+                  <div className="editor-splitter-handle" />
+                </div>
+                <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
+                  {draftPane}
                 </div>
               </div>
-              {layoutMode === "split" && (
-                <div className="settings-pane" style={{ display: "grid", gap: 14 }}>
-                  <div style={cardStyle}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelDraft)}</span>
-                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                        <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("selection")}>{formatLabel(geminiAgentLabels.panelApplySelection)}</button>
-                        <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("document")}>{formatLabel(geminiAgentLabels.panelReplaceDocument)}</button>
-                        <button className="modal-btn" onClick={() => service.clearDraft()}>{formatLabel(geminiAgentLabels.panelClearDraft)}</button>
-                      </div>
-                    </div>
-                    <textarea
-                      value={snapshot.pendingDraft ?? ""}
-                      style={{ ...textareaStyle, minHeight: 180 }}
-                      onChange={(event) => service.updateDraft(event.currentTarget.value)}
-                    />
-                    {snapshot.writebackBlockedReason && <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{snapshot.writebackBlockedReason}</p>}
-                  </div>
-                </div>
-              )}
-            </div>
-            {layoutMode === "single" && (
-              <div style={cardStyle}>
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelDraft)}</span>
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("selection")}>{formatLabel(geminiAgentLabels.panelApplySelection)}</button>
-                    <button className="modal-btn" disabled={snapshot.busy} onClick={() => void service.applyDraft("document")}>{formatLabel(geminiAgentLabels.panelReplaceDocument)}</button>
-                    <button className="modal-btn" onClick={() => service.clearDraft()}>{formatLabel(geminiAgentLabels.panelClearDraft)}</button>
-                  </div>
-                </div>
-                <textarea
-                  value={snapshot.pendingDraft ?? ""}
-                  style={{ ...textareaStyle, minHeight: 180 }}
-                  onChange={(event) => service.updateDraft(event.currentTarget.value)}
-                />
-              </div>
+            ) : (
+              <>
+                {promptPane}
+                {draftPane}
+              </>
             )}
             {snapshot.infoMessage && (
               <div style={cardStyle}>

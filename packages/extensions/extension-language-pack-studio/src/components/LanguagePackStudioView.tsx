@@ -38,6 +38,48 @@ const denseInputStyle: CSSProperties = {
   lineHeight: 1.4,
 };
 
+const getSplitBand = (value: number): number => {
+  const clamped = Math.min(80, Math.max(20, value));
+  return Math.round(clamped / 5) * 5;
+};
+
+function useWorkspaceModuleSplit(defaultPosition = 58) {
+  const [splitPos, setSplitPos] = useState(defaultPosition);
+  const [isDragging, setIsDragging] = useState(false);
+  const [splitContainer, setSplitContainer] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!isDragging || !splitContainer) return;
+      const rect = splitContainer.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      setSplitPos(getSplitBand(((event.clientX - rect.left) / rect.width) * 100));
+    };
+    const handleMouseUp = () => setIsDragging(false);
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      document.body.classList.add("is-resizing-sidebar");
+    } else {
+      document.body.classList.remove("is-resizing-sidebar");
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.body.classList.remove("is-resizing-sidebar");
+    };
+  }, [isDragging, splitContainer]);
+
+  return {
+    splitBand: getSplitBand(splitPos),
+    isDragging,
+    splitContainerRef: setSplitContainer,
+    startSplitDrag: () => setIsDragging(true),
+  };
+}
+
 export interface LanguagePackStudioViewProps {
   readonly controller: LanguagePackStudioController;
   readonly close: () => Promise<void>;
@@ -193,6 +235,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
   const [draftLocale, setDraftLocale] = useState("custom");
   const [draftLabel, setDraftLabel] = useState("Custom Language Pack");
   const [draftMessages, setDraftMessages] = useState('{\n  "core.views.settings.title": "System Configuration"\n}');
+  const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const { state: browserState, setState: setBrowserState } = useLanguageBrowserState(controller);
   const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
 
@@ -237,6 +280,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
 
   return (
     <div className="language-pack-studio-pane editor-pane-container" data-testid="language-pack-studio-pane">
+      {isDragging && <div className="editor-splitter-drag-shield" />}
       <div className="view-toolbar" aria-label="Language Pack Studio toolbar">
         <div className="view-toolbar-group">
           <button
@@ -301,8 +345,9 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
             </div>
 
             {selectedPack && (
-              <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(0, 1.15fr) minmax(320px, 0.85fr)" : "minmax(0, 1fr)" }}>
-                <div style={{ display: "grid", gap: 16 }}>
+              layoutMode === "split" ? (
+              <div ref={splitContainerRef} className="editor-pane-body is-split" style={{ background: "transparent" }}>
+                <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
                   <div className="settings-card settings-card-stack">
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                       <div>
@@ -369,7 +414,10 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                   </div>
                 </div>
 
-                {layoutMode === "split" && (
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Language Studio panes">
+                  <div className="editor-splitter-handle" />
+                </div>
+                <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
                   <div className="settings-card settings-card-stack">
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <Columns2 size={14} />
@@ -395,8 +443,78 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                       </button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
+              ) : (
+                <div style={{ display: "grid", gap: 16 }}>
+                  <div style={{ display: "grid", gap: 16 }}>
+                    <div className="settings-card settings-card-stack">
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                        <div>
+                          <strong style={{ fontSize: 14 }}>{selectedPack.label}</strong>
+                          <p style={{ margin: "6px 0 0", fontSize: 11, color: "var(--fg-muted)" }}>{selectedPack.locale} | {selectedPack.source.toUpperCase()}</p>
+                        </div>
+                        <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
+                          <button type="button" className="modal-btn" onClick={() => { void controller.setEnabled(selectedPack.locale, !selectedPack.enabled); }}>
+                            {selectedPack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {selectedPack.enabled ? "DISABLE" : "ENABLE"}
+                          </button>
+                          <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.activate(selectedPack.locale); }} disabled={!selectedPack.enabled}>USE</button>
+                          <button
+                            type="button"
+                            className="modal-btn"
+                            onClick={() => {
+                              const artifact = controller.exportArtifact(selectedPack.locale);
+                              if (artifact) downloadJson(`${selectedPack.locale}.language-pack.json`, artifact);
+                            }}
+                            disabled={selectedPack.source !== "installed"}
+                          >
+                            <Download size={14} /> EXPORT
+                          </button>
+                          <button type="button" className="modal-btn" onClick={() => { void controller.remove(selectedPack.locale); }} disabled={selectedPack.source !== "installed"}>
+                            <Trash2 size={14} /> REMOVE
+                          </button>
+                        </div>
+                      </div>
+                      <div className="settings-session-grid">
+                        <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{selectedPack.enabled ? "ENABLED" : "DISABLED"}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">SOURCE</span><span className="settings-session-value">{selectedPack.source.toUpperCase()}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{selectedPack.source === "installed" ? Object.keys(selectedPack.messages).length : "CORE"}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">MISSING</span><span className="settings-session-value">{selectedPack.source === "installed" ? missingKeys.length : "N/A"}</span></div>
+                      </div>
+                    </div>
+
+                    <div className="settings-card settings-card-stack">
+                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Token Audit</strong>
+                      {selectedPack.source === "built-in" ? (
+                        <div className="settings-session-item">
+                          <span className="settings-session-label">BUILT_IN_LOCALE</span>
+                          <span className="settings-session-value">Core shell catalogs load through the extension-aware i18n fallback chain.</span>
+                        </div>
+                      ) : snapshot.loadingTokens ? (
+                        <span className="text-[11px] text-[var(--fg-muted)]">Loading tokens...</span>
+                      ) : (
+                        <div style={{ display: "grid", gap: 8, maxHeight: 420, overflow: "auto" }}>
+                          {snapshot.tokens.map((token) => {
+                            const missing = !(token.key in selectedPack.messages);
+                            return (
+                              <div key={token.key} className="settings-session-item" style={{ borderColor: missing ? "var(--status-error)" : undefined }}>
+                                <div style={{ display: "grid", gap: 4 }}>
+                                  <span className="settings-session-label">{token.key}</span>
+                                  <span className="text-[11px] text-[var(--fg-muted)]">{token.source}</span>
+                                </div>
+                                <div style={{ display: "grid", gap: 4 }}>
+                                  <span className="settings-session-value">{missing ? "MISSING" : "PRESENT"}</span>
+                                  <span className="text-[11px] text-[var(--fg-muted)]">{selectedPack.messages[token.key] ?? token.defaultMessage}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
             )}
 
             {layoutMode === "single" && (

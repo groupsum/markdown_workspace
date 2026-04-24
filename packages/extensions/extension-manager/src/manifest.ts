@@ -1,7 +1,9 @@
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   EXTENSION_MANAGER_COMMAND_ID,
+  EXTENSION_MANAGER_EXPLORER_VIEW_ID,
   EXTENSION_MANAGER_EXTENSION_ID,
+  EXTENSION_MANAGER_MODULE_ID,
   EXTENSION_MANAGER_RAIL_ID,
   EXTENSION_MANAGER_VIEW_ID,
 } from "./constants.js";
@@ -19,6 +21,7 @@ export const extensionManagerManifest: ExtensionManifest = {
   icon: { kind: "lucide", name: "Puzzle" },
   enabledByDefault: true,
   capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write"],
+  capabilityPresetIds: ["workspace.module.standard"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -58,8 +61,35 @@ export const extensionManagerManifest: ExtensionManifest = {
         allowMultiple: false,
         canBePinned: true,
       },
+      {
+        id: EXTENSION_MANAGER_EXPLORER_VIEW_ID,
+        title: { defaultMessage: "Extension Browser" },
+        description: { defaultMessage: "Installed, bundled, and catalog extension browser." },
+        icon: { kind: "lucide", name: "Puzzle" },
+        location: "sidebar",
+        allowMultiple: false,
+        canBePinned: true,
+      },
     ],
     components: [],
+    workspaceModules: [
+      {
+        id: EXTENSION_MANAGER_MODULE_ID,
+        title: extensionManagerLabels.viewTitle,
+        description: extensionManagerLabels.viewDescription,
+        icon: { kind: "lucide", name: "Puzzle" },
+        primaryViewId: EXTENSION_MANAGER_VIEW_ID,
+        explorerViewId: EXTENSION_MANAGER_EXPLORER_VIEW_ID,
+        supportedLayouts: ["single", "left", "right", "split"],
+        defaultLayout: "split",
+        settingsSectionId: `${EXTENSION_MANAGER_EXTENSION_ID}.settings`,
+        capabilityProfiles: ["workspace.module.base"],
+        capabilityPresetIds: ["workspace.module.standard"],
+        actions: [
+          { commandId: EXTENSION_MANAGER_COMMAND_ID, role: "primary", order: 10 },
+        ],
+      },
+    ],
     actionRail: [
       {
         id: EXTENSION_MANAGER_RAIL_ID,
@@ -116,7 +146,9 @@ export const extensionManagerManifest: ExtensionManifest = {
 
 export {
   EXTENSION_MANAGER_COMMAND_ID,
+  EXTENSION_MANAGER_EXPLORER_VIEW_ID,
   EXTENSION_MANAGER_EXTENSION_ID,
+  EXTENSION_MANAGER_MODULE_ID,
   EXTENSION_MANAGER_RAIL_ID,
   EXTENSION_MANAGER_VIEW_ID,
 } from "./constants.js";

@@ -48,7 +48,7 @@ export const extensionCatalogHelloManifest = {
             {
                 id: "external.catalog-hello.rail",
                 title: { defaultMessage: "Catalog Hello" },
-                icon: { kind: "lucide", name: "Puzzle" },
+                icon: { kind: "lucide", name: "Plug" },
                 order: 160,
                 group: "extensions",
                 target: { kind: "view", viewId: "external.catalog-hello.view" },

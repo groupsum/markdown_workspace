@@ -93,14 +93,8 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             },
           });
 
-          context.registerView(({
-            id: GEMINI_AGENT_VIEW_ID,
-            title: geminiAgentLabels.viewTitle,
-            description: geminiAgentLabels.viewDescription,
-            icon: { kind: "lucide", name: "Bot" },
-            location: "main",
-            allowMultiple: false,
-            canBePinned: true,
+          context.registerWorkspaceModule({
+            ...geminiAgentManifest.contributions.workspaceModules![0],
             render: (props) => (
               <GeminiAgentView
                 close={() => (props as { close: () => Promise<void> }).close()}
@@ -112,13 +106,13 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
                 embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-            renderSidebar: () => (
+            renderExplorer: () => (
               <GeminiAgentSidebar
                 service={service}
                 formatLabel={context.host.i18n.format}
               />
             ),
-          } as unknown) as never);
+          });
 
           context.registerActionRailItem({
             id: GEMINI_AGENT_RAIL_ID,

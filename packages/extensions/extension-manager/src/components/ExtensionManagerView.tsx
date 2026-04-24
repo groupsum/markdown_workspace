@@ -9,6 +9,15 @@ import {
   createPortableExtensionCatalogRegistration,
   normalizePortableExtensionPackageArtifact,
 } from "@mdwrk/extension-runtime";
+import {
+  Download,
+  Sidebar,
+  SidebarOpen,
+  SplitSquareHorizontal,
+  Square,
+  Upload,
+  X,
+} from "lucide-react";
 import { extensionManagerLabels } from "../i18n.js";
 import { ExtensionCard } from "./ExtensionCard.js";
 
@@ -39,6 +48,48 @@ function downloadJson(filename: string, value: unknown): void {
   link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+const getSplitBand = (value: number): number => {
+  const clamped = Math.min(80, Math.max(20, value));
+  return Math.round(clamped / 5) * 5;
+};
+
+function useWorkspaceModuleSplit(defaultPosition = 55) {
+  const [splitPos, setSplitPos] = useState(defaultPosition);
+  const [isDragging, setIsDragging] = useState(false);
+  const [splitContainer, setSplitContainer] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!isDragging || !splitContainer) return;
+      const rect = splitContainer.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      setSplitPos(getSplitBand(((event.clientX - rect.left) / rect.width) * 100));
+    };
+    const handleMouseUp = () => setIsDragging(false);
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      document.body.classList.add("is-resizing-sidebar");
+    } else {
+      document.body.classList.remove("is-resizing-sidebar");
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.body.classList.remove("is-resizing-sidebar");
+    };
+  }, [isDragging, splitContainer]);
+
+  return {
+    splitBand: getSplitBand(splitPos),
+    isDragging,
+    splitContainerRef: setSplitContainer,
+    startSplitDrag: () => setIsDragging(true),
+  };
 }
 
 function createBrowserNodes(
@@ -272,6 +323,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [layoutMode, setLayoutMode] = useState<"single" | "split">("split");
+  const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const { state: browserState, setState: setBrowserState } = useExtensionBrowserState(runtime);
   const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
 
@@ -438,31 +490,32 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
 
   return (
     <div className="extension-manager-pane editor-pane-container" data-testid="extension-manager-pane" role="region" aria-label={formatLabel(extensionManagerLabels.viewTitle)}>
+      {isDragging && <div className="editor-splitter-drag-shield" />}
       <div className="view-toolbar" aria-label="Extension Manager toolbar">
         <div className="view-toolbar-group">
           <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
-            SB
+            {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
-            1P
+            <Square size={14} />
           </button>
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
-            2P
+            <SplitSquareHorizontal size={14} />
           </button>
         </div>
         <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Import extension package" onClick={() => importInput?.click()}>
-            IMP
+            <Upload size={14} />
           </button>
           <button type="button" className="view-toolbar-btn" title="Export catalog snapshot" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
-            EXP
+            <Download size={14} />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title="Close manager" onClick={() => void close()}>
-            CLOSE
+            <X size={14} />
           </button>
         </div>
       </div>
@@ -493,12 +546,15 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
               </div>
             </div>
 
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: layoutMode === "split" ? "minmax(0, 1.1fr) minmax(320px, 0.9fr)" : "minmax(0, 1fr)" }}>
-              <div style={{ display: "grid", gap: 16 }}>
-                {detailsPane}
-              </div>
-              {layoutMode === "split" && (
-                <div style={{ display: "grid", gap: 16 }}>
+            {layoutMode === "split" ? (
+              <div ref={splitContainerRef} className="editor-pane-body is-split" style={{ background: "transparent" }}>
+                <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
+                  {detailsPane}
+                </div>
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Extension Manager panes">
+                  <div className="editor-splitter-handle" />
+                </div>
+                <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
                   <div className="settings-card settings-card-stack">
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <span className="settings-session-label">CATALOG</span>
@@ -507,10 +563,13 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
                     {catalogPane}
                   </div>
                 </div>
-              )}
-            </div>
-
-            {layoutMode === "single" && catalogPane}
+              </div>
+            ) : (
+              <>
+                <div style={{ display: "grid", gap: 16 }}>{detailsPane}</div>
+                {catalogPane}
+              </>
+            )}
           </div>
         </div>
       </div>

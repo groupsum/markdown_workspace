@@ -72,16 +72,10 @@ export function createGeminiAgentBundledEntry(options = {}) {
                             await service.applyDraft("document");
                         },
                     });
-                    context.registerView({
-                        id: GEMINI_AGENT_VIEW_ID,
-                        title: geminiAgentLabels.viewTitle,
-                        description: geminiAgentLabels.viewDescription,
-                        icon: { kind: "lucide", name: "Bot" },
-                        location: "main",
-                        allowMultiple: false,
-                        canBePinned: true,
+                    context.registerWorkspaceModule({
+                        ...geminiAgentManifest.contributions.workspaceModules[0],
                         render: (props) => (_jsx(GeminiAgentView, { close: () => props.close(), formatLabel: context.host.i18n.format, service: service, input: (props.input ?? null), shellSidebarOpen: props.workspaceSidebarOpen, onShellSidebarToggle: props.setWorkspaceSidebarOpen, embedBrowserInShellSidebar: Boolean(props.setWorkspaceSidebarOpen) })),
-                        renderSidebar: () => (_jsx(GeminiAgentSidebar, { service: service, formatLabel: context.host.i18n.format })),
+                        renderExplorer: () => (_jsx(GeminiAgentSidebar, { service: service, formatLabel: context.host.i18n.format })),
                     });
                     context.registerActionRailItem({
                         id: GEMINI_AGENT_RAIL_ID,

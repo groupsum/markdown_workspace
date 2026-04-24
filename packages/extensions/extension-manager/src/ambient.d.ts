@@ -49,8 +49,15 @@ declare module 'lucide-react' {
   export const CheckCircle2: ComponentType<any>;
   export const ChevronsUpDown: ComponentType<any>;
   export const CircleSlash2: ComponentType<any>;
+  export const Download: ComponentType<any>;
   export const Power: ComponentType<any>;
   export const PowerOff: ComponentType<any>;
+  export const Sidebar: ComponentType<any>;
+  export const SidebarOpen: ComponentType<any>;
+  export const SplitSquareHorizontal: ComponentType<any>;
+  export const Square: ComponentType<any>;
+  export const Upload: ComponentType<any>;
+  export const X: ComponentType<any>;
   export const AppWindow: ComponentType<any>;
   export const FileQuestion: ComponentType<any>;
   const icons: Record<string, ComponentType<any>>;

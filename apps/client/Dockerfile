@@ -13,6 +13,7 @@ ENV VITE_OIDC_CLIENT_ID=$VITE_OIDC_CLIENT_ID \
 COPY package.json package-lock.json tsconfig.base.json ./
 COPY packages ./packages
 COPY apps/client ./apps/client
+COPY tools ./tools
 
 RUN npm ci --install-strategy=nested
 RUN printf '#!/bin/sh\nnode /app/apps/client/node_modules/typescript/bin/tsc "$@"\n' > /usr/local/bin/tsc && chmod +x /usr/local/bin/tsc

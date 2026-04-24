@@ -115,6 +115,15 @@
   overflow-y: auto;
 }
 
+:root[data-theme] .workspace-sidebar.is-collapsed {
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  border-right-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 :root[data-theme] .workspace-panel-header,
 :root[data-theme] .panel-toolbar {
   min-width: 0;
@@ -400,6 +409,13 @@
     width: 100%;
     min-width: 0;
     max-width: 100%;
+  }
+
+  :root[data-theme] .workspace-sidebar.is-collapsed {
+    height: 0;
+    min-height: 0;
+    max-height: 0;
+    border-bottom-width: 0;
   }
 
   :root[data-theme] .workspace-sidebar:not(.is-collapsed) {

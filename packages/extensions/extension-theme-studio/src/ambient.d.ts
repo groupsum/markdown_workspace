@@ -54,7 +54,11 @@ declare module 'lucide-react' {
   export const RefreshCw: ComponentType<any>;
   export const RotateCcw: ComponentType<any>;
   export const Save: ComponentType<any>;
+  export const Sidebar: ComponentType<any>;
+  export const SidebarOpen: ComponentType<any>;
   export const Sparkles: ComponentType<any>;
+  export const SplitSquareHorizontal: ComponentType<any>;
+  export const Square: ComponentType<any>;
   export const SwatchBook: ComponentType<any>;
   export const X: ComponentType<any>;
   const icons: Record<string, ComponentType<any>>;

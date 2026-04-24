@@ -23,7 +23,8 @@ export const gitOpsManifest: ExtensionManifest = {
   kind: "bundled",
   icon: { kind: "lucide", name: "GitBranch" },
   enabledByDefault: true,
-  capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write", "notification.publish", "workspace.read"],
+  capabilities: ["view.register", "actionRail.register", "settings.read", "settings.write", "notification.publish", "workspace.read", "network.fetch"],
+  capabilityPresetIds: ["workspace.module.provider", "workspace.module.diagnostics"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -73,6 +74,7 @@ export const gitOpsManifest: ExtensionManifest = {
         defaultLayout: "split",
         settingsSectionId: GIT_OPS_SETTINGS_SECTION_ID,
         capabilityProfiles: ["workspace.module.base", "workspace.module.read", "workspace.module.provider", "workspace.module.diagnostics"],
+        capabilityPresetIds: ["workspace.module.provider", "workspace.module.diagnostics"],
         actions: [
           { commandId: GIT_OPS_COMMAND_TOGGLE_ID, role: "primary", order: 10 },
           { commandId: GIT_OPS_COMMAND_REFRESH_ID, role: "toolbar", order: 20 },

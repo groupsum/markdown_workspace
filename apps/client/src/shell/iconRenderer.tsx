@@ -16,9 +16,11 @@ import {
   Database,
   Download,
   Eye,
+  FileQuestion,
   FileDiff,
   FileDown,
   FilePlus,
+  FolderOpen,
   FileText,
   Folder,
   FolderPlus,
@@ -64,9 +66,11 @@ const lucideCatalog: Record<string, React.ComponentType<{ size?: number; classNa
   Database,
   Download,
   Eye,
+  FileQuestion,
   FileDiff,
   FileDown,
   FilePlus,
+  FolderOpen,
   FileText,
   Folder,
   FolderPlus,
@@ -99,11 +103,11 @@ const lucideCatalog: Record<string, React.ComponentType<{ size?: number; classNa
 export function renderExtensionIcon(icon: ExtensionIcon | undefined, size = 16): React.ReactNode {
   if (!icon) return null;
   if (icon.kind === 'lucide') {
-    const Component = lucideCatalog[icon.name] ?? Puzzle;
+    const Component = lucideCatalog[icon.name] ?? FileQuestion;
     return <Component size={size} />;
   }
   if (icon.kind === 'svg') {
     return <span aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon.svg }} />;
   }
-  return <Puzzle size={size} />;
+  return <FileQuestion size={size} />;
 }

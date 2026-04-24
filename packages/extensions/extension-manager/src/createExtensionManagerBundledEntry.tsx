@@ -33,14 +33,8 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
             },
           });
 
-          context.registerView(({
-            id: EXTENSION_MANAGER_VIEW_ID,
-            title: extensionManagerLabels.viewTitle,
-            description: extensionManagerLabels.viewDescription,
-            icon: { kind: "lucide", name: "Puzzle" },
-            location: "main",
-            allowMultiple: false,
-            canBePinned: true,
+          context.registerWorkspaceModule({
+            ...extensionManagerManifest.contributions.workspaceModules![0],
             render: (props) => (
               <ExtensionManagerView
                 runtime={options.runtime}
@@ -55,13 +49,13 @@ export function createExtensionManagerBundledEntry(options: ExtensionManagerEntr
                 embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-            renderSidebar: () => (
+            renderExplorer: () => (
               <ExtensionManagerSidebar
                 runtime={options.runtime}
                 formatLabel={context.host.i18n.format}
               />
             ),
-          } as unknown) as never);
+          });
 
           context.registerActionRailItem({
             id: EXTENSION_MANAGER_RAIL_ID,

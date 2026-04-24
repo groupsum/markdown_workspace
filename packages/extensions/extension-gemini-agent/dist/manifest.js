@@ -1,4 +1,4 @@
-import { GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID, GEMINI_AGENT_COMMAND_OPEN_ID, GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID, GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID, GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID, GEMINI_AGENT_EXTENSION_ID, GEMINI_AGENT_RAIL_ID, GEMINI_AGENT_SETTINGS_SECTION_CONTEXT, GEMINI_AGENT_SETTINGS_SECTION_GENERAL, GEMINI_AGENT_SETTINGS_SECTION_WRITEBACK, GEMINI_AGENT_VIEW_ID, } from "./constants.js";
+import { GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID, GEMINI_AGENT_EXPLORER_VIEW_ID, GEMINI_AGENT_COMMAND_OPEN_ID, GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID, GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID, GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID, GEMINI_AGENT_EXTENSION_ID, GEMINI_AGENT_MODULE_ID, GEMINI_AGENT_RAIL_ID, GEMINI_AGENT_SETTINGS_SECTION_CONTEXT, GEMINI_AGENT_SETTINGS_SECTION_GENERAL, GEMINI_AGENT_SETTINGS_SECTION_WRITEBACK, GEMINI_AGENT_VIEW_ID, } from "./constants.js";
 import { geminiAgentLabels } from "./i18n.js";
 import { GEMINI_AGENT_EXTENSION_VERSION } from "./version.js";
 export const geminiAgentManifest = {
@@ -15,6 +15,7 @@ export const geminiAgentManifest = {
     keywords: ["gemini", "assistant", "markdown", "rewrite", "summary"],
     icon: { kind: "lucide", name: "Bot" },
     enabledByDefault: true,
+    capabilityPresetIds: ["workspace.module.writer", "workspace.module.provider", "workspace.module.diagnostics"],
     capabilities: [
         "workspace.read",
         "editor.read",
@@ -89,8 +90,37 @@ export const geminiAgentManifest = {
                 allowMultiple: false,
                 canBePinned: true,
             },
+            {
+                id: GEMINI_AGENT_EXPLORER_VIEW_ID,
+                title: { defaultMessage: "Agent Context Browser" },
+                description: { defaultMessage: "Active project, active file, selection, provider, and writeback context browser." },
+                icon: { kind: "lucide", name: "Bot" },
+                location: "sidebar",
+                allowMultiple: false,
+                canBePinned: true,
+            },
         ],
         components: [],
+        workspaceModules: [
+            {
+                id: GEMINI_AGENT_MODULE_ID,
+                title: geminiAgentLabels.viewTitle,
+                description: geminiAgentLabels.viewDescription,
+                icon: { kind: "lucide", name: "Bot" },
+                primaryViewId: GEMINI_AGENT_VIEW_ID,
+                explorerViewId: GEMINI_AGENT_EXPLORER_VIEW_ID,
+                supportedLayouts: ["single", "left", "right", "split"],
+                defaultLayout: "split",
+                settingsSectionId: `${GEMINI_AGENT_EXTENSION_ID}.settings`,
+                capabilityProfiles: ["workspace.module.base", "workspace.module.read", "workspace.module.write", "workspace.module.provider", "workspace.module.diagnostics"],
+                capabilityPresetIds: ["workspace.module.writer", "workspace.module.provider", "workspace.module.diagnostics"],
+                actions: [
+                    { commandId: GEMINI_AGENT_COMMAND_OPEN_ID, role: "primary", order: 10 },
+                    { commandId: GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID, role: "toolbar", order: 20 },
+                    { commandId: GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID, role: "toolbar", order: 30 },
+                ],
+            },
+        ],
         actionRail: [
             {
                 id: GEMINI_AGENT_RAIL_ID,
@@ -250,5 +280,5 @@ export const geminiAgentManifest = {
         level: "official",
     },
 };
-export { GEMINI_AGENT_EXTENSION_ID, GEMINI_AGENT_VIEW_ID, GEMINI_AGENT_RAIL_ID, GEMINI_AGENT_COMMAND_OPEN_ID, GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID, GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID, GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID, GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID, };
+export { GEMINI_AGENT_EXTENSION_ID, GEMINI_AGENT_EXPLORER_VIEW_ID, GEMINI_AGENT_MODULE_ID, GEMINI_AGENT_VIEW_ID, GEMINI_AGENT_RAIL_ID, GEMINI_AGENT_COMMAND_OPEN_ID, GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID, GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID, GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID, GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID, };
 //# sourceMappingURL=manifest.js.map

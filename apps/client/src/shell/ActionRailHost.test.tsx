@@ -38,7 +38,7 @@ describe('ActionRailHost', () => {
     cleanup();
   });
 
-  it('marks the explorer rail inactive while a main workspace view is open', () => {
+  it('marks the explorer rail active while the workspace panel is open', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {
@@ -89,7 +89,7 @@ describe('ActionRailHost', () => {
     render(<ActionRailHost />);
 
     const [explorerButton, geminiButton] = screen.getAllByRole('button');
-    expect(explorerButton).toHaveAttribute('aria-pressed', 'false');
+    expect(explorerButton).toHaveAttribute('aria-pressed', 'true');
     expect(geminiButton).toHaveAttribute('aria-pressed', 'true');
   });
 
@@ -143,7 +143,7 @@ describe('ActionRailHost', () => {
     });
   });
 
-  it('marks the explorer rail active only when no main view is active and the sidebar is open', () => {
+  it('marks the explorer rail active when the workspace panel is open', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {

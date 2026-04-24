@@ -42,14 +42,8 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
             },
           });
 
-          context.registerView(({
-            id: THEME_STUDIO_VIEW_ID,
-            title: themeStudioLabels.viewTitle,
-            description: themeStudioLabels.viewDescription,
-            icon: { kind: "lucide", name: "Palette" },
-            location: "main",
-            allowMultiple: false,
-            canBePinned: true,
+          context.registerWorkspaceModule({
+            ...themeStudioManifest.contributions.workspaceModules![0],
             render: (props) => (
               <ThemeStudioView
                 service={service}
@@ -60,13 +54,13 @@ export function createThemeStudioBundledEntry(): BundledExtensionCatalogEntry {
                 embedBrowserInShellSidebar={Boolean((props as { setWorkspaceSidebarOpen?: (open: boolean) => void }).setWorkspaceSidebarOpen)}
               />
             ),
-            renderSidebar: () => (
+            renderExplorer: () => (
               <ThemeStudioSidebar
                 service={service}
                 formatLabel={context.host.i18n.format}
               />
             ),
-          } as unknown) as never);
+          });
 
           context.registerActionRailItem({
             id: THEME_STUDIO_RAIL_ID,

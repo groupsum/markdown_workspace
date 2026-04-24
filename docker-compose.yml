@@ -25,6 +25,8 @@ services:
     restart: unless-stopped
     environment:
       <<: *common-env
+    ports:
+      - "${CLIENT_PORT:-4173}:80"
     networks:
       - dockerwp
   lander:

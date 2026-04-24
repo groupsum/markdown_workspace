@@ -2,7 +2,9 @@ import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   THEME_STUDIO_COMMAND_OPEN_ID,
   THEME_STUDIO_DEFAULT_SETTINGS,
+  THEME_STUDIO_EXPLORER_VIEW_ID,
   THEME_STUDIO_EXTENSION_ID,
+  THEME_STUDIO_MODULE_ID,
   THEME_STUDIO_RAIL_ID,
   THEME_STUDIO_SETTINGS_SECTION_EXPORT,
   THEME_STUDIO_SETTINGS_SECTION_PREVIEW,
@@ -26,6 +28,7 @@ export const themeStudioManifest: ExtensionManifest = {
   kind: "bundled",
   icon: { kind: "lucide", name: "Palette" },
   enabledByDefault: true,
+  capabilityPresetIds: ["workspace.module.standard"],
   capabilities: [
     "theme.read",
     "theme.write",
@@ -76,8 +79,35 @@ export const themeStudioManifest: ExtensionManifest = {
         allowMultiple: false,
         canBePinned: true,
       },
+      {
+        id: THEME_STUDIO_EXPLORER_VIEW_ID,
+        title: { defaultMessage: "Theme Browser" },
+        description: { defaultMessage: "Theme tokens, bridges, classes, metadata, and exports browser." },
+        icon: { kind: "lucide", name: "Palette" },
+        location: "sidebar",
+        allowMultiple: false,
+        canBePinned: true,
+      },
     ],
     components: [],
+    workspaceModules: [
+      {
+        id: THEME_STUDIO_MODULE_ID,
+        title: themeStudioLabels.viewTitle,
+        description: themeStudioLabels.viewDescription,
+        icon: { kind: "lucide", name: "Palette" },
+        primaryViewId: THEME_STUDIO_VIEW_ID,
+        explorerViewId: THEME_STUDIO_EXPLORER_VIEW_ID,
+        supportedLayouts: ["single", "left", "right", "split"],
+        defaultLayout: "split",
+        settingsSectionId: `${THEME_STUDIO_EXTENSION_ID}.settings`,
+        capabilityProfiles: ["workspace.module.base"],
+        capabilityPresetIds: ["workspace.module.standard"],
+        actions: [
+          { commandId: THEME_STUDIO_COMMAND_OPEN_ID, role: "primary", order: 10 },
+        ],
+      },
+    ],
     actionRail: [
       {
         id: THEME_STUDIO_RAIL_ID,
@@ -169,7 +199,9 @@ export const themeStudioManifest: ExtensionManifest = {
 
 export {
   THEME_STUDIO_COMMAND_OPEN_ID,
+  THEME_STUDIO_EXPLORER_VIEW_ID,
   THEME_STUDIO_EXTENSION_ID,
+  THEME_STUDIO_MODULE_ID,
   THEME_STUDIO_RAIL_ID,
   THEME_STUDIO_VIEW_ID,
 } from "./constants.js";

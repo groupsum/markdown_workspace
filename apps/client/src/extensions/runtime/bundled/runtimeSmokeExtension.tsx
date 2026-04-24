@@ -17,7 +17,7 @@ const manifest: ExtensionManifest = {
   displayName: { defaultMessage: 'Runtime Smoke Extension' },
   description: { defaultMessage: 'Bundled runtime smoke extension proving runtime activation, view registration, action rail wiring, and extension settings persistence.' },
   kind: 'bundled',
-  icon: { kind: 'lucide', name: 'Puzzle' },
+  icon: { kind: 'lucide', name: 'Plug' },
   enabledByDefault: true,
   capabilities: ['view.register', 'actionRail.register', 'notification.publish', 'settings.read', 'settings.write'],
   compatibility: {
@@ -37,7 +37,7 @@ const manifest: ExtensionManifest = {
         id: commandId,
         title: { defaultMessage: 'Open Runtime Smoke View' },
         description: { defaultMessage: 'Open the bundled runtime smoke test modal.' },
-        icon: { kind: 'lucide', name: 'Puzzle' },
+        icon: { kind: 'lucide', name: 'Plug' },
         keywords: ['runtime', 'smoke', 'extension'],
       },
     ],
@@ -46,7 +46,7 @@ const manifest: ExtensionManifest = {
         id: viewId,
         title: { defaultMessage: 'Runtime Smoke' },
         description: { defaultMessage: 'Bundled runtime verification modal.' },
-        icon: { kind: 'lucide', name: 'Puzzle' },
+        icon: { kind: 'lucide', name: 'Plug' },
         location: 'modal',
         allowMultiple: false,
         canBePinned: false,
@@ -57,7 +57,7 @@ const manifest: ExtensionManifest = {
       {
         id: railId,
         title: { defaultMessage: 'Runtime Smoke' },
-        icon: { kind: 'lucide', name: 'Puzzle' },
+        icon: { kind: 'lucide', name: 'Plug' },
         group: 'extensions',
         order: 10,
         target: {
@@ -151,7 +151,7 @@ export const runtimeSmokeExtensionEntry: BundledExtensionCatalogEntry = {
           id: commandId,
           title: { defaultMessage: 'Open Runtime Smoke View' },
           description: { defaultMessage: 'Open the bundled runtime smoke test modal.' },
-          icon: { kind: 'lucide', name: 'Puzzle' },
+          icon: { kind: 'lucide', name: 'Plug' },
           keywords: ['runtime', 'smoke', 'extension'],
           execute: async () => {
             await context.host.views.open(viewId);
@@ -162,7 +162,7 @@ export const runtimeSmokeExtensionEntry: BundledExtensionCatalogEntry = {
           id: viewId,
           title: { defaultMessage: 'Runtime Smoke' },
           description: { defaultMessage: 'Bundled runtime verification modal.' },
-          icon: { kind: 'lucide', name: 'Puzzle' },
+          icon: { kind: 'lucide', name: 'Plug' },
           location: 'modal',
           allowMultiple: false,
           canBePinned: false,
@@ -172,7 +172,7 @@ export const runtimeSmokeExtensionEntry: BundledExtensionCatalogEntry = {
         context.registerActionRailItem({
           id: railId,
           title: { defaultMessage: 'Runtime Smoke' },
-          icon: { kind: 'lucide', name: 'Puzzle' },
+          icon: { kind: 'lucide', name: 'Plug' },
           group: 'extensions',
           order: 10,
           target: {

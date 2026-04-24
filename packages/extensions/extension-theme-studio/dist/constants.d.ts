@@ -1,6 +1,8 @@
 import type { ThemeStudioResolvedSettings } from "./types.js";
 export declare const THEME_STUDIO_EXTENSION_ID: "core.theme-studio";
 export declare const THEME_STUDIO_VIEW_ID: "core.theme-studio.view";
+export declare const THEME_STUDIO_EXPLORER_VIEW_ID: "core.theme-studio.explorer";
+export declare const THEME_STUDIO_MODULE_ID: "core.theme-studio.module";
 export declare const THEME_STUDIO_RAIL_ID: "core.theme-studio.rail";
 export declare const THEME_STUDIO_COMMAND_OPEN_ID: "core.theme-studio.open";
 export declare const THEME_STUDIO_SERVICE_TOKEN: "core.theme-studio.service";

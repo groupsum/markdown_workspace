@@ -108,6 +108,7 @@ export const AppShell: React.FC = () => {
           actions.setSelectedExplorerId(fileId);
         }}
         onTabClose={actions.closeTab}
+        onTabReorder={actions.reorderTab}
         onZoom={actions.adjustZoom}
         onResetZoom={actions.resetZoom}
         onOpenSettings={() => { void services.views.open('core.settings'); }}

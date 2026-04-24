@@ -19,7 +19,12 @@
   letter-spacing: 0.06em;
   color: var(--fg-secondary);
   cursor: pointer;
+  cursor: grab;
   flex-shrink: 0;
+}
+
+.tab-item:active {
+  cursor: grabbing;
 }
 
 .tab-item.active {
@@ -30,6 +35,15 @@
 
 .tab-item.expanded {
   background: var(--bg-panel);
+}
+
+.tab-item.is-dragging {
+  opacity: 0.55;
+}
+
+.tab-item.is-drop-target {
+  outline: 1px dashed color-mix(in srgb, var(--accent) 70%, var(--border-color));
+  outline-offset: -3px;
 }
 
 .tab-label {

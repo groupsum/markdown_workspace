@@ -9,7 +9,7 @@ import { createThemeStudioBundledEntry } from '@mdwrk/extension-theme-studio';
 import { useClientExtensionHost, useClientRuntimeServices, useClientRuntimeSnapshot } from '../../app/runtime/ClientRuntimeContext';
 import { createLanguagePackStudioController } from '../../features/i18n/languagePackStudioController';
 import { loadWorkspaceLanguageTokenCatalog } from '../../features/i18n/languageTokenCatalog';
-import { GitPane } from '../../../components/Chassis/Git/GitPane';
+import { GitOperationsExplorer, GitPane } from '../../../components/Chassis/Git/GitPane';
 import { GitSettingsPanel } from '../../features/settings/GitSettingsPanel';
 import { WorkspacePreferencesPanel } from '../../features/preferences/WorkspacePreferencesPanel';
 import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsPanel';
@@ -46,14 +46,6 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     createWorkspaceFilesBundledEntry({
       actions: {
         toggleExplorer: async () => {
-          const viewSnapshot = services.views.getSnapshot();
-          if (viewSnapshot.activeMainViewId) {
-            await services.views.close(viewSnapshot.activeMainViewId);
-            if (!snapshotRef.current.app.state.sidebarOpen) {
-              snapshotRef.current.app.actions.setSidebarOpen(true);
-            }
-            return;
-          }
           snapshotRef.current.app.actions.toggleSidebar();
         },
         newFile: () => snapshotRef.current.app.actions.promptNewFile(),
@@ -108,15 +100,15 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
           theme={snapshotRef.current.app.state.theme}
           unsaved={snapshotRef.current.app.state.unsaved}
           onClose={() => { void props.close(); }}
+          shellSidebarOpen={props.workspaceSidebarOpen}
+          onShellSidebarToggle={props.setWorkspaceSidebarOpen}
         />
       ),
       renderExplorer: () => (
-        <div className="workspace-panel-content">
-          <div className="settings-card settings-card-stack">
-            <span className="settings-session-label">SOURCE_CONTROL</span>
-            <span className="settings-session-value">{snapshotRef.current.app.actions.getActiveGitConfig().branch || 'main'}</span>
-          </div>
-        </div>
+        <GitOperationsExplorer
+          activeFile={snapshotRef.current.app.state.activeFile}
+          unsaved={snapshotRef.current.app.state.unsaved}
+        />
       ),
       renderSettings: () => <GitSettingsPanel />,
     }),
@@ -145,7 +137,7 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       description: { defaultMessage: 'Bundled extension catalog, activation state, and runtime diagnostics.' },
       order: 10,
       panel: 'extensions',
-      icon: { kind: 'lucide', name: 'Puzzle' },
+      icon: { kind: 'lucide', name: 'Plug' },
       render: () => <ExtensionRuntimeDiagnosticsPanel />,
     });
     return () => disposable.dispose();

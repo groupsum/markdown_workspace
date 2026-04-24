@@ -15,7 +15,7 @@ export const extensionCatalogHello = {
         context.registerActionRailItem({
             id: "external.catalog-hello.rail",
             title: { defaultMessage: "Catalog Hello" },
-            icon: { kind: "lucide", name: "Puzzle" },
+            icon: { kind: "lucide", name: "Plug" },
             target: { kind: "view", viewId: "external.catalog-hello.view" },
             group: "extensions",
             order: 160,

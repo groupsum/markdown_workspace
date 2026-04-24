@@ -1,4 +1,4 @@
-import { THEME_STUDIO_COMMAND_OPEN_ID, THEME_STUDIO_DEFAULT_SETTINGS, THEME_STUDIO_EXTENSION_ID, THEME_STUDIO_RAIL_ID, THEME_STUDIO_SETTINGS_SECTION_EXPORT, THEME_STUDIO_SETTINGS_SECTION_PREVIEW, THEME_STUDIO_SETTING_AUTO_PREVIEW, THEME_STUDIO_SETTING_COMPACT_CSS, THEME_STUDIO_SETTING_DEFAULT_AUTHOR, THEME_STUDIO_SETTING_DEFAULT_EXPORT_TARGET, THEME_STUDIO_SETTING_PACKAGE_NAME_PREFIX, THEME_STUDIO_VIEW_ID, } from "./constants.js";
+import { THEME_STUDIO_COMMAND_OPEN_ID, THEME_STUDIO_DEFAULT_SETTINGS, THEME_STUDIO_EXPLORER_VIEW_ID, THEME_STUDIO_EXTENSION_ID, THEME_STUDIO_MODULE_ID, THEME_STUDIO_RAIL_ID, THEME_STUDIO_SETTINGS_SECTION_EXPORT, THEME_STUDIO_SETTINGS_SECTION_PREVIEW, THEME_STUDIO_SETTING_AUTO_PREVIEW, THEME_STUDIO_SETTING_COMPACT_CSS, THEME_STUDIO_SETTING_DEFAULT_AUTHOR, THEME_STUDIO_SETTING_DEFAULT_EXPORT_TARGET, THEME_STUDIO_SETTING_PACKAGE_NAME_PREFIX, THEME_STUDIO_VIEW_ID, } from "./constants.js";
 import { themeStudioLabels } from "./i18n.js";
 import { THEME_STUDIO_VERSION } from "./version.js";
 export const themeStudioManifest = {
@@ -11,6 +11,7 @@ export const themeStudioManifest = {
     kind: "bundled",
     icon: { kind: "lucide", name: "Palette" },
     enabledByDefault: true,
+    capabilityPresetIds: ["workspace.module.standard"],
     capabilities: [
         "theme.read",
         "theme.write",
@@ -61,8 +62,35 @@ export const themeStudioManifest = {
                 allowMultiple: false,
                 canBePinned: true,
             },
+            {
+                id: THEME_STUDIO_EXPLORER_VIEW_ID,
+                title: { defaultMessage: "Theme Browser" },
+                description: { defaultMessage: "Theme tokens, bridges, classes, metadata, and exports browser." },
+                icon: { kind: "lucide", name: "Palette" },
+                location: "sidebar",
+                allowMultiple: false,
+                canBePinned: true,
+            },
         ],
         components: [],
+        workspaceModules: [
+            {
+                id: THEME_STUDIO_MODULE_ID,
+                title: themeStudioLabels.viewTitle,
+                description: themeStudioLabels.viewDescription,
+                icon: { kind: "lucide", name: "Palette" },
+                primaryViewId: THEME_STUDIO_VIEW_ID,
+                explorerViewId: THEME_STUDIO_EXPLORER_VIEW_ID,
+                supportedLayouts: ["single", "left", "right", "split"],
+                defaultLayout: "split",
+                settingsSectionId: `${THEME_STUDIO_EXTENSION_ID}.settings`,
+                capabilityProfiles: ["workspace.module.base"],
+                capabilityPresetIds: ["workspace.module.standard"],
+                actions: [
+                    { commandId: THEME_STUDIO_COMMAND_OPEN_ID, role: "primary", order: 10 },
+                ],
+            },
+        ],
         actionRail: [
             {
                 id: THEME_STUDIO_RAIL_ID,
@@ -151,5 +179,5 @@ export const themeStudioManifest = {
         ],
     },
 };
-export { THEME_STUDIO_COMMAND_OPEN_ID, THEME_STUDIO_EXTENSION_ID, THEME_STUDIO_RAIL_ID, THEME_STUDIO_VIEW_ID, } from "./constants.js";
+export { THEME_STUDIO_COMMAND_OPEN_ID, THEME_STUDIO_EXPLORER_VIEW_ID, THEME_STUDIO_EXTENSION_ID, THEME_STUDIO_MODULE_ID, THEME_STUDIO_RAIL_ID, THEME_STUDIO_VIEW_ID, } from "./constants.js";
 //# sourceMappingURL=manifest.js.map
