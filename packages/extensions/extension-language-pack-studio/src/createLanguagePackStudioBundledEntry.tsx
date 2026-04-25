@@ -48,6 +48,7 @@ export function createLanguagePackStudioBundledEntry(options: LanguagePackStudio
             renderExplorer: () => (
               <LanguagePackStudioSidebar
                 controller={options.controller}
+                formatLabel={context.host.i18n.format}
               />
             ),
           });

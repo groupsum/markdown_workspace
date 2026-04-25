@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 interface InputModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface InputModalProps {
 }
 
 export const InputModal: React.FC<InputModalProps> = ({ isOpen, onClose, onSubmit, title, placeholder, defaultValue = '' }) => {
+  const { t } = useClientI18n();
   const [value, setValue] = useState(defaultValue);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -51,8 +53,8 @@ export const InputModal: React.FC<InputModalProps> = ({ isOpen, onClose, onSubmi
             />
         </div>
         <div className="modal-footer">
-            <button type="button" onClick={onClose} className="modal-btn">CANCEL</button>
-            <button type="submit" className="modal-btn modal-btn-primary">CONFIRM</button>
+            <button type="button" onClick={onClose} className="modal-btn">{t('core.common.cancel', 'CANCEL')}</button>
+            <button type="submit" className="modal-btn modal-btn-primary">{t('core.common.confirm', 'CONFIRM')}</button>
         </div>
       </form>
     </div>

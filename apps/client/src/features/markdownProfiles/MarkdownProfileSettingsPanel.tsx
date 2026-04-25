@@ -41,8 +41,8 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
             <div className="flex flex-col gap-2">
               <span className="font-bold text-[11px] uppercase">{t('core.settings.markdown-profiles.default-profile', 'DEFAULT_MARKDOWN_PROFILE')}</span>
               <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">
-                The repository default remains <strong>CommonMark 0.31.2 + GFM 0.29-gfm</strong>.
-                Optional profiles stay off unless explicitly enabled here.
+                {t('core.settings.markdown-profiles.default-profile.description.prefix', 'The repository default remains')} <strong>{t('core.settings.markdown-profiles.default-profile.baseline', 'CommonMark 0.31.2 + GFM 0.29-gfm')}</strong>.
+                {' '}{t('core.settings.markdown-profiles.default-profile.description.suffix', 'Optional profiles stay off unless explicitly enabled here.')}
               </p>
             </div>
             <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{config.baseProfile.toUpperCase()}</span>
@@ -66,7 +66,7 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
               <span className="font-bold text-[11px] uppercase">{t('core.settings.markdown-profiles.certified', 'CERTIFIED_OPTIONAL_PROFILES')}</span>
               <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.markdown-profiles.certified.description', 'These profiles are currently inside the Phase 4 optional-profile certification boundary.')}</p>
             </div>
-            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{inScopeProfiles.length}_IN_SCOPE</span>
+            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{inScopeProfiles.length}_{t('core.settings.markdown-profiles.in-scope', 'IN_SCOPE')}</span>
           </div>
           <div className="flex flex-col gap-3 mt-1">
             {inScopeProfiles.map((definition) => {
@@ -98,7 +98,7 @@ export const MarkdownProfileSettingsPanel: React.FC = () => {
               <span className="font-bold text-[11px] uppercase">{t('core.settings.markdown-profiles.experimental', 'EXPERIMENTAL_OR_OUT_OF_BOUNDARY')}</span>
               <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.markdown-profiles.experimental.description', 'These profiles are named and toggleable, but they are not currently counted toward the certified optional-profile closure.')}</p>
             </div>
-            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)]">{experimentalProfiles.length}_EXPERIMENTAL</span>
+            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)]">{experimentalProfiles.length}_{t('core.settings.markdown-profiles.experimental.count-label', 'EXPERIMENTAL')}</span>
           </div>
           <div className="flex flex-col gap-3 mt-1">
             {experimentalProfiles.map((definition) => {

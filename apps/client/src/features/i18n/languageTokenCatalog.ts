@@ -1,6 +1,7 @@
 import type { I18nLabel } from '@mdwrk/extension-manifest';
 import { CORE_SHELL_LOCALE_LOADER_DEFINITION } from '@mdwrk/i18n';
 import { extensionManagerLabels } from '@mdwrk/extension-manager';
+import { geminiAgentLabels } from '@mdwrk/extension-gemini-agent';
 import { languagePackStudioLabels } from '@mdwrk/extension-language-pack-studio';
 import { themeStudioLabels } from '@mdwrk/extension-theme-studio';
 
@@ -29,6 +30,7 @@ export async function loadWorkspaceLanguageTokenCatalog(): Promise<readonly Lang
       source: 'core',
     })),
     ...collectLabels('extension-manager', extensionManagerLabels),
+    ...collectLabels('gemini-agent', geminiAgentLabels),
     ...collectLabels('language-pack-studio', languagePackStudioLabels),
     ...collectLabels('theme-studio', themeStudioLabels),
   ];

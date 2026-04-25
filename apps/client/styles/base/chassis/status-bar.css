@@ -5,7 +5,19 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.status-left {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+.status-right {
+  flex: 0 1 auto;
+  justify-content: flex-end;
 }
 
 .status-item {
@@ -13,6 +25,7 @@
   align-items: center;
   gap: 4px;
   white-space: nowrap;
+  min-width: 0;
   flex: 0 0 auto;
 }
 
@@ -39,8 +52,17 @@
 }
 
 .status-runtime {
-  overflow: visible;
-  max-width: none;
+  flex: 1 1 auto;
+  overflow: hidden;
+  max-width: min(44vw, 540px);
+}
+
+.status-runtime .status-text-bold {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .status-item--release,
@@ -58,6 +80,22 @@
 
 .status-text--warn {
   color: var(--status-warn);
+}
+
+:root[data-theme] .status-text--on {
+  color: var(--status-ok);
+}
+
+:root[data-theme] .status-text--warn {
+  color: var(--status-warn);
+}
+
+:root[data-theme] .status-online {
+  color: var(--status-ok);
+}
+
+:root[data-theme] .status-offline {
+  color: var(--status-error);
 }
 
 .status-online {
@@ -119,6 +157,10 @@
   .status-item--release {
     display: none;
   }
+
+  .status-runtime {
+    max-width: min(42vw, 220px);
+  }
 }
 
 @media (max-width: 520px) {
@@ -145,5 +187,9 @@
 @media (max-width: 360px) {
   .status-item--state {
     display: none;
+  }
+
+  .status-runtime {
+    max-width: 48vw;
   }
 }

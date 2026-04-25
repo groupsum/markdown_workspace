@@ -124,8 +124,8 @@ describe('extension workspace surfaces', () => {
         author: 'MdWrk',
         description: 'Theme test',
       },
-      tokenDefinitions: [{ name: '--bg-app', category: 'surface', description: 'BG', defaultValue: '#000' }],
-      currentTokens: { '--bg-app': '#111' },
+      tokenDefinitions: [{ name: '--bg-app', category: 'color', description: 'App background color', defaultValue: '#000000' }],
+      currentTokens: { '--bg-app': '#111111' },
       draftTokens: {},
       relationships: [{ className: '.workspace', bridgeTarget: 'host', selector: '.workspace', scope: 'host' }],
       lastExports: null,
@@ -142,6 +142,7 @@ describe('extension workspace surfaces', () => {
       importPackageArtifact: vi.fn(async () => {}),
       updateMetadata: vi.fn(async () => {}),
       setDraftToken: vi.fn(async () => {}),
+      clearDraftToken: vi.fn(async () => {}),
     } as any;
 
     const view = render(
@@ -155,6 +156,13 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByTestId('theme-studio-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter theme browser')).toBeInTheDocument();
+    expect(screen.getByLabelText('Color picker --bg-app')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText('Color picker --bg-app'), { target: { value: '#334455' } });
+    await waitFor(() => expect(service.setDraftToken).toHaveBeenCalledWith('--bg-app', '#334455'));
+
+    fireEvent.change(screen.getByLabelText('Token value --bg-app'), { target: { value: '#223344' } });
+    await waitFor(() => expect(service.setDraftToken).toHaveBeenCalledWith('--bg-app', '#223344'));
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.queryByLabelText('Resize Theme Studio panes')).not.toBeInTheDocument());
@@ -178,6 +186,7 @@ describe('extension workspace surfaces', () => {
       getSnapshot: () => languageSnapshot,
       importArtifact: vi.fn(async () => {}),
       createArtifact: vi.fn(async () => ({ locale: 'it', label: 'Italiano', enabled: true, messages: {}, source: 'installed' })),
+      updateArtifact: vi.fn(async () => ({ locale: 'de', label: 'Deutsch', enabled: true, messages: { 'core.views.settings.title': 'Systemeinstellungen' }, source: 'installed' })),
       activate: vi.fn(async () => {}),
       remove: vi.fn(async () => {}),
       setEnabled: vi.fn(async () => {}),
@@ -196,6 +205,14 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByTestId('language-pack-manager-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter language browser')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Deutsch'));
+    fireEvent.change(screen.getByLabelText('Token value core.views.settings.title'), { target: { value: 'Systemeinstellungen' } });
+    fireEvent.click(screen.getByText('SAVE_PACK'));
+    await waitFor(() => expect(controller.updateArtifact).toHaveBeenCalledWith('de', expect.objectContaining({
+      label: 'Deutsch',
+      messages: { 'core.views.settings.title': 'Systemeinstellungen' },
+    })));
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
     await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());

@@ -1,8 +1,10 @@
 import type { ExtensionLocaleCatalog } from "@mdwrk/extension-host";
+import { extensionManagerLabels } from "../i18n.js";
 
 export const extensionManagerEnCatalog: ExtensionLocaleCatalog = {
   locale: "en",
   messages: {
+    ...Object.fromEntries(Object.values(extensionManagerLabels).map((label) => [label.key!, label.defaultMessage])),
     "manifest.displayName": "Extension Manager",
     "manifest.description": "Bundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions.",
     "commands.open.title": "Open Extension Manager",
@@ -47,6 +49,17 @@ export const extensionManagerEnCatalog: ExtensionLocaleCatalog = {
     "view.card.health.lastError": "Last error",
     "settings.form.state.enabled": "Enabled",
     "settings.form.state.disabled": "Disabled",
+    "settings.shortcut.kicker": "EXTENSION_MANAGER",
+    "settings.shortcut.title": "Extension Manager",
+    "settings.shortcut.description": "Open the pane workspace to inspect runtime inventory, compatibility, installed catalog entries, and diagnostics.",
+    "settings.stats.extensions": "EXTENSIONS",
+    "settings.stats.active": "ACTIVE",
+    "settings.stats.installed": "INSTALLED",
+    "settings.stats.catalog": "CATALOG",
+    "settings.chips.indexeddb": "INDEXEDDB",
+    "settings.chips.paneOnly": "PANE_ONLY",
+    "settings.chips.englishFallback": "EN_FALLBACK",
+    "settings.actions.openManager": "OPEN_MANAGER",
     "diagnostics.ready": "Extension Manager activated successfully."
   }
 };

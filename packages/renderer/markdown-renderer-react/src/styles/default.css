@@ -4,6 +4,12 @@
   color: var(--mw-fg-primary, var(--fg-primary, inherit));
   font-family: var(--mw-font-ui, var(--font-ui, inherit));
   line-height: var(--mw-line-height, var(--markdown-line-height, 1.6));
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-break: anywhere;
 }
 
 .markdown-body h1,
@@ -19,10 +25,49 @@
   color: var(--mw-code-fg, var(--fg-primary, inherit));
   background: var(--mw-code-bg, rgba(255, 255, 255, 0.04));
   border-color: var(--mw-code-border, rgba(255, 255, 255, 0.12));
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .markdown-body .md-code-block,
 .markdown-body .md-code-surface {
   background: var(--mw-code-bg, rgba(255, 255, 255, 0.04));
   border-color: var(--mw-code-border, rgba(255, 255, 255, 0.12));
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.markdown-body pre,
+.markdown-body pre code,
+.markdown-body .md-code-surface pre,
+.markdown-body .md-code-surface pre > code,
+.markdown-body .md-code-surface > div {
+  max-width: 100%;
+  overflow-x: hidden !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.markdown-body table,
+.markdown-body .md-table {
+  max-width: 100%;
+  width: 100%;
+  table-layout: fixed;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.markdown-body th,
+.markdown-body td,
+.markdown-body .md-table-header,
+.markdown-body .md-table-cell {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }

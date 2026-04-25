@@ -28,7 +28,7 @@ function downloadJson(filename: string, value: unknown): void {
 
 export const LanguagePackManagerPanel: React.FC = () => {
   const services = useClientRuntimeServices();
-  const { locale, setLocale } = useClientI18n();
+  const { locale, setLocale, t } = useClientI18n();
   const packs = useStoredLanguagePacks();
   const importRef = React.useRef<HTMLInputElement>(null);
   const [error, setError] = React.useState<string | null>(null);
@@ -63,7 +63,7 @@ export const LanguagePackManagerPanel: React.FC = () => {
       const text = await file.text();
       const parsed = normalizeLanguagePackArtifact(JSON.parse(text));
       if (!parsed) {
-        throw new Error('Invalid language pack artifact.');
+        throw new Error(t('core.settings.language-packs.import.invalid', 'Invalid language pack artifact.'));
       }
       await upsertStoredLanguagePack(parsed);
       if (parsed.enabled) {
@@ -74,7 +74,7 @@ export const LanguagePackManagerPanel: React.FC = () => {
       }
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : 'Failed to import language pack.');
+      setError(nextError instanceof Error ? nextError.message : t('core.settings.language-packs.import.failed', 'Failed to import language pack.'));
     } finally {
       event.target.value = '';
     }
@@ -86,20 +86,20 @@ export const LanguagePackManagerPanel: React.FC = () => {
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
-              <span className="font-bold text-[11px] uppercase">LANGUAGE_PACKS</span>
+              <span className="font-bold text-[11px] uppercase">{t('core.settings.language-packs.title', 'LANGUAGE_PACKS')}</span>
               <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
-                Compact language-pack management from settings. Open the studio pane for token auditing and pack authoring.
+                {t('core.settings.language-packs.description', 'Compact language-pack management from settings. Open the studio pane for token auditing and pack authoring.')}
               </p>
             </div>
             <div className="settings-action-row">
               <button type="button" className="modal-btn" onClick={() => importRef.current?.click()}>
-                <Upload size={14} /> IMPORT_PACK
+                <Upload size={14} /> {t('core.settings.language-packs.import', 'IMPORT_PACK')}
               </button>
               <button type="button" className="modal-btn" onClick={() => { void setAllStoredLanguagePackEnabled(false); }}>
-                <PanelLeftClose size={14} /> DISABLE_ALL
+                <PanelLeftClose size={14} /> {t('core.settings.language-packs.disable-all', 'DISABLE_ALL')}
               </button>
               <button type="button" className="modal-btn" onClick={() => { void setAllStoredLanguagePackEnabled(true); }}>
-                <PanelLeftOpen size={14} /> ENABLE_ALL
+                <PanelLeftOpen size={14} /> {t('core.settings.language-packs.enable-all', 'ENABLE_ALL')}
               </button>
               <button
                 type="button"
@@ -109,54 +109,54 @@ export const LanguagePackManagerPanel: React.FC = () => {
                   void services.views.open('core.language-pack-studio.view');
                 }}
               >
-                <Languages size={14} /> OPEN_STUDIO
+                <Languages size={14} /> {t('core.settings.language-packs.open-studio', 'OPEN_STUDIO')}
               </button>
             </div>
           </div>
           <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={handleImport} />
           {error && <p className="text-[11px] text-[var(--status-error)]">{error}</p>}
           <div className="settings-inline-stats">
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Packs</span><span className="settings-inline-stat-value">{packs.length}</span></span>
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Enabled</span><span className="settings-inline-stat-value">{enabledCount}</span></span>
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Active</span><span className="settings-inline-stat-value">{locale}</span></span>
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Built In</span><span className="settings-inline-stat-value">{builtInCount}</span></span>
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">Installed</span><span className="settings-inline-stat-value">{installedCount}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.packs', 'Packs')}</span><span className="settings-inline-stat-value">{packs.length}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.enabled', 'Enabled')}</span><span className="settings-inline-stat-value">{enabledCount}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.active', 'Active')}</span><span className="settings-inline-stat-value">{locale}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.built-in', 'Built In')}</span><span className="settings-inline-stat-value">{builtInCount}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.installed', 'Installed')}</span><span className="settings-inline-stat-value">{installedCount}</span></span>
           </div>
           <div className="settings-chip-row">
-            <span className="settings-chip">{builtInCount} BUILT_IN</span>
-            <span className="settings-chip">{installedCount} INSTALLED</span>
-            <span className="settings-chip">INDEXEDDB</span>
+            <span className="settings-chip">{builtInCount} {t('core.settings.language-packs.source.built-in', 'BUILT_IN')}</span>
+            <span className="settings-chip">{installedCount} {t('core.settings.language-packs.source.installed', 'INSTALLED')}</span>
+            <span className="settings-chip">{t('core.settings.storage.indexeddb', 'INDEXEDDB')}</span>
           </div>
         </div>
 
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
           <div className="settings-list">
-            {packs.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">NO_IMPORTED_LANGUAGE_PACKS</span>}
+            {packs.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{t('core.settings.language-packs.empty', 'NO_IMPORTED_LANGUAGE_PACKS')}</span>}
             {packs.map((pack) => (
               <div key={pack.locale} className="settings-list-row">
                 <div className="settings-list-row-main">
                   <div className="settings-list-row-title">
                     <span>{pack.label}</span>
                     <span className="settings-chip">{pack.locale}</span>
-                    <span className="settings-chip">{pack.source === 'built-in' ? 'BUILT_IN' : 'INSTALLED'}</span>
-                    <span className="settings-chip">{pack.enabled ? 'ENABLED' : 'DISABLED'}</span>
+                    <span className="settings-chip">{pack.source === 'built-in' ? t('core.settings.language-packs.source.built-in', 'BUILT_IN') : t('core.settings.language-packs.source.installed', 'INSTALLED')}</span>
+                    <span className="settings-chip">{pack.enabled ? t('core.settings.state.enabled', 'ENABLED') : t('core.settings.state.disabled', 'DISABLED')}</span>
                   </div>
                   <div className="settings-list-row-subtitle">
                     {pack.source === 'built-in'
-                      ? 'Bundled with the core shell catalog.'
-                      : 'Stored in IndexedDB and available for export, activation, and removal.'}
+                      ? t('core.settings.language-packs.built-in.description', 'Bundled with the core shell catalog.')
+                      : t('core.settings.language-packs.installed.description', 'Stored in IndexedDB and available for export, activation, and removal.')}
                   </div>
                 </div>
                 <div className="settings-list-row-actions">
                   <button type="button" className="modal-btn" onClick={() => { void setStoredLanguagePackEnabled(pack.locale, !pack.enabled); }}>
-                    {pack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {pack.enabled ? 'DISABLE' : 'ENABLE'}
+                    {pack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {pack.enabled ? t('core.settings.language-packs.disable', 'DISABLE') : t('core.settings.language-packs.enable', 'ENABLE')}
                   </button>
-                  <button type="button" className="modal-btn" onClick={() => { void activatePack(pack); }} disabled={!pack.enabled || locale === pack.locale}>USE_PACK</button>
+                  <button type="button" className="modal-btn" onClick={() => { void activatePack(pack); }} disabled={!pack.enabled || locale === pack.locale}>{t('core.settings.language-packs.use-pack', 'USE_PACK')}</button>
                   <button type="button" className="modal-btn" onClick={() => downloadJson(`${pack.locale}.language-pack.json`, pack)} disabled={pack.source !== 'installed'}>
-                    <Download size={14} /> EXPORT
+                    <Download size={14} /> {t('core.settings.language-packs.export', 'EXPORT')}
                   </button>
                   <button type="button" className="modal-btn" onClick={() => { void removeStoredLanguagePack(pack.locale); }} disabled={pack.source !== 'installed'}>
-                    <Trash2 size={14} /> REMOVE
+                    <Trash2 size={14} /> {t('core.settings.language-packs.remove', 'REMOVE')}
                   </button>
                 </div>
               </div>

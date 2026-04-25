@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import type { LanguagePackStudioController, LanguagePackStudioSnapshot } from "../types.js";
+import { languagePackStudioLabels } from "../i18n.js";
 
 function downloadJson(filename: string, value: unknown): void {
   const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
@@ -25,6 +26,14 @@ function downloadJson(filename: string, value: unknown): void {
   link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+function pruneMessages(messages: Record<string, string>): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(messages)
+      .map(([key, value]) => [key.trim(), value.trim()] as const)
+      .filter(([key, value]) => key.length > 0 && value.length > 0),
+  );
 }
 
 const denseInputStyle: CSSProperties = {
@@ -138,9 +147,11 @@ function useLanguageBrowserState(controller: LanguagePackStudioController) {
 function LanguagePackBrowserSidebar({
   controller,
   snapshot,
+  formatLabel,
 }: {
   controller: LanguagePackStudioController;
   snapshot: LanguagePackStudioSnapshot;
+  formatLabel: (label: I18nLabel | string) => string;
 }) {
   const { state, setState } = useLanguageBrowserState(controller);
   const deferredBrowserQuery = useDeferredValue(state.browserQuery.trim().toLowerCase());
@@ -159,15 +170,15 @@ function LanguagePackBrowserSidebar({
     <div className="workspace-panel-content" style={{ display: "grid", gap: 12, padding: 12 }}>
       <div className="settings-card settings-card-stack">
         <div className="settings-session-grid">
-          <div className="settings-session-item"><span className="settings-session-label">PACKS</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">ENABLED</span><span className="settings-session-value">{snapshot.packs.filter((pack) => pack.enabled).length}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">BUILT_IN</span><span className="settings-session-value">{builtInPackCount}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">ACTIVE</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsPacks)}</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsEnabled)}</span><span className="settings-session-value">{snapshot.packs.filter((pack) => pack.enabled).length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsBuiltIn)}</span><span className="settings-session-value">{builtInPackCount}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsActive)}</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
         </div>
         <div className="settings-chip-row">
-          <span className="settings-chip">LANGUAGE_BROWSER</span>
-          <span className="settings-chip">INDEXEDDB</span>
-          <span className="settings-chip">BUILT_IN + INSTALLED</span>
+          <span className="settings-chip">{formatLabel(languagePackStudioLabels.browserChip)}</span>
+          <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipIndexedDb)}</span>
+          <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipBuiltInInstalled)}</span>
         </div>
       </div>
 
@@ -176,15 +187,15 @@ function LanguagePackBrowserSidebar({
           style={denseInputStyle}
           value={state.browserQuery}
           onChange={(event) => setState({ browserQuery: event.target.value })}
-          placeholder="Filter locale, label, source"
-          aria-label="Filter language browser"
+          placeholder={formatLabel(languagePackStudioLabels.browserFilterPlaceholder)}
+          aria-label={formatLabel(languagePackStudioLabels.browserFilterAria)}
         />
         <div className="settings-chip-row">
           {[
-            ["all", `ALL ${snapshot.packs.length}`],
-            ["built-in", `BUILT_IN ${builtInPackCount}`],
-            ["installed", `INSTALLED ${installedPackCount}`],
-            ["disabled", `DISABLED ${snapshot.packs.filter((pack) => !pack.enabled).length}`],
+            ["all", `${formatLabel(languagePackStudioLabels.browserFilterAll)} ${snapshot.packs.length}`],
+            ["built-in", `${formatLabel(languagePackStudioLabels.browserFilterBuiltIn)} ${builtInPackCount}`],
+            ["installed", `${formatLabel(languagePackStudioLabels.browserFilterInstalled)} ${installedPackCount}`],
+            ["disabled", `${formatLabel(languagePackStudioLabels.browserFilterDisabled)} ${snapshot.packs.filter((pack) => !pack.enabled).length}`],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -205,24 +216,24 @@ function LanguagePackBrowserSidebar({
             style={{ justifyContent: "space-between", gap: 10 }}
           >
             <span style={{ textAlign: "left" }}>{pack.label}</span>
-            <span className="settings-session-label">{pack.source === "built-in" ? "BUILT_IN" : pack.enabled ? "INSTALLED" : "DISABLED"}</span>
+            <span className="settings-session-label">{pack.source === "built-in" ? formatLabel(languagePackStudioLabels.browserFilterBuiltIn) : pack.enabled ? formatLabel(languagePackStudioLabels.browserFilterInstalled) : formatLabel(languagePackStudioLabels.browserFilterDisabled)}</span>
           </button>
         ))}
-        {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No language packs match the current browser filter.</span>}
+        {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.browserEmpty)}</span>}
       </div>
     </div>
   );
 }
 
-export const LanguagePackStudioSidebar: FC<Pick<LanguagePackStudioViewProps, "controller">> = ({ controller }) => {
+export const LanguagePackStudioSidebar: FC<Pick<LanguagePackStudioViewProps, "controller" | "formatLabel">> = ({ controller, formatLabel }) => {
   const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot) as LanguagePackStudioSnapshot;
-  return <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} />;
+  return <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} formatLabel={formatLabel} />;
 };
 
 export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
   controller,
   close,
-  formatLabel: _formatLabel,
+  formatLabel,
   shellSidebarOpen,
   onShellSidebarToggle,
   embedBrowserInShellSidebar = false,
@@ -235,6 +246,9 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
   const [draftLocale, setDraftLocale] = useState("custom");
   const [draftLabel, setDraftLabel] = useState("Custom Language Pack");
   const [draftMessages, setDraftMessages] = useState('{\n  "core.views.settings.title": "System Configuration"\n}');
+  const [tokenQuery, setTokenQuery] = useState("");
+  const [editableLabel, setEditableLabel] = useState("");
+  const [editableMessages, setEditableMessages] = useState<Record<string, string>>({});
   const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const { state: browserState, setState: setBrowserState } = useLanguageBrowserState(controller);
   const effectiveSidebarOpen = embedBrowserInShellSidebar ? (shellSidebarOpen ?? true) : sidebarOpen;
@@ -247,12 +261,47 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
   }, [browserState.selectedLocale, setBrowserState, snapshot.packs]);
 
   const selectedPack = snapshot.packs.find((pack) => pack.locale === browserState.selectedLocale) ?? null;
+  useEffect(() => {
+    setEditableLabel(selectedPack?.label ?? "");
+    setEditableMessages(selectedPack ? { ...selectedPack.messages } : {});
+  }, [selectedPack?.locale, selectedPack?.label, selectedPack?.messages]);
+
   const missingKeys = useMemo(() => {
     if (!selectedPack || selectedPack.source === "built-in") {
-      return [];
+      return snapshot.tokens;
     }
     return snapshot.tokens.filter((token) => !(token.key in selectedPack.messages));
   }, [selectedPack, snapshot.tokens]);
+
+  const filteredTokens = useMemo(() => {
+    const query = tokenQuery.trim().toLowerCase();
+    if (!query) return snapshot.tokens;
+    return snapshot.tokens.filter((token) => `${token.key} ${token.source} ${token.defaultMessage}`.toLowerCase().includes(query));
+  }, [snapshot.tokens, tokenQuery]);
+
+  const editedMessageCount = Object.keys(pruneMessages(editableMessages)).length;
+
+  const handleSaveSelectedPack = async () => {
+    if (!selectedPack) return;
+    try {
+      const pack = await controller.updateArtifact(selectedPack.locale, {
+        label: editableLabel || selectedPack.label,
+        messages: pruneMessages(editableMessages),
+        enabled: selectedPack.enabled,
+      });
+      setBrowserState({ selectedLocale: pack.locale });
+      setError(null);
+    } catch (nextError) {
+      setError(nextError instanceof Error ? nextError.message : formatLabel(languagePackStudioLabels.errorCreateFailed));
+    }
+  };
+
+  const fillDefaultMessages = () => {
+    setEditableMessages((current) => ({
+      ...Object.fromEntries(snapshot.tokens.map((token) => [token.key, token.defaultMessage])),
+      ...current,
+    }));
+  };
   const handleImport = async (event: { target: { files?: FileList | null; value: string } }) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -260,7 +309,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
       await controller.importArtifact(await file.text());
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : "Failed to import language pack.");
+      setError(nextError instanceof Error ? nextError.message : formatLabel(languagePackStudioLabels.errorImportFailed));
     } finally {
       event.target.value = "";
     }
@@ -274,45 +323,130 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
       setBrowserState({ selectedLocale: pack.locale });
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : "Failed to create language pack.");
+      setError(nextError instanceof Error ? nextError.message : formatLabel(languagePackStudioLabels.errorCreateFailed));
     }
   };
+
+  const tokenEditor = selectedPack ? (
+    <div className="settings-card settings-card-stack">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start", flexWrap: "wrap" }}>
+        <div style={{ display: "grid", gap: 4 }}>
+          <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(languagePackStudioLabels.tokenEditorTitle)}</strong>
+          <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorDescription)}</span>
+          {selectedPack.source === "built-in" && (
+            <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorBuiltInNotice)}</span>
+          )}
+        </div>
+        <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
+          <button type="button" className="modal-btn" onClick={fillDefaultMessages} disabled={snapshot.tokens.length === 0}>
+            {formatLabel(languagePackStudioLabels.actionFillDefaults)}
+          </button>
+          <button type="button" className="modal-btn modal-btn-primary" onClick={() => void handleSaveSelectedPack()} disabled={editedMessageCount === 0}>
+            {selectedPack.source === "built-in" ? formatLabel(languagePackStudioLabels.actionSaveAsInstalledPack) : formatLabel(languagePackStudioLabels.actionSavePack)}
+          </button>
+        </div>
+      </div>
+      <label className="flex flex-col gap-2">
+        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.labelPackLabel)}</span>
+        <input
+          style={denseInputStyle}
+          value={editableLabel}
+          onChange={(event) => setEditableLabel(event.target.value)}
+          aria-label={formatLabel(languagePackStudioLabels.labelPackLabel)}
+        />
+      </label>
+      <input
+        style={denseInputStyle}
+        value={tokenQuery}
+        onChange={(event) => setTokenQuery(event.target.value)}
+        placeholder={formatLabel(languagePackStudioLabels.tokenSearchPlaceholder)}
+        aria-label={formatLabel(languagePackStudioLabels.tokenSearchAria)}
+      />
+      {snapshot.loadingTokens ? (
+        <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.loadingTokens)}</span>
+      ) : (
+        <div style={{ display: "grid", gap: 8, maxHeight: 520, overflow: "auto" }}>
+          {filteredTokens.map((token) => {
+            const value = editableMessages[token.key] ?? "";
+            const saved = selectedPack.messages[token.key];
+            const hasEditedValue = value.trim().length > 0;
+            const status = hasEditedValue
+              ? (saved === value ? languagePackStudioLabels.labelPresent : languagePackStudioLabels.labelCustom)
+              : languagePackStudioLabels.labelDefault;
+            return (
+              <div key={token.key} className="settings-session-item" style={{ alignItems: "stretch", gap: 10, borderColor: hasEditedValue ? undefined : "var(--border-color)" }}>
+                <div style={{ display: "grid", gap: 4, minWidth: 0 }}>
+                  <span className="settings-session-label" style={{ overflowWrap: "anywhere" }}>{token.key}</span>
+                  <span className="text-[11px] text-[var(--fg-muted)]">{token.source}</span>
+                  <span className="text-[11px] text-[var(--fg-muted)]" style={{ overflowWrap: "anywhere" }}>{token.defaultMessage}</span>
+                </div>
+                <div style={{ display: "grid", gap: 6, minWidth: "min(320px, 42vw)" }}>
+                  <span className="settings-session-value">{formatLabel(status)}</span>
+                  <textarea
+                    style={{ ...denseInputStyle, minHeight: 62, resize: "vertical" }}
+                    value={value}
+                    placeholder={token.defaultMessage}
+                    aria-label={`${formatLabel(languagePackStudioLabels.labelTokenValue)} ${token.key}`}
+                    onChange={(event) => setEditableMessages((current) => ({ ...current, [token.key]: event.target.value }))}
+                  />
+                  <button
+                    type="button"
+                    className="view-toolbar-btn"
+                    onClick={() => setEditableMessages((current) => {
+                      const next = { ...current };
+                      delete next[token.key];
+                      return next;
+                    })}
+                    disabled={!hasEditedValue}
+                    style={{ justifySelf: "start" }}
+                  >
+                    {formatLabel(languagePackStudioLabels.actionResetToken)}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+          {filteredTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorEmpty)}</span>}
+        </div>
+      )}
+    </div>
+  ) : null;
 
   return (
     <div className="language-pack-studio-pane editor-pane-container" data-testid="language-pack-studio-pane">
       {isDragging && <div className="editor-splitter-drag-shield" />}
-      <div className="view-toolbar" aria-label="Language Pack Studio toolbar">
+      <div className="view-toolbar" aria-label={formatLabel(languagePackStudioLabels.toolbarLabel)}>
         <div className="view-toolbar-group">
           <button
             type="button"
             className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`}
-            title="Toggle sidebar"
+            title={formatLabel(languagePackStudioLabels.toolbarToggleSidebar)}
             onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}
           >
             {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title={formatLabel(languagePackStudioLabels.toolbarSinglePane)} onClick={() => setLayoutMode("single")}>
             <Square size={14} />
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title={formatLabel(languagePackStudioLabels.toolbarSplitScreen)} onClick={() => setLayoutMode("split")}>
             <SplitSquareHorizontal size={14} />
           </button>
         </div>
         <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Import pack" onClick={() => importInput?.click()}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(languagePackStudioLabels.toolbarImportPack)} onClick={() => importInput?.click()}>
             <Upload size={14} />
           </button>
-          <button type="button" className="view-toolbar-btn" title="Enable all packs" onClick={() => { void controller.setAllEnabled(true); }}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(languagePackStudioLabels.toolbarEnableAll)} onClick={() => { void controller.setAllEnabled(true); }}>
             <Power size={14} />
           </button>
-          <button type="button" className="view-toolbar-btn" title="Disable all packs" onClick={() => { void controller.setAllEnabled(false); }}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(languagePackStudioLabels.toolbarDisableAll)} onClick={() => { void controller.setAllEnabled(false); }}>
             <PowerOff size={14} />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Close studio" onClick={() => void close()}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(languagePackStudioLabels.toolbarClose)} onClick={() => void close()}>
             <X size={14} />
           </button>
         </div>
@@ -323,7 +457,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
         <div className="editor-pane-body is-split">
           {!embedBrowserInShellSidebar && sidebarOpen && (
             <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
-              <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} />
+              <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} formatLabel={formatLabel} />
               {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
             </aside>
           )}
@@ -332,14 +466,14 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
             <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
                 <div style={{ display: "grid", gap: 4 }}>
-                  <span className="settings-session-label">LANGUAGE_PACK_STUDIO</span>
-                  <strong style={{ fontSize: 14 }}>Workspace language packs</strong>
-                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>Built-in and installed locale packs share one high-density manager surface.</span>
+                  <span className="settings-session-label">{formatLabel(languagePackStudioLabels.panelKicker)}</span>
+                  <strong style={{ fontSize: 14 }}>{formatLabel(languagePackStudioLabels.panelTitle)}</strong>
+                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(languagePackStudioLabels.panelSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
-                  <span className="settings-chip">INDEXEDDB</span>
-                  <span className="settings-chip">BUILT_IN + INSTALLED</span>
-                  <span className="settings-chip">PANE_ONLY</span>
+                  <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipIndexedDb)}</span>
+                  <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipBuiltInInstalled)}</span>
+                  <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipPaneOnly)}</span>
                 </div>
               </div>
             </div>
@@ -356,9 +490,9 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                       </div>
                       <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
                         <button type="button" className="modal-btn" onClick={() => { void controller.setEnabled(selectedPack.locale, !selectedPack.enabled); }}>
-                          {selectedPack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {selectedPack.enabled ? "DISABLE" : "ENABLE"}
+                          {selectedPack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {selectedPack.enabled ? formatLabel(languagePackStudioLabels.actionDisable) : formatLabel(languagePackStudioLabels.actionEnable)}
                         </button>
-                        <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.activate(selectedPack.locale); }} disabled={!selectedPack.enabled}>USE</button>
+                        <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.activate(selectedPack.locale); }} disabled={!selectedPack.enabled}>{formatLabel(languagePackStudioLabels.actionUse)}</button>
                         <button
                           type="button"
                           className="modal-btn"
@@ -368,78 +502,50 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                           }}
                           disabled={selectedPack.source !== "installed"}
                         >
-                          <Download size={14} /> EXPORT
+                          <Download size={14} /> {formatLabel(languagePackStudioLabels.actionExport)}
                         </button>
                         <button type="button" className="modal-btn" onClick={() => { void controller.remove(selectedPack.locale); }} disabled={selectedPack.source !== "installed"}>
-                          <Trash2 size={14} /> REMOVE
+                          <Trash2 size={14} /> {formatLabel(languagePackStudioLabels.actionRemove)}
                         </button>
                       </div>
                     </div>
                     <div className="settings-session-grid">
-                      <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{selectedPack.enabled ? "ENABLED" : "DISABLED"}</span></div>
-                      <div className="settings-session-item"><span className="settings-session-label">SOURCE</span><span className="settings-session-value">{selectedPack.source.toUpperCase()}</span></div>
-                      <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{selectedPack.source === "installed" ? Object.keys(selectedPack.messages).length : "CORE"}</span></div>
-                      <div className="settings-session-item"><span className="settings-session-label">MISSING</span><span className="settings-session-value">{selectedPack.source === "installed" ? missingKeys.length : "N/A"}</span></div>
+                      <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelStatus)}</span><span className="settings-session-value">{selectedPack.enabled ? formatLabel(languagePackStudioLabels.browserFilterEnabled) : formatLabel(languagePackStudioLabels.browserFilterDisabled)}</span></div>
+                      <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelSource)}</span><span className="settings-session-value">{selectedPack.source.toUpperCase()}</span></div>
+                      <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelTokens)}</span><span className="settings-session-value">{selectedPack.source === "installed" ? Object.keys(selectedPack.messages).length : formatLabel(languagePackStudioLabels.labelCore)}</span></div>
+                      <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelMissing)}</span><span className="settings-session-value">{selectedPack.source === "installed" ? missingKeys.length : formatLabel(languagePackStudioLabels.labelNotAvailable)}</span></div>
                     </div>
                   </div>
 
-                  <div className="settings-card settings-card-stack">
-                    <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Token Audit</strong>
-                    {selectedPack.source === "built-in" ? (
-                      <div className="settings-session-item">
-                        <span className="settings-session-label">BUILT_IN_LOCALE</span>
-                        <span className="settings-session-value">Core shell catalogs load through the extension-aware i18n fallback chain.</span>
-                      </div>
-                    ) : snapshot.loadingTokens ? (
-                      <span className="text-[11px] text-[var(--fg-muted)]">Loading tokens...</span>
-                    ) : (
-                      <div style={{ display: "grid", gap: 8, maxHeight: 420, overflow: "auto" }}>
-                        {snapshot.tokens.map((token) => {
-                          const missing = !(token.key in selectedPack.messages);
-                          return (
-                            <div key={token.key} className="settings-session-item" style={{ borderColor: missing ? "var(--status-error)" : undefined }}>
-                              <div style={{ display: "grid", gap: 4 }}>
-                                <span className="settings-session-label">{token.key}</span>
-                                <span className="text-[11px] text-[var(--fg-muted)]">{token.source}</span>
-                              </div>
-                              <div style={{ display: "grid", gap: 4 }}>
-                                <span className="settings-session-value">{missing ? "MISSING" : "PRESENT"}</span>
-                                <span className="text-[11px] text-[var(--fg-muted)]">{selectedPack.messages[token.key] ?? token.defaultMessage}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
+                  {tokenEditor}
                 </div>
 
-                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Language Studio panes">
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label={formatLabel(languagePackStudioLabels.toolbarResizePanes)}>
                   <div className="editor-splitter-handle" />
                 </div>
                 <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
                   <div className="settings-card settings-card-stack">
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <Columns2 size={14} />
-                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Create Language Pack</strong>
+                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(languagePackStudioLabels.createTitle)}</strong>
                     </div>
                     <div className="settings-grid-2">
                       <label className="flex flex-col gap-2">
-                        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Locale</span>
+                        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLocale)}</span>
                         <input style={denseInputStyle} value={draftLocale} onChange={(event) => setDraftLocale(event.target.value)} />
                       </label>
                       <label className="flex flex-col gap-2">
-                        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Label</span>
+                        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLabel)}</span>
                         <input style={denseInputStyle} value={draftLabel} onChange={(event) => setDraftLabel(event.target.value)} />
                       </label>
                     </div>
                     <label className="flex flex-col gap-2">
-                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Messages JSON</span>
+                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createMessagesJson)}</span>
                       <textarea style={{ ...denseInputStyle, minHeight: 220, fontFamily: "var(--font-mono, monospace)" }} value={draftMessages} onChange={(event) => setDraftMessages(event.target.value)} />
                     </label>
                     <div className="settings-action-row" style={{ padding: 8 }}>
                       <button type="button" className="modal-btn modal-btn-primary" onClick={() => void handleCreate()}>
-                        <PackagePlus size={14} /> CREATE_AND_EXPORT
+                        <PackagePlus size={14} /> {formatLabel(languagePackStudioLabels.actionCreateAndExport)}
                       </button>
                     </div>
                   </div>
@@ -456,9 +562,9 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                         </div>
                         <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
                           <button type="button" className="modal-btn" onClick={() => { void controller.setEnabled(selectedPack.locale, !selectedPack.enabled); }}>
-                            {selectedPack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {selectedPack.enabled ? "DISABLE" : "ENABLE"}
+                            {selectedPack.enabled ? <PowerOff size={14} /> : <Power size={14} />} {selectedPack.enabled ? formatLabel(languagePackStudioLabels.actionDisable) : formatLabel(languagePackStudioLabels.actionEnable)}
                           </button>
-                          <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.activate(selectedPack.locale); }} disabled={!selectedPack.enabled}>USE</button>
+                          <button type="button" className="modal-btn modal-btn-primary" onClick={() => { void controller.activate(selectedPack.locale); }} disabled={!selectedPack.enabled}>{formatLabel(languagePackStudioLabels.actionUse)}</button>
                           <button
                             type="button"
                             className="modal-btn"
@@ -468,50 +574,22 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
                             }}
                             disabled={selectedPack.source !== "installed"}
                           >
-                            <Download size={14} /> EXPORT
+                            <Download size={14} /> {formatLabel(languagePackStudioLabels.actionExport)}
                           </button>
                           <button type="button" className="modal-btn" onClick={() => { void controller.remove(selectedPack.locale); }} disabled={selectedPack.source !== "installed"}>
-                            <Trash2 size={14} /> REMOVE
+                            <Trash2 size={14} /> {formatLabel(languagePackStudioLabels.actionRemove)}
                           </button>
                         </div>
                       </div>
                       <div className="settings-session-grid">
-                        <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{selectedPack.enabled ? "ENABLED" : "DISABLED"}</span></div>
-                        <div className="settings-session-item"><span className="settings-session-label">SOURCE</span><span className="settings-session-value">{selectedPack.source.toUpperCase()}</span></div>
-                        <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{selectedPack.source === "installed" ? Object.keys(selectedPack.messages).length : "CORE"}</span></div>
-                        <div className="settings-session-item"><span className="settings-session-label">MISSING</span><span className="settings-session-value">{selectedPack.source === "installed" ? missingKeys.length : "N/A"}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelStatus)}</span><span className="settings-session-value">{selectedPack.enabled ? formatLabel(languagePackStudioLabels.browserFilterEnabled) : formatLabel(languagePackStudioLabels.browserFilterDisabled)}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelSource)}</span><span className="settings-session-value">{selectedPack.source.toUpperCase()}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelTokens)}</span><span className="settings-session-value">{selectedPack.source === "installed" ? Object.keys(selectedPack.messages).length : formatLabel(languagePackStudioLabels.labelCore)}</span></div>
+                        <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.labelMissing)}</span><span className="settings-session-value">{selectedPack.source === "installed" ? missingKeys.length : formatLabel(languagePackStudioLabels.labelNotAvailable)}</span></div>
                       </div>
                     </div>
 
-                    <div className="settings-card settings-card-stack">
-                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Token Audit</strong>
-                      {selectedPack.source === "built-in" ? (
-                        <div className="settings-session-item">
-                          <span className="settings-session-label">BUILT_IN_LOCALE</span>
-                          <span className="settings-session-value">Core shell catalogs load through the extension-aware i18n fallback chain.</span>
-                        </div>
-                      ) : snapshot.loadingTokens ? (
-                        <span className="text-[11px] text-[var(--fg-muted)]">Loading tokens...</span>
-                      ) : (
-                        <div style={{ display: "grid", gap: 8, maxHeight: 420, overflow: "auto" }}>
-                          {snapshot.tokens.map((token) => {
-                            const missing = !(token.key in selectedPack.messages);
-                            return (
-                              <div key={token.key} className="settings-session-item" style={{ borderColor: missing ? "var(--status-error)" : undefined }}>
-                                <div style={{ display: "grid", gap: 4 }}>
-                                  <span className="settings-session-label">{token.key}</span>
-                                  <span className="text-[11px] text-[var(--fg-muted)]">{token.source}</span>
-                                </div>
-                                <div style={{ display: "grid", gap: 4 }}>
-                                  <span className="settings-session-value">{missing ? "MISSING" : "PRESENT"}</span>
-                                  <span className="text-[11px] text-[var(--fg-muted)]">{selectedPack.messages[token.key] ?? token.defaultMessage}</span>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+                    {tokenEditor}
                   </div>
                 </div>
               )
@@ -521,25 +599,25 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
               <div className="settings-card settings-card-stack">
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <Languages size={14} />
-                  <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Create Language Pack</strong>
+                  <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(languagePackStudioLabels.createTitle)}</strong>
                 </div>
                 <div className="settings-grid-2">
                   <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Locale</span>
+                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLocale)}</span>
                     <input style={denseInputStyle} value={draftLocale} onChange={(event) => setDraftLocale(event.target.value)} />
                   </label>
                   <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Label</span>
+                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLabel)}</span>
                     <input style={denseInputStyle} value={draftLabel} onChange={(event) => setDraftLabel(event.target.value)} />
                   </label>
                 </div>
                 <label className="flex flex-col gap-2">
-                  <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">Messages JSON</span>
+                  <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createMessagesJson)}</span>
                   <textarea style={{ ...denseInputStyle, minHeight: 180, fontFamily: "var(--font-mono, monospace)" }} value={draftMessages} onChange={(event) => setDraftMessages(event.target.value)} />
                 </label>
                 <div className="settings-action-row" style={{ padding: 8 }}>
                   <button type="button" className="modal-btn modal-btn-primary" onClick={() => void handleCreate()}>
-                    <PackagePlus size={14} /> CREATE_AND_EXPORT
+                    <PackagePlus size={14} /> {formatLabel(languagePackStudioLabels.actionCreateAndExport)}
                   </button>
                 </div>
               </div>

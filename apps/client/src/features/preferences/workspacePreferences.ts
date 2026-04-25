@@ -2,6 +2,7 @@ import React from 'react';
 
 export type WorkspaceActionRailDisplayMode = 'icon-only' | 'labeled';
 export type WorkspaceExportBackgroundMode = 'theme' | 'plain' | 'grayscale';
+export type WorkspacePdfPageOrientation = 'portrait' | 'landscape';
 
 export interface WorkspacePreferences {
   readonly hidePreviewPolicy: boolean;
@@ -10,6 +11,7 @@ export interface WorkspacePreferences {
   readonly hiddenEditorToolbarButtons: readonly string[];
   readonly htmlExportBackground: WorkspaceExportBackgroundMode;
   readonly printBackground: WorkspaceExportBackgroundMode;
+  readonly pdfPageOrientation: WorkspacePdfPageOrientation;
 }
 
 export const WORKSPACE_PREFERENCES_STORAGE_KEY = 'mdwrk.workspace-preferences.v1';
@@ -22,6 +24,7 @@ export const DEFAULT_WORKSPACE_PREFERENCES: WorkspacePreferences = Object.freeze
   hiddenEditorToolbarButtons: Object.freeze([]),
   htmlExportBackground: 'theme',
   printBackground: 'theme',
+  pdfPageOrientation: 'portrait',
 });
 
 let cachedWorkspacePreferencesRaw: string | null = null;
@@ -50,6 +53,7 @@ export function normalizeWorkspacePreferences(value: unknown): WorkspacePreferen
   const printBackground = value.printBackground === 'plain' || value.printBackground === 'grayscale'
     ? value.printBackground
     : 'theme';
+  const pdfPageOrientation = value.pdfPageOrientation === 'landscape' ? 'landscape' : 'portrait';
 
   return {
     hidePreviewPolicy: value.hidePreviewPolicy === true,
@@ -58,6 +62,7 @@ export function normalizeWorkspacePreferences(value: unknown): WorkspacePreferen
     hiddenEditorToolbarButtons: uniqueStrings(value.hiddenEditorToolbarButtons),
     htmlExportBackground,
     printBackground,
+    pdfPageOrientation,
   };
 }
 

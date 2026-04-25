@@ -26,9 +26,11 @@ interface GitPaneProps {
   onClose: () => void;
   shellSidebarOpen?: boolean;
   onShellSidebarToggle?: (open: boolean) => void;
+  formatLabel?: GitLabelFormatter;
 }
 
 type GitOperationsState = ReturnType<typeof useGitOperations>;
+type GitLabelFormatter = (key: string, defaultMessage: string) => string;
 type DiffMode = 'unified' | 'split' | 'unified-preview' | 'split-preview';
 
 const getSplitBand = (value: number): number => {
@@ -74,27 +76,31 @@ function useWorkspaceModuleSplit(defaultPosition = 50) {
 }
 
 const diffModes = [
-  { id: 'unified', label: 'Unified diff viewer', icon: <FileText size={14} /> },
-  { id: 'split', label: 'Split diff viewer', icon: <Columns size={14} /> },
-  { id: 'unified-preview', label: 'Unified diff with preview', icon: <Eye size={14} /> },
-  { id: 'split-preview', label: 'Split preview diff', icon: <LayoutGrid size={14} /> },
+  { id: 'unified', labelKey: 'core.git.diff-mode.unified', defaultLabel: 'Unified diff viewer', icon: <FileText size={14} /> },
+  { id: 'split', labelKey: 'core.git.diff-mode.split', defaultLabel: 'Split diff viewer', icon: <Columns size={14} /> },
+  { id: 'unified-preview', labelKey: 'core.git.diff-mode.unified-preview', defaultLabel: 'Unified diff with preview', icon: <Eye size={14} /> },
+  { id: 'split-preview', labelKey: 'core.git.diff-mode.split-preview', defaultLabel: 'Split preview diff', icon: <LayoutGrid size={14} /> },
 ] as const;
 
-const GitOperationsExplorerContent: React.FC<GitOperationsState> = ({
+const fallbackGitLabelFormatter: GitLabelFormatter = (_key, defaultMessage) => defaultMessage;
+
+const GitOperationsExplorerContent: React.FC<GitOperationsState & { formatLabel?: GitLabelFormatter }> = ({
   commitMsg,
   setCommitMsg,
   stagedFiles,
   changedFiles,
   stageFile,
   commit,
-}) => (
-  <>
+  formatLabel,
+}) => {
+  const t = formatLabel ?? fallbackGitLabelFormatter;
+  return <>
     <div className="workspace-panel-header git-header">
       <div className="workspace-panel-title">
         <GitBranch size={14} className="git-header-icon shrink-0" />
         <div className="workspace-panel-title-text">
-          <span className="workspace-panel-kicker">Repository</span>
-          <span className="workspace-panel-name">Source Control</span>
+          <span className="workspace-panel-kicker">{t('core.git.repository', 'Repository')}</span>
+          <span className="workspace-panel-name">{t('core.git.source-control', 'Source Control')}</span>
         </div>
       </div>
     </div>
@@ -114,14 +120,14 @@ const GitOperationsExplorerContent: React.FC<GitOperationsState> = ({
 
       <div className="git-section">
         <h3 className="git-section-title">
-          Staged Changes <span>{stagedFiles.length}</span>
+          {t('core.git.staged-changes', 'Staged Changes')} <span>{stagedFiles.length}</span>
         </h3>
-        {stagedFiles.length === 0 && <div className="git-empty-msg">No staged changes</div>}
+        {stagedFiles.length === 0 && <div className="git-empty-msg">{t('core.git.no-staged-changes', 'No staged changes')}</div>}
       </div>
 
       <div className="git-section">
         <h3 className="git-section-title">
-          Changes <span>{changedFiles.length}</span>
+          {t('core.git.changes', 'Changes')} <span>{changedFiles.length}</span>
         </h3>
         {changedFiles.length > 0 ? (
           <div className="git-list">
@@ -130,21 +136,21 @@ const GitOperationsExplorerContent: React.FC<GitOperationsState> = ({
                 <FileDiff size={14} className="git-item__icon" />
                 <span className="git-item__name">{file.name}</span>
                 <span className="git-item__status">M</span>
-                <button onClick={() => stageFile(file.id)} className="git-stage-btn" title="Stage File">
+                <button onClick={() => stageFile(file.id)} className="git-stage-btn" title={t('core.git.stage-file', 'Stage File')}>
                   <Check size={12} />
                 </button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="git-empty-msg">Working tree clean</div>
+          <div className="git-empty-msg">{t('core.git.working-tree-clean', 'Working tree clean')}</div>
         )}
       </div>
 
       <div className="git-commit-area">
         <textarea
           className="git-commit-input"
-          placeholder="Commit message..."
+          placeholder={t('core.git.commit-placeholder', 'Commit message...')}
           value={commitMsg}
           onChange={(event) => setCommitMsg(event.target.value)}
         />
@@ -153,26 +159,27 @@ const GitOperationsExplorerContent: React.FC<GitOperationsState> = ({
           disabled={changedFiles.length === 0 && stagedFiles.length === 0}
           onClick={commit}
         >
-          <Check size={14} /> COMMIT
+          <Check size={14} /> {t('core.git.commit', 'COMMIT')}
         </button>
       </div>
 
       <div className="git-sync-area">
         <button className="git-sync-btn">
-          <RefreshCw size={14} /> SYNC CHANGES
+          <RefreshCw size={14} /> {t('core.git.sync-changes', 'SYNC CHANGES')}
         </button>
       </div>
       </div>
     </div>
-  </>
-);
+  </>;
+};
 
-export const GitOperationsExplorer: React.FC<Pick<GitPaneProps, 'activeFile' | 'unsaved'>> = ({
+export const GitOperationsExplorer: React.FC<Pick<GitPaneProps, 'activeFile' | 'unsaved'> & { formatLabel?: GitLabelFormatter }> = ({
   activeFile,
   unsaved,
+  formatLabel,
 }) => {
   const gitOperations = useGitOperations(activeFile, unsaved);
-  return <GitOperationsExplorerContent {...gitOperations} />;
+  return <GitOperationsExplorerContent {...gitOperations} formatLabel={formatLabel} />;
 };
 
 export const GitPane: React.FC<GitPaneProps> = ({
@@ -183,7 +190,9 @@ export const GitPane: React.FC<GitPaneProps> = ({
   onClose,
   shellSidebarOpen,
   onShellSidebarToggle,
+  formatLabel,
 }) => {
+  const t = formatLabel ?? fallbackGitLabelFormatter;
   const gitOperations = useGitOperations(activeFile, unsaved);
   const { changedFiles, stageFile } = gitOperations;
   const [diffMode, setDiffMode] = useState<DiffMode>('unified');
@@ -248,7 +257,7 @@ export const status = "updated";
 
   const oldFilePanel = (
     <div className="git-diff-panel">
-      <div className="git-diff-panel__header">OLD FILE</div>
+      <div className="git-diff-panel__header">{t('core.git.old-file', 'OLD FILE')}</div>
       <div className="git-diff-panel__content">
         {diffPreview.oldLines.map((line, index) => (
           <div key={`old-${index}`} className="git-diff-line git-diff-line--removed">
@@ -262,7 +271,7 @@ export const status = "updated";
 
   const newFilePanel = (
     <div className="git-diff-panel">
-      <div className="git-diff-panel__header">NEW FILE</div>
+      <div className="git-diff-panel__header">{t('core.git.new-file', 'NEW FILE')}</div>
       <div className="git-diff-panel__content">
         {diffPreview.newLines.map((line, index) => (
           <div key={`new-${index}`} className="git-diff-line git-diff-line--added">
@@ -276,16 +285,16 @@ export const status = "updated";
 
   const unifiedPanel = (
     <div className="git-diff-panel">
-      <div className="git-diff-panel__header">UNIFIED DIFF</div>
+      <div className="git-diff-panel__header">{t('core.git.unified-diff', 'UNIFIED DIFF')}</div>
       <div className="git-diff-panel__content">
-        <div className="git-diff-meta"># {activeFile?.name ?? 'No file selected'}</div>
+        <div className="git-diff-meta"># {activeFile?.name ?? t('core.git.no-file-selected', 'No file selected')}</div>
         <div className="git-diff-row diff-removed">
           <span className="git-diff-marker">-</span>
-          {diffPreview.oldLines[0] || 'Old line content'}
+          {diffPreview.oldLines[0] || t('core.git.old-line-content', 'Old line content')}
         </div>
         <div className="git-diff-row diff-added">
           <span className="git-diff-marker">+</span>
-          {diffPreview.newLines[0] || 'New content...'}
+          {diffPreview.newLines[0] || t('core.git.new-content', 'New content...')}
         </div>
         {(diffPreview.newLines[1] || diffPreview.oldLines[1]) && (
           <div className="git-diff-row diff-context">
@@ -298,7 +307,7 @@ export const status = "updated";
 
   const updatedPreviewPanel = (
     <div className="git-diff-panel git-diff-panel--preview">
-      <div className="git-diff-panel__header">UPDATED PREVIEW</div>
+      <div className="git-diff-panel__header">{t('core.git.updated-preview', 'UPDATED PREVIEW')}</div>
       <div className="git-diff-panel__content git-preview-pane">
         <PreviewPane content={markdownPreview.newContent} theme={theme} files={files} onNavigate={() => undefined} />
       </div>
@@ -307,7 +316,7 @@ export const status = "updated";
 
   const previousPreviewPanel = (
     <div className="git-diff-panel git-diff-panel--preview">
-      <div className="git-diff-panel__header">OLD FILE PREVIEW</div>
+      <div className="git-diff-panel__header">{t('core.git.old-file-preview', 'OLD FILE PREVIEW')}</div>
       <div className="git-diff-panel__content git-preview-pane">
         <PreviewPane content={markdownPreview.oldContent} theme={theme} files={files} onNavigate={() => undefined} />
       </div>
@@ -316,30 +325,30 @@ export const status = "updated";
 
   const renderDiffStage = () => {
     if (!activeFile) {
-      return <div className="git-diff-placeholder">SELECT A FILE TO VIEW DIFF</div>;
+      return <div className="git-diff-placeholder">{t('core.git.select-file', 'SELECT A FILE TO VIEW DIFF')}</div>;
     }
 
     if (diffMode === 'unified') {
       return <div className="git-diff-stage mode-unified">{unifiedPanel}</div>;
     }
     if (diffMode === 'split') {
-      return <div className="git-diff-stage mode-split">{renderResizableDiff(oldFilePanel, newFilePanel, 'Resize Git diff panes')}</div>;
+      return <div className="git-diff-stage mode-split">{renderResizableDiff(oldFilePanel, newFilePanel, t('core.git.resize-diff-panes', 'Resize Git diff panes'))}</div>;
     }
     if (diffMode === 'unified-preview') {
-      return <div className="git-diff-stage mode-unified-preview">{renderResizableDiff(unifiedPanel, updatedPreviewPanel, 'Resize Git preview panes')}</div>;
+      return <div className="git-diff-stage mode-unified-preview">{renderResizableDiff(unifiedPanel, updatedPreviewPanel, t('core.git.resize-preview-panes', 'Resize Git preview panes'))}</div>;
     }
-    return <div className="git-diff-stage mode-split-preview">{renderResizableDiff(updatedPreviewPanel, previousPreviewPanel, 'Resize Git preview panes')}</div>;
+    return <div className="git-diff-stage mode-split-preview">{renderResizableDiff(updatedPreviewPanel, previousPreviewPanel, t('core.git.resize-preview-panes', 'Resize Git preview panes'))}</div>;
   };
 
   return (
-    <div className="git-ops-pane editor-pane-container" role="region" aria-label="Git Operations">
+    <div className="git-ops-pane editor-pane-container" role="region" aria-label={t('core.git.region', 'Git Operations')}>
       {isDragging && <div className="editor-splitter-drag-shield" />}
-      <div className="view-toolbar" aria-label="Git Operations toolbar">
+      <div className="view-toolbar" aria-label={t('core.git.toolbar', 'Git Operations toolbar')}>
         <div className="view-toolbar-group">
           <button
             type="button"
             className={`view-toolbar-btn ${effectiveSidebarOpen ? 'active' : ''}`}
-            title="Toggle source-control panel"
+            title={t('core.git.toggle-panel', 'Toggle source-control panel')}
             onClick={() => onShellSidebarToggle?.(!effectiveSidebarOpen)}
           >
             {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
@@ -350,8 +359,8 @@ export const status = "updated";
               key={mode.id}
               type="button"
               className={`view-toolbar-btn ${diffMode === mode.id ? 'active' : ''}`}
-              aria-label={mode.label}
-              title={mode.label}
+              aria-label={t(mode.labelKey, mode.defaultLabel)}
+              title={t(mode.labelKey, mode.defaultLabel)}
               onClick={() => setDiffMode(mode.id)}
             >
               {mode.icon}
@@ -363,20 +372,20 @@ export const status = "updated";
           <button
             type="button"
             className="view-toolbar-btn"
-            aria-label="Stage active file"
-            title="Stage active file"
+            aria-label={t('core.git.stage-active-file', 'Stage active file')}
+            title={t('core.git.stage-active-file', 'Stage active file')}
             onClick={() => activeFile && stageFile(activeFile.id)}
             disabled={!activeFile || changedFiles.length === 0}
           >
             <Check size={14} />
           </button>
-          <button type="button" className="view-toolbar-btn" aria-label="Refresh diff" title="Refresh diff">
+          <button type="button" className="view-toolbar-btn" aria-label={t('core.git.refresh-diff', 'Refresh diff')} title={t('core.git.refresh-diff', 'Refresh diff')}>
             <RefreshCw size={14} />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: 'flex-end' }}>
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Close Git Operations" onClick={onClose}>
+          <button type="button" className="view-toolbar-btn" title={t('core.git.close', 'Close Git Operations')} onClick={onClose}>
             <XCircle size={14} />
           </button>
         </div>
@@ -387,12 +396,12 @@ export const status = "updated";
           <div className="git-diff-view">
             <div className="panel-toolbar git-diff-header">
               <span className="git-diff-title">
-                {activeFile ? `DIFF: ${activeFile.name}` : 'NO SELECTION'}
+                {activeFile ? `${t('core.git.diff-prefix', 'DIFF')}: ${activeFile.name}` : t('core.git.no-selection', 'NO SELECTION')}
               </span>
               <div className="git-diff-actions">
                 <div className="git-diff-legend">
-                  <div className="git-diff-legend-item"><div className="git-legend-icon-del" /> REMOVED</div>
-                  <div className="git-diff-legend-item"><div className="git-legend-icon-add" /> ADDED</div>
+                  <div className="git-diff-legend-item"><div className="git-legend-icon-del" /> {t('core.git.removed', 'REMOVED')}</div>
+                  <div className="git-diff-legend-item"><div className="git-legend-icon-add" /> {t('core.git.added', 'ADDED')}</div>
                 </div>
               </div>
             </div>

@@ -214,9 +214,9 @@ function ExtensionManagerBrowserSidebar({
       <div className="settings-card settings-card-stack">
         <StatsGrid snapshot={snapshot} formatLabel={formatLabel} />
         <div className="settings-chip-row">
-          <span className="settings-chip">EXTENSION_BROWSER</span>
-          <span className="settings-chip">{snapshot.extensions.filter((extension) => extension.source === "installed").length} INSTALLED</span>
-          <span className="settings-chip">{snapshot.catalogEntries.length} CATALOG</span>
+          <span className="settings-chip">{formatLabel(extensionManagerLabels.paneTreeChip)}</span>
+          <span className="settings-chip">{snapshot.extensions.filter((extension) => extension.source === "installed").length} {formatLabel(extensionManagerLabels.paneTreeInstalledSuffix)}</span>
+          <span className="settings-chip">{snapshot.catalogEntries.length} {formatLabel(extensionManagerLabels.paneTreeCatalogSuffix)}</span>
         </div>
       </div>
 
@@ -233,14 +233,14 @@ function ExtensionManagerBrowserSidebar({
           }}
           value={state.browserQuery}
           onChange={(event) => setState({ browserQuery: event.currentTarget.value })}
-          placeholder="Filter extensions or catalog entries"
-          aria-label="Filter extension browser"
+          placeholder={formatLabel(extensionManagerLabels.paneTreeFilterPlaceholder)}
+          aria-label={formatLabel(extensionManagerLabels.paneTreeFilterAria)}
         />
         <div className="settings-chip-row">
           {[
-            ["all", `ALL ${browserNodes.extensions.length + browserNodes.catalogEntries.length}`],
-            ["extensions", `EXT ${browserNodes.extensions.length}`],
-            ["catalog", `CAT ${browserNodes.catalogEntries.length}`],
+            ["all", `${formatLabel(extensionManagerLabels.paneTreeFilterAll)} ${browserNodes.extensions.length + browserNodes.catalogEntries.length}`],
+            ["extensions", `${formatLabel(extensionManagerLabels.paneTreeFilterExtensions)} ${browserNodes.extensions.length}`],
+            ["catalog", `${formatLabel(extensionManagerLabels.paneTreeFilterCatalog)} ${browserNodes.catalogEntries.length}`],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -270,7 +270,7 @@ function ExtensionManagerBrowserSidebar({
                 <span className="settings-session-label">{node.extension.status}</span>
               </button>
             ))}
-            {filteredExtensionNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No extensions match the current browser filter.</span>}
+            {filteredExtensionNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.paneTreeExtensionsEmpty)}</span>}
           </div>
         </details>
         <details open={state.treeState.catalog} onToggle={(event) => {
@@ -279,7 +279,7 @@ function ExtensionManagerBrowserSidebar({
         }}>
           <summary style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer" }}>{formatLabel(extensionManagerLabels.paneTreeCatalog)}</summary>
           <div style={{ display: "grid", gap: 6, marginTop: 8 }}>
-            {filteredCatalogNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No catalog entries match the current browser filter.</span>}
+            {filteredCatalogNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.paneTreeCatalogEmpty)}</span>}
             {filteredCatalogNodes.map((node) => (
               <button
                 key={node.id}
@@ -289,7 +289,7 @@ function ExtensionManagerBrowserSidebar({
                 style={{ justifyContent: "space-between" }}
               >
                 <span style={{ textAlign: "left" }}>{node.title}</span>
-                <span className="settings-session-label">{node.catalogEntry.installed ? "INSTALLED" : "CATALOG"}</span>
+                <span className="settings-session-label">{node.catalogEntry.installed ? formatLabel(extensionManagerLabels.paneTreeInstalledSuffix) : formatLabel(extensionManagerLabels.paneTreeCatalogSuffix)}</span>
               </button>
             ))}
           </div>
@@ -364,7 +364,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
       const text = await file.text();
       const artifact = normalizePortableExtensionPackageArtifact(JSON.parse(text));
       if (!artifact) {
-        throw new Error("Invalid portable extension package artifact.");
+        throw new Error(formatLabel(extensionManagerLabels.errorInvalidPortableArtifact));
       }
       const registration = await createPortableExtensionCatalogRegistration(artifact);
       runtime.registerCatalog(registration.catalog, {
@@ -374,7 +374,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
       await runtime.installFromCatalogEntry(registration.entryId, { autoActivate: true });
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : "Failed to import extension package.");
+      setError(nextError instanceof Error ? nextError.message : formatLabel(extensionManagerLabels.errorImportFailed));
     } finally {
       event.target.value = "";
     }
@@ -386,7 +386,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
       await runtime.installFromCatalogEntry(entryId, { autoActivate: true });
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : "Failed to install extension.");
+      setError(nextError instanceof Error ? nextError.message : formatLabel(extensionManagerLabels.errorInstallFailed));
     } finally {
       setBusyEntryId(null);
     }
@@ -398,7 +398,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
       await runtime.removeInstalledExtension(extensionId);
       setError(null);
     } catch (nextError) {
-      setError(nextError instanceof Error ? nextError.message : "Failed to remove installed extension.");
+      setError(nextError instanceof Error ? nextError.message : formatLabel(extensionManagerLabels.errorRemoveFailed));
     } finally {
       setBusyEntryId(null);
     }
@@ -415,10 +415,10 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
         <div className="settings-card settings-card-stack">
           <strong style={{ fontSize: 12 }}>{selectedNode.title}</strong>
           <div className="settings-session-grid">
-            <div className="settings-session-item"><span className="settings-session-label">ENTRY_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.entryId}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelEntryId)}</span><span className="settings-session-value">{selectedNode.catalogEntry.entryId}</span></div>
             <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{selectedNode.catalogEntry.packageName}</span></div>
             <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelVersion)}</span><span className="settings-session-value">{selectedNode.catalogEntry.version}</span></div>
-            <div className="settings-session-item"><span className="settings-session-label">CATALOG_ID</span><span className="settings-session-value">{selectedNode.catalogEntry.catalogId}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelCatalogId)}</span><span className="settings-session-value">{selectedNode.catalogEntry.catalogId}</span></div>
           </div>
           <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(selectedNode.catalogEntry.description)}</p>
           <div className="settings-action-row" style={{ padding: 8 }}>
@@ -428,7 +428,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
               onClick={() => void installCatalogEntry(selectedNode.catalogEntry.entryId)}
               disabled={busyEntryId === selectedNode.catalogEntry.entryId || !selectedNode.catalogEntry.policyTrusted}
             >
-              {selectedNode.catalogEntry.installed ? "UPDATE" : "INSTALL"}
+              {selectedNode.catalogEntry.installed ? formatLabel(extensionManagerLabels.actionUpdate) : formatLabel(extensionManagerLabels.actionInstall)}
             </button>
           </div>
         </div>
@@ -461,7 +461,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
   const catalogPane = (
       <div className="settings-card settings-card-stack">
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span className="settings-session-label">CATALOG</span>
+          <span className="settings-session-label">{formatLabel(extensionManagerLabels.paneTreeCatalogSuffix)}</span>
           <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.catalogEntriesTitle)}</strong>
         </div>
       <div style={{ display: "grid", gap: 10 }}>
@@ -472,14 +472,14 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
               <span className="settings-session-value">{entry.packageName}@{entry.version}</span>
             </div>
             <div className="settings-action-row" style={{ padding: 8 }}>
-              <button type="button" className="modal-btn" onClick={() => setBrowserState({ selectedNodeId: entry.entryId })}>INSPECT</button>
+              <button type="button" className="modal-btn" onClick={() => setBrowserState({ selectedNodeId: entry.entryId })}>{formatLabel(extensionManagerLabels.actionInspect)}</button>
               <button
                 type="button"
                 className="modal-btn modal-btn-primary"
                 onClick={() => void installCatalogEntry(entry.entryId)}
                 disabled={busyEntryId === entry.entryId || !entry.policyTrusted}
               >
-                {entry.installed ? "UPDATE" : "INSTALL"}
+                {entry.installed ? formatLabel(extensionManagerLabels.actionUpdate) : formatLabel(extensionManagerLabels.actionInstall)}
               </button>
             </div>
           </div>
@@ -491,30 +491,30 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
   return (
     <div className="extension-manager-pane editor-pane-container" data-testid="extension-manager-pane" role="region" aria-label={formatLabel(extensionManagerLabels.viewTitle)}>
       {isDragging && <div className="editor-splitter-drag-shield" />}
-      <div className="view-toolbar" aria-label="Extension Manager toolbar">
+      <div className="view-toolbar" aria-label={formatLabel(extensionManagerLabels.toolbarLabel)}>
         <div className="view-toolbar-group">
-          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
+          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title={formatLabel(extensionManagerLabels.toolbarToggleSidebar)} onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
             {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title={formatLabel(extensionManagerLabels.toolbarSinglePane)} onClick={() => setLayoutMode("single")}>
             <Square size={14} />
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title={formatLabel(extensionManagerLabels.toolbarSplitScreen)} onClick={() => setLayoutMode("split")}>
             <SplitSquareHorizontal size={14} />
           </button>
         </div>
         <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Import extension package" onClick={() => importInput?.click()}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(extensionManagerLabels.toolbarImportPackage)} onClick={() => importInput?.click()}>
             <Upload size={14} />
           </button>
-          <button type="button" className="view-toolbar-btn" title="Export catalog snapshot" onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(extensionManagerLabels.toolbarExportCatalog)} onClick={() => downloadJson("extension-catalog-snapshot.json", snapshot.catalogEntries)} disabled={snapshot.catalogEntries.length === 0}>
             <Download size={14} />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Close manager" onClick={() => void close()}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(extensionManagerLabels.toolbarClose)} onClick={() => void close()}>
             <X size={14} />
           </button>
         </div>
@@ -534,14 +534,14 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
             <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
                 <div style={{ display: "grid", gap: 4 }}>
-                  <span className="settings-session-label">EXTENSION_MANAGER</span>
+                  <span className="settings-session-label">{formatLabel(extensionManagerLabels.settingsShortcutKicker)}</span>
                   <strong style={{ fontSize: 14 }}>{formatLabel(extensionManagerLabels.headerTitle)}</strong>
                   <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
-                  <span className="settings-chip">PANE_ONLY</span>
-                  <span className="settings-chip">SPLIT + SINGLE</span>
-                  <span className="settings-chip">SETTINGS_CONTENT</span>
+                  <span className="settings-chip">{formatLabel(extensionManagerLabels.settingsChipPaneOnly)}</span>
+                  <span className="settings-chip">{formatLabel(extensionManagerLabels.settingsChipSplitSingle)}</span>
+                  <span className="settings-chip">{formatLabel(extensionManagerLabels.settingsChipSettingsContent)}</span>
                 </div>
               </div>
             </div>
@@ -551,14 +551,14 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
                 <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
                   {detailsPane}
                 </div>
-                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Extension Manager panes">
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label={formatLabel(extensionManagerLabels.toolbarResizePanes)}>
                   <div className="editor-splitter-handle" />
                 </div>
                 <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>
                   <div className="settings-card settings-card-stack">
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span className="settings-session-label">CATALOG</span>
-                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>Catalog Browser</strong>
+                      <span className="settings-session-label">{formatLabel(extensionManagerLabels.paneTreeCatalogSuffix)}</span>
+                      <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.catalogBrowserTitle)}</strong>
                     </div>
                     {catalogPane}
                   </div>

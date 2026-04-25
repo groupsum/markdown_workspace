@@ -116,11 +116,11 @@ export const GeminiAgentSidebar: React.FC<Pick<GeminiAgentViewProps, "service" |
         <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelContext)}</span>
         <button type="button" className="settings-sidebar-btn active" style={{ justifyContent: "space-between" }}>
           <span style={{ textAlign: "left" }}>{context?.project?.name ?? formatLabel(geminiAgentLabels.panelContextNone)}</span>
-          <span className="settings-session-label">PROJECT</span>
+          <span className="settings-session-label">{formatLabel(geminiAgentLabels.panelContextProject)}</span>
         </button>
         <button type="button" className="settings-sidebar-btn active" style={{ justifyContent: "space-between" }}>
           <span style={{ textAlign: "left" }}>{context?.file?.name ?? formatLabel(geminiAgentLabels.panelContextNone)}</span>
-          <span className="settings-session-label">FILE</span>
+          <span className="settings-session-label">{formatLabel(geminiAgentLabels.panelContextFile)}</span>
         </button>
       </div>
     </div>
@@ -224,21 +224,21 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
   return (
     <div className="extension-manager-pane editor-pane-container" role="region" aria-label={formatLabel(geminiAgentLabels.viewTitle)}>
       {isDragging && <div className="editor-splitter-drag-shield" />}
-      <div className="view-toolbar" aria-label="Gemini Agent toolbar">
+      <div className="view-toolbar" aria-label={formatLabel(geminiAgentLabels.toolbarLabel)}>
         <div className="view-toolbar-group">
-          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
+          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title={formatLabel(geminiAgentLabels.toolbarToggleSidebar)} onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
             <ToolbarIcon name={effectiveSidebarOpen ? "sidebar-open" : "sidebar"} />
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title={formatLabel(geminiAgentLabels.toolbarSinglePane)} onClick={() => setLayoutMode("single")}>
             <ToolbarIcon name="single" />
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title={formatLabel(geminiAgentLabels.toolbarSplitScreen)} onClick={() => setLayoutMode("split")}>
             <ToolbarIcon name="split" />
           </button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Close Gemini Agent" onClick={() => void close()}>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(geminiAgentLabels.toolbarClose)} onClick={() => void close()}>
             <ToolbarIcon name="close" />
           </button>
         </div>
@@ -264,7 +264,7 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
           <div className="editor-pane-column" style={{ flex: 1, padding: 16, gap: 16 }}>
             <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 10 }}>
               <div style={{ display: "grid", gap: 4 }}>
-                <span className="settings-session-label">GEMINI_AGENT</span>
+                <span className="settings-session-label">{formatLabel(geminiAgentLabels.panelKicker)}</span>
                 <strong style={{ fontSize: 14 }}>{formatLabel(geminiAgentLabels.panelTitle)}</strong>
                 <span style={{ fontSize: 12, color: "var(--fg-muted)" }}>{formatLabel(geminiAgentLabels.panelSubtitle)}</span>
               </div>
@@ -279,7 +279,7 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
                 <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
                   {promptPane}
                 </div>
-                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Gemini Agent panes">
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label={formatLabel(geminiAgentLabels.toolbarResizePanes)}>
                   <div className="editor-splitter-handle" />
                 </div>
                 <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>

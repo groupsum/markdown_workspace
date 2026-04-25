@@ -21,6 +21,7 @@ export interface ExtensionRuntimeProviderProps extends React.PropsWithChildren {
 
 export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> = ({ children }) => {
   const services = useClientRuntimeServices();
+  const t = React.useCallback((key: string, defaultMessage: string) => services.i18n.format({ key, defaultMessage }), [services.i18n]);
   const snapshot = useClientRuntimeSnapshot();
   const snapshotRef = React.useRef(snapshot);
   snapshotRef.current = snapshot;
@@ -72,9 +73,9 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       renderWorkspace: () => (
         <div className="settings-pane">
           <div className="settings-card settings-card-stack">
-            <span className="font-bold text-[11px] uppercase">WORKSPACE_FILES</span>
+            <span className="font-bold text-[11px] uppercase">{t('core.workspace-files.kicker', 'WORKSPACE_FILES')}</span>
             <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">
-              File browsing, editing, and previewing are mounted as the default workspace module surface.
+              {t('core.workspace-files.description', 'File browsing, editing, and previewing are mounted as the default workspace module surface.')}
             </p>
           </div>
         </div>
@@ -82,8 +83,8 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       renderExplorer: () => (
         <div className="workspace-panel-content">
           <div className="settings-card settings-card-stack">
-            <span className="settings-session-label">FILE_EXPLORER</span>
-            <span className="settings-session-value">{snapshotRef.current.app.state.currentProject?.name ?? 'NO_PROJECT'}</span>
+            <span className="settings-session-label">{t('core.workspace-files.explorer', 'FILE_EXPLORER')}</span>
+            <span className="settings-session-value">{snapshotRef.current.app.state.currentProject?.name ?? t('core.workspace-files.no-project', 'NO_PROJECT')}</span>
           </div>
         </div>
       ),
@@ -102,12 +103,14 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
           onClose={() => { void props.close(); }}
           shellSidebarOpen={props.workspaceSidebarOpen}
           onShellSidebarToggle={props.setWorkspaceSidebarOpen}
+          formatLabel={t}
         />
       ),
       renderExplorer: () => (
         <GitOperationsExplorer
           activeFile={snapshotRef.current.app.state.activeFile}
           unsaved={snapshotRef.current.app.state.unsaved}
+          formatLabel={t}
         />
       ),
       renderSettings: () => <GitSettingsPanel />,
@@ -117,7 +120,7 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     createGeminiAgentBundledEntry(),
     createThemeStudioBundledEntry(),
     runtimeSmokeExtensionEntry,
-  ], [languagePackController, runtime, services.views]);
+  ], [languagePackController, runtime, services.views, t]);
 
   React.useEffect(() => {
     const disposables = bundledEntries.map((entry) => runtime.registerBundledExtension(entry));
@@ -133,8 +136,8 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
   React.useEffect(() => {
     const disposable = services.settingsRegistry.register({
       id: 'core.settings.extensions.runtime',
-      title: { defaultMessage: 'Extension Runtime' },
-      description: { defaultMessage: 'Bundled extension catalog, activation state, and runtime diagnostics.' },
+      title: { key: 'core.extensions.runtime.title', defaultMessage: 'Extension Runtime' },
+      description: { key: 'core.extensions.runtime.description', defaultMessage: 'Bundled extension catalog, activation state, and runtime diagnostics.' },
       order: 10,
       panel: 'extensions',
       icon: { kind: 'lucide', name: 'Plug' },

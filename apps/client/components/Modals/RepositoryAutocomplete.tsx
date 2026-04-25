@@ -88,7 +88,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
       setRepoUrls((previous) => Array.from(new Set([...previous, created.htmlUrl])));
       setLastUpdatedAt(Date.now());
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to create repository.';
+      const message = err instanceof Error ? err.message : t('core.settings.git.create-repository.failed', 'Failed to create repository.');
       setError(message);
     } finally {
       setCreatePending(false);
@@ -98,7 +98,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
   return (
     <div className="flex flex-col gap-3">
       <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)]">REPOSITORY URL</span>
+        <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.repository-url', 'REPOSITORY URL')}</span>
         <input
           list="repo-autocomplete"
           className="modal-input !text-xs !py-3"
@@ -114,9 +114,9 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
       </label>
 
       <div className="settings-inline-stats">
-        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Loaded</span><span className="settings-inline-stat-value">{repoUrls.length}</span></span>
-        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Matches</span><span className="settings-inline-stat-value">{filteredSuggestions.length}</span></span>
-        <span className="settings-inline-stat"><span className="settings-inline-stat-label">Host</span><span className="settings-inline-stat-value">{selectedRepoHost}</span></span>
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.loaded', 'Loaded')}</span><span className="settings-inline-stat-value">{repoUrls.length}</span></span>
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.matches', 'Matches')}</span><span className="settings-inline-stat-value">{filteredSuggestions.length}</span></span>
+        <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.host', 'Host')}</span><span className="settings-inline-stat-value">{selectedRepoHost}</span></span>
       </div>
 
       {(loading || lastUpdatedAt || error || !canLoadRepos) && (
@@ -131,7 +131,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
           {lastUpdatedAt && (
             <div className="settings-list-row">
               <div className="settings-list-row-main">
-                <div className="settings-list-row-title">LAST_REFRESH</div>
+                <div className="settings-list-row-title">{t('core.settings.git.last-refresh', 'LAST_REFRESH')}</div>
                 <div className="settings-list-row-subtitle">{new Date(lastUpdatedAt).toLocaleTimeString()}</div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
           {error && (
             <div className="settings-list-row">
               <div className="settings-list-row-main">
-                <div className="settings-list-row-title">ERROR</div>
+                <div className="settings-list-row-title">{t('core.settings.state.error', 'ERROR')}</div>
                 <div className="settings-list-row-subtitle">{error.toUpperCase()}</div>
               </div>
             </div>
@@ -147,7 +147,7 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
           {!canLoadRepos && (
             <div className="settings-list-row">
               <div className="settings-list-row-main">
-                <div className="settings-list-row-title">AUTH REQUIRED</div>
+                <div className="settings-list-row-title">{t('core.settings.git.auth-required', 'AUTH REQUIRED')}</div>
                 <div className="settings-list-row-subtitle">
                   {gitConfig.authMode === 'pat'
                     ? t('core.settings.git.pat.required', 'ENTER A PAT TO LOAD REPOSITORIES.')

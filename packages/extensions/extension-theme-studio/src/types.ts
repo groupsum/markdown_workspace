@@ -80,6 +80,7 @@ export interface ThemeStudioService {
   readSettings(): Promise<ThemeStudioResolvedSettings>;
   setDraftToken(token: MarkdownWorkspaceThemeTokenName, value: string): Promise<void>;
   setDraftTokens(tokens: Partial<Record<MarkdownWorkspaceThemeTokenName, string>>): Promise<void>;
+  clearDraftToken(token: MarkdownWorkspaceThemeTokenName): Promise<void>;
   preview(): Promise<void>;
   apply(): Promise<void>;
   revert(): Promise<void>;

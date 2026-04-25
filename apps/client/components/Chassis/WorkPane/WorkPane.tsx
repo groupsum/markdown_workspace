@@ -5,6 +5,7 @@ import { EditorPane } from './Stage/EditorPane';
 import { Plus, HardDrive, Layout, FolderPlus, ChevronsUp, ChevronsDown, Pencil, Trash2 } from 'lucide-react';
 import { FileNode, Project, AppTheme, ViewMode } from '../../../types';
 import { ThemeDef } from '../../../data/themes';
+import { useClientI18n } from '../../../src/features/i18n/useClientI18n';
 
 interface WorkPaneProps {
   currentProject: Project | undefined;
@@ -69,6 +70,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   workspaceSidebarLabel,
   workspaceSurface
 }) => {
+  const { t } = useClientI18n();
   const [expandAllSignal, setExpandAllSignal] = useState(0);
   const [collapseAllSignal, setCollapseAllSignal] = useState(0);
   const hasSelection = Boolean(selectedExplorerId);
@@ -223,11 +225,11 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             <div className="idle-indicator">
                <Layout size={48} strokeWidth={1} className="opacity-20 mb-4" />
                <div className="idle-text-stack">
-                  <span className="idle-primary">SYSTEM_IDLE</span>
-                  <span className="idle-secondary">WAITING_FOR_MOUNT_INSTRUCTION</span>
+                  <span className="idle-primary">{t('core.workspace.idle.primary', 'SYSTEM_IDLE')}</span>
+                  <span className="idle-secondary">{t('core.workspace.idle.secondary', 'WAITING_FOR_MOUNT_INSTRUCTION')}</span>
                </div>
                <button onClick={onNewFile} className="idle-action-btn">
-                 INIT_NEW_DOCUMENT
+                 {t('core.workspace.idle.new-document', 'INIT_NEW_DOCUMENT')}
                </button>
             </div>
           </div>

@@ -88,6 +88,47 @@ describe('languagePackStudioController', () => {
     expect(readStoredLanguagePacksSync().find((entry) => entry.locale === 'it-custom')?.enabled).toBe(true);
   });
 
+  it('updates installed packs and creates installed overrides for built-in locales', async () => {
+    const i18n = createClientI18nService('en');
+    const controller = createLanguagePackStudioController({
+      i18n,
+      settingsStore: {
+        async set() {},
+      },
+      loadTokenCatalog: async () => [
+        { key: 'core.views.settings.title', defaultMessage: 'System Configuration', source: 'core' },
+        { key: 'core.commands.new-file', defaultMessage: 'Create New File', source: 'core' },
+      ],
+    });
+
+    const updatedBuiltIn = await controller.updateArtifact('en', {
+      label: 'English Custom',
+      messages: {
+        'core.views.settings.title': 'System Settings',
+        'core.commands.new-file': 'New document',
+      },
+    });
+
+    expect(updatedBuiltIn.source).toBe('installed');
+    expect(updatedBuiltIn.locale).toBe('en');
+    expect(controller.exportArtifact('en')?.label).toBe('English Custom');
+    expect(readStoredLanguagePacksSync().find((entry) => entry.locale === 'en')?.source).toBe('installed');
+
+    const updatedInstalled = await controller.updateArtifact('en', {
+      label: 'English Workspace',
+      enabled: false,
+      messages: {
+        'core.views.settings.title': 'Workspace Settings',
+      },
+    });
+
+    expect(updatedInstalled.label).toBe('English Workspace');
+    expect(updatedInstalled.enabled).toBe(false);
+    expect(updatedInstalled.messages['core.views.settings.title']).toBe('Workspace Settings');
+
+    await controller.remove('en');
+  });
+
   it('shows built-in packs and can disable every pack at once', async () => {
     const i18n = createClientI18nService('en');
     const controller = createLanguagePackStudioController({

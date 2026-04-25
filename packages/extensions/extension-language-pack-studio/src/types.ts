@@ -31,6 +31,11 @@ export interface LanguagePackStudioController {
     messages: Record<string, string>;
     enabled?: boolean;
   }): Promise<LanguagePackStudioArtifact>;
+  updateArtifact(locale: string, input: {
+    label?: string;
+    messages: Record<string, string>;
+    enabled?: boolean;
+  }): Promise<LanguagePackStudioArtifact>;
   activate(locale: string): Promise<void>;
   remove(locale: string): Promise<void>;
   setEnabled(locale: string, enabled: boolean): Promise<void>;

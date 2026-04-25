@@ -62,6 +62,24 @@ const codeBlockStyle: CSSProperties = {
 
 const mergeTokens = (current: Record<string, string> | null, draft: Record<string, string>) => ({ ...(current ?? {}), ...draft });
 
+const CSS_HEX_COLOR_PATTERN = /^#(?:[0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
+const CSS_COLOR_FUNCTION_PATTERN = /^(?:rgb|rgba|hsl|hsla|oklch|oklab|lab|lch|color)\(/i;
+
+function isColorToken(definition: { category?: string; name: string; description?: string }, value: string): boolean {
+  const haystack = `${definition.category ?? ""} ${definition.name} ${definition.description ?? ""}`.toLowerCase();
+  return haystack.includes("color") || CSS_HEX_COLOR_PATTERN.test(value.trim()) || CSS_COLOR_FUNCTION_PATTERN.test(value.trim());
+}
+
+function toColorInputValue(value: string): string {
+  const trimmed = value.trim();
+  if (/^#[0-9a-f]{6}$/i.test(trimmed)) return trimmed;
+  if (/^#[0-9a-f]{3}$/i.test(trimmed)) {
+    return `#${trimmed.slice(1).split("").map((part) => `${part}${part}`).join("")}`;
+  }
+  if (/^#[0-9a-f]{8}$/i.test(trimmed)) return trimmed.slice(0, 7);
+  return "#000000";
+}
+
 const getSplitBand = (value: number): number => {
   const clamped = Math.min(80, Math.max(20, value));
   return Math.round(clamped / 5) * 5;
@@ -166,7 +184,7 @@ function downloadTextFile(filename: string, content: string, mimeType = "text/pl
   URL.revokeObjectURL(url);
 }
 
-export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "formatLabel">> = ({ service }) => {
+export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "formatLabel">> = ({ service, formatLabel }) => {
   const snapshot = useSyncExternalStore(service.subscribe, service.getSnapshot, service.getSnapshot);
   const { state: browserState, setState: setBrowserState } = useThemeBrowserState(service);
   const deferredBrowserQuery = browserState.browserQuery.trim().toLowerCase();
@@ -191,15 +209,15 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
     <div className="workspace-panel-content" style={{ display: "grid", gap: 12, padding: 12 }}>
       <div className="settings-card settings-card-stack">
         <div className="settings-session-grid">
-          <div className="settings-session-item"><span className="settings-session-label">THEME_ID</span><span className="settings-session-value">{snapshot.metadata.themeId}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">TOKENS</span><span className="settings-session-value">{snapshot.tokenDefinitions.length}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">RELATIONSHIPS</span><span className="settings-session-value">{snapshot.relationships.length}</span></div>
-          <div className="settings-session-item"><span className="settings-session-label">STATUS</span><span className="settings-session-value">{snapshot.busy ? "BUSY" : "READY"}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.settingsStatsThemeId)}</span><span className="settings-session-value">{snapshot.metadata.themeId}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.settingsStatsTokens)}</span><span className="settings-session-value">{snapshot.tokenDefinitions.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.settingsStatsRelationships)}</span><span className="settings-session-value">{snapshot.relationships.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.settingsStatsStatus)}</span><span className="settings-session-value">{snapshot.busy ? formatLabel(themeStudioLabels.statusBusy) : formatLabel(themeStudioLabels.statusReady)}</span></div>
         </div>
         <div className="settings-chip-row">
-          <span className="settings-chip">THEME_BROWSER</span>
-          <span className="settings-chip">{snapshot.tokenDefinitions.length} TOKENS</span>
-          <span className="settings-chip">{snapshot.relationships.length} RELATIONSHIPS</span>
+          <span className="settings-chip">{formatLabel(themeStudioLabels.browserChip)}</span>
+          <span className="settings-chip">{snapshot.tokenDefinitions.length} {formatLabel(themeStudioLabels.settingsStatsTokens)}</span>
+          <span className="settings-chip">{snapshot.relationships.length} {formatLabel(themeStudioLabels.settingsStatsRelationships)}</span>
         </div>
       </div>
       <div className="settings-card settings-card-stack" style={{ gap: 8 }}>
@@ -207,14 +225,14 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
           style={fieldStyle}
           value={browserState.browserQuery}
           onChange={(event) => setBrowserState({ browserQuery: event.currentTarget.value })}
-          placeholder="Filter tokens, selectors, exports"
-          aria-label="Filter theme browser"
+          placeholder={formatLabel(themeStudioLabels.browserFilterPlaceholder)}
+          aria-label={formatLabel(themeStudioLabels.browserFilterAria)}
         />
         {[
-          ["metadata", "Metadata"],
-          ["tokens", `Tokens (${browserTokens.length})`],
-          ["relationships", `Relationships (${browserRelationships.length})`],
-          ["exports", "Exports"],
+          ["metadata", formatLabel(themeStudioLabels.browserSectionMetadata)],
+          ["tokens", `${formatLabel(themeStudioLabels.browserSectionTokens)} (${browserTokens.length})`],
+          ["relationships", `${formatLabel(themeStudioLabels.browserSectionRelationships)} (${browserRelationships.length})`],
+          ["exports", formatLabel(themeStudioLabels.browserSectionExports)],
         ].map(([value, label]) => (
           <button
             key={value}
@@ -230,7 +248,7 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
           </button>
         ))}
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
-          <span className="settings-session-label">TOKEN_BROWSER</span>
+          <span className="settings-session-label">{formatLabel(themeStudioLabels.browserTokenTitle)}</span>
           {browserTokens.slice(0, 12).map((definition) => (
             <button
               key={definition.name}
@@ -243,10 +261,10 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
               <span className="settings-session-label">{definition.category}</span>
             </button>
           ))}
-          {browserTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No tokens match.</span>}
+          {browserTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
         </div>
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
-          <span className="settings-session-label">RELATIONSHIP_BROWSER</span>
+          <span className="settings-session-label">{formatLabel(themeStudioLabels.browserRelationshipTitle)}</span>
           {browserRelationships.slice(0, 12).map((relationship) => (
             <button
               key={relationship.className}
@@ -259,7 +277,7 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
               <span className="settings-session-label">{relationship.bridgeTarget}</span>
             </button>
           ))}
-          {browserRelationships.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">No relationships match.</span>}
+          {browserRelationships.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyRelationships)}</span>}
         </div>
       </div>
     </div>
@@ -375,30 +393,72 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
             <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
             <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>{formatLabel(themeStudioLabels.tokenInspectorDescription)}</p>
           </div>
-          <div style={{ display: "grid", gap: 10, maxHeight: 420, overflow: "auto", paddingRight: 6 }}>
-            {visibleTokenDefinitions.map((definition) => (
-              <div key={definition.name} className="settings-session-item" style={{ display: "grid", gap: 8 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 8, alignItems: "baseline" }}>
-                  <strong style={{ fontSize: 12 }}>{definition.name}</strong>
-                  <span className="settings-session-label">{definition.category}</span>
+          <div style={{ display: "grid", gap: 10, maxHeight: 520, overflow: "auto", paddingRight: 6 }}>
+            {visibleTokenDefinitions.map((definition) => {
+              const currentValue = (snapshot.currentTokens as Record<string, string> | null)?.[definition.name] ?? definition.defaultValue;
+              const draftValue = (snapshot.draftTokens as Record<string, string>)[definition.name];
+              const effectiveValue = draftValue ?? currentValue;
+              const colorToken = isColorToken(definition, effectiveValue);
+              const swatchBackground = colorToken ? effectiveValue : "linear-gradient(135deg, var(--bg-muted), var(--border-primary))";
+              return (
+                <div key={definition.name} className="settings-session-item" style={{ display: "grid", gap: 8 }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 8, alignItems: "baseline" }}>
+                    <strong style={{ fontSize: 12 }}>{definition.name}</strong>
+                    <span className="settings-session-label">{definition.category}</span>
+                  </div>
+                  <span className="text-[11px] text-[var(--fg-muted)]">{definition.description}</span>
+                  <div className="settings-grid-2">
+                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelDefault)}</span><span className="settings-session-value">{definition.defaultValue}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelCurrent)}</span><span className="settings-session-value">{currentValue}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelEffective)}</span><span className="settings-session-value">{effectiveValue}</span></div>
+                    <div className="settings-session-item" style={{ justifyContent: "start" }}>
+                      <span className="settings-session-label">{formatLabel(themeStudioLabels.labelColorPicker)}</span>
+                      <input
+                        type="color"
+                        value={toColorInputValue(effectiveValue)}
+                        aria-label={`${formatLabel(themeStudioLabels.labelColorPicker)} ${definition.name}`}
+                        disabled={!colorToken}
+                        onChange={(event) => {
+                          void service.setDraftToken(definition.name as never, event.currentTarget.value);
+                        }}
+                        style={{
+                          width: 34,
+                          height: 24,
+                          padding: 0,
+                          border: "1px solid var(--border-primary)",
+                          borderRadius: 8,
+                          background: swatchBackground,
+                          cursor: colorToken ? "pointer" : "not-allowed",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <label className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.labelDraft)}</span>
+                    <input
+                      style={fieldStyle}
+                      value={effectiveValue}
+                      aria-label={`${formatLabel(themeStudioLabels.labelTokenValue)} ${definition.name}`}
+                      onChange={(event) => {
+                        void service.setDraftToken(definition.name as never, event.currentTarget.value);
+                      }}
+                    />
+                  </label>
+                  <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
+                    <button type="button" className="modal-btn" onClick={() => { void service.setDraftToken(definition.name as never, definition.defaultValue); }}>
+                      {formatLabel(themeStudioLabels.actionUseDefault)}
+                    </button>
+                    <button type="button" className="modal-btn" onClick={() => { void service.setDraftToken(definition.name as never, currentValue); }}>
+                      {formatLabel(themeStudioLabels.actionCopyCurrent)}
+                    </button>
+                    <button type="button" className="modal-btn" onClick={() => { void service.clearDraftToken(definition.name as never); }} disabled={draftValue === undefined}>
+                      {formatLabel(themeStudioLabels.actionClearDraft)}
+                    </button>
+                  </div>
                 </div>
-                <span className="text-[11px] text-[var(--fg-muted)]">{definition.description}</span>
-                <div className="settings-grid-2">
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelDefault)}</span><span className="settings-session-value">{definition.defaultValue}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelCurrent)}</span><span className="settings-session-value">{(snapshot.currentTokens as Record<string, string> | null)?.[definition.name] ?? definition.defaultValue}</span></div>
-                </div>
-                <label className="flex flex-col gap-2">
-                  <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.labelDraft)}</span>
-                  <input
-                    style={fieldStyle}
-                    value={(snapshot.draftTokens as Record<string, string>)[definition.name] ?? (snapshot.currentTokens as Record<string, string> | null)?.[definition.name] ?? definition.defaultValue}
-                    onChange={(event) => {
-                      void service.setDraftToken(definition.name as never, event.currentTarget.value);
-                    }}
-                  />
-                </label>
-              </div>
-            ))}
+              );
+            })}
+            {visibleTokenDefinitions.length === 0 && <span className="text-[12px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
           </div>
         </div>
       )}
@@ -437,9 +497,9 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
             </div>
             <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
               <select style={fieldStyle} value={exportTarget} onChange={(event) => setExportTarget(event.currentTarget.value as "host" | "renderer" | "editor")}>
-                <option value="host">Host CSS</option>
-                <option value="renderer">Renderer CSS</option>
-                <option value="editor">Editor CSS</option>
+                <option value="host">{formatLabel(themeStudioLabels.exportTargetHostCss)}</option>
+                <option value="renderer">{formatLabel(themeStudioLabels.exportTargetRendererCss)}</option>
+                <option value="editor">{formatLabel(themeStudioLabels.exportTargetEditorCss)}</option>
               </select>
               <button type="button" className="modal-btn modal-btn-primary" onClick={() => void runExport()} disabled={snapshot.busy}><Package size={14} /> {formatLabel(themeStudioLabels.actionExport)}</button>
             </div>
@@ -485,29 +545,29 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
   return (
     <div className="theme-studio-pane editor-pane-container" data-testid="theme-studio-pane" role="region" aria-label={formatLabel(themeStudioLabels.viewTitle)}>
       {isDragging && <div className="editor-splitter-drag-shield" />}
-      <div className="view-toolbar" aria-label="Theme Studio toolbar">
+      <div className="view-toolbar" aria-label={formatLabel(themeStudioLabels.toolbarLabel)}>
         <div className="view-toolbar-group">
-          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title="Toggle sidebar" onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
+          <button type="button" className={`view-toolbar-btn ${effectiveSidebarOpen ? "active" : ""}`} title={formatLabel(themeStudioLabels.toolbarToggleSidebar)} onClick={() => embedBrowserInShellSidebar ? onShellSidebarToggle?.(!effectiveSidebarOpen) : setSidebarOpen((current) => !current)}>
             {effectiveSidebarOpen ? <SidebarOpen size={14} /> : <Sidebar size={14} />}
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title="Single pane" onClick={() => setLayoutMode("single")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "single" ? "active" : ""}`} title={formatLabel(themeStudioLabels.toolbarSinglePane)} onClick={() => setLayoutMode("single")}>
             <Square size={14} />
           </button>
-          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title="Split screen" onClick={() => setLayoutMode("split")}>
+          <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title={formatLabel(themeStudioLabels.toolbarSplitScreen)} onClick={() => setLayoutMode("split")}>
             <SplitSquareHorizontal size={14} />
           </button>
         </div>
         <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Refresh theme data" onClick={() => void service.refresh()} disabled={snapshot.busy}><RefreshCw size={14} /></button>
-          <button type="button" className="view-toolbar-btn" title="Import theme package" onClick={() => importInput?.click()} disabled={snapshot.busy}><Package size={14} /></button>
-          <button type="button" className="view-toolbar-btn" title="Preview draft theme" onClick={() => void service.preview()} disabled={snapshot.busy}><Eye size={14} /></button>
-          <button type="button" className="view-toolbar-btn" title="Apply draft theme" onClick={() => void service.apply()} disabled={snapshot.busy}><Save size={14} /></button>
-          <button type="button" className="view-toolbar-btn" title="Revert draft theme" onClick={() => void service.revert()} disabled={snapshot.busy}><RotateCcw size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarRefresh)} onClick={() => void service.refresh()} disabled={snapshot.busy}><RefreshCw size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarImport)} onClick={() => importInput?.click()} disabled={snapshot.busy}><Package size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarPreview)} onClick={() => void service.preview()} disabled={snapshot.busy}><Eye size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarApply)} onClick={() => void service.apply()} disabled={snapshot.busy}><Save size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarRevert)} onClick={() => void service.revert()} disabled={snapshot.busy}><RotateCcw size={14} /></button>
         </div>
         <div className="view-toolbar-group" style={{ justifyContent: "flex-end" }}>
           <span className="view-toolbar-divider" />
-          <button type="button" className="view-toolbar-btn" title="Close studio" onClick={() => void close()}><X size={14} /></button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarClose)} onClick={() => void close()}><X size={14} /></button>
         </div>
       </div>
 
@@ -524,14 +584,14 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
             <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
                 <div style={{ display: "grid", gap: 4 }}>
-                  <span className="settings-session-label">THEME_STUDIO</span>
+                  <span className="settings-session-label">{formatLabel(themeStudioLabels.panelKicker)}</span>
                   <strong style={{ fontSize: 14 }}>{formatLabel(themeStudioLabels.headerTitle)}</strong>
                   <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(themeStudioLabels.headerSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
-                  <span className="settings-chip">SPLIT + SINGLE</span>
-                  <span className="settings-chip">SETTINGS_CONTENT</span>
-                  <span className="settings-chip">EN_FALLBACK</span>
+                  <span className="settings-chip">{formatLabel(themeStudioLabels.settingsChipSplitSingle)}</span>
+                  <span className="settings-chip">{formatLabel(themeStudioLabels.settingsChipSettingsContent)}</span>
+                  <span className="settings-chip">{formatLabel(themeStudioLabels.settingsChipEnglishFallback)}</span>
                 </div>
               </div>
             </div>
@@ -541,7 +601,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
                 <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: "grid", gap: 16, paddingRight: 12 }}>
                   {inspectorPane}
                 </div>
-                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label="Resize Theme Studio panes">
+                <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? "dragging" : ""}`} role="separator" aria-orientation="vertical" aria-label={formatLabel(themeStudioLabels.toolbarResizePanes)}>
                   <div className="editor-splitter-handle" />
                 </div>
                 <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: "grid", gap: 16, paddingLeft: 12 }}>

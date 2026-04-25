@@ -11,6 +11,9 @@ describe('markdown/editor alignment token contract', () => {
     expect(rootCss).toContain('--editor-line-rhythm: var(--editor-line-height);');
     expect(rootCss).toContain('--markdown-line-height: var(--editor-line-rhythm);');
     expect(rootCss).toContain('--markdown-heading-line-height: calc(1.1 + ((var(--ui-scale) - 1) * 0.35));');
+    expect(rootCss).toContain('--pdf-page-size: A4;');
+    expect(rootCss).toContain('--pdf-page-margin-block: 14mm;');
+    expect(rootCss).toContain('--pdf-page-margin-inline: 16mm;');
   });
 
   it('uses shared tokens for editor and markdown rhythm', () => {
@@ -24,10 +27,46 @@ describe('markdown/editor alignment token contract', () => {
     expect(editorCss).toContain('width: var(--line-number-gutter-width);');
   });
 
+  it('defines PDF print pages and page-break controls through tokens', () => {
+    const printCss = read('./base/chassis/print.css');
+    const markdownCss = read('./base/markdown.css');
+
+    expect(printCss).toContain('@page mdwrk-pdf-portrait');
+    expect(printCss).toContain('size: A4 portrait;');
+    expect(printCss).toContain('@page mdwrk-pdf-landscape');
+    expect(printCss).toContain('size: A4 landscape;');
+    expect(printCss).toContain('margin: var(--pdf-page-margin-block, 14mm) var(--pdf-page-margin-inline, 16mm);');
+    expect(markdownCss).toContain('font-size: var(--pdf-content-font-size, 10.5pt);');
+    expect(markdownCss).toContain('break-before: page;');
+  });
+
   it('keeps inline single-backtick code close to paragraph sizing', () => {
     const markdownCss = read('./base/markdown.css');
 
     expect(markdownCss).toContain('font-size: calc(1em + 1px);');
     expect(markdownCss).toContain('line-height: 1.35;');
+  });
+
+  it('prevents editor and preview surfaces from creating horizontal scroll', () => {
+    const editorCss = read('./base/ui-editor.css');
+    const markdownCss = read('./base/markdown.css');
+    const portableEditorCss = read('../../../packages/editor/markdown-editor-react/src/styles/default.css');
+    const portableRendererCss = read('../../../packages/renderer/markdown-renderer-react/src/styles/default.css');
+
+    expect(editorCss).toContain('white-space: pre-wrap;');
+    expect(editorCss).toContain('overflow-x: hidden;');
+    expect(editorCss).toContain('overflow-wrap: anywhere;');
+    expect(editorCss).toContain('--preview-pane-inline-padding: clamp(18px, 4vw, 64px);');
+    expect(editorCss).toContain('padding: 18px var(--preview-pane-inline-padding) 24px;');
+    expect(editorCss).toContain('max-width: 78ch;');
+    expect(editorCss).toContain('.preview-pane .markdown-body > p');
+    expect(markdownCss).toContain('width: 100%;');
+    expect(markdownCss).toContain('table-layout: fixed;');
+    expect(markdownCss).toContain('white-space: pre-wrap;');
+    expect(markdownCss).toContain('overflow-x: hidden;');
+    expect(portableEditorCss).toContain('overflow-wrap: anywhere;');
+    expect(portableEditorCss).toContain('overflow-x: hidden;');
+    expect(portableRendererCss).toContain('table-layout: fixed;');
+    expect(portableRendererCss).toContain('overflow-x: hidden !important;');
   });
 });

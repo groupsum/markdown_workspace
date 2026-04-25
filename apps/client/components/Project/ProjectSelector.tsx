@@ -131,48 +131,48 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               >
                 <div className="project-create-modal-header">
                   <h2 id="project-create-title" className="project-create-title">
-                    Initialize_New_Vault
+                    {t('core.project-selector.create.title', 'Initialize_New_Vault')}
                   </h2>
                   <button
                     type="button"
                     className="project-create-close"
                     onClick={() => setIsCreating(false)}
                   >
-                    CLOSE
+                    {t('core.common.close', 'CLOSE')}
                   </button>
                 </div>
                 <form onSubmit={handleCreate} className="project-create-form">
                   <div className="project-input-group">
-                    <label className="project-input-label">Project_Identity_Tag</label>
+                    <label className="project-input-label">{t('core.project-selector.create.identity-tag', 'Project_Identity_Tag')}</label>
                     <input
                       autoFocus
                       className="project-input"
-                      placeholder="E.G. NEURAL_INTERFACE_V1"
+                      placeholder={t('core.project-selector.create.placeholder', 'E.G. NEURAL_INTERFACE_V1')}
                       value={newProjectName}
                       onChange={e => setNewProjectName(e.target.value)}
                     />
                   </div>
                   <div className="project-input-group">
-                    <label className="project-input-label">Assigned_Skin</label>
+                    <label className="project-input-label">{t('core.project-selector.create.assigned-skin', 'Assigned_Skin')}</label>
                     <button
                       type="button"
                       onClick={() => setShowThemeModal(true)}
                       className="project-theme-trigger"
                     >
                       <span className="project-theme-trigger-label">{currentThemeDef.name}</span>
-                      <span className="project-theme-trigger-meta">OPEN_{t('core.project-selector.theme.matrix', 'THEME_MATRIX')}</span>
+                      <span className="project-theme-trigger-meta">{t('core.project-selector.theme.open-prefix', 'OPEN_')}{t('core.project-selector.theme.matrix', 'THEME_MATRIX')}</span>
                     </button>
                   </div>
                   {showDesktopOpen ? (
                     <p className="project-create-note">
-                      DESKTOP PROJECTS ARE CREATED AS REAL FOLDERS ON YOUR DESKTOP AND SYNCED INTO THE WORKSPACE.
+                      {t('core.project-selector.create.desktop-note', 'DESKTOP PROJECTS ARE CREATED AS REAL FOLDERS ON YOUR DESKTOP AND SYNCED INTO THE WORKSPACE.')}
                     </p>
                   ) : null}
                   <div className="project-form-actions">
                     <button type="submit" className="project-btn-submit">
-                      {showDesktopOpen ? 'CREATE_DESKTOP_CORE' : 'INITIALIZE_CORE'}
+                      {showDesktopOpen ? t('core.project-selector.create.desktop-submit', 'CREATE_DESKTOP_CORE') : t('core.project-selector.create.submit', 'INITIALIZE_CORE')}
                     </button>
-                    <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">ABORT_CMD</button>
+                    <button type="button" onClick={() => setIsCreating(false)} className="project-btn-cancel">{t('core.project-selector.abort', 'ABORT_CMD')}</button>
                   </div>
                 </form>
               </div>
@@ -193,20 +193,20 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               >
                 <div className="theme-selector-modal-header">
                   <h2 id="theme-selector-title" className="theme-selector-title">
-                    Theme_Matrix
+                    {t('core.project-selector.theme.matrix-title', 'Theme_Matrix')}
                   </h2>
                   <button
                     type="button"
                     className="theme-selector-close"
                     onClick={() => setShowThemeModal(false)}
                   >
-                    CLOSE
+                    {t('core.common.close', 'CLOSE')}
                   </button>
                 </div>
                 <div className="theme-selector-modal-body">
                   <div className="theme-selector-meta">
-                    <span className="theme-meta-label">PROJECT_TITLE</span>
-                    <span className="theme-meta-value">{newProjectName.trim() || 'UNTITLED_PROJECT'}</span>
+                    <span className="theme-meta-label">{t('core.project-selector.theme.project-title', 'PROJECT_TITLE')}</span>
+                    <span className="theme-meta-value">{newProjectName.trim() || t('core.project-selector.theme.untitled-project', 'UNTITLED_PROJECT')}</span>
                     <span className="theme-meta-count">{currentThemeIndex + 1}/{THEMES.length}</span>
                   </div>
                   <div className="theme-modal-grid">
@@ -226,7 +226,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                         </div>
                         <span className="theme-desc">{theme.description}</span>
                         <span className="text-[10px] uppercase text-[var(--fg-muted)]">
-                          Code Syntax • {theme.syntaxTheme.name}
+                          {t('core.project-selector.theme.code-syntax', 'Code Syntax')} • {theme.syntaxTheme.name}
                         </span>
                         <span className="text-[11px] text-[var(--fg-muted)]">
                           {theme.syntaxTheme.palette}
@@ -253,26 +253,26 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
               >
                 <div className="project-delete-modal-header">
                   <h2 id="project-delete-title" className="project-delete-title">
-                    Delete Project
+                    {t('core.project-selector.delete.title', 'Delete Project')}
                   </h2>
                   <button
                     type="button"
                     className="project-delete-close"
                     onClick={() => setProjectToDelete(null)}
                   >
-                    CLOSE
+                    {t('core.common.close', 'CLOSE')}
                   </button>
                 </div>
                 <div className="project-delete-modal-body">
                   <div className="project-delete-icon-wrap" aria-hidden="true">
                     <AlertTriangle size={20} />
                   </div>
-                  <p className="project-delete-kicker">DESTRUCTIVE_ACTION</p>
+                  <p className="project-delete-kicker">{t('core.project-selector.delete.kicker', 'DESTRUCTIVE_ACTION')}</p>
                   <p className="project-delete-message">
-                    Delete <span>{projectToDelete.name}</span>?
+                    {t('core.project-selector.delete.prefix', 'Delete')} <span>{projectToDelete.name}</span>{t('core.project-selector.delete.suffix', '?')}
                   </p>
-                  <p className="project-delete-warning">This removes the project entry from the selector view.</p>
-                  <p className="project-delete-meta">Local IndexedDB content remains available until manually cleared.</p>
+                  <p className="project-delete-warning">{t('core.project-selector.delete.warning', 'This removes the project entry from the selector view.')}</p>
+                  <p className="project-delete-meta">{t('core.project-selector.delete.meta', 'Local IndexedDB content remains available until manually cleared.')}</p>
                 </div>
                 <div className="project-delete-actions">
                   <button
@@ -280,14 +280,14 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                     className="project-btn-cancel"
                     onClick={() => setProjectToDelete(null)}
                   >
-                    ABORT_CMD
+                    {t('core.project-selector.abort', 'ABORT_CMD')}
                   </button>
                   <button
                     type="button"
                     className="project-btn-submit project-delete-confirm"
                     onClick={handleDeleteConfirm}
                   >
-                    PURGE_RECORD
+                    {t('core.project-selector.delete.confirm', 'PURGE_RECORD')}
                   </button>
                 </div>
               </div>
@@ -313,7 +313,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                           setProjectToDelete(p);
                         }}
                         className="p-1.5 text-[var(--fg-muted)] hover:text-[var(--status-error)] transition-colors hover:bg-[var(--bg-inset)]"
-                        title="Eject Project"
+                        title={t('core.project-selector.eject', 'Eject Project')}
                       >
                         <Trash2 size={14} />
                       </button>
@@ -332,7 +332,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                     ) : (
                       <div className="flex items-center gap-1 opacity-60">
                         <Zap size={10} />
-                        <span>LOCAL_STATION</span>
+                        <span>{t('core.project-selector.local-station', 'LOCAL_STATION')}</span>
                       </div>
                     )}
                   </div>
@@ -341,7 +341,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 <div className="project-card-footer">
                   <div className="flex items-center gap-2">
                     <Clock size={10} />
-                    <span>LAST_MOD: {new Date(p.lastOpened).toLocaleDateString()}</span>
+                    <span>{t('core.project-selector.last-modified', 'LAST_MOD')}: {new Date(p.lastOpened).toLocaleDateString()}</span>
                   </div>
                   <ArrowRight size={14} className="opacity-40" />
                 </div>
@@ -351,8 +351,8 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             {projects.length === 0 && !isCreating && (
               <div className="col-span-full py-20 flex flex-col items-center justify-center border-2 border-dashed border-[var(--border-color)] opacity-40">
                 <Box size={48} className="mb-4" />
-                <p className="font-mono text-sm uppercase">No_Active_Vaults_Found</p>
-                <button onClick={() => setIsCreating(true)} className="mt-4 underline text-xs font-black">CREATE_FIRST_PLATE</button>
+                <p className="font-mono text-sm uppercase">{t('core.project-selector.empty', 'No_Active_Vaults_Found')}</p>
+                <button onClick={() => setIsCreating(true)} className="mt-4 underline text-xs font-black">{t('core.project-selector.create-first', 'CREATE_FIRST_PLATE')}</button>
               </div>
             )}
           </div>

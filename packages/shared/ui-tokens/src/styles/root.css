@@ -43,6 +43,12 @@
   --editor-line-rhythm: var(--editor-line-height);
   --markdown-line-height: var(--editor-line-rhythm);
   --markdown-heading-line-height: calc(1.1 + ((var(--ui-scale) - 1) * 0.35));
+  --pdf-page-size: A4;
+  --pdf-page-margin-block: 14mm;
+  --pdf-page-margin-inline: 16mm;
+  --pdf-content-font-size: 10.5pt;
+  --pdf-content-line-height: 1.5;
+  --pdf-heading-keep-with-next: avoid;
   --line-number-gutter-width: calc(30px * var(--ui-scale));
   --mobile-rail-expanded-width: 100vw;
   --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);

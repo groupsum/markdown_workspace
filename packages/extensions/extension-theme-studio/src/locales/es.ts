@@ -1,8 +1,10 @@
 import { THEME_STUDIO_EXTENSION_ID } from "../constants.js";
+import { themeStudioLabels } from "../i18n.js";
 
 export const themeStudioEsCatalog = {
   locale: "es",
   messages: {
+    ...Object.fromEntries(Object.values(themeStudioLabels).map((label) => [label.key!, label.defaultMessage])),
     [`${THEME_STUDIO_EXTENSION_ID}.manifest.displayName`]: "Estudio de Temas",
     [`${THEME_STUDIO_EXTENSION_ID}.manifest.description`]: "Extensión integrada para crear temas, inspeccionar tokens, previsualizar puentes de render/editor y exportar artefactos portátiles.",
     [`${THEME_STUDIO_EXTENSION_ID}.commands.open.title`]: "Abrir Estudio de Temas",
@@ -22,6 +24,44 @@ export const themeStudioEsCatalog = {
     [`${THEME_STUDIO_EXTENSION_ID}.status.busy`]: "Procesando…",
     [`${THEME_STUDIO_EXTENSION_ID}.status.applied`]: "Borrador aplicado",
     [`${THEME_STUDIO_EXTENSION_ID}.status.reverted`]: "Borrador revertido",
-    [`${THEME_STUDIO_EXTENSION_ID}.status.exported`]: "Exportaciones generadas"
+    [`${THEME_STUDIO_EXTENSION_ID}.status.exported`]: "Exportaciones generadas",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.kicker`]: "ESTUDIO_DE_TEMAS",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.title`]: "Estudio de Temas",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.description`]: "Abre el panel de trabajo para inspeccionar puentes de tokens, previsualizar la salida del render/editor y exportar artefactos de tema portátiles.",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.themeId`]: "ID_TEMA",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.tokens`]: "TOKENS",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.relationships`]: "RELACIONES",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.status`]: "ESTADO",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.paneOnly`]: "SOLO_PANEL",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.splitSingle`]: "DIVIDIDO + UNICO",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.settingsContent`]: "CONTENIDO_CONFIG",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.englishFallback`]: "RESPALDO_EN",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.actions.openStudio`]: "ABRIR_ESTUDIO",
+    [`${THEME_STUDIO_EXTENSION_ID}.panel.kicker`]: "ESTUDIO_DE_TEMAS",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.chip`]: "NAVEGADOR_TEMAS",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.filter.placeholder`]: "Filtrar tokens, selectores, exportaciones",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.filter.aria`]: "Filtrar navegador de temas",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.metadata`]: "Metadatos",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.tokens`]: "Tokens",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.relationships`]: "Relaciones",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.exports`]: "Exportaciones",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.tokens.title`]: "NAVEGADOR_TOKENS",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.relationships.title`]: "NAVEGADOR_RELACIONES",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.tokens.empty`]: "Ningun token coincide.",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.relationships.empty`]: "Ninguna relacion coincide.",
+    [`${THEME_STUDIO_EXTENSION_ID}.panel.export.target.hostCss`]: "CSS del host",
+    [`${THEME_STUDIO_EXTENSION_ID}.panel.export.target.rendererCss`]: "CSS del renderizador",
+    [`${THEME_STUDIO_EXTENSION_ID}.panel.export.target.editorCss`]: "CSS del editor",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.label`]: "Barra de herramientas del Estudio de Temas",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.toggleSidebar`]: "Alternar barra lateral",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.singlePane`]: "Panel unico",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.splitScreen`]: "Pantalla dividida",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.refresh`]: "Actualizar datos del tema",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.import`]: "Importar paquete de tema",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.preview`]: "Previsualizar borrador de tema",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.apply`]: "Aplicar borrador de tema",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.revert`]: "Revertir borrador de tema",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.close`]: "Cerrar estudio",
+    [`${THEME_STUDIO_EXTENSION_ID}.toolbar.resizePanes`]: "Redimensionar paneles del Estudio de Temas"
   }
 } as const;

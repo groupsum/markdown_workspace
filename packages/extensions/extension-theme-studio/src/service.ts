@@ -148,6 +148,18 @@ export function createThemeStudioService(deps: ThemeStudioServiceDependencies): 
         setSnapshot({ currentTokens, infoMessage: format(themeStudioLabels.statusBusy) });
       }
     },
+    async clearDraftToken(token) {
+      const settings = await readThemeStudioSettings(deps.context.config);
+      const nextDraft = { ...snapshot.draftTokens };
+      delete nextDraft[token];
+      setSnapshot({ draftTokens: nextDraft, lastError: null });
+      if (settings.autoPreviewOnEdit) {
+        await deps.context.host.theme.discardDraft();
+        await deps.context.host.theme.previewTheme(nextDraft);
+        const currentTokens = await deps.context.host.theme.getTokenMap();
+        setSnapshot({ currentTokens, infoMessage: format(themeStudioLabels.statusBusy) });
+      }
+    },
     async preview() {
       setSnapshot({ busy: true, infoMessage: format(themeStudioLabels.statusBusy), lastError: null });
       try {

@@ -12,7 +12,8 @@ function resolveSettingsPanel(panel: string | undefined): SettingsPanelId {
   return panel && SETTINGS_PANELS.has(panel as SettingsPanelId) ? (panel as SettingsPanelId) : 'extensions';
 }
 
-function createSettingsSectionPlaceholder(extensionId: string, section: RegisteredSettingsSection): React.ReactNode {
+function createSettingsSectionPlaceholder(services: ClientRuntimeServices, extensionId: string, section: RegisteredSettingsSection): React.ReactNode {
+  const t = (key: string, defaultMessage: string) => services.i18n.format({ key, defaultMessage });
   return (
     <div className="settings-pane">
       <div className="settings-card settings-card-stack">
@@ -22,21 +23,21 @@ function createSettingsSectionPlaceholder(extensionId: string, section: Register
         )}
         <div className="settings-session-grid">
           <div className="settings-session-item">
-            <span className="settings-session-label">EXTENSION</span>
+            <span className="settings-session-label">{t('core.extensions.placeholder.extension', 'EXTENSION')}</span>
             <span className="settings-session-value">{extensionId}</span>
           </div>
           <div className="settings-session-item">
-            <span className="settings-session-label">SECTION_ID</span>
+            <span className="settings-session-label">{t('core.extensions.placeholder.section-id', 'SECTION_ID')}</span>
             <span className="settings-session-value">{section.id}</span>
           </div>
           {section.schemaPath && (
             <div className="settings-session-item">
-              <span className="settings-session-label">SCHEMA_PATH</span>
+              <span className="settings-session-label">{t('core.extensions.placeholder.schema-path', 'SCHEMA_PATH')}</span>
               <span className="settings-session-value">{section.schemaPath}</span>
             </div>
           )}
         </div>
-        <p className="text-[10px] uppercase text-[var(--fg-muted)]">Settings renderer unavailable for this extension section.</p>
+        <p className="text-[10px] uppercase text-[var(--fg-muted)]">{t('core.extensions.placeholder.unavailable', 'Settings renderer unavailable for this extension section.')}</p>
       </div>
     </div>
   );
@@ -119,7 +120,7 @@ export function createClientExtensionRegistrationSink(services: ClientRuntimeSer
         icon: section.icon ?? { kind: 'lucide', name: 'Settings' },
         extensionId,
         schema,
-        render: render ?? (schema ? undefined : () => createSettingsSectionPlaceholder(extensionId, section)),
+        render: render ?? (schema ? undefined : () => createSettingsSectionPlaceholder(services, extensionId, section)),
       });
     },
   };

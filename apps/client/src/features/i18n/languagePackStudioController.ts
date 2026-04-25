@@ -29,6 +29,11 @@ export interface LanguagePackStudioController {
     messages: Record<string, string>;
     enabled?: boolean;
   }): Promise<LanguagePackArtifact>;
+  updateArtifact(locale: string, input: {
+    label?: string;
+    messages: Record<string, string>;
+    enabled?: boolean;
+  }): Promise<LanguagePackArtifact>;
   activate(locale: string): Promise<void>;
   remove(locale: string): Promise<void>;
   setEnabled(locale: string, enabled: boolean): Promise<void>;
@@ -116,6 +121,28 @@ export function createLanguagePackStudioController(options: LanguagePackStudioCo
         locale: input.locale,
         label: input.label,
         enabled: input.enabled ?? true,
+        messages: input.messages,
+      });
+      if (!pack) {
+        throw new Error('Locale and at least one message are required.');
+      }
+      await upsertStoredLanguagePack(pack);
+      if (pack.enabled) {
+        options.i18n.registerCatalog({ locale: pack.locale, messages: pack.messages });
+        await options.i18n.ensureLocale(pack.locale);
+      }
+      emit();
+      return pack;
+    },
+    async updateArtifact(locale, input) {
+      const normalizedLocale = locale.trim().toLowerCase();
+      const existing = readStoredLanguagePacksSync().find((pack) => pack.locale === normalizedLocale);
+      const pack = normalizeLanguagePackArtifact({
+        kind: 'mdwrk-language-pack',
+        version: 1,
+        locale: normalizedLocale,
+        label: input.label ?? existing?.label ?? normalizedLocale,
+        enabled: input.enabled ?? existing?.enabled ?? true,
         messages: input.messages,
       });
       if (!pack) {

@@ -136,6 +136,7 @@
   display: flex;
   height: 100%;
   min-height: 100%;
+  min-width: 0;
   overflow: hidden;
   position: relative;
 }
@@ -144,6 +145,7 @@
   flex: 1;
   height: 100%;
   min-height: 100%;
+  min-width: 0;
 }
 
 .editor-gutter {
@@ -166,7 +168,10 @@
 }
 .editor-textarea {
   flex: 1;
+  min-width: 0;
   min-height: 100%;
+  width: 100%;
+  max-width: 100%;
   background: var(--bg-panel);
   border: none;
   resize: none;
@@ -176,6 +181,10 @@
   line-height: var(--editor-line-rhythm);
   color: var(--fg-primary);
   outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .editor-splitter {
@@ -200,30 +209,54 @@
 }
 .preview-pane {
   flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   background: var(--bg-panel);
   padding: 0;
 }
 
 .workspace-markdown-renderer-shell {
+  --preview-pane-inline-padding: clamp(18px, 4vw, 64px);
   flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   min-height: 100%;
   overflow-y: auto;
-  padding: 18px 0 24px;
+  padding: 18px var(--preview-pane-inline-padding) 24px;
+  box-sizing: border-box;
 }
 
 .preview-pane .markdown-body {
+  width: 100%;
   max-width: 78ch;
   margin-block: 0;
-  margin-inline: clamp(14px, 4vw, 40px);
+  margin-inline: auto;
   overflow-wrap: anywhere;
   word-break: break-word;
+  line-break: anywhere;
+}
+
+.preview-pane .markdown-body > p {
+  white-space: pre-wrap;
 }
 
 .preview-pane .markdown-body pre,
 .preview-pane .markdown-body code {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.preview-pane .markdown-body pre,
+.preview-pane .markdown-body .md-code-block,
+.preview-pane .markdown-body .md-code-surface,
+.preview-pane .markdown-body table,
+.preview-pane .markdown-body .md-table {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .workspace-markdown-renderer-warning {
   margin: 0 0 12px;
@@ -346,49 +379,50 @@
   }
 
   .workspace-markdown-renderer-shell {
-    padding: 12px 0 18px;
+    --preview-pane-inline-padding: clamp(12px, 4vw, 28px);
+    padding-block: 12px 18px;
   }
 }
 
 @media (max-aspect-ratio: 3/4) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(12px, 4.5vw, 30px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(12px, 4.5vw, 30px);
   }
 }
 
 @media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(16px, 4vw, 36px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(16px, 4vw, 36px);
   }
 }
 
 @media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(18px, 5vw, 56px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(18px, 5vw, 56px);
   }
 }
 
 @media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(24px, 6vw, 84px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(24px, 6vw, 84px);
   }
 }
 
 @media (min-aspect-ratio: 21/9) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(32px, 8vw, 120px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(32px, 8vw, 120px);
   }
 }
 
 @media (max-height: 599px) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(12px, 3vw, 26px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(12px, 3vw, 26px);
   }
 }
 
 @media (min-height: 900px) {
-  .preview-pane .markdown-body {
-    margin-inline: clamp(20px, 5vw, 72px);
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(20px, 5vw, 72px);
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FileNode } from '../../types';
 import { FileText, Folder, Command, ArrowRight } from 'lucide-react';
+import { useClientI18n } from '../../src/features/i18n/useClientI18n';
 
 export interface CommandPaletteActionItem {
   readonly id: string;
@@ -27,6 +28,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   commands,
   actions,
 }) => {
+  const { t } = useClientI18n();
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -94,7 +96,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           <input
             ref={inputRef}
             className="cmd-input"
-            placeholder="Type a command or search files..."
+            placeholder={t('core.command-palette.placeholder', 'Type a command or search files...')}
             value={query}
             onChange={(event) => {
               setQuery(event.target.value);
@@ -102,11 +104,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             }}
             onKeyDown={handleKeyDown}
           />
-          <div className="cmd-badge">ESC</div>
+          <div className="cmd-badge">{t('core.command-palette.escape', 'ESC')}</div>
         </div>
 
         <div className="cmd-list">
-          {combinedItems.length === 0 && <div className="cmd-empty">NO RESULTS</div>}
+          {combinedItems.length === 0 && <div className="cmd-empty">{t('core.command-palette.no-results', 'NO RESULTS')}</div>}
           {combinedItems.map((item, index) => (
             <div
               key={`${item.type}-${item.data.id}`}
@@ -118,13 +120,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 <>
                   <span className="cmd-icon-wrapper">{item.data.icon || <ArrowRight size={14} />}</span>
                   <span className="cmd-item-text">{item.data.label}</span>
-                  <span className="cmd-item-type">CMD</span>
+                  <span className="cmd-item-type">{t('core.command-palette.type.command', 'CMD')}</span>
                 </>
               ) : (
                 <>
                   <span className="cmd-item-icon">{item.data.type === 'folder' ? <Folder size={14} /> : <FileText size={14} />}</span>
                   <span className="cmd-item-text">{item.data.name}</span>
-                  <span className="cmd-item-type">FILE</span>
+                  <span className="cmd-item-type">{t('core.command-palette.type.file', 'FILE')}</span>
                 </>
               )}
             </div>

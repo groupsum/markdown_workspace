@@ -400,6 +400,7 @@ export const useApp = () => {
   useEffect(() => {
     const clearPrintAttributes = () => {
       document.body.removeAttribute('data-print-background');
+      document.body.removeAttribute('data-pdf-page-orientation');
     };
     window.addEventListener('afterprint', clearPrintAttributes);
     return () => {
@@ -693,6 +694,7 @@ export const useApp = () => {
         requestAnimationFrame(() => window.print());
       });
       document.body.setAttribute('data-print-background', workspacePreferences.printBackground);
+      document.body.setAttribute('data-pdf-page-orientation', workspacePreferences.pdfPageOrientation);
   };
 
   const handleGitConfigUpdate = async (config: GitConfig) => {

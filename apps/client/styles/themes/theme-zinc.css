@@ -32,23 +32,6 @@
 }
 
 .theme-zinc .app-header { background: #d4d4d8; }
-.theme-zinc .chassis-scaler {
-  grid-template-areas:
-    "top top"
-    "rail main"
-    "foot foot";
-}
-
-.theme-zinc .app-header,
-.theme-zinc .status-bar {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.theme-zinc .action-rail {
-  grid-row: 2;
-}
-
 .theme-zinc .tab-item {
   background: #a1a1aa;
   color: #3f3f46;
