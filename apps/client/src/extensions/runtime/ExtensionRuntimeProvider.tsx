@@ -73,7 +73,7 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       renderWorkspace: () => (
         <div className="settings-pane">
           <div className="settings-card settings-card-stack">
-            <span className="font-bold text-[11px] uppercase">{t('core.workspace-files.kicker', 'WORKSPACE_FILES')}</span>
+            <span className="font-bold text-[11px] uppercase">{t('core.workspace-files.kicker', 'Workspace Files')}</span>
             <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">
               {t('core.workspace-files.description', 'File browsing, editing, and previewing are mounted as the default workspace module surface.')}
             </p>
@@ -83,8 +83,8 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       renderExplorer: () => (
         <div className="workspace-panel-content">
           <div className="settings-card settings-card-stack">
-            <span className="settings-session-label">{t('core.workspace-files.explorer', 'FILE_EXPLORER')}</span>
-            <span className="settings-session-value">{snapshotRef.current.app.state.currentProject?.name ?? t('core.workspace-files.no-project', 'NO_PROJECT')}</span>
+            <span className="settings-session-label">{t('core.workspace-files.explorer', 'File Explorer')}</span>
+            <span className="settings-session-value">{snapshotRef.current.app.state.currentProject?.name ?? t('core.workspace-files.no-project', 'No project')}</span>
           </div>
         </div>
       ),

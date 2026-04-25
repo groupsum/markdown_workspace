@@ -103,10 +103,13 @@ describe('extension workspace surfaces', () => {
     expect(screen.getByLabelText('Filter extension browser')).toBeInTheDocument();
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
-    await waitFor(() => expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByLabelText('Resize Extension Manager panes')).not.toBeInTheDocument());
+    expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument();
 
     fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
-    await waitFor(() => expect(screen.getByText('Catalog Browser')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText('Resize Extension Manager panes')).toBeInTheDocument());
+    expect(screen.getByText('Quick Actions')).toBeInTheDocument();
+    expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument();
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
     await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());
@@ -157,6 +160,8 @@ describe('extension workspace surfaces', () => {
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter theme browser')).toBeInTheDocument();
     expect(screen.getByLabelText('Color picker --bg-app')).toBeInTheDocument();
+    expect(screen.getByText('Live preview surface')).toBeInTheDocument();
+    expect(screen.queryByText('Export metadata')).not.toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText('Color picker --bg-app'), { target: { value: '#334455' } });
     await waitFor(() => expect(service.setDraftToken).toHaveBeenCalledWith('--bg-app', '#334455'));
@@ -208,7 +213,7 @@ describe('extension workspace surfaces', () => {
 
     fireEvent.click(screen.getByText('Deutsch'));
     fireEvent.change(screen.getByLabelText('Token value core.views.settings.title'), { target: { value: 'Systemeinstellungen' } });
-    fireEvent.click(screen.getByText('SAVE_PACK'));
+    fireEvent.click(screen.getByText('Save pack'));
     await waitFor(() => expect(controller.updateArtifact).toHaveBeenCalledWith('de', expect.objectContaining({
       label: 'Deutsch',
       messages: { 'core.views.settings.title': 'Systemeinstellungen' },
@@ -252,8 +257,8 @@ describe('extension workspace surfaces', () => {
       </>,
     );
 
-    expect(screen.getByText('OPEN_MANAGER')).toBeInTheDocument();
-    expect(screen.getAllByText('OPEN_STUDIO').length).toBe(2);
+    expect(screen.getByText('Open manager')).toBeInTheDocument();
+    expect(screen.getAllByText('Open studio').length).toBe(2);
     expect(screen.getAllByText('INDEXEDDB').length).toBeGreaterThan(1);
   });
 });

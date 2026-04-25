@@ -46,6 +46,14 @@ function toggleValue(values: readonly string[], target: string): readonly string
     : [...values, target];
 }
 
+function humanizePreferenceId(id: string): string {
+  return id
+    .split(/[.-]/)
+    .filter(Boolean)
+    .map((part) => part === 'html' ? 'HTML' : part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 export const WorkspacePreferencesPanel: React.FC = () => {
   const preferences = useWorkspacePreferences();
   const { t } = useClientI18n();
@@ -54,14 +62,14 @@ export const WorkspacePreferencesPanel: React.FC = () => {
   const toPdfPageOrientation = (value: string): WorkspacePdfPageOrientation =>
     value === 'landscape' ? 'landscape' : 'portrait';
   const formatPreferenceItem = (scope: 'action-rail-button' | 'editor-toolbar-button', id: string): string =>
-    t(`core.settings.workspace-preferences.${scope}.${id}`, id.toUpperCase());
+    t(`core.settings.workspace-preferences.${scope}.${id}`, humanizePreferenceId(id));
 
   return (
     <div className="settings-pane">
       <div className="flex flex-col gap-4">
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.surfaces.title', 'WORKSPACE_SURFACES')}</span>
+            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.surfaces.title', 'Workspace surfaces')}</span>
             <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.surfaces.description', 'Configure preview policy visibility, action-rail density, and export/print output handling.')}
             </p>
@@ -73,53 +81,53 @@ export const WorkspacePreferencesPanel: React.FC = () => {
               onChange={(event) => updateWorkspacePreferences({ hidePreviewPolicy: !event.target.checked })}
             />
             <span className="pwa-toggle-indicator" />
-            <span className="pwa-toggle-label">{t('core.settings.workspace-preferences.preview-policy', 'SHOW_PREVIEW_POLICY')}</span>
+            <span className="pwa-toggle-label">{t('core.settings.workspace-preferences.preview-policy', 'Show preview policy')}</span>
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.action-rail-display', 'ACTION_RAIL_DISPLAY')}</span>
+            <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.action-rail-display', 'Action rail display')}</span>
             <select
               className="modal-input !text-xs !py-3"
               value={preferences.actionRailDisplayMode}
               onChange={(event) => updateWorkspacePreferences({ actionRailDisplayMode: event.target.value === 'labeled' ? 'labeled' : 'icon-only' })}
             >
-              <option value="icon-only">{t('core.settings.workspace-preferences.action-rail-display.icon-only', 'ICON_ONLY')}</option>
-              <option value="labeled">{t('core.settings.workspace-preferences.action-rail-display.labeled', 'ICON_WITH_LABELS')}</option>
+              <option value="icon-only">{t('core.settings.workspace-preferences.action-rail-display.icon-only', 'Icon only')}</option>
+              <option value="labeled">{t('core.settings.workspace-preferences.action-rail-display.labeled', 'Icon with labels')}</option>
             </select>
           </label>
           <div className="settings-grid-2">
             <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.html-export-background', 'HTML_EXPORT_BACKGROUND')}</span>
+              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.html-export-background', 'HTML export background')}</span>
               <select
                 className="modal-input !text-xs !py-3"
                 value={preferences.htmlExportBackground}
                 onChange={(event) => updateWorkspacePreferences({ htmlExportBackground: toBackgroundMode(event.target.value) })}
               >
-                <option value="theme">{t('core.settings.workspace-preferences.background.theme', 'THEME_BACKGROUND')}</option>
-                <option value="plain">{t('core.settings.workspace-preferences.background.plain', 'NO_BACKGROUND')}</option>
-                <option value="grayscale">{t('core.settings.workspace-preferences.background.grayscale', 'GRAYSCALE')}</option>
+                <option value="theme">{t('core.settings.workspace-preferences.background.theme', 'Theme background')}</option>
+                <option value="plain">{t('core.settings.workspace-preferences.background.plain', 'White background')}</option>
+                <option value="grayscale">{t('core.settings.workspace-preferences.background.grayscale', 'Grayscale')}</option>
               </select>
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.pdf-page-orientation', 'PDF_PAGE_ORIENTATION')}</span>
+              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.pdf-page-orientation', 'PDF page orientation')}</span>
               <select
                 className="modal-input !text-xs !py-3"
                 value={preferences.pdfPageOrientation}
                 onChange={(event) => updateWorkspacePreferences({ pdfPageOrientation: toPdfPageOrientation(event.target.value) })}
               >
-                <option value="portrait">{t('core.settings.workspace-preferences.pdf-page-orientation.portrait', 'A4_PORTRAIT')}</option>
-                <option value="landscape">{t('core.settings.workspace-preferences.pdf-page-orientation.landscape', 'A4_LANDSCAPE')}</option>
+                <option value="portrait">{t('core.settings.workspace-preferences.pdf-page-orientation.portrait', 'A4 portrait')}</option>
+                <option value="landscape">{t('core.settings.workspace-preferences.pdf-page-orientation.landscape', 'A4 landscape')}</option>
               </select>
             </label>
             <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.print-background', 'PRINT_BACKGROUND')}</span>
+              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.print-background', 'Print background')}</span>
               <select
                 className="modal-input !text-xs !py-3"
                 value={preferences.printBackground}
                 onChange={(event) => updateWorkspacePreferences({ printBackground: toBackgroundMode(event.target.value) })}
               >
-                <option value="theme">{t('core.settings.workspace-preferences.background.theme', 'THEME_BACKGROUND')}</option>
-                <option value="plain">{t('core.settings.workspace-preferences.background.plain', 'NO_BACKGROUND')}</option>
-                <option value="grayscale">{t('core.settings.workspace-preferences.background.grayscale', 'GRAYSCALE')}</option>
+                <option value="theme">{t('core.settings.workspace-preferences.background.theme', 'Theme background')}</option>
+                <option value="plain">{t('core.settings.workspace-preferences.background.plain', 'White background')}</option>
+                <option value="grayscale">{t('core.settings.workspace-preferences.background.grayscale', 'Grayscale')}</option>
               </select>
             </label>
           </div>
@@ -127,7 +135,7 @@ export const WorkspacePreferencesPanel: React.FC = () => {
 
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.action-rail-buttons.title', 'ACTION_RAIL_BUTTONS')}</span>
+            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.action-rail-buttons.title', 'Action rail buttons')}</span>
             <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.action-rail-buttons.description', 'Hide or restore individual action-rail buttons without unregistering their commands.')}
             </p>
@@ -152,7 +160,7 @@ export const WorkspacePreferencesPanel: React.FC = () => {
 
         <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.editor-toolbar-buttons.title', 'EDITOR_TOOLBAR_BUTTONS')}</span>
+            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.editor-toolbar-buttons.title', 'Editor toolbar buttons')}</span>
             <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.editor-toolbar-buttons.description', 'Control which editor-pane toolbar actions remain visible across views and breakpoints.')}
             </p>

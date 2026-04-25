@@ -23,7 +23,7 @@ export const LanguageSettingsPanel: React.FC = () => {
               <span className="settings-session-value">{activeLocale?.label ?? 'English'}</span>
             </div>
             <div className="settings-session-item">
-              <span className="settings-session-label">{t('core.settings.language.locale-id', 'LOCALE_ID')}</span>
+              <span className="settings-session-label">{t('core.settings.language.locale-id', 'Locale ID')}</span>
               <span className="settings-session-value">{activeLocale?.locale ?? 'en'}</span>
             </div>
           </div>
@@ -36,7 +36,7 @@ export const LanguageSettingsPanel: React.FC = () => {
           </div>
           <div className="settings-action-row">
             <div className="settings-session-item flex-1">
-              <span className="settings-session-label">{t('core.settings.language.persistence', 'PERSISTENCE')}</span>
+              <span className="settings-session-label">{t('core.settings.language.persistence', 'Persistence')}</span>
               <span className="settings-session-value">{t('core.settings.language.persisted', 'Language choice persists between sessions.')}</span>
             </div>
           </div>

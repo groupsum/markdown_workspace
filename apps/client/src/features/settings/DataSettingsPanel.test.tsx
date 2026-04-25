@@ -88,15 +88,15 @@ describe('DataSettingsPanel', () => {
   it('renders retained version details and exposes version actions', () => {
     render(<DataSettingsPanel />);
 
-    expect(screen.getByText('RUNNING_VERSION')).toBeTruthy();
-    expect(screen.getByText('INSTALLED_VERSION')).toBeTruthy();
-    expect(screen.getByText('SELECTED_VERSION')).toBeTruthy();
-    expect(screen.getByText('LATEST_VERSION')).toBeTruthy();
-    expect(screen.getByText('NEWER_VERSION_AVAILABLE')).toBeTruthy();
+    expect(screen.getByText('Running version')).toBeTruthy();
+    expect(screen.getByText('Installed version')).toBeTruthy();
+    expect(screen.getByText('Selected version')).toBeTruthy();
+    expect(screen.getByText('Latest version')).toBeTruthy();
+    expect(screen.getByText('Newer version available')).toBeTruthy();
 
-    fireEvent.click(screen.getByText('CHECK_FOR_UPDATES'));
-    fireEvent.click(screen.getByText('SWITCH_TO_LATEST'));
-    fireEvent.change(screen.getByDisplayValue(/1.4.18 \| lattice-idb-v3 \| RETAINED/i), {
+    fireEvent.click(screen.getByText('Check for updates'));
+    fireEvent.click(screen.getByText('Switch to latest'));
+    fireEvent.change(screen.getByDisplayValue(/1.4.18 \| lattice-idb-v3 \| Retained/i), {
       target: { value: '1.4.20' },
     });
 

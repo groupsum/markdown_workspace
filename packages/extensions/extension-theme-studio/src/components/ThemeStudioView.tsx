@@ -139,7 +139,7 @@ type ThemeBrowserStore = {
 const createThemeBrowserStore = (): ThemeBrowserStore => {
   let state: ThemeBrowserState = {
     browserQuery: "",
-    sidebarSection: "metadata",
+    sidebarSection: "tokens",
     selectedTokenName: null,
     selectedRelationshipClass: null,
   };
@@ -370,7 +370,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
 
   const inspectorPane = (
     <div style={{ display: "grid", gap: 16 }}>
-      {(browserState.sidebarSection === "metadata" || layoutMode === "split") && (
+      {browserState.sidebarSection === "metadata" && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 8 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
             <span style={sectionTitleStyle}>{formatLabel(themeStudioLabels.metadataTitle)}</span>
@@ -387,7 +387,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         </div>
       )}
 
-      {(browserState.sidebarSection === "tokens" || layoutMode === "split") && (
+      {browserState.sidebarSection === "tokens" && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div>
             <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
@@ -463,7 +463,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         </div>
       )}
 
-      {(browserState.sidebarSection === "relationships" || layoutMode === "split") && (
+      {browserState.sidebarSection === "relationships" && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div>
             <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.classInspectorTitle)}</div>
@@ -488,7 +488,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         </div>
       )}
 
-      {(browserState.sidebarSection === "exports" || layoutMode === "split") && (
+      {browserState.sidebarSection === "exports" && (
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
             <div>

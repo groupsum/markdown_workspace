@@ -23,7 +23,7 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       badge: item.badge,
       active: (() => {
         if (item.id === 'core.toggle-explorer') {
-          return runtime.app.state.sidebarOpen;
+          return !viewSnapshot.activeMainViewId && runtime.app.state.sidebarOpen;
         }
         if (item.target.kind === 'view') {
           return viewSnapshot.activeViewId === item.target.viewId && viewSnapshot.openViewIds.includes(item.target.viewId);
@@ -33,13 +33,22 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       disabled: item.isDisabled?.() ?? false,
       group: item.group,
       onClick: async () => {
+        if (item.id === 'core.toggle-explorer') {
+          if (viewSnapshot.activeMainViewId) {
+            await services.views.close(viewSnapshot.activeMainViewId);
+            runtime.app.actions.setSidebarOpen(true);
+            return;
+          }
+          await host.commands.execute(item.target.kind === 'command' ? item.target.commandId : 'core.toggle-explorer');
+          return;
+        }
         if (item.target.kind === 'view') {
           await services.views.toggle(item.target.viewId);
         } else {
           await host.commands.execute(item.target.commandId);
         }
       },
-    })), [actionRailSnapshot.items, host.commands, localeSnapshot.locale, preferences.hiddenActionRailButtons, runtime.app.state.sidebarOpen, services.i18n, services.views, viewSnapshot.activeMainViewId, viewSnapshot.activeViewId, viewSnapshot.openViewIds]);
+    })), [actionRailSnapshot.items, host.commands, localeSnapshot.locale, preferences.hiddenActionRailButtons, runtime.app.actions, runtime.app.state.sidebarOpen, services.i18n, services.views, viewSnapshot.activeMainViewId, viewSnapshot.activeViewId, viewSnapshot.openViewIds]);
 
   const ariaLabel = React.useMemo(
     () => services.i18n.format({ key: 'core.action-rail.aria-label', defaultMessage: 'Primary Actions' }),

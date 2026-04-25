@@ -25,6 +25,8 @@ describe('markdown/editor alignment token contract', () => {
     expect(markdownCss).toContain('line-height: var(--markdown-line-height);');
     expect(markdownCss).toContain('line-height: var(--markdown-heading-line-height);');
     expect(editorCss).toContain('width: var(--line-number-gutter-width);');
+    expect(editorCss).toContain('padding: var(--editor-padding) 8px;');
+    expect(editorCss).not.toContain('padding: calc(var(--editor-padding) - 8px) 8px;');
   });
 
   it('defines PDF print pages and page-break controls through tokens', () => {
@@ -66,6 +68,8 @@ describe('markdown/editor alignment token contract', () => {
     expect(markdownCss).toContain('overflow-x: hidden;');
     expect(portableEditorCss).toContain('overflow-wrap: anywhere;');
     expect(portableEditorCss).toContain('overflow-x: hidden;');
+    expect(portableEditorCss).toContain('padding: var(--mwe-editor-padding, 16px) 8px;');
+    expect(portableEditorCss).not.toContain('padding: calc(var(--mwe-editor-padding, 16px) - 8px) 8px;');
     expect(portableRendererCss).toContain('table-layout: fixed;');
     expect(portableRendererCss).toContain('overflow-x: hidden !important;');
   });

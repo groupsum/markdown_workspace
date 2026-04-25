@@ -53,7 +53,7 @@ export const geminiAgentLabels = {
   panelContextFile: geminiLabel("panel.context.file", "File"),
   panelContextSelection: geminiLabel("panel.context.selection", "Selection"),
   panelContextNone: geminiLabel("panel.context.none", "None"),
-  panelKicker: geminiLabel("panel.kicker", "GEMINI_AGENT"),
+  panelKicker: geminiLabel("panel.kicker", "Gemini agent"),
   panelResponse: geminiLabel("panel.response", "Response"),
   panelDraft: geminiLabel("panel.draft", "Draft"),
   panelSettings: geminiLabel("panel.settings", "Effective settings"),

@@ -4,6 +4,9 @@ import { useSyncExternalStore } from 'react';
 import { useClientRuntimeServices } from '../../app/runtime/ClientRuntimeContext';
 import { useExtensionRuntime } from './ExtensionRuntimeContext';
 
+const formatRuntimeValue = (value: string): string =>
+  value.replaceAll('_', ' ').toLowerCase().replace(/^\w|\s\w/g, (match) => match.toUpperCase());
+
 export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
   const runtime = useExtensionRuntime();
   const services = useClientRuntimeServices();
@@ -19,20 +22,20 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
           return (
             <div key={extension.id} className="settings-card settings-card-stack">
               <div className="settings-session-grid">
-                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.placeholder.extension', 'EXTENSION')}</span><span className="settings-session-value">{services.i18n.format(extension.manifest.displayName)}</span></div>
+                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.placeholder.extension', 'Extension')}</span><span className="settings-session-value">{services.i18n.format(extension.manifest.displayName)}</span></div>
                 <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.id', 'ID')}</span><span className="settings-session-value">{extension.id}</span></div>
-                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.status', 'STATUS')}</span><span className="settings-session-value">{extension.status.toUpperCase()}</span></div>
-                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.activation', 'ACTIVATION')}</span><span className="settings-session-value">{extension.activation.toUpperCase()}</span></div>
-                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.enabled', 'ENABLED')}</span><span className="settings-session-value">{extension.enabled ? t('core.extensions.runtime.yes', 'YES') : t('core.extensions.runtime.no', 'NO')}</span></div>
-                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.version', 'VERSION')}</span><span className="settings-session-value">{extension.manifest.version}</span></div>
+                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.status', 'Status')}</span><span className="settings-session-value">{formatRuntimeValue(extension.status)}</span></div>
+                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.activation', 'Activation')}</span><span className="settings-session-value">{formatRuntimeValue(extension.activation)}</span></div>
+                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.enabled', 'Enabled')}</span><span className="settings-session-value">{extension.enabled ? t('core.extensions.runtime.yes', 'Yes') : t('core.extensions.runtime.no', 'No')}</span></div>
+                <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.version', 'Version')}</span><span className="settings-session-value">{extension.manifest.version}</span></div>
               </div>
 
               <div className="flex flex-wrap gap-2">
                 <button
                   className="modal-btn"
                   onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}
-                  aria-label={`${extension.enabled ? t('core.extensions.runtime.disable', 'DISABLE') : t('core.extensions.runtime.enable', 'ENABLE')} ${extension.id}`}
-                  title={extension.enabled ? t('core.extensions.runtime.disable', 'DISABLE') : t('core.extensions.runtime.enable', 'ENABLE')}
+                  aria-label={`${extension.enabled ? t('core.extensions.runtime.disable', 'Disable') : t('core.extensions.runtime.enable', 'Enable')} ${extension.id}`}
+                  title={extension.enabled ? t('core.extensions.runtime.disable', 'Disable') : t('core.extensions.runtime.enable', 'Enable')}
                 >
                   {extension.enabled ? <PowerOff size={14} /> : <Power size={14} />}
                 </button>
@@ -40,8 +43,8 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
                   className="modal-btn modal-btn-primary"
                   onClick={() => void runtime.activate(extension.id)}
                   disabled={!extension.enabled}
-                  aria-label={`${t('core.extensions.runtime.activate', 'ACTIVATE')} ${extension.id}`}
-                  title={t('core.extensions.runtime.activate', 'ACTIVATE')}
+                  aria-label={`${t('core.extensions.runtime.activate', 'Activate')} ${extension.id}`}
+                  title={t('core.extensions.runtime.activate', 'Activate')}
                 >
                   <CheckCircle2 size={14} />
                 </button>
@@ -49,8 +52,8 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
                   className="modal-btn"
                   onClick={() => void runtime.deactivate(extension.id)}
                   disabled={extension.status !== 'active'}
-                  aria-label={`${t('core.extensions.runtime.deactivate', 'DEACTIVATE')} ${extension.id}`}
-                  title={t('core.extensions.runtime.deactivate', 'DEACTIVATE')}
+                  aria-label={`${t('core.extensions.runtime.deactivate', 'Deactivate')} ${extension.id}`}
+                  title={t('core.extensions.runtime.deactivate', 'Deactivate')}
                 >
                   <CircleSlash2 size={14} />
                 </button>
@@ -83,7 +86,7 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
                   <span className="font-bold text-[11px] uppercase">{t('core.extensions.runtime.diagnostics', 'Diagnostics')}</span>
                   <ul className="text-[11px] text-[var(--fg-muted)] list-disc pl-5 mt-2">
                     {hostDiagnostics.map((record, index) => (
-                      <li key={`${record.code}-${index}`}>{record.code}: {record.message}</li>
+                      <li key={`${record.code}-${index}`}>{formatRuntimeValue(record.code)}: {record.message}</li>
                     ))}
                   </ul>
                 </div>

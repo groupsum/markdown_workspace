@@ -49,7 +49,7 @@ export const extensionManagerEnCatalog: ExtensionLocaleCatalog = {
     "view.card.health.lastError": "Last error",
     "settings.form.state.enabled": "Enabled",
     "settings.form.state.disabled": "Disabled",
-    "settings.shortcut.kicker": "EXTENSION_MANAGER",
+    "settings.shortcut.kicker": "Extension manager",
     "settings.shortcut.title": "Extension Manager",
     "settings.shortcut.description": "Open the pane workspace to inspect runtime inventory, compatibility, installed catalog entries, and diagnostics.",
     "settings.stats.extensions": "EXTENSIONS",
@@ -57,9 +57,9 @@ export const extensionManagerEnCatalog: ExtensionLocaleCatalog = {
     "settings.stats.installed": "INSTALLED",
     "settings.stats.catalog": "CATALOG",
     "settings.chips.indexeddb": "INDEXEDDB",
-    "settings.chips.paneOnly": "PANE_ONLY",
-    "settings.chips.englishFallback": "EN_FALLBACK",
-    "settings.actions.openManager": "OPEN_MANAGER",
+    "settings.chips.paneOnly": "Pane only",
+    "settings.chips.englishFallback": "English fallback",
+    "settings.actions.openManager": "Open manager",
     "diagnostics.ready": "Extension Manager activated successfully."
   }
 };

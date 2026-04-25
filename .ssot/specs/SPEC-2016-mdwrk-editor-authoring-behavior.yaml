@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2016"
 number: 2016
@@ -11,7 +11,11 @@ tags: []
 summary: "Define editor authoring behaviors that need targetable SSOT features."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Require line count gutter padding to match editor textarea padding."
+    at: "2026-04-25T22:04:23Z"
 references: []
 body: |-
   # MdWrk Editor Authoring Behavior Specification
@@ -27,6 +31,7 @@ body: |-
   - Text wrapping must be configurable where supported.
   - Underline behavior must not claim standard Markdown semantics unless a custom profile enables it.
   - Line count bars must be hideable and y-scroll aligned with editor content.
+  - Line count gutter block padding must match the editor textarea block padding so line numbers, line spacing, and y-scroll position visually align with editor text.
   - Visual keyboard mode must preserve editor usability on mobile.
 spec_kind: "normative"
 adr_ids: []

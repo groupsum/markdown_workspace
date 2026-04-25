@@ -23,16 +23,16 @@ function createSettingsSectionPlaceholder(services: ClientRuntimeServices, exten
         )}
         <div className="settings-session-grid">
           <div className="settings-session-item">
-            <span className="settings-session-label">{t('core.extensions.placeholder.extension', 'EXTENSION')}</span>
+            <span className="settings-session-label">{t('core.extensions.placeholder.extension', 'Extension')}</span>
             <span className="settings-session-value">{extensionId}</span>
           </div>
           <div className="settings-session-item">
-            <span className="settings-session-label">{t('core.extensions.placeholder.section-id', 'SECTION_ID')}</span>
+            <span className="settings-session-label">{t('core.extensions.placeholder.section-id', 'Section ID')}</span>
             <span className="settings-session-value">{section.id}</span>
           </div>
           {section.schemaPath && (
             <div className="settings-session-item">
-              <span className="settings-session-label">{t('core.extensions.placeholder.schema-path', 'SCHEMA_PATH')}</span>
+              <span className="settings-session-label">{t('core.extensions.placeholder.schema-path', 'Schema path')}</span>
               <span className="settings-session-value">{section.schemaPath}</span>
             </div>
           )}

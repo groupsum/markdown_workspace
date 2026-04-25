@@ -33,9 +33,7 @@ const EXPORT_STYLE_OVERRIDES = `
     min-height: 100vh;
     padding: var(--html-export-viewport-padding);
     font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-    background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--accent, #ff3e00) 18%, transparent), transparent 34vw),
-      linear-gradient(135deg, var(--bg-app, #0d0f12), color-mix(in srgb, var(--bg-panel, #11151a) 72%, var(--bg-app, #0d0f12)));
+    background: var(--bg-app, #0d0f12);
     color: var(--fg-primary, #e9ecf1);
     overflow-x: hidden;
     -webkit-print-color-adjust: exact;
@@ -223,11 +221,14 @@ const EXPORT_STYLE_OVERRIDES = `
       width: 100%;
       min-height: 100%;
       overflow: visible;
+      background: var(--bg-app, #0d0f12);
+      color: var(--fg-primary, #e9ecf1);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
 
     body.markdown-export {
       padding: 0;
-      background: #fff;
     }
 
     .export-shell {
@@ -248,9 +249,18 @@ const EXPORT_STYLE_OVERRIDES = `
       padding: 0;
       margin: 0;
       border: none;
+      background: var(--bg-app, #0d0f12);
+      color: var(--fg-primary, #e9ecf1);
       box-shadow: none;
       break-after: auto;
       page-break-after: auto;
+    }
+
+    body.markdown-export--plain,
+    body.markdown-export--plain .export-page,
+    body.markdown-export--plain .export-advisory {
+      background: #ffffff;
+      color: #111111;
     }
 
     .export-page--landscape {

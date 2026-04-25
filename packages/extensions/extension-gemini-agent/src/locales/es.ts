@@ -46,7 +46,7 @@ export const geminiAgentEsCatalog = {
     "panel.context.file": "Archivo",
     "panel.context.selection": "Selección",
     "panel.context.none": "Ninguno",
-    "panel.kicker": "AGENTE_GEMINI",
+    "panel.kicker": "Agente Gemini",
     "panel.response": "Respuesta",
     "panel.draft": "Borrador",
     "panel.settings": "Configuración efectiva",

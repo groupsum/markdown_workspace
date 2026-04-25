@@ -28,7 +28,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.import-markdown.title': 'Import Markdown',
         'core.settings.visual.title': 'Visual Matrix',
         'core.settings.visual.description': 'Theme presets and visual surfaces.',
-        'core.settings.visual.active-theme': 'ACTIVE_THEME',
+        'core.settings.visual.active-theme': 'Active theme',
         'core.settings.markdown-profiles.title': 'Markdown Profiles',
         'core.settings.markdown-profiles.description': 'Optional Markdown feature profiles and trust policy.',
         'core.settings.sections.git.title': 'Source Control',
@@ -39,16 +39,16 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.sections.keymap.description': 'Host keyboard bindings backed by the command registry.',
         'core.settings.sections.session.title': 'Session State',
         'core.settings.sections.session.description': 'Session and persistence controls.',
-        'core.settings.sidebar.core.settings.markdown-profiles.label': 'MARKDOWN_PROFILES',
-        'core.settings.sidebar.core.settings.extensions.runtime.label': 'EXTENSION_RUNTIME',
-        'core.settings.sidebar.@mdwrk/extension-manager.settings.label': 'EXTENSION_MANAGER',
-        'core.settings.sidebar.@mdwrk/extension-theme-studio.settings.label': 'THEME_STUDIO_SETTINGS',
-        'core.settings.sidebar.core.settings.git.label': 'SOURCE_CONTROL',
-        'core.settings.sidebar.core.settings.data.label': 'STORAGE_OPS',
-        'core.settings.sidebar.core.settings.keys.label': 'KEY_MAP',
-        'core.settings.sidebar.core.settings.language.label': 'LANGUAGE_&_LOCALE',
-        'core.settings.sidebar.core.settings.session.label': 'SESSION_STATE',
-        'core.settings.sidebar.core.settings.visual.label': 'VISUAL_MATRIX',
+        'core.settings.sidebar.core.settings.markdown-profiles.label': 'Markdown profiles',
+        'core.settings.sidebar.core.settings.extensions.runtime.label': 'Extension runtime',
+        'core.settings.sidebar.@mdwrk/extension-manager.settings.label': 'Extension manager',
+        'core.settings.sidebar.@mdwrk/extension-theme-studio.settings.label': 'Theme Studio settings',
+        'core.settings.sidebar.core.settings.git.label': 'Source control',
+        'core.settings.sidebar.core.settings.data.label': 'Storage operations',
+        'core.settings.sidebar.core.settings.keys.label': 'Key map',
+        'core.settings.sidebar.core.settings.language.label': 'Language & Locale',
+        'core.settings.sidebar.core.settings.session.label': 'Session state',
+        'core.settings.sidebar.core.settings.visual.label': 'Visual matrix',
         'core.preview.policy.title': 'Preview Policy',
         'core.preview.policy.htmlHandling': 'HTML handling',
         'core.export.policy.title': 'Export Policy',
@@ -134,7 +134,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         execute: () => {
           void services.views.open('core.settings', { sectionId: 'core.settings.git' });
           window.dispatchEvent(new CustomEvent(GIT_REPO_REFRESH_REQUEST_EVENT));
-          runtime.getSnapshot().app.actions.addToast(t('core.settings.git.opened-configuration', 'OPENED GITHUB CONFIGURATION'), 'info');
+          runtime.getSnapshot().app.actions.addToast(t('core.settings.git.opened-configuration', 'Opened GitHub configuration'), 'info');
         },
         icon: { kind: 'lucide', name: 'Cloud' },
       }),
@@ -215,20 +215,20 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                       <span className="settings-theme-name">{theme.name}</span>
                     </div>
                     <span className="settings-theme-desc">{theme.description}</span>
-                    <span className="text-[10px] uppercase text-[var(--fg-muted)]">{t('core.settings.visual.code-syntax', 'CODE_SYNTAX')} - {theme.syntaxTheme.name}</span>
+                    <span className="text-[10px] uppercase text-[var(--fg-muted)]">{t('core.settings.visual.code-syntax', 'Code syntax')} - {theme.syntaxTheme.name}</span>
                     <span className="text-[11px] text-[var(--fg-muted)]">{theme.syntaxTheme.palette}</span>
                   </button>
                 ))}
               </div>
               <div className="settings-theme-controls">
                 <div className="settings-theme-meta">
-                  <span className="settings-theme-label">{t('core.settings.visual.active-theme', 'ACTIVE_THEME')}</span>
+                  <span className="settings-theme-label">{t('core.settings.visual.active-theme', 'Active theme')}</span>
                   <span className="settings-theme-value">{themeDef.name}</span>
                   <span className="settings-theme-count">{themeIndex + 1}/{THEMES.length}</span>
                 </div>
                 <div className="settings-theme-actions">
-                  <button type="button" className="settings-theme-action-btn" onClick={() => handleThemeStep(-1)}>{t('core.settings.visual.prev-theme', 'PREV_THEME')}</button>
-                  <button type="button" className="settings-theme-action-btn settings-theme-action-btn-primary" onClick={() => handleThemeStep(1)}>{t('core.settings.visual.next-theme', 'NEXT_THEME')}</button>
+                  <button type="button" className="settings-theme-action-btn" onClick={() => handleThemeStep(-1)}>{t('core.settings.visual.prev-theme', 'Previous theme')}</button>
+                  <button type="button" className="settings-theme-action-btn settings-theme-action-btn-primary" onClick={() => handleThemeStep(1)}>{t('core.settings.visual.next-theme', 'Next theme')}</button>
                 </div>
               </div>
             </div>
@@ -282,27 +282,27 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
           <div className="settings-pane">
             <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
               {[
-                { label: t('core.settings.keymap.save-buffer', 'SAVE_BUFFER'), key: 'CTRL/CMD+S' },
-                { label: t('core.settings.keymap.command-palette', 'COMMAND_PALETTE'), key: 'CTRL/CMD+K' },
-                { label: t('core.settings.keymap.new-file', 'NEW_FILE'), key: 'CTRL/CMD+N' },
-                { label: t('core.settings.keymap.toggle-workspace-panel', 'TOGGLE_WORKSPACE_PANEL'), key: 'CTRL/CMD+SHIFT+B' },
-                { label: t('core.settings.keymap.focus-registry', 'FOCUS_REGISTRY'), key: 'CTRL/CMD+SHIFT+E' },
-                { label: t('core.settings.keymap.next-tab', 'NEXT_TAB'), key: 'CTRL/CMD+TAB' },
-                { label: t('core.settings.keymap.prev-tab', 'PREV_TAB'), key: 'CTRL/CMD+SHIFT+TAB' },
-                { label: t('core.settings.keymap.view-editor', 'VIEW_EDITOR'), key: 'CTRL/CMD+1' },
-                { label: t('core.settings.keymap.view-split', 'VIEW_SPLIT'), key: 'CTRL/CMD+2' },
-                { label: t('core.settings.keymap.view-preview', 'VIEW_PREVIEW'), key: 'CTRL/CMD+3' },
-                { label: t('core.settings.keymap.format-bold', 'FORMAT_BOLD'), key: 'CTRL/CMD+B' },
-                { label: t('core.settings.keymap.format-italic', 'FORMAT_ITALIC'), key: 'CTRL/CMD+I' },
-                { label: t('core.settings.keymap.format-strikethrough', 'FORMAT_STRIKETHROUGH'), key: 'CTRL/CMD+SHIFT+X' },
-                { label: t('core.settings.keymap.undo-op', 'UNDO_OP'), key: 'CTRL/CMD+Z' },
-                { label: t('core.settings.keymap.redo-op', 'REDO_OP'), key: 'CTRL/CMD+SHIFT+Z' },
-                { label: t('core.settings.keymap.settings', 'SETTINGS'), key: 'CTRL/CMD+,' },
-                { label: t('core.settings.keymap.toggle-git-mode', 'TOGGLE_GIT_MODE'), key: 'CTRL/CMD+SHIFT+G' },
-                { label: t('core.settings.keymap.zoom-in', 'ZOOM_IN'), key: 'CTRL/CMD++' },
-                { label: t('core.settings.keymap.zoom-out', 'ZOOM_OUT'), key: 'CTRL/CMD+-' },
-                { label: t('core.settings.keymap.reset-zoom', 'RESET_ZOOM'), key: 'CTRL/CMD+0' },
-                { label: t('core.settings.keymap.print-preview', 'PRINT_PREVIEW'), key: 'CTRL/CMD+P' },
+                { label: t('core.settings.keymap.save-buffer', 'Save buffer'), key: 'CTRL/CMD+S' },
+                { label: t('core.settings.keymap.command-palette', 'Command palette'), key: 'CTRL/CMD+K' },
+                { label: t('core.settings.keymap.new-file', 'New file'), key: 'CTRL/CMD+N' },
+                { label: t('core.settings.keymap.toggle-workspace-panel', 'Toggle workspace panel'), key: 'CTRL/CMD+SHIFT+B' },
+                { label: t('core.settings.keymap.focus-registry', 'Focus registry'), key: 'CTRL/CMD+SHIFT+E' },
+                { label: t('core.settings.keymap.next-tab', 'Next tab'), key: 'CTRL/CMD+TAB' },
+                { label: t('core.settings.keymap.prev-tab', 'Previous tab'), key: 'CTRL/CMD+SHIFT+TAB' },
+                { label: t('core.settings.keymap.view-editor', 'View editor'), key: 'CTRL/CMD+1' },
+                { label: t('core.settings.keymap.view-split', 'View split'), key: 'CTRL/CMD+2' },
+                { label: t('core.settings.keymap.view-preview', 'View preview'), key: 'CTRL/CMD+3' },
+                { label: t('core.settings.keymap.format-bold', 'Format bold'), key: 'CTRL/CMD+B' },
+                { label: t('core.settings.keymap.format-italic', 'Format italic'), key: 'CTRL/CMD+I' },
+                { label: t('core.settings.keymap.format-strikethrough', 'Format strikethrough'), key: 'CTRL/CMD+SHIFT+X' },
+                { label: t('core.settings.keymap.undo-op', 'Undo'), key: 'CTRL/CMD+Z' },
+                { label: t('core.settings.keymap.redo-op', 'Redo'), key: 'CTRL/CMD+SHIFT+Z' },
+                { label: t('core.settings.keymap.settings', 'Settings'), key: 'CTRL/CMD+,' },
+                { label: t('core.settings.keymap.toggle-git-mode', 'Toggle Git mode'), key: 'CTRL/CMD+SHIFT+G' },
+                { label: t('core.settings.keymap.zoom-in', 'Zoom in'), key: 'CTRL/CMD++' },
+                { label: t('core.settings.keymap.zoom-out', 'Zoom out'), key: 'CTRL/CMD+-' },
+                { label: t('core.settings.keymap.reset-zoom', 'Reset zoom'), key: 'CTRL/CMD+0' },
+                { label: t('core.settings.keymap.print-preview', 'Print preview'), key: 'CTRL/CMD+P' },
               ].map((row) => (
                 <div key={row.label} className="settings-keymap-item">
                   <span className="settings-keymap-label text-[var(--fg-muted)]">{row.label}</span>
@@ -327,18 +327,18 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
               <div className="flex flex-col gap-4">
                 <div className="settings-card settings-card-stack">
                   <div className="settings-session-grid">
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.active-project', 'ACTIVE_PROJECT')}</span><span className="settings-session-value">{snapshot.app.state.currentProject?.name ?? t('core.settings.state.none', 'NONE')}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.open-tabs', 'OPEN_TABS')}</span><span className="settings-session-value">{snapshot.app.state.tabs.length}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.active-tab', 'ACTIVE_TAB')}</span><span className="settings-session-value">{snapshot.activeTabName ?? t('core.settings.state.none', 'NONE')}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.view-mode', 'VIEW_MODE')}</span><span className="settings-session-value">{snapshot.app.state.viewMode.toUpperCase()}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.app-mode', 'APP_MODE')}</span><span className="settings-session-value">{snapshot.app.state.appMode.toUpperCase()}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.zoom-scale', 'ZOOM_SCALE')}</span><span className="settings-session-value">{snapshot.app.state.zoom.toFixed(2)}x</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.active-project', 'Active project')}</span><span className="settings-session-value">{snapshot.app.state.currentProject?.name ?? t('core.settings.state.none', 'None')}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.open-tabs', 'Open tabs')}</span><span className="settings-session-value">{snapshot.app.state.tabs.length}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.active-tab', 'Active tab')}</span><span className="settings-session-value">{snapshot.activeTabName ?? t('core.settings.state.none', 'None')}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.view-mode', 'View mode')}</span><span className="settings-session-value">{snapshot.app.state.viewMode.toUpperCase()}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.app-mode', 'App mode')}</span><span className="settings-session-value">{snapshot.app.state.appMode.toUpperCase()}</span></div>
+                    <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.zoom-scale', 'Zoom scale')}</span><span className="settings-session-value">{snapshot.app.state.zoom.toFixed(2)}x</span></div>
                   </div>
                 </div>
                 <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.auto-save', 'AUTO_SAVE')}</span>
+                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.auto-save', 'Auto save')}</span>
                       <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.auto-save.description', 'Toggle instant persistence to local storage while editing.')}</p>
                     </div>
                     <label className="pwa-toggle">
@@ -350,7 +350,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                 <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.restore-session', 'RESTORE_SESSION')}</span>
+                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.restore-session', 'Restore session')}</span>
                       <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.restore-session.description', 'Persist current project, tabs, and layout so reloads resume from the last session.')}</p>
                     </div>
                     <label className="pwa-toggle">
@@ -362,7 +362,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                 <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.line-numbers', 'LINE_NUMBERS')}</span>
+                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.line-numbers', 'Line numbers')}</span>
                       <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.line-numbers.description', 'Show or hide the editor gutter line numbers for the current workspace session.')}</p>
                     </div>
                     <label className="pwa-toggle">

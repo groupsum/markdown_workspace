@@ -67,13 +67,13 @@ export const GitSettingsPanel: React.FC = () => {
           />
 
           <div className="settings-inline-stats">
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.auth-mode', 'Auth Mode')}</span><span className="settings-inline-stat-value">{draft.authMode.toUpperCase()}</span></span>
-            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.provider', 'Provider')}</span><span className="settings-inline-stat-value">{provider.toUpperCase()}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.auth-mode', 'Auth Mode')}</span><span className="settings-inline-stat-value">{draft.authMode === 'pat' ? t('core.settings.git.auth-mode.pat', 'PAT') : t('core.settings.git.auth-mode.oidc', 'OIDC')}</span></span>
+            <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.provider', 'Provider')}</span><span className="settings-inline-stat-value">{provider.charAt(0).toUpperCase() + provider.slice(1)}</span></span>
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.host', 'Host')}</span><span className="settings-inline-stat-value">{PROVIDER_REPO_HOST[provider]}</span></span>
           </div>
 
           <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.branch', 'BRANCH')}</span>
+            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.branch', 'Branch')}</span>
             <input
               className="modal-input !text-xs !py-3"
               value={draft.branch}
@@ -84,22 +84,22 @@ export const GitSettingsPanel: React.FC = () => {
 
           <div className="settings-list-row">
             <div className="settings-list-row-main">
-              <div className="settings-list-row-title">{t('core.settings.git.normalized-repository', 'NORMALIZED_REPOSITORY')}</div>
-              <div className="settings-list-row-subtitle">{normalizedRepo || t('core.settings.state.unset', 'UNSET')}</div>
+              <div className="settings-list-row-title">{t('core.settings.git.normalized-repository', 'Normalized repository')}</div>
+              <div className="settings-list-row-subtitle">{normalizedRepo || t('core.settings.state.unset', 'Unset')}</div>
             </div>
             <div className="settings-list-row-actions">
-              <span className="settings-chip">{provider.toUpperCase()}</span>
-              <span className="settings-chip">{draft.branch || t('core.settings.git.default-branch', 'MAIN')}</span>
+              <span className="settings-chip">{provider.charAt(0).toUpperCase() + provider.slice(1)}</span>
+              <span className="settings-chip">{draft.branch || t('core.settings.git.default-branch', 'Main')}</span>
             </div>
           </div>
         </div>
 
         <div className="settings-action-row">
-          <button className="modal-btn flex-1" onClick={() => { void handleTestLink(); }}>{t('core.settings.git.test-link', 'TEST_LINK')}</button>
+          <button className="modal-btn flex-1" onClick={() => { void handleTestLink(); }}>{t('core.settings.git.test-link', 'Test link')}</button>
           <button className="modal-btn flex-1" onClick={snapshot.actions.refreshGitRepositories}>
-            <RefreshCw size={14} /> {t('core.settings.git.refresh-repos', 'REFRESH_REPOS')}
+            <RefreshCw size={14} /> {t('core.settings.git.refresh-repos', 'Refresh repositories')}
           </button>
-          <button className="modal-btn flex-1 modal-btn-primary" onClick={() => { void handleSave(); }}>{t('core.settings.git.save-config', 'SAVE_CONFIG')}</button>
+          <button className="modal-btn flex-1 modal-btn-primary" onClick={() => { void handleSave(); }}>{t('core.settings.git.save-config', 'Save configuration')}</button>
         </div>
       </div>
     </div>

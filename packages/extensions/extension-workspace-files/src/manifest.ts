@@ -131,7 +131,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       },
     ],
     actionRail: [
-      { id: WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, title: label("Toggle Explorer", "core.commands.toggle-explorer"), icon: { kind: "lucide", name: "Folder" }, group: "workspace.primary", order: 10, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID } },
+      { id: WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, title: label("File Explorer", "core.workspace-files.explorer"), icon: { kind: "lucide", name: "Folder" }, group: "workspace.primary", order: 10, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID } },
       { id: WORKSPACE_FILES_RAIL_NEW_FILE_ID, title: label("New File"), icon: { kind: "lucide", name: "FilePlus" }, group: "workspace.primary", order: 20, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_NEW_FILE_ID } },
       { id: WORKSPACE_FILES_RAIL_NEW_FOLDER_ID, title: label("New Folder"), icon: { kind: "lucide", name: "FolderPlus" }, group: "workspace.primary", order: 30, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_NEW_FOLDER_ID } },
       { id: WORKSPACE_FILES_RAIL_DOWNLOAD_ID, title: label("Download Workspace", "core.commands.download-workspace"), icon: { kind: "lucide", name: "Download" }, group: "workspace.secondary", order: 20, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID } },

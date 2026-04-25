@@ -27,6 +27,7 @@
   body,
   .chassis-root {
     background: var(--bg-app, #0b0f14) !important;
+    color: var(--fg-primary, #e9ecf1) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -173,7 +174,10 @@
   }
 
   body[data-print-background="plain"],
+  body[data-print-background="plain"] #root,
   body[data-print-background="plain"] .chassis-root,
+  body[data-print-background="plain"] .workspace-stage,
+  body[data-print-background="plain"] .preview-pane,
   body[data-print-background="plain"] .markdown-body {
     background: #ffffff !important;
     color: #111111 !important;

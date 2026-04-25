@@ -25,16 +25,16 @@ export const themeStudioEnCatalog = {
     [`${THEME_STUDIO_EXTENSION_ID}.status.applied`]: "Draft applied",
     [`${THEME_STUDIO_EXTENSION_ID}.status.reverted`]: "Draft reverted",
     [`${THEME_STUDIO_EXTENSION_ID}.status.exported`]: "Exports generated",
-    [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.kicker`]: "THEME_STUDIO",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.kicker`]: "Theme Studio",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.title`]: "Theme Studio",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.shortcut.description`]: "Open the pane workspace to inspect token bridges, preview renderer/editor output, and export portable theme artifacts.",
-    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.themeId`]: "THEME_ID",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.themeId`]: "Theme ID",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.tokens`]: "TOKENS",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.relationships`]: "RELATIONSHIPS",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.stats.status`]: "STATUS",
-    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.paneOnly`]: "PANE_ONLY",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.paneOnly`]: "Pane only",
     [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.splitSingle`]: "SPLIT + SINGLE",
-    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.englishFallback`]: "EN_FALLBACK",
-    [`${THEME_STUDIO_EXTENSION_ID}.settings.actions.openStudio`]: "OPEN_STUDIO"
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.chips.englishFallback`]: "English fallback",
+    [`${THEME_STUDIO_EXTENSION_ID}.settings.actions.openStudio`]: "Open studio"
   }
 } as const;

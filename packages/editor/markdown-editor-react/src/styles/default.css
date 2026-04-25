@@ -28,7 +28,7 @@
   font-family: var(--mwe-font-mono, var(--font-mono, ui-monospace, monospace));
   font-size: calc(var(--mwe-font-size, 13px) - 2px);
   line-height: var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)));
-  padding: calc(var(--mwe-editor-padding, 16px) - 8px) 8px;
+  padding: var(--mwe-editor-padding, 16px) 8px;
   text-align: right;
   overflow: hidden;
   user-select: none;

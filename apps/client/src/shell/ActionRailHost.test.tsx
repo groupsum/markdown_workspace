@@ -38,7 +38,7 @@ describe('ActionRailHost', () => {
     cleanup();
   });
 
-  it('marks the explorer rail active while the workspace panel is open', () => {
+  it('does not mark the file explorer active while another workspace module owns the panel', () => {
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
         {
@@ -89,12 +89,14 @@ describe('ActionRailHost', () => {
     render(<ActionRailHost />);
 
     const [explorerButton, geminiButton] = screen.getAllByRole('button');
-    expect(explorerButton).toHaveAttribute('aria-pressed', 'true');
+    expect(explorerButton).toHaveAttribute('aria-pressed', 'false');
     expect(geminiButton).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('routes the explorer rail through the command registry', async () => {
+  it('returns from an active workspace module to the file explorer workspace', async () => {
     const execute = vi.fn(async () => {});
+    const close = vi.fn(async () => {});
+    const setSidebarOpen = vi.fn();
 
     mockUseClientRuntimeServices.mockReturnValue(createServices({
       actionRailItems: [
@@ -119,6 +121,7 @@ describe('ActionRailHost', () => {
       openViewIds: ['core.theme-studio.view'],
       activeViewId: 'core.theme-studio.view',
       activeMainViewId: 'core.theme-studio.view',
+      close,
     }));
     mockUseClientExtensionHost.mockReturnValue({
       commands: { execute },
@@ -130,6 +133,52 @@ describe('ActionRailHost', () => {
           sidebarOpen: true,
         },
         actions: {
+          setSidebarOpen,
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+    fireEvent.click(screen.getByRole('button', { name: 'Explorer' }));
+
+    await waitFor(() => {
+      expect(close).toHaveBeenCalledWith('core.theme-studio.view');
+      expect(setSidebarOpen).toHaveBeenCalledWith(true);
+      expect(execute).not.toHaveBeenCalled();
+    });
+  });
+
+  it('routes the file explorer button through the command registry when already in the file workspace', async () => {
+    const execute = vi.fn(async () => {});
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'core.toggle-explorer',
+          title: { defaultMessage: 'Explorer' },
+          icon: { kind: 'lucide', name: 'Folder' },
+          group: 'workspace.primary',
+          target: { kind: 'command', commandId: 'core.toggle-explorer' },
+          isActive: () => true,
+        },
+      ],
+      views: [],
+      openViewIds: [],
+      activeViewId: null,
+      activeMainViewId: null,
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: true,
+        },
+        actions: {
+          setSidebarOpen: vi.fn(),
           toggleSidebar: vi.fn(),
         },
       },
@@ -289,6 +338,7 @@ function createServices({
   activeViewId,
   activeMainViewId = activeViewId,
   toggle = vi.fn(async () => {}),
+  close = vi.fn(async () => {}),
 }: {
   actionRailItems: any[];
   views: any[];
@@ -296,6 +346,7 @@ function createServices({
   activeViewId: string | null;
   activeMainViewId?: string | null;
   toggle?: any;
+  close?: any;
 }) {
   const actionRailSnapshot = { items: actionRailItems };
   const viewSnapshot = {
@@ -316,6 +367,7 @@ function createServices({
       subscribe: () => () => {},
       getSnapshot: () => viewSnapshot,
       toggle,
+      close,
     },
     i18n: {
       subscribe: () => () => {},

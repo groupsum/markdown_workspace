@@ -37,6 +37,9 @@ const pillStyle: React.CSSProperties = {
   letterSpacing: "0.08em",
 };
 
+const formatDiagnosticCode = (code: string): string =>
+  code.replaceAll("_", " ").toLowerCase().replace(/^\w|\s\w/g, (match) => match.toUpperCase());
+
 export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime, formatLabel, defaults }) => {
   const [showCompatibility, setShowCompatibility] = React.useState(defaults.showCompatibility || !extension.compatibility.compatible);
   const [showDiagnostics, setShowDiagnostics] = React.useState(defaults.showDiagnostics || extension.status === "error");
@@ -183,7 +186,7 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
           {extension.diagnostics.length > 0 ? (
             <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "var(--fg-secondary)", display: "grid", gap: 6 }}>
               {extension.diagnostics.map((record, index) => (
-                <li key={`${record.code}-${index}`}>{record.code}: {record.message}</li>
+                <li key={`${record.code}-${index}`}>{formatDiagnosticCode(record.code)}: {record.message}</li>
               ))}
             </ul>
           ) : !extension.lastError ? (

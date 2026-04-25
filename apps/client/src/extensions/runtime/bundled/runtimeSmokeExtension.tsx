@@ -104,7 +104,7 @@ const RuntimeSmokeModal: React.FC<ClientViewRenderProps & { activationCount: num
     <div className="modal-base settings-modal">
       <div className="modal-header">
         <span className="modal-title">{formatLabel({ key: 'core.runtime-smoke.title', defaultMessage: 'Runtime Smoke' })}</span>
-        <button onClick={() => void close()} className="modal-close">{formatLabel({ key: 'core.runtime-smoke.exit', defaultMessage: 'EXIT' })}</button>
+        <button onClick={() => void close()} className="modal-close">{formatLabel({ key: 'core.runtime-smoke.exit', defaultMessage: 'Exit' })}</button>
       </div>
       <div className="settings-content-frame">
         <div className="settings-pane">
@@ -112,19 +112,19 @@ const RuntimeSmokeModal: React.FC<ClientViewRenderProps & { activationCount: num
             <span className="font-bold text-[11px] uppercase">{formatLabel({ key: 'core.runtime-smoke.kicker', defaultMessage: 'Phase 8 Bundled Extension' })}</span>
             <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{formatLabel({ key: 'core.runtime-smoke.description', defaultMessage: 'This modal is registered through the new extension runtime, not through ad hoc client imports. Its settings are configurable through the bundled Extension Manager.' })}</p>
             <div className="settings-session-grid">
-              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.extension-id', defaultMessage: 'EXTENSION_ID' })}</span><span className="settings-session-value">{extensionId}</span></div>
-              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.view-id', defaultMessage: 'VIEW_ID' })}</span><span className="settings-session-value">{viewId}</span></div>
-              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.activation-count', defaultMessage: 'ACTIVATION_COUNT' })}</span><span className="settings-session-value">{activationCount}</span></div>
+              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.extension-id', defaultMessage: 'Extension ID' })}</span><span className="settings-session-value">{extensionId}</span></div>
+              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.view-id', defaultMessage: 'View ID' })}</span><span className="settings-session-value">{viewId}</span></div>
+              <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.activation-count', defaultMessage: 'Activation count' })}</span><span className="settings-session-value">{activationCount}</span></div>
             </div>
             <div className="settings-card">
-              <span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.activation-message', defaultMessage: 'ACTIVATION_MESSAGE' })}</span>
+              <span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.activation-message', defaultMessage: 'Activation message' })}</span>
               <p className="text-[11px] text-[var(--fg-secondary)] leading-relaxed">{activationMessage}</p>
             </div>
           </div>
         </div>
       </div>
       <footer className="modal-footer">
-        <button onClick={() => void close()} className="modal-btn modal-btn-primary">{formatLabel({ key: 'core.common.close', defaultMessage: 'CLOSE' })}</button>
+        <button onClick={() => void close()} className="modal-btn modal-btn-primary">{formatLabel({ key: 'core.common.close', defaultMessage: 'Close' })}</button>
       </footer>
     </div>
   </div>

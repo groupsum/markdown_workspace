@@ -1399,15 +1399,15 @@
     {
       "id": "feat:editor-line-count-scroll-alignment",
       "title": "Editor line count scroll alignment",
-      "description": "Keep line count aligned with editor when y-scrolled.",
-      "implementation_status": "absent",
+      "description": "Keep line count aligned with editor text under y-scroll, line wrapping, and shared editor padding.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1416,8 +1416,12 @@
         "spc:2016",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
       "requires": []
     },
     {
@@ -5212,7 +5216,8 @@
         "feat:editor-toolbar-split-view-eligibility",
         "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-divider-grouping"
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-line-count-scroll-alignment"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -6147,7 +6152,8 @@
         "feat:editor-toolbar-split-view-eligibility",
         "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-divider-grouping"
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-line-count-scroll-alignment"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -8591,11 +8597,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "1fa2cd15c865cd699e6f24657518c2fe6de4be2c11a5d7ecf0ada9b4b680ba63",
+      "content_sha256": "3060ac49b619360c92680c1dbaf81752c0c07997ebab61d44a67a97510546f84",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Require line count gutter padding to match editor textarea padding.",
+          "at": "2026-04-25T22:04:23Z"
+        }
+      ],
       "kind": "normative",
       "adr_ids": []
     },

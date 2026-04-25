@@ -83,7 +83,7 @@ export function createWorkspaceFilesBundledEntry(options: WorkspaceFilesBundledE
             });
           };
 
-          registerRail(WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, "Toggle Explorer", "Folder", 10, WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID, "workspace.primary");
+          registerRail(WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, "File Explorer", "Folder", 10, WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_NEW_FILE_ID, "New File", "FilePlus", 20, WORKSPACE_FILES_COMMAND_NEW_FILE_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_NEW_FOLDER_ID, "New Folder", "FolderPlus", 30, WORKSPACE_FILES_COMMAND_NEW_FOLDER_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_DOWNLOAD_ID, "Download Workspace", "Download", 20, WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID, "workspace.secondary");
