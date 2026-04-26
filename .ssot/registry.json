@@ -865,7 +865,7 @@
       "id": "feat:extension-gemini-agent",
       "title": "Gemini Agent extension",
       "description": "Gemini Agent extension, including agent auth boundaries.",
-      "implementation_status": "absent",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -883,8 +883,12 @@
         "spc:2009",
         "spc:2018"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
@@ -914,7 +918,8 @@
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
-        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
       ],
       "requires": []
     },
@@ -946,7 +951,8 @@
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
-        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ],
       "requires": []
     },
@@ -3321,7 +3327,8 @@
         "clm:client-extensions"
       ],
       "test_ids": [
-        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
       ],
       "requires": []
     },
@@ -3529,7 +3536,8 @@
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ],
       "requires": []
     },
@@ -4463,7 +4471,7 @@
       "id": "feat:editor-toolbar-split-resizing",
       "title": "Editor toolbar split resizing",
       "description": "Track editor and preview split resizing behavior and split band constraints.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4487,7 +4495,8 @@
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
         "tst:apps-client-styles-chassisfittoscreen.test.ts",
-        "tst:apps-client-styles-alignmenttokens.test.ts"
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
       ],
       "requires": []
     },
@@ -4881,6 +4890,123 @@
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-sidebar-resizing",
+      "title": "Workspace sidebar resizing",
+      "description": "Drag, keyboard, clamp, and collapsed-state behavior for the file explorer sidebar.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2043",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-chassis-workpane-workpane.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-overlay-actions",
+      "title": "Preview overlay actions",
+      "description": "Expose Export HTML and Print Preview controls as preview overlay actions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2039",
+        "spc:2024",
+        "spc:2043"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-file-action-rail-grouping",
+      "title": "Workspace file action rail grouping",
+      "description": "Keep open-host-file in the primary rail group, keep import and download in the secondary group, and keep export and print as commands instead of rail items.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2019",
+        "spc:2037",
+        "spc:2038",
+        "spc:2043"
+      ],
+      "claim_ids": [
+        "clm:client-action-rail",
+        "clm:client-commands"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-component-class-policy",
+      "title": "UIX component class policy",
+      "description": "Keep app and extension component sources on governed class-name surfaces and tokenized CSS instead of utility-class tokens.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2028",
+        "spc:2043",
+        "spc:2063"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-componentclassnamepolicy.test.ts"
       ],
       "requires": []
     }
@@ -5803,6 +5929,139 @@
       "evidence_ids": [
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
       ]
+    },
+    {
+      "id": "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+      "title": "EditorPane.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.test.tsx",
+      "feature_ids": [
+        "feat:editor-toolbar-split-resizing"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-components-chassis-workpane-workpane.test.tsx",
+      "title": "WorkPane.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/components/Chassis/WorkPane/WorkPane.test.tsx",
+      "feature_ids": [
+        "feat:workspace-sidebar-resizing"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-chassis-workpane-workpane.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "title": "WorkspaceMarkdownRenderer.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.test.tsx",
+      "feature_ids": [
+        "feat:preview-export-artifact-generation",
+        "feat:preview-overlay-actions",
+        "feat:workspace-file-action-rail-grouping"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+      "title": "ExtensionRuntimeProvider.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
+      "feature_ids": [
+        "feat:extension-runtime-activation-lifecycle"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ]
+    },
+    {
+      "id": "tst:apps-client-styles-componentclassnamepolicy.test.ts",
+      "title": "componentClassNamePolicy.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/styles/componentClassNamePolicy.test.ts",
+      "feature_ids": [
+        "feat:uix-component-class-policy"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts"
+      ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+      "title": "run-smoke.mjs",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:extension-gemini-agent"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+      "title": "theme-studio.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/extensions/extension-theme-studio/tests/theme-studio.test.tsx",
+      "feature_ids": [
+        "feat:extension-theme-studio"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
+      ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+      "title": "language-pack-studio-view.test.tsx",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/extensions/extension-language-pack-studio/tests/language-pack-studio-view.test.tsx",
+      "feature_ids": [
+        "feat:extension-language-pack-studio"
+      ],
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
+      ]
     }
   ],
   "claims": [
@@ -5832,7 +6091,8 @@
         "feat:preview-link-same-document-hash-scroll",
         "feat:preview-link-cross-file-hash-scroll",
         "feat:preview-link-export-rewrite",
-        "feat:preview-link-unsafe-url-policy"
+        "feat:preview-link-unsafe-url-policy",
+        "feat:preview-overlay-actions"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -5862,7 +6122,8 @@
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -5892,7 +6153,8 @@
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ]
     },
     {
@@ -5904,21 +6166,24 @@
       "description": "Client feature: action-rail is represented by repository tests and source surfaces.",
       "feature_ids": [
         "feat:client-action-rail",
-        "feat:client-shell-registry-orchestration"
+        "feat:client-shell-registry-orchestration",
+        "feat:workspace-file-action-rail-grouping"
       ],
       "test_ids": [
         "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
         "tst:apps-client-src-features-commands-commandregistry.test.ts",
         "tst:apps-client-src-features-views-viewregistry.test.ts",
         "tst:apps-client-src-shell-actionrailhost.test.tsx",
-        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
         "evd:apps-client-src-features-commands-commandregistry.test.ts",
         "evd:apps-client-src-features-views-viewregistry.test.ts",
         "evd:apps-client-src-shell-actionrailhost.test.tsx",
-        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ]
     },
     {
@@ -5930,21 +6195,24 @@
       "description": "Client feature: commands is represented by repository tests and source surfaces.",
       "feature_ids": [
         "feat:client-commands",
-        "feat:client-shell-registry-orchestration"
+        "feat:client-shell-registry-orchestration",
+        "feat:workspace-file-action-rail-grouping"
       ],
       "test_ids": [
         "tst:apps-client-src-features-commands-commandregistry.test.ts",
         "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts",
         "tst:apps-client-src-features-views-viewregistry.test.ts",
         "tst:apps-client-src-shell-actionrailhost.test.tsx",
-        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-commands-commandregistry.test.ts",
         "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
         "evd:apps-client-src-features-views-viewregistry.test.ts",
         "evd:apps-client-src-shell-actionrailhost.test.tsx",
-        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
       ]
     },
     {
@@ -6077,7 +6345,8 @@
         "feat:extension-settings-namespace",
         "feat:extension-theme-studio",
         "feat:extension-language-pack-studio",
-        "feat:uix-extension-view-modes"
+        "feat:uix-extension-view-modes",
+        "feat:extension-gemini-agent"
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
@@ -6088,7 +6357,11 @@
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
         "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
@@ -6099,7 +6372,11 @@
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
         "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ]
     },
     {
@@ -6117,13 +6394,15 @@
         "tst:apps-client-src-features-i18n-clienti18nservice.test.ts",
         "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
         "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
         "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
         "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ]
     },
     {
@@ -6153,7 +6432,9 @@
         "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-overflow-scroll",
         "feat:editor-toolbar-divider-grouping",
-        "feat:editor-line-count-scroll-alignment"
+        "feat:editor-line-count-scroll-alignment",
+        "feat:workspace-sidebar-resizing",
+        "feat:uix-component-class-policy"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -6167,7 +6448,10 @@
         "tst:apps-client-hooks-usetoast.test.tsx",
         "tst:apps-client-src-shell-actionrailhost.test.tsx",
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
-        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "tst:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "tst:apps-client-styles-componentclassnamepolicy.test.ts"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-alignmenttokens.test.ts",
@@ -6181,7 +6465,10 @@
         "evd:apps-client-hooks-usetoast.test.tsx",
         "evd:apps-client-src-shell-actionrailhost.test.tsx",
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
-        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts"
       ]
     },
     {
@@ -6882,6 +7169,121 @@
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+      "title": "Evidence: EditorPane.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.test.tsx",
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+      "title": "Evidence: WorkPane.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Chassis/WorkPane/WorkPane.test.tsx",
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-chassis-workpane-workpane.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "title": "Evidence: WorkspaceMarkdownRenderer.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+      "title": "Evidence: ExtensionRuntimeProvider.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+      "title": "Evidence: componentClassNamePolicy.test.ts",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/componentClassNamePolicy.test.ts",
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-componentclassnamepolicy.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+      "title": "Evidence: run-smoke.mjs",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+      "title": "Evidence: theme-studio.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-theme-studio/tests/theme-studio.test.tsx",
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+      "title": "Evidence: language-pack-studio-view.test.tsx",
+      "status": "collected",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-language-pack-studio/tests/language-pack-studio-view.test.tsx",
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ]
     }
   ],
@@ -7949,6 +8351,22 @@
       "immutable": false,
       "package_version": "0.2.11",
       "content_sha256": "688f8710f87d65b7476667c338d38793789701006298d18bed7945540486133f",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1049",
+      "number": 1049,
+      "slug": "governed-component-class-surfaces",
+      "title": "ADR-0049: Governed component class surfaces",
+      "path": ".ssot/adr/ADR-1049-governed-component-class-surfaces.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "2ceff5341fb9a109adea12ced6a162e5806d02cf3183a968b03d8866f3993a1a",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -9621,6 +10039,28 @@
         "adr:1031",
         "adr:1040",
         "adr:1048"
+      ]
+    },
+    {
+      "id": "spc:2063",
+      "number": 2063,
+      "slug": "component-class-surface-policy",
+      "title": "Component Class Surface Policy",
+      "path": ".ssot/specs/SPEC-2063-component-class-surface-policy.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "f3a75fbedc33e2a55cd4239e87aae7cc6d22d9e0bdea89bf228b304af2d76ed1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "local-policy",
+      "adr_ids": [
+        "adr:1040",
+        "adr:1048",
+        "adr:1049"
       ]
     }
   ],

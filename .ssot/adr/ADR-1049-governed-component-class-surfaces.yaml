@@ -1,0 +1,33 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1049"
+number: 1049
+slug: "governed-component-class-surfaces"
+title: "ADR-0049: Governed component class surfaces"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk shall govern app and extension component class surfaces through named component classes and tokenized CSS contracts. Tailwind-style utility class tokens are out of bounds in governed app and extension component source."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1049: Governed component class surfaces
+  
+  ## Decision
+  
+  MdWrk shall govern app and extension component class surfaces through named component classes and tokenized CSS contracts. Tailwind-style utility class tokens are out of bounds in governed app and extension component source.
+  
+  ## Scope
+  
+  - App component source that renders governed shell, pane, editor, preview, settings, and workspace surfaces.
+  - Extension component source that renders first-party governed workspace, sidebar, modal, and settings surfaces.
+  - Shared component class names, CSS tokens, and conformance tests that detect disallowed inline utility-token usage.
+  
+  ## Consequences
+  
+  - Component styling changes must preserve governed class-name surfaces instead of introducing ad hoc utility-token strings.
+  - CSS policy regressions can be blocked through repository conformance tests.
+  - Extension surfaces must compose with the same class and token policy as app-owned UIX surfaces.
