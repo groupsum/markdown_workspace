@@ -22,6 +22,7 @@ export const AppShell: React.FC = () => {
   const { t } = useClientI18n();
   const { state, actions } = runtime.app;
   const { state: pwaState, actions: pwaActions } = runtime.pwa;
+  const lastActivatedWorkspaceViewIdRef = React.useRef<string | null>(null);
   const workspaceView =
     viewSnapshot.views.find((view) => view.id === viewSnapshot.activeMainViewId)
     ?? null;
@@ -70,6 +71,20 @@ export const AppShell: React.FC = () => {
       window.removeEventListener(MARKDOWN_IMPORT_REQUEST_EVENT, handleImportRequest);
     };
   }, []);
+
+  React.useEffect(() => {
+    if (!workspaceView) {
+      lastActivatedWorkspaceViewIdRef.current = null;
+      return;
+    }
+
+    const isNewWorkspaceActivation = lastActivatedWorkspaceViewIdRef.current !== workspaceView.id;
+    lastActivatedWorkspaceViewIdRef.current = workspaceView.id;
+
+    if (isNewWorkspaceActivation && workspaceView.renderSidebar && !state.sidebarOpen) {
+      actions.setSidebarOpen(true);
+    }
+  }, [actions, state.sidebarOpen, workspaceView]);
 
   if (state.loading) {
     return <div className="boot-screen">{t('core.boot.sequence', 'BOOT SEQUENCE...')}</div>;
@@ -141,6 +156,8 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            onExportHtml={actions.handleHtmlExport}
+            onPrintPreview={actions.handlePrint}
             workspaceSidebarSurface={
               workspaceView && workspaceViewRenderProps && workspaceView.renderSidebar
                 ? workspaceView.renderSidebar(workspaceViewRenderProps) as React.ReactNode
@@ -180,6 +197,8 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            onExportHtml={actions.handleHtmlExport}
+            onPrintPreview={actions.handlePrint}
           />
         )}
       </section>

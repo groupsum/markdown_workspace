@@ -13,6 +13,7 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
   const actionRailSnapshot = useSyncExternalStore(services.actionRail.subscribe, services.actionRail.getSnapshot, services.actionRail.getSnapshot);
   const viewSnapshot = useSyncExternalStore(services.views.subscribe, services.views.getSnapshot, services.views.getSnapshot);
   const localeSnapshot = useSyncExternalStore(services.i18n.subscribe, services.i18n.getSnapshot, services.i18n.getSnapshot);
+  const fileWorkspaceOwnsRail = !viewSnapshot.activeMainViewId;
 
   const items = React.useMemo<ActionRailItemModel[]>(() => actionRailSnapshot.items
     .filter((item) => !preferences.hiddenActionRailButtons.includes(item.id))
@@ -23,7 +24,7 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       badge: item.badge,
       active: (() => {
         if (item.id === 'core.toggle-explorer') {
-          return !viewSnapshot.activeMainViewId && runtime.app.state.sidebarOpen;
+          return fileWorkspaceOwnsRail && runtime.app.state.sidebarOpen;
         }
         if (item.target.kind === 'view') {
           return viewSnapshot.activeViewId === item.target.viewId && viewSnapshot.openViewIds.includes(item.target.viewId);
@@ -34,21 +35,29 @@ export const ActionRailHost: React.FC<{ className?: string }> = ({ className }) 
       group: item.group,
       onClick: async () => {
         if (item.id === 'core.toggle-explorer') {
-          if (viewSnapshot.activeMainViewId) {
-            await services.views.close(viewSnapshot.activeMainViewId);
-            runtime.app.actions.setSidebarOpen(true);
+          if (!fileWorkspaceOwnsRail) {
+            const activeMainViewId = services.views.getSnapshot().activeMainViewId;
+            if (activeMainViewId) {
+              await services.views.close(activeMainViewId);
+            }
+            runtime.app.actions.setSidebarOpen?.(true);
             return;
           }
           await host.commands.execute(item.target.kind === 'command' ? item.target.commandId : 'core.toggle-explorer');
           return;
         }
         if (item.target.kind === 'view') {
+          const targetView = services.views.get(item.target.viewId);
+          const targetIsActive = viewSnapshot.activeViewId === item.target.viewId && viewSnapshot.openViewIds.includes(item.target.viewId);
+          if (!targetIsActive && targetView?.renderSidebar) {
+            runtime.app.actions.setSidebarOpen?.(true);
+          }
           await services.views.toggle(item.target.viewId);
         } else {
           await host.commands.execute(item.target.commandId);
         }
       },
-    })), [actionRailSnapshot.items, host.commands, localeSnapshot.locale, preferences.hiddenActionRailButtons, runtime.app.actions, runtime.app.state.sidebarOpen, services.i18n, services.views, viewSnapshot.activeMainViewId, viewSnapshot.activeViewId, viewSnapshot.openViewIds]);
+    })), [actionRailSnapshot.items, fileWorkspaceOwnsRail, host.commands, localeSnapshot.locale, preferences.hiddenActionRailButtons, runtime.app.actions, runtime.app.state.sidebarOpen, services.i18n, services.views, viewSnapshot.activeViewId, viewSnapshot.openViewIds]);
 
   const ariaLabel = React.useMemo(
     () => services.i18n.format({ key: 'core.action-rail.aria-label', defaultMessage: 'Primary Actions' }),

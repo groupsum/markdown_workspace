@@ -36,6 +36,10 @@
     margin: 0;
   }
 
+  body[data-pdf-page-orientation="landscape"] {
+    page: mdwrk-pdf-landscape;
+  }
+
   .texture-overlay,
   .action-rail,
   .app-header,
@@ -43,6 +47,7 @@
   .workspace-sidebar,
   .view-toolbar,
   .panel-toolbar,
+  .preview-pane-overlay-actions,
   .git-workspace,
   .update-banner,
   .toast-container {
@@ -76,6 +81,7 @@
   .editor-pane-body,
   .editor-pane-column,
   .preview-pane,
+  .workspace-markdown-renderer-shell,
   .markdown-body {
     height: auto !important;
     min-height: 0 !important;
@@ -108,8 +114,11 @@
     background: transparent !important;
   }
 
+  .workspace-markdown-renderer-shell {
+    padding: 0 !important;
+  }
+
   .markdown-body {
-    page: mdwrk-pdf-portrait;
     background: var(--bg-app, #0b0f14) !important;
     padding: 0 !important;
     box-sizing: border-box;
@@ -118,10 +127,6 @@
     line-height: var(--pdf-content-line-height, 1.5) !important;
     overflow-wrap: anywhere !important;
     word-break: break-word !important;
-  }
-
-  body[data-pdf-page-orientation="landscape"] .markdown-body {
-    page: mdwrk-pdf-landscape;
   }
 
   .markdown-body pre,

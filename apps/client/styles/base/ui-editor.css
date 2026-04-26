@@ -193,8 +193,12 @@
   cursor: col-resize;
   position: relative;
   transition: background 0.1s;
+  touch-action: none;
+  user-select: none;
+  outline: none;
 }
 .editor-splitter:hover,
+.editor-splitter:focus-visible,
 .editor-splitter.dragging {
   background: var(--accent);
 }
@@ -220,6 +224,7 @@
 .workspace-markdown-renderer-shell {
   --preview-pane-inline-padding: clamp(18px, 4vw, 64px);
   flex: 1;
+  position: relative;
   min-width: 0;
   max-width: 100%;
   overflow-x: hidden;
@@ -227,6 +232,37 @@
   overflow-y: auto;
   padding: 18px var(--preview-pane-inline-padding) 24px;
   box-sizing: border-box;
+}
+
+.preview-pane-overlay-actions {
+  position: sticky;
+  top: 8px;
+  z-index: 20;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.preview-pane-overlay-btn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-primary);
+  background: color-mix(in srgb, var(--bg-panel) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-color) 58%, transparent);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+.preview-pane-overlay-btn:hover {
+  color: #fff;
+  background: color-mix(in srgb, var(--accent) 82%, var(--bg-panel));
+  border-color: color-mix(in srgb, var(--accent) 82%, var(--border-color));
 }
 
 .preview-pane .markdown-body {

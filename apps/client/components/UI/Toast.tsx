@@ -1,9 +1,10 @@
 import React from 'react';
+import type { ToastType } from '../../src/features/notifications/toastMessage';
 
 export interface ToastMessage {
   id: string;
   message: string;
-  type: 'info' | 'success' | 'warning';
+  type: ToastType;
 }
 
 interface ToastContainerProps {
@@ -15,12 +16,12 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ messages, onDism
   return (
     <div className="toast-container">
       {messages.map(msg => (
-        <div 
+        <div
           key={msg.id}
           className={`toast-message ${msg.type}`}
         >
           <span>{msg.message}</span>
-          <button type="button" aria-label="Dismiss toast" onClick={() => onDismiss(msg.id)} className="toast-close-btn">×</button>
+          <button type="button" aria-label="Dismiss toast" onClick={() => onDismiss(msg.id)} className="toast-close-btn">x</button>
         </div>
       ))}
     </div>

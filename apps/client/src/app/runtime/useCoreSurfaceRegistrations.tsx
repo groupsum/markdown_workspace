@@ -29,8 +29,16 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.visual.title': 'Visual Matrix',
         'core.settings.visual.description': 'Theme presets and visual surfaces.',
         'core.settings.visual.active-theme': 'Active theme',
+        'core.settings.visual.code-syntax': 'Code syntax',
+        'core.settings.visual.prev-theme': 'Previous theme',
+        'core.settings.visual.next-theme': 'Next theme',
         'core.settings.markdown-profiles.title': 'Markdown Profiles',
         'core.settings.markdown-profiles.description': 'Optional Markdown feature profiles and trust policy.',
+        'core.settings.language.title': 'Language & Locale',
+        'core.settings.language.description': 'Select the interface language used by the core shell.',
+        'core.settings.language-packs.section.title': 'Language Packs',
+        'core.settings.language-packs.section.description': 'Import, export, and activate portable language packs.',
+        'core.settings.state.none': 'None',
         'core.settings.sections.git.title': 'Source Control',
         'core.settings.sections.git.description': 'Repository and identity settings.',
         'core.settings.sections.data.title': 'Storage Ops',
@@ -39,16 +47,67 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.sections.keymap.description': 'Host keyboard bindings backed by the command registry.',
         'core.settings.sections.session.title': 'Session State',
         'core.settings.sections.session.description': 'Session and persistence controls.',
+        'core.settings.group.general': 'General',
+        'core.settings.group.advanced': 'Advanced',
+        'core.settings.group.data': 'Data',
+        'core.settings.group.extensions': 'Extensions',
+        'core.settings.group.git': 'Git',
+        'core.settings.group.keys': 'Keys',
+        'core.settings.group.language': 'Language',
+        'core.settings.group.session': 'Session',
+        'core.settings.group.visual': 'Visual',
         'core.settings.sidebar.core.settings.markdown-profiles.label': 'Markdown profiles',
         'core.settings.sidebar.core.settings.extensions.runtime.label': 'Extension runtime',
         'core.settings.sidebar.@mdwrk/extension-manager.settings.label': 'Extension manager',
         'core.settings.sidebar.@mdwrk/extension-theme-studio.settings.label': 'Theme Studio settings',
+        'core.settings.sidebar.core.extension-manager.settings.label': 'Extension manager',
+        'core.settings.sidebar.core.gemini-agent.settings.label': 'Gemini Agent settings',
+        'core.settings.sidebar.core.language-pack-studio.settings.label': 'Language Pack Studio',
+        'core.settings.sidebar.core.theme-studio.settings.label': 'Theme Studio settings',
+        'core.settings.sidebar.core.workspace-files.settings.label': 'Workspace files',
         'core.settings.sidebar.core.settings.git.label': 'Source control',
         'core.settings.sidebar.core.settings.data.label': 'Storage operations',
         'core.settings.sidebar.core.settings.keys.label': 'Key map',
         'core.settings.sidebar.core.settings.language.label': 'Language & Locale',
+        'core.settings.sidebar.core.settings.language-packs.label': 'Language packs',
         'core.settings.sidebar.core.settings.session.label': 'Session state',
         'core.settings.sidebar.core.settings.visual.label': 'Visual matrix',
+        'core.settings.sidebar.core.settings.workspace-preferences.label': 'Workspace preferences',
+        'core.settings.keymap.save-buffer': 'Save buffer',
+        'core.settings.keymap.command-palette': 'Command palette',
+        'core.settings.keymap.new-file': 'New file',
+        'core.settings.keymap.toggle-workspace-panel': 'Toggle workspace panel',
+        'core.settings.keymap.focus-registry': 'Focus registry',
+        'core.settings.keymap.next-tab': 'Next tab',
+        'core.settings.keymap.prev-tab': 'Previous tab',
+        'core.settings.keymap.view-editor': 'View editor',
+        'core.settings.keymap.view-split': 'View split',
+        'core.settings.keymap.view-preview': 'View preview',
+        'core.settings.keymap.format-bold': 'Format bold',
+        'core.settings.keymap.format-italic': 'Format italic',
+        'core.settings.keymap.format-strikethrough': 'Format strikethrough',
+        'core.settings.keymap.undo-op': 'Undo',
+        'core.settings.keymap.redo-op': 'Redo',
+        'core.settings.keymap.settings': 'Settings',
+        'core.settings.keymap.toggle-git-mode': 'Toggle Git mode',
+        'core.settings.keymap.zoom-in': 'Zoom in',
+        'core.settings.keymap.zoom-out': 'Zoom out',
+        'core.settings.keymap.reset-zoom': 'Reset zoom',
+        'core.settings.keymap.print-preview': 'Print preview',
+        'core.settings.session.active-project': 'Active project',
+        'core.settings.session.open-tabs': 'Open tabs',
+        'core.settings.session.active-tab': 'Active tab',
+        'core.settings.session.view-mode': 'View mode',
+        'core.settings.session.app-mode': 'App mode',
+        'core.settings.session.zoom-scale': 'Zoom scale',
+        'core.settings.session.auto-save': 'Auto save',
+        'core.settings.session.auto-save.description': 'Toggle instant persistence to local storage while editing.',
+        'core.settings.session.restore-session': 'Restore session',
+        'core.settings.session.restore-session.description': 'Persist current project, tabs, and layout so reloads resume from the last session.',
+        'core.settings.session.line-numbers': 'Line numbers',
+        'core.settings.session.line-numbers.description': 'Show or hide the editor gutter line numbers for the current workspace session.',
+        'core.settings.workspace-preferences.section.title': 'Workspace Preferences',
+        'core.settings.workspace-preferences.section.description': 'Configure rails, editor toolbar visibility, and export/print policy display.',
         'core.preview.policy.title': 'Preview Policy',
         'core.preview.policy.htmlHandling': 'HTML handling',
         'core.export.policy.title': 'Export Policy',
@@ -211,12 +270,12 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     className={`settings-theme-btn ${currentTheme === theme.id ? 'active' : ''}`}
                   >
                     <div className="settings-theme-header">
-                      <span className={currentTheme === theme.id ? 'text-[var(--accent)]' : 'text-[var(--fg-muted)]'}>{theme.icon}</span>
+                      <span className={currentTheme === theme.id ? 'settings-accent-text' : 'settings-muted-text'}>{theme.icon}</span>
                       <span className="settings-theme-name">{theme.name}</span>
                     </div>
                     <span className="settings-theme-desc">{theme.description}</span>
-                    <span className="text-[10px] uppercase text-[var(--fg-muted)]">{t('core.settings.visual.code-syntax', 'Code syntax')} - {theme.syntaxTheme.name}</span>
-                    <span className="text-[11px] text-[var(--fg-muted)]">{theme.syntaxTheme.palette}</span>
+                    <span className="settings-kicker">{t('core.settings.visual.code-syntax', 'Code syntax')} - {theme.syntaxTheme.name}</span>
+                    <span className="settings-muted-caption">{theme.syntaxTheme.palette}</span>
                   </button>
                 ))}
               </div>
@@ -237,7 +296,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
       }),
       services.settingsRegistry.register({
         id: 'core.settings.markdown-profiles',
-        title: label('Markdown Profiles', 'core.markdown-profiles.title'),
+        title: label('Markdown Profiles', 'core.settings.markdown-profiles.title'),
         description: label('Optional Markdown feature profiles and trust policy.', 'core.settings.markdown-profiles.description'),
         order: 15,
         panel: 'advanced',
@@ -280,7 +339,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         icon: { kind: 'lucide', name: 'Keyboard' },
         render: () => (
           <div className="settings-pane">
-            <div className="settings-card settings-card-list settings-keymap-grid bg-[var(--bg-inset)]">
+            <div className="settings-card settings-card-list settings-keymap-grid settings-card-inset">
               {[
                 { label: t('core.settings.keymap.save-buffer', 'Save buffer'), key: 'CTRL/CMD+S' },
                 { label: t('core.settings.keymap.command-palette', 'Command palette'), key: 'CTRL/CMD+K' },
@@ -305,8 +364,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                 { label: t('core.settings.keymap.print-preview', 'Print preview'), key: 'CTRL/CMD+P' },
               ].map((row) => (
                 <div key={row.label} className="settings-keymap-item">
-                  <span className="settings-keymap-label text-[var(--fg-muted)]">{row.label}</span>
-                  <span className="settings-keymap-key text-[var(--accent)] font-mono">{row.key}</span>
+                  <span className="settings-keymap-label settings-muted-text">{row.label}</span>
+                  <span className="settings-keymap-key settings-accent-text font-mono">{row.key}</span>
                 </div>
               ))}
             </div>
@@ -324,7 +383,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
           const snapshot = runtime.getSnapshot();
           return (
             <div className="settings-pane">
-              <div className="flex flex-col gap-4">
+              <div className="settings-stack settings-stack--lg">
                 <div className="settings-card settings-card-stack">
                   <div className="settings-session-grid">
                     <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.active-project', 'Active project')}</span><span className="settings-session-value">{snapshot.app.state.currentProject?.name ?? t('core.settings.state.none', 'None')}</span></div>
@@ -335,11 +394,11 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     <div className="settings-session-item"><span className="settings-session-label">{t('core.settings.session.zoom-scale', 'Zoom scale')}</span><span className="settings-session-value">{snapshot.app.state.zoom.toFixed(2)}x</span></div>
                   </div>
                 </div>
-                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="settings-card settings-card-highlight settings-card-inset">
+                  <div className="settings-row settings-row--top settings-row--bottom">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.auto-save', 'Auto save')}</span>
-                      <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.auto-save.description', 'Toggle instant persistence to local storage while editing.')}</p>
+                      <span className="settings-section-label settings-inline-row settings-inline-row--sm">{t('core.settings.session.auto-save', 'Auto save')}</span>
+                      <p className="settings-muted-caption settings-copy--spaced settings-copy--relaxed">{t('core.settings.session.auto-save.description', 'Toggle instant persistence to local storage while editing.')}</p>
                     </div>
                     <label className="pwa-toggle">
                       <input type="checkbox" checked={snapshot.app.state.autoSaveEnabled} onChange={(event) => snapshot.app.actions.setAutoSaveEnabled(event.target.checked)} />
@@ -347,11 +406,11 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     </label>
                   </div>
                 </div>
-                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="settings-card settings-card-highlight settings-card-inset">
+                  <div className="settings-row settings-row--top settings-row--bottom">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.restore-session', 'Restore session')}</span>
-                      <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.restore-session.description', 'Persist current project, tabs, and layout so reloads resume from the last session.')}</p>
+                      <span className="settings-section-label settings-inline-row settings-inline-row--sm">{t('core.settings.session.restore-session', 'Restore session')}</span>
+                      <p className="settings-muted-caption settings-copy--spaced settings-copy--relaxed">{t('core.settings.session.restore-session.description', 'Persist current project, tabs, and layout so reloads resume from the last session.')}</p>
                     </div>
                     <label className="pwa-toggle">
                       <input type="checkbox" checked={snapshot.app.state.persistSessionEnabled} onChange={(event) => snapshot.app.actions.setPersistSessionEnabled(event.target.checked)} />
@@ -359,11 +418,11 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     </label>
                   </div>
                 </div>
-                <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="settings-card settings-card-highlight settings-card-inset">
+                  <div className="settings-row settings-row--top settings-row--bottom">
                     <div>
-                      <span className="font-bold text-[11px] uppercase flex items-center gap-2">{t('core.settings.session.line-numbers', 'Line numbers')}</span>
-                      <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{t('core.settings.session.line-numbers.description', 'Show or hide the editor gutter line numbers for the current workspace session.')}</p>
+                      <span className="settings-section-label settings-inline-row settings-inline-row--sm">{t('core.settings.session.line-numbers', 'Line numbers')}</span>
+                      <p className="settings-muted-caption settings-copy--spaced settings-copy--relaxed">{t('core.settings.session.line-numbers.description', 'Show or hide the editor gutter line numbers for the current workspace session.')}</p>
                     </div>
                     <label className="pwa-toggle">
                       <input type="checkbox" checked={snapshot.app.state.showLineNumbers} onChange={(event) => snapshot.app.actions.setShowLineNumbers(event.target.checked)} />

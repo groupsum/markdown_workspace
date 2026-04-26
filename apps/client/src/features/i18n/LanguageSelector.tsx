@@ -21,10 +21,10 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ compact = fa
   const currentLocale = options.find((entry) => entry.id === locale) ?? options[0];
 
   return (
-    <label className={`flex ${compact ? 'items-center gap-2' : 'flex-col gap-2'}`}>
-      {!compact && <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.language.selector.label', 'Language')}</span>}
+    <label className={compact ? 'language-selector language-selector--compact' : 'language-selector'}>
+      {!compact && <span className="language-selector-label">{t('core.settings.language.selector.label', 'Language')}</span>}
       <select
-        className="modal-input !text-xs !py-3"
+        className="modal-input language-selector-control"
         aria-label={t('core.settings.language.selector.label', 'Language')}
         value={currentLocale.id}
         onChange={(event) => {

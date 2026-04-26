@@ -52,7 +52,7 @@ export const GitSettingsPanel: React.FC = () => {
   return (
     <div className="settings-pane">
       <div className="settings-card settings-card-stack">
-        <div className="flex flex-col gap-4">
+        <div className="settings-stack settings-stack--lg">
           <OidcSignInSelector
             gitConfig={draft}
             onGitConfigChange={handleDraftChange}
@@ -72,10 +72,10 @@ export const GitSettingsPanel: React.FC = () => {
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.git.stat.host', 'Host')}</span><span className="settings-inline-stat-value">{PROVIDER_REPO_HOST[provider]}</span></span>
           </div>
 
-          <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.branch', 'Branch')}</span>
+          <label className="settings-field-stack">
+            <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.branch', 'Branch')}</span>
             <input
-              className="modal-input !text-xs !py-3"
+              className="modal-input modal-input--compact"
               value={draft.branch}
               onChange={(event) => handleGitChange('branch', event.target.value)}
               placeholder="main"
@@ -95,11 +95,11 @@ export const GitSettingsPanel: React.FC = () => {
         </div>
 
         <div className="settings-action-row">
-          <button className="modal-btn flex-1" onClick={() => { void handleTestLink(); }}>{t('core.settings.git.test-link', 'Test link')}</button>
-          <button className="modal-btn flex-1" onClick={snapshot.actions.refreshGitRepositories}>
+          <button className="modal-btn modal-btn--fill" onClick={() => { void handleTestLink(); }}>{t('core.settings.git.test-link', 'Test link')}</button>
+          <button className="modal-btn modal-btn--fill" onClick={snapshot.actions.refreshGitRepositories}>
             <RefreshCw size={14} /> {t('core.settings.git.refresh-repos', 'Refresh repositories')}
           </button>
-          <button className="modal-btn flex-1 modal-btn-primary" onClick={() => { void handleSave(); }}>{t('core.settings.git.save-config', 'Save configuration')}</button>
+          <button className="modal-btn modal-btn--fill modal-btn-primary" onClick={() => { void handleSave(); }}>{t('core.settings.git.save-config', 'Save configuration')}</button>
         </div>
       </div>
     </div>

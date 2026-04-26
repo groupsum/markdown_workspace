@@ -82,12 +82,12 @@ export const LanguagePackManagerPanel: React.FC = () => {
 
   return (
     <div className="settings-pane">
-      <div className="flex flex-col gap-4">
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
-          <div className="flex items-start justify-between gap-4 flex-wrap">
+      <div className="settings-stack settings-stack--lg">
+        <div className="settings-card settings-card-stack settings-card-inset">
+          <div className="settings-row settings-row--top settings-row--wrap settings-row--gap-lg">
             <div>
-              <span className="font-bold text-[11px] uppercase">{t('core.settings.language-packs.title', 'Language Packs')}</span>
-              <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
+              <span className="settings-section-label">{t('core.settings.language-packs.title', 'Language Packs')}</span>
+              <p className="settings-muted-caption mt-2 leading-relaxed">
                 {t('core.settings.language-packs.description', 'Compact language-pack management from settings. Open the studio pane for token auditing and pack authoring.')}
               </p>
             </div>
@@ -114,7 +114,7 @@ export const LanguagePackManagerPanel: React.FC = () => {
             </div>
           </div>
           <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={handleImport} />
-          {error && <p className="text-[11px] text-[var(--status-error)]">{error}</p>}
+          {error && <p className="settings-error-caption">{error}</p>}
           <div className="settings-inline-stats">
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.packs', 'Packs')}</span><span className="settings-inline-stat-value">{packs.length}</span></span>
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.enabled', 'Enabled')}</span><span className="settings-inline-stat-value">{enabledCount}</span></span>
@@ -122,24 +122,26 @@ export const LanguagePackManagerPanel: React.FC = () => {
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.built-in', 'Built In')}</span><span className="settings-inline-stat-value">{builtInCount}</span></span>
             <span className="settings-inline-stat"><span className="settings-inline-stat-label">{t('core.settings.language-packs.stats.installed', 'Installed')}</span><span className="settings-inline-stat-value">{installedCount}</span></span>
           </div>
-          <div className="settings-chip-row">
-            <span className="settings-chip">{builtInCount} {t('core.settings.language-packs.source.built-in', 'Built in')}</span>
-            <span className="settings-chip">{installedCount} {t('core.settings.language-packs.source.installed', 'Installed')}</span>
-            <span className="settings-chip">{t('core.settings.storage.indexeddb', 'IndexedDB')}</span>
-          </div>
         </div>
 
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div className="settings-list">
-            {packs.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{t('core.settings.language-packs.empty', 'No imported language packs')}</span>}
+            {packs.length === 0 && <span className="settings-muted-caption">{t('core.settings.language-packs.empty', 'No imported language packs')}</span>}
             {packs.map((pack) => (
               <div key={pack.locale} className="settings-list-row">
                 <div className="settings-list-row-main">
                   <div className="settings-list-row-title">
                     <span>{pack.label}</span>
-                    <span className="settings-chip">{pack.locale}</span>
-                    <span className="settings-chip">{pack.source === 'built-in' ? t('core.settings.language-packs.source.built-in', 'Built in') : t('core.settings.language-packs.source.installed', 'Installed')}</span>
-                    <span className="settings-chip">{pack.enabled ? t('core.settings.state.enabled', 'Enabled') : t('core.settings.state.disabled', 'Disabled')}</span>
+                    <span className="settings-chip settings-chip--locale">{pack.locale}</span>
+                    <span className={`settings-chip ${pack.source === 'built-in' ? 'settings-chip--source-built-in' : 'settings-chip--source-installed'}`}>
+                      {pack.source === 'built-in' ? t('core.settings.language-packs.source.built-in', 'Built in') : t('core.settings.language-packs.source.installed', 'Installed')}
+                    </span>
+                    <span className={`settings-chip ${pack.enabled ? 'settings-chip--enabled' : 'settings-chip--disabled'}`}>
+                      {pack.enabled ? t('core.settings.state.enabled', 'Enabled') : t('core.settings.state.disabled', 'Disabled')}
+                    </span>
+                    {locale === pack.locale ? (
+                      <span className="settings-chip settings-chip--active">{t('core.settings.language-packs.stats.active', 'Active')}</span>
+                    ) : null}
                   </div>
                   <div className="settings-list-row-subtitle">
                     {pack.source === 'built-in'

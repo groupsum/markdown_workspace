@@ -39,8 +39,8 @@ export class ExtensionViewErrorBoundary extends React.Component<ExtensionViewErr
             <div className="settings-content-frame">
               <div className="settings-pane">
                 <div className="settings-card settings-card-stack">
-                  <span className="font-bold text-[11px] uppercase">{this.props.extensionId}</span>
-                  <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{this.state.error.message}</p>
+                  <span className="settings-section-label">{this.props.extensionId}</span>
+                  <p className="settings-muted-caption leading-relaxed">{this.state.error.message}</p>
                 </div>
               </div>
             </div>

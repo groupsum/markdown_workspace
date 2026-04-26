@@ -6,6 +6,7 @@ import {
   Download,
   Eye,
   Package,
+  Brush,
   RefreshCw,
   RotateCcw,
   Save,
@@ -13,6 +14,7 @@ import {
   SidebarOpen,
   SplitSquareHorizontal,
   Square,
+  SwatchBook,
   X,
 } from "lucide-react";
 import { THEME_STUDIO_SAMPLE_MARKDOWN } from "../constants.js";
@@ -261,7 +263,7 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
               <span className="settings-session-label">{definition.category}</span>
             </button>
           ))}
-          {browserTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
+          {browserTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
         </div>
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
           <span className="settings-session-label">{formatLabel(themeStudioLabels.browserRelationshipTitle)}</span>
@@ -277,7 +279,7 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
               <span className="settings-session-label">{relationship.bridgeTarget}</span>
             </button>
           ))}
-          {browserRelationships.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyRelationships)}</span>}
+          {browserRelationships.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.browserEmptyRelationships)}</span>}
         </div>
       </div>
     </div>
@@ -374,26 +376,29 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 8 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
             <span style={sectionTitleStyle}>{formatLabel(themeStudioLabels.metadataTitle)}</span>
-            <span className="text-[11px] text-[var(--fg-muted)]">{snapshot.busy ? formatLabel(themeStudioLabels.statusBusy) : snapshot.infoMessage ?? formatLabel(themeStudioLabels.statusReady)}</span>
+            <span className="settings-muted-caption">{snapshot.busy ? formatLabel(themeStudioLabels.statusBusy) : snapshot.infoMessage ?? formatLabel(themeStudioLabels.statusReady)}</span>
           </div>
           {snapshot.lastError && <p style={{ margin: 0, color: "var(--accent-red, #ef4444)", fontSize: 12 }}>{snapshot.lastError}</p>}
           <div className="settings-grid-2">
-            <label className="flex flex-col gap-2"><span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.metadataThemeName)}</span><input style={fieldStyle} value={snapshot.metadata.themeName} onChange={(event) => handleMetadataChange("themeName", event.currentTarget.value)} /></label>
-            <label className="flex flex-col gap-2"><span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.metadataThemeId)}</span><input style={fieldStyle} value={snapshot.metadata.themeId} onChange={(event) => handleMetadataChange("themeId", event.currentTarget.value)} /></label>
-            <label className="flex flex-col gap-2"><span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.metadataPackageName)}</span><input style={fieldStyle} value={snapshot.metadata.packageName} onChange={(event) => handleMetadataChange("packageName", event.currentTarget.value)} /></label>
-            <label className="flex flex-col gap-2"><span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.metadataAuthor)}</span><input style={fieldStyle} value={snapshot.metadata.author} onChange={(event) => handleMetadataChange("author", event.currentTarget.value)} /></label>
+            <label className="settings-field-stack"><span className="settings-field-label">{formatLabel(themeStudioLabels.metadataThemeName)}</span><input style={fieldStyle} value={snapshot.metadata.themeName} onChange={(event) => handleMetadataChange("themeName", event.currentTarget.value)} /></label>
+            <label className="settings-field-stack"><span className="settings-field-label">{formatLabel(themeStudioLabels.metadataThemeId)}</span><input style={fieldStyle} value={snapshot.metadata.themeId} onChange={(event) => handleMetadataChange("themeId", event.currentTarget.value)} /></label>
+            <label className="settings-field-stack"><span className="settings-field-label">{formatLabel(themeStudioLabels.metadataPackageName)}</span><input style={fieldStyle} value={snapshot.metadata.packageName} onChange={(event) => handleMetadataChange("packageName", event.currentTarget.value)} /></label>
+            <label className="settings-field-stack"><span className="settings-field-label">{formatLabel(themeStudioLabels.metadataAuthor)}</span><input style={fieldStyle} value={snapshot.metadata.author} onChange={(event) => handleMetadataChange("author", event.currentTarget.value)} /></label>
           </div>
-          <label className="flex flex-col gap-2"><span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.metadataDescription)}</span><textarea style={{ ...fieldStyle, minHeight: 72, resize: "vertical" }} value={snapshot.metadata.description} onChange={(event) => handleMetadataChange("description", event.currentTarget.value)} /></label>
+          <label className="settings-field-stack"><span className="settings-field-label">{formatLabel(themeStudioLabels.metadataDescription)}</span><textarea style={{ ...fieldStyle, minHeight: 72, resize: "vertical" }} value={snapshot.metadata.description} onChange={(event) => handleMetadataChange("description", event.currentTarget.value)} /></label>
         </div>
       )}
 
       {browserState.sidebarSection === "tokens" && (
-        <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
-          <div>
-            <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
-            <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>{formatLabel(themeStudioLabels.tokenInspectorDescription)}</p>
+        <div className="theme-token-editor">
+          <div className="theme-token-editor__header">
+            <div>
+              <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
+              <p className="theme-token-editor__hint">{formatLabel(themeStudioLabels.tokenCompactHint)}</p>
+            </div>
+            <span className="settings-chip">{visibleTokenDefinitions.length} {formatLabel(themeStudioLabels.settingsStatsTokens)}</span>
           </div>
-          <div style={{ display: "grid", gap: 10, maxHeight: 520, overflow: "auto", paddingRight: 6 }}>
+          <div className="theme-token-editor__list">
             {visibleTokenDefinitions.map((definition) => {
               const currentValue = (snapshot.currentTokens as Record<string, string> | null)?.[definition.name] ?? definition.defaultValue;
               const draftValue = (snapshot.draftTokens as Record<string, string>)[definition.name];
@@ -401,89 +406,132 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
               const colorToken = isColorToken(definition, effectiveValue);
               const swatchBackground = colorToken ? effectiveValue : "linear-gradient(135deg, var(--bg-muted), var(--border-primary))";
               return (
-                <div key={definition.name} className="settings-session-item" style={{ display: "grid", gap: 8 }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 8, alignItems: "baseline" }}>
-                    <strong style={{ fontSize: 12 }}>{definition.name}</strong>
-                    <span className="settings-session-label">{definition.category}</span>
-                  </div>
-                  <span className="text-[11px] text-[var(--fg-muted)]">{definition.description}</span>
-                  <div className="settings-grid-2">
-                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelDefault)}</span><span className="settings-session-value">{definition.defaultValue}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelCurrent)}</span><span className="settings-session-value">{currentValue}</span></div>
-                    <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelEffective)}</span><span className="settings-session-value">{effectiveValue}</span></div>
-                    <div className="settings-session-item" style={{ justifyContent: "start" }}>
-                      <span className="settings-session-label">{formatLabel(themeStudioLabels.labelColorPicker)}</span>
-                      <input
-                        type="color"
-                        value={toColorInputValue(effectiveValue)}
-                        aria-label={`${formatLabel(themeStudioLabels.labelColorPicker)} ${definition.name}`}
-                        disabled={!colorToken}
-                        onChange={(event) => {
-                          void service.setDraftToken(definition.name as never, event.currentTarget.value);
-                        }}
-                        style={{
-                          width: 34,
-                          height: 24,
-                          padding: 0,
-                          border: "1px solid var(--border-primary)",
-                          borderRadius: 8,
-                          background: swatchBackground,
-                          cursor: colorToken ? "pointer" : "not-allowed",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <label className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(themeStudioLabels.labelDraft)}</span>
+                <div key={definition.name} className={`theme-token-row ${draftValue === undefined ? "" : "is-dirty"}`}>
+                  <button
+                    type="button"
+                    className="theme-token-row__swatch"
+                    style={{ background: swatchBackground }}
+                    title={`${formatLabel(themeStudioLabels.labelColorPicker)} ${definition.name}`}
+                    disabled={!colorToken}
+                    onClick={(event) => {
+                      (event.currentTarget.querySelector("input") as HTMLInputElement | null)?.click();
+                    }}
+                  >
+                    <Brush size={12} />
                     <input
-                      style={fieldStyle}
-                      value={effectiveValue}
-                      aria-label={`${formatLabel(themeStudioLabels.labelTokenValue)} ${definition.name}`}
+                      type="color"
+                      value={toColorInputValue(effectiveValue)}
+                      disabled={!colorToken}
+                      tabIndex={-1}
+                      aria-label={`${formatLabel(themeStudioLabels.labelColorPicker)} ${definition.name}`}
                       onChange={(event) => {
                         void service.setDraftToken(definition.name as never, event.currentTarget.value);
                       }}
                     />
-                  </label>
-                  <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
-                    <button type="button" className="modal-btn" onClick={() => { void service.setDraftToken(definition.name as never, definition.defaultValue); }}>
-                      {formatLabel(themeStudioLabels.actionUseDefault)}
+                  </button>
+                  <div className="theme-token-row__main">
+                    <div className="theme-token-row__title">
+                      <strong>{definition.name}</strong>
+                      <span className="settings-chip">{definition.category}</span>
+                    </div>
+                    <span className="theme-token-row__description">{definition.description}</span>
+                    <input
+                      className="theme-token-row__input"
+                      value={effectiveValue}
+                      aria-label={`${formatLabel(themeStudioLabels.labelTokenValue)} ${definition.name}`}
+                      title={`${formatLabel(themeStudioLabels.labelCurrent)}: ${currentValue}`}
+                      onChange={(event) => {
+                        void service.setDraftToken(definition.name as never, event.currentTarget.value);
+                      }}
+                    />
+                  </div>
+                  <div className="theme-token-row__actions">
+                    <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.actionUseDefault)} onClick={() => { void service.setDraftToken(definition.name as never, definition.defaultValue); }}>
+                      <SwatchBook size={13} />
                     </button>
-                    <button type="button" className="modal-btn" onClick={() => { void service.setDraftToken(definition.name as never, currentValue); }}>
-                      {formatLabel(themeStudioLabels.actionCopyCurrent)}
+                    <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.actionCopyCurrent)} onClick={() => { void service.setDraftToken(definition.name as never, currentValue); }}>
+                      <RefreshCw size={13} />
                     </button>
-                    <button type="button" className="modal-btn" onClick={() => { void service.clearDraftToken(definition.name as never); }} disabled={draftValue === undefined}>
-                      {formatLabel(themeStudioLabels.actionClearDraft)}
+                    <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.actionClearDraft)} onClick={() => { void service.clearDraftToken(definition.name as never); }} disabled={draftValue === undefined}>
+                      <X size={13} />
                     </button>
                   </div>
                 </div>
               );
             })}
-            {visibleTokenDefinitions.length === 0 && <span className="text-[12px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
+            {visibleTokenDefinitions.length === 0 && <span className="settings-muted-copy">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
           </div>
         </div>
       )}
 
       {browserState.sidebarSection === "relationships" && (
-        <div className="settings-card settings-card-stack" style={{ display: "grid", gap: 12 }}>
-          <div>
-            <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.classInspectorTitle)}</div>
-            <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>{formatLabel(themeStudioLabels.classInspectorDescription)}</p>
+        <div className="theme-class-editor">
+          <div className="theme-token-editor__header">
+            <div>
+              <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.classInspectorTitle)}</div>
+              <p className="theme-token-editor__hint">{formatLabel(themeStudioLabels.classStyleEditorDescription)}</p>
+            </div>
+            <span className="settings-chip">{visibleRelationships.length}</span>
           </div>
-          <div style={{ display: "grid", gap: 10, maxHeight: 320, overflow: "auto", paddingRight: 6 }}>
-            {visibleRelationships.length === 0 && <span className="text-[12px] text-[var(--fg-muted)]">{formatLabel(themeStudioLabels.labelNoRelationships)}</span>}
-            {visibleRelationships.map((relationship) => (
-              <div key={relationship.className} className="settings-session-item" style={{ display: "grid", gap: 6 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 8, alignItems: "baseline" }}>
-                  <strong style={{ fontSize: 12 }}>{relationship.className}</strong>
-                  <span className="settings-session-label">{relationship.bridgeTarget}</span>
+          <div className="theme-class-editor__list">
+            {visibleRelationships.length === 0 && <span className="settings-muted-copy">{formatLabel(themeStudioLabels.labelNoRelationships)}</span>}
+            {visibleRelationships.map((relationship) => {
+              const sourceTokens = relationship.sourceTokens ?? [];
+              return (
+              <div key={relationship.className} className="theme-class-card">
+                <div className="theme-class-card__header">
+                  <div>
+                    <strong>{relationship.className}</strong>
+                    <span>{relationship.selector}</span>
+                  </div>
+                  <span className="settings-chip">{relationship.bridgeTarget}</span>
                 </div>
-                <span className="text-[11px] text-[var(--fg-muted)]">{relationship.selector}</span>
-                <div className="settings-grid-2">
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelScope)}</span><span className="settings-session-value">{relationship.scope}</span></div>
-                  <div className="settings-session-item"><span className="settings-session-label">{formatLabel(themeStudioLabels.labelBridgeTarget)}</span><span className="settings-session-value">{relationship.bridgeTarget}</span></div>
+                <div className="theme-class-card__meta">
+                  <span>{formatLabel(themeStudioLabels.labelScope)}: {relationship.scope}</span>
+                  <span>{formatLabel(themeStudioLabels.labelBridgeTarget)}: {relationship.bridgeTarget}</span>
+                </div>
+                <div className="theme-class-card__tokens" aria-label={`${formatLabel(themeStudioLabels.classStyleEditorTitle)} ${relationship.className}`}>
+                  {sourceTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.classStyleNoTokens)}</span>}
+                  {sourceTokens.slice(0, 10).map((tokenName) => {
+                    const definition = snapshot.tokenDefinitions.find((token) => token.name === tokenName);
+                    const currentValue = (snapshot.currentTokens as Record<string, string> | null)?.[tokenName] ?? definition?.defaultValue ?? "";
+                    const draftValue = (snapshot.draftTokens as Record<string, string>)[tokenName];
+                    const effectiveValue = draftValue ?? currentValue;
+                    const colorToken = isColorToken({ name: tokenName, category: definition?.category, description: definition?.description }, effectiveValue);
+                    return (
+                      <div key={tokenName} className="theme-class-token-control">
+                        <button
+                          type="button"
+                          className="theme-class-token-control__swatch"
+                          style={{ background: colorToken ? effectiveValue : "var(--bg-muted)" }}
+                          disabled={!colorToken}
+                          title={`${formatLabel(themeStudioLabels.labelColorPicker)} ${relationship.className} ${tokenName}`}
+                          onClick={(event) => (event.currentTarget.querySelector("input") as HTMLInputElement | null)?.click()}
+                        >
+                          <Brush size={11} />
+                          <input
+                            type="color"
+                            value={toColorInputValue(effectiveValue)}
+                            disabled={!colorToken}
+                            tabIndex={-1}
+                            aria-label={`${formatLabel(themeStudioLabels.labelColorPicker)} ${relationship.className} ${tokenName}`}
+                            onChange={(event) => { void service.setDraftToken(tokenName as never, event.currentTarget.value); }}
+                          />
+                        </button>
+                        <label>
+                          <span>{tokenName}</span>
+                          <input
+                            value={effectiveValue}
+                            aria-label={`${formatLabel(themeStudioLabels.actionEditClassToken)} ${relationship.className} ${tokenName}`}
+                            onChange={(event) => { void service.setDraftToken(tokenName as never, event.currentTarget.value); }}
+                          />
+                        </label>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            ))}
+            );})}
           </div>
         </div>
       )}
@@ -556,12 +604,12 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
           <button type="button" className={`view-toolbar-btn ${layoutMode === "split" ? "active" : ""}`} title={formatLabel(themeStudioLabels.toolbarSplitScreen)} onClick={() => setLayoutMode("split")}>
             <SplitSquareHorizontal size={14} />
           </button>
+          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarPreview)} onClick={() => void service.preview()} disabled={snapshot.busy}><Eye size={14} /></button>
         </div>
         <div className="view-toolbar-group">
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarRefresh)} onClick={() => void service.refresh()} disabled={snapshot.busy}><RefreshCw size={14} /></button>
           <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarImport)} onClick={() => importInput?.click()} disabled={snapshot.busy}><Package size={14} /></button>
-          <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarPreview)} onClick={() => void service.preview()} disabled={snapshot.busy}><Eye size={14} /></button>
           <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarApply)} onClick={() => void service.apply()} disabled={snapshot.busy}><Save size={14} /></button>
           <button type="button" className="view-toolbar-btn" title={formatLabel(themeStudioLabels.toolbarRevert)} onClick={() => void service.revert()} disabled={snapshot.busy}><RotateCcw size={14} /></button>
         </div>
@@ -581,12 +629,12 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
           )}
 
           <div className="editor-pane-column" style={{ flex: 1, padding: 16, gap: 16 }}>
-            <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-                <div style={{ display: "grid", gap: 4 }}>
+            <div className="theme-studio-header">
+              <div className="theme-studio-header-main">
+                <div className="theme-studio-header-copy">
                   <span className="settings-session-label">{formatLabel(themeStudioLabels.panelKicker)}</span>
-                  <strong style={{ fontSize: 14 }}>{formatLabel(themeStudioLabels.headerTitle)}</strong>
-                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(themeStudioLabels.headerSubtitle)}</span>
+                  <strong className="theme-studio-header-title">{formatLabel(themeStudioLabels.headerTitle)}</strong>
+                  <span className="settings-muted-caption">{formatLabel(themeStudioLabels.headerSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
                   <span className="settings-chip">{formatLabel(themeStudioLabels.settingsChipSplitSingle)}</span>

@@ -76,7 +76,7 @@ export const useFileManager = (
   activeProjectId: string | null,
   activeProject: Project | null,
   autoSaveEnabled: boolean,
-  addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
+  addToast: (msg: string, type?: 'info' | 'success' | 'warning' | 'error') => void
 ) => {
   console.log(`[useFileManager] Hook init. Active Project: ${activeProjectId}`);
 

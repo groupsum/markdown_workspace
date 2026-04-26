@@ -31,6 +31,16 @@
 .modal-input--json {
   min-height: 144px;
 }
+
+.modal-input--compact {
+  font-size: calc(11px * var(--ui-scale));
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.modal-input--mono {
+  font-family: var(--font-mono);
+}
 .modal-footer {
   padding: 16px 20px;
   background: var(--bg-inset);
@@ -87,6 +97,21 @@
 .modal-btn:disabled:hover {
   background: color-mix(in srgb, var(--bg-panel) 88%, transparent);
   color: var(--fg-primary);
+}
+
+.modal-btn--fill {
+  flex: 1;
+}
+
+.modal-btn--full {
+  width: 100%;
+}
+
+.modal-btn--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .pwa-status-grid {
@@ -147,6 +172,11 @@
   border: var(--border-width) solid color-mix(in srgb, var(--border-color) 75%, transparent);
   border-radius: 10px;
   background: color-mix(in srgb, var(--bg-panel) 84%, transparent);
+}
+
+.pwa-toggle--start {
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 .pwa-toggle input {

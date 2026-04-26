@@ -105,11 +105,11 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
           if (fields.length === 0) return null;
 
           return (
-            <div key={section.id} className="flex flex-col gap-3">
+            <div key={section.id} className="settings-stack settings-stack--md">
               <div>
-                <span className="font-bold text-[11px] uppercase">{formatLabel(section.title)}</span>
+                <span className="settings-section-label">{formatLabel(section.title)}</span>
                 {section.description && (
-                  <p className="text-[11px] text-[var(--fg-muted)] mt-1">{formatLabel(section.description)}</p>
+                  <p className="settings-muted-caption mt-1">{formatLabel(section.description)}</p>
                 )}
               </div>
               {fields.map((field) => {
@@ -119,7 +119,7 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
 
                 if (field.kind === 'boolean') {
                   return (
-                    <label key={field.key} className="pwa-toggle justify-start gap-3">
+                    <label key={field.key} className="pwa-toggle pwa-toggle--start">
                       <input
                         type="checkbox"
                         checked={Boolean(value)}
@@ -127,17 +127,17 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                       />
                       <span className="pwa-toggle-indicator" />
                       <span className="pwa-toggle-label">{formatLabel(field.label)}</span>
-                      {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                      {description && <span className="settings-muted-caption">{description}</span>}
                     </label>
                   );
                 }
 
                 if (field.kind === 'select') {
                   return (
-                    <label key={field.key} className="flex flex-col gap-2">
-                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
+                    <label key={field.key} className="settings-field-stack">
+                      <span className="settings-field-label">{formatLabel(field.label)}</span>
                       <select
-                        className="modal-input modal-input--multiselect !text-xs !py-3"
+                        className="modal-input modal-input--multiselect modal-input--compact"
                         value={typeof value === 'string' ? value : String(field.defaultValue ?? '')}
                         onChange={(event) => { void writeValue(field, event.target.value); }}
                       >
@@ -145,17 +145,17 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                           <option key={option.value} value={option.value}>{formatLabel(option.label)}</option>
                         ))}
                       </select>
-                      {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                      {description && <span className="settings-muted-caption">{description}</span>}
                     </label>
                   );
                 }
 
                 if (field.kind === 'multiselect') {
                   return (
-                    <label key={field.key} className="flex flex-col gap-2">
-                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
+                    <label key={field.key} className="settings-field-stack">
+                      <span className="settings-field-label">{formatLabel(field.label)}</span>
                       <select
-                        className="modal-input !text-xs !py-3"
+                        className="modal-input modal-input--compact"
                         multiple
                         value={Array.isArray(value) ? value.map(String) : []}
                         onChange={(event) => {
@@ -167,32 +167,32 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                           <option key={option.value} value={option.value}>{formatLabel(option.label)}</option>
                         ))}
                       </select>
-                      {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                      {description && <span className="settings-muted-caption">{description}</span>}
                     </label>
                   );
                 }
 
                 if ((field.kind === 'string' || field.kind === 'secret') && field.multiline) {
                   return (
-                    <label key={field.key} className="flex flex-col gap-2">
-                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
+                    <label key={field.key} className="settings-field-stack">
+                      <span className="settings-field-label">{formatLabel(field.label)}</span>
                       <textarea
-                        className="modal-input modal-input--textarea !text-xs !py-3"
+                        className="modal-input modal-input--textarea modal-input--compact"
                         value={String(value ?? '')}
                         onChange={(event) => { void writeValue(field, event.target.value); }}
                         placeholder={placeholder}
                       />
-                      {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                      {description && <span className="settings-muted-caption">{description}</span>}
                     </label>
                   );
                 }
 
                 if (field.kind === 'json') {
                   return (
-                    <label key={field.key} className="flex flex-col gap-2">
-                      <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
+                    <label key={field.key} className="settings-field-stack">
+                      <span className="settings-field-label">{formatLabel(field.label)}</span>
                       <textarea
-                        className="modal-input modal-input--json !text-xs !py-3 font-mono"
+                        className="modal-input modal-input--json modal-input--compact modal-input--mono"
                         value={jsonText[field.key] ?? JSON.stringify(value ?? {}, null, 2)}
                         onChange={(event) => {
                           const nextText = event.target.value;
@@ -212,8 +212,8 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                           }
                         }}
                       />
-                      {jsonErrors[field.key] && <span className="text-[11px] text-[var(--danger)]">{jsonErrors[field.key]}</span>}
-                      {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                      {jsonErrors[field.key] && <span className="settings-error-caption">{jsonErrors[field.key]}</span>}
+                      {description && <span className="settings-muted-caption">{description}</span>}
                     </label>
                   );
                 }
@@ -221,10 +221,10 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                 const numericField = field.kind === 'number' || field.kind === 'integer' ? field : null;
 
                 return (
-                  <label key={field.key} className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(field.label)}</span>
+                  <label key={field.key} className="settings-field-stack">
+                    <span className="settings-field-label">{formatLabel(field.label)}</span>
                     <input
-                      className="modal-input !text-xs !py-3"
+                      className="modal-input modal-input--compact"
                       type={field.kind === 'secret' ? 'password' : numericField ? 'number' : 'text'}
                       value={numericField ? (typeof value === 'number' ? String(value) : '') : String(value ?? '')}
                       onChange={(event) => {
@@ -238,7 +238,7 @@ export const SettingsSchemaRenderer: React.FC<SettingsSchemaRendererProps> = ({ 
                       max={numericField?.max}
                       step={numericField ? (numericField.step ?? (numericField.kind === 'integer' ? 1 : undefined)) : undefined}
                     />
-                    {description && <span className="text-[11px] text-[var(--fg-muted)]">{description}</span>}
+                    {description && <span className="settings-muted-caption">{description}</span>}
                   </label>
                 );
               })}

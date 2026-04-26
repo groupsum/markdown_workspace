@@ -29,13 +29,13 @@ export const TableBuilderModal: React.FC<TableBuilderModalProps> = ({
       <div className="settings-pane">
         <div className="settings-card settings-card-stack">
           <div className="settings-grid-2">
-            <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.table-builder.rows', 'ROWS')}</span>
-              <input className="modal-input !text-xs !py-3" type="number" min={1} max={12} value={rows} onChange={(event) => onRowsChange(Number(event.target.value) || 1)} />
+            <label className="settings-field-stack">
+              <span className="settings-field-label">{t('core.table-builder.rows', 'ROWS')}</span>
+              <input className="modal-input modal-input--compact" type="number" min={1} max={12} value={rows} onChange={(event) => onRowsChange(Number(event.target.value) || 1)} />
             </label>
-            <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.table-builder.columns', 'COLUMNS')}</span>
-              <input className="modal-input !text-xs !py-3" type="number" min={1} max={8} value={columns} onChange={(event) => onColumnsChange(Number(event.target.value) || 1)} />
+            <label className="settings-field-stack">
+              <span className="settings-field-label">{t('core.table-builder.columns', 'COLUMNS')}</span>
+              <input className="modal-input modal-input--compact" type="number" min={1} max={8} value={columns} onChange={(event) => onColumnsChange(Number(event.target.value) || 1)} />
             </label>
           </div>
           <div className="settings-action-row">

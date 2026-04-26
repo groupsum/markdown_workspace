@@ -1,0 +1,106 @@
+{
+  "url": "http://host.docker.internal:4173/client/versions/1.4.21/index.html",
+  "bodyText": "RUNTIME SMOKE EXTENSION ACTIVATED. × CORE SYSTEM OPERATIONS.MD 100% PACKS 5 ENABLED 5 BUILT IN 5 ACTIVE EN LANGUAGE BROWSER INDEXEDDB BUILT IN + INSTALLED ALL 5 BUILT IN 5 INSTALLED 0 DISABLED 0 ENGLISH BUILT IN ESPAÑOL BUILT IN FRANÇAIS BUILT IN PORTUGUÊS BUILT IN اردو BUILT IN Language Pack Studio Workspace language packs Built-in and installed locale packs share one high-density manager surface. INDEXEDDB BUILT IN + INSTALLED PANE ONLY English en | BUILT-IN STATUS ENABLED SOURCE BUILT-IN TOKENS CORE MISSING N/A TOKEN EDITOR Every known i18n variable is listed here. Blank values fall back to the default message until saved. Saving a built-in locale creates an installed override pack for that locale. FILL DEFAULTS SAVE AS INSTALLED PACK Pack label CORE.ACTION-RAIL.ARIA-LABEL CORE PRIMARY ACTIONS DEFAULT RESET TOKEN CORE.COMMAND-PALETTE.ESCAPE CORE ESC DEFAULT RESET TOKEN CORE.COMMAND-PALETTE.NO-RESULTS CORE NO RESULTS DEFAULT RESET TOKEN CORE.COMMAND-PALETTE.PLACEHOLDER CORE TYPE A COMMAND OR SEARCH FILES... DEFAULT RESET TOKEN CORE.COMMAND-PALETTE.TYPE.COMMAND CORE COMMAND DEFAULT RESET TOKEN CORE.COMMAND-PALETTE.TYPE.FILE CORE FILE DEFAULT RESET TOKEN CORE.COMMANDS.DOWNLOAD-WORKSPACE CORE DOWNLOAD WORKSPACE DEFAULT RESET TOKEN CORE.COMMANDS.EXPORT-HTML CORE EXPORT HTML DEFAULT RESET TOKEN CORE.COMMANDS.NEW-FILE CORE CREATE NEW FILE DEFAULT RESET TOKEN CORE.COMMANDS.NEW-FOLDER CORE CREATE NEW FOLDER DEFAULT RESET TOKEN CORE.COMMANDS.PRINT-PREVIEW CORE PRINT PREVIEW DEFAULT RESET TOKEN CORE.COMMANDS.SWITCH-PROJECT CORE SWITCH PROJECT DEFAULT RESET TOKEN CORE.COMMANDS.TOGGLE-GIT-PANE CORE GIT OPERATIONS DEFAULT RESET TOKEN CORE.COMMON.CANCEL CORE CANCEL DEFAULT RESET TOKEN CORE.COMMON.CLOSE CORE CLOSE DEFAULT RESET TOKEN CORE.COMMON.CONFIRM CORE CONFIRM DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.COMMANDS.OPEN.DESCRIPTION EXTENSION-MANAGER OPEN THE BUNDLED EXTENSION OPERATOR CONSOLE. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.COMMANDS.OPEN.TITLE EXTENSION-MANAGER OPEN EXTENSION MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.COMMANDS.QUICK.DESCRIPTION EXTENSION-MANAGER OPEN THE COMPACT EXTENSION MANAGER QUICK-ACTIONS MODAL. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.COMMANDS.QUICK.TITLE EXTENSION-MANAGER OPEN EXTENSION QUICK ACTIONS DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.DIAGNOSTICS.READY EXTENSION-MANAGER EXTENSION MANAGER ACTIVATED SUCCESSFULLY. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.ERRORS.IMPORTFAILED EXTENSION-MANAGER FAILED TO IMPORT EXTENSION PACKAGE. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.ERRORS.INSTALLFAILED EXTENSION-MANAGER FAILED TO INSTALL EXTENSION. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.ERRORS.INVALIDPORTABLEARTIFACT EXTENSION-MANAGER INVALID PORTABLE EXTENSION PACKAGE ARTIFACT. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.ERRORS.REMOVEFAILED EXTENSION-MANAGER FAILED TO REMOVE INSTALLED EXTENSION. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.MANIFEST.DESCRIPTION EXTENSION-MANAGER BUNDLED OPERATOR CONSOLE FOR BROWSING, ENABLING, DISABLING, DIAGNOSING, AND CONFIGURING EXTENSIONS. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.MANIFEST.DISPLAYNAME EXTENSION-MANAGER EXTENSION MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.RAIL.TITLE EXTENSION-MANAGER EXTENSIONS DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.ACTIONS.OPENMANAGER EXTENSION-MANAGER OPEN MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.CHIPS.ENGLISHFALLBACK EXTENSION-MANAGER ENGLISH FALLBACK DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.CHIPS.INDEXEDDB EXTENSION-MANAGER INDEXEDDB DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.CHIPS.PANEONLY EXTENSION-MANAGER PANE ONLY DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.CHIPS.SETTINGSCONTENT EXTENSION-MANAGER SETTINGS CONTENT DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.CHIPS.SPLITSINGLE EXTENSION-MANAGER SPLIT + SINGLE DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FIELDS.SHOWCOMPATIBILITYBYDEFAULT.DESCRIPTION EXTENSION-MANAGER EXPAND COMPATIBILITY INFORMATION FOR EACH EXTENSION WHEN THE MANAGER OPENS. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FIELDS.SHOWCOMPATIBILITYBYDEFAULT.LABEL EXTENSION-MANAGER SHOW COMPATIBILITY DETAILS BY DEFAULT DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FIELDS.SHOWDIAGNOSTICSBYDEFAULT.DESCRIPTION EXTENSION-MANAGER EXPAND RUNTIME DIAGNOSTICS FOR EACH EXTENSION WHEN THE MANAGER OPENS. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FIELDS.SHOWDIAGNOSTICSBYDEFAULT.LABEL EXTENSION-MANAGER SHOW DIAGNOSTICS BY DEFAULT DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FORM.STATE.DISABLED EXTENSION-MANAGER DISABLED DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.FORM.STATE.ENABLED EXTENSION-MANAGER ENABLED DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.SECTIONS.DISPLAY.DESCRIPTION EXTENSION-MANAGER CONTROLS THE DEFAULT INFORMATION DENSITY FOR THE EXTENSION MANAGER. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.SECTIONS.DISPLAY.TITLE EXTENSION-MANAGER DISPLAY DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.SHORTCUT.DESCRIPTION EXTENSION-MANAGER OPEN THE PANE WORKSPACE TO INSPECT RUNTIME INVENTORY, COMPATIBILITY, INSTALLED CATALOG ENTRIES, AND DIAGNOSTICS. DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.SHORTCUT.KICKER EXTENSION-MANAGER EXTENSION MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.SHORTCUT.TITLE EXTENSION-MANAGER EXTENSION MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.STATS.ACTIVE EXTENSION-MANAGER ACTIVE DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.STATS.CATALOG EXTENSION-MANAGER CATALOG DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.STATS.EXTENSIONS EXTENSION-MANAGER EXTENSIONS DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.STATS.INSTALLED EXTENSION-MANAGER INSTALLED DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.SETTINGS.TITLE EXTENSION-MANAGER EXTENSION MANAGER PREFERENCES DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.CLOSE EXTENSION-MANAGER CLOSE MANAGER DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.EXPORTCATALOG EXTENSION-MANAGER EXPORT CATALOG SNAPSHOT DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.IMPORTPACKAGE EXTENSION-MANAGER IMPORT EXTENSION PACKAGE DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.LABEL EXTENSION-MANAGER EXTENSION MANAGER TOOLBAR DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.RESIZEPANES EXTENSION-MANAGER RESIZE EXTENSION MANAGER PANES DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.SINGLEPANE EXTENSION-MANAGER SINGLE PANE DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.SPLITSCREEN EXTENSION-MANAGER SPLIT SCREEN DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.TOOLBAR.TOGGLESIDEBAR EXTENSION-MANAGER TOGGLE SIDEBAR DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.VIEW.ACTIONS.CLOSE EXTENSION-MANAGER CLOSE DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.VIEW.ACTIONS.EXIT EXTENSION-MANAGER EXIT DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.VIEW.ACTIONS.EXPORT EXTENSION-MANAGER EXPORT CATALOG DEFAULT RESET TOKEN CORE.EXTENSION-MANAGER.VIEW.ACTIONS.",
+  "pane": {
+    "selector": "[data-testid=\"language-pack-studio-pane\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 706
+    },
+    "overflow": {
+      "x": "visible",
+      "y": "visible"
+    },
+    "display": "grid",
+    "className": "language-pack-studio-pane editor-pane-container",
+    "text": "Language Pack StudioWorkspace language packsBuilt-in and installed locale packs share one high-density manager surface.INDEXEDDBBuilt in + installedPane onlyEnglishen | BUILT-INSTATUSENABLEDSOURCEBUILT-INTOKENSCOREMISSINGN/AToken EditorEvery known i18n variable is listed here. Blank values fall back to the default message until saved.Saving a built-in locale creates an installed override pack for that locale.Fill defaultsSave as installed packPack labelcore.action-rail.aria-labelcorePrimary ActionsDEFAULTReset tokencore.command-palette.escapecoreEscDEFAULTReset tokencore.command-palette.no-resultscoreNo resultsDEFAULTReset tokencore.command-palette.placeholdercoreType a command or search files...DEFAULTReset tokencore.command-palette.type.commandcoreCommandDEFAULTReset tokencore.command-palette.type.filecoreFileDEFAULTReset tokencore.commands.download-workspacecoreDownload WorkspaceDEFAULTReset tokencore.commands.export-htmlcoreExport HTMLDEFAULTReset tokencore.commands.new-filecoreCreate New FileDEFAULTReset tokencore.commands.new-foldercoreCreate New FolderDEFAULTReset tokencore.commands.print-previewcorePrint PreviewDEFAULTReset tokencore.commands.switch-projectcoreSwitch ProjectDEFAULTReset tokencore.commands.toggle-git-panecoreGit OperationsDEFAULTReset tokencore.common.cancelcoreCancelDEFAULTReset tokencore.common.closecoreCloseDEFAULTReset tokencore.common.confirmcoreConfirmDEFAULTReset tokencore.extension-manager.commands.open.descriptionextension-managerOpen the bundled extension operator console.DEFAULTReset tokencore.extension-manager.commands.open.titleextension-managerOpen Extension ManagerDEFAULTReset tokencore.extension-manager.commands.quick.descriptionextension-managerOpen the compact extension manager quick-actions modal.DEFAULTReset tokencore.extension-manager.commands.quick.titleextension-managerOpen Extension Quick ActionsDEFAULTReset tokencore.extension-manager.diagnostics.readyextension-managerExtension Manager activated successfully.DEFAULTReset tokencore.extension-manager.errors.importFailedextension-managerFailed to import extension package.DEFAULTReset tokencore.extension-manager.errors.installFailedextension-managerFailed to install extension.DEFAULTReset tokencore.extension-manager.errors.invalidPortableArtifactextension-managerInvalid portable extension package artifact.DEFAULTReset tokencore.extension-manager.errors.removeFailedextension-managerFailed to remove installed extension.DEFAULTReset tokencore.extension-manager.manifest.descriptionextension-managerBundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions.DEFAULTReset tokencore.extension-manager.manifest.displayNameextension-managerExtension ManagerDEFAULTReset tokencore.extension-manager.rail.titleextension-managerExtensionsDEFAULTReset tokencore.extension-manager.settings.actions.openManagerextension-managerOpen managerDEFAULTReset tokencore.extension-manager.settings.chips.englishFallbackextension-managerEnglish f"
+  },
+  "shellPanel": {
+    "selector": ".workspace-sidebar[aria-label=\"Language Pack Studio Browser\"]",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 280,
+      "height": 706
+    },
+    "overflow": {
+      "x": "hidden",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "workspace-sidebar workspace-sidebar--width-280 ",
+    "text": "PACKS5ENABLED5Built in5ACTIVEenLanguage browserINDEXEDDBBuilt in + installedALL 5Built in 5INSTALLED 0DISABLED 0EnglishBuilt inEspañolBuilt inFrançaisBuilt inPortuguêsBuilt inاردوBuilt in"
+  },
+  "shellPanelContent": {
+    "selector": ".workspace-sidebar[aria-label=\"Language Pack Studio Browser\"] .workspace-panel-content",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 278,
+      "height": 706
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "workspace-panel-content",
+    "text": "PACKS5ENABLED5Built in5ACTIVEenLanguage browserINDEXEDDBBuilt in + installedALL 5Built in 5INSTALLED 0DISABLED 0EnglishBuilt inEspañolBuilt inFrançaisBuilt inPortuguêsBuilt inاردوBuilt in"
+  },
+  "leftPane": {
+    "selector": "[data-testid=\"language-pack-studio-pane\"] [class*=\"editor-pane-column--split-left-\"]",
+    "visible": true,
+    "rect": {
+      "x": 357,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-left-60",
+    "text": "Englishen | BUILT-INSTATUSENABLEDSOURCEBUILT-INTOKENSCOREMISSINGN/AToken EditorEvery known i18n variable is listed here. Blank values fall back to the default message until saved.Saving a built-in locale creates an installed override pack for that locale.Fill defaultsSave as installed packPack labelcore.action-rail.aria-labelcorePrimary ActionsDEFAULTReset tokencore.command-palette.escapecoreEscDEFAULTReset tokencore.command-palette.no-resultscoreNo resultsDEFAULTReset tokencore.command-palette.placeholdercoreType a command or search files...DEFAULTReset tokencore.command-palette.type.commandcoreCommandDEFAULTReset tokencore.command-palette.type.filecoreFileDEFAULTReset tokencore.commands.download-workspacecoreDownload WorkspaceDEFAULTReset tokencore.commands.export-htmlcoreExport HTMLDEFAULTReset tokencore.commands.new-filecoreCreate New FileDEFAULTReset tokencore.commands.new-foldercoreCreate New FolderDEFAULTReset tokencore.commands.print-previewcorePrint PreviewDEFAULTReset tokencore.commands.switch-projectcoreSwitch ProjectDEFAULTReset tokencore.commands.toggle-git-panecoreGit OperationsDEFAULTReset tokencore.common.cancelcoreCancelDEFAULTReset tokencore.common.closecoreCloseDEFAULTReset tokencore.common.confirmcoreConfirmDEFAULTReset tokencore.extension-manager.commands.open.descriptionextension-managerOpen the bundled extension operator console.DEFAULTReset tokencore.extension-manager.commands.open.titleextension-managerOpen Extension ManagerDEFAULTReset tokencore.extension-manager.commands.quick.descriptionextension-managerOpen the compact extension manager quick-actions modal.DEFAULTReset tokencore.extension-manager.commands.quick.titleextension-managerOpen Extension Quick ActionsDEFAULTReset tokencore.extension-manager.diagnostics.readyextension-managerExtension Manager activated successfully.DEFAULTReset tokencore.extension-manager.errors.importFailedextension-managerFailed to import extension package.DEFAULTReset tokencore.extension-manager.errors.installFailedextension-managerFailed to install extension.DEFAULTReset tokencore.extension-manager.errors.invalidPortableArtifactextension-managerInvalid portable extension package artifact.DEFAULTReset tokencore.extension-manager.errors.removeFailedextension-managerFailed to remove installed extension.DEFAULTReset tokencore.extension-manager.manifest.descriptionextension-managerBundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions.DEFAULTReset tokencore.extension-manager.manifest.displayNameextension-managerExtension ManagerDEFAULTReset tokencore.extension-manager.rail.titleextension-managerExtensionsDEFAULTReset tokencore.extension-manager.settings.actions.openManagerextension-managerOpen managerDEFAULTReset tokencore.extension-manager.settings.chips.englishFallbackextension-managerEnglish fallbackDEFAULTReset tokencore.extension-manager.settings.chips.indexeddbextension-managerINDEXEDDBDEFAULTReset tokencore.extension-manager.settings.chips.pan"
+  },
+  "rightPane": {
+    "selector": "[data-testid=\"language-pack-studio-pane\"] [class*=\"editor-pane-column--split-right-\"]",
+    "visible": true,
+    "rect": {
+      "x": 816,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-right-40",
+    "text": "English DISABLEUSE EXPORT REMOVECreate Language PackLocaleLabelMessages JSON{ \"core.views.settings.title\": \"System Configuration\" } Create and export"
+  },
+  "toolbar": {
+    "selector": "[aria-label=\"Language Pack Studio toolbar\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 46
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "view-toolbar",
+    "text": ""
+  }
+}

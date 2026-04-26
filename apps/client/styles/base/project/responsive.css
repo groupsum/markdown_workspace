@@ -100,11 +100,13 @@
     line-height: 1.1;
   }
 
-  .project-card-title.mt-4 {
+  .project-card-title.mt-4,
+  .project-card-title--spaced {
     margin-top: 6px;
   }
 
-  .project-card-meta.mt-2 {
+  .project-card-meta.mt-2,
+  .project-card-meta--spaced {
     margin-top: 3px;
     font-size: calc(8px * var(--ui-scale));
   }
@@ -168,7 +170,8 @@
     line-height: 1.1;
   }
 
-  .project-card-title.mt-4 {
+  .project-card-title.mt-4,
+  .project-card-title--spaced {
     margin-top: 4px;
   }
 
@@ -177,7 +180,8 @@
     gap: 4px;
   }
 
-  .project-card-meta.mt-2 {
+  .project-card-meta.mt-2,
+  .project-card-meta--spaced {
     margin-top: 2px;
   }
 

@@ -29,6 +29,7 @@ export function MarkdownRenderer({
   profile = "gfm-default",
   extensions,
   sourcePositionAttributes = false,
+  preserveSoftLineBreaks = false,
 }: MarkdownRendererProps): React.JSX.Element {
   const rendererStyle = themeStyle ?? createMarkdownRendererThemeStyle();
   const html = React.useMemo(
@@ -37,9 +38,10 @@ export function MarkdownRenderer({
       profile,
       extensions,
       sourcePositionAttributes,
+      preserveSoftLineBreaks,
       getLinkAttributes,
     }),
-    [markdown, htmlHandling, profile, extensions, sourcePositionAttributes, getLinkAttributes],
+    [markdown, htmlHandling, profile, extensions, sourcePositionAttributes, preserveSoftLineBreaks, getLinkAttributes],
   );
 
   return React.createElement("div", {

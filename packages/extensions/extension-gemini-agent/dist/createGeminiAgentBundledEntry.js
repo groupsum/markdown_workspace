@@ -8,7 +8,7 @@ import { GeminiAgentSidebar, GeminiAgentView } from "./components/GeminiAgentVie
 export function createGeminiAgentBundledEntry(options = {}) {
     return {
         manifest: geminiAgentManifest,
-        activation: "lazy",
+        activation: "eager",
         async load() {
             const extension = {
                 manifest: geminiAgentManifest,

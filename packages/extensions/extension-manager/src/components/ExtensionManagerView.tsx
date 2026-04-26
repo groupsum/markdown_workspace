@@ -273,7 +273,7 @@ function ExtensionManagerBrowserSidebar({
                 <span className="settings-session-label">{node.extension.status}</span>
               </button>
             ))}
-            {filteredExtensionNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.paneTreeExtensionsEmpty)}</span>}
+            {filteredExtensionNodes.length === 0 && <span className="settings-muted-caption">{formatLabel(extensionManagerLabels.paneTreeExtensionsEmpty)}</span>}
           </div>
         </details>
         <details open={state.treeState.catalog} onToggle={(event) => {
@@ -282,7 +282,7 @@ function ExtensionManagerBrowserSidebar({
         }}>
           <summary style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer" }}>{formatLabel(extensionManagerLabels.paneTreeCatalog)}</summary>
           <div style={{ display: "grid", gap: 6, marginTop: 8 }}>
-            {filteredCatalogNodes.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.paneTreeCatalogEmpty)}</span>}
+            {filteredCatalogNodes.length === 0 && <span className="settings-muted-caption">{formatLabel(extensionManagerLabels.paneTreeCatalogEmpty)}</span>}
             {filteredCatalogNodes.map((node) => (
               <button
                 key={node.id}
@@ -398,7 +398,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
     <div style={{ display: "grid", gap: 16 }}>
       {!selectedNode && (
         <div className="settings-card settings-card-stack">
-          <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(extensionManagerLabels.emptyTreeSelection)}</span>
+          <span className="settings-muted-caption">{formatLabel(extensionManagerLabels.emptyTreeSelection)}</span>
         </div>
       )}
       {selectedNode?.kind === "catalog" && (
@@ -558,12 +558,12 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
           )}
 
           <div className="editor-pane-column" style={{ flex: 1, padding: 16, gap: 16 }}>
-            <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-                <div style={{ display: "grid", gap: 4 }}>
+            <div className="extension-manager-header">
+              <div className="extension-manager-header-main">
+                <div className="extension-manager-header-copy">
                   <span className="settings-session-label">{formatLabel(extensionManagerLabels.settingsShortcutKicker)}</span>
-                  <strong style={{ fontSize: 14 }}>{formatLabel(extensionManagerLabels.headerTitle)}</strong>
-                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
+                  <strong className="extension-manager-header-title">{formatLabel(extensionManagerLabels.headerTitle)}</strong>
+                  <span className="settings-muted-caption">{formatLabel(extensionManagerLabels.headerSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
                   <span className="settings-chip">{formatLabel(extensionManagerLabels.settingsChipPaneOnly)}</span>

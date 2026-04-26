@@ -16,7 +16,7 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
 
   return (
     <div className="settings-pane">
-      <div className="flex flex-col gap-4">
+      <div className="settings-stack settings-stack--lg">
         {runtimeSnapshot.extensions.map((extension) => {
           const hostDiagnostics = diagnosticsSnapshot.records[extension.id] ?? [];
           return (
@@ -30,7 +30,7 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
                 <div className="settings-session-item"><span className="settings-session-label">{t('core.extensions.runtime.version', 'Version')}</span><span className="settings-session-value">{extension.manifest.version}</span></div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="settings-inline-row settings-inline-row--wrap settings-inline-row--sm">
                 <button
                   className="modal-btn"
                   onClick={() => void runtime.setEnabled(extension.id, !extension.enabled)}
@@ -60,13 +60,13 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
               </div>
 
               {extension.missingCapabilities.length > 0 && (
-                <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{t('core.extensions.runtime.missing-capabilities', 'Missing host capabilities')}: {extension.missingCapabilities.join(', ')}</p>
+                <p className="settings-muted-caption leading-relaxed">{t('core.extensions.runtime.missing-capabilities', 'Missing host capabilities')}: {extension.missingCapabilities.join(', ')}</p>
               )}
 
               {!extension.compatibility.compatible && (
                 <div className="settings-card settings-card-muted">
-                  <span className="font-bold text-[11px] uppercase">{t('core.extensions.runtime.compatibility-issues', 'Compatibility Issues')}</span>
-                  <ul className="text-[11px] text-[var(--fg-muted)] list-disc pl-5 mt-2">
+                  <span className="settings-section-label">{t('core.extensions.runtime.compatibility-issues', 'Compatibility Issues')}</span>
+                  <ul className="settings-muted-caption list-disc pl-5 mt-2">
                     {extension.compatibility.issues.map((issue) => (
                       <li key={`${issue.target}-${String(issue.expected)}`}>{issue.message}</li>
                     ))}
@@ -76,15 +76,15 @@ export const ExtensionRuntimeDiagnosticsPanel: React.FC = () => {
 
               {extension.lastError && (
                 <div className="settings-card settings-card-muted">
-                  <span className="font-bold text-[11px] uppercase">{t('core.extensions.runtime.last-error', 'Last Error')}</span>
-                  <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed mt-2">{extension.lastError.message}</p>
+                  <span className="settings-section-label">{t('core.extensions.runtime.last-error', 'Last Error')}</span>
+                  <p className="settings-muted-caption settings-copy--spaced settings-copy--relaxed">{extension.lastError.message}</p>
                 </div>
               )}
 
               {hostDiagnostics.length > 0 && (
                 <div className="settings-card settings-card-muted">
-                  <span className="font-bold text-[11px] uppercase">{t('core.extensions.runtime.diagnostics', 'Diagnostics')}</span>
-                  <ul className="text-[11px] text-[var(--fg-muted)] list-disc pl-5 mt-2">
+                  <span className="settings-section-label">{t('core.extensions.runtime.diagnostics', 'Diagnostics')}</span>
+                  <ul className="settings-muted-caption list-disc pl-5 mt-2">
                     {hostDiagnostics.map((record, index) => (
                       <li key={`${record.code}-${index}`}>{formatRuntimeValue(record.code)}: {record.message}</li>
                     ))}

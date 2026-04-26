@@ -101,6 +101,10 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter extension browser')).toBeInTheDocument();
+    const header = view.container.querySelector('.extension-manager-header');
+    expect(header).not.toBeNull();
+    expect(header).not.toHaveClass('settings-card');
+    expect(header).not.toHaveClass('settings-card-stack');
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.queryByLabelText('Resize Extension Manager panes')).not.toBeInTheDocument());
@@ -130,7 +134,7 @@ describe('extension workspace surfaces', () => {
       tokenDefinitions: [{ name: '--bg-app', category: 'color', description: 'App background color', defaultValue: '#000000' }],
       currentTokens: { '--bg-app': '#111111' },
       draftTokens: {},
-      relationships: [{ className: '.workspace', bridgeTarget: 'host', selector: '.workspace', scope: 'host' }],
+      relationships: [{ className: '.workspace', bridgeTarget: 'host', selector: '.workspace', scope: 'host', sourceTokens: ['--bg-app'] }],
       lastExports: null,
     };
     const service = {
@@ -159,6 +163,12 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByTestId('theme-studio-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter theme browser')).toBeInTheDocument();
+    const header = view.container.querySelector('.theme-studio-header');
+    expect(header).not.toBeNull();
+    expect(header).not.toHaveClass('settings-card');
+    expect(header).not.toHaveClass('settings-card-stack');
+    expect(view.container.querySelector('.theme-token-editor')).not.toBeNull();
+    expect(view.container.querySelector('.theme-token-row')).not.toBeNull();
     expect(screen.getByLabelText('Color picker --bg-app')).toBeInTheDocument();
     expect(screen.getByText('Live preview surface')).toBeInTheDocument();
     expect(screen.queryByText('Export metadata')).not.toBeInTheDocument();
@@ -168,6 +178,11 @@ describe('extension workspace surfaces', () => {
 
     fireEvent.change(screen.getByLabelText('Token value --bg-app'), { target: { value: '#223344' } });
     await waitFor(() => expect(service.setDraftToken).toHaveBeenCalledWith('--bg-app', '#223344'));
+
+    fireEvent.click(screen.getByText(/Relationships/));
+    await waitFor(() => expect(view.container.querySelector('.theme-class-editor')).not.toBeNull());
+    fireEvent.change(screen.getByLabelText('Edit class token .workspace --bg-app'), { target: { value: '#445566' } });
+    await waitFor(() => expect(service.setDraftToken).toHaveBeenCalledWith('--bg-app', '#445566'));
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.queryByLabelText('Resize Theme Studio panes')).not.toBeInTheDocument());
@@ -210,6 +225,10 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByTestId('language-pack-manager-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter language browser')).toBeInTheDocument();
+    const header = view.container.querySelector('.language-pack-studio-header');
+    expect(header).not.toBeNull();
+    expect(header).not.toHaveClass('settings-card');
+    expect(header).not.toHaveClass('settings-card-stack');
 
     fireEvent.click(screen.getByText('Deutsch'));
     fireEvent.change(screen.getByLabelText('Token value core.views.settings.title'), { target: { value: 'Systemeinstellungen' } });
@@ -259,6 +278,31 @@ describe('extension workspace surfaces', () => {
 
     expect(screen.getByText('Open manager')).toBeInTheDocument();
     expect(screen.getAllByText('Open studio').length).toBe(2);
-    expect(screen.getAllByText('INDEXEDDB').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('INDEXEDDB').length).toBe(1);
+  });
+
+  it('keeps language pack studio settings compact without redundant data chips', () => {
+    const languageSnapshot = {
+      activeLocale: 'en',
+      packs: [
+        { locale: 'en', label: 'English', source: 'built-in', enabled: true },
+        { locale: 'de', label: 'Deutsch', source: 'installed', enabled: false },
+      ],
+      tokens: [],
+      loadingTokens: false,
+    };
+    const languageController = {
+      subscribe: () => () => {},
+      getSnapshot: () => languageSnapshot,
+    } as any;
+
+    const view = render(
+      <LanguagePackStudioSettingsPanel controller={languageController} open={vi.fn(async () => {})} formatLabel={formatLabel} />,
+    );
+
+    expect(screen.getByText('ENABLED')).toBeInTheDocument();
+    expect(screen.queryByText('English fallback')).not.toBeInTheDocument();
+    expect(screen.queryByText('INDEXEDDB')).not.toBeInTheDocument();
+    expect(view.container.querySelector('.settings-chip-row')).toBeNull();
   });
 });

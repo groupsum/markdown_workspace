@@ -10,11 +10,11 @@ export const LanguageSettingsPanel: React.FC = () => {
 
   return (
     <div className="settings-pane">
-      <div className="flex flex-col gap-4">
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+      <div className="settings-stack settings-stack--lg">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.language.title', 'Language & Locale')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">{t('core.settings.language.description', 'Select the interface language used by the core shell.')}</p>
+            <span className="settings-section-label">{t('core.settings.language.title', 'Language & Locale')}</span>
+            <p className="settings-muted-caption mt-2 leading-relaxed">{t('core.settings.language.description', 'Select the interface language used by the core shell.')}</p>
           </div>
           <LanguageSelector />
           <div className="settings-session-grid">
@@ -29,13 +29,13 @@ export const LanguageSettingsPanel: React.FC = () => {
           </div>
         </div>
 
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.language.project-selector', 'Project Selector Language')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">{t('core.settings.language.visibility', 'Language selector is visible in settings and on project surfaces.')}</p>
+            <span className="settings-section-label">{t('core.settings.language.project-selector', 'Project Selector Language')}</span>
+            <p className="settings-muted-caption mt-2 leading-relaxed">{t('core.settings.language.visibility', 'Language selector is visible in settings and on project surfaces.')}</p>
           </div>
           <div className="settings-action-row">
-            <div className="settings-session-item flex-1">
+            <div className="settings-session-item settings-session-item--fill">
               <span className="settings-session-label">{t('core.settings.language.persistence', 'Persistence')}</span>
               <span className="settings-session-value">{t('core.settings.language.persisted', 'Language choice persists between sessions.')}</span>
             </div>

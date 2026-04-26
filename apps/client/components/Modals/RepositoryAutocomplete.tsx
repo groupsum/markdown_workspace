@@ -96,12 +96,12 @@ export const RepositoryAutocomplete: React.FC<RepositoryAutocompleteProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.repository-url', 'REPOSITORY URL')}</span>
+    <div className="settings-stack settings-stack--md">
+      <label className="settings-field-stack">
+        <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.repository-url', 'REPOSITORY URL')}</span>
         <input
           list="repo-autocomplete"
-          className="modal-input !text-xs !py-3"
+          className="modal-input modal-input--compact"
           value={gitConfig.repoUrl}
           onChange={(event) => onRepoUrlChange(event.target.value)}
           placeholder={`https://${selectedRepoHost}/owner/repo`}

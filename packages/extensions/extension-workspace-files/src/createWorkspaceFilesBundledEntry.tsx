@@ -18,12 +18,10 @@ import {
   WORKSPACE_FILES_COMMAND_VIEW_SPLIT_ID,
   WORKSPACE_FILES_MODULE_ID,
   WORKSPACE_FILES_RAIL_DOWNLOAD_ID,
-  WORKSPACE_FILES_RAIL_EXPORT_HTML_ID,
   WORKSPACE_FILES_RAIL_IMPORT_MARKDOWN_ID,
   WORKSPACE_FILES_RAIL_NEW_FILE_ID,
   WORKSPACE_FILES_RAIL_NEW_FOLDER_ID,
   WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID,
-  WORKSPACE_FILES_RAIL_PRINT_PREVIEW_ID,
   WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID,
   WORKSPACE_FILES_SETTINGS_SECTION_ID,
 } from "./constants.js";
@@ -86,11 +84,9 @@ export function createWorkspaceFilesBundledEntry(options: WorkspaceFilesBundledE
           registerRail(WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, "File Explorer", "Folder", 10, WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_NEW_FILE_ID, "New File", "FilePlus", 20, WORKSPACE_FILES_COMMAND_NEW_FILE_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_NEW_FOLDER_ID, "New Folder", "FolderPlus", 30, WORKSPACE_FILES_COMMAND_NEW_FOLDER_ID, "workspace.primary");
+          registerRail(WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID, "Open Markdown File", "FolderOpen", 40, WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID, "workspace.primary");
           registerRail(WORKSPACE_FILES_RAIL_DOWNLOAD_ID, "Download Workspace", "Download", 20, WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID, "workspace.secondary");
-          registerRail(WORKSPACE_FILES_RAIL_EXPORT_HTML_ID, "Export HTML", "FileDown", 30, WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID, "workspace.secondary");
-          registerRail(WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID, "Open Markdown File", "FolderOpen", 34, WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID, "workspace.secondary");
           registerRail(WORKSPACE_FILES_RAIL_IMPORT_MARKDOWN_ID, "Import Markdown", "Upload", 35, WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID, "workspace.secondary");
-          registerRail(WORKSPACE_FILES_RAIL_PRINT_PREVIEW_ID, "Print Preview", "Printer", 40, WORKSPACE_FILES_COMMAND_PRINT_PREVIEW_ID, "workspace.secondary");
 
           context.registerSettingsSection({
             id: WORKSPACE_FILES_SETTINGS_SECTION_ID,

@@ -1,0 +1,106 @@
+{
+  "url": "http://host.docker.internal:4173/client/versions/1.4.21/index.html",
+  "bodyText": "RUNTIME SMOKE EXTENSION ACTIVATED. × CORE SYSTEM OPERATIONS.MD 100% THEME ID MICROPRESS TOKENS 37 RELATIONSHIPS 13 STATUS READY THEME BROWSER 37 TOKENS 13 RELATIONSHIPS METADATA TOKENS (37) RELATIONSHIPS (13) EXPORTS Token browser UI-SCALE LAYOUT HEADER-HEIGHT LAYOUT RAIL-WIDTH LAYOUT RAIL-HEIGHT LAYOUT SIDEBAR-WIDTH LAYOUT STATUS-HEIGHT LAYOUT TAB-HEIGHT LAYOUT PANEL-HEADER-HEIGHT LAYOUT RAIL-BTN-SIZE LAYOUT BG-APP COLOR BG-PANEL COLOR BG-INSET COLOR Relationship browser MARKDOWN-BODY RENDERER MD-TASK-LIST-ITEM RENDERER MD-CHECKBOX RENDERER MD-TABLE RENDERER MD-TABLE-HEADER RENDERER MD-TABLE-CELL RENDERER MD-TABLE-CAPTION RENDERER MD-TABLE-HEAD RENDERER MD-TABLE-BODY RENDERER MD-TABLE-ROW RENDERER MD-CODE-BLOCK RENDERER MD-CODE-HEADER RENDERER Theme Studio Theme Studio Token inspector, class relationship inspector, live renderer/editor previews, and portable theme exports. SPLIT + SINGLE SETTINGS CONTENT ENGLISH FALLBACK TOKEN INSPECTOR Edit every CSS token in the theme contract. Color-like tokens include swatches and native color pickers for fast authoring. UI-SCALE LAYOUT GLOBAL UI SCALE MULTIPLIER. DEFAULT 1 CURRENT 1 EFFECTIVE 1 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT HEADER-HEIGHT LAYOUT HEADER HEIGHT FOR THE APPLICATION SHELL. DEFAULT CALC(32PX * VAR(--UI-SCALE)) CURRENT 32PX EFFECTIVE 32PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT RAIL-WIDTH LAYOUT ACTION RAIL WIDTH. DEFAULT CALC(44PX * VAR(--UI-SCALE)) CURRENT 44PX EFFECTIVE 44PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT RAIL-HEIGHT LAYOUT ACTION RAIL ROW HEIGHT. DEFAULT CALC(44PX * VAR(--UI-SCALE)) CURRENT 44PX EFFECTIVE 44PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT SIDEBAR-WIDTH LAYOUT SIDEBAR WIDTH. DEFAULT CALC(200PX * VAR(--UI-SCALE)) CURRENT 200PX EFFECTIVE 200PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT STATUS-HEIGHT LAYOUT STATUS BAR HEIGHT. DEFAULT CALC(20PX * VAR(--UI-SCALE)) CURRENT 20PX EFFECTIVE 20PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TAB-HEIGHT LAYOUT TAB STRIP HEIGHT. DEFAULT VAR(--HEADER-HEIGHT) CURRENT 32PX EFFECTIVE 32PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT PANEL-HEADER-HEIGHT LAYOUT PANEL HEADER HEIGHT. DEFAULT CALC(30PX * VAR(--UI-SCALE)) CURRENT 30PX EFFECTIVE 30PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT RAIL-BTN-SIZE LAYOUT ACTION RAIL BUTTON SIZE. DEFAULT CALC(30PX * VAR(--UI-SCALE)) CURRENT CALC(30PX * 1) EFFECTIVE CALC(30PX * 1) COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT BG-APP COLOR TOP-LEVEL APPLICATION BACKGROUND. DEFAULT #C0C0C0 CURRENT #000000 EFFECTIVE #000000 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT BG-PANEL COLOR PANEL BACKGROUND. DEFAULT #ECECEC CURRENT #FFFFFF EFFECTIVE #FFFFFF COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT BG-INSET COLOR INSET SURFACE BACKGROUND. DEFAULT #DCDCDC CURRENT #F0F0F0 EFFECTIVE #F0F0F0 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT BORDER-COLOR COLOR PRIMARY BORDER COLOR. DEFAULT #000000 CURRENT #000000 EFFECTIVE #000000 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT BORDER-WIDTH LAYOUT PRIMARY BORDER WIDTH. DEFAULT 2PX CURRENT 2.5PX EFFECTIVE 2.5PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT FG-PRIMARY COLOR PRIMARY FOREGROUND COLOR. DEFAULT #000000 CURRENT #000000 EFFECTIVE #000000 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT FG-SECONDARY COLOR SECONDARY FOREGROUND COLOR. DEFAULT #333333 CURRENT #111111 EFFECTIVE #111111 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT FG-MUTED COLOR MUTED FOREGROUND COLOR. DEFAULT #666666 CURRENT #666666 EFFECTIVE #666666 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT ACCENT COLOR ACCENT COLOR. DEFAULT #FF3E00 CURRENT #FF3C00 EFFECTIVE #FF3C00 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TABLE-HEADER-BG COLOR MARKDOWN TABLE HEADER BACKGROUND. DEFAULT VAR(--BG-INSET) CURRENT #000000 EFFECTIVE #000000 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TABLE-HEADER-FG COLOR MARKDOWN TABLE HEADER FOREGROUND. DEFAULT VAR(--FG-PRIMARY) CURRENT #FFFFFF EFFECTIVE #FFFFFF COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TABLE-ROW-PRIMARY-BG COLOR ODD MARKDOWN TABLE ROW BACKGROUND. DEFAULT VAR(--BG-PANEL) CURRENT #FFFFFF EFFECTIVE #FFFFFF COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TABLE-ROW-SECONDARY-BG COLOR EVEN MARKDOWN TABLE ROW BACKGROUND. DEFAULT VAR(--BG-INSET) CURRENT #F0F0F0 EFFECTIVE #F0F0F0 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT STATUS-OK STATUS SUCCESS STATUS COLOR. DEFAULT #00CC00 CURRENT #00FF41 EFFECTIVE #00FF41 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT STATUS-WARN STATUS WARNING STATUS COLOR. DEFAULT #FF8800 CURRENT #FFCC00 EFFECTIVE #FFCC00 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT STATUS-ERROR STATUS ERROR STATUS COLOR. DEFAULT #CC0000 CURRENT #FF0000 EFFECTIVE #FF0000 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT APP-GAP SPACING PRIMARY GAP BETWEEN SHELL REGIONS. DEFAULT CALC(4PX * VAR(--UI-SCALE)) CURRENT 3PX EFFECTIVE 3PX COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT TEXTURE-OPACITY INTERACTION TEXTURE OVERLAY OPACITY. DEFAULT 0.05 CURRENT .08 EFFECTIVE .08 COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT EDITOR-PADDING SPACING EDITOR INNER PADDING. DEFAULT CALC(24PX * VAR(--UI-SCALE)) CURRENT CALC(24PX * 1) EFFECTIVE CALC(24PX * 1) COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT FILE-INDENT-BASE SPACING BASE INDENTATION FOR FILE TREE ITEMS. DEFAULT CALC(12PX * VAR(--UI-SCALE)) CURRENT CALC(12PX * 1) EFFECTIVE CALC(12PX * 1) COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT FILE-INDENT-UNIT SPACING INCREMENTAL INDENTATION FOR NESTED FILE TREE ITEMS. DEFAULT CALC(12PX * VAR(--UI-SCALE)) CURRENT CALC(12PX * 1) EFFECTIVE CALC(12PX * 1) COLOR PICKER DRAFT USE DEFAULT COPY CURRENT CLEAR DRAFT C-EXPLORER-HOVER INTERACTION EXPLORER HOVER BACKGROUND. DEFAULT RGBA(0, 0, 0, 0.06) CURRENT RGB",
+  "pane": {
+    "selector": "[data-testid=\"theme-studio-pane\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 706
+    },
+    "overflow": {
+      "x": "visible",
+      "y": "visible"
+    },
+    "display": "grid",
+    "className": "theme-studio-pane editor-pane-container",
+    "text": "Theme StudioTheme StudioToken inspector, class relationship inspector, live renderer/editor previews, and portable theme exports.SPLIT + SINGLESettings contentEnglish fallbackToken inspectorEdit every CSS token in the theme contract. Color-like tokens include swatches and native color pickers for fast authoring.ui-scalelayoutGlobal UI scale multiplier.Default1Current1Effective1Color pickerDraftUse defaultCopy currentClear draftheader-heightlayoutHeader height for the application shell.Defaultcalc(32px * var(--ui-scale))Current32pxEffective32pxColor pickerDraftUse defaultCopy currentClear draftrail-widthlayoutAction rail width.Defaultcalc(44px * var(--ui-scale))Current44pxEffective44pxColor pickerDraftUse defaultCopy currentClear draftrail-heightlayoutAction rail row height.Defaultcalc(44px * var(--ui-scale))Current44pxEffective44pxColor pickerDraftUse defaultCopy currentClear draftsidebar-widthlayoutSidebar width.Defaultcalc(200px * var(--ui-scale))Current200pxEffective200pxColor pickerDraftUse defaultCopy currentClear draftstatus-heightlayoutStatus bar height.Defaultcalc(20px * var(--ui-scale))Current20pxEffective20pxColor pickerDraftUse defaultCopy currentClear drafttab-heightlayoutTab strip height.Defaultvar(--header-height)Current32pxEffective32pxColor pickerDraftUse defaultCopy currentClear draftpanel-header-heightlayoutPanel header height.Defaultcalc(30px * var(--ui-scale))Current30pxEffective30pxColor pickerDraftUse defaultCopy currentClear draftrail-btn-sizelayoutAction rail button size.Defaultcalc(30px * var(--ui-scale))Currentcalc(30px * 1)Effectivecalc(30px * 1)Color pickerDraftUse defaultCopy currentClear draftbg-appcolorTop-level application background.Default#c0c0c0Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftbg-panelcolorPanel background.Default#ecececCurrent#ffffffEffective#ffffffColor pickerDraftUse defaultCopy currentClear draftbg-insetcolorInset surface background.Default#dcdcdcCurrent#f0f0f0Effective#f0f0f0Color pickerDraftUse defaultCopy currentClear draftborder-colorcolorPrimary border color.Default#000000Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftborder-widthlayoutPrimary border width.Default2pxCurrent2.5pxEffective2.5pxColor pickerDraftUse defaultCopy currentClear draftfg-primarycolorPrimary foreground color.Default#000000Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftfg-secondarycolorSecondary foreground color.Default#333333C"
+  },
+  "shellPanel": {
+    "selector": ".workspace-sidebar[aria-label=\"Theme Studio Browser\"]",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 280,
+      "height": 706
+    },
+    "overflow": {
+      "x": "hidden",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "workspace-sidebar workspace-sidebar--width-280 ",
+    "text": "Theme IDmicropressTOKENS37RELATIONSHIPS13STATUSReadyTheme browser37 TOKENS13 RELATIONSHIPSMetadataTokens (37)Relationships (13)ExportsToken browserui-scalelayoutheader-heightlayoutrail-widthlayoutrail-heightlayoutsidebar-widthlayoutstatus-heightlayouttab-heightlayoutpanel-header-heightlayoutrail-btn-sizelayoutbg-appcolorbg-panelcolorbg-insetcolorRelationship browsermarkdown-bodyrenderermd-task-list-itemrenderermd-checkboxrenderermd-tablerenderermd-table-headerrenderermd-table-cellrenderermd-table-captionrenderermd-table-headrenderermd-table-bodyrenderermd-table-rowrenderermd-code-blockrenderermd-code-headerrenderer"
+  },
+  "shellPanelContent": {
+    "selector": ".workspace-sidebar[aria-label=\"Theme Studio Browser\"] .workspace-panel-content",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 278,
+      "height": 706
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "workspace-panel-content",
+    "text": "Theme IDmicropressTOKENS37RELATIONSHIPS13STATUSReadyTheme browser37 TOKENS13 RELATIONSHIPSMetadataTokens (37)Relationships (13)ExportsToken browserui-scalelayoutheader-heightlayoutrail-widthlayoutrail-heightlayoutsidebar-widthlayoutstatus-heightlayouttab-heightlayoutpanel-header-heightlayoutrail-btn-sizelayoutbg-appcolorbg-panelcolorbg-insetcolorRelationship browsermarkdown-bodyrenderermd-task-list-itemrenderermd-checkboxrenderermd-tablerenderermd-table-headerrenderermd-table-cellrenderermd-table-captionrenderermd-table-headrenderermd-table-bodyrenderermd-table-rowrenderermd-code-blockrenderermd-code-headerrenderer"
+  },
+  "leftPane": {
+    "selector": "[data-testid=\"theme-studio-pane\"] [class*=\"editor-pane-column--split-left-\"]",
+    "visible": true,
+    "rect": {
+      "x": 357,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-left-55",
+    "text": "Token inspectorEdit every CSS token in the theme contract. Color-like tokens include swatches and native color pickers for fast authoring.ui-scalelayoutGlobal UI scale multiplier.Default1Current1Effective1Color pickerDraftUse defaultCopy currentClear draftheader-heightlayoutHeader height for the application shell.Defaultcalc(32px * var(--ui-scale))Current32pxEffective32pxColor pickerDraftUse defaultCopy currentClear draftrail-widthlayoutAction rail width.Defaultcalc(44px * var(--ui-scale))Current44pxEffective44pxColor pickerDraftUse defaultCopy currentClear draftrail-heightlayoutAction rail row height.Defaultcalc(44px * var(--ui-scale))Current44pxEffective44pxColor pickerDraftUse defaultCopy currentClear draftsidebar-widthlayoutSidebar width.Defaultcalc(200px * var(--ui-scale))Current200pxEffective200pxColor pickerDraftUse defaultCopy currentClear draftstatus-heightlayoutStatus bar height.Defaultcalc(20px * var(--ui-scale))Current20pxEffective20pxColor pickerDraftUse defaultCopy currentClear drafttab-heightlayoutTab strip height.Defaultvar(--header-height)Current32pxEffective32pxColor pickerDraftUse defaultCopy currentClear draftpanel-header-heightlayoutPanel header height.Defaultcalc(30px * var(--ui-scale))Current30pxEffective30pxColor pickerDraftUse defaultCopy currentClear draftrail-btn-sizelayoutAction rail button size.Defaultcalc(30px * var(--ui-scale))Currentcalc(30px * 1)Effectivecalc(30px * 1)Color pickerDraftUse defaultCopy currentClear draftbg-appcolorTop-level application background.Default#c0c0c0Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftbg-panelcolorPanel background.Default#ecececCurrent#ffffffEffective#ffffffColor pickerDraftUse defaultCopy currentClear draftbg-insetcolorInset surface background.Default#dcdcdcCurrent#f0f0f0Effective#f0f0f0Color pickerDraftUse defaultCopy currentClear draftborder-colorcolorPrimary border color.Default#000000Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftborder-widthlayoutPrimary border width.Default2pxCurrent2.5pxEffective2.5pxColor pickerDraftUse defaultCopy currentClear draftfg-primarycolorPrimary foreground color.Default#000000Current#000000Effective#000000Color pickerDraftUse defaultCopy currentClear draftfg-secondarycolorSecondary foreground color.Default#333333Current#111111Effective#111111Color pickerDraftUse defaultCopy currentClear draftfg-mutedcolorMuted foreground color.Default#666666Current#666666Effective#666666Color pickerDra"
+  },
+  "rightPane": {
+    "selector": "[data-testid=\"theme-studio-pane\"] [class*=\"editor-pane-column--split-right-\"]",
+    "visible": true,
+    "rect": {
+      "x": 816,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-right-45",
+    "text": "Live preview surfaceRenderer and editor previews use the same shared package bridges consumed by the workspace.Theme Studio PreviewUse tokens to style renderer and editor surfaces.Preview renderer bridgesPreview editor bridgesExport JSON and CSS artifactsTheme Studio uses the shared token and class contract.123456789# Theme Studio Preview Use **tokens** to style renderer and editor surfaces. - Preview renderer bridges - Preview editor bridges - Export JSON and CSS artifacts > Theme Studio uses the shared token and class contract."
+  },
+  "toolbar": {
+    "selector": "[aria-label=\"Theme Studio toolbar\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 46
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "view-toolbar",
+    "text": ""
+  }
+}

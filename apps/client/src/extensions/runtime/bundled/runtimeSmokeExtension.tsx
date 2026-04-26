@@ -109,8 +109,8 @@ const RuntimeSmokeModal: React.FC<ClientViewRenderProps & { activationCount: num
       <div className="settings-content-frame">
         <div className="settings-pane">
           <div className="settings-card settings-card-stack">
-            <span className="font-bold text-[11px] uppercase">{formatLabel({ key: 'core.runtime-smoke.kicker', defaultMessage: 'Phase 8 Bundled Extension' })}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{formatLabel({ key: 'core.runtime-smoke.description', defaultMessage: 'This modal is registered through the new extension runtime, not through ad hoc client imports. Its settings are configurable through the bundled Extension Manager.' })}</p>
+            <span className="settings-section-label">{formatLabel({ key: 'core.runtime-smoke.kicker', defaultMessage: 'Phase 8 Bundled Extension' })}</span>
+            <p className="settings-muted-caption leading-relaxed">{formatLabel({ key: 'core.runtime-smoke.description', defaultMessage: 'This modal is registered through the new extension runtime, not through ad hoc client imports. Its settings are configurable through the bundled Extension Manager.' })}</p>
             <div className="settings-session-grid">
               <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.extension-id', defaultMessage: 'Extension ID' })}</span><span className="settings-session-value">{extensionId}</span></div>
               <div className="settings-session-item"><span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.view-id', defaultMessage: 'View ID' })}</span><span className="settings-session-value">{viewId}</span></div>
@@ -118,7 +118,7 @@ const RuntimeSmokeModal: React.FC<ClientViewRenderProps & { activationCount: num
             </div>
             <div className="settings-card">
               <span className="settings-session-label">{formatLabel({ key: 'core.runtime-smoke.activation-message', defaultMessage: 'Activation message' })}</span>
-              <p className="text-[11px] text-[var(--fg-secondary)] leading-relaxed">{activationMessage}</p>
+              <p className="settings-secondary-caption settings-copy--relaxed">{activationMessage}</p>
             </div>
           </div>
         </div>

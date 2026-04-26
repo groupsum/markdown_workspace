@@ -14,7 +14,7 @@ const isOidcProvider = (value: string): value is OidcProviderId => {
 };
 
 export const useProjectManager = (
-  addToast: (msg: string, type?: 'info' | 'success' | 'warning') => void
+  addToast: (msg: string, type?: 'info' | 'success' | 'warning' | 'error') => void
 ) => {
   console.log('[useProjectManager] Hook init');
 

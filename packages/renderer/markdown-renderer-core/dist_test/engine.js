@@ -1527,7 +1527,7 @@ function renderInline(nodes, options, classNames) {
             case "hardBreak":
                 return `<br />`;
             case "softBreak":
-                return "\n";
+                return options.preserveSoftLineBreaks ? `<br />` : "\n";
             case "htmlInline":
                 return renderHtmlInline(node, options, classNames);
             default:

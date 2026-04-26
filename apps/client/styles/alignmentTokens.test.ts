@@ -38,6 +38,9 @@ describe('markdown/editor alignment token contract', () => {
     expect(printCss).toContain('@page mdwrk-pdf-landscape');
     expect(printCss).toContain('size: A4 landscape;');
     expect(printCss).toContain('margin: var(--pdf-page-margin-block, 14mm) var(--pdf-page-margin-inline, 16mm);');
+    expect(printCss).toContain('.preview-pane-overlay-actions,');
+    expect(printCss).toContain('body[data-pdf-page-orientation="landscape"]');
+    expect(printCss).not.toContain('.markdown-body {\n    page: mdwrk-pdf-portrait;');
     expect(markdownCss).toContain('font-size: var(--pdf-content-font-size, 10.5pt);');
     expect(markdownCss).toContain('break-before: page;');
   });
@@ -72,5 +75,25 @@ describe('markdown/editor alignment token contract', () => {
     expect(portableEditorCss).not.toContain('padding: calc(var(--mwe-editor-padding, 16px) - 8px) 8px;');
     expect(portableRendererCss).toContain('table-layout: fixed;');
     expect(portableRendererCss).toContain('overflow-x: hidden !important;');
+  });
+
+  it('keeps preview export and print controls as top-right overlay buttons', () => {
+    const editorCss = read('./base/ui-editor.css');
+
+    expect(editorCss).toContain('.preview-pane-overlay-actions');
+    expect(editorCss).toContain('position: sticky;');
+    expect(editorCss).toContain('justify-content: flex-end;');
+    expect(editorCss).toContain('.preview-pane-overlay-btn');
+    expect(editorCss).toContain('pointer-events: auto;');
+  });
+
+  it('keeps workspace module toolbar and panes in a two-row container grid', () => {
+    const shellCss = read('./base/shell-structure.css');
+
+    expect(shellCss).toContain(':root[data-theme] .editor-pane-container');
+    expect(shellCss).toContain('display: grid;');
+    expect(shellCss).toContain('grid-template-rows: auto minmax(0, 1fr);');
+    expect(shellCss).toContain('grid-row: 2;');
+    expect(shellCss).not.toContain(':root[data-theme] .editor-pane-container {\n  display: flex;');
   });
 });

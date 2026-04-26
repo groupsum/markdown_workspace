@@ -1,0 +1,106 @@
+{
+  "url": "http://host.docker.internal:4173/client/versions/1.4.21/index.html",
+  "bodyText": "RUNTIME SMOKE EXTENSION ACTIVATED. × CORE SYSTEM OPERATIONS.MD 100% EXTENSIONS 7 ACTIVE 6 DISABLED 0 INCOMPATIBLE 0 EXTENSION BROWSER 0 INSTALLED 0 CATALOG ALL 7 EXT 7 CAT 0 RUNTIME EXTENSIONS EXTENSION MANAGER ACTIVE GEMINI AGENT REGISTERED GIT OPERATIONS ACTIVE LANGUAGE PACK STUDIO ACTIVE RUNTIME SMOKE EXTENSION ACTIVE THEME STUDIO ACTIVE WORKSPACE FILES ACTIVE CATALOG ENTRIES No catalog entries match the current browser filter. Extension manager Extension Manager Bundled extension catalog, enablement controls, permissions, compatibility, diagnostics, and settings. PANE ONLY SPLIT + SINGLE SETTINGS CONTENT Extension Manager BUNDLED ACTIVE core.extension-manager Bundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions. PACKAGE @MDWRK/EXTENSION-MANAGER VERSION 1.1.8 ACTIVATION EAGER ENABLED YES PERMISSIONS VIEW.REGISTER ACTIONRAIL.REGISTER SETTINGS.READ SETTINGS.WRITE COMPATIBILITY Compatible with the current host, runtime, and theme contract. HEALTH & DIAGNOSTICS No runtime diagnostics recorded. SETTINGS ACTIONS QUICK ACTIONS Bundled extension catalog, enablement controls, permissions, compatibility, diagnostics, and settings. EXTENSIONS 7 ACTIVE 6 DISABLED 0 INCOMPATIBLE 0 IMPORT PACKAGE EXPORT CATALOG Portable Package Import Import a portable extension package artifact, register it in the runtime catalog, and install it immediately. CATALOG 0 INSTALLED 0 ACTIVE 6 INCOMPATIBLE 0 HEALTH & DIAGNOSTICS No runtime diagnostics recorded. INDEXEDDB: PERSISTENT LN 1 COL 1 ENCODING: UTF-8 AUTO-SAVE: ON STATE: SAVED ONLINE BROWSER: V1.4.21:15C3A2F4A48C",
+  "pane": {
+    "selector": "[data-testid=\"extension-manager-pane\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 706
+    },
+    "overflow": {
+      "x": "visible",
+      "y": "visible"
+    },
+    "display": "grid",
+    "className": "extension-manager-pane editor-pane-container",
+    "text": "Extension managerExtension ManagerBundled extension catalog, enablement controls, permissions, compatibility, diagnostics, and settings.Pane onlySPLIT + SINGLESettings contentExtension ManagerBundledactivecore.extension-managerBundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions.Package@mdwrk/extension-managerVersion1.1.8ActivationeagerEnabledyesPermissions view.register actionRail.register settings.read settings.writeCompatibilityCompatible with the current host, runtime, and theme contract.Health & diagnosticsNo runtime diagnostics recorded.SettingsDisplayControls the default information density for the extension manager.Show compatibility details by defaultExpand compatibility information for each extension when the manager opens.EnabledShow diagnostics by defaultExpand runtime diagnostics for each extension when the manager opens.EnabledACTIONSQuick ActionsBundled extension catalog, enablement controls, permissions, compatibility, diagnostics, and settings.Extensions7Active6Disabled0Incompatible0 Import Package Export CatalogPortable Package ImportImport a portable extension package artifact, register it in the runtime catalog, and install it immediately.CATALOG0INSTALLED0Active6Incompatible0Health & diagnosticsNo runtime diagnostics recorded."
+  },
+  "shellPanel": {
+    "selector": ".workspace-sidebar[aria-label=\"Extension Manager Browser\"]",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 280,
+      "height": 706
+    },
+    "overflow": {
+      "x": "hidden",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "workspace-sidebar workspace-sidebar--width-280 ",
+    "text": "Extensions7Active6Disabled0Incompatible0Extension browser0 INSTALLED0 CATALOGALL 7EXT 7CAT 0Runtime ExtensionsExtension ManageractiveGemini AgentregisteredGit OperationsactiveLanguage Pack StudioactiveRuntime Smoke ExtensionactiveTheme StudioactiveWorkspace FilesactiveCatalog EntriesNo catalog entries match the current browser filter."
+  },
+  "shellPanelContent": {
+    "selector": ".workspace-sidebar[aria-label=\"Extension Manager Browser\"] .workspace-panel-content",
+    "visible": true,
+    "rect": {
+      "x": 49,
+      "y": 37,
+      "width": 278,
+      "height": 706
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "workspace-panel-content",
+    "text": "Extensions7Active6Disabled0Incompatible0Extension browser0 INSTALLED0 CATALOGALL 7EXT 7CAT 0Runtime ExtensionsExtension ManageractiveGemini AgentregisteredGit OperationsactiveLanguage Pack StudioactiveRuntime Smoke ExtensionactiveTheme StudioactiveWorkspace FilesactiveCatalog EntriesNo catalog entries match the current browser filter."
+  },
+  "leftPane": {
+    "selector": "[data-testid=\"extension-manager-pane\"] [class*=\"editor-pane-column--split-left-\"]",
+    "visible": true,
+    "rect": {
+      "x": 357,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-left-55",
+    "text": "Extension ManagerBundledactivecore.extension-managerBundled operator console for browsing, enabling, disabling, diagnosing, and configuring extensions.Package@mdwrk/extension-managerVersion1.1.8ActivationeagerEnabledyesPermissions view.register actionRail.register settings.read settings.writeCompatibilityCompatible with the current host, runtime, and theme contract.Health & diagnosticsNo runtime diagnostics recorded.SettingsDisplayControls the default information density for the extension manager.Show compatibility details by defaultExpand compatibility information for each extension when the manager opens.EnabledShow diagnostics by defaultExpand runtime diagnostics for each extension when the manager opens.Enabled"
+  },
+  "rightPane": {
+    "selector": "[data-testid=\"extension-manager-pane\"] [class*=\"editor-pane-column--split-right-\"]",
+    "visible": true,
+    "rect": {
+      "x": 816,
+      "y": 215,
+      "width": 458,
+      "height": 512
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "auto"
+    },
+    "display": "grid",
+    "className": "editor-pane-column editor-pane-column--split-right-45",
+    "text": "ACTIONSQuick ActionsBundled extension catalog, enablement controls, permissions, compatibility, diagnostics, and settings.Extensions7Active6Disabled0Incompatible0 Import Package Export CatalogPortable Package ImportImport a portable extension package artifact, register it in the runtime catalog, and install it immediately.CATALOG0INSTALLED0Active6Incompatible0Health & diagnosticsNo runtime diagnostics recorded."
+  },
+  "toolbar": {
+    "selector": "[aria-label=\"Extension Manager toolbar\"]",
+    "visible": true,
+    "rect": {
+      "x": 341,
+      "y": 37,
+      "width": 1023,
+      "height": 46
+    },
+    "overflow": {
+      "x": "auto",
+      "y": "hidden"
+    },
+    "display": "flex",
+    "className": "view-toolbar",
+    "text": ""
+  }
+}

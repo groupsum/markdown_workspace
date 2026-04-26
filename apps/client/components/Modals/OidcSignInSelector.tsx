@@ -20,12 +20,12 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({
 
   return (
     <div className="settings-card settings-card-stack">
-      <div className="flex flex-col gap-4">
+      <div className="settings-stack settings-stack--lg">
         <div className="settings-form-grid">
-          <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.auth-mode', 'Authentication Mode')}</span>
+          <label className="settings-field-stack">
+            <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.auth-mode', 'Authentication Mode')}</span>
             <select
-              className="modal-input !text-xs !py-3"
+              className="modal-input modal-input--compact"
               value={gitConfig.authMode}
               onChange={(event) => onGitConfigChange({
                 ...gitConfig,
@@ -38,10 +38,10 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({
             </select>
           </label>
 
-          <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.oidc.provider', 'OIDC PROVIDER')}</span>
+          <label className="settings-field-stack">
+            <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.oidc.provider', 'OIDC PROVIDER')}</span>
             <select
-              className="modal-input !text-xs !py-3"
+              className="modal-input modal-input--compact"
               value={gitConfig.oidcProvider || 'github'}
               onChange={(event) => {
                 const provider = event.target.value as OidcProviderId;
@@ -56,10 +56,10 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({
         </div>
 
         {gitConfig.authMode === 'pat' && (
-          <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.pat.token', 'PAT TOKEN')}</span>
+          <label className="settings-field-stack">
+            <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.pat.token', 'PAT TOKEN')}</span>
             <input
-              className="modal-input !text-xs !py-3"
+              className="modal-input modal-input--compact"
               type="password"
               value={gitConfig.patToken}
               onChange={(event) => onGitConfigChange({ ...gitConfig, authMode: 'pat', patToken: event.target.value })}
@@ -68,10 +68,10 @@ export const OidcSignInSelector: React.FC<OidcSignInSelectorProps> = ({
           </label>
         )}
 
-        <label className="flex flex-col gap-2">
-          <span className="text-[10px] font-bold text-[var(--fg-muted)]">{t('core.settings.git.username', 'USERNAME')}</span>
+        <label className="settings-field-stack">
+          <span className="settings-field-label settings-field-label--plain">{t('core.settings.git.username', 'USERNAME')}</span>
           <input
-            className="modal-input !text-xs !py-3"
+            className="modal-input modal-input--compact"
             value={gitConfig.username}
             onChange={(event) => onGitConfigChange({ ...gitConfig, authMode: gitConfig.authMode, username: event.target.value })}
             placeholder="user"

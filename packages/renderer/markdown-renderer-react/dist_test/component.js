@@ -15,15 +15,16 @@ function handleAnchorClickFactory(onLinkClick) {
         onLinkClick(event, anchor.getAttribute("href") ?? undefined);
     };
 }
-export function MarkdownRenderer({ markdown, className, style, themeStyle, onLinkClick, getLinkAttributes, components: _components, syntaxTheme: _syntaxTheme, htmlHandling = "escape", profile = "gfm-default", extensions, sourcePositionAttributes = false, }) {
+export function MarkdownRenderer({ markdown, className, style, themeStyle, onLinkClick, getLinkAttributes, components: _components, syntaxTheme: _syntaxTheme, htmlHandling = "escape", profile = "gfm-default", extensions, sourcePositionAttributes = false, preserveSoftLineBreaks = false, }) {
     const rendererStyle = themeStyle ?? createMarkdownRendererThemeStyle();
     const html = React.useMemo(() => renderMarkdownToHtmlSync(markdown, {
         htmlHandling,
         profile,
         extensions,
         sourcePositionAttributes,
+        preserveSoftLineBreaks,
         getLinkAttributes,
-    }), [markdown, htmlHandling, profile, extensions, sourcePositionAttributes, getLinkAttributes]);
+    }), [markdown, htmlHandling, profile, extensions, sourcePositionAttributes, preserveSoftLineBreaks, getLinkAttributes]);
     return React.createElement("div", {
         className: mergeClassNames("markdown-renderer-host", className),
         style: { ...rendererStyle, ...style },

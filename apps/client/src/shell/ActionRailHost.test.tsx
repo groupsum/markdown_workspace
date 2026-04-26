@@ -93,7 +93,7 @@ describe('ActionRailHost', () => {
     expect(geminiButton).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('returns from an active workspace module to the file explorer workspace', async () => {
+  it('loads the file workspace when the file explorer rail is clicked from another workspace module', async () => {
     const execute = vi.fn(async () => {});
     const close = vi.fn(async () => {});
     const setSidebarOpen = vi.fn();
@@ -140,13 +140,16 @@ describe('ActionRailHost', () => {
     });
 
     render(<ActionRailHost />);
-    fireEvent.click(screen.getByRole('button', { name: 'Explorer' }));
+    const explorerButton = screen.getByRole('button', { name: 'Explorer' });
+    expect(explorerButton).toHaveAttribute('aria-pressed', 'false');
+    expect(explorerButton).not.toBeDisabled();
+    fireEvent.click(explorerButton);
 
     await waitFor(() => {
       expect(close).toHaveBeenCalledWith('core.theme-studio.view');
       expect(setSidebarOpen).toHaveBeenCalledWith(true);
-      expect(execute).not.toHaveBeenCalled();
     });
+    expect(execute).not.toHaveBeenCalled();
   });
 
   it('routes the file explorer button through the command registry when already in the file workspace', async () => {
@@ -329,6 +332,122 @@ describe('ActionRailHost', () => {
     render(<ActionRailHost />);
     expect(screen.getByRole('button', { name: 'Gemini' })).toHaveAttribute('aria-pressed', 'true');
   });
+
+  it('only toggles an active workspace module from that module rail icon', async () => {
+    const toggle = vi.fn(async () => {});
+    const execute = vi.fn(async () => {});
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'core.toggle-explorer',
+          title: { defaultMessage: 'Explorer' },
+          icon: { kind: 'lucide', name: 'Folder' },
+          group: 'workspace.primary',
+          target: { kind: 'command', commandId: 'core.toggle-explorer' },
+          isActive: () => true,
+        },
+        {
+          id: 'core.theme-studio.rail',
+          title: { defaultMessage: 'Theme Studio' },
+          icon: { kind: 'lucide', name: 'Palette' },
+          group: 'workspace.primary',
+          target: { kind: 'view', viewId: 'core.theme-studio.view' },
+        },
+      ],
+      views: [
+        {
+          id: 'core.theme-studio.view',
+          title: { defaultMessage: 'Theme Studio' },
+          location: 'main',
+          render: () => null,
+          renderSidebar: () => null,
+        },
+      ],
+      openViewIds: ['core.theme-studio.view'],
+      activeViewId: 'core.theme-studio.view',
+      activeMainViewId: 'core.theme-studio.view',
+      toggle,
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: true,
+        },
+        actions: {
+          setSidebarOpen: vi.fn(),
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+
+    expect(screen.getByRole('button', { name: 'Explorer' })).not.toBeDisabled();
+    fireEvent.click(screen.getByRole('button', { name: 'Theme Studio' }));
+
+    await waitFor(() => {
+      expect(toggle).toHaveBeenCalledWith('core.theme-studio.view');
+      expect(execute).not.toHaveBeenCalled();
+    });
+  });
+
+  it('opens a workspace module panel when selecting that module rail icon', async () => {
+    const toggle = vi.fn(async () => {});
+    const setSidebarOpen = vi.fn();
+
+    mockUseClientRuntimeServices.mockReturnValue(createServices({
+      actionRailItems: [
+        {
+          id: 'core.extension-manager.rail',
+          title: { defaultMessage: 'Extensions' },
+          icon: { kind: 'lucide', name: 'Puzzle' },
+          group: 'extensions',
+          target: { kind: 'view', viewId: 'core.extension-manager.view' },
+        },
+      ],
+      views: [
+        {
+          id: 'core.extension-manager.view',
+          title: { defaultMessage: 'Extension Manager' },
+          location: 'main',
+          render: () => null,
+          renderSidebar: () => null,
+        },
+      ],
+      openViewIds: [],
+      activeViewId: null,
+      activeMainViewId: null,
+      toggle,
+    }));
+    mockUseClientExtensionHost.mockReturnValue({
+      commands: { execute: vi.fn(async () => {}) },
+    });
+    mockUseClientRuntimeSnapshot.mockReturnValue({
+      app: {
+        state: {
+          appMode: 'work',
+          sidebarOpen: false,
+        },
+        actions: {
+          setSidebarOpen,
+          toggleSidebar: vi.fn(),
+        },
+      },
+    });
+
+    render(<ActionRailHost />);
+    fireEvent.click(screen.getByRole('button', { name: 'Extensions' }));
+
+    await waitFor(() => {
+      expect(setSidebarOpen).toHaveBeenCalledWith(true);
+      expect(toggle).toHaveBeenCalledWith('core.extension-manager.view');
+    });
+  });
 });
 
 function createServices({
@@ -366,6 +485,7 @@ function createServices({
     views: {
       subscribe: () => () => {},
       getSnapshot: () => viewSnapshot,
+      get: (id: string) => views.find((view) => view.id === id),
       toggle,
       close,
     },

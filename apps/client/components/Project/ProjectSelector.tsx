@@ -76,7 +76,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             <p className="project-subtitle">{t('core.project-selector.subtitle', 'MOUNT_WORKSPACE_OR_INIT_NEW_PLATE')}</p>
           </div>
           
-          <div className="project-actions flex items-center gap-4">
+          <div className="project-actions settings-inline-row settings-inline-row--lg">
             <div className="theme-selector-container">
               <button 
                 onClick={() => setShowThemeModal(true)}
@@ -221,14 +221,14 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                           <span className="theme-name">{theme.name}</span>
                           {theme.icon && React.cloneElement(theme.icon as React.ReactElement<any>, { 
                             size: 18, 
-                            className: currentTheme === theme.id ? 'text-[var(--accent)]' : '' 
+                            className: currentTheme === theme.id ? 'settings-accent-text' : '' 
                           })}
                         </div>
                         <span className="theme-desc">{theme.description}</span>
-                        <span className="text-[10px] uppercase text-[var(--fg-muted)]">
+                        <span className="settings-kicker">
                           {t('core.project-selector.theme.code-syntax', 'Code Syntax')} • {theme.syntaxTheme.name}
                         </span>
-                        <span className="text-[11px] text-[var(--fg-muted)]">
+                        <span className="settings-muted-caption">
                           {theme.syntaxTheme.palette}
                         </span>
                       </button>
@@ -302,7 +302,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 className={`project-card ${activeProjectId === p.id ? 'is-active' : ''}`}
               >
                 <div className="project-card-main">
-                  <div className="flex justify-between items-start">
+                  <div className="settings-row settings-row--top">
                     <div className="project-card-icon">
                       <Box size={24} strokeWidth={1.5} />
                     </div>
@@ -312,7 +312,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                           e.stopPropagation(); 
                           setProjectToDelete(p);
                         }}
-                        className="p-1.5 text-[var(--fg-muted)] hover:text-[var(--status-error)] transition-colors hover:bg-[var(--bg-inset)]"
+                        className="project-icon-action project-icon-action--danger"
                         title={t('core.project-selector.eject', 'Eject Project')}
                       >
                         <Trash2 size={14} />
@@ -320,17 +320,17 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                     )}
                   </div>
                   
-                  <h3 className="project-card-title mt-4">{p.name}</h3>
-                  <div className="project-card-meta mt-2">
+                  <h3 className="project-card-title project-card-title--spaced">{p.name}</h3>
+                  <div className="project-card-meta project-card-meta--spaced">
                     {p.sourceKind === 'filesystem' && p.rootPath ? (
-                      <div className="flex items-center gap-1 opacity-80">
+                      <div className="settings-inline-row settings-inline-row--xs settings-muted-strong">
                         <Box size={10} />
                         <span>{p.rootPath}</span>
                       </div>
                     ) : p.gitConfig.repoUrl ? (
                       <><GitBranch size={12} /> <span>{p.gitConfig.repoUrl.split('/').pop()}</span></>
                     ) : (
-                      <div className="flex items-center gap-1 opacity-60">
+                      <div className="settings-inline-row settings-inline-row--xs settings-muted-soft">
                         <Zap size={10} />
                         <span>{t('core.project-selector.local-station', 'LOCAL_STATION')}</span>
                       </div>
@@ -339,7 +339,7 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
                 </div>
 
                 <div className="project-card-footer">
-                  <div className="flex items-center gap-2">
+                  <div className="settings-inline-row settings-inline-row--sm">
                     <Clock size={10} />
                     <span>{t('core.project-selector.last-modified', 'LAST_MOD')}: {new Date(p.lastOpened).toLocaleDateString()}</span>
                   </div>
@@ -349,9 +349,9 @@ export const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             ))}
             
             {projects.length === 0 && !isCreating && (
-              <div className="col-span-full py-20 flex flex-col items-center justify-center border-2 border-dashed border-[var(--border-color)] opacity-40">
+              <div className="project-empty-dropzone">
                 <Box size={48} className="mb-4" />
-                <p className="font-mono text-sm uppercase">{t('core.project-selector.empty', 'No_Active_Vaults_Found')}</p>
+                <p className="settings-mono-kicker">{t('core.project-selector.empty', 'No_Active_Vaults_Found')}</p>
                 <button onClick={() => setIsCreating(true)} className="mt-4 underline text-xs font-black">{t('core.project-selector.create-first', 'CREATE_FIRST_PLATE')}</button>
               </div>
             )}

@@ -117,4 +117,19 @@ describe('HTML/PDF export document contract', () => {
     expect(html).toContain('.export-page .markdown-body .page-break');
     expect(html).toContain('break-before: page;');
   });
+
+  it('preserves editor source line breaks and export wrapping rules in paragraphs', () => {
+    const html = createHtmlExport({
+      title: 'wraps.md',
+      content: 'First editor line\nSecond editor line with averyveryveryveryveryveryveryverylonglinktext\nThird editor line',
+      theme: 'default',
+      coreCss: '',
+      themeCss: '',
+    });
+
+    expect(html).toContain('First editor line<br />Second editor line');
+    expect(html).toContain('Second editor line with averyveryveryveryveryveryveryverylonglinktext<br />Third editor line');
+    expect(html).toContain('overflow-wrap: anywhere;');
+    expect(html).toContain('overflow-x: hidden;');
+  });
 });

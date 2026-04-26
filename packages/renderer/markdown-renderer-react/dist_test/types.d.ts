@@ -25,6 +25,7 @@ export interface MarkdownRendererProps {
     readonly profile?: MarkdownProfileId;
     readonly extensions?: readonly MarkdownOptionalProfileId[];
     readonly sourcePositionAttributes?: boolean;
+    readonly preserveSoftLineBreaks?: boolean;
 }
 export interface RenderMarkdownToStaticHtmlProps {
     readonly markdown: string;
@@ -32,6 +33,7 @@ export interface RenderMarkdownToStaticHtmlProps {
     readonly profile?: MarkdownProfileId;
     readonly extensions?: readonly MarkdownOptionalProfileId[];
     readonly sourcePositionAttributes?: boolean;
+    readonly preserveSoftLineBreaks?: boolean;
     readonly getLinkAttributes?: (href?: string) => MarkdownLinkAttributeResult | undefined;
 }
 export interface RenderMarkdownToStaticHtmlDocumentProps extends RenderMarkdownToStaticHtmlProps {

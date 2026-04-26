@@ -1,8 +1,9 @@
 import type { I18nLabel } from '@mdwrk/extension-manifest';
 import type { HostNotificationOptions } from '@mdwrk/extension-host';
+import { normalizeToastMessage, type ToastType } from './toastMessage';
 
 export interface ClientNotificationBridge {
-  addToast(message: string, type: 'info' | 'warning' | 'success'): void;
+  addToast(message: string, type: ToastType): void;
 }
 
 export interface ClientNotificationService {
@@ -16,14 +17,14 @@ export function createClientNotificationService(
   format: (label: I18nLabel | string) => string,
 ): ClientNotificationService {
   const publish = async (
-    type: 'info' | 'warning' | 'success',
+    type: ToastType,
     message: I18nLabel | string,
     options?: HostNotificationOptions,
   ) => {
     const resolved = options?.title
       ? `${options.title}: ${format(message)}`
       : format(message);
-    bridge().addToast(resolved.toUpperCase(), type);
+    bridge().addToast(normalizeToastMessage(resolved, type), type);
   };
 
   return {
@@ -34,7 +35,7 @@ export function createClientNotificationService(
       return publish('warning', message, options);
     },
     error(message, options) {
-      return publish('warning', message, options);
+      return publish('error', message, options);
     },
   };
 }

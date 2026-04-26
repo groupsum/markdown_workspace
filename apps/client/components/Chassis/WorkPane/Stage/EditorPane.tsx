@@ -38,6 +38,8 @@ interface EditorPaneProps {
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
   showLineNumbers: boolean;
+  onExportHtml?: () => void;
+  onPrintPreview?: () => void;
 }
 
 const DEFAULT_SELECTION_STATE: MarkdownEditorSelectionFormatState = {
@@ -53,6 +55,16 @@ const getSplitBand = (value: number): number => {
   return Math.round(clamped / 5) * 5;
 };
 
+const getSplitPercentageFromPointer = (clientX: number, container: HTMLElement, fallback = 50): number => {
+  if (!Number.isFinite(clientX)) {
+    return getSplitBand(fallback);
+  }
+  const rect = container.getBoundingClientRect();
+  if (rect.width <= 0) return getSplitBand(fallback);
+  const x = clientX - rect.left;
+  return getSplitBand((x / rect.width) * 100);
+};
+
 export const EditorPane: React.FC<EditorPaneProps> = ({
   file,
   files,
@@ -63,6 +75,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   viewMode,
   onViewModeChange,
   showLineNumbers,
+  onExportHtml,
+  onPrintPreview,
 }) => {
   const workspacePreferences = useWorkspacePreferences();
   const [splitPos, setSplitPos] = useState(50);
@@ -120,28 +134,53 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     };
   }, [activeEditorBridge, file?.id]);
 
-  const handleMouseDown = () => setIsDragging(true);
+  const handleSplitterPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (viewMode !== 'split') return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    if (containerRef.current) {
+      setSplitPos((value) => getSplitPercentageFromPointer(event.clientX, containerRef.current!, value));
+    }
+    setIsDragging(true);
+  };
+
+  const handleSplitterKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      setSplitPos((value) => getSplitBand(value - 5));
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      setSplitPos((value) => getSplitBand(value + 5));
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      setSplitPos(20);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      setSplitPos(80);
+    }
+  };
+
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
+    const handlePointerMove = (event: PointerEvent) => {
       if (!isDragging || !containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const percentage = Math.max(20, Math.min(80, (x / rect.width) * 100));
-      setSplitPos(getSplitBand(percentage));
+      event.preventDefault();
+      setSplitPos((value) => getSplitPercentageFromPointer(event.clientX, containerRef.current!, value));
     };
-    const handleMouseUp = () => setIsDragging(false);
+    const handlePointerUp = () => setIsDragging(false);
 
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('pointermove', handlePointerMove);
+      window.addEventListener('pointerup', handlePointerUp);
+      window.addEventListener('pointercancel', handlePointerUp);
       document.body.classList.add('is-resizing-sidebar');
     } else {
       document.body.classList.remove('is-resizing-sidebar');
     }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointercancel', handlePointerUp);
       document.body.classList.remove('is-resizing-sidebar');
     };
   }, [isDragging]);
@@ -226,8 +265,16 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 
           {viewMode === 'split' && (
             <div
-              onMouseDown={handleMouseDown}
+              onPointerDown={handleSplitterPointerDown}
+              onKeyDown={handleSplitterKeyDown}
               className={`editor-splitter ${isDragging ? 'dragging' : ''}`}
+              role="separator"
+              aria-orientation="vertical"
+              aria-label="Resize editor and preview panes"
+              aria-valuemin={20}
+              aria-valuemax={80}
+              aria-valuenow={splitBand}
+              tabIndex={0}
             >
               <div className="editor-splitter-handle" />
             </div>
@@ -242,6 +289,8 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 currentFile={file}
                 onNavigate={onNavigate}
                 className="preview-pane"
+                onExportHtml={onExportHtml}
+                onPrintPreview={onPrintPreview}
               />
             </div>
           )}
@@ -267,11 +316,11 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
             {!isToolbarHidden('task-list') && <button onClick={() => runCommand('task-list')} className={`view-toolbar-btn ${selectionState.taskList ? 'active' : ''}`} title="Task List"><ListChecks size={12}/></button>}
             {!isToolbarHidden('indent') && <button onClick={() => runCommand('indent')} className="view-toolbar-btn" title="Indent"><IndentIncrease size={12}/></button>}
             {!isToolbarHidden('outdent') && <button onClick={() => runCommand('outdent')} className="view-toolbar-btn" title="Outdent"><IndentDecrease size={12}/></button>}
-            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="text-[10px] font-mono">n:m</span></button>}
-            {!isToolbarHidden('inline-math') && <button onClick={() => runCommand('inline-math')} className="view-toolbar-btn" title="Inline Math"><span className="text-[10px] font-mono">$x$</span></button>}
-            {!isToolbarHidden('footnote') && <button onClick={() => runCommand('footnote')} className="view-toolbar-btn" title="Footnote"><span className="text-[10px] font-mono">fn</span></button>}
-            {!isToolbarHidden('superscript') && <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><span className="text-[10px] font-mono">x2</span></button>}
-            {!isToolbarHidden('subscript') && <button onClick={() => runCommand('subscript')} className="view-toolbar-btn" title="Subscript"><span className="text-[10px] font-mono">x2</span></button>}
+            {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="settings-mono-caption">n:m</span></button>}
+            {!isToolbarHidden('inline-math') && <button onClick={() => runCommand('inline-math')} className="view-toolbar-btn" title="Inline Math"><span className="settings-mono-caption">$x$</span></button>}
+            {!isToolbarHidden('footnote') && <button onClick={() => runCommand('footnote')} className="view-toolbar-btn" title="Footnote"><span className="settings-mono-caption">fn</span></button>}
+            {!isToolbarHidden('superscript') && <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><span className="settings-mono-caption">x2</span></button>}
+            {!isToolbarHidden('subscript') && <button onClick={() => runCommand('subscript')} className="view-toolbar-btn" title="Subscript"><span className="settings-mono-caption">x2</span></button>}
             <div className="view-toolbar-divider"></div>
             {!isToolbarHidden('bold') && <button onClick={() => runCommand('bold')} className={`view-toolbar-btn ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>}
             {!isToolbarHidden('italic') && <button onClick={() => runCommand('italic')} className={`view-toolbar-btn ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>}

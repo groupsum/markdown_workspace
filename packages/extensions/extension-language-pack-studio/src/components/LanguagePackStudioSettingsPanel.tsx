@@ -18,6 +18,7 @@ export const LanguagePackStudioSettingsPanel: React.FC<LanguagePackStudioSetting
   const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
   const builtIns = snapshot.packs.filter((pack) => pack.source === "built-in").length;
   const installed = snapshot.packs.filter((pack) => pack.source === "installed").length;
+  const enabled = snapshot.packs.filter((pack) => pack.enabled).length;
 
   return (
     <div className="settings-pane">
@@ -31,15 +32,10 @@ export const LanguagePackStudioSettingsPanel: React.FC<LanguagePackStudioSetting
         </div>
         <div className="settings-session-grid">
           <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsPacks)}</span><span className="settings-session-value">{snapshot.packs.length}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsEnabled)}</span><span className="settings-session-value">{enabled}</span></div>
           <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsBuiltIn)}</span><span className="settings-session-value">{builtIns}</span></div>
           <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsInstalled)}</span><span className="settings-session-value">{installed}</span></div>
           <div className="settings-session-item"><span className="settings-session-label">{formatLabel(languagePackStudioLabels.settingsStatsActive)}</span><span className="settings-session-value">{snapshot.activeLocale}</span></div>
-        </div>
-        <div className="settings-chip-row">
-          <span className="settings-chip">{builtIns} {formatLabel(languagePackStudioLabels.settingsStatsBuiltIn)}</span>
-          <span className="settings-chip">{snapshot.packs.filter((pack) => pack.enabled).length} {formatLabel(languagePackStudioLabels.settingsStatsEnabled)}</span>
-          <span className="settings-chip">{formatLabel(languagePackStudioLabels.settingsChipEnglishFallback)}</span>
-          <span className="settings-chip">{formatLabel(languagePackStudioLabels.settingsChipIndexedDb)}</span>
         </div>
         <div className="settings-action-row" style={{ padding: 6 }}>
           <button type="button" className="modal-btn modal-btn-primary" onClick={() => void open()}>{formatLabel(languagePackStudioLabels.settingsOpenStudio)}</button>

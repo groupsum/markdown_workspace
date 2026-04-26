@@ -17,9 +17,9 @@ function createSettingsSectionPlaceholder(services: ClientRuntimeServices, exten
   return (
     <div className="settings-pane">
       <div className="settings-card settings-card-stack">
-        <span className="font-bold text-[11px] uppercase">{section.title.defaultMessage}</span>
+        <span className="settings-section-label">{section.title.defaultMessage}</span>
         {section.description?.defaultMessage && (
-          <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">{section.description.defaultMessage}</p>
+          <p className="settings-muted-caption leading-relaxed">{section.description.defaultMessage}</p>
         )}
         <div className="settings-session-grid">
           <div className="settings-session-item">
@@ -37,7 +37,7 @@ function createSettingsSectionPlaceholder(services: ClientRuntimeServices, exten
             </div>
           )}
         </div>
-        <p className="text-[10px] uppercase text-[var(--fg-muted)]">{t('core.extensions.placeholder.unavailable', 'Settings renderer unavailable for this extension section.')}</p>
+        <p className="settings-kicker">{t('core.extensions.placeholder.unavailable', 'Settings renderer unavailable for this extension section.')}</p>
       </div>
     </div>
   );

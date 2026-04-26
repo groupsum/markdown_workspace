@@ -1,5 +1,6 @@
 import React from 'react';
 import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markdown-renderer-react';
+import { FileDown, Printer } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../data/themes';
 import type { AppTheme, FileNode } from '../../types';
 import { getMarkdownProfileWarnings, useMarkdownProfileConfig } from '../../src/features/markdownProfiles/profileConfig';
@@ -22,6 +23,8 @@ interface WorkspaceMarkdownRendererProps {
   readonly currentFile?: FileNode | null;
   readonly onNavigate: (fileId: string) => void;
   readonly className?: string;
+  readonly onExportHtml?: () => void;
+  readonly onPrintPreview?: () => void;
 }
 
 export function WorkspaceMarkdownRenderer({
@@ -31,6 +34,8 @@ export function WorkspaceMarkdownRenderer({
   currentFile = null,
   onNavigate,
   className,
+  onExportHtml,
+  onPrintPreview,
 }: WorkspaceMarkdownRendererProps): React.JSX.Element {
   const profileConfig = useMarkdownProfileConfig();
   const workspacePreferences = useWorkspacePreferences();
@@ -60,6 +65,7 @@ export function WorkspaceMarkdownRenderer({
   }, [normalizedMarkdown]);
 
   const showPolicyAdvisory = !workspacePreferences.hidePreviewPolicy && (warnings.length > 0 || htmlHandling !== 'allow-trusted');
+  const showPreviewActions = Boolean(onExportHtml || onPrintPreview);
 
   return (
     <div
@@ -67,6 +73,32 @@ export function WorkspaceMarkdownRenderer({
       className="workspace-markdown-renderer-shell"
       data-markdown-html-handling={htmlHandling}
     >
+      {showPreviewActions && (
+        <div className="preview-pane-overlay-actions" aria-label="Preview actions">
+          {onExportHtml && (
+            <button
+              type="button"
+              className="preview-pane-overlay-btn"
+              onClick={onExportHtml}
+              title={t('core.commands.export-html', 'Export HTML')}
+              aria-label={t('core.commands.export-html', 'Export HTML')}
+            >
+              <FileDown size={13} />
+            </button>
+          )}
+          {onPrintPreview && (
+            <button
+              type="button"
+              className="preview-pane-overlay-btn"
+              onClick={onPrintPreview}
+              title={t('core.commands.print-preview', 'Print Preview')}
+              aria-label={t('core.commands.print-preview', 'Print Preview')}
+            >
+              <Printer size={13} />
+            </button>
+          )}
+        </div>
+      )}
       {showPolicyAdvisory && (
         <aside className="workspace-markdown-renderer-warning">
           <strong className="workspace-markdown-renderer-warning-title">

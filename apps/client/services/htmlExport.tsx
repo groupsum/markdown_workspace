@@ -351,6 +351,7 @@ export const createHtmlExport = ({
     profile: profileConfig.baseProfile,
     extensions: profileConfig.enabledExtensions,
     htmlHandling,
+    preserveSoftLineBreaks: true,
   });
   const previewHtml = rewriteRenderedMarkdownLinksForHtmlExport(renderedPreviewHtml);
 

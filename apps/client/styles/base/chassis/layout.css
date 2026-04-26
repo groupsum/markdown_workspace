@@ -190,6 +190,8 @@
   position: relative;
   z-index: 3;
   touch-action: none;
+  user-select: none;
+  outline: none;
 }
 
 .workspace-sidebar-resizer::after {
@@ -203,7 +205,8 @@
   opacity: 0.35;
 }
 
-.workspace-sidebar-resizer:hover::after {
+.workspace-sidebar-resizer:hover::after,
+.workspace-sidebar-resizer:focus-visible::after {
   opacity: 0.85;
   background: var(--accent);
 }

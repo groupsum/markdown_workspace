@@ -20,12 +20,10 @@ import {
   WORKSPACE_FILES_MODULE_ID,
   WORKSPACE_FILES_PRIMARY_VIEW_ID,
   WORKSPACE_FILES_RAIL_DOWNLOAD_ID,
-  WORKSPACE_FILES_RAIL_EXPORT_HTML_ID,
   WORKSPACE_FILES_RAIL_IMPORT_MARKDOWN_ID,
   WORKSPACE_FILES_RAIL_NEW_FILE_ID,
   WORKSPACE_FILES_RAIL_NEW_FOLDER_ID,
   WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID,
-  WORKSPACE_FILES_RAIL_PRINT_PREVIEW_ID,
   WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID,
   WORKSPACE_FILES_SETTINGS_SECTION_ID,
 } from "./constants.js";
@@ -126,7 +124,6 @@ export const workspaceFilesManifest: ExtensionManifest = {
           { commandId: WORKSPACE_FILES_COMMAND_NEW_FILE_ID, role: "explorer", order: 20 },
           { commandId: WORKSPACE_FILES_COMMAND_NEW_FOLDER_ID, role: "explorer", order: 30 },
           { commandId: WORKSPACE_FILES_COMMAND_VIEW_SPLIT_ID, role: "toolbar", order: 40 },
-          { commandId: WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID, role: "secondary", order: 50 },
         ],
       },
     ],
@@ -134,11 +131,9 @@ export const workspaceFilesManifest: ExtensionManifest = {
       { id: WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID, title: label("File Explorer", "core.workspace-files.explorer"), icon: { kind: "lucide", name: "Folder" }, group: "workspace.primary", order: 10, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID } },
       { id: WORKSPACE_FILES_RAIL_NEW_FILE_ID, title: label("New File"), icon: { kind: "lucide", name: "FilePlus" }, group: "workspace.primary", order: 20, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_NEW_FILE_ID } },
       { id: WORKSPACE_FILES_RAIL_NEW_FOLDER_ID, title: label("New Folder"), icon: { kind: "lucide", name: "FolderPlus" }, group: "workspace.primary", order: 30, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_NEW_FOLDER_ID } },
+      { id: WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID, title: label("Open Markdown File", "core.commands.open-host-file"), icon: { kind: "lucide", name: "FolderOpen" }, group: "workspace.primary", order: 40, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID } },
       { id: WORKSPACE_FILES_RAIL_DOWNLOAD_ID, title: label("Download Workspace", "core.commands.download-workspace"), icon: { kind: "lucide", name: "Download" }, group: "workspace.secondary", order: 20, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID } },
-      { id: WORKSPACE_FILES_RAIL_EXPORT_HTML_ID, title: label("Export HTML", "core.commands.export-html"), icon: { kind: "lucide", name: "FileDown" }, group: "workspace.secondary", order: 30, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID } },
-      { id: WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID, title: label("Open Markdown File", "core.commands.open-host-file"), icon: { kind: "lucide", name: "FolderOpen" }, group: "workspace.secondary", order: 34, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID } },
       { id: WORKSPACE_FILES_RAIL_IMPORT_MARKDOWN_ID, title: label("Import Markdown", "core.import-markdown.title"), icon: { kind: "lucide", name: "Upload" }, group: "workspace.secondary", order: 35, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID } },
-      { id: WORKSPACE_FILES_RAIL_PRINT_PREVIEW_ID, title: label("Print Preview", "core.commands.print-preview"), icon: { kind: "lucide", name: "Printer" }, group: "workspace.secondary", order: 40, target: { kind: "command", commandId: WORKSPACE_FILES_COMMAND_PRINT_PREVIEW_ID } },
     ],
     settingsSections: [
       {

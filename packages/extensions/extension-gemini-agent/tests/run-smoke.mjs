@@ -4,6 +4,7 @@ import { buildGeminiPrompt } from '../dist/prompt.js';
 import { createGeminiTextProvider, buildGeminiGenerateContentBody, extractGeminiText, resolveGeminiGenerateContentUrl } from '../dist/provider.js';
 import { createGeminiAgentService } from '../dist/service.js';
 import { readGeminiAgentSettings } from '../dist/settings.js';
+import { createGeminiAgentBundledEntry } from '../dist/createGeminiAgentBundledEntry.js';
 
 const listeners = new Map();
 const storage = new Map();
@@ -108,6 +109,9 @@ const context = {
 assert.equal(geminiAgentManifest.id, 'core.gemini-agent');
 assert.ok(geminiAgentManifest.capabilities.includes('network.fetch'));
 assert.ok(geminiAgentManifest.contributions.actionRail.some((item) => item.id === 'core.gemini-agent.rail'));
+const bundledEntry = createGeminiAgentBundledEntry();
+assert.equal(bundledEntry.activation, 'eager');
+assert.equal(bundledEntry.manifest.id, 'core.gemini-agent');
 
 const resolvedSettings = await readGeminiAgentSettings(config);
 assert.equal(resolvedSettings.model, 'gemini-2.5-flash');

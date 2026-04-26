@@ -218,7 +218,7 @@ function LanguagePackBrowserSidebar({
             <span className="settings-session-label">{pack.source === "built-in" ? formatLabel(languagePackStudioLabels.browserFilterBuiltIn) : pack.enabled ? formatLabel(languagePackStudioLabels.browserFilterInstalled) : formatLabel(languagePackStudioLabels.browserFilterDisabled)}</span>
           </button>
         ))}
-        {filteredPacks.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.browserEmpty)}</span>}
+        {filteredPacks.length === 0 && <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.browserEmpty)}</span>}
       </div>
     </div>
   );
@@ -331,9 +331,9 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
       <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start", flexWrap: "wrap" }}>
         <div style={{ display: "grid", gap: 4 }}>
           <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(languagePackStudioLabels.tokenEditorTitle)}</strong>
-          <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorDescription)}</span>
+          <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.tokenEditorDescription)}</span>
           {selectedPack.source === "built-in" && (
-            <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorBuiltInNotice)}</span>
+            <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.tokenEditorBuiltInNotice)}</span>
           )}
         </div>
         <div className="settings-action-row" style={{ padding: 8, gap: 8 }}>
@@ -345,8 +345,8 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
           </button>
         </div>
       </div>
-      <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.labelPackLabel)}</span>
+      <label className="settings-field-stack">
+        <span className="settings-field-label">{formatLabel(languagePackStudioLabels.labelPackLabel)}</span>
         <input
           style={denseInputStyle}
           value={editableLabel}
@@ -362,7 +362,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
         aria-label={formatLabel(languagePackStudioLabels.tokenSearchAria)}
       />
       {snapshot.loadingTokens ? (
-        <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.loadingTokens)}</span>
+        <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.loadingTokens)}</span>
       ) : (
         <div style={{ display: "grid", gap: 8, maxHeight: 520, overflow: "auto" }}>
           {filteredTokens.map((token) => {
@@ -376,8 +376,8 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
               <div key={token.key} className="settings-session-item" style={{ alignItems: "stretch", gap: 10, borderColor: hasEditedValue ? undefined : "var(--border-color)" }}>
                 <div style={{ display: "grid", gap: 4, minWidth: 0 }}>
                   <span className="settings-session-label" style={{ overflowWrap: "anywhere" }}>{token.key}</span>
-                  <span className="text-[11px] text-[var(--fg-muted)]">{token.source}</span>
-                  <span className="text-[11px] text-[var(--fg-muted)]" style={{ overflowWrap: "anywhere" }}>{token.defaultMessage}</span>
+                  <span className="settings-muted-caption">{token.source}</span>
+                  <span className="settings-muted-caption settings-break-anywhere">{token.defaultMessage}</span>
                 </div>
                 <div style={{ display: "grid", gap: 6, minWidth: "min(320px, 42vw)" }}>
                   <span className="settings-session-value">{formatLabel(status)}</span>
@@ -405,7 +405,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
               </div>
             );
           })}
-          {filteredTokens.length === 0 && <span className="text-[11px] text-[var(--fg-muted)]">{formatLabel(languagePackStudioLabels.tokenEditorEmpty)}</span>}
+          {filteredTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.tokenEditorEmpty)}</span>}
         </div>
       )}
     </div>
@@ -461,17 +461,17 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
         <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(languagePackStudioLabels.createTitle)}</strong>
       </div>
       <div className="settings-grid-2">
-        <label className="flex flex-col gap-2">
-          <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLocale)}</span>
+        <label className="settings-field-stack">
+          <span className="settings-field-label">{formatLabel(languagePackStudioLabels.createLocale)}</span>
           <input style={denseInputStyle} value={draftLocale} onChange={(event) => setDraftLocale(event.target.value)} />
         </label>
-        <label className="flex flex-col gap-2">
-          <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createLabel)}</span>
+        <label className="settings-field-stack">
+          <span className="settings-field-label">{formatLabel(languagePackStudioLabels.createLabel)}</span>
           <input style={denseInputStyle} value={draftLabel} onChange={(event) => setDraftLabel(event.target.value)} />
         </label>
       </div>
-      <label className="flex flex-col gap-2">
-        <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{formatLabel(languagePackStudioLabels.createMessagesJson)}</span>
+      <label className="settings-field-stack">
+        <span className="settings-field-label">{formatLabel(languagePackStudioLabels.createMessagesJson)}</span>
         <textarea style={{ ...denseInputStyle, minHeight: 220, fontFamily: "var(--font-mono, monospace)" }} value={draftMessages} onChange={(event) => setDraftMessages(event.target.value)} />
       </label>
       <div className="settings-action-row" style={{ padding: 8 }}>
@@ -540,12 +540,12 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
           )}
 
           <div className="editor-pane-column" style={{ flex: 1, padding: 16, gap: 16 }}>
-            <div className="settings-card settings-card-stack" style={{ gap: 10 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-                <div style={{ display: "grid", gap: 4 }}>
+            <div className="language-pack-studio-header">
+              <div className="language-pack-studio-header-main">
+                <div className="language-pack-studio-header-copy">
                   <span className="settings-session-label">{formatLabel(languagePackStudioLabels.panelKicker)}</span>
-                  <strong style={{ fontSize: 14 }}>{formatLabel(languagePackStudioLabels.panelTitle)}</strong>
-                  <span style={{ fontSize: 11, color: "var(--fg-muted)" }}>{formatLabel(languagePackStudioLabels.panelSubtitle)}</span>
+                  <strong className="language-pack-studio-header-title">{formatLabel(languagePackStudioLabels.panelTitle)}</strong>
+                  <span className="settings-muted-caption">{formatLabel(languagePackStudioLabels.panelSubtitle)}</span>
                 </div>
                 <div className="settings-chip-row">
                   <span className="settings-chip">{formatLabel(languagePackStudioLabels.panelChipIndexedDb)}</span>

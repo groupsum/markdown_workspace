@@ -21,7 +21,7 @@ import { GeminiAgentSidebar, GeminiAgentView } from "./components/GeminiAgentVie
 export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions = {}): BundledExtensionCatalogEntry {
   return {
     manifest: geminiAgentManifest,
-    activation: "lazy",
+    activation: "eager",
     async load() {
       const extension: MarkdownWorkspaceExtension = {
         manifest: geminiAgentManifest,

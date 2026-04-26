@@ -38,13 +38,13 @@ export const DataSettingsPanel: React.FC = () => {
 
   return (
     <div className="settings-pane">
-      <div className="flex flex-col gap-4">
-        <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-          <div className="flex justify-between items-start mb-2">
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.data.pwa.title', 'PWA deployment')}</span>
-            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{pwaStatusLabel}</span>
+      <div className="settings-stack settings-stack--lg">
+        <div className="settings-card settings-card-highlight settings-card-inset">
+          <div className="settings-row settings-row--top mb-2">
+            <span className="settings-section-label">{t('core.settings.data.pwa.title', 'PWA deployment')}</span>
+            <span className="settings-badge settings-badge--dark">{pwaStatusLabel}</span>
           </div>
-          <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">{t('core.settings.data.description', 'PWA deployment and export controls.')}</p>
+          <p className="settings-muted-caption mb-4 leading-relaxed">{t('core.settings.data.description', 'PWA deployment and export controls.')}</p>
           <div className="pwa-status-grid">
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.update-state', 'Update state')}</span><span className={`pwa-status-value ${pwaState.updateAvailable ? 'is-ready' : ''}`}>{versionStatusLabel}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.service-worker', 'Service worker')}</span><span className="pwa-status-value">{pwaState.isSupported ? t('core.settings.state.available', 'Available') : t('core.settings.state.unavailable', 'Unavailable')}</span></div>
@@ -59,12 +59,12 @@ export const DataSettingsPanel: React.FC = () => {
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.package', 'Package')}</span><span className="pwa-status-value">{APP_PACKAGE_NAME}</span></div>
           </div>
           <div className="settings-action-row">
-            <button className="modal-btn flex-1" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>{t('core.settings.data.pwa.install', 'Install PWA')}</button>
-            <button className="modal-btn flex-1 modal-btn-primary" onClick={pwaActions.requestUpdate} disabled={!pwaState.updateAvailable}>{t('core.settings.data.pwa.update', 'Apply update')}</button>
+            <button className="modal-btn modal-btn--fill" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>{t('core.settings.data.pwa.install', 'Install PWA')}</button>
+            <button className="modal-btn modal-btn--fill modal-btn-primary" onClick={pwaActions.requestUpdate} disabled={!pwaState.updateAvailable}>{t('core.settings.data.pwa.update', 'Apply update')}</button>
           </div>
           <div className="settings-action-row">
-            <button className="modal-btn flex-1" onClick={() => void pwaActions.checkForUpdates()} disabled={pwaState.isCheckingForUpdates}>{t('core.settings.data.pwa.check', 'Check for updates')}</button>
-            <button className="modal-btn flex-1" onClick={pwaActions.switchToLatest} disabled={pwaState.isLatest}>{t('core.settings.data.pwa.switch-latest', 'Switch to latest')}</button>
+            <button className="modal-btn modal-btn--fill" onClick={() => void pwaActions.checkForUpdates()} disabled={pwaState.isCheckingForUpdates}>{t('core.settings.data.pwa.check', 'Check for updates')}</button>
+            <button className="modal-btn modal-btn--fill" onClick={pwaActions.switchToLatest} disabled={pwaState.isLatest}>{t('core.settings.data.pwa.switch-latest', 'Switch to latest')}</button>
           </div>
           <label className="settings-field">
             <span className="settings-label">{t('core.settings.data.pwa.retained-version', 'Retained version')}</span>
@@ -98,22 +98,22 @@ export const DataSettingsPanel: React.FC = () => {
           </label>
         </div>
 
-        <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-          <div className="flex justify-between items-start mb-2">
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.data.export.title', 'IndexedDB core dump')}</span>
-            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{t('core.settings.data.format.json', 'JSON')}</span>
+        <div className="settings-card settings-card-highlight settings-card-inset">
+          <div className="settings-row settings-row--top mb-2">
+            <span className="settings-section-label">{t('core.settings.data.export.title', 'IndexedDB core dump')}</span>
+            <span className="settings-badge settings-badge--dark">{t('core.settings.data.format.json', 'JSON')}</span>
           </div>
-          <p className="text-[11px] text-[var(--fg-muted)] mb-4 leading-relaxed">{t('core.settings.data.export.description', 'Extract the entire IndexedDB workspace, including file contents and metadata, to a portable JSON archive.')}</p>
-          <button onClick={snapshot.actions.exportData} className="modal-btn modal-btn-primary w-full flex items-center justify-center gap-2">{t('core.settings.data.export.action', 'Export now')}</button>
+          <p className="settings-muted-caption mb-4 leading-relaxed">{t('core.settings.data.export.description', 'Extract the entire IndexedDB workspace, including file contents and metadata, to a portable JSON archive.')}</p>
+          <button onClick={snapshot.actions.exportData} className="modal-btn modal-btn-primary modal-btn--full modal-btn--centered">{t('core.settings.data.export.action', 'Export now')}</button>
         </div>
 
-        <div className="settings-card settings-card-highlight bg-[var(--bg-inset)]">
-          <div className="flex justify-between items-start mb-2">
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.data.restore.title', 'Restore image')}</span>
-            <span className="text-[9px] px-2 py-0.5 border border-[var(--border-color)] bg-black text-white">{t('core.settings.data.format.json', 'JSON')}</span>
+        <div className="settings-card settings-card-highlight settings-card-inset">
+          <div className="settings-row settings-row--top mb-2">
+            <span className="settings-section-label">{t('core.settings.data.restore.title', 'Restore image')}</span>
+            <span className="settings-badge settings-badge--dark">{t('core.settings.data.format.json', 'JSON')}</span>
           </div>
-          <p className="text-[11px] text-[var(--fg-muted)] mb-4">{t('core.settings.data.restore.description', 'Restore the active workspace from a previously exported JSON image.')}</p>
-          <button className="modal-btn w-full modal-btn-primary" onClick={() => restoreInputRef.current?.click()}>{t('core.settings.data.restore.action', 'Start restore')}</button>
+          <p className="settings-muted-caption mb-4">{t('core.settings.data.restore.description', 'Restore the active workspace from a previously exported JSON image.')}</p>
+          <button className="modal-btn modal-btn--full modal-btn-primary" onClick={() => restoreInputRef.current?.click()}>{t('core.settings.data.restore.action', 'Start restore')}</button>
           <input
             ref={restoreInputRef}
             type="file"

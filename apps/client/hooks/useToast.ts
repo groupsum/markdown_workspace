@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { ToastMessage } from '../components/UI/Toast';
+import { normalizeToastMessage, type ToastType } from '../src/features/notifications/toastMessage';
 
 const TOAST_TTL_MS = 3000;
 
@@ -17,17 +18,18 @@ export const useToast = () => {
     setToasts(prev => prev.filter(t => t.id !== id));
   }, []);
 
-  const addToast = useCallback((message: string, type: 'info' | 'success' | 'warning' = 'info') => {
-    const toastKey = `${type}:${message}`;
+  const addToast = useCallback((message: string, type: ToastType = 'info') => {
+    const normalizedMessage = normalizeToastMessage(message, type);
+    const toastKey = `${type}:${normalizedMessage}`;
 
     setToasts(prev => {
       if (prev.some((toast) => `${toast.type}:${toast.message}` === toastKey)) {
-        console.log(`[useToast] Skipping duplicate Toast: [${type.toUpperCase()}] ${message}`);
+        console.log(`[useToast] Skipping duplicate Toast: [${type.toUpperCase()}] ${normalizedMessage}`);
         return prev;
       }
 
       const id = Date.now().toString();
-      console.log(`[useToast] Adding Toast: [${type.toUpperCase()}] ${message}`);
+      console.log(`[useToast] Adding Toast: [${type.toUpperCase()}] ${normalizedMessage}`);
 
       timeoutRef.current[id] = setTimeout(() => {
         console.log(`[useToast] Auto-expiring Toast: ${id}`);
@@ -35,7 +37,7 @@ export const useToast = () => {
         delete timeoutRef.current[id];
       }, TOAST_TTL_MS);
 
-      return [...prev, { id, message, type }];
+      return [...prev, { id, message: normalizedMessage, type }];
     });
   }, []);
 

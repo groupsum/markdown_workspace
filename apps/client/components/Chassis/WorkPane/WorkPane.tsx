@@ -31,6 +31,8 @@ interface WorkPaneProps {
   onContentChange: (content: string) => void;
   onCursorChange: (line: number, col: number) => void;
   onViewModeChange: (mode: ViewMode) => void;
+  onExportHtml?: () => void;
+  onPrintPreview?: () => void;
   workspaceSidebarSurface?: React.ReactNode;
   workspaceSidebarLabel?: string;
   workspaceSurface?: React.ReactNode;
@@ -40,6 +42,17 @@ const getSidebarWidthClassName = (width: number): string => {
   const clamped = Math.min(480, Math.max(180, width));
   const snapped = Math.round(clamped / 20) * 20;
   return `workspace-sidebar--width-${snapped}`;
+};
+
+const MIN_WORKSPACE_SIDEBAR_WIDTH = 180;
+const MAX_WORKSPACE_SIDEBAR_WIDTH = 480;
+const SIDEBAR_KEYBOARD_RESIZE_STEP = 20;
+
+const clampSidebarWidth = (width: number): number => {
+  if (!Number.isFinite(width)) {
+    return MIN_WORKSPACE_SIDEBAR_WIDTH;
+  }
+  return Math.min(MAX_WORKSPACE_SIDEBAR_WIDTH, Math.max(MIN_WORKSPACE_SIDEBAR_WIDTH, width));
 };
 
 export const WorkPane: React.FC<WorkPaneProps> = ({
@@ -66,6 +79,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onContentChange,
   onCursorChange,
   onViewModeChange,
+  onExportHtml,
+  onPrintPreview,
   workspaceSidebarSurface,
   workspaceSidebarLabel,
   workspaceSurface
@@ -85,8 +100,9 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
       const resizeState = sidebarResizeRef.current;
       if (!resizeState) return;
 
+      event.preventDefault();
       const delta = event.clientX - resizeState.startX;
-      const nextWidth = Math.min(480, Math.max(180, resizeState.startWidth + delta));
+      const nextWidth = clampSidebarWidth(resizeState.startWidth + delta);
       onSidebarWidthChange(nextWidth);
     };
 
@@ -98,21 +114,43 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
 
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
 
     return () => {
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
       document.body.classList.remove('is-resizing-sidebar');
     };
   }, [onSidebarWidthChange]);
 
   const handleSidebarResizeStart = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!sidebarOpen) return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
     sidebarResizeRef.current = {
       startX: event.clientX,
-      startWidth: sidebarWidth
+      startWidth: clampSidebarWidth(sidebarWidth)
     };
     document.body.classList.add('is-resizing-sidebar');
+  };
+
+  const handleSidebarResizeKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!sidebarOpen) return;
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      onSidebarWidthChange(clampSidebarWidth(sidebarWidth - SIDEBAR_KEYBOARD_RESIZE_STEP));
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      onSidebarWidthChange(clampSidebarWidth(sidebarWidth + SIDEBAR_KEYBOARD_RESIZE_STEP));
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      onSidebarWidthChange(MIN_WORKSPACE_SIDEBAR_WIDTH);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      onSidebarWidthChange(MAX_WORKSPACE_SIDEBAR_WIDTH);
+    }
   };
 
   return (
@@ -128,7 +166,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
           <>
             <div className="workspace-panel-header">
               <div className="workspace-panel-title">
-                <HardDrive size={10} className="text-[var(--accent)] shrink-0" />
+                <HardDrive size={10} className="settings-accent-text shrink-0" />
                 <div className="workspace-panel-title-text">
                   <span className="workspace-panel-kicker">Workspace</span>
                   <span className="workspace-panel-name">{currentProject?.name ?? workspaceSidebarLabel ?? 'File Explorer'}</span>
@@ -201,7 +239,12 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
         role="separator"
         aria-label="Resize file explorer"
         aria-orientation="vertical"
+        aria-valuemin={MIN_WORKSPACE_SIDEBAR_WIDTH}
+        aria-valuemax={MAX_WORKSPACE_SIDEBAR_WIDTH}
+        aria-valuenow={clampSidebarWidth(sidebarWidth)}
+        tabIndex={sidebarOpen ? 0 : -1}
         onPointerDown={handleSidebarResizeStart}
+        onKeyDown={handleSidebarResizeKeyDown}
       />
 
       {/* THE EXECUTION STAGE (Stage Plate) */}
@@ -219,6 +262,8 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             viewMode={viewMode}
             onViewModeChange={onViewModeChange}
             showLineNumbers={showLineNumbers}
+            onExportHtml={onExportHtml}
+            onPrintPreview={onPrintPreview}
           />
         ) : (
           <div className="workspace-idle-state">

@@ -14,9 +14,7 @@ const ACTION_RAIL_BUTTONS = [
   'core.git-pane-rail',
   'core.switch-project',
   'core.download-workspace',
-  'core.export-html',
   'core.import-markdown',
-  'core.print-preview',
   'core.cloud-sync',
 ] as const;
 
@@ -66,15 +64,15 @@ export const WorkspacePreferencesPanel: React.FC = () => {
 
   return (
     <div className="settings-pane">
-      <div className="flex flex-col gap-4">
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+      <div className="settings-stack settings-stack--lg">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.surfaces.title', 'Workspace surfaces')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
+            <span className="settings-section-label">{t('core.settings.workspace-preferences.surfaces.title', 'Workspace surfaces')}</span>
+            <p className="settings-muted-caption mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.surfaces.description', 'Configure preview policy visibility, action-rail density, and export/print output handling.')}
             </p>
           </div>
-          <label className="pwa-toggle justify-start gap-3">
+          <label className="pwa-toggle pwa-toggle--start">
             <input
               type="checkbox"
               checked={!preferences.hidePreviewPolicy}
@@ -83,10 +81,10 @@ export const WorkspacePreferencesPanel: React.FC = () => {
             <span className="pwa-toggle-indicator" />
             <span className="pwa-toggle-label">{t('core.settings.workspace-preferences.preview-policy', 'Show preview policy')}</span>
           </label>
-          <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.action-rail-display', 'Action rail display')}</span>
+          <label className="settings-field-stack">
+            <span className="settings-field-label">{t('core.settings.workspace-preferences.action-rail-display', 'Action rail display')}</span>
             <select
-              className="modal-input !text-xs !py-3"
+              className="modal-input modal-input--compact"
               value={preferences.actionRailDisplayMode}
               onChange={(event) => updateWorkspacePreferences({ actionRailDisplayMode: event.target.value === 'labeled' ? 'labeled' : 'icon-only' })}
             >
@@ -95,10 +93,10 @@ export const WorkspacePreferencesPanel: React.FC = () => {
             </select>
           </label>
           <div className="settings-grid-2">
-            <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.html-export-background', 'HTML export background')}</span>
+            <label className="settings-field-stack">
+              <span className="settings-field-label">{t('core.settings.workspace-preferences.html-export-background', 'HTML export background')}</span>
               <select
-                className="modal-input !text-xs !py-3"
+                className="modal-input modal-input--compact"
                 value={preferences.htmlExportBackground}
                 onChange={(event) => updateWorkspacePreferences({ htmlExportBackground: toBackgroundMode(event.target.value) })}
               >
@@ -107,10 +105,10 @@ export const WorkspacePreferencesPanel: React.FC = () => {
                 <option value="grayscale">{t('core.settings.workspace-preferences.background.grayscale', 'Grayscale')}</option>
               </select>
             </label>
-            <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.pdf-page-orientation', 'PDF page orientation')}</span>
+            <label className="settings-field-stack">
+              <span className="settings-field-label">{t('core.settings.workspace-preferences.pdf-page-orientation', 'PDF page orientation')}</span>
               <select
-                className="modal-input !text-xs !py-3"
+                className="modal-input modal-input--compact"
                 value={preferences.pdfPageOrientation}
                 onChange={(event) => updateWorkspacePreferences({ pdfPageOrientation: toPdfPageOrientation(event.target.value) })}
               >
@@ -118,10 +116,10 @@ export const WorkspacePreferencesPanel: React.FC = () => {
                 <option value="landscape">{t('core.settings.workspace-preferences.pdf-page-orientation.landscape', 'A4 landscape')}</option>
               </select>
             </label>
-            <label className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold text-[var(--fg-muted)] uppercase">{t('core.settings.workspace-preferences.print-background', 'Print background')}</span>
+            <label className="settings-field-stack">
+              <span className="settings-field-label">{t('core.settings.workspace-preferences.print-background', 'Print background')}</span>
               <select
-                className="modal-input !text-xs !py-3"
+                className="modal-input modal-input--compact"
                 value={preferences.printBackground}
                 onChange={(event) => updateWorkspacePreferences({ printBackground: toBackgroundMode(event.target.value) })}
               >
@@ -133,16 +131,16 @@ export const WorkspacePreferencesPanel: React.FC = () => {
           </div>
         </div>
 
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.action-rail-buttons.title', 'Action rail buttons')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
+            <span className="settings-section-label">{t('core.settings.workspace-preferences.action-rail-buttons.title', 'Action rail buttons')}</span>
+            <p className="settings-muted-caption mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.action-rail-buttons.description', 'Hide or restore individual action-rail buttons without unregistering their commands.')}
             </p>
           </div>
           <div className="settings-grid-2">
             {ACTION_RAIL_BUTTONS.map((buttonId) => (
-              <label key={buttonId} className="pwa-toggle justify-start gap-3">
+              <label key={buttonId} className="pwa-toggle pwa-toggle--start">
                 <input
                   type="checkbox"
                   checked={!preferences.hiddenActionRailButtons.includes(buttonId)}
@@ -158,16 +156,16 @@ export const WorkspacePreferencesPanel: React.FC = () => {
           </div>
         </div>
 
-        <div className="settings-card settings-card-stack bg-[var(--bg-inset)]">
+        <div className="settings-card settings-card-stack settings-card-inset">
           <div>
-            <span className="font-bold text-[11px] uppercase">{t('core.settings.workspace-preferences.editor-toolbar-buttons.title', 'Editor toolbar buttons')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] mt-2 leading-relaxed">
+            <span className="settings-section-label">{t('core.settings.workspace-preferences.editor-toolbar-buttons.title', 'Editor toolbar buttons')}</span>
+            <p className="settings-muted-caption mt-2 leading-relaxed">
               {t('core.settings.workspace-preferences.editor-toolbar-buttons.description', 'Control which editor-pane toolbar actions remain visible across views and breakpoints.')}
             </p>
           </div>
           <div className="settings-grid-2">
             {EDITOR_TOOLBAR_BUTTONS.map((buttonId) => (
-              <label key={buttonId} className="pwa-toggle justify-start gap-3">
+              <label key={buttonId} className="pwa-toggle pwa-toggle--start">
                 <input
                   type="checkbox"
                   checked={!preferences.hiddenEditorToolbarButtons.includes(buttonId)}

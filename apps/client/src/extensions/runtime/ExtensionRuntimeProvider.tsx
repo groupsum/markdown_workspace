@@ -15,9 +15,11 @@ import { WorkspacePreferencesPanel } from '../../features/preferences/WorkspaceP
 import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsPanel';
 import { ExtensionRuntimeContextProvider } from './ExtensionRuntimeContext';
 import { createClientExtensionRegistrationSink } from './createClientExtensionRegistrationSink';
-import { runtimeSmokeExtensionEntry } from './bundled';
+import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
 export interface ExtensionRuntimeProviderProps extends React.PropsWithChildren {}
+
+const runtimeSmokeExtensionTestMode = shouldRegisterRuntimeSmokeExtension(import.meta.env.MODE);
 
 export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> = ({ children }) => {
   const services = useClientRuntimeServices();
@@ -43,8 +45,9 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     },
   }), [host, registrationSink, services.settingsStore]);
 
-  const bundledEntries = React.useMemo(() => [
-    createWorkspaceFilesBundledEntry({
+  const bundledEntries = React.useMemo(() => {
+    const entries = [
+      createWorkspaceFilesBundledEntry({
       actions: {
         toggleExplorer: async () => {
           snapshotRef.current.app.actions.toggleSidebar();
@@ -73,8 +76,8 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
       renderWorkspace: () => (
         <div className="settings-pane">
           <div className="settings-card settings-card-stack">
-            <span className="font-bold text-[11px] uppercase">{t('core.workspace-files.kicker', 'Workspace Files')}</span>
-            <p className="text-[11px] text-[var(--fg-muted)] leading-relaxed">
+            <span className="settings-section-label">{t('core.workspace-files.kicker', 'Workspace Files')}</span>
+            <p className="settings-muted-caption leading-relaxed">
               {t('core.workspace-files.description', 'File browsing, editing, and previewing are mounted as the default workspace module surface.')}
             </p>
           </div>
@@ -118,14 +121,28 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     createExtensionManagerBundledEntry({ runtime }),
     createLanguagePackStudioBundledEntry({ controller: languagePackController }),
     createGeminiAgentBundledEntry(),
-    createThemeStudioBundledEntry(),
-    runtimeSmokeExtensionEntry,
-  ], [languagePackController, runtime, services.views, t]);
+      createThemeStudioBundledEntry(),
+    ];
+
+    return entries;
+  }, [languagePackController, runtime, services.views, t]);
 
   React.useEffect(() => {
     const disposables = bundledEntries.map((entry) => runtime.registerBundledExtension(entry));
+    let disposed = false;
+    let runtimeSmokeDisposable: { dispose(): void } | undefined;
+
+    if (runtimeSmokeExtensionTestMode) {
+      void import('./bundled').then(({ runtimeSmokeExtensionEntry }) => {
+        if (disposed) return;
+        runtimeSmokeDisposable = runtime.registerBundledExtension(runtimeSmokeExtensionEntry);
+      });
+    }
+
     void runtime.start();
     return () => {
+      disposed = true;
+      runtimeSmokeDisposable?.dispose();
       void runtime.stop();
       for (const disposable of disposables) {
         disposable.dispose();

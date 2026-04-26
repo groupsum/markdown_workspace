@@ -24,7 +24,5 @@ export const WORKSPACE_FILES_RAIL_TOGGLE_EXPLORER_ID = "core.toggle-explorer";
 export const WORKSPACE_FILES_RAIL_NEW_FILE_ID = "core.new-file";
 export const WORKSPACE_FILES_RAIL_NEW_FOLDER_ID = "core.new-folder";
 export const WORKSPACE_FILES_RAIL_DOWNLOAD_ID = "core.download-workspace";
-export const WORKSPACE_FILES_RAIL_EXPORT_HTML_ID = "core.export-html";
 export const WORKSPACE_FILES_RAIL_OPEN_HOST_FILE_ID = "core.open-host-file";
 export const WORKSPACE_FILES_RAIL_IMPORT_MARKDOWN_ID = "core.import-markdown";
-export const WORKSPACE_FILES_RAIL_PRINT_PREVIEW_ID = "core.print-preview";

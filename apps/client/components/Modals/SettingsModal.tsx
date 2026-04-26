@@ -78,7 +78,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
       <div className="modal-base settings-modal">
         <div className="modal-header">
           <span className="modal-title">
-            <SettingsIcon size={18} className="text-[var(--accent)]" />
+            <SettingsIcon size={18} className="settings-accent-text" />
             {t('core.views.settings.title', 'System Configuration')}
           </span>
           <button onClick={onClose} className="modal-close" aria-label={t('core.settings.modal.close', 'Close settings')}><X size={18} /></button>
