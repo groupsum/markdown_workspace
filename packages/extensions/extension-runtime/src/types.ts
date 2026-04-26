@@ -171,6 +171,7 @@ export interface ExtensionRuntimeExtensionSnapshot {
   readonly manifest: ExtensionManifest;
   readonly source: ExtensionCatalogSource;
   readonly activation: ExtensionActivationMode;
+  readonly verification?: InstalledExtensionVerificationRecord;
   readonly enabled: boolean;
   readonly status: ExtensionRuntimeStatus;
   readonly compatibility: ExtensionRuntimeCompatibilityResult;
@@ -181,6 +182,31 @@ export interface ExtensionRuntimeExtensionSnapshot {
   readonly serviceTokens: readonly string[];
   readonly lastActivatedAt: number | null;
   readonly lastError: ExtensionRuntimeErrorRecord | null;
+}
+
+export type ExtensionIntentRiskLevel = "safe" | "review" | "danger";
+
+export interface ExtensionIntentSnapshot {
+  readonly purpose: string;
+  readonly primaryWorkflow: readonly string[];
+  readonly safeDefaultAction: string;
+  readonly dangerousAction: string | null;
+  readonly contentAccess: {
+    readonly readsWorkspace: boolean;
+    readonly writesWorkspace: boolean;
+    readonly readsEditor: boolean;
+    readonly writesEditor: boolean;
+    readonly readsSelection: boolean;
+  };
+  readonly networkAccess: boolean;
+  readonly persistenceAccess: boolean;
+  readonly trust: {
+    readonly label: string;
+    readonly level: ExtensionIntentRiskLevel;
+    readonly detail: string;
+  };
+  readonly capabilitySummary: readonly string[];
+  readonly recoveryActions: readonly string[];
 }
 
 export interface ExtensionRuntimeSnapshot {

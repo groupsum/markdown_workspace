@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-04-26T17:03:51Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "b009d2a9d9fed2bf4494afd5b3a1e2539ce8ee9186ad0d6c68b9d3bb82a6c503",
+  "boundary": {
+    "id": "bnd:extension-continuous-experience",
+    "title": "Extension continuous experience boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:extension-platform",
+      "feat:extension-runtime-activation-lifecycle",
+      "feat:extension-manager",
+      "feat:extension-gemini-agent",
+      "feat:extension-theme-studio",
+      "feat:extension-language-pack-studio",
+      "feat:uix-extension-view-modes",
+      "feat:extension-capability-permissions",
+      "feat:extension-settings-schema-rendering",
+      "feat:extension-runtime-isolation",
+      "feat:extension-intent-registry",
+      "feat:extension-home-intent-hub",
+      "feat:extension-pane-shared-operations",
+      "feat:extension-capability-trust-disclosure",
+      "feat:extension-diagnostics-recovery-actions",
+      "feat:workspace-files-continuous-document-flow",
+      "feat:git-ops-continuous-source-control-flow",
+      "feat:theme-studio-continuous-authoring-flow",
+      "feat:language-pack-studio-continuous-localization-flow",
+      "feat:gemini-agent-safe-draft-writeback-flow",
+      "feat:external-extension-trust-policy-production-defaults",
+      "feat:shell-aware-import-export-bridge"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:extension-platform",
+      "title": "Extension platform lifecycle",
+      "description": "Govern extension runtime lifecycle, manifest compatibility, config persistence, and isolation.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2029"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-runtime-activation-lifecycle",
+      "title": "Extension runtime activation lifecycle",
+      "description": "Validate manifests and govern extension activation, deactivation, lazy activation, config persistence, compatibility, and runtime error containment.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2029",
+        "spc:2010"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-manager",
+      "title": "Extension manager",
+      "description": "Manage bundled extension entries, inventory, panes, settings, permissions, compatibility, health, and diagnostics.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-gemini-agent",
+      "title": "Gemini Agent extension",
+      "description": "Gemini Agent extension, including agent auth boundaries.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2012",
+        "spc:2009",
+        "spc:2018"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-theme-studio",
+      "title": "Theme Studio extension",
+      "description": "Expose Theme Studio as an extension workspace and settings surface.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2013",
+        "spc:2007",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-language-pack-studio",
+      "title": "Language Pack Studio extension",
+      "description": "Import, activate, export, disable, re-enable, and remove language pack artifacts.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2014",
+        "spc:2025",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-extension-view-modes",
+      "title": "UIX extension view modes",
+      "description": "Render extension view modes, compact states, pane placement, and workspace sidebar controls.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2010",
+        "spc:2030",
+        "spc:2043"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-capability-permissions",
+      "title": "Extension capability permissions",
+      "description": "Display and enforce granted and missing extension permissions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-settings-schema-rendering",
+      "title": "Extension settings schema rendering",
+      "description": "Render and persist schema-driven extension settings forms.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011",
+        "spc:2030"
+      ],
+      "claim_ids": [
+        "clm:client-settings",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-runtime-isolation",
+      "title": "Extension runtime isolation",
+      "description": "Contain runtime errors so failed extensions do not break other extensions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2029"
+      ],
+      "claim_ids": [
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-intent-registry",
+      "title": "Extension intent registry",
+      "description": "Derive extension purpose, workflow, content access, network access, persistence, trust posture, safe action, dangerous action, and recovery actions from manifests and host-owned runtime state.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-home-intent-hub",
+      "title": "Extension home intent hub",
+      "description": "Present Extension Manager as the intent-first hub for extension purpose, health, permissions, trust posture, settings, activation, and recovery.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-pane-shared-operations",
+      "title": "Extension pane shared operations",
+      "description": "Keep extension panes on shared toolbar, sidebar, split, single, resize, busy, empty, error, and close behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-capability-trust-disclosure",
+      "title": "Extension capability trust disclosure",
+      "description": "Expose capability and trust posture before install, activation, or write-capable extension actions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-diagnostics-recovery-actions",
+      "title": "Extension diagnostics recovery actions",
+      "description": "Convert extension runtime diagnostics into clear recovery actions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-files-continuous-document-flow",
+      "title": "Workspace Files continuous document flow",
+      "description": "Connect open, import, edit, preview, save, and export operations into one obvious Markdown document flow.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:git-ops-continuous-source-control-flow",
+      "title": "Git Ops continuous source control flow",
+      "description": "Connect source control review, refresh, inspect, and resolve actions into one obvious flow.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:theme-studio-continuous-authoring-flow",
+      "title": "Theme Studio continuous authoring flow",
+      "description": "Connect token or class selection, editing, preview, apply, and export into one obvious theme authoring flow.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:language-pack-studio-continuous-localization-flow",
+      "title": "Language Pack Studio continuous localization flow",
+      "description": "Connect locale selection, missing-token authoring, save, enable, use, and export into one obvious localization flow.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:gemini-agent-safe-draft-writeback-flow",
+      "title": "Gemini Agent safe draft writeback flow",
+      "description": "Keep provider configuration, context inspection, draft generation, review, and explicit writeback as one safe Markdown assistant flow.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:external-extension-trust-policy-production-defaults",
+      "title": "External extension trust policy production defaults",
+      "description": "Reject unsigned or integrity-only external extension artifacts by default outside development and tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:shell-aware-import-export-bridge",
+      "title": "Shell-aware import export bridge",
+      "description": "Expose import, export, and host file bridges according to the active browser, PWA, desktop, or mobile shell capability posture.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:extension-continuous-experience",
+    "feature_count": 22,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}

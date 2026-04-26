@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1050"
+number: 1050
+slug: "extension-intent-continuous-experience"
+title: "Extension Intent Continuous Experience"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk extension UX shall be intent-first instead of package-first. First-party and installed extension surfaces must make purpose, content access, capability and trust posture, next safe action, dangerous action, diagnostics, and recovery paths visible at the point where a user acts."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1050: Extension Intent Continuous Experience
+  
+  ## Decision
+  
+  MdWrk extension UX shall be intent-first instead of package-first. First-party and installed extension surfaces must make purpose, content access, capability and trust posture, next safe action, dangerous action, diagnostics, and recovery paths visible at the point where a user acts.
+  
+  ## Rationale
+  
+  Extension packages already expose powerful panes, settings, commands, and runtime state, but users need a continuous path from understanding to trust to action. Closing the KAP gap requires turning raw extension state into explicit intent and recovery affordances.
+  
+  ## Consequences
+  
+  The runtime and host may derive extension intent metadata from manifests and host-owned policy. Extension Manager becomes the primary intent hub. External extension trust defaults must fail closed outside local development or tests. Content-changing workflows, especially generated draft writeback, must stay explicit and reviewable.

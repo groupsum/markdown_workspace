@@ -409,8 +409,14 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
             <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelPackage)}</span><span className="settings-session-value">{selectedNode.catalogEntry.packageName}</span></div>
             <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelVersion)}</span><span className="settings-session-value">{selectedNode.catalogEntry.version}</span></div>
             <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelCatalogId)}</span><span className="settings-session-value">{selectedNode.catalogEntry.catalogId}</span></div>
+            <div className="settings-session-item"><span className="settings-session-label">Trust policy</span><span className="settings-session-value">{selectedNode.catalogEntry.policyTrusted ? "Trusted for install" : "Install blocked"}</span></div>
           </div>
           <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(selectedNode.catalogEntry.description)}</p>
+          {!selectedNode.catalogEntry.policyTrusted && (
+            <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "var(--status-error, var(--fg-secondary))", display: "grid", gap: 6 }}>
+              {selectedNode.catalogEntry.policyIssues.map((issue) => <li key={issue}>{issue}</li>)}
+            </ul>
+          )}
           <div className="settings-action-row" style={{ padding: 8 }}>
             <button
               type="button"
@@ -484,6 +490,7 @@ export const ExtensionManagerView: FC<ExtensionManagerViewProps> = ({
         <div className="settings-card settings-card-stack">
           <strong style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.catalogEntriesTitle)}</strong>
           <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{selectedNode.catalogEntry.packageName}@{selectedNode.catalogEntry.version}</p>
+          <span className="settings-chip">{selectedNode.catalogEntry.policyTrusted ? "Trusted for install" : "Install blocked by trust policy"}</span>
           <div className="settings-action-row" style={{ padding: 8 }}>
             <button
               type="button"

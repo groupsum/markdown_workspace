@@ -1,0 +1,36 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2064"
+number: 2064
+slug: "extension-intent-continuous-experience-contract"
+title: "Extension Intent Continuous Experience Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Extension hosts must expose an intent-focused view for each extension that includes purpose, primary workflow, content access, network access, persistence access, trust posture, safe default action, dangerous action, diagnostics, and recovery actions."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # SPEC-2064: Extension Intent Continuous Experience Contract
+  
+  ## Requirements
+  
+  Extension hosts must expose an intent-focused view for each extension that includes purpose, primary workflow, content access, network access, persistence access, trust posture, safe default action, dangerous action, diagnostics, and recovery actions.
+  
+  Extension workspace panes must preserve smooth pane operations: shared toolbar semantics, sidebar toggle behavior, split and single pane modes, stable resize affordances, close behavior, and visible busy, empty, and error states.
+  
+  Extension Manager must operate as the extension intent hub. It must let users inspect extension purpose, health, permissions, compatibility, trust posture, settings, activation state, and recovery actions before install, activation, disabling, or write-capable use.
+  
+  External extension install flows must disclose trust policy and block untrusted installs when production policy rejects unsigned or integrity-only artifacts.
+  
+  Task-first workflows must be explicit for Workspace Files, Git Ops, Theme Studio, Language Pack Studio, Gemini Agent, Extension Manager, and external catalog extensions. Markdown-changing workflows must remain reviewable and explicit.
+  
+  ## Evidence
+  
+  Evidence must include runtime intent derivation tests, Extension Manager intent hub rendering tests, production trust-policy default tests, package-local extension tests, and SSOT proof links from features to tests, claims, and evidence.
+spec_kind: "local-policy"
+adr_ids:
+  - "adr:1050"

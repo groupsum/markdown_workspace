@@ -1,6 +1,6 @@
 import React from "react";
 import type { I18nLabel } from "@mdwrk/extension-manifest";
-import type { ExtensionRuntime, ExtensionRuntimeExtensionSnapshot } from "@mdwrk/extension-runtime";
+import { deriveExtensionIntent, type ExtensionRuntime, type ExtensionRuntimeExtensionSnapshot } from "@mdwrk/extension-runtime";
 import { AlertTriangle, CheckCircle2, ChevronsUpDown, CircleSlash2, Power, PowerOff } from "lucide-react";
 import { extensionManagerLabels } from "../i18n.js";
 import { ExtensionManifestIcon } from "./ExtensionManifestIcon.js";
@@ -91,6 +91,7 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
   const disableLabel = formatLabel(extensionManagerLabels.actionDisable);
   const activateLabel = formatLabel(extensionManagerLabels.actionActivate);
   const deactivateLabel = formatLabel(extensionManagerLabels.actionDeactivate);
+  const intent = deriveExtensionIntent(extension);
 
   return (
     <article className="settings-card settings-card-stack" style={{ display: "grid", gap: 14 }}>
@@ -137,6 +138,41 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
         <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelActivation)}</span><span className="settings-session-value">{extension.activation}</span></div>
         <div className="settings-session-item"><span className="settings-session-label">{formatLabel(extensionManagerLabels.labelEnabled)}</span><span className="settings-session-value">{extension.enabled ? formatLabel(extensionManagerLabels.stateEnabled) : formatLabel(extensionManagerLabels.stateDisabled)}</span></div>
       </div>
+
+      <section style={{ display: "grid", gap: 10, padding: 12, border: "1px solid var(--border-primary)", borderRadius: 8 }} aria-label={`Intent for ${formatLabel(extension.manifest.displayName)}`}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap", alignItems: "flex-start" }}>
+          <div style={{ display: "grid", gap: 4 }}>
+            <span className="settings-session-label">Purpose</span>
+            <strong style={{ fontSize: 12 }}>{intent.safeDefaultAction}</strong>
+            <span className="settings-muted-caption">{intent.purpose}</span>
+          </div>
+          <span style={pillStyle}>{intent.trust.label}</span>
+        </div>
+        <div className="settings-session-grid">
+          <div className="settings-session-item"><span className="settings-session-label">Content bridge</span><span className="settings-session-value">{intent.contentAccess.writesWorkspace || intent.contentAccess.writesEditor ? "Read/write markdown" : intent.contentAccess.readsWorkspace || intent.contentAccess.readsEditor ? "Read markdown" : "No markdown access"}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">Network</span><span className="settings-session-value">{intent.networkAccess ? "Network enabled" : "No network access"}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">Persistence</span><span className="settings-session-value">{intent.persistenceAccess ? "Settings-backed" : "No settings persistence"}</span></div>
+          <div className="settings-session-item"><span className="settings-session-label">Trust detail</span><span className="settings-session-value">{intent.trust.detail}</span></div>
+        </div>
+        <div style={{ display: "grid", gap: 6 }}>
+          <span className="settings-session-label">Workflow</span>
+          <div className="settings-chip-row">
+            {intent.primaryWorkflow.map((step, index) => <span key={step} className="settings-chip">{index + 1}. {step}</span>)}
+          </div>
+        </div>
+        {intent.dangerousAction && (
+          <div style={{ display: "grid", gap: 4 }}>
+            <span className="settings-session-label">Review before action</span>
+            <span className="settings-muted-caption">{intent.dangerousAction}</span>
+          </div>
+        )}
+        <div style={{ display: "grid", gap: 6 }}>
+          <span className="settings-session-label">Recovery</span>
+          <div className="settings-chip-row">
+            {intent.recoveryActions.map((action) => <span key={action} className="settings-chip">{action}</span>)}
+          </div>
+        </div>
+      </section>
 
       <section style={{ display: "grid", gap: 8 }}>
         <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.labelPermissions)}</span>

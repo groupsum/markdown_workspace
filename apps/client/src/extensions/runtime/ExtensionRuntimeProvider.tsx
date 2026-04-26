@@ -21,6 +21,14 @@ export interface ExtensionRuntimeProviderProps extends React.PropsWithChildren {
 
 const runtimeSmokeExtensionTestMode = shouldRegisterRuntimeSmokeExtension(import.meta.env.MODE);
 
+export function createClientExtensionTrustPolicy(mode: string, dev: boolean) {
+  const allowLocalDevelopmentArtifacts = dev || mode === 'test';
+  return {
+    allowUnsigned: allowLocalDevelopmentArtifacts,
+    allowIntegrityOnly: allowLocalDevelopmentArtifacts,
+  };
+}
+
 export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> = ({ children }) => {
   const services = useClientRuntimeServices();
   const t = React.useCallback((key: string, defaultMessage: string) => services.i18n.format({ key, defaultMessage }), [services.i18n]);
@@ -39,10 +47,7 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     host,
     registrationSink,
     storage: services.settingsStore,
-    trustPolicy: {
-      allowUnsigned: true,
-      allowIntegrityOnly: true,
-    },
+    trustPolicy: createClientExtensionTrustPolicy(import.meta.env.MODE, import.meta.env.DEV),
   }), [host, registrationSink, services.settingsStore]);
 
   const bundledEntries = React.useMemo(() => {

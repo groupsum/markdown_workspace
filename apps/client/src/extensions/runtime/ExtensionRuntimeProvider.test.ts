@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createClientExtensionTrustPolicy } from './ExtensionRuntimeProvider';
 import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
 describe('ExtensionRuntimeProvider runtime smoke gate', () => {
@@ -6,5 +7,16 @@ describe('ExtensionRuntimeProvider runtime smoke gate', () => {
     expect(shouldRegisterRuntimeSmokeExtension('test')).toBe(true);
     expect(shouldRegisterRuntimeSmokeExtension('development')).toBe(false);
     expect(shouldRegisterRuntimeSmokeExtension('production')).toBe(false);
+  });
+
+  it('rejects unsigned external artifacts by default in production', () => {
+    expect(createClientExtensionTrustPolicy('production', false)).toEqual({
+      allowUnsigned: false,
+      allowIntegrityOnly: false,
+    });
+    expect(createClientExtensionTrustPolicy('test', false)).toEqual({
+      allowUnsigned: true,
+      allowIntegrityOnly: true,
+    });
   });
 });

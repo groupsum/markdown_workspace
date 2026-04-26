@@ -296,6 +296,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       activation: entry.activation,
       enabled: state?.enabled ?? entry.manifest.enabledByDefault,
       status: state?.status ?? (compatibility.compatible ? (entry.manifest.enabledByDefault ? "registered" : "disabled") : "incompatible"),
+      verification: entry.source === "installed" ? entry.installedRecord.verification : undefined,
       compatibility,
       grantedCapabilities,
       missingCapabilities,

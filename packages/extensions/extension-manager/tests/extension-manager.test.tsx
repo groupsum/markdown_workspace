@@ -397,6 +397,10 @@ describe('extension-manager', () => {
     expect(screen.getAllByText('Inventory Extension').length).toBeGreaterThan(0);
     expect(screen.getByText('core.inventory')).toBeInTheDocument();
     expect(screen.getByText('Bundled')).toBeInTheDocument();
+    expect(screen.getByText('Purpose')).toBeInTheDocument();
+    expect(screen.getByText('Open workspace view')).toBeInTheDocument();
+    expect(screen.getByText('Trust detail')).toBeInTheDocument();
+    expect(screen.getByText('No markdown access')).toBeInTheDocument();
     expect(screen.getAllByText('active', { exact: false }).length).toBeGreaterThan(0);
     expect(screen.getByText('Compatible with the current host, runtime, and theme contract.')).toBeInTheDocument();
 
@@ -605,6 +609,7 @@ describe('extension-manager', () => {
     expect(await screen.findByText('Last error')).toBeInTheDocument();
     expect(screen.getAllByText(/Activation exploded/).length).toBeGreaterThan(0);
     expect(screen.getByText(/EXT_RUNTIME_ACTIVATE_FAILED/)).toBeInTheDocument();
+    expect(screen.getByText('Retry activation or disable the extension')).toBeInTheDocument();
 
     await runtime.stop();
   });

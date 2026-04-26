@@ -1,48 +1,118 @@
 {
-  "passed": true,
+  "passed": false,
   "registry_path": ".ssot/registry.json",
   "release": {
-    "release_id": "rel:0.1.0",
-    "passed": true,
-    "failures": [],
+    "release_id": "rel:extension-continuous-experience",
+    "passed": false,
+    "failures": [
+      "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed",
+      "Claim clm:extension-continuous-experience requires passed linked evidence at or above claim tier T2",
+      "Evidence evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts status is collected, expected passed",
+      "Evidence evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx status is collected, expected passed",
+      "Evidence evd:packages-extensions-extension-runtime-tests-runtime.test.ts status is collected, expected passed"
+    ],
     "warnings": [],
-    "claims": [],
-    "evidence": [],
+    "claims": [
+      {
+        "claim_id": "clm:extension-continuous-experience",
+        "passed": false,
+        "failures": [
+          "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed",
+          "Claim clm:extension-continuous-experience requires passed linked evidence at or above claim tier T2"
+        ],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": false,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": false,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "implemented"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "passed": false,
+        "failures": [
+          "Evidence evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts status is collected, expected passed"
+        ]
+      },
+      {
+        "evidence_id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "passed": false,
+        "failures": [
+          "Evidence evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx status is collected, expected passed"
+        ]
+      },
+      {
+        "evidence_id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "passed": false,
+        "failures": [
+          "Evidence evd:packages-extensions-extension-runtime-tests-runtime.test.ts status is collected, expected passed"
+        ]
+      }
+    ],
     "profiles": [],
     "boundary": {
-      "id": "bnd:default",
+      "id": "bnd:extension-continuous-experience",
       "profile_ids": [],
-      "resolved_feature_ids": []
+      "resolved_feature_ids": [
+        "feat:extension-platform",
+        "feat:extension-runtime-activation-lifecycle",
+        "feat:extension-manager",
+        "feat:extension-gemini-agent",
+        "feat:extension-theme-studio",
+        "feat:extension-language-pack-studio",
+        "feat:uix-extension-view-modes",
+        "feat:extension-capability-permissions",
+        "feat:extension-settings-schema-rendering",
+        "feat:extension-runtime-isolation",
+        "feat:extension-intent-registry",
+        "feat:extension-home-intent-hub",
+        "feat:extension-pane-shared-operations",
+        "feat:extension-capability-trust-disclosure",
+        "feat:extension-diagnostics-recovery-actions",
+        "feat:workspace-files-continuous-document-flow",
+        "feat:git-ops-continuous-source-control-flow",
+        "feat:theme-studio-continuous-authoring-flow",
+        "feat:language-pack-studio-continuous-localization-flow",
+        "feat:gemini-agent-safe-draft-writeback-flow",
+        "feat:external-extension-trust-policy-production-defaults",
+        "feat:shell-aware-import-export-bridge"
+      ]
     },
     "summary": {
-      "boundary_id": "bnd:default",
-      "boundary_feature_count": 0,
+      "boundary_id": "bnd:extension-continuous-experience",
+      "boundary_feature_count": 22,
       "boundary_profile_count": 0,
-      "release_claim_count": 0,
-      "release_evidence_count": 0
+      "release_claim_count": 1,
+      "release_evidence_count": 3
     }
   },
   "boundary_scope": {
-    "boundary_id": "bnd:default",
+    "boundary_id": "bnd:extension-continuous-experience",
     "profile_ids": [],
     "feature_ids": []
   },
   "summary": {
     "counts": {
-      "features": 126,
-      "profiles": 0,
-      "tests": 36,
-      "claims": 14,
-      "evidence": 36,
+      "features": 184,
+      "profiles": 1,
+      "tests": 44,
+      "claims": 15,
+      "evidence": 44,
       "issues": 0,
       "risks": 0,
-      "boundaries": 1,
-      "releases": 1,
-      "adrs": 62,
-      "specs": 59
+      "boundaries": 2,
+      "releases": 2,
+      "adrs": 64,
+      "specs": 79
     },
     "profile_status": {
-      "passing": 0,
+      "passing": 1,
       "failing": 0,
       "draft": 0
     }

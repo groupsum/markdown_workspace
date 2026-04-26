@@ -12,6 +12,7 @@ import type {
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import { createExtensionRuntime } from "../src/runtime.js";
 import { evaluateExtensionCompatibility } from "../src/compatibility.js";
+import { deriveExtensionIntent } from "../src/intent.js";
 import { createInMemoryExtensionRuntimeStorage, getExtensionConfigKey } from "../src/storage.js";
 import { validateExtensionManifest } from "../src/validation.js";
 import type { ExtensionRuntimeRegistrationSink } from "../src/types.js";
@@ -437,5 +438,39 @@ describe("extension-runtime", () => {
     await runtime.activate(manifest.id);
     expect(runtime.get(manifest.id)?.status).toBe("active");
     expect(activated).toBe(1);
+  });
+
+  it("derives extension intent from manifest capabilities and runtime state", async () => {
+    const { host } = createHost();
+    const { sink } = createSink();
+    const runtime = createExtensionRuntime({ host, registrationSink: sink, storage: createInMemoryExtensionRuntimeStorage() });
+    const manifest = createManifest("core.gemini-agent", {
+      capabilities: ["view.register", "settings.read", "settings.write", "editor.read", "editor.write", "selection.read", "network.fetch"],
+      settingsSchema: {
+        version: 1,
+        sections: [],
+        fields: [],
+      },
+    });
+
+    runtime.registerBundledExtension({
+      manifest,
+      activation: "lazy",
+      load: async () => ({ manifest, activate() {} }),
+    });
+    await runtime.start();
+
+    const snapshot = runtime.get(manifest.id);
+    expect(snapshot).toBeDefined();
+    const intent = deriveExtensionIntent(snapshot!);
+
+    expect(intent.primaryWorkflow).toEqual(["Configure provider", "Generate a draft", "Review before writeback"]);
+    expect(intent.contentAccess.readsEditor).toBe(true);
+    expect(intent.contentAccess.writesEditor).toBe(true);
+    expect(intent.networkAccess).toBe(true);
+    expect(intent.persistenceAccess).toBe(true);
+    expect(intent.dangerousAction).toContain("write");
+    expect(intent.trust.label).toBe("Bundled");
+    expect(intent.recoveryActions).toContain("Open extension settings");
   });
 });

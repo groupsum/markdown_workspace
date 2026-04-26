@@ -29,17 +29,17 @@
   ],
   "summary": {
     "counts": {
-      "features": 172,
+      "features": 184,
       "profiles": 1,
       "tests": 44,
-      "claims": 14,
+      "claims": 15,
       "evidence": 44,
       "issues": 0,
       "risks": 0,
-      "boundaries": 1,
-      "releases": 1,
-      "adrs": 63,
-      "specs": 78
+      "boundaries": 2,
+      "releases": 2,
+      "adrs": 64,
+      "specs": 79
     },
     "profile_status": {
       "passing": 1,
