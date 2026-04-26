@@ -1,4 +1,4 @@
-import type { ActionRailContributionDescriptor, CommandContributionDescriptor, ComponentContributionDescriptor, ExtensionIcon, ExtensionSettingsSchema, SettingsSectionContributionDescriptor, ViewContributionDescriptor, WorkspaceModuleContributionDescriptor } from "@mdwrk/extension-manifest";
+import type { ActionRailContributionDescriptor, CommandContributionDescriptor, ComponentContributionDescriptor, SettingsSectionContributionDescriptor, ViewContributionDescriptor, WorkspaceModuleContributionDescriptor, ExtensionIcon, ExtensionSettingsSchema } from "@mdwrk/extension-manifest";
 export type ViewRenderer<Props = unknown> = (props: Props) => unknown;
 export type ComponentRenderer<Props = unknown> = (props: Props) => unknown;
 export interface RegisteredCommand extends CommandContributionDescriptor {

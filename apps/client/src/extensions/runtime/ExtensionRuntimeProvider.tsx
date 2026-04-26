@@ -15,19 +15,12 @@ import { WorkspacePreferencesPanel } from '../../features/preferences/WorkspaceP
 import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsPanel';
 import { ExtensionRuntimeContextProvider } from './ExtensionRuntimeContext';
 import { createClientExtensionRegistrationSink } from './createClientExtensionRegistrationSink';
+import { createClientExtensionTrustPolicy } from './extensionTrustPolicy';
 import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
 export interface ExtensionRuntimeProviderProps extends React.PropsWithChildren {}
 
 const runtimeSmokeExtensionTestMode = shouldRegisterRuntimeSmokeExtension(import.meta.env.MODE);
-
-export function createClientExtensionTrustPolicy(mode: string, dev: boolean) {
-  const allowLocalDevelopmentArtifacts = dev || mode === 'test';
-  return {
-    allowUnsigned: allowLocalDevelopmentArtifacts,
-    allowIntegrityOnly: allowLocalDevelopmentArtifacts,
-  };
-}
 
 export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> = ({ children }) => {
   const services = useClientRuntimeServices();

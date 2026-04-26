@@ -20,6 +20,7 @@ const createEmitter = () => {
         },
     };
 };
+const isRegisteredInstalledExtension = (entry) => "installedRecord" in entry;
 const toErrorRecord = (phase, error) => {
     if (error instanceof Error) {
         return {
@@ -203,6 +204,7 @@ export function createExtensionRuntime(options) {
             activation: entry.activation,
             enabled: state?.enabled ?? entry.manifest.enabledByDefault,
             status: state?.status ?? (compatibility.compatible ? (entry.manifest.enabledByDefault ? "registered" : "disabled") : "incompatible"),
+            verification: isRegisteredInstalledExtension(entry) ? entry.installedRecord.verification : undefined,
             compatibility,
             grantedCapabilities,
             missingCapabilities,

@@ -88,6 +88,11 @@ const createEmitter = () => {
   };
 };
 
+const isRegisteredInstalledExtension = (
+  entry: RegisteredRuntimeExtensionCatalogEntry,
+): entry is RegisteredRuntimeExtensionCatalogEntry & { readonly installedRecord: InstalledExtensionRecord } =>
+  "installedRecord" in entry;
+
 const toErrorRecord = (phase: ExtensionRuntimeErrorRecord["phase"], error: unknown): ExtensionRuntimeErrorRecord => {
   if (error instanceof Error) {
     return {
@@ -296,7 +301,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       activation: entry.activation,
       enabled: state?.enabled ?? entry.manifest.enabledByDefault,
       status: state?.status ?? (compatibility.compatible ? (entry.manifest.enabledByDefault ? "registered" : "disabled") : "incompatible"),
-      verification: entry.source === "installed" ? entry.installedRecord.verification : undefined,
+      verification: isRegisteredInstalledExtension(entry) ? entry.installedRecord.verification : undefined,
       compatibility,
       grantedCapabilities,
       missingCapabilities,

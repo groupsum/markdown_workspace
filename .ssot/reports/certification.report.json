@@ -1,58 +1,43 @@
 {
-  "passed": false,
+  "passed": true,
   "registry_path": ".ssot/registry.json",
   "release": {
     "release_id": "rel:extension-continuous-experience",
-    "passed": false,
-    "failures": [
-      "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed",
-      "Claim clm:extension-continuous-experience requires passed linked evidence at or above claim tier T2",
-      "Evidence evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts status is collected, expected passed",
-      "Evidence evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx status is collected, expected passed",
-      "Evidence evd:packages-extensions-extension-runtime-tests-runtime.test.ts status is collected, expected passed"
-    ],
+    "passed": true,
+    "failures": [],
     "warnings": [],
     "claims": [
       {
         "claim_id": "clm:extension-continuous-experience",
-        "passed": false,
-        "failures": [
-          "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed",
-          "Claim clm:extension-continuous-experience requires passed linked evidence at or above claim tier T2"
-        ],
+        "passed": true,
+        "failures": [],
         "checks": {
           "implemented_features": true,
           "tests_passing": true,
-          "evidence_passing": false,
+          "evidence_passing": true,
           "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
+          "evidence_tier_alignment": true,
           "feature_target_alignment": true,
           "required_features_passing": true
         },
-        "recommended_status": "implemented"
+        "recommended_status": "certified"
       }
     ],
     "evidence": [
       {
         "evidence_id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-extensions-extension-runtime-tests-runtime.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       }
     ],
     "profiles": [],

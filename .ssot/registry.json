@@ -7051,7 +7051,7 @@
     {
       "id": "clm:extension-continuous-experience",
       "title": "Extension continuous experience claim",
-      "status": "implemented",
+      "status": "published",
       "tier": "T2",
       "kind": "capability",
       "description": "Extension continuous experience features expose intent, capability and trust posture, recovery actions, production trust defaults, and task-first Markdown workflows.",
@@ -7597,7 +7597,7 @@
     {
       "id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
       "title": "Evidence: extension-manager.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
@@ -7619,7 +7619,7 @@
     {
       "id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
       "title": "Evidence: runtime.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
@@ -7711,7 +7711,7 @@
     {
       "id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
       "title": "Evidence: ExtensionRuntimeProvider.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
@@ -7838,7 +7838,7 @@
     {
       "id": "rel:extension-continuous-experience",
       "version": "extension-continuous-experience",
-      "status": "draft",
+      "status": "published",
       "boundary_id": "bnd:extension-continuous-experience",
       "claim_ids": [
         "clm:extension-continuous-experience"

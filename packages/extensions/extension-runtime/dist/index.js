@@ -5,6 +5,7 @@ export * from "./portable.js";
 export * from "./storage.js";
 export * from "./validation.js";
 export * from "./compatibility.js";
+export * from "./intent.js";
 export * from "./loader.js";
 export * from "./registry.js";
 export * from "./runtime.js";

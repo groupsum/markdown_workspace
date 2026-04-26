@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createClientExtensionTrustPolicy } from './ExtensionRuntimeProvider';
+import { createClientExtensionTrustPolicy } from './extensionTrustPolicy';
 import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
 describe('ExtensionRuntimeProvider runtime smoke gate', () => {

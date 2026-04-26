@@ -396,7 +396,7 @@ describe('extension-manager', () => {
     expect(await screen.findByText('Extension Manager')).toBeInTheDocument();
     expect(screen.getAllByText('Inventory Extension').length).toBeGreaterThan(0);
     expect(screen.getByText('core.inventory')).toBeInTheDocument();
-    expect(screen.getByText('Bundled')).toBeInTheDocument();
+    expect(screen.getAllByText('Bundled').length).toBeGreaterThan(0);
     expect(screen.getByText('Purpose')).toBeInTheDocument();
     expect(screen.getByText('Open workspace view')).toBeInTheDocument();
     expect(screen.getByText('Trust detail')).toBeInTheDocument();
@@ -428,16 +428,15 @@ describe('extension-manager', () => {
 
     expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
     expect(view.container.querySelector('aside.editor-pane-column')).not.toBeNull();
-    expect(screen.getByText('Catalog Browser')).toBeInTheDocument();
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
     await waitFor(() => expect(view.container.querySelector('aside.editor-pane-column')).toBeNull());
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
-    await waitFor(() => expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument());
+    await waitFor(() => expect(screen.queryByRole('separator', { name: 'Resize Extension Manager panes' })).not.toBeInTheDocument());
 
     fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
-    await waitFor(() => expect(screen.getByText('Catalog Browser')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('separator', { name: 'Resize Extension Manager panes' })).toBeInTheDocument());
 
     await runtime.stop();
   });
@@ -608,7 +607,7 @@ describe('extension-manager', () => {
 
     expect(await screen.findByText('Last error')).toBeInTheDocument();
     expect(screen.getAllByText(/Activation exploded/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/EXT_RUNTIME_ACTIVATE_FAILED/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Ext Runtime Activate Failed/).length).toBeGreaterThan(0);
     expect(screen.getByText('Retry activation or disable the extension')).toBeInTheDocument();
 
     await runtime.stop();

@@ -1,4 +1,4 @@
-export declare const MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES: readonly ["ui-scale", "header-height", "rail-width", "rail-height", "sidebar-width", "status-height", "tab-height", "panel-header-height", "rail-btn-size", "bg-app", "bg-panel", "bg-inset", "border-color", "border-width", "fg-primary", "fg-secondary", "fg-muted", "accent", "table-header-bg", "table-header-fg", "table-row-primary-bg", "table-row-secondary-bg", "status-ok", "status-warn", "status-error", "app-gap", "texture-opacity", "editor-padding", "editor-line-height", "editor-line-rhythm", "markdown-line-height", "markdown-heading-line-height", "line-number-gutter-width", "mobile-rail-expanded-width", "mobile-expandable-rail-width", "file-indent-base", "file-indent-unit", "c-explorer-hover", "c-explorer-selected", "c-explorer-selected-text", "c-explorer-drag-bg", "font-ui", "font-mono", "font-head"];
+export declare const MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES: readonly ["ui-scale", "header-height", "rail-width", "rail-height", "sidebar-width", "status-height", "tab-height", "panel-header-height", "rail-btn-size", "bg-app", "bg-panel", "bg-inset", "border-color", "border-width", "fg-primary", "fg-secondary", "fg-muted", "accent", "table-header-bg", "table-header-fg", "table-row-primary-bg", "table-row-secondary-bg", "status-ok", "status-warn", "status-error", "app-gap", "texture-opacity", "editor-padding", "editor-line-height", "editor-line-rhythm", "markdown-line-height", "markdown-heading-line-height", "pdf-page-size", "pdf-page-margin-block", "pdf-page-margin-inline", "pdf-content-font-size", "pdf-content-line-height", "pdf-heading-keep-with-next", "line-number-gutter-width", "mobile-rail-expanded-width", "mobile-expandable-rail-width", "file-indent-base", "file-indent-unit", "c-explorer-hover", "c-explorer-selected", "c-explorer-selected-text", "c-explorer-drag-bg", "font-ui", "font-mono", "font-head"];
 export type MarkdownWorkspaceThemeTokenName = typeof MARKDOWN_WORKSPACE_THEME_TOKEN_NAMES[number];
 export type ThemeTokenCategory = "layout" | "color" | "status" | "spacing" | "interaction" | "typography";
 export interface ThemeTokenDefinition {
@@ -232,6 +232,48 @@ export declare const MARKDOWN_WORKSPACE_THEME_TOKENS: readonly [{
     readonly category: "typography";
     readonly description: "Markdown heading line height.";
     readonly defaultValue: "calc(1.1 + ((var(--ui-scale) - 1) * 0.35))";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-page-size";
+    readonly cssCustomProperty: "--pdf-page-size";
+    readonly category: "layout";
+    readonly description: "Default PDF page size used by print/export styles.";
+    readonly defaultValue: "A4";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-page-margin-block";
+    readonly cssCustomProperty: "--pdf-page-margin-block";
+    readonly category: "spacing";
+    readonly description: "Top and bottom PDF page margin.";
+    readonly defaultValue: "14mm";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-page-margin-inline";
+    readonly cssCustomProperty: "--pdf-page-margin-inline";
+    readonly category: "spacing";
+    readonly description: "Left and right PDF page margin.";
+    readonly defaultValue: "16mm";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-content-font-size";
+    readonly cssCustomProperty: "--pdf-content-font-size";
+    readonly category: "typography";
+    readonly description: "Base Markdown font size for PDF output.";
+    readonly defaultValue: "10.5pt";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-content-line-height";
+    readonly cssCustomProperty: "--pdf-content-line-height";
+    readonly category: "typography";
+    readonly description: "Base Markdown line height for PDF output.";
+    readonly defaultValue: "1.5";
+    readonly stability: "stable";
+}, {
+    readonly name: "pdf-heading-keep-with-next";
+    readonly cssCustomProperty: "--pdf-heading-keep-with-next";
+    readonly category: "layout";
+    readonly description: "Heading page-break behavior for PDF output.";
+    readonly defaultValue: "avoid";
     readonly stability: "stable";
 }, {
     readonly name: "line-number-gutter-width";
