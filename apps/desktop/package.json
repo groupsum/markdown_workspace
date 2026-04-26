@@ -25,6 +25,7 @@
   "build": {
     "appId": "com.mdwrk.desktop",
     "productName": "MdWork Desktop",
+    "icon": "build/icon",
     "directories": {
       "buildResources": "build",
       "output": "dist/electron"
