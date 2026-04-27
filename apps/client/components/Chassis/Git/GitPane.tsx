@@ -242,14 +242,14 @@ export const status = "updated";
     right: React.ReactNode,
     ariaLabel: string,
   ) => (
-    <div ref={splitContainerRef} className="editor-pane-body is-split" style={{ background: 'transparent' }}>
-      <div className={`editor-pane-column editor-pane-column--split-left-${splitBand}`} style={{ display: 'grid', paddingRight: 8 }}>
+    <div ref={splitContainerRef} className="editor-pane-body editor-pane-body--transparent is-split">
+      <div className={`editor-pane-column editor-pane-column--split-grid editor-pane-column--split-start editor-pane-column--split-left-${splitBand}`}>
         {left}
       </div>
       <div onMouseDown={startSplitDrag} className={`editor-splitter ${isDragging ? 'dragging' : ''}`} role="separator" aria-orientation="vertical" aria-label={ariaLabel}>
         <div className="editor-splitter-handle" />
       </div>
-      <div className={`editor-pane-column editor-pane-column--split-right-${100 - splitBand}`} style={{ display: 'grid', paddingLeft: 8 }}>
+      <div className={`editor-pane-column editor-pane-column--split-grid editor-pane-column--split-end editor-pane-column--split-right-${100 - splitBand}`}>
         {right}
       </div>
     </div>
@@ -383,7 +383,7 @@ export const status = "updated";
             <RefreshCw size={14} />
           </button>
         </div>
-        <div className="view-toolbar-group" style={{ justifyContent: 'flex-end' }}>
+        <div className="view-toolbar-group view-toolbar-group--end">
           <span className="view-toolbar-divider" />
           <button type="button" className="view-toolbar-btn" title={t('core.git.close', 'Close Git Operations')} onClick={onClose}>
             <XCircle size={14} />
