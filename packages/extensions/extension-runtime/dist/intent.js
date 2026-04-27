@@ -100,7 +100,7 @@ const toRecoveryActions = (extension) => {
     return actions;
 };
 export function deriveExtensionIntent(extension) {
-    const capabilities = extension.manifest.capabilities;
+    const capabilities = extension.manifest.capabilities ?? [];
     return {
         purpose: extension.manifest.description.defaultMessage,
         primaryWorkflow: toWorkflow(extension),
