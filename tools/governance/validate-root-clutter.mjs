@@ -11,6 +11,7 @@ const allowlist = new Set([
   '.npmrc',
   '.prettierignore',
   '.prettierrc.json',
+  '.ssot',
   '.tmp',
   'CODE_OF_CONDUCT.md',
   'CONTRIBUTING.md',
@@ -58,10 +59,12 @@ const allowlist = new Set([
   'playwright.file.config.ts',
   'playwright.inline.config.ts',
   'playwright.phase17.config.ts',
+  'pyproject.toml',
   'specs',
   'test-results',
   'tools',
-  'tsconfig.base.json'
+  'tsconfig.base.json',
+  'uv.lock'
 ]);
 
 const entries = fs.readdirSync('.', { withFileTypes: true }).map((entry) => entry.name);
