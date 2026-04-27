@@ -13,7 +13,7 @@ const workspaceByName = new Map(
 
 async function main() {
   if (await supportsDirectoryLinks()) {
-    await runNpm(['ci'], { cwd: repoRoot });
+    await runNpm(['install'], { cwd: repoRoot });
     return;
   }
 
