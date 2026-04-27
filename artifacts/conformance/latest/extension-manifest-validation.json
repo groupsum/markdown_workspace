@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:45:58.534Z",
+  "generatedAt": "2026-04-27T22:57:41.686Z",
   "validator": "tools/conformance/validate-extension-manifests.mjs",
   "ok": true,
   "results": [
@@ -15,6 +15,14 @@
       "packageName": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent",
       "manifestId": "core.gemini-agent",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-git-ops",
+      "path": "packages/extensions/extension-git-ops",
+      "manifestId": "core.git-ops",
       "valid": true,
       "errors": [],
       "warnings": []
@@ -39,6 +47,14 @@
       "packageName": "@mdwrk/extension-theme-studio",
       "path": "packages/extensions/extension-theme-studio",
       "manifestId": "core.theme-studio",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-workspace-files",
+      "path": "packages/extensions/extension-workspace-files",
+      "manifestId": "core.workspace-files",
       "valid": true,
       "errors": [],
       "warnings": []

@@ -37,6 +37,10 @@ export const workspaceFilesManifest = {
         module: "./index.js",
         export: "createWorkspaceFilesBundledEntry",
     },
+    i18n: {
+        defaultLocale: "en",
+        supportedLocales: ["en"],
+    },
     contributions: {
         commands: [
             { id: WORKSPACE_FILES_COMMAND_TOGGLE_EXPLORER_ID, title: label("Toggle Explorer", "core.commands.toggle-explorer"), icon: { kind: "lucide", name: "Folder" } },
