@@ -1,6 +1,6 @@
 # Root operational tooling
 
-This directory contains repository-level scripts used by the Phase 13 CI/CD, release, conformance, extension artifact, and evidence workflows.
+This directory contains repository-level scripts used by MdWork CI/CD, release, conformance, extension artifact, and evidence workflows.
 
 ## Areas
 - `tools/lib/` — shared workspace/package helpers

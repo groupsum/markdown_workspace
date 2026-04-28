@@ -27,7 +27,7 @@ React bindings for the portable MdWork renderer core.
 
 ## Semver / compatibility
 
-- current version: `1.1.0`
+- current version: `1.1.3`
 - depends on the public renderer-core contract rather than app-private preview wiring
 - public consumers should use the exported theme/style helpers rather than private app theme code
 

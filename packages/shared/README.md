@@ -9,4 +9,4 @@ App-agnostic reusable primitives shared across MdWork apps and packages.
 - `mdwrk/i18n` — shared message descriptors and locale registry helpers
 - `mdwrk/testing` — shared React and browser test helpers
 
-These packages are Phase 3 deliverables and are intended to be publishable npm packages.
+These packages are publishable npm packages. Their `dist/` output is generated from source and is not committed.

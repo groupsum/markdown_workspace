@@ -1,14 +1,13 @@
 # packages/
 
-This directory contains publishable workspace packages.
+This directory contains the reusable MdWork workspace packages.
 
-## Implemented package families
+## Package Families
 
-- `packages/contracts/*` — implemented contract packages
-- `packages/shared/*` — implemented shared primitive packages
+- `packages/contracts/*` - extension, host, and theme contracts
+- `packages/shared/*` - reusable tokens, icons, i18n, and testing helpers
+- `packages/renderer/*` - portable Markdown renderer packages
+- `packages/editor/*` - portable Markdown editor packages
+- `packages/extensions/*` - extension runtime and first-party extension packages
 
-## Reserved package families
-
-- `packages/renderer/*` — future portable markdown renderer packages
-- `packages/editor/*` — future portable markdown editor packages
-- `packages/extensions/*` — future extension runtime and publishable extension packages
+Package build output is generated into each package's `dist/` directory by the relevant build script. Those generated directories are intentionally ignored by Git and should be regenerated from source.

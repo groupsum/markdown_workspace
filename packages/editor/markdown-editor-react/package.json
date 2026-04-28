@@ -23,7 +23,7 @@
     "markdown",
     "react"
   ],
-  "description": "React bindings, textarea editor surface, command wiring, history integration, and theme bridge for the Markdown Workspace portable markdown editor.",
+  "description": "React bindings, textarea editor surface, command wiring, history integration, and theme bridge for the MdWork portable markdown editor.",
   "dependencies": {
     "@chenglou/pretext": "^0.0.5",
     "@mdwrk/markdown-editor-core": "^1.1.1",

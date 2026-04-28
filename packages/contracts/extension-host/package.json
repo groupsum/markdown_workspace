@@ -19,7 +19,7 @@
     "typescript"
   ],
   "name": "@mdwrk/extension-host",
-  "description": "Stable host API, lifecycle, and context contracts for Markdown Workspace extensions.",
+  "description": "Stable host API, lifecycle, and context contracts for MdWork extensions.",
   "dependencies": {
     "@mdwrk/extension-manifest": "^1.0.1",
     "@mdwrk/theme-contract": "^1.1.1"

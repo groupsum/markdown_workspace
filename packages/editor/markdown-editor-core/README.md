@@ -30,7 +30,7 @@ Portable source-mode Markdown editor primitives for MdWork.
 
 ## Semver / compatibility
 
-- current version: `1.1.0`
+- current version: `1.1.2`
 - package boundary: editor logic only; no React or app-shell dependency
 
 ## Release evidence

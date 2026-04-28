@@ -7,7 +7,7 @@ Standalone example applications that validate reusable package consumption outsi
 - `examples/editor-basic/` — demonstrates the public editor + renderer package surfaces
 - `examples/renderer-basic/` — demonstrates the public renderer package surface
 
-## Phase 11 expectation
+## Boundary Expectation
 
 Examples must validate **public package APIs**, not private workspace wiring.
-The generated Phase 11 evidence matrix checks the examples for that boundary rule explicitly.
+The generated package evidence matrix checks the examples for that boundary rule explicitly.

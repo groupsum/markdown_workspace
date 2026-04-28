@@ -1,4 +1,4 @@
-# LATTICE ARCHITECT v2
+# MdWork Client
 ## Deterministic Markdown Rack System
 
 MdWork is an offline-first, high-density Markdown workspace built on the **"Metallic Chassis Rack System"** philosophy. The interface is treated as a physical industrial console where functional surfaces (Plates) are slotted into a rigid structural grid (Chassis).
