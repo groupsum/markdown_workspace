@@ -12,6 +12,11 @@ on:
       - tsconfig.base.json
       - docker-compose.yml
   workflow_dispatch:
+    inputs:
+      reason:
+        description: Manual deployment reason
+        required: false
+        type: string
 
 concurrency:
   group: dist-docker-restart-lander
