@@ -1,6 +1,6 @@
 # Renderer packages
 
-This package family contains the portable Markdown rendering stack for Markdown Workspace.
+This package family contains the portable Markdown rendering stack for MdWork.
 
 ## Packages
 

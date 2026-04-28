@@ -1,6 +1,6 @@
 # mdwrk/theme-contract
 
-Portable token, class-name, and bridge-variable contract for Markdown Workspace themes, renderers, editors, and extensions.
+Portable token, class-name, and bridge-variable contract for MdWork themes, renderers, editors, and extensions.
 
 ## Package purpose
 

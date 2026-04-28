@@ -1,6 +1,6 @@
 # packages/shared
 
-App-agnostic reusable primitives shared across Markdown Workspace apps and packages.
+App-agnostic reusable primitives shared across MdWork apps and packages.
 
 ## Implemented packages
 

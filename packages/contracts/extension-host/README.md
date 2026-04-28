@@ -1,6 +1,6 @@
 # mdwrk/extension-host
 
-Stable host API, lifecycle, context, and registration contracts for Markdown Workspace extensions.
+Stable host API, lifecycle, context, and registration contracts for MdWork extensions.
 
 ## Package purpose
 

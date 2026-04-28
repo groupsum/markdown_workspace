@@ -1,6 +1,6 @@
 # mdwrk/i18n
 
-Shared message descriptor, locale catalog, locale loader, and locale registry helpers for Markdown Workspace packages.
+Shared message descriptor, locale catalog, locale loader, and locale registry helpers for MdWork packages.
 
 Phase 10 also adds the shared core shell locale helpers used by the client app to restore the shipped core locales `en`, `es`, `fr`, `pt`, and `ur`.
 

@@ -1,6 +1,6 @@
 # mdwrk/extension-manifest
 
-Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for Markdown Workspace extensions.
+Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for MdWork extensions.
 
 ## Package purpose
 

@@ -2,7 +2,7 @@
 
 > Governance pointers: `../README.md`, `../specs/README.md`, `../specs/repository-governance-spec.md`, `../agents.md`, `../CONTRIBUTING.md`, `../CODE_OF_CONDUCT.md`, and `../LICENSE`.
 
-This directory contains the architecture, current-state, conformance, and operational documentation for `markdown_workspace`.
+This directory contains the architecture, current-state, conformance, and operational documentation for MdWork.
 
 ## Sections
 

@@ -1,6 +1,6 @@
 # Extension packages
 
-This package family contains the runtime, first-party extension packages, and a sample third-party external extension package for Markdown Workspace.
+This package family contains the runtime, first-party extension packages, and a sample third-party external extension package for MdWork.
 
 ## Current packages
 

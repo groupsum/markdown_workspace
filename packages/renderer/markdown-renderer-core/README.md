@@ -1,6 +1,6 @@
 # @mdwrk/markdown-renderer-core
 
-Portable Markdown parser/renderer core for Markdown Workspace.
+Portable Markdown parser/renderer core for MdWork.
 
 ## Public responsibilities
 
