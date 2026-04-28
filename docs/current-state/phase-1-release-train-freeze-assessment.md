@@ -60,7 +60,7 @@ Phase 1 now gives the repository a stable release and compatibility policy so la
 
 ## Start here
 
-- `PHASE_1_CHECKPOINT_SUMMARY.md`
+- `docs/current-state/checkpoints/PHASE_1_CHECKPOINT_SUMMARY.md`
 - `docs/operations/release-groups.md`
 - `docs/operations/version-train.md`
 - `docs/operations/compatibility-baselines.md`

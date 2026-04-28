@@ -477,7 +477,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     phase: 20,
     artifacts: [
-      'PHASE_20_CHECKPOINT_SUMMARY.md',
+      'docs/current-state/checkpoints/PHASE_20_CHECKPOINT_SUMMARY.md',
       'docs/adr/ADR-0027-gate-b-certification-closure-rerun-phase20-checkpoint.md',
       'docs/conformance/gate-b-certification-closure-phase20.md',
       'docs/current-state/phase-20-gate-b-assessment.md',
