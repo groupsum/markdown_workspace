@@ -21,8 +21,6 @@ services:
       args:
         <<: *common-env
     restart: unless-stopped
-    expose:
-      - "80"
     environment:
       <<: *common-env
     networks:
@@ -35,8 +33,6 @@ services:
       args:
         <<: *common-env
     restart: unless-stopped
-    expose:
-      - "80"
     environment:
       <<: *common-env
     networks:
