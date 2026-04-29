@@ -8,15 +8,37 @@ toc: true
 ---
 # Configuration
 
-MdWork ships with sensible defaults. These settings help you tailor the editor to your workflow.
+MdWork defaults to a local-first setup. Configure only the integrations and public links you need for your deployment.
 
-## Theme Selection
-Open **Settings → Theme** to switch between the built-in theme families. Each theme respects the shared viewport contract while applying its own material treatment.
+## Lander Environment Variables
+The lander reads public navigation and metadata values at build time:
 
-## Workspace Defaults
-- **Autosave**: Enabled by default for local-first persistence.
-- **Default View**: Choose Editor, Preview, or Split to match your writing style.
-- **Git Sync**: Provide a GitHub token only when you want to push or pull.
+| Variable | Purpose |
+| :--- | :--- |
+| `VITE_SITE_URL` | Canonical production origin used for sitemap and robots output. |
+| `VITE_DEMO_URL` | URL for the live demo call to action. |
+| `VITE_GITHUB_REPO_URL` | Repository link used by the header GitHub action. |
+| `VITE_NPM_REPO_URL` | npm organization or package URL. |
+| `VITE_NPM_ESM_CDN_URL` | ESM CDN URL used by package examples. |
+| `VITE_X_URL` | X profile URL shown in the footer. |
+| `VITE_COMMUNITY_URL` | Community destination shown in the footer. |
 
-## Environment Links
-If you host your own landing experience, the lander reads its navigation URLs from environment variables such as `VITE_GITHUB_REPO_URL`, `VITE_NPM_REPO_URL`, and `VITE_NPM_ESM_CDN_URL`.
+Defaults are kept in the lander source so local builds remain usable without a full environment file.
+
+## Reverse Proxy
+Run the lander container on the internal Docker network and route traffic through your reverse proxy. Docker Compose should not publish or expose service ports directly.
+
+For Nginx Proxy Manager, point the upstream host to the lander service name on port `80` from the shared Docker network.
+
+## Metadata And Discovery
+The lander includes production metadata for:
+
+- canonical links
+- Open Graph previews
+- Twitter card previews
+- favicon assets
+- `robots.txt`
+- `llms.txt`
+- generated `sitemap.xml`
+
+Regenerate the sitemap during every production build so public routes stay aligned with the current MDX docs.

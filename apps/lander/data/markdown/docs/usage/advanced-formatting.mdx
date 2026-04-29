@@ -1,37 +1,45 @@
 ---
-title: Advanced Formatting
+title: Markdown Support
 slug: usage/advanced-formatting
-section: Usage Guide
+section: Product
 sectionOrder: 2
 order: 2
 toc: true
 ---
-# Advanced Formatting
+# Markdown Support
 
-MdWork supports GitHub Flavored Markdown and a few extra typographic touches.
+MdWork focuses on practical Markdown authoring for technical notes, docs, and project writing.
 
-## Tables
+## Core Syntax
+Use standard Markdown for headings, paragraphs, links, emphasis, blockquotes, code, and lists.
+
 ```markdown
-| Feature | Status |
+# Release Notes
+
+MdWork keeps drafts local by default.
+```
+
+## GitHub-Flavored Markdown
+MdWork supports common GitHub-Flavored Markdown patterns, including tables and task lists.
+
+```markdown
+| Area | Status |
 | :--- | :--- |
-| Offline | ✅ |
-| Sync | Optional |
-```
+| Local storage | Ready |
+| GitHub sync | Optional |
 
-## Task Lists
-```markdown
-- [x] Local-first storage
-- [ ] Optional cloud sync
-```
-
-## Subscript & Superscript
-```markdown
-~subscript~ and ^superscript^
+- [x] Draft locally
+- [ ] Sync when ready
 ```
 
 ## Code Blocks
+Fence code blocks with a language name to preserve readable source snippets.
+
 ````markdown
-```typescript
-const markspace = "local-first";
+```ts
+const storageMode = "local-first";
 ```
 ````
+
+## Production Guidance
+Keep documents portable. Prefer Markdown syntax that renders cleanly across MdWork, GitHub, npm, and static documentation sites.

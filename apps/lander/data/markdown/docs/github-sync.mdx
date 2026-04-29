@@ -1,21 +1,32 @@
 ---
-title: GitHub Syncing
+title: GitHub Sync
 slug: github-sync
 section: Integrations
 sectionOrder: 3
 order: 1
 toc: true
 ---
-# GitHub Syncing
+# GitHub Sync
 
-GitHub sync is optional. MdWork stays fully local until you connect a repository.
+GitHub sync is optional. MdWork remains local-first until you connect repository access.
 
-## Personal Access Tokens
-Create a fine-grained personal access token in GitHub and store it in the MdWork settings modal.
+## Repository Access
+Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want MdWork to read from or write to a repository.
 
-## Push & Pull
-- **Pull**: Mirror a repository into your local workspace.
-- **Push**: Commit updates when you are ready.
+## Pull And Push
+Typical sync flow:
 
-## Offline Mode
-Disconnect from the network anytime. MdWork keeps all changes locally until you choose to sync.
+1. Pull repository content into the local workspace.
+2. Edit documents in MdWork.
+3. Review changes before pushing.
+4. Push intentionally when the local draft is ready to leave the browser.
+
+## Privacy Boundary
+MdWork does not need a backend server for normal editing. Content stays on the device unless you choose to sync, export, or otherwise send it somewhere else.
+
+## Operational Notes
+For production deployments, keep GitHub links current through `VITE_GITHUB_REPO_URL`. The public lander currently points to:
+
+```text
+https://github.com/groupsum/mdwrk
+```

@@ -6,49 +6,40 @@ sectionOrder: 1
 order: 1
 toc: true
 ---
-# Installation Guide
+# Installation
 
-MdWork is a Progressive Web App (PWA) and an npm-distributed client. Choose the workflow that matches how you ship your UI.
+MdWork is delivered as a browser-first Markdown workspace and as published packages under the `@mdwrk` npm organization. Use the hosted app for day-to-day writing, or install the packages when you want to embed MdWork capabilities in another client.
 
-## PWA Installation
-### Desktop (Chrome / Edge)
-1. Look for the install icon (computer with down arrow) in the right side of the URL bar.
-2. Click **Install MdWork**.
-3. Confirm the dialog. The app will launch in its own window.
+## Use The Web App
+Open the MdWork lander and launch the app from the primary action. The workspace runs in the browser and keeps documents local by default.
 
-### Safari (macOS)
-1. Click the Share button.
-2. Select **Add to Dock**.
+## Install As A PWA
+Modern browsers can install MdWork as a Progressive Web App.
 
-### Mobile (iOS Safari)
-1. Tap the Share button at the bottom of the screen.
-2. Scroll down and tap **Add to Home Screen**.
-3. Tap **Add** in the top right corner.
+1. Open MdWork in Chrome, Edge, Safari, or another PWA-capable browser.
+2. Use the browser install action from the address bar or share menu.
+3. Launch MdWork from the installed app icon when you want a focused workspace window.
 
-### Mobile (Android Chrome)
-1. Tap the three-dot menu in the top right.
-2. Select **Install app** or **Add to Home Screen**.
-3. Follow the on-screen prompts.
+Installed PWAs still use browser storage, so keep your normal backup and export habits in place.
 
-## npm Package
-Install the published client package:
+## Use The Packages
+MdWork packages are published through the MdWork npm organization:
 
 ```bash
 npm install @mdwrk/mdwrkspace
 ```
 
-## ESM CDN (No iFrames)
-Load MdWork from an ESM CDN and mount it directly:
+For package discovery, use the organization page:
 
-```html
-<div id="mdwrkspace-root"></div>
-<script type="module">
-  import { mountMdWork } from "https://esm.sh/@mdwrk/mdwrkspace";
-
-  const root = document.getElementById("mdwrkspace-root");
-  mountMdWork(root);
-</script>
+```text
+https://www.npmjs.com/org/mdwrk
 ```
 
-## Updates
-As a PWA, MdWork updates automatically in the background. You'll see a notification when a new version is ready.
+## Production Hosting
+When hosting the lander yourself, build the static app and serve the generated output through a web server or container. Set `VITE_SITE_URL` during the build so `robots.txt` and `sitemap.xml` point to the correct production origin.
+
+```bash
+VITE_SITE_URL=https://mdwrk.com npm run build -w apps/lander
+```
+
+The production container is designed to sit behind a reverse proxy such as Nginx Proxy Manager.

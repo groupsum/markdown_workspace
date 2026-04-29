@@ -11,11 +11,16 @@ export const Hero: React.FC = () => {
       <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:opacity-20 animate-blob animation-delay-4000"></div>
 
       <div className="relative z-10 px-4 mx-auto max-w-screen-xl text-center">
-        <div className="inline-flex items-center justify-between px-1 py-1 pr-4 mb-7 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700">
+        <a
+          href={links.npmRepo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-between px-1 py-1 pr-4 mb-7 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
+        >
           <span className="text-xs bg-indigo-600 rounded-full text-white px-3 py-1.5 mr-3">New</span> 
           <span className="text-sm font-medium">v2.0 is now available offline</span>
           <WifiOff className="w-4 h-4 ml-2 text-emerald-500 dark:text-emerald-400" />
-        </div>
+        </a>
         
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-slate-900 dark:text-white">
           The <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">Local-First</span> Markdown Workspace

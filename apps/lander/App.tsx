@@ -53,12 +53,12 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 selection:bg-indigo-500/30 selection:text-indigo-800 dark:selection:text-indigo-200 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 selection:bg-indigo-500/30 selection:text-indigo-800 dark:selection:text-indigo-200 transition-colors duration-300">
       <Navbar 
         isDark={isDark} 
         toggleTheme={() => setIsDark(!isDark)} 
       />
-      <main>
+      <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomeView isDark={isDark} />} />
           <Route path="/docs/*" element={<DocsView />} />

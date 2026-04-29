@@ -1,27 +1,36 @@
 ---
 title: Editor Basics
 slug: usage/editor-basics
-section: Usage Guide
+section: Product
 sectionOrder: 2
 order: 1
 toc: true
 ---
 # Editor Basics
 
-MdWork blends a high-density editor with a live preview surface. Use the shortcuts below to move fast.
+MdWork is built around fast Markdown authoring with local persistence and a responsive preview surface.
 
-## Switching Views
-Use the view toggle to move between:
-- **Editor**: Pure Markdown input.
-- **Preview**: Rendered output.
-- **Split**: Side-by-side editing.
+## Workspace Model
+Documents live in browser-managed local storage unless you explicitly connect an integration. This keeps drafting private by default and lets the editor keep working when network access is unavailable.
 
-## Creating Files
-Use the action rail for deterministic file operations:
-- **New File**
-- **New Folder**
-- **Rename**
-- **Delete**
+## Views
+MdWork supports the common writing surfaces expected from a Markdown workspace:
 
-## Project Selection
-Switch projects from the header to keep focused workspaces separate.
+- editor-only writing
+- rendered preview
+- split editing and preview
+
+Use the view that matches the task: focused drafting, review, or side-by-side editing.
+
+## File Operations
+Use workspace actions for document organization:
+
+- create files and folders
+- rename entries
+- delete obsolete content
+- switch between project workspaces
+
+These operations are local-first. Sync or export intentionally when content needs to leave the browser.
+
+## Themes And Responsive Layout
+Themes follow the shared viewport contract across portrait, square, landscape, wide, and ultra-wide layouts. Each theme can style the bands differently while keeping the breakpoint behavior predictable.
