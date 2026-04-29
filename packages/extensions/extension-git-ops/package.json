@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-git-ops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -36,6 +36,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
     },
     "./manifest": {
       "types": "./dist/manifest.d.ts",

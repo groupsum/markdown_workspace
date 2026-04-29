@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/markdown-editor-react",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -43,8 +43,9 @@
     "vitest": "^2.1.8"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build:deps": "npm run build -w @mdwrk/markdown-editor-core && npm run build -w @mdwrk/ui-tokens",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
     "prepack": "npm run build"

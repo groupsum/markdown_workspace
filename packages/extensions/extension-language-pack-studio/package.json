@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-language-pack-studio",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -38,7 +38,8 @@
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run build && vitest run tests/language-pack-studio-view.test.tsx --pool=forks --minWorkers=1 --maxWorkers=1"
+    "test": "npm run build && vitest run tests/language-pack-studio-view.test.tsx --pool=forks --minWorkers=1 --maxWorkers=1",
+    "prepack": "npm run build"
   },
   "exports": {
     ".": {

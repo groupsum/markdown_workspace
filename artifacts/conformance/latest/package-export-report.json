@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T21:56:39.707Z",
+  "generatedAt": "2026-04-29T00:46:43.222Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -10,6 +10,16 @@
       "ok": true,
       "errors": [],
       "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/desktop",
+      "path": "apps/desktop",
+      "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "README.md is missing."
+      ]
     },
     {
       "packageName": "@mdwrk/lander",
@@ -92,14 +102,20 @@
       "warnings": []
     },
     {
+      "packageName": "@mdwrk/extension-git-ops",
+      "path": "packages/extensions/extension-git-ops",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
       "packageName": "@mdwrk/extension-language-pack-studio",
       "path": "packages/extensions/extension-language-pack-studio",
       "publishable": true,
       "ok": true,
       "errors": [],
-      "warnings": [
-        "Publishable package should declare a prepack script."
-      ]
+      "warnings": []
     },
     {
       "packageName": "@mdwrk/extension-manager",
@@ -120,6 +136,14 @@
     {
       "packageName": "@mdwrk/extension-theme-studio",
       "path": "packages/extensions/extension-theme-studio",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/extension-workspace-files",
+      "path": "packages/extensions/extension-workspace-files",
       "publishable": true,
       "ok": true,
       "errors": [],
