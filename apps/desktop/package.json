@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/desktop",
   "private": true,
-  "version": "0.2.35",
+  "version": "0.2.36",
   "description": "Native shell wrapper for the MdWork client on Electron desktop and Capacitor Android.",
   "type": "module",
   "main": "./dist/main.js",
@@ -106,6 +106,6 @@
   "homepage": "https://mdwrk.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/swarmauri/markdown_workspace.git"
+    "url": "https://github.com/groupsum/markdown_workspace.git"
   }
 }

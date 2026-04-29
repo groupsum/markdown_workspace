@@ -1,0 +1,21 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2065"
+number: 2065
+slug: "public-lander-production-contract"
+title: "Public Lander Production Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Defines production lander behavior for SEO and discovery assets, current metadata, favicon and social preview assets, dynamic sitemap generation, env-driven canonical app package repository and social links, reverse-proxy deployment constraints, document scrolling, production documentation and blog ordering, footer typography, and theme contrast."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Defines production lander behavior for SEO and discovery assets, current metadata, favicon and social preview assets, dynamic sitemap generation, env-driven canonical app package repository and social links, reverse-proxy deployment constraints, document scrolling, production documentation and blog ordering, footer typography, and theme contrast.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1031"
+  - "adr:1047"

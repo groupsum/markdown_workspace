@@ -5,6 +5,9 @@ import { links } from '../utils/links';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const sectionHeadingClass = "mb-5 text-xs font-bold text-slate-900 dark:text-white uppercase tracking-[0.16em]";
+  const linkListClass = "text-sm font-medium leading-6 text-slate-600 dark:text-slate-400 space-y-2.5";
+  const footerLinkClass = "inline-flex text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 focus-visible:text-indigo-600 dark:focus-visible:text-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60 rounded-sm transition-colors";
 
   return (
     <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
@@ -21,27 +24,27 @@ export const Footer: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Resources</h2>
-              <ul className="text-slate-600 dark:text-slate-400 font-medium space-y-3 text-sm">
-                <li><Link to="/docs" className="hover:text-indigo-600 transition-colors">Documentation</Link></li>
-                <li><Link to="/blog" className="hover:text-indigo-600 transition-colors">Blog</Link></li>
-                <li><a href={links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Live Demo</a></li>
-                <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">npm</a></li>
+              <h2 className={sectionHeadingClass}>Resources</h2>
+              <ul className={linkListClass}>
+                <li><Link to="/docs" className={footerLinkClass}>Documentation</Link></li>
+                <li><Link to="/blog" className={footerLinkClass}>Blog</Link></li>
+                <li><a href={links.demo} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>Live Demo</a></li>
+                <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>npm</a></li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Follow</h2>
-              <ul className="text-slate-600 dark:text-slate-400 font-medium space-y-3 text-sm">
-                <li><a href={links.github} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">GitHub</a></li>
-                <li><a href={links.x} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">X.com</a></li>
-                <li><a href={links.community} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Community</a></li>
+              <h2 className={sectionHeadingClass}>Follow</h2>
+              <ul className={linkListClass}>
+                <li><a href={links.github} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>GitHub</a></li>
+                <li><a href={links.x} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>X.com</a></li>
+                <li><a href={links.community} target="_blank" rel="noopener noreferrer" className={footerLinkClass}>Community</a></li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Legal</h2>
-              <ul className="text-slate-600 dark:text-slate-400 font-medium space-y-3 text-sm">
-                <li><Link to="/legal/privacy" className="hover:text-indigo-600 transition-colors">Privacy</Link></li>
-                <li><Link to="/legal/terms" className="hover:text-indigo-600 transition-colors">Terms</Link></li>
+              <h2 className={sectionHeadingClass}>Legal</h2>
+              <ul className={linkListClass}>
+                <li><Link to="/legal/privacy" className={footerLinkClass}>Privacy</Link></li>
+                <li><Link to="/legal/terms" className={footerLinkClass}>Terms</Link></li>
               </ul>
             </div>
           </div>

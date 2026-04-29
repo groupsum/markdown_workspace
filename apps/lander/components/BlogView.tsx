@@ -22,6 +22,12 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
   return content.slice(headingMatch[0].length).trim();
 };
 
+const toPostTime = (date?: string) => {
+  if (!date) return 0;
+  const time = Date.parse(date);
+  return Number.isFinite(time) ? time : 0;
+};
+
 export const BlogView: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
 
@@ -30,7 +36,12 @@ export const BlogView: React.FC = () => {
     .map(path => ({
       id: path,
       ...parseMarkdown(contentFiles[path as keyof typeof contentFiles])
-    }));
+    }))
+    .sort((a, b) => {
+      const dateSort = toPostTime(b.metadata.date) - toPostTime(a.metadata.date);
+      if (dateSort !== 0) return dateSort;
+      return (a.metadata.title || a.id).localeCompare(b.metadata.title || b.id);
+    });
 
   if (selectedPost) {
     const post = posts.find(p => p.id === selectedPost);
@@ -58,22 +69,30 @@ export const BlogView: React.FC = () => {
   return (
     <div className="pt-32 pb-20 px-4 max-w-screen-xl mx-auto">
       <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-12 text-center">Engineering <span className="text-indigo-500">Blog</span></h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map(post => (
-          <article 
-            key={post.id}
-            onClick={() => setSelectedPost(post.id)}
-            className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group"
-          >
-            <div className="text-xs text-indigo-500 font-bold mb-2 uppercase tracking-widest">{post.metadata.date}</div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-500 transition-colors">{post.metadata.title}</h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">{post.metadata.excerpt}</p>
-            <div className="flex items-center gap-2 text-xs text-slate-400">
-               <User className="w-3 h-3" /> {post.metadata.author}
-            </div>
-          </article>
-        ))}
-      </div>
+      {posts.length > 0 ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <article
+              key={post.id}
+              onClick={() => setSelectedPost(post.id)}
+              className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group"
+            >
+              <div className="text-xs text-indigo-500 font-bold mb-2 uppercase tracking-widest">{post.metadata.date}</div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-500 transition-colors">{post.metadata.title}</h2>
+              <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">{post.metadata.excerpt}</p>
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                 <User className="w-3 h-3" /> {post.metadata.author}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="mx-auto max-w-2xl rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center">
+          <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+            No blog posts are published yet.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

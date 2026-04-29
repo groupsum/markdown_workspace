@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.53",
+  "version": "0.2.60",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -117,6 +117,13 @@
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/markdown_workspace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/markdown_workspace/issues"
+  },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "playwright": "^1.58.2",

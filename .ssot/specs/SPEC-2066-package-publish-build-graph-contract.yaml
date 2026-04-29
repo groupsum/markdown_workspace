@@ -1,0 +1,20 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2066"
+number: 2066
+slug: "package-publish-build-graph-contract"
+title: "Package Publish Build Graph Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Defines publish and pack behavior for workspace packages: every publishable workspace must build its required local dependencies before TypeScript compilation or packaging, declared package subpaths must resolve to generated artifacts, and publish automation must fail before publication when the package graph is incomplete."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Defines publish and pack behavior for workspace packages: every publishable workspace must build its required local dependencies before TypeScript compilation or packaging, declared package subpaths must resolve to generated artifacts, and publish automation must fail before publication when the package graph is incomplete.
+spec_kind: "operational"
+adr_ids:
+  - "adr:1041"

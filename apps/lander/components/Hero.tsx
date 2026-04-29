@@ -12,13 +12,13 @@ export const Hero: React.FC = () => {
 
       <div className="relative z-10 px-4 mx-auto max-w-screen-xl text-center">
         <a
-          href={links.npmRepo}
+          href={links.app}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-between px-1 py-1 pr-4 mb-7 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
         >
           <span className="text-xs bg-indigo-600 rounded-full text-white px-3 py-1.5 mr-3">New</span> 
-          <span className="text-sm font-medium">v2.0 is now available offline</span>
+          <span className="text-sm font-medium">v{links.npmClientVersion} is now available offline</span>
           <WifiOff className="w-4 h-4 ml-2 text-emerald-500 dark:text-emerald-400" />
         </a>
         
@@ -41,12 +41,12 @@ export const Hero: React.FC = () => {
             <Download className="w-4 h-4 ml-2 -mr-1" />
           </a>
           <a
-            href={links.demo}
+            href={links.app}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-slate-700 dark:text-slate-300 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 transition-all"
           >
-            Try Live Demo
+            Install
           </a>
         </div>
         <div className="mt-6 text-xs text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2">
