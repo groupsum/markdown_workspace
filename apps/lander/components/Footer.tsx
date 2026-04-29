@@ -26,8 +26,7 @@ export const Footer: React.FC = () => {
                 <li><Link to="/docs" className="hover:text-indigo-600 transition-colors">Documentation</Link></li>
                 <li><Link to="/blog" className="hover:text-indigo-600 transition-colors">Blog</Link></li>
                 <li><a href={links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Live Demo</a></li>
-                <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">NPM Repo</a></li>
-                <li><a href={links.githubRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">GitHub Repo</a></li>
+                <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">npm</a></li>
               </ul>
             </div>
             <div>

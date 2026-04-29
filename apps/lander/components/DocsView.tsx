@@ -107,7 +107,7 @@ export const DocsView: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-[calc(100vh-64px)] pt-16">
       {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 md:h-[calc(100vh-64px)] md:sticky md:top-16 overflow-y-auto">
+      <aside className="w-full md:w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 md:h-[calc(100vh-64px)] md:sticky md:top-16 md:overflow-y-auto">
         <div className="p-6">
           <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
             <Book className="w-4 h-4" /> Documentation
@@ -119,7 +119,7 @@ export const DocsView: React.FC = () => {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 p-6 md:p-12 overflow-y-auto">
+      <main className="flex-1 p-6 md:p-12">
         <div className="max-w-3xl mx-auto flex flex-col lg:flex-row gap-12">
           <div className="flex-1 min-w-0">
             <MarkdownViewer content={content} />
