@@ -5388,6 +5388,80 @@
         "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:repository-top-level-hygiene",
+      "title": "Repository top-level hygiene",
+      "description": "Keep generated distribution artifacts out of the repository top level, ignore local virtual environments and build output, and keep top-level repository metadata aligned with the active project.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2002",
+        "spc:0607",
+        "spc:0610"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:readme-project-identity-alignment",
+      "title": "README project identity alignment",
+      "description": "Keep repository README files aligned to the MdWrk project name, current GitHub repository URL, package registry URL, and removal of legacy Lattice Architect references.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2002"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:package-publish-build-graph",
+      "title": "Package publish build graph",
+      "description": "Ensure publishable workspaces build required local dependencies and exported subpaths before TypeScript compilation, packing, or publish automation.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2066",
+        "spc:2002",
+        "spc:0608"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
     }
   ],
   "tests": [
@@ -10638,6 +10712,26 @@
       "kind": "local-policy",
       "adr_ids": [
         "adr:1050"
+      ]
+    },
+    {
+      "id": "spc:2066",
+      "number": 2066,
+      "slug": "package-publish-build-graph-contract",
+      "title": "Package Publish Build Graph Contract",
+      "path": ".ssot/specs/SPEC-2066-package-publish-build-graph-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "061e1be8aded56dd4a192301dfdcdb38f0f0023d4ef5ff6da90569896e6131a6",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "operational",
+      "adr_ids": [
+        "adr:1041"
       ]
     }
   ],

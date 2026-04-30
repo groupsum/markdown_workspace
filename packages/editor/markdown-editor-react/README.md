@@ -1,6 +1,6 @@
 # @mdwrk/markdown-editor-react
 
-React bindings for the portable Markdown Workspace source editor.
+React bindings for the portable MdWork source editor.
 
 ## Public responsibilities
 
@@ -27,7 +27,7 @@ React bindings for the portable Markdown Workspace source editor.
 
 ## Semver / compatibility
 
-- current version: `1.1.0`
+- current version: `1.1.3`
 - depends on `@mdwrk/markdown-editor-core` public exports rather than private workspace editor wiring
 
 ## Release evidence

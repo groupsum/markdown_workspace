@@ -157,22 +157,4 @@ jobs:
           profile: pixel_6
           disable-animations: true
           script: |
-            set -euo pipefail
-            adb wait-for-device
-            adb install -r "${verify_apk_path:-${{ steps.apk_meta.outputs.apk_path }}}"
-
-            if [[ -n "${{ steps.apk_meta.outputs.launchable_activity }}" ]]; then
-              adb shell am start -W -n "${{ steps.apk_meta.outputs.app_id }}/${{ steps.apk_meta.outputs.launchable_activity }}"
-            else
-              adb shell monkey -p "${{ steps.apk_meta.outputs.app_id }}" -c android.intent.category.LAUNCHER 1
-            fi
-
-            sleep 8
-            PID=$(adb shell pidof "${{ steps.apk_meta.outputs.app_id }}" | tr -d '\r' || true)
-            if [[ -z "${PID}" ]]; then
-              echo "App process did not remain running after launch" >&2
-              adb logcat -d | tail -n 200
-              exit 1
-            fi
-
-            adb shell am force-stop "${{ steps.apk_meta.outputs.app_id }}"
+            sh apps/desktop/scripts/android-emulator-smoke.sh "${verify_apk_path:-${{ steps.apk_meta.outputs.apk_path }}}" "${{ steps.apk_meta.outputs.app_id }}" "${{ steps.apk_meta.outputs.launchable_activity }}"

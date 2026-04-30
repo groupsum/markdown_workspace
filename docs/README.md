@@ -2,12 +2,17 @@
 
 > Governance pointers: `../README.md`, `../specs/README.md`, `../specs/repository-governance-spec.md`, `../agents.md`, `../CONTRIBUTING.md`, `../CODE_OF_CONDUCT.md`, and `../LICENSE`.
 
-This directory contains the architecture, current-state, conformance, and operational documentation for `markdown_workspace`.
+This directory contains the architecture, current-state, conformance, and operational documentation for MdWork.
 
 ## Sections
 
 ### Current state
-- `current-state/phase-17-gate-b-assessment.md` — latest checkpoint assessment for the Gate B certification-closure rerun checkpoint.
+- `current-state/phase-22-browser-matrix-assessment.md` — latest browser-install and real-browser-matrix checkpoint assessment.
+- `current-state/phase-21-markdown-and-playwright-assessment.md` — prior markdown lane and Playwright browser-matrix implementation checkpoint assessment.
+- `current-state/phase-20-gate-b-assessment.md` — prior Gate B checkpoint assessment.
+- `current-state/phase-19-gate-b-assessment.md` — prior Gate B checkpoint assessment.
+- `current-state/phase-18-gate-b-assessment.md` — prior Gate B continuation assessment.
+- `current-state/phase-17-gate-b-assessment.md` — prior Gate B certification-closure rerun checkpoint assessment.
 - `current-state/phase-16-certification-gate-assessment.md` — prior checkpoint assessment for the certification-gate / promote-second checkpoint.
 - `current-state/phase-15-stabilization-assessment.md` — prior checkpoint assessment for the post-release stabilization/support-window checkpoint.
 - `current-state/phase-14-promotion-assessment.md` — prior checkpoint assessment for the promotion/release evidence-bundle checkpoint.
@@ -191,12 +196,17 @@ The repository now contains all of the following:
 - the Phase 13 executable RC freeze/versioning/promotion-prep checkpoint
 - the Phase 14 promotion/release evidence-bundle checkpoint
 - the Phase 15 post-release stabilization/support-window checkpoint
+- the Phase 16 certification-before-promotion checkpoint
+- the Phase 17 Gate B certification-closure rerun checkpoint
+- the Phase 18 through Phase 20 Gate B continuation checkpoints
+- the Phase 21 markdown lane and Playwright browser-matrix implementation checkpoint
+- the Phase 22 browser-install and real-browser-matrix execution checkpoint
 
 The repository is better specified than before, but it is not yet represented as final certification against the frozen Markdown target or the full repository boundary.
 
 
-## Phase 18
+## Phase 22
 
-- `docs/current-state/phase-18-gate-b-assessment.md` — current Gate B continuation assessment.
-- `docs/conformance/gate-b-certification-closure-phase18.md` — Phase 18 Gate B continuation record.
-- `artifacts/conformance/latest/phase-18-certification-gate-checkpoint.json` — machine-readable Phase 18 certification-gate summary.
+- `docs/current-state/phase-22-browser-matrix-assessment.md` — current browser-matrix assessment.
+- `docs/conformance/current-certification-status.md` — current certification status.
+- `artifacts/conformance/latest/phase-22-browser-matrix-report.json` — machine-readable browser-matrix report.

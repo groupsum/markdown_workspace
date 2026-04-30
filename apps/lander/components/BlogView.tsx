@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
 import { MarkdownViewer } from './MarkdownViewer';
@@ -22,6 +22,12 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
   return content.slice(headingMatch[0].length).trim();
 };
 
+const toPostTime = (date?: string) => {
+  if (!date) return 0;
+  const time = Date.parse(date);
+  return Number.isFinite(time) ? time : 0;
+};
+
 export const BlogView: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
 
@@ -30,7 +36,12 @@ export const BlogView: React.FC = () => {
     .map(path => ({
       id: path,
       ...parseMarkdown(contentFiles[path as keyof typeof contentFiles])
-    }));
+    }))
+    .sort((a, b) => {
+      const dateSort = toPostTime(b.metadata.date) - toPostTime(a.metadata.date);
+      if (dateSort !== 0) return dateSort;
+      return (a.metadata.title || a.id).localeCompare(b.metadata.title || b.id);
+    });
 
   if (selectedPost) {
     const post = posts.find(p => p.id === selectedPost);

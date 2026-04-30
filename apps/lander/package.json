@@ -1,13 +1,14 @@
 {
   "name": "@mdwrk/lander",
   "private": true,
-  "version": "0.0.14",
+  "version": "0.0.27",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:deps": "npm --prefix ../.. run build:renderer",
+    "build": "npm run build:deps && node ./scripts/generate-sitemap.mjs && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck"
   },
   "dependencies": {

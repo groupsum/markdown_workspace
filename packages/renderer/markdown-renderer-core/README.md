@@ -1,6 +1,6 @@
 # @mdwrk/markdown-renderer-core
 
-Portable Markdown parser/renderer core for Markdown Workspace.
+Portable Markdown parser/renderer core for MdWork.
 
 ## Public responsibilities
 
@@ -33,7 +33,7 @@ Portable Markdown parser/renderer core for Markdown Workspace.
 
 ## Semver / compatibility
 
-- current version: `1.1.0`
+- current version: `1.1.3`
 - package boundary: reusable parser/renderer core; must not depend on `apps/client/*`
 - compatibility notes are recorded through the repository current-state and checkpoint artifacts
 

@@ -55,9 +55,9 @@
     "README.md"
   ],
   "phaseArtifacts": [
-    "PHASE_0_CHECKPOINT_SUMMARY.md",
-    "PHASE_10_CHECKPOINT_SUMMARY.md",
-    "PHASE_11_CHECKPOINT_SUMMARY.md",
+    "docs/current-state/checkpoints/PHASE_0_CHECKPOINT_SUMMARY.md",
+    "docs/current-state/checkpoints/PHASE_10_CHECKPOINT_SUMMARY.md",
+    "docs/current-state/checkpoints/PHASE_11_CHECKPOINT_SUMMARY.md",
     "docs/operations/release-evidence-phase11.md"
   ]
 }

@@ -1,16 +1,16 @@
 <div align="center">
 
-# markdown_workspace
+# MdWork
 
-[![CI](https://img.shields.io/github/actions/workflow/status/swarmauri/markdown_workspace/ci.yml?branch=master&label=CI)](./.github/workflows/ci.yml)
-[![Conformance](https://img.shields.io/github/actions/workflow/status/swarmauri/markdown_workspace/conformance.yml?branch=master&label=Conformance)](./.github/workflows/conformance.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/ci.yml?branch=master&label=CI)](./.github/workflows/ci.yml)
+[![Conformance](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/conformance.yml?branch=master&label=Conformance)](./.github/workflows/conformance.yml)
 [![Node](https://img.shields.io/badge/node-20.x-339933?logo=node.js&logoColor=white)](./package.json)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 [![Repo Specs](https://img.shields.io/badge/specs-governed-6f42c1)](./specs/README.md)
 
 </div>
 
-`markdown_workspace` is a multi-package workspace for the MdWork client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
+MdWork is a multi-package workspace for the client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
 
 Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
 

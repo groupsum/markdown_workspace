@@ -21,7 +21,7 @@
     "portable",
     "core"
   ],
-  "description": "Portable source-mode markdown editor state, selection transforms, command model, and undo/redo history for Markdown Workspace.",
+  "description": "Portable source-mode markdown editor state, selection transforms, command model, and undo/redo history for MdWork.",
   "dependencies": {},
   "devDependencies": {
     "@mdwrk/markdown-renderer-core": "^1.1.1",

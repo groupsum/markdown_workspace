@@ -8,7 +8,7 @@ const files = fs.readdirSync(dir).filter((file) => file.endsWith('.md') && file 
 for (const file of files) {
   const full = path.join(dir, file);
   const content = fs.readFileSync(full, 'utf8');
-  const hasFrontmatter = content.startsWith('---\n');
+  const hasFrontmatter = /^---\r?\n/.test(content);
   const hasBump = /["'][^"']+["']:\s*(patch|minor|major)/.test(content);
 
   if (!hasFrontmatter || !hasBump) {

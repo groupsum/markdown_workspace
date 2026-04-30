@@ -1,5 +1,5 @@
 {
-  "version": "1.2.2",
+  "version": "1.2.3",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "name": "@mdwrk/ui-tokens",
-  "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for Markdown Workspace packages and applications.",
+  "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for MdWork packages and applications.",
   "sideEffects": [
     "./src/styles/*.css"
   ],
@@ -29,8 +29,9 @@
     "@mdwrk/theme-contract": "^1.1.1"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build:deps": "npm run build -w @mdwrk/theme-contract",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
     "prepack": "npm run build"

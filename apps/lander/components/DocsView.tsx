@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';

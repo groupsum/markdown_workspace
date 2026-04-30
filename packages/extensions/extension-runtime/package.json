@@ -21,7 +21,7 @@
     "portable",
     "platform"
   ],
-  "description": "Runtime registry, loader, compatibility checks, activation lifecycle, and persisted state for Markdown Workspace extensions.",
+  "description": "Runtime registry, loader, compatibility checks, activation lifecycle, and persisted state for MdWork extensions.",
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-manifest": "^1.0.1",

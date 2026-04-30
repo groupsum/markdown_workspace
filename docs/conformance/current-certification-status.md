@@ -58,7 +58,7 @@ But the checkpoint still cannot honestly claim final certification because the d
 
 ## Key documents for this checkpoint
 
-- `PHASE_22_CHECKPOINT_SUMMARY.md`
+- `docs/current-state/checkpoints/PHASE_22_CHECKPOINT_SUMMARY.md`
 - `docs/current-state/phase-22-browser-matrix-assessment.md`
 - `artifacts/conformance/latest/phase-22-browser-install-report.json`
 - `artifacts/conformance/latest/phase-22-browser-matrix-report.json`

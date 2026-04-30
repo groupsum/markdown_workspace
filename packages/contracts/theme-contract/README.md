@@ -1,6 +1,6 @@
 # mdwrk/theme-contract
 
-Portable token, class-name, and bridge-variable contract for Markdown Workspace themes, renderers, editors, and extensions.
+Portable token, class-name, and bridge-variable contract for MdWork themes, renderers, editors, and extensions.
 
 ## Package purpose
 
@@ -64,4 +64,4 @@ npm run build -w @mdwrk/theme-contract
 
 ## Publishability
 
-This package is structured as a standalone publishable npm package with typed exports and generated build output under `dist/`.
+This package is structured as a standalone publishable npm package with typed exports. Build output is generated under `dist/` and is intentionally not committed.

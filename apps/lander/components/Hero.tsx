@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Download, WifiOff } from 'lucide-react';
 import { links } from '../utils/links';
 
@@ -35,12 +35,12 @@ export const Hero: React.FC = () => {
             <Download className="w-4 h-4 ml-2 -mr-1" />
           </a>
           <a
-            href={links.demo}
+            href={links.app}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-[var(--lander-fg)] rounded-lg border border-[var(--lander-border-strong)] hover:bg-[var(--lander-panel-muted)] focus:ring-4 focus:ring-[var(--lander-border)] transition-all"
           >
-            Try Live Demo
+            Install
           </a>
         </div>
         <div className="mt-6 text-xs text-[var(--lander-fg-muted)] flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2">

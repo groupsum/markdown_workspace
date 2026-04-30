@@ -1,6 +1,6 @@
 # mdwrk/testing
 
-Shared browser and timing test helpers for Markdown Workspace packages.
+Shared browser and timing test helpers for MdWork packages.
 
 ## Exports
 

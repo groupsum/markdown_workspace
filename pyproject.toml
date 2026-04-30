@@ -4,6 +4,9 @@ version = "0.0.0"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.urls]
+Repository = "https://github.com/groupsum/markdown_workspace"
+
 [dependency-groups]
 dev = [
     "ssot-registry",

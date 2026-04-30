@@ -50,6 +50,9 @@
   width: max-content;
   min-width: 100%;
 }
+.view-toolbar-group--end {
+  justify-content: flex-end;
+}
 .view-toolbar-btn {
   width: 28px;
   height: 28px;
@@ -89,6 +92,9 @@
   overflow: hidden;
   background: var(--bg-app);
 }
+.editor-pane-body--transparent {
+  background: transparent;
+}
 .editor-pane-column {
   height: 100%;
   background: var(--bg-panel);
@@ -97,6 +103,15 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
+}
+.editor-pane-column--split-grid {
+  display: grid;
+}
+.editor-pane-column--split-start {
+  padding-right: 8px;
+}
+.editor-pane-column--split-end {
+  padding-left: 8px;
 }
 .editor-pane-column--split-left-20 { flex-basis: 20%; }
 .editor-pane-column--split-left-25 { flex-basis: 25%; }

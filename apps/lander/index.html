@@ -3,7 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MdWork | Privacy-First Markdown</title>
+    <title>MdWork | Privacy-First Markdown Workspace</title>
+    <meta name="description" content="MdWork is a privacy-first, offline-capable Markdown workspace for writing, previewing, and managing Markdown on your device." />
+    <meta name="application-name" content="MdWork" />
+    <meta name="apple-mobile-web-app-title" content="MdWork" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <link rel="canonical" href="https://mdwrk.com/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content="MdWork | Privacy-First Markdown Workspace" />
+    <meta property="og:description" content="Write, preview, and manage Markdown in an offline-capable workspace that keeps your content on your device." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mdwrk.com/" />
+    <meta property="og:site_name" content="MdWork" />
+    <meta property="og:image" content="https://mdwrk.com/og-image.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MdWork privacy-first Markdown workspace" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MdWork | Privacy-First Markdown Workspace" />
+    <meta name="twitter:description" content="Write, preview, and manage Markdown in an offline-capable workspace that keeps your content on your device." />
+    <meta name="twitter:image" content="https://mdwrk.com/og-image.svg" />
+    <meta name="twitter:image:alt" content="MdWork privacy-first Markdown workspace" />
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
       tailwind.config = {
@@ -37,6 +62,24 @@
     </script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
+      html,
+      body,
+      #root {
+        min-height: 100%;
+        width: 100%;
+      }
+      html {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      #root {
+        min-height: 100vh;
+      }
       body {
         background-color: #ffffff;
         color: #0f172a;

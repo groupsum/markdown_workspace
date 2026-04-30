@@ -1,6 +1,6 @@
 # @mdwrk/extension-runtime
 
-Portable extension runtime for Markdown Workspace hosts.
+Portable extension runtime for MdWork hosts.
 
 ## Runtime responsibilities
 

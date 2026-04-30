@@ -1,6 +1,6 @@
 # @mdwrk/extension-theme-studio
 
-First-party Theme Studio extension package for Markdown Workspace.
+First-party Theme Studio extension package for MdWork.
 
 ## Manifest and compatibility
 

@@ -21,7 +21,7 @@
     "studio",
     "tokens"
   ],
-  "description": "First-party theme authoring extension for Markdown Workspace with token inspection, live renderer/editor previews, apply/revert flow, and export helpers.",
+  "description": "First-party theme authoring extension for MdWork with token inspection, live renderer/editor previews, apply/revert flow, and export helpers.",
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-manifest": "^1.0.1",

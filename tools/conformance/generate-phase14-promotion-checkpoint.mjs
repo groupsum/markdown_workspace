@@ -230,9 +230,9 @@ const extensionBundleRelative = `${promotionRootRelative}/extension-artifact-bun
 const evidenceBundleRelative = `${promotionRootRelative}/final-evidence-bundle.tar.gz`;
 await createTarball(extensionBundleRelative, ['artifacts/extensions']);
 await createTarball(evidenceBundleRelative, [
-  'PHASE_12_CHECKPOINT_SUMMARY.md',
-  'PHASE_13_CHECKPOINT_SUMMARY.md',
-  'PHASE_14_CHECKPOINT_SUMMARY.md',
+  'docs/current-state/checkpoints/PHASE_12_CHECKPOINT_SUMMARY.md',
+  'docs/current-state/checkpoints/PHASE_13_CHECKPOINT_SUMMARY.md',
+  'docs/current-state/checkpoints/PHASE_14_CHECKPOINT_SUMMARY.md',
   'docs/conformance/current-certification-status.md',
   'docs/conformance/strict-conformance-phase12.md',
   'docs/conformance/rc-freeze-phase13.md',

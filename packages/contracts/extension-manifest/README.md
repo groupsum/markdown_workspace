@@ -1,6 +1,6 @@
 # mdwrk/extension-manifest
 
-Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for Markdown Workspace extensions.
+Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for MdWork extensions.
 
 ## Package purpose
 
@@ -44,4 +44,4 @@ npm run build -w @mdwrk/extension-manifest
 
 ## Publishability
 
-This package is structured as a standalone publishable npm package with typed exports and generated build output under `dist/`.
+This package is structured as a standalone publishable npm package with typed exports. Build output is generated under `dist/` and is intentionally not committed.

@@ -36,6 +36,10 @@ export const gitOpsManifest: ExtensionManifest = {
     module: "./index.js",
     export: "createGitOpsBundledEntry",
   },
+  i18n: {
+    defaultLocale: "en",
+    supportedLocales: ["en"],
+  },
   contributions: {
     commands: [
       { id: GIT_OPS_COMMAND_TOGGLE_ID, title: label("Toggle Git Operations", "core.commands.toggle-git-pane"), icon: { kind: "lucide", name: "GitBranch" } },

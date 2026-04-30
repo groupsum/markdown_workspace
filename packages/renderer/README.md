@@ -1,6 +1,6 @@
 # Renderer packages
 
-This package family contains the portable Markdown rendering stack for Markdown Workspace.
+This package family contains the portable Markdown rendering stack for MdWork.
 
 ## Packages
 
@@ -17,4 +17,4 @@ This package family contains the portable Markdown rendering stack for Markdown 
   - optional default stylesheet
   - renderer theme bridge
 
-Both packages are designed to be consumed by `apps/client`, `apps/lander`, future extension packages, and third-party host applications.
+Both packages are designed to be consumed by `apps/client`, `apps/lander`, first-party extension packages, and third-party host applications.

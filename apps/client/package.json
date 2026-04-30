@@ -1,18 +1,19 @@
 {
   "name": "@mdwrk/mdwrkspace",
   "private": false,
-  "version": "1.4.21",
+  "version": "1.4.22",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && node ../../tools/release/build-versioned-client.mjs",
-    "build:lib": "tsc && vite build --config vite.lib.config.ts",
+    "build:deps": "npm --prefix ../.. run build:extensions",
+    "build": "npm run build:deps && tsc && node ../../tools/release/build-versioned-client.mjs",
+    "build:lib": "npm run build:deps && tsc && vite build --config vite.lib.config.ts",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "screenshots:matrix": "node ./tests/generate-theme-screenshots.mjs",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "prepack": "npm run build:lib"
   },

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -61,7 +61,7 @@ const App: React.FC = () => {
         themeLabel={theme.label}
         toggleTheme={() => setThemeId(isDark ? 'lander-light' : 'lander-dark')}
       />
-      <main>
+      <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomeView isDark={isDark} />} />
           <Route path="/docs/*" element={<DocsView />} />

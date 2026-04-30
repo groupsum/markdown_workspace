@@ -84,7 +84,7 @@ const toRecoveryActions = (extension: ExtensionRuntimeExtensionSnapshot): readon
 };
 
 export function deriveExtensionIntent(extension: ExtensionRuntimeExtensionSnapshot): ExtensionIntentSnapshot {
-  const capabilities = extension.manifest.capabilities;
+  const capabilities = extension.manifest.capabilities ?? [];
   return {
     purpose: extension.manifest.description.defaultMessage,
     primaryWorkflow: toWorkflow(extension),

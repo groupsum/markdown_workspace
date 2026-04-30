@@ -1,6 +1,6 @@
 # @mdwrk/extension-gemini-agent
 
-First-party Gemini workflow extension for Markdown Workspace.
+First-party Gemini workflow extension for MdWork.
 
 ## Manifest and compatibility
 

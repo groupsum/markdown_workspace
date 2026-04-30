@@ -1,6 +1,6 @@
 # Extension packages
 
-This package family contains the runtime, first-party extension packages, and a sample third-party external extension package for Markdown Workspace.
+This package family contains the runtime, first-party extension packages, and a sample third-party external extension package for MdWork.
 
 ## Current packages
 
@@ -10,14 +10,14 @@ This package family contains the runtime, first-party extension packages, and a 
 - `packages/extensions/extension-theme-studio/` — first-party theme authoring extension
 - `packages/extensions/extension-catalog-hello/` — sample third-party external extension package used to validate the formal catalog path
 
-## Phase 11 documentation/evidence status
+## Documentation / Evidence Status
 
 Each extension package now has:
 
 - a package README
 - generated API/reference docs under `docs/reference/packages/`
-- manifest/compatibility evidence in the Phase 11 package matrix
-- lifecycle/integration test evidence in the Phase 11 package artifact set
+- manifest/compatibility evidence in the package evidence matrix
+- lifecycle/integration test evidence in the conformance artifact set
 
 ## Reference docs
 

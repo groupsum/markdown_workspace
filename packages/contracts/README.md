@@ -2,10 +2,10 @@
 
 Normative interfaces, manifests, schemas, and compatibility contracts.
 
-## Implemented in Phase 2
+## Packages
 
 - `mdwrk/extension-manifest`
 - `mdwrk/extension-host`
 - `mdwrk/theme-contract`
 
-These are publishable npm packages with build, typecheck, lint, and test scripts.
+These are publishable npm packages with build, typecheck, lint, and test scripts. Their `dist/` output is generated from source and is not committed.

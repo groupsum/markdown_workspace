@@ -21,7 +21,7 @@
     "ai",
     "agent"
   ],
-  "description": "First-party Gemini workflow extension for Markdown Workspace with read-only document operations, draft-based writeback, and a bundled operator view.",
+  "description": "First-party Gemini workflow extension for MdWork with read-only document operations, draft-based writeback, and a bundled operator view.",
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-manifest": "^1.0.1",

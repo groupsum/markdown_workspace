@@ -1,39 +1,47 @@
-﻿---
+---
 title: mdwrk Markdown Formatting
 slug: usage/advanced-formatting
-section: Usage Guide
+section: Product
 sectionOrder: 2
 order: 2
 toc: true
 ---
+
 The mdwrk renderer supports GitHub Flavored Markdown plus the optional profile surfaces documented elsewhere in the repo.
 
-## Tables
+## Core Syntax
+Use standard Markdown for headings, paragraphs, links, emphasis, blockquotes, code, and lists.
+
 ```markdown
-| Feature | Status |
+# Release Notes
+
+MdWork keeps drafts local by default.
+```
+
+## GitHub-Flavored Markdown
+MdWork supports common GitHub-Flavored Markdown patterns, including tables and task lists.
+
+```markdown
+| Area | Status |
 | :--- | :--- |
-| Offline | yes |
-| Sync | Optional |
-```
+| Local storage | Ready |
+| GitHub sync | Optional |
 
-## Task Lists
-```markdown
-- [x] Local-first storage
-- [ ] Optional cloud sync
-```
-
-## Subscript & Superscript
-```markdown
-~subscript~ and ^superscript^
+- [x] Draft locally
+- [ ] Sync when ready
 ```
 
 ## Code Blocks
+Fence code blocks with a language name to preserve readable source snippets.
+
 ````markdown
-```typescript
-const markspace = "local-first";
+```ts
+const storageMode = "local-first";
 ```
 ````
 
 ## Preview Contract
-
 The preview surface on the client and on this lander both run through `@mdwrk/markdown-renderer-react`, so list rendering, code blocks, tables, and callouts stay aligned across documentation and application views.
+
+## Production Guidance
+Keep documents portable. Prefer Markdown syntax that renders cleanly across mdwrk, GitHub, npm, and static documentation sites.

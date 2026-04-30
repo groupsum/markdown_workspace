@@ -19,7 +19,7 @@
     "typescript"
   ],
   "name": "@mdwrk/extension-manifest",
-  "description": "Normative manifest, capability, settings, i18n, and contribution contracts for Markdown Workspace extensions.",
+  "description": "Normative manifest, capability, settings, i18n, and contribution contracts for MdWork extensions.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
