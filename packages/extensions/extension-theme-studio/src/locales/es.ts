@@ -43,6 +43,7 @@ export const themeStudioEsCatalog = {
     [`${THEME_STUDIO_EXTENSION_ID}.browser.filter.aria`]: "Filtrar navegador de temas",
     [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.metadata`]: "Metadatos",
     [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.tokens`]: "Tokens",
+    [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.typography`]: "Tipografia",
     [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.relationships`]: "Relaciones",
     [`${THEME_STUDIO_EXTENSION_ID}.browser.sections.exports`]: "Exportaciones",
     [`${THEME_STUDIO_EXTENSION_ID}.browser.tokens.title`]: "Navegador de tokens",

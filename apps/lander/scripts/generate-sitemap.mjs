@@ -81,10 +81,10 @@ const routes = [
   { path: '/blog', priority: '0.7', changefreq: 'monthly' },
 ];
 
-for (const filePath of collectFiles(docsDir, ['.mdx'])) {
+for (const filePath of collectFiles(docsDir, ['.md'])) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const metadata = parseFrontmatter(raw);
-  const title = metadata.title || path.basename(filePath, '.mdx');
+  const title = metadata.title || path.basename(filePath, '.md');
   routes.push({
     path: `/docs/${metadata.slug || slugify(title)}`,
     priority: '0.7',

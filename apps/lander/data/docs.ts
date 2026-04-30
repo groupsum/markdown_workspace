@@ -17,7 +17,7 @@ const slugify = (value: string) =>
     .trim()
     .replace(/\s+/g, '-');
 
-const rawDocs = import.meta.glob('./markdown/docs/**/*.mdx', {
+const rawDocs = import.meta.glob('./markdown/docs/**/*.md', {
   eager: true,
   query: '?raw',
   import: 'default'
@@ -25,7 +25,7 @@ const rawDocs = import.meta.glob('./markdown/docs/**/*.mdx', {
 
 const docEntries = Object.entries(rawDocs).map(([path, raw]) => {
   const { metadata, content } = parseMarkdown(raw as string);
-  const title = metadata.title || path.split('/').pop()?.replace('.mdx', '') || 'Document';
+  const title = metadata.title || path.split('/').pop()?.replace('.md', '') || 'Document';
   const slug = metadata.slug || slugify(title);
   const section = metadata.section || 'Docs';
   const sectionOrder = Number(metadata.sectionOrder ?? 999);

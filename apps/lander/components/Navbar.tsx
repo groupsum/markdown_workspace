@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, Github, CloudOff, Sun, Moon } from 'lucide-react';
 import { links } from '../utils/links';
@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
           <div className="bg-[var(--lander-accent)] p-2 rounded-lg">
             <CloudOff className="w-6 h-6 text-white" />
           </div>
-          <span className="self-center text-2xl font-bold whitespace-nowrap text-[var(--lander-fg)]">MdWork</span>
+          <span className="self-center text-2xl font-bold whitespace-nowrap text-[var(--lander-fg)]">MdWrk</span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-2 rtl:space-x-reverse items-center">
            <button
@@ -88,3 +88,4 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
     </nav>
   );
 };
+

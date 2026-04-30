@@ -15,7 +15,7 @@ const demoDefault = 'https://app.mdwrk.com';
 export const links = {
   demo: toLink(import.meta.env.VITE_DEMO_URL, demoDefault),
   app: toLink(import.meta.env.VITE_APP_URL, commonVars.appUrl),
-  github: toLink(import.meta.env.VITE_GITHUB_URL),
+  github: toLink(import.meta.env.VITE_GITHUB_URL, githubRepoDefault),
   x: toLink(import.meta.env.VITE_X_URL, commonVars.xProfileUrl),
   community: toLink(import.meta.env.VITE_COMMUNITY_URL),
   githubRepo: toLink(import.meta.env.VITE_GITHUB_REPO_URL, githubRepoDefault),

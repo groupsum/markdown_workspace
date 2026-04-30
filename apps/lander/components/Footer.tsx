@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
           <div className="mb-6 md:mb-0">
             <Link to="/" className="flex items-center">
               <CloudOff className="w-8 h-8 text-indigo-600 dark:text-indigo-500 mr-3" />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900 dark:text-white">MdWork</span>
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900 dark:text-white">MdWrk</span>
             </Link>
             <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm max-w-xs leading-relaxed">
                The local-first markdown workspace. Your data, your device, your rules.
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
         </div>
         <hr className="my-8 border-slate-200 dark:border-slate-800" />
         <div className="text-center text-xs text-slate-500">
-          © {currentYear} MdWork. Designed for privacy.
+          &copy; {currentYear} MdWrk. Designed for privacy.
         </div>
       </div>
     </footer>

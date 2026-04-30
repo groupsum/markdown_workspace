@@ -40,7 +40,7 @@ export const BlogView: React.FC = () => {
     .sort((a, b) => {
       const dateSort = toPostTime(b.metadata.date) - toPostTime(a.metadata.date);
       if (dateSort !== 0) return dateSort;
-      return (a.metadata.title || a.id).localeCompare(b.metadata.title || b.id);
+      return (b.metadata.title || b.id).localeCompare(a.metadata.title || a.id);
     });
 
   if (selectedPost) {
@@ -73,7 +73,7 @@ export const BlogView: React.FC = () => {
   return (
     <div className="lander-blog-shell pt-32 pb-20 px-4">
       <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-[var(--lander-fg)] mb-12 text-center">mdwrk <span className="text-[var(--lander-accent)]">Blog</span></h1>
+        <h1 className="text-4xl font-extrabold text-[var(--lander-fg)] mb-12 text-center">MdWrk</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map(post => (
             <article

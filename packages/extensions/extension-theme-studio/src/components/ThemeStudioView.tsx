@@ -127,7 +127,7 @@ function useWorkspaceModuleSplit(defaultPosition = 55) {
 
 type ThemeBrowserState = {
   readonly browserQuery: string;
-  readonly sidebarSection: "metadata" | "tokens" | "relationships" | "exports";
+  readonly sidebarSection: "metadata" | "tokens" | "typography" | "relationships" | "exports";
   readonly selectedTokenName: string | null;
   readonly selectedRelationshipClass: string | null;
 };
@@ -175,6 +175,8 @@ function useThemeBrowserState(service: ThemeStudioService) {
   return { state, setState: store.setState };
 }
 
+const isTypographyToken = (definition: { category?: string }) => definition.category === "typography";
+
 function downloadTextFile(filename: string, content: string, mimeType = "text/plain;charset=utf-8"): void {
   if (typeof window === "undefined") return;
   const blob = new Blob([content], { type: mimeType });
@@ -197,6 +199,14 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
       return haystack.includes(deferredBrowserQuery);
     }),
     [deferredBrowserQuery, snapshot.tokenDefinitions],
+  );
+  const browserTypographyTokens = useMemo(
+    () => browserTokens.filter((definition) => isTypographyToken(definition)),
+    [browserTokens],
+  );
+  const browserNonTypographyTokens = useMemo(
+    () => browserTokens.filter((definition) => !isTypographyToken(definition)),
+    [browserTokens],
   );
   const browserRelationships = useMemo(
     () => snapshot.relationships.filter((relationship) => {
@@ -232,7 +242,8 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
         />
         {[
           ["metadata", formatLabel(themeStudioLabels.browserSectionMetadata)],
-          ["tokens", `${formatLabel(themeStudioLabels.browserSectionTokens)} (${browserTokens.length})`],
+          ["tokens", `${formatLabel(themeStudioLabels.browserSectionTokens)} (${browserNonTypographyTokens.length})`],
+          ["typography", `${formatLabel(themeStudioLabels.browserSectionTypography)} (${browserTypographyTokens.length})`],
           ["relationships", `${formatLabel(themeStudioLabels.browserSectionRelationships)} (${browserRelationships.length})`],
           ["exports", formatLabel(themeStudioLabels.browserSectionExports)],
         ].map(([value, label]) => (
@@ -251,7 +262,7 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
         ))}
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
           <span className="settings-session-label">{formatLabel(themeStudioLabels.browserTokenTitle)}</span>
-          {browserTokens.slice(0, 12).map((definition) => (
+          {browserNonTypographyTokens.slice(0, 12).map((definition) => (
             <button
               key={definition.name}
               type="button"
@@ -263,7 +274,23 @@ export const ThemeStudioSidebar: FC<Pick<ThemeStudioViewProps, "service" | "form
               <span className="settings-session-label">{definition.category}</span>
             </button>
           ))}
-          {browserTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
+          {browserNonTypographyTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
+        </div>
+        <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
+          <span className="settings-session-label">{formatLabel(themeStudioLabels.browserSectionTypography)}</span>
+          {browserTypographyTokens.slice(0, 12).map((definition) => (
+            <button
+              key={definition.name}
+              type="button"
+              className={`settings-sidebar-btn ${browserState.selectedTokenName === definition.name ? "active" : ""}`}
+              onClick={() => setBrowserState({ sidebarSection: "typography", selectedTokenName: definition.name, selectedRelationshipClass: null })}
+              style={{ justifyContent: "space-between", gap: 10 }}
+            >
+              <span style={{ textAlign: "left" }}>{definition.name}</span>
+              <span className="settings-session-label">{definition.category}</span>
+            </button>
+          ))}
+          {browserTypographyTokens.length === 0 && <span className="settings-muted-caption">{formatLabel(themeStudioLabels.browserEmptyTokens)}</span>}
         </div>
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
           <span className="settings-session-label">{formatLabel(themeStudioLabels.browserRelationshipTitle)}</span>
@@ -319,6 +346,14 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
     }),
     [deferredBrowserQuery, snapshot.tokenDefinitions],
   );
+  const browserTypographyTokens = useMemo(
+    () => browserTokens.filter((definition) => isTypographyToken(definition)),
+    [browserTokens],
+  );
+  const browserNonTypographyTokens = useMemo(
+    () => browserTokens.filter((definition) => !isTypographyToken(definition)),
+    [browserTokens],
+  );
   const browserRelationships = useMemo(
     () => snapshot.relationships.filter((relationship) => {
       if (!deferredBrowserQuery) return true;
@@ -328,11 +363,14 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
     [deferredBrowserQuery, snapshot.relationships],
   );
   const visibleTokenDefinitions = useMemo(() => {
+    const sourceTokens = browserState.sidebarSection === "typography"
+      ? browserTypographyTokens
+      : browserNonTypographyTokens;
     if (browserState.selectedTokenName) {
-      return browserTokens.filter((definition) => definition.name === browserState.selectedTokenName);
+      return sourceTokens.filter((definition) => definition.name === browserState.selectedTokenName);
     }
-    return browserTokens;
-  }, [browserState.selectedTokenName, browserTokens]);
+    return sourceTokens;
+  }, [browserState.selectedTokenName, browserState.sidebarSection, browserNonTypographyTokens, browserTypographyTokens]);
   const visibleRelationships = useMemo(() => {
     if (browserState.selectedRelationshipClass) {
       return browserRelationships.filter((relationship) => relationship.className === browserState.selectedRelationshipClass);
@@ -389,11 +427,15 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         </div>
       )}
 
-      {browserState.sidebarSection === "tokens" && (
+      {(browserState.sidebarSection === "tokens" || browserState.sidebarSection === "typography") && (
         <div className="theme-token-editor">
           <div className="theme-token-editor__header">
             <div>
-              <div style={sectionTitleStyle}>{formatLabel(themeStudioLabels.tokenInspectorTitle)}</div>
+              <div style={sectionTitleStyle}>
+                {browserState.sidebarSection === "typography"
+                  ? formatLabel(themeStudioLabels.browserSectionTypography)
+                  : formatLabel(themeStudioLabels.tokenInspectorTitle)}
+              </div>
               <p className="theme-token-editor__hint">{formatLabel(themeStudioLabels.tokenCompactHint)}</p>
             </div>
             <span className="settings-chip">{visibleTokenDefinitions.length} {formatLabel(themeStudioLabels.settingsStatsTokens)}</span>

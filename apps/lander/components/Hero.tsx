@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="mb-8 text-lg font-normal text-[var(--lander-fg-muted)] lg:text-xl sm:px-16 lg:px-48">
-          mdwrk is the workspace client, renderer/editor package family, and extension host for local-first markdown work. The lander is only the documentation and release surface.
+          MdWrk is the workspace client, renderer/editor package family, and extension host for local-first markdown work. The lander is only the documentation and release surface.
         </p>
 
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">

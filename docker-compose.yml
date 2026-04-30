@@ -1,7 +1,7 @@
 x-common-env: &common-env
   VITE_DEMO_URL: ${VITE_DEMO_URL:-https://app.mdwrk.com}
   VITE_APP_URL: ${VITE_APP_URL:-https://app.mdwrk.com}
-  VITE_GITHUB_URL: ${VITE_GITHUB_URL:-https://github.com/example}
+  VITE_GITHUB_URL: ${VITE_GITHUB_URL:-https://github.com/groupsum/markdown_workspace}
   VITE_X_URL: ${VITE_X_URL:-https://x.com/swarmauri}
   VITE_COMMUNITY_URL: ${VITE_COMMUNITY_URL:-https://community.example.com}
   VITE_SITE_URL: ${VITE_SITE_URL:-https://mdwrk.com}

@@ -19,7 +19,7 @@ export const gitOpsManifest: ExtensionManifest = {
   packageName: "@mdwrk/extension-git-ops",
   version: GIT_OPS_VERSION,
   displayName: label("Git Operations"),
-  description: label("First-party source-control workspace module for repository operations and Git settings."),
+  description: label("Git tools for repos and settings."),
   kind: "bundled",
   icon: { kind: "lucide", name: "GitBranch" },
   enabledByDefault: true,
@@ -58,7 +58,7 @@ export const gitOpsManifest: ExtensionManifest = {
       {
         id: GIT_OPS_EXPLORER_VIEW_ID,
         title: label("Git Explorer"),
-        description: label("Source-control branch and change explorer."),
+        description: label("Branches and file changes."),
         icon: { kind: "lucide", name: "GitBranch" },
         location: "sidebar",
         allowMultiple: false,
@@ -70,7 +70,7 @@ export const gitOpsManifest: ExtensionManifest = {
       {
         id: GIT_OPS_MODULE_ID,
         title: label("Git Operations"),
-        description: label("Source-control explorer, diff workspace, provider settings, and repository actions."),
+        description: label("Git view, diffs, and repo actions."),
         icon: { kind: "lucide", name: "GitBranch" },
         primaryViewId: GIT_OPS_PRIMARY_VIEW_ID,
         explorerViewId: GIT_OPS_EXPLORER_VIEW_ID,

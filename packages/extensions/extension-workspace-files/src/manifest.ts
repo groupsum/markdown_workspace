@@ -37,7 +37,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
   packageName: "@mdwrk/extension-workspace-files",
   version: WORKSPACE_FILES_VERSION,
   displayName: label("Workspace Files"),
-  description: label("First-party workspace module for file browsing, editing, previewing, import, and export actions."),
+  description: label("Browse, edit, preview, and export files."),
   kind: "bundled",
   icon: { kind: "lucide", name: "Folder" },
   enabledByDefault: true,
@@ -93,7 +93,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       {
         id: WORKSPACE_FILES_PRIMARY_VIEW_ID,
         title: label("Workspace Files"),
-        description: label("File browsing, editing, and preview workspace."),
+        description: label("Browse, edit, and preview files."),
         icon: { kind: "lucide", name: "Folder" },
         location: "main",
         allowMultiple: false,
@@ -102,7 +102,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       {
         id: WORKSPACE_FILES_EXPLORER_VIEW_ID,
         title: label("File Explorer"),
-        description: label("Workspace file explorer."),
+        description: label("Browse workspace files."),
         icon: { kind: "lucide", name: "Folder" },
         location: "sidebar",
         allowMultiple: false,
@@ -114,7 +114,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       {
         id: WORKSPACE_FILES_MODULE_ID,
         title: label("Workspace Files"),
-        description: label("File explorer, editor, previewer, import, export, and file actions."),
+        description: label("Files, editor, preview, and actions."),
         icon: { kind: "lucide", name: "Folder" },
         primaryViewId: WORKSPACE_FILES_PRIMARY_VIEW_ID,
         explorerViewId: WORKSPACE_FILES_EXPLORER_VIEW_ID,
@@ -143,7 +143,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       {
         id: WORKSPACE_FILES_SETTINGS_SECTION_ID,
         title: label("Workspace Files"),
-        description: label("File explorer, editor, preview, import, and export settings."),
+        description: label("File view and export settings."),
         order: 12,
         schemaPath: "manifest.settingsSchema",
       },
@@ -152,7 +152,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
   settingsSchema: {
     version: 1,
     title: label("Workspace Files"),
-    description: label("Workspace file module settings."),
+    description: label("Workspace file settings."),
     sections: [],
     fields: [],
   },

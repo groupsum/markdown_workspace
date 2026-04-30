@@ -1,8 +1,8 @@
 ---
 title: UI Refresh 1.3.29
-slug: ui-refresh-1-3-29
-section: Usage
-sectionOrder: 3
+slug: archive/ui-refresh-1-3-29
+section: Archive
+sectionOrder: 6
 order: 26
 ---
 

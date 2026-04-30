@@ -1,13 +1,11 @@
 ---
-title: Lander Update 2026-04-29
-slug: lander-update-2026-04-29
-section: Updates
-sectionOrder: 1
+title: Archive: Lander Update 2026-04-29
+slug: updates/lander-update-2026-04-29
+section: Archive
+sectionOrder: 6
 order: 1
 toc: true
 ---
-# Lander Update 2026-04-29
-
 This update tightens the MdWork public lander for production deployment, discoverability, and navigation clarity.
 
 ## Public Metadata
