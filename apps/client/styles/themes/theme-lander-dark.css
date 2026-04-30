@@ -1,0 +1,59 @@
+﻿/*
+   THEME: LANDER DARK
+   Deterministically applied via [data-theme="lander-dark"]
+*/
+
+:root[data-theme="lander-dark"] {
+  --bg-app: #020617;
+  --bg-panel: #0f172a;
+  --bg-inset: #111c32;
+  --code-block-bg: #081121;
+
+  --border-color: rgba(148, 163, 184, 0.22);
+  --border-width: 1.5px;
+
+  --fg-primary: #f8fafc;
+  --fg-secondary: #dbe7ff;
+  --fg-muted: #94a3b8;
+
+  --accent: #818cf8;
+
+  --status-ok: #22c55e;
+  --status-warn: #f59e0b;
+  --status-error: #fb7185;
+
+  --table-header-bg: #172554;
+  --table-header-fg: #e0e7ff;
+  --table-row-primary-bg: #0f172a;
+  --table-row-secondary-bg: #111c32;
+
+  --app-gap: 4px;
+  --texture-opacity: 0.04;
+}
+
+.theme-lander-dark .app-header,
+.theme-lander-dark .status-bar {
+  background: linear-gradient(180deg, #0f172a 0%, #0a1224 100%);
+  border-color: rgba(148, 163, 184, 0.22);
+}
+
+.theme-lander-dark .tab-item {
+  background: #162235;
+  color: #cbd5e1;
+}
+
+.theme-lander-dark .tab-item.active,
+.theme-lander-dark .rail-btn.is-active,
+.theme-lander-dark .view-toolbar-btn.active {
+  background: var(--accent);
+  color: #0f172a;
+}
+
+.theme-lander-dark .markdown-body a {
+  color: #a5b4fc;
+}
+
+.theme-lander-dark .markdown-body blockquote {
+  background: #111c32;
+  border-left: 3px solid #818cf8;
+}

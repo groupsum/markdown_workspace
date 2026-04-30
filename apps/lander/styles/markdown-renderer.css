@@ -1,28 +1,186 @@
-@import url('@mdwrk/ui-tokens/styles/root.css');
+﻿@import url('@mdwrk/ui-tokens/styles/root.css');
+@import url('@mdwrk/markdown-editor-react/styles/default.css');
 @import url('@mdwrk/markdown-renderer-react/styles/default.css');
 
-:root {
+:root,
+:root[data-lander-theme='lander-light'] {
+  --lander-app-bg: #f8fafc;
+  --lander-panel: #ffffff;
+  --lander-panel-muted: #eff6ff;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #ffffff;
   --lander-fg: #0f172a;
   --lander-fg-muted: #475569;
-  --lander-surface: #ffffff;
+  --lander-fg-subtle: #64748b;
   --lander-border: rgba(15, 23, 42, 0.12);
+  --lander-border-strong: rgba(15, 23, 42, 0.2);
   --lander-accent: #4f46e5;
+  --lander-accent-strong: #4338ca;
+  --lander-accent-alt: #0891b2;
+  --lander-accent-soft: rgba(79, 70, 229, 0.12);
+  --lander-selection-fg: #312e81;
+  --lander-markdown-link-visited: #3730a3;
+  --lander-markdown-code-bg: #eef2ff;
+  --lander-markdown-code-fg: #1e1b4b;
+  --lander-markdown-code-border: rgba(79, 70, 229, 0.18);
+  --lander-markdown-table-header-bg: #dbeafe;
+  --lander-markdown-table-header-fg: #1e293b;
+  --lander-markdown-table-row-alt: #f8fbff;
+  --lander-markdown-quote-bg: #eef4ff;
   --lander-code-bg: #0f172a;
   --lander-code-fg: #f8fafc;
   --lander-code-border: rgba(15, 23, 42, 0.16);
+  --lander-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 }
 
-.dark {
+:root[data-lander-theme='lander-dark'] {
+  --lander-app-bg: #020617;
+  --lander-panel: #0f172a;
+  --lander-panel-muted: #111c32;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #020617;
   --lander-fg: #f8fafc;
   --lander-fg-muted: #94a3b8;
-  --lander-surface: #0f172a;
+  --lander-fg-subtle: #64748b;
   --lander-border: rgba(148, 163, 184, 0.18);
+  --lander-border-strong: rgba(148, 163, 184, 0.32);
   --lander-accent: #818cf8;
+  --lander-accent-strong: #a5b4fc;
+  --lander-accent-alt: #22d3ee;
+  --lander-accent-soft: rgba(129, 140, 248, 0.14);
+  --lander-selection-fg: #e0e7ff;
+  --lander-markdown-link-visited: #c7d2fe;
+  --lander-markdown-code-bg: #0b1220;
+  --lander-markdown-code-fg: #e2e8f0;
+  --lander-markdown-code-border: rgba(129, 140, 248, 0.22);
+  --lander-markdown-table-header-bg: #1e293b;
+  --lander-markdown-table-header-fg: #f8fafc;
+  --lander-markdown-table-row-alt: #0b1324;
+  --lander-markdown-quote-bg: #111c32;
   --lander-code-bg: #020617;
   --lander-code-fg: #e2e8f0;
   --lander-code-border: rgba(148, 163, 184, 0.18);
+  --lander-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--lander-app-bg);
+  color: var(--lander-fg);
 }
 
 .lander-markdown {
   max-width: none;
+  --fg-primary: var(--lander-fg);
+  --fg-secondary: color-mix(in srgb, var(--lander-fg) 82%, var(--lander-app-bg));
+  --fg-muted: var(--lander-fg-muted);
+  --bg-panel: var(--lander-panel);
+  --bg-inset: var(--lander-markdown-code-bg);
+  --border-color: var(--lander-border);
+  --accent: var(--lander-accent);
+  --table-header-bg: var(--lander-markdown-table-header-bg);
+  --table-header-fg: var(--lander-markdown-table-header-fg);
+  --table-row-primary-bg: color-mix(in srgb, var(--lander-panel) 94%, transparent);
+  --table-row-secondary-bg: var(--lander-markdown-table-row-alt);
+  --code-block-bg: var(--lander-markdown-code-bg);
+  --font-ui: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  --font-head: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: var(--lander-font-mono);
+}
+
+.lander-markdown .markdown-body {
+  background: transparent;
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body h1,
+.lander-markdown .markdown-body h2,
+.lander-markdown .markdown-body h3,
+.lander-markdown .markdown-body h4,
+.lander-markdown .markdown-body h5,
+.lander-markdown .markdown-body h6 {
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body a {
+  color: var(--lander-accent);
+}
+
+.lander-markdown .markdown-body a:visited {
+  color: var(--lander-markdown-link-visited);
+}
+
+.lander-markdown .markdown-body a:hover,
+.lander-markdown .markdown-body a:focus-visible {
+  color: var(--lander-accent-strong);
+}
+
+.lander-markdown .markdown-body :not(pre) > code,
+.lander-markdown .markdown-body .md-inline-code {
+  background: var(--lander-markdown-code-bg);
+  color: var(--lander-markdown-code-fg);
+  border: 1px solid var(--lander-markdown-code-border);
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block,
+.lander-markdown .markdown-body .md-code-surface {
+  background: var(--lander-markdown-code-bg);
+  color: var(--lander-markdown-code-fg);
+  border: 1px solid var(--lander-markdown-code-border);
+}
+
+.lander-markdown .markdown-body .md-code-header {
+  background: color-mix(in srgb, var(--lander-markdown-code-bg) 80%, var(--lander-panel));
+  color: var(--lander-fg-subtle);
+  border-bottom: 1px solid var(--lander-markdown-code-border);
+}
+
+.lander-markdown .markdown-body blockquote {
+  background: var(--lander-markdown-quote-bg);
+  color: var(--lander-fg-muted);
+  border-left-color: var(--lander-accent);
+}
+
+.lander-markdown .markdown-body th,
+.lander-markdown .markdown-body .md-table-header {
+  background: var(--lander-markdown-table-header-bg);
+  color: var(--lander-markdown-table-header-fg);
+}
+
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-table-cell {
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body tbody tr:nth-child(even),
+.lander-markdown .markdown-body .md-table-body .md-table-row:nth-child(even) {
+  background: var(--lander-markdown-table-row-alt);
+}
+
+.lander-markdown .markdown-body tbody tr:nth-child(odd),
+.lander-markdown .markdown-body .md-table-body .md-table-row:nth-child(odd) {
+  background: color-mix(in srgb, var(--lander-panel) 96%, transparent);
+}
+
+.lander-doc-shell,
+.lander-blog-shell {
+  background:
+    radial-gradient(circle at top left, var(--lander-accent-soft), transparent 32%),
+    linear-gradient(180deg, var(--lander-app-bg) 0%, var(--lander-panel-muted) 100%);
+}
+
+.lander-content-card {
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  border: 1px solid var(--lander-border);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+.lander-editor {
+  min-height: 100%;
+}
+
+.lander-editor .markdown-source-editor {
+  height: 100%;
+  min-height: 100%;
+  border: 0;
 }

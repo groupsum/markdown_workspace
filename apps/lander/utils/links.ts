@@ -9,9 +9,10 @@ const githubRepoPath = commonVars.githubRepoPath;
 const npmRepoDefault = `https://www.npmjs.com/package/${npmPackageName}`;
 const esmCdnDefault = `${commonVars.esmCdnBaseUrl}/${npmPackageName}`;
 const githubRepoDefault = `https://github.com/${githubRepoPath}`;
+const demoDefault = 'https://app.mdwrk.com';
 
 export const links = {
-  demo: toLink(import.meta.env.VITE_DEMO_URL),
+  demo: toLink(import.meta.env.VITE_DEMO_URL, demoDefault),
   github: toLink(import.meta.env.VITE_GITHUB_URL),
   x: toLink(import.meta.env.VITE_X_URL),
   community: toLink(import.meta.env.VITE_COMMUNITY_URL),

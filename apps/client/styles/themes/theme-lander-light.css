@@ -1,0 +1,54 @@
+﻿/*
+   THEME: LANDER LIGHT
+   Deterministically applied via [data-theme="lander-light"]
+*/
+
+:root[data-theme="lander-light"] {
+  --bg-app: #f8fafc;
+  --bg-panel: #ffffff;
+  --bg-inset: #eff6ff;
+  --code-block-bg: #eaf1ff;
+
+  --border-color: rgba(15, 23, 42, 0.16);
+  --border-width: 1.5px;
+
+  --fg-primary: #0f172a;
+  --fg-secondary: #1e293b;
+  --fg-muted: #475569;
+
+  --accent: #4f46e5;
+
+  --status-ok: #15803d;
+  --status-warn: #b45309;
+  --status-error: #be123c;
+
+  --table-header-bg: #dbeafe;
+  --table-header-fg: #1e1b4b;
+  --table-row-primary-bg: #ffffff;
+  --table-row-secondary-bg: #f8fbff;
+
+  --app-gap: 4px;
+  --texture-opacity: 0.03;
+}
+
+.theme-lander-light .app-header,
+.theme-lander-light .status-bar {
+  background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+  border-color: rgba(15, 23, 42, 0.16);
+}
+
+.theme-lander-light .tab-item.active,
+.theme-lander-light .rail-btn.is-active,
+.theme-lander-light .view-toolbar-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.theme-lander-light .markdown-body a {
+  color: #4338ca;
+}
+
+.theme-lander-light .markdown-body blockquote {
+  background: #eef4ff;
+  border-left: 3px solid #6366f1;
+}

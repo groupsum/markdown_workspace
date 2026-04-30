@@ -1,14 +1,15 @@
-# @mdwrk/lander application reference
+﻿# @mdwrk/lander application reference
 
 ## Purpose
 
 `@mdwrk/lander` is the public-facing lander/documentation application for the Markdown Workspace repository.
-It demonstrates the reusable renderer stack in a simpler deployable application that is intentionally separated from the full workspace shell.
+It should document the mdwrk client, reusable packages, and extension platform rather than treating itself as the main documentation subject.
 
 ## Public configuration surface
 
 The lander app is intentionally narrow in surface area.
 Its public configuration is primarily the static site build/deploy environment and the content/docs data sources under `apps/lander/data/*`.
+Documentation authored for the lander should point outward to client and extension surfaces, not inward to the lander as product scope.
 
 ## Dependency boundary map
 

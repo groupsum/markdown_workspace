@@ -1,9 +1,10 @@
-# @mdwrk/mdwrkspace application reference
+﻿# @mdwrk/mdwrkspace application reference
 
 ## Purpose
 
 `@mdwrk/mdwrkspace` is the primary client application for the Markdown Workspace repository.
 It is the canonical integration host for the reusable editor, renderer, contracts, shared packages, and bundled extensions.
+The lander should therefore document this client surface first.
 
 ## Public configuration surface
 

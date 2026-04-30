@@ -1,20 +1,18 @@
----
-title: Editor Basics
+﻿---
+title: mdwrk Editor Basics
 slug: usage/editor-basics
 section: Usage Guide
 sectionOrder: 2
 order: 1
 toc: true
 ---
-# Editor Basics
-
-MdWork blends a high-density editor with a live preview surface. Use the shortcuts below to move fast.
+The mdwrk client blends `@mdwrk/markdown-editor-react` with `@mdwrk/markdown-renderer-react`. The same split surface is what this lander demo now uses.
 
 ## Switching Views
 Use the view toggle to move between:
 - **Editor**: Pure Markdown input.
-- **Preview**: Rendered output.
-- **Split**: Side-by-side editing.
+- **Preview**: Rendered output through the shared renderer package.
+- **Split**: Side-by-side editing using the split package bridge.
 
 ## Creating Files
 Use the action rail for deterministic file operations:
@@ -25,3 +23,12 @@ Use the action rail for deterministic file operations:
 
 ## Project Selection
 Switch projects from the header to keep focused workspaces separate.
+
+## Editor Package Surface
+
+The reusable editor package provides:
+
+- controlled and uncontrolled editing modes
+- keyboard shortcut and command wiring
+- line-number gutter support
+- theme bridge helpers for shared token-driven styling

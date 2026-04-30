@@ -1,0 +1,613 @@
+/*
+   THEME: PNEUMATIC MYCELIAL SCAFFOLDING
+   Deterministically applied via [data-theme="pneumatic-mycelial-scaffolding"]
+*/
+
+:root[data-theme="pneumatic-mycelial-scaffolding"] {
+  --bg-app: #fcfcf9;
+  --bg-panel: rgba(255, 255, 255, 0.74);
+  --bg-inset: #e8e8e1;
+  --code-block-bg: #f6f7f1;
+
+  --border-color: rgba(42, 42, 40, 0.1);
+  --border-width: 1px;
+
+  --fg-primary: #2a2a28;
+  --fg-secondary: #4a5d4e;
+  --fg-muted: #6b6b64;
+
+  --accent: #4a5d4e;
+
+  --status-ok: #7fbc80;
+  --status-warn: #d4a373;
+  --status-error: #b75f56;
+
+  --table-header-bg: rgba(232, 232, 225, 0.82);
+  --table-header-fg: #2a2a28;
+  --table-row-primary-bg: rgba(255, 255, 255, 0.88);
+  --table-row-secondary-bg: rgba(246, 247, 241, 0.9);
+
+  --app-gap: 12px;
+  --texture-opacity: 0.14;
+  --editor-padding: calc(24px * var(--ui-scale));
+  --editor-line-height: calc(1.6rem * var(--ui-scale));
+  --editor-line-rhythm: var(--editor-line-height);
+  --markdown-line-height: var(--editor-line-rhythm);
+  --markdown-heading-line-height: calc(1.18 + ((var(--ui-scale) - 1) * 0.25));
+  --line-number-gutter-width: calc(42px * var(--ui-scale));
+  --mobile-rail-expanded-width: calc(100vw - 24px);
+  --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);
+  --file-indent-base: calc(14px * var(--ui-scale));
+  --file-indent-unit: calc(14px * var(--ui-scale));
+  --c-explorer-hover: rgba(255, 255, 255, 0.62);
+  --c-explorer-selected: #ffffff;
+  --c-explorer-selected-text: #2a2a28;
+  --c-explorer-drag-bg: rgba(165, 214, 167, 0.2);
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
+  --font-head: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.theme-pneumatic-mycelial-scaffolding body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(165, 214, 167, 0.32) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.48;
+  z-index: -1;
+}
+
+.theme-pneumatic-mycelial-scaffolding .chassis-scaler {
+  gap: 12px;
+  padding: 12px;
+  background: transparent;
+}
+
+.theme-pneumatic-mycelial-scaffolding .app-header,
+.theme-pneumatic-mycelial-scaffolding .action-rail,
+.theme-pneumatic-mycelial-scaffolding .workspace-sidebar,
+.theme-pneumatic-mycelial-scaffolding .workspace-stage,
+.theme-pneumatic-mycelial-scaffolding .git-sidebar,
+.theme-pneumatic-mycelial-scaffolding .git-stage,
+.theme-pneumatic-mycelial-scaffolding .status-bar,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar,
+.theme-pneumatic-mycelial-scaffolding .project-create-modal-surface,
+.theme-pneumatic-mycelial-scaffolding .theme-selector-modal-surface,
+.theme-pneumatic-mycelial-scaffolding .settings-modal-surface,
+.theme-pneumatic-mycelial-scaffolding .command-palette-surface,
+.theme-pneumatic-mycelial-scaffolding .toast-message {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 22px !important;
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+}
+
+.theme-pneumatic-mycelial-scaffolding .app-header {
+  min-height: 54px;
+  padding: 0 8px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .header-brand-title,
+.theme-pneumatic-mycelial-scaffolding .workspace-panel-kicker,
+.theme-pneumatic-mycelial-scaffolding .status-text-bold {
+  color: var(--accent);
+}
+
+.theme-pneumatic-mycelial-scaffolding .action-rail {
+  width: 68px;
+  padding: 16px 0;
+  align-items: center;
+}
+
+.theme-pneumatic-mycelial-scaffolding .rail-btn,
+.theme-pneumatic-mycelial-scaffolding .header-btn,
+.theme-pneumatic-mycelial-scaffolding .tab-close,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-btn,
+.theme-pneumatic-mycelial-scaffolding .zoom-btn {
+  border: 1px solid transparent;
+  border-radius: 14px !important;
+  color: #8a9a8c;
+  background: transparent;
+  transition: background 0.24s ease, color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.theme-pneumatic-mycelial-scaffolding .rail-btn:hover,
+.theme-pneumatic-mycelial-scaffolding .header-btn:hover,
+.theme-pneumatic-mycelial-scaffolding .tab-close:hover,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-btn:hover,
+.theme-pneumatic-mycelial-scaffolding .zoom-btn:hover,
+.theme-pneumatic-mycelial-scaffolding .rail-btn.is-active,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-btn.active {
+  background: #ffffff;
+  color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.theme-pneumatic-mycelial-scaffolding .rail-btn.is-active {
+  position: relative;
+}
+
+.theme-pneumatic-mycelial-scaffolding .rail-btn.is-active::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  width: 4px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .tab-bar {
+  gap: 8px;
+  padding: 0 8px;
+  scrollbar-width: none;
+}
+
+.theme-pneumatic-mycelial-scaffolding .tab-item {
+  height: 38px;
+  padding: 0 16px;
+  gap: 8px;
+  color: var(--fg-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 14px !important;
+  font-size: calc(10px * var(--ui-scale));
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.theme-pneumatic-mycelial-scaffolding .tab-item.active,
+.theme-pneumatic-mycelial-scaffolding .tab-item.expanded {
+  background: #ffffff;
+  color: var(--fg-primary);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.theme-pneumatic-mycelial-scaffolding .workspace-panel-header,
+.theme-pneumatic-mycelial-scaffolding .panel-toolbar,
+.theme-pneumatic-mycelial-scaffolding .pane-header {
+  background: rgba(255, 255, 255, 0.42);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 20px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .workspace-sidebar {
+  margin-right: 0;
+  overflow: hidden;
+}
+
+.theme-pneumatic-mycelial-scaffolding .workspace-sidebar.is-collapsed {
+  display: none;
+}
+
+.theme-pneumatic-mycelial-scaffolding .file-tree-item,
+.theme-pneumatic-mycelial-scaffolding .project-card,
+.theme-pneumatic-mycelial-scaffolding .theme-modal-button,
+.theme-pneumatic-mycelial-scaffolding .settings-card,
+.theme-pneumatic-mycelial-scaffolding .command-palette-item {
+  border-radius: 12px !important;
+  transition: background 0.24s ease, color 0.24s ease, transform 0.24s ease;
+}
+
+.theme-pneumatic-mycelial-scaffolding .file-tree-item:hover,
+.theme-pneumatic-mycelial-scaffolding .theme-modal-button:hover,
+.theme-pneumatic-mycelial-scaffolding .command-palette-item:hover {
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.theme-pneumatic-mycelial-scaffolding .file-tree-item.is-selected,
+.theme-pneumatic-mycelial-scaffolding .theme-modal-button.is-active {
+  background: #ffffff;
+  color: var(--fg-primary);
+  font-weight: 600;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-pane-container {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+  background: transparent;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-pane-shell {
+  grid-row: 2;
+  flex-direction: column-reverse;
+  gap: 12px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-pane-body {
+  gap: 12px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-pane-column,
+.theme-pneumatic-mycelial-scaffolding .editor-stage,
+.theme-pneumatic-mycelial-scaffolding .workspace-markdown-renderer-shell {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--border-color);
+  border-radius: 22px !important;
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.78);
+  overflow: hidden;
+}
+
+.theme-pneumatic-mycelial-scaffolding .view-toolbar {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  min-height: 54px;
+  padding: 8px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-group {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-divider,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-divider--pre-inline {
+  width: 1px;
+  height: 22px;
+  margin: 0 8px;
+  background: var(--border-color);
+  opacity: 1;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-splitter {
+  background: transparent;
+}
+
+.theme-pneumatic-mycelial-scaffolding .editor-splitter-handle {
+  background: rgba(74, 93, 78, 0.28);
+}
+
+.theme-pneumatic-mycelial-scaffolding .badge-unsaved {
+  background: #ffffff;
+  color: var(--accent);
+  border-color: var(--border-color);
+  border-radius: 999px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .status-bar {
+  min-height: 28px;
+  padding: 0 14px;
+  color: var(--fg-muted);
+}
+
+.theme-pneumatic-mycelial-scaffolding .status-led {
+  background: var(--status-ok);
+  border-color: rgba(74, 93, 78, 0.28);
+  box-shadow: 0 0 0 rgba(165, 214, 167, 0.42);
+  animation: pneumatic-mycelial-pulse 2s infinite;
+}
+
+.theme-pneumatic-mycelial-scaffolding .status-led.warn {
+  background: var(--status-warn);
+}
+
+.theme-pneumatic-mycelial-scaffolding .status-led.error {
+  background: var(--status-error);
+}
+
+@keyframes pneumatic-mycelial-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(165, 214, 167, 0.68); }
+  70% { box-shadow: 0 0 0 10px rgba(165, 214, 167, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(165, 214, 167, 0); }
+}
+
+.theme-pneumatic-mycelial-scaffolding .project-create-modal,
+.theme-pneumatic-mycelial-scaffolding .theme-selector-modal,
+.theme-pneumatic-mycelial-scaffolding .settings-modal,
+.theme-pneumatic-mycelial-scaffolding .command-palette-modal {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(165, 214, 167, 0.26), transparent 28%),
+    rgba(252, 252, 249, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.theme-pneumatic-mycelial-scaffolding .project-create-modal-header,
+.theme-pneumatic-mycelial-scaffolding .theme-selector-modal-header,
+.theme-pneumatic-mycelial-scaffolding .settings-modal-header,
+.theme-pneumatic-mycelial-scaffolding .command-palette-header {
+  background: rgba(255, 255, 255, 0.42);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--fg-muted);
+}
+
+.theme-pneumatic-mycelial-scaffolding .project-create-close,
+.theme-pneumatic-mycelial-scaffolding .theme-selector-close,
+.theme-pneumatic-mycelial-scaffolding .settings-close,
+.theme-pneumatic-mycelial-scaffolding .command-palette-close {
+  background: #ffffff;
+  color: var(--accent);
+  border-color: var(--border-color);
+  border-radius: 14px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .project-input,
+.theme-pneumatic-mycelial-scaffolding .settings-input,
+.theme-pneumatic-mycelial-scaffolding .command-palette-input,
+.theme-pneumatic-mycelial-scaffolding input,
+.theme-pneumatic-mycelial-scaffolding textarea {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: var(--border-color);
+  color: var(--fg-primary);
+  border-radius: 12px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body {
+  color: var(--fg-primary);
+  font-family: var(--font-ui);
+  line-height: var(--markdown-line-height);
+  letter-spacing: 0;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body,
+.theme-pneumatic-mycelial-scaffolding .md-p {
+  font-size: calc(14px * var(--ui-scale));
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body h1,
+.theme-pneumatic-mycelial-scaffolding .markdown-body h2,
+.theme-pneumatic-mycelial-scaffolding .markdown-body h3,
+.theme-pneumatic-mycelial-scaffolding .markdown-body h4,
+.theme-pneumatic-mycelial-scaffolding .markdown-body h5,
+.theme-pneumatic-mycelial-scaffolding .markdown-body h6,
+.theme-pneumatic-mycelial-scaffolding .md-h1,
+.theme-pneumatic-mycelial-scaffolding .md-h2,
+.theme-pneumatic-mycelial-scaffolding .md-h3,
+.theme-pneumatic-mycelial-scaffolding .md-h4,
+.theme-pneumatic-mycelial-scaffolding .md-h5,
+.theme-pneumatic-mycelial-scaffolding .md-h6 {
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: var(--markdown-heading-line-height);
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body h1,
+.theme-pneumatic-mycelial-scaffolding .md-h1 {
+  padding-bottom: 0.42em;
+  border-bottom: 1px solid rgba(74, 93, 78, 0.18);
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body blockquote,
+.theme-pneumatic-mycelial-scaffolding .md-blockquote {
+  margin: 1.25em 0;
+  padding: 0.9em 1.1em;
+  color: var(--fg-secondary);
+  background: rgba(255, 255, 255, 0.58);
+  border-left: 4px solid rgba(74, 93, 78, 0.32);
+  border-radius: 14px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body a,
+.theme-pneumatic-mycelial-scaffolding .md-link {
+  color: var(--accent);
+  text-decoration-color: rgba(74, 93, 78, 0.42);
+  text-underline-offset: 0.18em;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body strong,
+.theme-pneumatic-mycelial-scaffolding .md-strong {
+  color: var(--fg-primary);
+  font-weight: 700;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body em,
+.theme-pneumatic-mycelial-scaffolding .md-em {
+  color: var(--fg-secondary);
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body hr,
+.theme-pneumatic-mycelial-scaffolding .md-hr {
+  border: 0;
+  height: 1px;
+  background: rgba(74, 93, 78, 0.18);
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body ul,
+.theme-pneumatic-mycelial-scaffolding .markdown-body ol,
+.theme-pneumatic-mycelial-scaffolding .md-ul,
+.theme-pneumatic-mycelial-scaffolding .md-ol {
+  padding-left: 1.35em;
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body li,
+.theme-pneumatic-mycelial-scaffolding .md-li {
+  margin: 0.28em 0;
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-task-list-item {
+  list-style: none;
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-checkbox {
+  accent-color: var(--accent);
+}
+
+.theme-pneumatic-mycelial-scaffolding .markdown-body code,
+.theme-pneumatic-mycelial-scaffolding .md-inline-code {
+  color: #4a5d4e;
+  background: rgba(232, 232, 225, 0.88);
+  border: 1px solid rgba(42, 42, 40, 0.08);
+  border-radius: 8px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-code-block,
+.theme-pneumatic-mycelial-scaffolding .md-code-surface {
+  background: var(--code-block-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-code-header {
+  background: rgba(255, 255, 255, 0.52);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--fg-muted);
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table {
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 16px !important;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-head,
+.theme-pneumatic-mycelial-scaffolding .md-table-header {
+  background: var(--table-header-bg);
+  color: var(--table-header-fg);
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-body,
+.theme-pneumatic-mycelial-scaffolding .md-table-row,
+.theme-pneumatic-mycelial-scaffolding .md-table-cell {
+  border-color: var(--border-color);
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-row:nth-child(even) {
+  background: var(--table-row-secondary-bg);
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-row:nth-child(odd) {
+  background: var(--table-row-primary-bg);
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-caption {
+  color: var(--fg-muted);
+  font-size: calc(11px * var(--ui-scale));
+}
+
+.theme-pneumatic-mycelial-scaffolding .md-table-columns,
+.theme-pneumatic-mycelial-scaffolding .md-table-column {
+  display: none;
+}
+
+.theme-pneumatic-mycelial-scaffolding .mw-editor {
+  background: transparent;
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+}
+
+.theme-pneumatic-mycelial-scaffolding .mw-editor-layout {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.theme-pneumatic-mycelial-scaffolding .mw-editor-gutter {
+  width: var(--line-number-gutter-width);
+  color: rgba(107, 107, 100, 0.72);
+  background: rgba(232, 232, 225, 0.34);
+  border-right: 1px solid var(--border-color);
+}
+
+.theme-pneumatic-mycelial-scaffolding .mw-editor-line-number {
+  color: rgba(107, 107, 100, 0.72);
+}
+
+.theme-pneumatic-mycelial-scaffolding .mw-editor-textarea {
+  color: var(--fg-secondary);
+  caret-color: var(--accent);
+  line-height: var(--editor-line-height);
+}
+
+.theme-pneumatic-mycelial-scaffolding .header-center {
+  min-height: 54px;
+}
+
+.theme-pneumatic-mycelial-scaffolding .zoom-control {
+  background: rgba(255, 255, 255, 0.62);
+  border-color: var(--border-color);
+  border-radius: 999px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .git-diff-stat,
+.theme-pneumatic-mycelial-scaffolding .git-status-pill,
+.theme-pneumatic-mycelial-scaffolding .settings-pill,
+.theme-pneumatic-mycelial-scaffolding .theme-meta-count {
+  border-radius: 999px !important;
+}
+
+.theme-pneumatic-mycelial-scaffolding .print-only,
+.theme-pneumatic-mycelial-scaffolding .view-toolbar-divider--pre-inline:empty {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .theme-pneumatic-mycelial-scaffolding .chassis-scaler {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .editor-pane-body {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+  .theme-pneumatic-mycelial-scaffolding .chassis-scaler {
+    grid-template-rows: auto minmax(0, 1fr) 64px auto;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .action-rail {
+    width: auto;
+    height: 64px;
+    min-height: 64px;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 20px;
+    border-radius: 30px !important;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .rail-btn.is-active::after {
+    left: 50%;
+    bottom: -8px;
+    width: 20px;
+    height: 4px;
+    transform: translateX(-50%);
+    border-radius: 4px 4px 0 0 !important;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .workspace-sidebar:not(.is-collapsed) {
+    height: min(42%, 300px);
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .view-toolbar {
+    min-height: 60px;
+    border-radius: 30px !important;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .view-toolbar-group {
+    flex-wrap: nowrap;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .editor-pane-shell,
+  .theme-pneumatic-mycelial-scaffolding .editor-pane-body {
+    gap: 8px;
+  }
+}
+
+@media (max-height: 520px) {
+  .theme-pneumatic-mycelial-scaffolding .app-header,
+  .theme-pneumatic-mycelial-scaffolding .view-toolbar {
+    min-height: 44px;
+  }
+
+  .theme-pneumatic-mycelial-scaffolding .status-bar {
+    display: none;
+  }
+}

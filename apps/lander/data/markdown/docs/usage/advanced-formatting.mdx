@@ -1,20 +1,18 @@
----
-title: Advanced Formatting
+﻿---
+title: mdwrk Markdown Formatting
 slug: usage/advanced-formatting
 section: Usage Guide
 sectionOrder: 2
 order: 2
 toc: true
 ---
-# Advanced Formatting
-
-MdWork supports GitHub Flavored Markdown and a few extra typographic touches.
+The mdwrk renderer supports GitHub Flavored Markdown plus the optional profile surfaces documented elsewhere in the repo.
 
 ## Tables
 ```markdown
 | Feature | Status |
 | :--- | :--- |
-| Offline | ✅ |
+| Offline | yes |
 | Sync | Optional |
 ```
 
@@ -35,3 +33,7 @@ MdWork supports GitHub Flavored Markdown and a few extra typographic touches.
 const markspace = "local-first";
 ```
 ````
+
+## Preview Contract
+
+The preview surface on the client and on this lander both run through `@mdwrk/markdown-renderer-react`, so list rendering, code blocks, tables, and callouts stay aligned across documentation and application views.

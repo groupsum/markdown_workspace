@@ -18,7 +18,7 @@ export const WORKSPACE_PREFERENCES_STORAGE_KEY = 'mdwrk.workspace-preferences.v1
 export const WORKSPACE_PREFERENCES_EVENT = 'mdwrk:workspace-preferences';
 
 export const DEFAULT_WORKSPACE_PREFERENCES: WorkspacePreferences = Object.freeze({
-  hidePreviewPolicy: false,
+  hidePreviewPolicy: true,
   actionRailDisplayMode: 'icon-only',
   hiddenActionRailButtons: Object.freeze([]),
   hiddenEditorToolbarButtons: Object.freeze([]),

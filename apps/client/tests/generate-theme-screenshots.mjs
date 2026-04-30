@@ -3,6 +3,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { THEME_IDS } from '../data/themeCatalog.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,20 +24,7 @@ const PORT = 4181;
 const BASE_URL = `http://127.0.0.1:${PORT}`;
 const CHROME_PATH = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 
-const THEMES = [
-  'tensioned-technical-skeleton',
-  'optical-vellum-drafting-grid',
-  'heavy-gauge-tectonic',
-  'ferrous-monolith',
-  'galvanized-cellular',
-  'pressed-chromium',
-  'acid-etched',
-  'zinc',
-  'anodized-billet',
-  'micropress',
-  'research-science',
-  'default',
-];
+const THEMES = [...THEME_IDS];
 
 const VIEWPORT_CASES = [
   { id: 'portrait-xxs-short-touch', aspectId: 'portrait', widthTier: 'xxs', heightTier: 'short', deviceTier: 'touch', width: 320, height: 560, isMobile: true, hasTouch: true },

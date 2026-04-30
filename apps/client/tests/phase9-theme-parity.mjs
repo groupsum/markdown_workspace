@@ -82,8 +82,8 @@ const designReferenceChecks = THEME_CATALOG
 
 const checks = [
   {
-    id: 'theme.catalog.count.12',
-    pass: THEME_CATALOG.length === 12,
+    id: 'theme.catalog.count.matches-assets',
+    pass: THEME_CATALOG.length === themeAssetIds.length,
   },
   {
     id: 'theme.catalog.unique-ids',
@@ -106,12 +106,12 @@ const checks = [
     pass: settingsVisualText.includes('{THEMES.map((theme) => (') && settingsVisualText.includes('ACTIVE_THEME'),
   },
   {
-    id: 'theme.stylesheet-registry.count.12',
-    pass: THEME_IDS.every((themeId) => new RegExp(`[\\'\\"]?${themeId}[\\'\\"]?:`).test(themeStylesText)) && THEME_IDS.length === 12,
+    id: 'theme.stylesheet-registry.count.matches-catalog',
+    pass: THEME_IDS.every((themeId) => new RegExp(`[\\'\\"]?${themeId}[\\'\\"]?:`).test(themeStylesText)) && THEME_IDS.length === THEME_CATALOG.length,
   },
   {
-    id: 'theme.assets.count.12',
-    pass: themeAssetIds.length === 12,
+    id: 'theme.assets.count.matches-catalog',
+    pass: themeAssetIds.length === THEME_CATALOG.length,
   },
   {
     id: 'theme.assets.match-catalog',

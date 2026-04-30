@@ -1,22 +1,29 @@
----
-title: Configuration
+﻿---
+title: mdwrk Client Configuration
 slug: getting-started/configuration
 section: Getting Started
 sectionOrder: 1
 order: 2
 toc: true
 ---
-# Configuration
-
-MdWork ships with sensible defaults. These settings help you tailor the editor to your workflow.
+The mdwrk client ships with sensible defaults. These settings are part of the client and extension host surface, not the lander.
 
 ## Theme Selection
-Open **Settings → Theme** to switch between the built-in theme families. Each theme respects the shared viewport contract while applying its own material treatment.
+Open **Settings -> Theme** to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.
 
 ## Workspace Defaults
 - **Autosave**: Enabled by default for local-first persistence.
 - **Default View**: Choose Editor, Preview, or Split to match your writing style.
-- **Git Sync**: Provide a GitHub token only when you want to push or pull.
+- **Markdown Profiles**: Enable optional profile features without forking the renderer.
+- **Git Sync**: Provide credentials only when you want to push or pull.
+- **Extension Settings**: First-party and external extensions register their own schema-backed settings panels.
 
-## Environment Links
-If you host your own landing experience, the lander reads its navigation URLs from environment variables such as `VITE_GITHUB_REPO_URL`, `VITE_NPM_REPO_URL`, and `VITE_NPM_ESM_CDN_URL`.
+## Package-Level Configuration
+
+If you consume the split packages directly:
+
+- `@mdwrk/markdown-editor-react` owns source-authoring behavior.
+- `@mdwrk/markdown-renderer-react` owns rendered markdown output.
+- `@mdwrk/theme-contract` owns theme token and bridge compatibility.
+
+The lander should not be treated as the public configuration subject.

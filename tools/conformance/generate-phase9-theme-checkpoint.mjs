@@ -597,7 +597,7 @@ const themeAssetIds = themeAssetFiles.map((entry) => entry.replace(/^theme-/, ''
 const structuralAudit = {
   themeInventory: {
     path: 'apps/client/data/themeCatalog.js',
-    twelveThemesRegistered: THEME_CATALOG.length === 12,
+    themeCatalogMatchesAssets: THEME_CATALOG.length === themeAssetFiles.length,
     requiredThemesPresent: REQUIRED_PHASE9_THEME_IDS.every((themeId) => THEME_IDS.includes(themeId)),
     themeCatalogVersionPresent: themeCatalogText.includes('THEME_CATALOG_VERSION'),
   },
@@ -607,7 +607,7 @@ const structuralAudit = {
     screenshotsChecklistUpdated: screenshotsChecklistText.includes('research-science') && screenshotsChecklistText.includes('pressed-chromium') && screenshotsChecklistText.includes('static HTML visual baselines'),
   },
   assetClosure: {
-    twelveThemeAssetsPresent: themeAssetFiles.length === 12,
+    themeAssetsMatchCatalog: themeAssetFiles.length === THEME_CATALOG.length,
     assetIdsMatchCatalog: [...themeAssetIds].sort().join('|') === [...THEME_IDS].sort().join('|'),
     smokeThemeSetClosed: PHASE9_SMOKE_THEME_IDS.every((themeId) => THEME_IDS.includes(themeId)),
   },

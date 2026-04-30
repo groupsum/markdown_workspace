@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+﻿import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
@@ -10,6 +10,24 @@ interface DocItem {
   title: string;
   children?: DocItem[];
 }
+
+const normalizeTitle = (value: string) =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/[\s\-]+/g, ' ');
+
+const removeDuplicateLeadingHeading = (content: string, title?: string) => {
+  if (!title) return content;
+
+  const headingMatch = content.match(/^#\s+(.+)\n*/);
+  if (!headingMatch) return content;
+
+  const headingText = headingMatch[1]?.trim() ?? '';
+  if (normalizeTitle(headingText) !== normalizeTitle(title)) return content;
+
+  return content.slice(headingMatch[0].length).trim();
+};
 
 export const DocsView: React.FC = () => {
   const { '*': slugParam } = useParams();
@@ -23,7 +41,7 @@ export const DocsView: React.FC = () => {
   }, [slugParam, navigate]);
 
   const toggleCategory = (id: string) => {
-    setExpandedCategories(prev => 
+    setExpandedCategories(prev =>
       prev.includes(id) ? prev.filter(c => c !== id) : [...prev, id]
     );
   };
@@ -56,8 +74,8 @@ export const DocsView: React.FC = () => {
 
   const activeSlug = slugParam || docs[0]?.slug;
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
-  const content = currentDoc?.content || '# Document Not Found';
-  const headings = extractHeadings(content);
+  const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
+  const headings = extractHeadings(renderedContent);
 
   const renderNav = (items: DocItem[], level = 0) => {
     return items.map(item => {
@@ -71,13 +89,13 @@ export const DocsView: React.FC = () => {
             <div>
               <button
                 onClick={() => toggleCategory(item.id)}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors flex items-center justify-between text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800`}
+                className="w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors flex items-center justify-between text-[var(--lander-fg)] hover:bg-[var(--lander-panel)]"
                 style={{ paddingLeft: `${level * 12 + 12}px` }}
               >
                 <span className="flex items-center gap-2">
-                   {item.title}
+                  {item.title}
                 </span>
-                {isExpanded ? <ChevronDown className="w-4 h-4 text-slate-400" /> : <ChevronRight className="w-4 h-4 text-slate-400" />}
+                {isExpanded ? <ChevronDown className="w-4 h-4 text-[var(--lander-fg-subtle)]" /> : <ChevronRight className="w-4 h-4 text-[var(--lander-fg-subtle)]" />}
               </button>
               {isExpanded && (
                 <div className="mt-1">
@@ -89,13 +107,13 @@ export const DocsView: React.FC = () => {
             <NavLink
               to={`/docs/${item.id}`}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
-                isActive 
-                  ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400' 
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                isActive
+                  ? 'bg-[var(--lander-accent-soft)] text-[var(--lander-accent)]'
+                  : 'text-[var(--lander-fg-muted)] hover:bg-[var(--lander-panel)]'
               }`}
               style={{ paddingLeft: `${level * 12 + 12}px` }}
             >
-              {isActive && <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />}
+              {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[var(--lander-accent)] shrink-0" />}
               <span className="truncate">{item.title}</span>
             </NavLink>
           )}
@@ -105,11 +123,10 @@ export const DocsView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-[calc(100vh-64px)] pt-16">
-      {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 md:h-[calc(100vh-64px)] md:sticky md:top-16 overflow-y-auto">
+    <div className="lander-doc-shell flex flex-col md:flex-row pt-16">
+      <aside className="w-full md:w-72 border-r border-[var(--lander-border)] bg-[color:var(--lander-panel-muted)]/85 md:sticky md:top-16 self-start">
         <div className="p-6">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+          <h3 className="text-xs font-bold text-[var(--lander-fg-subtle)] uppercase tracking-widest mb-4 flex items-center gap-2">
             <Book className="w-4 h-4" /> Documentation
           </h3>
           <nav className="space-y-1">
@@ -118,24 +135,38 @@ export const DocsView: React.FC = () => {
         </div>
       </aside>
 
-      {/* Main Content Area */}
-      <main className="flex-1 p-6 md:p-12 overflow-y-auto">
+      <main className="flex-1 p-6 md:p-12">
         <div className="max-w-3xl mx-auto flex flex-col lg:flex-row gap-12">
-          <div className="flex-1 min-w-0">
-            <MarkdownViewer content={content} />
+          <div className="lander-content-card flex-1 min-w-0 rounded-[24px] p-6 md:p-10">
+            {currentDoc && (
+              <header className="mb-8 border-b border-[var(--lander-border)] pb-8">
+                <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[var(--lander-fg-subtle)]">
+                  <span>{currentDoc.section}</span>
+                  {currentDoc.metadata.date && (
+                    <>
+                      <span className="text-[var(--lander-fg-subtle)]/60">/</span>
+                      <span>{currentDoc.metadata.date}</span>
+                    </>
+                  )}
+                </div>
+                <h1 className="mt-4 text-4xl font-extrabold text-[var(--lander-fg)]">
+                  {currentDoc.title}
+                </h1>
+              </header>
+            )}
+            <MarkdownViewer content={renderedContent} />
           </div>
 
-          {/* Table of Contents (Desktop) */}
           {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (
             <aside className="hidden lg:block w-48 shrink-0">
               <div className="sticky top-8">
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">On this page</h4>
+                <h4 className="text-xs font-bold text-[var(--lander-fg-subtle)] uppercase tracking-widest mb-4">On this page</h4>
                 <nav className="space-y-3">
                   {headings.map((h, idx) => (
-                    <a 
-                      key={idx} 
+                    <a
+                      key={idx}
                       href={`#${h.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}`}
-                      className="block text-xs text-slate-500 hover:text-indigo-500 transition-colors truncate"
+                      className="block text-xs text-[var(--lander-fg-muted)] hover:text-[var(--lander-accent)] transition-colors truncate"
                       title={h}
                     >
                       {h}

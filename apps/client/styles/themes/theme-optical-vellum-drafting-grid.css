@@ -4,52 +4,62 @@
 */
 
 :root[data-theme="optical-vellum-drafting-grid"] {
-  --bg-app: #fdfdf5;
-  --bg-panel: #fdfdf5;
-  --bg-inset: #d4eec7;
+  --ovdg-bg-vellum: #fdfdf5;
+  --ovdg-grid-line: rgba(45, 90, 39, 0.08);
+  --ovdg-ink-black: #0a0c0a;
+  --ovdg-vellum-green: #1a3a16;
+  --ovdg-pickle-muted: #d4eec7;
+  --ovdg-pickle-deep: #1a3a16;
+  --ovdg-panel-tint: rgba(255, 255, 255, 0.4);
+  --ovdg-signal-wash: rgba(26, 58, 22, 0.08);
+  --ovdg-meta-fade: rgba(0, 0, 0, 0.5);
+
+  --bg-app: var(--ovdg-bg-vellum);
+  --bg-panel: var(--ovdg-bg-vellum);
+  --bg-inset: var(--ovdg-pickle-muted);
   --code-block-bg: #151815;
 
-  --border-color: #0a0c0a;
+  --border-color: var(--ovdg-ink-black);
   --border-width: 2px;
 
-  --fg-primary: #0a0c0a;
-  --fg-secondary: #1a3a16;
-  --fg-muted: rgba(10, 12, 10, 0.5);
+  --fg-primary: var(--ovdg-ink-black);
+  --fg-secondary: var(--ovdg-pickle-deep);
+  --fg-muted: var(--ovdg-meta-fade);
 
-  --accent: #00ff41;
+  --accent: var(--ovdg-vellum-green);
 
-  --status-ok: #00ff41;
-  --status-warn: #d4eec7;
+  --status-ok: var(--ovdg-vellum-green);
+  --status-warn: var(--ovdg-pickle-deep);
   --status-error: #bb2f2f;
 
-  --table-header-bg: rgba(0, 255, 65, 0.05);
-  --table-header-fg: #0a0c0a;
-  --table-row-primary-bg: #fdfdf5;
-  --table-row-secondary-bg: #d4eec7;
+  --table-header-bg: var(--ovdg-signal-wash);
+  --table-header-fg: var(--ovdg-ink-black);
+  --table-row-primary-bg: var(--ovdg-bg-vellum);
+  --table-row-secondary-bg: var(--ovdg-pickle-muted);
 
   --texture-opacity: 0.08;
 }
 
 .theme-optical-vellum-drafting-grid .chassis-shell {
   background:
-    linear-gradient(rgba(45, 90, 39, 0.08) 1px, transparent 1px) 0 0 / 20px 20px,
-    linear-gradient(90deg, rgba(45, 90, 39, 0.08) 1px, transparent 1px) 0 0 / 20px 20px,
-    linear-gradient(180deg, #fdfdf5 0%, #f7f8ee 100%);
+    linear-gradient(var(--ovdg-grid-line) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(90deg, var(--ovdg-grid-line) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(180deg, var(--ovdg-bg-vellum) 0%, var(--ovdg-bg-vellum) 100%);
 }
 
 .theme-optical-vellum-drafting-grid .app-header,
 .theme-optical-vellum-drafting-grid .status-bar {
-  background: #fdfdf5;
-  color: #0a0c0a;
-  border-color: #0a0c0a;
+  background: var(--ovdg-bg-vellum);
+  color: var(--ovdg-ink-black);
+  border-color: var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .action-rail,
 .theme-optical-vellum-drafting-grid .workspace-sidebar,
 .theme-optical-vellum-drafting-grid .workspace-stage,
 .theme-optical-vellum-drafting-grid .project-selector-chassis {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: #0a0c0a;
+  background: var(--ovdg-panel-tint);
+  border-color: var(--ovdg-ink-black);
   backdrop-filter: blur(2px);
 }
 
@@ -64,10 +74,10 @@
 .theme-optical-vellum-drafting-grid .project-modal-action,
 .theme-optical-vellum-drafting-grid .theme-selector-action,
 .theme-optical-vellum-drafting-grid .command-palette-item {
-  background: #fdfdf5;
-  color: #0a0c0a;
-  border-color: #0a0c0a;
-  box-shadow: 2px 2px 0 #0a0c0a;
+  background: transparent;
+  color: var(--ovdg-ink-black);
+  border-color: var(--ovdg-ink-black);
+  box-shadow: 2px 2px 0 var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .header-btn:hover,
@@ -80,7 +90,7 @@
 .theme-optical-vellum-drafting-grid .project-modal-action:hover,
 .theme-optical-vellum-drafting-grid .theme-selector-action:hover,
 .theme-optical-vellum-drafting-grid .command-palette-item:hover {
-  background: #00ff41;
+  background: var(--ovdg-vellum-green);
   transform: translate(-1px, -1px);
 }
 
@@ -89,17 +99,17 @@
 .theme-optical-vellum-drafting-grid .view-toolbar-btn.active,
 .theme-optical-vellum-drafting-grid .mode-btn.active,
 .theme-optical-vellum-drafting-grid .project-btn.is-active {
-  background: #0a0c0a;
-  color: #fdfdf5;
-  border-color: #0a0c0a;
+  background: var(--ovdg-ink-black);
+  color: var(--ovdg-bg-vellum);
+  border-color: var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .panel-toolbar,
 .theme-optical-vellum-drafting-grid .view-toolbar,
 .theme-optical-vellum-drafting-grid .project-header,
 .theme-optical-vellum-drafting-grid .workspace-panel-header {
-  background: rgba(0, 255, 65, 0.05);
-  border-bottom-color: #0a0c0a;
+  background: var(--ovdg-signal-wash);
+  border-bottom-color: var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .editor-pane,
@@ -114,7 +124,7 @@
 
 .theme-optical-vellum-drafting-grid .preview-pane,
 .theme-optical-vellum-drafting-grid .workspace-preview {
-  background: #fdfdf5;
+  background: var(--ovdg-bg-vellum);
 }
 
 .theme-optical-vellum-drafting-grid .markdown-body h1,
@@ -124,12 +134,12 @@
 }
 
 .theme-optical-vellum-drafting-grid .markdown-body blockquote {
-  border-left-color: #00ff41;
+  border-left-color: var(--ovdg-vellum-green);
 }
 
 .theme-optical-vellum-drafting-grid .markdown-body code {
-  background: #d4eec7;
-  color: #1a3a16;
+  background: var(--ovdg-pickle-muted);
+  color: var(--ovdg-pickle-deep);
 }
 
 .theme-optical-vellum-drafting-grid .markdown-body pre,
@@ -137,19 +147,19 @@
 .theme-optical-vellum-drafting-grid .preview-pane pre {
   background: #151815;
   color: #ddffe3;
-  border: 2px solid #0a0c0a;
+  border: 2px solid var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .markdown-body a,
 .theme-optical-vellum-drafting-grid .status-value,
 .theme-optical-vellum-drafting-grid .status-led-dot.ok {
-  color: #1a3a16;
+  color: var(--ovdg-pickle-deep);
 }
 
 .theme-optical-vellum-drafting-grid .status-label,
 .theme-optical-vellum-drafting-grid .status-meta,
 .theme-optical-vellum-drafting-grid .status-separator {
-  color: rgba(10, 12, 10, 0.5);
+  color: var(--ovdg-meta-fade);
 }
 
 .theme-optical-vellum-drafting-grid .project-create-modal-surface,
@@ -157,9 +167,9 @@
 .theme-optical-vellum-drafting-grid .input-modal-surface,
 .theme-optical-vellum-drafting-grid .command-palette-surface,
 .theme-optical-vellum-drafting-grid .settings-modal-surface {
-  background: #fdfdf5;
-  border: 2px solid #0a0c0a;
-  box-shadow: 8px 8px 0 #0a0c0a;
+  background: var(--ovdg-bg-vellum);
+  border: 2px solid var(--ovdg-ink-black);
+  box-shadow: 8px 8px 0 var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .project-create-modal-header,
@@ -167,16 +177,16 @@
 .theme-optical-vellum-drafting-grid .input-modal-header,
 .theme-optical-vellum-drafting-grid .settings-modal-header,
 .theme-optical-vellum-drafting-grid .command-palette-header {
-  background: #eaf2df;
-  color: #0a0c0a;
-  border-bottom-color: #0a0c0a;
+  background: var(--ovdg-signal-wash);
+  color: var(--ovdg-ink-black);
+  border-bottom-color: var(--ovdg-ink-black);
 }
 
 .theme-optical-vellum-drafting-grid .project-input,
 .theme-optical-vellum-drafting-grid .command-palette-input,
 .theme-optical-vellum-drafting-grid .settings-input,
 .theme-optical-vellum-drafting-grid .settings-select {
-  background: #fffffb;
-  border-color: #0a0c0a;
-  color: #0a0c0a;
+  background: var(--ovdg-bg-vellum);
+  border-color: var(--ovdg-ink-black);
+  color: var(--ovdg-ink-black);
 }

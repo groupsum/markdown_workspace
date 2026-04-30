@@ -1,4 +1,4 @@
-# @mdwrk/lander
+﻿# @mdwrk/lander
 
 - category: app
 - workspace path: `apps/lander`
@@ -15,6 +15,11 @@
 
 - package README: `apps/lander/README.md`
 - generated API/reference page: `docs/reference/apps/mdwrk-lander.md`
+
+## Documentation scope rule
+
+- the lander is a documentation surface for `@mdwrk/mdwrkspace`, shared packages, and extensions
+- it should not use its on-site docs to document `@mdwrk/lander` itself as the primary product
 
 ## Tests / examples / integration fixtures
 
