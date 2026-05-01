@@ -27,21 +27,16 @@ const CHROME_PATH = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const THEMES = [...THEME_IDS];
 
 const VIEWPORT_CASES = [
-  { id: 'portrait-xxs-short-touch', aspectId: 'portrait', widthTier: 'xxs', heightTier: 'short', deviceTier: 'touch', width: 320, height: 560, isMobile: true, hasTouch: true },
-  { id: 'portrait-xs-compact-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'compact', deviceTier: 'touch', width: 420, height: 640, isMobile: true, hasTouch: true },
-  { id: 'portrait-sm-medium-touch', aspectId: 'portrait', widthTier: 'sm', heightTier: 'medium', deviceTier: 'touch', width: 560, height: 800, isMobile: true, hasTouch: true },
-  { id: 'portrait-md-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 700, height: 1000 },
-  { id: 'portrait-lg-x-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'x-tall', deviceTier: 'precision', width: 768, height: 1100 },
-  { id: 'portrait-xl-ultra-tall', aspectId: 'portrait', widthTier: 'xl', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1024, height: 1400 },
-  { id: 'square-xxs-xx-short', aspectId: 'square', widthTier: 'xxs', heightTier: 'xx-short', deviceTier: 'precision', width: 320, height: 340 },
-  { id: 'square-xs-x-short', aspectId: 'square', widthTier: 'xs', heightTier: 'x-short', deviceTier: 'precision', width: 420, height: 440 },
-  { id: 'square-sm-short', aspectId: 'square', widthTier: 'sm', heightTier: 'short', deviceTier: 'precision', width: 560, height: 580 },
-  { id: 'square-md-compact', aspectId: 'square', widthTier: 'md', heightTier: 'compact', deviceTier: 'precision', width: 680, height: 700 },
-  { id: 'square-lg-medium', aspectId: 'square', widthTier: 'lg', heightTier: 'medium', deviceTier: 'precision', width: 820, height: 860 },
+  { id: 'portrait-xs-short-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'short', deviceTier: 'touch', width: 420, height: 560, isMobile: true, hasTouch: true },
+  { id: 'portrait-sm-compact-touch', aspectId: 'portrait', widthTier: 'sm', heightTier: 'compact', deviceTier: 'touch', width: 560, height: 680, isMobile: true, hasTouch: true },
+  { id: 'portrait-md-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 700, height: 960 },
+  { id: 'portrait-lg-ultra-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'ultra-tall', deviceTier: 'precision', width: 820, height: 1320 },
+  { id: 'portrait-xl-ultra-tall', aspectId: 'portrait', widthTier: 'xl', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1200, height: 1800 },
+  { id: 'square-hybrid-sm-short', aspectId: 'square-hybrid', widthTier: 'sm', heightTier: 'short', deviceTier: 'precision', width: 560, height: 580 },
+  { id: 'square-hybrid-lg-compact', aspectId: 'square-hybrid', widthTier: 'lg', heightTier: 'compact', deviceTier: 'precision', width: 820, height: 700 },
   { id: 'landscape-xl-tall', aspectId: 'landscape', widthTier: 'xl', heightTier: 'tall', deviceTier: 'precision', width: 1280, height: 960 },
-  { id: 'wide-xxl-medium', aspectId: 'wide', widthTier: 'xxl', heightTier: 'medium', deviceTier: 'precision', width: 1600, height: 800 },
-  { id: 'ultrawide-xxl-short', aspectId: 'ultrawide', widthTier: 'xxl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 520 },
-  { id: 'ultrawide-xxxl-x-short', aspectId: 'ultrawide', widthTier: 'xxxl', heightTier: 'x-short', deviceTier: 'precision', width: 2200, height: 470 },
+  { id: 'wide-xxl-compact', aspectId: 'wide', widthTier: 'xxl', heightTier: 'compact', deviceTier: 'precision', width: 1600, height: 800 },
+  { id: 'ultra-wide-xxl-short', aspectId: 'ultra-wide', widthTier: 'xxl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 560 },
 ];
 const ASPECT_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.aspectId))];
 const WIDTH_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.widthTier))];
@@ -49,15 +44,15 @@ const HEIGHT_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.he
 const DEVICE_TIER_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.deviceTier))];
 const VIEWPORT_ALIASES = new Map([
   ['portrait', 'portrait'],
-  ['square', 'square'],
-  ['square-hybrid', 'square'],
-  ['square/hybrid', 'square'],
-  ['hybrid', 'square'],
+  ['square', 'square-hybrid'],
+  ['square-hybrid', 'square-hybrid'],
+  ['square/hybrid', 'square-hybrid'],
+  ['hybrid', 'square-hybrid'],
   ['landscape', 'landscape'],
   ['wide', 'wide'],
-  ['ultrawide', 'ultrawide'],
-  ['ultra-wide', 'ultrawide'],
-  ['ultra_wide', 'ultrawide'],
+  ['ultrawide', 'ultra-wide'],
+  ['ultra-wide', 'ultra-wide'],
+  ['ultra_wide', 'ultra-wide'],
 ]);
 const THEME_FILTER = (process.env.THEME_FILTER ?? '').split(',').map((value) => value.trim()).filter(Boolean);
 const VIEWPORT_FILTER = (process.env.VIEWPORT_FILTER ?? '').split(',').map((value) => value.trim()).filter(Boolean);

@@ -1,9 +1,9 @@
 /* MdWork: Viewport & Aspect Ratio Matrix */
 
 :root {
-  --viewbox-aspect: square;
+  --viewbox-aspect: square-hybrid;
   --viewbox-width: lg;
-  --viewbox-height: medium;
+  --viewbox-height: tall;
   --viewbox-device: precision;
   --viewbox-safe-top: 10px;
   --viewbox-safe-right: 10px;
@@ -24,7 +24,7 @@
 
 @media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 4/3) {
   :root {
-    --viewbox-aspect: square;
+    --viewbox-aspect: square-hybrid;
     --viewbox-safe-top: 10px;
     --viewbox-safe-right: 10px;
     --viewbox-safe-bottom: 10px;
@@ -54,7 +54,7 @@
 
 @media (min-aspect-ratio: 21/9) {
   :root {
-    --viewbox-aspect: ultrawide;
+    --viewbox-aspect: ultra-wide;
     --viewbox-safe-top: 16px;
     --viewbox-safe-right: 24px;
     --viewbox-safe-bottom: 16px;
@@ -63,13 +63,7 @@
 }
 
 /* Viewbox size bands (viewbox second) */
-@media (max-width: 359px) {
-  :root {
-    --viewbox-width: xxs;
-  }
-}
-
-@media (min-width: 360px) and (max-width: 479px) {
+@media (max-width: 479px) {
   :root {
     --viewbox-width: xs;
   }
@@ -99,35 +93,13 @@
   }
 }
 
-@media (min-width: 1440px) and (max-width: 1919px) {
+@media (min-width: 1440px) {
   :root {
     --viewbox-width: xxl;
   }
 }
 
-@media (min-width: 1920px) {
-  :root {
-    --viewbox-width: xxxl;
-  }
-}
-
-@media (max-height: 359px) {
-  :root {
-    --viewbox-height: xx-short;
-    --viewbox-safe-top: 4px;
-    --viewbox-safe-bottom: 4px;
-  }
-}
-
-@media (min-height: 360px) and (max-height: 479px) {
-  :root {
-    --viewbox-height: x-short;
-    --viewbox-safe-top: 5px;
-    --viewbox-safe-bottom: 5px;
-  }
-}
-
-@media (min-height: 480px) and (max-height: 599px) {
+@media (max-height: 599px) {
   :root {
     --viewbox-height: short;
     --viewbox-safe-top: 6px;
@@ -141,25 +113,13 @@
   }
 }
 
-@media (min-height: 720px) and (max-height: 899px) {
-  :root {
-    --viewbox-height: medium;
-  }
-}
-
-@media (min-height: 900px) and (max-height: 1079px) {
+@media (min-height: 720px) and (max-height: 1079px) {
   :root {
     --viewbox-height: tall;
   }
 }
 
-@media (min-height: 1080px) and (max-height: 1279px) {
-  :root {
-    --viewbox-height: x-tall;
-  }
-}
-
-@media (min-height: 1280px) {
+@media (min-height: 1080px) {
   :root {
     --viewbox-height: ultra-tall;
   }

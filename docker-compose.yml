@@ -7,7 +7,7 @@ x-common-env: &common-env
   VITE_SITE_URL: ${VITE_SITE_URL:-https://mdwrk.com}
   VITE_GITHUB_REPO_URL: ${VITE_GITHUB_REPO_URL:-https://github.com/groupsum/markdown_workspace}
   VITE_NPM_REPO_URL: ${VITE_NPM_REPO_URL:-https://www.npmjs.com/org/mdwrk}
-  VITE_NPM_CLIENT_VERSION: ${VITE_NPM_CLIENT_VERSION:-1.4.21}
+  VITE_NPM_CLIENT_VERSION: ${VITE_NPM_CLIENT_VERSION:-1.4.23}
   VITE_NPM_PACKAGE_NAME: ${VITE_NPM_PACKAGE_NAME:-@mdwrk/mdwrkspace}
   VITE_NPM_PACKAGE_PATH: ${VITE_NPM_PACKAGE_PATH:-mdwrk/mdwrkspace}
   VITE_NPM_ESM_CDN_URL: ${VITE_NPM_ESM_CDN_URL:-https://esm.sh/@mdwrk/mdwrkspace}
@@ -38,8 +38,8 @@ services:
     restart: unless-stopped
     environment:
       <<: *common-env
-    ports:
-      - "${LANDER_PORT:-4174}:8000"
+    expose:
+      - "8000"
     networks:
       - dockerwp
 

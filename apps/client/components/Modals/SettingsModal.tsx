@@ -110,9 +110,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         <span className="settings-sidebar-icon">{section.icon}</span>
                         <span className="settings-sidebar-text">
                           <span className="settings-sidebar-label">{resolveSidebarLabel(section)}</span>
-                          {section.description ? (
-                            <span className="settings-sidebar-caption">{section.description}</span>
-                          ) : null}
                         </span>
                       </button>
                     ))}

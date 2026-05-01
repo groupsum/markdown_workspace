@@ -1,112 +1,150 @@
-# MdWork Client
-## Deterministic Markdown Rack System
+# @mdwrk/mdwrkspace
 
-MdWork is an offline-first, high-density Markdown workspace built on the **"Metallic Chassis Rack System"** philosophy. The interface is treated as a physical industrial console where functional surfaces (Plates) are slotted into a rigid structural grid (Chassis).
+`@mdwrk/mdwrkspace` is the MdWork client application package. It ships the offline-first Markdown workspace, the runtime-backed shell surfaces, the extension host adapters, the retained-version PWA client, and the shared responsive layout contract used by every client theme.
 
----
+## Layout model
 
-### 1. Structural Mental Model (ASCII)
-
-The application follows a monolithic chassis partitioned by heavy divides and crisp optical alignment. Every component is a "Plate" that fits into the "Rack".
+The shell layout stays structurally consistent across themes even when each theme restyles the surfaces:
 
 ```text
-_______________________________________________________________________
-| [H] APP_HEADER (Tabs, System Status, Global Scaling)               |
-|_____________________________________________________________________|
-| [A] | [W] WORK_PANE (Structural Manifold)                          |
-|     |_______________________________________________________________|
-| ACT | [E] EXPLORER    | [S] SPLIT_STAGE (EDITOR / PREVIEW)          |
-| ION |                 |                                             |
-|     | (Registry Tree) | (Execution Core)    | (Render Output)       |
-| RAI |                 |                     |                       |
-| L   |                 |                     |                       |
-|_____|_________________|_____________________|_______________________|
-| [F] STATUS_BAR (Telemetry, Storage Health, PWA Version)             |
-|_____________________________________________________________________|
++----------------------------------------------------------------------------------+
+| Header                                                                           |
+| Tabs, project switcher, zoom, settings, retained-version PWA actions             |
++--------------------+-------------------------------------------------------------+
+| Action rail        | Work pane                                                   |
+| Commands, modes,   | +---------------------------+-----------------------------+ |
+| project/system     | | Explorer panel            | Split stage                 | |
+| shortcuts          | | File tree or workspace    | Editor pane and preview     | |
+|                    | | browser surface           | pane, with resizable split  | |
+|                    | +---------------------------+-----------------------------+ |
++--------------------+-------------------------------------------------------------+
+| Footer / status bar                                                              |
+| Cursor telemetry, dirty state, connectivity, installed/update state, build info  |
++----------------------------------------------------------------------------------+
 ```
 
----
+- The `Explorer` is a panel. It hosts the file tree by default and can be replaced by workspace-browser surfaces registered by core features or extensions.
+- The `split stage` describes panes, not a workspace-specific mode. In the default editor surface it is the editor pane plus preview pane; in extension panes it becomes the extension's primary content panes.
+- Workspace views are rendered into the work pane through the view registry, so layout language stays stable whether the active surface is the editor, Git operations, Theme Studio, Language Pack Studio, or the extension manager.
 
-### 2. Component System Architecture
+## Component system architecture
 
-#### [H] App Header (The Control Deck)
-The primary system navigation and identity layer.
-- **Context Tabs**: Zero-navigation switching between active buffers using a physical tab-strip metaphor.
-- **Brand/Project**: Quick context switching via the Project Selector.
-- **System Controls**: Global UI density scaling and direct access to systemic settings.
+### Shell and runtime
 
-#### [A] Action Rail (Atomic I/O)
-The high-frequency vertical strip designed for "one-click" deterministic operations.
-- **Mode Toggle**: Switches between Workspace (Manifold) and Git/Sync views.
-- **Structure Controls**: Collapse/Expand the Registry (Explorer).
-- **Physical Actions**: Instant File/Folder creation and data persistence triggers.
+- `src/app/AppRoot.tsx` boots the app controller, PWA controller, runtime provider, extension runtime provider, and host keyboard shortcuts.
+- `src/app/runtime/ClientRuntimeContext.tsx` exposes the runtime snapshot, services, and extension host through React context.
+- `src/app/runtime/useCoreSurfaceRegistrations.tsx` registers core commands, settings sections, modal views, and rail actions.
+- `src/shell/AppShell.tsx` composes the chassis, project selector, header, action rail, work pane, footer, modal layer, and toast layer.
+- `src/shell/ViewLayerHost.tsx` renders modal-capable registered views such as system configuration and the command palette.
 
-#### [W] Work Pane (The Manifold)
-The main structural container that orchestrates the relationship between the file system and the execution stage.
-- **Heavy Divide**: Manages the 2px-4px "gap" or contact points between the Sidebar and the Stage.
-- **Transition Logic**: Animates the sliding "Plates" when the explorer is toggled.
+### Chassis and work surfaces
 
-#### [E] Explorer (The Registry)
-A dense, scan-optimized hierarchical tree structure for navigating the IndexedDB node-set.
-- **State Awareness**: Highlights the active document and handles drag-and-drop structural reorganization.
-- **Materiality**: Uses high-contrast backgrounds to differentiate from the editing surface.
+- `components/Chassis/Header/Header.tsx` owns tabs, project switching, zoom, and settings entry.
+- `components/Chassis/WorkPane/WorkPane.tsx` owns the explorer panel, panel resizing, stage mounting, and idle state.
+- `components/Chassis/WorkPane/Stage/EditorPane.tsx` owns editor-only, split, and preview-only pane modes plus the stage splitter and table-builder modal.
+- `components/Markdown/WorkspaceMarkdownEditor.tsx` and `components/Markdown/WorkspaceMarkdownRenderer.tsx` bind the portable editor and renderer packages into the shell.
+- `components/Chassis/Git/GitPane.tsx` mounts source-control surfaces as work-pane content rather than as an inner sidebar clone.
 
-#### [S] Split Stage (The Execution Core)
-The primary functional surface for data entry and visualization.
-- **Deterministic Split**: A resizable divide between raw Markdown input and the GFM rendered output.
-- **GFM Engine**: Full support for tables, task lists, and syntax-highlighted code blocks.
-- **Telemetry**: Sends real-time LN/COL coordinates to the Status Bar.
+### Extension system architecture
 
-#### [F] Status Bar (Telemetry Surface)
-The always-available strip for environment awareness and health monitoring.
-- **Caret Tracking**: Precision cursor positioning.
-- **Persistence Health**: Explicit visibility of IndexedDB stability (Synced/Dirty states).
-- **PWA Awareness**: Online/Offline status and version telemetry.
+- `src/extensions/host/createClientExtensionHost.ts` builds the host bridge used by bundled and installed extensions.
+- `src/extensions/host/adapters/*` maps extension capabilities onto shell services: action rail, commands, diagnostics, editor, i18n, notifications, settings, theme, views, and workspace APIs.
+- `src/extensions/runtime/ExtensionRuntimeProvider.tsx` mounts the runtime, bundled registrations, trust policy, smoke gates, and diagnostics.
+- `src/extensions/runtime/createClientExtensionRegistrationSink.tsx` converts runtime registrations into client-visible shell surfaces.
+- `packages/extensions/extension-runtime` is the portable extension engine for manifests, activation, install/update/remove, compatibility checks, and persisted runtime state.
 
----
+## Hooks
 
-### 3. Technical Principles (Brutahaus Logic)
+The client uses a small shell-facing hook layer instead of wiring component state ad hoc.
 
-- **Offline-First**: Powered by a service worker and IndexedDB primary storage. 
-- **Deterministic UI**: State is persisted locally so the app resumes exactly where you left off.
-- **Milled Zinc Aesthetic**: Utilizing high-contrast borders and radial microgrids to simulate physical materiality.
-- **Optical Type**: Typefaces are selected and scaled for maximum legibility in high-density, low-chrome environments.
+### Runtime and shell hooks
 
-> "Structure is the only truth in a digital layout."
+- `useClientRuntimeSnapshot()` reads the app and PWA runtime snapshot.
+- `useClientRuntimeServices()` reads service registries for views, commands, settings, action rail, diagnostics, and i18n.
+- `useClientExtensionHost()` exposes the extension host adapter surface.
+- `useHostKeyboardShortcuts()` binds registered commands to the host keyboard surface.
 
----
+### Feature hooks
 
-### 4. Viewport + Aspect Ratio Matrix
+- `useClientI18n()` exposes translated labels, active locale, and locale mutation.
+- `useWorkspacePreferences()` reads persisted workspace layout, toolbar, and export preferences.
+- `useActiveEditorBridge()` lets commands and extensions target the active editor safely.
+- `useMarkdownProfileConfig()` controls Markdown capability profiles and HTML trust policy.
+- `useStoredLanguagePacks()` exposes built-in and installed language packs from device-local persistence.
+- `useApp()` and `usePwa()` provide the app controller and retained-version PWA state used during shell bootstrap.
 
-MdWork defines a shared breakpoint contract in the core stylesheet so every theme responds to the same aspect ratios, viewboxes, and device classes while still styling them uniquely. The canonical definitions live in `apps/client/styles/base/viewports.css`.【F:apps/client/styles/base/viewports.css†L1-L120】
+## Available extensions
 
-**Aspect Ratio Bands (aspect first)**
-- **Portrait**: `max-aspect-ratio: 3/4`
-- **Square/Hybrid**: `min-aspect-ratio: 3/4` and `max-aspect-ratio: 4/3`
-- **Landscape**: `min-aspect-ratio: 4/3` and `max-aspect-ratio: 16/9`
-- **Wide**: `min-aspect-ratio: 16/9` and `max-aspect-ratio: 21/9`
-- **Ultra-wide**: `min-aspect-ratio: 21/9`
+The client currently ships with these extension surfaces:
 
-**Viewbox Size Bands (viewbox second)**
-- **XXS**: `max-width: 359px`
-- **XS**: `min-width: 360px` and `max-width: 479px`
-- **SM**: `min-width: 480px` and `max-width: 599px`
-- **MD**: `min-width: 600px` and `max-width: 767px`
-- **LG**: `min-width: 768px` and `max-width: 1023px`
-- **XL**: `min-width: 1024px` and `max-width: 1439px`
-- **XXL**: `min-width: 1440px` and `max-width: 1919px`
-- **XXXL**: `min-width: 1920px`
-- **XX-short height**: `max-height: 359px`
-- **X-short height**: `min-height: 360px` and `max-height: 479px`
-- **Short height**: `min-height: 480px` and `max-height: 599px`
-- **Compact height**: `min-height: 600px` and `max-height: 719px`
-- **Medium height**: `min-height: 720px` and `max-height: 899px`
-- **Tall height**: `min-height: 900px` and `max-height: 1079px`
-- **X-tall height**: `min-height: 1080px` and `max-height: 1279px`
-- **Ultra-tall height**: `min-height: 1280px`
+- `@mdwrk/extension-runtime`: runtime engine for bundled and installed extensions.
+- `@mdwrk/extension-workspace-files`: workspace file actions and file-surface integration.
+- `@mdwrk/extension-git-ops`: source-control workspace surfaces and commands.
+- `@mdwrk/extension-manager`: runtime inventory, compatibility, enablement, and settings surface.
+- `@mdwrk/extension-gemini-agent`: AI workflow pane and settings surface.
+- `@mdwrk/extension-theme-studio`: theme authoring, token inspection, preview, and export surface.
+- `@mdwrk/extension-language-pack-studio`: language-pack authoring, import/export, and activation surface.
+- `@mdwrk/extension-catalog-hello`: sample external installable extension used to exercise the catalog path.
 
-**Device Bands (device third)**
-- **Touch**: `(hover: none) and (pointer: coarse)`
-- **Precision**: `(hover: hover) and (pointer: fine)`
+## Themes
 
-Themes may reinterpret spacing, shadows, and toolbar layouts at each breakpoint, but they must use the same breakpoint definitions to preserve the shared viewport contract. The Micropress theme uses these bands to keep its floating view toolbar aligned with the editor body corner while other themes interpret the bands with their own visual treatments.【F:apps/client/styles/themes/theme-micropress.css†L66-L149】
+Themes share one breakpoint contract and one shell structure while each theme provides its own visual system. The current catalog includes:
+
+- `tensioned-technical-skeleton`
+- `optical-vellum-drafting-grid`
+- `heavy-gauge-tectonic`
+- `ferrous-monolith`
+- `galvanized-cellular`
+- `pressed-chromium`
+- `acid-etched`
+- `zinc`
+- `anodized-billet`
+- `micropress`
+- `research-science`
+- `pneumatic-mycelial-scaffolding`
+- `lander-light`
+- `lander-dark`
+- `default`
+
+## Viewbox contract
+
+The canonical viewport contract lives in `apps/client/styles/base/viewports.css`. Themes may style each band differently, but they must not redefine the breakpoint bands.
+
+### Aspect ratio bands
+
+- `portrait`: `max-aspect-ratio: 3/4`
+- `square-hybrid`: `min-aspect-ratio: 3/4` and `max-aspect-ratio: 4/3`
+- `landscape`: `min-aspect-ratio: 4/3` and `max-aspect-ratio: 16/9`
+- `wide`: `min-aspect-ratio: 16/9` and `max-aspect-ratio: 21/9`
+- `ultra-wide`: `min-aspect-ratio: 21/9`
+
+### Width tiers
+
+- `xs`: `max-width: 479px`
+- `sm`: `min-width: 480px` and `max-width: 599px`
+- `md`: `min-width: 600px` and `max-width: 767px`
+- `lg`: `min-width: 768px` and `max-width: 1023px`
+- `xl`: `min-width: 1024px` and `max-width: 1439px`
+- `xxl`: `min-width: 1440px`
+
+### Height tiers
+
+- `short`: `max-height: 599px`
+- `compact`: `min-height: 600px` and `max-height: 719px`
+- `tall`: `min-height: 720px` and `max-height: 1079px`
+- `ultra-tall`: `min-height: 1080px`
+
+### Device classes
+
+- `touch`: `(hover: none) and (pointer: coarse)`
+- `precision`: `(hover: hover) and (pointer: fine)`
+
+## Validation
+
+Useful local commands:
+
+```bash
+npm run build -w apps/client
+npm run test:run -w apps/client
+npm run screenshots:matrix -w apps/client
+```
