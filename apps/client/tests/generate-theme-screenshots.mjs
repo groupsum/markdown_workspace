@@ -27,15 +27,14 @@ const CHROME_PATH = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const THEMES = [...THEME_IDS];
 
 const VIEWPORT_CASES = [
-  { id: 'portrait-xs-short-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'short', deviceTier: 'touch', width: 420, height: 560, isMobile: true, hasTouch: true },
-  { id: 'portrait-sm-compact-touch', aspectId: 'portrait', widthTier: 'sm', heightTier: 'compact', deviceTier: 'touch', width: 560, height: 680, isMobile: true, hasTouch: true },
-  { id: 'portrait-md-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'tall', deviceTier: 'precision', width: 700, height: 960 },
+  { id: 'portrait-xs-short-touch', aspectId: 'portrait', widthTier: 'xs', heightTier: 'short', deviceTier: 'touch', width: 400, height: 560, isMobile: true, hasTouch: true },
+  { id: 'portrait-sm-tall-touch', aspectId: 'portrait', widthTier: 'sm', heightTier: 'tall', deviceTier: 'touch', width: 560, height: 760, isMobile: true, hasTouch: true },
+  { id: 'portrait-md-ultra-tall', aspectId: 'portrait', widthTier: 'md', heightTier: 'ultra-tall', deviceTier: 'precision', width: 700, height: 1100 },
   { id: 'portrait-lg-ultra-tall', aspectId: 'portrait', widthTier: 'lg', heightTier: 'ultra-tall', deviceTier: 'precision', width: 820, height: 1320 },
-  { id: 'portrait-xl-ultra-tall', aspectId: 'portrait', widthTier: 'xl', heightTier: 'ultra-tall', deviceTier: 'precision', width: 1200, height: 1800 },
-  { id: 'square-hybrid-sm-short', aspectId: 'square-hybrid', widthTier: 'sm', heightTier: 'short', deviceTier: 'precision', width: 560, height: 580 },
-  { id: 'square-hybrid-lg-compact', aspectId: 'square-hybrid', widthTier: 'lg', heightTier: 'compact', deviceTier: 'precision', width: 820, height: 700 },
-  { id: 'landscape-xl-tall', aspectId: 'landscape', widthTier: 'xl', heightTier: 'tall', deviceTier: 'precision', width: 1280, height: 960 },
-  { id: 'wide-xxl-compact', aspectId: 'wide', widthTier: 'xxl', heightTier: 'compact', deviceTier: 'precision', width: 1600, height: 800 },
+  { id: 'square-hybrid-md-compact', aspectId: 'square-hybrid', widthTier: 'md', heightTier: 'compact', deviceTier: 'precision', width: 680, height: 700 },
+  { id: 'landscape-lg-short', aspectId: 'landscape', widthTier: 'lg', heightTier: 'short', deviceTier: 'precision', width: 820, height: 560 },
+  { id: 'landscape-xl-tall', aspectId: 'landscape', widthTier: 'xl', heightTier: 'tall', deviceTier: 'precision', width: 1280, height: 950 },
+  { id: 'wide-xxl-compact', aspectId: 'wide', widthTier: 'xxl', heightTier: 'compact', deviceTier: 'precision', width: 1600, height: 700 },
   { id: 'ultra-wide-xxl-short', aspectId: 'ultra-wide', widthTier: 'xxl', heightTier: 'short', deviceTier: 'precision', width: 1600, height: 560 },
 ];
 const ASPECT_IDS = [...new Set(VIEWPORT_CASES.map((viewport) => viewport.aspectId))];
@@ -534,7 +533,7 @@ async function captureThemeViewport(browser, themeId, viewport) {
       await languagePackInput.setInputFiles(languagePackSamplePath);
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-imported');
-      const usePackButton = languagePackStudioPane.locator('button:has-text("USE")').first();
+      const usePackButton = languagePackStudioPane.locator('button').filter({ hasText: /use/i }).first();
       if (await usePackButton.isVisible().catch(() => false)) {
         await usePackButton.click({ force: true });
         await page.waitForTimeout(250);
@@ -543,10 +542,10 @@ async function captureThemeViewport(browser, themeId, viewport) {
       await languagePackStudioPane.locator('input').nth(1).fill('it-demo');
       await languagePackStudioPane.locator('input').nth(2).fill('Italiano Demo');
       await languagePackStudioPane.locator('textarea').first().fill('{\n  "core.views.settings.title": "Configurazione di sistema"\n}');
-      await languagePackStudioPane.locator('button:has-text("CREATE_AND_EXPORT")').click({ force: true });
+      await languagePackStudioPane.locator('button').filter({ hasText: /create(?:\s+|_and_)and(?:\s+|_)?export|create and export|create_and_export/i }).first().click({ force: true });
       await page.waitForTimeout(250);
       await screenshot(page, themeId, viewport.id, 'language-pack-studio-pane-created');
-      const removePackButton = languagePackStudioPane.locator('button:has-text("REMOVE")').first();
+      const removePackButton = languagePackStudioPane.locator('button').filter({ hasText: /remove/i }).first();
       if (await removePackButton.isVisible().catch(() => false)) {
         await removePackButton.click({ force: true });
         await page.waitForTimeout(250);
