@@ -1,7 +1,7 @@
 ﻿---
 title: Backstory: The Extension Host Became a First-Class mdwrk Surface
 date: 2026-01-22
-author: MdWork Engineering
+author: MdWrk Engineering
 excerpt: The mdwrk client grew into an extension host with manifest, runtime, theme, settings, and trust-policy surfaces that deserve first-class documentation.
 ---
 # Backstory: The Extension Host Became a First-Class mdwrk Surface

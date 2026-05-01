@@ -1,5 +1,5 @@
 ---
-title: mdwrk Client Installation
+title: MdWrk Client Installation
 slug: getting-started/installation
 section: Getting Started
 sectionOrder: 1

@@ -17,6 +17,18 @@ const slugify = (value: string) =>
     .trim()
     .replace(/\s+/g, '-');
 
+const toTitleCase = (value: string) =>
+  value
+    .replace(/\bmdwrk\b/gim, 'MdWrk')
+    .split(/\s+/)
+    .map((part) => {
+      if (!part) return part;
+      if (/^MdWrk$/.test(part)) return part;
+      if (/^[A-Z0-9.-]+$/.test(part)) return part;
+      return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+    })
+    .join(' ');
+
 const rawDocs = import.meta.glob('./markdown/docs/**/*.md', {
   eager: true,
   query: '?raw',
@@ -25,7 +37,8 @@ const rawDocs = import.meta.glob('./markdown/docs/**/*.md', {
 
 const docEntries = Object.entries(rawDocs).map(([path, raw]) => {
   const { metadata, content } = parseMarkdown(raw as string);
-  const title = metadata.title || path.split('/').pop()?.replace('.md', '') || 'Document';
+  const rawTitle = metadata.title || path.split('/').pop()?.replace('.md', '') || 'Document';
+  const title = toTitleCase(String(rawTitle));
   const slug = metadata.slug || slugify(title);
   const section = metadata.section || 'Docs';
   const sectionOrder = Number(metadata.sectionOrder ?? 999);

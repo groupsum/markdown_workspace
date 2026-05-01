@@ -1,5 +1,5 @@
 ---
-title: mdwrk GitHub Sync
+title: MdWrk GitHub Sync
 slug: github-sync
 section: Integrations
 sectionOrder: 3

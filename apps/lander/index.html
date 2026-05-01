@@ -65,21 +65,24 @@
       html,
       body,
       #root {
+        height: auto;
         min-height: 100%;
         width: 100%;
       }
       html {
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: visible;
       }
       body {
         margin: 0;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: visible;
       }
       #root {
-        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: visible;
       }
+      main { overflow: visible; }
       body {
         background-color: #ffffff;
         color: #0f172a;

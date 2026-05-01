@@ -1,5 +1,5 @@
 ﻿---
-title: mdwrk Extension Platform
+title: MdWrk Extension Platform
 slug: extensions/extension-platform
 section: Extensions
 sectionOrder: 4

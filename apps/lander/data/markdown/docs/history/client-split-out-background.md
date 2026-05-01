@@ -1,5 +1,5 @@
 ﻿---
-title: Backstory: mdwrk Client Split-Out
+title: Backstory: MdWrk Client Split-Out
 slug: history/client-split-out-background
 section: History
 sectionOrder: 5

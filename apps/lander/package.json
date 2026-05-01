@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:deps": "npm --prefix ../.. run build:renderer",
+    "build:deps": "npm --prefix ../.. run build:editor",
     "build": "npm run build:deps && node ./scripts/generate-sitemap.mjs && vite build",
     "preview": "vite preview",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",

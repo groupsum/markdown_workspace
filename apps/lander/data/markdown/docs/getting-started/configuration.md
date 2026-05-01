@@ -1,5 +1,5 @@
 ---
-title: mdwrk Client Configuration
+title: MdWrk Client Configuration
 slug: getting-started/configuration
 section: Getting Started
 sectionOrder: 1

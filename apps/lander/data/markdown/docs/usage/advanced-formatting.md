@@ -1,5 +1,5 @@
 ---
-title: mdwrk Markdown Formatting
+title: MdWrk Markdown Formatting
 slug: usage/advanced-formatting
 section: Product
 sectionOrder: 2

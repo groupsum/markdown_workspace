@@ -1,5 +1,5 @@
 ---
-title: mdwrk Editor Basics
+title: MdWrk Editor Basics
 slug: usage/editor-basics
 section: Product
 sectionOrder: 2

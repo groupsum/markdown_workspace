@@ -1,5 +1,5 @@
 ﻿---
-title: Theme Studio and mdwrk Host Surfaces
+title: Theme Studio and MdWrk Host Surfaces
 slug: extensions/theme-studio-and-host-surfaces
 section: Extensions
 sectionOrder: 4

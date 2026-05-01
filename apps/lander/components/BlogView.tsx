@@ -37,6 +37,13 @@ export const BlogView: React.FC = () => {
       id: path,
       ...parseMarkdown(contentFiles[path as keyof typeof contentFiles])
     }))
+    .filter((post) => {
+      const title = post.metadata.title?.trim();
+      const excerpt = post.metadata.excerpt?.trim();
+      const author = post.metadata.author?.trim();
+      const date = post.metadata.date?.trim();
+      return Boolean(title && excerpt && author && date);
+    })
     .sort((a, b) => {
       const dateSort = toPostTime(b.metadata.date) - toPostTime(a.metadata.date);
       if (dateSort !== 0) return dateSort;
