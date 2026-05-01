@@ -68,7 +68,6 @@ export const SettingsView: React.FC = () => {
       isOpen
       onClose={() => { void services.views.close('core.settings'); }}
       sections={sections}
-      activeThemeLabel={runtime.app.state.currentThemeDef.name}
       initialSectionId={initialSectionId}
     />
   );

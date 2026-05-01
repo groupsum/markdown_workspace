@@ -15,7 +15,6 @@ interface SettingsModalProps {
   readonly isOpen: boolean;
   readonly onClose: () => void;
   readonly sections: readonly SettingsModalSection[];
-  readonly activeThemeLabel?: string;
   readonly initialSectionId?: string | null;
 }
 
@@ -23,7 +22,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   isOpen,
   onClose,
   sections,
-  activeThemeLabel,
   initialSectionId,
 }) => {
   const { t } = useClientI18n();
@@ -133,12 +131,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <span className="settings-content-meta-label">{t('core.settings.meta.section', 'SECTION')}</span>
                   <span className="settings-content-meta-value">{orderedSections.findIndex((section) => section.id === activeSection.id) + 1}/{orderedSections.length}</span>
                 </div>
-                {activeThemeLabel && (
-                  <div className="settings-content-meta-chip">
-                    <span className="settings-content-meta-label">{t('core.settings.visual.active-theme', 'ACTIVE_THEME')}</span>
-                    <span className="settings-content-meta-value">{activeThemeLabel}</span>
-                  </div>
-                )}
               </div>
             </div>
 
