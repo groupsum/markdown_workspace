@@ -1,0 +1,4 @@
+services:
+  lander:
+    ports:
+      - "${LANDER_DEV_BIND:-127.0.0.1}:${LANDER_DEV_PORT:-18080}:80"

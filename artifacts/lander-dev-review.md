@@ -1,0 +1,111 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Star" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: Star
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Docs" [ref=e27] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e28]:
+          - link "Blog" [ref=e29] [cursor=pointer]:
+            - /url: /blog
+  - main [ref=e30]:
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]: Client
+        - generic [ref=e38]: mdwrk workspace, packages, and extensions documented here
+        - img [ref=e39]
+      - heading "The Local-First Markdown Workspace" [level=1] [ref=e46]
+      - paragraph [ref=e47]: MdWrk is the workspace client, renderer/editor package family, and extension host for local-first markdown work. The lander is only the documentation and release surface.
+      - generic [ref=e48]:
+        - link "Get from npm" [ref=e49] [cursor=pointer]:
+          - /url: https://www.npmjs.com/org/mdwrk
+          - text: Get from npm
+          - img [ref=e50]
+        - link "Install" [ref=e53] [cursor=pointer]:
+          - /url: https://app.mdwrk.com
+      - generic [ref=e54]:
+        - generic [ref=e55]: ESM CDN
+        - link "https://esm.sh/@mdwrk/mdwrkspace" [ref=e56] [cursor=pointer]:
+          - /url: https://esm.sh/@mdwrk/mdwrkspace
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - heading "Designed for Privacy, Built for Reusable Surfaces" [level=2] [ref=e60]
+        - paragraph [ref=e61]: The workspace client is the product surface. The lander is a guided window into the client, the shared packages, and the extension platform.
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - img [ref=e65]
+          - heading "Offline First" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Built as a Progressive Web App (PWA). Install the mdwrk client once, keep working offline, and sync only when you choose to.
+        - generic [ref=e74]:
+          - img [ref=e76]
+          - heading "Split Packages" [level=3] [ref=e80]
+          - paragraph [ref=e81]: The editor and previewer are separate mdwrk packages, so the client, examples, and docs can all consume the same public surfaces.
+        - generic [ref=e82]:
+          - img [ref=e84]
+          - heading "Extension Ready" [level=3] [ref=e86]
+          - paragraph [ref=e87]: The client hosts bundled and external extensions through a governed runtime, manifest, settings, and trust policy stack.
+        - generic [ref=e88]:
+          - img [ref=e90]
+          - heading "Zero Knowledge" [level=3] [ref=e92]
+          - paragraph [ref=e93]: No hosted authoring backend owns your markdown. Data stays local unless you connect your own Git provider.
+        - generic [ref=e94]:
+          - img [ref=e96]
+          - heading "Local Database" [level=3] [ref=e100]
+          - paragraph [ref=e101]: IndexedDB persistence keeps workspaces, sessions, themes, and extension state local to the device.
+        - generic [ref=e102]:
+          - img [ref=e104]
+          - heading "GitHub Sync" [level=3] [ref=e107]
+          - paragraph [ref=e108]: Optional Git provider integration keeps repository operations additive instead of mandatory.
+        - generic [ref=e109]:
+          - img [ref=e111]
+          - heading "Shared Themes" [level=3] [ref=e117]
+          - paragraph [ref=e118]: Renderer, editor, docs, blog, and client app all consume mdwrk theme contracts instead of forking per-surface styling.
+        - generic [ref=e119]:
+          - img [ref=e121]
+          - heading "Blazing Fast" [level=3] [ref=e123]
+          - paragraph [ref=e124]: No network round-trip for typing or previewing. The client stays responsive because the editor and preview pipeline are local.
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - heading "One Editor Package. One Preview Package. Shared Everywhere." [level=2] [ref=e128]
+        - paragraph [ref=e129]: The lander demo now runs through the same public mdwrk editor and renderer packages that the client ships.
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e136]
+          - generic [ref=e145]
+        - generic [ref=e149]:
+          - generic [ref=e152]
+          - generic [ref=e187]
+        - generic [ref=e234]:
+          - generic [ref=e235]
+          - generic [ref=e238]
+    - generic [ref=e242]:
+      - heading "Your Data Stays on Your Device" [level=2] [ref=e243]
+      - paragraph [ref=e244]: MdWork utilizes IndexedDB to store your workspaces directly in your browser. No AI servers scan your content, no trackers follow your keys.
+      - generic [ref=e245]: "Privacy Standard: Verified Local"
+  - contentinfo [ref=e247]:
+    - generic [ref=e248]:
+      - generic [ref=e249]:
+        - generic [ref=e250]:
+          - link "MdWrk" [ref=e251] [cursor=pointer]:
+            - /url: /
+          - paragraph [ref=e257]: The local-first markdown workspace. Your data, your device, your rules.
+        - generic [ref=e258]:
+          - generic [ref=e259]
+          - generic [ref=e270]
+          - generic [ref=e279]
+      - separator [ref=e286]
+      - generic [ref=e287]: © 2026 MdWrk. Designed for privacy.
