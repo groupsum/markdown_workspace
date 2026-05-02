@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "manifest": {
+    "manifestVersion": 1,
+    "id": "core.language-pack-studio",
+    "packageName": "@mdwrk/extension-language-pack-studio",
+    "version": "1.0.5",
+    "displayName": {
+      "key": "core.language-pack-studio.manifest.displayName",
+      "defaultMessage": "Language Pack Studio"
+    },
+    "description": {
+      "key": "core.language-pack-studio.manifest.description",
+      "defaultMessage": "Manage and make language packs."
+    },
+    "kind": "bundled",
+    "icon": {
+      "kind": "lucide",
+      "name": "Languages"
+    },
+    "enabledByDefault": true,
+    "capabilities": [
+      "view.register",
+      "actionRail.register",
+      "settings.read",
+      "settings.write"
+    ],
+    "capabilityPresetIds": [
+      "workspace.module.standard"
+    ],
+    "compatibility": {
+      "manifestVersion": 1,
+      "hostApi": "^1.0.0",
+      "runtime": "^1.0.0",
+      "app": ">=1.4.6",
+      "themeContract": "^1.0.0"
+    },
+    "entry": {
+      "module": "./index.js",
+      "export": "createLanguagePackStudioBundledEntry"
+    },
+    "i18n": {
+      "defaultLocale": "en",
+      "supportedLocales": [
+        "en"
+      ],
+      "catalogs": [
+        {
+          "locale": "en",
+          "path": "./locales/en.js"
+        }
+      ]
+    },
+    "contributions": {
+      "commands": [
+        {
+          "id": "core.language-pack-studio.open",
+          "title": {
+            "key": "core.language-pack-studio.commands.open.title",
+            "defaultMessage": "Open Language Pack Studio"
+          },
+          "description": {
+            "key": "core.language-pack-studio.commands.open.description",
+            "defaultMessage": "Open language pack tools."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Languages"
+          }
+        }
+      ],
+      "views": [
+        {
+          "id": "core.language-pack-studio.view",
+          "title": {
+            "key": "core.language-pack-studio.views.main.title",
+            "defaultMessage": "Language Pack Studio"
+          },
+          "description": {
+            "key": "core.language-pack-studio.views.main.description",
+            "defaultMessage": "Browse, edit, and export language packs."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Languages"
+          },
+          "location": "main",
+          "allowMultiple": false,
+          "canBePinned": true
+        },
+        {
+          "id": "core.language-pack-studio.explorer",
+          "title": {
+            "defaultMessage": "Language Pack Browser"
+          },
+          "description": {
+            "defaultMessage": "Built-in and installed language pack browser."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Languages"
+          },
+          "location": "sidebar",
+          "allowMultiple": false,
+          "canBePinned": true
+        }
+      ],
+      "components": [],
+      "workspaceModules": [
+        {
+          "id": "core.language-pack-studio.module",
+          "title": {
+            "key": "core.language-pack-studio.views.main.title",
+            "defaultMessage": "Language Pack Studio"
+          },
+          "description": {
+            "key": "core.language-pack-studio.views.main.description",
+            "defaultMessage": "Browse, edit, and export language packs."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Languages"
+          },
+          "primaryViewId": "core.language-pack-studio.view",
+          "explorerViewId": "core.language-pack-studio.explorer",
+          "supportedLayouts": [
+            "single",
+            "left",
+            "right",
+            "split"
+          ],
+          "defaultLayout": "split",
+          "settingsSectionId": "core.language-pack-studio.settings",
+          "capabilityProfiles": [
+            "workspace.module.base"
+          ],
+          "capabilityPresetIds": [
+            "workspace.module.standard"
+          ],
+          "actions": [
+            {
+              "commandId": "core.language-pack-studio.open",
+              "role": "primary",
+              "order": 10
+            }
+          ]
+        }
+      ],
+      "actionRail": [
+        {
+          "id": "core.language-pack-studio.rail",
+          "title": {
+            "key": "core.language-pack-studio.rail.title",
+            "defaultMessage": "Language Packs"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Languages"
+          },
+          "group": "extensions",
+          "order": 10,
+          "target": {
+            "kind": "view",
+            "viewId": "core.language-pack-studio.view"
+          }
+        }
+      ],
+      "settingsSections": [
+        {
+          "id": "core.language-pack-studio.settings",
+          "title": {
+            "key": "core.language-pack-studio.settings.title",
+            "defaultMessage": "Language Pack Studio"
+          },
+          "description": {
+            "key": "core.language-pack-studio.settings.description",
+            "defaultMessage": "Language pack list and tools."
+          },
+          "order": 30,
+          "schemaPath": "manifest.settingsSchema"
+        }
+      ]
+    },
+    "settingsSchema": {
+      "version": 1,
+      "title": {
+        "key": "core.language-pack-studio.settings.title",
+        "defaultMessage": "Language Pack Studio"
+      },
+      "description": {
+        "key": "core.language-pack-studio.settings.description",
+        "defaultMessage": "Language pack list and tools."
+      },
+      "sections": [],
+      "fields": []
+    }
+  },
+  "signature": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "algorithm": "ecdsa-p256-sha256",
+    "signature": "VNhCKeRoWr3148QNKPfSgEc2_YTPajBlhThmgZ2lAMqCzosg3-xoh23eum8IwAARNVzkBmjjmvxTAH5kre0GQA",
+    "signedAt": "2026-05-02T20:54:49.603Z"
+  }
+}

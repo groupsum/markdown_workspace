@@ -1,19 +1,19 @@
 
-> markdown_workspace@0.2.24 test:markdown-profile-snapshot
+> markdown_workspace@0.2.62 test:markdown-profile-snapshot
 > npm run test:run -w apps/client -- src/features/markdownProfiles/profileConfig.test.ts
 
 
-> @mdwrk/mdwrkspace@1.4.16 test:run
+> @mdwrk/mdwrkspace@1.4.23 test:run
 > vitest run src/features/markdownProfiles/profileConfig.test.ts
 
 
-[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mE:/swarmauri_github/markdown_workspace/apps/client[39m
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.8 [39m[90mE:/swarmauri_github/markdown_workspace/apps/client[39m
 
  [32m✓[39m src/features/markdownProfiles/profileConfig.test.ts [2m([22m[2m2 tests[22m[2m)[22m[90m 5[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
-[2m   Start at [22m 16:57:35
-[2m   Duration [22m 1.62s[2m (transform 186ms, setup 0ms, collect 221ms, tests 5ms, environment 774ms, prepare 279ms)[22m
+[2m   Start at [22m 15:54:53
+[2m   Duration [22m 1.75s[2m (transform 203ms, setup 0ms, collect 245ms, tests 5ms, environment 815ms, prepare 304ms)[22m
 
 

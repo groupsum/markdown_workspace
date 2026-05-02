@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-05-02T20:54:49.588Z",
+  "artifact": {
+    "id": "external.catalog-hello",
+    "packageName": "@mdwrk/extension-catalog-hello",
+    "version": "1.1.2",
+    "kind": "external",
+    "artifactPath": "artifacts/extensions/external.catalog-hello/1.1.2",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en"
+    ],
+    "generatedAt": "2026-05-02T20:54:48.357Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "9a807bdae526cbfe49e4ce6f1cfe522f1c4066601a3d5d018e373ba6089b9190"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "30dce25700f554c9e4260cc74000534aa56ddb8764f894fed3f1fa06782d7773"
+    },
+    {
+      "path": "package.json",
+      "sha256": "4e06b21861f91547e4bd09122a1e7c39d644d09aa6b97ba2561757ad22832a97"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "d6f694abc32ff10751c8d99beaedea454fba4e44ed70bf29288bfc853aa30b36"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4538607cfc95eeeff9a0e9d247025f4a3a9da87428a66c9fa3c91e1ac02d8d78"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "0065c32e0e08a072bd488131d7dd62b621836069312a2bf7033d4a67c5791832"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

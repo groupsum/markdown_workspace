@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-05-02T20:54:49.617Z",
+  "artifact": {
+    "id": "core.theme-studio",
+    "packageName": "@mdwrk/extension-theme-studio",
+    "version": "1.1.6",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.theme-studio/1.1.6",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en",
+      "es"
+    ],
+    "generatedAt": "2026-05-02T20:54:48.761Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "6270fbfe434d4c01e7436daf9e05f3469b900d356bad5aae3c16da67dbf7bcc6"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "5870a9d9ccc25c1d787630520601bf8a19349f8c8717eb6ea21c393a82785ea7"
+    },
+    {
+      "path": "package.json",
+      "sha256": "70562cc2263e83267791f335021e5723b3093e8b6697bf9cb0dbdc71d02b8f8a"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "bc8c1342d3c07511289cb4eeaaa9a8ec803496bcca6aabae04b35e6e7e4f88d2"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3ba7b4a555832de7b68c74744ecc236328e2d8e908e4aea72435a6a10d2aa8b7"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "c26a7164b62394539ba691c1f013a21104653191dd9859447d7538ca118fef29"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

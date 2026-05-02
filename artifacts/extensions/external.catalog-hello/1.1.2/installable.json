@@ -1,0 +1,36 @@
+{
+  "id": "external.catalog-hello",
+  "packageName": "@mdwrk/extension-catalog-hello",
+  "version": "1.1.2",
+  "format": "esm-directory",
+  "entry": {
+    "module": "./index.js",
+    "export": "extensionCatalogHello"
+  },
+  "distDirectory": "dist",
+  "entryModulePath": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    }
+  },
+  "capabilities": [
+    "view.register",
+    "actionRail.register",
+    "notification.publish",
+    "settings.read"
+  ],
+  "supportedLocales": [
+    "en"
+  ],
+  "generatedAt": "2026-05-02T20:54:48.350Z"
+}

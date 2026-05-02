@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-04-10T21:57:37.268Z",
+  "generatedAt": "2026-05-02T20:54:54.866Z",
   "claimId": "markdown-profile-snapshot-stability",
   "gateId": "gate-markdown-profile-snapshot-stability",
   "status": "green",
-  "command": "C:\\Program Files\\nodejs\\node.exe E:\\swarmauri_github\\markdown_workspace\\.tmp\\npm-global\\node_modules\\npm\\bin\\npm-cli.js run test:markdown-profile-snapshot",
+  "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\bigman\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js run test:markdown-profile-snapshot",
   "evidence": [
     "apps/client/src/features/markdownProfiles/profileConfig.ts",
     "apps/client/src/features/markdownProfiles/profileConfig.test.ts"

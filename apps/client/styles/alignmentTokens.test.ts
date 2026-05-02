@@ -89,11 +89,14 @@ describe('markdown/editor alignment token contract', () => {
 
   it('keeps workspace module toolbar and panes in a two-row container grid', () => {
     const shellCss = read('./base/shell-structure.css');
+    const editorCss = read('./base/ui-editor.css');
 
     expect(shellCss).toContain(':root[data-theme] .editor-pane-container');
     expect(shellCss).toContain('display: grid;');
     expect(shellCss).toContain('grid-template-rows: auto minmax(0, 1fr);');
     expect(shellCss).toContain('grid-row: 2;');
     expect(shellCss).not.toContain(':root[data-theme] .editor-pane-container {\n  display: flex;');
+    expect(editorCss).not.toContain('position: absolute !important;');
+    expect(editorCss).not.toContain('width: clamp(34px, 9vw, 40px) !important;');
   });
 });

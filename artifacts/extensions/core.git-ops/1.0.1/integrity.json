@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-05-02T20:54:49.601Z",
+  "artifact": {
+    "id": "core.git-ops",
+    "packageName": "@mdwrk/extension-git-ops",
+    "version": "1.0.1",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.git-ops/1.0.1",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en"
+    ],
+    "generatedAt": "2026-05-02T20:54:48.503Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "93b9d587487b4ff1e0cb59825299756766474e3df056a767d2190299bb06fb6b"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "0a5e6b66631c29d062ba843d189353195755ac0b51139ea5a087a86569525779"
+    },
+    {
+      "path": "package.json",
+      "sha256": "ec8af7d8a93782ad0fa85134d194d4fc4024c2abbe90471b195878c5f1197ba6"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "f1e2c42f86eacc51abe874d53b879a6bc94cd44a18732c080e92ff8d3ae11494"
+    },
+    {
+      "path": "README.md",
+      "sha256": "8af1042902e1ea219945148eb7dc0c7e3f9478b5e7ac71a438d5307e3e94a4eb"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "67f890ccfc6a0fbc3a04d238c1a1260d674c896b05e690b31cb1cddfe72df91a"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}

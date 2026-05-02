@@ -1,6 +1,6 @@
 # Conformance artifacts
 
-This directory contains generated static evidence for MdWork CI/CD, conformance, and third-party extension distribution checkpoints.
+This directory contains generated static evidence for the Phase 13 CI/CD, conformance, and third-party extension distribution checkpoint.
 
 Files include:
 - `extension-manifest-validation.json`

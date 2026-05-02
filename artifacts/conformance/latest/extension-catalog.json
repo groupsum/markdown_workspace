@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-10T21:56:39.715Z",
+  "generatedAt": "2026-05-02T20:54:57.740Z",
   "extensions": [
     {
       "id": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "enabledByDefault": true,
       "capabilities": [
         "view.register",
@@ -26,7 +26,7 @@
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "enabledByDefault": true,
       "capabilities": [
         "workspace.read",
@@ -56,13 +56,40 @@
       }
     },
     {
-      "id": "core.language-pack-studio",
-      "packageName": "@mdwrk/extension-language-pack-studio",
-      "version": "1.0.3",
+      "id": "core.git-ops",
+      "packageName": "@mdwrk/extension-git-ops",
+      "version": "1.0.1",
       "enabledByDefault": true,
       "capabilities": [
         "view.register",
-        "actionRail.register"
+        "actionRail.register",
+        "settings.read",
+        "settings.write",
+        "notification.publish",
+        "workspace.read",
+        "network.fetch"
+      ],
+      "locales": [
+        "en"
+      ],
+      "compatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=1.4.21",
+        "themeContract": "^1.0.0"
+      }
+    },
+    {
+      "id": "core.language-pack-studio",
+      "packageName": "@mdwrk/extension-language-pack-studio",
+      "version": "1.0.5",
+      "enabledByDefault": true,
+      "capabilities": [
+        "view.register",
+        "actionRail.register",
+        "settings.read",
+        "settings.write"
       ],
       "locales": [
         "en"
@@ -78,7 +105,7 @@
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.1.7",
+      "version": "1.1.8",
       "enabledByDefault": true,
       "capabilities": [
         "view.register",
@@ -101,7 +128,7 @@
     {
       "id": "core.theme-studio",
       "packageName": "@mdwrk/extension-theme-studio",
-      "version": "1.1.5",
+      "version": "1.1.6",
       "enabledByDefault": true,
       "capabilities": [
         "theme.read",
@@ -121,6 +148,36 @@
         "hostApi": "^1.0.0",
         "runtime": "^1.0.0",
         "app": ">=1.3.49",
+        "themeContract": "^1.0.0",
+        "renderer": "^1.0.0",
+        "editor": "^1.0.0"
+      }
+    },
+    {
+      "id": "core.workspace-files",
+      "packageName": "@mdwrk/extension-workspace-files",
+      "version": "1.0.1",
+      "enabledByDefault": true,
+      "capabilities": [
+        "view.register",
+        "actionRail.register",
+        "settings.read",
+        "settings.write",
+        "notification.publish",
+        "workspace.read",
+        "workspace.write",
+        "editor.read",
+        "editor.write",
+        "selection.read"
+      ],
+      "locales": [
+        "en"
+      ],
+      "compatibility": {
+        "manifestVersion": 1,
+        "hostApi": "^1.0.0",
+        "runtime": "^1.0.0",
+        "app": ">=1.4.21",
         "themeContract": "^1.0.0",
         "renderer": "^1.0.0",
         "editor": "^1.0.0"

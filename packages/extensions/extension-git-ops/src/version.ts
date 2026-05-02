@@ -1,1 +1,1 @@
-export const GIT_OPS_VERSION = "1.0.0";
+export const GIT_OPS_VERSION = "1.0.1";

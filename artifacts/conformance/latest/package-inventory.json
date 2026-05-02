@@ -1,153 +1,174 @@
 {
-  "generatedAt": "2026-04-10T21:56:39.715Z",
+  "generatedAt": "2026-05-02T20:54:57.739Z",
   "packages": [
     {
       "name": "@mdwrk/mdwrkspace",
-      "version": "1.4.16",
+      "version": "1.4.23",
       "path": "apps/client",
       "category": "app",
       "publishable": true
     },
     {
+      "name": "@mdwrk/desktop",
+      "version": "0.2.36",
+      "path": "apps/desktop",
+      "category": "app",
+      "publishable": false
+    },
+    {
       "name": "@mdwrk/lander",
-      "version": "0.0.13",
+      "version": "0.0.27",
       "path": "apps/lander",
       "category": "app",
       "publishable": false
     },
     {
       "name": "@mdwrk/example-editor-basic",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "path": "examples/editor-basic",
       "category": "example",
       "publishable": false
     },
     {
       "name": "@mdwrk/example-renderer-basic",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "path": "examples/renderer-basic",
       "category": "example",
       "publishable": false
     },
     {
       "name": "@mdwrk/extension-host",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "path": "packages/contracts/extension-host",
       "category": "contract",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-manifest",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "packages/contracts/extension-manifest",
       "category": "contract",
       "publishable": true
     },
     {
       "name": "@mdwrk/theme-contract",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "packages/contracts/theme-contract",
       "category": "contract",
       "publishable": true
     },
     {
       "name": "@mdwrk/markdown-editor-core",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "packages/editor/markdown-editor-core",
       "category": "editor",
       "publishable": true
     },
     {
       "name": "@mdwrk/markdown-editor-react",
-      "version": "1.1.1",
+      "version": "1.1.4",
       "path": "packages/editor/markdown-editor-react",
       "category": "editor",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "path": "packages/extensions/extension-catalog-hello",
       "category": "extension",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "path": "packages/extensions/extension-gemini-agent",
       "category": "extension",
       "publishable": true
     },
     {
+      "name": "@mdwrk/extension-git-ops",
+      "version": "1.0.1",
+      "path": "packages/extensions/extension-git-ops",
+      "category": "extension",
+      "publishable": true
+    },
+    {
       "name": "@mdwrk/extension-language-pack-studio",
-      "version": "1.0.3",
+      "version": "1.0.5",
       "path": "packages/extensions/extension-language-pack-studio",
       "category": "extension",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-manager",
-      "version": "1.1.7",
+      "version": "1.1.8",
       "path": "packages/extensions/extension-manager",
       "category": "extension",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-runtime",
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "packages/extensions/extension-runtime",
       "category": "extension",
       "publishable": true
     },
     {
       "name": "@mdwrk/extension-theme-studio",
-      "version": "1.1.5",
+      "version": "1.1.6",
       "path": "packages/extensions/extension-theme-studio",
       "category": "extension",
       "publishable": true
     },
     {
+      "name": "@mdwrk/extension-workspace-files",
+      "version": "1.0.1",
+      "path": "packages/extensions/extension-workspace-files",
+      "category": "extension",
+      "publishable": true
+    },
+    {
       "name": "@mdwrk/markdown-renderer-core",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "path": "packages/renderer/markdown-renderer-core",
       "category": "renderer",
       "publishable": true
     },
     {
       "name": "@mdwrk/markdown-renderer-react",
-      "version": "1.1.2",
+      "version": "1.1.4",
       "path": "packages/renderer/markdown-renderer-react",
       "category": "renderer",
       "publishable": true
     },
     {
       "name": "@mdwrk/i18n",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "path": "packages/shared/i18n",
       "category": "shared",
       "publishable": true
     },
     {
       "name": "@mdwrk/icons",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "packages/shared/icons",
       "category": "shared",
       "publishable": true
     },
     {
       "name": "@mdwrk/testing",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "packages/shared/testing",
       "category": "shared",
       "publishable": true
     },
     {
       "name": "@mdwrk/ui-tokens",
-      "version": "1.2.1",
+      "version": "1.2.3",
       "path": "packages/shared/ui-tokens",
       "category": "shared",
       "publishable": true
     }
   ],
-  "inventoryDigest": "b77a3eedbd9fb9d24fc5682e83a54c44ecde0e896772a33e93115702a17a7d08"
+  "inventoryDigest": "1e9ada88f39ada17765246e54cae4339f1e64218072155ad65098bd44820f213"
 }

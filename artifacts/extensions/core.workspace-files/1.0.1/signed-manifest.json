@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "manifest": {
+    "manifestVersion": 1,
+    "id": "core.workspace-files",
+    "packageName": "@mdwrk/extension-workspace-files",
+    "version": "1.0.1",
+    "displayName": {
+      "defaultMessage": "Workspace Files"
+    },
+    "description": {
+      "defaultMessage": "Browse, edit, preview, and export files."
+    },
+    "kind": "bundled",
+    "icon": {
+      "kind": "lucide",
+      "name": "Folder"
+    },
+    "enabledByDefault": true,
+    "capabilities": [
+      "view.register",
+      "actionRail.register",
+      "settings.read",
+      "settings.write",
+      "notification.publish",
+      "workspace.read",
+      "workspace.write",
+      "editor.read",
+      "editor.write",
+      "selection.read"
+    ],
+    "capabilityPresetIds": [
+      "workspace.module.writer"
+    ],
+    "compatibility": {
+      "manifestVersion": 1,
+      "hostApi": "^1.0.0",
+      "runtime": "^1.0.0",
+      "app": ">=1.4.21",
+      "themeContract": "^1.0.0",
+      "renderer": "^1.0.0",
+      "editor": "^1.0.0"
+    },
+    "entry": {
+      "module": "./index.js",
+      "export": "createWorkspaceFilesBundledEntry"
+    },
+    "i18n": {
+      "defaultLocale": "en",
+      "supportedLocales": [
+        "en"
+      ]
+    },
+    "contributions": {
+      "commands": [
+        {
+          "id": "core.toggle-explorer",
+          "title": {
+            "defaultMessage": "Toggle Explorer",
+            "key": "core.commands.toggle-explorer"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          }
+        },
+        {
+          "id": "core.new-file",
+          "title": {
+            "defaultMessage": "Create New File",
+            "key": "core.commands.new-file"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FilePlus"
+          }
+        },
+        {
+          "id": "core.new-folder",
+          "title": {
+            "defaultMessage": "Create New Folder",
+            "key": "core.commands.new-folder"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FolderPlus"
+          }
+        },
+        {
+          "id": "core.save-current-file",
+          "title": {
+            "defaultMessage": "Save Current File",
+            "key": "core.commands.save-current-file"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Save"
+          }
+        },
+        {
+          "id": "core.rename-selected",
+          "title": {
+            "defaultMessage": "Rename Selected Item",
+            "key": "core.commands.rename-selected"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Pencil"
+          }
+        },
+        {
+          "id": "core.delete-selected",
+          "title": {
+            "defaultMessage": "Delete Selected Item",
+            "key": "core.commands.delete-selected"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Trash2"
+          }
+        },
+        {
+          "id": "core.import-markdown",
+          "title": {
+            "defaultMessage": "Import Markdown",
+            "key": "core.import-markdown.title"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Upload"
+          }
+        },
+        {
+          "id": "core.open-host-file",
+          "title": {
+            "defaultMessage": "Open Markdown File",
+            "key": "core.commands.open-host-file"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FolderOpen"
+          }
+        },
+        {
+          "id": "core.download-workspace",
+          "title": {
+            "defaultMessage": "Download Workspace",
+            "key": "core.commands.download-workspace"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Download"
+          }
+        },
+        {
+          "id": "core.export-html",
+          "title": {
+            "defaultMessage": "Export HTML",
+            "key": "core.commands.export-html"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FileDown"
+          }
+        },
+        {
+          "id": "core.print-preview",
+          "title": {
+            "defaultMessage": "Print Preview",
+            "key": "core.commands.print-preview"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Printer"
+          }
+        },
+        {
+          "id": "core.view-editor",
+          "title": {
+            "defaultMessage": "Editor View",
+            "key": "core.commands.view-editor"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "LayoutGrid"
+          }
+        },
+        {
+          "id": "core.view-split",
+          "title": {
+            "defaultMessage": "Split View",
+            "key": "core.commands.view-split"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Columns"
+          }
+        },
+        {
+          "id": "core.view-preview",
+          "title": {
+            "defaultMessage": "Preview View",
+            "key": "core.commands.view-preview"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Eye"
+          }
+        },
+        {
+          "id": "core.focus-explorer",
+          "title": {
+            "defaultMessage": "Focus Explorer",
+            "key": "core.commands.focus-explorer"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          }
+        }
+      ],
+      "views": [
+        {
+          "id": "core.workspace-files.view",
+          "title": {
+            "defaultMessage": "Workspace Files"
+          },
+          "description": {
+            "defaultMessage": "Browse, edit, and preview files."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          },
+          "location": "main",
+          "allowMultiple": false,
+          "canBePinned": true
+        },
+        {
+          "id": "core.workspace-files.explorer",
+          "title": {
+            "defaultMessage": "File Explorer"
+          },
+          "description": {
+            "defaultMessage": "Browse workspace files."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          },
+          "location": "sidebar",
+          "allowMultiple": false,
+          "canBePinned": true
+        }
+      ],
+      "components": [],
+      "workspaceModules": [
+        {
+          "id": "core.workspace-files.module",
+          "title": {
+            "defaultMessage": "Workspace Files"
+          },
+          "description": {
+            "defaultMessage": "Files, editor, preview, and actions."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          },
+          "primaryViewId": "core.workspace-files.view",
+          "explorerViewId": "core.workspace-files.explorer",
+          "supportedLayouts": [
+            "single",
+            "left",
+            "right",
+            "split"
+          ],
+          "defaultLayout": "split",
+          "settingsSectionId": "core.workspace-files.settings",
+          "capabilityProfiles": [
+            "workspace.module.base",
+            "workspace.module.read",
+            "workspace.module.write"
+          ],
+          "capabilityPresetIds": [
+            "workspace.module.writer"
+          ],
+          "actions": [
+            {
+              "commandId": "core.toggle-explorer",
+              "role": "explorer",
+              "order": 10
+            },
+            {
+              "commandId": "core.new-file",
+              "role": "explorer",
+              "order": 20
+            },
+            {
+              "commandId": "core.new-folder",
+              "role": "explorer",
+              "order": 30
+            },
+            {
+              "commandId": "core.view-split",
+              "role": "toolbar",
+              "order": 40
+            }
+          ]
+        }
+      ],
+      "actionRail": [
+        {
+          "id": "core.toggle-explorer",
+          "title": {
+            "defaultMessage": "File Explorer",
+            "key": "core.workspace-files.explorer"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Folder"
+          },
+          "group": "workspace.primary",
+          "order": 10,
+          "target": {
+            "kind": "command",
+            "commandId": "core.toggle-explorer"
+          }
+        },
+        {
+          "id": "core.new-file",
+          "title": {
+            "defaultMessage": "New File"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FilePlus"
+          },
+          "group": "workspace.primary",
+          "order": 20,
+          "target": {
+            "kind": "command",
+            "commandId": "core.new-file"
+          }
+        },
+        {
+          "id": "core.new-folder",
+          "title": {
+            "defaultMessage": "New Folder"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FolderPlus"
+          },
+          "group": "workspace.primary",
+          "order": 30,
+          "target": {
+            "kind": "command",
+            "commandId": "core.new-folder"
+          }
+        },
+        {
+          "id": "core.open-host-file",
+          "title": {
+            "defaultMessage": "Open Markdown File",
+            "key": "core.commands.open-host-file"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FolderOpen"
+          },
+          "group": "workspace.primary",
+          "order": 40,
+          "target": {
+            "kind": "command",
+            "commandId": "core.open-host-file"
+          }
+        },
+        {
+          "id": "core.download-workspace",
+          "title": {
+            "defaultMessage": "Download Workspace",
+            "key": "core.commands.download-workspace"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Download"
+          },
+          "group": "workspace.secondary",
+          "order": 20,
+          "target": {
+            "kind": "command",
+            "commandId": "core.download-workspace"
+          }
+        },
+        {
+          "id": "core.import-markdown",
+          "title": {
+            "defaultMessage": "Import Markdown",
+            "key": "core.import-markdown.title"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "Upload"
+          },
+          "group": "workspace.secondary",
+          "order": 35,
+          "target": {
+            "kind": "command",
+            "commandId": "core.import-markdown"
+          }
+        }
+      ],
+      "settingsSections": [
+        {
+          "id": "core.workspace-files.settings",
+          "title": {
+            "defaultMessage": "Workspace Files"
+          },
+          "description": {
+            "defaultMessage": "File view and export settings."
+          },
+          "order": 12,
+          "schemaPath": "manifest.settingsSchema"
+        }
+      ]
+    },
+    "settingsSchema": {
+      "version": 1,
+      "title": {
+        "defaultMessage": "Workspace Files"
+      },
+      "description": {
+        "defaultMessage": "Workspace file settings."
+      },
+      "sections": [],
+      "fields": []
+    }
+  },
+  "signature": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "algorithm": "ecdsa-p256-sha256",
+    "signature": "kB8XgnQeBW6vBcRjqhm_du3m5hpdCv9R5hoCu0XePBeoH2qtb0dZvBMRC9FNWV80VIK-SKwz-hvj25o6TASGhg",
+    "signedAt": "2026-05-02T20:54:49.620Z"
+  }
+}

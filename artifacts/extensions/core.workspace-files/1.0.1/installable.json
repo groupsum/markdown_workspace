@@ -1,0 +1,46 @@
+{
+  "id": "core.workspace-files",
+  "packageName": "@mdwrk/extension-workspace-files",
+  "version": "1.0.1",
+  "format": "esm-directory",
+  "entry": {
+    "module": "./index.js",
+    "export": "createWorkspaceFilesBundledEntry"
+  },
+  "distDirectory": "dist",
+  "entryModulePath": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./bundled": {
+      "types": "./dist/createWorkspaceFilesBundledEntry.d.ts",
+      "import": "./dist/createWorkspaceFilesBundledEntry.js"
+    }
+  },
+  "capabilities": [
+    "view.register",
+    "actionRail.register",
+    "settings.read",
+    "settings.write",
+    "notification.publish",
+    "workspace.read",
+    "workspace.write",
+    "editor.read",
+    "editor.write",
+    "selection.read"
+  ],
+  "supportedLocales": [
+    "en"
+  ],
+  "generatedAt": "2026-05-02T20:54:48.800Z"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "core.git-ops",
+  "packageName": "@mdwrk/extension-git-ops",
+  "version": "1.0.1",
+  "format": "esm-directory",
+  "entry": {
+    "module": "./index.js",
+    "export": "createGitOpsBundledEntry"
+  },
+  "distDirectory": "dist",
+  "entryModulePath": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./bundled": {
+      "types": "./dist/createGitOpsBundledEntry.d.ts",
+      "import": "./dist/createGitOpsBundledEntry.js"
+    }
+  },
+  "capabilities": [
+    "view.register",
+    "actionRail.register",
+    "settings.read",
+    "settings.write",
+    "notification.publish",
+    "workspace.read",
+    "network.fetch"
+  ],
+  "supportedLocales": [
+    "en"
+  ],
+  "generatedAt": "2026-05-02T20:54:48.494Z"
+}

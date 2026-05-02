@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "manifest": {
+    "manifestVersion": 1,
+    "id": "core.git-ops",
+    "packageName": "@mdwrk/extension-git-ops",
+    "version": "1.0.1",
+    "displayName": {
+      "defaultMessage": "Git Operations"
+    },
+    "description": {
+      "defaultMessage": "Git tools for repos and settings."
+    },
+    "kind": "bundled",
+    "icon": {
+      "kind": "lucide",
+      "name": "GitBranch"
+    },
+    "enabledByDefault": true,
+    "capabilities": [
+      "view.register",
+      "actionRail.register",
+      "settings.read",
+      "settings.write",
+      "notification.publish",
+      "workspace.read",
+      "network.fetch"
+    ],
+    "capabilityPresetIds": [
+      "workspace.module.provider",
+      "workspace.module.diagnostics"
+    ],
+    "compatibility": {
+      "manifestVersion": 1,
+      "hostApi": "^1.0.0",
+      "runtime": "^1.0.0",
+      "app": ">=1.4.21",
+      "themeContract": "^1.0.0"
+    },
+    "entry": {
+      "module": "./index.js",
+      "export": "createGitOpsBundledEntry"
+    },
+    "i18n": {
+      "defaultLocale": "en",
+      "supportedLocales": [
+        "en"
+      ]
+    },
+    "contributions": {
+      "commands": [
+        {
+          "id": "core.toggle-git-pane",
+          "title": {
+            "defaultMessage": "Toggle Git Operations",
+            "key": "core.commands.toggle-git-pane"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "GitBranch"
+          }
+        },
+        {
+          "id": "core.git-ops.refresh",
+          "title": {
+            "defaultMessage": "Refresh Git Operations"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "RefreshCw"
+          }
+        }
+      ],
+      "views": [
+        {
+          "id": "core.git-pane",
+          "title": {
+            "defaultMessage": "Git Operations",
+            "key": "core.views.git.title"
+          },
+          "description": {
+            "defaultMessage": "Source control workspace.",
+            "key": "core.views.git.description"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "GitBranch"
+          },
+          "location": "main",
+          "allowMultiple": false,
+          "canBePinned": true
+        },
+        {
+          "id": "core.git-ops.explorer",
+          "title": {
+            "defaultMessage": "Git Explorer"
+          },
+          "description": {
+            "defaultMessage": "Branches and file changes."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "GitBranch"
+          },
+          "location": "sidebar",
+          "allowMultiple": false,
+          "canBePinned": true
+        }
+      ],
+      "components": [],
+      "workspaceModules": [
+        {
+          "id": "core.git-ops.module",
+          "title": {
+            "defaultMessage": "Git Operations"
+          },
+          "description": {
+            "defaultMessage": "Git view, diffs, and repo actions."
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "GitBranch"
+          },
+          "primaryViewId": "core.git-pane",
+          "explorerViewId": "core.git-ops.explorer",
+          "supportedLayouts": [
+            "single",
+            "left",
+            "right",
+            "split"
+          ],
+          "defaultLayout": "split",
+          "settingsSectionId": "core.settings.git",
+          "capabilityProfiles": [
+            "workspace.module.base",
+            "workspace.module.read",
+            "workspace.module.provider",
+            "workspace.module.diagnostics"
+          ],
+          "capabilityPresetIds": [
+            "workspace.module.provider",
+            "workspace.module.diagnostics"
+          ],
+          "actions": [
+            {
+              "commandId": "core.toggle-git-pane",
+              "role": "primary",
+              "order": 10
+            },
+            {
+              "commandId": "core.git-ops.refresh",
+              "role": "toolbar",
+              "order": 20
+            }
+          ]
+        }
+      ],
+      "actionRail": [
+        {
+          "id": "core.git-pane-rail",
+          "title": {
+            "defaultMessage": "Git Operations"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "GitBranch"
+          },
+          "group": "workspace.primary",
+          "order": 40,
+          "target": {
+            "kind": "command",
+            "commandId": "core.toggle-git-pane"
+          }
+        }
+      ],
+      "settingsSections": [
+        {
+          "id": "core.settings.git",
+          "title": {
+            "defaultMessage": "Source Control",
+            "key": "core.settings.sections.git.title"
+          },
+          "description": {
+            "defaultMessage": "Repository and identity settings.",
+            "key": "core.settings.sections.git.description"
+          },
+          "order": 20,
+          "schemaPath": "manifest.settingsSchema"
+        }
+      ]
+    },
+    "settingsSchema": {
+      "version": 1,
+      "title": {
+        "defaultMessage": "Source Control",
+        "key": "core.settings.sections.git.title"
+      },
+      "description": {
+        "defaultMessage": "Repository and identity settings.",
+        "key": "core.settings.sections.git.description"
+      },
+      "sections": [],
+      "fields": []
+    }
+  },
+  "signature": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "algorithm": "ecdsa-p256-sha256",
+    "signature": "jrmJ11DbDn7KO9WjsJx7xszMERBxH0hCgXEoEiYpINqMnObkLm17cuTUQEfqRyBr_tJSK3vPQUa-fjj36B_2Qg",
+    "signedAt": "2026-05-02T20:54:49.598Z"
+  }
+}
