@@ -1,4 +1,6 @@
-/* MdWork: Viewport & Aspect Ratio Matrix */
+/* MdWork canonical viewport contract.
+   Aspect, width, height, and device bands are defined once here.
+   Themes may style by band, but they must not redefine the ids or cutoffs. */
 
 :root {
   --viewbox-aspect: square-hybrid;
@@ -62,7 +64,7 @@
   }
 }
 
-/* Viewbox size bands (viewbox second) */
+/* Width tiers */
 @media (max-width: 479px) {
   :root {
     --viewbox-width: xs;
@@ -99,6 +101,7 @@
   }
 }
 
+/* Height tiers */
 @media (max-height: 599px) {
   :root {
     --viewbox-height: short;
@@ -125,7 +128,7 @@
   }
 }
 
-/* Device class (device third) */
+/* Device class */
 @media (hover: none) and (pointer: coarse) {
   :root {
     --viewbox-device: touch;

@@ -38,8 +38,6 @@ services:
     restart: unless-stopped
     environment:
       <<: *common-env
-    expose:
-      - "8000"
     networks:
       - dockerwp
 
