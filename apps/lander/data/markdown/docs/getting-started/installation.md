@@ -1,71 +1,55 @@
 ---
-title: MdWrk Client Installation
+title: Client Installation
 slug: getting-started/installation
 section: Getting Started
 sectionOrder: 1
 order: 1
 toc: true
+date: 2026-05-02
+status: published
 ---
 
 `mdwrk` is the client and package surface. The lander is only the documentation and release site.
 
-Choose the workflow that matches how you consume the client.
+Choose the workflow that matches how you want to consume the workspace or packages.
 
-## Use the Web App
-Open the mdwrk lander and launch the app from the primary action. The workspace runs in the browser and keeps documents local by default.
+## Installation Paths
 
-## Install as a PWA
-Modern browsers can install mdwrk as a Progressive Web App.
+- [Use in a browser](/docs/getting-started/browser-use) when you want the fastest way to start writing without installing anything.
+- [Install as a PWA](/docs/getting-started/pwa-installation) when you want an app-like shell with browser-managed updates.
+- [Run locally from the repo or a local build](/docs/getting-started/local-setup) when you need a local development or self-hosted workflow.
+- [Use standalone modules](/docs/getting-started/standalone-modules) when you only want the reusable client, editor, or renderer packages.
 
-1. Open mdwrk in Chrome, Edge, Safari, or another PWA-capable browser.
-2. Use the browser install action from the address bar or share menu.
-3. Launch mdwrk from the installed app icon when you want a focused workspace window.
+## Quick Choice Guide
 
-Installed PWAs still use browser storage, so keep your normal backup and export habits in place.
+Use the browser route if you want immediate access with no setup.
+Use the PWA route if you want a dedicated window and installable shell.
+Use the local route if you need development control, local hosting, or a private self-managed deployment.
+Use standalone modules if you are embedding MdWrk surfaces into another product or internal tool.
 
-## Use the Packages
-Install the published workspace client package:
+## Workspace Client Package
 
-```bash
-npm install @mdwrk/mdwrkspace
+The publishable client package is:
+
+```text
+@mdwrk/mdwrkspace
 ```
 
-Use the split packages directly when you only need one surface:
+The split reusable packages start with:
 
-```bash
-npm install @mdwrk/markdown-editor-react @mdwrk/markdown-renderer-react
+```text
+@mdwrk/markdown-editor-react
+@mdwrk/markdown-renderer-react
+@mdwrk/markdown-renderer-core
 ```
 
-For package discovery, use the organization page:
+For package discovery and published versions, use the organization page:
 
 ```text
 https://www.npmjs.com/org/mdwrk
 ```
 
-## ESM CDN
-Load the published client from an ESM CDN and mount it directly:
+## Notes
 
-```html
-<div id="mdwrkspace-root"></div>
-<script type="module">
-  import { mountMdWork } from "https://esm.sh/@mdwrk/mdwrkspace";
-
-  const root = document.getElementById("mdwrkspace-root");
-  mountMdWork(root);
-</script>
-```
-
-## Extensions
 Bundled extensions ship with the client build. External installable extensions follow the signed-manifest and trust-policy path documented in the extension docs.
-
-## Production Hosting
-When hosting the lander yourself, build the static app and serve the generated output through a web server or container. Set `VITE_SITE_URL` during the build so `robots.txt` and `sitemap.xml` point to the correct production origin.
-
-```bash
-VITE_SITE_URL=https://mdwrk.com npm run build -w apps/lander
-```
-
-The production container is designed to sit behind a reverse proxy such as Nginx Proxy Manager.
-
-## Updates
-As a PWA, the client updates automatically in the background. You will see a notification when a new version is ready.
+Published dates and statuses control whether installation docs appear on the lander at all, so draft installation notes can stay private until they are ready.

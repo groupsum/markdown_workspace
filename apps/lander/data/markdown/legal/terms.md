@@ -1,5 +1,7 @@
 ---
 title: Terms of Service
+date: 2026-05-02
+status: published
 lastUpdated: 2024-05-20
 ---
 # Terms of Service

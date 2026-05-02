@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2067"
+number: 2067
+slug: "lander-editor-previewer-rendered-package-contract"
+title: "Lander Editor Previewer Rendered Package Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Defines the lander contract for documenting and presenting the MdWrk editor, previewer, and rendered package surfaces."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Defines the lander contract for documenting and presenting the MdWrk editor, previewer, and rendered package surfaces.
+  
+  ## Scope
+  
+  - editor package family
+  - previewer and rendered markdown package family
+  - workspace composition guidance that explains how the client consumes those packages
+  - usage and package-install examples that expose the split package model
+  
+  ## Requirements
+  
+  1. The lander shall present the reusable editor package family as a first-class product surface.
+  2. The lander shall present the previewer and rendered markdown package family as a first-class product surface.
+  3. The lander shall explain how the MdWrk workspace composes the editor and renderer package families.
+  4. Lander docs and blog content shall prefer package-family language over vague application-only framing when package boundaries are the relevant subject.
+  5. Public examples may show combined client usage, package-only usage, or extension-hosted usage, but they shall keep the reusable package split visible.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1051"

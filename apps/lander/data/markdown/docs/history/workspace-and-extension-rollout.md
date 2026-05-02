@@ -6,6 +6,7 @@ sectionOrder: 5
 order: 2
 toc: true
 date: 2026-01-22
+status: published
 ---
 Back-dated note: January 22, 2026.
 

@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;500&family=JetBrains+Mono:wght@400;600&family=Sora:wght@400;600;700;800&display=swap');
+
+@layer base {
+  html {
+    @apply antialiased;
+    scroll-behavior: smooth;
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  body,
+  #root {
+    @apply min-h-full w-full;
+    height: auto;
+  }
+
+  body {
+    @apply m-0;
+    overflow-x: hidden;
+    overflow-y: visible;
+    background-color: var(--lander-app-bg);
+    color: var(--lander-fg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+  }
+
+  #root,
+  main {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--lander-accent) 30%, transparent);
+  color: var(--lander-selection-fg);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+@keyframes lander-blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.prose sub,
+.markdown-body sub {
+  bottom: -0.25em;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.prose sup,
+.markdown-body sup {
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}

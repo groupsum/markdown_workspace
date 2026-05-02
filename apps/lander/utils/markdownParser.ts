@@ -10,7 +10,7 @@ export interface ParsedMarkdown {
 }
 
 export const parseMarkdown = (raw: string): ParsedMarkdown => {
-  const parsed: ParsedMarkdownDocument = parseMarkdownDocument(raw);
+  const parsed: ParsedMarkdownDocument = parseMarkdownDocument(raw.replace(/^\uFEFF/, ''));
   return {
     metadata: { ...(parsed.metadata as Record<string, any>) },
     content: parsed.content,

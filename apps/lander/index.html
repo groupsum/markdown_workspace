@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,92 +29,6 @@
     <meta name="twitter:description" content="Write, preview, and manage Markdown in an offline-capable workspace that keeps your content on your device." />
     <meta name="twitter:image" content="https://mdwrk.com/og-image.svg" />
     <meta name="twitter:image:alt" content="MdWrk privacy-first Markdown workspace" />
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              background: '#0f172a',
-              surface: '#1e293b',
-              primary: '#6366f1',
-              secondary: '#10b981',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['Fira Code', 'monospace'],
-            },
-            animation: {
-              'blob': 'blob 7s infinite',
-            },
-            keyframes: {
-              blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              }
-            }
-          },
-        },
-      }
-    </script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap');
-      html,
-      body,
-      #root {
-        height: auto;
-        min-height: 100%;
-        width: 100%;
-      }
-      html {
-        overflow-x: hidden;
-        overflow-y: visible;
-      }
-      body {
-        margin: 0;
-        overflow-x: hidden;
-        overflow-y: visible;
-      }
-      #root {
-        overflow-x: hidden;
-        overflow-y: visible;
-      }
-      main { overflow: visible; }
-      body {
-        background-color: #ffffff;
-        color: #0f172a;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      .dark body {
-        background-color: #0f172a;
-        color: #f8fafc;
-      }
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-      .dark ::-webkit-scrollbar-thumb {
-        background: #334155;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
-      .dark ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
-      }
-      .prose sub { bottom: -0.25em; font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-      .prose sup { top: -0.5em; font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-    </style>
   <script type="importmap">
 {
   "imports": {
@@ -126,7 +40,7 @@
 }
 </script>
 </head>
-  <body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-50 transition-colors duration-300">
+  <body>
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

@@ -15,15 +15,15 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => (
     <Hero />
     <Features />
     <DemoSection isDark={isDark} />
-    <section id="privacy" className="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-      <div className="max-w-screen-xl mx-auto px-4 text-center">
-         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Your Data Stays on <span className="text-indigo-600 dark:text-indigo-400">Your Device</span></h2>
-         <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 text-lg">
+    <section id="privacy" className="privacy-section">
+      <div className="privacy-container">
+         <h2 className="privacy-heading">Your Data Stays on <span className="privacy-heading-accent">Your Device</span></h2>
+         <p className="privacy-copy">
             MdWork utilizes IndexedDB to store your workspaces directly in your browser.
             No AI servers scan your content, no trackers follow your keys.
          </p>
-         <div className="inline-flex items-center justify-center px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-700 dark:text-slate-300 text-sm shadow-sm">
-            <div className="w-2 h-2 rounded-full bg-indigo-500 mr-2 animate-pulse"></div>
+         <div className="privacy-badge">
+            <div className="privacy-badge-dot"></div>
             Privacy Standard: Verified Local
          </div>
       </div>
@@ -55,13 +55,13 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[var(--lander-app-bg)] text-[var(--lander-fg)] selection:bg-[var(--lander-accent)]/30 selection:text-[var(--lander-selection-fg)] transition-colors duration-300">
+    <div className="app-shell">
       <Navbar
         isDark={isDark}
         themeLabel={theme.label}
         toggleTheme={() => setThemeId(isDark ? 'lander-light' : 'lander-dark')}
       />
-      <main className="flex-1">
+      <main className="app-main">
         <Routes>
           <Route path="/" element={<HomeView isDark={isDark} />} />
           <Route path="/docs/*" element={<DocsView />} />

@@ -1,7 +1,8 @@
 ---
 title: Docs Surface Realignment for MdWrk
 date: 2026-04-30
-author: MdWrk Engineering
+status: published
+author: CobyCloud
 excerpt: The lander now treats MdWrk as the product surface and uses the site to document the client, shared packages, and extension platform with clearer metadata and navigation.
 ---
 # Docs Surface Realignment for MdWrk

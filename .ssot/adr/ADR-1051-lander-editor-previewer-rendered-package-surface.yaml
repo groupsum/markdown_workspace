@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1051"
+number: 1051
+slug: "lander-editor-previewer-rendered-package-surface"
+title: "Lander Editor Previewer Rendered Package Surface"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The lander shall implement and document the MdWrk editor, previewer, and rendered package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1051: Lander Editor Previewer Rendered Package Surface
+  
+  ## Decision
+  
+  The lander shall implement and document the MdWrk editor, previewer, and rendered package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary.
+  
+  ## Rationale
+  
+  This repository already ships reusable editor and renderer package families, and the lander is the public documentation and release surface that explains how those packages are consumed. Keeping that split explicit prevents the public site from collapsing package responsibilities into a vague client-only story.
+  
+  ## Consequences
+  
+  Lander navigation, docs, examples, and blog content may describe the editor package family, previewer and rendered markdown package family, workspace client composition, and how those surfaces are consumed together or independently. Future lander changes must preserve package-level language instead of obscuring the split architecture.

@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1052"
+number: 1052
+slug: "lander-documents-mdwrk-workspace-rather-than-itself"
+title: "Lander Documents MdWrk Workspace Rather Than Itself"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The lander shall not treat itself as the primary documentation subject. It shall document the MdWrk workspace, MdWrk packages, usage flows, updates, and related product surfaces instead."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1052: Lander Documents MdWrk Workspace Rather Than Itself
+  
+  ## Decision
+  
+  The lander shall not treat itself as the primary documentation subject. It shall document the MdWrk workspace, MdWrk packages, usage flows, updates, and related product surfaces instead.
+  
+  ## Rationale
+  
+  The lander is a delivery shell for public documentation and release messaging, not the product boundary that users need to understand. Documentation that turns inward toward the lander itself obscures the real workspace, package, and extension surfaces that users install, operate, and evaluate.
+  
+  ## Consequences
+  
+  Lander content shall point outward to the MdWrk workspace, packages, extensions, usage, updates, and operational guidance. Obsolete lander-self-referential archive pages should be removed or rewritten when they do not serve those product surfaces.

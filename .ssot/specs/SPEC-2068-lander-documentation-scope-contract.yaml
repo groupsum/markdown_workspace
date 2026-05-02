@@ -1,0 +1,36 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2068"
+number: 2068
+slug: "lander-documentation-scope-contract"
+title: "Lander Documentation Scope Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Defines the public documentation scope for the lander."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Defines the public documentation scope for the lander.
+  
+  ## Scope
+  
+  - MdWrk workspace documentation
+  - package family documentation
+  - usage and installation guidance
+  - update and release notes that describe MdWrk product surfaces
+  - extension and operational guidance that supports the workspace
+  
+  ## Requirements
+  
+  1. The lander shall document the MdWrk workspace rather than the lander shell itself.
+  2. The lander shall document MdWrk packages, usage flows, updates, and related extension or operational surfaces when those are part of the product story.
+  3. Document titles and navigation labels shall avoid redundant MdWrk repetition when the surrounding context already establishes the product.
+  4. Archive or update pages that only describe lander-internal changes without serving the MdWrk workspace or package story shall be removed or rewritten.
+  5. Public blog and docs headings may use local section labels such as Blog or Docs instead of repeating the product name in every content title.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1052"

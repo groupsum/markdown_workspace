@@ -1,11 +1,12 @@
 ﻿---
-title: MdWrk Extension Platform
+title: Extension Platform
 slug: extensions/extension-platform
 section: Extensions
 sectionOrder: 4
 order: 1
 toc: true
 date: 2026-01-22
+status: published
 ---
 The mdwrk client is the extension host. The lander only documents that host surface.
 

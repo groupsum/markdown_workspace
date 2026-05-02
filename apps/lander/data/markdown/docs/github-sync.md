@@ -1,10 +1,12 @@
 ---
-title: MdWrk GitHub Sync
+title: GitHub Sync
 slug: github-sync
 section: Integrations
 sectionOrder: 3
 order: 1
 toc: true
+date: 2026-05-02
+status: published
 ---
 
 GitHub sync is optional. The mdwrk client stays fully local until you connect a repository.

@@ -1,6 +1,7 @@
 ﻿---
 title: Backstory: Splitting the mdwrk Client into Reusable Editor and Preview Packages
 date: 2025-12-12
+status: published
 author: MdWrk Engineering
 excerpt: Why the mdwrk client stopped hiding its editor and preview implementation inside the app and promoted those surfaces into reusable public packages.
 ---

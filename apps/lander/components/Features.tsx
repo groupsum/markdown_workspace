@@ -47,24 +47,24 @@ const features: FeatureItem[] = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="bg-[var(--lander-app-bg)] py-24 border-t border-[var(--lander-border)] transition-colors duration-300">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div className="max-w-screen-md mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-[var(--lander-fg)]">
-            Designed for <span className="text-emerald-500">Privacy</span>, Built for <span className="text-[var(--lander-accent)]">Reusable Surfaces</span>
+    <section id="features" className="features-section">
+      <div className="features-container">
+        <div className="features-header">
+          <h2 className="features-heading">
+            Designed for <span className="features-heading-privacy">Privacy</span>, Built for <span className="features-heading-accent">Reusable Surfaces</span>
           </h2>
-          <p className="text-[var(--lander-fg-muted)] sm:text-xl">
+          <p className="features-copy">
             The workspace client is the product surface. The lander is a guided window into the client, the shared packages, and the extension platform.
           </p>
         </div>
-        <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:space-y-0">
+        <div className="features-grid">
           {features.map((feature, index) => (
-            <div key={index} className="flex flex-col p-6 mx-auto max-w-lg text-left rounded-xl bg-[var(--lander-panel-muted)] border border-[var(--lander-border)] hover:bg-[var(--lander-panel)] hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="flex justify-center items-center mb-4 w-12 h-12 rounded-lg bg-[var(--lander-accent-soft)]">
-                <feature.icon className="w-6 h-6 text-[var(--lander-accent)]" />
+            <div key={index} className="feature-card">
+              <div className="feature-icon-wrap">
+                <feature.icon className="feature-icon" />
               </div>
-              <h3 className="mb-2 text-xl font-bold text-[var(--lander-fg)]">{feature.title}</h3>
-              <p className="text-[var(--lander-fg-muted)] leading-relaxed">{feature.description}</p>
+              <h3 className="feature-title">{feature.title}</h3>
+              <p className="feature-description">{feature.description}</p>
             </div>
           ))}
         </div>

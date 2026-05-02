@@ -4,6 +4,8 @@ slug: archive/ui-refresh-1-3-28
 section: Archive
 sectionOrder: 6
 order: 25
+date: 2026-05-02
+status: published
 ---
 
 ## Client update: `mdwrk/mdwrkspace` 1.3.28

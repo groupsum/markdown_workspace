@@ -1,11 +1,12 @@
 ﻿---
-title: Theme Studio and MdWrk Host Surfaces
+title: Theme Studio and Host Surfaces
 slug: extensions/theme-studio-and-host-surfaces
 section: Extensions
 sectionOrder: 4
 order: 2
 toc: true
 date: 2026-02-05
+status: published
 ---
 The theme story is shared across the client, editor, renderer, and extension host.
 

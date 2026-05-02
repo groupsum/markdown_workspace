@@ -1,10 +1,12 @@
 ---
-title: MdWrk Client Configuration
+title: Client Configuration
 slug: getting-started/configuration
 section: Getting Started
 sectionOrder: 1
-order: 2
+order: 6
 toc: true
+date: 2026-05-02
+status: published
 ---
 
 The mdwrk client ships with sensible defaults. These settings are part of the client and extension host surface, not the lander.

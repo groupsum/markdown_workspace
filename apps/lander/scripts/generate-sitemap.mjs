@@ -19,7 +19,8 @@ const escapeXml = (value) =>
     .replace(/'/g, '&apos;');
 
 const parseFrontmatter = (raw) => {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  const normalizedRaw = raw.replace(/^\uFEFF/, '');
+  const match = normalizedRaw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return {};
 
   return match[1]
@@ -42,6 +43,30 @@ const slugify = (value) =>
     .replace(/\s+/g, '-');
 
 const toIsoDate = (filePath) => fs.statSync(filePath).mtime.toISOString().slice(0, 10);
+
+const normalizeStatus = (value) =>
+  typeof value === 'string' ? value.trim().toLowerCase() : '';
+
+const normalizeIsoDate = (value) => {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return null;
+  return trimmed;
+};
+
+const toLocalIsoDate = (date = new Date()) => {
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const day = `${date.getDate()}`.padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const isPublishedMetadata = (metadata, now = new Date()) => {
+  if (normalizeStatus(metadata.status) !== 'published') return false;
+  const publishDate = normalizeIsoDate(metadata.date);
+  if (!publishDate) return false;
+  return publishDate <= toLocalIsoDate(now);
+};
 
 const collectFiles = (dir, extensions) => {
   if (!fs.existsSync(dir)) return [];
@@ -84,6 +109,7 @@ const routes = [
 for (const filePath of collectFiles(docsDir, ['.md'])) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const metadata = parseFrontmatter(raw);
+  if (!isPublishedMetadata(metadata)) continue;
   const title = metadata.title || path.basename(filePath, '.md');
   routes.push({
     path: `/docs/${metadata.slug || slugify(title)}`,
@@ -96,11 +122,15 @@ for (const filePath of collectFiles(docsDir, ['.md'])) {
 for (const entry of parseContentIds()) {
   if (!entry.id.startsWith('legal/')) continue;
   const filePath = path.resolve(landerRoot, 'data', entry.file.replace(/^\.\//, ''));
+  if (!fs.existsSync(filePath)) continue;
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const metadata = parseFrontmatter(raw);
+  if (!isPublishedMetadata(metadata)) continue;
   routes.push({
     path: `/${entry.id}`,
     priority: '0.5',
     changefreq: 'yearly',
-    lastmod: fs.existsSync(filePath) ? toIsoDate(filePath) : undefined,
+    lastmod: toIsoDate(filePath),
   });
 }
 

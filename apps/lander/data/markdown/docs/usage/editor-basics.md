@@ -1,10 +1,12 @@
 ---
-title: MdWrk Editor Basics
+title: Editor Basics
 slug: usage/editor-basics
 section: Product
 sectionOrder: 2
 order: 1
 toc: true
+date: 2026-05-02
+status: published
 ---
 
 The mdwrk client blends `@mdwrk/markdown-editor-react` with `@mdwrk/markdown-renderer-react`. The same split surface is what this lander demo now uses.

@@ -1,3 +1,5 @@
+import { parseMarkdown } from '../utils/markdownParser';
+import { isPublishedMetadata } from '../utils/publication';
 import sitemapRaw from './content-sitemap.yaml?raw';
 
 interface ContentSitemapEntry {
@@ -43,6 +45,10 @@ const sitemapEntries = parseContentSitemap(sitemapRaw);
 export const contentFiles = sitemapEntries.reduce<Record<string, string>>((acc, entry) => {
   const content = rawContentFiles[entry.file];
   if (content) {
+    const { metadata } = parseMarkdown(content);
+    if (!isPublishedMetadata(metadata)) {
+      return acc;
+    }
     acc[entry.id] = content;
   }
   return acc;

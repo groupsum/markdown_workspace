@@ -1,4 +1,5 @@
 import { parseMarkdown } from '../utils/markdownParser';
+import { isPublishedMetadata } from '../utils/publication';
 
 export interface DocEntry {
   slug: string;
@@ -53,7 +54,7 @@ const docEntries = Object.entries(rawDocs).map(([path, raw]) => {
     content,
     metadata
   };
-});
+}).filter((entry) => isPublishedMetadata(entry.metadata));
 
 export const docs = docEntries
   .slice()

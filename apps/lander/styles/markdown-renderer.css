@@ -83,11 +83,6 @@
   --lander-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 }
 
-body {
-  background: var(--lander-app-bg);
-  color: var(--lander-fg);
-}
-
 .lander-markdown {
   max-width: none;
   --fg-primary: var(--lander-fg);

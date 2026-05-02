@@ -53,22 +53,22 @@ export const BlogView: React.FC = () => {
   if (selectedPost) {
     const post = posts.find(p => p.id === selectedPost);
     return (
-      <div className="lander-blog-shell pt-24 pb-20 px-4">
-        <div className="max-w-3xl mx-auto">
+      <div className="lander-blog-shell blog-shell is-post">
+        <div className="blog-post-layout">
           <button
             onClick={() => setSelectedPost(null)}
-            className="flex items-center gap-2 text-[var(--lander-fg-muted)] hover:text-[var(--lander-accent)] mb-8 transition-colors"
+            className="blog-back-button"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="blog-back-icon" />
             Back to Blog
           </button>
-          <div className="lander-content-card rounded-[24px] p-6 md:p-10">
-            <div className="mb-8 border-b border-[var(--lander-border)] pb-8">
-              <div className="flex gap-4 text-xs text-[var(--lander-fg-muted)] mb-4">
-                <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post?.metadata.date}</span>
-                <span className="flex items-center gap-1"><User className="w-3 h-3" /> {post?.metadata.author}</span>
+          <div className="lander-content-card blog-post-card">
+            <div className="blog-post-header">
+              <div className="blog-post-meta">
+                <span className="blog-post-meta-item"><Calendar className="blog-post-meta-icon" /> {post?.metadata.date}</span>
+                <span className="blog-post-meta-item"><User className="blog-post-meta-icon" /> {post?.metadata.author}</span>
               </div>
-              <h1 className="text-4xl font-extrabold text-[var(--lander-fg)]">{post?.metadata.title}</h1>
+              <h1 className="blog-post-title">{post?.metadata.title}</h1>
             </div>
             <MarkdownViewer content={removeDuplicateLeadingHeading(post?.content || '', post?.metadata.title)} />
           </div>
@@ -78,21 +78,23 @@ export const BlogView: React.FC = () => {
   }
 
   return (
-    <div className="lander-blog-shell pt-32 pb-20 px-4">
-      <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-[var(--lander-fg)] mb-12 text-center">MdWrk</h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="lander-blog-shell blog-shell is-list">
+      <div className="blog-list-layout">
+        <h1 className="blog-list-title">
+          <span className="blog-list-title-inner">Blog</span>
+        </h1>
+        <div className="blog-grid">
           {posts.map(post => (
             <article
               key={post.id}
               onClick={() => setSelectedPost(post.id)}
-              className="lander-content-card p-6 rounded-2xl border hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group"
+              className="lander-content-card blog-card"
             >
-              <div className="text-xs text-[var(--lander-accent)] font-bold mb-2 uppercase tracking-widest">{post.metadata.date}</div>
-              <h2 className="text-xl font-bold text-[var(--lander-fg)] mb-3 group-hover:text-[var(--lander-accent)] transition-colors">{post.metadata.title}</h2>
-              <p className="text-[var(--lander-fg-muted)] text-sm line-clamp-3 mb-4">{post.metadata.excerpt}</p>
-              <div className="flex items-center gap-2 text-xs text-[var(--lander-fg-subtle)]">
-                <User className="w-3 h-3" /> {post.metadata.author}
+              <div className="blog-card-date">{post.metadata.date}</div>
+              <h2 className="blog-card-title">{post.metadata.title}</h2>
+              <p className="blog-card-excerpt">{post.metadata.excerpt}</p>
+              <div className="blog-card-author">
+                <User className="blog-card-author-icon" /> {post.metadata.author}
               </div>
             </article>
           ))}

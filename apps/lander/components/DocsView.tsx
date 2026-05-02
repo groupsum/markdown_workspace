@@ -76,6 +76,7 @@ export const DocsView: React.FC = () => {
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
   const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
   const headings = extractHeadings(renderedContent);
+  const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
 
   const renderNav = (items: DocItem[], level = 0) => {
     return items.map(item => {
@@ -84,21 +85,21 @@ export const DocsView: React.FC = () => {
       const isActive = activeSlug === item.id;
 
       return (
-        <div key={item.id} className="mb-1">
+        <div key={item.id} className="docs-nav-item">
           {hasChildren ? (
             <div>
               <button
                 onClick={() => toggleCategory(item.id)}
-                className="w-full text-left px-3 py-2 rounded-lg text-sm font-bold transition-colors flex items-center justify-between text-[var(--lander-fg)] hover:bg-[var(--lander-panel)]"
+                className="docs-nav-section-button"
                 style={{ paddingLeft: `${level * 12 + 12}px` }}
               >
-                <span className="flex items-center gap-2">
+                <span className="docs-nav-section-label">
                   {item.title}
                 </span>
-                {isExpanded ? <ChevronDown className="w-4 h-4 text-[var(--lander-fg-subtle)]" /> : <ChevronRight className="w-4 h-4 text-[var(--lander-fg-subtle)]" />}
+                {isExpanded ? <ChevronDown className="docs-nav-section-icon" /> : <ChevronRight className="docs-nav-section-icon" />}
               </button>
               {isExpanded && (
-                <div className="mt-1">
+                <div className="docs-nav-children">
                   {renderNav(item.children!, level + 1)}
                 </div>
               )}
@@ -106,15 +107,11 @@ export const DocsView: React.FC = () => {
           ) : (
             <NavLink
               to={`/docs/${item.id}`}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
-                isActive
-                  ? 'bg-[var(--lander-accent-soft)] text-[var(--lander-accent)]'
-                  : 'text-[var(--lander-fg-muted)] hover:bg-[var(--lander-panel)]'
-              }`}
+              className={buildDocNavLinkClassName(isActive)}
               style={{ paddingLeft: `${level * 12 + 12}px` }}
             >
-              {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[var(--lander-accent)] shrink-0" />}
-              <span className="truncate">{item.title}</span>
+              {isActive && <div className="docs-nav-link-dot" />}
+              <span className="docs-nav-link-label">{item.title}</span>
             </NavLink>
           )}
         </div>
@@ -123,33 +120,33 @@ export const DocsView: React.FC = () => {
   };
 
   return (
-    <div className="lander-doc-shell flex flex-col md:flex-row pt-16">
-      <aside className="w-full md:w-72 border-r border-[var(--lander-border)] bg-[color:var(--lander-panel-muted)]/85 md:sticky md:top-16 self-start">
-        <div className="p-6">
-          <h3 className="text-xs font-bold text-[var(--lander-fg-subtle)] uppercase tracking-widest mb-4 flex items-center gap-2">
-            <Book className="w-4 h-4" /> Documentation
+    <div className="docs-layout">
+      <aside className="docs-sidebar">
+        <div className="docs-sidebar-inner">
+          <h3 className="docs-sidebar-heading">
+            <Book className="docs-sidebar-icon" /> Documentation
           </h3>
-          <nav className="space-y-1">
+          <nav className="docs-nav">
             {renderNav(docStructure)}
           </nav>
         </div>
       </aside>
 
-      <main className="flex-1 p-6 md:p-12">
-        <div className="max-w-3xl mx-auto flex flex-col lg:flex-row gap-12">
-          <div className="lander-content-card flex-1 min-w-0 rounded-[24px] p-6 md:p-10">
+      <main className="docs-main">
+        <div className="docs-content-wrap">
+          <div className="lander-content-card docs-content-card">
             {currentDoc && (
-              <header className="mb-8 border-b border-[var(--lander-border)] pb-8">
-                <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[var(--lander-fg-subtle)]">
+              <header className="docs-header">
+                <div className="docs-meta">
                   <span>{currentDoc.section}</span>
                   {currentDoc.metadata.date && (
                     <>
-                      <span className="text-[var(--lander-fg-subtle)]/60">/</span>
+                      <span className="docs-meta-divider">/</span>
                       <span>{currentDoc.metadata.date}</span>
                     </>
                   )}
                 </div>
-                <h1 className="mt-4 text-4xl font-extrabold text-[var(--lander-fg)]">
+                <h1 className="docs-title">
                   {currentDoc.title}
                 </h1>
               </header>
@@ -158,15 +155,15 @@ export const DocsView: React.FC = () => {
           </div>
 
           {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (
-            <aside className="hidden lg:block w-48 shrink-0">
-              <div className="sticky top-8">
-                <h4 className="text-xs font-bold text-[var(--lander-fg-subtle)] uppercase tracking-widest mb-4">On this page</h4>
-                <nav className="space-y-3">
+            <aside className="docs-toc">
+              <div className="docs-toc-inner">
+                <h4 className="docs-toc-heading">On this page</h4>
+                <nav className="docs-toc-nav">
                   {headings.map((h, idx) => (
                     <a
                       key={idx}
                       href={`#${h.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}`}
-                      className="block text-xs text-[var(--lander-fg-muted)] hover:text-[var(--lander-accent)] transition-colors truncate"
+                      className="docs-toc-link"
                       title={h}
                     >
                       {h}

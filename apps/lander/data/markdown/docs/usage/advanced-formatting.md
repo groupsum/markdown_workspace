@@ -1,10 +1,12 @@
 ---
-title: MdWrk Markdown Formatting
+title: Markdown Formatting
 slug: usage/advanced-formatting
 section: Product
 sectionOrder: 2
 order: 2
 toc: true
+date: 2026-05-02
+status: published
 ---
 
 The mdwrk renderer supports GitHub Flavored Markdown plus the optional profile surfaces documented elsewhere in the repo.
