@@ -3,8 +3,9 @@ import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
 import { usePageMetadata } from '../hooks/usePageMetadata';
-import { extractFirstImage, summarizeMarkdown } from '../utils/pageMetadata';
+import { extractExcerpt, extractFirstImage, removeFirstImage } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
+import { FeaturedImage } from './FeaturedImage';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
 interface BlogPost {
@@ -156,10 +157,12 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
 
   const renderedContent = removeDuplicateLeadingHeading(post.content || '', post.metadata.title);
   const featuredImage = extractFirstImage(renderedContent);
+  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
+  const excerpt = extractExcerpt(renderedContent, post.metadata.excerpt);
 
   usePageMetadata({
-    title: `${post.metadata.title} | MdWrk Blog`,
-    description: post.metadata.excerpt?.trim() || summarizeMarkdown(renderedContent),
+    title: post.metadata.title,
+    description: excerpt,
     image: featuredImage?.src,
     imageAlt: featuredImage?.alt || post.metadata.title,
     path: `/blog/${post.slug}`,
@@ -184,7 +187,13 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
             </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>
           </div>
-          <MarkdownViewer content={renderedContent} />
+          {featuredImage?.src ? (
+            <FeaturedImage
+              src={featuredImage.src}
+              alt={featuredImage.alt || post.metadata.title}
+            />
+          ) : null}
+          <MarkdownViewer content={contentWithoutFeaturedImage} />
         </div>
       </div>
     </div>

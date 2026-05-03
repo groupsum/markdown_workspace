@@ -1,11 +1,11 @@
 ---
-title: Extension Compatibility Gates Turned MdWrk Publishing into a Clear Quality Signal
+title: Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal
 date: 2026-04-01
 status: published
 author: CobyCloud
-excerpt: MdWrk sharpened extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+excerpt: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
 ---
-April 1, 2026 tightened the extension delivery story with compatibility gates, version alignment, and publish-focused verification.
+April 1, 2026 tightens the extension delivery story with compatibility gates, version alignment, and publish-focused verification.
 
 The milestone sits on these commits:
 
@@ -39,4 +39,4 @@ npm run validate:compatibility
 - [Extension authoring](/docs/authoring/extensions)
 - [April 1 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-01T00:00:00Z&until=2026-04-02T00:00:00Z)
 
-This post marks the point where MdWrk's extension system became easier to trust, easier to document, and easier to carry into release workflows.
+This post marks the point where MdWrk's extension system becomes easier to trust, easier to document, and easier to carry into release workflows.

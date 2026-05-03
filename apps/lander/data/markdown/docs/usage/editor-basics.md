@@ -5,41 +5,114 @@ section: Product
 sectionOrder: 2
 order: 1
 toc: true
-date: 2026-05-02
+date: 2026-05-03
 status: published
+excerpt: MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
 ---
 
-The mdwrk client blends `@mdwrk/markdown-editor-react` with `@mdwrk/markdown-renderer-react`. The same split surface is what this lander demo now uses.
+Use this page when you want the current MdWrk editor surface, not just the package names behind it.
+
+## What the Editor Is For
+
+MdWrk is built for direct Markdown authoring with immediate visual feedback. The editor stays plain-text first, but it removes a lot of the friction that usually makes Markdown feel slower than rich-text tools.
+
+The client combines `@mdwrk/markdown-editor-react` for source editing and `@mdwrk/markdown-renderer-react` for preview, so writing and reading stay in the same workspace flow.
+
+## Core Writing Views
+
+MdWrk supports three primary work modes:
+
+- editor-only for focused drafting
+- split view for writing while checking rendered output
+- preview-only for review, presentation, and export inspection
+
+Split view includes a draggable divider and keyboard-adjustable separator so the balance between source and preview can be changed without leaving the work surface.
+
+## Source Editing Features
+
+The editor surface currently provides:
+
+- controlled and uncontrolled document modes
+- live cursor and selection tracking
+- line-number gutter support
+- undo and redo history
+- keyboard shortcut support
+- toolbar command execution
+- selection-aware formatting state for bold, italic, strikethrough, bullet lists, and task lists
+
+The result is a Markdown editor that still behaves like a real text editor instead of a fragile overlay on top of rich text.
+
+## Formatting Toolbar
+
+The default work-pane toolbar exposes direct authoring controls for:
+
+- bold
+- italic
+- strikethrough
+- bullet lists
+- task lists
+- indent
+- outdent
+- inline math
+- footnotes
+- superscript
+- subscript
+- undo
+- redo
+- insert table
+
+MdWrk writes Markdown for these actions instead of storing proprietary formatting state.
+
+## Keyboard Behavior
+
+The editor adds a few opinionated behaviors that improve drafting speed:
+
+- `Ctrl/Cmd+B` applies bold markers
+- `Ctrl/Cmd+I` applies italic markers
+- `Ctrl/Cmd+Shift+X` applies strikethrough markers
+- `Ctrl/Cmd+Z` and `Ctrl/Cmd+Shift+Z` drive undo and redo
+- `Tab` indents the current line or selected block
+- `Shift+Tab` outdents the current line or selected block
+- `Enter` continues unordered, ordered, and task lists
+- `Enter` on an empty list item exits the list cleanly
+
+These behaviors are especially useful for notes, checklists, changelogs, and long structured documents.
+
+## Table Builder
+
+MdWrk includes a table builder in the work-pane toolbar. Instead of hand-building the first pipe grid, you can choose row and column counts and insert a ready-to-edit Markdown table.
+
+```markdown
+| Column 1 | Column 2 | Column 3 |
+| --- | --- | --- |
+| R1C1 | R1C2 | R1C3 |
+| R2C1 | R2C2 | R2C3 |
+```
+
+After insertion, the table remains ordinary Markdown and can be edited anywhere.
 
 ## Workspace Model
-Documents live in browser-managed local storage unless you explicitly connect an integration. This keeps drafting private by default and lets the editor keep working when network access is unavailable.
 
-## Views
-Mdwrk supports the common writing surfaces expected from a Markdown workspace:
+Documents live in browser-managed local storage unless you intentionally connect another surface such as GitHub sync or export. This keeps drafting private by default and lets the editor continue working when network access is unavailable.
 
-- editor-only writing
-- rendered preview
-- split editing and preview
+Common workspace operations include:
 
-Use the view that matches the task: focused drafting, review, or side-by-side editing.
+- creating files and folders
+- renaming entries
+- deleting obsolete content
+- switching between projects
+- keeping multiple Markdown documents available for internal linking and navigation
 
-## File Operations
-Use workspace actions for document organization:
+## Theme and Layout Behavior
 
-- create files and folders
-- rename entries
-- delete obsolete content
-- switch between project workspaces
+The editor follows the shared viewport and aspect-ratio contract used across the workspace. Themes can style each breakpoint band differently, but the editing and preview layout rules stay predictable across portrait, square, landscape, wide, and ultra-wide usage.
 
-These operations are local-first. Sync or export intentionally when content needs to leave the browser.
+## Why This Matters
 
-## Editor Package Surface
-The reusable editor package provides:
+MdWrk is not trying to hide Markdown behind a fake document model. The product goal is to make Markdown fast enough for daily writing while keeping the file portable, inspectable, and easy to move into GitHub, static documentation, package READMEs, or other publishing surfaces.
 
-- controlled and uncontrolled editing modes
-- keyboard shortcut and command wiring
-- line-number gutter support
-- theme bridge helpers for shared token-driven styling
+## Related Docs
 
-## Themes and Responsive Layout
-Themes follow the shared viewport contract across portrait, square, landscape, wide, and ultra-wide layouts. Each theme can style the bands differently while keeping the breakpoint behavior predictable.
+- [/docs/usage/advanced-formatting](/docs/usage/advanced-formatting)
+- [/docs/usage/rendering-and-preview](/docs/usage/rendering-and-preview)
+- [/docs/getting-started/configuration](/docs/getting-started/configuration)

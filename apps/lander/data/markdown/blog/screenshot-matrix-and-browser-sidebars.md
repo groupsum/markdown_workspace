@@ -1,11 +1,11 @@
 ---
-title: Screenshot Matrix Coverage Helped MdWrk Prove Themes Across Viewports and Workflows
+title: Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows
 date: 2026-04-03
 status: published
 author: CobyCloud
-excerpt: MdWrk expanded browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
+excerpt: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 ---
-April 3, 2026 expanded the visual verification surface for theme work, UI review, and cross-screen consistency.
+April 3, 2026 expands the visual verification surface for theme work, UI review, and cross-screen consistency.
 
 This moment is visible in:
 
@@ -13,7 +13,7 @@ This moment is visible in:
 - [Embed studio browsers in the shared workspace sidebar](https://github.com/groupsum/markdown_workspace/commit/c90bc0e9)
 - [Refactor studio panes and persist language packs in IndexedDB](https://github.com/groupsum/markdown_workspace/commit/613cc751)
 
-## What this added
+## What this adds
 
 - viewport-aware screenshot capture
 - richer pane coverage for studio workflows

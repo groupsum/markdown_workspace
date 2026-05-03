@@ -1,11 +1,11 @@
 ---
-title: Retained Client Versions and the Desktop Shell Expanded How Teams Can Deploy MdWrk
+title: Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk
 date: 2026-04-12
 status: published
 author: CobyCloud
-excerpt: MdWrk introduced retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
+excerpt: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 ---
-April 12, 2026 broadened MdWrk's delivery model.
+April 12, 2026 broadens MdWrk's delivery model.
 
 The timeline anchor includes:
 

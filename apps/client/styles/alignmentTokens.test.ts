@@ -69,12 +69,16 @@ describe('markdown/editor alignment token contract', () => {
     expect(markdownCss).toContain('table-layout: fixed;');
     expect(markdownCss).toContain('white-space: pre-wrap;');
     expect(markdownCss).toContain('overflow-x: hidden;');
+    expect(markdownCss).toContain('overflow-wrap: break-word;');
+    expect(markdownCss).toContain('word-break: normal;');
     expect(portableEditorCss).toContain('overflow-wrap: anywhere;');
     expect(portableEditorCss).toContain('overflow-x: hidden;');
     expect(portableEditorCss).toContain('padding: var(--mwe-editor-padding, 16px) 8px;');
     expect(portableEditorCss).not.toContain('padding: calc(var(--mwe-editor-padding, 16px) - 8px) 8px;');
     expect(portableRendererCss).toContain('table-layout: fixed;');
     expect(portableRendererCss).toContain('overflow-x: hidden !important;');
+    expect(portableRendererCss).toContain('overflow-wrap: break-word;');
+    expect(portableRendererCss).toContain('word-break: normal;');
   });
 
   it('keeps preview export and print controls as top-right overlay buttons', () => {

@@ -19,11 +19,11 @@ Use this shape:
 
 ```yaml
 ---
-title: Settings Simplification Gave MdWrk a Faster Path from Installation to Daily Use
+title: Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use
 date: 2026-05-01
 status: published
 author: CobyCloud
-excerpt: MdWrk refined its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+excerpt: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 ---
 ```
 
@@ -33,7 +33,7 @@ Notes:
 - `date`: ISO `YYYY-MM-DD`
 - `status`: use `published` for live posts
 - `author`: set to `CobyCloud`
-- `excerpt`: blog-card summary line
+- `excerpt`: blog-card summary line written in present tense
 - `slug`: optional; when omitted, route shape falls back to the sitemap id after `blog/`
 
 ## Required Publishing Step
@@ -54,6 +54,8 @@ Example:
 3. Explain what improved or arrived.
 4. Show how to use it or where to learn it.
 5. Include a screenshot when the UI is part of the story.
+
+Keep titles, excerpts, and body copy in present tense. The date anchors when the work lands, but the prose should describe the product state and reader value in present-tense language.
 
 ## Starter Body
 
@@ -77,4 +79,3 @@ This work is grounded in:
 
 ![Descriptive alt text](/blog/media/example.png)
 ```
-

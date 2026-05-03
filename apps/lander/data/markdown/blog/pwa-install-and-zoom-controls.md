@@ -1,11 +1,11 @@
 ---
-title: PWA Install, Zoom Controls, and Preview Refinements Made MdWrk Ready for Daily Use
+title: PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use
 date: 2026-01-22
 status: published
 author: CobyCloud
-excerpt: MdWrk gained PWA install support, zoom controls, preview refinements, and deployment rails that turned the workspace into a stronger everyday writing environment.
+excerpt: MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
 ---
-January 22, 2026 moved MdWrk from an exciting workspace demo into an installable daily tool.
+January 22, 2026 moves MdWrk from an exciting workspace demo into an installable daily tool.
 
 The repo history for that step includes:
 
@@ -13,7 +13,7 @@ The repo history for that step includes:
 - [Fix zoom scaling for UI text and icons](https://github.com/groupsum/markdown_workspace/commit/b5486fcd)
 - [implement deploy](https://github.com/groupsum/markdown_workspace/commit/2ea7e01b)
 
-## What users gained
+## What users gain
 
 - installable browser app behavior
 - clearer zoom scaling for long writing sessions
@@ -44,4 +44,4 @@ That build flow feeds the installable client surface and supports teams that wan
 
 - [January 22 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-01-22T00:00:00Z&until=2026-01-23T00:00:00Z)
 
-This date matters because it showed how MdWrk could serve writers, operators, and deployers in one cohesive flow.
+This date matters because it shows how MdWrk serves writers, operators, and deployers in one cohesive flow.

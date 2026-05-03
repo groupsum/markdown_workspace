@@ -5,7 +5,7 @@ status: published
 author: CobyCloud
 excerpt: The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
 ---
-April 30, 2026 sharpened the MdWrk site for the client, the reusable packages, and the extension platform.
+April 30, 2026 sharpens the MdWrk site for the client, the reusable packages, and the extension platform.
 
 This refresh lines up with:
 
@@ -21,7 +21,7 @@ The public docs now guide readers into:
 - reusable module adoption
 - extension platform details
 - authoring flows for themes, language packs, and extensions
-- repository updates that explain how the platform grew
+- repository updates that explain how the platform grows
 
 ## Docs that carry the current state
 

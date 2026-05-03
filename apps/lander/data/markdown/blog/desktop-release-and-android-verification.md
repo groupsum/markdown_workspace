@@ -1,11 +1,11 @@
 ---
-title: Desktop Release Automation and Android Verification Sharpened MdWrk Cross-Platform Delivery
+title: Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery
 date: 2026-04-14
 status: published
 author: CobyCloud
-excerpt: MdWrk refined desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
+excerpt: MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
 ---
-April 14, 2026 is one of the clearest release-engineering milestones in the repository history.
+April 14, 2026 marks one of the clearest release-engineering milestones in the repository history.
 
 The day includes:
 
@@ -45,4 +45,4 @@ npm run ci:desktop:release
 - [April 14 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-14T00:00:00Z&until=2026-04-15T00:00:00Z)
 - [Local setup docs](/docs/getting-started/local-setup)
 
-This is the point where MdWrk started communicating a stronger release operations story alongside its authoring story.
+This is the point where MdWrk starts communicating a stronger release operations story alongside its authoring story.

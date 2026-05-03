@@ -1,11 +1,11 @@
 ---
-title: Governed Releases, CI Evidence, and Package Docs Gave MdWrk a Stronger Public Shape
+title: Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape
 date: 2026-03-31
 status: published
 author: CobyCloud
-excerpt: MdWrk expanded its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
+excerpt: MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
 ---
-March 31, 2026 brought together docs, governance, and release evidence in a way that gave MdWrk a clearer package and release surface.
+March 31, 2026 brings together docs, governance, and release evidence in a way that gives MdWrk a clearer package and release surface.
 
 This milestone is grounded in:
 
@@ -42,11 +42,11 @@ npm run conformance
 
 ## Why this post matters
 
-March 31 is where MdWrk gave teams a clearer view of:
+March 31 is where MdWrk gives teams a clearer view of:
 
 - package verification
 - release commands
 - current docs
 - package boundaries
 
-It is a major point on the timeline because package usage, release checks, and public docs started moving together.
+It is a major point on the timeline because package usage, release checks, and public docs start moving together.

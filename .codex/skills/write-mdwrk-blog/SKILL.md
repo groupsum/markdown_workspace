@@ -24,6 +24,7 @@ Read `references/blog-contract.md` before drafting. It contains the frontmatter 
 - Write for readers discovering or tracking MdWrk over time.
 - Lead with what changed and what it unlocks in use.
 - Keep the voice vivid, technical, concrete, and product-facing.
+- Keep the prose in present tense, including dated retrospective posts. Historical dates can anchor the event, but the article should describe MdWrk's capabilities and product meaning in present-tense language.
 - Market the product through clarity, examples, commands, screenshots, and links.
 - Do not expose internal content strategy or talk about SEO, AEO, AI-EO, search targeting, answer-engine targeting, sales intent, or copy strategy.
 - Do not define a feature through negation. Describe the capability directly.
@@ -34,6 +35,7 @@ Read `references/blog-contract.md` before drafting. It contains the frontmatter 
 - Avoid redundant titles across the blog set.
 - Always set `author: CobyCloud`.
 - Use an excerpt that reads cleanly on blog cards.
+- Keep titles, excerpts, and body copy in present tense.
 - Include installation, usage, upgrade, or rollout details where applicable.
 - Link to current docs with site-relative paths like `/docs/getting-started/installation`.
 - Link to concrete repo history when commit links strengthen the story.
@@ -47,4 +49,3 @@ Read `references/blog-contract.md` before drafting. It contains the frontmatter 
 - `status` is publish-ready and `date` is an ISO date that should be live.
 - The post is listed in `apps/lander/data/content-sitemap.yaml` with a `blog/...` id and matching file path.
 - The links, screenshot paths, and slug behavior make sense for the current post.
-

@@ -10,9 +10,9 @@
   line-height: var(--markdown-line-height);
   font-size: calc(0.95rem * var(--ui-scale));
   color: var(--fg-primary);
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  line-break: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: auto;
   overflow-x: hidden;
 }
 
@@ -55,8 +55,8 @@
   line-height: 1.35;
   color: var(--fg-secondary);
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 .markdown-body pre {
   max-width: 100%;
@@ -65,8 +65,8 @@
   padding: 1em;
   overflow-x: hidden;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   border-radius: 4px;
   border: 1px solid var(--border-color);
 }
@@ -78,8 +78,8 @@
   font-size: calc(0.85em * var(--ui-scale));
   color: inherit;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 .markdown-body blockquote { border-left: 4px solid var(--accent); padding-left: 1em; color: var(--fg-muted); margin-left: 0; }
 .markdown-body hr {
@@ -183,8 +183,8 @@
   table-layout: fixed;
   border-collapse: collapse;
   margin-bottom: 1em;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .markdown-body th,
@@ -194,8 +194,8 @@
   border: 1px solid var(--border-color);
   padding: 6px 12px;
   min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   white-space: normal;
 }
 
@@ -239,8 +239,8 @@
   max-width: 100% !important;
   overflow-x: hidden !important;
   white-space: pre-wrap !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
 }
 
 .md-code-block {
@@ -275,8 +275,8 @@
   padding: 12px 14px;
   border-radius: 6px;
   overflow-x: hidden;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .md-code-surface pre,
@@ -288,8 +288,8 @@
   max-width: 100% !important;
   overflow-x: hidden !important;
   white-space: pre-wrap !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
 }
 
 @media print {

@@ -3,9 +3,9 @@ title: Meet the Markdown Workspace That Turns Writing, Preview, and Themes into 
 date: 2026-01-20
 status: published
 author: CobyCloud
-excerpt: Markdown Workspace opened with live writing, preview, themed presentation, and early export foundations that gave teams a compelling browser-first markdown workflow from day one.
+excerpt: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 ---
-The January 20, 2026 launch introduced a writing workspace built for fast authoring, visual polish, and theme-aware reading.
+The January 20, 2026 launch introduces a writing workspace built for fast authoring, visual polish, and theme-aware reading.
 
 This first day is visible in the earliest repo milestones:
 
@@ -13,9 +13,9 @@ This first day is visible in the earliest repo milestones:
 - [Add acid etched theme skin](https://github.com/groupsum/markdown_workspace/commit/286faf28)
 - [Add theme cycling controls](https://github.com/groupsum/markdown_workspace/commit/99457cd9)
 
-## What launched
+## What launches
 
-The launch surface already brought together:
+The launch surface already brings together:
 
 - a markdown editor
 - a live preview
@@ -46,7 +46,7 @@ MdWrk keeps writing and preview close together.
 - markdown keeps the source portable
 ```
 
-## Why the launch resonated
+## Why the launch resonates
 
 Teams evaluating markdown tools often look for:
 
@@ -55,4 +55,4 @@ Teams evaluating markdown tools often look for:
 - easy theme variation
 - a clean route to later packaging and deployment
 
-MdWrk opened with all four, which gave the product a strong story from its first visible commits.
+MdWrk opens with all four, which gives the product a strong story from its first visible commits.

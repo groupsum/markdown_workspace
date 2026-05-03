@@ -129,7 +129,8 @@ describe('HTML/PDF export document contract', () => {
 
     expect(html).toContain('First editor line<br />Second editor line');
     expect(html).toContain('Second editor line with averyveryveryveryveryveryveryverylonglinktext<br />Third editor line');
-    expect(html).toContain('overflow-wrap: anywhere;');
+    expect(html).toContain('overflow-wrap: break-word;');
+    expect(html).toContain('word-break: normal;');
     expect(html).toContain('overflow-x: hidden;');
   });
 });

@@ -1,11 +1,11 @@
 ---
-title: Responsive Authoring, Keyboard Speed, and HTML Export Expanded MdWrk in a Single Day
+title: Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day
 date: 2026-01-21
 status: published
 author: CobyCloud
-excerpt: MdWrk expanded quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.
+excerpt: MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.
 ---
-January 21, 2026 packed a full set of user-facing wins into the repository history.
+January 21, 2026 packs a full set of user-facing wins into the repository history.
 
 Key commits from that date include:
 
@@ -14,9 +14,9 @@ Key commits from that date include:
 - [Add responsive layout tuning across breakpoints](https://github.com/groupsum/markdown_workspace/commit/005396c6)
 - [Add print preview shortcut and UI](https://github.com/groupsum/markdown_workspace/commit/65dbcc5b)
 
-## What changed for users
+## What changes for users
 
-Writers gained:
+Writers gain:
 
 - faster command access through keyboard flows
 - export coverage for HTML handoff
@@ -38,10 +38,10 @@ Once the client is running, teams can open a draft, write in source mode, previe
 
 ## Why this day matters in the product story
 
-January 21 gave MdWrk a practical answer to common product questions:
+January 21 gives MdWrk a practical answer to common product questions:
 
 - Can a writer move quickly with keyboard-first flows?
 - Can a team present markdown across multiple screens?
 - Can authored content leave the workspace as a web-friendly deliverable?
 
-Each answer turned into shipped functionality on the same date, which makes this one of the strongest velocity moments in the early repo history.
+Each answer turns into shipped functionality on the same date, which makes this one of the strongest velocity moments in the early repo history.

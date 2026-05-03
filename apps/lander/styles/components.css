@@ -730,6 +730,16 @@
   @apply p-6;
 }
 
+.lander-featured-image {
+  @apply mb-8 overflow-hidden rounded-[20px];
+  border: 1px solid var(--lander-border);
+  background: color-mix(in srgb, var(--lander-surface) 92%, black 8%);
+}
+
+.lander-featured-image-media {
+  @apply block h-auto w-full;
+}
+
 .docs-header,
 .blog-post-header {
   @apply mb-8 border-b pb-8;

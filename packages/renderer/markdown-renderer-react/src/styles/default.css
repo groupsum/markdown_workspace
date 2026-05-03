@@ -7,9 +7,9 @@
   max-width: 100%;
   min-width: 0;
   overflow-x: hidden;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  line-break: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: auto;
 }
 
 .markdown-body h1,
@@ -26,8 +26,8 @@
   background: var(--mw-code-bg, rgba(255, 255, 255, 0.04));
   border-color: var(--mw-code-border, rgba(255, 255, 255, 0.12));
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .markdown-body .md-code-block,
@@ -37,8 +37,8 @@
   max-width: 100%;
   min-width: 0;
   overflow-x: hidden;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .markdown-body pre,
@@ -49,8 +49,8 @@
   max-width: 100%;
   overflow-x: hidden !important;
   white-space: pre-wrap !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
 }
 
 .markdown-body table,
@@ -58,8 +58,8 @@
   max-width: 100%;
   width: 100%;
   table-layout: fixed;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .markdown-body th,
@@ -67,7 +67,7 @@
 .markdown-body .md-table-header,
 .markdown-body .md-table-cell {
   min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   white-space: normal;
 }

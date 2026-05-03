@@ -3,8 +3,9 @@ import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
 import { usePageMetadata } from '../hooks/usePageMetadata';
-import { extractFirstImage, summarizeMarkdown } from '../utils/pageMetadata';
+import { extractExcerpt, extractFirstImage, removeFirstImage } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
+import { FeaturedImage } from './FeaturedImage';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
 interface DocItem {
@@ -79,11 +80,13 @@ export const DocsView: React.FC = () => {
   const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
   const headings = extractHeadings(renderedContent);
   const featuredImage = extractFirstImage(renderedContent);
+  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
+  const excerpt = extractExcerpt(renderedContent, currentDoc?.metadata.excerpt);
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
 
   usePageMetadata({
-    title: currentDoc ? `${currentDoc.title} | MdWrk Docs` : 'MdWrk Docs',
-    description: currentDoc?.metadata.excerpt?.trim() || summarizeMarkdown(renderedContent),
+    title: currentDoc?.title || 'MdWrk Docs',
+    description: excerpt,
     image: featuredImage?.src,
     imageAlt: featuredImage?.alt || currentDoc?.title,
     path: currentDoc ? `/docs/${currentDoc.slug}` : '/docs/',
@@ -162,7 +165,13 @@ export const DocsView: React.FC = () => {
                 </h1>
               </header>
             )}
-            <MarkdownViewer content={renderedContent} />
+            {featuredImage?.src ? (
+              <FeaturedImage
+                src={featuredImage.src}
+                alt={featuredImage.alt || currentDoc?.title || 'MdWrk document featured image'}
+              />
+            ) : null}
+            <MarkdownViewer content={contentWithoutFeaturedImage} />
           </div>
 
           {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (

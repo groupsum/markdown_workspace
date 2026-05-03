@@ -2,8 +2,10 @@ const siteUrl = (import.meta.env.VITE_SITE_URL?.trim() || 'https://mdwrk.com').r
 const defaultTitle = 'MdWrk';
 const defaultDescription =
   'MdWrk is a privacy-first, offline-capable Markdown workspace for writing, previewing, and managing Markdown on your device.';
-const defaultImage = `${siteUrl}/og-image.svg`;
-const defaultImageAlt = 'MdWrk privacy-first Markdown workspace';
+const defaultImage = `${siteUrl}/favicon.svg`;
+const defaultImageAlt = 'MdWrk favicon logo with layered Markdown panels';
+const markdownImagePattern = /!\[([^\]]*)]\(([^)\s]+)(?:\s+"[^"]*")?\)/;
+const htmlImagePattern = /<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i;
 
 const stripMarkdown = (content: string) =>
   content
@@ -19,7 +21,7 @@ const stripMarkdown = (content: string) =>
     .trim();
 
 export const extractFirstImage = (content: string) => {
-  const markdownMatch = content.match(/!\[([^\]]*)]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+  const markdownMatch = content.match(markdownImagePattern);
   if (markdownMatch) {
     return {
       src: markdownMatch[2],
@@ -27,7 +29,7 @@ export const extractFirstImage = (content: string) => {
     };
   }
 
-  const htmlMatch = content.match(/<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i);
+  const htmlMatch = content.match(htmlImagePattern);
   if (htmlMatch) {
     return {
       src: htmlMatch[1] || htmlMatch[4] || htmlMatch[5] || '',
@@ -36,6 +38,33 @@ export const extractFirstImage = (content: string) => {
   }
 
   return null;
+};
+
+export const removeFirstImage = (content: string) => {
+  if (markdownImagePattern.test(content)) {
+    return content.replace(markdownImagePattern, '').replace(/\n{3,}/g, '\n\n').trim();
+  }
+
+  if (htmlImagePattern.test(content)) {
+    return content.replace(htmlImagePattern, '').replace(/\n{3,}/g, '\n\n').trim();
+  }
+
+  return content;
+};
+
+export const extractExcerpt = (content: string, preferredExcerpt?: string | null, maxLength = 180) => {
+  const normalizedPreferredExcerpt = preferredExcerpt?.trim();
+  if (normalizedPreferredExcerpt) return normalizedPreferredExcerpt;
+
+  const paragraphs = content
+    .split(/\n\s*\n/g)
+    .map(segment => stripMarkdown(segment))
+    .filter(Boolean);
+
+  const firstParagraph = paragraphs[0];
+  if (!firstParagraph) return defaultDescription;
+  if (firstParagraph.length <= maxLength) return firstParagraph;
+  return `${firstParagraph.slice(0, maxLength).trimEnd()}...`;
 };
 
 const toAbsoluteUrl = (value?: string | null) => {
@@ -71,7 +100,9 @@ export const buildPageMetadata = ({
   const normalizedImage = toAbsoluteUrl(image);
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
   const canonicalUrl = `${siteUrl}${normalizedPath === '/' ? '/' : normalizedPath}`;
-  const normalizedImageAlt = imageAlt?.trim() || `${normalizedTitle} feature image`;
+  const normalizedImageAlt = image?.trim()
+    ? (imageAlt?.trim() || `${normalizedTitle} feature image`)
+    : defaultImageAlt;
 
   return {
     title: normalizedTitle,

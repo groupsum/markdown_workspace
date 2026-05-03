@@ -61,7 +61,7 @@ export function MdWrkDemo() {
 
 This split-view surface shows the kind of install target product teams get when they adopt the package family directly.
 
-## Repository history that shaped the package surface
+## Repository history that shapes the package surface
 
 The package move sits inside a broader history arc:
 
@@ -77,4 +77,4 @@ This package family fits:
 - platform teams building governed docs or knowledge surfaces
 - extension teams that want their work to sit close to the live MdWrk runtime
 
-MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path became easier to install, easier to use, and easier to extend.
+MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path becomes easier to install, easier to use, and easier to extend.

@@ -1,11 +1,11 @@
 ---
-title: Workspace Files and Git Operations Packages Opened a Larger Automation Surface for MdWrk
+title: Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk
 date: 2026-04-22
 status: published
 author: CobyCloud
-excerpt: MdWrk expanded its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
+excerpt: MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
 ---
-April 22, 2026 expanded MdWrk’s practical automation surface.
+April 22, 2026 expands MdWrk's practical automation surface.
 
 The key anchor is:
 

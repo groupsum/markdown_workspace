@@ -80,8 +80,8 @@ const EXPORT_STYLE_OVERRIDES = `
   .export-page .markdown-body {
     margin: 0;
     max-width: none;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .export-page pre,
@@ -100,7 +100,7 @@ const EXPORT_STYLE_OVERRIDES = `
 
   .export-page pre {
     white-space: pre-wrap;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   .export-advisory {
@@ -126,7 +126,7 @@ const EXPORT_STYLE_OVERRIDES = `
     font-size: 12px;
     line-height: 1.55;
     color: var(--fg-muted, #b7beca);
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   @media screen and (max-aspect-ratio: 3/4) {
