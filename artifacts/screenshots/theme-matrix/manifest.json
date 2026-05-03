@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-01T22:29:16.939Z",
+  "generatedAt": "2026-05-03T08:22:23.876Z",
   "outputRoot": "artifacts\\screenshots\\theme-matrix",
   "viewportContractPath": "apps\\client\\styles\\base\\viewports.css",
   "viewportCaseCount": 9,
@@ -26,7 +26,7 @@
     "precision"
   ],
   "themeCount": 15,
-  "totalCaptureCount": 3972,
+  "totalCaptureCount": 4361,
   "viewports": [
     {
       "viewportId": "portrait-xs-short-touch",
@@ -40,7 +40,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -69,13 +69,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -104,13 +106,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -139,13 +143,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -174,13 +180,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -209,13 +217,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -244,13 +254,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -279,13 +291,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -314,13 +328,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -349,13 +365,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -384,13 +402,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -419,13 +439,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -454,13 +476,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -489,13 +513,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -524,13 +550,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -559,8 +587,10 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         }
       ]
@@ -577,7 +607,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -606,13 +636,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -641,13 +673,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -676,13 +710,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -711,13 +747,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -746,13 +784,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -781,13 +821,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -816,13 +858,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -851,13 +895,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -886,13 +932,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -921,13 +969,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -956,13 +1006,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -991,13 +1043,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1026,13 +1080,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1061,13 +1117,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1096,8 +1154,10 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         }
       ]
@@ -1114,7 +1174,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1143,13 +1203,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1178,13 +1240,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1213,13 +1277,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1248,13 +1314,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1283,13 +1351,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1318,13 +1388,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1353,13 +1425,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1388,13 +1462,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1423,13 +1499,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1458,13 +1536,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1493,13 +1573,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 28,
+          "captureCount": 30,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1527,13 +1609,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1562,13 +1646,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1597,13 +1683,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1632,8 +1720,10 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         }
       ]
@@ -1650,7 +1740,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1679,13 +1769,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1714,13 +1806,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1749,13 +1843,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1784,13 +1880,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1819,13 +1917,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1854,13 +1954,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1889,13 +1991,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1924,13 +2028,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1959,13 +2065,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -1994,13 +2102,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2029,13 +2139,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 28,
+          "captureCount": 30,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2063,13 +2175,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2098,13 +2212,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2133,13 +2249,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2168,8 +2286,10 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         }
       ]
@@ -2186,7 +2306,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2215,13 +2335,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2250,13 +2372,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2285,13 +2409,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2320,13 +2446,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2355,13 +2483,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2390,13 +2520,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2425,13 +2557,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2460,13 +2594,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2495,13 +2631,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2530,13 +2668,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2565,13 +2705,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 28,
+          "captureCount": 30,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2599,13 +2741,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2634,13 +2778,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2669,13 +2815,15 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 29,
+          "captureCount": 31,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2704,8 +2852,10 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
             "workspace-panel-open-preview-pane.jpg",
-            "workspace-panel-open-single-pane.jpg"
+            "workspace-panel-open-single-pane.jpg",
+            "workspace-panel-restored-single-pane.jpg"
           ]
         }
       ]
@@ -2722,7 +2872,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2751,14 +2901,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2787,14 +2941,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2823,14 +2981,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2859,14 +3021,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2895,14 +3061,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2931,14 +3101,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -2967,14 +3141,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3003,14 +3181,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3039,14 +3221,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3075,14 +3261,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3111,14 +3301,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 30,
+          "captureCount": 33,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3141,20 +3335,23 @@
             "settings-data-pwa.jpg",
             "settings-github-configurations.jpg",
             "settings-visual.jpg",
-            "table-builder-modal.jpg",
             "theme-studio-pane-sidebar-collapsed.jpg",
             "theme-studio-pane-sidebar-restored.jpg",
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3183,14 +3380,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3219,14 +3420,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3255,9 +3460,13 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         }
       ]
@@ -3274,7 +3483,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3303,14 +3512,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3339,14 +3552,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3375,14 +3592,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3411,14 +3632,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3447,14 +3672,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3483,14 +3712,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3519,14 +3752,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3555,14 +3792,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3591,14 +3832,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3627,14 +3872,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3663,14 +3912,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3699,14 +3952,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3735,14 +3992,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3771,14 +4032,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3807,9 +4072,13 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         }
       ]
@@ -3826,7 +4095,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3855,14 +4124,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3891,14 +4164,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3927,14 +4204,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3963,14 +4244,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -3999,14 +4284,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4035,14 +4324,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4071,14 +4364,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4107,14 +4404,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4143,14 +4444,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4179,14 +4484,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4215,14 +4524,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4251,14 +4564,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4287,14 +4604,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4323,14 +4644,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4359,9 +4684,13 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         }
       ]
@@ -4378,7 +4707,7 @@
       "themes": [
         {
           "themeId": "tensioned-technical-skeleton",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4407,14 +4736,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "optical-vellum-drafting-grid",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4443,14 +4776,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "heavy-gauge-tectonic",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4479,14 +4816,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "ferrous-monolith",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4515,14 +4856,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "galvanized-cellular",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4551,14 +4896,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pressed-chromium",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4587,14 +4936,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "acid-etched",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4623,14 +4976,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "zinc",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4659,14 +5016,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "anodized-billet",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4695,14 +5056,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "micropress",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4731,14 +5096,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "research-science",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4767,14 +5136,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "pneumatic-mycelial-scaffolding",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4803,14 +5176,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-light",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4839,14 +5216,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "lander-dark",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4875,14 +5256,18 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         },
         {
           "themeId": "default",
-          "captureCount": 30,
+          "captureCount": 34,
           "captures": [
             "extension-manager-pane-sidebar-collapsed.jpg",
             "extension-manager-pane-sidebar-restored.jpg",
@@ -4911,9 +5296,13 @@
             "theme-studio-pane-single.jpg",
             "theme-studio-pane-split-restored.jpg",
             "theme-studio-pane-split.jpg",
+            "workspace-panel-collapsed-single-pane.jpg",
+            "workspace-panel-collapsed-split-stage.jpg",
             "workspace-panel-open-preview-pane.jpg",
             "workspace-panel-open-single-pane.jpg",
-            "workspace-panel-open-split-stage.jpg"
+            "workspace-panel-open-split-stage.jpg",
+            "workspace-panel-restored-single-pane.jpg",
+            "workspace-panel-restored-split-stage.jpg"
           ]
         }
       ]
