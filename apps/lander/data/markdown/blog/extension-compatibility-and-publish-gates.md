@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
 ---
+## Article Guide
+
+2026-04-01 marks this MdWrk product story: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Extension Platform](/docs/extensions/extension-platform)
+
 April 1, 2026 tightens the extension delivery story with compatibility gates, version alignment, and publish-focused verification.
 
 The milestone sits on these commits:

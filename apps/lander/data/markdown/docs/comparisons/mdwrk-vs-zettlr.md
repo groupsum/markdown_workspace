@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-renderer-core
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs Zettlr in the MdWrk Comparisons surface. Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 MdWrk focuses on Markdown workspace, preview, packages, and extension host behavior. Zettlr is commonly used for research writing, citation-heavy notes, and academic workflows.
 

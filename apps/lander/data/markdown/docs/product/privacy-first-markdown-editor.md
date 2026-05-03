@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-host, @mdwrk/extension-manifest
 ---
+## Quick Reference
+
+Use this article to understand Privacy-First Markdown Editor in the MdWrk Product surface. MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 MdWrk is designed so writing does not require a hosted document account.
 

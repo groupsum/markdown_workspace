@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
 ---
+## Article Guide
+
+2026-04-22 marks this MdWrk product story: MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [GitHub Sync](/docs/github-sync)
+
 April 22, 2026 expands MdWrk's practical automation surface.
 
 The key anchor is:

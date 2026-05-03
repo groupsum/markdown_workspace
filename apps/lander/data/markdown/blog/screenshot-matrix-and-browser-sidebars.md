@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 ---
+## Article Guide
+
+2026-04-03 marks this MdWrk product story: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
 April 3, 2026 expands the visual verification surface for theme work, UI review, and cross-screen consistency.
 
 This moment is visible in:

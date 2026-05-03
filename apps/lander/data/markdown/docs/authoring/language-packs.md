@@ -8,6 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Language Pack Authoring in the MdWrk Authoring surface. Language Pack Authoring explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- privacy-first storage
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Client Installation](/docs/getting-started/installation)
 
 Use this path when you want to author portable MdWrk language packs rather than only enable or disable built-in locales.
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { buildPageMetadata, normalizeStructuredData } from '../utils/pageMetadata';
+import { buildPageMetadata, normalizeKeywords, normalizeStructuredData } from '../utils/pageMetadata';
 
 type MetadataInput = Parameters<typeof buildPageMetadata>[0];
 
@@ -63,7 +63,12 @@ export const usePageMetadata = (input: MetadataInput) => {
     setMetaContent('meta[name="twitter:description"]', { name: 'twitter:description' }, metadata.description);
     setMetaContent('meta[name="twitter:image"]', { name: 'twitter:image' }, metadata.image);
     setMetaContent('meta[name="twitter:image:alt"]', { name: 'twitter:image:alt' }, metadata.imageAlt);
+    const keywords = normalizeKeywords(input.keywords);
+    if (keywords.length > 0) {
+      setMetaContent('meta[name="keywords"]', { name: 'keywords' }, keywords.join(', '));
+      setMetaContent('meta[property="article:tag"]', { property: 'article:tag' }, keywords.join(', '));
+    }
     setLinkHref('link[rel="canonical"]', { rel: 'canonical' }, metadata.url);
     setStructuredData(input.structuredData);
-  }, [input.description, input.image, input.imageAlt, input.path, input.structuredData, input.title]);
+  }, [input.description, input.image, input.imageAlt, input.keywords, input.path, input.structuredData, input.title]);
 };

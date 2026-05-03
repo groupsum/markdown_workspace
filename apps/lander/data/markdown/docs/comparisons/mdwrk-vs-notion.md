@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-workspace-files
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs Notion in the MdWrk Comparisons surface. Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- privacy-first storage
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
 
 MdWrk and Notion solve different document problems.
 

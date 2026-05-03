@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 ---
+## Article Guide
+
+2026-01-20 marks this MdWrk product story: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
 The January 20, 2026 launch introduces a writing workspace built for fast authoring, visual polish, and theme-aware reading.
 
 This first day is visible in the earliest repo milestones:

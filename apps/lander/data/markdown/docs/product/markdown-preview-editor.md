@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.
 relatedApis: @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react, @mdwrk/markdown-renderer-core
 ---
+## Quick Reference
+
+Use this article to understand Markdown Preview Editor in the MdWrk Product surface. MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.
+
+Key concepts covered here:
+
+- live preview
+- developer package reuse
+- @mdwrk/markdown-editor-react
+- @mdwrk/markdown-renderer-react
+- @mdwrk/markdown-renderer-core
+
+Useful follow-up pages:
+
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 
 MdWrk keeps source editing and rendered preview in the same workflow.
 

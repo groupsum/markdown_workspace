@@ -8,6 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand PWA Installation in the MdWrk Getting Started surface. PWA Installation explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [PWA Installation](/docs/getting-started/pwa-installation)
+- [Browser Use](/docs/getting-started/browser-use)
 
 Use the PWA route when you want the browser-hosted workspace with an installable app shell.
 

@@ -8,8 +8,25 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
 
-The mdwrk client ships with sensible defaults. These settings are part of the client and extension host surface, not the lander.
+Use this article to understand Client Configuration in the MdWrk Getting Started surface. Client Configuration explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- extension host contracts
+- theme portability
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
+The MdWrk client ships with sensible defaults. These settings are part of the client and extension host surface, not the lander.
 
 ## Theme Selection
 Open **Settings -> Theme** to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.

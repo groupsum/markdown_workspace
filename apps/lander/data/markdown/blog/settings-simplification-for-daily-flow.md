@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 ---
+## Article Guide
+
+2026-05-01 marks this MdWrk product story: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
 May 1, 2026 focuses on the path every product team cares about: the path from first run to confident daily use.
 
 This work is grounded in:

@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react
 ---
+## Quick Reference
+
+Use this article to understand Offline Markdown Editor in the MdWrk Product surface. MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 MdWrk gives Markdown authors a browser-first editor that continues to work when the network is unavailable.
 

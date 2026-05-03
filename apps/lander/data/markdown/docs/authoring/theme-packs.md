@@ -8,6 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Theme Pack Authoring in the MdWrk Authoring surface. Theme Pack Authoring explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- extension host contracts
+- theme portability
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
 
 Use this path when you want to author portable MdWrk theme artifacts rather than only switch between built-in themes.
 

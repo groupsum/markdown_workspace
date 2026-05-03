@@ -8,6 +8,21 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Extension Authoring in the MdWrk Authoring surface. Extension Authoring explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Developer Documentation](/docs/product/developer-documentation)
 
 Use this path when you want to author an MdWrk extension package rather than only install or operate one.
 

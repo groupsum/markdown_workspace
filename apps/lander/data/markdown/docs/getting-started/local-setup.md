@@ -8,6 +8,22 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Local Setup in the MdWrk Getting Started surface. Local Setup explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [GitHub Sync](/docs/github-sync)
+- [PWA Installation](/docs/getting-started/pwa-installation)
 
 Use local setup when you want to run MdWrk from a repository checkout, create your own builds, or host the public surfaces yourself.
 

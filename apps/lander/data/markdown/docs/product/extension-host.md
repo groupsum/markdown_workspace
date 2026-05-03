@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.
 relatedApis: @mdwrk/extension-host, @mdwrk/extension-runtime, @mdwrk/extension-manifest, @mdwrk/extension-manager
 ---
+## Quick Reference
+
+Use this article to understand Extension Host in the MdWrk Product surface. MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.
+
+Key concepts covered here:
+
+- workspace organization
+- extension host contracts
+- theme portability
+- developer package reuse
+- @mdwrk/extension-host
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
 
 The MdWrk client is the extension host for bundled and installable extension surfaces.
 

@@ -8,6 +8,24 @@ toc: true
 date: 2026-02-05
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Theme Studio And Host Surfaces in the MdWrk Extensions surface. Theme Studio connects theme authoring, shared token contracts, editor previews, renderer previews, and extension-host delivery.
+
+Key concepts covered here:
+
+- theme portability
+- extension host contracts
+- live preview
+- `@mdwrk/theme-contract`
+- `@mdwrk/extension-theme-studio`
+
+Useful follow-up pages:
+
+- [Theme Packs](/docs/product/theme-packs)
+- [Theme Pack Authoring](/docs/authoring/theme-packs)
+- [Extension Platform](/docs/extensions/extension-platform)
+
 The theme story is shared across the client, editor, renderer, and extension host.
 
 ## Theme Studio

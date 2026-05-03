@@ -8,6 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Browser Use in the MdWrk Getting Started surface. Browser Use explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 Use the browser workflow when you want the fastest path into the workspace without installing a package or a desktop shell.
 

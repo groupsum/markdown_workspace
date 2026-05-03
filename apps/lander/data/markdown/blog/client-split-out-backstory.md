@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
 ---
+## Article Guide
+
+2026-03-23 marks this MdWrk product story: MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
 MdWrk now ships a reusable package stack that product teams can install directly, wire into React, and extend through the same public surfaces that power the client.
 
 This milestone is grounded in the March 23, 2026 packaging and naming run:

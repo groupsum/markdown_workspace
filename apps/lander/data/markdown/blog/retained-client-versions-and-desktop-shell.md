@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 ---
+## Article Guide
+
+2026-04-12 marks this MdWrk product story: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [GitHub Sync](/docs/github-sync)
+- [PWA Installation](/docs/getting-started/pwa-installation)
+
 April 12, 2026 broadens MdWrk's delivery model.
 
 The timeline anchor includes:

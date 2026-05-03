@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
 ---
+## Article Guide
+
+2026-04-26 marks this MdWrk product story: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
 MdWrk now gives extension authors a first-class product surface with runtime APIs, compatibility rules, settings adapters, and installation flows that match the live client.
 
 The April 26, 2026 extension milestone is anchored in these commits:

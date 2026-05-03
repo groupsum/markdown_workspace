@@ -7,6 +7,7 @@ import {
   buildBreadcrumbSchema,
   buildFaqSchema,
   buildTechArticleSchema,
+  deriveKeywords,
   extractExcerpt,
   extractFirstImage,
   removeFirstImage
@@ -153,12 +154,16 @@ export const DocsView: React.FC = () => {
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(answerWrappedContent) : answerWrappedContent;
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
   const currentPath = currentDoc ? `/docs/${currentDoc.slug}` : '/docs/';
+  const keywords = currentDoc
+    ? deriveKeywords(currentDoc.title, currentDoc.section, excerpt, headings.join(' '), currentDoc.metadata.relatedApis)
+    : deriveKeywords('MdWrk documentation');
 
   usePageMetadata({
     title: currentDoc?.title || 'MdWrk Docs',
     description: excerpt,
     image: featuredImage?.src,
     imageAlt: featuredImage?.alt || currentDoc?.title,
+    keywords,
     path: currentPath,
     structuredData: currentDoc
       ? [

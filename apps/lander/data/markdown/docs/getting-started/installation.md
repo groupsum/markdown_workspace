@@ -8,6 +8,22 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Client Installation in the MdWrk Getting Started surface. Client Installation explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Extension Platform](/docs/extensions/extension-platform)
 
 `mdwrk` is the client and package surface. The lander is only the documentation and release site.
 

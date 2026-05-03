@@ -3,7 +3,16 @@ import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
 import { usePageMetadata } from '../hooks/usePageMetadata';
-import { extractExcerpt, extractFirstImage, removeFirstImage } from '../utils/pageMetadata';
+import {
+  buildBlogPostingSchema,
+  buildBlogSchema,
+  buildBreadcrumbSchema,
+  buildItemListSchema,
+  deriveKeywords,
+  extractExcerpt,
+  extractFirstImage,
+  removeFirstImage
+} from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
@@ -114,7 +123,25 @@ const BlogList: React.FC<{
     description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
     image: featureImage?.src,
     imageAlt: featureImage?.alt || leadPost?.metadata.title || title,
+    keywords: deriveKeywords(title, eyebrow, leadPost?.metadata.excerpt, posts.map(post => post.metadata.title).join(' ')),
     path: metadataPath,
+    structuredData: [
+      buildBlogSchema({
+        title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+        description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        path: metadataPath,
+      }),
+      buildItemListSchema({
+        title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+        description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        path: metadataPath,
+        items: posts.slice(0, 24).map(post => ({
+          title: post.metadata.title,
+          path: `/blog/${post.slug}`,
+          description: post.metadata.excerpt,
+        })),
+      }),
+    ],
   });
 
   return (
@@ -159,13 +186,31 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const featuredImage = extractFirstImage(renderedContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
   const excerpt = extractExcerpt(renderedContent, post.metadata.excerpt);
+  const keywords = deriveKeywords(post.metadata.title, excerpt, renderedContent);
 
   usePageMetadata({
     title: post.metadata.title,
     description: excerpt,
     image: featuredImage?.src,
     imageAlt: featuredImage?.alt || post.metadata.title,
+    keywords,
     path: `/blog/${post.slug}`,
+    structuredData: [
+      buildBlogPostingSchema({
+        title: post.metadata.title,
+        description: excerpt,
+        path: `/blog/${post.slug}`,
+        datePublished: post.metadata.date,
+        author: post.metadata.author,
+        image: featuredImage?.src,
+        keywords,
+      }),
+      buildBreadcrumbSchema([
+        { name: 'MdWrk', path: '/' },
+        { name: 'Blog', path: '/blog' },
+        { name: post.metadata.title, path: `/blog/${post.slug}` },
+      ]),
+    ],
   });
 
   return (

@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react, @mdwrk/extension-host
 ---
+## Quick Reference
+
+Use this article to understand Developer Documentation in the MdWrk Product surface. MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- extension host contracts
+- theme portability
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Extension Platform](/docs/extensions/extension-platform)
 
 MdWrk documents both the full workspace client and the reusable package stack behind it.
 

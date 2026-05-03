@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
 ---
+## Article Guide
+
+2026-03-31 marks this MdWrk product story: MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [GitHub Sync](/docs/github-sync)
+
 March 31, 2026 brings together docs, governance, and release evidence in a way that gives MdWrk a clearer package and release surface.
 
 This milestone is grounded in:

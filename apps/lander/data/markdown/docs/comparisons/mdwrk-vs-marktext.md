@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs MarkText in the MdWrk Comparisons surface. Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- extension host contracts
+- theme portability
+
+Useful follow-up pages:
+
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 MdWrk and MarkText both keep Markdown authoring close to the source file.
 

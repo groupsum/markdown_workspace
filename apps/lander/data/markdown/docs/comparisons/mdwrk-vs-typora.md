@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
 relatedApis: @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs Typora in the MdWrk Comparisons surface. Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
+
+Key concepts covered here:
+
+- live preview
+- workspace organization
+- extension host contracts
+- developer package reuse
+- @mdwrk/markdown-editor-react
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
 
 MdWrk and Typora both serve Markdown authors, but they optimize for different operating shapes.
 

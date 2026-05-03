@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/extension-host
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs Standard Markdown Editors in the MdWrk Comparisons surface. Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- extension host contracts
+- theme portability
+
+Useful follow-up pages:
+
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 
 Standard Markdown editors usually focus on opening a file, editing text, and showing a preview.
 

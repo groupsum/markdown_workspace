@@ -7,8 +7,14 @@ const defaultImageAlt = 'MdWrk Markdown workspace preview image';
 const markdownImagePattern = /!\[([^\]]*)]\(([^)\s]+)(?:\s+"[^"]*")?\)/;
 const htmlImagePattern = /<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i;
 
-const stripMarkdown = (content: string) =>
+const removeGeneratedGuideBlocks = (content: string) =>
   content
+    .replace(/^## Quick Reference\s+[\s\S]*?(?=\n##\s+|\n#\s+|$)/, '')
+    .replace(/^## Article Guide\s+[\s\S]*?(?=\n##\s+|\n#\s+|$)/, '')
+    .trim();
+
+export const stripMarkdown = (content: string) =>
+  removeGeneratedGuideBlocks(content)
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`[^`]*`/g, ' ')
     .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
@@ -73,6 +79,46 @@ const toAbsoluteUrl = (value?: string | null) => {
   return `${siteUrl}/${value.replace(/^\/+/, '')}`;
 };
 
+export const normalizeKeywords = (keywords?: string[] | string | null) => {
+  const values = Array.isArray(keywords)
+    ? keywords
+    : typeof keywords === 'string'
+      ? keywords.split(',')
+      : [];
+
+  return Array.from(new Set(
+    values
+      .map(value => value.trim())
+      .filter(Boolean)
+      .map(value => value.replace(/\s+/g, ' '))
+  )).slice(0, 12);
+};
+
+export const deriveKeywords = (...sources: Array<string | undefined | null>) => {
+  const preferred = [
+    'MdWrk',
+    'Markdown editor',
+    'local-first Markdown',
+    'offline Markdown editor',
+    'privacy-first Markdown editor',
+    'Markdown preview',
+    'Markdown workspace',
+    'extension host',
+    'theme packs',
+  ];
+
+  const sourceWords = sources
+    .filter(Boolean)
+    .join(' ')
+    .match(/\b[A-Za-z][A-Za-z0-9-]{3,}\b/g) ?? [];
+
+  const derived = sourceWords
+    .map(word => word.replace(/-/g, ' '))
+    .filter(word => !/^(this|that|with|from|when|your|into|they|them|where|which|current|common)$/i.test(word));
+
+  return normalizeKeywords([...preferred, ...derived]);
+};
+
 export const summarizeMarkdown = (content: string, maxLength = 180) => {
   const plain = stripMarkdown(content);
   if (!plain) return defaultDescription;
@@ -86,6 +132,7 @@ interface PageMetadataInput {
   image?: string | null;
   imageAlt?: string | null;
   path?: string;
+  keywords?: string[] | string | null;
   structuredData?: JsonLdInput | JsonLdInput[] | null;
 }
 
@@ -134,7 +181,7 @@ const compactJsonLd = (value: unknown): unknown => {
   return value;
 };
 
-export const buildSoftwareApplicationSchema = () => compactJsonLd({
+export const buildSoftwareApplicationSchema = (): JsonLdInput => compactJsonLd({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'MdWrk',
@@ -148,7 +195,7 @@ export const buildSoftwareApplicationSchema = () => compactJsonLd({
     price: '0',
     priceCurrency: 'USD',
   },
-});
+}) as JsonLdInput;
 
 export const buildTechArticleSchema = ({
   title,
@@ -160,7 +207,7 @@ export const buildTechArticleSchema = ({
   description: string;
   path: string;
   datePublished?: string;
-}) => compactJsonLd({
+}): JsonLdInput => compactJsonLd({
   '@context': 'https://schema.org',
   '@type': 'TechArticle',
   headline: title,
@@ -174,9 +221,9 @@ export const buildTechArticleSchema = ({
     url: `${siteUrl}/`,
   },
   mainEntityOfPage: `${siteUrl}${path}`,
-});
+}) as JsonLdInput;
 
-export const buildBreadcrumbSchema = (items: Array<{ name: string; path: string }>) => compactJsonLd({
+export const buildBreadcrumbSchema = (items: Array<{ name: string; path: string }>): JsonLdInput => compactJsonLd({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: items.map((item, index) => ({
@@ -185,9 +232,93 @@ export const buildBreadcrumbSchema = (items: Array<{ name: string; path: string 
     name: item.name,
     item: `${siteUrl}${item.path}`,
   })),
-});
+}) as JsonLdInput;
 
-export const buildFaqSchema = (items: Array<{ question: string; answer: string }>) => compactJsonLd({
+export const buildBlogSchema = ({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}): JsonLdInput => compactJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: title,
+  description,
+  url: `${siteUrl}${path}`,
+  publisher: {
+    '@type': 'Organization',
+    name: 'MdWrk',
+    url: `${siteUrl}/`,
+  },
+}) as JsonLdInput;
+
+export const buildBlogPostingSchema = ({
+  title,
+  description,
+  path,
+  datePublished,
+  author,
+  image,
+  keywords,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished?: string;
+  author?: string;
+  image?: string | null;
+  keywords?: string[] | string | null;
+}): JsonLdInput => compactJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  url: `${siteUrl}${path}`,
+  image: toAbsoluteUrl(image),
+  datePublished,
+  dateModified: datePublished,
+  keywords: normalizeKeywords(keywords).join(', '),
+  author: {
+    '@type': 'Person',
+    name: author || 'MdWrk',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'MdWrk',
+    url: `${siteUrl}/`,
+  },
+  mainEntityOfPage: `${siteUrl}${path}`,
+}) as JsonLdInput;
+
+export const buildItemListSchema = ({
+  title,
+  description,
+  path,
+  items,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  items: Array<{ title: string; path: string; description?: string }>;
+}): JsonLdInput => compactJsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: title,
+  description,
+  url: `${siteUrl}${path}`,
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${item.path}`,
+    name: item.title,
+    description: item.description,
+  })),
+}) as JsonLdInput;
+
+export const buildFaqSchema = (items: Array<{ question: string; answer: string }>): JsonLdInput => compactJsonLd({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: items.map(item => ({
@@ -198,7 +329,7 @@ export const buildFaqSchema = (items: Array<{ question: string; answer: string }
       text: item.answer,
     },
   })),
-});
+}) as JsonLdInput;
 
 export const normalizeStructuredData = (structuredData?: JsonLdInput | JsonLdInput[] | null) => {
   if (!structuredData) return null;

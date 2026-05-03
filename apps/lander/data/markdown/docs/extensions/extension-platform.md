@@ -8,7 +8,25 @@ toc: true
 date: 2026-01-22
 status: published
 ---
-The mdwrk client is the extension host. The lander only documents that host surface.
+## Quick Reference
+
+Use this article to understand Extension Platform in the MdWrk Extensions surface. Extension Platform explains how the MdWrk client hosts governed extension packages, runtime lifecycle, capability checks, and operator-facing extension management.
+
+Key concepts covered here:
+
+- extension host contracts
+- developer package reuse
+- `@mdwrk/extension-manifest`
+- `@mdwrk/extension-host`
+- `@mdwrk/extension-runtime`
+
+Useful follow-up pages:
+
+- [Extension Authoring](/docs/authoring/extensions)
+- [MdWrk Extension Host](/docs/product/extension-host)
+- [Theme Studio And Host Surfaces](/docs/extensions/theme-studio-and-host-surfaces)
+
+The MdWrk client is the extension host. The lander only documents that host surface.
 
 ## Runtime shape
 

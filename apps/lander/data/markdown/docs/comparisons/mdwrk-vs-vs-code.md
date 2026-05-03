@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-host, @mdwrk/markdown-renderer-react
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs VS Code in the MdWrk Comparisons surface. Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- extension host contracts
+- theme portability
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Extension Platform](/docs/extensions/extension-platform)
 
 MdWrk is a Markdown workspace. VS Code is a general-purpose developer IDE with Markdown support.
 

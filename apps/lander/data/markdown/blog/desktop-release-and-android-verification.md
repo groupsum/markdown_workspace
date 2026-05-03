@@ -5,6 +5,22 @@ status: published
 author: CobyCloud
 excerpt: MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
 ---
+## Article Guide
+
+2026-04-14 marks this MdWrk product story: MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [GitHub Sync](/docs/github-sync)
+- [Local Setup](/docs/getting-started/local-setup)
+
 April 14, 2026 marks one of the clearest release-engineering milestones in the repository history.
 
 The day includes:

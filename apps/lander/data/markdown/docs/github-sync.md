@@ -8,8 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
 
-GitHub sync is optional. The mdwrk client stays fully local until you connect a repository.
+Use this article to understand GitHub Sync in the MdWrk Integrations surface. GitHub Sync explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [GitHub Sync](/docs/github-sync)
+
+GitHub sync is optional. The MdWrk client stays fully local until you connect a repository.
 
 ## Repository Access
 Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository.

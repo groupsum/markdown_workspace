@@ -10,6 +10,23 @@ status: published
 excerpt: Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-renderer-react
 ---
+## Quick Reference
+
+Use this article to understand MdWrk Vs Logseq in the MdWrk Comparisons surface. Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
 
 MdWrk is a Markdown workspace for files, preview, export, and extension-hosted tooling. Logseq is commonly used as an outline-first knowledge graph and journaling tool.
 

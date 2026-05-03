@@ -8,6 +8,23 @@ toc: true
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand Authoring Overview in the MdWrk Authoring surface. Authoring Overview explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- extension host contracts
+- theme portability
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
 
 The authoring section explains how to produce MdWrk-facing artifacts rather than only how to consume them.
 

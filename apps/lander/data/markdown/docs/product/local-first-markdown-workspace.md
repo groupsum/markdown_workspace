@@ -10,6 +10,23 @@ status: published
 excerpt: MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-workspace-files, @mdwrk/extension-git-ops
 ---
+## Quick Reference
+
+Use this article to understand Local-First Markdown Workspace in the MdWrk Product surface. MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- extension host contracts
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
 
 MdWrk treats Markdown as a workspace, not a single textarea.
 

@@ -7,6 +7,20 @@ order: 25
 date: 2026-05-02
 status: published
 ---
+## Quick Reference
+
+Use this article to understand UI Refresh 1.3.28 in the MdWrk Archive surface. UI Refresh 1.3.28 explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- theme portability
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Theme Packs](/docs/product/theme-packs)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Client Installation](/docs/getting-started/installation)
 
 ## Client update: `mdwrk/mdwrkspace` 1.3.28
 
