@@ -16,7 +16,8 @@ import { geminiAgentManifest } from "./manifest.js";
 import { createGeminiTextProvider } from "./provider.js";
 import { createGeminiAgentService } from "./service.js";
 import type { GeminiAgentEntryOptions, GeminiAgentViewInput } from "./types.js";
-import { GeminiAgentSidebar, GeminiAgentView } from "./components/GeminiAgentView.js";
+import { GeminiAgentSidebar } from "./components/GeminiAgentSidebar.js";
+import { GeminiAgentView } from "./view/GeminiAgentView.js";
 
 export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions = {}): BundledExtensionCatalogEntry {
   return {

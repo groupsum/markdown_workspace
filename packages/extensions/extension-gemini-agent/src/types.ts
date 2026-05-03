@@ -124,6 +124,8 @@ export interface GeminiAgentViewProps {
   readonly shellSidebarOpen?: boolean;
   readonly onShellSidebarToggle?: (open: boolean) => void;
   readonly embedBrowserInShellSidebar?: boolean;
+  readonly initialLayoutMode?: "single" | "split";
+  readonly initialPaneFocus?: "conversation" | "preview" | "draft";
 }
 
 export type GeminiFetchLike = (input: string, init?: {

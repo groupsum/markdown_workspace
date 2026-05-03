@@ -9,4 +9,6 @@ export * from "./provider.js";
 export * from "./service.js";
 export * from "./manifest.js";
 export * from "./createGeminiAgentBundledEntry.js";
+export * from "./view/GeminiAgentView.js";
+export * from "./components/GeminiAgentSidebar.js";
 export * from "./components/GeminiAgentView.js";
