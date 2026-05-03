@@ -1,0 +1,10 @@
+[
+  {
+    "id": "fenced-code-info",
+    "section": "Fenced code blocks",
+    "htmlHandling": "allow-trusted",
+    "passed": false,
+    "expectedHtml": "<pre><code>console.log(1)</code></pre>",
+    "actualHtml": "<pre><code>console<span>.</span><span>log</span><span>(</span><span>1</span><span>)</span></code></pre>"
+  }
+]
