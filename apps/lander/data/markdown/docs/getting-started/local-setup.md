@@ -7,6 +7,7 @@ order: 4
 toc: true
 date: 2026-05-02
 status: published
+excerpt: This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide.
 ---
 
 ## What it covers

@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build:deps": "npm --prefix ../.. run build:editor",
-    "build": "npm run build:deps && node ./scripts/generate-sitemap.mjs && vite build",
+    "validate:article-metadata": "node ./scripts/validate-article-metadata.mjs",
+    "build": "npm run build:deps && npm run validate:article-metadata && node ./scripts/generate-sitemap.mjs && vite build",
     "preview": "vite preview",
-    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
+    "typecheck": "npm run build:deps && npm run validate:article-metadata && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck"
   },
   "dependencies": {

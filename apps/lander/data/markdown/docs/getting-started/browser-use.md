@@ -7,6 +7,7 @@ order: 2
 toc: true
 date: 2026-05-02
 status: published
+excerpt: The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
 ---
 
 ## What it is

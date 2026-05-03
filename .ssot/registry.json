@@ -5793,6 +5793,33 @@
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:lander-article-metadata-schema-validation",
+      "title": "Article metadata schema validation",
+      "description": "Validate MdWrk documentation and blog frontmatter against a shared JSON Schema that requires titles, publication state, dates, and excerpts for article metadata.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -6378,7 +6405,8 @@
         "feat:lander-docs-answer-section-standardization",
         "feat:lander-blog-article-guide-standardization",
         "feat:lander-article-related-link-copy",
-        "feat:lander-article-crawlability-internal-links"
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-metadata-schema-validation"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -6968,7 +6996,8 @@
         "feat:lander-docs-answer-section-standardization",
         "feat:lander-blog-article-guide-standardization",
         "feat:lander-article-related-link-copy",
-        "feat:lander-article-crawlability-internal-links"
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-metadata-schema-validation"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -9413,11 +9442,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "a282a92ead60f0f525df40ee4d565d64c64605ac4a14544a958560b6b67d3c6d",
+      "content_sha256": "dd04b8b6b2aa96831f5af0169d48f2333f2b6f6140a6f47c55e58378d4fd8eda",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Updated for favicon metadata fallback and excerpt-derived embedded metadata.",
+          "at": "2026-05-03T23:21:50Z"
+        }
+      ]
     },
     {
       "id": "adr:1054",

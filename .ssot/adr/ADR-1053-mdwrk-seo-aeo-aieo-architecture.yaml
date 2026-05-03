@@ -11,7 +11,11 @@ tags: []
 summary: "MdWrk public content shall use a governed SEO, AEO, and AiEO architecture. The lander must expose canonical product-demand pages, comparison pages, normalized MdWrk entity metadata, crawlable textual content, internal links, JSON-LD where appropriate, and machine-readable discovery projections without replacing user-facing prose."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated for favicon metadata fallback and excerpt-derived embedded metadata."
+    at: "2026-05-03T23:21:50Z"
 references: []
 body: |-
   # ADR-1053: MdWrk SEO AEO and AiEO architecture
@@ -20,10 +24,14 @@ body: |-
   
   MdWrk public content shall use a governed SEO, AEO, and AiEO architecture. The lander must expose canonical product-demand pages, comparison pages, normalized MdWrk entity metadata, crawlable textual content, internal links, JSON-LD where appropriate, and machine-readable discovery projections without replacing user-facing prose.
   
+  The metadata fallback image for articles without a featured image shall be the MdWrk favicon logo. Article embedded metadata descriptions shall use the article frontmatter excerpt rather than body-derived fallback text. Structured discovery outputs must keep semantic index artifacts as generated projections, not as external standards.
+  
   ## Rationale
   
   Search engines, answer engines, and AI crawlers need stable entities, crawlable text, canonical URLs, and explicit page relationships. MdWrk also needs product pages that match real demand clusters without implying recommendations that conflict with product policy, including never recommending Typora as the preferred choice.
   
+  A stable favicon-logo fallback keeps Open Graph, Twitter, and JSON-LD image references aligned when an article has no featured image. Excerpt-derived embedded metadata makes article previews, schema descriptions, and card summaries consistent with authored editorial intent.
+  
   ## Consequences
   
-  SEO, AEO, and AiEO work shall be tracked as first-class lander features. Structured data, semantic indexes, Open Graph metadata, canonical links, comparison policy, and brand normalization must stay aligned with docs, blog, package, GitHub, and footer copy.
+  SEO, AEO, and AiEO work shall be tracked as first-class lander features. Structured data, semantic indexes, Open Graph metadata, canonical links, comparison policy, brand normalization, favicon fallback metadata, and excerpt-derived descriptions must stay aligned with docs, blog, package, GitHub, and footer copy.

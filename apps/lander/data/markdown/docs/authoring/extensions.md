@@ -7,6 +7,7 @@ order: 2
 toc: true
 date: 2026-05-02
 status: published
+excerpt: Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.
 ---
 
 ## What an extension author owns

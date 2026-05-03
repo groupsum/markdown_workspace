@@ -7,6 +7,7 @@ order: 6
 toc: true
 date: 2026-05-02
 status: published
+excerpt: Theme Selection Open Settings -> Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.
 ---
 
 ## Theme Selection

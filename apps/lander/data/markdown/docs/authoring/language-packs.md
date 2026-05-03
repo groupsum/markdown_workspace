@@ -7,6 +7,7 @@ order: 4
 toc: true
 date: 2026-05-02
 status: published
+excerpt: Language pack authoring uses the first-party studio package, locale catalogs, validation flows, export behavior, and host surfaces for MdWrk localization.
 ---
 
 ## Primary surface

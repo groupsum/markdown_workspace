@@ -7,6 +7,7 @@ order: 2
 toc: true
 date: 2026-02-05
 status: published
+excerpt: Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model.
 ---
 
 ## Theme Studio

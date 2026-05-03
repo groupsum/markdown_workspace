@@ -7,6 +7,7 @@ order: 1
 toc: true
 date: 2026-01-22
 status: published
+excerpt: MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks.
 ---
 
 ## Runtime shape

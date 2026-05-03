@@ -7,6 +7,7 @@ order: 5
 toc: true
 date: 2026-05-02
 status: published
+excerpt: MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces.
 ---
 
 ## Primary packages

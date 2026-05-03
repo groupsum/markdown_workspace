@@ -4,8 +4,10 @@ slug: archive/ui-refresh-1-3-29
 section: Archive
 sectionOrder: 6
 order: 26
+toc: true
 date: 2026-05-02
 status: published
+excerpt: This release focuses on visual clarity, modal usability, and responsive behavior improvements-
 ---
 
 ## Client update: `mdwrk/mdwrkspace` 1.3.29

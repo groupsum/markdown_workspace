@@ -4,8 +4,10 @@ slug: archive/ui-refresh-1-3-28
 section: Archive
 sectionOrder: 6
 order: 25
+toc: true
 date: 2026-05-02
 status: published
+excerpt: MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement.
 ---
 
 ## Client update: `mdwrk/mdwrkspace` 1.3.28

@@ -7,6 +7,7 @@ order: 1
 toc: true
 date: 2026-05-02
 status: published
+excerpt: MdWrk authoring documentation groups extension, theme pack, and language pack workflows into focused surfaces for package and product contributors.
 ---
 
 ## Authoring domains

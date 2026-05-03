@@ -7,8 +7,13 @@ const landerRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(landerRoot, 'public');
 const docsDir = path.join(landerRoot, 'data', 'markdown', 'docs');
 const contentSitemapPath = path.join(landerRoot, 'data', 'content-sitemap.yaml');
+const articleMetadataSchemaPath = path.join(landerRoot, 'data', 'article-metadata.schema.json');
 
 const siteUrl = (process.env.VITE_SITE_URL || 'https://mdwrk.com').replace(/\/+$/, '');
+
+if (!fs.existsSync(articleMetadataSchemaPath)) {
+  throw new Error(`Missing article metadata schema: ${articleMetadataSchemaPath}`);
+}
 
 const escapeXml = (value) =>
   value
