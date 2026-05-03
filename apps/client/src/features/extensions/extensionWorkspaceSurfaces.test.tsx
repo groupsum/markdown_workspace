@@ -284,6 +284,11 @@ describe('extension workspace surfaces', () => {
         ],
       }),
       refreshContext: vi.fn(async () => {}),
+      listMentionableFiles: vi.fn(async () => ([
+        { id: 'file-1', name: 'README.md', path: 'docs/README.md', kind: 'file' },
+        { id: 'file-2', name: 'guide.md', path: 'docs/guide.md', kind: 'file' },
+        { id: 'file-3', name: 'changelog.md', path: 'docs/changelog.md', kind: 'file' },
+      ])),
       loadSettings: vi.fn(async () => ({
         endpoint: 'https://example.test',
         model: 'gemini-2.5-flash',
@@ -310,6 +315,7 @@ describe('extension workspace surfaces', () => {
         service={service}
         close={vi.fn(async () => {})}
         formatLabel={formatLabel}
+        input={{ prompt: 'Compare this with @do' }}
       />,
     );
 
@@ -319,6 +325,17 @@ describe('extension workspace surfaces', () => {
     expect(screen.getByText('Markdown preview')).toBeInTheDocument();
     expect(screen.getByText('Summarize this file')).toBeInTheDocument();
     expect(screen.getByTestId('mock-markdown-renderer')).toHaveTextContent('## Draft\\n\\nEdited output.');
+    await waitFor(() => expect(service.listMentionableFiles).toHaveBeenCalled());
+
+    const promptInput = screen.getByLabelText('Conversation prompt');
+    fireEvent.click(promptInput);
+    await waitFor(() => expect(screen.getByText('Mention suggestions')).toBeInTheDocument());
+    expect(screen.getByText('docs/guide.md')).toBeInTheDocument();
+
+    fireEvent.mouseDown(screen.getByText('guide.md'));
+    await waitFor(() => expect(screen.getByDisplayValue('Compare this with @docs/guide.md ')).toBeInTheDocument());
+    expect(screen.getByText('Mentioned files')).toBeInTheDocument();
+    expect(screen.getByText('@guide.md')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('New conversation'));
     expect(service.createThread).toHaveBeenCalled();

@@ -25,6 +25,7 @@ const notifications = [];
 const diagnostics = [];
 let selectionReplacedWith = null;
 let documentReplacedWith = null;
+let lastProviderRequest = null;
 
 const host = {
   apiVersion: '1.0.0',
@@ -62,9 +63,20 @@ const host = {
   },
   workspace: {
     async listProjects() { return []; },
+    async listFiles() {
+      return [
+        { id: 'file', name: 'README.md', path: '/README.md', kind: 'file' },
+        { id: 'guide', name: 'guide.md', path: 'docs/guide.md', kind: 'file' },
+      ];
+    },
     async getActiveProject() { return { id: 'project', name: 'Project' }; },
     async getActiveFile() { return { id: 'file', name: 'README.md', path: '/README.md', kind: 'file' }; },
-    async readFile() { return '# Title\n\nBody'; },
+    async readFile(path) {
+      if (path === 'docs/guide.md') {
+        return '## Guide\n\nMention payload';
+      }
+      return '# Title\n\nBody';
+    },
     async writeFile() {},
   },
   i18n: {
@@ -122,9 +134,11 @@ const prompt = buildGeminiPrompt('rewrite-selection', 'Tighten the language.', {
   file: { id: 'file', name: 'README.md', path: '/README.md', kind: 'file' },
   document: { uri: 'workspace://project/file', language: 'markdown', content: '# Title\n\nBody', version: '1' },
   selections: [{ start: 0, end: 7, text: '# Title' }],
-}, resolvedSettings);
+}, resolvedSettings, [{ path: 'docs/guide.md', name: 'guide.md', content: '## Guide\n\nMention payload' }]);
 assert.match(prompt, /Selected markdown/);
 assert.match(prompt, /# Title/);
+assert.match(prompt, /Mentioned files/);
+assert.match(prompt, /docs\/guide\.md/);
 
 const provider = createGeminiTextProvider({
   fetchImpl: async (url, init) => ({
@@ -162,7 +176,13 @@ assert.equal(extractGeminiText({ candidates: [{ content: { parts: [{ text: 'Answ
 
 const service = createGeminiAgentService({
   context,
-  provider,
+  provider: {
+    ...provider,
+    async generate(request) {
+      lastProviderRequest = request;
+      return await provider.generate(request);
+    },
+  },
   formatLabel: (label) => typeof label === 'string' ? label : label.defaultMessage,
 });
 
@@ -171,6 +191,10 @@ const summary = await service.runIntent('summarize-current-file');
 assert.equal(summary.text, 'Draft result');
 await service.runIntent('rewrite-selection', 'Tighten the language.');
 assert.equal(service.getSnapshot().pendingDraft, 'Draft result');
+await service.runIntent('custom-prompt', 'Compare this with @docs/guide.md', { mentionPaths: ['docs/guide.md'] });
+assert.equal(lastProviderRequest.mentions?.length, 1);
+assert.equal(lastProviderRequest.mentions?.[0]?.path, 'docs/guide.md');
+assert.match(lastProviderRequest.prompt, /Mention payload/);
 
 const blocked = await service.applyDraft('selection');
 assert.equal(blocked, false);

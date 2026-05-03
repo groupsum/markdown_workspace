@@ -111,6 +111,7 @@ export interface WorkspaceFileSummary {
 
 export interface HostWorkspaceApi {
   listProjects(): Promise<readonly WorkspaceProjectSummary[]>;
+  listFiles(): Promise<readonly WorkspaceFileSummary[]>;
   getActiveProject(): Promise<WorkspaceProjectSummary | null>;
   getActiveFile(): Promise<WorkspaceFileSummary | null>;
   readFile(path: string): Promise<string>;

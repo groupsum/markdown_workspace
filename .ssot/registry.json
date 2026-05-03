@@ -897,7 +897,8 @@
         "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
-        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ],
       "requires": []
     },
@@ -5462,6 +5463,66 @@
       "claim_ids": [],
       "test_ids": [],
       "requires": []
+    },
+    {
+      "id": "feat:gemini-agent-workspace-file-mentions",
+      "title": "Gemini Agent workspace file mentions",
+      "description": "Support @ file mentions in the Gemini Agent composer, mention suggestions, and mention-aware prompt attachment using workspace file context.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2012",
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:gemini-agent-conversation-preview-pane-surface",
+      "title": "Gemini Agent conversation and preview pane surface",
+      "description": "Use the Gemini extension panel for conversation threads and the workspace pane for conversation, Markdown preview, and draft-focused surfaces.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2012",
+        "spc:2064"
+      ],
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:client-layout",
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -5605,13 +5666,17 @@
         "feat:extension-manager",
         "feat:extension-theme-studio",
         "feat:extension-language-pack-studio",
-        "feat:uix-extension-view-modes"
+        "feat:uix-extension-view-modes",
+        "feat:gemini-agent-conversation-preview-pane-surface",
+        "feat:gemini-agent-workspace-file-mentions",
+        "feat:extension-gemini-agent"
       ],
       "claim_ids": [
         "clm:client-extensions",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-i18n"
+        "clm:client-i18n",
+        "clm:extension-continuous-experience"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -6540,10 +6605,12 @@
       "kind": "smoke",
       "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
       "feature_ids": [
-        "feat:extension-gemini-agent"
+        "feat:extension-gemini-agent",
+        "feat:gemini-agent-workspace-file-mentions"
       ],
       "claim_ids": [
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:extension-continuous-experience"
       ],
       "evidence_ids": [
         "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
@@ -6865,7 +6932,9 @@
         "feat:extension-theme-studio",
         "feat:extension-language-pack-studio",
         "feat:uix-extension-view-modes",
-        "feat:extension-gemini-agent"
+        "feat:extension-gemini-agent",
+        "feat:gemini-agent-conversation-preview-pane-surface",
+        "feat:gemini-agent-workspace-file-mentions"
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
@@ -6953,7 +7022,8 @@
         "feat:editor-toolbar-divider-grouping",
         "feat:editor-line-count-scroll-alignment",
         "feat:workspace-sidebar-resizing",
-        "feat:uix-component-class-policy"
+        "feat:uix-component-class-policy",
+        "feat:gemini-agent-conversation-preview-pane-surface"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -7151,17 +7221,23 @@
         "feat:uix-extension-view-modes",
         "feat:extension-capability-permissions",
         "feat:extension-settings-schema-rendering",
-        "feat:extension-runtime-isolation"
+        "feat:extension-runtime-isolation",
+        "feat:gemini-agent-conversation-preview-pane-surface",
+        "feat:gemini-agent-workspace-file-mentions"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
-        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ],
       "evidence_ids": [
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
-        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ]
     }
   ],
@@ -7271,7 +7347,8 @@
         "clm:client-extensions",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-i18n"
+        "clm:client-i18n",
+        "clm:extension-continuous-experience"
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -7821,7 +7898,8 @@
       "tier": "T2",
       "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
       "claim_ids": [
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:extension-continuous-experience"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
@@ -9606,7 +9684,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "2ee0398855e037cb7f76048216ac0b4222c3319082d1fbd2ee2c3b204947f442",
+      "content_sha256": "8e4fe73bb1affdad5c643b580ff13336f4fc76fcd07fe956bec0bd3785cff1e5",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],

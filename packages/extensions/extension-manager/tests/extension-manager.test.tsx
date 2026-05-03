@@ -191,6 +191,7 @@ function createHostHarness(): HostHarness {
     },
     workspace: {
       async listProjects() { return []; },
+      async listFiles() { return []; },
       async getActiveProject() { return null; },
       async getActiveFile() { return null; },
       async readFile() { return ''; },

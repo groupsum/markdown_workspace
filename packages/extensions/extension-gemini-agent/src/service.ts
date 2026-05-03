@@ -1,4 +1,5 @@
 import type { I18nLabel } from "@mdwrk/extension-manifest";
+import type { WorkspaceFileSummary } from "@mdwrk/extension-host";
 import { collectGeminiAgentContext, getPrimarySelectionText, hasActiveDocumentContext, hasSelectedTextContext } from "./context.js";
 import { geminiAgentLabels } from "./i18n.js";
 import { buildGeminiPrompt } from "./prompt.js";
@@ -8,9 +9,11 @@ import type {
   GeminiChatThread,
   GeminiAgentIntent,
   GeminiAgentResponse,
+  GeminiAgentRunOptions,
   GeminiAgentService,
   GeminiAgentServiceDependencies,
   GeminiAgentServiceSnapshot,
+  GeminiMentionedFile,
   GeminiAgentWritebackMode,
 } from "./types.js";
 
@@ -88,6 +91,29 @@ function buildThreadTitle(source: string): string {
   return normalized.length <= 48 ? normalized : `${normalized.slice(0, 45).trimEnd()}...`;
 }
 
+function extractPromptMentionKeys(prompt: string): string[] {
+  const matches = prompt.matchAll(/(^|\s)@([^\s@]+)/g);
+  const keys = new Set<string>();
+  for (const match of matches) {
+    const token = match[2]?.trim();
+    if (token) {
+      keys.add(token);
+    }
+  }
+  return Array.from(keys);
+}
+
+function resolveMentionPath(key: string, files: readonly WorkspaceFileSummary[]): string | null {
+  const normalized = key.replace(/^\/+/, "").toLowerCase();
+  const byPath = files.find((file) => file.path.replace(/^\/+/, "").toLowerCase() === normalized);
+  if (byPath) return byPath.path;
+
+  const byName = files.filter((file) => file.name.toLowerCase() === normalized);
+  if (byName.length === 1) return byName[0]?.path ?? null;
+
+  return null;
+}
+
 export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): GeminiAgentService {
   let snapshot = createSnapshot();
   const listeners = new Set<() => void>();
@@ -149,6 +175,55 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
     return contextSnapshot;
   };
 
+  const listMentionableFiles = async (query = ""): Promise<readonly WorkspaceFileSummary[]> => {
+    const normalized = query.trim().toLowerCase();
+    const files = (await deps.context.host.workspace.listFiles())
+      .filter((file) => file.kind === "file");
+    const sorted = files.slice().sort((left, right) => left.path.localeCompare(right.path));
+
+    if (!normalized) {
+      return sorted;
+    }
+
+    const rank = (file: WorkspaceFileSummary): number => {
+      const path = file.path.toLowerCase();
+      const name = file.name.toLowerCase();
+      if (path.startsWith(normalized) || name.startsWith(normalized)) return 0;
+      if (path.includes(`/${normalized}`) || name.includes(normalized)) return 1;
+      return 2;
+    };
+
+    return sorted
+      .filter((file) => file.path.toLowerCase().includes(normalized) || file.name.toLowerCase().includes(normalized))
+      .sort((left, right) => rank(left) - rank(right) || left.path.localeCompare(right.path))
+      .slice(0, 24);
+  };
+
+  const resolveMentionedFiles = async (prompt: string, options?: GeminiAgentRunOptions): Promise<readonly GeminiMentionedFile[]> => {
+    const files = await listMentionableFiles();
+    const mentionKeys = new Set<string>([...(options?.mentionPaths ?? []), ...extractPromptMentionKeys(prompt)]);
+    const paths = Array.from(mentionKeys)
+      .map((key) => resolveMentionPath(key, files))
+      .filter((path): path is string => Boolean(path));
+    const uniquePaths = Array.from(new Set(paths));
+    const mentions = await Promise.all(uniquePaths.map(async (path) => {
+      const file = files.find((candidate) => candidate.path === path);
+      if (!file) return null;
+      try {
+        const content = await deps.context.host.workspace.readFile(path);
+        return {
+          path,
+          name: file.name,
+          content,
+        } satisfies GeminiMentionedFile;
+      } catch {
+        return null;
+      }
+    }));
+
+    return mentions.filter((mention): mention is GeminiMentionedFile => Boolean(mention));
+  };
+
   const ensureRequestPreconditions = async (intent: GeminiAgentIntent, contextSnapshot: Awaited<ReturnType<typeof collectGeminiAgentContext>>) => {
     const settings = await loadSettings();
 
@@ -179,7 +254,7 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
     return settings;
   };
 
-  const runIntent = async (intent: GeminiAgentIntent, prompt = ""): Promise<GeminiAgentResponse> => {
+  const runIntent = async (intent: GeminiAgentIntent, prompt = "", options?: GeminiAgentRunOptions): Promise<GeminiAgentResponse> => {
     setSnapshot({
       busy: true,
       lastIntent: intent,
@@ -195,12 +270,14 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
       const userPrompt = buildIntentPrompt(intent, prompt, contextSnapshot);
       appendThreadMessage(activeThread.id, createMessage("user", userPrompt, intent), buildThreadTitle(userPrompt));
       const settings = await ensureRequestPreconditions(intent, contextSnapshot);
-      const requestPrompt = buildGeminiPrompt(intent, prompt, contextSnapshot, settings);
+      const mentions = await resolveMentionedFiles(prompt, options);
+      const requestPrompt = buildGeminiPrompt(intent, prompt, contextSnapshot, settings, mentions);
       const response = await deps.provider.generate({
         intent,
         prompt: requestPrompt,
         context: contextSnapshot,
         settings,
+        mentions,
       });
 
       const nextDraft = intent === "rewrite-selection" ? response.text : snapshot.pendingDraft;
@@ -284,6 +361,7 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
     },
     loadSettings,
     refreshContext,
+    listMentionableFiles,
     runIntent,
     updateDraft(nextDraft: string): void {
       setSnapshot({ pendingDraft: nextDraft, writebackBlockedReason: null });

@@ -194,6 +194,7 @@ function createScopedHost(host: ExtensionHost, extensionId: string, capabilities
 
   const workspace: HostWorkspaceApi = {
     listProjects: granted.has("workspace.read") ? host.workspace.listProjects : async () => { throw new Error(`Extension '${extensionId}' lacks capability 'workspace.read'.`); },
+    listFiles: granted.has("workspace.read") ? host.workspace.listFiles : async () => { throw new Error(`Extension '${extensionId}' lacks capability 'workspace.read'.`); },
     getActiveProject: granted.has("workspace.read") ? host.workspace.getActiveProject : async () => { throw new Error(`Extension '${extensionId}' lacks capability 'workspace.read'.`); },
     getActiveFile: granted.has("workspace.read") ? host.workspace.getActiveFile : async () => { throw new Error(`Extension '${extensionId}' lacks capability 'workspace.read'.`); },
     readFile: granted.has("workspace.read") ? host.workspace.readFile : async () => { throw new Error(`Extension '${extensionId}' lacks capability 'workspace.read'.`); },

@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2012"
 number: 2012
@@ -25,6 +25,11 @@ body: |-
   - The extension must declare agent capabilities through the extension manifest.
   - Agent OIDC must be scoped to the agent extension.
   - Prompt, provider, service, settings, and view surfaces must be version-compatible with the host.
+  - The extension panel must act as a conversation browser for Gemini chat threads rather than a generic settings-only panel.
+  - The workspace pane must support the selected Gemini conversation thread plus Markdown preview and draft-focused modes.
+  - Conversation rendering, message transcript rendering, and prompt composition must remain decomposed into dedicated Gemini components under `src/components/*`, while the composed view remains under `src/view/*`.
+  - The composer must support workspace file mentions via `@`, including mention suggestions derived from workspace files and resolved mention chips for selected files.
+  - Mentioned workspace files must be attached to Gemini request context so provider prompts include the resolved file content rather than only the raw `@` token text.
   - The extension must fail closed when required auth or provider configuration is missing.
   - The extension must respect user settings and disable/remove lifecycle rules.
 spec_kind: "normative"

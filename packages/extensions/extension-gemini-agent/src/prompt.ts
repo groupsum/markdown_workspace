@@ -1,5 +1,5 @@
 import { getPrimarySelectionText } from "./context.js";
-import type { GeminiAgentContextSnapshot, GeminiAgentIntent, GeminiAgentResolvedSettings } from "./types.js";
+import type { GeminiAgentContextSnapshot, GeminiAgentIntent, GeminiAgentResolvedSettings, GeminiMentionedFile } from "./types.js";
 
 const section = (title: string, body: string): string => `## ${title}\n${body.trim()}`;
 
@@ -12,14 +12,25 @@ function serializeContextMetadata(context: GeminiAgentContextSnapshot): string {
   ].join("\n");
 }
 
+function serializeMentionedFiles(mentions: readonly GeminiMentionedFile[]): string {
+  return mentions
+    .map((mention) => `### ${mention.path}\n${mention.content.trim()}`)
+    .join("\n\n");
+}
+
 export function buildGeminiPrompt(
   intent: GeminiAgentIntent,
   prompt: string,
   context: GeminiAgentContextSnapshot,
   settings: GeminiAgentResolvedSettings,
+  mentions: readonly GeminiMentionedFile[] = [],
 ): string {
   const parts: string[] = [section("Workspace context", serializeContextMetadata(context))];
   const selectionText = getPrimarySelectionText(context);
+
+  if (mentions.length > 0) {
+    parts.push(section("Mentioned files", serializeMentionedFiles(mentions)));
+  }
 
   if (intent === "summarize-current-file") {
     parts.push(section("Task", "Summarize the active markdown document. Focus on main ideas, structure, and action items. Preserve markdown references where useful."));

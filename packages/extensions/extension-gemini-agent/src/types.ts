@@ -32,11 +32,27 @@ export interface GeminiAgentContextSnapshot {
   readonly selections: readonly SelectionRange[];
 }
 
+export interface GeminiMentionedFile {
+  readonly path: string;
+  readonly name: string;
+  readonly content: string;
+}
+
+export interface GeminiPromptMention {
+  readonly path: string;
+  readonly name: string;
+}
+
+export interface GeminiAgentRunOptions {
+  readonly mentionPaths?: readonly string[];
+}
+
 export interface GeminiAgentRequest {
   readonly intent: GeminiAgentIntent;
   readonly prompt: string;
   readonly context: GeminiAgentContextSnapshot;
   readonly settings: GeminiAgentResolvedSettings;
+  readonly mentions?: readonly GeminiMentionedFile[];
 }
 
 export interface GeminiAgentUsage {
@@ -89,7 +105,8 @@ export interface GeminiAgentService {
   subscribe(listener: () => void): () => void;
   loadSettings(): Promise<GeminiAgentResolvedSettings>;
   refreshContext(): Promise<GeminiAgentContextSnapshot>;
-  runIntent(intent: GeminiAgentIntent, prompt?: string): Promise<GeminiAgentResponse>;
+  listMentionableFiles(query?: string): Promise<readonly WorkspaceFileSummary[]>;
+  runIntent(intent: GeminiAgentIntent, prompt?: string, options?: GeminiAgentRunOptions): Promise<GeminiAgentResponse>;
   updateDraft(nextDraft: string): void;
   clearDraft(): void;
   clearResult(): void;

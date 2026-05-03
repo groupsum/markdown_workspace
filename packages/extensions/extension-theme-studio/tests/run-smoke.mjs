@@ -59,7 +59,7 @@ const host = {
     async supportsClass() { return true; },
   },
   editor: { async getActiveDocument() { return null; }, async getSelections() { return []; }, async insertText() {}, async replaceSelections() {}, async setDocumentContent() {} },
-  workspace: { async listProjects() { return []; }, async getActiveProject() { return { id: 'project', name: 'Project' }; }, async getActiveFile() { return null; }, async readFile() { return ''; }, async writeFile() {} },
+  workspace: { async listProjects() { return []; }, async listFiles() { return []; }, async getActiveProject() { return { id: 'project', name: 'Project' }; }, async getActiveFile() { return null; }, async readFile() { return ''; }, async writeFile() {} },
   i18n: {
     async getLocale() { return 'en'; },
     async setLocale() {},

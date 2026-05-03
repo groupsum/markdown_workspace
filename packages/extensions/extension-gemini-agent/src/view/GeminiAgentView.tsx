@@ -1,11 +1,14 @@
 import React from "react";
 import { geminiAgentLabels } from "../i18n.js";
-import type { GeminiChatMessage, GeminiAgentViewProps } from "../types.js";
+import type { GeminiAgentViewProps } from "../types.js";
+import { GeminiAgentConversationSurface } from "../components/GeminiAgentConversationSurface.js";
 import { GeminiAgentDraftSurface } from "../components/GeminiAgentDraftSurface.js";
 import { GeminiAgentPreviewSurface } from "../components/GeminiAgentPreviewSurface.js";
 import { GeminiAgentThreadList } from "../components/GeminiAgentThreadList.js";
 import { FocusIcon, ToolbarIcon } from "../components/GeminiAgentToolbarIcons.js";
-import { geminiButtonStyle, geminiCardStyle, geminiInputStyle, geminiPillStyle } from "../components/GeminiAgentSurfaceStyles.js";
+import { geminiCardStyle, geminiPillStyle } from "../components/GeminiAgentSurfaceStyles.js";
+import type { GeminiPromptMention } from "../types.js";
+import type { WorkspaceFileSummary } from "@mdwrk/extension-host";
 type GeminiPaneFocus = "conversation" | "preview" | "draft";
 
 const getSplitBand = (value: number): number => {
@@ -50,35 +53,34 @@ function useWorkspaceModuleSplit(defaultPosition = 52) {
   };
 }
 
-function formatTimestamp(createdAt: string): string {
-  return new Intl.DateTimeFormat(undefined, {
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(new Date(createdAt));
+function extractPromptMentionKeys(prompt: string): readonly string[] {
+  const matches = prompt.matchAll(/(^|\s)@([^\s@]+)/g);
+  const keys = new Set<string>();
+  for (const match of matches) {
+    const token = match[2]?.trim();
+    if (token) {
+      keys.add(token);
+    }
+  }
+  return Array.from(keys);
 }
 
-function messageTone(role: GeminiChatMessage["role"]): React.CSSProperties {
-  if (role === "assistant") {
-    return {
-      justifySelf: "start",
-      background: "color-mix(in srgb, var(--accent) 12%, var(--bg-primary))",
-      border: "1px solid color-mix(in srgb, var(--accent) 40%, var(--border-primary))",
-    };
+function resolvePromptMentions(prompt: string, files: readonly WorkspaceFileSummary[]): readonly GeminiPromptMention[] {
+  const mentions: GeminiPromptMention[] = [];
+  const seen = new Set<string>();
+  for (const key of extractPromptMentionKeys(prompt)) {
+    const normalized = key.replace(/^\/+/, "").toLowerCase();
+    const exactPath = files.find((file) => file.path.replace(/^\/+/, "").toLowerCase() === normalized);
+    const exactNameMatches = files.filter((file) => file.name.toLowerCase() === normalized);
+    const match = exactPath ?? (exactNameMatches.length === 1 ? exactNameMatches[0] : null);
+    if (!match || seen.has(match.path)) continue;
+    seen.add(match.path);
+    mentions.push({
+      path: match.path,
+      name: match.name,
+    });
   }
-  if (role === "system") {
-    return {
-      justifySelf: "center",
-      background: "color-mix(in srgb, var(--bg-secondary) 80%, transparent)",
-      border: "1px dashed var(--border-primary)",
-    };
-  }
-  return {
-    justifySelf: "end",
-    background: "var(--bg-primary)",
-    border: "1px solid var(--border-primary)",
-  };
+  return mentions;
 }
 
 export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
@@ -98,22 +100,26 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
   const [sidebarOpen, setSidebarOpen] = React.useState(true);
   const [layoutMode, setLayoutMode] = React.useState<"single" | "split">(initialLayoutMode);
   const [paneFocus, setPaneFocus] = React.useState<GeminiPaneFocus>(initialPaneFocus);
+  const [mentionableFiles, setMentionableFiles] = React.useState<readonly WorkspaceFileSummary[]>([]);
   const { splitBand, isDragging, splitContainerRef, startSplitDrag } = useWorkspaceModuleSplit();
   const lastIntentRef = React.useRef<string | null>(null);
 
   React.useEffect(() => {
-    void service.refreshContext();
-    void service.loadSettings().then((settings) => {
-      setSettingsSummary({
-        endpoint: settings.endpoint,
-        model: settings.model,
-        authMode: settings.authMode,
-        hasApiKey: Boolean(settings.apiKey),
-        allowWriteBack: settings.allowWriteBack,
-        autoAttachDocument: settings.autoAttachDocument,
-        autoAttachSelection: settings.autoAttachSelection,
-      });
-    });
+    void Promise.all([
+      service.refreshContext(),
+      service.listMentionableFiles().then((files) => setMentionableFiles(files)),
+      service.loadSettings().then((settings) => {
+        setSettingsSummary({
+          endpoint: settings.endpoint,
+          model: settings.model,
+          authMode: settings.authMode,
+          hasApiKey: Boolean(settings.apiKey),
+          allowWriteBack: settings.allowWriteBack,
+          autoAttachDocument: settings.autoAttachDocument,
+          autoAttachSelection: settings.autoAttachSelection,
+        });
+      }),
+    ]);
   }, [service]);
 
   React.useEffect(() => {
@@ -138,85 +144,37 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
     : snapshot.lastResponse?.text
       ? formatLabel(geminiAgentLabels.panelPreviewResponse)
       : formatLabel(geminiAgentLabels.panelPreviewDocument);
+  const mentionedFiles = React.useMemo(() => resolvePromptMentions(prompt, mentionableFiles), [mentionableFiles, prompt]);
 
   const runPrompt = () => {
     const nextPrompt = prompt.trim();
     if (!nextPrompt) return;
-    void service.runIntent("custom-prompt", nextPrompt);
+    void service.runIntent("custom-prompt", nextPrompt, { mentionPaths: mentionedFiles.map((mention) => mention.path) });
   };
 
   const conversationSurface = (
-    <div style={{ ...geminiCardStyle, height: "100%", alignContent: "start" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
-        <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelConversation)}</span>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button type="button" style={geminiButtonStyle} onClick={() => service.createThread()}>{formatLabel(geminiAgentLabels.panelNewThread)}</button>
-          <button type="button" style={geminiButtonStyle} disabled={snapshot.busy} onClick={() => void service.refreshContext()}>{formatLabel(geminiAgentLabels.panelRefresh)}</button>
-        </div>
-      </div>
-      <div style={{ display: "grid", gap: 8 }}>
-        <div style={{ display: "grid", gap: 4 }}>
-          <strong style={{ fontSize: 14 }}>{activeThread?.title ?? formatLabel(geminiAgentLabels.panelNewThread)}</strong>
-          <span className="settings-session-value">
-            {activeThread ? `${activeThread.messages.length} ${formatLabel(geminiAgentLabels.panelThreadCount)}` : formatLabel(geminiAgentLabels.panelThreadEmpty)}
-          </span>
-        </div>
-        <div
-          aria-label={formatLabel(geminiAgentLabels.panelChatTranscript)}
-          style={{
-            display: "grid",
-            gap: 10,
-            minHeight: 280,
-            maxHeight: layoutMode === "split" ? "min(60vh, 640px)" : "min(68vh, 720px)",
-            overflowY: "auto",
-            padding: 6,
-          }}
-        >
-          {activeThread?.messages.length ? activeThread.messages.map((message) => (
-            <article
-              key={message.id}
-              style={{
-                ...messageTone(message.role),
-                display: "grid",
-                gap: 6,
-                width: "min(92%, 760px)",
-                padding: "10px 12px",
-                borderRadius: 8,
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
-                <strong style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em" }}>{message.role}</strong>
-                <span className="settings-session-label">{formatTimestamp(message.createdAt)}</span>
-              </div>
-              <pre style={{ margin: 0, whiteSpace: "pre-wrap", fontFamily: "inherit", fontSize: 12, lineHeight: 1.6 }}>{message.text}</pre>
-            </article>
-          )) : (
-            <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(geminiAgentLabels.panelThreadEmpty)}</p>
-          )}
-        </div>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button type="button" className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("summarize-current-file")}>{formatLabel(geminiAgentLabels.panelSummarize)}</button>
-          <button type="button" className="modal-btn" disabled={snapshot.busy} onClick={() => void service.runIntent("rewrite-selection", prompt)}>{formatLabel(geminiAgentLabels.panelRewriteSelection)}</button>
-          <button type="button" className="modal-btn" onClick={() => setPaneFocus("preview")}>{formatLabel(geminiAgentLabels.toolbarFocusPreview)}</button>
-          <button type="button" className="modal-btn" onClick={() => setPaneFocus("draft")}>{formatLabel(geminiAgentLabels.toolbarFocusDraft)}</button>
-        </div>
-        <label style={{ display: "grid", gap: 8 }}>
-          <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(geminiAgentLabels.panelChatInput)}</span>
-          <textarea
-            value={prompt}
-            placeholder={formatLabel(geminiAgentLabels.statusPromptPlaceholder)}
-            style={{ ...geminiInputStyle, minHeight: 132 }}
-            onChange={(event) => setPrompt(event.currentTarget.value)}
-          />
-        </label>
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-          <span style={{ fontSize: 12, color: "var(--fg-secondary)" }}>{formatLabel(geminiAgentLabels.panelComposerHint)}</span>
-          <button type="button" className="modal-btn modal-btn-primary" disabled={snapshot.busy || !prompt.trim()} onClick={runPrompt}>
-            {formatLabel(geminiAgentLabels.panelRunPrompt)}
-          </button>
-        </div>
-      </div>
-    </div>
+    <GeminiAgentConversationSurface
+      activeThread={activeThread}
+      prompt={prompt}
+      busy={snapshot.busy}
+      formatLabel={formatLabel}
+      transcriptMaxHeight={layoutMode === "split" ? "min(60vh, 640px)" : "min(68vh, 720px)"}
+      mentionableFiles={mentionableFiles}
+      mentionedFiles={mentionedFiles}
+      onPromptChange={setPrompt}
+      onRunPrompt={runPrompt}
+      onCreateThread={() => service.createThread()}
+      onRefreshContext={() => {
+        void Promise.all([
+          service.refreshContext(),
+          service.listMentionableFiles().then((files) => setMentionableFiles(files)),
+        ]);
+      }}
+      onSummarize={() => void service.runIntent("summarize-current-file")}
+      onRewriteSelection={() => void service.runIntent("rewrite-selection", prompt, { mentionPaths: mentionedFiles.map((mention) => mention.path) })}
+      onFocusPreview={() => setPaneFocus("preview")}
+      onFocusDraft={() => setPaneFocus("draft")}
+    />
   );
 
   const previewSurface = (

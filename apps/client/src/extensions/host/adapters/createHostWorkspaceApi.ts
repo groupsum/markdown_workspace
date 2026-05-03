@@ -31,6 +31,12 @@ export function createHostWorkspaceApi(runtime: ClientRuntimeBridge): HostWorksp
         name: project.name,
       }));
     },
+    async listFiles() {
+      const snapshot = runtime.getSnapshot();
+      return snapshot.app.state.files
+        .filter((node) => node.type === 'file')
+        .map((node) => fileSummary(node, snapshot.app.state.files));
+    },
     async getActiveProject() {
       const project = runtime.getSnapshot().app.state.currentProject;
       if (!project) return null;
