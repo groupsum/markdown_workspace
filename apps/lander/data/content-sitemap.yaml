@@ -3,6 +3,8 @@ content:
     file: ./markdown/legal/privacy.md
   - id: legal/terms
     file: ./markdown/legal/terms.md
+  - id: blog/client-split-out-backstory
+    file: ./markdown/blog/client-split-out-backstory.md
   - id: blog/markdown-workspace-launch
     file: ./markdown/blog/markdown-workspace-launch.md
   - id: blog/responsive-authoring-and-export
@@ -21,6 +23,8 @@ content:
     file: ./markdown/blog/desktop-release-and-android-verification.md
   - id: blog/workspace-files-and-git-ops-packages
     file: ./markdown/blog/workspace-files-and-git-ops-packages.md
+  - id: blog/extension-host-rollout
+    file: ./markdown/blog/extension-host-rollout.md
   - id: blog/docs-surface-realignment
     file: ./markdown/blog/docs-surface-realignment.md
   - id: blog/settings-simplification-for-daily-flow
