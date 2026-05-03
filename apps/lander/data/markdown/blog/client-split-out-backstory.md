@@ -20,7 +20,7 @@ Reusable packages give teams a clear path to:
 - ship MdWrk-powered editing inside internal tools
 - reuse the same renderer in docs, apps, and examples
 - keep extension work aligned with stable public package contracts
-- move from evaluation to production with a package set that already fits the live client
+- move from first integration to broader adoption with a package set that already fits the live client
 
 ## What you can install today
 
@@ -65,8 +65,8 @@ This split-view surface shows the kind of install target product teams get when 
 
 The package move sits inside a broader history arc:
 
-- [Client split-out history](/docs/history/client-split-out-background)
-- [Workspace and extension rollout](/docs/history/workspace-and-extension-rollout)
+- [Standalone modules](/docs/getting-started/standalone-modules)
+- [Extension platform](/docs/extensions/extension-platform)
 - [Repository history for package alignment](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-03-23T00:00:00Z&until=2026-03-24T00:00:00Z)
 
 ## Who should use this package family
@@ -77,4 +77,4 @@ This package family fits:
 - platform teams building governed docs or knowledge surfaces
 - extension teams that want their work to sit close to the live MdWrk runtime
 
-MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path became easy to explain, easy to install, and easy to sell.
+MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path became easier to install, easier to use, and easier to extend.

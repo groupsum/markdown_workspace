@@ -15,7 +15,7 @@ The milestone sits on these commits:
 
 ## Why this matters for extension teams
 
-A governed extension platform sells better when it communicates:
+A governed extension platform works best when it communicates:
 
 - the host version it supports
 - the tests that protect installation and runtime
@@ -39,4 +39,4 @@ npm run validate:compatibility
 - [Extension authoring](/docs/authoring/extensions)
 - [April 1 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-01T00:00:00Z&until=2026-04-02T00:00:00Z)
 
-This post marks the point where MdWrk’s extension system became easier to trust, easier to document, and easier to carry into release workflows.
+This post marks the point where MdWrk's extension system became easier to trust, easier to document, and easier to carry into release workflows.

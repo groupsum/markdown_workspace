@@ -3,9 +3,9 @@ title: Governed Releases, CI Evidence, and Package Docs Gave MdWrk a Stronger Pu
 date: 2026-03-31
 status: published
 author: CobyCloud
-excerpt: MdWrk expanded its release and documentation story with package evidence, governance checks, and public-facing docs that help teams evaluate quality, delivery, and package scope with confidence.
+excerpt: MdWrk expanded its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
 ---
-March 31, 2026 brought together docs, governance, and release evidence in a way that made MdWrk easier to evaluate as a serious package platform.
+March 31, 2026 brought together docs, governance, and release evidence in a way that gave MdWrk a clearer package and release surface.
 
 This milestone is grounded in:
 
@@ -13,9 +13,9 @@ This milestone is grounded in:
 - [Add markdown profile claim gate, tests, and CI evidence](https://github.com/groupsum/markdown_workspace/commit/1e511548)
 - [Align extension manifests and artifacts to 1.1.0](https://github.com/groupsum/markdown_workspace/commit/93ea12ef)
 
-## What technical buyers care about here
+## What this adds
 
-Technical buyers often ask:
+This update brings together the details teams usually need first:
 
 - How does the workspace verify package quality?
 - Which docs stay current?
@@ -30,7 +30,7 @@ npm run ci:workspace:verify
 npm run conformance
 ```
 
-## Golden docs to read next
+## Docs to read next
 
 - [Installation](/docs/getting-started/installation)
 - [Local setup](/docs/getting-started/local-setup)
@@ -38,15 +38,15 @@ npm run conformance
 
 ## Screenshot
 
-![MdWrk docs and product presentation aligned for package evaluation](/blog/media/lander-docs-dark.png)
+![MdWrk docs and product presentation aligned for package usage](/blog/media/lander-docs-dark.png)
 
 ## Why this post matters
 
-March 31 is where MdWrk became easier to explain to:
+March 31 is where MdWrk gave teams a clearer view of:
 
-- platform teams
-- package consumers
-- release managers
-- engineering leaders looking for verifiable delivery rails
+- package verification
+- release commands
+- current docs
+- package boundaries
 
-It is a major point on the timeline because the product story and the operational story started moving together.
+It is a major point on the timeline because package usage, release checks, and public docs started moving together.

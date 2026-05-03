@@ -42,6 +42,14 @@ const slugify = (value) =>
     .trim()
     .replace(/\s+/g, '-');
 
+const normalizeContentSlug = (entryId, metadata) => {
+  const rawSlug = typeof metadata.slug === 'string' ? metadata.slug.trim() : '';
+  if (rawSlug) {
+    return rawSlug.replace(/^\/+|\/+$/g, '');
+  }
+  return entryId.replace(/^\/+|\/+$/g, '');
+};
+
 const toIsoDate = (filePath) => fs.statSync(filePath).mtime.toISOString().slice(0, 10);
 
 const normalizeStatus = (value) =>
@@ -120,18 +128,55 @@ for (const filePath of collectFiles(docsDir, ['.md'])) {
 }
 
 for (const entry of parseContentIds()) {
-  if (!entry.id.startsWith('legal/')) continue;
   const filePath = path.resolve(landerRoot, 'data', entry.file.replace(/^\.\//, ''));
   if (!fs.existsSync(filePath)) continue;
   const raw = fs.readFileSync(filePath, 'utf8');
   const metadata = parseFrontmatter(raw);
   if (!isPublishedMetadata(metadata)) continue;
-  routes.push({
-    path: `/${entry.id}`,
-    priority: '0.5',
-    changefreq: 'yearly',
-    lastmod: toIsoDate(filePath),
-  });
+  const lastmod = toIsoDate(filePath);
+
+  if (entry.id.startsWith('legal/')) {
+    routes.push({
+      path: `/${entry.id}`,
+      priority: '0.5',
+      changefreq: 'yearly',
+      lastmod,
+    });
+    continue;
+  }
+
+  if (entry.id.startsWith('blog/')) {
+    const postSlug = normalizeContentSlug(entry.id, metadata).replace(/^blog\//, '');
+    const author = typeof metadata.author === 'string' ? metadata.author.trim() : '';
+    const date = normalizeIsoDate(metadata.date);
+    const authorSlug = author ? slugify(author) : '';
+    const monthSlug = date ? date.slice(0, 7) : '';
+
+    routes.push({
+      path: `/blog/${postSlug}`,
+      priority: '0.7',
+      changefreq: 'monthly',
+      lastmod,
+    });
+
+    if (authorSlug) {
+      routes.push({
+        path: `/blog/author/${authorSlug}`,
+        priority: '0.6',
+        changefreq: 'monthly',
+        lastmod,
+      });
+    }
+
+    if (monthSlug) {
+      routes.push({
+        path: `/blog/archive/${monthSlug}`,
+        priority: '0.6',
+        changefreq: 'monthly',
+        lastmod,
+      });
+    }
+  }
 }
 
 const uniqueRoutes = new Map();

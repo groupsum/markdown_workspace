@@ -23,7 +23,7 @@ The browser path runs the MdWrk client directly in a supported browser. Document
 
 ## Best fit
 
-- quick evaluation
+- quick access
 - personal writing on one machine
 - environments where you cannot install local software
 - trying editor and renderer behavior before adopting packages

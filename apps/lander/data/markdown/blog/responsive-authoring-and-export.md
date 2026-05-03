@@ -38,7 +38,7 @@ Once the client is running, teams can open a draft, write in source mode, previe
 
 ## Why this day matters in the product story
 
-January 21 gave MdWrk a practical answer to common evaluation questions:
+January 21 gave MdWrk a practical answer to common product questions:
 
 - Can a writer move quickly with keyboard-first flows?
 - Can a team present markdown across multiple screens?

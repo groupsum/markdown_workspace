@@ -5,7 +5,7 @@ status: published
 author: CobyCloud
 excerpt: MdWrk introduced retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 ---
-April 12, 2026 broadened MdWrk’s delivery model.
+April 12, 2026 broadened MdWrk's delivery model.
 
 The timeline anchor includes:
 
@@ -37,6 +37,6 @@ npm run build:desktop
 
 ![MdWrk home surface that introduces the packaged client experience](/blog/media/lander-home-light.png)
 
-## Why this milestone sells
+## Why this milestone matters
 
-Deployment flexibility is a major buying signal for teams evaluating markdown workspaces. April 12 shows MdWrk growing into a platform that can meet browser-first teams, desktop-focused teams, and self-hosting teams with one codebase.
+Deployment flexibility matters for teams that want browser-first use, desktop packaging, or self-managed hosting. April 12 shows MdWrk growing into a platform that can support all three with one codebase.

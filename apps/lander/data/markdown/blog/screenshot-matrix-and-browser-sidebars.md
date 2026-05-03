@@ -5,7 +5,7 @@ status: published
 author: CobyCloud
 excerpt: MdWrk expanded browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 ---
-April 3, 2026 expanded the visual validation story in a way that matters for theme buyers, UI reviewers, and product teams that care about consistency across screens.
+April 3, 2026 expanded the visual verification surface for theme work, UI review, and cross-screen consistency.
 
 This moment is visible in:
 
@@ -29,7 +29,7 @@ npm run screenshots:all-aspect-ratios
 
 ![MdWrk theme studio surface inside the shared workspace](/blog/media/theme-studio-pane.jpg)
 
-## Why search and answer engines benefit
+## Why this matters
 
 Visual proof helps readers answer:
 

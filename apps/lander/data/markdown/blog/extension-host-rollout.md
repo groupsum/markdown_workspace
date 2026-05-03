@@ -15,7 +15,7 @@ The April 26, 2026 extension milestone is anchored in these commits:
 
 ## What extension authors get
 
-MdWrk’s extension platform includes:
+MdWrk's extension platform includes:
 
 - `@mdwrk/extension-manifest` for declarative metadata
 - `@mdwrk/extension-host` for host-safe APIs
@@ -25,7 +25,7 @@ MdWrk’s extension platform includes:
 
 ## Installation and authoring references
 
-These docs carry the current golden usage details:
+These docs carry the current usage details:
 
 - [Extension platform](/docs/extensions/extension-platform)
 - [Extension authoring overview](/docs/authoring/overview)
@@ -57,12 +57,12 @@ npm install @mdwrk/extension-runtime @mdwrk/extension-host @mdwrk/extension-mani
 
 This pane shows how MdWrk brings extension discovery and runtime management into the same workspace experience that writers and operators already use.
 
-## Why this rollout sells
+## Why this rollout matters
 
 Extension teams want a host that communicates:
 
 - where extensions register
-- how compatibility is evaluated
+- how compatibility is checked
 - where settings and commands appear
 - how first-party and third-party surfaces fit together
 
@@ -70,6 +70,6 @@ MdWrk now expresses that story clearly in product terms and package terms at the
 
 ## Follow the repo history
 
-- [Workspace and extension rollout history](/docs/history/workspace-and-extension-rollout)
 - [Extension platform docs](/docs/extensions/extension-platform)
+- [Authoring overview](/docs/authoring/overview)
 - [April 26 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-26T00:00:00Z&until=2026-04-27T00:00:00Z)
