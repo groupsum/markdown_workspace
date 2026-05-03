@@ -113,6 +113,6 @@ MdWrk is not trying to hide Markdown behind a fake document model. The product g
 
 ## Related Docs
 
-- [/docs/usage/advanced-formatting](/docs/usage/advanced-formatting)
-- [/docs/usage/rendering-and-preview](/docs/usage/rendering-and-preview)
-- [/docs/getting-started/configuration](/docs/getting-started/configuration)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Client Configuration](/docs/getting-started/configuration)

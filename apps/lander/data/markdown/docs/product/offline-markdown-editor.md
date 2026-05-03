@@ -27,6 +27,6 @@ MdWrk does not require documents to be uploaded to a hosted service before editi
 
 ## Related Docs
 
-- [/docs/getting-started/browser-use](/docs/getting-started/browser-use)
-- [/docs/getting-started/pwa-installation](/docs/getting-started/pwa-installation)
-- [/docs/usage/editor-basics](/docs/usage/editor-basics)
+- [Browser Use](/docs/getting-started/browser-use)
+- [PWA Installation](/docs/getting-started/pwa-installation)
+- [Editor Basics](/docs/usage/editor-basics)

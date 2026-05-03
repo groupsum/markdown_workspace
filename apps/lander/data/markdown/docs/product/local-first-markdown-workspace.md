@@ -27,6 +27,6 @@ Extensions can add managed views and commands without replacing the local-first 
 
 ## Related Docs
 
-- [/docs/getting-started/local-setup](/docs/getting-started/local-setup)
-- [/docs/extensions/extension-platform](/docs/extensions/extension-platform)
-- [/docs/github-sync](/docs/github-sync)
+- [Local Setup](/docs/getting-started/local-setup)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [GitHub Sync](/docs/github-sync)

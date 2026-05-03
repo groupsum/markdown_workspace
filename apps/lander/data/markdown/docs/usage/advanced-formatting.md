@@ -158,6 +158,6 @@ Enable optional profiles only when the document actually needs them. This keeps 
 
 ## Related Docs
 
-- [/docs/usage/editor-basics](/docs/usage/editor-basics)
-- [/docs/usage/rendering-and-preview](/docs/usage/rendering-and-preview)
-- [/docs/getting-started/configuration](/docs/getting-started/configuration)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Client Configuration](/docs/getting-started/configuration)

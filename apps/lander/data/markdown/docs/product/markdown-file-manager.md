@@ -27,6 +27,6 @@ Where the desktop shell is available, host file acquisition and filesystem-backe
 
 ## Related Docs
 
-- [/docs/product/local-first-markdown-workspace](/docs/product/local-first-markdown-workspace)
-- [/docs/usage/rendering-and-preview](/docs/usage/rendering-and-preview)
-- [/docs/getting-started/local-setup](/docs/getting-started/local-setup)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Local Setup](/docs/getting-started/local-setup)

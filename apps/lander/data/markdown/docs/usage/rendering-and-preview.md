@@ -134,6 +134,6 @@ MdWrk treats rendering as a first-class product surface, not as a best-effort co
 
 ## Related Docs
 
-- [/docs/usage/editor-basics](/docs/usage/editor-basics)
-- [/docs/usage/advanced-formatting](/docs/usage/advanced-formatting)
-- [/docs/getting-started/configuration](/docs/getting-started/configuration)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Client Configuration](/docs/getting-started/configuration)

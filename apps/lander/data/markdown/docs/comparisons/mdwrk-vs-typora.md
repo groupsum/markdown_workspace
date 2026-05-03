@@ -7,17 +7,17 @@ order: 2
 toc: true
 date: 2026-05-03
 status: published
-excerpt: Compare MdWrk and Typora when you want Markdown authoring with either a workspace-oriented preview/editor shell or a focused minimal writing app.
+excerpt: Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
 relatedApis: @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react
 ---
 
 MdWrk and Typora both serve Markdown authors, but they optimize for different operating shapes.
 
-## Best Fit
+## MdWrk Fit
 
 Choose MdWrk when you need a workspace with projects, panes, live preview, package reuse, extension host behavior, and browser/PWA delivery.
 
-Choose Typora when you prefer a minimal single-document writing interface with inline rendered editing.
+Typora is commonly associated with minimal single-document writing and inline rendered editing. Use that comparison point to clarify when MdWrk's workspace, preview, package, and extension architecture is the better product fit.
 
 ## Product Difference
 
@@ -25,5 +25,5 @@ MdWrk keeps source editing and preview explicit, which is useful when the exact 
 
 ## Related Docs
 
-- [/docs/product/markdown-preview-editor](/docs/product/markdown-preview-editor)
-- [/docs/usage/editor-basics](/docs/usage/editor-basics)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)

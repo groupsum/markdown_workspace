@@ -25,5 +25,5 @@ MdWrk keeps the Markdown file as the durable content surface. That makes it prac
 
 ## Related Docs
 
-- [/docs/product/privacy-first-markdown-editor](/docs/product/privacy-first-markdown-editor)
-- [/docs/product/markdown-file-manager](/docs/product/markdown-file-manager)
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Markdown File Manager](/docs/product/markdown-file-manager)

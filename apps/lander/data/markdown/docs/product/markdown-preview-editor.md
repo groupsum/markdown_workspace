@@ -27,6 +27,6 @@ HTML export and print preview are connected to the preview pipeline so approved 
 
 ## Related Docs
 
-- [/docs/usage/editor-basics](/docs/usage/editor-basics)
-- [/docs/usage/rendering-and-preview](/docs/usage/rendering-and-preview)
-- [/docs/usage/advanced-formatting](/docs/usage/advanced-formatting)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)

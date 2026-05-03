@@ -25,5 +25,5 @@ MdWrk makes document workspace behavior, preview policy, theme packs, and Markdo
 
 ## Related Docs
 
-- [/docs/product/developer-documentation](/docs/product/developer-documentation)
-- [/docs/product/markdown-file-manager](/docs/product/markdown-file-manager)
+- [Developer Documentation](/docs/product/developer-documentation)
+- [Markdown File Manager](/docs/product/markdown-file-manager)

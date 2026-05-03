@@ -25,5 +25,5 @@ MdWrk keeps optional Markdown profile behavior visible through the renderer and 
 
 ## Related Docs
 
-- [/docs/usage/advanced-formatting](/docs/usage/advanced-formatting)
-- [/docs/product/privacy-first-markdown-editor](/docs/product/privacy-first-markdown-editor)
+- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)

@@ -25,5 +25,5 @@ MdWrk turns Markdown authoring into a product surface that can serve writers, do
 
 ## Related Docs
 
-- [/docs/product/offline-markdown-editor](/docs/product/offline-markdown-editor)
-- [/docs/product/developer-documentation](/docs/product/developer-documentation)
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Developer Documentation](/docs/product/developer-documentation)

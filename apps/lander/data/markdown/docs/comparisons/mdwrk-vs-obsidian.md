@@ -25,5 +25,5 @@ MdWrk emphasizes portable Markdown editing, preview, file management, extension-
 
 ## Related Docs
 
-- [/docs/product/local-first-markdown-workspace](/docs/product/local-first-markdown-workspace)
-- [/docs/product/extension-host](/docs/product/extension-host)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [MdWrk Extension Host](/docs/product/extension-host)

@@ -27,6 +27,6 @@ Viewport and aspect-ratio breakpoints stay defined once in the client viewport c
 
 ## Related Docs
 
-- [/docs/authoring/theme-packs](/docs/authoring/theme-packs)
-- [/docs/extensions/theme-studio-and-host-surfaces](/docs/extensions/theme-studio-and-host-surfaces)
-- [/docs/getting-started/configuration](/docs/getting-started/configuration)
+- [Theme Pack Authoring](/docs/authoring/theme-packs)
+- [Theme Studio And Host Surfaces](/docs/extensions/theme-studio-and-host-surfaces)
+- [Client Configuration](/docs/getting-started/configuration)

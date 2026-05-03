@@ -27,6 +27,6 @@ Installable extensions use manifests, integrity metadata, compatibility rules, a
 
 ## Related Docs
 
-- [/docs/extensions/extension-platform](/docs/extensions/extension-platform)
-- [/docs/getting-started/configuration](/docs/getting-started/configuration)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Client Configuration](/docs/getting-started/configuration)
 - [/legal/privacy](/legal/privacy)

@@ -27,6 +27,6 @@ Current bundled surfaces include Extension Manager, Theme Studio, Language Pack 
 
 ## Related Docs
 
-- [/docs/extensions/extension-platform](/docs/extensions/extension-platform)
-- [/docs/authoring/extensions](/docs/authoring/extensions)
-- [/docs/product/theme-packs](/docs/product/theme-packs)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Extension Authoring](/docs/authoring/extensions)
+- [Theme Packs](/docs/product/theme-packs)

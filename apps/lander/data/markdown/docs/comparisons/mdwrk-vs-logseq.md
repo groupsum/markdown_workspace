@@ -25,5 +25,5 @@ MdWrk keeps Markdown documents portable and easy to move through GitHub, npm, st
 
 ## Related Docs
 
-- [/docs/product/local-first-markdown-workspace](/docs/product/local-first-markdown-workspace)
-- [/docs/product/markdown-preview-editor](/docs/product/markdown-preview-editor)
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)

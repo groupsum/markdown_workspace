@@ -25,5 +25,5 @@ MdWrk connects writing, preview, workspace management, extensions, and package d
 
 ## Related Docs
 
-- [/docs/product/offline-markdown-editor](/docs/product/offline-markdown-editor)
-- [/docs/product/theme-packs](/docs/product/theme-packs)
+- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
+- [Theme Packs](/docs/product/theme-packs)
