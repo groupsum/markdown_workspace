@@ -8,17 +8,21 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs standardized support sections for documentation and blog articles on the public lander."
+summary: "This SPEC governs standardized support sections and metadata headers for documentation and blog articles on the public lander."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated for metadata JSON Schema, required excerpts, embedded metadata descriptions, and CI validation."
+    at: "2026-05-03T23:23:07Z"
 references: []
 body: |-
   # MdWrk Article Standardization Contract
   
   ## Scope
   
-  This SPEC governs standardized support sections for documentation and blog articles on the public lander.
+  This SPEC governs standardized support sections and metadata headers for documentation and blog articles on the public lander.
   
   ## Requirements
   
@@ -28,10 +32,14 @@ body: |-
   4. Related Docs and related article link text shall be professional, specific, and product-facing.
   5. Article enhancements shall preserve crawlable plain text, internal links, canonical metadata, and readable headings.
   6. Doc-by-doc and post-by-post standardization must avoid overstating support status and must keep MdWrk product terminology consistent.
+  7. Docs and blog frontmatter shall conform to the shared article metadata JSON Schema.
+  8. Excerpts are required metadata for every documentation and blog article.
+  9. Article cards, page metadata descriptions, BlogPosting JSON-LD descriptions, and embedded metadata link descriptions shall use the article excerpt.
+  10. A dedicated GitHub Actions workflow shall validate article metadata headers against the JSON Schema for relevant lander article and schema changes.
   
   ## Acceptance
   
-  Feature rows covering docs standardization, blog standardization, appended answer placement, related-link copy, and crawlable article text must link to this SPEC.
+  Feature rows covering docs standardization, blog standardization, appended answer placement, related-link copy, crawlable article text, metadata schema validation, excerpt-derived embedded metadata, and the CI article metadata gate must link to this SPEC.
 spec_kind: "normative"
 adr_ids:
   - "adr:1054"

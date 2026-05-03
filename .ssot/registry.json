@@ -5797,7 +5797,88 @@
     {
       "id": "feat:lander-article-metadata-schema-validation",
       "title": "Article metadata schema validation",
-      "description": "Validate MdWrk documentation and blog frontmatter against a shared JSON Schema that requires titles, publication state, dates, and excerpts for article metadata.",
+      "description": "Validate MdWrk documentation and blog frontmatter against a shared JSON Schema that requires titles, publication state, dates, and excerpts, with CI coverage for article metadata changes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-metadata-favicon-logo-fallback",
+      "title": "Favicon logo metadata fallback",
+      "description": "Use the MdWrk favicon logo as the default Open Graph, Twitter, and JSON-LD metadata image when an article does not provide a featured image.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-excerpt-embedded-metadata",
+      "title": "Article excerpt embedded metadata descriptions",
+      "description": "Use authored article excerpts for article cards, page metadata descriptions, BlogPosting JSON-LD descriptions, and embedded metadata link descriptions.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-metadata-ci-gate",
+      "title": "Article metadata schema CI gate",
+      "description": "Run a dedicated GitHub Actions workflow that validates MdWrk docs and blog frontmatter against the shared article metadata JSON Schema on relevant article, schema, and workflow changes.",
       "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
@@ -6406,7 +6487,10 @@
         "feat:lander-blog-article-guide-standardization",
         "feat:lander-article-related-link-copy",
         "feat:lander-article-crawlability-internal-links",
-        "feat:lander-article-metadata-schema-validation"
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -6997,7 +7081,10 @@
         "feat:lander-blog-article-guide-standardization",
         "feat:lander-article-related-link-copy",
         "feat:lander-article-crawlability-internal-links",
-        "feat:lander-article-metadata-schema-validation"
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -9464,11 +9551,22 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "f9a53d3df053aaab9003dc16d6182145a2567fd9eac29ae3b677fb45d17ef046",
+      "content_sha256": "f2e9a752f7b0eaf41f1c2b621a241c7cf7eb31989192f913dcb56645c879cca5",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Updated for JSON Schema metadata headers, required excerpts, and CI validation gate.",
+          "at": "2026-05-03T23:22:29Z"
+        },
+        {
+          "status": "draft",
+          "note": "Normalized article standardization ADR body after metadata schema and CI gate update.",
+          "at": "2026-05-03T23:30:10Z"
+        }
+      ]
     }
   ],
   "specs": [
@@ -11231,11 +11329,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "bd16fe8b59934d09040393eadb1710bf81796b05755d0e0ad81a67f2027b8749",
+      "content_sha256": "66f0643471306895dc234a999a88144cf2dfb2eb91acd1feb8c4718d258c4528",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Updated for favicon fallback metadata and excerpt-derived embedded descriptions.",
+          "at": "2026-05-03T23:22:52Z"
+        }
+      ],
       "kind": "normative",
       "adr_ids": [
         "adr:1053"
@@ -11251,11 +11355,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "36ac7a3649790ef4fbf1bbef27823bd44c70ddf1e237c65b8087ba8b000cf457",
+      "content_sha256": "94ebbcb880c55b3defd0b13c76eaa5d0ff585d3bd9cdd1961964f6c045c15bfb",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Updated for metadata JSON Schema, required excerpts, embedded metadata descriptions, and CI validation.",
+          "at": "2026-05-03T23:23:07Z"
+        }
+      ],
       "kind": "normative",
       "adr_ids": [
         "adr:1054"

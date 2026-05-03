@@ -11,19 +11,23 @@ tags: []
 summary: "MdWrk documentation and blog articles shall use standardized, crawlable article support sections while preserving the primary reading experience. AEO answer blocks and article guide material must be appended after the article body, not prepended and not inserted inline where they dominate the content."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated for JSON Schema metadata headers, required excerpts, and CI validation gate."
+    at: "2026-05-03T23:22:29Z"
+  -
+    status: "draft"
+    note: "Normalized article standardization ADR body after metadata schema and CI gate update."
+    at: "2026-05-03T23:30:10Z"
 references: []
 body: |-
   # ADR-1054: MdWrk article standardization and appended answer blocks
-  
   ## Decision
-  
   MdWrk documentation and blog articles shall use standardized, crawlable article support sections while preserving the primary reading experience. AEO answer blocks and article guide material must be appended after the article body, not prepended and not inserted inline where they dominate the content.
-  
+  All documentation and blog article metadata headers shall conform to the shared article metadata JSON Schema. Excerpts are required article metadata and shall be the source for embedded metadata link descriptions, article card summaries, and article-level metadata descriptions. The lander shall provide a dedicated GitHub Actions gate that validates article headers against the schema.
   ## Rationale
-  
   Docs and blogs need consistent answers, use cases, examples, errors, related APIs, summaries, and internal links for retrieval and answer generation. Those optimizations should not displace the actual article or make the first screen feel like SEO scaffolding instead of documentation.
-  
+  A schema-backed header contract keeps docs and blog posts consistent as the article set grows. Requiring excerpts ensures every article has an authored summary for embedded metadata, crawler-visible descriptions, and card rendering.
   ## Consequences
-  
-  Article standardization shall be applied doc-by-doc and post-by-post. Related-link copy must be professional, answer blocks must remain terminal content, and generated/rendered support sections must be treated as appended article metadata rather than the article itself.
+  Article standardization shall be applied doc-by-doc and post-by-post. Related-link copy must be professional, answer blocks must remain terminal content, generated/rendered support sections must be treated as appended article metadata rather than the article itself, and CI must fail when article frontmatter does not satisfy the shared schema.

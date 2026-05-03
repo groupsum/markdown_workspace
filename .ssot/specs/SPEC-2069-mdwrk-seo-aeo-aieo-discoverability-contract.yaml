@@ -11,7 +11,11 @@ tags: []
 summary: "This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated for favicon fallback metadata and excerpt-derived embedded descriptions."
+    at: "2026-05-03T23:22:52Z"
 references: []
 body: |-
   # MdWrk SEO AEO AiEO Discoverability Contract
@@ -28,10 +32,12 @@ body: |-
   4. Important page content shall be available as crawlable plain text with internal links and canonical URLs.
   5. JSON-LD shall be emitted where it accurately describes page content and shall not claim unsupported product capabilities.
   6. Semantic discovery projections, including semantic index artifacts, are generated aids and are not external web standards by themselves.
+  7. Article pages without a featured image shall use the MdWrk favicon logo as the default metadata image across Open Graph, Twitter, and JSON-LD fallback paths.
+  8. Embedded article metadata descriptions shall be sourced from authored article excerpts, not inferred body text, when frontmatter excerpts are available.
   
   ## Acceptance
   
-  Feature rows covering canonical pages, comparisons, brand normalization, structured data, textual crawlability, and semantic projections must link to this SPEC.
+  Feature rows covering canonical pages, comparisons, brand normalization, structured data, textual crawlability, semantic projections, favicon fallback metadata, and excerpt-derived embedded descriptions must link to this SPEC.
 spec_kind: "normative"
 adr_ids:
   - "adr:1053"
