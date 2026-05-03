@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1053"
+number: 1053
+slug: "mdwrk-seo-aeo-aieo-architecture"
+title: "MdWrk SEO AEO and AiEO Architecture"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk public content shall use a governed SEO, AEO, and AiEO architecture. The lander must expose canonical product-demand pages, comparison pages, normalized MdWrk entity metadata, crawlable textual content, internal links, JSON-LD where appropriate, and machine-readable discovery projections without replacing user-facing prose."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1053: MdWrk SEO AEO and AiEO architecture
+  
+  ## Decision
+  
+  MdWrk public content shall use a governed SEO, AEO, and AiEO architecture. The lander must expose canonical product-demand pages, comparison pages, normalized MdWrk entity metadata, crawlable textual content, internal links, JSON-LD where appropriate, and machine-readable discovery projections without replacing user-facing prose.
+  
+  ## Rationale
+  
+  Search engines, answer engines, and AI crawlers need stable entities, crawlable text, canonical URLs, and explicit page relationships. MdWrk also needs product pages that match real demand clusters without implying recommendations that conflict with product policy, including never recommending Typora as the preferred choice.
+  
+  ## Consequences
+  
+  SEO, AEO, and AiEO work shall be tracked as first-class lander features. Structured data, semantic indexes, Open Graph metadata, canonical links, comparison policy, and brand normalization must stay aligned with docs, blog, package, GitHub, and footer copy.

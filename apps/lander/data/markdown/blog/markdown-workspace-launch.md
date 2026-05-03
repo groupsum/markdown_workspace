@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 ---
-## Article Guide
-
-2026-01-20 marks this MdWrk product story: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
-
-The January 20, 2026 launch introduces a writing workspace built for fast authoring, visual polish, and theme-aware reading.
-
-This first day is visible in the earliest repo milestones:
-
-- [Initial commit](https://github.com/groupsum/markdown_workspace/commit/3964e6bf)
-- [Add acid etched theme skin](https://github.com/groupsum/markdown_workspace/commit/286faf28)
-- [Add theme cycling controls](https://github.com/groupsum/markdown_workspace/commit/99457cd9)
 
 ## What launches
 
@@ -72,3 +49,27 @@ Teams evaluating markdown tools often look for:
 - a clean route to later packaging and deployment
 
 MdWrk opens with all four, which gives the product a strong story from its first visible commits.
+
+## Article Guide
+
+2026-01-20 marks this MdWrk product story: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
+The January 20, 2026 launch introduces a writing workspace built for fast authoring, visual polish, and theme-aware reading.
+
+This first day is visible in the earliest repo milestones:
+
+- [Initial commit](https://github.com/groupsum/markdown_workspace/commit/3964e6bf)
+- [Add acid etched theme skin](https://github.com/groupsum/markdown_workspace/commit/286faf28)
+- [Add theme cycling controls](https://github.com/groupsum/markdown_workspace/commit/99457cd9)

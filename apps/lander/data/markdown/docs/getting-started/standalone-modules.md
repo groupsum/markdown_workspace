@@ -8,22 +8,6 @@ toc: true
 date: 2026-05-02
 status: published
 ---
-## Quick Reference
-
-Use this article to understand Standalone Modules in the MdWrk Getting Started surface. Standalone Modules explains how this MdWrk surface works in the current client and package system.
-
-Key concepts covered here:
-
-- workspace organization
-- developer package reuse
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
-- [Client Installation](/docs/getting-started/installation)
-
-Use standalone modules when you want MdWrk surfaces inside another application rather than the full workspace shell.
 
 ## Primary packages
 
@@ -82,3 +66,20 @@ For published package discovery, use:
 ```text
 https://www.npmjs.com/org/mdwrk
 ```
+
+## Quick Reference
+
+Use this article to understand Standalone Modules in the MdWrk Getting Started surface. Standalone Modules explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- workspace organization
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Client Installation](/docs/getting-started/installation)
+
+Use standalone modules when you want MdWrk surfaces inside another application rather than the full workspace shell.

@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
 ---
-## Article Guide
-
-2026-04-01 marks this MdWrk product story: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
-- [Extension Platform](/docs/extensions/extension-platform)
-
-April 1, 2026 tightens the extension delivery story with compatibility gates, version alignment, and publish-focused verification.
-
-The milestone sits on these commits:
-
-- [Enforce test gate before package publish](https://github.com/groupsum/markdown_workspace/commit/9c3e88c5)
-- [Fix extension compatibility checks and editor overflow defaults](https://github.com/groupsum/markdown_workspace/commit/8f2cc526)
-- [Update extension modals, persistence, and workspace version matrix](https://github.com/groupsum/markdown_workspace/commit/a4aaec70)
 
 ## Why this matters for extension teams
 
@@ -56,3 +33,27 @@ npm run validate:compatibility
 - [April 1 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-01T00:00:00Z&until=2026-04-02T00:00:00Z)
 
 This post marks the point where MdWrk's extension system becomes easier to trust, easier to document, and easier to carry into release workflows.
+
+## Article Guide
+
+2026-04-01 marks this MdWrk product story: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Extension Platform](/docs/extensions/extension-platform)
+
+April 1, 2026 tightens the extension delivery story with compatibility gates, version alignment, and publish-focused verification.
+
+The milestone sits on these commits:
+
+- [Enforce test gate before package publish](https://github.com/groupsum/markdown_workspace/commit/9c3e88c5)
+- [Fix extension compatibility checks and editor overflow defaults](https://github.com/groupsum/markdown_workspace/commit/8f2cc526)
+- [Update extension modals, persistence, and workspace version matrix](https://github.com/groupsum/markdown_workspace/commit/a4aaec70)

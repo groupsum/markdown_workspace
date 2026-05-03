@@ -9,25 +9,6 @@ date: 2026-05-03
 status: published
 excerpt: MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
 ---
-## Quick Reference
-
-Use this article to understand Editor Basics in the MdWrk Product surface. MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
-
-Key concepts covered here:
-
-- local Markdown files
-- live preview
-- workspace organization
-- privacy-first storage
-- theme portability
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
-
-Use this page when you want the current MdWrk editor surface, not just the package names behind it.
 
 ## What the Editor Is For
 
@@ -133,3 +114,23 @@ MdWrk is not trying to hide Markdown behind a fake document model. The product g
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Quick Reference
+
+Use this article to understand Editor Basics in the MdWrk Product surface. MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- workspace organization
+- privacy-first storage
+- theme portability
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
+Use this page when you want the current MdWrk editor surface, not just the package names behind it.

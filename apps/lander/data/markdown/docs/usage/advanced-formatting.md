@@ -9,23 +9,6 @@ date: 2026-05-03
 status: published
 excerpt: MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
 ---
-## Quick Reference
-
-Use this article to understand Markdown Formatting in the MdWrk Product surface. MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
-
-Key concepts covered here:
-
-- local Markdown files
-- live preview
-- theme portability
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
-
-Use this page when you want the exact Markdown formatting contract that MdWrk previews, exports, and edits today.
 
 ## Baseline Conformance
 
@@ -176,3 +159,21 @@ Enable optional profiles only when the document actually needs them. This keeps 
 - [Editor Basics](/docs/usage/editor-basics)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Quick Reference
+
+Use this article to understand Markdown Formatting in the MdWrk Product surface. MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
+
+Key concepts covered here:
+
+- local Markdown files
+- live preview
+- theme portability
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
+Use this page when you want the exact Markdown formatting contract that MdWrk previews, exports, and edits today.

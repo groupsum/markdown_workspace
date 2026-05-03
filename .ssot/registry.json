@@ -5523,6 +5523,276 @@
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:lander-seo-demand-cluster-canonical-pages",
+      "title": "Lander SEO demand-cluster canonical pages",
+      "description": "Publish canonical product pages for the major MdWrk demand clusters, including offline, local-first, privacy-first, file manager, preview/editor, extension host, theme packs, and developer documentation pages.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-comparison-pages",
+      "title": "Lander SEO comparison pages",
+      "description": "Publish MdWrk comparison pages against Obsidian, Typora, VS Code, MarkText, Zettlr, Notion, Logseq, and standard Markdown editors while preserving the no-Typora-recommendation policy.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-entity-mdwrk-brand-normalization",
+      "title": "MdWrk brand and entity normalization",
+      "description": "Align MdWrk naming, metadata, schema, docs, package descriptions, GitHub-facing copy, and footer copy around the MdWrk product entity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-appended-answer-blocks",
+      "title": "Appended AEO answer blocks",
+      "description": "Render answer blocks as appended article support content so AEO sections do not dominate the document opening or interrupt the article body.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-json-ld-structured-data",
+      "title": "AI and search structured data JSON-LD",
+      "description": "Emit accurate JSON-LD for public lander pages where structured data helps crawlers understand page identity, relationships, and article or documentation content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-crawlable-text-semantic-index",
+      "title": "Crawlable text and semantic index projection",
+      "description": "Keep important documentation and blog content available as crawlable plain text while generating semantic index projections for internal discovery and AI retrieval aids.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-docs-answer-section-standardization",
+      "title": "Docs answer section standardization",
+      "description": "Standardize documentation pages with appended What this does, When to use it, How it works, Example, Common errors, and Related APIs support sections where relevant.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-blog-article-guide-standardization",
+      "title": "Blog article guide standardization",
+      "description": "Standardize blog posts with appended article guide sections that improve semantic retrieval without replacing the editorial article body.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-related-link-copy",
+      "title": "Professional article related-link copy",
+      "description": "Use specific, professional related Docs and article link text across standardized documentation and blog content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-crawlability-internal-links",
+      "title": "Article crawlability and internal links",
+      "description": "Enhance docs and blog articles doc-by-doc with crawlable textual content, descriptive headings, internal links, and metadata aligned to MdWrk product surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -6098,7 +6368,17 @@
         "feat:editor-toolbar-split-view-eligibility",
         "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-divider-grouping"
+        "feat:editor-toolbar-divider-grouping",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-article-crawlability-internal-links"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -6678,7 +6958,17 @@
         "feat:preview-link-cross-file-hash-scroll",
         "feat:preview-link-export-rewrite",
         "feat:preview-link-unsafe-url-policy",
-        "feat:preview-overlay-actions"
+        "feat:preview-overlay-actions",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-article-crawlability-internal-links"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -9112,6 +9402,38 @@
       "supersedes": [],
       "superseded_by": [],
       "status_notes": []
+    },
+    {
+      "id": "adr:1053",
+      "number": 1053,
+      "slug": "mdwrk-seo-aeo-aieo-architecture",
+      "title": "MdWrk SEO AEO and AiEO Architecture",
+      "path": ".ssot/adr/ADR-1053-mdwrk-seo-aeo-aieo-architecture.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "a282a92ead60f0f525df40ee4d565d64c64605ac4a14544a958560b6b67d3c6d",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
+    },
+    {
+      "id": "adr:1054",
+      "number": 1054,
+      "slug": "mdwrk-article-standardization-appended-answer-blocks",
+      "title": "MdWrk Article Standardization And Appended Answer Blocks",
+      "path": ".ssot/adr/ADR-1054-mdwrk-article-standardization-appended-answer-blocks.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "f9a53d3df053aaab9003dc16d6182145a2567fd9eac29ae3b677fb45d17ef046",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
     }
   ],
   "specs": [
@@ -10862,6 +11184,46 @@
       "kind": "normative",
       "adr_ids": [
         "adr:1052"
+      ]
+    },
+    {
+      "id": "spc:2069",
+      "number": 2069,
+      "slug": "mdwrk-seo-aeo-aieo-discoverability-contract",
+      "title": "MdWrk SEO AEO AiEO Discoverability Contract",
+      "path": ".ssot/specs/SPEC-2069-mdwrk-seo-aeo-aieo-discoverability-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "bd16fe8b59934d09040393eadb1710bf81796b05755d0e0ad81a67f2027b8749",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1053"
+      ]
+    },
+    {
+      "id": "spc:2070",
+      "number": 2070,
+      "slug": "mdwrk-article-standardization-contract",
+      "title": "MdWrk Article Standardization Contract",
+      "path": ".ssot/specs/SPEC-2070-mdwrk-article-standardization-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "36ac7a3649790ef4fbf1bbef27823bd44c70ddf1e237c65b8087ba8b000cf457",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1054"
       ]
     }
   ],

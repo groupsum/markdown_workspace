@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
 ---
-## Article Guide
-
-2026-01-22 marks this MdWrk product story: MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Theme Packs](/docs/product/theme-packs)
-
-January 22, 2026 moves MdWrk from an exciting workspace demo into an installable daily tool.
-
-The repo history for that step includes:
-
-- [Add PWA service worker and install controls](https://github.com/groupsum/markdown_workspace/commit/343925d0)
-- [Fix zoom scaling for UI text and icons](https://github.com/groupsum/markdown_workspace/commit/b5486fcd)
-- [implement deploy](https://github.com/groupsum/markdown_workspace/commit/2ea7e01b)
 
 ## What users gain
 
@@ -61,3 +38,27 @@ That build flow feeds the installable client surface and supports teams that wan
 - [January 22 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-01-22T00:00:00Z&until=2026-01-23T00:00:00Z)
 
 This date matters because it shows how MdWrk serves writers, operators, and deployers in one cohesive flow.
+
+## Article Guide
+
+2026-01-22 marks this MdWrk product story: MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Theme Packs](/docs/product/theme-packs)
+
+January 22, 2026 moves MdWrk from an exciting workspace demo into an installable daily tool.
+
+The repo history for that step includes:
+
+- [Add PWA service worker and install controls](https://github.com/groupsum/markdown_workspace/commit/343925d0)
+- [Fix zoom scaling for UI text and icons](https://github.com/groupsum/markdown_workspace/commit/b5486fcd)
+- [implement deploy](https://github.com/groupsum/markdown_workspace/commit/2ea7e01b)

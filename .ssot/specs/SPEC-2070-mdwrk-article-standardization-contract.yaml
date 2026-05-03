@@ -1,0 +1,37 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2070"
+number: 2070
+slug: "mdwrk-article-standardization-contract"
+title: "MdWrk Article Standardization Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs standardized support sections for documentation and blog articles on the public lander."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk Article Standardization Contract
+  
+  ## Scope
+  
+  This SPEC governs standardized support sections for documentation and blog articles on the public lander.
+  
+  ## Requirements
+  
+  1. Doc pages shall expose appended answer blocks containing What this does, When to use it, How it works, Example, Common errors, and Related APIs when those sections are relevant to the page type.
+  2. Blog posts shall expose appended article guide material that improves semantic retrieval without replacing the editorial article body.
+  3. Standardized answer and guide sections shall be terminal article content after the primary article body, not prepended and not inserted inline before the user's main reading path.
+  4. Related Docs and related article link text shall be professional, specific, and product-facing.
+  5. Article enhancements shall preserve crawlable plain text, internal links, canonical metadata, and readable headings.
+  6. Doc-by-doc and post-by-post standardization must avoid overstating support status and must keep MdWrk product terminology consistent.
+  
+  ## Acceptance
+  
+  Feature rows covering docs standardization, blog standardization, appended answer placement, related-link copy, and crawlable article text must link to this SPEC.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1054"

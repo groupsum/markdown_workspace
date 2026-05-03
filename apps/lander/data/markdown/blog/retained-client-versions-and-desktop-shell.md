@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 ---
-## Article Guide
-
-2026-04-12 marks this MdWrk product story: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [GitHub Sync](/docs/github-sync)
-- [PWA Installation](/docs/getting-started/pwa-installation)
-
-April 12, 2026 broadens MdWrk's delivery model.
-
-The timeline anchor includes:
-
-- [Implement retained client version delivery and PWA switching](https://github.com/groupsum/markdown_workspace/commit/5942849c)
-- [feat: +desktop](https://github.com/groupsum/markdown_workspace/commit/cba6ac9c)
-- [Bump all package versions and hash app build IDs](https://github.com/groupsum/markdown_workspace/commit/c13aba8c)
 
 ## What this means for teams
 
@@ -56,3 +33,27 @@ npm run build:desktop
 ## Why this milestone matters
 
 Deployment flexibility matters for teams that want browser-first use, desktop packaging, or self-managed hosting. April 12 shows MdWrk growing into a platform that can support all three with one codebase.
+
+## Article Guide
+
+2026-04-12 marks this MdWrk product story: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [GitHub Sync](/docs/github-sync)
+- [PWA Installation](/docs/getting-started/pwa-installation)
+
+April 12, 2026 broadens MdWrk's delivery model.
+
+The timeline anchor includes:
+
+- [Implement retained client version delivery and PWA switching](https://github.com/groupsum/markdown_workspace/commit/5942849c)
+- [feat: +desktop](https://github.com/groupsum/markdown_workspace/commit/cba6ac9c)
+- [Bump all package versions and hash app build IDs](https://github.com/groupsum/markdown_workspace/commit/c13aba8c)

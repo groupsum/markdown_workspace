@@ -1,0 +1,29 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1054"
+number: 1054
+slug: "mdwrk-article-standardization-appended-answer-blocks"
+title: "MdWrk Article Standardization And Appended Answer Blocks"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk documentation and blog articles shall use standardized, crawlable article support sections while preserving the primary reading experience. AEO answer blocks and article guide material must be appended after the article body, not prepended and not inserted inline where they dominate the content."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # ADR-1054: MdWrk article standardization and appended answer blocks
+  
+  ## Decision
+  
+  MdWrk documentation and blog articles shall use standardized, crawlable article support sections while preserving the primary reading experience. AEO answer blocks and article guide material must be appended after the article body, not prepended and not inserted inline where they dominate the content.
+  
+  ## Rationale
+  
+  Docs and blogs need consistent answers, use cases, examples, errors, related APIs, summaries, and internal links for retrieval and answer generation. Those optimizations should not displace the actual article or make the first screen feel like SEO scaffolding instead of documentation.
+  
+  ## Consequences
+  
+  Article standardization shall be applied doc-by-doc and post-by-post. Related-link copy must be professional, answer blocks must remain terminal content, and generated/rendered support sections must be treated as appended article metadata rather than the article itself.

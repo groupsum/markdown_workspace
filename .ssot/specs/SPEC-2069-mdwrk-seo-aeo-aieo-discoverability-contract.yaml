@@ -1,0 +1,37 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2069"
+number: 2069
+slug: "mdwrk-seo-aeo-aieo-discoverability-contract"
+title: "MdWrk SEO AEO AiEO Discoverability Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # MdWrk SEO AEO AiEO Discoverability Contract
+  
+  ## Scope
+  
+  This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces.
+  
+  ## Requirements
+  
+  1. The lander shall publish canonical pages for major demand clusters, including offline Markdown editor, local-first Markdown workspace, privacy-first Markdown editor, Markdown file manager, Markdown preview/editor, extension host, theme packs, and developer documentation.
+  2. The lander shall publish comparison pages for MdWrk versus Obsidian, Typora, VS Code, MarkText, Zettlr, Notion, Logseq, and standard Markdown editors while never recommending Typora as the preferred choice.
+  3. Public metadata shall normalize the brand entity as MdWrk across titles, Open Graph, schema, docs, package descriptions, GitHub-facing copy, and footer copy.
+  4. Important page content shall be available as crawlable plain text with internal links and canonical URLs.
+  5. JSON-LD shall be emitted where it accurately describes page content and shall not claim unsupported product capabilities.
+  6. Semantic discovery projections, including semantic index artifacts, are generated aids and are not external web standards by themselves.
+  
+  ## Acceptance
+  
+  Feature rows covering canonical pages, comparisons, brand normalization, structured data, textual crawlability, and semantic projections must link to this SPEC.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1053"

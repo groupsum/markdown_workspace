@@ -9,23 +9,6 @@ date: 2026-05-03
 status: published
 excerpt: MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
 ---
-## Quick Reference
-
-Use this article to understand Rendering and Preview in the MdWrk Product surface. MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
-
-Key concepts covered here:
-
-- live preview
-- workspace organization
-- theme portability
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
-
-Use this page when you want the current MdWrk rendering contract across preview, navigation, HTML export, and print-oriented output.
 
 ## Live Preview Surface
 
@@ -152,3 +135,21 @@ MdWrk treats rendering as a first-class product surface, not as a best-effort co
 - [Editor Basics](/docs/usage/editor-basics)
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Quick Reference
+
+Use this article to understand Rendering and Preview in the MdWrk Product surface. MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
+
+Key concepts covered here:
+
+- live preview
+- workspace organization
+- theme portability
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Editor Basics](/docs/usage/editor-basics)
+
+Use this page when you want the current MdWrk rendering contract across preview, navigation, HTML export, and print-oriented output.

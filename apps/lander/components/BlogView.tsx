@@ -23,6 +23,7 @@ interface BlogPost {
   authorSlug: string;
   monthSlug: string;
   monthLabel: string;
+  displayDate: string;
   metadata: Record<string, any>;
   content: string;
 }
@@ -70,6 +71,20 @@ const toMonthLabel = (date?: string) => {
   }).format(new Date(year, monthIndex, 1));
 };
 
+const toDisplayDate = (date?: string) => {
+  const match = date?.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return date || '';
+  const year = Number(match[1]);
+  const monthIndex = Number(match[2]) - 1;
+  const day = Number(match[3]);
+  if (!Number.isFinite(year) || !Number.isFinite(monthIndex) || !Number.isFinite(day)) return date || '';
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(year, monthIndex, day));
+};
+
 const getPostSlug = (id: string, metadata: Record<string, any>) => {
   const frontmatterSlug = typeof metadata.slug === 'string' ? metadata.slug.trim() : '';
   if (frontmatterSlug) {
@@ -92,6 +107,7 @@ const getBlogPosts = (): BlogPost[] =>
         authorSlug: slugify(author),
         monthSlug: date.slice(0, 7),
         monthLabel: toMonthLabel(date),
+        displayDate: toDisplayDate(date),
         ...parsed,
       };
     })
@@ -158,7 +174,7 @@ const BlogList: React.FC<{
           {posts.map(post => (
             <article key={post.id} className="lander-content-card blog-card">
               <Link to={`/blog/archive/${post.monthSlug}`} className="blog-card-date">
-                {post.metadata.date}
+                <time dateTime={post.metadata.date}>{post.displayDate}</time>
               </Link>
               <h2 className="blog-card-title">
                 <Link to={`/blog/${post.slug}`} className="blog-card-title-link">
@@ -227,7 +243,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           <div className="blog-post-header">
             <div className="blog-post-meta">
               <Link to={`/blog/archive/${post.monthSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <Calendar className="blog-post-meta-icon" /> {post.metadata.date}
+                <Calendar className="blog-post-meta-icon" /> <time dateTime={post.metadata.date}>{post.displayDate}</time>
               </Link>
               <Link to={`/blog/author/${post.authorSlug}`} className="blog-post-meta-item blog-post-meta-link">
                 <User className="blog-post-meta-icon" /> {post.metadata.author}

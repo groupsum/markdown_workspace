@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
 ---
-## Article Guide
-
-2026-04-26 marks this MdWrk product story: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
-
-MdWrk now gives extension authors a first-class product surface with runtime APIs, compatibility rules, settings adapters, and installation flows that match the live client.
-
-The April 26, 2026 extension milestone is anchored in these commits:
-
-- [Implement continuous extension experiences](https://github.com/groupsum/markdown_workspace/commit/fe9a53bb)
-- [Publish extension continuous experience release](https://github.com/groupsum/markdown_workspace/commit/b10b5332)
-- [Add workspace module packages for files and git ops](https://github.com/groupsum/markdown_workspace/commit/d4efae4c)
 
 ## What extension authors get
 
@@ -89,3 +66,27 @@ MdWrk now expresses that story clearly in product terms and package terms at the
 - [Extension platform docs](/docs/extensions/extension-platform)
 - [Authoring overview](/docs/authoring/overview)
 - [April 26 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-26T00:00:00Z&until=2026-04-27T00:00:00Z)
+
+## Article Guide
+
+2026-04-26 marks this MdWrk product story: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
+MdWrk now gives extension authors a first-class product surface with runtime APIs, compatibility rules, settings adapters, and installation flows that match the live client.
+
+The April 26, 2026 extension milestone is anchored in these commits:
+
+- [Implement continuous extension experiences](https://github.com/groupsum/markdown_workspace/commit/fe9a53bb)
+- [Publish extension continuous experience release](https://github.com/groupsum/markdown_workspace/commit/b10b5332)
+- [Add workspace module packages for files and git ops](https://github.com/groupsum/markdown_workspace/commit/d4efae4c)

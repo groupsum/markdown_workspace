@@ -2,8 +2,8 @@ const siteUrl = (import.meta.env.VITE_SITE_URL?.trim() || 'https://mdwrk.com').r
 const defaultTitle = 'MdWrk';
 const defaultDescription =
   'MdWrk is a privacy-first, offline-capable Markdown workspace for writing, previewing, and managing Markdown on your device.';
-const defaultImage = `${siteUrl}/og-image.png`;
-const defaultImageAlt = 'MdWrk Markdown workspace preview image';
+const defaultImage = `${siteUrl}/favicon.svg`;
+const defaultImageAlt = 'MdWrk favicon logo';
 const markdownImagePattern = /!\[([^\]]*)]\(([^)\s]+)(?:\s+"[^"]*")?\)/;
 const htmlImagePattern = /<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i;
 

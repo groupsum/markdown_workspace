@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
 ---
-## Article Guide
-
-2026-04-30 marks this MdWrk product story: The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
-
-April 30, 2026 sharpens the MdWrk site for the client, the reusable packages, and the extension platform.
-
-This refresh lines up with:
-
-- [Refine lander docs metadata and blog ordering](https://github.com/groupsum/markdown_workspace/commit/56bf195f)
-- [Shorten menu labels and refresh lander branding](https://github.com/groupsum/markdown_workspace/commit/469ea94a)
-- [Refine lander markdown contrast and theme defaults](https://github.com/groupsum/markdown_workspace/commit/d612d2c6)
 
 ## What readers get from the new docs surface
 
@@ -67,3 +44,27 @@ The site now gives readers:
 4. Read the [April 30 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-30T00:00:00Z&until=2026-05-01T00:00:00Z) for the concrete docs and brand refinements.
 
 MdWrk now gives readers a faster path from the landing page to installation, package usage, and extension workflows.
+
+## Article Guide
+
+2026-04-30 marks this MdWrk product story: The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
+April 30, 2026 sharpens the MdWrk site for the client, the reusable packages, and the extension platform.
+
+This refresh lines up with:
+
+- [Refine lander docs metadata and blog ordering](https://github.com/groupsum/markdown_workspace/commit/56bf195f)
+- [Shorten menu labels and refresh lander branding](https://github.com/groupsum/markdown_workspace/commit/469ea94a)
+- [Refine lander markdown contrast and theme defaults](https://github.com/groupsum/markdown_workspace/commit/d612d2c6)

@@ -8,26 +8,6 @@ toc: true
 date: 2026-05-02
 status: published
 ---
-## Quick Reference
-
-Use this article to understand Client Installation in the MdWrk Getting Started surface. Client Installation explains how this MdWrk surface works in the current client and package system.
-
-Key concepts covered here:
-
-- local Markdown files
-- workspace organization
-- extension host contracts
-- developer package reuse
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
-- [Extension Platform](/docs/extensions/extension-platform)
-
-`mdwrk` is the client and package surface. The lander is only the documentation and release site.
-
-Choose the workflow that matches how you want to consume the workspace or packages.
 
 ## Installation Paths
 
@@ -69,3 +49,24 @@ https://www.npmjs.com/org/mdwrk
 
 Bundled extensions ship with the client build. External installable extensions follow the signed-manifest and trust-policy path documented in the extension docs.
 Published dates and statuses control whether installation docs appear on the lander at all, so draft installation notes can stay private until they are ready.
+
+## Quick Reference
+
+Use this article to understand Client Installation in the MdWrk Getting Started surface. Client Installation explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- local Markdown files
+- workspace organization
+- extension host contracts
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Editor Basics](/docs/usage/editor-basics)
+- [Extension Platform](/docs/extensions/extension-platform)
+
+`mdwrk` is the client and package surface. The lander is only the documentation and release site.
+
+Choose the workflow that matches how you want to consume the workspace or packages.

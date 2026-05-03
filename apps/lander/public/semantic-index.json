@@ -1,6 +1,6 @@
 {
   "site": "MdWrk",
-  "generatedAt": "2026-05-03T22:19:44.694Z",
+  "generatedAt": "2026-05-03T23:09:28.178Z",
   "description": "Plain semantic index for MdWrk docs and blog pages.",
   "entries": [
     {
@@ -33,13 +33,13 @@
       "date": "2026-03-23",
       "description": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
       "headings": [
-        "Article Guide",
         "Why this matters",
         "What you can install today",
         "React example",
         "Screenshot",
         "Repository history that shapes the package surface",
-        "Who should use this package family"
+        "Who should use this package family",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -73,11 +73,11 @@
       "date": "2026-04-14",
       "description": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
       "headings": [
-        "Article Guide",
         "Why this matters",
         "Commands that support the release path",
         "Screenshot",
-        "Repo history links"
+        "Repo history links",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -111,12 +111,12 @@
       "date": "2026-04-30",
       "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "headings": [
-        "Article Guide",
         "What readers get from the new docs surface",
         "Docs that carry the current state",
         "Screenshot",
         "What this update improves",
-        "Use this route in MdWrk"
+        "Use this route in MdWrk",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -150,11 +150,11 @@
       "date": "2026-04-01",
       "description": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
       "headings": [
-        "Article Guide",
         "Why this matters for extension teams",
         "Example compatibility-focused workflow",
         "Screenshot",
-        "What to read next"
+        "What to read next",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -188,14 +188,14 @@
       "date": "2026-04-26",
       "description": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
       "headings": [
-        "Article Guide",
         "What extension authors get",
         "Installation and authoring references",
         "Package-first install example",
         "Manifest example",
         "Screenshot",
         "Why this rollout matters",
-        "Follow the repo history"
+        "Follow the repo history",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -229,12 +229,12 @@
       "date": "2026-03-31",
       "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "headings": [
-        "Article Guide",
         "What this adds",
         "Commands that express the release story",
         "Docs to read next",
         "Screenshot",
-        "Why this post matters"
+        "Why this post matters",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -268,12 +268,12 @@
       "date": "2026-01-20",
       "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "headings": [
-        "Article Guide",
         "What launches",
         "How to try MdWrk today",
         "Screenshot",
         "Example workflow",
-        "Why the launch resonates"
+        "Why the launch resonates",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -307,12 +307,12 @@
       "date": "2026-01-22",
       "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "headings": [
-        "Article Guide",
         "What users gain",
         "Install path",
         "Screenshot",
         "Example deployment-oriented workflow",
-        "Repo history for deeper review"
+        "Repo history for deeper review",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -346,11 +346,11 @@
       "date": "2026-01-21",
       "description": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
       "headings": [
-        "Article Guide",
         "What changes for users",
         "Usage example",
         "Screenshot",
-        "Why this day matters in the product story"
+        "Why this day matters in the product story",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -384,12 +384,12 @@
       "date": "2026-04-12",
       "description": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
       "headings": [
-        "Article Guide",
         "What this means for teams",
         "Usage references",
         "Build example",
         "Screenshot",
-        "Why this milestone matters"
+        "Why this milestone matters",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -423,11 +423,11 @@
       "date": "2026-04-03",
       "description": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
       "headings": [
-        "Article Guide",
         "What this adds",
         "Command example",
         "Screenshot",
-        "Why this matters"
+        "Why this matters",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -461,11 +461,11 @@
       "date": "2026-05-01",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "headings": [
-        "Article Guide",
         "What improves",
         "Screenshot",
         "Current docs for configuration and setup",
-        "Example setup flow"
+        "Example setup flow",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -499,11 +499,11 @@
       "date": "2026-04-22",
       "description": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
       "headings": [
-        "Article Guide",
         "What teams can do with this expansion",
         "Install example",
         "Screenshot",
-        "Where to go next"
+        "Where to go next",
+        "Article Guide"
       ],
       "keywords": [
         "MdWrk",
@@ -536,9 +536,9 @@
       "section": "Archive",
       "description": "Client update: 1.3.28 This release improves editing ergonomics and cleans up key UI surfaces: - Improved view-toolbar formatting grouping with a dedicated strikethrough convenience control. - Nested markdown list marker...",
       "headings": [
-        "Quick Reference",
         "Client update: `mdwrk/mdwrkspace` 1.3.28",
-        "Notes"
+        "Notes",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -567,9 +567,9 @@
       "section": "Archive",
       "description": "Client update: 1.3.29 This release focuses on visual clarity, modal usability, and responsive behavior improvements: - Added a dedicated strikethrough convenience button in the view toolbar controls. - Fixed nested list...",
       "headings": [
-        "Quick Reference",
         "Client update: `mdwrk/mdwrkspace` 1.3.29",
-        "Notes"
+        "Notes",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -598,13 +598,13 @@
       "section": "Authoring",
       "description": "What an extension author owns The extension authoring surface in this repository is split across: - for manifest shape and metadata - for host-safe APIs - for activation and lifecycle expectations - package-local source,...",
       "headings": [
-        "Quick Reference",
         "What an extension author owns",
         "Typical workflow",
         "Required package shape",
         "Runtime and distribution rules",
         "Reference package",
-        "Related documents"
+        "Related documents",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -633,12 +633,12 @@
       "section": "Authoring",
       "description": "Primary surface Language pack authoring in this repository centers on the first-party studio package: That surface is responsible for browsing, editing, importing, exporting, and activating language packs. Authoring expe...",
       "headings": [
-        "Quick Reference",
         "Primary surface",
         "Authoring expectations",
         "What the studio proves",
         "Artifact model",
-        "Reference surfaces"
+        "Reference surfaces",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -667,10 +667,10 @@
       "section": "Authoring",
       "description": "Authoring domains The current public authoring domains documented on the lander are: - Extension authoring - Theme pack authoring - Language pack authoring Scope These docs are for package authors, extension maintainers,...",
       "headings": [
-        "Quick Reference",
         "Authoring domains",
         "Scope",
-        "Ground rules"
+        "Ground rules",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -699,12 +699,12 @@
       "section": "Authoring",
       "description": "Primary surface Theme authoring in this repository centers on: - for the formal token and bridge surface - for first-party theme authoring UX - the shared editor and renderer package families that consume those tokens Wh...",
       "headings": [
-        "Quick Reference",
         "Primary surface",
         "What Theme Studio proves",
         "Authoring rules",
         "Package and artifact expectations",
-        "Reference surfaces"
+        "Reference surfaces",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -733,10 +733,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -765,10 +765,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -797,10 +797,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -829,10 +829,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -861,10 +861,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -893,10 +893,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.",
       "headings": [
-        "Quick Reference",
         "MdWrk Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -925,10 +925,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -957,10 +957,10 @@
       "section": "Comparisons",
       "description": "Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.",
       "headings": [
-        "Quick Reference",
         "Best Fit",
         "Product Difference",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -989,11 +989,11 @@
       "section": "Extensions",
       "description": "Runtime shape The extension stack is split into governed surfaces: - for declarative metadata - for host-safe APIs - for activation, registration, and lifecycle - for installed and bundled extension UX Host responsibilit...",
       "headings": [
-        "Quick Reference",
         "Runtime shape",
         "Host responsibilities",
         "Bundled first-party extensions",
-        "External installables"
+        "External installables",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1022,10 +1022,10 @@
       "section": "Extensions",
       "description": "Theme Studio Theme Studio is the first-party extension surface for: - inspecting formal theme tokens - previewing token changes against editor and preview bridges - applying and reverting draft theme changes - exporting...",
       "headings": [
-        "Quick Reference",
         "Theme Studio",
         "Shared contract",
-        "Why this matters"
+        "Why this matters",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1054,12 +1054,12 @@
       "section": "Getting Started",
       "description": "What it is The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have already been cached...",
       "headings": [
-        "Quick Reference",
         "What it is",
         "How to start",
         "Best fit",
         "Storage model",
-        "When to choose another path"
+        "When to choose another path",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1088,13 +1088,13 @@
       "section": "Getting Started",
       "description": "Theme Selection Open Settings -> Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs. Workspace Defaults - Autosave: Enabled...",
       "headings": [
-        "Quick Reference",
         "Theme Selection",
         "Workspace Defaults",
         "Lander Environment Variables",
         "Reverse Proxy",
         "Package-Level Configuration",
-        "Metadata and Discovery"
+        "Metadata and Discovery",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1123,11 +1123,11 @@
       "section": "Getting Started",
       "description": "Installation Paths - Use in a browser when you want the fastest way to start writing without installing anything. - Install as a PWA when you want an app-like shell with browser-managed updates. - Run locally from the re...",
       "headings": [
-        "Quick Reference",
         "Installation Paths",
         "Quick Choice Guide",
         "Workspace Client Package",
-        "Notes"
+        "Notes",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1156,13 +1156,13 @@
       "section": "Getting Started",
       "description": "What it covers This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide. Workspace prerequisites - Node.js - npm - a local checkout of the re...",
       "headings": [
-        "Quick Reference",
         "What it covers",
         "Workspace prerequisites",
         "Basic local workflow",
         "Common local commands",
         "Self-hosting notes",
-        "When to choose another path"
+        "When to choose another path",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1191,13 +1191,13 @@
       "section": "Getting Started",
       "description": "What it is The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window. Typical install flow 1. Open the MdWrk site in a PWA-capable browser....",
       "headings": [
-        "Quick Reference",
         "What it is",
         "Typical install flow",
         "Best fit",
         "Update behavior",
         "Storage and backup",
-        "When to choose another path"
+        "When to choose another path",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1226,13 +1226,13 @@
       "section": "Getting Started",
       "description": "Primary packages The main package surfaces are: - for the full reusable workspace client - for the editor surface - for the React renderer surface - for core parsing and rendering utilities Full client package Install th...",
       "headings": [
-        "Quick Reference",
         "Primary packages",
         "Full client package",
         "Split editor and renderer packages",
         "ESM CDN example",
         "Package selection guidance",
-        "Related guidance"
+        "Related guidance",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1261,11 +1261,11 @@
       "section": "Integrations",
       "description": "Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository. Pull and Push Typical sync flow:...",
       "headings": [
-        "Quick Reference",
         "Repository Access",
         "Pull and Push",
         "Privacy Boundary",
-        "Operational Notes"
+        "Operational Notes",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1294,11 +1294,11 @@
       "section": "Product",
       "description": "MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.",
       "headings": [
-        "Quick Reference",
         "Developer Entry Points",
         "Package Families",
         "Implementation Workflow",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1327,11 +1327,11 @@
       "section": "Product",
       "description": "MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.",
       "headings": [
-        "Quick Reference",
         "Host Contract",
         "Runtime Controls",
         "First-Party Extensions",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1360,11 +1360,11 @@
       "section": "Product",
       "description": "MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.",
       "headings": [
-        "Quick Reference",
         "Workspace Shape",
         "Project Operations",
         "Extension Surface",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1393,11 +1393,11 @@
       "section": "Product",
       "description": "MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.",
       "headings": [
-        "Quick Reference",
         "File Operations",
         "Preview Navigation",
         "Desktop-Backed Workflows",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1426,11 +1426,11 @@
       "section": "Product",
       "description": "MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.",
       "headings": [
-        "Quick Reference",
         "Editor And Preview Modes",
         "Rendering Contract",
         "Output Paths",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1459,11 +1459,11 @@
       "section": "Product",
       "description": "MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.",
       "headings": [
-        "Quick Reference",
         "Offline Editing Model",
         "Writing Workflow",
         "Local Storage Boundary",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1492,11 +1492,11 @@
       "section": "Product",
       "description": "MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.",
       "headings": [
-        "Quick Reference",
         "Privacy Boundary",
         "Explicit Sharing",
         "Extension Trust",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1525,11 +1525,11 @@
       "section": "Product",
       "description": "MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.",
       "headings": [
-        "Quick Reference",
         "Theme Contract",
         "Theme Studio",
         "Viewport Contract",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1558,7 +1558,6 @@
       "section": "Product",
       "description": "MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.",
       "headings": [
-        "Quick Reference",
         "Baseline Conformance",
         "What the Renderer Guarantees",
         "Optional Markdown Profiles",
@@ -1569,7 +1568,8 @@
         "Toolbar Actions",
         "Keyboard and Editing Behavior",
         "Table Builder",
-        "Structured Inserts"
+        "Structured Inserts",
+        "Practical Portability Guidance"
       ],
       "keywords": [
         "MdWrk",
@@ -1598,7 +1598,6 @@
       "section": "Product",
       "description": "MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.",
       "headings": [
-        "Quick Reference",
         "What the Editor Is For",
         "Core Writing Views",
         "Source Editing Features",
@@ -1608,7 +1607,8 @@
         "Workspace Model",
         "Theme and Layout Behavior",
         "Why This Matters",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",
@@ -1637,7 +1637,6 @@
       "section": "Product",
       "description": "MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.",
       "headings": [
-        "Quick Reference",
         "Live Preview Surface",
         "Shared Renderer Contract",
         "Internal Markdown Navigation",
@@ -1648,7 +1647,8 @@
         "Print and PDF-Oriented Output",
         "Theme-Aware Rendering",
         "Why This Matters",
-        "Related Docs"
+        "Related Docs",
+        "Quick Reference"
       ],
       "keywords": [
         "MdWrk",

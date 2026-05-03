@@ -7,20 +7,6 @@ order: 26
 date: 2026-05-02
 status: published
 ---
-## Quick Reference
-
-Use this article to understand UI Refresh 1.3.29 in the MdWrk Archive surface. UI Refresh 1.3.29 explains how this MdWrk surface works in the current client and package system.
-
-Key concepts covered here:
-
-- theme portability
-- developer package reuse
-
-Useful follow-up pages:
-
-- [Theme Packs](/docs/product/theme-packs)
-- [Client Installation](/docs/getting-started/installation)
-- [Editor Basics](/docs/usage/editor-basics)
 
 ## Client update: `mdwrk/mdwrkspace` 1.3.29
 
@@ -38,3 +24,18 @@ This release focuses on visual clarity, modal usability, and responsive behavior
 ## Notes
 
 Viewport and aspect-ratio breakpoints remain centralized in `apps/client/styles/base/viewports.css`.
+
+## Quick Reference
+
+Use this article to understand UI Refresh 1.3.29 in the MdWrk Archive surface. UI Refresh 1.3.29 explains how this MdWrk surface works in the current client and package system.
+
+Key concepts covered here:
+
+- theme portability
+- developer package reuse
+
+Useful follow-up pages:
+
+- [Theme Packs](/docs/product/theme-packs)
+- [Client Installation](/docs/getting-started/installation)
+- [Editor Basics](/docs/usage/editor-basics)

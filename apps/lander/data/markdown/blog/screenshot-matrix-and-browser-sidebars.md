@@ -5,29 +5,6 @@ status: published
 author: CobyCloud
 excerpt: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 ---
-## Article Guide
-
-2026-04-03 marks this MdWrk product story: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
-
-This article is useful for readers tracking:
-
-- how MdWrk changes affect daily Markdown writing
-- which client, package, or extension surface the change touches
-- where to continue in the product documentation after reading
-
-Useful follow-up pages:
-
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
-
-April 3, 2026 expands the visual verification surface for theme work, UI review, and cross-screen consistency.
-
-This moment is visible in:
-
-- [Add browser sidebars and screenshot matrix script](https://github.com/groupsum/markdown_workspace/commit/be6a8b6c)
-- [Embed studio browsers in the shared workspace sidebar](https://github.com/groupsum/markdown_workspace/commit/c90bc0e9)
-- [Refactor studio panes and persist language packs in IndexedDB](https://github.com/groupsum/markdown_workspace/commit/613cc751)
 
 ## What this adds
 
@@ -54,3 +31,27 @@ Visual proof helps readers answer:
 - How does theme work move through the client?
 
 MdWrk now supports those answers with concrete visual artifacts and a repeatable capture rail.
+
+## Article Guide
+
+2026-04-03 marks this MdWrk product story: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
+
+This article is useful for readers tracking:
+
+- how MdWrk changes affect daily Markdown writing
+- which client, package, or extension surface the change touches
+- where to continue in the product documentation after reading
+
+Useful follow-up pages:
+
+- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Extension Platform](/docs/extensions/extension-platform)
+- [Theme Packs](/docs/product/theme-packs)
+
+April 3, 2026 expands the visual verification surface for theme work, UI review, and cross-screen consistency.
+
+This moment is visible in:
+
+- [Add browser sidebars and screenshot matrix script](https://github.com/groupsum/markdown_workspace/commit/be6a8b6c)
+- [Embed studio browsers in the shared workspace sidebar](https://github.com/groupsum/markdown_workspace/commit/c90bc0e9)
+- [Refactor studio panes and persist language packs in IndexedDB](https://github.com/groupsum/markdown_workspace/commit/613cc751)
