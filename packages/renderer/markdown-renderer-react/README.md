@@ -1,6 +1,6 @@
 # @mdwrk/markdown-renderer-react
 
-React bindings for the portable MdWork renderer core.
+React bindings for the portable MdWrk renderer core.
 
 ## Public responsibilities
 

@@ -13,7 +13,7 @@
     "README.md"
   ],
   "name": "@mdwrk/testing",
-  "description": "Shared browser and React test helpers for MdWork packages.",
+  "description": "Shared browser and React test helpers for MdWrk packages.",
   "sideEffects": [
     "./dist/vitest-setup.js"
   ],

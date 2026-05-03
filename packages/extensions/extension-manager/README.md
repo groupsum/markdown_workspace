@@ -1,6 +1,6 @@
 # @mdwrk/extension-manager
 
-First-party bundled operator console extension for MdWork.
+First-party bundled operator console extension for MdWrk.
 
 ## Manifest and compatibility
 

@@ -19,7 +19,7 @@
     "typescript"
   ],
   "name": "@mdwrk/theme-contract",
-  "description": "Portable token and class-name contract for MdWork themes, renderers, editors, and extensions.",
+  "description": "Portable token and class-name contract for MdWrk themes, renderers, editors, and extensions.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",

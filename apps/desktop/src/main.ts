@@ -317,7 +317,7 @@ async function createWindow(): Promise<void> {
     minHeight: 760,
     autoHideMenuBar: false,
     backgroundColor: '#0e1318',
-    title: 'MdWork Desktop',
+    title: 'MdWrk Desktop',
     webPreferences: {
       preload: preloadPath,
       contextIsolation: true,

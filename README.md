@@ -1,6 +1,6 @@
 <div align="center">
 
-# MdWork
+# MdWrk
 
 [![CI](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/ci.yml?branch=master&label=CI)](./.github/workflows/ci.yml)
 [![Conformance](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/conformance.yml?branch=master&label=Conformance)](./.github/workflows/conformance.yml)
@@ -11,7 +11,7 @@
 
 </div>
 
-MdWork is a multi-package workspace for the client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
+MdWrk is a multi-package workspace for the client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
 
 Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
 

@@ -2,7 +2,7 @@
   "name": "@mdwrk/desktop",
   "private": true,
   "version": "0.2.36",
-  "description": "Native shell wrapper for the MdWork client on Electron desktop and Capacitor Android.",
+  "description": "Native shell wrapper for the MdWrk client on Electron desktop and Capacitor Android.",
   "type": "module",
   "main": "./dist/main.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "build": {
     "appId": "com.mdwrk.desktop",
-    "productName": "MdWork Desktop",
+    "productName": "MdWrk Desktop",
     "icon": "build/icon",
     "directories": {
       "buildResources": "build",
@@ -55,13 +55,13 @@
       {
         "ext": "md",
         "name": "Markdown Document",
-        "description": "Open Markdown files in MdWork Desktop",
+        "description": "Open Markdown files in MdWrk Desktop",
         "role": "Editor"
       },
       {
         "ext": "markdown",
         "name": "Markdown Document",
-        "description": "Open Markdown files in MdWork Desktop",
+        "description": "Open Markdown files in MdWrk Desktop",
         "role": "Editor"
       }
     ],

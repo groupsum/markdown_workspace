@@ -1,4 +1,4 @@
-/* MdWork canonical viewport contract.
+/* MdWrk canonical viewport contract.
    Aspect, width, height, and device bands are defined once here.
    Themes may style by band, but they must not redefine the ids or cutoffs. */
 

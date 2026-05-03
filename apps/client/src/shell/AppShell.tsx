@@ -41,7 +41,7 @@ export const AppShell: React.FC = () => {
   const pwaAction = pwaState.canInstall
     ? {
         label: t('core.header.pwa.install.label', 'Install PWA'),
-        title: t('core.header.pwa.install.title', 'Install MdWork'),
+        title: t('core.header.pwa.install.title', 'Install MdWrk'),
         icon: <Download size={16} />,
         onClick: pwaActions.promptInstall,
         disabled: false,

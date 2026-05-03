@@ -1,6 +1,6 @@
 # @mdwrk/markdown-editor-core
 
-Portable source-mode Markdown editor primitives for MdWork.
+Portable source-mode Markdown editor primitives for MdWrk.
 
 ## Public responsibilities
 

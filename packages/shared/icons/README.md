@@ -1,6 +1,6 @@
 # mdwrk/icons
 
-Shared icon identifiers and icon metadata for MdWork applications and packages.
+Shared icon identifiers and icon metadata for MdWrk applications and packages.
 
 This package does not force a rendering library. Instead it provides a stable icon identifier and metadata catalog so applications and reusable packages can render icons with Lucide, SVG assets, or another adapter while keeping semantic IDs stable.
 

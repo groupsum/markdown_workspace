@@ -1,6 +1,6 @@
 # @mdwrk/extension-runtime
 
-Portable extension runtime for MdWork hosts.
+Portable extension runtime for MdWrk hosts.
 
 ## Runtime responsibilities
 

@@ -1,6 +1,6 @@
 # mdwrk/testing
 
-Shared browser and timing test helpers for MdWork packages.
+Shared browser and timing test helpers for MdWrk packages.
 
 ## Exports
 

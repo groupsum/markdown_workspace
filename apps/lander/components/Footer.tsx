@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               <span className="footer-brand-text">MdWrk</span>
             </Link>
             <p className="footer-copy">
-               The local-first markdown workspace. Your data, your device, your rules.
+               The local-first Markdown workspace. Your data, your device, your rules.
             </p>
           </div>
           <div className="footer-nav-grid">

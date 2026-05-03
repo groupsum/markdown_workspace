@@ -3,7 +3,14 @@ import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
 import { usePageMetadata } from '../hooks/usePageMetadata';
-import { extractExcerpt, extractFirstImage, removeFirstImage } from '../utils/pageMetadata';
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildTechArticleSchema,
+  extractExcerpt,
+  extractFirstImage,
+  removeFirstImage
+} from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
@@ -30,6 +37,58 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
   if (normalizeTitle(headingText) !== normalizeTitle(title)) return content;
 
   return content.slice(headingMatch[0].length).trim();
+};
+
+const packagePattern = /`(@mdwrk\/[^`]+)`/g;
+
+const collectRelatedApis = (content: string, metadata: Record<string, string>) => {
+  const explicit = metadata.relatedApis
+    ?.split(',')
+    .map(item => item.trim())
+    .filter(Boolean);
+  if (explicit?.length) return explicit;
+
+  const discovered = Array.from(content.matchAll(packagePattern)).map(match => match[1]);
+  return Array.from(new Set(discovered)).slice(0, 5);
+};
+
+const buildAnswerBlock = ({
+  title,
+  section,
+  content,
+  excerpt,
+  metadata,
+}: {
+  title: string;
+  section: string;
+  content: string;
+  excerpt: string;
+  metadata: Record<string, string>;
+}) => {
+  const relatedApis = collectRelatedApis(content, metadata);
+  const relatedApiText = relatedApis.length ? relatedApis.map(api => `- \`${api}\``).join('\n') : '- MdWrk client workspace\n- MdWrk Markdown editor and renderer packages';
+  const primaryExample = relatedApis[0] || '@mdwrk/mdwrkspace';
+
+  return [
+    `## What This Does`,
+    excerpt,
+    ``,
+    `## When To Use It`,
+    `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${section.toLowerCase()} surface.`,
+    ``,
+    `## How It Works`,
+    `MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.`,
+    ``,
+    `## Example`,
+    `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.`,
+    ``,
+    `## Common Errors`,
+    `Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.`,
+    ``,
+    `## Related APIs`,
+    relatedApiText,
+    ``,
+  ].join('\n');
 };
 
 export const DocsView: React.FC = () => {
@@ -78,18 +137,49 @@ export const DocsView: React.FC = () => {
   const activeSlug = slugParam || docs[0]?.slug;
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
   const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
-  const headings = extractHeadings(renderedContent);
-  const featuredImage = extractFirstImage(renderedContent);
-  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
   const excerpt = extractExcerpt(renderedContent, currentDoc?.metadata.excerpt);
+  const answerBlock = currentDoc
+    ? buildAnswerBlock({
+        title: currentDoc.title,
+        section: currentDoc.section,
+        content: renderedContent,
+        excerpt,
+        metadata: currentDoc.metadata,
+      })
+    : '';
+  const answerWrappedContent = currentDoc ? `${answerBlock}\n${renderedContent}` : renderedContent;
+  const headings = extractHeadings(answerWrappedContent);
+  const featuredImage = extractFirstImage(answerWrappedContent);
+  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(answerWrappedContent) : answerWrappedContent;
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
+  const currentPath = currentDoc ? `/docs/${currentDoc.slug}` : '/docs/';
 
   usePageMetadata({
     title: currentDoc?.title || 'MdWrk Docs',
     description: excerpt,
     image: featuredImage?.src,
     imageAlt: featuredImage?.alt || currentDoc?.title,
-    path: currentDoc ? `/docs/${currentDoc.slug}` : '/docs/',
+    path: currentPath,
+    structuredData: currentDoc
+      ? [
+          buildTechArticleSchema({
+            title: currentDoc.title,
+            description: excerpt,
+            path: currentPath,
+            datePublished: currentDoc.metadata.date,
+          }),
+          buildBreadcrumbSchema([
+            { name: 'MdWrk', path: '/' },
+            { name: 'Documentation', path: '/docs/' },
+            { name: currentDoc.section, path: currentPath },
+            { name: currentDoc.title, path: currentPath },
+          ]),
+          buildFaqSchema([
+            { question: `What does ${currentDoc.title} do?`, answer: excerpt },
+            { question: `When should I use ${currentDoc.title}?`, answer: `Use it when you need ${currentDoc.title.toLowerCase()} guidance for MdWrk.` },
+          ]),
+        ]
+      : null,
   });
 
   const renderNav = (items: DocItem[], level = 0) => {

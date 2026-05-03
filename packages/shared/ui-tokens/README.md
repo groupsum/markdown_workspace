@@ -1,6 +1,6 @@
 # mdwrk/ui-tokens
 
-Shared CSS tokens, root variables, markdown/editor class names, and theme mapping helpers for MdWork applications and packages.
+Shared CSS tokens, root variables, markdown/editor class names, and theme mapping helpers for MdWrk applications and packages.
 
 ## What this package contains
 

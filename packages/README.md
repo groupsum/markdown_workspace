@@ -1,6 +1,6 @@
 # packages/
 
-This directory contains the reusable MdWork workspace packages.
+This directory contains the reusable MdWrk workspace packages.
 
 ## Package Families
 

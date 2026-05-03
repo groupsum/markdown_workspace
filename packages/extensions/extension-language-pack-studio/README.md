@@ -1,6 +1,6 @@
 # @mdwrk/extension-language-pack-studio
 
-Bundled language-pack studio extension for MdWork.
+Bundled language-pack studio extension for MdWrk.
 
 ## Capabilities
 

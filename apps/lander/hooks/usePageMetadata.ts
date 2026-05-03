@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { buildPageMetadata } from '../utils/pageMetadata';
+import { buildPageMetadata, normalizeStructuredData } from '../utils/pageMetadata';
 
 type MetadataInput = Parameters<typeof buildPageMetadata>[0];
 
@@ -28,6 +28,26 @@ const setLinkHref = (selector: string, attrs: Record<string, string>, href: stri
   element.setAttribute('href', href);
 };
 
+const setStructuredData = (structuredData: MetadataInput['structuredData']) => {
+  const id = 'mdwrk-structured-data';
+  const normalized = normalizeStructuredData(structuredData);
+  let element = document.getElementById(id) as HTMLScriptElement | null;
+
+  if (!normalized) {
+    element?.remove();
+    return;
+  }
+
+  if (!element) {
+    element = document.createElement('script');
+    element.id = id;
+    element.type = 'application/ld+json';
+    document.head.appendChild(element);
+  }
+
+  element.textContent = JSON.stringify(normalized);
+};
+
 export const usePageMetadata = (input: MetadataInput) => {
   useEffect(() => {
     const metadata = buildPageMetadata(input);
@@ -44,5 +64,6 @@ export const usePageMetadata = (input: MetadataInput) => {
     setMetaContent('meta[name="twitter:image"]', { name: 'twitter:image' }, metadata.image);
     setMetaContent('meta[name="twitter:image:alt"]', { name: 'twitter:image:alt' }, metadata.imageAlt);
     setLinkHref('link[rel="canonical"]', { rel: 'canonical' }, metadata.url);
-  }, [input.description, input.image, input.imageAlt, input.path, input.title]);
+    setStructuredData(input.structuredData);
+  }, [input.description, input.image, input.imageAlt, input.path, input.structuredData, input.title]);
 };

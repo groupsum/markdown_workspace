@@ -9,7 +9,7 @@ import { DocsView } from './components/DocsView';
 import { BlogView } from './components/BlogView';
 import { LegalView } from './components/LegalView';
 import { usePageMetadata } from './hooks/usePageMetadata';
-import { pageMetadataDefaults } from './utils/pageMetadata';
+import { buildSoftwareApplicationSchema, pageMetadataDefaults } from './utils/pageMetadata';
 import { LANDER_THEMES, type LanderThemeId, getPreferredLanderThemeId } from './theme';
 
 const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => {
@@ -19,6 +19,7 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => {
     image: pageMetadataDefaults.image,
     imageAlt: pageMetadataDefaults.imageAlt,
     path: '/',
+    structuredData: buildSoftwareApplicationSchema(),
   });
 
   return (
@@ -30,7 +31,7 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => {
         <div className="privacy-container">
            <h2 className="privacy-heading">Your Data Stays on <span className="privacy-heading-accent">Your Device</span></h2>
            <p className="privacy-copy">
-              MdWork utilizes IndexedDB to store your workspaces directly in your browser.
+              MdWrk uses IndexedDB to store your workspaces directly in your browser.
               No AI servers scan your content, no trackers follow your keys.
            </p>
            <div className="privacy-badge">

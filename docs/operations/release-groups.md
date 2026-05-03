@@ -30,7 +30,7 @@ Phase 1 freezes **owner lanes** that can later map to specific people or teams.
 | Markdown Authoring | editor packages and authoring behavior surfaces |
 | Shared Primitives | i18n, tokens, icons, and testing primitives |
 | Extension Platform | runtime and first-party/sample extension packages |
-| Client Workspace | the main MdWork client app package |
+| Client Workspace | the main MdWrk client app package |
 | Documentation Site | the lander app and document-site presentation layer |
 | Developer Experience | examples and package demonstration surfaces |
 

@@ -1,6 +1,6 @@
 # @mdwrk/markdown-editor-react
 
-React bindings for the portable MdWork source editor.
+React bindings for the portable MdWrk source editor.
 
 ## Public responsibilities
 

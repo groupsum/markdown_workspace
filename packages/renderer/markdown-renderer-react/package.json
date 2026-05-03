@@ -23,7 +23,7 @@
     "markdown",
     "react"
   ],
-  "description": "React bindings for the MdWork self-contained markdown renderer checkpoint.",
+  "description": "React bindings for the MdWrk self-contained markdown renderer checkpoint.",
   "dependencies": {
     "@mdwrk/markdown-renderer-core": "^1.1.1",
     "@mdwrk/ui-tokens": "^1.2.1"

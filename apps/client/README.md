@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/badge/website-mdwrk.com-0f766e)](https://mdwrk.com)
 
-`@mdwrk/mdwrkspace` is the MdWork client application package. It ships the offline-first Markdown workspace, the runtime-backed shell surfaces, the extension host adapters, the retained-version PWA client, and the shared responsive layout contract used by every client theme.
+`@mdwrk/mdwrkspace` is the MdWrk client application package. It ships the offline-first Markdown workspace, the runtime-backed shell surfaces, the extension host adapters, the retained-version PWA client, and the shared responsive layout contract used by every client theme.
 
 ## Shell layout
 

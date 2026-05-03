@@ -14,7 +14,7 @@
     "README.md"
   ],
   "name": "@mdwrk/ui-tokens",
-  "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for MdWork packages and applications.",
+  "description": "Shared CSS tokens, markdown class names, and theme mapping helpers for MdWrk packages and applications.",
   "sideEffects": [
     "./src/styles/*.css"
   ],

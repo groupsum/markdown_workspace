@@ -46,10 +46,10 @@ Load the published client directly from an ESM CDN:
 ```html
 <div id="mdwrkspace-root"></div>
 <script type="module">
-  import { mountMdWork } from "https://esm.sh/@mdwrk/mdwrkspace";
+  import { mountMdWrkSpace } from "https://esm.sh/@mdwrk/mdwrkspace";
 
   const root = document.getElementById("mdwrkspace-root");
-  mountMdWork(root);
+  mountMdWrkSpace(root);
 </script>
 ```
 
