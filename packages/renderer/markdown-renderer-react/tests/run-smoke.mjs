@@ -11,6 +11,7 @@ import {
 
 const themeStyle = createMarkdownRendererThemeStyle({ foreground: "#fff", accent: "#09f" });
 const elementHtml = renderToStaticMarkup(React.createElement(MarkdownRenderer, { markdown: "# Hello\n\n[Doc](README.md)" }));
+const syntaxHtml = renderToStaticMarkup(React.createElement(MarkdownRenderer, { markdown: "```ts\nconst value = 1;\n```" }));
 const html = renderMarkdownToStaticHtml({ markdown: "# Hello\n\n[Doc](README.md)" });
 const documentHtml = renderMarkdownToStaticHtmlDocument({
   markdown: "# Export",
@@ -43,6 +44,15 @@ const checks = [
       assert.match(html, /markdown-body/);
       assert.match(html, /Hello/);
       assert.match(html, /README.md/);
+    },
+  },
+  {
+    id: "component-syntax-token-render",
+    description: "MarkdownRenderer preserves syntax token markup from renderer core",
+    test() {
+      assert.match(syntaxHtml, /language-ts/);
+      assert.match(syntaxHtml, /token keyword/);
+      assert.match(syntaxHtml, /token number/);
     },
   },
   {

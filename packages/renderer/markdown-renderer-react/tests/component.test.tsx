@@ -71,4 +71,12 @@ describe("@mdwrk/markdown-renderer-react", () => {
     expect(screen.getByRole("link", { name: "https://example.com" })).toHaveAttribute("href", "https://example.com");
   });
 
+  it("renders syntax token markup for fenced code blocks", () => {
+    const { container } = render(<MarkdownRenderer markdown={"```ts\nconst value = 1;\n```"} />);
+
+    expect(container.querySelector("code.language-ts")).toBeInTheDocument();
+    expect(container.querySelector(".token.keyword")).toHaveTextContent("const");
+    expect(container.querySelector(".token.number")).toHaveTextContent("1");
+  });
+
 });

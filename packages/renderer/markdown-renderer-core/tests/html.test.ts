@@ -38,6 +38,27 @@ describe("@mdwrk/markdown-renderer-core", () => {
     expect(html).toContain('class="md-task-list-item"');
     expect(html).toContain('class="md-table"');
     expect(html).toContain('class="md-code-block"');
+    expect(html).toContain('class="language-ts"');
+    expect(html).toContain('class="token keyword"');
+    expect(html).toContain('class="token number"');
+  });
+
+  it("emits syntax token spans for published docs code languages", async () => {
+    const fixtures = [
+      ["ts", "const value = 1;"],
+      ["json", "{\"name\": \"MdWrk\", \"private\": true}"],
+      ["bash", "npm run build # ship"],
+      ["css", ".lander { color: #fff; }"],
+      ["html", "<main class=\"lander\">Docs</main>"],
+      ["md", "## Heading\n\n- item"],
+      ["yaml", "title: MdWrk\nstatus: published"],
+    ];
+
+    for (const [language, source] of fixtures) {
+      const html = await renderMarkdownToHtml(`\`\`\`${language}\n${source}\n\`\`\``);
+      expect(html).toContain(`class="language-${language}"`);
+      expect(html).toMatch(/class="token (?:attr-name|boolean|comment|function|keyword|number|operator|property|punctuation|selector|string|tag)"/);
+    }
   });
 
   it("serializes html documents", async () => {

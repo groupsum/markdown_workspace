@@ -47,7 +47,31 @@ const checks = [
       assert.match(html, /markdown-body/);
       assert.match(html, /md-task-list-item/);
       assert.match(html, /md-code-block/);
+      assert.match(html, /language-ts/);
+      assert.match(html, /token keyword/);
+      assert.match(html, /token number/);
       assert.match(html, /data-sourcepos/);
+    },
+  },
+  {
+    id: 'syntax-token-languages',
+    description: 'renderMarkdownToHtmlSync emits token spans for docs code languages',
+    async test() {
+      const fixtures = [
+        ['ts', 'const value = 1;'],
+        ['json', '{"name": "MdWrk", "private": true}'],
+        ['bash', 'npm run build # ship'],
+        ['css', '.lander { color: #fff; }'],
+        ['html', '<main class="lander">Docs</main>'],
+        ['md', '## Heading\n\n- item'],
+        ['yaml', 'title: MdWrk\nstatus: published'],
+      ];
+
+      for (const [language, source] of fixtures) {
+        const html = renderMarkdownToHtmlSync(`\`\`\`${language}\n${source}\n\`\`\``);
+        assert.match(html, new RegExp(`class="language-${language}"`));
+        assert.match(html, /class="token (?:attr-name|boolean|comment|function|keyword|number|operator|property|punctuation|selector|string|tag)"/);
+      }
     },
   },
   {
