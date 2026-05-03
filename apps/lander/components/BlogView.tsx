@@ -9,7 +9,6 @@ import {
   buildBreadcrumbSchema,
   buildItemListSchema,
   deriveKeywords,
-  extractExcerpt,
   extractFirstImage,
   removeFirstImage
 } from '../utils/pageMetadata';
@@ -24,6 +23,7 @@ interface BlogPost {
   monthSlug: string;
   monthLabel: string;
   displayDate: string;
+  excerpt: string;
   metadata: Record<string, any>;
   content: string;
 }
@@ -101,6 +101,7 @@ const getBlogPosts = (): BlogPost[] =>
       const slug = getPostSlug(path, parsed.metadata);
       const author = parsed.metadata.author?.trim() ?? '';
       const date = parsed.metadata.date?.trim() ?? '';
+      const excerpt = parsed.metadata.excerpt?.trim() ?? '';
       return {
         id: path,
         slug,
@@ -108,15 +109,15 @@ const getBlogPosts = (): BlogPost[] =>
         monthSlug: date.slice(0, 7),
         monthLabel: toMonthLabel(date),
         displayDate: toDisplayDate(date),
+        excerpt,
         ...parsed,
       };
     })
     .filter((post) => {
       const title = post.metadata.title?.trim();
-      const excerpt = post.metadata.excerpt?.trim();
       const author = post.metadata.author?.trim();
       const date = post.metadata.date?.trim();
-      return Boolean(title && excerpt && author && date && post.slug && post.authorSlug && post.monthSlug);
+      return Boolean(title && post.excerpt && author && date && post.slug && post.authorSlug && post.monthSlug);
     })
     .sort((a, b) => {
       const dateSort = toPostTime(b.metadata.date) - toPostTime(a.metadata.date);
@@ -139,25 +140,25 @@ const BlogList: React.FC<{
 
   usePageMetadata({
     title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
-    description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+    description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
     image: featureImage?.src,
     imageAlt: featureImage?.alt || leadPost?.metadata.title || title,
-    keywords: deriveKeywords(title, eyebrow, leadPost?.metadata.excerpt, posts.map(post => post.metadata.title).join(' ')),
+    keywords: deriveKeywords(title, eyebrow, leadPost?.excerpt, posts.map(post => post.metadata.title).join(' ')),
     path: metadataPath,
     structuredData: [
       buildBlogSchema({
         title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
-        description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
         path: metadataPath,
       }),
       buildItemListSchema({
         title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
-        description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
         path: metadataPath,
         items: posts.slice(0, 24).map(post => ({
           title: post.metadata.title,
           path: `/blog/${post.slug}`,
-          description: post.metadata.excerpt,
+          description: post.excerpt,
         })),
       }),
     ],
@@ -181,7 +182,7 @@ const BlogList: React.FC<{
                   {post.metadata.title}
                 </Link>
               </h2>
-              <p className="blog-card-excerpt">{post.metadata.excerpt}</p>
+              <p className="blog-card-excerpt">{post.excerpt}</p>
               <Link to={`/blog/author/${post.authorSlug}`} className="blog-card-author">
                 <User className="blog-card-author-icon" /> {post.metadata.author}
               </Link>
@@ -204,7 +205,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const renderedContent = removeDuplicateLeadingHeading(post.content || '', post.metadata.title);
   const featuredImage = extractFirstImage(renderedContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
-  const excerpt = extractExcerpt(renderedContent, post.metadata.excerpt);
+  const excerpt = post.excerpt;
   const keywords = deriveKeywords(post.metadata.title, excerpt, renderedContent);
 
   usePageMetadata({
