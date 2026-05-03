@@ -53,10 +53,6 @@ jobs:
         continue-on-error: true
         run: docker-compose rm -f lander
 
-      - name: Prune docker images
-        continue-on-error: true
-        run: docker system prune -af
-
       - name: Restart lander container from verified build
         env:
           VITE_DEMO_URL: ${{ vars.VITE_DEMO_URL || 'https://app.mdwrk.com' }}
@@ -72,3 +68,7 @@ jobs:
           VITE_NPM_PACKAGE_PATH: ${{ vars.VITE_NPM_PACKAGE_PATH || 'mdwrk/mdwrkspace' }}
           VITE_NPM_ESM_CDN_URL: ${{ vars.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace' }}
         run: docker-compose up -d --no-build --force-recreate --no-deps lander
+
+      - name: Prune unused docker images after successful restart
+        continue-on-error: true
+        run: docker system prune -af

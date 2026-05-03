@@ -44,13 +44,13 @@ jobs:
         continue-on-error: true
         run: docker-compose rm -f client
 
-      - name: Prune docker images
-        continue-on-error: true
-        run: docker system prune -af
-
       - name: Restart client container from verified build
         env:
           VITE_OIDC_CLIENT_ID: ${{ secrets.VITE_OIDC_CLIENT_ID }}
           VITE_OIDC_FQDN: ${{ vars.VITE_OIDC_FQDN || 'https://md.bz23.xyz' }}
           VITE_OIDC_CALLBACK_PATH: ${{ vars.VITE_OIDC_CALLBACK_PATH || '/auth/callback' }}
         run: docker-compose up -d --no-build --force-recreate --no-deps client
+
+      - name: Prune unused docker images after successful restart
+        continue-on-error: true
+        run: docker system prune -af

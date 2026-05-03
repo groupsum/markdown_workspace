@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write MdWrk Blog"
+  short_description: "Write a repo-aligned MdWrk blog post"
+  default_prompt: "Use $write-mdwrk-blog to draft a new MdWrk lander blog post and wire it into the live publishing flow."

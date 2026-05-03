@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write MdWrk Doc"
+  short_description: "Write a repo-aligned MdWrk doc"
+  default_prompt: "Use $write-mdwrk-doc to draft a new MdWrk lander doc from live repo truth and the current docs schema."
