@@ -59,12 +59,15 @@ const toPostTime = (date?: string) => {
 };
 
 const toMonthLabel = (date?: string) => {
-  const time = toPostTime(date);
-  if (!time) return '';
+  const match = date?.match(/^(\d{4})-(\d{2})/);
+  if (!match) return '';
+  const year = Number(match[1]);
+  const monthIndex = Number(match[2]) - 1;
+  if (!Number.isFinite(year) || !Number.isFinite(monthIndex)) return '';
   return new Intl.DateTimeFormat('en-US', {
     month: 'long',
     year: 'numeric',
-  }).format(new Date(time));
+  }).format(new Date(year, monthIndex, 1));
 };
 
 const getPostSlug = (id: string, metadata: Record<string, any>) => {

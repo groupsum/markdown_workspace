@@ -1,1 +1,1 @@
-export const GEMINI_AGENT_EXTENSION_VERSION = "1.2.0";
+export const GEMINI_AGENT_EXTENSION_VERSION = "1.2.1";

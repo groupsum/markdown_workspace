@@ -23,6 +23,7 @@ vi.mock('../../../services/storage', () => ({
 
 vi.mock('@mdwrk/markdown-renderer-react', () => ({
   MarkdownRenderer: ({ markdown }: { markdown: string }) => <div data-testid="mock-markdown-renderer">{markdown}</div>,
+  createMarkdownRendererThemeStyleFromThemeTokens: () => '',
 }));
 
 const formatLabel = (label: { defaultMessage?: string } | string): string =>
@@ -252,37 +253,38 @@ describe('extension workspace surfaces', () => {
   });
 
   it('renders gemini agent as a conversation-first pane with thread browser and markdown preview', async () => {
+    const geminiSnapshot = {
+      busy: false,
+      lastIntent: 'custom-prompt',
+      lastPrompt: 'Summarize this file',
+      lastContext: {
+        project: { id: 'proj-1', name: 'Gemini Workspace' },
+        file: { id: 'file-1', name: 'README.md', path: 'docs/README.md' },
+        document: { uri: 'file:///README.md', content: '# Preview\\n\\nRendered response.' },
+        selections: [{ text: 'Selected text', start: 0, end: 13 }],
+      },
+      lastResponse: { text: '# Preview\\n\\nRendered response.', model: 'gemini-2.5-flash' },
+      pendingDraft: '## Draft\\n\\nEdited output.',
+      lastError: null,
+      writebackBlockedReason: null,
+      infoMessage: 'Ready',
+      activeThreadId: 'thread-1',
+      threads: [
+        {
+          id: 'thread-1',
+          title: 'Summarize README',
+          createdAt: '2026-05-02T12:00:00.000Z',
+          updatedAt: '2026-05-02T12:01:00.000Z',
+          messages: [
+            { id: 'msg-1', role: 'user', text: 'Summarize this file', createdAt: '2026-05-02T12:00:00.000Z', intent: 'custom-prompt' },
+            { id: 'msg-2', role: 'assistant', text: '# Preview\\n\\nRendered response.', createdAt: '2026-05-02T12:01:00.000Z', intent: 'custom-prompt' },
+          ],
+        },
+      ],
+    };
     const service = {
       subscribe: () => () => {},
-      getSnapshot: () => ({
-        busy: false,
-        lastIntent: 'custom-prompt',
-        lastPrompt: 'Summarize this file',
-        lastContext: {
-          project: { id: 'proj-1', name: 'Gemini Workspace' },
-          file: { id: 'file-1', name: 'README.md', path: 'docs/README.md' },
-          document: { uri: 'file:///README.md', content: '# Preview\\n\\nRendered response.' },
-          selections: [{ text: 'Selected text', start: 0, end: 13 }],
-        },
-        lastResponse: { text: '# Preview\\n\\nRendered response.', model: 'gemini-2.5-flash' },
-        pendingDraft: '## Draft\\n\\nEdited output.',
-        lastError: null,
-        writebackBlockedReason: null,
-        infoMessage: 'Ready',
-        activeThreadId: 'thread-1',
-        threads: [
-          {
-            id: 'thread-1',
-            title: 'Summarize README',
-            createdAt: '2026-05-02T12:00:00.000Z',
-            updatedAt: '2026-05-02T12:01:00.000Z',
-            messages: [
-              { id: 'msg-1', role: 'user', text: 'Summarize this file', createdAt: '2026-05-02T12:00:00.000Z', intent: 'custom-prompt' },
-              { id: 'msg-2', role: 'assistant', text: '# Preview\\n\\nRendered response.', createdAt: '2026-05-02T12:01:00.000Z', intent: 'custom-prompt' },
-            ],
-          },
-        ],
-      }),
+      getSnapshot: () => geminiSnapshot,
       refreshContext: vi.fn(async () => {}),
       listMentionableFiles: vi.fn(async () => ([
         { id: 'file-1', name: 'README.md', path: 'docs/README.md', kind: 'file' },
@@ -320,29 +322,31 @@ describe('extension workspace surfaces', () => {
     );
 
     expect(screen.getByText('Conversations')).toBeInTheDocument();
-    expect(screen.getByText('Summarize README')).toBeInTheDocument();
+    expect(screen.getAllByText('Summarize README').length).toBeGreaterThan(0);
     expect(screen.getByText('Conversation')).toBeInTheDocument();
     expect(screen.getByText('Markdown preview')).toBeInTheDocument();
     expect(screen.getByText('Summarize this file')).toBeInTheDocument();
     expect(screen.getByTestId('mock-markdown-renderer')).toHaveTextContent('## Draft\\n\\nEdited output.');
     await waitFor(() => expect(service.listMentionableFiles).toHaveBeenCalled());
 
-    const promptInput = screen.getByLabelText('Conversation prompt');
+    const promptInput = screen.getByLabelText('Conversation prompt') as HTMLTextAreaElement;
+    promptInput.setSelectionRange(promptInput.value.length, promptInput.value.length);
     fireEvent.click(promptInput);
     await waitFor(() => expect(screen.getByText('Mention suggestions')).toBeInTheDocument());
     expect(screen.getByText('docs/guide.md')).toBeInTheDocument();
 
-    fireEvent.mouseDown(screen.getByText('guide.md'));
-    await waitFor(() => expect(screen.getByDisplayValue('Compare this with @docs/guide.md ')).toBeInTheDocument());
+    fireEvent.mouseDown(screen.getByText('docs/guide.md'));
+    await waitFor(() => expect(promptInput.value).toBe('Compare this with @docs/guide.md '));
     expect(screen.getByText('Mentioned files')).toBeInTheDocument();
     expect(screen.getByText('@guide.md')).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('New conversation'));
+    fireEvent.click(screen.getAllByText('New conversation')[0]);
     expect(service.createThread).toHaveBeenCalled();
 
     fireEvent.click(view.container.querySelector('button[title="Draft only"]') as HTMLButtonElement);
     expect(screen.getByDisplayValue('## Draft\\n\\nEdited output.')).toBeInTheDocument();
 
+    fireEvent.click(view.container.querySelector('button[title="Conversation only"]') as HTMLButtonElement);
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     expect(screen.getByText('Conversation')).toBeInTheDocument();
 
