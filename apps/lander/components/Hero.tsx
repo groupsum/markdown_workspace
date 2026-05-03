@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Download, WifiOff } from 'lucide-react';
 import { links } from '../utils/links';
 
@@ -12,7 +13,9 @@ export const Hero: React.FC = () => {
       <div className="hero-inner">
         <div className="hero-eyebrow">
           <span className="hero-eyebrow-badge">Client</span>
-          <span className="hero-eyebrow-copy">mdwrk workspace, packages, and extensions documented here</span>
+          <Link to="/docs" className="hero-eyebrow-copy hero-eyebrow-link">
+            mdwrk workspace, packages, and extensions documented here
+          </Link>
           <WifiOff className="hero-eyebrow-icon" />
         </div>
 
@@ -25,22 +28,17 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="hero-actions">
-          <a
-            href={links.npmRepo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hero-primary-link"
-          >
-            Get from npm
+          <Link to="/docs/getting-started/local-setup" className="hero-primary-link">
+            Deploy Locally
             <Download className="hero-primary-icon" />
-          </a>
+          </Link>
           <a
             href={links.app}
             target="_blank"
             rel="noopener noreferrer"
             className="hero-secondary-link"
           >
-            Install
+            Install PWA
           </a>
         </div>
         <div className="hero-meta">

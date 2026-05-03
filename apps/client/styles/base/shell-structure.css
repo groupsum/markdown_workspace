@@ -19,7 +19,7 @@
 
 :root[data-theme] .app-header {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(0, 1.6fr) auto;
+  grid-template-columns: minmax(120px, 0.62fr) minmax(0, 1.88fr) auto;
   align-items: stretch;
   gap: 10px;
   min-width: 0;

@@ -5,7 +5,27 @@ content:
     file: ./markdown/legal/terms.md
   - id: blog/client-split-out-backstory
     file: ./markdown/blog/client-split-out-backstory.md
+  - id: blog/markdown-workspace-launch
+    file: ./markdown/blog/markdown-workspace-launch.md
+  - id: blog/responsive-authoring-and-export
+    file: ./markdown/blog/responsive-authoring-and-export.md
+  - id: blog/pwa-install-and-zoom-controls
+    file: ./markdown/blog/pwa-install-and-zoom-controls.md
+  - id: blog/governed-releases-and-package-docs
+    file: ./markdown/blog/governed-releases-and-package-docs.md
+  - id: blog/extension-compatibility-and-publish-gates
+    file: ./markdown/blog/extension-compatibility-and-publish-gates.md
+  - id: blog/screenshot-matrix-and-browser-sidebars
+    file: ./markdown/blog/screenshot-matrix-and-browser-sidebars.md
+  - id: blog/retained-client-versions-and-desktop-shell
+    file: ./markdown/blog/retained-client-versions-and-desktop-shell.md
+  - id: blog/desktop-release-and-android-verification
+    file: ./markdown/blog/desktop-release-and-android-verification.md
+  - id: blog/workspace-files-and-git-ops-packages
+    file: ./markdown/blog/workspace-files-and-git-ops-packages.md
   - id: blog/extension-host-rollout
     file: ./markdown/blog/extension-host-rollout.md
   - id: blog/docs-surface-realignment
     file: ./markdown/blog/docs-surface-realignment.md
+  - id: blog/settings-simplification-for-daily-flow
+    file: ./markdown/blog/settings-simplification-for-daily-flow.md

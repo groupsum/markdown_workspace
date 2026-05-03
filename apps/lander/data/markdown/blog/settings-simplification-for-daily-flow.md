@@ -1,0 +1,37 @@
+---
+title: Settings Simplification Gave MdWrk a Faster Path from Installation to Daily Use
+date: 2026-05-01
+status: published
+author: CobyCloud
+excerpt: MdWrk refined its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+---
+May 1, 2026 focused on the path every product team cares about: the path from first run to confident daily use.
+
+This work is grounded in:
+
+- [Remove settings sidebar sublabels and bump client version](https://github.com/groupsum/markdown_workspace/commit/3ae204ec)
+- [Remove active theme chip from settings modal](https://github.com/groupsum/markdown_workspace/commit/2d6cf332)
+
+## What improved
+
+- settings labels became cleaner and faster to scan
+- the active workspace experience gained a calmer visual rhythm
+- configuration panels became easier to review in sequence
+
+## Screenshot
+
+![MdWrk settings visual panel with a simplified navigation experience](/blog/media/mdwrk-settings-visual.png)
+
+## Current docs for configuration and setup
+
+- [Installation](/docs/getting-started/installation)
+- [Configuration](/docs/getting-started/configuration)
+- [Local setup](/docs/getting-started/local-setup)
+
+## Example setup flow
+
+1. Install the client through the path that fits your team.
+2. Open settings and tune theme, language, and workspace preferences.
+3. Move into writing, extensions, or Git workflows with the same navigation language.
+
+MdWrk now carries a stronger onboarding story because the settings surface communicates action, structure, and next steps in a cleaner form.

@@ -32,7 +32,7 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => (
 );
 
 const App: React.FC = () => {
-  const [themeId, setThemeId] = useState<LanderThemeId>('lander-dark');
+  const [themeId, setThemeId] = useState<LanderThemeId>(() => getPreferredLanderThemeId());
   const location = useLocation();
   const isDark = themeId === 'lander-dark';
   const theme = LANDER_THEMES[themeId];
@@ -65,7 +65,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomeView isDark={isDark} />} />
           <Route path="/docs/*" element={<DocsView />} />
-          <Route path="/blog" element={<BlogView />} />
+          <Route path="/blog/*" element={<BlogView />} />
           <Route path="/legal/privacy" element={<LegalView page="legal/privacy" />} />
           <Route path="/legal/terms" element={<LegalView page="legal/terms" />} />
           <Route path="*" element={<HomeView isDark={isDark} />} />

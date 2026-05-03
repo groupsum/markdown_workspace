@@ -100,6 +100,14 @@
   @apply text-sm font-medium;
 }
 
+.hero-eyebrow-link {
+  @apply transition-colors no-underline;
+}
+
+.hero-eyebrow-link:hover {
+  color: var(--lander-accent);
+}
+
 .hero-eyebrow-icon {
   @apply ml-2 h-4 w-4;
   color: #10b981;
@@ -704,7 +712,8 @@
 }
 
 .docs-content-wrap {
-  @apply mx-auto flex max-w-3xl flex-col gap-12;
+  @apply mx-auto flex w-full flex-col gap-12;
+  max-width: 66rem;
 }
 
 .docs-content-card,
@@ -809,19 +818,45 @@
   @apply flex items-center gap-1;
 }
 
+.blog-post-meta-link {
+  @apply transition-colors;
+}
+
+.blog-post-meta-link:hover {
+  color: var(--lander-accent);
+}
+
 .blog-list-layout {
   @apply mx-auto max-w-screen-xl;
+}
+
+.blog-list-eyebrow {
+  @apply mb-4 text-center text-xs font-bold uppercase tracking-[0.4em];
+  color: var(--lander-fg-muted);
 }
 
 .blog-list-title {
   @apply mb-12 text-center text-5xl font-black uppercase;
   letter-spacing: 0.35em;
-  color: var(--lander-fg);
 }
 
 .blog-list-title-inner {
   @apply inline-block border-b px-2 pb-3;
   border-color: var(--lander-border);
+  background-image: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--lander-accent) 78%, white 22%) 0%,
+    color-mix(in srgb, var(--lander-accent-strong) 62%, #ffe27a 38%) 36%,
+    color-mix(in srgb, #ffffff 18%, var(--lander-accent-strong) 82%) 64%,
+    color-mix(in srgb, var(--lander-accent) 60%, #7df9ff 40%) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 22px color-mix(in srgb, var(--lander-accent-strong) 28%, transparent),
+    0 0 44px color-mix(in srgb, var(--lander-accent) 18%, transparent);
 }
 
 .blog-grid {
@@ -829,7 +864,7 @@
 }
 
 .blog-card {
-  @apply cursor-pointer rounded-2xl border p-6 transition-all;
+  @apply flex h-full cursor-pointer flex-col rounded-2xl border p-6 transition-all;
 }
 
 .blog-card:hover {
@@ -837,8 +872,12 @@
 }
 
 .blog-card-date {
-  @apply mb-2 text-xs font-bold uppercase tracking-widest;
+  @apply mb-2 text-xs font-bold uppercase tracking-widest transition-colors;
   color: var(--lander-accent);
+}
+
+.blog-card-date:hover {
+  color: var(--lander-accent-strong);
 }
 
 .blog-card-title {
@@ -846,18 +885,29 @@
   color: var(--lander-fg);
 }
 
-.blog-card:hover .blog-card-title {
+.blog-card-title-link {
+  @apply transition-colors;
+}
+
+.blog-card:hover .blog-card-title,
+.blog-card:hover .blog-card-title-link,
+.blog-card-title-link:hover {
   color: var(--lander-accent);
 }
 
 .blog-card-excerpt {
   @apply mb-4 text-sm line-clamp-3;
+  flex: 1;
   color: var(--lander-fg-muted);
 }
 
 .blog-card-author {
-  @apply flex items-center gap-2 text-xs;
+  @apply mt-auto flex items-center gap-2 text-left text-xs transition-colors;
   color: var(--lander-fg-subtle);
+}
+
+.blog-card-author:hover {
+  color: var(--lander-accent);
 }
 
 .legal-shell {
