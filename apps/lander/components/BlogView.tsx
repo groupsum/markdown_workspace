@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
+import { usePageMetadata } from '../hooks/usePageMetadata';
+import { extractFirstImage, summarizeMarkdown } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
@@ -97,34 +99,52 @@ const BlogList: React.FC<{
   posts: BlogPost[];
   title: string;
   eyebrow?: string;
-}> = ({ posts, title, eyebrow }) => (
-  <div className="lander-blog-shell blog-shell is-list">
-    <div className="blog-list-layout">
-      {eyebrow ? <div className="blog-list-eyebrow">{eyebrow}</div> : null}
-      <h1 className="blog-list-title">
-        <span className="blog-list-title-inner">{title}</span>
-      </h1>
-      <div className="blog-grid">
-        {posts.map(post => (
-          <article key={post.id} className="lander-content-card blog-card">
-            <Link to={`/blog/archive/${post.monthSlug}`} className="blog-card-date">
-              {post.metadata.date}
-            </Link>
-            <h2 className="blog-card-title">
-              <Link to={`/blog/${post.slug}`} className="blog-card-title-link">
-                {post.metadata.title}
+}> = ({ posts, title, eyebrow }) => {
+  const leadPost = posts[0];
+  const featureImage = leadPost ? extractFirstImage(leadPost.content) : null;
+  const metadataPath = eyebrow === 'Author Archive'
+    ? `/blog/author/${leadPost?.authorSlug || ''}`
+    : eyebrow === 'Monthly Archive'
+      ? `/blog/archive/${leadPost?.monthSlug || ''}`
+      : '/blog';
+
+  usePageMetadata({
+    title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+    description: leadPost?.metadata.excerpt || `Read the latest ${title} posts from MdWrk.`,
+    image: featureImage?.src,
+    imageAlt: featureImage?.alt || leadPost?.metadata.title || title,
+    path: metadataPath,
+  });
+
+  return (
+    <div className="lander-blog-shell blog-shell is-list">
+      <div className="blog-list-layout">
+        {eyebrow ? <div className="blog-list-eyebrow">{eyebrow}</div> : null}
+        <h1 className="blog-list-title">
+          <span className="blog-list-title-inner">{title}</span>
+        </h1>
+        <div className="blog-grid">
+          {posts.map(post => (
+            <article key={post.id} className="lander-content-card blog-card">
+              <Link to={`/blog/archive/${post.monthSlug}`} className="blog-card-date">
+                {post.metadata.date}
               </Link>
-            </h2>
-            <p className="blog-card-excerpt">{post.metadata.excerpt}</p>
-            <Link to={`/blog/author/${post.authorSlug}`} className="blog-card-author">
-              <User className="blog-card-author-icon" /> {post.metadata.author}
-            </Link>
-          </article>
-        ))}
+              <h2 className="blog-card-title">
+                <Link to={`/blog/${post.slug}`} className="blog-card-title-link">
+                  {post.metadata.title}
+                </Link>
+              </h2>
+              <p className="blog-card-excerpt">{post.metadata.excerpt}</p>
+              <Link to={`/blog/author/${post.authorSlug}`} className="blog-card-author">
+                <User className="blog-card-author-icon" /> {post.metadata.author}
+              </Link>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const { postSlug } = useParams();
@@ -133,6 +153,17 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
+
+  const renderedContent = removeDuplicateLeadingHeading(post.content || '', post.metadata.title);
+  const featuredImage = extractFirstImage(renderedContent);
+
+  usePageMetadata({
+    title: `${post.metadata.title} | MdWrk Blog`,
+    description: post.metadata.excerpt?.trim() || summarizeMarkdown(renderedContent),
+    image: featuredImage?.src,
+    imageAlt: featuredImage?.alt || post.metadata.title,
+    path: `/blog/${post.slug}`,
+  });
 
   return (
     <div className="lander-blog-shell blog-shell is-post">
@@ -153,7 +184,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
             </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>
           </div>
-          <MarkdownViewer content={removeDuplicateLeadingHeading(post.content || '', post.metadata.title)} />
+          <MarkdownViewer content={renderedContent} />
         </div>
       </div>
     </div>

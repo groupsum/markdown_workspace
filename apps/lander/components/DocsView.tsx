@@ -2,6 +2,8 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams, NavLink } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
+import { usePageMetadata } from '../hooks/usePageMetadata';
+import { extractFirstImage, summarizeMarkdown } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
@@ -76,7 +78,16 @@ export const DocsView: React.FC = () => {
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
   const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
   const headings = extractHeadings(renderedContent);
+  const featuredImage = extractFirstImage(renderedContent);
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
+
+  usePageMetadata({
+    title: currentDoc ? `${currentDoc.title} | MdWrk Docs` : 'MdWrk Docs',
+    description: currentDoc?.metadata.excerpt?.trim() || summarizeMarkdown(renderedContent),
+    image: featuredImage?.src,
+    imageAlt: featuredImage?.alt || currentDoc?.title,
+    path: currentDoc ? `/docs/${currentDoc.slug}` : '/docs/',
+  });
 
   const renderNav = (items: DocItem[], level = 0) => {
     return items.map(item => {

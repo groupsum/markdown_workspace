@@ -8,28 +8,40 @@ import { Footer } from './components/Footer';
 import { DocsView } from './components/DocsView';
 import { BlogView } from './components/BlogView';
 import { LegalView } from './components/LegalView';
+import { usePageMetadata } from './hooks/usePageMetadata';
+import { pageMetadataDefaults } from './utils/pageMetadata';
 import { LANDER_THEMES, type LanderThemeId, getPreferredLanderThemeId } from './theme';
 
-const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => (
-  <>
-    <Hero />
-    <Features />
-    <DemoSection isDark={isDark} />
-    <section id="privacy" className="privacy-section">
-      <div className="privacy-container">
-         <h2 className="privacy-heading">Your Data Stays on <span className="privacy-heading-accent">Your Device</span></h2>
-         <p className="privacy-copy">
-            MdWork utilizes IndexedDB to store your workspaces directly in your browser.
-            No AI servers scan your content, no trackers follow your keys.
-         </p>
-         <div className="privacy-badge">
-            <div className="privacy-badge-dot"></div>
-            Privacy Standard: Verified Local
-         </div>
-      </div>
-    </section>
-  </>
-);
+const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => {
+  usePageMetadata({
+    title: 'MdWrk',
+    description: pageMetadataDefaults.description,
+    image: pageMetadataDefaults.image,
+    imageAlt: pageMetadataDefaults.imageAlt,
+    path: '/',
+  });
+
+  return (
+    <>
+      <Hero />
+      <Features />
+      <DemoSection isDark={isDark} />
+      <section id="privacy" className="privacy-section">
+        <div className="privacy-container">
+           <h2 className="privacy-heading">Your Data Stays on <span className="privacy-heading-accent">Your Device</span></h2>
+           <p className="privacy-copy">
+              MdWork utilizes IndexedDB to store your workspaces directly in your browser.
+              No AI servers scan your content, no trackers follow your keys.
+           </p>
+           <div className="privacy-badge">
+              <div className="privacy-badge-dot"></div>
+              Privacy Standard: Verified Local
+           </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
 const App: React.FC = () => {
   const [themeId, setThemeId] = useState<LanderThemeId>(() => getPreferredLanderThemeId());

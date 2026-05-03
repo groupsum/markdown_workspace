@@ -52,6 +52,24 @@ export interface GeminiAgentResponse {
   readonly raw?: unknown;
 }
 
+export type GeminiChatMessageRole = "user" | "assistant" | "system";
+
+export interface GeminiChatMessage {
+  readonly id: string;
+  readonly role: GeminiChatMessageRole;
+  readonly text: string;
+  readonly createdAt: string;
+  readonly intent?: GeminiAgentIntent;
+}
+
+export interface GeminiChatThread {
+  readonly id: string;
+  readonly title: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  readonly messages: readonly GeminiChatMessage[];
+}
+
 export interface GeminiAgentServiceSnapshot {
   readonly busy: boolean;
   readonly lastIntent: GeminiAgentIntent;
@@ -62,6 +80,8 @@ export interface GeminiAgentServiceSnapshot {
   readonly lastError: string | null;
   readonly writebackBlockedReason: string | null;
   readonly infoMessage: string | null;
+  readonly threads: readonly GeminiChatThread[];
+  readonly activeThreadId: string | null;
 }
 
 export interface GeminiAgentService {
@@ -74,6 +94,8 @@ export interface GeminiAgentService {
   clearDraft(): void;
   clearResult(): void;
   applyDraft(mode: GeminiAgentWritebackMode): Promise<boolean>;
+  createThread(): GeminiChatThread;
+  selectThread(threadId: string): void;
 }
 
 export interface GeminiTextProvider {

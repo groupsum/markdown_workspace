@@ -1,6 +1,8 @@
 import React from 'react';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
+import { usePageMetadata } from '../hooks/usePageMetadata';
+import { summarizeMarkdown } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { ShieldCheck } from 'lucide-react';
 
@@ -28,6 +30,13 @@ export const LegalView: React.FC<LegalViewProps> = ({ page }) => {
   }
 
   const { metadata, content } = parseMarkdown(raw);
+  const title = page === 'legal/privacy' ? 'Privacy Policy' : 'Terms of Service';
+
+  usePageMetadata({
+    title: `${title} | MdWrk`,
+    description: summarizeMarkdown(content),
+    path: `/${page}`,
+  });
 
   return (
     <div className="legal-shell">

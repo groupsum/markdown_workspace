@@ -9,6 +9,7 @@ import { ThemeStudioView } from '../../../../../packages/extensions/extension-th
 import { ThemeStudioSettingsPanel } from '../../../../../packages/extensions/extension-theme-studio/src/components/ThemeStudioSettingsPanel';
 import { LanguagePackStudioView } from '../../../../../packages/extensions/extension-language-pack-studio/src/components/LanguagePackStudioView';
 import { LanguagePackStudioSettingsPanel } from '../../../../../packages/extensions/extension-language-pack-studio/src/components/LanguagePackStudioSettingsPanel';
+import { GeminiAgentView } from '../../../../../packages/extensions/extension-gemini-agent/src/components/GeminiAgentView';
 import { GitOperationsExplorer, GitPane } from '../../../components/Chassis/Git/GitPane';
 
 vi.mock('../../../services/storage', () => ({
@@ -18,6 +19,10 @@ vi.mock('../../../services/storage', () => ({
     getSetting: vi.fn(async () => null),
     setSetting: vi.fn(async () => undefined),
   },
+}));
+
+vi.mock('@mdwrk/markdown-renderer-react', () => ({
+  MarkdownRenderer: ({ markdown }: { markdown: string }) => <div data-testid="mock-markdown-renderer">{markdown}</div>,
 }));
 
 const formatLabel = (label: { defaultMessage?: string } | string): string =>
@@ -244,6 +249,88 @@ describe('extension workspace surfaces', () => {
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);
     expect(controller.setAllEnabled).not.toHaveBeenCalled();
+  });
+
+  it('renders gemini agent as a conversation-first pane with thread browser and markdown preview', async () => {
+    const service = {
+      subscribe: () => () => {},
+      getSnapshot: () => ({
+        busy: false,
+        lastIntent: 'custom-prompt',
+        lastPrompt: 'Summarize this file',
+        lastContext: {
+          project: { id: 'proj-1', name: 'Gemini Workspace' },
+          file: { id: 'file-1', name: 'README.md', path: 'docs/README.md' },
+          document: { uri: 'file:///README.md', content: '# Preview\\n\\nRendered response.' },
+          selections: [{ text: 'Selected text', start: 0, end: 13 }],
+        },
+        lastResponse: { text: '# Preview\\n\\nRendered response.', model: 'gemini-2.5-flash' },
+        pendingDraft: '## Draft\\n\\nEdited output.',
+        lastError: null,
+        writebackBlockedReason: null,
+        infoMessage: 'Ready',
+        activeThreadId: 'thread-1',
+        threads: [
+          {
+            id: 'thread-1',
+            title: 'Summarize README',
+            createdAt: '2026-05-02T12:00:00.000Z',
+            updatedAt: '2026-05-02T12:01:00.000Z',
+            messages: [
+              { id: 'msg-1', role: 'user', text: 'Summarize this file', createdAt: '2026-05-02T12:00:00.000Z', intent: 'custom-prompt' },
+              { id: 'msg-2', role: 'assistant', text: '# Preview\\n\\nRendered response.', createdAt: '2026-05-02T12:01:00.000Z', intent: 'custom-prompt' },
+            ],
+          },
+        ],
+      }),
+      refreshContext: vi.fn(async () => {}),
+      loadSettings: vi.fn(async () => ({
+        endpoint: 'https://example.test',
+        model: 'gemini-2.5-flash',
+        authMode: 'api-key',
+        apiKey: 'secret',
+        systemPrompt: 'You are helpful.',
+        temperature: 0.2,
+        requestTimeoutMs: 30000,
+        autoAttachDocument: true,
+        autoAttachSelection: true,
+        allowWriteBack: true,
+      })),
+      runIntent: vi.fn(async () => ({ text: '# Result', model: 'gemini-2.5-flash' })),
+      updateDraft: vi.fn(),
+      clearDraft: vi.fn(),
+      clearResult: vi.fn(),
+      applyDraft: vi.fn(async () => true),
+      createThread: vi.fn(),
+      selectThread: vi.fn(),
+    } as any;
+
+    const view = render(
+      <GeminiAgentView
+        service={service}
+        close={vi.fn(async () => {})}
+        formatLabel={formatLabel}
+      />,
+    );
+
+    expect(screen.getByText('Conversations')).toBeInTheDocument();
+    expect(screen.getByText('Summarize README')).toBeInTheDocument();
+    expect(screen.getByText('Conversation')).toBeInTheDocument();
+    expect(screen.getByText('Markdown preview')).toBeInTheDocument();
+    expect(screen.getByText('Summarize this file')).toBeInTheDocument();
+    expect(screen.getByTestId('mock-markdown-renderer')).toHaveTextContent('## Draft\\n\\nEdited output.');
+
+    fireEvent.click(screen.getByText('New conversation'));
+    expect(service.createThread).toHaveBeenCalled();
+
+    fireEvent.click(view.container.querySelector('button[title="Draft only"]') as HTMLButtonElement);
+    expect(screen.getByDisplayValue('## Draft\\n\\nEdited output.')).toBeInTheDocument();
+
+    fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
+    expect(screen.getByText('Conversation')).toBeInTheDocument();
+
+    fireEvent.click(view.container.querySelector('button[title="Preview only"]') as HTMLButtonElement);
+    expect(screen.getByText('Markdown preview')).toBeInTheDocument();
   });
 
   it('renders settings-menu content for extension manager, theme studio, and language pack studio', () => {
