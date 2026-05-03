@@ -8345,7 +8345,7 @@
     {
       "id": "iss:lander-code-block-syntax-highlighting-absent",
       "title": "Lander code blocks do not render syntax-colored tokens",
-      "status": "open",
+      "status": "closed",
       "severity": "medium",
       "description": "Lander light and dark themes define syntax color variables and Prism/HLJS token selectors in apps/lander/styles/markdown-renderer.css, but @mdwrk/markdown-renderer-core renders fenced code as escaped plain text inside pre/code with only a language-* class. @mdwrk/markdown-renderer-react accepts syntaxTheme but currently ignores it, so no tokenizer emits .token.* or .hljs-* spans. The uniform code color rule then makes docs and blog code blocks render monochrome even when a language is present.",
       "plan": {
