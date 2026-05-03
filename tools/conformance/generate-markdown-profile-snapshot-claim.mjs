@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,10 +10,13 @@ const repoRoot = path.resolve(__dirname, '..', '..');
 const artifactRoot = path.join(repoRoot, 'artifacts', 'conformance', 'latest');
 
 const npmExecPath = process.env.npm_execpath;
-const command = process.execPath;
-const args = npmExecPath
+const usesBundledNpmCli = Boolean(npmExecPath && existsSync(npmExecPath));
+const command = npmExecPath && existsSync(npmExecPath)
+  ? process.execPath
+  : (process.platform === 'win32' ? 'npm.cmd' : 'npm');
+const args = npmExecPath && existsSync(npmExecPath)
   ? [npmExecPath, 'run', 'test:markdown-profile-snapshot']
-  : ['node_modules/npm/bin/npm-cli.js', 'run', 'test:markdown-profile-snapshot'];
+  : ['run', 'test:markdown-profile-snapshot'];
 
 let ok = true;
 let output = '';
@@ -22,10 +26,11 @@ try {
     cwd: repoRoot,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
+    shell: process.platform === 'win32' && !usesBundledNpmCli,
   });
 } catch (error) {
   ok = false;
-  output = `${error.stdout ?? ''}${error.stderr ?? ''}`;
+  output = `${error.stdout ?? ''}${error.stderr ?? ''}${error.message ? `\n${error.message}` : ''}`;
 }
 
 const generatedAt = new Date().toISOString();

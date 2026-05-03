@@ -148,7 +148,7 @@ export const DocsView: React.FC = () => {
         metadata: currentDoc.metadata,
       })
     : '';
-  const answerWrappedContent = currentDoc ? `${answerBlock}\n${renderedContent}` : renderedContent;
+  const answerWrappedContent = currentDoc ? `${renderedContent}\n\n---\n\n${answerBlock}` : renderedContent;
   const headings = extractHeadings(answerWrappedContent);
   const featuredImage = extractFirstImage(answerWrappedContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(answerWrappedContent) : answerWrappedContent;
