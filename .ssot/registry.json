@@ -3081,7 +3081,8 @@
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
       "requires": []
     },
@@ -3108,7 +3109,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
       "requires": []
     },
@@ -5709,7 +5711,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
       "requires": []
     },
@@ -5736,7 +5739,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
       "requires": []
     },
@@ -7040,6 +7044,25 @@
       "evidence_ids": [
         "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ]
+    },
+    {
+      "id": "tst:apps-lander-scripts-validate-syntax-themes.mjs",
+      "title": "Lander syntax theme validation",
+      "status": "passing",
+      "kind": "conformance",
+      "path": "apps/lander/scripts/validate-syntax-themes.mjs",
+      "feature_ids": [
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-blog-article-guide-standardization"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs"
+      ]
     }
   ],
   "claims": [
@@ -7115,7 +7138,8 @@
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
-        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -7146,7 +7170,8 @@
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
-        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs"
       ]
     },
     {
@@ -8339,6 +8364,20 @@
       "test_ids": [
         "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
       ]
+    },
+    {
+      "id": "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+      "title": "Lander syntax theme validation evidence",
+      "status": "passed",
+      "kind": "conformance",
+      "tier": "T2",
+      "path": "apps/lander/scripts/validate-syntax-themes.mjs",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+      ]
     }
   ],
   "issues": [
@@ -8363,9 +8402,12 @@
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
-      "evidence_ids": [],
+      "evidence_ids": [
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs"
+      ],
       "risk_ids": [],
       "release_blocking": false
     }
