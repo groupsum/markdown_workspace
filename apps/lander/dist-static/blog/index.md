@@ -1,8 +1,8 @@
-# Blog
+# News
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
-# Blog
+# News
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
@@ -22,10 +22,10 @@ MdWrk refines its settings UX with cleaner labels and a calmer navigation model,
 
 ## Frequently Asked Questions
 
-### What does the MdWrk Blog cover?
+### What does MdWrk News cover?
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
-### Where should readers start in the MdWrk Blog?
+### Where should readers start in MdWrk News?
 
 Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes.

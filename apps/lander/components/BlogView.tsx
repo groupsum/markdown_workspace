@@ -7,10 +7,11 @@ import {
   buildBlogPostingSchema,
   buildBlogSchema,
   buildBreadcrumbSchema,
+  buildFaqSchema,
   buildItemListSchema,
   deriveKeywords,
-  extractFirstImage,
-  removeFirstImage
+  getArticleMetadataImage,
+  getExplicitFeaturedImage
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
@@ -102,6 +103,17 @@ const toDisplayDate = (date?: string) => {
   return `${monthLabel} ${numericDay}, ${year}`;
 };
 
+const buildBlogFaqItems = (excerpt: string) => [
+  {
+    question: 'What does this MdWrk article cover?',
+    answer: excerpt,
+  },
+  {
+    question: 'What should readers take away from this article?',
+    answer: `This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.`,
+  },
+];
+
 const getPostSlug = (id: string, metadata: Record<string, any>) => {
   const frontmatterSlug = typeof metadata.slug === 'string' ? metadata.slug.trim() : '';
   if (frontmatterSlug) {
@@ -149,7 +161,7 @@ const BlogList: React.FC<{
   eyebrow?: string;
 }> = ({ posts, title, eyebrow }) => {
   const leadPost = posts[0];
-  const featureImage = leadPost ? extractFirstImage(leadPost.content) : null;
+  const featureImage = leadPost ? getArticleMetadataImage(leadPost.metadata, leadPost.content) : null;
   const metadataPath = eyebrow === 'Author Archive'
     ? `/blog/author/${leadPost?.authorSlug || ''}`
     : eyebrow === 'Monthly Archive'
@@ -157,7 +169,7 @@ const BlogList: React.FC<{
       : '/blog';
 
   usePageMetadata({
-    title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+    title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
     description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
     image: featureImage?.src,
     imageAlt: featureImage?.alt || leadPost?.metadata.title || title,
@@ -165,12 +177,12 @@ const BlogList: React.FC<{
     path: metadataPath,
     structuredData: [
       buildBlogSchema({
-        title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+        title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
         description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
         path: metadataPath,
       }),
       buildItemListSchema({
-        title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+        title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
         description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
         path: metadataPath,
         items: posts.slice(0, 24).map(post => ({
@@ -224,16 +236,17 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
 
   const renderedContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(post.content || '', post.metadata.title));
   const articleContent = renderedContent;
-  const featuredImage = extractFirstImage(articleContent);
-  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
+  const featuredImage = getExplicitFeaturedImage(post.metadata);
+  const metadataImage = getArticleMetadataImage(post.metadata, articleContent);
   const excerpt = post.excerpt;
   const keywords = deriveKeywords(post.metadata.title, excerpt, articleContent);
+  const faqItems = buildBlogFaqItems(excerpt);
 
   usePageMetadata({
     title: post.metadata.title,
     description: excerpt,
-    image: featuredImage?.src,
-    imageAlt: featuredImage?.alt || post.metadata.title,
+    image: metadataImage?.src,
+    imageAlt: metadataImage?.alt || post.metadata.title,
     keywords,
     path: `/blog/${post.slug}`,
     structuredData: [
@@ -243,14 +256,15 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
         path: `/blog/${post.slug}`,
         datePublished: post.metadata.date,
         author: post.metadata.author,
-        image: featuredImage?.src,
+        image: metadataImage?.src,
         keywords,
       }),
       buildBreadcrumbSchema([
         { name: 'MdWrk', path: '/' },
-        { name: 'Blog', path: '/blog' },
+        { name: 'News', path: '/blog' },
         { name: post.metadata.title, path: `/blog/${post.slug}` },
       ]),
+      buildFaqSchema(faqItems),
     ],
   });
 
@@ -259,7 +273,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
       <div className="blog-post-layout">
         <Link to="/blog" className="blog-back-button">
           <ArrowLeft className="blog-back-icon" />
-          Back to Blog
+          Back to News
         </Link>
         <div className="lander-content-card blog-post-card">
           <div className="blog-post-header">
@@ -290,7 +304,20 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
               alt={featuredImage.alt || post.metadata.title}
             />
           ) : null}
-          <MarkdownViewer content={contentWithoutFeaturedImage} />
+          <MarkdownViewer content={articleContent} />
+          <section className="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" className="faq-section-heading">Frequently Asked Questions</h2>
+            <div className="faq-list">
+              {faqItems.map(faq => (
+                <details key={faq.question} className="faq-accordion">
+                  <summary className="faq-summary">{faq.question}</summary>
+                  <div className="faq-content">
+                    <p>{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -334,7 +361,7 @@ export const BlogView: React.FC = () => {
 
   return (
     <Routes>
-      <Route index element={<BlogList posts={posts} title="Blog" />} />
+      <Route index element={<BlogList posts={posts} title="News" />} />
       <Route path="author/:authorSlug" element={<BlogAuthorArchivePage posts={posts} />} />
       <Route path="archive/:monthSlug" element={<BlogMonthArchivePage posts={posts} />} />
       <Route path=":postSlug" element={<BlogPostPage posts={posts} />} />

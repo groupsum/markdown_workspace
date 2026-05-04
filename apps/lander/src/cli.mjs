@@ -21,6 +21,7 @@ const schemasRoot = path.join(landerRoot, 'schemas');
 const publicRoot = path.join(landerRoot, 'public');
 const schemaPath = path.join(schemasRoot, 'mdwrk.page.v1.schema.json');
 const siteUrl = (process.env.MDWRK_SITE_URL || process.env.VITE_SITE_URL || 'https://mdwrk.com').replace(/\/+$/, '');
+const defaultImage = `${siteUrl}/favicon.svg`;
 const allowNoindexLlmsInclude = process.env.MDWRK_ALLOW_NOINDEX_LLMS_INCLUDE === 'true';
 const command = process.argv[2] ?? 'validate';
 const getArgValue = (name, fallback) => {
@@ -411,6 +412,8 @@ const normalizeFrontmatter = (frontmatter) => ({
   contentType: frontmatter.contentType,
   updatedAt: frontmatter.updatedAt,
   publishedAt: frontmatter.publishedAt,
+  featuredImage: frontmatter.featuredImage,
+  featuredImageAlt: frontmatter.featuredImageAlt,
   faqs: Object.freeze(frontmatter.faqs ?? buildDefaultFaqs({
     title: frontmatter.h1 || frontmatter.title,
     description: frontmatter.description,
@@ -533,10 +536,50 @@ const renderMarkdown = (body) => {
   };
 };
 
+const extractFirstImage = (content) => {
+  const source = String(content ?? '');
+  const markdownMatch = source.match(/!\[([^\]]*)]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+  if (markdownMatch) {
+    return {
+      src: markdownMatch[2],
+      alt: markdownMatch[1]?.trim() || '',
+    };
+  }
+
+  const htmlMatch = source.match(/<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i);
+  if (htmlMatch) {
+    return {
+      src: htmlMatch[1] || htmlMatch[4] || htmlMatch[5] || '',
+      alt: htmlMatch[2] || htmlMatch[3] || '',
+    };
+  }
+
+  return null;
+};
+
+const toAbsoluteUrl = (value) => {
+  const raw = String(value ?? '').trim();
+  if (!raw) return defaultImage;
+  if (/^https?:\/\//i.test(raw)) return raw;
+  return `${siteUrl}/${raw.replace(/^\/+/, '')}`;
+};
+
+const getExplicitFeaturedImage = (frontmatter) => {
+  const src = String(frontmatter?.featuredImage ?? '').trim();
+  if (!src) return null;
+  return {
+    src,
+    alt: String(frontmatter?.featuredImageAlt ?? '').trim(),
+  };
+};
+
+const getArticleMetadataImage = (entry) =>
+  getExplicitFeaturedImage(entry.frontmatter) || extractFirstImage(entry.body) || null;
+
 const buildDefaultFaqs = ({ title, description, contentType }) => {
   const normalizedTitle = String(title || 'this MdWrk page')
     .replace(/\s+\|\s+MdWrk.*$/i, '')
-    .replace(/^MdWrk\s+Blog$/i, 'Blog')
+    .replace(/^MdWrk\s+News$/i, 'News')
     .trim();
   const answer = String(description || '').trim();
   if (!answer) return [];
@@ -557,12 +600,12 @@ const buildDefaultFaqs = ({ title, description, contentType }) => {
   if (contentType === 'blog') {
     return [
       {
-        question: normalizedTitle === 'Blog' ? 'What does the MdWrk Blog cover?' : `What does this MdWrk article cover?`,
+        question: normalizedTitle === 'News' ? 'What does MdWrk News cover?' : `What does this MdWrk article cover?`,
         answer,
       },
       {
-        question: normalizedTitle === 'Blog' ? 'Where should readers start in the MdWrk Blog?' : 'What should readers take away from this article?',
-        answer: normalizedTitle === 'Blog'
+        question: normalizedTitle === 'News' ? 'Where should readers start in MdWrk News?' : 'What should readers take away from this article?',
+        answer: normalizedTitle === 'News'
           ? 'Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes.'
           : `This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.`,
       },
@@ -639,6 +682,8 @@ const createStaticEntry = ({
   intent,
   contentType,
   updatedAt,
+  featuredImage,
+  featuredImageAlt,
   body,
   html,
   faqs,
@@ -663,6 +708,8 @@ const createStaticEntry = ({
       intent,
       contentType,
       updatedAt,
+      featuredImage,
+      featuredImageAlt,
       faqs: faqs ?? buildDefaultFaqs({ title: h1, description, contentType }),
       parent,
       related,
@@ -797,6 +844,8 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
         description: excerpt,
         h1: title,
         subtitle: frontmatter.subtitle,
+        featuredImage: frontmatter.featuredImage,
+        featuredImageAlt: frontmatter.featuredImageAlt,
         intent: `learn ${title.toLowerCase()} in MdWrk`,
         contentType: 'docs',
         updatedAt: frontmatter.date,
@@ -835,6 +884,8 @@ const buildBlogPosts = (contentSources) => contentSources
       authorSlug: slugify(author),
       date,
       subtitle: source.frontmatter.subtitle,
+      featuredImage: source.frontmatter.featuredImage,
+      featuredImageAlt: source.frontmatter.featuredImageAlt,
       monthSlug: date ? date.slice(0, 7) : '',
       monthLabel: date ? toMonthLabel(date) : '',
       excerpt,
@@ -867,7 +918,7 @@ const createBlogListEntry = ({ slug, title, eyebrow, posts, sourcePath, sourceHa
     sourcePath,
     sourceHash,
     slug,
-    title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+    title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
     description,
     h1: title,
     subtitle: eyebrow || description,
@@ -887,10 +938,12 @@ const createBlogPostEntry = (post) => {
     sourcePath: post.sourcePath,
     sourceHash: sha256(post.raw),
     slug: `/blog/${post.slug}/`,
-    title: `${post.title} | MdWrk Blog`,
+    title: `${post.title} | MdWrk News`,
     description: post.excerpt,
     h1: post.title,
     subtitle: post.subtitle || post.excerpt,
+    featuredImage: post.featuredImage,
+    featuredImageAlt: post.featuredImageAlt,
     intent: `read about ${post.title.toLowerCase()}`,
     contentType: 'blog',
     updatedAt: post.date,
@@ -918,6 +971,8 @@ const createLegalEntry = (source) => {
     description,
     h1: title,
     subtitle: source.frontmatter.subtitle,
+    featuredImage: source.frontmatter.featuredImage,
+    featuredImageAlt: source.frontmatter.featuredImageAlt,
     intent: `read ${title.toLowerCase()}`,
     contentType: 'privacy',
     updatedAt: source.frontmatter.date,
@@ -987,7 +1042,7 @@ const readDataStaticEntries = () => {
 
   const blogList = createBlogListEntry({
     slug: '/blog/',
-    title: 'Blog',
+    title: 'News',
     posts: blogPosts,
     sourcePath: 'data/markdown/blog',
     sourceHash: sha256(blogPosts.map(post => `${post.slug}:${post.sourceHash}`).join('\n')),
@@ -1134,6 +1189,8 @@ const breadcrumbsFor = (entry, registry) => {
 
 const jsonLdFor = (entry, registry) => {
   const url = canonicalForSlug(entry.frontmatter.slug);
+  const metadataImage = getArticleMetadataImage(entry);
+  const image = toAbsoluteUrl(metadataImage?.src);
   const graph = [
     {
       '@type': 'WebPage',
@@ -1143,6 +1200,7 @@ const jsonLdFor = (entry, registry) => {
       headline: entry.frontmatter.h1,
       description: entry.frontmatter.description,
       dateModified: entry.frontmatter.updatedAt,
+      image,
       inLanguage: 'en-US',
     },
   ];
@@ -1207,10 +1265,10 @@ const jsonLdFor = (entry, registry) => {
 const renderTopNav = (registry, currentSlug) => {
   const links = [
     ['/', 'Home'],
-    ['/docs/', 'Docs'],
-    ['/blog/', 'Blog'],
     ['/features/offline-markdown-editor/', 'Features'],
     ['/compare/obsidian/', 'Compare'],
+    ['/docs/', 'Docs'],
+    ['/blog/', 'News'],
     ['/privacy/', 'Privacy'],
   ];
   return links
@@ -1483,7 +1541,7 @@ const renderStaticFooter = () => {
                   <h2 class="footer-section-heading">Resources</h2>
                   <ul class="footer-link-list">
                     <li><a href="/docs/" class="footer-link">Documentation</a></li>
-                    <li><a href="/blog/" class="footer-link">Blog</a></li>
+                    <li><a href="/blog/" class="footer-link">News</a></li>
                     <li><a href="${escapeAttribute(demoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
                     <li><a href="${escapeAttribute(npmRepoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
                   </ul>
@@ -1599,14 +1657,14 @@ const renderSupplementarySections = (entry, registry) => {
 };
 
 const renderArticleCard = (entry, registry) => {
-  const metaLabel = entry.frontmatter.contentType === 'blog' ? 'Blog' : entry.frontmatter.contentType;
+  const metaLabel = entry.frontmatter.contentType === 'blog' ? 'News' : entry.frontmatter.contentType;
   const isBlogPost = entry.frontmatter.contentType === 'blog' && entry.frontmatter.slug !== '/blog/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
   const isBlogList = entry.frontmatter.contentType === 'blog' && !isBlogPost;
   if (isBlogList) {
     return `<div class="blog-list-column">
                 <article class="blog-list-layout" aria-labelledby="blog-list-title">
                   <header class="blog-list-header">
-                    ${entry.frontmatter.slug === '/blog/' ? '' : '<a href="/blog/" class="blog-back-button">Back to Blog</a>'}
+                    ${entry.frontmatter.slug === '/blog/' ? '' : '<a href="/blog/" class="blog-back-button">Back to News</a>'}
                     <h1 id="blog-list-title" class="blog-list-title"><span class="blog-list-title-inner">${escapeHtml(entry.frontmatter.h1)}</span></h1>
                     ${entry.frontmatter.subtitle ? `<p class="blog-list-description">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
                   </header>
@@ -1620,7 +1678,7 @@ const renderArticleCard = (entry, registry) => {
     ? 'blog-post-card'
     : 'docs-content-card';
   return `<div class="docs-article-column">
-                ${isBlogPost ? '<a href="/blog/" class="blog-back-button">Back to Blog</a>' : ''}
+                ${isBlogPost ? '<a href="/blog/" class="blog-back-button">Back to News</a>' : ''}
                 <article class="${articleClass} lander-content-card">
                   <header class="${articleClass === 'blog-post-card' ? 'blog-post-header' : 'docs-header'}">
                     <div class="docs-meta">
@@ -1720,6 +1778,8 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
     <meta name="robots" content="${entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow'}">
     <meta name="application-name" content="MdWrk">
     <meta property="og:site_name" content="MdWrk">
+    <meta property="og:image" content="${escapeAttribute(defaultImage)}">
+    <meta name="twitter:image" content="${escapeAttribute(defaultImage)}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
     ${assetTags}
@@ -1826,6 +1886,9 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
   if (entry.frontmatter.slug === '/') return renderStaticHome(entry, registry, assetTags);
   const robots = entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow';
   const isDocs = entry.frontmatter.slug.startsWith('/docs/');
+  const metadataImage = getArticleMetadataImage(entry);
+  const image = toAbsoluteUrl(metadataImage?.src);
+  const imageAlt = metadataImage?.alt || entry.frontmatter.h1 || 'MdWrk';
   const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
   const toc = renderArticleToc(entry);
   return `<!doctype html>
@@ -1840,6 +1903,10 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
     <meta name="robots" content="${robots}">
     <meta name="application-name" content="MdWrk">
     <meta property="og:site_name" content="MdWrk">
+    <meta property="og:image" content="${escapeAttribute(image)}">
+    <meta property="og:image:alt" content="${escapeAttribute(imageAlt)}">
+    <meta name="twitter:image" content="${escapeAttribute(image)}">
+    <meta name="twitter:image:alt" content="${escapeAttribute(imageAlt)}">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
     ${assetTags}

@@ -840,6 +840,10 @@
   border-color: var(--lander-border);
 }
 
+.blog-post-card > .faq-section {
+  @apply mt-8;
+}
+
 .faq-section-heading {
   @apply mb-4 text-xs font-bold uppercase;
   color: var(--lander-fg-subtle);
@@ -1026,7 +1030,7 @@
 
 .blog-list-column,
 .blog-list-layout {
-  @apply mx-auto max-w-screen-xl;
+  @apply mx-auto max-w-screen-xl px-3;
 }
 
 .blog-list-header {
@@ -1062,12 +1066,13 @@
 }
 
 .blog-list-description {
-  @apply mx-auto max-w-2xl text-sm leading-7;
+  @apply mx-auto mb-10 max-w-2xl text-sm leading-7;
   color: var(--lander-fg-muted);
 }
 
 .blog-grid {
-  @apply grid gap-8;
+  @apply mx-auto grid gap-8;
+  max-width: calc(100% - 1rem);
 }
 
 .blog-card {
@@ -1279,6 +1284,7 @@
 
   .blog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: calc(100% - 3rem);
   }
 
   .docs-index-grid {
@@ -1353,6 +1359,7 @@
 
   .blog-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: calc(100% - 5rem);
   }
 
   .docs-index-grid {

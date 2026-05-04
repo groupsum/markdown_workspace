@@ -3,6 +3,7 @@
   box-sizing: border-box;
   color: var(--mwir-fg);
   background: var(--mwir-bg);
+  cursor: text;
   font-family: var(--mwir-font-ui);
 }
 
@@ -141,13 +142,14 @@
 }
 
 .markdown-edit-in-renderer-plaintext {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+  z-index: -1;
   box-sizing: border-box;
-  width: 100%;
-  min-height: 100%;
-  padding: clamp(1rem, 3vw, 3rem);
+  width: 1px;
+  height: 1px;
+  padding: 0;
   color: transparent;
   -webkit-text-fill-color: transparent;
   caret-color: transparent;
@@ -155,12 +157,15 @@
   border: 0;
   cursor: text;
   outline: 0;
+  opacity: 0;
+  pointer-events: none;
   resize: none;
-  overflow: auto;
+  overflow: hidden;
   font: inherit;
   line-height: 1.6;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  clip-path: inset(50%);
 }
 
 .markdown-edit-in-renderer-plaintext::placeholder {

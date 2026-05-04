@@ -9,8 +9,8 @@ import {
   buildTechArticleSchema,
   deriveKeywords,
   extractExcerpt,
-  extractFirstImage,
-  removeFirstImage
+  getArticleMetadataImage,
+  getExplicitFeaturedImage
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
@@ -156,8 +156,8 @@ export const DocsView: React.FC = () => {
       href: `#${slugifyHeading(heading)}`,
     })),
   ];
-  const featuredImage = extractFirstImage(articleContent);
-  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
+  const featuredImage = getExplicitFeaturedImage(currentDoc?.metadata);
+  const metadataImage = getArticleMetadataImage(currentDoc?.metadata, articleContent);
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
   const currentPath = currentDoc ? `/docs/${currentDoc.slug}` : '/docs/';
   const keywords = currentDoc
@@ -167,8 +167,8 @@ export const DocsView: React.FC = () => {
   usePageMetadata({
     title: currentDoc?.title || 'MdWrk Docs',
     description: excerpt,
-    image: featuredImage?.src,
-    imageAlt: featuredImage?.alt || currentDoc?.title,
+    image: metadataImage?.src,
+    imageAlt: metadataImage?.alt || currentDoc?.title,
     keywords,
     path: currentPath,
     structuredData: currentDoc
@@ -273,7 +273,7 @@ export const DocsView: React.FC = () => {
                   alt={featuredImage.alt || currentDoc?.title || 'MdWrk document featured image'}
                 />
               ) : null}
-              <MarkdownViewer content={contentWithoutFeaturedImage} />
+              <MarkdownViewer content={articleContent} />
             </div>
           </div>
 

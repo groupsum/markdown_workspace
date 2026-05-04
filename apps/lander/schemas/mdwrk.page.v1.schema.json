@@ -74,6 +74,16 @@
       "type": "string",
       "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
     },
+    "featuredImage": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(https?://|/)[^\\s]+$"
+    },
+    "featuredImageAlt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180
+    },
     "faqs": {
       "type": "array",
       "items": {

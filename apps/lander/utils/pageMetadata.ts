@@ -46,16 +46,16 @@ export const extractFirstImage = (content: string) => {
   return null;
 };
 
-export const removeFirstImage = (content: string) => {
-  if (markdownImagePattern.test(content)) {
-    return content.replace(markdownImagePattern, '').replace(/\n{3,}/g, '\n\n').trim();
-  }
+export const getExplicitFeaturedImage = (metadata?: Record<string, any> | null) => {
+  const src = typeof metadata?.featuredImage === 'string' ? metadata.featuredImage.trim() : '';
+  if (!src) return null;
+  const alt = typeof metadata?.featuredImageAlt === 'string' ? metadata.featuredImageAlt.trim() : '';
+  return { src, alt };
+};
 
-  if (htmlImagePattern.test(content)) {
-    return content.replace(htmlImagePattern, '').replace(/\n{3,}/g, '\n\n').trim();
-  }
-
-  return content;
+export const getArticleMetadataImage = (metadata: Record<string, any> | undefined | null, content: string) => {
+  const featuredImage = getExplicitFeaturedImage(metadata);
+  return featuredImage || extractFirstImage(content) || null;
 };
 
 export const extractExcerpt = (content: string, preferredExcerpt?: string | null, maxLength = 180) => {

@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
     { id: '/docs/product/offline-markdown-editor', label: 'Features' },
     { id: '/docs/comparisons/mdwrk-vs-obsidian', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
-    { id: '/blog', label: 'Blog' },
+    { id: '/blog', label: 'News' },
     { id: '/docs/product/privacy-first-markdown-editor', label: 'Privacy' },
   ];
   const menuPanelClassName = ['navbar-menu-panel', isOpen ? 'is-open' : 'is-closed'].join(' ');

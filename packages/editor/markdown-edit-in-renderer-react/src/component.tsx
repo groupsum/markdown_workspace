@@ -184,6 +184,18 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
       }
     }, [disabled, setTextareaSelection]);
 
+    const handleHostPointerDown = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+      if (disabled) return;
+      event.preventDefault();
+      updateSelectionFromPointer(event as unknown as React.PointerEvent<HTMLTextAreaElement>, event.shiftKey);
+    }, [disabled, updateSelectionFromPointer]);
+
+    const handleHostPointerMove = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+      if (disabled || event.buttons !== 1) return;
+      event.preventDefault();
+      updateSelectionFromPointer(event as unknown as React.PointerEvent<HTMLTextAreaElement>, true);
+    }, [disabled, updateSelectionFromPointer]);
+
     React.useEffect(() => {
       if (!autoFocus || disabled) return;
       inputRef.current?.focus();
@@ -223,6 +235,8 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
         style={mergedThemeStyle}
         data-document-key={documentKey}
         data-testid="markdown-edit-in-renderer"
+        onPointerDown={handleHostPointerDown}
+        onPointerMove={handleHostPointerMove}
       >
         <div
           ref={surfaceRef}
@@ -310,15 +324,6 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
           onMouseUp={(event) => {
             trackPlaintextSelection(event.currentTarget);
             updateRenderedCaret();
-          }}
-          onPointerDown={(event) => {
-            event.preventDefault();
-            updateSelectionFromPointer(event, event.shiftKey);
-          }}
-          onPointerMove={(event) => {
-            if (event.buttons !== 1) return;
-            event.preventDefault();
-            updateSelectionFromPointer(event, true);
           }}
           onScroll={updateRenderedCaret}
           onCompositionStart={(event) => {

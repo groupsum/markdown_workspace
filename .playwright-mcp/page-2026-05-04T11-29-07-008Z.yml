@@ -1,0 +1,136 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+      - list [ref=e22]:
+        - listitem [ref=e23]:
+          - link "Home" [ref=e24] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e25]:
+          - link "Features" [ref=e26] [cursor=pointer]:
+            - /url: /docs/product/offline-markdown-editor
+        - listitem [ref=e27]:
+          - link "Compare" [ref=e28] [cursor=pointer]:
+            - /url: /docs/comparisons/mdwrk-vs-obsidian
+        - listitem [ref=e29]:
+          - link "Docs" [ref=e30] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e31]:
+          - link "News" [ref=e32] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e33]:
+          - link "Privacy" [ref=e34] [cursor=pointer]:
+            - /url: /docs/product/privacy-first-markdown-editor
+  - main [ref=e35]:
+    - generic [ref=e37]:
+      - link "Back to News" [ref=e38] [cursor=pointer]:
+        - /url: /blog
+        - img [ref=e39]
+        - text: Back to News
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - link "Published May 1, 2026" [ref=e44] [cursor=pointer]:
+              - /url: /blog/archive/2026-05
+              - img [ref=e45]
+              - generic [ref=e47]:
+                - generic [ref=e48]: Published
+                - time [ref=e49]: May 1, 2026
+            - link "Author CobyCloud" [ref=e50] [cursor=pointer]:
+              - /url: /blog/author/cobycloud
+              - img [ref=e51]
+              - generic [ref=e54]:
+                - generic [ref=e55]: Author
+                - generic [ref=e56]: CobyCloud
+          - heading "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [level=1] [ref=e57]
+          - paragraph [ref=e58]: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+        - figure [ref=e59]:
+          - img "MdWrk settings visual panel with a simplified navigation experience" [ref=e60]
+        - generic [ref=e62]:
+          - heading "What improves" [level=2] [ref=e63]
+          - list [ref=e64]:
+            - listitem [ref=e65]: settings labels become cleaner and faster to scan
+            - listitem [ref=e66]: the active workspace experience gains a calmer visual rhythm
+            - listitem [ref=e67]: configuration panels become easier to review in sequence
+          - heading "Screenshot" [level=2] [ref=e68]
+          - heading "Current docs for configuration and setup" [level=2] [ref=e69]
+          - list [ref=e70]:
+            - listitem [ref=e71]:
+              - link "Installation" [ref=e72] [cursor=pointer]:
+                - /url: /docs/getting-started/installation
+            - listitem [ref=e73]:
+              - link "Configuration" [ref=e74] [cursor=pointer]:
+                - /url: /docs/getting-started/configuration
+            - listitem [ref=e75]:
+              - link "Local setup" [ref=e76] [cursor=pointer]:
+                - /url: /docs/getting-started/local-setup
+          - heading "Example setup flow" [level=2] [ref=e77]
+          - list [ref=e78]:
+            - listitem [ref=e79]: Install the client through the path that fits your team.
+            - listitem [ref=e80]: Open settings and tune theme, language, and workspace preferences.
+            - listitem [ref=e81]: Move into writing, extensions, or Git workflows with the same navigation language.
+          - paragraph [ref=e82]: MdWrk now carries a stronger onboarding story because the settings surface communicates action, structure, and next steps in a cleaner form.
+        - region "Frequently Asked Questions" [ref=e83]:
+          - heading "Frequently Asked Questions" [level=2] [ref=e84]
+          - generic [ref=e85]:
+            - group [ref=e86]:
+              - generic "What does this MdWrk article cover?" [ref=e87] [cursor=pointer]
+            - group [ref=e88]:
+              - generic "What should readers take away from this article?" [ref=e89] [cursor=pointer]
+  - contentinfo [ref=e90]:
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - link "MdWrk" [ref=e94] [cursor=pointer]:
+            - /url: /
+            - img [ref=e95]
+            - generic [ref=e99]: MdWrk
+          - paragraph [ref=e100]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - heading "Resources" [level=2] [ref=e103]
+            - list [ref=e104]:
+              - listitem [ref=e105]:
+                - link "Documentation" [ref=e106] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e107]:
+                - link "News" [ref=e108] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e109]:
+                - link "Live Demo" [ref=e110] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e111]:
+                - link "npm" [ref=e112] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e113]:
+            - heading "Follow" [level=2] [ref=e114]
+            - list [ref=e115]:
+              - listitem [ref=e116]:
+                - link "GitHub" [ref=e117] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e118]:
+                - link "X.com" [ref=e119] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e120]:
+                - link "Community" [ref=e121] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e122]:
+            - heading "Legal" [level=2] [ref=e123]
+            - list [ref=e124]:
+              - listitem [ref=e125]:
+                - link "Privacy" [ref=e126] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e127]:
+                - link "Terms" [ref=e128] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e129]
+      - generic [ref=e130]: © 2026 MdWrk. Designed for privacy.

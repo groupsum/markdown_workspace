@@ -49,6 +49,7 @@ const validators = {
   numericString: (value) => typeof value === 'string' && /^\d+(?:\.\d+)?$/.test(value.trim()),
   articleStatus: (value) => typeof value === 'string' && ['draft', 'published'].includes(value.trim()),
   commaList: (value) => typeof value === 'string' && value.trim().length > 0,
+  imagePath: (value) => typeof value === 'string' && /^(https?:\/\/|\/)[^\s]+$/.test(value.trim()),
   slug: (value) => typeof value === 'string' && /^[a-z0-9][a-z0-9/-]*$/.test(value.trim()),
   toc: (value) => typeof value === 'string' && ['true', 'false'].includes(value.trim()),
 };
@@ -61,6 +62,7 @@ const resolveValidator = (propertySchema, key) => {
   if (propertySchema?.$ref?.endsWith('/numericString')) return validators.numericString;
   if (propertySchema?.$ref?.endsWith('/articleStatus')) return validators.articleStatus;
   if (propertySchema?.$ref?.endsWith('/commaList')) return validators.commaList;
+  if (propertySchema?.$ref?.endsWith('/imagePath')) return validators.imagePath;
   if (key === 'slug') return validators.slug;
   if (key === 'toc') return validators.toc;
   return validators.nonEmptyString;

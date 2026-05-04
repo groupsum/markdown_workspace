@@ -3329,21 +3329,21 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/",
-      "title": "MdWrk Blog",
+      "title": "MdWrk News",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
-      "h1": "Blog",
+      "h1": "News",
       "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "entity": "MdWrk",
-      "intent": "read blog posts from MdWrk",
+      "intent": "read news posts from MdWrk",
       "contentType": "blog",
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What does the MdWrk Blog cover?",
+          "question": "What does MdWrk News cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "Where should readers start in the MdWrk Blog?",
+          "question": "Where should readers start in MdWrk News?",
           "answer": "Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes."
         }
       ],
@@ -3356,7 +3356,7 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "Blog MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
+      "text": "News MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "headings": [],
       "links": [
         {
@@ -3434,7 +3434,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/settings-simplification-for-daily-flow/",
-      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use | MdWrk Blog",
+      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use | MdWrk News",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
       "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
@@ -3516,7 +3516,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/docs-surface-realignment/",
-      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk Blog",
+      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk News",
       "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "h1": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
       "subtitle": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
@@ -3628,7 +3628,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/extension-host-rollout/",
-      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses | MdWrk Blog",
+      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses | MdWrk News",
       "description": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
       "h1": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
       "subtitle": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
@@ -3740,7 +3740,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/workspace-files-and-git-ops-packages/",
-      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk | MdWrk Blog",
+      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk | MdWrk News",
       "description": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
       "h1": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
       "subtitle": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
@@ -3822,7 +3822,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/desktop-release-and-android-verification/",
-      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery | MdWrk Blog",
+      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery | MdWrk News",
       "description": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
       "h1": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
       "subtitle": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
@@ -3899,7 +3899,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/retained-client-versions-and-desktop-shell/",
-      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk | MdWrk Blog",
+      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk | MdWrk News",
       "description": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
       "h1": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
       "subtitle": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
@@ -3981,7 +3981,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/screenshot-matrix-and-browser-sidebars/",
-      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows | MdWrk Blog",
+      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows | MdWrk News",
       "description": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
       "h1": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
       "subtitle": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
@@ -4048,7 +4048,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/extension-compatibility-and-publish-gates/",
-      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal | MdWrk Blog",
+      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal | MdWrk News",
       "description": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
       "h1": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
       "subtitle": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
@@ -4130,7 +4130,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/governed-releases-and-package-docs/",
-      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk Blog",
+      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk News",
       "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "h1": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
       "subtitle": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
@@ -4217,7 +4217,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/client-split-out-backstory/",
-      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk Blog",
+      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk News",
       "description": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
       "h1": "Build with the Same MdWrk Editor and Renderer the Client Ships",
       "subtitle": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
@@ -4324,7 +4324,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/pwa-install-and-zoom-controls/",
-      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk Blog",
+      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk News",
       "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "h1": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
       "subtitle": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
@@ -4411,7 +4411,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/responsive-authoring-and-export/",
-      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk Blog",
+      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk News",
       "description": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
       "h1": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
       "subtitle": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
@@ -4478,7 +4478,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/markdown-workspace-launch/",
-      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow | MdWrk Blog",
+      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow | MdWrk News",
       "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "h1": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
       "subtitle": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
@@ -4565,7 +4565,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/author/cobycloud/",
-      "title": "CobyCloud | MdWrk Blog",
+      "title": "CobyCloud | MdWrk News",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "CobyCloud",
       "subtitle": "Author Archive",
@@ -4670,7 +4670,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/archive/2026-05/",
-      "title": "May 2026 | MdWrk Blog",
+      "title": "May 2026 | MdWrk News",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "May 2026",
       "subtitle": "Monthly Archive",
@@ -4715,7 +4715,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/archive/2026-04/",
-      "title": "April 2026 | MdWrk Blog",
+      "title": "April 2026 | MdWrk News",
       "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "h1": "April 2026",
       "subtitle": "Monthly Archive",
@@ -4790,7 +4790,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/archive/2026-03/",
-      "title": "March 2026 | MdWrk Blog",
+      "title": "March 2026 | MdWrk News",
       "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "h1": "March 2026",
       "subtitle": "Monthly Archive",
@@ -4840,7 +4840,7 @@
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/blog/archive/2026-01/",
-      "title": "January 2026 | MdWrk Blog",
+      "title": "January 2026 | MdWrk News",
       "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "h1": "January 2026",
       "subtitle": "Monthly Archive",

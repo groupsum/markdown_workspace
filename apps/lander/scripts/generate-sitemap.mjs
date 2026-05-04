@@ -92,7 +92,28 @@ const extractFirstImage = (content) => {
       alt: markdownMatch[1]?.trim() || '',
     };
   }
+  const htmlMatch = content.match(/<img[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']*)["'][^>]*>|<img[^>]*alt=["']([^"']*)["'][^>]*src=["']([^"']+)["'][^>]*>|<img[^>]*src=["']([^"']+)["'][^>]*>/i);
+  if (htmlMatch) {
+    return {
+      src: htmlMatch[1] || htmlMatch[4] || htmlMatch[5] || '',
+      alt: htmlMatch[2] || htmlMatch[3] || '',
+    };
+  }
   return null;
+};
+
+const getArticleMetadataImage = (metadata, body) => {
+  const featuredImage = typeof metadata.featuredImage === 'string' ? metadata.featuredImage.trim() : '';
+  if (featuredImage) {
+    return {
+      src: featuredImage,
+      alt: typeof metadata.featuredImageAlt === 'string' ? metadata.featuredImageAlt.trim() : '',
+    };
+  }
+  return extractFirstImage(body) || {
+    src: '/favicon.svg',
+    alt: 'MdWrk favicon logo',
+  };
 };
 
 const summarize = (content, preferredExcerpt, maxLength = 220) => {
@@ -261,7 +282,7 @@ for (const entry of parseContentIds()) {
     const headings = extractHeadings(body);
     const routePath = `/blog/${postSlug}`;
     const description = summarize(body, metadata.excerpt);
-    const image = extractFirstImage(body);
+    const image = getArticleMetadataImage(metadata, body);
     const keywords = deriveKeywords(metadata.title, description, headings.join(' '));
 
     routes.push({
@@ -337,7 +358,7 @@ fs.writeFileSync(
   `${JSON.stringify({
     site: 'MdWrk',
     generatedAt: new Date().toISOString(),
-    description: 'Plain semantic index for MdWrk docs and blog pages.',
+    description: 'Plain semantic index for MdWrk docs and news pages.',
     entries: semanticEntries.sort((a, b) => a.url.localeCompare(b.url)),
   }, null, 2)}\n`,
 );
@@ -352,7 +373,7 @@ fs.writeFileSync(
     '',
     '- [Home](https://mdwrk.com/)',
     '- [Documentation](https://mdwrk.com/docs/)',
-    '- [Blog](https://mdwrk.com/blog)',
+    '- [News](https://mdwrk.com/blog)',
     '- [Privacy Policy](https://mdwrk.com/legal/privacy)',
     '- [Terms](https://mdwrk.com/legal/terms)',
     '- [Semantic Index](https://mdwrk.com/semantic-index.json)',
@@ -367,7 +388,7 @@ fs.writeFileSync(
         `  ${entry.description}`,
       ]),
     '',
-    '## Blog Posts',
+    '## News Posts',
     '',
     ...semanticEntries
       .filter(entry => entry.type === 'blog')

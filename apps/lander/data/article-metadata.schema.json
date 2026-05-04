@@ -36,6 +36,8 @@
         "date": { "$ref": "#/$defs/isoDate" },
         "status": { "$ref": "#/$defs/articleStatus" },
         "excerpt": { "$ref": "#/$defs/excerpt" },
+        "featuredImage": { "$ref": "#/$defs/imagePath" },
+        "featuredImageAlt": { "$ref": "#/$defs/nonEmptyString" },
         "relatedApis": { "$ref": "#/$defs/commaList" }
       },
       "additionalProperties": false
@@ -56,7 +58,9 @@
         "date": { "$ref": "#/$defs/isoDate" },
         "status": { "$ref": "#/$defs/articleStatus" },
         "author": { "$ref": "#/$defs/nonEmptyString" },
-        "excerpt": { "$ref": "#/$defs/excerpt" }
+        "excerpt": { "$ref": "#/$defs/excerpt" },
+        "featuredImage": { "$ref": "#/$defs/imagePath" },
+        "featuredImageAlt": { "$ref": "#/$defs/nonEmptyString" }
       },
       "additionalProperties": false
     }
@@ -95,6 +99,11 @@
     "commaList": {
       "type": "string",
       "minLength": 1
+    },
+    "imagePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(https?://|/)[^\\s]+$"
     }
   }
 }
