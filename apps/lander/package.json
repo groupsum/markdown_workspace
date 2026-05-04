@@ -7,10 +7,11 @@
     "dev": "vite",
     "build:deps": "npm --prefix ../.. run build:editor",
     "validate:article-metadata": "node ./scripts/validate-article-metadata.mjs",
+    "validate:answer-block-layout": "node ./scripts/validate-answer-block-layout.mjs",
     "validate:syntax-themes": "node ./scripts/validate-syntax-themes.mjs",
-    "build": "npm run build:deps && npm run validate:article-metadata && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
+    "build": "npm run build:deps && npm run validate:article-metadata && npm run validate:answer-block-layout && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
     "preview": "vite preview",
-    "typecheck": "npm run build:deps && npm run validate:article-metadata && npm run validate:syntax-themes && tsc --noEmit -p tsconfig.json",
+    "typecheck": "npm run build:deps && npm run validate:article-metadata && npm run validate:answer-block-layout && npm run validate:syntax-themes && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck"
   },
   "dependencies": {

@@ -726,8 +726,56 @@
   @apply min-w-0 flex-1 p-6;
 }
 
+.docs-article-column {
+  @apply flex min-w-0 flex-1 flex-col gap-6;
+}
+
 .blog-post-card {
   @apply p-6;
+}
+
+.answer-blocks {
+  @apply w-full rounded-[18px] border p-4;
+  background: color-mix(in srgb, var(--lander-panel) 78%, transparent);
+  border-color: var(--lander-border);
+}
+
+.answer-blocks-heading {
+  @apply mb-4 text-xs font-bold uppercase;
+  color: var(--lander-fg-subtle);
+  letter-spacing: 0.18em;
+}
+
+.answer-blocks-list {
+  @apply flex flex-col gap-3;
+}
+
+.answer-block-accordion {
+  @apply rounded-xl border;
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  border-color: var(--lander-border);
+}
+
+.answer-block-summary {
+  @apply cursor-pointer px-4 py-3 text-sm font-bold;
+  color: var(--lander-fg);
+}
+
+.answer-block-summary::marker {
+  color: var(--lander-accent);
+}
+
+.answer-block-content {
+  @apply border-t px-4 py-4;
+  border-color: var(--lander-border);
+}
+
+.answer-block-content .lander-markdown .markdown-body > :first-child {
+  margin-top: 0;
+}
+
+.answer-block-content .lander-markdown .markdown-body > :last-child {
+  margin-bottom: 0;
 }
 
 .lander-featured-image {

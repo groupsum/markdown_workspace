@@ -14,6 +14,7 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
+import { AnswerBlocks, extractTerminalAnswerBlocks, type AnswerBlock } from './AnswerBlocks';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
 interface DocItem {
@@ -53,7 +54,7 @@ const collectRelatedApis = (content: string, metadata: Record<string, string>) =
   return Array.from(new Set(discovered)).slice(0, 5);
 };
 
-const buildAnswerBlock = ({
+const buildAnswerBlocks = ({
   title,
   section,
   content,
@@ -71,25 +72,32 @@ const buildAnswerBlock = ({
   const primaryExample = relatedApis[0] || '@mdwrk/mdwrkspace';
 
   return [
-    `## What This Does`,
-    excerpt,
-    ``,
-    `## When To Use It`,
-    `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${section.toLowerCase()} surface.`,
-    ``,
-    `## How It Works`,
-    `MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.`,
-    ``,
-    `## Example`,
-    `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.`,
-    ``,
-    `## Common Errors`,
-    `Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.`,
-    ``,
-    `## Related APIs`,
-    relatedApiText,
-    ``,
-  ].join('\n');
+    {
+      title: 'What This Does',
+      content: excerpt,
+    },
+    {
+      title: 'When To Use It',
+      content: `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${section.toLowerCase()} surface.`,
+    },
+    {
+      title: 'How It Works',
+      content: 'MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.',
+    },
+    {
+      title: 'Example',
+      content: `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.`,
+    },
+    {
+      title: 'Common Errors',
+      content: 'Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.',
+    },
+    {
+      title: 'Related APIs',
+      content: relatedApiText,
+      defaultOpen: true,
+    },
+  ] satisfies AnswerBlock[];
 };
 
 export const DocsView: React.FC = () => {
@@ -138,20 +146,22 @@ export const DocsView: React.FC = () => {
   const activeSlug = slugParam || docs[0]?.slug;
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
   const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
-  const excerpt = extractExcerpt(renderedContent, currentDoc?.metadata.excerpt);
-  const answerBlock = currentDoc
-    ? buildAnswerBlock({
+  const extractedAnswerContent = extractTerminalAnswerBlocks(renderedContent);
+  const articleContent = extractedAnswerContent.articleContent;
+  const excerpt = extractExcerpt(articleContent, currentDoc?.metadata.excerpt);
+  const generatedAnswerBlocks = currentDoc
+    ? buildAnswerBlocks({
         title: currentDoc.title,
         section: currentDoc.section,
-        content: renderedContent,
+        content: articleContent,
         excerpt,
         metadata: currentDoc.metadata,
       })
-    : '';
-  const answerWrappedContent = currentDoc ? `${renderedContent}\n\n---\n\n${answerBlock}` : renderedContent;
-  const headings = extractHeadings(answerWrappedContent);
-  const featuredImage = extractFirstImage(answerWrappedContent);
-  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(answerWrappedContent) : answerWrappedContent;
+    : [];
+  const answerBlocks = [...extractedAnswerContent.answerBlocks, ...generatedAnswerBlocks];
+  const headings = extractHeadings(articleContent);
+  const featuredImage = extractFirstImage(articleContent);
+  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
   const currentPath = currentDoc ? `/docs/${currentDoc.slug}` : '/docs/';
   const keywords = currentDoc
@@ -243,30 +253,33 @@ export const DocsView: React.FC = () => {
 
       <main className="docs-main">
         <div className="docs-content-wrap">
-          <div className="lander-content-card docs-content-card">
-            {currentDoc && (
-              <header className="docs-header">
-                <div className="docs-meta">
-                  <span>{currentDoc.section}</span>
-                  {currentDoc.metadata.date && (
-                    <>
-                      <span className="docs-meta-divider">/</span>
-                      <span>{currentDoc.metadata.date}</span>
-                    </>
-                  )}
-                </div>
-                <h1 className="docs-title">
-                  {currentDoc.title}
-                </h1>
-              </header>
-            )}
-            {featuredImage?.src ? (
-              <FeaturedImage
-                src={featuredImage.src}
-                alt={featuredImage.alt || currentDoc?.title || 'MdWrk document featured image'}
-              />
-            ) : null}
-            <MarkdownViewer content={contentWithoutFeaturedImage} />
+          <div className="docs-article-column">
+            <div className="lander-content-card docs-content-card">
+              {currentDoc && (
+                <header className="docs-header">
+                  <div className="docs-meta">
+                    <span>{currentDoc.section}</span>
+                    {currentDoc.metadata.date && (
+                      <>
+                        <span className="docs-meta-divider">/</span>
+                        <span>{currentDoc.metadata.date}</span>
+                      </>
+                    )}
+                  </div>
+                  <h1 className="docs-title">
+                    {currentDoc.title}
+                  </h1>
+                </header>
+              )}
+              {featuredImage?.src ? (
+                <FeaturedImage
+                  src={featuredImage.src}
+                  alt={featuredImage.alt || currentDoc?.title || 'MdWrk document featured image'}
+                />
+              ) : null}
+              <MarkdownViewer content={contentWithoutFeaturedImage} />
+            </div>
+            <AnswerBlocks blocks={answerBlocks} />
           </div>
 
           {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (

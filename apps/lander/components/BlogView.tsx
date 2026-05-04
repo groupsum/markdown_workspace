@@ -14,6 +14,7 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
+import { AnswerBlocks, extractTerminalAnswerBlocks } from './AnswerBlocks';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
 interface BlogPost {
@@ -203,10 +204,12 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   }
 
   const renderedContent = removeDuplicateLeadingHeading(post.content || '', post.metadata.title);
-  const featuredImage = extractFirstImage(renderedContent);
-  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(renderedContent) : renderedContent;
+  const extractedAnswerContent = extractTerminalAnswerBlocks(renderedContent);
+  const articleContent = extractedAnswerContent.articleContent;
+  const featuredImage = extractFirstImage(articleContent);
+  const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
   const excerpt = post.excerpt;
-  const keywords = deriveKeywords(post.metadata.title, excerpt, renderedContent);
+  const keywords = deriveKeywords(post.metadata.title, excerpt, articleContent);
 
   usePageMetadata({
     title: post.metadata.title,
@@ -260,6 +263,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           ) : null}
           <MarkdownViewer content={contentWithoutFeaturedImage} />
         </div>
+        <AnswerBlocks blocks={extractedAnswerContent.answerBlocks} title="Article Guide" />
       </div>
     </div>
   );
