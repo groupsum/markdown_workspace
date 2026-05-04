@@ -263,7 +263,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           ) : null}
           <MarkdownViewer content={contentWithoutFeaturedImage} />
         </div>
-        <AnswerBlocks blocks={extractedAnswerContent.answerBlocks} title="Article Guide" />
+        <AnswerBlocks id="article-guide" blocks={extractedAnswerContent.answerBlocks} title="Article Guide" />
       </div>
     </div>
   );

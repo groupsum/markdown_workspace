@@ -827,9 +827,23 @@
   @apply space-y-3;
 }
 
+.docs-toc-item {
+  @apply min-w-0;
+}
+
 .docs-toc-link {
   @apply block truncate text-xs transition-colors;
   color: var(--lander-fg-muted);
+}
+
+.docs-toc-children {
+  @apply mt-2 space-y-2 border-l pl-3;
+  border-color: var(--lander-border);
+}
+
+.docs-toc-link-child {
+  @apply text-[0.7rem];
+  color: color-mix(in srgb, var(--lander-fg-muted) 82%, transparent);
 }
 
 .docs-toc-link:hover {

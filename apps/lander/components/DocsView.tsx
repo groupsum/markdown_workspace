@@ -14,13 +14,19 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { AnswerBlocks, extractTerminalAnswerBlocks, type AnswerBlock } from './AnswerBlocks';
+import { AnswerBlocks, extractTerminalAnswerBlocks, slugifyAnswerBlock, type AnswerBlock } from './AnswerBlocks';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
 interface DocItem {
   id: string;
   title: string;
   children?: DocItem[];
+}
+
+interface TocItem {
+  title: string;
+  href: string;
+  children?: TocItem[];
 }
 
 const normalizeTitle = (value: string) =>
@@ -42,6 +48,12 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
 };
 
 const packagePattern = /`(@mdwrk\/[^`]+)`/g;
+
+const slugifyHeading = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
 
 const collectRelatedApis = (content: string, metadata: Record<string, string>) => {
   const explicit = metadata.relatedApis
@@ -158,8 +170,36 @@ export const DocsView: React.FC = () => {
         metadata: currentDoc.metadata,
       })
     : [];
-  const answerBlocks = [...extractedAnswerContent.answerBlocks, ...generatedAnswerBlocks];
+  const quickReferenceBlocks = extractedAnswerContent.answerBlocks;
   const headings = extractHeadings(articleContent);
+  const tocItems: TocItem[] = [
+    ...headings.map(heading => ({
+      title: heading,
+      href: `#${slugifyHeading(heading)}`,
+    })),
+    ...(quickReferenceBlocks.length > 0
+      ? [{
+          title: quickReferenceBlocks.length === 1 ? quickReferenceBlocks[0].title : 'Quick Reference',
+          href: '#quick-reference',
+          children: quickReferenceBlocks.length > 1
+            ? quickReferenceBlocks.map(block => ({
+                title: block.title,
+                href: `#quick-reference-${slugifyAnswerBlock(block.title)}`,
+              }))
+            : undefined,
+        }]
+      : []),
+    ...(generatedAnswerBlocks.length > 0
+      ? [{
+          title: 'Answer Blocks',
+          href: '#answer-blocks',
+          children: generatedAnswerBlocks.map(block => ({
+            title: block.title,
+            href: `#answer-blocks-${slugifyAnswerBlock(block.title)}`,
+          })),
+        }]
+      : []),
+  ];
   const featuredImage = extractFirstImage(articleContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
   const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
@@ -279,23 +319,30 @@ export const DocsView: React.FC = () => {
               ) : null}
               <MarkdownViewer content={contentWithoutFeaturedImage} />
             </div>
-            <AnswerBlocks blocks={answerBlocks} />
+            <AnswerBlocks id="quick-reference" title="Quick Reference" blocks={quickReferenceBlocks} />
+            <AnswerBlocks id="answer-blocks" title="Answer Blocks" blocks={generatedAnswerBlocks} />
           </div>
 
-          {currentDoc?.metadata.toc === 'true' && headings.length > 0 && (
+          {currentDoc?.metadata.toc === 'true' && tocItems.length > 0 && (
             <aside className="docs-toc">
               <div className="docs-toc-inner">
                 <h4 className="docs-toc-heading">On this page</h4>
                 <nav className="docs-toc-nav">
-                  {headings.map((h, idx) => (
-                    <a
-                      key={idx}
-                      href={`#${h.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')}`}
-                      className="docs-toc-link"
-                      title={h}
-                    >
-                      {h}
-                    </a>
+                  {tocItems.map(item => (
+                    <div key={item.href} className="docs-toc-item">
+                      <a href={item.href} className="docs-toc-link" title={item.title}>
+                        {item.title}
+                      </a>
+                      {item.children?.length ? (
+                        <div className="docs-toc-children">
+                          {item.children.map(child => (
+                            <a key={child.href} href={child.href} className="docs-toc-link docs-toc-link-child" title={child.title}>
+                              {child.title}
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
                   ))}
                 </nav>
               </div>

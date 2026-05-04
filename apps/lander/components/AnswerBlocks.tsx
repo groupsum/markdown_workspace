@@ -7,6 +7,13 @@ export interface AnswerBlock {
   defaultOpen?: boolean;
 }
 
+export const slugifyAnswerBlock = (value: string) =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
+
 const terminalAnswerHeadingPattern = /^##\s+(Quick Reference|Article Guide)\s*$/gm;
 
 export const extractTerminalAnswerBlocks = (content: string) => {
@@ -49,12 +56,15 @@ export const extractTerminalAnswerBlocks = (content: string) => {
 
 export const AnswerBlocks: React.FC<{
   blocks: AnswerBlock[];
+  id?: string;
   title?: string;
-}> = ({ blocks, title = 'Answer Blocks' }) => {
+}> = ({ blocks, id, title = 'Answer Blocks' }) => {
   if (blocks.length === 0) return null;
 
+  const sectionId = id ?? slugifyAnswerBlock(title);
+
   return (
-    <section className="answer-blocks" aria-label={title}>
+    <section id={sectionId} className="answer-blocks" aria-label={title}>
       <h2 className="answer-blocks-heading">{title}</h2>
       <div className="answer-blocks-list">
         {blocks.map(block => (
@@ -63,7 +73,7 @@ export const AnswerBlocks: React.FC<{
             className="answer-block-accordion"
             open={block.defaultOpen}
           >
-            <summary className="answer-block-summary">{block.title}</summary>
+            <summary id={`${sectionId}-${slugifyAnswerBlock(block.title)}`} className="answer-block-summary">{block.title}</summary>
             <div className="answer-block-content">
               <MarkdownViewer content={block.content} />
             </div>
