@@ -127,3 +127,13 @@ MdWrk treats rendering as a first-class product surface, not as a best-effort co
 - [Editor Basics](/docs/usage/editor-basics)
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Frequently Asked Questions
+
+### What is Rendering And Preview?
+
+MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
+
+### When should I use Rendering And Preview?
+
+Use this docs when you need direct MdWrk guidance for rendering and preview.

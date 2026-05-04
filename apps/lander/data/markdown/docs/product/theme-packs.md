@@ -1,7 +1,7 @@
 ---
 title: Theme Packs
 slug: product/theme-packs
-section: Product
+section: Features
 sectionOrder: 2
 order: 16
 toc: true

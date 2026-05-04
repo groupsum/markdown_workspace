@@ -67,3 +67,13 @@ This package family fits:
 - extension teams that want their work to sit close to the live MdWrk runtime
 
 MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path becomes easier to install, easier to use, and easier to extend.
+
+## Frequently Asked Questions
+
+### What is Build with the Same MdWrk Editor and Renderer the Client Ships?
+
+MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
+
+### When should I use Build with the Same MdWrk Editor and Renderer the Client Ships?
+
+Use this blog when you need direct MdWrk guidance for build with the same mdwrk editor and renderer the client ships.

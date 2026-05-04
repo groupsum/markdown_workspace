@@ -1,0 +1,43 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e44]:
+      - heading "Edit in renderer" [level=1] [ref=e45]
+      - paragraph [ref=e46]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e47]
+      - paragraph [ref=e48]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e49]: "## Next section"
+        - text: ","
+        - code [ref=e50]: "- new item"
+        - text: ", or"
+        - code [ref=e51]: "> note"
+        - text: .
+      - list [ref=e52]:
+        - listitem [ref=e53]:
+          - paragraph [ref=e54]: Headings stay visually rendered as headings
+        - listitem [ref=e55]:
+          - paragraph [ref=e56]: Lists stay visually rendered as lists
+        - listitem [ref=e57]:
+          - paragraph [ref=e58]:
+            - strong [ref=e59]: Bold
+            - text: and
+            - emphasis [ref=e60]: italic
+            - text: text render inside the same editable pane
+          - blockquote [ref=e61]:
+            - paragraph [ref=e62]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e63]:
+        - rowgroup [ref=e67]:
+          - row "Syntax Rendered result" [ref=e68]:
+            - columnheader "Syntax" [ref=e69]
+            - columnheader "Rendered result" [ref=e70]
+        - rowgroup [ref=e71]:
+          - row "# Title heading" [ref=e72]:
+            - cell "# Title" [ref=e73]:
+              - code [ref=e74]: "# Title"
+            - cell "heading" [ref=e75]
+          - row "- Item list item" [ref=e76]:
+            - cell "- Item" [ref=e77]:
+              - code [ref=e78]: "- Item"
+            - cell "list item" [ref=e79]
+      - code [ref=e81]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+      - paragraph [ref=e82]: abcdef

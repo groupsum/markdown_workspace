@@ -19,3 +19,13 @@ Installable extensions use manifests, integrity metadata, compatibility rules, a
 - [Extension Platform](/docs/extensions/extension-platform)
 - [Client Configuration](/docs/getting-started/configuration)
 - [Privacy Policy](/legal/privacy)
+
+## Frequently Asked Questions
+
+### What is Privacy-first Markdown Editor?
+
+MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.
+
+### When should I use Privacy-first Markdown Editor?
+
+Use this docs when you need direct MdWrk guidance for privacy-first markdown editor.

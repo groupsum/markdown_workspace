@@ -1,7 +1,7 @@
 ---
 title: Editor Basics
 slug: usage/editor-basics
-section: Product
+section: Features
 sectionOrder: 2
 order: 1
 toc: true

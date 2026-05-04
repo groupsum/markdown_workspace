@@ -1,0 +1,22 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e44]:
+      - paragraph [ref=e45]:
+        - text: Edit in rendererEdit directly in this rendered document. This single surface is both the input area and the rendered display.Live markdown renderingMarkdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e46]: "## Next section"
+        - text: ","
+        - code [ref=e47]: "- new item"
+        - text: ", or"
+        - code [ref=e48]: "> note"
+        - text: .Headings stay visually rendered as headingsLists stay visually rendered as lists
+        - strong [ref=e49]: Bold
+        - text: and
+        - emphasis [ref=e50]: italic
+        - text: text render inside the same editable paneBlockquotes, code blocks, and tables render without switching panes.SyntaxRendered result
+        - code [ref=e51]: "# Title"
+        - text: heading
+        - code [ref=e52]: "- Item"
+        - text: "list item`import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\";"
+      - paragraph [ref=e53]:
+        - text: "<MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />`"
+        - code [ref=e54]

@@ -33,3 +33,13 @@ Current first-party extension surfaces documented in this repo include:
 ## External installables
 
 External extensions do not run through ad hoc `npm install` inside the browser. They ship as signed installable artifacts with manifest, integrity, and compatibility declarations.
+
+## Frequently Asked Questions
+
+### What is Extension Platform?
+
+MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks.
+
+### When should I use Extension Platform?
+
+Use this docs when you need direct MdWrk guidance for extension platform.

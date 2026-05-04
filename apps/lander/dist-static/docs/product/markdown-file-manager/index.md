@@ -19,3 +19,13 @@ Where the desktop shell is available, host file acquisition and filesystem-backe
 - [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Local Setup](/docs/getting-started/local-setup)
+
+## Frequently Asked Questions
+
+### What is Markdown File Manager?
+
+MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.
+
+### When should I use Markdown File Manager?
+
+Use this docs when you need direct MdWrk guidance for markdown file manager.

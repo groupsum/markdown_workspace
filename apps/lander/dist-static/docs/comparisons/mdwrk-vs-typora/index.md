@@ -16,3 +16,13 @@ MdWrk keeps source editing and preview explicit, which is useful when the exact 
 
 - [Markdown Preview Editor](/docs/product/markdown-preview-editor)
 - [Editor Basics](/docs/usage/editor-basics)
+
+## Frequently Asked Questions
+
+### What is MdWrk Vs Typora?
+
+Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
+
+### When should I use MdWrk Vs Typora?
+
+Use this docs when you need direct MdWrk guidance for mdwrk vs typora.

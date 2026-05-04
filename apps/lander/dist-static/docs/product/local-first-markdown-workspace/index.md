@@ -19,3 +19,13 @@ Extensions can add managed views and commands without replacing the local-first 
 - [Local Setup](/docs/getting-started/local-setup)
 - [Extension Platform](/docs/extensions/extension-platform)
 - [GitHub Sync](/docs/github-sync)
+
+## Frequently Asked Questions
+
+### What is Local-first Markdown Workspace?
+
+MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.
+
+### When should I use Local-first Markdown Workspace?
+
+Use this docs when you need direct MdWrk guidance for local-first markdown workspace.

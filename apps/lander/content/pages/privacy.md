@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "MdWrk privacy policy"
 contentType: "privacy"
 updatedAt: "2026-05-04"
-answer: "MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices."
+subtitle: "MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices."
 faqs:
   - question: "Does MdWrk upload documents by default?"
     answer: "The public documentation should not imply default uploads. It should describe local storage and identify workflows that intentionally use networked services."

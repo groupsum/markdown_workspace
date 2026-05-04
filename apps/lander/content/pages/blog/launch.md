@@ -9,7 +9,7 @@ intent: "MdWrk launch story"
 contentType: "blog"
 updatedAt: "2026-05-04"
 publishedAt: "2026-05-04"
-answer: "The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment."
+subtitle: "The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment."
 faqs:
   - question: "Why does the MdWrk lander compile static HTML?"
     answer: "Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification."

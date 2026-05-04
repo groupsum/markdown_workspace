@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "MdWrk security documentation"
 contentType: "security"
 updatedAt: "2026-05-04"
-answer: "MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment."
+subtitle: "MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment."
 parent: "/"
 related:
   - "/privacy/"

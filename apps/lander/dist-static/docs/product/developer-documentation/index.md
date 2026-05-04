@@ -19,3 +19,13 @@ Developers can run the repo locally, build package families, embed split editor 
 - [Local Setup](/docs/getting-started/local-setup)
 - [Standalone Modules](/docs/getting-started/standalone-modules)
 - [Authoring Overview](/docs/authoring/overview)
+
+## Frequently Asked Questions
+
+### What is Developer Documentation?
+
+MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.
+
+### When should I use Developer Documentation?
+
+Use this docs when you need direct MdWrk guidance for developer documentation.

@@ -29,3 +29,13 @@ npm run build:desktop
 ## Why this milestone matters
 
 Deployment flexibility matters for teams that want browser-first use, desktop packaging, or self-managed hosting. April 12 shows MdWrk growing into a platform that can support all three with one codebase.
+
+## Frequently Asked Questions
+
+### What is Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?
+
+MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
+
+### When should I use Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?
+
+Use this blog when you need direct MdWrk guidance for retained client versions and the desktop shell expand how teams can deploy mdwrk.

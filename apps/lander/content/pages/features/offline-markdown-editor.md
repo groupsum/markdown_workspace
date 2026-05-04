@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "offline markdown editor"
 contentType: "feature"
 updatedAt: "2026-05-04"
-answer: "MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action."
+subtitle: "MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action."
 faqs:
   - question: "Is MdWrk an offline Markdown editor?"
     answer: "MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services."

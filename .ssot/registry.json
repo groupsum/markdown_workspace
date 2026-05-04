@@ -5989,6 +5989,37 @@
         "tst:github-workflows-lander-static-content"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:edit-in-renderer-profile-contract",
+      "title": "Edit-in-renderer profile contract",
+      "description": "Govern the all-in-one edit-in-renderer profile where plaintext Markdown is canonical, rendered Markdown is an isolated projection, and CommonMark, GFM, and MdWrk profiles all support editing and previewing in one pane.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:1000",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:edit-in-renderer-profile-contract"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -7183,6 +7214,22 @@
       "evidence_ids": [
         "evd:lander-static-content-ci-local"
       ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "title": "Markdown edit-in-renderer React smoke profile checks",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/editor/markdown-edit-in-renderer-react/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:edit-in-renderer-profile-contract"
+      ],
+      "claim_ids": [
+        "clm:edit-in-renderer-profile-contract"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ]
     }
   ],
   "claims": [
@@ -7795,6 +7842,23 @@
         "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
         "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ]
+    },
+    {
+      "id": "clm:edit-in-renderer-profile-contract",
+      "title": "Edit-in-renderer profile preserves plaintext source and rendered projection",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "The edit-in-renderer profile requires plaintext Markdown to remain canonical while rendered Markdown is a projection. Editing, previewing, blank content, repeated Enter, cursor location, and profile-specific rendering behavior must preserve plaintext integrity across CommonMark, GFM, and MdWrk profiles.",
+      "feature_ids": [
+        "feat:edit-in-renderer-profile-contract"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
       ]
     }
   ],
@@ -8519,6 +8583,20 @@
         "tst:apps-lander-src-cli-static-content",
         "tst:github-workflows-lander-static-content"
       ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "title": "Markdown edit-in-renderer React smoke run",
+      "status": "passed",
+      "kind": "test-output",
+      "tier": "T2",
+      "path": "packages/editor/markdown-edit-in-renderer-react/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:edit-in-renderer-profile-contract"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ]
     }
   ],
   "issues": [
@@ -8549,6 +8627,44 @@
       "evidence_ids": [
         "evd:apps-lander-scripts-validate-syntax-themes.mjs"
       ],
+      "risk_ids": [],
+      "release_blocking": false
+    },
+    {
+      "id": "iss:edit-in-renderer-blank-document-delete-fails",
+      "title": "Edit-in-renderer cannot delete to blank document",
+      "status": "open",
+      "severity": "high",
+      "description": "Deleting all plaintext markdown in the edit-in-renderer package must be allowed. Empty plaintext is a valid blank Markdown document and must render to an empty projection; placeholder text must never become source or rendered document content.",
+      "plan": {
+        "horizon": "current",
+        "slot": null
+      },
+      "feature_ids": [
+        "feat:client-editor"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "evidence_ids": [],
+      "risk_ids": [],
+      "release_blocking": false
+    },
+    {
+      "id": "iss:edit-in-renderer-repeated-enter-breaks",
+      "title": "Edit-in-renderer repeated Enter breaks blank-line editing",
+      "status": "closed",
+      "severity": "high",
+      "description": "Double-Enter and triple-Enter edits in the edit-in-renderer package must preserve plaintext newline runs, caret offset, and a corresponding rendered blank-line area. The rendered projection must be derived from plaintext and must not collapse trailing blank source lines in a way that breaks editing.",
+      "plan": {
+        "horizon": "current",
+        "slot": null
+      },
+      "feature_ids": [
+        "feat:client-editor"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "evidence_ids": [],
       "risk_ids": [],
       "release_blocking": false
     }
@@ -10060,6 +10176,24 @@
       "immutable": true,
       "package_version": "0.2.11",
       "content_sha256": "aa4277df313bf604e6f3a4930a98f635082e0e7ca0d3ecdc7f1b10d5d29357e8",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": []
+    },
+    {
+      "id": "spc:1000",
+      "number": 1000,
+      "slug": "edit-in-renderer-profile-contract",
+      "title": "Edit In Renderer Profile Contract",
+      "path": ".ssot/specs/SPEC-1000-edit-in-renderer-profile-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "5f11d2ddbfb9c58db59528f127075022e4b2f7030d8a258f4d35471d6a45086d",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -11682,6 +11816,88 @@
       "evaluation": {
         "mode": "all_features_must_pass",
         "allow_feature_override_tier": true
+      }
+    },
+    {
+      "id": "prf:commonmark-editing-preview",
+      "title": "CommonMark Editing And Previewing Profile",
+      "description": "Capability profile requiring CommonMark Markdown content to support both editing and previewing surfaces, with CommonMark source behavior governed by renderer, editor, and profile contracts.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:commonmark-conformance-profile",
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:client-editor"
+      ],
+      "profile_ids": [],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": false
+      }
+    },
+    {
+      "id": "prf:gfm-editing-preview",
+      "title": "GFM Editing And Previewing Profile",
+      "description": "Capability profile requiring GitHub Flavored Markdown content to support both editing and previewing surfaces, layered above CommonMark profile behavior.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:gfm-profile",
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:client-editor"
+      ],
+      "profile_ids": [
+        "prf:commonmark-editing-preview"
+      ],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": false
+      }
+    },
+    {
+      "id": "prf:mdwrk-editing-preview",
+      "title": "MdWrk Editing And Previewing Profile",
+      "description": "Capability profile requiring MdWrk Markdown behavior to support both editing and previewing surfaces, including custom profile parsing and previewing layered above CommonMark and GFM.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:custom-flavored-markdown-profile",
+        "feat:mdwrk-custom-parser-profile",
+        "feat:mdwrk-custom-previewer-profiles",
+        "feat:client-markdownprofiles",
+        "feat:client-editor"
+      ],
+      "profile_ids": [
+        "prf:gfm-editing-preview"
+      ],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": false
+      }
+    },
+    {
+      "id": "prf:edit-in-renderer-profile",
+      "title": "Edit In Renderer All In One Profile",
+      "description": "All-in-one edit-in-renderer profile used to declare the specs, contracts, and expected behavior for unified Markdown editing and previewing. Plaintext Markdown is the canonical source, rendered Markdown is derived projection, and CommonMark, GFM, and MdWrk editing/previewing profiles are included.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:edit-in-renderer-profile-contract"
+      ],
+      "profile_ids": [
+        "prf:commonmark-editing-preview",
+        "prf:gfm-editing-preview",
+        "prf:mdwrk-editing-preview"
+      ],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": false
       }
     }
   ]

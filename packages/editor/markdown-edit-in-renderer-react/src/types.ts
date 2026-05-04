@@ -10,7 +10,7 @@ import type { MarkdownEditInRendererThemeVariables } from "./theme.js";
 export interface MarkdownEditInRendererHandle {
   focus(): void;
   getValue(): string;
-  getInputElement(): HTMLDivElement | null;
+  getInputElement(): HTMLTextAreaElement | null;
   setValue(value: string): void;
 }
 

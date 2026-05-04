@@ -1,7 +1,7 @@
 ---
 title: Markdown File Manager
 slug: product/markdown-file-manager
-section: Product
+section: Features
 sectionOrder: 2
 order: 13
 toc: true

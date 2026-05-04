@@ -1,0 +1,43 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e83]:
+      - heading "Edit in renderer" [level=1] [ref=e84]
+      - paragraph [ref=e85]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e86]
+      - paragraph [ref=e87]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e88]: "## Next section"
+        - text: ","
+        - code [ref=e89]: "- new item"
+        - text: ", or"
+        - code [ref=e90]: "> note"
+        - text: .
+      - list [ref=e91]:
+        - listitem [ref=e92]:
+          - paragraph [ref=e93]: Headings stay visually rendered as headings
+        - listitem [ref=e94]:
+          - paragraph [ref=e95]: Lists stay visually rendered as lists
+        - listitem [ref=e96]:
+          - paragraph [ref=e97]:
+            - strong [ref=e98]: Bold
+            - text: and
+            - emphasis [ref=e99]: italic
+            - text: text render inside the same editable pane
+          - blockquote [ref=e100]:
+            - paragraph [ref=e101]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e102]:
+        - rowgroup [ref=e106]:
+          - row "Syntax Rendered result" [ref=e107]:
+            - columnheader "Syntax" [ref=e108]
+            - columnheader "Rendered result" [ref=e109]
+        - rowgroup [ref=e110]:
+          - row "# Title heading" [ref=e111]:
+            - cell "# Title" [ref=e112]:
+              - code [ref=e113]: "# Title"
+            - cell "heading" [ref=e114]
+          - row "- Item list item" [ref=e115]:
+            - cell "- Item" [ref=e116]:
+              - code [ref=e117]: "- Item"
+            - cell "list item" [ref=e118]
+      - code [ref=e120]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+      - paragraph [ref=e121]: abcdef

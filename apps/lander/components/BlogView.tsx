@@ -14,7 +14,6 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { AnswerBlocks, extractTerminalAnswerBlocks } from './AnswerBlocks';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
 interface BlogPost {
@@ -25,6 +24,7 @@ interface BlogPost {
   monthLabel: string;
   displayDate: string;
   excerpt: string;
+  subtitle?: string;
   metadata: Record<string, any>;
   content: string;
 }
@@ -52,6 +52,12 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
   if (normalizeTitle(headingText) !== normalizeTitle(title)) return content;
 
   return content.slice(headingMatch[0].length).trim();
+};
+
+const stripLegacyAeoSections = (content: string) => {
+  const match = /^##\s+(Quick Reference|Article Guide)\s*$/m.exec(content.trim());
+  if (!match || match.index === undefined) return content.trim();
+  return content.slice(0, match.index).trim();
 };
 
 const toPostTime = (date?: string) => {
@@ -111,6 +117,7 @@ const getBlogPosts = (): BlogPost[] =>
         monthLabel: toMonthLabel(date),
         displayDate: toDisplayDate(date),
         excerpt,
+        subtitle: parsed.metadata.subtitle?.trim(),
         ...parsed,
       };
     })
@@ -172,9 +179,11 @@ const BlogList: React.FC<{
         <h1 className="blog-list-title">
           <span className="blog-list-title-inner">{title}</span>
         </h1>
+        <p className="blog-list-description">{eyebrow || leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`}</p>
         <div className="blog-grid">
           {posts.map(post => (
             <article key={post.id} className="lander-content-card blog-card">
+              <Link to={`/blog/${post.slug}`} className="blog-card-primary-link" aria-label={`Read ${post.metadata.title}`} />
               <Link to={`/blog/archive/${post.monthSlug}`} className="blog-card-date">
                 <time dateTime={post.metadata.date}>{post.displayDate}</time>
               </Link>
@@ -203,9 +212,8 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
     return <Navigate to="/blog" replace />;
   }
 
-  const renderedContent = removeDuplicateLeadingHeading(post.content || '', post.metadata.title);
-  const extractedAnswerContent = extractTerminalAnswerBlocks(renderedContent);
-  const articleContent = extractedAnswerContent.articleContent;
+  const renderedContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(post.content || '', post.metadata.title));
+  const articleContent = renderedContent;
   const featuredImage = extractFirstImage(articleContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
   const excerpt = post.excerpt;
@@ -254,6 +262,9 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
               </Link>
             </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>
+            {post.subtitle || post.excerpt ? (
+              <p className="blog-post-subtitle">{post.subtitle || post.excerpt}</p>
+            ) : null}
           </div>
           {featuredImage?.src ? (
             <FeaturedImage
@@ -263,7 +274,6 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           ) : null}
           <MarkdownViewer content={contentWithoutFeaturedImage} />
         </div>
-        <AnswerBlocks id="article-guide" blocks={extractedAnswerContent.answerBlocks} title="Article Guide" />
       </div>
     </div>
   );

@@ -106,3 +106,13 @@ MdWrk is not trying to hide Markdown behind a fake document model. The product g
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Frequently Asked Questions
+
+### What is Editor Basics?
+
+MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
+
+### When should I use Editor Basics?
+
+Use this docs when you need direct MdWrk guidance for editor basics.

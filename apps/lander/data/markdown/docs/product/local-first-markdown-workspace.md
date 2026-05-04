@@ -1,7 +1,7 @@
 ---
 title: Local-First Markdown Workspace
 slug: product/local-first-markdown-workspace
-section: Product
+section: Features
 sectionOrder: 2
 order: 11
 toc: true

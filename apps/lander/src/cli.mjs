@@ -62,6 +62,48 @@ const MIN_WORDS = {
   glossary: 40,
 };
 
+const DOC_SECTION_ORDER = [
+  'Getting Started',
+  'Quickstart',
+  'Features',
+  'Usage',
+  'Extensions',
+  'Integrations',
+  'Authoring',
+  'Comparisons',
+  'Docs',
+  'Archive',
+];
+
+const DOC_ITEM_ORDER = [
+  '/docs/getting-started/installation/',
+  '/docs/getting-started/browser-use/',
+  '/docs/getting-started/pwa-installation/',
+  '/docs/getting-started/local-setup/',
+  '/docs/getting-started/configuration/',
+  '/docs/getting-started/standalone-modules/',
+  '/docs/product/offline-markdown-editor/',
+  '/docs/product/local-first-markdown-workspace/',
+  '/docs/product/privacy-first-markdown-editor/',
+  '/docs/product/markdown-file-manager/',
+  '/docs/product/markdown-preview-editor/',
+  '/docs/product/extension-host/',
+  '/docs/product/theme-packs/',
+  '/docs/product/developer-documentation/',
+  '/docs/extensions/extension-platform/',
+  '/docs/extensions/theme-studio-and-host-surfaces/',
+];
+
+const docSectionRank = (section) => {
+  const index = DOC_SECTION_ORDER.indexOf(section);
+  return index === -1 ? DOC_SECTION_ORDER.length : index;
+};
+
+const docItemRank = (slug) => {
+  const index = DOC_ITEM_ORDER.indexOf(slug);
+  return index === -1 ? DOC_ITEM_ORDER.length : index;
+};
+
 const fail = (message, failures = []) => {
   console.error(message);
   for (const failure of failures) console.error(`- ${failure}`);
@@ -357,13 +399,17 @@ const normalizeFrontmatter = (frontmatter) => ({
   title: frontmatter.title,
   description: frontmatter.description,
   h1: frontmatter.h1,
+  subtitle: frontmatter.subtitle,
   entity: frontmatter.entity,
   intent: frontmatter.intent,
   contentType: frontmatter.contentType,
   updatedAt: frontmatter.updatedAt,
   publishedAt: frontmatter.publishedAt,
-  answer: frontmatter.answer,
-  faqs: Object.freeze(frontmatter.faqs ?? []),
+  faqs: Object.freeze(frontmatter.faqs ?? buildDefaultFaqs({
+    title: frontmatter.h1 || frontmatter.title,
+    description: frontmatter.description,
+    contentType: frontmatter.contentType,
+  })),
   parent: frontmatter.parent,
   related: Object.freeze(frontmatter.related ?? []),
   tags: Object.freeze(frontmatter.tags ?? []),
@@ -438,6 +484,13 @@ const removeDuplicateLeadingHeading = (content, title) => {
     : String(content ?? '').trim();
 };
 
+const stripLegacyAeoSections = (content) => {
+  const source = String(content ?? '').trim();
+  const match = /^##\s+(Quick Reference|Article Guide)\s*$/m.exec(source);
+  if (!match || match.index === undefined) return source;
+  return source.slice(0, match.index).trim();
+};
+
 const summarizeContent = (content, preferredExcerpt, maxLength = 220) => {
   const excerpt = String(preferredExcerpt ?? '').trim();
   if (excerpt) return excerpt;
@@ -474,84 +527,19 @@ const renderMarkdown = (body) => {
   };
 };
 
-const slugifyAnswerBlock = (value) => slugify(value);
-
-const extractTerminalAnswerBlocks = (content) => {
-  const source = String(content ?? '').trim();
-  const terminalPattern = /^##\s+(Quick Reference|Article Guide)\s*$/gm;
-  const matches = Array.from(source.matchAll(terminalPattern));
-  if (!matches.length) return { articleContent: source, answerBlocks: [] };
-
-  const firstIndex = matches[0].index ?? -1;
-  if (firstIndex < 0) return { articleContent: source, answerBlocks: [] };
-
-  const answerSource = source.slice(firstIndex);
-  const answerHeadings = Array.from(answerSource.matchAll(terminalPattern));
-  const answerBlocks = answerHeadings
-    .map((match, index) => {
-      const start = (match.index ?? 0) + match[0].length;
-      const end = index + 1 < answerHeadings.length ? answerHeadings[index + 1].index ?? answerSource.length : answerSource.length;
-      return {
-        title: match[1],
-        content: answerSource.slice(start, end).trim(),
-        defaultOpen: false,
-      };
-    })
-    .filter(block => block.content.length > 0);
-
-  return {
-    articleContent: source.slice(0, firstIndex).trim(),
-    answerBlocks,
-  };
-};
-
-const renderAnswerBlocksSection = (id, title, blocks) => {
-  const visibleBlocks = (blocks ?? []).filter(block => String(block.content ?? '').trim());
-  if (!visibleBlocks.length) return '';
-  const sectionId = slugifyAnswerBlock(id || title);
-  return `<section id="${escapeAttribute(sectionId)}" class="answer-blocks" aria-label="${escapeAttribute(title)}">
-                    <h2 class="answer-blocks-heading">${escapeHtml(title)}</h2>
-                    <div class="answer-blocks-list">
-                      ${visibleBlocks.map(block => {
-                        const blockId = `${sectionId}-${slugifyAnswerBlock(block.title)}`;
-                        return `<details class="answer-block-accordion"${block.defaultOpen ? ' open' : ''}>
-                        <summary id="${escapeAttribute(blockId)}" class="answer-block-summary">${escapeHtml(block.title)}</summary>
-                        <div class="answer-block-content">
-                          <div class="markdown-renderer-host lander-markdown">
-                            ${renderMarkdown(block.content).html}
-                          </div>
-                        </div>
-                      </details>`;
-                      }).join('\n                      ')}
-                    </div>
-                  </section>`;
-};
-
-const collectRelatedApis = (content, metadata) => {
-  const explicit = String(metadata.relatedApis ?? '')
-    .split(',')
-    .map(item => item.trim())
-    .filter(Boolean);
-  if (explicit.length) return explicit;
-
-  const discovered = Array.from(String(content ?? '').matchAll(/`(@mdwrk\/[^`]+)`/g)).map(match => match[1]);
-  return Array.from(new Set(discovered)).slice(0, 5);
-};
-
-const buildGeneratedDocAnswerBlocks = ({ title, section, content, excerpt, metadata }) => {
-  const relatedApis = collectRelatedApis(content, metadata);
-  const relatedApiText = relatedApis.length
-    ? relatedApis.map(api => `- \`${api}\``).join('\n')
-    : '- MdWrk client workspace\n- MdWrk Markdown editor and renderer packages';
-  const primaryExample = relatedApis[0] || '@mdwrk/mdwrkspace';
-
+const buildDefaultFaqs = ({ title, description, contentType }) => {
+  const normalizedTitle = String(title || 'this MdWrk page').replace(/\s+\|\s+MdWrk.*$/i, '').trim();
+  const answer = String(description || '').trim();
+  if (!answer) return [];
   return [
-    { title: 'What This Does', content: excerpt },
-    { title: 'When To Use It', content: `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${String(section ?? 'documentation').toLowerCase()} surface.` },
-    { title: 'How It Works', content: 'MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.' },
-    { title: 'Example', content: `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.` },
-    { title: 'Common Errors', content: 'Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.' },
-    { title: 'Related APIs', content: relatedApiText, defaultOpen: true },
+    {
+      question: `What is ${normalizedTitle}?`,
+      answer,
+    },
+    {
+      question: `When should I use ${normalizedTitle}?`,
+      answer: `Use this ${String(contentType || 'page')} when you need direct MdWrk guidance for ${normalizedTitle.toLowerCase()}.`,
+    },
   ];
 };
 
@@ -574,17 +562,17 @@ const createStaticEntry = ({
   title,
   description,
   h1,
+  subtitle,
   intent,
   contentType,
   updatedAt,
   body,
   html,
-  answer,
+  faqs,
   tags = [],
   related = [],
   parent,
   afterArticleHtml = '',
-  renderMetadataAnswer = true,
 }) => {
   const normalizedSlug = normalizeRouteSlug(slug);
   const rendered = renderMarkdown(body);
@@ -597,12 +585,12 @@ const createStaticEntry = ({
       title,
       description,
       h1,
+      subtitle,
       entity: 'MdWrk',
       intent,
       contentType,
       updatedAt,
-      answer,
-      faqs: [],
+      faqs: faqs ?? buildDefaultFaqs({ title: h1, description, contentType }),
       parent,
       related,
       tags,
@@ -616,7 +604,6 @@ const createStaticEntry = ({
       html: html ?? rendered.html,
     },
     afterArticleHtml,
-    renderMetadataAnswer,
   };
 };
 
@@ -683,6 +670,7 @@ const parseContentSitemapEntries = () => {
 const renderCardGrid = (items, type = 'blog') =>
   `<div class="${type === 'blog' ? 'blog-grid' : 'docs-index-grid'}">
                     ${items.map(item => `<article class="lander-content-card ${type === 'blog' ? 'blog-card' : 'docs-index-card'}">
+                      ${type === 'blog' ? `<a class="blog-card-primary-link" href="${escapeAttribute(item.href)}" aria-label="Read ${escapeAttribute(item.title)}"></a>` : ''}
                       ${item.date ? `<a class="${type === 'blog' ? 'blog-card-date' : 'docs-meta'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
                       <h2 class="${type === 'blog' ? 'blog-card-title' : 'docs-index-card-title'}"><a class="${type === 'blog' ? 'blog-card-title-link' : 'docs-index-card-link'}" href="${escapeAttribute(item.href)}">${escapeHtml(item.title)}</a></h2>
                       <p class="${type === 'blog' ? 'blog-card-excerpt' : 'docs-index-card-excerpt'}">${escapeHtml(item.description)}</p>
@@ -701,21 +689,8 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
     const section = frontmatter.section || 'Docs';
     const sectionOrder = Number(frontmatter.sectionOrder ?? 999);
     const order = Number(frontmatter.order ?? 999);
-    const articleSource = removeDuplicateLeadingHeading(body, title);
-    const extracted = extractTerminalAnswerBlocks(articleSource);
-    const excerpt = summarizeContent(extracted.articleContent, frontmatter.excerpt);
-    const quickReferenceHtml = renderAnswerBlocksSection('quick-reference', 'Quick Reference', extracted.answerBlocks);
-    const answerBlocksHtml = renderAnswerBlocksSection(
-      'answer-blocks',
-      'Answer Blocks',
-      buildGeneratedDocAnswerBlocks({
-        title,
-        section,
-        content: extracted.articleContent,
-        excerpt,
-        metadata: frontmatter,
-      }),
-    );
+    const articleSource = stripLegacyAeoSections(removeDuplicateLeadingHeading(body, title));
+    const excerpt = summarizeContent(articleSource, frontmatter.excerpt);
 
     return {
       sourcePath,
@@ -727,7 +702,7 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
       order,
       date: frontmatter.date,
       excerpt,
-      articleContent: extracted.articleContent,
+      articleContent: articleSource,
       entry: createStaticEntry({
         sourcePath,
         sourceHash: sha256(raw),
@@ -735,16 +710,14 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
         title: `${title} | MdWrk Docs`,
         description: excerpt,
         h1: title,
+        subtitle: frontmatter.subtitle,
         intent: `learn ${title.toLowerCase()} in MdWrk`,
         contentType: 'docs',
         updatedAt: frontmatter.date,
-        body: extracted.articleContent,
-        html: renderMarkdown(extracted.articleContent).html,
-        answer: excerpt,
+        body: articleSource,
+        html: renderMarkdown(articleSource).html,
         tags: ['docs', section],
         parent: '/docs/',
-        afterArticleHtml: `${quickReferenceHtml}\n                  ${answerBlocksHtml}`,
-        renderMetadataAnswer: false,
       }),
     };
   })
@@ -775,6 +748,7 @@ const buildBlogPosts = (contentSources) => contentSources
       author,
       authorSlug: slugify(author),
       date,
+      subtitle: source.frontmatter.subtitle,
       monthSlug: date ? date.slice(0, 7) : '',
       monthLabel: date ? toMonthLabel(date) : '',
       excerpt,
@@ -810,22 +784,19 @@ const createBlogListEntry = ({ slug, title, eyebrow, posts, sourcePath, sourceHa
     title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
     description,
     h1: title,
+    subtitle: eyebrow || description,
     intent: `read ${title.toLowerCase()} posts from MdWrk`,
     contentType: 'blog',
     updatedAt: posts[0]?.date || toLocalIsoDate(),
     body,
     html: `${eyebrow ? `<div class="blog-list-eyebrow">${escapeHtml(eyebrow)}</div>` : ''}
                   ${renderCardGrid(blogCardItems(posts), 'blog')}`,
-    answer: description,
     tags: ['blog'],
-    renderMetadataAnswer: true,
   });
 };
 
 const createBlogPostEntry = (post) => {
-  const articleSource = removeDuplicateLeadingHeading(post.body, post.title);
-  const extracted = extractTerminalAnswerBlocks(articleSource);
-  const articleGuideHtml = renderAnswerBlocksSection('article-guide', 'Article Guide', extracted.answerBlocks);
+  const articleSource = stripLegacyAeoSections(removeDuplicateLeadingHeading(post.body, post.title));
   return createStaticEntry({
     sourcePath: post.sourcePath,
     sourceHash: sha256(post.raw),
@@ -833,20 +804,18 @@ const createBlogPostEntry = (post) => {
     title: `${post.title} | MdWrk Blog`,
     description: post.excerpt,
     h1: post.title,
+    subtitle: post.subtitle || post.excerpt,
     intent: `read about ${post.title.toLowerCase()}`,
     contentType: 'blog',
     updatedAt: post.date,
-    body: extracted.articleContent,
+    body: articleSource,
     html: `<div class="blog-post-meta">
                     <a href="/blog/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></a>
                     <a href="/blog/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link">${escapeHtml(post.author)}</a>
                   </div>
-                  ${renderMarkdown(extracted.articleContent).html}`,
-    answer: post.excerpt,
+                  ${renderMarkdown(articleSource).html}`,
     tags: ['blog'],
     parent: '/blog/',
-    afterArticleHtml: articleGuideHtml,
-    renderMetadataAnswer: true,
   });
 };
 
@@ -862,14 +831,13 @@ const createLegalEntry = (source) => {
     title: `${title} | MdWrk`,
     description,
     h1: title,
+    subtitle: source.frontmatter.subtitle,
     intent: `read ${title.toLowerCase()}`,
     contentType: 'privacy',
     updatedAt: source.frontmatter.date,
     body,
-    answer: description,
     tags: ['legal'],
     related: ['/privacy/', '/security/'],
-    renderMetadataAnswer: true,
   });
 };
 
@@ -881,34 +849,54 @@ const readDataStaticEntries = () => {
     .filter(source => source.id.startsWith('legal/'))
     .map(createLegalEntry);
 
-  const docCards = docs.map(doc => ({
-    title: doc.title,
-    description: doc.excerpt,
-    href: `/docs/${doc.slug}/`,
-    date: doc.date,
-  }));
+  const gettingStartedDocs = docs.filter(doc => doc.section === 'Getting Started');
+  const docsIndexDocs = gettingStartedDocs.length ? gettingStartedDocs : docs.slice(0, 6);
   const docsIndexBody = [
-    '# MdWrk Documentation',
+    '# Getting Started',
     '',
-    'Browse the MdWrk public documentation by product surface, setup path, authoring surface, extension model, and comparison guide.',
+    'Start with the MdWrk setup paths that get the workspace running in a browser, as an installable PWA, from a local checkout, or through standalone packages.',
     '',
-    ...docs.map(doc => `- [${doc.title}](/docs/${doc.slug}/) - ${doc.excerpt}`),
+    '1. Choose the setup path that matches how you want to use MdWrk.',
+    '2. Open the matching Getting Started article.',
+    '3. Follow the article into configuration, local setup, PWA installation, or package use.',
+    '',
+    '## Choose a setup path',
+    '',
+    ...docsIndexDocs.map(doc => `- [${doc.title}](/docs/${doc.slug}/): ${doc.excerpt}`),
+    '',
+    '## What to read next',
+    '',
+    'After setup, continue into product docs for local-first workflow, editor and preview behavior, extension host boundaries, and theme packages.',
   ].join('\n');
+  const docsIndexHtml = renderMarkdown([
+    'Start with the MdWrk setup paths that get the workspace running in a browser, as an installable PWA, from a local checkout, or through standalone packages.',
+    '',
+    '1. Choose the setup path that matches how you want to use MdWrk.',
+    '2. Open the matching Getting Started article.',
+    '3. Follow the article into configuration, local setup, PWA installation, or package use.',
+    '',
+    '## Choose a setup path',
+    '',
+    ...docsIndexDocs.map(doc => `- [${doc.title}](/docs/${doc.slug}/): ${doc.excerpt}`),
+    '',
+    '## What to read next',
+    '',
+    'After setup, continue into product docs for local-first workflow, editor and preview behavior, extension host boundaries, and theme packages.',
+  ].join('\n')).html;
   const docsIndex = createStaticEntry({
     sourcePath: 'data/markdown/docs',
-    sourceHash: sha256(docs.map(doc => `${doc.slug}:${doc.sourceHash}`).join('\n')),
+    sourceHash: sha256(docsIndexDocs.map(doc => `${doc.slug}:${doc.sourceHash}`).join('\n')),
     slug: '/docs/',
-    title: 'MdWrk Documentation',
-    description: 'Browse MdWrk docs for installation, local-first Markdown authoring, package surfaces, extensions, themes, comparisons, and static public content.',
-    h1: 'MdWrk Documentation',
-    intent: 'browse MdWrk documentation',
+    title: 'Getting Started | MdWrk Docs',
+    description: 'Start using MdWrk with browser, PWA, local setup, configuration, and standalone package guidance.',
+    h1: 'Getting Started',
+    subtitle: 'Start using MdWrk with browser, PWA, local setup, configuration, and standalone package guidance.',
+    intent: 'start using MdWrk',
     contentType: 'docs',
-    updatedAt: docs[0]?.date || toLocalIsoDate(),
+    updatedAt: docsIndexDocs[0]?.date || toLocalIsoDate(),
     body: docsIndexBody,
-    html: renderCardGrid(docCards, 'docs'),
-    answer: 'MdWrk documentation explains how to install, use, extend, theme, and evaluate the local-first Markdown workspace and its reusable package surfaces.',
+    html: docsIndexHtml,
     tags: ['docs'],
-    renderMetadataAnswer: true,
   });
 
   const blogList = createBlogListEntry({
@@ -1096,7 +1084,8 @@ const jsonLdFor = (entry, registry) => {
       },
     );
   }
-  if (entry.frontmatter.faqs.length) {
+  const rendersVisibleFaqs = entry.frontmatter.slug !== '/' && entry.frontmatter.faqs.length;
+  if (rendersVisibleFaqs) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
@@ -1221,7 +1210,9 @@ const renderDocsSidebar = (registry, currentSlug) => {
     .sort((a, b) => {
       const groupA = a.frontmatter.tags[1] || 'Documentation';
       const groupB = b.frontmatter.tags[1] || 'Documentation';
-      return groupA.localeCompare(groupB) || a.frontmatter.h1.localeCompare(b.frontmatter.h1);
+      return docSectionRank(groupA) - docSectionRank(groupB)
+        || docItemRank(a.frontmatter.slug) - docItemRank(b.frontmatter.slug)
+        || a.frontmatter.h1.localeCompare(b.frontmatter.h1);
     });
   const groups = new Map();
   for (const doc of docs) {
@@ -1235,10 +1226,13 @@ const renderDocsSidebar = (registry, currentSlug) => {
           <div class="docs-sidebar-inner">
             <h3 class="docs-sidebar-heading">Documentation</h3>
             <nav class="docs-nav">
-              <a class="docs-nav-link ${currentSlug === '/docs/' ? 'is-active' : 'is-inactive'}" href="/docs/"><span class="docs-nav-link-label">All Docs</span></a>
-              ${Array.from(groups.entries()).map(([group, items]) => `<details class="docs-nav-item static-docs-nav-section" open>
+              ${Array.from(groups.entries()).sort(([groupA], [groupB]) => docSectionRank(groupA) - docSectionRank(groupB) || groupA.localeCompare(groupB)).map(([group, items]) => `<details class="docs-nav-item static-docs-nav-section" open>
                 <summary class="docs-nav-section-button"><span class="docs-nav-section-label">${escapeHtml(group)}</span></summary>
                 <div class="docs-nav-children">
+                  ${group === 'Getting Started' ? `<a class="docs-nav-link ${currentSlug === '/docs/' ? 'is-active' : 'is-inactive'}" href="/docs/">
+                    ${currentSlug === '/docs/' ? '<span class="docs-nav-link-dot"></span>' : ''}
+                    <span class="docs-nav-link-label">Getting Started</span>
+                  </a>` : ''}
                   ${items.map(item => `<a class="docs-nav-link ${item.frontmatter.slug === currentSlug ? 'is-active' : 'is-inactive'}" href="${item.frontmatter.slug}">
                     ${item.frontmatter.slug === currentSlug ? '<span class="docs-nav-link-dot"></span>' : ''}
                     <span class="docs-nav-link-label">${escapeHtml(item.frontmatter.h1)}</span>
@@ -1256,15 +1250,6 @@ const renderArticleToc = (entry) => {
     href: `#${heading.id}`,
     depth: heading.depth,
   }));
-  if (entry.afterArticleHtml?.includes('id="quick-reference"')) {
-    children.push({ title: 'Quick Reference', href: '#quick-reference', depth: 2 });
-  }
-  if (entry.afterArticleHtml?.includes('id="answer-blocks"')) {
-    children.push({ title: 'Answer Blocks', href: '#answer-blocks', depth: 2 });
-  }
-  if (entry.afterArticleHtml?.includes('id="article-guide"')) {
-    children.push({ title: 'Article Guide', href: '#article-guide', depth: 2 });
-  }
   if (entry.frontmatter.faqs.length) {
     children.push({ title: 'Frequently Asked Questions', href: '#faq-heading', depth: 2 });
   }
@@ -1286,35 +1271,43 @@ const renderMarkdownHost = (html) => `<div class="markdown-renderer-host lander-
                     ${html}
                   </div>`;
 
-const renderMetadataAnswerBlocks = (entry, registry) => {
-  const blocks = [];
-  if (entry.renderMetadataAnswer !== false && entry.frontmatter.answer) {
-    blocks.push({ title: 'What This Does', content: entry.frontmatter.answer });
-  }
-  const answerHtml = blocks.length
-    ? renderAnswerBlocksSection('answer-blocks', 'Answer Blocks', blocks)
-    : '';
+const renderSupplementarySections = (entry, registry) => {
   const faqHtml = entry.frontmatter.faqs.length
-    ? `<section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                    <div class="answer-blocks-list">${entry.frontmatter.faqs.map(faq => `<details class="answer-block-accordion"><summary class="answer-block-summary">${escapeHtml(faq.question)}</summary><div class="answer-block-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                      ')}</div>
+    ? `<section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list">${entry.frontmatter.faqs.map(faq => `<details class="faq-accordion"><summary class="faq-summary">${escapeHtml(faq.question)}</summary><div class="faq-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                      ')}</div>
                   </section>`
     : '';
   const relatedHtml = entry.frontmatter.related.length
-    ? `<section class="answer-blocks static-related" aria-labelledby="related-heading">
-                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+    ? `<section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
                     <ul>${entry.frontmatter.related.map(slug => {
               const target = registry.bySlug.get(slug);
               return `<li><a href="${slug}">${escapeHtml(target?.frontmatter.h1 ?? slug)}</a></li>`;
             }).join('')}</ul>
                   </section>`
     : '';
-  return [answerHtml, faqHtml, relatedHtml].filter(Boolean).join('\n                  ');
+  return [faqHtml, relatedHtml].filter(Boolean).join('\n                  ');
 };
 
 const renderArticleCard = (entry, registry) => {
   const metaLabel = entry.frontmatter.contentType === 'blog' ? 'Blog' : entry.frontmatter.contentType;
   const isBlogPost = entry.frontmatter.contentType === 'blog' && entry.frontmatter.slug !== '/blog/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
+  const isBlogList = entry.frontmatter.contentType === 'blog' && !isBlogPost;
+  if (isBlogList) {
+    return `<div class="blog-list-column">
+                <article class="blog-list-layout" aria-labelledby="blog-list-title">
+                  <header class="blog-list-header">
+                    ${entry.frontmatter.slug === '/blog/' ? '' : '<a href="/blog/" class="blog-back-button">Back to Blog</a>'}
+                    <h1 id="blog-list-title" class="blog-list-title"><span class="blog-list-title-inner">${escapeHtml(entry.frontmatter.h1)}</span></h1>
+                    ${entry.frontmatter.subtitle ? `<p class="blog-list-description">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
+                  </header>
+                  ${entry.rendered.html}
+                </article>
+                ${entry.afterArticleHtml ?? ''}
+                ${renderSupplementarySections(entry, registry)}
+              </div>`;
+  }
   const articleClass = isBlogPost
     ? 'blog-post-card'
     : 'docs-content-card';
@@ -1328,15 +1321,192 @@ const renderArticleCard = (entry, registry) => {
                       <span>${escapeHtml(entry.frontmatter.updatedAt)}</span>
                     </div>
                     <h1 class="${articleClass === 'blog-post-card' ? 'blog-post-title' : 'docs-title'}">${escapeHtml(entry.frontmatter.h1)}</h1>
+                    ${entry.frontmatter.subtitle ? `<p class="${articleClass === 'blog-post-card' ? 'blog-post-subtitle' : 'docs-subtitle'}">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
                   </header>
                   ${renderMarkdownHost(entry.rendered.html)}
                 </article>
                 ${entry.afterArticleHtml ?? ''}
-                ${renderMetadataAnswerBlocks(entry, registry)}
+                ${renderSupplementarySections(entry, registry)}
               </div>`;
 };
 
+const homeDemoMarkdown = `## mdwrk client surface
+
+The lander demonstrates the same shared packages that the mdwrk client uses.
+
+## Shared packages
+| Surface | Package | Notes |
+| :--- | :---: | ---: |
+| Editor | \`@mdwrk/markdown-editor-react\` | Live |
+| Preview | \`@mdwrk/markdown-renderer-react\` | Shared |
+| Themes | \`@mdwrk/theme-contract\` | Light + dark |
+| Extensions | Runtime-backed | Governed |
+
+## Workspace signals
+- [x] Local-first persistence
+- [x] Split editor and preview packages
+- [x] Extension-ready client host
+- [x] Shared theme rendering for docs and blog
+
+## Example
+\`\`\`typescript
+import { MarkdownSourceEditor } from "@mdwrk/markdown-editor-react";
+import { MarkdownRenderer } from "@mdwrk/markdown-renderer-react";
+
+const surface = {
+  client: "@mdwrk/mdwrkspace",
+  editor: "@mdwrk/markdown-editor-react",
+  preview: "@mdwrk/markdown-renderer-react"
+};
+\`\`\`
+`;
+
+const homeFeatures = [
+  ['Offline First', 'Built as a Progressive Web App. Install the MdWrk client once, keep working offline, and sync only when you choose to.'],
+  ['Split Packages', 'The editor and previewer are separate MdWrk packages, so the client, examples, and docs consume the same public surfaces.'],
+  ['Extension Ready', 'The client hosts bundled and external extensions through a governed runtime, manifest, settings, and trust policy stack.'],
+  ['Zero Knowledge', 'No hosted authoring backend owns your Markdown. Data stays local unless you connect your own Git provider.'],
+  ['Local Database', 'IndexedDB persistence keeps workspaces, sessions, themes, and extension state local to the device.'],
+  ['GitHub Sync', 'Optional Git provider integration keeps repository operations additive instead of mandatory.'],
+  ['Shared Themes', 'Renderer, editor, docs, blog, and client app all consume MdWrk theme contracts instead of forking per-surface styling.'],
+  ['Blazing Fast', 'No network round trip for typing or previewing. The editor and preview pipeline stay local and responsive.'],
+];
+
+const renderStaticFeatureIcon = () => `<svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg>`;
+
+const renderStaticHome = (entry, registry, assetTags = '') => {
+  const demoPreview = renderMarkdown(homeDemoMarkdown).html;
+  const demoWordCount = stripMarkdown(homeDemoMarkdown).split(/\s+/).filter(Boolean).length;
+  return `<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    ${renderThemeBootstrap()}
+    <title>${escapeHtml(entry.frontmatter.title)}</title>
+    <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
+    <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
+    <meta name="robots" content="${entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow'}">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
+    ${assetTags}
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        ${renderStaticNavbar(registry, entry.frontmatter.slug)}
+        <main id="content" class="app-main">
+          <article class="static-home-article">
+          <section class="hero-section">
+            <div class="hero-blob hero-blob-indigo"></div>
+            <div class="hero-blob hero-blob-emerald"></div>
+            <div class="hero-blob hero-blob-cyan"></div>
+            <div class="hero-inner">
+              <div class="hero-eyebrow">
+                <span class="hero-eyebrow-badge">Client</span>
+                <a href="/docs/" class="hero-eyebrow-copy hero-eyebrow-link">mdwrk workspace, packages, and extensions documented here</a>
+                <svg class="hero-eyebrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 2 20 20"></path><path d="M8.5 16.5a5 5 0 0 1 7 0"></path><path d="M5 13a10 10 0 0 1 3-2"></path><path d="M12 20h.01"></path><path d="M8.5 5.4A15 15 0 0 1 21 10"></path></svg>
+              </div>
+              <h1 class="hero-heading">The <span class="hero-heading-accent">Local-First</span> Markdown Workspace</h1>
+              <p class="hero-copy home-subtitle">${escapeHtml(entry.frontmatter.subtitle || 'MdWrk is the workspace client, renderer/editor package family, and extension host for local-first Markdown work. The lander is the documentation and release surface.')}</p>
+              <div class="hero-actions">
+                <a href="/docs/getting-started/local-setup/" class="hero-primary-link">Deploy Locally
+                  <svg class="hero-primary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+                </a>
+                <a href="${escapeAttribute(process.env.VITE_APP_URL || 'https://app.mdwrk.com')}" class="hero-secondary-link" target="_blank" rel="noopener noreferrer">Install PWA</a>
+              </div>
+              <div class="hero-meta">
+                <span class="hero-meta-label">ESM CDN</span>
+                <a href="${escapeAttribute(process.env.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace')}" target="_blank" rel="noopener noreferrer" class="hero-meta-link">${escapeHtml(process.env.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace')}</a>
+              </div>
+            </div>
+          </section>
+
+          <section id="features" class="features-section">
+            <div class="features-container">
+              <div class="features-header">
+                <h2 class="features-heading">Designed for <span class="features-heading-privacy">Privacy</span>, Built for <span class="features-heading-accent">Reusable Surfaces</span></h2>
+                <p class="features-copy">The workspace client is the product surface. The lander is a guided window into the client, the shared packages, and the extension platform.</p>
+              </div>
+              <div class="features-grid">
+                ${homeFeatures.map(([title, description]) => `<div class="feature-card">
+                  <div class="feature-icon-wrap">${renderStaticFeatureIcon()}</div>
+                  <h3 class="feature-title">${escapeHtml(title)}</h3>
+                  <p class="feature-description">${escapeHtml(description)}</p>
+                </div>`).join('\n                ')}
+              </div>
+            </div>
+          </section>
+
+          <section id="demo" class="demo-section">
+            <div class="demo-backdrop"></div>
+            <div class="demo-container">
+              <div class="demo-header">
+                <h2 class="demo-heading">One Editor Package. One Preview Package. <span class="demo-heading-accent">Shared Everywhere.</span></h2>
+                <p class="demo-copy">The lander demo runs through the same public MdWrk editor and renderer package surfaces that the client ships.</p>
+              </div>
+              <div class="demo-frame">
+                <div class="demo-toolbar">
+                  <div class="demo-toolbar-lights"><div class="demo-light demo-light-red"></div><div class="demo-light demo-light-yellow"></div><div class="demo-light demo-light-green"></div></div>
+                  <div class="demo-tablist">
+                    <button type="button" class="demo-tab-button is-active"><svg class="demo-tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"></path></svg> Editor</button>
+                    <button type="button" class="demo-tab-button is-active"><svg class="demo-tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.1 12a10 10 0 0 1 19.8 0 10 10 0 0 1-19.8 0Z"></path><circle cx="12" cy="12" r="3"></circle></svg> Preview</button>
+                  </div>
+                  <div class="demo-filename"><svg class="demo-filename-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg> demo_showcase.md</div>
+                </div>
+                <div class="demo-body static-demo-body">
+                  <div class="demo-editor-pane is-editor-visible">
+                    <pre class="lander-editor static-demo-editor" aria-label="Static Markdown editor demo"><code>${escapeHtml(homeDemoMarkdown)}</code></pre>
+                  </div>
+                  <div class="demo-preview-pane is-preview-visible">
+                    ${renderMarkdownHost(demoPreview)}
+                  </div>
+                </div>
+                <div class="demo-statusbar">
+                  <span class="demo-status-primary"><svg class="demo-status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg> Render Engine: @mdwrk/markdown-renderer-core</span>
+                  <span class="demo-status-secondary"><span>${demoWordCount} words</span><span>${homeDemoMarkdown.length} chars</span></span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="privacy" class="privacy-section">
+            <div class="privacy-container">
+              <h2 class="privacy-heading">Your Data Stays on <span class="privacy-heading-accent">Your Device</span></h2>
+              <p class="privacy-copy">MdWrk uses IndexedDB to store your workspaces directly in your browser. No AI servers scan your content, and no trackers follow your keys.</p>
+              <div class="privacy-badge"><div class="privacy-badge-dot"></div>Privacy Standard: Verified Local</div>
+            </div>
+          </section>
+          </article>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block"><a href="/" class="footer-brand-link"><span class="footer-brand-text">MdWrk</span></a><p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p></div>
+              <div class="footer-nav-grid">
+                <div><h2 class="footer-section-heading">Resources</h2><ul class="footer-link-list"><li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li><li><a href="/blog/launch/" class="footer-link">Blog</a></li><li><a href="${escapeAttribute(process.env.VITE_APP_URL || 'https://app.mdwrk.com')}" class="footer-link">Live Demo</a></li></ul></div>
+                <div><h2 class="footer-section-heading">Legal</h2><ul class="footer-link-list"><li><a href="/privacy/" class="footer-link">Privacy</a></li><li><a href="/security/" class="footer-link">Security</a></li></ul></div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    ${renderThemeToggleScript()}
+  </body>
+</html>
+`;
+};
+
 const renderHtmlPage = (entry, registry, assetTags = '') => {
+  if (entry.frontmatter.slug === '/') return renderStaticHome(entry, registry, assetTags);
   const robots = entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow';
   const isDocs = entry.frontmatter.slug.startsWith('/docs/');
   const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
@@ -1411,7 +1581,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
 const renderMarkdownMirror = (entry) => [
   `# ${entry.frontmatter.h1}`,
   '',
-  entry.frontmatter.answer ?? entry.frontmatter.description,
+  entry.frontmatter.subtitle ?? entry.frontmatter.description,
   '',
   entry.body,
   '',
@@ -1469,6 +1639,7 @@ const build = () => {
     title: entry.frontmatter.title,
     description: entry.frontmatter.description,
     h1: entry.frontmatter.h1,
+    subtitle: entry.frontmatter.subtitle,
     intent: entry.frontmatter.intent,
     contentType: entry.frontmatter.contentType,
     updatedAt: entry.frontmatter.updatedAt,
@@ -1506,7 +1677,7 @@ const build = () => {
       '',
       `URL: ${canonicalForSlug(entry.frontmatter.slug)}`,
       '',
-      entry.frontmatter.answer ?? entry.frontmatter.description,
+      entry.frontmatter.subtitle ?? entry.frontmatter.description,
       '',
       entry.rendered.text,
       '',
@@ -1561,12 +1732,11 @@ const verify = () => {
     if (!html.includes('name="description"')) failures.push(`${entry.frontmatter.slug}: missing meta description`);
     if (!html.includes(`rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}"`)) failures.push(`${entry.frontmatter.slug}: canonical mismatch`);
     if (!html.includes('type="application/ld+json"')) failures.push(`${entry.frontmatter.slug}: missing JSON-LD`);
-    if (!entry.frontmatter.noindex && !entry.frontmatter.answer) failures.push(`${entry.frontmatter.slug}: indexable page missing answer block`);
-    if (entry.frontmatter.answer && !html.includes(escapeHtml(entry.frontmatter.answer))) failures.push(`${entry.frontmatter.slug}: answer not visibly rendered`);
-    if (entry.frontmatter.answer && html.includes('</article>') && !html.slice(html.indexOf('</article>')).includes(escapeHtml(entry.frontmatter.answer))) failures.push(`${entry.frontmatter.slug}: answer block must be grouped below the article content`);
-    if (entry.frontmatter.faqs.length && !html.includes('Frequently Asked Questions')) failures.push(`${entry.frontmatter.slug}: FAQ frontmatter exists but FAQ is not visible`);
-    if (entry.frontmatter.faqs.length && !html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ content is visible but FAQ JSON-LD is missing`);
-    if (!entry.frontmatter.faqs.length && html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ JSON-LD exists without visible FAQ content`);
+    const shouldRenderFaqs = entry.frontmatter.slug !== '/' && entry.frontmatter.faqs.length;
+    if (!entry.frontmatter.noindex && entry.frontmatter.slug !== '/' && !entry.frontmatter.faqs.length) failures.push(`${entry.frontmatter.slug}: indexable page missing FAQs`);
+    if (shouldRenderFaqs && !html.includes('Frequently Asked Questions')) failures.push(`${entry.frontmatter.slug}: FAQ frontmatter exists but FAQ is not visible`);
+    if (shouldRenderFaqs && !html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ content is visible but FAQ JSON-LD is missing`);
+    if (!shouldRenderFaqs && html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ JSON-LD exists without visible FAQ content`);
     if (mainText.split(/\s+/).length < 40) failures.push(`${entry.frontmatter.slug}: too little readable main text`);
     if (html.includes('<div id="root"></div>') && mainText.split(/\s+/).length < 80) failures.push(`${entry.frontmatter.slug}: primary content appears to require JavaScript`);
     for (const anchor of html.matchAll(/<a\b([^>]*)>/gi)) {

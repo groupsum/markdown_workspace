@@ -23,3 +23,13 @@ Theme compatibility is governed through `@mdwrk/theme-contract`. That contract a
 ## Why this matters
 
 The lander now uses the same editor and renderer package family with lander light and dark themes, instead of documenting itself as if it were the main product.
+
+## Frequently Asked Questions
+
+### What is Theme Studio And Host Surfaces?
+
+Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model.
+
+### When should I use Theme Studio And Host Surfaces?
+
+Use this docs when you need direct MdWrk guidance for theme studio and host surfaces.

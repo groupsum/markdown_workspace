@@ -74,31 +74,19 @@
                       <span>2026-05-04</span>
                     </div>
                     <h1 class="docs-title">Privacy policy</h1>
+                    <p class="docs-subtitle">MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices.</p>
                   </header>
                   <div class="markdown-renderer-host lander-markdown">
                     <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk's privacy policy is written around the local-first Markdown model. Public documentation should make clear that writing and previewing Markdown do not require a hosted document account as the default assumption.</p><h2 class="md-h2" id="local-content-boundary">Local Content Boundary</h2><p class="md-p">Markdown documents, workspace state, and editor preferences should be described in terms of local control. If a workflow stores data in browser-managed storage, IndexedDB, filesystem-backed surfaces, or another local mechanism, the docs should say so plainly.</p><h2 class="md-h2" id="explicit-sharing">Explicit Sharing</h2><p class="md-p">Export, GitHub sync, package installation, and extension workflows are deliberate actions. The privacy documentation should explain that these actions may cross the local boundary and should describe which external service or package is involved.</p><h2 class="md-h2" id="extension-trust">Extension Trust</h2><p class="md-p">Extensions can add useful capabilities, but they also need trust and compatibility rules. MdWrk documents extension manifests, package identity, runtime expectations, and the idea that extension behavior should not be treated as automatically trusted.</p><h2 class="md-h2" id="public-documentation">Public Documentation</h2><p class="md-p">The public privacy page is statically generated, indexable when policy allows, and mirrored into machine-readable artifacts. That makes the privacy posture inspectable before deployment.</p></div>
                   </div>
                 </article>
 
-                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
-                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
-                    <div class="answer-blocks-list">
-                      <details class="answer-block-accordion">
-                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
-                        <div class="answer-block-content">
-                          <div class="markdown-renderer-host lander-markdown">
-                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices.</p></div>
-                          </div>
-                        </div>
-                      </details>
-                    </div>
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">Does MdWrk upload documents by default?</summary><div class="faq-content"><p>The public documentation should not imply default uploads. It should describe local storage and identify workflows that intentionally use networked services.</p></div></details></div>
                   </section>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">Does MdWrk upload documents by default?</summary><div class="answer-block-content"><p>The public documentation should not imply default uploads. It should describe local storage and identify workflows that intentionally use networked services.</p></div></details></div>
-                  </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                  <section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
                     <ul><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li><li><a href="/security/">Security notes</a></li></ul>
                   </section>
               </div>

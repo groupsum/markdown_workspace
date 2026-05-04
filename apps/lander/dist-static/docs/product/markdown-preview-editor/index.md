@@ -19,3 +19,13 @@ HTML export and print preview are connected to the preview pipeline so approved 
 - [Editor Basics](/docs/usage/editor-basics)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+
+## Frequently Asked Questions
+
+### What is Markdown Preview Editor?
+
+MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.
+
+### When should I use Markdown Preview Editor?
+
+Use this docs when you need direct MdWrk guidance for markdown preview editor.

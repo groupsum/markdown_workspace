@@ -40,3 +40,13 @@ The site now gives readers:
 4. Read the [April 30 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-30T00:00:00Z&until=2026-05-01T00:00:00Z) for the concrete docs and brand refinements.
 
 MdWrk now gives readers a faster path from the landing page to installation, package usage, and extension workflows.
+
+## Frequently Asked Questions
+
+### What is Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience?
+
+The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
+
+### When should I use Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience?
+
+Use this blog when you need direct MdWrk guidance for explore the mdwrk client, packages, and extensions through a sharper docs experience.

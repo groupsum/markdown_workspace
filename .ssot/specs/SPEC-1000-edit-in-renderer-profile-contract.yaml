@@ -1,0 +1,23 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:1000"
+number: 1000
+slug: "edit-in-renderer-profile-contract"
+title: "Edit In Renderer Profile Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The edit-in-renderer profile defines an all-in-one Markdown authoring surface where plaintext Markdown is the canonical source, rendered Markdown is a projection, and the same pane supports editing and previewing. The profile must include CommonMark, GFM, and MdWrk editing and previewing coverage. The profile must require source-preserving roundtrip behavior, cursor and selection preservation, blank and whitespace-only document preservation, repeated Enter handling, and rendered projection isolation from plaintext source updates. The rendered projection must never be used as the plaintext Markdown copy."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  # Edit In Renderer Profile Contract
+  
+  ## Requirements
+  
+  The edit-in-renderer profile defines an all-in-one Markdown authoring surface where plaintext Markdown is the canonical source, rendered Markdown is a projection, and the same pane supports editing and previewing. The profile must include CommonMark, GFM, and MdWrk editing and previewing coverage. The profile must require source-preserving roundtrip behavior, cursor and selection preservation, blank and whitespace-only document preservation, repeated Enter handling, and rendered projection isolation from plaintext source updates. The rendered projection must never be used as the plaintext Markdown copy.
+spec_kind: "normative"
+adr_ids: []

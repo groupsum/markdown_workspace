@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "compare MdWrk with VS Code markdown workflows"
 contentType: "comparison"
 updatedAt: "2026-05-04"
-answer: "MdWrk is a Markdown workspace and public documentation compiler, while VS Code is a general-purpose code editor with Markdown support through editor features and extensions."
+subtitle: "MdWrk is a Markdown workspace and public documentation compiler, while VS Code is a general-purpose code editor with Markdown support through editor features and extensions."
 parent: "/"
 related:
   - "/features/offline-markdown-editor/"

@@ -7,11 +7,11 @@
     "lander": "node ./src/cli.mjs",
     "dev": "vite",
     "build": "npm run build:styled && npm run build:static:dist",
-    "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:answer-block-layout && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
+    "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:faq-layout && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
     "build:spa": "npm run build:styled",
     "build:deps": "npm --prefix ../.. run build:editor",
     "validate:article-metadata": "node ./scripts/validate-article-metadata.mjs",
-    "validate:answer-block-layout": "node ./scripts/validate-answer-block-layout.mjs",
+    "validate:faq-layout": "node ./scripts/validate-faq-layout.mjs",
     "validate:syntax-themes": "node ./scripts/validate-syntax-themes.mjs",
     "validate:static": "node ./src/cli.mjs validate",
     "build:static": "node ./src/cli.mjs build --out dist-static",
@@ -23,7 +23,7 @@
     "ci": "npm run build && npm run verify && npm run ci:static",
     "smoke:deployed": "node ./scripts/post-deploy-smoke.mjs",
     "preview": "vite preview",
-    "typecheck": "npm run validate:article-metadata && npm run validate:answer-block-layout && npm run validate:syntax-themes && npm run validate:static",
+    "typecheck": "npm run validate:article-metadata && npm run validate:faq-layout && npm run validate:syntax-themes && npm run validate:static",
     "lint": "npm run typecheck"
   },
   "dependencies": {

@@ -50,3 +50,13 @@ packages/extensions/extension-language-pack-studio/
 packages/shared/i18n/
 docs/conformance/extension-workspace-surfaces-claim.md
 ```
+
+## Frequently Asked Questions
+
+### What is Language Pack Authoring?
+
+Language pack authoring uses the first-party studio package, locale catalogs, validation flows, export behavior, and host surfaces for MdWrk localization.
+
+### When should I use Language Pack Authoring?
+
+Use this docs when you need direct MdWrk guidance for language pack authoring.

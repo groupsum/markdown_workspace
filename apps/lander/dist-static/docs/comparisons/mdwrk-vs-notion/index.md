@@ -16,3 +16,13 @@ MdWrk keeps the Markdown file as the durable content surface. That makes it prac
 
 - [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
 - [Markdown File Manager](/docs/product/markdown-file-manager)
+
+## Frequently Asked Questions
+
+### What is MdWrk Vs Notion?
+
+Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
+
+### When should I use MdWrk Vs Notion?
+
+Use this docs when you need direct MdWrk guidance for mdwrk vs notion.

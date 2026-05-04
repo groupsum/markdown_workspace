@@ -15,3 +15,13 @@ Runtime surfaces may include panels, settings, commands, or workspace views. The
 ## Trust And Compatibility
 
 Extension trust should be explicit. Users and operators need to understand which package is being used, what it can access, and whether the version is compatible with the current workspace.
+
+## Frequently Asked Questions
+
+### What is Extensions?
+
+MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.
+
+### When should I use Extensions?
+
+Use this docs when you need direct MdWrk guidance for extensions.

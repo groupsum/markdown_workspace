@@ -28,3 +28,13 @@ Authoring in this repository follows a few durable rules:
 - browser hosts do not run raw `npm install` at runtime for external extensions
 - host/runtime trust, manifest, and compatibility declarations are part of the authoring contract
 - theme and language authoring must target the shared contracts rather than app-local shortcuts
+
+## Frequently Asked Questions
+
+### What is Authoring Overview?
+
+MdWrk authoring documentation groups extension, theme pack, and language pack workflows into focused surfaces for package and product contributors.
+
+### When should I use Authoring Overview?
+
+Use this docs when you need direct MdWrk guidance for authoring overview.

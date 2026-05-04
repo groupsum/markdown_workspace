@@ -23,7 +23,7 @@
     <meta name="application-name" content="MdWrk">
     <meta property="og:site_name" content="MdWrk">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/#webpage","url":"https://mdwrk.com/","name":"MdWrk — Local-first Markdown workspace for writing, preview, and extensions","headline":"Local-first Markdown workspace","description":"MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"Organization","@id":"https://mdwrk.com/#organization","name":"MdWrk","url":"https://mdwrk.com/"},{"@type":"SoftwareApplication","@id":"https://mdwrk.com/#software","name":"MdWrk","applicationCategory":"ProductivityApplication","operatingSystem":"Web","url":"https://mdwrk.com/"},{"@type":"WebSite","@id":"https://mdwrk.com/#website","name":"MdWrk","url":"https://mdwrk.com/"},{"@type":"FAQPage","@id":"https://mdwrk.com/#faq","mainEntity":[{"@type":"Question","name":"What is MdWrk?","acceptedAnswer":{"@type":"Answer","text":"MdWrk is a Markdown workspace and package platform focused on local-first authoring, preview, theming, extension contracts, and developer-facing documentation."}},{"@type":"Question","name":"Does MdWrk require client-side rendering for public documentation?","acceptedAnswer":{"@type":"Answer","text":"The public lander is compiled into static HTML so core public content is readable from the raw HTML response before any JavaScript executes."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/#webpage","url":"https://mdwrk.com/","name":"MdWrk — Local-first Markdown workspace for writing, preview, and extensions","headline":"Local-first Markdown workspace","description":"MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"Organization","@id":"https://mdwrk.com/#organization","name":"MdWrk","url":"https://mdwrk.com/"},{"@type":"SoftwareApplication","@id":"https://mdwrk.com/#software","name":"MdWrk","applicationCategory":"ProductivityApplication","operatingSystem":"Web","url":"https://mdwrk.com/"},{"@type":"WebSite","@id":"https://mdwrk.com/#website","name":"MdWrk","url":"https://mdwrk.com/"}]}</script>
 
   </head>
   <body>
@@ -60,90 +60,209 @@
           </div>
         </nav>
         <main id="content" class="app-main">
-          <div class="lander-doc-shell docs-layout">
+          <article class="static-home-article">
+          <section class="hero-section">
+            <div class="hero-blob hero-blob-indigo"></div>
+            <div class="hero-blob hero-blob-emerald"></div>
+            <div class="hero-blob hero-blob-cyan"></div>
+            <div class="hero-inner">
+              <div class="hero-eyebrow">
+                <span class="hero-eyebrow-badge">Client</span>
+                <a href="/docs/" class="hero-eyebrow-copy hero-eyebrow-link">mdwrk workspace, packages, and extensions documented here</a>
+                <svg class="hero-eyebrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 2 20 20"></path><path d="M8.5 16.5a5 5 0 0 1 7 0"></path><path d="M5 13a10 10 0 0 1 3-2"></path><path d="M12 20h.01"></path><path d="M8.5 5.4A15 15 0 0 1 21 10"></path></svg>
+              </div>
+              <h1 class="hero-heading">The <span class="hero-heading-accent">Local-First</span> Markdown Workspace</h1>
+              <p class="hero-copy home-subtitle">MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.</p>
+              <div class="hero-actions">
+                <a href="/docs/getting-started/local-setup/" class="hero-primary-link">Deploy Locally
+                  <svg class="hero-primary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+                </a>
+                <a href="https://app.mdwrk.com" class="hero-secondary-link" target="_blank" rel="noopener noreferrer">Install PWA</a>
+              </div>
+              <div class="hero-meta">
+                <span class="hero-meta-label">ESM CDN</span>
+                <a href="https://esm.sh/@mdwrk/mdwrkspace" target="_blank" rel="noopener noreferrer" class="hero-meta-link">https://esm.sh/@mdwrk/mdwrkspace</a>
+              </div>
+            </div>
+          </section>
 
-            <section class="docs-main">
-              <div class="docs-content-wrap">
-                <div class="docs-article-column">
+          <section id="features" class="features-section">
+            <div class="features-container">
+              <div class="features-header">
+                <h2 class="features-heading">Designed for <span class="features-heading-privacy">Privacy</span>, Built for <span class="features-heading-accent">Reusable Surfaces</span></h2>
+                <p class="features-copy">The workspace client is the product surface. The lander is a guided window into the client, the shared packages, and the extension platform.</p>
+              </div>
+              <div class="features-grid">
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Offline First</h3>
+                  <p class="feature-description">Built as a Progressive Web App. Install the MdWrk client once, keep working offline, and sync only when you choose to.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Split Packages</h3>
+                  <p class="feature-description">The editor and previewer are separate MdWrk packages, so the client, examples, and docs consume the same public surfaces.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Extension Ready</h3>
+                  <p class="feature-description">The client hosts bundled and external extensions through a governed runtime, manifest, settings, and trust policy stack.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Zero Knowledge</h3>
+                  <p class="feature-description">No hosted authoring backend owns your Markdown. Data stays local unless you connect your own Git provider.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Local Database</h3>
+                  <p class="feature-description">IndexedDB persistence keeps workspaces, sessions, themes, and extension state local to the device.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">GitHub Sync</h3>
+                  <p class="feature-description">Optional Git provider integration keeps repository operations additive instead of mandatory.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Shared Themes</h3>
+                  <p class="feature-description">Renderer, editor, docs, blog, and client app all consume MdWrk theme contracts instead of forking per-surface styling.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="m5 5 14 14"></path>
+                  <path d="m19 5-14 14"></path>
+                </svg></div>
+                  <h3 class="feature-title">Blazing Fast</h3>
+                  <p class="feature-description">No network round trip for typing or previewing. The editor and preview pipeline stay local and responsive.</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
-                <article class="docs-content-card lander-content-card">
-                  <header class="docs-header">
-                    <div class="docs-meta">
-                      <span>landing</span>
-                      <span class="docs-meta-divider">/</span>
-                      <span>2026-05-04</span>
-                    </div>
-                    <h1 class="docs-title">Local-first Markdown workspace</h1>
-                  </header>
-                  <div class="markdown-renderer-host lander-markdown">
-                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk gives Markdown authors a workspace that treats plain text as the durable source of truth. The product combines source editing, rendered preview, workspace organization, theme surfaces, extension contracts, and package-level documentation in one environment.</p><p class="md-p">The public lander is compiled from Markdown files into static HTML. Search engines, answer engines, AI retrieval systems, and people using simple command-line tools can read the important page content without waiting for a JavaScript application shell to render it.</p><h2 class="md-h2" id="why-mdwrk-exists">Why MdWrk Exists</h2><p class="md-p">Markdown teams often want portability and speed, but product sites around Markdown tools can hide the real content behind runtime frameworks. MdWrk keeps public content in Markdown, validates metadata with a schema, renders visible answers and FAQs, and ships machine-readable artifacts with the build.</p><h2 class="md-h2" id="what-the-workspace-emphasizes">What The Workspace Emphasizes</h2><p class="md-p">MdWrk focuses on offline-capable writing, local-first workspace state, privacy-aware sharing, reusable editor and renderer packages, and extension host boundaries. The documentation explains what lives locally, what needs network access, and which package surfaces developers can use directly.</p><h2 class="md-h2" id="static-content-contract">Static Content Contract</h2><p class="md-p">Every public page in this compiler has YAML frontmatter for metadata and Markdown body content for the article. The compiler produces HTML, JSON-LD, sitemap data, robots policy, LLM-oriented indexes, Markdown mirrors, and a content registry that can be verified before deployment.</p><h2 class="md-h2" id="start-here">Start Here</h2><p class="md-p">Begin with the quickstart, then review the feature pages for offline Markdown editing, local-first workflow design, and extension platform boundaries. Comparison pages explain how MdWrk differs from note apps, code editors, and standard Markdown editors without recommending tools that do not fit MdWrk's privacy and workspace goals.</p></div>
+          <section id="demo" class="demo-section">
+            <div class="demo-backdrop"></div>
+            <div class="demo-container">
+              <div class="demo-header">
+                <h2 class="demo-heading">One Editor Package. One Preview Package. <span class="demo-heading-accent">Shared Everywhere.</span></h2>
+                <p class="demo-copy">The lander demo runs through the same public MdWrk editor and renderer package surfaces that the client ships.</p>
+              </div>
+              <div class="demo-frame">
+                <div class="demo-toolbar">
+                  <div class="demo-toolbar-lights"><div class="demo-light demo-light-red"></div><div class="demo-light demo-light-yellow"></div><div class="demo-light demo-light-green"></div></div>
+                  <div class="demo-tablist">
+                    <button type="button" class="demo-tab-button is-active"><svg class="demo-tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"></path></svg> Editor</button>
+                    <button type="button" class="demo-tab-button is-active"><svg class="demo-tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.1 12a10 10 0 0 1 19.8 0 10 10 0 0 1-19.8 0Z"></path><circle cx="12" cy="12" r="3"></circle></svg> Preview</button>
                   </div>
-                </article>
+                  <div class="demo-filename"><svg class="demo-filename-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg> demo_showcase.md</div>
+                </div>
+                <div class="demo-body static-demo-body">
+                  <div class="demo-editor-pane is-editor-visible">
+                    <pre class="lander-editor static-demo-editor" aria-label="Static Markdown editor demo"><code>## mdwrk client surface
 
-                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
-                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
-                    <div class="answer-blocks-list">
-                      <details class="answer-block-accordion">
-                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
-                        <div class="answer-block-content">
-                          <div class="markdown-renderer-host lander-markdown">
-                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.</p></div>
-                          </div>
-                        </div>
-                      </details>
-                    </div>
-                  </section>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">What is MdWrk?</summary><div class="answer-block-content"><p>MdWrk is a Markdown workspace and package platform focused on local-first authoring, preview, theming, extension contracts, and developer-facing documentation.</p></div></details>
-                      <details class="answer-block-accordion"><summary class="answer-block-summary">Does MdWrk require client-side rendering for public documentation?</summary><div class="answer-block-content"><p>The public lander is compiled into static HTML so core public content is readable from the raw HTML response before any JavaScript executes.</p></div></details></div>
-                  </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
-                    <ul><li><a href="/features/offline-markdown-editor/">Offline Markdown editor for local-first writing</a></li><li><a href="/docs/quickstart/">MdWrk quickstart</a></li><li><a href="/compare/obsidian/">MdWrk vs Obsidian</a></li></ul>
-                  </section>
+The lander demonstrates the same shared packages that the mdwrk client uses.
+
+## Shared packages
+| Surface | Package | Notes |
+| :--- | :---: | ---: |
+| Editor | `@mdwrk/markdown-editor-react` | Live |
+| Preview | `@mdwrk/markdown-renderer-react` | Shared |
+| Themes | `@mdwrk/theme-contract` | Light + dark |
+| Extensions | Runtime-backed | Governed |
+
+## Workspace signals
+- [x] Local-first persistence
+- [x] Split editor and preview packages
+- [x] Extension-ready client host
+- [x] Shared theme rendering for docs and blog
+
+## Example
+```typescript
+import { MarkdownSourceEditor } from &quot;@mdwrk/markdown-editor-react&quot;;
+import { MarkdownRenderer } from &quot;@mdwrk/markdown-renderer-react&quot;;
+
+const surface = {
+  client: &quot;@mdwrk/mdwrkspace&quot;,
+  editor: &quot;@mdwrk/markdown-editor-react&quot;,
+  preview: &quot;@mdwrk/markdown-renderer-react&quot;
+};
+```
+</code></pre>
+                  </div>
+                  <div class="demo-preview-pane is-preview-visible">
+                    <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="mdwrk-client-surface">mdwrk client surface</h2><p class="md-p">The lander demonstrates the same shared packages that the mdwrk client uses.</p><h2 class="md-h2" id="shared-packages">Shared packages</h2><table class="md-table"><colgroup class="md-table-columns"><col class="md-table-column" style="text-align:left" /><col class="md-table-column" style="text-align:center" /><col class="md-table-column" style="text-align:right" /></colgroup><thead class="md-table-head"><tr class="md-table-row"><th class="md-table-header" align="left">Surface</th><th class="md-table-header" align="center">Package</th><th class="md-table-header" align="right">Notes</th></tr></thead><tbody class="md-table-body"><tr class="md-table-row"><td class="md-table-cell" align="left">Editor</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-editor-react</code></td><td class="md-table-cell" align="right">Live</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Preview</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-renderer-react</code></td><td class="md-table-cell" align="right">Shared</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Themes</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/theme-contract</code></td><td class="md-table-cell" align="right">Light + dark</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Extensions</td><td class="md-table-cell" align="center">Runtime-backed</td><td class="md-table-cell" align="right">Governed</td></tr></tbody></table><h2 class="md-h2" id="workspace-signals">Workspace signals</h2><ul class="md-ul md-task-list" data-task-list="true"><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Local-first persistence</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Split editor and preview packages</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Extension-ready client host</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Shared theme rendering for docs and blog</li></ul><h2 class="md-h2" id="example">Example</h2><pre class="md-code-block md-code-surface"><code class="language-typescript">import { MarkdownSourceEditor } from &quot;@mdwrk/markdown-editor-react&quot;;
+import { MarkdownRenderer } from &quot;@mdwrk/markdown-renderer-react&quot;;
+
+const surface = {
+  client: &quot;@mdwrk/mdwrkspace&quot;,
+  editor: &quot;@mdwrk/markdown-editor-react&quot;,
+  preview: &quot;@mdwrk/markdown-renderer-react&quot;
+};</code></pre></div>
+                  </div>
+                  </div>
+                </div>
+                <div class="demo-statusbar">
+                  <span class="demo-status-primary"><svg class="demo-status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg> Render Engine: @mdwrk/markdown-renderer-core</span>
+                  <span class="demo-status-secondary"><span>85 words</span><span>856 chars</span></span>
+                </div>
               </div>
-                <aside class="docs-toc" aria-label="Article table of contents">
-              <div class="docs-toc-inner">
-                <h4 class="docs-toc-heading">On this page</h4>
-                <nav class="docs-toc-nav">
-                  <div class="docs-toc-item"><a href="#why-mdwrk-exists" class="docs-toc-link" title="Why MdWrk Exists">Why MdWrk Exists</a></div>
-                  <div class="docs-toc-item"><a href="#what-the-workspace-emphasizes" class="docs-toc-link" title="What The Workspace Emphasizes">What The Workspace Emphasizes</a></div>
-                  <div class="docs-toc-item"><a href="#static-content-contract" class="docs-toc-link" title="Static Content Contract">Static Content Contract</a></div>
-                  <div class="docs-toc-item"><a href="#start-here" class="docs-toc-link" title="Start Here">Start Here</a></div>
-                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
-                  <div class="docs-toc-item"><a href="#related-heading" class="docs-toc-link" title="Related Pages">Related Pages</a></div>
-                </nav>
-              </div>
-            </aside>
-              </div>
-            </section>
-          </div>
+            </div>
+          </section>
+
+          <section id="privacy" class="privacy-section">
+            <div class="privacy-container">
+              <h2 class="privacy-heading">Your Data Stays on <span class="privacy-heading-accent">Your Device</span></h2>
+              <p class="privacy-copy">MdWrk uses IndexedDB to store your workspaces directly in your browser. No AI servers scan your content, and no trackers follow your keys.</p>
+              <div class="privacy-badge"><div class="privacy-badge-dot"></div>Privacy Standard: Verified Local</div>
+            </div>
+          </section>
+          </article>
         </main>
         <footer class="footer">
           <div class="footer-inner">
             <div class="footer-layout">
-              <div class="footer-brand-block">
-                <a href="/" class="footer-brand-link">
-                  <span class="footer-brand-text">MdWrk</span>
-                </a>
-                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
-              </div>
+              <div class="footer-brand-block"><a href="/" class="footer-brand-link"><span class="footer-brand-text">MdWrk</span></a><p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p></div>
               <div class="footer-nav-grid">
-                <div>
-                  <h2 class="footer-section-heading">Resources</h2>
-                  <ul class="footer-link-list">
-                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
-                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h2 class="footer-section-heading">Legal</h2>
-                  <ul class="footer-link-list">
-                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
-                    <li><a href="/security/" class="footer-link">Security</a></li>
-                  </ul>
-                </div>
+                <div><h2 class="footer-section-heading">Resources</h2><ul class="footer-link-list"><li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li><li><a href="/blog/launch/" class="footer-link">Blog</a></li><li><a href="https://app.mdwrk.com" class="footer-link">Live Demo</a></li></ul></div>
+                <div><h2 class="footer-section-heading">Legal</h2><ul class="footer-link-list"><li><a href="/privacy/" class="footer-link">Privacy</a></li><li><a href="/security/" class="footer-link">Security</a></li></ul></div>
               </div>
             </div>
           </div>

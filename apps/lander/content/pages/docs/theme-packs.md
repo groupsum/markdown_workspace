@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "learn MdWrk theme packs"
 contentType: "docs"
 updatedAt: "2026-05-04"
-answer: "MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content."
+subtitle: "MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content."
 parent: "/docs/quickstart/"
 related:
   - "/features/extension-platform/"

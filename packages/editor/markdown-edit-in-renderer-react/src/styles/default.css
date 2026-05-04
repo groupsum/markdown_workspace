@@ -1,4 +1,5 @@
 .markdown-edit-in-renderer-host {
+  position: relative;
   box-sizing: border-box;
   color: var(--mwir-fg);
   background: var(--mwir-bg);
@@ -24,6 +25,8 @@
   overflow-wrap: anywhere;
   word-break: normal;
   line-height: 1.6;
+  pointer-events: none;
+  user-select: none;
   transition:
     background-color 120ms ease,
     border-color 120ms ease,
@@ -131,4 +134,38 @@
   background: #f8fafc;
   font-weight: 700;
   text-align: left;
+}
+
+.markdown-edit-in-renderer-blank-line {
+  min-height: 1.6em;
+}
+
+.markdown-edit-in-renderer-plaintext {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  padding: clamp(1rem, 3vw, 3rem);
+  color: transparent;
+  caret-color: var(--mwir-accent);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  resize: none;
+  overflow: auto;
+  font: inherit;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.markdown-edit-in-renderer-plaintext::placeholder {
+  color: transparent;
+}
+
+.markdown-edit-in-renderer-plaintext::selection {
+  color: transparent;
+  background: color-mix(in srgb, var(--mwir-accent) 24%, transparent);
 }

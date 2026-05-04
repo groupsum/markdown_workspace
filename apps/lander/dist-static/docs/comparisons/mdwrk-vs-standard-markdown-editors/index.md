@@ -16,3 +16,13 @@ MdWrk turns Markdown authoring into a product surface that can serve writers, do
 
 - [Offline Markdown Editor](/docs/product/offline-markdown-editor)
 - [Developer Documentation](/docs/product/developer-documentation)
+
+## Frequently Asked Questions
+
+### What is MdWrk Vs Standard Markdown Editors?
+
+Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.
+
+### When should I use MdWrk Vs Standard Markdown Editors?
+
+Use this docs when you need direct MdWrk guidance for mdwrk vs standard markdown editors.

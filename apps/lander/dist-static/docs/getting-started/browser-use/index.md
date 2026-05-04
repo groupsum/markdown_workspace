@@ -28,3 +28,13 @@ Browser use keeps workspace data in browser-managed local storage. That is conve
 Choose the PWA route when you want a more app-like shell.
 Choose the local setup route when you need a repo checkout, a controlled local build, or self-managed hosting.
 Choose standalone modules when you want the reusable package surfaces inside another application.
+
+## Frequently Asked Questions
+
+### What is Browser Use?
+
+The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
+
+### When should I use Browser Use?
+
+Use this docs when you need direct MdWrk guidance for browser use.

@@ -8,114 +8,18 @@ import type {
 
 const mergeClassNames = (...values: Array<string | undefined | false>) => values.filter(Boolean).join(" ");
 
-function normalizeEditableText(value: string): string {
-  return value
-    .replace(/\r\n/g, "\n")
-    .replace(/\u00a0/g, " ")
-    .replace(/[ \t]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trimEnd();
+function createTrailingBlankLineSpacers(markdown: string): string {
+  const trailingNewlines = markdown.match(/\n+$/)?.[0].length ?? 0;
+  return Array.from({ length: trailingNewlines }, () => (
+    '<div class="markdown-edit-in-renderer-blank-line" aria-hidden="true"></div>'
+  )).join("");
 }
 
-function normalizeMarkdownBlock(value: string): string {
-  return normalizeEditableText(value)
-    .split("\n")
-    .map((line) => line.trimEnd())
-    .join("\n")
-    .trim();
-}
-
-function childText(element: Element): string {
-  return normalizeMarkdownBlock(element.textContent ?? "");
-}
-
-function tableToMarkdown(table: HTMLTableElement): string {
-  const rows = Array.from(table.querySelectorAll("tr"))
-    .map((row) => Array.from(row.querySelectorAll("th, td")).map((cell) => childText(cell)))
-    .filter((cells) => cells.length > 0);
-
-  if (rows.length === 0) return "";
-
-  const header = rows[0];
-  const divider = header.map(() => "---");
-  const body = rows.slice(1);
-  return [header, divider, ...body]
-    .map((cells) => `| ${cells.join(" | ")} |`)
-    .join("\n");
-}
-
-function listToMarkdown(list: HTMLOListElement | HTMLUListElement): string {
-  const ordered = list.tagName.toLowerCase() === "ol";
-  return Array.from(list.children)
-    .filter((child): child is HTMLLIElement => child.tagName.toLowerCase() === "li")
-    .map((item, index) => `${ordered ? `${index + 1}.` : "-"} ${childText(item)}`)
-    .join("\n");
-}
-
-function blockquoteToMarkdown(element: Element): string {
-  return childText(element)
-    .split("\n")
-    .map((line) => `> ${line}`)
-    .join("\n");
-}
-
-function elementToMarkdown(element: Element): string {
-  const tagName = element.tagName.toLowerCase();
-  const text = childText(element);
-
-  switch (tagName) {
-    case "h1":
-      return text ? `# ${text}` : "";
-    case "h2":
-      return text ? `## ${text}` : "";
-    case "h3":
-      return text ? `### ${text}` : "";
-    case "h4":
-      return text ? `#### ${text}` : "";
-    case "h5":
-      return text ? `##### ${text}` : "";
-    case "h6":
-      return text ? `###### ${text}` : "";
-    case "blockquote":
-      return blockquoteToMarkdown(element);
-    case "pre": {
-      const code = element.querySelector("code")?.textContent ?? element.textContent ?? "";
-      return `\`\`\`\n${normalizeEditableText(code)}\n\`\`\``;
-    }
-    case "ul":
-    case "ol":
-      return listToMarkdown(element as HTMLOListElement | HTMLUListElement);
-    case "table":
-      return tableToMarkdown(element as HTMLTableElement);
-    case "hr":
-      return "---";
-    case "p":
-    case "div":
-      return text;
-    default:
-      return text;
-  }
-}
-
-function editableDomToMarkdown(root: HTMLElement): string {
-  const renderedRoot = root.classList.contains("markdown-body")
-    ? root
-    : root.querySelector<HTMLElement>(".markdown-body") ?? root;
-  const blocks = Array.from(renderedRoot.children)
-    .map((child) => elementToMarkdown(child))
-    .filter(Boolean);
-
-  return normalizeEditableText(blocks.length > 0 ? blocks.join("\n\n") : renderedRoot.innerText);
-}
-
-function focusEditableEnd(element: HTMLElement): void {
-  const selection = window.getSelection();
-  if (!selection) return;
-  const range = document.createRange();
-  range.selectNodeContents(element);
-  range.collapse(false);
-  selection.removeAllRanges();
-  selection.addRange(range);
+function createBlankMarkdownSpacers(markdown: string): string {
+  const blankLineCount = markdown.length === 0 ? 0 : markdown.split("\n").length;
+  return Array.from({ length: blankLineCount }, () => (
+    '<div class="markdown-edit-in-renderer-blank-line" aria-hidden="true"></div>'
+  )).join("");
 }
 
 export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHandle, MarkdownEditInRendererProps>(
@@ -144,9 +48,8 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
     const isControlled = value !== undefined;
     const initialValue = React.useMemo(() => value ?? defaultValue ?? "", []);
     const [draftValue, setDraftValue] = React.useState(initialValue);
-    const surfaceRef = React.useRef<HTMLDivElement>(null);
+    const inputRef = React.useRef<HTMLTextAreaElement>(null);
     const valueRef = React.useRef(draftValue);
-    const lastInputValueRef = React.useRef<string | null>(null);
 
     const markdown = isControlled ? (value ?? "") : draftValue;
     const renderOptions = React.useMemo(
@@ -168,25 +71,20 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
       ],
     );
     const renderedHtml = React.useMemo(
-      () => renderMarkdownToHtmlSync(markdown || placeholder, renderOptions),
-      [markdown, placeholder, renderOptions],
+      () => (
+        markdown.trim() === ""
+          ? createBlankMarkdownSpacers(markdown)
+          : `${renderMarkdownToHtmlSync(markdown, renderOptions)}${createTrailingBlankLineSpacers(markdown)}`
+      ),
+      [markdown, renderOptions],
     );
 
     React.useEffect(() => {
       valueRef.current = markdown;
     }, [markdown]);
 
-    React.useLayoutEffect(() => {
-      const surface = surfaceRef.current;
-      if (!surface) return;
-      if (surface.innerHTML !== renderedHtml) {
-        surface.innerHTML = renderedHtml;
-      }
-    }, [documentKey, markdown, renderedHtml]);
-
     const commitValue = React.useCallback((nextValue: string) => {
       valueRef.current = nextValue;
-      lastInputValueRef.current = nextValue;
       if (!isControlled) {
         setDraftValue(nextValue);
       }
@@ -195,18 +93,18 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
 
     React.useEffect(() => {
       if (!autoFocus || disabled) return;
-      surfaceRef.current?.focus();
+      inputRef.current?.focus();
     }, [autoFocus, disabled]);
 
     React.useImperativeHandle(ref, () => ({
       focus(): void {
-        surfaceRef.current?.focus();
+        inputRef.current?.focus();
       },
       getValue(): string {
         return valueRef.current;
       },
-      getInputElement(): HTMLDivElement | null {
-        return surfaceRef.current;
+      getInputElement(): HTMLTextAreaElement | null {
+        return inputRef.current;
       },
       setValue(nextValue: string): void {
         commitValue(nextValue);
@@ -226,33 +124,25 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
       <div
         className={mergeClassNames("markdown-edit-in-renderer-host", className)}
         style={mergedThemeStyle}
+        data-document-key={documentKey}
         data-testid="markdown-edit-in-renderer"
       >
         <div
-          ref={surfaceRef}
           className={mergeClassNames("markdown-edit-in-renderer-surface markdown-body", surfaceClassName)}
-          contentEditable={!disabled}
-          suppressContentEditableWarning
-          role="textbox"
+          aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: renderedHtml }}
+        />
+        <textarea
+          ref={inputRef}
+          className="markdown-edit-in-renderer-plaintext"
+          value={markdown}
+          onChange={(event) => commitValue(event.currentTarget.value)}
+          aria-label="Markdown source"
           aria-multiline="true"
-          aria-disabled={disabled ? "true" : undefined}
           data-placeholder={placeholder}
           spellCheck={spellCheck}
-          tabIndex={disabled ? undefined : 0}
-          onInput={(event) => {
-            const nextValue = editableDomToMarkdown(event.currentTarget);
-            commitValue(nextValue);
-            const nextHtml = renderMarkdownToHtmlSync(nextValue || placeholder, renderOptions);
-            if (event.currentTarget.innerHTML !== nextHtml) {
-              event.currentTarget.innerHTML = nextHtml;
-              focusEditableEnd(event.currentTarget);
-            }
-          }}
-          onPaste={(event) => {
-            event.preventDefault();
-            const text = event.clipboardData.getData("text/plain");
-            document.execCommand("insertText", false, text);
-          }}
+          disabled={disabled}
+          placeholder={placeholder}
         />
       </div>
     );

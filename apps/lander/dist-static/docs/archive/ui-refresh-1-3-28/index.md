@@ -17,3 +17,13 @@ This release improves editing ergonomics and cleans up key UI surfaces:
 ## Notes
 
 The viewport contract remains centralized in `apps/client/styles/base/viewports.css`; themes continue to style each breakpoint band independently.
+
+## Frequently Asked Questions
+
+### What is UI Refresh 1.3.28?
+
+MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement.
+
+### When should I use UI Refresh 1.3.28?
+
+Use this docs when you need direct MdWrk guidance for ui refresh 1.3.28.

@@ -29,3 +29,13 @@ npm run validate:compatibility
 - [April 1 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-01T00:00:00Z&until=2026-04-02T00:00:00Z)
 
 This post marks the point where MdWrk's extension system becomes easier to trust, easier to document, and easier to carry into release workflows.
+
+## Frequently Asked Questions
+
+### What is Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal?
+
+MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+
+### When should I use Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal?
+
+Use this blog when you need direct MdWrk guidance for extension compatibility gates turn mdwrk publishing into a clear quality signal.

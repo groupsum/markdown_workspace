@@ -74,31 +74,19 @@
                       <span>2026-05-04</span>
                     </div>
                     <h1 class="blog-post-title">MdWrk launch notes</h1>
+                    <p class="blog-post-subtitle">The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.</p>
                   </header>
                   <div class="markdown-renderer-host lander-markdown">
                     <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk's public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live.</p><h2 class="md-h2" id="static-before-runtime">Static Before Runtime</h2><p class="md-p">The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page.</p><h2 class="md-h2" id="machine-readable-by-default">Machine-Readable By Default</h2><p class="md-p">The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned.</p><h2 class="md-h2" id="why-it-matters">Why It Matters</h2><p class="md-p">A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment.</p><h2 class="md-h2" id="what-comes-next">What Comes Next</h2><p class="md-p">The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.</p></div>
                   </div>
                 </article>
 
-                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
-                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
-                    <div class="answer-blocks-list">
-                      <details class="answer-block-accordion">
-                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
-                        <div class="answer-block-content">
-                          <div class="markdown-renderer-host lander-markdown">
-                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.</p></div>
-                          </div>
-                        </div>
-                      </details>
-                    </div>
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">Why does the MdWrk lander compile static HTML?</summary><div class="faq-content"><p>Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification.</p></div></details></div>
                   </section>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">Why does the MdWrk lander compile static HTML?</summary><div class="answer-block-content"><p>Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification.</p></div></details></div>
-                  </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                  <section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
                     <ul><li><a href="/docs/quickstart/">MdWrk quickstart</a></li><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li></ul>
                   </section>
               </div>

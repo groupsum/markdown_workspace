@@ -1,0 +1,40 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e45]:
+      - heading "Edit in renderer" [level=1] [ref=e46]
+      - paragraph [ref=e47]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e48]
+      - paragraph [ref=e49]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e50]: "## Next section"
+        - text: ","
+        - code [ref=e51]: "- new item"
+        - text: ", or"
+        - code [ref=e52]: "> note"
+        - text: .
+      - list [ref=e53]:
+        - listitem [ref=e54]: Headings stay visually rendered as headings
+        - listitem [ref=e55]: Lists stay visually rendered as lists
+        - listitem [ref=e56]:
+          - strong [ref=e57]: Bold
+          - text: and
+          - emphasis [ref=e58]: italic
+          - text: text render inside the same editable pane
+          - blockquote [ref=e59]:
+            - paragraph [ref=e60]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e61]:
+        - rowgroup [ref=e65]:
+          - row "Syntax Rendered result" [ref=e66]:
+            - columnheader "Syntax" [ref=e67]
+            - columnheader "Rendered result" [ref=e68]
+        - rowgroup [ref=e69]:
+          - row "# Title heading" [ref=e70]:
+            - cell "# Title" [ref=e71]:
+              - code [ref=e72]: "# Title"
+            - cell "heading" [ref=e73]
+          - row "- Item list item" [ref=e74]:
+            - cell "- Item" [ref=e75]:
+              - code [ref=e76]: "- Item"
+            - cell "list item" [ref=e77]
+      - code [ref=e79]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+      - heading "Final typed heading" [level=2] [ref=e80]

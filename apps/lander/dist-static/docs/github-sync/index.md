@@ -22,3 +22,13 @@ For production deployments, keep GitHub links current through `VITE_GITHUB_REPO_
 ```text
 https://github.com/groupsum/mdwrk
 ```
+
+## Frequently Asked Questions
+
+### What is Github Sync?
+
+Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository.
+
+### When should I use Github Sync?
+
+Use this docs when you need direct MdWrk guidance for github sync.

@@ -1,7 +1,7 @@
 ---
 title: Developer Documentation
 slug: product/developer-documentation
-section: Product
+section: Features
 sectionOrder: 2
 order: 17
 toc: true

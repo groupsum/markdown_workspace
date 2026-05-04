@@ -21,6 +21,7 @@
       ],
       "properties": {
         "title": { "$ref": "#/$defs/nonEmptyString" },
+        "subtitle": { "$ref": "#/$defs/subtitle" },
         "slug": {
           "type": "string",
           "pattern": "^[a-z0-9][a-z0-9/-]*$"
@@ -51,6 +52,7 @@
       ],
       "properties": {
         "title": { "$ref": "#/$defs/nonEmptyString" },
+        "subtitle": { "$ref": "#/$defs/subtitle" },
         "date": { "$ref": "#/$defs/isoDate" },
         "status": { "$ref": "#/$defs/articleStatus" },
         "author": { "$ref": "#/$defs/nonEmptyString" },
@@ -67,6 +69,11 @@
     "excerpt": {
       "type": "string",
       "minLength": 40,
+      "maxLength": 280
+    },
+    "subtitle": {
+      "type": "string",
+      "minLength": 20,
       "maxLength": 280
     },
     "isoDate": {

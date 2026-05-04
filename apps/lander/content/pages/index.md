@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "local-first markdown workspace"
 contentType: "landing"
 updatedAt: "2026-05-04"
-answer: "MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow."
+subtitle: "MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow."
 faqs:
   - question: "What is MdWrk?"
     answer: "MdWrk is a Markdown workspace and package platform focused on local-first authoring, preview, theming, extension contracts, and developer-facing documentation."

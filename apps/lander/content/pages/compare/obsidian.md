@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "compare MdWrk with Obsidian"
 contentType: "comparison"
 updatedAt: "2026-05-04"
-answer: "MdWrk focuses on a local-first Markdown workspace, reusable editor and renderer package surfaces, governed extension contracts, and static public documentation; Obsidian is commonly evaluated as a personal knowledge base and plugin-rich note app."
+subtitle: "MdWrk focuses on a local-first Markdown workspace, reusable editor and renderer package surfaces, governed extension contracts, and static public documentation; Obsidian is commonly evaluated as a personal knowledge base and plugin-rich note app."
 faqs:
   - question: "Should teams choose MdWrk or Obsidian?"
     answer: "Teams should evaluate the workflow they need. MdWrk is positioned around package surfaces, static public docs, and governed workspace contracts rather than a note graph as the primary identity."

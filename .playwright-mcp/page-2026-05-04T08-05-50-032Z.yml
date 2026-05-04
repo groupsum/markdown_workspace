@@ -1,0 +1,43 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e6]:
+      - heading "Edit in renderer" [level=1] [ref=e7]
+      - paragraph [ref=e8]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e9]
+      - paragraph [ref=e10]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e11]: "## Next section"
+        - text: ","
+        - code [ref=e12]: "- new item"
+        - text: ", or"
+        - code [ref=e13]: "> note"
+        - text: .
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - paragraph [ref=e16]: Headings stay visually rendered as headings
+        - listitem [ref=e17]:
+          - paragraph [ref=e18]: Lists stay visually rendered as lists
+        - listitem [ref=e19]:
+          - paragraph [ref=e20]:
+            - strong [ref=e21]: Bold
+            - text: and
+            - emphasis [ref=e22]: italic
+            - text: text render inside the same editable pane
+          - blockquote [ref=e23]:
+            - paragraph [ref=e24]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e25]:
+        - rowgroup [ref=e29]:
+          - row "Syntax Rendered result" [ref=e30]:
+            - columnheader "Syntax" [ref=e31]
+            - columnheader "Rendered result" [ref=e32]
+        - rowgroup [ref=e33]:
+          - row "# Title heading" [ref=e34]:
+            - cell "# Title" [ref=e35]:
+              - code [ref=e36]: "# Title"
+            - cell "heading" [ref=e37]
+          - row "- Item list item" [ref=e38]:
+            - cell "- Item" [ref=e39]:
+              - code [ref=e40]: "- Item"
+            - cell "list item" [ref=e41]
+      - code [ref=e43]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+      - paragraph [ref=e44]

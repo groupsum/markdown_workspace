@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "local-first markdown workspace"
 contentType: "feature"
 updatedAt: "2026-05-04"
-answer: "MdWrk is a local-first Markdown workspace that keeps authoring centered on portable Markdown files, browser-managed workspace state, and explicit export or sync boundaries."
+subtitle: "MdWrk is a local-first Markdown workspace that keeps authoring centered on portable Markdown files, browser-managed workspace state, and explicit export or sync boundaries."
 faqs:
   - question: "What does local-first mean for MdWrk?"
     answer: "Local-first means the product documentation treats local writing and preview as the default mental model, while sync, export, and external integrations are opt-in workflows."

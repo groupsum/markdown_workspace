@@ -1,6 +1,6 @@
 # April 2026
 
-The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
+Monthly Archive
 
 # April 2026
 
@@ -13,3 +13,13 @@ The MdWrk site now presents a clearer path into the client, package family, and 
 - [Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk](/blog/retained-client-versions-and-desktop-shell/) - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 - [Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows](/blog/screenshot-matrix-and-browser-sidebars/) - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 - [Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal](/blog/extension-compatibility-and-publish-gates/) - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+
+## Frequently Asked Questions
+
+### What is April 2026?
+
+The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
+
+### When should I use April 2026?
+
+Use this blog when you need direct MdWrk guidance for april 2026.

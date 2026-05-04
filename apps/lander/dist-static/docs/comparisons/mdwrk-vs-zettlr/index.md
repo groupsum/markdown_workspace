@@ -16,3 +16,13 @@ MdWrk keeps optional Markdown profile behavior visible through the renderer and 
 
 - [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
 - [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+
+## Frequently Asked Questions
+
+### What is MdWrk Vs Zettlr?
+
+Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
+
+### When should I use MdWrk Vs Zettlr?
+
+Use this docs when you need direct MdWrk guidance for mdwrk vs zettlr.

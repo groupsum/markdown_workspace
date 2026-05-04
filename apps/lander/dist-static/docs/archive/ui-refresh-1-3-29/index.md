@@ -18,3 +18,13 @@ This release focuses on visual clarity, modal usability, and responsive behavior
 ## Notes
 
 Viewport and aspect-ratio breakpoints remain centralized in `apps/client/styles/base/viewports.css`.
+
+## Frequently Asked Questions
+
+### What is UI Refresh 1.3.29?
+
+This release focuses on visual clarity, modal usability, and responsive behavior improvements-
+
+### When should I use UI Refresh 1.3.29?
+
+Use this docs when you need direct MdWrk guidance for ui refresh 1.3.29.

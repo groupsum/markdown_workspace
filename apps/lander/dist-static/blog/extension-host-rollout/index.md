@@ -62,3 +62,13 @@ MdWrk now expresses that story clearly in product terms and package terms at the
 - [Extension platform docs](/docs/extensions/extension-platform)
 - [Authoring overview](/docs/authoring/overview)
 - [April 26 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-26T00:00:00Z&until=2026-04-27T00:00:00Z)
+
+## Frequently Asked Questions
+
+### What is Launch Extensions on the Same Governed Host the MdWrk Client Uses?
+
+The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
+
+### When should I use Launch Extensions on the Same Governed Host the MdWrk Client Uses?
+
+Use this blog when you need direct MdWrk guidance for launch extensions on the same governed host the mdwrk client uses.

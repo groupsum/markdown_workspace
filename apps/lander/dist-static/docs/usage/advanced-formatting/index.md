@@ -151,3 +151,13 @@ Enable optional profiles only when the document actually needs them. This keeps 
 - [Editor Basics](/docs/usage/editor-basics)
 - [Rendering And Preview](/docs/usage/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
+
+## Frequently Asked Questions
+
+### What is Markdown Formatting?
+
+MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
+
+### When should I use Markdown Formatting?
+
+Use this docs when you need direct MdWrk guidance for markdown formatting.

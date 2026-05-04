@@ -1,0 +1,8 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic:
+      - generic:
+        - paragraph: a
+    - textbox "Markdown source" [active] [ref=e5]:
+      - /placeholder: Start typing...
+      - text: a

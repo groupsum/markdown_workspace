@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "markdown extension host"
 contentType: "feature"
 updatedAt: "2026-05-04"
-answer: "MdWrk includes an extension platform model for Markdown workflows, with public documentation covering host boundaries, manifests, runtime expectations, trust policy, and related package surfaces."
+subtitle: "MdWrk includes an extension platform model for Markdown workflows, with public documentation covering host boundaries, manifests, runtime expectations, trust policy, and related package surfaces."
 faqs:
   - question: "What is the MdWrk extension platform?"
     answer: "It is the governed package and runtime surface used to describe how extensions integrate with the Markdown workspace."

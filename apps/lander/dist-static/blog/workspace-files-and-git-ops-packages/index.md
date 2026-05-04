@@ -25,3 +25,13 @@ npm install @mdwrk/extension-workspace-files @mdwrk/extension-git-ops
 - [April 22 repository history](https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-22T00:00:00Z&until=2026-04-23T00:00:00Z)
 
 MdWrk now tells a larger story than writing alone. It also gives teams a package-ready route into repository-aware workspace operations.
+
+## Frequently Asked Questions
+
+### What is Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk?
+
+MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
+
+### When should I use Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk?
+
+Use this blog when you need direct MdWrk guidance for workspace files and git operations packages open a larger automation surface for mdwrk.

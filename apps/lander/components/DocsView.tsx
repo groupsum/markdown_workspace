@@ -14,7 +14,6 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { AnswerBlocks, extractTerminalAnswerBlocks, slugifyAnswerBlock, type AnswerBlock } from './AnswerBlocks';
 import { ChevronRight, ChevronDown, Book } from 'lucide-react';
 
 interface DocItem {
@@ -47,70 +46,17 @@ const removeDuplicateLeadingHeading = (content: string, title?: string) => {
   return content.slice(headingMatch[0].length).trim();
 };
 
-const packagePattern = /`(@mdwrk\/[^`]+)`/g;
+const stripLegacyAeoSections = (content: string) => {
+  const match = /^##\s+(Quick Reference|Article Guide)\s*$/m.exec(content.trim());
+  if (!match || match.index === undefined) return content.trim();
+  return content.slice(0, match.index).trim();
+};
 
 const slugifyHeading = (value: string) =>
   value
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-');
-
-const collectRelatedApis = (content: string, metadata: Record<string, string>) => {
-  const explicit = metadata.relatedApis
-    ?.split(',')
-    .map(item => item.trim())
-    .filter(Boolean);
-  if (explicit?.length) return explicit;
-
-  const discovered = Array.from(content.matchAll(packagePattern)).map(match => match[1]);
-  return Array.from(new Set(discovered)).slice(0, 5);
-};
-
-const buildAnswerBlocks = ({
-  title,
-  section,
-  content,
-  excerpt,
-  metadata,
-}: {
-  title: string;
-  section: string;
-  content: string;
-  excerpt: string;
-  metadata: Record<string, string>;
-}) => {
-  const relatedApis = collectRelatedApis(content, metadata);
-  const relatedApiText = relatedApis.length ? relatedApis.map(api => `- \`${api}\``).join('\n') : '- MdWrk client workspace\n- MdWrk Markdown editor and renderer packages';
-  const primaryExample = relatedApis[0] || '@mdwrk/mdwrkspace';
-
-  return [
-    {
-      title: 'What This Does',
-      content: excerpt,
-    },
-    {
-      title: 'When To Use It',
-      content: `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${section.toLowerCase()} surface.`,
-    },
-    {
-      title: 'How It Works',
-      content: 'MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.',
-    },
-    {
-      title: 'Example',
-      content: `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.`,
-    },
-    {
-      title: 'Common Errors',
-      content: 'Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.',
-    },
-    {
-      title: 'Related APIs',
-      content: relatedApiText,
-      defaultOpen: true,
-    },
-  ] satisfies AnswerBlock[];
-};
 
 export const DocsView: React.FC = () => {
   const { '*': slugParam } = useParams();
@@ -157,48 +103,15 @@ export const DocsView: React.FC = () => {
 
   const activeSlug = slugParam || docs[0]?.slug;
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
-  const renderedContent = removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title);
-  const extractedAnswerContent = extractTerminalAnswerBlocks(renderedContent);
-  const articleContent = extractedAnswerContent.articleContent;
+  const renderedContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title));
+  const articleContent = renderedContent;
   const excerpt = extractExcerpt(articleContent, currentDoc?.metadata.excerpt);
-  const generatedAnswerBlocks = currentDoc
-    ? buildAnswerBlocks({
-        title: currentDoc.title,
-        section: currentDoc.section,
-        content: articleContent,
-        excerpt,
-        metadata: currentDoc.metadata,
-      })
-    : [];
-  const quickReferenceBlocks = extractedAnswerContent.answerBlocks;
   const headings = extractHeadings(articleContent);
   const tocItems: TocItem[] = [
     ...headings.map(heading => ({
       title: heading,
       href: `#${slugifyHeading(heading)}`,
     })),
-    ...(quickReferenceBlocks.length > 0
-      ? [{
-          title: quickReferenceBlocks.length === 1 ? quickReferenceBlocks[0].title : 'Quick Reference',
-          href: '#quick-reference',
-          children: quickReferenceBlocks.length > 1
-            ? quickReferenceBlocks.map(block => ({
-                title: block.title,
-                href: `#quick-reference-${slugifyAnswerBlock(block.title)}`,
-              }))
-            : undefined,
-        }]
-      : []),
-    ...(generatedAnswerBlocks.length > 0
-      ? [{
-          title: 'Answer Blocks',
-          href: '#answer-blocks',
-          children: generatedAnswerBlocks.map(block => ({
-            title: block.title,
-            href: `#answer-blocks-${slugifyAnswerBlock(block.title)}`,
-          })),
-        }]
-      : []),
   ];
   const featuredImage = extractFirstImage(articleContent);
   const contentWithoutFeaturedImage = featuredImage ? removeFirstImage(articleContent) : articleContent;
@@ -309,6 +222,9 @@ export const DocsView: React.FC = () => {
                   <h1 className="docs-title">
                     {currentDoc.title}
                   </h1>
+                  {currentDoc.metadata.subtitle ? (
+                    <p className="docs-subtitle">{currentDoc.metadata.subtitle}</p>
+                  ) : null}
                 </header>
               )}
               {featuredImage?.src ? (
@@ -319,8 +235,6 @@ export const DocsView: React.FC = () => {
               ) : null}
               <MarkdownViewer content={contentWithoutFeaturedImage} />
             </div>
-            <AnswerBlocks id="quick-reference" title="Quick Reference" blocks={quickReferenceBlocks} />
-            <AnswerBlocks id="answer-blocks" title="Answer Blocks" blocks={generatedAnswerBlocks} />
           </div>
 
           {currentDoc?.metadata.toc === 'true' && tocItems.length > 0 && (

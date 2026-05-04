@@ -1,7 +1,7 @@
 ---
 title: Markdown Formatting
 slug: usage/advanced-formatting
-section: Product
+section: Features
 sectionOrder: 2
 order: 2
 toc: true

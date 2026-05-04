@@ -59,3 +59,13 @@ For published package discovery, use:
 ```text
 https://www.npmjs.com/org/mdwrk
 ```
+
+## Frequently Asked Questions
+
+### What is Standalone Modules?
+
+MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces.
+
+### When should I use Standalone Modules?
+
+Use this docs when you need direct MdWrk guidance for standalone modules.

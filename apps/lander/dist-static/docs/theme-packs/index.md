@@ -15,3 +15,13 @@ Code block syntax colors must be visible in generated HTML when the renderer emi
 ## Extension Relationship
 
 Theme packs may be delivered through extension surfaces, but the documentation should explain which package owns the contract and how the workspace applies the visual layer.
+
+## Frequently Asked Questions
+
+### What is Theme packs?
+
+MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.
+
+### When should I use Theme packs?
+
+Use this docs when you need direct MdWrk guidance for theme packs.

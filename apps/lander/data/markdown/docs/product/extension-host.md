@@ -1,7 +1,7 @@
 ---
 title: Extension Host
 slug: product/extension-host
-section: Product
+section: Features
 sectionOrder: 2
 order: 15
 toc: true

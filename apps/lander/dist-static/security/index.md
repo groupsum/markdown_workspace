@@ -19,3 +19,13 @@ The public lander build verifies HTML, links, JSON-LD, sitemap output, robots po
 ## Deployment Smoke Checks
 
 Production URL checks are post-deploy smoke checks. They should verify that the deployed response contains expected content, but they should not be required to create a valid deployable artifact.
+
+## Frequently Asked Questions
+
+### What is Security notes?
+
+MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.
+
+### When should I use Security notes?
+
+Use this security when you need direct MdWrk guidance for security notes.

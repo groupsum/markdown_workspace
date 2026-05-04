@@ -75,8 +75,7 @@ const extractBody = (raw) => raw.replace(/^\uFEFF/, '').replace(/^---\r?\n[\s\S]
 
 const removeGeneratedGuideBlocks = (content) =>
   content
-    .replace(/^## Quick Reference\s+[\s\S]*?(?=\n##\s+|\n#\s+|$)/, '')
-    .replace(/^## Article Guide\s+[\s\S]*?(?=\n##\s+|\n#\s+|$)/, '')
+    .replace(/^## (?:Quick Reference|Article Guide)\s*[\s\S]*$/m, '')
     .trim();
 
 const extractHeadings = (content) =>
@@ -211,7 +210,7 @@ for (const filePath of collectFiles(docsDir, ['.md'])) {
   const metadata = parseFrontmatter(raw);
   if (!isPublishedMetadata(metadata)) continue;
   const title = metadata.title || path.basename(filePath, '.md');
-  const body = extractBody(raw);
+  const body = removeGeneratedGuideBlocks(extractBody(raw));
   const headings = extractHeadings(body);
   const routePath = `/docs/${metadata.slug || slugify(title)}`;
   const description = summarize(body, metadata.excerpt);
@@ -258,7 +257,7 @@ for (const entry of parseContentIds()) {
     const date = normalizeIsoDate(metadata.date);
     const authorSlug = author ? slugify(author) : '';
     const monthSlug = date ? date.slice(0, 7) : '';
-    const body = extractBody(raw);
+    const body = removeGeneratedGuideBlocks(extractBody(raw));
     const headings = extractHeadings(body);
     const routePath = `/blog/${postSlug}`;
     const description = summarize(body, metadata.excerpt);

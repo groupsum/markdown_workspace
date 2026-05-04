@@ -51,3 +51,13 @@ The lander includes production metadata for:
 - generated `sitemap.xml`
 
 Regenerate the sitemap during every production build so public routes stay aligned with the current MDX docs.
+
+## Frequently Asked Questions
+
+### What is Client Configuration?
+
+Theme Selection Open Settings -> Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.
+
+### When should I use Client Configuration?
+
+Use this docs when you need direct MdWrk guidance for client configuration.

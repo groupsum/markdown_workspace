@@ -1,0 +1,42 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e82]:
+      - heading "Edit in renderer" [level=1] [ref=e83]
+      - paragraph [ref=e84]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e85]
+      - paragraph [ref=e86]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e87]: "## Next section"
+        - text: ","
+        - code [ref=e88]: "- new item"
+        - text: ", or"
+        - code [ref=e89]: "> note"
+        - text: .
+      - list [ref=e90]:
+        - listitem [ref=e91]:
+          - paragraph [ref=e92]: Headings stay visually rendered as headings
+        - listitem [ref=e93]:
+          - paragraph [ref=e94]: Lists stay visually rendered as lists
+        - listitem [ref=e95]:
+          - paragraph [ref=e96]:
+            - strong [ref=e97]: Bold
+            - text: and
+            - emphasis [ref=e98]: italic
+            - text: text render inside the same editable pane
+          - blockquote [ref=e99]:
+            - paragraph [ref=e100]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e101]:
+        - rowgroup [ref=e105]:
+          - row "Syntax Rendered result" [ref=e106]:
+            - columnheader "Syntax" [ref=e107]
+            - columnheader "Rendered result" [ref=e108]
+        - rowgroup [ref=e109]:
+          - row "# Title heading" [ref=e110]:
+            - cell "# Title" [ref=e111]:
+              - code [ref=e112]: "# Title"
+            - cell "heading" [ref=e113]
+          - row "- Item list item" [ref=e114]:
+            - cell "- Item" [ref=e115]:
+              - code [ref=e116]: "- Item"
+            - cell "list item" [ref=e117]
+      - code [ref=e119]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"

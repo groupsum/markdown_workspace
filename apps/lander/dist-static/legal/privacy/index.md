@@ -14,3 +14,13 @@ While data is local, we support client-side encryption for sensitive documents.
 
 ## 3. GitHub Integration
 If you choose to sync with GitHub, the application uses your Personal Access Token (PAT) to communicate directly with the GitHub API. This token is stored locally and never sent to our servers.
+
+## Frequently Asked Questions
+
+### What is Privacy Policy?
+
+At MdWrk , we believe privacy is a fundamental human right. Our software is designed so that your data never touches our servers. Data Collection We do not collect, store, or process any of your personal data. All markdo...
+
+### When should I use Privacy Policy?
+
+Use this privacy when you need direct MdWrk guidance for privacy policy.

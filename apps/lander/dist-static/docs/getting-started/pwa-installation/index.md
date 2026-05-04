@@ -31,3 +31,13 @@ PWA mode still uses browser-managed local storage. Installability does not turn 
 Choose browser use when you do not want to install anything.
 Choose local setup when you need a repo checkout, local build scripts, or self-hosted control.
 Choose standalone modules when you need package-level reuse instead of the full workspace shell.
+
+## Frequently Asked Questions
+
+### What is PWA Installation?
+
+The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window.
+
+### When should I use PWA Installation?
+
+Use this docs when you need direct MdWrk guidance for pwa installation.

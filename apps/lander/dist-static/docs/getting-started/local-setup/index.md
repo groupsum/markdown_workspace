@@ -64,3 +64,13 @@ The public lander is intended to sit behind a reverse proxy. Docker Compose in t
 
 Choose browser use or the PWA route when you just want to write.
 Choose standalone modules when you want package reuse without running the whole repository workspace.
+
+## Frequently Asked Questions
+
+### What is Local Setup?
+
+This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide.
+
+### When should I use Local Setup?
+
+Use this docs when you need direct MdWrk guidance for local setup.

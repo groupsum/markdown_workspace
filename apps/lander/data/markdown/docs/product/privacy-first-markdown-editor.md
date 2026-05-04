@@ -1,7 +1,7 @@
 ---
 title: Privacy-First Markdown Editor
 slug: product/privacy-first-markdown-editor
-section: Product
+section: Features
 sectionOrder: 2
 order: 12
 toc: true

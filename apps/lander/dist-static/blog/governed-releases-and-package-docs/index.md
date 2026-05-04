@@ -39,3 +39,13 @@ March 31 is where MdWrk gives teams a clearer view of:
 - package boundaries
 
 It is a major point on the timeline because package usage, release checks, and public docs start moving together.
+
+## Frequently Asked Questions
+
+### What is Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape?
+
+MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
+
+### When should I use Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape?
+
+Use this blog when you need direct MdWrk guidance for governed releases, ci evidence, and package docs give mdwrk a stronger public shape.

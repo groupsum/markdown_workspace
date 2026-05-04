@@ -1,0 +1,44 @@
+- main [ref=e3]:
+  - textbox [active] [ref=e5]:
+    - generic [ref=e122]:
+      - heading "Edit in renderer" [level=1] [ref=e123]
+      - paragraph [ref=e124]: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+      - heading "Live markdown rendering" [level=2] [ref=e125]
+      - paragraph [ref=e126]:
+        - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+        - code [ref=e127]: "## Next section"
+        - text: ","
+        - code [ref=e128]: "- new item"
+        - text: ", or"
+        - code [ref=e129]: "> note"
+        - text: .
+      - list [ref=e130]:
+        - listitem [ref=e131]:
+          - paragraph [ref=e132]: Headings stay visually rendered as headings
+        - listitem [ref=e133]:
+          - paragraph [ref=e134]: Lists stay visually rendered as lists
+        - listitem [ref=e135]:
+          - paragraph [ref=e136]:
+            - strong [ref=e137]: Bold
+            - text: and
+            - emphasis [ref=e138]: italic
+            - text: text render inside the same editable pane
+          - blockquote [ref=e139]:
+            - paragraph [ref=e140]: Blockquotes, code blocks, and tables render without switching panes.
+      - table [ref=e141]:
+        - rowgroup [ref=e145]:
+          - row "Syntax Rendered result" [ref=e146]:
+            - columnheader "Syntax" [ref=e147]
+            - columnheader "Rendered result" [ref=e148]
+        - rowgroup [ref=e149]:
+          - row "# Title heading" [ref=e150]:
+            - cell "# Title" [ref=e151]:
+              - code [ref=e152]: "# Title"
+            - cell "heading" [ref=e153]
+          - row "- Item list item" [ref=e154]:
+            - cell "- Item" [ref=e155]:
+              - code [ref=e156]: "- Item"
+            - cell "list item" [ref=e157]
+      - code [ref=e159]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+      - paragraph [ref=e160]: abcdef
+      - heading "Stay here" [level=2] [ref=e161]

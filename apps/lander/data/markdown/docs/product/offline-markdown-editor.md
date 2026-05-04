@@ -1,7 +1,7 @@
 ---
 title: Offline Markdown Editor
 slug: product/offline-markdown-editor
-section: Product
+section: Features
 sectionOrder: 2
 order: 10
 toc: true

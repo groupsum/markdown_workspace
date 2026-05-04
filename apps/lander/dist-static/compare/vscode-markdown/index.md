@@ -19,3 +19,13 @@ MdWrk's lander architecture requires static HTML and machine-readable artifacts 
 ## When MdWrk Fits
 
 MdWrk fits teams that want a Markdown-specific product story, governed public documentation, reusable packages, and visible local-first workflow boundaries. VS Code fits users who want Markdown editing inside a broader programming environment.
+
+## Frequently Asked Questions
+
+### What is MdWrk vs VS Code Markdown?
+
+Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.
+
+### When should I use MdWrk vs VS Code Markdown?
+
+Use this comparison when you need direct MdWrk guidance for mdwrk vs vs code markdown.

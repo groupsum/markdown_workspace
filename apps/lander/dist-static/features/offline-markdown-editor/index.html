@@ -74,32 +74,20 @@
                       <span>2026-05-04</span>
                     </div>
                     <h1 class="docs-title">Offline Markdown editor for local-first writing</h1>
+                    <p class="docs-subtitle">MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.</p>
                   </header>
                   <div class="markdown-renderer-host lander-markdown">
                     <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first.</p><h2 class="md-h2" id="why-offline-markdown-matters">Why Offline Markdown Matters</h2><p class="md-p">Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about.</p><h2 class="md-h2" id="how-mdwrk-handles-offline-work">How MdWrk Handles Offline Work</h2><p class="md-p">MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device.</p><h2 class="md-h2" id="developer-surfaces">Developer Surfaces</h2><p class="md-p">Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other.</p><h2 class="md-h2" id="read-next">Read Next</h2><p class="md-p">Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.</p></div>
                   </div>
                 </article>
 
-                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
-                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
-                    <div class="answer-blocks-list">
-                      <details class="answer-block-accordion">
-                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
-                        <div class="answer-block-content">
-                          <div class="markdown-renderer-host lander-markdown">
-                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.</p></div>
-                          </div>
-                        </div>
-                      </details>
-                    </div>
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">Is MdWrk an offline Markdown editor?</summary><div class="faq-content"><p>MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services.</p></div></details>
+                      <details class="faq-accordion"><summary class="faq-summary">Does MdWrk require cloud storage?</summary><div class="faq-content"><p>MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices.</p></div></details></div>
                   </section>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">Is MdWrk an offline Markdown editor?</summary><div class="answer-block-content"><p>MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services.</p></div></details>
-                      <details class="answer-block-accordion"><summary class="answer-block-summary">Does MdWrk require cloud storage?</summary><div class="answer-block-content"><p>MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices.</p></div></details></div>
-                  </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                  <section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
                     <ul><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li><li><a href="/docs/quickstart/">MdWrk quickstart</a></li></ul>
                   </section>
               </div>

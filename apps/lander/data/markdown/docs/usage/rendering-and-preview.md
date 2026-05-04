@@ -1,7 +1,7 @@
 ---
 title: Rendering and Preview
 slug: usage/rendering-and-preview
-section: Product
+section: Features
 sectionOrder: 2
 order: 3
 toc: true

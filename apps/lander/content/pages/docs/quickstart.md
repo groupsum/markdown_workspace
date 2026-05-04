@@ -8,7 +8,7 @@ entity: "MdWrk"
 intent: "learn how to start using MdWrk"
 contentType: "docs"
 updatedAt: "2026-05-04"
-answer: "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries."
+subtitle: "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries."
 faqs:
   - question: "What should new MdWrk users read first?"
     answer: "New users should read the quickstart, offline Markdown editor page, and local-first workspace page before exploring extension and theme documentation."

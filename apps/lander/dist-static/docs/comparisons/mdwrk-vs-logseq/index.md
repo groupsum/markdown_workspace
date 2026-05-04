@@ -16,3 +16,13 @@ MdWrk keeps Markdown documents portable and easy to move through GitHub, npm, st
 
 - [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
 - [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+
+## Frequently Asked Questions
+
+### What is MdWrk Vs Logseq?
+
+Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
+
+### When should I use MdWrk Vs Logseq?
+
+Use this docs when you need direct MdWrk guidance for mdwrk vs logseq.

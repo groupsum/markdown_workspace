@@ -42,3 +42,13 @@ https://www.npmjs.com/org/mdwrk
 
 Bundled extensions ship with the client build. External installable extensions follow the signed-manifest and trust-policy path documented in the extension docs.
 Published dates and statuses control whether installation docs appear on the lander at all, so draft installation notes can stay private until they are ready.
+
+## Frequently Asked Questions
+
+### What is Client Installation?
+
+Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
+
+### When should I use Client Installation?
+
+Use this docs when you need direct MdWrk guidance for client installation.

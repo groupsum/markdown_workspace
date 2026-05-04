@@ -64,3 +64,13 @@ For the deeper operator workflow, see:
 docs/operations/third-party-extension-authoring.md
 docs/architecture/extension-package-layout.md
 ```
+
+## Frequently Asked Questions
+
+### What is Extension Authoring?
+
+Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.
+
+### When should I use Extension Authoring?
+
+Use this docs when you need direct MdWrk guidance for extension authoring.

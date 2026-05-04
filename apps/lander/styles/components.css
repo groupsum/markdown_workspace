@@ -13,6 +13,10 @@
   background: color-mix(in srgb, var(--lander-panel) 35%, var(--lander-app-bg));
 }
 
+.static-home-article {
+  @apply block;
+}
+
 .privacy-container {
   @apply mx-auto max-w-screen-xl px-4 text-center;
 }
@@ -128,6 +132,10 @@
 .hero-copy {
   @apply mb-8 text-lg font-normal;
   color: var(--lander-fg-muted);
+}
+
+.home-subtitle {
+  @apply block;
 }
 
 .hero-actions {
@@ -405,6 +413,26 @@
 
 .demo-preview-pane.is-preview-visible {
   @apply block;
+}
+
+.static-demo-body {
+  min-height: 38rem;
+}
+
+.static-demo-body .demo-editor-pane,
+.static-demo-body .demo-preview-pane {
+  @apply block w-1/2;
+}
+
+.static-demo-editor {
+  @apply h-full w-full overflow-auto border-0 p-6 font-mono text-sm leading-6;
+  background: var(--lander-panel);
+  color: var(--lander-fg);
+  white-space: pre;
+}
+
+.static-demo-body .markdown-renderer-host {
+  max-width: 100%;
 }
 
 .demo-status-primary,
@@ -795,48 +823,55 @@
   @apply p-6;
 }
 
-.answer-blocks {
+.faq-section,
+.related-section {
   @apply w-full rounded-[18px] border p-4;
   background: color-mix(in srgb, var(--lander-panel) 78%, transparent);
   border-color: var(--lander-border);
 }
 
-.answer-blocks-heading {
+.faq-section-heading {
   @apply mb-4 text-xs font-bold uppercase;
   color: var(--lander-fg-subtle);
   letter-spacing: 0.18em;
 }
 
-.answer-blocks-list {
+.faq-list {
   @apply flex flex-col gap-3;
 }
 
-.answer-block-accordion {
+.faq-accordion {
   @apply rounded-xl border;
   background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
   border-color: var(--lander-border);
 }
 
-.answer-block-summary {
+.faq-summary {
   @apply cursor-pointer px-4 py-3 text-sm font-bold;
   color: var(--lander-fg);
 }
 
-.answer-block-summary::marker {
+.faq-summary::marker {
   color: var(--lander-accent);
 }
 
-.answer-block-content {
+.faq-content {
   @apply border-t px-4 py-4;
   border-color: var(--lander-border);
 }
 
-.answer-block-content .lander-markdown .markdown-body > :first-child {
+.faq-content .lander-markdown .markdown-body > :first-child {
   margin-top: 0;
 }
 
-.answer-block-content .lander-markdown .markdown-body > :last-child {
+.faq-content .lander-markdown .markdown-body > :last-child {
   margin-bottom: 0;
+}
+
+.docs-subtitle,
+.blog-post-subtitle {
+  @apply mt-4 text-base leading-7;
+  color: var(--lander-fg-muted);
 }
 
 .lander-featured-image {
@@ -959,8 +994,13 @@
   color: var(--lander-accent);
 }
 
+.blog-list-column,
 .blog-list-layout {
   @apply mx-auto max-w-screen-xl;
+}
+
+.blog-list-header {
+  @apply mx-auto mb-12 max-w-3xl text-center;
 }
 
 .blog-list-eyebrow {
@@ -969,13 +1009,12 @@
 }
 
 .blog-list-title {
-  @apply mb-12 text-center text-5xl font-black uppercase;
+  @apply mb-5 text-center text-5xl font-black uppercase;
   letter-spacing: 0.35em;
 }
 
 .blog-list-title-inner {
-  @apply inline-block border-b px-2 pb-3;
-  border-color: var(--lander-border);
+  @apply inline-block px-2 pb-3;
   background-image: linear-gradient(
     120deg,
     color-mix(in srgb, var(--lander-accent) 78%, white 22%) 0%,
@@ -992,20 +1031,50 @@
     0 0 44px color-mix(in srgb, var(--lander-accent) 18%, transparent);
 }
 
+.blog-list-description {
+  @apply mx-auto max-w-2xl text-sm leading-7;
+  color: var(--lander-fg-muted);
+}
+
 .blog-grid {
   @apply grid gap-8;
 }
 
 .blog-card {
-  @apply flex h-full cursor-pointer flex-col rounded-2xl border p-6 transition-all;
+  @apply relative flex h-full cursor-pointer flex-col rounded-2xl p-6 transition-all;
+  border: 0;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--lander-panel) 92%, transparent),
+      color-mix(in srgb, var(--lander-panel-muted) 78%, transparent)
+    );
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--lander-shadow) 12%, transparent);
+}
+
+.blog-card-primary-link {
+  @apply absolute inset-0 rounded-2xl;
+  z-index: 1;
+}
+
+.blog-grid .lander-content-card.blog-card {
+  border: 0;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--lander-shadow) 12%, transparent);
 }
 
 .blog-card:hover {
   @apply -translate-y-1 shadow-xl;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--lander-panel) 96%, transparent),
+      color-mix(in srgb, var(--lander-accent-soft) 32%, var(--lander-panel-muted))
+    );
 }
 
 .blog-card-date {
-  @apply mb-2 text-xs font-bold uppercase tracking-widest transition-colors;
+  @apply relative mb-2 text-xs font-bold uppercase tracking-widest transition-colors;
+  z-index: 2;
   color: var(--lander-accent);
 }
 
@@ -1014,7 +1083,8 @@
 }
 
 .blog-card-title {
-  @apply mb-3 text-xl font-bold transition-colors;
+  @apply relative mb-3 text-xl font-bold transition-colors;
+  z-index: 2;
   color: var(--lander-fg);
 }
 
@@ -1029,13 +1099,17 @@
 }
 
 .blog-card-excerpt {
-  @apply mb-4 text-sm line-clamp-3;
+  @apply mb-4 text-sm;
   flex: 1;
+  line-height: 1.5rem;
+  max-height: 4.5rem;
+  overflow: hidden;
   color: var(--lander-fg-muted);
 }
 
 .blog-card-author {
-  @apply mt-auto flex items-center gap-2 text-left text-xs transition-colors;
+  @apply relative mt-auto flex items-center gap-2 text-left text-xs transition-colors;
+  z-index: 2;
   color: var(--lander-fg-subtle);
 }
 

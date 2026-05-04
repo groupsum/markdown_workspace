@@ -1,7 +1,7 @@
 ---
 title: Markdown Preview Editor
 slug: product/markdown-preview-editor
-section: Product
+section: Features
 sectionOrder: 2
 order: 14
 toc: true
