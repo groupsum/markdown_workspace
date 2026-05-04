@@ -3,6 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
     <title>MdWrk launch notes for a static local-first Markdown lander</title>
     <meta name="description" content="The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.">
     <link rel="canonical" href="https://mdwrk.com/blog/launch/">
@@ -11,7 +24,7 @@
     <meta property="og:site_name" content="MdWrk">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/blog/launch/#webpage","url":"https://mdwrk.com/blog/launch/","name":"MdWrk launch notes for a static local-first Markdown lander","headline":"MdWrk launch notes","description":"The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/blog/launch/#faq","mainEntity":[{"@type":"Question","name":"Why does the MdWrk lander compile static HTML?","acceptedAnswer":{"@type":"Answer","text":"Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/blog/launch/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk launch notes","item":"https://mdwrk.com/blog/launch/"}]}]}</script>
-    
+
   </head>
   <body>
     <div id="root">
@@ -19,60 +32,89 @@
         <nav class="navbar" aria-label="Main navigation">
           <div class="navbar-inner">
             <a href="/" class="navbar-brand">
-              <div class="navbar-brand-mark">M</div>
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
               <span class="navbar-brand-text">MdWrk</span>
             </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-active" href="/blog/">Blog</a></li>
               <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
-              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
               <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
-              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
               <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
               </ul>
             </div>
           </div>
         </nav>
         <main id="content" class="app-main">
-          <div class="lander-doc-shell docs-layout static-page-shell">
+          <div class="lander-doc-shell docs-layout">
+
             <section class="docs-main">
               <div class="docs-content-wrap">
-                <article class="docs-content-card lander-content-card static-content-card">
-                  <header class="docs-header">
+                <div class="docs-article-column">
+                <a href="/blog/" class="blog-back-button">Back to Blog</a>
+                <article class="blog-post-card lander-content-card">
+                  <header class="blog-post-header">
                     <div class="docs-meta">
-                      <span>blog</span>
+                      <span>Blog</span>
                       <span class="docs-meta-divider">/</span>
                       <span>2026-05-04</span>
                     </div>
-                    <h1 class="docs-title">MdWrk launch notes</h1>
+                    <h1 class="blog-post-title">MdWrk launch notes</h1>
                   </header>
-                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
-                <h2 class="answer-blocks-heading">Answer Summary</h2>
-                <p>The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.</p>
-              </section>
-                  <div class="lander-markdown">
-                    <div class="markdown-body">
-                      <p>MdWrk&#39;s public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live.</p>
-<h2 id="static-before-runtime">Static Before Runtime</h2>
-<p>The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page.</p>
-<h2 id="machine-readable-by-default">Machine-Readable By Default</h2>
-<p>The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned.</p>
-<h2 id="why-it-matters">Why It Matters</h2>
-<p>A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment.</p>
-<h2 id="what-comes-next">What Comes Next</h2>
-<p>The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.</p>
-                    </div>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk's public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live.</p><h2 class="md-h2" id="static-before-runtime">Static Before Runtime</h2><p class="md-p">The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page.</p><h2 class="md-h2" id="machine-readable-by-default">Machine-Readable By Default</h2><p class="md-p">The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned.</p><h2 class="md-h2" id="why-it-matters">Why It Matters</h2><p class="md-p">A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment.</p><h2 class="md-h2" id="what-comes-next">What Comes Next</h2><p class="md-p">The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.</p></div>
                   </div>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                <div class="answer-blocks-list"><details class="answer-block-accordion" open><summary class="answer-block-summary">Why does the MdWrk lander compile static HTML?</summary><div class="answer-block-content"><p>Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification.</p></div></details></div>
-              </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
-                <ul><li><a href="/docs/quickstart/">MdWrk quickstart</a></li><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li></ul>
-              </section>
                 </article>
+
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
+                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">Why does the MdWrk lander compile static HTML?</summary><div class="answer-block-content"><p>Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification.</p></div></details></div>
+                  </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                    <ul><li><a href="/docs/quickstart/">MdWrk quickstart</a></li><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li></ul>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#static-before-runtime" class="docs-toc-link" title="Static Before Runtime">Static Before Runtime</a></div>
+                  <div class="docs-toc-item"><a href="#machine-readable-by-default" class="docs-toc-link" title="Machine-Readable By Default">Machine-Readable By Default</a></div>
+                  <div class="docs-toc-item"><a href="#why-it-matters" class="docs-toc-link" title="Why It Matters">Why It Matters</a></div>
+                  <div class="docs-toc-item"><a href="#what-comes-next" class="docs-toc-link" title="What Comes Next">What Comes Next</a></div>
+                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
+                  <div class="docs-toc-item"><a href="#related-heading" class="docs-toc-link" title="Related Pages">Related Pages</a></div>
+                </nav>
+              </div>
+            </aside>
               </div>
             </section>
           </div>
@@ -107,5 +149,25 @@
         </footer>
       </div>
     </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
   </body>
 </html>

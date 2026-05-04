@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk Blog</title>
+    <meta name="description" content="MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.">
+    <link rel="canonical" href="https://mdwrk.com/blog/responsive-authoring-and-export/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/blog/responsive-authoring-and-export/#webpage","url":"https://mdwrk.com/blog/responsive-authoring-and-export/","name":"Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk Blog","headline":"Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day","description":"MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.","dateModified":"2026-01-21","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/blog/responsive-authoring-and-export/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mdwrk.com/blog/"},{"@type":"ListItem","position":3,"name":"Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day","item":"https://mdwrk.com/blog/responsive-authoring-and-export/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-active" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+                <a href="/blog/" class="blog-back-button">Back to Blog</a>
+                <article class="blog-post-card lander-content-card">
+                  <header class="blog-post-header">
+                    <div class="docs-meta">
+                      <span>Blog</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-01-21</span>
+                    </div>
+                    <h1 class="blog-post-title">Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day</h1>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="blog-post-meta">
+                    <a href="/blog/archive/2026-01/" class="blog-post-meta-item blog-post-meta-link"><time dateTime="2026-01-21">Jan 21, 2026</time></a>
+                    <a href="/blog/author/cobycloud/" class="blog-post-meta-item blog-post-meta-link">CobyCloud</a>
+                  </div>
+                  <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="what-changes-for-users">What changes for users</h2><p class="md-p">Writers gain:</p><ul class="md-ul"><li class="md-li">faster command access through keyboard flows</li><li class="md-li">export coverage for HTML handoff</li><li class="md-li">responsive layouts that scale across device sizes</li><li class="md-li">richer markdown support for tables, syntax color, and project creation flows</li></ul><h2 class="md-h2" id="usage-example">Usage example</h2><pre class="md-code-block md-code-surface"><code class="language-bash">npm install --ignore-scripts
+npm run dev:client</code></pre><p class="md-p">Once the client is running, teams can open a draft, write in source mode, preview the output, and publish HTML for downstream sharing.</p><h2 class="md-h2" id="screenshot">Screenshot</h2><p class="md-p"><img src="/blog/media/mdwrk-workspace-editor.png" alt="MdWrk editor surface showing a focused authoring workspace" /></p><h2 class="md-h2" id="why-this-day-matters-in-the-product-story">Why this day matters in the product story</h2><p class="md-p">January 21 gives MdWrk a practical answer to common product questions:</p><ul class="md-ul"><li class="md-li">Can a writer move quickly with keyboard-first flows?</li><li class="md-li">Can a team present markdown across multiple screens?</li><li class="md-li">Can authored content leave the workspace as a web-friendly deliverable?</li></ul><p class="md-p">Each answer turns into shipped functionality on the same date, which makes this one of the strongest velocity moments in the early repo history.</p></div>
+                  </div>
+                </article>
+                <section id="article-guide" class="answer-blocks" aria-label="Article Guide">
+                    <h2 class="answer-blocks-heading">Article Guide</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="article-guide-article-guide" class="answer-block-summary">Article Guide</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">2026-01-21 marks this MdWrk product story: MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.</p><p class="md-p">This article is useful for readers tracking:</p><ul class="md-ul"><li class="md-li">how MdWrk changes affect daily Markdown writing</li><li class="md-li">which client, package, or extension surface the change touches</li><li class="md-li">where to continue in the product documentation after reading</li></ul><p class="md-p">Useful follow-up pages:</p><ul class="md-ul"><li class="md-li"><a href="/docs/product/local-first-markdown-workspace" class="md-link">Local-First Markdown Workspace</a></li><li class="md-li"><a href="/docs/product/markdown-preview-editor" class="md-link">Markdown Preview Editor</a></li><li class="md-li"><a href="/docs/usage/editor-basics" class="md-link">Editor Basics</a></li></ul><p class="md-p">January 21, 2026 packs a full set of user-facing wins into the repository history.</p><p class="md-p">Key commits from that date include:</p><ul class="md-ul"><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/42c655cf" target="_blank" rel="noopener noreferrer" class="md-link">Add keyboard navigation and shortcuts</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/168f2f8a" target="_blank" rel="noopener noreferrer" class="md-link">Add HTML export action for markdown</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/005396c6" target="_blank" rel="noopener noreferrer" class="md-link">Add responsive layout tuning across breakpoints</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/65dbcc5b" target="_blank" rel="noopener noreferrer" class="md-link">Add print preview shortcut and UI</a></li></ul></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#what-changes-for-users" class="docs-toc-link" title="What changes for users">What changes for users</a></div>
+                  <div class="docs-toc-item"><a href="#usage-example" class="docs-toc-link" title="Usage example">Usage example</a></div>
+                  <div class="docs-toc-item"><a href="#screenshot" class="docs-toc-link" title="Screenshot">Screenshot</a></div>
+                  <div class="docs-toc-item"><a href="#why-this-day-matters-in-the-product-story" class="docs-toc-link" title="Why this day matters in the product story">Why this day matters in the product story</a></div>
+                  <div class="docs-toc-item"><a href="#article-guide" class="docs-toc-link" title="Article Guide">Article Guide</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

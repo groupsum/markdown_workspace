@@ -1,0 +1,19 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: "@mdwrk/markdown-edit-in-renderer-react 1.0.0"
+      - heading "Typora-style edit-in-renderer package demo" [level=1] [ref=e7]
+    - generic [ref=e8]:
+      - textbox "Start typing..." [ref=e12]: "# Edit in renderer"
+      - button "Click any rendered block to edit it in place. The package keeps the document in rendered flow until a block is active." [ref=e14]:
+        - paragraph [ref=e17]: Click any rendered block to edit it in place. The package keeps the document in rendered flow until a block is active.
+      - button "Renderer package handles inactive blocks Editor package handles active source blocks Whole-document markdown is emitted on change" [ref=e19]:
+        - list [ref=e22]:
+          - listitem [ref=e23]: Renderer package handles inactive blocks
+          - listitem [ref=e24]: Editor package handles active source blocks
+          - listitem [ref=e25]: Whole-document markdown is emitted on change
+      - 'button "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\";" [ref=e27]':
+        - code [ref=e31]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\";"
+  - complementary [ref=e32]:
+    - heading "Live Markdown" [level=2] [ref=e33]
+    - generic [ref=e34]: "# Edit in renderer Click any rendered block to edit it in place. The package keeps the document in rendered flow until a block is active. - Renderer package handles inactive blocks - Editor package handles active source blocks - Whole-document markdown is emitted on change ```ts import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; ```"

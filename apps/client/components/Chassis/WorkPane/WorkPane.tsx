@@ -31,6 +31,7 @@ interface WorkPaneProps {
   onContentChange: (content: string) => void;
   onCursorChange: (line: number, col: number) => void;
   onViewModeChange: (mode: ViewMode) => void;
+  onExportMarkdown?: () => void;
   onExportHtml?: () => void;
   onPrintPreview?: () => void;
   workspaceSidebarSurface?: React.ReactNode;
@@ -79,6 +80,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
   onContentChange,
   onCursorChange,
   onViewModeChange,
+  onExportMarkdown,
   onExportHtml,
   onPrintPreview,
   workspaceSidebarSurface,
@@ -262,6 +264,7 @@ export const WorkPane: React.FC<WorkPaneProps> = ({
             viewMode={viewMode}
             onViewModeChange={onViewModeChange}
             showLineNumbers={showLineNumbers}
+            onExportMarkdown={onExportMarkdown}
             onExportHtml={onExportHtml}
             onPrintPreview={onPrintPreview}
           />

@@ -1,42 +1,134 @@
 .markdown-edit-in-renderer-host {
+  box-sizing: border-box;
   color: var(--mwir-fg);
   background: var(--mwir-bg);
   font-family: var(--mwir-font-ui);
 }
 
-.markdown-edit-in-renderer-block {
-  position: relative;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  margin: 0 0 0.5rem;
+.markdown-edit-in-renderer-host *,
+.markdown-edit-in-renderer-host *::before,
+.markdown-edit-in-renderer-host *::after {
+  box-sizing: border-box;
+}
+
+.markdown-edit-in-renderer-surface {
+  min-height: inherit;
+  width: 100%;
+  padding: clamp(1rem, 3vw, 3rem);
+  color: var(--mwir-fg);
+  background: var(--mwir-bg-active);
+  border: 1px solid var(--mwir-border);
+  border-radius: 0;
+  cursor: text;
+  outline: none;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.6;
   transition:
     background-color 120ms ease,
     border-color 120ms ease,
     box-shadow 120ms ease;
 }
 
-.markdown-edit-in-renderer-block.is-active {
-  background: var(--mwir-bg-active);
+.markdown-edit-in-renderer-surface:focus {
   border-color: var(--mwir-border-active);
   box-shadow: var(--mwir-shadow);
 }
 
-.markdown-edit-in-renderer-rendered {
-  cursor: text;
-  min-height: 1.5rem;
-  padding: 0.25rem 0.375rem;
+.markdown-edit-in-renderer-surface:empty::before {
+  content: attr(data-placeholder);
+  color: var(--mwir-fg-muted);
 }
 
-.markdown-edit-in-renderer-rendered:focus {
-  outline: 2px solid color-mix(in srgb, var(--mwir-accent) 36%, transparent);
-  outline-offset: 2px;
-}
-
-.markdown-edit-in-renderer-editor {
-  border: 0;
-  border-radius: 6px;
-}
-
-.markdown-edit-in-renderer-editor textarea {
+.markdown-edit-in-renderer-surface pre,
+.markdown-edit-in-renderer-surface code {
   font-family: var(--mwir-font-mono);
+}
+
+.markdown-edit-in-renderer-surface h1,
+.markdown-edit-in-renderer-surface h2,
+.markdown-edit-in-renderer-surface h3,
+.markdown-edit-in-renderer-surface h4,
+.markdown-edit-in-renderer-surface h5,
+.markdown-edit-in-renderer-surface h6 {
+  margin: 1.25em 0 0.45em;
+  color: var(--mwir-fg);
+  font-weight: 750;
+  line-height: 1.16;
+}
+
+.markdown-edit-in-renderer-surface h1:first-child,
+.markdown-edit-in-renderer-surface h2:first-child,
+.markdown-edit-in-renderer-surface h3:first-child {
+  margin-top: 0;
+}
+
+.markdown-edit-in-renderer-surface h1 {
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--mwir-border);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.markdown-edit-in-renderer-surface h2 {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid color-mix(in srgb, var(--mwir-border) 74%, transparent);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+}
+
+.markdown-edit-in-renderer-surface h3 {
+  font-size: 1.2rem;
+}
+
+.markdown-edit-in-renderer-surface p,
+.markdown-edit-in-renderer-surface blockquote,
+.markdown-edit-in-renderer-surface ul,
+.markdown-edit-in-renderer-surface ol,
+.markdown-edit-in-renderer-surface pre,
+.markdown-edit-in-renderer-surface table {
+  margin: 0.9em 0;
+}
+
+.markdown-edit-in-renderer-surface ul,
+.markdown-edit-in-renderer-surface ol {
+  padding-left: 1.5rem;
+}
+
+.markdown-edit-in-renderer-surface blockquote {
+  padding: 0.15rem 0 0.15rem 1rem;
+  color: var(--mwir-fg-muted);
+  border-left: 4px solid var(--mwir-accent);
+}
+
+.markdown-edit-in-renderer-surface pre {
+  padding: 0.875rem 1rem;
+  overflow: auto;
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid var(--mwir-border);
+}
+
+.markdown-edit-in-renderer-surface :not(pre) > code {
+  padding: 0.12rem 0.32rem;
+  color: #0f172a;
+  background: #e8eef6;
+  border: 1px solid color-mix(in srgb, var(--mwir-border) 70%, transparent);
+}
+
+.markdown-edit-in-renderer-surface table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.markdown-edit-in-renderer-surface th,
+.markdown-edit-in-renderer-surface td {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--mwir-border);
+  vertical-align: top;
+}
+
+.markdown-edit-in-renderer-surface th {
+  background: #f8fafc;
+  font-weight: 700;
+  text-align: left;
 }

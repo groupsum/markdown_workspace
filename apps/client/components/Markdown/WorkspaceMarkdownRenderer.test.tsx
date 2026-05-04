@@ -32,7 +32,8 @@ describe('WorkspaceMarkdownRenderer preview actions', () => {
     cleanup();
   });
 
-  it('renders export and print as preview overlay buttons', () => {
+  it('renders markdown export, html export, and print as preview overlay buttons', () => {
+    const onExportMarkdown = vi.fn();
     const onExportHtml = vi.fn();
     const onPrintPreview = vi.fn();
 
@@ -42,25 +43,30 @@ describe('WorkspaceMarkdownRenderer preview actions', () => {
         theme="default"
         files={[]}
         onNavigate={vi.fn()}
+        onExportMarkdown={onExportMarkdown}
         onExportHtml={onExportHtml}
         onPrintPreview={onPrintPreview}
       />,
     );
 
+    fireEvent.click(screen.getByRole('button', { name: 'Export Markdown' }));
     fireEvent.click(screen.getByRole('button', { name: 'Export HTML' }));
     fireEvent.click(screen.getByRole('button', { name: 'Print Preview' }));
 
+    expect(onExportMarkdown).toHaveBeenCalledTimes(1);
     expect(onExportHtml).toHaveBeenCalledTimes(1);
     expect(onPrintPreview).toHaveBeenCalledTimes(1);
     expect(screen.getByLabelText('Preview actions')).toHaveClass('preview-pane-overlay-actions');
   });
 
-  it('keeps print and html export commands out of the action rail manifest', () => {
+  it('keeps print, markdown export, and html export commands out of the action rail manifest', () => {
     const actionRailIds = workspaceFilesManifest.contributions.actionRail?.map((item) => item.id) ?? [];
     const commandIds = workspaceFilesManifest.contributions.commands?.map((item) => item.id) ?? [];
 
+    expect(commandIds).toContain('core.export-markdown');
     expect(commandIds).toContain('core.export-html');
     expect(commandIds).toContain('core.print-preview');
+    expect(actionRailIds).not.toContain('core.export-markdown');
     expect(actionRailIds).not.toContain('core.export-html');
     expect(actionRailIds).not.toContain('core.print-preview');
   });

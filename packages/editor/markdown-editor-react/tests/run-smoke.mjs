@@ -51,10 +51,12 @@ const checks = [
   },
   {
     id: 'textarea-wrap-soft',
-    description: 'MarkdownSourceEditor enables soft wrapping and defaults to an 80-column target',
+    description: 'MarkdownSourceEditor enables pretext-backed soft wrapping and defaults to an 80-column target',
     test() {
       assert.match(html, /wrap="soft"/);
       assert.match(html, /cols="80"/);
+      assert.match(html, /data-wrap-engine="pretext"/);
+      assert.match(html, /data-wrap-mode="word-break"/);
     },
   },
 ];

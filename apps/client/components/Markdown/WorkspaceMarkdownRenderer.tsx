@@ -1,6 +1,6 @@
 import React from 'react';
 import { MarkdownRenderer, createMarkdownRendererThemeStyle } from '@mdwrk/markdown-renderer-react';
-import { FileDown, Printer } from 'lucide-react';
+import { FileDown, FileText, Printer } from 'lucide-react';
 import { getSyntaxThemeStyle } from '../../data/themes';
 import type { AppTheme, FileNode } from '../../types';
 import { getMarkdownProfileWarnings, useMarkdownProfileConfig } from '../../src/features/markdownProfiles/profileConfig';
@@ -23,6 +23,7 @@ interface WorkspaceMarkdownRendererProps {
   readonly currentFile?: FileNode | null;
   readonly onNavigate: (fileId: string) => void;
   readonly className?: string;
+  readonly onExportMarkdown?: () => void;
   readonly onExportHtml?: () => void;
   readonly onPrintPreview?: () => void;
 }
@@ -34,6 +35,7 @@ export function WorkspaceMarkdownRenderer({
   currentFile = null,
   onNavigate,
   className,
+  onExportMarkdown,
   onExportHtml,
   onPrintPreview,
 }: WorkspaceMarkdownRendererProps): React.JSX.Element {
@@ -65,7 +67,7 @@ export function WorkspaceMarkdownRenderer({
   }, [normalizedMarkdown]);
 
   const showPolicyAdvisory = !workspacePreferences.hidePreviewPolicy && (warnings.length > 0 || htmlHandling !== 'allow-trusted');
-  const showPreviewActions = Boolean(onExportHtml || onPrintPreview);
+  const showPreviewActions = Boolean(onExportMarkdown || onExportHtml || onPrintPreview);
 
   return (
     <div
@@ -75,6 +77,17 @@ export function WorkspaceMarkdownRenderer({
     >
       {showPreviewActions && (
         <div className="preview-pane-overlay-actions" aria-label="Preview actions">
+          {onExportMarkdown && (
+            <button
+              type="button"
+              className="preview-pane-overlay-btn"
+              onClick={onExportMarkdown}
+              title={t('core.commands.export-markdown', 'Export Markdown')}
+              aria-label={t('core.commands.export-markdown', 'Export Markdown')}
+            >
+              <FileText size={13} />
+            </button>
+          )}
           {onExportHtml && (
             <button
               type="button"

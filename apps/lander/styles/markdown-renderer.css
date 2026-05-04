@@ -105,6 +105,10 @@
 .lander-markdown .markdown-body {
   background: transparent;
   color: var(--lander-fg);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .lander-markdown .markdown-body h1,
@@ -151,6 +155,19 @@
   color: var(--lander-code-fg);
   border: 1px solid var(--lander-code-border);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body pre code,
+.lander-markdown .markdown-body .md-code-surface pre,
+.lander-markdown .markdown-body .md-code-surface pre > code,
+.lander-markdown .markdown-body .md-code-surface > div {
+  overflow-x: auto !important;
 }
 
 .lander-markdown .markdown-body .md-code-header,

@@ -108,6 +108,7 @@ vi.mock('./useFileManager', () => ({
     importMarkdownFiles: vi.fn(async () => []),
     importExternalMarkdownFiles: importExternalMarkdownFilesMock,
     importFilesystemWorkspace: vi.fn(),
+    exportMarkdownNode: vi.fn(),
     exportHtmlNode: vi.fn()
   })
 }));

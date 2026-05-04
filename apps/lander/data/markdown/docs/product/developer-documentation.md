@@ -27,7 +27,7 @@ Developers can run the repo locally, build package families, embed split editor 
 
 - [Local Setup](/docs/getting-started/local-setup)
 - [Standalone Modules](/docs/getting-started/standalone-modules)
-- [Authoring Overview](/docs/authoring/authoring-overview)
+- [Authoring Overview](/docs/authoring/overview)
 
 ## Quick Reference
 

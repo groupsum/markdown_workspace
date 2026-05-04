@@ -3,6 +3,7 @@ import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import {
   WORKSPACE_FILES_COMMAND_DELETE_ID,
   WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID,
+  WORKSPACE_FILES_COMMAND_EXPORT_MARKDOWN_ID,
   WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID,
   WORKSPACE_FILES_COMMAND_FOCUS_EXPLORER_ID,
   WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID,
@@ -56,6 +57,7 @@ export function createWorkspaceFilesBundledEntry(options: WorkspaceFilesBundledE
           registerCommand(WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID, "Import Markdown", options.actions.importMarkdown, "Upload");
           registerCommand(WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID, "Open Markdown File", options.actions.openHostFile, "FolderOpen");
           registerCommand(WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID, "Download Workspace", options.actions.downloadWorkspace, "Download");
+          registerCommand(WORKSPACE_FILES_COMMAND_EXPORT_MARKDOWN_ID, "Export Markdown", options.actions.exportMarkdown, "FileText");
           registerCommand(WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID, "Export HTML", options.actions.exportHtml, "FileDown");
           registerCommand(WORKSPACE_FILES_COMMAND_PRINT_PREVIEW_ID, "Print Preview", options.actions.printPreview, "Printer");
           registerCommand(WORKSPACE_FILES_COMMAND_VIEW_EDITOR_ID, "Editor View", options.actions.viewEditor, "LayoutGrid");

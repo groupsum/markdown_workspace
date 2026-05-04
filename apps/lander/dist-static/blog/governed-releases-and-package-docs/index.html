@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk Blog</title>
+    <meta name="description" content="MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.">
+    <link rel="canonical" href="https://mdwrk.com/blog/governed-releases-and-package-docs/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/blog/governed-releases-and-package-docs/#webpage","url":"https://mdwrk.com/blog/governed-releases-and-package-docs/","name":"Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk Blog","headline":"Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape","description":"MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.","dateModified":"2026-03-31","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/blog/governed-releases-and-package-docs/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mdwrk.com/blog/"},{"@type":"ListItem","position":3,"name":"Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape","item":"https://mdwrk.com/blog/governed-releases-and-package-docs/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-active" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+                <a href="/blog/" class="blog-back-button">Back to Blog</a>
+                <article class="blog-post-card lander-content-card">
+                  <header class="blog-post-header">
+                    <div class="docs-meta">
+                      <span>Blog</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-03-31</span>
+                    </div>
+                    <h1 class="blog-post-title">Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape</h1>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="blog-post-meta">
+                    <a href="/blog/archive/2026-03/" class="blog-post-meta-item blog-post-meta-link"><time dateTime="2026-03-31">Mar 31, 2026</time></a>
+                    <a href="/blog/author/cobycloud/" class="blog-post-meta-item blog-post-meta-link">CobyCloud</a>
+                  </div>
+                  <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="what-this-adds">What this adds</h2><p class="md-p">This update brings together the details teams usually need first:</p><ul class="md-ul"><li class="md-li">How does the workspace verify package quality?</li><li class="md-li">Which docs stay current?</li><li class="md-li">Which commands carry release verification?</li></ul><p class="md-p">MdWrk now answers those questions through docs and executable CI rails.</p><h2 class="md-h2" id="commands-that-express-the-release-story">Commands that express the release story</h2><pre class="md-code-block md-code-surface"><code class="language-bash">npm run ci:workspace:verify
+npm run conformance</code></pre><h2 class="md-h2" id="docs-to-read-next">Docs to read next</h2><ul class="md-ul"><li class="md-li"><a href="/docs/getting-started/installation" class="md-link">Installation</a></li><li class="md-li"><a href="/docs/getting-started/local-setup" class="md-link">Local setup</a></li><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension platform</a></li></ul><h2 class="md-h2" id="screenshot">Screenshot</h2><p class="md-p"><img src="/blog/media/lander-docs-dark.png" alt="MdWrk docs and product presentation aligned for package usage" /></p><h2 class="md-h2" id="why-this-post-matters">Why this post matters</h2><p class="md-p">March 31 is where MdWrk gives teams a clearer view of:</p><ul class="md-ul"><li class="md-li">package verification</li><li class="md-li">release commands</li><li class="md-li">current docs</li><li class="md-li">package boundaries</li></ul><p class="md-p">It is a major point on the timeline because package usage, release checks, and public docs start moving together.</p></div>
+                  </div>
+                </article>
+                <section id="article-guide" class="answer-blocks" aria-label="Article Guide">
+                    <h2 class="answer-blocks-heading">Article Guide</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="article-guide-article-guide" class="answer-block-summary">Article Guide</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">2026-03-31 marks this MdWrk product story: MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.</p><p class="md-p">This article is useful for readers tracking:</p><ul class="md-ul"><li class="md-li">how MdWrk changes affect daily Markdown writing</li><li class="md-li">which client, package, or extension surface the change touches</li><li class="md-li">where to continue in the product documentation after reading</li></ul><p class="md-p">Useful follow-up pages:</p><ul class="md-ul"><li class="md-li"><a href="/docs/product/local-first-markdown-workspace" class="md-link">Local-First Markdown Workspace</a></li><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension Platform</a></li><li class="md-li"><a href="/docs/github-sync" class="md-link">GitHub Sync</a></li></ul><p class="md-p">March 31, 2026 brings together docs, governance, and release evidence in a way that gives MdWrk a clearer package and release surface.</p><p class="md-p">This milestone is grounded in:</p><ul class="md-ul"><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/3cb1ef10" target="_blank" rel="noopener noreferrer" class="md-link">Add governance specs, CI checks, and documentation overhaul</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/1e511548" target="_blank" rel="noopener noreferrer" class="md-link">Add markdown profile claim gate, tests, and CI evidence</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commit/93ea12ef" target="_blank" rel="noopener noreferrer" class="md-link">Align extension manifests and artifacts to 1.1.0</a></li></ul></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#what-this-adds" class="docs-toc-link" title="What this adds">What this adds</a></div>
+                  <div class="docs-toc-item"><a href="#commands-that-express-the-release-story" class="docs-toc-link" title="Commands that express the release story">Commands that express the release story</a></div>
+                  <div class="docs-toc-item"><a href="#docs-to-read-next" class="docs-toc-link" title="Docs to read next">Docs to read next</a></div>
+                  <div class="docs-toc-item"><a href="#screenshot" class="docs-toc-link" title="Screenshot">Screenshot</a></div>
+                  <div class="docs-toc-item"><a href="#why-this-post-matters" class="docs-toc-link" title="Why this post matters">Why this post matters</a></div>
+                  <div class="docs-toc-item"><a href="#article-guide" class="docs-toc-link" title="Article Guide">Article Guide</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -15,12 +15,6 @@ const html = renderToStaticMarkup(
     defaultValue: "# Title\n\nParagraph text.",
   }),
 );
-const activeHtml = renderToStaticMarkup(
-  React.createElement(MarkdownEditInRenderer, {
-    defaultValue: "# Title\n\nParagraph text.",
-    autoFocus: true,
-  }),
-);
 const themeStyle = createMarkdownEditInRendererThemeStyle({ accent: "#0a66ff" });
 
 const checks = [
@@ -44,21 +38,22 @@ const checks = [
     },
   },
   {
-    id: "rendered-host",
-    description: "MarkdownEditInRenderer renders markdown through the renderer package",
+    id: "unified-rendered-input",
+    description: "MarkdownEditInRenderer renders one editable markdown display surface",
     test() {
       assert.match(html, /markdown-edit-in-renderer-host/);
-      assert.match(html, /markdown-edit-in-renderer-renderer/);
-      assert.match(html, /<h1/);
+      assert.match(html, /markdown-edit-in-renderer-surface/);
+      assert.match(html, /contentEditable="true"/);
+      assert.doesNotMatch(html, /markdown-source-editor/);
     },
   },
   {
-    id: "active-editor",
-    description: "MarkdownEditInRenderer can activate a block into the source editor package",
+    id: "rendered-markdown",
+    description: "MarkdownEditInRenderer does not render a separate textarea or preview surface",
     test() {
-      assert.match(activeHtml, /markdown-edit-in-renderer-editor/);
-      assert.match(activeHtml, /markdown-source-editor/);
-      assert.match(activeHtml, /data-active="true"/);
+      assert.match(html, /role="textbox"/);
+      assert.doesNotMatch(html, /<textarea/);
+      assert.doesNotMatch(html, /markdown-edit-in-renderer-rendered/);
     },
   },
   {

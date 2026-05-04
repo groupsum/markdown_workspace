@@ -3,6 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
     <title>MdWrk security notes for packages, extensions, and static docs</title>
     <meta name="description" content="MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.">
     <link rel="canonical" href="https://mdwrk.com/security/">
@@ -11,7 +24,7 @@
     <meta property="og:site_name" content="MdWrk">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/security/#webpage","url":"https://mdwrk.com/security/","name":"MdWrk security notes for packages, extensions, and static docs","headline":"Security notes","description":"MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/security/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Security notes","item":"https://mdwrk.com/security/"}]}]}</script>
-    
+
   </head>
   <body>
     <div id="root">
@@ -19,26 +32,41 @@
         <nav class="navbar" aria-label="Main navigation">
           <div class="navbar-inner">
             <a href="/" class="navbar-brand">
-              <div class="navbar-brand-mark">M</div>
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
               <span class="navbar-brand-text">MdWrk</span>
             </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/">Blog</a></li>
               <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
-              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
               <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
-              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
               <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
               </ul>
             </div>
           </div>
         </nav>
         <main id="content" class="app-main">
-          <div class="lander-doc-shell docs-layout static-page-shell">
+          <div class="lander-doc-shell docs-layout">
+
             <section class="docs-main">
               <div class="docs-content-wrap">
-                <article class="docs-content-card lander-content-card static-content-card">
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
                   <header class="docs-header">
                     <div class="docs-meta">
                       <span>security</span>
@@ -47,29 +75,41 @@
                     </div>
                     <h1 class="docs-title">Security notes</h1>
                   </header>
-                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
-                <h2 class="answer-blocks-heading">Answer Summary</h2>
-                <p>MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment.</p>
-              </section>
-                  <div class="lander-markdown">
-                    <div class="markdown-body">
-                      <p>MdWrk security documentation explains how the public lander and product surfaces should be reviewed. The static compiler is part of that posture because it verifies source content and generated artifacts before deployment.</p>
-<h2 id="package-boundaries">Package Boundaries</h2>
-<p>Reusable packages should have clear responsibilities. Editor, renderer, extension host, theme contract, and static lander surfaces should not blur into one unreviewable runtime.</p>
-<h2 id="extension-trust">Extension Trust</h2>
-<p>Extensions need explicit trust policy. The documentation should describe manifest metadata, compatibility expectations, package identity, and how users can reason about what an extension is allowed to do.</p>
-<h2 id="static-artifact-verification">Static Artifact Verification</h2>
-<p>The public lander build verifies HTML, links, JSON-LD, sitemap output, robots policy, LLM index files, Markdown mirrors, and the content registry. These checks help prevent empty app shells or hidden primary content from being treated as deployable.</p>
-<h2 id="deployment-smoke-checks">Deployment Smoke Checks</h2>
-<p>Production URL checks are post-deploy smoke checks. They should verify that the deployed response contains expected content, but they should not be required to create a valid deployable artifact.</p>
-                    </div>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk security documentation explains how the public lander and product surfaces should be reviewed. The static compiler is part of that posture because it verifies source content and generated artifacts before deployment.</p><h2 class="md-h2" id="package-boundaries">Package Boundaries</h2><p class="md-p">Reusable packages should have clear responsibilities. Editor, renderer, extension host, theme contract, and static lander surfaces should not blur into one unreviewable runtime.</p><h2 class="md-h2" id="extension-trust">Extension Trust</h2><p class="md-p">Extensions need explicit trust policy. The documentation should describe manifest metadata, compatibility expectations, package identity, and how users can reason about what an extension is allowed to do.</p><h2 class="md-h2" id="static-artifact-verification">Static Artifact Verification</h2><p class="md-p">The public lander build verifies HTML, links, JSON-LD, sitemap output, robots policy, LLM index files, Markdown mirrors, and the content registry. These checks help prevent empty app shells or hidden primary content from being treated as deployable.</p><h2 class="md-h2" id="deployment-smoke-checks">Deployment Smoke Checks</h2><p class="md-p">Production URL checks are post-deploy smoke checks. They should verify that the deployed response contains expected content, but they should not be required to create a valid deployable artifact.</p></div>
                   </div>
-                  
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
-                <ul><li><a href="/privacy/">Privacy policy</a></li><li><a href="/features/extension-platform/">Extension platform for Markdown workflows</a></li></ul>
-              </section>
                 </article>
+
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                    <ul><li><a href="/privacy/">Privacy policy</a></li><li><a href="/features/extension-platform/">Extension platform for Markdown workflows</a></li></ul>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#package-boundaries" class="docs-toc-link" title="Package Boundaries">Package Boundaries</a></div>
+                  <div class="docs-toc-item"><a href="#extension-trust" class="docs-toc-link" title="Extension Trust">Extension Trust</a></div>
+                  <div class="docs-toc-item"><a href="#static-artifact-verification" class="docs-toc-link" title="Static Artifact Verification">Static Artifact Verification</a></div>
+                  <div class="docs-toc-item"><a href="#deployment-smoke-checks" class="docs-toc-link" title="Deployment Smoke Checks">Deployment Smoke Checks</a></div>
+                  <div class="docs-toc-item"><a href="#related-heading" class="docs-toc-link" title="Related Pages">Related Pages</a></div>
+                </nav>
+              </div>
+            </aside>
               </div>
             </section>
           </div>
@@ -104,5 +144,25 @@
         </footer>
       </div>
     </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
   </body>
 </html>

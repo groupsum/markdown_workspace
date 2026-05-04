@@ -20,6 +20,7 @@ export interface WorkspaceFilesActions {
   importMarkdown(): void | Promise<void>;
   openHostFile(): void | Promise<void>;
   downloadWorkspace(): void | Promise<void>;
+  exportMarkdown(): void | Promise<void>;
   exportHtml(): void | Promise<void>;
   printPreview(): void | Promise<void>;
   viewEditor(): void | Promise<void>;

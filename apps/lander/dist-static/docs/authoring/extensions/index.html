@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Extension Authoring | MdWrk Docs</title>
+    <meta name="description" content="Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.">
+    <link rel="canonical" href="https://mdwrk.com/docs/authoring/extensions/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/docs/authoring/extensions/#webpage","url":"https://mdwrk.com/docs/authoring/extensions/","name":"Extension Authoring | MdWrk Docs","headline":"Extension Authoring","description":"Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.","dateModified":"2026-05-02","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/docs/authoring/extensions/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk Documentation","item":"https://mdwrk.com/docs/"},{"@type":"ListItem","position":3,"name":"Extension Authoring","item":"https://mdwrk.com/docs/authoring/extensions/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-active" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+            <aside class="docs-sidebar" aria-label="Documentation navigation">
+          <div class="docs-sidebar-inner">
+            <h3 class="docs-sidebar-heading">Documentation</h3>
+            <nav class="docs-nav">
+              <a class="docs-nav-link is-inactive" href="/docs/"><span class="docs-nav-link-label">All Docs</span></a>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Archive</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-28/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.28</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-29/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.29</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Authoring</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/overview/">
+
+                    <span class="docs-nav-link-label">Authoring Overview</span>
+                  </a>
+                  <a class="docs-nav-link is-active" href="/docs/authoring/extensions/">
+                    <span class="docs-nav-link-dot"></span>
+                    <span class="docs-nav-link-label">Extension Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/language-packs/">
+
+                    <span class="docs-nav-link-label">Language Pack Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme Pack Authoring</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Comparisons</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-logseq/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Logseq</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-marktext/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Marktext</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-notion/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Notion</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-obsidian/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Obsidian</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-standard-markdown-editors/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Standard Markdown Editors</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-typora/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Typora</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-vs-code/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs VS Code</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-zettlr/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Zettlr</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Docs</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/">
+
+                    <span class="docs-nav-link-label">Extensions</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme packs</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Extensions</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/extension-platform/">
+
+                    <span class="docs-nav-link-label">Extension Platform</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/theme-studio-and-host-surfaces/">
+
+                    <span class="docs-nav-link-label">Theme Studio And Host Surfaces</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Getting Started</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/browser-use/">
+
+                    <span class="docs-nav-link-label">Browser Use</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/configuration/">
+
+                    <span class="docs-nav-link-label">Client Configuration</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/installation/">
+
+                    <span class="docs-nav-link-label">Client Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/local-setup/">
+
+                    <span class="docs-nav-link-label">Local Setup</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/pwa-installation/">
+
+                    <span class="docs-nav-link-label">PWA Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/standalone-modules/">
+
+                    <span class="docs-nav-link-label">Standalone Modules</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Integrations</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/github-sync/">
+
+                    <span class="docs-nav-link-label">Github Sync</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Product</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/product/developer-documentation/">
+
+                    <span class="docs-nav-link-label">Developer Documentation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/editor-basics/">
+
+                    <span class="docs-nav-link-label">Editor Basics</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/extension-host/">
+
+                    <span class="docs-nav-link-label">Extension Host</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/local-first-markdown-workspace/">
+
+                    <span class="docs-nav-link-label">Local-first Markdown Workspace</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/markdown-file-manager/">
+
+                    <span class="docs-nav-link-label">Markdown File Manager</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/advanced-formatting/">
+
+                    <span class="docs-nav-link-label">Markdown Formatting</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/markdown-preview-editor/">
+
+                    <span class="docs-nav-link-label">Markdown Preview Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/offline-markdown-editor/">
+
+                    <span class="docs-nav-link-label">Offline Markdown Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/privacy-first-markdown-editor/">
+
+                    <span class="docs-nav-link-label">Privacy-first Markdown Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/rendering-and-preview/">
+
+                    <span class="docs-nav-link-label">Rendering And Preview</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme Packs</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Quickstart</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/quickstart/">
+
+                    <span class="docs-nav-link-label">MdWrk quickstart</span>
+                  </a>
+                </div>
+              </details>
+            </nav>
+          </div>
+        </aside>
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>docs</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-02</span>
+                    </div>
+                    <h1 class="docs-title">Extension Authoring</h1>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="what-an-extension-author-owns">What an extension author owns</h2><p class="md-p">The extension authoring surface in this repository is split across:</p><ul class="md-ul"><li class="md-li"><code class="md-inline-code">@mdwrk/extension-manifest</code> for manifest shape and metadata</li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-host</code> for host-safe APIs</li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-runtime</code> for activation and lifecycle expectations</li><li class="md-li">package-local source, tests, and build outputs inside an extension package</li></ul><h2 class="md-h2" id="typical-workflow">Typical workflow</h2><ol class="md-ol"><li class="md-li">Create a normal npm package for the extension source.</li><li class="md-li">Export a valid MdWrk extension manifest and lifecycle entrypoint.</li><li class="md-li">Test the manifest, lifecycle, and runtime-facing behavior.</li><li class="md-li">Publish the source package for developer consumption when appropriate.</li><li class="md-li">Generate browser-installable artifacts through the formal distribution flow when targeting external installation.</li></ol><h2 class="md-h2" id="required-package-shape">Required package shape</h2><p class="md-p">At minimum, an extension package should include:</p><ul class="md-ul"><li class="md-li"><code class="md-inline-code">package.json</code></li><li class="md-li"><code class="md-inline-code">README.md</code></li><li class="md-li"><code class="md-inline-code">src/manifest.ts</code></li><li class="md-li"><code class="md-inline-code">src/index.ts</code></li><li class="md-li">tests for manifest, lifecycle, and runtime behavior</li></ul><h2 class="md-h2" id="runtime-and-distribution-rules">Runtime and distribution rules</h2><p class="md-p">External extensions do not install through ad hoc <code class="md-inline-code">npm install</code> inside the browser.
+The browser host installs generated artifacts with manifest, integrity, compatibility, and signer metadata.</p><p class="md-p">That means an extension author should expect:</p><ul class="md-ul"><li class="md-li">trust-policy enforcement</li><li class="md-li">capability gating</li><li class="md-li">compatibility declarations</li><li class="md-li">signed/installable artifact generation for the external path</li></ul><h2 class="md-h2" id="reference-package">Reference package</h2><p class="md-p">This repository already includes a reference external package:</p><pre class="md-code-block md-code-surface"><code class="language-text">packages/extensions/extension-catalog-hello/</code></pre><p class="md-p">Use it as the concrete reference for:</p><ul class="md-ul"><li class="md-li">manifest structure</li><li class="md-li">distribution metadata</li><li class="md-li">runtime install expectations</li><li class="md-li">certification preparation</li></ul><h2 class="md-h2" id="related-documents">Related documents</h2><p class="md-p">For the deeper operator workflow, see:</p><pre class="md-code-block md-code-surface"><code class="language-text">docs/operations/third-party-extension-authoring.md
+docs/architecture/extension-package-layout.md</code></pre></div>
+                  </div>
+                </article>
+                <section id="quick-reference" class="answer-blocks" aria-label="Quick Reference">
+                    <h2 class="answer-blocks-heading">Quick Reference</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="quick-reference-quick-reference" class="answer-block-summary">Quick Reference</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Use this article to understand Extension Authoring in the MdWrk Authoring surface. Extension Authoring explains how this MdWrk surface works in the current client and package system.</p><p class="md-p">Key concepts covered here:</p><ul class="md-ul"><li class="md-li">local Markdown files</li><li class="md-li">extension host contracts</li><li class="md-li">developer package reuse</li></ul><p class="md-p">Useful follow-up pages:</p><ul class="md-ul"><li class="md-li"><a href="/docs/product/local-first-markdown-workspace" class="md-link">Local-First Markdown Workspace</a></li><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension Platform</a></li><li class="md-li"><a href="/docs/product/developer-documentation" class="md-link">Developer Documentation</a></li></ul><p class="md-p">Use this path when you want to author an MdWrk extension package rather than only install or operate one.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                  <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-when-to-use-it" class="answer-block-summary">When To Use It</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Use this page when you need extension authoring guidance for the MdWrk authoring surface.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-how-it-works" class="answer-block-summary">How It Works</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-example" class="answer-block-summary">Example</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Start from this page, then use the related MdWrk surface such as <code class="md-inline-code">@mdwrk/extension-manifest</code> in the client, package, or extension flow it documents.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-common-errors" class="answer-block-summary">Common Errors</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                      <details class="answer-block-accordion" open>
+                        <summary id="answer-blocks-related-apis" class="answer-block-summary">Related APIs</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><ul class="md-ul"><li class="md-li"><code class="md-inline-code">@mdwrk/extension-manifest</code></li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-host</code></li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-runtime</code></li></ul></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#what-an-extension-author-owns" class="docs-toc-link" title="What an extension author owns">What an extension author owns</a></div>
+                  <div class="docs-toc-item"><a href="#typical-workflow" class="docs-toc-link" title="Typical workflow">Typical workflow</a></div>
+                  <div class="docs-toc-item"><a href="#required-package-shape" class="docs-toc-link" title="Required package shape">Required package shape</a></div>
+                  <div class="docs-toc-item"><a href="#runtime-and-distribution-rules" class="docs-toc-link" title="Runtime and distribution rules">Runtime and distribution rules</a></div>
+                  <div class="docs-toc-item"><a href="#reference-package" class="docs-toc-link" title="Reference package">Reference package</a></div>
+                  <div class="docs-toc-item"><a href="#related-documents" class="docs-toc-link" title="Related documents">Related documents</a></div>
+                  <div class="docs-toc-item"><a href="#quick-reference" class="docs-toc-link" title="Quick Reference">Quick Reference</a></div>
+                  <div class="docs-toc-item"><a href="#answer-blocks" class="docs-toc-link" title="Answer Blocks">Answer Blocks</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

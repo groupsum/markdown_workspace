@@ -4,11 +4,19 @@ import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  extractMarkdownHeadings,
+  renderMarkdownToHtmlSync,
+} from '@mdwrk/markdown-renderer-core';
 
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(landerRoot, '..', '..');
 const contentRoot = path.join(landerRoot, 'content');
+const dataRoot = path.join(landerRoot, 'data');
+const dataMarkdownRoot = path.join(dataRoot, 'markdown');
+const dataDocsRoot = path.join(dataMarkdownRoot, 'docs');
+const contentSitemapPath = path.join(dataRoot, 'content-sitemap.yaml');
 const schemasRoot = path.join(landerRoot, 'schemas');
 const publicRoot = path.join(landerRoot, 'public');
 const schemaPath = path.join(schemasRoot, 'mdwrk.page.v1.schema.json');
@@ -125,6 +133,11 @@ const slugify = (value) =>
     .replace(/^-+|-+$/g, '');
 
 const stripTrailingSlash = (value) => value === '/' ? '/' : value.replace(/\/+$/, '');
+const normalizeRouteSlug = (value) => {
+  const trimmed = String(value ?? '').trim();
+  if (!trimmed || trimmed === '/') return '/';
+  return `/${trimmed.replace(/^\/+|\/+$/g, '')}/`;
+};
 const canonicalForSlug = (slug) => `${siteUrl}${slug}`;
 
 const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, slug.replace(/^\/|\/$/g, ''));
@@ -136,8 +149,7 @@ const extractViteAssetTags = () => {
   if (!preserveAssets || !fs.existsSync(indexPath)) return '';
   const html = fs.readFileSync(indexPath, 'utf8');
   const tags = [
-    ...html.matchAll(/<link\b[^>]*\bhref="\/assets\/[^"]+"[^>]*>/gi),
-    ...html.matchAll(/<script\b[^>]*\bsrc="\/assets\/[^"]+"[^>]*><\/script>/gi),
+    ...html.matchAll(/<link\b[^>]*\bhref="\/assets\/[^"]+\.css"[^>]*>/gi),
   ].map(match => match[0]);
   return Array.from(new Set(tags)).join('\n    ');
 };
@@ -372,7 +384,9 @@ const renderInline = (value) => {
 
 const stripMarkdown = (value) =>
   String(value ?? '')
+    .replace(/^---\n[\s\S]*?\n---\n?/, ' ')
     .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
     .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
     .replace(/\[([^\]]+)]\([^)]+\)/g, '$1')
     .replace(/`([^`]+)`/g, '$1')
@@ -383,100 +397,569 @@ const stripMarkdown = (value) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+const normalizeStatus = (value) => String(value ?? '').trim().toLowerCase();
+
+const normalizeIsoDate = (value) => {
+  const trimmed = String(value ?? '').trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(trimmed) ? trimmed : null;
+};
+
+const toLocalIsoDate = (date = new Date()) => {
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const day = `${date.getDate()}`.padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const isPublishedFrontmatter = (frontmatter) => {
+  if (normalizeStatus(frontmatter.status) !== 'published') return false;
+  const date = normalizeIsoDate(frontmatter.date);
+  return Boolean(date && date <= toLocalIsoDate());
+};
+
+const toTitleCase = (value) =>
+  String(value ?? '')
+    .replace(/\bmdwrk\b/gim, 'MdWrk')
+    .split(/\s+/)
+    .map((part) => {
+      if (!part) return part;
+      if (/^MdWrk$/.test(part)) return part;
+      if (/^[A-Z0-9.-]+$/.test(part)) return part;
+      return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+    })
+    .join(' ');
+
+const removeDuplicateLeadingHeading = (content, title) => {
+  const headingMatch = String(content ?? '').match(/^#\s+(.+)\n*/);
+  if (!headingMatch || !title) return String(content ?? '').trim();
+  const normalize = (value) => String(value ?? '').trim().toLowerCase().replace(/[\s-]+/g, ' ');
+  return normalize(headingMatch[1]) === normalize(title)
+    ? String(content ?? '').slice(headingMatch[0].length).trim()
+    : String(content ?? '').trim();
+};
+
+const summarizeContent = (content, preferredExcerpt, maxLength = 220) => {
+  const excerpt = String(preferredExcerpt ?? '').trim();
+  if (excerpt) return excerpt;
+  const plain = stripMarkdown(content);
+  if (plain.length <= maxLength) return plain;
+  return `${plain.slice(0, maxLength).trimEnd()}...`;
+};
+
 const renderMarkdown = (body) => {
-  const lines = String(body ?? '').replace(/\r\n?/g, '\n').split('\n');
-  const html = [];
-  const headings = [];
   const links = [];
-  let paragraph = [];
-  let list = [];
-  let listKind = 'ul';
-  let code = null;
-
-  const flushParagraph = () => {
-    if (!paragraph.length) return;
-    html.push(`<p>${renderInline(paragraph.join(' '))}</p>`);
-    paragraph = [];
-  };
-  const flushList = () => {
-    if (!list.length) return;
-    html.push(`<${listKind}>${list.map(item => `<li>${renderInline(item)}</li>`).join('')}</${listKind}>`);
-    list = [];
-    listKind = 'ul';
-  };
-  const flushCode = () => {
-    if (!code) return;
-    html.push(`<pre><code${code.language ? ` class="language-${escapeAttribute(code.language)}"` : ''}>${escapeHtml(code.lines.join('\n'))}</code></pre>`);
-    code = null;
-  };
-
-  for (const line of lines) {
-    const fence = /^```([A-Za-z0-9_+-]*)?\s*$/.exec(line);
-    if (fence) {
-      if (code) flushCode();
-      else {
-        flushParagraph();
-        flushList();
-        code = { language: fence[1] || '', lines: [] };
-      }
-      continue;
-    }
-    if (code) {
-      code.lines.push(line);
-      continue;
-    }
-    const heading = /^(#{2,6})\s+(.+)$/.exec(line);
-    if (heading) {
-      flushParagraph();
-      flushList();
-      const depth = heading[1].length;
-      const text = heading[2].trim();
-      const id = slugify(text);
-      headings.push({ depth, id, text });
-      html.push(`<h${depth} id="${escapeAttribute(id)}">${renderInline(text)}</h${depth}>`);
-      continue;
-    }
-    const listItem = /^[-*]\s+(.+)$/.exec(line);
-    if (listItem) {
-      flushParagraph();
-      if (listKind !== 'ul') flushList();
-      listKind = 'ul';
-      list.push(listItem[1]);
-      continue;
-    }
-    const orderedListItem = /^\d+\.\s+(.+)$/.exec(line);
-    if (orderedListItem) {
-      flushParagraph();
-      if (listKind !== 'ol') flushList();
-      listKind = 'ol';
-      list.push(orderedListItem[1]);
-      continue;
-    }
-    if (!line.trim()) {
-      flushParagraph();
-      flushList();
-      continue;
-    }
-    paragraph.push(line.trim());
-  }
-  flushCode();
-  flushParagraph();
-  flushList();
-
+  const markdown = String(body ?? '');
+  const html = renderMarkdownToHtmlSync(markdown, {
+    htmlHandling: 'escape',
+    profile: 'gfm-default',
+  });
+  const headings = extractMarkdownHeadings(markdown, { minimumDepth: 2 }).map(heading => ({
+    depth: heading.depth,
+    id: heading.slug,
+    text: heading.text,
+  }));
   const linkPattern = /\[([^\]]+)]\(([^)]+)\)/g;
-  for (const match of String(body ?? '').matchAll(linkPattern)) {
+  for (const match of markdown.matchAll(linkPattern)) {
     const href = match[2];
     links.push({ href, text: match[1], internal: href.startsWith('/') || href.startsWith('#') });
   }
-  const text = stripMarkdown(body);
+  const text = stripMarkdown(markdown);
   const words = text ? text.split(/\s+/).length : 0;
   return {
-    html: html.join('\n'),
+    html,
     text,
     headings,
     links,
     wordCount: words,
   };
+};
+
+const slugifyAnswerBlock = (value) => slugify(value);
+
+const extractTerminalAnswerBlocks = (content) => {
+  const source = String(content ?? '').trim();
+  const terminalPattern = /^##\s+(Quick Reference|Article Guide)\s*$/gm;
+  const matches = Array.from(source.matchAll(terminalPattern));
+  if (!matches.length) return { articleContent: source, answerBlocks: [] };
+
+  const firstIndex = matches[0].index ?? -1;
+  if (firstIndex < 0) return { articleContent: source, answerBlocks: [] };
+
+  const answerSource = source.slice(firstIndex);
+  const answerHeadings = Array.from(answerSource.matchAll(terminalPattern));
+  const answerBlocks = answerHeadings
+    .map((match, index) => {
+      const start = (match.index ?? 0) + match[0].length;
+      const end = index + 1 < answerHeadings.length ? answerHeadings[index + 1].index ?? answerSource.length : answerSource.length;
+      return {
+        title: match[1],
+        content: answerSource.slice(start, end).trim(),
+        defaultOpen: false,
+      };
+    })
+    .filter(block => block.content.length > 0);
+
+  return {
+    articleContent: source.slice(0, firstIndex).trim(),
+    answerBlocks,
+  };
+};
+
+const renderAnswerBlocksSection = (id, title, blocks) => {
+  const visibleBlocks = (blocks ?? []).filter(block => String(block.content ?? '').trim());
+  if (!visibleBlocks.length) return '';
+  const sectionId = slugifyAnswerBlock(id || title);
+  return `<section id="${escapeAttribute(sectionId)}" class="answer-blocks" aria-label="${escapeAttribute(title)}">
+                    <h2 class="answer-blocks-heading">${escapeHtml(title)}</h2>
+                    <div class="answer-blocks-list">
+                      ${visibleBlocks.map(block => {
+                        const blockId = `${sectionId}-${slugifyAnswerBlock(block.title)}`;
+                        return `<details class="answer-block-accordion"${block.defaultOpen ? ' open' : ''}>
+                        <summary id="${escapeAttribute(blockId)}" class="answer-block-summary">${escapeHtml(block.title)}</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            ${renderMarkdown(block.content).html}
+                          </div>
+                        </div>
+                      </details>`;
+                      }).join('\n                      ')}
+                    </div>
+                  </section>`;
+};
+
+const collectRelatedApis = (content, metadata) => {
+  const explicit = String(metadata.relatedApis ?? '')
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean);
+  if (explicit.length) return explicit;
+
+  const discovered = Array.from(String(content ?? '').matchAll(/`(@mdwrk\/[^`]+)`/g)).map(match => match[1]);
+  return Array.from(new Set(discovered)).slice(0, 5);
+};
+
+const buildGeneratedDocAnswerBlocks = ({ title, section, content, excerpt, metadata }) => {
+  const relatedApis = collectRelatedApis(content, metadata);
+  const relatedApiText = relatedApis.length
+    ? relatedApis.map(api => `- \`${api}\``).join('\n')
+    : '- MdWrk client workspace\n- MdWrk Markdown editor and renderer packages';
+  const primaryExample = relatedApis[0] || '@mdwrk/mdwrkspace';
+
+  return [
+    { title: 'What This Does', content: excerpt },
+    { title: 'When To Use It', content: `Use this page when you need ${title.toLowerCase()} guidance for the MdWrk ${String(section ?? 'documentation').toLowerCase()} surface.` },
+    { title: 'How It Works', content: 'MdWrk keeps the workflow grounded in local Markdown files, browser-managed workspace state, reusable packages, and explicit extension or theme contracts where they apply.' },
+    { title: 'Example', content: `Start from this page, then use the related MdWrk surface such as \`${primaryExample}\` in the client, package, or extension flow it documents.` },
+    { title: 'Common Errors', content: 'Common issues usually come from choosing the wrong surface, expecting cloud sync for local-only content, or enabling extension/theme behavior without the matching package and trust configuration.' },
+    { title: 'Related APIs', content: relatedApiText, defaultOpen: true },
+  ];
+};
+
+const readMarkdownSource = (filePath) => {
+  const sourcePath = path.relative(landerRoot, filePath).replace(/\\/g, '/');
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const split = splitFrontmatter(raw, sourcePath);
+  return {
+    sourcePath,
+    raw,
+    frontmatter: parseYamlFrontmatter(split.frontmatter),
+    body: split.body,
+  };
+};
+
+const createStaticEntry = ({
+  sourcePath,
+  sourceHash,
+  slug,
+  title,
+  description,
+  h1,
+  intent,
+  contentType,
+  updatedAt,
+  body,
+  html,
+  answer,
+  tags = [],
+  related = [],
+  parent,
+  afterArticleHtml = '',
+  renderMetadataAnswer = true,
+}) => {
+  const normalizedSlug = normalizeRouteSlug(slug);
+  const rendered = renderMarkdown(body);
+  return {
+    sourcePath,
+    sourceHash,
+    frontmatter: normalizeFrontmatter({
+      schema: 'mdwrk.page.v1',
+      slug: normalizedSlug,
+      title,
+      description,
+      h1,
+      entity: 'MdWrk',
+      intent,
+      contentType,
+      updatedAt,
+      answer,
+      faqs: [],
+      parent,
+      related,
+      tags,
+      canonical: canonicalForSlug(normalizedSlug),
+      noindex: false,
+      llmsInclude: true,
+    }),
+    body,
+    rendered: {
+      ...rendered,
+      html: html ?? rendered.html,
+    },
+    afterArticleHtml,
+    renderMetadataAnswer,
+  };
+};
+
+const buildRenderRegistry = (entries) => {
+  const failures = [];
+  const bySlug = new Map();
+  const byContentType = new Map();
+  for (const entry of entries) {
+    if (bySlug.has(entry.frontmatter.slug)) {
+      failures.push(`Duplicate generated static route ${entry.frontmatter.slug}`);
+      continue;
+    }
+    bySlug.set(entry.frontmatter.slug, entry);
+    const typed = byContentType.get(entry.frontmatter.contentType) ?? [];
+    typed.push(entry);
+    byContentType.set(entry.frontmatter.contentType, typed);
+  }
+  if (failures.length) fail('Static lander route registry validation failed:', failures);
+  return { entries, bySlug, byContentType };
+};
+
+const toDisplayDate = (date) => {
+  const match = String(date ?? '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return String(date ?? '');
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+};
+
+const toMonthLabel = (dateOrMonth) => {
+  const match = String(dateOrMonth ?? '').match(/^(\d{4})-(\d{2})/);
+  if (!match) return String(dateOrMonth ?? '');
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(Number(match[1]), Number(match[2]) - 1, 1));
+};
+
+const normalizeContentSlug = (entryId, metadata) => {
+  const rawSlug = String(metadata.slug ?? '').trim();
+  if (rawSlug) return rawSlug.replace(/^\/+|\/+$/g, '');
+  return String(entryId ?? '').replace(/^\/+|\/+$/g, '');
+};
+
+const parseContentSitemapEntries = () => {
+  if (!fs.existsSync(contentSitemapPath)) return [];
+  const entries = [];
+  let current = {};
+  for (const rawLine of fs.readFileSync(contentSitemapPath, 'utf8').split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (line.startsWith('- id:')) {
+      if (current.id && current.file) entries.push(current);
+      current = { id: line.replace('- id:', '').trim() };
+      continue;
+    }
+    if (line.startsWith('file:')) current.file = line.replace('file:', '').trim();
+  }
+  if (current.id && current.file) entries.push(current);
+  return entries;
+};
+
+const renderCardGrid = (items, type = 'blog') =>
+  `<div class="${type === 'blog' ? 'blog-grid' : 'docs-index-grid'}">
+                    ${items.map(item => `<article class="lander-content-card ${type === 'blog' ? 'blog-card' : 'docs-index-card'}">
+                      ${item.date ? `<a class="${type === 'blog' ? 'blog-card-date' : 'docs-meta'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
+                      <h2 class="${type === 'blog' ? 'blog-card-title' : 'docs-index-card-title'}"><a class="${type === 'blog' ? 'blog-card-title-link' : 'docs-index-card-link'}" href="${escapeAttribute(item.href)}">${escapeHtml(item.title)}</a></h2>
+                      <p class="${type === 'blog' ? 'blog-card-excerpt' : 'docs-index-card-excerpt'}">${escapeHtml(item.description)}</p>
+                      ${item.author ? `<a class="blog-card-author" href="${escapeAttribute(item.authorHref)}">${escapeHtml(item.author)}</a>` : ''}
+                    </article>`).join('\n                    ')}
+                  </div>`;
+
+const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md'))
+  .sort()
+  .map((filePath) => {
+    const { sourcePath, raw, frontmatter, body } = readMarkdownSource(filePath);
+    if (!isPublishedFrontmatter(frontmatter)) return null;
+    const rawTitle = frontmatter.title || path.basename(filePath, '.md');
+    const title = toTitleCase(rawTitle);
+    const slug = String(frontmatter.slug || slugify(title)).replace(/^\/+|\/+$/g, '');
+    const section = frontmatter.section || 'Docs';
+    const sectionOrder = Number(frontmatter.sectionOrder ?? 999);
+    const order = Number(frontmatter.order ?? 999);
+    const articleSource = removeDuplicateLeadingHeading(body, title);
+    const extracted = extractTerminalAnswerBlocks(articleSource);
+    const excerpt = summarizeContent(extracted.articleContent, frontmatter.excerpt);
+    const quickReferenceHtml = renderAnswerBlocksSection('quick-reference', 'Quick Reference', extracted.answerBlocks);
+    const answerBlocksHtml = renderAnswerBlocksSection(
+      'answer-blocks',
+      'Answer Blocks',
+      buildGeneratedDocAnswerBlocks({
+        title,
+        section,
+        content: extracted.articleContent,
+        excerpt,
+        metadata: frontmatter,
+      }),
+    );
+
+    return {
+      sourcePath,
+      sourceHash: sha256(raw),
+      title,
+      slug,
+      section,
+      sectionOrder,
+      order,
+      date: frontmatter.date,
+      excerpt,
+      articleContent: extracted.articleContent,
+      entry: createStaticEntry({
+        sourcePath,
+        sourceHash: sha256(raw),
+        slug: `/docs/${slug}/`,
+        title: `${title} | MdWrk Docs`,
+        description: excerpt,
+        h1: title,
+        intent: `learn ${title.toLowerCase()} in MdWrk`,
+        contentType: 'docs',
+        updatedAt: frontmatter.date,
+        body: extracted.articleContent,
+        html: renderMarkdown(extracted.articleContent).html,
+        answer: excerpt,
+        tags: ['docs', section],
+        parent: '/docs/',
+        afterArticleHtml: `${quickReferenceHtml}\n                  ${answerBlocksHtml}`,
+        renderMetadataAnswer: false,
+      }),
+    };
+  })
+  .filter(Boolean)
+  .sort((a, b) => a.sectionOrder - b.sectionOrder || a.order - b.order || a.title.localeCompare(b.title));
+
+const loadContentMarkdown = () => parseContentSitemapEntries()
+  .map((entry) => {
+    const filePath = path.resolve(dataRoot, entry.file.replace(/^\.\//, ''));
+    if (!fs.existsSync(filePath)) return null;
+    const source = readMarkdownSource(filePath);
+    if (!isPublishedFrontmatter(source.frontmatter)) return null;
+    return { ...entry, ...source };
+  })
+  .filter(Boolean);
+
+const buildBlogPosts = (contentSources) => contentSources
+  .filter(source => source.id.startsWith('blog/'))
+  .map((source) => {
+    const slug = normalizeContentSlug(source.id, source.frontmatter).replace(/^blog\//, '');
+    const author = String(source.frontmatter.author ?? '').trim();
+    const date = normalizeIsoDate(source.frontmatter.date);
+    const excerpt = summarizeContent(source.body, source.frontmatter.excerpt);
+    const title = String(source.frontmatter.title ?? slug).trim();
+    return {
+      ...source,
+      slug,
+      author,
+      authorSlug: slugify(author),
+      date,
+      monthSlug: date ? date.slice(0, 7) : '',
+      monthLabel: date ? toMonthLabel(date) : '',
+      excerpt,
+      title,
+    };
+  })
+  .filter(post => post.title && post.excerpt && post.author && post.authorSlug && post.date && post.monthSlug)
+  .sort((a, b) => String(b.date).localeCompare(String(a.date)) || b.title.localeCompare(a.title));
+
+const blogCardItems = (posts) => posts.map(post => ({
+  title: post.title,
+  description: post.excerpt,
+  href: `/blog/${post.slug}/`,
+  date: post.date,
+  dateHref: `/blog/archive/${post.monthSlug}/`,
+  author: post.author,
+  authorHref: `/blog/author/${post.authorSlug}/`,
+}));
+
+const createBlogListEntry = ({ slug, title, eyebrow, posts, sourcePath, sourceHash }) => {
+  const description = posts[0]?.excerpt || `Read ${title} posts from MdWrk.`;
+  const body = [
+    `# ${title}`,
+    '',
+    description,
+    '',
+    ...posts.map(post => `- [${post.title}](/blog/${post.slug}/) - ${post.excerpt}`),
+  ].join('\n');
+  return createStaticEntry({
+    sourcePath,
+    sourceHash,
+    slug,
+    title: eyebrow ? `${title} | MdWrk Blog` : 'MdWrk Blog',
+    description,
+    h1: title,
+    intent: `read ${title.toLowerCase()} posts from MdWrk`,
+    contentType: 'blog',
+    updatedAt: posts[0]?.date || toLocalIsoDate(),
+    body,
+    html: `${eyebrow ? `<div class="blog-list-eyebrow">${escapeHtml(eyebrow)}</div>` : ''}
+                  ${renderCardGrid(blogCardItems(posts), 'blog')}`,
+    answer: description,
+    tags: ['blog'],
+    renderMetadataAnswer: true,
+  });
+};
+
+const createBlogPostEntry = (post) => {
+  const articleSource = removeDuplicateLeadingHeading(post.body, post.title);
+  const extracted = extractTerminalAnswerBlocks(articleSource);
+  const articleGuideHtml = renderAnswerBlocksSection('article-guide', 'Article Guide', extracted.answerBlocks);
+  return createStaticEntry({
+    sourcePath: post.sourcePath,
+    sourceHash: sha256(post.raw),
+    slug: `/blog/${post.slug}/`,
+    title: `${post.title} | MdWrk Blog`,
+    description: post.excerpt,
+    h1: post.title,
+    intent: `read about ${post.title.toLowerCase()}`,
+    contentType: 'blog',
+    updatedAt: post.date,
+    body: extracted.articleContent,
+    html: `<div class="blog-post-meta">
+                    <a href="/blog/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></a>
+                    <a href="/blog/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link">${escapeHtml(post.author)}</a>
+                  </div>
+                  ${renderMarkdown(extracted.articleContent).html}`,
+    answer: post.excerpt,
+    tags: ['blog'],
+    parent: '/blog/',
+    afterArticleHtml: articleGuideHtml,
+    renderMetadataAnswer: true,
+  });
+};
+
+const createLegalEntry = (source) => {
+  const title = String(source.frontmatter.title ?? source.id).trim();
+  const slug = `/${source.id}/`;
+  const body = removeDuplicateLeadingHeading(source.body, title);
+  const description = summarizeContent(body, source.frontmatter.excerpt);
+  return createStaticEntry({
+    sourcePath: source.sourcePath,
+    sourceHash: sha256(source.raw),
+    slug,
+    title: `${title} | MdWrk`,
+    description,
+    h1: title,
+    intent: `read ${title.toLowerCase()}`,
+    contentType: 'privacy',
+    updatedAt: source.frontmatter.date,
+    body,
+    answer: description,
+    tags: ['legal'],
+    related: ['/privacy/', '/security/'],
+    renderMetadataAnswer: true,
+  });
+};
+
+const readDataStaticEntries = () => {
+  const docs = loadDataDocs();
+  const contentSources = loadContentMarkdown();
+  const blogPosts = buildBlogPosts(contentSources);
+  const legalEntries = contentSources
+    .filter(source => source.id.startsWith('legal/'))
+    .map(createLegalEntry);
+
+  const docCards = docs.map(doc => ({
+    title: doc.title,
+    description: doc.excerpt,
+    href: `/docs/${doc.slug}/`,
+    date: doc.date,
+  }));
+  const docsIndexBody = [
+    '# MdWrk Documentation',
+    '',
+    'Browse the MdWrk public documentation by product surface, setup path, authoring surface, extension model, and comparison guide.',
+    '',
+    ...docs.map(doc => `- [${doc.title}](/docs/${doc.slug}/) - ${doc.excerpt}`),
+  ].join('\n');
+  const docsIndex = createStaticEntry({
+    sourcePath: 'data/markdown/docs',
+    sourceHash: sha256(docs.map(doc => `${doc.slug}:${doc.sourceHash}`).join('\n')),
+    slug: '/docs/',
+    title: 'MdWrk Documentation',
+    description: 'Browse MdWrk docs for installation, local-first Markdown authoring, package surfaces, extensions, themes, comparisons, and static public content.',
+    h1: 'MdWrk Documentation',
+    intent: 'browse MdWrk documentation',
+    contentType: 'docs',
+    updatedAt: docs[0]?.date || toLocalIsoDate(),
+    body: docsIndexBody,
+    html: renderCardGrid(docCards, 'docs'),
+    answer: 'MdWrk documentation explains how to install, use, extend, theme, and evaluate the local-first Markdown workspace and its reusable package surfaces.',
+    tags: ['docs'],
+    renderMetadataAnswer: true,
+  });
+
+  const blogList = createBlogListEntry({
+    slug: '/blog/',
+    title: 'Blog',
+    posts: blogPosts,
+    sourcePath: 'data/markdown/blog',
+    sourceHash: sha256(blogPosts.map(post => `${post.slug}:${post.sourceHash}`).join('\n')),
+  });
+  const authorEntries = Array.from(new Map(blogPosts.map(post => [post.authorSlug, post])).values())
+    .map(authorPost => {
+      const posts = blogPosts.filter(post => post.authorSlug === authorPost.authorSlug);
+      return createBlogListEntry({
+        slug: `/blog/author/${authorPost.authorSlug}/`,
+        title: authorPost.author,
+        eyebrow: 'Author Archive',
+        posts,
+        sourcePath: `data/markdown/blog#author:${authorPost.authorSlug}`,
+        sourceHash: sha256(posts.map(post => post.sourceHash).join('\n')),
+      });
+    });
+  const archiveEntries = Array.from(new Map(blogPosts.map(post => [post.monthSlug, post])).values())
+    .map(monthPost => {
+      const posts = blogPosts.filter(post => post.monthSlug === monthPost.monthSlug);
+      return createBlogListEntry({
+        slug: `/blog/archive/${monthPost.monthSlug}/`,
+        title: monthPost.monthLabel,
+        eyebrow: 'Monthly Archive',
+        posts,
+        sourcePath: `data/markdown/blog#archive:${monthPost.monthSlug}`,
+        sourceHash: sha256(posts.map(post => post.sourceHash).join('\n')),
+      });
+    });
+
+  return [
+    docsIndex,
+    ...docs.map(doc => doc.entry),
+    blogList,
+    ...blogPosts.map(createBlogPostEntry),
+    ...authorEntries,
+    ...archiveEntries,
+    ...legalEntries,
+  ];
+};
+
+const readStaticRegistry = () => {
+  const contentRegistry = readContentEntries();
+  return buildRenderRegistry([
+    ...contentRegistry.entries,
+    ...readDataStaticEntries(),
+  ]);
 };
 
 const readContentEntries = () => {
@@ -646,40 +1129,224 @@ const jsonLdFor = (entry, registry) => {
   };
 };
 
-const renderNav = (registry) => {
+const renderTopNav = (registry, currentSlug) => {
   const links = [
     ['/', 'Home'],
+    ['/docs/', 'Docs'],
+    ['/blog/', 'Blog'],
     ['/features/offline-markdown-editor/', 'Features'],
-    ['/docs/quickstart/', 'Docs'],
     ['/compare/obsidian/', 'Compare'],
-    ['/blog/launch/', 'Blog'],
     ['/privacy/', 'Privacy'],
   ];
   return links
     .filter(([slug]) => registry.bySlug.has(slug))
-    .map(([slug, text]) => `<li><a class="navbar-link is-inactive" href="${slug}">${text}</a></li>`)
+    .map(([slug, text]) => {
+      const active = slug === '/'
+        ? currentSlug === '/'
+        : currentSlug === slug || currentSlug.startsWith(slug);
+      return `<li><a class="navbar-link ${active ? 'is-active' : 'is-inactive'}" href="${slug}">${text}</a></li>`;
+    })
     .join('\n              ');
+};
+
+const renderThemeBootstrap = () => `<script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>`;
+
+const renderThemeToggleScript = () => `<script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>`;
+
+const renderStaticCloudOffIcon = () => `<svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg>`;
+
+const renderStaticThemeIcon = () => `<svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>`;
+
+const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">${renderStaticCloudOffIcon()}</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                ${renderStaticThemeIcon()}
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                ${renderTopNav(registry, currentSlug)}
+              </ul>
+            </div>
+          </div>
+        </nav>`;
+
+const renderDocsSidebar = (registry, currentSlug) => {
+  const docs = registry.entries
+    .filter(item => item.frontmatter.contentType === 'docs' && item.frontmatter.slug.startsWith('/docs/') && item.frontmatter.slug !== '/docs/')
+    .slice()
+    .sort((a, b) => {
+      const groupA = a.frontmatter.tags[1] || 'Documentation';
+      const groupB = b.frontmatter.tags[1] || 'Documentation';
+      return groupA.localeCompare(groupB) || a.frontmatter.h1.localeCompare(b.frontmatter.h1);
+    });
+  const groups = new Map();
+  for (const doc of docs) {
+    const group = doc.frontmatter.tags[1] || 'Documentation';
+    const title = toTitleCase(group.replace(/[-_/]+/g, ' '));
+    const items = groups.get(title) ?? [];
+    items.push(doc);
+    groups.set(title, items);
+  }
+  return `<aside class="docs-sidebar" aria-label="Documentation navigation">
+          <div class="docs-sidebar-inner">
+            <h3 class="docs-sidebar-heading">Documentation</h3>
+            <nav class="docs-nav">
+              <a class="docs-nav-link ${currentSlug === '/docs/' ? 'is-active' : 'is-inactive'}" href="/docs/"><span class="docs-nav-link-label">All Docs</span></a>
+              ${Array.from(groups.entries()).map(([group, items]) => `<details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">${escapeHtml(group)}</span></summary>
+                <div class="docs-nav-children">
+                  ${items.map(item => `<a class="docs-nav-link ${item.frontmatter.slug === currentSlug ? 'is-active' : 'is-inactive'}" href="${item.frontmatter.slug}">
+                    ${item.frontmatter.slug === currentSlug ? '<span class="docs-nav-link-dot"></span>' : ''}
+                    <span class="docs-nav-link-label">${escapeHtml(item.frontmatter.h1)}</span>
+                  </a>`).join('\n                  ')}
+                </div>
+              </details>`).join('\n              ')}
+            </nav>
+          </div>
+        </aside>`;
+};
+
+const renderArticleToc = (entry) => {
+  const children = entry.rendered.headings.map(heading => ({
+    title: heading.text,
+    href: `#${heading.id}`,
+    depth: heading.depth,
+  }));
+  if (entry.afterArticleHtml?.includes('id="quick-reference"')) {
+    children.push({ title: 'Quick Reference', href: '#quick-reference', depth: 2 });
+  }
+  if (entry.afterArticleHtml?.includes('id="answer-blocks"')) {
+    children.push({ title: 'Answer Blocks', href: '#answer-blocks', depth: 2 });
+  }
+  if (entry.afterArticleHtml?.includes('id="article-guide"')) {
+    children.push({ title: 'Article Guide', href: '#article-guide', depth: 2 });
+  }
+  if (entry.frontmatter.faqs.length) {
+    children.push({ title: 'Frequently Asked Questions', href: '#faq-heading', depth: 2 });
+  }
+  if (entry.frontmatter.related.length) {
+    children.push({ title: 'Related Pages', href: '#related-heading', depth: 2 });
+  }
+  if (!children.length) return '';
+  return `<aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  ${children.map(item => `<div class="docs-toc-item"><a href="${escapeAttribute(item.href)}" class="docs-toc-link${item.depth > 2 ? ' docs-toc-link-child' : ''}" title="${escapeAttribute(item.title)}">${escapeHtml(item.title)}</a></div>`).join('\n                  ')}
+                </nav>
+              </div>
+            </aside>`;
+};
+
+const renderMarkdownHost = (html) => `<div class="markdown-renderer-host lander-markdown">
+                    ${html}
+                  </div>`;
+
+const renderMetadataAnswerBlocks = (entry, registry) => {
+  const blocks = [];
+  if (entry.renderMetadataAnswer !== false && entry.frontmatter.answer) {
+    blocks.push({ title: 'What This Does', content: entry.frontmatter.answer });
+  }
+  const answerHtml = blocks.length
+    ? renderAnswerBlocksSection('answer-blocks', 'Answer Blocks', blocks)
+    : '';
+  const faqHtml = entry.frontmatter.faqs.length
+    ? `<section class="answer-blocks static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
+                    <div class="answer-blocks-list">${entry.frontmatter.faqs.map(faq => `<details class="answer-block-accordion"><summary class="answer-block-summary">${escapeHtml(faq.question)}</summary><div class="answer-block-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                      ')}</div>
+                  </section>`
+    : '';
+  const relatedHtml = entry.frontmatter.related.length
+    ? `<section class="answer-blocks static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                    <ul>${entry.frontmatter.related.map(slug => {
+              const target = registry.bySlug.get(slug);
+              return `<li><a href="${slug}">${escapeHtml(target?.frontmatter.h1 ?? slug)}</a></li>`;
+            }).join('')}</ul>
+                  </section>`
+    : '';
+  return [answerHtml, faqHtml, relatedHtml].filter(Boolean).join('\n                  ');
+};
+
+const renderArticleCard = (entry, registry) => {
+  const metaLabel = entry.frontmatter.contentType === 'blog' ? 'Blog' : entry.frontmatter.contentType;
+  const isBlogPost = entry.frontmatter.contentType === 'blog' && entry.frontmatter.slug !== '/blog/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
+  const articleClass = isBlogPost
+    ? 'blog-post-card'
+    : 'docs-content-card';
+  return `<div class="docs-article-column">
+                ${isBlogPost ? '<a href="/blog/" class="blog-back-button">Back to Blog</a>' : ''}
+                <article class="${articleClass} lander-content-card">
+                  <header class="${articleClass === 'blog-post-card' ? 'blog-post-header' : 'docs-header'}">
+                    <div class="docs-meta">
+                      <span>${escapeHtml(metaLabel)}</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>${escapeHtml(entry.frontmatter.updatedAt)}</span>
+                    </div>
+                    <h1 class="${articleClass === 'blog-post-card' ? 'blog-post-title' : 'docs-title'}">${escapeHtml(entry.frontmatter.h1)}</h1>
+                  </header>
+                  ${renderMarkdownHost(entry.rendered.html)}
+                </article>
+                ${entry.afterArticleHtml ?? ''}
+                ${renderMetadataAnswerBlocks(entry, registry)}
+              </div>`;
 };
 
 const renderHtmlPage = (entry, registry, assetTags = '') => {
   const robots = entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow';
-  const answerHtml = entry.frontmatter.answer
-    ? `<section class="answer-blocks static-answer-summary" aria-label="Answer summary">\n                <h2 class="answer-blocks-heading">Answer Summary</h2>\n                <p>${escapeHtml(entry.frontmatter.answer)}</p>\n              </section>`
-    : '';
-  const faqHtml = entry.frontmatter.faqs.length
-    ? `<section class="answer-blocks static-faq" aria-labelledby="faq-heading">\n                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>\n                <div class="answer-blocks-list">${entry.frontmatter.faqs.map(faq => `<details class="answer-block-accordion" open><summary class="answer-block-summary">${escapeHtml(faq.question)}</summary><div class="answer-block-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                  ')}</div>\n              </section>`
-    : '';
-  const relatedHtml = entry.frontmatter.related.length
-    ? `<section class="answer-blocks static-related" aria-labelledby="related-heading">\n                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>\n                <ul>${entry.frontmatter.related.map(slug => {
-            const target = registry.bySlug.get(slug);
-            return `<li><a href="${slug}">${escapeHtml(target?.frontmatter.h1 ?? slug)}</a></li>`;
-          }).join('')}</ul>\n              </section>`
-    : '';
+  const isDocs = entry.frontmatter.slug.startsWith('/docs/');
+  const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
+  const toc = renderArticleToc(entry);
   return `<!doctype html>
 <html lang="en" data-lander-theme="lander-light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    ${renderThemeBootstrap()}
     <title>${escapeHtml(entry.frontmatter.title)}</title>
     <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
     <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
@@ -693,41 +1360,14 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
   <body>
     <div id="root">
       <div class="app-shell">
-        <nav class="navbar" aria-label="Main navigation">
-          <div class="navbar-inner">
-            <a href="/" class="navbar-brand">
-              <div class="navbar-brand-mark">M</div>
-              <span class="navbar-brand-text">MdWrk</span>
-            </a>
-            <div class="navbar-menu-panel is-open" id="navbar-sticky">
-              <ul class="navbar-menu-list">
-                ${renderNav(registry)}
-              </ul>
-            </div>
-          </div>
-        </nav>
+        ${renderStaticNavbar(registry, entry.frontmatter.slug)}
         <main id="content" class="app-main">
-          <div class="lander-doc-shell docs-layout static-page-shell">
+          <div class="lander-doc-shell docs-layout">
+            ${sidebar}
             <section class="docs-main">
               <div class="docs-content-wrap">
-                <article class="docs-content-card lander-content-card static-content-card">
-                  <header class="docs-header">
-                    <div class="docs-meta">
-                      <span>${escapeHtml(entry.frontmatter.contentType)}</span>
-                      <span class="docs-meta-divider">/</span>
-                      <span>${escapeHtml(entry.frontmatter.updatedAt)}</span>
-                    </div>
-                    <h1 class="docs-title">${escapeHtml(entry.frontmatter.h1)}</h1>
-                  </header>
-                  ${answerHtml}
-                  <div class="lander-markdown">
-                    <div class="markdown-body">
-                      ${entry.rendered.html}
-                    </div>
-                  </div>
-                  ${faqHtml}
-                  ${relatedHtml}
-                </article>
+                ${renderArticleCard(entry, registry)}
+                ${toc}
               </div>
             </section>
           </div>
@@ -762,6 +1402,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
         </footer>
       </div>
     </div>
+    ${renderThemeToggleScript()}
   </body>
 </html>
 `;
@@ -781,16 +1422,33 @@ const renderMarkdownMirror = (entry) => [
   ] : []),
 ].join('\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
 
+const normalizeGeneratedFile = (content) => String(content).replace(/[ \t]+$/gm, '');
+
 const writeFile = (filePath, content) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, normalizeGeneratedFile(content));
+};
+
+const copyDir = (source, target) => {
+  if (!fs.existsSync(source)) return;
+  fs.mkdirSync(target, { recursive: true });
+  for (const entry of fs.readdirSync(source, { withFileTypes: true })) {
+    const sourcePath = path.join(source, entry.name);
+    const targetPath = path.join(target, entry.name);
+    if (entry.isDirectory()) {
+      copyDir(sourcePath, targetPath);
+    } else {
+      fs.copyFileSync(sourcePath, targetPath);
+    }
+  }
 };
 
 const build = () => {
-  const registry = readContentEntries();
+  const registry = readStaticRegistry();
   const assetTags = extractViteAssetTags();
   if (!preserveAssets) fs.rmSync(distRoot, { recursive: true, force: true });
   fs.mkdirSync(distRoot, { recursive: true });
+  copyDir(publicRoot, distRoot);
 
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
@@ -854,10 +1512,6 @@ const build = () => {
       '',
     ]),
   ].join('\n'));
-  if (fs.existsSync(path.join(publicRoot, 'favicon.svg'))) {
-    fs.copyFileSync(path.join(publicRoot, 'favicon.svg'), path.join(distRoot, 'favicon.svg'));
-  }
-
   console.log(`Built MdWrk static lander: ${registry.entries.length} pages -> ${path.relative(repoRoot, distRoot)}`);
 };
 
@@ -872,7 +1526,7 @@ const extractMainText = (html) => {
 };
 
 const verify = () => {
-  const registry = readContentEntries();
+  const registry = readStaticRegistry();
   const failures = [];
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
@@ -884,6 +1538,7 @@ const verify = () => {
   const sitemap = fs.existsSync(path.join(distRoot, 'sitemap.xml')) ? fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8') : '';
   const robots = fs.existsSync(path.join(distRoot, 'robots.txt')) ? fs.readFileSync(path.join(distRoot, 'robots.txt'), 'utf8') : '';
   const llms = fs.existsSync(path.join(distRoot, 'llms.txt')) ? fs.readFileSync(path.join(distRoot, 'llms.txt'), 'utf8') : '';
+  const hasViteCssAssets = fs.existsSync(path.join(distRoot, 'assets')) && collectFiles(path.join(distRoot, 'assets'), file => file.endsWith('.css')).length > 0;
   if (!robots.includes('User-agent: OAI-SearchBot')) failures.push('robots.txt missing OAI-SearchBot policy');
   if (!robots.includes('User-agent: GPTBot')) failures.push('robots.txt missing GPTBot policy');
 
@@ -899,6 +1554,8 @@ const verify = () => {
     if (!html.startsWith('<!doctype html>')) failures.push(`${entry.frontmatter.slug}: missing doctype`);
     if (!/<main\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing main`);
     if (!/<article\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing article`);
+    if (hasViteCssAssets && !/href="\/assets\/[^"]+\.css"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing compiled lander stylesheet link`);
+    if (/src="\/assets\/[^"]+\.js"/i.test(html)) failures.push(`${entry.frontmatter.slug}: static route includes SPA JavaScript bundle`);
     if ((html.match(/<h1\b/gi) ?? []).length !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one H1`);
     if (!html.includes(`<title>${escapeHtml(entry.frontmatter.title)}</title>`)) failures.push(`${entry.frontmatter.slug}: missing title`);
     if (!html.includes('name="description"')) failures.push(`${entry.frontmatter.slug}: missing meta description`);
@@ -906,7 +1563,7 @@ const verify = () => {
     if (!html.includes('type="application/ld+json"')) failures.push(`${entry.frontmatter.slug}: missing JSON-LD`);
     if (!entry.frontmatter.noindex && !entry.frontmatter.answer) failures.push(`${entry.frontmatter.slug}: indexable page missing answer block`);
     if (entry.frontmatter.answer && !html.includes(escapeHtml(entry.frontmatter.answer))) failures.push(`${entry.frontmatter.slug}: answer not visibly rendered`);
-    if (entry.frontmatter.answer && html.indexOf('<div class="lander-markdown"') !== -1 && html.indexOf(escapeHtml(entry.frontmatter.answer)) > html.indexOf('<div class="lander-markdown"')) failures.push(`${entry.frontmatter.slug}: direct answer must be visible before article sections`);
+    if (entry.frontmatter.answer && html.includes('</article>') && !html.slice(html.indexOf('</article>')).includes(escapeHtml(entry.frontmatter.answer))) failures.push(`${entry.frontmatter.slug}: answer block must be grouped below the article content`);
     if (entry.frontmatter.faqs.length && !html.includes('Frequently Asked Questions')) failures.push(`${entry.frontmatter.slug}: FAQ frontmatter exists but FAQ is not visible`);
     if (entry.frontmatter.faqs.length && !html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ content is visible but FAQ JSON-LD is missing`);
     if (!entry.frontmatter.faqs.length && html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ JSON-LD exists without visible FAQ content`);
@@ -922,7 +1579,7 @@ const verify = () => {
     if (entry.frontmatter.contentType === 'comparison' && !/compare|comparison|versus|difference|different|vs\.| vs /i.test(`${entry.frontmatter.title} ${entry.frontmatter.intent} ${entry.rendered.text}`)) {
       failures.push(`${entry.frontmatter.slug}: comparison page missing comparison structure`);
     }
-    if (/quickstart|tutorial|how to|how-to|start using/i.test(`${entry.frontmatter.intent} ${entry.frontmatter.title}`) && !/<ol>/i.test(html)) {
+    if (/quickstart|tutorial|how to|how-to|start using/i.test(`${entry.frontmatter.intent} ${entry.frontmatter.title}`) && !/<ol\b/i.test(html)) {
       failures.push(`${entry.frontmatter.slug}: tutorial/how-to page missing ordered steps`);
     }
     if (!entry.frontmatter.noindex && !sitemap.includes(canonicalForSlug(entry.frontmatter.slug))) failures.push(`${entry.frontmatter.slug}: missing from sitemap`);
@@ -932,8 +1589,13 @@ const verify = () => {
       if (!fs.existsSync(mdPath)) failures.push(`${entry.frontmatter.slug}: missing Markdown mirror`);
       else if (stripMarkdown(fs.readFileSync(mdPath, 'utf8')).split(/\s+/).length < 40) failures.push(`${entry.frontmatter.slug}: empty or stale Markdown mirror`);
     }
-    for (const link of entry.rendered.links.filter(link => link.internal && link.href.startsWith('/'))) {
-      const targetSlug = link.href.split('#')[0].endsWith('/') ? link.href.split('#')[0] : `${link.href.split('#')[0]}/`;
+    for (const link of entry.rendered.links.filter(link => link.internal && link.href.startsWith('/') && /^\/(docs|blog|legal|privacy|security|features|compare)\b/.test(link.href))) {
+      const targetPath = link.href.split('#')[0];
+      if (/\.[A-Za-z0-9]{2,8}$/.test(targetPath)) {
+        if (!fs.existsSync(path.join(distRoot, targetPath.replace(/^\/+/, '')))) failures.push(`${entry.sourcePath}: broken static asset link ${link.href}`);
+        continue;
+      }
+      const targetSlug = targetPath.endsWith('/') ? targetPath : `${targetPath}/`;
       if (!registry.bySlug.has(targetSlug)) failures.push(`${entry.sourcePath}: broken internal link ${link.href}`);
     }
   }
@@ -950,7 +1612,7 @@ const clean = () => {
 };
 
 const validate = () => {
-  const registry = readContentEntries();
+  const registry = readStaticRegistry();
   console.log(`MdWrk static lander source validation passed: ${registry.entries.length} pages.`);
 };
 

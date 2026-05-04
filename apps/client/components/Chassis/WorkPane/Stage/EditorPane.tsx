@@ -41,6 +41,7 @@ interface EditorPaneProps {
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
   showLineNumbers: boolean;
+  onExportMarkdown?: () => void;
   onExportHtml?: () => void;
   onPrintPreview?: () => void;
 }
@@ -87,6 +88,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
   viewMode,
   onViewModeChange,
   showLineNumbers,
+  onExportMarkdown,
   onExportHtml,
   onPrintPreview,
 }) => {
@@ -307,6 +309,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
                 currentFile={file}
                 onNavigate={onNavigate}
                 className="preview-pane"
+                onExportMarkdown={onExportMarkdown}
                 onExportHtml={onExportHtml}
                 onPrintPreview={onPrintPreview}
               />

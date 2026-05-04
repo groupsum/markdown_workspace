@@ -290,6 +290,12 @@
   line-break: anywhere;
 }
 
+.preview-pane .markdown-body * {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-break: anywhere;
+}
+
 .preview-pane .markdown-body > p {
   white-space: pre-wrap;
 }

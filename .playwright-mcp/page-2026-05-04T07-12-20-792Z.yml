@@ -1,0 +1,14 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: "@mdwrk/markdown-edit-in-renderer-react 1.0.0"
+      - heading "Typora-style edit-in-renderer package demo" [level=1] [ref=e7]
+    - textbox [active] [ref=e9]:
+      - generic [ref=e10]:
+        - heading "Edit in renderer" [level=1] [ref=e11]
+        - paragraph [ref=e12]: Edit directly in this rendered document. The same surface is both the input and the rendered display.
+        - list [ref=e13]:
+          - listitem [ref=e14]: The heading is rendered as a heading while editable
+          - listitem [ref=e15]: Paragraphs are rendered as paragraphs while editable
+          - listitem [ref=e16]: Whole-document markdown is emitted on change
+        - code [ref=e18]: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\";"

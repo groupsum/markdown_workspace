@@ -496,6 +496,31 @@ export const useFileManager = (
     addToast('EXPORT COMPLETE', 'success');
   };
 
+  const exportMarkdownNode = async () => {
+    console.log(`[useFileManager] Action: exportMarkdownNode -> selected -> ${selectedExplorerId}`);
+    if (!selectedExplorerId) {
+      addToast('SELECT FILE OR FOLDER TO EXPORT', 'warning');
+      return;
+    }
+
+    const selectedNode = files.find(f => f.id === selectedExplorerId);
+    if (!selectedNode) return;
+
+    if (selectedNode.type === 'file') {
+      triggerDownload(selectedNode.content || '', selectedNode.name, 'text/markdown');
+      addToast('MARKDOWN EXPORT COMPLETE', 'success');
+      return;
+    }
+
+    console.log(`[useFileManager] Exporting Markdown folder -> ${selectedNode.name}`);
+    addToast('EXPORTING MARKDOWN ARCHIVE...', 'info');
+    const blob = await compressFolder(selectedNode, files);
+    if (blob) {
+      triggerDownload(blob, `${selectedNode.name}-markdown.zip`, 'application/zip');
+      addToast('MARKDOWN ARCHIVE DOWNLOADED', 'success');
+    }
+  };
+
   const restoreProjectData = async (payload: string) => {
     if (!activeProjectId) {
       addToast('NO ACTIVE PROJECT', 'warning');
@@ -819,6 +844,7 @@ export const useFileManager = (
     moveFile,
     downloadNode,
     exportProjectData,
+    exportMarkdownNode,
     exportHtmlNode,
     importMarkdownFiles,
     importExternalMarkdownFiles,

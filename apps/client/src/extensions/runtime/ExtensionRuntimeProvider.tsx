@@ -58,6 +58,7 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
         importMarkdown: () => snapshotRef.current.app.actions.requestMarkdownImport(),
         openHostFile: () => snapshotRef.current.app.actions.openMarkdownFromHost(),
         downloadWorkspace: () => snapshotRef.current.app.actions.handleDownload(),
+        exportMarkdown: () => snapshotRef.current.app.actions.handleMarkdownExport(),
         exportHtml: () => snapshotRef.current.app.actions.handleHtmlExport(),
         printPreview: () => snapshotRef.current.app.actions.handlePrint(),
         viewEditor: () => snapshotRef.current.app.actions.setViewMode('editor'),

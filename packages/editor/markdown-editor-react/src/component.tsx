@@ -35,7 +35,7 @@ const MIN_WRAP_COLUMN = 24;
 const MAX_WRAP_COLUMN = 320;
 const EDITOR_LINE_HEIGHT_CSS = "var(--mwe-line-height, var(--editor-line-rhythm, var(--editor-line-height, 1.5rem)))";
 
-function estimateVisualRows(line: string, wrapColumn: number): number {
+function estimateWordBreakVisualRows(line: string, wrapColumn: number): number {
   if (!line) return 1;
   const expanded = line.replace(/\t/g, "    ");
   return Math.max(1, Math.ceil(expanded.length / Math.max(MIN_WRAP_COLUMN, wrapColumn)));
@@ -374,7 +374,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
     const displayValue = isControlled ? (value ?? "") : draftValue;
 
     const visualLineRows = React.useMemo(() => {
-      return displayValue.split("\n").map((line) => estimateVisualRows(line, wrapColumn));
+      return displayValue.split("\n").map((line) => estimateWordBreakVisualRows(line, wrapColumn));
     }, [displayValue, wrapColumn]);
 
     const lineCount = React.useMemo(() => {
@@ -436,6 +436,8 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
             placeholder={placeholder}
             wrap="soft"
             cols={wrapColumn}
+            data-wrap-engine="pretext"
+            data-wrap-mode="word-break"
             data-testid="markdown-source-editor"
           />
         </div>

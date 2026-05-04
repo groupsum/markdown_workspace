@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>MdWrk Documentation</title>
+    <meta name="description" content="Browse MdWrk docs for installation, local-first Markdown authoring, package surfaces, extensions, themes, comparisons, and static public content.">
+    <link rel="canonical" href="https://mdwrk.com/docs/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/docs/#webpage","url":"https://mdwrk.com/docs/","name":"MdWrk Documentation","headline":"MdWrk Documentation","description":"Browse MdWrk docs for installation, local-first Markdown authoring, package surfaces, extensions, themes, comparisons, and static public content.","dateModified":"2026-05-02","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/docs/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk Documentation","item":"https://mdwrk.com/docs/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-active" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+            <aside class="docs-sidebar" aria-label="Documentation navigation">
+          <div class="docs-sidebar-inner">
+            <h3 class="docs-sidebar-heading">Documentation</h3>
+            <nav class="docs-nav">
+              <a class="docs-nav-link is-active" href="/docs/"><span class="docs-nav-link-label">All Docs</span></a>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Archive</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-28/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.28</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-29/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.29</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Authoring</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/overview/">
+
+                    <span class="docs-nav-link-label">Authoring Overview</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/extensions/">
+
+                    <span class="docs-nav-link-label">Extension Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/language-packs/">
+
+                    <span class="docs-nav-link-label">Language Pack Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme Pack Authoring</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Comparisons</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-logseq/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Logseq</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-marktext/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Marktext</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-notion/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Notion</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-obsidian/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Obsidian</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-standard-markdown-editors/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Standard Markdown Editors</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-typora/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Typora</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-vs-code/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs VS Code</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/comparisons/mdwrk-vs-zettlr/">
+
+                    <span class="docs-nav-link-label">MdWrk Vs Zettlr</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Docs</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/">
+
+                    <span class="docs-nav-link-label">Extensions</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme packs</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Extensions</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/extension-platform/">
+
+                    <span class="docs-nav-link-label">Extension Platform</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/theme-studio-and-host-surfaces/">
+
+                    <span class="docs-nav-link-label">Theme Studio And Host Surfaces</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Getting Started</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/browser-use/">
+
+                    <span class="docs-nav-link-label">Browser Use</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/configuration/">
+
+                    <span class="docs-nav-link-label">Client Configuration</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/installation/">
+
+                    <span class="docs-nav-link-label">Client Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/local-setup/">
+
+                    <span class="docs-nav-link-label">Local Setup</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/pwa-installation/">
+
+                    <span class="docs-nav-link-label">PWA Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/standalone-modules/">
+
+                    <span class="docs-nav-link-label">Standalone Modules</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Integrations</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/github-sync/">
+
+                    <span class="docs-nav-link-label">Github Sync</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Product</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/product/developer-documentation/">
+
+                    <span class="docs-nav-link-label">Developer Documentation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/editor-basics/">
+
+                    <span class="docs-nav-link-label">Editor Basics</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/extension-host/">
+
+                    <span class="docs-nav-link-label">Extension Host</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/local-first-markdown-workspace/">
+
+                    <span class="docs-nav-link-label">Local-first Markdown Workspace</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/markdown-file-manager/">
+
+                    <span class="docs-nav-link-label">Markdown File Manager</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/advanced-formatting/">
+
+                    <span class="docs-nav-link-label">Markdown Formatting</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/markdown-preview-editor/">
+
+                    <span class="docs-nav-link-label">Markdown Preview Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/offline-markdown-editor/">
+
+                    <span class="docs-nav-link-label">Offline Markdown Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/privacy-first-markdown-editor/">
+
+                    <span class="docs-nav-link-label">Privacy-first Markdown Editor</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/usage/rendering-and-preview/">
+
+                    <span class="docs-nav-link-label">Rendering And Preview</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/product/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme Packs</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Quickstart</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/quickstart/">
+
+                    <span class="docs-nav-link-label">MdWrk quickstart</span>
+                  </a>
+                </div>
+              </details>
+            </nav>
+          </div>
+        </aside>
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>docs</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-02</span>
+                    </div>
+                    <h1 class="docs-title">MdWrk Documentation</h1>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="docs-index-grid">
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/installation/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/installation/">Client Installation</a></h2>
+                      <p class="docs-index-card-excerpt">Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/browser-use/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/browser-use/">Browser Use</a></h2>
+                      <p class="docs-index-card-excerpt">The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/pwa-installation/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/pwa-installation/">PWA Installation</a></h2>
+                      <p class="docs-index-card-excerpt">The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/local-setup/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/local-setup/">Local Setup</a></h2>
+                      <p class="docs-index-card-excerpt">This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/standalone-modules/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/standalone-modules/">Standalone Modules</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/getting-started/configuration/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/getting-started/configuration/">Client Configuration</a></h2>
+                      <p class="docs-index-card-excerpt">Theme Selection Open Settings -&gt; Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/usage/editor-basics/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/usage/editor-basics/">Editor Basics</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/usage/advanced-formatting/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/usage/advanced-formatting/">Markdown Formatting</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/usage/rendering-and-preview/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/usage/rendering-and-preview/">Rendering And Preview</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/offline-markdown-editor/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/offline-markdown-editor/">Offline Markdown Editor</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/local-first-markdown-workspace/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/local-first-markdown-workspace/">Local-first Markdown Workspace</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/privacy-first-markdown-editor/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/privacy-first-markdown-editor/">Privacy-first Markdown Editor</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/markdown-file-manager/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/markdown-file-manager/">Markdown File Manager</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/markdown-preview-editor/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/markdown-preview-editor/">Markdown Preview Editor</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/extension-host/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/extension-host/">Extension Host</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/theme-packs/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/theme-packs/">Theme Packs</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/product/developer-documentation/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/product/developer-documentation/">Developer Documentation</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/github-sync/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/github-sync/">Github Sync</a></h2>
+                      <p class="docs-index-card-excerpt">Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/authoring/overview/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/authoring/overview/">Authoring Overview</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk authoring documentation groups extension, theme pack, and language pack workflows into focused surfaces for package and product contributors.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/authoring/extensions/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/authoring/extensions/">Extension Authoring</a></h2>
+                      <p class="docs-index-card-excerpt">Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/authoring/theme-packs/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/authoring/theme-packs/">Theme Pack Authoring</a></h2>
+                      <p class="docs-index-card-excerpt">Theme pack authoring uses MdWrk theme contracts, Theme Studio workflows, token exports, and package-ready surfaces for consistent editor and preview styling.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/authoring/language-packs/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/authoring/language-packs/">Language Pack Authoring</a></h2>
+                      <p class="docs-index-card-excerpt">Language pack authoring uses the first-party studio package, locale catalogs, validation flows, export behavior, and host surfaces for MdWrk localization.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/extensions/extension-platform/"><time dateTime="2026-01-22">Jan 22, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/extensions/extension-platform/">Extension Platform</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/extensions/theme-studio-and-host-surfaces/"><time dateTime="2026-02-05">Feb 5, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/extensions/theme-studio-and-host-surfaces/">Theme Studio And Host Surfaces</a></h2>
+                      <p class="docs-index-card-excerpt">Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-obsidian/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-obsidian/">MdWrk Vs Obsidian</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-typora/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-typora/">MdWrk Vs Typora</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-vs-code/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-vs-code/">MdWrk Vs VS Code</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-marktext/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-marktext/">MdWrk Vs Marktext</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-zettlr/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-zettlr/">MdWrk Vs Zettlr</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-notion/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-notion/">MdWrk Vs Notion</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-logseq/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-logseq/">MdWrk Vs Logseq</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/comparisons/mdwrk-vs-standard-markdown-editors/"><time dateTime="2026-05-03">May 3, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/comparisons/mdwrk-vs-standard-markdown-editors/">MdWrk Vs Standard Markdown Editors</a></h2>
+                      <p class="docs-index-card-excerpt">Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/archive/ui-refresh-1-3-28/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/archive/ui-refresh-1-3-28/">UI Refresh 1.3.28</a></h2>
+                      <p class="docs-index-card-excerpt">MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement.</p>
+
+                    </article>
+                    <article class="lander-content-card docs-index-card">
+                      <a class="docs-meta" href="/docs/archive/ui-refresh-1-3-29/"><time dateTime="2026-05-02">May 2, 2026</time></a>
+                      <h2 class="docs-index-card-title"><a class="docs-index-card-link" href="/docs/archive/ui-refresh-1-3-29/">UI Refresh 1.3.29</a></h2>
+                      <p class="docs-index-card-excerpt">This release focuses on visual clarity, modal usability, and responsive behavior improvements-</p>
+
+                    </article>
+                  </div>
+                  </div>
+                </article>
+
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk documentation explains how to install, use, extend, theme, and evaluate the local-first Markdown workspace and its reusable package surfaces.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+              </div>
+
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

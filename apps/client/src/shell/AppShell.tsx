@@ -156,6 +156,7 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            onExportMarkdown={actions.handleMarkdownExport}
             onExportHtml={actions.handleHtmlExport}
             onPrintPreview={actions.handlePrint}
             workspaceSidebarSurface={
@@ -197,6 +198,7 @@ export const AppShell: React.FC = () => {
             onContentChange={actions.handleContentChange}
             onCursorChange={(line, col) => actions.setCursorPos({ line, col })}
             onViewModeChange={actions.setViewMode}
+            onExportMarkdown={actions.handleMarkdownExport}
             onExportHtml={actions.handleHtmlExport}
             onPrintPreview={actions.handlePrint}
           />

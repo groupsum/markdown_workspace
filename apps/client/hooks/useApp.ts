@@ -683,6 +683,11 @@ export const useApp = () => {
       fileSys.exportHtmlNode(ui.theme);
   };
 
+  const handleMarkdownExport = () => {
+      console.log(`[useApp] Action: handleMarkdownExport initiated`);
+      fileSys.exportMarkdownNode();
+  };
+
   const handlePrint = () => {
       console.log(`[useApp] Action: handlePrint initiated`);
       if (!activeFile) return;
@@ -843,6 +848,7 @@ export const useApp = () => {
       restoreData,
       handleImportMarkdown,
       openMarkdownFromHost,
+      handleMarkdownExport,
       handleHtmlExport,
       handlePrint,
       setFiles: fileSys.setFiles,

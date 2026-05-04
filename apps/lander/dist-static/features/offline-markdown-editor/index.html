@@ -3,6 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
     <title>Offline Markdown editor for local-first writing — MdWrk</title>
     <meta name="description" content="MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.">
     <link rel="canonical" href="https://mdwrk.com/features/offline-markdown-editor/">
@@ -11,7 +24,7 @@
     <meta property="og:site_name" content="MdWrk">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/features/offline-markdown-editor/#webpage","url":"https://mdwrk.com/features/offline-markdown-editor/","name":"Offline Markdown editor for local-first writing — MdWrk","headline":"Offline Markdown editor for local-first writing","description":"MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/features/offline-markdown-editor/#faq","mainEntity":[{"@type":"Question","name":"Is MdWrk an offline Markdown editor?","acceptedAnswer":{"@type":"Answer","text":"MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services."}},{"@type":"Question","name":"Does MdWrk require cloud storage?","acceptedAnswer":{"@type":"Answer","text":"MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/features/offline-markdown-editor/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Offline Markdown editor for local-first writing","item":"https://mdwrk.com/features/offline-markdown-editor/"}]}]}</script>
-    
+
   </head>
   <body>
     <div id="root">
@@ -19,26 +32,41 @@
         <nav class="navbar" aria-label="Main navigation">
           <div class="navbar-inner">
             <a href="/" class="navbar-brand">
-              <div class="navbar-brand-mark">M</div>
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
               <span class="navbar-brand-text">MdWrk</span>
             </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 <li><a class="navbar-link is-inactive" href="/">Home</a></li>
-              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
-              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-active" href="/features/offline-markdown-editor/">Features</a></li>
               <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
-              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
               <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
               </ul>
             </div>
           </div>
         </nav>
         <main id="content" class="app-main">
-          <div class="lander-doc-shell docs-layout static-page-shell">
+          <div class="lander-doc-shell docs-layout">
+
             <section class="docs-main">
               <div class="docs-content-wrap">
-                <article class="docs-content-card lander-content-card static-content-card">
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
                   <header class="docs-header">
                     <div class="docs-meta">
                       <span>feature</span>
@@ -47,33 +75,47 @@
                     </div>
                     <h1 class="docs-title">Offline Markdown editor for local-first writing</h1>
                   </header>
-                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
-                <h2 class="answer-blocks-heading">Answer Summary</h2>
-                <p>MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.</p>
-              </section>
-                  <div class="lander-markdown">
-                    <div class="markdown-body">
-                      <p>MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first.</p>
-<h2 id="why-offline-markdown-matters">Why Offline Markdown Matters</h2>
-<p>Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about.</p>
-<h2 id="how-mdwrk-handles-offline-work">How MdWrk Handles Offline Work</h2>
-<p>MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device.</p>
-<h2 id="developer-surfaces">Developer Surfaces</h2>
-<p>Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other.</p>
-<h2 id="read-next">Read Next</h2>
-<p>Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.</p>
-                    </div>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first.</p><h2 class="md-h2" id="why-offline-markdown-matters">Why Offline Markdown Matters</h2><p class="md-p">Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about.</p><h2 class="md-h2" id="how-mdwrk-handles-offline-work">How MdWrk Handles Offline Work</h2><p class="md-p">MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device.</p><h2 class="md-h2" id="developer-surfaces">Developer Surfaces</h2><p class="md-p">Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other.</p><h2 class="md-h2" id="read-next">Read Next</h2><p class="md-p">Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.</p></div>
                   </div>
-                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
-                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
-                <div class="answer-blocks-list"><details class="answer-block-accordion" open><summary class="answer-block-summary">Is MdWrk an offline Markdown editor?</summary><div class="answer-block-content"><p>MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services.</p></div></details>
-                  <details class="answer-block-accordion" open><summary class="answer-block-summary">Does MdWrk require cloud storage?</summary><div class="answer-block-content"><p>MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices.</p></div></details></div>
-              </section>
-                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
-                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
-                <ul><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li><li><a href="/docs/quickstart/">MdWrk quickstart</a></li></ul>
-              </section>
                 </article>
+
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
+                    <div class="answer-blocks-list"><details class="answer-block-accordion"><summary class="answer-block-summary">Is MdWrk an offline Markdown editor?</summary><div class="answer-block-content"><p>MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services.</p></div></details>
+                      <details class="answer-block-accordion"><summary class="answer-block-summary">Does MdWrk require cloud storage?</summary><div class="answer-block-content"><p>MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices.</p></div></details></div>
+                  </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                    <ul><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li><li><a href="/docs/quickstart/">MdWrk quickstart</a></li></ul>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#why-offline-markdown-matters" class="docs-toc-link" title="Why Offline Markdown Matters">Why Offline Markdown Matters</a></div>
+                  <div class="docs-toc-item"><a href="#how-mdwrk-handles-offline-work" class="docs-toc-link" title="How MdWrk Handles Offline Work">How MdWrk Handles Offline Work</a></div>
+                  <div class="docs-toc-item"><a href="#developer-surfaces" class="docs-toc-link" title="Developer Surfaces">Developer Surfaces</a></div>
+                  <div class="docs-toc-item"><a href="#read-next" class="docs-toc-link" title="Read Next">Read Next</a></div>
+                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
+                  <div class="docs-toc-item"><a href="#related-heading" class="docs-toc-link" title="Related Pages">Related Pages</a></div>
+                </nav>
+              </div>
+            </aside>
               </div>
             </section>
           </div>
@@ -108,5 +150,25 @@
         </footer>
       </div>
     </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -13,6 +13,7 @@ export const WORKSPACE_FILES_COMMAND_DELETE_ID = "core.delete-selected";
 export const WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID = "core.import-markdown";
 export const WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID = "core.open-host-file";
 export const WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID = "core.download-workspace";
+export const WORKSPACE_FILES_COMMAND_EXPORT_MARKDOWN_ID = "core.export-markdown";
 export const WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID = "core.export-html";
 export const WORKSPACE_FILES_COMMAND_PRINT_PREVIEW_ID = "core.print-preview";
 export const WORKSPACE_FILES_COMMAND_VIEW_EDITOR_ID = "core.view-editor";

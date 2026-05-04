@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Terms of Service | MdWrk</title>
+    <meta name="description" content="Welcome to MdWrk. By using this application, you agree to the following: &quot;As-Is&quot; Software MdWrk is provided &quot;as is&quot; without any warranties. Ownership You own 100% of the content you create. Compliance MdWrk is intended f...">
+    <link rel="canonical" href="https://mdwrk.com/legal/terms/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/legal/terms/#webpage","url":"https://mdwrk.com/legal/terms/","name":"Terms of Service | MdWrk","headline":"Terms of Service","description":"Welcome to MdWrk. By using this application, you agree to the following: \"As-Is\" Software MdWrk is provided \"as is\" without any warranties. Ownership You own 100% of the content you create. Compliance MdWrk is intended f...","dateModified":"2026-05-02","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/legal/terms/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Terms of Service","item":"https://mdwrk.com/legal/terms/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>privacy</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-02</span>
+                    </div>
+                    <h1 class="docs-title">Terms of Service</h1>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Welcome to MdWrk. By using this application, you agree to the following:</p><h2 class="md-h2" id="1-as-is-software">1. &quot;As-Is&quot; Software</h2><p class="md-p">MdWrk is provided &quot;as is&quot; without any warranties.</p><h2 class="md-h2" id="2-ownership">2. Ownership</h2><p class="md-p">You own 100% of the content you create.</p><h2 class="md-h2" id="3-compliance">3. Compliance</h2><p class="md-p">MdWrk is intended for lawful use only. Users are responsible for their own data backups.</p></div>
+                  </div>
+                </article>
+
+                <section id="answer-blocks" class="answer-blocks" aria-label="Answer Blocks">
+                    <h2 class="answer-blocks-heading">Answer Blocks</h2>
+                    <div class="answer-blocks-list">
+                      <details class="answer-block-accordion">
+                        <summary id="answer-blocks-what-this-does" class="answer-block-summary">What This Does</summary>
+                        <div class="answer-block-content">
+                          <div class="markdown-renderer-host lander-markdown">
+                            <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><p class="md-p">Welcome to MdWrk. By using this application, you agree to the following: &quot;As-Is&quot; Software MdWrk is provided &quot;as is&quot; without any warranties. Ownership You own 100% of the content you create. Compliance MdWrk is intended f...</p></div>
+                          </div>
+                        </div>
+                      </details>
+                    </div>
+                  </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                    <ul><li><a href="/privacy/">Privacy policy</a></li><li><a href="/security/">Security notes</a></li></ul>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#1-as-is-software" class="docs-toc-link" title="1. &quot;As-Is&quot; Software">1. &quot;As-Is&quot; Software</a></div>
+                  <div class="docs-toc-item"><a href="#2-ownership" class="docs-toc-link" title="2. Ownership">2. Ownership</a></div>
+                  <div class="docs-toc-item"><a href="#3-compliance" class="docs-toc-link" title="3. Compliance">3. Compliance</a></div>
+                  <div class="docs-toc-item"><a href="#related-heading" class="docs-toc-link" title="Related Pages">Related Pages</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

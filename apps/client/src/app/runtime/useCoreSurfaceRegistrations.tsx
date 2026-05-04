@@ -118,6 +118,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.commands.delete-selected': 'Delete Selected Item',
         'core.commands.toggle-explorer': 'Toggle Explorer',
         'core.commands.download-workspace': 'Download Workspace',
+        'core.commands.export-markdown': 'Export Markdown',
         'core.commands.export-html': 'Export HTML',
         'core.commands.print-preview': 'Print Preview',
         'core.commands.toggle-git-pane': 'Toggle Git Operations',

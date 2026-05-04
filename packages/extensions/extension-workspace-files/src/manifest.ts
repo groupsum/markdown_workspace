@@ -2,6 +2,7 @@ import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   WORKSPACE_FILES_COMMAND_DELETE_ID,
   WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID,
+  WORKSPACE_FILES_COMMAND_EXPORT_MARKDOWN_ID,
   WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID,
   WORKSPACE_FILES_COMMAND_FOCUS_EXPLORER_ID,
   WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID,
@@ -82,6 +83,7 @@ export const workspaceFilesManifest: ExtensionManifest = {
       { id: WORKSPACE_FILES_COMMAND_IMPORT_MARKDOWN_ID, title: label("Import Markdown", "core.import-markdown.title"), icon: { kind: "lucide", name: "Upload" } },
       { id: WORKSPACE_FILES_COMMAND_OPEN_HOST_FILE_ID, title: label("Open Markdown File", "core.commands.open-host-file"), icon: { kind: "lucide", name: "FolderOpen" } },
       { id: WORKSPACE_FILES_COMMAND_DOWNLOAD_WORKSPACE_ID, title: label("Download Workspace", "core.commands.download-workspace"), icon: { kind: "lucide", name: "Download" } },
+      { id: WORKSPACE_FILES_COMMAND_EXPORT_MARKDOWN_ID, title: label("Export Markdown", "core.commands.export-markdown"), icon: { kind: "lucide", name: "FileText" } },
       { id: WORKSPACE_FILES_COMMAND_EXPORT_HTML_ID, title: label("Export HTML", "core.commands.export-html"), icon: { kind: "lucide", name: "FileDown" } },
       { id: WORKSPACE_FILES_COMMAND_PRINT_PREVIEW_ID, title: label("Print Preview", "core.commands.print-preview"), icon: { kind: "lucide", name: "Printer" } },
       { id: WORKSPACE_FILES_COMMAND_VIEW_EDITOR_ID, title: label("Editor View", "core.commands.view-editor"), icon: { kind: "lucide", name: "LayoutGrid" } },

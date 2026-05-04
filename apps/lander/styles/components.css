@@ -444,6 +444,11 @@
   @apply h-6 w-6 text-white;
 }
 
+.static-navbar-brand-icon,
+.static-theme-icon {
+  @apply inline-flex items-center justify-center font-bold;
+}
+
 .navbar-brand-text {
   @apply self-center whitespace-nowrap text-2xl font-bold;
   color: var(--lander-fg);
@@ -689,6 +694,14 @@
   @apply mt-1;
 }
 
+.static-docs-nav-section > summary {
+  list-style: none;
+}
+
+.static-docs-nav-section > summary::-webkit-details-marker {
+  display: none;
+}
+
 .docs-nav-link {
   @apply flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors;
 }
@@ -720,10 +733,35 @@
 .blog-post-card,
 .legal-card {
   @apply rounded-[24px];
+  overflow: hidden;
 }
 
 .docs-content-card {
   @apply min-w-0 flex-1 p-6;
+}
+
+.docs-index-grid {
+  @apply grid gap-4;
+}
+
+.docs-index-card {
+  @apply rounded-[18px] border p-5;
+  background: color-mix(in srgb, var(--lander-panel) 88%, transparent);
+  border-color: var(--lander-border);
+}
+
+.docs-index-card-title {
+  @apply mb-3 text-lg font-bold;
+  color: var(--lander-fg);
+}
+
+.docs-index-card-link:hover {
+  color: var(--lander-accent);
+}
+
+.docs-index-card-excerpt {
+  @apply text-sm leading-6;
+  color: var(--lander-fg-muted);
 }
 
 .static-page-shell {
@@ -1139,6 +1177,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .docs-index-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .legal-card {
     padding: 3rem;
   }
@@ -1199,6 +1241,10 @@
 
   .blog-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .docs-index-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
