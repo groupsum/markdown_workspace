@@ -219,6 +219,7 @@ const checks = [
       assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*text;/);
       assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\s*\{[\s\S]*background:\s*var\(--mwir-accent\);/);
       assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\[data-visible="true"\]\s*\{[\s\S]*display:\s*block;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext::selection\s*\{[\s\S]*background:\s*transparent;/);
     },
   },
   {
@@ -849,9 +850,99 @@ const checks = [
 
         assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-caret").length, 1);
         assert.equal(view.container.querySelectorAll("textarea.markdown-edit-in-renderer-plaintext").length, 1);
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-selection-layer").length, 1);
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-composition-layer").length, 1);
         assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*caret-color:\s*transparent;/);
         assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*text;/);
         assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\s*\{[\s\S]*pointer-events:\s*none;/);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "selection-overlay-projects-hidden-textarea-range",
+    description: "Native textarea selection stays hidden while package selection overlay represents the plaintext range",
+    async test() {
+      const markdown = "Alpha Beta";
+      const view = setupRenderedEditor(markdown);
+      try {
+        view.textarea.focus();
+        view.textarea.selectionStart = 0;
+        view.textarea.selectionEnd = 5;
+        fireEvent.select(view.textarea);
+        await waitForFrame();
+
+        assert.equal(view.textarea.selectionStart, 0);
+        assert.equal(view.textarea.selectionEnd, 5);
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-selection").length >= 1, true);
+        assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext::selection\s*\{[\s\S]*background:\s*transparent;/);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "composition-overlay-follows-active-composition-range",
+    description: "IME composition state uses package overlay without exposing the native textarea caret",
+    async test() {
+      const markdown = "Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        view.textarea.focus();
+        view.textarea.selectionStart = 1;
+        view.textarea.selectionEnd = 3;
+        fireEvent.compositionStart(view.textarea, { data: "lp" });
+        await waitForFrame();
+
+        const compositionLayer = view.container.querySelector(".markdown-edit-in-renderer-composition-layer");
+        assert.ok(compositionLayer instanceof HTMLElement);
+        assert.equal(compositionLayer.dataset.active, "true");
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-composition").length >= 1, true);
+
+        fireEvent.compositionEnd(view.textarea, { data: "lp" });
+        await waitForFrame();
+        assert.equal(compositionLayer.dataset.active, "false");
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projection-confidence-is-exposed-for-debugging",
+    description: "Package caret exposes projection confidence instead of silently falling back to root positions",
+    async test() {
+      const view = setupRenderedEditor("# Title\n\nAlpha\nBeta");
+      try {
+        await assertProjectedCaret(view, "# Title\n\nAlpha\nBeta".length, {
+          plaintextLine: 4,
+          plaintextChar: 5,
+          renderedLine: 4,
+          renderedChar: 5,
+        });
+        const caret = getRenderedCaret(view);
+        assert.match(caret.dataset.projectionConfidence ?? "", /^(exact|nearest|retained)$/);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "pointer-selection-keeps-textarea-focused",
+    description: "Pointer interactions are handled by the hidden textarea and preserve focus for editing",
+    async test() {
+      const view = setupRenderedEditor("# Title\n\nAlpha");
+      try {
+        view.textarea.focus();
+        fireEvent.pointerDown(view.textarea, {
+          clientX: 0,
+          clientY: 0,
+          buttons: 1,
+        });
+        await waitForFrame();
+
+        assert.equal(document.activeElement, view.textarea);
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-caret").length, 1);
       } finally {
         cleanup();
       }

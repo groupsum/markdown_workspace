@@ -7,7 +7,7 @@ order: 1
 toc: true
 date: 2026-05-02
 status: published
-excerpt: Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
+excerpt: Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.
 ---
 
 ## Installation Paths

@@ -42,6 +42,24 @@ interface RenderedTarget {
   readonly caret: ProjectedCaret;
 }
 
+function createDOMRect(ownerDocument: Document, x: number, y: number, width: number, height: number): DOMRect {
+  const DOMRectCtor = ownerDocument.defaultView?.DOMRect;
+  if (DOMRectCtor) {
+    return DOMRectCtor.fromRect({ x, y, width, height });
+  }
+  return {
+    x,
+    y,
+    left: x,
+    top: y,
+    width,
+    height,
+    right: x + width,
+    bottom: y + height,
+    toJSON: () => ({ x, y, left: x, top: y, width, height, right: x + width, bottom: y + height }),
+  } as DOMRect;
+}
+
 export function getLineStartOffsets(markdown: string): number[] {
   const offsets = [0];
   for (let index = 0; index < markdown.length; index += 1) {
@@ -289,7 +307,7 @@ function projectCaret(surface: HTMLElement, caret: ProjectedCaret, previousCaret
   const surfaceRect = surface.getBoundingClientRect();
   const rangeRect = typeof range.getBoundingClientRect === "function"
     ? range.getBoundingClientRect()
-    : { left: 0, top: 0, width: 0, height: 0 };
+    : createDOMRect(surface.ownerDocument, 0, 0, 0, 0);
   const fallbackRect = renderedTarget.target.getBoundingClientRect();
   const usableRect = rangeRect.width || rangeRect.height ? rangeRect : fallbackRect;
   const projectedRect = rectToSurfaceRect(usableRect, surfaceRect, surface);
@@ -326,7 +344,12 @@ export function projectSelectionRects(surface: HTMLElement, markdown: string, se
   range.setEnd(endNode.node, Math.min(endNode.offset, endNode.node.nodeType === endNode.node.ownerDocument?.defaultView?.Node.TEXT_NODE ? endNode.node.textContent?.length ?? 0 : endNode.node.childNodes.length));
 
   const surfaceRect = surface.getBoundingClientRect();
-  return Array.from(range.getClientRects()).map((rect) => rectToSurfaceRect(rect, surfaceRect, surface));
+  const clientRects = typeof range.getClientRects === "function" ? Array.from(range.getClientRects()) : [];
+  if (clientRects.length === 0) {
+    const fallbackRect = startTarget.target.getBoundingClientRect();
+    return [rectToSurfaceRect(fallbackRect, surfaceRect, surface)];
+  }
+  return clientRects.map((rect) => rectToSurfaceRect(rect, surfaceRect, surface));
 }
 
 function projectLineSelectionRects(surface: HTMLElement, markdown: string, start: number, end: number): ProjectionRect[] {
@@ -414,9 +437,9 @@ function collectRenderedLineRects(block: HTMLElement): DOMRect[] {
       currentLine += 1;
     } else if (ownerDocument.defaultView && current.nodeType === ownerDocument.defaultView.Node.TEXT_NODE) {
       range.selectNodeContents(current);
-      const nodeRects = Array.from(range.getClientRects());
+      const nodeRects = typeof range.getClientRects === "function" ? Array.from(range.getClientRects()) : [];
       if (nodeRects.length > 0) {
-        rects[currentLine] = unionRects(rects[currentLine], nodeRects[0]);
+        rects[currentLine] = unionRects(ownerDocument, rects[currentLine], nodeRects[0]);
       }
     }
     current = walker.nextNode();
@@ -425,13 +448,13 @@ function collectRenderedLineRects(block: HTMLElement): DOMRect[] {
   return rects.length > 0 ? rects : [block.getBoundingClientRect()];
 }
 
-function unionRects(left: DOMRect | undefined, right: DOMRect): DOMRect {
+function unionRects(ownerDocument: Document, left: DOMRect | undefined, right: DOMRect): DOMRect {
   if (!left) return right;
   const x1 = Math.min(left.left, right.left);
   const y1 = Math.min(left.top, right.top);
   const x2 = Math.max(left.right, right.right);
   const y2 = Math.max(left.bottom, right.bottom);
-  return DOMRect.fromRect({ x: x1, y: y1, width: x2 - x1, height: y2 - y1 });
+  return createDOMRect(ownerDocument, x1, y1, x2 - x1, y2 - y1);
 }
 
 function renderedCharFromPoint(block: HTMLElement, renderedLineInBlock: number, clientX: number): number {

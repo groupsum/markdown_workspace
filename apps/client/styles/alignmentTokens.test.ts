@@ -62,7 +62,8 @@ describe('markdown/editor alignment token contract', () => {
     expect(editorCss).toContain('overflow-x: hidden;');
     expect(editorCss).toContain('overflow-wrap: anywhere;');
     expect(editorCss).toContain('--preview-pane-inline-padding: clamp(18px, 4vw, 64px);');
-    expect(editorCss).toContain('padding: 18px var(--preview-pane-inline-padding) 24px;');
+    expect(editorCss).toContain('--preview-pane-block-start-padding: 54px;');
+    expect(editorCss).toContain('padding: var(--preview-pane-block-start-padding) var(--preview-pane-inline-padding) 24px;');
     expect(editorCss).toContain('max-width: 78ch;');
     expect(editorCss).toContain('.preview-pane .markdown-body > p');
     expect(markdownCss).toContain('width: 100%;');
@@ -86,8 +87,8 @@ describe('markdown/editor alignment token contract', () => {
 
     expect(editorCss).toContain('.preview-pane-overlay-actions');
     expect(editorCss).toContain('position: absolute;');
-    expect(editorCss).toContain('top: 12px;');
-    expect(editorCss).toContain('right: 12px;');
+    expect(editorCss).toContain('top: 14px;');
+    expect(editorCss).toContain('right: 14px;');
     expect(editorCss).toContain('justify-content: flex-end;');
     expect(editorCss).toContain('.preview-pane-overlay-btn');
     expect(editorCss).toContain('pointer-events: auto;');

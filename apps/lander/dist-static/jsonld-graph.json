@@ -609,7 +609,7 @@
       "url": "https://mdwrk.com/docs/getting-started/installation/",
       "name": "Client Installation | MdWrk Docs",
       "headline": "Client Installation",
-      "description": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...",
+      "description": "Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.",
       "dateModified": "2026-05-02",
       "inLanguage": "en-US"
     },
@@ -622,7 +622,7 @@
           "name": "What will I learn from Client Installation?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,..."
+            "text": "Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption."
           }
         },
         {
@@ -665,7 +665,7 @@
       "url": "https://mdwrk.com/docs/getting-started/browser-use/",
       "name": "Browser Use | MdWrk Docs",
       "headline": "Browser Use",
-      "description": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...",
+      "description": "The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.",
       "dateModified": "2026-05-02",
       "inLanguage": "en-US"
     },
@@ -678,7 +678,7 @@
           "name": "What will I learn from Browser Use?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have..."
+            "text": "The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached."
           }
         },
         {

@@ -764,7 +764,7 @@
   },
   {
     "sourcePath": "data/markdown/docs",
-    "sourceHash": "9a2b3d9f446cdaf312dae817e70b9c55ffc00c3a541c4f82d1220408d1317349",
+    "sourceHash": "7885f6b7382495466633c81fab36773a543c8e3380707a5c7e7f0130640c70f8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/",
@@ -795,7 +795,7 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "Getting Started Start with the MdWrk setup paths that get the workspace running in a browser, as an installable PWA, from a local checkout, or through standalone packages. Choose the setup path that matches how you want to use MdWrk. Open the matching Getting Started article. Follow the article into configuration, local setup, PWA installation, or package use. Choose a setup path Client Installation: Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,... Browser Use: The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have... PWA Installation: The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window. Local Setup: This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide. Standalone Modules: MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces. Client Configuration: Theme Selection Open Settings - Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs. What to read next After setup, continue into product docs for local-first workflow, editor and preview behavior, extension host boundaries, and theme packages.",
+      "text": "Getting Started Start with the MdWrk setup paths that get the workspace running in a browser, as an installable PWA, from a local checkout, or through standalone packages. Choose the setup path that matches how you want to use MdWrk. Open the matching Getting Started article. Follow the article into configuration, local setup, PWA installation, or package use. Choose a setup path Client Installation: Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption. Browser Use: The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached. PWA Installation: The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window. Local Setup: This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide. Standalone Modules: MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces. Client Configuration: Theme Selection Open Settings - Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs. What to read next After setup, continue into product docs for local-first workflow, editor and preview behavior, extension host boundaries, and theme packages.",
       "headings": [
         {
           "depth": 2,
@@ -840,17 +840,17 @@
           "internal": true
         }
       ],
-      "wordCount": 253
+      "wordCount": 238
     }
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/installation.md",
-    "sourceHash": "d2b32b3dea8fc3edce473298bfb9af85187ae47518a3a23bc47bbfc0e97999ec",
+    "sourceHash": "d41dbb6823ec18d689d7b2a24d9afc45614975f38b876f6edb152033bbcdb049",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/installation/",
       "title": "Client Installation | MdWrk Docs",
-      "description": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...",
+      "description": "Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.",
       "h1": "Client Installation",
       "entity": "MdWrk",
       "intent": "learn client installation in MdWrk",
@@ -859,7 +859,7 @@
       "faqs": [
         {
           "question": "What will I learn from Client Installation?",
-          "answer": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,..."
+          "answer": "Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption."
         },
         {
           "question": "Who should read Client Installation?",
@@ -927,12 +927,12 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/browser-use.md",
-    "sourceHash": "dde9cc5cd48603fdb88016e7c1d5b55ffe2d2c6674aa5703ff4f79809f3e9a0a",
+    "sourceHash": "838f1fb732f135e7a33cf31e9679cc4d77fa1f5538d8ca5a981ff44172411f5f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/browser-use/",
       "title": "Browser Use | MdWrk Docs",
-      "description": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...",
+      "description": "The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.",
       "h1": "Browser Use",
       "entity": "MdWrk",
       "intent": "learn browser use in MdWrk",
@@ -941,7 +941,7 @@
       "faqs": [
         {
           "question": "What will I learn from Browser Use?",
-          "answer": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have..."
+          "answer": "The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached."
         },
         {
           "question": "Who should read Browser Use?",

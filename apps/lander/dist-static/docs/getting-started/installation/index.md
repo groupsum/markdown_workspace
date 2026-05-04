@@ -1,6 +1,6 @@
 # Client Installation
 
-Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
+Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.
 
 ## Installation Paths
 
@@ -47,7 +47,7 @@ Published dates and statuses control whether installation docs appear on the lan
 
 ### What will I learn from Client Installation?
 
-Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
+Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.
 
 ### Who should read Client Installation?
 

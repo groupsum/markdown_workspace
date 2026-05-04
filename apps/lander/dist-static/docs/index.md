@@ -12,8 +12,8 @@ Start with the MdWrk setup paths that get the workspace running in a browser, as
 
 ## Choose a setup path
 
-- [Client Installation](/docs/getting-started/installation/): Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
-- [Browser Use](/docs/getting-started/browser-use/): The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
+- [Client Installation](/docs/getting-started/installation/): Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.
+- [Browser Use](/docs/getting-started/browser-use/): The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.
 - [PWA Installation](/docs/getting-started/pwa-installation/): The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window.
 - [Local Setup](/docs/getting-started/local-setup/): This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide.
 - [Standalone Modules](/docs/getting-started/standalone-modules/): MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces.

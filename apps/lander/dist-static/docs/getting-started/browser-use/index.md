@@ -1,6 +1,6 @@
 # Browser Use
 
-The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
+The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.
 
 ## What it is
 
@@ -33,7 +33,7 @@ Choose standalone modules when you want the reusable package surfaces inside ano
 
 ### What will I learn from Browser Use?
 
-The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
+The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.
 
 ### Who should read Browser Use?
 

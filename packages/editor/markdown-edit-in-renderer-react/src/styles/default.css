@@ -169,7 +169,30 @@
 
 .markdown-edit-in-renderer-plaintext::selection {
   color: transparent;
+  background: transparent;
+}
+
+.markdown-edit-in-renderer-selection-layer,
+.markdown-edit-in-renderer-composition-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.markdown-edit-in-renderer-selection {
+  position: absolute;
+  display: block;
+  min-width: 1px;
+  border-radius: 2px;
   background: color-mix(in srgb, var(--mwir-accent) 24%, transparent);
+}
+
+.markdown-edit-in-renderer-composition {
+  position: absolute;
+  display: block;
+  min-width: 8px;
+  background: var(--mwir-accent);
 }
 
 .markdown-edit-in-renderer-caret {
