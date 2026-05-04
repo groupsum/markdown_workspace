@@ -22,10 +22,10 @@ MdWrk does not require documents to be uploaded to a hosted service before editi
 
 ## Frequently Asked Questions
 
-### What is Offline Markdown Editor?
+### What will I learn from Offline Markdown Editor?
 
 MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 
-### When should I use Offline Markdown Editor?
+### Who should read Offline Markdown Editor?
 
-Use this docs when you need direct MdWrk guidance for offline markdown editor.
+Read this page if you need practical MdWrk guidance for offline markdown editor, including the relevant workflow, product surface, and follow-up documentation paths.

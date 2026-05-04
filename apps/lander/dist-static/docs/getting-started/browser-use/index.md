@@ -31,10 +31,10 @@ Choose standalone modules when you want the reusable package surfaces inside ano
 
 ## Frequently Asked Questions
 
-### What is Browser Use?
+### What will I learn from Browser Use?
 
 The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...
 
-### When should I use Browser Use?
+### Who should read Browser Use?
 
-Use this docs when you need direct MdWrk guidance for browser use.
+Read this page if you need practical MdWrk guidance for browser use, including the relevant workflow, product surface, and follow-up documentation paths.

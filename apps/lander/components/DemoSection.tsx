@@ -22,6 +22,24 @@ The lander now demonstrates the same shared packages that the mdwrk client uses.
 - [x] Extension-ready client host
 - [x] Shared theme rendering for docs and blog
 
+## Authoring workflow
+- Draft Markdown in the editor pane.
+- Preview headings, tables, lists, and code in the rendered pane.
+- Keep the source readable as plain text.
+- Use the same renderer behavior that powers MdWrk docs and blog pages.
+
+## Renderer workflow
+- Parse Markdown through the shared renderer contract.
+- Escape raw HTML by default for public content safety.
+- Apply the lander light and lander dark theme tokens.
+- Preserve semantic headings so crawlers and assistive technology can read the output.
+
+## Extension workflow
+- Keep extension boundaries visible.
+- Use package-level contracts instead of one-off demo code.
+- Verify theme behavior across both panes.
+- Treat the rendered preview as the product surface, not a screenshot.
+
 ## Example
 \`\`\`typescript
 import { MarkdownSourceEditor } from "@mdwrk/markdown-editor-react";

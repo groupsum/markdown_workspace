@@ -22,10 +22,10 @@ MdWrk fits teams that want a Markdown-specific product story, governed public do
 
 ## Frequently Asked Questions
 
-### What is MdWrk vs VS Code Markdown?
+### How does MdWrk compare with VS Code Markdown?
 
 Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.
 
-### When should I use MdWrk vs VS Code Markdown?
+### What should teams review before comparing MdWrk and VS Code Markdown?
 
-Use this comparison when you need direct MdWrk guidance for mdwrk vs vs code markdown.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

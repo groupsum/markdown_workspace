@@ -32,10 +32,10 @@ Deployment flexibility matters for teams that want browser-first use, desktop pa
 
 ## Frequently Asked Questions
 
-### What is Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?
+### What does this MdWrk article cover?
 
 MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 
-### When should I use Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for retained client versions and the desktop shell expand how teams can deploy mdwrk.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

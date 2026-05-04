@@ -149,9 +149,11 @@
   min-height: 100%;
   padding: clamp(1rem, 3vw, 3rem);
   color: transparent;
-  caret-color: var(--mwir-accent);
+  -webkit-text-fill-color: transparent;
+  caret-color: transparent;
   background: transparent;
   border: 0;
+  cursor: none;
   outline: 0;
   resize: none;
   overflow: auto;
@@ -168,4 +170,31 @@
 .markdown-edit-in-renderer-plaintext::selection {
   color: transparent;
   background: color-mix(in srgb, var(--mwir-accent) 24%, transparent);
+}
+
+.markdown-edit-in-renderer-caret {
+  position: absolute;
+  z-index: 3;
+  display: none;
+  width: 2px;
+  min-height: 1em;
+  pointer-events: none;
+  background: var(--mwir-accent);
+  animation: markdown-edit-in-renderer-caret-blink 1.1s steps(1) infinite;
+}
+
+.markdown-edit-in-renderer-caret[data-visible="true"] {
+  display: block;
+}
+
+@keyframes markdown-edit-in-renderer-caret-blink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  49%,
+  100% {
+    opacity: 0;
+  }
 }

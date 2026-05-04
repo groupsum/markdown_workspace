@@ -31,10 +31,10 @@ Authoring in this repository follows a few durable rules:
 
 ## Frequently Asked Questions
 
-### What is Authoring Overview?
+### What will I learn from Authoring Overview?
 
 MdWrk authoring documentation groups extension, theme pack, and language pack workflows into focused surfaces for package and product contributors.
 
-### When should I use Authoring Overview?
+### Who should read Authoring Overview?
 
-Use this docs when you need direct MdWrk guidance for authoring overview.
+Read this page if you need practical MdWrk guidance for authoring overview, including the relevant workflow, product surface, and follow-up documentation paths.

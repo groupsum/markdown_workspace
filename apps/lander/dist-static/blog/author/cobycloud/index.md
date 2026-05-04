@@ -22,10 +22,10 @@ MdWrk refines its settings UX with cleaner labels and a calmer navigation model,
 
 ## Frequently Asked Questions
 
-### What is CobyCloud?
+### What does this MdWrk article cover?
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
-### When should I use CobyCloud?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for cobycloud.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

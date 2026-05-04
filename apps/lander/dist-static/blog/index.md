@@ -22,10 +22,10 @@ MdWrk refines its settings UX with cleaner labels and a calmer navigation model,
 
 ## Frequently Asked Questions
 
-### What is Blog?
+### What does the MdWrk Blog cover?
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
-### When should I use Blog?
+### Where should readers start in the MdWrk Blog?
 
-Use this blog when you need direct MdWrk guidance for blog.
+Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes.

@@ -36,10 +36,10 @@ External extensions do not run through ad hoc `npm install` inside the browser. 
 
 ## Frequently Asked Questions
 
-### What is Extension Platform?
+### What will I learn from Extension Platform?
 
 MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks.
 
-### When should I use Extension Platform?
+### Who should read Extension Platform?
 
-Use this docs when you need direct MdWrk guidance for extension platform.
+Read this page if you need practical MdWrk guidance for extension platform, including the relevant workflow, product surface, and follow-up documentation paths.

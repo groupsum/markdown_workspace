@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Notion
 slug: comparisons/mdwrk-vs-notion
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 6
 toc: true

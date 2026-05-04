@@ -45,10 +45,10 @@ Published dates and statuses control whether installation docs appear on the lan
 
 ## Frequently Asked Questions
 
-### What is Client Installation?
+### What will I learn from Client Installation?
 
 Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...
 
-### When should I use Client Installation?
+### Who should read Client Installation?
 
-Use this docs when you need direct MdWrk guidance for client installation.
+Read this page if you need practical MdWrk guidance for client installation, including the relevant workflow, product surface, and follow-up documentation paths.

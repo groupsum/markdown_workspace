@@ -58,6 +58,49 @@ const slugifyHeading = (value: string) =>
     .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-');
 
+const toDisplayDate = (date?: string) => {
+  const match = date?.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return date || '';
+  const year = Number(match[1]);
+  const monthIndex = Number(match[2]) - 1;
+  const day = Number(match[3]);
+  if (!Number.isFinite(year) || !Number.isFinite(monthIndex) || !Number.isFinite(day)) return date || '';
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date(year, monthIndex, day));
+};
+
+const buildDocsFaqItems = (title: string, excerpt: string) => {
+  const comparisonTarget = /^MdWrk\s+V(?:s|S)\s+(.+)$/i.exec(title)?.[1]?.trim();
+  if (comparisonTarget) {
+    return [
+      { question: `How does MdWrk compare with ${comparisonTarget}?`, answer: excerpt },
+      {
+        question: `What should teams review before comparing MdWrk and ${comparisonTarget}?`,
+        answer: 'Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.',
+      },
+    ];
+  }
+  if (title === 'Getting Started') {
+    return [
+      { question: 'How do I start using MdWrk?', answer: excerpt },
+      {
+        question: 'Which MdWrk setup path should I choose first?',
+        answer: 'Choose browser use for the fastest start, PWA installation for an app-like shell, local setup for development control, or standalone modules when you want package-level adoption.',
+      },
+    ];
+  }
+  return [
+    { question: `What will I learn from ${title}?`, answer: excerpt },
+    {
+      question: `Who should read ${title}?`,
+      answer: `Read this page if you need practical MdWrk guidance for ${title.toLowerCase()}, including the relevant workflow, product surface, and follow-up documentation paths.`,
+    },
+  ];
+};
+
 export const DocsView: React.FC = () => {
   const { '*': slugParam } = useParams();
   const navigate = useNavigate();
@@ -142,10 +185,7 @@ export const DocsView: React.FC = () => {
             { name: currentDoc.section, path: currentPath },
             { name: currentDoc.title, path: currentPath },
           ]),
-          buildFaqSchema([
-            { question: `What does ${currentDoc.title} do?`, answer: excerpt },
-            { question: `When should I use ${currentDoc.title}?`, answer: `Use it when you need ${currentDoc.title.toLowerCase()} guidance for MdWrk.` },
-          ]),
+          buildFaqSchema(buildDocsFaqItems(currentDoc.title, excerpt)),
         ]
       : null,
   });
@@ -215,7 +255,7 @@ export const DocsView: React.FC = () => {
                     {currentDoc.metadata.date && (
                       <>
                         <span className="docs-meta-divider">/</span>
-                        <span>{currentDoc.metadata.date}</span>
+                        <time dateTime={currentDoc.metadata.date}>{toDisplayDate(currentDoc.metadata.date)}</time>
                       </>
                     )}
                   </div>

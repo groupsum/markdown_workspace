@@ -11,10 +11,10 @@ MdWrk expands its release and documentation surface with package evidence, gover
 
 ## Frequently Asked Questions
 
-### What is March 2026?
+### What does this MdWrk article cover?
 
 MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
 
-### When should I use March 2026?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for march 2026.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

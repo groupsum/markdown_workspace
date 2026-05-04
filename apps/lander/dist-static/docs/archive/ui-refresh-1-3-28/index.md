@@ -20,10 +20,10 @@ The viewport contract remains centralized in `apps/client/styles/base/viewports.
 
 ## Frequently Asked Questions
 
-### What is UI Refresh 1.3.28?
+### What will I learn from UI Refresh 1.3.28?
 
 MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement.
 
-### When should I use UI Refresh 1.3.28?
+### Who should read UI Refresh 1.3.28?
 
-Use this docs when you need direct MdWrk guidance for ui refresh 1.3.28.
+Read this page if you need practical MdWrk guidance for ui refresh 1.3.28, including the relevant workflow, product surface, and follow-up documentation paths.

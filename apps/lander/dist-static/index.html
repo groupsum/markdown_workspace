@@ -46,6 +46,12 @@
                 </svg>
                 <span class="sr-only" data-static-theme-label>Lander Theme</span>
               </button>
+              <a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
+                <svg class="navbar-github-icon static-github-star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11.5 2.3a.6.6 0 0 1 1 0l2.8 5.7 6.3.9a.6.6 0 0 1 .3 1l-4.6 4.5 1.1 6.3a.6.6 0 0 1-.9.6L12 18.4l-5.6 2.9a.6.6 0 0 1-.9-.6l1.1-6.3L2 9.9a.6.6 0 0 1 .3-1L8.6 8l2.9-5.7Z"></path>
+                </svg>
+                <span>Repo</span>
+              </a>
             </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">
               <ul class="navbar-menu-list">
@@ -195,7 +201,7 @@
                 </div>
                 <div class="demo-body static-demo-body">
                   <div class="demo-editor-pane is-editor-visible">
-                    <pre class="lander-editor static-demo-editor" aria-label="Static Markdown editor demo"><code>## mdwrk client surface
+                    <textarea class="lander-editor static-demo-editor" data-static-demo-editor aria-label="Static Markdown editor demo" spellcheck="false"># mdwrk client surface
 
 The lander demonstrates the same shared packages that the mdwrk client uses.
 
@@ -213,6 +219,24 @@ The lander demonstrates the same shared packages that the mdwrk client uses.
 - [x] Extension-ready client host
 - [x] Shared theme rendering for docs and blog
 
+## Authoring workflow
+- Draft Markdown in the editor pane.
+- Preview headings, tables, lists, and code in the rendered pane.
+- Keep the source readable as plain text.
+- Use the same renderer behavior that powers MdWrk docs and blog pages.
+
+## Renderer workflow
+- Parse Markdown through the shared renderer contract.
+- Escape raw HTML by default for public content safety.
+- Apply the lander light and lander dark theme tokens.
+- Preserve semantic headings so crawlers and assistive technology can read the output.
+
+## Extension workflow
+- Keep extension boundaries visible.
+- Use package-level contracts instead of one-off demo code.
+- Verify theme behavior across both panes.
+- Treat the rendered preview as the product surface, not a screenshot.
+
 ## Example
 ```typescript
 import { MarkdownSourceEditor } from &quot;@mdwrk/markdown-editor-react&quot;;
@@ -224,11 +248,11 @@ const surface = {
   preview: &quot;@mdwrk/markdown-renderer-react&quot;
 };
 ```
-</code></pre>
+</textarea>
                   </div>
-                  <div class="demo-preview-pane is-preview-visible">
+                  <div class="demo-preview-pane is-preview-visible" data-static-demo-preview>
                     <div class="markdown-renderer-host lander-markdown">
-                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="mdwrk-client-surface">mdwrk client surface</h2><p class="md-p">The lander demonstrates the same shared packages that the mdwrk client uses.</p><h2 class="md-h2" id="shared-packages">Shared packages</h2><table class="md-table"><colgroup class="md-table-columns"><col class="md-table-column" style="text-align:left" /><col class="md-table-column" style="text-align:center" /><col class="md-table-column" style="text-align:right" /></colgroup><thead class="md-table-head"><tr class="md-table-row"><th class="md-table-header" align="left">Surface</th><th class="md-table-header" align="center">Package</th><th class="md-table-header" align="right">Notes</th></tr></thead><tbody class="md-table-body"><tr class="md-table-row"><td class="md-table-cell" align="left">Editor</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-editor-react</code></td><td class="md-table-cell" align="right">Live</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Preview</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-renderer-react</code></td><td class="md-table-cell" align="right">Shared</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Themes</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/theme-contract</code></td><td class="md-table-cell" align="right">Light + dark</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Extensions</td><td class="md-table-cell" align="center">Runtime-backed</td><td class="md-table-cell" align="right">Governed</td></tr></tbody></table><h2 class="md-h2" id="workspace-signals">Workspace signals</h2><ul class="md-ul md-task-list" data-task-list="true"><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Local-first persistence</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Split editor and preview packages</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Extension-ready client host</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Shared theme rendering for docs and blog</li></ul><h2 class="md-h2" id="example">Example</h2><pre class="md-code-block md-code-surface"><code class="language-typescript">import { MarkdownSourceEditor } from &quot;@mdwrk/markdown-editor-react&quot;;
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h1 class="md-h1" id="mdwrk-client-surface">mdwrk client surface</h1><p class="md-p">The lander demonstrates the same shared packages that the mdwrk client uses.</p><h2 class="md-h2" id="shared-packages">Shared packages</h2><table class="md-table"><colgroup class="md-table-columns"><col class="md-table-column" style="text-align:left" /><col class="md-table-column" style="text-align:center" /><col class="md-table-column" style="text-align:right" /></colgroup><thead class="md-table-head"><tr class="md-table-row"><th class="md-table-header" align="left">Surface</th><th class="md-table-header" align="center">Package</th><th class="md-table-header" align="right">Notes</th></tr></thead><tbody class="md-table-body"><tr class="md-table-row"><td class="md-table-cell" align="left">Editor</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-editor-react</code></td><td class="md-table-cell" align="right">Live</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Preview</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/markdown-renderer-react</code></td><td class="md-table-cell" align="right">Shared</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Themes</td><td class="md-table-cell" align="center"><code class="md-inline-code">@mdwrk/theme-contract</code></td><td class="md-table-cell" align="right">Light + dark</td></tr><tr class="md-table-row"><td class="md-table-cell" align="left">Extensions</td><td class="md-table-cell" align="center">Runtime-backed</td><td class="md-table-cell" align="right">Governed</td></tr></tbody></table><h2 class="md-h2" id="workspace-signals">Workspace signals</h2><ul class="md-ul md-task-list" data-task-list="true"><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Local-first persistence</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Split editor and preview packages</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Extension-ready client host</li><li class="md-li md-task-list-item" data-task="true" data-checked="true"><input type="checkbox" class="md-checkbox" checked disabled aria-label="Task completed" aria-checked="true" /> Shared theme rendering for docs and blog</li></ul><h2 class="md-h2" id="authoring-workflow">Authoring workflow</h2><ul class="md-ul"><li class="md-li">Draft Markdown in the editor pane.</li><li class="md-li">Preview headings, tables, lists, and code in the rendered pane.</li><li class="md-li">Keep the source readable as plain text.</li><li class="md-li">Use the same renderer behavior that powers MdWrk docs and blog pages.</li></ul><h2 class="md-h2" id="renderer-workflow">Renderer workflow</h2><ul class="md-ul"><li class="md-li">Parse Markdown through the shared renderer contract.</li><li class="md-li">Escape raw HTML by default for public content safety.</li><li class="md-li">Apply the lander light and lander dark theme tokens.</li><li class="md-li">Preserve semantic headings so crawlers and assistive technology can read the output.</li></ul><h2 class="md-h2" id="extension-workflow">Extension workflow</h2><ul class="md-ul"><li class="md-li">Keep extension boundaries visible.</li><li class="md-li">Use package-level contracts instead of one-off demo code.</li><li class="md-li">Verify theme behavior across both panes.</li><li class="md-li">Treat the rendered preview as the product surface, not a screenshot.</li></ul><h2 class="md-h2" id="example">Example</h2><pre class="md-code-block md-code-surface"><code class="language-typescript">import { MarkdownSourceEditor } from &quot;@mdwrk/markdown-editor-react&quot;;
 import { MarkdownRenderer } from &quot;@mdwrk/markdown-renderer-react&quot;;
 
 const surface = {
@@ -241,7 +265,7 @@ const surface = {
                 </div>
                 <div class="demo-statusbar">
                   <span class="demo-status-primary"><svg class="demo-status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg> Render Engine: @mdwrk/markdown-renderer-core</span>
-                  <span class="demo-status-secondary"><span>85 words</span><span>856 chars</span></span>
+                  <span class="demo-status-secondary"><span data-static-demo-words>192 words</span><span data-static-demo-chars>1604 chars</span></span>
                 </div>
               </div>
             </div>
@@ -287,6 +311,151 @@ const surface = {
           });
           apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
         }
+      })();
+    </script>
+    <script>
+      (() => {
+        const editor = document.querySelector('[data-static-demo-editor]');
+        const preview = document.querySelector('[data-static-demo-preview]');
+        const wordCounter = document.querySelector('[data-static-demo-words]');
+        const charCounter = document.querySelector('[data-static-demo-chars]');
+        if (!editor || !preview) return;
+
+        const escapeHtml = (value) => String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+
+        const slugify = (value) => String(value || '')
+          .trim()
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/^-+|-+$/g, '');
+
+        const renderInline = (value) => escapeHtml(value)
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+          .replace(new RegExp('\\x60([^\\x60]+)\\x60', 'g'), '<code>$1</code>');
+
+        const renderParagraph = (lines) => lines.length
+          ? '<p class="md-paragraph">' + renderInline(lines.join(' ')) + '</p>'
+          : '';
+
+        const renderMarkdown = (markdown) => {
+          const lines = String(markdown || '').replace(/\r\n?/g, '\n').split('\n');
+          const html = [];
+          let paragraph = [];
+          let list = [];
+          let table = [];
+          let code = [];
+          let inCode = false;
+          let codeLanguage = '';
+
+          const flushParagraph = () => {
+            const rendered = renderParagraph(paragraph);
+            if (rendered) html.push(rendered);
+            paragraph = [];
+          };
+          const flushList = () => {
+            if (!list.length) return;
+            html.push('<ul class="md-list">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</ul>');
+            list = [];
+          };
+          const flushTable = () => {
+            if (table.length < 2) {
+              paragraph.push(...table);
+              table = [];
+              return;
+            }
+            const rows = table
+              .filter((line, index) => index !== 1 || !/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line))
+              .map(line => line.trim().replace(/^\||\|$/g, '').split('|').map(cell => cell.trim()));
+            const headers = rows.shift() || [];
+            html.push('<table class="md-table"><thead><tr>' + headers.map(cell => '<th>' + renderInline(cell) + '</th>').join('') + '</tr></thead><tbody>' + rows.map(row => '<tr>' + row.map(cell => '<td>' + renderInline(cell) + '</td>').join('') + '</tr>').join('') + '</tbody></table>');
+            table = [];
+          };
+          const flushBlocks = () => {
+            flushParagraph();
+            flushList();
+            flushTable();
+          };
+
+          for (const line of lines) {
+            const fence = new RegExp('^\\x60\\x60\\x60\\s*([\\w-]+)?\\s*$').exec(line);
+            if (fence) {
+              if (inCode) {
+                html.push('<pre class="md-code-block"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + escapeHtml(code.join('\n')) + '</code></pre>');
+                code = [];
+                codeLanguage = '';
+                inCode = false;
+              } else {
+                flushBlocks();
+                inCode = true;
+                codeLanguage = fence[1] || '';
+              }
+              continue;
+            }
+            if (inCode) {
+              code.push(line);
+              continue;
+            }
+
+            if (!line.trim()) {
+              flushBlocks();
+              continue;
+            }
+
+            const heading = /^(#{1,6})\s+(.+)$/.exec(line);
+            if (heading) {
+              flushBlocks();
+              const depth = heading[1].length;
+              const text = heading[2].trim();
+              const id = slugify(text);
+              html.push('<h' + depth + ' class="md-h' + depth + '" id="' + escapeHtml(id) + '">' + renderInline(text) + '</h' + depth + '>');
+              continue;
+            }
+
+            const listItem = /^-\s+(?:\[[ xX]\]\s+)?(.+)$/.exec(line);
+            if (listItem) {
+              flushParagraph();
+              flushTable();
+              list.push(listItem[1]);
+              continue;
+            }
+
+            if (line.includes('|')) {
+              flushParagraph();
+              flushList();
+              table.push(line);
+              continue;
+            }
+
+            flushList();
+            flushTable();
+            paragraph.push(line.trim());
+          }
+
+          if (inCode) html.push('<pre class="md-code-block"><code>' + escapeHtml(code.join('\n')) + '</code></pre>');
+          flushBlocks();
+          return '<div class="markdown-renderer-host lander-markdown">' + html.join('\n') + '</div>';
+        };
+
+        const update = () => {
+          const content = editor.value || '';
+          preview.innerHTML = renderMarkdown(content);
+          const words = content
+            .replace(new RegExp('\\x60\\x60\\x60[\\s\\S]*?\\x60\\x60\\x60', 'g'), ' ')
+            .replace(/[#*_|:[\]()-]/g, ' ')
+            .split(/\s+/)
+            .filter(Boolean).length;
+          if (wordCounter) wordCounter.textContent = words + ' words';
+          if (charCounter) charCounter.textContent = content.length + ' chars';
+        };
+
+        editor.addEventListener('input', update);
       })();
     </script>
   </body>

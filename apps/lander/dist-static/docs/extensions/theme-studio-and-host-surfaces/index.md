@@ -26,10 +26,10 @@ The lander now uses the same editor and renderer package family with lander ligh
 
 ## Frequently Asked Questions
 
-### What is Theme Studio And Host Surfaces?
+### What will I learn from Theme Studio And Host Surfaces?
 
 Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model.
 
-### When should I use Theme Studio And Host Surfaces?
+### Who should read Theme Studio And Host Surfaces?
 
-Use this docs when you need direct MdWrk guidance for theme studio and host surfaces.
+Read this page if you need practical MdWrk guidance for theme studio and host surfaces, including the relevant workflow, product surface, and follow-up documentation paths.

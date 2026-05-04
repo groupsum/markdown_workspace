@@ -12,10 +12,10 @@ MdWrk gains PWA install support, zoom controls, preview refinements, and deploym
 
 ## Frequently Asked Questions
 
-### What is January 2026?
+### What does this MdWrk article cover?
 
 MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
 
-### When should I use January 2026?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for january 2026.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

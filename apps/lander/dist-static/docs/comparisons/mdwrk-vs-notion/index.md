@@ -19,10 +19,10 @@ MdWrk keeps the Markdown file as the durable content surface. That makes it prac
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Notion?
+### How does MdWrk compare with Notion?
 
 Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
 
-### When should I use MdWrk Vs Notion?
+### What should teams review before comparing MdWrk and Notion?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs notion.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

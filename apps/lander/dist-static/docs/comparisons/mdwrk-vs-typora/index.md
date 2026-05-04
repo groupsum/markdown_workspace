@@ -19,10 +19,10 @@ MdWrk keeps source editing and preview explicit, which is useful when the exact 
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Typora?
+### How does MdWrk compare with Typora?
 
 Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
 
-### When should I use MdWrk Vs Typora?
+### What should teams review before comparing MdWrk and Typora?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs typora.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

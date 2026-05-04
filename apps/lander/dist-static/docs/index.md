@@ -25,10 +25,10 @@ After setup, continue into product docs for local-first workflow, editor and pre
 
 ## Frequently Asked Questions
 
-### What is Getting Started?
+### How do I start using MdWrk?
 
 Start using MdWrk with browser, PWA, local setup, configuration, and standalone package guidance.
 
-### When should I use Getting Started?
+### Which MdWrk setup path should I choose first?
 
-Use this docs when you need direct MdWrk guidance for getting started.
+Choose browser use for the fastest start, PWA installation for an app-like shell, local setup for development control, or standalone modules when you want package-level adoption.

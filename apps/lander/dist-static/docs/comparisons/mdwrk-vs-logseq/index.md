@@ -19,10 +19,10 @@ MdWrk keeps Markdown documents portable and easy to move through GitHub, npm, st
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Logseq?
+### How does MdWrk compare with Logseq?
 
 Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
 
-### When should I use MdWrk Vs Logseq?
+### What should teams review before comparing MdWrk and Logseq?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs logseq.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

@@ -33,6 +33,7 @@ const getArgValue = (name, fallback) => {
 const outputDir = getArgValue('--out', process.env.MDWRK_STATIC_OUT || 'dist');
 const preserveAssets = process.argv.includes('--preserve-assets');
 const distRoot = path.resolve(landerRoot, outputDir);
+const githubRepoUrl = process.env.VITE_GITHUB_REPO_URL || 'https://github.com/groupsum/markdown_workspace';
 
 const CONTENT_TYPES = new Set([
   'landing',
@@ -70,7 +71,7 @@ const DOC_SECTION_ORDER = [
   'Extensions',
   'Integrations',
   'Authoring',
-  'Comparisons',
+  'Compares',
   'Docs',
   'Archive',
 ];
@@ -528,17 +529,84 @@ const renderMarkdown = (body) => {
 };
 
 const buildDefaultFaqs = ({ title, description, contentType }) => {
-  const normalizedTitle = String(title || 'this MdWrk page').replace(/\s+\|\s+MdWrk.*$/i, '').trim();
+  const normalizedTitle = String(title || 'this MdWrk page')
+    .replace(/\s+\|\s+MdWrk.*$/i, '')
+    .replace(/^MdWrk\s+Blog$/i, 'Blog')
+    .trim();
   const answer = String(description || '').trim();
   if (!answer) return [];
+  const lowerTitle = normalizedTitle.toLowerCase();
+  const comparisonTarget = /^MdWrk\s+V(?:s|S)\s+(.+)$/i.exec(normalizedTitle)?.[1]?.trim();
+  if (comparisonTarget) {
+    return [
+      {
+        question: `How does MdWrk compare with ${comparisonTarget}?`,
+        answer,
+      },
+      {
+        question: `What should teams review before comparing MdWrk and ${comparisonTarget}?`,
+        answer: 'Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.',
+      },
+    ];
+  }
+  if (contentType === 'blog') {
+    return [
+      {
+        question: normalizedTitle === 'Blog' ? 'What does the MdWrk Blog cover?' : `What does this MdWrk article cover?`,
+        answer,
+      },
+      {
+        question: normalizedTitle === 'Blog' ? 'Where should readers start in the MdWrk Blog?' : 'What should readers take away from this article?',
+        answer: normalizedTitle === 'Blog'
+          ? 'Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes.'
+          : `This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.`,
+      },
+    ];
+  }
+  if (normalizedTitle === 'Getting Started') {
+    return [
+      {
+        question: 'How do I start using MdWrk?',
+        answer,
+      },
+      {
+        question: 'Which MdWrk setup path should I choose first?',
+        answer: 'Choose browser use for the fastest start, PWA installation for an app-like shell, local setup for development control, or standalone modules when you want package-level adoption.',
+      },
+    ];
+  }
+  if (contentType === 'privacy') {
+    return [
+      {
+        question: 'How does MdWrk handle privacy-sensitive Markdown work?',
+        answer,
+      },
+      {
+        question: 'Which privacy choices should MdWrk users review?',
+        answer: 'Review local storage behavior, sync choices, extension trust boundaries, export paths, and any workflow that intentionally connects to an external service.',
+      },
+    ];
+  }
+  if (contentType === 'security') {
+    return [
+      {
+        question: 'What security topics does this MdWrk page cover?',
+        answer,
+      },
+      {
+        question: 'Which MdWrk security boundaries should teams review?',
+        answer: 'Review package boundaries, extension trust, static content verification, robots policy, deployable artifact checks, and any integration that crosses the local workspace boundary.',
+      },
+    ];
+  }
   return [
     {
-      question: `What is ${normalizedTitle}?`,
+      question: `What will I learn from ${normalizedTitle}?`,
       answer,
     },
     {
-      question: `When should I use ${normalizedTitle}?`,
-      answer: `Use this ${String(contentType || 'page')} when you need direct MdWrk guidance for ${normalizedTitle.toLowerCase()}.`,
+      question: `Who should read ${normalizedTitle}?`,
+      answer: `Read this page if you need practical MdWrk guidance for ${lowerTitle}, including the relevant workflow, product surface, and follow-up documentation paths.`,
     },
   ];
 };
@@ -1173,6 +1241,152 @@ const renderThemeToggleScript = () => `<script>
       })();
     </script>`;
 
+const renderStaticDemoScript = () => `<script>
+      (() => {
+        const editor = document.querySelector('[data-static-demo-editor]');
+        const preview = document.querySelector('[data-static-demo-preview]');
+        const wordCounter = document.querySelector('[data-static-demo-words]');
+        const charCounter = document.querySelector('[data-static-demo-chars]');
+        if (!editor || !preview) return;
+
+        const escapeHtml = (value) => String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+
+        const slugify = (value) => String(value || '')
+          .trim()
+          .toLowerCase()
+          .replace(/[^\\w\\s-]/g, '')
+          .replace(/\\s+/g, '-')
+          .replace(/^-+|-+$/g, '');
+
+        const renderInline = (value) => escapeHtml(value)
+          .replace(/\\*\\*([^*]+)\\*\\*/g, '<strong>$1</strong>')
+          .replace(/\\*([^*]+)\\*/g, '<em>$1</em>')
+          .replace(new RegExp('\\\\x60([^\\\\x60]+)\\\\x60', 'g'), '<code>$1</code>');
+
+        const renderParagraph = (lines) => lines.length
+          ? '<p class="md-paragraph">' + renderInline(lines.join(' ')) + '</p>'
+          : '';
+
+        const renderMarkdown = (markdown) => {
+          const lines = String(markdown || '').replace(/\\r\\n?/g, '\\n').split('\\n');
+          const html = [];
+          let paragraph = [];
+          let list = [];
+          let table = [];
+          let code = [];
+          let inCode = false;
+          let codeLanguage = '';
+
+          const flushParagraph = () => {
+            const rendered = renderParagraph(paragraph);
+            if (rendered) html.push(rendered);
+            paragraph = [];
+          };
+          const flushList = () => {
+            if (!list.length) return;
+            html.push('<ul class="md-list">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</ul>');
+            list = [];
+          };
+          const flushTable = () => {
+            if (table.length < 2) {
+              paragraph.push(...table);
+              table = [];
+              return;
+            }
+            const rows = table
+              .filter((line, index) => index !== 1 || !/^\\s*\\|?\\s*:?-{3,}:?\\s*(\\|\\s*:?-{3,}:?\\s*)+\\|?\\s*$/.test(line))
+              .map(line => line.trim().replace(/^\\||\\|$/g, '').split('|').map(cell => cell.trim()));
+            const headers = rows.shift() || [];
+            html.push('<table class="md-table"><thead><tr>' + headers.map(cell => '<th>' + renderInline(cell) + '</th>').join('') + '</tr></thead><tbody>' + rows.map(row => '<tr>' + row.map(cell => '<td>' + renderInline(cell) + '</td>').join('') + '</tr>').join('') + '</tbody></table>');
+            table = [];
+          };
+          const flushBlocks = () => {
+            flushParagraph();
+            flushList();
+            flushTable();
+          };
+
+          for (const line of lines) {
+            const fence = new RegExp('^\\\\x60\\\\x60\\\\x60\\\\s*([\\\\w-]+)?\\\\s*$').exec(line);
+            if (fence) {
+              if (inCode) {
+                html.push('<pre class="md-code-block"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + escapeHtml(code.join('\\n')) + '</code></pre>');
+                code = [];
+                codeLanguage = '';
+                inCode = false;
+              } else {
+                flushBlocks();
+                inCode = true;
+                codeLanguage = fence[1] || '';
+              }
+              continue;
+            }
+            if (inCode) {
+              code.push(line);
+              continue;
+            }
+
+            if (!line.trim()) {
+              flushBlocks();
+              continue;
+            }
+
+            const heading = /^(#{1,6})\\s+(.+)$/.exec(line);
+            if (heading) {
+              flushBlocks();
+              const depth = heading[1].length;
+              const text = heading[2].trim();
+              const id = slugify(text);
+              html.push('<h' + depth + ' class="md-h' + depth + '" id="' + escapeHtml(id) + '">' + renderInline(text) + '</h' + depth + '>');
+              continue;
+            }
+
+            const listItem = /^-\\s+(?:\\[[ xX]\\]\\s+)?(.+)$/.exec(line);
+            if (listItem) {
+              flushParagraph();
+              flushTable();
+              list.push(listItem[1]);
+              continue;
+            }
+
+            if (line.includes('|')) {
+              flushParagraph();
+              flushList();
+              table.push(line);
+              continue;
+            }
+
+            flushList();
+            flushTable();
+            paragraph.push(line.trim());
+          }
+
+          if (inCode) html.push('<pre class="md-code-block"><code>' + escapeHtml(code.join('\\n')) + '</code></pre>');
+          flushBlocks();
+          return '<div class="markdown-renderer-host lander-markdown">' + html.join('\\n') + '</div>';
+        };
+
+        const update = () => {
+          const content = editor.value || '';
+          preview.innerHTML = renderMarkdown(content);
+          const words = content
+            .replace(new RegExp('\\\\x60\\\\x60\\\\x60[\\\\s\\\\S]*?\\\\x60\\\\x60\\\\x60', 'g'), ' ')
+            .replace(/[#*_|:[\\]()-]/g, ' ')
+            .split(/\\s+/)
+            .filter(Boolean).length;
+          if (wordCounter) wordCounter.textContent = words + ' words';
+          if (charCounter) charCounter.textContent = content.length + ' chars';
+        };
+
+        editor.addEventListener('input', update);
+      })();
+    </script>`;
+
 const renderStaticCloudOffIcon = () => `<svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="m2 2 20 20"></path>
                 <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
@@ -1181,6 +1395,10 @@ const renderStaticCloudOffIcon = () => `<svg class="navbar-brand-icon static-nav
 
 const renderStaticThemeIcon = () => `<svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>`;
+
+const renderStaticStarIcon = () => `<svg class="navbar-github-icon static-github-star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11.5 2.3a.6.6 0 0 1 1 0l2.8 5.7 6.3.9a.6.6 0 0 1 .3 1l-4.6 4.5 1.1 6.3a.6.6 0 0 1-.9.6L12 18.4l-5.6 2.9a.6.6 0 0 1-.9-.6l1.1-6.3L2 9.9a.6.6 0 0 1 .3-1L8.6 8l2.9-5.7Z"></path>
                 </svg>`;
 
 const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-label="Main navigation">
@@ -1194,6 +1412,10 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
                 ${renderStaticThemeIcon()}
                 <span class="sr-only" data-static-theme-label>Lander Theme</span>
               </button>
+              <a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
+                ${renderStaticStarIcon()}
+                <span>Repo</span>
+              </a>
             </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">
               <ul class="navbar-menu-list">
@@ -1318,7 +1540,7 @@ const renderArticleCard = (entry, registry) => {
                     <div class="docs-meta">
                       <span>${escapeHtml(metaLabel)}</span>
                       <span class="docs-meta-divider">/</span>
-                      <span>${escapeHtml(entry.frontmatter.updatedAt)}</span>
+                      <time datetime="${escapeAttribute(entry.frontmatter.updatedAt)}">${escapeHtml(toDisplayDate(entry.frontmatter.updatedAt))}</time>
                     </div>
                     <h1 class="${articleClass === 'blog-post-card' ? 'blog-post-title' : 'docs-title'}">${escapeHtml(entry.frontmatter.h1)}</h1>
                     ${entry.frontmatter.subtitle ? `<p class="${articleClass === 'blog-post-card' ? 'blog-post-subtitle' : 'docs-subtitle'}">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
@@ -1330,7 +1552,7 @@ const renderArticleCard = (entry, registry) => {
               </div>`;
 };
 
-const homeDemoMarkdown = `## mdwrk client surface
+const homeDemoMarkdown = `# mdwrk client surface
 
 The lander demonstrates the same shared packages that the mdwrk client uses.
 
@@ -1347,6 +1569,24 @@ The lander demonstrates the same shared packages that the mdwrk client uses.
 - [x] Split editor and preview packages
 - [x] Extension-ready client host
 - [x] Shared theme rendering for docs and blog
+
+## Authoring workflow
+- Draft Markdown in the editor pane.
+- Preview headings, tables, lists, and code in the rendered pane.
+- Keep the source readable as plain text.
+- Use the same renderer behavior that powers MdWrk docs and blog pages.
+
+## Renderer workflow
+- Parse Markdown through the shared renderer contract.
+- Escape raw HTML by default for public content safety.
+- Apply the lander light and lander dark theme tokens.
+- Preserve semantic headings so crawlers and assistive technology can read the output.
+
+## Extension workflow
+- Keep extension boundaries visible.
+- Use package-level contracts instead of one-off demo code.
+- Verify theme behavior across both panes.
+- Treat the rendered preview as the product surface, not a screenshot.
 
 ## Example
 \`\`\`typescript
@@ -1463,15 +1703,15 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
                 </div>
                 <div class="demo-body static-demo-body">
                   <div class="demo-editor-pane is-editor-visible">
-                    <pre class="lander-editor static-demo-editor" aria-label="Static Markdown editor demo"><code>${escapeHtml(homeDemoMarkdown)}</code></pre>
+                    <textarea class="lander-editor static-demo-editor" data-static-demo-editor aria-label="Static Markdown editor demo" spellcheck="false">${escapeHtml(homeDemoMarkdown)}</textarea>
                   </div>
-                  <div class="demo-preview-pane is-preview-visible">
+                  <div class="demo-preview-pane is-preview-visible" data-static-demo-preview>
                     ${renderMarkdownHost(demoPreview)}
                   </div>
                 </div>
                 <div class="demo-statusbar">
                   <span class="demo-status-primary"><svg class="demo-status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"></path><path d="M12 19h8"></path></svg> Render Engine: @mdwrk/markdown-renderer-core</span>
-                  <span class="demo-status-secondary"><span>${demoWordCount} words</span><span>${homeDemoMarkdown.length} chars</span></span>
+                  <span class="demo-status-secondary"><span data-static-demo-words>${demoWordCount} words</span><span data-static-demo-chars>${homeDemoMarkdown.length} chars</span></span>
                 </div>
               </div>
             </div>
@@ -1500,6 +1740,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
       </div>
     </div>
     ${renderThemeToggleScript()}
+    ${renderStaticDemoScript()}
   </body>
 </html>
 `;
@@ -1727,7 +1968,8 @@ const verify = () => {
     if (!/<article\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing article`);
     if (hasViteCssAssets && !/href="\/assets\/[^"]+\.css"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing compiled lander stylesheet link`);
     if (/src="\/assets\/[^"]+\.js"/i.test(html)) failures.push(`${entry.frontmatter.slug}: static route includes SPA JavaScript bundle`);
-    if ((html.match(/<h1\b/gi) ?? []).length !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one H1`);
+    const pageTitleH1Count = (html.match(/<h1\b[^>]*class="[^"]*(?:hero-heading|docs-title|blog-post-title|blog-list-title)[^"]*"/gi) ?? []).length;
+    if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
     if (!html.includes(`<title>${escapeHtml(entry.frontmatter.title)}</title>`)) failures.push(`${entry.frontmatter.slug}: missing title`);
     if (!html.includes('name="description"')) failures.push(`${entry.frontmatter.slug}: missing meta description`);
     if (!html.includes(`rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}"`)) failures.push(`${entry.frontmatter.slug}: canonical mismatch`);

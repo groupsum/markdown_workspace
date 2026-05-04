@@ -53,10 +53,10 @@ docs/architecture/theme-mapping-guide.md
 
 ## Frequently Asked Questions
 
-### What is Theme Pack Authoring?
+### What will I learn from Theme Pack Authoring?
 
 Theme pack authoring uses MdWrk theme contracts, Theme Studio workflows, token exports, and package-ready surfaces for consistent editor and preview styling.
 
-### When should I use Theme Pack Authoring?
+### Who should read Theme Pack Authoring?
 
-Use this docs when you need direct MdWrk guidance for theme pack authoring.
+Read this page if you need practical MdWrk guidance for theme pack authoring, including the relevant workflow, product surface, and follow-up documentation paths.

@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs MarkText
 slug: comparisons/mdwrk-vs-marktext
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 4
 toc: true

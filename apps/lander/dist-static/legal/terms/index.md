@@ -15,10 +15,10 @@ MdWrk is intended for lawful use only. Users are responsible for their own data 
 
 ## Frequently Asked Questions
 
-### What is Terms of Service?
+### How does MdWrk handle privacy-sensitive Markdown work?
 
 Welcome to MdWrk. By using this application, you agree to the following: "As-Is" Software MdWrk is provided "as is" without any warranties. Ownership You own 100% of the content you create. Compliance MdWrk is intended f...
 
-### When should I use Terms of Service?
+### Which privacy choices should MdWrk users review?
 
-Use this privacy when you need direct MdWrk guidance for terms of service.
+Review local storage behavior, sync choices, extension trust boundaries, export paths, and any workflow that intentionally connects to an external service.

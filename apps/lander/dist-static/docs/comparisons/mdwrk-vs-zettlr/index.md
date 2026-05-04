@@ -19,10 +19,10 @@ MdWrk keeps optional Markdown profile behavior visible through the renderer and 
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Zettlr?
+### How does MdWrk compare with Zettlr?
 
 Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
 
-### When should I use MdWrk Vs Zettlr?
+### What should teams review before comparing MdWrk and Zettlr?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs zettlr.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

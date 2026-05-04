@@ -22,10 +22,10 @@ Current bundled surfaces include Extension Manager, Theme Studio, Language Pack 
 
 ## Frequently Asked Questions
 
-### What is Extension Host?
+### What will I learn from Extension Host?
 
 MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.
 
-### When should I use Extension Host?
+### Who should read Extension Host?
 
-Use this docs when you need direct MdWrk guidance for extension host.
+Read this page if you need practical MdWrk guidance for extension host, including the relevant workflow, product surface, and follow-up documentation paths.

@@ -19,10 +19,10 @@ MdWrk connects writing, preview, workspace management, extensions, and package d
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Marktext?
+### How does MdWrk compare with Marktext?
 
 Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.
 
-### When should I use MdWrk Vs Marktext?
+### What should teams review before comparing MdWrk and Marktext?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs marktext.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

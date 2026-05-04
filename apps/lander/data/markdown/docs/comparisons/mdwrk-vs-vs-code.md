@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs VS Code
 slug: comparisons/mdwrk-vs-vs-code
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 3
 toc: true

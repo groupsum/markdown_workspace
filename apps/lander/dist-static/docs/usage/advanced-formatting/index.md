@@ -154,10 +154,10 @@ Enable optional profiles only when the document actually needs them. This keeps 
 
 ## Frequently Asked Questions
 
-### What is Markdown Formatting?
+### What will I learn from Markdown Formatting?
 
 MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
 
-### When should I use Markdown Formatting?
+### Who should read Markdown Formatting?
 
-Use this docs when you need direct MdWrk guidance for markdown formatting.
+Read this page if you need practical MdWrk guidance for markdown formatting, including the relevant workflow, product surface, and follow-up documentation paths.

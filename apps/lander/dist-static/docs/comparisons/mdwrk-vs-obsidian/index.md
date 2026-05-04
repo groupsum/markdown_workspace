@@ -19,10 +19,10 @@ MdWrk emphasizes portable Markdown editing, preview, file management, extension-
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs Obsidian?
+### How does MdWrk compare with Obsidian?
 
 Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.
 
-### When should I use MdWrk Vs Obsidian?
+### What should teams review before comparing MdWrk and Obsidian?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs obsidian.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Logseq
 slug: comparisons/mdwrk-vs-logseq
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 7
 toc: true

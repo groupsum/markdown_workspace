@@ -18,10 +18,10 @@ Theme packs may be delivered through extension surfaces, but the documentation s
 
 ## Frequently Asked Questions
 
-### What is Theme packs?
+### What will I learn from Theme packs?
 
 MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.
 
-### When should I use Theme packs?
+### Who should read Theme packs?
 
-Use this docs when you need direct MdWrk guidance for theme packs.
+Read this page if you need practical MdWrk guidance for theme packs, including the relevant workflow, product surface, and follow-up documentation paths.

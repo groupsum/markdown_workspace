@@ -18,10 +18,10 @@ Extension trust should be explicit. Users and operators need to understand which
 
 ## Frequently Asked Questions
 
-### What is Extensions?
+### What will I learn from Extensions?
 
 MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.
 
-### When should I use Extensions?
+### Who should read Extensions?
 
-Use this docs when you need direct MdWrk guidance for extensions.
+Read this page if you need practical MdWrk guidance for extensions, including the relevant workflow, product surface, and follow-up documentation paths.

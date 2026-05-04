@@ -34,10 +34,10 @@ Choose standalone modules when you need package-level reuse instead of the full 
 
 ## Frequently Asked Questions
 
-### What is PWA Installation?
+### What will I learn from PWA Installation?
 
 The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window.
 
-### When should I use PWA Installation?
+### Who should read PWA Installation?
 
-Use this docs when you need direct MdWrk guidance for pwa installation.
+Read this page if you need practical MdWrk guidance for pwa installation, including the relevant workflow, product surface, and follow-up documentation paths.

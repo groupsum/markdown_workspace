@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Obsidian
 slug: comparisons/mdwrk-vs-obsidian
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 1
 toc: true

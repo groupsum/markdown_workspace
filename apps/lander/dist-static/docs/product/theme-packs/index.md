@@ -22,10 +22,10 @@ Viewport and aspect-ratio breakpoints stay defined once in the client viewport c
 
 ## Frequently Asked Questions
 
-### What is Theme Packs?
+### What will I learn from Theme Packs?
 
 MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.
 
-### When should I use Theme Packs?
+### Who should read Theme Packs?
 
-Use this docs when you need direct MdWrk guidance for theme packs.
+Read this page if you need practical MdWrk guidance for theme packs, including the relevant workflow, product surface, and follow-up documentation paths.

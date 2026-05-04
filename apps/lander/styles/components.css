@@ -382,11 +382,14 @@
 
 .demo-body {
   @apply flex flex-1 overflow-hidden;
+  min-height: 0;
 }
 
 .demo-editor-pane,
 .demo-preview-pane {
   @apply h-full w-full;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .demo-editor-pane {
@@ -428,7 +431,14 @@
   @apply h-full w-full overflow-auto border-0 p-6 font-mono text-sm leading-6;
   background: var(--lander-panel);
   color: var(--lander-fg);
+  display: block;
+  outline: none;
+  resize: none;
   white-space: pre;
+}
+
+.static-demo-editor:focus {
+  box-shadow: inset 0 0 0 2px var(--lander-accent);
 }
 
 .static-demo-body .markdown-renderer-host {
@@ -898,6 +908,13 @@
 
 .docs-meta-divider {
   color: color-mix(in srgb, var(--lander-fg-subtle) 60%, transparent);
+}
+
+.docs-meta time,
+.blog-card-date time,
+.blog-post-meta time {
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .docs-title,

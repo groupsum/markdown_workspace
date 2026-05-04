@@ -16,10 +16,10 @@ The MdWrk site now presents a clearer path into the client, package family, and 
 
 ## Frequently Asked Questions
 
-### What is April 2026?
+### What does this MdWrk article cover?
 
 The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
 
-### When should I use April 2026?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for april 2026.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

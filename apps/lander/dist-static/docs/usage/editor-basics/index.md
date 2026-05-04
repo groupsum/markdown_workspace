@@ -109,10 +109,10 @@ MdWrk is not trying to hide Markdown behind a fake document model. The product g
 
 ## Frequently Asked Questions
 
-### What is Editor Basics?
+### What will I learn from Editor Basics?
 
 MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
 
-### When should I use Editor Basics?
+### Who should read Editor Basics?
 
-Use this docs when you need direct MdWrk guidance for editor basics.
+Read this page if you need practical MdWrk guidance for editor basics, including the relevant workflow, product surface, and follow-up documentation paths.

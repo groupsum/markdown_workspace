@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Github, CloudOff, Sun, Moon } from 'lucide-react';
+import { Menu, X, Star, CloudOff, Sun, Moon } from 'lucide-react';
 import { links } from '../utils/links';
 
 interface NavbarProps {
@@ -43,9 +43,11 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-github-link"
+            aria-label="Open MdWrk GitHub repository"
+            title="Open MdWrk GitHub repository"
           >
-            <Github className="navbar-github-icon" />
-            <span>Star</span>
+            <Star className="navbar-github-icon" />
+            <span>Repo</span>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}

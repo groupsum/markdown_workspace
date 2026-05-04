@@ -25,10 +25,10 @@ https://github.com/groupsum/mdwrk
 
 ## Frequently Asked Questions
 
-### What is Github Sync?
+### What will I learn from Github Sync?
 
 Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository.
 
-### When should I use Github Sync?
+### Who should read Github Sync?
 
-Use this docs when you need direct MdWrk guidance for github sync.
+Read this page if you need practical MdWrk guidance for github sync, including the relevant workflow, product surface, and follow-up documentation paths.

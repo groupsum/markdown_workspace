@@ -122,6 +122,50 @@
   color: var(--lander-heading-fg, var(--lander-fg));
 }
 
+.lander-markdown .markdown-body h1,
+.lander-markdown .markdown-body .md-h1,
+.lander-markdown h1,
+.lander-markdown .md-h1 {
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.lander-markdown .markdown-body h2,
+.lander-markdown .markdown-body .md-h2,
+.lander-markdown h2,
+.lander-markdown .md-h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.lander-markdown .markdown-body h3,
+.lander-markdown .markdown-body .md-h3,
+.lander-markdown h3,
+.lander-markdown .md-h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
+}
+
+.lander-markdown .markdown-body h4,
+.lander-markdown .markdown-body .md-h4,
+.lander-markdown .markdown-body h5,
+.lander-markdown .markdown-body .md-h5,
+.lander-markdown .markdown-body h6,
+.lander-markdown .markdown-body .md-h6,
+.lander-markdown h4,
+.lander-markdown .md-h4,
+.lander-markdown h5,
+.lander-markdown .md-h5,
+.lander-markdown h6,
+.lander-markdown .md-h6 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lander-markdown .markdown-body > :is(h1, h2, h3, h4, h5, h6, .md-h1, .md-h2, .md-h3, .md-h4, .md-h5, .md-h6):first-child {
+  margin-top: 0;
+}
+
 .lander-markdown .markdown-body a {
   color: var(--lander-accent);
 }

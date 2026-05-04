@@ -17,10 +17,10 @@ If you choose to sync with GitHub, the application uses your Personal Access Tok
 
 ## Frequently Asked Questions
 
-### What is Privacy Policy?
+### How does MdWrk handle privacy-sensitive Markdown work?
 
 At MdWrk , we believe privacy is a fundamental human right. Our software is designed so that your data never touches our servers. Data Collection We do not collect, store, or process any of your personal data. All markdo...
 
-### When should I use Privacy Policy?
+### Which privacy choices should MdWrk users review?
 
-Use this privacy when you need direct MdWrk guidance for privacy policy.
+Review local storage behavior, sync choices, extension trust boundaries, export paths, and any workflow that intentionally connects to an external service.

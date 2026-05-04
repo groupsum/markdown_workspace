@@ -140,12 +140,12 @@
       "updatedAt": "2026-05-04",
       "faqs": [
         {
-          "question": "What is MdWrk vs VS Code Markdown?",
+          "question": "How does MdWrk compare with VS Code Markdown?",
           "answer": "Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries."
         },
         {
-          "question": "When should I use MdWrk vs VS Code Markdown?",
-          "answer": "Use this comparison when you need direct MdWrk guidance for mdwrk vs vs code markdown."
+          "question": "What should teams review before comparing MdWrk and VS Code Markdown?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/",
@@ -206,12 +206,12 @@
       "updatedAt": "2026-05-04",
       "faqs": [
         {
-          "question": "What is Extensions?",
+          "question": "What will I learn from Extensions?",
           "answer": "MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions."
         },
         {
-          "question": "When should I use Extensions?",
-          "answer": "Use this docs when you need direct MdWrk guidance for extensions."
+          "question": "Who should read Extensions?",
+          "answer": "Read this page if you need practical MdWrk guidance for extensions, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/quickstart/",
@@ -329,12 +329,12 @@
       "updatedAt": "2026-05-04",
       "faqs": [
         {
-          "question": "What is Theme packs?",
+          "question": "What will I learn from Theme packs?",
           "answer": "MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable."
         },
         {
-          "question": "When should I use Theme packs?",
-          "answer": "Use this docs when you need direct MdWrk guidance for theme packs."
+          "question": "Who should read Theme packs?",
+          "answer": "Read this page if you need practical MdWrk guidance for theme packs, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/quickstart/",
@@ -712,12 +712,12 @@
       "updatedAt": "2026-05-04",
       "faqs": [
         {
-          "question": "What is Security notes?",
+          "question": "What security topics does this MdWrk page cover?",
           "answer": "MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks."
         },
         {
-          "question": "When should I use Security notes?",
-          "answer": "Use this security when you need direct MdWrk guidance for security notes."
+          "question": "Which MdWrk security boundaries should teams review?",
+          "answer": "Review package boundaries, extension trust, static content verification, robots policy, deployable artifact checks, and any integration that crosses the local workspace boundary."
         }
       ],
       "parent": "/",
@@ -778,12 +778,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Getting Started?",
+          "question": "How do I start using MdWrk?",
           "answer": "Start using MdWrk with browser, PWA, local setup, configuration, and standalone package guidance."
         },
         {
-          "question": "When should I use Getting Started?",
-          "answer": "Use this docs when you need direct MdWrk guidance for getting started."
+          "question": "Which MdWrk setup path should I choose first?",
+          "answer": "Choose browser use for the fastest start, PWA installation for an app-like shell, local setup for development control, or standalone modules when you want package-level adoption."
         }
       ],
       "related": [],
@@ -858,12 +858,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Client Installation?",
+          "question": "What will I learn from Client Installation?",
           "answer": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,..."
         },
         {
-          "question": "When should I use Client Installation?",
-          "answer": "Use this docs when you need direct MdWrk guidance for client installation."
+          "question": "Who should read Client Installation?",
+          "answer": "Read this page if you need practical MdWrk guidance for client installation, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -940,12 +940,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Browser Use?",
+          "question": "What will I learn from Browser Use?",
           "answer": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have..."
         },
         {
-          "question": "When should I use Browser Use?",
-          "answer": "Use this docs when you need direct MdWrk guidance for browser use."
+          "question": "Who should read Browser Use?",
+          "answer": "Read this page if you need practical MdWrk guidance for browser use, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1006,12 +1006,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is PWA Installation?",
+          "question": "What will I learn from PWA Installation?",
           "answer": "The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window."
         },
         {
-          "question": "When should I use PWA Installation?",
-          "answer": "Use this docs when you need direct MdWrk guidance for pwa installation."
+          "question": "Who should read PWA Installation?",
+          "answer": "Read this page if you need practical MdWrk guidance for pwa installation, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1077,12 +1077,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Local Setup?",
+          "question": "What will I learn from Local Setup?",
           "answer": "This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide."
         },
         {
-          "question": "When should I use Local Setup?",
-          "answer": "Use this docs when you need direct MdWrk guidance for local setup."
+          "question": "Who should read Local Setup?",
+          "answer": "Read this page if you need practical MdWrk guidance for local setup, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1148,12 +1148,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Standalone Modules?",
+          "question": "What will I learn from Standalone Modules?",
           "answer": "MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces."
         },
         {
-          "question": "When should I use Standalone Modules?",
-          "answer": "Use this docs when you need direct MdWrk guidance for standalone modules."
+          "question": "Who should read Standalone Modules?",
+          "answer": "Read this page if you need practical MdWrk guidance for standalone modules, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1219,12 +1219,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Client Configuration?",
+          "question": "What will I learn from Client Configuration?",
           "answer": "Theme Selection Open Settings -> Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs."
         },
         {
-          "question": "When should I use Client Configuration?",
-          "answer": "Use this docs when you need direct MdWrk guidance for client configuration."
+          "question": "Who should read Client Configuration?",
+          "answer": "Read this page if you need practical MdWrk guidance for client configuration, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1290,12 +1290,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Editor Basics?",
+          "question": "What will I learn from Editor Basics?",
           "answer": "MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown."
         },
         {
-          "question": "When should I use Editor Basics?",
-          "answer": "Use this docs when you need direct MdWrk guidance for editor basics."
+          "question": "Who should read Editor Basics?",
+          "answer": "Read this page if you need practical MdWrk guidance for editor basics, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1397,12 +1397,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Markdown Formatting?",
+          "question": "What will I learn from Markdown Formatting?",
           "answer": "MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format."
         },
         {
-          "question": "When should I use Markdown Formatting?",
-          "answer": "Use this docs when you need direct MdWrk guidance for markdown formatting."
+          "question": "Who should read Markdown Formatting?",
+          "answer": "Read this page if you need practical MdWrk guidance for markdown formatting, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1519,12 +1519,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Rendering And Preview?",
+          "question": "What will I learn from Rendering And Preview?",
           "answer": "MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer."
         },
         {
-          "question": "When should I use Rendering And Preview?",
-          "answer": "Use this docs when you need direct MdWrk guidance for rendering and preview."
+          "question": "Who should read Rendering And Preview?",
+          "answer": "Read this page if you need practical MdWrk guidance for rendering and preview, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1631,12 +1631,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Offline Markdown Editor?",
+          "question": "What will I learn from Offline Markdown Editor?",
           "answer": "MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded."
         },
         {
-          "question": "When should I use Offline Markdown Editor?",
-          "answer": "Use this docs when you need direct MdWrk guidance for offline markdown editor."
+          "question": "Who should read Offline Markdown Editor?",
+          "answer": "Read this page if you need practical MdWrk guidance for offline markdown editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1708,12 +1708,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Local-first Markdown Workspace?",
+          "question": "What will I learn from Local-first Markdown Workspace?",
           "answer": "MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model."
         },
         {
-          "question": "When should I use Local-first Markdown Workspace?",
-          "answer": "Use this docs when you need direct MdWrk guidance for local-first markdown workspace."
+          "question": "Who should read Local-first Markdown Workspace?",
+          "answer": "Read this page if you need practical MdWrk guidance for local-first markdown workspace, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1785,12 +1785,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Privacy-first Markdown Editor?",
+          "question": "What will I learn from Privacy-first Markdown Editor?",
           "answer": "MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices."
         },
         {
-          "question": "When should I use Privacy-first Markdown Editor?",
-          "answer": "Use this docs when you need direct MdWrk guidance for privacy-first markdown editor."
+          "question": "Who should read Privacy-first Markdown Editor?",
+          "answer": "Read this page if you need practical MdWrk guidance for privacy-first markdown editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1862,12 +1862,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Markdown File Manager?",
+          "question": "What will I learn from Markdown File Manager?",
           "answer": "MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written."
         },
         {
-          "question": "When should I use Markdown File Manager?",
-          "answer": "Use this docs when you need direct MdWrk guidance for markdown file manager."
+          "question": "Who should read Markdown File Manager?",
+          "answer": "Read this page if you need practical MdWrk guidance for markdown file manager, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -1939,12 +1939,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Markdown Preview Editor?",
+          "question": "What will I learn from Markdown Preview Editor?",
           "answer": "MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output."
         },
         {
-          "question": "When should I use Markdown Preview Editor?",
-          "answer": "Use this docs when you need direct MdWrk guidance for markdown preview editor."
+          "question": "Who should read Markdown Preview Editor?",
+          "answer": "Read this page if you need practical MdWrk guidance for markdown preview editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2016,12 +2016,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Extension Host?",
+          "question": "What will I learn from Extension Host?",
           "answer": "MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces."
         },
         {
-          "question": "When should I use Extension Host?",
-          "answer": "Use this docs when you need direct MdWrk guidance for extension host."
+          "question": "Who should read Extension Host?",
+          "answer": "Read this page if you need practical MdWrk guidance for extension host, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2093,12 +2093,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Theme Packs?",
+          "question": "What will I learn from Theme Packs?",
           "answer": "MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors."
         },
         {
-          "question": "When should I use Theme Packs?",
-          "answer": "Use this docs when you need direct MdWrk guidance for theme packs."
+          "question": "Who should read Theme Packs?",
+          "answer": "Read this page if you need practical MdWrk guidance for theme packs, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2170,12 +2170,12 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is Developer Documentation?",
+          "question": "What will I learn from Developer Documentation?",
           "answer": "MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths."
         },
         {
-          "question": "When should I use Developer Documentation?",
-          "answer": "Use this docs when you need direct MdWrk guidance for developer documentation."
+          "question": "Who should read Developer Documentation?",
+          "answer": "Read this page if you need practical MdWrk guidance for developer documentation, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2247,12 +2247,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Github Sync?",
+          "question": "What will I learn from Github Sync?",
           "answer": "Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository."
         },
         {
-          "question": "When should I use Github Sync?",
-          "answer": "Use this docs when you need direct MdWrk guidance for github sync."
+          "question": "Who should read Github Sync?",
+          "answer": "Read this page if you need practical MdWrk guidance for github sync, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2308,12 +2308,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Authoring Overview?",
+          "question": "What will I learn from Authoring Overview?",
           "answer": "MdWrk authoring documentation groups extension, theme pack, and language pack workflows into focused surfaces for package and product contributors."
         },
         {
-          "question": "When should I use Authoring Overview?",
-          "answer": "Use this docs when you need direct MdWrk guidance for authoring overview."
+          "question": "Who should read Authoring Overview?",
+          "answer": "Read this page if you need practical MdWrk guidance for authoring overview, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2380,12 +2380,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Extension Authoring?",
+          "question": "What will I learn from Extension Authoring?",
           "answer": "Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions."
         },
         {
-          "question": "When should I use Extension Authoring?",
-          "answer": "Use this docs when you need direct MdWrk guidance for extension authoring."
+          "question": "Who should read Extension Authoring?",
+          "answer": "Read this page if you need practical MdWrk guidance for extension authoring, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2451,12 +2451,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Theme Pack Authoring?",
+          "question": "What will I learn from Theme Pack Authoring?",
           "answer": "Theme pack authoring uses MdWrk theme contracts, Theme Studio workflows, token exports, and package-ready surfaces for consistent editor and preview styling."
         },
         {
-          "question": "When should I use Theme Pack Authoring?",
-          "answer": "Use this docs when you need direct MdWrk guidance for theme pack authoring."
+          "question": "Who should read Theme Pack Authoring?",
+          "answer": "Read this page if you need practical MdWrk guidance for theme pack authoring, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2517,12 +2517,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Language Pack Authoring?",
+          "question": "What will I learn from Language Pack Authoring?",
           "answer": "Language pack authoring uses the first-party studio package, locale catalogs, validation flows, export behavior, and host surfaces for MdWrk localization."
         },
         {
-          "question": "When should I use Language Pack Authoring?",
-          "answer": "Use this docs when you need direct MdWrk guidance for language pack authoring."
+          "question": "Who should read Language Pack Authoring?",
+          "answer": "Read this page if you need practical MdWrk guidance for language pack authoring, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2583,12 +2583,12 @@
       "updatedAt": "2026-01-22",
       "faqs": [
         {
-          "question": "What is Extension Platform?",
+          "question": "What will I learn from Extension Platform?",
           "answer": "MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks."
         },
         {
-          "question": "When should I use Extension Platform?",
-          "answer": "Use this docs when you need direct MdWrk guidance for extension platform."
+          "question": "Who should read Extension Platform?",
+          "answer": "Read this page if you need practical MdWrk guidance for extension platform, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2644,12 +2644,12 @@
       "updatedAt": "2026-02-05",
       "faqs": [
         {
-          "question": "What is Theme Studio And Host Surfaces?",
+          "question": "What will I learn from Theme Studio And Host Surfaces?",
           "answer": "Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model."
         },
         {
-          "question": "When should I use Theme Studio And Host Surfaces?",
-          "answer": "Use this docs when you need direct MdWrk guidance for theme studio and host surfaces."
+          "question": "Who should read Theme Studio And Host Surfaces?",
+          "answer": "Read this page if you need practical MdWrk guidance for theme studio and host surfaces, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -2687,7 +2687,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-obsidian.md",
-    "sourceHash": "fc710612fa9c78054cb9f7681b9afed979c3015c9d6e293f20d43dcec33c26ef",
+    "sourceHash": "dc132075fa5c3901b1170d52dcb1864041330fdee81b75559ce27a82551b7658",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-obsidian/",
@@ -2700,19 +2700,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Obsidian?",
+          "question": "How does MdWrk compare with Obsidian?",
           "answer": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces."
         },
         {
-          "question": "When should I use MdWrk Vs Obsidian?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs obsidian."
+          "question": "What should teams review before comparing MdWrk and Obsidian?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-obsidian/",
       "noindex": false,
@@ -2754,7 +2754,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-typora.md",
-    "sourceHash": "0af1f79966cbe55914d1488d0488152c6e72ec51c181b6f81fd9d6747776c52c",
+    "sourceHash": "1d8382654afbecf75f6799a2d7721ee3435976491dfbc70c2b4eea39c7ae18f9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-typora/",
@@ -2767,19 +2767,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Typora?",
+          "question": "How does MdWrk compare with Typora?",
           "answer": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps."
         },
         {
-          "question": "When should I use MdWrk Vs Typora?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs typora."
+          "question": "What should teams review before comparing MdWrk and Typora?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-typora/",
       "noindex": false,
@@ -2821,7 +2821,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-vs-code.md",
-    "sourceHash": "c13c0a2c7fae279559f8f722c74ab9e73d867dbbafd68e6e558bc2c1f709c0ba",
+    "sourceHash": "c098e3088deb858bf7d9fbb52710090bdea719e1909c11ec79b7217c6a7d8d25",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-vs-code/",
@@ -2834,19 +2834,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs VS Code?",
+          "question": "How does MdWrk compare with VS Code?",
           "answer": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE."
         },
         {
-          "question": "When should I use MdWrk Vs VS Code?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs vs code."
+          "question": "What should teams review before comparing MdWrk and VS Code?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-vs-code/",
       "noindex": false,
@@ -2888,7 +2888,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-marktext.md",
-    "sourceHash": "0ca87a00f19025b51028ede7ae6ecb706b1359d66f4f2623103589e209fa16de",
+    "sourceHash": "83814e85bf9fac8c9d8b95dcecab08b839194c048dd54988c8fddd3cbea5659f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-marktext/",
@@ -2901,19 +2901,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Marktext?",
+          "question": "How does MdWrk compare with Marktext?",
           "answer": "Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor."
         },
         {
-          "question": "When should I use MdWrk Vs Marktext?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs marktext."
+          "question": "What should teams review before comparing MdWrk and Marktext?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-marktext/",
       "noindex": false,
@@ -2955,7 +2955,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-zettlr.md",
-    "sourceHash": "dfb416c0d3c3beaba1d0d9895c9503c32bae2b9333bd17c5b7cd640e1b5c95a5",
+    "sourceHash": "1b343a1b163f7eacad5ddd79ee23cf58c9e2f6146b82e4c8c0b1ea7764d05e9f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-zettlr/",
@@ -2968,19 +2968,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Zettlr?",
+          "question": "How does MdWrk compare with Zettlr?",
           "answer": "Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment."
         },
         {
-          "question": "When should I use MdWrk Vs Zettlr?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs zettlr."
+          "question": "What should teams review before comparing MdWrk and Zettlr?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-zettlr/",
       "noindex": false,
@@ -3022,7 +3022,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-notion.md",
-    "sourceHash": "8e37e5443643ba03552833bf00c4eb63737d3f87362c352ee6f7956fea6ea4dc",
+    "sourceHash": "6a0d5c11689daa41f74de7070c4f8c52e029693b0f6cce75a326ef4232fff63a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-notion/",
@@ -3035,19 +3035,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Notion?",
+          "question": "How does MdWrk compare with Notion?",
           "answer": "Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace."
         },
         {
-          "question": "When should I use MdWrk Vs Notion?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs notion."
+          "question": "What should teams review before comparing MdWrk and Notion?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-notion/",
       "noindex": false,
@@ -3089,7 +3089,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-logseq.md",
-    "sourceHash": "b597735b662b84e36b1553ff1260fd1033c97f8fa12b770cfaa7ae6bc328dbb7",
+    "sourceHash": "824f3b3935ebc32a04b6a0846304d751b78d7be8af03767d7f5587e218f20acf",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-logseq/",
@@ -3102,19 +3102,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Logseq?",
+          "question": "How does MdWrk compare with Logseq?",
           "answer": "Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow."
         },
         {
-          "question": "When should I use MdWrk Vs Logseq?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs logseq."
+          "question": "What should teams review before comparing MdWrk and Logseq?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-logseq/",
       "noindex": false,
@@ -3156,7 +3156,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-standard-markdown-editors.md",
-    "sourceHash": "f2c7eafa3761e98df97cfd6645f34a97f3d9cfe96b54b2a7734daaf4bd88e214",
+    "sourceHash": "632b8fde25c1aaa2258ddb10285ec4a67b79e441629b8267ad867ed089ab6c02",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/comparisons/mdwrk-vs-standard-markdown-editors/",
@@ -3169,19 +3169,19 @@
       "updatedAt": "2026-05-03",
       "faqs": [
         {
-          "question": "What is MdWrk Vs Standard Markdown Editors?",
+          "question": "How does MdWrk compare with Standard Markdown Editors?",
           "answer": "Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages."
         },
         {
-          "question": "When should I use MdWrk Vs Standard Markdown Editors?",
-          "answer": "Use this docs when you need direct MdWrk guidance for mdwrk vs standard markdown editors."
+          "question": "What should teams review before comparing MdWrk and Standard Markdown Editors?",
+          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
       "parent": "/docs/",
       "related": [],
       "tags": [
         "docs",
-        "Comparisons"
+        "Compares"
       ],
       "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-standard-markdown-editors/",
       "noindex": false,
@@ -3236,12 +3236,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is UI Refresh 1.3.28?",
+          "question": "What will I learn from UI Refresh 1.3.28?",
           "answer": "MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement."
         },
         {
-          "question": "When should I use UI Refresh 1.3.28?",
-          "answer": "Use this docs when you need direct MdWrk guidance for ui refresh 1.3.28."
+          "question": "Who should read UI Refresh 1.3.28?",
+          "answer": "Read this page if you need practical MdWrk guidance for ui refresh 1.3.28, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -3287,12 +3287,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is UI Refresh 1.3.29?",
+          "question": "What will I learn from UI Refresh 1.3.29?",
           "answer": "This release focuses on visual clarity, modal usability, and responsive behavior improvements-"
         },
         {
-          "question": "When should I use UI Refresh 1.3.29?",
-          "answer": "Use this docs when you need direct MdWrk guidance for ui refresh 1.3.29."
+          "question": "Who should read UI Refresh 1.3.29?",
+          "answer": "Read this page if you need practical MdWrk guidance for ui refresh 1.3.29, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
       "parent": "/docs/",
@@ -3339,12 +3339,12 @@
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What is Blog?",
+          "question": "What does the MdWrk Blog cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "When should I use Blog?",
-          "answer": "Use this blog when you need direct MdWrk guidance for blog."
+          "question": "Where should readers start in the MdWrk Blog?",
+          "answer": "Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes."
         }
       ],
       "related": [],
@@ -3444,12 +3444,12 @@
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What is Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "When should I use Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use?",
-          "answer": "Use this blog when you need direct MdWrk guidance for settings simplification gives mdwrk a faster path from installation to daily use."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3526,12 +3526,12 @@
       "updatedAt": "2026-04-30",
       "faqs": [
         {
-          "question": "What is Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience?",
+          "question": "What does this MdWrk article cover?",
           "answer": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage."
         },
         {
-          "question": "When should I use Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience?",
-          "answer": "Use this blog when you need direct MdWrk guidance for explore the mdwrk client, packages, and extensions through a sharper docs experience."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3638,12 +3638,12 @@
       "updatedAt": "2026-04-26",
       "faqs": [
         {
-          "question": "What is Launch Extensions on the Same Governed Host the MdWrk Client Uses?",
+          "question": "What does this MdWrk article cover?",
           "answer": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path."
         },
         {
-          "question": "When should I use Launch Extensions on the Same Governed Host the MdWrk Client Uses?",
-          "answer": "Use this blog when you need direct MdWrk guidance for launch extensions on the same governed host the mdwrk client uses."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3750,12 +3750,12 @@
       "updatedAt": "2026-04-22",
       "faqs": [
         {
-          "question": "What is Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client."
         },
         {
-          "question": "When should I use Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk?",
-          "answer": "Use this blog when you need direct MdWrk guidance for workspace files and git operations packages open a larger automation surface for mdwrk."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3832,12 +3832,12 @@
       "updatedAt": "2026-04-14",
       "faqs": [
         {
-          "question": "What is Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story."
         },
         {
-          "question": "When should I use Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery?",
-          "answer": "Use this blog when you need direct MdWrk guidance for desktop release automation and android verification sharpen mdwrk cross-platform delivery."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3909,12 +3909,12 @@
       "updatedAt": "2026-04-12",
       "faqs": [
         {
-          "question": "What is Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption."
         },
         {
-          "question": "When should I use Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk?",
-          "answer": "Use this blog when you need direct MdWrk guidance for retained client versions and the desktop shell expand how teams can deploy mdwrk."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -3991,12 +3991,12 @@
       "updatedAt": "2026-04-03",
       "faqs": [
         {
-          "question": "What is Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract."
         },
         {
-          "question": "When should I use Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows?",
-          "answer": "Use this blog when you need direct MdWrk guidance for screenshot matrix coverage helps mdwrk prove themes across viewports and workflows."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4058,12 +4058,12 @@
       "updatedAt": "2026-04-01",
       "faqs": [
         {
-          "question": "What is Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations."
         },
         {
-          "question": "When should I use Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal?",
-          "answer": "Use this blog when you need direct MdWrk guidance for extension compatibility gates turn mdwrk publishing into a clear quality signal."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4140,12 +4140,12 @@
       "updatedAt": "2026-03-31",
       "faqs": [
         {
-          "question": "What is Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands."
         },
         {
-          "question": "When should I use Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape?",
-          "answer": "Use this blog when you need direct MdWrk guidance for governed releases, ci evidence, and package docs give mdwrk a stronger public shape."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4227,12 +4227,12 @@
       "updatedAt": "2026-03-23",
       "faqs": [
         {
-          "question": "What is Build with the Same MdWrk Editor and Renderer the Client Ships?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day."
         },
         {
-          "question": "When should I use Build with the Same MdWrk Editor and Renderer the Client Ships?",
-          "answer": "Use this blog when you need direct MdWrk guidance for build with the same mdwrk editor and renderer the client ships."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4334,12 +4334,12 @@
       "updatedAt": "2026-01-22",
       "faqs": [
         {
-          "question": "What is PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment."
         },
         {
-          "question": "When should I use PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use?",
-          "answer": "Use this blog when you need direct MdWrk guidance for pwa install, zoom controls, and preview refinements make mdwrk ready for daily use."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4421,12 +4421,12 @@
       "updatedAt": "2026-01-21",
       "faqs": [
         {
-          "question": "What is Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks."
         },
         {
-          "question": "When should I use Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day?",
-          "answer": "Use this blog when you need direct MdWrk guidance for responsive authoring, keyboard speed, and html export expand mdwrk in a single day."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4488,12 +4488,12 @@
       "updatedAt": "2026-01-20",
       "faqs": [
         {
-          "question": "What is Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow?",
+          "question": "What does this MdWrk article cover?",
           "answer": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one."
         },
         {
-          "question": "When should I use Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow?",
-          "answer": "Use this blog when you need direct MdWrk guidance for meet the markdown workspace that turns writing, preview, and themes into one fast flow."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "parent": "/blog/",
@@ -4575,12 +4575,12 @@
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What is CobyCloud?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "When should I use CobyCloud?",
-          "answer": "Use this blog when you need direct MdWrk guidance for cobycloud."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
@@ -4680,12 +4680,12 @@
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What is May 2026?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "When should I use May 2026?",
-          "answer": "Use this blog when you need direct MdWrk guidance for may 2026."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
@@ -4725,12 +4725,12 @@
       "updatedAt": "2026-04-30",
       "faqs": [
         {
-          "question": "What is April 2026?",
+          "question": "What does this MdWrk article cover?",
           "answer": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage."
         },
         {
-          "question": "When should I use April 2026?",
-          "answer": "Use this blog when you need direct MdWrk guidance for april 2026."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
@@ -4800,12 +4800,12 @@
       "updatedAt": "2026-03-31",
       "faqs": [
         {
-          "question": "What is March 2026?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands."
         },
         {
-          "question": "When should I use March 2026?",
-          "answer": "Use this blog when you need direct MdWrk guidance for march 2026."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
@@ -4850,12 +4850,12 @@
       "updatedAt": "2026-01-22",
       "faqs": [
         {
-          "question": "What is January 2026?",
+          "question": "What does this MdWrk article cover?",
           "answer": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment."
         },
         {
-          "question": "When should I use January 2026?",
-          "answer": "Use this blog when you need direct MdWrk guidance for january 2026."
+          "question": "What should readers take away from this article?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
@@ -4904,12 +4904,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Privacy Policy?",
+          "question": "How does MdWrk handle privacy-sensitive Markdown work?",
           "answer": "At MdWrk , we believe privacy is a fundamental human right. Our software is designed so that your data never touches our servers. Data Collection We do not collect, store, or process any of your personal data. All markdo..."
         },
         {
-          "question": "When should I use Privacy Policy?",
-          "answer": "Use this privacy when you need direct MdWrk guidance for privacy policy."
+          "question": "Which privacy choices should MdWrk users review?",
+          "answer": "Review local storage behavior, sync choices, extension trust boundaries, export paths, and any workflow that intentionally connects to an external service."
         }
       ],
       "related": [
@@ -4961,12 +4961,12 @@
       "updatedAt": "2026-05-02",
       "faqs": [
         {
-          "question": "What is Terms of Service?",
+          "question": "How does MdWrk handle privacy-sensitive Markdown work?",
           "answer": "Welcome to MdWrk. By using this application, you agree to the following: \"As-Is\" Software MdWrk is provided \"as is\" without any warranties. Ownership You own 100% of the content you create. Compliance MdWrk is intended f..."
         },
         {
-          "question": "When should I use Terms of Service?",
-          "answer": "Use this privacy when you need direct MdWrk guidance for terms of service."
+          "question": "Which privacy choices should MdWrk users review?",
+          "answer": "Review local storage behavior, sync choices, extension trust boundaries, export paths, and any workflow that intentionally connects to an external service."
         }
       ],
       "related": [

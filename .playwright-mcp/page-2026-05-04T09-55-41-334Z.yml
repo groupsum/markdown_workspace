@@ -1,0 +1,47 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic:
+      - generic:
+        - heading [level=1]: Edit in renderer
+        - paragraph: Edit directly in this rendered document. This single surface is both the input area and the rendered display.
+        - heading [level=2]: Live markdown rendering
+        - paragraph:
+          - text: Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as
+          - code: "## Next section"
+          - text: ","
+          - code: "- new item"
+          - text: ", or"
+          - code: "> note"
+          - text: .
+        - list:
+          - listitem:
+            - paragraph: Headings stay visually rendered as headings
+          - listitem:
+            - paragraph: Lists stay visually rendered as lists
+          - listitem:
+            - paragraph:
+              - strong: Bold
+              - text: and
+              - emphasis: italic
+              - text: text render inside the same editable pane
+            - blockquote:
+              - paragraph: Blockquotes, code blocks, and tables render without switching panes.
+        - table:
+          - rowgroup:
+            - row:
+              - columnheader: Syntax
+              - columnheader: Rendered result
+          - rowgroup:
+            - row:
+              - cell:
+                - code: "# Title"
+              - cell: heading
+            - row:
+              - cell:
+                - code: "- Item"
+              - cell: list item
+        - generic:
+          - code: "import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} />"
+    - textbox "Markdown source" [active] [ref=e5]:
+      - /placeholder: Start typing...
+      - text: "# Edit in renderer Edit directly in this rendered document. This single surface is both the input area and the rendered display. ## Live markdown rendering Markdown syntax is rendered in place while the document remains editable. Try adding a new line such as `## Next section`, `- new item`, or `> note`. - Headings stay visually rendered as headings - Lists stay visually rendered as lists - **Bold** and _italic_ text render inside the same editable pane > Blockquotes, code blocks, and tables render without switching panes. | Syntax | Rendered result | | --- | --- | | `# Title` | heading | | `- Item` | list item | ```tsx import { MarkdownEditInRenderer } from \"@mdwrk/markdown-edit-in-renderer-react\"; <MarkdownEditInRenderer value={markdown} onChange={setMarkdown} /> ```"

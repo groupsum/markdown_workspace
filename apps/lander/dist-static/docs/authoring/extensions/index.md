@@ -67,10 +67,10 @@ docs/architecture/extension-package-layout.md
 
 ## Frequently Asked Questions
 
-### What is Extension Authoring?
+### What will I learn from Extension Authoring?
 
 Extension authoring covers manifest shape, host APIs, activation lifecycle, package-local source, generated bundles, and trust metadata for MdWrk extensions.
 
-### When should I use Extension Authoring?
+### Who should read Extension Authoring?
 
-Use this docs when you need direct MdWrk guidance for extension authoring.
+Read this page if you need practical MdWrk guidance for extension authoring, including the relevant workflow, product surface, and follow-up documentation paths.

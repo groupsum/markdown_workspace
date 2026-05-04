@@ -65,10 +65,10 @@ MdWrk now expresses that story clearly in product terms and package terms at the
 
 ## Frequently Asked Questions
 
-### What is Launch Extensions on the Same Governed Host the MdWrk Client Uses?
+### What does this MdWrk article cover?
 
 The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
 
-### When should I use Launch Extensions on the Same Governed Host the MdWrk Client Uses?
+### What should readers take away from this article?
 
-Use this blog when you need direct MdWrk guidance for launch extensions on the same governed host the mdwrk client uses.
+This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.

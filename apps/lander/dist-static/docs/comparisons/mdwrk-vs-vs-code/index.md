@@ -19,10 +19,10 @@ MdWrk makes document workspace behavior, preview policy, theme packs, and Markdo
 
 ## Frequently Asked Questions
 
-### What is MdWrk Vs VS Code?
+### How does MdWrk compare with VS Code?
 
 Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.
 
-### When should I use MdWrk Vs VS Code?
+### What should teams review before comparing MdWrk and VS Code?
 
-Use this docs when you need direct MdWrk guidance for mdwrk vs vs code.
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.

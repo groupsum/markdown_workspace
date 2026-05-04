@@ -67,10 +67,10 @@ Choose standalone modules when you want package reuse without running the whole 
 
 ## Frequently Asked Questions
 
-### What is Local Setup?
+### What will I learn from Local Setup?
 
 This path is for maintainers, internal adopters, and self-hosting operators who want more control than the browser or PWA flows provide.
 
-### When should I use Local Setup?
+### Who should read Local Setup?
 
-Use this docs when you need direct MdWrk guidance for local setup.
+Read this page if you need practical MdWrk guidance for local setup, including the relevant workflow, product surface, and follow-up documentation paths.

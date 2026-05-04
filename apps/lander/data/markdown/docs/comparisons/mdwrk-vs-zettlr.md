@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Zettlr
 slug: comparisons/mdwrk-vs-zettlr
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 5
 toc: true

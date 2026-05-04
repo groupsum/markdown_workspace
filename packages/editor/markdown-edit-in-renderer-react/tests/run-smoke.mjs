@@ -93,6 +93,36 @@ function lineCharForOffset(markdown, offset) {
   };
 }
 
+function waitForFrame() {
+  return new Promise((resolve) => window.requestAnimationFrame(resolve));
+}
+
+async function placeCaret(view, offset) {
+  view.textarea.focus();
+  view.textarea.selectionStart = offset;
+  view.textarea.selectionEnd = offset;
+  fireEvent.select(view.textarea);
+  await waitForFrame();
+}
+
+function getRenderedCaret(view) {
+  const caret = view.container.querySelector(".markdown-edit-in-renderer-caret");
+  assert.ok(caret instanceof HTMLElement, "expected rendered caret element");
+  return caret;
+}
+
+async function assertProjectedCaret(view, offset, expected) {
+  await placeCaret(view, offset);
+  const caret = getRenderedCaret(view);
+  assert.equal(view.textarea.selectionStart, offset);
+  assert.equal(view.textarea.selectionEnd, offset);
+  assert.equal(caret.dataset.visible, "true");
+  assert.equal(caret.dataset.plaintextLine, String(expected.plaintextLine));
+  assert.equal(caret.dataset.plaintextChar, String(expected.plaintextChar));
+  assert.equal(caret.dataset.renderedLine, String(expected.renderedLine));
+  assert.equal(caret.dataset.renderedChar, String(expected.renderedChar));
+}
+
 const checks = [
   {
     id: "block-splitting",
@@ -181,6 +211,17 @@ const checks = [
     },
   },
   {
+    id: "hidden-plaintext-suppresses-native-cursor",
+    description: "Hidden plaintext layer suppresses browser-native caret and pointer cursor affordances",
+    test() {
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*caret-color:\s*transparent;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*-webkit-text-fill-color:\s*transparent;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*none;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\s*\{[\s\S]*background:\s*var\(--mwir-accent\);/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\[data-visible="true"\]\s*\{[\s\S]*display:\s*block;/);
+    },
+  },
+  {
     id: "typing-preserves-cursor-and-source-integrity",
     description: "Editing in the hidden plaintext source preserves selection and exact markdown text",
     test() {
@@ -223,6 +264,235 @@ const checks = [
         assert.equal(view.projection.querySelectorAll("h2").length, 1);
         assert.equal(view.projection.querySelector("h2")?.textContent, "Rendered From Source");
         assert.equal(view.textarea.value.includes("<h2"), false);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "single-enter-soft-break-renders-visible-line-break",
+    description: "Single Enter inside paragraph source remains plaintext and renders as a visible soft break",
+    test() {
+      const initial = "First line";
+      const view = setupRenderedEditor(initial);
+      try {
+        const appendAt = view.textarea.value.length;
+        view.textarea.focus();
+        view.textarea.selectionStart = appendAt;
+        view.textarea.selectionEnd = appendAt;
+
+        const nextValue = replaceText(view.textarea, appendAt, appendAt, "\nSecond line");
+
+        assert.equal(nextValue, "First line\nSecond line");
+        assert.equal(view.textarea.value, "First line\nSecond line");
+        assert.equal(view.getLastChange(), "First line\nSecond line");
+        assert.equal(view.textarea.selectionStart, "First line\nSecond line".length);
+        assert.equal(view.projection.querySelectorAll("br").length, 1);
+        assert.equal(view.projection.querySelector("p")?.innerHTML, "First line<br>Second line");
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "rendered-caret-aligns-heading-marker-offset",
+    description: "Visible caret preserves plaintext line/char while projecting heading markers out of rendered coordinates",
+    async test() {
+      const markdown = "# title test ";
+      const view = setupRenderedEditor(markdown);
+      try {
+        const caret = view.container.querySelector(".markdown-edit-in-renderer-caret");
+        assert.ok(caret instanceof HTMLElement);
+        view.textarea.focus();
+        view.textarea.selectionStart = markdown.length;
+        view.textarea.selectionEnd = markdown.length;
+        fireEvent.select(view.textarea);
+        await new Promise((resolve) => window.requestAnimationFrame(resolve));
+
+        assert.equal(view.textarea.selectionStart, markdown.length);
+        assert.equal(caret.dataset.visible, "true");
+        assert.equal(caret.dataset.plaintextLine, "1");
+        assert.equal(caret.dataset.plaintextChar, String(markdown.length + 1));
+        assert.equal(caret.dataset.renderedLine, "1");
+        assert.equal(caret.dataset.renderedChar, String("title test ".length + 1));
+        assert.equal(view.projection.querySelector("h1")?.textContent, "title test");
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-is-character-addressable-in-plain-paragraphs",
+    description: "Plain paragraph caret projection is stable at every plaintext character offset",
+    async test() {
+      const markdown = "Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        for (let offset = 0; offset <= markdown.length; offset += 1) {
+          await assertProjectedCaret(view, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: offset + 1,
+          });
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-is-character-addressable-across-soft-line-breaks",
+    description: "Soft line break caret projection preserves per-character line and character coordinates",
+    async test() {
+      const markdown = "Alpha\nBeta";
+      const view = setupRenderedEditor(markdown);
+      try {
+        assert.equal(view.projection.querySelectorAll("br").length, 1);
+        const cases = [
+          { offset: 0, plaintextLine: 1, plaintextChar: 1, renderedLine: 1, renderedChar: 1 },
+          { offset: 1, plaintextLine: 1, plaintextChar: 2, renderedLine: 1, renderedChar: 2 },
+          { offset: 5, plaintextLine: 1, plaintextChar: 6, renderedLine: 1, renderedChar: 6 },
+          { offset: 6, plaintextLine: 2, plaintextChar: 1, renderedLine: 2, renderedChar: 1 },
+          { offset: 7, plaintextLine: 2, plaintextChar: 2, renderedLine: 2, renderedChar: 2 },
+          { offset: markdown.length, plaintextLine: 2, plaintextChar: 5, renderedLine: 2, renderedChar: 5 },
+        ];
+
+        for (const expected of cases) {
+          await assertProjectedCaret(view, expected.offset, expected);
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-collapses-heading-marker-per-character",
+    description: "Heading marker characters remain addressable in plaintext and collapse to the rendered heading start",
+    async test() {
+      const markdown = "# Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        for (let offset = 0; offset <= markdown.length; offset += 1) {
+          await assertProjectedCaret(view, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: Math.max(1, offset - 2 + 1),
+          });
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-collapses-list-markers-per-character",
+    description: "List marker characters remain addressable in plaintext and collapse to the rendered item start",
+    async test() {
+      const markdown = "- Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        for (let offset = 0; offset <= markdown.length; offset += 1) {
+          await assertProjectedCaret(view, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: Math.max(1, offset - 2 + 1),
+          });
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-collapses-ordered-list-markers-per-character",
+    description: "Ordered-list marker characters remain addressable in plaintext and collapse to the rendered item start",
+    async test() {
+      const markdown = "12. Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        for (let offset = 0; offset <= markdown.length; offset += 1) {
+          await assertProjectedCaret(view, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: Math.max(1, offset - 4 + 1),
+          });
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-collapses-blockquote-marker-per-character",
+    description: "Blockquote marker characters remain addressable in plaintext and collapse to the rendered quote start",
+    async test() {
+      const markdown = "> Alpha";
+      const view = setupRenderedEditor(markdown);
+      try {
+        for (let offset = 0; offset <= markdown.length; offset += 1) {
+          await assertProjectedCaret(view, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: Math.max(1, offset - 2 + 1),
+          });
+        }
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "projected-caret-survives-controlled-rerender-at-each-character",
+    description: "Controlled re-renders preserve per-character plaintext selection and rendered caret projection",
+    async test() {
+      function Harness() {
+        const [value, setValue] = React.useState("# Alpha");
+        const [renderCount, setRenderCount] = React.useState(0);
+        return React.createElement(
+          React.Fragment,
+          null,
+          React.createElement(MarkdownEditInRenderer, {
+            value,
+            onChange: setValue,
+          }),
+          React.createElement(
+            "button",
+            {
+              type: "button",
+              onClick: () => setRenderCount((count) => count + 1),
+            },
+            `rerender ${renderCount}`,
+          ),
+        );
+      }
+
+      const view = render(React.createElement(Harness));
+      try {
+        const textarea = view.container.querySelector("textarea.markdown-edit-in-renderer-plaintext");
+        const button = view.container.querySelector("button");
+        assert.ok(textarea instanceof HTMLTextAreaElement);
+        assert.ok(button instanceof HTMLElement);
+        const controlledView = { ...view, textarea };
+
+        for (let offset = 0; offset <= textarea.value.length; offset += 1) {
+          await assertProjectedCaret(controlledView, offset, {
+            plaintextLine: 1,
+            plaintextChar: offset + 1,
+            renderedLine: 1,
+            renderedChar: Math.max(1, offset - 2 + 1),
+          });
+          fireEvent.click(button);
+          await waitForFrame();
+          assert.equal(textarea.selectionStart, offset);
+          assert.equal(textarea.selectionEnd, offset);
+          const caret = getRenderedCaret(view);
+          assert.equal(caret.dataset.renderedChar, String(Math.max(1, offset - 2 + 1)));
+        }
       } finally {
         cleanup();
       }

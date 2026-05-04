@@ -22,10 +22,10 @@ Production URL checks are post-deploy smoke checks. They should verify that the 
 
 ## Frequently Asked Questions
 
-### What is Security notes?
+### What security topics does this MdWrk page cover?
 
 MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.
 
-### When should I use Security notes?
+### Which MdWrk security boundaries should teams review?
 
-Use this security when you need direct MdWrk guidance for security notes.
+Review package boundaries, extension trust, static content verification, robots policy, deployable artifact checks, and any integration that crosses the local workspace boundary.

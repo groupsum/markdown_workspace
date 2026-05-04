@@ -54,10 +54,10 @@ Regenerate the sitemap during every production build so public routes stay align
 
 ## Frequently Asked Questions
 
-### What is Client Configuration?
+### What will I learn from Client Configuration?
 
 Theme Selection Open Settings -> Theme to switch between built-in theme families. Themes are contract-backed and flow through the editor, preview, export, and extension theme APIs.
 
-### When should I use Client Configuration?
+### Who should read Client Configuration?
 
-Use this docs when you need direct MdWrk guidance for client configuration.
+Read this page if you need practical MdWrk guidance for client configuration, including the relevant workflow, product surface, and follow-up documentation paths.

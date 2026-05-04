@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Standard Markdown Editors
 slug: comparisons/mdwrk-vs-standard-markdown-editors
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 8
 toc: true

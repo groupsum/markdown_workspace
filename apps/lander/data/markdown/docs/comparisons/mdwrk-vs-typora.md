@@ -1,7 +1,7 @@
 ---
 title: MdWrk Vs Typora
 slug: comparisons/mdwrk-vs-typora
-section: Comparisons
+section: Compares
 sectionOrder: 6
 order: 2
 toc: true
