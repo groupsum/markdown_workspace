@@ -81,15 +81,25 @@ const toMonthLabel = (date?: string) => {
 const toDisplayDate = (date?: string) => {
   const match = date?.match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!match) return date || '';
-  const year = Number(match[1]);
-  const monthIndex = Number(match[2]) - 1;
-  const day = Number(match[3]);
-  if (!Number.isFinite(year) || !Number.isFinite(monthIndex) || !Number.isFinite(day)) return date || '';
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(year, monthIndex, day));
+  const [, year, month, day] = match;
+  const monthLabels: Record<string, string> = {
+    '01': 'Jan.',
+    '02': 'Feb.',
+    '03': 'Mar.',
+    '04': 'Apr.',
+    '05': 'May',
+    '06': 'Jun.',
+    '07': 'Jul.',
+    '08': 'Aug.',
+    '09': 'Sept.',
+    '10': 'Oct.',
+    '11': 'Nov.',
+    '12': 'Dec.',
+  };
+  const monthLabel = monthLabels[month];
+  const numericDay = Number(day);
+  if (!monthLabel || !Number.isFinite(numericDay)) return date || '';
+  return `${monthLabel} ${numericDay}, ${year}`;
 };
 
 const getPostSlug = (id: string, metadata: Record<string, any>) => {
@@ -255,10 +265,18 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           <div className="blog-post-header">
             <div className="blog-post-meta">
               <Link to={`/blog/archive/${post.monthSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <Calendar className="blog-post-meta-icon" /> <time dateTime={post.metadata.date}>{post.displayDate}</time>
+                <Calendar className="blog-post-meta-icon" />
+                <span className="blog-post-meta-text">
+                  <span className="blog-post-meta-label">Published</span>
+                  <time dateTime={post.metadata.date}>{post.displayDate}</time>
+                </span>
               </Link>
               <Link to={`/blog/author/${post.authorSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <User className="blog-post-meta-icon" /> {post.metadata.author}
+                <User className="blog-post-meta-icon" />
+                <span className="blog-post-meta-text">
+                  <span className="blog-post-meta-label">Author</span>
+                  <span>{post.metadata.author}</span>
+                </span>
               </Link>
             </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>

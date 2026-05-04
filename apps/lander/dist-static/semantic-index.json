@@ -1,6 +1,6 @@
 {
   "site": "MdWrk",
-  "generatedAt": "2026-05-04T10:45:01.804Z",
+  "generatedAt": "2026-05-04T11:16:57.490Z",
   "description": "Plain semantic index for MdWrk docs and blog pages.",
   "entries": [
     {
@@ -1023,7 +1023,7 @@
       "url": "https://mdwrk.com/docs/getting-started/browser-use",
       "path": "/docs/getting-started/browser-use",
       "section": "Getting Started",
-      "description": "The browser path runs the MdWrk client directly in a supported browser. Documents stay local by default, and the workspace remains usable even when you are offline after the app assets have...",
+      "description": "The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.",
       "headings": [
         "What it is",
         "How to start",
@@ -1090,7 +1090,7 @@
       "url": "https://mdwrk.com/docs/getting-started/installation",
       "path": "/docs/getting-started/installation",
       "section": "Getting Started",
-      "description": "Use the browser route if you want immediate access with no setup. Use the PWA route if you want a dedicated window and installable shell. Use the local route if you need development control,...",
+      "description": "Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.",
       "headings": [
         "Installation Paths",
         "Quick Choice Guide",
@@ -1113,7 +1113,7 @@
         "Started",
         "browser",
         "route",
-        "want"
+        "immediate"
       ]
     },
     {

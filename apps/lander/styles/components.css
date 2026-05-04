@@ -523,7 +523,7 @@
 }
 
 .navbar-github-link {
-  @apply hidden items-center gap-2 px-4 py-2 text-sm font-medium text-center;
+  @apply hidden h-10 w-10 items-center justify-center text-center;
   background: var(--lander-panel-muted);
   color: var(--lander-fg);
 }
@@ -539,7 +539,7 @@
 }
 
 .navbar-github-icon {
-  @apply h-4 w-4;
+  @apply h-5 w-5;
 }
 
 .navbar-menu-toggle {
@@ -995,12 +995,14 @@
 }
 
 .blog-post-meta {
-  @apply mb-4 flex gap-4 text-xs;
+  @apply mb-5 flex flex-wrap gap-3 text-xs;
   color: var(--lander-fg-muted);
 }
 
 .blog-post-meta-item {
-  @apply flex items-center gap-1;
+  @apply inline-flex min-w-0 items-center gap-2 rounded-xl border px-3 py-2;
+  background: color-mix(in srgb, var(--lander-panel-muted) 74%, transparent);
+  border-color: var(--lander-border);
 }
 
 .blog-post-meta-link {
@@ -1008,7 +1010,18 @@
 }
 
 .blog-post-meta-link:hover {
+  background: color-mix(in srgb, var(--lander-accent-soft) 44%, var(--lander-panel-muted));
+  border-color: color-mix(in srgb, var(--lander-accent) 38%, var(--lander-border));
   color: var(--lander-accent);
+}
+
+.blog-post-meta-text {
+  @apply flex min-w-0 flex-col gap-0.5 leading-tight;
+}
+
+.blog-post-meta-label {
+  @apply text-[0.65rem] font-bold uppercase tracking-widest;
+  color: var(--lander-fg-subtle);
 }
 
 .blog-list-column,
@@ -1218,7 +1231,7 @@
   .navbar-menu-panel {
     order: 1;
     margin-left: auto;
-    margin-right: 2rem;
+    margin-right: 1rem;
     width: auto;
   }
 
@@ -1228,7 +1241,7 @@
     border: 0;
     background: transparent;
     padding: 0;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .navbar-link {
@@ -1296,6 +1309,14 @@
 
   .features-container {
     padding-inline: 1.5rem;
+  }
+
+  .navbar-menu-panel {
+    margin-right: 1.5rem;
+  }
+
+  .navbar-menu-list {
+    gap: 1.5rem;
   }
 
   .features-header {

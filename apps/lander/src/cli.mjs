@@ -701,11 +701,24 @@ const buildRenderRegistry = (entries) => {
 const toDisplayDate = (date) => {
   const match = String(date ?? '').match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!match) return String(date ?? '');
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  const monthLabels = {
+    '01': 'Jan.',
+    '02': 'Feb.',
+    '03': 'Mar.',
+    '04': 'Apr.',
+    '05': 'May',
+    '06': 'Jun.',
+    '07': 'Jul.',
+    '08': 'Aug.',
+    '09': 'Sept.',
+    '10': 'Oct.',
+    '11': 'Nov.',
+    '12': 'Dec.',
+  };
+  const monthLabel = monthLabels[match[2]];
+  const day = Number(match[3]);
+  if (!monthLabel || !Number.isFinite(day)) return String(date ?? '');
+  return `${monthLabel} ${day}, ${match[1]}`;
 };
 
 const toMonthLabel = (dateOrMonth) => {
@@ -883,8 +896,8 @@ const createBlogPostEntry = (post) => {
     updatedAt: post.date,
     body: articleSource,
     html: `<div class="blog-post-meta">
-                    <a href="/blog/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></a>
-                    <a href="/blog/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link">${escapeHtml(post.author)}</a>
+                    <a href="/blog/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></span></a>
+                    <a href="/blog/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>${escapeHtml(post.author)}</span></span></a>
                   </div>
                   ${renderMarkdown(articleSource).html}`,
     tags: ['blog'],
@@ -1426,8 +1439,8 @@ const renderStaticThemeIcon = () => `<svg class="navbar-theme-icon static-theme-
                   <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                 </svg>`;
 
-const renderStaticStarIcon = () => `<svg class="navbar-github-icon static-github-star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M11.5 2.3a.6.6 0 0 1 1 0l2.8 5.7 6.3.9a.6.6 0 0 1 .3 1l-4.6 4.5 1.1 6.3a.6.6 0 0 1-.9.6L12 18.4l-5.6 2.9a.6.6 0 0 1-.9-.6l1.1-6.3L2 9.9a.6.6 0 0 1 .3-1L8.6 8l2.9-5.7Z"></path>
+const renderStaticGithubIcon = () => `<svg class="navbar-github-icon static-github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
                 </svg>`;
 
 const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-label="Main navigation">
@@ -1442,8 +1455,7 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
                 <span class="sr-only" data-static-theme-label>Lander Theme</span>
               </button>
               <a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
-                ${renderStaticStarIcon()}
-                <span>Repo</span>
+                ${renderStaticGithubIcon()}
               </a>
             </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">

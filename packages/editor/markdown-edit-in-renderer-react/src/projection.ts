@@ -327,18 +327,30 @@ export function projectSelectionRects(surface: HTMLElement, markdown: string, se
   const end = Math.max(selection.start, selection.end);
   if (start === end) return [];
 
+  const directRects = projectContiguousSelectionRects(surface, markdown, start, end);
+  if (directRects) return directRects;
+
+  return projectLineSelectionRects(surface, markdown, start, end);
+}
+
+function projectContiguousSelectionRects(
+  surface: HTMLElement,
+  markdown: string,
+  start: number,
+  end: number,
+): ProjectionRect[] | null {
   const startCaret = getProjectedCaret(markdown, start);
   const endCaret = getProjectedCaret(markdown, end);
   const startTarget = getRenderedTarget(surface, startCaret);
   const endTarget = getRenderedTarget(surface, endCaret);
   if (!startTarget || !endTarget || startTarget.target !== endTarget.target) {
-    return projectLineSelectionRects(surface, markdown, start, end);
+    return null;
   }
 
   const range = surface.ownerDocument.createRange();
   const startNode = findTextNode(startTarget.target, startCaret.renderedLineInBlock, startCaret.renderedChar - 1);
   const endNode = findTextNode(endTarget.target, endCaret.renderedLineInBlock, endCaret.renderedChar - 1);
-  if (!startNode || !endNode) return projectLineSelectionRects(surface, markdown, start, end);
+  if (!startNode || !endNode) return null;
 
   range.setStart(startNode.node, Math.min(startNode.offset, startNode.node.nodeType === startNode.node.ownerDocument?.defaultView?.Node.TEXT_NODE ? startNode.node.textContent?.length ?? 0 : startNode.node.childNodes.length));
   range.setEnd(endNode.node, Math.min(endNode.offset, endNode.node.nodeType === endNode.node.ownerDocument?.defaultView?.Node.TEXT_NODE ? endNode.node.textContent?.length ?? 0 : endNode.node.childNodes.length));
@@ -362,8 +374,10 @@ function projectLineSelectionRects(surface: HTMLElement, markdown: string, start
     const rangeStart = Math.max(start, lineStart);
     const rangeEnd = Math.min(end, lineEnd);
     if (rangeStart >= rangeEnd) continue;
-    const lineSelection = { start: rangeStart, end: rangeEnd };
-    rects.push(...projectSelectionRects(surface, markdown, lineSelection));
+    const lineRects = projectContiguousSelectionRects(surface, markdown, rangeStart, rangeEnd);
+    if (lineRects) {
+      rects.push(...lineRects);
+    }
   }
   return rects;
 }
@@ -477,7 +491,9 @@ function renderedCharFromPoint(block: HTMLElement, renderedLineInBlock: number, 
         const range = ownerDocument.createRange();
         range.setStart(current, offset);
         range.collapse(true);
-        const rect = range.getBoundingClientRect();
+        const rect = typeof range.getBoundingClientRect === "function"
+          ? range.getBoundingClientRect()
+          : createDOMRect(ownerDocument, block.getBoundingClientRect().left + renderedChar + offset, block.getBoundingClientRect().top, 0, block.getBoundingClientRect().height);
         const distance = Math.abs(rect.left - clientX);
         if (distance < bestDistance) {
           bestDistance = distance;

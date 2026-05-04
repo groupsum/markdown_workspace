@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Star, CloudOff, Sun, Moon } from 'lucide-react';
+import { Menu, X, Github, CloudOff, Sun, Moon } from 'lucide-react';
 import { links } from '../utils/links';
 
 interface NavbarProps {
@@ -14,8 +14,11 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
 
   const navLinks = [
     { id: '/', label: 'Home' },
+    { id: '/docs/product/offline-markdown-editor', label: 'Features' },
+    { id: '/docs/comparisons/mdwrk-vs-obsidian', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
     { id: '/blog', label: 'Blog' },
+    { id: '/docs/product/privacy-first-markdown-editor', label: 'Privacy' },
   ];
   const menuPanelClassName = ['navbar-menu-panel', isOpen ? 'is-open' : 'is-closed'].join(' ');
 
@@ -46,8 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
             aria-label="Open MdWrk GitHub repository"
             title="Open MdWrk GitHub repository"
           >
-            <Star className="navbar-github-icon" />
-            <span>Repo</span>
+            <Github className="navbar-github-icon" />
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -71,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
                   to={link.id}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) => ['navbar-link', isActive ? 'is-active' : 'is-inactive'].join(' ')}
-                  end={link.id === '/'}
+                  end={link.id !== '/blog'}
                 >
                   {link.label}
                 </NavLink>

@@ -62,14 +62,16 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
     const valueRef = React.useRef(draftValue);
     const selectionRef = React.useRef<PlaintextSelection>({ start: 0, end: 0 });
     const isComposingRef = React.useRef(false);
-    const [caret, setCaret] = React.useState<RenderedCaret>(() => ({
+    const initialCaret = React.useMemo<RenderedCaret>(() => ({
       ...getProjectedCaret(initialValue, 0),
       visible: false,
       left: 0,
       top: 0,
       height: 16,
       confidence: "nearest",
-    }));
+    }), [initialValue]);
+    const [caret, setCaret] = React.useState<RenderedCaret>(initialCaret);
+    const caretRef = React.useRef<RenderedCaret>(initialCaret);
     const [selectionRects, setSelectionRects] = React.useState<readonly ProjectionRect[]>([]);
     const [compositionRects, setCompositionRects] = React.useState<readonly ProjectionRect[]>([]);
     const [isComposing, setIsComposing] = React.useState(false);
@@ -140,21 +142,20 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
 
       const selection = restoreTrackedPlaintextSelection(input);
       const visible = document.activeElement === input && !disabled;
-      setCaret((previousCaret) => {
-        const projection = projectMarkdownState(surface, input.value, selection, previousCaret, visible);
-        setSelectionRects(projection.selectionRects);
-        if (isComposingRef.current) {
-          setCompositionRects(projection.selectionRects.length > 0 ? projection.selectionRects : [{
-            left: projection.caret.left,
-            top: projection.caret.top + projection.caret.height - 2,
-            width: 8,
-            height: 2,
-          }]);
-        } else {
-          setCompositionRects([]);
-        }
-        return projection.caret;
-      });
+      const projection = projectMarkdownState(surface, input.value, selection, caretRef.current, visible);
+      caretRef.current = projection.caret;
+      setCaret(projection.caret);
+      setSelectionRects(projection.selectionRects);
+      if (isComposingRef.current) {
+        setCompositionRects(projection.selectionRects.length > 0 ? projection.selectionRects : [{
+          left: projection.caret.left,
+          top: projection.caret.top + projection.caret.height - 2,
+          width: 8,
+          height: 2,
+        }]);
+      } else {
+        setCompositionRects([]);
+      }
     }, [disabled, restoreTrackedPlaintextSelection]);
 
     const setTextareaSelection = React.useCallback((start: number, end = start) => {
@@ -311,10 +312,12 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
             updateRenderedCaret();
           }}
           onPointerDown={(event) => {
+            event.preventDefault();
             updateSelectionFromPointer(event, event.shiftKey);
           }}
           onPointerMove={(event) => {
             if (event.buttons !== 1) return;
+            event.preventDefault();
             updateSelectionFromPointer(event, true);
           }}
           onScroll={updateRenderedCaret}
