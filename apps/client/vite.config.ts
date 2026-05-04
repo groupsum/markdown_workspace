@@ -56,6 +56,7 @@ export default defineConfig(({ mode }) => {
           '@mdwrk/extension-theme-studio': path.resolve(__dirname, '../../packages/extensions/extension-theme-studio/src'),
           '@mdwrk/markdown-renderer-react': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-react/src'),
           '@mdwrk/markdown-editor-react': path.resolve(__dirname, '../../packages/editor/markdown-editor-react/src'),
+          '@mdwrk/markdown-edit-in-renderer-react': path.resolve(__dirname, '../../packages/editor/markdown-edit-in-renderer-react/src'),
           '@mdwrk/markdown-renderer-core': path.resolve(__dirname, '../../packages/renderer/markdown-renderer-core/src'),
           '@mdwrk/markdown-editor-core': path.resolve(__dirname, '../../packages/editor/markdown-editor-core/src'),
         }

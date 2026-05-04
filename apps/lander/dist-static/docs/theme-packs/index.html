@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MdWrk theme packs documentation for Markdown workspace styling</title>
+    <meta name="description" content="MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.">
+    <link rel="canonical" href="https://mdwrk.com/docs/theme-packs/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/docs/theme-packs/#webpage","url":"https://mdwrk.com/docs/theme-packs/","name":"MdWrk theme packs documentation for Markdown workspace styling","headline":"Theme packs","description":"MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/docs/theme-packs/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk quickstart","item":"https://mdwrk.com/docs/quickstart/"},{"@type":"ListItem","position":3,"name":"Theme packs","item":"https://mdwrk.com/docs/theme-packs/"}]}]}</script>
+    
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">M</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout static-page-shell">
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <article class="docs-content-card lander-content-card static-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>docs</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-04</span>
+                    </div>
+                    <h1 class="docs-title">Theme packs</h1>
+                  </header>
+                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
+                <h2 class="answer-blocks-heading">Answer Summary</h2>
+                <p>MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content.</p>
+              </section>
+                  <div class="lander-markdown">
+                    <div class="markdown-body">
+                      <p>Theme packs describe how MdWrk presents the Markdown workspace without changing the underlying Markdown source. The documentation separates content, rendering, and theme behavior so users know what is styling and what is document data.</p>
+<h2 id="theme-contract">Theme Contract</h2>
+<p>A theme should define visual tokens, layout behavior, syntax colors, and component styling boundaries. It should not rewrite public content or hide important text from crawlers and readers.</p>
+<h2 id="syntax-color">Syntax Color</h2>
+<p>Code block syntax colors must be visible in generated HTML when the renderer emits token classes. Lander themes define different color variables for light and dark modes, while the static compiler keeps source content readable.</p>
+<h2 id="extension-relationship">Extension Relationship</h2>
+<p>Theme packs may be delivered through extension surfaces, but the documentation should explain which package owns the contract and how the workspace applies the visual layer.</p>
+                    </div>
+                  </div>
+                  
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                <ul><li><a href="/features/extension-platform/">Extension platform for Markdown workflows</a></li><li><a href="/docs/extensions/">Extensions</a></li></ul>
+              </section>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MdWrk launch notes for a static local-first Markdown lander</title>
+    <meta name="description" content="The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.">
+    <link rel="canonical" href="https://mdwrk.com/blog/launch/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/blog/launch/#webpage","url":"https://mdwrk.com/blog/launch/","name":"MdWrk launch notes for a static local-first Markdown lander","headline":"MdWrk launch notes","description":"The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/blog/launch/#faq","mainEntity":[{"@type":"Question","name":"Why does the MdWrk lander compile static HTML?","acceptedAnswer":{"@type":"Answer","text":"Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/blog/launch/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk launch notes","item":"https://mdwrk.com/blog/launch/"}]}]}</script>
+    
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">M</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout static-page-shell">
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <article class="docs-content-card lander-content-card static-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>blog</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-04</span>
+                    </div>
+                    <h1 class="docs-title">MdWrk launch notes</h1>
+                  </header>
+                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
+                <h2 class="answer-blocks-heading">Answer Summary</h2>
+                <p>The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.</p>
+              </section>
+                  <div class="lander-markdown">
+                    <div class="markdown-body">
+                      <p>MdWrk&#39;s public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live.</p>
+<h2 id="static-before-runtime">Static Before Runtime</h2>
+<p>The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page.</p>
+<h2 id="machine-readable-by-default">Machine-Readable By Default</h2>
+<p>The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned.</p>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment.</p>
+<h2 id="what-comes-next">What Comes Next</h2>
+<p>The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.</p>
+                    </div>
+                  </div>
+                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
+                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
+                <div class="answer-blocks-list"><details class="answer-block-accordion" open><summary class="answer-block-summary">Why does the MdWrk lander compile static HTML?</summary><div class="answer-block-content"><p>Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification.</p></div></details></div>
+              </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                <ul><li><a href="/docs/quickstart/">MdWrk quickstart</a></li><li><a href="/features/local-first-markdown/">Local-first Markdown workspace</a></li></ul>
+              </section>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

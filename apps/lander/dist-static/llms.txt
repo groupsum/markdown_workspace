@@ -1,0 +1,16 @@
+# MdWrk
+
+MdWrk is a local-first Markdown workspace with static, verifiable public documentation.
+
+- [MdWrk launch notes](https://mdwrk.com/blog/launch/) - The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.
+- [MdWrk vs Obsidian](https://mdwrk.com/compare/obsidian/) - Compare MdWrk and Obsidian for Markdown writing, local-first workflow expectations, extension boundaries, public docs, and developer package surfaces.
+- [MdWrk vs VS Code Markdown](https://mdwrk.com/compare/vscode-markdown/) - Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.
+- [Extensions](https://mdwrk.com/docs/extensions/) - MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.
+- [MdWrk quickstart](https://mdwrk.com/docs/quickstart/) - Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.
+- [Theme packs](https://mdwrk.com/docs/theme-packs/) - MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.
+- [Extension platform for Markdown workflows](https://mdwrk.com/features/extension-platform/) - MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.
+- [Local-first Markdown workspace](https://mdwrk.com/features/local-first-markdown/) - MdWrk documents a local-first Markdown workflow where writing, preview, workspace state, extension behavior, and export boundaries are explicit.
+- [Offline Markdown editor for local-first writing](https://mdwrk.com/features/offline-markdown-editor/) - MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.
+- [Local-first Markdown workspace](https://mdwrk.com/) - MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.
+- [Privacy policy](https://mdwrk.com/privacy/) - MdWrk privacy documentation explains the local-first storage model, explicit sharing boundaries, GitHub integration expectations, and extension trust policy.
+- [Security notes](https://mdwrk.com/security/) - MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.

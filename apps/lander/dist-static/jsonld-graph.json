@@ -1,0 +1,491 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/blog/launch/#webpage",
+      "url": "https://mdwrk.com/blog/launch/",
+      "name": "MdWrk launch notes for a static local-first Markdown lander",
+      "headline": "MdWrk launch notes",
+      "description": "The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/blog/launch/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does the MdWrk lander compile static HTML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Static HTML makes the primary public content readable before JavaScript, which supports search, accessibility, answer engines, and deployment-independent verification."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/blog/launch/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk launch notes",
+          "item": "https://mdwrk.com/blog/launch/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/obsidian/#webpage",
+      "url": "https://mdwrk.com/compare/obsidian/",
+      "name": "MdWrk vs Obsidian — local-first Markdown workspace comparison",
+      "headline": "MdWrk vs Obsidian",
+      "description": "Compare MdWrk and Obsidian for Markdown writing, local-first workflow expectations, extension boundaries, public docs, and developer package surfaces.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/obsidian/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should teams choose MdWrk or Obsidian?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Teams should evaluate the workflow they need. MdWrk is positioned around package surfaces, static public docs, and governed workspace contracts rather than a note graph as the primary identity."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/obsidian/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk vs Obsidian",
+          "item": "https://mdwrk.com/compare/obsidian/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/vscode-markdown/#webpage",
+      "url": "https://mdwrk.com/compare/vscode-markdown/",
+      "name": "MdWrk vs VS Code Markdown — workspace and editor comparison",
+      "headline": "MdWrk vs VS Code Markdown",
+      "description": "Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/vscode-markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk vs VS Code Markdown",
+          "item": "https://mdwrk.com/compare/vscode-markdown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/docs/extensions/#webpage",
+      "url": "https://mdwrk.com/docs/extensions/",
+      "name": "MdWrk extensions documentation for workspace developers",
+      "headline": "Extensions",
+      "description": "MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/docs/extensions/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk quickstart",
+          "item": "https://mdwrk.com/docs/quickstart/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Extensions",
+          "item": "https://mdwrk.com/docs/extensions/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/docs/quickstart/#webpage",
+      "url": "https://mdwrk.com/docs/quickstart/",
+      "name": "MdWrk quickstart — Write and preview Markdown locally",
+      "headline": "MdWrk quickstart",
+      "description": "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/docs/quickstart/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What should new MdWrk users read first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "New users should read the quickstart, offline Markdown editor page, and local-first workspace page before exploring extension and theme documentation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/docs/quickstart/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk quickstart",
+          "item": "https://mdwrk.com/docs/quickstart/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/docs/theme-packs/#webpage",
+      "url": "https://mdwrk.com/docs/theme-packs/",
+      "name": "MdWrk theme packs documentation for Markdown workspace styling",
+      "headline": "Theme packs",
+      "description": "MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/docs/theme-packs/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk quickstart",
+          "item": "https://mdwrk.com/docs/quickstart/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Theme packs",
+          "item": "https://mdwrk.com/docs/theme-packs/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/extension-platform/#webpage",
+      "url": "https://mdwrk.com/features/extension-platform/",
+      "name": "MdWrk extension platform for governed Markdown workflows",
+      "headline": "Extension platform for Markdown workflows",
+      "description": "MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/extension-platform/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the MdWrk extension platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the governed package and runtime surface used to describe how extensions integrate with the Markdown workspace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are extensions automatically trusted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The documentation should describe manifest metadata, compatibility checks, and explicit trust boundaries instead of implying automatic trust."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/extension-platform/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Extension platform for Markdown workflows",
+          "item": "https://mdwrk.com/features/extension-platform/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/local-first-markdown/#webpage",
+      "url": "https://mdwrk.com/features/local-first-markdown/",
+      "name": "Local-first Markdown workspace for portable documents — MdWrk",
+      "headline": "Local-first Markdown workspace",
+      "description": "MdWrk documents a local-first Markdown workflow where writing, preview, workspace state, extension behavior, and export boundaries are explicit.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/local-first-markdown/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does local-first mean for MdWrk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local-first means the product documentation treats local writing and preview as the default mental model, while sync, export, and external integrations are opt-in workflows."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/local-first-markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Local-first Markdown workspace",
+          "item": "https://mdwrk.com/features/local-first-markdown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/offline-markdown-editor/#webpage",
+      "url": "https://mdwrk.com/features/offline-markdown-editor/",
+      "name": "Offline Markdown editor for local-first writing — MdWrk",
+      "headline": "Offline Markdown editor for local-first writing",
+      "description": "MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/offline-markdown-editor/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is MdWrk an offline Markdown editor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MdWrk require cloud storage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/offline-markdown-editor/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Offline Markdown editor for local-first writing",
+          "item": "https://mdwrk.com/features/offline-markdown-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/#webpage",
+      "url": "https://mdwrk.com/",
+      "name": "MdWrk — Local-first Markdown workspace for writing, preview, and extensions",
+      "headline": "Local-first Markdown workspace",
+      "description": "MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mdwrk.com/#organization",
+      "name": "MdWrk",
+      "url": "https://mdwrk.com/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://mdwrk.com/#software",
+      "name": "MdWrk",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "url": "https://mdwrk.com/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mdwrk.com/#website",
+      "name": "MdWrk",
+      "url": "https://mdwrk.com/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is MdWrk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk is a Markdown workspace and package platform focused on local-first authoring, preview, theming, extension contracts, and developer-facing documentation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MdWrk require client-side rendering for public documentation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The public lander is compiled into static HTML so core public content is readable from the raw HTML response before any JavaScript executes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/privacy/#webpage",
+      "url": "https://mdwrk.com/privacy/",
+      "name": "MdWrk privacy policy for local-first Markdown workflows",
+      "headline": "Privacy policy",
+      "description": "MdWrk privacy documentation explains the local-first storage model, explicit sharing boundaries, GitHub integration expectations, and extension trust policy.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/privacy/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does MdWrk upload documents by default?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The public documentation should not imply default uploads. It should describe local storage and identify workflows that intentionally use networked services."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/privacy/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy policy",
+          "item": "https://mdwrk.com/privacy/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/security/#webpage",
+      "url": "https://mdwrk.com/security/",
+      "name": "MdWrk security notes for packages, extensions, and static docs",
+      "headline": "Security notes",
+      "description": "MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.",
+      "dateModified": "2026-05-04",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/security/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security notes",
+          "item": "https://mdwrk.com/security/"
+        }
+      ]
+    }
+  ]
+}

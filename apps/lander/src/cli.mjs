@@ -11,10 +11,20 @@ const repoRoot = path.resolve(landerRoot, '..', '..');
 const contentRoot = path.join(landerRoot, 'content');
 const schemasRoot = path.join(landerRoot, 'schemas');
 const publicRoot = path.join(landerRoot, 'public');
-const distRoot = path.join(landerRoot, 'dist');
 const schemaPath = path.join(schemasRoot, 'mdwrk.page.v1.schema.json');
 const siteUrl = (process.env.MDWRK_SITE_URL || process.env.VITE_SITE_URL || 'https://mdwrk.com').replace(/\/+$/, '');
 const allowNoindexLlmsInclude = process.env.MDWRK_ALLOW_NOINDEX_LLMS_INCLUDE === 'true';
+const command = process.argv[2] ?? 'validate';
+const getArgValue = (name, fallback) => {
+  const index = process.argv.indexOf(name);
+  if (index === -1) return fallback;
+  return process.argv[index + 1] && !process.argv[index + 1].startsWith('--')
+    ? process.argv[index + 1]
+    : fallback;
+};
+const outputDir = getArgValue('--out', process.env.MDWRK_STATIC_OUT || 'dist');
+const preserveAssets = process.argv.includes('--preserve-assets');
+const distRoot = path.resolve(landerRoot, outputDir);
 
 const CONTENT_TYPES = new Set([
   'landing',
@@ -120,6 +130,17 @@ const canonicalForSlug = (slug) => `${siteUrl}${slug}`;
 const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, slug.replace(/^\/|\/$/g, ''));
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
+
+const extractViteAssetTags = () => {
+  const indexPath = path.join(distRoot, 'index.html');
+  if (!preserveAssets || !fs.existsSync(indexPath)) return '';
+  const html = fs.readFileSync(indexPath, 'utf8');
+  const tags = [
+    ...html.matchAll(/<link\b[^>]*\bhref="\/assets\/[^"]+"[^>]*>/gi),
+    ...html.matchAll(/<script\b[^>]*\bsrc="\/assets\/[^"]+"[^>]*><\/script>/gi),
+  ].map(match => match[0]);
+  return Array.from(new Set(tags)).join('\n    ');
+};
 
 const collectFiles = (dir, predicate) => {
   if (!fs.existsSync(dir)) return [];
@@ -627,7 +648,7 @@ const jsonLdFor = (entry, registry) => {
 
 const renderNav = (registry) => {
   const links = [
-    ['/', 'MdWrk'],
+    ['/', 'Home'],
     ['/features/offline-markdown-editor/', 'Features'],
     ['/docs/quickstart/', 'Docs'],
     ['/compare/obsidian/', 'Compare'],
@@ -636,26 +657,26 @@ const renderNav = (registry) => {
   ];
   return links
     .filter(([slug]) => registry.bySlug.has(slug))
-    .map(([slug, text]) => `<a href="${slug}">${text}</a>`)
-    .join('\n        ');
+    .map(([slug, text]) => `<li><a class="navbar-link is-inactive" href="${slug}">${text}</a></li>`)
+    .join('\n              ');
 };
 
-const renderHtmlPage = (entry, registry) => {
+const renderHtmlPage = (entry, registry, assetTags = '') => {
   const robots = entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow';
   const answerHtml = entry.frontmatter.answer
-    ? `<section class="answer-summary" aria-label="Answer summary">\n          <p>${escapeHtml(entry.frontmatter.answer)}</p>\n        </section>`
+    ? `<section class="answer-blocks static-answer-summary" aria-label="Answer summary">\n                <h2 class="answer-blocks-heading">Answer Summary</h2>\n                <p>${escapeHtml(entry.frontmatter.answer)}</p>\n              </section>`
     : '';
   const faqHtml = entry.frontmatter.faqs.length
-    ? `<section class="faq" aria-labelledby="faq-heading">\n          <h2 id="faq-heading">Frequently Asked Questions</h2>\n          ${entry.frontmatter.faqs.map(faq => `<details open><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('\n          ')}\n        </section>`
+    ? `<section class="answer-blocks static-faq" aria-labelledby="faq-heading">\n                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>\n                <div class="answer-blocks-list">${entry.frontmatter.faqs.map(faq => `<details class="answer-block-accordion" open><summary class="answer-block-summary">${escapeHtml(faq.question)}</summary><div class="answer-block-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                  ')}</div>\n              </section>`
     : '';
   const relatedHtml = entry.frontmatter.related.length
-    ? `<section class="related" aria-labelledby="related-heading">\n          <h2 id="related-heading">Related Pages</h2>\n          <ul>${entry.frontmatter.related.map(slug => {
+    ? `<section class="answer-blocks static-related" aria-labelledby="related-heading">\n                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>\n                <ul>${entry.frontmatter.related.map(slug => {
             const target = registry.bySlug.get(slug);
             return `<li><a href="${slug}">${escapeHtml(target?.frontmatter.h1 ?? slug)}</a></li>`;
-          }).join('')}</ul>\n        </section>`
+          }).join('')}</ul>\n              </section>`
     : '';
   return `<!doctype html>
-<html lang="en">
+<html lang="en" data-lander-theme="lander-light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -663,35 +684,84 @@ const renderHtmlPage = (entry, registry) => {
     <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
     <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
     <meta name="robots" content="${robots}">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
-    <style>
-      body{font-family:Inter,Arial,sans-serif;margin:0;background:#f8fafc;color:#0f172a;line-height:1.65}
-      a{color:#4338ca} .skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem}
-      header,main,footer{max-width:72rem;margin:0 auto;padding:1.5rem} nav{display:flex;gap:1rem;flex-wrap:wrap}
-      article{background:#fff;border:1px solid #dbe3ef;border-radius:8px;padding:2rem} h1{line-height:1.1}
-      .answer-summary,.faq,.related{border:1px solid #dbe3ef;border-radius:8px;background:#f8fbff;padding:1rem;margin:1.25rem 0}
-      code,pre{background:#0f172a;color:#f8fafc;border-radius:6px}code{padding:.15rem .35rem}pre{padding:1rem;overflow:auto}
-    </style>
+    ${assetTags}
   </head>
   <body>
-    <a class="skip" href="#content">Skip to content</a>
-    <header>
-      <nav aria-label="Main navigation">
-        ${renderNav(registry)}
-      </nav>
-    </header>
-    <main id="content">
-      <article>
-        <h1>${escapeHtml(entry.frontmatter.h1)}</h1>
-        ${answerHtml}
-        ${entry.rendered.html}
-        ${faqHtml}
-        ${relatedHtml}
-      </article>
-    </main>
-    <footer>
-      <p>MdWrk static lander content. Generated from Markdown.</p>
-    </footer>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">M</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                ${renderNav(registry)}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout static-page-shell">
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <article class="docs-content-card lander-content-card static-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>${escapeHtml(entry.frontmatter.contentType)}</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>${escapeHtml(entry.frontmatter.updatedAt)}</span>
+                    </div>
+                    <h1 class="docs-title">${escapeHtml(entry.frontmatter.h1)}</h1>
+                  </header>
+                  ${answerHtml}
+                  <div class="lander-markdown">
+                    <div class="markdown-body">
+                      ${entry.rendered.html}
+                    </div>
+                  </div>
+                  ${faqHtml}
+                  ${relatedHtml}
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
 `;
@@ -718,7 +788,8 @@ const writeFile = (filePath, content) => {
 
 const build = () => {
   const registry = readContentEntries();
-  fs.rmSync(distRoot, { recursive: true, force: true });
+  const assetTags = extractViteAssetTags();
+  if (!preserveAssets) fs.rmSync(distRoot, { recursive: true, force: true });
   fs.mkdirSync(distRoot, { recursive: true });
 
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
@@ -726,7 +797,7 @@ const build = () => {
 
   for (const entry of registry.entries) {
     const dir = routeOutputDir(entry.frontmatter.slug);
-    writeFile(path.join(dir, 'index.html'), renderHtmlPage(entry, registry));
+    writeFile(path.join(dir, 'index.html'), renderHtmlPage(entry, registry, assetTags));
     if (!entry.frontmatter.noindex && entry.frontmatter.llmsInclude) {
       writeFile(path.join(dir, 'index.md'), renderMarkdownMirror(entry));
     }
@@ -835,7 +906,7 @@ const verify = () => {
     if (!html.includes('type="application/ld+json"')) failures.push(`${entry.frontmatter.slug}: missing JSON-LD`);
     if (!entry.frontmatter.noindex && !entry.frontmatter.answer) failures.push(`${entry.frontmatter.slug}: indexable page missing answer block`);
     if (entry.frontmatter.answer && !html.includes(escapeHtml(entry.frontmatter.answer))) failures.push(`${entry.frontmatter.slug}: answer not visibly rendered`);
-    if (entry.frontmatter.answer && html.indexOf('<h2') !== -1 && html.indexOf(escapeHtml(entry.frontmatter.answer)) > html.indexOf('<h2')) failures.push(`${entry.frontmatter.slug}: direct answer must be visible before article sections`);
+    if (entry.frontmatter.answer && html.indexOf('<div class="lander-markdown"') !== -1 && html.indexOf(escapeHtml(entry.frontmatter.answer)) > html.indexOf('<div class="lander-markdown"')) failures.push(`${entry.frontmatter.slug}: direct answer must be visible before article sections`);
     if (entry.frontmatter.faqs.length && !html.includes('Frequently Asked Questions')) failures.push(`${entry.frontmatter.slug}: FAQ frontmatter exists but FAQ is not visible`);
     if (entry.frontmatter.faqs.length && !html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ content is visible but FAQ JSON-LD is missing`);
     if (!entry.frontmatter.faqs.length && html.includes('"@type":"FAQPage"')) failures.push(`${entry.frontmatter.slug}: FAQ JSON-LD exists without visible FAQ content`);
@@ -883,7 +954,6 @@ const validate = () => {
   console.log(`MdWrk static lander source validation passed: ${registry.entries.length} pages.`);
 };
 
-const command = process.argv[2] ?? 'validate';
 if (command === 'validate') validate();
 else if (command === 'build') build();
 else if (command === 'verify') verify();

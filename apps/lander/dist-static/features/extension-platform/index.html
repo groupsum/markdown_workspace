@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MdWrk extension platform for governed Markdown workflows</title>
+    <meta name="description" content="MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.">
+    <link rel="canonical" href="https://mdwrk.com/features/extension-platform/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/features/extension-platform/#webpage","url":"https://mdwrk.com/features/extension-platform/","name":"MdWrk extension platform for governed Markdown workflows","headline":"Extension platform for Markdown workflows","description":"MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/features/extension-platform/#faq","mainEntity":[{"@type":"Question","name":"What is the MdWrk extension platform?","acceptedAnswer":{"@type":"Answer","text":"It is the governed package and runtime surface used to describe how extensions integrate with the Markdown workspace."}},{"@type":"Question","name":"Are extensions automatically trusted?","acceptedAnswer":{"@type":"Answer","text":"No. The documentation should describe manifest metadata, compatibility checks, and explicit trust boundaries instead of implying automatic trust."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/features/extension-platform/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Extension platform for Markdown workflows","item":"https://mdwrk.com/features/extension-platform/"}]}]}</script>
+    
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">M</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout static-page-shell">
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <article class="docs-content-card lander-content-card static-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>feature</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-04</span>
+                    </div>
+                    <h1 class="docs-title">Extension platform for Markdown workflows</h1>
+                  </header>
+                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
+                <h2 class="answer-blocks-heading">Answer Summary</h2>
+                <p>MdWrk includes an extension platform model for Markdown workflows, with public documentation covering host boundaries, manifests, runtime expectations, trust policy, and related package surfaces.</p>
+              </section>
+                  <div class="lander-markdown">
+                    <div class="markdown-body">
+                      <p>The MdWrk extension platform gives developers a governed way to reason about workspace extensions. Rather than presenting extension behavior as an informal plugin story, MdWrk documents host boundaries, manifest metadata, compatibility checks, and runtime expectations.</p>
+<h2 id="host-boundary">Host Boundary</h2>
+<p>The extension host is the product surface that coordinates extension behavior. Public documentation explains which capabilities belong to the host, which belong to a specific extension package, and which workflows remain out of scope.</p>
+<h2 id="manifest-and-trust">Manifest And Trust</h2>
+<p>Extension manifests provide a visible contract for identity, capabilities, compatibility, and package expectations. Trust is not assumed only because a package exists. The lander should describe what the user or operator can inspect before enabling extension behavior.</p>
+<h2 id="runtime-documentation">Runtime Documentation</h2>
+<p>Runtime documentation should be practical. It should show what an extension can render, which settings or workspace surfaces it uses, and how it participates in a local-first Markdown workflow without hiding data movement.</p>
+<h2 id="related-developer-docs">Related Developer Docs</h2>
+<p>Use the extension docs for host behavior, the theme pack docs for theme extension surfaces, and the quickstart for first-time workspace context.</p>
+                    </div>
+                  </div>
+                  <section class="answer-blocks static-faq" aria-labelledby="faq-heading">
+                <h2 id="faq-heading" class="answer-blocks-heading">Frequently Asked Questions</h2>
+                <div class="answer-blocks-list"><details class="answer-block-accordion" open><summary class="answer-block-summary">What is the MdWrk extension platform?</summary><div class="answer-block-content"><p>It is the governed package and runtime surface used to describe how extensions integrate with the Markdown workspace.</p></div></details>
+                  <details class="answer-block-accordion" open><summary class="answer-block-summary">Are extensions automatically trusted?</summary><div class="answer-block-content"><p>No. The documentation should describe manifest metadata, compatibility checks, and explicit trust boundaries instead of implying automatic trust.</p></div></details></div>
+              </section>
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                <ul><li><a href="/docs/extensions/">Extensions</a></li><li><a href="/docs/theme-packs/">Theme packs</a></li></ul>
+              </section>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

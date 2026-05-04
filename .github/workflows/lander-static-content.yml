@@ -47,10 +47,10 @@ jobs:
 
       - name: Validate source, build dist, and verify artifact
         working-directory: apps/lander
-        run: npm run ci
+        run: npm run ci:static
 
       - name: Upload static lander artifact
         uses: actions/upload-artifact@v4
         with:
           name: mdwrk-lander-dist
-          path: apps/lander/dist
+          path: apps/lander/dist-static

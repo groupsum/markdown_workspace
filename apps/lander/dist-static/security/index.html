@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MdWrk security notes for packages, extensions, and static docs</title>
+    <meta name="description" content="MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.">
+    <link rel="canonical" href="https://mdwrk.com/security/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/security/#webpage","url":"https://mdwrk.com/security/","name":"MdWrk security notes for packages, extensions, and static docs","headline":"Security notes","description":"MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.","dateModified":"2026-05-04","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/security/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Security notes","item":"https://mdwrk.com/security/"}]}]}</script>
+    
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark">M</div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/quickstart/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/blog/launch/">Blog</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout static-page-shell">
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <article class="docs-content-card lander-content-card static-content-card">
+                  <header class="docs-header">
+                    <div class="docs-meta">
+                      <span>security</span>
+                      <span class="docs-meta-divider">/</span>
+                      <span>2026-05-04</span>
+                    </div>
+                    <h1 class="docs-title">Security notes</h1>
+                  </header>
+                  <section class="answer-blocks static-answer-summary" aria-label="Answer summary">
+                <h2 class="answer-blocks-heading">Answer Summary</h2>
+                <p>MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment.</p>
+              </section>
+                  <div class="lander-markdown">
+                    <div class="markdown-body">
+                      <p>MdWrk security documentation explains how the public lander and product surfaces should be reviewed. The static compiler is part of that posture because it verifies source content and generated artifacts before deployment.</p>
+<h2 id="package-boundaries">Package Boundaries</h2>
+<p>Reusable packages should have clear responsibilities. Editor, renderer, extension host, theme contract, and static lander surfaces should not blur into one unreviewable runtime.</p>
+<h2 id="extension-trust">Extension Trust</h2>
+<p>Extensions need explicit trust policy. The documentation should describe manifest metadata, compatibility expectations, package identity, and how users can reason about what an extension is allowed to do.</p>
+<h2 id="static-artifact-verification">Static Artifact Verification</h2>
+<p>The public lander build verifies HTML, links, JSON-LD, sitemap output, robots policy, LLM index files, Markdown mirrors, and the content registry. These checks help prevent empty app shells or hidden primary content from being treated as deployable.</p>
+<h2 id="deployment-smoke-checks">Deployment Smoke Checks</h2>
+<p>Production URL checks are post-deploy smoke checks. They should verify that the deployed response contains expected content, but they should not be required to create a valid deployable artifact.</p>
+                    </div>
+                  </div>
+                  
+                  <section class="answer-blocks static-related" aria-labelledby="related-heading">
+                <h2 id="related-heading" class="answer-blocks-heading">Related Pages</h2>
+                <ul><li><a href="/privacy/">Privacy policy</a></li><li><a href="/features/extension-platform/">Extension platform for Markdown workflows</a></li></ul>
+              </section>
+                </article>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/security/" class="footer-link">Security</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

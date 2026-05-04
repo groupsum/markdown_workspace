@@ -726,6 +726,29 @@
   @apply min-w-0 flex-1 p-6;
 }
 
+.static-page-shell {
+  @apply min-h-screen pb-20 pt-24;
+}
+
+.static-content-card {
+  @apply mx-auto w-full p-6;
+  max-width: 58rem;
+}
+
+.static-answer-summary p,
+.static-faq p,
+.static-related li {
+  color: var(--lander-fg-muted);
+}
+
+.static-related ul {
+  @apply list-disc space-y-2 pl-5;
+}
+
+.static-related a {
+  color: var(--lander-accent);
+}
+
 .docs-article-column {
   @apply flex min-w-0 flex-1 flex-col gap-6;
 }

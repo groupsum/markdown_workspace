@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "/blog/launch/",
+    "url": "https://mdwrk.com/blog/launch/",
+    "title": "MdWrk launch notes for a static local-first Markdown lander",
+    "description": "The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.",
+    "h1": "MdWrk launch notes",
+    "intent": "MdWrk launch story",
+    "contentType": "blog",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "launch",
+      "static",
+      "markdown"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/compare/obsidian/",
+    "url": "https://mdwrk.com/compare/obsidian/",
+    "title": "MdWrk vs Obsidian — local-first Markdown workspace comparison",
+    "description": "Compare MdWrk and Obsidian for Markdown writing, local-first workflow expectations, extension boundaries, public docs, and developer package surfaces.",
+    "h1": "MdWrk vs Obsidian",
+    "intent": "compare MdWrk with Obsidian",
+    "contentType": "comparison",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "comparison",
+      "obsidian",
+      "markdown"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/compare/vscode-markdown/",
+    "url": "https://mdwrk.com/compare/vscode-markdown/",
+    "title": "MdWrk vs VS Code Markdown — workspace and editor comparison",
+    "description": "Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.",
+    "h1": "MdWrk vs VS Code Markdown",
+    "intent": "compare MdWrk with VS Code markdown workflows",
+    "contentType": "comparison",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "comparison",
+      "vscode",
+      "markdown"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/docs/extensions/",
+    "url": "https://mdwrk.com/docs/extensions/",
+    "title": "MdWrk extensions documentation for workspace developers",
+    "description": "MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.",
+    "h1": "Extensions",
+    "intent": "learn MdWrk extensions",
+    "contentType": "docs",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "extensions",
+      "docs",
+      "runtime"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/docs/quickstart/",
+    "url": "https://mdwrk.com/docs/quickstart/",
+    "title": "MdWrk quickstart — Write and preview Markdown locally",
+    "description": "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.",
+    "h1": "MdWrk quickstart",
+    "intent": "learn how to start using MdWrk",
+    "contentType": "docs",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "docs",
+      "quickstart",
+      "markdown"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/docs/theme-packs/",
+    "url": "https://mdwrk.com/docs/theme-packs/",
+    "title": "MdWrk theme packs documentation for Markdown workspace styling",
+    "description": "MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.",
+    "h1": "Theme packs",
+    "intent": "learn MdWrk theme packs",
+    "contentType": "docs",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "themes",
+      "docs",
+      "styling"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/features/extension-platform/",
+    "url": "https://mdwrk.com/features/extension-platform/",
+    "title": "MdWrk extension platform for governed Markdown workflows",
+    "description": "MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.",
+    "h1": "Extension platform for Markdown workflows",
+    "intent": "markdown extension host",
+    "contentType": "feature",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "extensions",
+      "manifest",
+      "runtime"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/features/local-first-markdown/",
+    "url": "https://mdwrk.com/features/local-first-markdown/",
+    "title": "Local-first Markdown workspace for portable documents — MdWrk",
+    "description": "MdWrk documents a local-first Markdown workflow where writing, preview, workspace state, extension behavior, and export boundaries are explicit.",
+    "h1": "Local-first Markdown workspace",
+    "intent": "local-first markdown workspace",
+    "contentType": "feature",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "local-first",
+      "markdown",
+      "workspace"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/features/offline-markdown-editor/",
+    "url": "https://mdwrk.com/features/offline-markdown-editor/",
+    "title": "Offline Markdown editor for local-first writing — MdWrk",
+    "description": "MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.",
+    "h1": "Offline Markdown editor for local-first writing",
+    "intent": "offline markdown editor",
+    "contentType": "feature",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "offline",
+      "markdown-editor",
+      "local-first"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/",
+    "url": "https://mdwrk.com/",
+    "title": "MdWrk — Local-first Markdown workspace for writing, preview, and extensions",
+    "description": "MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.",
+    "h1": "Local-first Markdown workspace",
+    "intent": "local-first markdown workspace",
+    "contentType": "landing",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "markdown",
+      "local-first",
+      "static-lander"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/privacy/",
+    "url": "https://mdwrk.com/privacy/",
+    "title": "MdWrk privacy policy for local-first Markdown workflows",
+    "description": "MdWrk privacy documentation explains the local-first storage model, explicit sharing boundaries, GitHub integration expectations, and extension trust policy.",
+    "h1": "Privacy policy",
+    "intent": "MdWrk privacy policy",
+    "contentType": "privacy",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "privacy",
+      "local-first",
+      "policy"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/security/",
+    "url": "https://mdwrk.com/security/",
+    "title": "MdWrk security notes for packages, extensions, and static docs",
+    "description": "MdWrk security notes explain package boundaries, extension trust, static content verification, robots policy, and deployable artifact checks.",
+    "h1": "Security notes",
+    "intent": "MdWrk security documentation",
+    "contentType": "security",
+    "updatedAt": "2026-05-04",
+    "tags": [
+      "security",
+      "verification",
+      "extensions"
+    ],
+    "llmsInclude": true
+  }
+]
