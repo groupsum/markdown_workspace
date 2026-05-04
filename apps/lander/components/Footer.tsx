@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               <h2 className="footer-section-heading">Resources</h2>
               <ul className="footer-link-list">
                 <li><Link to="/docs" className="footer-link">Documentation</Link></li>
-                <li><Link to="/blog" className="footer-link">News</Link></li>
+                <li><Link to="/updates" className="footer-link">Updates</Link></li>
                 <li><a href={links.demo} target="_blank" rel="noopener noreferrer" className="footer-link">Live Demo</a></li>
                 <li><a href={links.npmRepo} target="_blank" rel="noopener noreferrer" className="footer-link">npm</a></li>
               </ul>

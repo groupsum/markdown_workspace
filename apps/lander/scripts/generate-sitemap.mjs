@@ -227,7 +227,7 @@ const parseContentIds = () => {
 const routes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/docs/', priority: '0.8', changefreq: 'weekly' },
-  { path: '/blog', priority: '0.7', changefreq: 'monthly' },
+  { path: '/updates', priority: '0.7', changefreq: 'monthly' },
 ];
 const semanticEntries = [
   {
@@ -296,7 +296,7 @@ for (const entry of parseContentIds()) {
     const monthSlug = date ? date.slice(0, 7) : '';
     const body = removeGeneratedGuideBlocks(extractBody(raw));
     const headings = extractHeadings(body);
-    const routePath = `/blog/${postSlug}`;
+    const routePath = `/updates/${postSlug}`;
     const description = summarize(body, metadata.excerpt);
     const image = getArticleMetadataImage(metadata, body);
     const keywords = deriveKeywords(metadata.title, description, headings.join(' '));
@@ -308,7 +308,7 @@ for (const entry of parseContentIds()) {
       lastmod,
     });
     semanticEntries.push({
-      type: 'blog',
+      type: 'update',
       title: metadata.title || postSlug,
       url: `${siteUrl}${routePath}`,
       path: routePath,
@@ -322,7 +322,7 @@ for (const entry of parseContentIds()) {
 
     if (authorSlug) {
       routes.push({
-        path: `/blog/author/${authorSlug}`,
+        path: `/updates/author/${authorSlug}`,
         priority: '0.6',
         changefreq: 'monthly',
         lastmod,
@@ -331,7 +331,7 @@ for (const entry of parseContentIds()) {
 
     if (monthSlug) {
       routes.push({
-        path: `/blog/archive/${monthSlug}`,
+        path: `/updates/archive/${monthSlug}`,
         priority: '0.6',
         changefreq: 'monthly',
         lastmod,
@@ -374,7 +374,7 @@ fs.writeFileSync(
   `${JSON.stringify({
     site: 'MdWrk',
     generatedAt: new Date().toISOString(),
-    description: 'Plain semantic index for MdWrk docs and news pages.',
+    description: 'Plain semantic index for MdWrk docs and product update pages.',
     entries: semanticEntries.sort((a, b) => a.url.localeCompare(b.url)),
   }, null, 2)}\n`,
 );
@@ -389,7 +389,7 @@ fs.writeFileSync(
     '',
     '- [Home](https://mdwrk.com/)',
     '- [Documentation](https://mdwrk.com/docs/)',
-    '- [News](https://mdwrk.com/blog)',
+    '- [Updates](https://mdwrk.com/updates)',
     '- [Privacy Policy](https://mdwrk.com/legal/privacy)',
     '- [Terms](https://mdwrk.com/legal/terms)',
     '- [Semantic Index](https://mdwrk.com/semantic-index.json)',
@@ -404,10 +404,10 @@ fs.writeFileSync(
         `  ${entry.description}`,
       ]),
     '',
-    '## News Posts',
+    '## Product Updates',
     '',
     ...semanticEntries
-      .filter(entry => entry.type === 'blog')
+      .filter(entry => entry.type === 'update')
       .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
       .flatMap(entry => [
         `- [${entry.title}](${entry.url})`,

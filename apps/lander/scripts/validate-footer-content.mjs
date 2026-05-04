@@ -12,7 +12,7 @@ const staticCompiler = read('src', 'cli.mjs');
 
 const reactInternalLinks = [
   ['/docs', 'Documentation'],
-  ['/blog', 'News'],
+  ['/updates', 'Updates'],
   ['/legal/privacy', 'Privacy'],
   ['/legal/terms', 'Terms'],
 ];
@@ -27,7 +27,7 @@ const reactExternalLinks = [
 
 const staticInternalLinks = [
   ['/docs/', 'Documentation'],
-  ['/blog/', 'News'],
+  ['/updates/', 'Updates'],
   ['/legal/privacy/', 'Privacy'],
   ['/legal/terms/', 'Terms'],
 ];

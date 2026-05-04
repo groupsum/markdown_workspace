@@ -18,7 +18,8 @@ assert.match(dataDocs, /export const docs = docEntries\s*\n\s*\.filter\(\(entry\
 assert.match(dataDocs, /const toCompareSlug = \(slug: string\) =>\s*`compare\/\$\{slug/s, 'Comparison docs must be normalized to compare/* SPA slugs.');
 
 assert.match(compareView, /import \{ compareDocs, compareDocsBySlug \} from '\.\.\/data\/docs';/, 'CompareView must use compareDocs as its source.');
-assert.match(compareView, /<Scale className="docs-sidebar-icon" \/>\s*Compares/s, 'CompareView must label the sidebar as Compares.');
+assert.match(compareView, /heading="Compares"/, 'CompareView must label the sidebar as Compares.');
+assert.match(compareView, /icon=\{<Scale className="docs-sidebar-icon" \/>\}/, 'CompareView must render the Compares sidebar icon through the section menu.');
 assert.match(compareView, /navigate\(`\/\$\{compareDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'CompareView must default /compare to the first compare route.');
 assert.match(compareView, /{ name: 'Compares', path: '\/compare\/' }/, 'CompareView breadcrumbs must place pages under Compares.');
 assert.match(compareView, /<MarkdownViewer content=\{articleContent\} \/>/, 'CompareView must render comparison article content.');

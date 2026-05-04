@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
     { id: '/features/offline-markdown-editor', label: 'Features' },
     { id: '/compare/obsidian', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
-    { id: '/blog', label: 'News' },
+    { id: '/updates', label: 'Updates' },
     { id: '/privacy', label: 'Privacy' },
   ];
   const menuPanelClassName = ['navbar-menu-panel', isOpen ? 'is-open' : 'is-closed'].join(' ');
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
                   to={link.id}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) => ['navbar-link', isActive ? 'is-active' : 'is-inactive'].join(' ')}
-                  end={link.id !== '/blog'}
+                  end={link.id !== '/updates'}
                 >
                   {link.label}
                 </NavLink>

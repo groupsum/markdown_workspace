@@ -1,7 +1,7 @@
 {
   "site": "MdWrk",
-  "generatedAt": "2026-05-04T12:18:45.128Z",
-  "description": "Plain semantic index for MdWrk docs and news pages.",
+  "generatedAt": "2026-05-04T12:49:27.778Z",
+  "description": "Plain semantic index for MdWrk docs and product update pages.",
   "entries": [
     {
       "type": "home",
@@ -23,497 +23,6 @@
         "Markdown",
         "workspace"
       ]
-    },
-    {
-      "type": "blog",
-      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships",
-      "url": "https://mdwrk.com/blog/client-split-out-backstory",
-      "path": "/blog/client-split-out-backstory",
-      "author": "CobyCloud",
-      "date": "2026-03-23",
-      "description": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
-      "headings": [
-        "Why this matters",
-        "What you can install today",
-        "React example",
-        "Screenshot",
-        "Repository history that shapes the package surface",
-        "Who should use this package family"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Build",
-        "Same",
-        "Editor",
-        "Renderer",
-        "Client",
-        "Ships",
-        "packages"
-      ],
-      "image": {
-        "src": "/blog/media/mdwrk-workspace-split.png",
-        "alt": "MdWrk editor and preview running side by side"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
-      "url": "https://mdwrk.com/blog/desktop-release-and-android-verification",
-      "path": "/blog/desktop-release-and-android-verification",
-      "author": "CobyCloud",
-      "date": "2026-04-14",
-      "description": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
-      "headings": [
-        "Why this matters",
-        "Commands that support the release path",
-        "Screenshot",
-        "Repo history links"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Desktop",
-        "Release",
-        "Automation",
-        "Android",
-        "Verification",
-        "Sharpen",
-        "Cross Platform"
-      ],
-      "image": {
-        "src": "/blog/media/settings-github-configurations.jpg",
-        "alt": "MdWrk settings and configuration surface that supports packaged client delivery"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
-      "url": "https://mdwrk.com/blog/docs-surface-realignment",
-      "path": "/blog/docs-surface-realignment",
-      "author": "CobyCloud",
-      "date": "2026-04-30",
-      "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
-      "headings": [
-        "What readers get from the new docs surface",
-        "Docs that carry the current state",
-        "Screenshot",
-        "What this update improves",
-        "Use this route in MdWrk"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Explore",
-        "Client",
-        "Packages",
-        "Extensions",
-        "Through",
-        "Sharper",
-        "Docs"
-      ],
-      "image": {
-        "src": "/blog/media/lander-docs-dark.png",
-        "alt": "MdWrk docs view with the modernized navigation and content layout"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
-      "url": "https://mdwrk.com/blog/extension-compatibility-and-publish-gates",
-      "path": "/blog/extension-compatibility-and-publish-gates",
-      "author": "CobyCloud",
-      "date": "2026-04-01",
-      "description": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
-      "headings": [
-        "Why this matters for extension teams",
-        "Example compatibility-focused workflow",
-        "Screenshot",
-        "What to read next"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Extension",
-        "Compatibility",
-        "Gates",
-        "Turn",
-        "Publishing",
-        "Clear",
-        "Quality"
-      ],
-      "image": {
-        "src": "/blog/media/mdwrk-settings-visual.png",
-        "alt": "MdWrk settings and extension-related configuration surfaces"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
-      "url": "https://mdwrk.com/blog/extension-host-rollout",
-      "path": "/blog/extension-host-rollout",
-      "author": "CobyCloud",
-      "date": "2026-04-26",
-      "description": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
-      "headings": [
-        "What extension authors get",
-        "Installation and authoring references",
-        "Package-first install example",
-        "Manifest example",
-        "Screenshot",
-        "Why this rollout matters",
-        "Follow the repo history"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Launch",
-        "Extensions",
-        "Same",
-        "Governed",
-        "Host",
-        "Client",
-        "Uses"
-      ],
-      "image": {
-        "src": "/blog/media/extension-manager-pane.jpg",
-        "alt": "MdWrk extension manager pane inside the client workspace"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
-      "url": "https://mdwrk.com/blog/governed-releases-and-package-docs",
-      "path": "/blog/governed-releases-and-package-docs",
-      "author": "CobyCloud",
-      "date": "2026-03-31",
-      "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
-      "headings": [
-        "What this adds",
-        "Commands that express the release story",
-        "Docs to read next",
-        "Screenshot",
-        "Why this post matters"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Governed",
-        "Releases",
-        "Evidence",
-        "Package",
-        "Docs",
-        "Give",
-        "Stronger"
-      ],
-      "image": {
-        "src": "/blog/media/lander-docs-dark.png",
-        "alt": "MdWrk docs and product presentation aligned for package usage"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
-      "url": "https://mdwrk.com/blog/markdown-workspace-launch",
-      "path": "/blog/markdown-workspace-launch",
-      "author": "CobyCloud",
-      "date": "2026-01-20",
-      "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
-      "headings": [
-        "What launches",
-        "How to try MdWrk today",
-        "Screenshot",
-        "Example workflow",
-        "Why the launch resonates"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Meet",
-        "Markdown",
-        "Workspace",
-        "Turns",
-        "Writing",
-        "Preview",
-        "Themes"
-      ],
-      "image": {
-        "src": "/blog/media/lander-home-light.png",
-        "alt": "MdWrk home and writing surface at launch-stage theme richness"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
-      "url": "https://mdwrk.com/blog/pwa-install-and-zoom-controls",
-      "path": "/blog/pwa-install-and-zoom-controls",
-      "author": "CobyCloud",
-      "date": "2026-01-22",
-      "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
-      "headings": [
-        "What users gain",
-        "Install path",
-        "Screenshot",
-        "Example deployment-oriented workflow",
-        "Repo history for deeper review"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Install",
-        "Zoom",
-        "Controls",
-        "Preview",
-        "Refinements",
-        "Make",
-        "Ready"
-      ],
-      "image": {
-        "src": "/blog/media/theme-selector-modal.jpg",
-        "alt": "MdWrk theme selector and install-ready shell behavior"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
-      "url": "https://mdwrk.com/blog/responsive-authoring-and-export",
-      "path": "/blog/responsive-authoring-and-export",
-      "author": "CobyCloud",
-      "date": "2026-01-21",
-      "description": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
-      "headings": [
-        "What changes for users",
-        "Usage example",
-        "Screenshot",
-        "Why this day matters in the product story"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Responsive",
-        "Authoring",
-        "Keyboard",
-        "Speed",
-        "HTML",
-        "Export",
-        "Expand"
-      ],
-      "image": {
-        "src": "/blog/media/mdwrk-workspace-editor.png",
-        "alt": "MdWrk editor surface showing a focused authoring workspace"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
-      "url": "https://mdwrk.com/blog/retained-client-versions-and-desktop-shell",
-      "path": "/blog/retained-client-versions-and-desktop-shell",
-      "author": "CobyCloud",
-      "date": "2026-04-12",
-      "description": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
-      "headings": [
-        "What this means for teams",
-        "Usage references",
-        "Build example",
-        "Screenshot",
-        "Why this milestone matters"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Retained",
-        "Client",
-        "Versions",
-        "Desktop",
-        "Shell",
-        "Expand",
-        "Teams"
-      ],
-      "image": {
-        "src": "/blog/media/lander-home-light.png",
-        "alt": "MdWrk home surface that introduces the packaged client experience"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
-      "url": "https://mdwrk.com/blog/screenshot-matrix-and-browser-sidebars",
-      "path": "/blog/screenshot-matrix-and-browser-sidebars",
-      "author": "CobyCloud",
-      "date": "2026-04-03",
-      "description": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
-      "headings": [
-        "What this adds",
-        "Command example",
-        "Screenshot",
-        "Why this matters"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Screenshot",
-        "Matrix",
-        "Coverage",
-        "Helps",
-        "Prove",
-        "Themes",
-        "Across"
-      ],
-      "image": {
-        "src": "/blog/media/theme-studio-pane.jpg",
-        "alt": "MdWrk theme studio surface inside the shared workspace"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
-      "url": "https://mdwrk.com/blog/settings-simplification-for-daily-flow",
-      "path": "/blog/settings-simplification-for-daily-flow",
-      "author": "CobyCloud",
-      "date": "2026-05-01",
-      "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
-      "headings": [
-        "What improves",
-        "Screenshot",
-        "Current docs for configuration and setup",
-        "Example setup flow"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Settings",
-        "Simplification",
-        "Gives",
-        "Faster",
-        "Path",
-        "Installation",
-        "Daily"
-      ],
-      "image": {
-        "src": "/blog/media/mdwrk-settings-visual.png",
-        "alt": "MdWrk settings visual panel with a simplified navigation experience"
-      }
-    },
-    {
-      "type": "blog",
-      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
-      "url": "https://mdwrk.com/blog/workspace-files-and-git-ops-packages",
-      "path": "/blog/workspace-files-and-git-ops-packages",
-      "author": "CobyCloud",
-      "date": "2026-04-22",
-      "description": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
-      "headings": [
-        "What teams can do with this expansion",
-        "Install example",
-        "Screenshot",
-        "Where to go next"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Workspace",
-        "Files",
-        "Operations",
-        "Packages",
-        "Open",
-        "Larger",
-        "Automation"
-      ],
-      "image": {
-        "src": "/blog/media/mdwrk-git-pane.png",
-        "alt": "MdWrk Git pane presented as part of the workspace flow"
-      }
     },
     {
       "type": "comparison",
@@ -1622,6 +1131,497 @@
         "shared",
         "token"
       ]
+    },
+    {
+      "type": "update",
+      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships",
+      "url": "https://mdwrk.com/updates/client-split-out-backstory",
+      "path": "/updates/client-split-out-backstory",
+      "author": "CobyCloud",
+      "date": "2026-03-23",
+      "description": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
+      "headings": [
+        "Why this matters",
+        "What you can install today",
+        "React example",
+        "Screenshot",
+        "Repository history that shapes the package surface",
+        "Who should use this package family"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Build",
+        "Same",
+        "Editor",
+        "Renderer",
+        "Client",
+        "Ships",
+        "packages"
+      ],
+      "image": {
+        "src": "/blog/media/mdwrk-workspace-split.png",
+        "alt": "MdWrk editor and preview running side by side"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
+      "url": "https://mdwrk.com/updates/desktop-release-and-android-verification",
+      "path": "/updates/desktop-release-and-android-verification",
+      "author": "CobyCloud",
+      "date": "2026-04-14",
+      "description": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
+      "headings": [
+        "Why this matters",
+        "Commands that support the release path",
+        "Screenshot",
+        "Repo history links"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Desktop",
+        "Release",
+        "Automation",
+        "Android",
+        "Verification",
+        "Sharpen",
+        "Cross Platform"
+      ],
+      "image": {
+        "src": "/blog/media/settings-github-configurations.jpg",
+        "alt": "MdWrk settings and configuration surface that supports packaged client delivery"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
+      "url": "https://mdwrk.com/updates/docs-surface-realignment",
+      "path": "/updates/docs-surface-realignment",
+      "author": "CobyCloud",
+      "date": "2026-04-30",
+      "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
+      "headings": [
+        "What readers get from the new docs surface",
+        "Docs that carry the current state",
+        "Screenshot",
+        "What this update improves",
+        "Use this route in MdWrk"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Explore",
+        "Client",
+        "Packages",
+        "Extensions",
+        "Through",
+        "Sharper",
+        "Docs"
+      ],
+      "image": {
+        "src": "/blog/media/lander-docs-dark.png",
+        "alt": "MdWrk docs view with the modernized navigation and content layout"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
+      "url": "https://mdwrk.com/updates/extension-compatibility-and-publish-gates",
+      "path": "/updates/extension-compatibility-and-publish-gates",
+      "author": "CobyCloud",
+      "date": "2026-04-01",
+      "description": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
+      "headings": [
+        "Why this matters for extension teams",
+        "Example compatibility-focused workflow",
+        "Screenshot",
+        "What to read next"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Extension",
+        "Compatibility",
+        "Gates",
+        "Turn",
+        "Publishing",
+        "Clear",
+        "Quality"
+      ],
+      "image": {
+        "src": "/blog/media/mdwrk-settings-visual.png",
+        "alt": "MdWrk settings and extension-related configuration surfaces"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
+      "url": "https://mdwrk.com/updates/extension-host-rollout",
+      "path": "/updates/extension-host-rollout",
+      "author": "CobyCloud",
+      "date": "2026-04-26",
+      "description": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
+      "headings": [
+        "What extension authors get",
+        "Installation and authoring references",
+        "Package-first install example",
+        "Manifest example",
+        "Screenshot",
+        "Why this rollout matters",
+        "Follow the repo history"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Launch",
+        "Extensions",
+        "Same",
+        "Governed",
+        "Host",
+        "Client",
+        "Uses"
+      ],
+      "image": {
+        "src": "/blog/media/extension-manager-pane.jpg",
+        "alt": "MdWrk extension manager pane inside the client workspace"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
+      "url": "https://mdwrk.com/updates/governed-releases-and-package-docs",
+      "path": "/updates/governed-releases-and-package-docs",
+      "author": "CobyCloud",
+      "date": "2026-03-31",
+      "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
+      "headings": [
+        "What this adds",
+        "Commands that express the release story",
+        "Docs to read next",
+        "Screenshot",
+        "Why this post matters"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Governed",
+        "Releases",
+        "Evidence",
+        "Package",
+        "Docs",
+        "Give",
+        "Stronger"
+      ],
+      "image": {
+        "src": "/blog/media/lander-docs-dark.png",
+        "alt": "MdWrk docs and product presentation aligned for package usage"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
+      "url": "https://mdwrk.com/updates/markdown-workspace-launch",
+      "path": "/updates/markdown-workspace-launch",
+      "author": "CobyCloud",
+      "date": "2026-01-20",
+      "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
+      "headings": [
+        "What launches",
+        "How to try MdWrk today",
+        "Screenshot",
+        "Example workflow",
+        "Why the launch resonates"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Meet",
+        "Markdown",
+        "Workspace",
+        "Turns",
+        "Writing",
+        "Preview",
+        "Themes"
+      ],
+      "image": {
+        "src": "/blog/media/lander-home-light.png",
+        "alt": "MdWrk home and writing surface at launch-stage theme richness"
+      }
+    },
+    {
+      "type": "update",
+      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
+      "url": "https://mdwrk.com/updates/pwa-install-and-zoom-controls",
+      "path": "/updates/pwa-install-and-zoom-controls",
+      "author": "CobyCloud",
+      "date": "2026-01-22",
+      "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
+      "headings": [
+        "What users gain",
+        "Install path",
+        "Screenshot",
+        "Example deployment-oriented workflow",
+        "Repo history for deeper review"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Install",
+        "Zoom",
+        "Controls",
+        "Preview",
+        "Refinements",
+        "Make",
+        "Ready"
+      ],
+      "image": {
+        "src": "/blog/media/theme-selector-modal.jpg",
+        "alt": "MdWrk theme selector and install-ready shell behavior"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
+      "url": "https://mdwrk.com/updates/responsive-authoring-and-export",
+      "path": "/updates/responsive-authoring-and-export",
+      "author": "CobyCloud",
+      "date": "2026-01-21",
+      "description": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
+      "headings": [
+        "What changes for users",
+        "Usage example",
+        "Screenshot",
+        "Why this day matters in the product story"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Responsive",
+        "Authoring",
+        "Keyboard",
+        "Speed",
+        "HTML",
+        "Export",
+        "Expand"
+      ],
+      "image": {
+        "src": "/blog/media/mdwrk-workspace-editor.png",
+        "alt": "MdWrk editor surface showing a focused authoring workspace"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
+      "url": "https://mdwrk.com/updates/retained-client-versions-and-desktop-shell",
+      "path": "/updates/retained-client-versions-and-desktop-shell",
+      "author": "CobyCloud",
+      "date": "2026-04-12",
+      "description": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
+      "headings": [
+        "What this means for teams",
+        "Usage references",
+        "Build example",
+        "Screenshot",
+        "Why this milestone matters"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Retained",
+        "Client",
+        "Versions",
+        "Desktop",
+        "Shell",
+        "Expand",
+        "Teams"
+      ],
+      "image": {
+        "src": "/blog/media/lander-home-light.png",
+        "alt": "MdWrk home surface that introduces the packaged client experience"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
+      "url": "https://mdwrk.com/updates/screenshot-matrix-and-browser-sidebars",
+      "path": "/updates/screenshot-matrix-and-browser-sidebars",
+      "author": "CobyCloud",
+      "date": "2026-04-03",
+      "description": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
+      "headings": [
+        "What this adds",
+        "Command example",
+        "Screenshot",
+        "Why this matters"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Screenshot",
+        "Matrix",
+        "Coverage",
+        "Helps",
+        "Prove",
+        "Themes",
+        "Across"
+      ],
+      "image": {
+        "src": "/blog/media/theme-studio-pane.jpg",
+        "alt": "MdWrk theme studio surface inside the shared workspace"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
+      "url": "https://mdwrk.com/updates/settings-simplification-for-daily-flow",
+      "path": "/updates/settings-simplification-for-daily-flow",
+      "author": "CobyCloud",
+      "date": "2026-05-01",
+      "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
+      "headings": [
+        "What improves",
+        "Screenshot",
+        "Current docs for configuration and setup",
+        "Example setup flow"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Settings",
+        "Simplification",
+        "Gives",
+        "Faster",
+        "Path",
+        "Installation",
+        "Daily"
+      ],
+      "image": {
+        "src": "/blog/media/mdwrk-settings-visual.png",
+        "alt": "MdWrk settings visual panel with a simplified navigation experience"
+      }
+    },
+    {
+      "type": "update",
+      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
+      "url": "https://mdwrk.com/updates/workspace-files-and-git-ops-packages",
+      "path": "/updates/workspace-files-and-git-ops-packages",
+      "author": "CobyCloud",
+      "date": "2026-04-22",
+      "description": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
+      "headings": [
+        "What teams can do with this expansion",
+        "Install example",
+        "Screenshot",
+        "Where to go next"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Workspace",
+        "Files",
+        "Operations",
+        "Packages",
+        "Open",
+        "Larger",
+        "Automation"
+      ],
+      "image": {
+        "src": "/blog/media/mdwrk-git-pane.png",
+        "alt": "MdWrk Git pane presented as part of the workspace flow"
+      }
     }
   ]
 }

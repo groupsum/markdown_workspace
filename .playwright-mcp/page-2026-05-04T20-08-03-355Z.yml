@@ -1,0 +1,215 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "Updates" [ref=e33] [cursor=pointer]:
+            - /url: /updates
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e39]:
+          - heading "Documentation" [level=3] [ref=e40]:
+            - img [ref=e41]
+            - text: Documentation
+          - navigation "Documentation navigation" [ref=e43]:
+            - generic [ref=e44]:
+              - button "Getting Started" [ref=e45] [cursor=pointer]:
+                - generic [ref=e46]: Getting Started
+                - img [ref=e47]
+              - generic [ref=e49]:
+                - link "Client Installation" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/getting-started/installation
+                  - generic [ref=e52]: Client Installation
+                - link "Browser Use" [ref=e54] [cursor=pointer]:
+                  - /url: /docs/getting-started/browser-use
+                  - generic [ref=e55]: Browser Use
+                - link "PWA Installation" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/getting-started/pwa-installation
+                  - generic [ref=e58]: PWA Installation
+                - link "Local Setup" [ref=e60] [cursor=pointer]:
+                  - /url: /docs/getting-started/local-setup
+                  - generic [ref=e61]: Local Setup
+                - link "Standalone Modules" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/getting-started/standalone-modules
+                  - generic [ref=e64]: Standalone Modules
+                - link "Client Configuration" [ref=e66] [cursor=pointer]:
+                  - /url: /docs/getting-started/configuration
+                  - generic [ref=e67]: Client Configuration
+            - generic [ref=e68]:
+              - button "Integrations" [ref=e69] [cursor=pointer]:
+                - generic [ref=e70]: Integrations
+                - img [ref=e71]
+              - link "Github Sync" [ref=e75] [cursor=pointer]:
+                - /url: /docs/github-sync
+                - generic [ref=e76]: Github Sync
+            - generic [ref=e77]:
+              - button "Authoring" [ref=e78] [cursor=pointer]:
+                - generic [ref=e79]: Authoring
+                - img [ref=e80]
+              - generic [ref=e82]:
+                - link "Authoring Overview" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/authoring/overview
+                  - generic [ref=e85]: Authoring Overview
+                - link "Extension Authoring" [ref=e87] [cursor=pointer]:
+                  - /url: /docs/authoring/extensions
+                  - generic [ref=e88]: Extension Authoring
+                - link "Theme Pack Authoring" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/authoring/theme-packs
+                  - generic [ref=e91]: Theme Pack Authoring
+                - link "Language Pack Authoring" [ref=e93] [cursor=pointer]:
+                  - /url: /docs/authoring/language-packs
+                  - generic [ref=e94]: Language Pack Authoring
+            - generic [ref=e95]:
+              - button "Extensions" [ref=e96] [cursor=pointer]:
+                - generic [ref=e97]: Extensions
+                - img [ref=e98]
+              - generic [ref=e100]:
+                - link "Extension Platform" [ref=e102] [cursor=pointer]:
+                  - /url: /docs/extensions/extension-platform
+                  - generic [ref=e104]: Extension Platform
+                - link "Theme Studio And Host Surfaces" [ref=e106] [cursor=pointer]:
+                  - /url: /docs/extensions/theme-studio-and-host-surfaces
+                  - generic [ref=e107]: Theme Studio And Host Surfaces
+            - generic [ref=e108]:
+              - button "Archive" [ref=e109] [cursor=pointer]:
+                - generic [ref=e110]: Archive
+                - img [ref=e111]
+              - generic [ref=e113]:
+                - link "UI Refresh 1.3.28" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/archive/ui-refresh-1-3-28
+                  - generic [ref=e116]: UI Refresh 1.3.28
+                - link "UI Refresh 1.3.29" [ref=e118] [cursor=pointer]:
+                  - /url: /docs/archive/ui-refresh-1-3-29
+                  - generic [ref=e119]: UI Refresh 1.3.29
+      - main [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]: Extensions
+                - generic [ref=e127]: /
+                - time [ref=e130]: Jan 22, 2026
+              - heading "Extension Platform" [level=1] [ref=e131]
+            - generic [ref=e133]:
+              - heading "Runtime shape" [level=2] [ref=e134]
+              - paragraph [ref=e135]: "The extension stack is split into governed surfaces:"
+              - list [ref=e136]:
+                - listitem [ref=e137]:
+                  - code [ref=e138]: "@mdwrk/extension-manifest"
+                  - text: for declarative metadata
+                - listitem [ref=e139]:
+                  - code [ref=e140]: "@mdwrk/extension-host"
+                  - text: for host-safe APIs
+                - listitem [ref=e141]:
+                  - code [ref=e142]: "@mdwrk/extension-runtime"
+                  - text: for activation, registration, and lifecycle
+                - listitem [ref=e143]:
+                  - code [ref=e144]: "@mdwrk/extension-manager"
+                  - text: for installed and bundled extension UX
+              - heading "Host responsibilities" [level=2] [ref=e145]
+              - paragraph [ref=e146]: "The client owns:"
+              - list [ref=e147]:
+                - listitem [ref=e148]: capability gating
+                - listitem [ref=e149]: trust policy enforcement
+                - listitem [ref=e150]: settings registration
+                - listitem [ref=e151]: command, view, and action-rail registration
+                - listitem [ref=e152]: theme, i18n, and diagnostics adapters
+              - heading "Bundled first-party extensions" [level=2] [ref=e153]
+              - paragraph [ref=e154]: "Current first-party extension surfaces documented in this repo include:"
+              - list [ref=e155]:
+                - listitem [ref=e156]: Theme Studio
+                - listitem [ref=e157]: Gemini Agent
+                - listitem [ref=e158]: Extension Manager
+                - listitem [ref=e159]: Language pack tooling
+              - heading "External installables" [level=2] [ref=e160]
+              - paragraph [ref=e161]:
+                - text: External extensions do not run through ad hoc
+                - code [ref=e162]: npm install
+                - text: inside the browser. They ship as signed installable artifacts with manifest, integrity, and compatibility declarations.
+          - complementary [ref=e163]:
+            - generic [ref=e164]:
+              - heading "On this page" [level=4] [ref=e165]
+              - navigation "On this page" [ref=e166]:
+                - link "Runtime shape" [ref=e168] [cursor=pointer]:
+                  - /url: "#runtime-shape"
+                - link "Host responsibilities" [ref=e170] [cursor=pointer]:
+                  - /url: "#host-responsibilities"
+                - link "Bundled first-party extensions" [ref=e172] [cursor=pointer]:
+                  - /url: "#bundled-first-party-extensions"
+                - link "External installables" [ref=e174] [cursor=pointer]:
+                  - /url: "#external-installables"
+  - contentinfo [ref=e175]:
+    - generic [ref=e176]:
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - link "MdWrk" [ref=e179] [cursor=pointer]:
+            - /url: /
+            - img [ref=e180]
+            - generic [ref=e184]: MdWrk
+          - paragraph [ref=e185]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - heading "Resources" [level=2] [ref=e188]
+            - list [ref=e189]:
+              - listitem [ref=e190]:
+                - link "Documentation" [ref=e191] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e192]:
+                - link "Updates" [ref=e193] [cursor=pointer]:
+                  - /url: /updates
+              - listitem [ref=e194]:
+                - link "Live Demo" [ref=e195] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e196]:
+                - link "npm" [ref=e197] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e198]:
+            - heading "Follow" [level=2] [ref=e199]
+            - list [ref=e200]:
+              - listitem [ref=e201]:
+                - link "GitHub" [ref=e202] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e203]:
+                - link "X.com" [ref=e204] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e205]:
+                - link "Community" [ref=e206] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e207]:
+            - heading "Legal" [level=2] [ref=e208]
+            - list [ref=e209]:
+              - listitem [ref=e210]:
+                - link "Privacy" [ref=e211] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e212]:
+                - link "Terms" [ref=e213] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e214]
+      - generic [ref=e215]: © 2026 MdWrk. Designed for privacy.

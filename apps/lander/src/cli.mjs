@@ -45,7 +45,7 @@ const CONTENT_TYPES = new Set([
   'landing',
   'feature',
   'docs',
-  'blog',
+  'update',
   'comparison',
   'package',
   'privacy',
@@ -59,7 +59,7 @@ const MIN_WORDS = {
   landing: 80,
   feature: 80,
   docs: 70,
-  blog: 100,
+  update: 100,
   comparison: 100,
   package: 70,
   privacy: 70,
@@ -579,7 +579,7 @@ const getArticleMetadataImage = (entry) =>
 const buildDefaultFaqs = ({ title, description, contentType }) => {
   const normalizedTitle = String(title || 'this MdWrk page')
     .replace(/\s+\|\s+MdWrk.*$/i, '')
-    .replace(/^MdWrk\s+News$/i, 'News')
+    .replace(/^MdWrk\s+Product Updates$/i, 'Product Updates')
     .trim();
   const answer = String(description || '').trim();
   if (!answer) return [];
@@ -597,15 +597,15 @@ const buildDefaultFaqs = ({ title, description, contentType }) => {
       },
     ];
   }
-  if (contentType === 'blog') {
+  if (contentType === 'update') {
     return [
       {
-        question: normalizedTitle === 'News' ? 'What does MdWrk News cover?' : `What does this MdWrk article cover?`,
+        question: normalizedTitle === 'Product Updates' ? 'What do MdWrk Product Updates cover?' : `What does this MdWrk update cover?`,
         answer,
       },
       {
-        question: normalizedTitle === 'News' ? 'Where should readers start in MdWrk News?' : 'What should readers take away from this article?',
-        answer: normalizedTitle === 'News'
+        question: normalizedTitle === 'Product Updates' ? 'Where should readers start in MdWrk Product Updates?' : 'What should readers take away from this update?',
+        answer: normalizedTitle === 'Product Updates'
           ? 'Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes.'
           : `This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.`,
       },
@@ -800,13 +800,13 @@ const parseContentSitemapEntries = () => {
   return entries;
 };
 
-const renderCardGrid = (items, type = 'blog') =>
-  `<div class="${type === 'blog' ? 'blog-grid' : 'docs-index-grid'}">
-                    ${items.map(item => `<article class="lander-content-card ${type === 'blog' ? 'blog-card' : 'docs-index-card'}">
-                      ${type === 'blog' ? `<a class="blog-card-primary-link" href="${escapeAttribute(item.href)}" aria-label="Read ${escapeAttribute(item.title)}"></a>` : ''}
-                      ${item.date ? `<a class="${type === 'blog' ? 'blog-card-date' : 'docs-meta'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
-                      <h2 class="${type === 'blog' ? 'blog-card-title' : 'docs-index-card-title'}"><a class="${type === 'blog' ? 'blog-card-title-link' : 'docs-index-card-link'}" href="${escapeAttribute(item.href)}">${escapeHtml(item.title)}</a></h2>
-                      <p class="${type === 'blog' ? 'blog-card-excerpt' : 'docs-index-card-excerpt'}">${escapeHtml(item.description)}</p>
+const renderCardGrid = (items, type = 'update') =>
+  `<div class="${type === 'update' ? 'blog-grid' : 'docs-index-grid'}">
+                    ${items.map(item => `<article class="lander-content-card ${type === 'update' ? 'blog-card' : 'docs-index-card'}">
+                      ${type === 'update' ? `<a class="blog-card-primary-link" href="${escapeAttribute(item.href)}" aria-label="Read ${escapeAttribute(item.title)}"></a>` : ''}
+                      ${item.date ? `<a class="${type === 'update' ? 'blog-card-date' : 'docs-meta'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
+                      <h2 class="${type === 'update' ? 'blog-card-title' : 'docs-index-card-title'}"><a class="${type === 'update' ? 'blog-card-title-link' : 'docs-index-card-link'}" href="${escapeAttribute(item.href)}">${escapeHtml(item.title)}</a></h2>
+                      <p class="${type === 'update' ? 'blog-card-excerpt' : 'docs-index-card-excerpt'}">${escapeHtml(item.description)}</p>
                       ${item.author ? `<a class="blog-card-author" href="${escapeAttribute(item.authorHref)}">${escapeHtml(item.author)}</a>` : ''}
                     </article>`).join('\n                    ')}
                   </div>`;
@@ -919,37 +919,37 @@ const buildBlogPosts = (contentSources) => contentSources
 const blogCardItems = (posts) => posts.map(post => ({
   title: post.title,
   description: post.excerpt,
-  href: `/blog/${post.slug}/`,
+  href: `/updates/${post.slug}/`,
   date: post.date,
-  dateHref: `/blog/archive/${post.monthSlug}/`,
+  dateHref: `/updates/archive/${post.monthSlug}/`,
   author: post.author,
-  authorHref: `/blog/author/${post.authorSlug}/`,
+  authorHref: `/updates/author/${post.authorSlug}/`,
 }));
 
 const createBlogListEntry = ({ slug, title, eyebrow, posts, sourcePath, sourceHash }) => {
-  const description = posts[0]?.excerpt || `Read ${title} posts from MdWrk.`;
+  const description = posts[0]?.excerpt || `Read ${title.toLowerCase()} from MdWrk.`;
   const body = [
     `# ${title}`,
     '',
     description,
     '',
-    ...posts.map(post => `- [${post.title}](/blog/${post.slug}/) - ${post.excerpt}`),
+    ...posts.map(post => `- [${post.title}](/updates/${post.slug}/) - ${post.excerpt}`),
   ].join('\n');
   return createStaticEntry({
     sourcePath,
     sourceHash,
     slug,
-    title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
+    title: eyebrow ? `${title} | MdWrk Product Updates` : 'MdWrk Product Updates',
     description,
     h1: title,
     subtitle: eyebrow || description,
-    intent: `read ${title.toLowerCase()} posts from MdWrk`,
-    contentType: 'blog',
+    intent: `read ${title.toLowerCase()} from MdWrk`,
+    contentType: 'update',
     updatedAt: posts[0]?.date || toLocalIsoDate(),
     body,
     html: `${eyebrow ? `<div class="blog-list-eyebrow">${escapeHtml(eyebrow)}</div>` : ''}
-                  ${renderCardGrid(blogCardItems(posts), 'blog')}`,
-    tags: ['blog'],
+                  ${renderCardGrid(blogCardItems(posts), 'update')}`,
+    tags: ['updates'],
   });
 };
 
@@ -958,24 +958,24 @@ const createBlogPostEntry = (post) => {
   return createStaticEntry({
     sourcePath: post.sourcePath,
     sourceHash: sha256(post.raw),
-    slug: `/blog/${post.slug}/`,
-    title: `${post.title} | MdWrk News`,
+    slug: `/updates/${post.slug}/`,
+    title: `${post.title} | MdWrk Product Updates`,
     description: post.excerpt,
     h1: post.title,
     subtitle: post.subtitle || post.excerpt,
     featuredImage: post.featuredImage,
     featuredImageAlt: post.featuredImageAlt,
     intent: `read about ${post.title.toLowerCase()}`,
-    contentType: 'blog',
+    contentType: 'update',
     updatedAt: post.date,
     body: articleSource,
     html: `<div class="blog-post-meta">
-                    <a href="/blog/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></span></a>
-                    <a href="/blog/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>${escapeHtml(post.author)}</span></span></a>
+                    <a href="/updates/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></span></a>
+                    <a href="/updates/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>${escapeHtml(post.author)}</span></span></a>
                   </div>
                   ${renderMarkdown(articleSource).html}`,
-    tags: ['blog'],
-    parent: '/blog/',
+    tags: ['updates'],
+    parent: '/updates/',
   });
 };
 
@@ -1062,8 +1062,8 @@ const readDataStaticEntries = () => {
   });
 
   const blogList = createBlogListEntry({
-    slug: '/blog/',
-    title: 'News',
+    slug: '/updates/',
+    title: 'Product Updates',
     posts: blogPosts,
     sourcePath: 'data/markdown/blog',
     sourceHash: sha256(blogPosts.map(post => `${post.slug}:${post.sourceHash}`).join('\n')),
@@ -1072,9 +1072,9 @@ const readDataStaticEntries = () => {
     .map(authorPost => {
       const posts = blogPosts.filter(post => post.authorSlug === authorPost.authorSlug);
       return createBlogListEntry({
-        slug: `/blog/author/${authorPost.authorSlug}/`,
+        slug: `/updates/author/${authorPost.authorSlug}/`,
         title: authorPost.author,
-        eyebrow: 'Author Archive',
+        eyebrow: 'Product Updates by Author',
         posts,
         sourcePath: `data/markdown/blog#author:${authorPost.authorSlug}`,
         sourceHash: sha256(posts.map(post => post.sourceHash).join('\n')),
@@ -1084,9 +1084,9 @@ const readDataStaticEntries = () => {
     .map(monthPost => {
       const posts = blogPosts.filter(post => post.monthSlug === monthPost.monthSlug);
       return createBlogListEntry({
-        slug: `/blog/archive/${monthPost.monthSlug}/`,
+        slug: `/updates/archive/${monthPost.monthSlug}/`,
         title: monthPost.monthLabel,
-        eyebrow: 'Monthly Archive',
+        eyebrow: 'Product Updates by Month',
         posts,
         sourcePath: `data/markdown/blog#archive:${monthPost.monthSlug}`,
         sourceHash: sha256(posts.map(post => post.sourceHash).join('\n')),
@@ -1289,7 +1289,7 @@ const renderTopNav = (registry, currentSlug) => {
     ['/features/offline-markdown-editor/', 'Features'],
     ['/compare/obsidian/', 'Compare'],
     ['/docs/', 'Docs'],
-    ['/blog/', 'News'],
+    ['/updates/', 'Updates'],
     ['/privacy/', 'Privacy'],
   ];
   return links
@@ -1563,7 +1563,7 @@ const renderStaticFooter = () => {
                   <h2 class="footer-section-heading">Resources</h2>
                   <ul class="footer-link-list">
                     <li><a href="/docs/" class="footer-link">Documentation</a></li>
-                    <li><a href="/blog/" class="footer-link">News</a></li>
+                    <li><a href="/updates/" class="footer-link">Updates</a></li>
                     <li><a href="${escapeAttribute(demoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
                     <li><a href="${escapeAttribute(npmRepoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
                   </ul>
@@ -1659,6 +1659,18 @@ const renderMarkdownHost = (html) => `<div class="markdown-renderer-host lander-
                     ${html}
                   </div>`;
 
+const renderVisibleBreadcrumbs = (items) => {
+  if (!items.length) return '';
+  return `<nav class="lander-breadcrumbs" aria-label="Breadcrumbs">
+                    <ol class="lander-breadcrumbs-list">
+                      ${items.map((item, index) => {
+                        const isLast = index === items.length - 1;
+                        return `<li class="lander-breadcrumbs-item">${item.slug && !isLast ? `<a class="lander-breadcrumbs-link" href="${escapeAttribute(item.slug)}">${escapeHtml(item.name)}</a>` : `<span class="lander-breadcrumbs-current">${escapeHtml(item.name)}</span>`}</li>`;
+                      }).join('\n                      ')}
+                    </ol>
+                  </nav>`;
+};
+
 const renderSupplementarySections = (entry, registry) => {
   const faqHtml = entry.frontmatter.faqs.length
     ? `<section class="faq-section static-faq" aria-labelledby="faq-heading">
@@ -1679,14 +1691,14 @@ const renderSupplementarySections = (entry, registry) => {
 };
 
 const renderArticleCard = (entry, registry) => {
-  const metaLabel = entry.frontmatter.contentType === 'blog' ? 'News' : entry.frontmatter.contentType;
-  const isBlogPost = entry.frontmatter.contentType === 'blog' && entry.frontmatter.slug !== '/blog/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
-  const isBlogList = entry.frontmatter.contentType === 'blog' && !isBlogPost;
+  const metaLabel = entry.frontmatter.contentType === 'update' ? 'Updates' : entry.frontmatter.contentType;
+  const isBlogPost = entry.frontmatter.contentType === 'update' && entry.frontmatter.slug !== '/updates/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
+  const isBlogList = entry.frontmatter.contentType === 'update' && !isBlogPost;
   if (isBlogList) {
     return `<div class="blog-list-column">
                 <article class="blog-list-layout" aria-labelledby="blog-list-title">
                   <header class="blog-list-header">
-                    ${entry.frontmatter.slug === '/blog/' ? '' : '<a href="/blog/" class="blog-back-button">Back to News</a>'}
+                    ${entry.frontmatter.slug === '/updates/' ? '' : '<a href="/updates/" class="blog-back-button">Back to Updates</a>'}
                     <h1 id="blog-list-title" class="blog-list-title"><span class="blog-list-title-inner">${escapeHtml(entry.frontmatter.h1)}</span></h1>
                     ${entry.frontmatter.subtitle ? `<p class="blog-list-description">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
                   </header>
@@ -1699,10 +1711,18 @@ const renderArticleCard = (entry, registry) => {
   const articleClass = isBlogPost
     ? 'blog-post-card'
     : 'docs-content-card';
+  const visibleBreadcrumbs = isBlogPost
+    ? renderVisibleBreadcrumbs([
+        { name: 'MdWrk', slug: '/' },
+        { name: 'Updates', slug: '/updates/' },
+        { name: entry.frontmatter.h1, slug: entry.frontmatter.slug },
+      ])
+    : '';
   return `<div class="docs-article-column">
-                ${isBlogPost ? '<a href="/blog/" class="blog-back-button">Back to News</a>' : ''}
+                ${isBlogPost ? '<a href="/updates/" class="blog-back-button">Back to Updates</a>' : ''}
                 <article class="${articleClass} lander-content-card">
                   <header class="${articleClass === 'blog-post-card' ? 'blog-post-header' : 'docs-header'}">
+                    ${visibleBreadcrumbs}
                     <div class="docs-meta">
                       <span>${escapeHtml(metaLabel)}</span>
                       <span class="docs-meta-divider">/</span>

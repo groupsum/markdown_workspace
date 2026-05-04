@@ -1,0 +1,269 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "Updates" [ref=e33] [cursor=pointer]:
+            - /url: /updates
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main [ref=e36]:
+    - generic [ref=e38]:
+      - heading "Product Updates" [level=1] [ref=e39]:
+        - generic [ref=e40]: Product Updates
+      - paragraph [ref=e41]: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+      - generic [ref=e42]:
+        - article [ref=e43] [cursor=pointer]:
+          - link "Read Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [ref=e44]:
+            - /url: /updates/settings-simplification-for-daily-flow
+          - link "May 1, 2026" [ref=e45]:
+            - /url: /updates/archive/2026-05
+            - time [ref=e46]: May 1, 2026
+          - heading "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [level=2] [ref=e47]:
+            - link "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [ref=e48]:
+              - /url: /updates/settings-simplification-for-daily-flow
+          - paragraph [ref=e49]: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+          - link "CobyCloud" [ref=e50]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e51]
+            - text: CobyCloud
+        - article [ref=e54] [cursor=pointer]:
+          - link "Read Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience" [ref=e55]:
+            - /url: /updates/docs-surface-realignment
+          - link "Apr. 30, 2026" [ref=e56]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e57]: Apr. 30, 2026
+          - heading "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience" [level=2] [ref=e58]:
+            - link "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience" [ref=e59]:
+              - /url: /updates/docs-surface-realignment
+          - paragraph [ref=e60]: The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
+          - link "CobyCloud" [ref=e61]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e62]
+            - text: CobyCloud
+        - article [ref=e65] [cursor=pointer]:
+          - link "Read Launch Extensions on the Same Governed Host the MdWrk Client Uses" [ref=e66]:
+            - /url: /updates/extension-host-rollout
+          - link "Apr. 26, 2026" [ref=e67]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e68]: Apr. 26, 2026
+          - heading "Launch Extensions on the Same Governed Host the MdWrk Client Uses" [level=2] [ref=e69]:
+            - link "Launch Extensions on the Same Governed Host the MdWrk Client Uses" [ref=e70]:
+              - /url: /updates/extension-host-rollout
+          - paragraph [ref=e71]: The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
+          - link "CobyCloud" [ref=e72]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e73]
+            - text: CobyCloud
+        - article [ref=e76] [cursor=pointer]:
+          - link "Read Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk" [ref=e77]:
+            - /url: /updates/workspace-files-and-git-ops-packages
+          - link "Apr. 22, 2026" [ref=e78]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e79]: Apr. 22, 2026
+          - heading "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk" [level=2] [ref=e80]:
+            - link "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk" [ref=e81]:
+              - /url: /updates/workspace-files-and-git-ops-packages
+          - paragraph [ref=e82]: MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
+          - link "CobyCloud" [ref=e83]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e84]
+            - text: CobyCloud
+        - article [ref=e87] [cursor=pointer]:
+          - link "Read Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery" [ref=e88]:
+            - /url: /updates/desktop-release-and-android-verification
+          - link "Apr. 14, 2026" [ref=e89]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e90]: Apr. 14, 2026
+          - heading "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery" [level=2] [ref=e91]:
+            - link "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery" [ref=e92]:
+              - /url: /updates/desktop-release-and-android-verification
+          - paragraph [ref=e93]: MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
+          - link "CobyCloud" [ref=e94]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e95]
+            - text: CobyCloud
+        - article [ref=e98] [cursor=pointer]:
+          - link "Read Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk" [ref=e99]:
+            - /url: /updates/retained-client-versions-and-desktop-shell
+          - link "Apr. 12, 2026" [ref=e100]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e101]: Apr. 12, 2026
+          - heading "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk" [level=2] [ref=e102]:
+            - link "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk" [ref=e103]:
+              - /url: /updates/retained-client-versions-and-desktop-shell
+          - paragraph [ref=e104]: MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
+          - link "CobyCloud" [ref=e105]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e106]
+            - text: CobyCloud
+        - article [ref=e109] [cursor=pointer]:
+          - link "Read Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows" [ref=e110]:
+            - /url: /updates/screenshot-matrix-and-browser-sidebars
+          - link "Apr. 3, 2026" [ref=e111]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e112]: Apr. 3, 2026
+          - heading "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows" [level=2] [ref=e113]:
+            - link "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows" [ref=e114]:
+              - /url: /updates/screenshot-matrix-and-browser-sidebars
+          - paragraph [ref=e115]: MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
+          - link "CobyCloud" [ref=e116]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e117]
+            - text: CobyCloud
+        - article [ref=e120] [cursor=pointer]:
+          - link "Read Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal" [ref=e121]:
+            - /url: /updates/extension-compatibility-and-publish-gates
+          - link "Apr. 1, 2026" [ref=e122]:
+            - /url: /updates/archive/2026-04
+            - time [ref=e123]: Apr. 1, 2026
+          - heading "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal" [level=2] [ref=e124]:
+            - link "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal" [ref=e125]:
+              - /url: /updates/extension-compatibility-and-publish-gates
+          - paragraph [ref=e126]: MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
+          - link "CobyCloud" [ref=e127]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e128]
+            - text: CobyCloud
+        - article [ref=e131] [cursor=pointer]:
+          - link "Read Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape" [ref=e132]:
+            - /url: /updates/governed-releases-and-package-docs
+          - link "Mar. 31, 2026" [ref=e133]:
+            - /url: /updates/archive/2026-03
+            - time [ref=e134]: Mar. 31, 2026
+          - heading "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape" [level=2] [ref=e135]:
+            - link "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape" [ref=e136]:
+              - /url: /updates/governed-releases-and-package-docs
+          - paragraph [ref=e137]: MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
+          - link "CobyCloud" [ref=e138]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e139]
+            - text: CobyCloud
+        - article [ref=e142] [cursor=pointer]:
+          - link "Read Build with the Same MdWrk Editor and Renderer the Client Ships" [ref=e143]:
+            - /url: /updates/client-split-out-backstory
+          - link "Mar. 23, 2026" [ref=e144]:
+            - /url: /updates/archive/2026-03
+            - time [ref=e145]: Mar. 23, 2026
+          - heading "Build with the Same MdWrk Editor and Renderer the Client Ships" [level=2] [ref=e146]:
+            - link "Build with the Same MdWrk Editor and Renderer the Client Ships" [ref=e147]:
+              - /url: /updates/client-split-out-backstory
+          - paragraph [ref=e148]: MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
+          - link "CobyCloud" [ref=e149]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e150]
+            - text: CobyCloud
+        - article [ref=e153] [cursor=pointer]:
+          - link "Read PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use" [ref=e154]:
+            - /url: /updates/pwa-install-and-zoom-controls
+          - link "Jan. 22, 2026" [ref=e155]:
+            - /url: /updates/archive/2026-01
+            - time [ref=e156]: Jan. 22, 2026
+          - heading "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use" [level=2] [ref=e157]:
+            - link "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use" [ref=e158]:
+              - /url: /updates/pwa-install-and-zoom-controls
+          - paragraph [ref=e159]: MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
+          - link "CobyCloud" [ref=e160]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e161]
+            - text: CobyCloud
+        - article [ref=e164] [cursor=pointer]:
+          - link "Read Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day" [ref=e165]:
+            - /url: /updates/responsive-authoring-and-export
+          - link "Jan. 21, 2026" [ref=e166]:
+            - /url: /updates/archive/2026-01
+            - time [ref=e167]: Jan. 21, 2026
+          - heading "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day" [level=2] [ref=e168]:
+            - link "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day" [ref=e169]:
+              - /url: /updates/responsive-authoring-and-export
+          - paragraph [ref=e170]: MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.
+          - link "CobyCloud" [ref=e171]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e172]
+            - text: CobyCloud
+        - article [ref=e175] [cursor=pointer]:
+          - link "Read Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow" [ref=e176]:
+            - /url: /updates/markdown-workspace-launch
+          - link "Jan. 20, 2026" [ref=e177]:
+            - /url: /updates/archive/2026-01
+            - time [ref=e178]: Jan. 20, 2026
+          - heading "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow" [level=2] [ref=e179]:
+            - link "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow" [ref=e180]:
+              - /url: /updates/markdown-workspace-launch
+          - paragraph [ref=e181]: Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
+          - link "CobyCloud" [ref=e182]:
+            - /url: /updates/author/cobycloud
+            - img [ref=e183]
+            - text: CobyCloud
+  - contentinfo [ref=e186]:
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - link "MdWrk" [ref=e190] [cursor=pointer]:
+            - /url: /
+            - img [ref=e191]
+            - generic [ref=e195]: MdWrk
+          - paragraph [ref=e196]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - heading "Resources" [level=2] [ref=e199]
+            - list [ref=e200]:
+              - listitem [ref=e201]:
+                - link "Documentation" [ref=e202] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e203]:
+                - link "Updates" [ref=e204] [cursor=pointer]:
+                  - /url: /updates
+              - listitem [ref=e205]:
+                - link "Live Demo" [ref=e206] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e207]:
+                - link "npm" [ref=e208] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e209]:
+            - heading "Follow" [level=2] [ref=e210]
+            - list [ref=e211]:
+              - listitem [ref=e212]:
+                - link "GitHub" [ref=e213] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e214]:
+                - link "X.com" [ref=e215] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e216]:
+                - link "Community" [ref=e217] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e218]:
+            - heading "Legal" [level=2] [ref=e219]
+            - list [ref=e220]:
+              - listitem [ref=e221]:
+                - link "Privacy" [ref=e222] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e223]:
+                - link "Terms" [ref=e224] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e225]
+      - generic [ref=e226]: © 2026 MdWrk. Designed for privacy.

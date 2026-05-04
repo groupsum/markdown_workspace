@@ -749,6 +749,19 @@
   @apply flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors;
 }
 
+.docs-nav-level-1 {
+  @apply pl-6;
+}
+
+.docs-nav-level-2 {
+  @apply pl-9;
+}
+
+.docs-nav-level-3,
+.docs-nav-level-4 {
+  @apply pl-12;
+}
+
 .docs-nav-link.is-active {
   background: var(--lander-accent-soft);
   color: var(--lander-accent);
@@ -894,7 +907,11 @@
 }
 
 .related-apis-item {
-  @apply list-none rounded-lg border px-3 py-2 text-sm;
+  @apply list-none;
+}
+
+.related-apis-tag {
+  @apply inline-flex rounded-lg border px-3 py-2 text-sm;
   background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
   border-color: var(--lander-border);
   color: var(--lander-fg);
@@ -922,10 +939,41 @@
   border-color: var(--lander-border);
 }
 
+.lander-breadcrumbs {
+  @apply mb-4 text-xs font-bold uppercase;
+  letter-spacing: 0.22em;
+  color: var(--lander-fg-subtle);
+}
+
+.lander-breadcrumbs-list {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.lander-breadcrumbs-item {
+  @apply flex min-w-0 items-center gap-2;
+}
+
+.lander-breadcrumbs-item + .lander-breadcrumbs-item::before {
+  content: "/";
+  color: color-mix(in srgb, var(--lander-fg-subtle) 60%, transparent);
+}
+
+.lander-breadcrumbs-link {
+  @apply transition-colors;
+}
+
+.lander-breadcrumbs-link:hover {
+  color: var(--lander-accent);
+}
+
 .docs-meta {
   @apply flex flex-wrap items-center gap-3 text-xs font-bold uppercase;
   letter-spacing: 0.24em;
   color: var(--lander-fg-subtle);
+}
+
+.lander-tag {
+  @apply inline-flex items-center;
 }
 
 .docs-meta-divider {
@@ -1025,6 +1073,10 @@
   @apply inline-flex min-w-0 items-center gap-2 rounded-xl border px-3 py-2;
   background: color-mix(in srgb, var(--lander-panel-muted) 74%, transparent);
   border-color: var(--lander-border);
+}
+
+.blog-post-meta-stamp {
+  @apply inline-flex min-w-0 items-center gap-2;
 }
 
 .blog-post-meta-link {

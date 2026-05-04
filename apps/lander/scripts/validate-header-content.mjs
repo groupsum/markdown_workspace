@@ -15,7 +15,7 @@ const reactNavLinks = [
   ['/features/offline-markdown-editor', 'Features'],
   ['/compare/obsidian', 'Compare'],
   ['/docs', 'Docs'],
-  ['/blog', 'News'],
+  ['/updates', 'Updates'],
   ['/privacy', 'Privacy'],
 ];
 
@@ -24,7 +24,7 @@ const staticNavLinks = [
   ['/features/offline-markdown-editor/', 'Features'],
   ['/compare/obsidian/', 'Compare'],
   ['/docs/', 'Docs'],
-  ['/blog/', 'News'],
+  ['/updates/', 'Updates'],
   ['/privacy/', 'Privacy'],
 ];
 

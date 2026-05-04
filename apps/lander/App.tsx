@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -46,6 +46,11 @@ const HomeView: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   );
 };
 
+const LegacyBlogRedirect: React.FC = () => {
+  const location = useLocation();
+  return <Navigate to={location.pathname.replace(/^\/blog/, '/updates')} replace />;
+};
+
 const App: React.FC = () => {
   const [themeId, setThemeId] = useState<LanderThemeId>(() => getPreferredLanderThemeId());
   const location = useLocation();
@@ -82,7 +87,8 @@ const App: React.FC = () => {
           <Route path="/features/*" element={<FeatureView />} />
           <Route path="/compare/*" element={<CompareView />} />
           <Route path="/docs/*" element={<DocsView />} />
-          <Route path="/blog/*" element={<BlogView />} />
+          <Route path="/updates/*" element={<BlogView />} />
+          <Route path="/blog/*" element={<LegacyBlogRedirect />} />
           <Route path="/legal/privacy" element={<LegalView page="legal/privacy" />} />
           <Route path="/legal/terms" element={<LegalView page="legal/terms" />} />
           <Route path="*" element={<HomeView isDark={isDark} />} />

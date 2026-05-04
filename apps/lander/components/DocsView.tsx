@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { useNavigate, useParams, NavLink } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
 import { usePageMetadata } from '../hooks/usePageMetadata';
@@ -14,19 +14,11 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { ChevronRight, ChevronDown, Book } from 'lucide-react';
-
-interface DocItem {
-  id: string;
-  title: string;
-  children?: DocItem[];
-}
-
-interface TocItem {
-  title: string;
-  href: string;
-  children?: TocItem[];
-}
+import { Book } from 'lucide-react';
+import { DateStamp } from './DateStamp';
+import { SectionMenu, type SectionMenuItem } from './SectionMenu';
+import { TableOfContents, type TableOfContentsItem } from './TableOfContents';
+import { Tag } from './Tag';
 
 const normalizeTitle = (value: string) =>
   value
@@ -138,7 +130,7 @@ export const DocsView: React.FC = () => {
     }
   }, [sections, expandedCategories.length]);
 
-  const docStructure: DocItem[] = sections.map(section => ({
+  const docStructure: SectionMenuItem[] = sections.map(section => ({
     id: section.id,
     title: section.title,
     children: section.children
@@ -150,7 +142,7 @@ export const DocsView: React.FC = () => {
   const articleContent = renderedContent;
   const excerpt = extractExcerpt(articleContent, currentDoc?.metadata.excerpt);
   const headings = extractHeadings(articleContent);
-  const tocItems: TocItem[] = [
+  const tocItems: TableOfContentsItem[] = [
     ...headings.map(heading => ({
       title: heading,
       href: `#${slugifyHeading(heading)}`,
@@ -158,7 +150,6 @@ export const DocsView: React.FC = () => {
   ];
   const featuredImage = getExplicitFeaturedImage(currentDoc?.metadata);
   const metadataImage = getArticleMetadataImage(currentDoc?.metadata, articleContent);
-  const buildDocNavLinkClassName = (isActive: boolean) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ');
   const currentPath = currentDoc ? `/docs/${currentDoc.slug}` : '/docs/';
   const keywords = currentDoc
     ? deriveKeywords(currentDoc.title, currentDoc.section, excerpt, headings.join(' '), currentDoc.metadata.relatedApis)
@@ -190,57 +181,25 @@ export const DocsView: React.FC = () => {
       : null,
   });
 
-  const renderNav = (items: DocItem[], level = 0) => {
-    return items.map(item => {
-      const hasChildren = item.children && item.children.length > 0;
-      const isExpanded = expandedCategories.includes(item.id);
-      const isActive = activeSlug === item.id;
-
-      return (
-        <div key={item.id} className="docs-nav-item">
-          {hasChildren ? (
-            <div>
-              <button
-                onClick={() => toggleCategory(item.id)}
-                className="docs-nav-section-button"
-                style={{ paddingLeft: `${level * 12 + 12}px` }}
-              >
-                <span className="docs-nav-section-label">
-                  {item.title}
-                </span>
-                {isExpanded ? <ChevronDown className="docs-nav-section-icon" /> : <ChevronRight className="docs-nav-section-icon" />}
-              </button>
-              {isExpanded && (
-                <div className="docs-nav-children">
-                  {renderNav(item.children!, level + 1)}
-                </div>
-              )}
-            </div>
-          ) : (
-            <NavLink
-              to={`/docs/${item.id}`}
-              className={buildDocNavLinkClassName(isActive)}
-              style={{ paddingLeft: `${level * 12 + 12}px` }}
-            >
-              {isActive && <div className="docs-nav-link-dot" />}
-              <span className="docs-nav-link-label">{item.title}</span>
-            </NavLink>
-          )}
-        </div>
-      );
-    });
-  };
-
   return (
     <div className="docs-layout">
       <aside className="docs-sidebar">
         <div className="docs-sidebar-inner">
-          <h3 className="docs-sidebar-heading">
-            <Book className="docs-sidebar-icon" /> Documentation
-          </h3>
-          <nav className="docs-nav">
-            {renderNav(docStructure)}
-          </nav>
+          <SectionMenu
+            items={docStructure.map(section => ({
+              ...section,
+              children: section.children?.map(child => ({
+                ...child,
+                href: `/docs/${child.id}`,
+              })),
+            }))}
+            activeId={activeSlug}
+            expandedIds={expandedCategories}
+            onToggle={toggleCategory}
+            heading="Documentation"
+            icon={<Book className="docs-sidebar-icon" />}
+            ariaLabel="Documentation navigation"
+          />
         </div>
       </aside>
 
@@ -251,11 +210,11 @@ export const DocsView: React.FC = () => {
               {currentDoc && (
                 <header className="docs-header">
                   <div className="docs-meta">
-                    <span>{currentDoc.section}</span>
+                    <Tag>{currentDoc.section}</Tag>
                     {currentDoc.metadata.date && (
                       <>
                         <span className="docs-meta-divider">/</span>
-                        <time dateTime={currentDoc.metadata.date}>{toDisplayDate(currentDoc.metadata.date)}</time>
+                        <DateStamp date={currentDoc.metadata.date} displayDate={toDisplayDate(currentDoc.metadata.date)} />
                       </>
                     )}
                   </div>
@@ -277,31 +236,7 @@ export const DocsView: React.FC = () => {
             </div>
           </div>
 
-          {currentDoc?.metadata.toc === 'true' && tocItems.length > 0 && (
-            <aside className="docs-toc">
-              <div className="docs-toc-inner">
-                <h4 className="docs-toc-heading">On this page</h4>
-                <nav className="docs-toc-nav">
-                  {tocItems.map(item => (
-                    <div key={item.href} className="docs-toc-item">
-                      <a href={item.href} className="docs-toc-link" title={item.title}>
-                        {item.title}
-                      </a>
-                      {item.children?.length ? (
-                        <div className="docs-toc-children">
-                          {item.children.map(child => (
-                            <a key={child.href} href={child.href} className="docs-toc-link docs-toc-link-child" title={child.title}>
-                              {child.title}
-                            </a>
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
-                  ))}
-                </nav>
-              </div>
-            </aside>
-          )}
+          {currentDoc?.metadata.toc === 'true' ? <TableOfContents items={tocItems} /> : null}
         </div>
       </main>
     </div>

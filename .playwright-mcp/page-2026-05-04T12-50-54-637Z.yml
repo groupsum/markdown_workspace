@@ -1,0 +1,82 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "Updates" [ref=e33] [cursor=pointer]:
+            - /url: /updates
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main
+  - contentinfo [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - link "MdWrk" [ref=e40] [cursor=pointer]:
+            - /url: /
+            - img [ref=e41]
+            - generic [ref=e45]: MdWrk
+          - paragraph [ref=e46]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading "Resources" [level=2] [ref=e49]
+            - list [ref=e50]:
+              - listitem [ref=e51]:
+                - link "Documentation" [ref=e52] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e53]:
+                - link "Updates" [ref=e54] [cursor=pointer]:
+                  - /url: /updates
+              - listitem [ref=e55]:
+                - link "Live Demo" [ref=e56] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e57]:
+                - link "npm" [ref=e58] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e59]:
+            - heading "Follow" [level=2] [ref=e60]
+            - list [ref=e61]:
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e64]:
+                - link "X.com" [ref=e65] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e66]:
+                - link "Community" [ref=e67] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e68]:
+            - heading "Legal" [level=2] [ref=e69]
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - link "Privacy" [ref=e72] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e73]:
+                - link "Terms" [ref=e74] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e75]
+      - generic [ref=e76]: © 2026 MdWrk. Designed for privacy.

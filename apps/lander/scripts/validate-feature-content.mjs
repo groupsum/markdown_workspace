@@ -18,7 +18,8 @@ assert.match(dataDocs, /export const docs = docEntries\s*\n\s*\.filter\(\(entry\
 assert.match(dataDocs, /const toFeatureSlug = \(slug: string\) =>\s*`features\/\$\{slug/s, 'Feature docs must be normalized to features/* SPA slugs.');
 
 assert.match(featureView, /import \{ featureDocs, featureDocsBySlug \} from '\.\.\/data\/docs';/, 'FeatureView must use featureDocs as its source.');
-assert.match(featureView, /<Sparkles className="docs-sidebar-icon" \/>\s*Features/s, 'FeatureView must label the sidebar as Features.');
+assert.match(featureView, /heading="Features"/, 'FeatureView must label the sidebar as Features.');
+assert.match(featureView, /icon=\{<Sparkles className="docs-sidebar-icon" \/>\}/, 'FeatureView must render the Features sidebar icon through the section menu.');
 assert.match(featureView, /navigate\(`\/\$\{featureDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'FeatureView must default /features to the first feature route.');
 assert.match(featureView, /{ name: 'Features', path: '\/features\/' }/, 'FeatureView breadcrumbs must place pages under Features.');
 assert.match(featureView, /<MarkdownViewer content=\{articleContent\} \/>/, 'FeatureView must render feature article content.');

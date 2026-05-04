@@ -13,73 +13,127 @@ const staticCompiler = read('src', 'cli.mjs');
 assert.match(
   blogView,
   /buildFaqSchema/,
-  'News article pages must emit FAQPage JSON-LD through page metadata.',
+  'Product update article pages must emit FAQPage JSON-LD through page metadata.',
 );
 
 assert.match(
   blogView,
   /const\s+faqItems\s*=\s*buildBlogFaqItems\(excerpt\)/,
-  'News article pages must derive visible FAQ items from the article excerpt.',
+  'Product update article pages must derive visible FAQ items from the article excerpt.',
 );
 
 assert.match(
   blogView,
   /buildFaqSchema\(faqItems\)/,
-  'News article pages must use the same FAQ items for JSON-LD as the visible FAQ block.',
+  'Product update article pages must use the same FAQ items for JSON-LD as the visible FAQ block.',
 );
 
 assert.match(
   blogView,
-  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<\/div>\s*<section\s+className="faq-section"\s+aria-labelledby="faq-heading">/s,
-  'News article pages must render the FAQ block immediately below the article card.',
+  /<Route index element=\{<BlogList posts=\{posts\} title="Product Updates" \/>\} \/>/,
+  'Product updates index must use Product Updates as its page H1.',
 );
 
 assert.match(
   blogView,
-  /<h2\s+id="faq-heading"\s+className="faq-section-heading">Frequently Asked Questions<\/h2>/,
-  'News article FAQ block must expose the expected visible heading.',
+  /path:\s*`\/updates\/\$\{post\.slug\}`/,
+  'Product update article metadata must use /updates article routes.',
 );
 
 assert.match(
   blogView,
-  /faqItems\.map\(faq\s*=>\s*\(\s*<details\s+key=\{faq\.question\}\s+className="faq-accordion">/s,
-  'News article FAQ block must render each FAQ as an accordion detail.',
+  /\{ name: 'Updates', path: '\/updates' \}/,
+  'Product update article JSON-LD breadcrumbs must place articles under Updates.',
 );
 
 assert.match(
   blogView,
+  /\{ label: 'MdWrk', href: '\/' \},\s*\{ label: 'Updates', href: '\/updates' \}/s,
+  'Product update article visible breadcrumbs must render MdWrk / Updates / Article title.',
+);
+
+assert.match(
+  blogView,
+  /eyebrow="Product Updates by Author"/,
+  'Product update author archives must use Product Updates by Author.',
+);
+
+assert.match(
+  blogView,
+  /eyebrow="Product Updates by Month"/,
+  'Product update month archives must use Product Updates by Month.',
+);
+
+assert.match(
+  staticCompiler,
+  /contentType:\s*'update'/,
+  'Static compiler must classify product update entries as contentType update.',
+);
+
+assert.match(
+  staticCompiler,
+  /slug:\s*`\/updates\/\$\{post\.slug\}\/`/,
+  'Static compiler must publish product update articles under /updates.',
+);
+
+assert.match(
+  blogView,
+  /import \{ FaqBlock \} from '\.\/FaqBlock';/,
+  'Product update article pages must import the structural FAQ component.',
+);
+
+assert.match(
+  blogView,
+  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<\/div>\s*<FaqBlock\s+items=\{faqItems\}\s*\/>/s,
+  'Product update article pages must render the FAQ block immediately below the article card.',
+);
+
+assert.match(
+  read('components', 'FaqBlock.tsx'),
+  /<h2\s+id=\{headingId\}\s+className="faq-section-heading">\{heading\}<\/h2>/,
+  'Product update article FAQ block must expose the expected visible heading.',
+);
+
+assert.match(
+  read('components', 'FaqBlock.tsx'),
+  /items\.map\(faq\s*=>\s*\(\s*<details\s+key=\{faq\.question\}\s+className="faq-accordion">/s,
+  'Product update article FAQ block must render each FAQ as an accordion detail.',
+);
+
+assert.match(
+  read('components', 'FaqBlock.tsx'),
   /<summary\s+className="faq-summary">\{faq\.question\}<\/summary>/,
-  'News article FAQ accordions must render the question in the summary.',
+  'Product update article FAQ accordions must render the question in the summary.',
 );
 
 assert.match(
-  blogView,
+  read('components', 'FaqBlock.tsx'),
   /<div\s+className="faq-content">\s*<p>\{faq\.answer\}<\/p>\s*<\/div>/s,
-  'News article FAQ accordions must render the answer in the content block.',
+  'Product update article FAQ accordions must render the answer in the content block.',
 );
 
 assert.match(
   blogView,
-  /<\/section>\s*\{relatedApis\.length > 0 \? \(\s*<section\s+className="related-apis-section"\s+aria-labelledby="related-apis-heading">/s,
-  'News article pages must render Related APIs below the FAQ block.',
+  /<FaqBlock\s+items=\{faqItems\}\s*\/>\s*\{relatedApis\.length > 0 \? \(\s*<section\s+className="related-apis-section"\s+aria-labelledby="related-apis-heading">/s,
+  'Product update article pages must render Related APIs below the FAQ block.',
 );
 
 assert.match(
   blogView,
   /<h2\s+id="related-apis-heading"\s+className="faq-section-heading">Related APIs<\/h2>/,
-  'News article related APIs block must expose the expected visible heading.',
+  'Product update article related APIs block must expose the expected visible heading.',
 );
 
 assert.match(
   blogView,
   /const\s+relatedApis\s*=\s*toRelatedApiList\(post\.metadata,\s*articleContent\)/,
-  'News article pages must derive related APIs from frontmatter or article content.',
+  'Product update article pages must derive related APIs from frontmatter or article content.',
 );
 
 assert.match(
   css,
   /\.blog-post-layout\s*>\s*\.faq-section\s*,\s*\n\.blog-post-layout\s*>\s*\.related-apis-section\s*\{\s*@apply\s+mt-6;/,
-  'News article supplemental blocks must have spacing below the article card and each other.',
+  'Product update article supplemental blocks must have spacing below the article card and each other.',
 );
 
 assert.match(
@@ -94,4 +148,4 @@ assert.match(
   'Static article output must continue to include FAQPage JSON-LD.',
 );
 
-console.log('News FAQ block validation passed.');
+console.log('Product updates FAQ block validation passed.');

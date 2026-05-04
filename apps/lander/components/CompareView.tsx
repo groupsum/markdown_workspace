@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Scale } from 'lucide-react';
 import { compareDocs, compareDocsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
@@ -13,6 +13,10 @@ import {
   getArticleMetadataImage
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
+import { Breadcrumbs } from './Breadcrumbs';
+import { DateStamp } from './DateStamp';
+import { SectionMenu } from './SectionMenu';
+import { Tag } from './Tag';
 
 const normalizeTitle = (value: string) =>
   value
@@ -103,6 +107,7 @@ export const CompareView: React.FC = () => {
   });
 
   const compareNavItems = useMemo(() => compareDocs.map(doc => ({
+    id: doc.slug.replace(/^compare\//, ''),
     slug: doc.slug.replace(/^compare\//, ''),
     href: `/${doc.slug}`,
     title: doc.title,
@@ -112,23 +117,13 @@ export const CompareView: React.FC = () => {
     <div className="docs-layout compare-layout">
       <aside className="docs-sidebar compare-sidebar">
         <div className="docs-sidebar-inner">
-          <h3 className="docs-sidebar-heading">
-            <Scale className="docs-sidebar-icon" /> Compares
-          </h3>
-          <nav className="docs-nav" aria-label="Comparison navigation">
-            <div className="docs-nav-children">
-              {compareNavItems.map(item => (
-                <NavLink
-                  key={item.slug}
-                  to={item.href}
-                  className={({ isActive }) => ['docs-nav-link', isActive ? 'is-active' : 'is-inactive'].join(' ')}
-                >
-                  {activeSlug === item.slug && <div className="docs-nav-link-dot" />}
-                  <span className="docs-nav-link-label">{item.title}</span>
-                </NavLink>
-              ))}
-            </div>
-          </nav>
+          <SectionMenu
+            items={compareNavItems}
+            activeId={activeSlug}
+            heading="Compares"
+            icon={<Scale className="docs-sidebar-icon" />}
+            ariaLabel="Comparison navigation"
+          />
         </div>
       </aside>
 
@@ -138,12 +133,18 @@ export const CompareView: React.FC = () => {
             <div className="lander-content-card docs-content-card compare-content-card">
               {currentDoc && (
                 <header className="docs-header compare-header">
+                  <Breadcrumbs
+                    items={[
+                      { label: 'Compares', href: '/compare/' },
+                      { label: currentDoc.title },
+                    ]}
+                  />
                   <div className="docs-meta">
-                    <span>Compares</span>
+                    <Tag>Compares</Tag>
                     {currentDoc.metadata.date && (
                       <>
                         <span className="docs-meta-divider">/</span>
-                        <time dateTime={currentDoc.metadata.date}>{toDisplayDate(currentDoc.metadata.date)}</time>
+                        <DateStamp date={currentDoc.metadata.date} displayDate={toDisplayDate(currentDoc.metadata.date)} />
                       </>
                     )}
                   </div>

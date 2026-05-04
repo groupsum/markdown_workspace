@@ -1,0 +1,177 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "News" [ref=e33] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main [ref=e36]:
+    - generic [ref=e38]:
+      - link "Back to News" [ref=e39] [cursor=pointer]:
+        - /url: /blog
+        - img [ref=e40]
+        - text: Back to News
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - navigation "Breadcrumbs" [ref=e44]:
+            - list [ref=e45]:
+              - listitem [ref=e46]:
+                - link "Updates" [ref=e47] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e48]:
+                - text: /
+                - generic [ref=e49]: Build with the Same MdWrk Editor and Renderer the Client Ships
+          - generic [ref=e50]:
+            - link "Published Mar. 23, 2026" [ref=e51] [cursor=pointer]:
+              - /url: /blog/archive/2026-03
+              - generic [ref=e52]:
+                - img [ref=e53]
+                - generic [ref=e55]:
+                  - generic [ref=e56]: Published
+                  - time [ref=e57]: Mar. 23, 2026
+            - link "Author CobyCloud" [ref=e58] [cursor=pointer]:
+              - /url: /blog/author/cobycloud
+              - generic [ref=e59]:
+                - img [ref=e60]
+                - generic [ref=e63]:
+                  - generic [ref=e64]: Author
+                  - generic [ref=e65]: CobyCloud
+          - heading "Build with the Same MdWrk Editor and Renderer the Client Ships" [level=1] [ref=e66]
+          - paragraph [ref=e67]: MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
+        - generic [ref=e69]:
+          - heading "Why this matters" [level=2] [ref=e70]
+          - paragraph [ref=e71]: "Reusable packages give teams a clear path to:"
+          - list [ref=e72]:
+            - listitem [ref=e73]: ship MdWrk-powered editing inside internal tools
+            - listitem [ref=e74]: reuse the same renderer in docs, apps, and examples
+            - listitem [ref=e75]: keep extension work aligned with stable public package contracts
+            - listitem [ref=e76]: move from first integration to broader adoption with a package set that already fits the live client
+          - heading "What you can install today" [level=2] [ref=e77]
+          - paragraph [ref=e78]: "The public package family starts here:"
+          - code [ref=e80]: npm install @mdwrk/mdwrkspace @mdwrk/markdown-editor-react @mdwrk/markdown-renderer-react
+          - paragraph [ref=e81]: "These docs carry the current usage details:"
+          - list [ref=e82]:
+            - listitem [ref=e83]:
+              - link "Client installation" [ref=e84] [cursor=pointer]:
+                - /url: /docs/getting-started/installation
+            - listitem [ref=e85]:
+              - link "Standalone modules" [ref=e86] [cursor=pointer]:
+                - /url: /docs/getting-started/standalone-modules
+            - listitem [ref=e87]:
+              - link "Local setup" [ref=e88] [cursor=pointer]:
+                - /url: /docs/getting-started/local-setup
+          - heading "React example" [level=2] [ref=e89]
+          - code [ref=e91]: "import { MarkdownEditor } from '@mdwrk/markdown-editor-react'; import { MarkdownViewer } from '@mdwrk/markdown-renderer-react'; import { useState } from 'react'; export function MdWrkDemo() { const [value, setValue] = useState('# Release Notes\\n\\nMdWrk packages travel well.'); return ( <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: '1fr 1fr' }}> <MarkdownEditor value={value} onChange={setValue} /> <MarkdownViewer content={value} /> </div> ); }"
+          - heading "Screenshot" [level=2] [ref=e92]
+          - paragraph [ref=e93]:
+            - img "MdWrk editor and preview running side by side" [ref=e94]
+          - paragraph [ref=e95]: This split-view surface shows the kind of install target product teams get when they adopt the package family directly.
+          - heading "Repository history that shapes the package surface" [level=2] [ref=e96]
+          - paragraph [ref=e97]: "The package move sits inside a broader history arc:"
+          - list [ref=e98]:
+            - listitem [ref=e99]:
+              - link "Standalone modules" [ref=e100] [cursor=pointer]:
+                - /url: /docs/getting-started/standalone-modules
+            - listitem [ref=e101]:
+              - link "Extension platform" [ref=e102] [cursor=pointer]:
+                - /url: /docs/extensions/extension-platform
+            - listitem [ref=e103]:
+              - link "Repository history for package alignment" [ref=e104] [cursor=pointer]:
+                - /url: https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-03-23T00:00:00Z&until=2026-03-24T00:00:00Z
+          - heading "Who should use this package family" [level=2] [ref=e105]
+          - paragraph [ref=e106]: "This package family fits:"
+          - list [ref=e107]:
+            - listitem [ref=e108]: React application teams that want a markdown editor and renderer with a shared visual contract
+            - listitem [ref=e109]: platform teams building governed docs or knowledge surfaces
+            - listitem [ref=e110]: extension teams that want their work to sit close to the live MdWrk runtime
+          - paragraph [ref=e111]: MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path becomes easier to install, easier to use, and easier to extend.
+      - region "Frequently Asked Questions" [ref=e112]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e113]
+        - generic [ref=e114]:
+          - group [ref=e115]:
+            - generic "What does this MdWrk article cover?" [ref=e116] [cursor=pointer]
+          - group [ref=e117]:
+            - generic "What should readers take away from this article?" [ref=e118] [cursor=pointer]
+      - region "Related APIs" [ref=e119]:
+        - heading "Related APIs" [level=2] [ref=e120]
+        - list [ref=e121]:
+          - listitem [ref=e122]:
+            - code [ref=e124]: "@mdwrk/mdwrkspace"
+          - listitem [ref=e125]:
+            - code [ref=e127]: "@mdwrk/markdown-editor-react"
+          - listitem [ref=e128]:
+            - code [ref=e130]: "@mdwrk/markdown-renderer-react"
+  - contentinfo [ref=e131]:
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - link "MdWrk" [ref=e135] [cursor=pointer]:
+            - /url: /
+            - img [ref=e136]
+            - generic [ref=e140]: MdWrk
+          - paragraph [ref=e141]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - heading "Resources" [level=2] [ref=e144]
+            - list [ref=e145]:
+              - listitem [ref=e146]:
+                - link "Documentation" [ref=e147] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e148]:
+                - link "News" [ref=e149] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e150]:
+                - link "Live Demo" [ref=e151] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e152]:
+                - link "npm" [ref=e153] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e154]:
+            - heading "Follow" [level=2] [ref=e155]
+            - list [ref=e156]:
+              - listitem [ref=e157]:
+                - link "GitHub" [ref=e158] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e159]:
+                - link "X.com" [ref=e160] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e161]:
+                - link "Community" [ref=e162] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e163]:
+            - heading "Legal" [level=2] [ref=e164]
+            - list [ref=e165]:
+              - listitem [ref=e166]:
+                - link "Privacy" [ref=e167] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e168]:
+                - link "Terms" [ref=e169] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e170]
+      - generic [ref=e171]: © 2026 MdWrk. Designed for privacy.

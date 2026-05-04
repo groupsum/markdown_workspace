@@ -81,8 +81,8 @@ const validDocMetadata = {
   featuredImageAlt: 'Feature image alt text',
 };
 
-const validNewsMetadata = {
-  title: 'Article Image Contract News',
+const validUpdateMetadata = {
+  title: 'Article Image Contract Update',
   date: '2026-05-04',
   status: 'published',
   author: 'CobyCloud',
@@ -97,16 +97,16 @@ for (const schemaBranch of articleSchema.oneOf) {
 }
 
 assert.deepEqual(validateFixture(articleSchema.oneOf[0], validDocMetadata), [], 'Doc metadata schema must accept root-relative featuredImage frontmatter.');
-assert.deepEqual(validateFixture(articleSchema.oneOf[1], validNewsMetadata), [], 'News metadata schema must accept absolute featuredImage frontmatter.');
+assert.deepEqual(validateFixture(articleSchema.oneOf[1], validUpdateMetadata), [], 'Product update metadata schema must accept absolute featuredImage frontmatter.');
 assert.deepEqual(
-  validateFixture(articleSchema.oneOf[1], { ...validNewsMetadata, featuredImage: 'media/featured-image.png' }),
+  validateFixture(articleSchema.oneOf[1], { ...validUpdateMetadata, featuredImage: 'media/featured-image.png' }),
   ['invalid featuredImage'],
-  'News metadata schema must reject non-root-relative featuredImage paths.',
+  'Product update metadata schema must reject non-root-relative featuredImage paths.',
 );
 assert.deepEqual(
-  validateFixture(articleSchema.oneOf[1], { ...validNewsMetadata, image: '/media/legacy-image.png' }),
+  validateFixture(articleSchema.oneOf[1], { ...validUpdateMetadata, image: '/media/legacy-image.png' }),
   ['unsupported image'],
-  'News metadata schema must reject legacy image frontmatter outside the explicit featuredImage contract.',
+  'Product update metadata schema must reject legacy image frontmatter outside the explicit featuredImage contract.',
 );
 
 assert.ok(pageSchema.properties.featuredImage, 'Static page schema must allow featuredImage frontmatter.');
@@ -116,7 +116,7 @@ assert.match(pageMetadata, /getExplicitFeaturedImage/, 'Shared metadata helpers 
 assert.match(pageMetadata, /getArticleMetadataImage/, 'Shared metadata helpers must expose article metadata image fallback selection.');
 assert.doesNotMatch(pageMetadata, /removeFirstImage/, 'Shared metadata helpers must not remove inline article images.');
 
-for (const [label, source] of [['News', blogView], ['Docs', docsView]]) {
+for (const [label, source] of [['Product updates', blogView], ['Docs', docsView]]) {
   assert.match(source, /getExplicitFeaturedImage/, `${label} article pages must render featured images only from explicit frontmatter.`);
   assert.match(source, /getArticleMetadataImage/, `${label} article pages must select embed metadata images separately from rendering.`);
   assert.match(source, /image:\s*metadataImage\?\.src/, `${label} article pages must use the selected metadata image for embed metadata.`);

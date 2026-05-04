@@ -1,0 +1,143 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "News" [ref=e33] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e39]:
+          - heading "Compares" [level=3] [ref=e40]:
+            - img [ref=e41]
+            - text: Compares
+          - navigation "Comparison navigation" [ref=e45]:
+            - link "MdWrk Vs Obsidian" [ref=e47] [cursor=pointer]:
+              - /url: /compare/obsidian
+              - generic [ref=e49]: MdWrk Vs Obsidian
+            - link "MdWrk Vs Typora" [ref=e51] [cursor=pointer]:
+              - /url: /compare/typora
+              - generic [ref=e52]: MdWrk Vs Typora
+            - link "MdWrk Vs VS Code" [ref=e54] [cursor=pointer]:
+              - /url: /compare/code
+              - generic [ref=e55]: MdWrk Vs VS Code
+            - link "MdWrk Vs Marktext" [ref=e57] [cursor=pointer]:
+              - /url: /compare/marktext
+              - generic [ref=e58]: MdWrk Vs Marktext
+            - link "MdWrk Vs Zettlr" [ref=e60] [cursor=pointer]:
+              - /url: /compare/zettlr
+              - generic [ref=e61]: MdWrk Vs Zettlr
+            - link "MdWrk Vs Notion" [ref=e63] [cursor=pointer]:
+              - /url: /compare/notion
+              - generic [ref=e64]: MdWrk Vs Notion
+            - link "MdWrk Vs Logseq" [ref=e66] [cursor=pointer]:
+              - /url: /compare/logseq
+              - generic [ref=e67]: MdWrk Vs Logseq
+            - link "MdWrk Vs Standard Markdown Editors" [ref=e69] [cursor=pointer]:
+              - /url: /compare/standard-markdown-editors
+              - generic [ref=e70]: MdWrk Vs Standard Markdown Editors
+      - main [ref=e71]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - navigation "Breadcrumbs" [ref=e76]:
+              - list [ref=e77]:
+                - listitem [ref=e78]:
+                  - link "Compares" [ref=e79] [cursor=pointer]:
+                    - /url: /compare/
+                - listitem [ref=e80]:
+                  - text: /
+                  - generic [ref=e81]: MdWrk Vs Obsidian
+            - generic [ref=e82]:
+              - generic [ref=e83]: Compares
+              - generic [ref=e84]: /
+              - time [ref=e87]: May 3, 2026
+            - heading "MdWrk Vs Obsidian" [level=1] [ref=e88]
+          - generic [ref=e90]:
+            - heading "Best Fit" [level=2] [ref=e91]
+            - paragraph [ref=e92]: Choose MdWrk when you want a browser/PWA-centered Markdown workspace, reusable editor and renderer packages, governed extension contracts, and explicit local privacy boundaries.
+            - paragraph [ref=e93]: Choose Obsidian when your primary workflow is a long-lived personal vault with graph navigation and a mature community plugin ecosystem.
+            - heading "Product Difference" [level=2] [ref=e94]
+            - paragraph [ref=e95]: MdWrk emphasizes portable Markdown editing, preview, file management, extension-host contracts, and developer-facing packages that can be embedded in other products.
+            - heading "Related Docs" [level=2] [ref=e96]
+            - list [ref=e97]:
+              - listitem [ref=e98]:
+                - link "Local-First Markdown Workspace" [ref=e99] [cursor=pointer]:
+                  - /url: /features/local-first-markdown-workspace
+              - listitem [ref=e100]:
+                - link "MdWrk Extension Host" [ref=e101] [cursor=pointer]:
+                  - /url: /features/extension-host
+  - contentinfo [ref=e102]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - link "MdWrk" [ref=e106] [cursor=pointer]:
+            - /url: /
+            - img [ref=e107]
+            - generic [ref=e111]: MdWrk
+          - paragraph [ref=e112]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - heading "Resources" [level=2] [ref=e115]
+            - list [ref=e116]:
+              - listitem [ref=e117]:
+                - link "Documentation" [ref=e118] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e119]:
+                - link "News" [ref=e120] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e121]:
+                - link "Live Demo" [ref=e122] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e123]:
+                - link "npm" [ref=e124] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e125]:
+            - heading "Follow" [level=2] [ref=e126]
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - link "GitHub" [ref=e129] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e130]:
+                - link "X.com" [ref=e131] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e132]:
+                - link "Community" [ref=e133] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e134]:
+            - heading "Legal" [level=2] [ref=e135]
+            - list [ref=e136]:
+              - listitem [ref=e137]:
+                - link "Privacy" [ref=e138] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e139]:
+                - link "Terms" [ref=e140] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e141]
+      - generic [ref=e142]: © 2026 MdWrk. Designed for privacy.

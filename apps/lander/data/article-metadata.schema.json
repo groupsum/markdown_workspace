@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mdwrk.com/schemas/article-metadata.schema.json",
   "title": "MdWrk Article Metadata Header",
-  "description": "Frontmatter metadata schema for MdWrk documentation and blog articles.",
+  "description": "Frontmatter metadata schema for MdWrk documentation and product update articles.",
   "type": "object",
   "oneOf": [
     {
@@ -43,7 +43,7 @@
       "additionalProperties": false
     },
     {
-      "title": "Blog article metadata",
+      "title": "Product update article metadata",
       "type": "object",
       "required": [
         "title",

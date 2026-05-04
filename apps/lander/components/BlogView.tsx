@@ -16,6 +16,11 @@ import {
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { AuthorDetails } from './AuthorDetails';
+import { Breadcrumbs } from './Breadcrumbs';
+import { DateStamp } from './DateStamp';
+import { FaqBlock } from './FaqBlock';
+import { Tag } from './Tag';
 
 interface BlogPost {
   id: string;
@@ -178,32 +183,32 @@ const BlogList: React.FC<{
 }> = ({ posts, title, eyebrow }) => {
   const leadPost = posts[0];
   const featureImage = leadPost ? getArticleMetadataImage(leadPost.metadata, leadPost.content) : null;
-  const metadataPath = eyebrow === 'Author Archive'
-    ? `/blog/author/${leadPost?.authorSlug || ''}`
-    : eyebrow === 'Monthly Archive'
-      ? `/blog/archive/${leadPost?.monthSlug || ''}`
-      : '/blog';
+  const metadataPath = eyebrow === 'Product Updates by Author'
+    ? `/updates/author/${leadPost?.authorSlug || ''}`
+    : eyebrow === 'Product Updates by Month'
+      ? `/updates/archive/${leadPost?.monthSlug || ''}`
+      : '/updates';
 
   usePageMetadata({
-    title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
-    description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
+    title: eyebrow ? `${title} | MdWrk Product Updates` : 'MdWrk Product Updates',
+    description: leadPost?.excerpt || `Read the latest ${title.toLowerCase()} from MdWrk.`,
     image: featureImage?.src,
     imageAlt: featureImage?.alt || leadPost?.metadata.title || title,
     keywords: deriveKeywords(title, eyebrow, leadPost?.excerpt, posts.map(post => post.metadata.title).join(' ')),
     path: metadataPath,
     structuredData: [
       buildBlogSchema({
-        title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
-        description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        title: eyebrow ? `${title} | MdWrk Product Updates` : 'MdWrk Product Updates',
+        description: leadPost?.excerpt || `Read the latest ${title.toLowerCase()} from MdWrk.`,
         path: metadataPath,
       }),
       buildItemListSchema({
-        title: eyebrow ? `${title} | MdWrk News` : 'MdWrk News',
-        description: leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`,
+        title: eyebrow ? `${title} | MdWrk Product Updates` : 'MdWrk Product Updates',
+        description: leadPost?.excerpt || `Read the latest ${title.toLowerCase()} from MdWrk.`,
         path: metadataPath,
         items: posts.slice(0, 24).map(post => ({
           title: post.metadata.title,
-          path: `/blog/${post.slug}`,
+          path: `/updates/${post.slug}`,
           description: post.excerpt,
         })),
       }),
@@ -217,21 +222,21 @@ const BlogList: React.FC<{
         <h1 className="blog-list-title">
           <span className="blog-list-title-inner">{title}</span>
         </h1>
-        <p className="blog-list-description">{eyebrow || leadPost?.excerpt || `Read the latest ${title} posts from MdWrk.`}</p>
+        <p className="blog-list-description">{eyebrow || leadPost?.excerpt || `Read the latest ${title.toLowerCase()} from MdWrk.`}</p>
         <div className="blog-grid">
           {posts.map(post => (
             <article key={post.id} className="lander-content-card blog-card">
-              <Link to={`/blog/${post.slug}`} className="blog-card-primary-link" aria-label={`Read ${post.metadata.title}`} />
-              <Link to={`/blog/archive/${post.monthSlug}`} className="blog-card-date">
+              <Link to={`/updates/${post.slug}`} className="blog-card-primary-link" aria-label={`Read ${post.metadata.title}`} />
+              <Link to={`/updates/archive/${post.monthSlug}`} className="blog-card-date">
                 <time dateTime={post.metadata.date}>{post.displayDate}</time>
               </Link>
               <h2 className="blog-card-title">
-                <Link to={`/blog/${post.slug}`} className="blog-card-title-link">
+                <Link to={`/updates/${post.slug}`} className="blog-card-title-link">
                   {post.metadata.title}
                 </Link>
               </h2>
               <p className="blog-card-excerpt">{post.excerpt}</p>
-              <Link to={`/blog/author/${post.authorSlug}`} className="blog-card-author">
+              <Link to={`/updates/author/${post.authorSlug}`} className="blog-card-author">
                 <User className="blog-card-author-icon" /> {post.metadata.author}
               </Link>
             </article>
@@ -247,7 +252,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const post = posts.find(entry => entry.slug === postSlug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/updates" replace />;
   }
 
   const renderedContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(post.content || '', post.metadata.title));
@@ -265,12 +270,12 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
     image: metadataImage?.src,
     imageAlt: metadataImage?.alt || post.metadata.title,
     keywords,
-    path: `/blog/${post.slug}`,
+    path: `/updates/${post.slug}`,
     structuredData: [
       buildBlogPostingSchema({
         title: post.metadata.title,
         description: excerpt,
-        path: `/blog/${post.slug}`,
+        path: `/updates/${post.slug}`,
         datePublished: post.metadata.date,
         author: post.metadata.author,
         image: metadataImage?.src,
@@ -278,8 +283,8 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
       }),
       buildBreadcrumbSchema([
         { name: 'MdWrk', path: '/' },
-        { name: 'News', path: '/blog' },
-        { name: post.metadata.title, path: `/blog/${post.slug}` },
+        { name: 'Updates', path: '/updates' },
+        { name: post.metadata.title, path: `/updates/${post.slug}` },
       ]),
       buildFaqSchema(faqItems),
     ],
@@ -288,26 +293,40 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   return (
     <div className="lander-blog-shell blog-shell is-post">
       <div className="blog-post-layout">
-        <Link to="/blog" className="blog-back-button">
+        <Link to="/updates" className="blog-back-button">
           <ArrowLeft className="blog-back-icon" />
-          Back to News
+          Back to Updates
         </Link>
         <div className="lander-content-card blog-post-card">
           <div className="blog-post-header">
+            <Breadcrumbs
+              items={[
+                { label: 'MdWrk', href: '/' },
+                { label: 'Updates', href: '/updates' },
+                { label: post.metadata.title },
+              ]}
+            />
             <div className="blog-post-meta">
-              <Link to={`/blog/archive/${post.monthSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <Calendar className="blog-post-meta-icon" />
-                <span className="blog-post-meta-text">
-                  <span className="blog-post-meta-label">Published</span>
-                  <time dateTime={post.metadata.date}>{post.displayDate}</time>
-                </span>
+              <Link to={`/updates/archive/${post.monthSlug}`} className="blog-post-meta-item blog-post-meta-link">
+                <DateStamp
+                  date={post.metadata.date}
+                  displayDate={post.displayDate}
+                  label="Published"
+                  className="blog-post-meta-stamp"
+                  textClassName="blog-post-meta-text"
+                  labelClassName="blog-post-meta-label"
+                  icon={<Calendar className="blog-post-meta-icon" />}
+                />
               </Link>
-              <Link to={`/blog/author/${post.authorSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <User className="blog-post-meta-icon" />
-                <span className="blog-post-meta-text">
-                  <span className="blog-post-meta-label">Author</span>
-                  <span>{post.metadata.author}</span>
-                </span>
+              <Link to={`/updates/author/${post.authorSlug}`} className="blog-post-meta-item blog-post-meta-link">
+                <AuthorDetails
+                  author={post.metadata.author}
+                  label="Author"
+                  className="blog-post-meta-stamp"
+                  textClassName="blog-post-meta-text"
+                  labelClassName="blog-post-meta-label"
+                  icon={<User className="blog-post-meta-icon" />}
+                />
               </Link>
             </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>
@@ -323,26 +342,16 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           ) : null}
           <MarkdownViewer content={articleContent} />
         </div>
-        <section className="faq-section" aria-labelledby="faq-heading">
-          <h2 id="faq-heading" className="faq-section-heading">Frequently Asked Questions</h2>
-          <div className="faq-list">
-            {faqItems.map(faq => (
-              <details key={faq.question} className="faq-accordion">
-                <summary className="faq-summary">{faq.question}</summary>
-                <div className="faq-content">
-                  <p>{faq.answer}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-        </section>
+        <FaqBlock items={faqItems} />
         {relatedApis.length > 0 ? (
           <section className="related-apis-section" aria-labelledby="related-apis-heading">
             <h2 id="related-apis-heading" className="faq-section-heading">Related APIs</h2>
             <ul className="related-apis-list">
               {relatedApis.map(api => (
                 <li key={api} className="related-apis-item">
-                  <code>{api}</code>
+                  <Tag className="related-apis-tag">
+                    <code>{api}</code>
+                  </Tag>
                 </li>
               ))}
             </ul>
@@ -357,13 +366,13 @@ const BlogAuthorArchivePage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const { authorSlug } = useParams();
   const filteredPosts = posts.filter(post => post.authorSlug === authorSlug);
   if (filteredPosts.length === 0) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/updates" replace />;
   }
 
   return (
     <BlogList
       posts={filteredPosts}
-      eyebrow="Author Archive"
+      eyebrow="Product Updates by Author"
       title={filteredPosts[0]?.metadata.author ?? 'Author'}
     />
   );
@@ -373,13 +382,13 @@ const BlogMonthArchivePage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const { monthSlug } = useParams();
   const filteredPosts = posts.filter(post => post.monthSlug === monthSlug);
   if (filteredPosts.length === 0) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/updates" replace />;
   }
 
   return (
     <BlogList
       posts={filteredPosts}
-      eyebrow="Monthly Archive"
+      eyebrow="Product Updates by Month"
       title={filteredPosts[0]?.monthLabel || monthSlug || 'Archive'}
     />
   );
@@ -390,11 +399,11 @@ export const BlogView: React.FC = () => {
 
   return (
     <Routes>
-      <Route index element={<BlogList posts={posts} title="News" />} />
+      <Route index element={<BlogList posts={posts} title="Product Updates" />} />
       <Route path="author/:authorSlug" element={<BlogAuthorArchivePage posts={posts} />} />
       <Route path="archive/:monthSlug" element={<BlogMonthArchivePage posts={posts} />} />
       <Route path=":postSlug" element={<BlogPostPage posts={posts} />} />
-      <Route path="*" element={<Navigate to="/blog" replace />} />
+      <Route path="*" element={<Navigate to="/updates" replace />} />
     </Routes>
   );
 };
