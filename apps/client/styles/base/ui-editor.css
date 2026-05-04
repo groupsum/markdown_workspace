@@ -250,10 +250,10 @@
 }
 
 .preview-pane-overlay-actions {
-  position: sticky;
-  top: 8px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   z-index: 20;
-  height: 0;
   display: flex;
   justify-content: flex-end;
   gap: 6px;

@@ -1,5 +1,13 @@
 import React from "react";
 import { renderMarkdownToHtmlSync } from "@mdwrk/markdown-renderer-core";
+import {
+  getProjectedCaret,
+  plaintextOffsetFromRenderedPoint,
+  projectMarkdownState,
+  type PlaintextSelection,
+  type ProjectionRect,
+  type RenderedCaret,
+} from "./projection.js";
 import { createMarkdownEditInRendererThemeStyle } from "./theme.js";
 import type {
   MarkdownEditInRendererHandle,
@@ -7,29 +15,6 @@ import type {
 } from "./types.js";
 
 const mergeClassNames = (...values: Array<string | undefined | false>) => values.filter(Boolean).join(" ");
-
-interface ProjectedCaret {
-  readonly plaintextLine: number;
-  readonly plaintextChar: number;
-  readonly renderedLine: number;
-  readonly renderedChar: number;
-  readonly blockIndex: number;
-  readonly renderedLineInBlock: number;
-  readonly blankLineIndex: number;
-  readonly isBlankLine: boolean;
-}
-
-interface RenderedCaret extends ProjectedCaret {
-  readonly visible: boolean;
-  readonly left: number;
-  readonly top: number;
-  readonly height: number;
-}
-
-interface PlaintextSelection {
-  readonly start: number;
-  readonly end: number;
-}
 
 function createTrailingBlankLineSpacers(markdown: string): string {
   const trailingNewlines = markdown.match(/\n+$/)?.[0].length ?? 0;
@@ -45,146 +30,6 @@ function createBlankMarkdownSpacers(markdown: string): string {
   )).join("");
 }
 
-function getLineStartOffsets(markdown: string): number[] {
-  const offsets = [0];
-  for (let index = 0; index < markdown.length; index += 1) {
-    if (markdown[index] === "\n") {
-      offsets.push(index + 1);
-    }
-  }
-  return offsets;
-}
-
-function getRenderedCharForPlaintextLine(line: string, plaintextChar: number): number {
-  const headingMatch = /^(#{1,6})([ \t]+)(.*)$/.exec(line);
-  if (headingMatch) {
-    return Math.max(0, plaintextChar - headingMatch[1].length - headingMatch[2].length);
-  }
-
-  const unorderedListMatch = /^([ \t]*)([-+*])([ \t]+)(.*)$/.exec(line);
-  if (unorderedListMatch) {
-    return Math.max(0, plaintextChar - unorderedListMatch[1].length - unorderedListMatch[2].length - unorderedListMatch[3].length);
-  }
-
-  const orderedListMatch = /^([ \t]*)(\d+\.)([ \t]+)(.*)$/.exec(line);
-  if (orderedListMatch) {
-    return Math.max(0, plaintextChar - orderedListMatch[1].length - orderedListMatch[2].length - orderedListMatch[3].length);
-  }
-
-  const blockquoteMatch = /^([ \t]*>)([ \t]?)(.*)$/.exec(line);
-  if (blockquoteMatch) {
-    return Math.max(0, plaintextChar - blockquoteMatch[1].length - blockquoteMatch[2].length);
-  }
-
-  return plaintextChar;
-}
-
-function getRenderedBlockIndex(lines: string[], lineIndex: number): number {
-  let blockIndex = -1;
-  let inBlock = false;
-
-  for (let index = 0; index <= lineIndex; index += 1) {
-    const line = lines[index] ?? "";
-    if (line.trim() === "") {
-      inBlock = false;
-      continue;
-    }
-    if (!inBlock) {
-      blockIndex += 1;
-      inBlock = true;
-    }
-  }
-
-  return Math.max(0, blockIndex);
-}
-
-function getRenderedLineInBlock(lines: string[], lineIndex: number): number {
-  let lineInBlock = 0;
-  for (let index = lineIndex - 1; index >= 0; index -= 1) {
-    if ((lines[index] ?? "").trim() === "") break;
-    lineInBlock += 1;
-  }
-  return lineInBlock;
-}
-
-function getProjectedCaret(markdown: string, selectionStart: number): ProjectedCaret {
-  const lines = markdown.split("\n");
-  const lineStartOffsets = getLineStartOffsets(markdown);
-  const offset = Math.max(0, Math.min(selectionStart, markdown.length));
-  let lineIndex = lineStartOffsets.length - 1;
-
-  for (let index = 0; index < lineStartOffsets.length; index += 1) {
-    const nextStart = lineStartOffsets[index + 1] ?? Number.POSITIVE_INFINITY;
-    if (offset >= lineStartOffsets[index] && offset < nextStart) {
-      lineIndex = index;
-      break;
-    }
-  }
-
-  const line = lines[lineIndex] ?? "";
-  const plaintextChar = offset - (lineStartOffsets[lineIndex] ?? 0);
-  const isBlankLine = line.trim() === "";
-  const blockIndex = getRenderedBlockIndex(lines, lineIndex);
-  const renderedLineInBlock = getRenderedLineInBlock(lines, lineIndex);
-
-  return {
-    plaintextLine: lineIndex + 1,
-    plaintextChar: plaintextChar + 1,
-    renderedLine: lineIndex + 1,
-    renderedChar: getRenderedCharForPlaintextLine(line, plaintextChar) + 1,
-    blockIndex,
-    renderedLineInBlock,
-    blankLineIndex: lines.slice(0, lineIndex + 1).filter((candidate) => candidate.trim() === "").length - 1,
-    isBlankLine,
-  };
-}
-
-function findTextNode(root: Node, lineIndex: number, offset: number): { node: Node; offset: number } | null {
-  const ownerDocument = root.ownerDocument ?? document;
-  const walker = ownerDocument.createTreeWalker(
-    root,
-    (ownerDocument.defaultView?.NodeFilter.SHOW_TEXT ?? 4) | (ownerDocument.defaultView?.NodeFilter.SHOW_ELEMENT ?? 1),
-  );
-  let currentLine = 0;
-  let remaining = Math.max(0, offset);
-  let current = walker.nextNode();
-  let lastTextNode: Text | null = null;
-  let lineStart: { node: Node; offset: number } | null = null;
-
-  while (current) {
-    if (current instanceof ownerDocument.defaultView!.HTMLBRElement) {
-      if (currentLine === lineIndex && remaining <= 0 && current.parentNode) {
-        return { node: current.parentNode, offset: Array.prototype.indexOf.call(current.parentNode.childNodes, current) };
-      }
-      currentLine += 1;
-      remaining = Math.max(0, offset);
-      if (currentLine === lineIndex && current.parentNode) {
-        lineStart = {
-          node: current.parentNode,
-          offset: Array.prototype.indexOf.call(current.parentNode.childNodes, current) + 1,
-        };
-      }
-    } else if (current.nodeType === ownerDocument.defaultView!.Node.TEXT_NODE && currentLine === lineIndex) {
-      const text = current.textContent ?? "";
-      lastTextNode = current as Text;
-      if (remaining <= text.length) {
-        return { node: current, offset: remaining };
-      }
-      remaining -= text.length;
-    }
-    current = walker.nextNode();
-  }
-
-  if (lastTextNode && currentLine === lineIndex) {
-    return { node: lastTextNode, offset: lastTextNode.data.length };
-  }
-
-  if (lineStart) {
-    return lineStart;
-  }
-
-  return null;
-}
 
 export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHandle, MarkdownEditInRendererProps>(
   function MarkdownEditInRenderer(

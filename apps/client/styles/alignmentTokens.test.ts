@@ -85,7 +85,9 @@ describe('markdown/editor alignment token contract', () => {
     const editorCss = read('./base/ui-editor.css');
 
     expect(editorCss).toContain('.preview-pane-overlay-actions');
-    expect(editorCss).toContain('position: sticky;');
+    expect(editorCss).toContain('position: absolute;');
+    expect(editorCss).toContain('top: 12px;');
+    expect(editorCss).toContain('right: 12px;');
     expect(editorCss).toContain('justify-content: flex-end;');
     expect(editorCss).toContain('.preview-pane-overlay-btn');
     expect(editorCss).toContain('pointer-events: auto;');
