@@ -7,7 +7,7 @@
     "lander": "node ./src/cli.mjs",
     "dev": "vite",
     "build": "npm run build:styled && npm run build:static:dist",
-    "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:faq-layout && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
+    "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
     "build:spa": "npm run build:styled",
     "build:deps": "npm --prefix ../.. run build:editor",
     "validate:article-metadata": "node ./scripts/validate-article-metadata.mjs",

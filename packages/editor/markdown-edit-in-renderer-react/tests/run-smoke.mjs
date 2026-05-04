@@ -296,6 +296,39 @@ const checks = [
     },
   },
   {
+    id: "code-block-renders-language-header",
+    description: "Fenced code blocks render with an edit-in-renderer language header and framed code surface",
+    test() {
+      const view = setupRenderedEditor("```ts\nconst value = 1;\n```");
+      try {
+        const codeBlock = view.projection.querySelector(".markdown-edit-in-renderer-code-block");
+        const header = view.projection.querySelector(".markdown-edit-in-renderer-code-header");
+        const language = view.projection.querySelector(".markdown-edit-in-renderer-code-language");
+        assert.ok(codeBlock instanceof HTMLElement);
+        assert.ok(header instanceof HTMLElement);
+        assert.ok(language instanceof HTMLElement);
+        assert.equal(codeBlock.dataset.codeLanguage, "ts");
+        assert.equal(language.textContent, "TS");
+        assert.ok(view.projection.querySelector("code.language-ts"));
+        assert.ok(view.projection.querySelector(".token.keyword"));
+        assert.ok(view.projection.querySelector(".token.number"));
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "code-block-styling-is-distinct-from-document-background",
+    description: "Edit-in-renderer code blocks use a distinct visible background and token color rules",
+    test() {
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-code-block\s*\{[\s\S]*background:\s*#e8eef5;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-code-block \.markdown-edit-in-renderer-code-header\s*\{[\s\S]*background:\s*#dbe6f1;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-code-block \.token\.keyword[\s\S]*color:\s*#0b5cad;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-code-block \.token\.string[\s\S]*color:\s*#12633d;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-code-block \.token\.number[\s\S]*color:\s*#8a3ffc;/);
+    },
+  },
+  {
     id: "rendered-caret-aligns-heading-marker-offset",
     description: "Visible caret preserves plaintext line/char while projecting heading markers out of rendered coordinates",
     async test() {

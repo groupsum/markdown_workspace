@@ -88,7 +88,8 @@
 .markdown-edit-in-renderer-surface ul,
 .markdown-edit-in-renderer-surface ol,
 .markdown-edit-in-renderer-surface pre,
-.markdown-edit-in-renderer-surface table {
+.markdown-edit-in-renderer-surface table,
+.markdown-edit-in-renderer-code-block {
   margin: 0.9em 0;
 }
 
@@ -106,9 +107,94 @@
 .markdown-edit-in-renderer-surface pre {
   padding: 0.875rem 1rem;
   overflow: auto;
-  color: #0f172a;
-  background: #f1f5f9;
+  color: #182235;
+  background: #eef3f8;
   border: 1px solid var(--mwir-border);
+}
+
+.markdown-edit-in-renderer-code-block {
+  overflow: hidden;
+  color: #182235;
+  background: #e8eef5;
+  border: 1px solid color-mix(in srgb, var(--mwir-border) 72%, #1d4ed8 28%);
+}
+
+.markdown-edit-in-renderer-code-block .markdown-edit-in-renderer-code-header {
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  color: color-mix(in srgb, var(--mwir-fg-muted) 80%, #0f172a 20%);
+  background: #dbe6f1;
+  border-bottom: 1px solid color-mix(in srgb, var(--mwir-border) 72%, #1d4ed8 28%);
+  font-family: var(--mwir-font-ui);
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.markdown-edit-in-renderer-code-language {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.15rem;
+  padding: 0 0.4rem;
+  color: #0f3a75;
+  background: color-mix(in srgb, var(--mwir-accent) 11%, #ffffff 89%);
+  border: 1px solid color-mix(in srgb, var(--mwir-accent) 28%, transparent);
+  font-size: 0.68rem;
+}
+
+.markdown-edit-in-renderer-code-block pre,
+.markdown-edit-in-renderer-surface pre.md-code-block {
+  margin: 0;
+  background: #eef3f8;
+  border: 0;
+}
+
+.markdown-edit-in-renderer-code-block code {
+  color: #182235;
+}
+
+.markdown-edit-in-renderer-code-block .token.comment,
+.markdown-edit-in-renderer-code-block .token.prolog,
+.markdown-edit-in-renderer-code-block .token.doctype,
+.markdown-edit-in-renderer-code-block .token.cdata {
+  color: #64748b;
+}
+
+.markdown-edit-in-renderer-code-block .token.keyword,
+.markdown-edit-in-renderer-code-block .token.atrule,
+.markdown-edit-in-renderer-code-block .token.selector {
+  color: #0b5cad;
+  font-weight: 700;
+}
+
+.markdown-edit-in-renderer-code-block .token.string,
+.markdown-edit-in-renderer-code-block .token.attr-value {
+  color: #12633d;
+}
+
+.markdown-edit-in-renderer-code-block .token.number,
+.markdown-edit-in-renderer-code-block .token.boolean,
+.markdown-edit-in-renderer-code-block .token.constant {
+  color: #8a3ffc;
+}
+
+.markdown-edit-in-renderer-code-block .token.function,
+.markdown-edit-in-renderer-code-block .token.class-name {
+  color: #9a4d00;
+}
+
+.markdown-edit-in-renderer-code-block .token.property,
+.markdown-edit-in-renderer-code-block .token.attr-name,
+.markdown-edit-in-renderer-code-block .token.tag {
+  color: #a8324a;
+}
+
+.markdown-edit-in-renderer-code-block .token.operator,
+.markdown-edit-in-renderer-code-block .token.punctuation {
+  color: #334155;
 }
 
 .markdown-edit-in-renderer-surface :not(pre) > code {
