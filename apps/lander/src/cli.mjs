@@ -1272,6 +1272,29 @@ const renderStaticDemoScript = () => `<script>
           ? '<p class="md-paragraph">' + renderInline(lines.join(' ')) + '</p>'
           : '';
 
+        const highlightCode = (source, language) => {
+          const normalizedLanguage = String(language || '').toLowerCase();
+          if (!/^(ts|tsx|js|jsx|typescript|javascript)$/.test(normalizedLanguage)) {
+            return escapeHtml(source);
+          }
+          const tokenPattern = new RegExp('(//[^\\\\n]*|/\\\\*[\\\\s\\\\S]*?\\\\*/|["\\\\\\'\\\\x60](?:\\\\\\\\[\\\\s\\\\S]|(?!["\\\\\\'\\\\x60])[\\\\s\\\\S])*["\\\\\\'\\\\x60]|\\\\b(?:const|let|var|import|from|export|type|interface|class|extends|return|function|async|await|new|if|else|for|of|in|while|try|catch|throw|true|false|null|undefined)\\\\b|\\\\b\\\\d+(?:\\\\.\\\\d+)?\\\\b|[{}()[\\\\].,;:=><+\\\\-*/?])', 'g');
+          let index = 0;
+          let output = '';
+          for (const match of source.matchAll(tokenPattern)) {
+            const token = match[0];
+            output += escapeHtml(source.slice(index, match.index));
+            let className = 'token operator';
+            if (/^\\/\\//.test(token) || /^\\/\\*/.test(token)) className = 'token comment';
+            else if (token[0] === '"' || token[0] === "'" || token.charCodeAt(0) === 96) className = 'token string';
+            else if (/^\\d/.test(token)) className = 'token number';
+            else if (/^(const|let|var|import|from|export|type|interface|class|extends|return|function|async|await|new|if|else|for|of|in|while|try|catch|throw|true|false|null|undefined)$/.test(token)) className = 'token keyword';
+            output += '<span class="' + className + '">' + escapeHtml(token) + '</span>';
+            index = match.index + token.length;
+          }
+          output += escapeHtml(source.slice(index));
+          return output;
+        };
+
         const renderMarkdown = (markdown) => {
           const lines = String(markdown || '').replace(/\\r\\n?/g, '\\n').split('\\n');
           const html = [];
@@ -1315,7 +1338,7 @@ const renderStaticDemoScript = () => `<script>
             const fence = new RegExp('^\\\\x60\\\\x60\\\\x60\\\\s*([\\\\w-]+)?\\\\s*$').exec(line);
             if (fence) {
               if (inCode) {
-                html.push('<pre class="md-code-block"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + escapeHtml(code.join('\\n')) + '</code></pre>');
+                html.push('<pre class="md-code-block md-code-surface"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>');
                 code = [];
                 codeLanguage = '';
                 inCode = false;
@@ -1366,7 +1389,7 @@ const renderStaticDemoScript = () => `<script>
             paragraph.push(line.trim());
           }
 
-          if (inCode) html.push('<pre class="md-code-block"><code>' + escapeHtml(code.join('\\n')) + '</code></pre>');
+          if (inCode) html.push('<pre class="md-code-block md-code-surface"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>');
           flushBlocks();
           return '<div class="markdown-renderer-host lander-markdown">' + html.join('\\n') + '</div>';
         };
