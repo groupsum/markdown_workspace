@@ -1,0 +1,56 @@
+name: Lander Static Content
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - apps/lander/content/**
+      - apps/lander/schemas/**
+      - apps/lander/src/cli.mjs
+      - apps/lander/package.json
+      - package.json
+      - .github/workflows/lander-static-content.yml
+  pull_request:
+    paths:
+      - apps/lander/content/**
+      - apps/lander/schemas/**
+      - apps/lander/src/cli.mjs
+      - apps/lander/package.json
+      - package.json
+      - .github/workflows/lander-static-content.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lander-static-content-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-build-verify:
+    name: Validate, build, and verify static lander
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install lander validator dependencies
+        working-directory: apps/lander
+        run: npm ci --ignore-scripts --workspaces=false
+
+      - name: Validate source, build dist, and verify artifact
+        working-directory: apps/lander
+        run: npm run ci
+
+      - name: Upload static lander artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdwrk-lander-dist
+          path: apps/lander/dist

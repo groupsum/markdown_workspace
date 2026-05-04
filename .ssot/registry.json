@@ -5905,6 +5905,90 @@
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:lander-static-content-compiler",
+      "title": "Static lander content compiler",
+      "description": "Compile MdWrk public lander Markdown and YAML metadata into static HTML, JSON-LD, sitemap, robots, LLM index files, Markdown mirrors, and content registry artifacts.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-static-artifact-verification",
+      "title": "Static lander artifact verification",
+      "description": "Verify generated MdWrk lander dist artifacts for SEO, AEO, AiEO, static readability, content registry integrity, sitemap and LLM index coverage, JSON-LD, and internal link integrity before deployment.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-static-page-frontmatter-schema",
+      "title": "Static page frontmatter schema",
+      "description": "Require MdWrk static lander pages to declare mdwrk.page.v1 YAML frontmatter that conforms to the page JSON Schema before content enters the normalized registry.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -7063,6 +7147,42 @@
       "evidence_ids": [
         "evd:apps-lander-scripts-validate-syntax-themes.mjs"
       ]
+    },
+    {
+      "id": "tst:apps-lander-src-cli-static-content",
+      "title": "Static lander compiler CLI gate",
+      "status": "passing",
+      "kind": "cli",
+      "path": "apps/lander/src/cli.mjs",
+      "feature_ids": [
+        "feat:lander-static-content-compiler",
+        "feat:lander-static-artifact-verification",
+        "feat:lander-static-page-frontmatter-schema"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:lander-static-content-ci-local"
+      ]
+    },
+    {
+      "id": "tst:github-workflows-lander-static-content",
+      "title": "Static lander GitHub Actions gate",
+      "status": "passing",
+      "kind": "ci",
+      "path": ".github/workflows/lander-static-content.yml",
+      "feature_ids": [
+        "feat:lander-static-content-compiler",
+        "feat:lander-static-artifact-verification",
+        "feat:lander-static-page-frontmatter-schema"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:lander-static-content-ci-local"
+      ]
     }
   ],
   "claims": [
@@ -7107,7 +7227,10 @@
         "feat:lander-article-metadata-schema-validation",
         "feat:lander-metadata-favicon-logo-fallback",
         "feat:lander-article-excerpt-embedded-metadata",
-        "feat:lander-article-metadata-ci-gate"
+        "feat:lander-article-metadata-ci-gate",
+        "feat:lander-static-content-compiler",
+        "feat:lander-static-artifact-verification",
+        "feat:lander-static-page-frontmatter-schema"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -7139,7 +7262,9 @@
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
         "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
-        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs",
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -7171,7 +7296,8 @@
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
         "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
-        "evd:apps-lander-scripts-validate-syntax-themes.mjs"
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+        "evd:lander-static-content-ci-local"
       ]
     },
     {
@@ -8377,6 +8503,21 @@
       ],
       "test_ids": [
         "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+      ]
+    },
+    {
+      "id": "evd:lander-static-content-ci-local",
+      "title": "Static lander content CI local verification",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/lander-static-content-ci.json",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
       ]
     }
   ],
@@ -9637,6 +9778,22 @@
           "at": "2026-05-03T23:30:10Z"
         }
       ]
+    },
+    {
+      "id": "adr:1055",
+      "number": 1055,
+      "slug": "static-lander-content-compiler",
+      "title": "Static Lander Content Compiler",
+      "path": ".ssot/adr/ADR-1055-static-lander-content-compiler.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "2af47534ab1799f52dc6b3284b8610678c7de56233c9c92d5782d9b1b23c1c51",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": []
     }
   ],
   "specs": [
@@ -11439,6 +11596,26 @@
       "kind": "normative",
       "adr_ids": [
         "adr:1054"
+      ]
+    },
+    {
+      "id": "spc:2071",
+      "number": 2071,
+      "slug": "static-lander-content-compiler-contract",
+      "title": "Static Lander Content Compiler Contract",
+      "path": ".ssot/specs/SPEC-2071-static-lander-content-compiler-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "c084ec4941c6f3db36b49f6b9155860c45b0e2c64e828c786f7590c050864b5b",
+      "status": "accepted",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1055"
       ]
     }
   ],

@@ -1,0 +1,17 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1055"
+number: 1055
+slug: "static-lander-content-compiler"
+title: "Static Lander Content Compiler"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Decision: MdWrk public lander content shall be compiled from Markdown files with YAML frontmatter into a normalized registry, static HTML, JSON-LD, sitemap, robots policy, LLM index files, Markdown mirrors, and verification artifacts before deployment. Rationale: public content must be readable in raw HTML and verifiable before mdwrk.com is live. Consequences: client-side rendering cannot be the primary public content surface, frontmatter remains metadata only, Markdown body remains page content only, answer and FAQ metadata must render visibly, and deployment smoke checks are separate from pre-deploy artifact gates."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Decision: MdWrk public lander content shall be compiled from Markdown files with YAML frontmatter into a normalized registry, static HTML, JSON-LD, sitemap, robots policy, LLM index files, Markdown mirrors, and verification artifacts before deployment. Rationale: public content must be readable in raw HTML and verifiable before mdwrk.com is live. Consequences: client-side rendering cannot be the primary public content surface, frontmatter remains metadata only, Markdown body remains page content only, answer and FAQ metadata must render visibly, and deployment smoke checks are separate from pre-deploy artifact gates.

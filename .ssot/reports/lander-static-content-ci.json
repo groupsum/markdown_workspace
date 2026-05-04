@@ -1,0 +1,46 @@
+{
+  "id": "evd:lander-static-content-ci-local",
+  "generated_at": "2026-05-04",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts --workspaces=false",
+      "status": "passed",
+      "summary": "Installed app-local validator dependencies, including Ajv 8 for Draft 2020-12 schema validation."
+    },
+    {
+      "command": "node -e \"console.log(require.resolve('ajv/dist/2020'))\"",
+      "status": "passed",
+      "summary": "Confirmed Ajv 2020 validator module resolves from apps/lander/node_modules."
+    },
+    {
+      "command": "npm run validate -w apps/lander",
+      "status": "passed",
+      "summary": "MdWrk static lander source validation passed for 12 pages."
+    },
+    {
+      "command": "npm run build -w apps/lander",
+      "status": "passed",
+      "summary": "Built MdWrk static lander: 12 pages into apps/lander/dist."
+    },
+    {
+      "command": "npm run verify -w apps/lander",
+      "status": "passed",
+      "summary": "MdWrk static lander verification passed against generated dist artifacts."
+    },
+    {
+      "command": "npm run ci:lander",
+      "status": "passed",
+      "summary": "Root CI shortcut ran lander validate, build, and verify successfully."
+    }
+  ],
+  "artifacts": [
+    "apps/lander/dist/index.html",
+    "apps/lander/dist/sitemap.xml",
+    "apps/lander/dist/robots.txt",
+    "apps/lander/dist/llms.txt",
+    "apps/lander/dist/llms-full.txt",
+    "apps/lander/dist/content-index.json",
+    "apps/lander/dist/content-registry.json",
+    "apps/lander/dist/jsonld-graph.json"
+  ]
+}

@@ -1,0 +1,20 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2071"
+number: 2071
+slug: "static-lander-content-compiler-contract"
+title: "Static Lander Content Compiler Contract"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Scope: this SPEC governs the MdWrk static lander compiler, source content contract, generated artifacts, and deployment-independent verification gate. Requirements: each page uses mdwrk.page.v1 YAML frontmatter, JSON Schema validation, canonical slugs, metadata-only frontmatter, Markdown-only body content, visible answer and FAQ rendering when metadata exists, normalized registry output, static HTML output, JSON-LD, sitemap.xml, robots.txt, llms.txt, llms-full.txt, Markdown mirrors, content-index.json, and link-integrity checks. Acceptance: npm run ci -w apps/lander and npm run ci:lander must validate source, build dist, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact."
+supersedes: []
+superseded_by: []
+status_notes: []
+references: []
+body: |-
+  Scope: this SPEC governs the MdWrk static lander compiler, source content contract, generated artifacts, and deployment-independent verification gate. Requirements: each page uses mdwrk.page.v1 YAML frontmatter, JSON Schema validation, canonical slugs, metadata-only frontmatter, Markdown-only body content, visible answer and FAQ rendering when metadata exists, normalized registry output, static HTML output, JSON-LD, sitemap.xml, robots.txt, llms.txt, llms-full.txt, Markdown mirrors, content-index.json, and link-integrity checks. Acceptance: npm run ci -w apps/lander and npm run ci:lander must validate source, build dist, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1055"
