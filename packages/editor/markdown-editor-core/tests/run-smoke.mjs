@@ -69,6 +69,7 @@ const checks = [
     description: 'optional-profile commands emit structural Markdown syntax',
     test() {
       assert.equal(applyBuiltinMarkdownCommand('inline-math', 'E=mc2', { start: 0, end: 5 }).value, '$E=mc2$');
+      assert.equal(applyBuiltinMarkdownCommand('link', 'MdWrk docs', { start: 0, end: 5 }).value, '[MdWrk](https://example.com) docs');
       assert.equal(applyBuiltinMarkdownCommand('superscript', '2', { start: 0, end: 1 }).value, '^2^');
       assert.equal(applyBuiltinMarkdownCommand('subscript', '2', { start: 0, end: 1 }).value, '~2~');
       assert.equal(applyBuiltinMarkdownCommand('citation', 'smith2024', { start: 0, end: 9 }).value, '[@smith2024]');

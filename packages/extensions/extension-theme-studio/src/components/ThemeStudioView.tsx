@@ -105,15 +105,15 @@ function useWorkspaceModuleSplit(defaultPosition = 55) {
     if (isDragging) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
-      document.body.classList.add("is-resizing-sidebar");
+      document.body.classList.add("is-resizing-pane");
     } else {
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     };
   }, [isDragging, splitContainer]);
 
@@ -665,7 +665,7 @@ export const ThemeStudioView: FC<ThemeStudioViewProps> = ({
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={(event) => { void importPackage(event); }} />
         <div className="editor-pane-body is-split">
           {!embedBrowserInShellSidebar && sidebarOpen && (
-            <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(300px, 26vw)", padding: 12, gap: 12 }}>
+            <aside className={`pane-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(300px, 26vw)", padding: 12, gap: 12 }}>
               <ThemeStudioSidebar service={service} formatLabel={formatLabel} />
             </aside>
           )}

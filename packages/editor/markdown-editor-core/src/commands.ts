@@ -1,4 +1,4 @@
-import { wrapSelection } from "./selection.js";
+import { createSelection, normalizeSelection, wrapSelection } from "./selection.js";
 import { applyBulletListSelection, applyTaskListSelection, indentSelection, outdentSelection } from "./transforms.js";
 import type {
   MarkdownEditorBuiltinCommandId,
@@ -13,6 +13,7 @@ export const BUILTIN_MARKDOWN_EDITOR_COMMANDS: readonly MarkdownEditorBuiltinCom
   "strikethrough",
   "bullet-list",
   "task-list",
+  "link",
   "front-matter",
   "footnote",
   "inline-math",
@@ -44,6 +45,19 @@ export function applyBuiltinMarkdownCommand(
       return applyBulletListSelection(value, selection);
     case "task-list":
       return applyTaskListSelection(value, selection);
+    case "link": {
+      const normalized = normalizeSelection(selection, value.length);
+      const selectedText = value.slice(normalized.start, normalized.end) || "link text";
+      const url = options.linkUrl ?? "https://example.com";
+      const replacement = `[${selectedText}](${url})`;
+      const nextValue = `${value.slice(0, normalized.start)}${replacement}${value.slice(normalized.end)}`;
+      const urlStart = normalized.start + selectedText.length + 3;
+      return {
+        value: nextValue,
+        selection: createSelection(urlStart, urlStart + url.length),
+        changed: nextValue !== value,
+      };
+    }
     case "front-matter": {
       const frontMatter = "---\ntitle: \n---\n\n";
       if (String(value).startsWith("---\n")) {

@@ -104,18 +104,21 @@
   min-height: 0;
 }
 
-:root[data-theme] .workspace-sidebar {
+:root[data-theme] .workspace-sidebar,
+:root[data-theme] .pane-sidebar {
   min-width: 220px;
   max-width: min(40vw, 420px);
 }
 
-:root[data-theme] .workspace-sidebar.editor-pane-column {
+:root[data-theme] .workspace-sidebar.editor-pane-column,
+:root[data-theme] .pane-sidebar.editor-pane-column {
   flex: 0 0 auto;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-:root[data-theme] .workspace-sidebar.is-collapsed {
+:root[data-theme] .workspace-sidebar.is-collapsed,
+:root[data-theme] .pane-sidebar.is-collapsed {
   width: 0;
   min-width: 0;
   max-width: 0;
@@ -411,24 +414,28 @@
   }
 
   :root[data-theme] .workspace-sidebar,
+  :root[data-theme] .pane-sidebar,
   :root[data-theme] .git-sidebar {
     width: 100%;
     min-width: 0;
     max-width: 100%;
   }
 
-  :root[data-theme] .workspace-sidebar.is-collapsed {
+  :root[data-theme] .workspace-sidebar.is-collapsed,
+  :root[data-theme] .pane-sidebar.is-collapsed {
     height: 0;
     min-height: 0;
     max-height: 0;
     border-bottom-width: 0;
   }
 
-  :root[data-theme] .workspace-sidebar:not(.is-collapsed) {
+  :root[data-theme] .workspace-sidebar:not(.is-collapsed),
+  :root[data-theme] .pane-sidebar:not(.is-collapsed) {
     height: min(42%, 280px);
   }
 
-  :root[data-theme] .workspace-sidebar:not(.is-collapsed) + .workspace-stage {
+  :root[data-theme] .workspace-sidebar:not(.is-collapsed) + .workspace-stage,
+  :root[data-theme] .pane-sidebar:not(.is-collapsed) + .workspace-stage {
     display: flex;
     flex: 1;
   }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T20:54:57.730Z",
+  "generatedAt": "2026-05-04T04:46:17.944Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -64,6 +64,14 @@
     {
       "packageName": "@mdwrk/theme-contract",
       "path": "packages/contracts/theme-contract",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/markdown-edit-in-renderer-react",
+      "path": "packages/editor/markdown-edit-in-renderer-react",
       "publishable": true,
       "ok": true,
       "errors": [],

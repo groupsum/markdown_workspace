@@ -85,6 +85,12 @@
       "@mdwrk/markdown-editor-react/*": [
         "packages/editor/markdown-editor-react/dist/*"
       ],
+      "@mdwrk/markdown-edit-in-renderer-react": [
+        "packages/editor/markdown-edit-in-renderer-react/dist/index.d.ts"
+      ],
+      "@mdwrk/markdown-edit-in-renderer-react/*": [
+        "packages/editor/markdown-edit-in-renderer-react/dist/*"
+      ],
       "@mdwrk/extension-runtime": [
         "packages/extensions/extension-runtime/dist/index.d.ts"
       ],

@@ -8,11 +8,14 @@ import {
   Strikethrough,
   List,
   ListChecks,
+  Link2,
   Columns,
   Maximize2,
   Eye,
   IndentIncrease,
   IndentDecrease,
+  Subscript,
+  Superscript,
 } from 'lucide-react';
 import {
   createHistoryState,
@@ -55,14 +58,23 @@ const getSplitBand = (value: number): number => {
   return Math.round(clamped / 5) * 5;
 };
 
-const getSplitPercentageFromPointer = (clientX: number, container: HTMLElement, fallback = 50): number => {
-  if (!Number.isFinite(clientX)) {
+const getSplitPercentageFromPointer = (
+  pointer: { clientX: number; clientY: number },
+  container: HTMLElement,
+  fallback = 50,
+): number => {
+  const rect = container.getBoundingClientRect();
+  const axis = window.getComputedStyle(container.querySelector('.editor-pane-body') ?? container).flexDirection === 'column' ? 'y' : 'x';
+  const coordinate = axis === 'y' ? pointer.clientY : pointer.clientX;
+  const origin = axis === 'y' ? rect.top : rect.left;
+  const size = axis === 'y' ? rect.height : rect.width;
+
+  if (!Number.isFinite(coordinate)) {
     return getSplitBand(fallback);
   }
-  const rect = container.getBoundingClientRect();
-  if (rect.width <= 0) return getSplitBand(fallback);
-  const x = clientX - rect.left;
-  return getSplitBand((x / rect.width) * 100);
+  if (size <= 0) return getSplitBand(fallback);
+
+  return getSplitBand(((coordinate - origin) / size) * 100);
 };
 
 export const EditorPane: React.FC<EditorPaneProps> = ({
@@ -139,7 +151,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     event.preventDefault();
     event.currentTarget.setPointerCapture?.(event.pointerId);
     if (containerRef.current) {
-      setSplitPos((value) => getSplitPercentageFromPointer(event.clientX, containerRef.current!, value));
+      setSplitPos((value) => getSplitPercentageFromPointer(event, containerRef.current!, value));
     }
     setIsDragging(true);
   };
@@ -149,6 +161,12 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       event.preventDefault();
       setSplitPos((value) => getSplitBand(value - 5));
     } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      setSplitPos((value) => getSplitBand(value + 5));
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setSplitPos((value) => getSplitBand(value - 5));
+    } else if (event.key === 'ArrowDown') {
       event.preventDefault();
       setSplitPos((value) => getSplitBand(value + 5));
     } else if (event.key === 'Home') {
@@ -164,7 +182,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
     const handlePointerMove = (event: PointerEvent) => {
       if (!isDragging || !containerRef.current) return;
       event.preventDefault();
-      setSplitPos((value) => getSplitPercentageFromPointer(event.clientX, containerRef.current!, value));
+      setSplitPos((value) => getSplitPercentageFromPointer(event, containerRef.current!, value));
     };
     const handlePointerUp = () => setIsDragging(false);
 
@@ -172,16 +190,16 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
       window.addEventListener('pointermove', handlePointerMove);
       window.addEventListener('pointerup', handlePointerUp);
       window.addEventListener('pointercancel', handlePointerUp);
-      document.body.classList.add('is-resizing-sidebar');
+      document.body.classList.add('is-resizing-pane');
     } else {
-      document.body.classList.remove('is-resizing-sidebar');
+      document.body.classList.remove('is-resizing-pane');
     }
 
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('pointerup', handlePointerUp);
       window.removeEventListener('pointercancel', handlePointerUp);
-      document.body.classList.remove('is-resizing-sidebar');
+      document.body.classList.remove('is-resizing-pane');
     };
   }, [isDragging]);
 
@@ -316,11 +334,12 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
             {!isToolbarHidden('task-list') && <button onClick={() => runCommand('task-list')} className={`view-toolbar-btn ${selectionState.taskList ? 'active' : ''}`} title="Task List"><ListChecks size={12}/></button>}
             {!isToolbarHidden('indent') && <button onClick={() => runCommand('indent')} className="view-toolbar-btn" title="Indent"><IndentIncrease size={12}/></button>}
             {!isToolbarHidden('outdent') && <button onClick={() => runCommand('outdent')} className="view-toolbar-btn" title="Outdent"><IndentDecrease size={12}/></button>}
+            {!isToolbarHidden('link') && <button onClick={() => runCommand('link')} className="view-toolbar-btn" title="Insert Link"><Link2 size={12}/></button>}
             {!isToolbarHidden('insert-table') && <button onClick={() => setShowTableBuilder(true)} className="view-toolbar-btn" title="Insert n:m Table"><span className="settings-mono-caption">n:m</span></button>}
             {!isToolbarHidden('inline-math') && <button onClick={() => runCommand('inline-math')} className="view-toolbar-btn" title="Inline Math"><span className="settings-mono-caption">$x$</span></button>}
             {!isToolbarHidden('footnote') && <button onClick={() => runCommand('footnote')} className="view-toolbar-btn" title="Footnote"><span className="settings-mono-caption">fn</span></button>}
-            {!isToolbarHidden('superscript') && <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><span className="settings-mono-caption">x2</span></button>}
-            {!isToolbarHidden('subscript') && <button onClick={() => runCommand('subscript')} className="view-toolbar-btn" title="Subscript"><span className="settings-mono-caption">x2</span></button>}
+            {!isToolbarHidden('superscript') && <button onClick={() => runCommand('superscript')} className="view-toolbar-btn" title="Superscript"><Superscript size={12}/></button>}
+            {!isToolbarHidden('subscript') && <button onClick={() => runCommand('subscript')} className="view-toolbar-btn" title="Subscript"><Subscript size={12}/></button>}
             <div className="view-toolbar-divider"></div>
             {!isToolbarHidden('bold') && <button onClick={() => runCommand('bold')} className={`view-toolbar-btn ${selectionState.bold ? 'active' : ''}`} title="Bold"><Bold size={12}/></button>}
             {!isToolbarHidden('italic') && <button onClick={() => runCommand('italic')} className={`view-toolbar-btn ${selectionState.italic ? 'active' : ''}`} title="Italic"><Italic size={12}/></button>}

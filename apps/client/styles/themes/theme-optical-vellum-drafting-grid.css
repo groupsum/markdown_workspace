@@ -56,6 +56,7 @@
 
 .theme-optical-vellum-drafting-grid .action-rail,
 .theme-optical-vellum-drafting-grid .workspace-sidebar,
+.theme-optical-vellum-drafting-grid .pane-sidebar,
 .theme-optical-vellum-drafting-grid .workspace-stage,
 .theme-optical-vellum-drafting-grid .project-selector-chassis {
   background: var(--ovdg-panel-tint);

@@ -28,6 +28,7 @@ const EDITOR_TOOLBAR_BUTTONS = [
   'task-list',
   'indent',
   'outdent',
+  'link',
   'inline-math',
   'footnote',
   'superscript',

@@ -34,6 +34,12 @@ describe("builtin markdown editor commands", () => {
     expect(result.selection.end).toBe(22);
   });
 
+  it("wraps selected text as a markdown link and selects the URL", () => {
+    const result = applyBuiltinMarkdownCommand("link", "MdWrk docs", { start: 0, end: 5 });
+    expect(result.value).toBe("[MdWrk](https://example.com) docs");
+    expect(result.selection).toEqual({ start: 8, end: 27, direction: "none" });
+  });
+
   it("upgrades an existing list item into an unchecked task item", () => {
     const result = applyBuiltinMarkdownCommand("task-list", "- alpha", { start: 2, end: 2 });
     expect(result.value).toBe("- [ ] alpha");

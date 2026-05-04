@@ -7,6 +7,7 @@ The portable editor family provides reusable source-mode editing primitives and 
 Implemented packages:
 - `mdwrk/markdown-editor-core`
 - `mdwrk/markdown-editor-react`
+- `mdwrk/markdown-edit-in-renderer-react`
 
 ## Package split
 
@@ -32,9 +33,20 @@ Owns:
 - theme variable bridge
 - optional default stylesheet
 
+### `mdwrk/markdown-edit-in-renderer-react`
+Owns:
+- `MarkdownEditInRenderer`
+- Typora-style block activation inside the rendered document flow
+- markdown block splitting and block replacement helpers
+- composition over `mdwrk/markdown-renderer-react` for inactive blocks
+- composition over `mdwrk/markdown-editor-react` for the active source block
+- whole-document `onChange` emissions for host persistence
+- theme variable bridge
+- optional default stylesheet
+
 ## Host-consumption model
 
-Applications should depend on the React package for the surface component and may consume core exports either directly or through the React package re-export surface.
+Applications should depend on the React source editor package for source-mode editing, or the edit-in-renderer package when they need a Typora-style rendered authoring flow. They may consume core exports either directly or through the React package re-export surface.
 
 The main client now consumes editing through the editor package boundary rather than through client-local textarea logic.
 
@@ -46,13 +58,21 @@ The React package exports a theme bridge through `createMarkdownEditorThemeStyle
 @import url("@mdwrk/markdown-editor-react/styles/default.css");
 ```
 
+The edit-in-renderer package adds its own bridge and stylesheet:
+
+```css
+@import url("@mdwrk/markdown-renderer-react/styles/default.css");
+@import url("@mdwrk/markdown-editor-react/styles/default.css");
+@import url("@mdwrk/markdown-edit-in-renderer-react/styles/default.css");
+```
+
 The editor family uses stable semantic class names and CSS custom properties so that:
 - the workspace client can map the package onto its own theme variables
 - third-party consumers can style the package without importing app-local stylesheets
 
 ## Current limitations
 
-This phase implements a source-mode editor only. It does not introduce a rich WYSIWYG editor or extension-aware editing surfaces yet.
+The edit-in-renderer package provides rendered-block activation, not a full rich-text AST editor. Extension-aware rich editing remains outside this package boundary.
 
 
 ## Phase 3 checkpoint note

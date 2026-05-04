@@ -40,6 +40,7 @@
 }
 
 .theme-anodized-billet .workspace-sidebar,
+.theme-anodized-billet .pane-sidebar,
 .theme-anodized-billet .workspace-stage,
 .theme-anodized-billet .project-selector-chassis {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);

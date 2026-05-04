@@ -33,15 +33,15 @@ function useWorkspaceModuleSplit(defaultPosition = 52) {
     if (isDragging) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
-      document.body.classList.add("is-resizing-sidebar");
+      document.body.classList.add("is-resizing-pane");
     } else {
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     };
   }, [isDragging]);
 
@@ -201,7 +201,7 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
   const detailSurface = paneFocus === "draft" ? draftSurface : previewSurface;
 
   return (
-    <div className="extension-manager-pane editor-pane-container" data-testid="gemini-agent-pane" role="region" aria-label={formatLabel(geminiAgentLabels.viewTitle)}>
+    <div className="gemini-agent-pane editor-pane-container" data-testid="gemini-agent-pane" role="region" aria-label={formatLabel(geminiAgentLabels.viewTitle)}>
       {isDragging && <div className="editor-splitter-drag-shield" />}
       <div className="view-toolbar" aria-label={formatLabel(geminiAgentLabels.toolbarLabel)}>
         <div className="view-toolbar-group">
@@ -242,7 +242,7 @@ export const GeminiAgentView: React.FC<GeminiAgentViewProps> = ({
       <div className="editor-pane-shell">
         <div className="editor-pane-body is-split">
           {!embedBrowserInShellSidebar && effectiveSidebarOpen && (
-            <aside className="workspace-sidebar editor-pane-column" style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
+            <aside className="pane-sidebar editor-pane-column" style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
               <GeminiAgentThreadList
                 threads={snapshot.threads}
                 activeThreadId={snapshot.activeThreadId}

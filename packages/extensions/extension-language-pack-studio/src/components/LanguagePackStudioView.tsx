@@ -68,15 +68,15 @@ function useWorkspaceModuleSplit(defaultPosition = 58) {
     if (isDragging) {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
-      document.body.classList.add("is-resizing-sidebar");
+      document.body.classList.add("is-resizing-pane");
     } else {
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
-      document.body.classList.remove("is-resizing-sidebar");
+      document.body.classList.remove("is-resizing-pane");
     };
   }, [isDragging, splitContainer]);
 
@@ -533,7 +533,7 @@ export const LanguagePackStudioView: FC<LanguagePackStudioViewProps> = ({
         <input ref={setImportInput} type="file" accept="application/json,.json" hidden onChange={handleImport} />
         <div className="editor-pane-body is-split">
           {!embedBrowserInShellSidebar && sidebarOpen && (
-            <aside className={`workspace-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
+            <aside className={`pane-sidebar editor-pane-column ${sidebarOpen ? "" : "is-collapsed"}`} style={{ width: "min(320px, 28vw)", padding: 12, gap: 12 }}>
               <LanguagePackBrowserSidebar controller={controller} snapshot={snapshot} formatLabel={formatLabel} />
               {error && <p style={{ margin: 0, fontSize: 11, color: "var(--status-error)" }}>{error}</p>}
             </aside>

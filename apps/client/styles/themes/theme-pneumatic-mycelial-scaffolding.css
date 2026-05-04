@@ -68,6 +68,7 @@
 .theme-pneumatic-mycelial-scaffolding .app-header,
 .theme-pneumatic-mycelial-scaffolding .action-rail,
 .theme-pneumatic-mycelial-scaffolding .workspace-sidebar,
+.theme-pneumatic-mycelial-scaffolding .pane-sidebar,
 .theme-pneumatic-mycelial-scaffolding .workspace-stage,
 .theme-pneumatic-mycelial-scaffolding .git-sidebar,
 .theme-pneumatic-mycelial-scaffolding .git-stage,
@@ -179,12 +180,14 @@
   padding: 12px 20px;
 }
 
-.theme-pneumatic-mycelial-scaffolding .workspace-sidebar {
+.theme-pneumatic-mycelial-scaffolding .workspace-sidebar,
+.theme-pneumatic-mycelial-scaffolding .pane-sidebar {
   margin-right: 0;
   overflow: hidden;
 }
 
-.theme-pneumatic-mycelial-scaffolding .workspace-sidebar.is-collapsed {
+.theme-pneumatic-mycelial-scaffolding .workspace-sidebar.is-collapsed,
+.theme-pneumatic-mycelial-scaffolding .pane-sidebar.is-collapsed {
   display: none;
 }
 
@@ -582,7 +585,8 @@
     border-radius: 4px 4px 0 0 !important;
   }
 
-  .theme-pneumatic-mycelial-scaffolding .workspace-sidebar:not(.is-collapsed) {
+  .theme-pneumatic-mycelial-scaffolding .workspace-sidebar:not(.is-collapsed),
+  .theme-pneumatic-mycelial-scaffolding .pane-sidebar:not(.is-collapsed) {
     height: min(42%, 300px);
   }
 

@@ -30,6 +30,7 @@ export type MarkdownEditorBuiltinCommandId =
   | "strikethrough"
   | "bullet-list"
   | "task-list"
+  | "link"
   | "front-matter"
   | "footnote"
   | "inline-math"
@@ -45,6 +46,7 @@ export type MarkdownEditorBuiltinCommandId =
 
 export interface MarkdownEditorCommandOptions {
   readonly indentUnit?: string;
+  readonly linkUrl?: string;
 }
 
 export interface MarkdownEditorEditResult {

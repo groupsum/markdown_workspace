@@ -55,15 +55,15 @@ function useWorkspaceModuleSplit(defaultPosition = 50) {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleMouseUp);
-      document.body.classList.add('is-resizing-sidebar');
+      document.body.classList.add('is-resizing-pane');
     } else {
-      document.body.classList.remove('is-resizing-sidebar');
+      document.body.classList.remove('is-resizing-pane');
     }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
-      document.body.classList.remove('is-resizing-sidebar');
+      document.body.classList.remove('is-resizing-pane');
     };
   }, [isDragging]);
 

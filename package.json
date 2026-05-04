@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.64",
+  "version": "0.2.65",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -57,10 +57,10 @@
     "build:examples": "npm run build:example:renderer-basic && npm run build:example:editor-basic",
     "typecheck:examples": "npm run typecheck -w @mdwrk/example-renderer-basic && npm run typecheck -w @mdwrk/example-editor-basic",
     "lint:examples": "npm run lint -w @mdwrk/example-renderer-basic && npm run lint -w @mdwrk/example-editor-basic",
-    "build:editor": "npm run build:renderer && npm run build -w @mdwrk/markdown-editor-core && npm run build -w @mdwrk/markdown-editor-react",
-    "test:editor": "npm run test -w @mdwrk/markdown-editor-core && npm run test -w @mdwrk/markdown-editor-react",
-    "typecheck:editor": "npm run typecheck -w @mdwrk/markdown-editor-core && npm run typecheck -w @mdwrk/markdown-editor-react",
-    "lint:editor": "npm run lint -w @mdwrk/markdown-editor-core && npm run lint -w @mdwrk/markdown-editor-react",
+    "build:editor": "npm run build:renderer && npm run build -w @mdwrk/markdown-editor-core && npm run build -w @mdwrk/markdown-editor-react && npm run build -w @mdwrk/markdown-edit-in-renderer-react",
+    "test:editor": "npm run test -w @mdwrk/markdown-editor-core && npm run test -w @mdwrk/markdown-editor-react && npm run test -w @mdwrk/markdown-edit-in-renderer-react",
+    "typecheck:editor": "npm run typecheck -w @mdwrk/markdown-editor-core && npm run typecheck -w @mdwrk/markdown-editor-react && npm run typecheck -w @mdwrk/markdown-edit-in-renderer-react",
+    "lint:editor": "npm run lint -w @mdwrk/markdown-editor-core && npm run lint -w @mdwrk/markdown-editor-react && npm run lint -w @mdwrk/markdown-edit-in-renderer-react",
     "build:example:editor-basic": "npm run build -w @mdwrk/example-editor-basic",
     "build:extensions": "npm run build:editor && npm run build -w @mdwrk/extension-runtime && npm run build -w @mdwrk/extension-workspace-files && npm run build -w @mdwrk/extension-git-ops && npm run build -w @mdwrk/extension-manager && npm run build -w @mdwrk/extension-gemini-agent && npm run build -w @mdwrk/extension-theme-studio && npm run build -w @mdwrk/extension-language-pack-studio && npm run build -w @mdwrk/extension-catalog-hello",
     "test:extensions": "npm run test -w @mdwrk/extension-runtime && npm run test -w @mdwrk/extension-workspace-files && npm run test -w @mdwrk/extension-git-ops && npm run test -w @mdwrk/extension-manager && npm run test -w @mdwrk/extension-gemini-agent && npm run test -w @mdwrk/extension-theme-studio && npm run test -w @mdwrk/extension-language-pack-studio && npm run test -w @mdwrk/extension-catalog-hello",

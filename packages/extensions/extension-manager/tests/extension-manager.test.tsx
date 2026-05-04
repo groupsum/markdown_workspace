@@ -428,10 +428,10 @@ describe('extension-manager', () => {
     const view = renderManagerView(runtime);
 
     expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
-    expect(view.container.querySelector('aside.editor-pane-column')).not.toBeNull();
+    expect(view.container.querySelector('aside.pane-sidebar.editor-pane-column')).not.toBeNull();
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
-    await waitFor(() => expect(view.container.querySelector('aside.editor-pane-column')).toBeNull());
+    await waitFor(() => expect(view.container.querySelector('aside.pane-sidebar.editor-pane-column')).toBeNull());
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     await waitFor(() => expect(screen.queryByRole('separator', { name: 'Resize Extension Manager panes' })).not.toBeInTheDocument());

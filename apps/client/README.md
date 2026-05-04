@@ -130,6 +130,7 @@ The view toolbar is the stage-local control strip. Its content is preference-awa
   - bullet list
   - task list
   - indent / outdent
+  - hyperlink
   - insert table
   - inline math
   - footnote

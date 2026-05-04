@@ -60,7 +60,7 @@ describe('extension workspace surfaces', () => {
     expect(setWorkspaceSidebarOpen).toHaveBeenCalledWith(false);
   });
 
-  it('renders extension manager as a pane surface with workspace-sidebar and layout toggles', async () => {
+  it('renders extension manager as a pane surface with pane-sidebar and layout toggles', async () => {
     const managerSnapshot = {
       extensions: [
         {
@@ -105,7 +105,7 @@ describe('extension workspace surfaces', () => {
     );
 
     expect(screen.queryByTestId('extension-manager-modal')).not.toBeInTheDocument();
-    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(view.container.querySelector('.pane-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter extension browser')).toBeInTheDocument();
     const header = view.container.querySelector('.extension-manager-header');
     expect(header).not.toBeNull();
@@ -122,10 +122,10 @@ describe('extension workspace surfaces', () => {
     expect(screen.queryByText('Catalog Browser')).not.toBeInTheDocument();
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
-    await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());
+    await waitFor(() => expect(view.container.querySelector('.pane-sidebar.editor-pane-column')).toBeNull());
   });
 
-  it('renders theme studio as a pane surface with workspace-sidebar and layout toggles', async () => {
+  it('renders theme studio as a pane surface with pane-sidebar and layout toggles', async () => {
     const themeSnapshot = {
       busy: false,
       infoMessage: 'Ready',
@@ -167,7 +167,7 @@ describe('extension workspace surfaces', () => {
     );
 
     expect(screen.queryByTestId('theme-studio-modal')).not.toBeInTheDocument();
-    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(view.container.querySelector('.pane-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter theme browser')).toBeInTheDocument();
     const header = view.container.querySelector('.theme-studio-header');
     expect(header).not.toBeNull();
@@ -197,7 +197,7 @@ describe('extension workspace surfaces', () => {
     await waitFor(() => expect(screen.getByLabelText('Resize Theme Studio panes')).toBeInTheDocument());
   });
 
-  it('renders language pack studio as a pane surface with workspace-sidebar and layout toggles', async () => {
+  it('renders language pack studio as a pane surface with pane-sidebar and layout toggles', async () => {
     const languageSnapshot = {
       activeLocale: 'en',
       loadingTokens: false,
@@ -229,7 +229,7 @@ describe('extension workspace surfaces', () => {
     );
 
     expect(screen.queryByTestId('language-pack-manager-modal')).not.toBeInTheDocument();
-    expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).not.toBeNull();
+    expect(view.container.querySelector('.pane-sidebar.editor-pane-column')).not.toBeNull();
     expect(screen.getByLabelText('Filter language browser')).toBeInTheDocument();
     const header = view.container.querySelector('.language-pack-studio-header');
     expect(header).not.toBeNull();
@@ -245,7 +245,7 @@ describe('extension workspace surfaces', () => {
     })));
 
     fireEvent.click(view.container.querySelector('button[title="Toggle sidebar"]') as HTMLButtonElement);
-    await waitFor(() => expect(view.container.querySelector('.workspace-sidebar.editor-pane-column')).toBeNull());
+    await waitFor(() => expect(view.container.querySelector('.pane-sidebar.editor-pane-column')).toBeNull());
 
     fireEvent.click(view.container.querySelector('button[title="Single pane"]') as HTMLButtonElement);
     fireEvent.click(view.container.querySelector('button[title="Split screen"]') as HTMLButtonElement);

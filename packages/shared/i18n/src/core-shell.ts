@@ -333,6 +333,7 @@ const sharedSettingsMessages = {
   'core.settings.workspace-preferences.editor-toolbar-button.task-list': 'Task list',
   'core.settings.workspace-preferences.editor-toolbar-button.indent': 'Indent',
   'core.settings.workspace-preferences.editor-toolbar-button.outdent': 'Outdent',
+  'core.settings.workspace-preferences.editor-toolbar-button.link': 'Insert link',
   'core.settings.workspace-preferences.editor-toolbar-button.inline-math': 'Inline math',
   'core.settings.workspace-preferences.editor-toolbar-button.footnote': 'Footnote',
   'core.settings.workspace-preferences.editor-toolbar-button.superscript': 'Superscript',

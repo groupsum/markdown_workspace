@@ -217,7 +217,9 @@
 }
 
 body.is-resizing-sidebar,
-body.is-resizing-sidebar * {
+body.is-resizing-sidebar *,
+body.is-resizing-pane,
+body.is-resizing-pane * {
   cursor: col-resize !important;
   user-select: none !important;
 }

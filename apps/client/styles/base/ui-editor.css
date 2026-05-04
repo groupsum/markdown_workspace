@@ -580,6 +580,12 @@
   }
 }
 
+body.is-resizing-pane,
+body.is-resizing-pane * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
 @media (max-width: 1024px) and (orientation: landscape) and (max-height: 320px) {
   .view-toolbar-group {
     gap: 4px;
