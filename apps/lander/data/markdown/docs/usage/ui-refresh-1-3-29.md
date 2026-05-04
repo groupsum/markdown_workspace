@@ -38,6 +38,6 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 - [Client Installation](/docs/getting-started/installation)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Editor Basics](/features/editor-basics)

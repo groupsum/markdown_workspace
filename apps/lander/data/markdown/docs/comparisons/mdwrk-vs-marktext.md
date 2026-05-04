@@ -23,8 +23,8 @@ MdWrk connects writing, preview, workspace management, extensions, and package d
 
 ## Related Docs
 
-- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
-- [Theme Packs](/docs/product/theme-packs)
+- [Offline Markdown Editor](/features/offline-markdown-editor)
+- [Theme Packs](/features/theme-packs)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Offline Markdown Editor](/features/offline-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 MdWrk and MarkText both keep Markdown authoring close to the source file.

@@ -73,8 +73,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
 
 Use this path when you want to author portable MdWrk theme artifacts rather than only switch between built-in themes.

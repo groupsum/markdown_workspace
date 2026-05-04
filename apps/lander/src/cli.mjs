@@ -89,14 +89,14 @@ const DOC_ITEM_ORDER = [
   '/docs/getting-started/local-setup/',
   '/docs/getting-started/configuration/',
   '/docs/getting-started/standalone-modules/',
-  '/docs/product/offline-markdown-editor/',
-  '/docs/product/local-first-markdown-workspace/',
-  '/docs/product/privacy-first-markdown-editor/',
-  '/docs/product/markdown-file-manager/',
-  '/docs/product/markdown-preview-editor/',
-  '/docs/product/extension-host/',
-  '/docs/product/theme-packs/',
-  '/docs/product/developer-documentation/',
+  '/features/offline-markdown-editor/',
+  '/features/local-first-markdown-workspace/',
+  '/features/privacy-first-markdown-editor/',
+  '/features/markdown-file-manager/',
+  '/features/markdown-preview-editor/',
+  '/features/extension-host/',
+  '/features/theme-packs/',
+  '/features/developer-documentation/',
   '/docs/extensions/extension-platform/',
   '/docs/extensions/theme-studio-and-host-surfaces/',
 ];
@@ -811,6 +811,19 @@ const renderCardGrid = (items, type = 'blog') =>
                     </article>`).join('\n                    ')}
                   </div>`;
 
+const toCompareRouteSlug = (slug) => `/compare/${String(slug)
+  .replace(/^\/+|\/+$/g, '')
+  .replace(/^comparisons\//, '')
+  .replace(/^mdwrk-vs-/, '')
+  .replace(/^mdwrk-vs/i, '')
+  .replace(/^vs-/, '')
+  .replace(/^vscode$/, 'vs-code')}/`;
+
+const toFeatureRouteSlug = (slug) => `/features/${String(slug)
+  .replace(/^\/+|\/+$/g, '')
+  .replace(/^product\//, '')
+  .replace(/^usage\//, '')}/`;
+
 const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md'))
   .sort()
   .map((filePath) => {
@@ -824,6 +837,14 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
     const order = Number(frontmatter.order ?? 999);
     const articleSource = stripLegacyAeoSections(removeDuplicateLeadingHeading(body, title));
     const excerpt = summarizeContent(articleSource, frontmatter.excerpt);
+    const isComparison = section === 'Compares' || slug.startsWith('comparisons/');
+    const isFeature = section === 'Features';
+    const routeSlug = isComparison ? toCompareRouteSlug(slug) : isFeature ? toFeatureRouteSlug(slug) : `/docs/${slug}/`;
+    const contentType = isComparison ? 'comparison' : isFeature ? 'feature' : 'docs';
+    const pageTitle = isComparison ? `${title} | MdWrk Compares` : isFeature ? `${title} | MdWrk Features` : `${title} | MdWrk Docs`;
+    const intent = isComparison ? `compare ${title.toLowerCase()} in MdWrk` : isFeature ? `understand ${title.toLowerCase()} in MdWrk` : `learn ${title.toLowerCase()} in MdWrk`;
+    const parent = isComparison || isFeature ? '/' : '/docs/';
+    const tags = isComparison ? ['compare', section] : isFeature ? ['features', section] : ['docs', section];
 
     return {
       sourcePath,
@@ -839,20 +860,20 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
       entry: createStaticEntry({
         sourcePath,
         sourceHash: sha256(raw),
-        slug: `/docs/${slug}/`,
-        title: `${title} | MdWrk Docs`,
+        slug: routeSlug,
+        title: pageTitle,
         description: excerpt,
         h1: title,
         subtitle: frontmatter.subtitle,
         featuredImage: frontmatter.featuredImage,
         featuredImageAlt: frontmatter.featuredImageAlt,
-        intent: `learn ${title.toLowerCase()} in MdWrk`,
-        contentType: 'docs',
+        intent,
+        contentType,
         updatedAt: frontmatter.date,
         body: articleSource,
         html: renderMarkdown(articleSource).html,
-        tags: ['docs', section],
-        parent: '/docs/',
+        tags,
+        parent,
       }),
     };
   })
@@ -1514,6 +1535,7 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
               </button>
               <a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
                 ${renderStaticGithubIcon()}
+                <span class="navbar-github-label">GitHub</span>
               </a>
             </div>
             <div class="navbar-menu-panel is-open" id="navbar-sticky">

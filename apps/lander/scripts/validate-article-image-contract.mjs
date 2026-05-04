@@ -14,11 +14,100 @@ const blogView = read('components', 'BlogView.tsx');
 const docsView = read('components', 'DocsView.tsx');
 const staticCompiler = read('src', 'cli.mjs');
 const sitemapGenerator = read('scripts', 'generate-sitemap.mjs');
+const settingsArticleHtml = read('dist-static', 'blog', 'settings-simplification-for-daily-flow', 'index.html');
+
+const propertyValidator = (propertySchema, key) => {
+  if (propertySchema?.$ref?.endsWith('/nonEmptyString')) {
+    return (value) => typeof value === 'string' && value.trim().length > 0;
+  }
+  if (propertySchema?.$ref?.endsWith('/excerpt')) {
+    return (value) => typeof value === 'string' && value.trim().length >= 40 && value.trim().length <= 280;
+  }
+  if (propertySchema?.$ref?.endsWith('/subtitle')) {
+    return (value) => typeof value === 'string' && value.trim().length >= 20 && value.trim().length <= 280;
+  }
+  if (propertySchema?.$ref?.endsWith('/isoDate')) {
+    return (value) => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value.trim());
+  }
+  if (propertySchema?.$ref?.endsWith('/integerString')) {
+    return (value) => typeof value === 'string' && /^\d+$/.test(value.trim());
+  }
+  if (propertySchema?.$ref?.endsWith('/numericString')) {
+    return (value) => typeof value === 'string' && /^\d+(?:\.\d+)?$/.test(value.trim());
+  }
+  if (propertySchema?.$ref?.endsWith('/articleStatus')) {
+    return (value) => typeof value === 'string' && ['draft', 'published'].includes(value.trim());
+  }
+  if (propertySchema?.$ref?.endsWith('/commaList')) {
+    return (value) => typeof value === 'string' && value.trim().length > 0;
+  }
+  if (propertySchema?.$ref?.endsWith('/imagePath')) {
+    return (value) => typeof value === 'string' && /^(https?:\/\/|\/)[^\s]+$/.test(value.trim());
+  }
+  if (key === 'slug') return (value) => typeof value === 'string' && /^[a-z0-9][a-z0-9/-]*$/.test(value.trim());
+  if (key === 'toc') return (value) => typeof value === 'string' && ['true', 'false'].includes(value.trim());
+  return (value) => typeof value === 'string' && value.trim().length > 0;
+};
+
+const validateFixture = (schemaBranch, metadata) => {
+  const failures = [];
+  for (const key of schemaBranch.required) {
+    if (!Object.prototype.hasOwnProperty.call(metadata, key) || String(metadata[key]).trim() === '') {
+      failures.push(`missing ${key}`);
+    }
+  }
+  for (const [key, value] of Object.entries(metadata)) {
+    const propertySchema = schemaBranch.properties[key];
+    if (!propertySchema) {
+      failures.push(`unsupported ${key}`);
+      continue;
+    }
+    if (!propertyValidator(propertySchema, key)(value)) failures.push(`invalid ${key}`);
+  }
+  return failures;
+};
+
+const validDocMetadata = {
+  title: 'Article Image Contract Doc',
+  slug: 'testing/article-image-contract',
+  section: 'Testing',
+  sectionOrder: '1',
+  order: '1',
+  toc: 'true',
+  date: '2026-05-04',
+  status: 'published',
+  excerpt: 'This documentation article exists to validate explicit featured image frontmatter for rendering.',
+  featuredImage: '/docs/media/featured-image.png',
+  featuredImageAlt: 'Feature image alt text',
+};
+
+const validNewsMetadata = {
+  title: 'Article Image Contract News',
+  date: '2026-05-04',
+  status: 'published',
+  author: 'CobyCloud',
+  excerpt: 'This news article exists to validate explicit featured image frontmatter for rendering.',
+  featuredImage: 'https://example.com/featured-image.png',
+  featuredImageAlt: 'Feature image alt text',
+};
 
 for (const schemaBranch of articleSchema.oneOf) {
   assert.ok(schemaBranch.properties.featuredImage, `${schemaBranch.title} must allow featuredImage frontmatter.`);
   assert.ok(schemaBranch.properties.featuredImageAlt, `${schemaBranch.title} must allow featuredImageAlt frontmatter.`);
 }
+
+assert.deepEqual(validateFixture(articleSchema.oneOf[0], validDocMetadata), [], 'Doc metadata schema must accept root-relative featuredImage frontmatter.');
+assert.deepEqual(validateFixture(articleSchema.oneOf[1], validNewsMetadata), [], 'News metadata schema must accept absolute featuredImage frontmatter.');
+assert.deepEqual(
+  validateFixture(articleSchema.oneOf[1], { ...validNewsMetadata, featuredImage: 'media/featured-image.png' }),
+  ['invalid featuredImage'],
+  'News metadata schema must reject non-root-relative featuredImage paths.',
+);
+assert.deepEqual(
+  validateFixture(articleSchema.oneOf[1], { ...validNewsMetadata, image: '/media/legacy-image.png' }),
+  ['unsupported image'],
+  'News metadata schema must reject legacy image frontmatter outside the explicit featuredImage contract.',
+);
 
 assert.ok(pageSchema.properties.featuredImage, 'Static page schema must allow featuredImage frontmatter.');
 assert.ok(pageSchema.properties.featuredImageAlt, 'Static page schema must allow featuredImageAlt frontmatter.');
@@ -43,5 +132,26 @@ assert.match(staticCompiler, /<meta name="twitter:image" content="\$\{escapeAttr
 
 assert.match(sitemapGenerator, /featuredImage/, 'Sitemap semantic index must understand explicit featuredImage frontmatter.');
 assert.match(sitemapGenerator, /src: '\/favicon\.svg'/, 'Sitemap semantic index must fall back to favicon when no article image exists.');
+
+assert.match(
+  settingsArticleHtml,
+  /<meta property="og:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
+  'Generated news article must use the first inline image for Open Graph metadata when no featuredImage is set.',
+);
+assert.match(
+  settingsArticleHtml,
+  /<meta name="twitter:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
+  'Generated news article must use the first inline image for Twitter metadata when no featuredImage is set.',
+);
+assert.doesNotMatch(
+  settingsArticleHtml,
+  /class="lander-featured-image"/,
+  'Generated news article must not render a featured-image block when no featuredImage is set.',
+);
+assert.match(
+  settingsArticleHtml,
+  /<h2 class="md-h2" id="screenshot">Screenshot<\/h2><p class="md-p"><img src="\/blog\/media\/mdwrk-settings-visual\.png"/,
+  'Generated news article must keep inline body images in their markdown position.',
+);
 
 console.log('Article image contract validation passed.');

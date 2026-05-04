@@ -27,7 +27,7 @@ MdWrk does not require documents to be uploaded to a hosted service before editi
 
 - [Browser Use](/docs/getting-started/browser-use)
 - [PWA Installation](/docs/getting-started/pwa-installation)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Editor Basics](/features/editor-basics)
 
 ## Quick Reference
 
@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Offline Markdown Editor](/features/offline-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 MdWrk gives Markdown authors a browser-first editor that continues to work when the network is unavailable.

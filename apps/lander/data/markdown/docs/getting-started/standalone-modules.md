@@ -79,8 +79,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Editor Basics](/features/editor-basics)
 - [Client Installation](/docs/getting-started/installation)
 
 Use standalone modules when you want MdWrk surfaces inside another application rather than the full workspace shell.

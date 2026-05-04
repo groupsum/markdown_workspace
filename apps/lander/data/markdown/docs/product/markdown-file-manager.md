@@ -25,8 +25,8 @@ Where the desktop shell is available, host file acquisition and filesystem-backe
 
 ## Related Docs
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Rendering And Preview](/features/rendering-and-preview)
 - [Local Setup](/docs/getting-started/local-setup)
 
 ## Quick Reference
@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 - [Browser Use](/docs/getting-started/browser-use)
 
 MdWrk includes file-management behavior as part of the writing workspace.

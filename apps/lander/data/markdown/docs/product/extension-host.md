@@ -27,7 +27,7 @@ Current bundled surfaces include Extension Manager, Theme Studio, Language Pack 
 
 - [Extension Platform](/docs/extensions/extension-platform)
 - [Extension Authoring](/docs/authoring/extensions)
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 
 ## Quick Reference
 
@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 
 The MdWrk client is the extension host for bundled and installable extension surfaces.

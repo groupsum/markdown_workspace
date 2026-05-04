@@ -54,7 +54,7 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [PWA Installation](/docs/getting-started/pwa-installation)
 - [Browser Use](/docs/getting-started/browser-use)
 

@@ -42,9 +42,9 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 
 May 1, 2026 focuses on the path every product team cares about: the path from first run to confident daily use.
 

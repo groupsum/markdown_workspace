@@ -14,7 +14,6 @@ faqs:
     answer: "New users should read the quickstart, offline Markdown editor page, and local-first workspace page before exploring extension and theme documentation."
 parent: "/"
 related:
-  - "/features/offline-markdown-editor/"
   - "/docs/extensions/"
 tags:
   - docs

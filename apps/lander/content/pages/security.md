@@ -12,7 +12,6 @@ subtitle: "MdWrk security documentation focuses on package boundaries, extension
 parent: "/"
 related:
   - "/privacy/"
-  - "/features/extension-platform/"
 tags:
   - security
   - verification

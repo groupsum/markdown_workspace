@@ -23,8 +23,8 @@ MdWrk turns Markdown authoring into a product surface that can serve writers, do
 
 ## Related Docs
 
-- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
-- [Developer Documentation](/docs/product/developer-documentation)
+- [Offline Markdown Editor](/features/offline-markdown-editor)
+- [Developer Documentation](/features/developer-documentation)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Offline Markdown Editor](/docs/product/offline-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Offline Markdown Editor](/features/offline-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 Standard Markdown editors usually focus on opening a file, editing text, and showing a preview.

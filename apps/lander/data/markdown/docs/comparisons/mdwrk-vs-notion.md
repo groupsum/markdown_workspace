@@ -23,8 +23,8 @@ MdWrk keeps the Markdown file as the durable content surface. That makes it prac
 
 ## Related Docs
 
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
-- [Markdown File Manager](/docs/product/markdown-file-manager)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
+- [Markdown File Manager](/features/markdown-file-manager)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Editor Basics](/features/editor-basics)
 
 MdWrk and Notion solve different document problems.

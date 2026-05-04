@@ -56,7 +56,7 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [Extension Platform](/docs/extensions/extension-platform)
 - [GitHub Sync](/docs/github-sync)
 

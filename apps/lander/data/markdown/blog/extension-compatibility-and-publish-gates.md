@@ -46,8 +46,8 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Editor Basics](/features/editor-basics)
 - [Extension Platform](/docs/extensions/extension-platform)
 
 April 1, 2026 tightens the extension delivery story with compatibility gates, version alignment, and publish-focused verification.

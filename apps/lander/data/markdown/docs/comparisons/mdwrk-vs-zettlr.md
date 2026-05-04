@@ -23,8 +23,8 @@ MdWrk keeps optional Markdown profile behavior visible through the renderer and 
 
 ## Related Docs
 
-- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
+- [Advanced Markdown Formatting](/features/advanced-formatting)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 MdWrk focuses on Markdown workspace, preview, packages, and extension host behavior. Zettlr is commonly used for research writing, citation-heavy notes, and academic workflows.

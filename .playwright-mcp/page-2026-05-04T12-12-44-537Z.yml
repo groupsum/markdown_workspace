@@ -1,0 +1,149 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - generic [ref=e13]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer]':
+          - img [ref=e15]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18]
+          - generic [ref=e21]: GitHub
+      - list [ref=e23]:
+        - listitem [ref=e24]:
+          - link "Home" [ref=e25] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e26]:
+          - link "Features" [ref=e27] [cursor=pointer]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28]:
+          - link "Compare" [ref=e29] [cursor=pointer]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30]:
+          - link "Docs" [ref=e31] [cursor=pointer]:
+            - /url: /docs
+        - listitem [ref=e32]:
+          - link "News" [ref=e33] [cursor=pointer]:
+            - /url: /blog
+        - listitem [ref=e34]:
+          - link "Privacy" [ref=e35] [cursor=pointer]:
+            - /url: /privacy
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - complementary [ref=e38]:
+        - generic [ref=e39]:
+          - heading "Features" [level=3] [ref=e40]:
+            - img [ref=e41]
+            - text: Features
+          - navigation "Feature navigation" [ref=e44]:
+            - generic [ref=e45]:
+              - link "Editor Basics" [ref=e46] [cursor=pointer]:
+                - /url: /features/editor-basics
+                - generic [ref=e47]: Editor Basics
+              - link "Markdown Formatting" [ref=e48] [cursor=pointer]:
+                - /url: /features/advanced-formatting
+                - generic [ref=e49]: Markdown Formatting
+              - link "Rendering And Preview" [ref=e50] [cursor=pointer]:
+                - /url: /features/rendering-and-preview
+                - generic [ref=e51]: Rendering And Preview
+              - link "Offline Markdown Editor" [ref=e52] [cursor=pointer]:
+                - /url: /features/offline-markdown-editor
+                - generic [ref=e54]: Offline Markdown Editor
+              - link "Local-first Markdown Workspace" [ref=e55] [cursor=pointer]:
+                - /url: /features/local-first-markdown-workspace
+                - generic [ref=e56]: Local-first Markdown Workspace
+              - link "Privacy-first Markdown Editor" [ref=e57] [cursor=pointer]:
+                - /url: /features/privacy-first-markdown-editor
+                - generic [ref=e58]: Privacy-first Markdown Editor
+              - link "Markdown File Manager" [ref=e59] [cursor=pointer]:
+                - /url: /features/markdown-file-manager
+                - generic [ref=e60]: Markdown File Manager
+              - link "Markdown Preview Editor" [ref=e61] [cursor=pointer]:
+                - /url: /features/markdown-preview-editor
+                - generic [ref=e62]: Markdown Preview Editor
+              - link "Extension Host" [ref=e63] [cursor=pointer]:
+                - /url: /features/extension-host
+                - generic [ref=e64]: Extension Host
+              - link "Theme Packs" [ref=e65] [cursor=pointer]:
+                - /url: /features/theme-packs
+                - generic [ref=e66]: Theme Packs
+              - link "Developer Documentation" [ref=e67] [cursor=pointer]:
+                - /url: /features/developer-documentation
+                - generic [ref=e68]: Developer Documentation
+      - main [ref=e69]:
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]:
+              - generic [ref=e75]: Features
+              - generic [ref=e76]: /
+              - time [ref=e77]: May 3, 2026
+            - heading "Offline Markdown Editor" [level=1] [ref=e78]
+          - generic [ref=e80]:
+            - heading "Offline Editing Model" [level=2] [ref=e81]
+            - paragraph [ref=e82]: The workspace stores documents in browser-managed local storage and IndexedDB-backed client state. The PWA install path can keep the client available in a dedicated app window while the editor keeps source text and preview close together.
+            - heading "Writing Workflow" [level=2] [ref=e83]
+            - paragraph [ref=e84]: Use the editor-only view for focused drafting, split view for live validation, and preview-only mode for review. Formatting commands write portable Markdown instead of proprietary document state.
+            - heading "Local Storage Boundary" [level=2] [ref=e85]
+            - paragraph [ref=e86]: MdWrk does not require documents to be uploaded to a hosted service before editing. Sync and export are intentional workflows, not hidden defaults.
+            - heading "Related Docs" [level=2] [ref=e87]
+            - list [ref=e88]:
+              - listitem [ref=e89]:
+                - link "Browser Use" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/getting-started/browser-use
+              - listitem [ref=e91]:
+                - link "PWA Installation" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/getting-started/pwa-installation
+              - listitem [ref=e93]:
+                - link "Editor Basics" [ref=e94] [cursor=pointer]:
+                  - /url: /features/editor-basics
+  - contentinfo [ref=e95]:
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - link "MdWrk" [ref=e99] [cursor=pointer]:
+            - /url: /
+            - img [ref=e100]
+            - generic [ref=e104]: MdWrk
+          - paragraph [ref=e105]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading "Resources" [level=2] [ref=e108]
+            - list [ref=e109]:
+              - listitem [ref=e110]:
+                - link "Documentation" [ref=e111] [cursor=pointer]:
+                  - /url: /docs
+              - listitem [ref=e112]:
+                - link "News" [ref=e113] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e114]:
+                - link "Live Demo" [ref=e115] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e116]:
+                - link "npm" [ref=e117] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e118]:
+            - heading "Follow" [level=2] [ref=e119]
+            - list [ref=e120]:
+              - listitem [ref=e121]:
+                - link "GitHub" [ref=e122] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e123]:
+                - link "X.com" [ref=e124] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e125]:
+                - link "Community" [ref=e126] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e127]:
+            - heading "Legal" [level=2] [ref=e128]
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - link "Privacy" [ref=e131] [cursor=pointer]:
+                  - /url: /legal/privacy
+              - listitem [ref=e132]:
+                - link "Terms" [ref=e133] [cursor=pointer]:
+                  - /url: /legal/terms
+      - separator [ref=e134]
+      - generic [ref=e135]: © 2026 MdWrk. Designed for privacy.

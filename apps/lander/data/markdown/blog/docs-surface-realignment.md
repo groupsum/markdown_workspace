@@ -57,9 +57,9 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 
 April 30, 2026 sharpens the MdWrk site for the client, the reusable packages, and the extension platform.
 

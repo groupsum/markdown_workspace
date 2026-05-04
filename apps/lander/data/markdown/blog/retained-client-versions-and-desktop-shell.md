@@ -46,7 +46,7 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [GitHub Sync](/docs/github-sync)
 - [PWA Installation](/docs/getting-started/pwa-installation)
 

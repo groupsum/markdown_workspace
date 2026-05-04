@@ -23,8 +23,8 @@ MdWrk emphasizes portable Markdown editing, preview, file management, extension-
 
 ## Related Docs
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [MdWrk Extension Host](/docs/product/extension-host)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [MdWrk Extension Host](/features/extension-host)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 MdWrk is best evaluated as a local-first Markdown workspace and package platform. Obsidian is widely used for personal knowledge management and graph-oriented note collections.

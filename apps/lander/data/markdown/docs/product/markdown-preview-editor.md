@@ -25,9 +25,9 @@ HTML export and print preview are connected to the preview pipeline so approved 
 
 ## Related Docs
 
-- [Editor Basics](/docs/usage/editor-basics)
-- [Rendering And Preview](/docs/usage/rendering-and-preview)
-- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Editor Basics](/features/editor-basics)
+- [Rendering And Preview](/features/rendering-and-preview)
+- [Advanced Markdown Formatting](/features/advanced-formatting)
 
 ## Quick Reference
 
@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
-- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
+- [Advanced Markdown Formatting](/features/advanced-formatting)
 
 MdWrk keeps source editing and rendered preview in the same workflow.

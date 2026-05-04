@@ -51,9 +51,9 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Theme Packs](/docs/product/theme-packs)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Theme Packs](/features/theme-packs)
 
 January 22, 2026 moves MdWrk from an exciting workspace demo into an installable daily tool.
 

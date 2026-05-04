@@ -37,6 +37,6 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Theme Packs](/docs/product/theme-packs)
-- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
+- [Theme Packs](/features/theme-packs)
+- [Advanced Markdown Formatting](/features/advanced-formatting)
 - [Client Installation](/docs/getting-started/installation)

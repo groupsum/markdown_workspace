@@ -16,7 +16,6 @@ faqs:
 parent: "/"
 related:
   - "/docs/quickstart/"
-  - "/features/local-first-markdown/"
 tags:
   - launch
   - static

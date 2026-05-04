@@ -55,6 +55,19 @@ const normalizeContentSlug = (entryId, metadata) => {
   return entryId.replace(/^\/+|\/+$/g, '');
 };
 
+const toCompareRoutePath = (slug) => `/compare/${String(slug)
+  .replace(/^\/+|\/+$/g, '')
+  .replace(/^comparisons\//, '')
+  .replace(/^mdwrk-vs-/, '')
+  .replace(/^mdwrk-vs/i, '')
+  .replace(/^vs-/, '')
+  .replace(/^vscode$/, 'vs-code')}`;
+
+const toFeatureRoutePath = (slug) => `/features/${String(slug)
+  .replace(/^\/+|\/+$/g, '')
+  .replace(/^product\//, '')
+  .replace(/^usage\//, '')}`;
+
 const toIsoDate = (filePath) => fs.statSync(filePath).mtime.toISOString().slice(0, 10);
 
 const stripMarkdown = (content) =>
@@ -233,7 +246,10 @@ for (const filePath of collectFiles(docsDir, ['.md'])) {
   const title = metadata.title || path.basename(filePath, '.md');
   const body = removeGeneratedGuideBlocks(extractBody(raw));
   const headings = extractHeadings(body);
-  const routePath = `/docs/${metadata.slug || slugify(title)}`;
+  const sourceSlug = metadata.slug || slugify(title);
+  const isComparison = metadata.section === 'Compares' || String(sourceSlug).startsWith('comparisons/');
+  const isFeature = metadata.section === 'Features';
+  const routePath = isComparison ? toCompareRoutePath(sourceSlug) : isFeature ? toFeatureRoutePath(sourceSlug) : `/docs/${sourceSlug}`;
   const description = summarize(body, metadata.excerpt);
   const keywords = deriveKeywords(title, metadata.section, description, headings.join(' '), metadata.relatedApis);
   routes.push({
@@ -243,11 +259,11 @@ for (const filePath of collectFiles(docsDir, ['.md'])) {
     lastmod: toIsoDate(filePath),
   });
   semanticEntries.push({
-    type: 'doc',
+    type: isComparison ? 'comparison' : isFeature ? 'feature' : 'doc',
     title,
     url: `${siteUrl}${routePath}`,
     path: routePath,
-    section: metadata.section || 'Documentation',
+    section: isComparison ? 'Compares' : isFeature ? 'Features' : metadata.section || 'Documentation',
     description,
     headings,
     keywords,

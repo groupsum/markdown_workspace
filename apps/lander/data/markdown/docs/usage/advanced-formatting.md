@@ -156,8 +156,8 @@ Enable optional profiles only when the document actually needs them. This keeps 
 
 ## Related Docs
 
-- [Editor Basics](/docs/usage/editor-basics)
-- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Editor Basics](/features/editor-basics)
+- [Rendering And Preview](/features/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
 
 ## Quick Reference
@@ -172,8 +172,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
 
 Use this page when you want the exact Markdown formatting contract that MdWrk previews, exports, and edits today.

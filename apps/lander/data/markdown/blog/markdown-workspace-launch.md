@@ -62,9 +62,9 @@ This article is useful for readers tracking:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
 
 The January 20, 2026 launch introduces a writing workspace built for fast authoring, visual polish, and theme-aware reading.
 

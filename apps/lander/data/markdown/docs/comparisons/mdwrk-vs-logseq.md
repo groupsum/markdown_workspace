@@ -23,8 +23,8 @@ MdWrk keeps Markdown documents portable and easy to move through GitHub, npm, st
 
 ## Related Docs
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
 
 MdWrk is a Markdown workspace for files, preview, export, and extension-hosted tooling. Logseq is commonly used as an outline-first knowledge graph and journaling tool.

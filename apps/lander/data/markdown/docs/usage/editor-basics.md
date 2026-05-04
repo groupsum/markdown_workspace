@@ -111,8 +111,8 @@ MdWrk is not trying to hide Markdown behind a fake document model. The product g
 
 ## Related Docs
 
-- [Advanced Markdown Formatting](/docs/usage/advanced-formatting)
-- [Rendering And Preview](/docs/usage/rendering-and-preview)
+- [Advanced Markdown Formatting](/features/advanced-formatting)
+- [Rendering And Preview](/features/rendering-and-preview)
 - [Client Configuration](/docs/getting-started/configuration)
 
 ## Quick Reference
@@ -129,8 +129,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
+- [Editor Basics](/features/editor-basics)
 
 Use this page when you want the current MdWrk editor surface, not just the package names behind it.

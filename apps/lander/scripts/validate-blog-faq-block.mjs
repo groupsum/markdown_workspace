@@ -30,8 +30,8 @@ assert.match(
 
 assert.match(
   blogView,
-  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<section\s+className="faq-section"\s+aria-labelledby="faq-heading">/s,
-  'News article pages must render the FAQ block immediately after the article markdown.',
+  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<\/div>\s*<section\s+className="faq-section"\s+aria-labelledby="faq-heading">/s,
+  'News article pages must render the FAQ block immediately below the article card.',
 );
 
 assert.match(
@@ -59,9 +59,27 @@ assert.match(
 );
 
 assert.match(
+  blogView,
+  /<\/section>\s*\{relatedApis\.length > 0 \? \(\s*<section\s+className="related-apis-section"\s+aria-labelledby="related-apis-heading">/s,
+  'News article pages must render Related APIs below the FAQ block.',
+);
+
+assert.match(
+  blogView,
+  /<h2\s+id="related-apis-heading"\s+className="faq-section-heading">Related APIs<\/h2>/,
+  'News article related APIs block must expose the expected visible heading.',
+);
+
+assert.match(
+  blogView,
+  /const\s+relatedApis\s*=\s*toRelatedApiList\(post\.metadata,\s*articleContent\)/,
+  'News article pages must derive related APIs from frontmatter or article content.',
+);
+
+assert.match(
   css,
-  /\.blog-post-card\s*>\s*\.faq-section\s*\{\s*@apply\s+mt-8;/,
-  'News article FAQ block must have spacing after the article markdown.',
+  /\.blog-post-layout\s*>\s*\.faq-section\s*,\s*\n\.blog-post-layout\s*>\s*\.related-apis-section\s*\{\s*@apply\s+mt-6;/,
+  'News article supplemental blocks must have spacing below the article card and each other.',
 );
 
 assert.match(

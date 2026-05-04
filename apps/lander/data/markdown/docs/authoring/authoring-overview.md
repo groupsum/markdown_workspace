@@ -51,8 +51,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
 - [Extension Platform](/docs/extensions/extension-platform)
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 
 The authoring section explains how to produce MdWrk-facing artifacts rather than only how to consume them.

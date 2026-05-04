@@ -114,6 +114,22 @@ const buildBlogFaqItems = (excerpt: string) => [
   },
 ];
 
+const toRelatedApiList = (metadata: Record<string, any>, content: string) => {
+  const frontmatterApis = metadata.relatedApis;
+  const values = Array.isArray(frontmatterApis)
+    ? frontmatterApis
+    : typeof frontmatterApis === 'string'
+      ? frontmatterApis.split(',')
+      : [];
+
+  const explicitApis = values
+    .map(value => String(value).trim())
+    .filter(Boolean);
+  const bodyApis = Array.from(content.matchAll(/@mdwrk\/[a-z0-9-]+/gi), match => match[0]);
+
+  return Array.from(new Set([...explicitApis, ...bodyApis]));
+};
+
 const getPostSlug = (id: string, metadata: Record<string, any>) => {
   const frontmatterSlug = typeof metadata.slug === 'string' ? metadata.slug.trim() : '';
   if (frontmatterSlug) {
@@ -241,6 +257,7 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
   const excerpt = post.excerpt;
   const keywords = deriveKeywords(post.metadata.title, excerpt, articleContent);
   const faqItems = buildBlogFaqItems(excerpt);
+  const relatedApis = toRelatedApiList(post.metadata, articleContent);
 
   usePageMetadata({
     title: post.metadata.title,
@@ -305,20 +322,32 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
             />
           ) : null}
           <MarkdownViewer content={articleContent} />
-          <section className="faq-section" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" className="faq-section-heading">Frequently Asked Questions</h2>
-            <div className="faq-list">
-              {faqItems.map(faq => (
-                <details key={faq.question} className="faq-accordion">
-                  <summary className="faq-summary">{faq.question}</summary>
-                  <div className="faq-content">
-                    <p>{faq.answer}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </section>
         </div>
+        <section className="faq-section" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="faq-section-heading">Frequently Asked Questions</h2>
+          <div className="faq-list">
+            {faqItems.map(faq => (
+              <details key={faq.question} className="faq-accordion">
+                <summary className="faq-summary">{faq.question}</summary>
+                <div className="faq-content">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+        {relatedApis.length > 0 ? (
+          <section className="related-apis-section" aria-labelledby="related-apis-heading">
+            <h2 id="related-apis-heading" className="faq-section-heading">Related APIs</h2>
+            <ul className="related-apis-list">
+              {relatedApis.map(api => (
+                <li key={api} className="related-apis-item">
+                  <code>{api}</code>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </div>
     </div>
   );

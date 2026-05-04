@@ -1,0 +1,73 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1056"
+number: 1056
+slug: "lander-uix-design-principles"
+title: "ADR-0056: Lander UIX design principles"
+status: "accepted"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The MdWrk lander shall use a restrained UIX containment model that avoids recursively nested bordered cards, boxes, and panels. The lander shall prefer readable surfaces, section bands, spacing, typographic hierarchy, alignment, dividers, and subtle fill changes over decorative nested borders."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "accepted"
+    note: "Accepted as the public lander UIX containment and visual hierarchy design contract."
+    at: "2026-05-04T11:51:05Z"
+references: []
+body: |-
+  ## Decision
+  
+  The MdWrk lander shall use a restrained UIX containment model that avoids recursively nested bordered cards, boxes, and panels. The lander shall prefer readable surfaces, section bands, spacing, typographic hierarchy, alignment, dividers, and subtle fill changes over decorative nested borders.
+  
+  This ADR applies to the lander app, static lander compiler, public documentation pages, news article pages, home page, header, footer, FAQ blocks, article cards, docs navigation, and inline editor/previewer showcase.
+  
+  ## Context
+  
+  The lander is a public product, documentation, news, and release surface for MdWrk. Its audience includes writers, documentation maintainers, package evaluators, developers, and local-first operators. These users need to scan content quickly, understand trust and privacy boundaries, evaluate editor and previewer behavior, and move between docs, news, product pages, and install paths without visual friction.
+  
+  Nested outlined cards and boxes add visual clutter, weaken hierarchy, and make a page feel like an unfinished wireframe or administrative form. The recognized design problem is nested cards, nested boxes, or excessive containment. Informally, teams may call it cardception, but the durable design-system term is nested cards/boxes that create visual clutter.
+  
+  ## Lander UIX principles
+  
+  - Use one primary container per region. A page, pane, modal, article card, or tool frame may own the boundary, but ordinary child content should not add another outlined boundary by default.
+  - Do not place outlined cards inside outlined cards. If a nested grouping is necessary, use whitespace, a divider, indentation, a subtle fill, or a borderless layout.
+  - Use cards only for peer items that need independent scanning or selection, such as article cards, feature cards, or comparison options.
+  - Use full-width section bands for major page regions instead of floating boxed sections.
+  - Use typography, spacing, alignment, and order before adding borders.
+  - Use borders to communicate real boundaries: tool panes, modals, tables, focused controls, code blocks, form fields, or selected/interactive regions.
+  - Keep article pages as reading surfaces. Do not wrap article prose, FAQ sections, and related content in stacked boxes when spacing and headings communicate structure.
+  - Keep docs pages task-focused. Sidebar navigation may be a surface, and article content may be a surface, but internal article sections should not become nested panels.
+  - Keep the inline editor/previewer showcase tool-like. The outer demo frame may be a strong tool surface; the editor and preview panes should avoid additional decorative containment unless needed for function.
+  - Keep header and footer as navigation surfaces. They should not be composed from nested framed modules.
+  - Preserve visual rhythm through a consistent spacing scale and responsive constraints instead of arbitrary wrappers.
+  - Prefer dividers for dense lists and metadata rows. Prefer tables for comparable structured data. Prefer accordions for optional detail.
+  - If nesting cannot be avoided, reduce visual weight at each inner level: no border, lower contrast, smaller radius, flat fill, or simple divider.
+  - Design first for audience intent: readers need legibility, evaluators need product proof, developers need package/source clarity, and operators need local-first trust signals.
+  
+  ## Component rules
+  
+  - Article body: prose, headings, images, code blocks, tables, and FAQ accordions are unframed unless their semantic role requires a frame.
+  - News grid: article cards may be bordered or raised as peer items, but the grid itself should not sit inside a bordered wrapper card.
+  - Docs content: article shell and sidebar can establish layout; individual sections should rely on headings and spacing.
+  - FAQ block: use heading, spacing, and accordion dividers before card borders.
+  - Inline editor/previewer: use a single demo frame with clear toolbar, editor pane, preview pane, and status bar; avoid panel-in-panel-in-panel visual nesting.
+  - Feature and comparison sections: cards are acceptable for peer comparisons, but not inside additional outlined card wrappers.
+  - Privacy content: prioritize clarity and trust language; use a badge or callout only for a meaningful trust signal.
+  
+  ## Verification expectations
+  
+  Lander validation scripts should protect header, footer, home page, article image, FAQ, static content, and UIX contract behavior. Future UIX checks should fail when a layout introduces recursive outlined-card composition on public lander surfaces.
+  
+  ## Consequences
+  
+  The lander will feel more modern, readable, and product-focused. Some legacy card-heavy layouts may need to be flattened into section bands, divider lists, or open layouts. Designers and implementers must justify each border as a real boundary rather than decoration.
+  
+  ## References
+  
+  - Appian UX guidance: Avoid nested cards and boxes because they add visual clutter and hinder comprehension.
+  - Trimble Modus card guidance: Cards are single contained units and should not be nested within cards.
+  - Mews design guidance: Avoid outlined cards inside outlined cards; prefer spacing, dividers, or filled variants.
+  - Whitespace guidance: Whitespace communicates hierarchy, improves readability, and reduces cognitive load.

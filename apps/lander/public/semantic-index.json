@@ -1,6 +1,6 @@
 {
   "site": "MdWrk",
-  "generatedAt": "2026-05-04T11:38:18.521Z",
+  "generatedAt": "2026-05-04T12:18:45.128Z",
   "description": "Plain semantic index for MdWrk docs and news pages.",
   "entries": [
     {
@@ -516,6 +516,254 @@
       }
     },
     {
+      "type": "comparison",
+      "title": "MdWrk Vs VS Code",
+      "url": "https://mdwrk.com/compare/code",
+      "path": "/compare/code",
+      "section": "Compares",
+      "description": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Code",
+        "Compares",
+        "Compare",
+        "need",
+        "Markdown",
+        "editing",
+        "either"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Logseq",
+      "url": "https://mdwrk.com/compare/logseq",
+      "path": "/compare/logseq",
+      "section": "Compares",
+      "description": "Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Logseq",
+        "Compares",
+        "Compare",
+        "choosing",
+        "between",
+        "Markdown",
+        "workspace"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs MarkText",
+      "url": "https://mdwrk.com/compare/marktext",
+      "path": "/compare/marktext",
+      "section": "Compares",
+      "description": "Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "MarkText",
+        "Compares",
+        "Compare",
+        "choosing",
+        "between",
+        "local first",
+        "Markdown"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Notion",
+      "url": "https://mdwrk.com/compare/notion",
+      "path": "/compare/notion",
+      "section": "Compares",
+      "description": "Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Notion",
+        "Compares",
+        "Compare",
+        "choosing",
+        "between",
+        "local",
+        "Markdown"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Obsidian",
+      "url": "https://mdwrk.com/compare/obsidian",
+      "path": "/compare/obsidian",
+      "section": "Compares",
+      "description": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Obsidian",
+        "Compares",
+        "Compare",
+        "need",
+        "local",
+        "Markdown",
+        "writing"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Standard Markdown Editors",
+      "url": "https://mdwrk.com/compare/standard-markdown-editors",
+      "path": "/compare/standard-markdown-editors",
+      "section": "Compares",
+      "description": "Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Standard",
+        "Markdown",
+        "Editors",
+        "Compares",
+        "Compare",
+        "standard",
+        "editors"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Typora",
+      "url": "https://mdwrk.com/compare/typora",
+      "path": "/compare/typora",
+      "section": "Compares",
+      "description": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.",
+      "headings": [
+        "MdWrk Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Typora",
+        "Compares",
+        "Compare",
+        "across",
+        "Markdown",
+        "authoring",
+        "surfaces"
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "MdWrk Vs Zettlr",
+      "url": "https://mdwrk.com/compare/zettlr",
+      "path": "/compare/zettlr",
+      "section": "Compares",
+      "description": "Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.",
+      "headings": [
+        "Best Fit",
+        "Product Difference",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Zettlr",
+        "Compares",
+        "Compare",
+        "choosing",
+        "between",
+        "local first",
+        "Markdown"
+      ]
+    },
+    {
       "type": "doc",
       "title": "UI Refresh 1.3.28",
       "url": "https://mdwrk.com/docs/archive/ui-refresh-1-3-28",
@@ -704,254 +952,6 @@
         "authoring",
         "uses",
         "theme"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Logseq",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-logseq",
-      "path": "/docs/comparisons/mdwrk-vs-logseq",
-      "section": "Compares",
-      "description": "Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Logseq",
-        "Compares",
-        "Compare",
-        "choosing",
-        "between",
-        "Markdown",
-        "workspace"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs MarkText",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-marktext",
-      "path": "/docs/comparisons/mdwrk-vs-marktext",
-      "section": "Compares",
-      "description": "Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "MarkText",
-        "Compares",
-        "Compare",
-        "choosing",
-        "between",
-        "local first",
-        "Markdown"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Notion",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-notion",
-      "path": "/docs/comparisons/mdwrk-vs-notion",
-      "section": "Compares",
-      "description": "Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Notion",
-        "Compares",
-        "Compare",
-        "choosing",
-        "between",
-        "local",
-        "Markdown"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Obsidian",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-obsidian",
-      "path": "/docs/comparisons/mdwrk-vs-obsidian",
-      "section": "Compares",
-      "description": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Obsidian",
-        "Compares",
-        "Compare",
-        "need",
-        "local",
-        "Markdown",
-        "writing"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Standard Markdown Editors",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-standard-markdown-editors",
-      "path": "/docs/comparisons/mdwrk-vs-standard-markdown-editors",
-      "section": "Compares",
-      "description": "Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Standard",
-        "Markdown",
-        "Editors",
-        "Compares",
-        "Compare",
-        "standard",
-        "editors"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Typora",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-typora",
-      "path": "/docs/comparisons/mdwrk-vs-typora",
-      "section": "Compares",
-      "description": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.",
-      "headings": [
-        "MdWrk Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Typora",
-        "Compares",
-        "Compare",
-        "across",
-        "Markdown",
-        "authoring",
-        "surfaces"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs VS Code",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-vs-code",
-      "path": "/docs/comparisons/mdwrk-vs-vs-code",
-      "section": "Compares",
-      "description": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Code",
-        "Compares",
-        "Compare",
-        "need",
-        "Markdown",
-        "editing",
-        "either"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "MdWrk Vs Zettlr",
-      "url": "https://mdwrk.com/docs/comparisons/mdwrk-vs-zettlr",
-      "path": "/docs/comparisons/mdwrk-vs-zettlr",
-      "section": "Compares",
-      "description": "Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.",
-      "headings": [
-        "Best Fit",
-        "Product Difference",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Zettlr",
-        "Compares",
-        "Compare",
-        "choosing",
-        "between",
-        "local first",
-        "Markdown"
       ]
     },
     {
@@ -1251,266 +1251,10 @@
       ]
     },
     {
-      "type": "doc",
-      "title": "Developer Documentation",
-      "url": "https://mdwrk.com/docs/product/developer-documentation",
-      "path": "/docs/product/developer-documentation",
-      "section": "Features",
-      "description": "MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.",
-      "headings": [
-        "Developer Entry Points",
-        "Package Families",
-        "Implementation Workflow",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Developer",
-        "Documentation",
-        "Features",
-        "developer",
-        "documentation",
-        "covers",
-        "local"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Extension Host",
-      "url": "https://mdwrk.com/docs/product/extension-host",
-      "path": "/docs/product/extension-host",
-      "section": "Features",
-      "description": "MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.",
-      "headings": [
-        "Host Contract",
-        "Runtime Controls",
-        "First-Party Extensions",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Extension",
-        "Host",
-        "Features",
-        "includes",
-        "governed",
-        "extension",
-        "host"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Local-First Markdown Workspace",
-      "url": "https://mdwrk.com/docs/product/local-first-markdown-workspace",
-      "path": "/docs/product/local-first-markdown-workspace",
-      "section": "Features",
-      "description": "MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.",
-      "headings": [
-        "Workspace Shape",
-        "Project Operations",
-        "Extension Surface",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Local First",
-        "Markdown",
-        "Workspace",
-        "Features",
-        "local first",
-        "workspace",
-        "projects"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Markdown File Manager",
-      "url": "https://mdwrk.com/docs/product/markdown-file-manager",
-      "path": "/docs/product/markdown-file-manager",
-      "section": "Features",
-      "description": "MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.",
-      "headings": [
-        "File Operations",
-        "Preview Navigation",
-        "Desktop-Backed Workflows",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Markdown",
-        "File",
-        "Manager",
-        "Features",
-        "manages",
-        "projects",
-        "files"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Markdown Preview Editor",
-      "url": "https://mdwrk.com/docs/product/markdown-preview-editor",
-      "path": "/docs/product/markdown-preview-editor",
-      "section": "Features",
-      "description": "MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.",
-      "headings": [
-        "Editor And Preview Modes",
-        "Rendering Contract",
-        "Output Paths",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Markdown",
-        "Preview",
-        "Editor",
-        "Features",
-        "combines",
-        "source",
-        "editor"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Offline Markdown Editor",
-      "url": "https://mdwrk.com/docs/product/offline-markdown-editor",
-      "path": "/docs/product/offline-markdown-editor",
-      "section": "Features",
-      "description": "MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.",
-      "headings": [
-        "Offline Editing Model",
-        "Writing Workflow",
-        "Local Storage Boundary",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Offline",
-        "Markdown",
-        "Editor",
-        "Features",
-        "offline capable",
-        "editor",
-        "keeps"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Privacy-First Markdown Editor",
-      "url": "https://mdwrk.com/docs/product/privacy-first-markdown-editor",
-      "path": "/docs/product/privacy-first-markdown-editor",
-      "section": "Features",
-      "description": "MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.",
-      "headings": [
-        "Privacy Boundary",
-        "Explicit Sharing",
-        "Extension Trust",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Privacy First",
-        "Markdown",
-        "Editor",
-        "Features",
-        "privacy first",
-        "editor",
-        "keeps"
-      ]
-    },
-    {
-      "type": "doc",
-      "title": "Theme Packs",
-      "url": "https://mdwrk.com/docs/product/theme-packs",
-      "path": "/docs/product/theme-packs",
-      "section": "Features",
-      "description": "MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.",
-      "headings": [
-        "Theme Contract",
-        "Theme Studio",
-        "Viewport Contract",
-        "Related Docs"
-      ],
-      "keywords": [
-        "MdWrk",
-        "Markdown editor",
-        "local-first Markdown",
-        "offline Markdown editor",
-        "privacy-first Markdown editor",
-        "Markdown preview",
-        "Markdown workspace",
-        "extension host",
-        "theme packs",
-        "Theme",
-        "Packs",
-        "Features",
-        "theme",
-        "packs",
-        "shared",
-        "token"
-      ]
-    },
-    {
-      "type": "doc",
+      "type": "feature",
       "title": "Markdown Formatting",
-      "url": "https://mdwrk.com/docs/usage/advanced-formatting",
-      "path": "/docs/usage/advanced-formatting",
+      "url": "https://mdwrk.com/features/advanced-formatting",
+      "path": "/features/advanced-formatting",
       "section": "Features",
       "description": "MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.",
       "headings": [
@@ -1547,10 +1291,42 @@
       ]
     },
     {
-      "type": "doc",
+      "type": "feature",
+      "title": "Developer Documentation",
+      "url": "https://mdwrk.com/features/developer-documentation",
+      "path": "/features/developer-documentation",
+      "section": "Features",
+      "description": "MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.",
+      "headings": [
+        "Developer Entry Points",
+        "Package Families",
+        "Implementation Workflow",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Developer",
+        "Documentation",
+        "Features",
+        "developer",
+        "documentation",
+        "covers",
+        "local"
+      ]
+    },
+    {
+      "type": "feature",
       "title": "Editor Basics",
-      "url": "https://mdwrk.com/docs/usage/editor-basics",
-      "path": "/docs/usage/editor-basics",
+      "url": "https://mdwrk.com/features/editor-basics",
+      "path": "/features/editor-basics",
       "section": "Features",
       "description": "MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.",
       "headings": [
@@ -1585,10 +1361,202 @@
       ]
     },
     {
-      "type": "doc",
+      "type": "feature",
+      "title": "Extension Host",
+      "url": "https://mdwrk.com/features/extension-host",
+      "path": "/features/extension-host",
+      "section": "Features",
+      "description": "MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.",
+      "headings": [
+        "Host Contract",
+        "Runtime Controls",
+        "First-Party Extensions",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Extension",
+        "Host",
+        "Features",
+        "includes",
+        "governed",
+        "extension",
+        "host"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Local-First Markdown Workspace",
+      "url": "https://mdwrk.com/features/local-first-markdown-workspace",
+      "path": "/features/local-first-markdown-workspace",
+      "section": "Features",
+      "description": "MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.",
+      "headings": [
+        "Workspace Shape",
+        "Project Operations",
+        "Extension Surface",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Local First",
+        "Markdown",
+        "Workspace",
+        "Features",
+        "local first",
+        "workspace",
+        "projects"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Markdown File Manager",
+      "url": "https://mdwrk.com/features/markdown-file-manager",
+      "path": "/features/markdown-file-manager",
+      "section": "Features",
+      "description": "MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.",
+      "headings": [
+        "File Operations",
+        "Preview Navigation",
+        "Desktop-Backed Workflows",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Markdown",
+        "File",
+        "Manager",
+        "Features",
+        "manages",
+        "projects",
+        "files"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Markdown Preview Editor",
+      "url": "https://mdwrk.com/features/markdown-preview-editor",
+      "path": "/features/markdown-preview-editor",
+      "section": "Features",
+      "description": "MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.",
+      "headings": [
+        "Editor And Preview Modes",
+        "Rendering Contract",
+        "Output Paths",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Markdown",
+        "Preview",
+        "Editor",
+        "Features",
+        "combines",
+        "source",
+        "editor"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Offline Markdown Editor",
+      "url": "https://mdwrk.com/features/offline-markdown-editor",
+      "path": "/features/offline-markdown-editor",
+      "section": "Features",
+      "description": "MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.",
+      "headings": [
+        "Offline Editing Model",
+        "Writing Workflow",
+        "Local Storage Boundary",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Offline",
+        "Markdown",
+        "Editor",
+        "Features",
+        "offline capable",
+        "editor",
+        "keeps"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Privacy-First Markdown Editor",
+      "url": "https://mdwrk.com/features/privacy-first-markdown-editor",
+      "path": "/features/privacy-first-markdown-editor",
+      "section": "Features",
+      "description": "MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.",
+      "headings": [
+        "Privacy Boundary",
+        "Explicit Sharing",
+        "Extension Trust",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Privacy First",
+        "Markdown",
+        "Editor",
+        "Features",
+        "privacy first",
+        "editor",
+        "keeps"
+      ]
+    },
+    {
+      "type": "feature",
       "title": "Rendering and Preview",
-      "url": "https://mdwrk.com/docs/usage/rendering-and-preview",
-      "path": "/docs/usage/rendering-and-preview",
+      "url": "https://mdwrk.com/features/rendering-and-preview",
+      "path": "/features/rendering-and-preview",
       "section": "Features",
       "description": "MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.",
       "headings": [
@@ -1621,6 +1589,38 @@
         "Markdown",
         "live",
         "rendered"
+      ]
+    },
+    {
+      "type": "feature",
+      "title": "Theme Packs",
+      "url": "https://mdwrk.com/features/theme-packs",
+      "path": "/features/theme-packs",
+      "section": "Features",
+      "description": "MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.",
+      "headings": [
+        "Theme Contract",
+        "Theme Studio",
+        "Viewport Contract",
+        "Related Docs"
+      ],
+      "keywords": [
+        "MdWrk",
+        "Markdown editor",
+        "local-first Markdown",
+        "offline Markdown editor",
+        "privacy-first Markdown editor",
+        "Markdown preview",
+        "Markdown workspace",
+        "extension host",
+        "theme packs",
+        "Theme",
+        "Packs",
+        "Features",
+        "theme",
+        "packs",
+        "shared",
+        "token"
       ]
     }
   ]

@@ -14,11 +14,11 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
 
   const navLinks = [
     { id: '/', label: 'Home' },
-    { id: '/docs/product/offline-markdown-editor', label: 'Features' },
-    { id: '/docs/comparisons/mdwrk-vs-obsidian', label: 'Compare' },
+    { id: '/features/offline-markdown-editor', label: 'Features' },
+    { id: '/compare/obsidian', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
     { id: '/blog', label: 'News' },
-    { id: '/docs/product/privacy-first-markdown-editor', label: 'Privacy' },
+    { id: '/privacy', label: 'Privacy' },
   ];
   const menuPanelClassName = ['navbar-menu-panel', isOpen ? 'is-open' : 'is-closed'].join(' ');
 
@@ -50,6 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
             title="Open MdWrk GitHub repository"
           >
             <Github className="navbar-github-icon" />
+            <span className="navbar-github-label">GitHub</span>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}

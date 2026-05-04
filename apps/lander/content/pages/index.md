@@ -15,9 +15,8 @@ faqs:
   - question: "Does MdWrk require client-side rendering for public documentation?"
     answer: "The public lander is compiled into static HTML so core public content is readable from the raw HTML response before any JavaScript executes."
 related:
-  - "/features/offline-markdown-editor/"
   - "/docs/quickstart/"
-  - "/compare/obsidian/"
+  - "/privacy/"
 tags:
   - markdown
   - local-first

@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Privacy-First Markdown Editor](/docs/product/privacy-first-markdown-editor)
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Privacy-First Markdown Editor](/features/privacy-first-markdown-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 
 MdWrk is designed so writing does not require a hosted document account.

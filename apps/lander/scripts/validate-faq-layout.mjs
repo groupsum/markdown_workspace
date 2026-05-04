@@ -27,7 +27,7 @@ assert.match(cli, /subtitle:/, 'Static compiler must normalize subtitle metadata
 assert.match(docsView, /metadata\.subtitle/, 'Docs SPA fallback must render subtitles when present.');
 assert.match(blogView, /blog-post-subtitle/, 'News SPA fallback must render subtitles when present.');
 
-assert.match(css, /\.faq-section\s*,\s*\n\.related-section\s*\{/, 'FAQ group styles must exist.');
+assert.match(css, /\.faq-section\s*,\s*\n\.related-section\s*,\s*\n\.related-apis-section\s*\{/, 'FAQ group styles must exist.');
 assert.match(css, /\.faq-accordion\s*\{/, 'FAQ accordion styles must exist.');
 assert.match(css, /\.docs-subtitle\s*,\s*\n\.blog-post-subtitle\s*\{/, 'Subtitle styles must exist.');
 

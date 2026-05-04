@@ -1,0 +1,109 @@
+- generic [ref=e3] [box=0,0,1432,3162]:
+  - navigation [ref=e4] [box=0,0,1432,73]:
+    - generic [ref=e5] [box=76,0,1280,72]:
+      - link "MdWrk" [ref=e6] [cursor=pointer] [box=92,16,138,40]:
+        - /url: /
+        - img [ref=e8] [box=100,24,24,24]
+        - generic [ref=e12] [box=144,20,86,32]: MdWrk
+      - generic [ref=e13] [box=1184,16,156,40]:
+        - 'button "Toggle theme. Active theme: Lander Light" [ref=e14] [cursor=pointer] [box=1184,16,40,40]':
+          - img [ref=e15] [box=1192,24,24,24]
+        - link "Open MdWrk GitHub repository" [ref=e17] [cursor=pointer] [box=1232,16,108,40]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e18] [box=1244,24,24,24]
+          - generic [ref=e21] [box=1276,28,52,16]: GitHub
+      - list [ref=e23] [box=802,27,358,18]:
+        - listitem [ref=e24] [box=802,27,34,18]:
+          - link "Home" [ref=e25] [cursor=pointer] [box=802,27,34,18]:
+            - /url: /
+        - listitem [ref=e26] [box=860,27,49,18]:
+          - link "Features" [ref=e27] [cursor=pointer] [box=860,27,49,18]:
+            - /url: /features/offline-markdown-editor
+        - listitem [ref=e28] [box=933,27,52,18]:
+          - link "Compare" [ref=e29] [cursor=pointer] [box=933,27,52,18]:
+            - /url: /compare/obsidian
+        - listitem [ref=e30] [box=1009,27,29,18]:
+          - link "Docs" [ref=e31] [cursor=pointer] [box=1009,27,29,18]:
+            - /url: /docs
+        - listitem [ref=e32] [box=1062,27,32,18]:
+          - link "News" [ref=e33] [cursor=pointer] [box=1062,27,32,18]:
+            - /url: /blog
+        - listitem [ref=e34] [box=1118,27,42,18]:
+          - link "Privacy" [ref=e35] [cursor=pointer] [box=1118,27,42,18]:
+            - /url: /privacy
+  - main [ref=e36] [box=0,0,1432,2870]:
+    - generic [ref=e38] [box=332,96,768,2694]:
+      - link "Back to News" [ref=e39] [cursor=pointer] [box=332,96,768,24]:
+        - /url: /blog
+        - img [ref=e40] [box=332,96,24,24]
+        - text: Back to News
+      - generic [ref=e42] [box=332,152,768,2638]:
+        - generic [ref=e43] [box=373,193,686,253]:
+          - generic [ref=e44] [box=373,193,686,48]:
+            - link "Published Mar. 23, 2026" [ref=e45] [cursor=pointer] [box=373,193,137,48]:
+              - /url: /blog/archive/2026-03
+            - link "Author CobyCloud" [ref=e51] [cursor=pointer] [box=522,193,121,48]:
+              - /url: /blog/author/cobycloud
+          - heading "Build with the Same MdWrk Editor and Renderer the Client Ships" [level=1] [ref=e58] [box=373,261,686,80]
+          - paragraph [ref=e59] [box=373,357,686,56]: MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
+        - generic [ref=e61] [box=373,478,686,2069]:
+          - heading "Why this matters" [level=2] [ref=e62] [box=373,478,686,25]
+          - paragraph [ref=e63] [box=373,519,686,24]: "Reusable packages give teams a clear path to:"
+          - list [ref=e64] [box=373,558,686,134]:
+            - listitem [ref=e65] [box=400,558,659,24]: ship MdWrk-powered editing inside internal tools
+            - listitem [ref=e66] [box=400,587,659,24]: reuse the same renderer in docs, apps, and examples
+            - listitem [ref=e67] [box=400,615,659,24]: keep extension work aligned with stable public package contracts
+            - listitem [ref=e68] [box=400,644,659,48]: move from first integration to broader adoption with a package set that already fits the live client
+          - heading "What you can install today" [level=2] [ref=e69] [box=373,732,686,25]
+          - paragraph [ref=e70] [box=373,773,686,24]: "The public package family starts here:"
+          - code [ref=e72] [box=389,832,690,17]: npm install @mdwrk/mdwrkspace @mdwrk/markdown-editor-react @mdwrk/markdown-renderer-react
+          - paragraph [ref=e73] [box=373,893,686,24]: "These docs carry the current usage details:"
+          - list [ref=e74] [box=373,932,686,81]:
+            - listitem [ref=e75] [box=400,932,659,24]
+            - listitem [ref=e77] [box=400,960,659,24]
+            - listitem [ref=e79] [box=400,989,659,24]
+          - heading "React example" [level=2] [ref=e81] [box=373,1053,686,25]
+          - code [ref=e83] [box=389,1114,674,342]: "import { MarkdownEditor } from '@mdwrk/markdown-editor-react'; import { MarkdownViewer } from '@mdwrk/markdown-renderer-react'; import { useState } from 'react'; export function MdWrkDemo() { const [value, setValue] = useState('# Release Notes\\n\\nMdWrk packages travel well.'); return ( <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: '1fr 1fr' }}> <MarkdownEditor value={value} onChange={setValue} /> <MarkdownViewer content={value} /> </div> ); }"
+          - heading "Screenshot" [level=2] [ref=e84] [box=373,1524,686,25]
+          - paragraph [ref=e85] [box=373,1565,686,429]:
+            - img "MdWrk editor and preview running side by side" [ref=e86] [box=373,1565,686,429]
+          - paragraph [ref=e87] [box=373,2009,686,48]: This split-view surface shows the kind of install target product teams get when they adopt the package family directly.
+          - heading "Repository history that shapes the package surface" [level=2] [ref=e88] [box=373,2097,686,25]
+          - paragraph [ref=e89] [box=373,2138,686,24]: "The package move sits inside a broader history arc:"
+          - list [ref=e90] [box=373,2178,686,81]:
+            - listitem [ref=e91] [box=400,2178,659,24]
+            - listitem [ref=e93] [box=400,2206,659,24]
+            - listitem [ref=e95] [box=400,2235,659,24]
+          - heading "Who should use this package family" [level=2] [ref=e97] [box=373,2299,686,25]
+          - paragraph [ref=e98] [box=373,2340,686,24]: "This package family fits:"
+          - list [ref=e99] [box=373,2379,686,105]:
+            - listitem [ref=e100] [box=400,2379,659,48]: React application teams that want a markdown editor and renderer with a shared visual contract
+            - listitem [ref=e101] [box=400,2432,659,24]: platform teams building governed docs or knowledge surfaces
+            - listitem [ref=e102] [box=400,2460,659,24]: extension teams that want their work to sit close to the live MdWrk runtime
+          - paragraph [ref=e103] [box=373,2499,686,48]: MdWrk turns package reuse into a practical adoption path, and this post marks the point where that path becomes easier to install, easier to use, and easier to extend.
+        - region "Frequently Asked Questions" [ref=e104] [box=373,2579,686,170]:
+          - heading "Frequently Asked Questions" [level=2] [ref=e105] [box=390,2596,652,16]
+          - generic [ref=e106] [box=390,2628,652,104]:
+            - group [ref=e107] [box=390,2628,652,46]
+            - group [ref=e109] [box=390,2686,652,46]
+  - contentinfo [ref=e111] [box=0,2870,1432,292]:
+    - generic [ref=e112] [box=76,2871,1280,291]:
+      - generic [ref=e113] [box=92,2895,1248,162]:
+        - generic [ref=e114] [box=92,2895,320,162]:
+          - link "MdWrk" [ref=e115] [cursor=pointer] [box=92,2895,320,32]:
+            - /url: /
+            - img [ref=e116] [box=92,2899,24,24]
+            - generic [ref=e120] [box=128,2895,84,32]: MdWrk
+          - paragraph [ref=e121] [box=92,2943,320,46]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e122] [box=990,2895,350,162]:
+          - generic [ref=e123] [box=990,2895,101,162]:
+            - heading "Resources" [level=2] [ref=e124] [box=990,2895,101,16]
+            - list [ref=e125] [box=990,2931,101,126]
+          - generic [ref=e134] [box=1115,2895,101,162]:
+            - heading "Follow" [level=2] [ref=e135] [box=1115,2895,101,16]
+            - list [ref=e136] [box=1115,2931,101,92]
+          - generic [ref=e143] [box=1239,2895,101,162]:
+            - heading "Legal" [level=2] [ref=e144] [box=1239,2895,101,16]
+            - list [ref=e145] [box=1239,2931,101,58]
+      - separator [ref=e150] [box=92,3089,1248,1]
+      - generic [ref=e151] [box=92,3122,1248,16]: © 2026 MdWrk. Designed for privacy.

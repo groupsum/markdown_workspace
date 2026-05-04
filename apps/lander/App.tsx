@@ -5,7 +5,9 @@ import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { DemoSection } from './components/DemoSection';
 import { Footer } from './components/Footer';
+import { FeatureView } from './components/FeatureView';
 import { DocsView } from './components/DocsView';
+import { CompareView } from './components/CompareView';
 import { BlogView } from './components/BlogView';
 import { LegalView } from './components/LegalView';
 import { usePageMetadata } from './hooks/usePageMetadata';
@@ -77,6 +79,8 @@ const App: React.FC = () => {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<HomeView isDark={isDark} />} />
+          <Route path="/features/*" element={<FeatureView />} />
+          <Route path="/compare/*" element={<CompareView />} />
           <Route path="/docs/*" element={<DocsView />} />
           <Route path="/blog/*" element={<BlogView />} />
           <Route path="/legal/privacy" element={<LegalView page="legal/privacy" />} />

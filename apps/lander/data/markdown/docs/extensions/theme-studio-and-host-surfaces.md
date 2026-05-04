@@ -46,7 +46,7 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Theme Packs](/docs/product/theme-packs)
+- [Theme Packs](/features/theme-packs)
 - [Theme Pack Authoring](/docs/authoring/theme-packs)
 - [Extension Platform](/docs/extensions/extension-platform)
 

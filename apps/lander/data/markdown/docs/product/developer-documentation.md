@@ -43,8 +43,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Editor Basics](/docs/usage/editor-basics)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Editor Basics](/features/editor-basics)
 - [Extension Platform](/docs/extensions/extension-platform)
 
 MdWrk documents both the full workspace client and the reusable package stack behind it.

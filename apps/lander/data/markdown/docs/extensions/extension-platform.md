@@ -57,7 +57,7 @@ Key concepts covered here:
 Useful follow-up pages:
 
 - [Extension Authoring](/docs/authoring/extensions)
-- [MdWrk Extension Host](/docs/product/extension-host)
+- [MdWrk Extension Host](/features/extension-host)
 - [Theme Studio And Host Surfaces](/docs/extensions/theme-studio-and-host-surfaces)
 
 The MdWrk client is the extension host. The lander only documents that host surface.

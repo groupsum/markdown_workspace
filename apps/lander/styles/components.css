@@ -523,7 +523,8 @@
 }
 
 .navbar-github-link {
-  @apply hidden h-10 w-10 items-center justify-center text-center;
+  @apply hidden h-10 items-center justify-center gap-2 px-3 text-center text-xs font-bold uppercase;
+  letter-spacing: 0.08em;
   background: var(--lander-panel-muted);
   color: var(--lander-fg);
 }
@@ -540,6 +541,10 @@
 
 .navbar-github-icon {
   @apply h-5 w-5;
+}
+
+.navbar-github-label {
+  @apply whitespace-nowrap;
 }
 
 .navbar-menu-toggle {
@@ -834,14 +839,16 @@
 }
 
 .faq-section,
-.related-section {
+.related-section,
+.related-apis-section {
   @apply w-full rounded-[18px] border p-4;
   background: color-mix(in srgb, var(--lander-panel) 78%, transparent);
   border-color: var(--lander-border);
 }
 
-.blog-post-card > .faq-section {
-  @apply mt-8;
+.blog-post-layout > .faq-section,
+.blog-post-layout > .related-apis-section {
+  @apply mt-6;
 }
 
 .faq-section-heading {
@@ -880,6 +887,17 @@
 
 .faq-content .lander-markdown .markdown-body > :last-child {
   margin-bottom: 0;
+}
+
+.related-apis-list {
+  @apply flex flex-wrap gap-2;
+}
+
+.related-apis-item {
+  @apply list-none rounded-lg border px-3 py-2 text-sm;
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  border-color: var(--lander-border);
+  color: var(--lander-fg);
 }
 
 .docs-subtitle,

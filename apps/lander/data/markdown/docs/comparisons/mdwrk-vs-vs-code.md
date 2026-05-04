@@ -23,8 +23,8 @@ MdWrk makes document workspace behavior, preview policy, theme packs, and Markdo
 
 ## Related Docs
 
-- [Developer Documentation](/docs/product/developer-documentation)
-- [Markdown File Manager](/docs/product/markdown-file-manager)
+- [Developer Documentation](/features/developer-documentation)
+- [Markdown File Manager](/features/markdown-file-manager)
 
 ## Quick Reference
 
@@ -40,8 +40,8 @@ Key concepts covered here:
 
 Useful follow-up pages:
 
-- [Local-First Markdown Workspace](/docs/product/local-first-markdown-workspace)
-- [Markdown Preview Editor](/docs/product/markdown-preview-editor)
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [Markdown Preview Editor](/features/markdown-preview-editor)
 - [Extension Platform](/docs/extensions/extension-platform)
 
 MdWrk is a Markdown workspace. VS Code is a general-purpose developer IDE with Markdown support.

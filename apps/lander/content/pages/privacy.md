@@ -14,7 +14,6 @@ faqs:
     answer: "The public documentation should not imply default uploads. It should describe local storage and identify workflows that intentionally use networked services."
 parent: "/"
 related:
-  - "/features/local-first-markdown/"
   - "/security/"
 tags:
   - privacy

@@ -11,7 +11,6 @@ updatedAt: "2026-05-04"
 subtitle: "MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content."
 parent: "/docs/quickstart/"
 related:
-  - "/features/extension-platform/"
   - "/docs/extensions/"
 tags:
   - themes
