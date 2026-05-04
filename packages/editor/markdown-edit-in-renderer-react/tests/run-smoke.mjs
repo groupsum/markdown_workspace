@@ -212,11 +212,11 @@ const checks = [
   },
   {
     id: "hidden-plaintext-suppresses-native-cursor",
-    description: "Hidden plaintext layer suppresses browser-native caret and pointer cursor affordances",
+    description: "Hidden plaintext layer suppresses browser-native caret while preserving text cursor affordance",
     test() {
       assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*caret-color:\s*transparent;/);
       assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*-webkit-text-fill-color:\s*transparent;/);
-      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*none;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*text;/);
       assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\s*\{[\s\S]*background:\s*var\(--mwir-accent\);/);
       assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\[data-visible="true"\]\s*\{[\s\S]*display:\s*block;/);
     },
@@ -349,6 +349,8 @@ const checks = [
       const view = setupRenderedEditor(markdown);
       try {
         assert.equal(view.projection.querySelectorAll("br").length, 1);
+        const paragraph = view.projection.querySelector("p");
+        assert.ok(paragraph instanceof HTMLElement);
         const cases = [
           { offset: 0, plaintextLine: 1, plaintextChar: 1, renderedLine: 1, renderedChar: 1 },
           { offset: 1, plaintextLine: 1, plaintextChar: 2, renderedLine: 1, renderedChar: 2 },
@@ -360,6 +362,8 @@ const checks = [
 
         for (const expected of cases) {
           await assertProjectedCaret(view, expected.offset, expected);
+          const caret = getRenderedCaret(view);
+          assert.equal(caret.dataset.renderedLineInBlock, String(expected.plaintextLine - 1));
         }
       } finally {
         cleanup();
@@ -739,6 +743,115 @@ const checks = [
         assert.equal(textarea.selectionEnd, insertAt + " stable".length);
         assert.equal(textarea.value, "# Title\n\nParagraph stable text.");
         assert.equal(projection.textContent?.includes("Paragraph stable text."), true);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "tracked-selection-prevents-rendered-caret-jump-to-top",
+    description: "Rendered caret uses tracked plaintext selection instead of transient zero-offset DOM selection during controlled renders",
+    async test() {
+      const initial = "# Title\n\nParagraph text.\n\nTail";
+      function Harness() {
+        const [value, setValue] = React.useState(initial);
+        const [renderCount, setRenderCount] = React.useState(0);
+        return React.createElement(
+          React.Fragment,
+          null,
+          React.createElement(MarkdownEditInRenderer, {
+            value,
+            onChange: setValue,
+          }),
+          React.createElement(
+            "button",
+            {
+              type: "button",
+              onClick: () => {
+                setRenderCount((count) => count + 1);
+                setValue((currentValue) => `${currentValue}\n\nAfter render ${renderCount}`);
+              },
+            },
+            "rerender",
+          ),
+        );
+      }
+
+      const view = render(React.createElement(Harness));
+      try {
+        const textarea = view.container.querySelector("textarea.markdown-edit-in-renderer-plaintext");
+        const button = view.container.querySelector("button");
+        assert.ok(textarea instanceof HTMLTextAreaElement);
+        assert.ok(button instanceof HTMLElement);
+
+        const insertAt = "# Title\n\nParagraph".length;
+        textarea.focus();
+        textarea.selectionStart = insertAt;
+        textarea.selectionEnd = insertAt;
+        const nextValue = replaceText(textarea, insertAt, insertAt, " stable");
+        const trackedOffset = insertAt + " stable".length;
+
+        assert.equal(textarea.selectionStart, trackedOffset);
+        assert.equal(textarea.value, nextValue);
+        textarea.selectionStart = 0;
+        textarea.selectionEnd = 0;
+
+        fireEvent.click(button);
+        await waitForFrame();
+
+        const caret = getRenderedCaret(view);
+        assert.equal(textarea.selectionStart, trackedOffset);
+        assert.equal(textarea.selectionEnd, trackedOffset);
+        assert.equal(caret.dataset.plaintextLine, "3");
+        assert.equal(caret.dataset.plaintextChar, "17");
+        assert.notEqual(caret.dataset.plaintextChar, "1");
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "rendered-caret-never-falls-back-to-root-top-for-soft-break-lines",
+    description: "Rendered caret resolves soft-break lines inside their paragraph instead of falling back to the root top",
+    async test() {
+      const markdown = "# Title\n\nAlpha\nBeta\nGamma";
+      const view = setupRenderedEditor(markdown);
+      try {
+        const offset = markdown.indexOf("Gamma") + "Gamma".length;
+        await assertProjectedCaret(view, offset, {
+          plaintextLine: 5,
+          plaintextChar: 6,
+          renderedLine: 5,
+          renderedChar: 6,
+        });
+
+        const caret = getRenderedCaret(view);
+        assert.equal(caret.dataset.renderedLineInBlock, "2");
+        assert.equal(view.projection.querySelectorAll("p").length, 1);
+        assert.equal(view.projection.querySelectorAll("br").length, 2);
+      } finally {
+        cleanup();
+      }
+    },
+  },
+  {
+    id: "single-package-caret-contract",
+    description: "Editor exposes exactly one package caret and keeps native textarea cursor affordances hidden",
+    async test() {
+      const view = setupRenderedEditor("# Title\n\nBody");
+      try {
+        await assertProjectedCaret(view, "# Title\n\nBody".length, {
+          plaintextLine: 3,
+          plaintextChar: 5,
+          renderedLine: 3,
+          renderedChar: 5,
+        });
+
+        assert.equal(view.container.querySelectorAll(".markdown-edit-in-renderer-caret").length, 1);
+        assert.equal(view.container.querySelectorAll("textarea.markdown-edit-in-renderer-plaintext").length, 1);
+        assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*caret-color:\s*transparent;/);
+        assert.match(defaultCss, /\.markdown-edit-in-renderer-plaintext\s*\{[\s\S]*cursor:\s*text;/);
+        assert.match(defaultCss, /\.markdown-edit-in-renderer-caret\s*\{[\s\S]*pointer-events:\s*none;/);
       } finally {
         cleanup();
       }

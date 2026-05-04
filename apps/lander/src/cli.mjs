@@ -34,6 +34,11 @@ const outputDir = getArgValue('--out', process.env.MDWRK_STATIC_OUT || 'dist');
 const preserveAssets = process.argv.includes('--preserve-assets');
 const distRoot = path.resolve(landerRoot, outputDir);
 const githubRepoUrl = process.env.VITE_GITHUB_REPO_URL || 'https://github.com/groupsum/markdown_workspace';
+const appUrl = process.env.VITE_APP_URL || 'https://app.mdwrk.com';
+const demoUrl = process.env.VITE_DEMO_URL || appUrl;
+const npmRepoUrl = process.env.VITE_NPM_REPO_URL || 'https://www.npmjs.com/org/mdwrk';
+const xProfileUrl = process.env.VITE_X_URL || 'https://x.com/swarmauri';
+const communityUrl = process.env.VITE_COMMUNITY_URL || '#';
 
 const CONTENT_TYPES = new Set([
   'landing',
@@ -1407,6 +1412,7 @@ const renderStaticDemoScript = () => `<script>
         };
 
         editor.addEventListener('input', update);
+        update();
       })();
     </script>`;
 
@@ -1447,6 +1453,51 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
             </div>
           </div>
         </nav>`;
+
+const renderStaticFooter = () => {
+  const currentYear = new Date().getFullYear();
+  return `<footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  ${renderStaticCloudOffIcon()}
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/" class="footer-link">Documentation</a></li>
+                    <li><a href="/blog/" class="footer-link">Blog</a></li>
+                    <li><a href="${escapeAttribute(demoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
+                    <li><a href="${escapeAttribute(npmRepoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Follow</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+                    <li><a href="${escapeAttribute(xProfileUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">X.com</a></li>
+                    <li><a href="${escapeAttribute(communityUrl)}" target="_blank" rel="noopener noreferrer" class="footer-link">Community</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/legal/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/legal/terms/" class="footer-link">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-legal">&copy; ${currentYear} MdWrk. Designed for privacy.</div>
+          </div>
+        </footer>`;
+};
 
 const renderDocsSidebar = (registry, currentSlug) => {
   const docs = registry.entries
@@ -1683,7 +1734,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
                 <a href="/docs/getting-started/local-setup/" class="hero-primary-link">Deploy Locally
                   <svg class="hero-primary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
                 </a>
-                <a href="${escapeAttribute(process.env.VITE_APP_URL || 'https://app.mdwrk.com')}" class="hero-secondary-link" target="_blank" rel="noopener noreferrer">Install PWA</a>
+                <a href="${escapeAttribute(appUrl)}" class="hero-secondary-link" target="_blank" rel="noopener noreferrer">Install PWA</a>
               </div>
               <div class="hero-meta">
                 <span class="hero-meta-label">ESM CDN</span>
@@ -1749,17 +1800,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
           </section>
           </article>
         </main>
-        <footer class="footer">
-          <div class="footer-inner">
-            <div class="footer-layout">
-              <div class="footer-brand-block"><a href="/" class="footer-brand-link"><span class="footer-brand-text">MdWrk</span></a><p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p></div>
-              <div class="footer-nav-grid">
-                <div><h2 class="footer-section-heading">Resources</h2><ul class="footer-link-list"><li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li><li><a href="/blog/launch/" class="footer-link">Blog</a></li><li><a href="${escapeAttribute(process.env.VITE_APP_URL || 'https://app.mdwrk.com')}" class="footer-link">Live Demo</a></li></ul></div>
-                <div><h2 class="footer-section-heading">Legal</h2><ul class="footer-link-list"><li><a href="/privacy/" class="footer-link">Privacy</a></li><li><a href="/security/" class="footer-link">Security</a></li></ul></div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        ${renderStaticFooter()}
       </div>
     </div>
     ${renderThemeToggleScript()}
@@ -1806,34 +1847,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
             </section>
           </div>
         </main>
-        <footer class="footer">
-          <div class="footer-inner">
-            <div class="footer-layout">
-              <div class="footer-brand-block">
-                <a href="/" class="footer-brand-link">
-                  <span class="footer-brand-text">MdWrk</span>
-                </a>
-                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
-              </div>
-              <div class="footer-nav-grid">
-                <div>
-                  <h2 class="footer-section-heading">Resources</h2>
-                  <ul class="footer-link-list">
-                    <li><a href="/docs/quickstart/" class="footer-link">Documentation</a></li>
-                    <li><a href="/blog/launch/" class="footer-link">Blog</a></li>
-                  </ul>
-                </div>
-                <div>
-                  <h2 class="footer-section-heading">Legal</h2>
-                  <ul class="footer-link-list">
-                    <li><a href="/privacy/" class="footer-link">Privacy</a></li>
-                    <li><a href="/security/" class="footer-link">Security</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        ${renderStaticFooter()}
       </div>
     </div>
     ${renderThemeToggleScript()}

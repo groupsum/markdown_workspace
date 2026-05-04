@@ -153,7 +153,7 @@
   caret-color: transparent;
   background: transparent;
   border: 0;
-  cursor: none;
+  cursor: text;
   outline: 0;
   resize: none;
   overflow: auto;

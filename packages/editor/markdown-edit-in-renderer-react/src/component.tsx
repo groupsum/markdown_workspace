@@ -14,6 +14,9 @@ interface ProjectedCaret {
   readonly renderedLine: number;
   readonly renderedChar: number;
   readonly blockIndex: number;
+  readonly renderedLineInBlock: number;
+  readonly blankLineIndex: number;
+  readonly isBlankLine: boolean;
 }
 
 interface RenderedCaret extends ProjectedCaret {
@@ -21,6 +24,11 @@ interface RenderedCaret extends ProjectedCaret {
   readonly left: number;
   readonly top: number;
   readonly height: number;
+}
+
+interface PlaintextSelection {
+  readonly start: number;
+  readonly end: number;
 }
 
 function createTrailingBlankLineSpacers(markdown: string): string {
@@ -71,6 +79,34 @@ function getRenderedCharForPlaintextLine(line: string, plaintextChar: number): n
   return plaintextChar;
 }
 
+function getRenderedBlockIndex(lines: string[], lineIndex: number): number {
+  let blockIndex = -1;
+  let inBlock = false;
+
+  for (let index = 0; index <= lineIndex; index += 1) {
+    const line = lines[index] ?? "";
+    if (line.trim() === "") {
+      inBlock = false;
+      continue;
+    }
+    if (!inBlock) {
+      blockIndex += 1;
+      inBlock = true;
+    }
+  }
+
+  return Math.max(0, blockIndex);
+}
+
+function getRenderedLineInBlock(lines: string[], lineIndex: number): number {
+  let lineInBlock = 0;
+  for (let index = lineIndex - 1; index >= 0; index -= 1) {
+    if ((lines[index] ?? "").trim() === "") break;
+    lineInBlock += 1;
+  }
+  return lineInBlock;
+}
+
 function getProjectedCaret(markdown: string, selectionStart: number): ProjectedCaret {
   const lines = markdown.split("\n");
   const lineStartOffsets = getLineStartOffsets(markdown);
@@ -87,36 +123,64 @@ function getProjectedCaret(markdown: string, selectionStart: number): ProjectedC
 
   const line = lines[lineIndex] ?? "";
   const plaintextChar = offset - (lineStartOffsets[lineIndex] ?? 0);
-  const blockIndex = lines.slice(0, lineIndex).filter((candidate) => candidate.trim() !== "").length;
+  const isBlankLine = line.trim() === "";
+  const blockIndex = getRenderedBlockIndex(lines, lineIndex);
+  const renderedLineInBlock = getRenderedLineInBlock(lines, lineIndex);
 
   return {
     plaintextLine: lineIndex + 1,
     plaintextChar: plaintextChar + 1,
-    renderedLine: line.trim() === "" ? lineIndex + 1 : blockIndex + 1,
+    renderedLine: lineIndex + 1,
     renderedChar: getRenderedCharForPlaintextLine(line, plaintextChar) + 1,
     blockIndex,
+    renderedLineInBlock,
+    blankLineIndex: lines.slice(0, lineIndex + 1).filter((candidate) => candidate.trim() === "").length - 1,
+    isBlankLine,
   };
 }
 
-function findTextNode(root: Node, offset: number): { node: Text; offset: number } | null {
+function findTextNode(root: Node, lineIndex: number, offset: number): { node: Node; offset: number } | null {
   const ownerDocument = root.ownerDocument ?? document;
-  const walker = ownerDocument.createTreeWalker(root, ownerDocument.defaultView?.NodeFilter.SHOW_TEXT ?? 4);
+  const walker = ownerDocument.createTreeWalker(
+    root,
+    (ownerDocument.defaultView?.NodeFilter.SHOW_TEXT ?? 4) | (ownerDocument.defaultView?.NodeFilter.SHOW_ELEMENT ?? 1),
+  );
+  let currentLine = 0;
   let remaining = Math.max(0, offset);
   let current = walker.nextNode();
   let lastTextNode: Text | null = null;
+  let lineStart: { node: Node; offset: number } | null = null;
 
   while (current) {
-    const text = current.textContent ?? "";
-    lastTextNode = current as Text;
-    if (remaining <= text.length) {
-      return { node: current as Text, offset: remaining };
+    if (current instanceof ownerDocument.defaultView!.HTMLBRElement) {
+      if (currentLine === lineIndex && remaining <= 0 && current.parentNode) {
+        return { node: current.parentNode, offset: Array.prototype.indexOf.call(current.parentNode.childNodes, current) };
+      }
+      currentLine += 1;
+      remaining = Math.max(0, offset);
+      if (currentLine === lineIndex && current.parentNode) {
+        lineStart = {
+          node: current.parentNode,
+          offset: Array.prototype.indexOf.call(current.parentNode.childNodes, current) + 1,
+        };
+      }
+    } else if (current.nodeType === ownerDocument.defaultView!.Node.TEXT_NODE && currentLine === lineIndex) {
+      const text = current.textContent ?? "";
+      lastTextNode = current as Text;
+      if (remaining <= text.length) {
+        return { node: current, offset: remaining };
+      }
+      remaining -= text.length;
     }
-    remaining -= text.length;
     current = walker.nextNode();
   }
 
-  if (lastTextNode) {
+  if (lastTextNode && currentLine === lineIndex) {
     return { node: lastTextNode, offset: lastTextNode.data.length };
+  }
+
+  if (lineStart) {
+    return lineStart;
   }
 
   return null;
@@ -151,6 +215,7 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
     const inputRef = React.useRef<HTMLTextAreaElement>(null);
     const surfaceRef = React.useRef<HTMLDivElement>(null);
     const valueRef = React.useRef(draftValue);
+    const selectionRef = React.useRef<PlaintextSelection>({ start: 0, end: 0 });
     const [caret, setCaret] = React.useState<RenderedCaret>(() => ({
       ...getProjectedCaret(initialValue, 0),
       visible: false,
@@ -199,24 +264,61 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
       onChange?.(nextValue);
     }, [isControlled, onChange]);
 
+    const trackPlaintextSelection = React.useCallback((input: HTMLTextAreaElement) => {
+      const length = input.value.length;
+      selectionRef.current = {
+        start: Math.max(0, Math.min(input.selectionStart ?? 0, length)),
+        end: Math.max(0, Math.min(input.selectionEnd ?? input.selectionStart ?? 0, length)),
+      };
+    }, []);
+
+    const restoreTrackedPlaintextSelection = React.useCallback((input: HTMLTextAreaElement) => {
+      const length = input.value.length;
+      const start = Math.max(0, Math.min(selectionRef.current.start, length));
+      const end = Math.max(0, Math.min(selectionRef.current.end, length));
+      selectionRef.current = { start, end };
+      if (document.activeElement === input && (input.selectionStart !== start || input.selectionEnd !== end)) {
+        input.setSelectionRange(start, end);
+      }
+      return selectionRef.current;
+    }, []);
+
     const updateRenderedCaret = React.useCallback(() => {
       const input = inputRef.current;
       const surface = surfaceRef.current;
       if (!input || !surface) return;
 
-      const projectedCaret = getProjectedCaret(input.value, input.selectionStart ?? 0);
+      const selection = restoreTrackedPlaintextSelection(input);
+      const projectedCaret = getProjectedCaret(input.value, selection.start);
       const contentRoot = surface.querySelector<HTMLElement>(".markdown-body") ?? surface;
       const renderedBlocks = Array.from(contentRoot.children).filter((child) => (
         child instanceof HTMLElement
           && !child.classList.contains("markdown-edit-in-renderer-blank-line")
       ));
+      const blankLines = Array.from(contentRoot.querySelectorAll<HTMLElement>(".markdown-edit-in-renderer-blank-line"));
       const block = renderedBlocks[projectedCaret.blockIndex] as HTMLElement | undefined;
-      const target = block ?? contentRoot.querySelector<HTMLElement>(".markdown-edit-in-renderer-blank-line") ?? contentRoot;
-      const textTarget = findTextNode(target, projectedCaret.renderedChar - 1);
+      const target = projectedCaret.isBlankLine ? blankLines[projectedCaret.blankLineIndex] : block;
+
+      if (!target) {
+        setCaret((previousCaret) => ({
+          ...previousCaret,
+          ...projectedCaret,
+          visible: document.activeElement === input && !disabled,
+        }));
+        return;
+      }
+
+      const textTarget = findTextNode(target, projectedCaret.renderedLineInBlock, projectedCaret.renderedChar - 1);
       const range = document.createRange();
 
       if (textTarget) {
-        range.setStart(textTarget.node, Math.min(textTarget.offset, textTarget.node.data.length));
+        const maxOffset = textTarget.node.nodeType === textTarget.node.ownerDocument?.defaultView?.Node.TEXT_NODE
+          ? textTarget.node.textContent?.length ?? 0
+          : textTarget.node.childNodes.length;
+        range.setStart(
+          textTarget.node,
+          Math.min(textTarget.offset, maxOffset),
+        );
       } else {
         range.selectNodeContents(target);
         range.collapse(false);
@@ -243,7 +345,7 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
         top,
         height,
       });
-    }, [disabled]);
+    }, [disabled, restoreTrackedPlaintextSelection]);
 
     React.useEffect(() => {
       if (!autoFocus || disabled) return;
@@ -298,6 +400,7 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
           data-plaintext-char={caret.plaintextChar}
           data-rendered-line={caret.renderedLine}
           data-rendered-char={caret.renderedChar}
+          data-rendered-line-in-block={caret.renderedLineInBlock}
           aria-hidden="true"
           style={{
             left: `${caret.left}px`,
@@ -310,18 +413,32 @@ export const MarkdownEditInRenderer = React.forwardRef<MarkdownEditInRendererHan
           className="markdown-edit-in-renderer-plaintext"
           value={markdown}
           onChange={(event) => {
+            trackPlaintextSelection(event.currentTarget);
             commitValue(event.currentTarget.value);
             window.requestAnimationFrame(updateRenderedCaret);
           }}
           onFocus={() => {
+            const input = inputRef.current;
+            if (input) {
+              trackPlaintextSelection(input);
+            }
             window.requestAnimationFrame(updateRenderedCaret);
           }}
           onBlur={() => {
             window.requestAnimationFrame(updateRenderedCaret);
           }}
-          onSelect={updateRenderedCaret}
-          onKeyUp={updateRenderedCaret}
-          onMouseUp={updateRenderedCaret}
+          onSelect={(event) => {
+            trackPlaintextSelection(event.currentTarget);
+            updateRenderedCaret();
+          }}
+          onKeyUp={(event) => {
+            trackPlaintextSelection(event.currentTarget);
+            updateRenderedCaret();
+          }}
+          onMouseUp={(event) => {
+            trackPlaintextSelection(event.currentTarget);
+            updateRenderedCaret();
+          }}
           onScroll={updateRenderedCaret}
           aria-label="Markdown source"
           aria-multiline="true"
