@@ -14,7 +14,7 @@ const blogView = read('components', 'BlogView.tsx');
 const docsView = read('components', 'DocsView.tsx');
 const staticCompiler = read('src', 'cli.mjs');
 const sitemapGenerator = read('scripts', 'generate-sitemap.mjs');
-const settingsArticleHtml = read('dist-static', 'blog', 'settings-simplification-for-daily-flow', 'index.html');
+const settingsArticleHtml = read('dist-static', 'updates', 'settings-simplification-for-daily-flow', 'index.html');
 
 const propertyValidator = (propertySchema, key) => {
   if (propertySchema?.$ref?.endsWith('/nonEmptyString')) {
