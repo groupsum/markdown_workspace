@@ -12,6 +12,7 @@ import {
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(landerRoot, '..', '..');
+const packageJson = JSON.parse(fs.readFileSync(path.join(landerRoot, 'package.json'), 'utf8'));
 const contentRoot = path.join(landerRoot, 'content');
 const dataRoot = path.join(landerRoot, 'data');
 const dataMarkdownRoot = path.join(dataRoot, 'markdown');
@@ -194,7 +195,8 @@ const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, s
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
 
-const staticStylesheetTag = '<link rel="stylesheet" href="/assets/static.css">';
+const staticStylesheetHref = `/assets/static.css?v=${encodeURIComponent(packageJson.version)}`;
+const staticStylesheetTag = `<link rel="stylesheet" href="${staticStylesheetHref}">`;
 
 const copyStaticStylesheet = () => {
   if (!fs.existsSync(staticStylesheetSource)) {
@@ -214,7 +216,10 @@ const extractViteAssetTags = () => {
     const html = fs.readFileSync(indexPath, 'utf8');
     tags.push(...[
       ...html.matchAll(/<link\b[^>]*\bhref="(?:\.?\/)?assets\/[^"]+\.css"[^>]*>/gi),
-    ].map(match => match[0].replace(/\bhref="\.?\/?assets\//i, 'href="/assets/')));
+    ].map((match) => {
+      const tag = match[0].replace(/\bhref="\.?\/?assets\//i, 'href="/assets/');
+      return /href="\/assets\/static\.css(?:\?[^"]*)?"/i.test(tag) ? staticStylesheetTag : tag;
+    }));
   }
   const assetsDir = path.join(distRoot, 'assets');
   const cssAssets = preserveAssets && fs.existsSync(assetsDir)
@@ -223,7 +228,7 @@ const extractViteAssetTags = () => {
       .sort()
     : [];
   for (const assetPath of cssAssets) {
-    const href = `/${assetPath}`;
+    const href = assetPath === 'assets/static.css' ? staticStylesheetHref : `/${assetPath}`;
     if (!tags.some(tag => tag.includes(`href="${href}"`))) {
       tags.push(`<link rel="stylesheet" crossorigin href="${href}">`);
     }
@@ -2215,8 +2220,8 @@ const verify = () => {
     if (!html.startsWith('<!doctype html>')) failures.push(`${entry.frontmatter.slug}: missing doctype`);
     if (!/<main\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing main`);
     if (!/<article\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing article`);
-    if (!html.includes('href="/assets/static.css"')) failures.push(`${entry.frontmatter.slug}: missing static lander stylesheet link`);
-    if (hasCssAssets && !/href="\/assets\/[^"]+\.css"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing lander stylesheet link`);
+    if (!html.includes(`href="${staticStylesheetHref}"`)) failures.push(`${entry.frontmatter.slug}: missing static lander stylesheet link`);
+    if (hasCssAssets && !/href="\/assets\/[^"]+\.css(?:\?[^"]*)?"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing lander stylesheet link`);
     if (/src="\/assets\/[^"]+\.js"/i.test(html)) failures.push(`${entry.frontmatter.slug}: static route includes SPA JavaScript bundle`);
     const pageTitleH1Count = (html.match(/<h1\b[^>]*class="[^"]*(?:hero-heading|docs-title|blog-post-title|blog-list-title)[^"]*"/gi) ?? []).length;
     if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
