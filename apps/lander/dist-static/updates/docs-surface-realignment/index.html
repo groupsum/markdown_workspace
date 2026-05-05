@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk Product Updates</title>
+    <meta name="description" content="The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.">
+    <link rel="canonical" href="https://mdwrk.com/updates/docs-surface-realignment/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:site_name" content="MdWrk">
+    <meta property="og:image" content="https://mdwrk.com/blog/media/lander-docs-dark.png">
+    <meta property="og:image:alt" content="MdWrk docs view with the modernized navigation and content layout">
+    <meta name="twitter:image" content="https://mdwrk.com/blog/media/lander-docs-dark.png">
+    <meta name="twitter:image:alt" content="MdWrk docs view with the modernized navigation and content layout">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/updates/docs-surface-realignment/#webpage","url":"https://mdwrk.com/updates/docs-surface-realignment/","name":"Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk Product Updates","headline":"Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience","description":"The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.","dateModified":"2026-04-30","image":"https://mdwrk.com/blog/media/lander-docs-dark.png","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/updates/docs-surface-realignment/#faq","mainEntity":[{"@type":"Question","name":"What does this MdWrk update cover?","acceptedAnswer":{"@type":"Answer","text":"The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage."}},{"@type":"Question","name":"What should readers take away from this update?","acceptedAnswer":{"@type":"Answer","text":"This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/updates/docs-surface-realignment/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Product Updates","item":"https://mdwrk.com/updates/"},{"@type":"ListItem","position":3,"name":"Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience","item":"https://mdwrk.com/updates/docs-surface-realignment/"}]}]}</script>
+
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+              <a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
+                <svg class="navbar-github-icon static-github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
+                </svg>
+                <span class="navbar-github-label">GitHub</span>
+              </a>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/offline-markdown-editor/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/obsidian/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-active" href="/updates/">Updates</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+                <a href="/updates/" class="blog-back-button">Back to Updates</a>
+                <article class="blog-post-card lander-content-card">
+                  <header class="blog-post-header">
+                    <nav class="lander-breadcrumbs" aria-label="Breadcrumbs">
+                    <ol class="lander-breadcrumbs-list">
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/">MdWrk</a></li>
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/updates/">Updates</a></li>
+                      <li class="lander-breadcrumbs-item"><span class="lander-breadcrumbs-current">Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience</span></li>
+                    </ol>
+                  </nav>
+                    <div class="docs-meta">
+                      <span>Updates</span>
+                      <span class="docs-meta-divider">/</span>
+                      <time datetime="2026-04-30">Apr. 30, 2026</time>
+                    </div>
+                    <h1 class="blog-post-title">Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience</h1>
+                    <p class="blog-post-subtitle">The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.</p>
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="blog-post-meta">
+                    <a href="/updates/archive/2026-04/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="2026-04-30">Apr. 30, 2026</time></span></a>
+                    <a href="/updates/author/cobycloud/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>CobyCloud</span></span></a>
+                  </div>
+                  <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="what-readers-get-from-the-new-docs-surface">What readers get from the new docs surface</h2><p class="md-p">The public docs now guide readers into:</p><ul class="md-ul"><li class="md-li">installation choices</li><li class="md-li">reusable module adoption</li><li class="md-li">extension platform details</li><li class="md-li">authoring flows for themes, language packs, and extensions</li><li class="md-li">repository updates that explain how the platform grows</li></ul><h2 class="md-h2" id="docs-that-carry-the-current-state">Docs that carry the current state</h2><ul class="md-ul"><li class="md-li"><a href="/docs/getting-started/installation" class="md-link">Installation</a></li><li class="md-li"><a href="/docs/getting-started/local-setup" class="md-link">Local setup</a></li><li class="md-li"><a href="/docs/getting-started/standalone-modules" class="md-link">Standalone modules</a></li><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension platform</a></li></ul><h2 class="md-h2" id="screenshot">Screenshot</h2><p class="md-p"><img src="/blog/media/lander-docs-dark.png" alt="MdWrk docs view with the modernized navigation and content layout" /></p><h2 class="md-h2" id="what-this-update-improves">What this update improves</h2><p class="md-p">The site now gives readers:</p><ul class="md-ul"><li class="md-li">user-facing titles that communicate product value immediately</li><li class="md-li">technical detail that supports installation and implementation</li><li class="md-li">direct links between installation, usage, authoring, and package surfaces</li><li class="md-li">repository links that show the implementation timeline behind each update</li></ul><h2 class="md-h2" id="use-this-route-in-mdwrk">Use this route in MdWrk</h2><ol class="md-ol"><li class="md-li">Start with <a href="/docs/getting-started/installation" class="md-link">installation</a>.</li><li class="md-li">Move into <a href="/docs/getting-started/standalone-modules" class="md-link">standalone modules</a> when package reuse is the main goal.</li><li class="md-li">Follow <a href="/docs/extensions/extension-platform" class="md-link">extension platform</a> for the host and runtime surface.</li><li class="md-li">Read the <a href="https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-30T00:00:00Z&amp;until=2026-05-01T00:00:00Z" target="_blank" rel="noopener noreferrer" class="md-link">April 30 repository history</a> for the concrete docs and brand refinements.</li></ol><p class="md-p">MdWrk now gives readers a faster path from the landing page to installation, package usage, and extension workflows.</p></div>
+                  </div>
+                </article>
+
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">What does this MdWrk update cover?</summary><div class="faq-content"><p>The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.</p></div></details>
+                      <details class="faq-accordion"><summary class="faq-summary">What should readers take away from this update?</summary><div class="faq-content"><p>This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation.</p></div></details></div>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#what-readers-get-from-the-new-docs-surface" class="docs-toc-link" title="What readers get from the new docs surface">What readers get from the new docs surface</a></div>
+                  <div class="docs-toc-item"><a href="#docs-that-carry-the-current-state" class="docs-toc-link" title="Docs that carry the current state">Docs that carry the current state</a></div>
+                  <div class="docs-toc-item"><a href="#screenshot" class="docs-toc-link" title="Screenshot">Screenshot</a></div>
+                  <div class="docs-toc-item"><a href="#what-this-update-improves" class="docs-toc-link" title="What this update improves">What this update improves</a></div>
+                  <div class="docs-toc-item"><a href="#use-this-route-in-mdwrk" class="docs-toc-link" title="Use this route in MdWrk">Use this route in MdWrk</a></div>
+                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg>
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/" class="footer-link">Documentation</a></li>
+                    <li><a href="/updates/" class="footer-link">Updates</a></li>
+                    <li><a href="https://app.mdwrk.com" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
+                    <li><a href="https://www.npmjs.com/org/mdwrk" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Follow</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+                    <li><a href="https://x.com/swarmauri" target="_blank" rel="noopener noreferrer" class="footer-link">X.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">Community</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/legal/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/legal/terms/" class="footer-link">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-legal">&copy; 2026 MdWrk. Designed for privacy.</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

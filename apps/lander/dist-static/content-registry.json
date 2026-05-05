@@ -1,17 +1,17 @@
 [
   {
     "sourcePath": "content/pages/blog/launch.md",
-    "sourceHash": "7b0b6e577f7b362328dde4559502a5e090f06d50b0ee20bf7a20364a45bef236",
+    "sourceHash": "691e03a5c11e4ed9fc008ea63ef41755278c79d1962fa85f2802dac9e53481ea",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/launch/",
+      "slug": "/updates/launch/",
       "title": "MdWrk launch notes for a static local-first Markdown lander",
       "description": "The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.",
       "h1": "MdWrk launch notes",
       "subtitle": "The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.",
       "entity": "MdWrk",
       "intent": "MdWrk launch story",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-05-04",
       "publishedAt": "2026-05-04",
       "faqs": [
@@ -22,15 +22,14 @@
       ],
       "parent": "/",
       "related": [
-        "/docs/quickstart/",
-        "/features/local-first-markdown/"
+        "/docs/quickstart/"
       ],
       "tags": [
         "launch",
         "static",
         "markdown"
       ],
-      "canonical": "https://mdwrk.com/blog/launch/",
+      "canonical": "https://mdwrk.com/updates/launch/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -63,136 +62,8 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/obsidian.md",
-    "sourceHash": "7fd0fb4bc9a3cc85c1f6c817d3fefa018086617dacd8b5f228acc34341ea770a",
-    "frontmatter": {
-      "schema": "mdwrk.page.v1",
-      "slug": "/compare/obsidian/",
-      "title": "MdWrk vs Obsidian — local-first Markdown workspace comparison",
-      "description": "Compare MdWrk and Obsidian for Markdown writing, local-first workflow expectations, extension boundaries, public docs, and developer package surfaces.",
-      "h1": "MdWrk vs Obsidian",
-      "subtitle": "MdWrk focuses on a local-first Markdown workspace, reusable editor and renderer package surfaces, governed extension contracts, and static public documentation; Obsidian is commonly evaluated as a personal knowledge base and plugin-rich note app.",
-      "entity": "MdWrk",
-      "intent": "compare MdWrk with Obsidian",
-      "contentType": "comparison",
-      "updatedAt": "2026-05-04",
-      "faqs": [
-        {
-          "question": "Should teams choose MdWrk or Obsidian?",
-          "answer": "Teams should evaluate the workflow they need. MdWrk is positioned around package surfaces, static public docs, and governed workspace contracts rather than a note graph as the primary identity."
-        }
-      ],
-      "parent": "/",
-      "related": [
-        "/features/local-first-markdown/",
-        "/compare/vscode-markdown/"
-      ],
-      "tags": [
-        "comparison",
-        "obsidian",
-        "markdown"
-      ],
-      "canonical": "https://mdwrk.com/compare/obsidian/",
-      "noindex": false,
-      "llmsInclude": true
-    },
-    "rendered": {
-      "text": "MdWrk and Obsidian can both appear in Markdown tool evaluations, but they emphasize different product shapes. MdWrk is documented as a workspace, package platform, and static public content system. Obsidian is often evaluated as a personal knowledge base with a large plugin ecosystem. Comparison Summary MdWrk emphasizes local-first authoring, visible storage boundaries, reusable editor and renderer packages, extension host contracts, and static HTML documentation that can be verified before deployment. Obsidian emphasizes local Markdown notes, backlinks, graph-based personal knowledge workflows, and a large ecosystem around note-taking customization. That may be valuable for some users, but it is not the same as MdWrk's governed package and lander architecture. Developer Model MdWrk's developer story is package-oriented. Public pages should link to reusable surfaces and explain how editor, renderer, extension, theme, and static documentation contracts relate to each other. Public Content Model MdWrk requires public lander content to be statically rendered, machine-readable, and verifiable before production deployment. That makes raw HTML, JSON-LD, sitemap data, robots policy, LLM indexes, and Markdown mirrors first-class outputs. Evaluation Guidance Choose based on the workflow. MdWrk is appropriate when the priority is a local-first Markdown workspace with governed extension contracts and deployable static public documentation.",
-      "headings": [
-        {
-          "depth": 2,
-          "id": "comparison-summary",
-          "text": "Comparison Summary"
-        },
-        {
-          "depth": 2,
-          "id": "developer-model",
-          "text": "Developer Model"
-        },
-        {
-          "depth": 2,
-          "id": "public-content-model",
-          "text": "Public Content Model"
-        },
-        {
-          "depth": 2,
-          "id": "evaluation-guidance",
-          "text": "Evaluation Guidance"
-        }
-      ],
-      "links": [],
-      "wordCount": 197
-    }
-  },
-  {
-    "sourcePath": "content/pages/compare/vscode-markdown.md",
-    "sourceHash": "28e2ac7c40ff5988b8852555425d1c105237a6b69756358e04524db5c4c44359",
-    "frontmatter": {
-      "schema": "mdwrk.page.v1",
-      "slug": "/compare/vscode-markdown/",
-      "title": "MdWrk vs VS Code Markdown — workspace and editor comparison",
-      "description": "Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries.",
-      "h1": "MdWrk vs VS Code Markdown",
-      "subtitle": "MdWrk is a Markdown workspace and public documentation compiler, while VS Code is a general-purpose code editor with Markdown support through editor features and extensions.",
-      "entity": "MdWrk",
-      "intent": "compare MdWrk with VS Code markdown workflows",
-      "contentType": "comparison",
-      "updatedAt": "2026-05-04",
-      "faqs": [
-        {
-          "question": "How does MdWrk compare with VS Code Markdown?",
-          "answer": "Compare MdWrk and VS Code Markdown workflows for authoring, preview, package surfaces, extensions, static docs, and local-first workspace boundaries."
-        },
-        {
-          "question": "What should teams review before comparing MdWrk and VS Code Markdown?",
-          "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
-        }
-      ],
-      "parent": "/",
-      "related": [
-        "/features/offline-markdown-editor/",
-        "/docs/extensions/"
-      ],
-      "tags": [
-        "comparison",
-        "vscode",
-        "markdown"
-      ],
-      "canonical": "https://mdwrk.com/compare/vscode-markdown/",
-      "noindex": false,
-      "llmsInclude": true
-    },
-    "rendered": {
-      "text": "VS Code is a strong general-purpose code editor with Markdown support. MdWrk is positioned differently: it is a Markdown workspace, package platform, extension host story, and static lander content compiler for public documentation. Authoring Experience VS Code gives developers a familiar source editing environment. MdWrk focuses the user experience on Markdown writing, preview, workspace navigation, theme presentation, and explicit boundaries around export or sync. Extension Boundaries VS Code extensions live in the VS Code ecosystem. MdWrk extensions are documented as part of the MdWrk workspace contract, with manifest metadata, compatibility expectations, and trust policy described for the product. Public Documentation MdWrk's lander architecture requires static HTML and machine-readable artifacts before deployment. This matters for search, answer engines, and AI retrieval because the public content is present in the raw build output rather than hidden behind runtime rendering. When MdWrk Fits MdWrk fits teams that want a Markdown-specific product story, governed public documentation, reusable packages, and visible local-first workflow boundaries. VS Code fits users who want Markdown editing inside a broader programming environment.",
-      "headings": [
-        {
-          "depth": 2,
-          "id": "authoring-experience",
-          "text": "Authoring Experience"
-        },
-        {
-          "depth": 2,
-          "id": "extension-boundaries",
-          "text": "Extension Boundaries"
-        },
-        {
-          "depth": 2,
-          "id": "public-documentation",
-          "text": "Public Documentation"
-        },
-        {
-          "depth": 2,
-          "id": "when-mdwrk-fits",
-          "text": "When MdWrk Fits"
-        }
-      ],
-      "links": [],
-      "wordCount": 172
-    }
-  },
-  {
     "sourcePath": "content/pages/docs/extensions.md",
-    "sourceHash": "905b279caad7dc2925b4c543d8a9be33b88a8e53bfb3d68e2c936116bba21248",
+    "sourceHash": "3d3cf9a3dc908cb49ae543909329b51cc1aa50a6720599b05bda7d6dc6259b5d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/",
@@ -216,7 +87,6 @@
       ],
       "parent": "/docs/quickstart/",
       "related": [
-        "/features/extension-platform/",
         "/docs/theme-packs/"
       ],
       "tags": [
@@ -253,7 +123,7 @@
   },
   {
     "sourcePath": "content/pages/docs/quickstart.md",
-    "sourceHash": "1908b8b7a4a437aa0f28d7ddfe75edc0f916592139edde3a2e3fb8c980599ace",
+    "sourceHash": "ca418cae01c8c1770a5faf0bf977369234daf0e709f86fe32c39d7cdf75bc6f0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/quickstart/",
@@ -273,7 +143,6 @@
       ],
       "parent": "/",
       "related": [
-        "/features/offline-markdown-editor/",
         "/docs/extensions/"
       ],
       "tags": [
@@ -315,7 +184,7 @@
   },
   {
     "sourcePath": "content/pages/docs/theme-packs.md",
-    "sourceHash": "ea5357bb35223c412291b502ba8d7b6f1aa1c89509a95e5c301c1d33c83b87e2",
+    "sourceHash": "87b847153f98bf4731be1493146deaeee5d69f24c5e5c4d59b9eeff3e656eeec",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/theme-packs/",
@@ -339,7 +208,6 @@
       ],
       "parent": "/docs/quickstart/",
       "related": [
-        "/features/extension-platform/",
         "/docs/extensions/"
       ],
       "tags": [
@@ -375,202 +243,8 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/extension-platform.md",
-    "sourceHash": "76e2213498f4185c362099d36ead87675c1bc516502dd1b533d9f1bdb1b1267a",
-    "frontmatter": {
-      "schema": "mdwrk.page.v1",
-      "slug": "/features/extension-platform/",
-      "title": "MdWrk extension platform for governed Markdown workflows",
-      "description": "MdWrk documents extension host boundaries, manifest contracts, runtime behavior, trust policy, and package surfaces for Markdown workspace extensions.",
-      "h1": "Extension platform for Markdown workflows",
-      "subtitle": "MdWrk includes an extension platform model for Markdown workflows, with public documentation covering host boundaries, manifests, runtime expectations, trust policy, and related package surfaces.",
-      "entity": "MdWrk",
-      "intent": "markdown extension host",
-      "contentType": "feature",
-      "updatedAt": "2026-05-04",
-      "faqs": [
-        {
-          "question": "What is the MdWrk extension platform?",
-          "answer": "It is the governed package and runtime surface used to describe how extensions integrate with the Markdown workspace."
-        },
-        {
-          "question": "Are extensions automatically trusted?",
-          "answer": "No. The documentation should describe manifest metadata, compatibility checks, and explicit trust boundaries instead of implying automatic trust."
-        }
-      ],
-      "parent": "/",
-      "related": [
-        "/docs/extensions/",
-        "/docs/theme-packs/"
-      ],
-      "tags": [
-        "extensions",
-        "manifest",
-        "runtime"
-      ],
-      "canonical": "https://mdwrk.com/features/extension-platform/",
-      "noindex": false,
-      "llmsInclude": true
-    },
-    "rendered": {
-      "text": "The MdWrk extension platform gives developers a governed way to reason about workspace extensions. Rather than presenting extension behavior as an informal plugin story, MdWrk documents host boundaries, manifest metadata, compatibility checks, and runtime expectations. Host Boundary The extension host is the product surface that coordinates extension behavior. Public documentation explains which capabilities belong to the host, which belong to a specific extension package, and which workflows remain out of scope. Manifest And Trust Extension manifests provide a visible contract for identity, capabilities, compatibility, and package expectations. Trust is not assumed only because a package exists. The lander should describe what the user or operator can inspect before enabling extension behavior. Runtime Documentation Runtime documentation should be practical. It should show what an extension can render, which settings or workspace surfaces it uses, and how it participates in a local-first Markdown workflow without hiding data movement. Related Developer Docs Use the extension docs for host behavior, the theme pack docs for theme extension surfaces, and the quickstart for first-time workspace context.",
-      "headings": [
-        {
-          "depth": 2,
-          "id": "host-boundary",
-          "text": "Host Boundary"
-        },
-        {
-          "depth": 2,
-          "id": "manifest-and-trust",
-          "text": "Manifest And Trust"
-        },
-        {
-          "depth": 2,
-          "id": "runtime-documentation",
-          "text": "Runtime Documentation"
-        },
-        {
-          "depth": 2,
-          "id": "related-developer-docs",
-          "text": "Related Developer Docs"
-        }
-      ],
-      "links": [],
-      "wordCount": 171
-    }
-  },
-  {
-    "sourcePath": "content/pages/features/local-first-markdown.md",
-    "sourceHash": "13a72aabb394e311ca3fb34885b41a90c85a013caab48ec51e2cf20ee1f0dfe2",
-    "frontmatter": {
-      "schema": "mdwrk.page.v1",
-      "slug": "/features/local-first-markdown/",
-      "title": "Local-first Markdown workspace for portable documents — MdWrk",
-      "description": "MdWrk documents a local-first Markdown workflow where writing, preview, workspace state, extension behavior, and export boundaries are explicit.",
-      "h1": "Local-first Markdown workspace",
-      "subtitle": "MdWrk is a local-first Markdown workspace that keeps authoring centered on portable Markdown files, browser-managed workspace state, and explicit export or sync boundaries.",
-      "entity": "MdWrk",
-      "intent": "local-first markdown workspace",
-      "contentType": "feature",
-      "updatedAt": "2026-05-04",
-      "faqs": [
-        {
-          "question": "What does local-first mean for MdWrk?",
-          "answer": "Local-first means the product documentation treats local writing and preview as the default mental model, while sync, export, and external integrations are opt-in workflows."
-        }
-      ],
-      "parent": "/",
-      "related": [
-        "/features/offline-markdown-editor/",
-        "/privacy/"
-      ],
-      "tags": [
-        "local-first",
-        "markdown",
-        "workspace"
-      ],
-      "canonical": "https://mdwrk.com/features/local-first-markdown/",
-      "noindex": false,
-      "llmsInclude": true
-    },
-    "rendered": {
-      "text": "MdWrk frames Markdown authoring around local control. The workspace should make it clear where documents are edited, what state is held by the client, and when a user chooses to move content into another system. Workspace State The workspace can keep document state, open tabs, preferences, and editor configuration close to the user. Public documentation must describe that boundary plainly so users do not assume hidden uploads or hosted storage. Portable Markdown Markdown remains valuable because it is durable, readable, and easy to move. MdWrk reinforces that value by documenting features in terms of Markdown body content, static mirrors, package surfaces, and explicit workflow boundaries. Clear Integration Boundaries GitHub sync, extension-based workflows, and export routes can still be useful, but they should be named as integrations. The local-first documentation explains the point where a local authoring session becomes a networked operation. Static Public Pages The public lander itself follows the same philosophy. It compiles Markdown into static HTML and machine-readable artifacts so important content can be inspected without running a client application.",
-      "headings": [
-        {
-          "depth": 2,
-          "id": "workspace-state",
-          "text": "Workspace State"
-        },
-        {
-          "depth": 2,
-          "id": "portable-markdown",
-          "text": "Portable Markdown"
-        },
-        {
-          "depth": 2,
-          "id": "clear-integration-boundaries",
-          "text": "Clear Integration Boundaries"
-        },
-        {
-          "depth": 2,
-          "id": "static-public-pages",
-          "text": "Static Public Pages"
-        }
-      ],
-      "links": [],
-      "wordCount": 172
-    }
-  },
-  {
-    "sourcePath": "content/pages/features/offline-markdown-editor.md",
-    "sourceHash": "b059f271570627fe84ede8cf49a4bc4745de51387cb9fa2afa2f0bc9c5534471",
-    "frontmatter": {
-      "schema": "mdwrk.page.v1",
-      "slug": "/features/offline-markdown-editor/",
-      "title": "Offline Markdown editor for local-first writing — MdWrk",
-      "description": "MdWrk is an offline-capable Markdown editor for writing, previewing, organizing, and extending Markdown documents while preserving local workflow control.",
-      "h1": "Offline Markdown editor for local-first writing",
-      "subtitle": "MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.",
-      "entity": "MdWrk",
-      "intent": "offline markdown editor",
-      "contentType": "feature",
-      "updatedAt": "2026-05-04",
-      "faqs": [
-        {
-          "question": "Is MdWrk an offline Markdown editor?",
-          "answer": "MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services."
-        },
-        {
-          "question": "Does MdWrk require cloud storage?",
-          "answer": "MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices."
-        }
-      ],
-      "parent": "/",
-      "related": [
-        "/features/local-first-markdown/",
-        "/docs/quickstart/"
-      ],
-      "tags": [
-        "offline",
-        "markdown-editor",
-        "local-first"
-      ],
-      "canonical": "https://mdwrk.com/features/offline-markdown-editor/",
-      "noindex": false,
-      "llmsInclude": true
-    },
-    "rendered": {
-      "text": "MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first. Why Offline Markdown Matters Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about. How MdWrk Handles Offline Work MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device. Developer Surfaces Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other. Read Next Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.",
-      "headings": [
-        {
-          "depth": 2,
-          "id": "why-offline-markdown-matters",
-          "text": "Why Offline Markdown Matters"
-        },
-        {
-          "depth": 2,
-          "id": "how-mdwrk-handles-offline-work",
-          "text": "How MdWrk Handles Offline Work"
-        },
-        {
-          "depth": 2,
-          "id": "developer-surfaces",
-          "text": "Developer Surfaces"
-        },
-        {
-          "depth": 2,
-          "id": "read-next",
-          "text": "Read Next"
-        }
-      ],
-      "links": [],
-      "wordCount": 208
-    }
-  },
-  {
     "sourcePath": "content/pages/index.md",
-    "sourceHash": "8f1ef7e04fc06464548e55dcdd01d22954952a0367efeb62207f31fa2f8cdf06",
+    "sourceHash": "417cc8c699b157b70315c702b2edb2f4610c4237ed4209ce3053d2232d89966a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/",
@@ -593,9 +267,8 @@
         }
       ],
       "related": [
-        "/features/offline-markdown-editor/",
         "/docs/quickstart/",
-        "/compare/obsidian/"
+        "/privacy/"
       ],
       "tags": [
         "markdown",
@@ -636,7 +309,7 @@
   },
   {
     "sourcePath": "content/pages/privacy.md",
-    "sourceHash": "ac711f5d3d4e74226efb4a595d01778da41aae4761642dac96f42b9e124be86a",
+    "sourceHash": "a59d32c7dbf55f17c7f4c66432c5fb4f4a18c89b76ec60eea2a04b063624a2c4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/privacy/",
@@ -656,7 +329,6 @@
       ],
       "parent": "/",
       "related": [
-        "/features/local-first-markdown/",
         "/security/"
       ],
       "tags": [
@@ -698,7 +370,7 @@
   },
   {
     "sourcePath": "content/pages/security.md",
-    "sourceHash": "a503fd7444e1b0c837b4112aa88cb57ca7d5015dfff25d8667b951cefc6cb298",
+    "sourceHash": "a4b542aba67161ab6213757b10f850e663aa8b2a46b7580633453bdf86f9db81",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/security/",
@@ -722,8 +394,7 @@
       ],
       "parent": "/",
       "related": [
-        "/privacy/",
-        "/features/extension-platform/"
+        "/privacy/"
       ],
       "tags": [
         "security",
@@ -764,7 +435,7 @@
   },
   {
     "sourcePath": "data/markdown/docs",
-    "sourceHash": "7885f6b7382495466633c81fab36773a543c8e3380707a5c7e7f0130640c70f8",
+    "sourceHash": "c289102dea0d71ab67da063e0c98d9951ebed515d6c90ad892a307f6cfc29230",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/",
@@ -845,7 +516,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/installation.md",
-    "sourceHash": "d41dbb6823ec18d689d7b2a24d9afc45614975f38b876f6edb152033bbcdb049",
+    "sourceHash": "8c2bbe0f432225848cc392a9fef55a44a453028ca2b8462f2c1643441e673765",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/installation/",
@@ -927,7 +598,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/browser-use.md",
-    "sourceHash": "838f1fb732f135e7a33cf31e9679cc4d77fa1f5538d8ca5a981ff44172411f5f",
+    "sourceHash": "5797df2e4d94b9351cf4df0bc89d144e70b1d0639acb069e01e475bea01e5fdb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/browser-use/",
@@ -993,7 +664,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/pwa-installation.md",
-    "sourceHash": "fbd100e87597592bcc518d96606832069633e6851434ef36f30c2387ff55db06",
+    "sourceHash": "b956e4d1381f4b5cc6c0aa3b94e55de2d8343861ba0856f4455c5e5ca07ffa84",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/pwa-installation/",
@@ -1064,7 +735,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/local-setup.md",
-    "sourceHash": "ceb2441f0ecf6face4c3b9ba69e0cb78d8139e174ef8871a844945b1a500651e",
+    "sourceHash": "8bf4f68e201d7398d0b107240f38fbdd98d6cc0839b2c169dc6652c51530c1de",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/local-setup/",
@@ -1135,7 +806,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/standalone-modules.md",
-    "sourceHash": "13c74fa208943a1047d8613c81a5ebe9bf0b6d02de8b891818eb4de8f5f0ed0a",
+    "sourceHash": "042191c7376ae1b4ebfed079eee26b703bb0f90a6cae3b88dadd7c002801dfd0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/standalone-modules/",
@@ -1206,7 +877,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/configuration.md",
-    "sourceHash": "f9c1cd7e0ad79db83aa8f73ce1478e47f4ba674a44debd6995a0ce70a2c9b6aa",
+    "sourceHash": "1e8f93848a888e00deac33d535868febee86e3a6e45f95eeef38a23f6defb004",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/configuration/",
@@ -1277,16 +948,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/editor-basics.md",
-    "sourceHash": "f80ef6df99cc98815a708d3f3303ae5e648907476a9bce790e817f26e52d1bee",
+    "sourceHash": "8b3edcce8c657008dbd448fb305d31d69cdc0dd3728acf59ecb945e77c92ff1a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/usage/editor-basics/",
-      "title": "Editor Basics | MdWrk Docs",
+      "slug": "/features/editor-basics/",
+      "title": "Editor Basics | MdWrk Features",
       "description": "MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.",
       "h1": "Editor Basics",
       "entity": "MdWrk",
-      "intent": "learn editor basics in MdWrk",
-      "contentType": "docs",
+      "intent": "understand editor basics in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1298,13 +969,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for editor basics, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/usage/editor-basics/",
+      "canonical": "https://mdwrk.com/features/editor-basics/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1364,12 +1035,12 @@
       ],
       "links": [
         {
-          "href": "/docs/usage/advanced-formatting",
+          "href": "/features/advanced-formatting",
           "text": "Advanced Markdown Formatting",
           "internal": true
         },
         {
-          "href": "/docs/usage/rendering-and-preview",
+          "href": "/features/rendering-and-preview",
           "text": "Rendering And Preview",
           "internal": true
         },
@@ -1384,16 +1055,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/advanced-formatting.md",
-    "sourceHash": "acdd51028188372a4ccd3a787dda80ff342aceff487d078811bedfe52df14295",
+    "sourceHash": "c57f7b38c38aa10345b9b1b403ec4662ff17a8dea961025657ef2d30122d768d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/usage/advanced-formatting/",
-      "title": "Markdown Formatting | MdWrk Docs",
+      "slug": "/features/advanced-formatting/",
+      "title": "Markdown Formatting | MdWrk Features",
       "description": "MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.",
       "h1": "Markdown Formatting",
       "entity": "MdWrk",
-      "intent": "learn markdown formatting in MdWrk",
-      "contentType": "docs",
+      "intent": "understand markdown formatting in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1405,13 +1076,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for markdown formatting, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/usage/advanced-formatting/",
+      "canonical": "https://mdwrk.com/features/advanced-formatting/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1486,12 +1157,12 @@
       ],
       "links": [
         {
-          "href": "/docs/usage/editor-basics",
+          "href": "/features/editor-basics",
           "text": "Editor Basics",
           "internal": true
         },
         {
-          "href": "/docs/usage/rendering-and-preview",
+          "href": "/features/rendering-and-preview",
           "text": "Rendering And Preview",
           "internal": true
         },
@@ -1506,16 +1177,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/rendering-and-preview.md",
-    "sourceHash": "57d3e30fa96576821d031a1e6396e1f00e2581a8ee97409c378bad430ec07b72",
+    "sourceHash": "67de8bc6e7a4cf9f13b8f1f41a013cfe4800666fbe0261c45ab9f9a38537af1f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/usage/rendering-and-preview/",
-      "title": "Rendering And Preview | MdWrk Docs",
+      "slug": "/features/rendering-and-preview/",
+      "title": "Rendering And Preview | MdWrk Features",
       "description": "MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.",
       "h1": "Rendering And Preview",
       "entity": "MdWrk",
-      "intent": "learn rendering and preview in MdWrk",
-      "contentType": "docs",
+      "intent": "understand rendering and preview in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1527,13 +1198,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for rendering and preview, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/usage/rendering-and-preview/",
+      "canonical": "https://mdwrk.com/features/rendering-and-preview/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1598,12 +1269,12 @@
       ],
       "links": [
         {
-          "href": "/docs/usage/editor-basics",
+          "href": "/features/editor-basics",
           "text": "Editor Basics",
           "internal": true
         },
         {
-          "href": "/docs/usage/advanced-formatting",
+          "href": "/features/advanced-formatting",
           "text": "Advanced Markdown Formatting",
           "internal": true
         },
@@ -1618,16 +1289,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/offline-markdown-editor.md",
-    "sourceHash": "ec634208f7320d0a9de6e4e6c1017587527e7b3c3e11d306eb1870e45fbfb06a",
+    "sourceHash": "fd3510fd80baad424368e404121ae011abb923656f759d6e041e50b8a43259a0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/offline-markdown-editor/",
-      "title": "Offline Markdown Editor | MdWrk Docs",
+      "slug": "/features/offline-markdown-editor/",
+      "title": "Offline Markdown Editor | MdWrk Features",
       "description": "MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.",
       "h1": "Offline Markdown Editor",
       "entity": "MdWrk",
-      "intent": "learn offline markdown editor in MdWrk",
-      "contentType": "docs",
+      "intent": "understand offline markdown editor in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1639,13 +1310,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for offline markdown editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/offline-markdown-editor/",
+      "canonical": "https://mdwrk.com/features/offline-markdown-editor/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1685,7 +1356,7 @@
           "internal": true
         },
         {
-          "href": "/docs/usage/editor-basics",
+          "href": "/features/editor-basics",
           "text": "Editor Basics",
           "internal": true
         }
@@ -1695,16 +1366,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/local-first-markdown-workspace.md",
-    "sourceHash": "529f164573151453ed9430bf5f99f2d85e3b695bdfa9ef411fa021c4b36207af",
+    "sourceHash": "784872fc93236941669ca91efaabb3849f29b13955e1483c8c6253c6b1d5188e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/local-first-markdown-workspace/",
-      "title": "Local-first Markdown Workspace | MdWrk Docs",
+      "slug": "/features/local-first-markdown-workspace/",
+      "title": "Local-first Markdown Workspace | MdWrk Features",
       "description": "MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.",
       "h1": "Local-first Markdown Workspace",
       "entity": "MdWrk",
-      "intent": "learn local-first markdown workspace in MdWrk",
-      "contentType": "docs",
+      "intent": "understand local-first markdown workspace in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1716,13 +1387,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for local-first markdown workspace, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/local-first-markdown-workspace/",
+      "canonical": "https://mdwrk.com/features/local-first-markdown-workspace/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1772,16 +1443,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/privacy-first-markdown-editor.md",
-    "sourceHash": "e3a838e833fee7131568b8a60861a5a853f9bc28e29e60c5eb7eacbadaa07cc3",
+    "sourceHash": "b9063c1ef283c469f41007cdf90168a66fd0ff188e55aa362d99f04976695130",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/privacy-first-markdown-editor/",
-      "title": "Privacy-first Markdown Editor | MdWrk Docs",
+      "slug": "/features/privacy-first-markdown-editor/",
+      "title": "Privacy-first Markdown Editor | MdWrk Features",
       "description": "MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.",
       "h1": "Privacy-first Markdown Editor",
       "entity": "MdWrk",
-      "intent": "learn privacy-first markdown editor in MdWrk",
-      "contentType": "docs",
+      "intent": "understand privacy-first markdown editor in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1793,13 +1464,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for privacy-first markdown editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/privacy-first-markdown-editor/",
+      "canonical": "https://mdwrk.com/features/privacy-first-markdown-editor/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1849,16 +1520,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/markdown-file-manager.md",
-    "sourceHash": "faaeb36aaeb072d53c691309ad28ddc0308a9967552f5543f89c5ee0ba88ce47",
+    "sourceHash": "700b75f97dd01ae2f7d11b2d610da38cafd2404ff276d92801af08bc81abcef0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/markdown-file-manager/",
-      "title": "Markdown File Manager | MdWrk Docs",
+      "slug": "/features/markdown-file-manager/",
+      "title": "Markdown File Manager | MdWrk Features",
       "description": "MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.",
       "h1": "Markdown File Manager",
       "entity": "MdWrk",
-      "intent": "learn markdown file manager in MdWrk",
-      "contentType": "docs",
+      "intent": "understand markdown file manager in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1870,13 +1541,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for markdown file manager, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/markdown-file-manager/",
+      "canonical": "https://mdwrk.com/features/markdown-file-manager/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1906,12 +1577,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/local-first-markdown-workspace",
+          "href": "/features/local-first-markdown-workspace",
           "text": "Local-First Markdown Workspace",
           "internal": true
         },
         {
-          "href": "/docs/usage/rendering-and-preview",
+          "href": "/features/rendering-and-preview",
           "text": "Rendering And Preview",
           "internal": true
         },
@@ -1926,16 +1597,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/markdown-preview-editor.md",
-    "sourceHash": "c805952a37033929d175c00657947ead9217472b828ab5845ef445cc28b18ad4",
+    "sourceHash": "b57b7acb98ce3ef7a07747485729278f2c42fba7c83c864828dd53beb28d9009",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/markdown-preview-editor/",
-      "title": "Markdown Preview Editor | MdWrk Docs",
+      "slug": "/features/markdown-preview-editor/",
+      "title": "Markdown Preview Editor | MdWrk Features",
       "description": "MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.",
       "h1": "Markdown Preview Editor",
       "entity": "MdWrk",
-      "intent": "learn markdown preview editor in MdWrk",
-      "contentType": "docs",
+      "intent": "understand markdown preview editor in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -1947,13 +1618,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for markdown preview editor, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/markdown-preview-editor/",
+      "canonical": "https://mdwrk.com/features/markdown-preview-editor/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1983,17 +1654,17 @@
       ],
       "links": [
         {
-          "href": "/docs/usage/editor-basics",
+          "href": "/features/editor-basics",
           "text": "Editor Basics",
           "internal": true
         },
         {
-          "href": "/docs/usage/rendering-and-preview",
+          "href": "/features/rendering-and-preview",
           "text": "Rendering And Preview",
           "internal": true
         },
         {
-          "href": "/docs/usage/advanced-formatting",
+          "href": "/features/advanced-formatting",
           "text": "Advanced Markdown Formatting",
           "internal": true
         }
@@ -2003,16 +1674,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/extension-host.md",
-    "sourceHash": "7f46c98c5d57768037c5271178adf2f1bda88bb1cba3d76e009080e14d8536a4",
+    "sourceHash": "2c5efedc548aa941d203ba1c4599bd1b2429416314dde4947b0667a94740cb84",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/extension-host/",
-      "title": "Extension Host | MdWrk Docs",
+      "slug": "/features/extension-host/",
+      "title": "Extension Host | MdWrk Features",
       "description": "MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.",
       "h1": "Extension Host",
       "entity": "MdWrk",
-      "intent": "learn extension host in MdWrk",
-      "contentType": "docs",
+      "intent": "understand extension host in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2024,13 +1695,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for extension host, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/extension-host/",
+      "canonical": "https://mdwrk.com/features/extension-host/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2070,7 +1741,7 @@
           "internal": true
         },
         {
-          "href": "/docs/product/theme-packs",
+          "href": "/features/theme-packs",
           "text": "Theme Packs",
           "internal": true
         }
@@ -2080,16 +1751,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/theme-packs.md",
-    "sourceHash": "40ababbf7f164760e26cb7617c20b9cc7493fda0df535d85b80a45f9236a7121",
+    "sourceHash": "7f898490f36a3b02b21cf41a059398fa057b5946806ad07d6b2a7a39d44cbb1b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/theme-packs/",
-      "title": "Theme Packs | MdWrk Docs",
+      "slug": "/features/theme-packs/",
+      "title": "Theme Packs | MdWrk Features",
       "description": "MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.",
       "h1": "Theme Packs",
       "entity": "MdWrk",
-      "intent": "learn theme packs in MdWrk",
-      "contentType": "docs",
+      "intent": "understand theme packs in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2101,13 +1772,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for theme packs, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/theme-packs/",
+      "canonical": "https://mdwrk.com/features/theme-packs/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2157,16 +1828,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/developer-documentation.md",
-    "sourceHash": "8d5b8d32dcb6b46071ba6106f7d7d25aa9d93773c54d5cd560457cd67ffeee59",
+    "sourceHash": "c1f5d26423462be1cc4b53662e5abedb3506856d25350f07c67e3461eb22a179",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/product/developer-documentation/",
-      "title": "Developer Documentation | MdWrk Docs",
+      "slug": "/features/developer-documentation/",
+      "title": "Developer Documentation | MdWrk Features",
       "description": "MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.",
       "h1": "Developer Documentation",
       "entity": "MdWrk",
-      "intent": "learn developer documentation in MdWrk",
-      "contentType": "docs",
+      "intent": "understand developer documentation in MdWrk",
+      "contentType": "feature",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2178,13 +1849,13 @@
           "answer": "Read this page if you need practical MdWrk guidance for developer documentation, including the relevant workflow, product surface, and follow-up documentation paths."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "features",
         "Features"
       ],
-      "canonical": "https://mdwrk.com/docs/product/developer-documentation/",
+      "canonical": "https://mdwrk.com/features/developer-documentation/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2234,7 +1905,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/github-sync.md",
-    "sourceHash": "142df96d4fbfc85ee53a6c6946a08613502d4ea80783501503f87408a8cbddb7",
+    "sourceHash": "e978e5319224e3afd266a12c6eda6e8222bc8c35816ff7b7e999ed9dac810df5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/github-sync/",
@@ -2295,7 +1966,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/authoring-overview.md",
-    "sourceHash": "a4533821f72dffd225a5af38f5b6f8c109a1312ad3096f8da6e878c2810ff65e",
+    "sourceHash": "b7bb3c553fd7c4829bfc9647cf838abf81793585f252701c67fb173be6f3c337",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/overview/",
@@ -2367,7 +2038,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/extensions.md",
-    "sourceHash": "6bcd7362e0531fb90741a2857484cecf79804f59a412b52c9fe47bf55fb1afd9",
+    "sourceHash": "e4a45e199eb46837b0720facfd1cd4105b2e73f074f0b3cacb4c610475d9862b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/extensions/",
@@ -2438,7 +2109,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/theme-packs.md",
-    "sourceHash": "4da048ae696a055997b6449a58e82d4fad83c107098917269b73cdbdddfa4b5d",
+    "sourceHash": "e2987e77ff67c086e6cc411d4586294009d1504b8b408797e9478b1868572287",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/theme-packs/",
@@ -2504,7 +2175,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/language-packs.md",
-    "sourceHash": "2e9d9b8c59bd57383d20ff5d87a58ad490f2dc76381d99b168e3cacb102e0537",
+    "sourceHash": "234481e10ca25e855680599283ca90d119423646075f290db1307d39f5b62bce",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/language-packs/",
@@ -2570,7 +2241,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/extensions/extension-platform.md",
-    "sourceHash": "d8d823e50ad70ef688c55dd0fd59f9092155934e9d95aa594508e07e88804ab0",
+    "sourceHash": "aab42b6bd12bbb8d53a78ca7631f411a1cd61cd7d481b65a8d75908df89b7398",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/extension-platform/",
@@ -2631,7 +2302,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/extensions/theme-studio-and-host-surfaces.md",
-    "sourceHash": "13872eb80190c2d433479effddae7fd75b9fbde59b336d91844874c9b4fb170e",
+    "sourceHash": "6d5bd54ec02e8aee0b3ed9db8062db713947851aeae8717fc99480b74211e1ba",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/theme-studio-and-host-surfaces/",
@@ -2687,16 +2358,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-obsidian.md",
-    "sourceHash": "dc132075fa5c3901b1170d52dcb1864041330fdee81b75559ce27a82551b7658",
+    "sourceHash": "eeb58fca085e176b378c216a70d7467610088f1313c44aa0fe10ba799e8a3817",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-obsidian/",
-      "title": "MdWrk Vs Obsidian | MdWrk Docs",
+      "slug": "/compare/obsidian/",
+      "title": "MdWrk Vs Obsidian | MdWrk Compares",
       "description": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.",
       "h1": "MdWrk Vs Obsidian",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs obsidian in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs obsidian in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2708,13 +2379,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-obsidian/",
+      "canonical": "https://mdwrk.com/compare/obsidian/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2739,12 +2410,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/local-first-markdown-workspace",
+          "href": "/features/local-first-markdown-workspace",
           "text": "Local-First Markdown Workspace",
           "internal": true
         },
         {
-          "href": "/docs/product/extension-host",
+          "href": "/features/extension-host",
           "text": "MdWrk Extension Host",
           "internal": true
         }
@@ -2754,16 +2425,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-typora.md",
-    "sourceHash": "1d8382654afbecf75f6799a2d7721ee3435976491dfbc70c2b4eea39c7ae18f9",
+    "sourceHash": "44c5ec002cdf1f284d5409b314309b735e9c30cfc67255c61968071eae3341fc",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-typora/",
-      "title": "MdWrk Vs Typora | MdWrk Docs",
+      "slug": "/compare/typora/",
+      "title": "MdWrk Vs Typora | MdWrk Compares",
       "description": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.",
       "h1": "MdWrk Vs Typora",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs typora in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs typora in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2775,13 +2446,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-typora/",
+      "canonical": "https://mdwrk.com/compare/typora/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2806,12 +2477,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/markdown-preview-editor",
+          "href": "/features/markdown-preview-editor",
           "text": "Markdown Preview Editor",
           "internal": true
         },
         {
-          "href": "/docs/usage/editor-basics",
+          "href": "/features/editor-basics",
           "text": "Editor Basics",
           "internal": true
         }
@@ -2821,16 +2492,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-vs-code.md",
-    "sourceHash": "c098e3088deb858bf7d9fbb52710090bdea719e1909c11ec79b7217c6a7d8d25",
+    "sourceHash": "fb4b3ecc3588bc4212d57d59fbf77bb681e6b279e14c99b542414c80607882f3",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-vs-code/",
-      "title": "MdWrk Vs VS Code | MdWrk Docs",
+      "slug": "/compare/code/",
+      "title": "MdWrk Vs VS Code | MdWrk Compares",
       "description": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.",
       "h1": "MdWrk Vs VS Code",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs vs code in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs vs code in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2842,13 +2513,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-vs-code/",
+      "canonical": "https://mdwrk.com/compare/code/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2873,12 +2544,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/developer-documentation",
+          "href": "/features/developer-documentation",
           "text": "Developer Documentation",
           "internal": true
         },
         {
-          "href": "/docs/product/markdown-file-manager",
+          "href": "/features/markdown-file-manager",
           "text": "Markdown File Manager",
           "internal": true
         }
@@ -2888,16 +2559,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-marktext.md",
-    "sourceHash": "83814e85bf9fac8c9d8b95dcecab08b839194c048dd54988c8fddd3cbea5659f",
+    "sourceHash": "3f63b4eb9af7142726166de4f971396860b1ca227050d21018312781cfd3d11b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-marktext/",
-      "title": "MdWrk Vs Marktext | MdWrk Docs",
+      "slug": "/compare/marktext/",
+      "title": "MdWrk Vs Marktext | MdWrk Compares",
       "description": "Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.",
       "h1": "MdWrk Vs Marktext",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs marktext in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs marktext in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2909,13 +2580,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-marktext/",
+      "canonical": "https://mdwrk.com/compare/marktext/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2940,12 +2611,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/offline-markdown-editor",
+          "href": "/features/offline-markdown-editor",
           "text": "Offline Markdown Editor",
           "internal": true
         },
         {
-          "href": "/docs/product/theme-packs",
+          "href": "/features/theme-packs",
           "text": "Theme Packs",
           "internal": true
         }
@@ -2955,16 +2626,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-zettlr.md",
-    "sourceHash": "1b343a1b163f7eacad5ddd79ee23cf58c9e2f6146b82e4c8c0b1ea7764d05e9f",
+    "sourceHash": "1fd4e2948c14ffd928c6704d4f0dea4c1dbc37f66ec4479134e818fdfee9f331",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-zettlr/",
-      "title": "MdWrk Vs Zettlr | MdWrk Docs",
+      "slug": "/compare/zettlr/",
+      "title": "MdWrk Vs Zettlr | MdWrk Compares",
       "description": "Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.",
       "h1": "MdWrk Vs Zettlr",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs zettlr in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs zettlr in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -2976,13 +2647,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-zettlr/",
+      "canonical": "https://mdwrk.com/compare/zettlr/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3007,12 +2678,12 @@
       ],
       "links": [
         {
-          "href": "/docs/usage/advanced-formatting",
+          "href": "/features/advanced-formatting",
           "text": "Advanced Markdown Formatting",
           "internal": true
         },
         {
-          "href": "/docs/product/privacy-first-markdown-editor",
+          "href": "/features/privacy-first-markdown-editor",
           "text": "Privacy-First Markdown Editor",
           "internal": true
         }
@@ -3022,16 +2693,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-notion.md",
-    "sourceHash": "6a0d5c11689daa41f74de7070c4f8c52e029693b0f6cce75a326ef4232fff63a",
+    "sourceHash": "56ff7bb4466bc098c4eda21ead8564a18bf8c27d0a9aa529575ee870b32921d8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-notion/",
-      "title": "MdWrk Vs Notion | MdWrk Docs",
+      "slug": "/compare/notion/",
+      "title": "MdWrk Vs Notion | MdWrk Compares",
       "description": "Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.",
       "h1": "MdWrk Vs Notion",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs notion in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs notion in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -3043,13 +2714,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-notion/",
+      "canonical": "https://mdwrk.com/compare/notion/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3074,12 +2745,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/privacy-first-markdown-editor",
+          "href": "/features/privacy-first-markdown-editor",
           "text": "Privacy-First Markdown Editor",
           "internal": true
         },
         {
-          "href": "/docs/product/markdown-file-manager",
+          "href": "/features/markdown-file-manager",
           "text": "Markdown File Manager",
           "internal": true
         }
@@ -3089,16 +2760,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-logseq.md",
-    "sourceHash": "824f3b3935ebc32a04b6a0846304d751b78d7be8af03767d7f5587e218f20acf",
+    "sourceHash": "1afd2cb4cdd5d55770468f6f54a36aeb040fda619b5073e171043f5b54f98a3a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-logseq/",
-      "title": "MdWrk Vs Logseq | MdWrk Docs",
+      "slug": "/compare/logseq/",
+      "title": "MdWrk Vs Logseq | MdWrk Compares",
       "description": "Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.",
       "h1": "MdWrk Vs Logseq",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs logseq in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs logseq in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -3110,13 +2781,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-logseq/",
+      "canonical": "https://mdwrk.com/compare/logseq/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3141,12 +2812,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/local-first-markdown-workspace",
+          "href": "/features/local-first-markdown-workspace",
           "text": "Local-First Markdown Workspace",
           "internal": true
         },
         {
-          "href": "/docs/product/markdown-preview-editor",
+          "href": "/features/markdown-preview-editor",
           "text": "Markdown Preview Editor",
           "internal": true
         }
@@ -3156,16 +2827,16 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-standard-markdown-editors.md",
-    "sourceHash": "632b8fde25c1aaa2258ddb10285ec4a67b79e441629b8267ad867ed089ab6c02",
+    "sourceHash": "d2190a3d81f53bcc4227d8ab796e3413d09fb03b9b02306a6d6d8b54c22db257",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/docs/comparisons/mdwrk-vs-standard-markdown-editors/",
-      "title": "MdWrk Vs Standard Markdown Editors | MdWrk Docs",
+      "slug": "/compare/standard-markdown-editors/",
+      "title": "MdWrk Vs Standard Markdown Editors | MdWrk Compares",
       "description": "Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.",
       "h1": "MdWrk Vs Standard Markdown Editors",
       "entity": "MdWrk",
-      "intent": "learn mdwrk vs standard markdown editors in MdWrk",
-      "contentType": "docs",
+      "intent": "compare mdwrk vs standard markdown editors in MdWrk",
+      "contentType": "comparison",
       "updatedAt": "2026-05-03",
       "faqs": [
         {
@@ -3177,13 +2848,13 @@
           "answer": "Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files."
         }
       ],
-      "parent": "/docs/",
+      "parent": "/",
       "related": [],
       "tags": [
-        "docs",
+        "compare",
         "Compares"
       ],
-      "canonical": "https://mdwrk.com/docs/comparisons/mdwrk-vs-standard-markdown-editors/",
+      "canonical": "https://mdwrk.com/compare/standard-markdown-editors/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3208,12 +2879,12 @@
       ],
       "links": [
         {
-          "href": "/docs/product/offline-markdown-editor",
+          "href": "/features/offline-markdown-editor",
           "text": "Offline Markdown Editor",
           "internal": true
         },
         {
-          "href": "/docs/product/developer-documentation",
+          "href": "/features/developer-documentation",
           "text": "Developer Documentation",
           "internal": true
         }
@@ -3223,7 +2894,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-28.md",
-    "sourceHash": "e2c02dcc63bc6635dc739c7ba5318c29975cdaeeb8c7c829733c7a609e2b864e",
+    "sourceHash": "1986c8443bece8ab492528b113882e7b9487c6194f997ccf2c63736226b1a3b1",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/archive/ui-refresh-1-3-28/",
@@ -3274,7 +2945,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-29.md",
-    "sourceHash": "ac9bb8db4b978a03e84eb31117392ab20103215107bffa8e69238ca3c887e251",
+    "sourceHash": "cdb639a59a01be90d18b5862b1e003a79fd20db1e4593e983895d957e2e47544",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/archive/ui-refresh-1-3-29/",
@@ -3328,136 +2999,136 @@
     "sourceHash": "e9d28b0b25d50486b1528326944c1a2dfe982727dda26b19748197926be97cd2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/",
-      "title": "MdWrk News",
+      "slug": "/updates/",
+      "title": "MdWrk Product Updates",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
-      "h1": "News",
+      "h1": "Product Updates",
       "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "entity": "MdWrk",
-      "intent": "read news posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read product updates from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What does MdWrk News cover?",
+          "question": "What do MdWrk Product Updates cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "Where should readers start in MdWrk News?",
+          "question": "Where should readers start in MdWrk Product Updates?",
           "answer": "Start with the newest posts, then follow author and monthly archive links when you want a release-focused view of MdWrk changes."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/",
+      "canonical": "https://mdwrk.com/updates/",
       "noindex": false,
       "llmsInclude": true
     },
     "rendered": {
-      "text": "News MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
+      "text": "Product Updates MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "headings": [],
       "links": [
         {
-          "href": "/blog/settings-simplification-for-daily-flow/",
+          "href": "/updates/settings-simplification-for-daily-flow/",
           "text": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
           "internal": true
         },
         {
-          "href": "/blog/docs-surface-realignment/",
+          "href": "/updates/docs-surface-realignment/",
           "text": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
           "internal": true
         },
         {
-          "href": "/blog/extension-host-rollout/",
+          "href": "/updates/extension-host-rollout/",
           "text": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
           "internal": true
         },
         {
-          "href": "/blog/workspace-files-and-git-ops-packages/",
+          "href": "/updates/workspace-files-and-git-ops-packages/",
           "text": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/desktop-release-and-android-verification/",
+          "href": "/updates/desktop-release-and-android-verification/",
           "text": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
           "internal": true
         },
         {
-          "href": "/blog/retained-client-versions-and-desktop-shell/",
+          "href": "/updates/retained-client-versions-and-desktop-shell/",
           "text": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/screenshot-matrix-and-browser-sidebars/",
+          "href": "/updates/screenshot-matrix-and-browser-sidebars/",
           "text": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
           "internal": true
         },
         {
-          "href": "/blog/extension-compatibility-and-publish-gates/",
+          "href": "/updates/extension-compatibility-and-publish-gates/",
           "text": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
           "internal": true
         },
         {
-          "href": "/blog/governed-releases-and-package-docs/",
+          "href": "/updates/governed-releases-and-package-docs/",
           "text": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
           "internal": true
         },
         {
-          "href": "/blog/client-split-out-backstory/",
+          "href": "/updates/client-split-out-backstory/",
           "text": "Build with the Same MdWrk Editor and Renderer the Client Ships",
           "internal": true
         },
         {
-          "href": "/blog/pwa-install-and-zoom-controls/",
+          "href": "/updates/pwa-install-and-zoom-controls/",
           "text": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
           "internal": true
         },
         {
-          "href": "/blog/responsive-authoring-and-export/",
+          "href": "/updates/responsive-authoring-and-export/",
           "text": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
           "internal": true
         },
         {
-          "href": "/blog/markdown-workspace-launch/",
+          "href": "/updates/markdown-workspace-launch/",
           "text": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
           "internal": true
         }
       ],
-      "wordCount": 517
+      "wordCount": 518
     }
   },
   {
     "sourcePath": "data/markdown/blog/settings-simplification-for-daily-flow.md",
-    "sourceHash": "e0626ada7943918df6cb29d22d42d51935d65fc9dc32dae0d1637bda572bb393",
+    "sourceHash": "e7424a5abebb75a4f7234c035d28af992837eea2198b7cc32abd001a47ba19c8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/settings-simplification-for-daily-flow/",
-      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use | MdWrk News",
+      "slug": "/updates/settings-simplification-for-daily-flow/",
+      "title": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use | MdWrk Product Updates",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
       "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "entity": "MdWrk",
       "intent": "read about settings simplification gives mdwrk a faster path from installation to daily use",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/settings-simplification-for-daily-flow/",
+      "canonical": "https://mdwrk.com/updates/settings-simplification-for-daily-flow/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3512,34 +3183,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/docs-surface-realignment.md",
-    "sourceHash": "525036fb96917dff0e9c460a33f704a120855cb4f09b2f8fc6e54f5f0d1e2ff7",
+    "sourceHash": "ddc0ed329c1a26621d5025ca650e8126ce0095ab36b11486eab5f17c8100fd2d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/docs-surface-realignment/",
-      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk News",
+      "slug": "/updates/docs-surface-realignment/",
+      "title": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience | MdWrk Product Updates",
       "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "h1": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
       "subtitle": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "entity": "MdWrk",
       "intent": "read about explore the mdwrk client, packages, and extensions through a sharper docs experience",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-30",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/docs-surface-realignment/",
+      "canonical": "https://mdwrk.com/updates/docs-surface-realignment/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3624,34 +3295,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/extension-host-rollout.md",
-    "sourceHash": "1ff90c083c07474cb5d73be16993b06e3ad27d92959ee4fd66d97f481e3efc05",
+    "sourceHash": "59f6e0884fdd389781e980460923284be71240f142211bd2247ff053b1a51575",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/extension-host-rollout/",
-      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses | MdWrk News",
+      "slug": "/updates/extension-host-rollout/",
+      "title": "Launch Extensions on the Same Governed Host the MdWrk Client Uses | MdWrk Product Updates",
       "description": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
       "h1": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
       "subtitle": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
       "entity": "MdWrk",
       "intent": "read about launch extensions on the same governed host the mdwrk client uses",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-26",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/extension-host-rollout/",
+      "canonical": "https://mdwrk.com/updates/extension-host-rollout/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3736,34 +3407,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/workspace-files-and-git-ops-packages.md",
-    "sourceHash": "3630ef046d682dfea61fbbade9dbcec7a8c1e9d23371837bbcc2680e3ef976a2",
+    "sourceHash": "89596beac575e362a01f93fdc59090d66117c52d762ff76d50a15772a5eca748",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/workspace-files-and-git-ops-packages/",
-      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk | MdWrk News",
+      "slug": "/updates/workspace-files-and-git-ops-packages/",
+      "title": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk | MdWrk Product Updates",
       "description": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
       "h1": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
       "subtitle": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
       "entity": "MdWrk",
       "intent": "read about workspace files and git operations packages open a larger automation surface for mdwrk",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-22",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/workspace-files-and-git-ops-packages/",
+      "canonical": "https://mdwrk.com/updates/workspace-files-and-git-ops-packages/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3818,34 +3489,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/desktop-release-and-android-verification.md",
-    "sourceHash": "5a0928df15b0d26fd79eeb97fdeb044ad4962b53cc98516e005b584bd2ea4b5c",
+    "sourceHash": "2b1d760018ad07ea2c4e95239a9fddb8a83e5ddb78a26bc729c77d79ab1af732",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/desktop-release-and-android-verification/",
-      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery | MdWrk News",
+      "slug": "/updates/desktop-release-and-android-verification/",
+      "title": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery | MdWrk Product Updates",
       "description": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
       "h1": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
       "subtitle": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
       "entity": "MdWrk",
       "intent": "read about desktop release automation and android verification sharpen mdwrk cross-platform delivery",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-14",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/desktop-release-and-android-verification/",
+      "canonical": "https://mdwrk.com/updates/desktop-release-and-android-verification/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3895,34 +3566,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/retained-client-versions-and-desktop-shell.md",
-    "sourceHash": "1e5694d2f25b970a7b13c1cbeb2ba4c56df56be8d13768ceaee1ed2add2f34bf",
+    "sourceHash": "22a47401393dce76438fb7de3726e3b10770c3f078e88b92b8de295181c6ea8d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/retained-client-versions-and-desktop-shell/",
-      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk | MdWrk News",
+      "slug": "/updates/retained-client-versions-and-desktop-shell/",
+      "title": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk | MdWrk Product Updates",
       "description": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
       "h1": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
       "subtitle": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
       "entity": "MdWrk",
       "intent": "read about retained client versions and the desktop shell expand how teams can deploy mdwrk",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-12",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/retained-client-versions-and-desktop-shell/",
+      "canonical": "https://mdwrk.com/updates/retained-client-versions-and-desktop-shell/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3977,34 +3648,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/screenshot-matrix-and-browser-sidebars.md",
-    "sourceHash": "ce45758ed3c587a698b716d7b935bb08d7718d07b2eeaaf9c6ebb1c1a0a8709b",
+    "sourceHash": "6516d36d3c019f6a25123349b81b6edb2aa91b958a79637c2bad150127b0406f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/screenshot-matrix-and-browser-sidebars/",
-      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows | MdWrk News",
+      "slug": "/updates/screenshot-matrix-and-browser-sidebars/",
+      "title": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows | MdWrk Product Updates",
       "description": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
       "h1": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
       "subtitle": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
       "entity": "MdWrk",
       "intent": "read about screenshot matrix coverage helps mdwrk prove themes across viewports and workflows",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-03",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/screenshot-matrix-and-browser-sidebars/",
+      "canonical": "https://mdwrk.com/updates/screenshot-matrix-and-browser-sidebars/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4044,34 +3715,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/extension-compatibility-and-publish-gates.md",
-    "sourceHash": "7ccca7e1a1ce96f5d3a2bfe9a2e8d110d29649a7ba8ba2884c73dc216a19c14c",
+    "sourceHash": "20070e44a76471d7da1dfd1159aade18411c29580ecb5083122c2e402432d77f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/extension-compatibility-and-publish-gates/",
-      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal | MdWrk News",
+      "slug": "/updates/extension-compatibility-and-publish-gates/",
+      "title": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal | MdWrk Product Updates",
       "description": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
       "h1": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
       "subtitle": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
       "entity": "MdWrk",
       "intent": "read about extension compatibility gates turn mdwrk publishing into a clear quality signal",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-04-01",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/extension-compatibility-and-publish-gates/",
+      "canonical": "https://mdwrk.com/updates/extension-compatibility-and-publish-gates/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4126,34 +3797,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/governed-releases-and-package-docs.md",
-    "sourceHash": "a9183629ae96de227c40884d3b873bd28117f941bcfe190ea1d1959f9bb876bf",
+    "sourceHash": "c3fa66aa9a59d95f656cdabf5c84b3083b67db78e0ef3be5ecc4965e59e4abd6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/governed-releases-and-package-docs/",
-      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk News",
+      "slug": "/updates/governed-releases-and-package-docs/",
+      "title": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape | MdWrk Product Updates",
       "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "h1": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
       "subtitle": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "entity": "MdWrk",
       "intent": "read about governed releases, ci evidence, and package docs give mdwrk a stronger public shape",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-03-31",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/governed-releases-and-package-docs/",
+      "canonical": "https://mdwrk.com/updates/governed-releases-and-package-docs/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4213,34 +3884,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/client-split-out-backstory.md",
-    "sourceHash": "9e2ee3dd1a56df267a7cc457300df4c10007c50520511d4e52079065e4d91577",
+    "sourceHash": "d5e63eaa3c80a720420073d241bdeeefdfeb19b3e38345933d4a9c5991a8f2ad",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/client-split-out-backstory/",
-      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk News",
+      "slug": "/updates/client-split-out-backstory/",
+      "title": "Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk Product Updates",
       "description": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
       "h1": "Build with the Same MdWrk Editor and Renderer the Client Ships",
       "subtitle": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
       "entity": "MdWrk",
       "intent": "read about build with the same mdwrk editor and renderer the client ships",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-03-23",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/client-split-out-backstory/",
+      "canonical": "https://mdwrk.com/updates/client-split-out-backstory/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4320,34 +3991,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/pwa-install-and-zoom-controls.md",
-    "sourceHash": "fcd4ec2bc4f4753e87efbf612ec5712522ef059282855186e4829dfebdd89555",
+    "sourceHash": "f2e058fa978ff5bffd9d0dd810d6b4783cfef7ff0889a106c1dfb674ca1884b8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/pwa-install-and-zoom-controls/",
-      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk News",
+      "slug": "/updates/pwa-install-and-zoom-controls/",
+      "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk Product Updates",
       "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "h1": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
       "subtitle": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "entity": "MdWrk",
       "intent": "read about pwa install, zoom controls, and preview refinements make mdwrk ready for daily use",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-01-22",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/pwa-install-and-zoom-controls/",
+      "canonical": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4407,34 +4078,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/responsive-authoring-and-export.md",
-    "sourceHash": "02a668c3a04a79e36f8e06b2667476ebf5173d96d5f8f5a8d73ada3a24e9d474",
+    "sourceHash": "80e6acbff7c605647186f8cae79773bfd4aa9d95a8e001aeee31d0b3b7dda45a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/responsive-authoring-and-export/",
-      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk News",
+      "slug": "/updates/responsive-authoring-and-export/",
+      "title": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day | MdWrk Product Updates",
       "description": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
       "h1": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
       "subtitle": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
       "entity": "MdWrk",
       "intent": "read about responsive authoring, keyboard speed, and html export expand mdwrk in a single day",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-01-21",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/responsive-authoring-and-export/",
+      "canonical": "https://mdwrk.com/updates/responsive-authoring-and-export/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4474,34 +4145,34 @@
   },
   {
     "sourcePath": "data/markdown/blog/markdown-workspace-launch.md",
-    "sourceHash": "827fc91655b676035a5fa4cb9c756e1f3f709ba9142215a80510e5b553533741",
+    "sourceHash": "80198d2da3695efaaa30d19147881374b4e1d50ef73fe88ac443099cfbca97de",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/markdown-workspace-launch/",
-      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow | MdWrk News",
+      "slug": "/updates/markdown-workspace-launch/",
+      "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow | MdWrk Product Updates",
       "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "h1": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
       "subtitle": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "entity": "MdWrk",
       "intent": "read about meet the markdown workspace that turns writing, preview, and themes into one fast flow",
-      "contentType": "blog",
+      "contentType": "update",
       "updatedAt": "2026-01-20",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
-      "parent": "/blog/",
+      "parent": "/updates/",
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/markdown-workspace-launch/",
+      "canonical": "https://mdwrk.com/updates/markdown-workspace-launch/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4564,30 +4235,30 @@
     "sourceHash": "fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/author/cobycloud/",
-      "title": "CobyCloud | MdWrk News",
+      "slug": "/updates/author/cobycloud/",
+      "title": "CobyCloud | MdWrk Product Updates",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "CobyCloud",
-      "subtitle": "Author Archive",
+      "subtitle": "Product Updates by Author",
       "entity": "MdWrk",
-      "intent": "read cobycloud posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read cobycloud from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/author/cobycloud/",
+      "canonical": "https://mdwrk.com/updates/author/cobycloud/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4596,67 +4267,67 @@
       "headings": [],
       "links": [
         {
-          "href": "/blog/settings-simplification-for-daily-flow/",
+          "href": "/updates/settings-simplification-for-daily-flow/",
           "text": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
           "internal": true
         },
         {
-          "href": "/blog/docs-surface-realignment/",
+          "href": "/updates/docs-surface-realignment/",
           "text": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
           "internal": true
         },
         {
-          "href": "/blog/extension-host-rollout/",
+          "href": "/updates/extension-host-rollout/",
           "text": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
           "internal": true
         },
         {
-          "href": "/blog/workspace-files-and-git-ops-packages/",
+          "href": "/updates/workspace-files-and-git-ops-packages/",
           "text": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/desktop-release-and-android-verification/",
+          "href": "/updates/desktop-release-and-android-verification/",
           "text": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
           "internal": true
         },
         {
-          "href": "/blog/retained-client-versions-and-desktop-shell/",
+          "href": "/updates/retained-client-versions-and-desktop-shell/",
           "text": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/screenshot-matrix-and-browser-sidebars/",
+          "href": "/updates/screenshot-matrix-and-browser-sidebars/",
           "text": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
           "internal": true
         },
         {
-          "href": "/blog/extension-compatibility-and-publish-gates/",
+          "href": "/updates/extension-compatibility-and-publish-gates/",
           "text": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
           "internal": true
         },
         {
-          "href": "/blog/governed-releases-and-package-docs/",
+          "href": "/updates/governed-releases-and-package-docs/",
           "text": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
           "internal": true
         },
         {
-          "href": "/blog/client-split-out-backstory/",
+          "href": "/updates/client-split-out-backstory/",
           "text": "Build with the Same MdWrk Editor and Renderer the Client Ships",
           "internal": true
         },
         {
-          "href": "/blog/pwa-install-and-zoom-controls/",
+          "href": "/updates/pwa-install-and-zoom-controls/",
           "text": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
           "internal": true
         },
         {
-          "href": "/blog/responsive-authoring-and-export/",
+          "href": "/updates/responsive-authoring-and-export/",
           "text": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
           "internal": true
         },
         {
-          "href": "/blog/markdown-workspace-launch/",
+          "href": "/updates/markdown-workspace-launch/",
           "text": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
           "internal": true
         }
@@ -4669,30 +4340,30 @@
     "sourceHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/archive/2026-05/",
-      "title": "May 2026 | MdWrk News",
+      "slug": "/updates/archive/2026-05/",
+      "title": "May 2026 | MdWrk Product Updates",
       "description": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "h1": "May 2026",
-      "subtitle": "Monthly Archive",
+      "subtitle": "Product Updates by Month",
       "entity": "MdWrk",
-      "intent": "read may 2026 posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read may 2026 from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-05-01",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/archive/2026-05/",
+      "canonical": "https://mdwrk.com/updates/archive/2026-05/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4701,7 +4372,7 @@
       "headings": [],
       "links": [
         {
-          "href": "/blog/settings-simplification-for-daily-flow/",
+          "href": "/updates/settings-simplification-for-daily-flow/",
           "text": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
           "internal": true
         }
@@ -4714,30 +4385,30 @@
     "sourceHash": "d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/archive/2026-04/",
-      "title": "April 2026 | MdWrk News",
+      "slug": "/updates/archive/2026-04/",
+      "title": "April 2026 | MdWrk Product Updates",
       "description": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
       "h1": "April 2026",
-      "subtitle": "Monthly Archive",
+      "subtitle": "Product Updates by Month",
       "entity": "MdWrk",
-      "intent": "read april 2026 posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read april 2026 from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-04-30",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/archive/2026-04/",
+      "canonical": "https://mdwrk.com/updates/archive/2026-04/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4746,37 +4417,37 @@
       "headings": [],
       "links": [
         {
-          "href": "/blog/docs-surface-realignment/",
+          "href": "/updates/docs-surface-realignment/",
           "text": "Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience",
           "internal": true
         },
         {
-          "href": "/blog/extension-host-rollout/",
+          "href": "/updates/extension-host-rollout/",
           "text": "Launch Extensions on the Same Governed Host the MdWrk Client Uses",
           "internal": true
         },
         {
-          "href": "/blog/workspace-files-and-git-ops-packages/",
+          "href": "/updates/workspace-files-and-git-ops-packages/",
           "text": "Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/desktop-release-and-android-verification/",
+          "href": "/updates/desktop-release-and-android-verification/",
           "text": "Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery",
           "internal": true
         },
         {
-          "href": "/blog/retained-client-versions-and-desktop-shell/",
+          "href": "/updates/retained-client-versions-and-desktop-shell/",
           "text": "Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk",
           "internal": true
         },
         {
-          "href": "/blog/screenshot-matrix-and-browser-sidebars/",
+          "href": "/updates/screenshot-matrix-and-browser-sidebars/",
           "text": "Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows",
           "internal": true
         },
         {
-          "href": "/blog/extension-compatibility-and-publish-gates/",
+          "href": "/updates/extension-compatibility-and-publish-gates/",
           "text": "Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal",
           "internal": true
         }
@@ -4789,30 +4460,30 @@
     "sourceHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/archive/2026-03/",
-      "title": "March 2026 | MdWrk News",
+      "slug": "/updates/archive/2026-03/",
+      "title": "March 2026 | MdWrk Product Updates",
       "description": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
       "h1": "March 2026",
-      "subtitle": "Monthly Archive",
+      "subtitle": "Product Updates by Month",
       "entity": "MdWrk",
-      "intent": "read march 2026 posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read march 2026 from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-03-31",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/archive/2026-03/",
+      "canonical": "https://mdwrk.com/updates/archive/2026-03/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4821,12 +4492,12 @@
       "headings": [],
       "links": [
         {
-          "href": "/blog/governed-releases-and-package-docs/",
+          "href": "/updates/governed-releases-and-package-docs/",
           "text": "Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape",
           "internal": true
         },
         {
-          "href": "/blog/client-split-out-backstory/",
+          "href": "/updates/client-split-out-backstory/",
           "text": "Build with the Same MdWrk Editor and Renderer the Client Ships",
           "internal": true
         }
@@ -4839,30 +4510,30 @@
     "sourceHash": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
-      "slug": "/blog/archive/2026-01/",
-      "title": "January 2026 | MdWrk News",
+      "slug": "/updates/archive/2026-01/",
+      "title": "January 2026 | MdWrk Product Updates",
       "description": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
       "h1": "January 2026",
-      "subtitle": "Monthly Archive",
+      "subtitle": "Product Updates by Month",
       "entity": "MdWrk",
-      "intent": "read january 2026 posts from MdWrk",
-      "contentType": "blog",
+      "intent": "read january 2026 from MdWrk",
+      "contentType": "update",
       "updatedAt": "2026-01-22",
       "faqs": [
         {
-          "question": "What does this MdWrk article cover?",
+          "question": "What does this MdWrk update cover?",
           "answer": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment."
         },
         {
-          "question": "What should readers take away from this article?",
+          "question": "What should readers take away from this update?",
           "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
         }
       ],
       "related": [],
       "tags": [
-        "blog"
+        "updates"
       ],
-      "canonical": "https://mdwrk.com/blog/archive/2026-01/",
+      "canonical": "https://mdwrk.com/updates/archive/2026-01/",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4871,17 +4542,17 @@
       "headings": [],
       "links": [
         {
-          "href": "/blog/pwa-install-and-zoom-controls/",
+          "href": "/updates/pwa-install-and-zoom-controls/",
           "text": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use",
           "internal": true
         },
         {
-          "href": "/blog/responsive-authoring-and-export/",
+          "href": "/updates/responsive-authoring-and-export/",
           "text": "Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day",
           "internal": true
         },
         {
-          "href": "/blog/markdown-workspace-launch/",
+          "href": "/updates/markdown-workspace-launch/",
           "text": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
           "internal": true
         }

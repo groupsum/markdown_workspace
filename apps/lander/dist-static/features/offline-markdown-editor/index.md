@@ -1,31 +1,31 @@
-# Offline Markdown editor for local-first writing
+# Offline Markdown Editor
 
-MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.
+MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 
-MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first.
+## Offline Editing Model
 
-## Why Offline Markdown Matters
+The workspace stores documents in browser-managed local storage and IndexedDB-backed client state. The PWA install path can keep the client available in a dedicated app window while the editor keeps source text and preview close together.
 
-Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about.
+## Writing Workflow
 
-## How MdWrk Handles Offline Work
+Use the editor-only view for focused drafting, split view for live validation, and preview-only mode for review. Formatting commands write portable Markdown instead of proprietary document state.
 
-MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device.
+## Local Storage Boundary
 
-## Developer Surfaces
+MdWrk does not require documents to be uploaded to a hosted service before editing. Sync and export are intentional workflows, not hidden defaults.
 
-Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other.
+## Related Docs
 
-## Read Next
-
-Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.
+- [Browser Use](/docs/getting-started/browser-use)
+- [PWA Installation](/docs/getting-started/pwa-installation)
+- [Editor Basics](/features/editor-basics)
 
 ## Frequently Asked Questions
 
-### Is MdWrk an offline Markdown editor?
+### What will I learn from Offline Markdown Editor?
 
-MdWrk is designed around offline-capable authoring. Public docs distinguish local writing and preview from workflows that intentionally contact external services.
+MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 
-### Does MdWrk require cloud storage?
+### Who should read Offline Markdown Editor?
 
-MdWrk does not make hosted document storage the default. Sync and export are documented as deliberate workflow choices.
+Read this page if you need practical MdWrk guidance for offline markdown editor, including the relevant workflow, product surface, and follow-up documentation paths.

@@ -2,27 +2,11 @@
 
 ## MdWrk launch notes
 
-URL: https://mdwrk.com/blog/launch/
+URL: https://mdwrk.com/updates/launch/
 
 The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.
 
 MdWrk's public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live. Static Before Runtime The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page. Machine-Readable By Default The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned. Why It Matters A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment. What Comes Next The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.
-
-## MdWrk vs Obsidian
-
-URL: https://mdwrk.com/compare/obsidian/
-
-MdWrk focuses on a local-first Markdown workspace, reusable editor and renderer package surfaces, governed extension contracts, and static public documentation; Obsidian is commonly evaluated as a personal knowledge base and plugin-rich note app.
-
-MdWrk and Obsidian can both appear in Markdown tool evaluations, but they emphasize different product shapes. MdWrk is documented as a workspace, package platform, and static public content system. Obsidian is often evaluated as a personal knowledge base with a large plugin ecosystem. Comparison Summary MdWrk emphasizes local-first authoring, visible storage boundaries, reusable editor and renderer packages, extension host contracts, and static HTML documentation that can be verified before deployment. Obsidian emphasizes local Markdown notes, backlinks, graph-based personal knowledge workflows, and a large ecosystem around note-taking customization. That may be valuable for some users, but it is not the same as MdWrk's governed package and lander architecture. Developer Model MdWrk's developer story is package-oriented. Public pages should link to reusable surfaces and explain how editor, renderer, extension, theme, and static documentation contracts relate to each other. Public Content Model MdWrk requires public lander content to be statically rendered, machine-readable, and verifiable before production deployment. That makes raw HTML, JSON-LD, sitemap data, robots policy, LLM indexes, and Markdown mirrors first-class outputs. Evaluation Guidance Choose based on the workflow. MdWrk is appropriate when the priority is a local-first Markdown workspace with governed extension contracts and deployable static public documentation.
-
-## MdWrk vs VS Code Markdown
-
-URL: https://mdwrk.com/compare/vscode-markdown/
-
-MdWrk is a Markdown workspace and public documentation compiler, while VS Code is a general-purpose code editor with Markdown support through editor features and extensions.
-
-VS Code is a strong general-purpose code editor with Markdown support. MdWrk is positioned differently: it is a Markdown workspace, package platform, extension host story, and static lander content compiler for public documentation. Authoring Experience VS Code gives developers a familiar source editing environment. MdWrk focuses the user experience on Markdown writing, preview, workspace navigation, theme presentation, and explicit boundaries around export or sync. Extension Boundaries VS Code extensions live in the VS Code ecosystem. MdWrk extensions are documented as part of the MdWrk workspace contract, with manifest metadata, compatibility expectations, and trust policy described for the product. Public Documentation MdWrk's lander architecture requires static HTML and machine-readable artifacts before deployment. This matters for search, answer engines, and AI retrieval because the public content is present in the raw build output rather than hidden behind runtime rendering. When MdWrk Fits MdWrk fits teams that want a Markdown-specific product story, governed public documentation, reusable packages, and visible local-first workflow boundaries. VS Code fits users who want Markdown editing inside a broader programming environment.
 
 ## Extensions
 
@@ -47,30 +31,6 @@ URL: https://mdwrk.com/docs/theme-packs/
 MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content.
 
 Theme packs describe how MdWrk presents the Markdown workspace without changing the underlying Markdown source. The documentation separates content, rendering, and theme behavior so users know what is styling and what is document data. Theme Contract A theme should define visual tokens, layout behavior, syntax colors, and component styling boundaries. It should not rewrite public content or hide important text from crawlers and readers. Syntax Color Code block syntax colors must be visible in generated HTML when the renderer emits token classes. Lander themes define different color variables for light and dark modes, while the static compiler keeps source content readable. Extension Relationship Theme packs may be delivered through extension surfaces, but the documentation should explain which package owns the contract and how the workspace applies the visual layer.
-
-## Extension platform for Markdown workflows
-
-URL: https://mdwrk.com/features/extension-platform/
-
-MdWrk includes an extension platform model for Markdown workflows, with public documentation covering host boundaries, manifests, runtime expectations, trust policy, and related package surfaces.
-
-The MdWrk extension platform gives developers a governed way to reason about workspace extensions. Rather than presenting extension behavior as an informal plugin story, MdWrk documents host boundaries, manifest metadata, compatibility checks, and runtime expectations. Host Boundary The extension host is the product surface that coordinates extension behavior. Public documentation explains which capabilities belong to the host, which belong to a specific extension package, and which workflows remain out of scope. Manifest And Trust Extension manifests provide a visible contract for identity, capabilities, compatibility, and package expectations. Trust is not assumed only because a package exists. The lander should describe what the user or operator can inspect before enabling extension behavior. Runtime Documentation Runtime documentation should be practical. It should show what an extension can render, which settings or workspace surfaces it uses, and how it participates in a local-first Markdown workflow without hiding data movement. Related Developer Docs Use the extension docs for host behavior, the theme pack docs for theme extension surfaces, and the quickstart for first-time workspace context.
-
-## Local-first Markdown workspace
-
-URL: https://mdwrk.com/features/local-first-markdown/
-
-MdWrk is a local-first Markdown workspace that keeps authoring centered on portable Markdown files, browser-managed workspace state, and explicit export or sync boundaries.
-
-MdWrk frames Markdown authoring around local control. The workspace should make it clear where documents are edited, what state is held by the client, and when a user chooses to move content into another system. Workspace State The workspace can keep document state, open tabs, preferences, and editor configuration close to the user. Public documentation must describe that boundary plainly so users do not assume hidden uploads or hosted storage. Portable Markdown Markdown remains valuable because it is durable, readable, and easy to move. MdWrk reinforces that value by documenting features in terms of Markdown body content, static mirrors, package surfaces, and explicit workflow boundaries. Clear Integration Boundaries GitHub sync, extension-based workflows, and export routes can still be useful, but they should be named as integrations. The local-first documentation explains the point where a local authoring session becomes a networked operation. Static Public Pages The public lander itself follows the same philosophy. It compiles Markdown into static HTML and machine-readable artifacts so important content can be inspected without running a client application.
-
-## Offline Markdown editor for local-first writing
-
-URL: https://mdwrk.com/features/offline-markdown-editor/
-
-MdWrk is an offline-capable Markdown editor for users who want to write and preview Markdown locally, keep workspace state under local control, and make sync or export an explicit action.
-
-MdWrk is built for Markdown authors who want writing and preview to remain useful even when the network is unreliable. Markdown is already readable as plain text, and MdWrk preserves that advantage by keeping the editor, preview, and workspace model focused on local operation first. Why Offline Markdown Matters Offline Markdown support matters because drafts, docs, notes, and technical plans should not depend on a hosted document account before they can be opened or edited. A local-first Markdown workflow keeps the source document portable and makes networked actions easier to reason about. How MdWrk Handles Offline Work MdWrk separates authoring from publishing. The editor and renderer surfaces are designed for writing, preview, and workspace navigation, while export and sync are treated as explicit transitions. This distinction helps users know when content is local and when it may leave the device. Developer Surfaces Developers can reason about the editor and renderer package boundaries instead of treating the lander as the product runtime. The public static documentation links to package surfaces and explains how the workspace, editor, renderer, and extension host relate to each other. Read Next Use the local-first Markdown page for storage boundaries, the quickstart for first-use flow, and the extension platform page for package and trust boundaries.
 
 ## Local-first Markdown workspace
 
@@ -154,7 +114,7 @@ Theme Selection Open Settings - Theme to switch between built-in theme families.
 
 ## Editor Basics
 
-URL: https://mdwrk.com/docs/usage/editor-basics/
+URL: https://mdwrk.com/features/editor-basics/
 
 MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
 
@@ -162,7 +122,7 @@ What the Editor Is For MdWrk is built for direct Markdown authoring with immedia
 
 ## Markdown Formatting
 
-URL: https://mdwrk.com/docs/usage/advanced-formatting/
+URL: https://mdwrk.com/features/advanced-formatting/
 
 MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
 
@@ -170,7 +130,7 @@ Baseline Conformance The repository default remains CommonMark 0.31.2 + GFM 0.29
 
 ## Rendering And Preview
 
-URL: https://mdwrk.com/docs/usage/rendering-and-preview/
+URL: https://mdwrk.com/features/rendering-and-preview/
 
 MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
 
@@ -178,7 +138,7 @@ Live Preview Surface MdWrk renders Markdown live inside the workspace so you can
 
 ## Offline Markdown Editor
 
-URL: https://mdwrk.com/docs/product/offline-markdown-editor/
+URL: https://mdwrk.com/features/offline-markdown-editor/
 
 MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 
@@ -186,7 +146,7 @@ Offline Editing Model The workspace stores documents in browser-managed local st
 
 ## Local-first Markdown Workspace
 
-URL: https://mdwrk.com/docs/product/local-first-markdown-workspace/
+URL: https://mdwrk.com/features/local-first-markdown-workspace/
 
 MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.
 
@@ -194,7 +154,7 @@ Workspace Shape The client presents projects, files, folders, editor panes, prev
 
 ## Privacy-first Markdown Editor
 
-URL: https://mdwrk.com/docs/product/privacy-first-markdown-editor/
+URL: https://mdwrk.com/features/privacy-first-markdown-editor/
 
 MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.
 
@@ -202,7 +162,7 @@ Privacy Boundary The default workspace keeps document content in local browser s
 
 ## Markdown File Manager
 
-URL: https://mdwrk.com/docs/product/markdown-file-manager/
+URL: https://mdwrk.com/features/markdown-file-manager/
 
 MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.
 
@@ -210,7 +170,7 @@ File Operations The client supports project and entry workflows such as creating
 
 ## Markdown Preview Editor
 
-URL: https://mdwrk.com/docs/product/markdown-preview-editor/
+URL: https://mdwrk.com/features/markdown-preview-editor/
 
 MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.
 
@@ -218,7 +178,7 @@ Editor And Preview Modes Use editor-only mode for drafting, split mode for valid
 
 ## Extension Host
 
-URL: https://mdwrk.com/docs/product/extension-host/
+URL: https://mdwrk.com/features/extension-host/
 
 MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.
 
@@ -226,7 +186,7 @@ Host Contract The host exposes stable lifecycle and context contracts through ex
 
 ## Theme Packs
 
-URL: https://mdwrk.com/docs/product/theme-packs/
+URL: https://mdwrk.com/features/theme-packs/
 
 MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.
 
@@ -234,7 +194,7 @@ Theme Contract Theme packs target shared tokens, bridge variables, and class nam
 
 ## Developer Documentation
 
-URL: https://mdwrk.com/docs/product/developer-documentation/
+URL: https://mdwrk.com/features/developer-documentation/
 
 MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.
 
@@ -298,7 +258,7 @@ Theme Studio Theme Studio is the first-party extension surface for: inspecting f
 
 ## MdWrk Vs Obsidian
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-obsidian/
+URL: https://mdwrk.com/compare/obsidian/
 
 Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.
 
@@ -306,7 +266,7 @@ Best Fit Choose MdWrk when you want a browser/PWA-centered Markdown workspace, r
 
 ## MdWrk Vs Typora
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-typora/
+URL: https://mdwrk.com/compare/typora/
 
 Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
 
@@ -314,7 +274,7 @@ MdWrk Fit Choose MdWrk when you need a workspace with projects, panes, live prev
 
 ## MdWrk Vs VS Code
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-vs-code/
+URL: https://mdwrk.com/compare/code/
 
 Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.
 
@@ -322,7 +282,7 @@ Best Fit Choose MdWrk when the primary job is writing, previewing, managing, and
 
 ## MdWrk Vs Marktext
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-marktext/
+URL: https://mdwrk.com/compare/marktext/
 
 Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.
 
@@ -330,7 +290,7 @@ Best Fit Choose MdWrk when you need browser/PWA availability, live workspace sta
 
 ## MdWrk Vs Zettlr
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-zettlr/
+URL: https://mdwrk.com/compare/zettlr/
 
 Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
 
@@ -338,7 +298,7 @@ Best Fit Choose MdWrk when you need a local-first workspace with explicit previe
 
 ## MdWrk Vs Notion
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-notion/
+URL: https://mdwrk.com/compare/notion/
 
 Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
 
@@ -346,7 +306,7 @@ Best Fit Choose MdWrk when you want portable Markdown, local-first storage, expl
 
 ## MdWrk Vs Logseq
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-logseq/
+URL: https://mdwrk.com/compare/logseq/
 
 Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
 
@@ -354,7 +314,7 @@ Best Fit Choose MdWrk when you want document-centered Markdown with explicit edi
 
 ## MdWrk Vs Standard Markdown Editors
 
-URL: https://mdwrk.com/docs/comparisons/mdwrk-vs-standard-markdown-editors/
+URL: https://mdwrk.com/compare/standard-markdown-editors/
 
 Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.
 
@@ -376,17 +336,17 @@ This release focuses on visual clarity, modal usability, and responsive behavior
 
 Client update: mdwrk/mdwrkspace 1.3.29 This release focuses on visual clarity, modal usability, and responsive behavior improvements: Added a dedicated strikethrough convenience button in the view toolbar controls. Fixed nested list marker rendering so only the deepest list item marker is shown. Project selector border treatments were tightened for clearer control boundaries. Theme selector now surfaces the project title context while preserving theme iconography. Project delete confirmation modal readability and hierarchy were enhanced. System Configuration modal dimensions were increased for better fit on large and medium screens. Reduced redundant system tab labeling and improved overall tab readability. Key mapping cards were updated to prevent text overlap between command labels and key bindings. Notes Viewport and aspect-ratio breakpoints remain centralized in apps/client/styles/base/viewports.css.
 
-## News
+## Product Updates
 
-URL: https://mdwrk.com/blog/
+URL: https://mdwrk.com/updates/
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
-News MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
+Product Updates MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 
 ## Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use
 
-URL: https://mdwrk.com/blog/settings-simplification-for-daily-flow/
+URL: https://mdwrk.com/updates/settings-simplification-for-daily-flow/
 
 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
@@ -394,7 +354,7 @@ What improves settings labels become cleaner and faster to scan the active works
 
 ## Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience
 
-URL: https://mdwrk.com/blog/docs-surface-realignment/
+URL: https://mdwrk.com/updates/docs-surface-realignment/
 
 The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
 
@@ -402,7 +362,7 @@ What readers get from the new docs surface The public docs now guide readers int
 
 ## Launch Extensions on the Same Governed Host the MdWrk Client Uses
 
-URL: https://mdwrk.com/blog/extension-host-rollout/
+URL: https://mdwrk.com/updates/extension-host-rollout/
 
 The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
 
@@ -410,7 +370,7 @@ What extension authors get MdWrk's extension platform includes: @mdwrk/extension
 
 ## Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk
 
-URL: https://mdwrk.com/blog/workspace-files-and-git-ops-packages/
+URL: https://mdwrk.com/updates/workspace-files-and-git-ops-packages/
 
 MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.
 
@@ -418,7 +378,7 @@ What teams can do with this expansion bring file navigation and repository work 
 
 ## Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery
 
-URL: https://mdwrk.com/blog/desktop-release-and-android-verification/
+URL: https://mdwrk.com/updates/desktop-release-and-android-verification/
 
 MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.
 
@@ -426,7 +386,7 @@ Why this matters This milestone gives teams a stronger answer to: how desktop bu
 
 ## Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk
 
-URL: https://mdwrk.com/blog/retained-client-versions-and-desktop-shell/
+URL: https://mdwrk.com/updates/retained-client-versions-and-desktop-shell/
 
 MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.
 
@@ -434,7 +394,7 @@ What this means for teams Teams can now plan around: browser delivery with retai
 
 ## Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows
 
-URL: https://mdwrk.com/blog/screenshot-matrix-and-browser-sidebars/
+URL: https://mdwrk.com/updates/screenshot-matrix-and-browser-sidebars/
 
 MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.
 
@@ -442,7 +402,7 @@ What this adds viewport-aware screenshot capture richer pane coverage for studio
 
 ## Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal
 
-URL: https://mdwrk.com/blog/extension-compatibility-and-publish-gates/
+URL: https://mdwrk.com/updates/extension-compatibility-and-publish-gates/
 
 MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
 
@@ -450,7 +410,7 @@ Why this matters for extension teams A governed extension platform works best wh
 
 ## Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape
 
-URL: https://mdwrk.com/blog/governed-releases-and-package-docs/
+URL: https://mdwrk.com/updates/governed-releases-and-package-docs/
 
 MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.
 
@@ -458,7 +418,7 @@ What this adds This update brings together the details teams usually need first:
 
 ## Build with the Same MdWrk Editor and Renderer the Client Ships
 
-URL: https://mdwrk.com/blog/client-split-out-backstory/
+URL: https://mdwrk.com/updates/client-split-out-backstory/
 
 MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
 
@@ -466,7 +426,7 @@ Why this matters Reusable packages give teams a clear path to: ship MdWrk-powere
 
 ## PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use
 
-URL: https://mdwrk.com/blog/pwa-install-and-zoom-controls/
+URL: https://mdwrk.com/updates/pwa-install-and-zoom-controls/
 
 MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.
 
@@ -474,7 +434,7 @@ What users gain installable browser app behavior clearer zoom scaling for long w
 
 ## Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day
 
-URL: https://mdwrk.com/blog/responsive-authoring-and-export/
+URL: https://mdwrk.com/updates/responsive-authoring-and-export/
 
 MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.
 
@@ -482,7 +442,7 @@ What changes for users Writers gain: faster command access through keyboard flow
 
 ## Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow
 
-URL: https://mdwrk.com/blog/markdown-workspace-launch/
+URL: https://mdwrk.com/updates/markdown-workspace-launch/
 
 Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 
@@ -490,41 +450,41 @@ What launches The launch surface already brings together: a markdown editor a li
 
 ## CobyCloud
 
-URL: https://mdwrk.com/blog/author/cobycloud/
+URL: https://mdwrk.com/updates/author/cobycloud/
 
-Author Archive
+Product Updates by Author
 
 CobyCloud MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 
 ## May 2026
 
-URL: https://mdwrk.com/blog/archive/2026-05/
+URL: https://mdwrk.com/updates/archive/2026-05/
 
-Monthly Archive
+Product Updates by Month
 
 May 2026 MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
 ## April 2026
 
-URL: https://mdwrk.com/blog/archive/2026-04/
+URL: https://mdwrk.com/updates/archive/2026-04/
 
-Monthly Archive
+Product Updates by Month
 
 April 2026 The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.
 
 ## March 2026
 
-URL: https://mdwrk.com/blog/archive/2026-03/
+URL: https://mdwrk.com/updates/archive/2026-03/
 
-Monthly Archive
+Product Updates by Month
 
 March 2026 MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.
 
 ## January 2026
 
-URL: https://mdwrk.com/blog/archive/2026-01/
+URL: https://mdwrk.com/updates/archive/2026-01/
 
-Monthly Archive
+Product Updates by Month
 
 January 2026 MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.
 

@@ -1,29 +1,28 @@
-# MdWrk vs Obsidian
+# MdWrk Vs Obsidian
 
-MdWrk focuses on a local-first Markdown workspace, reusable editor and renderer package surfaces, governed extension contracts, and static public documentation; Obsidian is commonly evaluated as a personal knowledge base and plugin-rich note app.
+Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.
 
-MdWrk and Obsidian can both appear in Markdown tool evaluations, but they emphasize different product shapes. MdWrk is documented as a workspace, package platform, and static public content system. Obsidian is often evaluated as a personal knowledge base with a large plugin ecosystem.
+## Best Fit
 
-## Comparison Summary
+Choose MdWrk when you want a browser/PWA-centered Markdown workspace, reusable editor and renderer packages, governed extension contracts, and explicit local privacy boundaries.
 
-MdWrk emphasizes local-first authoring, visible storage boundaries, reusable editor and renderer packages, extension host contracts, and static HTML documentation that can be verified before deployment.
+Choose Obsidian when your primary workflow is a long-lived personal vault with graph navigation and a mature community plugin ecosystem.
 
-Obsidian emphasizes local Markdown notes, backlinks, graph-based personal knowledge workflows, and a large ecosystem around note-taking customization. That may be valuable for some users, but it is not the same as MdWrk's governed package and lander architecture.
+## Product Difference
 
-## Developer Model
+MdWrk emphasizes portable Markdown editing, preview, file management, extension-host contracts, and developer-facing packages that can be embedded in other products.
 
-MdWrk's developer story is package-oriented. Public pages should link to reusable surfaces and explain how editor, renderer, extension, theme, and static documentation contracts relate to each other.
+## Related Docs
 
-## Public Content Model
-
-MdWrk requires public lander content to be statically rendered, machine-readable, and verifiable before production deployment. That makes raw HTML, JSON-LD, sitemap data, robots policy, LLM indexes, and Markdown mirrors first-class outputs.
-
-## Evaluation Guidance
-
-Choose based on the workflow. MdWrk is appropriate when the priority is a local-first Markdown workspace with governed extension contracts and deployable static public documentation.
+- [Local-First Markdown Workspace](/features/local-first-markdown-workspace)
+- [MdWrk Extension Host](/features/extension-host)
 
 ## Frequently Asked Questions
 
-### Should teams choose MdWrk or Obsidian?
+### How does MdWrk compare with Obsidian?
 
-Teams should evaluate the workflow they need. MdWrk is positioned around package surfaces, static public docs, and governed workspace contracts rather than a note graph as the primary identity.
+Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.
+
+### What should teams review before comparing MdWrk and Obsidian?
+
+Review file ownership, offline behavior, preview fidelity, workspace organization, extension boundaries, export needs, and whether the workflow should be centered on portable Markdown files.
