@@ -7,7 +7,7 @@
 [![Website](https://img.shields.io/badge/website-mdwrk.com-0f766e)](https://mdwrk.com)
 [![Node](https://img.shields.io/badge/node-20.x-339933?logo=node.js&logoColor=white)](./package.json)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
-[![Repo Specs](https://img.shields.io/badge/specs-governed-6f42c1)](./specs/README.md)
+[![Repo Specs](https://img.shields.io/badge/specs-ssot%20governed-6f42c1)](./.ssot/specs/SPEC-2001-specs-index.yaml)
 
 </div>
 
@@ -36,7 +36,7 @@ The native shell layer deploys the client bundle as:
 - `packages/` — contracts, renderer, editor, shared, and extension packages
 - `examples/` — runnable examples for editor/renderer integration
 - `docs/` — architecture, ADRs, conformance, current-state, and operations documentation
-- `specs/` — repository standards and policy specifications
+- `.ssot/specs/` — canonical repository specifications maintained through the SSOT registry
 - `tools/` — CI, conformance, release, governance, and extension tooling
 - `artifacts/` — generated evidence and release artifacts
 
@@ -59,8 +59,8 @@ npm run ci:governance
 ## Documentation Pointers
 - Workspace docs index: `docs/README.md`
 - Desktop shell reference: `docs/apps/desktop-shell-app.md`
-- Repository specs index: `specs/README.md`
-- Repository governance spec: `specs/repository-governance-spec.md`
+- Repository specs index: `.ssot/specs/SPEC-2001-specs-index.yaml`
+- Repository governance spec: `.ssot/specs/SPEC-2002-repository-governance.yaml`
 - Agents guidance: `AGENTS.md`
 - Contribution guide: `CONTRIBUTING.md`
 - Code of conduct: `CODE_OF_CONDUCT.md`

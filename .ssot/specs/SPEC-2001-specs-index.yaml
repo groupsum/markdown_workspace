@@ -1,33 +1,33 @@
-schema_version: "0.1.0"
+schema_version: "0.2.0"
 kind: "spec"
 id: "spc:2001"
 number: 2001
 slug: "specs-index"
-title: "Specs"
+title: "SSOT Specs Index"
 status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This directory is the canonical home for repository specifications and standards."
+summary: "This SSOT registry directory is the canonical home for repository specifications and standards."
 supersedes: []
 superseded_by: []
 status_notes: []
 references: []
 body: |-
-  ## Content
+  # SSOT Specs Index
   
-  # Specs
-  
-  This directory is the canonical home for repository specifications and standards.
+  This SSOT registry directory is the canonical home for repository specifications and standards.
   
   ## Index
   
-  - `repository-governance-spec.md` â€” CI-enforced governance rules for repository structure, documentation pointers, root cleanliness, generated artifacts, claim language, WIP notes, and release-note hygiene.
+  - `.ssot/specs/SPEC-2002-repository-governance.yaml` - CI-enforced governance rules for repository structure, documentation pointers, root cleanliness, generated artifacts, claim language, WIP notes, release-note hygiene, and SSOT-only SPEC authority.
   
   ## How Specs Are Used
   
+  - SPEC records are maintained under `.ssot/specs/` and tracked in `.ssot/registry.json`.
   - Validation scripts under `tools/governance/` enforce these requirements.
   - CI runs all governance checks through `npm run ci:governance`.
-  - Validation failures include explicit pointers back to the relevant specification.
+  - Validation failures include explicit pointers back to the relevant SSOT SPEC file.
+  - No parallel top-level `specs/` directory is allowed.
 spec_kind: "local-policy"
 adr_ids: []

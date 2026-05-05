@@ -25,24 +25,28 @@
     "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
     "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
     "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-    "profiles.prf:editor-authoring-default is active but does not currently pass evaluation"
+    "profiles.prf:commonmark-editing-preview is active but does not currently pass evaluation",
+    "profiles.prf:edit-in-renderer-profile is active but does not currently pass evaluation",
+    "profiles.prf:editor-authoring-default is active but does not currently pass evaluation",
+    "profiles.prf:gfm-editing-preview is active but does not currently pass evaluation",
+    "profiles.prf:mdwrk-editing-preview is active but does not currently pass evaluation"
   ],
   "summary": {
     "counts": {
-      "features": 184,
-      "profiles": 1,
-      "tests": 44,
-      "claims": 15,
-      "evidence": 44,
-      "issues": 0,
+      "features": 207,
+      "profiles": 5,
+      "tests": 48,
+      "claims": 16,
+      "evidence": 47,
+      "issues": 3,
       "risks": 0,
       "boundaries": 2,
       "releases": 2,
-      "adrs": 64,
-      "specs": 79
+      "adrs": 70,
+      "specs": 85
     },
     "profile_status": {
-      "passing": 1,
+      "passing": 5,
       "failing": 0,
       "draft": 0
     }

@@ -1,7 +1,16 @@
 import { ensureExists, fail } from './common.mjs';
 
-const requiredDirs = ['apps', 'packages', 'docs', 'tools', 'specs', '.github'];
-const requiredFiles = ['README.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'LICENSE', 'AGENTS.md', 'specs/README.md'];
+const requiredDirs = ['apps', 'packages', 'docs', 'tools', '.github', '.ssot', '.ssot/specs'];
+const requiredFiles = [
+  'README.md',
+  'CONTRIBUTING.md',
+  'CODE_OF_CONDUCT.md',
+  'LICENSE',
+  'AGENTS.md',
+  '.ssot/registry.json',
+  '.ssot/specs/SPEC-2001-specs-index.yaml',
+  '.ssot/specs/SPEC-2002-repository-governance.yaml'
+];
 
 for (const dir of requiredDirs) {
   ensureExists(dir, 'directory');

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const SPEC_POINTER = 'specs/repository-governance-spec.md';
+export const SPEC_POINTER = '.ssot/specs/SPEC-2002-repository-governance.yaml';
 
 export function fail(message) {
   console.error(`${message}\nSee ${SPEC_POINTER} for requirements.`);

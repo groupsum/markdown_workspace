@@ -41,7 +41,6 @@ const allowlist = new Set([
   'playwright.inline.config.ts',
   'playwright.phase17.config.ts',
   'pyproject.toml',
-  'specs',
   'test-results',
   'tools',
   'tsconfig.base.json',

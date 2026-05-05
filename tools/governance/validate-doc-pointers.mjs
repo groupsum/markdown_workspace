@@ -8,7 +8,8 @@ if (!readme.includes('## Documentation Pointers')) {
 
 const requiredPointers = [
   'docs/README.md',
-  'specs/README.md',
+  '.ssot/specs/SPEC-2001-specs-index.yaml',
+  '.ssot/specs/SPEC-2002-repository-governance.yaml',
   'CONTRIBUTING.md',
   'CODE_OF_CONDUCT.md',
   'LICENSE',

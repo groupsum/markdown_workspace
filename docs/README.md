@@ -1,6 +1,6 @@
 # Documentation index
 
-> Governance pointers: `../README.md`, `../specs/README.md`, `../specs/repository-governance-spec.md`, `../agents.md`, `../CONTRIBUTING.md`, `../CODE_OF_CONDUCT.md`, and `../LICENSE`.
+> Governance pointers: `../README.md`, `../.ssot/specs/SPEC-2001-specs-index.yaml`, `../.ssot/specs/SPEC-2002-repository-governance.yaml`, `../AGENTS.md`, `../CONTRIBUTING.md`, `../CODE_OF_CONDUCT.md`, and `../LICENSE`.
 
 This directory contains the architecture, current-state, conformance, and operational documentation for MdWrk.
 
