@@ -1,8 +1,8 @@
 import type { FaqItem, PageKind, PageSpec } from "@mdwrk/lander-content-contract";
 import { normalizeRouteSlug } from "@mdwrk/lander-core";
-import { LANDER_MDX_VERSION } from "./version.js";
+import { LANDER_MARKDOWN_VERSION } from "./version.js";
 
-export { LANDER_MDX_VERSION };
+export { LANDER_MARKDOWN_VERSION };
 
 export interface ParsedMarkdownPage {
   metadata: Record<string, unknown>;

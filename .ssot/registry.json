@@ -6024,7 +6024,7 @@
     {
       "id": "feat:portable-lander-package-family",
       "title": "Portable lander package family",
-      "description": "Extract generic product-agnostic lander contracts, compiler, schema, SEO, theme, MDX, and React rendering packages under packages/lander.",
+      "description": "Extract generic product-agnostic lander contracts, compiler, schema, SEO, theme, Markdown-with-YAML-frontmatter, and React rendering packages under packages/lander.",
       "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
@@ -7260,10 +7260,10 @@
     },
     {
       "id": "tst:github-workflows-lander-static-content",
-      "title": "Static lander GitHub Actions gate",
+      "title": "MdWrk.com static GitHub Actions gate",
       "status": "passing",
       "kind": "ci",
-      "path": ".github/workflows/lander-static-content.yml",
+      "path": ".github/workflows/mdwrkcom-static-content.yml",
       "feature_ids": [
         "feat:lander-static-content-compiler",
         "feat:lander-static-artifact-verification",
@@ -7960,7 +7960,7 @@
       "status": "evidenced",
       "tier": "T2",
       "kind": "conformance",
-      "description": "The lander package family exposes generic contracts, compiler, schema, SEO, theme, MDX, and React surfaces without hardcoded MdWrk product facts.",
+      "description": "The lander package family exposes generic contracts, compiler, schema, SEO, theme, Markdown-with-YAML-frontmatter, and React surfaces without hardcoded MdWrk product facts.",
       "feature_ids": [
         "feat:portable-lander-package-family"
       ],
@@ -11919,11 +11919,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "c084ec4941c6f3db36b49f6b9155860c45b0e2c64e828c786f7590c050864b5b",
+      "content_sha256": "1288a03fb234701a40bf84828c82fe11f357081e3411858856510a4346a7b9a7",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": [],
+      "status_notes": [
+        {
+          "status": "accepted",
+          "note": "Updated app path/name from apps/lander to apps/mdwrkcom.",
+          "at": "2026-05-05T08:04:46Z"
+        }
+      ],
       "kind": "normative",
       "adr_ids": [
         "adr:1055"

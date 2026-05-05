@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T07:30:30.535Z",
+  "generatedAt": "2026-05-05T08:16:26.190Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -22,8 +22,8 @@
       ]
     },
     {
-      "packageName": "@mdwrk/lander",
-      "path": "apps/lander",
+      "packageName": "@mdwrk/mdwrkcom",
+      "path": "apps/mdwrkcom",
       "publishable": false,
       "ok": true,
       "errors": [],
@@ -174,8 +174,8 @@
       "warnings": []
     },
     {
-      "packageName": "@mdwrk/lander-mdx",
-      "path": "packages/lander/lander-mdx",
+      "packageName": "@mdwrk/lander-markdown",
+      "path": "packages/lander/lander-markdown",
       "publishable": true,
       "ok": true,
       "errors": [],

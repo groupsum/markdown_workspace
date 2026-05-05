@@ -1138,7 +1138,7 @@ const readContentEntries = () => {
     throw new Error('Schema must use JSON Schema Draft 2020-12');
   }
 
-  const files = collectFiles(contentRoot, file => file.endsWith('.md')).sort();
+  const files = collectFiles(contentRoot, file => file.endsWith('.md') && path.basename(file) !== 'AGENTS.md').sort();
   if (!files.length) throw new Error(`No Markdown content found under ${contentRoot}`);
   const failures = [];
   const entries = files.map((filePath) => {

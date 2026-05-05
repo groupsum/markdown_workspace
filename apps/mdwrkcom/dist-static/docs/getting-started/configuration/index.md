@@ -50,7 +50,7 @@ The lander includes production metadata for:
 - `llms.txt`
 - generated `sitemap.xml`
 
-Regenerate the sitemap during every production build so public routes stay aligned with the current MDX docs.
+Regenerate the sitemap during every production build so public routes stay aligned with the current Markdown docs.
 
 ## Frequently Asked Questions
 
