@@ -58,7 +58,7 @@ The checkpoint contained several stale source version constants that could produ
 The repository remains a root npm workspace with:
 
 - `apps/client/`
-- `apps/lander/`
+- `apps/mdwrkcom/`
 - contract packages under `packages/contracts/`
 - shared primitive packages under `packages/shared/`
 - renderer packages under `packages/renderer/`
@@ -109,18 +109,18 @@ The client and lander Dockerfiles previously copied only the root manifest, lock
 
 - `TS2307` module resolution failures for `@mdwrk/*` packages
 - secondary type-shape errors caused by missing or stale declaration resolution
-- failing Docker Compose restart workflows whenever the image build reached `npm run build --workspace apps/client` or `npm run build --workspace apps/lander`
+- failing Docker Compose restart workflows whenever the image build reached `npm run build --workspace apps/client` or `npm run build --workspace apps/mdwrkcom`
 
 This checkpoint updates both Dockerfiles so each image build now copies:
 
 - the root `package.json`, `package-lock.json`, and `tsconfig.base.json`
 - the full `packages/` workspace tree
-- only the target app (`apps/client` for client, `apps/lander` for lander)
+- only the target app (`apps/client` for client, `apps/mdwrkcom` for lander)
 
 The image build now installs with `npm run ci:install` and runs the authoritative root build target:
 
 - client: `npm run build:client`
-- lander: `npm run build:lander`
+- lander: `npm run build:mdwrkcom`
 
 That keeps the client image independent from the lander app source, and the lander image independent from the client app source, while still making the required shared workspace packages available to TypeScript and Vite during image builds.
 

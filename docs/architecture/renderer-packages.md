@@ -48,7 +48,7 @@ Applications and future extensions consume the renderer family as follows:
 apps/client ─┬─> @mdwrk/markdown-renderer-react
              └─> @mdwrk/markdown-renderer-core
 
-apps/lander ─┬─> @mdwrk/markdown-renderer-react
+apps/mdwrkcom ─┬─> @mdwrk/markdown-renderer-react
              └─> @mdwrk/markdown-renderer-core
 ```
 

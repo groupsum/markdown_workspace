@@ -11,7 +11,7 @@ For release ownership, SemVer policy, compatibility declarations, and promotion 
 | Path | Package name | Kind | Publishable | Status |
 |---|---|---|---|---|
 | `apps/client/` | `@mdwrk/mdwrkspace` | app + published package | yes | implemented |
-| `apps/lander/` | `@mdwrk/lander` | app | no | implemented |
+| `apps/mdwrkcom/` | `@mdwrk/mdwrkcom` | app | no | implemented |
 
 ## Contract packages
 

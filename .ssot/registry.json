@@ -6020,6 +6020,67 @@
         "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:portable-lander-package-family",
+      "title": "Portable lander package family",
+      "description": "Extract generic product-agnostic lander contracts, compiler, schema, SEO, theme, MDX, and React rendering packages under packages/lander.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2066",
+        "spc:2068",
+        "spc:2069",
+        "spc:2071"
+      ],
+      "claim_ids": [
+        "clm:portable-lander-package-family"
+      ],
+      "test_ids": [
+        "tst:packages-lander-package-family"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-lander-content-pack",
+      "title": "MdWrk lander content and theme pack",
+      "description": "Move MdWrk-specific lander truth into a content/config/theme pack that consumes the reusable lander package family.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2068",
+        "spc:2069",
+        "spc:2071"
+      ],
+      "claim_ids": [
+        "clm:mdwrk-lander-content-pack"
+      ],
+      "test_ids": [
+        "tst:apps-lander-portable-content-pack"
+      ],
+      "requires": [
+        "feat:portable-lander-package-family"
+      ]
     }
   ],
   "tests": [
@@ -7162,10 +7223,10 @@
     },
     {
       "id": "tst:apps-lander-scripts-validate-syntax-themes.mjs",
-      "title": "Lander syntax theme validation",
+      "title": "MdWrk.com syntax theme validation",
       "status": "passing",
       "kind": "conformance",
-      "path": "apps/lander/scripts/validate-syntax-themes.mjs",
+      "path": "apps/mdwrkcom/scripts/validate-syntax-themes.mjs",
       "feature_ids": [
         "feat:markdown-renderer-core",
         "feat:markdown-renderer-react",
@@ -7181,10 +7242,10 @@
     },
     {
       "id": "tst:apps-lander-src-cli-static-content",
-      "title": "Static lander compiler CLI gate",
+      "title": "MdWrk.com static compiler CLI gate",
       "status": "passing",
       "kind": "cli",
-      "path": "apps/lander/src/cli.mjs",
+      "path": "apps/mdwrkcom/src/cli.mjs",
       "feature_ids": [
         "feat:lander-static-content-compiler",
         "feat:lander-static-artifact-verification",
@@ -7229,6 +7290,38 @@
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "tst:packages-lander-package-family",
+      "title": "Portable lander package family package checks",
+      "status": "passing",
+      "kind": "package",
+      "path": "packages/lander",
+      "feature_ids": [
+        "feat:portable-lander-package-family"
+      ],
+      "claim_ids": [
+        "clm:portable-lander-package-family"
+      ],
+      "evidence_ids": [
+        "evd:portable-lander-package-exports"
+      ]
+    },
+    {
+      "id": "tst:apps-lander-portable-content-pack",
+      "title": "MdWrk.com portable lander content pack validation",
+      "status": "passing",
+      "kind": "static",
+      "path": "apps/mdwrkcom/content/pages",
+      "feature_ids": [
+        "feat:mdwrk-lander-content-pack"
+      ],
+      "claim_ids": [
+        "clm:mdwrk-lander-content-pack"
+      ],
+      "evidence_ids": [
+        "evd:mdwrk-lander-static-validation"
       ]
     }
   ],
@@ -7859,6 +7952,40 @@
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "clm:portable-lander-package-family",
+      "title": "Portable lander package family is product agnostic",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "The lander package family exposes generic contracts, compiler, schema, SEO, theme, MDX, and React surfaces without hardcoded MdWrk product facts.",
+      "feature_ids": [
+        "feat:portable-lander-package-family"
+      ],
+      "test_ids": [
+        "tst:packages-lander-package-family"
+      ],
+      "evidence_ids": [
+        "evd:portable-lander-package-exports"
+      ]
+    },
+    {
+      "id": "clm:mdwrk-lander-content-pack",
+      "title": "MdWrk lander content pack owns product truth",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "MdWrk-specific pages, product claims, comparison facts, package descriptions, proof pages, and CTAs live in the MdWrk app content pack while generic packages own shape.",
+      "feature_ids": [
+        "feat:mdwrk-lander-content-pack"
+      ],
+      "test_ids": [
+        "tst:apps-lander-portable-content-pack"
+      ],
+      "evidence_ids": [
+        "evd:mdwrk-lander-static-validation"
       ]
     }
   ],
@@ -8557,11 +8684,11 @@
     },
     {
       "id": "evd:apps-lander-scripts-validate-syntax-themes.mjs",
-      "title": "Lander syntax theme validation evidence",
+      "title": "MdWrk.com syntax theme validation evidence",
       "status": "passed",
       "kind": "conformance",
       "tier": "T2",
-      "path": "apps/lander/scripts/validate-syntax-themes.mjs",
+      "path": "apps/mdwrkcom/scripts/validate-syntax-themes.mjs",
       "claim_ids": [
         "clm:cross-cutting"
       ],
@@ -8597,6 +8724,34 @@
       "test_ids": [
         "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
       ]
+    },
+    {
+      "id": "evd:portable-lander-package-exports",
+      "title": "Portable lander package export validation",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": "artifacts/conformance/latest/package-export-report.json",
+      "claim_ids": [
+        "clm:portable-lander-package-family"
+      ],
+      "test_ids": [
+        "tst:packages-lander-package-family"
+      ]
+    },
+    {
+      "id": "evd:mdwrk-lander-static-validation",
+      "title": "MdWrk lander static validation",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/lander-static-content-ci.json",
+      "claim_ids": [
+        "clm:mdwrk-lander-content-pack"
+      ],
+      "test_ids": [
+        "tst:apps-lander-portable-content-pack"
+      ]
     }
   ],
   "issues": [
@@ -8605,7 +8760,7 @@
       "title": "Lander code blocks do not render syntax-colored tokens",
       "status": "closed",
       "severity": "medium",
-      "description": "Lander light and dark themes define syntax color variables and Prism/HLJS token selectors in apps/lander/styles/markdown-renderer.css, but @mdwrk/markdown-renderer-core renders fenced code as escaped plain text inside pre/code with only a language-* class. @mdwrk/markdown-renderer-react accepts syntaxTheme but currently ignores it, so no tokenizer emits .token.* or .hljs-* spans. The uniform code color rule then makes docs and blog code blocks render monochrome even when a language is present.",
+      "description": "MdWrk.com light and dark themes define syntax color variables and Prism/HLJS token selectors in apps/mdwrkcom/styles/markdown-renderer.css, but @mdwrk/markdown-renderer-core renders fenced code as escaped plain text inside pre/code with only a language-* class. @mdwrk/markdown-renderer-react accepts syntaxTheme but currently ignores it, so no tokenizer emits .token.* or .hljs-* spans. The uniform code color rule then makes docs and blog code blocks render monochrome even when a language is present.",
       "plan": {
         "horizon": "current",
         "slot": null

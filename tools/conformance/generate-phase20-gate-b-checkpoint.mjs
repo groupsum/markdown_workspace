@@ -201,7 +201,7 @@ async function main() {
 
   const packedInstallReport = await generatePackedInstallReport();
   const workspaces = await loadWorkspacePackages();
-  const publishableReleaseSet = workspaces.filter((workspacePackage) => workspacePackage.publishable && workspacePackage.category !== 'example' && workspacePackage.relativeDir !== 'apps/lander');
+  const publishableReleaseSet = workspaces.filter((workspacePackage) => workspacePackage.publishable && workspacePackage.category !== 'example' && workspacePackage.relativeDir !== 'apps/mdwrkcom');
 
   const phase20PackageInventory = {
     generatedAt: new Date().toISOString(),

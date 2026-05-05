@@ -15,7 +15,7 @@ Extension packages must consume:
 
 Extension packages must **not** import from:
 - `apps/client/*`
-- `apps/lander/*`
+- `apps/mdwrkcom/*`
 
 ## Rule 2 — register through `ExtensionContext`
 

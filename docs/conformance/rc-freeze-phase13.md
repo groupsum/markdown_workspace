@@ -37,7 +37,7 @@ Affected release families now carry `-rc.1` prerelease versions, including:
 - `@mdwrk/extension-theme-studio@1.1.0-rc.1`
 - `@mdwrk/extension-gemini-agent@1.1.0-rc.1`
 - `@mdwrk/extension-catalog-hello@1.1.0-rc.1`
-- `@mdwrk/lander@0.0.11-rc.1`
+- `@mdwrk/mdwrkcom@0.0.11-rc.1`
 - `@mdwrk/example-editor-basic@0.1.1-rc.1`
 - `@mdwrk/example-renderer-basic@0.1.1-rc.1`
 
@@ -67,7 +67,7 @@ The RC validation lane is green for:
 
 - the internal portable subset via real tarball install
 - `@mdwrk/mdwrkspace` via tarball manifest validation
-- `@mdwrk/lander` via tarball manifest validation
+- `@mdwrk/mdwrkcom` via tarball manifest validation
 - `@mdwrk/example-editor-basic` via tarball manifest validation
 - `@mdwrk/example-renderer-basic` via tarball manifest validation
 

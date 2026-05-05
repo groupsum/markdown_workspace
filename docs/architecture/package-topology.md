@@ -57,7 +57,7 @@ markdown_workspace/
 Deployable products only.
 
 - `apps/client` → `@mdwrk/mdwrkspace`
-- `apps/lander` → `@mdwrk/lander`
+- `apps/mdwrkcom` → `@mdwrk/mdwrkcom`
 
 Applications may depend on packages. Packages may **not** depend on applications.
 

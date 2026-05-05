@@ -12,7 +12,7 @@ export async function runIntegrationSmoke() {
   const workspaces = await loadWorkspacePackages();
   const byName = new Map(workspaces.map((workspacePackage) => [workspacePackage.packageJson.name, workspacePackage]));
   const client = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/client');
-  const lander = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/lander');
+  const lander = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/mdwrkcom');
   const rendererExample = byName.get('@mdwrk/example-renderer-basic');
   const editorExample = byName.get('@mdwrk/example-editor-basic');
 

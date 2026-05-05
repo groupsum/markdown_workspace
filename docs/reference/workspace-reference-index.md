@@ -18,7 +18,7 @@ Generated Phase 11 reference pages by workspace package/app/example.
 - [`@mdwrk/extension-manager`](packages/mdwrk-extension-manager.md) — extension
 - [`@mdwrk/extension-runtime`](packages/mdwrk-extension-runtime.md) — extension
 - [`@mdwrk/extension-theme-studio`](packages/mdwrk-extension-theme-studio.md) — extension
-- [`@mdwrk/lander`](apps/mdwrk-lander.md) — app
+- [`@mdwrk/mdwrkcom`](apps/mdwrk-lander.md) — app
 - [`@mdwrk/mdwrkspace`](apps/mdwrk-mdwrkspace.md) — app
 - [`@mdwrk/example-editor-basic`](examples/mdwrk-example-editor-basic.md) — example
 - [`@mdwrk/example-renderer-basic`](examples/mdwrk-example-renderer-basic.md) — example

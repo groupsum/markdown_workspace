@@ -35,7 +35,7 @@ One generated reference page now exists for each workspace package/app/example u
 ### App integration docs
 
 - `docs/apps/mdwrkspace-app.md`
-- `docs/apps/lander-app.md`
+- `docs/apps/mdwrkcom-app.md`
 
 ### Example docs
 

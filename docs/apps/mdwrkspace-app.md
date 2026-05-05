@@ -1,4 +1,4 @@
-﻿# @mdwrk/mdwrkspace application reference
+# @mdwrk/mdwrkspace application reference
 
 ## Purpose
 

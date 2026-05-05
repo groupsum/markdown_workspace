@@ -16,7 +16,7 @@ This repository is operating as the MdWrk workspace and package platform.
 The repository contains:
 
 - a client application and published package at `apps/client` (`@mdwrk/mdwrkspace`)
-- a private landing-site workspace at `apps/lander` (`@mdwrk/lander`)
+- a private landing-site workspace at `apps/mdwrkcom` (`@mdwrk/mdwrkcom`)
 - shared contracts, renderer, editor, extension, and shared utility packages under `packages/*`
 - example applications under `examples/*`
 - generated release, conformance, pack, and extension artifacts under `artifacts/*`
@@ -40,8 +40,8 @@ The following checks were executed successfully on March 26, 2026:
   - `cd apps/client && npx vite build`
 - `apps/client` library build was verified with:
   - `npm run build:lib -w apps/client`
-- `apps/lander` build was verified with:
-  - `npm run build -w apps/lander`
+- `apps/mdwrkcom` build was verified with:
+  - `npm run build -w apps/mdwrkcom`
 - example builds were verified with:
   - `npm run build -w @mdwrk/example-renderer-basic`
   - `npm run build -w @mdwrk/example-editor-basic`

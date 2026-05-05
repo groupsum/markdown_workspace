@@ -19,7 +19,7 @@ This checkpoint cuts **RC.1** for the affected package families and validation a
 
 - release-family changesets for the client, editor, renderer, shared/theme, and extension families
 - RC-tagged versions across the affected public package line
-- RC-tagged versions for the private validation tarball line (`@mdwrk/lander`, `@mdwrk/example-editor-basic`, `@mdwrk/example-renderer-basic`)
+- RC-tagged versions for the private validation tarball line (`@mdwrk/mdwrkcom`, `@mdwrk/example-editor-basic`, `@mdwrk/example-renderer-basic`)
 - semver-compatible RC internal dependency ranges in place of workspace protocol links
 - regenerated publishable tarballs
 - regenerated private validation tarballs

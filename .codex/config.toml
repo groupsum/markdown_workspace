@@ -14,3 +14,7 @@ args = ["-y", "chrome-devtools-mcp@latest"]
 startup_timeout_sec = 20
 tool_timeout_sec = 90
 enabled = true
+
+[agents]
+max_threads = 6
+max_depth = 1

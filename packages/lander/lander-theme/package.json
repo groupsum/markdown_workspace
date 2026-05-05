@@ -1,0 +1,48 @@
+{
+  "name": "@mdwrk/lander-theme",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "src/styles",
+    "README.md"
+  ],
+  "sideEffects": [
+    "./src/styles/default.css"
+  ],
+  "keywords": [
+    "lander",
+    "theme",
+    "tokens"
+  ],
+  "description": "Portable design tokens and default styles for generic lander components.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run typecheck",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./styles/default.css": "./src/styles/default.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}

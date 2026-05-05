@@ -44,7 +44,7 @@ This updated v2 zip is a **Phase 13 RC freeze/versioning/promotion-prep checkpoi
 - five committed release-family changesets covering client, editor, renderer, shared/theme, and extension families
 - semver-compatible RC dependency ranges across internal dependents instead of workspace protocol links
 - regenerated publishable tarballs under `artifacts/packs/`
-- regenerated private validation tarballs for `@mdwrk/lander`, `@mdwrk/example-editor-basic`, and `@mdwrk/example-renderer-basic`
+- regenerated private validation tarballs for `@mdwrk/mdwrkcom`, `@mdwrk/example-editor-basic`, and `@mdwrk/example-renderer-basic`
 - regenerated extension artifacts and signatures from the RC line
 - regenerated release evidence and publish-readiness records from the RC line
 - successful portable-subset RC tarball install verification

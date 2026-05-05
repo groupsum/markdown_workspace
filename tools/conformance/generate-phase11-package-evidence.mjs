@@ -95,9 +95,9 @@ const FIXTURE_MAP = {
     'apps/client/tests/phase10-i18n-parity.mjs',
     'apps/client/tests/phase11-package-evidence.mjs',
   ],
-  '@mdwrk/lander': [
-    'docs/apps/lander-app.md',
-    'apps/lander/README.md',
+  '@mdwrk/mdwrkcom': [
+    'docs/apps/mdwrkcom-app.md',
+    'apps/mdwrkcom/README.md',
   ],
   '@mdwrk/example-editor-basic': [
     'docs/examples/editor-basic-example.md',
@@ -118,10 +118,10 @@ const APP_DOCS = {
     supportStatus: 'first-party / repository-primary application host',
     owner: 'repository core maintainers',
   },
-  '@mdwrk/lander': {
-    configDoc: 'docs/apps/lander-app.md',
+  '@mdwrk/mdwrkcom': {
+    configDoc: 'docs/apps/mdwrkcom-app.md',
     boundaryDoc: 'docs/reference/package-boundary-map.md',
-    deployDoc: 'docs/apps/lander-app.md',
+    deployDoc: 'docs/apps/mdwrkcom-app.md',
     conformanceDoc: 'docs/conformance/package-documentation-phase11.md',
     supportStatus: 'first-party / supporting public-facing application',
     owner: 'repository core maintainers',
@@ -157,7 +157,7 @@ function boundaryLeakageMatches(source) {
   const hits = [];
   for (const match of source.matchAll(importPattern)) {
     const specifier = match[1] || match[2] || match[3] || '';
-    if (specifier.includes('apps/client') || specifier.includes('apps/lander')) {
+    if (specifier.includes('apps/client') || specifier.includes('apps/mdwrkcom')) {
       hits.push(specifier);
     }
   }

@@ -54,7 +54,7 @@ It is intentionally narrower than “all possible Markdown variants”.
 ### Applications
 
 - `apps/client` — primary MdWrk Markdown workspace UIX surface
-- `apps/lander` — repository-owned application surface and package consumer
+- `apps/mdwrkcom` — repository-owned application surface and package consumer
 
 ### Contract packages
 

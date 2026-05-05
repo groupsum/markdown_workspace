@@ -91,6 +91,48 @@
       "@mdwrk/markdown-edit-in-renderer-react/*": [
         "packages/editor/markdown-edit-in-renderer-react/dist/*"
       ],
+      "@mdwrk/lander-content-contract": [
+        "packages/lander/lander-content-contract/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-content-contract/*": [
+        "packages/lander/lander-content-contract/dist/*"
+      ],
+      "@mdwrk/lander-core": [
+        "packages/lander/lander-core/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-core/*": [
+        "packages/lander/lander-core/dist/*"
+      ],
+      "@mdwrk/lander-schema": [
+        "packages/lander/lander-schema/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-schema/*": [
+        "packages/lander/lander-schema/dist/*"
+      ],
+      "@mdwrk/lander-seo": [
+        "packages/lander/lander-seo/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-seo/*": [
+        "packages/lander/lander-seo/dist/*"
+      ],
+      "@mdwrk/lander-theme": [
+        "packages/lander/lander-theme/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-theme/*": [
+        "packages/lander/lander-theme/dist/*"
+      ],
+      "@mdwrk/lander-mdx": [
+        "packages/lander/lander-mdx/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-mdx/*": [
+        "packages/lander/lander-mdx/dist/*"
+      ],
+      "@mdwrk/lander-react": [
+        "packages/lander/lander-react/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-react/*": [
+        "packages/lander/lander-react/dist/*"
+      ],
       "@mdwrk/extension-runtime": [
         "packages/extensions/extension-runtime/dist/index.d.ts"
       ],

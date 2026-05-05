@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T04:46:17.944Z",
+  "generatedAt": "2026-05-05T07:30:30.535Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -152,6 +152,62 @@
     {
       "packageName": "@mdwrk/extension-workspace-files",
       "path": "packages/extensions/extension-workspace-files",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-content-contract",
+      "path": "packages/lander/lander-content-contract",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-core",
+      "path": "packages/lander/lander-core",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-mdx",
+      "path": "packages/lander/lander-mdx",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-react",
+      "path": "packages/lander/lander-react",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-schema",
+      "path": "packages/lander/lander-schema",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-seo",
+      "path": "packages/lander/lander-seo",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/lander-theme",
+      "path": "packages/lander/lander-theme",
       "publishable": true,
       "ok": true,
       "errors": [],

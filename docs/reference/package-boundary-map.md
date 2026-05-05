@@ -22,7 +22,7 @@ They must not depend on app hosts.
 - `@mdwrk/ui-tokens`
 
 These packages provide app-agnostic infrastructure and styling helpers.
-They must not import `apps/client/*` or `apps/lander/*` internals.
+They must not import `apps/client/*` or `apps/mdwrkcom/*` internals.
 
 ### Renderer / editor packages
 
@@ -46,7 +46,7 @@ They integrate with the host through the extension APIs.
 ### Apps
 
 - `@mdwrk/mdwrkspace`
-- `@mdwrk/lander`
+- `@mdwrk/mdwrkcom`
 
 Apps are the integration layer.
 They are allowed to depend on reusable packages, but reusable packages are not allowed to depend on app internals.
@@ -60,4 +60,4 @@ Examples validate public package surfaces and are intentionally separate from pr
 
 ## Phase 11 audit rule
 
-Phase 11 package evidence includes a structural audit that rejects source-level imports from `packages/*` into `apps/client/*` or `apps/lander/*`.
+Phase 11 package evidence includes a structural audit that rejects source-level imports from `packages/*` into `apps/client/*` or `apps/mdwrkcom/*`.

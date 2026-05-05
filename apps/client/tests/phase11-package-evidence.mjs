@@ -14,7 +14,7 @@ const rendererExample = read('examples/renderer-basic/App.tsx');
 const matrix = read('docs/reference/workspace-package-certification-matrix.md');
 const boundaryMap = read('docs/reference/package-boundary-map.md');
 const mdwrkAppDoc = read('docs/apps/mdwrkspace-app.md');
-const landerAppDoc = read('docs/apps/lander-app.md');
+const landerAppDoc = read('docs/apps/mdwrkcom-app.md');
 
 const checks = [
   {

@@ -24,7 +24,7 @@ This updated v2 zip is a **Phase 11 package documentation, examples, contract bo
 - `docs/reference/workspace-reference-index.md`
 - `docs/reference/package-boundary-map.md`
 - `docs/apps/mdwrkspace-app.md`
-- `docs/apps/lander-app.md`
+- `docs/apps/mdwrkcom-app.md`
 - `docs/examples/editor-basic-example.md`
 - `docs/examples/renderer-basic-example.md`
 - `docs/operations/release-evidence-phase11.md`

@@ -20,6 +20,6 @@ Adopt the npm scope `@mdwrk/*` for new packages.
 ## Consequences
 
 - `client/` will move to `apps/client/`
-- `lander/` will move to `apps/lander/`
+- `lander/` will move to `apps/mdwrkcom/`
 - reusable code will be extracted into publishable packages
 - dependency boundaries can be enforced

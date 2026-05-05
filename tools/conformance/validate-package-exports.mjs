@@ -15,7 +15,7 @@ function needsPublishValidation(workspacePackage) {
   if (workspacePackage.category === 'example') {
     return false;
   }
-  if (workspacePackage.relativeDir === 'apps/lander') {
+  if (workspacePackage.relativeDir === 'apps/mdwrkcom') {
     return false;
   }
   return true;

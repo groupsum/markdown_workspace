@@ -40,7 +40,7 @@ Each group runs lint, typecheck, build, and tests.
 
 ### App matrix
 - `apps/client`
-- `apps/lander`
+- `apps/mdwrkcom`
 
 Each app runs lint, typecheck, and build. The client app also runs its package tests.
 

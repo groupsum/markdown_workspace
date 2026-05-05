@@ -99,7 +99,7 @@ The checkpoint is built on the existing v2 package inventory:
 
 - root workspace: `0.1.5`
 - `@mdwrk/mdwrkspace`: `1.3.52`
-- `@mdwrk/lander`: `0.0.11`
+- `@mdwrk/mdwrkcom`: `0.0.11`
 - `@mdwrk/extension-host`: `1.0.1`
 - `@mdwrk/extension-manifest`: `1.0.0`
 - `@mdwrk/theme-contract`: `1.0.0`

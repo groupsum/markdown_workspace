@@ -17,4 +17,4 @@ This package family contains the portable Markdown rendering stack for MdWrk.
   - optional default stylesheet
   - renderer theme bridge
 
-Both packages are designed to be consumed by `apps/client`, `apps/lander`, first-party extension packages, and third-party host applications.
+Both packages are designed to be consumed by `apps/client`, `apps/mdwrkcom`, first-party extension packages, and third-party host applications.

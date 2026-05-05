@@ -20,10 +20,11 @@ const ALLOWED_DEPENDENCY_CATEGORIES = {
   shared: new Set(['contract', 'shared']),
   renderer: new Set(['contract', 'shared', 'renderer']),
   editor: new Set(['contract', 'shared', 'renderer', 'editor']),
+  lander: new Set(['contract', 'shared', 'renderer', 'lander']),
   extension: new Set(['contract', 'shared', 'renderer', 'editor', 'extension']),
-  app: new Set(['contract', 'shared', 'renderer', 'editor', 'extension', 'app']),
-  example: new Set(['contract', 'shared', 'renderer', 'editor', 'extension']),
-  other: new Set(['contract', 'shared', 'renderer', 'editor', 'extension', 'app', 'example', 'other']),
+  app: new Set(['contract', 'shared', 'renderer', 'editor', 'lander', 'extension', 'app']),
+  example: new Set(['contract', 'shared', 'renderer', 'editor', 'lander', 'extension']),
+  other: new Set(['contract', 'shared', 'renderer', 'editor', 'lander', 'extension', 'app', 'example', 'other']),
 };
 
 const IMPORT_PATTERNS = [

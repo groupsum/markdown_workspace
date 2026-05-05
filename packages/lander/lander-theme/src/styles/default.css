@@ -1,0 +1,107 @@
+:root {
+  --lander-bg: #ffffff;
+  --lander-fg: #111111;
+  --lander-muted: #5f6368;
+  --lander-accent: #2454d6;
+  --lander-panel: #f6f7f9;
+  --lander-border: #d9dde4;
+  --lander-radius: 8px;
+  --lander-max-width: 1120px;
+}
+
+[data-lander-theme="dark"],
+.dark {
+  --lander-bg: #101214;
+  --lander-fg: #f4f6f8;
+  --lander-muted: #aeb6c2;
+  --lander-accent: #7aa2ff;
+  --lander-panel: #191d22;
+  --lander-border: #303741;
+}
+
+.lander-page {
+  color: var(--lander-fg);
+}
+
+.lander-page__inner,
+.lander-page__section {
+  width: min(100% - 32px, var(--lander-max-width));
+  margin: 0 auto;
+}
+
+.lander-page__hero {
+  padding: 72px 0 48px;
+}
+
+.lander-page__eyebrow,
+.lander-page__muted {
+  color: var(--lander-muted);
+}
+
+.lander-page__title {
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1.05;
+}
+
+.lander-page__intro {
+  max-width: 760px;
+  color: var(--lander-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.lander-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.lander-page__card,
+.lander-page__panel {
+  border: 1px solid var(--lander-border);
+  border-radius: var(--lander-radius);
+  background: var(--lander-panel);
+  padding: 20px;
+}
+
+.lander-page__button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.lander-page__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lander-border);
+  border-radius: var(--lander-radius);
+  padding: 10px 14px;
+  color: var(--lander-fg);
+  text-decoration: none;
+}
+
+.lander-page__button--primary {
+  border-color: var(--lander-accent);
+  background: var(--lander-accent);
+  color: #ffffff;
+}
+
+.lander-page__section {
+  padding: 36px 0;
+}
+
+.lander-page__comparison {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lander-page__comparison th,
+.lander-page__comparison td {
+  border: 1px solid var(--lander-border);
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+}

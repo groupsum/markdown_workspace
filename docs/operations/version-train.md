@@ -36,7 +36,7 @@ The rule for this checkpoint is simple:
 | `@mdwrk/theme-contract` | `1.0.0` | `1.0.x` | hold as compatibility anchor unless theme contract changes |
 | `@mdwrk/icons` | `1.0.0` | `1.0.1` by default | patch unless public API expands |
 | `@mdwrk/testing` | `1.0.0` | `1.0.1` by default | patch unless public API expands |
-| `@mdwrk/lander` | `0.0.11` | `0.0.12` by default / `0.1.0` if document semantics change | private app release lane |
+| `@mdwrk/mdwrkcom` | `0.0.11` | `0.0.12` by default / `0.1.0` if document semantics change | private app release lane |
 | examples | `0.1.1` | `0.1.2` by default / minor if demo surface expands | validation/demo lane |
 
 ## Linked Changesets groups frozen in this checkpoint
@@ -56,7 +56,7 @@ The following groups are now frozen in `.changeset/config.json`:
 |---|---|
 | contract packages | these are compatibility anchors and should not be forced to move with feature trains |
 | `@mdwrk/mdwrkspace` | the client app must be able to promote after package closure, not in lockstep with every library change |
-| `@mdwrk/lander` | the private app has a deployment lane, not a public package train |
+| `@mdwrk/mdwrkcom` | the private app has a deployment lane, not a public package train |
 | `@mdwrk/icons`, `@mdwrk/testing` | patch-level utilities should not be swept into shared minor bumps by default |
 | examples | examples follow validation/demo needs, not package publication cadence |
 
