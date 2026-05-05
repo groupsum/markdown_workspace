@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   extractMarkdownHeadings,
   renderMarkdownToHtmlSync,
-} from '@mdwrk/markdown-renderer-core';
+} from '../../../packages/renderer/markdown-renderer-core/dist/index.js';
 
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');

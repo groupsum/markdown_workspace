@@ -8,10 +8,12 @@ const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 const cssPath = path.join(landerRoot, 'styles', 'markdown-renderer.css');
 const demoPath = path.join(landerRoot, 'components', 'DemoSection.tsx');
 const markdownViewerPath = path.join(landerRoot, 'components', 'MarkdownViewer.tsx');
+const staticCompilerPath = path.join(landerRoot, 'src', 'cli.mjs');
 const viteConfigPath = path.join(landerRoot, 'vite.config.ts');
 const css = readFileSync(cssPath, 'utf8');
 const demoSource = readFileSync(demoPath, 'utf8');
 const markdownViewerSource = readFileSync(markdownViewerPath, 'utf8');
+const staticCompilerSource = readFileSync(staticCompilerPath, 'utf8');
 const viteConfigSource = readFileSync(viteConfigPath, 'utf8');
 
 const syntaxVariables = [
@@ -116,6 +118,16 @@ assert.match(
   demoSource,
   /<div className=\{previewPaneClassName\}>\s*<MarkdownViewer content=\{content\} \/>/s,
   'Homepage preview pane must render the editable content through MarkdownViewer.',
+);
+assert.match(
+  staticCompilerSource,
+  /from\s+['"]\.\.\/\.\.\/\.\.\/packages\/renderer\/markdown-renderer-core\/dist\/index\.js['"]/,
+  'Static lander compiler must import the workspace renderer dist so Docker production output emits syntax tokens.',
+);
+assert.match(
+  staticCompilerSource,
+  /const\s+demoPreview\s*=\s*renderMarkdown\(homeDemoMarkdown\)\.html/,
+  'Static homepage preview must be rendered from the shared renderer before JavaScript hydration.',
 );
 assert.match(markdownViewerSource, /<MarkdownRenderer[\s\S]*markdown=\{content\}/s, 'MarkdownViewer must render content through MarkdownRenderer.');
 assert.doesNotMatch(
