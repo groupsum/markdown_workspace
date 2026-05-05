@@ -20,6 +20,7 @@ const collectFiles = (root) => {
   return fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(root, entry.name);
     if (entry.isDirectory()) return collectFiles(entryPath);
+    if (entry.name === 'AGENTS.md') return [];
     return [entryPath];
   });
 };
