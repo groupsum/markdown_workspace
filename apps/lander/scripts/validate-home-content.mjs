@@ -96,6 +96,8 @@ for (const signal of demoMarkdownSignals) {
   assert.match(staticContentContract, new RegExp(signal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `Static home demo Markdown must include: ${signal}`);
 }
 assert.match(staticCompiler, /const renderStaticHome = \(entry, registry, assetTags = ''\) => \{/, 'Static compiler must define a home renderer.');
+assert.match(staticCompiler, /preserve-assets build did not find a compiled Vite CSS asset for static pages/, 'Static compiler must fail closed when the preserved Vite CSS asset is missing.');
+assert.match(staticCompiler, /collectFiles\(assetsDir, file => file\.endsWith\('\.css'\)\)/, 'Static compiler must recover preserved Vite stylesheet links from the assets directory.');
 assert.match(staticCompiler, /const demoPreview = renderMarkdown\(homeDemoMarkdown\)\.html;/, 'Static home preview must be rendered from the same inline Markdown source.');
 assert.match(staticCompiler, /const demoWordCount = stripMarkdown\(homeDemoMarkdown\)\.split\(\/\\s\+\/\)\.filter\(Boolean\)\.length;/, 'Static home must calculate demo word count from inline Markdown.');
 assert.match(staticCompiler, /<section class="hero-section">/, 'Static home hero section must render.');

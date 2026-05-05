@@ -195,11 +195,31 @@ const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex'
 
 const extractViteAssetTags = () => {
   const indexPath = path.join(distRoot, 'index.html');
-  if (!preserveAssets || !fs.existsSync(indexPath)) return '';
-  const html = fs.readFileSync(indexPath, 'utf8');
-  const tags = [
-    ...html.matchAll(/<link\b[^>]*\bhref="\/assets\/[^"]+\.css"[^>]*>/gi),
-  ].map(match => match[0]);
+  if (!preserveAssets) return '';
+  const tags = [];
+  if (fs.existsSync(indexPath)) {
+    const html = fs.readFileSync(indexPath, 'utf8');
+    tags.push(...[
+      ...html.matchAll(/<link\b[^>]*\bhref="(?:\.?\/)?assets\/[^"]+\.css"[^>]*>/gi),
+    ].map(match => match[0].replace(/\bhref="\.?\/?assets\//i, 'href="/assets/')));
+  }
+  const assetsDir = path.join(distRoot, 'assets');
+  const cssAssets = fs.existsSync(assetsDir)
+    ? collectFiles(assetsDir, file => file.endsWith('.css'))
+      .map(file => path.relative(distRoot, file).replace(/\\/g, '/'))
+      .sort()
+    : [];
+  for (const assetPath of cssAssets) {
+    const href = `/${assetPath}`;
+    if (!tags.some(tag => tag.includes(`href="${href}"`))) {
+      tags.push(`<link rel="stylesheet" crossorigin href="${href}">`);
+    }
+  }
+  if (!tags.length) {
+    fail('Static lander build failed:', [
+      'preserve-assets build did not find a compiled Vite CSS asset for static pages',
+    ]);
+  }
   return Array.from(new Set(tags)).join('\n    ');
 };
 
