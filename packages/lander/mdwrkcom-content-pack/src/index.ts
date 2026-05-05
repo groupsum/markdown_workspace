@@ -27,7 +27,10 @@ export const mdwrkcomContentPack: MdwrkcomContentPackLayout = Object.freeze({
     "content-index.json",
     "content-registry.json",
     "jsonld-graph.json",
+    "llms.txt",
     "llms-full.txt",
+    "robots.txt",
+    "sitemap.xml",
   ]),
 });
 

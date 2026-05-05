@@ -1,5 +1,45 @@
 # MdWrk Full Content
 
+## Does MdWrk require a server?
+
+URL: https://mdwrk.com/answers/does-mdwrk-require-a-server/
+
+A direct answer for readers checking MdWrk's local-first editing boundary.
+
+MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, package discovery, repository operations, and deployment are explicit integrations that move beyond normal local editing. This answer belongs to the MdWrk content pack. The generic lander system can render the answer shape for any product without knowing MdWrk's storage or server policy.
+
+## How do MdWrk theme packs work?
+
+URL: https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/
+
+A direct answer about MdWrk theme pack contracts and portable styling.
+
+MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to make visual customization portable instead of tying every theme to private implementation details. Theme contracts help package authors, extension authors, and product contributors work against stable styling surfaces. A MdWrk theme pack can express product identity while reusable packages keep their generic behavior. This page is MdWrk content. Other products can supply different theme packs while reusing the same lander rendering system.
+
+## How does MdWrk store Markdown locally?
+
+URL: https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/
+
+A direct answer about MdWrk local persistence and storage boundaries.
+
+MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This supports local writing, preview, and organization as the default path. Local persistence does not remove export, sync, or repository workflows. It clarifies when content stays local and when an integration moves it across a boundary. The answer is product-specific. The portable lander package only provides reusable validation, rendering, SEO, schema, and static output mechanics.
+
+## What is a local-first Markdown workspace?
+
+URL: https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/
+
+A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.
+
+A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are explicit paths rather than requirements for every edit. MdWrk uses this model to keep Markdown close to the user and close to the file. The workspace can focus on source editing, rendered preview, project organization, package surfaces, themes, and extensions before network workflows enter the picture. This answer page is MdWrk-specific content rendered through a reusable lander contract. Another product can use the same answer-page shape with different facts.
+
+## What is an offline Markdown editor?
+
+URL: https://mdwrk.com/answers/what-is-an-offline-markdown-editor/
+
+A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces.
+
+An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted authoring backend for normal editing. Offline capability is especially useful for drafts, documentation, release notes, and workspace organization that should not stop when a network path is unavailable. MdWrk frames offline editing as part of a broader local-first workspace. The product story includes preview, browser-local persistence, package reuse, themes, extensions, and optional sync rather than only a single editor surface. The reusable lander packages do not define this answer. They provide the page contract, metadata, FAQ structure, and static artifact pipeline.
+
 ## MdWrk launch notes
 
 URL: https://mdwrk.com/updates/launch/
@@ -7,6 +47,38 @@ URL: https://mdwrk.com/updates/launch/
 The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.
 
 MdWrk's public launch story is not only about a Markdown editor. It is also about how the product explains itself. The public lander uses Markdown files as source content, validates frontmatter, builds a normalized registry, and produces static artifacts that can be verified before the production domain is live. Static Before Runtime The first principle is that public content should not require a browser application shell. If a crawler, assistant, or user downloads the raw HTML response, the primary content should already be present in the page. Machine-Readable By Default The build emits JSON-LD, sitemap data, robots policy, LLM index files, a content index, and Markdown mirrors. These artifacts are generated from the same registry so content identity, metadata, and links stay aligned. Why It Matters A Markdown product should be able to prove its own documentation quality. MdWrk uses the compiler to check source validity, static readability, SEO signals, answer visibility, AI-oriented artifacts, and internal links without depending on production deployment. What Comes Next The static compiler can grow as the content set grows. The important contract is already clear: Markdown body content remains the article, frontmatter remains metadata, and answer or FAQ metadata must be visibly rendered when used for structured data.
+
+## Local-first Markdown editors
+
+URL: https://mdwrk.com/compare/local-first-markdown-editors/
+
+Use this page to evaluate Markdown tools by local-first authoring and portable product surfaces.
+
+Local-first Markdown editors should be evaluated by more than whether they can open a Markdown file. The practical questions are storage defaults, offline behavior, preview policy, package reuse, extension boundaries, and how clearly sync or export crosses a user-controlled boundary. | Criteria | MdWrk | Other local-first editors | | --- | --- | --- | | Storage default | MdWrk centers browser-local workspace behavior for normal authoring. | Storage models vary by tool and should be inspected directly. | | Package reuse | MdWrk documents reusable renderer, editor, theme, extension, and lander packages. | Many tools focus on app behavior rather than portable packages. | | Public proof | MdWrk emits static content, sitemap, robots, LLM files, content indexes, and JSON-LD. | Public proof artifacts vary widely. | Choose the editor whose boundaries match the workflow. MdWrk is strongest when local-first browser authoring and package adoption should work together.
+
+## MdWrk vs Obsidian
+
+URL: https://mdwrk.com/compare/mdwrk-vs-obsidian/
+
+Use this comparison when local-first Markdown authoring, package reuse, and extension contracts matter.
+
+MdWrk is best evaluated as a local-first Markdown workspace and package platform. Obsidian is widely used for personal knowledge management and linked note collections. This page frames the practical difference for authors and developers evaluating Markdown workflows. | Criteria | MdWrk | Obsidian | | --- | --- | --- | | Local-first authoring | Browser and PWA-centered Markdown workspace with local persistence as a core boundary. | Local Markdown files are central, with a different app and plugin model. | | Package reuse | Renderer, editor, theme, extension, and lander packages are documented as reusable surfaces. | Typically evaluated as an app and plugin ecosystem first. | | Extension contracts | Governed package and manifest surfaces keep extension behavior explicit. | Plugin behavior follows Obsidian's ecosystem and product model. | Choose MdWrk when you need browser availability, reusable package adoption, governed extension contracts, and static product documentation that explains the boundary clearly.
+
+## MdWrk vs Typora
+
+URL: https://mdwrk.com/compare/mdwrk-vs-typora/
+
+Use this comparison when choosing between a workspace and a focused Markdown editor.
+
+MdWrk and Typora fit different Markdown workflows. Typora is commonly associated with focused document writing. MdWrk presents Markdown as a workspace with preview, organization, package surfaces, themes, and extensions. | Criteria | MdWrk | Typora | | --- | --- | --- | | Workspace model | Project-oriented browser/PWA workspace with package and extension documentation. | Focused Markdown editing experience. | | Package reuse | Editor and renderer package families are part of the public product story. | Usually adopted as an application rather than a reusable package platform. | | Extensions | Governed extension runtime and package contracts are visible surfaces. | Extension behavior is not the center of the product comparison. | Choose MdWrk when the Markdown workflow extends beyond a single document and needs product, package, and extension surfaces to remain aligned.
+
+## MdWrk vs VS Code Markdown
+
+URL: https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/
+
+Use this comparison when deciding whether Markdown authoring should live in a focused workspace or inside a general code editor.
+
+VS Code is a broad development environment with Markdown capabilities. MdWrk makes Markdown authoring, preview, local-first workspace behavior, themes, and package reuse the center of the product. | Criteria | MdWrk | VS Code Markdown | | --- | --- | --- | | Product focus | Markdown workspace, preview, packages, and extensions are the core surface. | Markdown is one capability inside a general IDE. | | Local-first story | Browser/PWA workspace behavior and local persistence are explicit. | Local behavior depends on editor setup and extensions. | | Package adoption | MdWrk documents reusable editor and renderer package surfaces directly. | Extension and editor behavior are tied to the VS Code ecosystem. | Choose MdWrk when the audience is writing and publishing Markdown rather than primarily editing source code.
 
 ## Extensions
 
@@ -32,6 +104,46 @@ MdWrk theme packs document the token and styling contract for workspace presenta
 
 Theme packs describe how MdWrk presents the Markdown workspace without changing the underlying Markdown source. The documentation separates content, rendering, and theme behavior so users know what is styling and what is document data. Theme Contract A theme should define visual tokens, layout behavior, syntax colors, and component styling boundaries. It should not rewrite public content or hide important text from crawlers and readers. Syntax Color Code block syntax colors must be visible in generated HTML when the renderer emits token classes. Lander themes define different color variables for light and dark modes, while the static compiler keeps source content readable. Extension Relationship Theme packs may be delivered through extension surfaces, but the documentation should explain which package owns the contract and how the workspace applies the visual layer.
 
+## Extension runtime
+
+URL: https://mdwrk.com/features/extension-runtime/
+
+The MdWrk extension runtime gives package authors a documented way to add commands, panes, settings, and integrations.
+
+The MdWrk extension runtime gives package authors a governed way to extend the workspace. Instead of patching the client directly, extensions describe their contribution through documented package and manifest surfaces. This matters for trust and portability. Runtime lifecycle, compatibility metadata, installable artifacts, and host context stay explicit, which makes extension behavior easier to inspect and easier to verify. The reusable lander package does not contain any MdWrk extension claim. MdWrk-specific extension facts live here in the content pack, while the lander packages render feature pages generically.
+
+## GitHub sync
+
+URL: https://mdwrk.com/features/github-sync/
+
+GitHub sync supports repository movement for Markdown projects without making every local edit depend on a hosted backend.
+
+GitHub sync is useful when Markdown work needs to move into repository collaboration, review, or publishing workflows. MdWrk keeps that path explicit so local authoring remains understandable before content crosses a network boundary. This feature page frames GitHub as an integration rather than a default dependency. Authors can write, preview, and organize locally, then choose repository operations when the project needs versioned collaboration. The portable lander extraction keeps this claim in MdWrk content. Other products can reuse the same lander packages without inheriting GitHub-specific positioning.
+
+## IndexedDB Markdown storage
+
+URL: https://mdwrk.com/features/indexeddb-markdown-storage/
+
+Browser-local persistence keeps MdWrk's default authoring workflow independent from hosted document storage.
+
+IndexedDB Markdown storage is part of MdWrk's local-first product boundary. The workspace can keep project state on the user's device during ordinary writing, preview, and organization, instead of requiring every editing action to depend on a hosted authoring backend. This design keeps storage policy understandable. Local persistence supports daily authoring. Export, repository, and sync flows remain visible choices that move content across a boundary when the user chooses that workflow. The public lander presents this as product truth from the MdWrk content pack. Generic lander packages only enforce the content model, metadata, FAQ, and diagnostics that make the page portable.
+
+## Live Markdown preview
+
+URL: https://mdwrk.com/features/live-preview/
+
+Live preview helps authors move between source text and rendered output without hiding the Markdown file.
+
+Live Markdown preview is a core MdWrk workflow. Authors can write in Markdown source while reviewing rendered output, which helps documentation, README, changelog, and article work stay close to the final reading surface. MdWrk treats preview as a package-aligned surface. The renderer and editor package family makes it possible for the client, examples, documentation, and future product implementations to use the same underlying behavior instead of copying presentation logic. This page keeps the product claim in MdWrk content. The portable lander renderer simply consumes section data, FAQ data, metadata, and schema data from the content contract.
+
+## PWA Markdown editor
+
+URL: https://mdwrk.com/features/pwa-markdown-editor/
+
+MdWrk uses the browser and installable PWA surface as an app-like Markdown workspace while preserving portable web delivery.
+
+MdWrk can be used as a PWA Markdown editor when authors want an app-like shell without leaving the browser delivery model. The product keeps Markdown writing, live preview, local persistence, package documentation, and extension behavior connected to the same workspace story. The PWA surface matters because it makes the workspace feel close to a desktop tool while keeping the implementation portable. Authors can keep normal editing local-first, then choose sync, repository, or deployment paths when a project needs them. This page is part of the MdWrk content pack. The reusable lander packages do not know this product claim; they only render the page contract, metadata, schema, FAQ, and internal navigation shape.
+
 ## Local-first Markdown workspace
 
 URL: https://mdwrk.com/
@@ -39,6 +151,46 @@ URL: https://mdwrk.com/
 MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.
 
 MdWrk gives Markdown authors a workspace that treats plain text as the durable source of truth. The product combines source editing, rendered preview, workspace organization, theme surfaces, extension contracts, and package-level documentation in one environment. The public lander is compiled from Markdown files into static HTML. Search engines, answer engines, AI retrieval systems, and people using simple command-line tools can read the important page content without waiting for a JavaScript application shell to render it. Why MdWrk Exists Markdown teams often want portability and speed, but product sites around Markdown tools can hide the real content behind runtime frameworks. MdWrk keeps public content in Markdown, validates metadata with a schema, renders visible answers and FAQs, and ships machine-readable artifacts with the build. What The Workspace Emphasizes MdWrk focuses on offline-capable writing, local-first workspace state, privacy-aware sharing, reusable editor and renderer packages, and extension host boundaries. The documentation explains what lives locally, what needs network access, and which package surfaces developers can use directly. Static Content Contract Every public page in this compiler has YAML frontmatter for metadata and Markdown body content for the article. The compiler produces HTML, JSON-LD, sitemap data, robots policy, LLM-oriented indexes, Markdown mirrors, and a content registry that can be verified before deployment. Start Here Begin with the quickstart, then review the feature pages for offline Markdown editing, local-first workflow design, and extension platform boundaries. Comparison pages explain how MdWrk differs from note apps, code editors, and standard Markdown editors without recommending tools that do not fit MdWrk's privacy and workspace goals.
+
+## @mdwrk/extension-runtime
+
+URL: https://mdwrk.com/packages/extension-runtime/
+
+Use the extension runtime package when building governed commands, panes, settings, and integration surfaces.
+
+@mdwrk/extension-runtime provides portable runtime utilities for governed MdWrk extension behavior. It supports the package-level extension model behind commands, panes, settings, and integrations. Install: Use this package when extension behavior needs to stay explicit, inspectable, and compatible with MdWrk host surfaces. The runtime package keeps extension behavior out of undocumented client patches. A package author can reason about lifecycle, host context, compatibility, and trust policy as stable surfaces that can be documented, validated, and reused across delivery targets.
+
+## @mdwrk/markdown-editor-react
+
+URL: https://mdwrk.com/packages/markdown-editor-react/
+
+Use the React editor package when another product needs a reusable Markdown authoring surface.
+
+@mdwrk/markdown-editor-react provides React components for Markdown authoring. It is part of the package family that lets MdWrk behavior travel outside the main workspace client. Install: Use this package when a product needs editor behavior directly and does not need to adopt the entire MdWrk application shell. The editor package is part of the split package story. A consuming product can pair it with renderer packages, theme contracts, and its own content model while MdWrk continues to use the same family inside the flagship workspace.
+
+## @mdwrk/markdown-renderer-core
+
+URL: https://mdwrk.com/packages/markdown-renderer-core/
+
+Use the renderer core package when a product needs Markdown parsing and HTML rendering without adopting the full MdWrk client.
+
+@mdwrk/markdown-renderer-core provides Markdown parsing and rendering utilities for package-level preview and HTML output. It is useful when a product needs MdWrk-aligned Markdown behavior without adopting the full workspace client. Install: The package belongs to the reusable renderer family. The lander presents it as part of MdWrk product truth, while the portable lander packages only render the package-page shape, metadata, FAQ, and schema. Use this surface when the implementation needs Markdown behavior that can be tested, documented, and reused without importing the full client. The package keeps renderer adoption explicit, which helps product teams separate content parsing, HTML output, and application-specific presentation.
+
+## @mdwrk/markdown-renderer-react
+
+URL: https://mdwrk.com/packages/markdown-renderer-react/
+
+Use the React renderer package when a product needs MdWrk-aligned Markdown rendering inside React.
+
+@mdwrk/markdown-renderer-react gives React applications a package-level route into MdWrk-aligned Markdown rendering. It pairs with the renderer core package and keeps rendering behavior reusable outside the full workspace client. Install: Use this package when a product needs a React Markdown preview surface that can stay aligned with MdWrk examples, docs, and client behavior. The React package is intentionally described as a reusable surface instead of a hidden implementation detail. That makes package adoption clear for teams that need preview behavior inside another application while keeping MdWrk-specific product positioning in the content pack.
+
+## @mdwrk/theme-contract
+
+URL: https://mdwrk.com/packages/theme-contract/
+
+Use the theme contract package when styling needs to target governed tokens instead of private UI internals.
+
+@mdwrk/theme-contract defines theme token and compatibility contracts for MdWrk surfaces. It helps themes travel across editor, preview, extension, and lander experiences without patching private implementation details. Install: This package anchors the difference between reusable visual shape and MdWrk-specific styling truth. Product theme packs can supply identity while generic packages keep stable token names. The contract matters for portability because themes should not depend on private app selectors. A product-specific theme can express its own visual system while editor, preview, extension, and lander packages continue to consume documented tokens.
 
 ## Privacy policy
 
@@ -48,6 +200,30 @@ MdWrk is documented as a privacy-first Markdown workspace that keeps authoring l
 
 MdWrk's privacy policy is written around the local-first Markdown model. Public documentation should make clear that writing and previewing Markdown do not require a hosted document account as the default assumption. Local Content Boundary Markdown documents, workspace state, and editor preferences should be described in terms of local control. If a workflow stores data in browser-managed storage, IndexedDB, filesystem-backed surfaces, or another local mechanism, the docs should say so plainly. Explicit Sharing Export, GitHub sync, package installation, and extension workflows are deliberate actions. The privacy documentation should explain that these actions may cross the local boundary and should describe which external service or package is involved. Extension Trust Extensions can add useful capabilities, but they also need trust and compatibility rules. MdWrk documents extension manifests, package identity, runtime expectations, and the idea that extension behavior should not be treated as automatically trusted. Public Documentation The public privacy page is statically generated, indexable when policy allows, and mirrored into machine-readable artifacts. That makes the privacy posture inspectable before deployment.
 
+## Browser support proof
+
+URL: https://mdwrk.com/proof/browser-support/
+
+Browser support proof connects product claims to static pages, package surfaces, and verification artifacts.
+
+Browser support proof connects MdWrk's public product claims to static pages, package surfaces, and verification artifacts. The lander is expected to produce crawlable HTML, Markdown mirrors, sitemap entries, robots policy, LLM files, content indexes, and JSON-LD graph data. This page is intentionally a proof page rather than a marketing claim alone. It points readers toward the artifacts that make browser and PWA support inspectable. The reusable lander package owns proof-page rendering shape. MdWrk owns the browser support facts and the evidence language.
+
+## Markdown support proof
+
+URL: https://mdwrk.com/proof/markdown-support/
+
+Markdown support proof keeps the product page, renderer package, editor package, and static examples aligned.
+
+Markdown support proof keeps MdWrk's product page, renderer package, editor package, and static examples aligned. The public site should not make Markdown claims that are disconnected from package behavior. The renderer and editor package families are the most important reusable surfaces for Markdown behavior. They let the product, docs, examples, and future integrations rely on a common implementation story. This proof page is product-specific. The portable lander package only supplies the proof matrix and page rendering shape.
+
+## Package surfaces proof
+
+URL: https://mdwrk.com/proof/package-surfaces/
+
+Package surface proof explains the split between generic lander packages and MdWrk-specific content truth.
+
+Package surfaces proof explains the split between generic lander packages and MdWrk-specific content truth. The reusable package family owns contracts, compiler behavior, React sections, schema builders, SEO utilities, theme tokens, and Markdown/frontmatter bridging. MdWrk owns product name, positioning, claims, features, FAQs, comparison facts, package descriptions, proof language, screenshots, CTAs, and docs links. That separation makes the lander package reusable across other product websites. This proof page is also a guardrail. Future product packs should be able to reuse the lander engine without inheriting MdWrk-specific prose or package claims.
+
 ## Security notes
 
 URL: https://mdwrk.com/security/
@@ -55,6 +231,14 @@ URL: https://mdwrk.com/security/
 MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment.
 
 MdWrk security documentation explains how the public lander and product surfaces should be reviewed. The static compiler is part of that posture because it verifies source content and generated artifacts before deployment. Package Boundaries Reusable packages should have clear responsibilities. Editor, renderer, extension host, theme contract, and static lander surfaces should not blur into one unreviewable runtime. Extension Trust Extensions need explicit trust policy. The documentation should describe manifest metadata, compatibility expectations, package identity, and how users can reason about what an extension is allowed to do. Static Artifact Verification The public lander build verifies HTML, links, JSON-LD, sitemap output, robots policy, LLM index files, Markdown mirrors, and the content registry. These checks help prevent empty app shells or hidden primary content from being treated as deployable. Deployment Smoke Checks Production URL checks are post-deploy smoke checks. They should verify that the deployed response contains expected content, but they should not be required to create a valid deployable artifact.
+
+## Privacy boundary
+
+URL: https://mdwrk.com/trust/privacy-boundary/
+
+The privacy boundary explains what stays local by default and when content intentionally crosses into an integration.
+
+MdWrk's privacy boundary starts with local-first authoring. Normal Markdown writing, preview, and workspace organization should be understandable without requiring a hosted authoring backend. That does not mean every workflow is offline-only. Sync, export, repository movement, package discovery, and deployment can cross a network boundary, but those paths should be visible choices rather than hidden defaults. This trust page belongs to the MdWrk content pack. The reusable lander engine renders trust and proof pages without knowing this specific privacy position.
 
 ## Getting Started
 

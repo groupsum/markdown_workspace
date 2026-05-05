@@ -19,6 +19,7 @@ const dataDocsRoot = path.join(dataMarkdownRoot, 'docs');
 const contentSitemapPath = path.join(dataRoot, 'content-sitemap.yaml');
 const schemasRoot = path.join(landerRoot, 'schemas');
 const publicRoot = path.join(landerRoot, 'public');
+const staticStylesheetSource = path.join(landerRoot, 'styles', 'static.css');
 const schemaPath = path.join(schemasRoot, 'mdwrk.page.v1.schema.json');
 const siteUrl = (process.env.MDWRK_SITE_URL || process.env.VITE_SITE_URL || 'https://mdwrk.com').replace(/\/+$/, '');
 const defaultImage = `${siteUrl}/favicon.svg`;
@@ -193,18 +194,30 @@ const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, s
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
 
+const staticStylesheetTag = '<link rel="stylesheet" href="/assets/static.css">';
+
+const copyStaticStylesheet = () => {
+  if (!fs.existsSync(staticStylesheetSource)) {
+    fail('Static lander build failed:', [
+      'missing source stylesheet: apps/mdwrkcom/styles/static.css',
+    ]);
+  }
+  const target = path.join(distRoot, 'assets', 'static.css');
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.copyFileSync(staticStylesheetSource, target);
+};
+
 const extractViteAssetTags = () => {
   const indexPath = path.join(distRoot, 'index.html');
-  if (!preserveAssets) return '';
-  const tags = [];
-  if (fs.existsSync(indexPath)) {
+  const tags = [staticStylesheetTag];
+  if (preserveAssets && fs.existsSync(indexPath)) {
     const html = fs.readFileSync(indexPath, 'utf8');
     tags.push(...[
       ...html.matchAll(/<link\b[^>]*\bhref="(?:\.?\/)?assets\/[^"]+\.css"[^>]*>/gi),
     ].map(match => match[0].replace(/\bhref="\.?\/?assets\//i, 'href="/assets/')));
   }
   const assetsDir = path.join(distRoot, 'assets');
-  const cssAssets = fs.existsSync(assetsDir)
+  const cssAssets = preserveAssets && fs.existsSync(assetsDir)
     ? collectFiles(assetsDir, file => file.endsWith('.css'))
       .map(file => path.relative(distRoot, file).replace(/\\/g, '/'))
       .sort()
@@ -214,11 +227,6 @@ const extractViteAssetTags = () => {
     if (!tags.some(tag => tag.includes(`href="${href}"`))) {
       tags.push(`<link rel="stylesheet" crossorigin href="${href}">`);
     }
-  }
-  if (!tags.length) {
-    fail('Static lander build failed:', [
-      'preserve-assets build did not find a compiled Vite CSS asset for static pages',
-    ]);
   }
   return Array.from(new Set(tags)).join('\n    ');
 };
@@ -1691,6 +1699,64 @@ const renderVisibleBreadcrumbs = (items) => {
                   </nav>`;
 };
 
+const defaultRelatedCandidates = {
+  feature: [
+    '/features/local-first-markdown-workspace/',
+    '/features/offline-markdown-editor/',
+    '/features/indexeddb-markdown-storage/',
+    '/answers/what-is-a-local-first-markdown-workspace/',
+    '/trust/privacy-boundary/',
+  ],
+  faq: [
+    '/features/local-first-markdown-workspace/',
+    '/features/offline-markdown-editor/',
+    '/answers/does-mdwrk-require-a-server/',
+    '/trust/privacy-boundary/',
+  ],
+  comparison: [
+    '/compare/local-first-markdown-editors/',
+    '/features/local-first-markdown-workspace/',
+    '/features/offline-markdown-editor/',
+    '/proof/package-surfaces/',
+  ],
+  package: [
+    '/packages/markdown-renderer-core/',
+    '/packages/markdown-renderer-react/',
+    '/packages/markdown-editor-react/',
+    '/packages/theme-contract/',
+    '/packages/extension-runtime/',
+    '/proof/package-surfaces/',
+  ],
+  privacy: [
+    '/features/local-first-markdown-workspace/',
+    '/answers/does-mdwrk-require-a-server/',
+    '/proof/browser-support/',
+  ],
+  security: [
+    '/trust/privacy-boundary/',
+    '/proof/browser-support/',
+    '/proof/package-surfaces/',
+  ],
+};
+
+const defaultRelatedSlugsFor = (entry, registry) => {
+  const candidates = defaultRelatedCandidates[entry.frontmatter.contentType] ?? [
+    '/docs/',
+    '/features/local-first-markdown-workspace/',
+    '/packages/markdown-renderer-core/',
+  ];
+  return candidates
+    .filter(slug => slug !== entry.frontmatter.slug)
+    .filter(slug => registry.bySlug.has(slug))
+    .slice(0, 3);
+};
+
+const relatedSlugsFor = (entry, registry) => (
+  entry.frontmatter.related.length
+    ? entry.frontmatter.related
+    : defaultRelatedSlugsFor(entry, registry)
+);
+
 const renderSupplementarySections = (entry, registry) => {
   const faqHtml = entry.frontmatter.faqs.length
     ? `<section class="faq-section static-faq" aria-labelledby="faq-heading">
@@ -1698,10 +1764,11 @@ const renderSupplementarySections = (entry, registry) => {
                     <div class="faq-list">${entry.frontmatter.faqs.map(faq => `<details class="faq-accordion"><summary class="faq-summary">${escapeHtml(faq.question)}</summary><div class="faq-content"><p>${escapeHtml(faq.answer)}</p></div></details>`).join('\n                      ')}</div>
                   </section>`
     : '';
-  const relatedHtml = entry.frontmatter.related.length
+  const relatedSlugs = relatedSlugsFor(entry, registry);
+  const relatedHtml = relatedSlugs.length
     ? `<section class="related-section static-related" aria-labelledby="related-heading">
                     <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
-                    <ul>${entry.frontmatter.related.map(slug => {
+                    <ul>${relatedSlugs.map(slug => {
               const target = registry.bySlug.get(slug);
               return `<li><a href="${slug}">${escapeHtml(target?.frontmatter.h1 ?? slug)}</a></li>`;
             }).join('')}</ul>
@@ -2034,10 +2101,11 @@ const copyDir = (source, target) => {
 
 const build = () => {
   const registry = readStaticRegistry();
-  const assetTags = extractViteAssetTags();
   if (!preserveAssets) fs.rmSync(distRoot, { recursive: true, force: true });
   fs.mkdirSync(distRoot, { recursive: true });
   copyDir(publicRoot, distRoot);
+  copyStaticStylesheet();
+  const assetTags = extractViteAssetTags();
 
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
@@ -2128,7 +2196,10 @@ const verify = () => {
   const sitemap = fs.existsSync(path.join(distRoot, 'sitemap.xml')) ? fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8') : '';
   const robots = fs.existsSync(path.join(distRoot, 'robots.txt')) ? fs.readFileSync(path.join(distRoot, 'robots.txt'), 'utf8') : '';
   const llms = fs.existsSync(path.join(distRoot, 'llms.txt')) ? fs.readFileSync(path.join(distRoot, 'llms.txt'), 'utf8') : '';
-  const hasViteCssAssets = fs.existsSync(path.join(distRoot, 'assets')) && collectFiles(path.join(distRoot, 'assets'), file => file.endsWith('.css')).length > 0;
+  const staticStylesheetPath = path.join(distRoot, 'assets', 'static.css');
+  const hasStaticStylesheet = fs.existsSync(staticStylesheetPath);
+  const hasCssAssets = fs.existsSync(path.join(distRoot, 'assets')) && collectFiles(path.join(distRoot, 'assets'), file => file.endsWith('.css')).length > 0;
+  if (!hasStaticStylesheet) failures.push('missing dist/assets/static.css');
   if (!robots.includes('User-agent: OAI-SearchBot')) failures.push('robots.txt missing OAI-SearchBot policy');
   if (!robots.includes('User-agent: GPTBot')) failures.push('robots.txt missing GPTBot policy');
 
@@ -2144,7 +2215,8 @@ const verify = () => {
     if (!html.startsWith('<!doctype html>')) failures.push(`${entry.frontmatter.slug}: missing doctype`);
     if (!/<main\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing main`);
     if (!/<article\b/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing article`);
-    if (hasViteCssAssets && !/href="\/assets\/[^"]+\.css"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing compiled lander stylesheet link`);
+    if (!html.includes('href="/assets/static.css"')) failures.push(`${entry.frontmatter.slug}: missing static lander stylesheet link`);
+    if (hasCssAssets && !/href="\/assets\/[^"]+\.css"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing lander stylesheet link`);
     if (/src="\/assets\/[^"]+\.js"/i.test(html)) failures.push(`${entry.frontmatter.slug}: static route includes SPA JavaScript bundle`);
     const pageTitleH1Count = (html.match(/<h1\b[^>]*class="[^"]*(?:hero-heading|docs-title|blog-post-title|blog-list-title)[^"]*"/gi) ?? []).length;
     if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
@@ -2163,7 +2235,7 @@ const verify = () => {
       if (!/\shref=/.test(anchor[1])) failures.push(`${entry.frontmatter.slug}: internal anchor without href`);
     }
     if (!entry.frontmatter.noindex) {
-      const internalLinks = entry.rendered.links.filter(link => link.internal).length + entry.frontmatter.related.length + (entry.frontmatter.parent ? 1 : 0);
+      const internalLinks = entry.rendered.links.filter(link => link.internal).length + relatedSlugsFor(entry, registry).length + (entry.frontmatter.parent ? 1 : 0);
       if (internalLinks === 0) failures.push(`${entry.frontmatter.slug}: indexable page has no internal links`);
     }
     if (entry.frontmatter.contentType === 'comparison' && !/compare|comparison|versus|difference|different|vs\.| vs /i.test(`${entry.frontmatter.title} ${entry.frontmatter.intent} ${entry.rendered.text}`)) {

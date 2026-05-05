@@ -3,6 +3,221 @@
   "@graph": [
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/does-mdwrk-require-a-server/#webpage",
+      "url": "https://mdwrk.com/answers/does-mdwrk-require-a-server/",
+      "name": "Does MdWrk Require A Server?",
+      "headline": "Does MdWrk require a server?",
+      "description": "MdWrk does not require a hosted server for normal Markdown editing; networked flows are explicit integrations.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/does-mdwrk-require-a-server/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does MdWrk require a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk does not require a hosted server for normal Markdown editing. Sync, package discovery, and deployment are explicit networked workflows."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/does-mdwrk-require-a-server/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Does MdWrk require a server?",
+          "item": "https://mdwrk.com/answers/does-mdwrk-require-a-server/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/#webpage",
+      "url": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/",
+      "name": "How Do MdWrk Theme Packs Work?",
+      "headline": "How do MdWrk theme packs work?",
+      "description": "MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do MdWrk theme packs work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk theme packs target governed token and surface contracts instead of patching product internals."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How do MdWrk theme packs work?",
+          "item": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/#webpage",
+      "url": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/",
+      "name": "How Does MdWrk Store Markdown Locally?",
+      "headline": "How does MdWrk store Markdown locally?",
+      "description": "MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless users choose an integration.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does MdWrk store Markdown locally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk uses browser-local persistence for workspace state so normal authoring can remain local-first."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How does MdWrk store Markdown locally?",
+          "item": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/#webpage",
+      "url": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/",
+      "name": "What Is A Local-First Markdown Workspace? | MdWrk",
+      "headline": "What is a local-first Markdown workspace?",
+      "description": "A local-first Markdown workspace keeps normal writing, preview, and organization local while sync and hosted integrations remain optional paths.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a local-first Markdown workspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is an authoring environment where normal Markdown writing, preview, and organization work locally first, while sync and hosted integrations remain optional."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What is a local-first Markdown workspace?",
+          "item": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/#webpage",
+      "url": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/",
+      "name": "What Is An Offline Markdown Editor? | MdWrk",
+      "headline": "What is an offline Markdown editor?",
+      "description": "An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an offline Markdown editor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a Markdown editor that keeps normal writing and preview available without requiring a live hosted authoring backend."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What is an offline Markdown editor?",
+          "item": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/updates/launch/#webpage",
       "url": "https://mdwrk.com/updates/launch/",
       "name": "MdWrk launch notes for a static local-first Markdown lander",
@@ -41,6 +256,178 @@
           "position": 2,
           "name": "MdWrk launch notes",
           "item": "https://mdwrk.com/updates/launch/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/local-first-markdown-editors/#webpage",
+      "url": "https://mdwrk.com/compare/local-first-markdown-editors/",
+      "name": "Local-First Markdown Editors | MdWrk Comparison",
+      "headline": "Local-first Markdown editors",
+      "description": "Compare local-first Markdown editors by storage defaults, browser/PWA support, preview behavior, package reuse, and extension boundaries.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/local-first-markdown-editors/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What should I compare in local-first Markdown editors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compare storage defaults, offline behavior, preview quality, package reuse, extension boundaries, and export or sync policy."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/local-first-markdown-editors/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Local-first Markdown editors",
+          "item": "https://mdwrk.com/compare/local-first-markdown-editors/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-obsidian/#webpage",
+      "url": "https://mdwrk.com/compare/mdwrk-vs-obsidian/",
+      "name": "MdWrk Vs Obsidian | Local-First Markdown Comparison",
+      "headline": "MdWrk vs Obsidian",
+      "description": "Compare MdWrk and Obsidian for local-first Markdown writing, package reuse, workspace behavior, privacy boundaries, and extensions.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-obsidian/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should I choose MdWrk over Obsidian?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose MdWrk when browser/PWA authoring, reusable package surfaces, and governed extension contracts matter more than graph-oriented personal knowledge management."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-obsidian/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk vs Obsidian",
+          "item": "https://mdwrk.com/compare/mdwrk-vs-obsidian/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-typora/#webpage",
+      "url": "https://mdwrk.com/compare/mdwrk-vs-typora/",
+      "name": "MdWrk Vs Typora | Markdown Workspace Comparison",
+      "headline": "MdWrk vs Typora",
+      "description": "Compare MdWrk and Typora for local-first Markdown writing, live preview, package reuse, workspace organization, and extension surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-typora/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should I choose MdWrk over Typora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose MdWrk when workspace organization, browser/PWA delivery, package reuse, and extension contracts matter more than a minimal single-document writing surface."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-typora/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk vs Typora",
+          "item": "https://mdwrk.com/compare/mdwrk-vs-typora/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/#webpage",
+      "url": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/",
+      "name": "MdWrk Vs VS Code Markdown | Markdown Workspace Comparison",
+      "headline": "MdWrk vs VS Code Markdown",
+      "description": "Compare MdWrk and VS Code Markdown workflows for writing, preview, local-first behavior, package reuse, and extension contracts.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should I choose MdWrk over VS Code Markdown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose MdWrk when Markdown writing, preview, local-first workspace behavior, and package reuse should be the primary product surface."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk vs VS Code Markdown",
+          "item": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/"
         }
       ]
     },
@@ -203,6 +590,261 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/extension-runtime/#webpage",
+      "url": "https://mdwrk.com/features/extension-runtime/",
+      "name": "Extension Runtime | MdWrk",
+      "headline": "Extension runtime",
+      "description": "MdWrk extensions use governed runtime, manifest, compatibility, and trust surfaces instead of patching the client directly.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/extension-runtime/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the MdWrk extension runtime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The extension runtime is the governed host surface for adding commands, panes, settings, and integrations to MdWrk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do extensions patch the client directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Extensions are expected to use documented manifests, compatibility rules, lifecycle hooks, and trust boundaries."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/extension-runtime/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Extension runtime",
+          "item": "https://mdwrk.com/features/extension-runtime/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/github-sync/#webpage",
+      "url": "https://mdwrk.com/features/github-sync/",
+      "name": "GitHub Sync | MdWrk",
+      "headline": "GitHub sync",
+      "description": "MdWrk treats GitHub sync as an optional repository integration path rather than the default authoring storage layer.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/github-sync/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does MdWrk support GitHub-oriented workflows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk documents GitHub-oriented sync and repository workflows as optional integration paths."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is GitHub the default storage layer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MdWrk's normal authoring story remains local-first, with GitHub as an explicit integration."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/github-sync/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "GitHub sync",
+          "item": "https://mdwrk.com/features/github-sync/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/indexeddb-markdown-storage/#webpage",
+      "url": "https://mdwrk.com/features/indexeddb-markdown-storage/",
+      "name": "IndexedDB Markdown Storage | MdWrk",
+      "headline": "IndexedDB Markdown storage",
+      "description": "MdWrk uses browser-local persistence so workspace state can remain on the user device during normal authoring.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/indexeddb-markdown-storage/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does MdWrk store Markdown locally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk uses browser-local persistence for workspace state so normal authoring can remain local-first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does local storage prevent sync?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Sync and export workflows can be explicit integrations without becoming the default storage layer."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/indexeddb-markdown-storage/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "IndexedDB Markdown storage",
+          "item": "https://mdwrk.com/features/indexeddb-markdown-storage/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/live-preview/#webpage",
+      "url": "https://mdwrk.com/features/live-preview/",
+      "name": "Live Markdown Preview | MdWrk",
+      "headline": "Live Markdown preview",
+      "description": "MdWrk pairs Markdown source editing with live preview through reusable editor and renderer package surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/live-preview/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does MdWrk include live Markdown preview?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk pairs Markdown source editing with rendered preview through shared editor and renderer surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is preview behavior reusable outside the app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MdWrk documents renderer and editor packages so product teams can adopt the same package family directly."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/live-preview/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Live Markdown preview",
+          "item": "https://mdwrk.com/features/live-preview/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/pwa-markdown-editor/#webpage",
+      "url": "https://mdwrk.com/features/pwa-markdown-editor/",
+      "name": "PWA Markdown Editor | MdWrk",
+      "headline": "PWA Markdown editor",
+      "description": "MdWrk can run as an installable PWA Markdown editor with browser-based authoring, preview, and workspace navigation.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/pwa-markdown-editor/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is MdWrk a PWA Markdown editor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk is designed to support an installable PWA workflow for browser-based Markdown writing, preview, and workspace navigation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does PWA use replace the browser workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The PWA path is an app-like shell for the same local-first Markdown workspace rather than a separate product model."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/pwa-markdown-editor/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "PWA Markdown editor",
+          "item": "https://mdwrk.com/features/pwa-markdown-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/#webpage",
       "url": "https://mdwrk.com/",
       "name": "MdWrk — Local-first Markdown workspace for writing, preview, and extensions",
@@ -231,6 +873,221 @@
       "@id": "https://mdwrk.com/#website",
       "name": "MdWrk",
       "url": "https://mdwrk.com/"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/extension-runtime/#webpage",
+      "url": "https://mdwrk.com/packages/extension-runtime/",
+      "name": "Extension Runtime Package | MdWrk",
+      "headline": "@mdwrk/extension-runtime",
+      "description": "The @mdwrk/extension-runtime package provides portable runtime utilities for governed MdWrk extension behavior.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/extension-runtime/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is @mdwrk/extension-runtime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the portable package for MdWrk extension runtime behavior, lifecycle, and host-facing contracts."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/extension-runtime/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "@mdwrk/extension-runtime",
+          "item": "https://mdwrk.com/packages/extension-runtime/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/markdown-editor-react/#webpage",
+      "url": "https://mdwrk.com/packages/markdown-editor-react/",
+      "name": "Markdown Editor React Package | MdWrk",
+      "headline": "@mdwrk/markdown-editor-react",
+      "description": "The @mdwrk/markdown-editor-react package provides React Markdown editor components for embedding MdWrk-style authoring surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/markdown-editor-react/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is @mdwrk/markdown-editor-react?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the React editor package for embedding MdWrk-style Markdown authoring surfaces."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/markdown-editor-react/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "@mdwrk/markdown-editor-react",
+          "item": "https://mdwrk.com/packages/markdown-editor-react/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-core/#webpage",
+      "url": "https://mdwrk.com/packages/markdown-renderer-core/",
+      "name": "Markdown Renderer Core Package | MdWrk",
+      "headline": "@mdwrk/markdown-renderer-core",
+      "description": "The @mdwrk/markdown-renderer-core package provides self-contained Markdown parsing and rendering utilities for package-level preview and HTML output.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-core/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is @mdwrk/markdown-renderer-core?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the package-level Markdown parsing and rendering surface used by MdWrk renderer workflows."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-core/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "@mdwrk/markdown-renderer-core",
+          "item": "https://mdwrk.com/packages/markdown-renderer-core/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-react/#webpage",
+      "url": "https://mdwrk.com/packages/markdown-renderer-react/",
+      "name": "Markdown Renderer React Package | MdWrk",
+      "headline": "@mdwrk/markdown-renderer-react",
+      "description": "The @mdwrk/markdown-renderer-react package provides React bindings for rendering Markdown through the same package family used by MdWrk.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-react/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is @mdwrk/markdown-renderer-react?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the React binding package for rendering Markdown through MdWrk's renderer family."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/markdown-renderer-react/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "@mdwrk/markdown-renderer-react",
+          "item": "https://mdwrk.com/packages/markdown-renderer-react/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/theme-contract/#webpage",
+      "url": "https://mdwrk.com/packages/theme-contract/",
+      "name": "Theme Contract Package | MdWrk",
+      "headline": "@mdwrk/theme-contract",
+      "description": "The @mdwrk/theme-contract package defines theme token and compatibility contracts for MdWrk editor, preview, extension, and lander surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/theme-contract/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is @mdwrk/theme-contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the package that defines governed theme tokens and compatibility surfaces for MdWrk packages and apps."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/theme-contract/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "@mdwrk/theme-contract",
+          "item": "https://mdwrk.com/packages/theme-contract/"
+        }
+      ]
     },
     {
       "@type": "WebPage",
@@ -272,6 +1129,135 @@
           "position": 2,
           "name": "Privacy policy",
           "item": "https://mdwrk.com/privacy/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/proof/browser-support/#webpage",
+      "url": "https://mdwrk.com/proof/browser-support/",
+      "name": "Browser Support Proof | MdWrk",
+      "headline": "Browser support proof",
+      "description": "MdWrk documents browser and PWA behavior as governed public product surfaces with static lander evidence.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/proof/browser-support/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does MdWrk present browser support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk presents browser and PWA behavior through static pages, package documentation, and governed verification artifacts."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/proof/browser-support/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Browser support proof",
+          "item": "https://mdwrk.com/proof/browser-support/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/proof/markdown-support/#webpage",
+      "url": "https://mdwrk.com/proof/markdown-support/",
+      "name": "Markdown Support Proof | MdWrk",
+      "headline": "Markdown support proof",
+      "description": "MdWrk aligns Markdown editing and preview behavior with reusable renderer and editor package surfaces.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/proof/markdown-support/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does MdWrk prove Markdown support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk links Markdown support claims to renderer and editor packages, examples, documentation, and generated public artifacts."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/proof/markdown-support/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown support proof",
+          "item": "https://mdwrk.com/proof/markdown-support/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/proof/package-surfaces/#webpage",
+      "url": "https://mdwrk.com/proof/package-surfaces/",
+      "name": "Package Surfaces Proof | MdWrk",
+      "headline": "Package surfaces proof",
+      "description": "MdWrk exposes reusable package surfaces separately from the MdWrk-specific marketing and documentation content pack.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/proof/package-surfaces/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does package surface proof show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It shows that reusable packages own shape and behavior while MdWrk content owns product claims, positioning, pages, and proof language."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/proof/package-surfaces/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Package surfaces proof",
+          "item": "https://mdwrk.com/proof/package-surfaces/"
         }
       ]
     },
@@ -323,6 +1309,49 @@
           "position": 2,
           "name": "Security notes",
           "item": "https://mdwrk.com/security/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/trust/privacy-boundary/#webpage",
+      "url": "https://mdwrk.com/trust/privacy-boundary/",
+      "name": "Privacy Boundary | MdWrk",
+      "headline": "Privacy boundary",
+      "description": "MdWrk keeps normal authoring local-first and makes sync, export, repository movement, and hosted integrations explicit boundaries.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/trust/privacy-boundary/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is MdWrk's privacy boundary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk keeps normal Markdown authoring local-first and treats sync, export, repository movement, and hosted integrations as explicit boundaries."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/trust/privacy-boundary/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy boundary",
+          "item": "https://mdwrk.com/trust/privacy-boundary/"
         }
       ]
     },

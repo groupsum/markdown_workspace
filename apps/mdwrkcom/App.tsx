@@ -70,9 +70,12 @@ const App: React.FC = () => {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<GenericLanderView />} />
+          <Route path="/features/local-first-markdown-workspace/" element={<GenericLanderView />} />
+          <Route path="/features/offline-markdown-editor/" element={<GenericLanderView />} />
           <Route path="/features/pwa-markdown-editor/" element={<GenericLanderView />} />
           <Route path="/features/indexeddb-markdown-storage/" element={<GenericLanderView />} />
           <Route path="/features/live-preview/" element={<GenericLanderView />} />
+          <Route path="/features/theme-packs/" element={<GenericLanderView />} />
           <Route path="/features/extension-runtime/" element={<GenericLanderView />} />
           <Route path="/features/github-sync/" element={<GenericLanderView />} />
           <Route path="/features/*" element={<FeatureView />} />

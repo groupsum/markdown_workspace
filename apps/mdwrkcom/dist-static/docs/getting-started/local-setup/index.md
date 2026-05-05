@@ -35,7 +35,7 @@ npm run dev:client
 Run the lander during development:
 
 ```bash
-npm run dev:lander
+npm run dev:mdwrkcom
 ```
 
 Build the client:
@@ -47,7 +47,7 @@ npm run build -w apps/client
 Build the lander:
 
 ```bash
-npm run build -w apps/lander
+npm run build -w apps/mdwrkcom
 ```
 
 ## Self-hosting notes
@@ -55,7 +55,7 @@ npm run build -w apps/lander
 The lander is a static site build. Set `VITE_SITE_URL` at build time so `robots.txt` and `sitemap.xml` use the correct public origin.
 
 ```bash
-VITE_SITE_URL=https://mdwrk.com npm run build -w apps/lander
+VITE_SITE_URL=https://mdwrk.com npm run build -w apps/mdwrkcom
 ```
 
 The public lander is intended to sit behind a reverse proxy. Docker Compose in this repository must keep services internal-only rather than exposing ports directly.

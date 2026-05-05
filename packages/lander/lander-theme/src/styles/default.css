@@ -1,107 +1,201 @@
-:root {
+:root,
+:root[data-lander-theme="lander-light"],
+[data-lander-theme="lander-light"] {
   --lander-bg: #ffffff;
-  --lander-fg: #111111;
-  --lander-muted: #5f6368;
-  --lander-accent: #2454d6;
-  --lander-panel: #f6f7f9;
-  --lander-border: #d9dde4;
-  --lander-radius: 8px;
-  --lander-max-width: 1120px;
+  --lander-app-bg: #f8fafc;
+  --lander-panel: #ffffff;
+  --lander-panel-muted: #eff6ff;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #ffffff;
+  --lander-fg: #0f172a;
+  --lander-fg-muted: #475569;
+  --lander-fg-subtle: #64748b;
+  --lander-heading-fg: #0f172a;
+  --lander-border: rgba(15, 23, 42, 0.12);
+  --lander-border-strong: rgba(15, 23, 42, 0.2);
+  --lander-accent: #4f46e5;
+  --lander-accent-strong: #4338ca;
+  --lander-accent-alt: #0891b2;
+  --lander-accent-soft: rgba(79, 70, 229, 0.12);
+  --lander-selection-fg: #312e81;
+  --lander-radius: 0.75rem;
+  --lander-max-width: 1280px;
+  --lander-shadow: rgba(15, 23, 42, 0.12);
+  color-scheme: light;
 }
 
+[data-lander-theme="lander-dark"],
 [data-lander-theme="dark"],
 .dark {
-  --lander-bg: #101214;
-  --lander-fg: #f4f6f8;
-  --lander-muted: #aeb6c2;
-  --lander-accent: #7aa2ff;
-  --lander-panel: #191d22;
-  --lander-border: #303741;
+  --lander-bg: #020617;
+  --lander-app-bg: #020617;
+  --lander-panel: #0f172a;
+  --lander-panel-muted: #111c32;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #020617;
+  --lander-fg: #f8fafc;
+  --lander-fg-muted: #94a3b8;
+  --lander-fg-subtle: #64748b;
+  --lander-heading-fg: #ffffff;
+  --lander-border: rgba(148, 163, 184, 0.18);
+  --lander-border-strong: rgba(148, 163, 184, 0.32);
+  --lander-accent: #818cf8;
+  --lander-accent-strong: #a5b4fc;
+  --lander-accent-alt: #22d3ee;
+  --lander-accent-soft: rgba(129, 140, 248, 0.14);
+  --lander-selection-fg: #e0e7ff;
+  --lander-shadow: rgba(0, 0, 0, 0.28);
+  color-scheme: dark;
 }
 
 .lander-page {
+  background:
+    radial-gradient(circle at top left, var(--lander-accent-soft), transparent 32%),
+    linear-gradient(180deg, var(--lander-app-bg) 0%, var(--lander-panel-muted) 100%);
   color: var(--lander-fg);
 }
 
 .lander-page__inner,
 .lander-page__section {
-  width: min(100% - 32px, var(--lander-max-width));
+  width: min(calc(100% - 2rem), var(--lander-max-width));
   margin: 0 auto;
 }
 
 .lander-page__hero {
-  padding: 72px 0 48px;
+  padding: 8rem 0 5rem;
+  background: var(--lander-app-bg);
 }
 
 .lander-page__eyebrow,
 .lander-page__muted {
-  color: var(--lander-muted);
+  color: var(--lander-fg-muted);
+}
+
+.lander-page__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--lander-border);
+  border-radius: 9999px;
+  background: var(--lander-panel-muted);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.lander-page__title,
+.lander-page h1 {
+  color: var(--lander-heading-fg);
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
 .lander-page__title {
-  margin: 0;
-  font-size: 3rem;
-  line-height: 1.05;
+  margin: 1.25rem 0 0;
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  line-height: 1;
 }
 
 .lander-page__intro {
-  max-width: 760px;
-  color: var(--lander-muted);
+  max-width: 48rem;
+  margin-top: 1.5rem;
+  color: var(--lander-fg-muted);
   font-size: 1.125rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .lander-page__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
 }
 
 .lander-page__card,
 .lander-page__panel {
   border: 1px solid var(--lander-border);
-  border-radius: var(--lander-radius);
-  background: var(--lander-panel);
-  padding: 20px;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  box-shadow: 0 18px 50px var(--lander-shadow);
+  padding: 1.5rem;
+}
+
+.lander-page__card h3,
+.lander-page__panel h2,
+.lander-page__section > h2 {
+  color: var(--lander-heading-fg);
+}
+
+.lander-page__card p,
+.lander-page__panel p {
+  color: var(--lander-fg-muted);
+  line-height: 1.65;
 }
 
 .lander-page__button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+  gap: 1rem;
+  margin-top: 1.875rem;
 }
 
 .lander-page__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--lander-border);
-  border-radius: var(--lander-radius);
-  padding: 10px 14px;
+  border: 1px solid var(--lander-border-strong);
+  border-radius: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.25rem;
   color: var(--lander-fg);
+  font-weight: 700;
   text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.lander-page__button:hover {
+  background: var(--lander-panel-muted);
 }
 
 .lander-page__button--primary {
   border-color: var(--lander-accent);
   background: var(--lander-accent);
   color: #ffffff;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--lander-accent) 28%, transparent);
+}
+
+.lander-page__button--primary:hover {
+  border-color: var(--lander-accent-strong);
+  background: var(--lander-accent-strong);
 }
 
 .lander-page__section {
-  padding: 36px 0;
+  padding: 4rem 0;
+}
+
+.lander-page__section > h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.875rem, 5vw, 2.75rem);
+  line-height: 1.1;
 }
 
 .lander-page__comparison {
   width: 100%;
   border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  box-shadow: 0 18px 50px var(--lander-shadow);
 }
 
 .lander-page__comparison th,
 .lander-page__comparison td {
   border: 1px solid var(--lander-border);
-  padding: 12px;
+  padding: 0.875rem 1rem;
   text-align: left;
   vertical-align: top;
+}
+
+.lander-page__comparison th {
+  background: var(--lander-panel-muted);
+  color: var(--lander-heading-fg);
 }

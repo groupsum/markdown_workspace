@@ -32,7 +32,7 @@ services:
     container_name: markdown_workspace_lander
     build:
       context: .
-      dockerfile: apps/lander/Dockerfile
+      dockerfile: apps/mdwrkcom/Dockerfile
       args:
         <<: *common-env
     restart: unless-stopped
