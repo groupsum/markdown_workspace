@@ -115,6 +115,7 @@ assert.match(staticCompiler, /<div class="demo-preview-pane is-preview-visible" 
 assert.match(staticCompiler, /Render Engine: @mdwrk\/markdown-renderer-core/, 'Static home demo statusbar must identify the static renderer package.');
 assert.match(staticCompiler, /data-static-demo-words>\$\{demoWordCount\} words<\/span><span data-static-demo-chars>\$\{homeDemoMarkdown\.length\} chars<\/span>/, 'Static home demo statusbar must expose source-derived word and character counts.');
 assert.match(staticCompiler, /renderStaticDemoScript\(\)/, 'Static home must include the inline demo synchronization script.');
+assert.ok(staticCompiler.includes(`return '<div class="markdown-renderer-host lander-markdown"><div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape">' + html.join('\\\\n') + '</div></div>';`), 'Static home live preview updates must preserve the renderer markdown-body theme scope.');
 assert.match(staticCompiler, /<section id="privacy" class="privacy-section">/, 'Static home privacy section must render.');
 assert.match(staticCompiler, /Your Data Stays on <span class="privacy-heading-accent">Your Device<\/span>/, 'Static home privacy heading must keep the device-local promise.');
 assert.match(staticCompiler, /Privacy Standard: Verified Local/, 'Static home privacy badge must be visible.');

@@ -542,6 +542,72 @@
   }
 }
 
+@media (max-width: 479px) and (max-aspect-ratio: 3/4) {
+  .workspace-stage,
+  .editor-pane-container,
+  .editor-pane-shell,
+  .editor-pane-body,
+  .editor-pane-column,
+  .workspace-markdown-renderer-shell,
+  .preview-pane,
+  .preview-pane .markdown-body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .workspace-markdown-renderer-shell {
+    --preview-pane-inline-padding: clamp(8px, 2.5vw, 12px);
+    --preview-pane-block-start-padding: 38px;
+    padding-block: var(--preview-pane-block-start-padding) 14px;
+  }
+
+  .preview-pane-overlay-actions {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .preview-pane-overlay-btn {
+    width: 25px;
+    height: 25px;
+  }
+
+  .preview-pane .markdown-body {
+    margin-inline: 0;
+    font-size: calc(0.9rem * var(--ui-scale));
+  }
+
+  .preview-pane .markdown-body h1 {
+    font-size: clamp(1.55rem, 8vw, calc(2em * var(--ui-scale)));
+  }
+
+  .view-toolbar {
+    max-width: 100%;
+    padding: 5px 4px calc(5px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .view-toolbar-group {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .view-toolbar-btn {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+
+  .view-toolbar-divider {
+    height: 16px;
+    margin: 0 2px;
+    flex: 0 0 1px;
+  }
+}
+
 @media (max-width: 900px) and (hover: none) and (pointer: coarse) {
   .view-toolbar {
     border-bottom: 0 !important;

@@ -22,6 +22,31 @@ describe('chassis header and status bar fit-to-screen contract', () => {
     expect(responsiveCss).not.toContain('overflow: hidden;');
   });
 
+  it('keeps the xs portrait preview pane and command rails inside the viewport width', () => {
+    const responsiveCss = read('./base/chassis/responsive-small.css');
+    const editorCss = read('./base/ui-editor.css');
+
+    expect(responsiveCss).toContain('@media (max-width: 479px) and (max-aspect-ratio: 3/4)');
+    expect(responsiveCss).toContain('--rail-height: 34px;');
+    expect(responsiveCss).toContain('--status-height: 0px;');
+    expect(responsiveCss).toContain('.action-rail {');
+    expect(responsiveCss).toContain('max-width: 100vw;');
+    expect(responsiveCss).toContain('.rail-btn {');
+    expect(responsiveCss).toContain('flex: 0 0 var(--rail-btn-size);');
+    expect(responsiveCss).toContain('grid-template-columns: minmax(0, 1fr) max-content;');
+    expect(responsiveCss).toContain('.zoom-display {');
+    expect(responsiveCss).toContain('min-width: 34px;');
+    expect(responsiveCss).toContain('.header-btn {');
+    expect(responsiveCss).toContain('flex: 0 0 24px;');
+    expect(responsiveCss).toContain('display: none !important;');
+
+    expect(editorCss).toContain('@media (max-width: 479px) and (max-aspect-ratio: 3/4)');
+    expect(editorCss).toContain('--preview-pane-inline-padding: clamp(8px, 2.5vw, 12px);');
+    expect(editorCss).toContain('.view-toolbar-group {');
+    expect(editorCss).toContain('flex-wrap: wrap;');
+    expect(editorCss).toContain('max-width: 100%;');
+  });
+
   it('keeps status bar content on a single controlled row with runtime ellipsis', () => {
     const layoutCss = read('./base/chassis/layout.css');
     const statusCss = read('./base/chassis/status-bar.css');

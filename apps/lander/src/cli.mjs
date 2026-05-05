@@ -1488,7 +1488,7 @@ const renderStaticDemoScript = () => `<script>
 
           if (inCode) html.push('<pre class="md-code-block md-code-surface"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>');
           flushBlocks();
-          return '<div class="markdown-renderer-host lander-markdown">' + html.join('\\n') + '</div>';
+          return '<div class="markdown-renderer-host lander-markdown"><div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape">' + html.join('\\n') + '</div></div>';
         };
 
         const update = () => {

@@ -293,3 +293,131 @@
     z-index: auto;
   }
 }
+
+@media (max-width: 479px) and (max-aspect-ratio: 3/4) {
+  :root {
+    --rail-height: 34px;
+    --rail-btn-size: 28px;
+    --panel-header-height: 26px;
+    --editor-padding: 10px;
+    --status-height: 0px;
+  }
+
+  .chassis-root,
+  .chassis-scaler,
+  .workspace-manifold,
+  .workspace-stage,
+  .workspace-sidebar,
+  .action-rail,
+  .status-bar {
+    max-width: 100vw;
+    min-width: 0;
+  }
+
+  .action-rail {
+    justify-content: flex-start;
+    gap: 2px;
+    padding: 2px 3px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .rail-group {
+    flex: 0 0 auto;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .rail-spacer {
+    display: none;
+  }
+
+  .rail-btn {
+    width: var(--rail-btn-size);
+    min-width: var(--rail-btn-size);
+    min-height: var(--rail-btn-size);
+    flex: 0 0 var(--rail-btn-size);
+    padding: 4px;
+  }
+
+  .workspace-sidebar:not(.is-collapsed) {
+    height: min(38%, 220px);
+  }
+
+  .app-header {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .header-left {
+    padding: 0;
+  }
+
+  .header-brand,
+  .header-brand-title {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .header-brand-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: calc(10px * var(--ui-scale));
+    gap: 4px;
+  }
+
+  .header-right {
+    min-width: 0;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .header-controls {
+    gap: 3px;
+    max-width: 100%;
+  }
+
+  .zoom-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .zoom-control {
+    gap: 1px;
+    height: 24px;
+    padding: 1px 2px;
+  }
+
+  .zoom-btn {
+    width: 18px;
+    height: 18px;
+  }
+
+  .zoom-display {
+    min-width: 34px;
+    padding: 0 3px;
+    font-size: calc(8px * var(--ui-scale));
+  }
+
+  .header-btn-group,
+  .app-grid.mode-work .header-btn-group,
+  .app-grid.mode-git .header-btn-group {
+    gap: 1px;
+    padding: 1px;
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .header-btn {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  }
+
+  .status-bar {
+    display: none !important;
+  }
+}
