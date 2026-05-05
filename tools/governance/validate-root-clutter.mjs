@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import { fail } from './common.mjs';
 
+const rootMediaArtifactPattern = /\.(avif|gif|jpe?g|png|svg|webp)$/i;
+
 const allowlist = new Set([
   '.changeset',
   '.codex',
@@ -47,6 +49,12 @@ const allowlist = new Set([
 ]);
 
 const entries = fs.readdirSync('.', { withFileTypes: true }).map((entry) => entry.name);
+const rootMediaArtifacts = entries.filter((name) => rootMediaArtifactPattern.test(name));
+
+if (rootMediaArtifacts.length > 0) {
+  fail(`Root media artifacts are disallowed. Move generated images under artifacts/: ${rootMediaArtifacts.sort().join(', ')}`);
+}
+
 const disallowed = entries.filter((name) => !allowlist.has(name));
 
 if (disallowed.length > 0) {

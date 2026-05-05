@@ -23,6 +23,8 @@ This specification defines repository cleanliness, documentation governance, and
 ### 3) Root-clutter validation
 - Top-level repository files and folders are restricted to the allowlist in `tools/governance/validate-root-clutter.mjs`.
 - New top-level files must be intentionally added to the allowlist with a governance review.
+- Generated screenshots, browser captures, and media artifacts must not be written at the repository root.
+- Root-level media files (`*.avif`, `*.gif`, `*.jpg`, `*.jpeg`, `*.png`, `*.svg`, `*.webp`) are disallowed and must live under an intentional `artifacts/` subdirectory.
 
 ### 4) Generated-artifact protection
 - Generated artifact roots must include guardrail documentation:
