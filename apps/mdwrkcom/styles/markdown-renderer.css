@@ -245,6 +245,8 @@
   background: var(--lander-inline-code-bg);
   color: var(--lander-inline-code-fg);
   border: 1px solid color-mix(in srgb, var(--lander-inline-code-fg) 24%, transparent);
+  border-radius: 0.35rem;
+  padding: 0.12rem 0.35rem;
   font-weight: 600;
 }
 
@@ -271,6 +273,24 @@
 .lander-markdown .markdown-body .md-code-surface pre > code,
 .lander-markdown .markdown-body .md-code-surface > div {
   overflow-x: auto !important;
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block,
+.lander-markdown .md-code-block,
+.lander-markdown pre {
+  padding: 1rem 1.125rem;
+}
+
+.lander-markdown .markdown-body pre code,
+.lander-markdown .markdown-body .md-code-surface pre > code,
+.lander-markdown pre code {
+  display: block;
+  padding: 0;
+}
+
+.lander-markdown .markdown-body .md-code-surface > div {
+  padding: 1rem 1.125rem;
 }
 
 .lander-markdown .markdown-body .md-code-header,

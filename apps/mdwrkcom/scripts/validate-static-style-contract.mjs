@@ -54,5 +54,9 @@ assert.ok(sourceBase.includes('@keyframes lander-blob'), 'Base source must keep 
 assert.ok(sourceMarkdown.includes('.lander-markdown'), 'Markdown renderer source must keep the lander markdown scope.');
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body h2'), 'Markdown renderer source must theme lander markdown headings.');
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body p'), 'Markdown renderer source must theme lander markdown body text.');
+assert.ok(sourceMarkdown.includes('padding: 0.12rem 0.35rem'), 'Markdown renderer source must pad inline code text away from its border.');
+assert.ok(sourceMarkdown.includes('padding: 1rem 1.125rem'), 'Markdown renderer source must pad fenced code text away from its border.');
+assert.ok(css.includes('padding:.12rem .35rem') || css.includes('padding:0.12rem 0.35rem'), 'Static stylesheet must pad inline code text away from its border.');
+assert.ok(css.includes('padding:1rem 1.125rem'), 'Static stylesheet must pad fenced code text away from its border.');
 
 console.log('Static style contract validation passed.');

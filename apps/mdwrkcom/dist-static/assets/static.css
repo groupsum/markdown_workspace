@@ -19,3 +19,7 @@
 .lander-markdown .markdown-body blockquote p,.lander-markdown .markdown-body blockquote li{color:var(--lander-fg-muted)}
 .lander-markdown .markdown-body table{width:100%;border-collapse:collapse;margin:1.5rem 0;border:1px solid var(--lander-border);border-radius:.75rem;overflow:hidden}
 .lander-markdown .markdown-body th,.lander-markdown .markdown-body td{border:1px solid var(--lander-border);padding:.75rem .875rem;text-align:left;vertical-align:top}
+.lander-markdown .markdown-body :not(pre)>code,.lander-markdown .markdown-body .md-inline-code,.lander-markdown .md-inline-code,.lander-markdown :not(pre)>code{border-radius:.35rem;padding:.12rem .35rem}
+.lander-markdown .markdown-body pre,.lander-markdown .markdown-body .md-code-block,.lander-markdown .md-code-block,.lander-markdown pre{padding:1rem 1.125rem}
+.lander-markdown .markdown-body pre code,.lander-markdown .markdown-body .md-code-surface pre>code,.lander-markdown pre code{display:block;padding:0}
+.lander-markdown .markdown-body .md-code-surface>div{padding:1rem 1.125rem}
