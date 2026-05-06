@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1058"
+number: 1058
+slug: "public-lander-locale-url-discovery-architecture"
+title: "Public Lander Locale URL and Discovery Architecture"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk public lander localization shall use explicit, crawlable locale URL variants. The default English route remains the root canonical route, including `https://mdwrk.com/` for the home page and `/docs/quickstart/` for the default quickstart. Non-default translated variants use locale subdirectories such as `/es/docs/quickstart/`."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created focused public lander international SEO discovery ADR."
+    at: "2026-05-06T11:09:33Z"
+references: []
+body: |-
+  # ADR-1058: Public Lander Locale URL and Discovery Architecture
+  
+  ## Decision
+  
+  MdWrk public lander localization shall use explicit, crawlable locale URL variants. The default English route remains the root canonical route, including `https://mdwrk.com/` for the home page and `/docs/quickstart/` for the default quickstart. Non-default translated variants use locale subdirectories such as `/es/docs/quickstart/`.
+  
+  The lander shall not use query parameters, cookies, IP geolocation, `Accept-Language`, or automatic redirects as the canonical discovery mechanism for localized public content. Locale switching is a user action and crawler discovery must work from static links, HTML alternate metadata, and sitemap alternates.
+  
+  ## Rationale
+  
+  Google's multi-regional and multilingual guidance favors distinct URLs for localized variants and warns against relying on automatic redirection or request negotiation because crawlers may not discover every version. MdWrk already governs static lander discoverability through ADR-1053 and static compiler output through ADR-1055, so locale discovery belongs as a focused extension of those decisions rather than a new general SEO architecture.
+  
+  ## Consequences
+  
+  Locale metadata, route validation, hreflang alternates, sitemap alternates, visible locale switcher links, and crawler-safe rendering become first-class public lander obligations. Initial translation coverage may be partial, but any shipped localized route must be statically reachable and must not imply that the whole site is translated.

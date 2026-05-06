@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "learn how to start using MdWrk"
 contentType: "docs"
 updatedAt: "2026-05-04"
+locale: "en"
+localeGroup: "docs-quickstart"
 subtitle: "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries."
 faqs:
   - question: "What should new MdWrk users read first?"

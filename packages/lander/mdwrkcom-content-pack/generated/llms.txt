@@ -8,6 +8,7 @@ MdWrk is a local-first Markdown workspace with static, verifiable public documen
 - [What is a local-first Markdown workspace?](https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/) - A local-first Markdown workspace keeps normal writing, preview, and organization local while sync and hosted integrations remain optional paths.
 - [What is an offline Markdown editor?](https://mdwrk.com/answers/what-is-an-offline-markdown-editor/) - An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing.
 - [MdWrk launch notes](https://mdwrk.com/updates/launch/) - The MdWrk launch article explains why the public lander is compiled from Markdown into static HTML, JSON-LD, LLM indexes, and Markdown mirrors.
+- [Compare MdWrk](https://mdwrk.com/compare/) - Compare MdWrk with Markdown editors and workspace tools by local-first behavior, browser delivery, package reuse, extension boundaries, and proof artifacts.
 - [Local-first Markdown editors](https://mdwrk.com/compare/local-first-markdown-editors/) - Compare local-first Markdown editors by storage defaults, browser/PWA support, preview behavior, package reuse, and extension boundaries.
 - [MdWrk vs Obsidian](https://mdwrk.com/compare/mdwrk-vs-obsidian/) - Compare MdWrk and Obsidian for local-first Markdown writing, package reuse, workspace behavior, privacy boundaries, and extensions.
 - [MdWrk vs Typora](https://mdwrk.com/compare/mdwrk-vs-typora/) - Compare MdWrk and Typora for local-first Markdown writing, live preview, package reuse, workspace organization, and extension surfaces.
@@ -15,8 +16,10 @@ MdWrk is a local-first Markdown workspace with static, verifiable public documen
 - [Extensions](https://mdwrk.com/docs/extensions/) - MdWrk extension docs explain manifests, host boundaries, runtime surfaces, capability expectations, and trust policy for Markdown workspace extensions.
 - [MdWrk quickstart](https://mdwrk.com/docs/quickstart/) - Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.
 - [Theme packs](https://mdwrk.com/docs/theme-packs/) - MdWrk theme pack docs explain theme contracts, token surfaces, visual boundaries, and how Markdown workspace styling remains inspectable.
+- [Inicio rapido de MdWrk](https://mdwrk.com/es/docs/quickstart/) - Empieza con MdWrk entendiendo el modelo local-first, el editor Markdown, la vista previa y el papel de la documentacion estatica publica.
 - [Extension runtime](https://mdwrk.com/features/extension-runtime/) - MdWrk extensions use governed runtime, manifest, compatibility, and trust surfaces instead of patching the client directly.
 - [GitHub sync](https://mdwrk.com/features/github-sync/) - MdWrk treats GitHub sync as an optional repository integration path rather than the default authoring storage layer.
+- [MdWrk features](https://mdwrk.com/features/) - Explore MdWrk features for local-first Markdown writing, offline authoring, PWA use, browser-local storage, preview, themes, extensions, and GitHub sync.
 - [IndexedDB Markdown storage](https://mdwrk.com/features/indexeddb-markdown-storage/) - MdWrk uses browser-local persistence so workspace state can remain on the user device during normal authoring.
 - [Live Markdown preview](https://mdwrk.com/features/live-preview/) - MdWrk pairs Markdown source editing with live preview through reusable editor and renderer package surfaces.
 - [PWA Markdown editor](https://mdwrk.com/features/pwa-markdown-editor/) - MdWrk can run as an installable PWA Markdown editor with browser-based authoring, preview, and workspace navigation.

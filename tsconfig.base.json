@@ -103,11 +103,11 @@
       "@mdwrk/lander-core/*": [
         "packages/lander/lander-core/dist/*"
       ],
-      "@mdwrk/lander-schema": [
-        "packages/lander/lander-schema/dist/index.d.ts"
+      "@mdwrk/structured-data": [
+        "packages/shared/structured-data/dist/index.d.ts"
       ],
-      "@mdwrk/lander-schema/*": [
-        "packages/lander/lander-schema/dist/*"
+      "@mdwrk/structured-data/*": [
+        "packages/shared/structured-data/dist/*"
       ],
       "@mdwrk/lander-seo": [
         "packages/lander/lander-seo/dist/index.d.ts"

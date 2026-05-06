@@ -22,6 +22,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/does-mdwrk-require-a-server/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -55,6 +56,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -88,6 +90,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -121,6 +124,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -154,6 +158,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -195,6 +200,7 @@
         "markdown"
       ],
       "canonical": "https://mdwrk.com/updates/launch/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -258,6 +264,7 @@
       ],
       "tags": [],
       "canonical": "https://mdwrk.com/compare/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -323,6 +330,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/compare/local-first-markdown-editors/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -356,6 +364,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/compare/mdwrk-vs-obsidian/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -389,6 +398,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/compare/mdwrk-vs-typora/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -422,6 +432,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -466,6 +477,7 @@
         "runtime"
       ],
       "canonical": "https://mdwrk.com/docs/extensions/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -494,7 +506,7 @@
   },
   {
     "sourcePath": "content/pages/docs/quickstart.md",
-    "sourceHash": "ca418cae01c8c1770a5faf0bf977369234daf0e709f86fe32c39d7cdf75bc6f0",
+    "sourceHash": "492ab13aa3de0820633ea363b04128796ef8d937befaef3d8c9e48301fee7d1e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/quickstart/",
@@ -522,6 +534,8 @@
         "markdown"
       ],
       "canonical": "https://mdwrk.com/docs/quickstart/",
+      "locale": "en",
+      "localeGroup": "docs-quickstart",
       "noindex": false,
       "llmsInclude": true
     },
@@ -587,6 +601,7 @@
         "styling"
       ],
       "canonical": "https://mdwrk.com/docs/theme-packs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -611,6 +626,71 @@
       ],
       "links": [],
       "wordCount": 129
+    }
+  },
+  {
+    "sourcePath": "content/pages/es/docs/quickstart.md",
+    "sourceHash": "b5b192ec722819ec01a876255f2bad1ec15b03043f478accb4ea29d31ca33058",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/es/docs/quickstart/",
+      "title": "MdWrk inicio rapido para escribir y previsualizar Markdown local",
+      "description": "Empieza con MdWrk entendiendo el modelo local-first, el editor Markdown, la vista previa y el papel de la documentacion estatica publica.",
+      "h1": "Inicio rapido de MdWrk",
+      "subtitle": "Empieza con MdWrk abriendo el espacio de trabajo, escribiendo Markdown en el editor fuente, revisando la vista previa renderizada y usando la documentacion para entender almacenamiento local, exportacion y extensiones.",
+      "entity": "MdWrk",
+      "intent": "aprender como empezar con MdWrk",
+      "contentType": "docs",
+      "updatedAt": "2026-05-06",
+      "faqs": [
+        {
+          "question": "Que deberian leer primero los nuevos usuarios de MdWrk?",
+          "answer": "Los nuevos usuarios deberian leer el inicio rapido, la pagina del editor Markdown sin conexion y la pagina del espacio local-first antes de explorar extensiones y temas."
+        }
+      ],
+      "parent": "/",
+      "related": [
+        "/docs/quickstart/",
+        "/docs/extensions/"
+      ],
+      "tags": [
+        "docs",
+        "quickstart",
+        "markdown"
+      ],
+      "canonical": "https://mdwrk.com/es/docs/quickstart/",
+      "locale": "es",
+      "translationOf": "/docs/quickstart/",
+      "localeGroup": "docs-quickstart",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Este inicio rapido explica el modelo publico de MdWrk antes de la implementacion. No depende de que el dominio de produccion este activo y no requiere que una aplicacion cliente renderice la pagina para explicar el producto. Crea Tu Primer Documento Empieza con un documento Markdown y conserva el texto fuente como contenido legible. MdWrk trata Markdown como contenido portable, por eso el documento debe seguir siendo util fuera de un servicio alojado o de un estado propietario del editor. Crea o abre un archivo Markdown en el espacio de trabajo local. Agrega un titulo, una introduccion breve y al menos una seccion estructurada. Guarda el archivo como Markdown plano para que el origen siga siendo portable. Revisa la vista previa renderizada antes de compartir o exportar. Revisa La Vista Previa Usa la vista previa para comprobar encabezados, listas, enlaces, bloques de codigo y estructura del documento. El renderizador forma parte de la historia de paquetes, asi que la documentacion publica debe describir el resultado renderizado con terminos que desarrolladores y autores puedan inspeccionar. Entiende Los Limites Locales MdWrk se describe como local-first y privacy-first. Eso significa que la documentacion debe explicar que permanece local, cuando ocurre la exportacion, cuando la sincronizacion puede contactar un servicio externo y como entran las extensiones en el modelo de confianza. Continua Por La Documentacion Despues de esta pagina, lee la documentacion de extensiones, paquetes de temas y comparaciones. El lander estatico genera HTML, espejos Markdown, JSON-LD, datos de sitemap, politica robots y archivos de indice LLM desde el mismo registro de contenido.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "crea-tu-primer-documento",
+          "text": "Crea Tu Primer Documento"
+        },
+        {
+          "depth": 2,
+          "id": "revisa-la-vista-previa",
+          "text": "Revisa La Vista Previa"
+        },
+        {
+          "depth": 2,
+          "id": "entiende-los-limites-locales",
+          "text": "Entiende Los Limites Locales"
+        },
+        {
+          "depth": 2,
+          "id": "continua-por-la-documentacion",
+          "text": "Continua Por La Documentacion"
+        }
+      ],
+      "links": [],
+      "wordCount": 259
     }
   },
   {
@@ -640,6 +720,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/features/extension-runtime/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -677,6 +758,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/features/github-sync/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -719,6 +801,7 @@
       ],
       "tags": [],
       "canonical": "https://mdwrk.com/features/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -808,6 +891,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/features/indexeddb-markdown-storage/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -845,6 +929,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/features/live-preview/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -882,6 +967,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/features/pwa-markdown-editor/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -926,6 +1012,7 @@
         "static-lander"
       ],
       "canonical": "https://mdwrk.com/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -980,6 +1067,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/extension-runtime/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1013,6 +1101,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-editor-react/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1046,6 +1135,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-renderer-core/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1079,6 +1169,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-renderer-react/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1112,6 +1203,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/theme-contract/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1152,6 +1244,7 @@
         "policy"
       ],
       "canonical": "https://mdwrk.com/privacy/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1206,6 +1299,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/proof/browser-support/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1239,6 +1333,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/proof/markdown-support/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1272,6 +1367,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/proof/package-surfaces/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1316,6 +1412,7 @@
         "extensions"
       ],
       "canonical": "https://mdwrk.com/security/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1370,6 +1467,7 @@
       "related": [],
       "tags": [],
       "canonical": "https://mdwrk.com/trust/privacy-boundary/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1409,6 +1507,7 @@
         "docs"
       ],
       "canonical": "https://mdwrk.com/docs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1491,6 +1590,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/installation/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1573,6 +1673,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/browser-use/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1639,6 +1740,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/pwa-installation/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1710,6 +1812,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/local-setup/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1781,6 +1884,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/standalone-modules/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1852,6 +1956,7 @@
         "Getting Started"
       ],
       "canonical": "https://mdwrk.com/docs/getting-started/configuration/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -1923,6 +2028,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/editor-basics/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2030,6 +2136,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/advanced-formatting/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2152,6 +2259,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/rendering-and-preview/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2264,6 +2372,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/offline-markdown-editor/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2341,6 +2450,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/local-first-markdown-workspace/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2418,6 +2528,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/privacy-first-markdown-editor/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2495,6 +2606,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/markdown-file-manager/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2572,6 +2684,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/markdown-preview-editor/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2649,6 +2762,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/extension-host/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2726,6 +2840,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/theme-packs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2803,6 +2918,7 @@
         "Features"
       ],
       "canonical": "https://mdwrk.com/features/developer-documentation/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2880,6 +2996,7 @@
         "Integrations"
       ],
       "canonical": "https://mdwrk.com/docs/github-sync/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -2941,6 +3058,7 @@
         "Authoring"
       ],
       "canonical": "https://mdwrk.com/docs/authoring/overview/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3013,6 +3131,7 @@
         "Authoring"
       ],
       "canonical": "https://mdwrk.com/docs/authoring/extensions/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3084,6 +3203,7 @@
         "Authoring"
       ],
       "canonical": "https://mdwrk.com/docs/authoring/theme-packs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3150,6 +3270,7 @@
         "Authoring"
       ],
       "canonical": "https://mdwrk.com/docs/authoring/language-packs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3216,6 +3337,7 @@
         "Extensions"
       ],
       "canonical": "https://mdwrk.com/docs/extensions/extension-platform/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3277,6 +3399,7 @@
         "Extensions"
       ],
       "canonical": "https://mdwrk.com/docs/extensions/theme-studio-and-host-surfaces/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3333,6 +3456,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/obsidian/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3400,6 +3524,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/typora/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3467,6 +3592,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/code/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3534,6 +3660,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/marktext/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3601,6 +3728,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/zettlr/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3668,6 +3796,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/notion/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3735,6 +3864,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/logseq/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3802,6 +3932,7 @@
         "Compares"
       ],
       "canonical": "https://mdwrk.com/compare/standard-markdown-editors/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3869,6 +4000,7 @@
         "Archive"
       ],
       "canonical": "https://mdwrk.com/docs/archive/ui-refresh-1-3-28/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3920,6 +4052,7 @@
         "Archive"
       ],
       "canonical": "https://mdwrk.com/docs/archive/ui-refresh-1-3-29/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -3970,6 +4103,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4076,6 +4210,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/settings-simplification-for-daily-flow/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4158,6 +4293,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/docs-surface-realignment/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4270,6 +4406,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/extension-host-rollout/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4382,6 +4519,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/workspace-files-and-git-ops-packages/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4464,6 +4602,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/desktop-release-and-android-verification/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4541,6 +4680,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/retained-client-versions-and-desktop-shell/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4623,6 +4763,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/screenshot-matrix-and-browser-sidebars/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4690,6 +4831,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/extension-compatibility-and-publish-gates/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4772,6 +4914,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/governed-releases-and-package-docs/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4859,6 +5002,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/client-split-out-backstory/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -4966,6 +5110,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5053,6 +5198,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/responsive-authoring-and-export/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5120,6 +5266,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/markdown-workspace-launch/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5206,6 +5353,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/author/cobycloud/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5311,6 +5459,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/archive/2026-05/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5356,6 +5505,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/archive/2026-04/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5431,6 +5581,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/archive/2026-03/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5481,6 +5632,7 @@
         "updates"
       ],
       "canonical": "https://mdwrk.com/updates/archive/2026-01/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5538,6 +5690,7 @@
         "legal"
       ],
       "canonical": "https://mdwrk.com/legal/privacy/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },
@@ -5595,6 +5748,7 @@
         "legal"
       ],
       "canonical": "https://mdwrk.com/legal/terms/",
+      "locale": "en",
       "noindex": false,
       "llmsInclude": true
     },

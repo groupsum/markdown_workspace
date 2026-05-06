@@ -190,6 +190,21 @@ const normalizeRouteSlug = (value) => {
   return `/${trimmed.replace(/^\/+|\/+$/g, '')}/`;
 };
 const canonicalForSlug = (slug) => `${siteUrl}${slug}`;
+const localeToHrefLang = (value) => String(value ?? 'en').trim().replace(/_/g, '-').split('-')
+  .filter(Boolean)
+  .map((part, index) => index === 0 ? part.toLowerCase() : part.toUpperCase())
+  .join('-') || 'en';
+const hrefLangToHtmlLang = (value) => localeToHrefLang(value).toLowerCase();
+const isDefaultLocale = (locale) => localeToHrefLang(locale).split('-')[0] === 'en';
+const localeRoutePrefix = (locale) => `/${localeToHrefLang(locale).toLowerCase().split('-')[0]}/`;
+const localeBaseSlug = (slug, locale) => {
+  const normalizedSlug = normalizeRouteSlug(slug);
+  if (isDefaultLocale(locale)) return normalizedSlug;
+  const prefix = localeRoutePrefix(locale);
+  return normalizedSlug.startsWith(prefix)
+    ? normalizeRouteSlug(normalizedSlug.slice(prefix.length - 1))
+    : normalizedSlug;
+};
 
 const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, slug.replace(/^\/|\/$/g, ''));
 
@@ -456,6 +471,9 @@ const normalizeFrontmatter = (frontmatter) => ({
   related: Object.freeze(frontmatter.related ?? []),
   tags: Object.freeze(frontmatter.tags ?? []),
   canonical: frontmatter.canonical || canonicalForSlug(frontmatter.slug),
+  locale: localeToHrefLang(frontmatter.locale || 'en'),
+  translationOf: frontmatter.translationOf ? normalizeRouteSlug(frontmatter.translationOf) : undefined,
+  localeGroup: frontmatter.localeGroup,
   noindex: frontmatter.noindex ?? false,
   llmsInclude: frontmatter.llmsInclude ?? true,
 });
@@ -764,18 +782,54 @@ const buildRenderRegistry = (entries) => {
   const failures = [];
   const bySlug = new Map();
   const byContentType = new Map();
+  const localeGroups = new Map();
   for (const entry of entries) {
     if (bySlug.has(entry.frontmatter.slug)) {
       failures.push(`Duplicate generated static route ${entry.frontmatter.slug}`);
       continue;
     }
     bySlug.set(entry.frontmatter.slug, entry);
+    if (entry.frontmatter.canonical.includes('?')) failures.push(`${entry.sourcePath}: canonical URL must not use locale query parameters`);
+    if (/[?&](?:lang|locale|hl)=/i.test(entry.frontmatter.slug) || /[?&](?:lang|locale|hl)=/i.test(entry.frontmatter.canonical)) {
+      failures.push(`${entry.sourcePath}: locale routing must not use query parameters`);
+    }
+    if (!isDefaultLocale(entry.frontmatter.locale) && !entry.frontmatter.slug.startsWith(localeRoutePrefix(entry.frontmatter.locale))) {
+      failures.push(`${entry.sourcePath}: non-default locale route must start with ${localeRoutePrefix(entry.frontmatter.locale)}`);
+    }
+    if (isDefaultLocale(entry.frontmatter.locale) && /^\/[a-z]{2}\//.test(entry.frontmatter.slug) && entry.frontmatter.localeGroup) {
+      failures.push(`${entry.sourcePath}: default English locale must use the root canonical route, not a locale subdirectory`);
+    }
+    if (entry.frontmatter.translationOf && !bySlug.has(entry.frontmatter.translationOf) && entry.frontmatter.translationOf !== entry.frontmatter.slug) {
+      const targetExists = entries.some(item => item.frontmatter.slug === entry.frontmatter.translationOf);
+      if (!targetExists) failures.push(`${entry.sourcePath}: missing translationOf target ${entry.frontmatter.translationOf}`);
+    }
+    if (entry.frontmatter.localeGroup) {
+      const group = localeGroups.get(entry.frontmatter.localeGroup) ?? [];
+      group.push(entry);
+      localeGroups.set(entry.frontmatter.localeGroup, group);
+    }
     const typed = byContentType.get(entry.frontmatter.contentType) ?? [];
     typed.push(entry);
     byContentType.set(entry.frontmatter.contentType, typed);
   }
+  for (const [localeGroup, groupEntries] of localeGroups.entries()) {
+    const defaultEntries = groupEntries.filter(entry => isDefaultLocale(entry.frontmatter.locale));
+    if (defaultEntries.length !== 1) failures.push(`Locale group ${localeGroup} must have exactly one default English route`);
+    const seenLocales = new Set();
+    for (const entry of groupEntries) {
+      const locale = localeToHrefLang(entry.frontmatter.locale);
+      if (seenLocales.has(locale)) failures.push(`Locale group ${localeGroup} repeats locale ${locale}`);
+      seenLocales.add(locale);
+      if (!isDefaultLocale(locale) && !entry.frontmatter.translationOf) {
+        failures.push(`${entry.sourcePath}: localized route must set translationOf`);
+      }
+      if (entry.frontmatter.translationOf && defaultEntries[0] && entry.frontmatter.translationOf !== defaultEntries[0].frontmatter.slug) {
+        failures.push(`${entry.sourcePath}: translationOf must point to ${defaultEntries[0].frontmatter.slug}`);
+      }
+    }
+  }
   if (failures.length) fail('Static lander route registry validation failed:', failures);
-  return { entries, bySlug, byContentType };
+  return { entries, bySlug, byContentType, localeGroups };
 };
 
 const toDisplayDate = (date) => {
@@ -1200,9 +1254,33 @@ const buildRegistry = (entries) => {
     byContentType.set(frontmatter.contentType, typed);
   }
 
+  const localeGroups = new Map();
+  for (const entry of entries) {
+    const { frontmatter } = entry;
+    if (frontmatter.canonical.includes('?')) failures.push(`${entry.sourcePath}: canonical URL must not use locale query parameters`);
+    if (/[?&](?:lang|locale|hl)=/i.test(frontmatter.slug) || /[?&](?:lang|locale|hl)=/i.test(frontmatter.canonical)) {
+      failures.push(`${entry.sourcePath}: locale routing must not use query parameters`);
+    }
+    if (!isDefaultLocale(frontmatter.locale) && !frontmatter.slug.startsWith(localeRoutePrefix(frontmatter.locale))) {
+      failures.push(`${entry.sourcePath}: non-default locale route must start with ${localeRoutePrefix(frontmatter.locale)}`);
+    }
+    if (isDefaultLocale(frontmatter.locale) && /^\/[a-z]{2}\//.test(frontmatter.slug) && frontmatter.localeGroup) {
+      failures.push(`${entry.sourcePath}: default English locale must use the root canonical route, not a locale subdirectory`);
+    }
+    if (frontmatter.translationOf && frontmatter.translationOf === frontmatter.slug) {
+      failures.push(`${entry.sourcePath}: translationOf must point at the default source route, not itself`);
+    }
+    if (frontmatter.localeGroup) {
+      const group = localeGroups.get(frontmatter.localeGroup) ?? [];
+      group.push(entry);
+      localeGroups.set(frontmatter.localeGroup, group);
+    }
+  }
+
   for (const entry of entries) {
     const { frontmatter, rendered } = entry;
     if (frontmatter.parent && !bySlug.has(frontmatter.parent)) failures.push(`${entry.sourcePath}: missing parent target ${frontmatter.parent}`);
+    if (frontmatter.translationOf && !bySlug.has(frontmatter.translationOf)) failures.push(`${entry.sourcePath}: missing translationOf target ${frontmatter.translationOf}`);
     for (const related of frontmatter.related) {
       if (!bySlug.has(related)) failures.push(`${entry.sourcePath}: missing related target ${related}`);
     }
@@ -1212,12 +1290,69 @@ const buildRegistry = (entries) => {
     }
   }
 
+  for (const [localeGroup, groupEntries] of localeGroups.entries()) {
+    const defaultEntries = groupEntries.filter(entry => isDefaultLocale(entry.frontmatter.locale));
+    if (defaultEntries.length !== 1) failures.push(`Locale group ${localeGroup} must have exactly one default English route`);
+    const seenLocales = new Set();
+    for (const entry of groupEntries) {
+      const locale = localeToHrefLang(entry.frontmatter.locale);
+      if (seenLocales.has(locale)) failures.push(`Locale group ${localeGroup} repeats locale ${locale}`);
+      seenLocales.add(locale);
+      if (!isDefaultLocale(locale) && !entry.frontmatter.translationOf) {
+        failures.push(`${entry.sourcePath}: localized route must set translationOf`);
+      }
+      if (entry.frontmatter.translationOf && defaultEntries[0] && entry.frontmatter.translationOf !== defaultEntries[0].frontmatter.slug) {
+        failures.push(`${entry.sourcePath}: translationOf must point to ${defaultEntries[0].frontmatter.slug}`);
+      }
+    }
+  }
+
   if (failures.length) fail('Static lander registry validation failed:', failures);
   return {
     entries,
     bySlug,
     byContentType,
+    localeGroups,
   };
+};
+
+const alternateLinksFor = (entry, registry) => {
+  const group = entry.frontmatter.localeGroup ? registry.localeGroups.get(entry.frontmatter.localeGroup) ?? [] : [];
+  if (group.length < 2) return [];
+  const indexableGroup = group.filter(item => !item.frontmatter.noindex);
+  const defaultEntry = indexableGroup.find(item => isDefaultLocale(item.frontmatter.locale));
+  const alternates = indexableGroup
+    .map(item => ({
+      hreflang: localeToHrefLang(item.frontmatter.locale),
+      href: item.frontmatter.canonical,
+      slug: item.frontmatter.slug,
+      label: localeToHrefLang(item.frontmatter.locale),
+      current: item.frontmatter.slug === entry.frontmatter.slug,
+    }))
+    .sort((a, b) => a.hreflang.localeCompare(b.hreflang));
+  if (defaultEntry && !alternates.some(item => item.hreflang === 'x-default')) {
+    alternates.push({
+      hreflang: 'x-default',
+      href: defaultEntry.frontmatter.canonical,
+      slug: defaultEntry.frontmatter.slug,
+      label: 'Default',
+      current: defaultEntry.frontmatter.slug === entry.frontmatter.slug,
+    });
+  }
+  return alternates;
+};
+
+const renderHeadAlternateLinks = (entry, registry) =>
+  alternateLinksFor(entry, registry)
+    .map(item => `<link rel="alternate" hreflang="${escapeAttribute(item.hreflang)}" href="${escapeAttribute(item.href)}">`)
+    .join('\n    ');
+
+const renderLocaleSwitcher = (entry, registry) => {
+  const alternates = alternateLinksFor(entry, registry).filter(item => item.hreflang !== 'x-default');
+  if (!alternates.length) return '';
+  return `<div class="locale-switcher" aria-label="Language versions">
+                ${alternates.map(item => `<a class="locale-switcher-link${item.current ? ' is-current' : ''}" href="${escapeAttribute(item.slug)}" hreflang="${escapeAttribute(item.hreflang)}" lang="${escapeAttribute(hrefLangToHtmlLang(item.hreflang))}">${escapeHtml(item.label)}</a>`).join('\n                ')}
+              </div>`;
 };
 
 const breadcrumbsFor = (entry, registry) => {
@@ -1257,7 +1392,7 @@ const breadcrumbsFor = (entry, registry) => {
 };
 
 const jsonLdFor = (entry, registry) => {
-  const url = canonicalForSlug(entry.frontmatter.slug);
+  const url = entry.frontmatter.canonical;
   const metadataImage = getArticleMetadataImage(entry);
   const image = toAbsoluteUrl(metadataImage?.src);
   const graph = [
@@ -1270,7 +1405,7 @@ const jsonLdFor = (entry, registry) => {
       description: entry.frontmatter.description,
       dateModified: entry.frontmatter.updatedAt,
       image,
-      inLanguage: 'en-US',
+      inLanguage: localeToHrefLang(entry.frontmatter.locale),
     },
   ];
   if (entry.frontmatter.slug === '/') {
@@ -1920,7 +2055,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
   const demoPreview = renderMarkdown(homeDemoMarkdown).html;
   const demoWordCount = stripMarkdown(homeDemoMarkdown).split(/\s+/).filter(Boolean).length;
   return `<!doctype html>
-<html lang="en" data-lander-theme="lander-light">
+<html lang="${escapeAttribute(hrefLangToHtmlLang(entry.frontmatter.locale))}" data-lander-theme="lander-light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1928,6 +2063,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
     <title>${escapeHtml(entry.frontmatter.title)}</title>
     <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
     <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
+    ${renderHeadAlternateLinks(entry, registry)}
     <meta name="robots" content="${entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow'}">
     <meta name="application-name" content="MdWrk">
     <meta property="og:site_name" content="MdWrk">
@@ -1965,6 +2101,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
                 <span class="hero-meta-label">ESM CDN</span>
                 <a href="${escapeAttribute(process.env.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace')}" target="_blank" rel="noopener noreferrer" class="hero-meta-link">${escapeHtml(process.env.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace')}</a>
               </div>
+              ${renderLocaleSwitcher(entry, registry)}
             </div>
           </section>
 
@@ -2045,7 +2182,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
   const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
   const toc = renderArticleToc(entry);
   return `<!doctype html>
-<html lang="en" data-lander-theme="lander-light">
+<html lang="${escapeAttribute(hrefLangToHtmlLang(entry.frontmatter.locale))}" data-lander-theme="lander-light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2053,6 +2190,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
     <title>${escapeHtml(entry.frontmatter.title)}</title>
     <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
     <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
+    ${renderHeadAlternateLinks(entry, registry)}
     <meta name="robots" content="${robots}">
     <meta name="application-name" content="MdWrk">
     <meta property="og:site_name" content="MdWrk">
@@ -2073,6 +2211,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
             ${sidebar}
             <section class="docs-main">
               <div class="docs-content-wrap">
+                ${renderLocaleSwitcher(entry, registry)}
                 ${renderArticleCard(entry, registry)}
                 ${toc}
               </div>
@@ -2142,17 +2281,23 @@ const build = () => {
     }
   }
 
-  writeFile(path.join(distRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable.map(entry => `  <url><loc>${escapeXml(canonicalForSlug(entry.frontmatter.slug))}</loc><lastmod>${entry.frontmatter.updatedAt}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+  writeFile(path.join(distRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${indexable.map(entry => {
+    const alternates = alternateLinksFor(entry, registry);
+    return `  <url><loc>${escapeXml(entry.frontmatter.canonical)}</loc><lastmod>${entry.frontmatter.updatedAt}</lastmod>${alternates.map(item => `<xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`).join('')}</url>`;
+  }).join('\n')}\n</urlset>\n`);
   writeFile(path.join(distRoot, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
   writeFile(path.join(distRoot, 'content-index.json'), JSON.stringify(indexable.map(entry => ({
     slug: entry.frontmatter.slug,
-    url: canonicalForSlug(entry.frontmatter.slug),
+    url: entry.frontmatter.canonical,
     title: entry.frontmatter.title,
     description: entry.frontmatter.description,
     h1: entry.frontmatter.h1,
     subtitle: entry.frontmatter.subtitle,
     intent: entry.frontmatter.intent,
     contentType: entry.frontmatter.contentType,
+    locale: entry.frontmatter.locale,
+    translationOf: entry.frontmatter.translationOf,
+    localeGroup: entry.frontmatter.localeGroup,
     updatedAt: entry.frontmatter.updatedAt,
     tags: entry.frontmatter.tags,
     llmsInclude: entry.frontmatter.llmsInclude,
@@ -2177,7 +2322,7 @@ const build = () => {
     '',
     'MdWrk is a local-first Markdown workspace with static, verifiable public documentation.',
     '',
-    ...llmsEligible.map(entry => `- [${entry.frontmatter.h1}](${canonicalForSlug(entry.frontmatter.slug)}) - ${entry.frontmatter.description}`),
+    ...llmsEligible.map(entry => `- [${entry.frontmatter.h1}](${entry.frontmatter.canonical}) - ${entry.frontmatter.description}`),
     '',
   ].join('\n'));
   writeFile(path.join(distRoot, 'llms-full.txt'), [
@@ -2186,7 +2331,7 @@ const build = () => {
     ...llmsEligible.flatMap(entry => [
       `## ${entry.frontmatter.h1}`,
       '',
-      `URL: ${canonicalForSlug(entry.frontmatter.slug)}`,
+      `URL: ${entry.frontmatter.canonical}`,
       '',
       entry.frontmatter.subtitle ?? entry.frontmatter.description,
       '',
@@ -2247,8 +2392,20 @@ const verify = () => {
     if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
     if (!html.includes(`<title>${escapeHtml(entry.frontmatter.title)}</title>`)) failures.push(`${entry.frontmatter.slug}: missing title`);
     if (!html.includes('name="description"')) failures.push(`${entry.frontmatter.slug}: missing meta description`);
+    if (!html.includes(`<html lang="${escapeAttribute(hrefLangToHtmlLang(entry.frontmatter.locale))}"`)) failures.push(`${entry.frontmatter.slug}: html lang mismatch`);
     if (!html.includes(`rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}"`)) failures.push(`${entry.frontmatter.slug}: canonical mismatch`);
     if (!html.includes('type="application/ld+json"')) failures.push(`${entry.frontmatter.slug}: missing JSON-LD`);
+    for (const alternate of alternateLinksFor(entry, registry)) {
+      if (!html.includes(`rel="alternate" hreflang="${escapeAttribute(alternate.hreflang)}" href="${escapeAttribute(alternate.href)}"`)) {
+        failures.push(`${entry.frontmatter.slug}: missing hreflang alternate ${alternate.hreflang}`);
+      }
+      if (!sitemap.includes(`hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}"`)) {
+        failures.push(`${entry.frontmatter.slug}: sitemap missing hreflang alternate ${alternate.hreflang}`);
+      }
+    }
+    if (alternateLinksFor(entry, registry).some(alternate => alternate.hreflang !== 'x-default') && !html.includes('class="locale-switcher')) {
+      failures.push(`${entry.frontmatter.slug}: missing visible locale switcher`);
+    }
     const shouldRenderFaqs = entry.frontmatter.slug !== '/' && entry.frontmatter.faqs.length;
     if (!entry.frontmatter.noindex && entry.frontmatter.slug !== '/' && !entry.frontmatter.faqs.length) failures.push(`${entry.frontmatter.slug}: indexable page missing FAQs`);
     if (shouldRenderFaqs && !html.includes('Frequently Asked Questions')) failures.push(`${entry.frontmatter.slug}: FAQ frontmatter exists but FAQ is not visible`);
@@ -2269,10 +2426,10 @@ const verify = () => {
     if (/quickstart|tutorial|how to|how-to|start using/i.test(`${entry.frontmatter.intent} ${entry.frontmatter.title}`) && !/<ol\b/i.test(html)) {
       failures.push(`${entry.frontmatter.slug}: tutorial/how-to page missing ordered steps`);
     }
-    if (!entry.frontmatter.noindex && !sitemap.includes(canonicalForSlug(entry.frontmatter.slug))) failures.push(`${entry.frontmatter.slug}: missing from sitemap`);
-    if (entry.frontmatter.noindex && sitemap.includes(canonicalForSlug(entry.frontmatter.slug))) failures.push(`${entry.frontmatter.slug}: noindex page appears in sitemap`);
+    if (!entry.frontmatter.noindex && !sitemap.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: missing from sitemap`);
+    if (entry.frontmatter.noindex && sitemap.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: noindex page appears in sitemap`);
     if (entry.frontmatter.llmsInclude && !entry.frontmatter.noindex) {
-      if (!llms.includes(canonicalForSlug(entry.frontmatter.slug))) failures.push(`${entry.frontmatter.slug}: eligible page missing from llms.txt`);
+      if (!llms.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: eligible page missing from llms.txt`);
       if (!fs.existsSync(mdPath)) failures.push(`${entry.frontmatter.slug}: missing Markdown mirror`);
       else if (stripMarkdown(fs.readFileSync(mdPath, 'utf8')).split(/\s+/).length < 40) failures.push(`${entry.frontmatter.slug}: empty or stale Markdown mirror`);
     }

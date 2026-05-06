@@ -1,0 +1,40 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2076"
+number: 2076
+slug: "public-lander-locale-switcher-contract"
+title: "Public Lander Locale Switcher Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs user-visible locale switching for localized MdWrk public lander pages."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created visible locale switcher contract for public lander international SEO."
+    at: "2026-05-06T11:10:25Z"
+references: []
+body: |-
+  # Public Lander Locale Switcher Contract
+  
+  ## Scope
+  
+  This SPEC governs user-visible locale switching for localized MdWrk public lander pages.
+  
+  ## Requirements
+  
+  1. Each localized page in a locale group shall expose visible links to available language variants.
+  2. The locale switcher shall use normal anchor links that crawlers and users can follow without client-side state.
+  3. The locale switcher shall mark available variants with hreflang-compatible labels.
+  4. Missing translations shall fall back by linking to the English canonical page rather than redirecting silently.
+  5. Locale switching shall be a user action. The lander shall not force locale selection through automatic redirects, IP geolocation, cookies, request headers, or browser language negotiation.
+  
+  ## Acceptance
+  
+  Static verification fails when localized pages emit hreflang alternates but do not expose visible switcher links, or when generated artifacts depend on JavaScript-only locale state.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1058"

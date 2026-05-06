@@ -1,6 +1,6 @@
 {
-  "name": "@mdwrk/lander-schema",
-  "version": "0.1.0",
+  "name": "@mdwrk/structured-data",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -15,18 +15,17 @@
   ],
   "sideEffects": false,
   "keywords": [
-    "lander",
+    "structured-data",
     "schema.org",
-    "json-ld"
+    "json-ld",
+    "seo",
+    "aeo",
+    "aieo"
   ],
-  "description": "Product-agnostic JSON-LD builders for portable landing sites.",
-  "dependencies": {
-    "@mdwrk/lander-content-contract": "^0.1.0",
-    "@mdwrk/lander-core": "^0.1.0"
-  },
+  "description": "Reusable Schema.org and JSON-LD builders for MdWrk apps, packages, public content, and discovery surfaces.",
   "scripts": {
-    "build": "npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",
-    "typecheck": "npm run build -w @mdwrk/lander-core && tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run typecheck",
     "prepack": "npm run build"

@@ -8,6 +8,7 @@
     "subtitle": "A direct answer for readers checking MdWrk's local-first editing boundary.",
     "intent": "does mdwrk require a server",
     "contentType": "faq",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -21,6 +22,7 @@
     "subtitle": "A direct answer about MdWrk theme pack contracts and portable styling.",
     "intent": "how do mdwrk theme packs work",
     "contentType": "faq",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -34,6 +36,7 @@
     "subtitle": "A direct answer about MdWrk local persistence and storage boundaries.",
     "intent": "how does mdwrk store markdown locally",
     "contentType": "faq",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -47,6 +50,7 @@
     "subtitle": "A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.",
     "intent": "what is a local-first markdown workspace",
     "contentType": "faq",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -60,6 +64,7 @@
     "subtitle": "A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces.",
     "intent": "what is an offline markdown editor",
     "contentType": "faq",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -73,6 +78,7 @@
     "subtitle": "The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment.",
     "intent": "MdWrk launch story",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "launch",
@@ -90,6 +96,7 @@
     "subtitle": "Use this comparison hub to choose the right Markdown workspace by storage defaults, authoring model, extension boundaries, and public proof.",
     "intent": "compare mdwrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -103,6 +110,7 @@
     "subtitle": "Use this page to evaluate Markdown tools by local-first authoring and portable product surfaces.",
     "intent": "local-first markdown editors",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -116,6 +124,7 @@
     "subtitle": "Use this comparison when local-first Markdown authoring, package reuse, and extension contracts matter.",
     "intent": "mdwrk vs obsidian",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -129,6 +138,7 @@
     "subtitle": "Use this comparison when choosing between a workspace and a focused Markdown editor.",
     "intent": "mdwrk vs typora",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -142,6 +152,7 @@
     "subtitle": "Use this comparison when deciding whether Markdown authoring should live in a focused workspace or inside a general code editor.",
     "intent": "mdwrk vs vscode markdown",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -155,6 +166,7 @@
     "subtitle": "MdWrk extensions are documented as governed workspace integrations with manifest metadata, runtime boundaries, compatibility checks, and explicit user trust policy.",
     "intent": "learn MdWrk extensions",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "extensions",
@@ -172,6 +184,8 @@
     "subtitle": "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries.",
     "intent": "learn how to start using MdWrk",
     "contentType": "docs",
+    "locale": "en",
+    "localeGroup": "docs-quickstart",
     "updatedAt": "2026-05-04",
     "tags": [
       "docs",
@@ -189,11 +203,32 @@
     "subtitle": "MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content.",
     "intent": "learn MdWrk theme packs",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "themes",
       "docs",
       "styling"
+    ],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/es/docs/quickstart/",
+    "url": "https://mdwrk.com/es/docs/quickstart/",
+    "title": "MdWrk inicio rapido para escribir y previsualizar Markdown local",
+    "description": "Empieza con MdWrk entendiendo el modelo local-first, el editor Markdown, la vista previa y el papel de la documentacion estatica publica.",
+    "h1": "Inicio rapido de MdWrk",
+    "subtitle": "Empieza con MdWrk abriendo el espacio de trabajo, escribiendo Markdown en el editor fuente, revisando la vista previa renderizada y usando la documentacion para entender almacenamiento local, exportacion y extensiones.",
+    "intent": "aprender como empezar con MdWrk",
+    "contentType": "docs",
+    "locale": "es",
+    "translationOf": "/docs/quickstart/",
+    "localeGroup": "docs-quickstart",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "docs",
+      "quickstart",
+      "markdown"
     ],
     "llmsInclude": true
   },
@@ -206,6 +241,7 @@
     "subtitle": "The MdWrk extension runtime gives package authors a documented way to add commands, panes, settings, and integrations.",
     "intent": "markdown workspace extension runtime",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -219,6 +255,7 @@
     "subtitle": "GitHub sync supports repository movement for Markdown projects without making every local edit depend on a hosted backend.",
     "intent": "github sync markdown workspace",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -232,6 +269,7 @@
     "subtitle": "Browse the local-first Markdown workspace surfaces that make MdWrk useful for authors, developers, and package adopters.",
     "intent": "mdwrk features",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -245,6 +283,7 @@
     "subtitle": "Browser-local persistence keeps MdWrk's default authoring workflow independent from hosted document storage.",
     "intent": "indexeddb markdown storage",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -258,6 +297,7 @@
     "subtitle": "Live preview helps authors move between source text and rendered output without hiding the Markdown file.",
     "intent": "live markdown preview",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -271,6 +311,7 @@
     "subtitle": "MdWrk uses the browser and installable PWA surface as an app-like Markdown workspace while preserving portable web delivery.",
     "intent": "pwa markdown editor",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -284,6 +325,7 @@
     "subtitle": "MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.",
     "intent": "local-first markdown workspace",
     "contentType": "landing",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "markdown",
@@ -301,6 +343,7 @@
     "subtitle": "Use the extension runtime package when building governed commands, panes, settings, and integration surfaces.",
     "intent": "extension runtime package",
     "contentType": "package",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -314,6 +357,7 @@
     "subtitle": "Use the React editor package when another product needs a reusable Markdown authoring surface.",
     "intent": "markdown editor react package",
     "contentType": "package",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -327,6 +371,7 @@
     "subtitle": "Use the renderer core package when a product needs Markdown parsing and HTML rendering without adopting the full MdWrk client.",
     "intent": "markdown renderer core package",
     "contentType": "package",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -340,6 +385,7 @@
     "subtitle": "Use the React renderer package when a product needs MdWrk-aligned Markdown rendering inside React.",
     "intent": "markdown renderer react package",
     "contentType": "package",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -353,6 +399,7 @@
     "subtitle": "Use the theme contract package when styling needs to target governed tokens instead of private UI internals.",
     "intent": "theme contract package",
     "contentType": "package",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -366,6 +413,7 @@
     "subtitle": "MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices.",
     "intent": "MdWrk privacy policy",
     "contentType": "privacy",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "privacy",
@@ -383,6 +431,7 @@
     "subtitle": "Browser support proof connects product claims to static pages, package surfaces, and verification artifacts.",
     "intent": "mdwrk browser support proof",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -396,6 +445,7 @@
     "subtitle": "Markdown support proof keeps the product page, renderer package, editor package, and static examples aligned.",
     "intent": "mdwrk markdown support proof",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -409,6 +459,7 @@
     "subtitle": "Package surface proof explains the split between generic lander packages and MdWrk-specific content truth.",
     "intent": "mdwrk package surfaces proof",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -422,6 +473,7 @@
     "subtitle": "MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment.",
     "intent": "MdWrk security documentation",
     "contentType": "security",
+    "locale": "en",
     "updatedAt": "2026-05-04",
     "tags": [
       "security",
@@ -439,6 +491,7 @@
     "subtitle": "The privacy boundary explains what stays local by default and when content intentionally crosses into an integration.",
     "intent": "mdwrk privacy boundary",
     "contentType": "privacy",
+    "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
     "llmsInclude": true
@@ -452,6 +505,7 @@
     "subtitle": "Start using MdWrk with browser, PWA, local setup, configuration, and standalone package guidance.",
     "intent": "start using MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs"
@@ -466,6 +520,7 @@
     "h1": "Client Installation",
     "intent": "learn client installation in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -481,6 +536,7 @@
     "h1": "Browser Use",
     "intent": "learn browser use in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -496,6 +552,7 @@
     "h1": "PWA Installation",
     "intent": "learn pwa installation in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -511,6 +568,7 @@
     "h1": "Local Setup",
     "intent": "learn local setup in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -526,6 +584,7 @@
     "h1": "Standalone Modules",
     "intent": "learn standalone modules in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -541,6 +600,7 @@
     "h1": "Client Configuration",
     "intent": "learn client configuration in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -556,6 +616,7 @@
     "h1": "Editor Basics",
     "intent": "understand editor basics in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -571,6 +632,7 @@
     "h1": "Markdown Formatting",
     "intent": "understand markdown formatting in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -586,6 +648,7 @@
     "h1": "Rendering And Preview",
     "intent": "understand rendering and preview in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -601,6 +664,7 @@
     "h1": "Offline Markdown Editor",
     "intent": "understand offline markdown editor in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -616,6 +680,7 @@
     "h1": "Local-first Markdown Workspace",
     "intent": "understand local-first markdown workspace in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -631,6 +696,7 @@
     "h1": "Privacy-first Markdown Editor",
     "intent": "understand privacy-first markdown editor in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -646,6 +712,7 @@
     "h1": "Markdown File Manager",
     "intent": "understand markdown file manager in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -661,6 +728,7 @@
     "h1": "Markdown Preview Editor",
     "intent": "understand markdown preview editor in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -676,6 +744,7 @@
     "h1": "Extension Host",
     "intent": "understand extension host in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -691,6 +760,7 @@
     "h1": "Theme Packs",
     "intent": "understand theme packs in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -706,6 +776,7 @@
     "h1": "Developer Documentation",
     "intent": "understand developer documentation in MdWrk",
     "contentType": "feature",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "features",
@@ -721,6 +792,7 @@
     "h1": "Github Sync",
     "intent": "learn github sync in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -736,6 +808,7 @@
     "h1": "Authoring Overview",
     "intent": "learn authoring overview in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -751,6 +824,7 @@
     "h1": "Extension Authoring",
     "intent": "learn extension authoring in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -766,6 +840,7 @@
     "h1": "Theme Pack Authoring",
     "intent": "learn theme pack authoring in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -781,6 +856,7 @@
     "h1": "Language Pack Authoring",
     "intent": "learn language pack authoring in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -796,6 +872,7 @@
     "h1": "Extension Platform",
     "intent": "learn extension platform in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-01-22",
     "tags": [
       "docs",
@@ -811,6 +888,7 @@
     "h1": "Theme Studio And Host Surfaces",
     "intent": "learn theme studio and host surfaces in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-02-05",
     "tags": [
       "docs",
@@ -826,6 +904,7 @@
     "h1": "MdWrk Vs Obsidian",
     "intent": "compare mdwrk vs obsidian in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -841,6 +920,7 @@
     "h1": "MdWrk Vs Typora",
     "intent": "compare mdwrk vs typora in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -856,6 +936,7 @@
     "h1": "MdWrk Vs VS Code",
     "intent": "compare mdwrk vs vs code in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -871,6 +952,7 @@
     "h1": "MdWrk Vs Marktext",
     "intent": "compare mdwrk vs marktext in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -886,6 +968,7 @@
     "h1": "MdWrk Vs Zettlr",
     "intent": "compare mdwrk vs zettlr in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -901,6 +984,7 @@
     "h1": "MdWrk Vs Notion",
     "intent": "compare mdwrk vs notion in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -916,6 +1000,7 @@
     "h1": "MdWrk Vs Logseq",
     "intent": "compare mdwrk vs logseq in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -931,6 +1016,7 @@
     "h1": "MdWrk Vs Standard Markdown Editors",
     "intent": "compare mdwrk vs standard markdown editors in MdWrk",
     "contentType": "comparison",
+    "locale": "en",
     "updatedAt": "2026-05-03",
     "tags": [
       "compare",
@@ -946,6 +1032,7 @@
     "h1": "UI Refresh 1.3.28",
     "intent": "learn ui refresh 1.3.28 in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -961,6 +1048,7 @@
     "h1": "UI Refresh 1.3.29",
     "intent": "learn ui refresh 1.3.29 in MdWrk",
     "contentType": "docs",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "docs",
@@ -977,6 +1065,7 @@
     "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
     "intent": "read product updates from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-05-01",
     "tags": [
       "updates"
@@ -992,6 +1081,7 @@
     "subtitle": "MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
     "intent": "read about settings simplification gives mdwrk a faster path from installation to daily use",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-05-01",
     "tags": [
       "updates"
@@ -1007,6 +1097,7 @@
     "subtitle": "The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.",
     "intent": "read about explore the mdwrk client, packages, and extensions through a sharper docs experience",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-30",
     "tags": [
       "updates"
@@ -1022,6 +1113,7 @@
     "subtitle": "The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.",
     "intent": "read about launch extensions on the same governed host the mdwrk client uses",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-26",
     "tags": [
       "updates"
@@ -1037,6 +1129,7 @@
     "subtitle": "MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client.",
     "intent": "read about workspace files and git operations packages open a larger automation surface for mdwrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-22",
     "tags": [
       "updates"
@@ -1052,6 +1145,7 @@
     "subtitle": "MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story.",
     "intent": "read about desktop release automation and android verification sharpen mdwrk cross-platform delivery",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-14",
     "tags": [
       "updates"
@@ -1067,6 +1161,7 @@
     "subtitle": "MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption.",
     "intent": "read about retained client versions and the desktop shell expand how teams can deploy mdwrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-12",
     "tags": [
       "updates"
@@ -1082,6 +1177,7 @@
     "subtitle": "MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract.",
     "intent": "read about screenshot matrix coverage helps mdwrk prove themes across viewports and workflows",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-03",
     "tags": [
       "updates"
@@ -1097,6 +1193,7 @@
     "subtitle": "MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.",
     "intent": "read about extension compatibility gates turn mdwrk publishing into a clear quality signal",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-01",
     "tags": [
       "updates"
@@ -1112,6 +1209,7 @@
     "subtitle": "MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands.",
     "intent": "read about governed releases, ci evidence, and package docs give mdwrk a stronger public shape",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-03-31",
     "tags": [
       "updates"
@@ -1127,6 +1225,7 @@
     "subtitle": "MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.",
     "intent": "read about build with the same mdwrk editor and renderer the client ships",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-03-23",
     "tags": [
       "updates"
@@ -1142,6 +1241,7 @@
     "subtitle": "MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment.",
     "intent": "read about pwa install, zoom controls, and preview refinements make mdwrk ready for daily use",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-01-22",
     "tags": [
       "updates"
@@ -1157,6 +1257,7 @@
     "subtitle": "MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks.",
     "intent": "read about responsive authoring, keyboard speed, and html export expand mdwrk in a single day",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-01-21",
     "tags": [
       "updates"
@@ -1172,6 +1273,7 @@
     "subtitle": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
     "intent": "read about meet the markdown workspace that turns writing, preview, and themes into one fast flow",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-01-20",
     "tags": [
       "updates"
@@ -1187,6 +1289,7 @@
     "subtitle": "Product Updates by Author",
     "intent": "read cobycloud from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-05-01",
     "tags": [
       "updates"
@@ -1202,6 +1305,7 @@
     "subtitle": "Product Updates by Month",
     "intent": "read may 2026 from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-05-01",
     "tags": [
       "updates"
@@ -1217,6 +1321,7 @@
     "subtitle": "Product Updates by Month",
     "intent": "read april 2026 from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-04-30",
     "tags": [
       "updates"
@@ -1232,6 +1337,7 @@
     "subtitle": "Product Updates by Month",
     "intent": "read march 2026 from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-03-31",
     "tags": [
       "updates"
@@ -1247,6 +1353,7 @@
     "subtitle": "Product Updates by Month",
     "intent": "read january 2026 from MdWrk",
     "contentType": "update",
+    "locale": "en",
     "updatedAt": "2026-01-22",
     "tags": [
       "updates"
@@ -1261,6 +1368,7 @@
     "h1": "Privacy Policy",
     "intent": "read privacy policy",
     "contentType": "privacy",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "legal"
@@ -1275,6 +1383,7 @@
     "h1": "Terms of Service",
     "intent": "read terms of service",
     "contentType": "privacy",
+    "locale": "en",
     "updatedAt": "2026-05-02",
     "tags": [
       "legal"

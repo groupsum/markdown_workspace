@@ -1,10 +1,44 @@
-import type { FaqItem } from "@mdwrk/lander-content-contract";
-import type { BreadcrumbItem, CompiledLanderSite, CompiledPage } from "@mdwrk/lander-core";
-import { LANDER_SCHEMA_VERSION } from "./version.js";
+import { LANDER_SCHEMA_VERSION, STRUCTURED_DATA_VERSION } from "./version.js";
 
-export { LANDER_SCHEMA_VERSION };
+export { LANDER_SCHEMA_VERSION, STRUCTURED_DATA_VERSION };
 
 export type JsonLd = Record<string, unknown>;
+
+export interface StructuredDataProduct {
+  name: string;
+  slug?: string;
+  tagline?: string;
+  description?: string;
+  category?: string;
+  canonicalUrl: string;
+  logo?: { src?: string };
+  sameAs?: string[];
+}
+
+export interface StructuredDataSite {
+  product: StructuredDataProduct;
+}
+
+export interface StructuredDataBreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+export interface StructuredDataPage {
+  kind?: string;
+  slug?: string;
+  title: string;
+  description?: string;
+  h1: string;
+  canonicalUrl: string;
+  breadcrumbs: StructuredDataBreadcrumbItem[];
+  faq?: StructuredDataFaqItem[];
+}
+
+export interface StructuredDataFaqItem {
+  question: string;
+  answer: string;
+}
 
 const compact = (value: unknown): unknown => {
   if (Array.isArray(value)) return value.map(compact).filter((entry) => entry !== undefined);
@@ -18,7 +52,7 @@ const compact = (value: unknown): unknown => {
   return value;
 };
 
-export function organizationSchema(site: CompiledLanderSite): JsonLd {
+export function organizationSchema(site: StructuredDataSite): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -29,7 +63,7 @@ export function organizationSchema(site: CompiledLanderSite): JsonLd {
   }) as JsonLd;
 }
 
-export function websiteSchema(site: CompiledLanderSite): JsonLd {
+export function websiteSchema(site: StructuredDataSite): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -39,7 +73,7 @@ export function websiteSchema(site: CompiledLanderSite): JsonLd {
   }) as JsonLd;
 }
 
-export function softwareApplicationSchema(site: CompiledLanderSite): JsonLd {
+export function softwareApplicationSchema(site: StructuredDataSite): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -51,14 +85,14 @@ export function softwareApplicationSchema(site: CompiledLanderSite): JsonLd {
   }) as JsonLd;
 }
 
-export function webApplicationSchema(site: CompiledLanderSite): JsonLd {
+export function webApplicationSchema(site: StructuredDataSite): JsonLd {
   return {
     ...softwareApplicationSchema(site),
     "@type": "WebApplication",
   };
 }
 
-export function softwareSourceCodeSchema(page: CompiledPage): JsonLd {
+export function softwareSourceCodeSchema(page: StructuredDataPage): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
@@ -68,7 +102,7 @@ export function softwareSourceCodeSchema(page: CompiledPage): JsonLd {
   }) as JsonLd;
 }
 
-export function techArticleSchema(page: CompiledPage): JsonLd {
+export function techArticleSchema(page: StructuredDataPage): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -79,14 +113,14 @@ export function techArticleSchema(page: CompiledPage): JsonLd {
   }) as JsonLd;
 }
 
-export function articleSchema(page: CompiledPage): JsonLd {
+export function articleSchema(page: StructuredDataPage): JsonLd {
   return {
     ...techArticleSchema(page),
     "@type": "Article",
   };
 }
 
-export function breadcrumbSchema(items: BreadcrumbItem[]): JsonLd {
+export function breadcrumbSchema(items: StructuredDataBreadcrumbItem[]): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -99,7 +133,7 @@ export function breadcrumbSchema(items: BreadcrumbItem[]): JsonLd {
   };
 }
 
-export function faqSchema(items: FaqItem[]): JsonLd {
+export function faqSchema(items: StructuredDataFaqItem[]): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -128,7 +162,7 @@ export function itemListSchema(name: string, items: Array<{ name: string; url?: 
   };
 }
 
-export function howToSchema(page: CompiledPage): JsonLd {
+export function howToSchema(page: StructuredDataPage): JsonLd {
   return compact({
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -138,7 +172,7 @@ export function howToSchema(page: CompiledPage): JsonLd {
   }) as JsonLd;
 }
 
-export function buildJsonLdGraph(site: CompiledLanderSite, page: CompiledPage): JsonLd[] {
+export function buildJsonLdGraph(site: StructuredDataSite, page: StructuredDataPage): JsonLd[] {
   const graph: JsonLd[] = [
     organizationSchema(site),
     websiteSchema(site),

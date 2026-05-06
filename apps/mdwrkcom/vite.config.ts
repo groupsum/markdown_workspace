@@ -54,8 +54,8 @@ export default defineConfig(({ mode }) => {
             replacement: path.resolve(workspaceRoot, 'packages/lander/lander-core/dist/index.js'),
           },
           {
-            find: /^@mdwrk\/lander-schema$/,
-            replacement: path.resolve(workspaceRoot, 'packages/lander/lander-schema/dist/index.js'),
+            find: /^@mdwrk\/structured-data$/,
+            replacement: path.resolve(workspaceRoot, 'packages/shared/structured-data/dist/index.js'),
           },
           {
             find: /^@mdwrk\/lander-seo$/,

@@ -8,7 +8,7 @@ status: "accepted"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, and deployment-independent verification gate."
+summary: "This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, locale-aware static output, and deployment-independent verification gate."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -20,13 +20,17 @@ status_notes:
     status: "accepted"
     note: "Expanded generated discovery artifact requirements for sitemap robots LLM indexes Markdown mirrors and validation gates."
     at: "2026-05-06T08:43:22Z"
+  -
+    status: "accepted"
+    note: "Added locale-aware static output, hreflang, sitemap alternate, and international SEO validation responsibilities."
+    at: "2026-05-06T11:09:53Z"
 references: []
 body: |-
   # Static Lander Content Compiler Contract
   
   ## Scope
   
-  This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, and deployment-independent verification gate.
+  This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, locale-aware static output, and deployment-independent verification gate.
   
   ## Requirements
   
@@ -41,13 +45,17 @@ body: |-
   9. The compiler shall generate `content-index.json` and normalized content registry artifacts for build-time verification and downstream reporting.
   10. Visible answer and FAQ rendering shall be generated only when the source metadata or body content provides matching visible content.
   11. Internal link integrity, canonical URL integrity, JSON-LD validity, sitemap coverage, robots policy output, LLM index coverage, Markdown mirror coverage, static readability, and content registry integrity shall be checked before deployment.
-  12. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact.
+  12. Locale-aware source metadata shall be normalized into canonical route URLs, HTML language attributes, JSON-LD `inLanguage`, generated content indexes, and verification artifacts.
+  13. The compiler shall emit reciprocal HTML `hreflang` alternates and XML sitemap alternates for complete locale groups.
+  14. The compiler shall fail closed when localized routes use query parameters, when a non-default locale route is outside its locale subdirectory, when alternates are missing, or when a localized page lacks a visible locale switcher.
+  15. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact.
   
   ## Acceptance
   
-  `npm run ci -w apps/mdwrkcom` and `npm run ci:mdwrkcom` must validate source content, build the static distribution, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment.
+  `npm run ci -w apps/mdwrkcom` and `npm run ci:mdwrkcom` must validate source content, build the static distribution, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, internal link, and international SEO gates before deployment.
   
-  Feature and test rows for static compilation, generated sitemap, generated robots policy, generated LLM indexes, Markdown mirrors, content registry exports, JSON-LD graph projection, and static artifact verification must link to this SPEC.
+  Feature and test rows for static compilation, generated sitemap, generated robots policy, generated LLM indexes, Markdown mirrors, content registry exports, JSON-LD graph projection, locale-aware routes, hreflang alternates, sitemap alternates, locale switcher output, and static artifact verification must link to this SPEC.
 spec_kind: "normative"
 adr_ids:
   - "adr:1055"
+  - "adr:1058"

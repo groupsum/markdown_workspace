@@ -12,7 +12,7 @@ import type {
   SectionSpec,
 } from "@mdwrk/lander-content-contract";
 import type { CompiledLanderSite, CompiledPage } from "@mdwrk/lander-core";
-import { buildJsonLdGraph } from "@mdwrk/lander-schema";
+import { buildJsonLdGraph } from "@mdwrk/structured-data";
 import { LANDER_REACT_VERSION } from "./version.js";
 
 export { LANDER_REACT_VERSION };

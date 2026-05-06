@@ -27,3 +27,8 @@
 .lander-markdown .markdown-body ol,.lander-markdown .markdown-body .md-ol{list-style:decimal}
 .lander-markdown .markdown-body ul,.lander-markdown .markdown-body ol,.lander-markdown .markdown-body .md-ul,.lander-markdown .markdown-body .md-ol{padding-left:1.35rem}
 .lander-markdown .markdown-body li::marker{color:var(--lander-accent);font-weight:700}
+
+.locale-switcher{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.25rem}
+.hero-inner .locale-switcher{justify-content:center;margin-top:1.25rem}
+.locale-switcher-link{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;border:1px solid var(--lander-border);border-radius:.5rem;padding:0 .75rem;background:color-mix(in srgb,var(--lander-panel) 88%,transparent);color:var(--lander-fg-muted);font-size:.8rem;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:.08em}
+.locale-switcher-link:hover,.locale-switcher-link.is-current{border-color:var(--lander-accent);color:var(--lander-accent)}

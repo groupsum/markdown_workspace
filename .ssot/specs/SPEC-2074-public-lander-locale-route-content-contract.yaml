@@ -1,0 +1,43 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2074"
+number: 2074
+slug: "public-lander-locale-route-content-contract"
+title: "Public Lander Locale Route and Content Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs localized source content and route shape for the MdWrk public lander. It applies to `apps/mdwrkcom` static content and the packaged MdWrk.com content corpus."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created locale route and content contract for public lander international SEO."
+    at: "2026-05-06T11:10:05Z"
+references: []
+body: |-
+  # Public Lander Locale Route and Content Contract
+  
+  ## Scope
+  
+  This SPEC governs localized source content and route shape for the MdWrk public lander. It applies to `apps/mdwrkcom` static content and the packaged MdWrk.com content corpus.
+  
+  ## Requirements
+  
+  1. Page frontmatter may include `locale`, `translationOf`, and `localeGroup`.
+  2. Pages without `locale` are treated as English default locale pages.
+  3. The default English route stays at the root canonical path and shall not be duplicated under `/en/`.
+  4. Non-default localized pages shall use `/<locale>/<canonical-path>` route prefixes, such as `/es/docs/quickstart/`.
+  5. Locale values shall use BCP 47 style tags normalized for HTML `lang`, JSON-LD `inLanguage`, and hreflang output.
+  6. A localized page shall identify the default source page through `translationOf`.
+  7. A locale group shall contain one default English source route and zero or more localized variants.
+  8. A localized page shall use one primary visible language for body content, page metadata, FAQ or answer sections, and generated mirror content.
+  
+  ## Acceptance
+  
+  Static source validation fails when localized routes omit `translationOf`, when locale groups repeat locale tags, when non-default localized routes are outside their locale subdirectory, or when locale routing uses query parameters.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1058"

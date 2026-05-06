@@ -909,6 +909,194 @@
       "kind": "feature"
     },
     {
+      "id": "feat:json-ld-profile-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-faq",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-qa",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-product",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-product-snippet",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-merchant-listing",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-review-snippet",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-dataset",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-image-metadata",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-video",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-discussion-forum",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-course-list",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-education-qa",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-event",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-practice-problem",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-subscription-paywalled-content",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-book-actions",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-carousel",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-employer-aggregate-rating",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-estimated-salary",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-fact-check",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-job-posting",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-local-business",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-loyalty-program",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-math-solver",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-movie",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-recipe",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-speakable",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-vacation-rental",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-vehicle-listing",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-product-variant",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-merchant-return-policy",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-merchant-shipping-policy",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:google-structured-data-search-gallery-coverage",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-visible-content-parity",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-rich-results-validation",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-ai-discovery-entity-graph",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-article",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-breadcrumb",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-organization",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:json-ld-software-app",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-locale-routes",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-hreflang-metadata",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-sitemap-alternates",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-locale-switcher",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-crawler-safe-rendering",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander-international-no-automatic-locale-redirects",
+      "kind": "feature"
+    },
+    {
       "id": "prf:editor-authoring-default",
       "kind": "profile"
     },
@@ -1145,6 +1333,14 @@
       "kind": "test"
     },
     {
+      "id": "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "kind": "test"
+    },
+    {
       "id": "clm:cross-cutting",
       "kind": "claim"
     },
@@ -1222,6 +1418,10 @@
     },
     {
       "id": "clm:mdwrk-custom-previewer-profiles-blocked",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:lander-international-seo",
       "kind": "claim"
     },
     {
@@ -1434,6 +1634,14 @@
     },
     {
       "id": "evd:ssot-reports-release-snapshot-index.json",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
       "kind": "evidence"
     },
     {
@@ -1766,6 +1974,10 @@
     },
     {
       "id": "adr:1057",
+      "kind": "adr"
+    },
+    {
+      "id": "adr:1058",
       "kind": "adr"
     },
     {
@@ -2114,6 +2326,18 @@
     },
     {
       "id": "spc:2073",
+      "kind": "spec"
+    },
+    {
+      "id": "spc:2074",
+      "kind": "spec"
+    },
+    {
+      "id": "spc:2075",
+      "kind": "spec"
+    },
+    {
+      "id": "spc:2076",
       "kind": "spec"
     }
   ],
@@ -8399,6 +8623,586 @@
       "to": "spc:2073"
     },
     {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-video",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-video",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-event",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-event",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "spc:2072"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-article",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-article",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-article",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "spc:2071"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "spc:2074"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "spc:2071"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "spc:2075"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "spc:2071"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "spc:2075"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "spc:2071"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "spc:2076"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "spc:2071"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "spc:2074"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "spc:2076"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "spc:2074"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "spc:2075"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "spc:2076"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
       "type": "DECIDED_BY",
       "from": "spc:2003",
       "to": "adr:1028"
@@ -9205,6 +10009,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "spc:2069",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "spc:2070",
       "to": "adr:1054"
     },
@@ -9212,6 +10021,11 @@
       "type": "DECIDED_BY",
       "from": "spc:2071",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "spc:2071",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -9227,6 +10041,21 @@
       "type": "DECIDED_BY",
       "from": "spc:2073",
       "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "spc:2074",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "spc:2075",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "spc:2076",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -13835,13 +14664,28 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-seo-demand-cluster-canonical-pages",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-seo-comparison-pages",
       "to": "adr:1053"
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-seo-comparison-pages",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-entity-mdwrk-brand-normalization",
       "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-entity-mdwrk-brand-normalization",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -13860,8 +14704,18 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-json-ld-structured-data",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-aieo-crawlable-text-semantic-index",
       "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-crawlable-text-semantic-index",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -13895,6 +14749,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-metadata-favicon-logo-fallback",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-article-excerpt-embedded-metadata",
       "to": "adr:1054"
     },
@@ -13920,6 +14779,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-static-content-compiler",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-static-artifact-verification",
       "to": "adr:1053"
     },
@@ -13935,8 +14799,18 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-static-artifact-verification",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-static-page-frontmatter-schema",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-static-page-frontmatter-schema",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -13975,6 +14849,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:portable-lander-package-family",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:mdwrk-lander-content-pack",
       "to": "adr:1052"
     },
@@ -13990,6 +14869,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:mdwrk-lander-content-pack",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-seo-robots-policy",
       "to": "adr:1053"
     },
@@ -13997,6 +14881,11 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-seo-robots-policy",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-seo-robots-policy",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14010,6 +14899,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-seo-sitemap-protocol",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-seo-canonical-url-metadata",
       "to": "adr:1053"
     },
@@ -14017,6 +14911,11 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-seo-canonical-url-metadata",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-seo-canonical-url-metadata",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14025,6 +14924,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-seo-html-title-meta-link-metadata",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-seo-open-graph-metadata",
       "to": "adr:1053"
     },
@@ -14032,6 +14936,11 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-seo-open-graph-metadata",
       "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-seo-open-graph-metadata",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14045,6 +14954,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-seo-x-card-metadata",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-seo-dcmi-document-metadata",
       "to": "adr:1053"
     },
@@ -14052,11 +14966,21 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-seo-dcmi-document-metadata",
       "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-seo-dcmi-document-metadata",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
       "from": "feat:lander-seo-core-web-vitals-targets",
       "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-seo-core-web-vitals-targets",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14095,11 +15019,21 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-aeo-structured-answer-section-parity",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-aieo-ai-crawler-policy",
       "to": "adr:1053"
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-ai-crawler-policy",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-aieo-llms-txt-index",
       "to": "adr:1053"
     },
@@ -14107,6 +15041,11 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-aieo-llms-txt-index",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-llms-txt-index",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14120,6 +15059,11 @@
     },
     {
       "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-llms-full-index",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
       "from": "feat:lander-aieo-markdown-mirror-consistency",
       "to": "adr:1053"
     },
@@ -14127,6 +15071,11 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-aieo-markdown-mirror-consistency",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-markdown-mirror-consistency",
+      "to": "adr:1058"
     },
     {
       "type": "DECIDED_BY",
@@ -14142,6 +15091,711 @@
       "type": "DECIDED_BY",
       "from": "feat:lander-aieo-content-registry-discovery-parity",
       "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-aieo-content-registry-discovery-parity",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-video",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-video",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-video",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-event",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-event",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-event",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:google-structured-data-search-gallery-coverage",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-visible-content-parity",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-rich-results-validation",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-ai-discovery-entity-graph",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-article",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-article",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-article",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-breadcrumb",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-organization",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:json-ld-software-app",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-routes",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-hreflang-metadata",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-sitemap-alternates",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-locale-switcher",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "adr:1055"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-crawler-safe-rendering",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander-international-no-automatic-locale-redirects",
+      "to": "adr:1058"
     },
     {
       "type": "ASSERTS",
@@ -14344,6 +15998,46 @@
       "to": "feat:ssot-release-snapshot-reports"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:google-structured-data-search-gallery-coverage"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-visible-content-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-rich-results-validation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-ai-discovery-entity-graph"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-article"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-breadcrumb"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-organization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-software-app"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -14519,6 +16213,11 @@
       "to": "clm:cross-cutting"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -14686,6 +16385,11 @@
     {
       "type": "SUPPORTS",
       "from": "evd:ssot-reports-release-snapshot-index.json",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
       "to": "clm:cross-cutting"
     },
     {
@@ -16304,6 +18008,46 @@
       "to": "feat:mdwrk-custom-previewer-profiles"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-locale-routes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-hreflang-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-sitemap-alternates"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-locale-switcher"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-crawler-safe-rendering"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-international-seo",
+      "to": "feat:lander-international-no-automatic-locale-redirects"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "to": "clm:lander-international-seo"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "to": "clm:lander-international-seo"
+    },
+    {
       "type": "DERIVES_FROM",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "tst:apps-client-hooks-useapp.test.tsx"
@@ -16602,6 +18346,16 @@
       "type": "DERIVES_FROM",
       "from": "evd:ssot-reports-release-snapshot-index.json",
       "to": "tst:tools-governance-validate-release-snapshots.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
     },
     {
       "type": "AFFECTS",

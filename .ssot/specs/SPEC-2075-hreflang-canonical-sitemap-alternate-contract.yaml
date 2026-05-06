@@ -1,0 +1,41 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2075"
+number: 2075
+slug: "hreflang-canonical-sitemap-alternate-contract"
+title: "Hreflang Canonical and Sitemap Alternate Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs canonical URLs, HTML hreflang links, and XML sitemap alternates for localized MdWrk public lander pages."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created hreflang canonical and sitemap alternate contract for localized lander routes."
+    at: "2026-05-06T11:10:15Z"
+references: []
+body: |-
+  # Hreflang Canonical and Sitemap Alternate Contract
+  
+  ## Scope
+  
+  This SPEC governs canonical URLs, HTML hreflang links, and XML sitemap alternates for localized MdWrk public lander pages.
+  
+  ## Requirements
+  
+  1. Every indexed page in a locale group shall emit a canonical URL pointing to the same-language same-route variant.
+  2. Every indexed page in a locale group shall emit reciprocal `link rel=alternate` hreflang links for all indexed variants in the group.
+  3. Every indexed locale group shall emit `x-default` pointing to the default English route unless a dedicated locale selector page is later created and governed.
+  4. `sitemap.xml` shall include localized URLs and `xhtml:link` alternate annotations for each indexed locale group.
+  5. Sitemap alternates shall match HTML alternates for the same route group.
+  6. Locale query parameters such as `?lang=`, `?locale=`, or `?hl=` are invalid as canonical or alternate URL mechanisms.
+  
+  ## Acceptance
+  
+  Static verification fails on missing canonical targets, missing reciprocal alternates, missing `x-default`, missing sitemap alternate namespace, missing localized sitemap entries, or query-parameter locale routing.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1058"

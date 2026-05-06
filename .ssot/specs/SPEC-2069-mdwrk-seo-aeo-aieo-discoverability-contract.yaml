@@ -20,6 +20,10 @@ status_notes:
     status: "draft"
     note: "Classified targetable SEO AEO AiEO surfaces and excluded WCAG 2.2 from this discoverability lane."
     at: "2026-05-06T08:43:07Z"
+  -
+    status: "draft"
+    note: "Added Google multi-regional and multilingual public lander discoverability requirements."
+    at: "2026-05-06T11:09:43Z"
 references: []
 body: |-
   # MdWrk SEO AEO AiEO Discoverability Contract
@@ -38,19 +42,22 @@ body: |-
   4. Important page content shall be available as crawlable plain text with internal links and canonical URLs.
   5. Formal or protocol-backed SEO targets include robots exclusion policy, XML sitemap output, canonical URL metadata, HTML title/meta/link metadata, and HTTP-indexable static HTML.
   6. Structured metadata targets include Schema.org JSON-LD, Open Graph metadata, X Card metadata, and DCMI metadata when the page family needs archival or document metadata.
-  7. Platform-guidance targets include Google Search Essentials, Google structured data eligibility, Google AI feature eligibility, Bing webmaster guidance, and Core Web Vitals page experience thresholds.
+  7. Platform-guidance targets include Google Search Essentials, Google structured data eligibility, Google AI feature eligibility, Google multi-regional and multilingual site guidance, Bing webmaster guidance, and Core Web Vitals page experience thresholds.
   8. AEO targets include answerable headings, appended direct-answer sections, FAQ or Q&A markup only when visibly present and eligible, citation and related-link clarity, and article summaries sourced from authored excerpts.
   9. AiEO targets include normal search eligibility for AI results, explicit AI crawler policy, Markdown-readable discovery projections, and optional LLM index files marked as experimental.
   10. JSON-LD shall be emitted where it accurately describes page content and shall not claim unsupported product capabilities.
   11. Semantic discovery projections, including semantic index artifacts and LLM-facing files, are generated aids and are not external web standards by themselves.
   12. Article pages without a featured image shall use the MdWrk favicon logo as the default metadata image across Open Graph, X Card, and JSON-LD fallback paths.
   13. Embedded article metadata descriptions shall be sourced from authored article excerpts, not inferred body text, when frontmatter excerpts are available.
+  14. Indexed localized pages shall have unique URLs, same-locale canonical URLs, reciprocal hreflang alternates when translations are grouped, visible route discovery, and sitemap inclusion.
+  15. Locale discovery shall not depend on query parameters, cookies, IP geolocation, `Accept-Language`, automatic redirects, or JavaScript-only state.
   
   ## Acceptance
   
-  Feature rows covering canonical pages, comparisons, brand normalization, crawlability, indexability, sitemap output, robots policy, HTML metadata, canonical links, structured metadata, textual crawlability, answer blocks, AI crawler policy, LLM discovery projections, favicon fallback metadata, and excerpt-derived embedded descriptions must link to this SPEC.
+  Feature rows covering canonical pages, comparisons, brand normalization, crawlability, indexability, sitemap output, robots policy, HTML metadata, canonical links, structured metadata, textual crawlability, answer blocks, AI crawler policy, LLM discovery projections, favicon fallback metadata, excerpt-derived embedded descriptions, locale routes, hreflang metadata, sitemap alternates, visible locale switching, and crawler-safe locale rendering must link to this SPEC.
   
   Tests and evidence must classify each checked target as formal standard or protocol, platform guidance, local product contract, or experimental convention.
 spec_kind: "normative"
 adr_ids:
   - "adr:1053"
+  - "adr:1058"
