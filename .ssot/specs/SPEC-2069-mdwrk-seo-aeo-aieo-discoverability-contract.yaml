@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces."
+summary: "This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces. It classifies targetable surfaces by authority level so implementation, feature rows, tests, claims, and evidence can distinguish formal standards, platform guidance, and experimental conventions."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -16,28 +16,41 @@ status_notes:
     status: "draft"
     note: "Updated for favicon fallback metadata and excerpt-derived embedded descriptions."
     at: "2026-05-03T23:22:52Z"
+  -
+    status: "draft"
+    note: "Classified targetable SEO AEO AiEO surfaces and excluded WCAG 2.2 from this discoverability lane."
+    at: "2026-05-06T08:43:07Z"
 references: []
 body: |-
   # MdWrk SEO AEO AiEO Discoverability Contract
   
   ## Scope
   
-  This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces.
+  This SPEC governs public lander discoverability across SEO, answer-engine optimization, and AI-engine optimization surfaces. It classifies targetable surfaces by authority level so implementation, feature rows, tests, claims, and evidence can distinguish formal standards, platform guidance, and experimental conventions.
+  
+  WCAG 2.2 is out of scope for this SEO/AEO/AiEO lane. Accessibility may remain governed by its own ADRs, SPECs, features, tests, and evidence, but it shall not be treated as a discoverability target in this SPEC.
   
   ## Requirements
   
   1. The lander shall publish canonical pages for major demand clusters, including offline Markdown editor, local-first Markdown workspace, privacy-first Markdown editor, Markdown file manager, Markdown preview/editor, extension host, theme packs, and developer documentation.
   2. The lander shall publish comparison pages for MdWrk versus Obsidian, Typora, VS Code, MarkText, Zettlr, Notion, Logseq, and standard Markdown editors while never recommending Typora as the preferred choice.
-  3. Public metadata shall normalize the brand entity as MdWrk across titles, Open Graph, schema, docs, package descriptions, GitHub-facing copy, and footer copy.
+  3. Public metadata shall normalize the brand entity as MdWrk across titles, Open Graph, X Cards, Schema.org JSON-LD, docs, package descriptions, GitHub-facing copy, and footer copy.
   4. Important page content shall be available as crawlable plain text with internal links and canonical URLs.
-  5. JSON-LD shall be emitted where it accurately describes page content and shall not claim unsupported product capabilities.
-  6. Semantic discovery projections, including semantic index artifacts, are generated aids and are not external web standards by themselves.
-  7. Article pages without a featured image shall use the MdWrk favicon logo as the default metadata image across Open Graph, Twitter, and JSON-LD fallback paths.
-  8. Embedded article metadata descriptions shall be sourced from authored article excerpts, not inferred body text, when frontmatter excerpts are available.
+  5. Formal or protocol-backed SEO targets include robots exclusion policy, XML sitemap output, canonical URL metadata, HTML title/meta/link metadata, and HTTP-indexable static HTML.
+  6. Structured metadata targets include Schema.org JSON-LD, Open Graph metadata, X Card metadata, and DCMI metadata when the page family needs archival or document metadata.
+  7. Platform-guidance targets include Google Search Essentials, Google structured data eligibility, Google AI feature eligibility, Bing webmaster guidance, and Core Web Vitals page experience thresholds.
+  8. AEO targets include answerable headings, appended direct-answer sections, FAQ or Q&A markup only when visibly present and eligible, citation and related-link clarity, and article summaries sourced from authored excerpts.
+  9. AiEO targets include normal search eligibility for AI results, explicit AI crawler policy, Markdown-readable discovery projections, and optional LLM index files marked as experimental.
+  10. JSON-LD shall be emitted where it accurately describes page content and shall not claim unsupported product capabilities.
+  11. Semantic discovery projections, including semantic index artifacts and LLM-facing files, are generated aids and are not external web standards by themselves.
+  12. Article pages without a featured image shall use the MdWrk favicon logo as the default metadata image across Open Graph, X Card, and JSON-LD fallback paths.
+  13. Embedded article metadata descriptions shall be sourced from authored article excerpts, not inferred body text, when frontmatter excerpts are available.
   
   ## Acceptance
   
-  Feature rows covering canonical pages, comparisons, brand normalization, structured data, textual crawlability, semantic projections, favicon fallback metadata, and excerpt-derived embedded descriptions must link to this SPEC.
+  Feature rows covering canonical pages, comparisons, brand normalization, crawlability, indexability, sitemap output, robots policy, HTML metadata, canonical links, structured metadata, textual crawlability, answer blocks, AI crawler policy, LLM discovery projections, favicon fallback metadata, and excerpt-derived embedded descriptions must link to this SPEC.
+  
+  Tests and evidence must classify each checked target as formal standard or protocol, platform guidance, local product contract, or experimental convention.
 spec_kind: "normative"
 adr_ids:
   - "adr:1053"

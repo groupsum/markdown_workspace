@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T20:54:48.808Z",
+  "generatedAt": "2026-05-06T09:37:01.934Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "ok": true,
   "artifacts": [
@@ -13,20 +13,20 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-02T20:54:48.357Z"
+      "generatedAt": "2026-05-06T09:37:01.447Z"
     },
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.3",
+      "version": "1.2.1",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.3",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.2.1",
       "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-02T20:54:48.456Z"
+      "generatedAt": "2026-05-06T09:37:01.589Z"
     },
     {
       "id": "core.git-ops",
@@ -38,7 +38,7 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-02T20:54:48.503Z"
+      "generatedAt": "2026-05-06T09:37:01.633Z"
     },
     {
       "id": "core.language-pack-studio",
@@ -50,7 +50,7 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-02T20:54:48.576Z"
+      "generatedAt": "2026-05-06T09:37:01.702Z"
     },
     {
       "id": "core.extension-manager",
@@ -63,7 +63,7 @@
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-02T20:54:48.667Z"
+      "generatedAt": "2026-05-06T09:37:01.792Z"
     },
     {
       "id": "core.theme-studio",
@@ -76,7 +76,7 @@
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-02T20:54:48.761Z"
+      "generatedAt": "2026-05-06T09:37:01.887Z"
     },
     {
       "id": "core.workspace-files",
@@ -88,7 +88,7 @@
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-02T20:54:48.808Z"
+      "generatedAt": "2026-05-06T09:37:01.934Z"
     }
   ],
   "failures": []

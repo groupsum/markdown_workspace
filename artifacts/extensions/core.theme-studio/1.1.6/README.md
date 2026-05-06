@@ -1,6 +1,6 @@
 # @mdwrk/extension-theme-studio
 
-First-party Theme Studio extension package for MdWork.
+First-party Theme Studio extension package for MdWrk.
 
 ## Manifest and compatibility
 

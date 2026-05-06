@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-05-06T10:27:22.844Z",
+  "registry_path": ".ssot/registry.json",
+  "release_count": 3,
+  "frozen_boundary_count": 3,
+  "release_snapshots": [
+    {
+      "release_id": "rel:0.1.0",
+      "live_status": "published",
+      "kind": "published_snapshot",
+      "path": ".ssot/releases/rel__0.1.0/published.snapshot.json",
+      "sha256": "3348d25952fb3d026f44ca52426cb2df3572a64a5e05b1e35d5eda65c606d91a",
+      "snapshot_status": "published",
+      "boundary_id": "bnd:default"
+    },
+    {
+      "release_id": "rel:0.1.0",
+      "live_status": "published",
+      "kind": "release_snapshot",
+      "path": ".ssot/releases/rel__0.1.0/release.snapshot.json",
+      "sha256": "4784518509db6b0fcbaa86e98561afe357f96271f48e84e62f15b4a4ab465d96",
+      "snapshot_status": "promoted",
+      "boundary_id": "bnd:default"
+    },
+    {
+      "release_id": "rel:extension-continuous-experience",
+      "live_status": "published",
+      "kind": "published_snapshot",
+      "path": ".ssot/releases/rel__extension-continuous-experience/published.snapshot.json",
+      "sha256": "05e68ced4ecd3baecbace7e9a4154dc8cd21be5017452c90dc014e3ee26dc2a8",
+      "snapshot_status": "published",
+      "boundary_id": "bnd:extension-continuous-experience"
+    },
+    {
+      "release_id": "rel:extension-continuous-experience",
+      "live_status": "published",
+      "kind": "release_snapshot",
+      "path": ".ssot/releases/rel__extension-continuous-experience/release.snapshot.json",
+      "sha256": "9684012704ca1a816e8aaa7d9c998948851305398963029c4c69dd6bd2613650",
+      "snapshot_status": "promoted",
+      "boundary_id": "bnd:extension-continuous-experience"
+    },
+    {
+      "release_id": "rel:repo-certifiability-current-scope",
+      "live_status": "candidate",
+      "kind": "release_snapshot",
+      "path": ".ssot/releases/rel__repo-certifiability-current-scope/release.snapshot.json",
+      "sha256": "dea06dc60be5d82ac1bcdefa25fccb0bfc93065aeb7ccc1b800a45b553b2e238",
+      "snapshot_status": "candidate",
+      "boundary_id": "bnd:repo-certifiability-current-scope"
+    }
+  ],
+  "boundary_snapshots": [
+    {
+      "boundary_id": "bnd:default",
+      "path": ".ssot/releases/boundaries/bnd__default.snapshot.json",
+      "sha256": "222e16e211f0fe045648ee2846b173de4956c56ed752cd33b4b6291a175829ad",
+      "feature_count": 0,
+      "profile_count": 0
+    },
+    {
+      "boundary_id": "bnd:extension-continuous-experience",
+      "path": ".ssot/releases/boundaries/bnd__extension-continuous-experience.snapshot.json",
+      "sha256": "c2b8c9c9dcd862a35c8956514181628d64fa093ac3b00a9ad5c3e236803c6cc4",
+      "feature_count": 22,
+      "profile_count": 0
+    },
+    {
+      "boundary_id": "bnd:repo-certifiability-current-scope",
+      "path": ".ssot/releases/boundaries/bnd__repo-certifiability-current-scope.snapshot.json",
+      "sha256": "a99c2456ba47ee5f5e4bc13b5d3d3e378ca8a48bde66ca648f1d4a2a9675ee13",
+      "feature_count": 137,
+      "profile_count": 5
+    }
+  ],
+  "failures": []
+}

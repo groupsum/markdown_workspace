@@ -8,7 +8,7 @@ status: "accepted"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "Scope: this SPEC governs the MdWrk.com static compiler, source content contract, generated artifacts, and deployment-independent verification gate. Requirements: each page uses mdwrk.page.v1 YAML frontmatter, JSON Schema validation, canonical slugs, metadata-only frontmatter, Markdown-only body content, visible answer and FAQ rendering when metadata exists, normalized registry output, static HTML output, JSON-LD, sitemap.xml, robots.txt, llms.txt, llms-full.txt, Markdown mirrors, content-index.json, and link-integrity checks. Acceptance: npm run ci -w apps/mdwrkcom and npm run ci:mdwrkcom must validate source, build dist, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact."
+summary: "This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, and deployment-independent verification gate."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -16,9 +16,38 @@ status_notes:
     status: "accepted"
     note: "Updated app path/name from apps/lander to apps/mdwrkcom."
     at: "2026-05-05T08:04:46Z"
+  -
+    status: "accepted"
+    note: "Expanded generated discovery artifact requirements for sitemap robots LLM indexes Markdown mirrors and validation gates."
+    at: "2026-05-06T08:43:22Z"
 references: []
 body: |-
-  Scope: this SPEC governs the MdWrk.com static compiler, source content contract, generated artifacts, and deployment-independent verification gate. Requirements: each page uses mdwrk.page.v1 YAML frontmatter, JSON Schema validation, canonical slugs, metadata-only frontmatter, Markdown-only body content, visible answer and FAQ rendering when metadata exists, normalized registry output, static HTML output, JSON-LD, sitemap.xml, robots.txt, llms.txt, llms-full.txt, Markdown mirrors, content-index.json, and link-integrity checks. Acceptance: npm run ci -w apps/mdwrkcom and npm run ci:mdwrkcom must validate source, build dist, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact.
+  # Static Lander Content Compiler Contract
+  
+  ## Scope
+  
+  This SPEC governs the MdWrk.com static compiler, source content contract, generated discovery artifacts, and deployment-independent verification gate.
+  
+  ## Requirements
+  
+  1. Each source page shall use `mdwrk.page.v1` YAML frontmatter that validates against the page JSON Schema before entering the normalized content registry.
+  2. Source pages shall use canonical slugs, metadata-only frontmatter, and Markdown body content that remains readable without client-side rendering.
+  3. The compiler shall generate static HTML for every public canonical route.
+  4. The compiler shall generate page-level JSON-LD blocks and a `jsonld-graph.json` projection that remain aligned with canonical routes and supported Schema.org graph shapes.
+  5. The compiler shall generate `sitemap.xml` with canonical public URLs that are intended for discovery.
+  6. The compiler shall generate `robots.txt` from the governed crawler policy and shall not hardcode deployment-specific port exposure or local-only targets.
+  7. The compiler shall generate `llms.txt` and `llms-full.txt` as experimental LLM discovery projections, not as formal standards-backed compliance artifacts.
+  8. The compiler shall generate Markdown mirrors for public pages where mirror content improves static readability or AI retrieval without diverging from canonical content.
+  9. The compiler shall generate `content-index.json` and normalized content registry artifacts for build-time verification and downstream reporting.
+  10. Visible answer and FAQ rendering shall be generated only when the source metadata or body content provides matching visible content.
+  11. Internal link integrity, canonical URL integrity, JSON-LD validity, sitemap coverage, robots policy output, LLM index coverage, Markdown mirror coverage, static readability, and content registry integrity shall be checked before deployment.
+  12. Post-deploy smoke checks remain separate and must not block creation of the deployable artifact.
+  
+  ## Acceptance
+  
+  `npm run ci -w apps/mdwrkcom` and `npm run ci:mdwrkcom` must validate source content, build the static distribution, and verify SEO, AEO, AiEO, static readability, registry integrity, JSON-LD, sitemap, robots, LLM index, Markdown mirror, and internal link gates before deployment.
+  
+  Feature and test rows for static compilation, generated sitemap, generated robots policy, generated LLM indexes, Markdown mirrors, content registry exports, JSON-LD graph projection, and static artifact verification must link to this SPEC.
 spec_kind: "normative"
 adr_ids:
   - "adr:1055"

@@ -1,6 +1,6 @@
 # @mdwrk/extension-language-pack-studio
 
-Bundled language-pack studio extension for MdWork.
+Bundled language-pack studio extension for MdWrk.
 
 ## Capabilities
 
@@ -8,4 +8,4 @@ Bundled language-pack studio extension for MdWork.
 - settings-menu summary content that opens the full workspace pane
 - enable / disable all language packs including built-ins
 - IndexedDB-backed persistence for installed packs and built-in disablement
-- single-pane, split-screen, and collapsible workspace-sidebar layouts
+- single-pane, split-screen, and collapsible pane-sidebar layouts

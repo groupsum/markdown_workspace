@@ -151,6 +151,17 @@
         }
       },
       {
+        "id": "core.export-markdown",
+        "title": {
+          "defaultMessage": "Export Markdown",
+          "key": "core.commands.export-markdown"
+        },
+        "icon": {
+          "kind": "lucide",
+          "name": "FileText"
+        }
+      },
+      {
         "id": "core.export-html",
         "title": {
           "defaultMessage": "Export HTML",

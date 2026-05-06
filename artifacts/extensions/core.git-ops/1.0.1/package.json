@@ -52,6 +52,7 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "homepage": "https://mdwrk.com",
   "browserInstallable": false,
   "bundledBy": "tools/extensions/build-installable-extensions.mjs"
 }

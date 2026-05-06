@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const repoRoot = path.resolve(new URL('../../..', import.meta.url).pathname);
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 
 function loadText(relativePath) {
   return readFileSync(path.join(repoRoot, relativePath), 'utf8');
@@ -28,6 +29,14 @@ const checks = [
   {
     id: 'footer.update-ready',
     pass: footerText.includes('UPDATE_READY') && footerText.includes('{updateAvailable && ('),
+  },
+  {
+    id: 'footer.autosave-only-state',
+    pass: footerText.includes("core.status.auto-save") && !footerText.includes("core.status.state.saved") && !footerText.includes("core.status.storage.persistent"),
+  },
+  {
+    id: 'footer.css-adjacent-separators',
+    pass: !footerText.includes('status-sep') && loadText('apps/client/styles/base/chassis/status-bar.css').includes('.status-item + .status-item'),
   },
   {
     id: 'action-rail.localized-aria-label',

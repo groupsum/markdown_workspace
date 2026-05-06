@@ -1,0 +1,67 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2072"
+number: 2072
+slug: "mdwrk-json-ld-schema-support-contract"
+title: "MdWrk JSON-LD Schema Graph Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs the Schema.org JSON-LD types, entity relationships, and page-family graph shapes that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created dedicated JSON-LD supported schema type contract."
+    at: "2026-05-06T08:16:39Z"
+  -
+    status: "draft"
+    note: "Expanded supported schema types into a page-scoped JSON-LD graph contract."
+    at: "2026-05-06T08:30:18Z"
+  -
+    status: "draft"
+    note: "Added social and DCMI metadata parity to page-scoped JSON-LD graph validation."
+    at: "2026-05-06T08:43:30Z"
+references: []
+body: |-
+  # MdWrk JSON-LD Schema Graph Contract
+  
+  ## Scope
+  
+  This SPEC governs the Schema.org JSON-LD types, entity relationships, and page-family graph shapes that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts.
+  
+  ## Requirements
+  
+  1. The static lander shall emit JSON-LD only when the selected Schema.org type accurately describes visible page content, authored metadata, or stable product identity.
+  2. Every JSON-LD block shall use `@context: https://schema.org`, an `@graph` array, and stable `@id` values derived from canonical mdwrk.com URLs.
+  3. Each page graph shall have one primary page entity. The primary entity shall be the most specific supported type that truthfully describes the page: `WebPage`, `BlogPosting`, `Article`, `TechArticle`, `SoftwareApplication`, or `SoftwareSourceCode`.
+  4. Page graphs shall connect related entities with supported relationships instead of duplicating unrelated schema nodes. Supported relationships include `mainEntity`, `isPartOf`, `publisher`, `creator`, `breadcrumb`, `about`, and `mentions`.
+  5. `WebPage` shall be supported for canonical public pages, including home, docs indexes, feature, comparison, trust, legal, package, and update index routes.
+  6. `FAQPage` shall be supported only when the page visibly renders the same FAQ questions and answers included in structured data.
+  7. `BreadcrumbList` shall be supported for pages with visible or implied route hierarchy and shall use canonical route URLs.
+  8. `BlogPosting` shall be supported for product update and blog article pages with authored title, headline, excerpt or description, date metadata, canonical URL, image metadata, and publisher or creator linkage.
+  9. `Organization` shall be supported for stable MdWrk identity on site-level graphs and as the publisher or creator for page entities when appropriate.
+  10. `WebSite` shall be supported for the canonical mdwrk.com site identity and may include search or navigation affordances only after the visible site supports them.
+  11. `SoftwareApplication` shall be supported for the MdWrk workspace product identity when the page describes the installable web application or PWA surface.
+  12. `Article` shall be supported as the generic article fallback for long-form non-blog documentation or editorial pages when `BlogPosting` or `TechArticle` would overstate the content type.
+  13. `TechArticle` shall be supported for technical documentation pages that explain setup, extension authoring, package usage, APIs, or operational behavior.
+  14. `SoftwareSourceCode` shall be supported for package and developer pages that describe reusable source packages, public repository surfaces, APIs, or module entry points.
+  15. Home page graphs shall include `WebPage`, `Organization`, `WebSite`, and `SoftwareApplication` when those entities describe stable MdWrk product and site identity.
+  16. Product update and blog article graphs shall use `BlogPosting` as the primary content entity, connect it to `WebPage` with `mainEntity`, connect publisher or creator to `Organization`, and include `BreadcrumbList` and `FAQPage` only when applicable.
+  17. Technical documentation graphs shall use `TechArticle` when the page teaches setup, API, package, extension, or operational behavior; otherwise they may use `WebPage` or `Article` as the primary entity.
+  18. Package and developer surface graphs shall use `SoftwareSourceCode` when the page describes package entry points, APIs, modules, repository surfaces, or reusable source artifacts.
+  19. Feature, comparison, trust, legal, archive, and index pages shall default to `WebPage` unless the page content clearly satisfies a more specific supported type.
+  20. Open Graph, X Card, and DCMI metadata shall remain consistent with the canonical page entity and shall not contradict JSON-LD descriptions.
+  21. Generated `jsonld-graph.json` shall include only supported types and shall remain aligned with page-level JSON-LD blocks emitted in static HTML.
+  22. The lander shall not emit unsupported Schema.org types by ad hoc page code; new types require this SPEC to be updated first and linked feature/test coverage to be added.
+  23. Validation shall fail closed when required fields for a supported type are missing, when JSON-LD claims content that is not visibly present, when a graph includes unrelated supported types only because they are globally supported, or when generated graph output diverges from canonical routes.
+  
+  ## Acceptance
+  
+  Feature and test rows for JSON-LD structured data, static content compilation, static artifact verification, metadata fallback images, excerpt-derived metadata, package/developer page schema output, social metadata parity, DCMI metadata parity, and page-family graph validation must link to this SPEC when they exercise supported Schema.org types or graph relationships.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1053"
+  - "adr:1057"

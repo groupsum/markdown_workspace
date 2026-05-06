@@ -1,0 +1,48 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2073"
+number: 2073
+slug: "ai-crawler-llm-discovery-policy-contract"
+title: "AI Crawler And LLM Discovery Policy Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs MdWrk public lander policy for AI crawler access, search-versus-training crawler distinctions, and LLM-oriented discovery projections."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created AI crawler and LLM discovery policy contract."
+    at: "2026-05-06T08:43:39Z"
+references: []
+body: |-
+  # AI Crawler And LLM Discovery Policy Contract
+  
+  ## Scope
+  
+  This SPEC governs MdWrk public lander policy for AI crawler access, search-versus-training crawler distinctions, and LLM-oriented discovery projections.
+  
+  The `llms.txt` and `llms-full.txt` outputs are experimental local product contracts. They are targetable for MdWrk build and content governance, but they are not treated as formal web standards.
+  
+  ## Requirements
+  
+  1. The lander shall express crawler policy through generated `robots.txt` rather than scattered route-specific crawler rules.
+  2. Search and answer retrieval crawlers may be allowed independently from training crawlers when crawler operators expose distinct user agents or documented controls.
+  3. AI crawler policy shall distinguish at least search inclusion, answer retrieval, training ingestion, and unknown crawler behavior when the upstream crawler documentation supports that distinction.
+  4. `robots.txt` output shall include only intentional allow or disallow directives and shall avoid stale local development hosts, exposed ports, or deployment-internal routes.
+  5. `llms.txt` shall provide a concise, canonical map of important MdWrk public pages, documentation, package surfaces, and support pages for LLM retrieval.
+  6. `llms-full.txt` shall provide an expanded Markdown-readable projection of governed public content when generated.
+  7. LLM discovery projections shall be derived from the same canonical content registry used for static HTML, sitemap, JSON-LD, and Markdown mirrors.
+  8. LLM discovery projections shall not introduce claims, recommendations, pricing, support status, or product capabilities that are absent from canonical visible content.
+  9. Generated LLM files shall identify canonical URLs and shall avoid duplicating contradictory summaries for the same page.
+  10. Validation shall fail closed when `robots.txt`, `llms.txt`, `llms-full.txt`, sitemap, content registry, or Markdown mirrors disagree about canonical public pages.
+  11. Tests and evidence shall record whether AI crawler and LLM discovery checks validate formal standards, platform-specific guidance, or experimental local conventions.
+  
+  ## Acceptance
+  
+  Feature and test rows for AI crawler policy, robots generation, LLM index generation, Markdown mirror consistency, content registry consistency, and static artifact verification must link to this SPEC.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1053"

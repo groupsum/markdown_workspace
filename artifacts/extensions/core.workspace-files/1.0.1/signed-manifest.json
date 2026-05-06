@@ -153,6 +153,17 @@
           }
         },
         {
+          "id": "core.export-markdown",
+          "title": {
+            "defaultMessage": "Export Markdown",
+            "key": "core.commands.export-markdown"
+          },
+          "icon": {
+            "kind": "lucide",
+            "name": "FileText"
+          }
+        },
+        {
           "id": "core.export-html",
           "title": {
             "defaultMessage": "Export HTML",
@@ -440,7 +451,7 @@
   "signature": {
     "keyId": "dev-ecdsa-p256-sha256",
     "algorithm": "ecdsa-p256-sha256",
-    "signature": "kB8XgnQeBW6vBcRjqhm_du3m5hpdCv9R5hoCu0XePBeoH2qtb0dZvBMRC9FNWV80VIK-SKwz-hvj25o6TASGhg",
-    "signedAt": "2026-05-02T20:54:49.620Z"
+    "signature": "M1mjm8iImNMhVV0bvqfkV0-3_IiP4rUKQxKf7U0JSYyTrURB2RrrQAa4NrY5FNdXIOKvXD3JdK2DoiqxZC7eWg",
+    "signedAt": "2026-05-06T09:37:02.793Z"
   }
 }

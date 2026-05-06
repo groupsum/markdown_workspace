@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-05-02T20:54:49.596Z",
+  "generatedAt": "2026-05-06T09:37:02.768Z",
   "artifact": {
     "id": "core.gemini-agent",
     "packageName": "@mdwrk/extension-gemini-agent",
-    "version": "1.1.3",
+    "version": "1.2.1",
     "kind": "bundled",
-    "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.3",
+    "artifactPath": "artifacts/extensions/core.gemini-agent/1.2.1",
     "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
     "supportedLocales": [
       "en",
       "es"
     ],
-    "generatedAt": "2026-05-02T20:54:48.456Z"
+    "generatedAt": "2026-05-06T09:37:01.589Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "63ce44d0f239150c99f1961858a159d6392b40ce20cf8f3314fa019fdf7be1be"
+      "sha256": "aca7124e7f4b013114db9d9298373f365816f1a8c74ef39587a2a6818dc1fa2e"
     },
     {
       "path": "LICENSE",
@@ -24,23 +24,23 @@
     },
     {
       "path": "manifest.json",
-      "sha256": "6ee5c8e13bba7b7a4a86005913791fe0550f1c457b3a519ee2fd00dcd46d1002"
+      "sha256": "564c678d5082775adccc0088d867f135acce5a5fa4ca8accbf6c6973db3cf98c"
     },
     {
       "path": "package.json",
-      "sha256": "2005f7fd674b2a5350a4d2c2a78939cc52accd2f6158bf56364935f9461d40b2"
+      "sha256": "b75e4393b21b3458110e158614127f31b7a99766b800602c3ddb9467c3d441d8"
     },
     {
       "path": "portable-package.json",
-      "sha256": "950822fcf5f28491809ebb8e78c3c20bff0068a34de3ae6e0731d4c9dc4504e6"
+      "sha256": "cb81b7bd2416827f297cee3b7fb538f1d4667419b5948f14d604ff38c686ed5c"
     },
     {
       "path": "README.md",
-      "sha256": "38cc70e66e829ef34b475d03f6845c1426afbce31d2df4810f082e29bdd2e65c"
+      "sha256": "df09c8342d16469a313790d09648d3c72d7e42e8e606d3fa53d93de5a8f5428e"
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "c43f3b21139e670eeaa930eab1ffd85d52bbec49bad424d251fd6c1d5fc3cad2"
+      "sha256": "690bd2dbf661adfb0075fdecd289000cbd567d4e8807383d0cd436c9df1dc7e2"
     }
   ],
   "provenance": {

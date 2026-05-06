@@ -607,7 +607,9 @@
         "spc:2003",
         "spc:2005"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:mdwrk-custom-parser-profile-blocked"
+      ],
       "test_ids": [],
       "requires": [
         "feat:custom-flavored-markdown-profile"
@@ -633,7 +635,9 @@
         "spc:2003",
         "spc:2005"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:mdwrk-custom-previewer-profiles-blocked"
+      ],
       "test_ids": [],
       "requires": [
         "feat:custom-flavored-markdown-profile"
@@ -1453,7 +1457,7 @@
       "id": "feat:statusbar-hide-idb-persistent",
       "title": "Hide idb persistent status text",
       "description": "Remove idb persistent from the status bar footer.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1469,15 +1473,19 @@
         "spc:2008",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-statusbar-contract.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:statusbar-autosave-saved-state",
       "title": "Autosave without saved-state footer",
       "description": "Remove saved state from status footer and autosave everything.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1493,15 +1501,19 @@
         "spc:2008",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-statusbar-contract.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:statusbar-separators",
       "title": "Status bar separators",
       "description": "Fix separators on the status bar.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1516,8 +1528,12 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-statusbar-contract.mjs"
+      ],
       "requires": []
     },
     {
@@ -2067,7 +2083,7 @@
       "id": "feat:ssot-graph-export-governance",
       "title": "SSOT graph export governance",
       "description": "Generate and validate graph exports for ADR, SPEC, and feature relationships.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2083,15 +2099,19 @@
         "spc:0602",
         "spc:0606"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-ssot-graph-export.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:ssot-release-snapshot-reports",
       "title": "SSOT release snapshot reports",
       "description": "Produce release, boundary, and certification snapshot reports.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2107,8 +2127,12 @@
         "spc:0606",
         "spc:0608"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-release-snapshots.mjs"
+      ],
       "requires": []
     },
     {
@@ -2139,7 +2163,7 @@
       "id": "feat:spec-coverage-index",
       "title": "SPEC coverage index",
       "description": "Track whether every active product area has ADR, SPEC, and feature coverage.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2156,8 +2180,12 @@
         "spc:2002",
         "spc:0610"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-spec-coverage-index.mjs"
+      ],
       "requires": []
     },
     {
@@ -4601,7 +4629,7 @@
       "id": "feat:editor-link-selected-text-wrap",
       "title": "Editor selected text link wrapping",
       "description": "Convert selected text into Markdown inline-link syntax.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4617,15 +4645,19 @@
         "spc:2055",
         "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-link-empty-selection-stub",
       "title": "Editor empty selection link stub",
       "description": "Seed Markdown inline-link syntax when no text is selected.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4641,15 +4673,19 @@
         "spc:2055",
         "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-link-existing-edit",
       "title": "Editor existing link edit",
       "description": "Edit an existing Markdown link under cursor without nesting or corrupting link syntax.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4665,15 +4701,19 @@
         "spc:2055",
         "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-link-url-paste-wrap",
       "title": "Editor pasted URL link wrapping",
       "description": "Wrap selected text with a pasted URL as Markdown inline-link syntax.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4689,15 +4729,19 @@
         "spc:2055",
         "spc:2004"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-link-internal-file-authoring",
       "title": "Editor internal file link authoring",
       "description": "Author internal workspace Markdown file links through an editor link affordance.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4713,15 +4757,19 @@
         "spc:2055",
         "spc:2058"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-link-hash-authoring",
       "title": "Editor hash link authoring",
       "description": "Author same-document and file-plus-hash Markdown link destinations.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4737,8 +4785,12 @@
         "spc:2056",
         "spc:2055"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-editor"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ],
       "requires": []
     },
     {
@@ -5651,7 +5703,8 @@
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
-        "spc:2069"
+        "spc:2069",
+        "spc:2072"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -5923,7 +5976,8 @@
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
-        "spc:2071"
+        "spc:2071",
+        "spc:2072"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -5951,7 +6005,8 @@
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
-        "spc:2071"
+        "spc:2071",
+        "spc:2072"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -6081,6 +6136,434 @@
       "requires": [
         "feat:portable-lander-package-family"
       ]
+    },
+    {
+      "id": "feat:lander-seo-robots-policy",
+      "title": "Lander SEO robots policy",
+      "description": "Generate and validate robots.txt crawler policy for public lander discovery without local-only or deployment-internal routes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-sitemap-protocol",
+      "title": "Lander SEO sitemap protocol",
+      "description": "Generate and validate sitemap.xml coverage for canonical public lander URLs.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-canonical-url-metadata",
+      "title": "Lander SEO canonical URL metadata",
+      "description": "Emit canonical URL metadata for public lander pages and verify alignment with generated routes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-html-title-meta-link-metadata",
+      "title": "Lander SEO HTML title meta link metadata",
+      "description": "Emit governed HTML title, meta description, and link metadata for public lander pages.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-open-graph-metadata",
+      "title": "Lander SEO Open Graph metadata",
+      "description": "Emit Open Graph metadata that matches canonical page identity, visible content, and fallback image policy.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-x-card-metadata",
+      "title": "Lander SEO X Card metadata",
+      "description": "Emit X Card metadata that matches canonical page identity, visible content, and fallback image policy.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-dcmi-document-metadata",
+      "title": "Lander SEO DCMI document metadata",
+      "description": "Emit DCMI metadata where page families need document or archival metadata parity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-core-web-vitals-targets",
+      "title": "Lander SEO Core Web Vitals targets",
+      "description": "Track Core Web Vitals page-experience targets for public lander pages as platform-guidance discoverability targets.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-answerable-heading-contract",
+      "title": "Lander AEO answerable heading contract",
+      "description": "Use clear answerable headings for article support sections while preserving the primary reading experience.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-visible-citation-parity",
+      "title": "Lander AEO visible citation parity",
+      "description": "Keep citations, source references, related APIs, and related docs visible when represented in generated metadata or discovery artifacts.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-faq-qna-howto-eligibility",
+      "title": "Lander AEO FAQ QnA how-to eligibility",
+      "description": "Generate FAQ, Q&A, or how-to representations only when matching visible content and page-family eligibility exist.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070",
+        "spc:2072"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-structured-answer-section-parity",
+      "title": "Lander AEO structured answer section parity",
+      "description": "Ensure structured answer sections, metadata, and generated artifacts remain aligned with visible article support content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070",
+        "spc:2071"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-ai-crawler-policy",
+      "title": "Lander AiEO AI crawler policy",
+      "description": "Govern AI crawler access policy for search, answer retrieval, training ingestion, and unknown crawler behavior where upstream controls allow distinctions.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-llms-txt-index",
+      "title": "Lander AiEO llms.txt index",
+      "description": "Generate a concise experimental llms.txt map of important MdWrk public pages and documentation for LLM retrieval.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-llms-full-index",
+      "title": "Lander AiEO llms-full.txt index",
+      "description": "Generate an expanded experimental llms-full.txt Markdown-readable projection of governed public content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-markdown-mirror-consistency",
+      "title": "Lander AiEO Markdown mirror consistency",
+      "description": "Keep generated Markdown mirrors aligned with canonical visible content, registry entries, and LLM discovery projections.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-search-vs-training-crawler-policy",
+      "title": "Lander AiEO search versus training crawler policy",
+      "description": "Distinguish search inclusion and answer retrieval crawler policy from model-training crawler policy when documented user-agent controls exist.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-content-registry-discovery-parity",
+      "title": "Lander AiEO content registry discovery parity",
+      "description": "Validate parity between content registry entries, sitemap, robots, Markdown mirrors, and LLM discovery files.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071",
+        "spc:2073"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
     }
   ],
   "tests": [
@@ -6707,7 +7190,13 @@
         "feat:editor-command-insert-tab",
         "feat:editor-toolbar-active-state-display",
         "feat:editor-toolbar-disabled-state-display",
-        "feat:editor-toolbar-command-dispatch"
+        "feat:editor-toolbar-command-dispatch",
+        "feat:editor-link-selected-text-wrap",
+        "feat:editor-link-empty-selection-stub",
+        "feat:editor-link-existing-edit",
+        "feat:editor-link-url-paste-wrap",
+        "feat:editor-link-internal-file-authoring",
+        "feat:editor-link-hash-authoring"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -7323,6 +7812,72 @@
       "evidence_ids": [
         "evd:mdwrk-lander-static-validation"
       ]
+    },
+    {
+      "id": "tst:apps-client-tests-statusbar-contract.mjs",
+      "title": "Status bar footer contract",
+      "status": "passing",
+      "kind": "static",
+      "path": "apps/client/tests/statusbar-contract.mjs",
+      "feature_ids": [
+        "feat:statusbar-autosave-saved-state",
+        "feat:statusbar-hide-idb-persistent",
+        "feat:statusbar-separators"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-tests-statusbar-contract.mjs"
+      ]
+    },
+    {
+      "id": "tst:tools-governance-validate-spec-coverage-index.mjs",
+      "title": "SPEC coverage index governance validator",
+      "status": "passing",
+      "kind": "static",
+      "path": "tools/governance/validate-spec-coverage-index.mjs",
+      "feature_ids": [
+        "feat:spec-coverage-index"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:ssot-reports-spec-coverage-index.json"
+      ]
+    },
+    {
+      "id": "tst:tools-governance-validate-ssot-graph-export.mjs",
+      "title": "SSOT graph export governance validator",
+      "status": "passing",
+      "kind": "static",
+      "path": "tools/governance/validate-ssot-graph-export.mjs",
+      "feature_ids": [
+        "feat:ssot-graph-export-governance"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:ssot-reports-ssot-graph-export-governance.json"
+      ]
+    },
+    {
+      "id": "tst:tools-governance-validate-release-snapshots.mjs",
+      "title": "Release snapshot report validator",
+      "status": "passing",
+      "kind": "static",
+      "path": "tools/governance/validate-release-snapshots.mjs",
+      "feature_ids": [
+        "feat:ssot-release-snapshot-reports"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:ssot-reports-release-snapshot-index.json"
+      ]
     }
   ],
   "claims": [
@@ -7370,7 +7925,10 @@
         "feat:lander-article-metadata-ci-gate",
         "feat:lander-static-content-compiler",
         "feat:lander-static-artifact-verification",
-        "feat:lander-static-page-frontmatter-schema"
+        "feat:lander-static-page-frontmatter-schema",
+        "feat:spec-coverage-index",
+        "feat:ssot-graph-export-governance",
+        "feat:ssot-release-snapshot-reports"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -7404,7 +7962,10 @@
         "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
         "tst:apps-lander-scripts-validate-syntax-themes.mjs",
         "tst:apps-lander-src-cli-static-content",
-        "tst:github-workflows-lander-static-content"
+        "tst:github-workflows-lander-static-content",
+        "tst:tools-governance-validate-spec-coverage-index.mjs",
+        "tst:tools-governance-validate-ssot-graph-export.mjs",
+        "tst:tools-governance-validate-release-snapshots.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -7437,7 +7998,10 @@
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
         "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
         "evd:apps-lander-scripts-validate-syntax-themes.mjs",
-        "evd:lander-static-content-ci-local"
+        "evd:lander-static-content-ci-local",
+        "evd:ssot-reports-spec-coverage-index.json",
+        "evd:ssot-reports-ssot-graph-export-governance.json",
+        "evd:ssot-reports-release-snapshot-index.json"
       ]
     },
     {
@@ -7584,7 +8148,13 @@
         "feat:editor-toolbar-hidden-button-preference",
         "feat:editor-toolbar-active-state-display",
         "feat:editor-toolbar-disabled-state-display",
-        "feat:editor-toolbar-command-dispatch"
+        "feat:editor-toolbar-command-dispatch",
+        "feat:editor-link-selected-text-wrap",
+        "feat:editor-link-empty-selection-stub",
+        "feat:editor-link-existing-edit",
+        "feat:editor-link-url-paste-wrap",
+        "feat:editor-link-internal-file-authoring",
+        "feat:editor-link-hash-authoring"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
@@ -7720,7 +8290,10 @@
         "feat:editor-line-count-scroll-alignment",
         "feat:workspace-sidebar-resizing",
         "feat:uix-component-class-policy",
-        "feat:gemini-agent-conversation-preview-pane-surface"
+        "feat:gemini-agent-conversation-preview-pane-surface",
+        "feat:statusbar-autosave-saved-state",
+        "feat:statusbar-hide-idb-persistent",
+        "feat:statusbar-separators"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -7737,7 +8310,8 @@
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
         "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
         "tst:apps-client-components-chassis-workpane-workpane.test.tsx",
-        "tst:apps-client-styles-componentclassnamepolicy.test.ts"
+        "tst:apps-client-styles-componentclassnamepolicy.test.ts",
+        "tst:apps-client-tests-statusbar-contract.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-alignmenttokens.test.ts",
@@ -7754,7 +8328,8 @@
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
         "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
         "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
-        "evd:apps-client-styles-componentclassnamepolicy.test.ts"
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+        "evd:apps-client-tests-statusbar-contract.mjs"
       ]
     },
     {
@@ -7987,6 +8562,32 @@
       "evidence_ids": [
         "evd:mdwrk-lander-static-validation"
       ]
+    },
+    {
+      "id": "clm:mdwrk-custom-parser-profile-blocked",
+      "title": "CFM custom parser profile remains blocked",
+      "status": "blocked",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "The CFM custom parser profile is included in the frozen certifiability boundary but remains absent and blocked pending implementation and evidence.",
+      "feature_ids": [
+        "feat:mdwrk-custom-parser-profile"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:mdwrk-custom-previewer-profiles-blocked",
+      "title": "CFM custom previewer profiles remain blocked",
+      "status": "blocked",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "The CFM custom previewer profiles are included in the frozen certifiability boundary but remain absent and blocked pending implementation and evidence.",
+      "feature_ids": [
+        "feat:mdwrk-custom-previewer-profiles"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
     }
   ],
   "evidence": [
@@ -8752,6 +9353,62 @@
       "test_ids": [
         "tst:apps-lander-portable-content-pack"
       ]
+    },
+    {
+      "id": "evd:apps-client-tests-statusbar-contract.mjs",
+      "title": "Status bar footer contract local run",
+      "status": "passed",
+      "kind": "static",
+      "tier": "T2",
+      "path": "apps/client/tests/statusbar-contract.mjs",
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-statusbar-contract.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-spec-coverage-index.json",
+      "title": "SPEC coverage index report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/spec-coverage-index.json",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-spec-coverage-index.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-ssot-graph-export-governance.json",
+      "title": "SSOT graph export governance report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/ssot-graph-export-governance.json",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-ssot-graph-export.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-release-snapshot-index.json",
+      "title": "Release snapshot index report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/release-snapshot-index.json",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-release-snapshots.mjs"
+      ]
     }
   ],
   "issues": [
@@ -8864,6 +9521,220 @@
         "feat:shell-aware-import-export-bridge"
       ],
       "profile_ids": []
+    },
+    {
+      "id": "bnd:mdwrk-seo-discoverability-current",
+      "title": "MdWrk SEO Discoverability Current Boundary",
+      "status": "draft",
+      "frozen": false,
+      "feature_ids": [
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-seo-robots-policy",
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-seo-canonical-url-metadata",
+        "feat:lander-seo-html-title-meta-link-metadata",
+        "feat:lander-seo-open-graph-metadata",
+        "feat:lander-seo-x-card-metadata",
+        "feat:lander-seo-dcmi-document-metadata",
+        "feat:lander-seo-core-web-vitals-targets",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-static-content-compiler",
+        "feat:lander-static-artifact-verification"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:mdwrk-aeo-article-discoverability-current",
+      "title": "MdWrk AEO Article Discoverability Current Boundary",
+      "status": "draft",
+      "frozen": false,
+      "feature_ids": [
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-visible-citation-parity",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-article-metadata-ci-gate"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:mdwrk-aieo-crawler-llm-discovery-current",
+      "title": "MdWrk AiEO Crawler LLM Discovery Current Boundary",
+      "status": "draft",
+      "frozen": false,
+      "feature_ids": [
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:lander-aieo-llms-txt-index",
+        "feat:lander-aieo-llms-full-index",
+        "feat:lander-aieo-markdown-mirror-consistency",
+        "feat:lander-aieo-content-registry-discovery-parity",
+        "feat:lander-static-artifact-verification"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:repo-certifiability-current-scope",
+      "title": "Repository Current Certifiability Scope",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:accessibility-shell-baseline",
+        "feat:browser-e2e-conformance-matrix",
+        "feat:client-action-rail",
+        "feat:client-commands",
+        "feat:client-common",
+        "feat:client-diagnostics",
+        "feat:client-editor",
+        "feat:client-extensions",
+        "feat:client-i18n",
+        "feat:client-layout",
+        "feat:client-markdownprofiles",
+        "feat:client-notifications",
+        "feat:client-preferences",
+        "feat:client-settings",
+        "feat:client-shell-registry-orchestration",
+        "feat:client-views",
+        "feat:commonmark-conformance-profile",
+        "feat:cross-cutting",
+        "feat:desktop-folder-mounting",
+        "feat:desktop-launch-markdown-import",
+        "feat:desktop-preload-host-api",
+        "feat:edit-in-renderer-profile-contract",
+        "feat:editor-command-block-math",
+        "feat:editor-command-citation",
+        "feat:editor-command-front-matter",
+        "feat:editor-command-insert-tab",
+        "feat:editor-core-command-model",
+        "feat:editor-line-count-scroll-alignment",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-bold",
+        "feat:editor-toolbar-bullet-list",
+        "feat:editor-toolbar-command-dispatch",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-toolbar-footnote",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-indent",
+        "feat:editor-toolbar-inline-math",
+        "feat:editor-toolbar-insert-table",
+        "feat:editor-toolbar-italic",
+        "feat:editor-toolbar-outdent",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-redo",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-resizing",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:editor-toolbar-strikethrough",
+        "feat:editor-toolbar-subscript",
+        "feat:editor-toolbar-superscript",
+        "feat:editor-toolbar-task-list",
+        "feat:editor-toolbar-undo",
+        "feat:editor-toolbar-view-editor",
+        "feat:editor-toolbar-view-preview",
+        "feat:editor-toolbar-view-split",
+        "feat:extension-capability-permissions",
+        "feat:extension-capability-trust-disclosure",
+        "feat:extension-diagnostics-recovery-actions",
+        "feat:extension-gemini-agent",
+        "feat:extension-home-intent-hub",
+        "feat:extension-intent-registry",
+        "feat:extension-language-pack-studio",
+        "feat:extension-manager",
+        "feat:extension-manager-enabled-state-persistence",
+        "feat:extension-manager-health-diagnostics",
+        "feat:extension-manager-pane-layout",
+        "feat:extension-manifest-compatibility-gate",
+        "feat:extension-pane-shared-operations",
+        "feat:extension-platform",
+        "feat:extension-runtime-activation-lifecycle",
+        "feat:extension-runtime-isolation",
+        "feat:extension-settings-namespace",
+        "feat:extension-settings-schema-rendering",
+        "feat:extension-theme-studio",
+        "feat:external-extension-trust-policy-production-defaults",
+        "feat:gemini-agent-conversation-preview-pane-surface",
+        "feat:gemini-agent-safe-draft-writeback-flow",
+        "feat:gemini-agent-workspace-file-mentions",
+        "feat:git-ops-continuous-source-control-flow",
+        "feat:host-capability-adapter",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate",
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:lander-static-artifact-verification",
+        "feat:lander-static-content-compiler",
+        "feat:lander-static-page-frontmatter-schema",
+        "feat:language-pack-studio-continuous-localization-flow",
+        "feat:markdown-file-import",
+        "feat:markdown-profile-settings-persistence",
+        "feat:markdown-renderer-core",
+        "feat:markdown-renderer-react",
+        "feat:mdwrk-lander-content-pack",
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:native-filesystem-shell-behavior",
+        "feat:oidc-adapter",
+        "feat:oidc-browser-flow",
+        "feat:portable-lander-package-family",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-unsafe-url-policy",
+        "feat:preview-overlay-actions",
+        "feat:profile-boundary-resolution",
+        "feat:pwa-version-manifest",
+        "feat:react-markdown-editor-surface",
+        "feat:shell-aware-import-export-bridge",
+        "feat:shell-evidence-matrix",
+        "feat:shell-taxonomy-runtime-detection",
+        "feat:theme-studio-continuous-authoring-flow",
+        "feat:toast-notification-behavior",
+        "feat:uix-breakpoint-token-contract",
+        "feat:uix-component-class-policy",
+        "feat:uix-css-token-chassis-contract",
+        "feat:uix-extension-view-modes",
+        "feat:uix-responsive-layout-matrix",
+        "feat:uix-zoom-scale",
+        "feat:workspace-file-action-rail-grouping",
+        "feat:workspace-files-continuous-document-flow",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence",
+        "feat:workspace-project-loading",
+        "feat:workspace-sidebar-resizing",
+        "feat:workspace-tab-management"
+      ],
+      "profile_ids": [
+        "prf:commonmark-editing-preview",
+        "prf:edit-in-renderer-profile",
+        "prf:editor-authoring-default",
+        "prf:gfm-editing-preview",
+        "prf:mdwrk-editing-preview"
+      ]
     }
   ],
   "releases": [
@@ -8887,6 +9758,48 @@
         "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
         "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ]
+    },
+    {
+      "id": "rel:repo-certifiability-current-scope",
+      "version": "repo-certifiability-current-scope",
+      "status": "candidate",
+      "boundary_id": "bnd:repo-certifiability-current-scope",
+      "claim_ids": [
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-common",
+        "clm:client-diagnostics",
+        "clm:client-editor",
+        "clm:client-extensions",
+        "clm:client-i18n",
+        "clm:client-layout",
+        "clm:client-markdownprofiles",
+        "clm:client-notifications",
+        "clm:client-preferences",
+        "clm:client-settings",
+        "clm:client-views",
+        "clm:cross-cutting",
+        "clm:edit-in-renderer-profile-contract",
+        "clm:extension-continuous-experience",
+        "clm:mdwrk-custom-parser-profile-blocked",
+        "clm:mdwrk-custom-previewer-profiles-blocked",
+        "clm:mdwrk-lander-content-pack",
+        "clm:portable-lander-package-family"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:apps-client-tests-statusbar-contract.mjs",
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+        "evd:lander-static-content-ci-local",
+        "evd:mdwrk-lander-static-validation",
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:portable-lander-package-exports",
+        "evd:ssot-reports-release-snapshot-index.json",
+        "evd:ssot-reports-spec-coverage-index.json",
+        "evd:ssot-reports-ssot-graph-export-governance.json"
       ]
     }
   ],
@@ -10085,6 +10998,28 @@
           "status": "accepted",
           "note": "Accepted as the public lander UIX containment and visual hierarchy design contract.",
           "at": "2026-05-04T11:51:05Z"
+        }
+      ]
+    },
+    {
+      "id": "adr:1057",
+      "number": 1057,
+      "slug": "mdwrk-json-ld-entity-graph-architecture",
+      "title": "MdWrk JSON-LD Entity Graph Architecture",
+      "path": ".ssot/adr/ADR-1057-mdwrk-json-ld-entity-graph-architecture.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "84576e6e8887c49dfaa345606785dad89efd8f2567354f7f1e5cacc06c994513",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created page-scoped JSON-LD entity graph architecture decision.",
+          "at": "2026-05-06T08:29:50Z"
         }
       ]
     }
@@ -11867,7 +12802,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "66f0643471306895dc234a999a88144cf2dfb2eb91acd1feb8c4718d258c4528",
+      "content_sha256": "a8e08dbfadae77d7cc4c7f57b5241a0a8b73c0070f23aff4a4d9d3bce41f7881",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -11876,6 +12811,11 @@
           "status": "draft",
           "note": "Updated for favicon fallback metadata and excerpt-derived embedded descriptions.",
           "at": "2026-05-03T23:22:52Z"
+        },
+        {
+          "status": "draft",
+          "note": "Classified targetable SEO AEO AiEO surfaces and excluded WCAG 2.2 from this discoverability lane.",
+          "at": "2026-05-06T08:43:07Z"
         }
       ],
       "kind": "normative",
@@ -11893,7 +12833,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "94ebbcb880c55b3defd0b13c76eaa5d0ff585d3bd9cdd1961964f6c045c15bfb",
+      "content_sha256": "6857268c3ec333e8fc64e5abe106613d3e7de97e065b84e80a7a7927766b8762",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -11902,6 +12842,16 @@
           "status": "draft",
           "note": "Updated for metadata JSON Schema, required excerpts, embedded metadata descriptions, and CI validation.",
           "at": "2026-05-03T23:23:07Z"
+        },
+        {
+          "status": "draft",
+          "note": "Removed schema-type specificity; JSON-LD supported types are governed by the dedicated schema support SPEC.",
+          "at": "2026-05-06T08:16:18Z"
+        },
+        {
+          "status": "draft",
+          "note": "Expanded AEO article requirements for answerable headings, visible citations, and eligible support sections.",
+          "at": "2026-05-06T08:43:14Z"
         }
       ],
       "kind": "normative",
@@ -11919,7 +12869,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "1288a03fb234701a40bf84828c82fe11f357081e3411858856510a4346a7b9a7",
+      "content_sha256": "34611f64eefe8fb136166c424a520d674b329410547b83c9a95804017232594b",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
@@ -11928,11 +12878,79 @@
           "status": "accepted",
           "note": "Updated app path/name from apps/lander to apps/mdwrkcom.",
           "at": "2026-05-05T08:04:46Z"
+        },
+        {
+          "status": "accepted",
+          "note": "Expanded generated discovery artifact requirements for sitemap robots LLM indexes Markdown mirrors and validation gates.",
+          "at": "2026-05-06T08:43:22Z"
         }
       ],
       "kind": "normative",
       "adr_ids": [
         "adr:1055"
+      ]
+    },
+    {
+      "id": "spc:2072",
+      "number": 2072,
+      "slug": "mdwrk-json-ld-schema-support-contract",
+      "title": "MdWrk JSON-LD Schema Graph Contract",
+      "path": ".ssot/specs/SPEC-2072-mdwrk-json-ld-schema-support-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "b79c1f017cf08532217c9d187a9d0483c33a7504e1a0cac1c49cea1dbc6f1fd3",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created dedicated JSON-LD supported schema type contract.",
+          "at": "2026-05-06T08:16:39Z"
+        },
+        {
+          "status": "draft",
+          "note": "Expanded supported schema types into a page-scoped JSON-LD graph contract.",
+          "at": "2026-05-06T08:30:18Z"
+        },
+        {
+          "status": "draft",
+          "note": "Added social and DCMI metadata parity to page-scoped JSON-LD graph validation.",
+          "at": "2026-05-06T08:43:30Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1053",
+        "adr:1057"
+      ]
+    },
+    {
+      "id": "spc:2073",
+      "number": 2073,
+      "slug": "ai-crawler-llm-discovery-policy-contract",
+      "title": "AI Crawler And LLM Discovery Policy Contract",
+      "path": ".ssot/specs/SPEC-2073-ai-crawler-llm-discovery-policy-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "0bce6d49a5e3ef4fc6d2d49d518db26958b0b4cfa147230cd56110d9ab696900",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created AI crawler and LLM discovery policy contract.",
+          "at": "2026-05-06T08:43:39Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1053"
       ]
     }
   ],

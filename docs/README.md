@@ -7,6 +7,7 @@ This directory contains the architecture, current-state, conformance, and operat
 ## Sections
 
 ### Current state
+- `current-state/certifiability-phase-1-honest-scope.md` — current honest certifiability scope freeze for `bnd:repo-certifiability-current-scope`.
 - `current-state/phase-22-browser-matrix-assessment.md` — latest browser-install and real-browser-matrix checkpoint assessment.
 - `current-state/phase-21-markdown-and-playwright-assessment.md` — prior markdown lane and Playwright browser-matrix implementation checkpoint assessment.
 - `current-state/phase-20-gate-b-assessment.md` — prior Gate B checkpoint assessment.
@@ -201,6 +202,7 @@ The repository now contains all of the following:
 - the Phase 18 through Phase 20 Gate B continuation checkpoints
 - the Phase 21 markdown lane and Playwright browser-matrix implementation checkpoint
 - the Phase 22 browser-install and real-browser-matrix execution checkpoint
+- the Certifiability Phase 1 honest current-scope freeze
 
 The repository is better specified than before, but it is not yet represented as final certification against the frozen Markdown target or the full repository boundary.
 

@@ -1,0 +1,49 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1057"
+number: 1057
+slug: "mdwrk-json-ld-entity-graph-architecture"
+title: "MdWrk JSON-LD Entity Graph Architecture"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Draft."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created page-scoped JSON-LD entity graph architecture decision."
+    at: "2026-05-06T08:29:50Z"
+references: []
+body: |-
+  # MdWrk JSON-LD Entity Graph Architecture
+  
+  ## Status
+  
+  Draft.
+  
+  ## Context
+  
+  MdWrk public pages emit Schema.org JSON-LD for search, answer-engine retrieval, AI-oriented discovery, and static deployment verification. The lander now needs a clear decision boundary between a useful page-scoped entity graph and an over-broad schema dump that marks up every supported type on every page.
+  
+  Search and answer systems benefit when page entities are connected through stable identifiers, but the structured data must remain truthful to visible or materially represented page content. A global graph that includes every supported Schema.org type everywhere would dilute page meaning, increase maintenance risk, and risk unsupported or misleading claims.
+  
+  ## Decision
+  
+  MdWrk shall use page-scoped JSON-LD entity graphs, not an everything-everywhere mega-schema.
+  
+  Each static page may emit a JSON-LD `@graph` containing only the entities that accurately describe that page, its visible content, its canonical route hierarchy, and stable MdWrk product or organization identity when relevant.
+  
+  The graph shall use stable canonical `@id` values and typed relationships such as `mainEntity`, `isPartOf`, `publisher`, `creator`, `breadcrumb`, `about`, and `mentions` to connect entities. The graph shall prefer the most specific supported Schema.org type that truthfully describes the page surface.
+  
+  Supported Schema.org types and page-family graph shapes are governed by the JSON-LD Schema Graph Contract SPEC. New Schema.org types require that SPEC to be updated before implementation.
+  
+  ## Consequences
+  
+  1. Page-level JSON-LD remains precise and auditable instead of becoming a site-wide inventory dump.
+  2. Home and site-level pages may carry organization, website, and application identity, while article, documentation, package, feature, comparison, trust, and legal pages carry only their page-appropriate graph shapes.
+  3. The static compiler and generated `jsonld-graph.json` projection must preserve page-level truth and stable identifiers.
+  4. Validation must fail closed when JSON-LD claims content that is not visible, materially represented, or governed as a supported schema type.
+  5. SEO, AEO, and AiEO improvements are implemented through governed graph composition and evidence rather than ad hoc structured-data additions.

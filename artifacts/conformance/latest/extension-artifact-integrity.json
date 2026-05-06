@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T20:54:49.625Z",
+  "generatedAt": "2026-05-06T09:37:02.799Z",
   "signer": "tools/extensions/sign-extension-artifacts.mjs",
   "ok": true,
   "signedEntries": [
@@ -14,10 +14,10 @@
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.3",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.1.3",
+      "version": "1.2.1",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.2.1",
       "digestCount": 7,
-      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.1.3/signed-manifest.json"
+      "signedManifestPath": "artifacts/extensions/core.gemini-agent/1.2.1/signed-manifest.json"
     },
     {
       "id": "core.git-ops",

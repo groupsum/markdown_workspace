@@ -1,6 +1,6 @@
 # @mdwrk/extension-gemini-agent
 
-First-party Gemini workflow extension for MdWork.
+First-party Gemini workflow extension for MdWrk.
 
 ## Manifest and compatibility
 

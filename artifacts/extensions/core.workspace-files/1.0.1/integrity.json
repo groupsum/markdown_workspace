@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T20:54:49.623Z",
+  "generatedAt": "2026-05-06T09:37:02.796Z",
   "artifact": {
     "id": "core.workspace-files",
     "packageName": "@mdwrk/extension-workspace-files",
@@ -10,12 +10,12 @@
     "supportedLocales": [
       "en"
     ],
-    "generatedAt": "2026-05-02T20:54:48.808Z"
+    "generatedAt": "2026-05-06T09:37:01.934Z"
   },
   "files": [
     {
       "path": "installable.json",
-      "sha256": "9938abb2d3a1c4833a9c86a41144aaa1de96245eebc839055d3631783fb988e8"
+      "sha256": "1b73a2d930eb440ae09453ff47d5c6f7852ac4abdbf33902587b59b5ef2dc665"
     },
     {
       "path": "LICENSE",
@@ -23,15 +23,15 @@
     },
     {
       "path": "manifest.json",
-      "sha256": "1e121a1fa019ee0631484ae92dfe164a966e03698288d0c2c82f71666084e395"
+      "sha256": "70d74ef6a8d5c5bef4d1b533c5cb3bf070ef4c191d4394ce1f313efb36453640"
     },
     {
       "path": "package.json",
-      "sha256": "5ea564220d525cd1852a2c964809a6383b2c91c871b09b6fcd9733a149fd1acf"
+      "sha256": "6eed1fdd07efed7c43b4c997e7b66961a2cc45a9d57885549a3a5a0f296c6523"
     },
     {
       "path": "portable-package.json",
-      "sha256": "726e5f01e111fec62e8c18c55ea70ab6de11c3c5913800c322a7e4adf0a5c45f"
+      "sha256": "975ca8f9e654ebf3442d764a6c135672211fb1e11d2e71f359241e06fb1fbb75"
     },
     {
       "path": "README.md",
@@ -39,7 +39,7 @@
     },
     {
       "path": "signed-manifest.json",
-      "sha256": "a26a0c9eb5b8a9e64f1072e2cd9913a31f4f61714577c3570cceb2fcb510a436"
+      "sha256": "347087bf790e2154f3ad7797a7a37f1f1a4cc9d71272c78b2cd92559046c4355"
     }
   ],
   "provenance": {

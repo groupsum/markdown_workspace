@@ -21,7 +21,7 @@
     "runtime",
     "react"
   ],
-  "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring MdWork extensions.",
+  "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring MdWrk extensions.",
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-manifest": "^1.0.1",

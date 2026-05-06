@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T08:16:26.190Z",
+  "generatedAt": "2026-05-06T09:37:13.509Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "results": [
@@ -208,6 +208,14 @@
     {
       "packageName": "@mdwrk/lander-theme",
       "path": "packages/lander/lander-theme",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/mdwrkcom-content-pack",
+      "path": "packages/lander/mdwrkcom-content-pack",
       "publishable": true,
       "ok": true,
       "errors": [],

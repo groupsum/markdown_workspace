@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-gemini-agent",
-  "version": "1.1.3",
+  "version": "1.2.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -21,18 +21,19 @@
     "ai",
     "agent"
   ],
-  "description": "First-party Gemini workflow extension for MdWork with read-only document operations, draft-based writeback, and a bundled operator view.",
+  "description": "First-party Gemini workflow extension for MdWrk with conversation threads, Markdown preview, draft-based writeback, and a bundled operator view.",
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.2",
     "@mdwrk/extension-manifest": "^1.0.1",
-    "@mdwrk/extension-runtime": "^1.1.1"
+    "@mdwrk/extension-runtime": "^1.1.1",
+    "@mdwrk/markdown-renderer-react": "^1.1.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "scripts": {
-    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host && npm run build -w @mdwrk/extension-runtime",
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host && npm run build -w @mdwrk/markdown-renderer-react && npm run build -w @mdwrk/extension-runtime",
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",

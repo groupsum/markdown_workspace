@@ -16,7 +16,7 @@ vi.mock('../src/features/i18n/useClientI18n', () => ({
 
 describe('Phase 7 shell parity', () => {
   it('renders runtime shell label, build identifier, and update-ready badge in the status bar', () => {
-    render(
+    const { container } = render(
       <Footer
         cursorLine={12}
         cursorCol={4}
@@ -33,6 +33,11 @@ describe('Phase 7 shell parity', () => {
     expect(screen.getByText('PWA: v1.4.0:build-abc123')).toBeInTheDocument();
     expect(screen.getByText('UPDATE_READY')).toBeInTheDocument();
     expect(screen.getByText('ONLINE')).toBeInTheDocument();
+    expect(screen.getByText('AUTO-SAVE:')).toBeInTheDocument();
+    expect(screen.getByText('ON')).toBeInTheDocument();
+    expect(screen.queryByText(/IDB/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/SAVED|UNWRITTEN/)).not.toBeInTheDocument();
+    expect(container.querySelector('.status-sep')).not.toBeInTheDocument();
   });
 
   it('uses the localized navigation aria-label for the action rail', () => {

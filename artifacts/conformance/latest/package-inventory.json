@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-02T20:54:57.739Z",
+  "generatedAt": "2026-05-06T09:37:13.519Z",
   "packages": [
     {
       "name": "@mdwrk/mdwrkspace",
-      "version": "1.4.23",
+      "version": "1.4.24",
       "path": "apps/client",
       "category": "app",
       "publishable": true
@@ -16,9 +16,9 @@
       "publishable": false
     },
     {
-      "name": "@mdwrk/lander",
-      "version": "0.0.27",
-      "path": "apps/lander",
+      "name": "@mdwrk/mdwrkcom",
+      "version": "0.0.49",
+      "path": "apps/mdwrkcom",
       "category": "app",
       "publishable": false
     },
@@ -38,7 +38,7 @@
     },
     {
       "name": "@mdwrk/extension-host",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "path": "packages/contracts/extension-host",
       "category": "contract",
       "publishable": true
@@ -55,6 +55,13 @@
       "version": "1.1.2",
       "path": "packages/contracts/theme-contract",
       "category": "contract",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/markdown-edit-in-renderer-react",
+      "version": "1.0.9",
+      "path": "packages/editor/markdown-edit-in-renderer-react",
+      "category": "editor",
       "publishable": true
     },
     {
@@ -80,7 +87,7 @@
     },
     {
       "name": "@mdwrk/extension-gemini-agent",
-      "version": "1.1.3",
+      "version": "1.2.1",
       "path": "packages/extensions/extension-gemini-agent",
       "category": "extension",
       "publishable": true
@@ -108,7 +115,7 @@
     },
     {
       "name": "@mdwrk/extension-runtime",
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "packages/extensions/extension-runtime",
       "category": "extension",
       "publishable": true
@@ -125,6 +132,62 @@
       "version": "1.0.1",
       "path": "packages/extensions/extension-workspace-files",
       "category": "extension",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-content-contract",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-content-contract",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-core",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-core",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-markdown",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-markdown",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-react",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-react",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-schema",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-schema",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-seo",
+      "version": "0.1.0",
+      "path": "packages/lander/lander-seo",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/lander-theme",
+      "version": "0.1.2",
+      "path": "packages/lander/lander-theme",
+      "category": "lander",
+      "publishable": true
+    },
+    {
+      "name": "@mdwrk/mdwrkcom-content-pack",
+      "version": "0.1.2",
+      "path": "packages/lander/mdwrkcom-content-pack",
+      "category": "lander",
       "publishable": true
     },
     {
@@ -170,5 +233,5 @@
       "publishable": true
     }
   ],
-  "inventoryDigest": "1e9ada88f39ada17765246e54cae4339f1e64218072155ad65098bd44820f213"
+  "inventoryDigest": "0c67f2658062ce9837a46c5ab5ee222885a50874fd18fc84bc173b244ffb7c5a"
 }

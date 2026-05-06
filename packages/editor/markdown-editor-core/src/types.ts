@@ -46,6 +46,7 @@ export type MarkdownEditorBuiltinCommandId =
 
 export interface MarkdownEditorCommandOptions {
   readonly indentUnit?: string;
+  readonly linkText?: string;
   readonly linkUrl?: string;
 }
 

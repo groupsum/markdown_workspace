@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs standardized support sections and metadata headers for documentation and blog articles on the public lander."
+summary: "This SPEC governs standardized support sections, article metadata headers, and answer-engine-readable content for documentation and blog articles on the public lander."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -16,30 +16,41 @@ status_notes:
     status: "draft"
     note: "Updated for metadata JSON Schema, required excerpts, embedded metadata descriptions, and CI validation."
     at: "2026-05-03T23:23:07Z"
+  -
+    status: "draft"
+    note: "Removed schema-type specificity; JSON-LD supported types are governed by the dedicated schema support SPEC."
+    at: "2026-05-06T08:16:18Z"
+  -
+    status: "draft"
+    note: "Expanded AEO article requirements for answerable headings, visible citations, and eligible support sections."
+    at: "2026-05-06T08:43:14Z"
 references: []
 body: |-
   # MdWrk Article Standardization Contract
   
   ## Scope
   
-  This SPEC governs standardized support sections and metadata headers for documentation and blog articles on the public lander.
+  This SPEC governs standardized support sections, article metadata headers, and answer-engine-readable content for documentation and blog articles on the public lander.
   
   ## Requirements
   
-  1. Doc pages shall expose appended answer blocks containing What this does, When to use it, How it works, Example, Common errors, and Related APIs when those sections are relevant to the page type.
+  1. Documentation pages shall expose appended answer blocks containing What this does, When to use it, How it works, Example, Common errors, and Related APIs when those sections are relevant to the page type.
   2. Blog posts shall expose appended article guide material that improves semantic retrieval without replacing the editorial article body.
   3. Standardized answer and guide sections shall be terminal article content after the primary article body, not prepended and not inserted inline before the user's main reading path.
-  4. Related Docs and related article link text shall be professional, specific, and product-facing.
-  5. Article enhancements shall preserve crawlable plain text, internal links, canonical metadata, and readable headings.
-  6. Doc-by-doc and post-by-post standardization must avoid overstating support status and must keep MdWrk product terminology consistent.
-  7. Docs and blog frontmatter shall conform to the shared article metadata JSON Schema.
-  8. Excerpts are required metadata for every documentation and blog article.
-  9. Article cards, page metadata descriptions, BlogPosting JSON-LD descriptions, and embedded metadata link descriptions shall use the article excerpt.
-  10. A dedicated GitHub Actions workflow shall validate article metadata headers against the JSON Schema for relevant lander article and schema changes.
+  4. Article headings shall use clear, answerable phrasing when the section answers a target question, while preserving a natural documentation or editorial reading experience.
+  5. Related Docs and related article link text shall be professional, specific, and product-facing.
+  6. Article enhancements shall preserve crawlable plain text, internal links, canonical metadata, and readable headings.
+  7. Doc-by-doc and post-by-post standardization must avoid overstating support status and must keep MdWrk product terminology consistent.
+  8. Docs and blog frontmatter shall conform to the shared article metadata JSON Schema.
+  9. Excerpts are required metadata for every documentation and blog article.
+  10. Article cards, page metadata descriptions, structured-data descriptions, and embedded metadata link descriptions shall use the article excerpt.
+  11. Citations, source references, related APIs, and related docs shall be visible page content when they are represented in generated metadata or structured discovery artifacts.
+  12. FAQ, Q&A, or how-to style sections may be generated only when the same question, answer, or step content is visible on the page and the page family is eligible for that representation.
+  13. A dedicated GitHub Actions workflow shall validate article metadata headers against the JSON Schema for relevant lander article and schema changes.
   
   ## Acceptance
   
-  Feature rows covering docs standardization, blog standardization, appended answer placement, related-link copy, crawlable article text, metadata schema validation, excerpt-derived embedded metadata, and the CI article metadata gate must link to this SPEC.
+  Feature rows covering docs standardization, blog standardization, appended answer placement, retrieval-friendly headings, related-link copy, crawlable article text, metadata schema validation, excerpt-derived embedded metadata, visible citation parity, eligible FAQ/Q&A/how-to rendering, and the CI article metadata gate must link to this SPEC.
 spec_kind: "normative"
 adr_ids:
   - "adr:1054"
