@@ -23,3 +23,7 @@
 .lander-markdown .markdown-body pre,.lander-markdown .markdown-body .md-code-block,.lander-markdown .md-code-block,.lander-markdown pre{padding:1rem 1.125rem}
 .lander-markdown .markdown-body pre code,.lander-markdown .markdown-body .md-code-surface pre>code,.lander-markdown pre code{display:block;padding:0}
 .lander-markdown .markdown-body .md-code-surface>div{padding:1rem 1.125rem}
+.lander-markdown .markdown-body ul,.lander-markdown .markdown-body .md-ul{list-style:disc}
+.lander-markdown .markdown-body ol,.lander-markdown .markdown-body .md-ol{list-style:decimal}
+.lander-markdown .markdown-body ul,.lander-markdown .markdown-body ol,.lander-markdown .markdown-body .md-ul,.lander-markdown .markdown-body .md-ol{padding-left:1.35rem}
+.lander-markdown .markdown-body li::marker{color:var(--lander-accent);font-weight:700}

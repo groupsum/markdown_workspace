@@ -56,7 +56,13 @@ assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body h2'), 'Markdo
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body p'), 'Markdown renderer source must theme lander markdown body text.');
 assert.ok(sourceMarkdown.includes('padding: 0.12rem 0.35rem'), 'Markdown renderer source must pad inline code text away from its border.');
 assert.ok(sourceMarkdown.includes('padding: 1rem 1.125rem'), 'Markdown renderer source must pad fenced code text away from its border.');
+assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ul'), 'Markdown renderer source must style unordered markdown lists.');
+assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ol'), 'Markdown renderer source must style ordered markdown lists.');
+assert.ok(sourceMarkdown.includes('list-style: disc'), 'Markdown renderer source must render unordered markdown lists with bullets.');
+assert.ok(sourceMarkdown.includes('list-style: decimal'), 'Markdown renderer source must render ordered markdown lists with numerals.');
 assert.ok(css.includes('padding:.12rem .35rem') || css.includes('padding:0.12rem 0.35rem'), 'Static stylesheet must pad inline code text away from its border.');
 assert.ok(css.includes('padding:1rem 1.125rem'), 'Static stylesheet must pad fenced code text away from its border.');
+assert.ok(css.includes('list-style:disc'), 'Static stylesheet must render unordered markdown lists with bullets.');
+assert.ok(css.includes('list-style:decimal'), 'Static stylesheet must render ordered markdown lists with numerals.');
 
 console.log('Static style contract validation passed.');

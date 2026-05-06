@@ -1445,6 +1445,7 @@ const renderStaticDemoScript = () => `<script>
           const html = [];
           let paragraph = [];
           let list = [];
+          let listKind = null;
           let table = [];
           let code = [];
           let inCode = false;
@@ -1457,8 +1458,11 @@ const renderStaticDemoScript = () => `<script>
           };
           const flushList = () => {
             if (!list.length) return;
-            html.push('<ul class="md-list">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</ul>');
+            const tagName = listKind === 'ordered' ? 'ol' : 'ul';
+            const className = listKind === 'ordered' ? 'md-list md-ol' : 'md-list md-ul';
+            html.push('<' + tagName + ' class="' + className + '">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</' + tagName + '>');
             list = [];
+            listKind = null;
           };
           const flushTable = () => {
             if (table.length < 2) {
@@ -1518,7 +1522,19 @@ const renderStaticDemoScript = () => `<script>
             if (listItem) {
               flushParagraph();
               flushTable();
+              if (listKind && listKind !== 'unordered') flushList();
+              listKind = 'unordered';
               list.push(listItem[1]);
+              continue;
+            }
+
+            const orderedListItem = /^\\d+[.)]\\s+(.+)$/.exec(line);
+            if (orderedListItem) {
+              flushParagraph();
+              flushTable();
+              if (listKind && listKind !== 'ordered') flushList();
+              listKind = 'ordered';
+              list.push(orderedListItem[1]);
               continue;
             }
 

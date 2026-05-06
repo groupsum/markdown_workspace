@@ -26,7 +26,7 @@
     <meta name="twitter:image" content="https://mdwrk.com/favicon.svg">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/#webpage","url":"https://mdwrk.com/","name":"MdWrk — Local-first Markdown workspace for writing, preview, and extensions","headline":"Local-first Markdown workspace","description":"MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.","dateModified":"2026-05-04","image":"https://mdwrk.com/favicon.svg","inLanguage":"en-US"},{"@type":"Organization","@id":"https://mdwrk.com/#organization","name":"MdWrk","url":"https://mdwrk.com/"},{"@type":"SoftwareApplication","@id":"https://mdwrk.com/#software","name":"MdWrk","applicationCategory":"ProductivityApplication","operatingSystem":"Web","url":"https://mdwrk.com/"},{"@type":"WebSite","@id":"https://mdwrk.com/#website","name":"MdWrk","url":"https://mdwrk.com/"}]}</script>
-    <link rel="stylesheet" href="/assets/static.css?v=0.0.48">
+    <link rel="stylesheet" href="/assets/static.css?v=0.0.49">
   </head>
   <body>
     <div id="root">
@@ -408,6 +408,7 @@ const surface = {
           const html = [];
           let paragraph = [];
           let list = [];
+          let listKind = null;
           let table = [];
           let code = [];
           let inCode = false;
@@ -420,8 +421,11 @@ const surface = {
           };
           const flushList = () => {
             if (!list.length) return;
-            html.push('<ul class="md-list">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</ul>');
+            const tagName = listKind === 'ordered' ? 'ol' : 'ul';
+            const className = listKind === 'ordered' ? 'md-list md-ol' : 'md-list md-ul';
+            html.push('<' + tagName + ' class="' + className + '">' + list.map(item => '<li>' + renderInline(item) + '</li>').join('') + '</' + tagName + '>');
             list = [];
+            listKind = null;
           };
           const flushTable = () => {
             if (table.length < 2) {
@@ -481,7 +485,19 @@ const surface = {
             if (listItem) {
               flushParagraph();
               flushTable();
+              if (listKind && listKind !== 'unordered') flushList();
+              listKind = 'unordered';
               list.push(listItem[1]);
+              continue;
+            }
+
+            const orderedListItem = /^\d+[.)]\s+(.+)$/.exec(line);
+            if (orderedListItem) {
+              flushParagraph();
+              flushTable();
+              if (listKind && listKind !== 'ordered') flushList();
+              listKind = 'ordered';
+              list.push(orderedListItem[1]);
               continue;
             }
 
