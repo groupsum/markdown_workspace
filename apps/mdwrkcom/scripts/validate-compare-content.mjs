@@ -20,12 +20,12 @@ assert.match(dataDocs, /const toCompareSlug = \(slug: string\) =>\s*`compare\/\$
 assert.match(compareView, /import \{ compareDocs, compareDocsBySlug \} from '\.\.\/data\/docs';/, 'CompareView must use compareDocs as its source.');
 assert.match(compareView, /heading="Compares"/, 'CompareView must label the sidebar as Compares.');
 assert.match(compareView, /icon=\{<Scale className="docs-sidebar-icon" \/>\}/, 'CompareView must render the Compares sidebar icon through the section menu.');
-assert.match(compareView, /navigate\(`\/\$\{compareDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'CompareView must default /compare to the first compare route.');
+assert.doesNotMatch(compareView, /navigate\(`\/\$\{compareDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'CompareView must render /compare as an index page instead of redirecting to the first comparison route.');
 assert.match(compareView, /{ name: 'Compares', path: '\/compare\/' }/, 'CompareView breadcrumbs must place pages under Compares.');
 assert.match(compareView, /<MarkdownViewer content=\{articleContent\} \/>/, 'CompareView must render comparison article content.');
 
 assert.doesNotMatch(docsView, /compareDocs|compareDocsBySlug/, 'DocsView must not import comparison content.');
-assert.match(navbar, /\{\s*id:\s*'\/compare\/obsidian',\s*label:\s*'Compare'\s*\}/, 'React header Compare nav must point into the compare section.');
+assert.match(navbar, /\{\s*id:\s*'\/compare',\s*label:\s*'Compare'\s*\}/, 'React header Compare nav must point to the compare index.');
 assert.doesNotMatch(navbar, /\/docs\/comparisons/, 'React header must not point Compare to docs/comparisons.');
 
 assert.match(staticCompiler, /const toCompareRouteSlug = \(slug\) => `\/compare\/\$\{String\(slug\)/, 'Static compiler must normalize comparison markdown to /compare routes.');

@@ -14,8 +14,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
 
   const navLinks = [
     { id: '/', label: 'Home' },
-    { id: '/features/offline-markdown-editor', label: 'Features' },
-    { id: '/compare/obsidian', label: 'Compare' },
+    { id: '/features', label: 'Features' },
+    { id: '/compare', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
     { id: '/updates', label: 'Updates' },
     { id: '/privacy', label: 'Privacy' },

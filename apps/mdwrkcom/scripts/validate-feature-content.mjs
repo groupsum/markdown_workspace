@@ -20,12 +20,12 @@ assert.match(dataDocs, /const toFeatureSlug = \(slug: string\) =>\s*`features\/\
 assert.match(featureView, /import \{ featureDocs, featureDocsBySlug \} from '\.\.\/data\/docs';/, 'FeatureView must use featureDocs as its source.');
 assert.match(featureView, /heading="Features"/, 'FeatureView must label the sidebar as Features.');
 assert.match(featureView, /icon=\{<Sparkles className="docs-sidebar-icon" \/>\}/, 'FeatureView must render the Features sidebar icon through the section menu.');
-assert.match(featureView, /navigate\(`\/\$\{featureDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'FeatureView must default /features to the first feature route.');
+assert.doesNotMatch(featureView, /navigate\(`\/\$\{featureDocs\[0\]\.slug\}`,\s*\{ replace: true \}\)/, 'FeatureView must render /features as an index page instead of redirecting to the first feature route.');
 assert.match(featureView, /{ name: 'Features', path: '\/features\/' }/, 'FeatureView breadcrumbs must place pages under Features.');
 assert.match(featureView, /<MarkdownViewer content=\{articleContent\} \/>/, 'FeatureView must render feature article content.');
 
 assert.doesNotMatch(docsView, /featureDocs|featureDocsBySlug/, 'DocsView must not import feature content.');
-assert.match(navbar, /\{\s*id:\s*'\/features\/offline-markdown-editor',\s*label:\s*'Features'\s*\}/, 'React header Features nav must point into the features section.');
+assert.match(navbar, /\{\s*id:\s*'\/features',\s*label:\s*'Features'\s*\}/, 'React header Features nav must point to the features index.');
 assert.doesNotMatch(navbar, /\/docs\/product|\/docs\/usage\/(?:editor-basics|rendering-and-preview|advanced-formatting)/, 'React header must not point feature navigation to docs routes.');
 
 assert.match(staticCompiler, /const toFeatureRouteSlug = \(slug\) => `\/features\/\$\{String\(slug\)/, 'Static compiler must normalize feature markdown to /features routes.');

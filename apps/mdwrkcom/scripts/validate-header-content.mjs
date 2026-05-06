@@ -12,8 +12,8 @@ const staticCompiler = read('src', 'cli.mjs');
 
 const reactNavLinks = [
   ['/', 'Home'],
-  ['/features/offline-markdown-editor', 'Features'],
-  ['/compare/obsidian', 'Compare'],
+  ['/features', 'Features'],
+  ['/compare', 'Compare'],
   ['/docs', 'Docs'],
   ['/updates', 'Updates'],
   ['/privacy', 'Privacy'],
@@ -21,8 +21,8 @@ const reactNavLinks = [
 
 const staticNavLinks = [
   ['/', 'Home'],
-  ['/features/offline-markdown-editor/', 'Features'],
-  ['/compare/obsidian/', 'Compare'],
+  ['/features/', 'Features'],
+  ['/compare/', 'Compare'],
   ['/docs/', 'Docs'],
   ['/updates/', 'Updates'],
   ['/privacy/', 'Privacy'],

@@ -82,6 +82,19 @@
     "llmsInclude": true
   },
   {
+    "slug": "/compare/",
+    "url": "https://mdwrk.com/compare/",
+    "title": "MdWrk Compare | Markdown Editor Comparisons",
+    "description": "Compare MdWrk with Markdown editors and workspace tools by local-first behavior, browser delivery, package reuse, extension boundaries, and proof artifacts.",
+    "h1": "Compare MdWrk",
+    "subtitle": "Use this comparison hub to choose the right Markdown workspace by storage defaults, authoring model, extension boundaries, and public proof.",
+    "intent": "compare mdwrk",
+    "contentType": "comparison",
+    "updatedAt": "2026-05-05",
+    "tags": [],
+    "llmsInclude": true
+  },
+  {
     "slug": "/compare/local-first-markdown-editors/",
     "url": "https://mdwrk.com/compare/local-first-markdown-editors/",
     "title": "Local-First Markdown Editors | MdWrk Comparison",
@@ -205,6 +218,19 @@
     "h1": "GitHub sync",
     "subtitle": "GitHub sync supports repository movement for Markdown projects without making every local edit depend on a hosted backend.",
     "intent": "github sync markdown workspace",
+    "contentType": "feature",
+    "updatedAt": "2026-05-05",
+    "tags": [],
+    "llmsInclude": true
+  },
+  {
+    "slug": "/features/",
+    "url": "https://mdwrk.com/features/",
+    "title": "MdWrk Features | Local-First Markdown Workspace",
+    "description": "Explore MdWrk features for local-first Markdown writing, offline authoring, PWA use, browser-local storage, preview, themes, extensions, and GitHub sync.",
+    "h1": "MdWrk features",
+    "subtitle": "Browse the local-first Markdown workspace surfaces that make MdWrk useful for authors, developers, and package adopters.",
+    "intent": "mdwrk features",
     "contentType": "feature",
     "updatedAt": "2026-05-05",
     "tags": [],

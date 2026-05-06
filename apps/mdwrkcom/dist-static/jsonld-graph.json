@@ -267,6 +267,57 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/compare/#webpage",
+      "url": "https://mdwrk.com/compare/",
+      "name": "MdWrk Compare | Markdown Editor Comparisons",
+      "headline": "Compare MdWrk",
+      "description": "Compare MdWrk with Markdown editors and workspace tools by local-first behavior, browser delivery, package reuse, extension boundaries, and proof artifacts.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/compare/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What should I compare before choosing MdWrk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compare storage defaults, offline behavior, browser and PWA support, preview quality, extension boundaries, package reuse, export needs, and public proof artifacts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does MdWrk need a comparison index?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The comparison index gives users, crawlers, and AI assistants a canonical hub for MdWrk comparison pages instead of forcing them to infer structure from individual articles."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/compare/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/compare/local-first-markdown-editors/#webpage",
       "url": "https://mdwrk.com/compare/local-first-markdown-editors/",
       "name": "Local-First Markdown Editors | MdWrk Comparison",
@@ -303,6 +354,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Local-first Markdown editors",
           "item": "https://mdwrk.com/compare/local-first-markdown-editors/"
         }
@@ -346,6 +403,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk vs Obsidian",
           "item": "https://mdwrk.com/compare/mdwrk-vs-obsidian/"
         }
@@ -389,6 +452,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk vs Typora",
           "item": "https://mdwrk.com/compare/mdwrk-vs-typora/"
         }
@@ -432,6 +501,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk vs VS Code Markdown",
           "item": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/"
         }
@@ -658,6 +733,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Extension runtime",
           "item": "https://mdwrk.com/features/extension-runtime/"
         }
@@ -709,8 +790,65 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "GitHub sync",
           "item": "https://mdwrk.com/features/github-sync/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/#webpage",
+      "url": "https://mdwrk.com/features/",
+      "name": "MdWrk Features | Local-First Markdown Workspace",
+      "headline": "MdWrk features",
+      "description": "Explore MdWrk features for local-first Markdown writing, offline authoring, PWA use, browser-local storage, preview, themes, extensions, and GitHub sync.",
+      "dateModified": "2026-05-05",
+      "image": "https://mdwrk.com/favicon.svg",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What MdWrk features should I review first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with local-first Markdown workspace, offline Markdown editor, IndexedDB Markdown storage, live preview, theme packs, extension runtime, and GitHub sync."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does MdWrk group features into an index page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The index page gives users, crawlers, and AI assistants a canonical feature hub that links the product surfaces under one structural route."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
         }
       ]
     },
@@ -760,6 +898,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "IndexedDB Markdown storage",
           "item": "https://mdwrk.com/features/indexeddb-markdown-storage/"
         }
@@ -811,6 +955,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Live Markdown preview",
           "item": "https://mdwrk.com/features/live-preview/"
         }
@@ -862,6 +1012,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "PWA Markdown editor",
           "item": "https://mdwrk.com/features/pwa-markdown-editor/"
         }
@@ -1818,6 +1974,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Editor Basics",
           "item": "https://mdwrk.com/features/editor-basics/"
         }
@@ -1869,6 +2031,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Markdown Formatting",
           "item": "https://mdwrk.com/features/advanced-formatting/"
         }
@@ -1920,6 +2088,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Rendering And Preview",
           "item": "https://mdwrk.com/features/rendering-and-preview/"
         }
@@ -1971,6 +2145,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Offline Markdown Editor",
           "item": "https://mdwrk.com/features/offline-markdown-editor/"
         }
@@ -2022,6 +2202,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Local-first Markdown Workspace",
           "item": "https://mdwrk.com/features/local-first-markdown-workspace/"
         }
@@ -2073,6 +2259,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Privacy-first Markdown Editor",
           "item": "https://mdwrk.com/features/privacy-first-markdown-editor/"
         }
@@ -2124,6 +2316,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Markdown File Manager",
           "item": "https://mdwrk.com/features/markdown-file-manager/"
         }
@@ -2175,6 +2373,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Markdown Preview Editor",
           "item": "https://mdwrk.com/features/markdown-preview-editor/"
         }
@@ -2226,6 +2430,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Extension Host",
           "item": "https://mdwrk.com/features/extension-host/"
         }
@@ -2277,6 +2487,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Theme Packs",
           "item": "https://mdwrk.com/features/theme-packs/"
         }
@@ -2328,6 +2544,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Developer Documentation",
           "item": "https://mdwrk.com/features/developer-documentation/"
         }
@@ -2778,6 +3000,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Obsidian",
           "item": "https://mdwrk.com/compare/obsidian/"
         }
@@ -2829,6 +3057,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Typora",
           "item": "https://mdwrk.com/compare/typora/"
         }
@@ -2880,6 +3114,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs VS Code",
           "item": "https://mdwrk.com/compare/code/"
         }
@@ -2931,6 +3171,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Marktext",
           "item": "https://mdwrk.com/compare/marktext/"
         }
@@ -2982,6 +3228,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Zettlr",
           "item": "https://mdwrk.com/compare/zettlr/"
         }
@@ -3033,6 +3285,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Notion",
           "item": "https://mdwrk.com/compare/notion/"
         }
@@ -3084,6 +3342,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Logseq",
           "item": "https://mdwrk.com/compare/logseq/"
         }
@@ -3135,6 +3399,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Compare MdWrk",
+          "item": "https://mdwrk.com/compare/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk Vs Standard Markdown Editors",
           "item": "https://mdwrk.com/compare/standard-markdown-editors/"
         }

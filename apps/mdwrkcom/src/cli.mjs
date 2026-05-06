@@ -1334,8 +1334,8 @@ const jsonLdFor = (entry, registry) => {
 const renderTopNav = (registry, currentSlug) => {
   const links = [
     ['/', 'Home'],
-    ['/features/offline-markdown-editor/', 'Features'],
-    ['/compare/obsidian/', 'Compare'],
+    ['/features/', 'Features'],
+    ['/compare/', 'Compare'],
     ['/docs/', 'Docs'],
     ['/updates/', 'Updates'],
     ['/privacy/', 'Privacy'],

@@ -227,6 +227,80 @@
     }
   },
   {
+    "sourcePath": "content/pages/compare/index.md",
+    "sourceHash": "3f9dc352f3b97bc181be82587899dddb23230e03c0f41b38a4d7b26af33b08e2",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/compare/",
+      "title": "MdWrk Compare | Markdown Editor Comparisons",
+      "description": "Compare MdWrk with Markdown editors and workspace tools by local-first behavior, browser delivery, package reuse, extension boundaries, and proof artifacts.",
+      "h1": "Compare MdWrk",
+      "subtitle": "Use this comparison hub to choose the right Markdown workspace by storage defaults, authoring model, extension boundaries, and public proof.",
+      "entity": "MdWrk",
+      "intent": "compare mdwrk",
+      "contentType": "comparison",
+      "updatedAt": "2026-05-05",
+      "faqs": [
+        {
+          "question": "What should I compare before choosing MdWrk?",
+          "answer": "Compare storage defaults, offline behavior, browser and PWA support, preview quality, extension boundaries, package reuse, export needs, and public proof artifacts."
+        },
+        {
+          "question": "Why does MdWrk need a comparison index?",
+          "answer": "The comparison index gives users, crawlers, and AI assistants a canonical hub for MdWrk comparison pages instead of forcing them to infer structure from individual articles."
+        }
+      ],
+      "related": [
+        "/compare/local-first-markdown-editors/",
+        "/compare/mdwrk-vs-obsidian/",
+        "/compare/mdwrk-vs-typora/",
+        "/compare/mdwrk-vs-vscode-markdown/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/compare/",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Compare MdWrk by the boundaries that matter for Markdown work: local-first authoring, browser delivery, package reuse, extension trust, preview behavior, and machine-readable proof. This page is the canonical comparison hub for the MdWrk marketing site. Comparison pages Local-first Markdown Editors compares Markdown tools by storage defaults, offline behavior, preview policy, package reuse, and public proof. MdWrk vs Obsidian frames MdWrk against a graph-oriented personal knowledge management workflow. MdWrk vs Typora compares browser/PWA workspace behavior with a focused desktop Markdown editor. MdWrk vs VS Code Markdown compares a dedicated Markdown workspace with editor-centered Markdown authoring. Evaluation criteria Use the same criteria across comparison pages: where documents live by default, whether normal authoring works offline, how preview behavior is handled, how extensions are governed, whether package surfaces are reusable, and whether the public site emits sitemap, robots, LLM, content index, and JSON-LD artifacts. This comparison index keeps the /compare/ route structural, crawlable, and useful before a visitor chooses a specific alternative.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "comparison-pages",
+          "text": "Comparison pages"
+        },
+        {
+          "depth": 2,
+          "id": "evaluation-criteria",
+          "text": "Evaluation criteria"
+        }
+      ],
+      "links": [
+        {
+          "href": "/compare/local-first-markdown-editors/",
+          "text": "Local-first Markdown Editors",
+          "internal": true
+        },
+        {
+          "href": "/compare/mdwrk-vs-obsidian/",
+          "text": "MdWrk vs Obsidian",
+          "internal": true
+        },
+        {
+          "href": "/compare/mdwrk-vs-typora/",
+          "text": "MdWrk vs Typora",
+          "internal": true
+        },
+        {
+          "href": "/compare/mdwrk-vs-vscode-markdown/",
+          "text": "MdWrk vs VS Code Markdown",
+          "internal": true
+        }
+      ],
+      "wordCount": 159
+    }
+  },
+  {
     "sourcePath": "content/pages/compare/local-first-markdown-editors.md",
     "sourceHash": "0e5e491211bb4bade4dad671e6e723a6e7c036e706039273dc55ac578844ac3c",
     "frontmatter": {
@@ -611,6 +685,100 @@
       "headings": [],
       "links": [],
       "wordCount": 85
+    }
+  },
+  {
+    "sourcePath": "content/pages/features/index.md",
+    "sourceHash": "ffd84ee70227622a7dcff180cba918166ffa6251b83f3dfbed8fc1e940a0d020",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/features/",
+      "title": "MdWrk Features | Local-First Markdown Workspace",
+      "description": "Explore MdWrk features for local-first Markdown writing, offline authoring, PWA use, browser-local storage, preview, themes, extensions, and GitHub sync.",
+      "h1": "MdWrk features",
+      "subtitle": "Browse the local-first Markdown workspace surfaces that make MdWrk useful for authors, developers, and package adopters.",
+      "entity": "MdWrk",
+      "intent": "mdwrk features",
+      "contentType": "feature",
+      "updatedAt": "2026-05-05",
+      "faqs": [
+        {
+          "question": "What MdWrk features should I review first?",
+          "answer": "Start with local-first Markdown workspace, offline Markdown editor, IndexedDB Markdown storage, live preview, theme packs, extension runtime, and GitHub sync."
+        },
+        {
+          "question": "Why does MdWrk group features into an index page?",
+          "answer": "The index page gives users, crawlers, and AI assistants a canonical feature hub that links the product surfaces under one structural route."
+        }
+      ],
+      "related": [
+        "/features/indexeddb-markdown-storage/",
+        "/features/live-preview/",
+        "/features/extension-runtime/",
+        "/features/github-sync/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/features/",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "MdWrk features describe the product surfaces that make the workspace local-first, browser-delivered, package-aware, and explicit about trust boundaries. This page is the canonical feature hub for the MdWrk marketing site. Core workspace features Local-first Markdown Workspace explains the product model for writing, previewing, organizing, and extending Markdown without making hosted storage the default. Offline Markdown Editor covers browser-local authoring and PWA-friendly editing when network access is not the primary dependency. PWA Markdown Editor describes the installable app-like surface for browser-based Markdown work. IndexedDB Markdown Storage explains browser-local persistence and the storage boundary. Live Preview documents the editing and preview surface for validating Markdown while writing. Extension and integration features Theme Packs covers governed theme contracts and reusable styling surfaces. Extension Runtime explains the package and runtime boundary for extending MdWrk. GitHub Sync describes optional repository-oriented sync and publication workflows. Use this feature index as the structural entry point before reading individual feature pages, answer pages, proof pages, or package documentation.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "core-workspace-features",
+          "text": "Core workspace features"
+        },
+        {
+          "depth": 2,
+          "id": "extension-and-integration-features",
+          "text": "Extension and integration features"
+        }
+      ],
+      "links": [
+        {
+          "href": "/features/local-first-markdown-workspace/",
+          "text": "Local-first Markdown Workspace",
+          "internal": true
+        },
+        {
+          "href": "/features/offline-markdown-editor/",
+          "text": "Offline Markdown Editor",
+          "internal": true
+        },
+        {
+          "href": "/features/pwa-markdown-editor/",
+          "text": "PWA Markdown Editor",
+          "internal": true
+        },
+        {
+          "href": "/features/indexeddb-markdown-storage/",
+          "text": "IndexedDB Markdown Storage",
+          "internal": true
+        },
+        {
+          "href": "/features/live-preview/",
+          "text": "Live Preview",
+          "internal": true
+        },
+        {
+          "href": "/features/theme-packs/",
+          "text": "Theme Packs",
+          "internal": true
+        },
+        {
+          "href": "/features/extension-runtime/",
+          "text": "Extension Runtime",
+          "internal": true
+        },
+        {
+          "href": "/features/github-sync/",
+          "text": "GitHub Sync",
+          "internal": true
+        }
+      ],
+      "wordCount": 160
     }
   },
   {

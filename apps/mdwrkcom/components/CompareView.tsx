@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import { Scale } from 'lucide-react';
 import { compareDocs, compareDocsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
@@ -60,17 +60,20 @@ const buildCompareFaqItems = (title: string, excerpt: string) => {
 
 export const CompareView: React.FC = () => {
   const { '*': slugParam } = useParams();
-  const navigate = useNavigate();
-  const activeSlug = slugParam || compareDocs[0]?.slug.replace(/^compare\//, '');
-  const currentDoc = (activeSlug && compareDocsBySlug[activeSlug]) || compareDocs[0];
-
-  useEffect(() => {
-    if (!slugParam && compareDocs.length > 0) {
-      navigate(`/${compareDocs[0].slug}`, { replace: true });
-    }
-  }, [slugParam, navigate]);
-
-  const articleContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(currentDoc?.content || '# Comparison Not Found', currentDoc?.title));
+  const activeSlug = slugParam || '';
+  const currentDoc = activeSlug ? compareDocsBySlug[activeSlug] : undefined;
+  const indexContent = [
+    'Compare MdWrk by the boundaries that matter for Markdown work: local-first authoring, browser delivery, package reuse, extension trust, preview behavior, and machine-readable proof.',
+    '',
+    '## Comparison pages',
+    '',
+    ...compareDocs.map(doc => `- [${doc.title}](/${doc.slug}): ${extractExcerpt(stripLegacyAeoSections(removeDuplicateLeadingHeading(doc.content, doc.title)), doc.metadata.excerpt)}`),
+  ].join('\n');
+  const articleContent = currentDoc
+    ? stripLegacyAeoSections(removeDuplicateLeadingHeading(currentDoc.content, currentDoc.title))
+    : indexContent;
+  const pageTitle = currentDoc?.title || 'Compare MdWrk';
+  const pageSubtitle = currentDoc?.metadata.subtitle || 'Use this comparison hub to choose the right Markdown workspace by storage defaults, authoring model, extension boundaries, and public proof.';
   const excerpt = extractExcerpt(articleContent, currentDoc?.metadata.excerpt);
   const headings = extractHeadings(articleContent);
   const metadataImage = getArticleMetadataImage(currentDoc?.metadata, articleContent);
@@ -83,25 +86,28 @@ export const CompareView: React.FC = () => {
     title: currentDoc?.title || 'MdWrk Compares',
     description: excerpt,
     image: metadataImage?.src,
-    imageAlt: metadataImage?.alt || currentDoc?.title,
+    imageAlt: metadataImage?.alt || pageTitle,
     keywords,
     path: currentPath,
-    structuredData: currentDoc
-      ? [
-          buildTechArticleSchema({
-            title: currentDoc.title,
-            description: excerpt,
-            path: currentPath,
-            datePublished: currentDoc.metadata.date,
-          }),
-          buildBreadcrumbSchema([
+    structuredData: [
+      buildTechArticleSchema({
+        title: pageTitle,
+        description: excerpt,
+        path: currentPath,
+        datePublished: currentDoc?.metadata.date,
+      }),
+      buildBreadcrumbSchema(currentDoc
+        ? [
             { name: 'MdWrk', path: '/' },
             { name: 'Compares', path: '/compare/' },
             { name: currentDoc.title, path: currentPath },
+          ]
+        : [
+            { name: 'MdWrk', path: '/' },
+            { name: 'Compares', path: '/compare/' },
           ]),
-          buildFaqSchema(buildCompareFaqItems(currentDoc.title, excerpt)),
-        ]
-      : null,
+      buildFaqSchema(buildCompareFaqItems(pageTitle, excerpt)),
+    ],
   });
 
   const compareNavItems = useMemo(() => compareDocs.map(doc => ({
@@ -142,6 +148,18 @@ export const CompareView: React.FC = () => {
                   {currentDoc.metadata.subtitle ? (
                     <p className="docs-subtitle">{currentDoc.metadata.subtitle}</p>
                   ) : null}
+                </header>
+              )}
+              {!currentDoc && (
+                <header className="docs-header compare-header">
+                  <Breadcrumbs
+                    items={[
+                      { label: 'MdWrk', href: '/' },
+                      { label: 'Compares' },
+                    ]}
+                  />
+                  <h1 className="docs-title">{pageTitle}</h1>
+                  <p className="docs-subtitle">{pageSubtitle}</p>
                 </header>
               )}
               <MarkdownViewer content={articleContent} />
