@@ -1501,6 +1501,10 @@
       "kind": "test"
     },
     {
+      "id": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "kind": "test"
+    },
+    {
       "id": "clm:cross-cutting",
       "kind": "claim"
     },
@@ -1582,6 +1586,38 @@
     },
     {
       "id": "clm:lander-international-seo",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:repo-certifiability-p1-current-partials",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-checkbox-autocomplete",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-desktop-app-boundary",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-extension-authoring-guide",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-markdown-profile-architecture",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-text-wrap-previewer",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-uix-responsive-contract",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:docs-view-toolbar",
       "kind": "claim"
     },
     {
@@ -1813,6 +1849,10 @@
       "kind": "evidence"
     },
     {
+      "id": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "kind": "evidence"
+    },
+    {
       "id": "iss:lander-code-block-syntax-highlighting-absent",
       "kind": "issue"
     },
@@ -1862,6 +1902,10 @@
     },
     {
       "id": "rel:repo-certifiability-current-scope",
+      "kind": "release"
+    },
+    {
+      "id": "rel:repo-certifiability-p1-current-partials",
       "kind": "release"
     },
     {
@@ -4290,6 +4334,291 @@
       "to": "evd:ssot-reports-ssot-graph-export-governance.json"
     },
     {
+      "type": "USES_BOUNDARY",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "bnd:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "PUBLISHES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-components-chassis-workpane-workpane.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-hooks-useapp.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-hooks-usetabmanager.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-hooks-usetoast.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-services-oidc.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-commands-commandregistry.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-features-views-viewregistry.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-pwa-versionmanifest.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-src-shell-actionrailhost.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-styles-alignmenttokens.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-styles-componentclassnamepolicy.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-styles-zoombehavior.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-phase7-shell-parity.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-browser-matrix.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-inline-inline.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-preview-export.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-playwright-shell-smoke.spec.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-client-tests-statusbar-contract.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-lander-scripts-validate-syntax-themes.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:lander-static-content-ci-local"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-core-tests-history.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:ssot-reports-release-snapshot-index.json"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:ssot-reports-spec-coverage-index.json"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:ssot-reports-ssot-graph-export-governance.json"
+    },
+    {
+      "type": "INCLUDES",
+      "from": "rel:repo-certifiability-p1-current-partials",
+      "to": "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:cross-cutting",
       "to": "spc:2007"
@@ -5600,6 +5929,11 @@
       "to": "spc:2016"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:docs-text-wrap-previewer",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:docs-checkbox-autocomplete",
       "to": "spc:2017"
@@ -5610,6 +5944,11 @@
       "to": "spc:2016"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:docs-checkbox-autocomplete",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:docs-view-toolbar",
       "to": "spc:2017"
@@ -5618,6 +5957,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:docs-view-toolbar",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:docs-view-toolbar",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6175,6 +6519,11 @@
       "to": "spc:2005"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:docs-markdown-profile-architecture",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:docs-desktop-app-boundary",
       "to": "spc:2017"
@@ -6183,6 +6532,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:docs-desktop-app-boundary",
       "to": "spc:2006"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:docs-desktop-app-boundary",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6195,6 +6549,11 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:docs-uix-responsive-contract",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:docs-extension-authoring-guide",
       "to": "spc:2017"
@@ -6203,6 +6562,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:docs-extension-authoring-guide",
       "to": "spc:2010"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:docs-extension-authoring-guide",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -20250,6 +20614,761 @@
       "to": "clm:lander-international-seo"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:accessibility-shell-baseline"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:client-common"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:client-diagnostics"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:desktop-folder-mounting"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:desktop-preload-host-api"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:edit-in-renderer-profile-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-active-state-display"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-disabled-state-display"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-divider-grouping"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-hidden-button-preference"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-overflow-scroll"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-responsive-placement"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-split-view-eligibility"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:host-capability-adapter"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aeo-appended-answer-blocks"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aieo-crawlable-text-semantic-index"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aieo-json-ld-structured-data"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-crawlability-internal-links"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-excerpt-embedded-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-metadata-ci-gate"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-metadata-schema-validation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-related-link-copy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-blog-article-guide-standardization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-docs-answer-section-standardization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-entity-mdwrk-brand-normalization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-crawler-safe-rendering"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-hreflang-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-locale-routes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-locale-switcher"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-no-automatic-locale-redirects"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-sitemap-alternates"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-metadata-favicon-logo-fallback"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-seo-comparison-pages"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-seo-demand-cluster-canonical-pages"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:mdwrk-shell-fixed-fit-screen"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:native-filesystem-shell-behavior"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-export-artifact-generation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-export-profile-disclosure"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-cross-file-hash-scroll"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-export-rewrite"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-external-pass-through"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-internal-file-navigation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-same-document-hash-scroll"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-unsafe-url-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:profile-boundary-resolution"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:uix-breakpoint-token-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:uix-responsive-layout-matrix"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:workspace-open-tabs-persistence"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repo-certifiability-p1-current-partials",
+      "to": "feat:workspace-persistence"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-hooks-useapp.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-hooks-usetabmanager.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-hooks-usetoast.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-shell-actionrailhost.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-styles-alignmenttokens.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-styles-chassisfittoscreen.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-playwright-preview-export.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-lander-scripts-validate-syntax-themes.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-hooks-useapp.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-hooks-usetabmanager.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-hooks-usetoast.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-oidc.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-commands-commandregistry.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-views-viewregistry.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-pwa-versionmanifest.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-shell-actionrailhost.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-alignmenttokens.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-chassisfittoscreen.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-zoombehavior.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-preview-export.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-statusbar-contract.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:lander-static-content-ci-local",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:ssot-reports-release-snapshot-index.json",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:ssot-reports-spec-coverage-index.json",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:ssot-reports-ssot-graph-export-governance.json",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:repo-certifiability-p1-current-partials"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-checkbox-autocomplete",
+      "to": "feat:docs-checkbox-autocomplete"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-checkbox-autocomplete"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-checkbox-autocomplete"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-desktop-app-boundary",
+      "to": "feat:docs-desktop-app-boundary"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-desktop-app-boundary"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-desktop-app-boundary"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-extension-authoring-guide",
+      "to": "feat:docs-extension-authoring-guide"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-extension-authoring-guide"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-extension-authoring-guide"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-markdown-profile-architecture",
+      "to": "feat:docs-markdown-profile-architecture"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-markdown-profile-architecture"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-markdown-profile-architecture"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-text-wrap-previewer",
+      "to": "feat:docs-text-wrap-previewer"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-text-wrap-previewer"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-text-wrap-previewer"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-uix-responsive-contract",
+      "to": "feat:docs-uix-responsive-contract"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-uix-responsive-contract"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-uix-responsive-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:docs-view-toolbar",
+      "to": "feat:docs-view-toolbar"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-view-toolbar"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "clm:docs-view-toolbar"
+    },
+    {
       "type": "DERIVES_FROM",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "tst:apps-client-hooks-useapp.test.tsx"
@@ -20568,6 +21687,11 @@
       "type": "DERIVES_FROM",
       "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
       "to": "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
     },
     {
       "type": "AFFECTS",

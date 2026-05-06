@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.86",
+  "version": "0.2.88",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -115,6 +115,7 @@
     "claim:markdown-profile-snapshot": "node ./tools/conformance/generate-markdown-profile-snapshot-claim.mjs",
     "validate:tree": "node ./tools/governance/validate-tree.mjs",
     "validate:doc-pointers": "node ./tools/governance/validate-doc-pointers.mjs",
+    "validate:doc-feature-pages": "node ./tools/governance/validate-doc-feature-pages.mjs",
     "validate:root-clutter": "node ./tools/governance/validate-root-clutter.mjs",
     "validate:generated-artifacts": "node ./tools/governance/validate-generated-artifacts.mjs",
     "lint:claim-language": "node ./tools/governance/lint-claim-language.mjs",
@@ -124,7 +125,7 @@
     "validate:ssot-graph": "node ./tools/governance/validate-ssot-graph-export.mjs",
     "snapshot:release": "node ./tools/governance/write-release-snapshot.mjs",
     "validate:release-snapshots": "node ./tools/governance/validate-release-snapshots.mjs",
-    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots"
+    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",

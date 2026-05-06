@@ -1928,7 +1928,7 @@
       "id": "feat:docs-text-wrap-previewer",
       "title": "Document text wrap previewer feature",
       "description": "Document MdWrk text wrap previewer behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1944,15 +1944,19 @@
         "spc:2017",
         "spc:2016"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-text-wrap-previewer"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:docs-checkbox-autocomplete",
       "title": "Document checkbox autocomplete feature",
       "description": "Document MdWrk checkbox autocomplete behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1968,15 +1972,19 @@
         "spc:2017",
         "spc:2016"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-checkbox-autocomplete"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:docs-view-toolbar",
       "title": "Document view toolbar features",
       "description": "Document MdWrk view toolbar behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1992,8 +2000,12 @@
         "spc:2017",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-view-toolbar"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
@@ -2790,7 +2802,7 @@
       "id": "feat:docs-markdown-profile-architecture",
       "title": "Document Markdown profile architecture",
       "description": "Document CM, GFM, CFM, CFM parser behavior, and CFM previewer behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2808,15 +2820,19 @@
         "spc:2004",
         "spc:2005"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-markdown-profile-architecture"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:docs-desktop-app-boundary",
       "title": "Document desktop app boundary",
       "description": "Document desktop-specific behavior and persistence.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2832,15 +2848,19 @@
         "spc:2017",
         "spc:2006"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-desktop-app-boundary"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:docs-uix-responsive-contract",
       "title": "Document UIX responsive contract",
       "description": "Document UIX layout tokens, breakpoints, and device modes.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2856,15 +2876,19 @@
         "spc:2017",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-uix-responsive-contract"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:docs-extension-authoring-guide",
       "title": "Document extension authoring guide",
       "description": "Document extension creation, compatibility, publishing, install, import, remove, and disable flows.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2880,8 +2904,12 @@
         "spc:2017",
         "spc:2010"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:docs-extension-authoring-guide"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
       "requires": []
     },
     {
@@ -10523,6 +10551,34 @@
       "evidence_ids": [
         "evd:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
+    },
+    {
+      "id": "tst:tools-governance-validate-doc-feature-pages.mjs",
+      "title": "validate-doc-feature-pages.mjs",
+      "status": "passing",
+      "kind": "governance",
+      "path": "tools/governance/validate-doc-feature-pages.mjs",
+      "feature_ids": [
+        "feat:docs-checkbox-autocomplete",
+        "feat:docs-desktop-app-boundary",
+        "feat:docs-extension-authoring-guide",
+        "feat:docs-markdown-profile-architecture",
+        "feat:docs-text-wrap-previewer",
+        "feat:docs-uix-responsive-contract",
+        "feat:docs-view-toolbar"
+      ],
+      "claim_ids": [
+        "clm:docs-checkbox-autocomplete",
+        "clm:docs-desktop-app-boundary",
+        "clm:docs-extension-authoring-guide",
+        "clm:docs-markdown-profile-architecture",
+        "clm:docs-text-wrap-previewer",
+        "clm:docs-uix-responsive-contract",
+        "clm:docs-view-toolbar"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
     }
   ],
   "claims": [
@@ -11493,6 +11549,125 @@
         "evd:ssot-reports-ssot-graph-export-governance.json",
         "evd:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
+    },
+    {
+      "id": "clm:docs-checkbox-autocomplete",
+      "title": "Checkbox autocomplete documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the checkbox autocomplete behavior and related authoring flow.",
+      "feature_ids": [
+        "feat:docs-checkbox-autocomplete"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-desktop-app-boundary",
+      "title": "Desktop app boundary documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the client, desktop shell, preload bridge, and host capability boundary.",
+      "feature_ids": [
+        "feat:docs-desktop-app-boundary"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-extension-authoring-guide",
+      "title": "Extension authoring guide documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the extension authoring workflow for manifests, runtime activation, bundles, and publishing artifacts.",
+      "feature_ids": [
+        "feat:docs-extension-authoring-guide"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-markdown-profile-architecture",
+      "title": "Markdown profile architecture documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the Markdown profile architecture and evidence-lane model.",
+      "feature_ids": [
+        "feat:docs-markdown-profile-architecture"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-text-wrap-previewer",
+      "title": "Text wrap previewer documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish source wrapping, preview wrapping, split view, and line-number rhythm behavior.",
+      "feature_ids": [
+        "feat:docs-text-wrap-previewer"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-uix-responsive-contract",
+      "title": "UIX responsive contract documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the viewport, aspect-ratio, height-tier, device-class, and theme responsibility contract.",
+      "feature_ids": [
+        "feat:docs-uix-responsive-contract"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:docs-view-toolbar",
+      "title": "View toolbar documentation is published",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "documentation",
+      "description": "The public MdWrk docs publish the editor, split, preview, formatting, export, and responsive toolbar behavior.",
+      "feature_ids": [
+        "feat:docs-view-toolbar"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
     }
   ],
   "evidence": [
@@ -12426,6 +12601,26 @@
       ],
       "test_ids": [
         "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
+    },
+    {
+      "id": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "title": "Evidence: validate-doc-feature-pages.mjs",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "tools/governance/validate-doc-feature-pages.mjs",
+      "claim_ids": [
+        "clm:docs-checkbox-autocomplete",
+        "clm:docs-desktop-app-boundary",
+        "clm:docs-extension-authoring-guide",
+        "clm:docs-markdown-profile-architecture",
+        "clm:docs-text-wrap-previewer",
+        "clm:docs-uix-responsive-contract",
+        "clm:docs-view-toolbar"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-doc-feature-pages.mjs"
       ]
     }
   ],
