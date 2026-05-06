@@ -6569,7 +6569,7 @@
       "id": "feat:json-ld-profile-page",
       "title": "JSON-LD ProfilePage",
       "description": "Generate ProfilePage JSON-LD for author, maintainer, organization, contributor, and profile surfaces. Tags: structured-data, profile-page, identity, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6585,15 +6585,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-faq",
       "title": "JSON-LD FAQPage Question Answer",
       "description": "Generate FAQPage, Question, and Answer JSON-LD for visible FAQ content while tracking Google eligibility limits honestly. Tags: structured-data, faqpage, question, answer, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6609,15 +6613,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-qa",
       "title": "JSON-LD QAPage",
       "description": "Generate QAPage JSON-LD for true user-question and answer pages when the content model supports them. Tags: structured-data, qapage, question, answer, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6633,15 +6641,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-product",
       "title": "JSON-LD Product",
       "description": "Generate Product JSON-LD for software offerings, extension listings, packages, and commercial product surfaces. Tags: structured-data, product, commerce, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6657,15 +6669,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-product-snippet",
       "title": "JSON-LD Product snippet",
       "description": "Support product snippet structured data fields for eligible product pages without synthetic ratings or claims. Tags: structured-data, product-snippet, commerce, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6681,15 +6697,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-merchant-listing",
       "title": "JSON-LD Merchant listing",
       "description": "Support merchant listing structured data for eligible commerce surfaces. Tags: structured-data, merchant-listing, commerce, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6705,15 +6725,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-review-snippet",
       "title": "JSON-LD Review snippet",
       "description": "Support Review and aggregate rating structured data only when real visible review content exists. Tags: structured-data, review-snippet, reviews, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6729,15 +6753,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-dataset",
       "title": "JSON-LD Dataset",
       "description": "Generate Dataset JSON-LD for downloadable/generated datasets, registries, conformance matrices, and benchmark artifacts. Tags: structured-data, dataset, artifacts, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6753,15 +6781,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-image-metadata",
       "title": "JSON-LD Image metadata",
       "description": "Generate image metadata structured data for screenshots, visual documentation, and media assets. Tags: structured-data, image-metadata, media, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6777,15 +6809,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-video",
       "title": "JSON-LD Video",
       "description": "Generate VideoObject structured data for demos, tutorials, and product videos. Tags: structured-data, video, media, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6801,15 +6837,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-discussion-forum",
       "title": "JSON-LD Discussion forum",
       "description": "Support DiscussionForumPosting structured data for community or discussion surfaces. Tags: structured-data, discussion-forum, community, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6825,15 +6865,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-course-list",
       "title": "JSON-LD Course list",
       "description": "Support Course and CourseInstance list structured data for learning paths, tutorials, and education content. Tags: structured-data, course-list, education, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6849,15 +6893,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-education-qa",
       "title": "JSON-LD Education Q&A",
       "description": "Support education Q&A structured data for instructional question and answer content. Tags: structured-data, education-qa, education, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6873,15 +6921,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-event",
       "title": "JSON-LD Event",
       "description": "Support Event structured data for launches, webinars, releases, and scheduled public activities. Tags: structured-data, event, calendar, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6897,15 +6949,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-practice-problem",
       "title": "JSON-LD Practice problem",
       "description": "Support PracticeProblem structured data for training, tutorial, and learning exercise pages. Tags: structured-data, practice-problem, education, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6921,15 +6977,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-subscription-paywalled-content",
       "title": "JSON-LD subscription and paywalled content",
       "description": "Support subscription and paywalled content structured data when pages intentionally gate content. Tags: structured-data, paywall, subscription, scope:in-bounds, priority:secondary, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6945,15 +7005,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-book-actions",
       "title": "JSON-LD Book actions",
       "description": "Track Book and book action structured data support as an in-bounds structured-data target. Tags: structured-data, book-actions, media, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6969,15 +7033,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-carousel",
       "title": "JSON-LD Carousel",
       "description": "Support Carousel structured data for eligible ordered item experiences. Tags: structured-data, carousel, item-list, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6993,15 +7061,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-employer-aggregate-rating",
       "title": "JSON-LD Employer aggregate rating",
       "description": "Track EmployerAggregateRating structured data support as an in-bounds target requiring real eligible content. Tags: structured-data, employer-rating, ratings, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7017,15 +7089,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-estimated-salary",
       "title": "JSON-LD Estimated salary",
       "description": "Track EstimatedSalary structured data support as an in-bounds target for eligible job and career content. Tags: structured-data, estimated-salary, jobs, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7041,15 +7117,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-fact-check",
       "title": "JSON-LD Fact check",
       "description": "Track ClaimReview fact check structured data support as an in-bounds target requiring eligible fact-checking content. Tags: structured-data, fact-check, claimreview, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7065,15 +7145,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-job-posting",
       "title": "JSON-LD Job posting",
       "description": "Track JobPosting structured data support as an in-bounds target for eligible career pages. Tags: structured-data, job-posting, jobs, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7089,15 +7173,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-local-business",
       "title": "JSON-LD Local business",
       "description": "Track LocalBusiness structured data support as an in-bounds target for eligible business-location pages. Tags: structured-data, local-business, organization, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7113,15 +7201,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-loyalty-program",
       "title": "JSON-LD Loyalty program",
       "description": "Track loyalty program structured data support as an in-bounds target for eligible commerce surfaces. Tags: structured-data, loyalty-program, commerce, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7137,15 +7229,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-math-solver",
       "title": "JSON-LD Math solver",
       "description": "Track MathSolver structured data support as an in-bounds target for eligible education content. Tags: structured-data, math-solver, education, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7161,15 +7257,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-movie",
       "title": "JSON-LD Movie",
       "description": "Track Movie structured data support as an in-bounds target for eligible media content. Tags: structured-data, movie, media, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7185,15 +7285,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-recipe",
       "title": "JSON-LD Recipe",
       "description": "Track Recipe structured data support as an in-bounds target for eligible recipe content. Tags: structured-data, recipe, content, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7209,15 +7313,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-speakable",
       "title": "JSON-LD Speakable",
       "description": "Track Speakable structured data support as an in-bounds target for eligible voice assistant content. Tags: structured-data, speakable, voice, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7233,15 +7341,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-vacation-rental",
       "title": "JSON-LD Vacation rental",
       "description": "Track VacationRental structured data support as an in-bounds target for eligible travel content. Tags: structured-data, vacation-rental, travel, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7257,15 +7369,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-vehicle-listing",
       "title": "JSON-LD Vehicle listing",
       "description": "Track VehicleListing structured data support as an in-bounds target for eligible listing content. Tags: structured-data, vehicle-listing, commerce, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7281,15 +7397,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-product-variant",
       "title": "JSON-LD Product variant",
       "description": "Track ProductGroup and product variant structured data support for eligible product families. Tags: structured-data, product-variant, commerce, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7305,15 +7425,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-merchant-return-policy",
       "title": "JSON-LD Merchant return policy",
       "description": "Track MerchantReturnPolicy structured data support as an in-bounds commerce target. Tags: structured-data, return-policy, commerce, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7329,15 +7453,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:json-ld-merchant-shipping-policy",
       "title": "JSON-LD Merchant shipping policy",
       "description": "Track OfferShippingDetails and merchant shipping policy structured data support as an in-bounds commerce target. Tags: structured-data, shipping-policy, commerce, scope:in-bounds, priority:tracked, package:@mdwrk/structured-data.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7353,15 +7481,19 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:google-structured-data-search-gallery-coverage",
       "title": "Google structured data Search Gallery coverage",
       "description": "Track every Google Search Gallery structured data target as an in-bounds MdWrk structured-data capability. Tags: structured-data, google-search-gallery, schema-org, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7389,7 +7521,7 @@
       "id": "feat:json-ld-visible-content-parity",
       "title": "JSON-LD visible content parity",
       "description": "Validate that JSON-LD claims match visible page content and do not create hidden or misleading structured data. Tags: structured-data, parity, policy, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7417,7 +7549,7 @@
       "id": "feat:json-ld-rich-results-validation",
       "title": "JSON-LD rich results validation",
       "description": "Validate syntax, required fields, and Google rich-result eligibility constraints for generated structured data. Tags: structured-data, validation, google-rich-results, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7445,7 +7577,7 @@
       "id": "feat:json-ld-ai-discovery-entity-graph",
       "title": "JSON-LD AI discovery entity graph",
       "description": "Emit stable @id values and cross-linked entities for answer engines, AI crawlers, apps, packages, docs, articles, releases, organization, and website records. Tags: structured-data, aieo, entity-graph, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7473,7 +7605,7 @@
       "id": "feat:json-ld-article",
       "title": "JSON-LD Article",
       "description": "Generate Article or TechArticle JSON-LD for public articles, docs, and support content. Tags: structured-data, article, content, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7501,7 +7633,7 @@
       "id": "feat:json-ld-breadcrumb",
       "title": "JSON-LD BreadcrumbList",
       "description": "Generate BreadcrumbList JSON-LD for routable public content and application documentation surfaces. Tags: structured-data, breadcrumb, navigation, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7529,7 +7661,7 @@
       "id": "feat:json-ld-organization",
       "title": "JSON-LD Organization",
       "description": "Generate Organization JSON-LD for publisher, brand, and product identity. Tags: structured-data, organization, identity, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7557,7 +7689,7 @@
       "id": "feat:json-ld-software-app",
       "title": "JSON-LD SoftwareApplication",
       "description": "Generate SoftwareApplication JSON-LD for MdWrk software packages, apps, and software-facing public pages. Tags: structured-data, software-application, software, scope:in-bounds, priority:primary, package:@mdwrk/structured-data.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7754,6 +7886,1070 @@
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.web-page",
+      "title": "Structured data WebPage type",
+      "description": "Implement WebPage JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required-field validation, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.web-site",
+      "title": "Structured data WebSite type",
+      "description": "Implement WebSite JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required-field validation, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.organization",
+      "title": "Structured data Organization type",
+      "description": "Implement Organization JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, publisher identity fields, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.software-application",
+      "title": "Structured data SoftwareApplication type",
+      "description": "Implement SoftwareApplication JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required-field validation, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.web-application",
+      "title": "Structured data WebApplication type",
+      "description": "Implement WebApplication JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, SoftwareApplication inheritance rules, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.article",
+      "title": "Structured data Article type",
+      "description": "Implement Article JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, metadata parity, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.tech-article",
+      "title": "Structured data TechArticle type",
+      "description": "Implement TechArticle JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, technical documentation fields, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.blog-posting",
+      "title": "Structured data BlogPosting type",
+      "description": "Implement BlogPosting JSON-LD type support in @mdwrk/structured-data with authored article metadata, publisher linkage, date fields, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.breadcrumb-list",
+      "title": "Structured data BreadcrumbList type",
+      "description": "Implement BreadcrumbList JSON-LD type support in @mdwrk/structured-data with canonical URLs, ordered ListItem entries, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.faq-page",
+      "title": "Structured data FAQPage type",
+      "description": "Implement FAQPage, Question, and Answer JSON-LD type support in @mdwrk/structured-data with visible-content parity inputs and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.qa-page",
+      "title": "Structured data QAPage type",
+      "description": "Implement QAPage, Question, and Answer JSON-LD type support in @mdwrk/structured-data for true question-and-answer pages with package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.how-to",
+      "title": "Structured data HowTo type",
+      "description": "Implement HowTo JSON-LD type support in @mdwrk/structured-data with step modeling, visible instruction parity, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.item-list",
+      "title": "Structured data ItemList type",
+      "description": "Implement ItemList JSON-LD type support in @mdwrk/structured-data with typed list entries, stable ordering, canonical URLs, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.software-source-code",
+      "title": "Structured data SoftwareSourceCode type",
+      "description": "Implement SoftwareSourceCode JSON-LD type support in @mdwrk/structured-data for package, API, repository, and developer surfaces with package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.product",
+      "title": "Structured data Product type",
+      "description": "Implement Product JSON-LD type support in @mdwrk/structured-data for eligible software offerings, extension listings, and package surfaces without synthetic claims.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.dataset",
+      "title": "Structured data Dataset type",
+      "description": "Implement Dataset JSON-LD type support in @mdwrk/structured-data for generated registries, conformance artifacts, benchmark data, and downloadable datasets.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.event",
+      "title": "Structured data Event type",
+      "description": "Implement Event JSON-LD type support in @mdwrk/structured-data for launches, webinars, releases, and scheduled public activities.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.video-object",
+      "title": "Structured data VideoObject type",
+      "description": "Implement VideoObject JSON-LD type support in @mdwrk/structured-data for demos, tutorials, and product videos with required media metadata.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.image-object",
+      "title": "Structured data ImageObject type",
+      "description": "Implement ImageObject JSON-LD type support in @mdwrk/structured-data for screenshots, media assets, and visual documentation metadata.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.profile-page",
+      "title": "Structured data ProfilePage type",
+      "description": "Implement ProfilePage JSON-LD type support in @mdwrk/structured-data for author, maintainer, organization, contributor, and profile surfaces.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.review-snippet",
+      "title": "Structured data Review snippet types",
+      "description": "Implement Review and AggregateRating JSON-LD type support in @mdwrk/structured-data only for real visible review content.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.course",
+      "title": "Structured data Course type",
+      "description": "Implement Course and CourseInstance JSON-LD type support in @mdwrk/structured-data for eligible learning paths, tutorials, and education content.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.discussion-forum-posting",
+      "title": "Structured data DiscussionForumPosting type",
+      "description": "Implement DiscussionForumPosting JSON-LD type support in @mdwrk/structured-data for eligible community or discussion surfaces.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.web-page",
+      "title": "Lander structured data WebPage emission",
+      "description": "After @mdwrk/structured-data implements WebPage support, import it into the lander and emit it for eligible MdWrk public pages with static HTML and jsonld-graph parity.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.web-site",
+      "title": "Lander structured data WebSite emission",
+      "description": "After @mdwrk/structured-data implements WebSite support, import it into the lander and emit it for canonical MdWrk site identity with static HTML and jsonld-graph parity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.organization",
+      "title": "Lander structured data Organization emission",
+      "description": "After @mdwrk/structured-data implements Organization support, import it into the lander and emit it for MdWrk brand, publisher, and product identity with metadata parity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.software-application",
+      "title": "Lander structured data SoftwareApplication emission",
+      "description": "After @mdwrk/structured-data implements SoftwareApplication support, import it into the lander and emit it for MdWrk application and PWA pages with visible product-content parity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.article",
+      "title": "Lander structured data Article emission",
+      "description": "After @mdwrk/structured-data implements Article support, import it into the lander and emit it for eligible long-form content with authored metadata and visible-content parity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.tech-article",
+      "title": "Lander structured data TechArticle emission",
+      "description": "After @mdwrk/structured-data implements TechArticle support, import it into the lander and emit it for eligible docs, package, setup, API, and extension authoring pages.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.blog-posting",
+      "title": "Lander structured data BlogPosting emission",
+      "description": "After @mdwrk/structured-data implements BlogPosting support, import it into the lander and emit it for product update and blog article pages with dates, excerpts, publisher linkage, and fallback images.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.breadcrumb-list",
+      "title": "Lander structured data BreadcrumbList emission",
+      "description": "After @mdwrk/structured-data implements BreadcrumbList support, import it into the lander and emit canonical route breadcrumbs for eligible MdWrk public pages.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.faq-page",
+      "title": "Lander structured data FAQPage emission",
+      "description": "After @mdwrk/structured-data implements FAQPage support, import it into the lander and emit it only when the same questions and answers are visibly rendered.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.software-source-code",
+      "title": "Lander structured data SoftwareSourceCode emission",
+      "description": "After @mdwrk/structured-data implements SoftwareSourceCode support, import it into the lander and emit it for package, API, repository, and developer surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.profile-page",
+      "title": "Lander structured data ProfilePage emission",
+      "description": "After @mdwrk/structured-data implements ProfilePage support, import it into the lander and emit it for eligible author, maintainer, organization, contributor, or profile pages.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.product",
+      "title": "Lander structured data Product emission",
+      "description": "After @mdwrk/structured-data implements Product support, import it into the lander and emit it for eligible software offering, extension listing, package, and commercial product pages without synthetic ratings.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.dataset",
+      "title": "Lander structured data Dataset emission",
+      "description": "After @mdwrk/structured-data implements Dataset support, import it into the lander and emit it for eligible generated registries, conformance artifacts, benchmark data, and downloadable datasets.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.video-object",
+      "title": "Lander structured data VideoObject emission",
+      "description": "After @mdwrk/structured-data implements VideoObject support, import it into the lander and emit it for eligible demos, tutorials, and product videos with complete media metadata.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander.structured-data.image-object",
+      "title": "Lander structured data ImageObject emission",
+      "description": "After @mdwrk/structured-data implements ImageObject support, import it into the lander and emit it for eligible screenshots, visual documentation, and media asset metadata.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content"
       ],
       "requires": []
     }
@@ -8930,7 +10126,22 @@
       "feature_ids": [
         "feat:lander-static-content-compiler",
         "feat:lander-static-artifact-verification",
-        "feat:lander-static-page-frontmatter-schema"
+        "feat:lander-static-page-frontmatter-schema",
+        "feat:lander.structured-data.web-page",
+        "feat:lander.structured-data.web-site",
+        "feat:lander.structured-data.organization",
+        "feat:lander.structured-data.software-application",
+        "feat:lander.structured-data.article",
+        "feat:lander.structured-data.tech-article",
+        "feat:lander.structured-data.blog-posting",
+        "feat:lander.structured-data.breadcrumb-list",
+        "feat:lander.structured-data.faq-page",
+        "feat:lander.structured-data.software-source-code",
+        "feat:lander.structured-data.profile-page",
+        "feat:lander.structured-data.product",
+        "feat:lander.structured-data.dataset",
+        "feat:lander.structured-data.video-object",
+        "feat:lander.structured-data.image-object"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -9085,7 +10296,63 @@
         "feat:json-ld-article",
         "feat:json-ld-breadcrumb",
         "feat:json-ld-organization",
-        "feat:json-ld-software-app"
+        "feat:json-ld-software-app",
+        "feat:structured-data.web-page",
+        "feat:structured-data.web-site",
+        "feat:structured-data.organization",
+        "feat:structured-data.software-application",
+        "feat:structured-data.web-application",
+        "feat:structured-data.article",
+        "feat:structured-data.tech-article",
+        "feat:structured-data.blog-posting",
+        "feat:structured-data.breadcrumb-list",
+        "feat:structured-data.faq-page",
+        "feat:structured-data.qa-page",
+        "feat:structured-data.how-to",
+        "feat:structured-data.item-list",
+        "feat:structured-data.software-source-code",
+        "feat:structured-data.product",
+        "feat:structured-data.dataset",
+        "feat:structured-data.event",
+        "feat:structured-data.video-object",
+        "feat:structured-data.image-object",
+        "feat:structured-data.profile-page",
+        "feat:structured-data.review-snippet",
+        "feat:structured-data.course",
+        "feat:structured-data.discussion-forum-posting",
+        "feat:json-ld-book-actions",
+        "feat:json-ld-carousel",
+        "feat:json-ld-course-list",
+        "feat:json-ld-dataset",
+        "feat:json-ld-discussion-forum",
+        "feat:json-ld-education-qa",
+        "feat:json-ld-employer-aggregate-rating",
+        "feat:json-ld-estimated-salary",
+        "feat:json-ld-event",
+        "feat:json-ld-fact-check",
+        "feat:json-ld-faq",
+        "feat:json-ld-image-metadata",
+        "feat:json-ld-job-posting",
+        "feat:json-ld-local-business",
+        "feat:json-ld-loyalty-program",
+        "feat:json-ld-math-solver",
+        "feat:json-ld-merchant-listing",
+        "feat:json-ld-merchant-return-policy",
+        "feat:json-ld-merchant-shipping-policy",
+        "feat:json-ld-movie",
+        "feat:json-ld-practice-problem",
+        "feat:json-ld-product",
+        "feat:json-ld-product-snippet",
+        "feat:json-ld-product-variant",
+        "feat:json-ld-profile-page",
+        "feat:json-ld-qa",
+        "feat:json-ld-recipe",
+        "feat:json-ld-review-snippet",
+        "feat:json-ld-speakable",
+        "feat:json-ld-subscription-paywalled-content",
+        "feat:json-ld-vacation-rental",
+        "feat:json-ld-vehicle-listing",
+        "feat:json-ld-video"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -9172,7 +10439,78 @@
         "feat:json-ld-article",
         "feat:json-ld-breadcrumb",
         "feat:json-ld-organization",
-        "feat:json-ld-software-app"
+        "feat:json-ld-software-app",
+        "feat:structured-data.web-page",
+        "feat:structured-data.web-site",
+        "feat:structured-data.organization",
+        "feat:structured-data.software-application",
+        "feat:structured-data.web-application",
+        "feat:structured-data.article",
+        "feat:structured-data.tech-article",
+        "feat:structured-data.blog-posting",
+        "feat:structured-data.breadcrumb-list",
+        "feat:structured-data.faq-page",
+        "feat:structured-data.qa-page",
+        "feat:structured-data.how-to",
+        "feat:structured-data.item-list",
+        "feat:structured-data.software-source-code",
+        "feat:structured-data.product",
+        "feat:structured-data.dataset",
+        "feat:structured-data.event",
+        "feat:structured-data.video-object",
+        "feat:structured-data.image-object",
+        "feat:structured-data.profile-page",
+        "feat:structured-data.review-snippet",
+        "feat:structured-data.course",
+        "feat:structured-data.discussion-forum-posting",
+        "feat:lander.structured-data.web-page",
+        "feat:lander.structured-data.web-site",
+        "feat:lander.structured-data.organization",
+        "feat:lander.structured-data.software-application",
+        "feat:lander.structured-data.article",
+        "feat:lander.structured-data.tech-article",
+        "feat:lander.structured-data.blog-posting",
+        "feat:lander.structured-data.breadcrumb-list",
+        "feat:lander.structured-data.faq-page",
+        "feat:lander.structured-data.software-source-code",
+        "feat:lander.structured-data.profile-page",
+        "feat:lander.structured-data.product",
+        "feat:lander.structured-data.dataset",
+        "feat:lander.structured-data.video-object",
+        "feat:lander.structured-data.image-object",
+        "feat:json-ld-book-actions",
+        "feat:json-ld-carousel",
+        "feat:json-ld-course-list",
+        "feat:json-ld-dataset",
+        "feat:json-ld-discussion-forum",
+        "feat:json-ld-education-qa",
+        "feat:json-ld-employer-aggregate-rating",
+        "feat:json-ld-estimated-salary",
+        "feat:json-ld-event",
+        "feat:json-ld-fact-check",
+        "feat:json-ld-faq",
+        "feat:json-ld-image-metadata",
+        "feat:json-ld-job-posting",
+        "feat:json-ld-local-business",
+        "feat:json-ld-loyalty-program",
+        "feat:json-ld-math-solver",
+        "feat:json-ld-merchant-listing",
+        "feat:json-ld-merchant-return-policy",
+        "feat:json-ld-merchant-shipping-policy",
+        "feat:json-ld-movie",
+        "feat:json-ld-practice-problem",
+        "feat:json-ld-product",
+        "feat:json-ld-product-snippet",
+        "feat:json-ld-product-variant",
+        "feat:json-ld-profile-page",
+        "feat:json-ld-qa",
+        "feat:json-ld-recipe",
+        "feat:json-ld-review-snippet",
+        "feat:json-ld-speakable",
+        "feat:json-ld-subscription-paywalled-content",
+        "feat:json-ld-vacation-rental",
+        "feat:json-ld-vehicle-listing",
+        "feat:json-ld-video"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",

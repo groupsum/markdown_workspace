@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/structured-data",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -27,7 +27,7 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run typecheck",
+    "test": "npm run build && node tests/run-smoke.mjs",
     "prepack": "npm run build"
   },
   "exports": {
