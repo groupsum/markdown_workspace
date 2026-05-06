@@ -15,10 +15,9 @@ import {
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
 import { Book } from 'lucide-react';
-import { DateStamp } from './DateStamp';
 import { SectionMenu, type SectionMenuItem } from './SectionMenu';
 import { TableOfContents, type TableOfContentsItem } from './TableOfContents';
-import { Tag } from './Tag';
+import { Breadcrumbs } from './Breadcrumbs';
 
 const normalizeTitle = (value: string) =>
   value
@@ -209,15 +208,14 @@ export const DocsView: React.FC = () => {
             <div className="lander-content-card docs-content-card">
               {currentDoc && (
                 <header className="docs-header">
-                  <div className="docs-meta">
-                    <Tag>{currentDoc.section}</Tag>
-                    {currentDoc.metadata.date && (
-                      <>
-                        <span className="docs-meta-divider">/</span>
-                        <DateStamp date={currentDoc.metadata.date} displayDate={toDisplayDate(currentDoc.metadata.date)} />
-                      </>
-                    )}
-                  </div>
+                  <Breadcrumbs
+                    items={[
+                      { label: 'MdWrk', href: '/' },
+                      { label: 'Docs', href: '/docs/' },
+                      { label: currentDoc.section, href: currentPath === '/docs/' ? undefined : '/docs/' },
+                      { label: currentDoc.title },
+                    ].filter((item, index, items) => index === 0 || item.label !== items[index - 1]?.label)}
+                  />
                   <h1 className="docs-title">
                     {currentDoc.title}
                   </h1>

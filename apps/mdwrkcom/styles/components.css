@@ -1007,23 +1007,19 @@
   color: var(--lander-accent);
 }
 
-.docs-meta {
-  @apply flex flex-wrap items-center gap-3 text-xs font-bold uppercase;
+.docs-index-card-date {
+  @apply mb-3 inline-flex text-xs font-bold uppercase transition-colors;
   letter-spacing: 0.24em;
   color: var(--lander-fg-subtle);
 }
 
-.lander-tag {
-  @apply inline-flex items-center;
+.docs-index-card-date:hover {
+  color: var(--lander-accent);
 }
 
-.docs-meta-divider {
-  color: color-mix(in srgb, var(--lander-fg-subtle) 60%, transparent);
-}
-
-.docs-meta time,
+.docs-index-card-date time,
 .blog-card-date time,
-.blog-post-meta time {
+time {
   text-transform: none;
   letter-spacing: 0;
 }
@@ -1102,43 +1098,8 @@
 }
 
 .blog-back-icon,
-.blog-post-meta-icon,
 .blog-card-author-icon {
   @apply h-4 w-4;
-}
-
-.blog-post-meta {
-  @apply mb-5 flex flex-wrap gap-3 text-xs;
-  color: var(--lander-fg-muted);
-}
-
-.blog-post-meta-item {
-  @apply inline-flex min-w-0 items-center gap-2 rounded-xl border px-3 py-2;
-  background: color-mix(in srgb, var(--lander-panel-muted) 74%, transparent);
-  border-color: var(--lander-border);
-}
-
-.blog-post-meta-stamp {
-  @apply inline-flex min-w-0 items-center gap-2;
-}
-
-.blog-post-meta-link {
-  @apply transition-colors;
-}
-
-.blog-post-meta-link:hover {
-  background: color-mix(in srgb, var(--lander-accent-soft) 44%, var(--lander-panel-muted));
-  border-color: color-mix(in srgb, var(--lander-accent) 38%, var(--lander-border));
-  color: var(--lander-accent);
-}
-
-.blog-post-meta-text {
-  @apply flex min-w-0 flex-col gap-0.5 leading-tight;
-}
-
-.blog-post-meta-label {
-  @apply text-[0.65rem] font-bold uppercase tracking-widest;
-  color: var(--lander-fg-subtle);
 }
 
 .blog-list-column,

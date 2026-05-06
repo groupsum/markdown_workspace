@@ -837,7 +837,7 @@ const renderCardGrid = (items, type = 'update') =>
   `<div class="${type === 'update' ? 'blog-grid' : 'docs-index-grid'}">
                     ${items.map(item => `<article class="lander-content-card ${type === 'update' ? 'blog-card' : 'docs-index-card'}">
                       ${type === 'update' ? `<a class="blog-card-primary-link" href="${escapeAttribute(item.href)}" aria-label="Read ${escapeAttribute(item.title)}"></a>` : ''}
-                      ${item.date ? `<a class="${type === 'update' ? 'blog-card-date' : 'docs-meta'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
+                      ${item.date ? `<a class="${type === 'update' ? 'blog-card-date' : 'docs-index-card-date'}" href="${escapeAttribute(item.dateHref ?? item.href)}"><time dateTime="${escapeAttribute(item.date)}">${escapeHtml(toDisplayDate(item.date))}</time></a>` : ''}
                       <h2 class="${type === 'update' ? 'blog-card-title' : 'docs-index-card-title'}"><a class="${type === 'update' ? 'blog-card-title-link' : 'docs-index-card-link'}" href="${escapeAttribute(item.href)}">${escapeHtml(item.title)}</a></h2>
                       <p class="${type === 'update' ? 'blog-card-excerpt' : 'docs-index-card-excerpt'}">${escapeHtml(item.description)}</p>
                       ${item.author ? `<a class="blog-card-author" href="${escapeAttribute(item.authorHref)}">${escapeHtml(item.author)}</a>` : ''}
@@ -1002,11 +1002,7 @@ const createBlogPostEntry = (post) => {
     contentType: 'update',
     updatedAt: post.date,
     body: articleSource,
-    html: `<div class="blog-post-meta">
-                    <a href="/updates/archive/${escapeAttribute(post.monthSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="${escapeAttribute(post.date)}">${escapeHtml(toDisplayDate(post.date))}</time></span></a>
-                    <a href="/updates/author/${escapeAttribute(post.authorSlug)}/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>${escapeHtml(post.author)}</span></span></a>
-                  </div>
-                  ${renderMarkdown(articleSource).html}`,
+    html: renderMarkdown(articleSource).html,
     tags: ['updates'],
     parent: '/updates/',
   });
@@ -1235,6 +1231,25 @@ const breadcrumbsFor = (entry, registry) => {
     if (!parent) break;
     chain.unshift(parent);
     cursor = parent.frontmatter.parent;
+  }
+  const inferredCollection = [
+    ['/updates/', '/updates/'],
+    ['/docs/', '/docs/'],
+    ['/features/', '/features/'],
+    ['/compare/', '/compare/'],
+    ['/answers/', '/answers/'],
+    ['/packages/', '/packages/'],
+    ['/proof/', '/proof/'],
+    ['/trust/', '/trust/'],
+  ].find(([prefix, hub]) => (
+    entry.frontmatter.slug.startsWith(prefix)
+    && entry.frontmatter.slug !== hub
+    && !chain.some(item => item.frontmatter.slug === hub)
+    && registry.bySlug.has(hub)
+  ));
+  if (inferredCollection) {
+    const hub = registry.bySlug.get(inferredCollection[1]);
+    if (hub) chain.unshift(hub);
   }
   for (const item of chain) items.push({ name: item.frontmatter.h1, slug: item.frontmatter.slug });
   if (entry.frontmatter.slug !== '/') items.push({ name: entry.frontmatter.h1, slug: entry.frontmatter.slug });
@@ -1783,7 +1798,6 @@ const renderSupplementarySections = (entry, registry) => {
 };
 
 const renderArticleCard = (entry, registry) => {
-  const metaLabel = entry.frontmatter.contentType === 'update' ? 'Updates' : entry.frontmatter.contentType;
   const isBlogPost = entry.frontmatter.contentType === 'update' && entry.frontmatter.slug !== '/updates/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
   const isBlogList = entry.frontmatter.contentType === 'update' && !isBlogPost;
   if (isBlogList) {
@@ -1803,23 +1817,12 @@ const renderArticleCard = (entry, registry) => {
   const articleClass = isBlogPost
     ? 'blog-post-card'
     : 'docs-content-card';
-  const visibleBreadcrumbs = isBlogPost
-    ? renderVisibleBreadcrumbs([
-        { name: 'MdWrk', slug: '/' },
-        { name: 'Updates', slug: '/updates/' },
-        { name: entry.frontmatter.h1, slug: entry.frontmatter.slug },
-      ])
-    : '';
+  const visibleBreadcrumbs = renderVisibleBreadcrumbs(breadcrumbsFor(entry, registry));
   return `<div class="docs-article-column">
                 ${isBlogPost ? '<a href="/updates/" class="blog-back-button">Back to Updates</a>' : ''}
                 <article class="${articleClass} lander-content-card">
                   <header class="${articleClass === 'blog-post-card' ? 'blog-post-header' : 'docs-header'}">
                     ${visibleBreadcrumbs}
-                    <div class="docs-meta">
-                      <span>${escapeHtml(metaLabel)}</span>
-                      <span class="docs-meta-divider">/</span>
-                      <time datetime="${escapeAttribute(entry.frontmatter.updatedAt)}">${escapeHtml(toDisplayDate(entry.frontmatter.updatedAt))}</time>
-                    </div>
                     <h1 class="${articleClass === 'blog-post-card' ? 'blog-post-title' : 'docs-title'}">${escapeHtml(entry.frontmatter.h1)}</h1>
                     ${entry.frontmatter.subtitle ? `<p class="${articleClass === 'blog-post-card' ? 'blog-post-subtitle' : 'docs-subtitle'}">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
                   </header>
@@ -2223,6 +2226,7 @@ const verify = () => {
     if (!html.includes(`href="${staticStylesheetHref}"`)) failures.push(`${entry.frontmatter.slug}: missing static lander stylesheet link`);
     if (hasCssAssets && !/href="\/assets\/[^"]+\.css(?:\?[^"]*)?"/i.test(html)) failures.push(`${entry.frontmatter.slug}: missing lander stylesheet link`);
     if (/src="\/assets\/[^"]+\.js"/i.test(html)) failures.push(`${entry.frontmatter.slug}: static route includes SPA JavaScript bundle`);
+    if (/\b(?:docs-meta|blog-post-meta)\b/.test(html)) failures.push(`${entry.frontmatter.slug}: redundant visible meta block must be represented by breadcrumbs/schema instead`);
     const pageTitleH1Count = (html.match(/<h1\b[^>]*class="[^"]*(?:hero-heading|docs-title|blog-post-title|blog-list-title)[^"]*"/gi) ?? []).length;
     if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
     if (!html.includes(`<title>${escapeHtml(entry.frontmatter.title)}</title>`)) failures.push(`${entry.frontmatter.slug}: missing title`);

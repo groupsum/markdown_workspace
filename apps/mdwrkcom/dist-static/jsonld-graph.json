@@ -254,6 +254,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk launch notes",
           "item": "https://mdwrk.com/updates/launch/"
         }
@@ -477,12 +483,18 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Getting Started",
+          "item": "https://mdwrk.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk quickstart",
           "item": "https://mdwrk.com/docs/quickstart/"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Extensions",
           "item": "https://mdwrk.com/docs/extensions/"
         }
@@ -526,6 +538,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Getting Started",
+          "item": "https://mdwrk.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk quickstart",
           "item": "https://mdwrk.com/docs/quickstart/"
         }
@@ -577,12 +595,18 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Getting Started",
+          "item": "https://mdwrk.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "MdWrk quickstart",
           "item": "https://mdwrk.com/docs/quickstart/"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "name": "Theme packs",
           "item": "https://mdwrk.com/docs/theme-packs/"
         }
@@ -4068,6 +4092,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "CobyCloud",
           "item": "https://mdwrk.com/updates/author/cobycloud/"
         }
@@ -4119,6 +4149,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "May 2026",
           "item": "https://mdwrk.com/updates/archive/2026-05/"
         }
@@ -4170,6 +4206,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "April 2026",
           "item": "https://mdwrk.com/updates/archive/2026-04/"
         }
@@ -4221,6 +4263,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "March 2026",
           "item": "https://mdwrk.com/updates/archive/2026-03/"
         }
@@ -4272,6 +4320,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "January 2026",
           "item": "https://mdwrk.com/updates/archive/2026-01/"
         }

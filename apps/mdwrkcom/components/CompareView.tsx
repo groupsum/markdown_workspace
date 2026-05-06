@@ -14,9 +14,7 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { Breadcrumbs } from './Breadcrumbs';
-import { DateStamp } from './DateStamp';
 import { SectionMenu } from './SectionMenu';
-import { Tag } from './Tag';
 
 const normalizeTitle = (value: string) =>
   value
@@ -135,19 +133,11 @@ export const CompareView: React.FC = () => {
                 <header className="docs-header compare-header">
                   <Breadcrumbs
                     items={[
+                      { label: 'MdWrk', href: '/' },
                       { label: 'Compares', href: '/compare/' },
                       { label: currentDoc.title },
                     ]}
                   />
-                  <div className="docs-meta">
-                    <Tag>Compares</Tag>
-                    {currentDoc.metadata.date && (
-                      <>
-                        <span className="docs-meta-divider">/</span>
-                        <DateStamp date={currentDoc.metadata.date} displayDate={toDisplayDate(currentDoc.metadata.date)} />
-                      </>
-                    )}
-                  </div>
                   <h1 className="docs-title">{currentDoc.title}</h1>
                   {currentDoc.metadata.subtitle ? (
                     <p className="docs-subtitle">{currentDoc.metadata.subtitle}</p>

@@ -28,7 +28,7 @@
     <meta name="twitter:image:alt" content="MdWrk settings and extension-related configuration surfaces">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/updates/extension-compatibility-and-publish-gates/#webpage","url":"https://mdwrk.com/updates/extension-compatibility-and-publish-gates/","name":"Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal | MdWrk Product Updates","headline":"Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal","description":"MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.","dateModified":"2026-04-01","image":"https://mdwrk.com/blog/media/mdwrk-settings-visual.png","inLanguage":"en-US"},{"@type":"FAQPage","@id":"https://mdwrk.com/updates/extension-compatibility-and-publish-gates/#faq","mainEntity":[{"@type":"Question","name":"What does this MdWrk update cover?","acceptedAnswer":{"@type":"Answer","text":"MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations."}},{"@type":"Question","name":"What should readers take away from this update?","acceptedAnswer":{"@type":"Answer","text":"This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/updates/extension-compatibility-and-publish-gates/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Product Updates","item":"https://mdwrk.com/updates/"},{"@type":"ListItem","position":3,"name":"Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal","item":"https://mdwrk.com/updates/extension-compatibility-and-publish-gates/"}]}]}</script>
-    <link rel="stylesheet" href="/assets/static.css?v=0.0.42">
+    <link rel="stylesheet" href="/assets/static.css?v=0.0.44">
   </head>
   <body>
     <div id="root">
@@ -81,24 +81,15 @@
                     <nav class="lander-breadcrumbs" aria-label="Breadcrumbs">
                     <ol class="lander-breadcrumbs-list">
                       <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/">MdWrk</a></li>
-                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/updates/">Updates</a></li>
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/updates/">Product Updates</a></li>
                       <li class="lander-breadcrumbs-item"><span class="lander-breadcrumbs-current">Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal</span></li>
                     </ol>
                   </nav>
-                    <div class="docs-meta">
-                      <span>Updates</span>
-                      <span class="docs-meta-divider">/</span>
-                      <time datetime="2026-04-01">Apr. 1, 2026</time>
-                    </div>
                     <h1 class="blog-post-title">Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal</h1>
                     <p class="blog-post-subtitle">MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations.</p>
                   </header>
                   <div class="markdown-renderer-host lander-markdown">
-                    <div class="blog-post-meta">
-                    <a href="/updates/archive/2026-04/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Published</span><time dateTime="2026-04-01">Apr. 1, 2026</time></span></a>
-                    <a href="/updates/author/cobycloud/" class="blog-post-meta-item blog-post-meta-link"><span class="blog-post-meta-text"><span class="blog-post-meta-label">Author</span><span>CobyCloud</span></span></a>
-                  </div>
-                  <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="why-this-matters-for-extension-teams">Why this matters for extension teams</h2><p class="md-p">A governed extension platform works best when it communicates:</p><ul class="md-ul"><li class="md-li">the host version it supports</li><li class="md-li">the tests that protect installation and runtime</li><li class="md-li">the UX where users manage extensions and settings</li></ul><h2 class="md-h2" id="example-compatibility-focused-workflow">Example compatibility-focused workflow</h2><pre class="md-code-block md-code-surface"><code class="language-bash"><span class="token function">npm</span> run test -w @mdwrk/extension-runtime
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="why-this-matters-for-extension-teams">Why this matters for extension teams</h2><p class="md-p">A governed extension platform works best when it communicates:</p><ul class="md-ul"><li class="md-li">the host version it supports</li><li class="md-li">the tests that protect installation and runtime</li><li class="md-li">the UX where users manage extensions and settings</li></ul><h2 class="md-h2" id="example-compatibility-focused-workflow">Example compatibility-focused workflow</h2><pre class="md-code-block md-code-surface"><code class="language-bash"><span class="token function">npm</span> run test -w @mdwrk/extension-runtime
 <span class="token function">npm</span> run test -w @mdwrk/extension-manager
 <span class="token function">npm</span> run validate:compatibility</code></pre><h2 class="md-h2" id="screenshot">Screenshot</h2><p class="md-p"><img src="/blog/media/mdwrk-settings-visual.png" alt="MdWrk settings and extension-related configuration surfaces" /></p><h2 class="md-h2" id="what-to-read-next">What to read next</h2><ul class="md-ul"><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension platform</a></li><li class="md-li"><a href="/docs/authoring/extensions" class="md-link">Extension authoring</a></li><li class="md-li"><a href="https://github.com/groupsum/markdown_workspace/commits/master/?since=2026-04-01T00:00:00Z&amp;until=2026-04-02T00:00:00Z" target="_blank" rel="noopener noreferrer" class="md-link">April 1 repository history</a></li></ul><p class="md-p">This post marks the point where MdWrk's extension system becomes easier to trust, easier to document, and easier to carry into release workflows.</p></div>
                   </div>

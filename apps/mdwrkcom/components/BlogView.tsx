@@ -15,10 +15,8 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { Calendar, User, ArrowLeft } from 'lucide-react';
-import { AuthorDetails } from './AuthorDetails';
+import { User, ArrowLeft } from 'lucide-react';
 import { Breadcrumbs } from './Breadcrumbs';
-import { DateStamp } from './DateStamp';
 import { FaqBlock } from './FaqBlock';
 import { Tag } from './Tag';
 
@@ -306,29 +304,6 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
                 { label: post.metadata.title },
               ]}
             />
-            <div className="blog-post-meta">
-              <Link to={`/updates/archive/${post.monthSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <DateStamp
-                  date={post.metadata.date}
-                  displayDate={post.displayDate}
-                  label="Published"
-                  className="blog-post-meta-stamp"
-                  textClassName="blog-post-meta-text"
-                  labelClassName="blog-post-meta-label"
-                  icon={<Calendar className="blog-post-meta-icon" />}
-                />
-              </Link>
-              <Link to={`/updates/author/${post.authorSlug}`} className="blog-post-meta-item blog-post-meta-link">
-                <AuthorDetails
-                  author={post.metadata.author}
-                  label="Author"
-                  className="blog-post-meta-stamp"
-                  textClassName="blog-post-meta-text"
-                  labelClassName="blog-post-meta-label"
-                  icon={<User className="blog-post-meta-icon" />}
-                />
-              </Link>
-            </div>
             <h1 className="blog-post-title">{post.metadata.title}</h1>
             {post.subtitle || post.excerpt ? (
               <p className="blog-post-subtitle">{post.subtitle || post.excerpt}</p>
