@@ -95,6 +95,7 @@ export interface PageSeoSpec {
 
 export interface SchemaSpec {
   kind:
+    | "WebPage"
     | "Organization"
     | "WebSite"
     | "SoftwareApplication"
@@ -102,10 +103,16 @@ export interface SchemaSpec {
     | "SoftwareSourceCode"
     | "TechArticle"
     | "Article"
+    | "BlogPosting"
     | "FAQPage"
     | "BreadcrumbList"
+    | "Dataset"
+    | "ImageObject"
     | "ItemList"
-    | "HowTo";
+    | "HowTo"
+    | "Product"
+    | "ProfilePage"
+    | "VideoObject";
   data?: Record<string, unknown>;
 }
 

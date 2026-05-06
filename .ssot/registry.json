@@ -8537,7 +8537,7 @@
       "id": "feat:lander.structured-data.web-page",
       "title": "Lander structured data WebPage emission",
       "description": "After @mdwrk/structured-data implements WebPage support, import it into the lander and emit it for eligible MdWrk public pages with static HTML and jsonld-graph parity.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8557,7 +8557,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8565,7 +8566,7 @@
       "id": "feat:lander.structured-data.web-site",
       "title": "Lander structured data WebSite emission",
       "description": "After @mdwrk/structured-data implements WebSite support, import it into the lander and emit it for canonical MdWrk site identity with static HTML and jsonld-graph parity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8585,7 +8586,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8593,7 +8595,7 @@
       "id": "feat:lander.structured-data.organization",
       "title": "Lander structured data Organization emission",
       "description": "After @mdwrk/structured-data implements Organization support, import it into the lander and emit it for MdWrk brand, publisher, and product identity with metadata parity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8613,7 +8615,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8621,7 +8624,7 @@
       "id": "feat:lander.structured-data.software-application",
       "title": "Lander structured data SoftwareApplication emission",
       "description": "After @mdwrk/structured-data implements SoftwareApplication support, import it into the lander and emit it for MdWrk application and PWA pages with visible product-content parity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8641,7 +8644,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8649,7 +8653,7 @@
       "id": "feat:lander.structured-data.article",
       "title": "Lander structured data Article emission",
       "description": "After @mdwrk/structured-data implements Article support, import it into the lander and emit it for eligible long-form content with authored metadata and visible-content parity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8669,7 +8673,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8677,7 +8682,7 @@
       "id": "feat:lander.structured-data.tech-article",
       "title": "Lander structured data TechArticle emission",
       "description": "After @mdwrk/structured-data implements TechArticle support, import it into the lander and emit it for eligible docs, package, setup, API, and extension authoring pages.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8697,7 +8702,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8705,7 +8711,7 @@
       "id": "feat:lander.structured-data.blog-posting",
       "title": "Lander structured data BlogPosting emission",
       "description": "After @mdwrk/structured-data implements BlogPosting support, import it into the lander and emit it for product update and blog article pages with dates, excerpts, publisher linkage, and fallback images.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8725,7 +8731,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8733,7 +8740,7 @@
       "id": "feat:lander.structured-data.breadcrumb-list",
       "title": "Lander structured data BreadcrumbList emission",
       "description": "After @mdwrk/structured-data implements BreadcrumbList support, import it into the lander and emit canonical route breadcrumbs for eligible MdWrk public pages.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8753,7 +8760,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8761,7 +8769,7 @@
       "id": "feat:lander.structured-data.faq-page",
       "title": "Lander structured data FAQPage emission",
       "description": "After @mdwrk/structured-data implements FAQPage support, import it into the lander and emit it only when the same questions and answers are visibly rendered.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8781,7 +8789,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8789,7 +8798,7 @@
       "id": "feat:lander.structured-data.software-source-code",
       "title": "Lander structured data SoftwareSourceCode emission",
       "description": "After @mdwrk/structured-data implements SoftwareSourceCode support, import it into the lander and emit it for package, API, repository, and developer surfaces.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8809,7 +8818,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8817,7 +8827,7 @@
       "id": "feat:lander.structured-data.profile-page",
       "title": "Lander structured data ProfilePage emission",
       "description": "After @mdwrk/structured-data implements ProfilePage support, import it into the lander and emit it for eligible author, maintainer, organization, contributor, or profile pages.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8837,7 +8847,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8845,7 +8856,7 @@
       "id": "feat:lander.structured-data.product",
       "title": "Lander structured data Product emission",
       "description": "After @mdwrk/structured-data implements Product support, import it into the lander and emit it for eligible software offering, extension listing, package, and commercial product pages without synthetic ratings.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8865,7 +8876,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8873,7 +8885,7 @@
       "id": "feat:lander.structured-data.dataset",
       "title": "Lander structured data Dataset emission",
       "description": "After @mdwrk/structured-data implements Dataset support, import it into the lander and emit it for eligible generated registries, conformance artifacts, benchmark data, and downloadable datasets.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8893,7 +8905,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8901,7 +8914,7 @@
       "id": "feat:lander.structured-data.video-object",
       "title": "Lander structured data VideoObject emission",
       "description": "After @mdwrk/structured-data implements VideoObject support, import it into the lander and emit it for eligible demos, tutorials, and product videos with complete media metadata.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8921,7 +8934,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     },
@@ -8929,7 +8943,7 @@
       "id": "feat:lander.structured-data.image-object",
       "title": "Lander structured data ImageObject emission",
       "description": "After @mdwrk/structured-data implements ImageObject support, import it into the lander and emit it for eligible screenshots, visual documentation, and media asset metadata.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -8949,7 +8963,8 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-lander-src-cli-static-content"
+        "tst:apps-lander-src-cli-static-content",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
     }
@@ -10381,6 +10396,36 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs"
       ]
+    },
+    {
+      "id": "tst:packages-lander-lander-react-tests-run-smoke.mjs",
+      "title": "Lander React structured data smoke test",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/lander/lander-react/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:lander.structured-data.article",
+        "feat:lander.structured-data.blog-posting",
+        "feat:lander.structured-data.breadcrumb-list",
+        "feat:lander.structured-data.dataset",
+        "feat:lander.structured-data.faq-page",
+        "feat:lander.structured-data.image-object",
+        "feat:lander.structured-data.organization",
+        "feat:lander.structured-data.product",
+        "feat:lander.structured-data.profile-page",
+        "feat:lander.structured-data.software-application",
+        "feat:lander.structured-data.software-source-code",
+        "feat:lander.structured-data.tech-article",
+        "feat:lander.structured-data.video-object",
+        "feat:lander.structured-data.web-page",
+        "feat:lander.structured-data.web-site"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs"
+      ]
     }
   ],
   "claims": [
@@ -10548,7 +10593,8 @@
         "tst:tools-governance-validate-spec-coverage-index.mjs",
         "tst:tools-governance-validate-ssot-graph-export.mjs",
         "tst:tools-governance-validate-release-snapshots.mjs",
-        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -10585,7 +10631,8 @@
         "evd:ssot-reports-spec-coverage-index.json",
         "evd:ssot-reports-ssot-graph-export-governance.json",
         "evd:ssot-reports-release-snapshot-index.json",
-        "evd:packages-shared-structured-data-tests-run-smoke.mjs"
+        "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs"
       ]
     },
     {
@@ -12042,6 +12089,20 @@
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "title": "Lander React structured data smoke test evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "packages/lander/lander-react/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ]
     }
   ],

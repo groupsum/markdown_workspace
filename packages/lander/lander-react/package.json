@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "@mdwrk/lander-content-contract": "^0.1.0",
     "@mdwrk/lander-core": "^0.1.0",
-    "@mdwrk/structured-data": "^0.1.1"
+    "@mdwrk/structured-data": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -37,7 +37,7 @@
     "build": "npm run build -w @mdwrk/structured-data && tsc -p tsconfig.json",
     "typecheck": "npm run build -w @mdwrk/structured-data && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run typecheck",
+    "test": "npm run build && node tests/run-smoke.mjs",
     "prepack": "npm run build"
   },
   "exports": {
