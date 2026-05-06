@@ -23,6 +23,8 @@
 
 .privacy-heading {
   @apply mb-6 text-3xl font-bold;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
@@ -119,6 +121,8 @@
 
 .hero-heading {
   @apply mb-4 text-4xl font-extrabold leading-none tracking-tight;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
@@ -216,6 +220,8 @@
 
 .features-heading {
   @apply mb-4 text-4xl font-extrabold tracking-tight;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
@@ -229,27 +235,55 @@
 
 .features-copy {
   @apply text-base;
+  line-height: 1.8;
   color: var(--lander-fg-muted);
 }
 
 .features-grid {
   @apply space-y-8;
+  align-items: stretch;
 }
 
 .feature-card {
-  @apply mx-auto flex max-w-lg -translate-y-0 flex-col rounded-xl border p-6 text-left transition-all;
-  background: var(--lander-panel-muted);
-  border-color: var(--lander-border);
+  @apply mx-auto flex max-w-lg -translate-y-0 flex-col border p-6 text-left transition-all;
+  min-height: 280px;
+  border-radius: 1rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--lander-panel) 96%, transparent),
+      color-mix(in srgb, var(--lander-panel-muted) 70%, var(--lander-panel))
+    );
+  border-color: color-mix(in srgb, var(--lander-border) 76%, var(--lander-accent) 24%);
+  box-shadow:
+    0 14px 36px color-mix(in srgb, var(--lander-shadow) 11%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 54%, transparent);
 }
 
 .feature-card:hover {
-  @apply -translate-y-1 shadow-lg;
-  background: var(--lander-panel);
+  @apply -translate-y-1;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--lander-panel) 98%, transparent),
+      color-mix(in srgb, var(--lander-accent-soft) 24%, var(--lander-panel-muted))
+    );
+  border-color: color-mix(in srgb, var(--lander-accent) 42%, var(--lander-border));
+  box-shadow:
+    0 22px 54px color-mix(in srgb, var(--lander-shadow) 16%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #ffffff 60%, transparent);
 }
 
 .feature-icon-wrap {
-  @apply mb-4 flex h-12 w-12 items-center justify-center rounded-lg;
-  background: var(--lander-accent-soft);
+  @apply mb-5 flex h-12 w-12 items-center justify-center rounded-lg border;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--lander-accent) 18%, var(--lander-panel)),
+      color-mix(in srgb, var(--lander-accent-alt) 16%, var(--lander-panel-muted))
+    );
+  border-color: color-mix(in srgb, var(--lander-accent) 20%, var(--lander-border));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--lander-accent) 12%, transparent);
 }
 
 .feature-icon {
@@ -259,11 +293,14 @@
 
 .feature-title {
   @apply mb-2 text-xl font-bold;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
 .feature-description {
   @apply leading-relaxed;
+  font-size: 0.98rem;
   color: var(--lander-fg-muted);
 }
 
@@ -289,6 +326,8 @@
 
 .demo-heading {
   @apply mb-4 text-3xl font-extrabold tracking-tight;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
@@ -489,6 +528,8 @@
 
 .navbar-brand-text {
   @apply self-center whitespace-nowrap text-2xl font-bold;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
@@ -990,6 +1031,8 @@
 .docs-title,
 .blog-post-title {
   @apply mt-4 text-4xl font-extrabold;
+  font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: var(--lander-fg);
 }
 
