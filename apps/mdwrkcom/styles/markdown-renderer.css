@@ -109,6 +109,57 @@
   max-width: 100%;
   min-width: 0;
   width: 100%;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.lander-markdown .markdown-body p,
+.lander-markdown .markdown-body li,
+.lander-markdown .markdown-body dd,
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-p,
+.lander-markdown .markdown-body .md-li,
+.lander-markdown .markdown-body .md-table-cell {
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body p,
+.lander-markdown .markdown-body ul,
+.lander-markdown .markdown-body ol,
+.lander-markdown .markdown-body blockquote,
+.lander-markdown .markdown-body table,
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lander-markdown .markdown-body ul,
+.lander-markdown .markdown-body ol {
+  padding-left: 1.35rem;
+}
+
+.lander-markdown .markdown-body ul {
+  list-style: disc;
+}
+
+.lander-markdown .markdown-body ol {
+  list-style: decimal;
+}
+
+.lander-markdown .markdown-body li + li {
+  margin-top: 0.35rem;
+}
+
+.lander-markdown .markdown-body strong,
+.lander-markdown .markdown-body b {
+  color: var(--lander-heading-fg, var(--lander-fg));
+  font-weight: 800;
+}
+
+.lander-markdown .markdown-body em {
+  color: color-mix(in srgb, var(--lander-fg) 88%, var(--lander-fg-muted));
 }
 
 .lander-markdown .markdown-body h1,
@@ -120,12 +171,17 @@
 .lander-markdown h1,
 .lander-markdown .md-h1 {
   color: var(--lander-heading-fg, var(--lander-fg));
+  font-family: "Sora", "Inter", "Segoe UI", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 
 .lander-markdown .markdown-body h1,
 .lander-markdown .markdown-body .md-h1,
 .lander-markdown h1,
 .lander-markdown .md-h1 {
+  font-size: 2.25rem;
   margin-top: 2.75rem;
   margin-bottom: 1.25rem;
 }
@@ -134,6 +190,7 @@
 .lander-markdown .markdown-body .md-h2,
 .lander-markdown h2,
 .lander-markdown .md-h2 {
+  font-size: 1.75rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -142,6 +199,7 @@
 .lander-markdown .markdown-body .md-h3,
 .lander-markdown h3,
 .lander-markdown .md-h3 {
+  font-size: 1.35rem;
   margin-top: 2rem;
   margin-bottom: 0.875rem;
 }
@@ -158,6 +216,7 @@
 .lander-markdown .md-h5,
 .lander-markdown h6,
 .lander-markdown .md-h6 {
+  font-size: 1.05rem;
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
 }
@@ -232,6 +291,30 @@
   background: var(--lander-markdown-quote-bg);
   color: var(--lander-fg-muted);
   border-left-color: var(--lander-accent);
+  border-left-width: 4px;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.lander-markdown .markdown-body blockquote p,
+.lander-markdown .markdown-body blockquote li {
+  color: var(--lander-fg-muted);
+}
+
+.lander-markdown .markdown-body table,
+.lander-markdown .markdown-body .md-table {
+  border-collapse: collapse;
+  border: 1px solid var(--lander-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.lander-markdown .markdown-body th,
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-table-header,
+.lander-markdown .markdown-body .md-table-cell {
+  border: 1px solid var(--lander-border);
+  padding: 0.75rem 0.875rem;
 }
 
 .lander-markdown .markdown-body th,

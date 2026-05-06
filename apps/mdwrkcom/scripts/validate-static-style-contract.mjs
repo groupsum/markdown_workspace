@@ -35,6 +35,8 @@ for (const className of [
   '.related-section',
   '.lander-page__hero',
   '.lander-page__card',
+  '.lander-markdown .markdown-body h2',
+  '.lander-markdown .markdown-body p',
 ]) {
   assert.ok(css.includes(className), `Static stylesheet must include ${className}.`);
 }
@@ -50,5 +52,7 @@ for (const sourceSignal of [
 
 assert.ok(sourceBase.includes('@keyframes lander-blob'), 'Base source must keep the pre-split lander blob animation.');
 assert.ok(sourceMarkdown.includes('.lander-markdown'), 'Markdown renderer source must keep the lander markdown scope.');
+assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body h2'), 'Markdown renderer source must theme lander markdown headings.');
+assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body p'), 'Markdown renderer source must theme lander markdown body text.');
 
 console.log('Static style contract validation passed.');
