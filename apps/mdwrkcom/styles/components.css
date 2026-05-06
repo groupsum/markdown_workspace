@@ -1107,6 +1107,20 @@ time {
   @apply mx-auto max-w-screen-xl px-3;
 }
 
+.blog-list-layout + .faq-section,
+.blog-list-layout + .related-section {
+  @apply mt-12;
+}
+
+.docs-content-card + .faq-section,
+.docs-content-card + .related-section {
+  @apply mt-4;
+}
+
+.faq-section + .related-section {
+  @apply mt-6;
+}
+
 .blog-list-header {
   @apply mx-auto mb-12 max-w-3xl text-center;
 }
