@@ -361,7 +361,8 @@
   }
 
   .header-brand-title {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: calc(10px * var(--ui-scale));

@@ -1097,6 +1097,158 @@
       "kind": "feature"
     },
     {
+      "id": "feat:structured-data.web-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.web-site",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.organization",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.software-application",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.web-application",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.article",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.tech-article",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.blog-posting",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.breadcrumb-list",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.faq-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.qa-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.how-to",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.item-list",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.software-source-code",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.product",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.dataset",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.event",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.video-object",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.image-object",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.profile-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.review-snippet",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.course",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:structured-data.discussion-forum-posting",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.web-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.web-site",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.organization",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.software-application",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.article",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.tech-article",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.blog-posting",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.breadcrumb-list",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.faq-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.software-source-code",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.profile-page",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.product",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.dataset",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.video-object",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:lander.structured-data.image-object",
+      "kind": "feature"
+    },
+    {
       "id": "prf:editor-authoring-default",
       "kind": "profile"
     },
@@ -1338,6 +1490,14 @@
     },
     {
       "id": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-lander-lander-react-tests-run-smoke.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:tools-governance-validate-certifiability-feature-plan.mjs",
       "kind": "test"
     },
     {
@@ -1645,6 +1805,14 @@
       "kind": "evidence"
     },
     {
+      "id": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "kind": "evidence"
+    },
+    {
       "id": "iss:lander-code-block-syntax-highlighting-absent",
       "kind": "issue"
     },
@@ -1678,6 +1846,10 @@
     },
     {
       "id": "bnd:repo-certifiability-current-scope",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:repo-certifiability-p1-current-partials",
       "kind": "boundary"
     },
     {
@@ -3336,6 +3508,251 @@
       "type": "SCOPES_PROFILE",
       "from": "bnd:repo-certifiability-current-scope",
       "to": "prf:mdwrk-editing-preview"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:accessibility-shell-baseline"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:client-common"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:client-diagnostics"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:desktop-folder-mounting"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:desktop-preload-host-api"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:edit-in-renderer-profile-contract"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-active-state-display"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-disabled-state-display"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-divider-grouping"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-hidden-button-preference"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-overflow-scroll"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-responsive-placement"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:editor-toolbar-split-view-eligibility"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:host-capability-adapter"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aeo-appended-answer-blocks"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aieo-crawlable-text-semantic-index"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-aieo-json-ld-structured-data"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-crawlability-internal-links"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-excerpt-embedded-metadata"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-metadata-ci-gate"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-metadata-schema-validation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-article-related-link-copy"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-blog-article-guide-standardization"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-docs-answer-section-standardization"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-entity-mdwrk-brand-normalization"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-crawler-safe-rendering"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-hreflang-metadata"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-locale-routes"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-locale-switcher"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-no-automatic-locale-redirects"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-international-sitemap-alternates"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-metadata-favicon-logo-fallback"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-seo-comparison-pages"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:lander-seo-demand-cluster-canonical-pages"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:mdwrk-shell-fixed-fit-screen"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:native-filesystem-shell-behavior"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-export-artifact-generation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-export-profile-disclosure"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-cross-file-hash-scroll"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-export-rewrite"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-external-pass-through"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-internal-file-navigation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-same-document-hash-scroll"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:preview-link-unsafe-url-policy"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:profile-boundary-resolution"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:uix-breakpoint-token-contract"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:uix-responsive-layout-matrix"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:workspace-open-tabs-persistence"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:repo-certifiability-p1-current-partials",
+      "to": "feat:workspace-persistence"
     },
     {
       "type": "BUNDLES",
@@ -5311,6 +5728,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:repo-governance-validation",
       "to": "spc:2002"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:repo-governance-validation",
+      "to": "tst:tools-governance-validate-certifiability-feature-plan.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8633,6 +9055,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-profile-page",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-faq",
       "to": "spc:2069"
@@ -8641,6 +9068,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-faq",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-faq",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8653,6 +9085,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-qa",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-product",
       "to": "spc:2069"
@@ -8661,6 +9098,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-product",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-product",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8673,6 +9115,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-product-snippet",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-merchant-listing",
       "to": "spc:2069"
@@ -8681,6 +9128,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-merchant-listing",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-merchant-listing",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8693,6 +9145,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-review-snippet",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-dataset",
       "to": "spc:2069"
@@ -8701,6 +9158,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-dataset",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-dataset",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8713,6 +9175,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-image-metadata",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-video",
       "to": "spc:2069"
@@ -8721,6 +9188,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-video",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-video",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8733,6 +9205,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-discussion-forum",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-course-list",
       "to": "spc:2069"
@@ -8741,6 +9218,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-course-list",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-course-list",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8753,6 +9235,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-education-qa",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-event",
       "to": "spc:2069"
@@ -8761,6 +9248,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-event",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-event",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8773,6 +9265,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-practice-problem",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-subscription-paywalled-content",
       "to": "spc:2069"
@@ -8781,6 +9278,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-subscription-paywalled-content",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-subscription-paywalled-content",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8793,6 +9295,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-book-actions",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-carousel",
       "to": "spc:2069"
@@ -8801,6 +9308,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-carousel",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-carousel",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8813,6 +9325,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-employer-aggregate-rating",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-estimated-salary",
       "to": "spc:2069"
@@ -8821,6 +9338,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-estimated-salary",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-estimated-salary",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8833,6 +9355,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-fact-check",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-job-posting",
       "to": "spc:2069"
@@ -8841,6 +9368,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-job-posting",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-job-posting",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8853,6 +9385,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-local-business",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-loyalty-program",
       "to": "spc:2069"
@@ -8861,6 +9398,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-loyalty-program",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-loyalty-program",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8873,6 +9415,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-math-solver",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-movie",
       "to": "spc:2069"
@@ -8881,6 +9428,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-movie",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-movie",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8893,6 +9445,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-recipe",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-speakable",
       "to": "spc:2069"
@@ -8901,6 +9458,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-speakable",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-speakable",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8913,6 +9475,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-vacation-rental",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-vehicle-listing",
       "to": "spc:2069"
@@ -8921,6 +9488,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-vehicle-listing",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-vehicle-listing",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8933,6 +9505,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-product-variant",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-merchant-return-policy",
       "to": "spc:2069"
@@ -8941,6 +9518,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:json-ld-merchant-return-policy",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-merchant-return-policy",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -8953,6 +9535,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:json-ld-merchant-shipping-policy",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:google-structured-data-search-gallery-coverage",
       "to": "spc:2069"
@@ -9201,6 +9788,651 @@
       "type": "COVERED_BY",
       "from": "feat:lander-international-no-automatic-locale-redirects",
       "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.article",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.article",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.article",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.product",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.product",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.product",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.event",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.event",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.event",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.course",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.course",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.course",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "spc:2069"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "tst:apps-lander-src-cli-static-content"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
     },
     {
       "type": "DECIDED_BY",
@@ -15798,6 +17030,576 @@
       "to": "adr:1058"
     },
     {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-site",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.organization",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-application",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.web-application",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.article",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.article",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.article",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.tech-article",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.blog-posting",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.breadcrumb-list",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.faq-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.qa-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.how-to",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.item-list",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.software-source-code",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.product",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.product",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.product",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.dataset",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.event",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.event",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.event",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.video-object",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.image-object",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.profile-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.review-snippet",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.course",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.course",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.course",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:structured-data.discussion-forum-posting",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.web-site",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.organization",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-application",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.article",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.tech-article",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.blog-posting",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.breadcrumb-list",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.faq-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.software-source-code",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.profile-page",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.product",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.dataset",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.video-object",
+      "to": "adr:1058"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "adr:1053"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "adr:1057"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:lander.structured-data.image-object",
+      "to": "adr:1058"
+    },
+    {
       "type": "ASSERTS",
       "from": "clm:cross-cutting",
       "to": "feat:cross-cutting"
@@ -16038,6 +17840,366 @@
       "to": "feat:json-ld-software-app"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.web-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.web-site"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.organization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.software-application"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.web-application"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.article"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.tech-article"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.blog-posting"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.breadcrumb-list"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.faq-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.qa-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.how-to"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.item-list"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.software-source-code"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.product"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.dataset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.event"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.video-object"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.image-object"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.profile-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.review-snippet"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.course"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:structured-data.discussion-forum-posting"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.web-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.web-site"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.organization"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.software-application"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.article"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.tech-article"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.blog-posting"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.breadcrumb-list"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.faq-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.software-source-code"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.profile-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.product"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.dataset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.video-object"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander.structured-data.image-object"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-book-actions"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-carousel"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-course-list"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-dataset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-discussion-forum"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-education-qa"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-employer-aggregate-rating"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-estimated-salary"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-event"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-fact-check"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-faq"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-image-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-job-posting"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-local-business"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-loyalty-program"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-math-solver"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-merchant-listing"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-merchant-return-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-merchant-shipping-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-movie"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-practice-problem"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-product"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-product-snippet"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-product-variant"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-profile-page"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-qa"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-recipe"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-review-snippet"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-speakable"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-subscription-paywalled-content"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-vacation-rental"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-vehicle-listing"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:json-ld-video"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:repo-governance-validation"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -16218,6 +18380,16 @@
       "to": "clm:cross-cutting"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-lander-lander-react-tests-run-smoke.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -16390,6 +18562,16 @@
     {
       "type": "SUPPORTS",
       "from": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
       "to": "clm:cross-cutting"
     },
     {
@@ -18003,9 +20185,29 @@
       "to": "feat:mdwrk-custom-parser-profile"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-parser-profile-blocked"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-parser-profile-blocked"
+    },
+    {
       "type": "ASSERTS",
       "from": "clm:mdwrk-custom-previewer-profiles-blocked",
       "to": "feat:mdwrk-custom-previewer-profiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-previewer-profiles-blocked"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-previewer-profiles-blocked"
     },
     {
       "type": "ASSERTS",
@@ -18356,6 +20558,16 @@
       "type": "DERIVES_FROM",
       "from": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
       "to": "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "tst:tools-governance-validate-certifiability-feature-plan.mjs"
     },
     {
       "type": "AFFECTS",

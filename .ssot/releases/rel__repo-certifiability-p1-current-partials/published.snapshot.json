@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "kind": "published_snapshot",
+  "generated_at": "2026-05-06T23:00:25Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "8ca76558929c4631d25a8bccdfc0122a92af4b48a20d40506f73b4b2e23988ae",
+  "release": {
+    "id": "rel:repo-certifiability-p1-current-partials",
+    "version": "0.2.87",
+    "status": "published",
+    "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+    "claim_ids": [
+      "clm:repo-certifiability-p1-current-partials"
+    ],
+    "evidence_ids": [
+      "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+      "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+      "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "evd:apps-client-hooks-useapp.test.tsx",
+      "evd:apps-client-hooks-usetabmanager.test.tsx",
+      "evd:apps-client-hooks-usetoast.test.tsx",
+      "evd:apps-client-services-oidc.test.ts",
+      "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+      "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+      "evd:apps-client-src-features-commands-commandregistry.test.ts",
+      "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+      "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+      "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+      "evd:apps-client-src-features-views-viewregistry.test.ts",
+      "evd:apps-client-src-pwa-versionmanifest.test.ts",
+      "evd:apps-client-src-shell-actionrailhost.test.tsx",
+      "evd:apps-client-styles-alignmenttokens.test.ts",
+      "evd:apps-client-styles-chassisfittoscreen.test.ts",
+      "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+      "evd:apps-client-styles-zoombehavior.test.ts",
+      "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+      "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+      "evd:apps-client-tests-playwright-preview-export.spec.ts",
+      "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+      "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "evd:apps-client-tests-statusbar-contract.mjs",
+      "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+      "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "evd:lander-static-content-ci-local",
+      "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+      "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+      "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+      "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+      "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+      "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "evd:ssot-reports-release-snapshot-index.json",
+      "evd:ssot-reports-spec-coverage-index.json",
+      "evd:ssot-reports-ssot-graph-export-governance.json",
+      "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+    ]
+  },
+  "boundary": {
+    "id": "bnd:repo-certifiability-p1-current-partials",
+    "title": "Repository Certifiability P1 Current Partials",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:accessibility-shell-baseline",
+      "feat:client-common",
+      "feat:client-diagnostics",
+      "feat:desktop-folder-mounting",
+      "feat:desktop-preload-host-api",
+      "feat:edit-in-renderer-profile-contract",
+      "feat:editor-toolbar-active-state-display",
+      "feat:editor-toolbar-disabled-state-display",
+      "feat:editor-toolbar-divider-grouping",
+      "feat:editor-toolbar-hidden-button-preference",
+      "feat:editor-toolbar-overflow-scroll",
+      "feat:editor-toolbar-responsive-placement",
+      "feat:editor-toolbar-split-view-eligibility",
+      "feat:host-capability-adapter",
+      "feat:lander-aeo-appended-answer-blocks",
+      "feat:lander-aieo-crawlable-text-semantic-index",
+      "feat:lander-aieo-json-ld-structured-data",
+      "feat:lander-article-crawlability-internal-links",
+      "feat:lander-article-excerpt-embedded-metadata",
+      "feat:lander-article-metadata-ci-gate",
+      "feat:lander-article-metadata-schema-validation",
+      "feat:lander-article-related-link-copy",
+      "feat:lander-blog-article-guide-standardization",
+      "feat:lander-docs-answer-section-standardization",
+      "feat:lander-entity-mdwrk-brand-normalization",
+      "feat:lander-international-crawler-safe-rendering",
+      "feat:lander-international-hreflang-metadata",
+      "feat:lander-international-locale-routes",
+      "feat:lander-international-locale-switcher",
+      "feat:lander-international-no-automatic-locale-redirects",
+      "feat:lander-international-sitemap-alternates",
+      "feat:lander-metadata-favicon-logo-fallback",
+      "feat:lander-seo-comparison-pages",
+      "feat:lander-seo-demand-cluster-canonical-pages",
+      "feat:mdwrk-shell-fixed-fit-screen",
+      "feat:native-filesystem-shell-behavior",
+      "feat:preview-export-artifact-generation",
+      "feat:preview-export-profile-disclosure",
+      "feat:preview-link-cross-file-hash-scroll",
+      "feat:preview-link-export-rewrite",
+      "feat:preview-link-external-pass-through",
+      "feat:preview-link-internal-file-navigation",
+      "feat:preview-link-same-document-hash-scroll",
+      "feat:preview-link-unsafe-url-policy",
+      "feat:profile-boundary-resolution",
+      "feat:uix-breakpoint-token-contract",
+      "feat:uix-responsive-layout-matrix",
+      "feat:workspace-open-tabs-persistence",
+      "feat:workspace-persistence"
+    ],
+    "profile_ids": []
+  },
+  "claims": [
+    {
+      "id": "clm:repo-certifiability-p1-current-partials",
+      "title": "P1 current partial features are implemented and evidenced",
+      "status": "published",
+      "tier": "T2",
+      "kind": "certification",
+      "description": "The frozen P1 current-partials boundary features are implemented and supported by the recorded client, package, lander, governance, and browser evidence.",
+      "feature_ids": [
+        "feat:accessibility-shell-baseline",
+        "feat:client-common",
+        "feat:client-diagnostics",
+        "feat:desktop-folder-mounting",
+        "feat:desktop-preload-host-api",
+        "feat:edit-in-renderer-profile-contract",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:host-capability-adapter",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate",
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-international-crawler-safe-rendering",
+        "feat:lander-international-hreflang-metadata",
+        "feat:lander-international-locale-routes",
+        "feat:lander-international-locale-switcher",
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:lander-international-sitemap-alternates",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:native-filesystem-shell-behavior",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-unsafe-url-policy",
+        "feat:profile-boundary-resolution",
+        "feat:uix-breakpoint-token-contract",
+        "feat:uix-responsive-layout-matrix",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "evd:apps-client-hooks-useapp.test.tsx",
+        "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-services-oidc.test.ts",
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-pwa-versionmanifest.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-styles-alignmenttokens.test.ts",
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+        "evd:apps-client-styles-zoombehavior.test.ts",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+        "evd:apps-client-tests-playwright-preview-export.spec.ts",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "evd:apps-client-tests-statusbar-contract.mjs",
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+        "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "evd:lander-static-content-ci-local",
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+        "evd:ssot-reports-release-snapshot-index.json",
+        "evd:ssot-reports-spec-coverage-index.json",
+        "evd:ssot-reports-ssot-graph-export-governance.json",
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+      "title": "Evidence: EditorPane.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.test.tsx",
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+      "title": "Evidence: WorkPane.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Chassis/WorkPane/WorkPane.test.tsx",
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-chassis-workpane-workpane.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+      "title": "Evidence: WorkspaceMarkdownRenderer.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-hooks-useapp.test.tsx",
+      "title": "Evidence: useApp.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useApp.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-hooks-usetabmanager.test.tsx",
+      "title": "Evidence: useTabManager.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useTabManager.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-hooks-usetoast.test.tsx",
+      "title": "Evidence: useToast.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useToast.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-notifications",
+        "clm:client-layout",
+        "clm:client-extensions",
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-services-oidc.test.ts",
+      "title": "Evidence: oidc.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/services/oidc.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+      "title": "Evidence: ExtensionRuntimeProvider.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+      "title": "Evidence: actionRailRegistry.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-commands-commandregistry.test.ts",
+      "title": "Evidence: commandRegistry.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/commands/commandRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-commands",
+        "clm:client-action-rail",
+        "clm:client-views",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-commands-commandregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+      "title": "Evidence: extensionWorkspaceSurfaces.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-i18n",
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+      "title": "Evidence: clientI18nService.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/i18n/clientI18nService.test.ts",
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-clienti18nservice.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+      "title": "Evidence: languagePackStudioController.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+      "title": "Evidence: profileConfig.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:client-preferences",
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "title": "Evidence: DataSettingsPanel.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
+      "claim_ids": [
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+      "title": "Evidence: SettingsSchemaRenderer.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
+      "claim_ids": [
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-features-views-viewregistry.test.ts",
+      "title": "Evidence: viewRegistry.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/features/views/viewRegistry.test.ts",
+      "claim_ids": [
+        "clm:client-views",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-views-viewregistry.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-pwa-versionmanifest.test.ts",
+      "title": "Evidence: versionManifest.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/pwa/versionManifest.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-preferences",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-pwa-versionmanifest.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-src-shell-actionrailhost.test.tsx",
+      "title": "Evidence: ActionRailHost.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/shell/ActionRailHost.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-shell-actionrailhost.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-alignmenttokens.test.ts",
+      "title": "Evidence: alignmentTokens.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/alignmentTokens.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-chassisfittoscreen.test.ts",
+      "title": "Evidence: chassisFitToScreen.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/chassisFitToScreen.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+      "title": "Evidence: componentClassNamePolicy.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/componentClassNamePolicy.test.ts",
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-componentclassnamepolicy.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-zoombehavior.test.ts",
+      "title": "Evidence: zoomBehavior.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/zoomBehavior.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-zoombehavior.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+      "title": "Evidence: phase7-shell-parity.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/phase7-shell-parity.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-action-rail",
+        "clm:client-commands",
+        "clm:client-views",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+      "title": "Evidence: browser-matrix.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+      "title": "Evidence: file-baseline.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+      "title": "Evidence: inline.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright-inline/inline.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-preview-export.spec.ts",
+      "title": "Evidence: preview-export.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/preview-export.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+      "title": "Evidence: settings-and-i18n.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-i18n",
+        "clm:client-settings",
+        "clm:client-preferences",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+      "title": "Evidence: shell-smoke.spec.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-tests-statusbar-contract.mjs",
+      "title": "Status bar footer contract local run",
+      "status": "passed",
+      "kind": "static",
+      "tier": "T2",
+      "path": "apps/client/tests/statusbar-contract.mjs",
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-statusbar-contract.mjs"
+      ]
+    },
+    {
+      "id": "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+      "title": "MdWrk.com syntax theme validation evidence",
+      "status": "passed",
+      "kind": "conformance",
+      "tier": "T2",
+      "path": "apps/mdwrkcom/scripts/validate-syntax-themes.mjs",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+      "title": "MdWrk international SEO validation script",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/mdwrkcom/scripts/validate-international-seo.mjs",
+      "claim_ids": [
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ]
+    },
+    {
+      "id": "evd:lander-static-content-ci-local",
+      "title": "Static lander content CI local verification",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/lander-static-content-ci.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:apps-lander-src-cli-static-content",
+        "tst:github-workflows-lander-static-content"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+      "title": "Markdown edit-in-renderer React smoke run",
+      "status": "passed",
+      "kind": "test-output",
+      "tier": "T2",
+      "path": "packages/editor/markdown-edit-in-renderer-react/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:edit-in-renderer-profile-contract",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+      "title": "Evidence: commands.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+      "title": "Evidence: history.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-history.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "title": "Evidence: roundtrip.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+      "title": "Evidence: selection.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+      "title": "Evidence: transforms.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+      "title": "Evidence: component.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+      "title": "Evidence: keyboard.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+      "title": "Evidence: run-smoke.mjs",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+      "title": "Evidence: language-pack-studio-view.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-language-pack-studio/tests/language-pack-studio-view.test.tsx",
+      "claim_ids": [
+        "clm:client-i18n",
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+      "title": "Evidence: extension-manager.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-manager/tests/extension-manager.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions",
+        "clm:client-diagnostics",
+        "clm:client-settings",
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+      "title": "Evidence: runtime.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-runtime/tests/runtime.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-extensions",
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+      "title": "Evidence: theme-studio.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-theme-studio/tests/theme-studio.test.tsx",
+      "claim_ids": [
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+      "title": "Lander React structured data smoke test evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "packages/lander/lander-react/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+      "title": "Evidence: html.test.ts",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts"
+      ]
+    },
+    {
+      "id": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+      "title": "Evidence: component.test.tsx",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+      "title": "Structured data package smoke test evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/shared/structured-data/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-release-snapshot-index.json",
+      "title": "Release snapshot index report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/release-snapshot-index.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-release-snapshots.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-spec-coverage-index.json",
+      "title": "SPEC coverage index report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/spec-coverage-index.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-spec-coverage-index.mjs"
+      ]
+    },
+    {
+      "id": "evd:ssot-reports-ssot-graph-export-governance.json",
+      "title": "SSOT graph export governance report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/ssot-graph-export-governance.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-ssot-graph-export.mjs"
+      ]
+    },
+    {
+      "id": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "title": "Certifiability feature plan report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/certifiability-feature-plan.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-parser-profile-blocked",
+        "clm:mdwrk-custom-previewer-profiles-blocked",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
+    }
+  ],
+  "summary": {
+    "release_id": "rel:repo-certifiability-p1-current-partials",
+    "version": "0.2.87",
+    "status": "published",
+    "claim_count": 1,
+    "evidence_count": 55
+  }
+}

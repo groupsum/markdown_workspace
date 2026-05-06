@@ -1,4 +1,22 @@
 {
   "extends": "../../tsconfig.base.json",
-  "exclude": ["vite.config.ts", "vite.lib.config.ts"]
+  "compilerOptions": {
+    "types": [
+      "node",
+      "vite/client",
+      "vitest",
+      "@testing-library/jest-dom/vitest"
+    ]
+  },
+  "exclude": [
+    "vite.config.ts",
+    "vite.lib.config.ts",
+    "dist",
+    "test-results",
+    "tests",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ]
 }

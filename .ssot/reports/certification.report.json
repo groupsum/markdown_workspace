@@ -1,505 +1,14 @@
 {
-  "passed": false,
+  "passed": true,
   "registry_path": ".ssot/registry.json",
   "release": {
-    "release_id": "rel:repo-certifiability-current-scope",
-    "passed": false,
-    "failures": [
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:custom-flavored-markdown-profile that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-empty-selection-stub that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-existing-edit that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-hash-authoring that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-internal-file-authoring that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-selected-text-wrap that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:editor-link-url-paste-wrap that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:gfm-profile that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:mdwrk-custom-parser-profile that is not current or explicit",
-      "Boundary bnd:repo-certifiability-current-scope contains feature feat:mdwrk-custom-previewer-profiles that is not current or explicit",
-      "Claim clm:client-action-rail requires all linked evidence rows to be passed",
-      "Claim clm:client-action-rail requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-commands requires all linked evidence rows to be passed",
-      "Claim clm:client-commands requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-common requires all linked evidence rows to be passed",
-      "Claim clm:client-common requires implemented linked features",
-      "Claim clm:client-common requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-diagnostics requires implemented linked features",
-      "Claim clm:client-editor requires all linked evidence rows to be passed",
-      "Claim clm:client-editor requires implemented linked features",
-      "Claim clm:client-editor requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-extensions requires all linked evidence rows to be passed",
-      "Claim clm:client-extensions requires implemented linked features",
-      "Claim clm:client-i18n requires all linked evidence rows to be passed",
-      "Claim clm:client-i18n requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-layout requires all linked evidence rows to be passed",
-      "Claim clm:client-layout requires implemented linked features",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:client-markdownprofiles requires all linked evidence rows to be passed",
-      "Claim clm:client-markdownprofiles requires implemented linked features",
-      "Claim clm:client-markdownprofiles requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-notifications requires all linked evidence rows to be passed",
-      "Claim clm:client-notifications requires implemented linked features",
-      "Claim clm:client-preferences requires all linked evidence rows to be passed",
-      "Claim clm:client-preferences requires implemented linked features",
-      "Claim clm:client-preferences requires passed linked evidence at or above claim tier T2",
-      "Claim clm:client-settings requires all linked evidence rows to be passed",
-      "Claim clm:client-views requires all linked evidence rows to be passed",
-      "Claim clm:client-views requires passed linked evidence at or above claim tier T2",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:cross-cutting linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:cross-cutting requires all linked evidence rows to be passed",
-      "Claim clm:cross-cutting requires implemented linked features",
-      "Claim clm:edit-in-renderer-profile-contract requires implemented linked features",
-      "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-      "Claim clm:mdwrk-custom-parser-profile-blocked requires all linked evidence rows to be passed",
-      "Claim clm:mdwrk-custom-parser-profile-blocked requires all linked tests to be passing",
-      "Claim clm:mdwrk-custom-parser-profile-blocked requires implemented linked features",
-      "Claim clm:mdwrk-custom-parser-profile-blocked requires passed linked evidence at or above claim tier T2",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked requires all linked evidence rows to be passed",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked requires all linked tests to be passing",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked requires implemented linked features",
-      "Claim clm:mdwrk-custom-previewer-profiles-blocked requires passed linked evidence at or above claim tier T2",
-      "Evidence evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-components-chassis-workpane-workpane.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-hooks-useapp.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-hooks-usetabmanager.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-hooks-usetoast.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-services-oidc.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-action-rail-actionrailregistry.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-commands-commandregistry.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-i18n-clienti18nservice.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-settings-datasettingspanel.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-src-features-views-viewregistry.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-pwa-versionmanifest.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-src-shell-actionrailhost.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-styles-alignmenttokens.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-styles-chassisfittoscreen.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-styles-componentclassnamepolicy.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-styles-zoombehavior.test.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-phase7-shell-parity.test.tsx status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-browser-matrix.spec.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-file-file-baseline.spec.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-inline-inline.spec.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-preview-export.spec.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-settings-and-i18n.spec.ts status is collected, expected passed",
-      "Evidence evd:apps-client-tests-playwright-shell-smoke.spec.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-core-tests-commands.test.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-core-tests-history.test.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-core-tests-selection.test.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-core-tests-transforms.test.ts status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-react-tests-component.test.tsx status is collected, expected passed",
-      "Evidence evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx status is collected, expected passed",
-      "Evidence evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs status is collected, expected passed",
-      "Evidence evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx status is collected, expected passed",
-      "Evidence evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx status is collected, expected passed",
-      "Evidence evd:packages-renderer-markdown-renderer-core-tests-html.test.ts status is collected, expected passed",
-      "Evidence evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx status is collected, expected passed"
-    ],
+    "release_id": "rel:repo-certifiability-p1-current-partials",
+    "passed": true,
+    "failures": [],
     "warnings": [],
     "claims": [
       {
-        "claim_id": "clm:client-action-rail",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-action-rail requires all linked evidence rows to be passed",
-          "Claim clm:client-action-rail requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-commands",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-commands requires all linked evidence rows to be passed",
-          "Claim clm:client-commands requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-common",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-common requires implemented linked features",
-          "Claim clm:client-common requires all linked evidence rows to be passed",
-          "Claim clm:client-common requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-diagnostics",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-diagnostics requires implemented linked features"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": true,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-editor",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-editor requires implemented linked features",
-          "Claim clm:client-editor requires all linked evidence rows to be passed",
-          "Claim clm:client-editor requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-extensions",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-extensions requires implemented linked features",
-          "Claim clm:client-extensions requires all linked evidence rows to be passed"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-i18n",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-i18n requires all linked evidence rows to be passed",
-          "Claim clm:client-i18n requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-layout",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-layout requires implemented linked features",
-          "Claim clm:client-layout requires all linked evidence rows to be passed"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-markdownprofiles",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-markdownprofiles requires implemented linked features",
-          "Claim clm:client-markdownprofiles requires all linked evidence rows to be passed",
-          "Claim clm:client-markdownprofiles requires passed linked evidence at or above claim tier T2",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Claim clm:client-markdownprofiles linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": false
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-notifications",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-notifications requires implemented linked features",
-          "Claim clm:client-notifications requires all linked evidence rows to be passed"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-preferences",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-preferences requires implemented linked features",
-          "Claim clm:client-preferences requires all linked evidence rows to be passed",
-          "Claim clm:client-preferences requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:client-settings",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-settings requires all linked evidence rows to be passed"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:client-views",
-        "passed": false,
-        "failures": [
-          "Claim clm:client-views requires all linked evidence rows to be passed",
-          "Claim clm:client-views requires passed linked evidence at or above claim tier T2"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:cross-cutting",
-        "passed": false,
-        "failures": [
-          "Claim clm:cross-cutting requires implemented linked features",
-          "Claim clm:cross-cutting requires all linked evidence rows to be passed",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Claim clm:cross-cutting linked feature requirement failure: Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": false
-        },
-        "recommended_status": "implemented"
-      },
-      {
-        "claim_id": "clm:edit-in-renderer-profile-contract",
-        "passed": false,
-        "failures": [
-          "Claim clm:edit-in-renderer-profile-contract requires implemented linked features"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": true,
-          "evidence_passing": true,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "declared"
-      },
-      {
-        "claim_id": "clm:extension-continuous-experience",
-        "passed": false,
-        "failures": [
-          "Claim clm:extension-continuous-experience requires all linked evidence rows to be passed"
-        ],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "published"
-      },
-      {
-        "claim_id": "clm:mdwrk-custom-parser-profile-blocked",
-        "passed": false,
-        "failures": [
-          "Claim clm:mdwrk-custom-parser-profile-blocked requires implemented linked features",
-          "Claim clm:mdwrk-custom-parser-profile-blocked requires all linked tests to be passing",
-          "Claim clm:mdwrk-custom-parser-profile-blocked requires all linked evidence rows to be passed",
-          "Claim clm:mdwrk-custom-parser-profile-blocked requires passed linked evidence at or above claim tier T2",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-parser-profile-blocked linked feature requirement failure: Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": false,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": false
-        },
-        "recommended_status": "blocked"
-      },
-      {
-        "claim_id": "clm:mdwrk-custom-previewer-profiles-blocked",
-        "passed": false,
-        "failures": [
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked requires implemented linked features",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked requires all linked tests to be passing",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked requires all linked evidence rows to be passed",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked requires passed linked evidence at or above claim tier T2",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Claim clm:mdwrk-custom-previewer-profiles-blocked linked feature requirement failure: Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "implemented_features": false,
-          "tests_passing": false,
-          "evidence_passing": false,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": false,
-          "feature_target_alignment": true,
-          "required_features_passing": false
-        },
-        "recommended_status": "blocked"
-      },
-      {
-        "claim_id": "clm:mdwrk-lander-content-pack",
-        "passed": true,
-        "failures": [],
-        "checks": {
-          "implemented_features": true,
-          "tests_passing": true,
-          "evidence_passing": true,
-          "no_failed_or_stale_evidence": true,
-          "evidence_tier_alignment": true,
-          "feature_target_alignment": true,
-          "required_features_passing": true
-        },
-        "recommended_status": "certified"
-      },
-      {
-        "claim_id": "clm:portable-lander-package-family",
+        "claim_id": "clm:repo-certifiability-p1-current-partials",
         "passed": true,
         "failures": [],
         "checks": {
@@ -517,52 +26,38 @@
     "evidence": [
       {
         "evidence_id": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-components-chassis-workpane-workpane.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-hooks-useapp.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-hooks-useapp.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-hooks-usetabmanager.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-hooks-usetabmanager.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-hooks-usetoast.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-hooks-usetoast.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-services-oidc.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-services-oidc.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
@@ -571,157 +66,113 @@
       },
       {
         "evidence_id": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-action-rail-actionrailregistry.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-commands-commandregistry.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-commands-commandregistry.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-i18n-clienti18nservice.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-settings-datasettingspanel.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-features-views-viewregistry.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-features-views-viewregistry.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-pwa-versionmanifest.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-pwa-versionmanifest.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-src-shell-actionrailhost.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-src-shell-actionrailhost.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-styles-alignmenttokens.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-styles-alignmenttokens.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-styles-chassisfittoscreen.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-styles-chassisfittoscreen.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-styles-componentclassnamepolicy.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-styles-zoombehavior.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-styles-zoombehavior.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-phase7-shell-parity.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-browser-matrix.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-file-file-baseline.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-inline-inline.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-preview-export.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-preview-export.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-settings-and-i18n.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:apps-client-tests-playwright-shell-smoke.spec.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:apps-client-tests-statusbar-contract.mjs",
@@ -734,12 +185,12 @@
         "failures": []
       },
       {
-        "evidence_id": "evd:lander-static-content-ci-local",
+        "evidence_id": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:mdwrk-lander-static-validation",
+        "evidence_id": "evd:lander-static-content-ci-local",
         "passed": true,
         "failures": []
       },
@@ -750,66 +201,48 @@
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-core-tests-commands.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-core-tests-history.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-core-tests-selection.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-core-tests-transforms.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-react-tests-component.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
@@ -823,27 +256,26 @@
       },
       {
         "evidence_id": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
+      },
+      {
+        "evidence_id": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-renderer-markdown-renderer-core-tests-html.test.ts status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
         "evidence_id": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "passed": false,
-        "failures": [
-          "Evidence evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx status is collected, expected passed"
-        ]
+        "passed": true,
+        "failures": []
       },
       {
-        "evidence_id": "evd:portable-lander-package-exports",
+        "evidence_id": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
         "passed": true,
         "failures": []
       },
@@ -861,1788 +293,31 @@
         "evidence_id": "evd:ssot-reports-ssot-graph-export-governance.json",
         "passed": true,
         "failures": []
+      },
+      {
+        "evidence_id": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+        "passed": true,
+        "failures": []
       }
     ],
-    "profiles": [
-      {
-        "profile_id": "prf:commonmark-editing-preview",
-        "passed": false,
-        "resolved_feature_ids": [
-          "feat:commonmark-conformance-profile",
-          "feat:markdown-renderer-core",
-          "feat:markdown-renderer-react",
-          "feat:client-editor"
-        ],
-        "feature_results": [
-          {
-            "feature_id": "feat:commonmark-conformance-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-              "Feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-core",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-react",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:client-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          }
-        ],
-        "failures": [
-          "Feature feat:client-editor has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-        ],
-        "checks": {
-          "has_features": true,
-          "all_features_passing": false
-        }
-      },
-      {
-        "profile_id": "prf:edit-in-renderer-profile",
-        "passed": false,
-        "resolved_feature_ids": [
-          "feat:edit-in-renderer-profile-contract",
-          "feat:commonmark-conformance-profile",
-          "feat:markdown-renderer-core",
-          "feat:markdown-renderer-react",
-          "feat:client-editor",
-          "feat:gfm-profile",
-          "feat:custom-flavored-markdown-profile",
-          "feat:mdwrk-custom-parser-profile",
-          "feat:mdwrk-custom-previewer-profiles",
-          "feat:client-markdownprofiles"
-        ],
-        "feature_results": [
-          {
-            "feature_id": "feat:edit-in-renderer-profile-contract",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:edit-in-renderer-profile-contract"
-            ],
-            "failures": [
-              "Feature feat:edit-in-renderer-profile-contract has no satisfying claim at or above tier T2",
-              "Feature feat:edit-in-renderer-profile-contract is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:commonmark-conformance-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-              "Feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-core",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-react",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:client-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:gfm-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-              "Feature feat:gfm-profile is not implemented",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:custom-flavored-markdown-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:custom-flavored-markdown-profile has no satisfying claim at or above tier T2",
-              "Feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:mdwrk-custom-parser-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:mdwrk-custom-parser-profile-blocked"
-            ],
-            "failures": [
-              "Feature feat:mdwrk-custom-parser-profile has no satisfying claim at or above tier T2",
-              "Feature feat:mdwrk-custom-parser-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:mdwrk-custom-previewer-profiles",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:mdwrk-custom-previewer-profiles-blocked"
-            ],
-            "failures": [
-              "Feature feat:mdwrk-custom-previewer-profiles has no satisfying claim at or above tier T2",
-              "Feature feat:mdwrk-custom-previewer-profiles is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-markdownprofiles",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles"
-            ],
-            "failures": [
-              "Feature feat:client-markdownprofiles has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          }
-        ],
-        "failures": [
-          "Feature feat:client-editor has no satisfying claim at or above tier T2",
-          "Feature feat:client-markdownprofiles has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile has no satisfying claim at or above tier T2",
-          "Feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented",
-          "Feature feat:edit-in-renderer-profile-contract has no satisfying claim at or above tier T2",
-          "Feature feat:edit-in-renderer-profile-contract is not implemented",
-          "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-          "Feature feat:gfm-profile is not implemented",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-parser-profile has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-parser-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-previewer-profiles is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "has_features": true,
-          "all_features_passing": false
-        }
-      },
-      {
-        "profile_id": "prf:editor-authoring-default",
-        "passed": false,
-        "resolved_feature_ids": [
-          "feat:client-editor",
-          "feat:editor-core-command-model",
-          "feat:react-markdown-editor-surface",
-          "feat:markdown-renderer-core",
-          "feat:markdown-renderer-react",
-          "feat:preview-export-artifact-generation",
-          "feat:preview-export-profile-disclosure",
-          "feat:editor-toolbar-view-editor",
-          "feat:editor-toolbar-view-split",
-          "feat:editor-toolbar-view-preview",
-          "feat:editor-toolbar-strikethrough",
-          "feat:editor-toolbar-bullet-list",
-          "feat:editor-toolbar-task-list",
-          "feat:editor-toolbar-indent",
-          "feat:editor-toolbar-outdent",
-          "feat:editor-toolbar-insert-table",
-          "feat:editor-toolbar-inline-math",
-          "feat:editor-toolbar-footnote",
-          "feat:editor-toolbar-superscript",
-          "feat:editor-toolbar-subscript",
-          "feat:editor-toolbar-bold",
-          "feat:editor-toolbar-italic",
-          "feat:editor-toolbar-undo",
-          "feat:editor-toolbar-redo",
-          "feat:editor-command-front-matter",
-          "feat:editor-command-citation",
-          "feat:editor-command-block-math",
-          "feat:editor-command-insert-tab",
-          "feat:editor-toolbar-responsive-placement",
-          "feat:editor-toolbar-hidden-button-preference",
-          "feat:editor-toolbar-active-state-display",
-          "feat:editor-toolbar-disabled-state-display",
-          "feat:editor-toolbar-command-dispatch",
-          "feat:editor-toolbar-split-view-eligibility",
-          "feat:editor-toolbar-split-resizing",
-          "feat:editor-toolbar-overflow-scroll",
-          "feat:editor-toolbar-divider-grouping",
-          "feat:editor-link-selected-text-wrap",
-          "feat:editor-link-empty-selection-stub",
-          "feat:editor-link-existing-edit",
-          "feat:editor-link-url-paste-wrap",
-          "feat:editor-link-internal-file-authoring",
-          "feat:editor-link-hash-authoring",
-          "feat:preview-link-external-pass-through",
-          "feat:preview-link-internal-file-navigation",
-          "feat:preview-link-same-document-hash-scroll",
-          "feat:preview-link-cross-file-hash-scroll",
-          "feat:preview-link-export-rewrite",
-          "feat:preview-link-unsafe-url-policy"
-        ],
-        "feature_results": [
-          {
-            "feature_id": "feat:client-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:client-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-core-command-model",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-core-command-model has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:react-markdown-editor-surface",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:react-markdown-editor-surface has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-core",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-react",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-export-artifact-generation",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-export-artifact-generation has no satisfying claim at or above tier T2",
-              "Feature feat:preview-export-artifact-generation is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-export-profile-disclosure",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-export-profile-disclosure has no satisfying claim at or above tier T2",
-              "Feature feat:preview-export-profile-disclosure is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-view-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-view-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-view-split",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-view-split has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-view-preview",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-view-preview has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-strikethrough",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-strikethrough has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-bullet-list",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-bullet-list has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-task-list",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-task-list has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-indent",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-indent has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-outdent",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-outdent has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-insert-table",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-insert-table has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-inline-math",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-inline-math has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-footnote",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-footnote has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-superscript",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-superscript has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-subscript",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-subscript has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-bold",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-bold has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-italic",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-italic has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-undo",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-undo has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-redo",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-redo has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-command-front-matter",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-command-front-matter has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-command-citation",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-command-citation has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-command-block-math",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-command-block-math has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-command-insert-tab",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-command-insert-tab has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-responsive-placement",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-responsive-placement has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-responsive-placement is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-hidden-button-preference",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-preferences"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-hidden-button-preference has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-hidden-button-preference is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-active-state-display",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-active-state-display has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-active-state-display is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-disabled-state-display",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor",
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-disabled-state-display has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-disabled-state-display is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-command-dispatch",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-command-dispatch has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-split-view-eligibility",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-split-view-eligibility has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-split-view-eligibility is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-split-resizing",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-split-resizing has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-overflow-scroll",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-overflow-scroll has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-overflow-scroll is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-toolbar-divider-grouping",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-layout"
-            ],
-            "failures": [
-              "Feature feat:editor-toolbar-divider-grouping has no satisfying claim at or above tier T2",
-              "Feature feat:editor-toolbar-divider-grouping is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-selected-text-wrap",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-selected-text-wrap has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-empty-selection-stub",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-empty-selection-stub has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-existing-edit",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-existing-edit has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-url-paste-wrap",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-url-paste-wrap has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-internal-file-authoring",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-internal-file-authoring has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:editor-link-hash-authoring",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:editor-link-hash-authoring has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-external-pass-through",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-external-pass-through has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-external-pass-through is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-internal-file-navigation",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-internal-file-navigation has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-internal-file-navigation is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-same-document-hash-scroll",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-same-document-hash-scroll has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-same-document-hash-scroll is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-cross-file-hash-scroll",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-cross-file-hash-scroll has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-cross-file-hash-scroll is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-export-rewrite",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-export-rewrite has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-export-rewrite is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:preview-link-unsafe-url-policy",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:preview-link-unsafe-url-policy has no satisfying claim at or above tier T2",
-              "Feature feat:preview-link-unsafe-url-policy is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          }
-        ],
-        "failures": [
-          "Feature feat:client-editor has no satisfying claim at or above tier T2",
-          "Feature feat:editor-command-block-math has no satisfying claim at or above tier T2",
-          "Feature feat:editor-command-citation has no satisfying claim at or above tier T2",
-          "Feature feat:editor-command-front-matter has no satisfying claim at or above tier T2",
-          "Feature feat:editor-command-insert-tab has no satisfying claim at or above tier T2",
-          "Feature feat:editor-core-command-model has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-empty-selection-stub has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-existing-edit has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-hash-authoring has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-internal-file-authoring has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-selected-text-wrap has no satisfying claim at or above tier T2",
-          "Feature feat:editor-link-url-paste-wrap has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-active-state-display has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-active-state-display is not implemented",
-          "Feature feat:editor-toolbar-bold has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-bullet-list has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-command-dispatch has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-disabled-state-display has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-disabled-state-display is not implemented",
-          "Feature feat:editor-toolbar-divider-grouping has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-divider-grouping is not implemented",
-          "Feature feat:editor-toolbar-footnote has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-hidden-button-preference has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-hidden-button-preference is not implemented",
-          "Feature feat:editor-toolbar-indent has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-inline-math has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-insert-table has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-italic has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-outdent has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-overflow-scroll has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-overflow-scroll is not implemented",
-          "Feature feat:editor-toolbar-redo has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-responsive-placement has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-responsive-placement is not implemented",
-          "Feature feat:editor-toolbar-split-resizing has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-split-view-eligibility has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-split-view-eligibility is not implemented",
-          "Feature feat:editor-toolbar-strikethrough has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-subscript has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-superscript has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-task-list has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-undo has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-view-editor has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-view-preview has no satisfying claim at or above tier T2",
-          "Feature feat:editor-toolbar-view-split has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2",
-          "Feature feat:preview-export-artifact-generation has no satisfying claim at or above tier T2",
-          "Feature feat:preview-export-artifact-generation is not implemented",
-          "Feature feat:preview-export-profile-disclosure has no satisfying claim at or above tier T2",
-          "Feature feat:preview-export-profile-disclosure is not implemented",
-          "Feature feat:preview-link-cross-file-hash-scroll has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-cross-file-hash-scroll is not implemented",
-          "Feature feat:preview-link-export-rewrite has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-export-rewrite is not implemented",
-          "Feature feat:preview-link-external-pass-through has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-external-pass-through is not implemented",
-          "Feature feat:preview-link-internal-file-navigation has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-internal-file-navigation is not implemented",
-          "Feature feat:preview-link-same-document-hash-scroll has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-same-document-hash-scroll is not implemented",
-          "Feature feat:preview-link-unsafe-url-policy has no satisfying claim at or above tier T2",
-          "Feature feat:preview-link-unsafe-url-policy is not implemented",
-          "Feature feat:react-markdown-editor-surface has no satisfying claim at or above tier T2"
-        ],
-        "checks": {
-          "has_features": true,
-          "all_features_passing": false
-        }
-      },
-      {
-        "profile_id": "prf:gfm-editing-preview",
-        "passed": false,
-        "resolved_feature_ids": [
-          "feat:gfm-profile",
-          "feat:markdown-renderer-core",
-          "feat:markdown-renderer-react",
-          "feat:client-editor",
-          "feat:commonmark-conformance-profile"
-        ],
-        "feature_results": [
-          {
-            "feature_id": "feat:gfm-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-              "Feature feat:gfm-profile is not implemented",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-core",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-react",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:client-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:commonmark-conformance-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-              "Feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          }
-        ],
-        "failures": [
-          "Feature feat:client-editor has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-          "Feature feat:gfm-profile is not implemented",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-        ],
-        "checks": {
-          "has_features": true,
-          "all_features_passing": false
-        }
-      },
-      {
-        "profile_id": "prf:mdwrk-editing-preview",
-        "passed": false,
-        "resolved_feature_ids": [
-          "feat:custom-flavored-markdown-profile",
-          "feat:mdwrk-custom-parser-profile",
-          "feat:mdwrk-custom-previewer-profiles",
-          "feat:client-markdownprofiles",
-          "feat:client-editor",
-          "feat:gfm-profile",
-          "feat:markdown-renderer-core",
-          "feat:markdown-renderer-react",
-          "feat:commonmark-conformance-profile"
-        ],
-        "feature_results": [
-          {
-            "feature_id": "feat:custom-flavored-markdown-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:custom-flavored-markdown-profile has no satisfying claim at or above tier T2",
-              "Feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:mdwrk-custom-parser-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:mdwrk-custom-parser-profile-blocked"
-            ],
-            "failures": [
-              "Feature feat:mdwrk-custom-parser-profile has no satisfying claim at or above tier T2",
-              "Feature feat:mdwrk-custom-parser-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:mdwrk-custom-previewer-profiles",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:mdwrk-custom-previewer-profiles-blocked"
-            ],
-            "failures": [
-              "Feature feat:mdwrk-custom-previewer-profiles has no satisfying claim at or above tier T2",
-              "Feature feat:mdwrk-custom-previewer-profiles is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-              "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-markdownprofiles",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles"
-            ],
-            "failures": [
-              "Feature feat:client-markdownprofiles has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:client-editor",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-editor"
-            ],
-            "failures": [
-              "Feature feat:client-editor has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:gfm-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-              "Feature feat:gfm-profile is not implemented",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-              "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": false,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-core",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:markdown-renderer-react",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2"
-            ],
-            "checks": {
-              "implemented": true,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          },
-          {
-            "feature_id": "feat:commonmark-conformance-profile",
-            "passed": false,
-            "required_tier": "T2",
-            "satisfying_claim_ids": [],
-            "checked_claim_ids": [
-              "clm:client-markdownprofiles",
-              "clm:cross-cutting"
-            ],
-            "failures": [
-              "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-              "Feature feat:commonmark-conformance-profile is not implemented"
-            ],
-            "checks": {
-              "implemented": false,
-              "required_features_passing": true,
-              "claim_target_met": false
-            }
-          }
-        ],
-        "failures": [
-          "Feature feat:client-editor has no satisfying claim at or above tier T2",
-          "Feature feat:client-markdownprofiles has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile has no satisfying claim at or above tier T2",
-          "Feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile has no satisfying claim at or above tier T2",
-          "Feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:custom-flavored-markdown-profile requires feat:gfm-profile to be passing: Required feature feat:gfm-profile is not implemented",
-          "Feature feat:gfm-profile has no satisfying claim at or above tier T2",
-          "Feature feat:gfm-profile is not implemented",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:markdown-renderer-core has no satisfying claim at or above tier T2",
-          "Feature feat:markdown-renderer-react has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-parser-profile has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-parser-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles has no satisfying claim at or above tier T2",
-          "Feature feat:mdwrk-custom-previewer-profiles is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-          "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented"
-        ],
-        "checks": {
-          "has_features": true,
-          "all_features_passing": false
-        }
-      }
-    ],
+    "profiles": [],
     "boundary": {
-      "id": "bnd:repo-certifiability-current-scope",
-      "profile_ids": [
-        "prf:commonmark-editing-preview",
-        "prf:edit-in-renderer-profile",
-        "prf:editor-authoring-default",
-        "prf:gfm-editing-preview",
-        "prf:mdwrk-editing-preview"
-      ],
+      "id": "bnd:repo-certifiability-p1-current-partials",
+      "profile_ids": [],
       "resolved_feature_ids": [
         "feat:accessibility-shell-baseline",
-        "feat:browser-e2e-conformance-matrix",
-        "feat:client-action-rail",
-        "feat:client-commands",
         "feat:client-common",
         "feat:client-diagnostics",
-        "feat:client-editor",
-        "feat:client-extensions",
-        "feat:client-i18n",
-        "feat:client-layout",
-        "feat:client-markdownprofiles",
-        "feat:client-notifications",
-        "feat:client-preferences",
-        "feat:client-settings",
-        "feat:client-shell-registry-orchestration",
-        "feat:client-views",
-        "feat:commonmark-conformance-profile",
-        "feat:cross-cutting",
         "feat:desktop-folder-mounting",
-        "feat:desktop-launch-markdown-import",
         "feat:desktop-preload-host-api",
         "feat:edit-in-renderer-profile-contract",
-        "feat:editor-command-block-math",
-        "feat:editor-command-citation",
-        "feat:editor-command-front-matter",
-        "feat:editor-command-insert-tab",
-        "feat:editor-core-command-model",
-        "feat:editor-line-count-scroll-alignment",
         "feat:editor-toolbar-active-state-display",
-        "feat:editor-toolbar-bold",
-        "feat:editor-toolbar-bullet-list",
-        "feat:editor-toolbar-command-dispatch",
         "feat:editor-toolbar-disabled-state-display",
         "feat:editor-toolbar-divider-grouping",
-        "feat:editor-toolbar-footnote",
         "feat:editor-toolbar-hidden-button-preference",
-        "feat:editor-toolbar-indent",
-        "feat:editor-toolbar-inline-math",
-        "feat:editor-toolbar-insert-table",
-        "feat:editor-toolbar-italic",
-        "feat:editor-toolbar-outdent",
         "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-redo",
         "feat:editor-toolbar-responsive-placement",
-        "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-split-view-eligibility",
-        "feat:editor-toolbar-strikethrough",
-        "feat:editor-toolbar-subscript",
-        "feat:editor-toolbar-superscript",
-        "feat:editor-toolbar-task-list",
-        "feat:editor-toolbar-undo",
-        "feat:editor-toolbar-view-editor",
-        "feat:editor-toolbar-view-preview",
-        "feat:editor-toolbar-view-split",
-        "feat:extension-capability-permissions",
-        "feat:extension-capability-trust-disclosure",
-        "feat:extension-diagnostics-recovery-actions",
-        "feat:extension-gemini-agent",
-        "feat:extension-home-intent-hub",
-        "feat:extension-intent-registry",
-        "feat:extension-language-pack-studio",
-        "feat:extension-manager",
-        "feat:extension-manager-enabled-state-persistence",
-        "feat:extension-manager-health-diagnostics",
-        "feat:extension-manager-pane-layout",
-        "feat:extension-manifest-compatibility-gate",
-        "feat:extension-pane-shared-operations",
-        "feat:extension-platform",
-        "feat:extension-runtime-activation-lifecycle",
-        "feat:extension-runtime-isolation",
-        "feat:extension-settings-namespace",
-        "feat:extension-settings-schema-rendering",
-        "feat:extension-theme-studio",
-        "feat:external-extension-trust-policy-production-defaults",
-        "feat:gemini-agent-conversation-preview-pane-surface",
-        "feat:gemini-agent-safe-draft-writeback-flow",
-        "feat:gemini-agent-workspace-file-mentions",
-        "feat:git-ops-continuous-source-control-flow",
         "feat:host-capability-adapter",
         "feat:lander-aeo-appended-answer-blocks",
         "feat:lander-aieo-crawlable-text-semantic-index",
@@ -2655,23 +330,17 @@
         "feat:lander-blog-article-guide-standardization",
         "feat:lander-docs-answer-section-standardization",
         "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-international-crawler-safe-rendering",
+        "feat:lander-international-hreflang-metadata",
+        "feat:lander-international-locale-routes",
+        "feat:lander-international-locale-switcher",
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:lander-international-sitemap-alternates",
         "feat:lander-metadata-favicon-logo-fallback",
         "feat:lander-seo-comparison-pages",
         "feat:lander-seo-demand-cluster-canonical-pages",
-        "feat:lander-static-artifact-verification",
-        "feat:lander-static-content-compiler",
-        "feat:lander-static-page-frontmatter-schema",
-        "feat:language-pack-studio-continuous-localization-flow",
-        "feat:markdown-file-import",
-        "feat:markdown-profile-settings-persistence",
-        "feat:markdown-renderer-core",
-        "feat:markdown-renderer-react",
-        "feat:mdwrk-lander-content-pack",
         "feat:mdwrk-shell-fixed-fit-screen",
         "feat:native-filesystem-shell-behavior",
-        "feat:oidc-adapter",
-        "feat:oidc-browser-flow",
-        "feat:portable-lander-package-family",
         "feat:preview-export-artifact-generation",
         "feat:preview-export-profile-disclosure",
         "feat:preview-link-cross-file-hash-scroll",
@@ -2680,72 +349,39 @@
         "feat:preview-link-internal-file-navigation",
         "feat:preview-link-same-document-hash-scroll",
         "feat:preview-link-unsafe-url-policy",
-        "feat:preview-overlay-actions",
         "feat:profile-boundary-resolution",
-        "feat:pwa-version-manifest",
-        "feat:react-markdown-editor-surface",
-        "feat:shell-aware-import-export-bridge",
-        "feat:shell-evidence-matrix",
-        "feat:shell-taxonomy-runtime-detection",
-        "feat:theme-studio-continuous-authoring-flow",
-        "feat:toast-notification-behavior",
         "feat:uix-breakpoint-token-contract",
-        "feat:uix-component-class-policy",
-        "feat:uix-css-token-chassis-contract",
-        "feat:uix-extension-view-modes",
         "feat:uix-responsive-layout-matrix",
-        "feat:uix-zoom-scale",
-        "feat:workspace-file-action-rail-grouping",
-        "feat:workspace-files-continuous-document-flow",
         "feat:workspace-open-tabs-persistence",
-        "feat:workspace-persistence",
-        "feat:workspace-project-loading",
-        "feat:workspace-sidebar-resizing",
-        "feat:workspace-tab-management",
-        "feat:gfm-profile",
-        "feat:custom-flavored-markdown-profile",
-        "feat:mdwrk-custom-parser-profile",
-        "feat:mdwrk-custom-previewer-profiles",
-        "feat:editor-link-selected-text-wrap",
-        "feat:editor-link-empty-selection-stub",
-        "feat:editor-link-existing-edit",
-        "feat:editor-link-url-paste-wrap",
-        "feat:editor-link-internal-file-authoring",
-        "feat:editor-link-hash-authoring"
+        "feat:workspace-persistence"
       ]
     },
     "summary": {
-      "boundary_id": "bnd:repo-certifiability-current-scope",
-      "boundary_feature_count": 147,
-      "boundary_profile_count": 5,
-      "release_claim_count": 20,
-      "release_evidence_count": 53
+      "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+      "boundary_feature_count": 49,
+      "boundary_profile_count": 0,
+      "release_claim_count": 1,
+      "release_evidence_count": 55
     }
   },
   "boundary_scope": {
-    "boundary_id": "bnd:repo-certifiability-current-scope",
-    "profile_ids": [
-      "prf:commonmark-editing-preview",
-      "prf:edit-in-renderer-profile",
-      "prf:editor-authoring-default",
-      "prf:gfm-editing-preview",
-      "prf:mdwrk-editing-preview"
-    ],
+    "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+    "profile_ids": [],
     "feature_ids": []
   },
   "summary": {
     "counts": {
-      "features": 227,
+      "features": 312,
       "profiles": 5,
-      "tests": 54,
-      "claims": 20,
-      "evidence": 53,
+      "tests": 58,
+      "claims": 22,
+      "evidence": 57,
       "issues": 3,
       "risks": 0,
-      "boundaries": 6,
-      "releases": 3,
-      "adrs": 71,
-      "specs": 87
+      "boundaries": 7,
+      "releases": 4,
+      "adrs": 72,
+      "specs": 90
     },
     "profile_status": {
       "passing": 5,

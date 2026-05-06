@@ -234,7 +234,7 @@
       "id": "feat:client-common",
       "title": "Client common runtime hooks",
       "description": "Track common client hooks for app loading, tabs, and toasts.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -248,7 +248,8 @@
         "target_lifecycle_stage": "active"
       },
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -266,7 +267,7 @@
       "id": "feat:client-diagnostics",
       "title": "Client diagnostics",
       "description": "Surface extension and shell diagnostics through client-visible views.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -280,7 +281,8 @@
         "target_lifecycle_stage": "active"
       },
       "claim_ids": [
-        "clm:client-diagnostics"
+        "clm:client-diagnostics",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
@@ -647,7 +649,7 @@
       "id": "feat:commonmark-conformance-profile",
       "title": "CommonMark Markdown profile",
       "description": "Track CommonMark baseline behavior covered by current renderer/editor smoke evidence.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -733,7 +735,7 @@
       "id": "feat:desktop-folder-mounting",
       "title": "Desktop folder mounting and filesystem loading",
       "description": "Mount folders and load content through desktop filesystem-backed APIs.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -752,7 +754,8 @@
         "spc:2034"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx"
@@ -1712,7 +1715,7 @@
       "id": "feat:mdwrk-shell-fixed-fit-screen",
       "title": "MdWrk shell fixed fit-to-screen",
       "description": "Keep app header and status chrome inside the shell chassis while panes own scrolling.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1732,7 +1735,8 @@
         "spc:2044"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-chassisfittoscreen.test.ts",
@@ -1768,7 +1772,7 @@
       "id": "feat:workspace-persistence",
       "title": "Workspace persistence",
       "description": "Persist workspace state, imported files, mounted folders, and tabs according to shell backend.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1787,7 +1791,8 @@
         "spc:2038"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -2139,7 +2144,7 @@
       "id": "feat:repo-governance-validation",
       "title": "Repository governance validation",
       "description": "Track root clutter, doc pointers, generated artifact guards, changeset rules, and claim-language lint.",
-      "implementation_status": "absent",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2155,8 +2160,12 @@
         "spc:0607",
         "spc:2002"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ],
       "requires": []
     },
     {
@@ -2192,7 +2201,7 @@
       "id": "feat:profile-boundary-resolution",
       "title": "Profile boundary resolution",
       "description": "Resolve Markdown profile boundaries for CM, GFM, and CFM configuration.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2212,7 +2221,8 @@
       ],
       "claim_ids": [
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
@@ -2251,7 +2261,7 @@
       "id": "feat:preview-export-profile-disclosure",
       "title": "Preview export profile disclosure",
       "description": "Track disclosure of parser and previewer profiles across preview and export surfaces.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2271,7 +2281,8 @@
         "spc:2040"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts"
@@ -2333,7 +2344,7 @@
       "id": "feat:desktop-preload-host-api",
       "title": "Desktop preload host API",
       "description": "Govern host APIs exposed through desktop preload and client shell adapters.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2351,7 +2362,8 @@
         "spc:2033"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx"
@@ -2410,7 +2422,7 @@
       "id": "feat:uix-breakpoint-token-contract",
       "title": "UIX breakpoint token contract",
       "description": "Define and validate CSS breakpoint and responsive layout token coverage.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2428,7 +2440,8 @@
         "spc:2044"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts",
@@ -2544,7 +2557,7 @@
       "id": "feat:workspace-open-tabs-persistence",
       "title": "Workspace open tabs persistence",
       "description": "Track open tabs distinctly from workspace files, with current coverage for tab semantics.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2562,7 +2575,8 @@
         "spc:2020"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetabmanager.test.tsx"
@@ -3267,7 +3281,7 @@
       "id": "feat:accessibility-shell-baseline",
       "title": "Accessibility shell baseline",
       "description": "Maintain shell-visible ARIA labels, pressed state, and dismissible UI controls across core shell surfaces.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -3287,7 +3301,8 @@
       "claim_ids": [
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetoast.test.tsx",
@@ -3517,7 +3532,7 @@
       "id": "feat:host-capability-adapter",
       "title": "Host capability adapter",
       "description": "Route desktop host file capabilities through a shell adapter boundary.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -3534,7 +3549,8 @@
         "spc:2006"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx"
@@ -3545,7 +3561,7 @@
       "id": "feat:native-filesystem-shell-behavior",
       "title": "Native filesystem shell behavior",
       "description": "Cover native shell markdown file open and static filesystem rendering behavior.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -3563,7 +3579,8 @@
         "spc:2006"
       ],
       "claim_ids": [
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -3575,7 +3592,7 @@
       "id": "feat:preview-export-artifact-generation",
       "title": "Preview export artifact generation",
       "description": "Keep preview/export surfaces and HTML artifact generation reachable.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -3593,7 +3610,8 @@
         "spc:2008"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -3607,7 +3625,7 @@
       "id": "feat:uix-responsive-layout-matrix",
       "title": "UIX responsive layout matrix",
       "description": "Track responsive layout behavior across browser matrix, shell parity, file, and inline HTML evidence.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -3625,7 +3643,8 @@
         "spc:2007"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
@@ -4340,7 +4359,7 @@
       "id": "feat:editor-toolbar-responsive-placement",
       "title": "Editor toolbar responsive placement",
       "description": "Track toolbar placement across desktop, mobile portrait, mobile landscape, and aspect-ratio scenarios.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4358,7 +4377,8 @@
         "spc:2044"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
@@ -4372,7 +4392,7 @@
       "id": "feat:editor-toolbar-hidden-button-preference",
       "title": "Editor toolbar hidden button preference",
       "description": "Track user preference hiding for individual editor toolbar buttons.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4390,7 +4410,8 @@
       ],
       "claim_ids": [
         "clm:client-editor",
-        "clm:client-preferences"
+        "clm:client-preferences",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
@@ -4402,7 +4423,7 @@
       "id": "feat:editor-toolbar-active-state-display",
       "title": "Editor toolbar active state display",
       "description": "Track active visual state for selected mode and formatting toolbar buttons.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4420,7 +4441,8 @@
       ],
       "claim_ids": [
         "clm:client-editor",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
@@ -4435,7 +4457,7 @@
       "id": "feat:editor-toolbar-disabled-state-display",
       "title": "Editor toolbar disabled state display",
       "description": "Track disabled visual and interaction state for split, undo, and redo controls.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4453,7 +4475,8 @@
       ],
       "claim_ids": [
         "clm:client-editor",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
@@ -4501,7 +4524,7 @@
       "id": "feat:editor-toolbar-split-view-eligibility",
       "title": "Editor toolbar split view eligibility",
       "description": "Track viewport-driven split-view availability and disabled split icon behavior.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4519,7 +4542,8 @@
         "spc:2044"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
@@ -4566,7 +4590,7 @@
       "id": "feat:editor-toolbar-overflow-scroll",
       "title": "Editor toolbar overflow scroll",
       "description": "Track toolbar overflow and scroll behavior under compact viewport sizes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4584,7 +4608,8 @@
         "spc:2044"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
@@ -4598,7 +4623,7 @@
       "id": "feat:editor-toolbar-divider-grouping",
       "title": "Editor toolbar divider grouping",
       "description": "Track divider grouping between mode, command, formatting, and history toolbar controls.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4615,7 +4640,8 @@
         "spc:2007"
       ],
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
@@ -4797,7 +4823,7 @@
       "id": "feat:preview-link-external-pass-through",
       "title": "Preview external link pass through",
       "description": "Allow external preview links to follow external handling rather than workspace navigation interception.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4815,7 +4841,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -4828,7 +4855,7 @@
       "id": "feat:preview-link-internal-file-navigation",
       "title": "Preview internal file link navigation",
       "description": "Resolve internal Markdown file links and navigate within workspace file state.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4846,7 +4873,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -4859,7 +4887,7 @@
       "id": "feat:preview-link-same-document-hash-scroll",
       "title": "Preview same document hash scroll",
       "description": "Scroll hash-only preview links within the current preview without switching files.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4877,7 +4905,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -4890,7 +4919,7 @@
       "id": "feat:preview-link-cross-file-hash-scroll",
       "title": "Preview cross file hash scroll",
       "description": "Navigate to an internal Markdown file and then scroll to the requested hash target.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4908,7 +4937,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -4921,7 +4951,7 @@
       "id": "feat:preview-link-export-rewrite",
       "title": "Preview export Markdown link rewrite",
       "description": "Rewrite internal Markdown links to HTML targets during export while preserving hash fragments.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4939,7 +4969,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -4952,7 +4983,7 @@
       "id": "feat:preview-link-unsafe-url-policy",
       "title": "Preview unsafe URL policy",
       "description": "Apply preview and export URL safety policy to unsafe link and URL-bearing destinations.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -4970,7 +5001,8 @@
         "spc:2024"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts",
@@ -5582,7 +5614,7 @@
       "id": "feat:lander-seo-demand-cluster-canonical-pages",
       "title": "Lander SEO demand-cluster canonical pages",
       "description": "Publish canonical product pages for the major MdWrk demand clusters, including offline, local-first, privacy-first, file manager, preview/editor, extension host, theme packs, and developer documentation pages.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5598,7 +5630,8 @@
         "spc:2069"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5609,7 +5642,7 @@
       "id": "feat:lander-seo-comparison-pages",
       "title": "Lander SEO comparison pages",
       "description": "Publish MdWrk comparison pages against Obsidian, Typora, VS Code, MarkText, Zettlr, Notion, Logseq, and standard Markdown editors while preserving the no-Typora-recommendation policy.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5625,7 +5658,8 @@
         "spc:2069"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5636,7 +5670,7 @@
       "id": "feat:lander-entity-mdwrk-brand-normalization",
       "title": "MdWrk brand and entity normalization",
       "description": "Align MdWrk naming, metadata, schema, docs, package descriptions, GitHub-facing copy, and footer copy around the MdWrk product entity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5652,7 +5686,8 @@
         "spc:2069"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5663,7 +5698,7 @@
       "id": "feat:lander-aeo-appended-answer-blocks",
       "title": "Appended AEO answer blocks",
       "description": "Render answer blocks as appended article support content so AEO sections do not dominate the document opening or interrupt the article body.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5679,7 +5714,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5690,7 +5726,7 @@
       "id": "feat:lander-aieo-json-ld-structured-data",
       "title": "AI and search structured data JSON-LD",
       "description": "Emit accurate JSON-LD for public lander pages where structured data helps crawlers understand page identity, relationships, and article or documentation content.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5707,7 +5743,8 @@
         "spc:2072"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5718,7 +5755,7 @@
       "id": "feat:lander-aieo-crawlable-text-semantic-index",
       "title": "Crawlable text and semantic index projection",
       "description": "Keep important documentation and blog content available as crawlable plain text while generating semantic index projections for internal discovery and AI retrieval aids.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5734,7 +5771,8 @@
         "spc:2069"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5745,7 +5783,7 @@
       "id": "feat:lander-docs-answer-section-standardization",
       "title": "Docs answer section standardization",
       "description": "Standardize documentation pages with appended What this does, When to use it, How it works, Example, Common errors, and Related APIs support sections where relevant.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5761,7 +5799,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
@@ -5773,7 +5812,7 @@
       "id": "feat:lander-blog-article-guide-standardization",
       "title": "Blog article guide standardization",
       "description": "Standardize blog posts with appended article guide sections that improve semantic retrieval without replacing the editorial article body.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5789,7 +5828,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
@@ -5801,7 +5841,7 @@
       "id": "feat:lander-article-related-link-copy",
       "title": "Professional article related-link copy",
       "description": "Use specific, professional related Docs and article link text across standardized documentation and blog content.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5817,7 +5857,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5828,7 +5869,7 @@
       "id": "feat:lander-article-crawlability-internal-links",
       "title": "Article crawlability and internal links",
       "description": "Enhance docs and blog articles doc-by-doc with crawlable textual content, descriptive headings, internal links, and metadata aligned to MdWrk product surfaces.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5844,7 +5885,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5855,7 +5897,7 @@
       "id": "feat:lander-article-metadata-schema-validation",
       "title": "Article metadata schema validation",
       "description": "Validate MdWrk documentation and blog frontmatter against a shared JSON Schema that requires titles, publication state, dates, and excerpts, with CI coverage for article metadata changes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5871,7 +5913,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5882,7 +5925,7 @@
       "id": "feat:lander-metadata-favicon-logo-fallback",
       "title": "Favicon logo metadata fallback",
       "description": "Use the MdWrk favicon logo as the default Open Graph, Twitter, and JSON-LD metadata image when an article does not provide a featured image.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5898,7 +5941,8 @@
         "spc:2069"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5909,7 +5953,7 @@
       "id": "feat:lander-article-excerpt-embedded-metadata",
       "title": "Article excerpt embedded metadata descriptions",
       "description": "Use authored article excerpts for article cards, page metadata descriptions, BlogPosting JSON-LD descriptions, and embedded metadata link descriptions.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5925,7 +5969,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -5936,7 +5981,7 @@
       "id": "feat:lander-article-metadata-ci-gate",
       "title": "Article metadata schema CI gate",
       "description": "Run a dedicated GitHub Actions workflow that validates MdWrk docs and blog frontmatter against the shared article metadata JSON Schema on relevant article, schema, and workflow changes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5952,7 +5997,8 @@
         "spc:2070"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -6049,7 +6095,7 @@
       "id": "feat:edit-in-renderer-profile-contract",
       "title": "Edit-in-renderer profile contract",
       "description": "Govern the all-in-one edit-in-renderer profile where plaintext Markdown is canonical, rendered Markdown is an isolated projection, and CommonMark, GFM, and MdWrk profiles all support editing and previewing in one pane.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6069,7 +6115,8 @@
         "spc:2016"
       ],
       "claim_ids": [
-        "clm:edit-in-renderer-profile-contract"
+        "clm:edit-in-renderer-profile-contract",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
@@ -7717,7 +7764,7 @@
       "id": "feat:lander-international-locale-routes",
       "title": "Public lander locale routes",
       "description": "Represent translated public lander pages with explicit crawlable locale subdirectory URLs and default English root routes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7735,7 +7782,8 @@
         "spc:2074"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -7746,7 +7794,7 @@
       "id": "feat:lander-international-hreflang-metadata",
       "title": "Public lander hreflang metadata",
       "description": "Emit reciprocal HTML hreflang alternates and x-default links for complete locale groups.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7764,7 +7812,8 @@
         "spc:2075"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -7775,7 +7824,7 @@
       "id": "feat:lander-international-sitemap-alternates",
       "title": "Public lander sitemap alternates",
       "description": "Generate XML sitemap xhtml alternates for indexed localized route groups.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7793,7 +7842,8 @@
         "spc:2075"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -7804,7 +7854,7 @@
       "id": "feat:lander-international-locale-switcher",
       "title": "Public lander locale switcher",
       "description": "Expose visible anchor links between localized route variants without redirects or browser-language negotiation.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7822,7 +7872,8 @@
         "spc:2076"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -7833,7 +7884,7 @@
       "id": "feat:lander-international-crawler-safe-rendering",
       "title": "Public lander crawler-safe locale rendering",
       "description": "Render localized page content, metadata, alternates, and Markdown mirrors as static artifacts without JavaScript-only locale state.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7852,7 +7903,8 @@
         "spc:2076"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -7863,7 +7915,7 @@
       "id": "feat:lander-international-no-automatic-locale-redirects",
       "title": "No automatic public lander locale redirects",
       "description": "Keep localized discovery independent of IP geolocation, Accept-Language, cookies, automatic redirects, and locale query parameters.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -7882,7 +7934,8 @@
         "spc:2076"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -8990,7 +9043,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx"
@@ -9011,7 +9065,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-usetabmanager.test.tsx"
@@ -9035,7 +9090,8 @@
         "clm:client-notifications",
         "clm:client-layout",
         "clm:client-extensions",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-usetoast.test.tsx"
@@ -9120,7 +9176,8 @@
         "clm:client-layout",
         "clm:client-notifications",
         "clm:client-i18n",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -9177,7 +9234,8 @@
       "claim_ids": [
         "clm:client-markdownprofiles",
         "clm:client-preferences",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
@@ -9280,7 +9338,8 @@
         "clm:client-views",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-src-shell-actionrailhost.test.tsx"
@@ -9309,7 +9368,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-alignmenttokens.test.ts"
@@ -9338,7 +9398,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-chassisfittoscreen.test.ts"
@@ -9386,7 +9447,8 @@
         "clm:client-views",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-phase7-shell-parity.test.tsx"
@@ -9411,7 +9473,8 @@
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-layout",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-file-file-baseline.spec.ts"
@@ -9434,7 +9497,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-inline-inline.spec.ts"
@@ -9466,7 +9530,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-browser-matrix.spec.ts"
@@ -9491,7 +9556,8 @@
         "feat:preview-link-unsafe-url-policy"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-preview-export.spec.ts"
@@ -9560,7 +9626,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -9603,7 +9670,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-commands.test.ts"
@@ -9683,7 +9751,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-selection.test.ts"
@@ -9720,7 +9789,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts"
@@ -9758,7 +9828,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-component.test.tsx"
@@ -9792,7 +9863,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
@@ -9844,7 +9916,8 @@
         "clm:client-extensions",
         "clm:client-diagnostics",
         "clm:client-settings",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
@@ -9920,7 +9993,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts"
@@ -9948,7 +10022,8 @@
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
@@ -10000,7 +10075,8 @@
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-action-rail",
-        "clm:client-commands"
+        "clm:client-commands",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
@@ -10126,7 +10202,8 @@
         "feat:lander-blog-article-guide-standardization"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-lander-scripts-validate-syntax-themes.mjs"
@@ -10193,7 +10270,8 @@
         "feat:edit-in-renderer-profile-contract"
       ],
       "claim_ids": [
-        "clm:edit-in-renderer-profile-contract"
+        "clm:edit-in-renderer-profile-contract",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
@@ -10391,7 +10469,8 @@
         "feat:lander-international-no-automatic-locale-redirects"
       ],
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "evidence_ids": [
         "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -10425,6 +10504,24 @@
       ],
       "evidence_ids": [
         "evd:packages-lander-lander-react-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+      "title": "Certifiability feature plan validator",
+      "status": "passing",
+      "kind": "governance",
+      "path": "tools/governance/validate-certifiability-feature-plan.mjs",
+      "feature_ids": [
+        "feat:repo-governance-validation"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-parser-profile-blocked",
+        "clm:mdwrk-custom-previewer-profiles-blocked"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
     }
   ],
@@ -10555,7 +10652,8 @@
         "feat:json-ld-subscription-paywalled-content",
         "feat:json-ld-vacation-rental",
         "feat:json-ld-vehicle-listing",
-        "feat:json-ld-video"
+        "feat:json-ld-video",
+        "feat:repo-governance-validation"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -10594,7 +10692,8 @@
         "tst:tools-governance-validate-ssot-graph-export.mjs",
         "tst:tools-governance-validate-release-snapshots.mjs",
         "tst:packages-shared-structured-data-tests-run-smoke.mjs",
-        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs",
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -10632,7 +10731,8 @@
         "evd:ssot-reports-ssot-graph-export-governance.json",
         "evd:ssot-reports-release-snapshot-index.json",
         "evd:packages-shared-structured-data-tests-run-smoke.mjs",
-        "evd:packages-lander-lander-react-tests-run-smoke.mjs"
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
     },
     {
@@ -11204,8 +11304,12 @@
       "feature_ids": [
         "feat:mdwrk-custom-parser-profile"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
     },
     {
       "id": "clm:mdwrk-custom-previewer-profiles-blocked",
@@ -11217,8 +11321,12 @@
       "feature_ids": [
         "feat:mdwrk-custom-previewer-profiles"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
     },
     {
       "id": "clm:lander-international-seo",
@@ -11241,19 +11349,164 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs"
       ]
+    },
+    {
+      "id": "clm:repo-certifiability-p1-current-partials",
+      "title": "P1 current partial features are implemented and evidenced",
+      "status": "published",
+      "tier": "T2",
+      "kind": "certification",
+      "description": "The frozen P1 current-partials boundary features are implemented and supported by the recorded client, package, lander, governance, and browser evidence.",
+      "feature_ids": [
+        "feat:accessibility-shell-baseline",
+        "feat:client-common",
+        "feat:client-diagnostics",
+        "feat:desktop-folder-mounting",
+        "feat:desktop-preload-host-api",
+        "feat:edit-in-renderer-profile-contract",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:host-capability-adapter",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate",
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-international-crawler-safe-rendering",
+        "feat:lander-international-hreflang-metadata",
+        "feat:lander-international-locale-routes",
+        "feat:lander-international-locale-switcher",
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:lander-international-sitemap-alternates",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:native-filesystem-shell-behavior",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-unsafe-url-policy",
+        "feat:profile-boundary-resolution",
+        "feat:uix-breakpoint-token-contract",
+        "feat:uix-responsive-layout-matrix",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts",
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "evd:apps-client-hooks-useapp.test.tsx",
+        "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-services-oidc.test.ts",
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-pwa-versionmanifest.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-styles-alignmenttokens.test.ts",
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+        "evd:apps-client-styles-zoombehavior.test.ts",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+        "evd:apps-client-tests-playwright-preview-export.spec.ts",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "evd:apps-client-tests-statusbar-contract.mjs",
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+        "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "evd:lander-static-content-ci-local",
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+        "evd:ssot-reports-release-snapshot-index.json",
+        "evd:ssot-reports-spec-coverage-index.json",
+        "evd:ssot-reports-ssot-graph-export-governance.json",
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
     }
   ],
   "evidence": [
     {
       "id": "evd:apps-client-hooks-useapp.test.tsx",
       "title": "Evidence: useApp.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/hooks/useApp.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx"
@@ -11262,13 +11515,14 @@
     {
       "id": "evd:apps-client-hooks-usetabmanager.test.tsx",
       "title": "Evidence: useTabManager.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/hooks/useTabManager.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetabmanager.test.tsx"
@@ -11277,7 +11531,7 @@
     {
       "id": "evd:apps-client-hooks-usetoast.test.tsx",
       "title": "Evidence: useToast.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/hooks/useToast.test.tsx",
@@ -11286,7 +11540,8 @@
         "clm:client-notifications",
         "clm:client-layout",
         "clm:client-extensions",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-hooks-usetoast.test.tsx"
@@ -11295,12 +11550,13 @@
     {
       "id": "evd:apps-client-services-oidc.test.ts",
       "title": "Evidence: oidc.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/services/oidc.test.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-services-oidc.test.ts"
@@ -11309,14 +11565,15 @@
     {
       "id": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
       "title": "Evidence: actionRailRegistry.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/action-rail/actionRailRegistry.test.ts",
       "claim_ids": [
         "clm:client-action-rail",
         "clm:client-commands",
-        "clm:client-views"
+        "clm:client-views",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-action-rail-actionrailregistry.test.ts"
@@ -11325,14 +11582,15 @@
     {
       "id": "evd:apps-client-src-features-commands-commandregistry.test.ts",
       "title": "Evidence: commandRegistry.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/commands/commandRegistry.test.ts",
       "claim_ids": [
         "clm:client-commands",
         "clm:client-action-rail",
-        "clm:client-views"
+        "clm:client-views",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-commands-commandregistry.test.ts"
@@ -11341,7 +11599,7 @@
     {
       "id": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
       "title": "Evidence: extensionWorkspaceSurfaces.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/extensions/extensionWorkspaceSurfaces.test.tsx",
@@ -11350,7 +11608,8 @@
         "clm:client-layout",
         "clm:client-notifications",
         "clm:client-i18n",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx"
@@ -11359,12 +11618,13 @@
     {
       "id": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
       "title": "Evidence: clientI18nService.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/i18n/clientI18nService.test.ts",
       "claim_ids": [
-        "clm:client-i18n"
+        "clm:client-i18n",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-clienti18nservice.test.ts"
@@ -11373,13 +11633,14 @@
     {
       "id": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
       "title": "Evidence: languagePackStudioController.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/i18n/languagePackStudioController.test.ts",
       "claim_ids": [
         "clm:client-i18n",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts"
@@ -11388,14 +11649,15 @@
     {
       "id": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
       "title": "Evidence: profileConfig.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/markdownProfiles/profileConfig.test.ts",
       "claim_ids": [
         "clm:client-markdownprofiles",
         "clm:client-preferences",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
@@ -11404,13 +11666,14 @@
     {
       "id": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
       "title": "Evidence: DataSettingsPanel.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
       "claim_ids": [
         "clm:client-settings",
-        "clm:client-preferences"
+        "clm:client-preferences",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
@@ -11419,14 +11682,15 @@
     {
       "id": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
       "title": "Evidence: SettingsSchemaRenderer.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/settings/SettingsSchemaRenderer.test.tsx",
       "claim_ids": [
         "clm:client-settings",
         "clm:client-preferences",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-settingsschemarenderer.test.tsx"
@@ -11435,14 +11699,15 @@
     {
       "id": "evd:apps-client-src-features-views-viewregistry.test.ts",
       "title": "Evidence: viewRegistry.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/features/views/viewRegistry.test.ts",
       "claim_ids": [
         "clm:client-views",
         "clm:client-action-rail",
-        "clm:client-commands"
+        "clm:client-commands",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-features-views-viewregistry.test.ts"
@@ -11451,13 +11716,14 @@
     {
       "id": "evd:apps-client-src-pwa-versionmanifest.test.ts",
       "title": "Evidence: versionManifest.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/pwa/versionManifest.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-preferences"
+        "clm:client-preferences",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-pwa-versionmanifest.test.ts"
@@ -11466,7 +11732,7 @@
     {
       "id": "evd:apps-client-src-shell-actionrailhost.test.tsx",
       "title": "Evidence: ActionRailHost.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/src/shell/ActionRailHost.test.tsx",
@@ -11477,7 +11743,8 @@
         "clm:client-views",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-shell-actionrailhost.test.tsx"
@@ -11486,13 +11753,14 @@
     {
       "id": "evd:apps-client-styles-alignmenttokens.test.ts",
       "title": "Evidence: alignmentTokens.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/styles/alignmentTokens.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-alignmenttokens.test.ts"
@@ -11501,13 +11769,14 @@
     {
       "id": "evd:apps-client-styles-chassisfittoscreen.test.ts",
       "title": "Evidence: chassisFitToScreen.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/styles/chassisFitToScreen.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-chassisfittoscreen.test.ts"
@@ -11516,13 +11785,14 @@
     {
       "id": "evd:apps-client-styles-zoombehavior.test.ts",
       "title": "Evidence: zoomBehavior.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/styles/zoomBehavior.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-zoombehavior.test.ts"
@@ -11531,7 +11801,7 @@
     {
       "id": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
       "title": "Evidence: phase7-shell-parity.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/phase7-shell-parity.test.tsx",
@@ -11542,7 +11812,8 @@
         "clm:client-views",
         "clm:client-layout",
         "clm:client-notifications",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-phase7-shell-parity.test.tsx"
@@ -11551,14 +11822,15 @@
     {
       "id": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
       "title": "Evidence: file-baseline.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright-file/file-baseline.spec.ts",
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-layout",
-        "clm:client-common"
+        "clm:client-common",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
@@ -11567,13 +11839,14 @@
     {
       "id": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
       "title": "Evidence: inline.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright-inline/inline.spec.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-inline-inline.spec.ts"
@@ -11582,13 +11855,14 @@
     {
       "id": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
       "title": "Evidence: browser-matrix.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright/browser-matrix.spec.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
@@ -11597,12 +11871,13 @@
     {
       "id": "evd:apps-client-tests-playwright-preview-export.spec.ts",
       "title": "Evidence: preview-export.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright/preview-export.spec.ts",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-preview-export.spec.ts"
@@ -11611,7 +11886,7 @@
     {
       "id": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
       "title": "Evidence: settings-and-i18n.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright/settings-and-i18n.spec.ts",
@@ -11620,7 +11895,8 @@
         "clm:client-i18n",
         "clm:client-settings",
         "clm:client-preferences",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-settings-and-i18n.spec.ts"
@@ -11629,13 +11905,14 @@
     {
       "id": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
       "title": "Evidence: shell-smoke.spec.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/tests/playwright/shell-smoke.spec.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
@@ -11644,13 +11921,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
       "title": "Evidence: commands.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/commands.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-commands.test.ts"
@@ -11659,13 +11937,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
       "title": "Evidence: history.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/history.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-history.test.ts"
@@ -11674,14 +11953,15 @@
     {
       "id": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
       "title": "Evidence: roundtrip.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/roundtrip.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-editor",
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
@@ -11690,13 +11970,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
       "title": "Evidence: selection.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/selection.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-selection.test.ts"
@@ -11705,13 +11986,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
       "title": "Evidence: transforms.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-core/tests/transforms.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts"
@@ -11720,13 +12002,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
       "title": "Evidence: component.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-react/tests/component.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-component.test.tsx"
@@ -11735,13 +12018,14 @@
     {
       "id": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
       "title": "Evidence: keyboard.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/editor/markdown-editor-react/tests/keyboard.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-editor"
+        "clm:client-editor",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
@@ -11761,7 +12045,8 @@
         "clm:client-extensions",
         "clm:client-diagnostics",
         "clm:client-settings",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
@@ -11779,7 +12064,8 @@
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-extensions",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
@@ -11790,13 +12076,14 @@
     {
       "id": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
       "title": "Evidence: html.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/renderer/markdown-renderer-core/tests/html.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts"
@@ -11805,13 +12092,14 @@
     {
       "id": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
       "title": "Evidence: component.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/renderer/markdown-renderer-react/tests/component.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:client-markdownprofiles"
+        "clm:client-markdownprofiles",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
@@ -11820,12 +12108,13 @@
     {
       "id": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
       "title": "Evidence: EditorPane.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/components/Chassis/WorkPane/Stage/EditorPane.test.tsx",
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-components-chassis-workpane-stage-editorpane.test.tsx"
@@ -11834,12 +12123,13 @@
     {
       "id": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
       "title": "Evidence: WorkPane.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/components/Chassis/WorkPane/WorkPane.test.tsx",
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-components-chassis-workpane-workpane.test.tsx"
@@ -11848,14 +12138,15 @@
     {
       "id": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
       "title": "Evidence: WorkspaceMarkdownRenderer.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/components/Markdown/WorkspaceMarkdownRenderer.test.tsx",
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-action-rail",
-        "clm:client-commands"
+        "clm:client-commands",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
@@ -11870,7 +12161,8 @@
       "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
       "claim_ids": [
         "clm:client-extensions",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
@@ -11881,12 +12173,13 @@
     {
       "id": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
       "title": "Evidence: componentClassNamePolicy.test.ts",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/styles/componentClassNamePolicy.test.ts",
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-styles-componentclassnamepolicy.test.ts"
@@ -11895,13 +12188,14 @@
     {
       "id": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
       "title": "Evidence: run-smoke.mjs",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
       "claim_ids": [
         "clm:client-extensions",
-        "clm:extension-continuous-experience"
+        "clm:extension-continuous-experience",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs"
@@ -11910,12 +12204,13 @@
     {
       "id": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
       "title": "Evidence: theme-studio.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/extensions/extension-theme-studio/tests/theme-studio.test.tsx",
       "claim_ids": [
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx"
@@ -11924,13 +12219,14 @@
     {
       "id": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
       "title": "Evidence: language-pack-studio-view.test.tsx",
-      "status": "collected",
+      "status": "passed",
       "kind": "test-artifact",
       "tier": "T2",
       "path": "packages/extensions/extension-language-pack-studio/tests/language-pack-studio-view.test.tsx",
       "claim_ids": [
         "clm:client-i18n",
-        "clm:client-extensions"
+        "clm:client-extensions",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx"
@@ -11944,7 +12240,8 @@
       "tier": "T2",
       "path": "apps/mdwrkcom/scripts/validate-syntax-themes.mjs",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-lander-scripts-validate-syntax-themes.mjs"
@@ -11958,7 +12255,8 @@
       "tier": "T2",
       "path": ".ssot/reports/lander-static-content-ci.json",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-lander-src-cli-static-content",
@@ -11973,7 +12271,8 @@
       "tier": "T2",
       "path": "packages/editor/markdown-edit-in-renderer-react/tests/run-smoke.mjs",
       "claim_ids": [
-        "clm:edit-in-renderer-profile-contract"
+        "clm:edit-in-renderer-profile-contract",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
@@ -12015,7 +12314,8 @@
       "tier": "T2",
       "path": "apps/client/tests/statusbar-contract.mjs",
       "claim_ids": [
-        "clm:client-layout"
+        "clm:client-layout",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-client-tests-statusbar-contract.mjs"
@@ -12029,7 +12329,8 @@
       "tier": "T2",
       "path": ".ssot/reports/spec-coverage-index.json",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:tools-governance-validate-spec-coverage-index.mjs"
@@ -12043,7 +12344,8 @@
       "tier": "T2",
       "path": ".ssot/reports/ssot-graph-export-governance.json",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:tools-governance-validate-ssot-graph-export.mjs"
@@ -12057,7 +12359,8 @@
       "tier": "T2",
       "path": ".ssot/reports/release-snapshot-index.json",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:tools-governance-validate-release-snapshots.mjs"
@@ -12071,7 +12374,8 @@
       "tier": "T2",
       "path": "packages/shared/structured-data/tests/run-smoke.mjs",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-shared-structured-data-tests-run-smoke.mjs"
@@ -12085,7 +12389,8 @@
       "tier": "T2",
       "path": "apps/mdwrkcom/scripts/validate-international-seo.mjs",
       "claim_ids": [
-        "clm:lander-international-seo"
+        "clm:lander-international-seo",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -12099,10 +12404,28 @@
       "tier": "T0",
       "path": "packages/lander/lander-react/tests/run-smoke.mjs",
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "title": "Certifiability feature plan report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/certifiability-feature-plan.json",
+      "claim_ids": [
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-parser-profile-blocked",
+        "clm:mdwrk-custom-previewer-profiles-blocked",
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
     }
   ],
@@ -12430,6 +12753,64 @@
         "prf:gfm-editing-preview",
         "prf:mdwrk-editing-preview"
       ]
+    },
+    {
+      "id": "bnd:repo-certifiability-p1-current-partials",
+      "title": "Repository Certifiability P1 Current Partials",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:accessibility-shell-baseline",
+        "feat:client-common",
+        "feat:client-diagnostics",
+        "feat:desktop-folder-mounting",
+        "feat:desktop-preload-host-api",
+        "feat:edit-in-renderer-profile-contract",
+        "feat:editor-toolbar-active-state-display",
+        "feat:editor-toolbar-disabled-state-display",
+        "feat:editor-toolbar-divider-grouping",
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:editor-toolbar-overflow-scroll",
+        "feat:editor-toolbar-responsive-placement",
+        "feat:editor-toolbar-split-view-eligibility",
+        "feat:host-capability-adapter",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-article-crawlability-internal-links",
+        "feat:lander-article-excerpt-embedded-metadata",
+        "feat:lander-article-metadata-ci-gate",
+        "feat:lander-article-metadata-schema-validation",
+        "feat:lander-article-related-link-copy",
+        "feat:lander-blog-article-guide-standardization",
+        "feat:lander-docs-answer-section-standardization",
+        "feat:lander-entity-mdwrk-brand-normalization",
+        "feat:lander-international-crawler-safe-rendering",
+        "feat:lander-international-hreflang-metadata",
+        "feat:lander-international-locale-routes",
+        "feat:lander-international-locale-switcher",
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:lander-international-sitemap-alternates",
+        "feat:lander-metadata-favicon-logo-fallback",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-seo-demand-cluster-canonical-pages",
+        "feat:mdwrk-shell-fixed-fit-screen",
+        "feat:native-filesystem-shell-behavior",
+        "feat:preview-export-artifact-generation",
+        "feat:preview-export-profile-disclosure",
+        "feat:preview-link-cross-file-hash-scroll",
+        "feat:preview-link-export-rewrite",
+        "feat:preview-link-external-pass-through",
+        "feat:preview-link-internal-file-navigation",
+        "feat:preview-link-same-document-hash-scroll",
+        "feat:preview-link-unsafe-url-policy",
+        "feat:profile-boundary-resolution",
+        "feat:uix-breakpoint-token-contract",
+        "feat:uix-responsive-layout-matrix",
+        "feat:workspace-open-tabs-persistence",
+        "feat:workspace-persistence"
+      ],
+      "profile_ids": []
     }
   ],
   "releases": [
@@ -12495,6 +12876,72 @@
         "evd:ssot-reports-release-snapshot-index.json",
         "evd:ssot-reports-spec-coverage-index.json",
         "evd:ssot-reports-ssot-graph-export-governance.json"
+      ]
+    },
+    {
+      "id": "rel:repo-certifiability-p1-current-partials",
+      "version": "0.2.87",
+      "status": "published",
+      "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+      "claim_ids": [
+        "clm:repo-certifiability-p1-current-partials"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "evd:apps-client-hooks-useapp.test.tsx",
+        "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evd:apps-client-hooks-usetoast.test.tsx",
+        "evd:apps-client-services-oidc.test.ts",
+        "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
+        "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
+        "evd:apps-client-src-features-commands-commandregistry.test.ts",
+        "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
+        "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
+        "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
+        "evd:apps-client-src-features-views-viewregistry.test.ts",
+        "evd:apps-client-src-pwa-versionmanifest.test.ts",
+        "evd:apps-client-src-shell-actionrailhost.test.tsx",
+        "evd:apps-client-styles-alignmenttokens.test.ts",
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-styles-componentclassnamepolicy.test.ts",
+        "evd:apps-client-styles-zoombehavior.test.ts",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+        "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "evd:apps-client-tests-playwright-inline-inline.spec.ts",
+        "evd:apps-client-tests-playwright-preview-export.spec.ts",
+        "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
+        "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "evd:apps-client-tests-statusbar-contract.mjs",
+        "evd:apps-lander-scripts-validate-syntax-themes.mjs",
+        "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "evd:lander-static-content-ci-local",
+        "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
+        "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
+        "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
+        "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
+        "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
+        "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
+        "evd:packages-lander-lander-react-tests-run-smoke.mjs",
+        "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "evd:packages-shared-structured-data-tests-run-smoke.mjs",
+        "evd:ssot-reports-release-snapshot-index.json",
+        "evd:ssot-reports-spec-coverage-index.json",
+        "evd:ssot-reports-ssot-graph-export-governance.json",
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
       ]
     }
   ],

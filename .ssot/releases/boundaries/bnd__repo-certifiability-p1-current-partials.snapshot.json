@@ -1,0 +1,1536 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-06T20:53:04Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "e8305361eda2d282e2fd1ec67380193f4fffc719e5e4eb45412f95e409e406fc",
+  "boundary": {
+    "id": "bnd:repo-certifiability-p1-current-partials",
+    "title": "Repository Certifiability P1 Current Partials",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:accessibility-shell-baseline",
+      "feat:client-common",
+      "feat:client-diagnostics",
+      "feat:desktop-folder-mounting",
+      "feat:desktop-preload-host-api",
+      "feat:edit-in-renderer-profile-contract",
+      "feat:editor-toolbar-active-state-display",
+      "feat:editor-toolbar-disabled-state-display",
+      "feat:editor-toolbar-divider-grouping",
+      "feat:editor-toolbar-hidden-button-preference",
+      "feat:editor-toolbar-overflow-scroll",
+      "feat:editor-toolbar-responsive-placement",
+      "feat:editor-toolbar-split-view-eligibility",
+      "feat:host-capability-adapter",
+      "feat:lander-aeo-appended-answer-blocks",
+      "feat:lander-aieo-crawlable-text-semantic-index",
+      "feat:lander-aieo-json-ld-structured-data",
+      "feat:lander-article-crawlability-internal-links",
+      "feat:lander-article-excerpt-embedded-metadata",
+      "feat:lander-article-metadata-ci-gate",
+      "feat:lander-article-metadata-schema-validation",
+      "feat:lander-article-related-link-copy",
+      "feat:lander-blog-article-guide-standardization",
+      "feat:lander-docs-answer-section-standardization",
+      "feat:lander-entity-mdwrk-brand-normalization",
+      "feat:lander-international-crawler-safe-rendering",
+      "feat:lander-international-hreflang-metadata",
+      "feat:lander-international-locale-routes",
+      "feat:lander-international-locale-switcher",
+      "feat:lander-international-no-automatic-locale-redirects",
+      "feat:lander-international-sitemap-alternates",
+      "feat:lander-metadata-favicon-logo-fallback",
+      "feat:lander-seo-comparison-pages",
+      "feat:lander-seo-demand-cluster-canonical-pages",
+      "feat:mdwrk-shell-fixed-fit-screen",
+      "feat:native-filesystem-shell-behavior",
+      "feat:preview-export-artifact-generation",
+      "feat:preview-export-profile-disclosure",
+      "feat:preview-link-cross-file-hash-scroll",
+      "feat:preview-link-export-rewrite",
+      "feat:preview-link-external-pass-through",
+      "feat:preview-link-internal-file-navigation",
+      "feat:preview-link-same-document-hash-scroll",
+      "feat:preview-link-unsafe-url-policy",
+      "feat:profile-boundary-resolution",
+      "feat:uix-breakpoint-token-contract",
+      "feat:uix-responsive-layout-matrix",
+      "feat:workspace-open-tabs-persistence",
+      "feat:workspace-persistence"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:accessibility-shell-baseline",
+      "title": "Accessibility shell baseline",
+      "description": "Maintain shell-visible ARIA labels, pressed state, and dismissible UI controls across core shell surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2042",
+        "spc:2007",
+        "spc:2010"
+      ],
+      "claim_ids": [
+        "clm:client-layout",
+        "clm:client-notifications",
+        "clm:client-extensions"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetoast.test.tsx",
+        "tst:apps-client-src-shell-actionrailhost.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:client-common",
+      "title": "Client common runtime hooks",
+      "description": "Track common client hooks for app loading, tabs, and toasts.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx",
+        "tst:apps-client-hooks-usetoast.test.tsx"
+      ],
+      "requires": [],
+      "spec_ids": [
+        "spc:2019",
+        "spc:2020",
+        "spc:2021"
+      ]
+    },
+    {
+      "id": "feat:client-diagnostics",
+      "title": "Client diagnostics",
+      "description": "Surface extension and shell diagnostics through client-visible views.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null,
+        "effective_release_id": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "claim_ids": [
+        "clm:client-diagnostics"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": [],
+      "spec_ids": [
+        "spc:2021",
+        "spc:2030"
+      ]
+    },
+    {
+      "id": "feat:desktop-folder-mounting",
+      "title": "Desktop folder mounting and filesystem loading",
+      "description": "Mount folders and load content through desktop filesystem-backed APIs.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008",
+        "spc:2038",
+        "spc:2034"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-preload-host-api",
+      "title": "Desktop preload host API",
+      "description": "Govern host APIs exposed through desktop preload and client shell adapters.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2010",
+        "spc:2033"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:edit-in-renderer-profile-contract",
+      "title": "Edit-in-renderer profile contract",
+      "description": "Govern the all-in-one edit-in-renderer profile where plaintext Markdown is canonical, rendered Markdown is an isolated projection, and CommonMark, GFM, and MdWrk profiles all support editing and previewing in one pane.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:1000",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005",
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:edit-in-renderer-profile-contract"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-active-state-display",
+      "title": "Editor toolbar active state display",
+      "description": "Track active visual state for selected mode and formatting toolbar buttons.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2042"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-disabled-state-display",
+      "title": "Editor toolbar disabled state display",
+      "description": "Track disabled visual and interaction state for split, undo, and redo controls.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2042"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-commands.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-selection.test.ts",
+        "tst:packages-editor-markdown-editor-core-tests-transforms.test.ts",
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:packages-editor-markdown-editor-react-tests-keyboard.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-divider-grouping",
+      "title": "Editor toolbar divider grouping",
+      "description": "Track divider grouping between mode, command, formatting, and history toolbar controls.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-hidden-button-preference",
+      "title": "Editor toolbar hidden button preference",
+      "description": "Track user preference hiding for individual editor toolbar buttons.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:client-editor",
+        "clm:client-preferences"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-component.test.tsx",
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-overflow-scroll",
+      "title": "Editor toolbar overflow scroll",
+      "description": "Track toolbar overflow and scroll behavior under compact viewport sizes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-responsive-placement",
+      "title": "Editor toolbar responsive placement",
+      "description": "Track toolbar placement across desktop, mobile portrait, mobile landscape, and aspect-ratio scenarios.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-toolbar-split-view-eligibility",
+      "title": "Editor toolbar split view eligibility",
+      "description": "Track viewport-driven split-view availability and disabled split icon behavior.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2062",
+        "spc:2007",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-styles-alignmenttokens.test.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:host-capability-adapter",
+      "title": "Host capability adapter",
+      "description": "Route desktop host file capabilities through a shell adapter boundary.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2033",
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aeo-appended-answer-blocks",
+      "title": "Appended AEO answer blocks",
+      "description": "Render answer blocks as appended article support content so AEO sections do not dominate the document opening or interrupt the article body.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-crawlable-text-semantic-index",
+      "title": "Crawlable text and semantic index projection",
+      "description": "Keep important documentation and blog content available as crawlable plain text while generating semantic index projections for internal discovery and AI retrieval aids.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-aieo-json-ld-structured-data",
+      "title": "AI and search structured data JSON-LD",
+      "description": "Emit accurate JSON-LD for public lander pages where structured data helps crawlers understand page identity, relationships, and article or documentation content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-crawlability-internal-links",
+      "title": "Article crawlability and internal links",
+      "description": "Enhance docs and blog articles doc-by-doc with crawlable textual content, descriptive headings, internal links, and metadata aligned to MdWrk product surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-excerpt-embedded-metadata",
+      "title": "Article excerpt embedded metadata descriptions",
+      "description": "Use authored article excerpts for article cards, page metadata descriptions, BlogPosting JSON-LD descriptions, and embedded metadata link descriptions.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-metadata-ci-gate",
+      "title": "Article metadata schema CI gate",
+      "description": "Run a dedicated GitHub Actions workflow that validates MdWrk docs and blog frontmatter against the shared article metadata JSON Schema on relevant article, schema, and workflow changes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-metadata-schema-validation",
+      "title": "Article metadata schema validation",
+      "description": "Validate MdWrk documentation and blog frontmatter against a shared JSON Schema that requires titles, publication state, dates, and excerpts, with CI coverage for article metadata changes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-article-related-link-copy",
+      "title": "Professional article related-link copy",
+      "description": "Use specific, professional related Docs and article link text across standardized documentation and blog content.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-blog-article-guide-standardization",
+      "title": "Blog article guide standardization",
+      "description": "Standardize blog posts with appended article guide sections that improve semantic retrieval without replacing the editorial article body.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-docs-answer-section-standardization",
+      "title": "Docs answer section standardization",
+      "description": "Standardize documentation pages with appended What this does, When to use it, How it works, Example, Common errors, and Related APIs support sections where relevant.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2070"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts",
+        "tst:apps-lander-scripts-validate-syntax-themes.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-entity-mdwrk-brand-normalization",
+      "title": "MdWrk brand and entity normalization",
+      "description": "Align MdWrk naming, metadata, schema, docs, package descriptions, GitHub-facing copy, and footer copy around the MdWrk product entity.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-crawler-safe-rendering",
+      "title": "Public lander crawler-safe locale rendering",
+      "description": "Render localized page content, metadata, alternates, and Markdown mirrors as static artifacts without JavaScript-only locale state.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2074",
+        "spc:2076"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-hreflang-metadata",
+      "title": "Public lander hreflang metadata",
+      "description": "Emit reciprocal HTML hreflang alternates and x-default links for complete locale groups.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2075"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-locale-routes",
+      "title": "Public lander locale routes",
+      "description": "Represent translated public lander pages with explicit crawlable locale subdirectory URLs and default English root routes.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2074"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-locale-switcher",
+      "title": "Public lander locale switcher",
+      "description": "Expose visible anchor links between localized route variants without redirects or browser-language negotiation.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2076"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-no-automatic-locale-redirects",
+      "title": "No automatic public lander locale redirects",
+      "description": "Keep localized discovery independent of IP geolocation, Accept-Language, cookies, automatic redirects, and locale query parameters.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2074",
+        "spc:2075",
+        "spc:2076"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-international-sitemap-alternates",
+      "title": "Public lander sitemap alternates",
+      "description": "Generate XML sitemap xhtml alternates for indexed localized route groups.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2071",
+        "spc:2075"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-metadata-favicon-logo-fallback",
+      "title": "Favicon logo metadata fallback",
+      "description": "Use the MdWrk favicon logo as the default Open Graph, Twitter, and JSON-LD metadata image when an article does not provide a featured image.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-comparison-pages",
+      "title": "Lander SEO comparison pages",
+      "description": "Publish MdWrk comparison pages against Obsidian, Typora, VS Code, MarkText, Zettlr, Notion, Logseq, and standard Markdown editors while preserving the no-Typora-recommendation policy.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-seo-demand-cluster-canonical-pages",
+      "title": "Lander SEO demand-cluster canonical pages",
+      "description": "Publish canonical product pages for the major MdWrk demand clusters, including offline, local-first, privacy-first, file manager, preview/editor, extension host, theme packs, and developer documentation pages.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-shell-smoke.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-shell-fixed-fit-screen",
+      "title": "MdWrk shell fixed fit-to-screen",
+      "description": "Keep app header and status chrome inside the shell chassis while panes own scrolling.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2006",
+        "spc:2028",
+        "spc:2043",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:native-filesystem-shell-behavior",
+      "title": "Native filesystem shell behavior",
+      "description": "Cover native shell markdown file open and static filesystem rendering behavior.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2034",
+        "spc:2033",
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-export-artifact-generation",
+      "title": "Preview export artifact generation",
+      "description": "Keep preview/export surfaces and HTML artifact generation reachable.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2039",
+        "spc:2024",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
+        "tst:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-export-profile-disclosure",
+      "title": "Preview export profile disclosure",
+      "description": "Track disclosure of parser and previewer profiles across preview and export surfaces.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005",
+        "spc:2008",
+        "spc:2039",
+        "spc:2040"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-cross-file-hash-scroll",
+      "title": "Preview cross file hash scroll",
+      "description": "Navigate to an internal Markdown file and then scroll to the requested hash target.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2059",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-export-rewrite",
+      "title": "Preview export Markdown link rewrite",
+      "description": "Rewrite internal Markdown links to HTML targets during export while preserving hash fragments.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2061",
+        "spc:2039",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-external-pass-through",
+      "title": "Preview external link pass through",
+      "description": "Allow external preview links to follow external handling rather than workspace navigation interception.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2060",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-internal-file-navigation",
+      "title": "Preview internal file link navigation",
+      "description": "Resolve internal Markdown file links and navigate within workspace file state.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2057",
+        "spc:2058",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-same-document-hash-scroll",
+      "title": "Preview same document hash scroll",
+      "description": "Scroll hash-only preview links within the current preview without switching files.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2056",
+        "spc:2057",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:preview-link-unsafe-url-policy",
+      "title": "Preview unsafe URL policy",
+      "description": "Apply preview and export URL safety policy to unsafe link and URL-bearing destinations.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2060",
+        "spc:2039",
+        "spc:2024"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-preview-export.spec.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:profile-boundary-resolution",
+      "title": "Profile boundary resolution",
+      "description": "Resolve Markdown profile boundaries for CM, GFM, and CFM configuration.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0614",
+        "spc:2003",
+        "spc:2004",
+        "spc:2005"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-breakpoint-token-contract",
+      "title": "UIX breakpoint token contract",
+      "description": "Define and validate CSS breakpoint and responsive layout token coverage.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2028",
+        "spc:2044"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-alignmenttokens.test.ts",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:uix-responsive-layout-matrix",
+      "title": "UIX responsive layout matrix",
+      "description": "Track responsive layout behavior across browser matrix, shell parity, file, and inline HTML evidence.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2044",
+        "spc:2031",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:client-layout"
+      ],
+      "test_ids": [
+        "tst:apps-client-tests-playwright-browser-matrix.spec.ts",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+        "tst:apps-client-tests-playwright-file-file-baseline.spec.ts",
+        "tst:apps-client-tests-playwright-inline-inline.spec.ts"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-open-tabs-persistence",
+      "title": "Workspace open tabs persistence",
+      "description": "Track open tabs distinctly from workspace files, with current coverage for tab semantics.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006",
+        "spc:2020"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:workspace-persistence",
+      "title": "Workspace persistence",
+      "description": "Persist workspace state, imported files, mounted folders, and tabs according to shell backend.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2008",
+        "spc:2006",
+        "spc:2020",
+        "spc:2038"
+      ],
+      "claim_ids": [
+        "clm:client-common"
+      ],
+      "test_ids": [
+        "tst:apps-client-hooks-useapp.test.tsx",
+        "tst:apps-client-hooks-usetabmanager.test.tsx"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+    "feature_count": 49,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}
