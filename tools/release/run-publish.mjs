@@ -7,6 +7,7 @@ import {
   repoRoot,
   writeJson,
 } from '../lib/workspace.mjs';
+import { buildPackagePublishGraph } from './build-publish-graph.mjs';
 
 function envFlag(name, defaultValue = false) {
   const value = process.env[name];
@@ -75,8 +76,8 @@ async function runChangesetsPublish({ maxAttempts = 3, initialRetryDelayMs = 300
 
 export async function runPublish() {
   const workspaces = await loadWorkspacePackages();
-  const publishablePackages = workspaces
-    .filter((workspacePackage) => workspacePackage.publishable)
+  const publishGraph = buildPackagePublishGraph(workspaces);
+  const publishablePackages = publishGraph.orderedPackages
     .map((workspacePackage) => ({
       name: workspacePackage.packageJson.name,
       version: workspacePackage.packageJson.version,
@@ -99,6 +100,13 @@ export async function runPublish() {
     ok: true,
     reason: null,
     scopes: Array.from(new Set(publishablePackages.map((entry) => toScope(entry.name)).filter(Boolean))).sort(),
+    publishGraph: {
+      ok: publishGraph.ok,
+      order: publishGraph.order,
+      edges: publishGraph.edges,
+      cycleNodes: publishGraph.cycleNodes,
+      missingInternalDependencies: publishGraph.missingInternalDependencies,
+    },
     publishablePackages,
   };
 

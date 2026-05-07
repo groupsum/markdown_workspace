@@ -7,6 +7,7 @@ import {
   repoRoot,
   writeJson,
 } from '../lib/workspace.mjs';
+import { buildPackagePublishGraph } from '../release/build-publish-graph.mjs';
 
 function needsPublishValidation(workspacePackage) {
   if (!workspacePackage.publishable) {
@@ -23,6 +24,7 @@ function needsPublishValidation(workspacePackage) {
 
 export async function runExportValidation() {
   const workspaces = await loadWorkspacePackages();
+  const publishGraph = buildPackagePublishGraph(workspaces, { targetPredicate: needsPublishValidation });
   const results = [];
 
   for (const workspacePackage of workspaces) {
@@ -96,12 +98,20 @@ export async function runExportValidation() {
   const summary = {
     generatedAt: new Date().toISOString(),
     validator: 'tools/conformance/validate-package-exports.mjs',
-    ok: results.every((result) => result.ok),
+    ok: publishGraph.ok && results.every((result) => result.ok),
+    publishGraph: {
+      ok: publishGraph.ok,
+      order: publishGraph.order,
+      edges: publishGraph.edges,
+      cycleNodes: publishGraph.cycleNodes,
+      missingInternalDependencies: publishGraph.missingInternalDependencies,
+    },
     results,
   };
 
   await ensureDir(path.join(repoRoot, 'artifacts', 'conformance', 'latest'));
   await writeJson(path.join(repoRoot, 'artifacts', 'conformance', 'latest', 'package-export-report.json'), summary);
+  await writeJson(path.join(repoRoot, 'artifacts', 'conformance', 'latest', 'package-publish-build-graph.json'), summary.publishGraph);
 
   return summary;
 }

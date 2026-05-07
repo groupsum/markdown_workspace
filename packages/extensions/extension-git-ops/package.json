@@ -29,7 +29,7 @@
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run typecheck",
+    "test": "npm run build && node ./tests/run-smoke.mjs",
     "prepack": "npm run build"
   },
   "exports": {

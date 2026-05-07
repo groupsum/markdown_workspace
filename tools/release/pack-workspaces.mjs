@@ -8,6 +8,7 @@ import {
   repoRoot,
   writeJson,
 } from '../lib/workspace.mjs';
+import { buildPackagePublishGraph } from './build-publish-graph.mjs';
 
 const execFileAsync = promisify(execFile);
 
@@ -26,7 +27,8 @@ function shouldPack(workspacePackage) {
 
 export async function packWorkspaces() {
   const workspaces = await loadWorkspacePackages();
-  const packTargets = workspaces.filter(shouldPack);
+  const publishGraph = buildPackagePublishGraph(workspaces, { targetPredicate: shouldPack });
+  const packTargets = publishGraph.orderedPackages;
   const outputDir = path.join(repoRoot, 'artifacts', 'packs');
   await ensureDir(outputDir);
 
@@ -59,7 +61,14 @@ export async function packWorkspaces() {
 
   const report = {
     generatedAt: new Date().toISOString(),
-    ok: failures.length === 0,
+    ok: publishGraph.ok && failures.length === 0,
+    publishGraph: {
+      ok: publishGraph.ok,
+      order: publishGraph.order,
+      edges: publishGraph.edges,
+      cycleNodes: publishGraph.cycleNodes,
+      missingInternalDependencies: publishGraph.missingInternalDependencies,
+    },
     packed: results,
     failures,
   };

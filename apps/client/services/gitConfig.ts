@@ -1,5 +1,5 @@
 import type { AuthMode, GitConfig, OidcProviderId } from '../types';
-import { readOidcCredential } from './oidc';
+import { GIT_OPS_OIDC_TOKEN_BOUNDARY, readOidcCredential } from './oidc';
 
 export const PROVIDER_REPO_HOST: Record<OidcProviderId, string> = {
   github: 'github.com',
@@ -91,6 +91,13 @@ export const getAuthToken = async (projectId: string, gitConfig: GitConfig): Pro
   const credential = await readOidcCredential(projectId);
   if (!credential?.accessToken) {
     throw new Error('Connect OIDC to continue.');
+  }
+  const expectedProvider = resolveGitProvider(gitConfig);
+  if (credential.provider !== expectedProvider) {
+    throw new Error(`Connect ${expectedProvider} OIDC to continue.`);
+  }
+  if (credential.tokenBoundary !== GIT_OPS_OIDC_TOKEN_BOUNDARY) {
+    throw new Error('Stored OIDC credential is not authorized for Git operations.');
   }
   return credential.accessToken;
 };

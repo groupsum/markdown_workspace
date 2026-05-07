@@ -1949,7 +1949,7 @@
       "id": "feat:git-ops-persistence",
       "title": "Git operations persistence",
       "description": "Persist Git operation state independently from workspace content.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1965,15 +1965,19 @@
         "spc:2008",
         "spc:2009"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:git-ops-persistence"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:git-ops-oidc",
       "title": "Git operations OIDC",
       "description": "Scope OIDC tokens and auth state to Git operations.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1989,8 +1993,13 @@
         "spc:2009",
         "spc:2018"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:git-ops-oidc"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+        "tst:apps-client-services-oidc.test.ts"
+      ],
       "requires": [
         "feat:oidc-adapter"
       ]
@@ -2727,7 +2736,7 @@
       "id": "feat:oidc-token-boundary-audit",
       "title": "OIDC token boundary audit",
       "description": "Verify Git OIDC and agent OIDC scopes stay separate.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2746,7 +2755,9 @@
       "claim_ids": [
         "clm:oidc-token-boundary-audit"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ],
       "requires": []
     },
     {
@@ -5662,7 +5673,7 @@
       "id": "feat:package-publish-build-graph",
       "title": "Package publish build graph",
       "description": "Ensure publishable workspaces build required local dependencies and exported subpaths before TypeScript compilation, packing, or publish automation.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -5679,8 +5690,12 @@
         "spc:2002",
         "spc:0608"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:package-publish-build-graph"
+      ],
+      "test_ids": [
+        "tst:tools-release-build-publish-graph.test.mjs"
+      ],
       "requires": []
     },
     {
@@ -9713,11 +9728,14 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:oidc-browser-flow",
-        "feat:oidc-adapter"
+        "feat:oidc-adapter",
+        "feat:oidc-token-boundary-audit",
+        "feat:git-ops-oidc"
       ],
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:oidc-token-boundary-audit"
+        "clm:oidc-token-boundary-audit",
+        "clm:git-ops-oidc"
       ],
       "evidence_ids": [
         "evd:apps-client-services-oidc.test.ts"
@@ -11443,6 +11461,40 @@
       "evidence_ids": [
         "evd:markdown-profile-custom-previewer-profiles"
       ]
+    },
+    {
+      "id": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "title": "Git Ops extension smoke test",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/extensions/extension-git-ops/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:git-ops-persistence",
+        "feat:git-ops-oidc"
+      ],
+      "claim_ids": [
+        "clm:git-ops-oidc",
+        "clm:git-ops-persistence"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "tst:tools-release-build-publish-graph.test.mjs",
+      "title": "Package publish build graph unit test",
+      "status": "passing",
+      "kind": "unit",
+      "path": "tools/release/build-publish-graph.test.mjs",
+      "feature_ids": [
+        "feat:package-publish-build-graph"
+      ],
+      "claim_ids": [
+        "clm:package-publish-build-graph"
+      ],
+      "evidence_ids": [
+        "evd:tools-release-build-publish-graph.test.mjs"
+      ]
     }
   ],
   "claims": [
@@ -12795,6 +12847,59 @@
       "evidence_ids": [
         "evd:apps-client-services-oidc.test.ts"
       ]
+    },
+    {
+      "id": "clm:git-ops-oidc",
+      "title": "Git Operations uses provider-bound OIDC",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Git Operations obtains OIDC git tokens only when the stored credential provider matches the normalized repository provider and the token boundary is git-ops.",
+      "feature_ids": [
+        "feat:git-ops-oidc"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts",
+        "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-oidc.test.ts",
+        "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "clm:git-ops-persistence",
+      "title": "Git Operations declares workspace persistence settings",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "The bundled Git Operations extension exposes workspace-scoped persistence settings for repository state and advertises the git-ops OIDC boundary during activation.",
+      "feature_ids": [
+        "feat:git-ops-persistence"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "clm:package-publish-build-graph",
+      "title": "Package publish automation uses dependency build graph",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Package validation, packing, and publish readiness derive a dependency-ordered publish graph and fail on cycles or missing internal package dependencies.",
+      "feature_ids": [
+        "feat:package-publish-build-graph"
+      ],
+      "test_ids": [
+        "tst:tools-release-build-publish-graph.test.mjs"
+      ],
+      "evidence_ids": [
+        "evd:tools-release-build-publish-graph.test.mjs"
+      ]
     }
   ],
   "evidence": [
@@ -12859,7 +12964,8 @@
       "claim_ids": [
         "clm:cross-cutting",
         "clm:repo-certifiability-p1-current-partials",
-        "clm:oidc-token-boundary-audit"
+        "clm:oidc-token-boundary-audit",
+        "clm:git-ops-oidc"
       ],
       "test_ids": [
         "tst:apps-client-services-oidc.test.ts"
@@ -13921,6 +14027,35 @@
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "title": "Git Ops extension smoke test evidence",
+      "status": "passed",
+      "kind": "test-log",
+      "tier": "T2",
+      "path": "packages/extensions/extension-git-ops/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:git-ops-persistence",
+        "clm:git-ops-oidc"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+      ]
+    },
+    {
+      "id": "evd:tools-release-build-publish-graph.test.mjs",
+      "title": "Package publish build graph test evidence",
+      "status": "passed",
+      "kind": "test-log",
+      "tier": "T2",
+      "path": "tools/release/build-publish-graph.test.mjs",
+      "claim_ids": [
+        "clm:package-publish-build-graph"
+      ],
+      "test_ids": [
+        "tst:tools-release-build-publish-graph.test.mjs"
       ]
     }
   ],

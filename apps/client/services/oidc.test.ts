@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { completeOidcSignInFromCallback, getOidcPopupEventType } from './oidc';
+import type { GitConfig } from '../types';
+import { getAuthToken } from './gitConfig';
+import { completeOidcSignInFromCallback, getOidcPopupEventType, storeOidcCredential } from './oidc';
 
 const pendingKey = 'lattice-oidc-pending-v1';
 
@@ -94,6 +96,8 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
 
     expect(result.status).toBe('success');
     expect(result.credential?.accessToken).toBe('abc-token');
+    expect(result.credential?.tokenBoundary).toBe('git-ops');
+    expect(result.credential?.scopes).toContain('repo');
     expect(result.credential?.idToken).toBe('id-token');
     expect(result.credential?.username).toBe('alice-gl');
     expect(result.credential?.subject).toBe('github-42');
@@ -131,5 +135,57 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
       window.location.origin
     );
     expect(closeSpy).toHaveBeenCalled();
+  });
+
+  it('rejects non-git OIDC credentials at the git auth boundary', async () => {
+    await storeOidcCredential('proj-1', {
+      provider: 'github',
+      tokenBoundary: 'agent',
+      scopes: ['openid'],
+      username: 'agent',
+      subject: 'github-agent',
+      accessToken: 'agent-token',
+      issuedAt: Date.now(),
+      expiresAt: Date.now() + 1000 * 60 * 60,
+    });
+
+    const config: GitConfig = {
+      repoUrl: 'https://github.com/mdwrk/test',
+      branch: 'main',
+      username: '',
+      authMode: 'oidc',
+      patToken: '',
+      oidcProvider: 'github',
+      oidcConnected: true,
+      oidcSubject: 'github-agent',
+    };
+
+    await expect(getAuthToken('proj-1', config)).rejects.toThrow('Stored OIDC credential is not authorized for Git operations.');
+  });
+
+  it('rejects provider mismatches before returning an OIDC git token', async () => {
+    await storeOidcCredential('proj-1', {
+      provider: 'gitlab',
+      tokenBoundary: 'git-ops',
+      scopes: ['openid', 'api'],
+      username: 'alice',
+      subject: 'gitlab-42',
+      accessToken: 'gitlab-token',
+      issuedAt: Date.now(),
+      expiresAt: Date.now() + 1000 * 60 * 60,
+    });
+
+    const config: GitConfig = {
+      repoUrl: 'https://github.com/mdwrk/test',
+      branch: 'main',
+      username: '',
+      authMode: 'oidc',
+      patToken: '',
+      oidcProvider: 'gitlab',
+      oidcConnected: true,
+      oidcSubject: 'gitlab-42',
+    };
+
+    await expect(getAuthToken('proj-1', config)).rejects.toThrow('Connect github OIDC to continue.');
   });
 });

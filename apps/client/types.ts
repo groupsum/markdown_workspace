@@ -50,9 +50,12 @@ export interface GitConfig {
 export type AuthMode = 'oidc' | 'pat';
 
 export type OidcProviderId = 'github' | 'gitlab' | 'gitea';
+export type OidcTokenBoundary = 'git-ops' | 'agent';
 
 export interface OidcCredential {
   provider: OidcProviderId;
+  tokenBoundary: OidcTokenBoundary;
+  scopes: string[];
   subject: string;
   username: string;
   accessToken: string;

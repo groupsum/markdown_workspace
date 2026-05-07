@@ -21,6 +21,7 @@ interface OidcCallbackResult {
 }
 
 const OIDC_POPUP_EVENT_TYPE = 'lattice:oidc:callback';
+export const GIT_OPS_OIDC_TOKEN_BOUNDARY = 'git-ops' as const;
 
 export interface OidcProviderAdapter {
   id: OidcProviderId;
@@ -96,6 +97,8 @@ const createAdapter = (config: {
   },
   createMockCredential: (username) => ({
     provider: config.id,
+    tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
+    scopes: config.defaultScopes,
     username,
     subject: `${config.id}-${username}`,
     accessToken: randomBase64Url(48),
@@ -173,10 +176,19 @@ const deriveLocalKey = async (): Promise<CryptoKey> => {
   );
 };
 
+const normalizeOidcCredential = (credential: OidcCredential): OidcCredential => {
+  const adapter = getOidcAdapter(credential.provider);
+  return {
+    ...credential,
+    tokenBoundary: credential.tokenBoundary ?? GIT_OPS_OIDC_TOKEN_BOUNDARY,
+    scopes: Array.isArray(credential.scopes) ? credential.scopes : adapter?.defaultScopes ?? [],
+  };
+};
+
 export const storeOidcCredential = async (projectId: string, credential: OidcCredential): Promise<void> => {
   const key = await deriveLocalKey();
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoder.encode(JSON.stringify(credential)));
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoder.encode(JSON.stringify(normalizeOidcCredential(credential))));
   const payload = {
     iv: Array.from(iv),
     data: Array.from(new Uint8Array(ciphertext))
@@ -195,7 +207,7 @@ export const readOidcCredential = async (projectId: string): Promise<OidcCredent
       key,
       new Uint8Array(parsed.data)
     );
-    const credential = JSON.parse(decoder.decode(plaintext)) as OidcCredential;
+    const credential = normalizeOidcCredential(JSON.parse(decoder.decode(plaintext)) as OidcCredential);
     if (credential.expiresAt && credential.expiresAt < Date.now()) {
       localStorage.removeItem(`${OIDC_CRED_PREFIX}:${projectId}`);
       return null;
@@ -383,6 +395,8 @@ const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTo
 
   return {
     provider: pending.provider,
+    tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
+    scopes: adapter?.defaultScopes ?? [],
     username,
     subject,
     accessToken: tokenPayload.access_token || '',

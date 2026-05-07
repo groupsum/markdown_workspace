@@ -65,6 +65,12 @@ export function createGitOpsBundledEntry(options: GitOpsBundledEntryOptions): Bu
             code: "EXT_GIT_OPS_READY",
             message: "Git Operations module registered.",
           });
+          await context.host.diagnostics.publish(context.extensionId, {
+            severity: "info",
+            code: "EXT_GIT_OPS_PERSISTENCE_READY",
+            message: "Git Operations settings persist repository state in the workspace scope.",
+            detail: "settings=persistRepositoryState,lastRepositoryUrl; oidcTokenBoundary=git-ops",
+          });
         },
       };
 
