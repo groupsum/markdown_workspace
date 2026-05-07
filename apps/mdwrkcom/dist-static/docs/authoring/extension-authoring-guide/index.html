@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Extension Authoring Guide | MdWrk Docs</title>
+    <meta name="description" content="The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.">
+    <link rel="canonical" href="https://mdwrk.com/docs/authoring/extension-authoring-guide/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MdWrk">
+    <meta property="og:title" content="Extension Authoring Guide | MdWrk Docs">
+    <meta property="og:description" content="The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.">
+    <meta property="og:url" content="https://mdwrk.com/docs/authoring/extension-authoring-guide/">
+    <meta property="og:image" content="https://mdwrk.com/favicon.svg">
+    <meta property="og:image:alt" content="Extension Authoring Guide">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Extension Authoring Guide | MdWrk Docs">
+    <meta name="twitter:description" content="The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.">
+    <meta name="twitter:image" content="https://mdwrk.com/favicon.svg">
+    <meta name="twitter:image:alt" content="Extension Authoring Guide">
+    <meta name="DC.title" content="Extension Authoring Guide | MdWrk Docs">
+    <meta name="DC.description" content="The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.">
+    <meta name="DC.identifier" content="https://mdwrk.com/docs/authoring/extension-authoring-guide/">
+    <meta name="DC.language" content="en">
+    <meta name="DC.date" content="2026-05-06">
+    <meta name="DC.publisher" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#webpage","url":"https://mdwrk.com/docs/authoring/extension-authoring-guide/","name":"Extension Authoring Guide | MdWrk Docs","headline":"Extension Authoring Guide","description":"The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.","dateModified":"2026-05-06","image":"https://mdwrk.com/favicon.svg","inLanguage":"en","isPartOf":{"@id":"https://mdwrk.com/#website"},"publisher":{"@id":"https://mdwrk.com/#organization"},"mainEntity":{"@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#primary"}},{"@type":"TechArticle","@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#primary","mainEntityOfPage":{"@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#webpage"},"headline":"Extension Authoring Guide","name":"Extension Authoring Guide | MdWrk Docs","description":"The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.","url":"https://mdwrk.com/docs/authoring/extension-authoring-guide/","image":"https://mdwrk.com/favicon.svg","dateModified":"2026-05-06","inLanguage":"en","publisher":{"@id":"https://mdwrk.com/#organization"},"creator":{"@id":"https://mdwrk.com/#organization"}},{"@type":"FAQPage","@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#faq","mainEntity":[{"@type":"Question","name":"What will I learn from Extension Authoring Guide?","acceptedAnswer":{"@type":"Answer","text":"The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts."}},{"@type":"Question","name":"Who should read Extension Authoring Guide?","acceptedAnswer":{"@type":"Answer","text":"Read this page if you need practical MdWrk guidance for extension authoring guide, including the relevant workflow, product surface, and follow-up documentation paths."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/docs/authoring/extension-authoring-guide/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Getting Started","item":"https://mdwrk.com/docs/"},{"@type":"ListItem","position":3,"name":"Extension Authoring Guide","item":"https://mdwrk.com/docs/authoring/extension-authoring-guide/"}]}]}</script>
+    <link rel="stylesheet" href="/assets/static.css?v=0.0.50">
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+              <a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
+                <svg class="navbar-github-icon static-github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
+                </svg>
+                <span class="navbar-github-label">GitHub</span>
+              </a>
+            </div>
+            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/">Home</a></li>
+              <li><a class="navbar-link is-inactive" href="/features/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/">Compare</a></li>
+              <li><a class="navbar-link is-active" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/updates/">Updates</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+            <aside class="docs-sidebar" aria-label="Documentation navigation">
+          <div class="docs-sidebar-inner">
+            <h3 class="docs-sidebar-heading">Documentation</h3>
+            <nav class="docs-nav">
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Getting Started</span></summary>
+                <div class="docs-nav-children">
+                  <a class="docs-nav-link is-inactive" href="/docs/">
+
+                    <span class="docs-nav-link-label">Getting Started</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/installation/">
+
+                    <span class="docs-nav-link-label">Client Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/browser-use/">
+
+                    <span class="docs-nav-link-label">Browser Use</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/pwa-installation/">
+
+                    <span class="docs-nav-link-label">PWA Installation</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/local-setup/">
+
+                    <span class="docs-nav-link-label">Local Setup</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/configuration/">
+
+                    <span class="docs-nav-link-label">Client Configuration</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/getting-started/standalone-modules/">
+
+                    <span class="docs-nav-link-label">Standalone Modules</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Quickstart</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/quickstart/">
+
+                    <span class="docs-nav-link-label">MdWrk quickstart</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Extensions</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/extension-platform/">
+
+                    <span class="docs-nav-link-label">Extension Platform</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/theme-studio-and-host-surfaces/">
+
+                    <span class="docs-nav-link-label">Theme Studio And Host Surfaces</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Integrations</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/github-sync/">
+
+                    <span class="docs-nav-link-label">Github Sync</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Authoring</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/overview/">
+
+                    <span class="docs-nav-link-label">Authoring Overview</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/extensions/">
+
+                    <span class="docs-nav-link-label">Extension Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-active" href="/docs/authoring/extension-authoring-guide/">
+                    <span class="docs-nav-link-dot"></span>
+                    <span class="docs-nav-link-label">Extension Authoring Guide</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/language-packs/">
+
+                    <span class="docs-nav-link-label">Language Pack Authoring</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/authoring/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme Pack Authoring</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Docs</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/extensions/">
+
+                    <span class="docs-nav-link-label">Extensions</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/theme-packs/">
+
+                    <span class="docs-nav-link-label">Theme packs</span>
+                  </a>
+                </div>
+              </details>
+              <details class="docs-nav-item static-docs-nav-section" open>
+                <summary class="docs-nav-section-button"><span class="docs-nav-section-label">Archive</span></summary>
+                <div class="docs-nav-children">
+
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-28/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.28</span>
+                  </a>
+                  <a class="docs-nav-link is-inactive" href="/docs/archive/ui-refresh-1-3-29/">
+
+                    <span class="docs-nav-link-label">UI Refresh 1.3.29</span>
+                  </a>
+                </div>
+              </details>
+            </nav>
+          </div>
+        </aside>
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+
+                <div class="docs-article-column">
+
+                <article class="docs-content-card lander-content-card">
+                  <header class="docs-header">
+                    <nav class="lander-breadcrumbs" aria-label="Breadcrumbs">
+                    <ol class="lander-breadcrumbs-list">
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/">MdWrk</a></li>
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/docs/">Getting Started</a></li>
+                      <li class="lander-breadcrumbs-item"><span class="lander-breadcrumbs-current">Extension Authoring Guide</span></li>
+                    </ol>
+                  </nav>
+                    <h1 class="docs-title">Extension Authoring Guide</h1>
+
+                  </header>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="authoring-model">Authoring Model</h2><p class="md-p">MdWrk extensions are normal workspace packages that declare a manifest, activate through the extension runtime, and use host APIs for commands, views, settings, diagnostics, themes, editor access, and workspace access.</p><p class="md-p">The core package surfaces are:</p><ul class="md-ul"><li class="md-li"><code class="md-inline-code">@mdwrk/extension-manifest</code></li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-host</code></li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-runtime</code></li><li class="md-li"><code class="md-inline-code">@mdwrk/extension-manager</code></li></ul><h2 class="md-h2" id="package-shape">Package Shape</h2><p class="md-p">A first-party or installable extension package should include:</p><ul class="md-ul"><li class="md-li"><code class="md-inline-code">package.json</code></li><li class="md-li"><code class="md-inline-code">README.md</code></li><li class="md-li"><code class="md-inline-code">src/manifest.ts</code></li><li class="md-li"><code class="md-inline-code">src/index.ts</code></li><li class="md-li">tests for manifest validity and runtime behavior</li><li class="md-li"><code class="md-inline-code">src/version.ts</code> for package version exports</li></ul><p class="md-p">Use <code class="md-inline-code">packages/extensions/extension-catalog-hello</code> as the smallest reference extension and <code class="md-inline-code">packages/extensions/extension-manager</code> as a fuller operator-facing surface.</p><h2 class="md-h2" id="manifest-responsibilities">Manifest Responsibilities</h2><p class="md-p">The manifest declares identity, version, display metadata, activation mode, requested capabilities, compatibility ranges, contribution points, and settings schema. The runtime uses it before activation to evaluate compatibility and host capability access.</p><h2 class="md-h2" id="runtime-responsibilities">Runtime Responsibilities</h2><p class="md-p">Extension code should register through the provided context:</p><ul class="md-ul"><li class="md-li">commands through <code class="md-inline-code">context.registerCommand</code></li><li class="md-li">views through <code class="md-inline-code">context.registerView</code></li><li class="md-li">action rail items through <code class="md-inline-code">context.registerActionRailItem</code></li><li class="md-li">settings through manifest settings schema</li><li class="md-li">diagnostics through host diagnostics APIs</li></ul><p class="md-p">Extensions should clean up registered work with disposables returned by the runtime.</p><h2 class="md-h2" id="publish-workflow">Publish Workflow</h2><pre class="md-code-block md-code-surface"><code class="language-bash"><span class="token function">npm</span> run build:extensions
+<span class="token function">npm</span> run extension:bundle
+<span class="token function">npm</span> run extension:sign
+<span class="token function">npm</span> run validate:extension-artifacts</code></pre><p class="md-p">The generated artifacts include installable payloads, integrity metadata, signed manifests, and catalog entries under <code class="md-inline-code">artifacts/extensions</code>.</p><h2 class="md-h2" id="related-docs">Related Docs</h2><ul class="md-ul"><li class="md-li"><a href="/docs/authoring/extensions" class="md-link">Extension Authoring</a></li><li class="md-li"><a href="/docs/extensions/extension-platform" class="md-link">Extension Platform</a></li><li class="md-li"><a href="/features/extension-host" class="md-link">Extension Host</a></li></ul></div>
+                  </div>
+                </article>
+
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">What will I learn from Extension Authoring Guide?</summary><div class="faq-content"><p>The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.</p></div></details>
+                      <details class="faq-accordion"><summary class="faq-summary">Who should read Extension Authoring Guide?</summary><div class="faq-content"><p>Read this page if you need practical MdWrk guidance for extension authoring guide, including the relevant workflow, product surface, and follow-up documentation paths.</p></div></details></div>
+                  </section>
+                  <section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
+                    <ul><li><a href="/docs/">Getting Started</a></li><li><a href="/features/local-first-markdown-workspace/">Local-first Markdown Workspace</a></li><li><a href="/packages/markdown-renderer-core/">@mdwrk/markdown-renderer-core</a></li></ul>
+                  </section>
+              </div>
+                <aside class="docs-toc" aria-label="Article table of contents">
+              <div class="docs-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#authoring-model" class="docs-toc-link" title="Authoring Model">Authoring Model</a></div>
+                  <div class="docs-toc-item"><a href="#package-shape" class="docs-toc-link" title="Package Shape">Package Shape</a></div>
+                  <div class="docs-toc-item"><a href="#manifest-responsibilities" class="docs-toc-link" title="Manifest Responsibilities">Manifest Responsibilities</a></div>
+                  <div class="docs-toc-item"><a href="#runtime-responsibilities" class="docs-toc-link" title="Runtime Responsibilities">Runtime Responsibilities</a></div>
+                  <div class="docs-toc-item"><a href="#publish-workflow" class="docs-toc-link" title="Publish Workflow">Publish Workflow</a></div>
+                  <div class="docs-toc-item"><a href="#related-docs" class="docs-toc-link" title="Related Docs">Related Docs</a></div>
+                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
+                </nav>
+              </div>
+            </aside>
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg>
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/" class="footer-link">Documentation</a></li>
+                    <li><a href="/updates/" class="footer-link">Updates</a></li>
+                    <li><a href="https://app.mdwrk.com" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
+                    <li><a href="https://www.npmjs.com/org/mdwrk" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Follow</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+                    <li><a href="https://x.com/swarmauri" target="_blank" rel="noopener noreferrer" class="footer-link">X.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">Community</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/legal/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/legal/terms/" class="footer-link">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-legal">&copy; 2026 MdWrk. Designed for privacy.</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+  </body>
+</html>

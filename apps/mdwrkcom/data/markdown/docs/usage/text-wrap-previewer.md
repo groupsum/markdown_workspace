@@ -40,4 +40,4 @@ Use text wrap previewing when writing:
 
 - [Editor Basics](/features/editor-basics)
 - [Rendering And Preview](/features/rendering-and-preview)
-- [UIX Responsive Contract](/docs/product/uix-responsive-contract)
+- [UIX Responsive Contract](/features/uix-responsive-contract/)

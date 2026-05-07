@@ -593,7 +593,7 @@
       "id": "feat:mdwrk-custom-parser-profile",
       "title": "CFM custom parser profile",
       "description": "Define and implement the CFM additive custom parser behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -610,18 +610,20 @@
         "spc:2005"
       ],
       "claim_ids": [
-        "clm:mdwrk-custom-parser-profile-blocked"
+        "clm:mdwrk-custom-parser-profile-blocked",
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
       ],
-      "test_ids": [],
-      "requires": [
-        "feat:custom-flavored-markdown-profile"
-      ]
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
+      ],
+      "requires": []
     },
     {
       "id": "feat:mdwrk-custom-previewer-profiles",
       "title": "CFM custom previewer profiles",
       "description": "Define CFM additive custom previewer behavior layered above CommonMark and GFM.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -638,12 +640,14 @@
         "spc:2005"
       ],
       "claim_ids": [
-        "clm:mdwrk-custom-previewer-profiles-blocked"
+        "clm:mdwrk-custom-previewer-profiles-blocked",
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
       ],
-      "test_ids": [],
-      "requires": [
-        "feat:custom-flavored-markdown-profile"
-      ]
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
+      ],
+      "requires": []
     },
     {
       "id": "feat:commonmark-conformance-profile",
@@ -986,7 +990,7 @@
       "id": "feat:extension-catalog-hello",
       "title": "Catalog Hello extension",
       "description": "Catalog Hello example extension and smoke coverage.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1002,15 +1006,20 @@
         "spc:2010",
         "spc:2015"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
       "id": "feat:extension-authoring-publishing",
       "title": "Extension authoring and publishing",
       "description": "Author, package, publish, and compatibility-check extensions.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1026,15 +1035,20 @@
         "spc:2010",
         "spc:2017"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
       "id": "feat:extension-install-import-remove-disable",
       "title": "Extension install import remove disable",
       "description": "Install, import, remove, and disable extension workflows.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1050,8 +1064,13 @@
         "spc:2010",
         "spc:2011"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2857,7 +2876,7 @@
       "id": "feat:extension-retention-policy",
       "title": "Extension retention policy",
       "description": "Define settings and data retention on disable versus remove.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2873,8 +2892,13 @@
         "spc:2010",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -6295,7 +6319,7 @@
       "id": "feat:lander-seo-robots-policy",
       "title": "Lander SEO robots policy",
       "description": "Generate and validate robots.txt crawler policy for public lander discovery without local-only or deployment-internal routes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6312,15 +6336,21 @@
         "spc:2071",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-sitemap-protocol",
       "title": "Lander SEO sitemap protocol",
       "description": "Generate and validate sitemap.xml coverage for canonical public lander URLs.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6336,15 +6366,20 @@
         "spc:2069",
         "spc:2071"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-canonical-url-metadata",
       "title": "Lander SEO canonical URL metadata",
       "description": "Emit canonical URL metadata for public lander pages and verify alignment with generated routes.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6360,15 +6395,20 @@
         "spc:2069",
         "spc:2071"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-html-title-meta-link-metadata",
       "title": "Lander SEO HTML title meta link metadata",
       "description": "Emit governed HTML title, meta description, and link metadata for public lander pages.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6383,15 +6423,20 @@
       "spec_ids": [
         "spc:2069"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-open-graph-metadata",
       "title": "Lander SEO Open Graph metadata",
       "description": "Emit Open Graph metadata that matches canonical page identity, visible content, and fallback image policy.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6407,15 +6452,20 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-x-card-metadata",
       "title": "Lander SEO X Card metadata",
       "description": "Emit X Card metadata that matches canonical page identity, visible content, and fallback image policy.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6431,15 +6481,20 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-dcmi-document-metadata",
       "title": "Lander SEO DCMI document metadata",
       "description": "Emit DCMI metadata where page families need document or archival metadata parity.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6455,15 +6510,20 @@
         "spc:2069",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-seo-core-web-vitals-targets",
       "title": "Lander SEO Core Web Vitals targets",
       "description": "Track Core Web Vitals page-experience targets for public lander pages as platform-guidance discoverability targets.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6478,15 +6538,20 @@
       "spec_ids": [
         "spc:2069"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aeo-answerable-heading-contract",
       "title": "Lander AEO answerable heading contract",
       "description": "Use clear answerable headings for article support sections while preserving the primary reading experience.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6501,15 +6566,21 @@
       "spec_ids": [
         "spc:2070"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aeo-visible-citation-parity",
       "title": "Lander AEO visible citation parity",
       "description": "Keep citations, source references, related APIs, and related docs visible when represented in generated metadata or discovery artifacts.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6524,15 +6595,21 @@
       "spec_ids": [
         "spc:2070"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aeo-faq-qna-howto-eligibility",
       "title": "Lander AEO FAQ QnA how-to eligibility",
       "description": "Generate FAQ, Q&A, or how-to representations only when matching visible content and page-family eligibility exist.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6548,15 +6625,21 @@
         "spc:2070",
         "spc:2072"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aeo-structured-answer-section-parity",
       "title": "Lander AEO structured answer section parity",
       "description": "Ensure structured answer sections, metadata, and generated artifacts remain aligned with visible article support content.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6572,15 +6655,21 @@
         "spc:2070",
         "spc:2071"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-ai-crawler-policy",
       "title": "Lander AiEO AI crawler policy",
       "description": "Govern AI crawler access policy for search, answer retrieval, training ingestion, and unknown crawler behavior where upstream controls allow distinctions.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6596,15 +6685,21 @@
         "spc:2069",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-llms-txt-index",
       "title": "Lander AiEO llms.txt index",
       "description": "Generate a concise experimental llms.txt map of important MdWrk public pages and documentation for LLM retrieval.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6620,15 +6715,20 @@
         "spc:2071",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-llms-full-index",
       "title": "Lander AiEO llms-full.txt index",
       "description": "Generate an expanded experimental llms-full.txt Markdown-readable projection of governed public content.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6644,15 +6744,20 @@
         "spc:2071",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-markdown-mirror-consistency",
       "title": "Lander AiEO Markdown mirror consistency",
       "description": "Keep generated Markdown mirrors aligned with canonical visible content, registry entries, and LLM discovery projections.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6668,15 +6773,20 @@
         "spc:2071",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-search-vs-training-crawler-policy",
       "title": "Lander AiEO search versus training crawler policy",
       "description": "Distinguish search inclusion and answer retrieval crawler policy from model-training crawler policy when documented user-agent controls exist.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6691,15 +6801,21 @@
       "spec_ids": [
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-aieo-content-registry-discovery-parity",
       "title": "Lander AiEO content registry discovery parity",
       "description": "Validate parity between content registry entries, sitemap, robots, Markdown mirrors, and LLM discovery files.",
-      "implementation_status": "partial",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -6715,8 +6831,13 @@
         "spc:2071",
         "spc:2073"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
       "requires": []
     },
     {
@@ -10406,7 +10527,11 @@
         "feat:extension-runtime-activation-lifecycle",
         "feat:extension-gemini-agent",
         "feat:extension-theme-studio",
-        "feat:extension-language-pack-studio"
+        "feat:extension-language-pack-studio",
+        "feat:extension-catalog-hello",
+        "feat:extension-authoring-publishing",
+        "feat:extension-install-import-remove-disable",
+        "feat:extension-retention-policy"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -10456,7 +10581,11 @@
         "feat:extension-language-pack-studio",
         "feat:uix-extension-view-modes",
         "feat:extension-capability-permissions",
-        "feat:extension-settings-schema-rendering"
+        "feat:extension-settings-schema-rendering",
+        "feat:extension-catalog-hello",
+        "feat:extension-authoring-publishing",
+        "feat:extension-install-import-remove-disable",
+        "feat:extension-retention-policy"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -11202,6 +11331,113 @@
       "evidence_ids": [
         "evd:apps-client-components-modals-settingsmodal.test.tsx"
       ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+      "title": "MdWrkcom discoverability artifact parity",
+      "status": "passing",
+      "kind": "integration",
+      "path": "apps/mdwrkcom/scripts/validate-discoverability-artifacts.mjs",
+      "feature_ids": [
+        "feat:lander-aieo-content-registry-discovery-parity",
+        "feat:lander-aieo-llms-full-index",
+        "feat:lander-aieo-llms-txt-index",
+        "feat:lander-aieo-markdown-mirror-consistency",
+        "feat:lander-seo-canonical-url-metadata",
+        "feat:lander-seo-core-web-vitals-targets",
+        "feat:lander-seo-dcmi-document-metadata",
+        "feat:lander-seo-html-title-meta-link-metadata",
+        "feat:lander-seo-open-graph-metadata",
+        "feat:lander-seo-robots-policy",
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-seo-x-card-metadata",
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-aeo-visible-citation-parity",
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-search-vs-training-crawler-policy"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:lander-seo-aeo-aieo-discovery-ci"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+      "title": "MdWrkcom AEO content parity",
+      "status": "passing",
+      "kind": "integration",
+      "path": "apps/mdwrkcom/scripts/validate-aeo-content-parity.mjs",
+      "feature_ids": [
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-aeo-visible-citation-parity"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:lander-seo-aeo-aieo-discovery-ci"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+      "title": "MdWrkcom AI crawler policy",
+      "status": "passing",
+      "kind": "integration",
+      "path": "apps/mdwrkcom/scripts/validate-ai-crawler-policy.mjs",
+      "feature_ids": [
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:lander-seo-robots-policy"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:lander-seo-aeo-aieo-discovery-ci"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+      "title": "MdWrk custom parser profile",
+      "status": "passing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/custom-parser-profile.mjs",
+      "feature_ids": [
+        "feat:mdwrk-custom-parser-profile"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-custom-parser-profile"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+      "title": "MdWrk custom previewer profiles",
+      "status": "passing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/custom-previewer-profiles.mjs",
+      "feature_ids": [
+        "feat:mdwrk-custom-previewer-profiles"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-custom-previewer-profiles"
+      ]
     }
   ],
   "claims": [
@@ -11345,7 +11581,27 @@
         "feat:mdwrk-profile-superscript",
         "feat:mdwrk-profile-subscript",
         "feat:mdwrk-profile-smart-punctuation",
-        "feat:mdwrk-profile-markdown-in-html"
+        "feat:mdwrk-profile-markdown-in-html",
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-aeo-visible-citation-parity",
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-content-registry-discovery-parity",
+        "feat:lander-aieo-llms-full-index",
+        "feat:lander-aieo-llms-txt-index",
+        "feat:lander-aieo-markdown-mirror-consistency",
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:lander-seo-canonical-url-metadata",
+        "feat:lander-seo-core-web-vitals-targets",
+        "feat:lander-seo-dcmi-document-metadata",
+        "feat:lander-seo-html-title-meta-link-metadata",
+        "feat:lander-seo-open-graph-metadata",
+        "feat:lander-seo-robots-policy",
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-seo-x-card-metadata",
+        "feat:mdwrk-custom-parser-profile",
+        "feat:mdwrk-custom-previewer-profiles"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -11390,7 +11646,12 @@
         "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
         "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
         "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
-        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -11434,7 +11695,10 @@
         "evd:markdown-profile-commonmark-official-corpus",
         "evd:markdown-profile-gfm-default-profile",
         "evd:markdown-profile-gfm-official-corpus",
-        "evd:markdown-profile-mdwrk-optional-profiles"
+        "evd:markdown-profile-mdwrk-optional-profiles",
+        "evd:lander-seo-aeo-aieo-discovery-ci",
+        "evd:markdown-profile-custom-parser-profile",
+        "evd:markdown-profile-custom-previewer-profiles"
       ]
     },
     {
@@ -11791,7 +12055,9 @@
         "feat:mdwrk-profile-superscript",
         "feat:mdwrk-profile-subscript",
         "feat:mdwrk-profile-smart-punctuation",
-        "feat:mdwrk-profile-markdown-in-html"
+        "feat:mdwrk-profile-markdown-in-html",
+        "feat:mdwrk-custom-parser-profile",
+        "feat:mdwrk-custom-previewer-profiles"
       ],
       "test_ids": [
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
@@ -11802,7 +12068,9 @@
         "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
         "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
         "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
-        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
@@ -11813,7 +12081,9 @@
         "evd:markdown-profile-commonmark-official-corpus",
         "evd:markdown-profile-gfm-default-profile",
         "evd:markdown-profile-gfm-official-corpus",
-        "evd:markdown-profile-mdwrk-optional-profiles"
+        "evd:markdown-profile-mdwrk-optional-profiles",
+        "evd:markdown-profile-custom-parser-profile",
+        "evd:markdown-profile-custom-previewer-profiles"
       ]
     },
     {
@@ -11955,7 +12225,11 @@
         "feat:extension-settings-schema-rendering",
         "feat:extension-runtime-isolation",
         "feat:gemini-agent-conversation-preview-pane-surface",
-        "feat:gemini-agent-workspace-file-mentions"
+        "feat:gemini-agent-workspace-file-mentions",
+        "feat:extension-catalog-hello",
+        "feat:extension-authoring-publishing",
+        "feat:extension-install-import-remove-disable",
+        "feat:extension-retention-policy"
       ],
       "test_ids": [
         "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
@@ -12458,6 +12732,42 @@
       "evidence_ids": [
         "evd:apps-client-styles-chassisfittoscreen.test.ts",
         "evd:apps-client-components-modals-settingsmodal.test.tsx"
+      ]
+    },
+    {
+      "id": "clm:lander-seo-aeo-aieo-discovery",
+      "title": "Lander SEO AEO AiEO discovery profile is statically verifiable",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "The static MdWrk lander emits and verifies SEO, AEO, AiEO, crawler policy, LLM discovery, markdown mirror, structured data, and metadata parity artifacts.",
+      "feature_ids": [
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-aeo-visible-citation-parity",
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-content-registry-discovery-parity",
+        "feat:lander-aieo-llms-full-index",
+        "feat:lander-aieo-llms-txt-index",
+        "feat:lander-aieo-markdown-mirror-consistency",
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:lander-seo-canonical-url-metadata",
+        "feat:lander-seo-core-web-vitals-targets",
+        "feat:lander-seo-dcmi-document-metadata",
+        "feat:lander-seo-html-title-meta-link-metadata",
+        "feat:lander-seo-open-graph-metadata",
+        "feat:lander-seo-robots-policy",
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-seo-x-card-metadata"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+      ],
+      "evidence_ids": [
+        "evd:lander-seo-aeo-aieo-discovery-ci"
       ]
     }
   ],
@@ -13535,6 +13845,53 @@
       ],
       "test_ids": [
         "tst:apps-client-components-modals-settingsmodal.test.tsx"
+      ]
+    },
+    {
+      "id": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "title": "Lander SEO AEO AiEO discovery CI evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/lander-seo-aeo-aieo-discovery-ci.md",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-custom-parser-profile",
+      "title": "MdWrk custom parser profile evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-custom-parser-profile.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-custom-previewer-profiles",
+      "title": "MdWrk custom previewer profiles evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-custom-previewer-profiles.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
       ]
     }
   ],
@@ -17475,6 +17832,44 @@
       "evaluation": {
         "mode": "all_features_must_pass",
         "allow_feature_override_tier": false
+      }
+    },
+    {
+      "id": "prf:lander-seo-aeo-aieo-discovery",
+      "title": "Lander SEO AEO AiEO discovery profile",
+      "description": "Capability profile grouping the lander SEO, AEO, and AiEO discoverability features for answerability, crawler policy, metadata, robots, sitemap, and llms index coverage.",
+      "status": "active",
+      "kind": "capability",
+      "feature_ids": [
+        "feat:lander-aeo-answerable-heading-contract",
+        "feat:lander-aeo-faq-qna-howto-eligibility",
+        "feat:lander-aeo-structured-answer-section-parity",
+        "feat:lander-aeo-visible-citation-parity",
+        "feat:lander-aieo-ai-crawler-policy",
+        "feat:lander-aieo-content-registry-discovery-parity",
+        "feat:lander-aieo-llms-full-index",
+        "feat:lander-aieo-llms-txt-index",
+        "feat:lander-aieo-markdown-mirror-consistency",
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:lander-seo-canonical-url-metadata",
+        "feat:lander-seo-core-web-vitals-targets",
+        "feat:lander-seo-dcmi-document-metadata",
+        "feat:lander-seo-html-title-meta-link-metadata",
+        "feat:lander-seo-open-graph-metadata",
+        "feat:lander-seo-robots-policy",
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-seo-x-card-metadata",
+        "feat:lander-aeo-appended-answer-blocks",
+        "feat:lander-aieo-crawlable-text-semantic-index",
+        "feat:lander-aieo-json-ld-structured-data",
+        "feat:lander-seo-comparison-pages",
+        "feat:lander-seo-demand-cluster-canonical-pages"
+      ],
+      "profile_ids": [],
+      "claim_tier": "T2",
+      "evaluation": {
+        "mode": "all_features_must_pass",
+        "allow_feature_override_tier": true
       }
     }
   ]

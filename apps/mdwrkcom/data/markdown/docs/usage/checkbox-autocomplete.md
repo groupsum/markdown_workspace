@@ -46,4 +46,4 @@ Checkbox rows remain part of the source editor document. Toggling or continuing 
 
 - [Editor Basics](/features/editor-basics)
 - [Advanced Markdown Formatting](/features/advanced-formatting)
-- [View Toolbar](/docs/usage/view-toolbar)
+- [View Toolbar](/features/view-toolbar/)

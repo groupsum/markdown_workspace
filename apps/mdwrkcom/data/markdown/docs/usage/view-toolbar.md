@@ -41,5 +41,5 @@ The toolbar must remain usable in narrow and portrait contexts. Controls can scr
 ## Related Docs
 
 - [Editor Basics](/features/editor-basics)
-- [Text Wrap Previewer](/docs/usage/text-wrap-previewer)
-- [UIX Responsive Contract](/docs/product/uix-responsive-contract)
+- [Text Wrap Previewer](/features/text-wrap-previewer/)
+- [UIX Responsive Contract](/features/uix-responsive-contract/)

@@ -11,7 +11,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/answers/does-mdwrk-require-a-server/index.md",
+    "jsonLdId": "https://mdwrk.com/answers/does-mdwrk-require-a-server/#webpage"
   },
   {
     "slug": "/answers/how-do-mdwrk-theme-packs-work/",
@@ -25,7 +27,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/answers/how-do-mdwrk-theme-packs-work/index.md",
+    "jsonLdId": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/#webpage"
   },
   {
     "slug": "/answers/how-does-mdwrk-store-markdown-locally/",
@@ -39,7 +43,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/answers/how-does-mdwrk-store-markdown-locally/index.md",
+    "jsonLdId": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/#webpage"
   },
   {
     "slug": "/answers/what-is-a-local-first-markdown-workspace/",
@@ -53,7 +59,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/answers/what-is-a-local-first-markdown-workspace/index.md",
+    "jsonLdId": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/#webpage"
   },
   {
     "slug": "/answers/what-is-an-offline-markdown-editor/",
@@ -67,7 +75,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/answers/what-is-an-offline-markdown-editor/index.md",
+    "jsonLdId": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/#webpage"
   },
   {
     "slug": "/updates/launch/",
@@ -85,7 +95,9 @@
       "static",
       "markdown"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/launch/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/launch/#webpage"
   },
   {
     "slug": "/compare/",
@@ -99,7 +111,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/#webpage"
   },
   {
     "slug": "/compare/local-first-markdown-editors/",
@@ -113,7 +127,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/local-first-markdown-editors/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/local-first-markdown-editors/#webpage"
   },
   {
     "slug": "/compare/mdwrk-vs-obsidian/",
@@ -127,7 +143,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/mdwrk-vs-obsidian/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/mdwrk-vs-obsidian/#webpage"
   },
   {
     "slug": "/compare/mdwrk-vs-typora/",
@@ -141,7 +159,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/mdwrk-vs-typora/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/mdwrk-vs-typora/#webpage"
   },
   {
     "slug": "/compare/mdwrk-vs-vscode-markdown/",
@@ -155,7 +175,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/mdwrk-vs-vscode-markdown/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/mdwrk-vs-vscode-markdown/#webpage"
   },
   {
     "slug": "/docs/extensions/",
@@ -173,7 +195,9 @@
       "docs",
       "runtime"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/extensions/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/extensions/#webpage"
   },
   {
     "slug": "/docs/quickstart/",
@@ -192,7 +216,9 @@
       "quickstart",
       "markdown"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/quickstart/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/quickstart/#webpage"
   },
   {
     "slug": "/docs/theme-packs/",
@@ -210,7 +236,9 @@
       "docs",
       "styling"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/theme-packs/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/theme-packs/#webpage"
   },
   {
     "slug": "/es/docs/quickstart/",
@@ -230,7 +258,9 @@
       "quickstart",
       "markdown"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/es/docs/quickstart/index.md",
+    "jsonLdId": "https://mdwrk.com/es/docs/quickstart/#webpage"
   },
   {
     "slug": "/features/extension-runtime/",
@@ -244,7 +274,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/extension-runtime/index.md",
+    "jsonLdId": "https://mdwrk.com/features/extension-runtime/#webpage"
   },
   {
     "slug": "/features/github-sync/",
@@ -258,7 +290,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/github-sync/index.md",
+    "jsonLdId": "https://mdwrk.com/features/github-sync/#webpage"
   },
   {
     "slug": "/features/",
@@ -272,7 +306,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/index.md",
+    "jsonLdId": "https://mdwrk.com/features/#webpage"
   },
   {
     "slug": "/features/indexeddb-markdown-storage/",
@@ -286,7 +322,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/indexeddb-markdown-storage/index.md",
+    "jsonLdId": "https://mdwrk.com/features/indexeddb-markdown-storage/#webpage"
   },
   {
     "slug": "/features/live-preview/",
@@ -300,7 +338,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/live-preview/index.md",
+    "jsonLdId": "https://mdwrk.com/features/live-preview/#webpage"
   },
   {
     "slug": "/features/pwa-markdown-editor/",
@@ -314,7 +354,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/pwa-markdown-editor/index.md",
+    "jsonLdId": "https://mdwrk.com/features/pwa-markdown-editor/#webpage"
   },
   {
     "slug": "/",
@@ -332,7 +374,9 @@
       "local-first",
       "static-lander"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/index.md",
+    "jsonLdId": "https://mdwrk.com/#webpage"
   },
   {
     "slug": "/packages/extension-runtime/",
@@ -346,7 +390,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/packages/extension-runtime/index.md",
+    "jsonLdId": "https://mdwrk.com/packages/extension-runtime/#webpage"
   },
   {
     "slug": "/packages/markdown-editor-react/",
@@ -360,7 +406,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/packages/markdown-editor-react/index.md",
+    "jsonLdId": "https://mdwrk.com/packages/markdown-editor-react/#webpage"
   },
   {
     "slug": "/packages/markdown-renderer-core/",
@@ -374,7 +422,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/packages/markdown-renderer-core/index.md",
+    "jsonLdId": "https://mdwrk.com/packages/markdown-renderer-core/#webpage"
   },
   {
     "slug": "/packages/markdown-renderer-react/",
@@ -388,7 +438,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/packages/markdown-renderer-react/index.md",
+    "jsonLdId": "https://mdwrk.com/packages/markdown-renderer-react/#webpage"
   },
   {
     "slug": "/packages/theme-contract/",
@@ -402,7 +454,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/packages/theme-contract/index.md",
+    "jsonLdId": "https://mdwrk.com/packages/theme-contract/#webpage"
   },
   {
     "slug": "/privacy/",
@@ -420,7 +474,9 @@
       "local-first",
       "policy"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/privacy/index.md",
+    "jsonLdId": "https://mdwrk.com/privacy/#webpage"
   },
   {
     "slug": "/proof/browser-support/",
@@ -434,7 +490,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/proof/browser-support/index.md",
+    "jsonLdId": "https://mdwrk.com/proof/browser-support/#webpage"
   },
   {
     "slug": "/proof/markdown-support/",
@@ -448,7 +506,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/proof/markdown-support/index.md",
+    "jsonLdId": "https://mdwrk.com/proof/markdown-support/#webpage"
   },
   {
     "slug": "/proof/package-surfaces/",
@@ -462,7 +522,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/proof/package-surfaces/index.md",
+    "jsonLdId": "https://mdwrk.com/proof/package-surfaces/#webpage"
   },
   {
     "slug": "/security/",
@@ -480,7 +542,9 @@
       "verification",
       "extensions"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/security/index.md",
+    "jsonLdId": "https://mdwrk.com/security/#webpage"
   },
   {
     "slug": "/trust/privacy-boundary/",
@@ -494,7 +558,9 @@
     "locale": "en",
     "updatedAt": "2026-05-05",
     "tags": [],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/trust/privacy-boundary/index.md",
+    "jsonLdId": "https://mdwrk.com/trust/privacy-boundary/#webpage"
   },
   {
     "slug": "/docs/",
@@ -510,7 +576,9 @@
     "tags": [
       "docs"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/#webpage"
   },
   {
     "slug": "/docs/getting-started/installation/",
@@ -526,7 +594,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/installation/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/installation/#webpage"
   },
   {
     "slug": "/docs/getting-started/browser-use/",
@@ -542,7 +612,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/browser-use/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/browser-use/#webpage"
   },
   {
     "slug": "/docs/getting-started/pwa-installation/",
@@ -558,7 +630,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/pwa-installation/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/pwa-installation/#webpage"
   },
   {
     "slug": "/docs/getting-started/local-setup/",
@@ -574,7 +648,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/local-setup/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/local-setup/#webpage"
   },
   {
     "slug": "/docs/getting-started/standalone-modules/",
@@ -590,7 +666,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/standalone-modules/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/standalone-modules/#webpage"
   },
   {
     "slug": "/docs/getting-started/configuration/",
@@ -606,7 +684,9 @@
       "docs",
       "Getting Started"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/getting-started/configuration/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/getting-started/configuration/#webpage"
   },
   {
     "slug": "/features/editor-basics/",
@@ -622,7 +702,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/editor-basics/index.md",
+    "jsonLdId": "https://mdwrk.com/features/editor-basics/#webpage"
   },
   {
     "slug": "/features/advanced-formatting/",
@@ -638,7 +720,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/advanced-formatting/index.md",
+    "jsonLdId": "https://mdwrk.com/features/advanced-formatting/#webpage"
   },
   {
     "slug": "/features/rendering-and-preview/",
@@ -654,7 +738,63 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/rendering-and-preview/index.md",
+    "jsonLdId": "https://mdwrk.com/features/rendering-and-preview/#webpage"
+  },
+  {
+    "slug": "/features/checkbox-autocomplete/",
+    "url": "https://mdwrk.com/features/checkbox-autocomplete/",
+    "title": "Checkbox Autocomplete | MdWrk Features",
+    "description": "Checkbox autocomplete documents how MdWrk turns list authoring into task-list Markdown while preserving plain-text portability.",
+    "h1": "Checkbox Autocomplete",
+    "intent": "understand checkbox autocomplete in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/checkbox-autocomplete/index.md",
+    "jsonLdId": "https://mdwrk.com/features/checkbox-autocomplete/#webpage"
+  },
+  {
+    "slug": "/features/text-wrap-previewer/",
+    "url": "https://mdwrk.com/features/text-wrap-previewer/",
+    "title": "Text Wrap Previewer | MdWrk Features",
+    "description": "Text wrap previewer documents how MdWrk keeps source wrapping, preview wrapping, and line-number rhythm readable across pane sizes.",
+    "h1": "Text Wrap Previewer",
+    "intent": "understand text wrap previewer in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/text-wrap-previewer/index.md",
+    "jsonLdId": "https://mdwrk.com/features/text-wrap-previewer/#webpage"
+  },
+  {
+    "slug": "/features/view-toolbar/",
+    "url": "https://mdwrk.com/features/view-toolbar/",
+    "title": "View Toolbar | MdWrk Features",
+    "description": "View toolbar documents the MdWrk controls for switching editor, split, and preview modes while keeping export and formatting actions discoverable.",
+    "h1": "View Toolbar",
+    "intent": "understand view toolbar in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/view-toolbar/index.md",
+    "jsonLdId": "https://mdwrk.com/features/view-toolbar/#webpage"
   },
   {
     "slug": "/features/offline-markdown-editor/",
@@ -670,7 +810,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/offline-markdown-editor/index.md",
+    "jsonLdId": "https://mdwrk.com/features/offline-markdown-editor/#webpage"
   },
   {
     "slug": "/features/local-first-markdown-workspace/",
@@ -686,7 +828,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/local-first-markdown-workspace/index.md",
+    "jsonLdId": "https://mdwrk.com/features/local-first-markdown-workspace/#webpage"
   },
   {
     "slug": "/features/privacy-first-markdown-editor/",
@@ -702,7 +846,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/privacy-first-markdown-editor/index.md",
+    "jsonLdId": "https://mdwrk.com/features/privacy-first-markdown-editor/#webpage"
   },
   {
     "slug": "/features/markdown-file-manager/",
@@ -718,7 +864,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/markdown-file-manager/index.md",
+    "jsonLdId": "https://mdwrk.com/features/markdown-file-manager/#webpage"
   },
   {
     "slug": "/features/markdown-preview-editor/",
@@ -734,7 +882,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/markdown-preview-editor/index.md",
+    "jsonLdId": "https://mdwrk.com/features/markdown-preview-editor/#webpage"
   },
   {
     "slug": "/features/extension-host/",
@@ -750,7 +900,27 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/extension-host/index.md",
+    "jsonLdId": "https://mdwrk.com/features/extension-host/#webpage"
+  },
+  {
+    "slug": "/features/desktop-app-boundary/",
+    "url": "https://mdwrk.com/features/desktop-app-boundary/",
+    "title": "Desktop App Boundary | MdWrk Features",
+    "description": "The desktop app boundary explains how MdWrk separates the browser workspace, Electron shell, preload bridge, and host filesystem access.",
+    "h1": "Desktop App Boundary",
+    "intent": "understand desktop app boundary in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/desktop-app-boundary/index.md",
+    "jsonLdId": "https://mdwrk.com/features/desktop-app-boundary/#webpage"
   },
   {
     "slug": "/features/theme-packs/",
@@ -766,7 +936,9 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/theme-packs/index.md",
+    "jsonLdId": "https://mdwrk.com/features/theme-packs/#webpage"
   },
   {
     "slug": "/features/developer-documentation/",
@@ -782,7 +954,45 @@
       "features",
       "Features"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/features/developer-documentation/index.md",
+    "jsonLdId": "https://mdwrk.com/features/developer-documentation/#webpage"
+  },
+  {
+    "slug": "/features/markdown-profile-architecture/",
+    "url": "https://mdwrk.com/features/markdown-profile-architecture/",
+    "title": "Markdown Profile Architecture | MdWrk Features",
+    "description": "Markdown profile architecture describes how MdWrk separates CommonMark, GFM, custom profile options, renderer configuration, and evidence snapshots.",
+    "h1": "Markdown Profile Architecture",
+    "intent": "understand markdown profile architecture in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/markdown-profile-architecture/index.md",
+    "jsonLdId": "https://mdwrk.com/features/markdown-profile-architecture/#webpage"
+  },
+  {
+    "slug": "/features/uix-responsive-contract/",
+    "url": "https://mdwrk.com/features/uix-responsive-contract/",
+    "title": "UIX Responsive Contract | MdWrk Features",
+    "description": "The UIX responsive contract documents MdWrk viewport bands, aspect-ratio bands, height tiers, device classes, and theme responsibilities.",
+    "h1": "UIX Responsive Contract",
+    "intent": "understand uix responsive contract in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/uix-responsive-contract/index.md",
+    "jsonLdId": "https://mdwrk.com/features/uix-responsive-contract/#webpage"
   },
   {
     "slug": "/docs/github-sync/",
@@ -798,7 +1008,9 @@
       "docs",
       "Integrations"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/github-sync/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/github-sync/#webpage"
   },
   {
     "slug": "/docs/authoring/overview/",
@@ -814,7 +1026,9 @@
       "docs",
       "Authoring"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/overview/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/overview/#webpage"
   },
   {
     "slug": "/docs/authoring/extensions/",
@@ -830,7 +1044,27 @@
       "docs",
       "Authoring"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/extensions/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/extensions/#webpage"
+  },
+  {
+    "slug": "/docs/authoring/extension-authoring-guide/",
+    "url": "https://mdwrk.com/docs/authoring/extension-authoring-guide/",
+    "title": "Extension Authoring Guide | MdWrk Docs",
+    "description": "The extension authoring guide gives package authors the current MdWrk workflow for manifests, host APIs, runtime activation, tests, bundles, and publishing artifacts.",
+    "h1": "Extension Authoring Guide",
+    "intent": "learn extension authoring guide in MdWrk",
+    "contentType": "docs",
+    "locale": "en",
+    "updatedAt": "2026-05-06",
+    "tags": [
+      "docs",
+      "Authoring"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/extension-authoring-guide/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/extension-authoring-guide/#webpage"
   },
   {
     "slug": "/docs/authoring/theme-packs/",
@@ -846,7 +1080,9 @@
       "docs",
       "Authoring"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/theme-packs/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/theme-packs/#webpage"
   },
   {
     "slug": "/docs/authoring/language-packs/",
@@ -862,7 +1098,9 @@
       "docs",
       "Authoring"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/language-packs/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/language-packs/#webpage"
   },
   {
     "slug": "/docs/extensions/extension-platform/",
@@ -878,7 +1116,9 @@
       "docs",
       "Extensions"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/extensions/extension-platform/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/extensions/extension-platform/#webpage"
   },
   {
     "slug": "/docs/extensions/theme-studio-and-host-surfaces/",
@@ -894,7 +1134,9 @@
       "docs",
       "Extensions"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/extensions/theme-studio-and-host-surfaces/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/extensions/theme-studio-and-host-surfaces/#webpage"
   },
   {
     "slug": "/compare/obsidian/",
@@ -910,7 +1152,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/obsidian/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/obsidian/#webpage"
   },
   {
     "slug": "/compare/typora/",
@@ -926,7 +1170,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/typora/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/typora/#webpage"
   },
   {
     "slug": "/compare/code/",
@@ -942,7 +1188,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/code/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/code/#webpage"
   },
   {
     "slug": "/compare/marktext/",
@@ -958,7 +1206,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/marktext/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/marktext/#webpage"
   },
   {
     "slug": "/compare/zettlr/",
@@ -974,7 +1224,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/zettlr/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/zettlr/#webpage"
   },
   {
     "slug": "/compare/notion/",
@@ -990,7 +1242,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/notion/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/notion/#webpage"
   },
   {
     "slug": "/compare/logseq/",
@@ -1006,7 +1260,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/logseq/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/logseq/#webpage"
   },
   {
     "slug": "/compare/standard-markdown-editors/",
@@ -1022,7 +1278,9 @@
       "compare",
       "Compares"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/compare/standard-markdown-editors/index.md",
+    "jsonLdId": "https://mdwrk.com/compare/standard-markdown-editors/#webpage"
   },
   {
     "slug": "/docs/archive/ui-refresh-1-3-28/",
@@ -1038,7 +1296,9 @@
       "docs",
       "Archive"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/archive/ui-refresh-1-3-28/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/archive/ui-refresh-1-3-28/#webpage"
   },
   {
     "slug": "/docs/archive/ui-refresh-1-3-29/",
@@ -1054,7 +1314,9 @@
       "docs",
       "Archive"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/docs/archive/ui-refresh-1-3-29/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/archive/ui-refresh-1-3-29/#webpage"
   },
   {
     "slug": "/updates/",
@@ -1070,7 +1332,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/#webpage"
   },
   {
     "slug": "/updates/settings-simplification-for-daily-flow/",
@@ -1086,7 +1350,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/settings-simplification-for-daily-flow/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/settings-simplification-for-daily-flow/#webpage"
   },
   {
     "slug": "/updates/docs-surface-realignment/",
@@ -1102,7 +1368,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/docs-surface-realignment/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/docs-surface-realignment/#webpage"
   },
   {
     "slug": "/updates/extension-host-rollout/",
@@ -1118,7 +1386,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/extension-host-rollout/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/extension-host-rollout/#webpage"
   },
   {
     "slug": "/updates/workspace-files-and-git-ops-packages/",
@@ -1134,7 +1404,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/workspace-files-and-git-ops-packages/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/workspace-files-and-git-ops-packages/#webpage"
   },
   {
     "slug": "/updates/desktop-release-and-android-verification/",
@@ -1150,7 +1422,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/desktop-release-and-android-verification/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/desktop-release-and-android-verification/#webpage"
   },
   {
     "slug": "/updates/retained-client-versions-and-desktop-shell/",
@@ -1166,7 +1440,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/retained-client-versions-and-desktop-shell/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/retained-client-versions-and-desktop-shell/#webpage"
   },
   {
     "slug": "/updates/screenshot-matrix-and-browser-sidebars/",
@@ -1182,7 +1458,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/screenshot-matrix-and-browser-sidebars/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/screenshot-matrix-and-browser-sidebars/#webpage"
   },
   {
     "slug": "/updates/extension-compatibility-and-publish-gates/",
@@ -1198,7 +1476,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/extension-compatibility-and-publish-gates/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/extension-compatibility-and-publish-gates/#webpage"
   },
   {
     "slug": "/updates/governed-releases-and-package-docs/",
@@ -1214,7 +1494,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/governed-releases-and-package-docs/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/governed-releases-and-package-docs/#webpage"
   },
   {
     "slug": "/updates/client-split-out-backstory/",
@@ -1230,7 +1512,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/client-split-out-backstory/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/client-split-out-backstory/#webpage"
   },
   {
     "slug": "/updates/pwa-install-and-zoom-controls/",
@@ -1246,7 +1530,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/pwa-install-and-zoom-controls/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/#webpage"
   },
   {
     "slug": "/updates/responsive-authoring-and-export/",
@@ -1262,7 +1548,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/responsive-authoring-and-export/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/responsive-authoring-and-export/#webpage"
   },
   {
     "slug": "/updates/markdown-workspace-launch/",
@@ -1278,7 +1566,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/markdown-workspace-launch/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/markdown-workspace-launch/#webpage"
   },
   {
     "slug": "/updates/author/cobycloud/",
@@ -1294,7 +1584,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/author/cobycloud/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/author/cobycloud/#webpage"
   },
   {
     "slug": "/updates/archive/2026-05/",
@@ -1310,7 +1602,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/archive/2026-05/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/archive/2026-05/#webpage"
   },
   {
     "slug": "/updates/archive/2026-04/",
@@ -1326,7 +1620,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/archive/2026-04/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/archive/2026-04/#webpage"
   },
   {
     "slug": "/updates/archive/2026-03/",
@@ -1342,7 +1638,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/archive/2026-03/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/archive/2026-03/#webpage"
   },
   {
     "slug": "/updates/archive/2026-01/",
@@ -1358,7 +1656,9 @@
     "tags": [
       "updates"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/updates/archive/2026-01/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/archive/2026-01/#webpage"
   },
   {
     "slug": "/legal/privacy/",
@@ -1373,7 +1673,9 @@
     "tags": [
       "legal"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/legal/privacy/index.md",
+    "jsonLdId": "https://mdwrk.com/legal/privacy/#webpage"
   },
   {
     "slug": "/legal/terms/",
@@ -1388,6 +1690,8 @@
     "tags": [
       "legal"
     ],
-    "llmsInclude": true
+    "llmsInclude": true,
+    "markdownMirror": "/legal/terms/index.md",
+    "jsonLdId": "https://mdwrk.com/legal/terms/#webpage"
   }
 ]

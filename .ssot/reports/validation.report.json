@@ -13,18 +13,6 @@
     "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
     "Feature feat:gfm-profile requires feat:commonmark-conformance-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
     "Feature feat:git-ops-oidc requires feat:oidc-adapter to be passing: Required feature feat:oidc-adapter has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-parser-profile requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:commonmark-conformance-profile is not implemented",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:custom-flavored-markdown-profile is not implemented",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile has non-passed linked evidence",
-    "Feature feat:mdwrk-custom-previewer-profiles requires feat:custom-flavored-markdown-profile to be passing: Required feature feat:gfm-profile is not implemented",
     "profiles.prf:commonmark-editing-preview is active but does not currently pass evaluation",
     "profiles.prf:edit-in-renderer-profile is active but does not currently pass evaluation",
     "profiles.prf:editor-authoring-default is active but does not currently pass evaluation",
@@ -34,10 +22,10 @@
   "summary": {
     "counts": {
       "features": 325,
-      "profiles": 5,
-      "tests": 64,
-      "claims": 29,
-      "evidence": 63,
+      "profiles": 6,
+      "tests": 72,
+      "claims": 36,
+      "evidence": 69,
       "issues": 3,
       "risks": 0,
       "boundaries": 7,
@@ -46,7 +34,7 @@
       "specs": 90
     },
     "profile_status": {
-      "passing": 5,
+      "passing": 6,
       "failing": 0,
       "draft": 0
     }

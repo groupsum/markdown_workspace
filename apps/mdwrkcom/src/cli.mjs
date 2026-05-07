@@ -43,6 +43,24 @@ const npmRepoUrl = process.env.VITE_NPM_REPO_URL || 'https://www.npmjs.com/org/m
 const xProfileUrl = process.env.VITE_X_URL || 'https://x.com/swarmauri';
 const communityUrl = process.env.VITE_COMMUNITY_URL || '#';
 
+const AI_CRAWLER_POLICY = Object.freeze([
+  { userAgent: '*', allow: ['/'], category: 'search-inclusion', purpose: 'general public indexing' },
+  { userAgent: 'OAI-SearchBot', allow: ['/'], category: 'answer-retrieval', purpose: 'OpenAI search and answer retrieval' },
+  { userAgent: 'ChatGPT-User', allow: ['/'], category: 'answer-retrieval', purpose: 'user-initiated browsing and answer retrieval' },
+  { userAgent: 'GPTBot', disallow: ['/'], category: 'training-ingestion', purpose: 'OpenAI model training ingestion' },
+  { userAgent: 'CCBot', disallow: ['/'], category: 'training-ingestion', purpose: 'Common Crawl model training ingestion' },
+]);
+
+const DISCOVERY_ARTIFACTS = Object.freeze([
+  'sitemap.xml',
+  'robots.txt',
+  'llms.txt',
+  'llms-full.txt',
+  'content-index.json',
+  'content-registry.json',
+  'jsonld-graph.json',
+]);
+
 const CONTENT_TYPES = new Set([
   'landing',
   'feature',
@@ -626,6 +644,55 @@ const getExplicitFeaturedImage = (frontmatter) => {
 
 const getArticleMetadataImage = (entry) =>
   getExplicitFeaturedImage(entry.frontmatter) || extractFirstImage(entry.body) || null;
+
+const metadataImageFor = (entry) => {
+  const metadataImage = getArticleMetadataImage(entry);
+  return {
+    src: toAbsoluteUrl(metadataImage?.src),
+    alt: metadataImage?.alt || entry.frontmatter.h1 || 'MdWrk',
+  };
+};
+
+const openGraphTypeFor = (entry) =>
+  ['docs', 'update', 'comparison', 'package', 'feature', 'privacy', 'security', 'faq'].includes(entry.frontmatter.contentType)
+    ? 'article'
+    : 'website';
+
+const xCardTypeFor = (entry) => (
+  metadataImageFor(entry).src === defaultImage ? 'summary' : 'summary_large_image'
+);
+
+const renderDiscoveryMetaTags = (entry, registry) => {
+  const image = metadataImageFor(entry);
+  const type = openGraphTypeFor(entry);
+  return [
+    `<title>${escapeHtml(entry.frontmatter.title)}</title>`,
+    `<meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">`,
+    `<link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">`,
+    renderHeadAlternateLinks(entry, registry),
+    `<meta name="robots" content="${entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow'}">`,
+    '<meta name="application-name" content="MdWrk">',
+    `<meta property="og:type" content="${escapeAttribute(type)}">`,
+    '<meta property="og:site_name" content="MdWrk">',
+    `<meta property="og:title" content="${escapeAttribute(entry.frontmatter.title)}">`,
+    `<meta property="og:description" content="${escapeAttribute(entry.frontmatter.description)}">`,
+    `<meta property="og:url" content="${escapeAttribute(entry.frontmatter.canonical)}">`,
+    `<meta property="og:image" content="${escapeAttribute(image.src)}">`,
+    `<meta property="og:image:alt" content="${escapeAttribute(image.alt)}">`,
+    `<meta name="twitter:card" content="${escapeAttribute(xCardTypeFor(entry))}">`,
+    `<meta name="twitter:title" content="${escapeAttribute(entry.frontmatter.title)}">`,
+    `<meta name="twitter:description" content="${escapeAttribute(entry.frontmatter.description)}">`,
+    `<meta name="twitter:image" content="${escapeAttribute(image.src)}">`,
+    `<meta name="twitter:image:alt" content="${escapeAttribute(image.alt)}">`,
+    `<meta name="DC.title" content="${escapeAttribute(entry.frontmatter.title)}">`,
+    `<meta name="DC.description" content="${escapeAttribute(entry.frontmatter.description)}">`,
+    `<meta name="DC.identifier" content="${escapeAttribute(entry.frontmatter.canonical)}">`,
+    `<meta name="DC.language" content="${escapeAttribute(localeToHrefLang(entry.frontmatter.locale))}">`,
+    `<meta name="DC.date" content="${escapeAttribute(entry.frontmatter.updatedAt)}">`,
+    '<meta name="DC.publisher" content="MdWrk">',
+    '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
+  ].filter(Boolean).join('\n    ');
+};
 
 const buildDefaultFaqs = ({ title, description, contentType }) => {
   const normalizedTitle = String(title || 'this MdWrk page')
@@ -1393,8 +1460,14 @@ const breadcrumbsFor = (entry, registry) => {
 
 const jsonLdFor = (entry, registry) => {
   const url = entry.frontmatter.canonical;
-  const metadataImage = getArticleMetadataImage(entry);
-  const image = toAbsoluteUrl(metadataImage?.src);
+  const image = metadataImageFor(entry).src;
+  const primaryType = (() => {
+    if (entry.frontmatter.contentType === 'update') return 'BlogPosting';
+    if (entry.frontmatter.contentType === 'docs') return 'TechArticle';
+    if (entry.frontmatter.contentType === 'package') return 'SoftwareSourceCode';
+    if (['feature', 'comparison', 'privacy', 'security', 'faq'].includes(entry.frontmatter.contentType)) return 'Article';
+    return 'WebPage';
+  })();
   const graph = [
     {
       '@type': 'WebPage',
@@ -1406,8 +1479,32 @@ const jsonLdFor = (entry, registry) => {
       dateModified: entry.frontmatter.updatedAt,
       image,
       inLanguage: localeToHrefLang(entry.frontmatter.locale),
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      publisher: { '@id': `${siteUrl}/#organization` },
     },
   ];
+  if (primaryType !== 'WebPage') {
+    const primaryEntity = {
+      '@type': primaryType,
+      '@id': `${url}#primary`,
+      mainEntityOfPage: { '@id': `${url}#webpage` },
+      headline: entry.frontmatter.h1,
+      name: entry.frontmatter.title,
+      description: entry.frontmatter.description,
+      url,
+      image,
+      dateModified: entry.frontmatter.updatedAt,
+      inLanguage: localeToHrefLang(entry.frontmatter.locale),
+      publisher: { '@id': `${siteUrl}/#organization` },
+      creator: { '@id': `${siteUrl}/#organization` },
+    };
+    if (entry.frontmatter.contentType === 'package') {
+      primaryEntity.codeRepository = githubRepoUrl;
+      primaryEntity.programmingLanguage = 'TypeScript';
+    }
+    graph[0].mainEntity = { '@id': `${url}#primary` };
+    graph.push(primaryEntity);
+  }
   if (entry.frontmatter.slug === '/') {
     graph.push(
       {
@@ -1415,6 +1512,7 @@ const jsonLdFor = (entry, registry) => {
         '@id': `${siteUrl}/#organization`,
         name: 'MdWrk',
         url: `${siteUrl}/`,
+        logo: defaultImage,
       },
       {
         '@type': 'SoftwareApplication',
@@ -2060,16 +2158,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${renderThemeBootstrap()}
-    <title>${escapeHtml(entry.frontmatter.title)}</title>
-    <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
-    <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
-    ${renderHeadAlternateLinks(entry, registry)}
-    <meta name="robots" content="${entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow'}">
-    <meta name="application-name" content="MdWrk">
-    <meta property="og:site_name" content="MdWrk">
-    <meta property="og:image" content="${escapeAttribute(defaultImage)}">
-    <meta name="twitter:image" content="${escapeAttribute(defaultImage)}">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    ${renderDiscoveryMetaTags(entry, registry)}
     <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
     ${assetTags}
   </head>
@@ -2174,11 +2263,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
 
 const renderHtmlPage = (entry, registry, assetTags = '') => {
   if (entry.frontmatter.slug === '/') return renderStaticHome(entry, registry, assetTags);
-  const robots = entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow';
   const isDocs = entry.frontmatter.slug.startsWith('/docs/');
-  const metadataImage = getArticleMetadataImage(entry);
-  const image = toAbsoluteUrl(metadataImage?.src);
-  const imageAlt = metadataImage?.alt || entry.frontmatter.h1 || 'MdWrk';
   const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
   const toc = renderArticleToc(entry);
   return `<!doctype html>
@@ -2187,18 +2272,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${renderThemeBootstrap()}
-    <title>${escapeHtml(entry.frontmatter.title)}</title>
-    <meta name="description" content="${escapeAttribute(entry.frontmatter.description)}">
-    <link rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}">
-    ${renderHeadAlternateLinks(entry, registry)}
-    <meta name="robots" content="${robots}">
-    <meta name="application-name" content="MdWrk">
-    <meta property="og:site_name" content="MdWrk">
-    <meta property="og:image" content="${escapeAttribute(image)}">
-    <meta property="og:image:alt" content="${escapeAttribute(imageAlt)}">
-    <meta name="twitter:image" content="${escapeAttribute(image)}">
-    <meta name="twitter:image:alt" content="${escapeAttribute(imageAlt)}">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    ${renderDiscoveryMetaTags(entry, registry)}
     <script type="application/ld+json">${JSON.stringify(jsonLdFor(entry, registry))}</script>
     ${assetTags}
   </head>
@@ -2285,7 +2359,20 @@ const build = () => {
     const alternates = alternateLinksFor(entry, registry);
     return `  <url><loc>${escapeXml(entry.frontmatter.canonical)}</loc><lastmod>${entry.frontmatter.updatedAt}</lastmod>${alternates.map(item => `<xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`).join('')}</url>`;
   }).join('\n')}\n</urlset>\n`);
-  writeFile(path.join(distRoot, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+  writeFile(path.join(distRoot, 'robots.txt'), [
+    '# MdWrk governed crawler policy',
+    '# Categories: search-inclusion, answer-retrieval, training-ingestion',
+    ...AI_CRAWLER_POLICY.flatMap(policy => [
+      `User-agent: ${policy.userAgent}`,
+      `# Category: ${policy.category}`,
+      `# Purpose: ${policy.purpose}`,
+      ...(policy.allow ?? []).map(value => `Allow: ${value}`),
+      ...(policy.disallow ?? []).map(value => `Disallow: ${value}`),
+      '',
+    ]),
+    `Sitemap: ${siteUrl}/sitemap.xml`,
+    '',
+  ].join('\n'));
   writeFile(path.join(distRoot, 'content-index.json'), JSON.stringify(indexable.map(entry => ({
     slug: entry.frontmatter.slug,
     url: entry.frontmatter.canonical,
@@ -2301,6 +2388,8 @@ const build = () => {
     updatedAt: entry.frontmatter.updatedAt,
     tags: entry.frontmatter.tags,
     llmsInclude: entry.frontmatter.llmsInclude,
+    markdownMirror: entry.frontmatter.llmsInclude ? `${entry.frontmatter.slug}index.md` : null,
+    jsonLdId: `${entry.frontmatter.canonical}#webpage`,
   })), null, 2) + '\n');
   writeFile(path.join(distRoot, 'content-registry.json'), JSON.stringify(registry.entries.map(entry => ({
     sourcePath: entry.sourcePath,
@@ -2311,6 +2400,14 @@ const build = () => {
       headings: entry.rendered.headings,
       links: entry.rendered.links,
       wordCount: entry.rendered.wordCount,
+    },
+    discovery: {
+      canonical: entry.frontmatter.canonical,
+      sitemap: !entry.frontmatter.noindex,
+      robots: entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow',
+      llms: !entry.frontmatter.noindex && entry.frontmatter.llmsInclude,
+      markdownMirror: !entry.frontmatter.noindex && entry.frontmatter.llmsInclude,
+      jsonLdGraphIds: jsonLdFor(entry, registry)['@graph'].map(node => node['@id']).filter(Boolean),
     },
   })), null, 2) + '\n');
   writeFile(path.join(distRoot, 'jsonld-graph.json'), JSON.stringify({
@@ -2352,6 +2449,67 @@ const extractMainText = (html) => {
     .trim();
 };
 
+const extractMetaContent = (html, selector) => {
+  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const propertyPattern = new RegExp(`<meta\\b(?=[^>]*(?:name|property)="${escapedSelector}")[^>]*\\bcontent="([^"]*)"[^>]*>`, 'i');
+  return propertyPattern.exec(html)?.[1] ?? '';
+};
+
+const extractJsonLd = (html) => {
+  const raw = /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/i.exec(html)?.[1];
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+};
+
+const normalizeUrlSet = (values) => new Set(values.map(value => String(value ?? '').trim()).filter(Boolean));
+
+const readJsonArtifact = (name, failures) => {
+  const artifactPath = path.join(distRoot, name);
+  if (!fs.existsSync(artifactPath)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(artifactPath, 'utf8'));
+  } catch (error) {
+    failures.push(`${name}: invalid JSON (${error.message})`);
+    return null;
+  }
+};
+
+const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms }) => {
+  const llmsFull = fs.existsSync(path.join(distRoot, 'llms-full.txt')) ? fs.readFileSync(path.join(distRoot, 'llms-full.txt'), 'utf8') : '';
+  const contentIndex = readJsonArtifact('content-index.json', failures) ?? [];
+  const contentRegistry = readJsonArtifact('content-registry.json', failures) ?? [];
+  const jsonLdGraph = readJsonArtifact('jsonld-graph.json', failures);
+  const indexUrls = normalizeUrlSet(Array.isArray(contentIndex) ? contentIndex.map(entry => entry.url) : []);
+  const registryCanonicals = normalizeUrlSet(Array.isArray(contentRegistry) ? contentRegistry.map(entry => entry.discovery?.canonical) : []);
+  const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
+  const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
+  const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
+
+  for (const artifact of DISCOVERY_ARTIFACTS) {
+    if (!fs.existsSync(path.join(distRoot, artifact))) failures.push(`missing dist/${artifact}`);
+  }
+  for (const entry of indexable) {
+    if (!sitemap.includes(`<loc>${escapeXml(entry.frontmatter.canonical)}</loc>`)) failures.push(`${entry.frontmatter.slug}: sitemap missing canonical URL`);
+    if (!indexUrls.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-index missing canonical URL`);
+    if (!registryCanonicals.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-registry missing canonical URL`);
+    if (!graphIds.has(`${entry.frontmatter.canonical}#webpage`)) failures.push(`${entry.frontmatter.slug}: jsonld-graph missing WebPage id`);
+  }
+  for (const entry of llmsEligible) {
+    if (!llms.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: llms.txt missing canonical URL`);
+    if (!llmsFull.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: llms-full.txt missing canonical URL`);
+    if (!llmsFull.includes(entry.rendered.text.slice(0, 80))) failures.push(`${entry.frontmatter.slug}: llms-full.txt missing rendered page text`);
+  }
+  if (/localhost|127\.0\.0\.1|:\d{2,5}\b/i.test(robots)) failures.push('robots.txt contains local host or explicit port policy');
+  for (const policy of AI_CRAWLER_POLICY) {
+    if (!robots.includes(`User-agent: ${policy.userAgent}`)) failures.push(`robots.txt missing ${policy.userAgent} policy`);
+    if (!robots.includes(`# Category: ${policy.category}`)) failures.push(`robots.txt missing ${policy.category} classification`);
+  }
+};
+
 const verify = () => {
   const registry = readStaticRegistry();
   const failures = [];
@@ -2359,7 +2517,7 @@ const verify = () => {
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
   const distFiles = collectFiles(distRoot, file => true);
   if (!distFiles.length) failures.push('dist is empty or missing');
-  for (const required of ['sitemap.xml', 'robots.txt', 'llms.txt', 'llms-full.txt', 'content-index.json', 'content-registry.json', 'jsonld-graph.json']) {
+  for (const required of DISCOVERY_ARTIFACTS) {
     if (!fs.existsSync(path.join(distRoot, required))) failures.push(`missing dist/${required}`);
   }
   const sitemap = fs.existsSync(path.join(distRoot, 'sitemap.xml')) ? fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8') : '';
@@ -2371,6 +2529,7 @@ const verify = () => {
   if (!hasStaticStylesheet) failures.push('missing dist/assets/static.css');
   if (!robots.includes('User-agent: OAI-SearchBot')) failures.push('robots.txt missing OAI-SearchBot policy');
   if (!robots.includes('User-agent: GPTBot')) failures.push('robots.txt missing GPTBot policy');
+  validateDiscoveryArtifacts({ registry, failures, sitemap, robots, llms });
 
   for (const entry of registry.entries) {
     const htmlPath = path.join(routeOutputDir(entry.frontmatter.slug), 'index.html');
@@ -2392,9 +2551,27 @@ const verify = () => {
     if (pageTitleH1Count !== 1) failures.push(`${entry.frontmatter.slug}: must contain exactly one page title H1`);
     if (!html.includes(`<title>${escapeHtml(entry.frontmatter.title)}</title>`)) failures.push(`${entry.frontmatter.slug}: missing title`);
     if (!html.includes('name="description"')) failures.push(`${entry.frontmatter.slug}: missing meta description`);
+    if (extractMetaContent(html, 'og:title') !== escapeAttribute(entry.frontmatter.title)) failures.push(`${entry.frontmatter.slug}: Open Graph title mismatch`);
+    if (extractMetaContent(html, 'og:description') !== escapeAttribute(entry.frontmatter.description)) failures.push(`${entry.frontmatter.slug}: Open Graph description mismatch`);
+    if (extractMetaContent(html, 'og:url') !== escapeAttribute(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: Open Graph URL mismatch`);
+    if (!extractMetaContent(html, 'og:image')) failures.push(`${entry.frontmatter.slug}: Open Graph image missing`);
+    if (extractMetaContent(html, 'twitter:title') !== escapeAttribute(entry.frontmatter.title)) failures.push(`${entry.frontmatter.slug}: X Card title mismatch`);
+    if (extractMetaContent(html, 'twitter:description') !== escapeAttribute(entry.frontmatter.description)) failures.push(`${entry.frontmatter.slug}: X Card description mismatch`);
+    if (!extractMetaContent(html, 'twitter:card')) failures.push(`${entry.frontmatter.slug}: X Card type missing`);
+    if (extractMetaContent(html, 'DC.title') !== escapeAttribute(entry.frontmatter.title)) failures.push(`${entry.frontmatter.slug}: DCMI title mismatch`);
+    if (extractMetaContent(html, 'DC.identifier') !== escapeAttribute(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: DCMI identifier mismatch`);
     if (!html.includes(`<html lang="${escapeAttribute(hrefLangToHtmlLang(entry.frontmatter.locale))}"`)) failures.push(`${entry.frontmatter.slug}: html lang mismatch`);
     if (!html.includes(`rel="canonical" href="${escapeAttribute(entry.frontmatter.canonical)}"`)) failures.push(`${entry.frontmatter.slug}: canonical mismatch`);
     if (!html.includes('type="application/ld+json"')) failures.push(`${entry.frontmatter.slug}: missing JSON-LD`);
+    const jsonLd = extractJsonLd(html);
+    const graph = Array.isArray(jsonLd?.['@graph']) ? jsonLd['@graph'] : [];
+    if (!jsonLd || jsonLd['@context'] !== 'https://schema.org') failures.push(`${entry.frontmatter.slug}: JSON-LD context missing or invalid`);
+    if (!graph.some(node => node['@id'] === `${entry.frontmatter.canonical}#webpage` && node.url === entry.frontmatter.canonical)) {
+      failures.push(`${entry.frontmatter.slug}: JSON-LD WebPage canonical mismatch`);
+    }
+    if (entry.frontmatter.slug !== '/' && !graph.some(node => node['@id'] === `${entry.frontmatter.canonical}#primary`)) {
+      failures.push(`${entry.frontmatter.slug}: JSON-LD primary page entity missing`);
+    }
     for (const alternate of alternateLinksFor(entry, registry)) {
       if (!html.includes(`rel="alternate" hreflang="${escapeAttribute(alternate.hreflang)}" href="${escapeAttribute(alternate.href)}"`)) {
         failures.push(`${entry.frontmatter.slug}: missing hreflang alternate ${alternate.hreflang}`);
@@ -2439,7 +2616,7 @@ const verify = () => {
         if (!fs.existsSync(path.join(distRoot, targetPath.replace(/^\/+/, '')))) failures.push(`${entry.sourcePath}: broken static asset link ${link.href}`);
         continue;
       }
-      const targetSlug = targetPath.endsWith('/') ? targetPath : `${targetPath}/`;
+      const targetSlug = normalizeRouteSlug(targetPath);
       if (!registry.bySlug.has(targetSlug)) failures.push(`${entry.sourcePath}: broken internal link ${link.href}`);
     }
   }

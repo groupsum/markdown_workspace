@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/mdwrkcom",
   "private": true,
-  "version": "0.0.49",
+  "version": "0.0.50",
   "type": "module",
   "scripts": {
     "mdwrkcom": "node ./src/cli.mjs",
@@ -21,6 +21,9 @@
     "validate:feature-content": "node ./scripts/validate-feature-content.mjs",
     "validate:syntax-themes": "node ./scripts/validate-syntax-themes.mjs",
     "validate:international-seo": "node ./scripts/validate-international-seo.mjs",
+    "validate:discoverability-artifacts": "node ./scripts/validate-discoverability-artifacts.mjs",
+    "validate:aeo-content-parity": "node ./scripts/validate-aeo-content-parity.mjs",
+    "validate:ai-crawler-policy": "node ./scripts/validate-ai-crawler-policy.mjs",
     "validate:static-style-contract": "node ./scripts/validate-static-style-contract.mjs",
     "validate:static": "node ./src/cli.mjs validate",
     "build:static": "node ./src/cli.mjs build --out dist-static",
@@ -28,7 +31,7 @@
     "verify:static": "node ./src/cli.mjs verify --out dist-static",
     "verify": "node ./src/cli.mjs verify --out dist",
     "clean": "node ./src/cli.mjs clean --out dist && node ./src/cli.mjs clean --out dist-static",
-    "ci:static": "npm run validate:static && npm run build:static && npm run verify:static && npm run validate:international-seo -- --out dist-static",
+    "ci:static": "npm run validate:static && npm run build:static && npm run verify:static && npm run validate:international-seo -- --out dist-static && npm run validate:discoverability-artifacts -- --out dist-static && npm run validate:aeo-content-parity -- --out dist-static && npm run validate:ai-crawler-policy -- --out dist-static",
     "ci": "npm run build && npm run verify && npm run ci:static",
     "smoke:deployed": "node ./scripts/post-deploy-smoke.mjs",
     "preview": "vite preview",
