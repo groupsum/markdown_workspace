@@ -12,8 +12,16 @@ import type {
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import { createExtensionRuntime } from "../src/runtime.js";
 import { evaluateExtensionCompatibility } from "../src/compatibility.js";
+import { canonicalizeJson, createInMemoryExtensionArtifactTransport, digestText } from "../src/catalog.js";
 import { deriveExtensionIntent } from "../src/intent.js";
-import { createInMemoryExtensionRuntimeStorage, getExtensionConfigKey } from "../src/storage.js";
+import {
+  EXTENSION_INSTALL_INDEX_KEY,
+  createInMemoryExtensionRuntimeStorage,
+  getExtensionConfigKey,
+  getExtensionEnabledStateKey,
+  getInstalledExtensionModuleKey,
+  getInstalledExtensionRecordKey,
+} from "../src/storage.js";
 import { validateExtensionManifest } from "../src/validation.js";
 import type { ExtensionRuntimeRegistrationSink } from "../src/types.js";
 
@@ -180,6 +188,95 @@ const createSink = () => {
   };
 
   return { sink, commands, views, rail, settings, workspaceModules };
+};
+
+const createInstallableCatalogFixture = async () => {
+  const manifest = createManifest("external.catalog-hello", {
+    kind: "external",
+    packageName: "@mdwrk/extension-catalog-hello",
+    displayName: { defaultMessage: "Catalog Hello" },
+    description: { defaultMessage: "Sample external catalog extension." },
+    publisher: "demo-catalog",
+    capabilities: ["view.register", "actionRail.register", "notification.publish", "settings.read"],
+    distribution: {
+      channel: "catalog",
+      format: "esm",
+    },
+  });
+  const moduleCode = `
+const manifest = ${JSON.stringify(manifest)};
+export default {
+  manifest,
+  async activate(context) {
+    context.registerView({
+      id: "external.catalog-hello.view",
+      title: { defaultMessage: "Catalog Hello" },
+      description: { defaultMessage: "Catalog hello view" },
+      location: "panel",
+      allowMultiple: false,
+      render: () => "Catalog Hello"
+    });
+  }
+};
+`;
+  const signedManifest = {
+    schemaVersion: 1,
+    manifest,
+    signature: {
+      keyId: "unsigned-test",
+      algorithm: "ecdsa-p256-sha256",
+      signature: "",
+      signedAt: new Date(0).toISOString(),
+    },
+  };
+  const manifestText = JSON.stringify(manifest);
+  const signedManifestText = JSON.stringify(signedManifest);
+  const catalog = {
+    schemaVersion: 1 as const,
+    generatedAt: new Date(0).toISOString(),
+    publisher: "demo-catalog",
+    extensions: [
+      {
+        entryId: "external.catalog-hello@1.0.0",
+        extensionId: manifest.id,
+        packageName: manifest.packageName,
+        version: manifest.version,
+        displayName: manifest.displayName,
+        description: manifest.description,
+        publisher: manifest.publisher,
+        categories: ["sample"],
+        keywords: ["hello", "catalog"],
+        capabilities: manifest.capabilities,
+        compatibility: manifest.compatibility,
+        supportedLocales: [],
+        urls: {
+          manifest: "https://extensions.example/catalog-hello/manifest.json",
+          signedManifest: "https://extensions.example/catalog-hello/signed-manifest.json",
+          module: "https://extensions.example/catalog-hello/index.js",
+          integrity: "https://extensions.example/catalog-hello/integrity.json",
+        },
+        integrity: {
+          manifest: {
+            algorithm: "sha256" as const,
+            digest: await digestText(canonicalizeJson(manifest)),
+          },
+          module: {
+            algorithm: "sha256" as const,
+            digest: await digestText(moduleCode),
+          },
+        },
+      },
+    ],
+  };
+  return {
+    catalog,
+    manifest,
+    transport: createInMemoryExtensionArtifactTransport({
+      "https://extensions.example/catalog-hello/manifest.json": manifestText,
+      "https://extensions.example/catalog-hello/signed-manifest.json": signedManifestText,
+      "https://extensions.example/catalog-hello/index.js": moduleCode,
+    }),
+  };
 };
 
 describe("extension-runtime", () => {
@@ -439,6 +536,74 @@ describe("extension-runtime", () => {
     await runtime.activate(manifest.id);
     expect(runtime.get(manifest.id)?.status).toBe("active");
     expect(activated).toBe(1);
+  });
+
+  it("retains catalog-installed packages across restarts until explicit removal", async () => {
+    const storage = createInMemoryExtensionRuntimeStorage();
+    const fixture = await createInstallableCatalogFixture();
+    const firstHost = createHost();
+    const firstSink = createSink();
+    const firstRuntime = createExtensionRuntime({
+      host: firstHost.host,
+      registrationSink: firstSink.sink,
+      storage,
+      transport: fixture.transport,
+      trustPolicy: {
+        allowUnsigned: true,
+        allowIntegrityOnly: true,
+        allowedExtensionIds: [fixture.manifest.id],
+        allowedPackageNames: [fixture.manifest.packageName],
+        allowedPublishers: ["demo-catalog"],
+      },
+      now: () => 1000,
+    });
+
+    firstRuntime.registerCatalog(fixture.catalog, { catalogId: "demo-catalog" });
+    await firstRuntime.start();
+    const record = await firstRuntime.installFromCatalogEntry("external.catalog-hello@1.0.0", { autoActivate: true });
+
+    expect(record.installedAt).toBe(1000);
+    expect(firstRuntime.get(fixture.manifest.id)?.source).toBe("installed");
+    expect(firstRuntime.get(fixture.manifest.id)?.status).toBe("active");
+    expect(firstSink.views.map((view) => view.id)).toContain("external.catalog-hello.view");
+    expect(await storage.get(EXTENSION_INSTALL_INDEX_KEY)).toEqual([fixture.manifest.id]);
+
+    await firstRuntime.setEnabled(fixture.manifest.id, false);
+    expect(await storage.get(getExtensionEnabledStateKey(fixture.manifest.id))).toBe(false);
+    await firstRuntime.stop();
+
+    const secondHost = createHost();
+    const secondSink = createSink();
+    const secondRuntime = createExtensionRuntime({
+      host: secondHost.host,
+      registrationSink: secondSink.sink,
+      storage,
+      transport: fixture.transport,
+      trustPolicy: {
+        allowUnsigned: true,
+        allowIntegrityOnly: true,
+        allowedExtensionIds: [fixture.manifest.id],
+        allowedPackageNames: [fixture.manifest.packageName],
+        allowedPublishers: ["demo-catalog"],
+      },
+      now: () => 2000,
+    });
+
+    await secondRuntime.start();
+    expect(secondRuntime.get(fixture.manifest.id)?.source).toBe("installed");
+    expect(secondRuntime.get(fixture.manifest.id)?.enabled).toBe(false);
+    expect(secondRuntime.get(fixture.manifest.id)?.status).toBe("disabled");
+
+    await secondRuntime.activate(fixture.manifest.id);
+    expect(secondRuntime.get(fixture.manifest.id)?.status).toBe("active");
+    expect(secondSink.views.map((view) => view.id)).toContain("external.catalog-hello.view");
+
+    await secondRuntime.removeInstalledExtension(fixture.manifest.id);
+    expect(secondRuntime.get(fixture.manifest.id)).toBeUndefined();
+    expect(await storage.get(EXTENSION_INSTALL_INDEX_KEY)).toEqual([]);
+    expect(await storage.get(getInstalledExtensionRecordKey(fixture.manifest.id))).toBeNull();
+    expect(await storage.get(getInstalledExtensionModuleKey(fixture.manifest.id))).toBeNull();
+    expect(await storage.get(getExtensionEnabledStateKey(fixture.manifest.id))).toBeNull();
   });
 
   it("derives extension intent from manifest capabilities and runtime state", async () => {

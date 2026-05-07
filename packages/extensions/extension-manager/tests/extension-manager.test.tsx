@@ -20,8 +20,11 @@ import type {
 import { EXTENSION_HOST_API_VERSION } from '@mdwrk/extension-host';
 import {
   EXTENSION_RUNTIME_VERSION,
+  canonicalizeJson,
   createExtensionRuntime,
+  createInMemoryExtensionArtifactTransport,
   createInMemoryExtensionRuntimeStorage,
+  digestText,
   type BundledExtensionCatalogEntry,
   type ExtensionRuntimeRegistrationSink,
 } from '@mdwrk/extension-runtime';
@@ -311,6 +314,94 @@ function createBundledEntry(options: {
         deactivate: options.onDeactivate,
       };
     },
+  };
+}
+
+async function createInstallableCatalogFixture() {
+  const manifest = createManifest({
+    id: 'external.catalog-hello',
+    packageName: '@mdwrk/extension-catalog-hello',
+    displayName: { defaultMessage: 'Catalog Hello' },
+    description: { defaultMessage: 'Sample external catalog extension.' },
+    kind: 'external',
+    publisher: 'demo-catalog',
+    capabilities: ['view.register', 'actionRail.register', 'notification.publish', 'settings.read'],
+    distribution: {
+      channel: 'catalog',
+      format: 'esm',
+    },
+  });
+  const moduleCode = `
+const manifest = ${JSON.stringify(manifest)};
+export default {
+  manifest,
+  async activate(context) {
+    context.registerView({
+      id: "external.catalog-hello.view",
+      title: { defaultMessage: "Catalog Hello" },
+      description: { defaultMessage: "Catalog hello view" },
+      location: "panel",
+      allowMultiple: false,
+      render: () => "Catalog Hello"
+    });
+  }
+};
+`;
+  const signedManifest = {
+    schemaVersion: 1,
+    manifest,
+    signature: {
+      keyId: 'unsigned-test',
+      algorithm: 'ecdsa-p256-sha256',
+      signature: '',
+      signedAt: new Date(0).toISOString(),
+    },
+  };
+  const catalog = {
+    schemaVersion: 1 as const,
+    generatedAt: new Date(0).toISOString(),
+    publisher: 'demo-catalog',
+    extensions: [
+      {
+        entryId: 'external.catalog-hello@1.0.0',
+        extensionId: manifest.id,
+        packageName: manifest.packageName,
+        version: manifest.version,
+        displayName: manifest.displayName,
+        description: manifest.description,
+        publisher: manifest.publisher,
+        categories: ['sample'],
+        keywords: ['hello', 'catalog'],
+        capabilities: manifest.capabilities,
+        compatibility: manifest.compatibility,
+        supportedLocales: [],
+        urls: {
+          manifest: 'https://extensions.example/catalog-hello/manifest.json',
+          signedManifest: 'https://extensions.example/catalog-hello/signed-manifest.json',
+          module: 'https://extensions.example/catalog-hello/index.js',
+          integrity: 'https://extensions.example/catalog-hello/integrity.json',
+        },
+        integrity: {
+          manifest: {
+            algorithm: 'sha256' as const,
+            digest: await digestText(canonicalizeJson(manifest)),
+          },
+          module: {
+            algorithm: 'sha256' as const,
+            digest: await digestText(moduleCode),
+          },
+        },
+      },
+    ],
+  };
+  return {
+    catalog,
+    manifest,
+    transport: createInMemoryExtensionArtifactTransport({
+      'https://extensions.example/catalog-hello/manifest.json': JSON.stringify(manifest),
+      'https://extensions.example/catalog-hello/signed-manifest.json': JSON.stringify(signedManifest),
+      'https://extensions.example/catalog-hello/index.js': moduleCode,
+    }),
   };
 }
 
@@ -610,6 +701,48 @@ describe('extension-manager', () => {
     expect(screen.getAllByText(/Activation exploded/).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Ext Runtime Activate Failed/).length).toBeGreaterThan(0);
     expect(screen.getByText('Retry activation or disable the extension')).toBeInTheDocument();
+
+    await runtime.stop();
+  });
+
+  it('installs catalog hello, disables it, and removes the retained package', async () => {
+    const harness = createHostHarness();
+    const fixture = await createInstallableCatalogFixture();
+    const runtime = createExtensionRuntime({
+      host: harness.host,
+      registrationSink: createRegistrationSink(harness),
+      storage: createInMemoryExtensionRuntimeStorage(),
+      transport: fixture.transport,
+      trustPolicy: {
+        allowUnsigned: true,
+        allowIntegrityOnly: true,
+        allowedExtensionIds: [fixture.manifest.id],
+        allowedPackageNames: [fixture.manifest.packageName],
+        allowedPublishers: ['demo-catalog'],
+      },
+    });
+
+    runtime.registerCatalog(fixture.catalog, { catalogId: 'demo-catalog' });
+    await runtime.start();
+    renderManagerView(runtime);
+
+    expect((await screen.findAllByText('Catalog Hello')).length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Trusted for install').length).toBeGreaterThan(0);
+    expect(screen.getByText('Import Package')).toBeInTheDocument();
+
+    fireEvent.click(screen.getAllByRole('button', { name: 'INSTALL' })[0]);
+    await waitFor(() => expect(runtime.get(fixture.manifest.id)?.status).toBe('active'));
+    expect(harness.views.map((view) => view.id)).toContain('external.catalog-hello.view');
+
+    fireEvent.click(await screen.findByRole('button', { name: /Catalog Hello active/i }));
+    expect(screen.getByText('Installed packages keep the manifest, module source, verification record, enabled state, and active state until removed.')).toBeInTheDocument();
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Disable external.catalog-hello' }));
+    await waitFor(() => expect(runtime.get(fixture.manifest.id)?.enabled).toBe(false));
+    await waitFor(() => expect(runtime.get(fixture.manifest.id)?.status).toBe('disabled'));
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Remove Installed Package' }));
+    await waitFor(() => expect(runtime.get(fixture.manifest.id)).toBeUndefined());
 
     await runtime.stop();
   });

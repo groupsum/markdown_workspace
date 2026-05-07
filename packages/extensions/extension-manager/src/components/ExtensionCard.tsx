@@ -190,6 +190,19 @@ export const ExtensionCard: React.FC<ExtensionCardProps> = ({ extension, runtime
         </div>
       </section>
 
+      <section style={{ display: "grid", gap: 8 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{formatLabel(extensionManagerLabels.labelRetention)}</span>
+        <p style={{ margin: 0, fontSize: 12, color: "var(--fg-secondary)", lineHeight: 1.5 }}>
+          {formatLabel(extension.source === "installed" ? extensionManagerLabels.retentionInstalled : extensionManagerLabels.retentionBundled)}
+        </p>
+        {extension.verification && (
+          <div className="settings-chip-row">
+            <span className="settings-chip">{extension.verification.integrityVerified ? "Integrity verified" : "Integrity pending"}</span>
+            <span className="settings-chip">{extension.verification.signatureVerified ? "Signature verified" : "Integrity-only install"}</span>
+          </div>
+        )}
+      </section>
+
       <details open={showCompatibility} onToggle={(event) => {
         setShowCompatibility((event.currentTarget as HTMLDetailsElement).open);
       }}>
