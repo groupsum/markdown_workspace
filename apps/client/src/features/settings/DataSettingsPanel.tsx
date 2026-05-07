@@ -1,7 +1,7 @@
 import React from 'react';
-import { APP_BUILD_ID, APP_PACKAGE_NAME, APP_VERSION } from '../../../constants';
 import { useClientRuntimeSnapshot } from '../../app/runtime/ClientRuntimeContext';
 import { useClientI18n } from '../i18n/useClientI18n';
+import { getPwaSystemConfig } from '../../pwa/versionManifest';
 
 const humanizeStatus = (value: string): string => {
   const normalized = value.replaceAll('_', ' ').toLowerCase();
@@ -15,6 +15,7 @@ export const DataSettingsPanel: React.FC = () => {
   const snapshot = runtime.app;
   const pwaState = runtime.pwa.state;
   const pwaActions = runtime.pwa.actions;
+  const pwaSystemConfig = React.useMemo(() => getPwaSystemConfig(pwaState.selectedVersion), [pwaState.selectedVersion]);
   const pwaStatusLabel = pwaState.isInstalled ? t('core.settings.data.pwa.installed', 'Installed') : t('core.settings.data.pwa.not-installed', 'Not installed');
   const versionStatusLabel = t(
     `core.settings.data.pwa.version-status.${pwaState.versionStatusLabel.toLowerCase().replaceAll('_', '-')}`,
@@ -54,12 +55,15 @@ export const DataSettingsPanel: React.FC = () => {
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.latest-version', 'Latest version')}</span><span className="pwa-status-value">{pwaState.latestVersion}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.storage-schema', 'Storage schema')}</span><span className="pwa-status-value">{pwaState.localStorageSchema}</span></div>
             <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.compatibility', 'Compatibility')}</span><span className="pwa-status-value">{compatibilityStateLabel}</span></div>
-            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.app-version', 'App version')}</span><span className="pwa-status-value">{APP_VERSION}</span></div>
-            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.build-id', 'Build ID')}</span><span className="pwa-status-value">{APP_BUILD_ID}</span></div>
-            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.package', 'Package')}</span><span className="pwa-status-value">{APP_PACKAGE_NAME}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.app-version', 'App version')}</span><span className="pwa-status-value">{pwaSystemConfig.appVersion}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.build-id', 'Build ID')}</span><span className="pwa-status-value">{pwaSystemConfig.buildId}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.package', 'Package')}</span><span className="pwa-status-value">{pwaSystemConfig.packageName}</span></div>
+            <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.pwa.version-base-path', 'Version base path')}</span><span className="pwa-status-value">{pwaSystemConfig.currentVersionBasePath}</span></div>
           </div>
           <div className="settings-action-row">
-            <button className="modal-btn modal-btn--fill" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>{t('core.settings.data.pwa.install', 'Install PWA')}</button>
+            {!pwaState.isInstalled ? (
+              <button className="modal-btn modal-btn--fill" onClick={pwaActions.promptInstall} disabled={!pwaState.canInstall}>{t('core.settings.data.pwa.install', 'Install PWA')}</button>
+            ) : null}
             <button className="modal-btn modal-btn--fill modal-btn-primary" onClick={pwaActions.requestUpdate} disabled={!pwaState.updateAvailable}>{t('core.settings.data.pwa.update', 'Apply update')}</button>
           </div>
           <div className="settings-action-row">

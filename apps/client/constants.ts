@@ -1,8 +1,8 @@
 
-export const APP_VERSION = __APP_VERSION__;
-export const APP_BUILD_ID = __APP_BUILD_ID__;
-export const APP_PACKAGE_NAME = __PACKAGE_NAME__;
-export const APP_STORAGE_SCHEMA = __APP_STORAGE_SCHEMA__;
+export const APP_VERSION = typeof __APP_VERSION__ === 'undefined' ? '0.0.0-test' : __APP_VERSION__;
+export const APP_BUILD_ID = typeof __APP_BUILD_ID__ === 'undefined' ? 'local-test-build' : __APP_BUILD_ID__;
+export const APP_PACKAGE_NAME = typeof __PACKAGE_NAME__ === 'undefined' ? '@mdwrk/mdwrkspace' : __PACKAGE_NAME__;
+export const APP_STORAGE_SCHEMA = typeof __APP_STORAGE_SCHEMA__ === 'undefined' ? 'lattice-idb-test' : __APP_STORAGE_SCHEMA__;
 export const CLIENT_VERSION_INDEX_PATH = '/client/versions/index.json';
 export const SELECTED_VERSION_STORAGE_KEY = 'lattice-selected-client-version';
 export const ACTIVE_STORAGE_SCHEMA_STORAGE_KEY = 'lattice-active-storage-schema';

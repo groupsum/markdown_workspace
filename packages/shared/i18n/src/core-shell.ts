@@ -241,6 +241,7 @@ const sharedSettingsMessages = {
   'core.settings.data.pwa.app-version': 'App version',
   'core.settings.data.pwa.build-id': 'Build ID',
   'core.settings.data.pwa.package': 'Package',
+  'core.settings.data.pwa.version-base-path': 'Version base path',
   'core.settings.data.pwa.install': 'Install PWA',
   'core.settings.data.pwa.update': 'Apply update',
   'core.settings.data.pwa.check': 'Check for updates',

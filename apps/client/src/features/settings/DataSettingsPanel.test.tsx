@@ -93,6 +93,9 @@ describe('DataSettingsPanel', () => {
     expect(screen.getByText('Selected version')).toBeTruthy();
     expect(screen.getByText('Latest version')).toBeTruthy();
     expect(screen.getByText('Newer version available')).toBeTruthy();
+    expect(screen.getByText('Version base path')).toBeTruthy();
+    expect(screen.getByText('/client/versions/1.4.18/')).toBeTruthy();
+    expect(screen.queryByText('Install PWA')).toBeNull();
 
     fireEvent.click(screen.getByText('Check for updates'));
     fireEvent.click(screen.getByText('Switch to latest'));

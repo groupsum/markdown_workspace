@@ -13,7 +13,9 @@ import {
   getCurrentVersionBasePath,
   isVersionCompatible,
   readLocalStorageSchema,
+  readSelectedVersion,
   recordLocalStorageSchema,
+  resolveSelectedVersion,
   writeSelectedVersion,
 } from '../src/pwa/versionManifest';
 
@@ -98,8 +100,12 @@ export const usePwa = () => {
   const localStorageSchema = readLocalStorageSchema();
 
   const runningVersion = APP_VERSION;
-  const selectedVersion = APP_VERSION;
-  const latestVersion = versionManifest.latest ?? APP_VERSION;
+  const resolvedVersionSelection = useMemo(
+    () => resolveSelectedVersion(versionManifest, readSelectedVersion(), localStorageSchema),
+    [localStorageSchema, versionManifest],
+  );
+  const selectedVersion = resolvedVersionSelection.selectedVersion;
+  const latestVersion = resolvedVersionSelection.latestVersion;
 
   const announceUpdate = useCallback(() => {
     setUpdateAvailable(true);
@@ -135,7 +141,7 @@ export const usePwa = () => {
     return manifest;
   }, []);
 
-  const availableVersions = useMemo(() => versionManifest.available.map((entry) => {
+  const availableVersions = useMemo(() => resolvedVersionSelection.availableVersions.map((entry) => {
     const compatible = isVersionCompatible(entry, localStorageSchema);
     const blocked = failedVersions.includes(entry.version);
     return {
@@ -144,7 +150,7 @@ export const usePwa = () => {
       blocked,
       disabled: !entry.isSelectable || !compatible || blocked,
     };
-  }), [failedVersions, localStorageSchema, versionManifest.available]);
+  }), [failedVersions, localStorageSchema, resolvedVersionSelection.availableVersions]);
 
   const selectedVersionEntry = useMemo(
     () => availableVersions.find((entry) => entry.version === selectedVersion) ?? null,
@@ -179,9 +185,17 @@ export const usePwa = () => {
 
   useEffect(() => {
     recordLocalStorageSchema(APP_STORAGE_SCHEMA);
-    writeSelectedVersion(APP_VERSION);
+    if (!readSelectedVersion()) {
+      writeSelectedVersion(APP_VERSION);
+    }
     void refreshVersionManifest();
   }, [refreshVersionManifest]);
+
+  useEffect(() => {
+    if (readSelectedVersion() !== selectedVersion) {
+      writeSelectedVersion(selectedVersion);
+    }
+  }, [selectedVersion]);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -330,6 +344,7 @@ export const usePwa = () => {
     const choice = await installPrompt.userChoice;
     if (choice.outcome === 'accepted') {
       setInstallPrompt(null);
+      setIsInstalled(true);
     }
   }, [installPrompt]);
 

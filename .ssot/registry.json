@@ -1611,7 +1611,7 @@
       "id": "feat:pwa-install-button-state",
       "title": "PWA install button installed state",
       "description": "Remove install button after PWA is installed.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1627,8 +1627,13 @@
         "spc:2007",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-preferences",
+        "clm:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1658,7 +1663,7 @@
       "id": "feat:pwa-version-system-config",
       "title": "PWA version in system config",
       "description": "Show PWA version in system configuration.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1674,8 +1679,14 @@
         "spc:2008",
         "spc:2006"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:client-preferences",
+        "clm:client-settings"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-src-pwa-versionmanifest.test.ts"
+      ],
       "requires": []
     },
     {
@@ -9722,7 +9733,9 @@
       "path": "apps/client/src/features/settings/DataSettingsPanel.test.tsx",
       "feature_ids": [
         "feat:client-settings",
-        "feat:client-preferences"
+        "feat:client-preferences",
+        "feat:pwa-install-button-state",
+        "feat:pwa-version-system-config"
       ],
       "claim_ids": [
         "clm:client-settings",
@@ -9780,7 +9793,8 @@
       "feature_ids": [
         "feat:cross-cutting",
         "feat:pwa-version-manifest",
-        "feat:client-preferences"
+        "feat:client-preferences",
+        "feat:pwa-version-system-config"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -11839,7 +11853,9 @@
       "feature_ids": [
         "feat:client-preferences",
         "feat:pwa-version-manifest",
-        "feat:editor-toolbar-hidden-button-preference"
+        "feat:editor-toolbar-hidden-button-preference",
+        "feat:pwa-install-button-state",
+        "feat:pwa-version-system-config"
       ],
       "test_ids": [
         "tst:apps-client-src-pwa-versionmanifest.test.ts",
@@ -11865,7 +11881,9 @@
       "description": "Client feature: settings is represented by repository tests and source surfaces.",
       "feature_ids": [
         "feat:client-settings",
-        "feat:extension-settings-schema-rendering"
+        "feat:extension-settings-schema-rendering",
+        "feat:pwa-install-button-state",
+        "feat:pwa-version-system-config"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",

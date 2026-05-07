@@ -1,5 +1,7 @@
 import {
   ACTIVE_STORAGE_SCHEMA_STORAGE_KEY,
+  APP_BUILD_ID,
+  APP_PACKAGE_NAME,
   APP_STORAGE_SCHEMA,
   APP_VERSION,
   CLIENT_VERSION_INDEX_PATH,
@@ -19,6 +21,15 @@ export interface ClientVersionManifest {
   readonly available: readonly ClientVersionEntry[];
 }
 
+export interface PwaSystemConfig {
+  readonly appVersion: string;
+  readonly buildId: string;
+  readonly packageName: string;
+  readonly storageSchema: string;
+  readonly versionIndexPath: string;
+  readonly currentVersionBasePath: string;
+}
+
 export type VersionStatusLabel =
   | 'UP_TO_DATE'
   | 'UPDATE_READY'
@@ -35,6 +46,15 @@ export interface ResolvedVersionSelection {
 }
 
 export const getCurrentVersionBasePath = (version = APP_VERSION): string => `/client/versions/${version}/`;
+
+export const getPwaSystemConfig = (version = APP_VERSION): PwaSystemConfig => ({
+  appVersion: APP_VERSION,
+  buildId: APP_BUILD_ID,
+  packageName: APP_PACKAGE_NAME,
+  storageSchema: APP_STORAGE_SCHEMA,
+  versionIndexPath: CLIENT_VERSION_INDEX_PATH,
+  currentVersionBasePath: getCurrentVersionBasePath(version),
+});
 
 export const readSelectedVersion = (): string | null => {
   try {

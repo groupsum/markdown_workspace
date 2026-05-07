@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
-import { deriveVersionStatusLabel, resolveSelectedVersion, type ClientVersionManifest } from './versionManifest';
+import { deriveVersionStatusLabel, getPwaSystemConfig, resolveSelectedVersion, type ClientVersionManifest } from './versionManifest';
 
 const manifest: ClientVersionManifest = {
   latest: '1.4.20',
@@ -90,5 +90,18 @@ describe('version status labels', () => {
       selectedCompatible: true,
       failedBlocked: true,
     })).toBe('FAILED_VERSION_BLOCKED');
+  });
+});
+
+describe('PWA system config', () => {
+  it('exposes the build-time version contract for settings surfaces', () => {
+    const config = getPwaSystemConfig('1.4.18');
+
+    expect(config.appVersion).toBeTruthy();
+    expect(config.buildId).toBeTruthy();
+    expect(config.packageName).toBeTruthy();
+    expect(config.storageSchema).toBeTruthy();
+    expect(config.versionIndexPath).toBe('/client/versions/index.json');
+    expect(config.currentVersionBasePath).toBe('/client/versions/1.4.18/');
   });
 });
