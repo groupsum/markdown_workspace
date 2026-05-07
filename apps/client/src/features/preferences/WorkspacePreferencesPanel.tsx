@@ -1,4 +1,5 @@
 import React from 'react';
+import { Cloud, Download, FilePlus, Folder, FolderOpen, FolderPlus, GitBranch, Upload } from 'lucide-react';
 import {
   useWorkspacePreferences,
   updateWorkspacePreferences,
@@ -17,6 +18,17 @@ const ACTION_RAIL_BUTTONS = [
   'core.import-markdown',
   'core.cloud-sync',
 ] as const;
+
+export const ACTION_RAIL_ICON_MAPPINGS: Record<typeof ACTION_RAIL_BUTTONS[number], React.ReactNode> = {
+  'core.toggle-explorer': <Folder size={14} />,
+  'core.new-file': <FilePlus size={14} />,
+  'core.new-folder': <FolderPlus size={14} />,
+  'core.git-pane-rail': <GitBranch size={14} />,
+  'core.switch-project': <FolderOpen size={14} />,
+  'core.download-workspace': <Download size={14} />,
+  'core.import-markdown': <Upload size={14} />,
+  'core.cloud-sync': <Cloud size={14} />,
+};
 
 const EDITOR_TOOLBAR_BUTTONS = [
   'view-editor',
@@ -151,6 +163,7 @@ export const WorkspacePreferencesPanel: React.FC = () => {
                   }))}
                 />
                 <span className="pwa-toggle-indicator" />
+                <span className="pwa-toggle-icon" aria-hidden="true">{ACTION_RAIL_ICON_MAPPINGS[buttonId]}</span>
                 <span className="pwa-toggle-label">{formatPreferenceItem('action-rail-button', buttonId)}</span>
               </label>
             ))}

@@ -211,6 +211,25 @@
   transform: translateX(16px);
   background: var(--accent);
 }
+
+.pwa-toggle-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+}
+
+.pwa-toggle input:checked + .pwa-toggle-indicator + .pwa-toggle-icon {
+  color: var(--accent);
+}
+
+.pwa-toggle-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .extension-status-badge {
   display: inline-flex;
   align-items: center;

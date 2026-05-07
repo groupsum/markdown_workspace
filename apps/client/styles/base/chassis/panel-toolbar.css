@@ -10,7 +10,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
   font-size: calc(10px * var(--ui-scale));
   font-weight: 800;
   text-transform: uppercase;

@@ -56,12 +56,22 @@
 .header-btn {
   width: 24px;
   height: 24px;
+  flex: 0 0 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border-color);
   background: var(--bg-panel);
   color: var(--fg-primary);
+}
+
+.header-btn svg {
+  flex: 0 0 auto;
+}
+
+.header-btn--settings svg {
+  margin-top: 2px;
+  margin-right: 2px;
 }
 
 .header-tabs {

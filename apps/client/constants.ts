@@ -11,5 +11,5 @@ export const GIT_REPO_REFRESH_REQUEST_EVENT = 'lattice:gh:refresh-repos';
 
 // Theme System Constants
 export const THEME_STORAGE_KEY = 'lattice-theme';
-export const DEFAULT_THEME_ID = 'micropress';
+export const DEFAULT_THEME_ID = 'anodized-billet';
 export const THEME_STYLE_ELEMENT_ID = 'lattice-theme';

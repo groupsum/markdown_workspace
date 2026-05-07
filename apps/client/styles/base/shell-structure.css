@@ -235,7 +235,9 @@
   border-top: 0;
   border-bottom: var(--border-width) solid var(--border-color);
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
   box-shadow: none;
   transform: none;
   z-index: 2;

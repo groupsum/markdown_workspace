@@ -90,7 +90,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   return (
     <div className="cmd-backdrop" onClick={onClose}>
-      <div className="cmd-palette" onClick={(event) => event.stopPropagation()}>
+      <div
+        className="cmd-palette"
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('core.command-palette.label', 'Command palette')}
+        onClick={(event) => event.stopPropagation()}
+      >
         <div className="cmd-header">
           <div className="cmd-search-icon"><Command size={16} /></div>
           <input
@@ -107,12 +113,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           <div className="cmd-badge">{t('core.command-palette.escape', 'ESC')}</div>
         </div>
 
-        <div className="cmd-list">
+        <div className="cmd-list" role="listbox" aria-label={t('core.command-palette.results', 'Command palette results')}>
           {combinedItems.length === 0 && <div className="cmd-empty">{t('core.command-palette.no-results', 'NO RESULTS')}</div>}
           {combinedItems.map((item, index) => (
             <div
               key={`${item.type}-${item.data.id}`}
               className={`cmd-item ${item.type === 'command' ? 'action' : ''} ${index === activeIndex ? 'active' : ''}`}
+              role="option"
+              aria-selected={index === activeIndex}
               onMouseEnter={() => setActiveIndex(index)}
               onClick={() => execute(item)}
             >

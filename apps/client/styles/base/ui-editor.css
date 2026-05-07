@@ -37,8 +37,9 @@
   min-width: 0;
   max-width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
 }
 .view-toolbar-group {
   display: flex;
@@ -379,7 +380,7 @@
     border-left: 0;
     border-top: var(--border-width) solid var(--border-color);
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
   .view-toolbar-group {
     flex-direction: row;
@@ -413,7 +414,7 @@
     border-left: 0;
     border-top: var(--border-width) solid var(--border-color);
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
   .view-toolbar-group {
     flex-direction: row;
@@ -525,7 +526,7 @@
     border-radius: 0;
     justify-content: flex-start;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
     padding: 8px 6px calc(8px + env(safe-area-inset-bottom, 0px));
     z-index: 1;
   }
@@ -694,6 +695,6 @@ body.is-resizing-pane * {
     border-bottom: var(--border-width) solid var(--border-color);
     flex-direction: row;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 }

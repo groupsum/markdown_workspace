@@ -1659,14 +1659,14 @@
       "id": "feat:header-settings-icon-spacing",
       "title": "Header settings icon spacing",
       "description": "Add small top and right margin to the settings icon.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1674,8 +1674,12 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
@@ -1712,14 +1716,14 @@
       "id": "feat:theme-default-anodized-billet",
       "title": "Default Anodized Billet theme",
       "description": "Make Anodized Billet the default theme.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1728,22 +1732,26 @@
         "spc:2007",
         "spc:2013"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:action-rail-icon-mappings",
       "title": "Action rail icon mappings settings",
       "description": "Add settings for action rail icon mappings.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1752,8 +1760,12 @@
         "spc:2007",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
@@ -1790,14 +1802,14 @@
       "id": "feat:mdwrk-view-toolbar-scroll",
       "title": "MdWrk view toolbar y-scroll",
       "description": "Add y-scroll behavior on the view toolbar.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -1805,8 +1817,12 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
@@ -2587,14 +2603,14 @@
       "id": "feat:uix-command-palette-responsive",
       "title": "UIX command palette responsive behavior",
       "description": "Govern command palette behavior across devices and orientations.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2602,8 +2618,12 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
@@ -2644,14 +2664,14 @@
       "id": "feat:uix-iconized-compaction",
       "title": "UIX iconized compaction",
       "description": "Govern iconized controls and compact mobile and desktop UI states.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2659,8 +2679,12 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
       "requires": []
     },
     {
@@ -11545,6 +11569,27 @@
       "evidence_ids": [
         "evd:apps-client-services-persistence.test.ts"
       ]
+    },
+    {
+      "id": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "title": "UIX icon toolbar contracts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/styles/uixIconToolbarContracts.test.ts",
+      "feature_ids": [
+        "feat:header-settings-icon-spacing",
+        "feat:action-rail-icon-mappings",
+        "feat:mdwrk-view-toolbar-scroll",
+        "feat:uix-command-palette-responsive",
+        "feat:uix-iconized-compaction",
+        "feat:theme-default-anodized-billet"
+      ],
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ]
     }
   ],
   "claims": [
@@ -13026,6 +13071,28 @@
         "evd:apps-client-services-persistence.test.ts",
         "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ]
+    },
+    {
+      "id": "clm:uix-icon-toolbar-responsive-contracts",
+      "title": "UIX icon toolbar responsive contracts",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "ui-contract",
+      "description": "Header settings icon spacing, action rail icon mappings, view toolbar scrolling, command palette responsiveness, iconized compaction, and the Anodized Billet default theme are implemented and guarded by focused client tests.",
+      "feature_ids": [
+        "feat:header-settings-icon-spacing",
+        "feat:action-rail-icon-mappings",
+        "feat:mdwrk-view-toolbar-scroll",
+        "feat:uix-command-palette-responsive",
+        "feat:uix-iconized-compaction",
+        "feat:theme-default-anodized-billet"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ]
     }
   ],
   "evidence": [
@@ -14203,6 +14270,20 @@
       ],
       "test_ids": [
         "tst:apps-client-services-persistence.test.ts"
+      ]
+    },
+    {
+      "id": "evd:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "title": "UIX icon toolbar contracts Vitest evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/styles/uixIconToolbarContracts.test.ts",
+      "claim_ids": [
+        "clm:uix-icon-toolbar-responsive-contracts"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
       ]
     }
   ],
