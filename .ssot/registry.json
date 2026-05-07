@@ -1847,7 +1847,7 @@
       "id": "feat:frontend-settings-persistence",
       "title": "Frontend settings persistence",
       "description": "Persist user settings and configuration across browser, PWA, desktop, and extension scopes.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1906,7 +1906,7 @@
       "id": "feat:indexeddb-vs-filesystem-persistence",
       "title": "IndexedDB versus filesystem persistence",
       "description": "Separate browser/PWA IndexedDB state from desktop filesystem-backed persistence.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1935,7 +1935,7 @@
       "id": "feat:cloud-persistence-out-of-bounds",
       "title": "Cloud persistence out of bounds",
       "description": "Keep cloud persistence explicitly out of bounds.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2667,7 +2667,7 @@
       "id": "feat:persistence-diagnostics-mode",
       "title": "Persistence diagnostics mode",
       "description": "Show storage backend details only in diagnostics, not normal footer UI.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -2687,7 +2687,8 @@
       ],
       "test_ids": [
         "tst:apps-client-services-persistence.test.ts",
-        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
       ],
       "requires": []
     },
@@ -10106,7 +10107,8 @@
         "feat:shell-evidence-matrix",
         "feat:shell-taxonomy-runtime-detection",
         "feat:uix-responsive-layout-matrix",
-        "feat:client-layout"
+        "feat:client-layout",
+        "feat:persistence-diagnostics-mode"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -10116,7 +10118,8 @@
         "clm:client-layout",
         "clm:client-notifications",
         "clm:client-extensions",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:persistence-diagnostics-mode"
       ],
       "evidence_ids": [
         "evd:apps-client-tests-phase7-shell-parity.test.tsx"
@@ -12951,7 +12954,7 @@
     {
       "id": "clm:frontend-settings-persistence",
       "title": "Frontend settings persist across sessions",
-      "status": "declared",
+      "status": "evidenced",
       "tier": "T2",
       "kind": "capability",
       "description": "Client UI settings persist through localStorage and IndexedDB-backed settings storage, including session restore and diagnostics toggles.",
@@ -12961,7 +12964,9 @@
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ],
-      "evidence_ids": []
+      "evidence_ids": [
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ]
     },
     {
       "id": "clm:indexeddb-vs-filesystem-persistence",
@@ -12978,13 +12983,14 @@
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-services-persistence.test.ts"
+        "evd:apps-client-services-persistence.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ]
     },
     {
       "id": "clm:persistence-diagnostics-mode",
       "title": "Persistence backend details are diagnostics-only",
-      "status": "declared",
+      "status": "evidenced",
       "tier": "T2",
       "kind": "behavior",
       "description": "Storage backend details appear only when persistence diagnostics are enabled and remain absent from the normal status footer.",
@@ -12993,16 +12999,19 @@
       ],
       "test_ids": [
         "tst:apps-client-services-persistence.test.ts",
-        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "tst:apps-client-tests-phase7-shell-parity.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-services-persistence.test.ts"
+        "evd:apps-client-services-persistence.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+        "evd:apps-client-tests-phase7-shell-parity.test.tsx"
       ]
     },
     {
       "id": "clm:cloud-persistence-out-of-bounds",
       "title": "Cloud persistence remains out of bounds",
-      "status": "declared",
+      "status": "evidenced",
       "tier": "T2",
       "kind": "boundary",
       "description": "The client persistence boundary rejects cloud persistence backends and reports cloud persistence as out of bounds in diagnostics.",
@@ -13014,7 +13023,8 @@
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ],
       "evidence_ids": [
-        "evd:apps-client-services-persistence.test.ts"
+        "evd:apps-client-services-persistence.test.ts",
+        "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
       ]
     }
   ],
@@ -13198,7 +13208,11 @@
       "claim_ids": [
         "clm:client-settings",
         "clm:client-preferences",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:frontend-settings-persistence",
+        "clm:persistence-diagnostics-mode",
+        "clm:indexeddb-vs-filesystem-persistence",
+        "clm:cloud-persistence-out-of-bounds"
       ],
       "test_ids": [
         "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
@@ -13339,7 +13353,8 @@
         "clm:client-layout",
         "clm:client-notifications",
         "clm:client-extensions",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:persistence-diagnostics-mode"
       ],
       "test_ids": [
         "tst:apps-client-tests-phase7-shell-parity.test.tsx"
