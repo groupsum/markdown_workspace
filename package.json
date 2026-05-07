@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.95",
+  "version": "0.2.96",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -9,6 +9,7 @@
     "packages/renderer/*",
     "packages/editor/*",
     "packages/lander/*",
+    "packages/content/*",
     "packages/extensions/*",
     "packages/shared/*",
     "examples/*"
@@ -33,7 +34,7 @@
     "build:desktop:mac": "npm run build:client && npm run dist:mac -w apps/desktop",
     "build:android": "npm run build:client && npm run android:prepare -w apps/desktop",
     "build:client:lib": "npm run build:extensions && npm run build:lib -w apps/client",
-    "build:lander:packages": "npm run build -w @mdwrk/lander-content-contract && npm run build -w @mdwrk/lander-core && npm run build -w @mdwrk/structured-data && npm run build -w @mdwrk/lander-seo && npm run build -w @mdwrk/lander-theme && npm run build -w @mdwrk/lander-markdown && npm run build -w @mdwrk/lander-react && npm run build -w @mdwrk/mdwrkcom-content-pack",
+    "build:lander:packages": "npm run build -w @mdwrk/lander-content-contract && npm run build -w @mdwrk/lander-core && npm run build -w @mdwrk/structured-data && npm run build -w @mdwrk/lander-seo && npm run build -w @mdwrk/lander-theme && npm run build -w @mdwrk/lander-markdown-content-adapter && npm run build -w @mdwrk/lander-react && npm run build -w @mdwrk/mdwrkcom-content-pack",
     "build:mdwrkcom": "npm run build:renderer && npm run build:lander:packages && npm run build -w apps/mdwrkcom",
     "test": "npm run test:contracts && npm run test:shared && npm run test:renderer && npm run test:editor && npm run test:extensions && npm run test:client",
     "test:contracts": "npm run test -w @mdwrk/extension-manifest && npm run test -w @mdwrk/theme-contract && npm run test -w @mdwrk/extension-host",
@@ -48,9 +49,9 @@
     "lint:client": "npm run lint -w apps/client",
     "lint:desktop": "npm run lint -w apps/desktop",
     "lint:mdwrkcom": "npm run lint -w apps/mdwrkcom",
-    "typecheck:lander:packages": "npm run typecheck -w @mdwrk/lander-content-contract && npm run typecheck -w @mdwrk/lander-core && npm run typecheck -w @mdwrk/structured-data && npm run typecheck -w @mdwrk/lander-seo && npm run typecheck -w @mdwrk/lander-theme && npm run typecheck -w @mdwrk/lander-markdown && npm run typecheck -w @mdwrk/lander-react && npm run typecheck -w @mdwrk/mdwrkcom-content-pack",
-    "lint:lander:packages": "npm run lint -w @mdwrk/lander-content-contract && npm run lint -w @mdwrk/lander-core && npm run lint -w @mdwrk/structured-data && npm run lint -w @mdwrk/lander-seo && npm run lint -w @mdwrk/lander-theme && npm run lint -w @mdwrk/lander-markdown && npm run lint -w @mdwrk/lander-react && npm run lint -w @mdwrk/mdwrkcom-content-pack",
-    "test:lander:packages": "npm run test -w @mdwrk/lander-content-contract && npm run test -w @mdwrk/lander-core && npm run test -w @mdwrk/structured-data && npm run test -w @mdwrk/lander-seo && npm run test -w @mdwrk/lander-theme && npm run test -w @mdwrk/lander-markdown && npm run test -w @mdwrk/lander-react && npm run test -w @mdwrk/mdwrkcom-content-pack",
+    "typecheck:lander:packages": "npm run typecheck -w @mdwrk/lander-content-contract && npm run typecheck -w @mdwrk/lander-core && npm run typecheck -w @mdwrk/structured-data && npm run typecheck -w @mdwrk/lander-seo && npm run typecheck -w @mdwrk/lander-theme && npm run typecheck -w @mdwrk/lander-markdown-content-adapter && npm run typecheck -w @mdwrk/lander-react && npm run typecheck -w @mdwrk/mdwrkcom-content-pack",
+    "lint:lander:packages": "npm run lint -w @mdwrk/lander-content-contract && npm run lint -w @mdwrk/lander-core && npm run lint -w @mdwrk/structured-data && npm run lint -w @mdwrk/lander-seo && npm run lint -w @mdwrk/lander-theme && npm run lint -w @mdwrk/lander-markdown-content-adapter && npm run lint -w @mdwrk/lander-react && npm run lint -w @mdwrk/mdwrkcom-content-pack",
+    "test:lander:packages": "npm run test -w @mdwrk/lander-content-contract && npm run test -w @mdwrk/lander-core && npm run test -w @mdwrk/structured-data && npm run test -w @mdwrk/lander-seo && npm run test -w @mdwrk/lander-theme && npm run test -w @mdwrk/lander-markdown-content-adapter && npm run test -w @mdwrk/lander-react && npm run test -w @mdwrk/mdwrkcom-content-pack",
     "build:shared": "npm run build:contracts && npm run build -w @mdwrk/ui-tokens && npm run build -w @mdwrk/icons && npm run build -w @mdwrk/i18n && npm run build -w @mdwrk/testing && npm run build -w @mdwrk/structured-data",
     "test:shared": "npm run test -w @mdwrk/ui-tokens && npm run test -w @mdwrk/icons && npm run test -w @mdwrk/i18n && npm run test -w @mdwrk/testing && npm run test -w @mdwrk/structured-data",
     "typecheck:shared": "npm run typecheck -w @mdwrk/ui-tokens && npm run typecheck -w @mdwrk/icons && npm run typecheck -w @mdwrk/i18n && npm run typecheck -w @mdwrk/testing && npm run typecheck -w @mdwrk/structured-data",
@@ -125,7 +126,7 @@
     "validate:ssot-graph": "node ./tools/governance/validate-ssot-graph-export.mjs",
     "snapshot:release": "node ./tools/governance/write-release-snapshot.mjs",
     "validate:release-snapshots": "node ./tools/governance/validate-release-snapshots.mjs",
-    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots"
+    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots && npm run validate:governance-suite"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",

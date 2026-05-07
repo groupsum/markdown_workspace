@@ -8,6 +8,7 @@ const packageRoot = path.resolve(__dirname, '..');
 const nodeModulesRoot = path.join(packageRoot, 'node_modules', '@mdwrk');
 const links = {
   'markdown-renderer-core': path.resolve(packageRoot, '../../renderer/markdown-renderer-core'),
+  'theme-contract': path.resolve(packageRoot, '../../contracts/theme-contract'),
   'ui-tokens': path.resolve(packageRoot, '../../shared/ui-tokens'),
 };
 

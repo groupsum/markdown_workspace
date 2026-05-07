@@ -1,7 +1,395 @@
 {
-  "generatedAt": "2026-05-06T09:37:13.509Z",
+  "generatedAt": "2026-05-07T04:46:05.526Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
+  "publishGraph": {
+    "ok": true,
+    "order": [
+      "@mdwrk/extension-manifest",
+      "@mdwrk/i18n",
+      "@mdwrk/icons",
+      "@mdwrk/lander-content-contract",
+      "@mdwrk/lander-core",
+      "@mdwrk/lander-markdown-content-adapter",
+      "@mdwrk/lander-seo",
+      "@mdwrk/lander-theme",
+      "@mdwrk/markdown-renderer-core",
+      "@mdwrk/markdown-editor-core",
+      "@mdwrk/mdwrkcom-content-pack",
+      "@mdwrk/structured-data",
+      "@mdwrk/lander-react",
+      "@mdwrk/testing",
+      "@mdwrk/theme-contract",
+      "@mdwrk/extension-host",
+      "@mdwrk/extension-catalog-hello",
+      "@mdwrk/extension-language-pack-studio",
+      "@mdwrk/extension-runtime",
+      "@mdwrk/extension-git-ops",
+      "@mdwrk/extension-manager",
+      "@mdwrk/extension-workspace-files",
+      "@mdwrk/ui-tokens",
+      "@mdwrk/markdown-editor-react",
+      "@mdwrk/markdown-renderer-react",
+      "@mdwrk/extension-gemini-agent",
+      "@mdwrk/extension-theme-studio",
+      "@mdwrk/markdown-edit-in-renderer-react",
+      "@mdwrk/mdwrkspace"
+    ],
+    "edges": [
+      {
+        "from": "@mdwrk/extension-gemini-agent",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-git-ops",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-language-pack-studio",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manager",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-workspace-files",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/i18n",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/icons",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-edit-in-renderer-react",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-editor-react",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-core",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-react",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/theme-contract",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/ui-tokens",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-theme-studio",
+        "to": "@mdwrk/mdwrkspace",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-host",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/theme-contract",
+        "to": "@mdwrk/extension-host",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-editor-core",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-editor-react",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-core",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-react",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/ui-tokens",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/markdown-edit-in-renderer-react",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-core",
+        "to": "@mdwrk/markdown-editor-core",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-editor-core",
+        "to": "@mdwrk/markdown-editor-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/ui-tokens",
+        "to": "@mdwrk/markdown-editor-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/markdown-editor-react",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-catalog-hello",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-catalog-hello",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-gemini-agent",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-gemini-agent",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/extension-gemini-agent",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-react",
+        "to": "@mdwrk/extension-gemini-agent",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-git-ops",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-git-ops",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/extension-git-ops",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-language-pack-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-language-pack-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/extension-language-pack-studio",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-manager",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-manager",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/extension-manager",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/extension-manager",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-runtime",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-runtime",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/theme-contract",
+        "to": "@mdwrk/extension-runtime",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/theme-contract",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/ui-tokens",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-react",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-editor-react",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/extension-theme-studio",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/extension-host",
+        "to": "@mdwrk/extension-workspace-files",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-manifest",
+        "to": "@mdwrk/extension-workspace-files",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/extension-runtime",
+        "to": "@mdwrk/extension-workspace-files",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-content-contract",
+        "to": "@mdwrk/lander-core",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-content-contract",
+        "to": "@mdwrk/lander-markdown-content-adapter",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-core",
+        "to": "@mdwrk/lander-markdown-content-adapter",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-content-contract",
+        "to": "@mdwrk/lander-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-core",
+        "to": "@mdwrk/lander-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/structured-data",
+        "to": "@mdwrk/lander-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/lander-core",
+        "to": "@mdwrk/lander-seo",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/markdown-renderer-core",
+        "to": "@mdwrk/markdown-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/ui-tokens",
+        "to": "@mdwrk/markdown-renderer-react",
+        "kind": "dependencies"
+      },
+      {
+        "from": "@mdwrk/testing",
+        "to": "@mdwrk/markdown-renderer-react",
+        "kind": "devDependencies"
+      },
+      {
+        "from": "@mdwrk/theme-contract",
+        "to": "@mdwrk/ui-tokens",
+        "kind": "dependencies"
+      }
+    ],
+    "cycleNodes": [],
+    "missingInternalDependencies": []
+  },
   "results": [
     {
       "packageName": "@mdwrk/mdwrkspace",
@@ -41,6 +429,14 @@
       "packageName": "@mdwrk/example-renderer-basic",
       "path": "examples/renderer-basic",
       "publishable": false,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/mdwrkcom-content-pack",
+      "path": "packages/content/mdwrkcom-content-pack",
+      "publishable": true,
       "ok": true,
       "errors": [],
       "warnings": []
@@ -174,8 +570,8 @@
       "warnings": []
     },
     {
-      "packageName": "@mdwrk/lander-markdown",
-      "path": "packages/lander/lander-markdown",
+      "packageName": "@mdwrk/lander-markdown-content-adapter",
+      "path": "packages/lander/lander-markdown-content-adapter",
       "publishable": true,
       "ok": true,
       "errors": [],
@@ -184,14 +580,6 @@
     {
       "packageName": "@mdwrk/lander-react",
       "path": "packages/lander/lander-react",
-      "publishable": true,
-      "ok": true,
-      "errors": [],
-      "warnings": []
-    },
-    {
-      "packageName": "@mdwrk/lander-schema",
-      "path": "packages/lander/lander-schema",
       "publishable": true,
       "ok": true,
       "errors": [],
@@ -208,14 +596,6 @@
     {
       "packageName": "@mdwrk/lander-theme",
       "path": "packages/lander/lander-theme",
-      "publishable": true,
-      "ok": true,
-      "errors": [],
-      "warnings": []
-    },
-    {
-      "packageName": "@mdwrk/mdwrkcom-content-pack",
-      "path": "packages/lander/mdwrkcom-content-pack",
       "publishable": true,
       "ok": true,
       "errors": [],
@@ -248,6 +628,14 @@
     {
       "packageName": "@mdwrk/icons",
       "path": "packages/shared/icons",
+      "publishable": true,
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "packageName": "@mdwrk/structured-data",
+      "path": "packages/shared/structured-data",
       "publishable": true,
       "ok": true,
       "errors": [],

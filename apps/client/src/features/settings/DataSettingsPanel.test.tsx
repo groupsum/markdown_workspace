@@ -1,13 +1,14 @@
 // @vitest-environment jsdom
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { DataSettingsPanel } from './DataSettingsPanel';
 
 const requestUpdate = vi.fn();
 const checkForUpdates = vi.fn();
 const switchToLatest = vi.fn();
 const switchToVersion = vi.fn();
+let persistenceDiagnosticsEnabled = false;
 
 vi.mock('../../app/runtime/ClientRuntimeContext', () => ({
   useClientRuntimeSnapshot: () => ({
@@ -15,6 +16,15 @@ vi.mock('../../app/runtime/ClientRuntimeContext', () => ({
       actions: {
         exportData: vi.fn(),
         restoreData: vi.fn(),
+      },
+      state: {
+        currentProject: {
+          id: 'proj-1',
+          name: 'Filesystem Project',
+          sourceKind: 'filesystem',
+          rootPath: 'C:\\workspace',
+        },
+        persistenceDiagnosticsEnabled,
       },
     },
     pwa: {
@@ -85,6 +95,10 @@ vi.mock('../i18n/useClientI18n', () => ({
 }));
 
 describe('DataSettingsPanel', () => {
+  afterEach(() => {
+    persistenceDiagnosticsEnabled = false;
+  });
+
   it('renders retained version details and exposes version actions', () => {
     render(<DataSettingsPanel />);
 
@@ -106,5 +120,20 @@ describe('DataSettingsPanel', () => {
     expect(checkForUpdates).toHaveBeenCalled();
     expect(switchToLatest).toHaveBeenCalled();
     expect(switchToVersion).toHaveBeenCalledWith('1.4.20');
+  });
+
+  it('shows storage backend details only when persistence diagnostics are enabled', () => {
+    const { rerender } = render(<DataSettingsPanel />);
+    expect(screen.queryByText('Persistence diagnostics')).toBeNull();
+    expect(screen.queryByText('Content backend')).toBeNull();
+
+    persistenceDiagnosticsEnabled = true;
+    rerender(<DataSettingsPanel />);
+
+    expect(screen.getByText('Persistence diagnostics')).toBeTruthy();
+    expect(screen.getByText('Content backend')).toBeTruthy();
+    expect(screen.getByText('FILESYSTEM')).toBeTruthy();
+    expect(screen.getByText('IndexedDB settings')).toBeTruthy();
+    expect(screen.getByText('Out of bounds')).toBeTruthy();
   });
 });

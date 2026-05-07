@@ -65,6 +65,8 @@ vi.mock('./useUIState', () => ({
     setAutoSaveEnabled: vi.fn(),
     persistSessionEnabled: true,
     setPersistSessionEnabled: vi.fn(),
+    persistenceDiagnosticsEnabled: false,
+    setPersistenceDiagnosticsEnabled: vi.fn(),
     showLineNumbers: true,
     setShowLineNumbers: vi.fn()
   })

@@ -34,6 +34,25 @@ They must not import `apps/client/*` or `apps/mdwrkcom/*` internals.
 These packages expose the public editing/rendering surfaces consumed by apps and examples.
 They must not depend on app-owned state or shell internals.
 
+### Lander packages
+
+- `@mdwrk/lander-content-contract`
+- `@mdwrk/lander-markdown-content-adapter`
+- `@mdwrk/lander-core`
+- `@mdwrk/lander-seo`
+- `@mdwrk/lander-theme`
+- `@mdwrk/lander-react`
+
+These packages define the reusable lander content model, content-source adapters, compiler, SEO helpers, theme, and React rendering surfaces.
+They must not depend on branded content packs.
+
+### Content packages
+
+- `@mdwrk/mdwrkcom-content-pack`
+
+Content packages are branded or distributable content bundles.
+They may mirror app-owned content, but reusable lander packages must not import them.
+
 ### Extension runtime and extension packages
 
 - `@mdwrk/extension-runtime`

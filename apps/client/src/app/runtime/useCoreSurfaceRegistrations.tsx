@@ -470,6 +470,18 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                     </label>
                   </div>
                 </div>
+                <div className="settings-card settings-card-highlight settings-card-inset">
+                  <div className="settings-row settings-row--top settings-row--bottom">
+                    <div>
+                      <span className="settings-section-label settings-inline-row settings-inline-row--sm">{t('core.settings.session.persistence-diagnostics', 'Persistence diagnostics')}</span>
+                      <p className="settings-muted-caption settings-copy--spaced settings-copy--relaxed">{t('core.settings.session.persistence-diagnostics.description', 'Show storage backend details in the Data settings diagnostics panel.')}</p>
+                    </div>
+                    <label className="pwa-toggle">
+                      <input type="checkbox" checked={snapshot.app.state.persistenceDiagnosticsEnabled} onChange={(event) => snapshot.app.actions.setPersistenceDiagnosticsEnabled(event.target.checked)} />
+                      <span className="pwa-toggle-indicator" />
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           );

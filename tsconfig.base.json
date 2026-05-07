@@ -121,11 +121,11 @@
       "@mdwrk/lander-theme/*": [
         "packages/lander/lander-theme/dist/*"
       ],
-      "@mdwrk/lander-markdown": [
-        "packages/lander/lander-markdown/dist/index.d.ts"
+      "@mdwrk/lander-markdown-content-adapter": [
+        "packages/lander/lander-markdown-content-adapter/dist/index.d.ts"
       ],
-      "@mdwrk/lander-markdown/*": [
-        "packages/lander/lander-markdown/dist/*"
+      "@mdwrk/lander-markdown-content-adapter/*": [
+        "packages/lander/lander-markdown-content-adapter/dist/*"
       ],
       "@mdwrk/lander-react": [
         "packages/lander/lander-react/dist/index.d.ts"
@@ -134,10 +134,10 @@
         "packages/lander/lander-react/dist/*"
       ],
       "@mdwrk/mdwrkcom-content-pack": [
-        "packages/lander/mdwrkcom-content-pack/dist/index.d.ts"
+        "packages/content/mdwrkcom-content-pack/dist/index.d.ts"
       ],
       "@mdwrk/mdwrkcom-content-pack/*": [
-        "packages/lander/mdwrkcom-content-pack/dist/*"
+        "packages/content/mdwrkcom-content-pack/dist/*"
       ],
       "@mdwrk/extension-runtime": [
         "packages/extensions/extension-runtime/dist/index.d.ts"

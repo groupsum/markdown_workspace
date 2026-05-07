@@ -14,6 +14,7 @@ const WORKSPACE_PREFIXES = [
   'packages/renderer/',
   'packages/editor/',
   'packages/lander/',
+  'packages/content/',
   'packages/extensions/',
   'examples/',
 ];
@@ -91,6 +92,9 @@ export function classifyWorkspace(relativePath) {
   }
   if (normalized.startsWith('packages/lander/')) {
     return 'lander';
+  }
+  if (normalized.startsWith('packages/content/')) {
+    return 'content';
   }
   if (normalized.startsWith('packages/extensions/')) {
     return 'extension';

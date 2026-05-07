@@ -1862,7 +1862,9 @@
       "spec_ids": [
         "spc:2008"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:frontend-settings-persistence"
+      ],
       "test_ids": [],
       "requires": []
     },
@@ -1918,7 +1920,9 @@
         "spc:2008",
         "spc:2006"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:indexeddb-vs-filesystem-persistence"
+      ],
       "test_ids": [],
       "requires": []
     },
@@ -1941,7 +1945,9 @@
       "spec_ids": [
         "spc:2008"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:cloud-persistence-out-of-bounds"
+      ],
       "test_ids": [],
       "requires": []
     },
@@ -2668,7 +2674,9 @@
       "spec_ids": [
         "spc:2008"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:persistence-diagnostics-mode"
+      ],
       "test_ids": [],
       "requires": []
     },
@@ -12900,6 +12908,58 @@
       "evidence_ids": [
         "evd:tools-release-build-publish-graph.test.mjs"
       ]
+    },
+    {
+      "id": "clm:frontend-settings-persistence",
+      "title": "Frontend settings persist across sessions",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "capability",
+      "description": "Client UI settings persist through localStorage and IndexedDB-backed settings storage, including session restore and diagnostics toggles.",
+      "feature_ids": [
+        "feat:frontend-settings-persistence"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:indexeddb-vs-filesystem-persistence",
+      "title": "IndexedDB and filesystem persistence stay separated",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Browser/PWA projects use IndexedDB content while desktop filesystem projects keep file content on the mounted filesystem and retain settings/git configuration in IndexedDB.",
+      "feature_ids": [
+        "feat:indexeddb-vs-filesystem-persistence"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:persistence-diagnostics-mode",
+      "title": "Persistence backend details are diagnostics-only",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Storage backend details appear only when persistence diagnostics are enabled and remain absent from the normal status footer.",
+      "feature_ids": [
+        "feat:persistence-diagnostics-mode"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "clm:cloud-persistence-out-of-bounds",
+      "title": "Cloud persistence remains out of bounds",
+      "status": "declared",
+      "tier": "T2",
+      "kind": "boundary",
+      "description": "The client persistence boundary rejects cloud persistence backends and reports cloud persistence as out of bounds in diagnostics.",
+      "feature_ids": [
+        "feat:cloud-persistence-out-of-bounds"
+      ],
+      "test_ids": [],
+      "evidence_ids": []
     }
   ],
   "evidence": [
@@ -14057,6 +14117,16 @@
       "test_ids": [
         "tst:tools-release-build-publish-graph.test.mjs"
       ]
+    },
+    {
+      "id": "evd:apps-client-services-persistence.test.ts",
+      "title": "Persistence service unit test evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/services/persistence.test.ts",
+      "claim_ids": [],
+      "test_ids": []
     }
   ],
   "issues": [

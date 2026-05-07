@@ -2,6 +2,7 @@ import React from 'react';
 import { useClientRuntimeSnapshot } from '../../app/runtime/ClientRuntimeContext';
 import { useClientI18n } from '../i18n/useClientI18n';
 import { getPwaSystemConfig } from '../../pwa/versionManifest';
+import { resolveProjectPersistence } from '../../../services/persistence';
 
 const humanizeStatus = (value: string): string => {
   const normalized = value.replaceAll('_', ' ').toLowerCase();
@@ -16,6 +17,7 @@ export const DataSettingsPanel: React.FC = () => {
   const pwaState = runtime.pwa.state;
   const pwaActions = runtime.pwa.actions;
   const pwaSystemConfig = React.useMemo(() => getPwaSystemConfig(pwaState.selectedVersion), [pwaState.selectedVersion]);
+  const persistence = React.useMemo(() => resolveProjectPersistence(snapshot.state.currentProject), [snapshot.state.currentProject]);
   const pwaStatusLabel = pwaState.isInstalled ? t('core.settings.data.pwa.installed', 'Installed') : t('core.settings.data.pwa.not-installed', 'Not installed');
   const versionStatusLabel = t(
     `core.settings.data.pwa.version-status.${pwaState.versionStatusLabel.toLowerCase().replaceAll('_', '-')}`,
@@ -126,6 +128,24 @@ export const DataSettingsPanel: React.FC = () => {
             onChange={handleRestoreUpload}
           />
         </div>
+
+        {snapshot.state.persistenceDiagnosticsEnabled ? (
+          <div className="settings-card settings-card-highlight settings-card-inset">
+            <div className="settings-row settings-row--top mb-2">
+              <span className="settings-section-label">{t('core.settings.data.persistence-diagnostics.title', 'Persistence diagnostics')}</span>
+              <span className="settings-badge settings-badge--dark">{t('core.settings.data.persistence-diagnostics.mode', 'Diagnostics')}</span>
+            </div>
+            <div className="pwa-status-grid">
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.project', 'Project')}</span><span className="pwa-status-value">{persistence.projectName ?? t('core.settings.state.none', 'None')}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.content', 'Content backend')}</span><span className="pwa-status-value">{persistence.contentBackend.toUpperCase()}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.settings', 'Settings backend')}</span><span className="pwa-status-value">{t('core.settings.data.persistence-diagnostics.indexeddb-settings', 'IndexedDB settings')}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.git-config', 'Git config backend')}</span><span className="pwa-status-value">{persistence.gitConfigBackend.toUpperCase()}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.session', 'Session backend')}</span><span className="pwa-status-value">{persistence.sessionBackend}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.root', 'Filesystem root')}</span><span className="pwa-status-value">{persistence.filesystemRootPath ?? t('core.settings.state.none', 'None')}</span></div>
+              <div className="pwa-status-row"><span className="pwa-status-label">{t('core.settings.data.persistence-diagnostics.cloud', 'Cloud persistence')}</span><span className="pwa-status-value">{t('core.settings.data.persistence-diagnostics.cloud-oob', 'Out of bounds')}</span></div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

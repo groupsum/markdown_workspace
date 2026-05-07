@@ -36,6 +36,7 @@ describe('Phase 7 shell parity', () => {
     expect(screen.getByText('AUTO-SAVE:')).toBeInTheDocument();
     expect(screen.getByText('ON')).toBeInTheDocument();
     expect(screen.queryByText(/IDB/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/FILESYSTEM|INDEXEDDB|OUT OF BOUNDS/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/SAVED|UNWRITTEN/)).not.toBeInTheDocument();
     expect(container.querySelector('.status-sep')).not.toBeInTheDocument();
   });

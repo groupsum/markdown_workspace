@@ -1,0 +1,48 @@
+{
+  "name": "@mdwrk/lander-markdown-content-adapter",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "lander",
+    "markdown",
+    "frontmatter"
+  ],
+  "description": "Markdown frontmatter and body adapter for portable lander content specs.",
+  "dependencies": {
+    "@mdwrk/lander-content-contract": "^0.1.0",
+    "@mdwrk/lander-core": "^0.1.0"
+  },
+  "scripts": {
+    "build": "npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/lander-core && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run typecheck",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}
