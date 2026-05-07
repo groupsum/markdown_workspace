@@ -58,4 +58,27 @@ describe("MarkdownSourceEditor keyboard behavior", () => {
     fireEvent.keyDown(editor, { key: "Enter" });
     expect(editor.value).toBe("");
   });
+
+  it("continues ordered and task list items on Enter", () => {
+    render(<MarkdownSourceEditor defaultValue={"2. alpha\n- [x] done"} />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(8, 8);
+    fireEvent.keyDown(editor, { key: "Enter" });
+    expect(editor.value).toBe("2. alpha\n3. \n- [x] done");
+
+    editor.setSelectionRange(editor.value.length, editor.value.length);
+    fireEvent.keyDown(editor, { key: "Enter" });
+    expect(editor.value).toBe("2. alpha\n3. \n- [x] done\n- [ ] ");
+  });
+
+  it("does not consume Ctrl+U for Markdown underline", () => {
+    render(<MarkdownSourceEditor defaultValue="hello" />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(0, 5);
+    const wasNotPrevented = fireEvent.keyDown(editor, { key: "u", ctrlKey: true });
+    expect(wasNotPrevented).toBe(true);
+    expect(editor.value).toBe("hello");
+  });
 });

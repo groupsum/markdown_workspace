@@ -2,7 +2,7 @@
 import "@testing-library/jest-dom/vitest";
 import "@mdwrk/testing/vitest-setup";
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { MarkdownSourceEditor } from "../src/index.js";
 
@@ -38,6 +38,21 @@ describe("MarkdownSourceEditor", () => {
   it("can suppress the gutter when line numbers are disabled", () => {
     const { container } = render(<MarkdownSourceEditor defaultValue="alpha" showLineNumbers={false} />);
     expect(container.querySelector('.editor-gutter')).toBeNull();
+    expect(container.querySelector(".editor-stage")).toHaveAttribute("data-line-numbers", "hidden");
+  });
+
+  it("renders line numbers by default", () => {
+    const { container } = render(<MarkdownSourceEditor defaultValue={"alpha\nbeta"} />);
+    expect(container.querySelectorAll(".line-num")).toHaveLength(2);
+    expect(container.querySelector(".editor-stage")).toHaveAttribute("data-line-numbers", "visible");
+  });
+
+  it("can turn source text wrapping off", () => {
+    render(<MarkdownSourceEditor defaultValue="alpha beta gamma" textWrap={false} />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    expect(editor).toHaveAttribute("wrap", "off");
+    expect(editor).toHaveAttribute("data-wrap-mode", "off");
+    expect(editor).toHaveClass("editor-textarea--nowrap");
   });
 
   it("emits selection format state when the current selection changes", () => {
@@ -54,5 +69,23 @@ describe("MarkdownSourceEditor", () => {
     fireEvent.select(editor);
     const lastCall = onSelectionFormatChange.mock.calls.at(-1)?.[0];
     expect(lastCall?.bold).toBe(true);
+  });
+
+  it("preserves focus and character position when creating a checkbox item", async () => {
+    const ref = React.createRef<React.ElementRef<typeof MarkdownSourceEditor>>();
+    render(<MarkdownSourceEditor ref={ref} defaultValue="alpha" />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(2, 2);
+    ref.current?.setSelection({ start: 2, end: 2 });
+
+    await act(async () => {
+      ref.current?.executeCommand("task-list");
+    });
+
+    expect(document.activeElement).toBe(editor);
+    expect(editor.value).toBe("- [ ] alpha");
+    expect(editor.selectionStart).toBe(8);
+    expect(editor.selectionEnd).toBe(8);
   });
 });

@@ -69,6 +69,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       autoFocus = false,
       disabled = false,
       showLineNumbers = true,
+      textWrap = true,
       historyLimit = 100,
       textareaClassName,
       gutterClassName,
@@ -280,6 +281,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       },
       setSelection(nextSelection: MarkdownEditorSelection): void {
         const normalized = normalizeSelection(nextSelection, draftValueRef.current.length);
+        selectionRef.current = normalized;
         setSelection(normalized);
         pendingSelectionRef.current = normalized;
         onSelectionChange?.(normalized);
@@ -374,8 +376,11 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
     const displayValue = isControlled ? (value ?? "") : draftValue;
 
     const visualLineRows = React.useMemo(() => {
+      if (!textWrap) {
+        return displayValue.split("\n").map(() => 1);
+      }
       return displayValue.split("\n").map((line) => estimateWordBreakVisualRows(line, wrapColumn));
-    }, [displayValue, wrapColumn]);
+    }, [displayValue, textWrap, wrapColumn]);
 
     const lineCount = React.useMemo(() => {
       const matches = displayValue.match(/\n/g);
@@ -395,6 +400,8 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       <div
         className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.root, "editor-stage", className)}
         style={mergedThemeStyle}
+        data-line-numbers={showLineNumbers ? "visible" : "hidden"}
+        data-text-wrap={textWrap ? "soft" : "off"}
       >
         <div className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.layout, "editor-layout-wrapper")}>
           {showLineNumbers ? (
@@ -418,7 +425,12 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
           ) : null}
           <textarea
             ref={textareaRef}
-            className={mergeClassNames(DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea, "editor-textarea", textareaClassName)}
+            className={mergeClassNames(
+              DEFAULT_MARKDOWN_EDITOR_CLASS_NAMES.textarea,
+              "editor-textarea",
+              textWrap ? "editor-textarea--wrap" : "editor-textarea--nowrap",
+              textareaClassName,
+            )}
             value={isControlled ? (value ?? "") : draftValue}
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
@@ -434,10 +446,10 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
             autoFocus={autoFocus}
             disabled={disabled}
             placeholder={placeholder}
-            wrap="soft"
-            cols={wrapColumn}
+            wrap={textWrap ? "soft" : "off"}
+            cols={textWrap ? wrapColumn : undefined}
             data-wrap-engine="pretext"
-            data-wrap-mode="word-break"
+            data-wrap-mode={textWrap ? "word-break" : "off"}
             data-testid="markdown-source-editor"
           />
         </div>

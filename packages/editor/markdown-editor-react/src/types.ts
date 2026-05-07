@@ -28,6 +28,7 @@ export interface MarkdownSourceEditorProps {
   readonly autoFocus?: boolean;
   readonly disabled?: boolean;
   readonly showLineNumbers?: boolean;
+  readonly textWrap?: boolean;
   readonly historyLimit?: number;
   readonly textareaClassName?: string;
   readonly gutterClassName?: string;

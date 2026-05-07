@@ -61,6 +61,15 @@
   outline: none;
 }
 
+.mw-editor-textarea--nowrap,
+.editor-textarea--nowrap {
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-break: auto;
+  overflow-x: auto;
+}
+
 .mw-editor-textarea::selection {
   background: color-mix(in srgb, var(--mwe-accent, var(--accent, #7c9cff)) 28%, transparent);
 }

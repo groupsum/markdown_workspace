@@ -18,6 +18,16 @@ describe("editor transforms", () => {
     expect(result.selection.start).toBe(result.selection.end);
   });
 
+  it("continues ordered and checked task list items on Enter", () => {
+    const ordered = insertListContinuation("9) alpha", { start: 8, end: 8 });
+    expect(ordered.value).toBe("9) alpha\n10) ");
+    expect(ordered.selection).toEqual({ start: 13, end: 13, direction: "none" });
+
+    const task = insertListContinuation("- [x] done", { start: 10, end: 10 });
+    expect(task.value).toBe("- [x] done\n- [ ] ");
+    expect(task.selection).toEqual({ start: 17, end: 17, direction: "none" });
+  });
+
   it("terminates empty task list items on Enter", () => {
     const result = insertListContinuation("- [ ] ", { start: 6, end: 6 });
     expect(result.value).toBe("");

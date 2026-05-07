@@ -1249,6 +1249,58 @@
       "kind": "feature"
     },
     {
+      "id": "feat:commonmark-core-subset",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:commonmark-official-corpus",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:gfm-default-profile-subset",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:gfm-official-corpus",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-front-matter",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-footnotes",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-definition-lists",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-math",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-citations",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-superscript",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-subscript",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-smart-punctuation",
+      "kind": "feature"
+    },
+    {
+      "id": "feat:mdwrk-profile-markdown-in-html",
+      "kind": "feature"
+    },
+    {
       "id": "prf:editor-authoring-default",
       "kind": "profile"
     },
@@ -1505,6 +1557,34 @@
       "kind": "test"
     },
     {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "kind": "test"
+    },
+    {
       "id": "clm:cross-cutting",
       "kind": "claim"
     },
@@ -1618,6 +1698,26 @@
     },
     {
       "id": "clm:docs-view-toolbar",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:editor-line-count-bar-toggle",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:editor-checkbox-focus-preservation",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:editor-list-continuation",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:editor-text-wrap",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:editor-underline-policy",
       "kind": "claim"
     },
     {
@@ -1850,6 +1950,34 @@
     },
     {
       "id": "evd:tools-governance-validate-doc-feature-pages.mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-commonmark-core-corpus",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-commonmark-official-corpus",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-gfm-default-profile",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-gfm-official-corpus",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-mdwrk-optional-profiles",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
       "kind": "evidence"
     },
     {
@@ -4065,6 +4193,16 @@
     },
     {
       "type": "BUNDLES",
+      "from": "prf:commonmark-editing-preview",
+      "to": "feat:commonmark-core-subset"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:commonmark-editing-preview",
+      "to": "feat:commonmark-official-corpus"
+    },
+    {
+      "type": "BUNDLES",
       "from": "prf:gfm-editing-preview",
       "to": "feat:gfm-profile"
     },
@@ -4082,6 +4220,16 @@
       "type": "BUNDLES",
       "from": "prf:gfm-editing-preview",
       "to": "feat:client-editor"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:gfm-editing-preview",
+      "to": "feat:gfm-default-profile-subset"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:gfm-editing-preview",
+      "to": "feat:gfm-official-corpus"
     },
     {
       "type": "COMPOSES",
@@ -4112,6 +4260,51 @@
       "type": "BUNDLES",
       "from": "prf:mdwrk-editing-preview",
       "to": "feat:client-editor"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-front-matter"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-footnotes"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-definition-lists"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-math"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-citations"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-superscript"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-subscript"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-smart-punctuation"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:mdwrk-editing-preview",
+      "to": "feat:mdwrk-profile-markdown-in-html"
     },
     {
       "type": "COMPOSES",
@@ -5619,9 +5812,29 @@
       "to": "spc:2003"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:editor-list-continuation",
+      "to": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:editor-list-continuation",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:editor-checkbox-focus-preservation",
       "to": "spc:2016"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:editor-checkbox-focus-preservation",
+      "to": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:editor-checkbox-focus-preservation",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5639,9 +5852,19 @@
       "to": "spc:2005"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:editor-underline-policy",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:editor-text-wrap",
       "to": "spc:2016"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:editor-text-wrap",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5652,6 +5875,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:editor-line-count-bar-toggle",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:editor-line-count-bar-toggle",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -10797,6 +11025,201 @@
       "type": "COVERED_BY",
       "from": "feat:lander.structured-data.image-object",
       "to": "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:commonmark-core-subset",
+      "to": "spc:2004"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:commonmark-core-subset",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:commonmark-official-corpus",
+      "to": "spc:2004"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:commonmark-official-corpus",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "spc:2003"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "spc:2004"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "spc:2003"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "spc:2004"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-front-matter",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-front-matter",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-front-matter",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-footnotes",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-footnotes",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-footnotes",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-definition-lists",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-definition-lists",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-definition-lists",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-math",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-math",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-math",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-citations",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-citations",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-citations",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-superscript",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-superscript",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-superscript",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-subscript",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-subscript",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-subscript",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-smart-punctuation",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-smart-punctuation",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-smart-punctuation",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-markdown-in-html",
+      "to": "spc:2005"
+    },
+    {
+      "type": "SPECIFIED_BY",
+      "from": "feat:mdwrk-profile-markdown-in-html",
+      "to": "spc:2003"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-profile-markdown-in-html",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
     },
     {
       "type": "DECIDED_BY",
@@ -17964,6 +18387,156 @@
       "to": "adr:1058"
     },
     {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-core-subset",
+      "to": "adr:1009"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-core-subset",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-core-subset",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-official-corpus",
+      "to": "adr:1009"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-official-corpus",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:commonmark-official-corpus",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "adr:1009"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-default-profile-subset",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "adr:1009"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:gfm-official-corpus",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-front-matter",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-front-matter",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-footnotes",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-footnotes",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-definition-lists",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-definition-lists",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-math",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-math",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-citations",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-citations",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-superscript",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-superscript",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-subscript",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-subscript",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-smart-punctuation",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-smart-punctuation",
+      "to": "adr:1045"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-markdown-in-html",
+      "to": "adr:1028"
+    },
+    {
+      "type": "DECIDED_BY",
+      "from": "feat:mdwrk-profile-markdown-in-html",
+      "to": "adr:1045"
+    },
+    {
       "type": "ASSERTS",
       "from": "clm:cross-cutting",
       "to": "feat:cross-cutting"
@@ -18564,6 +19137,71 @@
       "to": "feat:repo-governance-validation"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:commonmark-core-subset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:commonmark-official-corpus"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:gfm-default-profile-subset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:gfm-official-corpus"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-front-matter"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-footnotes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-definition-lists"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-math"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-citations"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-superscript"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-subscript"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-smart-punctuation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-profile-markdown-in-html"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -18754,6 +19392,31 @@
       "to": "clm:cross-cutting"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -18936,6 +19599,31 @@
     {
       "type": "SUPPORTS",
       "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-commonmark-core-corpus",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-commonmark-official-corpus",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-gfm-default-profile",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-gfm-official-corpus",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-mdwrk-optional-profiles",
       "to": "clm:cross-cutting"
     },
     {
@@ -20049,6 +20737,71 @@
       "to": "feat:custom-flavored-markdown-profile"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:commonmark-core-subset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:commonmark-official-corpus"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:gfm-default-profile-subset"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:gfm-official-corpus"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-front-matter"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-footnotes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-definition-lists"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-math"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-citations"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-superscript"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-subscript"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-smart-punctuation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-profile-markdown-in-html"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
       "to": "clm:client-markdownprofiles"
@@ -20069,6 +20822,31 @@
       "to": "clm:client-markdownprofiles"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
       "to": "clm:client-markdownprofiles"
@@ -20086,6 +20864,31 @@
     {
       "type": "SUPPORTS",
       "from": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-commonmark-core-corpus",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-commonmark-official-corpus",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-gfm-default-profile",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-gfm-official-corpus",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-mdwrk-optional-profiles",
       "to": "clm:client-markdownprofiles"
     },
     {
@@ -21369,6 +22172,101 @@
       "to": "clm:docs-view-toolbar"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:editor-line-count-bar-toggle",
+      "to": "feat:editor-line-count-bar-toggle"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-line-count-bar-toggle"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-line-count-bar-toggle"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:editor-checkbox-focus-preservation",
+      "to": "feat:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "to": "clm:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "to": "clm:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:editor-list-continuation",
+      "to": "feat:editor-list-continuation"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "to": "clm:editor-list-continuation"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-list-continuation"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "to": "clm:editor-list-continuation"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-list-continuation"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:editor-text-wrap",
+      "to": "feat:editor-text-wrap"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-text-wrap"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-text-wrap"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:editor-underline-policy",
+      "to": "feat:editor-underline-policy"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-underline-policy"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "clm:editor-underline-policy"
+    },
+    {
       "type": "DERIVES_FROM",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "tst:apps-client-hooks-useapp.test.tsx"
@@ -21692,6 +22590,41 @@
       "type": "DERIVES_FROM",
       "from": "evd:tools-governance-validate-doc-feature-pages.mjs",
       "to": "tst:tools-governance-validate-doc-feature-pages.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-commonmark-core-corpus",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-commonmark-official-corpus",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-gfm-default-profile",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-gfm-official-corpus",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-mdwrk-optional-profiles",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "to": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
     },
     {
       "type": "AFFECTS",

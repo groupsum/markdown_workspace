@@ -94,4 +94,10 @@ describe("builtin markdown editor commands", () => {
     expect(result.selection.start).toBe(6);
     expect(result.selection.end).toBe(6);
   });
+
+  it("keeps the cursor on the same content character when creating a task item", () => {
+    const result = applyBuiltinMarkdownCommand("task-list", "alpha", { start: 2, end: 2 });
+    expect(result.value).toBe("- [ ] alpha");
+    expect(result.selection).toEqual({ start: 8, end: 8, direction: "none" });
+  });
 });

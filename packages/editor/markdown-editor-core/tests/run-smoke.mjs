@@ -59,9 +59,21 @@ const checks = [
     test() {
       assert.equal(getListContinuationPrefix('- alpha'), '- ');
       assert.equal(getListContinuationPrefix('1. alpha'), '2. ');
+      assert.equal(getListContinuationPrefix('9) alpha'), '10) ');
       assert.equal(getListContinuationPrefix('- [x] alpha'), '- [ ] ');
       assert.equal(insertListContinuation('- alpha', { start: 7, end: 7 }).value, '- alpha\n- ');
+      assert.equal(insertListContinuation('9) alpha', { start: 8, end: 8 }).value, '9) alpha\n10) ');
+      assert.equal(insertListContinuation('- [x] alpha', { start: 11, end: 11 }).value, '- [x] alpha\n- [ ] ');
       assert.equal(insertListContinuation('- [ ] ', { start: 6, end: 6 }).value, '');
+    },
+  },
+  {
+    id: 'task-list-focus-position',
+    description: 'task-list command keeps cursor on the same content character after checkbox insertion',
+    test() {
+      const taskList = applyBuiltinMarkdownCommand('task-list', 'alpha', { start: 2, end: 2 });
+      assert.equal(taskList.value, '- [ ] alpha');
+      assert.deepEqual(taskList.selection, { start: 8, end: 8, direction: 'none' });
     },
   },
   {

@@ -18,6 +18,13 @@ const htmlWithoutGutter = renderToStaticMarkup(
   }),
 );
 
+const htmlWithoutWrap = renderToStaticMarkup(
+  React.createElement(MarkdownSourceEditor, {
+    defaultValue: 'alpha beta gamma',
+    textWrap: false,
+  }),
+);
+
 const checks = [
   {
     id: 'editor-root',
@@ -40,6 +47,7 @@ const checks = [
     description: 'MarkdownSourceEditor can suppress the gutter when line numbers are disabled',
     test() {
       assert.doesNotMatch(htmlWithoutGutter, /editor-gutter/);
+      assert.match(htmlWithoutGutter, /data-line-numbers="hidden"/);
     },
   },
   {
@@ -57,6 +65,15 @@ const checks = [
       assert.match(html, /cols="80"/);
       assert.match(html, /data-wrap-engine="pretext"/);
       assert.match(html, /data-wrap-mode="word-break"/);
+    },
+  },
+  {
+    id: 'textarea-wrap-off',
+    description: 'MarkdownSourceEditor can turn source text wrapping off',
+    test() {
+      assert.match(htmlWithoutWrap, /wrap="off"/);
+      assert.match(htmlWithoutWrap, /data-wrap-mode="off"/);
+      assert.match(htmlWithoutWrap, /editor-textarea--nowrap/);
     },
   },
 ];

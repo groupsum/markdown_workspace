@@ -648,8 +648,8 @@
     {
       "id": "feat:commonmark-conformance-profile",
       "title": "CommonMark Markdown profile",
-      "description": "Track CommonMark baseline behavior covered by current renderer/editor smoke evidence.",
-      "implementation_status": "implemented",
+      "description": "Umbrella feature for the CommonMark renderer profile, split into curated subset and official corpus leaf features.",
+      "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -677,7 +677,7 @@
     {
       "id": "feat:custom-flavored-markdown-profile",
       "title": "CFM Markdown profile",
-      "description": "Track the CFM profile as an additive profile above CommonMark and GFM.",
+      "description": "Umbrella feature for MdWrk custom markdown profiles and optional markdown extensions.",
       "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
@@ -1313,7 +1313,7 @@
       "id": "feat:editor-list-continuation",
       "title": "Editor list continuation typeahead",
       "description": "Continue ul and ol list items on Enter and terminate after an empty second Enter.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1329,15 +1329,20 @@
         "spc:2016",
         "spc:2003"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:editor-list-continuation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-checkbox-focus-preservation",
       "title": "Editor checkbox focus preservation",
       "description": "Maintain current line and character focus when creating a new checkbox.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1352,15 +1357,20 @@
       "spec_ids": [
         "spc:2016"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-underline-policy",
       "title": "Editor underline policy",
       "description": "Fix underline behavior while preserving standard Markdown semantics unless custom profile enables it.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1377,15 +1387,19 @@
         "spc:2003",
         "spc:2005"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:editor-underline-policy"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-text-wrap",
       "title": "Editor text wrap",
       "description": "Provide MdWrk editor text wrap behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1400,15 +1414,19 @@
       "spec_ids": [
         "spc:2016"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:editor-text-wrap"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
       "requires": []
     },
     {
       "id": "feat:editor-line-count-bar-toggle",
       "title": "Editor line count bar toggle",
       "description": "Option to turn off line count bars.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1424,8 +1442,12 @@
         "spc:2016",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:editor-line-count-bar-toggle"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
       "requires": []
     },
     {
@@ -2011,7 +2033,7 @@
     {
       "id": "feat:gfm-profile",
       "title": "GFM Markdown profile",
-      "description": "Track GitHub Flavored Markdown behavior covered by current renderer evidence.",
+      "description": "Umbrella feature for the GitHub Flavored Markdown renderer profile, split into curated default-profile and official corpus leaf features.",
       "implementation_status": "partial",
       "lifecycle": {
         "stage": "active",
@@ -9048,6 +9070,383 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:commonmark-core-subset",
+      "title": "CommonMark curated core subset",
+      "description": "Leaf feature for the curated CommonMark core corpus used by the renderer profile gate.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:commonmark-official-corpus",
+      "title": "CommonMark official corpus conformance",
+      "description": "Leaf feature for official CommonMark corpus conformance; current renderer corpus gate still reports deltas.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:gfm-default-profile-subset",
+      "title": "GFM curated default profile subset",
+      "description": "Leaf feature for the curated GFM default profile corpus used by the renderer profile gate.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005",
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:gfm-official-corpus",
+      "title": "GFM official corpus conformance",
+      "description": "Leaf feature for official GFM corpus conformance; current renderer corpus gate still reports deltas.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2003",
+        "spc:2005",
+        "spc:2004"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-front-matter",
+      "title": "MdWrk front matter markdown profile",
+      "description": "Leaf feature for MdWrk front matter parsing and metadata omission from rendered markdown output.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-footnotes",
+      "title": "MdWrk footnotes markdown profile",
+      "description": "Leaf feature for MdWrk footnote references, definitions, backlinks, and rendered footnote sections.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-definition-lists",
+      "title": "MdWrk definition lists markdown profile",
+      "description": "Leaf feature for MdWrk definition list rendering into dl, dt, and dd structures.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-math",
+      "title": "MdWrk math markdown profile",
+      "description": "Leaf feature for MdWrk structural inline and block math rendering without external typesetting.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-citations",
+      "title": "MdWrk citations markdown profile",
+      "description": "Leaf feature for MdWrk citation-key rendering; bibliography resolution remains outside the certification boundary.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-superscript",
+      "title": "MdWrk superscript markdown profile",
+      "description": "Leaf feature for MdWrk superscript rendering.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-subscript",
+      "title": "MdWrk subscript markdown profile",
+      "description": "Leaf feature for MdWrk subscript rendering.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-smart-punctuation",
+      "title": "MdWrk smart punctuation markdown profile",
+      "description": "Leaf feature for MdWrk smart punctuation rendering.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-markdown-in-html",
+      "title": "MdWrk markdown in HTML profile",
+      "description": "Leaf feature for trusted markdown-in-HTML containers; only explicitly trusted containers are interpreted.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -10579,6 +10978,141 @@
       "evidence_ids": [
         "evd:tools-governance-validate-doc-feature-pages.mjs"
       ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+      "title": "CommonMark curated core corpus",
+      "status": "passing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/commonmark-core-corpus.mjs",
+      "feature_ids": [
+        "feat:commonmark-core-subset"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-commonmark-core-corpus"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+      "title": "CommonMark official corpus",
+      "status": "failing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/commonmark-official-corpus.mjs",
+      "feature_ids": [
+        "feat:commonmark-official-corpus"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-commonmark-official-corpus"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+      "title": "GFM curated default profile corpus",
+      "status": "passing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/gfm-default-profile.mjs",
+      "feature_ids": [
+        "feat:gfm-default-profile-subset"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-gfm-default-profile"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+      "title": "GFM official corpus",
+      "status": "failing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/gfm-official-corpus.mjs",
+      "feature_ids": [
+        "feat:gfm-official-corpus"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-gfm-official-corpus"
+      ]
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs",
+      "title": "MdWrk optional markdown profiles",
+      "status": "passing",
+      "kind": "integration",
+      "path": "packages/renderer/markdown-renderer-core/tests/optional-profiles.mjs",
+      "feature_ids": [
+        "feat:mdwrk-profile-front-matter",
+        "feat:mdwrk-profile-footnotes",
+        "feat:mdwrk-profile-definition-lists",
+        "feat:mdwrk-profile-math",
+        "feat:mdwrk-profile-citations",
+        "feat:mdwrk-profile-superscript",
+        "feat:mdwrk-profile-subscript",
+        "feat:mdwrk-profile-smart-punctuation",
+        "feat:mdwrk-profile-markdown-in-html"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-mdwrk-optional-profiles"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "title": "Markdown editor core smoke tests",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/editor/markdown-editor-core/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:editor-checkbox-focus-preservation",
+        "feat:editor-list-continuation"
+      ],
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation",
+        "clm:editor-list-continuation"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "title": "Markdown editor React smoke tests",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/editor/markdown-editor-react/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:editor-checkbox-focus-preservation",
+        "feat:editor-line-count-bar-toggle",
+        "feat:editor-list-continuation",
+        "feat:editor-text-wrap",
+        "feat:editor-underline-policy"
+      ],
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation",
+        "clm:editor-line-count-bar-toggle",
+        "clm:editor-list-continuation",
+        "clm:editor-text-wrap",
+        "clm:editor-underline-policy"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
     }
   ],
   "claims": [
@@ -10709,7 +11243,20 @@
         "feat:json-ld-vacation-rental",
         "feat:json-ld-vehicle-listing",
         "feat:json-ld-video",
-        "feat:repo-governance-validation"
+        "feat:repo-governance-validation",
+        "feat:commonmark-core-subset",
+        "feat:commonmark-official-corpus",
+        "feat:gfm-default-profile-subset",
+        "feat:gfm-official-corpus",
+        "feat:mdwrk-profile-front-matter",
+        "feat:mdwrk-profile-footnotes",
+        "feat:mdwrk-profile-definition-lists",
+        "feat:mdwrk-profile-math",
+        "feat:mdwrk-profile-citations",
+        "feat:mdwrk-profile-superscript",
+        "feat:mdwrk-profile-subscript",
+        "feat:mdwrk-profile-smart-punctuation",
+        "feat:mdwrk-profile-markdown-in-html"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -10749,7 +11296,12 @@
         "tst:tools-governance-validate-release-snapshots.mjs",
         "tst:packages-shared-structured-data-tests-run-smoke.mjs",
         "tst:packages-lander-lander-react-tests-run-smoke.mjs",
-        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-hooks-useapp.test.tsx",
@@ -10788,7 +11340,12 @@
         "evd:ssot-reports-release-snapshot-index.json",
         "evd:packages-shared-structured-data-tests-run-smoke.mjs",
         "evd:packages-lander-lander-react-tests-run-smoke.mjs",
-        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+        "evd:markdown-profile-commonmark-core-corpus",
+        "evd:markdown-profile-commonmark-official-corpus",
+        "evd:markdown-profile-gfm-default-profile",
+        "evd:markdown-profile-gfm-official-corpus",
+        "evd:markdown-profile-mdwrk-optional-profiles"
       ]
     },
     {
@@ -11132,19 +11689,42 @@
         "feat:profile-boundary-resolution",
         "feat:commonmark-conformance-profile",
         "feat:gfm-profile",
-        "feat:custom-flavored-markdown-profile"
+        "feat:custom-flavored-markdown-profile",
+        "feat:commonmark-core-subset",
+        "feat:commonmark-official-corpus",
+        "feat:gfm-default-profile-subset",
+        "feat:gfm-official-corpus",
+        "feat:mdwrk-profile-front-matter",
+        "feat:mdwrk-profile-footnotes",
+        "feat:mdwrk-profile-definition-lists",
+        "feat:mdwrk-profile-math",
+        "feat:mdwrk-profile-citations",
+        "feat:mdwrk-profile-superscript",
+        "feat:mdwrk-profile-subscript",
+        "feat:mdwrk-profile-smart-punctuation",
+        "feat:mdwrk-profile-markdown-in-html"
       ],
       "test_ids": [
         "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
         "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+        "tst:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
         "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
         "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts"
+        "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
+        "evd:markdown-profile-commonmark-core-corpus",
+        "evd:markdown-profile-commonmark-official-corpus",
+        "evd:markdown-profile-gfm-default-profile",
+        "evd:markdown-profile-gfm-official-corpus",
+        "evd:markdown-profile-mdwrk-optional-profiles"
       ]
     },
     {
@@ -11667,6 +12247,95 @@
       ],
       "evidence_ids": [
         "evd:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "clm:editor-line-count-bar-toggle",
+      "title": "Editor line count bar can be toggled",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "The React source editor exposes line-number visibility as a controlled rendering option.",
+      "feature_ids": [
+        "feat:editor-line-count-bar-toggle"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "clm:editor-checkbox-focus-preservation",
+      "title": "Editor checkbox creation preserves focus",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Creating a task-list checkbox preserves editor focus and keeps the cursor on the same content character after inserting the checkbox prefix.",
+      "feature_ids": [
+        "feat:editor-checkbox-focus-preservation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "clm:editor-list-continuation",
+      "title": "Editor list continuation handles list families",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Pressing Enter continues unordered, ordered, and task list prefixes and terminates empty list items.",
+      "feature_ids": [
+        "feat:editor-list-continuation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "clm:editor-text-wrap",
+      "title": "Editor text wrap can be controlled",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "The React source editor supports soft wrapping by default and an explicit no-wrap mode for source authoring.",
+      "feature_ids": [
+        "feat:editor-text-wrap"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "clm:editor-underline-policy",
+      "title": "Editor preserves Markdown underline policy",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "The editor does not consume Ctrl+U or introduce Markdown underline syntax unless a future custom profile defines one.",
+      "feature_ids": [
+        "feat:editor-underline-policy"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "evidence_ids": [
+        "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
       ]
     }
   ],
@@ -12621,6 +13290,114 @@
       ],
       "test_ids": [
         "tst:tools-governance-validate-doc-feature-pages.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-commonmark-core-corpus",
+      "title": "CommonMark curated core corpus evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-commonmark-core-corpus.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-core-corpus.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-commonmark-official-corpus",
+      "title": "CommonMark official corpus evidence",
+      "status": "failed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-commonmark-official-corpus.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-gfm-default-profile",
+      "title": "GFM curated default profile evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-gfm-default-profile.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-default-profile.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-gfm-official-corpus",
+      "title": "GFM official corpus evidence",
+      "status": "failed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-gfm-official-corpus.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-mdwrk-optional-profiles",
+      "title": "MdWrk optional markdown profiles evidence",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T1",
+      "path": ".ssot/reports/markdown-profile-mdwrk-optional-profiles.md",
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+      "title": "Markdown editor core smoke test evidence",
+      "status": "passed",
+      "kind": "smoke",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-core/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation",
+        "clm:editor-list-continuation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
+      "title": "Markdown editor React smoke test evidence",
+      "status": "passed",
+      "kind": "smoke",
+      "tier": "T2",
+      "path": "packages/editor/markdown-editor-react/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation",
+        "clm:editor-line-count-bar-toggle",
+        "clm:editor-list-continuation",
+        "clm:editor-text-wrap",
+        "clm:editor-underline-policy"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
       ]
     }
   ],
@@ -16478,7 +17255,9 @@
         "feat:commonmark-conformance-profile",
         "feat:markdown-renderer-core",
         "feat:markdown-renderer-react",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:commonmark-core-subset",
+        "feat:commonmark-official-corpus"
       ],
       "profile_ids": [],
       "claim_tier": "T2",
@@ -16497,7 +17276,9 @@
         "feat:gfm-profile",
         "feat:markdown-renderer-core",
         "feat:markdown-renderer-react",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:gfm-default-profile-subset",
+        "feat:gfm-official-corpus"
       ],
       "profile_ids": [
         "prf:commonmark-editing-preview"
@@ -16519,7 +17300,16 @@
         "feat:mdwrk-custom-parser-profile",
         "feat:mdwrk-custom-previewer-profiles",
         "feat:client-markdownprofiles",
-        "feat:client-editor"
+        "feat:client-editor",
+        "feat:mdwrk-profile-front-matter",
+        "feat:mdwrk-profile-footnotes",
+        "feat:mdwrk-profile-definition-lists",
+        "feat:mdwrk-profile-math",
+        "feat:mdwrk-profile-citations",
+        "feat:mdwrk-profile-superscript",
+        "feat:mdwrk-profile-subscript",
+        "feat:mdwrk-profile-smart-punctuation",
+        "feat:mdwrk-profile-markdown-in-html"
       ],
       "profile_ids": [
         "prf:gfm-editing-preview"
