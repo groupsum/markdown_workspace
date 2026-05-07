@@ -1321,6 +1321,10 @@
       "kind": "profile"
     },
     {
+      "id": "prf:lander-seo-aeo-aieo-discovery",
+      "kind": "profile"
+    },
+    {
       "id": "tst:apps-client-hooks-useapp.test.tsx",
       "kind": "test"
     },
@@ -1585,6 +1589,62 @@
       "kind": "test"
     },
     {
+      "id": "tst:apps-client-components-modals-settingsmodal.test.tsx",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:tools-release-build-publish-graph.test.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-client-services-persistence.test.ts",
+      "kind": "test"
+    },
+    {
+      "id": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "kind": "test"
+    },
+    {
+      "id": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs",
+      "kind": "test"
+    },
+    {
+      "id": "tst:ssot-registry-model-governance-current",
+      "kind": "test"
+    },
+    {
+      "id": "tst:repository-top-level-hygiene-current",
+      "kind": "test"
+    },
+    {
+      "id": "tst:readme-project-identity-alignment-current",
+      "kind": "test"
+    },
+    {
       "id": "clm:cross-cutting",
       "kind": "claim"
     },
@@ -1718,6 +1778,66 @@
     },
     {
       "id": "clm:editor-underline-policy",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:mobile-uix-responsive-shell-contract",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:lander-seo-aeo-aieo-discovery",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:oidc-token-boundary-audit",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:git-ops-oidc",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:git-ops-persistence",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:package-publish-build-graph",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:frontend-settings-persistence",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:indexeddb-vs-filesystem-persistence",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:persistence-diagnostics-mode",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:cloud-persistence-out-of-bounds",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:uix-icon-toolbar-responsive-contracts",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:markdown-profile-evidence-lanes",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:ssot-registry-model-governance-current",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:readme-project-identity-alignment-current",
+      "kind": "claim"
+    },
+    {
+      "id": "clm:repository-top-level-hygiene-current",
       "kind": "claim"
     },
     {
@@ -1981,6 +2101,54 @@
       "kind": "evidence"
     },
     {
+      "id": "evd:apps-client-components-modals-settingsmodal.test.tsx",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-custom-parser-profile",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-custom-previewer-profiles",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:tools-release-build-publish-graph.test.mjs",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:apps-client-services-persistence.test.ts",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:markdown-profile-evidence-lanes",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:readme-project-identity-alignment-current",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:ssot-registry-model-governance-current",
+      "kind": "evidence"
+    },
+    {
+      "id": "evd:repository-top-level-hygiene-current",
+      "kind": "evidence"
+    },
+    {
       "id": "iss:lander-code-block-syntax-highlighting-absent",
       "kind": "issue"
     },
@@ -2018,6 +2186,42 @@
     },
     {
       "id": "bnd:repo-certifiability-p1-current-partials",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:docs-authoring-uix-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:editor-input-formatting-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:mobile-responsive-shell-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:pwa-install-version-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:extension-authoring-lifecycle-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:git-ops-security-publish-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:persistence-scope-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:uix-toolbar-icon-theme-current",
+      "kind": "boundary"
+    },
+    {
+      "id": "bnd:current-gap-delivery-current",
       "kind": "boundary"
     },
     {
@@ -3927,6 +4131,266 @@
       "to": "feat:workspace-persistence"
     },
     {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-checkbox-autocomplete"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-desktop-app-boundary"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-extension-authoring-guide"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-markdown-profile-architecture"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-text-wrap-previewer"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-uix-responsive-contract"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:docs-authoring-uix-current",
+      "to": "feat:docs-view-toolbar"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:editor-input-formatting-current",
+      "to": "feat:editor-checkbox-focus-preservation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:editor-input-formatting-current",
+      "to": "feat:editor-line-count-bar-toggle"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:editor-input-formatting-current",
+      "to": "feat:editor-list-continuation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:editor-input-formatting-current",
+      "to": "feat:editor-text-wrap"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:editor-input-formatting-current",
+      "to": "feat:editor-underline-policy"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-action-rail-portrait-order"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-file-explorer-rail-full-width"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-filetabs-portrait"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-fixed-shell-scrollable-panes"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-gesture-mappings-tab"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-git-rail-full-width"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-keyboard-mappings-tab-hidden"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-keyboard-viewport"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-statusbar-landscape-hidden"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-status-footer-portrait-hidden"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:mobile-responsive-shell-current",
+      "to": "feat:mobile-visual-keyboard-half-screen"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:pwa-install-version-current",
+      "to": "feat:pwa-install-button-state"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:pwa-install-version-current",
+      "to": "feat:pwa-version-system-config"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:extension-authoring-lifecycle-current",
+      "to": "feat:editor-underline-policy"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:extension-authoring-lifecycle-current",
+      "to": "feat:extension-authoring-publishing"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:extension-authoring-lifecycle-current",
+      "to": "feat:extension-catalog-hello"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:extension-authoring-lifecycle-current",
+      "to": "feat:extension-install-import-remove-disable"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:extension-authoring-lifecycle-current",
+      "to": "feat:extension-retention-policy"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:git-ops-security-publish-current",
+      "to": "feat:oidc-token-boundary-audit"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:git-ops-security-publish-current",
+      "to": "feat:package-publish-build-graph"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:git-ops-security-publish-current",
+      "to": "feat:git-ops-oidc"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:git-ops-security-publish-current",
+      "to": "feat:git-ops-persistence"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:persistence-scope-current",
+      "to": "feat:frontend-settings-persistence"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:persistence-scope-current",
+      "to": "feat:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:persistence-scope-current",
+      "to": "feat:git-ops-persistence"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:persistence-scope-current",
+      "to": "feat:persistence-diagnostics-mode"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:persistence-scope-current",
+      "to": "feat:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:header-settings-icon-spacing"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:action-rail-icon-mappings"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:mdwrk-view-toolbar-scroll"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:uix-command-palette-responsive"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:uix-iconized-compaction"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:uix-toolbar-icon-theme-current",
+      "to": "feat:theme-default-anodized-billet"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:custom-flavored-markdown-profile"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:mdwrk-profile-citations"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:mdwrk-profile-markdown-in-html"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:readme-project-identity-alignment"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:repo-governance-validation"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:repository-top-level-hygiene"
+    },
+    {
+      "type": "SCOPES",
+      "from": "bnd:current-gap-delivery-current",
+      "to": "feat:ssot-registry-model-governance"
+    },
+    {
       "type": "BUNDLES",
       "from": "prf:editor-authoring-default",
       "to": "feat:client-editor"
@@ -4330,6 +4794,121 @@
       "type": "COMPOSES",
       "from": "prf:edit-in-renderer-profile",
       "to": "prf:mdwrk-editing-preview"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-answerable-heading-contract"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-faq-qna-howto-eligibility"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-structured-answer-section-parity"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-visible-citation-parity"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-ai-crawler-policy"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-content-registry-discovery-parity"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-llms-full-index"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-llms-txt-index"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-markdown-mirror-consistency"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-search-vs-training-crawler-policy"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-canonical-url-metadata"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-core-web-vitals-targets"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-dcmi-document-metadata"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-html-title-meta-link-metadata"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-open-graph-metadata"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-robots-policy"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-sitemap-protocol"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-x-card-metadata"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-appended-answer-blocks"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-crawlable-text-semantic-index"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-json-ld-structured-data"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-comparison-pages"
+    },
+    {
+      "type": "BUNDLES",
+      "from": "prf:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-demand-cluster-canonical-pages"
     },
     {
       "type": "USES_BOUNDARY",
@@ -5382,9 +5961,14 @@
       "to": "spc:2005"
     },
     {
-      "type": "REQUIRES",
+      "type": "COVERED_BY",
       "from": "feat:mdwrk-custom-parser-profile",
-      "to": "feat:custom-flavored-markdown-profile"
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-custom-parser-profile",
+      "to": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5397,9 +5981,14 @@
       "to": "spc:2005"
     },
     {
-      "type": "REQUIRES",
+      "type": "COVERED_BY",
       "from": "feat:mdwrk-custom-previewer-profiles",
-      "to": "feat:custom-flavored-markdown-profile"
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-custom-previewer-profiles",
+      "to": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5717,6 +6306,16 @@
       "to": "spc:2015"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:extension-catalog-hello",
+      "to": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-catalog-hello",
+      "to": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:extension-authoring-publishing",
       "to": "spc:2010"
@@ -5725,6 +6324,16 @@
       "type": "SPECIFIED_BY",
       "from": "feat:extension-authoring-publishing",
       "to": "spc:2017"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-authoring-publishing",
+      "to": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-authoring-publishing",
+      "to": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5737,9 +6346,24 @@
       "to": "spc:2011"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:extension-install-import-remove-disable",
+      "to": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-install-import-remove-disable",
+      "to": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-keyboard-viewport",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-keyboard-viewport",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5747,9 +6371,19 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-fixed-shell-scrollable-panes",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-file-explorer-rail-full-width",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-file-explorer-rail-full-width",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5762,9 +6396,19 @@
       "to": "spc:2009"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-git-rail-full-width",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-action-rail-portrait-order",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-action-rail-portrait-order",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5772,9 +6416,19 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-filetabs-portrait",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-statusbar-landscape-hidden",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-statusbar-landscape-hidden",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5782,14 +6436,39 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-status-footer-portrait-hidden",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-keyboard-mappings-tab-hidden",
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-keyboard-mappings-tab-hidden",
+      "to": "tst:apps-client-components-modals-settingsmodal.test.tsx"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-keyboard-mappings-tab-hidden",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-gesture-mappings-tab",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-gesture-mappings-tab",
+      "to": "tst:apps-client-components-modals-settingsmodal.test.tsx"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-gesture-mappings-tab",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5800,6 +6479,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:mobile-visual-keyboard-half-screen",
       "to": "spc:2016"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mobile-visual-keyboard-half-screen",
+      "to": "tst:apps-client-styles-chassisfittoscreen.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5947,9 +6631,19 @@
       "to": "spc:2008"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:pwa-install-button-state",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:header-settings-icon-spacing",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:header-settings-icon-spacing",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -5962,6 +6656,16 @@
       "to": "spc:2006"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:pwa-version-system-config",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:pwa-version-system-config",
+      "to": "tst:apps-client-src-pwa-versionmanifest.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:theme-default-anodized-billet",
       "to": "spc:2007"
@@ -5972,6 +6676,11 @@
       "to": "spc:2013"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:theme-default-anodized-billet",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:action-rail-icon-mappings",
       "to": "spc:2007"
@@ -5980,6 +6689,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:action-rail-icon-mappings",
       "to": "spc:2008"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:action-rail-icon-mappings",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6010,6 +6724,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:mdwrk-view-toolbar-scroll",
       "to": "spc:2007"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:mdwrk-view-toolbar-scroll",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6057,6 +6776,11 @@
       "to": "spc:2008"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:frontend-settings-persistence",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:workspace-persistence",
       "to": "spc:2008"
@@ -6097,9 +6821,29 @@
       "to": "spc:2006"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:indexeddb-vs-filesystem-persistence",
+      "to": "tst:apps-client-services-persistence.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:indexeddb-vs-filesystem-persistence",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:cloud-persistence-out-of-bounds",
       "to": "spc:2008"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:cloud-persistence-out-of-bounds",
+      "to": "tst:apps-client-services-persistence.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:cloud-persistence-out-of-bounds",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6110,6 +6854,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:git-ops-persistence",
       "to": "spc:2009"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:git-ops-persistence",
+      "to": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6125,6 +6874,16 @@
       "type": "REQUIRES",
       "from": "feat:git-ops-oidc",
       "to": "feat:oidc-adapter"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:git-ops-oidc",
+      "to": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:git-ops-oidc",
+      "to": "tst:apps-client-services-oidc.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6262,6 +7021,11 @@
       "to": "spc:2002"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:ssot-registry-model-governance",
+      "to": "tst:ssot-registry-model-governance-current"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:ssot-graph-export-governance",
       "to": "spc:0602"
@@ -6380,6 +7144,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:markdown-profile-evidence-lanes",
       "to": "spc:2005"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:markdown-profile-evidence-lanes",
+      "to": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6507,6 +7276,11 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:uix-command-palette-responsive",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:uix-extension-view-modes",
       "to": "spc:2007"
@@ -6552,9 +7326,29 @@
       "to": "spc:2007"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:uix-iconized-compaction",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:persistence-diagnostics-mode",
       "to": "spc:2008"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:persistence-diagnostics-mode",
+      "to": "tst:apps-client-services-persistence.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:persistence-diagnostics-mode",
+      "to": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:persistence-diagnostics-mode",
+      "to": "tst:apps-client-tests-phase7-shell-parity.test.tsx"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6610,6 +7404,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:oidc-token-boundary-audit",
       "to": "spc:2018"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:oidc-token-boundary-audit",
+      "to": "tst:apps-client-services-oidc.test.ts"
     },
     {
       "type": "SPECIFIED_BY",
@@ -6725,6 +7524,16 @@
       "type": "SPECIFIED_BY",
       "from": "feat:extension-retention-policy",
       "to": "spc:2008"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-retention-policy",
+      "to": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:extension-retention-policy",
+      "to": "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9127,6 +9936,11 @@
       "to": "spc:0610"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:repository-top-level-hygiene",
+      "to": "tst:repository-top-level-hygiene-current"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:readme-project-identity-alignment",
       "to": "spc:2017"
@@ -9135,6 +9949,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:readme-project-identity-alignment",
       "to": "spc:2002"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:readme-project-identity-alignment",
+      "to": "tst:readme-project-identity-alignment-current"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9150,6 +9969,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:package-publish-build-graph",
       "to": "spc:0608"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:package-publish-build-graph",
+      "to": "tst:tools-release-build-publish-graph.test.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9492,6 +10316,16 @@
       "to": "spc:2073"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-robots-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-robots-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-sitemap-protocol",
       "to": "spc:2069"
@@ -9502,6 +10336,11 @@
       "to": "spc:2071"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-sitemap-protocol",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-canonical-url-metadata",
       "to": "spc:2069"
@@ -9510,6 +10349,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-canonical-url-metadata",
       "to": "spc:2071"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-canonical-url-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9517,6 +10361,11 @@
       "to": "spc:2069"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-html-title-meta-link-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-open-graph-metadata",
       "to": "spc:2069"
@@ -9525,6 +10374,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-open-graph-metadata",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-open-graph-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9537,6 +10391,11 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-x-card-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-dcmi-document-metadata",
       "to": "spc:2069"
@@ -9545,6 +10404,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-seo-dcmi-document-metadata",
       "to": "spc:2072"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-dcmi-document-metadata",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9552,14 +10416,39 @@
       "to": "spc:2069"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-seo-core-web-vitals-targets",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aeo-answerable-heading-contract",
       "to": "spc:2070"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-answerable-heading-contract",
+      "to": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-answerable-heading-contract",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aeo-visible-citation-parity",
       "to": "spc:2070"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-visible-citation-parity",
+      "to": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-visible-citation-parity",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9572,6 +10461,16 @@
       "to": "spc:2072"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-faq-qna-howto-eligibility",
+      "to": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-faq-qna-howto-eligibility",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aeo-structured-answer-section-parity",
       "to": "spc:2070"
@@ -9580,6 +10479,16 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aeo-structured-answer-section-parity",
       "to": "spc:2071"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-structured-answer-section-parity",
+      "to": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aeo-structured-answer-section-parity",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9592,6 +10501,16 @@
       "to": "spc:2073"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-ai-crawler-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-ai-crawler-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-llms-txt-index",
       "to": "spc:2071"
@@ -9600,6 +10519,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-llms-txt-index",
       "to": "spc:2073"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-llms-txt-index",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9612,6 +10536,11 @@
       "to": "spc:2073"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-llms-full-index",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-markdown-mirror-consistency",
       "to": "spc:2071"
@@ -9620,6 +10549,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-markdown-mirror-consistency",
       "to": "spc:2073"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-markdown-mirror-consistency",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -9627,6 +10561,16 @@
       "to": "spc:2073"
     },
     {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-search-vs-training-crawler-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-search-vs-training-crawler-policy",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-content-registry-discovery-parity",
       "to": "spc:2071"
@@ -9635,6 +10579,11 @@
       "type": "SPECIFIED_BY",
       "from": "feat:lander-aieo-content-registry-discovery-parity",
       "to": "spc:2073"
+    },
+    {
+      "type": "COVERED_BY",
+      "from": "feat:lander-aieo-content-registry-discovery-parity",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
     },
     {
       "type": "SPECIFIED_BY",
@@ -19202,6 +20151,106 @@
       "to": "feat:mdwrk-profile-markdown-in-html"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aeo-answerable-heading-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aeo-faq-qna-howto-eligibility"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aeo-structured-answer-section-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aeo-visible-citation-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-ai-crawler-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-content-registry-discovery-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-llms-full-index"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-llms-txt-index"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-markdown-mirror-consistency"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-aieo-search-vs-training-crawler-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-canonical-url-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-core-web-vitals-targets"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-dcmi-document-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-html-title-meta-link-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-open-graph-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-robots-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-sitemap-protocol"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:lander-seo-x-card-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-custom-parser-profile"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cross-cutting",
+      "to": "feat:mdwrk-custom-previewer-profiles"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -19417,6 +20466,31 @@
       "to": "clm:cross-cutting"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+      "to": "clm:cross-cutting"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "clm:cross-cutting"
@@ -19624,6 +20698,21 @@
     {
       "type": "SUPPORTS",
       "from": "evd:markdown-profile-mdwrk-optional-profiles",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-parser-profile",
+      "to": "clm:cross-cutting"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-previewer-profiles",
       "to": "clm:cross-cutting"
     },
     {
@@ -20802,6 +21891,16 @@
       "to": "feat:mdwrk-profile-markdown-in-html"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-custom-parser-profile"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-markdownprofiles",
+      "to": "feat:mdwrk-custom-previewer-profiles"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
       "to": "clm:client-markdownprofiles"
@@ -20847,6 +21946,16 @@
       "to": "clm:client-markdownprofiles"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
       "to": "clm:client-markdownprofiles"
@@ -20889,6 +21998,16 @@
     {
       "type": "SUPPORTS",
       "from": "evd:markdown-profile-mdwrk-optional-profiles",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-parser-profile",
+      "to": "clm:client-markdownprofiles"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-previewer-profiles",
       "to": "clm:client-markdownprofiles"
     },
     {
@@ -20972,6 +22091,16 @@
       "to": "feat:editor-toolbar-hidden-button-preference"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:client-preferences",
+      "to": "feat:pwa-install-button-state"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-preferences",
+      "to": "feat:pwa-version-system-config"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:apps-client-src-pwa-versionmanifest.test.ts",
       "to": "clm:client-preferences"
@@ -21030,6 +22159,16 @@
       "type": "ASSERTS",
       "from": "clm:client-settings",
       "to": "feat:extension-settings-schema-rendering"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-settings",
+      "to": "feat:pwa-install-button-state"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:client-settings",
+      "to": "feat:pwa-version-system-config"
     },
     {
       "type": "VERIFIES",
@@ -21252,6 +22391,26 @@
       "to": "feat:gemini-agent-workspace-file-mentions"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:extension-continuous-experience",
+      "to": "feat:extension-catalog-hello"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:extension-continuous-experience",
+      "to": "feat:extension-authoring-publishing"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:extension-continuous-experience",
+      "to": "feat:extension-install-import-remove-disable"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:extension-continuous-experience",
+      "to": "feat:extension-retention-policy"
+    },
+    {
       "type": "VERIFIES",
       "from": "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
       "to": "clm:extension-continuous-experience"
@@ -21357,8 +22516,18 @@
       "to": "clm:mdwrk-custom-parser-profile-blocked"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+      "to": "clm:mdwrk-custom-parser-profile-blocked"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-parser-profile-blocked"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-parser-profile",
       "to": "clm:mdwrk-custom-parser-profile-blocked"
     },
     {
@@ -21372,8 +22541,18 @@
       "to": "clm:mdwrk-custom-previewer-profiles-blocked"
     },
     {
+      "type": "VERIFIES",
+      "from": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+      "to": "clm:mdwrk-custom-previewer-profiles-blocked"
+    },
+    {
       "type": "SUPPORTS",
       "from": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+      "to": "clm:mdwrk-custom-previewer-profiles-blocked"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-custom-previewer-profiles",
       "to": "clm:mdwrk-custom-previewer-profiles-blocked"
     },
     {
@@ -22267,6 +23446,471 @@
       "to": "clm:editor-underline-policy"
     },
     {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-action-rail-portrait-order"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-file-explorer-rail-full-width"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-filetabs-portrait"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-fixed-shell-scrollable-panes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-gesture-mappings-tab"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-git-rail-full-width"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-keyboard-mappings-tab-hidden"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-keyboard-viewport"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-statusbar-landscape-hidden"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-status-footer-portrait-hidden"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:mobile-uix-responsive-shell-contract",
+      "to": "feat:mobile-visual-keyboard-half-screen"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-styles-chassisfittoscreen.test.ts",
+      "to": "clm:mobile-uix-responsive-shell-contract"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-components-modals-settingsmodal.test.tsx",
+      "to": "clm:mobile-uix-responsive-shell-contract"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-chassisfittoscreen.test.ts",
+      "to": "clm:mobile-uix-responsive-shell-contract"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-components-modals-settingsmodal.test.tsx",
+      "to": "clm:mobile-uix-responsive-shell-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-answerable-heading-contract"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-faq-qna-howto-eligibility"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-structured-answer-section-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aeo-visible-citation-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-ai-crawler-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-content-registry-discovery-parity"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-llms-full-index"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-llms-txt-index"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-markdown-mirror-consistency"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-aieo-search-vs-training-crawler-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-canonical-url-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-core-web-vitals-targets"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-dcmi-document-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-html-title-meta-link-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-open-graph-metadata"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-robots-policy"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-sitemap-protocol"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:lander-seo-aeo-aieo-discovery",
+      "to": "feat:lander-seo-x-card-metadata"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+      "to": "clm:lander-seo-aeo-aieo-discovery"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
+      "to": "clm:lander-seo-aeo-aieo-discovery"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+      "to": "clm:lander-seo-aeo-aieo-discovery"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "to": "clm:lander-seo-aeo-aieo-discovery"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:oidc-token-boundary-audit",
+      "to": "feat:oidc-token-boundary-audit"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-services-oidc.test.ts",
+      "to": "clm:oidc-token-boundary-audit"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-oidc.test.ts",
+      "to": "clm:oidc-token-boundary-audit"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:git-ops-oidc",
+      "to": "feat:git-ops-oidc"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-services-oidc.test.ts",
+      "to": "clm:git-ops-oidc"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "to": "clm:git-ops-oidc"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-oidc.test.ts",
+      "to": "clm:git-ops-oidc"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "to": "clm:git-ops-oidc"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:git-ops-persistence",
+      "to": "feat:git-ops-persistence"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "to": "clm:git-ops-persistence"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "to": "clm:git-ops-persistence"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:package-publish-build-graph",
+      "to": "feat:package-publish-build-graph"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-release-build-publish-graph.test.mjs",
+      "to": "clm:package-publish-build-graph"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:tools-release-build-publish-graph.test.mjs",
+      "to": "clm:package-publish-build-graph"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:frontend-settings-persistence",
+      "to": "feat:frontend-settings-persistence"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:frontend-settings-persistence"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:frontend-settings-persistence"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:indexeddb-vs-filesystem-persistence",
+      "to": "feat:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-services-persistence.test.ts",
+      "to": "clm:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-persistence.test.ts",
+      "to": "clm:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:indexeddb-vs-filesystem-persistence"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:persistence-diagnostics-mode",
+      "to": "feat:persistence-diagnostics-mode"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-services-persistence.test.ts",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-tests-phase7-shell-parity.test.tsx",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-persistence.test.ts",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
+      "to": "clm:persistence-diagnostics-mode"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:cloud-persistence-out-of-bounds",
+      "to": "feat:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-services-persistence.test.ts",
+      "to": "clm:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-services-persistence.test.ts",
+      "to": "clm:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
+      "to": "clm:cloud-persistence-out-of-bounds"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:header-settings-icon-spacing"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:action-rail-icon-mappings"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:mdwrk-view-toolbar-scroll"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:uix-command-palette-responsive"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:uix-iconized-compaction"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:uix-icon-toolbar-responsive-contracts",
+      "to": "feat:theme-default-anodized-billet"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "to": "clm:uix-icon-toolbar-responsive-contracts"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "to": "clm:uix-icon-toolbar-responsive-contracts"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:markdown-profile-evidence-lanes",
+      "to": "feat:markdown-profile-evidence-lanes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:markdown-profile-evidence-lanes",
+      "to": "feat:mdwrk-custom-parser-profile"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:markdown-profile-evidence-lanes",
+      "to": "feat:mdwrk-custom-previewer-profiles"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs",
+      "to": "clm:markdown-profile-evidence-lanes"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:markdown-profile-evidence-lanes",
+      "to": "clm:markdown-profile-evidence-lanes"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:ssot-registry-model-governance-current",
+      "to": "feat:ssot-registry-model-governance"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:ssot-registry-model-governance-current",
+      "to": "clm:ssot-registry-model-governance-current"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:ssot-registry-model-governance-current",
+      "to": "clm:ssot-registry-model-governance-current"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:readme-project-identity-alignment-current",
+      "to": "feat:readme-project-identity-alignment"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:readme-project-identity-alignment-current",
+      "to": "clm:readme-project-identity-alignment-current"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:readme-project-identity-alignment-current",
+      "to": "clm:readme-project-identity-alignment-current"
+    },
+    {
+      "type": "ASSERTS",
+      "from": "clm:repository-top-level-hygiene-current",
+      "to": "feat:repository-top-level-hygiene"
+    },
+    {
+      "type": "VERIFIES",
+      "from": "tst:repository-top-level-hygiene-current",
+      "to": "clm:repository-top-level-hygiene-current"
+    },
+    {
+      "type": "SUPPORTS",
+      "from": "evd:repository-top-level-hygiene-current",
+      "to": "clm:repository-top-level-hygiene-current"
+    },
+    {
       "type": "DERIVES_FROM",
       "from": "evd:apps-client-hooks-useapp.test.tsx",
       "to": "tst:apps-client-hooks-useapp.test.tsx"
@@ -22625,6 +24269,76 @@
       "type": "DERIVES_FROM",
       "from": "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs",
       "to": "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:apps-client-components-modals-settingsmodal.test.tsx",
+      "to": "tst:apps-client-components-modals-settingsmodal.test.tsx"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "to": "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "to": "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:lander-seo-aeo-aieo-discovery-ci",
+      "to": "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-custom-parser-profile",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-custom-previewer-profiles",
+      "to": "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:packages-extensions-extension-git-ops-tests-run-smoke.mjs",
+      "to": "tst:packages-extensions-extension-git-ops-tests-run-smoke.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:tools-release-build-publish-graph.test.mjs",
+      "to": "tst:tools-release-build-publish-graph.test.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:apps-client-services-persistence.test.ts",
+      "to": "tst:apps-client-services-persistence.test.ts"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:apps-client-styles-uixicontoolbarcontracts.test.ts",
+      "to": "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:markdown-profile-evidence-lanes",
+      "to": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:ssot-registry-model-governance-current",
+      "to": "tst:ssot-registry-model-governance-current"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:repository-top-level-hygiene-current",
+      "to": "tst:repository-top-level-hygiene-current"
+    },
+    {
+      "type": "DERIVES_FROM",
+      "from": "evd:readme-project-identity-alignment-current",
+      "to": "tst:readme-project-identity-alignment-current"
     },
     {
       "type": "AFFECTS",

@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-07T07:14:19Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "dd40b753dba2d7721aa1527aa6beb1ab8e817e5e036a33c88a81d59cf2c1edbb",
+  "boundary": {
+    "id": "bnd:current-gap-delivery-current",
+    "title": "Current Gap Delivery Current Boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:custom-flavored-markdown-profile",
+      "feat:mdwrk-profile-citations",
+      "feat:mdwrk-profile-markdown-in-html",
+      "feat:readme-project-identity-alignment",
+      "feat:repo-governance-validation",
+      "feat:repository-top-level-hygiene",
+      "feat:ssot-registry-model-governance"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:custom-flavored-markdown-profile",
+      "title": "CFM Markdown profile",
+      "description": "Umbrella feature for MdWrk custom markdown profiles and optional markdown extensions.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
+        "tst:packages-renderer-markdown-renderer-core-tests-html.test.ts",
+        "tst:packages-renderer-markdown-renderer-react-tests-component.test.tsx"
+      ],
+      "requires": [
+        "feat:gfm-profile",
+        "feat:commonmark-conformance-profile"
+      ]
+    },
+    {
+      "id": "feat:mdwrk-profile-citations",
+      "title": "MdWrk citations markdown profile",
+      "description": "Leaf feature for MdWrk citation-key rendering; bibliography resolution remains outside the certification boundary.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-profile-markdown-in-html",
+      "title": "MdWrk markdown in HTML profile",
+      "description": "Leaf feature for trusted markdown-in-HTML containers; only explicitly trusted containers are interpreted.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T1",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2005",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:client-markdownprofiles",
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:readme-project-identity-alignment",
+      "title": "README project identity alignment",
+      "description": "Keep repository README files aligned to the MdWrk project name, current GitHub repository URL, package registry URL, and removal of legacy Lattice Architect references.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2017",
+        "spc:2002"
+      ],
+      "claim_ids": [
+        "clm:readme-project-identity-alignment-current"
+      ],
+      "test_ids": [
+        "tst:readme-project-identity-alignment-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:repo-governance-validation",
+      "title": "Repository governance validation",
+      "description": "Track root clutter, doc pointers, generated artifact guards, changeset rules, and claim-language lint.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0607",
+        "spc:2002"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:repository-top-level-hygiene",
+      "title": "Repository top-level hygiene",
+      "description": "Keep generated distribution artifacts out of the repository top level, ignore local virtual environments and build output, and keep top-level repository metadata aligned with the active project.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2002",
+        "spc:0607",
+        "spc:0610"
+      ],
+      "claim_ids": [
+        "clm:repository-top-level-hygiene-current"
+      ],
+      "test_ids": [
+        "tst:repository-top-level-hygiene-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:ssot-registry-model-governance",
+      "title": "SSOT registry model governance",
+      "description": "Track repo-local expectations for registry structure, schema upgrades, and validation.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:0600",
+        "spc:0607",
+        "spc:2002"
+      ],
+      "claim_ids": [
+        "clm:ssot-registry-model-governance-current"
+      ],
+      "test_ids": [
+        "tst:ssot-registry-model-governance-current"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:current-gap-delivery-current",
+    "feature_count": 7,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}

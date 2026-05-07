@@ -15,6 +15,11 @@ MdWrk is a multi-package workspace for the client, native application shells, la
 
 Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
 
+Canonical project URLs:
+
+- GitHub repository: `https://github.com/groupsum/markdown_workspace`
+- Package registry: `https://www.npmjs.com/org/mdwrk`
+
 ## Table of Contents
 - [Repository Overview](#repository-overview)
 - [Repository Structure](#repository-structure)
