@@ -600,7 +600,7 @@
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -612,10 +612,12 @@
       "claim_ids": [
         "clm:mdwrk-custom-parser-profile-blocked",
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:markdown-profile-evidence-lanes"
       ],
       "test_ids": [
-        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs",
+        "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
       ],
       "requires": []
     },
@@ -630,7 +632,7 @@
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -642,10 +644,12 @@
       "claim_ids": [
         "clm:mdwrk-custom-previewer-profiles-blocked",
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:markdown-profile-evidence-lanes"
       ],
       "test_ids": [
-        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs",
+        "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
       ],
       "requires": []
     },
@@ -2384,14 +2388,14 @@
       "id": "feat:markdown-profile-evidence-lanes",
       "title": "Markdown profile evidence lanes",
       "description": "Create evidence lanes for CM, GFM, CFM, parser behavior, and previewer behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "backlog",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2402,8 +2406,12 @@
         "spc:2004",
         "spc:2005"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:markdown-profile-evidence-lanes"
+      ],
+      "test_ids": [
+        "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
+      ],
       "requires": []
     },
     {
@@ -11309,7 +11317,7 @@
     {
       "id": "tst:packages-renderer-markdown-renderer-core-tests-gfm-official-corpus.mjs",
       "title": "GFM official corpus",
-      "status": "failing",
+      "status": "passing",
       "kind": "integration",
       "path": "packages/renderer/markdown-renderer-core/tests/gfm-official-corpus.mjs",
       "feature_ids": [
@@ -11589,6 +11597,24 @@
       ],
       "evidence_ids": [
         "evd:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ]
+    },
+    {
+      "id": "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs",
+      "title": "Markdown profile evidence lane verifier",
+      "status": "passing",
+      "kind": "conformance",
+      "path": "tools/conformance/validate-markdown-profile-evidence-lanes.mjs",
+      "feature_ids": [
+        "feat:markdown-profile-evidence-lanes",
+        "feat:mdwrk-custom-parser-profile",
+        "feat:mdwrk-custom-previewer-profiles"
+      ],
+      "claim_ids": [
+        "clm:markdown-profile-evidence-lanes"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-evidence-lanes"
       ]
     }
   ],
@@ -13093,6 +13119,25 @@
       "evidence_ids": [
         "evd:apps-client-styles-uixicontoolbarcontracts.test.ts"
       ]
+    },
+    {
+      "id": "clm:markdown-profile-evidence-lanes",
+      "title": "Markdown profile evidence lanes are complete",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "CommonMark, GFM, CFM optional profiles, CFM custom parser behavior, and CFM custom previewer behavior each have explicit passing test and evidence lanes tied to SSOT feature rows.",
+      "feature_ids": [
+        "feat:markdown-profile-evidence-lanes",
+        "feat:mdwrk-custom-parser-profile",
+        "feat:mdwrk-custom-previewer-profiles"
+      ],
+      "test_ids": [
+        "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
+      ],
+      "evidence_ids": [
+        "evd:markdown-profile-evidence-lanes"
+      ]
     }
   ],
   "evidence": [
@@ -14284,6 +14329,20 @@
       ],
       "test_ids": [
         "tst:apps-client-styles-uixicontoolbarcontracts.test.ts"
+      ]
+    },
+    {
+      "id": "evd:markdown-profile-evidence-lanes",
+      "title": "Markdown profile evidence lanes report",
+      "status": "passed",
+      "kind": "report",
+      "tier": "T2",
+      "path": ".ssot/reports/markdown-profile-evidence-lanes.md",
+      "claim_ids": [
+        "clm:markdown-profile-evidence-lanes"
+      ],
+      "test_ids": [
+        "tst:tools-conformance-validate-markdown-profile-evidence-lanes.mjs"
       ]
     }
   ],

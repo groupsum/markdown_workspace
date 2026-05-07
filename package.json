@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.98",
+  "version": "0.2.99",
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
@@ -113,6 +113,7 @@
     "test:browser:matrix": "node ./tools/ci/run-playwright-browser-matrix.mjs",
     "screenshots:all-aspect-ratios": "npm run build -w apps/client && npm run screenshots:matrix -w apps/client",
     "test:markdown-profile-snapshot": "npm run test:run -w apps/client -- src/features/markdownProfiles/profileConfig.test.ts",
+    "test:markdown-profile-evidence-lanes": "node ./tools/conformance/validate-markdown-profile-evidence-lanes.mjs",
     "claim:markdown-profile-snapshot": "node ./tools/conformance/generate-markdown-profile-snapshot-claim.mjs",
     "validate:tree": "node ./tools/governance/validate-tree.mjs",
     "validate:doc-pointers": "node ./tools/governance/validate-doc-pointers.mjs",
