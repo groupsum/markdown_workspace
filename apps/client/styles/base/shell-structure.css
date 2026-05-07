@@ -342,10 +342,9 @@
     grid-template-areas:
       "top"
       "main"
-      "rail"
-      "foot";
+      "rail";
     grid-template-columns: 1fr;
-    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height) auto;
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height);
   }
 
   :root[data-theme] .workspace-manifold,
@@ -389,14 +388,7 @@
   }
 
   :root[data-theme] .status-bar {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 6px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-right: 8px;
+    display: none !important;
   }
 
   :root[data-theme] .status-left,
@@ -449,10 +441,6 @@
     border-bottom: 0;
     padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
   }
-
-  :root[data-theme] .status-bar {
-    display: flex;
-  }
 }
 
 @media (max-width: 640px) and (min-aspect-ratio: 4/3) {
@@ -500,5 +488,28 @@
   :root[data-theme] .status-right,
   :root[data-theme] .status-runtime {
     min-width: 0;
+  }
+
+  :root[data-theme] .status-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root[data-theme] body.keyboard-open .chassis-scaler {
+    height: var(--mobile-visual-keyboard-working-height);
+    max-height: var(--mobile-visual-keyboard-working-height);
+  }
+
+  :root[data-theme] body.keyboard-open .workspace-manifold,
+  :root[data-theme] body.keyboard-open .git-workspace,
+  :root[data-theme] body.keyboard-open .workspace-stage,
+  :root[data-theme] body.keyboard-open .git-diff-view,
+  :root[data-theme] body.keyboard-open .editor-pane-container {
+    max-height: var(--mobile-visual-keyboard-max-pane-height);
+  }
+
+  :root[data-theme] body.keyboard-open .status-bar {
+    display: none !important;
   }
 }

@@ -47,6 +47,43 @@ describe('chassis header and status bar fit-to-screen contract', () => {
     expect(editorCss).toContain('max-width: 100%;');
   });
 
+  it('keeps mobile rails, tabs, scroll panes, and keyboard viewport inside the chassis contract', () => {
+    const responsiveCss = read('./base/chassis/responsive-small.css');
+    const shellCss = read('./base/shell-structure.css');
+
+    expect(responsiveCss).toContain('--mobile-action-rail-flow: row-reverse;');
+    expect(responsiveCss).toContain('flex-direction: var(--mobile-action-rail-flow);');
+    expect(responsiveCss).toContain('.header-center .tab-bar');
+    expect(responsiveCss).toContain('scroll-snap-type: x proximity;');
+    expect(responsiveCss).toContain('.workspace-sidebar,\n  .git-sidebar {\n    width: 100%;');
+    expect(responsiveCss).toContain('.workspace-sidebar-resizer {\n    display: none;');
+    expect(responsiveCss).toContain('overscroll-behavior: contain;');
+    expect(responsiveCss).toContain('--mobile-visual-keyboard-working-height: 50dvh;');
+    expect(responsiveCss).toContain('body.keyboard-open .chassis-scaler');
+    expect(responsiveCss).toContain('max-height: var(--mobile-visual-keyboard-max-pane-height);');
+    expect(responsiveCss).toContain('grid-template-areas:\n      "top"\n      "main"\n      "rail";');
+    expect(responsiveCss).toContain('grid-template-areas:\n      "rail top"\n      "rail main";');
+    expect(responsiveCss.match(/\.status-bar \{\n    display: none !important;/g)?.length ?? 0).toBeGreaterThanOrEqual(2);
+
+    expect(shellCss).toContain('grid-template-areas:\n      "top"\n      "main"\n      "rail";');
+    expect(shellCss).toContain(':root[data-theme] body.keyboard-open .chassis-scaler');
+    expect(shellCss).toContain(':root[data-theme] body.keyboard-open .status-bar');
+    expect(shellCss).not.toContain('body.keyboard-open :root[data-theme]');
+  });
+
+  it('uses a mobile gesture settings tab while hiding the keyboard map tab on mobile', () => {
+    const modalResponsiveCss = read('./base/modals/responsive.css');
+    const surfaceRegistrations = read('../src/app/runtime/useCoreSurfaceRegistrations.tsx');
+
+    expect(modalResponsiveCss).toContain('.settings-sidebar-btn[data-section-id="core.settings.keys"]');
+    expect(modalResponsiveCss).toContain('display: none;');
+    expect(surfaceRegistrations).toContain("id: 'core.settings.gestures'");
+    expect(surfaceRegistrations).toContain("panel: 'keys'");
+    expect(surfaceRegistrations).toContain("icon: { kind: 'lucide', name: 'Hand' }");
+    expect(surfaceRegistrations).toContain('core.settings.gestures.keyboard.mapping');
+    expect(surfaceRegistrations).toContain('Half-screen viewport');
+  });
+
   it('keeps status bar content on a single controlled row with runtime ellipsis', () => {
     const layoutCss = read('./base/chassis/layout.css');
     const statusCss = read('./base/chassis/status-bar.css');

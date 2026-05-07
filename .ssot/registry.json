@@ -1058,7 +1058,7 @@
       "id": "feat:mobile-keyboard-viewport",
       "title": "Mobile keyboard viewport lift",
       "description": "Raise footer and page with the visual keyboard on mobile UIX.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1073,15 +1073,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-fixed-shell-scrollable-panes",
       "title": "Mobile fixed shell with scrollable panes",
       "description": "Keep bars and panes in place while panes own vertical scrolling on mobile UIX.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1096,15 +1100,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-file-explorer-rail-full-width",
       "title": "Mobile file explorer rail full width",
       "description": "Make the file explorer expandable rail full width on mobile using shared CSS tokens.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1119,15 +1127,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-git-rail-full-width",
       "title": "Mobile Git rail full width",
       "description": "Keep Git ops expandable rail full width on mobile using shared CSS tokens.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1143,15 +1155,19 @@
         "spc:2007",
         "spc:2009"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-action-rail-portrait-order",
       "title": "Mobile action rail portrait order",
       "description": "Reverse the action rail on mobile portrait using a theme-stable CSS token.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1166,15 +1182,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-filetabs-portrait",
       "title": "Mobile portrait file tabs",
       "description": "Fix file tabs on mobile UIX portrait.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1189,15 +1209,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-statusbar-landscape-hidden",
       "title": "Mobile landscape status bar hidden",
       "description": "Hide the status bar on mobile UIX landscape.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1212,15 +1236,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-status-footer-portrait-hidden",
       "title": "Mobile portrait status footer hidden",
       "description": "Hide the status footer bar on mobile UIX portrait.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1235,15 +1263,19 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-keyboard-mappings-tab-hidden",
       "title": "Mobile keyboard mappings tab hidden",
       "description": "Hide keyboard mappings modal view tab on mobile UIX.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1258,15 +1290,20 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-modals-settingsmodal.test.tsx",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-gesture-mappings-tab",
       "title": "Mobile gesture mappings tab",
       "description": "Show gesture mappings view tab on mobile UIX.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1281,15 +1318,20 @@
       "spec_ids": [
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-modals-settingsmodal.test.tsx",
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
       "id": "feat:mobile-visual-keyboard-half-screen",
       "title": "Mobile visual keyboard half-screen",
       "description": "Support MdWrk half-screen layout when mobile visual keyboard is active.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -1305,8 +1347,12 @@
         "spc:2007",
         "spc:2016"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts"
+      ],
       "requires": []
     },
     {
@@ -9821,12 +9867,24 @@
         "feat:editor-toolbar-split-view-eligibility",
         "feat:editor-toolbar-split-resizing",
         "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-divider-grouping"
+        "feat:editor-toolbar-divider-grouping",
+        "feat:mobile-action-rail-portrait-order",
+        "feat:mobile-file-explorer-rail-full-width",
+        "feat:mobile-filetabs-portrait",
+        "feat:mobile-fixed-shell-scrollable-panes",
+        "feat:mobile-git-rail-full-width",
+        "feat:mobile-keyboard-viewport",
+        "feat:mobile-statusbar-landscape-hidden",
+        "feat:mobile-status-footer-portrait-hidden",
+        "feat:mobile-visual-keyboard-half-screen",
+        "feat:mobile-keyboard-mappings-tab-hidden",
+        "feat:mobile-gesture-mappings-tab"
       ],
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-layout",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:mobile-uix-responsive-shell-contract"
       ],
       "evidence_ids": [
         "evd:apps-client-styles-chassisfittoscreen.test.ts"
@@ -11113,6 +11171,23 @@
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
       ]
+    },
+    {
+      "id": "tst:apps-client-components-modals-settingsmodal.test.tsx",
+      "title": "SettingsModal responsive metadata test",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/components/Modals/SettingsModal.test.tsx",
+      "feature_ids": [
+        "feat:mobile-keyboard-mappings-tab-hidden",
+        "feat:mobile-gesture-mappings-tab"
+      ],
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-components-modals-settingsmodal.test.tsx"
+      ]
     }
   ],
   "claims": [
@@ -12337,6 +12412,35 @@
       "evidence_ids": [
         "evd:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
       ]
+    },
+    {
+      "id": "clm:mobile-uix-responsive-shell-contract",
+      "title": "Mobile UIX responsive shell contract",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Mobile portrait, landscape, rails, tabs, visual keyboard, and settings tab behavior is implemented through shared responsive shell CSS and guarded by client regression tests.",
+      "feature_ids": [
+        "feat:mobile-action-rail-portrait-order",
+        "feat:mobile-file-explorer-rail-full-width",
+        "feat:mobile-filetabs-portrait",
+        "feat:mobile-fixed-shell-scrollable-panes",
+        "feat:mobile-gesture-mappings-tab",
+        "feat:mobile-git-rail-full-width",
+        "feat:mobile-keyboard-mappings-tab-hidden",
+        "feat:mobile-keyboard-viewport",
+        "feat:mobile-statusbar-landscape-hidden",
+        "feat:mobile-status-footer-portrait-hidden",
+        "feat:mobile-visual-keyboard-half-screen"
+      ],
+      "test_ids": [
+        "tst:apps-client-styles-chassisfittoscreen.test.ts",
+        "tst:apps-client-components-modals-settingsmodal.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-styles-chassisfittoscreen.test.ts",
+        "evd:apps-client-components-modals-settingsmodal.test.tsx"
+      ]
     }
   ],
   "evidence": [
@@ -12620,7 +12724,8 @@
       "claim_ids": [
         "clm:cross-cutting",
         "clm:client-layout",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:mobile-uix-responsive-shell-contract"
       ],
       "test_ids": [
         "tst:apps-client-styles-chassisfittoscreen.test.ts"
@@ -13398,6 +13503,20 @@
       ],
       "test_ids": [
         "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ]
+    },
+    {
+      "id": "evd:apps-client-components-modals-settingsmodal.test.tsx",
+      "title": "SettingsModal responsive section metadata evidence",
+      "status": "passed",
+      "kind": "test-report",
+      "tier": "T2",
+      "path": "apps/client/components/Modals/SettingsModal.test.tsx",
+      "claim_ids": [
+        "clm:mobile-uix-responsive-shell-contract"
+      ],
+      "test_ids": [
+        "tst:apps-client-components-modals-settingsmodal.test.tsx"
       ]
     }
   ],

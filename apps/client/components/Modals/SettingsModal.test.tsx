@@ -31,4 +31,26 @@ describe('SettingsModal', () => {
     expect(screen.getByText('Theme presets and visual surfaces.')).toHaveClass('settings-content-description');
     expect(screen.queryByText('Theme presets and visual surfaces.', { selector: '.settings-sidebar-caption' })).not.toBeInTheDocument();
   });
+
+  it('exposes stable sidebar section metadata for responsive tab policies', () => {
+    render(
+      <SettingsModal
+        isOpen
+        onClose={vi.fn()}
+        sections={[
+          {
+            id: 'core.settings.keys',
+            title: 'Key Map',
+            description: 'Keyboard shortcuts.',
+            panel: 'keys',
+            render: () => <div>Key map panel</div>,
+          },
+        ]}
+      />,
+    );
+
+    const keyMapButton = screen.getByRole('button', { name: 'Key Map' });
+    expect(keyMapButton).toHaveAttribute('data-section-id', 'core.settings.keys');
+    expect(keyMapButton).toHaveAttribute('data-panel', 'keys');
+  });
 });

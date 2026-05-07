@@ -100,6 +100,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                         onClick={() => setActiveSectionId(section.id)}
                         className={`settings-sidebar-btn ${activeSection.id === section.id ? 'active' : ''}`}
                         data-active={activeSection.id === section.id ? 'true' : 'false'}
+                        data-panel={section.panel ?? 'general'}
+                        data-section-id={section.id}
                         title={section.title}
                         aria-label={section.title}
                         aria-pressed={activeSection.id === section.id}

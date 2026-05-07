@@ -140,6 +140,10 @@
     min-width: 56px;
   }
 
+  .settings-sidebar-btn[data-section-id="core.settings.keys"] {
+    display: none;
+  }
+
   .settings-sidebar-icon {
     width: 36px;
     height: 36px;

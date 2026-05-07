@@ -45,6 +45,8 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.sections.data.description': 'Storage and export tools.',
         'core.settings.sections.keymap.title': 'Key Map',
         'core.settings.sections.keymap.description': 'Keyboard shortcuts.',
+        'core.settings.sections.gestures.title': 'Gesture Map',
+        'core.settings.sections.gestures.description': 'Touch mappings for mobile panes and rails.',
         'core.settings.sections.session.title': 'Session State',
         'core.settings.sections.session.description': 'Session and save options.',
         'core.settings.group.general': 'General',
@@ -68,6 +70,7 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.sidebar.core.settings.git.label': 'Source control',
         'core.settings.sidebar.core.settings.data.label': 'Storage operations',
         'core.settings.sidebar.core.settings.keys.label': 'Key map',
+        'core.settings.sidebar.core.settings.gestures.label': 'Gestures',
         'core.settings.sidebar.core.settings.language.label': 'Language & Locale',
         'core.settings.sidebar.core.settings.language-packs.label': 'Language packs',
         'core.settings.sidebar.core.settings.session.label': 'Session state',
@@ -94,6 +97,16 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
         'core.settings.keymap.zoom-out': 'Zoom out',
         'core.settings.keymap.reset-zoom': 'Reset zoom',
         'core.settings.keymap.print-preview': 'Print preview',
+        'core.settings.gestures.file-tabs': 'File tabs',
+        'core.settings.gestures.file-tabs.mapping': 'Swipe or drag horizontally',
+        'core.settings.gestures.action-rail': 'Action rail',
+        'core.settings.gestures.action-rail.mapping': 'Horizontal scroll',
+        'core.settings.gestures.workspace-rail': 'Workspace rail',
+        'core.settings.gestures.workspace-rail.mapping': 'Tap target pane',
+        'core.settings.gestures.git-rail': 'Git rail',
+        'core.settings.gestures.git-rail.mapping': 'Tap source or diff',
+        'core.settings.gestures.keyboard': 'Visual keyboard',
+        'core.settings.gestures.keyboard.mapping': 'Half-screen viewport',
         'core.settings.session.active-project': 'Active project',
         'core.settings.session.open-tabs': 'Open tabs',
         'core.settings.session.active-tab': 'Active tab',
@@ -367,6 +380,32 @@ export function useCoreSurfaceRegistrations(runtime: ClientRuntimeBridge, servic
                 <div key={row.label} className="settings-keymap-item">
                   <span className="settings-keymap-label settings-muted-text">{row.label}</span>
                   <span className="settings-keymap-key settings-accent-text font-mono">{row.key}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ),
+      }),
+      services.settingsRegistry.register({
+        id: 'core.settings.gestures',
+        title: label('Gesture Map', 'core.settings.sections.gestures.title'),
+        description: label('Touch bindings for mobile navigation, rails, and keyboard-safe panes.', 'core.settings.sections.gestures.description'),
+        order: 41,
+        panel: 'keys',
+        icon: { kind: 'lucide', name: 'Hand' },
+        render: () => (
+          <div className="settings-pane">
+            <div className="settings-card settings-card-list settings-keymap-grid settings-card-inset">
+              {[
+                { label: t('core.settings.gestures.file-tabs', 'File tabs'), key: t('core.settings.gestures.file-tabs.mapping', 'Swipe or drag horizontally') },
+                { label: t('core.settings.gestures.action-rail', 'Action rail'), key: t('core.settings.gestures.action-rail.mapping', 'Horizontal scroll') },
+                { label: t('core.settings.gestures.workspace-rail', 'Workspace rail'), key: t('core.settings.gestures.workspace-rail.mapping', 'Tap target pane') },
+                { label: t('core.settings.gestures.git-rail', 'Git rail'), key: t('core.settings.gestures.git-rail.mapping', 'Tap source or diff') },
+                { label: t('core.settings.gestures.keyboard', 'Visual keyboard'), key: t('core.settings.gestures.keyboard.mapping', 'Half-screen viewport') },
+              ].map((row) => (
+                <div key={row.label} className="settings-keymap-item">
+                  <span className="settings-keymap-label settings-muted-text">{row.label}</span>
+                  <span className="settings-keymap-key settings-accent-text">{row.key}</span>
                 </div>
               ))}
             </div>

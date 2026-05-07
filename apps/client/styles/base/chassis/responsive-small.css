@@ -9,6 +9,9 @@
     --app-gap: 2px;
     --editor-padding: 12px;
     --rail-height: 40px;
+    --mobile-visual-keyboard-working-height: 50dvh;
+    --mobile-visual-keyboard-max-pane-height: 50dvh;
+    --mobile-action-rail-flow: row;
   }
 
   .chassis-scaler {
@@ -22,7 +25,7 @@
   }
 
   .action-rail {
-    flex-direction: row;
+    flex-direction: var(--mobile-action-rail-flow);
     border-right: 0;
     border-top: var(--border-width) solid var(--border-color);
     justify-content: space-between;
@@ -112,7 +115,7 @@
 
   .workspace-sidebar,
   .git-sidebar {
-    width: var(--mobile-expandable-rail-width);
+    width: 100%;
     max-width: 100%;
     min-width: 0;
     height: 100%;
@@ -156,6 +159,22 @@
     border-top: var(--border-width) solid var(--border-color);
   }
 
+  .workspace-sidebar-resizer {
+    display: none;
+  }
+
+  .workspace-manifold,
+  .git-workspace,
+  .workspace-stage,
+  .git-diff-view,
+  .editor-pane-column,
+  .workspace-markdown-renderer-shell,
+  .preview-pane {
+    min-height: 0;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .status-bar {
     flex-wrap: nowrap;
     box-sizing: border-box;
@@ -196,11 +215,39 @@
     --header-height: 78px;
     --tab-height: 30px;
     --rail-height: 1px;
+    --status-height: 0px;
+    --mobile-action-rail-flow: row-reverse;
+  }
+
+  .chassis-scaler {
+    grid-template-areas:
+      "top"
+      "main"
+      "rail";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height) minmax(0, 1fr) var(--rail-height);
   }
 
   .workspace-manifold,
   .git-workspace {
     flex-direction: column;
+  }
+
+  .header-center {
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .header-center .tab-bar {
+    width: 100%;
+    min-width: 0;
+    scroll-snap-type: x proximity;
+  }
+
+  .header-center .tab-item {
+    max-width: min(72vw, 220px);
+    scroll-snap-align: start;
   }
 
   .workspace-sidebar:not(.is-collapsed) {
@@ -212,21 +259,25 @@
     min-height: 0;
     flex: 1;
   }
+
+  .status-bar {
+    display: none !important;
+  }
 }
 
 @media (max-width: 640px) and (min-aspect-ratio: 4/3) {
   :root {
     --rail-width: 44px;
     --rail-height: auto;
+    --status-height: 0px;
   }
 
   .chassis-scaler {
     grid-template-areas:
       "rail top"
-      "rail main"
-      "rail foot";
+      "rail main";
     grid-template-columns: var(--rail-width) 1fr;
-    grid-template-rows: var(--header-height) minmax(0, 1fr) auto;
+    grid-template-rows: var(--header-height) minmax(0, 1fr);
   }
 
   .action-rail {
@@ -262,13 +313,16 @@
     display: flex;
   }
 
+  .status-bar {
+    display: none !important;
+  }
 }
 
 
 @media (max-aspect-ratio: 3/4), (hover: none) and (pointer: coarse) {
   .workspace-sidebar,
   .git-sidebar {
-    width: var(--mobile-expandable-rail-width);
+    width: 100%;
     max-width: 100%;
     min-width: 0;
   }
@@ -281,16 +335,35 @@
   }
 
   .status-bar {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    width: 100%;
-    margin: 0;
-    height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
-    min-height: calc(var(--status-height) + max(0px, env(safe-area-inset-bottom)));
-    padding: 0 6px max(0px, env(safe-area-inset-bottom));
-    z-index: auto;
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.keyboard-open .chassis-root {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+
+  body.keyboard-open .chassis-scaler {
+    height: var(--mobile-visual-keyboard-working-height);
+    max-height: var(--mobile-visual-keyboard-working-height);
+  }
+
+  body.keyboard-open .workspace-manifold,
+  body.keyboard-open .git-workspace,
+  body.keyboard-open .workspace-stage,
+  body.keyboard-open .git-diff-view,
+  body.keyboard-open .editor-pane-container {
+    max-height: var(--mobile-visual-keyboard-max-pane-height);
+  }
+
+  body.keyboard-open .workspace-sidebar:not(.is-collapsed),
+  body.keyboard-open .git-sidebar {
+    max-height: var(--mobile-visual-keyboard-max-pane-height);
+  }
+
+  body.keyboard-open .status-bar {
+    display: none !important;
   }
 }
 
