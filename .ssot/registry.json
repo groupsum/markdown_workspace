@@ -14669,6 +14669,123 @@
         "feat:workspace-persistence"
       ],
       "profile_ids": []
+    },
+    {
+      "id": "bnd:docs-authoring-uix-current",
+      "title": "Docs Authoring UIX Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:docs-checkbox-autocomplete",
+        "feat:docs-desktop-app-boundary",
+        "feat:docs-extension-authoring-guide",
+        "feat:docs-markdown-profile-architecture",
+        "feat:docs-text-wrap-previewer",
+        "feat:docs-uix-responsive-contract",
+        "feat:docs-view-toolbar"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:editor-input-formatting-current",
+      "title": "Editor Input Formatting Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:editor-checkbox-focus-preservation",
+        "feat:editor-line-count-bar-toggle",
+        "feat:editor-list-continuation",
+        "feat:editor-text-wrap",
+        "feat:editor-underline-policy"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:mobile-responsive-shell-current",
+      "title": "Mobile Responsive Shell Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:mobile-action-rail-portrait-order",
+        "feat:mobile-file-explorer-rail-full-width",
+        "feat:mobile-filetabs-portrait",
+        "feat:mobile-fixed-shell-scrollable-panes",
+        "feat:mobile-gesture-mappings-tab",
+        "feat:mobile-git-rail-full-width",
+        "feat:mobile-keyboard-mappings-tab-hidden",
+        "feat:mobile-keyboard-viewport",
+        "feat:mobile-statusbar-landscape-hidden",
+        "feat:mobile-status-footer-portrait-hidden",
+        "feat:mobile-visual-keyboard-half-screen"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:pwa-install-version-current",
+      "title": "PWA Install Version Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:pwa-install-button-state",
+        "feat:pwa-version-system-config"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:extension-authoring-lifecycle-current",
+      "title": "Extension Authoring Lifecycle Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:editor-underline-policy",
+        "feat:extension-authoring-publishing",
+        "feat:extension-catalog-hello",
+        "feat:extension-install-import-remove-disable",
+        "feat:extension-retention-policy"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:git-ops-security-publish-current",
+      "title": "Git Ops Security Publish Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:oidc-token-boundary-audit",
+        "feat:package-publish-build-graph",
+        "feat:git-ops-oidc",
+        "feat:git-ops-persistence"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:persistence-scope-current",
+      "title": "Persistence Scope Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:frontend-settings-persistence",
+        "feat:indexeddb-vs-filesystem-persistence",
+        "feat:git-ops-persistence",
+        "feat:persistence-diagnostics-mode",
+        "feat:cloud-persistence-out-of-bounds"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:uix-toolbar-icon-theme-current",
+      "title": "UIX Toolbar Icon Theme Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:header-settings-icon-spacing",
+        "feat:action-rail-icon-mappings",
+        "feat:mdwrk-view-toolbar-scroll",
+        "feat:uix-command-palette-responsive",
+        "feat:uix-iconized-compaction",
+        "feat:theme-default-anodized-billet"
+      ],
+      "profile_ids": []
     }
   ],
   "releases": [

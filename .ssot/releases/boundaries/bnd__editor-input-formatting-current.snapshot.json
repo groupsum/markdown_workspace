@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-07T06:39:24Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "6bed728b891d28733f18ae1f464739eae2b023eec6c72018d0d42197d5dba9a7",
+  "boundary": {
+    "id": "bnd:editor-input-formatting-current",
+    "title": "Editor Input Formatting Current Boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:editor-checkbox-focus-preservation",
+      "feat:editor-line-count-bar-toggle",
+      "feat:editor-list-continuation",
+      "feat:editor-text-wrap",
+      "feat:editor-underline-policy"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:editor-checkbox-focus-preservation",
+      "title": "Editor checkbox focus preservation",
+      "description": "Maintain current line and character focus when creating a new checkbox.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:editor-checkbox-focus-preservation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-line-count-bar-toggle",
+      "title": "Editor line count bar toggle",
+      "description": "Option to turn off line count bars.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:editor-line-count-bar-toggle"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-list-continuation",
+      "title": "Editor list continuation typeahead",
+      "description": "Continue ul and ol list items on Enter and terminate after an empty second Enter.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2003"
+      ],
+      "claim_ids": [
+        "clm:editor-list-continuation"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-core-tests-run-smoke-mjs",
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-text-wrap",
+      "title": "Editor text wrap",
+      "description": "Provide MdWrk editor text wrap behavior.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016"
+      ],
+      "claim_ids": [
+        "clm:editor-text-wrap"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:editor-underline-policy",
+      "title": "Editor underline policy",
+      "description": "Fix underline behavior while preserving standard Markdown semantics unless custom profile enables it.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [
+        "clm:editor-underline-policy"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:editor-input-formatting-current",
+    "feature_count": 5,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}

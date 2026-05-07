@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-07T06:39:27Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "7dc0e614dd43c5e24484b5657288338be0ae45722c1c9e618201cf6afb55a410",
+  "boundary": {
+    "id": "bnd:extension-authoring-lifecycle-current",
+    "title": "Extension Authoring Lifecycle Current Boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:editor-underline-policy",
+      "feat:extension-authoring-publishing",
+      "feat:extension-catalog-hello",
+      "feat:extension-install-import-remove-disable",
+      "feat:extension-retention-policy"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:editor-underline-policy",
+      "title": "Editor underline policy",
+      "description": "Fix underline behavior while preserving standard Markdown semantics unless custom profile enables it.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2016",
+        "spc:2003",
+        "spc:2005"
+      ],
+      "claim_ids": [
+        "clm:editor-underline-policy"
+      ],
+      "test_ids": [
+        "tst:packages-editor-markdown-editor-react-tests-run-smoke-mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-authoring-publishing",
+      "title": "Extension authoring and publishing",
+      "description": "Author, package, publish, and compatibility-check extensions.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2017"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-catalog-hello",
+      "title": "Catalog Hello extension",
+      "description": "Catalog Hello example extension and smoke coverage.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2015"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-install-import-remove-disable",
+      "title": "Extension install import remove disable",
+      "description": "Install, import, remove, and disable extension workflows.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2011"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:extension-retention-policy",
+      "title": "Extension retention policy",
+      "description": "Define settings and data retention on disable versus remove.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "backlog",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2010",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:extension-continuous-experience"
+      ],
+      "test_ids": [
+        "tst:packages-extensions-extension-runtime-tests-runtime.test.ts",
+        "tst:packages-extensions-extension-manager-tests-extension-manager.test.tsx"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:extension-authoring-lifecycle-current",
+    "feature_count": 5,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}
