@@ -217,7 +217,7 @@ def render_gfm(markdown: str, section: str | None = None) -> str:
 
 
 def main() -> int:
-    payload = json.loads(sys.stdin.read() or '{}')
+    payload = json.loads(sys.stdin.buffer.read().decode('utf-8') or '{}')
     profile = str(payload.get('profile') or '').strip() or 'commonmark'
     tests = payload.get('tests') or []
     rendered: list[dict[str, Any]] = []
@@ -229,7 +229,7 @@ def main() -> int:
         else:
             html = render_commonmark(markdown)
         rendered.append({'html': html})
-    sys.stdout.write(json.dumps({'profile': profile, 'count': len(rendered), 'rendered': rendered}))
+    sys.stdout.buffer.write(json.dumps({'profile': profile, 'count': len(rendered), 'rendered': rendered}).encode('utf-8'))
     return 0
 
 

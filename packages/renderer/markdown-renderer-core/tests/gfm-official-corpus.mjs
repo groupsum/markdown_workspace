@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { renderMarkdownToHtmlSync } from '../dist/index.js';
 import {
   canonicalizeRenderedHtml,
   loadSpecFile,
@@ -18,7 +17,8 @@ const specText = loadSpecFile(fixturePath);
 const tests = parseSpecExamples(specText);
 
 function renderViaHelper(profileId, cases) {
-  const result = spawnSync('python3', [helperPath], {
+  const uvCommand = process.platform === 'win32' ? 'uv.exe' : 'uv';
+  const result = spawnSync(uvCommand, ['run', 'python', helperPath], {
     input: JSON.stringify({
       profile: profileId,
       tests: cases.map((testCase) => ({ markdown: testCase.markdown, section: testCase.section })),
@@ -27,7 +27,7 @@ function renderViaHelper(profileId, cases) {
     maxBuffer: 64 * 1024 * 1024,
   });
   if (result.status !== 0) {
-    throw new Error(result.stderr || result.stdout || `helper exited with status ${result.status}`);
+    throw new Error(result.stderr || result.stdout || result.error?.message || `helper exited with status ${result.status}`);
   }
   const payload = JSON.parse(result.stdout || '{}');
   if (!Array.isArray(payload.rendered) || payload.rendered.length !== cases.length) {
@@ -36,21 +36,8 @@ function renderViaHelper(profileId, cases) {
   return payload.rendered.map((entry) => String(entry.html ?? ''));
 }
 
-function renderViaJsFallback(cases) {
-  return cases.map((testCase) => renderMarkdownToHtmlSync(testCase.markdown, {
-    profile: 'gfm-default',
-    htmlHandling: 'allow-trusted',
-  }));
-}
-
-let renderedHtml;
-let engine = 'js-renderer-fallback';
-try {
-  renderedHtml = renderViaHelper('gfm', tests);
-  engine = 'python-markdown-it-adapter';
-} catch {
-  renderedHtml = renderViaJsFallback(tests);
-}
+const renderedHtml = renderViaHelper('gfm', tests);
+const engine = 'python-markdown-it-adapter';
 
 const failures = [];
 let passed = 0;

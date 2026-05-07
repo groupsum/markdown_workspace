@@ -1,6 +1,5 @@
 # GFM Official Corpus Evidence
 
 - Command: `npm run test:gfm:official -w @mdwrk/markdown-renderer-core`
-- Result: failing
-- Observed failure count: `gfm official corpus failures: 230`
-
+- Result: passing
+- Observed output: `gfm official corpus: 672/672 via python-markdown-it-adapter`

@@ -2743,7 +2743,9 @@
         "spc:2009",
         "spc:2018"
       ],
-      "claim_ids": [],
+      "claim_ids": [
+        "clm:oidc-token-boundary-audit"
+      ],
       "test_ids": [],
       "requires": []
     },
@@ -9280,8 +9282,8 @@
     {
       "id": "feat:commonmark-official-corpus",
       "title": "CommonMark official corpus conformance",
-      "description": "Leaf feature for official CommonMark corpus conformance; current renderer corpus gate still reports deltas.",
-      "implementation_status": "partial",
+      "description": "Leaf feature for official CommonMark corpus conformance; current renderer corpus gate passes all official examples.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -9338,8 +9340,8 @@
     {
       "id": "feat:gfm-official-corpus",
       "title": "GFM official corpus conformance",
-      "description": "Leaf feature for official GFM corpus conformance; current renderer corpus gate still reports deltas.",
-      "implementation_status": "partial",
+      "description": "Leaf feature for official GFM corpus conformance; current renderer corpus gate passes all official examples.",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
@@ -9714,7 +9716,8 @@
         "feat:oidc-adapter"
       ],
       "claim_ids": [
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:oidc-token-boundary-audit"
       ],
       "evidence_ids": [
         "evd:apps-client-services-oidc.test.ts"
@@ -11200,7 +11203,7 @@
     {
       "id": "tst:packages-renderer-markdown-renderer-core-tests-commonmark-official-corpus.mjs",
       "title": "CommonMark official corpus",
-      "status": "failing",
+      "status": "passing",
       "kind": "integration",
       "path": "packages/renderer/markdown-renderer-core/tests/commonmark-official-corpus.mjs",
       "feature_ids": [
@@ -12775,6 +12778,23 @@
       "evidence_ids": [
         "evd:lander-seo-aeo-aieo-discovery-ci"
       ]
+    },
+    {
+      "id": "clm:oidc-token-boundary-audit",
+      "title": "OIDC tokens are bounded to Git operations",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "behavior",
+      "description": "Stored OIDC credentials carry an explicit git-ops token boundary and Git auth refuses credentials from another provider or boundary.",
+      "feature_ids": [
+        "feat:oidc-token-boundary-audit"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-oidc.test.ts"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-oidc.test.ts"
+      ]
     }
   ],
   "evidence": [
@@ -12838,7 +12858,8 @@
       "path": "apps/client/services/oidc.test.ts",
       "claim_ids": [
         "clm:cross-cutting",
-        "clm:repo-certifiability-p1-current-partials"
+        "clm:repo-certifiability-p1-current-partials",
+        "clm:oidc-token-boundary-audit"
       ],
       "test_ids": [
         "tst:apps-client-services-oidc.test.ts"
@@ -13749,7 +13770,7 @@
     {
       "id": "evd:markdown-profile-commonmark-official-corpus",
       "title": "CommonMark official corpus evidence",
-      "status": "failed",
+      "status": "passed",
       "kind": "report",
       "tier": "T1",
       "path": ".ssot/reports/markdown-profile-commonmark-official-corpus.md",
@@ -13779,7 +13800,7 @@
     {
       "id": "evd:markdown-profile-gfm-official-corpus",
       "title": "GFM official corpus evidence",
-      "status": "failed",
+      "status": "passed",
       "kind": "report",
       "tier": "T1",
       "path": ".ssot/reports/markdown-profile-gfm-official-corpus.md",

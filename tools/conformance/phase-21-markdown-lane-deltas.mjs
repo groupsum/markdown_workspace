@@ -25,7 +25,8 @@ function sectionCounts(failures) {
 }
 
 function renderViaHelper(profileId, cases) {
-  const result = spawnSync('python3', [helperPath], {
+  const uvCommand = process.platform === 'win32' ? 'uv.exe' : 'uv';
+  const result = spawnSync(uvCommand, ['run', 'python', helperPath], {
     input: JSON.stringify({
       profile: profileId,
       tests: cases.map((testCase) => ({ markdown: testCase.markdown, section: testCase.section })),
@@ -34,7 +35,7 @@ function renderViaHelper(profileId, cases) {
     maxBuffer: 64 * 1024 * 1024,
   });
   if (result.status !== 0) {
-    throw new Error(result.stderr || result.stdout || `helper exited with status ${result.status}`);
+    throw new Error(result.stderr || result.stdout || result.error?.message || `helper exited with status ${result.status}`);
   }
   const payload = JSON.parse(result.stdout || '{}');
   return payload.rendered.map((entry) => String(entry.html ?? ''));
