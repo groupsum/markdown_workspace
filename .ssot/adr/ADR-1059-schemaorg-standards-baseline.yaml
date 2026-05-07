@@ -1,0 +1,54 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1059"
+number: 1059
+slug: "schemaorg-standards-baseline"
+title: "Schema.org standards baseline and structured data authority"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk public lander structured data shall be governed against explicit external standards baselines. The active baseline includes Schema.org vocabulary release guidance, JSON-LD graph serialization, BCP 47 language tags, ISO 8601 date and duration values, and RFC 6570 URI Templates only for governed Schema.org Action or EntryPoint surfaces."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Drafted to govern external Schema.org, JSON-LD, BCP 47, ISO 8601, and RFC 6570 baselines for MdWrk public lander structured data."
+    at: "2026-05-07T13:08:01Z"
+references: []
+body: |-
+  # ADR-1059: Schema.org standards baseline and structured data authority
+  
+  ## Decision
+  
+  MdWrk public lander structured data shall be governed against explicit external standards baselines. The active baseline includes Schema.org vocabulary release guidance, JSON-LD graph serialization, BCP 47 language tags, ISO 8601 date and duration values, and RFC 6570 URI Templates only for governed Schema.org Action or EntryPoint surfaces.
+  
+  Schema.org JSON-LD remains the canonical structured-data serialization for the public lander. Inline Microdata and RDFa are supported external syntaxes, but they are not the MdWrk lander source of truth unless a later ADR changes the rendering architecture.
+  
+  Schema.org `pending` terms are experimental and require an explicit SPEC update before use. Schema.org `meta` terms are out of bounds for normal public page markup unless the page is documenting Schema.org implementation details.
+  
+  ## Rationale
+  
+  ADR-1057 establishes page-scoped JSON-LD entity graphs, but the repository also needs a stable decision for how external standards enter the SSOT. Without a standards baseline, new structured data can drift into ad hoc type choices, unstable pending terms, locale mismatches, ambiguous date values, or Action markup for targets that do not exist.
+  
+  The public lander is a generated static artifact, so standards compliance must be testable before deployment. External standards should be treated as named inputs to the governed contract, while generated artifacts such as `jsonld-graph.json`, `content-registry.json`, and LLM indexes remain local projections.
+  
+  ## Consequences
+  
+  1. Supported Schema.org vocabulary and JSON-LD graph shapes are governed by SPEC-2077 and SPEC-2072.
+  2. Language and temporal metadata normalization is governed by SPEC-2078.
+  3. Schema.org Action and EntryPoint support is governed by SPEC-2079 and remains out of bounds until real public targets exist.
+  4. New Schema.org types, pending terms, meta terms, language tags, date/duration fields, or Action surfaces require SPEC coverage before implementation.
+  5. Validation must fail closed when generated structured data contradicts visible page content, canonical routes, language metadata, or declared external standards baselines.
+  
+  ## References
+  
+  - https://schema.org/docs/releases.html
+  - https://schema.org/version/latest/
+  - https://schema.org/docs/datamodel.html
+  - https://schema.org/docs/developers.html
+  - https://www.w3.org/news/2020/json-ld-1-1-specifications-are-w3c-recommendations/
+  - https://datatracker.ietf.org/doc/bcp47/
+  - https://www.iso.org/iso-8601-date-and-time-format.html
+  - https://schema.org/docs/actions.html

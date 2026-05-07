@@ -16,6 +16,10 @@ status_notes:
     status: "draft"
     note: "Created hreflang canonical and sitemap alternate contract for localized lander routes."
     at: "2026-05-06T11:10:15Z"
+  -
+    status: "draft"
+    note: "Linked standards baseline ADR for BCP 47, ISO 8601, and Schema.org language metadata authority."
+    at: "2026-05-07T13:09:56Z"
 references: []
 body: |-
   # Hreflang Canonical and Sitemap Alternate Contract
@@ -39,3 +43,4 @@ body: |-
 spec_kind: "normative"
 adr_ids:
   - "adr:1058"
+  - "adr:1059"

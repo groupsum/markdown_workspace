@@ -1,0 +1,55 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2079"
+number: 2079
+slug: "structured-action-entrypoint-contract"
+title: "Structured Action and EntryPoint Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs Schema.org Action, SearchAction, ReadAction, potentialAction, and EntryPoint structured data for MdWrk public lander pages."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Drafted to keep Schema.org Action and EntryPoint markup fail-closed until real public targets are governed and tested."
+    at: "2026-05-07T13:08:31Z"
+references: []
+body: |-
+  # SPEC-2079: Structured Action and EntryPoint Contract
+  
+  ## Scope
+  
+  This SPEC governs Schema.org Action, SearchAction, ReadAction, potentialAction, and EntryPoint structured data for MdWrk public lander pages.
+  
+  The surface is currently governed as future scope. The lander shall not emit Action or EntryPoint JSON-LD until real public targets exist and are covered by feature, test, and evidence rows.
+  
+  ## Requirements
+  
+  1. Action structured data shall describe real user or agent affordances, not aspirational product flows.
+  2. `potentialAction` may be emitted only when the target action is visible, reachable, and stable enough for crawlers and users.
+  3. `SearchAction` shall remain out of bounds until the public lander has a working public search URL.
+  4. App open, install, launch, read, package lookup, or docs search actions shall remain out of bounds until each target has a governed route contract and passing reachability tests.
+  5. `EntryPoint.urlTemplate` values shall follow RFC 6570 URI Template semantics when templated parameters are used.
+  6. Query input names shall match the template variables and shall be validated against the actual target route.
+  7. Action targets shall not use localhost, exposed development ports, private workspace paths, or deployment-internal service URLs.
+  8. Action JSON-LD shall be linked from a relevant page entity using Schema.org-supported properties such as `potentialAction`.
+  9. Validation shall fail when an emitted action target is unreachable, ungoverned, unsupported by visible UI, inconsistent with route contracts, or unsupported by tests.
+  10. Any move from future scope to current scope requires SPEC update, feature rows, tests, evidence, and static verification before release promotion.
+  
+  ## Acceptance
+  
+  Feature and test rows for structured search, action entry points, URI template validation, app launch targets, docs search targets, package lookup targets, and action reachability must link to this SPEC before Action or EntryPoint JSON-LD is emitted.
+  
+  ## References
+  
+  - ADR-1059
+  - SPEC-2077
+  - https://schema.org/docs/actions.html
+  - https://schema.org/EntryPoint
+  - https://www.rfc-editor.org/rfc/rfc6570
+spec_kind: "normative"
+adr_ids:
+  - "adr:1059"

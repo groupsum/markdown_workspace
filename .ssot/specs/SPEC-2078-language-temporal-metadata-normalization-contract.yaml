@@ -1,0 +1,63 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2078"
+number: 2078
+slug: "language-temporal-metadata-normalization-contract"
+title: "Language and Temporal Metadata Normalization Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs BCP 47 language metadata and ISO 8601 date, time, and duration values across MdWrk public lander source content, generated HTML, JSON-LD, sitemap alternates, content registry artifacts, Markdown mirrors, and discovery projections."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Drafted to govern BCP 47 language tags and ISO 8601 date/time/duration metadata across generated artifacts."
+    at: "2026-05-07T13:08:21Z"
+references: []
+body: |-
+  # SPEC-2078: Language and Temporal Metadata Normalization Contract
+  
+  ## Scope
+  
+  This SPEC governs BCP 47 language metadata and ISO 8601 date, time, and duration values across MdWrk public lander source content, generated HTML, JSON-LD, sitemap alternates, content registry artifacts, Markdown mirrors, and discovery projections.
+  
+  ## Requirements
+  
+  1. Locale metadata shall use BCP 47 language tags.
+  2. Source frontmatter `locale`, HTML `lang`, hreflang alternates, sitemap alternates, content registry locale fields, and JSON-LD `inLanguage` shall normalize from the same language-tag value.
+  3. The default English public route shall use `en` unless a narrower locale such as `en-US` is explicitly governed for a page family.
+  4. Non-default localized routes shall use lowercase language subtags and uppercase region subtags when a region is present, such as `es`, `es-MX`, `fr-CA`, or `zh-Hant-TW`.
+  5. Locale normalization shall preserve script subtags when they materially distinguish the written page content.
+  6. A localized page shall not emit a JSON-LD `inLanguage`, HTML `lang`, or hreflang value that contradicts its visible primary language.
+  7. Date-only metadata shall use ISO 8601 extended calendar dates in `YYYY-MM-DD` form.
+  8. Date-time metadata shall use ISO 8601 extended date-time form with an explicit `Z` or UTC offset when wall-clock time matters.
+  9. Ambiguous locale-specific date strings such as `05/07/26`, `7 May 2026`, or `May 7, 2026` shall not be used in machine-readable metadata fields.
+  10. Duration values shall use ISO 8601 duration strings such as `PT8M`, `PT1H30M`, `P2W`, or `P1D`.
+  11. Duration values shall distinguish months from minutes by using the `T` separator correctly. `P2M` means two months; `PT2M` means two minutes.
+  12. Generated JSON-LD properties such as `datePublished`, `dateModified`, `dateCreated`, `lastReviewed`, `expires`, `duration`, `timeRequired`, `prepTime`, `performTime`, and `totalTime` shall use the normalized forms above when present.
+  13. Sitemap `lastmod`, content registry `updatedAt`, article metadata dates, and generated JSON-LD date fields shall agree for the same canonical page unless an explicit page-family exception is governed.
+  14. Validation shall fail on invalid language tags, route/locale mismatches, inconsistent `inLanguage` values, ambiguous date formats, invalid ISO dates, invalid ISO durations, or generated artifact disagreement.
+  
+  ## Acceptance
+  
+  Feature and test rows covering locale metadata, hreflang generation, JSON-LD `inLanguage`, sitemap alternates, content registry locale output, ISO date fields, ISO duration fields, and temporal/language validation must link to this SPEC.
+  
+  ## References
+  
+  - ADR-1058
+  - ADR-1059
+  - SPEC-2071
+  - SPEC-2074
+  - SPEC-2075
+  - SPEC-2076
+  - https://datatracker.ietf.org/doc/bcp47/
+  - https://www.rfc-editor.org/rfc/rfc5646
+  - https://www.iso.org/iso-8601-date-and-time-format.html
+  - https://schema.org/Duration
+spec_kind: "normative"
+adr_ids:
+  - "adr:1058"
+  - "adr:1059"

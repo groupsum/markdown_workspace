@@ -16848,6 +16848,28 @@
           "at": "2026-05-06T11:09:33Z"
         }
       ]
+    },
+    {
+      "id": "adr:1059",
+      "number": 1059,
+      "slug": "schemaorg-standards-baseline",
+      "title": "Schema.org standards baseline and structured data authority",
+      "path": ".ssot/adr/ADR-1059-schemaorg-standards-baseline.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "bf11a728781c304edcf20452c9db21c348722a5098786089b94f251599245de1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Drafted to govern external Schema.org, JSON-LD, BCP 47, ISO 8601, and RFC 6570 baselines for MdWrk public lander structured data.",
+          "at": "2026-05-07T13:08:01Z"
+        }
+      ]
     }
   ],
   "specs": [
@@ -18701,7 +18723,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "f451fcc9898152f52097b4a89c2e51b91a5cd8fd8101cd2fc5d1d9461b102e86",
+      "content_sha256": "80d06cb0d115732b7ec2c972bd3a28361ce3909d683c98d718c51185903bd3a4",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
@@ -18725,7 +18747,8 @@
       "kind": "normative",
       "adr_ids": [
         "adr:1055",
-        "adr:1058"
+        "adr:1058",
+        "adr:1059"
       ]
     },
     {
@@ -18738,7 +18761,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "b79c1f017cf08532217c9d187a9d0483c33a7504e1a0cac1c49cea1dbc6f1fd3",
+      "content_sha256": "6dab426c6d3c60a6164af8f0b73436d34e3951978a5b0703dd7f13adde620e76",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18762,7 +18785,8 @@
       "kind": "normative",
       "adr_ids": [
         "adr:1053",
-        "adr:1057"
+        "adr:1057",
+        "adr:1059"
       ]
     },
     {
@@ -18801,7 +18825,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "0c1590d69d8dc3089301dc1ef73843c357a8b230c97bd8979a7a6c6e77e3048f",
+      "content_sha256": "2c1177432ced89422e908d1e0c5e5beae80fa08c672ab36131807c261a5c76e9",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18814,7 +18838,8 @@
       ],
       "kind": "normative",
       "adr_ids": [
-        "adr:1058"
+        "adr:1058",
+        "adr:1059"
       ]
     },
     {
@@ -18827,7 +18852,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "07786d79c313df048a4352642032de8cf3f16c2f5cab37c671cb65bdcd563cda",
+      "content_sha256": "69920234133b42239cdd94a961002270cc00dae0528ef239468855b0a9a5ec1b",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18836,11 +18861,17 @@
           "status": "draft",
           "note": "Created hreflang canonical and sitemap alternate contract for localized lander routes.",
           "at": "2026-05-06T11:10:15Z"
+        },
+        {
+          "status": "draft",
+          "note": "Linked standards baseline ADR for BCP 47, ISO 8601, and Schema.org language metadata authority.",
+          "at": "2026-05-07T13:09:56Z"
         }
       ],
       "kind": "normative",
       "adr_ids": [
-        "adr:1058"
+        "adr:1058",
+        "adr:1059"
       ]
     },
     {
@@ -18853,7 +18884,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "50423807a706dbb6fa0b0ef62208457f8052928067a37003c62431c459ee1527",
+      "content_sha256": "b4dd0c3460822e973ca38452da56c22f4b3d1f8d3e77cc8b84f5023f82bb60e0",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18866,7 +18897,88 @@
       ],
       "kind": "normative",
       "adr_ids": [
-        "adr:1058"
+        "adr:1058",
+        "adr:1059"
+      ]
+    },
+    {
+      "id": "spc:2077",
+      "number": 2077,
+      "slug": "schemaorg-vocabulary-json-ld-conformance-contract",
+      "title": "Schema.org Vocabulary and JSON-LD Conformance Contract",
+      "path": ".ssot/specs/SPEC-2077-schemaorg-vocabulary-json-ld-conformance-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "51d839fbbe5d25fcfda1aa051926c2eccc59e2cbce86aaaee7f3380cf97e7af2",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Drafted to make Schema.org vocabulary and JSON-LD conformance requirements explicit.",
+          "at": "2026-05-07T13:08:12Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1057",
+        "adr:1059"
+      ]
+    },
+    {
+      "id": "spc:2078",
+      "number": 2078,
+      "slug": "language-temporal-metadata-normalization-contract",
+      "title": "Language and Temporal Metadata Normalization Contract",
+      "path": ".ssot/specs/SPEC-2078-language-temporal-metadata-normalization-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "9d246e7f84fbfa198a711ab0c4bfb04ea9703ec4bcd235ca6c6363ed8381ac29",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Drafted to govern BCP 47 language tags and ISO 8601 date/time/duration metadata across generated artifacts.",
+          "at": "2026-05-07T13:08:22Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1058",
+        "adr:1059"
+      ]
+    },
+    {
+      "id": "spc:2079",
+      "number": 2079,
+      "slug": "structured-action-entrypoint-contract",
+      "title": "Structured Action and EntryPoint Contract",
+      "path": ".ssot/specs/SPEC-2079-structured-action-entrypoint-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ef6b3219c958586e1dd05cad91d38198d150ff40adf6da08e589dbb7a1de7161",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Drafted to keep Schema.org Action and EntryPoint markup fail-closed until real public targets are governed and tested.",
+          "at": "2026-05-07T13:08:31Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1059"
       ]
     }
   ],
