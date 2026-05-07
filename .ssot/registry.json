@@ -1865,7 +1865,9 @@
       "claim_ids": [
         "clm:frontend-settings-persistence"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1923,7 +1925,10 @@
       "claim_ids": [
         "clm:indexeddb-vs-filesystem-persistence"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -1948,7 +1953,10 @@
       "claim_ids": [
         "clm:cloud-persistence-out-of-bounds"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -2677,7 +2685,10 @@
       "claim_ids": [
         "clm:persistence-diagnostics-mode"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "requires": []
     },
     {
@@ -9885,11 +9896,19 @@
         "feat:client-settings",
         "feat:client-preferences",
         "feat:pwa-install-button-state",
-        "feat:pwa-version-system-config"
+        "feat:pwa-version-system-config",
+        "feat:frontend-settings-persistence",
+        "feat:persistence-diagnostics-mode",
+        "feat:indexeddb-vs-filesystem-persistence",
+        "feat:cloud-persistence-out-of-bounds"
       ],
       "claim_ids": [
         "clm:client-settings",
-        "clm:client-preferences"
+        "clm:client-preferences",
+        "clm:frontend-settings-persistence",
+        "clm:persistence-diagnostics-mode",
+        "clm:indexeddb-vs-filesystem-persistence",
+        "clm:cloud-persistence-out-of-bounds"
       ],
       "evidence_ids": [
         "evd:apps-client-src-features-settings-datasettingspanel.test.tsx"
@@ -11503,6 +11522,26 @@
       "evidence_ids": [
         "evd:tools-release-build-publish-graph.test.mjs"
       ]
+    },
+    {
+      "id": "tst:apps-client-services-persistence.test.ts",
+      "title": "persistence.test.ts",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/services/persistence.test.ts",
+      "feature_ids": [
+        "feat:indexeddb-vs-filesystem-persistence",
+        "feat:cloud-persistence-out-of-bounds",
+        "feat:persistence-diagnostics-mode"
+      ],
+      "claim_ids": [
+        "clm:indexeddb-vs-filesystem-persistence",
+        "clm:cloud-persistence-out-of-bounds",
+        "clm:persistence-diagnostics-mode"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-persistence.test.ts"
+      ]
     }
   ],
   "claims": [
@@ -12919,7 +12958,9 @@
       "feature_ids": [
         "feat:frontend-settings-persistence"
       ],
-      "test_ids": [],
+      "test_ids": [
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
       "evidence_ids": []
     },
     {
@@ -12932,8 +12973,13 @@
       "feature_ids": [
         "feat:indexeddb-vs-filesystem-persistence"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-persistence.test.ts"
+      ]
     },
     {
       "id": "clm:persistence-diagnostics-mode",
@@ -12945,8 +12991,13 @@
       "feature_ids": [
         "feat:persistence-diagnostics-mode"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-persistence.test.ts"
+      ]
     },
     {
       "id": "clm:cloud-persistence-out-of-bounds",
@@ -12958,8 +13009,13 @@
       "feature_ids": [
         "feat:cloud-persistence-out-of-bounds"
       ],
-      "test_ids": [],
-      "evidence_ids": []
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts",
+        "tst:apps-client-src-features-settings-datasettingspanel.test.tsx"
+      ],
+      "evidence_ids": [
+        "evd:apps-client-services-persistence.test.ts"
+      ]
     }
   ],
   "evidence": [
@@ -14125,8 +14181,14 @@
       "kind": "test-artifact",
       "tier": "T2",
       "path": "apps/client/services/persistence.test.ts",
-      "claim_ids": [],
-      "test_ids": []
+      "claim_ids": [
+        "clm:indexeddb-vs-filesystem-persistence",
+        "clm:cloud-persistence-out-of-bounds",
+        "clm:persistence-diagnostics-mode"
+      ],
+      "test_ids": [
+        "tst:apps-client-services-persistence.test.ts"
+      ]
     }
   ],
   "issues": [
