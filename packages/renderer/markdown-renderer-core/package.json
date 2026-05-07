@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/markdown-renderer-core",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -28,10 +28,11 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "node ./tests/run-smoke.mjs && node ./tests/commonmark-core-corpus.mjs && node ./tests/gfm-default-profile.mjs && node ./tests/optional-profiles.mjs && node ./tests/preview-export-policy.mjs && node ./tests/negative-cases.mjs",
+    "test": "node ./tests/run-smoke.mjs && node ./tests/commonmark-core-corpus.mjs && node ./tests/gfm-default-profile.mjs && node ./tests/optional-profiles.mjs && node ./tests/custom-parser-profile.mjs && node ./tests/custom-previewer-profiles.mjs && node ./tests/preview-export-policy.mjs && node ./tests/negative-cases.mjs",
     "prepack": "npm run build",
     "test:gfm": "node ./tests/gfm-default-profile.mjs",
     "test:optional-profiles": "node ./tests/optional-profiles.mjs",
+    "test:custom-profiles": "node ./tests/custom-parser-profile.mjs && node ./tests/custom-previewer-profiles.mjs",
     "test:commonmark:official": "node ./tests/commonmark-official-corpus.mjs",
     "test:gfm:official": "node ./tests/gfm-official-corpus.mjs"
   },

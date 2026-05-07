@@ -11416,7 +11416,8 @@
       ],
       "claim_ids": [
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-parser-profile-blocked"
       ],
       "evidence_ids": [
         "evd:markdown-profile-custom-parser-profile"
@@ -11433,7 +11434,8 @@
       ],
       "claim_ids": [
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-previewer-profiles-blocked"
       ],
       "evidence_ids": [
         "evd:markdown-profile-custom-previewer-profiles"
@@ -12299,36 +12301,40 @@
     },
     {
       "id": "clm:mdwrk-custom-parser-profile-blocked",
-      "title": "CFM custom parser profile remains blocked",
-      "status": "blocked",
+      "title": "CFM custom parser profile is implemented",
+      "status": "evidenced",
       "tier": "T2",
       "kind": "conformance",
-      "description": "The CFM custom parser profile is included in the frozen certifiability boundary but remains absent and blocked pending implementation and evidence.",
+      "description": "The CFM custom parser profile composes the MdWrk custom parser behavior from GFM and optional profile extensions and is covered by renderer-core custom parser evidence.",
       "feature_ids": [
         "feat:mdwrk-custom-parser-profile"
       ],
       "test_ids": [
-        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
       ],
       "evidence_ids": [
-        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+        "evd:markdown-profile-custom-parser-profile"
       ]
     },
     {
       "id": "clm:mdwrk-custom-previewer-profiles-blocked",
-      "title": "CFM custom previewer profiles remain blocked",
-      "status": "blocked",
+      "title": "CFM custom previewer profiles are implemented",
+      "status": "evidenced",
       "tier": "T2",
       "kind": "conformance",
-      "description": "The CFM custom previewer profiles are included in the frozen certifiability boundary but remain absent and blocked pending implementation and evidence.",
+      "description": "The CFM custom previewer profiles provide safe and trusted previewer presets over the MdWrk custom parser profile and are covered by renderer-core custom previewer evidence.",
       "feature_ids": [
         "feat:mdwrk-custom-previewer-profiles"
       ],
       "test_ids": [
-        "tst:tools-governance-validate-certifiability-feature-plan.mjs"
+        "tst:tools-governance-validate-certifiability-feature-plan.mjs",
+        "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"
       ],
       "evidence_ids": [
-        "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+        "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+        "evd:markdown-profile-custom-previewer-profiles"
       ]
     },
     {
@@ -13873,7 +13879,8 @@
       "path": ".ssot/reports/markdown-profile-custom-parser-profile.md",
       "claim_ids": [
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-parser-profile-blocked"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-custom-parser-profile.mjs"
@@ -13888,7 +13895,8 @@
       "path": ".ssot/reports/markdown-profile-custom-previewer-profiles.md",
       "claim_ids": [
         "clm:client-markdownprofiles",
-        "clm:cross-cutting"
+        "clm:cross-cutting",
+        "clm:mdwrk-custom-previewer-profiles-blocked"
       ],
       "test_ids": [
         "tst:packages-renderer-markdown-renderer-core-tests-custom-previewer-profiles.mjs"

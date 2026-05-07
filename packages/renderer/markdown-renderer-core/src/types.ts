@@ -85,12 +85,15 @@ export type MarkdownOptionalProfileId =
   | 'subscript'
   | 'smart-punctuation'
   | 'markdown-in-html';
+export type MarkdownCustomParserProfileId = 'mdwrk-cfm-parser';
+export type MarkdownCustomPreviewerProfileId = 'mdwrk-cfm-previewer' | 'mdwrk-cfm-trusted-previewer';
 export type MarkdownProfileId = MarkdownBaseProfileId;
 
 export interface ParseMarkdownDocumentOptions {
   readonly excerptSeparator?: string;
   readonly htmlHandling?: MarkdownHtmlHandlingMode;
   readonly profile?: MarkdownProfileId;
+  readonly parserProfile?: MarkdownCustomParserProfileId;
   readonly extensions?: readonly MarkdownOptionalProfileId[];
 }
 
@@ -169,6 +172,8 @@ export interface RenderMarkdownToHtmlOptions extends MarkdownRenderHooks {
   readonly classNames?: Partial<MarkdownRendererClassNames>;
   readonly htmlHandling?: MarkdownHtmlHandlingMode;
   readonly profile?: MarkdownProfileId;
+  readonly parserProfile?: MarkdownCustomParserProfileId;
+  readonly previewerProfile?: MarkdownCustomPreviewerProfileId;
   readonly extensions?: readonly MarkdownOptionalProfileId[];
   readonly sourcePositionAttributes?: boolean;
   readonly preserveSoftLineBreaks?: boolean;

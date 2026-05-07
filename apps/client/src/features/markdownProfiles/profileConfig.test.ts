@@ -81,4 +81,18 @@ describe('markdown profile config snapshot identity', () => {
     expect(second.enabledExtensions).toEqual(['footnotes']);
     expect(second.trustedHtmlPreview).toBe(true);
   });
+
+  it('normalizes custom parser and previewer profile ids', () => {
+    writeStoredMarkdownProfileConfig({
+      baseProfile: 'gfm-default',
+      parserProfile: 'mdwrk-cfm-parser',
+      previewerProfile: 'mdwrk-cfm-trusted-previewer',
+      enabledExtensions: ['footnotes'],
+      trustedHtmlPreview: true,
+    });
+
+    const config = readStoredMarkdownProfileConfigSync();
+    expect(config.parserProfile).toBe('mdwrk-cfm-parser');
+    expect(config.previewerProfile).toBe('mdwrk-cfm-trusted-previewer');
+  });
 });

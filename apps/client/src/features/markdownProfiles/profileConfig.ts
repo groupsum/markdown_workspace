@@ -1,13 +1,19 @@
 import React from 'react';
 import {
   MARKDOWN_OPTIONAL_PROFILE_DEFINITIONS,
+  isMarkdownCustomParserProfileId,
+  isMarkdownCustomPreviewerProfileId,
   resolveMarkdownOptionalProfiles,
   type MarkdownOptionalProfileDefinition,
+  type MarkdownCustomParserProfileId,
+  type MarkdownCustomPreviewerProfileId,
   type MarkdownOptionalProfileId,
 } from '@mdwrk/markdown-renderer-core';
 
 export interface MarkdownProfileConfig {
   readonly baseProfile: 'gfm-default';
+  readonly parserProfile?: MarkdownCustomParserProfileId;
+  readonly previewerProfile?: MarkdownCustomPreviewerProfileId;
   readonly enabledExtensions: readonly MarkdownOptionalProfileId[];
   readonly trustedHtmlPreview: boolean;
 }
@@ -26,6 +32,8 @@ export const MARKDOWN_PROFILE_CONFIG_EVENT = 'mdwrk:markdown-profile-config';
 
 export const DEFAULT_MARKDOWN_PROFILE_CONFIG: MarkdownProfileConfig = Object.freeze({
   baseProfile: 'gfm-default',
+  parserProfile: undefined,
+  previewerProfile: undefined,
   enabledExtensions: Object.freeze([] as MarkdownOptionalProfileId[]),
   trustedHtmlPreview: false,
 });
@@ -63,6 +71,8 @@ export function normalizeMarkdownProfileConfig(value: unknown): MarkdownProfileC
 
   return {
     baseProfile,
+    parserProfile: isMarkdownCustomParserProfileId(value.parserProfile) ? value.parserProfile : undefined,
+    previewerProfile: isMarkdownCustomPreviewerProfileId(value.previewerProfile) ? value.previewerProfile : undefined,
     enabledExtensions,
     trustedHtmlPreview: value.trustedHtmlPreview === true,
   };
