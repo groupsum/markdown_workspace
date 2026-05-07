@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { resolveBundledExtensionEnabledByDefault } from './bundledExtensionDefaults';
 import { createClientExtensionTrustPolicy } from './extensionTrustPolicy';
 import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
@@ -18,5 +19,12 @@ describe('ExtensionRuntimeProvider runtime smoke gate', () => {
       allowUnsigned: true,
       allowIntegrityOnly: true,
     });
+  });
+
+  it('uses an explicit bundled-extension default policy in production', () => {
+    expect(resolveBundledExtensionEnabledByDefault('core.gemini-agent', 'production')).toBe(true);
+    expect(resolveBundledExtensionEnabledByDefault('core.workspace-files', 'production')).toBe(true);
+    expect(resolveBundledExtensionEnabledByDefault('core.unknown-dev-extension', 'production')).toBe(false);
+    expect(resolveBundledExtensionEnabledByDefault('core.unknown-dev-extension', 'development')).toBe(true);
   });
 });

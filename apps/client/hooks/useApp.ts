@@ -1,6 +1,13 @@
 
 import { useEffect, useCallback, useRef } from 'react';
-import { beginOidcSignIn, completeOidcSignInFromCallback, getOidcPopupEventType } from '../services/oidc';
+import {
+  AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
+  beginOidcSignIn,
+  completeOidcSignInFromCallback,
+  getOidcPopupEventType,
+  GIT_OPS_OIDC_TOKEN_BOUNDARY,
+} from '../services/oidc';
+import type { OidcProviderId, OidcTokenBoundary } from '../types';
 import { THEMES } from '../data/themes';
 import { useToast } from './useToast';
 import { useInputModal } from './useInputModal';
@@ -102,20 +109,25 @@ export const useApp = () => {
 
   const applyOidcResult = useCallback(async (result: Awaited<ReturnType<typeof completeOidcSignInFromCallback>>) => {
     if (result.status === 'success' && result.projectId && result.credential) {
-      const targetProject = proj.projects.find((project) => project.id === result.projectId);
-      if (targetProject) {
-        const updatedProject = {
-          ...targetProject,
-          gitConfig: {
-            ...targetProject.gitConfig,
-            username: result.credential.username,
-            oidcProvider: result.provider || targetProject.gitConfig.oidcProvider || 'github',
-            oidcConnected: true,
-            oidcSubject: result.credential.subject
-          }
-        };
-        await proj.updateGitConfig(updatedProject.gitConfig);
-        addToast(`OIDC SIGN-IN SUCCESS (${updatedProject.gitConfig.oidcProvider.toUpperCase()})`, 'success');
+      if (result.credential.tokenBoundary === GIT_OPS_OIDC_TOKEN_BOUNDARY) {
+        const targetProject = proj.projects.find((project) => project.id === result.projectId);
+        if (targetProject) {
+          const updatedProject = {
+            ...targetProject,
+            gitConfig: {
+              ...targetProject.gitConfig,
+              username: result.credential.username,
+              oidcProvider: result.provider || targetProject.gitConfig.oidcProvider || 'github',
+              oidcConnected: true,
+              oidcSubject: result.credential.subject
+            }
+          };
+          await proj.updateGitConfig(updatedProject.gitConfig);
+          addToast(`OIDC SIGN-IN SUCCESS (${updatedProject.gitConfig.oidcProvider.toUpperCase()})`, 'success');
+        }
+      } else if (result.credential.tokenBoundary === AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY) {
+        const providerLabel = (result.provider || 'github').toUpperCase();
+        addToast(`AGENT OIDC SIGN-IN SUCCESS (${providerLabel})`, 'success');
       }
     } else if (result.status === 'error') {
       addToast(result.message || 'OIDC SIGN-IN FAILED', 'warning');
@@ -760,11 +772,31 @@ export const useApp = () => {
       localStorage.removeItem('lastProjectId');
   };
 
-  const handleOidcSignIn = async () => {
+  const beginScopedOidcSignIn = useCallback(async (args: {
+    provider: OidcProviderId;
+    username: string;
+    tokenBoundary: OidcTokenBoundary;
+    successMessage: string;
+  }) => {
       if (!proj.activeProjectId) {
         addToast('SELECT A PROJECT BEFORE OIDC SIGN-IN', 'warning');
         return;
       }
+      try {
+        addToast(args.successMessage, 'info');
+        await beginOidcSignIn({
+          projectId: proj.activeProjectId,
+          provider: args.provider,
+          username: args.username || 'user',
+          tokenBoundary: args.tokenBoundary,
+        });
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'OIDC SIGN-IN FAILED';
+        addToast(message.toUpperCase(), 'warning');
+      }
+  }, [addToast, proj.activeProjectId]);
+
+  const handleOidcSignIn = async () => {
       const activeGitConfig = currentProject?.gitConfig;
       if (!activeGitConfig) {
         addToast('PROJECT CONFIG NOT AVAILABLE', 'warning');
@@ -774,18 +806,22 @@ export const useApp = () => {
         addToast('OIDC SIGN-IN IS DISABLED WHEN AUTH MODE IS PAT', 'warning');
         return;
       }
-      try {
-        addToast('OIDC REDIRECT IN PROGRESS', 'info');
-        await beginOidcSignIn({
-          projectId: proj.activeProjectId,
-          provider: activeGitConfig.oidcProvider || 'github',
-          username: activeGitConfig.username || 'user'
-        });
-      } catch (error) {
-        const message = error instanceof Error ? error.message : 'OIDC SIGN-IN FAILED';
-        addToast(message.toUpperCase(), 'warning');
-      }
+      await beginScopedOidcSignIn({
+        provider: activeGitConfig.oidcProvider || 'github',
+        username: activeGitConfig.username || 'user',
+        tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
+        successMessage: 'OIDC REDIRECT IN PROGRESS',
+      });
   };
+
+  const handleAgentOidcSignIn = useCallback(async (provider: OidcProviderId = 'github') => {
+      await beginScopedOidcSignIn({
+        provider,
+        username: currentProject?.gitConfig.username || 'agent',
+        tokenBoundary: AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
+        successMessage: 'AGENT OIDC REDIRECT IN PROGRESS',
+      });
+  }, [beginScopedOidcSignIn, currentProject?.gitConfig.username]);
 
   return {
     state: {
@@ -829,6 +865,7 @@ export const useApp = () => {
       handleDeleteProject: proj.deleteProject,
       handleGitConfigUpdate,
       handleOidcSignIn,
+      handleAgentOidcSignIn,
       getActiveGitConfig: () => currentProject?.gitConfig || getDefaultGitConfig(),
       handleGitConfigSave,
       testGitLink,

@@ -720,14 +720,15 @@
       "id": "feat:mdwrk-desktop-app-shell",
       "title": "MdWrk desktop app shell",
       "description": "Desktop app shell boundary, packaging, version, and host behavior.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -735,8 +736,12 @@
       "spec_ids": [
         "spc:2006"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrk-desktop-app-shell-current"
+      ],
+      "test_ids": [
+        "tst:mdwrk-desktop-app-shell-current"
+      ],
       "requires": []
     },
     {
@@ -774,14 +779,15 @@
       "id": "feat:desktop-tabs",
       "title": "Desktop app tabs",
       "description": "Fix and govern tabs in the desktop app.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -790,22 +796,27 @@
         "spc:2006",
         "spc:2007"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:desktop-tabs-current"
+      ],
+      "test_ids": [
+        "tst:desktop-tabs-current"
+      ],
       "requires": []
     },
     {
       "id": "feat:desktop-runtime-extension-default",
       "title": "Desktop runtime extension production defaults",
       "description": "Ensure runtime extension defaults are development-only unless production explicitly enables them.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -814,8 +825,12 @@
         "spc:2006",
         "spc:2010"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:desktop-runtime-extension-default-current"
+      ],
+      "test_ids": [
+        "tst:desktop-runtime-extension-default-current"
+      ],
       "requires": []
     },
     {
@@ -2042,14 +2057,15 @@
       "id": "feat:agent-extension-oidc",
       "title": "Agent extension OIDC",
       "description": "Scope OIDC tokens and auth state to agent extensions.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2059,8 +2075,12 @@
         "spc:2012",
         "spc:2018"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:agent-extension-oidc-current"
+      ],
+      "test_ids": [
+        "tst:agent-extension-oidc-current"
+      ],
       "requires": [
         "feat:oidc-adapter"
       ]
@@ -2482,14 +2502,15 @@
       "id": "feat:desktop-packaging-versioning",
       "title": "Desktop packaging and versioning",
       "description": "Track desktop packaging, app version visibility, and update metadata.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2497,8 +2518,12 @@
       "spec_ids": [
         "spc:2006"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:desktop-packaging-versioning-current"
+      ],
+      "test_ids": [
+        "tst:desktop-packaging-versioning-current"
+      ],
       "requires": []
     },
     {
@@ -2535,14 +2560,15 @@
       "id": "feat:desktop-window-state-persistence",
       "title": "Desktop window state persistence",
       "description": "Persist desktop window, tab, and workspace shell state.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2551,22 +2577,27 @@
         "spc:2006",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:desktop-window-state-persistence-current"
+      ],
+      "test_ids": [
+        "tst:desktop-window-state-persistence-current"
+      ],
       "requires": []
     },
     {
       "id": "feat:desktop-filesystem-permissions",
       "title": "Desktop filesystem permissions",
       "description": "Govern mounted folder permissions and failure states.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -2575,8 +2606,12 @@
         "spc:2006",
         "spc:2008"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:desktop-filesystem-permissions-current"
+      ],
+      "test_ids": [
+        "tst:desktop-filesystem-permissions-current"
+      ],
       "requires": []
     },
     {
@@ -3858,14 +3893,15 @@
       "id": "feat:android-shell-support",
       "title": "Android shell support",
       "description": "Define and track the Android shell contract as a separate native shell target.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
-        "note": null
+        "note": "Released in rel:desktop-shell-and-oidc-current.",
+        "effective_release_id": "rel:desktop-shell-and-oidc-current"
       },
       "plan": {
-        "horizon": "future",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -3873,8 +3909,12 @@
       "spec_ids": [
         "spc:2035"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:android-shell-support-current"
+      ],
+      "test_ids": [
+        "tst:android-shell-support-current"
+      ],
       "requires": []
     },
     {
@@ -11676,6 +11716,134 @@
       "evidence_ids": [
         "evd:readme-project-identity-alignment-current"
       ]
+    },
+    {
+      "id": "tst:agent-extension-oidc-current",
+      "title": "Agent extension OIDC current verification",
+      "status": "passing",
+      "kind": "smoke",
+      "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:agent-extension-oidc"
+      ],
+      "claim_ids": [
+        "clm:agent-extension-oidc-current"
+      ],
+      "evidence_ids": [
+        "evd:agent-extension-oidc-current"
+      ]
+    },
+    {
+      "id": "tst:android-shell-support-current",
+      "title": "Android shell support current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/desktop/tests/android-contract.test.mjs",
+      "feature_ids": [
+        "feat:android-shell-support"
+      ],
+      "claim_ids": [
+        "clm:android-shell-support-current"
+      ],
+      "evidence_ids": [
+        "evd:android-shell-support-current"
+      ]
+    },
+    {
+      "id": "tst:desktop-filesystem-permissions-current",
+      "title": "Desktop filesystem permissions current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/desktop/tests/access-policy.test.mjs",
+      "feature_ids": [
+        "feat:desktop-filesystem-permissions"
+      ],
+      "claim_ids": [
+        "clm:desktop-filesystem-permissions-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-filesystem-permissions-current"
+      ]
+    },
+    {
+      "id": "tst:desktop-packaging-versioning-current",
+      "title": "Desktop packaging and versioning current verification",
+      "status": "passing",
+      "kind": "package",
+      "path": "apps/desktop/tests/package-contract.test.mjs",
+      "feature_ids": [
+        "feat:desktop-packaging-versioning"
+      ],
+      "claim_ids": [
+        "clm:desktop-packaging-versioning-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-packaging-versioning-current"
+      ]
+    },
+    {
+      "id": "tst:desktop-runtime-extension-default-current",
+      "title": "Desktop runtime extension default current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
+      "feature_ids": [
+        "feat:desktop-runtime-extension-default"
+      ],
+      "claim_ids": [
+        "clm:desktop-runtime-extension-default-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-runtime-extension-default-current"
+      ]
+    },
+    {
+      "id": "tst:desktop-tabs-current",
+      "title": "Desktop tabs current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/hooks/useTabManager.test.tsx",
+      "feature_ids": [
+        "feat:desktop-tabs"
+      ],
+      "claim_ids": [
+        "clm:desktop-tabs-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-tabs-current"
+      ]
+    },
+    {
+      "id": "tst:desktop-window-state-persistence-current",
+      "title": "Desktop window state persistence current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/desktop/tests/window-state.test.mjs",
+      "feature_ids": [
+        "feat:desktop-window-state-persistence"
+      ],
+      "claim_ids": [
+        "clm:desktop-window-state-persistence-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-window-state-persistence-current"
+      ]
+    },
+    {
+      "id": "tst:mdwrk-desktop-app-shell-current",
+      "title": "MdWrk desktop app shell current verification",
+      "status": "passing",
+      "kind": "unit",
+      "path": "apps/client/hooks/useApp.test.tsx",
+      "feature_ids": [
+        "feat:mdwrk-desktop-app-shell"
+      ],
+      "claim_ids": [
+        "clm:mdwrk-desktop-app-shell-current"
+      ],
+      "evidence_ids": [
+        "evd:mdwrk-desktop-app-shell-current"
+      ]
     }
   ],
   "claims": [
@@ -13249,6 +13417,142 @@
       "evidence_ids": [
         "evd:repository-top-level-hygiene-current"
       ]
+    },
+    {
+      "id": "clm:agent-extension-oidc-current",
+      "title": "Agent extension OIDC current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for agent extension OIDC.",
+      "feature_ids": [
+        "feat:agent-extension-oidc"
+      ],
+      "test_ids": [
+        "tst:agent-extension-oidc-current"
+      ],
+      "evidence_ids": [
+        "evd:agent-extension-oidc-current"
+      ]
+    },
+    {
+      "id": "clm:android-shell-support-current",
+      "title": "Android shell support current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for Android shell support.",
+      "feature_ids": [
+        "feat:android-shell-support"
+      ],
+      "test_ids": [
+        "tst:android-shell-support-current"
+      ],
+      "evidence_ids": [
+        "evd:android-shell-support-current"
+      ]
+    },
+    {
+      "id": "clm:desktop-filesystem-permissions-current",
+      "title": "Desktop filesystem permissions current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for desktop filesystem permissions.",
+      "feature_ids": [
+        "feat:desktop-filesystem-permissions"
+      ],
+      "test_ids": [
+        "tst:desktop-filesystem-permissions-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-filesystem-permissions-current"
+      ]
+    },
+    {
+      "id": "clm:desktop-packaging-versioning-current",
+      "title": "Desktop packaging and versioning current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for desktop packaging and versioning.",
+      "feature_ids": [
+        "feat:desktop-packaging-versioning"
+      ],
+      "test_ids": [
+        "tst:desktop-packaging-versioning-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-packaging-versioning-current"
+      ]
+    },
+    {
+      "id": "clm:desktop-runtime-extension-default-current",
+      "title": "Desktop runtime extension default current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for desktop runtime extension production defaults.",
+      "feature_ids": [
+        "feat:desktop-runtime-extension-default"
+      ],
+      "test_ids": [
+        "tst:desktop-runtime-extension-default-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-runtime-extension-default-current"
+      ]
+    },
+    {
+      "id": "clm:desktop-tabs-current",
+      "title": "Desktop tabs current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for desktop app tabs.",
+      "feature_ids": [
+        "feat:desktop-tabs"
+      ],
+      "test_ids": [
+        "tst:desktop-tabs-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-tabs-current"
+      ]
+    },
+    {
+      "id": "clm:desktop-window-state-persistence-current",
+      "title": "Desktop window state persistence current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for desktop window state persistence.",
+      "feature_ids": [
+        "feat:desktop-window-state-persistence"
+      ],
+      "test_ids": [
+        "tst:desktop-window-state-persistence-current"
+      ],
+      "evidence_ids": [
+        "evd:desktop-window-state-persistence-current"
+      ]
+    },
+    {
+      "id": "clm:mdwrk-desktop-app-shell-current",
+      "title": "MdWrk desktop app shell current target",
+      "status": "published",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "Track current-horizon planning coverage for the MdWrk desktop app shell.",
+      "feature_ids": [
+        "feat:mdwrk-desktop-app-shell"
+      ],
+      "test_ids": [
+        "tst:mdwrk-desktop-app-shell-current"
+      ],
+      "evidence_ids": [
+        "evd:mdwrk-desktop-app-shell-current"
+      ]
     }
   ],
   "evidence": [
@@ -14497,6 +14801,118 @@
       "test_ids": [
         "tst:repository-top-level-hygiene-current"
       ]
+    },
+    {
+      "id": "evd:agent-extension-oidc-current",
+      "title": "Agent extension OIDC current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "packages/extensions/extension-gemini-agent/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:agent-extension-oidc-current"
+      ],
+      "test_ids": [
+        "tst:agent-extension-oidc-current"
+      ]
+    },
+    {
+      "id": "evd:android-shell-support-current",
+      "title": "Android shell support current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/desktop/tests/android-contract.test.mjs",
+      "claim_ids": [
+        "clm:android-shell-support-current"
+      ],
+      "test_ids": [
+        "tst:android-shell-support-current"
+      ]
+    },
+    {
+      "id": "evd:desktop-filesystem-permissions-current",
+      "title": "Desktop filesystem permissions current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/desktop/tests/access-policy.test.mjs",
+      "claim_ids": [
+        "clm:desktop-filesystem-permissions-current"
+      ],
+      "test_ids": [
+        "tst:desktop-filesystem-permissions-current"
+      ]
+    },
+    {
+      "id": "evd:desktop-packaging-versioning-current",
+      "title": "Desktop packaging and versioning current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/desktop/tests/package-contract.test.mjs",
+      "claim_ids": [
+        "clm:desktop-packaging-versioning-current"
+      ],
+      "test_ids": [
+        "tst:desktop-packaging-versioning-current"
+      ]
+    },
+    {
+      "id": "evd:desktop-runtime-extension-default-current",
+      "title": "Desktop runtime extension default current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/src/extensions/runtime/ExtensionRuntimeProvider.test.ts",
+      "claim_ids": [
+        "clm:desktop-runtime-extension-default-current"
+      ],
+      "test_ids": [
+        "tst:desktop-runtime-extension-default-current"
+      ]
+    },
+    {
+      "id": "evd:desktop-tabs-current",
+      "title": "Desktop tabs current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useTabManager.test.tsx",
+      "claim_ids": [
+        "clm:desktop-tabs-current"
+      ],
+      "test_ids": [
+        "tst:desktop-tabs-current"
+      ]
+    },
+    {
+      "id": "evd:desktop-window-state-persistence-current",
+      "title": "Desktop window state persistence current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/desktop/tests/window-state.test.mjs",
+      "claim_ids": [
+        "clm:desktop-window-state-persistence-current"
+      ],
+      "test_ids": [
+        "tst:desktop-window-state-persistence-current"
+      ]
+    },
+    {
+      "id": "evd:mdwrk-desktop-app-shell-current",
+      "title": "MdWrk desktop app shell current evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/client/hooks/useApp.test.tsx",
+      "claim_ids": [
+        "clm:mdwrk-desktop-app-shell-current"
+      ],
+      "test_ids": [
+        "tst:mdwrk-desktop-app-shell-current"
+      ]
     }
   ],
   "issues": [
@@ -15014,6 +15430,23 @@
         "feat:ssot-registry-model-governance"
       ],
       "profile_ids": []
+    },
+    {
+      "id": "bnd:desktop-shell-and-oidc-current",
+      "title": "Desktop Shell And OIDC Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:agent-extension-oidc",
+        "feat:android-shell-support",
+        "feat:desktop-filesystem-permissions",
+        "feat:desktop-packaging-versioning",
+        "feat:desktop-runtime-extension-default",
+        "feat:desktop-tabs",
+        "feat:desktop-window-state-persistence",
+        "feat:mdwrk-desktop-app-shell"
+      ],
+      "profile_ids": []
     }
   ],
   "releases": [
@@ -15145,6 +15578,32 @@
         "evd:ssot-reports-spec-coverage-index.json",
         "evd:ssot-reports-ssot-graph-export-governance.json",
         "evd:tools-governance-validate-certifiability-feature-plan.mjs"
+      ]
+    },
+    {
+      "id": "rel:desktop-shell-and-oidc-current",
+      "version": "0.2.100",
+      "status": "published",
+      "boundary_id": "bnd:desktop-shell-and-oidc-current",
+      "claim_ids": [
+        "clm:agent-extension-oidc-current",
+        "clm:android-shell-support-current",
+        "clm:desktop-filesystem-permissions-current",
+        "clm:desktop-packaging-versioning-current",
+        "clm:desktop-runtime-extension-default-current",
+        "clm:desktop-tabs-current",
+        "clm:desktop-window-state-persistence-current",
+        "clm:mdwrk-desktop-app-shell-current"
+      ],
+      "evidence_ids": [
+        "evd:agent-extension-oidc-current",
+        "evd:android-shell-support-current",
+        "evd:desktop-filesystem-permissions-current",
+        "evd:desktop-packaging-versioning-current",
+        "evd:desktop-runtime-extension-default-current",
+        "evd:desktop-tabs-current",
+        "evd:desktop-window-state-persistence-current",
+        "evd:mdwrk-desktop-app-shell-current"
       ]
     }
   ],

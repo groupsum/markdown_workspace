@@ -2,7 +2,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { GitConfig } from '../types';
 import { getAuthToken } from './gitConfig';
-import { completeOidcSignInFromCallback, getOidcPopupEventType, storeOidcCredential } from './oidc';
+import {
+  AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
+  completeOidcSignInFromCallback,
+  getOidcPopupEventType,
+  GIT_OPS_OIDC_TOKEN_BOUNDARY,
+  readOidcCredential,
+  storeOidcCredential,
+} from './oidc';
 
 const pendingKey = 'lattice-oidc-pending-v1';
 
@@ -35,6 +42,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
       JSON.stringify({
         projectId: 'proj-1',
         provider: 'github',
+        tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
         username: 'alice',
         state: 'abc123',
         redirectUri: 'http://localhost:5173/auth/callback',
@@ -57,6 +65,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
       JSON.stringify({
         projectId: 'proj-1',
         provider: 'github',
+        tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
         username: 'alice',
         state: 'abc123',
         redirectUri: 'http://localhost:5173/auth/callback',
@@ -79,6 +88,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
       JSON.stringify({
         projectId: 'proj-1',
         provider: 'github',
+        tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
         username: 'alice',
         state: 'abc123',
         redirectUri: 'http://localhost:5173/auth/callback',
@@ -96,7 +106,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
 
     expect(result.status).toBe('success');
     expect(result.credential?.accessToken).toBe('abc-token');
-    expect(result.credential?.tokenBoundary).toBe('git-ops');
+    expect(result.credential?.tokenBoundary).toBe(GIT_OPS_OIDC_TOKEN_BOUNDARY);
     expect(result.credential?.scopes).toContain('repo');
     expect(result.credential?.idToken).toBe('id-token');
     expect(result.credential?.username).toBe('alice-gl');
@@ -111,6 +121,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
       JSON.stringify({
         projectId: 'proj-1',
         provider: 'github',
+        tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
         username: 'alice',
         state: 'abc123',
         redirectUri: 'http://localhost:5173/auth/callback',
@@ -140,7 +151,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
   it('rejects non-git OIDC credentials at the git auth boundary', async () => {
     await storeOidcCredential('proj-1', {
       provider: 'github',
-      tokenBoundary: 'agent',
+      tokenBoundary: AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
       scopes: ['openid'],
       username: 'agent',
       subject: 'github-agent',
@@ -166,7 +177,7 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
   it('rejects provider mismatches before returning an OIDC git token', async () => {
     await storeOidcCredential('proj-1', {
       provider: 'gitlab',
-      tokenBoundary: 'git-ops',
+      tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
       scopes: ['openid', 'api'],
       username: 'alice',
       subject: 'gitlab-42',
@@ -187,5 +198,36 @@ describe('completeOidcSignInFromCallback (browser-only implicit flow)', () => {
     };
 
     await expect(getAuthToken('proj-1', config)).rejects.toThrow('Connect github OIDC to continue.');
+  });
+
+  it('stores git and agent credentials in separate boundary namespaces', async () => {
+    await storeOidcCredential('proj-1', {
+      provider: 'github',
+      tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
+      scopes: ['openid', 'repo'],
+      username: 'git-user',
+      subject: 'github-git-user',
+      accessToken: 'git-token',
+      issuedAt: Date.now(),
+      expiresAt: Date.now() + 1000 * 60 * 60,
+    });
+
+    await storeOidcCredential('proj-1', {
+      provider: 'github',
+      tokenBoundary: AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
+      scopes: ['openid'],
+      username: 'agent-user',
+      subject: 'github-agent-user',
+      accessToken: 'agent-token',
+      issuedAt: Date.now(),
+      expiresAt: Date.now() + 1000 * 60 * 60,
+    });
+
+    const gitCredential = await readOidcCredential('proj-1', GIT_OPS_OIDC_TOKEN_BOUNDARY);
+    const agentCredential = await readOidcCredential('proj-1', AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY);
+
+    expect(gitCredential?.accessToken).toBe('git-token');
+    expect(agentCredential?.accessToken).toBe('agent-token');
+    expect(agentCredential?.tokenBoundary).toBe(AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY);
   });
 });

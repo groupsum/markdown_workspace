@@ -1,6 +1,8 @@
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 import {
   GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID,
+  GEMINI_AGENT_COMMAND_CONNECT_OIDC_ID,
+  GEMINI_AGENT_COMMAND_DISCONNECT_OIDC_ID,
   GEMINI_AGENT_EXPLORER_VIEW_ID,
   GEMINI_AGENT_COMMAND_OPEN_ID,
   GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID,
@@ -66,6 +68,20 @@ export const geminiAgentManifest: ExtensionManifest = {
         description: geminiAgentLabels.commandOpenDescription,
         icon: { kind: "lucide", name: "Bot" },
         keywords: ["gemini", "agent", "assistant"],
+      },
+      {
+        id: GEMINI_AGENT_COMMAND_CONNECT_OIDC_ID,
+        title: { defaultMessage: "Connect Gemini OIDC" },
+        description: { defaultMessage: "Start agent-scoped OIDC sign-in for the Gemini extension." },
+        icon: { kind: "lucide", name: "ShieldCheck" },
+        keywords: ["gemini", "oidc", "connect", "auth"],
+      },
+      {
+        id: GEMINI_AGENT_COMMAND_DISCONNECT_OIDC_ID,
+        title: { defaultMessage: "Disconnect Gemini OIDC" },
+        description: { defaultMessage: "Remove the agent-scoped OIDC credential used by the Gemini extension." },
+        icon: { kind: "lucide", name: "ShieldOff" },
+        keywords: ["gemini", "oidc", "disconnect", "auth"],
       },
       {
         id: GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID,
@@ -212,8 +228,34 @@ export const geminiAgentManifest: ExtensionManifest = {
             label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.authMode.option.apiKey`, defaultMessage: "API key" },
           },
           {
+            value: "oidc",
+            label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.authMode.option.oidc`, defaultMessage: "OIDC" },
+          },
+          {
             value: "none",
             label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.authMode.option.none`, defaultMessage: "No direct auth in extension" },
+          },
+        ],
+      },
+      {
+        key: "oidcProvider",
+        kind: "select",
+        sectionId: GEMINI_AGENT_SETTINGS_SECTION_GENERAL,
+        label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.oidcProvider.label`, defaultMessage: "OIDC provider" },
+        description: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.oidcProvider.description`, defaultMessage: "OIDC provider used for agent-scoped authentication when authentication mode is OIDC." },
+        defaultValue: "github",
+        options: [
+          {
+            value: "github",
+            label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.oidcProvider.option.github`, defaultMessage: "GitHub" },
+          },
+          {
+            value: "gitlab",
+            label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.oidcProvider.option.gitlab`, defaultMessage: "GitLab" },
+          },
+          {
+            value: "gitea",
+            label: { key: `${GEMINI_AGENT_EXTENSION_ID}.settings.fields.oidcProvider.option.gitea`, defaultMessage: "Gitea" },
           },
         ],
       },

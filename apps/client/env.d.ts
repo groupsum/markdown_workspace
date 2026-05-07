@@ -23,11 +23,19 @@ interface DesktopWorkspaceSnapshot {
   entries: DesktopWorkspaceEntry[];
 }
 
+interface DesktopShellInfo {
+  productName: string;
+  version: string;
+  isPackaged: boolean;
+  platform: string;
+}
+
 interface DesktopShellApi {
   readonly isDesktop: boolean;
   openMarkdownFiles(): Promise<DesktopMarkdownFile[]>;
   saveMarkdownFile(payload: { path: string; content: string }): Promise<{ path: string }>;
   getDesktopPath(): Promise<string>;
+  getShellInfo(): Promise<DesktopShellInfo>;
   openProjectDirectory(): Promise<DesktopWorkspaceSnapshot | null>;
   readProjectDirectory(payload: { rootPath: string }): Promise<DesktopWorkspaceSnapshot>;
   createProjectDirectory(payload: { name: string; parentPath?: string }): Promise<DesktopWorkspaceSnapshot>;

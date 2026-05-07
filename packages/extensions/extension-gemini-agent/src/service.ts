@@ -235,6 +235,30 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
       throw new Error(message);
     }
 
+    let oidcAccessToken: string | undefined;
+    let oidcSubject: string | undefined;
+
+    if (settings.authMode === "oidc") {
+      if (!deps.oidc) {
+        const message = "Gemini OIDC is not available in this host runtime.";
+        setSnapshot({ lastError: message, infoMessage: null });
+        await publishDiagnostic("warning", "EXT_GEMINI_OIDC_UNAVAILABLE", geminiAgentLabels.diagnosticsMissingConfiguration, message);
+        throw new Error(message);
+      }
+
+      const credential = await deps.oidc.readCredential(settings.oidcProvider);
+      if (!credential?.accessToken) {
+        const message = "Gemini OIDC is not connected for the selected provider.";
+        setSnapshot({ lastError: message, infoMessage: null });
+        await publishDiagnostic("warning", "EXT_GEMINI_OIDC_NOT_CONNECTED", geminiAgentLabels.diagnosticsMissingConfiguration, message);
+        await deps.context.host.notifications.warn({ defaultMessage: message });
+        throw new Error(message);
+      }
+
+      oidcAccessToken = credential.accessToken;
+      oidcSubject = credential.subject;
+    }
+
     if (intent === "summarize-current-file" && !hasActiveDocumentContext(contextSnapshot)) {
       const message = formatLabel(deps.formatLabel, geminiAgentLabels.notificationsNoDocument);
       setSnapshot({ lastError: message, infoMessage: null });
@@ -251,7 +275,11 @@ export function createGeminiAgentService(deps: GeminiAgentServiceDependencies): 
       throw new Error(message);
     }
 
-    return settings;
+    return {
+      ...settings,
+      oidcAccessToken,
+      oidcSubject,
+    };
   };
 
   const runIntent = async (intent: GeminiAgentIntent, prompt = "", options?: GeminiAgentRunOptions): Promise<GeminiAgentResponse> => {

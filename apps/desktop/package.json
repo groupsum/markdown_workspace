@@ -19,6 +19,7 @@
     "publish:mac": "npm run build && electron-builder --mac dmg zip --publish=always",
     "android:prepare": "node ./scripts/android-prepare.mjs",
     "android:release": "node ./scripts/android-release.mjs",
+    "test": "npm run build && node --test ./tests/access-policy.test.mjs ./tests/window-state.test.mjs ./tests/android-contract.test.mjs ./tests/package-contract.test.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck"
   },

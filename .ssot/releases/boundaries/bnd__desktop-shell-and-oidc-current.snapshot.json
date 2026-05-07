@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-07T12:19:45Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "4e042294f51a9a526aaa380a661faa3b0004b22416ffaa8fc0ca3b375f91b0c2",
+  "boundary": {
+    "id": "bnd:desktop-shell-and-oidc-current",
+    "title": "Desktop Shell And OIDC Current Boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:agent-extension-oidc",
+      "feat:android-shell-support",
+      "feat:desktop-filesystem-permissions",
+      "feat:desktop-packaging-versioning",
+      "feat:desktop-runtime-extension-default",
+      "feat:desktop-tabs",
+      "feat:desktop-window-state-persistence",
+      "feat:mdwrk-desktop-app-shell"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:agent-extension-oidc",
+      "title": "Agent extension OIDC",
+      "description": "Scope OIDC tokens and auth state to agent extensions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2009",
+        "spc:2012",
+        "spc:2018"
+      ],
+      "claim_ids": [
+        "clm:agent-extension-oidc-current"
+      ],
+      "test_ids": [
+        "tst:agent-extension-oidc-current"
+      ],
+      "requires": [
+        "feat:oidc-adapter"
+      ]
+    },
+    {
+      "id": "feat:android-shell-support",
+      "title": "Android shell support",
+      "description": "Define and track the Android shell contract as a separate native shell target.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2035"
+      ],
+      "claim_ids": [
+        "clm:android-shell-support-current"
+      ],
+      "test_ids": [
+        "tst:android-shell-support-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-filesystem-permissions",
+      "title": "Desktop filesystem permissions",
+      "description": "Govern mounted folder permissions and failure states.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:desktop-filesystem-permissions-current"
+      ],
+      "test_ids": [
+        "tst:desktop-filesystem-permissions-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-packaging-versioning",
+      "title": "Desktop packaging and versioning",
+      "description": "Track desktop packaging, app version visibility, and update metadata.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:desktop-packaging-versioning-current"
+      ],
+      "test_ids": [
+        "tst:desktop-packaging-versioning-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-runtime-extension-default",
+      "title": "Desktop runtime extension production defaults",
+      "description": "Ensure runtime extension defaults are development-only unless production explicitly enables them.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2010"
+      ],
+      "claim_ids": [
+        "clm:desktop-runtime-extension-default-current"
+      ],
+      "test_ids": [
+        "tst:desktop-runtime-extension-default-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-tabs",
+      "title": "Desktop app tabs",
+      "description": "Fix and govern tabs in the desktop app.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2007"
+      ],
+      "claim_ids": [
+        "clm:desktop-tabs-current"
+      ],
+      "test_ids": [
+        "tst:desktop-tabs-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:desktop-window-state-persistence",
+      "title": "Desktop window state persistence",
+      "description": "Persist desktop window, tab, and workspace shell state.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006",
+        "spc:2008"
+      ],
+      "claim_ids": [
+        "clm:desktop-window-state-persistence-current"
+      ],
+      "test_ids": [
+        "tst:desktop-window-state-persistence-current"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrk-desktop-app-shell",
+      "title": "MdWrk desktop app shell",
+      "description": "Desktop app shell boundary, packaging, version, and host behavior.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2006"
+      ],
+      "claim_ids": [
+        "clm:mdwrk-desktop-app-shell-current"
+      ],
+      "test_ids": [
+        "tst:mdwrk-desktop-app-shell-current"
+      ],
+      "requires": []
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:desktop-shell-and-oidc-current",
+    "feature_count": 8,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}

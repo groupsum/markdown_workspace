@@ -10,13 +10,31 @@ import type {
 
 export type GeminiAgentIntent = "idle" | "summarize-current-file" | "rewrite-selection" | "custom-prompt";
 export type GeminiAgentWritebackMode = "selection" | "document";
-export type GeminiAgentAuthMode = "api-key" | "none";
+export type GeminiAgentAuthMode = "api-key" | "oidc" | "none";
+export type GeminiAgentOidcProviderId = "github" | "gitlab" | "gitea";
+
+export interface GeminiAgentOidcCredential {
+  readonly provider: GeminiAgentOidcProviderId;
+  readonly tokenBoundary: "agent";
+  readonly subject: string;
+  readonly username: string;
+  readonly accessToken: string;
+}
+
+export interface GeminiAgentOidcBridge {
+  connect(provider: GeminiAgentOidcProviderId): Promise<void>;
+  disconnect(): Promise<void>;
+  readCredential(provider: GeminiAgentOidcProviderId): Promise<GeminiAgentOidcCredential | null>;
+}
 
 export interface GeminiAgentResolvedSettings {
   readonly endpoint: string;
   readonly model: string;
   readonly authMode: GeminiAgentAuthMode;
   readonly apiKey: string;
+  readonly oidcProvider: GeminiAgentOidcProviderId;
+  readonly oidcAccessToken?: string;
+  readonly oidcSubject?: string;
   readonly systemPrompt: string;
   readonly temperature: number;
   readonly requestTimeoutMs: number;
@@ -126,6 +144,7 @@ export interface GeminiProviderCreateOptions {
 
 export interface GeminiAgentEntryOptions {
   readonly provider?: GeminiTextProvider;
+  readonly oidc?: GeminiAgentOidcBridge;
 }
 
 export interface GeminiAgentViewInput {
@@ -162,6 +181,7 @@ export interface GeminiAgentServiceDependencies {
   readonly context: ExtensionContext;
   readonly provider: GeminiTextProvider;
   readonly formatLabel: (label: I18nLabel | string) => string;
+  readonly oidc?: GeminiAgentOidcBridge;
 }
 
 export interface GeminiSettingsReadOptions {

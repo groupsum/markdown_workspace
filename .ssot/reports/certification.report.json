@@ -2,13 +2,118 @@
   "passed": true,
   "registry_path": ".ssot/registry.json",
   "release": {
-    "release_id": "rel:repo-certifiability-p1-current-partials",
+    "release_id": "rel:desktop-shell-and-oidc-current",
     "passed": true,
     "failures": [],
     "warnings": [],
     "claims": [
       {
-        "claim_id": "clm:repo-certifiability-p1-current-partials",
+        "claim_id": "clm:agent-extension-oidc-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:android-shell-support-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:desktop-filesystem-permissions-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:desktop-packaging-versioning-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:desktop-runtime-extension-default-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:desktop-tabs-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:desktop-window-state-persistence-current",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:mdwrk-desktop-app-shell-current",
         "passed": true,
         "failures": [],
         "checks": {
@@ -25,366 +130,90 @@
     ],
     "evidence": [
       {
-        "evidence_id": "evd:apps-client-components-chassis-workpane-stage-editorpane.test.tsx",
+        "evidence_id": "evd:agent-extension-oidc-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-components-chassis-workpane-workpane.test.tsx",
+        "evidence_id": "evd:android-shell-support-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-components-markdown-workspacemarkdownrenderer.test.tsx",
+        "evidence_id": "evd:desktop-filesystem-permissions-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-hooks-useapp.test.tsx",
+        "evidence_id": "evd:desktop-packaging-versioning-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-hooks-usetabmanager.test.tsx",
+        "evidence_id": "evd:desktop-runtime-extension-default-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-hooks-usetoast.test.tsx",
+        "evidence_id": "evd:desktop-tabs-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-services-oidc.test.ts",
+        "evidence_id": "evd:desktop-window-state-persistence-current",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:apps-client-src-extensions-runtime-extensionruntimeprovider.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-action-rail-actionrailregistry.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-commands-commandregistry.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-extensions-extensionworkspacesurfaces.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-i18n-clienti18nservice.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-i18n-languagepackstudiocontroller.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-markdownprofiles-profileconfig.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-settings-datasettingspanel.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-settings-settingsschemarenderer.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-features-views-viewregistry.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-pwa-versionmanifest.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-src-shell-actionrailhost.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-styles-alignmenttokens.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-styles-chassisfittoscreen.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-styles-componentclassnamepolicy.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-styles-zoombehavior.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-phase7-shell-parity.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-browser-matrix.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-file-file-baseline.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-inline-inline.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-preview-export.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-settings-and-i18n.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-playwright-shell-smoke.spec.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-client-tests-statusbar-contract.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-lander-scripts-validate-syntax-themes.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:lander-static-content-ci-local",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-edit-in-renderer-react-tests-run-smoke-mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-core-tests-commands.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-core-tests-history.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-core-tests-roundtrip.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-core-tests-selection.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-core-tests-transforms.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-react-tests-component.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-editor-markdown-editor-react-tests-keyboard.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-extensions-extension-gemini-agent-tests-run-smoke.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-extensions-extension-language-pack-studio-tests-language-pack-studio-view.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-extensions-extension-manager-tests-extension-manager.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-extensions-extension-runtime-tests-runtime.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-extensions-extension-theme-studio-tests-theme-studio.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-lander-lander-react-tests-run-smoke.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-renderer-markdown-renderer-core-tests-html.test.ts",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-renderer-markdown-renderer-react-tests-component.test.tsx",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:packages-shared-structured-data-tests-run-smoke.mjs",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:ssot-reports-release-snapshot-index.json",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:ssot-reports-spec-coverage-index.json",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:ssot-reports-ssot-graph-export-governance.json",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:tools-governance-validate-certifiability-feature-plan.mjs",
+        "evidence_id": "evd:mdwrk-desktop-app-shell-current",
         "passed": true,
         "failures": []
       }
     ],
     "profiles": [],
     "boundary": {
-      "id": "bnd:repo-certifiability-p1-current-partials",
+      "id": "bnd:desktop-shell-and-oidc-current",
       "profile_ids": [],
       "resolved_feature_ids": [
-        "feat:accessibility-shell-baseline",
-        "feat:client-common",
-        "feat:client-diagnostics",
-        "feat:desktop-folder-mounting",
-        "feat:desktop-preload-host-api",
-        "feat:edit-in-renderer-profile-contract",
-        "feat:editor-toolbar-active-state-display",
-        "feat:editor-toolbar-disabled-state-display",
-        "feat:editor-toolbar-divider-grouping",
-        "feat:editor-toolbar-hidden-button-preference",
-        "feat:editor-toolbar-overflow-scroll",
-        "feat:editor-toolbar-responsive-placement",
-        "feat:editor-toolbar-split-view-eligibility",
-        "feat:host-capability-adapter",
-        "feat:lander-aeo-appended-answer-blocks",
-        "feat:lander-aieo-crawlable-text-semantic-index",
-        "feat:lander-aieo-json-ld-structured-data",
-        "feat:lander-article-crawlability-internal-links",
-        "feat:lander-article-excerpt-embedded-metadata",
-        "feat:lander-article-metadata-ci-gate",
-        "feat:lander-article-metadata-schema-validation",
-        "feat:lander-article-related-link-copy",
-        "feat:lander-blog-article-guide-standardization",
-        "feat:lander-docs-answer-section-standardization",
-        "feat:lander-entity-mdwrk-brand-normalization",
-        "feat:lander-international-crawler-safe-rendering",
-        "feat:lander-international-hreflang-metadata",
-        "feat:lander-international-locale-routes",
-        "feat:lander-international-locale-switcher",
-        "feat:lander-international-no-automatic-locale-redirects",
-        "feat:lander-international-sitemap-alternates",
-        "feat:lander-metadata-favicon-logo-fallback",
-        "feat:lander-seo-comparison-pages",
-        "feat:lander-seo-demand-cluster-canonical-pages",
-        "feat:mdwrk-shell-fixed-fit-screen",
-        "feat:native-filesystem-shell-behavior",
-        "feat:preview-export-artifact-generation",
-        "feat:preview-export-profile-disclosure",
-        "feat:preview-link-cross-file-hash-scroll",
-        "feat:preview-link-export-rewrite",
-        "feat:preview-link-external-pass-through",
-        "feat:preview-link-internal-file-navigation",
-        "feat:preview-link-same-document-hash-scroll",
-        "feat:preview-link-unsafe-url-policy",
-        "feat:profile-boundary-resolution",
-        "feat:uix-breakpoint-token-contract",
-        "feat:uix-responsive-layout-matrix",
-        "feat:workspace-open-tabs-persistence",
-        "feat:workspace-persistence"
+        "feat:agent-extension-oidc",
+        "feat:android-shell-support",
+        "feat:desktop-filesystem-permissions",
+        "feat:desktop-packaging-versioning",
+        "feat:desktop-runtime-extension-default",
+        "feat:desktop-tabs",
+        "feat:desktop-window-state-persistence",
+        "feat:mdwrk-desktop-app-shell"
       ]
     },
     "summary": {
-      "boundary_id": "bnd:repo-certifiability-p1-current-partials",
-      "boundary_feature_count": 49,
+      "boundary_id": "bnd:desktop-shell-and-oidc-current",
+      "boundary_feature_count": 8,
       "boundary_profile_count": 0,
-      "release_claim_count": 1,
-      "release_evidence_count": 55
+      "release_claim_count": 8,
+      "release_evidence_count": 8
     }
   },
   "boundary_scope": {
-    "boundary_id": "bnd:repo-certifiability-p1-current-partials",
+    "boundary_id": "bnd:desktop-shell-and-oidc-current",
     "profile_ids": [],
     "feature_ids": []
   },
   "summary": {
     "counts": {
-      "features": 312,
-      "profiles": 5,
-      "tests": 58,
-      "claims": 22,
-      "evidence": 57,
+      "features": 325,
+      "profiles": 6,
+      "tests": 88,
+      "claims": 57,
+      "evidence": 85,
       "issues": 3,
       "risks": 0,
-      "boundaries": 7,
-      "releases": 4,
+      "boundaries": 17,
+      "releases": 5,
       "adrs": 72,
       "specs": 90
     },
     "profile_status": {
-      "passing": 5,
+      "passing": 6,
       "failing": 0,
       "draft": 0
     }

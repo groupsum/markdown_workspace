@@ -3,6 +3,8 @@ import type { MarkdownWorkspaceExtension } from "@mdwrk/extension-host";
 import type { BundledExtensionCatalogEntry } from "@mdwrk/extension-runtime";
 import {
   GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID,
+  GEMINI_AGENT_COMMAND_CONNECT_OIDC_ID,
+  GEMINI_AGENT_COMMAND_DISCONNECT_OIDC_ID,
   GEMINI_AGENT_COMMAND_OPEN_ID,
   GEMINI_AGENT_COMMAND_REPLACE_DOCUMENT_WITH_DRAFT_ID,
   GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID,
@@ -35,6 +37,7 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             context,
             provider,
             formatLabel: context.host.i18n.format,
+            oidc: options.oidc,
           });
 
           context.registerService(GEMINI_AGENT_SERVICE_TOKEN, service);
@@ -47,6 +50,29 @@ export function createGeminiAgentBundledEntry(options: GeminiAgentEntryOptions =
             keywords: ["gemini", "agent", "assistant"],
             execute: async () => {
               await context.host.views.open(GEMINI_AGENT_VIEW_ID);
+            },
+          });
+
+          context.registerCommand({
+            id: GEMINI_AGENT_COMMAND_CONNECT_OIDC_ID,
+            title: { defaultMessage: "Connect Gemini OIDC" },
+            description: { defaultMessage: "Start agent-scoped OIDC sign-in for the Gemini extension." },
+            icon: { kind: "lucide", name: "ShieldCheck" },
+            keywords: ["gemini", "oidc", "connect", "auth"],
+            execute: async () => {
+              const settings = await service.loadSettings();
+              await options.oidc?.connect(settings.oidcProvider);
+            },
+          });
+
+          context.registerCommand({
+            id: GEMINI_AGENT_COMMAND_DISCONNECT_OIDC_ID,
+            title: { defaultMessage: "Disconnect Gemini OIDC" },
+            description: { defaultMessage: "Remove the agent-scoped OIDC credential used by the Gemini extension." },
+            icon: { kind: "lucide", name: "ShieldOff" },
+            keywords: ["gemini", "oidc", "disconnect", "auth"],
+            execute: async () => {
+              await options.oidc?.disconnect();
             },
           });
 

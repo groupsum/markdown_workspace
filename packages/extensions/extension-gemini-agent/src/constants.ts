@@ -8,6 +8,8 @@ export const GEMINI_AGENT_RAIL_ID = `${GEMINI_AGENT_EXTENSION_ID}.rail`;
 export const GEMINI_AGENT_SERVICE_TOKEN = `${GEMINI_AGENT_EXTENSION_ID}.service`;
 
 export const GEMINI_AGENT_COMMAND_OPEN_ID = `${GEMINI_AGENT_EXTENSION_ID}.open`;
+export const GEMINI_AGENT_COMMAND_CONNECT_OIDC_ID = `${GEMINI_AGENT_EXTENSION_ID}.connect-oidc`;
+export const GEMINI_AGENT_COMMAND_DISCONNECT_OIDC_ID = `${GEMINI_AGENT_EXTENSION_ID}.disconnect-oidc`;
 export const GEMINI_AGENT_COMMAND_SUMMARIZE_FILE_ID = `${GEMINI_AGENT_EXTENSION_ID}.summarize-current-file`;
 export const GEMINI_AGENT_COMMAND_REWRITE_SELECTION_ID = `${GEMINI_AGENT_EXTENSION_ID}.rewrite-selection`;
 export const GEMINI_AGENT_COMMAND_APPLY_DRAFT_TO_SELECTION_ID = `${GEMINI_AGENT_EXTENSION_ID}.apply-draft-to-selection`;
@@ -21,6 +23,7 @@ export const GEMINI_AGENT_SETTING_ENDPOINT = "endpoint" as const;
 export const GEMINI_AGENT_SETTING_MODEL = "model" as const;
 export const GEMINI_AGENT_SETTING_AUTH_MODE = "authMode" as const;
 export const GEMINI_AGENT_SETTING_API_KEY = "apiKey" as const;
+export const GEMINI_AGENT_SETTING_OIDC_PROVIDER = "oidcProvider" as const;
 export const GEMINI_AGENT_SETTING_SYSTEM_PROMPT = "systemPrompt" as const;
 export const GEMINI_AGENT_SETTING_TEMPERATURE = "temperature" as const;
 export const GEMINI_AGENT_SETTING_TIMEOUT_MS = "requestTimeoutMs" as const;
@@ -33,6 +36,7 @@ export const GEMINI_AGENT_DEFAULT_SETTINGS: GeminiAgentResolvedSettings = {
   model: "gemini-2.5-flash",
   authMode: "api-key",
   apiKey: "",
+  oidcProvider: "github",
   systemPrompt: "You are an expert markdown copilot. Preserve markdown structure unless the user explicitly asks for a format change.",
   temperature: 0.2,
   requestTimeoutMs: 30000,

@@ -2,6 +2,13 @@ import { app, BrowserWindow, Menu, dialog, ipcMain } from 'electron';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createDesktopAccessPolicy } from './accessPolicy.js';
+import {
+  DEFAULT_DESKTOP_WINDOW_STATE,
+  normalizeDesktopWindowState,
+  serializeDesktopWindowState,
+  type DesktopWindowState,
+} from './windowState.js';
 
 type ExternalMarkdownFile = {
   path: string;
@@ -27,6 +34,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const preloadPath = path.join(__dirname, 'preload.js');
 const isDev = Boolean(process.env.MDWRK_CLIENT_DEV_URL);
+const windowStatePath = path.join(app.getPath('userData'), 'desktop-window-state.json');
+const accessPolicy = createDesktopAccessPolicy();
 
 function getClientDistDir(): string {
   return app.isPackaged
@@ -55,8 +64,9 @@ async function getClientIndexPath(): Promise<string> {
   return path.join(clientDistDir, 'index.html');
 }
 
-let mainWindow: BrowserWindow | null = null;
+let mainWindow: any | null = null;
 let pendingOpenPaths: string[] = [];
+let pendingWindowStateWrite: NodeJS.Timeout | null = null;
 
 function isMarkdownPath(candidate: string): boolean {
   const ext = path.extname(candidate).toLowerCase();
@@ -113,6 +123,7 @@ async function pathExists(candidate: string): Promise<boolean> {
 
 async function readMarkdownFiles(pathsToRead: readonly string[]): Promise<ExternalMarkdownFile[]> {
   const uniquePaths = await resolveMarkdownPaths(pathsToRead);
+  uniquePaths.forEach((filePath) => accessPolicy.registerFilePath(filePath));
   return Promise.all(uniquePaths.map(async (filePath) => ({
     path: filePath,
     name: path.basename(filePath),
@@ -170,6 +181,7 @@ async function collectWorkspaceEntries(rootPath: string): Promise<DesktopWorkspa
 
 async function readMarkdownWorkspace(rootPath: string): Promise<DesktopWorkspaceSnapshot> {
   const normalizedRootPath = path.resolve(rootPath);
+  accessPolicy.registerProjectRoot(normalizedRootPath);
   return {
     rootPath: normalizedRootPath,
     name: path.basename(normalizedRootPath),
@@ -250,6 +262,60 @@ async function pickProjectDirectory(): Promise<DesktopWorkspaceSnapshot | null> 
   return readMarkdownWorkspace(result.filePaths[0]);
 }
 
+async function readStoredWindowState(): Promise<DesktopWindowState> {
+  try {
+    const raw = await fs.readFile(windowStatePath, 'utf8');
+    return normalizeDesktopWindowState(JSON.parse(raw) as Record<string, unknown>);
+  } catch {
+    return DEFAULT_DESKTOP_WINDOW_STATE;
+  }
+}
+
+async function writeWindowState(nextState: DesktopWindowState): Promise<void> {
+  await fs.mkdir(path.dirname(windowStatePath), { recursive: true });
+  await fs.writeFile(windowStatePath, serializeDesktopWindowState(nextState), 'utf8');
+}
+
+function scheduleWindowStatePersist(window: any): void {
+  if (pendingWindowStateWrite) {
+    clearTimeout(pendingWindowStateWrite);
+  }
+  pendingWindowStateWrite = setTimeout(() => {
+    const bounds = window.getBounds();
+    const state = normalizeDesktopWindowState({
+      ...bounds,
+      isMaximized: window.isMaximized(),
+    });
+    void writeWindowState(state);
+  }, 150);
+}
+
+function registerProjectRoot(rootPath: string): string {
+  const normalizedRootPath = path.resolve(rootPath);
+  accessPolicy.registerProjectRoot(normalizedRootPath);
+  return normalizedRootPath;
+}
+
+function assertFilesystemPathAllowed(candidatePath: string, operation: string): string {
+  return accessPolicy.assertAllowed(candidatePath, operation);
+}
+
+function assertFilesystemMoveAllowed(sourcePath: string, targetFolderPath: string): { sourcePath: string; targetFolderPath: string } {
+  return {
+    sourcePath: assertFilesystemPathAllowed(sourcePath, 'move source'),
+    targetFolderPath: assertFilesystemPathAllowed(targetFolderPath, 'move target'),
+  };
+}
+
+function getDesktopShellInfo() {
+  return {
+    productName: app.getName(),
+    version: app.getVersion(),
+    isPackaged: app.isPackaged,
+    platform: process.platform,
+  };
+}
+
 function buildMenu(): void {
   const menu = Menu.buildFromTemplate([
     {
@@ -310,9 +376,12 @@ function buildMenu(): void {
 }
 
 async function createWindow(): Promise<void> {
+  const storedWindowState = await readStoredWindowState();
   mainWindow = new BrowserWindow({
-    width: 1600,
-    height: 1024,
+    width: storedWindowState.width,
+    height: storedWindowState.height,
+    ...(storedWindowState.x !== undefined ? { x: storedWindowState.x } : {}),
+    ...(storedWindowState.y !== undefined ? { y: storedWindowState.y } : {}),
     minWidth: 1100,
     minHeight: 760,
     autoHideMenuBar: false,
@@ -331,6 +400,22 @@ async function createWindow(): Promise<void> {
   } else {
     await mainWindow.loadFile(await getClientIndexPath());
   }
+
+  if (storedWindowState.isMaximized) {
+    mainWindow.maximize();
+  }
+
+  mainWindow.on('resize', () => {
+    if (mainWindow) {
+      scheduleWindowStatePersist(mainWindow);
+    }
+  });
+
+  mainWindow.on('move', () => {
+    if (mainWindow) {
+      scheduleWindowStatePersist(mainWindow);
+    }
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -377,11 +462,14 @@ ipcMain.handle('desktop:save-markdown-file', async (_event, payload: { path: str
     throw new Error('A target path is required to save Markdown content.');
   }
 
-  await fs.writeFile(payload.path, payload.content, 'utf8');
-  return { path: payload.path };
+  const allowedPath = assertFilesystemPathAllowed(payload.path, 'save markdown file');
+  accessPolicy.registerFilePath(allowedPath);
+  await fs.writeFile(allowedPath, payload.content, 'utf8');
+  return { path: allowedPath };
 });
 
 ipcMain.handle('desktop:get-desktop-path', async () => app.getPath('desktop'));
+ipcMain.handle('desktop:get-shell-info', async () => getDesktopShellInfo());
 
 ipcMain.handle('desktop:open-project-directory', async () => pickProjectDirectory());
 
@@ -390,7 +478,7 @@ ipcMain.handle('desktop:read-project-directory', async (_event, payload: { rootP
     throw new Error('A rootPath is required to read a desktop workspace.');
   }
 
-  return readMarkdownWorkspace(payload.rootPath);
+  return readMarkdownWorkspace(registerProjectRoot(payload.rootPath));
 });
 
 ipcMain.handle('desktop:create-project-directory', async (_event, payload: { name: string; parentPath?: string }) => {
@@ -400,13 +488,14 @@ ipcMain.handle('desktop:create-project-directory', async (_event, payload: { nam
   }
 
   const parentPath = path.resolve(payload.parentPath?.trim() || app.getPath('desktop'));
+  accessPolicy.registerProjectRoot(parentPath);
   const rootPath = path.join(parentPath, rawName);
   if (await pathExists(rootPath)) {
     throw new Error(`The folder "${rawName}" already exists.`);
   }
 
   await fs.mkdir(rootPath, { recursive: true });
-  return readMarkdownWorkspace(rootPath);
+  return readMarkdownWorkspace(registerProjectRoot(rootPath));
 });
 
 ipcMain.handle('desktop:create-directory', async (_event, payload: { path: string }) => {
@@ -414,8 +503,9 @@ ipcMain.handle('desktop:create-directory', async (_event, payload: { path: strin
     throw new Error('A path is required to create a directory.');
   }
 
-  await fs.mkdir(payload.path, { recursive: true });
-  return { path: payload.path };
+  const allowedPath = assertFilesystemPathAllowed(payload.path, 'create directory');
+  await fs.mkdir(allowedPath, { recursive: true });
+  return { path: allowedPath };
 });
 
 ipcMain.handle('desktop:rename-path', async (_event, payload: { path: string; nextPath: string }) => {
@@ -423,8 +513,10 @@ ipcMain.handle('desktop:rename-path', async (_event, payload: { path: string; ne
     throw new Error('Both source and destination paths are required to rename a filesystem node.');
   }
 
-  await fs.rename(payload.path, payload.nextPath);
-  return { path: payload.nextPath };
+  const sourcePath = assertFilesystemPathAllowed(payload.path, 'rename source');
+  const nextPath = assertFilesystemPathAllowed(payload.nextPath, 'rename target');
+  await fs.rename(sourcePath, nextPath);
+  return { path: nextPath };
 });
 
 ipcMain.handle('desktop:delete-path', async (_event, payload: { path: string }) => {
@@ -432,8 +524,9 @@ ipcMain.handle('desktop:delete-path', async (_event, payload: { path: string }) 
     throw new Error('A path is required to delete a filesystem node.');
   }
 
-  await fs.rm(payload.path, { recursive: true, force: false });
-  return { path: payload.path };
+  const allowedPath = assertFilesystemPathAllowed(payload.path, 'delete path');
+  await fs.rm(allowedPath, { recursive: true, force: false });
+  return { path: allowedPath };
 });
 
 ipcMain.handle('desktop:move-path', async (_event, payload: { path: string; targetFolderPath: string }) => {
@@ -441,8 +534,9 @@ ipcMain.handle('desktop:move-path', async (_event, payload: { path: string; targ
     throw new Error('Both a source path and target folder path are required to move a filesystem node.');
   }
 
-  const nextPath = path.join(payload.targetFolderPath, path.basename(payload.path));
-  await fs.rename(payload.path, nextPath);
+  const { sourcePath, targetFolderPath } = assertFilesystemMoveAllowed(payload.path, payload.targetFolderPath);
+  const nextPath = path.join(targetFolderPath, path.basename(sourcePath));
+  await fs.rename(sourcePath, nextPath);
   return { path: nextPath };
 });
 

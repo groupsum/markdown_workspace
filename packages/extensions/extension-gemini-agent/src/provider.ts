@@ -70,6 +70,9 @@ export function createGeminiTextProvider(options: GeminiProviderCreateOptions = 
           method: "POST",
           headers: {
             "content-type": "application/json",
+            ...(request.settings.authMode === "oidc" && request.settings.oidcAccessToken
+              ? { Authorization: `Bearer ${request.settings.oidcAccessToken}` }
+              : {}),
           },
           body: JSON.stringify(buildGeminiGenerateContentBody(request)),
           signal: controller?.signal,

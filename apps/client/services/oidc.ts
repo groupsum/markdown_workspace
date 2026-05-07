@@ -1,8 +1,9 @@
-import { OidcCredential, OidcProviderId } from '../types';
+import { OidcCredential, OidcProviderId, OidcTokenBoundary } from '../types';
 
 interface OidcPendingSession {
   projectId: string;
   provider: OidcProviderId;
+  tokenBoundary: OidcTokenBoundary;
   username: string;
   state: string;
   verifier?: string;
@@ -22,6 +23,7 @@ interface OidcCallbackResult {
 
 const OIDC_POPUP_EVENT_TYPE = 'lattice:oidc:callback';
 export const GIT_OPS_OIDC_TOKEN_BOUNDARY = 'git-ops' as const;
+export const AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY = 'agent' as const;
 
 export interface OidcProviderAdapter {
   id: OidcProviderId;
@@ -159,6 +161,12 @@ const OIDC_PENDING_TTL_MS = 1000 * 60 * 10;
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
+const getOidcCredentialStorageKey = (projectId: string, tokenBoundary: OidcTokenBoundary): string =>
+  `${OIDC_CRED_PREFIX}:${tokenBoundary}:${projectId}`;
+
+const getLegacyGitCredentialStorageKey = (projectId: string): string =>
+  `${OIDC_CRED_PREFIX}:${projectId}`;
+
 const deriveLocalKey = async (): Promise<CryptoKey> => {
   const originSalt = `${window.location.origin}:oidc:v1`;
   const baseKey = await crypto.subtle.importKey('raw', encoder.encode(originSalt), 'PBKDF2', false, ['deriveKey']);
@@ -188,16 +196,24 @@ const normalizeOidcCredential = (credential: OidcCredential): OidcCredential => 
 export const storeOidcCredential = async (projectId: string, credential: OidcCredential): Promise<void> => {
   const key = await deriveLocalKey();
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoder.encode(JSON.stringify(normalizeOidcCredential(credential))));
+  const normalizedCredential = normalizeOidcCredential(credential);
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoder.encode(JSON.stringify(normalizedCredential)));
   const payload = {
     iv: Array.from(iv),
     data: Array.from(new Uint8Array(ciphertext))
   };
-  localStorage.setItem(`${OIDC_CRED_PREFIX}:${projectId}`, JSON.stringify(payload));
+  localStorage.setItem(getOidcCredentialStorageKey(projectId, normalizedCredential.tokenBoundary), JSON.stringify(payload));
+  if (normalizedCredential.tokenBoundary === GIT_OPS_OIDC_TOKEN_BOUNDARY) {
+    localStorage.removeItem(getLegacyGitCredentialStorageKey(projectId));
+  }
 };
 
-export const readOidcCredential = async (projectId: string): Promise<OidcCredential | null> => {
-  const raw = localStorage.getItem(`${OIDC_CRED_PREFIX}:${projectId}`);
+export const readOidcCredential = async (
+  projectId: string,
+  tokenBoundary: OidcTokenBoundary = GIT_OPS_OIDC_TOKEN_BOUNDARY,
+): Promise<OidcCredential | null> => {
+  const raw = localStorage.getItem(getOidcCredentialStorageKey(projectId, tokenBoundary))
+    ?? (tokenBoundary === GIT_OPS_OIDC_TOKEN_BOUNDARY ? localStorage.getItem(getLegacyGitCredentialStorageKey(projectId)) : null);
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as { iv: number[]; data: number[] };
@@ -208,20 +224,29 @@ export const readOidcCredential = async (projectId: string): Promise<OidcCredent
       new Uint8Array(parsed.data)
     );
     const credential = normalizeOidcCredential(JSON.parse(decoder.decode(plaintext)) as OidcCredential);
+    if (credential.tokenBoundary !== tokenBoundary) {
+      return null;
+    }
     if (credential.expiresAt && credential.expiresAt < Date.now()) {
-      localStorage.removeItem(`${OIDC_CRED_PREFIX}:${projectId}`);
+      clearOidcCredential(projectId, tokenBoundary);
       return null;
     }
     return credential;
   } catch (error) {
     console.warn('[oidc] Failed to decrypt OIDC credential', error);
-    localStorage.removeItem(`${OIDC_CRED_PREFIX}:${projectId}`);
+    clearOidcCredential(projectId, tokenBoundary);
     return null;
   }
 };
 
-export const clearOidcCredential = (projectId: string) => {
-  localStorage.removeItem(`${OIDC_CRED_PREFIX}:${projectId}`);
+export const clearOidcCredential = (
+  projectId: string,
+  tokenBoundary: OidcTokenBoundary = GIT_OPS_OIDC_TOKEN_BOUNDARY,
+) => {
+  localStorage.removeItem(getOidcCredentialStorageKey(projectId, tokenBoundary));
+  if (tokenBoundary === GIT_OPS_OIDC_TOKEN_BOUNDARY) {
+    localStorage.removeItem(getLegacyGitCredentialStorageKey(projectId));
+  }
 };
 
 export const createPkceSession = async () => {
@@ -293,7 +318,12 @@ const getOidcFlow = (): 'code' | 'implicit' => {
   return 'implicit';
 };
 
-export const beginOidcSignIn = async (args: { projectId: string; provider: OidcProviderId; username: string }) => {
+export const beginOidcSignIn = async (args: {
+  projectId: string;
+  provider: OidcProviderId;
+  username: string;
+  tokenBoundary?: OidcTokenBoundary;
+}) => {
   const clientId = import.meta.env.VITE_OIDC_CLIENT_ID?.trim();
   if (!clientId) throw new Error('OIDC client id is not configured.');
   const adapter = getOidcAdapter(args.provider);
@@ -317,6 +347,7 @@ export const beginOidcSignIn = async (args: { projectId: string; provider: OidcP
   const pendingSession: OidcPendingSession = {
     projectId: args.projectId,
     provider: args.provider,
+    tokenBoundary: args.tokenBoundary ?? GIT_OPS_OIDC_TOKEN_BOUNDARY,
     username: args.username || 'user',
     state,
     verifier,
@@ -395,7 +426,7 @@ const buildCredential = async (pending: OidcPendingSession, tokenPayload: OidcTo
 
   return {
     provider: pending.provider,
-    tokenBoundary: GIT_OPS_OIDC_TOKEN_BOUNDARY,
+    tokenBoundary: pending.tokenBoundary ?? GIT_OPS_OIDC_TOKEN_BOUNDARY,
     scopes: adapter?.defaultScopes ?? [],
     username,
     subject,

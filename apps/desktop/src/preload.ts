@@ -20,6 +20,13 @@ type DesktopWorkspaceSnapshot = {
   entries: DesktopWorkspaceEntry[];
 };
 
+type DesktopShellInfo = {
+  productName: string;
+  version: string;
+  isPackaged: boolean;
+  platform: string;
+};
+
 const pendingOpenMarkdownFiles: ExternalMarkdownFile[] = [];
 const openMarkdownListeners = new Set<(files: ExternalMarkdownFile[]) => void>();
 
@@ -65,6 +72,7 @@ const desktopShell = {
   saveMarkdownFile: (payload: { path: string; content: string }): Promise<{ path: string }> =>
     ipcRenderer.invoke('desktop:save-markdown-file', payload),
   getDesktopPath: (): Promise<string> => ipcRenderer.invoke('desktop:get-desktop-path'),
+  getShellInfo: (): Promise<DesktopShellInfo> => ipcRenderer.invoke('desktop:get-shell-info'),
   openProjectDirectory: (): Promise<DesktopWorkspaceSnapshot | null> => ipcRenderer.invoke('desktop:open-project-directory'),
   readProjectDirectory: (payload: { rootPath: string }): Promise<DesktopWorkspaceSnapshot> =>
     ipcRenderer.invoke('desktop:read-project-directory', payload),

@@ -6,6 +6,7 @@ import { createLanguagePackStudioBundledEntry } from '@mdwrk/extension-language-
 import { createExtensionManagerBundledEntry } from '@mdwrk/extension-manager';
 import { createGeminiAgentBundledEntry } from '@mdwrk/extension-gemini-agent';
 import { createThemeStudioBundledEntry } from '@mdwrk/extension-theme-studio';
+import { AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY, clearOidcCredential, readOidcCredential } from '../../../services/oidc';
 import { useClientExtensionHost, useClientRuntimeServices, useClientRuntimeSnapshot } from '../../app/runtime/ClientRuntimeContext';
 import { createLanguagePackStudioController } from '../../features/i18n/languagePackStudioController';
 import { loadWorkspaceLanguageTokenCatalog } from '../../features/i18n/languageTokenCatalog';
@@ -16,6 +17,7 @@ import { ExtensionRuntimeDiagnosticsPanel } from './ExtensionRuntimeDiagnosticsP
 import { ExtensionRuntimeContextProvider } from './ExtensionRuntimeContext';
 import { createClientExtensionRegistrationSink } from './createClientExtensionRegistrationSink';
 import { createClientExtensionTrustPolicy } from './extensionTrustPolicy';
+import { resolveBundledExtensionEnabledByDefault } from './bundledExtensionDefaults';
 import { shouldRegisterRuntimeSmokeExtension } from './runtimeSmokeGate';
 
 export interface ExtensionRuntimeProviderProps extends React.PropsWithChildren {}
@@ -119,11 +121,49 @@ export const ExtensionRuntimeProvider: React.FC<ExtensionRuntimeProviderProps> =
     }),
     createExtensionManagerBundledEntry({ runtime }),
     createLanguagePackStudioBundledEntry({ controller: languagePackController }),
-    createGeminiAgentBundledEntry(),
+    createGeminiAgentBundledEntry({
+      oidc: {
+        connect: async (provider) => {
+          await snapshotRef.current.app.actions.handleAgentOidcSignIn(provider);
+        },
+        disconnect: async () => {
+          const projectId = snapshotRef.current.app.state.activeProjectId;
+          if (!projectId) {
+            snapshotRef.current.app.actions.addToast('SELECT A PROJECT BEFORE DISCONNECTING AGENT OIDC', 'warning');
+            return;
+          }
+          clearOidcCredential(projectId, AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY);
+          snapshotRef.current.app.actions.addToast('AGENT OIDC DISCONNECTED', 'info');
+        },
+        readCredential: async (provider) => {
+          const projectId = snapshotRef.current.app.state.activeProjectId;
+          if (!projectId) {
+            return null;
+          }
+          const credential = await readOidcCredential(projectId, AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY);
+          if (!credential || credential.provider !== provider || credential.tokenBoundary !== AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY) {
+            return null;
+          }
+          return {
+            provider: credential.provider,
+            tokenBoundary: AGENT_EXTENSION_OIDC_TOKEN_BOUNDARY,
+            subject: credential.subject,
+            username: credential.username,
+            accessToken: credential.accessToken,
+          };
+        },
+      },
+    }),
       createThemeStudioBundledEntry(),
     ];
 
-    return entries;
+    return entries.map((entry) => ({
+      ...entry,
+      manifest: {
+        ...entry.manifest,
+        enabledByDefault: resolveBundledExtensionEnabledByDefault(entry.manifest.id, import.meta.env.MODE),
+      },
+    }));
   }, [languagePackController, runtime, services.views, t]);
 
   React.useEffect(() => {

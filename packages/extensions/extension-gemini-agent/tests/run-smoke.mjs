@@ -26,6 +26,7 @@ const diagnostics = [];
 let selectionReplacedWith = null;
 let documentReplacedWith = null;
 let lastProviderRequest = null;
+let lastFetchRequest = null;
 
 const host = {
   apiVersion: '1.0.0',
@@ -101,6 +102,20 @@ const host = {
   },
 };
 
+const oidcBridge = {
+  async connect() {},
+  async disconnect() {},
+  async readCredential(provider) {
+    return {
+      provider,
+      tokenBoundary: 'agent',
+      subject: `${provider}-agent`,
+      username: 'agent-user',
+      accessToken: 'agent-token',
+    };
+  },
+};
+
 const context = {
   extensionId: geminiAgentManifest.id,
   manifest: geminiAgentManifest,
@@ -121,13 +136,14 @@ const context = {
 assert.equal(geminiAgentManifest.id, 'core.gemini-agent');
 assert.ok(geminiAgentManifest.capabilities.includes('network.fetch'));
 assert.ok(geminiAgentManifest.contributions.actionRail.some((item) => item.id === 'core.gemini-agent.rail'));
-const bundledEntry = createGeminiAgentBundledEntry();
+const bundledEntry = createGeminiAgentBundledEntry({ oidc: oidcBridge });
 assert.equal(bundledEntry.activation, 'eager');
 assert.equal(bundledEntry.manifest.id, 'core.gemini-agent');
 
 const resolvedSettings = await readGeminiAgentSettings(config);
 assert.equal(resolvedSettings.model, 'gemini-2.5-flash');
 assert.equal(resolvedSettings.allowWriteBack, false);
+assert.equal(resolvedSettings.oidcProvider, 'github');
 
 const prompt = buildGeminiPrompt('rewrite-selection', 'Tighten the language.', {
   project: { id: 'project', name: 'Project' },
@@ -141,7 +157,9 @@ assert.match(prompt, /Mentioned files/);
 assert.match(prompt, /docs\/guide\.md/);
 
 const provider = createGeminiTextProvider({
-  fetchImpl: async (url, init) => ({
+  fetchImpl: async (url, init) => {
+    lastFetchRequest = { url, init };
+    return ({
     ok: true,
     status: 200,
     statusText: 'OK',
@@ -152,7 +170,8 @@ const provider = createGeminiTextProvider({
       };
     },
     async text() { return ''; },
-  }),
+  });
+  },
 });
 
 const fakeRequest = {
@@ -174,6 +193,19 @@ assert.match(resolveGeminiGenerateContentUrl(fakeRequest), /key=abc123/);
 assert.deepEqual(buildGeminiGenerateContentBody(fakeRequest).generationConfig, { temperature: 0.2 });
 assert.equal(extractGeminiText({ candidates: [{ content: { parts: [{ text: 'Answer' }] } }] }), 'Answer');
 
+const oidcRequest = {
+  ...fakeRequest,
+  settings: {
+    ...resolvedSettings,
+    authMode: 'oidc',
+    oidcProvider: 'github',
+    oidcAccessToken: 'agent-token',
+  },
+};
+
+await provider.generate(oidcRequest);
+assert.equal(lastFetchRequest.init.headers.Authorization, 'Bearer agent-token');
+
 const service = createGeminiAgentService({
   context,
   provider: {
@@ -184,6 +216,7 @@ const service = createGeminiAgentService({
     },
   },
   formatLabel: (label) => typeof label === 'string' ? label : label.defaultMessage,
+  oidc: oidcBridge,
 });
 
 await config.set('apiKey', 'secret-key');
@@ -195,6 +228,13 @@ await service.runIntent('custom-prompt', 'Compare this with @docs/guide.md', { m
 assert.equal(lastProviderRequest.mentions?.length, 1);
 assert.equal(lastProviderRequest.mentions?.[0]?.path, 'docs/guide.md');
 assert.match(lastProviderRequest.prompt, /Mention payload/);
+
+await config.set('authMode', 'oidc');
+await config.set('apiKey', '');
+await service.runIntent('custom-prompt', 'Run with scoped OIDC');
+assert.equal(lastProviderRequest.settings.authMode, 'oidc');
+assert.equal(lastProviderRequest.settings.oidcProvider, 'github');
+assert.equal(lastProviderRequest.settings.oidcAccessToken, 'agent-token');
 
 const blocked = await service.applyDraft('selection');
 assert.equal(blocked, false);
