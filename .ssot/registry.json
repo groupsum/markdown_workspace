@@ -5992,7 +5992,8 @@
       },
       "spec_ids": [
         "spc:2069",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077"
       ],
       "claim_ids": [
         "clm:cross-cutting",
@@ -6275,7 +6276,9 @@
       },
       "spec_ids": [
         "spc:2071",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077",
+        "spc:2078"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -6304,7 +6307,10 @@
       },
       "spec_ids": [
         "spc:2071",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077",
+        "spc:2078",
+        "spc:2079"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -7931,7 +7937,8 @@
       },
       "spec_ids": [
         "spc:2069",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -7959,7 +7966,8 @@
       },
       "spec_ids": [
         "spc:2069",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -7987,7 +7995,8 @@
       },
       "spec_ids": [
         "spc:2069",
-        "spc:2072"
+        "spc:2072",
+        "spc:2077"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -8128,7 +8137,8 @@
       "spec_ids": [
         "spc:2069",
         "spc:2071",
-        "spc:2074"
+        "spc:2074",
+        "spc:2078"
       ],
       "claim_ids": [
         "clm:lander-international-seo",
@@ -8158,7 +8168,8 @@
       "spec_ids": [
         "spc:2069",
         "spc:2071",
-        "spc:2075"
+        "spc:2075",
+        "spc:2078"
       ],
       "claim_ids": [
         "clm:lander-international-seo",
@@ -8188,7 +8199,8 @@
       "spec_ids": [
         "spc:2069",
         "spc:2071",
-        "spc:2075"
+        "spc:2075",
+        "spc:2078"
       ],
       "claim_ids": [
         "clm:lander-international-seo",
@@ -8218,7 +8230,8 @@
       "spec_ids": [
         "spc:2069",
         "spc:2071",
-        "spc:2076"
+        "spc:2076",
+        "spc:2078"
       ],
       "claim_ids": [
         "clm:lander-international-seo",
@@ -9746,6 +9759,226 @@
         "tst:packages-renderer-markdown-renderer-core-tests-optional-profiles.mjs"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:schemaorg-vocabulary-baseline",
+      "title": "Schema.org vocabulary baseline",
+      "description": "Govern stable Schema.org vocabulary selection, supported terms, release-baseline handling, and standards authority for MdWrk public lander structured data.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2077"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:json-ld-supported-type-gate",
+      "title": "JSON-LD supported type gate",
+      "description": "Block unsupported Schema.org types, pending terms, and meta terms unless they are explicitly governed by MdWrk structured-data SPECs.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2077"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:json-ld-stable-entity-ids",
+      "title": "JSON-LD stable entity IDs",
+      "description": "Validate canonical mdwrk.com-derived JSON-LD @id values and durable fragment conventions for page and site graph entities.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2077"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs",
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:bcp47-language-metadata-normalization",
+      "title": "BCP 47 language metadata normalization",
+      "description": "Normalize locale frontmatter, HTML lang, hreflang, sitemap alternates, content registry locale fields, and JSON-LD inLanguage from one BCP 47 language tag value.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2078"
+      ],
+      "claim_ids": [
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:iso8601-temporal-metadata-normalization",
+      "title": "ISO 8601 temporal metadata normalization",
+      "description": "Validate ISO 8601 date, date-time, and duration values across MdWrk public lander metadata, sitemap lastmod fields, content registry timestamps, and JSON-LD temporal properties.",
+      "implementation_status": "partial",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2078"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-action-entrypoint-oob",
+      "title": "Structured Action EntryPoint out of bounds",
+      "description": "Keep Schema.org Action, potentialAction, and EntryPoint JSON-LD out of emitted public lander structured data until real public targets are governed and tested.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "out_of_bounds",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2079"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:searchaction-public-target-oob",
+      "title": "SearchAction public target out of bounds",
+      "description": "Track Schema.org SearchAction as out of bounds until mdwrk.com has a governed public search URL and passing reachability validation.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "out_of_bounds",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2079"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:rfc6570-entrypoint-urltemplate-validation",
+      "title": "RFC 6570 EntryPoint URL template validation",
+      "description": "Validate Schema.org EntryPoint urlTemplate variables and target route parity when public action targets become governed for MdWrk lander pages.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "future",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2079"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+      ],
+      "requires": []
     }
   ],
   "tests": [
@@ -11208,7 +11441,10 @@
         "feat:json-ld-subscription-paywalled-content",
         "feat:json-ld-vacation-rental",
         "feat:json-ld-vehicle-listing",
-        "feat:json-ld-video"
+        "feat:json-ld-video",
+        "feat:schemaorg-vocabulary-baseline",
+        "feat:json-ld-supported-type-gate",
+        "feat:json-ld-stable-entity-ids"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -11229,7 +11465,8 @@
         "feat:lander-international-sitemap-alternates",
         "feat:lander-international-locale-switcher",
         "feat:lander-international-crawler-safe-rendering",
-        "feat:lander-international-no-automatic-locale-redirects"
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:bcp47-language-metadata-normalization"
       ],
       "claim_ids": [
         "clm:lander-international-seo",
@@ -11260,7 +11497,8 @@
         "feat:lander.structured-data.tech-article",
         "feat:lander.structured-data.video-object",
         "feat:lander.structured-data.web-page",
-        "feat:lander.structured-data.web-site"
+        "feat:lander.structured-data.web-site",
+        "feat:json-ld-stable-entity-ids"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -11491,7 +11729,14 @@
         "feat:lander-aeo-structured-answer-section-parity",
         "feat:lander-aeo-visible-citation-parity",
         "feat:lander-aieo-ai-crawler-policy",
-        "feat:lander-aieo-search-vs-training-crawler-policy"
+        "feat:lander-aieo-search-vs-training-crawler-policy",
+        "feat:schemaorg-vocabulary-baseline",
+        "feat:json-ld-supported-type-gate",
+        "feat:json-ld-stable-entity-ids",
+        "feat:iso8601-temporal-metadata-normalization",
+        "feat:structured-action-entrypoint-oob",
+        "feat:searchaction-public-target-oob",
+        "feat:rfc6570-entrypoint-urltemplate-validation"
       ],
       "claim_ids": [
         "clm:lander-seo-aeo-aieo-discovery",
@@ -12754,7 +12999,8 @@
         "feat:lander-international-sitemap-alternates",
         "feat:lander-international-locale-switcher",
         "feat:lander-international-crawler-safe-rendering",
-        "feat:lander-international-no-automatic-locale-redirects"
+        "feat:lander-international-no-automatic-locale-redirects",
+        "feat:bcp47-language-metadata-normalization"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
@@ -13169,7 +13415,14 @@
         "feat:lander-seo-open-graph-metadata",
         "feat:lander-seo-robots-policy",
         "feat:lander-seo-sitemap-protocol",
-        "feat:lander-seo-x-card-metadata"
+        "feat:lander-seo-x-card-metadata",
+        "feat:schemaorg-vocabulary-baseline",
+        "feat:json-ld-supported-type-gate",
+        "feat:json-ld-stable-entity-ids",
+        "feat:iso8601-temporal-metadata-normalization",
+        "feat:structured-action-entrypoint-oob",
+        "feat:searchaction-public-target-oob",
+        "feat:rfc6570-entrypoint-urltemplate-validation"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
