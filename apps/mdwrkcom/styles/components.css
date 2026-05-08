@@ -116,7 +116,7 @@
 
 .hero-eyebrow-icon {
   @apply ml-2 h-4 w-4;
-  color: #10b981;
+  color: var(--lander-success);
 }
 
 .hero-heading {
@@ -226,7 +226,7 @@
 }
 
 .features-heading-privacy {
-  color: #10b981;
+  color: var(--lander-success);
 }
 
 .features-heading-accent {

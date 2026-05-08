@@ -1,4 +1,4 @@
----
+﻿---
 title: Standalone Modules
 slug: getting-started/standalone-modules
 section: Getting Started
@@ -7,6 +7,7 @@ order: 5
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: MdWrk standalone modules expose the editor, renderer, extension contracts, theme tokens, and installable extension packages as reusable package surfaces.
 ---
 

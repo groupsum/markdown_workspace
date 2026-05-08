@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/"
 title: "MdWrk Features | Local-First Markdown Workspace"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "mdwrk features"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Browse the local-first Markdown workspace surfaces that make MdWrk useful for authors, developers, and package adopters."
 related:
   - "/features/indexeddb-markdown-storage/"

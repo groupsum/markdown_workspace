@@ -1,0 +1,66 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2081"
+number: 2081
+slug: "portable-lander-cache-critical-css-contract"
+title: "Portable Lander Cache And Critical CSS Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This specification defines the reusable cache freshness, validator, fingerprinted asset, and critical CSS delivery contract for portable lander output."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created portable lander cache and critical CSS contract."
+    at: "2026-05-08T03:22:46Z"
+references: []
+body: |-
+  ## Purpose
+
+  This specification defines the reusable cache freshness, validator, fingerprinted asset, and critical CSS delivery contract for portable lander output.
+
+  ## Resource Classes
+
+  Portable lander builds shall classify generated resources as immutable, mutable-revalidate, or no-store.
+
+  Immutable resources are generated subresources whose URL changes when content changes. Immutable resources include fingerprinted CSS, JavaScript, image, font, and static asset files.
+
+  Mutable-revalidate resources are stable URLs whose content can change across builds. Mutable-revalidate resources include route HTML, sitemap and robots artifacts, LLM index artifacts, content registries, and JSON-LD graph artifacts unless a site profile explicitly fingerprints them.
+
+  No-store resources are personalized or sensitive responses. Static public landers should rarely emit this class, but the class is reserved for hosts that need it.
+
+  ## Cache Header Contract
+
+  Immutable resources shall support Cache-Control with public caching, at least 2592000 seconds of max-age, and immutable semantics when the host supports it. The preferred immutable max-age is 31536000 seconds.
+
+  Mutable-revalidate resources shall generally avoid positive max-age. They shall support Cache-Control: no-cache or an equivalent revalidation-required policy.
+
+  Mutable-revalidate resources shall provide ETag and Last-Modified metadata. Immutable resources should also provide ETag and Last-Modified metadata for diagnostics, range support, and host compatibility.
+
+  No-store resources shall use Cache-Control: no-store.
+
+  ## Fingerprinted Assets
+
+  Immutable resources shall use fingerprinted URLs derived from content or build-stable content hashes. Query-string versioning alone is not sufficient for the portable immutable asset contract.
+
+  The lander build shall expose the final fingerprinted URL to HTML emitters and manifest exporters.
+
+  ## Critical CSS Delivery
+
+  Portable lander builds shall support an inline critical CSS artifact containing only first-viewport CSS required to prevent unstyled or unstable initial render.
+
+  Portable lander builds shall support deferred full stylesheet delivery using preload activation or an equivalent non-render-blocking pattern. A noscript stylesheet fallback is required when JavaScript-based activation is used.
+
+  The full stylesheet shall remain available as an immutable fingerprinted asset unless a profile explicitly marks it mutable-revalidate.
+
+  ## Manifest Contract
+
+  Portable lander builds shall be able to emit a machine-readable cache manifest. Each entry shall include path, cache class, content hash or validator hash, last modified timestamp, and intended headers.
+
+  Validation shall fail when a generated file lacks a cache class, when immutable resources are not fingerprinted, when mutable-revalidate resources receive long positive max-age by default, or when required validators are missing.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1060"

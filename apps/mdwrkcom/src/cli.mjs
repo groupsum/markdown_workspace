@@ -42,6 +42,8 @@ const demoUrl = process.env.VITE_DEMO_URL || appUrl;
 const npmRepoUrl = process.env.VITE_NPM_REPO_URL || 'https://www.npmjs.com/org/mdwrk';
 const xProfileUrl = process.env.VITE_X_URL || 'https://x.com/swarmauri';
 const communityUrl = process.env.VITE_COMMUNITY_URL || '#';
+const defaultArticleAuthor = 'CobyCloud';
+const centralTimeZone = 'America/Chicago';
 
 const AI_CRAWLER_POLICY = Object.freeze([
   { userAgent: '*', allow: ['/'], category: 'search-inclusion', purpose: 'general public indexing' },
@@ -478,6 +480,10 @@ const normalizeFrontmatter = (frontmatter) => ({
   contentType: frontmatter.contentType,
   updatedAt: frontmatter.updatedAt,
   publishedAt: frontmatter.publishedAt,
+  author: String(frontmatter.author ?? defaultArticleAuthor).trim() || defaultArticleAuthor,
+  displayAuthor: typeof frontmatter.displayAuthor === 'boolean'
+    ? frontmatter.displayAuthor
+    : !['feature', 'comparison'].includes(frontmatter.contentType),
   featuredImage: frontmatter.featuredImage,
   featuredImageAlt: frontmatter.featuredImageAlt,
   faqs: Object.freeze(frontmatter.faqs ?? buildDefaultFaqs({
@@ -526,6 +532,25 @@ const normalizeStatus = (value) => String(value ?? '').trim().toLowerCase();
 const normalizeIsoDate = (value) => {
   const trimmed = String(value ?? '').trim();
   return /^\d{4}-\d{2}-\d{2}$/.test(trimmed) ? trimmed : null;
+};
+
+const centralTimeOffsetForDate = (year, month, day) => {
+  const reference = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+  const timeZoneName = new Intl.DateTimeFormat('en-US', {
+    timeZone: centralTimeZone,
+    timeZoneName: 'shortOffset',
+  }).formatToParts(reference).find(part => part.type === 'timeZoneName')?.value ?? 'GMT-6';
+  const match = /^GMT([+-])(\d{1,2})(?::?(\d{2}))?$/.exec(timeZoneName);
+  if (!match) return '-06:00';
+  const [, sign, rawHours, rawMinutes = '00'] = match;
+  return `${sign}${rawHours.padStart(2, '0')}:${rawMinutes.padStart(2, '0')}`;
+};
+
+const toCentralIsoDateTime = (value) => {
+  const match = String(value ?? '').trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return undefined;
+  const [, year, month, day] = match;
+  return `${year}-${month}-${day}T00:00:00${centralTimeOffsetForDate(Number(year), Number(month), Number(day))}`;
 };
 
 const toLocalIsoDate = (date = new Date()) => {
@@ -800,6 +825,9 @@ const createStaticEntry = ({
   intent,
   contentType,
   updatedAt,
+  publishedAt,
+  author,
+  displayAuthor,
   featuredImage,
   featuredImageAlt,
   body,
@@ -826,6 +854,9 @@ const createStaticEntry = ({
       intent,
       contentType,
       updatedAt,
+      publishedAt,
+      author,
+      displayAuthor,
       featuredImage,
       featuredImageAlt,
       faqs: faqs ?? buildDefaultFaqs({ title: h1, description, contentType }),
@@ -1024,6 +1055,11 @@ const loadDataDocs = () => collectFiles(dataDocsRoot, file => file.endsWith('.md
         intent,
         contentType,
         updatedAt: frontmatter.date,
+        publishedAt: frontmatter.date,
+        author: frontmatter.author,
+        displayAuthor: typeof frontmatter.displayAuthor === 'boolean'
+          ? frontmatter.displayAuthor
+          : !(isComparison || isFeature),
         body: articleSource,
         html: renderMarkdown(articleSource).html,
         tags,
@@ -1100,6 +1136,8 @@ const createBlogListEntry = ({ slug, title, eyebrow, posts, sourcePath, sourceHa
     intent: `read ${title.toLowerCase()} from MdWrk`,
     contentType: 'update',
     updatedAt: posts[0]?.date || toLocalIsoDate(),
+    publishedAt: posts[0]?.date || toLocalIsoDate(),
+    author: eyebrow ? title : undefined,
     body,
     html: `${eyebrow ? `<div class="blog-list-eyebrow">${escapeHtml(eyebrow)}</div>` : ''}
                   ${renderCardGrid(blogCardItems(posts), 'update')}`,
@@ -1122,6 +1160,8 @@ const createBlogPostEntry = (post) => {
     intent: `read about ${post.title.toLowerCase()}`,
     contentType: 'update',
     updatedAt: post.date,
+    publishedAt: post.date,
+    author: post.author,
     body: articleSource,
     html: renderMarkdown(articleSource).html,
     tags: ['updates'],
@@ -1147,6 +1187,8 @@ const createLegalEntry = (source) => {
     intent: `read ${title.toLowerCase()}`,
     contentType: 'privacy',
     updatedAt: source.frontmatter.date,
+    publishedAt: source.frontmatter.date,
+    author: source.frontmatter.author,
     body,
     tags: ['legal'],
     related: ['/privacy/', '/security/'],
@@ -1461,6 +1503,15 @@ const breadcrumbsFor = (entry, registry) => {
 const jsonLdFor = (entry, registry) => {
   const url = entry.frontmatter.canonical;
   const image = metadataImageFor(entry).src;
+  const authorSlug = slugify(entry.frontmatter.author || defaultArticleAuthor);
+  const authorNode = {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/updates/author/${authorSlug}/#author`,
+    name: entry.frontmatter.author || defaultArticleAuthor,
+    url: `${siteUrl}/updates/author/${authorSlug}/`,
+  };
+  const dateModified = toCentralIsoDateTime(entry.frontmatter.updatedAt);
+  const datePublished = toCentralIsoDateTime(entry.frontmatter.publishedAt || entry.frontmatter.updatedAt);
   const primaryType = (() => {
     if (entry.frontmatter.contentType === 'update') return 'BlogPosting';
     if (entry.frontmatter.contentType === 'docs') return 'TechArticle';
@@ -1476,8 +1527,10 @@ const jsonLdFor = (entry, registry) => {
       name: entry.frontmatter.title,
       headline: entry.frontmatter.h1,
       description: entry.frontmatter.description,
-      dateModified: entry.frontmatter.updatedAt,
+      datePublished,
+      dateModified,
       image,
+      author: authorNode,
       inLanguage: localeToHrefLang(entry.frontmatter.locale),
       isPartOf: { '@id': `${siteUrl}/#website` },
       publisher: { '@id': `${siteUrl}/#organization` },
@@ -1493,8 +1546,10 @@ const jsonLdFor = (entry, registry) => {
       description: entry.frontmatter.description,
       url,
       image,
-      dateModified: entry.frontmatter.updatedAt,
+      datePublished,
+      dateModified,
       inLanguage: localeToHrefLang(entry.frontmatter.locale),
+      author: authorNode,
       publisher: { '@id': `${siteUrl}/#organization` },
       creator: { '@id': `${siteUrl}/#organization` },
     };
@@ -2046,6 +2101,15 @@ const renderSupplementarySections = (entry, registry) => {
   return [faqHtml, relatedHtml].filter(Boolean).join('\n                  ');
 };
 
+const renderArticleMetadata = (entry) => {
+  if (!entry.frontmatter.displayAuthor || !entry.frontmatter.author) return '';
+  const authorSlug = slugify(entry.frontmatter.author);
+  return `<div class="article-metadata">
+                      <span class="article-metadata-label">By</span>
+                      <a class="article-metadata-author" href="/updates/author/${escapeAttribute(authorSlug)}/">${escapeHtml(entry.frontmatter.author)}</a>
+                    </div>`;
+};
+
 const renderArticleCard = (entry, registry) => {
   const isBlogPost = entry.frontmatter.contentType === 'update' && entry.frontmatter.slug !== '/updates/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
   const isBlogList = entry.frontmatter.contentType === 'update' && !isBlogPost;
@@ -2074,6 +2138,7 @@ const renderArticleCard = (entry, registry) => {
                     ${visibleBreadcrumbs}
                     <h1 class="${articleClass === 'blog-post-card' ? 'blog-post-title' : 'docs-title'}">${escapeHtml(entry.frontmatter.h1)}</h1>
                     ${entry.frontmatter.subtitle ? `<p class="${articleClass === 'blog-post-card' ? 'blog-post-subtitle' : 'docs-subtitle'}">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
+                    ${renderArticleMetadata(entry)}
                   </header>
                   ${renderMarkdownHost(entry.rendered.html)}
                 </article>
@@ -2488,6 +2553,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
+  const schemaDateTimePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-0[56]:00$/;
 
   for (const artifact of DISCOVERY_ARTIFACTS) {
     if (!fs.existsSync(path.join(distRoot, artifact))) failures.push(`missing dist/${artifact}`);
@@ -2497,6 +2563,18 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
     if (!indexUrls.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-index missing canonical URL`);
     if (!registryCanonicals.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-registry missing canonical URL`);
     if (!graphIds.has(`${entry.frontmatter.canonical}#webpage`)) failures.push(`${entry.frontmatter.slug}: jsonld-graph missing WebPage id`);
+  }
+  if (Array.isArray(jsonLdGraph?.['@graph'])) {
+    for (const node of jsonLdGraph['@graph']) {
+      for (const field of ['datePublished', 'dateModified']) {
+        if (node[field] !== undefined && !schemaDateTimePattern.test(String(node[field]))) {
+          failures.push(`${node['@id'] ?? 'jsonld node'}: ${field} must be ISO 8601 Central time datetime`);
+        }
+      }
+      if (['Article', 'BlogPosting', 'TechArticle'].includes(node['@type']) && !node.author) {
+        failures.push(`${node['@id'] ?? node.name ?? 'article'}: JSON-LD article node missing author`);
+      }
+    }
   }
   for (const entry of llmsEligible) {
     if (!llms.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: llms.txt missing canonical URL`);

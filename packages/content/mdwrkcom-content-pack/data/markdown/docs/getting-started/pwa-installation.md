@@ -1,4 +1,4 @@
----
+﻿---
 title: PWA Installation
 slug: getting-started/pwa-installation
 section: Getting Started
@@ -7,6 +7,7 @@ order: 3
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: The Progressive Web App path keeps the MdWrk client in the web platform, but lets supported browsers install it as a dedicated app window.
 ---
 

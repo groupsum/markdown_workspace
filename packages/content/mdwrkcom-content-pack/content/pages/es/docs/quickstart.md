@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/es/docs/quickstart/"
 title: "MdWrk inicio rapido para escribir y previsualizar Markdown local"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "aprender como empezar con MdWrk"
 contentType: "docs"
 updatedAt: "2026-05-06"
+author: CobyCloud
 locale: "es"
 translationOf: "/docs/quickstart/"
 localeGroup: "docs-quickstart"

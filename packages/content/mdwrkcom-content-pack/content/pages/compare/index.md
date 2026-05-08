@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/compare/"
 title: "MdWrk Compare | Markdown Editor Comparisons"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "compare mdwrk"
 contentType: "comparison"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Use this comparison hub to choose the right Markdown workspace by storage defaults, authoring model, extension boundaries, and public proof."
 related:
   - "/compare/local-first-markdown-editors/"

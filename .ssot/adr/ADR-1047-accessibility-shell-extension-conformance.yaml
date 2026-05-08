@@ -8,28 +8,41 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, and extensions. Keyboard reachability, focus management, ARIA naming, status communication, contrast, and extension UI accessibility shall be part of acceptance evidence."
+summary: "MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, extensions, and public lander surfaces."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated to make WCAG 2.1 AA and SC 1.4.3 contrast conformance explicit for shell extension and public lander surfaces."
+    at: "2026-05-08T02:16:10Z"
+  -
+    status: "draft"
+    note: "Refreshed WCAG 2.1 AA contrast metadata after whitespace normalization."
+    at: "2026-05-08T02:31:06Z"
 references: []
 body: |-
   # ADR-1047: Accessibility as shell and extension conformance
-  
+
   ## Decision
-  
-  MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, and extensions. Keyboard reachability, focus management, ARIA naming, status communication, contrast, and extension UI accessibility shall be part of acceptance evidence.
-  
+
+  MdWrk shall treat accessibility as a conformance requirement for shell surfaces, editor behavior, command palettes, settings, modals, extensions, and public lander surfaces.
+
+  MdWrk shall conform to WCAG 2.1 AA for user-facing web UI. For color contrast, this includes WCAG 2.1 Success Criterion 1.4.3 Contrast (Minimum): normal text and images of text shall provide at least 4.5:1 contrast against their rendered background, while large-scale text shall provide at least 3:1. Incidental, inactive, decorative, and logo text follow the WCAG exceptions.
+
   ## Scope
-  
+
   - Keyboard navigation and shortcut behavior.
   - Focus order, focus restoration, and modal focus handling.
   - ARIA labels and screen-reader names for shell controls.
   - Status and update announcements where appropriate.
   - Extension-provided UI surfaces and settings forms.
-  
+  - Lander light and lander dark theme foreground/background token pairs.
+  - Public-site hero, feature, article, documentation, comparison, metadata, and navigation text.
+
   ## Consequences
-  
+
   - UI and extension features cannot be considered complete without accessibility evidence.
-  - Shell and extension specs must include accessibility obligations.
-  - Regression tests should cover behavior that can be asserted without visual inspection.
+  - Shell, extension, lander, and theme specs must include accessibility obligations.
+  - Theme tokens used for normal-size text must be validated against their normal rendered backgrounds at WCAG 2.1 AA contrast ratios.
+  - Regression tests should cover behavior and contrast pairs that can be asserted without visual inspection, with screenshots retained for visual validation of affected themes.

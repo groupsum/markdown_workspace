@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs VS Code
 slug: comparisons/mdwrk-vs-vs-code
 section: Compares
@@ -7,6 +7,8 @@ order: 3
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-host, @mdwrk/markdown-renderer-react
 ---

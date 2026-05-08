@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/answers/how-does-mdwrk-store-markdown-locally/"
 title: "How Does MdWrk Store Markdown Locally?"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "how does mdwrk store markdown locally"
 contentType: "faq"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "A direct answer about MdWrk local persistence and storage boundaries."
 faqs:
   - question: "How does MdWrk store Markdown locally?"

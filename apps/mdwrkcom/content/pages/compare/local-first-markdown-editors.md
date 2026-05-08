@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/compare/local-first-markdown-editors/"
 title: "Local-First Markdown Editors | MdWrk Comparison"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "local-first markdown editors"
 contentType: "comparison"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Use this page to evaluate Markdown tools by local-first authoring and portable product surfaces."
 faqs:
   - question: "What should I compare in local-first Markdown editors?"

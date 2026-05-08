@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/docs/theme-packs/"
 title: "MdWrk theme packs documentation for Markdown workspace styling"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "learn MdWrk theme packs"
 contentType: "docs"
 updatedAt: "2026-05-04"
+author: CobyCloud
 subtitle: "MdWrk theme packs document the token and styling contract for workspace presentation so visual changes can be inspected without changing Markdown source content."
 parent: "/docs/quickstart/"
 related:

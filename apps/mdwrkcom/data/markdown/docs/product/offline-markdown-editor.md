@@ -1,4 +1,4 @@
----
+﻿---
 title: Offline Markdown Editor
 slug: product/offline-markdown-editor
 section: Features
@@ -7,6 +7,8 @@ order: 10
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk is an offline-capable Markdown editor that keeps writing, preview, workspace state, and installable app behavior available on the device after the client assets are loaded.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react
 ---

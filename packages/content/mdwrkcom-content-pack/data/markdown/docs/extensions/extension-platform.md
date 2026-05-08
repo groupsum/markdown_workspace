@@ -1,4 +1,4 @@
----
+﻿---
 title: Extension Platform
 slug: extensions/extension-platform
 section: Extensions
@@ -7,6 +7,7 @@ order: 1
 toc: true
 date: 2026-01-22
 status: published
+author: CobyCloud
 excerpt: MdWrk extensions are governed through manifest metadata, host APIs, runtime activation, manager UX, settings, permissions, and compatibility checks.
 ---
 

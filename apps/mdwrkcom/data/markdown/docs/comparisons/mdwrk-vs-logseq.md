@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Logseq
 slug: comparisons/mdwrk-vs-logseq
 section: Compares
@@ -7,6 +7,8 @@ order: 7
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and Logseq when choosing between Markdown workspace authoring and an outline-first knowledge graph workflow.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-renderer-react
 ---

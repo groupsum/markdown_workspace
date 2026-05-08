@@ -1,4 +1,4 @@
----
+﻿---
 title: Privacy-First Markdown Editor
 slug: product/privacy-first-markdown-editor
 section: Features
@@ -7,6 +7,8 @@ order: 12
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk is a privacy-first Markdown editor that keeps documents on the device by default and makes sync, export, extension trust, and external services explicit choices.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-host, @mdwrk/extension-manifest
 ---

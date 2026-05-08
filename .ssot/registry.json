@@ -9979,6 +9979,342 @@
         "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:lander-article-metadata-display-controls",
+      "title": "Lander article metadata display controls",
+      "description": "Allow MdWrk lander articles to keep structured metadata such as authors in JSON-LD while controlling whether author metadata is visibly rendered per article or section.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2071",
+        "spc:2077",
+        "spc:2078"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-lander-src-cli-static-content"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-wcag-aa-contrast",
+      "title": "Lander WCAG 2.1 AA contrast",
+      "description": "Ensure MdWrk public lander light and dark themes provide WCAG 2.1 AA compliant foreground/background contrast for normal text, including hero metadata, feature accents, article metadata, navigation, and documentation copy.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2080"
+      ],
+      "claim_ids": [
+        "clm:lander-wcag-aa-contrast"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs"
+      ],
+      "requires": [
+        "feat:accessibility-shell-baseline"
+      ]
+    },
+    {
+      "id": "feat:lander-cache-resource-classification",
+      "title": "Lander cache resource classification",
+      "description": "Classify portable lander outputs as immutable, mutable-revalidate, or no-store for reusable cache policy decisions.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-immutable-fingerprinted-assets",
+      "title": "Lander immutable fingerprinted assets",
+      "description": "Emit content-fingerprinted CSS, JavaScript, image, font, and static asset URLs that can be served with long max-age and immutable semantics.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-mutable-validator-metadata",
+      "title": "Lander mutable validator metadata",
+      "description": "Generate ETag and Last-Modified metadata for mutable-revalidate lander resources while avoiding default positive max-age.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-cache-header-manifest",
+      "title": "Lander cache header manifest",
+      "description": "Emit a machine-readable cache manifest with path, cache class, content hash, last modified timestamp, and intended headers for each generated output.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-critical-css-inline-defer",
+      "title": "Lander critical CSS inline and defer",
+      "description": "Inline first-viewport critical CSS and defer the complete stylesheet through the portable preload activation pattern with a noscript fallback.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-cache-policy-validation",
+      "title": "Lander cache policy validation",
+      "description": "Validate portable lander cache classes, fingerprinted immutable assets, mutable validators, freshness requirements, and critical CSS delivery rules.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2081"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-lander-cache-policy-adoption",
+      "title": "mdwrkcom lander cache policy adoption",
+      "description": "Configure mdwrkcom to adopt the portable lander cache freshness and critical CSS contract instead of a site-local caching implementation.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-static-css-fingerprinted-delivery",
+      "title": "mdwrkcom static CSS fingerprinted delivery",
+      "description": "Replace the mdwrkcom static stylesheet version-query URL with a content-fingerprinted immutable stylesheet URL.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-critical-css-profile",
+      "title": "mdwrkcom critical CSS profile",
+      "description": "Define the mdwrkcom first-viewport critical CSS boundary for document tokens, body, header, navigation, hero or route title, typography, focus, and contrast basics.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-mutable-route-validator-headers",
+      "title": "mdwrkcom mutable route validator headers",
+      "description": "Classify mdwrkcom route HTML and discovery artifacts as mutable-revalidate with Cache-Control no-cache, ETag, and Last-Modified metadata.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-cache-header-artifact-export",
+      "title": "mdwrkcom cache header artifact export",
+      "description": "Export mdwrkcom cache manifest and header metadata artifacts and mirror them into the mdwrkcom content pack.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
+    },
+    {
+      "id": "feat:mdwrkcom-cache-policy-validation",
+      "title": "mdwrkcom cache policy validation",
+      "description": "Validate mdwrkcom generated output against the portable cache policy and mdwrkcom critical CSS profile in CI.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2082"
+      ],
+      "claim_ids": [],
+      "test_ids": [],
+      "requires": []
     }
   ],
   "tests": [
@@ -11229,7 +11565,8 @@
         "feat:lander.structured-data.product",
         "feat:lander.structured-data.dataset",
         "feat:lander.structured-data.video-object",
-        "feat:lander.structured-data.image-object"
+        "feat:lander.structured-data.image-object",
+        "feat:lander-article-metadata-display-controls"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -11736,7 +12073,8 @@
         "feat:iso8601-temporal-metadata-normalization",
         "feat:structured-action-entrypoint-oob",
         "feat:searchaction-public-target-oob",
-        "feat:rfc6570-entrypoint-urltemplate-validation"
+        "feat:rfc6570-entrypoint-urltemplate-validation",
+        "feat:lander-article-metadata-display-controls"
       ],
       "claim_ids": [
         "clm:lander-seo-aeo-aieo-discovery",
@@ -12088,6 +12426,22 @@
       ],
       "evidence_ids": [
         "evd:mdwrk-desktop-app-shell-current"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs",
+      "title": "MdWrk static style WCAG contrast validation",
+      "status": "passing",
+      "kind": "static",
+      "path": "apps/mdwrkcom/scripts/validate-static-style-contract.mjs",
+      "feature_ids": [
+        "feat:lander-wcag-aa-contrast"
+      ],
+      "claim_ids": [
+        "clm:lander-wcag-aa-contrast"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-static-style-wcag-contrast"
       ]
     }
   ],
@@ -13422,7 +13776,8 @@
         "feat:iso8601-temporal-metadata-normalization",
         "feat:structured-action-entrypoint-oob",
         "feat:searchaction-public-target-oob",
-        "feat:rfc6570-entrypoint-urltemplate-validation"
+        "feat:rfc6570-entrypoint-urltemplate-validation",
+        "feat:lander-article-metadata-display-controls"
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
@@ -13805,6 +14160,23 @@
       ],
       "evidence_ids": [
         "evd:mdwrk-desktop-app-shell-current"
+      ]
+    },
+    {
+      "id": "clm:lander-wcag-aa-contrast",
+      "title": "Lander WCAG 2.1 AA contrast",
+      "status": "implemented",
+      "tier": "T2",
+      "kind": "accessibility",
+      "description": "MdWrk public lander light and dark themes provide WCAG 2.1 AA compliant contrast for foreground/background token pairs used by normal user-facing text.",
+      "feature_ids": [
+        "feat:lander-wcag-aa-contrast"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-static-style-wcag-contrast"
       ]
     }
   ],
@@ -15166,6 +15538,20 @@
       "test_ids": [
         "tst:mdwrk-desktop-app-shell-current"
       ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-static-style-wcag-contrast",
+      "title": "MdWrk static style WCAG contrast validation artifact",
+      "status": "passed",
+      "kind": "static-validation",
+      "tier": "T2",
+      "path": "apps/mdwrkcom/scripts/validate-static-style-contract.mjs",
+      "claim_ids": [
+        "clm:lander-wcag-aa-contrast"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs"
+      ]
     }
   ],
   "issues": [
@@ -16347,7 +16733,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "81453cc846f474b8362ac842c1160ddaf1266a37623435cc5072657c5cd3dbb4",
+      "content_sha256": "0e124db429b7f45e57395830da757a617fa5849fddaf0429b14f2c818f2b6ef7",
       "status": "accepted",
       "supersedes": [],
       "superseded_by": [],
@@ -16356,6 +16742,11 @@
           "status": "accepted",
           "note": "Expanded theme parity checkpoint with zoom, accessibility, contrast, focus, and CSS contract obligations.",
           "at": "2026-04-21T09:08:24Z"
+        },
+        {
+          "status": "accepted",
+          "note": "Updated accepted theme parity decision with explicit WCAG 2.1 AA contrast obligations for lander light and dark foreground/background tokens.",
+          "at": "2026-05-08T02:16:30Z"
         }
       ]
     },
@@ -16885,11 +17276,17 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "53b4046f4d44bd61b3b03cb2c67ea80c81764322b0b253610542330d6bdf14a7",
+      "content_sha256": "432d83654fcfa6ad5e15ee8fbda8d1adfc00155121589425c1d34864ead534d3",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
-      "status_notes": []
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Updated to make WCAG 2.1 AA and SC 1.4.3 contrast conformance explicit for shell extension and public lander surfaces.",
+          "at": "2026-05-08T02:16:10Z"
+        }
+      ]
     },
     {
       "id": "adr:1048",
@@ -17121,6 +17518,50 @@
           "status": "draft",
           "note": "Drafted to govern external Schema.org, JSON-LD, BCP 47, ISO 8601, and RFC 6570 baselines for MdWrk public lander structured data.",
           "at": "2026-05-07T13:08:01Z"
+        }
+      ]
+    },
+    {
+      "id": "adr:1060",
+      "number": 1060,
+      "slug": "portable-lander-cache-freshness-render-blocking-boundary",
+      "title": "Portable Lander Cache Freshness And Render Blocking Boundary",
+      "path": ".ssot/adr/ADR-1060-portable-lander-cache-freshness-render-blocking-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "f6f9ea7165eb49e7c9bc87e62e5e657b21bc80f7aacb45b1b1d2bd7bd3a3afac",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created portable lander cache freshness and render-blocking boundary decision.",
+          "at": "2026-05-08T03:22:21Z"
+        }
+      ]
+    },
+    {
+      "id": "adr:1061",
+      "number": 1061,
+      "slug": "mdwrkcom-portable-lander-cache-policy-adoption",
+      "title": "mdwrkcom Portable Lander Cache Policy Adoption",
+      "path": ".ssot/adr/ADR-1061-mdwrkcom-portable-lander-cache-policy-adoption.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "4048536a22e564192ea7e871136811c36ed89ebcf5cdf35da4801c0cbd84a92a",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created mdwrkcom adoption decision for portable lander cache and critical CSS policy.",
+          "at": "2026-05-08T03:22:33Z"
         }
       ]
     }
@@ -17571,7 +18012,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "611a35c4897b9ecc7baa01c82e29e17cea1e26958324e22d2deee774b0acf65b",
+      "content_sha256": "4ac48b59baf1a6cbc33f54cfc3f24bee34b95fcebf9be872b20aad8dbcfdbdb9",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -17580,6 +18021,11 @@
           "status": "draft",
           "note": "Expanded UIX responsive design with chassis, zoom, accessibility, and responsive matrix obligations.",
           "at": "2026-04-21T09:20:22Z"
+        },
+        {
+          "status": "draft",
+          "note": "Updated UIX responsive design contract with WCAG 2.1 AA contrast requirements.",
+          "at": "2026-05-08T02:16:10Z"
         }
       ],
       "kind": "normative",
@@ -19232,6 +19678,88 @@
       "kind": "normative",
       "adr_ids": [
         "adr:1059"
+      ]
+    },
+    {
+      "id": "spc:2080",
+      "number": 2080,
+      "slug": "lander-wcag-2-1-aa-contrast-contract",
+      "title": "Lander WCAG 2.1 AA Contrast Contract",
+      "path": ".ssot/specs/SPEC-2080-lander-wcag-2-1-aa-contrast-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "21027c6b849d4e4e8958b379ec7ba5bcd4fdbeb0af26a8340554525e35de429d",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created to govern WCAG 2.1 AA contrast for lander light and lander dark themes.",
+          "at": "2026-05-08T02:16:42Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1016",
+        "adr:1047",
+        "adr:1056"
+      ]
+    },
+    {
+      "id": "spc:2081",
+      "number": 2081,
+      "slug": "portable-lander-cache-critical-css-contract",
+      "title": "Portable Lander Cache And Critical CSS Contract",
+      "path": ".ssot/specs/SPEC-2081-portable-lander-cache-critical-css-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "d1b558beb1364bf3fed00fe714ac7b717a84d8e56b63edf390bb6dbaff221cc9",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created portable lander cache and critical CSS contract.",
+          "at": "2026-05-08T03:22:46Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1060"
+      ]
+    },
+    {
+      "id": "spc:2082",
+      "number": 2082,
+      "slug": "mdwrkcom-cache-header-critical-css-profile",
+      "title": "mdwrkcom Cache Header And Critical CSS Profile",
+      "path": ".ssot/specs/SPEC-2082-mdwrkcom-cache-header-critical-css-profile.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "1a1bf147fb7e51f5f82601c7c28c5de72a99776a078f2ae36005f8bbccc984a1",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created mdwrkcom cache header and critical CSS adoption profile.",
+          "at": "2026-05-08T03:22:58Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1060",
+        "adr:1061",
+        "adr:1055"
       ]
     }
   ],

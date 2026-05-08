@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/security/"
 title: "MdWrk security notes for packages, extensions, and static docs"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "MdWrk security documentation"
 contentType: "security"
 updatedAt: "2026-05-04"
+author: CobyCloud
 subtitle: "MdWrk security documentation focuses on package boundaries, extension trust, static build verification, link integrity, and public artifacts that can be inspected before deployment."
 parent: "/"
 related:

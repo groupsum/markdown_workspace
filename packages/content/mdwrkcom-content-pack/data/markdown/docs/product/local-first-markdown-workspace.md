@@ -1,4 +1,4 @@
----
+﻿---
 title: Local-First Markdown Workspace
 slug: product/local-first-markdown-workspace
 section: Features
@@ -7,6 +7,8 @@ order: 11
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk is a local-first Markdown workspace for projects, folders, files, preview links, themes, and extensions that should remain usable without forcing a cloud document model.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-workspace-files, @mdwrk/extension-git-ops
 ---

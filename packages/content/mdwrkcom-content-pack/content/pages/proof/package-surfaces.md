@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/proof/package-surfaces/"
 title: "Package Surfaces Proof | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "mdwrk package surfaces proof"
 contentType: "docs"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Package surface proof explains the split between generic lander packages and MdWrk-specific content truth."
 faqs:
   - question: "What does package surface proof show?"

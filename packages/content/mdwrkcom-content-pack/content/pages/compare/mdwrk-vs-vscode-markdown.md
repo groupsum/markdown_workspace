@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/compare/mdwrk-vs-vscode-markdown/"
 title: "MdWrk Vs VS Code Markdown | Markdown Workspace Comparison"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "mdwrk vs vscode markdown"
 contentType: "comparison"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Use this comparison when deciding whether Markdown authoring should live in a focused workspace or inside a general code editor."
 faqs:
   - question: "When should I choose MdWrk over VS Code Markdown?"

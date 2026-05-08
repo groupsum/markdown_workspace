@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/docs/extensions/"
 title: "MdWrk extensions documentation for workspace developers"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "learn MdWrk extensions"
 contentType: "docs"
 updatedAt: "2026-05-04"
+author: CobyCloud
 subtitle: "MdWrk extensions are documented as governed workspace integrations with manifest metadata, runtime boundaries, compatibility checks, and explicit user trust policy."
 parent: "/docs/quickstart/"
 related:

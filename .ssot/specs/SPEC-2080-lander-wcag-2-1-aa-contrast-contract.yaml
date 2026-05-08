@@ -1,0 +1,47 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2080"
+number: 2080
+slug: "lander-wcag-2-1-aa-contrast-contract"
+title: "Lander WCAG 2.1 AA Contrast Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Define the public MdWrk lander contrast contract for light and dark themes."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern WCAG 2.1 AA contrast for lander light and lander dark themes."
+    at: "2026-05-08T02:16:42Z"
+references: []
+body: |-
+  # Lander WCAG 2.1 AA Contrast Contract
+
+  ## Purpose
+
+  Define the public MdWrk lander contrast contract for light and dark themes.
+
+  ## Normative Baseline
+
+  The public lander shall conform to WCAG 2.1 AA. For contrast, WCAG 2.1 Success Criterion 1.4.3 Contrast (Minimum) is the governing rule:
+
+  - normal text and images of text require at least 4.5:1 contrast against the rendered background
+  - large-scale text and images of large-scale text require at least 3:1 contrast against the rendered background
+  - incidental, inactive, decorative, and logo text follow the WCAG exceptions
+
+  ## Requirements
+
+  - `lander-light` and `lander-dark` theme tokens shall keep foreground/background pairs for primary, muted, subtle, accent, alternate-accent, and success text roles at or above 4.5:1 where used for normal-size text.
+  - Hero metadata labels, feature heading accents, feature copy, comparison copy, article metadata, navigation text, and documentation body text shall use AA-compliant foreground tokens.
+  - Decorative blobs, gradients, and non-text backgrounds shall not be the only contrast mechanism for readable text.
+  - Generated static CSS shall preserve the contrast-safe token values used by source CSS.
+  - Static validation shall compute contrast ratios for deterministic token pairs and fail below WCAG 2.1 AA thresholds.
+  - Browser screenshot validation shall include both lander light and lander dark for affected routes after contrast-sensitive changes.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1016"
+  - "adr:1047"
+  - "adr:1056"

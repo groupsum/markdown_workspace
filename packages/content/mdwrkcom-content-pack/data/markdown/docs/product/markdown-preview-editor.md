@@ -1,4 +1,4 @@
----
+﻿---
 title: Markdown Preview Editor
 slug: product/markdown-preview-editor
 section: Features
@@ -7,6 +7,8 @@ order: 14
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk combines a Markdown source editor with live preview, profile-aware rendering, internal-link navigation, HTML export, and print-oriented output.
 relatedApis: @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react, @mdwrk/markdown-renderer-core
 ---

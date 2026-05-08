@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/privacy/"
 title: "MdWrk privacy policy for local-first Markdown workflows"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "MdWrk privacy policy"
 contentType: "privacy"
 updatedAt: "2026-05-04"
+author: CobyCloud
 subtitle: "MdWrk is documented as a privacy-first Markdown workspace that keeps authoring local by default and treats sync, export, integrations, and extensions as explicit user choices."
 faqs:
   - question: "Does MdWrk upload documents by default?"

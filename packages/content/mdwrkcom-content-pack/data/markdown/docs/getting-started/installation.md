@@ -1,4 +1,4 @@
----
+﻿---
 title: Client Installation
 slug: getting-started/installation
 section: Getting Started
@@ -7,6 +7,7 @@ order: 1
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.
 ---
 

@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/compare/mdwrk-vs-obsidian/"
 title: "MdWrk Vs Obsidian | Local-First Markdown Comparison"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "mdwrk vs obsidian"
 contentType: "comparison"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Use this comparison when local-first Markdown authoring, package reuse, and extension contracts matter."
 faqs:
   - question: "When should I choose MdWrk over Obsidian?"

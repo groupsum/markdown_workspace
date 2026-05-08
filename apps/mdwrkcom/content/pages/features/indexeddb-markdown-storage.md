@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/indexeddb-markdown-storage/"
 title: "IndexedDB Markdown Storage | MdWrk"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "indexeddb markdown storage"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Browser-local persistence keeps MdWrk's default authoring workflow independent from hosted document storage."
 faqs:
   - question: "How does MdWrk store Markdown locally?"

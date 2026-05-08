@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/packages/markdown-renderer-core/"
 title: "Markdown Renderer Core Package | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "markdown renderer core package"
 contentType: "package"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Use the renderer core package when a product needs Markdown parsing and HTML rendering without adopting the full MdWrk client."
 faqs:
   - question: "What is @mdwrk/markdown-renderer-core?"

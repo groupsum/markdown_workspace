@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/packages/theme-contract/"
 title: "Theme Contract Package | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "theme contract package"
 contentType: "package"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Use the theme contract package when styling needs to target governed tokens instead of private UI internals."
 faqs:
   - question: "What is @mdwrk/theme-contract?"

@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/github-sync/"
 title: "GitHub Sync | MdWrk"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "github sync markdown workspace"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "GitHub sync supports repository movement for Markdown projects without making every local edit depend on a hosted backend."
 faqs:
   - question: "Does MdWrk support GitHub-oriented workflows?"

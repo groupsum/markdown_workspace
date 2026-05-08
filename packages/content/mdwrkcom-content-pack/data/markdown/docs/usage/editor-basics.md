@@ -1,4 +1,4 @@
----
+﻿---
 title: Editor Basics
 slug: usage/editor-basics
 section: Features
@@ -7,6 +7,8 @@ order: 1
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk combines a markdown source editor, split preview workflow, table builder, formatting toolbar, and local-first workspace model so drafting stays fast without hiding the underlying Markdown.
 ---
 

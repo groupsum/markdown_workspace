@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/updates/launch/"
 title: "MdWrk launch notes for a static local-first Markdown lander"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "MdWrk launch story"
 contentType: "update"
 updatedAt: "2026-05-04"
+author: CobyCloud
 publishedAt: "2026-05-04"
 subtitle: "The MdWrk launch story centers on a local-first Markdown workspace and a public lander that compiles Markdown into static, verifiable, machine-readable artifacts before deployment."
 faqs:

@@ -1,4 +1,4 @@
----
+﻿---
 title: GitHub Sync
 slug: github-sync
 section: Integrations
@@ -7,6 +7,7 @@ order: 1
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: Repository Access Use a GitHub personal access token with the narrowest permissions your workflow requires. Store the token only when you want mdwrk to read from or write to a repository.
 ---
 

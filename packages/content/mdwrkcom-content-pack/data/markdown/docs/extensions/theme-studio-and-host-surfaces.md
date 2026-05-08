@@ -1,4 +1,4 @@
----
+﻿---
 title: Theme Studio and Host Surfaces
 slug: extensions/theme-studio-and-host-surfaces
 section: Extensions
@@ -7,6 +7,7 @@ order: 2
 toc: true
 date: 2026-02-05
 status: published
+author: CobyCloud
 excerpt: Theme Studio demonstrates how first-party extensions use host surfaces, theme contracts, workspace panes, and export flows inside the MdWrk extension model.
 ---
 

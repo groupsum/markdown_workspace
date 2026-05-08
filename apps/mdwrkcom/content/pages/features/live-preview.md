@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/live-preview/"
 title: "Live Markdown Preview | MdWrk"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "live markdown preview"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Live preview helps authors move between source text and rendered output without hiding the Markdown file."
 faqs:
   - question: "Does MdWrk include live Markdown preview?"

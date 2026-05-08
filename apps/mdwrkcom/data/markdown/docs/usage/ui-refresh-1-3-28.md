@@ -1,4 +1,4 @@
----
+﻿---
 title: UI Refresh 1.3.28
 slug: archive/ui-refresh-1-3-28
 section: Archive
@@ -7,6 +7,7 @@ order: 25
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: MdWrk 1.3.28 improves editing ergonomics, toolbar grouping, markdown list rendering, status footer behavior, and workspace action placement.
 ---
 

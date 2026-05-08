@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/packages/markdown-renderer-react/"
 title: "Markdown Renderer React Package | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "markdown renderer react package"
 contentType: "package"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Use the React renderer package when a product needs MdWrk-aligned Markdown rendering inside React."
 faqs:
   - question: "What is @mdwrk/markdown-renderer-react?"

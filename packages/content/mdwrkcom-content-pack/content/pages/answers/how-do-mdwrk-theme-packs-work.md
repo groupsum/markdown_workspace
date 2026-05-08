@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/answers/how-do-mdwrk-theme-packs-work/"
 title: "How Do MdWrk Theme Packs Work?"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "how do mdwrk theme packs work"
 contentType: "faq"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "A direct answer about MdWrk theme pack contracts and portable styling."
 faqs:
   - question: "How do MdWrk theme packs work?"

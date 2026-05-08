@@ -1,7 +1,7 @@
 [
   {
     "sourcePath": "content/pages/answers/does-mdwrk-require-a-server.md",
-    "sourceHash": "63e7776b1f27f03a348445fefb2176c0078a37f23018f51dc48a5d7742c2e27d",
+    "sourceHash": "c34a959bcb84e40cf6487a03f09df78f44e84d1a0714a4a95e54ada6edcf3620",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/does-mdwrk-require-a-server/",
@@ -13,6 +13,8 @@
       "intent": "does mdwrk require a server",
       "contentType": "faq",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "Does MdWrk require a server?",
@@ -48,7 +50,7 @@
   },
   {
     "sourcePath": "content/pages/answers/how-do-mdwrk-theme-packs-work.md",
-    "sourceHash": "e09441852a061540e82385edc2732d9354c6beba4770a8b15ea4c5552cc1aa5f",
+    "sourceHash": "74b6739603da54a5dd5ffee55531a4c075e0637a762a428b46db5758756c3616",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/how-do-mdwrk-theme-packs-work/",
@@ -60,6 +62,8 @@
       "intent": "how do mdwrk theme packs work",
       "contentType": "faq",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How do MdWrk theme packs work?",
@@ -95,7 +99,7 @@
   },
   {
     "sourcePath": "content/pages/answers/how-does-mdwrk-store-markdown-locally.md",
-    "sourceHash": "82ffc74f1faee6a08fcefad6f034b4dcafad1045fa28d6f4658e779e3d8e6f2c",
+    "sourceHash": "8ad2716e07a5bb2ec5f8207396de04aedf5b210c54c3c29b20444bf6c324e3ef",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/how-does-mdwrk-store-markdown-locally/",
@@ -107,6 +111,8 @@
       "intent": "how does mdwrk store markdown locally",
       "contentType": "faq",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How does MdWrk store Markdown locally?",
@@ -142,7 +148,7 @@
   },
   {
     "sourcePath": "content/pages/answers/what-is-a-local-first-markdown-workspace.md",
-    "sourceHash": "1701b7e69b0da55dd94fd3d067954a5b21d80c42ab1d59127f5a5ea8a3fcd9c8",
+    "sourceHash": "43f06c94709e01a483430ed810cd16df564499d3e396c85eed172f53613b720e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/what-is-a-local-first-markdown-workspace/",
@@ -154,6 +160,8 @@
       "intent": "what is a local-first markdown workspace",
       "contentType": "faq",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is a local-first Markdown workspace?",
@@ -189,7 +197,7 @@
   },
   {
     "sourcePath": "content/pages/answers/what-is-an-offline-markdown-editor.md",
-    "sourceHash": "b554fcae05a5d97744b5e063ff9e970e21fabfd6f8a90bfee2051cfb9ef80779",
+    "sourceHash": "e176700a00af8f64893891e20a3435d38d742d52ea3c9f00667b048870112659",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/what-is-an-offline-markdown-editor/",
@@ -201,6 +209,8 @@
       "intent": "what is an offline markdown editor",
       "contentType": "faq",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is an offline Markdown editor?",
@@ -236,7 +246,7 @@
   },
   {
     "sourcePath": "content/pages/blog/launch.md",
-    "sourceHash": "691e03a5c11e4ed9fc008ea63ef41755278c79d1962fa85f2802dac9e53481ea",
+    "sourceHash": "68092b7a758f53fe8e53ecc2da99391a371eb77d67d7900e7871a12716f6bfd5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/updates/launch/",
@@ -249,6 +259,8 @@
       "contentType": "update",
       "updatedAt": "2026-05-04",
       "publishedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "Why does the MdWrk lander compile static HTML?",
@@ -312,7 +324,7 @@
   },
   {
     "sourcePath": "content/pages/compare/index.md",
-    "sourceHash": "3f9dc352f3b97bc181be82587899dddb23230e03c0f41b38a4d7b26af33b08e2",
+    "sourceHash": "c22975ebd97f8070ac5fd24b808f925b8cca5f8abdf46e3453bebf8363c38795",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/",
@@ -324,6 +336,8 @@
       "intent": "compare mdwrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What should I compare before choosing MdWrk?",
@@ -400,7 +414,7 @@
   },
   {
     "sourcePath": "content/pages/compare/local-first-markdown-editors.md",
-    "sourceHash": "0e5e491211bb4bade4dad671e6e723a6e7c036e706039273dc55ac578844ac3c",
+    "sourceHash": "cc4df840f4e8451c97ecf7fc44545c18d0650b0928a2533139983c7bdbb94705",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/local-first-markdown-editors/",
@@ -412,6 +426,8 @@
       "intent": "local-first markdown editors",
       "contentType": "comparison",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What should I compare in local-first Markdown editors?",
@@ -447,7 +463,7 @@
   },
   {
     "sourcePath": "content/pages/compare/mdwrk-vs-obsidian.md",
-    "sourceHash": "6272d28b0791bd1107015d34d2f219a8562f9d704e0f5edd4a4da6dabd6bda81",
+    "sourceHash": "5a582dfa10b0832c5126b86d697d211fd1a58852a1295f47ca4a264e7815583c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/mdwrk-vs-obsidian/",
@@ -459,6 +475,8 @@
       "intent": "mdwrk vs obsidian",
       "contentType": "comparison",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "When should I choose MdWrk over Obsidian?",
@@ -494,7 +512,7 @@
   },
   {
     "sourcePath": "content/pages/compare/mdwrk-vs-typora.md",
-    "sourceHash": "c8a846b24308fe6134439011ef5ba4894cf9fb6f076070daf4cefa26bd675695",
+    "sourceHash": "ad821dadd7f62003a124cb8da1d69b3a85f22a8d001f9df70f68b9e022cee8b8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/mdwrk-vs-typora/",
@@ -506,6 +524,8 @@
       "intent": "mdwrk vs typora",
       "contentType": "comparison",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "When should I choose MdWrk over Typora?",
@@ -541,7 +561,7 @@
   },
   {
     "sourcePath": "content/pages/compare/mdwrk-vs-vscode-markdown.md",
-    "sourceHash": "15d59a32a120c0aae19f0eca12eedd56de72f636f89be774981bd3bff7f9bb16",
+    "sourceHash": "0e6eeedd4adbf885df9c73edc701a7ebcabf1abd876f7b43dc2af94a22ca7ba3",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/mdwrk-vs-vscode-markdown/",
@@ -553,6 +573,8 @@
       "intent": "mdwrk vs vscode markdown",
       "contentType": "comparison",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "When should I choose MdWrk over VS Code Markdown?",
@@ -588,7 +610,7 @@
   },
   {
     "sourcePath": "content/pages/docs/extensions.md",
-    "sourceHash": "3d3cf9a3dc908cb49ae543909329b51cc1aa50a6720599b05bda7d6dc6259b5d",
+    "sourceHash": "7baacde4259b52fcc398f2e8a85173318b90ca0676f7a69dee8828679a07e5ed",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/",
@@ -600,6 +622,8 @@
       "intent": "learn MdWrk extensions",
       "contentType": "docs",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Extensions?",
@@ -662,11 +686,11 @@
   },
   {
     "sourcePath": "content/pages/docs/quickstart.md",
-    "sourceHash": "492ab13aa3de0820633ea363b04128796ef8d937befaef3d8c9e48301fee7d1e",
+    "sourceHash": "723c7c70072d0b210d32ef45a4a638d0f16d02fa7e9cef6fc81b76a63ce1ca29",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/quickstart/",
-      "title": "MdWrk quickstart — Write and preview Markdown locally",
+      "title": "MdWrk quickstart â€” Write and preview Markdown locally",
       "description": "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.",
       "h1": "MdWrk quickstart",
       "subtitle": "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries.",
@@ -674,6 +698,8 @@
       "intent": "learn how to start using MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What should new MdWrk users read first?",
@@ -738,7 +764,7 @@
   },
   {
     "sourcePath": "content/pages/docs/theme-packs.md",
-    "sourceHash": "87b847153f98bf4731be1493146deaeee5d69f24c5e5c4d59b9eeff3e656eeec",
+    "sourceHash": "f86a03270e1c9803707fef01f7e2997729bd0cdb57ae792d0867760c423ce018",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/theme-packs/",
@@ -750,6 +776,8 @@
       "intent": "learn MdWrk theme packs",
       "contentType": "docs",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Theme packs?",
@@ -812,7 +840,7 @@
   },
   {
     "sourcePath": "content/pages/es/docs/quickstart.md",
-    "sourceHash": "b5b192ec722819ec01a876255f2bad1ec15b03043f478accb4ea29d31ca33058",
+    "sourceHash": "99cbcb76ca7b4a80390ff20eee22ebfe049107bce6bcda9d8a3207fbdc4f4b86",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/es/docs/quickstart/",
@@ -824,6 +852,8 @@
       "intent": "aprender como empezar con MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "Que deberian leer primero los nuevos usuarios de MdWrk?",
@@ -890,7 +920,7 @@
   },
   {
     "sourcePath": "content/pages/features/extension-runtime.md",
-    "sourceHash": "7487ecec991a7239fbfe057cc45108a12652d22313bad49b877254196651be15",
+    "sourceHash": "93d19eda7600e2d0ecb37c177db4291c90ad0789a1b9b1582e344a603a4d7099",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/extension-runtime/",
@@ -902,6 +932,8 @@
       "intent": "markdown workspace extension runtime",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What is the MdWrk extension runtime?",
@@ -941,7 +973,7 @@
   },
   {
     "sourcePath": "content/pages/features/github-sync.md",
-    "sourceHash": "3ebf038fac8162703d4aec7f45867f78133f1e4c34986cd13b914125f1d5f78f",
+    "sourceHash": "7761293d34a04419eb3cd5973629348c3e8fed66f8ad2f84dd93f2da6140fb76",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/github-sync/",
@@ -953,6 +985,8 @@
       "intent": "github sync markdown workspace",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "Does MdWrk support GitHub-oriented workflows?",
@@ -992,7 +1026,7 @@
   },
   {
     "sourcePath": "content/pages/features/index.md",
-    "sourceHash": "ffd84ee70227622a7dcff180cba918166ffa6251b83f3dfbed8fc1e940a0d020",
+    "sourceHash": "983846ed7b5e80170b2991175c7314e4b189c2dd6b68957a80a87f84c2d87b6c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/",
@@ -1004,6 +1038,8 @@
       "intent": "mdwrk features",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What MdWrk features should I review first?",
@@ -1100,7 +1136,7 @@
   },
   {
     "sourcePath": "content/pages/features/indexeddb-markdown-storage.md",
-    "sourceHash": "3ae761d3651207ef5b7ccc54b20f670972d6fb030c466b1c26d70760e8248c47",
+    "sourceHash": "63969e39e9e15fb808acdb727013a20f0cc0cdd7cff2bf61bae235cf307450d0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/indexeddb-markdown-storage/",
@@ -1112,6 +1148,8 @@
       "intent": "indexeddb markdown storage",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk store Markdown locally?",
@@ -1151,7 +1189,7 @@
   },
   {
     "sourcePath": "content/pages/features/live-preview.md",
-    "sourceHash": "782a4b132c217c568ca07e146d90911941b6d0951d706ca14932753d04cd4c87",
+    "sourceHash": "8f498118ea8263737300d68942f05182d3ca0a80754dd17160a6b40bc07275e4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/live-preview/",
@@ -1163,6 +1201,8 @@
       "intent": "live markdown preview",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "Does MdWrk include live Markdown preview?",
@@ -1202,7 +1242,7 @@
   },
   {
     "sourcePath": "content/pages/features/pwa-markdown-editor.md",
-    "sourceHash": "ff4e5039164e02eab6b9733dee465d269e5f334a83dd7ace2905369d373dc07e",
+    "sourceHash": "427e31b8cc81ea4733ef0dc3f79268298aa04f014cc5c885d0cb48c9734db5ed",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/pwa-markdown-editor/",
@@ -1214,6 +1254,8 @@
       "intent": "pwa markdown editor",
       "contentType": "feature",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "Is MdWrk a PWA Markdown editor?",
@@ -1253,11 +1295,11 @@
   },
   {
     "sourcePath": "content/pages/index.md",
-    "sourceHash": "417cc8c699b157b70315c702b2edb2f4610c4237ed4209ce3053d2232d89966a",
+    "sourceHash": "78f2d7f8f001eec0629fba649c83779d009f5ebd16f6b6e5306baca4dfb58871",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/",
-      "title": "MdWrk — Local-first Markdown workspace for writing, preview, and extensions",
+      "title": "MdWrk â€” Local-first Markdown workspace for writing, preview, and extensions",
       "description": "MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.",
       "h1": "Local-first Markdown workspace",
       "subtitle": "MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.",
@@ -1265,6 +1307,8 @@
       "intent": "local-first markdown workspace",
       "contentType": "landing",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is MdWrk?",
@@ -1332,7 +1376,7 @@
   },
   {
     "sourcePath": "content/pages/packages/extension-runtime.md",
-    "sourceHash": "3aaef78ac8748c6550aa85c68aee475ac4740e3cda3ab3748c0594f64296ff77",
+    "sourceHash": "d9273419a35733491f0a43f978e48c805c88f8a2c9b5afb4ecd70b576ba1a93c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/extension-runtime/",
@@ -1344,6 +1388,8 @@
       "intent": "extension runtime package",
       "contentType": "package",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is @mdwrk/extension-runtime?",
@@ -1379,7 +1425,7 @@
   },
   {
     "sourcePath": "content/pages/packages/markdown-editor-react.md",
-    "sourceHash": "e8dc3bfea32cc66134faf3d39ef8b78427a173360df9458ef389ea2b389db0aa",
+    "sourceHash": "750416d7be326e601bbd60640af12fa3700f3b580ace6f9de7486484c6366b25",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-editor-react/",
@@ -1391,6 +1437,8 @@
       "intent": "markdown editor react package",
       "contentType": "package",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is @mdwrk/markdown-editor-react?",
@@ -1426,7 +1474,7 @@
   },
   {
     "sourcePath": "content/pages/packages/markdown-renderer-core.md",
-    "sourceHash": "88ad5c0e76de44b74057600c48e6e4388bd2e1b16eb9c358159d1d0dd69e05d2",
+    "sourceHash": "9409bfea18c6a6b503a55954f4c6186c0d36847a0008f6a45d4efb5af2265095",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-renderer-core/",
@@ -1438,6 +1486,8 @@
       "intent": "markdown renderer core package",
       "contentType": "package",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is @mdwrk/markdown-renderer-core?",
@@ -1473,7 +1523,7 @@
   },
   {
     "sourcePath": "content/pages/packages/markdown-renderer-react.md",
-    "sourceHash": "aa3fcfe283c6a5ed4c04f94b1d54b2e06461b4943b73bf8d47b0cf536d3b36ad",
+    "sourceHash": "6eb46c5f12bf91da91c4fbb92dac3cc11ca5305444a18304cc198b97dce57825",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-renderer-react/",
@@ -1485,6 +1535,8 @@
       "intent": "markdown renderer react package",
       "contentType": "package",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is @mdwrk/markdown-renderer-react?",
@@ -1520,7 +1572,7 @@
   },
   {
     "sourcePath": "content/pages/packages/theme-contract.md",
-    "sourceHash": "0999697b348ec5b72998e7b6131a9dca88a32f3162916599734736d4815b63d6",
+    "sourceHash": "0e61e905074bf29adb21ce954bc2864d3016147c67331e96418a31b27b03b21a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/theme-contract/",
@@ -1532,6 +1584,8 @@
       "intent": "theme contract package",
       "contentType": "package",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is @mdwrk/theme-contract?",
@@ -1567,7 +1621,7 @@
   },
   {
     "sourcePath": "content/pages/privacy.md",
-    "sourceHash": "a59d32c7dbf55f17c7f4c66432c5fb4f4a18c89b76ec60eea2a04b063624a2c4",
+    "sourceHash": "1c21b8b8d3a7deaf9dd5a0e8d5f1ec587053788f34c398608ed74b2dc2ce4ddb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/privacy/",
@@ -1579,6 +1633,8 @@
       "intent": "MdWrk privacy policy",
       "contentType": "privacy",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "Does MdWrk upload documents by default?",
@@ -1642,7 +1698,7 @@
   },
   {
     "sourcePath": "content/pages/proof/browser-support.md",
-    "sourceHash": "b38f337fa261d2b910770e6dcddfb632846d626043e952f86bed770ba5a2e546",
+    "sourceHash": "b5f631d0adfafdda71f72342c8ef23edba86d84cbcb3077d8ae0f8e61898123d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/proof/browser-support/",
@@ -1654,6 +1710,8 @@
       "intent": "mdwrk browser support proof",
       "contentType": "docs",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How does MdWrk present browser support?",
@@ -1689,7 +1747,7 @@
   },
   {
     "sourcePath": "content/pages/proof/markdown-support.md",
-    "sourceHash": "163a038583d62c677a6b85a69a623fec05b125a70557f57d1602b247c0aadc5a",
+    "sourceHash": "264662afeb0862fe38fb09780108e2ef494f3052ae88b450287b9a7c76000a03",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/proof/markdown-support/",
@@ -1701,6 +1759,8 @@
       "intent": "mdwrk markdown support proof",
       "contentType": "docs",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How does MdWrk prove Markdown support?",
@@ -1736,7 +1796,7 @@
   },
   {
     "sourcePath": "content/pages/proof/package-surfaces.md",
-    "sourceHash": "24219be8fdaf39aac1a818d743d7a71fdd15dceae6e8816b3a49530c0d2599e7",
+    "sourceHash": "bd308761a24d1efe6d1934d19865a713f7f81329fed6263c7f7dd393d4927cfb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/proof/package-surfaces/",
@@ -1748,6 +1808,8 @@
       "intent": "mdwrk package surfaces proof",
       "contentType": "docs",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does package surface proof show?",
@@ -1783,7 +1845,7 @@
   },
   {
     "sourcePath": "content/pages/security.md",
-    "sourceHash": "a4b542aba67161ab6213757b10f850e663aa8b2a46b7580633453bdf86f9db81",
+    "sourceHash": "395aec9e5ce7547060fb1e6147d46419a5bc7dfd304f2c99bc31c63300ac53ad",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/security/",
@@ -1795,6 +1857,8 @@
       "intent": "MdWrk security documentation",
       "contentType": "security",
       "updatedAt": "2026-05-04",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What security topics does this MdWrk page cover?",
@@ -1862,7 +1926,7 @@
   },
   {
     "sourcePath": "content/pages/trust/privacy-boundary.md",
-    "sourceHash": "50302dbc3d2edb314edad9796999c39db0b1c05a0e9f1ed0aeba1b76edc117bc",
+    "sourceHash": "19821f72a5770e330ccbb258a16c5d624b51bd35160c9f8dc49f8bf4b16f0c7c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/trust/privacy-boundary/",
@@ -1874,6 +1938,8 @@
       "intent": "mdwrk privacy boundary",
       "contentType": "privacy",
       "updatedAt": "2026-05-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What is MdWrk's privacy boundary?",
@@ -1909,7 +1975,7 @@
   },
   {
     "sourcePath": "data/markdown/docs",
-    "sourceHash": "92d2ff9c8c1a37418826c96ba0e2297f235554aad81c6f4d3ef582574a8cd907",
+    "sourceHash": "a559fa50d84ba06e6b366f110cb7d5eca3ceac5a10514aea3e2253e547b7563b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/",
@@ -1921,6 +1987,8 @@
       "intent": "start using MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How do I start using MdWrk?",
@@ -2004,7 +2072,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/installation.md",
-    "sourceHash": "8c2bbe0f432225848cc392a9fef55a44a453028ca2b8462f2c1643441e673765",
+    "sourceHash": "56be7eeabe0b28c56b3c94757d362b1cfb0dd2183add1159ba682088353a939d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/installation/",
@@ -2015,6 +2083,9 @@
       "intent": "learn client installation in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Client Installation?",
@@ -2100,7 +2171,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/browser-use.md",
-    "sourceHash": "5797df2e4d94b9351cf4df0bc89d144e70b1d0639acb069e01e475bea01e5fdb",
+    "sourceHash": "48f822da59667c9fbcd3582482363aaf0b4401187efc36a34adf823f1a7fd19d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/browser-use/",
@@ -2111,6 +2182,9 @@
       "intent": "learn browser use in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Browser Use?",
@@ -2180,7 +2254,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/pwa-installation.md",
-    "sourceHash": "b956e4d1381f4b5cc6c0aa3b94e55de2d8343861ba0856f4455c5e5ca07ffa84",
+    "sourceHash": "54d3de342209971706590792fb497dd8a2c3e759f586b51f5c722644ac52b6bd",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/pwa-installation/",
@@ -2191,6 +2265,9 @@
       "intent": "learn pwa installation in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from PWA Installation?",
@@ -2265,7 +2342,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/local-setup.md",
-    "sourceHash": "e3da189922630939cd8e095844a982547988155172c2dad0b507ca8df4050986",
+    "sourceHash": "6572342b4336aa5e7f4f917c9ca343cafc106b1f970edc6f40c55ba01e76ce9a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/local-setup/",
@@ -2276,6 +2353,9 @@
       "intent": "learn local setup in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Local Setup?",
@@ -2350,7 +2430,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/standalone-modules.md",
-    "sourceHash": "042191c7376ae1b4ebfed079eee26b703bb0f90a6cae3b88dadd7c002801dfd0",
+    "sourceHash": "107782ebbd8620e9e8c4f169810603d52098ccefa3094a6ce7bfa385063c1dcf",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/standalone-modules/",
@@ -2361,6 +2441,9 @@
       "intent": "learn standalone modules in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Standalone Modules?",
@@ -2435,7 +2518,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/getting-started/configuration.md",
-    "sourceHash": "e53ca16d710787ffd82cc90440534c93441f4c8a3e0b8b700c3a23f5604b18c7",
+    "sourceHash": "eaccc97dba493ec4a470337a3ee034870f1cdc21da25fcedf2c448998f142284",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/getting-started/configuration/",
@@ -2446,6 +2529,9 @@
       "intent": "learn client configuration in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Client Configuration?",
@@ -2520,7 +2606,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/editor-basics.md",
-    "sourceHash": "8b3edcce8c657008dbd448fb305d31d69cdc0dd3728acf59ecb945e77c92ff1a",
+    "sourceHash": "59923959d152dbe4a260639879233fa68ee1c4904ebae381690a14b3a24ed8ae",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/editor-basics/",
@@ -2531,6 +2617,9 @@
       "intent": "understand editor basics in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Editor Basics?",
@@ -2641,7 +2730,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/advanced-formatting.md",
-    "sourceHash": "c57f7b38c38aa10345b9b1b403ec4662ff17a8dea961025657ef2d30122d768d",
+    "sourceHash": "9748027e500fc5ba39bdaf8ebcdd2e0a05bbb91c788f8e833f91865b090f43a2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/advanced-formatting/",
@@ -2652,6 +2741,9 @@
       "intent": "understand markdown formatting in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Markdown Formatting?",
@@ -2777,7 +2869,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/rendering-and-preview.md",
-    "sourceHash": "67de8bc6e7a4cf9f13b8f1f41a013cfe4800666fbe0261c45ab9f9a38537af1f",
+    "sourceHash": "cd5f125fee09e31fda02c2fe1de9a2bcb471744e890a90c7ada5df437a64a74a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/rendering-and-preview/",
@@ -2788,6 +2880,9 @@
       "intent": "understand rendering and preview in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Rendering And Preview?",
@@ -2903,7 +2998,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/checkbox-autocomplete.md",
-    "sourceHash": "bf6ed930385d1e7a1251b8dc2243341ef006b91b807239c0c5763d7a52129df7",
+    "sourceHash": "d968c2f756984399ea4a7d586ce09984a5b7d897bc6de94c9f1446c5eb8c1bfb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/checkbox-autocomplete/",
@@ -2914,6 +3009,9 @@
       "intent": "understand checkbox autocomplete in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Checkbox Autocomplete?",
@@ -2999,7 +3097,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/text-wrap-previewer.md",
-    "sourceHash": "4029a3b6a92350df7ca4baa48ab80bf8f5844351101cc4c96aca45d0ddaf5fa1",
+    "sourceHash": "e7b6f34722d98ce44147d34c3c5090f731879c60d74c534f6a0293ac38bfeabb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/text-wrap-previewer/",
@@ -3010,6 +3108,9 @@
       "intent": "understand text wrap previewer in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Text Wrap Previewer?",
@@ -3100,7 +3201,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/view-toolbar.md",
-    "sourceHash": "72a6cdd1d39b91b0afff124ae7c026cd0d08adb2e51e5a4547e17506cba4c962",
+    "sourceHash": "48d48c40b56793ad3effca8dd381983fd7c3a1aa9efd51c086bc2aa81efe92be",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/view-toolbar/",
@@ -3111,6 +3212,9 @@
       "intent": "understand view toolbar in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from View Toolbar?",
@@ -3201,7 +3305,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/offline-markdown-editor.md",
-    "sourceHash": "fd3510fd80baad424368e404121ae011abb923656f759d6e041e50b8a43259a0",
+    "sourceHash": "9975c67d34b36172c54dffd497664f5dcbc9a3b5b69605b27e54dd6ea4d54353",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/offline-markdown-editor/",
@@ -3212,6 +3316,9 @@
       "intent": "understand offline markdown editor in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Offline Markdown Editor?",
@@ -3292,7 +3399,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/local-first-markdown-workspace.md",
-    "sourceHash": "784872fc93236941669ca91efaabb3849f29b13955e1483c8c6253c6b1d5188e",
+    "sourceHash": "f0750e92b0d0cc468f1f332fce28c4c7d63b3ec814c62227cf00c2261cfe0e3e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/local-first-markdown-workspace/",
@@ -3303,6 +3410,9 @@
       "intent": "understand local-first markdown workspace in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Local-first Markdown Workspace?",
@@ -3383,7 +3493,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/privacy-first-markdown-editor.md",
-    "sourceHash": "b9063c1ef283c469f41007cdf90168a66fd0ff188e55aa362d99f04976695130",
+    "sourceHash": "e62945e37755de31f6db472798c6e1c804e8a2d28d5be8e792502edeef44b894",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/privacy-first-markdown-editor/",
@@ -3394,6 +3504,9 @@
       "intent": "understand privacy-first markdown editor in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Privacy-first Markdown Editor?",
@@ -3474,7 +3587,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/markdown-file-manager.md",
-    "sourceHash": "700b75f97dd01ae2f7d11b2d610da38cafd2404ff276d92801af08bc81abcef0",
+    "sourceHash": "6fb1a80d328582c493addf6f2fde7cc3403d7be08ffa400b9044e118db16f804",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/markdown-file-manager/",
@@ -3485,6 +3598,9 @@
       "intent": "understand markdown file manager in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Markdown File Manager?",
@@ -3565,7 +3681,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/markdown-preview-editor.md",
-    "sourceHash": "b57b7acb98ce3ef7a07747485729278f2c42fba7c83c864828dd53beb28d9009",
+    "sourceHash": "0d2d4c7a73b507e6d3f755620421439c8b5c2673e6222d07c84e78f2891c9622",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/markdown-preview-editor/",
@@ -3576,6 +3692,9 @@
       "intent": "understand markdown preview editor in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Markdown Preview Editor?",
@@ -3656,7 +3775,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/extension-host.md",
-    "sourceHash": "2c5efedc548aa941d203ba1c4599bd1b2429416314dde4947b0667a94740cb84",
+    "sourceHash": "f694260f63155606e97a439ad1c346853975248047f4a22d54c72a42dc0fa08c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/extension-host/",
@@ -3667,6 +3786,9 @@
       "intent": "understand extension host in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Extension Host?",
@@ -3747,7 +3869,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/desktop-app-boundary.md",
-    "sourceHash": "1f21816c959eef228947a76cceaa7584a6e2111aa78f51f2eaf074800a2d561b",
+    "sourceHash": "6189898f66e9209aaf8b38f5ec879c86b44aa3579bf25ef8096c5523915ec4f5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/desktop-app-boundary/",
@@ -3758,6 +3880,9 @@
       "intent": "understand desktop app boundary in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Desktop App Boundary?",
@@ -3843,7 +3968,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/theme-packs.md",
-    "sourceHash": "7f898490f36a3b02b21cf41a059398fa057b5946806ad07d6b2a7a39d44cbb1b",
+    "sourceHash": "8cee9e679fadae6efbd9d803d5254442ade6713871d8c77a0081f40f58c3303b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/theme-packs/",
@@ -3854,6 +3979,9 @@
       "intent": "understand theme packs in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Theme Packs?",
@@ -3934,7 +4062,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/developer-documentation.md",
-    "sourceHash": "c1f5d26423462be1cc4b53662e5abedb3506856d25350f07c67e3461eb22a179",
+    "sourceHash": "03698425730df31a0d9c67b7c25b7673409bdbdfcdaaa8017a4e7e559495bdb6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/developer-documentation/",
@@ -3945,6 +4073,9 @@
       "intent": "understand developer documentation in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Developer Documentation?",
@@ -4025,7 +4156,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/markdown-profile-architecture.md",
-    "sourceHash": "e739ab9550bf59d5c29e75edb1ff70d82934f1b253a50887ab45a3d267fe521a",
+    "sourceHash": "7bc52f24c5d55ce9c2e0e4c71082992622f187897fad66e343e9249c7242a0d9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/markdown-profile-architecture/",
@@ -4036,6 +4167,9 @@
       "intent": "understand markdown profile architecture in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from Markdown Profile Architecture?",
@@ -4121,7 +4255,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/product/uix-responsive-contract.md",
-    "sourceHash": "ccee5e811d2414794363a2660ca1f36efc454fa9f0e6fa49013272b0ba1f0075",
+    "sourceHash": "ed3a1c0b9c1b667ebe87bb806bc96ec0706e1a9a6bc4cdfd9e3a27b11b1e40df",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/features/uix-responsive-contract/",
@@ -4132,6 +4266,9 @@
       "intent": "understand uix responsive contract in MdWrk",
       "contentType": "feature",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "What will I learn from UIX Responsive Contract?",
@@ -4222,7 +4359,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/github-sync.md",
-    "sourceHash": "e978e5319224e3afd266a12c6eda6e8222bc8c35816ff7b7e999ed9dac810df5",
+    "sourceHash": "4f9c26a4bbbf1bf4a66b89cdb2ee12f2e7d3840e1ea4312f774d09d6eabd3fec",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/github-sync/",
@@ -4233,6 +4370,9 @@
       "intent": "learn github sync in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Github Sync?",
@@ -4297,7 +4437,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/authoring-overview.md",
-    "sourceHash": "b7bb3c553fd7c4829bfc9647cf838abf81793585f252701c67fb173be6f3c337",
+    "sourceHash": "44de6f578262e88b9e8735c64e180a95f738f5497873ca4b9291dd83437deb11",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/overview/",
@@ -4308,6 +4448,9 @@
       "intent": "learn authoring overview in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Authoring Overview?",
@@ -4383,7 +4526,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/extensions.md",
-    "sourceHash": "e4a45e199eb46837b0720facfd1cd4105b2e73f074f0b3cacb4c610475d9862b",
+    "sourceHash": "c5c85820271f5fe5d8a08f4af99ade9bc76857034463305c1229ee476ca4588d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/extensions/",
@@ -4394,6 +4537,9 @@
       "intent": "learn extension authoring in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Extension Authoring?",
@@ -4468,7 +4614,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/extension-authoring-guide.md",
-    "sourceHash": "32e89cc79ee8b96e91dd336b010200ca6c08e0e45f740806d8912313e8aa2b1e",
+    "sourceHash": "5cc9dea09ed8e3dd1db52ca74d066d76a11f590f94111d29501006a5c0387665",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/extension-authoring-guide/",
@@ -4479,6 +4625,9 @@
       "intent": "learn extension authoring guide in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-06",
+      "publishedAt": "2026-05-06",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Extension Authoring Guide?",
@@ -4569,7 +4718,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/theme-packs.md",
-    "sourceHash": "e2987e77ff67c086e6cc411d4586294009d1504b8b408797e9478b1868572287",
+    "sourceHash": "40667979c3327d86ca7ce98ead1b5c8eec5328b30d4ce93717b69a3049224e08",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/theme-packs/",
@@ -4580,6 +4729,9 @@
       "intent": "learn theme pack authoring in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Theme Pack Authoring?",
@@ -4649,7 +4801,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/authoring/language-packs.md",
-    "sourceHash": "234481e10ca25e855680599283ca90d119423646075f290db1307d39f5b62bce",
+    "sourceHash": "2a9a56d5b925361d86664571522dde01738cc25a1e65ecd162b8491b3b1f424d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/authoring/language-packs/",
@@ -4660,6 +4812,9 @@
       "intent": "learn language pack authoring in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Language Pack Authoring?",
@@ -4729,7 +4884,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/extensions/extension-platform.md",
-    "sourceHash": "aab42b6bd12bbb8d53a78ca7631f411a1cd61cd7d481b65a8d75908df89b7398",
+    "sourceHash": "0552a34025e52b8a2cddfc4087a5b62adb70b37dd4a2df22456a49f550c081d0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/extension-platform/",
@@ -4740,6 +4895,9 @@
       "intent": "learn extension platform in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-01-22",
+      "publishedAt": "2026-01-22",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Extension Platform?",
@@ -4804,7 +4962,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/extensions/theme-studio-and-host-surfaces.md",
-    "sourceHash": "6d5bd54ec02e8aee0b3ed9db8062db713947851aeae8717fc99480b74211e1ba",
+    "sourceHash": "39c0e773ee9f22d6f7707180d6970d8fe938df002732e0123b8ff859d2a6ba0c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/extensions/theme-studio-and-host-surfaces/",
@@ -4815,6 +4973,9 @@
       "intent": "learn theme studio and host surfaces in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-02-05",
+      "publishedAt": "2026-02-05",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from Theme Studio And Host Surfaces?",
@@ -4874,7 +5035,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-obsidian.md",
-    "sourceHash": "eeb58fca085e176b378c216a70d7467610088f1313c44aa0fe10ba799e8a3817",
+    "sourceHash": "0d2ac6bd22a44a7d4dcfbcaad395a231e1df821e22223231c7f608a4f7f0bff4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/obsidian/",
@@ -4885,6 +5046,9 @@
       "intent": "compare mdwrk vs obsidian in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Obsidian?",
@@ -4955,7 +5119,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-typora.md",
-    "sourceHash": "44c5ec002cdf1f284d5409b314309b735e9c30cfc67255c61968071eae3341fc",
+    "sourceHash": "2277212b01903e5c3078ce56aa081b7e6eea39f1f133892176b833eee15ae4ae",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/typora/",
@@ -4966,6 +5130,9 @@
       "intent": "compare mdwrk vs typora in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Typora?",
@@ -5036,7 +5203,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-vs-code.md",
-    "sourceHash": "fb4b3ecc3588bc4212d57d59fbf77bb681e6b279e14c99b542414c80607882f3",
+    "sourceHash": "19c9958fc1c56c5cd407aae62d34b25260e2cc87933e5fda8339b5b580f10640",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/code/",
@@ -5047,6 +5214,9 @@
       "intent": "compare mdwrk vs vs code in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with VS Code?",
@@ -5117,7 +5287,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-marktext.md",
-    "sourceHash": "3f63b4eb9af7142726166de4f971396860b1ca227050d21018312781cfd3d11b",
+    "sourceHash": "77fc51d7790f1aa77aba63a8a00294c19086e38d986bddbd737775417e2f8c37",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/marktext/",
@@ -5128,6 +5298,9 @@
       "intent": "compare mdwrk vs marktext in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Marktext?",
@@ -5198,7 +5371,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-zettlr.md",
-    "sourceHash": "1fd4e2948c14ffd928c6704d4f0dea4c1dbc37f66ec4479134e818fdfee9f331",
+    "sourceHash": "1ec988c974ea24fca80ecb198a381b1a605b3a2caa454de3fb22e0ccac59c29a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/zettlr/",
@@ -5209,6 +5382,9 @@
       "intent": "compare mdwrk vs zettlr in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Zettlr?",
@@ -5279,7 +5455,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-notion.md",
-    "sourceHash": "56ff7bb4466bc098c4eda21ead8564a18bf8c27d0a9aa529575ee870b32921d8",
+    "sourceHash": "73f6d8341804a08adeb5e948ca569238569d456bc2b45e44a579f2a2c8289b3d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/notion/",
@@ -5290,6 +5466,9 @@
       "intent": "compare mdwrk vs notion in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Notion?",
@@ -5360,7 +5539,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-logseq.md",
-    "sourceHash": "1afd2cb4cdd5d55770468f6f54a36aeb040fda619b5073e171043f5b54f98a3a",
+    "sourceHash": "8247fcbb83aff2dc27d625418e5d08f9959163c1c1c1e66695cefa2b57f0ada2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/logseq/",
@@ -5371,6 +5550,9 @@
       "intent": "compare mdwrk vs logseq in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Logseq?",
@@ -5441,7 +5623,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-standard-markdown-editors.md",
-    "sourceHash": "d2190a3d81f53bcc4227d8ab796e3413d09fb03b9b02306a6d6d8b54c22db257",
+    "sourceHash": "629e99dfdce60519aec642e9fdc06f9a381f47a7a361f777995dbe574319fd1c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/compare/standard-markdown-editors/",
@@ -5452,6 +5634,9 @@
       "intent": "compare mdwrk vs standard markdown editors in MdWrk",
       "contentType": "comparison",
       "updatedAt": "2026-05-03",
+      "publishedAt": "2026-05-03",
+      "author": "CobyCloud",
+      "displayAuthor": false,
       "faqs": [
         {
           "question": "How does MdWrk compare with Standard Markdown Editors?",
@@ -5522,7 +5707,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-28.md",
-    "sourceHash": "1986c8443bece8ab492528b113882e7b9487c6194f997ccf2c63736226b1a3b1",
+    "sourceHash": "d4704d4bb249b2a128420f016f5f09f0c4b8649a540bfe9c2a5a338e097fc23f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/archive/ui-refresh-1-3-28/",
@@ -5533,6 +5718,9 @@
       "intent": "learn ui refresh 1.3.28 in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from UI Refresh 1.3.28?",
@@ -5587,7 +5775,7 @@
   },
   {
     "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-29.md",
-    "sourceHash": "cdb639a59a01be90d18b5862b1e003a79fd20db1e4593e983895d957e2e47544",
+    "sourceHash": "22bdb5100e532c5d6457e3578f770e9515280d5d7d738ee698e53e6e3d488c14",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/archive/ui-refresh-1-3-29/",
@@ -5598,6 +5786,9 @@
       "intent": "learn ui refresh 1.3.29 in MdWrk",
       "contentType": "docs",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What will I learn from UI Refresh 1.3.29?",
@@ -5664,6 +5855,9 @@
       "intent": "read product updates from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-05-01",
+      "publishedAt": "2026-05-01",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What do MdWrk Product Updates cover?",
@@ -5783,6 +5977,9 @@
       "intent": "read about settings simplification gives mdwrk a faster path from installation to daily use",
       "contentType": "update",
       "updatedAt": "2026-05-01",
+      "publishedAt": "2026-05-01",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -5879,6 +6076,9 @@
       "intent": "read about explore the mdwrk client, packages, and extensions through a sharper docs experience",
       "contentType": "update",
       "updatedAt": "2026-04-30",
+      "publishedAt": "2026-04-30",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6005,6 +6205,9 @@
       "intent": "read about launch extensions on the same governed host the mdwrk client uses",
       "contentType": "update",
       "updatedAt": "2026-04-26",
+      "publishedAt": "2026-04-26",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6131,6 +6334,9 @@
       "intent": "read about workspace files and git operations packages open a larger automation surface for mdwrk",
       "contentType": "update",
       "updatedAt": "2026-04-22",
+      "publishedAt": "2026-04-22",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6227,6 +6433,9 @@
       "intent": "read about desktop release automation and android verification sharpen mdwrk cross-platform delivery",
       "contentType": "update",
       "updatedAt": "2026-04-14",
+      "publishedAt": "2026-04-14",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6318,6 +6527,9 @@
       "intent": "read about retained client versions and the desktop shell expand how teams can deploy mdwrk",
       "contentType": "update",
       "updatedAt": "2026-04-12",
+      "publishedAt": "2026-04-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6414,6 +6626,9 @@
       "intent": "read about screenshot matrix coverage helps mdwrk prove themes across viewports and workflows",
       "contentType": "update",
       "updatedAt": "2026-04-03",
+      "publishedAt": "2026-04-03",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6495,6 +6710,9 @@
       "intent": "read about extension compatibility gates turn mdwrk publishing into a clear quality signal",
       "contentType": "update",
       "updatedAt": "2026-04-01",
+      "publishedAt": "2026-04-01",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6591,6 +6809,9 @@
       "intent": "read about governed releases, ci evidence, and package docs give mdwrk a stronger public shape",
       "contentType": "update",
       "updatedAt": "2026-03-31",
+      "publishedAt": "2026-03-31",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6692,6 +6913,9 @@
       "intent": "read about build with the same mdwrk editor and renderer the client ships",
       "contentType": "update",
       "updatedAt": "2026-03-23",
+      "publishedAt": "2026-03-23",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6813,6 +7037,9 @@
       "intent": "read about pwa install, zoom controls, and preview refinements make mdwrk ready for daily use",
       "contentType": "update",
       "updatedAt": "2026-01-22",
+      "publishedAt": "2026-01-22",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6914,6 +7141,9 @@
       "intent": "read about responsive authoring, keyboard speed, and html export expand mdwrk in a single day",
       "contentType": "update",
       "updatedAt": "2026-01-21",
+      "publishedAt": "2026-01-21",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -6995,6 +7225,9 @@
       "intent": "read about meet the markdown workspace that turns writing, preview, and themes into one fast flow",
       "contentType": "update",
       "updatedAt": "2026-01-20",
+      "publishedAt": "2026-01-20",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7096,6 +7329,9 @@
       "intent": "read cobycloud from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-05-01",
+      "publishedAt": "2026-05-01",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7215,6 +7451,9 @@
       "intent": "read may 2026 from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-05-01",
+      "publishedAt": "2026-05-01",
+      "author": "May 2026",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7274,6 +7513,9 @@
       "intent": "read april 2026 from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-04-30",
+      "publishedAt": "2026-04-30",
+      "author": "April 2026",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7363,6 +7605,9 @@
       "intent": "read march 2026 from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-03-31",
+      "publishedAt": "2026-03-31",
+      "author": "March 2026",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7427,6 +7672,9 @@
       "intent": "read january 2026 from MdWrk",
       "contentType": "update",
       "updatedAt": "2026-01-22",
+      "publishedAt": "2026-01-22",
+      "author": "January 2026",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "What does this MdWrk update cover?",
@@ -7484,7 +7732,7 @@
   },
   {
     "sourcePath": "data/markdown/legal/privacy.md",
-    "sourceHash": "b0c379926180e52663a846d589a0e678725ecd140c8239f50d39a4e19ac5cac5",
+    "sourceHash": "21bb32623e2bdb135dc0cda673943672e9285d48fedd76342496a00d81ae43c0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/legal/privacy/",
@@ -7495,6 +7743,9 @@
       "intent": "read privacy policy",
       "contentType": "privacy",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How does MdWrk handle privacy-sensitive Markdown work?",
@@ -7555,7 +7806,7 @@
   },
   {
     "sourcePath": "data/markdown/legal/terms.md",
-    "sourceHash": "2f93a276f1b5db1fd1a0c537c60210b9a2906bbef3b676c686fca0901585faa5",
+    "sourceHash": "93287849b3cc217571b95fd1aeac9f9d8e0106519ec5964846cfe8ac5871bb62",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/legal/terms/",
@@ -7566,6 +7817,9 @@
       "intent": "read terms of service",
       "contentType": "privacy",
       "updatedAt": "2026-05-02",
+      "publishedAt": "2026-05-02",
+      "author": "CobyCloud",
+      "displayAuthor": true,
       "faqs": [
         {
           "question": "How does MdWrk handle privacy-sensitive Markdown work?",

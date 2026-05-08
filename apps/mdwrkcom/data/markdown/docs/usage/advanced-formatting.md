@@ -1,4 +1,4 @@
----
+﻿---
 title: Markdown Formatting
 slug: usage/advanced-formatting
 section: Features
@@ -7,6 +7,8 @@ order: 2
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.
 ---
 

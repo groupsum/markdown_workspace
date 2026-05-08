@@ -1,4 +1,4 @@
----
+﻿---
 title: Developer Documentation
 slug: product/developer-documentation
 section: Features
@@ -7,6 +7,8 @@ order: 17
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk developer documentation covers local setup, standalone packages, editor and renderer modules, extension authoring, theme packs, language packs, and package-level adoption paths.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react, @mdwrk/extension-host
 ---

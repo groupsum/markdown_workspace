@@ -1,4 +1,4 @@
----
+﻿---
 title: Markdown File Manager
 slug: product/markdown-file-manager
 section: Features
@@ -7,6 +7,8 @@ order: 13
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk manages Markdown projects, files, folders, preview navigation, and workspace entries so documents stay organized inside the same surface where they are written.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-workspace-files
 ---

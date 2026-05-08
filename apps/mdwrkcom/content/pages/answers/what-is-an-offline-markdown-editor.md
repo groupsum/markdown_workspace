@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/answers/what-is-an-offline-markdown-editor/"
 title: "What Is An Offline Markdown Editor? | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "what is an offline markdown editor"
 contentType: "faq"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces."
 faqs:
   - question: "What is an offline Markdown editor?"

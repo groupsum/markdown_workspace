@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Standard Markdown Editors
 slug: comparisons/mdwrk-vs-standard-markdown-editors
 section: Compares
@@ -7,6 +7,8 @@ order: 8
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk with standard Markdown editors when you need more than a single-file writing surface: workspace management, preview policy, extensions, themes, and reusable packages.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react, @mdwrk/extension-host
 ---

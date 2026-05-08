@@ -1,0 +1,35 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1061"
+number: 1061
+slug: "mdwrkcom-portable-lander-cache-policy-adoption"
+title: "mdwrkcom Portable Lander Cache Policy Adoption"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "mdwrkcom shall adopt the portable lander cache freshness and critical CSS delivery model rather than implementing a mdwrkcom-only caching system."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created mdwrkcom adoption decision for portable lander cache and critical CSS policy."
+    at: "2026-05-08T03:22:33Z"
+references: []
+body: |-
+  ## Decision
+
+  mdwrkcom shall adopt the portable lander cache freshness and critical CSS delivery model rather than implementing a mdwrkcom-only caching system.
+
+  mdwrkcom generated assets, including full CSS assets, shall use the reusable lander immutable asset pipeline when they can be content-fingerprinted. mdwrkcom route HTML and mutable discovery artifacts shall use the reusable mutable-revalidate policy, including ETag and Last-Modified metadata, while generally avoiding positive max-age.
+
+  mdwrkcom shall define its own critical CSS profile for the first viewport. That profile shall cover document tokens, body background and foreground, header and navigation, hero or route title layout, first-viewport typography, focus visibility, and contrast-critical basics. The mdwrkcom content pack shall receive the generated cache metadata artifacts needed for downstream hosts to preserve the same policy.
+
+  ## Rationale
+
+  mdwrkcom has site-specific route classes, discovery artifacts, and first-viewport content, but the caching and render-blocking mechanics are reusable lander concerns. Adopting the portable mechanism keeps the public site aligned with the package contract and keeps cache policy DRY across future lander consumers.
+
+  ## Consequences
+
+  mdwrkcom implementation work should configure the portable lander profile, validate generated header metadata, and mirror cache artifacts into the content pack. mdwrkcom-specific code should remain thin and should not duplicate generic cache classification, fingerprinting, or deferred stylesheet machinery.

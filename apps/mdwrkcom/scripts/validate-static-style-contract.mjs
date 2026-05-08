@@ -11,14 +11,67 @@ const sourceComponents = read('styles', 'components.css');
 const sourceBase = read('styles', 'base.css');
 const sourceMarkdown = read('styles', 'markdown-renderer.css');
 
+const hexToRgb = (hex) => {
+  const normalized = hex.replace('#', '');
+  return [
+    Number.parseInt(normalized.slice(0, 2), 16) / 255,
+    Number.parseInt(normalized.slice(2, 4), 16) / 255,
+    Number.parseInt(normalized.slice(4, 6), 16) / 255,
+  ];
+};
+
+const linearize = (value) => (
+  value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+);
+
+const relativeLuminance = (hex) => {
+  const [r, g, b] = hexToRgb(hex).map(linearize);
+  return (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+};
+
+const contrastRatio = (foreground, background) => {
+  const fg = relativeLuminance(foreground);
+  const bg = relativeLuminance(background);
+  const lighter = Math.max(fg, bg);
+  const darker = Math.min(fg, bg);
+  return (lighter + 0.05) / (darker + 0.05);
+};
+
+const assertAaContrast = (label, foreground, background, minimum = 4.5) => {
+  const ratio = contrastRatio(foreground, background);
+  assert.ok(
+    ratio >= minimum,
+    `${label} contrast ${ratio.toFixed(2)}:1 must be at least ${minimum}:1.`,
+  );
+};
+
 for (const token of [
   '--lander-app-bg:#f8fafc',
   '--lander-app-bg:#020617',
   '--lander-panel-muted:#eff6ff',
   '--lander-accent:#4f46e5',
   '--lander-accent:#818cf8',
+  '--lander-success:#047857',
+  '--lander-success:#34d399',
 ]) {
   assert.ok(css.includes(token), `Static stylesheet must include MdWrk lander theme token ${token}.`);
+}
+
+for (const contrastCase of [
+  ['light foreground', '#0f172a', '#f8fafc'],
+  ['light muted foreground', '#475569', '#f8fafc'],
+  ['light subtle foreground', '#475569', '#f8fafc'],
+  ['light success foreground', '#047857', '#f8fafc'],
+  ['light accent foreground', '#4f46e5', '#f8fafc'],
+  ['light accent alternate foreground', '#0e7490', '#f8fafc'],
+  ['dark foreground', '#f8fafc', '#020617'],
+  ['dark muted foreground', '#94a3b8', '#020617'],
+  ['dark subtle foreground', '#94a3b8', '#020617'],
+  ['dark success foreground', '#34d399', '#020617'],
+  ['dark accent foreground', '#818cf8', '#020617'],
+  ['dark accent alternate foreground', '#22d3ee', '#020617'],
+]) {
+  assertAaContrast(...contrastCase);
 }
 
 for (const className of [

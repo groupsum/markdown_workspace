@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/extension-runtime/"
 title: "Extension Runtime | MdWrk"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "markdown workspace extension runtime"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "The MdWrk extension runtime gives package authors a documented way to add commands, panes, settings, and integrations."
 faqs:
   - question: "What is the MdWrk extension runtime?"

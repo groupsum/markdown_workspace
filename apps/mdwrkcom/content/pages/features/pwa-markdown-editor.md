@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/features/pwa-markdown-editor/"
 title: "PWA Markdown Editor | MdWrk"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "pwa markdown editor"
 contentType: "feature"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "MdWrk uses the browser and installable PWA surface as an app-like Markdown workspace while preserving portable web delivery."
 faqs:
   - question: "Is MdWrk a PWA Markdown editor?"

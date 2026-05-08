@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/proof/browser-support/"
 title: "Browser Support Proof | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "mdwrk browser support proof"
 contentType: "docs"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Browser support proof connects product claims to static pages, package surfaces, and verification artifacts."
 faqs:
   - question: "How does MdWrk present browser support?"

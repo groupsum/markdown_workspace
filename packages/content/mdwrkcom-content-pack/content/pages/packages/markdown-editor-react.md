@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/packages/markdown-editor-react/"
 title: "Markdown Editor React Package | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "markdown editor react package"
 contentType: "package"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Use the React editor package when another product needs a reusable Markdown authoring surface."
 faqs:
   - question: "What is @mdwrk/markdown-editor-react?"

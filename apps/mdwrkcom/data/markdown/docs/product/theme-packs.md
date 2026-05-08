@@ -1,4 +1,4 @@
----
+﻿---
 title: Theme Packs
 slug: product/theme-packs
 section: Features
@@ -7,6 +7,8 @@ order: 16
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk theme packs use a shared token and class-name contract so editor, renderer, extension, and workspace surfaces can be styled without private app selectors.
 relatedApis: @mdwrk/theme-contract, @mdwrk/extension-theme-studio, @mdwrk/ui-tokens
 ---

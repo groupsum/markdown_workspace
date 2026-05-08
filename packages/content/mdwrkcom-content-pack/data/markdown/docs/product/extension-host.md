@@ -1,4 +1,4 @@
----
+﻿---
 title: Extension Host
 slug: product/extension-host
 section: Features
@@ -7,6 +7,8 @@ order: 15
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk includes a governed extension host with manifest, runtime, capability, trust, settings, command, view, diagnostics, theme, and language-pack surfaces.
 relatedApis: @mdwrk/extension-host, @mdwrk/extension-runtime, @mdwrk/extension-manifest, @mdwrk/extension-manager
 ---

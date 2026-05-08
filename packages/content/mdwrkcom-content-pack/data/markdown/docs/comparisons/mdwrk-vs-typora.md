@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Typora
 slug: comparisons/mdwrk-vs-typora
 section: Compares
@@ -7,6 +7,8 @@ order: 2
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.
 relatedApis: @mdwrk/markdown-editor-react, @mdwrk/markdown-renderer-react
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/proof/markdown-support/"
 title: "Markdown Support Proof | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "mdwrk markdown support proof"
 contentType: "docs"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Markdown support proof keeps the product page, renderer package, editor package, and static examples aligned."
 faqs:
   - question: "How does MdWrk prove Markdown support?"

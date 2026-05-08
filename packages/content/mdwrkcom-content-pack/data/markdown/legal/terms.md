@@ -1,7 +1,8 @@
----
+﻿---
 title: Terms of Service
 date: 2026-05-02
 status: published
+author: CobyCloud
 lastUpdated: 2024-05-20
 ---
 # Terms of Service

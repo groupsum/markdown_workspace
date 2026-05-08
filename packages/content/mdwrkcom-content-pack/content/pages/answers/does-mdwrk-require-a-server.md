@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/answers/does-mdwrk-require-a-server/"
 title: "Does MdWrk Require A Server?"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "does mdwrk require a server"
 contentType: "faq"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "A direct answer for readers checking MdWrk's local-first editing boundary."
 faqs:
   - question: "Does MdWrk require a server?"

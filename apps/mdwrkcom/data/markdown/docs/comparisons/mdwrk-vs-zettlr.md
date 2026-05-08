@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Zettlr
 slug: comparisons/mdwrk-vs-zettlr
 section: Compares
@@ -7,6 +7,8 @@ order: 5
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and Zettlr when choosing between a local-first Markdown workspace and a research-oriented Markdown writing environment.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-renderer-core
 ---

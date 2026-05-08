@@ -1,4 +1,4 @@
----
+﻿---
 title: Theme Pack Authoring
 slug: authoring/theme-packs
 section: Authoring
@@ -7,6 +7,7 @@ order: 3
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: Theme pack authoring uses MdWrk theme contracts, Theme Studio workflows, token exports, and package-ready surfaces for consistent editor and preview styling.
 ---
 

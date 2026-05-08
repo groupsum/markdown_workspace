@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/packages/extension-runtime/"
 title: "Extension Runtime Package | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "extension runtime package"
 contentType: "package"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "Use the extension runtime package when building governed commands, panes, settings, and integration surfaces."
 faqs:
   - question: "What is @mdwrk/extension-runtime?"

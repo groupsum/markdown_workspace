@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs MarkText
 slug: comparisons/mdwrk-vs-marktext
 section: Compares
@@ -7,6 +7,8 @@ order: 4
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and MarkText when choosing between a local-first Markdown workspace with reusable packages and a focused desktop Markdown editor.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/markdown-editor-react
 ---

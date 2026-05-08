@@ -1,4 +1,4 @@
----
+﻿---
 title: Browser Use
 slug: getting-started/browser-use
 section: Getting Started
@@ -7,6 +7,7 @@ order: 2
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: The browser path runs the MdWrk client directly in a supported browser, keeps documents local by default, and remains usable offline after app assets are cached.
 ---
 

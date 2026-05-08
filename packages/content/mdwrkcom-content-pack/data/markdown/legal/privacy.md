@@ -1,7 +1,8 @@
----
+﻿---
 title: Privacy Policy
 date: 2026-05-02
 status: published
+author: CobyCloud
 lastUpdated: 2024-05-20
 ---
 # Privacy Policy

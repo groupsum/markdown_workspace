@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/answers/what-is-a-local-first-markdown-workspace/"
 title: "What Is A Local-First Markdown Workspace? | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "what is a local-first markdown workspace"
 contentType: "faq"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary."
 faqs:
   - question: "What is a local-first Markdown workspace?"

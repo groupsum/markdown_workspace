@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Notion
 slug: comparisons/mdwrk-vs-notion
 section: Compares
@@ -7,6 +7,8 @@ order: 6
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and Notion when choosing between local Markdown files and a hosted collaborative workspace.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-workspace-files
 ---

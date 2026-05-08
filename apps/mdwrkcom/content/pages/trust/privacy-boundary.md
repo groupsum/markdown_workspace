@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/trust/privacy-boundary/"
 title: "Privacy Boundary | MdWrk"
@@ -8,6 +8,7 @@ entity: "MdWrk"
 intent: "mdwrk privacy boundary"
 contentType: "privacy"
 updatedAt: "2026-05-05"
+author: CobyCloud
 subtitle: "The privacy boundary explains what stays local by default and when content intentionally crosses into an integration."
 faqs:
   - question: "What is MdWrk's privacy boundary?"

@@ -1,4 +1,4 @@
----
+﻿---
 title: MdWrk Vs Obsidian
 slug: comparisons/mdwrk-vs-obsidian
 section: Compares
@@ -7,6 +7,8 @@ order: 1
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.
 relatedApis: @mdwrk/mdwrkspace, @mdwrk/extension-host
 ---

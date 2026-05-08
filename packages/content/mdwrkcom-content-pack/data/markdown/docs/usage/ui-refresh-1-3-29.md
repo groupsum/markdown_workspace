@@ -1,4 +1,4 @@
----
+﻿---
 title: UI Refresh 1.3.29
 slug: archive/ui-refresh-1-3-29
 section: Archive
@@ -7,6 +7,7 @@ order: 26
 toc: true
 date: 2026-05-02
 status: published
+author: CobyCloud
 excerpt: This release focuses on visual clarity, modal usability, and responsive behavior improvements-
 ---
 

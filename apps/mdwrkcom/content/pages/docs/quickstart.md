@@ -1,13 +1,14 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/docs/quickstart/"
-title: "MdWrk quickstart — Write and preview Markdown locally"
+title: "MdWrk quickstart â€” Write and preview Markdown locally"
 description: "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit."
 h1: "MdWrk quickstart"
 entity: "MdWrk"
 intent: "learn how to start using MdWrk"
 contentType: "docs"
 updatedAt: "2026-05-04"
+author: CobyCloud
 locale: "en"
 localeGroup: "docs-quickstart"
 subtitle: "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries."

@@ -1,4 +1,4 @@
----
+﻿---
 title: Rendering and Preview
 slug: usage/rendering-and-preview
 section: Features
@@ -7,6 +7,8 @@ order: 3
 toc: true
 date: 2026-05-03
 status: published
+author: CobyCloud
+displayAuthor: false
 excerpt: MdWrk turns Markdown into a live rendered preview with internal-link navigation, profile-aware HTML handling, policy advisories, and export paths that stay aligned with the on-screen renderer.
 ---
 

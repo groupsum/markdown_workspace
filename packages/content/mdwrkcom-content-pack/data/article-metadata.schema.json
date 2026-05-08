@@ -36,6 +36,8 @@
         "date": { "$ref": "#/$defs/isoDate" },
         "status": { "$ref": "#/$defs/articleStatus" },
         "excerpt": { "$ref": "#/$defs/excerpt" },
+        "author": { "$ref": "#/$defs/nonEmptyString" },
+        "displayAuthor": { "type": "boolean" },
         "featuredImage": { "$ref": "#/$defs/imagePath" },
         "featuredImageAlt": { "$ref": "#/$defs/nonEmptyString" },
         "relatedApis": { "$ref": "#/$defs/commaList" }

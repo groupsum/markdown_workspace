@@ -1,4 +1,4 @@
----
+﻿---
 schema: "mdwrk.page.v1"
 slug: "/compare/mdwrk-vs-typora/"
 title: "MdWrk Vs Typora | Markdown Workspace Comparison"
@@ -8,6 +8,8 @@ entity: "MdWrk"
 intent: "mdwrk vs typora"
 contentType: "comparison"
 updatedAt: "2026-05-05"
+author: CobyCloud
+displayAuthor: false
 subtitle: "Use this comparison when choosing between a workspace and a focused Markdown editor."
 faqs:
   - question: "When should I choose MdWrk over Typora?"
