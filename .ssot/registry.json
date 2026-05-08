@@ -10044,14 +10044,14 @@
       "id": "feat:lander-cache-resource-classification",
       "title": "Lander cache resource classification",
       "description": "Classify portable lander outputs as immutable, mutable-revalidate, or no-store for reusable cache policy decisions.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10059,22 +10059,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-cache-resource-classification"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-immutable-fingerprinted-assets",
       "title": "Lander immutable fingerprinted assets",
       "description": "Emit content-fingerprinted CSS, JavaScript, image, font, and static asset URLs that can be served with long max-age and immutable semantics.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10082,22 +10087,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-immutable-fingerprinted-assets"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-mutable-validator-metadata",
       "title": "Lander mutable validator metadata",
       "description": "Generate ETag and Last-Modified metadata for mutable-revalidate lander resources while avoiding default positive max-age.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10105,22 +10115,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-mutable-validator-metadata"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-cache-header-manifest",
       "title": "Lander cache header manifest",
       "description": "Emit a machine-readable cache manifest with path, cache class, content hash, last modified timestamp, and intended headers for each generated output.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10128,22 +10143,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-cache-header-manifest"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-critical-css-inline-defer",
       "title": "Lander critical CSS inline and defer",
       "description": "Inline first-viewport critical CSS and defer the complete stylesheet through the portable preload activation pattern with a noscript fallback.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10151,22 +10171,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-critical-css-inline-defer"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:lander-cache-policy-validation",
       "title": "Lander cache policy validation",
       "description": "Validate portable lander cache classes, fingerprinted immutable assets, mutable validators, freshness requirements, and critical CSS delivery rules.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10174,22 +10199,27 @@
       "spec_ids": [
         "spc:2081"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:lander-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-lander-cache-policy-adoption",
       "title": "mdwrkcom lander cache policy adoption",
       "description": "Configure mdwrkcom to adopt the portable lander cache freshness and critical CSS contract instead of a site-local caching implementation.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10197,22 +10227,27 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-lander-cache-policy-adoption"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-static-css-fingerprinted-delivery",
       "title": "mdwrkcom static CSS fingerprinted delivery",
       "description": "Replace the mdwrkcom static stylesheet version-query URL with a content-fingerprinted immutable stylesheet URL.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10220,22 +10255,27 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-static-css-fingerprinted-delivery"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-critical-css-profile",
       "title": "mdwrkcom critical CSS profile",
       "description": "Define the mdwrkcom first-viewport critical CSS boundary for document tokens, body, header, navigation, hero or route title, typography, focus, and contrast basics.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10243,22 +10283,27 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-critical-css-profile"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-mutable-route-validator-headers",
       "title": "mdwrkcom mutable route validator headers",
       "description": "Classify mdwrkcom route HTML and discovery artifacts as mutable-revalidate with Cache-Control no-cache, ETag, and Last-Modified metadata.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10266,22 +10311,27 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-mutable-route-validator-headers"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-cache-header-artifact-export",
       "title": "mdwrkcom cache header artifact export",
       "description": "Export mdwrkcom cache manifest and header metadata artifacts and mirror them into the mdwrkcom content pack.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10289,22 +10339,27 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-cache-header-artifact-export"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     },
     {
       "id": "feat:mdwrkcom-cache-policy-validation",
       "title": "mdwrkcom cache policy validation",
       "description": "Validate mdwrkcom generated output against the portable cache policy and mdwrkcom critical CSS profile in CI.",
-      "implementation_status": "absent",
+      "implementation_status": "implemented",
       "lifecycle": {
         "stage": "active",
         "replacement_feature_ids": [],
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
         "target_claim_tier": "T2",
         "target_lifecycle_stage": "active"
@@ -10312,8 +10367,13 @@
       "spec_ids": [
         "spc:2082"
       ],
-      "claim_ids": [],
-      "test_ids": [],
+      "claim_ids": [
+        "clm:mdwrkcom-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
       "requires": []
     }
   ],
@@ -12443,6 +12503,82 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-static-style-wcag-contrast"
       ]
+    },
+    {
+      "id": "tst:packages-lander-lander-core-cache-smoke",
+      "title": "Lander core cache and critical CSS smoke test",
+      "status": "passing",
+      "kind": "unit",
+      "path": "packages/lander/lander-core/tests/run-smoke.mjs",
+      "feature_ids": [
+        "feat:lander-cache-resource-classification",
+        "feat:lander-immutable-fingerprinted-assets",
+        "feat:lander-mutable-validator-metadata",
+        "feat:lander-cache-header-manifest",
+        "feat:lander-critical-css-inline-defer",
+        "feat:lander-cache-policy-validation",
+        "feat:mdwrkcom-lander-cache-policy-adoption",
+        "feat:mdwrkcom-static-css-fingerprinted-delivery",
+        "feat:mdwrkcom-critical-css-profile",
+        "feat:mdwrkcom-mutable-route-validator-headers",
+        "feat:mdwrkcom-cache-header-artifact-export",
+        "feat:mdwrkcom-cache-policy-validation"
+      ],
+      "claim_ids": [
+        "clm:lander-cache-resource-classification",
+        "clm:lander-immutable-fingerprinted-assets",
+        "clm:lander-mutable-validator-metadata",
+        "clm:lander-cache-header-manifest",
+        "clm:lander-critical-css-inline-defer",
+        "clm:lander-cache-policy-validation",
+        "clm:mdwrkcom-lander-cache-policy-adoption",
+        "clm:mdwrkcom-static-css-fingerprinted-delivery",
+        "clm:mdwrkcom-critical-css-profile",
+        "clm:mdwrkcom-mutable-route-validator-headers",
+        "clm:mdwrkcom-cache-header-artifact-export",
+        "clm:mdwrkcom-cache-policy-validation"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-static-cache-policy-ci",
+      "title": "mdwrkcom static cache policy CI",
+      "status": "passing",
+      "kind": "integration",
+      "path": "apps/mdwrkcom/src/cli.mjs",
+      "feature_ids": [
+        "feat:lander-cache-resource-classification",
+        "feat:lander-immutable-fingerprinted-assets",
+        "feat:lander-mutable-validator-metadata",
+        "feat:lander-cache-header-manifest",
+        "feat:lander-critical-css-inline-defer",
+        "feat:lander-cache-policy-validation",
+        "feat:mdwrkcom-lander-cache-policy-adoption",
+        "feat:mdwrkcom-static-css-fingerprinted-delivery",
+        "feat:mdwrkcom-critical-css-profile",
+        "feat:mdwrkcom-mutable-route-validator-headers",
+        "feat:mdwrkcom-cache-header-artifact-export",
+        "feat:mdwrkcom-cache-policy-validation"
+      ],
+      "claim_ids": [
+        "clm:lander-cache-resource-classification",
+        "clm:lander-immutable-fingerprinted-assets",
+        "clm:lander-mutable-validator-metadata",
+        "clm:lander-cache-header-manifest",
+        "clm:lander-critical-css-inline-defer",
+        "clm:lander-cache-policy-validation",
+        "clm:mdwrkcom-lander-cache-policy-adoption",
+        "clm:mdwrkcom-static-css-fingerprinted-delivery",
+        "clm:mdwrkcom-critical-css-profile",
+        "clm:mdwrkcom-mutable-route-validator-headers",
+        "clm:mdwrkcom-cache-header-artifact-export",
+        "clm:mdwrkcom-cache-policy-validation"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
     }
   ],
   "claims": [
@@ -14178,6 +14314,234 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-static-style-wcag-contrast"
       ]
+    },
+    {
+      "id": "clm:lander-cache-resource-classification",
+      "title": "Lander cache resource classification is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-cache-resource-classification"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:lander-immutable-fingerprinted-assets",
+      "title": "Lander immutable fingerprinted assets are implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-immutable-fingerprinted-assets"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:lander-mutable-validator-metadata",
+      "title": "Lander mutable validator metadata is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-mutable-validator-metadata"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:lander-cache-header-manifest",
+      "title": "Lander cache header manifest is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-cache-header-manifest"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:lander-critical-css-inline-defer",
+      "title": "Lander critical CSS inline and defer is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-critical-css-inline-defer"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:lander-cache-policy-validation",
+      "title": "Lander cache policy validation is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:lander-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-lander-cache-policy-adoption",
+      "title": "mdwrkcom adopts the lander cache policy",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-lander-cache-policy-adoption"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-static-css-fingerprinted-delivery",
+      "title": "mdwrkcom static CSS uses fingerprinted delivery",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-static-css-fingerprinted-delivery"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-critical-css-profile",
+      "title": "mdwrkcom critical CSS profile is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-critical-css-profile"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-mutable-route-validator-headers",
+      "title": "mdwrkcom mutable routes have validator header metadata",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-mutable-route-validator-headers"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-cache-header-artifact-export",
+      "title": "mdwrkcom cache header artifact export is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-cache-header-artifact-export"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
+    },
+    {
+      "id": "clm:mdwrkcom-cache-policy-validation",
+      "title": "mdwrkcom cache policy validation is implemented",
+      "status": "evidenced",
+      "tier": "T2",
+      "kind": "conformance",
+      "description": "",
+      "feature_ids": [
+        "feat:mdwrkcom-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke",
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ],
+      "evidence_ids": [
+        "evd:packages-lander-lander-core-cache-smoke",
+        "evd:apps-mdwrkcom-cache-header-manifest"
+      ]
     }
   ],
   "evidence": [
@@ -15552,6 +15916,56 @@
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs"
       ]
+    },
+    {
+      "id": "evd:packages-lander-lander-core-cache-smoke",
+      "title": "Lander core cache smoke test run",
+      "status": "passed",
+      "kind": "test_run",
+      "tier": "T2",
+      "path": "packages/lander/lander-core/tests/run-smoke.mjs",
+      "claim_ids": [
+        "clm:lander-cache-resource-classification",
+        "clm:lander-immutable-fingerprinted-assets",
+        "clm:lander-mutable-validator-metadata",
+        "clm:lander-cache-header-manifest",
+        "clm:lander-critical-css-inline-defer",
+        "clm:lander-cache-policy-validation",
+        "clm:mdwrkcom-lander-cache-policy-adoption",
+        "clm:mdwrkcom-static-css-fingerprinted-delivery",
+        "clm:mdwrkcom-critical-css-profile",
+        "clm:mdwrkcom-mutable-route-validator-headers",
+        "clm:mdwrkcom-cache-header-artifact-export",
+        "clm:mdwrkcom-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-core-cache-smoke"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-cache-header-manifest",
+      "title": "mdwrkcom generated cache header manifest",
+      "status": "passed",
+      "kind": "artifact",
+      "tier": "T2",
+      "path": "apps/mdwrkcom/dist-static/cache-header-manifest.json",
+      "claim_ids": [
+        "clm:lander-cache-resource-classification",
+        "clm:lander-immutable-fingerprinted-assets",
+        "clm:lander-mutable-validator-metadata",
+        "clm:lander-cache-header-manifest",
+        "clm:lander-critical-css-inline-defer",
+        "clm:lander-cache-policy-validation",
+        "clm:mdwrkcom-lander-cache-policy-adoption",
+        "clm:mdwrkcom-static-css-fingerprinted-delivery",
+        "clm:mdwrkcom-critical-css-profile",
+        "clm:mdwrkcom-mutable-route-validator-headers",
+        "clm:mdwrkcom-cache-header-artifact-export",
+        "clm:mdwrkcom-cache-policy-validation"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-static-cache-policy-ci"
+      ]
     }
   ],
   "issues": [
@@ -16084,6 +16498,37 @@
         "feat:desktop-tabs",
         "feat:desktop-window-state-persistence",
         "feat:mdwrk-desktop-app-shell"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:lander-wcag-aa-contrast-current",
+      "title": "Lander WCAG AA Contrast Current Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:lander-wcag-aa-contrast"
+      ],
+      "profile_ids": []
+    },
+    {
+      "id": "bnd:portable-lander-cache-critical-css-next",
+      "title": "Portable Lander Cache Critical CSS Next Boundary",
+      "status": "frozen",
+      "frozen": true,
+      "feature_ids": [
+        "feat:lander-cache-resource-classification",
+        "feat:lander-immutable-fingerprinted-assets",
+        "feat:lander-mutable-validator-metadata",
+        "feat:lander-cache-header-manifest",
+        "feat:lander-critical-css-inline-defer",
+        "feat:lander-cache-policy-validation",
+        "feat:mdwrkcom-lander-cache-policy-adoption",
+        "feat:mdwrkcom-static-css-fingerprinted-delivery",
+        "feat:mdwrkcom-critical-css-profile",
+        "feat:mdwrkcom-mutable-route-validator-headers",
+        "feat:mdwrkcom-cache-header-artifact-export",
+        "feat:mdwrkcom-cache-policy-validation"
       ],
       "profile_ids": []
     }

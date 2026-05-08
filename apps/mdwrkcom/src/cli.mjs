@@ -8,6 +8,13 @@ import {
   extractMarkdownHeadings,
   renderMarkdownToHtmlSync,
 } from '../../../packages/renderer/markdown-renderer-core/dist/index.js';
+import {
+  buildCacheHeaderManifest,
+  defineCriticalCssProfile,
+  renderCriticalCssStyle,
+  renderDeferredStylesheetLink,
+  sha256Hex,
+} from '../../../packages/lander/lander-core/dist/index.js';
 
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -61,6 +68,7 @@ const DISCOVERY_ARTIFACTS = Object.freeze([
   'content-index.json',
   'content-registry.json',
   'jsonld-graph.json',
+  'cache-header-manifest.json',
 ]);
 
 const CONTENT_TYPES = new Set([
@@ -230,8 +238,28 @@ const routeOutputDir = (slug) => slug === '/' ? distRoot : path.join(distRoot, s
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
 
-const staticStylesheetHref = `/assets/static.css?v=${encodeURIComponent(packageJson.version)}`;
-const staticStylesheetTag = `<link rel="stylesheet" href="${staticStylesheetHref}">`;
+let staticStylesheetHref = `/assets/static.css?v=${encodeURIComponent(packageJson.version)}`;
+
+const mdwrkcomCriticalCssProfile = defineCriticalCssProfile({
+  id: 'mdwrkcom-static-shell',
+  css: `
+    html{background:#f8fafc;color:#102033}
+    html[data-lander-theme="lander-dark"]{background:#0b1220;color:#edf4ff}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .app-shell{min-height:100vh;background:var(--static-bg,#f8fafc);color:var(--static-text,#102033)}
+    .navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid rgba(15,23,42,.16)}
+    .app-main{min-height:60vh}
+    .hero-section,.docs-main{position:relative}
+    .hero-inner,.docs-content-wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) 1rem}
+    .hero-heading,.docs-title,.blog-post-title{margin:0;color:inherit;line-height:1.05;font-weight:800;letter-spacing:0}
+    .hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted,#344559)}
+  `,
+});
+
+const staticStylesheetTags = (href) => [
+  renderCriticalCssStyle(mdwrkcomCriticalCssProfile),
+  renderDeferredStylesheetLink(href),
+].join('\n    ');
 
 const copyStaticStylesheet = () => {
   if (!fs.existsSync(staticStylesheetSource)) {
@@ -239,21 +267,27 @@ const copyStaticStylesheet = () => {
       'missing source stylesheet: apps/mdwrkcom/styles/static.css',
     ]);
   }
+  const content = fs.readFileSync(staticStylesheetSource);
+  const fingerprint = sha256Hex(content).slice(0, 16);
   const target = path.join(distRoot, 'assets', 'static.css');
+  const fingerprintedTarget = path.join(distRoot, 'assets', `static.${fingerprint}.css`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.copyFileSync(staticStylesheetSource, target);
+  fs.writeFileSync(target, content);
+  fs.writeFileSync(fingerprintedTarget, content);
+  staticStylesheetHref = `/assets/static.${fingerprint}.css`;
+  return staticStylesheetHref;
 };
 
-const extractViteAssetTags = () => {
+const extractViteAssetTags = (stylesheetHref = staticStylesheetHref) => {
   const indexPath = path.join(distRoot, 'index.html');
-  const tags = [staticStylesheetTag];
+  const tags = [staticStylesheetTags(stylesheetHref)];
   if (preserveAssets && fs.existsSync(indexPath)) {
     const html = fs.readFileSync(indexPath, 'utf8');
     tags.push(...[
       ...html.matchAll(/<link\b[^>]*\bhref="(?:\.?\/)?assets\/[^"]+\.css"[^>]*>/gi),
     ].map((match) => {
       const tag = match[0].replace(/\bhref="\.?\/?assets\//i, 'href="/assets/');
-      return /href="\/assets\/static\.css(?:\?[^"]*)?"/i.test(tag) ? staticStylesheetTag : tag;
+      return /href="\/assets\/static(?:\.[a-f0-9]+)?\.css(?:\?[^"]*)?"/i.test(tag) ? staticStylesheetTags(stylesheetHref) : tag;
     }));
   }
   const assetsDir = path.join(distRoot, 'assets');
@@ -263,7 +297,8 @@ const extractViteAssetTags = () => {
       .sort()
     : [];
   for (const assetPath of cssAssets) {
-    const href = assetPath === 'assets/static.css' ? staticStylesheetHref : `/${assetPath}`;
+    if (/^assets\/static(?:\.[a-f0-9]+)?\.css$/i.test(assetPath)) continue;
+    const href = `/${assetPath}`;
     if (!tags.some(tag => tag.includes(`href="${href}"`))) {
       tags.push(`<link rel="stylesheet" crossorigin href="${href}">`);
     }
@@ -2401,13 +2436,56 @@ const copyDir = (source, target) => {
   }
 };
 
+const contentTypeForPath = (filePath) => {
+  const normalized = filePath.replace(/\\/g, '/').toLowerCase();
+  if (normalized.endsWith('.html')) return 'text/html; charset=utf-8';
+  if (normalized.endsWith('.css')) return 'text/css; charset=utf-8';
+  if (normalized.endsWith('.js') || normalized.endsWith('.mjs')) return 'text/javascript; charset=utf-8';
+  if (normalized.endsWith('.json')) return 'application/json; charset=utf-8';
+  if (normalized.endsWith('.xml')) return 'application/xml; charset=utf-8';
+  if (normalized.endsWith('.txt') || normalized.endsWith('.md')) return 'text/plain; charset=utf-8';
+  if (normalized.endsWith('.svg')) return 'image/svg+xml';
+  if (normalized.endsWith('.png')) return 'image/png';
+  if (normalized.endsWith('.jpg') || normalized.endsWith('.jpeg')) return 'image/jpeg';
+  if (normalized.endsWith('.webp')) return 'image/webp';
+  if (normalized.endsWith('.ico')) return 'image/x-icon';
+  if (normalized.endsWith('.woff2')) return 'font/woff2';
+  return 'application/octet-stream';
+};
+
+const resourcePathForDistFile = (filePath) => `/${path.relative(distRoot, filePath).replace(/\\/g, '/')}`;
+
+const buildCacheManifestArtifact = () => {
+  const manifestPath = path.join(distRoot, 'cache-header-manifest.json');
+  const inputs = collectFiles(distRoot, file => path.resolve(file) !== path.resolve(manifestPath))
+    .map(file => ({
+      path: resourcePathForDistFile(file),
+      content: fs.readFileSync(file),
+      contentType: contentTypeForPath(file),
+      lastModified: fs.statSync(file).mtime,
+    }));
+  const manifest = buildCacheHeaderManifest(inputs);
+  writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  return manifest;
+};
+
+const detectBuiltStaticStylesheetHref = () => {
+  const assetsDir = path.join(distRoot, 'assets');
+  if (!fs.existsSync(assetsDir)) return staticStylesheetHref;
+  const hashed = fs.readdirSync(assetsDir)
+    .filter(file => /^static\.[a-f0-9]{8,}\.css$/i.test(file))
+    .sort()[0];
+  staticStylesheetHref = hashed ? `/assets/${hashed}` : staticStylesheetHref;
+  return staticStylesheetHref;
+};
+
 const build = () => {
   const registry = readStaticRegistry();
   if (!preserveAssets) fs.rmSync(distRoot, { recursive: true, force: true });
   fs.mkdirSync(distRoot, { recursive: true });
   copyDir(publicRoot, distRoot);
-  copyStaticStylesheet();
-  const assetTags = extractViteAssetTags();
+  const stylesheetHref = copyStaticStylesheet();
+  const assetTags = extractViteAssetTags(stylesheetHref);
 
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
@@ -2501,6 +2579,7 @@ const build = () => {
       '',
     ]),
   ].join('\n'));
+  buildCacheManifestArtifact();
   console.log(`Built MdWrk static lander: ${registry.entries.length} pages -> ${path.relative(repoRoot, distRoot)}`);
 };
 
@@ -2548,6 +2627,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   const contentIndex = readJsonArtifact('content-index.json', failures) ?? [];
   const contentRegistry = readJsonArtifact('content-registry.json', failures) ?? [];
   const jsonLdGraph = readJsonArtifact('jsonld-graph.json', failures);
+  const cacheManifest = readJsonArtifact('cache-header-manifest.json', failures);
   const indexUrls = normalizeUrlSet(Array.isArray(contentIndex) ? contentIndex.map(entry => entry.url) : []);
   const registryCanonicals = normalizeUrlSet(Array.isArray(contentRegistry) ? contentRegistry.map(entry => entry.discovery?.canonical) : []);
   const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
@@ -2557,6 +2637,27 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
 
   for (const artifact of DISCOVERY_ARTIFACTS) {
     if (!fs.existsSync(path.join(distRoot, artifact))) failures.push(`missing dist/${artifact}`);
+  }
+  const cacheEntries = Array.isArray(cacheManifest?.entries) ? cacheManifest.entries : [];
+  const cacheEntryByPath = new Map(cacheEntries.map(entry => [entry.path, entry]));
+  const staticHashedPath = detectBuiltStaticStylesheetHref();
+  const staticHashedEntry = cacheEntryByPath.get(staticHashedPath);
+  if (!cacheManifest || cacheManifest.version !== 1) failures.push('cache-header-manifest.json: missing version 1 manifest');
+  if (!staticHashedEntry) failures.push(`cache-header-manifest.json: missing ${staticHashedPath}`);
+  if (staticHashedEntry && (staticHashedEntry.resourceClass !== 'immutable' || !/max-age=(?:[3-9]\d{6,}|[1-9]\d{7,})/.test(staticHashedEntry.cacheControl) || !/immutable/.test(staticHashedEntry.cacheControl))) {
+    failures.push(`${staticHashedPath}: immutable cache policy must include at least 30 days and immutable`);
+  }
+  for (const mutablePath of ['/sitemap.xml', '/robots.txt', '/llms.txt', '/llms-full.txt', '/content-index.json', '/content-registry.json', '/jsonld-graph.json']) {
+    const entry = cacheEntryByPath.get(mutablePath);
+    if (!entry) failures.push(`cache-header-manifest.json: missing ${mutablePath}`);
+    else if (entry.resourceClass !== 'mutable-revalidate' || entry.cacheControl !== 'no-cache') {
+      failures.push(`${mutablePath}: mutable artifact must use no-cache revalidation`);
+    }
+  }
+  for (const entry of cacheEntries) {
+    if (entry.resourceClass !== 'no-store' && (!entry.headers?.ETag || !entry.headers?.['Last-Modified'])) {
+      failures.push(`${entry.path}: cache manifest entry missing ETag or Last-Modified`);
+    }
   }
   for (const entry of indexable) {
     if (!sitemap.includes(`<loc>${escapeXml(entry.frontmatter.canonical)}</loc>`)) failures.push(`${entry.frontmatter.slug}: sitemap missing canonical URL`);
@@ -2591,6 +2692,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
 const verify = () => {
   const registry = readStaticRegistry();
   const failures = [];
+  detectBuiltStaticStylesheetHref();
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
   const distFiles = collectFiles(distRoot, file => true);

@@ -26,6 +26,7 @@ export const mdwrkcomContentPack: MdwrkcomContentPackLayout = Object.freeze({
   generatedArtifacts: Object.freeze([
     "content-index.json",
     "content-registry.json",
+    "cache-header-manifest.json",
     "jsonld-graph.json",
     "llms.txt",
     "llms-full.txt",

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "kind": "boundary_snapshot",
+  "generated_at": "2026-05-08T05:08:59Z",
+  "registry_path": ".ssot/registry.json",
+  "registry_sha256": "a8e639dccbf1459c012e2392930ed4884ef5b4ef023acca79178cbc74c18ba3f",
+  "boundary": {
+    "id": "bnd:lander-wcag-aa-contrast-current",
+    "title": "Lander WCAG AA Contrast Current Boundary",
+    "status": "frozen",
+    "frozen": true,
+    "feature_ids": [
+      "feat:lander-wcag-aa-contrast"
+    ],
+    "profile_ids": []
+  },
+  "features": [
+    {
+      "id": "feat:lander-wcag-aa-contrast",
+      "title": "Lander WCAG 2.1 AA contrast",
+      "description": "Ensure MdWrk public lander light and dark themes provide WCAG 2.1 AA compliant foreground/background contrast for normal text, including hero metadata, feature accents, article metadata, navigation, and documentation copy.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2007",
+        "spc:2080"
+      ],
+      "claim_ids": [
+        "clm:lander-wcag-aa-contrast"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-style-contract.mjs"
+      ],
+      "requires": [
+        "feat:accessibility-shell-baseline"
+      ]
+    }
+  ],
+  "summary": {
+    "boundary_id": "bnd:lander-wcag-aa-contrast-current",
+    "feature_count": 1,
+    "profile_count": 0,
+    "frozen": true,
+    "status": "frozen"
+  }
+}
