@@ -10176,7 +10176,8 @@
       ],
       "test_ids": [
         "tst:packages-lander-lander-core-cache-smoke",
-        "tst:apps-mdwrkcom-static-cache-policy-ci"
+        "tst:apps-mdwrkcom-static-cache-policy-ci",
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ],
       "requires": []
     },
@@ -10260,7 +10261,8 @@
       ],
       "test_ids": [
         "tst:packages-lander-lander-core-cache-smoke",
-        "tst:apps-mdwrkcom-static-cache-policy-ci"
+        "tst:apps-mdwrkcom-static-cache-policy-ci",
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ],
       "requires": []
     },
@@ -10288,7 +10290,8 @@
       ],
       "test_ids": [
         "tst:packages-lander-lander-core-cache-smoke",
-        "tst:apps-mdwrkcom-static-cache-policy-ci"
+        "tst:apps-mdwrkcom-static-cache-policy-ci",
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ],
       "requires": []
     },
@@ -12579,6 +12582,24 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-cache-header-manifest"
       ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs",
+      "title": "MdWrkcom static first-paint theme validation",
+      "status": "passing",
+      "kind": "static",
+      "path": "apps/mdwrkcom/scripts/validate-static-first-paint-theme.mjs",
+      "feature_ids": [
+        "feat:mdwrkcom-critical-css-profile",
+        "feat:mdwrkcom-static-css-fingerprinted-delivery",
+        "feat:lander-critical-css-inline-defer"
+      ],
+      "claim_ids": [
+        "clm:mdwrkcom-critical-css-profile"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
+      ]
     }
   ],
   "claims": [
@@ -14479,11 +14500,13 @@
       ],
       "test_ids": [
         "tst:packages-lander-lander-core-cache-smoke",
-        "tst:apps-mdwrkcom-static-cache-policy-ci"
+        "tst:apps-mdwrkcom-static-cache-policy-ci",
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ],
       "evidence_ids": [
         "evd:packages-lander-lander-core-cache-smoke",
-        "evd:apps-mdwrkcom-cache-header-manifest"
+        "evd:apps-mdwrkcom-cache-header-manifest",
+        "evd:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ]
     },
     {
@@ -15966,6 +15989,20 @@
       "test_ids": [
         "tst:apps-mdwrkcom-static-cache-policy-ci"
       ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs",
+      "title": "MdWrkcom static first-paint theme validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T2",
+      "path": "apps/mdwrkcom/scripts/validate-static-first-paint-theme.mjs",
+      "claim_ids": [
+        "clm:mdwrkcom-critical-css-profile"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
+      ]
     }
   ],
   "issues": [
@@ -16034,6 +16071,33 @@
       "claim_ids": [],
       "test_ids": [],
       "evidence_ids": [],
+      "risk_ids": [],
+      "release_blocking": false
+    },
+    {
+      "id": "iss:mdwrkcom-static-first-paint-theme-flash",
+      "title": "MdWrkcom static pages flash light theme before dark first paint",
+      "status": "closed",
+      "severity": "high",
+      "description": "Static mdwrkcom article navigation emits HTML with data-lander-theme=lander-light, incomplete dark critical CSS variables, and a deferred stylesheet path. When a user has lander-dark stored, full-document navigation can briefly paint light shell and theme-toggle chrome before the bootstrap and full stylesheet converge to dark.",
+      "plan": {
+        "horizon": "current",
+        "slot": null
+      },
+      "feature_ids": [
+        "feat:mdwrkcom-critical-css-profile",
+        "feat:mdwrkcom-static-css-fingerprinted-delivery",
+        "feat:lander-critical-css-inline-defer"
+      ],
+      "claim_ids": [
+        "clm:mdwrkcom-critical-css-profile"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
+      ],
       "risk_ids": [],
       "release_blocking": false
     }

@@ -24,6 +24,8 @@
     "validate:discoverability-artifacts": "node ./scripts/validate-discoverability-artifacts.mjs",
     "validate:aeo-content-parity": "node ./scripts/validate-aeo-content-parity.mjs",
     "validate:ai-crawler-policy": "node ./scripts/validate-ai-crawler-policy.mjs",
+    "validate:static-first-paint-theme": "node ./scripts/validate-static-first-paint-theme.mjs",
+    "verify:static-first-paint-theme": "node ./scripts/validate-static-first-paint-theme.mjs --generated",
     "validate:static-style-contract": "node ./scripts/validate-static-style-contract.mjs",
     "validate:static": "node ./src/cli.mjs validate",
     "build:static": "node ./src/cli.mjs build --out dist-static",
@@ -35,7 +37,7 @@
     "ci": "npm run build && npm run verify && npm run ci:static",
     "smoke:deployed": "node ./scripts/post-deploy-smoke.mjs",
     "preview": "vite preview",
-    "typecheck": "npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && npm run validate:static-style-contract && npm run validate:static",
+    "typecheck": "npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && npm run validate:static-style-contract && npm run validate:static-first-paint-theme && npm run validate:static",
     "lint": "npm run typecheck"
   },
   "dependencies": {

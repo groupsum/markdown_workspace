@@ -1,0 +1,506 @@
+[
+  {
+    "name": "desktop-light",
+    "theme": "lander-light",
+    "navbarInner": {
+      "x": 80,
+      "y": 14.390625,
+      "width": 1280,
+      "height": 76,
+      "top": 14.390625,
+      "right": 1360,
+      "bottom": 90.390625,
+      "left": 80
+    },
+    "brand": {
+      "x": 96,
+      "y": 31.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 31.390625,
+      "right": 232.921875,
+      "bottom": 73.390625,
+      "left": 96
+    },
+    "menuPanel": {
+      "x": 735.625,
+      "y": 40.796875,
+      "width": 437.671875,
+      "height": 23.1875,
+      "top": 40.796875,
+      "right": 1173.296875,
+      "bottom": 63.984375,
+      "left": 735.625
+    },
+    "actions": {
+      "x": 1197.296875,
+      "y": 32.390625,
+      "width": 146.703125,
+      "height": 40,
+      "top": 32.390625,
+      "right": 1344,
+      "bottom": 72.390625,
+      "left": 1197.296875
+    },
+    "subtitle": {
+      "x": 336,
+      "y": 406,
+      "width": 768,
+      "height": 168,
+      "top": 406,
+      "right": 1104,
+      "bottom": 574,
+      "left": 336
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "240px",
+      "marginRight": "240px",
+      "width": "768px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "251.344px",
+      "marginRight": "24px",
+      "width": "437.672px",
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "order": "1",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "437.672px",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "24px"
+    }
+  },
+  {
+    "name": "desktop-dark",
+    "theme": "lander-dark",
+    "navbarInner": {
+      "x": 80,
+      "y": 14.390625,
+      "width": 1280,
+      "height": 76,
+      "top": 14.390625,
+      "right": 1360,
+      "bottom": 90.390625,
+      "left": 80
+    },
+    "brand": {
+      "x": 96,
+      "y": 31.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 31.390625,
+      "right": 232.921875,
+      "bottom": 73.390625,
+      "left": 96
+    },
+    "menuPanel": {
+      "x": 735.625,
+      "y": 40.796875,
+      "width": 437.671875,
+      "height": 23.1875,
+      "top": 40.796875,
+      "right": 1173.296875,
+      "bottom": 63.984375,
+      "left": 735.625
+    },
+    "actions": {
+      "x": 1197.296875,
+      "y": 32.390625,
+      "width": 146.703125,
+      "height": 40,
+      "top": 32.390625,
+      "right": 1344,
+      "bottom": 72.390625,
+      "left": 1197.296875
+    },
+    "subtitle": {
+      "x": 336,
+      "y": 406,
+      "width": 768,
+      "height": 168,
+      "top": 406,
+      "right": 1104,
+      "bottom": 574,
+      "left": 336
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "240px",
+      "marginRight": "240px",
+      "width": "768px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "251.344px",
+      "marginRight": "24px",
+      "width": "437.672px",
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "order": "1",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "437.672px",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "24px"
+    }
+  },
+  {
+    "name": "mobile-light",
+    "theme": "lander-light",
+    "navbarInner": {
+      "x": 32,
+      "y": 14.390625,
+      "width": 326,
+      "height": 76,
+      "top": 14.390625,
+      "right": 358,
+      "bottom": 90.390625,
+      "left": 32
+    },
+    "brand": {
+      "x": 48,
+      "y": 31.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 31.390625,
+      "right": 184.921875,
+      "bottom": 73.390625,
+      "left": 48
+    },
+    "menuPanel": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "actions": {
+      "x": 254,
+      "y": 32.390625,
+      "width": 88,
+      "height": 40,
+      "top": 32.390625,
+      "right": 342,
+      "bottom": 72.390625,
+      "left": 254
+    },
+    "subtitle": {
+      "x": 16,
+      "y": 362,
+      "width": 358,
+      "height": 168,
+      "top": 362,
+      "right": 374,
+      "bottom": 530,
+      "left": 16
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "358px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "100%",
+      "display": "none",
+      "justifyContent": "flex-end",
+      "order": "0",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "auto",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "0px"
+    }
+  },
+  {
+    "name": "mobile-dark",
+    "theme": "lander-dark",
+    "navbarInner": {
+      "x": 32,
+      "y": 14.390625,
+      "width": 326,
+      "height": 76,
+      "top": 14.390625,
+      "right": 358,
+      "bottom": 90.390625,
+      "left": 32
+    },
+    "brand": {
+      "x": 48,
+      "y": 31.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 31.390625,
+      "right": 184.921875,
+      "bottom": 73.390625,
+      "left": 48
+    },
+    "menuPanel": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "actions": {
+      "x": 254,
+      "y": 32.390625,
+      "width": 88,
+      "height": 40,
+      "top": 32.390625,
+      "right": 342,
+      "bottom": 72.390625,
+      "left": 254
+    },
+    "subtitle": {
+      "x": 16,
+      "y": 362,
+      "width": 358,
+      "height": 168,
+      "top": 362,
+      "right": 374,
+      "bottom": 530,
+      "left": 16
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "358px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "100%",
+      "display": "none",
+      "justifyContent": "flex-end",
+      "order": "0",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "auto",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "0px"
+    }
+  },
+  {
+    "name": "mobile-light-open",
+    "theme": "lander-light",
+    "navbarInner": {
+      "x": 32,
+      "y": 14.390625,
+      "width": 326,
+      "height": 359.125,
+      "top": 14.390625,
+      "right": 358,
+      "bottom": 373.515625,
+      "left": 32
+    },
+    "brand": {
+      "x": 48,
+      "y": 30.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 30.390625,
+      "right": 184.921875,
+      "bottom": 72.390625,
+      "left": 48
+    },
+    "menuPanel": {
+      "x": 48,
+      "y": 72.390625,
+      "width": 294,
+      "height": 285.125,
+      "top": 72.390625,
+      "right": 342,
+      "bottom": 357.515625,
+      "left": 48
+    },
+    "actions": {
+      "x": 254,
+      "y": 31.390625,
+      "width": 88,
+      "height": 40,
+      "top": 31.390625,
+      "right": 342,
+      "bottom": 71.390625,
+      "left": 254
+    },
+    "subtitle": {
+      "x": 16,
+      "y": 362,
+      "width": 358,
+      "height": 168,
+      "top": 362,
+      "right": 374,
+      "bottom": 530,
+      "left": 16
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "358px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "294px",
+      "display": "block",
+      "justifyContent": "flex-end",
+      "order": "0",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "294px",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "0px"
+    }
+  },
+  {
+    "name": "mobile-dark-open",
+    "theme": "lander-dark",
+    "navbarInner": {
+      "x": 32,
+      "y": 14.390625,
+      "width": 326,
+      "height": 359.125,
+      "top": 14.390625,
+      "right": 358,
+      "bottom": 373.515625,
+      "left": 32
+    },
+    "brand": {
+      "x": 48,
+      "y": 30.390625,
+      "width": 136.921875,
+      "height": 42,
+      "top": 30.390625,
+      "right": 184.921875,
+      "bottom": 72.390625,
+      "left": 48
+    },
+    "menuPanel": {
+      "x": 48,
+      "y": 72.390625,
+      "width": 294,
+      "height": 285.125,
+      "top": 72.390625,
+      "right": 342,
+      "bottom": 357.515625,
+      "left": 48
+    },
+    "actions": {
+      "x": 254,
+      "y": 31.390625,
+      "width": 88,
+      "height": 40,
+      "top": 31.390625,
+      "right": 342,
+      "bottom": 71.390625,
+      "left": 254
+    },
+    "subtitle": {
+      "x": 16,
+      "y": 362,
+      "width": 358,
+      "height": 168,
+      "top": 362,
+      "right": 374,
+      "bottom": 530,
+      "left": 16
+    },
+    "subtitleStyle": {
+      "textAlign": "center",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "358px",
+      "display": "block",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "normal"
+    },
+    "menuPanelStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "294px",
+      "display": "block",
+      "justifyContent": "flex-end",
+      "order": "0",
+      "gap": "normal"
+    },
+    "listStyle": {
+      "textAlign": "start",
+      "marginLeft": "0px",
+      "marginRight": "0px",
+      "width": "294px",
+      "display": "flex",
+      "justifyContent": "normal",
+      "order": "0",
+      "gap": "0px"
+    }
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "theme": "lander-dark",
+    "html": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "body": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "shell": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "nav": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255) rgb(237, 244, 255) rgba(148, 163, 184, 0.18)"
+    },
+    "toggle": {
+      "backgroundColor": "rgb(17, 28, 50)",
+      "color": "rgb(148, 163, 184)",
+      "borderColor": "rgba(148, 163, 184, 0.18)"
+    }
+  },
+  {
+    "theme": "lander-dark",
+    "html": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "body": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "shell": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255)"
+    },
+    "nav": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(237, 244, 255) rgb(237, 244, 255) rgba(148, 163, 184, 0.18)"
+    },
+    "toggle": {
+      "backgroundColor": "rgb(17, 28, 50)",
+      "color": "rgb(148, 163, 184)",
+      "borderColor": "rgba(148, 163, 184, 0.18)"
+    }
+  },
+  {
+    "theme": "lander-light",
+    "html": {
+      "backgroundColor": "rgb(248, 250, 252)",
+      "color": "rgb(16, 32, 51)",
+      "borderColor": "rgb(16, 32, 51)"
+    },
+    "body": {
+      "backgroundColor": "rgb(248, 250, 252)",
+      "color": "rgb(16, 32, 51)",
+      "borderColor": "rgb(16, 32, 51)"
+    },
+    "shell": {
+      "backgroundColor": "rgb(248, 250, 252)",
+      "color": "rgb(16, 32, 51)",
+      "borderColor": "rgb(16, 32, 51)"
+    },
+    "nav": {
+      "backgroundColor": "rgb(248, 250, 252)",
+      "color": "rgb(16, 32, 51)",
+      "borderColor": "rgb(16, 32, 51) rgb(16, 32, 51) rgba(15, 23, 42, 0.16)"
+    },
+    "toggle": {
+      "backgroundColor": "rgb(239, 246, 255)",
+      "color": "rgb(52, 69, 89)",
+      "borderColor": "rgba(15, 23, 42, 0.16)"
+    }
+  },
+  {
+    "theme": "lander-dark",
+    "html": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgb(229, 231, 235)"
+    },
+    "body": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(248, 250, 252)",
+      "borderColor": "rgb(229, 231, 235)"
+    },
+    "shell": {
+      "backgroundColor": "rgb(2, 6, 23)",
+      "color": "rgb(248, 250, 252)",
+      "borderColor": "rgb(229, 231, 235)"
+    },
+    "nav": {
+      "backgroundColor": "color(srgb 0.00784314 0.0235294 0.0901961 / 0.9)",
+      "color": "rgb(237, 244, 255)",
+      "borderColor": "rgba(148, 163, 184, 0.18)"
+    },
+    "toggle": {
+      "backgroundColor": "rgb(17, 28, 50)",
+      "color": "rgb(148, 163, 184)",
+      "borderColor": "rgba(148, 163, 184, 0.18)"
+    }
+  }
+]

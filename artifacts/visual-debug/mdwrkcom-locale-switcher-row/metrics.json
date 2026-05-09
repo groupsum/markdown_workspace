@@ -1,0 +1,122 @@
+[
+  {
+    "theme": "lander-light",
+    "wrap": "row",
+    "column": {
+      "x": 128,
+      "y": 176,
+      "width": 784,
+      "height": 1687.75
+    },
+    "locale": {
+      "x": 128,
+      "y": 176,
+      "width": 784,
+      "height": 32
+    },
+    "card": {
+      "x": 128,
+      "y": 232,
+      "width": 784,
+      "height": 1309.75
+    },
+    "toc": {
+      "x": 960,
+      "y": 176,
+      "width": 192,
+      "height": 1687.75
+    },
+    "localeParent": "docs-article-column",
+    "localeBeforeCard": true
+  },
+  {
+    "theme": "lander-dark",
+    "wrap": "row",
+    "column": {
+      "x": 128,
+      "y": 176,
+      "width": 784,
+      "height": 1687.75
+    },
+    "locale": {
+      "x": 128,
+      "y": 176,
+      "width": 784,
+      "height": 32
+    },
+    "card": {
+      "x": 128,
+      "y": 232,
+      "width": 784,
+      "height": 1309.75
+    },
+    "toc": {
+      "x": 960,
+      "y": 176,
+      "width": 192,
+      "height": 1687.75
+    },
+    "localeParent": "docs-article-column",
+    "localeBeforeCard": true
+  },
+  {
+    "theme": "lander-light",
+    "wrap": "column",
+    "column": {
+      "x": 40,
+      "y": 120,
+      "width": 310,
+      "height": 2904.5
+    },
+    "locale": {
+      "x": 40,
+      "y": 120,
+      "width": 310,
+      "height": 32
+    },
+    "card": {
+      "x": 40,
+      "y": 176,
+      "width": 310,
+      "height": 2506.5
+    },
+    "toc": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "localeParent": "docs-article-column",
+    "localeBeforeCard": true
+  },
+  {
+    "theme": "lander-dark",
+    "wrap": "column",
+    "column": {
+      "x": 40,
+      "y": 120,
+      "width": 310,
+      "height": 2904.5
+    },
+    "locale": {
+      "x": 40,
+      "y": 120,
+      "width": 310,
+      "height": 32
+    },
+    "card": {
+      "x": 40,
+      "y": 176,
+      "width": 310,
+      "height": 2506.5
+    },
+    "toc": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "localeParent": "docs-article-column",
+    "localeBeforeCard": true
+  }
+]

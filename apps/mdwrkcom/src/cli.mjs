@@ -243,16 +243,52 @@ let staticStylesheetHref = `/assets/static.css?v=${encodeURIComponent(packageJso
 const mdwrkcomCriticalCssProfile = defineCriticalCssProfile({
   id: 'mdwrkcom-static-shell',
   css: `
-    html{background:#f8fafc;color:#102033}
-    html[data-lander-theme="lander-dark"]{background:#0b1220;color:#edf4ff}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .app-shell{min-height:100vh;background:var(--static-bg,#f8fafc);color:var(--static-text,#102033)}
-    .navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid rgba(15,23,42,.16)}
+    html{--static-bg:#f8fafc;--static-text:#102033;--static-muted:#344559;--static-panel:#ffffff;--static-panel-muted:#eff6ff;--static-border:rgba(15,23,42,.16);--static-accent:#4f46e5;background:var(--static-bg);color:var(--static-text);color-scheme:light}
+    html[data-lander-theme="lander-dark"]{--static-bg:#020617;--static-text:#edf4ff;--static-muted:#94a3b8;--static-panel:#0f172a;--static-panel-muted:#111c32;--static-border:rgba(148,163,184,.18);--static-accent:#818cf8;background:var(--static-bg);color:var(--static-text);color-scheme:dark}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--static-bg);color:var(--static-text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .app-shell{min-height:100vh;background:var(--static-bg);color:var(--static-text)}
+    .navbar{display:flex;align-items:center;background:var(--static-bg);color:var(--static-text);border-bottom:1px solid var(--static-border)}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;width:min(100%,1180px);min-height:4rem;margin:0 auto;padding:.7rem 1rem;gap:1rem}
+    .navbar-brand{display:inline-flex;align-items:center;min-width:0;gap:.75rem;color:var(--static-text);font-weight:800;text-decoration:none}
+    .navbar-brand-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:2.5rem;height:2.5rem;border-radius:.65rem;background:var(--static-accent);color:#fff}
+    .navbar-brand-icon{display:block;width:1.5rem;height:1.5rem;flex:0 0 auto}
+    .navbar-brand-text{font-size:1.35rem;line-height:1;letter-spacing:0}
+    .navbar-actions{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-left:auto}
+    .navbar-theme-toggle,.navbar-menu-toggle,.navbar-github-link{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;min-width:2.5rem;height:2.5rem;padding:.5rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.65rem;text-decoration:none}
+    .navbar-theme-icon,.navbar-menu-icon,.navbar-github-icon,.static-menu-close-icon{display:block;width:1.25rem;height:1.25rem;flex:0 0 auto}
+    .navbar-github-label{display:none}
+    .navbar-menu-panel.is-closed{display:none}
+    .navbar-menu-panel{position:absolute;top:4rem;left:1rem;right:1rem;z-index:20;padding:.75rem;background:var(--static-panel);border:1px solid var(--static-border);border-radius:.85rem;box-shadow:0 20px 60px rgba(2,6,23,.24)}
+    .navbar-menu-list{display:flex;flex-direction:column;gap:.25rem;list-style:none;margin:0;padding:0}
+    .navbar-link{display:block;padding:.65rem .75rem;color:var(--static-muted);border-radius:.55rem;text-decoration:none;font-size:.95rem;font-weight:700}
+    .navbar-link.is-active{color:var(--static-text);background:var(--static-panel-muted)}
     .app-main{min-height:60vh}
     .hero-section,.docs-main{position:relative}
     .hero-inner,.docs-content-wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) 1rem}
     .hero-heading,.docs-title,.blog-post-title{margin:0;color:inherit;line-height:1.05;font-weight:800;letter-spacing:0}
-    .hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted,#344559)}
+    .hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted)}
+    .hero-copy.home-subtitle{margin-left:auto;margin-right:auto;text-align:center}
+    .lander-doc-shell{background:var(--static-bg);color:var(--static-text)}
+    .docs-layout{display:block}
+    .docs-sidebar,.docs-toc{display:none}
+    .docs-content-wrap{max-width:960px;padding:clamp(1.5rem,4vw,3.5rem) 1rem}
+    .docs-article-column{display:flex;min-width:0;flex-direction:column;gap:1rem}
+    .locale-switcher{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+    .locale-switcher-link{display:inline-flex;align-items:center;min-height:2rem;padding:.35rem .65rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:999px;text-decoration:none;font-size:.8rem;font-weight:800}
+    .locale-switcher-link[aria-current="page"]{color:var(--static-text);border-color:var(--static-accent)}
+    .lander-content-card,.docs-content-card{background:var(--static-panel);border:1px solid var(--static-border);border-radius:1rem;padding:clamp(1.25rem,4vw,2.5rem);box-shadow:0 20px 80px rgba(2,6,23,.18)}
+    .docs-header{padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--static-border)}
+    .lander-breadcrumbs{margin:0 0 .85rem;color:var(--static-muted);font-size:.78rem;font-weight:800;text-transform:uppercase}
+    .lander-breadcrumbs-list{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+    .docs-title{font-size:clamp(2rem,8vw,3.2rem)}
+    .docs-subtitle{margin:.85rem 0 0;color:var(--static-muted);font-size:1.02rem;line-height:1.7}
+    .lander-markdown .markdown-body{color:var(--static-text);font-size:1rem;line-height:1.75}
+    .lander-markdown .markdown-body h2,.lander-markdown .markdown-body h3{margin:1.6rem 0 .75rem;color:var(--static-text);line-height:1.2}
+    .lander-markdown .markdown-body p,.lander-markdown .markdown-body ul,.lander-markdown .markdown-body ol{margin:0 0 1rem}
+    @media (min-width:768px){.navbar-menu-toggle{display:none}.navbar-menu-panel,.navbar-menu-panel.is-closed{display:block;position:static;margin-left:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}.navbar-actions{margin-left:.75rem}.navbar-menu-list{flex-direction:row;align-items:center;gap:.35rem}.navbar-link{padding:.5rem .65rem}.navbar-github-link{width:auto;padding:.5rem .75rem;gap:.35rem}.navbar-github-label{display:inline;font-size:.9rem;font-weight:800}}
   `,
 });
 
@@ -1955,6 +1991,11 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
               <div class="navbar-brand-mark">${renderStaticCloudOffIcon()}</div>
               <span class="navbar-brand-text">MdWrk</span>
             </a>
+            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                ${renderTopNav(registry, currentSlug)}
+              </ul>
+            </div>
             <div class="navbar-actions">
               <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
                 ${renderStaticThemeIcon()}
@@ -1968,11 +2009,6 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
                 <span class="sr-only">Open main menu</span>
                 ${renderStaticMenuIcon()}
               </button>
-            </div>
-            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
-              <ul class="navbar-menu-list">
-                ${renderTopNav(registry, currentSlug)}
-              </ul>
             </div>
           </div>
         </nav>`;
@@ -2189,7 +2225,7 @@ const renderArticleMetadata = (entry) => {
                     </div>`;
 };
 
-const renderArticleCard = (entry, registry) => {
+const renderArticleCard = (entry, registry, leadingContent = '') => {
   const isBlogPost = entry.frontmatter.contentType === 'update' && entry.frontmatter.slug !== '/updates/' && !entry.frontmatter.slug.includes('/archive/') && !entry.frontmatter.slug.includes('/author/');
   const isBlogList = entry.frontmatter.contentType === 'update' && !isBlogPost;
   if (isBlogList) {
@@ -2211,6 +2247,7 @@ const renderArticleCard = (entry, registry) => {
     : 'docs-content-card';
   const visibleBreadcrumbs = renderVisibleBreadcrumbs(breadcrumbsFor(entry, registry));
   return `<div class="docs-article-column">
+                ${leadingContent}
                 ${isBlogPost ? '<a href="/updates/" class="blog-back-button">Back to Updates</a>' : ''}
                 <article class="${articleClass} lander-content-card">
                   <header class="${articleClass === 'blog-post-card' ? 'blog-post-header' : 'docs-header'}">
@@ -2430,8 +2467,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
             ${sidebar}
             <section class="docs-main">
               <div class="docs-content-wrap">
-                ${renderLocaleSwitcher(entry, registry)}
-                ${renderArticleCard(entry, registry)}
+                ${renderArticleCard(entry, registry, renderLocaleSwitcher(entry, registry))}
                 ${toc}
               </div>
             </section>

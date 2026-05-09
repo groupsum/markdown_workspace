@@ -10,6 +10,8 @@ const css = read('styles', 'static.css');
 const sourceComponents = read('styles', 'components.css');
 const sourceBase = read('styles', 'base.css');
 const sourceMarkdown = read('styles', 'markdown-renderer.css');
+const sourceCli = read('src', 'cli.mjs');
+const sourceLanderTheme = read('..', '..', 'packages', 'lander', 'lander-theme', 'src', 'styles', 'default.css');
 
 const hexToRgb = (hex) => {
   const normalized = hex.replace('#', '');
@@ -113,6 +115,24 @@ assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ul'), 'Ma
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ol'), 'Markdown renderer source must style ordered markdown lists.');
 assert.ok(sourceMarkdown.includes('list-style: disc'), 'Markdown renderer source must render unordered markdown lists with bullets.');
 assert.ok(sourceMarkdown.includes('list-style: decimal'), 'Markdown renderer source must render ordered markdown lists with numerals.');
+assert.ok(sourceLanderTheme.includes('.hero-copy.home-subtitle'), 'Lander theme source must center the homepage subtitle class.');
+assert.ok(sourceLanderTheme.includes('text-align: center'), 'Lander theme source must center homepage subtitle text.');
+assert.ok(sourceLanderTheme.includes('.navbar-brand'), 'Lander theme source must own navbar brand layout.');
+assert.ok(sourceLanderTheme.includes('margin-right: auto'), 'Lander theme source must keep the navbar brand on the left and links on the right.');
+assert.ok(sourceLanderTheme.includes('justify-content: flex-end'), 'Lander theme source must right-align navbar links.');
+assert.ok(!sourceLanderTheme.includes('order: 2;'), 'Lander theme source must not reorder navbar actions ahead of links.');
+assert.ok(!sourceLanderTheme.includes('order: 1;'), 'Lander theme source must not reorder navbar links away from DOM order.');
+assert.ok(sourceCli.includes('--static-bg:#020617'), 'Static renderer critical CSS must include dark first-paint shell variables.');
+assert.ok(sourceCli.includes('background:var(--static-bg);color:var(--static-text)'), 'Static renderer critical CSS must paint from resolved theme variables before deferred CSS loads.');
+assert.ok(css.includes('.hero-copy.home-subtitle,.home-subtitle'), 'Static stylesheet must center the homepage subtitle class.');
+assert.ok(css.includes('text-align:center'), 'Static stylesheet must center homepage subtitle text.');
+assert.ok(css.includes('width:min(calc(100% - 2rem),var(--lander-max-width))'), 'Static stylesheet must let navbar-inner span the lander width instead of shrink-wrapping.');
+assert.ok(css.includes('.navbar-brand{margin-right:auto}'), 'Static stylesheet must keep the navbar brand on the left at desktop widths.');
+assert.ok(css.includes('.navbar-menu-panel{order:initial;margin-left:auto;margin-right:1rem}'), 'Static stylesheet must keep navbar links before the right-side actions.');
+assert.ok(css.includes('.navbar-actions{order:initial;margin-left:.75rem}'), 'Static stylesheet must keep theme and GitHub actions on the right of the links.');
+assert.ok(css.includes('justify-content:flex-end'), 'Static stylesheet must right-align navbar links.');
+assert.ok(css.includes('.docs-article-column>.locale-switcher'), 'Static stylesheet must keep locale switchers inside the docs article column as their own row.');
+assert.ok(sourceCli.includes('renderArticleCard(entry, registry, renderLocaleSwitcher(entry, registry))'), 'Static renderer must place the locale switcher inside docs-article-column above article content.');
 assert.ok(css.includes('static-menu-close-icon'), 'Static stylesheet must hide/show the static mobile navbar icons.');
 assert.ok(css.includes('gap:1rem'), 'Static stylesheet must keep the tablet navbar link gap compact.');
 assert.ok(css.includes('gap:1.5rem'), 'Static stylesheet must keep the desktop navbar link gap compact.');

@@ -138,10 +138,6 @@
   color: var(--lander-fg-muted);
 }
 
-.home-subtitle {
-  @apply block;
-}
-
 .hero-actions {
   @apply flex flex-col space-y-4;
 }
@@ -504,14 +500,6 @@
   backdrop-filter: blur(12px);
 }
 
-.navbar-inner {
-  @apply mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4;
-}
-
-.navbar-brand {
-  @apply flex cursor-pointer items-center gap-3;
-}
-
 .navbar-brand-mark {
   @apply rounded-lg p-2;
   background: var(--lander-accent);
@@ -531,10 +519,6 @@
   font-family: 'Sora', 'Inter', 'Segoe UI', sans-serif;
   letter-spacing: 0;
   color: var(--lander-fg);
-}
-
-.navbar-actions {
-  @apply flex items-center gap-3;
 }
 
 .navbar-theme-toggle,
@@ -593,29 +577,7 @@
   color: var(--lander-fg-muted);
 }
 
-.navbar-menu-panel {
-  @apply w-full items-center justify-between;
-}
-
-.navbar-menu-panel.is-open {
-  @apply block;
-}
-
-.navbar-menu-panel.is-closed {
-  @apply hidden;
-}
-
-@media (min-width: 768px) {
-  .navbar-menu-panel,
-  .navbar-menu-panel.is-open,
-  .navbar-menu-panel.is-closed {
-    display: flex;
-  }
-}
-
 .navbar-menu-list {
-  @apply mt-4 flex flex-col rounded-lg border p-4 font-medium;
-  gap: 0;
   background: var(--lander-panel-muted);
   border-color: var(--lander-border);
 }
@@ -624,10 +586,6 @@
   .navbar-menu-list {
     background: transparent;
   }
-}
-
-.navbar-link {
-  @apply block rounded px-3 py-2 transition-colors;
 }
 
 .navbar-link.is-active {
@@ -1313,26 +1271,15 @@ time {
 
   .navbar-actions {
     gap: 0.5rem;
-    order: 2;
+    margin-left: 0.75rem;
   }
 
   .navbar-menu-toggle {
     display: none;
   }
 
-  .navbar-menu-panel {
-    order: 1;
-    margin-left: auto;
-    margin-right: 1rem;
-    width: auto;
-  }
-
   .navbar-menu-list {
-    margin-top: 0;
-    flex-direction: row;
-    border: 0;
     background: transparent;
-    padding: 0;
   }
 
   .footer-layout {
@@ -1397,10 +1344,6 @@ time {
 
   .features-container {
     padding-inline: 1.5rem;
-  }
-
-  .navbar-menu-panel {
-    margin-right: 1.5rem;
   }
 
   .features-header {
