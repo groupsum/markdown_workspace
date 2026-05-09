@@ -276,9 +276,15 @@ const mdwrkcomCriticalCssProfile = defineCriticalCssProfile({
     .docs-sidebar,.docs-toc{display:none}
     .docs-content-wrap{max-width:960px;padding:clamp(1.5rem,4vw,3.5rem) 1rem}
     .docs-article-column{display:flex;min-width:0;flex-direction:column;gap:1rem}
-    .locale-switcher{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
-    .locale-switcher-link{display:inline-flex;align-items:center;min-height:2rem;padding:.35rem .65rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:999px;text-decoration:none;font-size:.8rem;font-weight:800}
-    .locale-switcher-link[aria-current="page"]{color:var(--static-text);border-color:var(--static-accent)}
+    .locale-switcher-row{display:flex;width:100%;justify-content:flex-end}
+    .locale-switcher{position:relative;width:max-content;max-width:100%;margin:0}
+    .locale-switcher-summary{display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;padding:.35rem .75rem;color:var(--static-text);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.55rem;font-size:.8rem;font-weight:800;cursor:pointer;list-style:none}
+    .locale-switcher-summary::-webkit-details-marker{display:none}
+    .locale-switcher-current{text-transform:uppercase}
+    .locale-switcher-menu{position:absolute;top:calc(100% + .4rem);right:0;z-index:25;display:grid;min-width:10rem;gap:.15rem;padding:.4rem;background:var(--static-panel);border:1px solid var(--static-border);border-radius:.65rem;box-shadow:0 18px 48px rgba(2,6,23,.24)}
+    .locale-switcher:not([open]) .locale-switcher-menu{display:none}
+    .locale-switcher-option{display:block;padding:.5rem .65rem;color:var(--static-muted);border-radius:.45rem;text-decoration:none;font-size:.82rem;font-weight:800}
+    .locale-switcher-option[aria-current="page"]{color:var(--static-text);background:var(--static-panel-muted)}
     .lander-content-card,.docs-content-card{background:var(--static-panel);border:1px solid var(--static-border);border-radius:1rem;padding:clamp(1.25rem,4vw,2.5rem);box-shadow:0 20px 80px rgba(2,6,23,.18)}
     .docs-header{padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--static-border)}
     .lander-breadcrumbs{margin:0 0 .85rem;color:var(--static-muted);font-size:.78rem;font-weight:800;text-transform:uppercase}
@@ -1533,8 +1539,17 @@ const renderHeadAlternateLinks = (entry, registry) =>
 const renderLocaleSwitcher = (entry, registry) => {
   const alternates = alternateLinksFor(entry, registry).filter(item => item.hreflang !== 'x-default');
   if (!alternates.length) return '';
-  return `<div class="locale-switcher" aria-label="Language versions">
-                ${alternates.map(item => `<a class="locale-switcher-link${item.current ? ' is-current' : ''}" href="${escapeAttribute(item.slug)}" hreflang="${escapeAttribute(item.hreflang)}" lang="${escapeAttribute(hrefLangToHtmlLang(item.hreflang))}">${escapeHtml(item.label)}</a>`).join('\n                ')}
+  const current = alternates.find(item => item.current) ?? alternates[0];
+  return `<div class="locale-switcher-row">
+                <details class="locale-switcher">
+                <summary class="locale-switcher-summary" aria-label="Language versions">
+                  <span class="locale-switcher-label">Language</span>
+                  <span class="locale-switcher-current">${escapeHtml(current.label)}</span>
+                </summary>
+                <div class="locale-switcher-menu" role="list">
+                  ${alternates.map(item => `<a class="locale-switcher-option${item.current ? ' is-current' : ''}" role="listitem" href="${escapeAttribute(item.slug)}" hreflang="${escapeAttribute(item.hreflang)}" lang="${escapeAttribute(hrefLangToHtmlLang(item.hreflang))}"${item.current ? ' aria-current="page"' : ''}>${escapeHtml(item.label)}</a>`).join('\n                  ')}
+                </div>
+              </details>
               </div>`;
 };
 

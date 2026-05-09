@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "generatedAt": "Sat, 09 May 2026 19:44:08 GMT",
+  "generatedAt": "Sat, 09 May 2026 19:57:05 GMT",
   "entries": [
     {
       "path": "/answers/does-mdwrk-require-a-server/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-fec6df198e781b2b42c8d1ec2cc1bd0d88185f67e63390aacb3cf965c13594c7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-1d20279f8c58eb5b7d86c36d99ef823a0505a65e9219ec181b03647021d83e26\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-fec6df198e781b2b42c8d1ec2cc1bd0d88185f67e63390aacb3cf965c13594c7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-1d20279f8c58eb5b7d86c36d99ef823a0505a65e9219ec181b03647021d83e26\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -21,12 +21,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-52551a9d9629ef32d0c027832219e7880993beb6af1b7bc2de66299347bae69a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-52551a9d9629ef32d0c027832219e7880993beb6af1b7bc2de66299347bae69a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -34,13 +34,13 @@
       "path": "/answers/how-do-mdwrk-theme-packs-work/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c9bcd9505eb7d13d971ba448bd8721ac8c10b5827a4ddaa57375cd5ac55691c3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-76f0520abb3f3a045784d4d2b6fa18c31b96db9ad8eebaba0c7c5d1db65f1143\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c9bcd9505eb7d13d971ba448bd8721ac8c10b5827a4ddaa57375cd5ac55691c3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-76f0520abb3f3a045784d4d2b6fa18c31b96db9ad8eebaba0c7c5d1db65f1143\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -49,12 +49,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-30b56ef9712858bbed94a3b9238034cbae4854bc3b1d793f7b919fb7fdfa966c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-30b56ef9712858bbed94a3b9238034cbae4854bc3b1d793f7b919fb7fdfa966c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -62,13 +62,13 @@
       "path": "/answers/how-does-mdwrk-store-markdown-locally/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-cc041fb1b9a4039d98e784c7c7c623c3e3a4981e9d3ceea2c58610c5aa63299a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-faef420b51752f6e63c87e85dd5cac2d17576749c5c5542b57a394553ad47365\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-cc041fb1b9a4039d98e784c7c7c623c3e3a4981e9d3ceea2c58610c5aa63299a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-faef420b51752f6e63c87e85dd5cac2d17576749c5c5542b57a394553ad47365\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -77,12 +77,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c3c7da88c164989bf94dcb305b45ad015519bd7b32c16c9a535600d320969328\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c3c7da88c164989bf94dcb305b45ad015519bd7b32c16c9a535600d320969328\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -90,13 +90,13 @@
       "path": "/answers/what-is-a-local-first-markdown-workspace/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-51c83f9c35f8ba1442d0c46dcf084f4b3474c67ae6e27b0efc1e0140aef6d162\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-d54f86eb3dd1b928b29f4d3c3b0a5ee35e8cfe0552447a77940d2210dc4fa528\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-51c83f9c35f8ba1442d0c46dcf084f4b3474c67ae6e27b0efc1e0140aef6d162\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-d54f86eb3dd1b928b29f4d3c3b0a5ee35e8cfe0552447a77940d2210dc4fa528\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -105,12 +105,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-855701fb847e31091cbb7f21c2ad0952747e4e492c4a6b80cbd59448219277f1\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-855701fb847e31091cbb7f21c2ad0952747e4e492c4a6b80cbd59448219277f1\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -118,13 +118,13 @@
       "path": "/answers/what-is-an-offline-markdown-editor/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-4c7ec75a16e745f3d38dba7ac66987cb8bcc814496b73048d863a25ad086c795\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-7d1849ec933997c1279c109171d874b850f67db2a4bfe5ab65cd12cfeaca3249\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-4c7ec75a16e745f3d38dba7ac66987cb8bcc814496b73048d863a25ad086c795\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-7d1849ec933997c1279c109171d874b850f67db2a4bfe5ab65cd12cfeaca3249\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -133,40 +133,40 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-bc2e99d34b63e0eadf9622f4979e32b56da90c4a341b1f053838d8f865e85f16\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-bc2e99d34b63e0eadf9622f4979e32b56da90c4a341b1f053838d8f865e85f16\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
-      }
-    },
-    {
-      "path": "/assets/static.b29bfd7a61db8182.css",
-      "resourceClass": "immutable",
-      "contentType": "text/css; charset=utf-8",
-      "etag": "\"sha256-b29bfd7a61db81829b643fc9a40aa030268132fb3676a69d126683c4b0dbf07e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
-      "cacheControl": "public, max-age=31536000, immutable",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable",
-        "ETag": "\"sha256-b29bfd7a61db81829b643fc9a40aa030268132fb3676a69d126683c4b0dbf07e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
-        "Content-Type": "text/css; charset=utf-8"
       }
     },
     {
       "path": "/assets/static.css",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/css; charset=utf-8",
-      "etag": "\"sha256-b29bfd7a61db81829b643fc9a40aa030268132fb3676a69d126683c4b0dbf07e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f68ea855d5fe7d71998534791e1199d1ccc16fe7ccdceb294709306c3d618fd1\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-b29bfd7a61db81829b643fc9a40aa030268132fb3676a69d126683c4b0dbf07e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f68ea855d5fe7d71998534791e1199d1ccc16fe7ccdceb294709306c3d618fd1\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
+        "Content-Type": "text/css; charset=utf-8"
+      }
+    },
+    {
+      "path": "/assets/static.f68ea855d5fe7d71.css",
+      "resourceClass": "immutable",
+      "contentType": "text/css; charset=utf-8",
+      "etag": "\"sha256-f68ea855d5fe7d71998534791e1199d1ccc16fe7ccdceb294709306c3d618fd1\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "ETag": "\"sha256-f68ea855d5fe7d71998534791e1199d1ccc16fe7ccdceb294709306c3d618fd1\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/css; charset=utf-8"
       }
     },
@@ -342,13 +342,13 @@
       "path": "/compare/code/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c7675bb57cb10bda7cb8897b6b2bb199759b433c1cb37d3cf847fc9409372bd2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-0059ad3955911667edc88fd44ae2b625d7943d621a1258950d4e219203d19f54\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c7675bb57cb10bda7cb8897b6b2bb199759b433c1cb37d3cf847fc9409372bd2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-0059ad3955911667edc88fd44ae2b625d7943d621a1258950d4e219203d19f54\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -357,12 +357,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-40e99897ba80c011b35849eeb98e915598f82f2f49a2abded5d5a16681cccffc\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-40e99897ba80c011b35849eeb98e915598f82f2f49a2abded5d5a16681cccffc\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -370,13 +370,13 @@
       "path": "/compare/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-36ed05d6edfc6a3420801563258078fa2bf2483c9a8ce10151878d3674ee3cd2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-3fe96fc076717a4ea36aedf53a927f6b8433b831884392c2b4940fada617bdb3\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-36ed05d6edfc6a3420801563258078fa2bf2483c9a8ce10151878d3674ee3cd2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-3fe96fc076717a4ea36aedf53a927f6b8433b831884392c2b4940fada617bdb3\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -385,12 +385,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-e69d67af1b92e28d59ea552e6431934b3f66cf49bda7a42a4abe51fcc10ad922\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-e69d67af1b92e28d59ea552e6431934b3f66cf49bda7a42a4abe51fcc10ad922\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -398,13 +398,13 @@
       "path": "/compare/local-first-markdown-editors/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-a04fca67631b25dc894a13db905c8abf884fc9554e868f39ce766437e913e3b3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f25cd1a0eb336df057d920287f94272e52ddf225a3f5db3960bee3af233d9ec3\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-a04fca67631b25dc894a13db905c8abf884fc9554e868f39ce766437e913e3b3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f25cd1a0eb336df057d920287f94272e52ddf225a3f5db3960bee3af233d9ec3\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -413,12 +413,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-d5f92a061da58cd9adc8c3e51adf3ca0640d82e20a788483337f73747b6ce72c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-d5f92a061da58cd9adc8c3e51adf3ca0640d82e20a788483337f73747b6ce72c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -426,13 +426,13 @@
       "path": "/compare/logseq/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c238da9e50144de7e57d5a02b4cabaccb228e98148ca1822fc9009d40aef3c08\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-e489d8d77afc6973d7b5440b2770a96273c7bf168dc954c4b31b55cd984d930c\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c238da9e50144de7e57d5a02b4cabaccb228e98148ca1822fc9009d40aef3c08\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-e489d8d77afc6973d7b5440b2770a96273c7bf168dc954c4b31b55cd984d930c\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -441,12 +441,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-35aefafbf2048f737bf0f02baf36e9e9acf3764c73aa5bf0a53f382c03131d99\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-35aefafbf2048f737bf0f02baf36e9e9acf3764c73aa5bf0a53f382c03131d99\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -454,13 +454,13 @@
       "path": "/compare/marktext/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-d570bef08663a8dd6411e4d7d7b032bcf812bd4e566f002febb105eb33ddf924\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-c7bf5417f82781109b4ef3b47c31853471cbf44ddde8128a9f9225a08da82da2\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-d570bef08663a8dd6411e4d7d7b032bcf812bd4e566f002febb105eb33ddf924\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-c7bf5417f82781109b4ef3b47c31853471cbf44ddde8128a9f9225a08da82da2\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -469,12 +469,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c3bfe785a8f0adeafa05602dd6b09faaf7697beaed516a41c7ff468ed13fb2f0\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c3bfe785a8f0adeafa05602dd6b09faaf7697beaed516a41c7ff468ed13fb2f0\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -482,13 +482,13 @@
       "path": "/compare/mdwrk-vs-obsidian/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-b73ea700e98ed058ee89a4cd9c4c61202f6c7e9409f3b8cd60d96c5c2b7a733c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-36c8b0c47d4176e0f4505b6e6af5a5122c6151ff9fc4074bddae85e05ec11a0b\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-b73ea700e98ed058ee89a4cd9c4c61202f6c7e9409f3b8cd60d96c5c2b7a733c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-36c8b0c47d4176e0f4505b6e6af5a5122c6151ff9fc4074bddae85e05ec11a0b\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -497,12 +497,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-3b6cb70b3e172e9041458c64f40cb35d99d1e8c2f84cc8bff5828a491f604647\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-3b6cb70b3e172e9041458c64f40cb35d99d1e8c2f84cc8bff5828a491f604647\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -510,13 +510,13 @@
       "path": "/compare/mdwrk-vs-typora/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-a60a631ac26287c6ce65666dd6f63de7358affabb2f2f66f40c81a2bc1659e84\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-eb7e00a2b4339d15c034f0531eb522ca0e5af1052bbba74cabc9fd350c195131\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-a60a631ac26287c6ce65666dd6f63de7358affabb2f2f66f40c81a2bc1659e84\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-eb7e00a2b4339d15c034f0531eb522ca0e5af1052bbba74cabc9fd350c195131\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -525,12 +525,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-1399401a158ffddf4b28a4b68483593c2f3cdfc696eba1c6a793b152aa94fa77\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-1399401a158ffddf4b28a4b68483593c2f3cdfc696eba1c6a793b152aa94fa77\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -538,13 +538,13 @@
       "path": "/compare/mdwrk-vs-vscode-markdown/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-855d5533cec0c4b5874e6182b587d4a31b2872e986a827c5de7c705bb07c238e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-1c5187f4e60149887c58392cace5d4664c41bd062957eccf4348bb6f0f135806\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-855d5533cec0c4b5874e6182b587d4a31b2872e986a827c5de7c705bb07c238e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-1c5187f4e60149887c58392cace5d4664c41bd062957eccf4348bb6f0f135806\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -553,12 +553,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-da8ef2028035b5e57eeec2a722680a00258601accfdd8ac71454599faf1213c8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-da8ef2028035b5e57eeec2a722680a00258601accfdd8ac71454599faf1213c8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -566,13 +566,13 @@
       "path": "/compare/notion/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-55995f4812b689ecd215af0f7e4c85d0d198ad6b49dc86a3a52a31d8b55270ba\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-834f9e5b34d226bbf113a2ba7bfee14bd2d7c46e9a649dc0cf673b3f0bbc7592\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-55995f4812b689ecd215af0f7e4c85d0d198ad6b49dc86a3a52a31d8b55270ba\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-834f9e5b34d226bbf113a2ba7bfee14bd2d7c46e9a649dc0cf673b3f0bbc7592\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -581,12 +581,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-bf813e9a7330432b10fdc9904923cc08fc5e1a45b17e4408c9eb4b2ec508043c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-bf813e9a7330432b10fdc9904923cc08fc5e1a45b17e4408c9eb4b2ec508043c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -594,13 +594,13 @@
       "path": "/compare/obsidian/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-2357c6f584425520f8b885ff50b16e8f60a8f5cbb51604924724bc250ec186ca\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-35b0cea3917b6708fcbfe385de5c94cd4cff43d28bb05a9abfde46d53b937463\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-2357c6f584425520f8b885ff50b16e8f60a8f5cbb51604924724bc250ec186ca\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-35b0cea3917b6708fcbfe385de5c94cd4cff43d28bb05a9abfde46d53b937463\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -609,12 +609,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-d5c949e79a4b732fd3c191387aa4d902ade63ce46f37b85c3d4e5527251b662b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-d5c949e79a4b732fd3c191387aa4d902ade63ce46f37b85c3d4e5527251b662b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -622,13 +622,13 @@
       "path": "/compare/standard-markdown-editors/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-499ccaca02306599732d92742a9a8007de9db20bd775442d851f562d9f5a530a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-818a19a30f21adc2dfc2559e9a3377b6a1c6dd0d01ab0e7341420bfa54476494\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-499ccaca02306599732d92742a9a8007de9db20bd775442d851f562d9f5a530a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-818a19a30f21adc2dfc2559e9a3377b6a1c6dd0d01ab0e7341420bfa54476494\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -637,12 +637,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-bf905e796598fd5b8748ec3008e0574f4a660bc90205e46a0ed84b3a40eed340\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-bf905e796598fd5b8748ec3008e0574f4a660bc90205e46a0ed84b3a40eed340\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -650,13 +650,13 @@
       "path": "/compare/typora/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-88811791e070131d50213e25f81a256999946f17a0111cfb4155c56f72abe862\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-8b228349922b72b1d43018706b1f5a34c61c84fe3ee97f40272f229ba0f33f77\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-88811791e070131d50213e25f81a256999946f17a0111cfb4155c56f72abe862\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-8b228349922b72b1d43018706b1f5a34c61c84fe3ee97f40272f229ba0f33f77\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -665,12 +665,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-3fd1a05d7761a107accad85a073c41621f17e378516aad95529642a635275adf\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-3fd1a05d7761a107accad85a073c41621f17e378516aad95529642a635275adf\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -678,13 +678,13 @@
       "path": "/compare/zettlr/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-49d319ca5b6ef1fe8551317c28de142dff4913fb9df71bb052fc8643b21786cd\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-19e94d36143ca3684386e102ebfb68a175ec6f05287b5e035e82c87233dee1e6\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-49d319ca5b6ef1fe8551317c28de142dff4913fb9df71bb052fc8643b21786cd\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-19e94d36143ca3684386e102ebfb68a175ec6f05287b5e035e82c87233dee1e6\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -693,12 +693,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-b311b8b54e6d865b509e43627b500a35aaa977c514c89802ad9631b39898c3af\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-b311b8b54e6d865b509e43627b500a35aaa977c514c89802ad9631b39898c3af\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -707,12 +707,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "application/json; charset=utf-8",
       "etag": "\"sha256-6b9b50ec553cdb37860a4b6fc5f6803c71d9e55b91ae6b08d49383973fc99cd3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-6b9b50ec553cdb37860a4b6fc5f6803c71d9e55b91ae6b08d49383973fc99cd3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "application/json; charset=utf-8"
       }
     },
@@ -721,12 +721,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "application/json; charset=utf-8",
       "etag": "\"sha256-f46bae9f82b82c2c5063b96d055bf73a0666533014f202d0e0b12991727e136a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f46bae9f82b82c2c5063b96d055bf73a0666533014f202d0e0b12991727e136a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "application/json; charset=utf-8"
       }
     },
@@ -734,13 +734,13 @@
       "path": "/docs/archive/ui-refresh-1-3-28/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-df70a4f5498d72b22489fbf999d0140cb402e1fcebb03bdb1f2807875f2ff3f7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-34b2290ff5ed2a8695e29908d254f7c4dfd209416eca57630880076c925afbec\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-df70a4f5498d72b22489fbf999d0140cb402e1fcebb03bdb1f2807875f2ff3f7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-34b2290ff5ed2a8695e29908d254f7c4dfd209416eca57630880076c925afbec\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -749,12 +749,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-f31103e9dda725234097f8cd1c2abe825f23dbc5df8cbc133a1c53c37bc37f57\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f31103e9dda725234097f8cd1c2abe825f23dbc5df8cbc133a1c53c37bc37f57\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -762,13 +762,13 @@
       "path": "/docs/archive/ui-refresh-1-3-29/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-7a4e33cc5b7685db798adbc1d4652280edf47b4d214e07766068d1c3b9254300\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-661b7b7e6dbbf70b2070c05b4e5a4b4d4cabdf823932ca84086db339b9e09eb0\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-7a4e33cc5b7685db798adbc1d4652280edf47b4d214e07766068d1c3b9254300\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-661b7b7e6dbbf70b2070c05b4e5a4b4d4cabdf823932ca84086db339b9e09eb0\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -777,12 +777,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-8de4bdb08f07d97271f1ac0c0e7e021bd441f57fb3b3dee98b006cc2632081ab\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-8de4bdb08f07d97271f1ac0c0e7e021bd441f57fb3b3dee98b006cc2632081ab\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -790,13 +790,13 @@
       "path": "/docs/authoring/extension-authoring-guide/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-a3c36e03b0f27d9c0b2bc31ec743d2349f59bd85c234e16e68c81a2589c1ee57\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-53ace69c5a41149a74ded50fbb9e2a895a640d066d4e479e47015ec223b7963e\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-a3c36e03b0f27d9c0b2bc31ec743d2349f59bd85c234e16e68c81a2589c1ee57\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-53ace69c5a41149a74ded50fbb9e2a895a640d066d4e479e47015ec223b7963e\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -805,12 +805,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-efdc708412c772b3c2eb9af5da6864f397aebb812789f875159c0de4232bfe7b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-efdc708412c772b3c2eb9af5da6864f397aebb812789f875159c0de4232bfe7b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -818,13 +818,13 @@
       "path": "/docs/authoring/extensions/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c2b2781aa9fff1f22362abe8c0084be0898ce6094fb250360ec6f696003da6d3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-13827ff739f501002a502a118e0530469cef8f6e3a8636d8b8faae9a214bbbde\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c2b2781aa9fff1f22362abe8c0084be0898ce6094fb250360ec6f696003da6d3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-13827ff739f501002a502a118e0530469cef8f6e3a8636d8b8faae9a214bbbde\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -833,12 +833,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-8a0e6c709290a044291290a6878a35f25ac1ed2040995a124842554aa5607fbb\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-8a0e6c709290a044291290a6878a35f25ac1ed2040995a124842554aa5607fbb\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -846,13 +846,13 @@
       "path": "/docs/authoring/language-packs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-7676d092031d7f06f5d50295a500e4e152e12504700e279dee824f5f197e0950\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-b24467e5b8aa710f4114d95d7675cb42b63450343402ba3d5b2115bf8acafaaf\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-7676d092031d7f06f5d50295a500e4e152e12504700e279dee824f5f197e0950\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-b24467e5b8aa710f4114d95d7675cb42b63450343402ba3d5b2115bf8acafaaf\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -861,12 +861,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-642fb5f429a48921fdf6a14ddbee5a7f5a65210a3842117f51f07733ff7fbff6\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-642fb5f429a48921fdf6a14ddbee5a7f5a65210a3842117f51f07733ff7fbff6\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -874,13 +874,13 @@
       "path": "/docs/authoring/overview/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-9b45498ef3d4e47b40d76ef6f69fe7c98cfd8b67f2b818278a3e8214b0525e5d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-be7d2e1075666fa12970c988b8079f18a69f9d7f263d4e276d25a5eb7f455cdc\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-9b45498ef3d4e47b40d76ef6f69fe7c98cfd8b67f2b818278a3e8214b0525e5d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-be7d2e1075666fa12970c988b8079f18a69f9d7f263d4e276d25a5eb7f455cdc\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -889,12 +889,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-f9f06ced8fadccdb4426950ef3285ed2c8a231974c0434ea720577a81b2df618\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f9f06ced8fadccdb4426950ef3285ed2c8a231974c0434ea720577a81b2df618\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -902,13 +902,13 @@
       "path": "/docs/authoring/theme-packs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-ef6cf9a718505df5dd1d4121f98d07887b2790781b17b6ca36e1238d5686d30e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-603f30057a94251856eef80e7b75d565f6922cb2baf7989ca118025fc3f7524e\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-ef6cf9a718505df5dd1d4121f98d07887b2790781b17b6ca36e1238d5686d30e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-603f30057a94251856eef80e7b75d565f6922cb2baf7989ca118025fc3f7524e\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -917,12 +917,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-f8225058d1c5094a824fabce11a863fddcd30858dda5373e9442d8d3a2a9417d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f8225058d1c5094a824fabce11a863fddcd30858dda5373e9442d8d3a2a9417d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -930,13 +930,13 @@
       "path": "/docs/extensions/extension-platform/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-cbde38a4a33a150f7ace2afa53c43e179ea9c96bd836c27668abf8793cbf276f\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f2222e00d3740803d584c581a8c8062ac0b69b363dc4376098a9f0d23306211a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-cbde38a4a33a150f7ace2afa53c43e179ea9c96bd836c27668abf8793cbf276f\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f2222e00d3740803d584c581a8c8062ac0b69b363dc4376098a9f0d23306211a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -945,12 +945,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-35485e4f5d5462a170fd6501f9471d8d891d61a0fc3131adf6d80e2d9b8db96d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-35485e4f5d5462a170fd6501f9471d8d891d61a0fc3131adf6d80e2d9b8db96d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -958,13 +958,13 @@
       "path": "/docs/extensions/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-f196f67e200cc2040be783979191ff8348c85276637ad603c5aa9b735118a04f\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-fe4eaacda33e22a38ea81542598e1ce2a423e4ba014e1dbc0014ee86c10ddcd6\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-f196f67e200cc2040be783979191ff8348c85276637ad603c5aa9b735118a04f\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-fe4eaacda33e22a38ea81542598e1ce2a423e4ba014e1dbc0014ee86c10ddcd6\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -973,12 +973,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-69df0466f7cf67661f193d5a26d25e5c4d82c413f7d144f679b20010f1fd8e83\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-69df0466f7cf67661f193d5a26d25e5c4d82c413f7d144f679b20010f1fd8e83\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -986,13 +986,13 @@
       "path": "/docs/extensions/theme-studio-and-host-surfaces/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-fa30001bf980010e376af7d9f51fd8583229ac36117584cc4553a726dd3e0d58\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-270a5da7328f07d05fb1df440e5f05308ccd3155e3abef72c6972ed724876600\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-fa30001bf980010e376af7d9f51fd8583229ac36117584cc4553a726dd3e0d58\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-270a5da7328f07d05fb1df440e5f05308ccd3155e3abef72c6972ed724876600\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1001,12 +1001,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-7af052e5d1ecf03df16a4c9112f5d3a4bf3f30e2af2e61b701fe2313dd3c97fd\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-7af052e5d1ecf03df16a4c9112f5d3a4bf3f30e2af2e61b701fe2313dd3c97fd\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1014,13 +1014,13 @@
       "path": "/docs/getting-started/browser-use/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-ccbe402c9590508b54a5d5c757cb26cfc0fac9b3356919cbe6fcdee2bd735182\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f48269fa86d2084d9b6262c03793882c8ef84df185cf25e359845d909757c76a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-ccbe402c9590508b54a5d5c757cb26cfc0fac9b3356919cbe6fcdee2bd735182\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f48269fa86d2084d9b6262c03793882c8ef84df185cf25e359845d909757c76a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1029,12 +1029,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-e5de18364b7e025b27565ac5054c7c14327bf682d4df6e79124c6e2694dba438\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-e5de18364b7e025b27565ac5054c7c14327bf682d4df6e79124c6e2694dba438\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1042,13 +1042,13 @@
       "path": "/docs/getting-started/configuration/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-114040b96bc4c95b30c966f1127c15663e6812bf5088cd158ebda565c5f1e33d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-45f31df1b74b96a1119ebd1bf7ac599c118ca02977a4b643736de9141e75b1dd\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-114040b96bc4c95b30c966f1127c15663e6812bf5088cd158ebda565c5f1e33d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-45f31df1b74b96a1119ebd1bf7ac599c118ca02977a4b643736de9141e75b1dd\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1057,12 +1057,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c5cf96f362659a606957838aab29fbcc39cb4519c703bc3342fdbd18db33dedb\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c5cf96f362659a606957838aab29fbcc39cb4519c703bc3342fdbd18db33dedb\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1070,13 +1070,13 @@
       "path": "/docs/getting-started/installation/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-b3d3426581ce1cebb4d07aab8377f066fb5254910907947d4f6fd3b66a43c3f2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-4812c5c8160b4cfd42af8648f3d63d8526c241ca315332eebb84eac0fa79c840\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-b3d3426581ce1cebb4d07aab8377f066fb5254910907947d4f6fd3b66a43c3f2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-4812c5c8160b4cfd42af8648f3d63d8526c241ca315332eebb84eac0fa79c840\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1085,12 +1085,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-d9acc32a64df3692742ad13d1d997ca2339e4593b39198466bdc1031d25b3ce8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-d9acc32a64df3692742ad13d1d997ca2339e4593b39198466bdc1031d25b3ce8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1098,13 +1098,13 @@
       "path": "/docs/getting-started/local-setup/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-0a53c8dc4ab1b69edd7449dcf4693a6ce9bb1b29b11786156a6ee117a9e9ab47\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-ba50f12e44ac9c31f9fa9711b3c3d03d2ba631743041a722c6d6798e213355be\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-0a53c8dc4ab1b69edd7449dcf4693a6ce9bb1b29b11786156a6ee117a9e9ab47\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-ba50f12e44ac9c31f9fa9711b3c3d03d2ba631743041a722c6d6798e213355be\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1113,12 +1113,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-1b880ff4e369b3cf29e938070ab01cbfbae996f89e0d03d336907eed3b8c6eab\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-1b880ff4e369b3cf29e938070ab01cbfbae996f89e0d03d336907eed3b8c6eab\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1126,13 +1126,13 @@
       "path": "/docs/getting-started/pwa-installation/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-41a1e29195ab193a677b25bf130c3f8a56b9243359744e67685819147d1dd9ed\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-0acea03138b1301abbf9ae897a102274d837fb11b2b967996449aa914f3b8286\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-41a1e29195ab193a677b25bf130c3f8a56b9243359744e67685819147d1dd9ed\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-0acea03138b1301abbf9ae897a102274d837fb11b2b967996449aa914f3b8286\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1141,12 +1141,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-b4fdbba5fb0d6a7f2a9843e5014c1e2acaf169fea5149b899f66886f04aeccce\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-b4fdbba5fb0d6a7f2a9843e5014c1e2acaf169fea5149b899f66886f04aeccce\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1154,13 +1154,13 @@
       "path": "/docs/getting-started/standalone-modules/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-62f57739f0f5591ca80f5b526e84f9e16470e0d9eea8deec0afd52e38955cca9\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-3d6f6a64eb466f82c03ccdc942924c91cd9ccb816aa1a959e467c43bbbc41dad\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-62f57739f0f5591ca80f5b526e84f9e16470e0d9eea8deec0afd52e38955cca9\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-3d6f6a64eb466f82c03ccdc942924c91cd9ccb816aa1a959e467c43bbbc41dad\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1169,12 +1169,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-03cabb2511a312400d24794a97c9c8a5a953d43db583d76dbfe96ec988e759f4\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-03cabb2511a312400d24794a97c9c8a5a953d43db583d76dbfe96ec988e759f4\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1182,13 +1182,13 @@
       "path": "/docs/github-sync/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-77b30b03e9020369b088c575449a32d957dee17849b29ddf8ff6e186624c7015\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-77784b2012a2fcd7d0b3d334704a097b7765799b8e3d6fd9df5b74fb7a23405d\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-77b30b03e9020369b088c575449a32d957dee17849b29ddf8ff6e186624c7015\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-77784b2012a2fcd7d0b3d334704a097b7765799b8e3d6fd9df5b74fb7a23405d\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1197,12 +1197,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-f1c49b68f29b4c7e92bc882845c18008ddc9bc9d3ad9573bff18d2e44cde7936\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f1c49b68f29b4c7e92bc882845c18008ddc9bc9d3ad9573bff18d2e44cde7936\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1210,13 +1210,13 @@
       "path": "/docs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c651bd631e2395f59da1cb3605420f876073727e8ec59d6cc8ef94e4a53f1132\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-d01dc5c0f74f4dea025de8df0d1cdd52475a78c726a27960e69c835ceecf3f86\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c651bd631e2395f59da1cb3605420f876073727e8ec59d6cc8ef94e4a53f1132\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-d01dc5c0f74f4dea025de8df0d1cdd52475a78c726a27960e69c835ceecf3f86\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1225,12 +1225,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-90805a395c0506c4d6ee381dea3273a7e61d2c95904dae7852753628b108ec74\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-90805a395c0506c4d6ee381dea3273a7e61d2c95904dae7852753628b108ec74\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1238,13 +1238,13 @@
       "path": "/docs/quickstart/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-effb8e0032ac1b55a4df1a5d0996f6639d438104f822c19fef06b8a9c8628368\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-7a9bf6e43d7c3d02006351d56907f1e3c88ef1e9c7d53027d8e554716a6a6645\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-effb8e0032ac1b55a4df1a5d0996f6639d438104f822c19fef06b8a9c8628368\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-7a9bf6e43d7c3d02006351d56907f1e3c88ef1e9c7d53027d8e554716a6a6645\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1253,12 +1253,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-5ac48349c154276d4a3f7f09e1e6f7960bb488620eab3e7cc07e1626485fdc6a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-5ac48349c154276d4a3f7f09e1e6f7960bb488620eab3e7cc07e1626485fdc6a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1266,13 +1266,13 @@
       "path": "/docs/theme-packs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-2c14b883e3435dacb339b7a098c60205c6e587e1c1f705f35197aca7b3909e62\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-8c904faa93f8c2279ee54a6fb44c76fdeade004aeb8f06d054a327c0840400f4\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-2c14b883e3435dacb339b7a098c60205c6e587e1c1f705f35197aca7b3909e62\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-8c904faa93f8c2279ee54a6fb44c76fdeade004aeb8f06d054a327c0840400f4\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1281,12 +1281,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-4978398563ea7276e75bad1174eba15a37a6fc9074ac90cd31d2940adf034c87\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-4978398563ea7276e75bad1174eba15a37a6fc9074ac90cd31d2940adf034c87\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1294,13 +1294,13 @@
       "path": "/es/docs/quickstart/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-7f5dcb4c8aeacd4ca83f54fd56a7d6932d85e9919e37d95cc8f932f59a1859f3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-54b377d1a4e175e47d04c07e10a1a195129437f9eecd52be7142034603785d37\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-7f5dcb4c8aeacd4ca83f54fd56a7d6932d85e9919e37d95cc8f932f59a1859f3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-54b377d1a4e175e47d04c07e10a1a195129437f9eecd52be7142034603785d37\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1309,12 +1309,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-1954116cca91c79675eaa68427aa2452b5015a7b47fa8b18f58bd8277ef8848f\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-1954116cca91c79675eaa68427aa2452b5015a7b47fa8b18f58bd8277ef8848f\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1336,13 +1336,13 @@
       "path": "/features/advanced-formatting/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c481b251f8ec92ff536cab0652b443db4142cc83dfaa039ba0eb4d0d5c762bb5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f038ac64c04fa143d2484f0457f5c6dc75fb1bbfdf90c2e9ca693e9b82985385\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c481b251f8ec92ff536cab0652b443db4142cc83dfaa039ba0eb4d0d5c762bb5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f038ac64c04fa143d2484f0457f5c6dc75fb1bbfdf90c2e9ca693e9b82985385\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1351,12 +1351,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-bc8091b5d587c7f549f36661d4748bd5e7f537b9724624e2e66eb477f9b853be\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-bc8091b5d587c7f549f36661d4748bd5e7f537b9724624e2e66eb477f9b853be\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1364,13 +1364,13 @@
       "path": "/features/checkbox-autocomplete/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-2822b3b94d7587a06669fc11bf1b522cb78462c44a91029e50f6786d3de0b914\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-63ba7d5d2dcf8421ec703c2d94ab034854ec0205451a496b1eba6e22b9077f60\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-2822b3b94d7587a06669fc11bf1b522cb78462c44a91029e50f6786d3de0b914\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-63ba7d5d2dcf8421ec703c2d94ab034854ec0205451a496b1eba6e22b9077f60\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1379,12 +1379,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-207183d56050a21cef72bc6ec359a3a4af8faa3a5bcd9049919eb32ce7d77afa\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-207183d56050a21cef72bc6ec359a3a4af8faa3a5bcd9049919eb32ce7d77afa\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1392,13 +1392,13 @@
       "path": "/features/desktop-app-boundary/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-129169188729ad88e638c76c369c35becd3263cd1a099ce93eee42c68fa6bfaf\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-a80a23fbb0f08586b0175b2e4083bef7109b9d9a4005c74ad020b0bd020930e3\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-129169188729ad88e638c76c369c35becd3263cd1a099ce93eee42c68fa6bfaf\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-a80a23fbb0f08586b0175b2e4083bef7109b9d9a4005c74ad020b0bd020930e3\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1407,12 +1407,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-7f70ea4284be98b4c627456706e685764529dd2145c831d99ca78680d7871e89\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-7f70ea4284be98b4c627456706e685764529dd2145c831d99ca78680d7871e89\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1420,13 +1420,13 @@
       "path": "/features/developer-documentation/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-97364e1af836a2219ce12d7bb3d8ba639a8c30c95ac680562725f416eafa391b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-0c7873d7fb9b395dc8b4f70099d76d9bd570ca17b9b4e72c528225cd3a289d89\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-97364e1af836a2219ce12d7bb3d8ba639a8c30c95ac680562725f416eafa391b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-0c7873d7fb9b395dc8b4f70099d76d9bd570ca17b9b4e72c528225cd3a289d89\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1435,12 +1435,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c60bf798fac6e18442295814b93f753bc8b9b9009a26eaf12b84b3ce612e666d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c60bf798fac6e18442295814b93f753bc8b9b9009a26eaf12b84b3ce612e666d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1448,13 +1448,13 @@
       "path": "/features/editor-basics/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-d647a92da9bf82454e9e4ab2d5100bc4a24577ee500973e75c911032da1378b8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-752d37315597221e3dddd81e1cc373fbdf63e52084466877b350ac52da9d4bfa\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-d647a92da9bf82454e9e4ab2d5100bc4a24577ee500973e75c911032da1378b8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-752d37315597221e3dddd81e1cc373fbdf63e52084466877b350ac52da9d4bfa\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1463,12 +1463,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-22e011126fd3a58cb8a3aedc574f647901707d164051ba5cb5306ecded76e375\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-22e011126fd3a58cb8a3aedc574f647901707d164051ba5cb5306ecded76e375\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1476,13 +1476,13 @@
       "path": "/features/extension-host/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-cb0b3ed658cf9d307bbe402f421ddbe6c26175bec00f1cc8597b0c1d11487da3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-9f267afce0d5b1385e51ce5a60983c2ade556c68507608490ec0442a0e9d42b4\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-cb0b3ed658cf9d307bbe402f421ddbe6c26175bec00f1cc8597b0c1d11487da3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-9f267afce0d5b1385e51ce5a60983c2ade556c68507608490ec0442a0e9d42b4\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1491,12 +1491,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-4a9653035c5e863d4b43154d6ce8dab7894b998f0d5abe8eab04457c79342075\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-4a9653035c5e863d4b43154d6ce8dab7894b998f0d5abe8eab04457c79342075\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1504,13 +1504,13 @@
       "path": "/features/extension-runtime/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-dc8551970f5189580493b1034eb335f4338ef90e05e7f30f86f8dc7e4d7231b4\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-ef748f06f84400c4d64be43a2224d04f797babcbb73033562aa229ee0b7a01af\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-dc8551970f5189580493b1034eb335f4338ef90e05e7f30f86f8dc7e4d7231b4\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-ef748f06f84400c4d64be43a2224d04f797babcbb73033562aa229ee0b7a01af\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1519,12 +1519,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-3d497b7e263403482f5c1747db01b6c705cd400913de8ee975c95424177cea71\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-3d497b7e263403482f5c1747db01b6c705cd400913de8ee975c95424177cea71\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1532,13 +1532,13 @@
       "path": "/features/github-sync/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-56be99b89eafb7bfebd2ef2fe9fa6393812d80976fa486ae97bcab894b5d2c4e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-eb5c6dc9aa45d71bb30d4205a76a1910427966d8d95249905e2f0880c2f68ce5\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-56be99b89eafb7bfebd2ef2fe9fa6393812d80976fa486ae97bcab894b5d2c4e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-eb5c6dc9aa45d71bb30d4205a76a1910427966d8d95249905e2f0880c2f68ce5\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1547,12 +1547,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-0a8d2abb7404feb90bedbf9bb9398c59242d805734b0741441eb453f2d79aa89\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-0a8d2abb7404feb90bedbf9bb9398c59242d805734b0741441eb453f2d79aa89\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1560,13 +1560,13 @@
       "path": "/features/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-2db69c78fa564e3e000e4e379d66829cfe227bc36e285ecca37767972b2eaaa7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-a7a84540332533e49dec9228f36f1908509f03b86fe0008a6b47c29b5f148ec8\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-2db69c78fa564e3e000e4e379d66829cfe227bc36e285ecca37767972b2eaaa7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-a7a84540332533e49dec9228f36f1908509f03b86fe0008a6b47c29b5f148ec8\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1575,12 +1575,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-b6cee37d1ea2fdfb6d43ba75c19e9a81d4c87e4329526d1ae6b4237e54f56af2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-b6cee37d1ea2fdfb6d43ba75c19e9a81d4c87e4329526d1ae6b4237e54f56af2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1588,13 +1588,13 @@
       "path": "/features/indexeddb-markdown-storage/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-de0f466e13f6d3a11e333a1ce035148b1141e2066e65e802a1dd9c506a9937a7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-fa07a6ddb577938a6eb8d986931b6f86df1ccd59ac38b44eaf214d59b5ee34a1\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-de0f466e13f6d3a11e333a1ce035148b1141e2066e65e802a1dd9c506a9937a7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-fa07a6ddb577938a6eb8d986931b6f86df1ccd59ac38b44eaf214d59b5ee34a1\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1603,12 +1603,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-46f7e80418d8d14dc7771e918a0896f4465695ba0f18782b75e028cdb2dae511\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-46f7e80418d8d14dc7771e918a0896f4465695ba0f18782b75e028cdb2dae511\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1616,13 +1616,13 @@
       "path": "/features/live-preview/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-1ab517ff13410ddd01ebf2f82126c6cdfa1bbf8764dd5baed0b91d076a2db77b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-9ed12e11e7195dcf66160b5718731ae0cd7374c093e427532ffae95c30e3c3ee\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-1ab517ff13410ddd01ebf2f82126c6cdfa1bbf8764dd5baed0b91d076a2db77b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-9ed12e11e7195dcf66160b5718731ae0cd7374c093e427532ffae95c30e3c3ee\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1631,12 +1631,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-dfcfd26431094dfbc5873545ceb514292597e05c9646c0277677c924dd3054f7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-dfcfd26431094dfbc5873545ceb514292597e05c9646c0277677c924dd3054f7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1644,13 +1644,13 @@
       "path": "/features/local-first-markdown-workspace/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-a3187c19280b54f55b48185df0a9b3fa17069f90cd83695515486895869cbe16\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-3216613f775fc37f7c04842eb8837b41d32b5d7849a7c533116e861d206da3df\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-a3187c19280b54f55b48185df0a9b3fa17069f90cd83695515486895869cbe16\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-3216613f775fc37f7c04842eb8837b41d32b5d7849a7c533116e861d206da3df\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1659,12 +1659,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c135ae2875e283668e6450e5cc593ebb245dace10c054c1cbc251799cdd9cbab\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c135ae2875e283668e6450e5cc593ebb245dace10c054c1cbc251799cdd9cbab\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1672,13 +1672,13 @@
       "path": "/features/markdown-file-manager/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-9158c6befd4be39fa5b05f8e2378cd01c6fea254bbd8a3d2da1156d0eaab0643\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-eef88d246e982983064e9140acff4b7494db8a58b12517f06f3e33b9c0cccd3d\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-9158c6befd4be39fa5b05f8e2378cd01c6fea254bbd8a3d2da1156d0eaab0643\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-eef88d246e982983064e9140acff4b7494db8a58b12517f06f3e33b9c0cccd3d\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1687,12 +1687,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-842c439e73455961db022b7566af0c6e10fbb2ac8210b70093b0e9d19093c30d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-842c439e73455961db022b7566af0c6e10fbb2ac8210b70093b0e9d19093c30d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1700,13 +1700,13 @@
       "path": "/features/markdown-preview-editor/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-c04b14dadba9cbfb56146158cb6418f957ff8adeb1e9b588261cdb48ac15610e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-124395a713d620e19b2bce86bc77de8ee2568a73455764703604df69e9780b5b\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-c04b14dadba9cbfb56146158cb6418f957ff8adeb1e9b588261cdb48ac15610e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-124395a713d620e19b2bce86bc77de8ee2568a73455764703604df69e9780b5b\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1715,12 +1715,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-6acb723e23cc3eaef955fc2d72e0c45ba174320b416183792d5a7b8dee48930c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-6acb723e23cc3eaef955fc2d72e0c45ba174320b416183792d5a7b8dee48930c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1728,13 +1728,13 @@
       "path": "/features/markdown-profile-architecture/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-5f075564ee36a983ad7c10b38c6a8418fc119bc1411b165ca45943fd739201e9\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-dff3802e0c0592efe26f3500027f4e77becd292c06bfd65b5dc929ee31e8d2ca\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-5f075564ee36a983ad7c10b38c6a8418fc119bc1411b165ca45943fd739201e9\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-dff3802e0c0592efe26f3500027f4e77becd292c06bfd65b5dc929ee31e8d2ca\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1743,12 +1743,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-79baf18d935d26c06944d2498c0559c9d536f4f3b9581f5ea7fcf778a0af282b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-79baf18d935d26c06944d2498c0559c9d536f4f3b9581f5ea7fcf778a0af282b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1756,13 +1756,13 @@
       "path": "/features/offline-markdown-editor/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-fc24ea91d30bb2769dddb2bf71a4033df47d7fd1b917060cb89c2d16bad16270\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-7480d7dfe8beec6f5f256e8ae6c5f65df35e7186443691f472daa913fc607377\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-fc24ea91d30bb2769dddb2bf71a4033df47d7fd1b917060cb89c2d16bad16270\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-7480d7dfe8beec6f5f256e8ae6c5f65df35e7186443691f472daa913fc607377\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1771,12 +1771,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c0b02460b9fe2f9d5598dbf98715d808e90483538c5f85dda56b49ad5f572280\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c0b02460b9fe2f9d5598dbf98715d808e90483538c5f85dda56b49ad5f572280\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1784,13 +1784,13 @@
       "path": "/features/privacy-first-markdown-editor/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-41c9d6150e3dcf356dcb4989c133f3d0306ac2db31dcbf8200acb6adfbc52c43\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-79a6517c81239f69e95b8424a229ab56d7adc59a1228f512eaa54da591bcebe2\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-41c9d6150e3dcf356dcb4989c133f3d0306ac2db31dcbf8200acb6adfbc52c43\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-79a6517c81239f69e95b8424a229ab56d7adc59a1228f512eaa54da591bcebe2\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1799,12 +1799,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-9f81316989b80cdd7c74263475b710a31797471aa4f1e3c43d9e509b82b43269\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-9f81316989b80cdd7c74263475b710a31797471aa4f1e3c43d9e509b82b43269\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1812,13 +1812,13 @@
       "path": "/features/pwa-markdown-editor/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-628435cff2b5ee28fe7755d1c79678b5264388ca2e9243fcae5998fb63937a18\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-618306f7cb270e01514c5922c1e24601f926959a0fe3723201917f0b647e5cae\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-628435cff2b5ee28fe7755d1c79678b5264388ca2e9243fcae5998fb63937a18\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-618306f7cb270e01514c5922c1e24601f926959a0fe3723201917f0b647e5cae\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1827,12 +1827,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-2fe2056f403da971531d9a2e6ac3ec8d0e783df38a74bf604031101cbbf9f05d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-2fe2056f403da971531d9a2e6ac3ec8d0e783df38a74bf604031101cbbf9f05d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1840,13 +1840,13 @@
       "path": "/features/rendering-and-preview/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-12cbb755fcaea27da1379a3ff86161848eb3131e5a1ce5c67510e259ca1b954e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-304d0c5bcee014bce6303e5033d82dab6b6fe7cfc98f6261a8abe8b1189da9f4\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-12cbb755fcaea27da1379a3ff86161848eb3131e5a1ce5c67510e259ca1b954e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-304d0c5bcee014bce6303e5033d82dab6b6fe7cfc98f6261a8abe8b1189da9f4\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1855,12 +1855,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-98d7c96159524c108900f8edace4cac30ecb6a5454a339f9588518a19012bb6a\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-98d7c96159524c108900f8edace4cac30ecb6a5454a339f9588518a19012bb6a\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1868,13 +1868,13 @@
       "path": "/features/text-wrap-previewer/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-08bf5b775f3f151925f95ae854b9dc44c6336f57cd3c8c1c28563c9a81b6fea8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-01ae9495f51bcd873d4c54194aa199fc0567db35f5232b4a3d56e9de81a83b33\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-08bf5b775f3f151925f95ae854b9dc44c6336f57cd3c8c1c28563c9a81b6fea8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-01ae9495f51bcd873d4c54194aa199fc0567db35f5232b4a3d56e9de81a83b33\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1883,12 +1883,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-8d3028221ebc2fa4ff3876128e90cb0111c0c74b739fe2a1319387fc070df8f8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-8d3028221ebc2fa4ff3876128e90cb0111c0c74b739fe2a1319387fc070df8f8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1896,13 +1896,13 @@
       "path": "/features/theme-packs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-99c6f40bbe877dc2bb101abdc5a0b95d26a9c61fba07827e6090c1615fd6a5f4\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f6c8fff6ec09db87d36b7f963352fef30a0cb082208763791b1a7115e1004331\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-99c6f40bbe877dc2bb101abdc5a0b95d26a9c61fba07827e6090c1615fd6a5f4\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f6c8fff6ec09db87d36b7f963352fef30a0cb082208763791b1a7115e1004331\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1911,12 +1911,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c3574ade8ee70d8e6cd90ee3c6c8913f0d93e588e1cb3b5bc3157fdee5706875\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c3574ade8ee70d8e6cd90ee3c6c8913f0d93e588e1cb3b5bc3157fdee5706875\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1924,13 +1924,13 @@
       "path": "/features/uix-responsive-contract/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-98abd59b3c35d5f5f5a455aa7ced72ff3ee12e986244161f3a5a060eb9dfdf28\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-5edf0ac6e36c474f9f2f621e4020783438cf9f808e8c1f742559cda9af6ba1c3\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-98abd59b3c35d5f5f5a455aa7ced72ff3ee12e986244161f3a5a060eb9dfdf28\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-5edf0ac6e36c474f9f2f621e4020783438cf9f808e8c1f742559cda9af6ba1c3\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1939,12 +1939,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-27845bf51fcaa679d6005e53e62f81e263517a069cd01058111462ffcffcad7c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-27845bf51fcaa679d6005e53e62f81e263517a069cd01058111462ffcffcad7c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1952,13 +1952,13 @@
       "path": "/features/view-toolbar/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-61c911b4a1a6d5556a5fc8da9a7d4c93017c342fa0be2614d05916e04b303837\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-034ee09d0be0cb73fcd096682e1f9e459edb8367889891382f1015e8dc2e2824\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-61c911b4a1a6d5556a5fc8da9a7d4c93017c342fa0be2614d05916e04b303837\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-034ee09d0be0cb73fcd096682e1f9e459edb8367889891382f1015e8dc2e2824\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1967,12 +1967,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-cb715fd84e62e1e8663bf9c00d4340c176bc7504a117025de116af9827c047a4\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-cb715fd84e62e1e8663bf9c00d4340c176bc7504a117025de116af9827c047a4\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -1980,13 +1980,13 @@
       "path": "/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-6ad2af5bd5d2f61a5e44422d4e12ef214776bb2850cec30b133cdf7259b1eef2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-c801effc69e3a66dcdb143478dc77a840a7de73fe9ba36a54dd6329e437f6a56\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-6ad2af5bd5d2f61a5e44422d4e12ef214776bb2850cec30b133cdf7259b1eef2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-c801effc69e3a66dcdb143478dc77a840a7de73fe9ba36a54dd6329e437f6a56\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -1995,12 +1995,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-f5c6a34c61f3050ca5a916105c4ddc6f3ec001b3a20a61d44464caaf04eb720e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-f5c6a34c61f3050ca5a916105c4ddc6f3ec001b3a20a61d44464caaf04eb720e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2009,12 +2009,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "application/json; charset=utf-8",
       "etag": "\"sha256-c70a588cbb99ac0eaf084f55ae0853b829631aab747b4b8cfdc9e1cea3164f8f\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c70a588cbb99ac0eaf084f55ae0853b829631aab747b4b8cfdc9e1cea3164f8f\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "application/json; charset=utf-8"
       }
     },
@@ -2022,13 +2022,13 @@
       "path": "/legal/privacy/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-f1f4cba29c1f1343ba2c6e2b166d6bcb6f35cba9104c9cb502956180f5fb3926\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-2fbfc0bcd5f351b5a15ce52198806008d7f9add47a927419b76395d2faf5bebb\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-f1f4cba29c1f1343ba2c6e2b166d6bcb6f35cba9104c9cb502956180f5fb3926\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-2fbfc0bcd5f351b5a15ce52198806008d7f9add47a927419b76395d2faf5bebb\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2037,12 +2037,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-be26bd58056b0d9963953e7d43f6dd085f3efcb2e4685e9367a63a3fd111c575\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-be26bd58056b0d9963953e7d43f6dd085f3efcb2e4685e9367a63a3fd111c575\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2050,13 +2050,13 @@
       "path": "/legal/terms/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-aa55b2dd8a1e1ca505959ec880cc44c45d6bd29b1dd5c4b7bbcf54c8bd7b1ca2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-0f3d9477d4840416f4ec3172843405250cdc32d1cacd30ce9532982ae5a7255a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-aa55b2dd8a1e1ca505959ec880cc44c45d6bd29b1dd5c4b7bbcf54c8bd7b1ca2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-0f3d9477d4840416f4ec3172843405250cdc32d1cacd30ce9532982ae5a7255a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2065,12 +2065,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-eb8bd7158b587912bbdad6bbe70724d0e1e0946286c7c137b5f762180aff6dfc\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-eb8bd7158b587912bbdad6bbe70724d0e1e0946286c7c137b5f762180aff6dfc\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2079,12 +2079,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-6fe3e61b4d8e2e74bb12dc8c8f70b4dd0a20de540758eeaf724e37649020e627\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-6fe3e61b4d8e2e74bb12dc8c8f70b4dd0a20de540758eeaf724e37649020e627\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2093,12 +2093,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-a1dc18aac176c453ba4fe648c54f237dc2a222e370f76015f3fa369f57db4f0e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-a1dc18aac176c453ba4fe648c54f237dc2a222e370f76015f3fa369f57db4f0e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2134,13 +2134,13 @@
       "path": "/packages/extension-runtime/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-b1cd996ccaf0fb9dfe74da84bf86aebf2f4b142d2f634538497b5f6d2841896e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-fd2de115658300862c567c9fd21a4a211e1f69513da9c44c4a42416f61cc744f\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-b1cd996ccaf0fb9dfe74da84bf86aebf2f4b142d2f634538497b5f6d2841896e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-fd2de115658300862c567c9fd21a4a211e1f69513da9c44c4a42416f61cc744f\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2149,12 +2149,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-2be6195dc91615788733fe965e8efc8cda7cb588797908829b98849d321c48e5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-2be6195dc91615788733fe965e8efc8cda7cb588797908829b98849d321c48e5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2162,13 +2162,13 @@
       "path": "/packages/markdown-editor-react/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-aa6432c6123e007abf9432414f312ef8ee1b672fc867e53102ee31543a11e9bc\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-68eed6fa602d7dcb55ed50caf94629488fa0975c0308c2082c3315a3a597c4d7\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-aa6432c6123e007abf9432414f312ef8ee1b672fc867e53102ee31543a11e9bc\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-68eed6fa602d7dcb55ed50caf94629488fa0975c0308c2082c3315a3a597c4d7\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2177,12 +2177,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-3cd16fce29e6c98333b792bfcc01c96e792644ac62080b6a32ab3389b48b1777\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-3cd16fce29e6c98333b792bfcc01c96e792644ac62080b6a32ab3389b48b1777\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2190,13 +2190,13 @@
       "path": "/packages/markdown-renderer-core/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-3177ebf7aac5d1113745f421ed271f3de05317d478dbe5caae5e25801a05b22f\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-a789430d3ccb338ccd5a52076fdf703a730eb9e559eb3dea07008278ed25d82c\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-3177ebf7aac5d1113745f421ed271f3de05317d478dbe5caae5e25801a05b22f\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-a789430d3ccb338ccd5a52076fdf703a730eb9e559eb3dea07008278ed25d82c\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2205,12 +2205,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-128aaf20e95d49c98b57b571e954b2c52f8e94a46aa528b86bc90b3f4cecedfe\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-128aaf20e95d49c98b57b571e954b2c52f8e94a46aa528b86bc90b3f4cecedfe\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2218,13 +2218,13 @@
       "path": "/packages/markdown-renderer-react/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-abaeffcde44a35310adea927ce2c02fba10837aac3e3deef150250eb65e6bca3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-5f2cedb34208bf3a79f753bd62149df5cff34363a02828e151f1766d3682ec57\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-abaeffcde44a35310adea927ce2c02fba10837aac3e3deef150250eb65e6bca3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-5f2cedb34208bf3a79f753bd62149df5cff34363a02828e151f1766d3682ec57\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2233,12 +2233,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-d94ed5efac2f5cb7c773ac669c81e8b0f8bdb96ed1f3c4cbc93a1caf52444ac3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-d94ed5efac2f5cb7c773ac669c81e8b0f8bdb96ed1f3c4cbc93a1caf52444ac3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2246,13 +2246,13 @@
       "path": "/packages/theme-contract/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-55014e149278e4b822dc24b91302709697de0a9d4ab6ec84574bceea5a280af2\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-50df4c86b2a7b98deec3cae7ff0a28d5f89a550ac6c6343bfc75bf984420957b\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-55014e149278e4b822dc24b91302709697de0a9d4ab6ec84574bceea5a280af2\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-50df4c86b2a7b98deec3cae7ff0a28d5f89a550ac6c6343bfc75bf984420957b\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2261,12 +2261,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-34736e7d12a3ba83702013ff2da58611e3cdd4531b3f614288284a45acc253cd\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-34736e7d12a3ba83702013ff2da58611e3cdd4531b3f614288284a45acc253cd\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2274,13 +2274,13 @@
       "path": "/privacy/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-86f83215296372195bfefbbe1c0e559a3e47c4046c834cadcad06906eb7f653d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-574458b705c8235c648d424bd0f5053c8bc09070e3ccd5ed5bf6eaa44bd0c4eb\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-86f83215296372195bfefbbe1c0e559a3e47c4046c834cadcad06906eb7f653d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-574458b705c8235c648d424bd0f5053c8bc09070e3ccd5ed5bf6eaa44bd0c4eb\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2289,12 +2289,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-152966237ea4602304874ff000e5aab99f7cd6a7e4144796ab8638f14ef7ae02\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-152966237ea4602304874ff000e5aab99f7cd6a7e4144796ab8638f14ef7ae02\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2302,13 +2302,13 @@
       "path": "/proof/browser-support/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-9ee5c502a1dd25ba0f28a7a0f4512aefa89d9446acece2532f798bcd788b5943\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-4941fe2f20abfdaa7e5f7d880270c892c9d9a7bf4c35e2175a6498f1433ba737\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-9ee5c502a1dd25ba0f28a7a0f4512aefa89d9446acece2532f798bcd788b5943\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-4941fe2f20abfdaa7e5f7d880270c892c9d9a7bf4c35e2175a6498f1433ba737\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2317,12 +2317,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-6c61faa993b3be200fb62f811e1a25d726f5cc9fe8d0bbc62ca2d092e5f0a7b0\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-6c61faa993b3be200fb62f811e1a25d726f5cc9fe8d0bbc62ca2d092e5f0a7b0\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2330,13 +2330,13 @@
       "path": "/proof/markdown-support/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-bc928ae41e7161f81b3f5f72f91fa997ccad17312723fa0f2ee89e2753533b1c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-42fc43d349483472698a4c51e648bace26b76d03e7dfe821c52369368526419a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-bc928ae41e7161f81b3f5f72f91fa997ccad17312723fa0f2ee89e2753533b1c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-42fc43d349483472698a4c51e648bace26b76d03e7dfe821c52369368526419a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2345,12 +2345,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-359b26dd212e22b5efd6563d3f88eca869e990d90377de948f1192bcc79cdc89\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-359b26dd212e22b5efd6563d3f88eca869e990d90377de948f1192bcc79cdc89\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2358,13 +2358,13 @@
       "path": "/proof/package-surfaces/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-f8cd992ae389b409ca1166de01079519456e737f2a826a40fc220b260762a1c5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-397fe76d7d23575f85ead39dae5daaa79d91b2daf883bb762efe55a9d693f4ba\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-f8cd992ae389b409ca1166de01079519456e737f2a826a40fc220b260762a1c5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-397fe76d7d23575f85ead39dae5daaa79d91b2daf883bb762efe55a9d693f4ba\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2373,12 +2373,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-04fdad2a1866f4aa5443a2adba6df0f098c0d4c6de513b32ec43e9165ef395ce\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-04fdad2a1866f4aa5443a2adba6df0f098c0d4c6de513b32ec43e9165ef395ce\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2387,12 +2387,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-07494aa679e02cfd9feb934f780c748eaf33d4ca8d03cd03fe6cde5711cac4fa\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-07494aa679e02cfd9feb934f780c748eaf33d4ca8d03cd03fe6cde5711cac4fa\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2400,13 +2400,13 @@
       "path": "/security/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-30a7d74ef4b8378a874cf49733cde6371bfa4d1bbeffd4937fe5afa7ef9d7bcc\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-f5a72194b041cbf93bda1bb367b3b144b949a69ce30095affeeb24110619be39\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-30a7d74ef4b8378a874cf49733cde6371bfa4d1bbeffd4937fe5afa7ef9d7bcc\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-f5a72194b041cbf93bda1bb367b3b144b949a69ce30095affeeb24110619be39\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2415,12 +2415,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-5aefb983d57f73e8001885983fe97c4ba7b8ac10cf6fe9e39f44297d909d81ef\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-5aefb983d57f73e8001885983fe97c4ba7b8ac10cf6fe9e39f44297d909d81ef\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2443,12 +2443,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "application/xml; charset=utf-8",
       "etag": "\"sha256-46a9a6e66f43c3a7b17c406fd2c277ab6a8b5b0c79b7758e7c36f3a77680c653\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-46a9a6e66f43c3a7b17c406fd2c277ab6a8b5b0c79b7758e7c36f3a77680c653\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "application/xml; charset=utf-8"
       }
     },
@@ -2456,13 +2456,13 @@
       "path": "/trust/privacy-boundary/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-befaeb742e727d030a8716ae309af12c295baf979727fc80a5db0cd9ac07cda5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-be96d48c91a248a35d7df9ce476624fbaf911553da3252d996a897fde70db08d\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-befaeb742e727d030a8716ae309af12c295baf979727fc80a5db0cd9ac07cda5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-be96d48c91a248a35d7df9ce476624fbaf911553da3252d996a897fde70db08d\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2471,12 +2471,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-5d97bcfba67d441969e084742fd5509de0d992b4c0cc0615cb658bf6c64a61d7\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-5d97bcfba67d441969e084742fd5509de0d992b4c0cc0615cb658bf6c64a61d7\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2484,13 +2484,13 @@
       "path": "/updates/archive/2026-01/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-6f40bb08a19e671cb215f49b7f1fbb7be23a47aae838fd6ea0255e096c23964c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-7e404ffa25b4e892e3f7aee7efaa9672f68c22e16806496c6f728a5a899450a4\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-6f40bb08a19e671cb215f49b7f1fbb7be23a47aae838fd6ea0255e096c23964c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-7e404ffa25b4e892e3f7aee7efaa9672f68c22e16806496c6f728a5a899450a4\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2499,12 +2499,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-a3f186c7ad30dfd83239b23b53a34aef4d1290d66e8073b9b2485e00404f07c5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-a3f186c7ad30dfd83239b23b53a34aef4d1290d66e8073b9b2485e00404f07c5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2512,13 +2512,13 @@
       "path": "/updates/archive/2026-03/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-5ce2e4dab0576b05098e3e3b6e3dcdc6a340fc391d8c5610b0926764f9b02692\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-57b9a418e9b4390b2c5bbd33fbcb3c4599bba075b9fc92d01b3aff80bb87522c\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-5ce2e4dab0576b05098e3e3b6e3dcdc6a340fc391d8c5610b0926764f9b02692\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-57b9a418e9b4390b2c5bbd33fbcb3c4599bba075b9fc92d01b3aff80bb87522c\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2527,12 +2527,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-76391b0b0072615c42fb9d0929ebf07570ceaca04112d542756b8c421641dd4e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-76391b0b0072615c42fb9d0929ebf07570ceaca04112d542756b8c421641dd4e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2540,13 +2540,13 @@
       "path": "/updates/archive/2026-04/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-23c6ffa454ca5f1dd79752219512ed748744bcbc67a7210328980acbc76f36e9\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-193887dfcaf3d1c1946284c6ada5e337e911083b25ef8c50f7249be60d69739a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-23c6ffa454ca5f1dd79752219512ed748744bcbc67a7210328980acbc76f36e9\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-193887dfcaf3d1c1946284c6ada5e337e911083b25ef8c50f7249be60d69739a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2555,12 +2555,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-bc72ae3de912f48c6e3965084d3280805823d2abdf05408b8bd03307beb99f2e\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-bc72ae3de912f48c6e3965084d3280805823d2abdf05408b8bd03307beb99f2e\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2568,13 +2568,13 @@
       "path": "/updates/archive/2026-05/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-05e9f88e28ed2a0f2448bcad5ea35f2c0c2c10e928a47567d527c014f7f168d9\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-28a9da84257891694d5dbe7bcbeb6783cd4d192836d6db1f911fcc6cd73e6d3a\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-05e9f88e28ed2a0f2448bcad5ea35f2c0c2c10e928a47567d527c014f7f168d9\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-28a9da84257891694d5dbe7bcbeb6783cd4d192836d6db1f911fcc6cd73e6d3a\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2583,12 +2583,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-1a5243b57c6a171c3157d3fce43bc24ff42205a51d90cce4ee7d84b5fd213c38\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-1a5243b57c6a171c3157d3fce43bc24ff42205a51d90cce4ee7d84b5fd213c38\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2596,13 +2596,13 @@
       "path": "/updates/author/cobycloud/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-0ee032593f35bcbca1bed4a3dfc0648e169e43dd8b479d17eea4152521f8a433\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-d2afd960e5c793c5048a88b5e0c2696390df2e20ca02df0c02466311b89383e9\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-0ee032593f35bcbca1bed4a3dfc0648e169e43dd8b479d17eea4152521f8a433\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-d2afd960e5c793c5048a88b5e0c2696390df2e20ca02df0c02466311b89383e9\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2611,12 +2611,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-973d4033fef6ba196a0cc1bce5381037307cd53806fb874fc26950bec8876f51\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-973d4033fef6ba196a0cc1bce5381037307cd53806fb874fc26950bec8876f51\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2624,13 +2624,13 @@
       "path": "/updates/client-split-out-backstory/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-d38bdf5b44e3f037a31a9a17929313eb179094665b9008177dc2352692fbf99b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-6835845b1b9ac4a6ade2663e0f271fd3235eca6e95c3036d4d3e8b3ed13dfa26\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-d38bdf5b44e3f037a31a9a17929313eb179094665b9008177dc2352692fbf99b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-6835845b1b9ac4a6ade2663e0f271fd3235eca6e95c3036d4d3e8b3ed13dfa26\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2639,12 +2639,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-de1c51fb6d287a05052bc3055258659274986e335036eeb4ef2ce794e533a744\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-de1c51fb6d287a05052bc3055258659274986e335036eeb4ef2ce794e533a744\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2652,13 +2652,13 @@
       "path": "/updates/desktop-release-and-android-verification/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-4a94132779f133143d9f0fbc8bab0c6e39d75bdfac4ab344211a0e9ed3aec724\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-7d5e00f169597d284022399c4eede7cd7e808c7cbb88c59cf202c2778c555772\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-4a94132779f133143d9f0fbc8bab0c6e39d75bdfac4ab344211a0e9ed3aec724\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-7d5e00f169597d284022399c4eede7cd7e808c7cbb88c59cf202c2778c555772\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2667,12 +2667,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-356b6c0dea553d32879e371423a95c63140391321b21499eece560f3b0eea24b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-356b6c0dea553d32879e371423a95c63140391321b21499eece560f3b0eea24b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2680,13 +2680,13 @@
       "path": "/updates/docs-surface-realignment/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-63724d308af8f874f49d805ab301102549f8476f6218a32b9179cb627e61bf4d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-5ac9372c06ffb9572b888888b89f43baa73aacba46746fa2ad59890e9e49c4e1\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-63724d308af8f874f49d805ab301102549f8476f6218a32b9179cb627e61bf4d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-5ac9372c06ffb9572b888888b89f43baa73aacba46746fa2ad59890e9e49c4e1\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2695,12 +2695,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-126c47e927edbda077292e0fc0155b6a0c56ce29864b66f525cd6ec449962991\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-126c47e927edbda077292e0fc0155b6a0c56ce29864b66f525cd6ec449962991\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2708,13 +2708,13 @@
       "path": "/updates/extension-compatibility-and-publish-gates/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-32fbb077cec9915c67fb9a50f188cab19add442fd639884f33af09f26689d8e5\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-66f31165f243bc4f8ff61b109c52beb05a3529b5effb40a9240b8107b858c5a2\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-32fbb077cec9915c67fb9a50f188cab19add442fd639884f33af09f26689d8e5\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-66f31165f243bc4f8ff61b109c52beb05a3529b5effb40a9240b8107b858c5a2\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2723,12 +2723,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-a0a28956d8b46ae2368e6402e9da3d98de3b4a4ef84f097c9e11b2bb42341eac\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-a0a28956d8b46ae2368e6402e9da3d98de3b4a4ef84f097c9e11b2bb42341eac\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2736,13 +2736,13 @@
       "path": "/updates/extension-host-rollout/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-6199bb90836b662e4a6d95ac30120306ec6dfa34fd25e1496516e66288d60449\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-c878032564d60c30826dcd7b1efa34c1db418f39a02e84546bd68665cc33967c\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-6199bb90836b662e4a6d95ac30120306ec6dfa34fd25e1496516e66288d60449\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-c878032564d60c30826dcd7b1efa34c1db418f39a02e84546bd68665cc33967c\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2751,12 +2751,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-47bb50d97c2cf3cc6af5f6be2a698b1b0428b414bd54ad24e6280da1cfcef432\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-47bb50d97c2cf3cc6af5f6be2a698b1b0428b414bd54ad24e6280da1cfcef432\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2764,13 +2764,13 @@
       "path": "/updates/governed-releases-and-package-docs/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-1ae09434b74a3c34e30674cdc4083d9a2f912078c43f65dbd4a63631aadac2dd\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-58fe1277c96d8936025b18fbeebcc4305561cd174b3eed819a0b5ff6cd6c2410\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-1ae09434b74a3c34e30674cdc4083d9a2f912078c43f65dbd4a63631aadac2dd\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-58fe1277c96d8936025b18fbeebcc4305561cd174b3eed819a0b5ff6cd6c2410\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2779,12 +2779,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c4ae50c8e7cea423a475c28f3ea50f732f2876d07445eda90755e2ad2ae46e12\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c4ae50c8e7cea423a475c28f3ea50f732f2876d07445eda90755e2ad2ae46e12\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2792,13 +2792,13 @@
       "path": "/updates/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-bdd3bb5e9188661268ac493cfc8f49385c0c228467e65bbdc93ac6e347917bd0\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-2a10d6eb66585f172e46e5c837735724b1a4c11d6f34301f2175e57989b0a528\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-bdd3bb5e9188661268ac493cfc8f49385c0c228467e65bbdc93ac6e347917bd0\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-2a10d6eb66585f172e46e5c837735724b1a4c11d6f34301f2175e57989b0a528\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2807,12 +2807,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-adb287cf0ea6c679c79b90bcfd50e93039e29319928ae2a6b81f8226baa7a910\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-adb287cf0ea6c679c79b90bcfd50e93039e29319928ae2a6b81f8226baa7a910\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2820,13 +2820,13 @@
       "path": "/updates/launch/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-7101d2bfb6d6291a6e0e2b9fa63cc5a442f9d78c64c1e0173eaa16d008aeeacb\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-b53ebf59f95bb52de327a267523a308c998404a82b033b4a8cc8637de1730e42\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-7101d2bfb6d6291a6e0e2b9fa63cc5a442f9d78c64c1e0173eaa16d008aeeacb\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-b53ebf59f95bb52de327a267523a308c998404a82b033b4a8cc8637de1730e42\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2835,12 +2835,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-998d0d432d5bccd9c27a9c61d0651f6df0f7ec67f8c5f62113a2a0caa8d9aa1d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-998d0d432d5bccd9c27a9c61d0651f6df0f7ec67f8c5f62113a2a0caa8d9aa1d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2848,13 +2848,13 @@
       "path": "/updates/markdown-workspace-launch/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-7810203210c916b2733b4337441590017a37aa9d39200c17759a5c2bd3ce2c4c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-a81ff39945dd9d20cda50dc1e792d4a0549f14f384905bb138034c51be5b6355\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-7810203210c916b2733b4337441590017a37aa9d39200c17759a5c2bd3ce2c4c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-a81ff39945dd9d20cda50dc1e792d4a0549f14f384905bb138034c51be5b6355\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2863,12 +2863,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-07d5c83d634ef25bd7f27d45972cbe638a79ea95107875c826533b0f583e7893\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-07d5c83d634ef25bd7f27d45972cbe638a79ea95107875c826533b0f583e7893\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2876,13 +2876,13 @@
       "path": "/updates/pwa-install-and-zoom-controls/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-9c7dc3594eea7ef47a82f56a65c89e3c95be06ade5f803a2e0937283488adf2c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-098427e2013934fe9fc3be2832d5ac7b3dda5338ef0d025d977d5eaa9e984116\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-9c7dc3594eea7ef47a82f56a65c89e3c95be06ade5f803a2e0937283488adf2c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-098427e2013934fe9fc3be2832d5ac7b3dda5338ef0d025d977d5eaa9e984116\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2891,12 +2891,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c7d811243eb4f0aa8b7672ce9b2f13ef0b7a7ef152ab73b6f4ff10802ed41e26\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c7d811243eb4f0aa8b7672ce9b2f13ef0b7a7ef152ab73b6f4ff10802ed41e26\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2904,13 +2904,13 @@
       "path": "/updates/responsive-authoring-and-export/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-5917c5ffea8e9f6e26c874ec2c777e7de94981d16fa1fe92df93bc9b4a5ab7aa\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "etag": "\"sha256-38cc98e497e9fc494f2084ceceb3e30fda394d2f132c3d6e6da6e20db98d0df7\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-5917c5ffea8e9f6e26c874ec2c777e7de94981d16fa1fe92df93bc9b4a5ab7aa\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "ETag": "\"sha256-38cc98e497e9fc494f2084ceceb3e30fda394d2f132c3d6e6da6e20db98d0df7\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2919,12 +2919,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-600c270cca4b79ce252c48d4f0fdb7dff1f323d4beddf5edfdeabf6aa891f280\"",
-      "lastModified": "Sat, 09 May 2026 19:44:10 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-600c270cca4b79ce252c48d4f0fdb7dff1f323d4beddf5edfdeabf6aa891f280\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:10 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2932,13 +2932,13 @@
       "path": "/updates/retained-client-versions-and-desktop-shell/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-4f539d7a301c5d9755e4ad5a64fa037c62c49c112d5debc4d1c0c03af018e5d8\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-ca3902f57ff78b04bb72b9c75c0e693e1db76450db2e4b6f727e0e56ca7a63ae\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-4f539d7a301c5d9755e4ad5a64fa037c62c49c112d5debc4d1c0c03af018e5d8\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-ca3902f57ff78b04bb72b9c75c0e693e1db76450db2e4b6f727e0e56ca7a63ae\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2947,12 +2947,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-face15c864781da249a322ad8e8c0e444c64bb0f3e5c26ab875ba58401bffd45\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-face15c864781da249a322ad8e8c0e444c64bb0f3e5c26ab875ba58401bffd45\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2960,13 +2960,13 @@
       "path": "/updates/screenshot-matrix-and-browser-sidebars/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-11c8d67be2ffdb72f905f319f5f7f47ca55fd685548ea7c9636b86c3b73dbdcc\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-e64c6b3abf7930bd55439fab02ab0a59903e21bd32a0a73b43db880435781b90\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-11c8d67be2ffdb72f905f319f5f7f47ca55fd685548ea7c9636b86c3b73dbdcc\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-e64c6b3abf7930bd55439fab02ab0a59903e21bd32a0a73b43db880435781b90\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -2975,12 +2975,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-c10edc5524bec7edf55d7046895fe770c02a3bdf69eca2a39e5edbaaad1c0b1c\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-c10edc5524bec7edf55d7046895fe770c02a3bdf69eca2a39e5edbaaad1c0b1c\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -2988,13 +2988,13 @@
       "path": "/updates/settings-simplification-for-daily-flow/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-9ee4f78d0b967f7ff584feb4f2b5042065de90b5c701a831c4afbb767b434e6d\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-3a87391eccf173bf9bf62463e878466bc22413cb68930a9596cd8f24b5ba63c7\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-9ee4f78d0b967f7ff584feb4f2b5042065de90b5c701a831c4afbb767b434e6d\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-3a87391eccf173bf9bf62463e878466bc22413cb68930a9596cd8f24b5ba63c7\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -3003,12 +3003,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-efeb838b643d24ae95e8c9716c7c915800c5ef8e65e0793b09771c804f2af5c3\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-efeb838b643d24ae95e8c9716c7c915800c5ef8e65e0793b09771c804f2af5c3\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     },
@@ -3016,13 +3016,13 @@
       "path": "/updates/workspace-files-and-git-ops-packages/index.html",
       "resourceClass": "mutable-revalidate",
       "contentType": "text/html; charset=utf-8",
-      "etag": "\"sha256-ec6a96998a21d965dd0532b9923bbe71c48ffbbc39fb8b65b9a4707cc69617b4\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "etag": "\"sha256-8868f95894f9a23fceba18b1ecedb2b7723e11f01cb7624cdf0da6e1ababa3e1\"",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
-        "ETag": "\"sha256-ec6a96998a21d965dd0532b9923bbe71c48ffbbc39fb8b65b9a4707cc69617b4\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "ETag": "\"sha256-8868f95894f9a23fceba18b1ecedb2b7723e11f01cb7624cdf0da6e1ababa3e1\"",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/html; charset=utf-8"
       }
     },
@@ -3031,12 +3031,12 @@
       "resourceClass": "mutable-revalidate",
       "contentType": "text/plain; charset=utf-8",
       "etag": "\"sha256-21373ed1fedd0cb21da6fcc4727604d20b1dd0bd8df84067a7009c4fdfd4c87b\"",
-      "lastModified": "Sat, 09 May 2026 19:44:08 GMT",
+      "lastModified": "Sat, 09 May 2026 19:57:06 GMT",
       "cacheControl": "no-cache",
       "headers": {
         "Cache-Control": "no-cache",
         "ETag": "\"sha256-21373ed1fedd0cb21da6fcc4727604d20b1dd0bd8df84067a7009c4fdfd4c87b\"",
-        "Last-Modified": "Sat, 09 May 2026 19:44:08 GMT",
+        "Last-Modified": "Sat, 09 May 2026 19:57:06 GMT",
         "Content-Type": "text/plain; charset=utf-8"
       }
     }

@@ -45,9 +45,12 @@ await new Promise((resolve) => server.listen(port, '127.0.0.1', resolve));
 const browser = await chromium.launch();
 const captures = [
   { name: 'desktop-dark-critical-only.png', width: 1366, height: 900, theme: 'lander-dark', blockCss: true },
+  { name: 'desktop-dark-critical-only-locale-open.png', width: 1366, height: 900, theme: 'lander-dark', blockCss: true, openLocale: true },
   { name: 'desktop-light-critical-only.png', width: 1366, height: 900, theme: 'lander-light', blockCss: true },
   { name: 'mobile-dark-critical-only.png', width: 390, height: 844, theme: 'lander-dark', blockCss: true },
+  { name: 'mobile-dark-critical-only-locale-open.png', width: 390, height: 844, theme: 'lander-dark', blockCss: true, openLocale: true },
   { name: 'desktop-dark-full-css.png', width: 1366, height: 900, theme: 'lander-dark', blockCss: false },
+  { name: 'desktop-dark-full-css-locale-open.png', width: 1366, height: 900, theme: 'lander-dark', blockCss: false, openLocale: true },
 ];
 
 const metrics = [];
@@ -66,12 +69,17 @@ try {
       localStorage.setItem('mdwrk:lander-theme', theme);
     }, capture.theme);
     await page.goto(`http://127.0.0.1:${port}/docs/quickstart/`, { waitUntil: 'domcontentloaded' });
+    if (capture.openLocale) {
+      await page.locator('.locale-switcher-summary').first().click();
+    }
     await page.screenshot({ path: path.join(outputRoot, capture.name), fullPage: false });
     metrics.push({
       name: capture.name,
       title: await page.locator('.docs-title').first().textContent(),
       articleVisible: await page.locator('.docs-content-card').first().isVisible(),
       markdownVisible: await page.locator('.lander-markdown .markdown-body').first().isVisible(),
+      localeMenuVisible: await page.locator('.locale-switcher-menu').first().isVisible(),
+      localeOptionCount: await page.locator('.locale-switcher-option').count(),
       brandIconBox: await page.locator('.navbar-brand-icon').first().boundingBox(),
       themeIconBox: await page.locator('.navbar-theme-icon').first().boundingBox(),
       menuPanelVisible: await page.locator('.navbar-menu-panel').first().isVisible(),
