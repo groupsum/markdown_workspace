@@ -623,7 +623,6 @@
 @media (min-width: 768px) {
   .navbar-menu-list {
     background: transparent;
-    gap: 2rem;
   }
 }
 
@@ -1334,11 +1333,6 @@ time {
     border: 0;
     background: transparent;
     padding: 0;
-    gap: 1rem;
-  }
-
-  .navbar-link {
-    padding: 0;
   }
 
   .footer-layout {
@@ -1407,10 +1401,6 @@ time {
 
   .navbar-menu-panel {
     margin-right: 1.5rem;
-  }
-
-  .navbar-menu-list {
-    gap: 1.5rem;
   }
 
   .features-header {

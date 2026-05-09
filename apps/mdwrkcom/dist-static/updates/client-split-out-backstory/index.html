@@ -42,7 +42,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/updates/client-split-out-backstory/#webpage","url":"https://mdwrk.com/updates/client-split-out-backstory/","name":"Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk Product Updates","headline":"Build with the Same MdWrk Editor and Renderer the Client Ships","description":"MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.","datePublished":"2026-03-23T00:00:00-05:00","dateModified":"2026-03-23T00:00:00-05:00","image":"https://mdwrk.com/blog/media/mdwrk-workspace-split.png","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"inLanguage":"en","isPartOf":{"@id":"https://mdwrk.com/#website"},"publisher":{"@id":"https://mdwrk.com/#organization"},"mainEntity":{"@id":"https://mdwrk.com/updates/client-split-out-backstory/#primary"}},{"@type":"BlogPosting","@id":"https://mdwrk.com/updates/client-split-out-backstory/#primary","mainEntityOfPage":{"@id":"https://mdwrk.com/updates/client-split-out-backstory/#webpage"},"headline":"Build with the Same MdWrk Editor and Renderer the Client Ships","name":"Build with the Same MdWrk Editor and Renderer the Client Ships | MdWrk Product Updates","description":"MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day.","url":"https://mdwrk.com/updates/client-split-out-backstory/","image":"https://mdwrk.com/blog/media/mdwrk-workspace-split.png","datePublished":"2026-03-23T00:00:00-05:00","dateModified":"2026-03-23T00:00:00-05:00","inLanguage":"en","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"publisher":{"@id":"https://mdwrk.com/#organization"},"creator":{"@id":"https://mdwrk.com/#organization"}},{"@type":"FAQPage","@id":"https://mdwrk.com/updates/client-split-out-backstory/#faq","mainEntity":[{"@type":"Question","name":"What does this MdWrk update cover?","acceptedAnswer":{"@type":"Answer","text":"MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day."}},{"@type":"Question","name":"What should readers take away from this update?","acceptedAnswer":{"@type":"Answer","text":"This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/updates/client-split-out-backstory/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Product Updates","item":"https://mdwrk.com/updates/"},{"@type":"ListItem","position":3,"name":"Build with the Same MdWrk Editor and Renderer the Client Ships","item":"https://mdwrk.com/updates/client-split-out-backstory/"}]}]}</script>
     <style data-lander-critical-css="mdwrkcom-static-shell">html{background:#f8fafc;color:#102033}html[data-lander-theme="lander-dark"]{background:#0b1220;color:#edf4ff}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app-shell{min-height:100vh;background:var(--static-bg,#f8fafc);color:var(--static-text,#102033)}.navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid rgba(15,23,42,.16)}.app-main{min-height:60vh}.hero-section,.docs-main{position:relative}.hero-inner,.docs-content-wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) 1rem}.hero-heading,.docs-title,.blog-post-title{margin:0;color:inherit;line-height:1.05;font-weight:800;letter-spacing:0}.hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted,#344559)}</style>
-    <link rel="preload" href="/assets/static.cd657349741504b0.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/assets/static.cd657349741504b0.css"></noscript>
+    <link rel="preload" href="/assets/static.8fab02053cfba60e.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/assets/static.8fab02053cfba60e.css"></noscript>
   </head>
   <body>
     <div id="root">
@@ -70,8 +70,20 @@
                 </svg>
                 <span class="navbar-github-label">GitHub</span>
               </a>
+              <button type="button" class="navbar-menu-toggle" data-static-menu-toggle aria-controls="navbar-sticky" aria-expanded="false" aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                <svg class="navbar-menu-icon static-menu-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12h16"></path>
+                  <path d="M4 6h16"></path>
+                  <path d="M4 18h16"></path>
+                </svg>
+                <svg class="navbar-menu-icon static-menu-close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
             </div>
-            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 <li><a class="navbar-link is-inactive" href="/">Home</a></li>
               <li><a class="navbar-link is-inactive" href="/features/">Features</a></li>
@@ -108,7 +120,7 @@
                     </div>
                   </header>
                   <div class="markdown-renderer-host lander-markdown">
-                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="why-this-matters">Why this matters</h2><p class="md-p">Reusable packages give teams a clear path to:</p><ul class="md-ul"><li class="md-li">ship MdWrk-powered editing inside internal tools</li><li class="md-li">reuse the same renderer in docs, apps, and examples</li><li class="md-li">keep extension work aligned with stable public package contracts</li><li class="md-li">move from first integration to broader adoption with a package set that already fits the live client</li></ul><h2 class="md-h2" id="what-you-can-install-today">What you can install today</h2><p class="md-p">The public package family starts here:</p><pre class="md-code-block md-code-surface"><code class="language-bash"><span class="token function">npm</span> install @mdwrk/mdwrkspace @mdwrk/markdown-editor-react @mdwrk/markdown-renderer-react</code></pre><p class="md-p">These docs carry the current usage details:</p><ul class="md-ul"><li class="md-li"><a href="/docs/getting-started/installation" class="md-link">Client installation</a></li><li class="md-li"><a href="/docs/getting-started/standalone-modules" class="md-link">Standalone modules</a></li><li class="md-li"><a href="/docs/getting-started/local-setup" class="md-link">Local setup</a></li></ul><h2 class="md-h2" id="react-example">React example</h2><pre class="md-code-block md-code-surface"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> MarkdownEditor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mdwrk/markdown-editor-react'</span><span class="token punctuation">;</span>
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="why-this-matters">Why this matters</h2><p class="md-p">Reusable packages give teams a clear path to:</p><ul class="md-ul"><li class="md-li">ship MdWrk-powered editing inside internal tools</li><li class="md-li">reuse the same renderer in docs, apps, and examples</li><li class="md-li">keep extension work aligned with stable public package contracts</li><li class="md-li">move from first integration to broader adoption with a package set that already fits the live client</li></ul><h2 class="md-h2" id="what-you-can-install-today">What you can install today</h2><p class="md-p">The public package family starts here:</p><pre class="md-code-block md-code-surface" data-code-language="bash"><code class="language-bash"><span class="token function">npm</span> install @mdwrk/mdwrkspace @mdwrk/markdown-editor-react @mdwrk/markdown-renderer-react</code></pre><p class="md-p">These docs carry the current usage details:</p><ul class="md-ul"><li class="md-li"><a href="/docs/getting-started/installation" class="md-link">Client installation</a></li><li class="md-li"><a href="/docs/getting-started/standalone-modules" class="md-link">Standalone modules</a></li><li class="md-li"><a href="/docs/getting-started/local-setup" class="md-link">Local setup</a></li></ul><h2 class="md-h2" id="react-example">React example</h2><pre class="md-code-block md-code-surface" data-code-language="tsx"><code class="language-tsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> MarkdownEditor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mdwrk/markdown-editor-react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> MarkdownViewer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@mdwrk/markdown-renderer-react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
@@ -218,6 +230,26 @@
           });
           apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
         }
+      })();
+    </script>
+    <script>
+      (() => {
+        const toggle = document.querySelector('[data-static-menu-toggle]');
+        const panel = document.getElementById('navbar-sticky');
+        if (!toggle || !panel) return;
+        const setExpanded = (expanded) => {
+          toggle.setAttribute('aria-expanded', String(expanded));
+          toggle.setAttribute('aria-label', expanded ? 'Close main menu' : 'Open main menu');
+          panel.classList.toggle('is-open', expanded);
+          panel.classList.toggle('is-closed', !expanded);
+        };
+        toggle.addEventListener('click', () => {
+          setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => setExpanded(false));
+        });
+        setExpanded(false);
       })();
     </script>
   </body>

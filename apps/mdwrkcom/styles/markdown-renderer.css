@@ -292,7 +292,8 @@
 .lander-markdown .markdown-body .md-code-block,
 .lander-markdown .md-code-block,
 .lander-markdown pre {
-  padding: 1rem 1.125rem;
+  padding: 2.75rem 1.125rem 1rem;
+  position: relative;
 }
 
 .lander-markdown .markdown-body pre code,
@@ -308,9 +309,40 @@
 
 .lander-markdown .markdown-body .md-code-header,
 .lander-markdown .md-code-header {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.875rem;
+  z-index: 1;
+  border: 1px solid var(--lander-code-border);
+  border-radius: 9999px;
   background: color-mix(in srgb, var(--lander-code-bg) 86%, var(--lander-fg) 14%);
   color: var(--lander-fg-subtle);
-  border-bottom: 1px solid var(--lander-code-border);
+  padding: 0.2rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lander-markdown .markdown-body .md-code-block[data-code-language]::before,
+.lander-markdown .md-code-block[data-code-language]::before {
+  content: attr(data-code-language);
+  position: absolute;
+  top: 0.75rem;
+  right: 0.875rem;
+  z-index: 1;
+  border: 1px solid var(--lander-code-border);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--lander-code-bg) 86%, var(--lander-fg) 14%);
+  color: var(--lander-fg-subtle);
+  padding: 0.2rem 0.55rem;
+  font-family: var(--lander-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .lander-markdown pre,

@@ -686,11 +686,11 @@
   },
   {
     "sourcePath": "content/pages/docs/quickstart.md",
-    "sourceHash": "723c7c70072d0b210d32ef45a4a638d0f16d02fa7e9cef6fc81b76a63ce1ca29",
+    "sourceHash": "f7dd202848c52a961462511da773cc7ace79a30fb6933b96f996d8091a4530b9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/docs/quickstart/",
-      "title": "MdWrk quickstart â€” Write and preview Markdown locally",
+      "title": "MdWrk quickstart - Write and preview Markdown locally",
       "description": "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit.",
       "h1": "MdWrk quickstart",
       "subtitle": "Start with MdWrk by opening the workspace, writing Markdown in the source editor, checking rendered preview, and using docs to understand local storage, export, and extension boundaries.",
@@ -1295,11 +1295,11 @@
   },
   {
     "sourcePath": "content/pages/index.md",
-    "sourceHash": "78f2d7f8f001eec0629fba649c83779d009f5ebd16f6b6e5306baca4dfb58871",
+    "sourceHash": "194a4f5516a35a1437b27e6f104d9f1143f9ef0b273566475d6268e1d08c66e9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/",
-      "title": "MdWrk â€” Local-first Markdown workspace for writing, preview, and extensions",
+      "title": "MdWrk - Local-first Markdown workspace for writing, preview, and extensions",
       "description": "MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval.",
       "h1": "Local-first Markdown workspace",
       "subtitle": "MdWrk is a local-first Markdown workspace for authors and developers who want Markdown writing, preview, organization, package documentation, themes, and extension contracts without making cloud storage the default workflow.",

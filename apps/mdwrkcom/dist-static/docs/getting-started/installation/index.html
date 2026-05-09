@@ -42,7 +42,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/docs/getting-started/installation/#webpage","url":"https://mdwrk.com/docs/getting-started/installation/","name":"Client Installation | MdWrk Docs","headline":"Client Installation","description":"Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.","datePublished":"2026-05-02T00:00:00-05:00","dateModified":"2026-05-02T00:00:00-05:00","image":"https://mdwrk.com/favicon.svg","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"inLanguage":"en","isPartOf":{"@id":"https://mdwrk.com/#website"},"publisher":{"@id":"https://mdwrk.com/#organization"},"mainEntity":{"@id":"https://mdwrk.com/docs/getting-started/installation/#primary"}},{"@type":"TechArticle","@id":"https://mdwrk.com/docs/getting-started/installation/#primary","mainEntityOfPage":{"@id":"https://mdwrk.com/docs/getting-started/installation/#webpage"},"headline":"Client Installation","name":"Client Installation | MdWrk Docs","description":"Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption.","url":"https://mdwrk.com/docs/getting-started/installation/","image":"https://mdwrk.com/favicon.svg","datePublished":"2026-05-02T00:00:00-05:00","dateModified":"2026-05-02T00:00:00-05:00","inLanguage":"en","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"publisher":{"@id":"https://mdwrk.com/#organization"},"creator":{"@id":"https://mdwrk.com/#organization"}},{"@type":"FAQPage","@id":"https://mdwrk.com/docs/getting-started/installation/#faq","mainEntity":[{"@type":"Question","name":"What will I learn from Client Installation?","acceptedAnswer":{"@type":"Answer","text":"Use the browser route for immediate access, the PWA route for an installable shell, local setup for development control, or standalone modules for package-level adoption."}},{"@type":"Question","name":"Who should read Client Installation?","acceptedAnswer":{"@type":"Answer","text":"Read this page if you need practical MdWrk guidance for client installation, including the relevant workflow, product surface, and follow-up documentation paths."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/docs/getting-started/installation/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"Getting Started","item":"https://mdwrk.com/docs/"},{"@type":"ListItem","position":3,"name":"Client Installation","item":"https://mdwrk.com/docs/getting-started/installation/"}]}]}</script>
     <style data-lander-critical-css="mdwrkcom-static-shell">html{background:#f8fafc;color:#102033}html[data-lander-theme="lander-dark"]{background:#0b1220;color:#edf4ff}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app-shell{min-height:100vh;background:var(--static-bg,#f8fafc);color:var(--static-text,#102033)}.navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid rgba(15,23,42,.16)}.app-main{min-height:60vh}.hero-section,.docs-main{position:relative}.hero-inner,.docs-content-wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) 1rem}.hero-heading,.docs-title,.blog-post-title{margin:0;color:inherit;line-height:1.05;font-weight:800;letter-spacing:0}.hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted,#344559)}</style>
-    <link rel="preload" href="/assets/static.cd657349741504b0.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/assets/static.cd657349741504b0.css"></noscript>
+    <link rel="preload" href="/assets/static.8fab02053cfba60e.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/assets/static.8fab02053cfba60e.css"></noscript>
   </head>
   <body>
     <div id="root">
@@ -70,8 +70,20 @@
                 </svg>
                 <span class="navbar-github-label">GitHub</span>
               </a>
+              <button type="button" class="navbar-menu-toggle" data-static-menu-toggle aria-controls="navbar-sticky" aria-expanded="false" aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                <svg class="navbar-menu-icon static-menu-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12h16"></path>
+                  <path d="M4 6h16"></path>
+                  <path d="M4 18h16"></path>
+                </svg>
+                <svg class="navbar-menu-icon static-menu-close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
             </div>
-            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 <li><a class="navbar-link is-inactive" href="/">Home</a></li>
               <li><a class="navbar-link is-inactive" href="/features/">Features</a></li>
@@ -238,9 +250,9 @@
                     <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="installation-paths">Installation Paths</h2><ul class="md-ul"><li class="md-li"><a href="/docs/getting-started/browser-use" class="md-link">Use in a browser</a> when you want the fastest way to start writing without installing anything.</li><li class="md-li"><a href="/docs/getting-started/pwa-installation" class="md-link">Install as a PWA</a> when you want an app-like shell with browser-managed updates.</li><li class="md-li"><a href="/docs/getting-started/local-setup" class="md-link">Run locally from the repo or a local build</a> when you need a local development or self-hosted workflow.</li><li class="md-li"><a href="/docs/getting-started/standalone-modules" class="md-link">Use standalone modules</a> when you only want the reusable client, editor, or renderer packages.</li></ul><h2 class="md-h2" id="quick-choice-guide">Quick Choice Guide</h2><p class="md-p">Use the browser route if you want immediate access with no setup.
 Use the PWA route if you want a dedicated window and installable shell.
 Use the local route if you need development control, local hosting, or a private self-managed deployment.
-Use standalone modules if you are embedding MdWrk surfaces into another product or internal tool.</p><h2 class="md-h2" id="workspace-client-package">Workspace Client Package</h2><p class="md-p">The publishable client package is:</p><pre class="md-code-block md-code-surface"><code class="language-text">@mdwrk<span class="token operator">/</span>mdwrkspace</code></pre><p class="md-p">The split reusable packages start with:</p><pre class="md-code-block md-code-surface"><code class="language-text">@mdwrk<span class="token operator">/</span>markdown<span class="token operator">-</span>editor<span class="token operator">-</span>react
+Use standalone modules if you are embedding MdWrk surfaces into another product or internal tool.</p><h2 class="md-h2" id="workspace-client-package">Workspace Client Package</h2><p class="md-p">The publishable client package is:</p><pre class="md-code-block md-code-surface" data-code-language="text"><code class="language-text">@mdwrk<span class="token operator">/</span>mdwrkspace</code></pre><p class="md-p">The split reusable packages start with:</p><pre class="md-code-block md-code-surface" data-code-language="text"><code class="language-text">@mdwrk<span class="token operator">/</span>markdown<span class="token operator">-</span>editor<span class="token operator">-</span>react
 @mdwrk<span class="token operator">/</span>markdown<span class="token operator">-</span>renderer<span class="token operator">-</span>react
-@mdwrk<span class="token operator">/</span>markdown<span class="token operator">-</span>renderer<span class="token operator">-</span>core</code></pre><p class="md-p">For package discovery and published versions, use the organization page:</p><pre class="md-code-block md-code-surface"><code class="language-text">https<span class="token operator">:</span><span class="token comment">//www.npmjs.com/org/mdwrk</span></code></pre><h2 class="md-h2" id="notes">Notes</h2><p class="md-p">Bundled extensions ship with the client build. External installable extensions follow the signed-manifest and trust-policy path documented in the extension docs.
+@mdwrk<span class="token operator">/</span>markdown<span class="token operator">-</span>renderer<span class="token operator">-</span>core</code></pre><p class="md-p">For package discovery and published versions, use the organization page:</p><pre class="md-code-block md-code-surface" data-code-language="text"><code class="language-text">https<span class="token operator">:</span><span class="token comment">//www.npmjs.com/org/mdwrk</span></code></pre><h2 class="md-h2" id="notes">Notes</h2><p class="md-p">Bundled extensions ship with the client build. External installable extensions follow the signed-manifest and trust-policy path documented in the extension docs.
 Published dates and statuses control whether installation docs appear on the lander at all, so draft installation notes can stay private until they are ready.</p></div>
                   </div>
                 </article>
@@ -336,6 +348,26 @@ Published dates and statuses control whether installation docs appear on the lan
           });
           apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
         }
+      })();
+    </script>
+    <script>
+      (() => {
+        const toggle = document.querySelector('[data-static-menu-toggle]');
+        const panel = document.getElementById('navbar-sticky');
+        if (!toggle || !panel) return;
+        const setExpanded = (expanded) => {
+          toggle.setAttribute('aria-expanded', String(expanded));
+          toggle.setAttribute('aria-label', expanded ? 'Close main menu' : 'Open main menu');
+          panel.classList.toggle('is-open', expanded);
+          panel.classList.toggle('is-closed', !expanded);
+        };
+        toggle.addEventListener('click', () => {
+          setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => setExpanded(false));
+        });
+        setExpanded(false);
       })();
     </script>
   </body>

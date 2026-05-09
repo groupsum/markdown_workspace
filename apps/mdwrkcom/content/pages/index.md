@@ -1,7 +1,7 @@
 ﻿---
 schema: "mdwrk.page.v1"
 slug: "/"
-title: "MdWrk â€” Local-first Markdown workspace for writing, preview, and extensions"
+title: "MdWrk - Local-first Markdown workspace for writing, preview, and extensions"
 description: "MdWrk is a local-first Markdown workspace for writing, previewing, organizing, and extending Markdown documents with static documentation built for search and AI retrieval."
 h1: "Local-first Markdown workspace"
 entity: "MdWrk"

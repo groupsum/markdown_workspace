@@ -1,7 +1,7 @@
 ﻿---
 schema: "mdwrk.page.v1"
 slug: "/docs/quickstart/"
-title: "MdWrk quickstart â€” Write and preview Markdown locally"
+title: "MdWrk quickstart - Write and preview Markdown locally"
 description: "Start using MdWrk by understanding the local-first workspace model, the Markdown editor and renderer surfaces, and where public static docs fit."
 h1: "MdWrk quickstart"
 entity: "MdWrk"

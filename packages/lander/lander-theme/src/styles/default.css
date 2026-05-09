@@ -86,6 +86,57 @@
   font-weight: 600;
 }
 
+.navbar-inner {
+  min-height: 4.75rem;
+}
+
+.navbar-menu-panel {
+  width: 100%;
+}
+
+.navbar-menu-panel.is-open {
+  display: block;
+}
+
+.navbar-menu-panel.is-closed {
+  display: none;
+}
+
+.navbar-menu-list {
+  gap: 0;
+}
+
+.navbar-menu-toggle[aria-expanded="false"] .static-menu-close-icon,
+.navbar-menu-toggle[aria-expanded="true"] .static-menu-open-icon {
+  display: none;
+}
+
+.navbar-link {
+  line-height: 1.45;
+}
+
+@media (min-width: 768px) {
+  .navbar-menu-panel,
+  .navbar-menu-panel.is-open,
+  .navbar-menu-panel.is-closed {
+    display: flex;
+  }
+
+  .navbar-menu-list {
+    gap: 1rem;
+  }
+
+  .navbar-link {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-menu-list {
+    gap: 1.5rem;
+  }
+}
+
 .lander-page__title,
 .lander-page h1 {
   color: var(--lander-heading-fg);

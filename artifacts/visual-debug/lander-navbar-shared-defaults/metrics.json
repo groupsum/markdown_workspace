@@ -1,0 +1,116 @@
+[
+  {
+    "name": "desktop-light",
+    "theme": "lander-light",
+    "expanded": "false",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 105.78125,
+      "top": 0,
+      "right": 1440,
+      "bottom": 105.78125,
+      "left": 0
+    },
+    "panelDisplay": "flex",
+    "listGap": "24px",
+    "linkPadding": "0px 0px 0px 0px",
+    "linkLineHeight": "23.2px"
+  },
+  {
+    "name": "desktop-dark",
+    "theme": "lander-dark",
+    "expanded": "false",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 105.78125,
+      "top": 0,
+      "right": 1440,
+      "bottom": 105.78125,
+      "left": 0
+    },
+    "panelDisplay": "flex",
+    "listGap": "24px",
+    "linkPadding": "0px 0px 0px 0px",
+    "linkLineHeight": "23.2px"
+  },
+  {
+    "name": "mobile-light-closed",
+    "theme": "lander-light",
+    "expanded": "false",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 105.78125,
+      "top": 0,
+      "right": 390,
+      "bottom": 105.78125,
+      "left": 0
+    },
+    "panelDisplay": "none",
+    "listGap": "0px",
+    "linkPadding": "8px 12px 8px 12px",
+    "linkLineHeight": "23.2px"
+  },
+  {
+    "name": "mobile-light-open",
+    "theme": "lander-light",
+    "expanded": "true",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 388.90625,
+      "top": 0,
+      "right": 390,
+      "bottom": 388.90625,
+      "left": 0
+    },
+    "panelDisplay": "block",
+    "listGap": "0px",
+    "linkPadding": "8px 12px 8px 12px",
+    "linkLineHeight": "23.2px"
+  },
+  {
+    "name": "mobile-dark-closed",
+    "theme": "lander-dark",
+    "expanded": "false",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 105.78125,
+      "top": 0,
+      "right": 390,
+      "bottom": 105.78125,
+      "left": 0
+    },
+    "panelDisplay": "none",
+    "listGap": "0px",
+    "linkPadding": "8px 12px 8px 12px",
+    "linkLineHeight": "23.2px"
+  },
+  {
+    "name": "mobile-dark-open",
+    "theme": "lander-dark",
+    "expanded": "true",
+    "navbar": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 388.90625,
+      "top": 0,
+      "right": 390,
+      "bottom": 388.90625,
+      "left": 0
+    },
+    "panelDisplay": "block",
+    "listGap": "0px",
+    "linkPadding": "8px 12px 8px 12px",
+    "linkLineHeight": "23.2px"
+  }
+]

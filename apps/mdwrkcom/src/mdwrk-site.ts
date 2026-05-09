@@ -206,7 +206,7 @@ const proofPage = (slug: string, title: string, description: string): PageSpec =
 const homePage: PageSpec = {
   kind: 'home',
   slug: '/',
-  title: 'MdWrk | Local-first Markdown Workspace',
+  title: 'MdWrk - Local-first Markdown workspace for writing, preview, and extensions',
   description: 'MdWrk is a privacy-first, local-first Markdown workspace for offline writing, live preview, browser-local storage, themes, extensions, and optional GitHub sync.',
   h1: 'The local-first Markdown workspace',
   intro: 'MdWrk gives authors and developers a browser-based Markdown workspace for writing, previewing, organizing, theming, and extending Markdown workflows without making cloud storage the default.',

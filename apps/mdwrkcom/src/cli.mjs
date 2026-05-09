@@ -643,7 +643,10 @@ const renderMarkdown = (body) => {
   const html = renderMarkdownToHtmlSync(markdown, {
     htmlHandling: 'escape',
     profile: 'gfm-default',
-  });
+  }).replace(
+    /<pre class="md-code-block md-code-surface"><code class="language-([A-Za-z0-9_+-]+)">/g,
+    (_match, language) => `<pre class="md-code-block md-code-surface" data-code-language="${language}"><code class="language-${language}">`,
+  );
   const headings = extractMarkdownHeadings(markdown, { minimumDepth: 2 }).map(heading => ({
     depth: heading.depth,
     id: heading.slug,
@@ -1709,6 +1712,27 @@ const renderThemeToggleScript = () => `<script>
       })();
     </script>`;
 
+const renderStaticNavbarScript = () => `<script>
+      (() => {
+        const toggle = document.querySelector('[data-static-menu-toggle]');
+        const panel = document.getElementById('navbar-sticky');
+        if (!toggle || !panel) return;
+        const setExpanded = (expanded) => {
+          toggle.setAttribute('aria-expanded', String(expanded));
+          toggle.setAttribute('aria-label', expanded ? 'Close main menu' : 'Open main menu');
+          panel.classList.toggle('is-open', expanded);
+          panel.classList.toggle('is-closed', !expanded);
+        };
+        toggle.addEventListener('click', () => {
+          setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => setExpanded(false));
+        });
+        setExpanded(false);
+      })();
+    </script>`;
+
 const renderStaticDemoScript = () => `<script>
       (() => {
         const editor = document.querySelector('[data-static-demo-editor]');
@@ -1805,12 +1829,18 @@ const renderStaticDemoScript = () => `<script>
             flushList();
             flushTable();
           };
+          const renderCodeBlock = () => {
+            const language = codeLanguage ? escapeHtml(codeLanguage) : '';
+            const codeAttributes = language ? ' class="language-' + language + '"' : '';
+            const blockAttributes = language ? ' data-code-language="' + language + '"' : '';
+            return '<pre class="md-code-block md-code-surface"' + blockAttributes + '><code' + codeAttributes + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>';
+          };
 
           for (const line of lines) {
             const fence = new RegExp('^\\\\x60\\\\x60\\\\x60\\\\s*([\\\\w-]+)?\\\\s*$').exec(line);
             if (fence) {
               if (inCode) {
-                html.push('<pre class="md-code-block md-code-surface"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>');
+                html.push(renderCodeBlock());
                 code = [];
                 codeLanguage = '';
                 inCode = false;
@@ -1873,7 +1903,7 @@ const renderStaticDemoScript = () => `<script>
             paragraph.push(line.trim());
           }
 
-          if (inCode) html.push('<pre class="md-code-block md-code-surface"><code' + (codeLanguage ? ' class="language-' + escapeHtml(codeLanguage) + '"' : '') + '>' + highlightCode(code.join('\\n'), codeLanguage) + '</code></pre>');
+          if (inCode) html.push(renderCodeBlock());
           flushBlocks();
           return '<div class="markdown-renderer-host lander-markdown"><div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape">' + html.join('\\n') + '</div></div>';
         };
@@ -1909,6 +1939,16 @@ const renderStaticGithubIcon = () => `<svg class="navbar-github-icon static-gith
                   <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
                 </svg>`;
 
+const renderStaticMenuIcon = () => `<svg class="navbar-menu-icon static-menu-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12h16"></path>
+                  <path d="M4 6h16"></path>
+                  <path d="M4 18h16"></path>
+                </svg>
+                <svg class="navbar-menu-icon static-menu-close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>`;
+
 const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-label="Main navigation">
           <div class="navbar-inner">
             <a href="/" class="navbar-brand">
@@ -1924,8 +1964,12 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
                 ${renderStaticGithubIcon()}
                 <span class="navbar-github-label">GitHub</span>
               </a>
+              <button type="button" class="navbar-menu-toggle" data-static-menu-toggle aria-controls="navbar-sticky" aria-expanded="false" aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                ${renderStaticMenuIcon()}
+              </button>
             </div>
-            <div class="navbar-menu-panel is-open" id="navbar-sticky">
+            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
               <ul class="navbar-menu-list">
                 ${renderTopNav(registry, currentSlug)}
               </ul>
@@ -2355,6 +2399,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
       </div>
     </div>
     ${renderThemeToggleScript()}
+    ${renderStaticNavbarScript()}
     ${renderStaticDemoScript()}
   </body>
 </html>
@@ -2396,6 +2441,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
       </div>
     </div>
     ${renderThemeToggleScript()}
+    ${renderStaticNavbarScript()}
   </body>
 </html>
 `;

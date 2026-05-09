@@ -113,6 +113,12 @@ assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ul'), 'Ma
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body .md-ol'), 'Markdown renderer source must style ordered markdown lists.');
 assert.ok(sourceMarkdown.includes('list-style: disc'), 'Markdown renderer source must render unordered markdown lists with bullets.');
 assert.ok(sourceMarkdown.includes('list-style: decimal'), 'Markdown renderer source must render ordered markdown lists with numerals.');
+assert.ok(css.includes('static-menu-close-icon'), 'Static stylesheet must hide/show the static mobile navbar icons.');
+assert.ok(css.includes('gap:1rem'), 'Static stylesheet must keep the tablet navbar link gap compact.');
+assert.ok(css.includes('gap:1.5rem'), 'Static stylesheet must keep the desktop navbar link gap compact.');
+assert.ok(css.includes('.navbar-link{padding:0}'), 'Static stylesheet must not add desktop navbar link padding.');
+assert.ok(!css.includes('gap:1.75rem'), 'Static stylesheet must not regress to the expanded desktop navbar link gap.');
+assert.ok(!css.includes('padding:.625rem .5rem'), 'Static stylesheet must not regress to padded desktop navbar links.');
 assert.ok(css.includes('padding:.12rem .35rem') || css.includes('padding:0.12rem 0.35rem'), 'Static stylesheet must pad inline code text away from its border.');
 assert.ok(css.includes('padding:1rem 1.125rem'), 'Static stylesheet must pad fenced code text away from its border.');
 assert.ok(css.includes('list-style:disc'), 'Static stylesheet must render unordered markdown lists with bullets.');
