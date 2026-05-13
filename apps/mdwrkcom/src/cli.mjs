@@ -232,10 +232,17 @@ const normalizeRouteSlug = (value) => {
   return `/${trimmed.replace(/^\/+|\/+$/g, '')}/`;
 };
 const canonicalForSlug = (slug) => `${siteUrl}${slug}`;
-const localeToHrefLang = (value) => String(value ?? 'en').trim().replace(/_/g, '-').split('-')
-  .filter(Boolean)
-  .map((part, index) => index === 0 ? part.toLowerCase() : part.toUpperCase())
-  .join('-') || 'en';
+const normalizeBcp47LanguageTag = (value, fallback = 'en') => {
+  const raw = String(value ?? fallback).trim().replace(/_/g, '-');
+  if (!raw) return fallback;
+  try {
+    return Intl.getCanonicalLocales(raw)[0] ?? fallback;
+  } catch {
+    return null;
+  }
+};
+const isBcp47LanguageTag = (value) => Boolean(normalizeBcp47LanguageTag(value, null));
+const localeToHrefLang = (value) => normalizeBcp47LanguageTag(value) ?? 'en';
 const hrefLangToHtmlLang = (value) => localeToHrefLang(value).toLowerCase();
 const isDefaultLocale = (locale) => localeToHrefLang(locale).split('-')[0] === 'en';
 const localeRoutePrefix = (locale) => `/${localeToHrefLang(locale).toLowerCase().split('-')[0]}/`;
@@ -555,6 +562,14 @@ const validateSchemaShape = (frontmatter, sourcePath, schema) => {
   if (frontmatter.noindex === true && frontmatter.llmsInclude === true && !allowNoindexLlmsInclude) {
     failures.push(`${sourcePath}: noindex true cannot set llmsInclude true without MDWRK_ALLOW_NOINDEX_LLMS_INCLUDE=true`);
   }
+  if (frontmatter.locale !== undefined && !isBcp47LanguageTag(frontmatter.locale)) {
+    failures.push(`${sourcePath}: locale must be a valid BCP 47 language tag`);
+  }
+  for (const key of ['date', 'updatedAt', 'publishedAt']) {
+    if (frontmatter[key] !== undefined && !normalizeIsoDate(frontmatter[key])) {
+      failures.push(`${sourcePath}: ${key} must be a calendar-valid ISO 8601 date (YYYY-MM-DD)`);
+    }
+  }
   return failures;
 };
 
@@ -621,7 +636,13 @@ const normalizeStatus = (value) => String(value ?? '').trim().toLowerCase();
 
 const normalizeIsoDate = (value) => {
   const trimmed = String(value ?? '').trim();
-  return /^\d{4}-\d{2}-\d{2}$/.test(trimmed) ? trimmed : null;
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed);
+  if (!match) return null;
+  const [, year, month, day] = match.map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day
+    ? trimmed
+    : null;
 };
 
 const centralTimeOffsetForDate = (year, month, day) => {
@@ -637,10 +658,15 @@ const centralTimeOffsetForDate = (year, month, day) => {
 };
 
 const toCentralIsoDateTime = (value) => {
-  const match = String(value ?? '').trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (!match) return undefined;
-  const [, year, month, day] = match;
+  const date = normalizeIsoDate(value);
+  if (!date) return undefined;
+  const [, year, month, day] = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
   return `${year}-${month}-${day}T00:00:00${centralTimeOffsetForDate(Number(year), Number(month), Number(day))}`;
+};
+
+const isCentralIsoDateTime = (value) => {
+  const match = /^(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}:\d{2}-0[56]:00$/.exec(String(value ?? '').trim());
+  return Boolean(match && normalizeIsoDate(match[1]));
 };
 
 const toLocalIsoDate = (date = new Date()) => {
@@ -1721,6 +1747,14 @@ const jsonLdFor = (entry, registry) => {
         '@id': `${siteUrl}/#website`,
         name: 'MdWrk',
         url: `${siteUrl}/`,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${siteUrl}/search/?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       },
     );
   }
@@ -2795,6 +2829,77 @@ const extractJsonLd = (html) => {
 };
 
 const normalizeUrlSet = (values) => new Set(values.map(value => String(value ?? '').trim()).filter(Boolean));
+const supportedSchemaOrgTypes = new Set([
+  'Answer',
+  'Article',
+  'BlogPosting',
+  'BreadcrumbList',
+  'EntryPoint',
+  'FAQPage',
+  'ListItem',
+  'Organization',
+  'Question',
+  'SearchAction',
+  'SoftwareApplication',
+  'SoftwareSourceCode',
+  'TechArticle',
+  'WebPage',
+  'WebSite',
+]);
+
+const isAbsoluteHttpUrl = (value) => {
+  try {
+    const parsed = new URL(String(value ?? ''));
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+};
+
+const validateRfc6570LevelOneUrlTemplate = (value) => {
+  const template = String(value ?? '').trim();
+  if (!template) return false;
+  const expanded = template.replace(/\{([A-Za-z0-9_]+)\}/g, 'x');
+  if (/[{}]/.test(expanded)) return false;
+  if (!isAbsoluteHttpUrl(expanded)) return false;
+  for (const expression of template.matchAll(/\{([^}]+)\}/g)) {
+    if (!/^[A-Za-z0-9_]+$/.test(expression[1])) return false;
+  }
+  return true;
+};
+
+const validateSchemaNode = (node, failures, context) => {
+  const id = node?.['@id'] ?? context;
+  const type = node?.['@type'];
+  if (!supportedSchemaOrgTypes.has(type)) failures.push(`${id}: unsupported Schema.org @type ${String(type ?? '')}`);
+  if (node?.['@id'] !== undefined && !isAbsoluteHttpUrl(String(node['@id']).split('#')[0])) failures.push(`${id}: @id must be an absolute HTTP URL`);
+  if (node?.url !== undefined && !isAbsoluteHttpUrl(node.url)) failures.push(`${id}: url must be an absolute HTTP URL`);
+  if (node?.inLanguage !== undefined && !isBcp47LanguageTag(node.inLanguage)) failures.push(`${id}: inLanguage must be a valid BCP 47 language tag`);
+  for (const field of ['datePublished', 'dateModified']) {
+    if (node?.[field] !== undefined && !isCentralIsoDateTime(node[field])) {
+      failures.push(`${id}: ${field} must be a calendar-valid ISO 8601 Central time datetime`);
+    }
+  }
+  if (type === 'WebPage') {
+    for (const field of ['url', 'name', 'headline', 'description', 'inLanguage', 'isPartOf', 'publisher']) {
+      if (node?.[field] === undefined || node[field] === '') failures.push(`${id}: WebPage missing ${field}`);
+    }
+  }
+  if (['Article', 'BlogPosting', 'TechArticle'].includes(type)) {
+    for (const field of ['headline', 'author', 'publisher', 'datePublished', 'dateModified', 'mainEntityOfPage']) {
+      if (node?.[field] === undefined || node[field] === '') failures.push(`${id}: ${type} missing ${field}`);
+    }
+  }
+  if (type === 'WebSite' && node?.potentialAction !== undefined) {
+    const action = node.potentialAction;
+    const target = action?.target;
+    if (action?.['@type'] !== 'SearchAction') failures.push(`${id}: potentialAction must be SearchAction`);
+    if (target?.['@type'] !== 'EntryPoint') failures.push(`${id}: SearchAction target must be EntryPoint`);
+    if (!validateRfc6570LevelOneUrlTemplate(target?.urlTemplate)) failures.push(`${id}: SearchAction target.urlTemplate must be an absolute RFC 6570 level 1 URL template`);
+    if (!String(target?.urlTemplate ?? '').includes('{search_term_string}')) failures.push(`${id}: SearchAction urlTemplate must include search_term_string`);
+    if (action?.['query-input'] !== 'required name=search_term_string') failures.push(`${id}: SearchAction query-input mismatch`);
+  }
+};
 
 const readJsonArtifact = (name, failures) => {
   const artifactPath = path.join(distRoot, name);
@@ -2818,7 +2923,6 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
-  const schemaDateTimePattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-0[56]:00$/;
 
   for (const artifact of DISCOVERY_ARTIFACTS) {
     if (!fs.existsSync(path.join(distRoot, artifact))) failures.push(`missing dist/${artifact}`);
@@ -2852,8 +2956,9 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   }
   if (Array.isArray(jsonLdGraph?.['@graph'])) {
     for (const node of jsonLdGraph['@graph']) {
+      validateSchemaNode(node, failures, 'jsonld-graph node');
       for (const field of ['datePublished', 'dateModified']) {
-        if (node[field] !== undefined && !schemaDateTimePattern.test(String(node[field]))) {
+        if (node[field] !== undefined && !isCentralIsoDateTime(node[field])) {
           failures.push(`${node['@id'] ?? 'jsonld node'}: ${field} must be ISO 8601 Central time datetime`);
         }
       }
@@ -2934,6 +3039,7 @@ const verify = () => {
     if (!graph.some(node => node['@id'] === `${entry.frontmatter.canonical}#webpage` && node.url === entry.frontmatter.canonical)) {
       failures.push(`${entry.frontmatter.slug}: JSON-LD WebPage canonical mismatch`);
     }
+    for (const node of graph) validateSchemaNode(node, failures, `${entry.frontmatter.slug} JSON-LD node`);
     if (entry.frontmatter.slug !== '/' && !graph.some(node => node['@id'] === `${entry.frontmatter.canonical}#primary`)) {
       failures.push(`${entry.frontmatter.slug}: JSON-LD primary page entity missing`);
     }

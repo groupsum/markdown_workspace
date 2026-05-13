@@ -1,6 +1,70 @@
 import type { JsonLd, JsonLdNodeType, StructuredDataImage } from "./types.js";
 
 export const SCHEMA_CONTEXT = "https://schema.org";
+export const SUPPORTED_SCHEMA_ORG_TYPES = Object.freeze([
+  "AggregateRating",
+  "Article",
+  "BlogPosting",
+  "Book",
+  "BreadcrumbList",
+  "ClaimReview",
+  "Course",
+  "CourseInstance",
+  "Dataset",
+  "DiscussionForumPosting",
+  "EmployerAggregateRating",
+  "Event",
+  "FAQPage",
+  "HowTo",
+  "ImageObject",
+  "ItemList",
+  "JobPosting",
+  "LocalBusiness",
+  "MathSolver",
+  "MemberProgram",
+  "MerchantReturnPolicy",
+  "MonetaryAmountDistribution",
+  "Movie",
+  "OfferShippingDetails",
+  "Organization",
+  "Product",
+  "ProductGroup",
+  "ProfilePage",
+  "QAPage",
+  "ReadAction",
+  "Recipe",
+  "Review",
+  "SoftwareApplication",
+  "SoftwareSourceCode",
+  "SpeakableSpecification",
+  "TechArticle",
+  "VacationRental",
+  "Vehicle",
+  "VideoObject",
+  "WebApplication",
+  "WebPage",
+  "WebSite",
+] as const);
+
+export const isSupportedSchemaOrgType = (value: unknown): value is JsonLdNodeType =>
+  typeof value === "string" && (SUPPORTED_SCHEMA_ORG_TYPES as readonly string[]).includes(value);
+
+export const isAbsoluteSchemaUrl = (value: unknown): value is string => {
+  if (typeof value !== "string" || !value.trim()) return false;
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch {
+    return false;
+  }
+};
+
+export const assertSupportedSchemaOrgType = (value: unknown, field = "@type"): JsonLdNodeType => {
+  if (!isSupportedSchemaOrgType(value)) {
+    throw new Error(`Unsupported Schema.org ${field}: ${String(value ?? "")}`);
+  }
+  return value;
+};
 
 export const compact = (value: unknown): unknown => {
   if (Array.isArray(value)) {
@@ -23,12 +87,14 @@ export const requireText = (value: string | undefined, field: string): string =>
   return value;
 };
 
-export const node = (type: JsonLdNodeType, value: Record<string, unknown>): JsonLd =>
-  compact({
+export const node = (type: JsonLdNodeType, value: Record<string, unknown>): JsonLd => {
+  assertSupportedSchemaOrgType(type);
+  return compact({
     "@context": SCHEMA_CONTEXT,
     "@type": type,
     ...value,
   }) as JsonLd;
+};
 
 export const stableId = (canonicalUrl: string, fragment: string): string =>
   `${canonicalUrl.replace(/[#/]+$/, "")}#${fragment.replace(/^#+/, "")}`;

@@ -20,9 +20,18 @@ const contentIndex = JSON.parse(read('content-index.json'));
 const englishUrl = `${siteUrl}/docs/quickstart/`;
 const spanishUrl = `${siteUrl}/es/docs/quickstart/`;
 const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const isCanonicalBcp47 = (value) => {
+  try {
+    return Intl.getCanonicalLocales(value)[0] === value;
+  } catch {
+    return false;
+  }
+};
 
 assert.match(englishQuickstart, /<html lang="en"/, 'English quickstart must declare lang=en');
 assert.match(spanishQuickstart, /<html lang="es"/, 'Spanish quickstart must declare lang=es');
+assert.ok(isCanonicalBcp47('en'), 'English hreflang must be a canonical BCP 47 tag');
+assert.ok(isCanonicalBcp47('es'), 'Spanish hreflang must be a canonical BCP 47 tag');
 assert.match(spanishQuickstart, new RegExp(`<link rel="canonical" href="${escapeRegex(spanishUrl)}">`), 'Spanish page canonical must point at the localized URL');
 assert.match(spanishQuickstart, new RegExp(`rel="alternate" hreflang="en" href="${escapeRegex(englishUrl)}"`), 'Spanish page must link the English alternate');
 assert.match(spanishQuickstart, new RegExp(`rel="alternate" hreflang="es" href="${escapeRegex(spanishUrl)}"`), 'Spanish page must link its self alternate');
