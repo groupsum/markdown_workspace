@@ -2,6 +2,9 @@
 
 # MdWrk
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 [![CI](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/ci.yml?branch=master&label=CI)](./.github/workflows/ci.yml)
 [![Conformance](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/conformance.yml?branch=master&label=Conformance)](./.github/workflows/conformance.yml)
 [![Website](https://img.shields.io/badge/website-mdwrk.com-0f766e)](https://mdwrk.com)

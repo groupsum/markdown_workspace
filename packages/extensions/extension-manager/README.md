@@ -1,5 +1,8 @@
 # @mdwrk/extension-manager
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_manager.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-manager/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-manager?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-manager)
+
 First-party bundled operator console extension for MdWrk.
 
 ## Manifest and compatibility

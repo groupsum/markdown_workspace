@@ -1,5 +1,8 @@
 # mdwrk/i18n
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.i18n.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/i18n/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fi18n?label=downloads)](https://www.npmjs.com/package/@mdwrk/i18n)
+
 Shared message descriptor, locale catalog, locale loader, and locale registry helpers for MdWrk packages.
 
 Phase 10 also adds the shared core shell locale helpers used by the client app to restore the shipped core locales `en`, `es`, `fr`, `pt`, and `ur`.

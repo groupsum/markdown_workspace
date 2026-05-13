@@ -1,5 +1,8 @@
 # @mdwrk/extension-gemini-agent
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_gemini_agent.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-gemini-agent/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-gemini-agent?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-gemini-agent)
+
 First-party Gemini workflow extension for MdWrk.
 
 ## Manifest and compatibility

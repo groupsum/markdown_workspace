@@ -1,5 +1,8 @@
 # Generated Artifacts
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 This directory contains generated evidence and release artifacts retained for MdWork checkpoints.
 
 Included artifact families:

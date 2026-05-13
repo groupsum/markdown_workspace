@@ -1,5 +1,8 @@
 # RC.1 release bundle
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.releases.rc_1.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/releases/rc.1/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 Date: 2026-03-29T20:06:40.916Z
 
 This directory contains the Phase 13 RC.1 preparation bundle.

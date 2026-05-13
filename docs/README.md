@@ -1,5 +1,8 @@
 # Documentation index
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.docs.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/docs/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 > Governance pointers: `../README.md`, `../.ssot/specs/SPEC-2001-specs-index.yaml`, `../.ssot/specs/SPEC-2002-repository-governance.yaml`, `../AGENTS.md`, `../CONTRIBUTING.md`, `../CODE_OF_CONDUCT.md`, and `../LICENSE`.
 
 This directory contains the architecture, current-state, conformance, and operational documentation for MdWrk.

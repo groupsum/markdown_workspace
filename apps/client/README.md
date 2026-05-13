@@ -1,5 +1,8 @@
 # @mdwrk/mdwrkspace
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.apps.client.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/apps/client/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmdwrkspace?label=downloads)](https://www.npmjs.com/package/@mdwrk/mdwrkspace)
+
 [![Website](https://img.shields.io/badge/website-mdwrk.com-0f766e)](https://mdwrk.com)
 
 `@mdwrk/mdwrkspace` is the MdWrk client application package. It ships the offline-first Markdown workspace, the runtime-backed shell surfaces, the extension host adapters, the retained-version PWA client, and the shared responsive layout contract used by every client theme.

@@ -1,5 +1,8 @@
 # packages/shared
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 App-agnostic reusable primitives shared across MdWrk apps and packages.
 
 ## Implemented packages

@@ -1,5 +1,8 @@
 # Root operational tooling
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.tools.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/tools/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+
 This directory contains repository-level scripts used by MdWork CI/CD, release, conformance, extension artifact, and evidence workflows.
 
 ## Areas

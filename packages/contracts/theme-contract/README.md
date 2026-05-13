@@ -1,5 +1,8 @@
 # mdwrk/theme-contract
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.contracts.theme_contract.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/theme-contract/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Ftheme-contract?label=downloads)](https://www.npmjs.com/package/@mdwrk/theme-contract)
+
 Portable token, class-name, and bridge-variable contract for MdWrk themes, renderers, editors, and extensions.
 
 ## Package purpose

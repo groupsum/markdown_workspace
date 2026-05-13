@@ -1,5 +1,8 @@
 # @mdwrk/extension-theme-studio
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_theme_studio.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-theme-studio/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-theme-studio?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-theme-studio)
+
 First-party Theme Studio extension package for MdWrk.
 
 ## Manifest and compatibility

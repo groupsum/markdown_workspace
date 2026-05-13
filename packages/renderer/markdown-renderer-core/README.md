@@ -1,5 +1,8 @@
 # @mdwrk/markdown-renderer-core
 
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.renderer.markdown_renderer_core.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-core/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-renderer-core?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-renderer-core)
+
 Portable Markdown parser/renderer core for MdWrk.
 
 ## Public responsibilities
