@@ -1,11 +1,13 @@
-<div align="center">
 # @mdwrk/mdwrkcom-content-pack
+
 **MdWrk public-site content distribution**
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_contentwrkcom_content_pack_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/content/mdwrkcom-content-pack/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmdwrkcom-content-pack?label=downloads)](https://www.npmjs.com/package/@mdwrk/mdwrkcom-content-pack)
-[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
-</div>
+
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/content/mdwrkcom-content-pack/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_content_mdwrkcom_content_pack_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/mdwrkcom-content-pack"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fmdwrkcom-content-pack?label=downloads" /></a>
+  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
+  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
+</p>
 
 This package distributes the mdwrk.com source content tree, markdown data, public assets, and generated discovery artifacts.
 

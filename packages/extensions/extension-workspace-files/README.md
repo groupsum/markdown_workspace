@@ -1,11 +1,13 @@
-<div align="center">
 # @mdwrk/extension-workspace-files
+
 **Workspace file-system extension**
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_workspace_files_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-workspace-files/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-workspace-files?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-workspace-files)
-[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
-</div>
+
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-workspace-files/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_workspace_files_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/extension-workspace-files"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fextension-workspace-files?label=downloads" /></a>
+  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
+  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
+</p>
 
 This package provides the first-party extension that backs project and file browsing inside the MdWrk workspace shell.
 

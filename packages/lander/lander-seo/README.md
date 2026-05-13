@@ -1,11 +1,13 @@
-<div align="center">
 # @mdwrk/lander-seo
+
 **Metadata, scoring, and discovery helpers**
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_lander_lander_seo_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/lander/lander-seo/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Flander-seo?label=downloads)](https://www.npmjs.com/package/@mdwrk/lander-seo)
-[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
-</div>
+
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/lander/lander-seo/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_lander_lander_seo_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/lander-seo"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Flander-seo?label=downloads" /></a>
+  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
+  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
+</p>
 
 This package provides metadata assembly, page scoring, AI summary helpers, and re-exports for sitemap, robots, and llms.txt generation.
 
