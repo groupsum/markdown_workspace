@@ -331,8 +331,11 @@ export interface StructuredDataIntentRendererEntry {
   render: (intent: CompiledStructuredDataIntent) => React.ReactElement;
 }
 
-function renderDataIntent(Component: React.ComponentType<{ data: Record<string, unknown> }>, intent: CompiledStructuredDataIntent): React.ReactElement {
-  return <Component data={dataRecord(intent.data)} />;
+function renderDataIntent<T extends object>(
+  Component: React.ComponentType<{ data: T }>,
+  intent: CompiledStructuredDataIntent,
+): React.ReactElement {
+  return <Component data={dataRecord(intent.data) as T} />;
 }
 
 export const landerStructuredDataIntentRegistry = Object.freeze({
