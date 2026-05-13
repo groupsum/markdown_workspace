@@ -84,6 +84,12 @@ jobs:
       - name: Install dependencies
         run: npm run ci:install
 
+      - name: Install SSOT registry CLI
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+          .venv/bin/python -m pip install "ssot-registry==0.2.17" "markdown-it-py>=4.1.0"
+
       - name: Run governance validations
         run: npm run ci:governance
 
