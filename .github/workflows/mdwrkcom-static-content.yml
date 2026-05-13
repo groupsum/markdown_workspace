@@ -42,12 +42,10 @@ jobs:
           node-version: 20
 
       - name: Install MdWrk.com validator dependencies
-        working-directory: apps/mdwrkcom
-        run: npm ci --ignore-scripts --workspaces=false
+        run: npm ci --ignore-scripts
 
       - name: Validate source, build dist, and verify artifact
-        working-directory: apps/mdwrkcom
-        run: npm run ci:static
+        run: npm run ci:static -w @mdwrk/mdwrkcom
 
       - name: Upload static MdWrk.com site artifact
         uses: actions/upload-artifact@v4
