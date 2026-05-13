@@ -56,3 +56,12 @@ Start from the package indexes below when you want one surface instead of the wh
 - [Examples](./examples/README.md) - public package consumption examples
 - [Tooling](./tools/README.md) - CI, release, and governance scripts
 - [npm org](https://www.npmjs.com/org/mdwrk) - published package scope
+
+## Documentation Pointers
+- [Documentation index](docs/README.md)
+- [SPEC index](.ssot/specs/SPEC-2001-specs-index.yaml)
+- [Repository governance SPEC](.ssot/specs/SPEC-2002-repository-governance.yaml)
+- [Contributing guide](CONTRIBUTING.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [License](LICENSE)
+- [Agent instructions](AGENTS.md)

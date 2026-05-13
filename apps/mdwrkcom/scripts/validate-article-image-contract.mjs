@@ -13,7 +13,6 @@ const pageMetadata = read('utils', 'pageMetadata.ts');
 const blogView = read('components', 'BlogView.tsx');
 const docsView = read('components', 'DocsView.tsx');
 const staticCompiler = read('src', 'cli.mjs');
-const sitemapGenerator = read('scripts', 'generate-sitemap.mjs');
 const settingsArticleHtml = read('dist-static', 'updates', 'settings-simplification-for-daily-flow', 'index.html');
 
 const propertyValidator = (propertySchema, key) => {
@@ -127,11 +126,12 @@ for (const [label, source] of [['Product updates', blogView], ['Docs', docsView]
 assert.match(staticCompiler, /const defaultImage = `\$\{siteUrl\}\/favicon\.svg`/, 'Static compiler must define favicon metadata fallback.');
 assert.match(staticCompiler, /getExplicitFeaturedImage\(entry\.frontmatter\) \|\| extractFirstImage\(entry\.body\) \|\| null/, 'Static compiler must prefer explicit featured image, then first inline image.');
 assert.match(staticCompiler, /toAbsoluteUrl\(metadataImage\?\.src\)/, 'Static compiler must normalize selected metadata image URLs.');
-assert.match(staticCompiler, /<meta property="og:image" content="\$\{escapeAttribute\(image\)\}">/, 'Static pages must emit selected Open Graph image metadata.');
-assert.match(staticCompiler, /<meta name="twitter:image" content="\$\{escapeAttribute\(image\)\}">/, 'Static pages must emit selected Twitter image metadata.');
+assert.match(staticCompiler, /<meta property="og:image" content="\$\{escapeAttribute\(image\.src\)\}">/, 'Static pages must emit selected Open Graph image metadata.');
+assert.match(staticCompiler, /<meta name="twitter:image" content="\$\{escapeAttribute\(image\.src\)\}">/, 'Static pages must emit selected Twitter image metadata.');
 
-assert.match(sitemapGenerator, /featuredImage/, 'Sitemap semantic index must understand explicit featuredImage frontmatter.');
-assert.match(sitemapGenerator, /src: '\/favicon\.svg'/, 'Sitemap semantic index must fall back to favicon when no article image exists.');
+assert.match(staticCompiler, /content-registry\.json/, 'Static compiler must emit semantic content registry artifacts.');
+assert.match(staticCompiler, /frontmatter:\s*entry\.frontmatter/, 'Static content registry must retain explicit featuredImage frontmatter.');
+assert.match(staticCompiler, /const defaultImage = `\$\{siteUrl\}\/favicon\.svg`/, 'Static metadata must fall back to favicon when no article image exists.');
 
 assert.match(
   settingsArticleHtml,

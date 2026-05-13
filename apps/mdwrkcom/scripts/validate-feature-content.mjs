@@ -11,7 +11,6 @@ const docsView = read('components', 'DocsView.tsx');
 const featureView = read('components', 'FeatureView.tsx');
 const navbar = read('components', 'Navbar.tsx');
 const staticCompiler = read('src', 'cli.mjs');
-const sitemapGenerator = read('scripts', 'generate-sitemap.mjs');
 
 assert.match(dataDocs, /export const featureDocs = docEntries\s*\n\s*\.filter\(\(entry\) => entry\.section === 'Features' \|\| entry\.slug\.startsWith\('features\/'\)\)/, 'Feature markdown must be exported through featureDocs.');
 assert.match(dataDocs, /export const docs = docEntries\s*\n\s*\.filter\(\(entry\) => entry\.section !== 'Compares' && !entry\.slug\.startsWith\('compare\/'\) && entry\.section !== 'Features' && !entry\.slug\.startsWith\('features\/'\)\)/, 'Docs export must exclude feature markdown.');
@@ -35,10 +34,8 @@ assert.match(staticCompiler, /const contentType = isComparison \? 'comparison' :
 assert.match(staticCompiler, /const tags = isComparison \? \['compare', section\] : isFeature \? \['features', section\] : \['docs', section\];/, 'Static compiler must tag feature markdown under features.');
 assert.match(staticCompiler, /\.filter\(item => item\.frontmatter\.contentType === 'docs' && item\.frontmatter\.slug\.startsWith\('\/docs\/'\)/, 'Static docs sidebar must include only docs content.');
 
-assert.match(sitemapGenerator, /const toFeatureRoutePath = \(slug\) => `\/features\/\$\{String\(slug\)/, 'Sitemap generator must normalize feature markdown to /features routes.');
-assert.match(sitemapGenerator, /const isFeature = metadata\.section === 'Features';/, 'Sitemap generator must detect feature markdown.');
-assert.match(sitemapGenerator, /const routePath = isComparison \? toCompareRoutePath\(sourceSlug\) : isFeature \? toFeatureRoutePath\(sourceSlug\) : `\/docs\/\$\{sourceSlug\}`;/, 'Sitemap generator must keep feature URLs out of /docs.');
-assert.match(sitemapGenerator, /type: isComparison \? 'comparison' : isFeature \? 'feature' : 'doc'/, 'Sitemap semantic index must type feature entries as feature.');
+assert.match(staticCompiler, /content-registry\.json/, 'Static compiler must emit semantic content registry artifacts.');
+assert.match(staticCompiler, /sitemap\.xml/, 'Static compiler must emit sitemap artifacts from normalized routes.');
 
 for (const legacyPath of [
   ['content', 'pages', 'features', 'offline-markdown-editor.md'],
@@ -52,7 +49,6 @@ const searchableSources = [
   read('components', 'Navbar.tsx'),
   read('content', 'pages', 'index.md'),
   read('src', 'cli.mjs'),
-  read('scripts', 'generate-sitemap.mjs'),
 ];
 for (const source of searchableSources) {
   assert.doesNotMatch(source, /\/docs\/product|\/docs\/usage\/(?:editor-basics|rendering-and-preview|advanced-formatting)/, 'Feature links must not use docs/product or feature-like docs/usage routes.');

@@ -44,7 +44,7 @@ const requiredDocs = [
 const roots = ['apps/mdwrkcom'];
 
 function readFrontmatter(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
+  const content = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, '');
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
   if (!match) {
     throw new Error(`${filePath} is missing frontmatter`);

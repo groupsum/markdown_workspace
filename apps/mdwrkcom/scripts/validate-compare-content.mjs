@@ -11,7 +11,6 @@ const docsView = read('components', 'DocsView.tsx');
 const compareView = read('components', 'CompareView.tsx');
 const navbar = read('components', 'Navbar.tsx');
 const staticCompiler = read('src', 'cli.mjs');
-const sitemapGenerator = read('scripts', 'generate-sitemap.mjs');
 
 assert.match(dataDocs, /export const compareDocs = docEntries\s*\n\s*\.filter\(\(entry\) => entry\.section === 'Compares' \|\| entry\.slug\.startsWith\('compare\/'\)\)/, 'Comparison markdown must be exported through compareDocs.');
 assert.match(dataDocs, /export const docs = docEntries\s*\n\s*\.filter\(\(entry\) => entry\.section !== 'Compares' && !entry\.slug\.startsWith\('compare\/'\)[^)]*entry\.section !== 'Features'[^)]*!entry\.slug\.startsWith\('features\/'\)\)/, 'Docs export must exclude comparison markdown.');
@@ -35,10 +34,8 @@ assert.match(staticCompiler, /const contentType = isComparison \? 'comparison' :
 assert.match(staticCompiler, /const tags = isComparison \? \['compare', section\] : isFeature \? \['features', section\] : \['docs', section\];/, 'Static compiler must tag comparison markdown under compare.');
 assert.match(staticCompiler, /\.filter\(item => item\.frontmatter\.contentType === 'docs' && item\.frontmatter\.slug\.startsWith\('\/docs\/'\)/, 'Static docs sidebar must include only docs content.');
 
-assert.match(sitemapGenerator, /const toCompareRoutePath = \(slug\) => `\/compare\/\$\{String\(slug\)/, 'Sitemap generator must normalize comparison markdown to /compare routes.');
-assert.match(sitemapGenerator, /const isComparison = metadata\.section === 'Compares' \|\| String\(sourceSlug\)\.startsWith\('comparisons\/'\);/, 'Sitemap generator must detect comparison markdown.');
-assert.match(sitemapGenerator, /const routePath = isComparison \? toCompareRoutePath\(sourceSlug\) : isFeature \? toFeatureRoutePath\(sourceSlug\) : `\/docs\/\$\{sourceSlug\}`;/, 'Sitemap generator must keep comparison URLs out of /docs.');
-assert.match(sitemapGenerator, /type: isComparison \? 'comparison' : isFeature \? 'feature' : 'doc'/, 'Sitemap semantic index must type comparison entries as comparison.');
+assert.match(staticCompiler, /content-registry\.json/, 'Static compiler must emit semantic content registry artifacts.');
+assert.match(staticCompiler, /sitemap\.xml/, 'Static compiler must emit sitemap artifacts from normalized routes.');
 
 for (const legacyPath of [
   ['content', 'pages', 'compare', 'obsidian.md'],

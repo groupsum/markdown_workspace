@@ -32,7 +32,7 @@ for (const token of [
   '.locale-switcher-option{display:block;padding:.5rem .65rem;color:var(--static-muted);border-radius:.45rem;text-decoration:none;font-size:.82rem;font-weight:800}',
   '.navbar-menu-panel,.navbar-menu-panel.is-closed{display:block;position:static;margin-left:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}',
   '.navbar-actions{margin-left:.75rem}',
-  '.navbar-github-link{width:auto;padding:.5rem .75rem;gap:.35rem}',
+  '.navbar-theme-toggle,.navbar-menu-toggle,.navbar-github-link{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;min-width:2.5rem;height:2.5rem;padding:.5rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.65rem;text-decoration:none}',
 ]) {
   assert.ok(cliSource.includes(token), `Static first-paint critical CSS must include ${token}.`);
 }
