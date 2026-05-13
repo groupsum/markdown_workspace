@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build:deps": "npm --prefix ../.. run build:extensions",
+    "build:no-deps": "tsc && node ../../tools/release/build-versioned-client.mjs",
     "build": "npm run build:deps && tsc && node ../../tools/release/build-versioned-client.mjs",
+    "build:lib:no-deps": "tsc && vite build --config vite.lib.config.ts",
     "build:lib": "npm run build:deps && tsc && vite build --config vite.lib.config.ts",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "screenshots:matrix": "node ./tests/generate-theme-screenshots.mjs",
+    "typecheck:no-deps": "tsc --noEmit -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "prepack": "npm run build:lib"
