@@ -52,6 +52,9 @@ try {
     urlsetBody.replace(/\s+/g, ''),
     'sitemap.xml must parse cleanly into <url> nodes without stray content',
   );
+  assert.equal(/<url><loc>/g.test(sitemap), false, 'sitemap.xml must line-break each <url> record before <loc>');
+  assert.equal(/<\/loc><lastmod>/g.test(sitemap), false, 'sitemap.xml must keep loc and lastmod in separate readable columns');
+  assert.equal(/<\/url>\n  <url>/g.test(sitemap), false, 'sitemap.xml must include a blank line between <url> records');
   assert.equal(
     urlsetAttributes.xmlns,
     'http://www.sitemaps.org/schemas/sitemap/0.9',
@@ -66,8 +69,11 @@ const alternateHrefs = [];
 
 for (const block of urlBlocks) {
   const locMatches = [...block.matchAll(/<loc>([\s\S]*?)<\/loc>/g)];
+  const lastmodMatches = [...block.matchAll(/<lastmod>([\s\S]*?)<\/lastmod>/g)];
   try {
     assert.equal(locMatches.length, 1, 'every <url> must contain exactly one <loc>');
+    assert.equal(lastmodMatches.length, 1, 'every <url> must contain exactly one <lastmod>');
+    assert.match(block, /^\n    <loc>[\s\S]*?<\/loc>\n    <lastmod>[\s\S]*?<\/lastmod>/, 'every <url> record must render loc and lastmod as separate indented columns');
   } catch (error) {
     fail(`${error.message}\nOffending block: <url>${block}</url>`);
   }

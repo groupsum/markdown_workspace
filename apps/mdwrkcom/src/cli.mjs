@@ -2638,8 +2638,15 @@ const build = () => {
 
   writeFile(path.join(distRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${indexable.map(entry => {
     const alternates = alternateLinksFor(entry, registry);
-    return `  <url><loc>${escapeXml(entry.frontmatter.canonical)}</loc><lastmod>${entry.frontmatter.updatedAt}</lastmod>${alternates.map(item => `<xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`).join('')}</url>`;
-  }).join('\n')}\n</urlset>\n`);
+    const alternateRows = alternates.map(item => `    <xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`);
+    return [
+      '  <url>',
+      `    <loc>${escapeXml(entry.frontmatter.canonical)}</loc>`,
+      `    <lastmod>${entry.frontmatter.updatedAt}</lastmod>`,
+      ...alternateRows,
+      '  </url>',
+    ].join('\n');
+  }).join('\n\n')}\n</urlset>\n`);
   writeFile(path.join(distRoot, 'robots.txt'), [
     '# MdWrk governed crawler policy',
     '# Categories: search-inclusion, answer-retrieval, training-ingestion',
