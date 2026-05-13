@@ -11,7 +11,7 @@ import type {
   ProofMatrixSection,
   SectionSpec,
 } from "@mdwrk/lander-content-contract";
-import type { CompiledLanderSite, CompiledPage } from "@mdwrk/lander-core";
+import type { CompiledLanderSite, CompiledPage, CompiledStructuredDataIntent } from "@mdwrk/lander-core";
 import {
   aggregateRatingNode,
   articleNode,
@@ -325,6 +325,69 @@ const jsonLdArrayValue = (value: unknown): JsonLd | JsonLd[] | undefined =>
 
 const stringArrayValue = (value: unknown): string[] | undefined =>
   Array.isArray(value) ? value.filter((entry): entry is string => typeof entry === "string" && Boolean(entry.trim())) : undefined;
+
+export interface StructuredDataIntentRendererEntry {
+  componentName: string;
+  render: (intent: CompiledStructuredDataIntent) => React.ReactElement;
+}
+
+function renderDataIntent(Component: React.ComponentType<{ data: Record<string, unknown> }>, intent: CompiledStructuredDataIntent): React.ReactElement {
+  return <Component data={dataRecord(intent.data)} />;
+}
+
+export const landerStructuredDataIntentRegistry = Object.freeze({
+  AggregateRating: { componentName: "AggregateRatingStructuredData", render: (intent) => renderDataIntent(AggregateRatingStructuredData, intent) },
+  Article: { componentName: "ArticleStructuredData", render: (intent) => renderDataIntent(ArticleStructuredData, intent) },
+  BlogPosting: { componentName: "BlogPostingStructuredData", render: (intent) => renderDataIntent(BlogPostingStructuredData, intent) },
+  Book: { componentName: "BookStructuredData", render: (intent) => renderDataIntent(BookStructuredData, intent) },
+  BreadcrumbList: { componentName: "BreadcrumbListStructuredData", render: (intent) => renderDataIntent(BreadcrumbListStructuredData, intent) },
+  ClaimReview: { componentName: "ClaimReviewStructuredData", render: (intent) => renderDataIntent(ClaimReviewStructuredData, intent) },
+  Course: { componentName: "CourseStructuredData", render: (intent) => renderDataIntent(CourseStructuredData, intent) },
+  CourseInstance: { componentName: "CourseInstanceStructuredData", render: (intent) => renderDataIntent(CourseInstanceStructuredData, intent) },
+  Dataset: { componentName: "DatasetStructuredData", render: (intent) => renderDataIntent(DatasetStructuredData, intent) },
+  DiscussionForumPosting: { componentName: "DiscussionForumPostingStructuredData", render: (intent) => renderDataIntent(DiscussionForumPostingStructuredData, intent) },
+  EmployerAggregateRating: { componentName: "EmployerAggregateRatingStructuredData", render: (intent) => renderDataIntent(EmployerAggregateRatingStructuredData, intent) },
+  Event: { componentName: "EventStructuredData", render: (intent) => renderDataIntent(EventStructuredData, intent) },
+  FAQPage: { componentName: "FAQPageStructuredData", render: (intent) => renderDataIntent(FAQPageStructuredData, intent) },
+  HowTo: { componentName: "HowToStructuredData", render: (intent) => renderDataIntent(HowToStructuredData, intent) },
+  ImageObject: { componentName: "ImageObjectStructuredData", render: (intent) => renderDataIntent(ImageObjectStructuredData, intent) },
+  ItemList: { componentName: "ItemListStructuredData", render: (intent) => renderDataIntent(ItemListStructuredData, intent) },
+  JobPosting: { componentName: "JobPostingStructuredData", render: (intent) => renderDataIntent(JobPostingStructuredData, intent) },
+  LocalBusiness: { componentName: "LocalBusinessStructuredData", render: (intent) => renderDataIntent(LocalBusinessStructuredData, intent) },
+  MathSolver: { componentName: "MathSolverStructuredData", render: (intent) => renderDataIntent(MathSolverStructuredData, intent) },
+  MemberProgram: { componentName: "MemberProgramStructuredData", render: (intent) => renderDataIntent(MemberProgramStructuredData, intent) },
+  MerchantReturnPolicy: { componentName: "MerchantReturnPolicyStructuredData", render: (intent) => renderDataIntent(MerchantReturnPolicyStructuredData, intent) },
+  MonetaryAmountDistribution: { componentName: "MonetaryAmountDistributionStructuredData", render: (intent) => renderDataIntent(MonetaryAmountDistributionStructuredData, intent) },
+  Movie: { componentName: "MovieStructuredData", render: (intent) => renderDataIntent(MovieStructuredData, intent) },
+  OfferShippingDetails: { componentName: "OfferShippingDetailsStructuredData", render: (intent) => renderDataIntent(OfferShippingDetailsStructuredData, intent) },
+  Organization: { componentName: "OrganizationStructuredData", render: (intent) => renderDataIntent(OrganizationStructuredData, intent) },
+  Product: { componentName: "ProductStructuredData", render: (intent) => renderDataIntent(ProductStructuredData, intent) },
+  ProductGroup: { componentName: "ProductGroupStructuredData", render: (intent) => renderDataIntent(ProductGroupStructuredData, intent) },
+  ProfilePage: { componentName: "ProfilePageStructuredData", render: (intent) => renderDataIntent(ProfilePageStructuredData, intent) },
+  QAPage: { componentName: "QAPageStructuredData", render: (intent) => renderDataIntent(QAPageStructuredData, intent) },
+  ReadAction: {
+    componentName: "ReadActionStructuredData",
+    render: (intent) => <ReadActionStructuredData target={jsonLdValue(dataRecord(intent.data).target) ?? dataRecord(intent.data)} />,
+  },
+  Recipe: { componentName: "RecipeStructuredData", render: (intent) => renderDataIntent(RecipeStructuredData, intent) },
+  Review: { componentName: "ReviewStructuredData", render: (intent) => renderDataIntent(ReviewStructuredData, intent) },
+  SoftwareApplication: { componentName: "SoftwareApplicationStructuredData", render: (intent) => renderDataIntent(SoftwareApplicationStructuredData, intent) },
+  SoftwareSourceCode: { componentName: "SoftwareSourceCodeStructuredData", render: (intent) => renderDataIntent(SoftwareSourceCodeStructuredData, intent) },
+  SpeakableSpecification: { componentName: "SpeakableSpecificationStructuredData", render: (intent) => renderDataIntent(SpeakableSpecificationStructuredData, intent) },
+  TechArticle: { componentName: "TechArticleStructuredData", render: (intent) => renderDataIntent(TechArticleStructuredData, intent) },
+  VacationRental: { componentName: "VacationRentalStructuredData", render: (intent) => renderDataIntent(VacationRentalStructuredData, intent) },
+  Vehicle: { componentName: "VehicleStructuredData", render: (intent) => renderDataIntent(VehicleStructuredData, intent) },
+  VideoObject: { componentName: "VideoObjectStructuredData", render: (intent) => renderDataIntent(VideoObjectStructuredData, intent) },
+  WebApplication: { componentName: "WebApplicationStructuredData", render: (intent) => renderDataIntent(WebApplicationStructuredData, intent) },
+  WebPage: { componentName: "WebPageStructuredData", render: (intent) => renderDataIntent(WebPageStructuredData, intent) },
+  WebSite: { componentName: "WebSiteStructuredData", render: (intent) => renderDataIntent(WebSiteStructuredData, intent) },
+} satisfies Record<string, StructuredDataIntentRendererEntry>);
+
+export function renderStructuredDataIntent(intent: CompiledStructuredDataIntent): React.ReactElement {
+  const entry = landerStructuredDataIntentRegistry[intent.kind];
+  if (!entry) throw new Error(`Unsupported structured data intent kind: ${intent.kind}`);
+  return entry.render(intent);
+}
 
 function schemaData(page: CompiledPage, kind: string): Record<string, unknown> {
   return dataRecord(page.schema?.find((schema) => schema.kind === kind)?.data);

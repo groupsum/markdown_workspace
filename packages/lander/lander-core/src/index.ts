@@ -1,6 +1,15 @@
 import type { LanderSite, PageSpec, SectionSpec } from "@mdwrk/lander-content-contract";
+import { validateComponentIntent, validateStructuredDataIntent } from "@mdwrk/lander-content-contract";
 import { LANDER_CORE_VERSION } from "./version.js";
-import type { BreadcrumbItem, CompiledLanderSite, CompiledPage, LanderDiagnostic, SitemapEntry } from "./types.js";
+import type {
+  BreadcrumbItem,
+  CompiledComponentIntent,
+  CompiledLanderSite,
+  CompiledPage,
+  CompiledStructuredDataIntent,
+  LanderDiagnostic,
+  SitemapEntry,
+} from "./types.js";
 
 export { LANDER_CORE_VERSION };
 export type * from "./types.js";
@@ -93,6 +102,56 @@ export function buildBreadcrumbs(page: PageSpec): BreadcrumbItem[] {
   return crumbs;
 }
 
+const slugifyIntentId = (value: string): string =>
+  String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "intent";
+
+function compileComponentIntents(page: PageSpec, path: string): CompiledComponentIntent[] {
+  const sectionIntents: CompiledComponentIntent[] = page.sections.map((section) => ({
+    id: `${path}#section-${slugifyIntentId(section.id)}`,
+    kind: section.kind,
+    sourceId: section.id,
+    data: section.title ? { title: section.title } : undefined,
+    pagePath: path,
+    source: "section",
+  }));
+  const schemaIntents: CompiledComponentIntent[] = page.schema?.length
+    ? [{
+        id: `${path}#structured-data-graph`,
+        kind: "structured_data_graph",
+        sourceId: path,
+        data: { count: page.schema.length },
+        pagePath: path,
+        source: "schema",
+      }]
+    : [];
+  const declaredIntents: CompiledComponentIntent[] = (page.componentIntents ?? []).map((intent) => ({
+    ...intent,
+    pagePath: path,
+    source: "declared",
+  }));
+
+  return [
+    { id: `${path}#page-shell`, kind: "page_shell", sourceId: path, pagePath: path, source: "page" },
+    { id: `${path}#breadcrumbs`, kind: "breadcrumbs", sourceId: path, pagePath: path, source: "page" },
+    ...sectionIntents,
+    ...schemaIntents,
+    ...declaredIntents,
+  ];
+}
+
+function compileSchemaIntents(page: PageSpec, path: string): CompiledStructuredDataIntent[] {
+  return (page.schema ?? []).map((intent, index) => ({
+    ...intent,
+    id: intent.id ?? `${path}#schema-${index + 1}-${slugifyIntentId(intent.kind)}`,
+    pagePath: path,
+    source: "schema",
+  }));
+}
+
 export function validateLanderSite(input: LanderSite): LanderDiagnostic[] {
   const diagnostics: LanderDiagnostic[] = [];
   const slugs = new Set<string>();
@@ -122,6 +181,16 @@ export function validateLanderSite(input: LanderSite): LanderDiagnostic[] {
     if (page.kind === "package" && !page.sections.some((section) => section.kind === "package_grid" || section.kind === "markdown")) {
       diagnostics.push({ level: "warning", code: "page.package.install.missing", message: `Package page ${slug} should include install or API content.`, slug });
     }
+    page.schema?.forEach((schema, index) => {
+      for (const failure of validateStructuredDataIntent({ id: schema.id, kind: schema.kind, data: schema.data })) {
+        diagnostics.push({ level: "error", code: "page.schema.intent.invalid", message: `Schema intent ${index + 1} on ${slug}: ${failure}.`, slug });
+      }
+    });
+    page.componentIntents?.forEach((intent) => {
+      for (const failure of validateComponentIntent(intent)) {
+        diagnostics.push({ level: "error", code: "page.component.intent.invalid", message: `Component intent ${intent.id || "<missing>"} on ${slug}: ${failure}.`, slug });
+      }
+    });
   }
 
   return diagnostics;
@@ -140,6 +209,8 @@ export function compileLanderSite(input: LanderSite): CompiledLanderSite {
       breadcrumbs: buildBreadcrumbs(page),
       internalLinks: extractInternalLinks(text),
       wordCount: wordCount(text),
+      componentIntents: compileComponentIntents(page, path),
+      schemaIntents: compileSchemaIntents(page, path),
     };
   });
 

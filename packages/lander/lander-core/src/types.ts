@@ -1,4 +1,4 @@
-import type { LanderSite, PageSpec } from "@mdwrk/lander-content-contract";
+import type { ComponentIntentSpec, LanderSite, PageSpec, StructuredDataIntentSpec } from "@mdwrk/lander-content-contract";
 
 export interface LanderDiagnostic {
   level: "error" | "warning";
@@ -12,12 +12,25 @@ export interface BreadcrumbItem {
   href: string;
 }
 
+export interface CompiledComponentIntent extends ComponentIntentSpec {
+  pagePath: string;
+  source: "declared" | "page" | "schema" | "section";
+}
+
+export interface CompiledStructuredDataIntent extends StructuredDataIntentSpec {
+  id: string;
+  pagePath: string;
+  source: "declared" | "schema";
+}
+
 export interface CompiledPage extends PageSpec {
   path: string;
   canonicalUrl: string;
   breadcrumbs: BreadcrumbItem[];
   internalLinks: string[];
   wordCount: number;
+  componentIntents: CompiledComponentIntent[];
+  schemaIntents: CompiledStructuredDataIntent[];
 }
 
 export interface CompiledLanderSite extends Omit<LanderSite, "pages"> {

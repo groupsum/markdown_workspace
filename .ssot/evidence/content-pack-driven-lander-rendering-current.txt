@@ -1,0 +1,20 @@
+Boundary: bnd:content-pack-driven-lander-rendering-current
+Date: 2026-05-13
+
+Implemented code paths:
+- packages/lander/lander-content-contract/src/types.ts
+- packages/lander/lander-core/src/index.ts
+- packages/lander/lander-core/src/types.ts
+- packages/lander/lander-react/src/index.tsx
+- packages/content/mdwrkcom-content-pack/src/index.ts
+- apps/mdwrkcom/src/mdwrk-site.ts
+
+Passing verification commands:
+- npm run test -w @mdwrk/lander-content-contract
+- npm run test -w @mdwrk/lander-core
+- npm run test -w @mdwrk/lander-react
+- npm run test -w @mdwrk/mdwrkcom-content-pack
+- npm run test:lander-renderer-host -w @mdwrk/mdwrkcom
+
+Known external validation note:
+- npm run typecheck -w @mdwrk/mdwrkcom still fails in apps/mdwrkcom/scripts/validate-article-image-contract.mjs on the existing static Open Graph image metadata source-pattern assertion, outside this boundary's edited files.

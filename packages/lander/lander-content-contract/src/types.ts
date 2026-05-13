@@ -93,26 +93,73 @@ export interface PageSeoSpec {
   image?: AssetRef;
 }
 
+export type StructuredDataIntentKind =
+  | "AggregateRating"
+  | "Article"
+  | "BlogPosting"
+  | "Book"
+  | "BreadcrumbList"
+  | "ClaimReview"
+  | "Course"
+  | "CourseInstance"
+  | "Dataset"
+  | "DiscussionForumPosting"
+  | "EmployerAggregateRating"
+  | "Event"
+  | "FAQPage"
+  | "HowTo"
+  | "ImageObject"
+  | "ItemList"
+  | "JobPosting"
+  | "LocalBusiness"
+  | "MathSolver"
+  | "MemberProgram"
+  | "MerchantReturnPolicy"
+  | "MonetaryAmountDistribution"
+  | "Movie"
+  | "OfferShippingDetails"
+  | "Organization"
+  | "Product"
+  | "ProductGroup"
+  | "ProfilePage"
+  | "QAPage"
+  | "ReadAction"
+  | "Recipe"
+  | "Review"
+  | "SoftwareApplication"
+  | "SoftwareSourceCode"
+  | "SpeakableSpecification"
+  | "TechArticle"
+  | "VacationRental"
+  | "Vehicle"
+  | "VideoObject"
+  | "WebApplication"
+  | "WebPage"
+  | "WebSite";
+
+export type ComponentIntentKind =
+  | SectionKind
+  | "breadcrumbs"
+  | "page_shell"
+  | "structured_data_graph"
+  | "structured_data_node";
+
+export interface ComponentIntentSpec {
+  id: string;
+  kind: ComponentIntentKind;
+  sourceId?: string;
+  data?: Record<string, unknown>;
+}
+
+export interface StructuredDataIntentSpec {
+  id?: string;
+  kind: StructuredDataIntentKind;
+  data?: Record<string, unknown>;
+}
+
 export interface SchemaSpec {
-  kind:
-    | "WebPage"
-    | "Organization"
-    | "WebSite"
-    | "SoftwareApplication"
-    | "WebApplication"
-    | "SoftwareSourceCode"
-    | "TechArticle"
-    | "Article"
-    | "BlogPosting"
-    | "FAQPage"
-    | "BreadcrumbList"
-    | "Dataset"
-    | "ImageObject"
-    | "ItemList"
-    | "HowTo"
-    | "Product"
-    | "ProfilePage"
-    | "VideoObject";
+  id?: string;
+  kind: StructuredDataIntentKind;
   data?: Record<string, unknown>;
 }
 
@@ -256,6 +303,7 @@ export interface PageSpec {
   faq?: FaqItem[];
   seo?: PageSeoSpec;
   schema?: SchemaSpec[];
+  componentIntents?: ComponentIntentSpec[];
 }
 
 export interface LanderSite {
@@ -266,4 +314,93 @@ export interface LanderSite {
   theme?: ThemeSpec;
   seo?: SiteSeoSpec;
   ai?: AiDiscoverySpec;
+}
+
+export const STRUCTURED_DATA_INTENT_KINDS = Object.freeze([
+  "AggregateRating",
+  "Article",
+  "BlogPosting",
+  "Book",
+  "BreadcrumbList",
+  "ClaimReview",
+  "Course",
+  "CourseInstance",
+  "Dataset",
+  "DiscussionForumPosting",
+  "EmployerAggregateRating",
+  "Event",
+  "FAQPage",
+  "HowTo",
+  "ImageObject",
+  "ItemList",
+  "JobPosting",
+  "LocalBusiness",
+  "MathSolver",
+  "MemberProgram",
+  "MerchantReturnPolicy",
+  "MonetaryAmountDistribution",
+  "Movie",
+  "OfferShippingDetails",
+  "Organization",
+  "Product",
+  "ProductGroup",
+  "ProfilePage",
+  "QAPage",
+  "ReadAction",
+  "Recipe",
+  "Review",
+  "SoftwareApplication",
+  "SoftwareSourceCode",
+  "SpeakableSpecification",
+  "TechArticle",
+  "VacationRental",
+  "Vehicle",
+  "VideoObject",
+  "WebApplication",
+  "WebPage",
+  "WebSite",
+] as const satisfies readonly StructuredDataIntentKind[]);
+
+export const COMPONENT_INTENT_KINDS = Object.freeze([
+  "hero",
+  "feature_grid",
+  "feature_detail",
+  "comparison",
+  "proof_matrix",
+  "package_grid",
+  "pricing",
+  "cta",
+  "faq",
+  "markdown",
+  "breadcrumbs",
+  "page_shell",
+  "structured_data_graph",
+  "structured_data_node",
+] as const satisfies readonly ComponentIntentKind[]);
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
+
+export function isStructuredDataIntentKind(value: unknown): value is StructuredDataIntentKind {
+  return typeof value === "string" && STRUCTURED_DATA_INTENT_KINDS.includes(value as StructuredDataIntentKind);
+}
+
+export function isComponentIntentKind(value: unknown): value is ComponentIntentKind {
+  return typeof value === "string" && COMPONENT_INTENT_KINDS.includes(value as ComponentIntentKind);
+}
+
+export function validateStructuredDataIntent(intent: StructuredDataIntentSpec): string[] {
+  const failures: string[] = [];
+  if (intent.id !== undefined && !String(intent.id).trim()) failures.push("structured-data intent id must be non-empty when provided");
+  if (!isStructuredDataIntentKind(intent.kind)) failures.push(`unsupported structured-data intent kind: ${String(intent.kind)}`);
+  if (intent.data !== undefined && !isRecord(intent.data)) failures.push("structured-data intent data must be an object when provided");
+  return failures;
+}
+
+export function validateComponentIntent(intent: ComponentIntentSpec): string[] {
+  const failures: string[] = [];
+  if (!String(intent.id ?? "").trim()) failures.push("component intent id is required");
+  if (!isComponentIntentKind(intent.kind)) failures.push(`unsupported component intent kind: ${String(intent.kind)}`);
+  if (intent.data !== undefined && !isRecord(intent.data)) failures.push("component intent data must be an object when provided");
+  return failures;
 }

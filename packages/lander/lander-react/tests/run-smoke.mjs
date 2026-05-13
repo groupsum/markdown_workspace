@@ -63,6 +63,8 @@ const {
   WebPageStructuredData,
   WebSiteStructuredData,
   buildLanderJsonLdGraph,
+  landerStructuredDataIntentRegistry,
+  renderStructuredDataIntent,
 } = await import(`file:///${smokeIndex.replace(/\\/g, '/')}`);
 fs.rmSync(smokeIndex, { force: true });
 
@@ -232,3 +234,14 @@ assert.ok(faqMarkup.includes('Does the lander emit JSON-LD?'));
 const breadcrumbsMarkup = renderToStaticMarkup(React.createElement(BreadcrumbList, { items: page.breadcrumbs }));
 assert.ok(breadcrumbsMarkup.includes('MdWrk'));
 assert.ok(breadcrumbsMarkup.includes('Structured Data Package'));
+
+assert.equal(Object.keys(landerStructuredDataIntentRegistry).length, 42);
+assert.equal(landerStructuredDataIntentRegistry.WebPage.componentName, 'WebPageStructuredData');
+const intentMarkup = renderToStaticMarkup(renderStructuredDataIntent({
+  id: 'intent:webpage',
+  kind: 'WebPage',
+  pagePath: '/packages/structured-data/',
+  source: 'schema',
+  data: { name: 'Intent Page', url: 'https://mdwrk.test/intent-page' },
+}));
+assert.ok(intentMarkup.includes('"WebPage"'));

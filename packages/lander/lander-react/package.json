@@ -34,8 +34,8 @@
     "@types/react-dom": "^19.0.3"
   },
   "scripts": {
-    "build": "npm run build -w @mdwrk/structured-data && tsc -p tsconfig.json",
-    "typecheck": "npm run build -w @mdwrk/structured-data && tsc --noEmit -p tsconfig.json",
+    "build": "npm run build -w @mdwrk/structured-data && npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/structured-data && npm run build -w @mdwrk/lander-core && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node tests/run-smoke.mjs",
     "prepack": "npm run build"

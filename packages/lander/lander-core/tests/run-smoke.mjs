@@ -1,5 +1,21 @@
 import assert from 'node:assert/strict';
-import {
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const testRoot = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(testRoot, '..', '..', '..', '..');
+const distRoot = path.resolve(testRoot, '..', 'dist');
+const distIndex = path.join(distRoot, 'index.js');
+const smokeIndex = path.join(distRoot, 'index.smoke.mjs');
+const contentContractDist = path.join(repoRoot, 'packages', 'lander', 'lander-content-contract', 'dist', 'index.js').replace(/\\/g, '/');
+
+fs.writeFileSync(
+  smokeIndex,
+  fs.readFileSync(distIndex, 'utf8').replaceAll('"@mdwrk/lander-content-contract"', `"file:///${contentContractDist}"`),
+);
+
+const {
   buildCacheHeaderManifest,
   buildLlmsTxt,
   buildRobotsTxt,
@@ -8,7 +24,9 @@ import {
   defineCriticalCssProfile,
   renderCriticalCssStyle,
   renderDeferredStylesheetLink,
-} from '../dist/index.js';
+} = await import(`file:///${smokeIndex.replace(/\\/g, '/')}`);
+
+fs.rmSync(smokeIndex, { force: true });
 
 const site = compileLanderSite({
   product: {
@@ -28,12 +46,19 @@ const site = compileLanderSite({
       h1: 'Example',
       intro: 'Example intro text that gives crawlers a useful first paragraph.',
       sections: [{ id: 'hero', kind: 'hero', title: 'Example', subtitle: 'Portable lander.' }],
+      schema: [{ kind: 'WebPage' }, { kind: 'SoftwareApplication' }],
+      componentIntents: [{ id: 'example:declared-faq', kind: 'faq', sourceId: 'declared' }],
     },
   ],
 });
 
 assert.equal(site.diagnostics.filter((item) => item.level === 'error').length, 0);
 assert.equal(site.pageByPath.get('/')?.canonicalUrl, 'https://example.test/');
+assert.ok(site.pageByPath.get('/')?.componentIntents.some((intent) => intent.kind === 'page_shell' && intent.source === 'page'));
+assert.ok(site.pageByPath.get('/')?.componentIntents.some((intent) => intent.kind === 'hero' && intent.source === 'section'));
+assert.ok(site.pageByPath.get('/')?.componentIntents.some((intent) => intent.kind === 'structured_data_graph' && intent.source === 'schema'));
+assert.deepEqual(site.pageByPath.get('/')?.schemaIntents.map((intent) => intent.kind), ['WebPage', 'SoftwareApplication']);
+assert.equal(site.pageByPath.get('/')?.schemaIntents[0].id, '/#schema-1-webpage');
 assert.equal(buildSitemap(site)[0].loc, 'https://example.test/');
 assert.match(buildLlmsTxt(site), /# Example/);
 assert.match(buildRobotsTxt(site), /OAI-SearchBot/);

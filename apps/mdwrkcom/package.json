@@ -32,6 +32,7 @@
     "verify:static-first-paint-theme": "node ./scripts/validate-static-first-paint-theme.mjs --generated",
     "validate:static-style-contract": "node ./scripts/validate-static-style-contract.mjs",
     "validate:static": "node ./src/cli.mjs validate",
+    "test:lander-renderer-host": "node ./tests/run-lander-renderer-host-smoke.mjs",
     "build:static": "node ./src/cli.mjs build --out dist-static",
     "build:static:dist": "node ./src/cli.mjs build --out dist --preserve-assets",
     "verify:static": "node ./src/cli.mjs verify --out dist-static",

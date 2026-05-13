@@ -1,4 +1,4 @@
-import { defineLanderSite } from '@mdwrk/lander-core';
+import { compileLanderSite, defineLanderSite } from '@mdwrk/lander-core';
 import type { PageSpec, SectionSpec } from '@mdwrk/lander-content-contract';
 
 const ctaSection = (id: string): SectionSpec => ({
@@ -389,4 +389,14 @@ export const mdwrkSite = defineLanderSite({
     proofPage('/proof/markdown-support/', 'Markdown support', 'MdWrk aligns Markdown editing and preview behavior with reusable renderer and editor package surfaces.'),
     proofPage('/proof/package-surfaces/', 'Package surfaces', 'MdWrk exposes reusable package surfaces separately from the MdWrk-specific marketing and documentation content pack.'),
   ],
+});
+
+export const compiledMdwrkSite = compileLanderSite(mdwrkSite);
+
+export const mdwrkcomLanderRendererHost = Object.freeze({
+  app: '@mdwrk/mdwrkcom',
+  contentPack: '@mdwrk/mdwrkcom-content-pack',
+  compilerPackage: '@mdwrk/lander-core',
+  rendererPackage: '@mdwrk/lander-react',
+  site: compiledMdwrkSite,
 });
