@@ -11,7 +11,6 @@ const css = read('styles', 'components.css');
 const staticCompiler = read('src', 'cli.mjs');
 
 const reactNavLinks = [
-  ['/', 'Home'],
   ['/features', 'Features'],
   ['/compare', 'Compare'],
   ['/docs', 'Docs'],
@@ -20,7 +19,6 @@ const reactNavLinks = [
 ];
 
 const staticNavLinks = [
-  ['/', 'Home'],
   ['/features/', 'Features'],
   ['/compare/', 'Compare'],
   ['/docs/', 'Docs'],
@@ -45,8 +43,9 @@ for (const [target, label] of reactNavLinks) {
 
 assert.match(navbar, /href=\{links\.githubRepo\}/, 'React header GitHub CTA must use the configured repository URL.');
 assert.match(navbar, /className="navbar-github-link"/, 'React header GitHub CTA must use the grouped CTA class.');
-assert.match(navbar, /aria-label="Open MdWrk GitHub repository"/, 'React header GitHub CTA must expose an accessible label.');
-assert.match(navbar, /<Github\s+className="navbar-github-icon"\s*\/>\s*<span\s+className="navbar-github-label">GitHub<\/span>/s, 'React header GitHub CTA must render the GitHub icon and visible grouped label.');
+assert.match(navbar, /aria-label="Open MdWrk repository"/, 'React header repository CTA must expose an accessible label.');
+assert.match(navbar, /<Github\s+className="navbar-github-icon"\s*\/>/, 'React header repository CTA must render the GitHub icon.');
+assert.doesNotMatch(navbar, /navbar-github-label|>GitHub<\/span>/, 'React header repository CTA must remain icon-only.');
 assert.doesNotMatch(navbar, />Repo<\/|['"]Repo['"]/, 'React header must not use the old Repo CTA copy.');
 
 assert.match(staticCompiler, /<nav class="navbar" aria-label="Main navigation">/, 'Static header must expose main navigation semantics.');
@@ -64,11 +63,12 @@ for (const [target, label] of staticNavLinks) {
 
 assert.match(staticCompiler, /href="\$\{escapeAttribute\(githubRepoUrl\)\}"/, 'Static header GitHub CTA must use the configured repository URL.');
 assert.match(staticCompiler, /class="navbar-github-link"/, 'Static header GitHub CTA must use the grouped CTA class.');
-assert.match(staticCompiler, /aria-label="Open MdWrk GitHub repository"/, 'Static header GitHub CTA must expose an accessible label.');
-assert.match(staticCompiler, /renderStaticGithubIcon\(\)\}\s*<span class="navbar-github-label">GitHub<\/span>/s, 'Static header GitHub CTA must render the GitHub icon and visible grouped label.');
+assert.match(staticCompiler, /aria-label="Open MdWrk repository"/, 'Static header repository CTA must expose an accessible label.');
+assert.match(staticCompiler, /renderStaticGithubIcon\(\)/, 'Static header repository CTA must render the GitHub icon.');
+assert.doesNotMatch(staticCompiler, /navbar-github-label|>GitHub<\/span>/, 'Static header repository CTA must remain icon-only.');
 assert.doesNotMatch(staticCompiler, />Repo<\/|['"]Repo['"]/, 'Static header must not use the old Repo CTA copy.');
 
-assert.match(css, /\.navbar-github-link\s*\{[^}]*gap-2[^}]*px-3/s, 'GitHub CTA styles must group the icon and label with spacing.');
-assert.match(css, /\.navbar-github-label\s*\{[^}]*whitespace-nowrap/s, 'GitHub CTA label must stay grouped with the icon.');
+assert.match(css, /\.navbar-github-link\s*\{[^}]*w-10/s, 'Repository CTA styles must keep the icon-only target square.');
+assert.doesNotMatch(css, /\.navbar-github-label/, 'Repository CTA styles must not preserve visible label styling.');
 
 console.log('Header content validation passed.');

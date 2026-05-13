@@ -144,6 +144,9 @@ assert.ok(sourceCli.includes('<details class="locale-switcher">'), 'Static rende
 assert.ok(sourceCli.includes('class="locale-switcher-option'), 'Static renderer must keep locale targets as anchors inside the dropdown.');
 assert.ok(!sourceCli.includes('class="locale-switcher-link'), 'Static renderer must not emit top-level locale badge links.');
 assert.ok(css.includes('static-menu-close-icon'), 'Static stylesheet must hide/show the static mobile navbar icons.');
+assert.ok(css.includes('.navbar-github-link{display:inline-flex}'), 'Static stylesheet must keep the repository icon action visible at responsive widths.');
+assert.ok(css.includes('.navbar-github-link') && css.includes('width:2.5rem'), 'Static stylesheet must keep the repository action icon-only.');
+assert.ok(!css.includes('.navbar-github-label'), 'Static stylesheet must not preserve visible repository label styling.');
 assert.ok(css.includes('gap:1rem'), 'Static stylesheet must keep the tablet navbar link gap compact.');
 assert.ok(css.includes('gap:1.5rem'), 'Static stylesheet must keep the desktop navbar link gap compact.');
 assert.ok(css.includes('.navbar-link{padding:0}'), 'Static stylesheet must not add desktop navbar link padding.');

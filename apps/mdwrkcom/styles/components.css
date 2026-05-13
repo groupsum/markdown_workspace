@@ -548,7 +548,7 @@
 }
 
 .navbar-github-link {
-  @apply hidden h-10 items-center justify-center gap-2 px-3 text-center text-xs font-bold uppercase;
+  @apply hidden h-10 w-10 items-center justify-center text-center;
   letter-spacing: 0.08em;
   background: var(--lander-panel-muted);
   color: var(--lander-fg);
@@ -566,10 +566,6 @@
 
 .navbar-github-icon {
   @apply h-5 w-5;
-}
-
-.navbar-github-label {
-  @apply whitespace-nowrap;
 }
 
 .navbar-menu-toggle {

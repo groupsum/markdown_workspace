@@ -10,11 +10,13 @@ import {
 } from '../../../packages/renderer/markdown-renderer-core/dist/index.js';
 import {
   buildCacheHeaderManifest,
+  sha256Hex,
+} from '../../../packages/lander/lander-core/dist/cache/resource-policy.js';
+import {
   defineCriticalCssProfile,
   renderCriticalCssStyle,
   renderDeferredStylesheetLink,
-  sha256Hex,
-} from '../../../packages/lander/lander-core/dist/index.js';
+} from '../../../packages/lander/lander-core/dist/critical-css/profile.js';
 
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -259,7 +261,6 @@ const mdwrkcomCriticalCssProfile = defineCriticalCssProfile({
     .navbar-actions{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-left:auto}
     .navbar-theme-toggle,.navbar-menu-toggle,.navbar-github-link{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;min-width:2.5rem;height:2.5rem;padding:.5rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.65rem;text-decoration:none}
     .navbar-theme-icon,.navbar-menu-icon,.navbar-github-icon,.static-menu-close-icon{display:block;width:1.25rem;height:1.25rem;flex:0 0 auto}
-    .navbar-github-label{display:none}
     .navbar-menu-panel.is-closed{display:none}
     .navbar-menu-panel{position:absolute;top:4rem;left:1rem;right:1rem;z-index:20;padding:.75rem;background:var(--static-panel);border:1px solid var(--static-border);border-radius:.85rem;box-shadow:0 20px 60px rgba(2,6,23,.24)}
     .navbar-menu-list{display:flex;flex-direction:column;gap:.25rem;list-style:none;margin:0;padding:0}
@@ -294,7 +295,7 @@ const mdwrkcomCriticalCssProfile = defineCriticalCssProfile({
     .lander-markdown .markdown-body{color:var(--static-text);font-size:1rem;line-height:1.75}
     .lander-markdown .markdown-body h2,.lander-markdown .markdown-body h3{margin:1.6rem 0 .75rem;color:var(--static-text);line-height:1.2}
     .lander-markdown .markdown-body p,.lander-markdown .markdown-body ul,.lander-markdown .markdown-body ol{margin:0 0 1rem}
-    @media (min-width:768px){.navbar-menu-toggle{display:none}.navbar-menu-panel,.navbar-menu-panel.is-closed{display:block;position:static;margin-left:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}.navbar-actions{margin-left:.75rem}.navbar-menu-list{flex-direction:row;align-items:center;gap:.35rem}.navbar-link{padding:.5rem .65rem}.navbar-github-link{width:auto;padding:.5rem .75rem;gap:.35rem}.navbar-github-label{display:inline;font-size:.9rem;font-weight:800}}
+    @media (min-width:768px){.navbar-menu-toggle{display:none}.navbar-menu-panel,.navbar-menu-panel.is-closed{display:block;position:static;margin-left:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}.navbar-actions{margin-left:.75rem}.navbar-menu-list{flex-direction:row;align-items:center;gap:.35rem}.navbar-link{padding:.5rem .65rem}}
   `,
 });
 
@@ -1747,7 +1748,6 @@ const jsonLdFor = (entry, registry) => {
 
 const renderTopNav = (registry, currentSlug) => {
   const links = [
-    ['/', 'Home'],
     ['/markdown/', 'Markdown'],
     ['/features/', 'Features'],
     ['/packages/', 'Packages'],
@@ -2055,9 +2055,8 @@ const renderStaticNavbar = (registry, currentSlug) => `<nav class="navbar" aria-
                 ${renderStaticThemeIcon()}
                 <span class="sr-only" data-static-theme-label>Lander Theme</span>
               </button>
-              <a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk GitHub repository" title="Open MdWrk GitHub repository">
+              <a href="${escapeAttribute(githubRepoUrl)}" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk repository" title="Open MdWrk repository">
                 ${renderStaticGithubIcon()}
-                <span class="navbar-github-label">GitHub</span>
               </a>
               <button type="button" class="navbar-menu-toggle" data-static-menu-toggle aria-controls="navbar-sticky" aria-expanded="false" aria-label="Open main menu">
                 <span class="sr-only">Open main menu</span>

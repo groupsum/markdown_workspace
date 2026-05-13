@@ -13,7 +13,6 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { id: '/', label: 'Home' },
     { id: '/features', label: 'Features' },
     { id: '/compare', label: 'Compare' },
     { id: '/docs', label: 'Docs' },
@@ -46,11 +45,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, themeLabel, toggleTheme 
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-github-link"
-            aria-label="Open MdWrk GitHub repository"
-            title="Open MdWrk GitHub repository"
+            aria-label="Open MdWrk repository"
+            title="Open MdWrk repository"
           >
             <Github className="navbar-github-icon" />
-            <span className="navbar-github-label">GitHub</span>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
