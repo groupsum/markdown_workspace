@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { BreadcrumbList } from '@mdwrk/lander-react';
 import { useParams } from 'react-router-dom';
 import { Scale } from 'lucide-react';
 import { compareDocs, compareDocsBySlug } from '../data/docs';
@@ -13,7 +14,6 @@ import {
   getArticleMetadataImage
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
-import { Breadcrumbs } from './Breadcrumbs';
 import { SectionMenu } from './SectionMenu';
 
 const normalizeTitle = (value: string) =>
@@ -137,12 +137,18 @@ export const CompareView: React.FC = () => {
             <div className="lander-content-card docs-content-card compare-content-card">
               {currentDoc && (
                 <header className="docs-header compare-header">
-                  <Breadcrumbs
+                  <BreadcrumbList
                     items={[
                       { label: 'MdWrk', href: '/' },
                       { label: 'Compares', href: '/compare/' },
                       { label: currentDoc.title },
                     ]}
+                    className="lander-breadcrumbs"
+                    label="Breadcrumbs"
+                    listClassName="lander-breadcrumbs-list"
+                    itemClassName="lander-breadcrumbs-item"
+                    linkClassName="lander-breadcrumbs-link"
+                    currentClassName="lander-breadcrumbs-current"
                   />
                   <h1 className="docs-title">{currentDoc.title}</h1>
                   {currentDoc.metadata.subtitle ? (
@@ -152,11 +158,17 @@ export const CompareView: React.FC = () => {
               )}
               {!currentDoc && (
                 <header className="docs-header compare-header">
-                  <Breadcrumbs
+                  <BreadcrumbList
                     items={[
                       { label: 'MdWrk', href: '/' },
                       { label: 'Compares' },
                     ]}
+                    className="lander-breadcrumbs"
+                    label="Breadcrumbs"
+                    listClassName="lander-breadcrumbs-list"
+                    itemClassName="lander-breadcrumbs-item"
+                    linkClassName="lander-breadcrumbs-link"
+                    currentClassName="lander-breadcrumbs-current"
                   />
                   <h1 className="docs-title">{pageTitle}</h1>
                   <p className="docs-subtitle">{pageSubtitle}</p>

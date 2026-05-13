@@ -1,4 +1,28 @@
+# MdWrk governed crawler policy
+# Categories: search-inclusion, answer-retrieval, training-ingestion
 User-agent: *
+# Category: search-inclusion
+# Purpose: general public indexing
 Allow: /
+
+User-agent: OAI-SearchBot
+# Category: answer-retrieval
+# Purpose: OpenAI search and answer retrieval
+Allow: /
+
+User-agent: ChatGPT-User
+# Category: answer-retrieval
+# Purpose: user-initiated browsing and answer retrieval
+Allow: /
+
+User-agent: GPTBot
+# Category: training-ingestion
+# Purpose: OpenAI model training ingestion
+Disallow: /
+
+User-agent: CCBot
+# Category: training-ingestion
+# Purpose: Common Crawl model training ingestion
+Disallow: /
 
 Sitemap: https://mdwrk.com/sitemap.xml

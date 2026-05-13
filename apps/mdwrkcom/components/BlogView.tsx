@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { BreadcrumbList, FaqPage } from '@mdwrk/lander-react';
 import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { contentFiles } from '../data/content';
 import { parseMarkdown } from '../utils/markdownParser';
@@ -16,8 +17,6 @@ import {
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
 import { User, ArrowLeft } from 'lucide-react';
-import { Breadcrumbs } from './Breadcrumbs';
-import { FaqBlock } from './FaqBlock';
 import { Tag } from './Tag';
 
 interface BlogPost {
@@ -297,12 +296,18 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
         </Link>
         <div className="lander-content-card blog-post-card">
           <div className="blog-post-header">
-            <Breadcrumbs
+            <BreadcrumbList
               items={[
                 { label: 'MdWrk', href: '/' },
                 { label: 'Updates', href: '/updates' },
                 { label: post.metadata.title },
               ]}
+              className="lander-breadcrumbs"
+              label="Breadcrumbs"
+              listClassName="lander-breadcrumbs-list"
+              itemClassName="lander-breadcrumbs-item"
+              linkClassName="lander-breadcrumbs-link"
+              currentClassName="lander-breadcrumbs-current"
             />
             <h1 className="blog-post-title">{post.metadata.title}</h1>
             {post.subtitle || post.excerpt ? (
@@ -317,7 +322,17 @@ const BlogPostPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
           ) : null}
           <MarkdownViewer content={articleContent} />
         </div>
-        <FaqBlock items={faqItems} />
+        <FaqPage
+          items={faqItems}
+          className="faq-section"
+          headingClassName="faq-section-heading"
+          headingId="faq-heading"
+          listClassName="faq-list"
+          itemClassName="faq-accordion"
+          questionClassName="faq-summary"
+          answerContainerClassName="faq-content"
+          collapsible
+        />
         {relatedApis.length > 0 ? (
           <section className="related-apis-section" aria-labelledby="related-apis-heading">
             <h2 id="related-apis-heading" className="faq-section-heading">Related APIs</h2>

@@ -78,43 +78,43 @@ assert.match(
 
 assert.match(
   blogView,
-  /import \{ FaqBlock \} from '\.\/FaqBlock';/,
-  'Product update article pages must import the structural FAQ component.',
+  /import \{ BreadcrumbList,\s*FaqPage \} from '@mdwrk\/lander-react';/,
+  'Product update article pages must import the structural FAQ and breadcrumb components from the lander package.',
 );
 
 assert.match(
   blogView,
-  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<\/div>\s*<FaqBlock\s+items=\{faqItems\}\s*\/>/s,
+  /<MarkdownViewer\s+content=\{articleContent\}\s*\/>\s*<\/div>\s*<FaqPage/s,
   'Product update article pages must render the FAQ block immediately below the article card.',
 );
 
 assert.match(
-  read('components', 'FaqBlock.tsx'),
-  /<h2\s+id=\{headingId\}\s+className="faq-section-heading">\{heading\}<\/h2>/,
+  read('..', '..', 'packages', 'lander', 'lander-react', 'src', 'index.tsx'),
+  /<h2 id=\{headingId\} className=\{headingClassName\}>\{heading\}<\/h2>/,
   'Product update article FAQ block must expose the expected visible heading.',
 );
 
 assert.match(
-  read('components', 'FaqBlock.tsx'),
-  /items\.map\(faq\s*=>\s*\(\s*<details\s+key=\{faq\.question\}\s+className="faq-accordion">/s,
+  read('..', '..', 'packages', 'lander', 'lander-react', 'src', 'index.tsx'),
+  /<details className=\{itemClassName\} key=\{item\.question\}>/s,
   'Product update article FAQ block must render each FAQ as an accordion detail.',
 );
 
 assert.match(
-  read('components', 'FaqBlock.tsx'),
-  /<summary\s+className="faq-summary">\{faq\.question\}<\/summary>/,
+  read('..', '..', 'packages', 'lander', 'lander-react', 'src', 'index.tsx'),
+  /<summary className=\{questionClassName\}>\{item\.question\}<\/summary>/,
   'Product update article FAQ accordions must render the question in the summary.',
 );
 
 assert.match(
-  read('components', 'FaqBlock.tsx'),
-  /<div\s+className="faq-content">\s*<p>\{faq\.answer\}<\/p>\s*<\/div>/s,
+  read('..', '..', 'packages', 'lander', 'lander-react', 'src', 'index.tsx'),
+  /<div className=\{answerContainerClassName\}>\s*<p className=\{answerClassName\}>\{item\.answer\}<\/p>\s*<\/div>/s,
   'Product update article FAQ accordions must render the answer in the content block.',
 );
 
 assert.match(
   blogView,
-  /<FaqBlock\s+items=\{faqItems\}\s*\/>\s*\{relatedApis\.length > 0 \? \(\s*<section\s+className="related-apis-section"\s+aria-labelledby="related-apis-heading">/s,
+  /<FaqPage[\s\S]+?\{relatedApis\.length > 0 \? \(\s*<section\s+className="related-apis-section"\s+aria-labelledby="related-apis-heading">/s,
   'Product update article pages must render Related APIs below the FAQ block.',
 );
 

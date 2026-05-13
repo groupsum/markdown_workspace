@@ -39,6 +39,35 @@ import { LANDER_REACT_VERSION } from "./version.js";
 
 export { LANDER_REACT_VERSION };
 
+export interface BreadcrumbListItem {
+  label: string;
+  href?: string;
+}
+
+export interface BreadcrumbListProps {
+  items: BreadcrumbListItem[];
+  className?: string;
+  label?: string;
+  listClassName?: string;
+  itemClassName?: string;
+  linkClassName?: string;
+  currentClassName?: string;
+}
+
+export interface FaqPageProps {
+  items: FaqItem[];
+  heading?: string;
+  headingId?: string;
+  className?: string;
+  headingClassName?: string;
+  listClassName?: string;
+  itemClassName?: string;
+  questionClassName?: string;
+  answerContainerClassName?: string;
+  answerClassName?: string;
+  collapsible?: boolean;
+}
+
 export function JsonLd({ graph }: { graph: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />;
 }
@@ -311,20 +340,46 @@ export function MarkdownSectionView({ section }: { section: MarkdownSection }) {
   );
 }
 
-export function FaqBlock({ items }: { items: FaqItem[] }) {
+export function FaqPage({
+  items,
+  heading = "Frequently Asked Questions",
+  headingId = "faq-heading",
+  className = "lander-page__section",
+  headingClassName,
+  listClassName = "lander-page__grid",
+  itemClassName = "lander-page__card",
+  questionClassName,
+  answerContainerClassName,
+  answerClassName,
+  collapsible = false,
+}: FaqPageProps) {
+  if (!items.length) return null;
   return (
-    <section className="lander-page__section">
-      <h2>Frequently Asked Questions</h2>
-      <div className="lander-page__grid">
-        {items.map((item) => (
-          <article className="lander-page__card" key={item.question}>
-            <h3>{item.question}</h3>
-            <p>{item.answer}</p>
+    <section className={className} aria-labelledby={headingId}>
+      <h2 id={headingId} className={headingClassName}>{heading}</h2>
+      <div className={listClassName}>
+        {items.map((item) => collapsible ? (
+          <details className={itemClassName} key={item.question}>
+            <summary className={questionClassName}>{item.question}</summary>
+            <div className={answerContainerClassName}>
+              <p className={answerClassName}>{item.answer}</p>
+            </div>
+          </details>
+        ) : (
+          <article className={itemClassName} key={item.question}>
+            <h3 className={questionClassName}>{item.question}</h3>
+            <div className={answerContainerClassName}>
+              <p className={answerClassName}>{item.answer}</p>
+            </div>
           </article>
         ))}
       </div>
     </section>
   );
+}
+
+export function FaqBlock({ items }: { items: FaqItem[] }) {
+  return <FaqPage items={items} />;
 }
 
 export function ComparisonMatrix({ section }: { section: ComparisonSection }) {
@@ -429,17 +484,55 @@ export function SectionRenderer({ section }: { section: SectionSpec }) {
   }
 }
 
-export function Breadcrumbs({ page }: { page: CompiledPage }) {
+export function BreadcrumbList({
+  items,
+  className = "lander-page__muted",
+  label = "Breadcrumb",
+  listClassName,
+  itemClassName,
+  linkClassName,
+  currentClassName,
+}: BreadcrumbListProps) {
+  if (!items.length) return null;
   return (
-    <nav aria-label="Breadcrumb" className="lander-page__muted">
-      {page.breadcrumbs.map((item, index) => (
-        <React.Fragment key={`${item.href}-${item.label}`}>
-          {index > 0 ? " / " : null}
-          <a href={item.href}>{item.label}</a>
-        </React.Fragment>
-      ))}
+    <nav aria-label={label} className={className}>
+      {listClassName ? (
+        <ol className={listClassName}>
+          {items.map((item, index) => {
+            const isLast = index === items.length - 1;
+            return (
+              <li key={`${item.href ?? item.label}-${index}`} className={itemClassName}>
+                {item.href && !isLast ? (
+                  <a href={item.href} className={linkClassName}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <span className={currentClassName}>{item.label}</span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        items.map((item, index) => (
+          <React.Fragment key={`${item.href ?? item.label}-${index}`}>
+            {index > 0 ? " / " : null}
+            {item.href && index !== items.length - 1 ? (
+              <a href={item.href} className={linkClassName}>
+                {item.label}
+              </a>
+            ) : (
+              <span className={currentClassName}>{item.label}</span>
+            )}
+          </React.Fragment>
+        ))
+      )}
     </nav>
   );
+}
+
+export function Breadcrumbs({ page }: { page: CompiledPage }) {
+  return <BreadcrumbList items={page.breadcrumbs} />;
 }
 
 export function PageShell({ children }: { children: React.ReactNode }) {
@@ -460,7 +553,11 @@ export function LanderPage({ site, page }: { site: CompiledLanderSite; page: Com
           </header>
         ) : null}
       </div>
-      {page.sections.map((section) => <SectionRenderer key={section.id} section={section} />)}
+      {page.sections.map((section) => (
+        <React.Fragment key={section.id}>
+          <SectionRenderer section={section} />
+        </React.Fragment>
+      ))}
       {page.faq?.length ? <FaqBlock items={page.faq} /> : null}
     </PageShell>
   );

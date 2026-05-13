@@ -6498,7 +6498,12 @@
         "clm:cross-cutting"
       ],
       "test_ids": [
-        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs"
+        "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-xml-parse",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ],
       "requires": []
     },
@@ -8207,7 +8212,9 @@
         "clm:repo-certifiability-p1-current-partials"
       ],
       "test_ids": [
-        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ],
       "requires": []
     },
@@ -12600,6 +12607,90 @@
       "evidence_ids": [
         "evd:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
       ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-sitemap-xml-parse",
+      "title": "MdWrk sitemap XML parse validation",
+      "status": "passing",
+      "kind": "static-artifact",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "feature_ids": [
+        "feat:lander-seo-sitemap-protocol"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-xml-parse"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality",
+      "title": "MdWrk sitemap URL loc cardinality validation",
+      "status": "passing",
+      "kind": "static-artifact",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "feature_ids": [
+        "feat:lander-seo-sitemap-protocol"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage",
+      "title": "MdWrk sitemap indexed canonical coverage validation",
+      "status": "passing",
+      "kind": "static-artifact",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "feature_ids": [
+        "feat:lander-seo-sitemap-protocol"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+      "title": "MdWrk sitemap alternate canonical target validation",
+      "status": "passing",
+      "kind": "static-artifact",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "feature_ids": [
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-international-sitemap-alternates"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:lander-international-seo"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets"
+      ]
+    },
+    {
+      "id": "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene",
+      "title": "MdWrk sitemap canonical hygiene validation",
+      "status": "passing",
+      "kind": "static-artifact",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "feature_ids": [
+        "feat:lander-seo-sitemap-protocol",
+        "feat:lander-international-sitemap-alternates"
+      ],
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:lander-international-seo"
+      ],
+      "evidence_ids": [
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
+      ]
     }
   ],
   "claims": [
@@ -13514,10 +13605,14 @@
         "feat:bcp47-language-metadata-normalization"
       ],
       "test_ids": [
-        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+        "tst:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ],
       "evidence_ids": [
-        "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs"
+        "evd:apps-mdwrkcom-scripts-validate-international-seo.mjs",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ]
     },
     {
@@ -13939,10 +14034,20 @@
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-discoverability-artifacts.mjs",
         "tst:apps-mdwrkcom-scripts-validate-aeo-content-parity.mjs",
-        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs"
+        "tst:apps-mdwrkcom-scripts-validate-ai-crawler-policy.mjs",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-xml-parse",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ],
       "evidence_ids": [
-        "evd:lander-seo-aeo-aieo-discovery-ci"
+        "evd:lander-seo-aeo-aieo-discovery-ci",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-xml-parse",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+        "evd:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ]
     },
     {
@@ -16002,6 +16107,78 @@
       ],
       "test_ids": [
         "tst:apps-mdwrkcom-scripts-validate-static-first-paint-theme.mjs"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-sitemap-xml-parse",
+      "title": "MdWrk sitemap XML parse validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-xml-parse"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality",
+      "title": "MdWrk sitemap URL loc cardinality validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-url-loc-cardinality"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage",
+      "title": "MdWrk sitemap indexed canonical coverage validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-indexed-canonical-coverage"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets",
+      "title": "MdWrk sitemap alternate canonical target validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-alternate-canonical-targets"
+      ]
+    },
+    {
+      "id": "evd:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene",
+      "title": "MdWrk sitemap canonical hygiene validation evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T0",
+      "path": "apps/mdwrkcom/scripts/validate-sitemap-xml.mjs",
+      "claim_ids": [
+        "clm:lander-seo-aeo-aieo-discovery",
+        "clm:lander-international-seo"
+      ],
+      "test_ids": [
+        "tst:apps-mdwrkcom-scripts-validate-sitemap-canonical-hygiene"
       ]
     }
   ],

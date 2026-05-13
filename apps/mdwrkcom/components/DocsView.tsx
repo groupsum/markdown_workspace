@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
+import { BreadcrumbList } from '@mdwrk/lander-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { docs, docSections, docsBySlug } from '../data/docs';
 import { extractHeadings } from '../utils/markdownParser';
@@ -17,7 +18,6 @@ import { FeaturedImage } from './FeaturedImage';
 import { Book } from 'lucide-react';
 import { SectionMenu, type SectionMenuItem } from './SectionMenu';
 import { TableOfContents, type TableOfContentsItem } from './TableOfContents';
-import { Breadcrumbs } from './Breadcrumbs';
 
 const normalizeTitle = (value: string) =>
   value
@@ -208,13 +208,19 @@ export const DocsView: React.FC = () => {
             <div className="lander-content-card docs-content-card">
               {currentDoc && (
                 <header className="docs-header">
-                  <Breadcrumbs
+                  <BreadcrumbList
                     items={[
                       { label: 'MdWrk', href: '/' },
                       { label: 'Docs', href: '/docs/' },
                       { label: currentDoc.section, href: currentPath === '/docs/' ? undefined : '/docs/' },
                       { label: currentDoc.title },
                     ].filter((item, index, items) => index === 0 || item.label !== items[index - 1]?.label)}
+                    className="lander-breadcrumbs"
+                    label="Breadcrumbs"
+                    listClassName="lander-breadcrumbs-list"
+                    itemClassName="lander-breadcrumbs-item"
+                    linkClassName="lander-breadcrumbs-link"
+                    currentClassName="lander-breadcrumbs-current"
                   />
                   <h1 className="docs-title">
                     {currentDoc.title}
