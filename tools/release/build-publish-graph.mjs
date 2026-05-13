@@ -1,6 +1,10 @@
 import { isCliEntry, loadWorkspacePackages } from '../lib/workspace.mjs';
 
 const INTERNAL_PACKAGE_PREFIX = '@mdwrk/';
+const EXCLUDED_PUBLISH_WORKSPACE_DIRS = new Set([
+  'apps/mdwrkcom',
+  'packages/content/mdwrkcom-content-pack',
+]);
 
 export function isPublishGraphTarget(workspacePackage) {
   if (!workspacePackage.publishable) {
@@ -9,7 +13,7 @@ export function isPublishGraphTarget(workspacePackage) {
   if (workspacePackage.category === 'example') {
     return false;
   }
-  if (workspacePackage.relativeDir === 'apps/mdwrkcom') {
+  if (EXCLUDED_PUBLISH_WORKSPACE_DIRS.has(workspacePackage.relativeDir)) {
     return false;
   }
   return true;

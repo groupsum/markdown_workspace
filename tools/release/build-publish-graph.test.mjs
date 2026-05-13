@@ -45,8 +45,10 @@ test('detects cycles and missing internal package dependencies', () => {
   ]);
 });
 
-test('default publish target predicate excludes examples and private packages', () => {
+test('default publish target predicate excludes examples, private packages, mdwrkcom, and mdwrkcom content pack', () => {
   assert.equal(isPublishGraphTarget(workspace('@mdwrk/extension', 'packages/extensions/extension')), true);
   assert.equal(isPublishGraphTarget(workspace('@mdwrk/example', 'examples/example-renderer-basic')), false);
   assert.equal(isPublishGraphTarget(workspace('@mdwrk/private', 'packages/extensions/private', { private: true })), false);
+  assert.equal(isPublishGraphTarget(workspace('@mdwrk/mdwrkcom', 'apps/mdwrkcom')), false);
+  assert.equal(isPublishGraphTarget(workspace('@mdwrk/mdwrkcom-content-pack', 'packages/content/mdwrkcom-content-pack')), false);
 });

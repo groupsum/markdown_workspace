@@ -19,7 +19,10 @@ function shouldPack(workspacePackage) {
   if (workspacePackage.category === 'example') {
     return false;
   }
-  if (workspacePackage.relativeDir === 'apps/mdwrkcom') {
+  if (
+    workspacePackage.relativeDir === 'apps/mdwrkcom'
+    || workspacePackage.relativeDir === 'packages/content/mdwrkcom-content-pack'
+  ) {
     return false;
   }
   return true;
