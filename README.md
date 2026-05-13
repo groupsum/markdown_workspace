@@ -1,83 +1,56 @@
 <div align="center">
-
 # MdWrk
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/README.md)
+**Markdown workspace platform**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/README.md)
 [![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
-
-[![CI](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/ci.yml?branch=master&label=CI)](./.github/workflows/ci.yml)
-[![Conformance](https://img.shields.io/github/actions/workflow/status/groupsum/markdown_workspace/conformance.yml?branch=master&label=Conformance)](./.github/workflows/conformance.yml)
-[![Website](https://img.shields.io/badge/website-mdwrk.com-0f766e)](https://mdwrk.com)
-[![Node](https://img.shields.io/badge/node-20.x-339933?logo=node.js&logoColor=white)](./package.json)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
-[![Repo Specs](https://img.shields.io/badge/specs-ssot%20governed-6f42c1)](./.ssot/specs/SPEC-2001-specs-index.yaml)
-
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 </div>
 
-MdWrk is a multi-package workspace for the client, native application shells, lander, reusable markdown packages, extension contracts, first-party extension packages, third-party extension distribution tooling, and repository operations.
+MdWrk is a multi-package workspace for markdown authoring, rendering, in-place editing, extension runtime delivery, lander publishing, and repository governance.
 
-Retained client-version delivery and PWA version-state behavior are documented in [`docs/client-version-delivery.md`](./docs/client-version-delivery.md).
+## Why
+The repo is organized like the strongest public package READMEs: start with the product promise, show how to install and run it quickly, then make the package graph and docs easy to navigate. This README is the front door for the repo, not just a file inventory.
 
-Canonical project URLs:
+## What
+- Application surfaces for the MdWrk client, desktop shell, and public marketing site.
+- Reusable renderer, editor, shared, contract, extension, lander, and content packages under the `@mdwrk` scope.
+- Governed documentation, SSOT specs, conformance scripts, release tooling, and generated evidence lanes.
+- Example apps that validate public package consumption outside the first-party apps.
 
-- GitHub repository: `https://github.com/groupsum/markdown_workspace`
-- Package registry: `https://www.npmjs.com/org/mdwrk`
-
-## Table of Contents
-- [Repository Overview](#repository-overview)
-- [Repository Structure](#repository-structure)
-- [CI and Governance Conformance](#ci-and-governance-conformance)
-- [Documentation Pointers](#documentation-pointers)
-- [Community and Governance Files](#community-and-governance-files)
-- [License](#license)
-
-## Repository Overview
-This repository contains application shells, package workspaces, extension runtime and extension distribution tooling, conformance gates, and release automation.
-
-The native shell layer deploys the client bundle as:
-
-- Electron on Windows, macOS, and Linux
-- Capacitor on Android
-
-## Repository Structure
-- `apps/` — deployable applications (`client`, `lander`)
-- `packages/` — contracts, renderer, editor, shared, and extension packages
-- `examples/` — runnable examples for editor/renderer integration
-- `docs/` — architecture, ADRs, conformance, current-state, and operations documentation
-- `.ssot/specs/` — canonical repository specifications maintained through the SSOT registry
-- `tools/` — CI, conformance, release, governance, and extension tooling
-- `artifacts/` — generated evidence and release artifacts
-
-## CI and Governance Conformance
-Governance checks are enforced by CI and local scripts:
-- tree validation
-- doc-pointer validation
-- root-clutter validation
-- generated-artifact protection validation
-- claim-language lint
-- WIP-notes validation
-- release-note validation
-
-Run locally:
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm run ci:governance
+npm install
+npm run build
 ```
 
-## Documentation Pointers
-- Workspace docs index: `docs/README.md`
-- Desktop shell reference: `docs/apps/desktop-shell-app.md`
-- Repository specs index: `.ssot/specs/SPEC-2001-specs-index.yaml`
-- Repository governance spec: `.ssot/specs/SPEC-2002-repository-governance.yaml`
-- Agents guidance: `AGENTS.md`
-- Contribution guide: `CONTRIBUTING.md`
-- Code of conduct: `CODE_OF_CONDUCT.md`
-- License text: `LICENSE`
+## Usage
+Use the workspace root when you want the full platform:
 
-## Community and Governance Files
-- `AGENTS.md` defines repository-specific operating constraints for automation agents.
-- `CONTRIBUTING.md` documents contributor workflow and required checks.
-- `CODE_OF_CONDUCT.md` defines behavior standards for participation.
+```bash
+npm run dev:client
+npm run dev:mdwrkcom
+npm run test
+npm run conformance
+```
 
-## License
-Licensed under the Apache License, Version 2.0. See `LICENSE`.
+Start from the package indexes below when you want one surface instead of the whole repo.
+
+## How
+- `apps/` contains deployable surfaces.
+- `packages/` contains reusable libraries grouped by family.
+- `docs/` contains architecture, conformance, and release guidance.
+- `tools/` contains the automation that keeps the repo reproducible and certifiable.
+- `examples/` proves the package API shape from an external-consumer perspective.
+
+## Related
+- [Apps](./apps/client/README.md) - client app entrypoint
+- [Desktop Shell](./apps/desktop/README.md) - Electron and Capacitor wrapper
+- [Public Site](./apps/mdwrkcom/README.md) - mdwrk.com app
+- [Packages Index](./packages/README.md) - all reusable package families
+- [Docs Index](./docs/README.md) - architecture, conformance, and operations
+- [Examples](./examples/README.md) - public package consumption examples
+- [Tooling](./tools/README.md) - CI, release, and governance scripts
+- [npm org](https://www.npmjs.com/org/mdwrk) - published package scope

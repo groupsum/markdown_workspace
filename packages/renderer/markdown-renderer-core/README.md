@@ -1,53 +1,39 @@
+<div align="center">
 # @mdwrk/markdown-renderer-core
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.renderer.markdown_renderer_core.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-core/README.md)
+**Headless markdown rendering core**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_renderer_markdown_renderer_core_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-core/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-renderer-core?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-renderer-core)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Portable Markdown parser/renderer core for MdWrk.
+This package provides self-contained markdown parsing, profile handling, heading extraction, HTML rendering, and full HTML document generation for MdWrk consumers.
 
-## Public responsibilities
+## Why
+Use it when you need markdown output without pulling in React.
 
-- CommonMark-oriented parsing and AST generation
-- default GFM rendering and optional-profile support
-- heading extraction and slug generation
-- HTML fragment rendering
-- HTML document serialization for export/print flows
-- raw HTML policy handling and empty-list normalization hooks
+## What
+- Synchronous and asynchronous markdown-to-HTML rendering helpers.
+- Heading extraction, slug generation, frontmatter helpers, and profile support.
+- HTML document generation for standalone output.
 
-## Typed public exports
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- root module: `@mdwrk/markdown-renderer-core`
-- `./types`
-- `./class-names`
-- `./slug`
-- `./frontmatter`
-- `./headings`
-- `./pipeline`
-- `./html`
-- `./engine`
-- `./version`
+```bash
+npm install @mdwrk/markdown-renderer-core
+```
 
-## Integration fixtures / examples
+## Usage
+```ts
+import { renderMarkdownToHtmlSync } from "@mdwrk/markdown-renderer-core";
 
-- reusable consumer: `examples/renderer-basic/`
-- client integration: `apps/client/tests/phase6-preview-export-policy.mjs`
-- GFM/default-profile smoke: package-local test lane
-- optional-profile smoke: package-local test lane
+const html = renderMarkdownToHtmlSync("# Hello\n\nMdWrk renderer core.", {
+  profile: "gfm-default",
+  htmlHandling: "escape",
+});
+```
 
-## Semver / compatibility
-
-- current version: `1.1.3`
-- package boundary: reusable parser/renderer core; must not depend on `apps/client/*`
-- compatibility notes are recorded through the repository current-state and checkpoint artifacts
-
-## Release evidence
-
-- typed exports in `package.json`
-- build/typecheck/test scripts in `package.json`
-- Phase checkpoint evidence in `artifacts/conformance/latest/`
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-markdown-renderer-core.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

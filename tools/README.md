@@ -1,16 +1,41 @@
-# Root operational tooling
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.tools.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/tools/README.md)
+<div align="center">
+# MdWrk Tooling
+**CI, release, conformance, and governance scripts**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.tools_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/tools/README.md)
 [![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../LICENSE)
+</div>
 
-This directory contains repository-level scripts used by MdWork CI/CD, release, conformance, extension artifact, and evidence workflows.
+This directory contains the scripts that build, validate, package, sign, and certify the MdWrk workspace.
 
-## Areas
-- `tools/lib/` — shared workspace/package helpers
-- `tools/ci/` — matrix generation and smoke evidence scripts
-- `tools/conformance/` — manifest, compatibility, boundary, export, and external-artifact validation plus conformance report generation
-- `tools/extensions/` — browser-installable extension artifact, signing, integrity, and trust-metadata generation
-- `tools/release/` — package pack evidence and release evidence generation
+## Why
+Strong engineering READMEs explain the operational surface clearly. This README makes it obvious where CI, release, extension, and governance automation live.
 
-## Phase 1 audit tooling
-- `tools/release/generate-phase1-release-train-audit.mjs` — revalidates the frozen Phase 1 release train against the actual workspace package graph and regenerates the machine-readable package release matrix plus audit artifact.
+## What
+- `tools/ci/` for build matrices, smoke lanes, and workflow helpers.
+- `tools/conformance/` for validation, evidence generation, and package-boundary checks.
+- `tools/extensions/` for installable extension bundle generation, signing, and verification.
+- `tools/release/` for packaging, publish support, and release evidence.
+- `tools/governance/` for tree, doc-pointer, and SSOT graph validation.
+
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
+
+```bash
+npm install
+```
+
+## Usage
+Run the main workspace lanes from the root package manifest.
+
+```bash
+npm run ci:governance
+npm run conformance
+npm run release:prepare
+```
+
+## Related
+- [Root README](../README.md) - repo overview
+- [Docs](../docs/README.md) - operations and conformance context
+- [Packages](../packages/README.md) - consumable library surfaces

@@ -1,46 +1,39 @@
+<div align="center">
 # @mdwrk/markdown-editor-react
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.editor.markdown_editor_react.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/editor/markdown-editor-react/README.md)
+**React source editor component**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_editor_markdown_editor_react_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/editor/markdown-editor-react/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-editor-react?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-editor-react)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-React bindings for the portable MdWrk source editor.
+This package provides the textarea-based MdWrk source editor component on top of the editor core primitives.
 
-## Public responsibilities
+## Why
+Use it when you need a React authoring surface with built-in commands, line numbers, selection handling, and history.
 
-- `MarkdownSourceEditor` React component
-- controlled and uncontrolled editor modes
-- keyboard shortcut and command wiring
-- line-number gutter support
-- theme bridge/style helpers
-- stylesheet entry for package consumers
+## What
+- A `MarkdownSourceEditor` React component.
+- Theme-style helpers and public editor types.
+- Re-exported editor-core primitives for convenience.
 
-## Typed public exports
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- root module: `@mdwrk/markdown-editor-react`
-- `./types`
-- `./theme`
-- `./version`
-- `./styles/default.css`
+```bash
+npm install @mdwrk/markdown-editor-react @mdwrk/markdown-editor-core
+```
 
-## Integration fixtures / examples
+## Usage
+```tsx
+import { MarkdownSourceEditor } from "@mdwrk/markdown-editor-react";
+import "@mdwrk/markdown-editor-react/styles/default.css";
 
-- reusable consumer: `examples/editor-basic/`
-- client integration: Phase 5 authoring checkpoint
-- line-number + task/list example coverage in the editor example app
+export function Editor() {
+  return <MarkdownSourceEditor defaultValue={"# Draft\n\nStart typing..."} />;
+}
+```
 
-## Semver / compatibility
-
-- current version: `1.1.3`
-- depends on `@mdwrk/markdown-editor-core` public exports rather than private workspace editor wiring
-
-## Release evidence
-
-- typed exports in `package.json`
-- build/typecheck/test scripts in `package.json`
-- checkpoint evidence in `artifacts/conformance/latest/`
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-markdown-editor-react.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

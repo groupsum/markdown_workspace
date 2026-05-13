@@ -1,17 +1,37 @@
-# mdwrk/icons
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.icons.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/icons/README.md)
+<div align="center">
+# @mdwrk/icons
+**Workspace icon catalog**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_icons_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/icons/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Ficons?label=downloads)](https://www.npmjs.com/package/@mdwrk/icons)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Shared icon identifiers and icon metadata for MdWrk applications and packages.
+This package provides stable icon identifiers and metadata for MdWrk applications and packages.
 
-This package does not force a rendering library. Instead it provides a stable icon identifier and metadata catalog so applications and reusable packages can render icons with Lucide, SVG assets, or another adapter while keeping semantic IDs stable.
+## Why
+Use it when you want icon references to stay semantic and package-safe instead of scattering raw icon names through the codebase.
 
-## Example
+## What
+- A curated workspace icon id list.
+- Icon metadata that maps semantic ids to Lucide names and categories.
+- Shared icon definitions for apps, extensions, and docs-friendly catalogs.
 
-```ts
-import { getWorkspaceIconDefinition } from "@mdwrk/icons";
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-const icon = getWorkspaceIconDefinition("extension.manager");
-// => { id: "extension.manager", lucideName: "Puzzle", ... }
+```bash
+npm install @mdwrk/icons
 ```
+
+## Usage
+```ts
+import { WORKSPACE_ICON_CATALOG, getWorkspaceIconDefinition } from "@mdwrk/icons";
+
+const icon = getWorkspaceIconDefinition("workspace.file");
+console.log(icon?.lucideName, WORKSPACE_ICON_CATALOG.length);
+```
+
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

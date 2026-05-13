@@ -1,70 +1,40 @@
-# mdwrk/theme-contract
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.contracts.theme_contract.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/theme-contract/README.md)
+<div align="center">
+# @mdwrk/theme-contract
+**Portable MdWrk theme compatibility surface**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_contracts_theme_contract_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/theme-contract/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Ftheme-contract?label=downloads)](https://www.npmjs.com/package/@mdwrk/theme-contract)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Portable token, class-name, and bridge-variable contract for MdWrk themes, renderers, editors, and extensions.
+This package defines the stable MdWrk theme token, class-name, bridge, and preset compatibility surface used across apps, renderers, editors, and extensions.
 
-## Package purpose
+## Why
+Use it when you need themes to remain compatible across multiple MdWrk surfaces instead of drifting app by app.
 
-This package defines the shared styling surface that reusable packages and extensions must target.
+## What
+- Theme preset and draft shapes.
+- Stable token and class-name contracts.
+- Bridge metadata used to map token values into target surfaces.
 
-## What it exports
-
-- theme contract version
-- canonical token names and definitions
-- canonical class names and definitions
-- canonical renderer/editor bridge-variable definitions
-- compatibility metadata
-- theme preset and draft shapes
-
-## Derivation source
-
-The initial contract is derived from:
-- `apps/client/styles/base/root.css`
-- `apps/client/styles/base/markdown.css`
-- the extracted editor package surface
-
-## Key contract surfaces
-
-### Tokens
-Examples:
-- `bg-panel`
-- `fg-primary`
-- `accent`
-- `font-mono`
-- `editor-padding`
-- `editor-line-height`
-- `editor-line-rhythm`
-- `line-number-gutter-width`
-- `markdown-line-height`
-- `markdown-heading-line-height`
-- `mobile-rail-expanded-width`
-- `mobile-expandable-rail-width`
-
-### Stable renderer classes
-Examples:
-- `markdown-body`
-- `md-table`
-- `md-code-block`
-
-### Stable editor classes
-Examples:
-- `mw-editor`
-- `mw-editor-gutter`
-- `mw-editor-textarea`
-
-### Bridge variables
-Examples:
-- renderer: `--mw-bg-surface`, `--mw-fg-primary`, `--mw-code-bg`, `--mw-line-height`, `--mw-heading-line-height`
-- editor: `--mwe-bg-surface`, `--mwe-fg-primary`, `--mwe-editor-padding`, `--mwe-line-height`, `--mwe-gutter-width`
-
-## Build
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm run build -w @mdwrk/theme-contract
+npm install @mdwrk/theme-contract
 ```
 
-## Publishability
+## Usage
+```ts
+import { createEmptyThemePreset } from "@mdwrk/theme-contract";
 
-This package is structured as a standalone publishable npm package with typed exports. Build output is generated under `dist/` and is intentionally not committed.
+const preset = createEmptyThemePreset("my-theme", "My Theme");
+
+preset.tokens = {
+  "color.canvas": "#111111",
+};
+```
+
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

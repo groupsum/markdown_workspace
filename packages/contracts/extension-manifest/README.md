@@ -1,50 +1,50 @@
-# mdwrk/extension-manifest
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.contracts.extension_manifest.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/extension-manifest/README.md)
+<div align="center">
+# @mdwrk/extension-manifest
+**Extension metadata and compatibility contract**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_contracts_extension_manifest_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/extension-manifest/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-manifest?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-manifest)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Normative manifest, catalog, signature, settings, capability, i18n, icon, contribution, distribution, integrity, support, and compatibility contracts for MdWrk extensions.
+This package defines the canonical MdWrk extension manifest shape, including capabilities, contributions, settings, integrity data, and compatibility declarations.
 
-## Package purpose
+## Why
+Use it when you need to describe an extension package in a durable, host-agnostic way.
 
-This package is the authoring source of truth for extension metadata and manifest structure.
+## What
+- Manifest structure for bundled and external extensions.
+- Capability, contribution, settings, i18n, support, integrity, and distribution types.
+- The package boundary consumed by extension packages, runtimes, and host validators.
 
-## What it exports
-
-- manifest version constants
-- extension manifest interface
-- capabilities
-- advisory capability preset descriptors and composition helpers
-- contribution descriptors
-- settings schema types
-- i18n label types
-- icon descriptors
-- compatibility declarations
-- distribution and integrity metadata
-- support declaration types
-- external catalog document types
-- signed-manifest and trusted-signer types
-
-## Intended consumers
-
-- extension packages
-- extension runtime packages
-- manifest validators
-- catalog/signing tooling
-- documentation and schema tooling
-
-## Capability Presets
-
-`capabilities` remain the runtime permission boundary. Presets are authoring and testing shortcuts only: they recommend API capabilities, workspace-module shape profiles, and contribution kinds, but they do not grant permissions and do not block activation.
-
-Use `capabilityPresetIds` on a manifest or workspace module to communicate the intended profile set. Use `composeCapabilityPresetSet`, `recommendCapabilityPresets`, and `evaluateCapabilityPresetSet` in tests/docs to check advisory gaps without changing runtime security policy.
-
-## Build
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm run build -w @mdwrk/extension-manifest
+npm install @mdwrk/extension-manifest
 ```
 
-## Publishability
+## Usage
+```ts
+import type { ExtensionManifest } from "@mdwrk/extension-manifest";
 
-This package is structured as a standalone publishable npm package with typed exports. Build output is generated under `dist/` and is intentionally not committed.
+const manifest: ExtensionManifest = {
+  manifestVersion: 1,
+  id: "example.extension",
+  packageName: "@scope/example-extension",
+  version: "1.0.0",
+  displayName: { defaultMessage: "Example Extension" },
+  description: { defaultMessage: "Demonstrates the manifest contract." },
+  kind: "bundled",
+  icon: { kind: "lucide", name: "Plug" },
+  enabledByDefault: true,
+  capabilities: [],
+  compatibility: { hostApi: "*", runtime: "*", themeContract: "*" },
+  entry: { module: "./index.js" },
+  contributions: {},
+};
+```
+
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

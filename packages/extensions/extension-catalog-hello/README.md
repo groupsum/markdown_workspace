@@ -1,54 +1,36 @@
+<div align="center">
 # @mdwrk/extension-catalog-hello
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_catalog_hello.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-catalog-hello/README.md)
+**External catalog sample extension**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_catalog_hello_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-catalog-hello/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-catalog-hello?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-catalog-hello)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Sample third-party external extension package used to validate the signed catalog installation path.
+This package is a sample external extension used to validate catalog discovery, installation, trust, and runtime activation.
 
-## Manifest and compatibility
+## Why
+Use it when you need a small, auditable example of the external-extension path rather than a large first-party extension.
 
-- manifest export: `./manifest`
-- manifest kind: external
-- compatibility declarations: host API, runtime, app, and theme contract ranges are declared in `src/manifest.ts`
-- distribution mode: external signed catalog artifact
+## What
+- A tiny extension that registers a view and action-rail item.
+- An installable external-package example for trust and catalog flow.
+- A simple reference implementation for downstream extension authors.
 
-## Capabilities
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-This sample demonstrates a deliberately small capability footprint:
+```bash
+npm install @mdwrk/extension-catalog-hello
+```
 
-- `view.register`
-- `actionRail.register`
-- `notification.publish`
-- `settings.read`
+## Usage
+```ts
+import extensionCatalogHello from "@mdwrk/extension-catalog-hello";
 
-## Settings schema
+console.log(extensionCatalogHello.manifest.id);
+```
 
-The sample manifest includes a minimal settings schema with a single `greeting` string field.
-That keeps the package suitable as a catalog/install/activation fixture without dragging in extra runtime surface area.
-
-## i18n readiness
-
-The manifest uses `I18nLabel` descriptors for display name, description, view title, and action-rail title.
-The shipped catalog sample keeps `en` as the only bundled locale, which is intentional for the minimal external-fixture path.
-
-## Lifecycle and host/runtime tests
-
-- `tests/run-smoke.mjs` validates the manifest export and extension entry shape
-- `tests/integration.mjs` activates the extension against a mock host/runtime context and verifies view registration, action-rail registration, and notification behavior
-
-## Installation / configuration guidance
-
-This package is **not bundled** into `apps/client`.
-It is published as a source package and transformed by the CI catalog/signing pipeline into an external browser-installable artifact.
-Use it when validating:
-
-- external catalog metadata generation
-- signed-manifest verification
-- install/enable/activate flows in the runtime
-- minimal schema-backed settings behavior for external extensions
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-extension-catalog-hello.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

@@ -1,20 +1,39 @@
-# mdwrk/testing
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.testing.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/testing/README.md)
+<div align="center">
+# @mdwrk/testing
+**Shared test utilities**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_testing_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/testing/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Ftesting?label=downloads)](https://www.npmjs.com/package/@mdwrk/testing)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Shared browser and timing test helpers for MdWrk packages.
+This package provides lightweight browser and timing helpers reused by MdWrk package tests.
 
-## Exports
+## Why
+Use it when you need small shared test utilities without dragging app-specific test setup into library packages.
 
-- `mdwrk/testing` — browser and timing helpers
-- `mdwrk/testing/browser` — memory storage and browser stubs
-- `mdwrk/testing/timing` — async timing helpers
-- `mdwrk/testing/vitest-setup` — installs common jsdom-friendly browser stubs
+## What
+- In-memory storage helpers.
+- A `matchMedia` stub for browser-like test environments.
+- Timing helpers shared across package test suites.
 
-## Example
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-```ts
-import { createMemoryStorage } from "@mdwrk/testing/browser";
-import { flushMicrotasks } from "@mdwrk/testing/timing";
+```bash
+npm install -D @mdwrk/testing
 ```
+
+## Usage
+```ts
+import { createMemoryStorage, installMatchMediaStub } from "@mdwrk/testing";
+
+const storage = createMemoryStorage({ draft: "# MdWrk" });
+const restore = installMatchMediaStub(false);
+
+restore();
+```
+
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

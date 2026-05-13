@@ -1,62 +1,36 @@
-# mdwrk/ui-tokens
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.ui_tokens.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/ui-tokens/README.md)
+<div align="center">
+# @mdwrk/ui-tokens
+**Shared token defaults and class helpers**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_ui_tokens_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/ui-tokens/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fui-tokens?label=downloads)](https://www.npmjs.com/package/@mdwrk/ui-tokens)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Shared CSS tokens, root variables, markdown/editor class names, and theme mapping helpers for MdWrk applications and packages.
+This package exposes the shared MdWrk token defaults, names, and CSS custom-property helpers used across the workspace.
 
-## What this package contains
+## Why
+Use it when you need token values and names directly without importing the full theme authoring surface.
 
-- the reusable root CSS variable contract
-- the reusable markdown rendering stylesheet
-- token and class-name re-exports aligned to `mdwrk/theme-contract`
-- theme CSS generation helpers for first-party and third-party consumers
-- renderer/editor bridge variable helpers
-- the Phase 9 rhythm/layout token surfaces used by editor gutters, preview heading rhythm, and responsive shell width
+## What
+- Stable token names and defaults.
+- CSS custom-property lists for the shared UI contract.
+- Theme-facing aliases built on top of the theme contract package.
 
-## CSS entry points
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- `mdwrk/ui-tokens/styles/index.css`
-- `mdwrk/ui-tokens/styles/root.css`
-- `mdwrk/ui-tokens/styles/markdown.css`
-
-## TypeScript entry points
-
-- `mdwrk/ui-tokens`
-- `mdwrk/ui-tokens/tokens`
-- `mdwrk/ui-tokens/classes`
-- `mdwrk/ui-tokens/theme-map`
-
-## Example
-
-```ts
-import "@mdwrk/ui-tokens/styles/index.css";
-import {
-  renderThemeCssVariables,
-  renderThemeBridgeCssVariables,
-} from "@mdwrk/ui-tokens/theme-map";
-
-const hostCss = renderThemeCssVariables(
-  {
-    "bg-app": "#111111",
-    accent: "#7c3aed",
-  },
-  { selector: ".my-theme" },
-);
-
-const rendererCss = renderThemeBridgeCssVariables(
-  "renderer",
-  {
-    "bg-panel": "#111111",
-    "fg-primary": "#fafafa",
-    accent: "#7c3aed",
-  },
-  { selector: ".my-theme .markdown-renderer" },
-);
+```bash
+npm install @mdwrk/ui-tokens
 ```
 
-## Contract alignment
+## Usage
+```ts
+import { MARKDOWN_WORKSPACE_TOKEN_DEFAULTS } from "@mdwrk/ui-tokens";
 
-The exported token names, theme classes, and bridge definitions align with `mdwrk/theme-contract`. That keeps the implemented styling primitives aligned with the normative contract package.
+console.log(MARKDOWN_WORKSPACE_TOKEN_DEFAULTS["color.canvas"]);
+```
 
-Phase 9 expands that alignment to include editor/preview rhythm tokens and the mobile-width token surfaces consumed by the active client responsive shell.
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

@@ -1,49 +1,40 @@
+<div align="center">
 # @mdwrk/markdown-editor-core
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.editor.markdown_editor_core.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/editor/markdown-editor-core/README.md)
+**Headless markdown editing primitives**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_editor_markdown_editor_core_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/editor/markdown-editor-core/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-editor-core?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-editor-core)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Portable source-mode Markdown editor primitives for MdWrk.
+This package exposes the command, selection, transform, and history logic behind the MdWrk editing experience.
 
-## Public responsibilities
+## Why
+Use it when you need markdown editing semantics without committing to a specific UI implementation.
 
-- selection transforms
-- formatting commands
-- list/task insertion helpers
-- indent/outdent helpers
-- history state and undo/redo primitives
-- editor class-name contract
+## What
+- Built-in markdown editing commands.
+- Selection and transform helpers.
+- Undo and redo history state management.
 
-## Typed public exports
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- root module: `@mdwrk/markdown-editor-core`
-- `./types`
-- `./class-names`
-- `./selection`
-- `./transforms`
-- `./commands`
-- `./history`
-- `./version`
+```bash
+npm install @mdwrk/markdown-editor-core
+```
 
-## Integration fixtures / examples
+## Usage
+```ts
+import { applyBuiltinMarkdownCommand, createSelection } from "@mdwrk/markdown-editor-core";
 
-- reusable consumer: `examples/editor-basic/`
-- client integration: Phase 5 authoring checkpoint
-- list/task/continuation behavior demonstrated in the editor example and package-level tests
+const result = applyBuiltinMarkdownCommand(
+  "bold",
+  "hello",
+  createSelection(0, 5),
+);
+```
 
-## Semver / compatibility
-
-- current version: `1.1.2`
-- package boundary: editor logic only; no React or app-shell dependency
-
-## Release evidence
-
-- typed exports in `package.json`
-- build/typecheck/test scripts in `package.json`
-- checkpoint evidence in `artifacts/conformance/latest/`
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-markdown-editor-core.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

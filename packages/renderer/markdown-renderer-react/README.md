@@ -1,47 +1,39 @@
+<div align="center">
 # @mdwrk/markdown-renderer-react
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.renderer.markdown_renderer_react.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-react/README.md)
+**React markdown renderer component**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_renderer_markdown_renderer_react_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-react/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-renderer-react?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-renderer-react)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-React bindings for the portable MdWrk renderer core.
+This package wraps the MdWrk renderer core in a React component with theme styles and link-interaction hooks.
 
-## Public responsibilities
+## Why
+Use it when you want markdown rendering as a React component instead of a headless HTML string pipeline.
 
-- `MarkdownRenderer` React component
-- renderer theme-style helpers
-- static HTML and HTML-document helpers
-- default stylesheet for package consumers
-- renderer-side bridge-variable mapping from shared theme tokens
+## What
+- A `MarkdownRenderer` React component.
+- Theme-style helpers for renderer output.
+- Link click interception and attribute injection hooks.
 
-## Typed public exports
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- root module: `@mdwrk/markdown-renderer-react`
-- `./types`
-- `./theme`
-- `./server`
-- `./version`
-- `./styles/default.css`
+```bash
+npm install @mdwrk/markdown-renderer-react @mdwrk/markdown-renderer-core
+```
 
-## Integration fixtures / examples
+## Usage
+```tsx
+import { MarkdownRenderer } from "@mdwrk/markdown-renderer-react";
+import "@mdwrk/markdown-renderer-react/styles/default.css";
 
-- reusable consumer: `examples/renderer-basic/`
-- client integration: `apps/client/tests/phase6-preview-export-policy.mjs`
-- theme/token parity evidence: Phase 9 checkpoint artifacts
+export function Preview() {
+  return <MarkdownRenderer markdown={"# Hello\n\nRendered with MdWrk."} />;
+}
+```
 
-## Semver / compatibility
-
-- current version: `1.1.3`
-- depends on the public renderer-core contract rather than app-private preview wiring
-- public consumers should use the exported theme/style helpers rather than private app theme code
-
-## Release evidence
-
-- typed exports in `package.json`
-- build/typecheck/test scripts in `package.json`
-- Phase checkpoint evidence in `artifacts/conformance/latest/`
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-markdown-renderer-react.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

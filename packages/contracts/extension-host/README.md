@@ -1,52 +1,38 @@
-# mdwrk/extension-host
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.contracts.extension_host.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/extension-host/README.md)
+<div align="center">
+# @mdwrk/extension-host
+**Host API surface for MdWrk extensions**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_contracts_extension_host_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/contracts/extension-host/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-host?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-host)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Stable host API, lifecycle, context, and registration contracts for MdWrk extensions.
+This package defines the host APIs that MdWrk extensions can use for commands, views, action rail items, settings, notifications, theme access, editor access, workspace access, i18n, diagnostics, and logging.
 
-## Package purpose
+## Why
+Use it when you are implementing an extension or a host and need a stable boundary between the two.
 
-This package is the extension-facing boundary for interacting with the host application.
+## What
+- Type contracts for extension lifecycle and registration.
+- Host APIs for editor, workspace, theme, views, settings, notifications, diagnostics, and logging.
+- Primitive interfaces shared by the runtime and bundled extensions.
 
-## What it exports
-
-- host API contracts
-- extension context contract
-- lifecycle contracts
-- primitive utility types
-- registration contracts for commands, views, components, settings sections, and action rail items
-- i18n catalog and locale-loader registration contracts
-- theme inspection, bridge, preview, and CSS export contracts
-
-## Authoring rule
-
-Extension packages must use this package rather than importing `apps/client/*` internals directly.
-
-## Important Phase 9 APIs
-
-### i18n
-Use:
-- `context.registerLocaleCatalog(...)`
-- `context.registerLocaleCatalogLoader(...)`
-- `host.i18n.ensureLocale()`
-- `host.i18n.format(...)`
-
-### theme
-Use:
-- `host.theme.getTokenMap()`
-- `host.theme.getThemeBridge(target)`
-- `host.theme.getThemeBridgeVariables(target)`
-- `host.theme.previewTheme(...)`
-- `host.theme.applyDraft()`
-- `host.theme.exportThemeCss(...)`
-
-## Build
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm run build -w @mdwrk/extension-host
+npm install @mdwrk/extension-host
 ```
 
-## Publishability
+## Usage
+```ts
+import type { ExtensionHost } from "@mdwrk/extension-host";
 
-This package is structured as a standalone publishable npm package with typed exports. Build output is generated under `dist/` and is intentionally not committed.
+export function boot(host: ExtensionHost) {
+  return host.commands.list();
+}
+```
+
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

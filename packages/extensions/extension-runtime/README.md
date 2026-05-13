@@ -1,59 +1,32 @@
+<div align="center">
 # @mdwrk/extension-runtime
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_runtime.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-runtime/README.md)
+**Runtime for MdWrk extensions**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_runtime_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-runtime/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-runtime?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-runtime)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Portable extension runtime for MdWrk hosts.
+This package loads, validates, activates, deactivates, catalogs, installs, and tracks MdWrk extensions against the host and contract baselines.
 
-## Runtime responsibilities
+## Why
+Use it when you are building an extension host or testing extension lifecycle behavior.
 
-- bundled extension registration
-- external catalog registration and loading
-- manifest validation and compatibility checks
-- persisted enabled/config/install state with deterministic namespaced keys
-- activation and deactivation lifecycle management
-- capability-scoped host wrappers
-- runtime diagnostics and state snapshots
-- signed-manifest verification and integrity checks
-- install / update / remove flows for external extensions
-- installed extension cache rehydration
+## What
+- Bundled and installed extension registration.
+- Compatibility checks against host, runtime, editor, renderer, and theme baselines.
+- Catalog loading, activation state, diagnostics, storage, and capability trimming.
 
-## Public API surface
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-The runtime exposes methods for:
+```bash
+npm install @mdwrk/extension-runtime @mdwrk/extension-host @mdwrk/extension-manifest
+```
 
-- registering bundled entries
-- registering or loading catalogs
-- listing available catalog entries
-- installing, updating, and removing external extensions
-- enabling/disabling and activating/deactivating extensions
-- reading configuration stores and runtime services
+## Usage
+Use this package inside a host implementation. Pair it with `@mdwrk/extension-host` and `@mdwrk/extension-manifest` for a complete extension boundary.
 
-## Compatibility declarations
-
-This package depends on the contract packages rather than app internals:
-
-- `@mdwrk/extension-host`
-- `@mdwrk/extension-manifest`
-- `@mdwrk/theme-contract`
-
-## Lifecycle and integration tests
-
-- `tests/runtime.test.ts` covers lifecycle, install/cache, compatibility, and state-management behavior
-- `tests/run-smoke.mjs` covers runtime exports and smoke-level integration
-- `tests/prepare-workspace-links.mjs` keeps workspace package links usable for package-local test execution
-
-## Install / host integration guidance
-
-Hosts should provide the runtime with:
-
-- a compliant host API implementation from `@mdwrk/extension-host`
-- a registration sink that maps runtime registrations onto host surfaces
-- a storage adapter for config/install state
-- trust/signing policy for external catalog flows
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-extension-runtime.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

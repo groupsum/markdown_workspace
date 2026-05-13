@@ -1,60 +1,32 @@
+<div align="center">
 # @mdwrk/extension-theme-studio
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_theme_studio.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-theme-studio/README.md)
+**Theme authoring extension**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_theme_studio_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-theme-studio/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-theme-studio?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-theme-studio)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-First-party Theme Studio extension package for MdWrk.
+This package provides the first-party theme authoring extension for token inspection, preview, apply/revert flow, and export helpers.
 
-## Manifest and compatibility
+## Why
+Use it when you want theme editing to live inside the extension system and remain aligned to the shared token contract.
 
-- manifest export: `./manifest`
-- bundled entry export: `./bundled`
-- compatibility declarations: host API, runtime, app, and theme contract ranges are declared in `src/manifest.ts`
-- lifecycle model: bundled first-party extension activated through `@mdwrk/extension-runtime`
+## What
+- Theme drafting and export helpers.
+- Bundled views, services, and settings for theme authoring.
+- A concrete consumer of the theme contract and shared token packages.
 
-## Capabilities
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- inspect formal theme tokens and stable class contracts
-- edit token drafts without importing client internals
-- preview renderer/editor bridge behavior against shared package contracts
-- apply or revert theme drafts through host theme APIs
-- export theme presets as JSON, CSS, and theme-package scaffold artifacts
-- register commands, a pane-first workspace view, an action-rail item, and settings-menu content
+```bash
+npm install @mdwrk/extension-theme-studio @mdwrk/theme-contract
+```
 
-## Settings schema
+## Usage
+Load it into a host that implements the MdWrk theme APIs and wants a first-party authoring panel.
 
-The package ships a settings schema covering:
-
-- preview behavior
-- export defaults
-- package scaffold metadata
-
-Source anchors:
-
-- `src/settings.ts`
-- `src/manifest.ts`
-
-## i18n readiness
-
-The package ships package-local locale catalogs and loader definitions:
-
-- `src/i18n.ts`
-- `src/locales/en.ts`
-- `src/locales/es.ts`
-
-All user-facing manifest/view/settings labels are `I18nLabel` descriptors.
-
-## Lifecycle and host/runtime integration tests
-
-- `tests/run-smoke.mjs` exercises manifest structure, settings resolution, class relationships, export generation, theme bridge previews, and service behavior against a mocked host/runtime context
-
-## Install / configuration guidance
-
-This package is intended for first-party bundling into `apps/client`.
-Use it when validating the portable theme/token contract, editor/renderer bridge behavior, and generated theme export artifacts.
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-extension-theme-studio.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

@@ -1,60 +1,32 @@
+<div align="center">
 # @mdwrk/extension-manager
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_manager.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-manager/README.md)
+**First-party extension operations console**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_manager_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-manager/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-manager?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-manager)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-First-party bundled operator console extension for MdWrk.
+This package provides the first-party bundled operator console for browsing, enabling, disabling, configuring, and diagnosing MdWrk extensions.
 
-## Manifest and compatibility
+## Why
+Use it when you want a concrete management surface on top of the runtime rather than only the headless runtime APIs.
 
-- manifest export: `./manifest`
-- bundled entry export: `./bundled`
-- compatibility declarations: host API, runtime, app, and theme contract ranges are declared in `src/manifest.ts`
-- lifecycle model: bundled first-party extension activated through `@mdwrk/extension-runtime`
+## What
+- A packaged first-party extension, not the core runtime itself.
+- Views and UI for extension inventory, state, and diagnostics.
+- A bundled entry surface consumed by the client host.
 
-## Capabilities
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-The extension manager visualizes extension runtime state and operator metadata, including:
+```bash
+npm install @mdwrk/extension-manager @mdwrk/extension-runtime
+```
 
-- bundled and installed extension inventory
-- enabled / disabled state
-- activation mode and activation status
-- compatibility state
-- granted and missing capabilities
-- runtime diagnostics and last-error state
-- schema-driven settings forms for extensions that declare `settingsSchema`
+## Usage
+Import this package into a host that already exposes the MdWrk extension runtime and host APIs.
 
-## Settings schema
-
-The package now contributes its own settings section and manifest-backed settings schema.
-Those settings cover manager-view defaults such as search, compatibility visibility, and diagnostics display preferences.
-
-Source anchors:
-
-- `src/manifest.ts`
-- `src/createExtensionManagerBundledEntry.tsx`
-
-## i18n readiness
-
-The package ships locale labels and locale loaders under:
-
-- `src/i18n.ts`
-- `src/locales/en.ts`
-- `src/locales/es.ts`
-
-All user-facing manifest/view/settings labels are `I18nLabel` descriptors.
-
-## Lifecycle and host/runtime integration tests
-
-- `tests/extension-manager.test.tsx` exercises the bundled entry, runtime wiring, and extension inventory/state rendering helpers
-
-## Install / configuration guidance
-
-This package is intended for first-party bundling into `apps/client`.
-Once active, it becomes the operator console for extension/runtime inventory, compatibility state, diagnostics, and settings visibility.
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-extension-manager.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

@@ -1,55 +1,42 @@
-# mdwrk/i18n
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.shared.i18n.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/i18n/README.md)
+<div align="center">
+# @mdwrk/i18n
+**Locale registry and message helpers**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_i18n_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/i18n/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fi18n?label=downloads)](https://www.npmjs.com/package/@mdwrk/i18n)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-Shared message descriptor, locale catalog, locale loader, and locale registry helpers for MdWrk packages.
+This package provides shared message descriptors, locale catalogs, loaders, and registry helpers for MdWrk packages and apps.
 
-Phase 10 also adds the shared core shell locale helpers used by the client app to restore the shipped core locales `en`, `es`, `fr`, `pt`, and `ur`.
+## Why
+Use it when you need a lightweight i18n layer shared across packages rather than app-specific localization code.
 
-## Core features
+## What
+- Locale registry creation and catalog registration.
+- Message descriptor normalization and formatting.
+- Helpers for package-level locale loading and fallback handling.
 
-- keyed message descriptors
-- locale registries with fallback resolution
-- namespaced catalog helpers for package-local message keys
-- locale loader definitions for lazy per-locale imports
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-## Example
-
-```ts
-import {
-  createLocaleRegistry,
-  createNamespacedLocaleCatalog,
-  loadLocaleCatalogs,
-} from "@mdwrk/i18n";
-
-const registry = createLocaleRegistry({ defaultLocale: "en", fallbackLocale: "en" });
-
-const catalogs = await loadLocaleCatalogs({
-  locale: "es-MX",
-  namespace: "core.extension-manager",
-  loaders: {
-    en: async () => ({ locale: "en", messages: { "view.title": "Extension Manager" } }),
-    es: async () => ({ locale: "es", messages: { "view.title": "Administrador de extensiones" } }),
-  },
-});
-
-for (const catalog of catalogs) {
-  registry.registerCatalog(catalog);
-}
-
-registry.setLocale("es-MX");
-registry.resolve({
-  key: "core.extension-manager.view.title",
-  defaultMessage: "Extension Manager",
-});
+```bash
+npm install @mdwrk/i18n
 ```
 
-## Core shell locale helpers
+## Usage
+```ts
+import { createLocaleRegistry } from "@mdwrk/i18n";
 
-This package now also exports:
+const registry = createLocaleRegistry({ defaultLocale: "en" });
+registry.registerCatalog({
+  locale: "en",
+  messages: { greeting: { defaultMessage: "Hello {name}" } },
+});
 
-- `CORE_SHELL_SUPPORTED_LOCALES`
-- `CORE_SHELL_LOCALE_LOADER_DEFINITION`
+registry.resolve({ key: "greeting", defaultMessage: "Hello {name}" }, { name: "MdWrk" });
+```
 
-These helpers are used by the client runtime to register the core shell locale inventory and to resolve locale fallbacks for the restored language selector surfaces.
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

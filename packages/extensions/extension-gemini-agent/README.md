@@ -1,62 +1,32 @@
+<div align="center">
 # @mdwrk/extension-gemini-agent
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.extensions.extension_gemini_agent.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-gemini-agent/README.md)
+**Gemini workflow extension**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_gemini_agent_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-gemini-agent/README.md)
 [![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-gemini-agent?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-gemini-agent)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-First-party Gemini workflow extension for MdWrk.
+This package provides the first-party Gemini workflow extension with conversation threads, Markdown preview, draft-based writeback, and a bundled operator view.
 
-## Manifest and compatibility
+## Why
+Use it when you need AI-assisted drafting as an extension surface instead of embedding it directly in the shell.
 
-- manifest export: `./manifest`
-- bundled entry export: `./bundled`
-- compatibility declarations: host API, runtime, app, theme contract, renderer, and editor ranges are declared in `src/manifest.ts`
-- lifecycle model: bundled first-party extension activated through `@mdwrk/extension-runtime`
+## What
+- Bundled Gemini agent views and services.
+- Settings, prompt, provider, and sidebar/view components.
+- A concrete example of a richer first-party MdWrk extension package.
 
-## Capabilities
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
-- reads the active markdown document
-- reads the current selection
-- registers commands, a modal view, and an action-rail entry
-- publishes notifications and diagnostics
-- reads and writes extension configuration
-- performs network fetches for Gemini API requests
-- supports opt-in editor writeback through explicit user commands only
+```bash
+npm install @mdwrk/extension-gemini-agent @mdwrk/extension-runtime
+```
 
-## Settings schema
+## Usage
+Register the package as a bundled extension in a host that exposes editor, workspace, and notification APIs.
 
-The package ships a real settings schema with sections for:
-
-- provider / endpoint / model / authentication
-- context attachment behavior
-- writeback control
-
-Source anchors:
-
-- `src/settings.ts`
-- `src/manifest.ts`
-
-## i18n readiness
-
-The package ships package-local locale catalogs and loader definitions:
-
-- `src/i18n.ts`
-- `src/locales/en.ts`
-- `src/locales/es.ts`
-
-All user-facing labels in the manifest and settings schema are `I18nLabel` descriptors.
-
-## Lifecycle and host/runtime integration tests
-
-- `tests/run-smoke.mjs` exercises manifest structure, prompt building, provider helpers, configuration defaults, and service behavior against a mocked host/runtime context
-
-## Install / configuration guidance
-
-This package is intended for first-party bundling into `apps/client`.
-Configuration is done through the shared settings surface after activation.
-Writeback remains opt-in and disabled by default.
-
-## API/reference docs
-
-See the generated reference page at:
-
-- `docs/reference/packages/mdwrk-extension-gemini-agent.md`
+## Related
+- [Packages index](../../README.md) - family and package navigation
+- [Root README](../../../README.md) - repo overview

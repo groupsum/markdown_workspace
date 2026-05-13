@@ -1,16 +1,45 @@
-# packages/
-
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/README.md)
+<div align="center">
+# MdWrk Packages
+**Reusable package catalog**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/README.md)
 [![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../LICENSE)
+</div>
 
-This directory contains the reusable MdWrk workspace packages.
+The `packages/` tree contains the reusable MdWrk libraries that power authoring, rendering, theming, extensions, lander delivery, and shared primitives.
 
-## Package Families
+## Why
+Well-trafficked package repos treat the package map like a product catalog. This index helps readers move from the repo overview to the exact family or package they need.
 
-- `packages/contracts/*` - extension, host, and theme contracts
-- `packages/shared/*` - reusable tokens, icons, i18n, and testing helpers
-- `packages/renderer/*` - portable Markdown renderer packages
-- `packages/editor/*` - portable Markdown editor packages
-- `packages/extensions/*` - extension runtime and first-party extension packages
+## What
+- `contracts/` for extension and theme API contracts.
+- `renderer/` for markdown parsing and React rendering surfaces.
+- `editor/` for source-mode and in-renderer editing surfaces.
+- `extensions/` for runtime and first-party bundled extensions.
+- `shared/` for tokens, icons, i18n, testing, and structured-data helpers.
+- `lander/` and `content/` for public-site composition and content delivery.
 
-Package build output is generated into each package's `dist/` directory by the relevant build script. Those generated directories are intentionally ignored by Git and should be regenerated from source.
+## Installation
+Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
+
+```bash
+npm install
+npm run build
+```
+
+## Usage
+Pick a family first, then move to a concrete package README for install and API details.
+
+- [Contracts](./contracts/README.md)
+- [Renderer](./renderer/README.md)
+- [Editor](./editor/README.md)
+- [Extensions](./extensions/README.md)
+- [Shared](./shared/README.md)
+- [Lander](./lander/README.md)
+- [Content](./content/README.md)
+
+## Related
+- [Root README](../README.md) - repo overview
+- [Examples](../examples/README.md) - external-consumer validation
+- [npm org](https://www.npmjs.com/org/mdwrk) - published package scope
