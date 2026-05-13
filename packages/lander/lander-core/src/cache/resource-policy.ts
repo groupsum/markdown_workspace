@@ -1,4 +1,4 @@
-// @ts-expect-error This package compiles without Node ambient types, but its ESM runtime is Node.
+// @ts-ignore This package may compile without Node ambient types, but its ESM runtime is Node.
 import { createHash } from "node:crypto";
 
 export type LanderCacheResourceClass = "immutable" | "mutable-revalidate" | "no-store";
