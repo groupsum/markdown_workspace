@@ -1,7 +1,9 @@
 # @mdwrk/extension-theme-studio
 
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.extensions.core_theme_studio.v1_1_6.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/core.theme-studio/1.1.6/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-theme-studio?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-theme-studio)
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/core.theme-studio/1.1.6/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts_extensions_core.theme_studio_1.1.6_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/extension-theme-studio"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fextension-theme-studio?label=downloads" /></a>
+</p>
 
 First-party Theme Studio extension package for MdWrk.
 

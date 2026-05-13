@@ -1,7 +1,9 @@
 # Promotion RC.1 bundle
 
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.releases.promotion_rc_1.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/releases/promotion-rc.1/README.md)
-[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/artifacts/releases/promotion-rc.1/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts_releases_promotion_rc.1_README&amp;left_text=hits" /></a>
+  <a href="https://github.com/groupsum/markdown_workspace/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads" /></a>
+</p>
 
 This directory aggregates the promotion-and-release artifacts generated in the Phase 14 checkpoint.
 

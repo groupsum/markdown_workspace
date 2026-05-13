@@ -1,7 +1,9 @@
 # @mdwrk/extension-manager
 
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.extensions.core_extension_manager.v1_1_8.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/core.extension-manager/1.1.8/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-manager?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-manager)
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/core.extension-manager/1.1.8/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts_extensions_core.extension_manager_1.1.8_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/extension-manager"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fextension-manager?label=downloads" /></a>
+</p>
 
 First-party bundled operator console extension for MdWrk.
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T04:46:05.526Z",
+  "generatedAt": "2026-05-13T10:23:17.451Z",
   "validator": "tools/conformance/validate-package-exports.mjs",
   "ok": true,
   "publishGraph": {
@@ -405,9 +405,7 @@
       "publishable": false,
       "ok": true,
       "errors": [],
-      "warnings": [
-        "README.md is missing."
-      ]
+      "warnings": []
     },
     {
       "packageName": "@mdwrk/mdwrkcom",

@@ -1,7 +1,9 @@
 # @mdwrk/extension-catalog-hello
 
-[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts.extensions.external_catalog_hello.v1_1_2.readme&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/external.catalog-hello/1.1.2/README.md)
-[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-catalog-hello?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-catalog-hello)
+<p align="center">
+  <a href="https://github.com/groupsum/markdown_workspace/blob/master/artifacts/extensions/external.catalog-hello/1.1.2/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.artifacts_extensions_external.catalog_hello_1.1.2_README&amp;left_text=hits" /></a>
+  <a href="https://www.npmjs.com/package/@mdwrk/extension-catalog-hello"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fextension-catalog-hello?label=downloads" /></a>
+</p>
 
 Sample third-party external extension package used to validate the signed catalog installation path.
 
