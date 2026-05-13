@@ -6,7 +6,7 @@ URL: https://mdwrk.com/answers/does-mdwrk-require-a-server/
 
 A direct answer for readers checking MdWrk's local-first editing boundary.
 
-MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, package discovery, repository operations, and deployment are explicit integrations that move beyond normal local editing. This answer belongs to the MdWrk content pack. The generic lander system can render the answer shape for any product without knowing MdWrk's storage or server policy.
+MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, repository operations, package discovery, and deployment are separate integration paths that go beyond the default editing boundary. That distinction is important because it lets teams evaluate MdWrk as a local-first writing tool first, then decide later which connected workflows they actually need.
 
 ## How do MdWrk theme packs work?
 
@@ -14,7 +14,7 @@ URL: https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/
 
 A direct answer about MdWrk theme pack contracts and portable styling.
 
-MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to make visual customization portable instead of tying every theme to private implementation details. Theme contracts help package authors, extension authors, and product contributors work against stable styling surfaces. A MdWrk theme pack can express product identity while reusable packages keep their generic behavior. This page is MdWrk content. Other products can supply different theme packs while reusing the same lander rendering system.
+MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to keep visual customization portable instead of tying every theme to private implementation details. That contract-based approach helps package authors, extension authors, and product contributors work against stable styling surfaces. A theme can express product identity while the underlying reusable packages keep their generic behavior. In practice, theme packs make it easier to change appearance without rewriting renderer, editor, or extension logic.
 
 ## How does MdWrk store Markdown locally?
 
@@ -22,15 +22,23 @@ URL: https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/
 
 A direct answer about MdWrk local persistence and storage boundaries.
 
-MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This supports local writing, preview, and organization as the default path. Local persistence does not remove export, sync, or repository workflows. It clarifies when content stays local and when an integration moves it across a boundary. The answer is product-specific. The portable lander package only provides reusable validation, rendering, SEO, schema, and static output mechanics.
+MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This keeps local writing, preview, and organization available as the default path. Local persistence does not remove export, sync, or repository workflows. It makes the storage boundary clearer by separating normal local editing from the moments when a user intentionally moves content across systems. That boundary is part of the broader MdWrk local-first model, where Markdown authoring starts on the device and connected workflows remain explicit choices.
+
+## Answers
+
+URL: https://mdwrk.com/answers/
+
+Use the answers hub when you want short, direct responses before moving into feature pages, package pages, or broader Markdown guides.
+
+The MdWrk answers section is the direct-response layer of the site. It is meant for visitors, crawlers, and AI assistants that need a clear answer first and deeper product context second. MdWrk answer pages What is a local-first Markdown workspace? explains the model behind local writing, preview, and organization before sync enters the workflow. What is an offline Markdown editor? defines offline Markdown editing and why it matters for everyday writing. Does MdWrk require a server? answers the core hosting question directly. How does MdWrk store Markdown locally? explains the local persistence boundary. How do MdWrk theme packs work? covers token and surface contracts for portable styling. Continue into broader guides Use the Markdown guides when the question is broader than MdWrk itself. That section explains Markdown concepts, syntax, editors, and common comparisons for general Markdown search intent.
 
 ## What is a local-first Markdown workspace?
 
 URL: https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/
 
-A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.
+A direct answer for readers evaluating local-first Markdown writing tools and workspace behavior.
 
-A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are explicit paths rather than requirements for every edit. MdWrk uses this model to keep Markdown close to the user and close to the file. The workspace can focus on source editing, rendered preview, project organization, package surfaces, themes, and extensions before network workflows enter the picture. This answer page is MdWrk-specific content rendered through a reusable lander contract. Another product can use the same answer-page shape with different facts.
+A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are optional paths rather than requirements for every edit. That model matters when teams want Markdown to stay usable during normal daily work even if a hosted service is unavailable. It also makes it easier to understand what stays on the device, what moves through sync, and what belongs to a publishing or repository workflow. MdWrk follows that approach by treating Markdown authoring, preview, and workspace organization as the default experience before optional networked workflows enter the picture.
 
 ## What is an offline Markdown editor?
 
@@ -38,7 +46,7 @@ URL: https://mdwrk.com/answers/what-is-an-offline-markdown-editor/
 
 A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces.
 
-An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted authoring backend for normal editing. Offline capability is especially useful for drafts, documentation, release notes, and workspace organization that should not stop when a network path is unavailable. MdWrk frames offline editing as part of a broader local-first workspace. The product story includes preview, browser-local persistence, package reuse, themes, extensions, and optional sync rather than only a single editor surface. The reusable lander packages do not define this answer. They provide the page contract, metadata, FAQ structure, and static artifact pipeline.
+An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing. Offline capability matters for drafts, documentation, release notes, and note-taking workflows that should continue even when the network is unavailable. Most offline Markdown tools add different layers around that core idea. Some focus on a single document, while others add preview, file management, workspace organization, themes, or publishing workflows. MdWrk approaches offline editing as part of a broader local-first Markdown workspace, pairing browser-based authoring with preview, local persistence, and optional integration paths.
 
 ## MdWrk launch notes
 
@@ -176,6 +184,1022 @@ MdWrk is a local-first Markdown workspace for authors and developers who want Ma
 
 MdWrk gives Markdown authors a workspace that treats plain text as the durable source of truth. The product combines source editing, rendered preview, workspace organization, theme surfaces, extension contracts, and package-level documentation in one environment. The public lander is compiled from Markdown files into static HTML. Search engines, answer engines, AI retrieval systems, and people using simple command-line tools can read the important page content without waiting for a JavaScript application shell to render it. Why MdWrk Exists Markdown teams often want portability and speed, but product sites around Markdown tools can hide the real content behind runtime frameworks. MdWrk keeps public content in Markdown, validates metadata with a schema, renders visible answers and FAQs, and ships machine-readable artifacts with the build. What The Workspace Emphasizes MdWrk focuses on offline-capable writing, local-first workspace state, privacy-aware sharing, reusable editor and renderer packages, and extension host boundaries. The documentation explains what lives locally, what needs network access, and which package surfaces developers can use directly. Static Content Contract Every public page in this compiler has YAML frontmatter for metadata and Markdown body content for the article. The compiler produces HTML, JSON-LD, sitemap data, robots policy, LLM-oriented indexes, Markdown mirrors, and a content registry that can be verified before deployment. Start Here Begin with the quickstart, then review the feature pages for offline Markdown editing, local-first workflow design, and extension platform boundaries. Comparison pages explain how MdWrk differs from note apps, code editors, and standard Markdown editors without recommending tools that do not fit MdWrk's privacy and workspace goals.
 
+## Basic Markdown syntax
+
+URL: https://mdwrk.com/markdown/basic-markdown-syntax/
+
+A compact guide to the Markdown syntax most people use every day.
+
+Basic Markdown syntax covers the structural patterns most writers use every day. That includes headings, paragraphs, ordered and unordered lists, links, emphasis, blockquotes, inline code, fenced code blocks, and images. For many documents, that basic syntax is enough. README files, documentation pages, release notes, notes, and blog drafts often do not need more than headings, lists, links, and code fences to stay clear and portable. Preview tools make syntax easier to validate while writing, but the core value of Markdown is that the source remains understandable even before rendering. That is one reason MdWrk keeps preview close to the Markdown source instead of hiding the text model.
+
+## Benefits of local-first markdown workspace
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/benefits/
+
+Review the main benefits of Local-first Markdown workspace before deciding whether the workflow fits your Markdown process.
+
+The benefits of Local-first Markdown workspace are easiest to understand when you compare them with heavier or less portable writing workflows. A Markdown workspace that keeps normal writing, preview, and organization local by default. Local-first behavior clarifies what stays on the device and what moves through sync, repository, or publishing workflows. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Local-first Markdown workspace best practices
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/best-practices/
+
+Use these best practices to keep Local-first Markdown workspace workflows clear, durable, and easier to scale.
+
+Local-first Markdown workspace best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Local-first behavior clarifies what stays on the device and what moves through sync, repository, or publishing workflows. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Local-first Markdown workspace workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Local-first Markdown workspace checklist
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/checklist/
+
+Use this checklist to evaluate Local-first Markdown workspace before treating it as a durable team workflow.
+
+A Local-first Markdown workspace checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Local-first behavior clarifies what stays on the device and what moves through sync, repository, or publishing workflows. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Local-first Markdown workspace examples
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/examples/
+
+Use these examples to understand how Local-first Markdown workspace looks in real Markdown work rather than in abstract product language.
+
+Local-first Markdown workspace examples are most useful when they connect a workflow idea to a concrete authoring job. A Markdown workspace that keeps normal writing, preview, and organization local by default. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. A local-first workspace matters when teams want Markdown to remain durable and usable before networked services enter the flow. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Local-first Markdown workspace for developers
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/for-developers/
+
+Use this page to evaluate Local-first Markdown workspace from a developer workflow perspective rather than only from a general writing perspective.
+
+Local-first Markdown workspace for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Local-first behavior clarifies what stays on the device and what moves through sync, repository, or publishing workflows. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. A local-first workspace matters when teams want Markdown to remain durable and usable before networked services enter the flow. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Local-first Markdown workspace for teams
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/for-teams/
+
+Review how Local-first Markdown workspace fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Local-first Markdown workspace for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. A local-first workspace matters when teams want Markdown to remain durable and usable before networked services enter the flow. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Local-first Markdown workspace use cases
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/use-cases/
+
+Review common Local-first Markdown workspace use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Local-first Markdown workspace use cases start with the everyday jobs people need to complete. A Markdown workspace that keeps normal writing, preview, and organization local by default. Local-first behavior clarifies what stays on the device and what moves through sync, repository, or publishing workflows. A local-first workspace matters when teams want Markdown to remain durable and usable before networked services enter the flow. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Local-first Markdown workspace use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Local-first Markdown workspace workflow
+
+URL: https://mdwrk.com/markdown/local-first-markdown-workspace/workflow/
+
+Use this workflow view to understand how Local-first Markdown workspace moves through real writing, review, and output stages.
+
+A Local-first Markdown workspace workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. A Markdown workspace that keeps normal writing, preview, and organization local by default. A local-first workspace matters when teams want Markdown to remain durable and usable before networked services enter the flow. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown blogging
+
+URL: https://mdwrk.com/markdown/markdown-blogging/benefits/
+
+Review the main benefits of Markdown blogging before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown blogging are easiest to understand when you compare them with heavier or less portable writing workflows. Writing and publishing blog content from Markdown source files. Markdown blogging keeps the authoring source small, portable, and easier to move through publishing pipelines. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown blogging best practices
+
+URL: https://mdwrk.com/markdown/markdown-blogging/best-practices/
+
+Use these best practices to keep Markdown blogging workflows clear, durable, and easier to scale.
+
+Markdown blogging best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Markdown blogging keeps the authoring source small, portable, and easier to move through publishing pipelines. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown blogging workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown blogging checklist
+
+URL: https://mdwrk.com/markdown/markdown-blogging/checklist/
+
+Use this checklist to evaluate Markdown blogging before treating it as a durable team workflow.
+
+A Markdown blogging checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Markdown blogging keeps the authoring source small, portable, and easier to move through publishing pipelines. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown blogging examples
+
+URL: https://mdwrk.com/markdown/markdown-blogging/examples/
+
+Use these examples to understand how Markdown blogging looks in real Markdown work rather than in abstract product language.
+
+Markdown blogging examples are most useful when they connect a workflow idea to a concrete authoring job. Writing and publishing blog content from Markdown source files. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown blogging matters when writers want simple formatting, code blocks, reusable content structures, and easier versioning. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown blogging for developers
+
+URL: https://mdwrk.com/markdown/markdown-blogging/for-developers/
+
+Use this page to evaluate Markdown blogging from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown blogging for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Markdown blogging keeps the authoring source small, portable, and easier to move through publishing pipelines. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown blogging matters when writers want simple formatting, code blocks, reusable content structures, and easier versioning. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown blogging for teams
+
+URL: https://mdwrk.com/markdown/markdown-blogging/for-teams/
+
+Review how Markdown blogging fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown blogging for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown blogging matters when writers want simple formatting, code blocks, reusable content structures, and easier versioning. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown blogging use cases
+
+URL: https://mdwrk.com/markdown/markdown-blogging/use-cases/
+
+Review common Markdown blogging use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown blogging use cases start with the everyday jobs people need to complete. Writing and publishing blog content from Markdown source files. Markdown blogging keeps the authoring source small, portable, and easier to move through publishing pipelines. Markdown blogging matters when writers want simple formatting, code blocks, reusable content structures, and easier versioning. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown blogging use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown blogging workflow
+
+URL: https://mdwrk.com/markdown/markdown-blogging/workflow/
+
+Use this workflow view to understand how Markdown blogging moves through real writing, review, and output stages.
+
+A Markdown blogging workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Writing and publishing blog content from Markdown source files. Markdown blogging matters when writers want simple formatting, code blocks, reusable content structures, and easier versioning. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown documentation
+
+URL: https://mdwrk.com/markdown/markdown-documentation/benefits/
+
+Review the main benefits of Markdown documentation before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown documentation are easiest to understand when you compare them with heavier or less portable writing workflows. Documentation workflows built around portable Markdown source files. Markdown documentation keeps content readable in source form and easier to move through Git, publishing, and review pipelines. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown documentation best practices
+
+URL: https://mdwrk.com/markdown/markdown-documentation/best-practices/
+
+Use these best practices to keep Markdown documentation workflows clear, durable, and easier to scale.
+
+Markdown documentation best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Markdown documentation keeps content readable in source form and easier to move through Git, publishing, and review pipelines. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown documentation workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown documentation checklist
+
+URL: https://mdwrk.com/markdown/markdown-documentation/checklist/
+
+Use this checklist to evaluate Markdown documentation before treating it as a durable team workflow.
+
+A Markdown documentation checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Markdown documentation keeps content readable in source form and easier to move through Git, publishing, and review pipelines. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown documentation examples
+
+URL: https://mdwrk.com/markdown/markdown-documentation/examples/
+
+Use these examples to understand how Markdown documentation looks in real Markdown work rather than in abstract product language.
+
+Markdown documentation examples are most useful when they connect a workflow idea to a concrete authoring job. Documentation workflows built around portable Markdown source files. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Teams use Markdown documentation for developer docs, product guides, internal notes, and public knowledge-base content. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown documentation for developers
+
+URL: https://mdwrk.com/markdown/markdown-documentation/for-developers/
+
+Use this page to evaluate Markdown documentation from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown documentation for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Markdown documentation keeps content readable in source form and easier to move through Git, publishing, and review pipelines. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Teams use Markdown documentation for developer docs, product guides, internal notes, and public knowledge-base content. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown documentation for teams
+
+URL: https://mdwrk.com/markdown/markdown-documentation/for-teams/
+
+Review how Markdown documentation fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown documentation for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Teams use Markdown documentation for developer docs, product guides, internal notes, and public knowledge-base content. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown documentation use cases
+
+URL: https://mdwrk.com/markdown/markdown-documentation/use-cases/
+
+Review common Markdown documentation use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown documentation use cases start with the everyday jobs people need to complete. Documentation workflows built around portable Markdown source files. Markdown documentation keeps content readable in source form and easier to move through Git, publishing, and review pipelines. Teams use Markdown documentation for developer docs, product guides, internal notes, and public knowledge-base content. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown documentation use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown documentation workflow
+
+URL: https://mdwrk.com/markdown/markdown-documentation/workflow/
+
+Use this workflow view to understand how Markdown documentation moves through real writing, review, and output stages.
+
+A Markdown documentation workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Documentation workflows built around portable Markdown source files. Teams use Markdown documentation for developer docs, product guides, internal notes, and public knowledge-base content. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown editor
+
+URL: https://mdwrk.com/markdown/markdown-editor/benefits/
+
+Review the main benefits of Markdown editor before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown editor are easiest to understand when you compare them with heavier or less portable writing workflows. A writing tool for creating and editing Markdown while keeping the source in plain text. Markdown editors help authors move between readable source text and rendered output without hiding the underlying format. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown editor best practices
+
+URL: https://mdwrk.com/markdown/markdown-editor/best-practices/
+
+Use these best practices to keep Markdown editor workflows clear, durable, and easier to scale.
+
+Markdown editor best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Markdown editors help authors move between readable source text and rendered output without hiding the underlying format. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown editor workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown editor checklist
+
+URL: https://mdwrk.com/markdown/markdown-editor/checklist/
+
+Use this checklist to evaluate Markdown editor before treating it as a durable team workflow.
+
+A Markdown editor checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Markdown editors help authors move between readable source text and rendered output without hiding the underlying format. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown editor examples
+
+URL: https://mdwrk.com/markdown/markdown-editor/examples/
+
+Use these examples to understand how Markdown editor looks in real Markdown work rather than in abstract product language.
+
+Markdown editor examples are most useful when they connect a workflow idea to a concrete authoring job. A writing tool for creating and editing Markdown while keeping the source in plain text. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. People evaluate Markdown editors by preview quality, portability, local storage behavior, file organization, and extension surfaces. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown editor for developers
+
+URL: https://mdwrk.com/markdown/markdown-editor/for-developers/
+
+Use this page to evaluate Markdown editor from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown editor for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Markdown editors help authors move between readable source text and rendered output without hiding the underlying format. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. People evaluate Markdown editors by preview quality, portability, local storage behavior, file organization, and extension surfaces. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown editor for teams
+
+URL: https://mdwrk.com/markdown/markdown-editor/for-teams/
+
+Review how Markdown editor fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown editor for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. People evaluate Markdown editors by preview quality, portability, local storage behavior, file organization, and extension surfaces. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown editor use cases
+
+URL: https://mdwrk.com/markdown/markdown-editor/use-cases/
+
+Review common Markdown editor use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown editor use cases start with the everyday jobs people need to complete. A writing tool for creating and editing Markdown while keeping the source in plain text. Markdown editors help authors move between readable source text and rendered output without hiding the underlying format. People evaluate Markdown editors by preview quality, portability, local storage behavior, file organization, and extension surfaces. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown editor use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown editor workflow
+
+URL: https://mdwrk.com/markdown/markdown-editor/workflow/
+
+Use this workflow view to understand how Markdown editor moves through real writing, review, and output stages.
+
+A Markdown editor workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. A writing tool for creating and editing Markdown while keeping the source in plain text. People evaluate Markdown editors by preview quality, portability, local storage behavior, file organization, and extension surfaces. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown extension workflows
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/benefits/
+
+Review the main benefits of Markdown extension workflows before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown extension workflows are easiest to understand when you compare them with heavier or less portable writing workflows. Extension-oriented workflows that add commands, panes, integrations, or automation around Markdown. Extension workflows matter when teams want customization without turning every Markdown behavior into app-local code. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown extension workflows best practices
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/best-practices/
+
+Use these best practices to keep Markdown extension workflows workflows clear, durable, and easier to scale.
+
+Markdown extension workflows best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Extension workflows matter when teams want customization without turning every Markdown behavior into app-local code. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown extension workflows workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown extension workflows checklist
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/checklist/
+
+Use this checklist to evaluate Markdown extension workflows before treating it as a durable team workflow.
+
+A Markdown extension workflows checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Extension workflows matter when teams want customization without turning every Markdown behavior into app-local code. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown extension workflows examples
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/examples/
+
+Use these examples to understand how Markdown extension workflows looks in real Markdown work rather than in abstract product language.
+
+Markdown extension workflows examples are most useful when they connect a workflow idea to a concrete authoring job. Extension-oriented workflows that add commands, panes, integrations, or automation around Markdown. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown extension work is easier to scale when commands, settings, and runtime behavior are documented and reusable. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown extension workflows for developers
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/for-developers/
+
+Use this page to evaluate Markdown extension workflows from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown extension workflows for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Extension workflows matter when teams want customization without turning every Markdown behavior into app-local code. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown extension work is easier to scale when commands, settings, and runtime behavior are documented and reusable. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown extension workflows for teams
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/for-teams/
+
+Review how Markdown extension workflows fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown extension workflows for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown extension work is easier to scale when commands, settings, and runtime behavior are documented and reusable. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown extension workflows use cases
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/use-cases/
+
+Review common Markdown extension workflows use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown extension workflows use cases start with the everyday jobs people need to complete. Extension-oriented workflows that add commands, panes, integrations, or automation around Markdown. Extension workflows matter when teams want customization without turning every Markdown behavior into app-local code. Markdown extension work is easier to scale when commands, settings, and runtime behavior are documented and reusable. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown extension workflows use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown extension workflows workflow
+
+URL: https://mdwrk.com/markdown/markdown-extension-workflows/workflow/
+
+Use this workflow view to understand how Markdown extension workflows moves through real writing, review, and output stages.
+
+A Markdown extension workflows workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Extension-oriented workflows that add commands, panes, integrations, or automation around Markdown. Markdown extension work is easier to scale when commands, settings, and runtime behavior are documented and reusable. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown for developers
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/benefits/
+
+Review the main benefits of Markdown for developers before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown for developers are easiest to understand when you compare them with heavier or less portable writing workflows. Markdown workflows shaped around code, docs, review, and repository collaboration. Developers use Markdown because it stays close to code, version control, and plain-text review workflows. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown for developers best practices
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/best-practices/
+
+Use these best practices to keep Markdown for developers workflows clear, durable, and easier to scale.
+
+Markdown for developers best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Developers use Markdown because it stays close to code, version control, and plain-text review workflows. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown for developers workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown for developers checklist
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/checklist/
+
+Use this checklist to evaluate Markdown for developers before treating it as a durable team workflow.
+
+A Markdown for developers checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Developers use Markdown because it stays close to code, version control, and plain-text review workflows. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown for developers examples
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/examples/
+
+Use these examples to understand how Markdown for developers looks in real Markdown work rather than in abstract product language.
+
+Markdown for developers examples are most useful when they connect a workflow idea to a concrete authoring job. Markdown workflows shaped around code, docs, review, and repository collaboration. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown for developers typically connects README files, architecture docs, issue notes, release notes, and rendered package or site output. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown for developers for developers
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/for-developers/
+
+Use this page to evaluate Markdown for developers from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown for developers for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Developers use Markdown because it stays close to code, version control, and plain-text review workflows. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown for developers typically connects README files, architecture docs, issue notes, release notes, and rendered package or site output. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown for developers for teams
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/for-teams/
+
+Review how Markdown for developers fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown for developers for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown for developers typically connects README files, architecture docs, issue notes, release notes, and rendered package or site output. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown for developers use cases
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/use-cases/
+
+Review common Markdown for developers use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown for developers use cases start with the everyday jobs people need to complete. Markdown workflows shaped around code, docs, review, and repository collaboration. Developers use Markdown because it stays close to code, version control, and plain-text review workflows. Markdown for developers typically connects README files, architecture docs, issue notes, release notes, and rendered package or site output. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown for developers use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown for developers workflow
+
+URL: https://mdwrk.com/markdown/markdown-for-developers/workflow/
+
+Use this workflow view to understand how Markdown for developers moves through real writing, review, and output stages.
+
+A Markdown for developers workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Markdown workflows shaped around code, docs, review, and repository collaboration. Markdown for developers typically connects README files, architecture docs, issue notes, release notes, and rendered package or site output. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown for teams
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/benefits/
+
+Review the main benefits of Markdown for teams before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown for teams are easiest to understand when you compare them with heavier or less portable writing workflows. Team documentation and writing workflows that use Markdown as the common source format. Teams need content that stays readable in source form while still working in review, publishing, and collaboration systems. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown for teams best practices
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/best-practices/
+
+Use these best practices to keep Markdown for teams workflows clear, durable, and easier to scale.
+
+Markdown for teams best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Teams need content that stays readable in source form while still working in review, publishing, and collaboration systems. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown for teams workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown for teams checklist
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/checklist/
+
+Use this checklist to evaluate Markdown for teams before treating it as a durable team workflow.
+
+A Markdown for teams checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Teams need content that stays readable in source form while still working in review, publishing, and collaboration systems. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown for teams examples
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/examples/
+
+Use these examples to understand how Markdown for teams looks in real Markdown work rather than in abstract product language.
+
+Markdown for teams examples are most useful when they connect a workflow idea to a concrete authoring job. Team documentation and writing workflows that use Markdown as the common source format. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown for teams is often evaluated through file ownership, review processes, portability, preview fidelity, and publishing confidence. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown for teams for developers
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/for-developers/
+
+Use this page to evaluate Markdown for teams from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown for teams for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Teams need content that stays readable in source form while still working in review, publishing, and collaboration systems. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown for teams is often evaluated through file ownership, review processes, portability, preview fidelity, and publishing confidence. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown for teams for teams
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/for-teams/
+
+Review how Markdown for teams fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown for teams for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown for teams is often evaluated through file ownership, review processes, portability, preview fidelity, and publishing confidence. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown for teams use cases
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/use-cases/
+
+Review common Markdown for teams use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown for teams use cases start with the everyday jobs people need to complete. Team documentation and writing workflows that use Markdown as the common source format. Teams need content that stays readable in source form while still working in review, publishing, and collaboration systems. Markdown for teams is often evaluated through file ownership, review processes, portability, preview fidelity, and publishing confidence. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown for teams use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown for teams workflow
+
+URL: https://mdwrk.com/markdown/markdown-for-teams/workflow/
+
+Use this workflow view to understand how Markdown for teams moves through real writing, review, and output stages.
+
+A Markdown for teams workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Team documentation and writing workflows that use Markdown as the common source format. Markdown for teams is often evaluated through file ownership, review processes, portability, preview fidelity, and publishing confidence. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown knowledge base
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/benefits/
+
+Review the main benefits of Markdown knowledge base before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown knowledge base are easiest to understand when you compare them with heavier or less portable writing workflows. Knowledge-base content managed through Markdown documents and structured navigation. Markdown knowledge bases can stay portable while still supporting searchable, linked, and versioned documentation. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown knowledge base best practices
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/best-practices/
+
+Use these best practices to keep Markdown knowledge base workflows clear, durable, and easier to scale.
+
+Markdown knowledge base best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Markdown knowledge bases can stay portable while still supporting searchable, linked, and versioned documentation. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown knowledge base workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown knowledge base checklist
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/checklist/
+
+Use this checklist to evaluate Markdown knowledge base before treating it as a durable team workflow.
+
+A Markdown knowledge base checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Markdown knowledge bases can stay portable while still supporting searchable, linked, and versioned documentation. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown knowledge base examples
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/examples/
+
+Use these examples to understand how Markdown knowledge base looks in real Markdown work rather than in abstract product language.
+
+Markdown knowledge base examples are most useful when they connect a workflow idea to a concrete authoring job. Knowledge-base content managed through Markdown documents and structured navigation. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Teams use Markdown knowledge bases when they need durable docs that can move between site generators, repos, and internal tools. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown knowledge base for developers
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/for-developers/
+
+Use this page to evaluate Markdown knowledge base from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown knowledge base for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Markdown knowledge bases can stay portable while still supporting searchable, linked, and versioned documentation. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Teams use Markdown knowledge bases when they need durable docs that can move between site generators, repos, and internal tools. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown knowledge base for teams
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/for-teams/
+
+Review how Markdown knowledge base fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown knowledge base for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Teams use Markdown knowledge bases when they need durable docs that can move between site generators, repos, and internal tools. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown knowledge base use cases
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/use-cases/
+
+Review common Markdown knowledge base use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown knowledge base use cases start with the everyday jobs people need to complete. Knowledge-base content managed through Markdown documents and structured navigation. Markdown knowledge bases can stay portable while still supporting searchable, linked, and versioned documentation. Teams use Markdown knowledge bases when they need durable docs that can move between site generators, repos, and internal tools. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown knowledge base use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown knowledge base workflow
+
+URL: https://mdwrk.com/markdown/markdown-knowledge-base/workflow/
+
+Use this workflow view to understand how Markdown knowledge base moves through real writing, review, and output stages.
+
+A Markdown knowledge base workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Knowledge-base content managed through Markdown documents and structured navigation. Teams use Markdown knowledge bases when they need durable docs that can move between site generators, repos, and internal tools. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown notes
+
+URL: https://mdwrk.com/markdown/markdown-notes/benefits/
+
+Review the main benefits of Markdown notes before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown notes are easiest to understand when you compare them with heavier or less portable writing workflows. Plain-text note-taking workflows built around Markdown structure and portability. Markdown notes help people keep information readable, linkable, and portable across tools and devices. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown notes best practices
+
+URL: https://mdwrk.com/markdown/markdown-notes/best-practices/
+
+Use these best practices to keep Markdown notes workflows clear, durable, and easier to scale.
+
+Markdown notes best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Markdown notes help people keep information readable, linkable, and portable across tools and devices. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown notes workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown notes checklist
+
+URL: https://mdwrk.com/markdown/markdown-notes/checklist/
+
+Use this checklist to evaluate Markdown notes before treating it as a durable team workflow.
+
+A Markdown notes checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Markdown notes help people keep information readable, linkable, and portable across tools and devices. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown notes examples
+
+URL: https://mdwrk.com/markdown/markdown-notes/examples/
+
+Use these examples to understand how Markdown notes looks in real Markdown work rather than in abstract product language.
+
+Markdown notes examples are most useful when they connect a workflow idea to a concrete authoring job. Plain-text note-taking workflows built around Markdown structure and portability. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Teams use Markdown notes for meeting notes, design notes, release notes, learning logs, and lightweight knowledge capture. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown notes for developers
+
+URL: https://mdwrk.com/markdown/markdown-notes/for-developers/
+
+Use this page to evaluate Markdown notes from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown notes for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Markdown notes help people keep information readable, linkable, and portable across tools and devices. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Teams use Markdown notes for meeting notes, design notes, release notes, learning logs, and lightweight knowledge capture. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown notes for teams
+
+URL: https://mdwrk.com/markdown/markdown-notes/for-teams/
+
+Review how Markdown notes fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown notes for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Teams use Markdown notes for meeting notes, design notes, release notes, learning logs, and lightweight knowledge capture. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown notes use cases
+
+URL: https://mdwrk.com/markdown/markdown-notes/use-cases/
+
+Review common Markdown notes use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown notes use cases start with the everyday jobs people need to complete. Plain-text note-taking workflows built around Markdown structure and portability. Markdown notes help people keep information readable, linkable, and portable across tools and devices. Teams use Markdown notes for meeting notes, design notes, release notes, learning logs, and lightweight knowledge capture. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown notes use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown notes workflow
+
+URL: https://mdwrk.com/markdown/markdown-notes/workflow/
+
+Use this workflow view to understand how Markdown notes moves through real writing, review, and output stages.
+
+A Markdown notes workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Plain-text note-taking workflows built around Markdown structure and portability. Teams use Markdown notes for meeting notes, design notes, release notes, learning logs, and lightweight knowledge capture. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown preview
+
+URL: https://mdwrk.com/markdown/markdown-preview/benefits/
+
+Review the main benefits of Markdown preview before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown preview are easiest to understand when you compare them with heavier or less portable writing workflows. Rendered output that helps authors validate Markdown structure while keeping the source visible. Preview reduces formatting surprises and makes it easier to inspect headings, lists, links, tables, and code blocks while writing. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown preview best practices
+
+URL: https://mdwrk.com/markdown/markdown-preview/best-practices/
+
+Use these best practices to keep Markdown preview workflows clear, durable, and easier to scale.
+
+Markdown preview best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Preview reduces formatting surprises and makes it easier to inspect headings, lists, links, tables, and code blocks while writing. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown preview workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown preview checklist
+
+URL: https://mdwrk.com/markdown/markdown-preview/checklist/
+
+Use this checklist to evaluate Markdown preview before treating it as a durable team workflow.
+
+A Markdown preview checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Preview reduces formatting surprises and makes it easier to inspect headings, lists, links, tables, and code blocks while writing. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown preview examples
+
+URL: https://mdwrk.com/markdown/markdown-preview/examples/
+
+Use these examples to understand how Markdown preview looks in real Markdown work rather than in abstract product language.
+
+Markdown preview examples are most useful when they connect a workflow idea to a concrete authoring job. Rendered output that helps authors validate Markdown structure while keeping the source visible. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown preview becomes important when teams need confidence that plain-text authoring will render correctly across docs, blogs, and app surfaces. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown preview for developers
+
+URL: https://mdwrk.com/markdown/markdown-preview/for-developers/
+
+Use this page to evaluate Markdown preview from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown preview for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Preview reduces formatting surprises and makes it easier to inspect headings, lists, links, tables, and code blocks while writing. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown preview becomes important when teams need confidence that plain-text authoring will render correctly across docs, blogs, and app surfaces. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown preview for teams
+
+URL: https://mdwrk.com/markdown/markdown-preview/for-teams/
+
+Review how Markdown preview fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown preview for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown preview becomes important when teams need confidence that plain-text authoring will render correctly across docs, blogs, and app surfaces. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown preview use cases
+
+URL: https://mdwrk.com/markdown/markdown-preview/use-cases/
+
+Review common Markdown preview use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown preview use cases start with the everyday jobs people need to complete. Rendered output that helps authors validate Markdown structure while keeping the source visible. Preview reduces formatting surprises and makes it easier to inspect headings, lists, links, tables, and code blocks while writing. Markdown preview becomes important when teams need confidence that plain-text authoring will render correctly across docs, blogs, and app surfaces. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown preview use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown preview workflow
+
+URL: https://mdwrk.com/markdown/markdown-preview/workflow/
+
+Use this workflow view to understand how Markdown preview moves through real writing, review, and output stages.
+
+A Markdown preview workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Rendered output that helps authors validate Markdown structure while keeping the source visible. Markdown preview becomes important when teams need confidence that plain-text authoring will render correctly across docs, blogs, and app surfaces. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown project docs
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/benefits/
+
+Review the main benefits of Markdown project docs before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown project docs are easiest to understand when you compare them with heavier or less portable writing workflows. Project documentation organized through Markdown pages, README files, and linked reference content. Project docs need plain-text durability, easy review, version control, and predictable rendering across teams. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown project docs best practices
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/best-practices/
+
+Use these best practices to keep Markdown project docs workflows clear, durable, and easier to scale.
+
+Markdown project docs best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Project docs need plain-text durability, easy review, version control, and predictable rendering across teams. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown project docs workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown project docs checklist
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/checklist/
+
+Use this checklist to evaluate Markdown project docs before treating it as a durable team workflow.
+
+A Markdown project docs checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Project docs need plain-text durability, easy review, version control, and predictable rendering across teams. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown project docs examples
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/examples/
+
+Use these examples to understand how Markdown project docs looks in real Markdown work rather than in abstract product language.
+
+Markdown project docs examples are most useful when they connect a workflow idea to a concrete authoring job. Project documentation organized through Markdown pages, README files, and linked reference content. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown project docs help teams keep setup, architecture, release, and troubleshooting information close to the code. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown project docs for developers
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/for-developers/
+
+Use this page to evaluate Markdown project docs from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown project docs for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Project docs need plain-text durability, easy review, version control, and predictable rendering across teams. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown project docs help teams keep setup, architecture, release, and troubleshooting information close to the code. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown project docs for teams
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/for-teams/
+
+Review how Markdown project docs fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown project docs for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown project docs help teams keep setup, architecture, release, and troubleshooting information close to the code. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown project docs use cases
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/use-cases/
+
+Review common Markdown project docs use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown project docs use cases start with the everyday jobs people need to complete. Project documentation organized through Markdown pages, README files, and linked reference content. Project docs need plain-text durability, easy review, version control, and predictable rendering across teams. Markdown project docs help teams keep setup, architecture, release, and troubleshooting information close to the code. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown project docs use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown project docs workflow
+
+URL: https://mdwrk.com/markdown/markdown-project-docs/workflow/
+
+Use this workflow view to understand how Markdown project docs moves through real writing, review, and output stages.
+
+A Markdown project docs workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Project documentation organized through Markdown pages, README files, and linked reference content. Markdown project docs help teams keep setup, architecture, release, and troubleshooting information close to the code. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown readme
+
+URL: https://mdwrk.com/markdown/markdown-readme/benefits/
+
+Review the main benefits of Markdown README before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown README are easiest to understand when you compare them with heavier or less portable writing workflows. README writing that uses Markdown for project introductions, setup steps, and reference material. README files are often the first durable documentation surface readers see in a repository or package. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown README best practices
+
+URL: https://mdwrk.com/markdown/markdown-readme/best-practices/
+
+Use these best practices to keep Markdown README workflows clear, durable, and easier to scale.
+
+Markdown README best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. README files are often the first durable documentation surface readers see in a repository or package. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown README workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown README checklist
+
+URL: https://mdwrk.com/markdown/markdown-readme/checklist/
+
+Use this checklist to evaluate Markdown README before treating it as a durable team workflow.
+
+A Markdown README checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. README files are often the first durable documentation surface readers see in a repository or package. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown README examples
+
+URL: https://mdwrk.com/markdown/markdown-readme/examples/
+
+Use these examples to understand how Markdown README looks in real Markdown work rather than in abstract product language.
+
+Markdown README examples are most useful when they connect a workflow idea to a concrete authoring job. README writing that uses Markdown for project introductions, setup steps, and reference material. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. A strong Markdown README balances portability, scanability, setup clarity, and enough structure for both humans and crawlers. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown README for developers
+
+URL: https://mdwrk.com/markdown/markdown-readme/for-developers/
+
+Use this page to evaluate Markdown README from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown README for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. README files are often the first durable documentation surface readers see in a repository or package. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. A strong Markdown README balances portability, scanability, setup clarity, and enough structure for both humans and crawlers. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown README for teams
+
+URL: https://mdwrk.com/markdown/markdown-readme/for-teams/
+
+Review how Markdown README fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown README for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. A strong Markdown README balances portability, scanability, setup clarity, and enough structure for both humans and crawlers. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown README use cases
+
+URL: https://mdwrk.com/markdown/markdown-readme/use-cases/
+
+Review common Markdown README use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown README use cases start with the everyday jobs people need to complete. README writing that uses Markdown for project introductions, setup steps, and reference material. README files are often the first durable documentation surface readers see in a repository or package. A strong Markdown README balances portability, scanability, setup clarity, and enough structure for both humans and crawlers. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown README use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown README workflow
+
+URL: https://mdwrk.com/markdown/markdown-readme/workflow/
+
+Use this workflow view to understand how Markdown README moves through real writing, review, and output stages.
+
+A Markdown README workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. README writing that uses Markdown for project introductions, setup steps, and reference material. A strong Markdown README balances portability, scanability, setup clarity, and enough structure for both humans and crawlers. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown theme packs
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/benefits/
+
+Review the main benefits of Markdown theme packs before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown theme packs are easiest to understand when you compare them with heavier or less portable writing workflows. Theme surfaces that style Markdown authoring and preview experiences through governed contracts. Theme packs separate visual identity from content structure and rendering behavior. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown theme packs best practices
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/best-practices/
+
+Use these best practices to keep Markdown theme packs workflows clear, durable, and easier to scale.
+
+Markdown theme packs best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Theme packs separate visual identity from content structure and rendering behavior. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown theme packs workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown theme packs checklist
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/checklist/
+
+Use this checklist to evaluate Markdown theme packs before treating it as a durable team workflow.
+
+A Markdown theme packs checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Theme packs separate visual identity from content structure and rendering behavior. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown theme packs examples
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/examples/
+
+Use these examples to understand how Markdown theme packs looks in real Markdown work rather than in abstract product language.
+
+Markdown theme packs examples are most useful when they connect a workflow idea to a concrete authoring job. Theme surfaces that style Markdown authoring and preview experiences through governed contracts. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown theme-pack work matters when teams need consistent styling across editor, preview, and public lander surfaces without patching internals. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown theme packs for developers
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/for-developers/
+
+Use this page to evaluate Markdown theme packs from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown theme packs for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Theme packs separate visual identity from content structure and rendering behavior. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown theme-pack work matters when teams need consistent styling across editor, preview, and public lander surfaces without patching internals. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown theme packs for teams
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/for-teams/
+
+Review how Markdown theme packs fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown theme packs for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown theme-pack work matters when teams need consistent styling across editor, preview, and public lander surfaces without patching internals. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown theme packs use cases
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/use-cases/
+
+Review common Markdown theme packs use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown theme packs use cases start with the everyday jobs people need to complete. Theme surfaces that style Markdown authoring and preview experiences through governed contracts. Theme packs separate visual identity from content structure and rendering behavior. Markdown theme-pack work matters when teams need consistent styling across editor, preview, and public lander surfaces without patching internals. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown theme packs use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown theme packs workflow
+
+URL: https://mdwrk.com/markdown/markdown-theme-packs/workflow/
+
+Use this workflow view to understand how Markdown theme packs moves through real writing, review, and output stages.
+
+A Markdown theme packs workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Theme surfaces that style Markdown authoring and preview experiences through governed contracts. Markdown theme-pack work matters when teams need consistent styling across editor, preview, and public lander surfaces without patching internals. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of markdown writing workflow
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/benefits/
+
+Review the main benefits of Markdown writing workflow before deciding whether the workflow fits your Markdown process.
+
+The benefits of Markdown writing workflow are easiest to understand when you compare them with heavier or less portable writing workflows. A repeatable writing flow built around Markdown source, preview, review, and publishing steps. A clear Markdown workflow helps authors move from draft to published output without losing source portability. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Markdown writing workflow best practices
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/best-practices/
+
+Use these best practices to keep Markdown writing workflow workflows clear, durable, and easier to scale.
+
+Markdown writing workflow best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. A clear Markdown workflow helps authors move from draft to published output without losing source portability. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Markdown writing workflow workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Markdown writing workflow checklist
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/checklist/
+
+Use this checklist to evaluate Markdown writing workflow before treating it as a durable team workflow.
+
+A Markdown writing workflow checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. A clear Markdown workflow helps authors move from draft to published output without losing source portability. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Markdown writing workflow examples
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/examples/
+
+Use these examples to understand how Markdown writing workflow looks in real Markdown work rather than in abstract product language.
+
+Markdown writing workflow examples are most useful when they connect a workflow idea to a concrete authoring job. A repeatable writing flow built around Markdown source, preview, review, and publishing steps. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Markdown writing workflows usually combine authoring, preview, revision, file organization, and output-specific publishing checks. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Markdown writing workflow for developers
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/for-developers/
+
+Use this page to evaluate Markdown writing workflow from a developer workflow perspective rather than only from a general writing perspective.
+
+Markdown writing workflow for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. A clear Markdown workflow helps authors move from draft to published output without losing source portability. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Markdown writing workflows usually combine authoring, preview, revision, file organization, and output-specific publishing checks. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Markdown writing workflow for teams
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/for-teams/
+
+Review how Markdown writing workflow fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Markdown writing workflow for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Markdown writing workflows usually combine authoring, preview, revision, file organization, and output-specific publishing checks. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Markdown writing workflow use cases
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/use-cases/
+
+Review common Markdown writing workflow use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Markdown writing workflow use cases start with the everyday jobs people need to complete. A repeatable writing flow built around Markdown source, preview, review, and publishing steps. A clear Markdown workflow helps authors move from draft to published output without losing source portability. Markdown writing workflows usually combine authoring, preview, revision, file organization, and output-specific publishing checks. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Markdown writing workflow use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Markdown writing workflow workflow
+
+URL: https://mdwrk.com/markdown/markdown-writing-workflow/workflow/
+
+Use this workflow view to understand how Markdown writing workflow moves through real writing, review, and output stages.
+
+A Markdown writing workflow workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. A repeatable writing flow built around Markdown source, preview, review, and publishing steps. Markdown writing workflows usually combine authoring, preview, revision, file organization, and output-specific publishing checks. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## Benefits of offline markdown editor
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/benefits/
+
+Review the main benefits of Offline Markdown editor before deciding whether the workflow fits your Markdown process.
+
+The benefits of Offline Markdown editor are easiest to understand when you compare them with heavier or less portable writing workflows. Markdown editing that stays usable without depending on a live hosted authoring backend. Offline editing helps authors keep writing, previewing, and organizing documents even when a network path is unavailable. In most cases, the benefit is not only speed. It is also the ability to keep source text readable, inspect rendered output more confidently, and move the same Markdown through multiple tools without losing the content itself. Another benefit is workflow clarity. Teams can decide when storage stays local, when sync begins, when repository review matters, and when a package or publishing layer should take over. MdWrk builds on those benefits by combining Markdown portability with answer-oriented docs, proof pages, comparison pages, and reusable package surfaces for editor, renderer, theme, and extension behavior.
+
+## Offline Markdown editor best practices
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/best-practices/
+
+Use these best practices to keep Offline Markdown editor workflows clear, durable, and easier to scale.
+
+Offline Markdown editor best practices begin with clear source discipline. Writers should keep the Markdown readable in raw form, use stable heading structure, and avoid workflow assumptions that only make sense inside one private application shell. Offline editing helps authors keep writing, previewing, and organizing documents even when a network path is unavailable. Teams usually get better results when preview behavior, file ownership, storage expectations, and publishing boundaries are explicit instead of implied. A good Offline Markdown editor workflow also separates durable content from presentation-specific behavior. That makes it easier to review the source, move it between tools, and keep documentation or package adoption paths aligned with the same content. Within MdWrk, those best-practice ideas map cleanly to local-first authoring, reusable renderer and editor packages, documented theme and extension surfaces, and proof-oriented public documentation.
+
+## Offline Markdown editor checklist
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/checklist/
+
+Use this checklist to evaluate Offline Markdown editor before treating it as a durable team workflow.
+
+A Offline Markdown editor checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations. Offline editing helps authors keep writing, previewing, and organizing documents even when a network path is unavailable. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience. Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker. MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.
+
+## Offline Markdown editor examples
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/examples/
+
+Use these examples to understand how Offline Markdown editor looks in real Markdown work rather than in abstract product language.
+
+Offline Markdown editor examples are most useful when they connect a workflow idea to a concrete authoring job. Markdown editing that stays usable without depending on a live hosted authoring backend. One common example is a writer moving from a draft to rendered preview while keeping the source in plain text. Another is a documentation team reviewing Markdown in Git, then publishing it through a static site or packaged app surface. A third example is a product team reusing package-level Markdown behavior instead of rebuilding every rendering or editor rule from scratch. Teams use offline Markdown editing for drafts, docs, release notes, note-taking, and review workflows that should not stop when connectivity changes. These examples matter because they show where the workflow supports review, storage, portability, and publishing confidence instead of only describing those properties in the abstract. MdWrk connects to this example set by combining local-first workspace behavior with reusable packages, answer pages, proof pages, and comparison routes that explain how the Markdown workflow behaves in practice.
+
+## Offline Markdown editor for developers
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/for-developers/
+
+Use this page to evaluate Offline Markdown editor from a developer workflow perspective rather than only from a general writing perspective.
+
+Offline Markdown editor for developers is different from general writing guidance because the workflow usually sits close to code, repositories, build output, or package-level reuse. Offline editing helps authors keep writing, previewing, and organizing documents even when a network path is unavailable. Developers usually care about reviewability, predictable rendering, version control, and whether the Markdown behavior can be shared across applications instead of living inside one private editor. Teams use offline Markdown editing for drafts, docs, release notes, note-taking, and review workflows that should not stop when connectivity changes. That is why package surfaces, renderer contracts, and explicit publishing boundaries matter so much in Markdown-heavy developer environments. MdWrk connects well to this perspective because it treats Markdown as durable source while exposing renderer, editor, theme, extension, lander, and content-pack surfaces separately.
+
+## Offline Markdown editor for teams
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/for-teams/
+
+Review how Offline Markdown editor fits teams that need shared standards, reviewability, and durable plain-text content.
+
+Offline Markdown editor for teams is mostly about governance and repeatability. A team needs more than a working editor. It needs clear ownership, predictable preview behavior, and a shared understanding of where Markdown lives before and after publishing. Teams use offline Markdown editing for drafts, docs, release notes, note-taking, and review workflows that should not stop when connectivity changes. Teams also need to know when the workflow stays local, when repository or sync systems enter the picture, and whether reusable packages or extensions will shape the output. A strong team workflow keeps the Markdown source durable and reviewable. That makes onboarding easier, reduces publishing surprises, and helps different contributors work with the same content model. MdWrk aligns with that team-oriented view by connecting local-first behavior, reusable package surfaces, public documentation, and proof pages into one explainable Markdown system.
+
+## Offline Markdown editor use cases
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/use-cases/
+
+Review common Offline Markdown editor use cases before choosing tools, workflow boundaries, and reusable package surfaces.
+
+Offline Markdown editor use cases start with the everyday jobs people need to complete. Markdown editing that stays usable without depending on a live hosted authoring backend. Offline editing helps authors keep writing, previewing, and organizing documents even when a network path is unavailable. Teams use offline Markdown editing for drafts, docs, release notes, note-taking, and review workflows that should not stop when connectivity changes. In practice, teams usually evaluate the workflow through authoring speed, preview confidence, storage boundaries, collaboration expectations, and the amount of reusable package behavior they need around the content. Common Offline Markdown editor use cases include drafting, reference writing, project documentation, publishing preparation, and Markdown-based review workflows. The right choice depends on whether the team needs a single-document tool, a local-first workspace, a reusable package surface, or a combination of those layers. MdWrk is relevant here because it treats Markdown as the durable source artifact while exposing answers, features, compare routes, proof pages, and reusable package pages around the same workflow family.
+
+## Offline Markdown editor workflow
+
+URL: https://mdwrk.com/markdown/offline-markdown-editor/workflow/
+
+Use this workflow view to understand how Offline Markdown editor moves through real writing, review, and output stages.
+
+A Offline Markdown editor workflow usually starts with plain-text authoring and then moves into preview, review, and output-specific steps. Markdown editing that stays usable without depending on a live hosted authoring backend. Teams use offline Markdown editing for drafts, docs, release notes, note-taking, and review workflows that should not stop when connectivity changes. What matters most is that the team can explain where the Markdown source lives, how rendered output is checked, who reviews it, and when the content moves into another system such as a site build, repository, or package surface. Good workflow design keeps those boundaries explicit. That helps teams avoid mixing local drafting, hosted collaboration, and final publishing into one opaque step. MdWrk supports this kind of workflow framing by keeping Markdown central while exposing feature routes, package routes, compare pages, and proof pages that document the surrounding behavior.
+
+## How to write Markdown
+
+URL: https://mdwrk.com/markdown/how-to-write-markdown/
+
+A practical beginner guide to writing readable Markdown in plain text.
+
+Writing Markdown starts with plain text and a few simple patterns. Use for headings, blank lines for paragraphs, - or 1. for lists, text or text for emphasis, and backticks for inline code or fenced code blocks. The goal is to keep the source readable while still making the document easy to render later. Good Markdown usually has clear headings, short paragraphs, descriptive links, and simple list structure before it adds more advanced elements such as tables or task lists. If you want a faster writing workflow, a Markdown editor can add preview, shortcuts, syntax highlighting, and file organization without changing the underlying format. MdWrk builds on that kind of workflow while keeping Markdown itself portable.
+
+## Markdown
+
+URL: https://mdwrk.com/markdown/
+
+Use this hub for general Markdown definitions, syntax guides, editor concepts, comparisons, and practical writing questions.
+
+Markdown is a plain-text writing format built around readable source text. This section explains Markdown as a general topic first, then connects those ideas to MdWrk where the product relationship is useful. Start with the basics What is Markdown? explains the format, why people use it, and how it differs from proprietary document models. What is Markdown used for? covers common writing, documentation, publishing, and developer workflows. How to write Markdown walks through headings, lists, links, emphasis, code fences, and everyday writing patterns. Basic Markdown syntax gives a compact syntax reference for common authoring tasks. Learn the surrounding tools and comparisons What is a Markdown editor? explains the tool category around the format. Markdown vs HTML compares Markdown authoring with HTML authoring for content teams and developers. Use these guides as the general Markdown knowledge layer, then move into MdWrk-specific answers, features, compare, and packages when you want product-specific detail.
+
+## Markdown vs HTML
+
+URL: https://mdwrk.com/markdown/markdown-vs-html/
+
+A practical comparison of Markdown authoring and direct HTML authoring.
+
+Markdown and HTML both describe structure, but they serve different authoring needs. Markdown is optimized for readable plain text and fast writing, while HTML gives direct control over web-page structure, attributes, and detailed presentation hooks. Most writers choose Markdown when the main job is authoring content rather than hand-coding a page. The Markdown source stays compact and portable, and a renderer can translate it into HTML when the publishing system needs browser output. HTML remains important for final rendering, layout, and component structure. MdWrk fits into that relationship by helping authors work in Markdown first while still supporting rendered preview and web-oriented output paths.
+
+## What is a Markdown editor?
+
+URL: https://mdwrk.com/markdown/what-is-a-markdown-editor/
+
+A direct explanation of the tool category around Markdown writing.
+
+A Markdown editor is a writing tool for creating and editing Markdown documents. It often adds features such as syntax highlighting, preview, shortcuts, file organization, export, and search while keeping the document source in plain text. Some Markdown editors focus on a single document view, while others add workspace behavior around notes, projects, folders, or publishing. The main distinction is that the format stays Markdown rather than being replaced by a proprietary document model. MdWrk is part of the Markdown editor category, but it emphasizes a local-first workspace around the format. That means the product focuses on writing, preview, organization, packages, and extension surfaces without hiding Markdown itself.
+
+## What is Markdown used for?
+
+URL: https://mdwrk.com/markdown/what-is-markdown-used-for/
+
+A practical overview of the most common Markdown writing and publishing workflows.
+
+Markdown is used anywhere people want structured writing without giving up plain text. Common use cases include README files, developer documentation, knowledge-base articles, release notes, personal notes, meeting notes, blog drafts, and publishing workflows that later render to HTML. Teams often choose Markdown because the files stay portable. A Markdown document can be read in any text editor, stored in Git, moved between tools, and rendered when a site, app, or publishing pipeline needs formatted output. MdWrk uses Markdown in that broader tradition. The product adds preview, local-first organization, themes, and package surfaces around the format instead of replacing the Markdown source with a proprietary document model.
+
+## What is Markdown?
+
+URL: https://mdwrk.com/markdown/what-is-markdown/
+
+A direct explanation of Markdown as a lightweight plain-text writing format.
+
+Markdown is a lightweight plain-text writing format. It uses simple characters such as , -, , and backticks to represent headings, lists, emphasis, links, and code blocks without forcing writers to use a heavy visual editor. Markdown matters because the source stays readable even before it is rendered. A document can remain useful in raw text form, travel well through version control, and be converted into HTML or other outputs when publishing is needed. Many Markdown tools add preview, themes, export, or collaboration on top of the format. MdWrk fits into that tool layer by treating Markdown as the durable source artifact while adding a local-first workspace around it.
+
 ## @mdwrk/extension-runtime
 
 URL: https://mdwrk.com/packages/extension-runtime/
@@ -183,6 +1207,14 @@ URL: https://mdwrk.com/packages/extension-runtime/
 Use the extension runtime package when building governed commands, panes, settings, and integration surfaces.
 
 @mdwrk/extension-runtime provides portable runtime utilities for governed MdWrk extension behavior. It supports the package-level extension model behind commands, panes, settings, and integrations. Install: Use this package when extension behavior needs to stay explicit, inspectable, and compatible with MdWrk host surfaces. The runtime package keeps extension behavior out of undocumented client patches. A package author can reason about lifecycle, host context, compatibility, and trust policy as stable surfaces that can be documented, validated, and reused across delivery targets.
+
+## Packages
+
+URL: https://mdwrk.com/packages/
+
+Use the packages hub to find the reusable MdWrk modules behind rendering, editing, theme contracts, and extension behavior.
+
+MdWrk packages are the reusable module surfaces behind the broader MdWrk product story. They help teams adopt rendering, editing, theming, and extension behavior without pulling in the full MdWrk application shell. Current public package pages @mdwrk/markdown-renderer-core is the self-contained Markdown parsing and rendering surface for HTML output and preview pipelines. @mdwrk/markdown-renderer-react provides React bindings for MdWrk-aligned Markdown rendering. @mdwrk/markdown-editor-react exposes React editor components for embedding MdWrk-style authoring surfaces. @mdwrk/theme-contract documents the governed token and compatibility contract for editor, preview, extension, and lander styling. @mdwrk/extension-runtime covers the reusable runtime boundary for extension lifecycle and host-facing behavior. Broader package families in the repo The public package pages cover only part of the current workspace package surface. The broader repo also includes the packaged workspace app, editor and renderer families, extension packages, shared utilities, lander packages, and the MdWrk content pack. How to use this section Start here if you are evaluating MdWrk as a package platform rather than only as an end-user application. The package pages clarify install surfaces, public APIs, and how each reusable module fits into the broader Markdown workflow.
 
 ## @mdwrk/markdown-editor-react
 

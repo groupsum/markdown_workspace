@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-05-13T05:03:31.685Z",
+  "matrixVersion": 1,
+  "pageCount": 120,
+  "topicCount": 15,
+  "templateCount": 8,
+  "pagesByTopic": {
+    "offline-markdown-editor": 8,
+    "local-first-markdown-workspace": 8,
+    "markdown-editor": 8,
+    "markdown-preview": 8,
+    "markdown-documentation": 8,
+    "markdown-readme": 8,
+    "markdown-notes": 8,
+    "markdown-blogging": 8,
+    "markdown-knowledge-base": 8,
+    "markdown-project-docs": 8,
+    "markdown-writing-workflow": 8,
+    "markdown-for-teams": 8,
+    "markdown-for-developers": 8,
+    "markdown-theme-packs": 8,
+    "markdown-extension-workflows": 8
+  },
+  "pagesByTemplate": {
+    "use-cases": 15,
+    "best-practices": 15,
+    "examples": 15,
+    "benefits": 15,
+    "workflow": 15,
+    "checklist": 15,
+    "for-teams": 15,
+    "for-developers": 15
+  },
+  "sampleSlugs": [
+    "/markdown/local-first-markdown-workspace/benefits/",
+    "/markdown/local-first-markdown-workspace/best-practices/",
+    "/markdown/local-first-markdown-workspace/checklist/",
+    "/markdown/local-first-markdown-workspace/examples/",
+    "/markdown/local-first-markdown-workspace/for-developers/",
+    "/markdown/local-first-markdown-workspace/for-teams/",
+    "/markdown/local-first-markdown-workspace/use-cases/",
+    "/markdown/local-first-markdown-workspace/workflow/",
+    "/markdown/markdown-blogging/benefits/",
+    "/markdown/markdown-blogging/best-practices/",
+    "/markdown/markdown-blogging/checklist/",
+    "/markdown/markdown-blogging/examples/"
+  ]
+}

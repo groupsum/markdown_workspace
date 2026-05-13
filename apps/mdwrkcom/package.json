@@ -1,10 +1,13 @@
 {
   "name": "@mdwrk/mdwrkcom",
   "private": true,
-  "version": "0.0.52",
+  "version": "0.0.53",
   "type": "module",
   "scripts": {
     "mdwrkcom": "node ./src/cli.mjs",
+    "generate:markdown-cluster": "node ./scripts/generate-markdown-cluster.mjs",
+    "validate:markdown-cluster": "node ./scripts/generate-markdown-cluster.mjs --check",
+    "sync:content-pack-generated": "node ./scripts/sync-content-pack-generated.mjs",
     "dev": "vite",
     "build": "npm run build:static:dist",
     "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
@@ -37,7 +40,7 @@
     "ci": "npm run build && npm run verify && npm run ci:static",
     "smoke:deployed": "node ./scripts/post-deploy-smoke.mjs",
     "preview": "vite preview",
-    "typecheck": "npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && npm run validate:static-style-contract && npm run validate:static-first-paint-theme && npm run validate:static",
+    "typecheck": "npm run validate:markdown-cluster && npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && npm run validate:static-style-contract && npm run validate:static-first-paint-theme && npm run validate:static",
     "lint": "npm run typecheck"
   },
   "dependencies": {
