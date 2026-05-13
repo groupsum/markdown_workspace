@@ -10,6 +10,11 @@ contentType: "package"
 updatedAt: "2026-05-05"
 author: CobyCloud
 subtitle: "Use the extension runtime package when building governed commands, panes, settings, and integration surfaces."
+parent: "/packages/"
+related:
+  - "/packages/"
+  - "/packages/theme-contract/"
+  - "/proof/package-surfaces/"
 faqs:
   - question: "What is @mdwrk/extension-runtime?"
     answer: "It is the portable package for MdWrk extension runtime behavior, lifecycle, and host-facing contracts."

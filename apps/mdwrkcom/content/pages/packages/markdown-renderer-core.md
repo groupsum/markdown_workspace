@@ -10,6 +10,11 @@ contentType: "package"
 updatedAt: "2026-05-05"
 author: CobyCloud
 subtitle: "Use the renderer core package when a product needs Markdown parsing and HTML rendering without adopting the full MdWrk client."
+parent: "/packages/"
+related:
+  - "/packages/"
+  - "/packages/markdown-renderer-react/"
+  - "/proof/package-surfaces/"
 faqs:
   - question: "What is @mdwrk/markdown-renderer-core?"
     answer: "It is the package-level Markdown parsing and rendering surface used by MdWrk renderer workflows."

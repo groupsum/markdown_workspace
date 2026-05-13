@@ -10,6 +10,11 @@ contentType: "package"
 updatedAt: "2026-05-05"
 author: CobyCloud
 subtitle: "Use the React renderer package when a product needs MdWrk-aligned Markdown rendering inside React."
+parent: "/packages/"
+related:
+  - "/packages/"
+  - "/packages/markdown-renderer-core/"
+  - "/packages/markdown-editor-react/"
 faqs:
   - question: "What is @mdwrk/markdown-renderer-react?"
     answer: "It is the React binding package for rendering Markdown through MdWrk's renderer family."

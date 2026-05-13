@@ -2,11 +2,11 @@
 
 A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces.
 
-An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted authoring backend for normal editing. Offline capability is especially useful for drafts, documentation, release notes, and workspace organization that should not stop when a network path is unavailable.
+An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing. Offline capability matters for drafts, documentation, release notes, and note-taking workflows that should continue even when the network is unavailable.
 
-MdWrk frames offline editing as part of a broader local-first workspace. The product story includes preview, browser-local persistence, package reuse, themes, extensions, and optional sync rather than only a single editor surface.
+Most offline Markdown tools add different layers around that core idea. Some focus on a single document, while others add preview, file management, workspace organization, themes, or publishing workflows.
 
-The reusable lander packages do not define this answer. They provide the page contract, metadata, FAQ structure, and static artifact pipeline.
+MdWrk approaches offline editing as part of a broader local-first Markdown workspace, pairing browser-based authoring with preview, local persistence, and optional integration paths.
 
 ## Frequently Asked Questions
 

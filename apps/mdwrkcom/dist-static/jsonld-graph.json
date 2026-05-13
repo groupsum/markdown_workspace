@@ -82,6 +82,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Does MdWrk require a server?",
           "item": "https://mdwrk.com/answers/does-mdwrk-require-a-server/"
         }
@@ -168,6 +174,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "How do MdWrk theme packs work?",
           "item": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/"
         }
@@ -254,8 +266,108 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "How does MdWrk store Markdown locally?",
           "item": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/answers/#webpage",
+      "url": "https://mdwrk.com/answers/",
+      "name": "MdWrk Answers | Markdown Questions And Direct Answers",
+      "headline": "Answers",
+      "description": "Read direct answers about MdWrk, local-first Markdown workflows, offline editing, local storage, and theme-pack behavior.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/answers/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/answers/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/answers/#webpage"
+      },
+      "headline": "Answers",
+      "name": "MdWrk Answers | Markdown Questions And Direct Answers",
+      "description": "Read direct answers about MdWrk, local-first Markdown workflows, offline editing, local storage, and theme-pack behavior.",
+      "url": "https://mdwrk.com/answers/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/answers/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What belongs in the MdWrk answers section?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The answers section covers direct MdWrk questions, local-first Markdown concepts, offline editing, storage boundaries, and theme-pack behavior."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is an answers page different from a docs page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An answers page gives a short direct response first, then links into fuller docs, feature explanations, package pages, or related Markdown guides."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/answers/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
         }
       ]
     },
@@ -340,6 +452,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "What is a local-first Markdown workspace?",
           "item": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/"
         }
@@ -426,6 +544,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Answers",
+          "item": "https://mdwrk.com/answers/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "What is an offline Markdown editor?",
           "item": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/"
         }
@@ -2016,6 +2140,700 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#webpage",
+      "url": "https://mdwrk.com/markdown/basic-markdown-syntax/",
+      "name": "Basic Markdown Syntax | Headings, Lists, Links, And Code",
+      "headline": "Basic Markdown syntax",
+      "description": "Review basic Markdown syntax for headings, lists, links, emphasis, images, blockquotes, and code blocks in a readable plain-text format.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#webpage"
+      },
+      "headline": "Basic Markdown syntax",
+      "name": "Basic Markdown Syntax | Headings, Lists, Links, And Code",
+      "description": "Review basic Markdown syntax for headings, lists, links, emphasis, images, blockquotes, and code blocks in a readable plain-text format.",
+      "url": "https://mdwrk.com/markdown/basic-markdown-syntax/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What syntax does basic Markdown include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Basic Markdown usually includes headings, paragraphs, lists, links, emphasis, images, blockquotes, and code blocks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is basic Markdown enough for most documents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. For many notes, docs, README files, and articles, the basic syntax covers most everyday writing needs."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/basic-markdown-syntax/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Basic Markdown syntax",
+          "item": "https://mdwrk.com/markdown/basic-markdown-syntax/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#webpage",
+      "url": "https://mdwrk.com/markdown/how-to-write-markdown/",
+      "name": "How To Write Markdown | Simple Markdown Writing Guide",
+      "headline": "How to write Markdown",
+      "description": "Learn how to write Markdown using headings, lists, links, emphasis, code fences, images, and other basic plain-text formatting patterns.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#webpage"
+      },
+      "headline": "How to write Markdown",
+      "name": "How To Write Markdown | Simple Markdown Writing Guide",
+      "description": "Learn how to write Markdown using headings, lists, links, emphasis, code fences, images, and other basic plain-text formatting patterns.",
+      "url": "https://mdwrk.com/markdown/how-to-write-markdown/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do beginners start writing Markdown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beginners can start with headings, paragraphs, lists, links, emphasis, and fenced code blocks, then add tables or task lists as needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a special tool to write Markdown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. You can write Markdown in any text editor, although Markdown editors and preview tools can make the workflow easier."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/how-to-write-markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to write Markdown",
+          "item": "https://mdwrk.com/markdown/how-to-write-markdown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/#webpage",
+      "url": "https://mdwrk.com/markdown/",
+      "name": "Markdown Guide | MdWrk",
+      "headline": "Markdown",
+      "description": "Learn what Markdown is, how Markdown writing and preview workflows work, and where MdWrk fits across local-first editing, rendering, and reusable package surfaces.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/#webpage"
+      },
+      "headline": "Markdown",
+      "name": "Markdown Guide | MdWrk",
+      "description": "Learn what Markdown is, how Markdown writing and preview workflows work, and where MdWrk fits across local-first editing, rendering, and reusable package surfaces.",
+      "url": "https://mdwrk.com/markdown/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What will I find in the Markdown section?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Markdown section covers definitions, syntax, editor concepts, common comparisons, and practical guidance for writing and publishing Markdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this section only about MdWrk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This section covers Markdown as a general topic first, then connects the topic back to MdWrk where that relationship is useful."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/markdown-vs-html/#webpage",
+      "url": "https://mdwrk.com/markdown/markdown-vs-html/",
+      "name": "Markdown Vs HTML | Writing Format Comparison",
+      "headline": "Markdown vs HTML",
+      "description": "Compare Markdown and HTML for readability, authoring speed, portability, document control, and direct publishing workflows.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/markdown-vs-html/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/markdown-vs-html/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/markdown-vs-html/#webpage"
+      },
+      "headline": "Markdown vs HTML",
+      "name": "Markdown Vs HTML | Writing Format Comparison",
+      "description": "Compare Markdown and HTML for readability, authoring speed, portability, document control, and direct publishing workflows.",
+      "url": "https://mdwrk.com/markdown/markdown-vs-html/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/markdown-vs-html/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between Markdown and HTML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdown is a lightweight writing format designed for readable plain text, while HTML is a markup language used to define the structure of web pages directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use Markdown instead of HTML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use Markdown when you want faster authoring and portable plain-text content, then render to HTML when a web output is needed."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/markdown-vs-html/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Markdown vs HTML",
+          "item": "https://mdwrk.com/markdown/markdown-vs-html/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#webpage",
+      "url": "https://mdwrk.com/markdown/what-is-a-markdown-editor/",
+      "name": "What Is A Markdown Editor? | Markdown Editor Definition",
+      "headline": "What is a Markdown editor?",
+      "description": "A Markdown editor is a writing tool for creating and editing Markdown documents, often with preview, syntax highlighting, shortcuts, and file organization.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#webpage"
+      },
+      "headline": "What is a Markdown editor?",
+      "name": "What Is A Markdown Editor? | Markdown Editor Definition",
+      "description": "A Markdown editor is a writing tool for creating and editing Markdown documents, often with preview, syntax highlighting, shortcuts, and file organization.",
+      "url": "https://mdwrk.com/markdown/what-is-a-markdown-editor/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a Markdown editor do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Markdown editor helps users create, edit, preview, and organize Markdown documents while keeping the source in plain text."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a Markdown editor the same as a rich-text editor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A Markdown editor usually keeps the underlying source visible or inspectable, while a rich-text editor often hides the markup behind a visual interface."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/what-is-a-markdown-editor/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What is a Markdown editor?",
+          "item": "https://mdwrk.com/markdown/what-is-a-markdown-editor/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#webpage",
+      "url": "https://mdwrk.com/markdown/what-is-markdown-used-for/",
+      "name": "What Is Markdown Used For? | Common Markdown Workflows",
+      "headline": "What is Markdown used for?",
+      "description": "Markdown is used for documentation, README files, notes, blog drafts, knowledge bases, technical writing, and other portable plain-text publishing workflows.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#webpage"
+      },
+      "headline": "What is Markdown used for?",
+      "name": "What Is Markdown Used For? | Common Markdown Workflows",
+      "description": "Markdown is used for documentation, README files, notes, blog drafts, knowledge bases, technical writing, and other portable plain-text publishing workflows.",
+      "url": "https://mdwrk.com/markdown/what-is-markdown-used-for/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Markdown commonly used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdown is commonly used for documentation, notes, README files, blog drafts, technical articles, and knowledge-base content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Markdown only for developers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Markdown is popular with developers, but writers, students, teams, and product groups also use it for structured plain-text content."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown-used-for/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What is Markdown used for?",
+          "item": "https://mdwrk.com/markdown/what-is-markdown-used-for/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown/#webpage",
+      "url": "https://mdwrk.com/markdown/what-is-markdown/",
+      "name": "What Is Markdown? | Plain-Text Writing Format Guide",
+      "headline": "What is Markdown?",
+      "description": "Markdown is a lightweight plain-text writing format that uses readable symbols for headings, lists, links, emphasis, code blocks, and other document structure.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/markdown/what-is-markdown/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/markdown/what-is-markdown/#webpage"
+      },
+      "headline": "What is Markdown?",
+      "name": "What Is Markdown? | Plain-Text Writing Format Guide",
+      "description": "Markdown is a lightweight plain-text writing format that uses readable symbols for headings, lists, links, emphasis, code blocks, and other document structure.",
+      "url": "https://mdwrk.com/markdown/what-is-markdown/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Markdown in simple terms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdown is a lightweight plain-text format that uses readable punctuation and symbols to represent document structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do people use Markdown?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "People use Markdown because it stays readable as plain text, works well in version control, and can be rendered into formats such as HTML."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/markdown/what-is-markdown/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdown",
+          "item": "https://mdwrk.com/markdown/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What is Markdown?",
+          "item": "https://mdwrk.com/markdown/what-is-markdown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/packages/extension-runtime/#webpage",
       "url": "https://mdwrk.com/packages/extension-runtime/",
       "name": "Extension Runtime Package | MdWrk",
@@ -2097,8 +2915,108 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "@mdwrk/extension-runtime",
           "item": "https://mdwrk.com/packages/extension-runtime/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/packages/#webpage",
+      "url": "https://mdwrk.com/packages/",
+      "name": "MdWrk Packages | Reusable Markdown Editor And Renderer Packages",
+      "headline": "Packages",
+      "description": "Explore MdWrk packages for Markdown rendering, React integration, editor components, theme contracts, and extension runtime behavior.",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/packages/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/packages/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/packages/#webpage"
+      },
+      "headline": "Packages",
+      "name": "MdWrk Packages | Reusable Markdown Editor And Renderer Packages",
+      "description": "Explore MdWrk packages for Markdown rendering, React integration, editor components, theme contracts, and extension runtime behavior.",
+      "url": "https://mdwrk.com/packages/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-12T00:00:00-05:00",
+      "dateModified": "2026-05-12T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/packages/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are MdWrk packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MdWrk packages are reusable modules for Markdown rendering, editor behavior, theme contracts, extension runtime behavior, and related adoption paths."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does MdWrk separate packages from the product site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The package section makes reusable module boundaries explicit so teams can evaluate adoption without treating every capability as an app-only feature."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/packages/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
         }
       ]
     },
@@ -2185,6 +3103,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "@mdwrk/markdown-editor-react",
           "item": "https://mdwrk.com/packages/markdown-editor-react/"
         }
@@ -2273,6 +3197,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "@mdwrk/markdown-renderer-core",
           "item": "https://mdwrk.com/packages/markdown-renderer-core/"
         }
@@ -2361,6 +3291,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "@mdwrk/markdown-renderer-react",
           "item": "https://mdwrk.com/packages/markdown-renderer-react/"
         }
@@ -2449,6 +3385,12 @@
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Packages",
+          "item": "https://mdwrk.com/packages/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "@mdwrk/theme-contract",
           "item": "https://mdwrk.com/packages/theme-contract/"
         }

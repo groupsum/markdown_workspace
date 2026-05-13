@@ -1,7 +1,7 @@
 [
   {
     "sourcePath": "content/pages/answers/does-mdwrk-require-a-server.md",
-    "sourceHash": "c34a959bcb84e40cf6487a03f09df78f44e84d1a0714a4a95e54ada6edcf3620",
+    "sourceHash": "20da69a8bdab0e4b2f8e716dcc7671a3694205ff7cfd1e59a4614ced6af68205",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/does-mdwrk-require-a-server/",
@@ -21,7 +21,12 @@
           "answer": "MdWrk does not require a hosted server for normal Markdown editing. Sync, package discovery, and deployment are explicit networked workflows."
         }
       ],
-      "related": [],
+      "parent": "/answers/",
+      "related": [
+        "/features/",
+        "/answers/how-does-mdwrk-store-markdown-locally/",
+        "/trust/privacy-boundary/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/does-mdwrk-require-a-server/",
       "locale": "en",
@@ -29,7 +34,7 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, package discovery, repository operations, and deployment are explicit integrations that move beyond normal local editing. This answer belongs to the MdWrk content pack. The generic lander system can render the answer shape for any product without knowing MdWrk's storage or server policy.",
+      "text": "MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, repository operations, package discovery, and deployment are separate integration paths that go beyond the default editing boundary. That distinction is important because it lets teams evaluate MdWrk as a local-first writing tool first, then decide later which connected workflows they actually need.",
       "headings": [],
       "links": [],
       "wordCount": 82
@@ -50,7 +55,7 @@
   },
   {
     "sourcePath": "content/pages/answers/how-do-mdwrk-theme-packs-work.md",
-    "sourceHash": "74b6739603da54a5dd5ffee55531a4c075e0637a762a428b46db5758756c3616",
+    "sourceHash": "5d50ae9e15e718539a2c85557b2882b8fad7c0910f6da3ef994b6ededb6aa489",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/how-do-mdwrk-theme-packs-work/",
@@ -70,7 +75,12 @@
           "answer": "MdWrk theme packs target governed token and surface contracts instead of patching product internals."
         }
       ],
-      "related": [],
+      "parent": "/answers/",
+      "related": [
+        "/features/",
+        "/packages/theme-contract/",
+        "/packages/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/",
       "locale": "en",
@@ -78,10 +88,10 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to make visual customization portable instead of tying every theme to private implementation details. Theme contracts help package authors, extension authors, and product contributors work against stable styling surfaces. A MdWrk theme pack can express product identity while reusable packages keep their generic behavior. This page is MdWrk content. Other products can supply different theme packs while reusing the same lander rendering system.",
+      "text": "MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to keep visual customization portable instead of tying every theme to private implementation details. That contract-based approach helps package authors, extension authors, and product contributors work against stable styling surfaces. A theme can express product identity while the underlying reusable packages keep their generic behavior. In practice, theme packs make it easier to change appearance without rewriting renderer, editor, or extension logic.",
       "headings": [],
       "links": [],
-      "wordCount": 85
+      "wordCount": 84
     },
     "discovery": {
       "canonical": "https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/",
@@ -99,7 +109,7 @@
   },
   {
     "sourcePath": "content/pages/answers/how-does-mdwrk-store-markdown-locally.md",
-    "sourceHash": "8ad2716e07a5bb2ec5f8207396de04aedf5b210c54c3c29b20444bf6c324e3ef",
+    "sourceHash": "3ef4af3e7f95132e06474e93b144c0055ce5f4dd517d6c469dbe90e6be1867ee",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/how-does-mdwrk-store-markdown-locally/",
@@ -119,7 +129,12 @@
           "answer": "MdWrk uses browser-local persistence for workspace state so normal authoring can remain local-first."
         }
       ],
-      "related": [],
+      "parent": "/answers/",
+      "related": [
+        "/features/indexeddb-markdown-storage/",
+        "/answers/does-mdwrk-require-a-server/",
+        "/trust/privacy-boundary/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/",
       "locale": "en",
@@ -127,10 +142,10 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This supports local writing, preview, and organization as the default path. Local persistence does not remove export, sync, or repository workflows. It clarifies when content stays local and when an integration moves it across a boundary. The answer is product-specific. The portable lander package only provides reusable validation, rendering, SEO, schema, and static output mechanics.",
+      "text": "MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This keeps local writing, preview, and organization available as the default path. Local persistence does not remove export, sync, or repository workflows. It makes the storage boundary clearer by separating normal local editing from the moments when a user intentionally moves content across systems. That boundary is part of the broader MdWrk local-first model, where Markdown authoring starts on the device and connected workflows remain explicit choices.",
       "headings": [],
       "links": [],
-      "wordCount": 77
+      "wordCount": 89
     },
     "discovery": {
       "canonical": "https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/",
@@ -147,15 +162,115 @@
     }
   },
   {
+    "sourcePath": "content/pages/answers/index.md",
+    "sourceHash": "164bf5f1677fc92ed3fdd05ac3619fb44bd0923c78142fb147ca802d66510de2",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/answers/",
+      "title": "MdWrk Answers | Markdown Questions And Direct Answers",
+      "description": "Read direct answers about MdWrk, local-first Markdown workflows, offline editing, local storage, and theme-pack behavior.",
+      "h1": "Answers",
+      "subtitle": "Use the answers hub when you want short, direct responses before moving into feature pages, package pages, or broader Markdown guides.",
+      "entity": "MdWrk",
+      "intent": "mdwrk answers",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What belongs in the MdWrk answers section?",
+          "answer": "The answers section covers direct MdWrk questions, local-first Markdown concepts, offline editing, storage boundaries, and theme-pack behavior."
+        },
+        {
+          "question": "How is an answers page different from a docs page?",
+          "answer": "An answers page gives a short direct response first, then links into fuller docs, feature explanations, package pages, or related Markdown guides."
+        }
+      ],
+      "parent": "/",
+      "related": [
+        "/markdown/",
+        "/features/",
+        "/packages/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/answers/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "The MdWrk answers section is the direct-response layer of the site. It is meant for visitors, crawlers, and AI assistants that need a clear answer first and deeper product context second. MdWrk answer pages What is a local-first Markdown workspace? explains the model behind local writing, preview, and organization before sync enters the workflow. What is an offline Markdown editor? defines offline Markdown editing and why it matters for everyday writing. Does MdWrk require a server? answers the core hosting question directly. How does MdWrk store Markdown locally? explains the local persistence boundary. How do MdWrk theme packs work? covers token and surface contracts for portable styling. Continue into broader guides Use the Markdown guides when the question is broader than MdWrk itself. That section explains Markdown concepts, syntax, editors, and common comparisons for general Markdown search intent.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "mdwrk-answer-pages",
+          "text": "MdWrk answer pages"
+        },
+        {
+          "depth": 2,
+          "id": "continue-into-broader-guides",
+          "text": "Continue into broader guides"
+        }
+      ],
+      "links": [
+        {
+          "href": "/answers/what-is-a-local-first-markdown-workspace/",
+          "text": "What is a local-first Markdown workspace?",
+          "internal": true
+        },
+        {
+          "href": "/answers/what-is-an-offline-markdown-editor/",
+          "text": "What is an offline Markdown editor?",
+          "internal": true
+        },
+        {
+          "href": "/answers/does-mdwrk-require-a-server/",
+          "text": "Does MdWrk require a server?",
+          "internal": true
+        },
+        {
+          "href": "/answers/how-does-mdwrk-store-markdown-locally/",
+          "text": "How does MdWrk store Markdown locally?",
+          "internal": true
+        },
+        {
+          "href": "/answers/how-do-mdwrk-theme-packs-work/",
+          "text": "How do MdWrk theme packs work?",
+          "internal": true
+        },
+        {
+          "href": "/markdown/",
+          "text": "Markdown guides",
+          "internal": true
+        }
+      ],
+      "wordCount": 138
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/answers/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/answers/#webpage",
+        "https://mdwrk.com/answers/#primary",
+        "https://mdwrk.com/answers/#faq",
+        "https://mdwrk.com/answers/#breadcrumbs"
+      ]
+    }
+  },
+  {
     "sourcePath": "content/pages/answers/what-is-a-local-first-markdown-workspace.md",
-    "sourceHash": "43f06c94709e01a483430ed810cd16df564499d3e396c85eed172f53613b720e",
+    "sourceHash": "f2176b734647f6b1282dcf8398502aad7fb7ec7efcd8623ef7d1bdc2228f7394",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/what-is-a-local-first-markdown-workspace/",
       "title": "What Is A Local-First Markdown Workspace? | MdWrk",
       "description": "A local-first Markdown workspace keeps normal writing, preview, and organization local while sync and hosted integrations remain optional paths.",
       "h1": "What is a local-first Markdown workspace?",
-      "subtitle": "A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.",
+      "subtitle": "A direct answer for readers evaluating local-first Markdown writing tools and workspace behavior.",
       "entity": "MdWrk",
       "intent": "what is a local-first markdown workspace",
       "contentType": "faq",
@@ -168,7 +283,12 @@
           "answer": "It is an authoring environment where normal Markdown writing, preview, and organization work locally first, while sync and hosted integrations remain optional."
         }
       ],
-      "related": [],
+      "parent": "/answers/",
+      "related": [
+        "/markdown/what-is-markdown/",
+        "/features/",
+        "/trust/privacy-boundary/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/",
       "locale": "en",
@@ -176,10 +296,10 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are explicit paths rather than requirements for every edit. MdWrk uses this model to keep Markdown close to the user and close to the file. The workspace can focus on source editing, rendered preview, project organization, package surfaces, themes, and extensions before network workflows enter the picture. This answer page is MdWrk-specific content rendered through a reusable lander contract. Another product can use the same answer-page shape with different facts.",
+      "text": "A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are optional paths rather than requirements for every edit. That model matters when teams want Markdown to stay usable during normal daily work even if a hosted service is unavailable. It also makes it easier to understand what stays on the device, what moves through sync, and what belongs to a publishing or repository workflow. MdWrk follows that approach by treating Markdown authoring, preview, and workspace organization as the default experience before optional networked workflows enter the picture.",
       "headings": [],
       "links": [],
-      "wordCount": 97
+      "wordCount": 105
     },
     "discovery": {
       "canonical": "https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/",
@@ -197,7 +317,7 @@
   },
   {
     "sourcePath": "content/pages/answers/what-is-an-offline-markdown-editor.md",
-    "sourceHash": "e176700a00af8f64893891e20a3435d38d742d52ea3c9f00667b048870112659",
+    "sourceHash": "f4a127d607370ae8ab57ee05e437a1991294b99e135277e44aaec98a8f156f99",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/answers/what-is-an-offline-markdown-editor/",
@@ -217,7 +337,12 @@
           "answer": "It is a Markdown editor that keeps normal writing and preview available without requiring a live hosted authoring backend."
         }
       ],
-      "related": [],
+      "parent": "/answers/",
+      "related": [
+        "/markdown/what-is-a-markdown-editor/",
+        "/features/",
+        "/compare/local-first-markdown-editors/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/",
       "locale": "en",
@@ -225,10 +350,10 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted authoring backend for normal editing. Offline capability is especially useful for drafts, documentation, release notes, and workspace organization that should not stop when a network path is unavailable. MdWrk frames offline editing as part of a broader local-first workspace. The product story includes preview, browser-local persistence, package reuse, themes, extensions, and optional sync rather than only a single editor surface. The reusable lander packages do not define this answer. They provide the page contract, metadata, FAQ structure, and static artifact pipeline.",
+      "text": "An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing. Offline capability matters for drafts, documentation, release notes, and note-taking workflows that should continue even when the network is unavailable. Most offline Markdown tools add different layers around that core idea. Some focus on a single document, while others add preview, file management, workspace organization, themes, or publishing workflows. MdWrk approaches offline editing as part of a broader local-first Markdown workspace, pairing browser-based authoring with preview, local persistence, and optional integration paths.",
       "headings": [],
       "links": [],
-      "wordCount": 96
+      "wordCount": 91
     },
     "discovery": {
       "canonical": "https://mdwrk.com/answers/what-is-an-offline-markdown-editor/",
@@ -1375,8 +1500,476 @@
     }
   },
   {
+    "sourcePath": "content/pages/markdown/basic-markdown-syntax.md",
+    "sourceHash": "f98edefed08e6befb95eef6aecbcd25c12bda62c6b264ee76b5fec8e8f307c8b",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/basic-markdown-syntax/",
+      "title": "Basic Markdown Syntax | Headings, Lists, Links, And Code",
+      "description": "Review basic Markdown syntax for headings, lists, links, emphasis, images, blockquotes, and code blocks in a readable plain-text format.",
+      "h1": "Basic Markdown syntax",
+      "subtitle": "A compact guide to the Markdown syntax most people use every day.",
+      "entity": "MdWrk",
+      "intent": "basic markdown syntax",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What syntax does basic Markdown include?",
+          "answer": "Basic Markdown usually includes headings, paragraphs, lists, links, emphasis, images, blockquotes, and code blocks."
+        },
+        {
+          "question": "Is basic Markdown enough for most documents?",
+          "answer": "Yes. For many notes, docs, README files, and articles, the basic syntax covers most everyday writing needs."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/how-to-write-markdown/",
+        "/markdown/what-is-markdown/",
+        "/features/live-preview/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/basic-markdown-syntax/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Basic Markdown syntax covers the structural patterns most writers use every day. That includes headings, paragraphs, ordered and unordered lists, links, emphasis, blockquotes, inline code, fenced code blocks, and images. For many documents, that basic syntax is enough. README files, documentation pages, release notes, notes, and blog drafts often do not need more than headings, lists, links, and code fences to stay clear and portable. Preview tools make syntax easier to validate while writing, but the core value of Markdown is that the source remains understandable even before rendering. That is one reason MdWrk keeps preview close to the Markdown source instead of hiding the text model.",
+      "headings": [],
+      "links": [],
+      "wordCount": 107
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/basic-markdown-syntax/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/basic-markdown-syntax/#webpage",
+        "https://mdwrk.com/markdown/basic-markdown-syntax/#primary",
+        "https://mdwrk.com/markdown/basic-markdown-syntax/#faq",
+        "https://mdwrk.com/markdown/basic-markdown-syntax/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/how-to-write-markdown.md",
+    "sourceHash": "f3a8ff702815682ebb0d65b0f1c9c1008a3c5df6da59f165859aa776ebeca73f",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/how-to-write-markdown/",
+      "title": "How To Write Markdown | Simple Markdown Writing Guide",
+      "description": "Learn how to write Markdown using headings, lists, links, emphasis, code fences, images, and other basic plain-text formatting patterns.",
+      "h1": "How to write Markdown",
+      "subtitle": "A practical beginner guide to writing readable Markdown in plain text.",
+      "entity": "MdWrk",
+      "intent": "how to write markdown",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "How do beginners start writing Markdown?",
+          "answer": "Beginners can start with headings, paragraphs, lists, links, emphasis, and fenced code blocks, then add tables or task lists as needed."
+        },
+        {
+          "question": "Do I need a special tool to write Markdown?",
+          "answer": "No. You can write Markdown in any text editor, although Markdown editors and preview tools can make the workflow easier."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/basic-markdown-syntax/",
+        "/markdown/what-is-markdown/",
+        "/markdown/what-is-a-markdown-editor/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/how-to-write-markdown/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Writing Markdown starts with plain text and a few simple patterns. Use for headings, blank lines for paragraphs, - or 1. for lists, text or text for emphasis, and backticks for inline code or fenced code blocks. The goal is to keep the source readable while still making the document easy to render later. Good Markdown usually has clear headings, short paragraphs, descriptive links, and simple list structure before it adds more advanced elements such as tables or task lists. If you want a faster writing workflow, a Markdown editor can add preview, shortcuts, syntax highlighting, and file organization without changing the underlying format. MdWrk builds on that kind of workflow while keeping Markdown itself portable.",
+      "headings": [],
+      "links": [],
+      "wordCount": 116
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/how-to-write-markdown/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/how-to-write-markdown/#webpage",
+        "https://mdwrk.com/markdown/how-to-write-markdown/#primary",
+        "https://mdwrk.com/markdown/how-to-write-markdown/#faq",
+        "https://mdwrk.com/markdown/how-to-write-markdown/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/index.md",
+    "sourceHash": "a62512c1646d63a681eee0f3e85579539250e0f833c27bcbc86c70754d57b04d",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/",
+      "title": "Markdown Guide | MdWrk",
+      "description": "Learn what Markdown is, how Markdown writing and preview workflows work, and where MdWrk fits across local-first editing, rendering, and reusable package surfaces.",
+      "h1": "Markdown",
+      "subtitle": "Use this hub for general Markdown definitions, syntax guides, editor concepts, comparisons, and practical writing questions.",
+      "entity": "MdWrk",
+      "intent": "markdown",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What will I find in the Markdown section?",
+          "answer": "The Markdown section covers definitions, syntax, editor concepts, common comparisons, and practical guidance for writing and publishing Markdown."
+        },
+        {
+          "question": "Is this section only about MdWrk?",
+          "answer": "No. This section covers Markdown as a general topic first, then connects the topic back to MdWrk where that relationship is useful."
+        }
+      ],
+      "parent": "/",
+      "related": [
+        "/answers/what-is-an-offline-markdown-editor/",
+        "/answers/what-is-a-local-first-markdown-workspace/",
+        "/proof/markdown-support/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Markdown is a plain-text writing format built around readable source text. This section explains Markdown as a general topic first, then connects those ideas to MdWrk where the product relationship is useful. Start with the basics What is Markdown? explains the format, why people use it, and how it differs from proprietary document models. What is Markdown used for? covers common writing, documentation, publishing, and developer workflows. How to write Markdown walks through headings, lists, links, emphasis, code fences, and everyday writing patterns. Basic Markdown syntax gives a compact syntax reference for common authoring tasks. Learn the surrounding tools and comparisons What is a Markdown editor? explains the tool category around the format. Markdown vs HTML compares Markdown authoring with HTML authoring for content teams and developers. Use these guides as the general Markdown knowledge layer, then move into MdWrk-specific answers, features, compare, and packages when you want product-specific detail.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "start-with-the-basics",
+          "text": "Start with the basics"
+        },
+        {
+          "depth": 2,
+          "id": "learn-the-surrounding-tools-and-comparisons",
+          "text": "Learn the surrounding tools and comparisons"
+        }
+      ],
+      "links": [
+        {
+          "href": "/markdown/what-is-markdown/",
+          "text": "What is Markdown?",
+          "internal": true
+        },
+        {
+          "href": "/markdown/what-is-markdown-used-for/",
+          "text": "What is Markdown used for?",
+          "internal": true
+        },
+        {
+          "href": "/markdown/how-to-write-markdown/",
+          "text": "How to write Markdown",
+          "internal": true
+        },
+        {
+          "href": "/markdown/basic-markdown-syntax/",
+          "text": "Basic Markdown syntax",
+          "internal": true
+        },
+        {
+          "href": "/markdown/what-is-a-markdown-editor/",
+          "text": "What is a Markdown editor?",
+          "internal": true
+        },
+        {
+          "href": "/markdown/markdown-vs-html/",
+          "text": "Markdown vs HTML",
+          "internal": true
+        },
+        {
+          "href": "/answers/",
+          "text": "answers",
+          "internal": true
+        },
+        {
+          "href": "/features/",
+          "text": "features",
+          "internal": true
+        },
+        {
+          "href": "/compare/",
+          "text": "compare",
+          "internal": true
+        },
+        {
+          "href": "/packages/",
+          "text": "packages",
+          "internal": true
+        }
+      ],
+      "wordCount": 150
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/#webpage",
+        "https://mdwrk.com/markdown/#primary",
+        "https://mdwrk.com/markdown/#faq",
+        "https://mdwrk.com/markdown/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/markdown-vs-html.md",
+    "sourceHash": "f75dc268ecca441a437db4fd15b6fa76b79648afbf0cc65714def4309d92e860",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/markdown-vs-html/",
+      "title": "Markdown Vs HTML | Writing Format Comparison",
+      "description": "Compare Markdown and HTML for readability, authoring speed, portability, document control, and direct publishing workflows.",
+      "h1": "Markdown vs HTML",
+      "subtitle": "A practical comparison of Markdown authoring and direct HTML authoring.",
+      "entity": "MdWrk",
+      "intent": "markdown vs html",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What is the difference between Markdown and HTML?",
+          "answer": "Markdown is a lightweight writing format designed for readable plain text, while HTML is a markup language used to define the structure of web pages directly."
+        },
+        {
+          "question": "When should I use Markdown instead of HTML?",
+          "answer": "Use Markdown when you want faster authoring and portable plain-text content, then render to HTML when a web output is needed."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/what-is-markdown/",
+        "/markdown/how-to-write-markdown/",
+        "/markdown/what-is-markdown-used-for/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/markdown-vs-html/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Markdown and HTML both describe structure, but they serve different authoring needs. Markdown is optimized for readable plain text and fast writing, while HTML gives direct control over web-page structure, attributes, and detailed presentation hooks. Most writers choose Markdown when the main job is authoring content rather than hand-coding a page. The Markdown source stays compact and portable, and a renderer can translate it into HTML when the publishing system needs browser output. HTML remains important for final rendering, layout, and component structure. MdWrk fits into that relationship by helping authors work in Markdown first while still supporting rendered preview and web-oriented output paths.",
+      "headings": [],
+      "links": [],
+      "wordCount": 104
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/markdown-vs-html/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/markdown-vs-html/#webpage",
+        "https://mdwrk.com/markdown/markdown-vs-html/#primary",
+        "https://mdwrk.com/markdown/markdown-vs-html/#faq",
+        "https://mdwrk.com/markdown/markdown-vs-html/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/what-is-a-markdown-editor.md",
+    "sourceHash": "21f1459ac744aeeb0b3095e68cf1d858b491c9723412ffed572e91749eb3a1b6",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/what-is-a-markdown-editor/",
+      "title": "What Is A Markdown Editor? | Markdown Editor Definition",
+      "description": "A Markdown editor is a writing tool for creating and editing Markdown documents, often with preview, syntax highlighting, shortcuts, and file organization.",
+      "h1": "What is a Markdown editor?",
+      "subtitle": "A direct explanation of the tool category around Markdown writing.",
+      "entity": "MdWrk",
+      "intent": "what is a markdown editor",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What does a Markdown editor do?",
+          "answer": "A Markdown editor helps users create, edit, preview, and organize Markdown documents while keeping the source in plain text."
+        },
+        {
+          "question": "Is a Markdown editor the same as a rich-text editor?",
+          "answer": "No. A Markdown editor usually keeps the underlying source visible or inspectable, while a rich-text editor often hides the markup behind a visual interface."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/what-is-markdown/",
+        "/markdown/how-to-write-markdown/",
+        "/answers/what-is-an-offline-markdown-editor/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/what-is-a-markdown-editor/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "A Markdown editor is a writing tool for creating and editing Markdown documents. It often adds features such as syntax highlighting, preview, shortcuts, file organization, export, and search while keeping the document source in plain text. Some Markdown editors focus on a single document view, while others add workspace behavior around notes, projects, folders, or publishing. The main distinction is that the format stays Markdown rather than being replaced by a proprietary document model. MdWrk is part of the Markdown editor category, but it emphasizes a local-first workspace around the format. That means the product focuses on writing, preview, organization, packages, and extension surfaces without hiding Markdown itself.",
+      "headings": [],
+      "links": [],
+      "wordCount": 108
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/what-is-a-markdown-editor/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/what-is-a-markdown-editor/#webpage",
+        "https://mdwrk.com/markdown/what-is-a-markdown-editor/#primary",
+        "https://mdwrk.com/markdown/what-is-a-markdown-editor/#faq",
+        "https://mdwrk.com/markdown/what-is-a-markdown-editor/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/what-is-markdown-used-for.md",
+    "sourceHash": "a5cd950f44745e5cae62381004b779ab1b82a3946d89fffbfc281e9da7784836",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/what-is-markdown-used-for/",
+      "title": "What Is Markdown Used For? | Common Markdown Workflows",
+      "description": "Markdown is used for documentation, README files, notes, blog drafts, knowledge bases, technical writing, and other portable plain-text publishing workflows.",
+      "h1": "What is Markdown used for?",
+      "subtitle": "A practical overview of the most common Markdown writing and publishing workflows.",
+      "entity": "MdWrk",
+      "intent": "what is markdown used for",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What is Markdown commonly used for?",
+          "answer": "Markdown is commonly used for documentation, notes, README files, blog drafts, technical articles, and knowledge-base content."
+        },
+        {
+          "question": "Is Markdown only for developers?",
+          "answer": "No. Markdown is popular with developers, but writers, students, teams, and product groups also use it for structured plain-text content."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/what-is-markdown/",
+        "/markdown/how-to-write-markdown/",
+        "/markdown/what-is-a-markdown-editor/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/what-is-markdown-used-for/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Markdown is used anywhere people want structured writing without giving up plain text. Common use cases include README files, developer documentation, knowledge-base articles, release notes, personal notes, meeting notes, blog drafts, and publishing workflows that later render to HTML. Teams often choose Markdown because the files stay portable. A Markdown document can be read in any text editor, stored in Git, moved between tools, and rendered when a site, app, or publishing pipeline needs formatted output. MdWrk uses Markdown in that broader tradition. The product adds preview, local-first organization, themes, and package surfaces around the format instead of replacing the Markdown source with a proprietary document model.",
+      "headings": [],
+      "links": [],
+      "wordCount": 107
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/what-is-markdown-used-for/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/what-is-markdown-used-for/#webpage",
+        "https://mdwrk.com/markdown/what-is-markdown-used-for/#primary",
+        "https://mdwrk.com/markdown/what-is-markdown-used-for/#faq",
+        "https://mdwrk.com/markdown/what-is-markdown-used-for/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "content/pages/markdown/what-is-markdown.md",
+    "sourceHash": "9a7be41c1848feb250734ef73c5ce3cfb4022ec8838c3e6bfc98961992b0d50f",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/markdown/what-is-markdown/",
+      "title": "What Is Markdown? | Plain-Text Writing Format Guide",
+      "description": "Markdown is a lightweight plain-text writing format that uses readable symbols for headings, lists, links, emphasis, code blocks, and other document structure.",
+      "h1": "What is Markdown?",
+      "subtitle": "A direct explanation of Markdown as a lightweight plain-text writing format.",
+      "entity": "MdWrk",
+      "intent": "what is markdown",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What is Markdown in simple terms?",
+          "answer": "Markdown is a lightweight plain-text format that uses readable punctuation and symbols to represent document structure."
+        },
+        {
+          "question": "Why do people use Markdown?",
+          "answer": "People use Markdown because it stays readable as plain text, works well in version control, and can be rendered into formats such as HTML."
+        }
+      ],
+      "parent": "/markdown/",
+      "related": [
+        "/markdown/how-to-write-markdown/",
+        "/markdown/what-is-markdown-used-for/",
+        "/markdown/what-is-a-markdown-editor/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/markdown/what-is-markdown/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Markdown is a lightweight plain-text writing format. It uses simple characters such as , -, , and backticks to represent headings, lists, emphasis, links, and code blocks without forcing writers to use a heavy visual editor. Markdown matters because the source stays readable even before it is rendered. A document can remain useful in raw text form, travel well through version control, and be converted into HTML or other outputs when publishing is needed. Many Markdown tools add preview, themes, export, or collaboration on top of the format. MdWrk fits into that tool layer by treating Markdown as the durable source artifact while adding a local-first workspace around it.",
+      "headings": [],
+      "links": [],
+      "wordCount": 109
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/markdown/what-is-markdown/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/markdown/what-is-markdown/#webpage",
+        "https://mdwrk.com/markdown/what-is-markdown/#primary",
+        "https://mdwrk.com/markdown/what-is-markdown/#faq",
+        "https://mdwrk.com/markdown/what-is-markdown/#breadcrumbs"
+      ]
+    }
+  },
+  {
     "sourcePath": "content/pages/packages/extension-runtime.md",
-    "sourceHash": "d9273419a35733491f0a43f978e48c805c88f8a2c9b5afb4ecd70b576ba1a93c",
+    "sourceHash": "7534b3dcbb8c575adb8295d568f3411188ca2eb1ba9f6338998f10eb1c50fb04",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/extension-runtime/",
@@ -1396,7 +1989,12 @@
           "answer": "It is the portable package for MdWrk extension runtime behavior, lifecycle, and host-facing contracts."
         }
       ],
-      "related": [],
+      "parent": "/packages/",
+      "related": [
+        "/packages/",
+        "/packages/theme-contract/",
+        "/proof/package-surfaces/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/extension-runtime/",
       "locale": "en",
@@ -1424,8 +2022,108 @@
     }
   },
   {
+    "sourcePath": "content/pages/packages/index.md",
+    "sourceHash": "33c6a5708111b6e1680a28eb08f05ba178f5edba0c8be14bf7eadd1644e44d0e",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/packages/",
+      "title": "MdWrk Packages | Reusable Markdown Editor And Renderer Packages",
+      "description": "Explore MdWrk packages for Markdown rendering, React integration, editor components, theme contracts, and extension runtime behavior.",
+      "h1": "Packages",
+      "subtitle": "Use the packages hub to find the reusable MdWrk modules behind rendering, editing, theme contracts, and extension behavior.",
+      "entity": "MdWrk",
+      "intent": "mdwrk packages",
+      "contentType": "docs",
+      "updatedAt": "2026-05-12",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What are MdWrk packages?",
+          "answer": "MdWrk packages are reusable modules for Markdown rendering, editor behavior, theme contracts, extension runtime behavior, and related adoption paths."
+        },
+        {
+          "question": "Why does MdWrk separate packages from the product site?",
+          "answer": "The package section makes reusable module boundaries explicit so teams can evaluate adoption without treating every capability as an app-only feature."
+        }
+      ],
+      "parent": "/",
+      "related": [
+        "/features/",
+        "/answers/",
+        "/proof/package-surfaces/"
+      ],
+      "tags": [],
+      "canonical": "https://mdwrk.com/packages/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "MdWrk packages are the reusable module surfaces behind the broader MdWrk product story. They help teams adopt rendering, editing, theming, and extension behavior without pulling in the full MdWrk application shell. Current public package pages @mdwrk/markdown-renderer-core is the self-contained Markdown parsing and rendering surface for HTML output and preview pipelines. @mdwrk/markdown-renderer-react provides React bindings for MdWrk-aligned Markdown rendering. @mdwrk/markdown-editor-react exposes React editor components for embedding MdWrk-style authoring surfaces. @mdwrk/theme-contract documents the governed token and compatibility contract for editor, preview, extension, and lander styling. @mdwrk/extension-runtime covers the reusable runtime boundary for extension lifecycle and host-facing behavior. Broader package families in the repo The public package pages cover only part of the current workspace package surface. The broader repo also includes the packaged workspace app, editor and renderer families, extension packages, shared utilities, lander packages, and the MdWrk content pack. How to use this section Start here if you are evaluating MdWrk as a package platform rather than only as an end-user application. The package pages clarify install surfaces, public APIs, and how each reusable module fits into the broader Markdown workflow.",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "current-public-package-pages",
+          "text": "Current public package pages"
+        },
+        {
+          "depth": 2,
+          "id": "broader-package-families-in-the-repo",
+          "text": "Broader package families in the repo"
+        },
+        {
+          "depth": 2,
+          "id": "how-to-use-this-section",
+          "text": "How to use this section"
+        }
+      ],
+      "links": [
+        {
+          "href": "/packages/markdown-renderer-core/",
+          "text": "@mdwrk/markdown-renderer-core",
+          "internal": true
+        },
+        {
+          "href": "/packages/markdown-renderer-react/",
+          "text": "@mdwrk/markdown-renderer-react",
+          "internal": true
+        },
+        {
+          "href": "/packages/markdown-editor-react/",
+          "text": "@mdwrk/markdown-editor-react",
+          "internal": true
+        },
+        {
+          "href": "/packages/theme-contract/",
+          "text": "@mdwrk/theme-contract",
+          "internal": true
+        },
+        {
+          "href": "/packages/extension-runtime/",
+          "text": "@mdwrk/extension-runtime",
+          "internal": true
+        }
+      ],
+      "wordCount": 180
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/packages/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/packages/#webpage",
+        "https://mdwrk.com/packages/#primary",
+        "https://mdwrk.com/packages/#faq",
+        "https://mdwrk.com/packages/#breadcrumbs"
+      ]
+    }
+  },
+  {
     "sourcePath": "content/pages/packages/markdown-editor-react.md",
-    "sourceHash": "750416d7be326e601bbd60640af12fa3700f3b580ace6f9de7486484c6366b25",
+    "sourceHash": "54f8a65297259cea39678690bc210647a6e9a388e944311ed5e954c731dea54b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-editor-react/",
@@ -1445,7 +2143,12 @@
           "answer": "It is the React editor package for embedding MdWrk-style Markdown authoring surfaces."
         }
       ],
-      "related": [],
+      "parent": "/packages/",
+      "related": [
+        "/packages/",
+        "/packages/markdown-renderer-react/",
+        "/packages/theme-contract/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-editor-react/",
       "locale": "en",
@@ -1474,7 +2177,7 @@
   },
   {
     "sourcePath": "content/pages/packages/markdown-renderer-core.md",
-    "sourceHash": "9409bfea18c6a6b503a55954f4c6186c0d36847a0008f6a45d4efb5af2265095",
+    "sourceHash": "6b7ac8e95fce2f2d8fc14456a58ed607ad4959ffd8e441e42f9bc064d04881a0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-renderer-core/",
@@ -1494,7 +2197,12 @@
           "answer": "It is the package-level Markdown parsing and rendering surface used by MdWrk renderer workflows."
         }
       ],
-      "related": [],
+      "parent": "/packages/",
+      "related": [
+        "/packages/",
+        "/packages/markdown-renderer-react/",
+        "/proof/package-surfaces/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-renderer-core/",
       "locale": "en",
@@ -1523,7 +2231,7 @@
   },
   {
     "sourcePath": "content/pages/packages/markdown-renderer-react.md",
-    "sourceHash": "6eb46c5f12bf91da91c4fbb92dac3cc11ca5305444a18304cc198b97dce57825",
+    "sourceHash": "03ad6a47c1a1c9e4af8545454442ad80b50e1c8755376a72a68bce8a56e71560",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/markdown-renderer-react/",
@@ -1543,7 +2251,12 @@
           "answer": "It is the React binding package for rendering Markdown through MdWrk's renderer family."
         }
       ],
-      "related": [],
+      "parent": "/packages/",
+      "related": [
+        "/packages/",
+        "/packages/markdown-renderer-core/",
+        "/packages/markdown-editor-react/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/markdown-renderer-react/",
       "locale": "en",
@@ -1572,7 +2285,7 @@
   },
   {
     "sourcePath": "content/pages/packages/theme-contract.md",
-    "sourceHash": "0e61e905074bf29adb21ce954bc2864d3016147c67331e96418a31b27b03b21a",
+    "sourceHash": "4551cf7c64b0ea04c065e430b0faed6430d8c01078597bd6d8fbed0b1e0c1992",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/packages/theme-contract/",
@@ -1592,7 +2305,12 @@
           "answer": "It is the package that defines governed theme tokens and compatibility surfaces for MdWrk packages and apps."
         }
       ],
-      "related": [],
+      "parent": "/packages/",
+      "related": [
+        "/packages/",
+        "/answers/how-do-mdwrk-theme-packs-work/",
+        "/packages/extension-runtime/"
+      ],
       "tags": [],
       "canonical": "https://mdwrk.com/packages/theme-contract/",
       "locale": "en",

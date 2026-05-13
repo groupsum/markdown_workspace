@@ -10,6 +10,11 @@ contentType: "package"
 updatedAt: "2026-05-05"
 author: CobyCloud
 subtitle: "Use the React editor package when another product needs a reusable Markdown authoring surface."
+parent: "/packages/"
+related:
+  - "/packages/"
+  - "/packages/markdown-renderer-react/"
+  - "/packages/theme-contract/"
 faqs:
   - question: "What is @mdwrk/markdown-editor-react?"
     answer: "It is the React editor package for embedding MdWrk-style Markdown authoring surfaces."

@@ -1,12 +1,12 @@
 # What is a local-first Markdown workspace?
 
-A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.
+A direct answer for readers evaluating local-first Markdown writing tools and workspace behavior.
 
-A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are explicit paths rather than requirements for every edit.
+A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are optional paths rather than requirements for every edit.
 
-MdWrk uses this model to keep Markdown close to the user and close to the file. The workspace can focus on source editing, rendered preview, project organization, package surfaces, themes, and extensions before network workflows enter the picture.
+That model matters when teams want Markdown to stay usable during normal daily work even if a hosted service is unavailable. It also makes it easier to understand what stays on the device, what moves through sync, and what belongs to a publishing or repository workflow.
 
-This answer page is MdWrk-specific content rendered through a reusable lander contract. Another product can use the same answer-page shape with different facts.
+MdWrk follows that approach by treating Markdown authoring, preview, and workspace organization as the default experience before optional networked workflows enter the picture.
 
 ## Frequently Asked Questions
 

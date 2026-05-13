@@ -6,7 +6,7 @@ URL: https://mdwrk.com/answers/does-mdwrk-require-a-server/
 
 A direct answer for readers checking MdWrk's local-first editing boundary.
 
-MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, package discovery, repository operations, and deployment are explicit integrations that move beyond normal local editing. This answer belongs to the MdWrk content pack. The generic lander system can render the answer shape for any product without knowing MdWrk's storage or server policy.
+MdWrk does not require a hosted server for normal Markdown editing. The product is designed around browser-based, local-first authoring where writing, preview, and workspace organization can remain available without a hosted authoring backend. Some workflows still use network services. Sync, repository operations, package discovery, and deployment are separate integration paths that go beyond the default editing boundary. That distinction is important because it lets teams evaluate MdWrk as a local-first writing tool first, then decide later which connected workflows they actually need.
 
 ## How do MdWrk theme packs work?
 
@@ -14,7 +14,7 @@ URL: https://mdwrk.com/answers/how-do-mdwrk-theme-packs-work/
 
 A direct answer about MdWrk theme pack contracts and portable styling.
 
-MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to make visual customization portable instead of tying every theme to private implementation details. Theme contracts help package authors, extension authors, and product contributors work against stable styling surfaces. A MdWrk theme pack can express product identity while reusable packages keep their generic behavior. This page is MdWrk content. Other products can supply different theme packs while reusing the same lander rendering system.
+MdWrk theme packs target governed token and surface contracts so styling can travel across editor, preview, and lander surfaces. The goal is to keep visual customization portable instead of tying every theme to private implementation details. That contract-based approach helps package authors, extension authors, and product contributors work against stable styling surfaces. A theme can express product identity while the underlying reusable packages keep their generic behavior. In practice, theme packs make it easier to change appearance without rewriting renderer, editor, or extension logic.
 
 ## How does MdWrk store Markdown locally?
 
@@ -22,15 +22,23 @@ URL: https://mdwrk.com/answers/how-does-mdwrk-store-markdown-locally/
 
 A direct answer about MdWrk local persistence and storage boundaries.
 
-MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This supports local writing, preview, and organization as the default path. Local persistence does not remove export, sync, or repository workflows. It clarifies when content stays local and when an integration moves it across a boundary. The answer is product-specific. The portable lander package only provides reusable validation, rendering, SEO, schema, and static output mechanics.
+MdWrk uses browser-local persistence for workspace state so authoring can remain device-local unless the user chooses a workflow that moves content elsewhere. This keeps local writing, preview, and organization available as the default path. Local persistence does not remove export, sync, or repository workflows. It makes the storage boundary clearer by separating normal local editing from the moments when a user intentionally moves content across systems. That boundary is part of the broader MdWrk local-first model, where Markdown authoring starts on the device and connected workflows remain explicit choices.
+
+## Answers
+
+URL: https://mdwrk.com/answers/
+
+Use the answers hub when you want short, direct responses before moving into feature pages, package pages, or broader Markdown guides.
+
+The MdWrk answers section is the direct-response layer of the site. It is meant for visitors, crawlers, and AI assistants that need a clear answer first and deeper product context second. MdWrk answer pages What is a local-first Markdown workspace? explains the model behind local writing, preview, and organization before sync enters the workflow. What is an offline Markdown editor? defines offline Markdown editing and why it matters for everyday writing. Does MdWrk require a server? answers the core hosting question directly. How does MdWrk store Markdown locally? explains the local persistence boundary. How do MdWrk theme packs work? covers token and surface contracts for portable styling. Continue into broader guides Use the Markdown guides when the question is broader than MdWrk itself. That section explains Markdown concepts, syntax, editors, and common comparisons for general Markdown search intent.
 
 ## What is a local-first Markdown workspace?
 
 URL: https://mdwrk.com/answers/what-is-a-local-first-markdown-workspace/
 
-A direct answer for readers evaluating local-first Markdown tools and MdWrk's product boundary.
+A direct answer for readers evaluating local-first Markdown writing tools and workspace behavior.
 
-A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are explicit paths rather than requirements for every edit. MdWrk uses this model to keep Markdown close to the user and close to the file. The workspace can focus on source editing, rendered preview, project organization, package surfaces, themes, and extensions before network workflows enter the picture. This answer page is MdWrk-specific content rendered through a reusable lander contract. Another product can use the same answer-page shape with different facts.
+A local-first Markdown workspace is an authoring environment where normal writing, preview, and organization work locally first. Sync, repository, and hosted integrations can still exist, but they are optional paths rather than requirements for every edit. That model matters when teams want Markdown to stay usable during normal daily work even if a hosted service is unavailable. It also makes it easier to understand what stays on the device, what moves through sync, and what belongs to a publishing or repository workflow. MdWrk follows that approach by treating Markdown authoring, preview, and workspace organization as the default experience before optional networked workflows enter the picture.
 
 ## What is an offline Markdown editor?
 
@@ -38,7 +46,7 @@ URL: https://mdwrk.com/answers/what-is-an-offline-markdown-editor/
 
 A direct answer for readers comparing offline Markdown tools and browser-based writing surfaces.
 
-An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted authoring backend for normal editing. Offline capability is especially useful for drafts, documentation, release notes, and workspace organization that should not stop when a network path is unavailable. MdWrk frames offline editing as part of a broader local-first workspace. The product story includes preview, browser-local persistence, package reuse, themes, extensions, and optional sync rather than only a single editor surface. The reusable lander packages do not define this answer. They provide the page contract, metadata, FAQ structure, and static artifact pipeline.
+An offline Markdown editor lets authors write and preview Markdown without requiring a live hosted backend for normal editing. Offline capability matters for drafts, documentation, release notes, and note-taking workflows that should continue even when the network is unavailable. Most offline Markdown tools add different layers around that core idea. Some focus on a single document, while others add preview, file management, workspace organization, themes, or publishing workflows. MdWrk approaches offline editing as part of a broader local-first Markdown workspace, pairing browser-based authoring with preview, local persistence, and optional integration paths.
 
 ## MdWrk launch notes
 
@@ -176,6 +184,62 @@ MdWrk is a local-first Markdown workspace for authors and developers who want Ma
 
 MdWrk gives Markdown authors a workspace that treats plain text as the durable source of truth. The product combines source editing, rendered preview, workspace organization, theme surfaces, extension contracts, and package-level documentation in one environment. The public lander is compiled from Markdown files into static HTML. Search engines, answer engines, AI retrieval systems, and people using simple command-line tools can read the important page content without waiting for a JavaScript application shell to render it. Why MdWrk Exists Markdown teams often want portability and speed, but product sites around Markdown tools can hide the real content behind runtime frameworks. MdWrk keeps public content in Markdown, validates metadata with a schema, renders visible answers and FAQs, and ships machine-readable artifacts with the build. What The Workspace Emphasizes MdWrk focuses on offline-capable writing, local-first workspace state, privacy-aware sharing, reusable editor and renderer packages, and extension host boundaries. The documentation explains what lives locally, what needs network access, and which package surfaces developers can use directly. Static Content Contract Every public page in this compiler has YAML frontmatter for metadata and Markdown body content for the article. The compiler produces HTML, JSON-LD, sitemap data, robots policy, LLM-oriented indexes, Markdown mirrors, and a content registry that can be verified before deployment. Start Here Begin with the quickstart, then review the feature pages for offline Markdown editing, local-first workflow design, and extension platform boundaries. Comparison pages explain how MdWrk differs from note apps, code editors, and standard Markdown editors without recommending tools that do not fit MdWrk's privacy and workspace goals.
 
+## Basic Markdown syntax
+
+URL: https://mdwrk.com/markdown/basic-markdown-syntax/
+
+A compact guide to the Markdown syntax most people use every day.
+
+Basic Markdown syntax covers the structural patterns most writers use every day. That includes headings, paragraphs, ordered and unordered lists, links, emphasis, blockquotes, inline code, fenced code blocks, and images. For many documents, that basic syntax is enough. README files, documentation pages, release notes, notes, and blog drafts often do not need more than headings, lists, links, and code fences to stay clear and portable. Preview tools make syntax easier to validate while writing, but the core value of Markdown is that the source remains understandable even before rendering. That is one reason MdWrk keeps preview close to the Markdown source instead of hiding the text model.
+
+## How to write Markdown
+
+URL: https://mdwrk.com/markdown/how-to-write-markdown/
+
+A practical beginner guide to writing readable Markdown in plain text.
+
+Writing Markdown starts with plain text and a few simple patterns. Use for headings, blank lines for paragraphs, - or 1. for lists, text or text for emphasis, and backticks for inline code or fenced code blocks. The goal is to keep the source readable while still making the document easy to render later. Good Markdown usually has clear headings, short paragraphs, descriptive links, and simple list structure before it adds more advanced elements such as tables or task lists. If you want a faster writing workflow, a Markdown editor can add preview, shortcuts, syntax highlighting, and file organization without changing the underlying format. MdWrk builds on that kind of workflow while keeping Markdown itself portable.
+
+## Markdown
+
+URL: https://mdwrk.com/markdown/
+
+Use this hub for general Markdown definitions, syntax guides, editor concepts, comparisons, and practical writing questions.
+
+Markdown is a plain-text writing format built around readable source text. This section explains Markdown as a general topic first, then connects those ideas to MdWrk where the product relationship is useful. Start with the basics What is Markdown? explains the format, why people use it, and how it differs from proprietary document models. What is Markdown used for? covers common writing, documentation, publishing, and developer workflows. How to write Markdown walks through headings, lists, links, emphasis, code fences, and everyday writing patterns. Basic Markdown syntax gives a compact syntax reference for common authoring tasks. Learn the surrounding tools and comparisons What is a Markdown editor? explains the tool category around the format. Markdown vs HTML compares Markdown authoring with HTML authoring for content teams and developers. Use these guides as the general Markdown knowledge layer, then move into MdWrk-specific answers, features, compare, and packages when you want product-specific detail.
+
+## Markdown vs HTML
+
+URL: https://mdwrk.com/markdown/markdown-vs-html/
+
+A practical comparison of Markdown authoring and direct HTML authoring.
+
+Markdown and HTML both describe structure, but they serve different authoring needs. Markdown is optimized for readable plain text and fast writing, while HTML gives direct control over web-page structure, attributes, and detailed presentation hooks. Most writers choose Markdown when the main job is authoring content rather than hand-coding a page. The Markdown source stays compact and portable, and a renderer can translate it into HTML when the publishing system needs browser output. HTML remains important for final rendering, layout, and component structure. MdWrk fits into that relationship by helping authors work in Markdown first while still supporting rendered preview and web-oriented output paths.
+
+## What is a Markdown editor?
+
+URL: https://mdwrk.com/markdown/what-is-a-markdown-editor/
+
+A direct explanation of the tool category around Markdown writing.
+
+A Markdown editor is a writing tool for creating and editing Markdown documents. It often adds features such as syntax highlighting, preview, shortcuts, file organization, export, and search while keeping the document source in plain text. Some Markdown editors focus on a single document view, while others add workspace behavior around notes, projects, folders, or publishing. The main distinction is that the format stays Markdown rather than being replaced by a proprietary document model. MdWrk is part of the Markdown editor category, but it emphasizes a local-first workspace around the format. That means the product focuses on writing, preview, organization, packages, and extension surfaces without hiding Markdown itself.
+
+## What is Markdown used for?
+
+URL: https://mdwrk.com/markdown/what-is-markdown-used-for/
+
+A practical overview of the most common Markdown writing and publishing workflows.
+
+Markdown is used anywhere people want structured writing without giving up plain text. Common use cases include README files, developer documentation, knowledge-base articles, release notes, personal notes, meeting notes, blog drafts, and publishing workflows that later render to HTML. Teams often choose Markdown because the files stay portable. A Markdown document can be read in any text editor, stored in Git, moved between tools, and rendered when a site, app, or publishing pipeline needs formatted output. MdWrk uses Markdown in that broader tradition. The product adds preview, local-first organization, themes, and package surfaces around the format instead of replacing the Markdown source with a proprietary document model.
+
+## What is Markdown?
+
+URL: https://mdwrk.com/markdown/what-is-markdown/
+
+A direct explanation of Markdown as a lightweight plain-text writing format.
+
+Markdown is a lightweight plain-text writing format. It uses simple characters such as , -, , and backticks to represent headings, lists, emphasis, links, and code blocks without forcing writers to use a heavy visual editor. Markdown matters because the source stays readable even before it is rendered. A document can remain useful in raw text form, travel well through version control, and be converted into HTML or other outputs when publishing is needed. Many Markdown tools add preview, themes, export, or collaboration on top of the format. MdWrk fits into that tool layer by treating Markdown as the durable source artifact while adding a local-first workspace around it.
+
 ## @mdwrk/extension-runtime
 
 URL: https://mdwrk.com/packages/extension-runtime/
@@ -183,6 +247,14 @@ URL: https://mdwrk.com/packages/extension-runtime/
 Use the extension runtime package when building governed commands, panes, settings, and integration surfaces.
 
 @mdwrk/extension-runtime provides portable runtime utilities for governed MdWrk extension behavior. It supports the package-level extension model behind commands, panes, settings, and integrations. Install: Use this package when extension behavior needs to stay explicit, inspectable, and compatible with MdWrk host surfaces. The runtime package keeps extension behavior out of undocumented client patches. A package author can reason about lifecycle, host context, compatibility, and trust policy as stable surfaces that can be documented, validated, and reused across delivery targets.
+
+## Packages
+
+URL: https://mdwrk.com/packages/
+
+Use the packages hub to find the reusable MdWrk modules behind rendering, editing, theme contracts, and extension behavior.
+
+MdWrk packages are the reusable module surfaces behind the broader MdWrk product story. They help teams adopt rendering, editing, theming, and extension behavior without pulling in the full MdWrk application shell. Current public package pages @mdwrk/markdown-renderer-core is the self-contained Markdown parsing and rendering surface for HTML output and preview pipelines. @mdwrk/markdown-renderer-react provides React bindings for MdWrk-aligned Markdown rendering. @mdwrk/markdown-editor-react exposes React editor components for embedding MdWrk-style authoring surfaces. @mdwrk/theme-contract documents the governed token and compatibility contract for editor, preview, extension, and lander styling. @mdwrk/extension-runtime covers the reusable runtime boundary for extension lifecycle and host-facing behavior. Broader package families in the repo The public package pages cover only part of the current workspace package surface. The broader repo also includes the packaged workspace app, editor and renderer families, extension packages, shared utilities, lander packages, and the MdWrk content pack. How to use this section Start here if you are evaluating MdWrk as a package platform rather than only as an end-user application. The package pages clarify install surfaces, public APIs, and how each reusable module fits into the broader Markdown workflow.
 
 ## @mdwrk/markdown-editor-react
 

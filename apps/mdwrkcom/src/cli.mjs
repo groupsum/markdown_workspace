@@ -1571,6 +1571,7 @@ const breadcrumbsFor = (entry, registry) => {
     ['/features/', '/features/'],
     ['/compare/', '/compare/'],
     ['/answers/', '/answers/'],
+    ['/markdown/', '/markdown/'],
     ['/packages/', '/packages/'],
     ['/proof/', '/proof/'],
     ['/trust/', '/trust/'],
@@ -1711,7 +1712,9 @@ const jsonLdFor = (entry, registry) => {
 const renderTopNav = (registry, currentSlug) => {
   const links = [
     ['/', 'Home'],
+    ['/markdown/', 'Markdown'],
     ['/features/', 'Features'],
+    ['/packages/', 'Packages'],
     ['/compare/', 'Compare'],
     ['/docs/', 'Docs'],
     ['/updates/', 'Updates'],
@@ -2162,6 +2165,8 @@ const defaultRelatedCandidates = {
     '/trust/privacy-boundary/',
   ],
   faq: [
+    '/answers/',
+    '/markdown/',
     '/features/local-first-markdown-workspace/',
     '/features/offline-markdown-editor/',
     '/answers/does-mdwrk-require-a-server/',
@@ -2174,6 +2179,7 @@ const defaultRelatedCandidates = {
     '/proof/package-surfaces/',
   ],
   package: [
+    '/packages/',
     '/packages/markdown-renderer-core/',
     '/packages/markdown-renderer-react/',
     '/packages/markdown-editor-react/',
