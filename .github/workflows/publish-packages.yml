@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: publish-packages-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   NODE_VERSION: '20'
