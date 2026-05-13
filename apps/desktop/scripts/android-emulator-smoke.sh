@@ -38,7 +38,10 @@ while [ "${install_attempt}" -le 3 ]; do
 done
 
 if [ -n "${launchable_activity}" ]; then
-  adb shell am start -W -n "${app_id}/${launchable_activity}"
+  if ! adb shell am start -W -n "${app_id}/${launchable_activity}"; then
+    echo "Explicit activity launch failed; falling back to package launcher intent" >&2
+    adb shell monkey -p "${app_id}" -c android.intent.category.LAUNCHER 1
+  fi
 else
   adb shell monkey -p "${app_id}" -c android.intent.category.LAUNCHER 1
 fi
