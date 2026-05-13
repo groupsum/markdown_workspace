@@ -11059,9 +11059,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11070,7 +11070,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.web-page-reusable-component.t3"
       ],
       "test_ids": [
@@ -11091,9 +11090,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11102,7 +11101,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.web-site-reusable-component.t3"
       ],
       "test_ids": [
@@ -11123,9 +11121,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11134,7 +11132,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.organization-reusable-component.t3"
       ],
       "test_ids": [
@@ -11155,9 +11152,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11166,7 +11163,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.software-application-reusable-component.t3"
       ],
       "test_ids": [
@@ -11187,9 +11183,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11198,7 +11194,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.web-application-reusable-component.t3"
       ],
       "test_ids": [
@@ -11219,9 +11214,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11230,7 +11225,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.article-reusable-component.t3"
       ],
       "test_ids": [
@@ -11251,9 +11245,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11262,7 +11256,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.tech-article-reusable-component.t3"
       ],
       "test_ids": [
@@ -11283,9 +11276,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11294,7 +11287,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.blog-posting-reusable-component.t3"
       ],
       "test_ids": [
@@ -11317,7 +11309,7 @@
       "plan": {
         "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11326,7 +11318,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.breadcrumb-list-reusable-component.t3"
       ],
       "test_ids": [
@@ -11349,7 +11340,7 @@
       "plan": {
         "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11358,7 +11349,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.faq-page-reusable-component.t3"
       ],
       "test_ids": [
@@ -11379,9 +11369,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11390,7 +11380,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.qa-page-reusable-component.t3"
       ],
       "test_ids": [
@@ -11411,9 +11400,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11422,7 +11411,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.how-to-reusable-component.t3"
       ],
       "test_ids": [
@@ -11443,9 +11431,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11454,7 +11442,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.item-list-reusable-component.t3"
       ],
       "test_ids": [
@@ -11475,9 +11462,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11486,7 +11473,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.software-source-code-reusable-component.t3"
       ],
       "test_ids": [
@@ -11507,9 +11493,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11518,7 +11504,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.product-reusable-component.t3"
       ],
       "test_ids": [
@@ -11539,9 +11524,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11550,7 +11535,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.dataset-reusable-component.t3"
       ],
       "test_ids": [
@@ -11571,9 +11555,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11582,7 +11566,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.event-reusable-component.t3"
       ],
       "test_ids": [
@@ -11603,9 +11586,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11614,7 +11597,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.video-object-reusable-component.t3"
       ],
       "test_ids": [
@@ -11635,9 +11617,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11646,7 +11628,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.image-object-reusable-component.t3"
       ],
       "test_ids": [
@@ -11667,9 +11648,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11678,7 +11659,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.profile-page-reusable-component.t3"
       ],
       "test_ids": [
@@ -11699,9 +11679,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11710,7 +11690,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.review-reusable-component.t3"
       ],
       "test_ids": [
@@ -11731,9 +11710,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11742,7 +11721,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.aggregate-rating-reusable-component.t3"
       ],
       "test_ids": [
@@ -11763,9 +11741,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11774,7 +11752,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.course-reusable-component.t3"
       ],
       "test_ids": [
@@ -11795,9 +11772,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11806,7 +11783,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.course-instance-reusable-component.t3"
       ],
       "test_ids": [
@@ -11827,9 +11803,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11838,7 +11814,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.discussion-forum-posting-reusable-component.t3"
       ],
       "test_ids": [
@@ -11859,9 +11834,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11870,7 +11845,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.book-reusable-component.t3"
       ],
       "test_ids": [
@@ -11891,9 +11865,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11902,7 +11876,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.read-action-reusable-component.t3"
       ],
       "test_ids": [
@@ -11923,9 +11896,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11934,7 +11907,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.claim-review-reusable-component.t3"
       ],
       "test_ids": [
@@ -11955,9 +11927,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11966,7 +11938,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.employer-aggregate-rating-reusable-component.t3"
       ],
       "test_ids": [
@@ -11987,9 +11958,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -11998,7 +11969,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.monetary-amount-distribution-reusable-component.t3"
       ],
       "test_ids": [
@@ -12019,9 +11989,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12030,7 +12000,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.job-posting-reusable-component.t3"
       ],
       "test_ids": [
@@ -12051,9 +12020,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12062,7 +12031,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.local-business-reusable-component.t3"
       ],
       "test_ids": [
@@ -12083,9 +12051,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12094,7 +12062,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.member-program-reusable-component.t3"
       ],
       "test_ids": [
@@ -12115,9 +12082,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12126,7 +12093,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.math-solver-reusable-component.t3"
       ],
       "test_ids": [
@@ -12147,9 +12113,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12158,7 +12124,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.merchant-return-policy-reusable-component.t3"
       ],
       "test_ids": [
@@ -12179,9 +12144,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12190,7 +12155,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.offer-shipping-details-reusable-component.t3"
       ],
       "test_ids": [
@@ -12211,9 +12175,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12222,7 +12186,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.movie-reusable-component.t3"
       ],
       "test_ids": [
@@ -12243,9 +12206,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12254,7 +12217,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.product-group-reusable-component.t3"
       ],
       "test_ids": [
@@ -12275,9 +12237,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12286,7 +12248,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.recipe-reusable-component.t3"
       ],
       "test_ids": [
@@ -12307,9 +12268,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12318,7 +12279,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.speakable-specification-reusable-component.t3"
       ],
       "test_ids": [
@@ -12339,9 +12299,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12350,7 +12310,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.vacation-rental-reusable-component.t3"
       ],
       "test_ids": [
@@ -12371,9 +12330,9 @@
         "note": null
       },
       "plan": {
-        "horizon": "next",
+        "horizon": "current",
         "slot": null,
-        "target_claim_tier": "T2",
+        "target_claim_tier": "T3",
         "target_lifecycle_stage": "active"
       },
       "spec_ids": [
@@ -12382,7 +12341,6 @@
         "spc:2083"
       ],
       "claim_ids": [
-        "clm:cross-cutting",
         "clm:lander-react.structured-data.vehicle-reusable-component.t3"
       ],
       "test_ids": [
@@ -14141,7 +14099,8 @@
       ],
       "evidence_ids": [
         "evd:packages-lander-lander-react-tests-run-smoke.mjs",
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
@@ -15106,49 +15065,7 @@
         "feat:structured-data.recipe",
         "feat:structured-data.speakable-specification",
         "feat:structured-data.vacation-rental",
-        "feat:structured-data.vehicle",
-        "feat:lander-react.structured-data.web-page-reusable-component",
-        "feat:lander-react.structured-data.web-site-reusable-component",
-        "feat:lander-react.structured-data.organization-reusable-component",
-        "feat:lander-react.structured-data.software-application-reusable-component",
-        "feat:lander-react.structured-data.web-application-reusable-component",
-        "feat:lander-react.structured-data.article-reusable-component",
-        "feat:lander-react.structured-data.tech-article-reusable-component",
-        "feat:lander-react.structured-data.blog-posting-reusable-component",
-        "feat:lander-react.structured-data.breadcrumb-list-reusable-component",
-        "feat:lander-react.structured-data.faq-page-reusable-component",
-        "feat:lander-react.structured-data.qa-page-reusable-component",
-        "feat:lander-react.structured-data.how-to-reusable-component",
-        "feat:lander-react.structured-data.item-list-reusable-component",
-        "feat:lander-react.structured-data.software-source-code-reusable-component",
-        "feat:lander-react.structured-data.product-reusable-component",
-        "feat:lander-react.structured-data.dataset-reusable-component",
-        "feat:lander-react.structured-data.event-reusable-component",
-        "feat:lander-react.structured-data.video-object-reusable-component",
-        "feat:lander-react.structured-data.image-object-reusable-component",
-        "feat:lander-react.structured-data.profile-page-reusable-component",
-        "feat:lander-react.structured-data.review-reusable-component",
-        "feat:lander-react.structured-data.aggregate-rating-reusable-component",
-        "feat:lander-react.structured-data.course-reusable-component",
-        "feat:lander-react.structured-data.course-instance-reusable-component",
-        "feat:lander-react.structured-data.discussion-forum-posting-reusable-component",
-        "feat:lander-react.structured-data.book-reusable-component",
-        "feat:lander-react.structured-data.read-action-reusable-component",
-        "feat:lander-react.structured-data.claim-review-reusable-component",
-        "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component",
-        "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component",
-        "feat:lander-react.structured-data.job-posting-reusable-component",
-        "feat:lander-react.structured-data.local-business-reusable-component",
-        "feat:lander-react.structured-data.member-program-reusable-component",
-        "feat:lander-react.structured-data.math-solver-reusable-component",
-        "feat:lander-react.structured-data.merchant-return-policy-reusable-component",
-        "feat:lander-react.structured-data.offer-shipping-details-reusable-component",
-        "feat:lander-react.structured-data.movie-reusable-component",
-        "feat:lander-react.structured-data.product-group-reusable-component",
-        "feat:lander-react.structured-data.recipe-reusable-component",
-        "feat:lander-react.structured-data.speakable-specification-reusable-component",
-        "feat:lander-react.structured-data.vacation-rental-reusable-component",
-        "feat:lander-react.structured-data.vehicle-reusable-component"
+        "feat:structured-data.vehicle"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -17720,10 +17637,10 @@
     {
       "id": "clm:lander-react.structured-data.aggregate-rating-reusable-component.t3",
       "title": "Lander-react reusable structured data AggregateRating component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.aggregate-rating-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.aggregate-rating-reusable-component"
       ],
@@ -17731,16 +17648,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.article-reusable-component.t3",
       "title": "Lander-react reusable structured data Article component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.article-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.article-reusable-component"
       ],
@@ -17748,16 +17666,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.blog-posting-reusable-component.t3",
       "title": "Lander-react reusable structured data BlogPosting component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.blog-posting-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.blog-posting-reusable-component"
       ],
@@ -17765,16 +17684,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.book-reusable-component.t3",
       "title": "Lander-react reusable structured data Book component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.book-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.book-reusable-component"
       ],
@@ -17782,16 +17702,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.breadcrumb-list-reusable-component.t3",
       "title": "Lander-react reusable structured data BreadcrumbList component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.breadcrumb-list-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.breadcrumb-list-reusable-component"
       ],
@@ -17799,16 +17720,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.claim-review-reusable-component.t3",
       "title": "Lander-react reusable structured data ClaimReview component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.claim-review-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.claim-review-reusable-component"
       ],
@@ -17816,16 +17738,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.course-instance-reusable-component.t3",
       "title": "Lander-react reusable structured data CourseInstance component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.course-instance-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.course-instance-reusable-component"
       ],
@@ -17833,16 +17756,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.course-reusable-component.t3",
       "title": "Lander-react reusable structured data Course component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.course-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.course-reusable-component"
       ],
@@ -17850,16 +17774,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.dataset-reusable-component.t3",
       "title": "Lander-react reusable structured data Dataset component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.dataset-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.dataset-reusable-component"
       ],
@@ -17867,16 +17792,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.discussion-forum-posting-reusable-component.t3",
       "title": "Lander-react reusable structured data DiscussionForumPosting component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.discussion-forum-posting-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.discussion-forum-posting-reusable-component"
       ],
@@ -17884,16 +17810,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.employer-aggregate-rating-reusable-component.t3",
       "title": "Lander-react reusable structured data EmployerAggregateRating component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.employer-aggregate-rating-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component"
       ],
@@ -17901,16 +17828,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.event-reusable-component.t3",
       "title": "Lander-react reusable structured data Event component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.event-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.event-reusable-component"
       ],
@@ -17918,16 +17846,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.faq-page-reusable-component.t3",
       "title": "Lander-react reusable structured data FAQPage component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.faq-page-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.faq-page-reusable-component"
       ],
@@ -17935,16 +17864,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.how-to-reusable-component.t3",
       "title": "Lander-react reusable structured data HowTo component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.how-to-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.how-to-reusable-component"
       ],
@@ -17952,16 +17882,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.image-object-reusable-component.t3",
       "title": "Lander-react reusable structured data ImageObject component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.image-object-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.image-object-reusable-component"
       ],
@@ -17969,16 +17900,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.item-list-reusable-component.t3",
       "title": "Lander-react reusable structured data ItemList component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.item-list-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.item-list-reusable-component"
       ],
@@ -17986,16 +17918,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.job-posting-reusable-component.t3",
       "title": "Lander-react reusable structured data JobPosting component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.job-posting-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.job-posting-reusable-component"
       ],
@@ -18003,16 +17936,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.local-business-reusable-component.t3",
       "title": "Lander-react reusable structured data LocalBusiness component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.local-business-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.local-business-reusable-component"
       ],
@@ -18020,16 +17954,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.math-solver-reusable-component.t3",
       "title": "Lander-react reusable structured data MathSolver component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.math-solver-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.math-solver-reusable-component"
       ],
@@ -18037,16 +17972,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.member-program-reusable-component.t3",
       "title": "Lander-react reusable structured data MemberProgram component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.member-program-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.member-program-reusable-component"
       ],
@@ -18054,16 +17990,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.merchant-return-policy-reusable-component.t3",
       "title": "Lander-react reusable structured data MerchantReturnPolicy component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.merchant-return-policy-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.merchant-return-policy-reusable-component"
       ],
@@ -18071,16 +18008,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.monetary-amount-distribution-reusable-component.t3",
       "title": "Lander-react reusable structured data MonetaryAmountDistribution component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.monetary-amount-distribution-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component"
       ],
@@ -18088,16 +18026,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.movie-reusable-component.t3",
       "title": "Lander-react reusable structured data Movie component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.movie-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.movie-reusable-component"
       ],
@@ -18105,16 +18044,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.offer-shipping-details-reusable-component.t3",
       "title": "Lander-react reusable structured data OfferShippingDetails component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.offer-shipping-details-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.offer-shipping-details-reusable-component"
       ],
@@ -18122,16 +18062,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.organization-reusable-component.t3",
       "title": "Lander-react reusable structured data Organization component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.organization-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.organization-reusable-component"
       ],
@@ -18139,16 +18080,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.product-group-reusable-component.t3",
       "title": "Lander-react reusable structured data ProductGroup component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.product-group-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.product-group-reusable-component"
       ],
@@ -18156,16 +18098,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.product-reusable-component.t3",
       "title": "Lander-react reusable structured data Product component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.product-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.product-reusable-component"
       ],
@@ -18173,16 +18116,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.profile-page-reusable-component.t3",
       "title": "Lander-react reusable structured data ProfilePage component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.profile-page-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.profile-page-reusable-component"
       ],
@@ -18190,16 +18134,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.qa-page-reusable-component.t3",
       "title": "Lander-react reusable structured data QAPage component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.qa-page-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.qa-page-reusable-component"
       ],
@@ -18207,16 +18152,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.read-action-reusable-component.t3",
       "title": "Lander-react reusable structured data ReadAction component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.read-action-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.read-action-reusable-component"
       ],
@@ -18224,16 +18170,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.recipe-reusable-component.t3",
       "title": "Lander-react reusable structured data Recipe component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.recipe-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.recipe-reusable-component"
       ],
@@ -18241,16 +18188,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.review-reusable-component.t3",
       "title": "Lander-react reusable structured data Review component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.review-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.review-reusable-component"
       ],
@@ -18258,16 +18206,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.software-application-reusable-component.t3",
       "title": "Lander-react reusable structured data SoftwareApplication component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.software-application-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.software-application-reusable-component"
       ],
@@ -18275,16 +18224,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.software-source-code-reusable-component.t3",
       "title": "Lander-react reusable structured data SoftwareSourceCode component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.software-source-code-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.software-source-code-reusable-component"
       ],
@@ -18292,16 +18242,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.speakable-specification-reusable-component.t3",
       "title": "Lander-react reusable structured data SpeakableSpecification component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.speakable-specification-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.speakable-specification-reusable-component"
       ],
@@ -18309,16 +18260,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.tech-article-reusable-component.t3",
       "title": "Lander-react reusable structured data TechArticle component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.tech-article-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.tech-article-reusable-component"
       ],
@@ -18326,16 +18278,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.vacation-rental-reusable-component.t3",
       "title": "Lander-react reusable structured data VacationRental component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.vacation-rental-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.vacation-rental-reusable-component"
       ],
@@ -18343,16 +18296,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.vehicle-reusable-component.t3",
       "title": "Lander-react reusable structured data Vehicle component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.vehicle-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.vehicle-reusable-component"
       ],
@@ -18360,16 +18314,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.video-object-reusable-component.t3",
       "title": "Lander-react reusable structured data VideoObject component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.video-object-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.video-object-reusable-component"
       ],
@@ -18377,16 +18332,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.web-application-reusable-component.t3",
       "title": "Lander-react reusable structured data WebApplication component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.web-application-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.web-application-reusable-component"
       ],
@@ -18394,16 +18350,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.web-page-reusable-component.t3",
       "title": "Lander-react reusable structured data WebPage component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.web-page-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.web-page-reusable-component"
       ],
@@ -18411,16 +18368,17 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
       "id": "clm:lander-react.structured-data.web-site-reusable-component.t3",
       "title": "Lander-react reusable structured data WebSite component T3 claim",
-      "status": "evidenced",
+      "status": "published",
       "tier": "T3",
       "kind": "behavior",
-      "description": "T3 closure claim for feat:lander-react.structured-data.web-site-reusable-component in bnd:structured-data-feature-family-current.",
+      "description": "T3 closure claim for the lander-react reusable structured-data component feature in bnd:lander-react-structured-data-reusable-components-current.",
       "feature_ids": [
         "feat:lander-react.structured-data.web-site-reusable-component"
       ],
@@ -18428,7 +18386,8 @@
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ],
       "evidence_ids": [
-        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13"
+        "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     },
     {
@@ -21112,6 +21071,61 @@
       "test_ids": [
         "tst:packages-lander-lander-react-tests-run-smoke.mjs"
       ]
+    },
+    {
+      "id": "evd:lander-react-structured-data-components-t3-2026-05-13",
+      "title": "Lander React structured data components T3 evidence",
+      "status": "passed",
+      "kind": "test-artifact",
+      "tier": "T3",
+      "path": ".ssot/reports/lander-react-structured-data-components-t3-2026-05-13.md",
+      "claim_ids": [
+        "clm:lander-react.structured-data.aggregate-rating-reusable-component.t3",
+        "clm:lander-react.structured-data.article-reusable-component.t3",
+        "clm:lander-react.structured-data.blog-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.book-reusable-component.t3",
+        "clm:lander-react.structured-data.breadcrumb-list-reusable-component.t3",
+        "clm:lander-react.structured-data.claim-review-reusable-component.t3",
+        "clm:lander-react.structured-data.course-instance-reusable-component.t3",
+        "clm:lander-react.structured-data.course-reusable-component.t3",
+        "clm:lander-react.structured-data.dataset-reusable-component.t3",
+        "clm:lander-react.structured-data.discussion-forum-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.employer-aggregate-rating-reusable-component.t3",
+        "clm:lander-react.structured-data.event-reusable-component.t3",
+        "clm:lander-react.structured-data.faq-page-reusable-component.t3",
+        "clm:lander-react.structured-data.how-to-reusable-component.t3",
+        "clm:lander-react.structured-data.image-object-reusable-component.t3",
+        "clm:lander-react.structured-data.item-list-reusable-component.t3",
+        "clm:lander-react.structured-data.job-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.local-business-reusable-component.t3",
+        "clm:lander-react.structured-data.math-solver-reusable-component.t3",
+        "clm:lander-react.structured-data.member-program-reusable-component.t3",
+        "clm:lander-react.structured-data.merchant-return-policy-reusable-component.t3",
+        "clm:lander-react.structured-data.monetary-amount-distribution-reusable-component.t3",
+        "clm:lander-react.structured-data.movie-reusable-component.t3",
+        "clm:lander-react.structured-data.offer-shipping-details-reusable-component.t3",
+        "clm:lander-react.structured-data.organization-reusable-component.t3",
+        "clm:lander-react.structured-data.product-group-reusable-component.t3",
+        "clm:lander-react.structured-data.product-reusable-component.t3",
+        "clm:lander-react.structured-data.profile-page-reusable-component.t3",
+        "clm:lander-react.structured-data.qa-page-reusable-component.t3",
+        "clm:lander-react.structured-data.read-action-reusable-component.t3",
+        "clm:lander-react.structured-data.recipe-reusable-component.t3",
+        "clm:lander-react.structured-data.review-reusable-component.t3",
+        "clm:lander-react.structured-data.software-application-reusable-component.t3",
+        "clm:lander-react.structured-data.software-source-code-reusable-component.t3",
+        "clm:lander-react.structured-data.speakable-specification-reusable-component.t3",
+        "clm:lander-react.structured-data.tech-article-reusable-component.t3",
+        "clm:lander-react.structured-data.vacation-rental-reusable-component.t3",
+        "clm:lander-react.structured-data.vehicle-reusable-component.t3",
+        "clm:lander-react.structured-data.video-object-reusable-component.t3",
+        "clm:lander-react.structured-data.web-application-reusable-component.t3",
+        "clm:lander-react.structured-data.web-page-reusable-component.t3",
+        "clm:lander-react.structured-data.web-site-reusable-component.t3"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ]
     }
   ],
   "issues": [
@@ -21861,8 +21875,8 @@
     {
       "id": "bnd:lander-react-structured-data-reusable-components-current",
       "title": "Lander React Structured Data Reusable Components Current Boundary",
-      "status": "draft",
-      "frozen": false,
+      "status": "frozen",
+      "frozen": true,
       "feature_ids": [
         "feat:lander-react.structured-data.aggregate-rating-reusable-component",
         "feat:lander-react.structured-data.article-reusable-component",
@@ -22065,6 +22079,59 @@
         "evd:desktop-tabs-current",
         "evd:desktop-window-state-persistence-current",
         "evd:mdwrk-desktop-app-shell-current"
+      ]
+    },
+    {
+      "id": "rel:lander-react-structured-data-reusable-components-current",
+      "version": "lander-react-structured-data-reusable-components-current",
+      "status": "published",
+      "boundary_id": "bnd:lander-react-structured-data-reusable-components-current",
+      "claim_ids": [
+        "clm:lander-react.structured-data.aggregate-rating-reusable-component.t3",
+        "clm:lander-react.structured-data.article-reusable-component.t3",
+        "clm:lander-react.structured-data.blog-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.book-reusable-component.t3",
+        "clm:lander-react.structured-data.breadcrumb-list-reusable-component.t3",
+        "clm:lander-react.structured-data.claim-review-reusable-component.t3",
+        "clm:lander-react.structured-data.course-instance-reusable-component.t3",
+        "clm:lander-react.structured-data.course-reusable-component.t3",
+        "clm:lander-react.structured-data.dataset-reusable-component.t3",
+        "clm:lander-react.structured-data.discussion-forum-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.employer-aggregate-rating-reusable-component.t3",
+        "clm:lander-react.structured-data.event-reusable-component.t3",
+        "clm:lander-react.structured-data.faq-page-reusable-component.t3",
+        "clm:lander-react.structured-data.how-to-reusable-component.t3",
+        "clm:lander-react.structured-data.image-object-reusable-component.t3",
+        "clm:lander-react.structured-data.item-list-reusable-component.t3",
+        "clm:lander-react.structured-data.job-posting-reusable-component.t3",
+        "clm:lander-react.structured-data.local-business-reusable-component.t3",
+        "clm:lander-react.structured-data.math-solver-reusable-component.t3",
+        "clm:lander-react.structured-data.member-program-reusable-component.t3",
+        "clm:lander-react.structured-data.merchant-return-policy-reusable-component.t3",
+        "clm:lander-react.structured-data.monetary-amount-distribution-reusable-component.t3",
+        "clm:lander-react.structured-data.movie-reusable-component.t3",
+        "clm:lander-react.structured-data.offer-shipping-details-reusable-component.t3",
+        "clm:lander-react.structured-data.organization-reusable-component.t3",
+        "clm:lander-react.structured-data.product-group-reusable-component.t3",
+        "clm:lander-react.structured-data.product-reusable-component.t3",
+        "clm:lander-react.structured-data.profile-page-reusable-component.t3",
+        "clm:lander-react.structured-data.qa-page-reusable-component.t3",
+        "clm:lander-react.structured-data.read-action-reusable-component.t3",
+        "clm:lander-react.structured-data.recipe-reusable-component.t3",
+        "clm:lander-react.structured-data.review-reusable-component.t3",
+        "clm:lander-react.structured-data.software-application-reusable-component.t3",
+        "clm:lander-react.structured-data.software-source-code-reusable-component.t3",
+        "clm:lander-react.structured-data.speakable-specification-reusable-component.t3",
+        "clm:lander-react.structured-data.tech-article-reusable-component.t3",
+        "clm:lander-react.structured-data.vacation-rental-reusable-component.t3",
+        "clm:lander-react.structured-data.vehicle-reusable-component.t3",
+        "clm:lander-react.structured-data.video-object-reusable-component.t3",
+        "clm:lander-react.structured-data.web-application-reusable-component.t3",
+        "clm:lander-react.structured-data.web-page-reusable-component.t3",
+        "clm:lander-react.structured-data.web-site-reusable-component.t3"
+      ],
+      "evidence_ids": [
+        "evd:lander-react-structured-data-components-t3-2026-05-13"
       ]
     }
   ],

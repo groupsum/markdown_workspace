@@ -2,13 +2,13 @@
   "passed": true,
   "registry_path": ".ssot/registry.json",
   "release": {
-    "release_id": "rel:desktop-shell-and-oidc-current",
+    "release_id": "rel:lander-react-structured-data-reusable-components-current",
     "passed": true,
     "failures": [],
     "warnings": [],
     "claims": [
       {
-        "claim_id": "clm:agent-extension-oidc-current",
+        "claim_id": "clm:lander-react.structured-data.aggregate-rating-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -23,7 +23,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:android-shell-support-current",
+        "claim_id": "clm:lander-react.structured-data.article-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -38,7 +38,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:desktop-filesystem-permissions-current",
+        "claim_id": "clm:lander-react.structured-data.blog-posting-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -53,7 +53,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:desktop-packaging-versioning-current",
+        "claim_id": "clm:lander-react.structured-data.book-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -68,7 +68,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:desktop-runtime-extension-default-current",
+        "claim_id": "clm:lander-react.structured-data.breadcrumb-list-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -83,7 +83,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:desktop-tabs-current",
+        "claim_id": "clm:lander-react.structured-data.claim-review-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -98,7 +98,7 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:desktop-window-state-persistence-current",
+        "claim_id": "clm:lander-react.structured-data.course-instance-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -113,7 +113,517 @@
         "recommended_status": "certified"
       },
       {
-        "claim_id": "clm:mdwrk-desktop-app-shell-current",
+        "claim_id": "clm:lander-react.structured-data.course-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.dataset-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.discussion-forum-posting-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.employer-aggregate-rating-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.event-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.faq-page-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.how-to-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.image-object-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.item-list-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.job-posting-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.local-business-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.math-solver-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.member-program-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.merchant-return-policy-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.monetary-amount-distribution-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.movie-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.offer-shipping-details-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.organization-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.product-group-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.product-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.profile-page-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.qa-page-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.read-action-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.recipe-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.review-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.software-application-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.software-source-code-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.speakable-specification-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.tech-article-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.vacation-rental-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.vehicle-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.video-object-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.web-application-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.web-page-reusable-component.t3",
+        "passed": true,
+        "failures": [],
+        "checks": {
+          "implemented_features": true,
+          "tests_passing": true,
+          "evidence_passing": true,
+          "no_failed_or_stale_evidence": true,
+          "evidence_tier_alignment": true,
+          "feature_target_alignment": true,
+          "required_features_passing": true
+        },
+        "recommended_status": "certified"
+      },
+      {
+        "claim_id": "clm:lander-react.structured-data.web-site-reusable-component.t3",
         "passed": true,
         "failures": [],
         "checks": {
@@ -130,87 +640,91 @@
     ],
     "evidence": [
       {
-        "evidence_id": "evd:agent-extension-oidc-current",
+        "evidence_id": "evd:lander-react-structured-data-components-t3-2026-05-13",
         "passed": true,
         "failures": []
       },
       {
-        "evidence_id": "evd:android-shell-support-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:desktop-filesystem-permissions-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:desktop-packaging-versioning-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:desktop-runtime-extension-default-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:desktop-tabs-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:desktop-window-state-persistence-current",
-        "passed": true,
-        "failures": []
-      },
-      {
-        "evidence_id": "evd:mdwrk-desktop-app-shell-current",
+        "evidence_id": "evd:structured-data-boundary-lander-react-smoke-t3-2026-05-13",
         "passed": true,
         "failures": []
       }
     ],
     "profiles": [],
     "boundary": {
-      "id": "bnd:desktop-shell-and-oidc-current",
+      "id": "bnd:lander-react-structured-data-reusable-components-current",
       "profile_ids": [],
       "resolved_feature_ids": [
-        "feat:agent-extension-oidc",
-        "feat:android-shell-support",
-        "feat:desktop-filesystem-permissions",
-        "feat:desktop-packaging-versioning",
-        "feat:desktop-runtime-extension-default",
-        "feat:desktop-tabs",
-        "feat:desktop-window-state-persistence",
-        "feat:mdwrk-desktop-app-shell"
+        "feat:lander-react.structured-data.aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.article-reusable-component",
+        "feat:lander-react.structured-data.blog-posting-reusable-component",
+        "feat:lander-react.structured-data.book-reusable-component",
+        "feat:lander-react.structured-data.breadcrumb-list-reusable-component",
+        "feat:lander-react.structured-data.claim-review-reusable-component",
+        "feat:lander-react.structured-data.course-instance-reusable-component",
+        "feat:lander-react.structured-data.course-reusable-component",
+        "feat:lander-react.structured-data.dataset-reusable-component",
+        "feat:lander-react.structured-data.discussion-forum-posting-reusable-component",
+        "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.event-reusable-component",
+        "feat:lander-react.structured-data.faq-page-reusable-component",
+        "feat:lander-react.structured-data.how-to-reusable-component",
+        "feat:lander-react.structured-data.image-object-reusable-component",
+        "feat:lander-react.structured-data.item-list-reusable-component",
+        "feat:lander-react.structured-data.job-posting-reusable-component",
+        "feat:lander-react.structured-data.local-business-reusable-component",
+        "feat:lander-react.structured-data.math-solver-reusable-component",
+        "feat:lander-react.structured-data.member-program-reusable-component",
+        "feat:lander-react.structured-data.merchant-return-policy-reusable-component",
+        "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component",
+        "feat:lander-react.structured-data.movie-reusable-component",
+        "feat:lander-react.structured-data.offer-shipping-details-reusable-component",
+        "feat:lander-react.structured-data.organization-reusable-component",
+        "feat:lander-react.structured-data.product-group-reusable-component",
+        "feat:lander-react.structured-data.product-reusable-component",
+        "feat:lander-react.structured-data.profile-page-reusable-component",
+        "feat:lander-react.structured-data.qa-page-reusable-component",
+        "feat:lander-react.structured-data.read-action-reusable-component",
+        "feat:lander-react.structured-data.recipe-reusable-component",
+        "feat:lander-react.structured-data.review-reusable-component",
+        "feat:lander-react.structured-data.software-application-reusable-component",
+        "feat:lander-react.structured-data.software-source-code-reusable-component",
+        "feat:lander-react.structured-data.speakable-specification-reusable-component",
+        "feat:lander-react.structured-data.tech-article-reusable-component",
+        "feat:lander-react.structured-data.vacation-rental-reusable-component",
+        "feat:lander-react.structured-data.vehicle-reusable-component",
+        "feat:lander-react.structured-data.video-object-reusable-component",
+        "feat:lander-react.structured-data.web-application-reusable-component",
+        "feat:lander-react.structured-data.web-page-reusable-component",
+        "feat:lander-react.structured-data.web-site-reusable-component"
       ]
     },
     "summary": {
-      "boundary_id": "bnd:desktop-shell-and-oidc-current",
-      "boundary_feature_count": 8,
+      "boundary_id": "bnd:lander-react-structured-data-reusable-components-current",
+      "boundary_feature_count": 42,
       "boundary_profile_count": 0,
-      "release_claim_count": 8,
-      "release_evidence_count": 8
+      "release_claim_count": 42,
+      "release_evidence_count": 2
     }
   },
   "boundary_scope": {
-    "boundary_id": "bnd:desktop-shell-and-oidc-current",
+    "boundary_id": "bnd:lander-react-structured-data-reusable-components-current",
     "profile_ids": [],
     "feature_ids": []
   },
   "summary": {
     "counts": {
-      "features": 325,
+      "features": 409,
       "profiles": 6,
-      "tests": 88,
-      "claims": 57,
-      "evidence": 85,
-      "issues": 3,
+      "tests": 97,
+      "claims": 214,
+      "evidence": 97,
+      "issues": 4,
       "risks": 0,
-      "boundaries": 17,
-      "releases": 5,
-      "adrs": 72,
-      "specs": 90
+      "boundaries": 21,
+      "releases": 6,
+      "adrs": 76,
+      "specs": 97
     },
     "profile_status": {
       "passing": 6,

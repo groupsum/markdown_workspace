@@ -2,20 +2,27 @@
   "passed": true,
   "registry_path": ".ssot/registry.json",
   "failures": [],
-  "warnings": [],
+  "warnings": [
+    "profiles.prf:commonmark-editing-preview is active but does not currently pass evaluation",
+    "profiles.prf:edit-in-renderer-profile is active but does not currently pass evaluation",
+    "profiles.prf:editor-authoring-default is active but does not currently pass evaluation",
+    "profiles.prf:gfm-editing-preview is active but does not currently pass evaluation",
+    "profiles.prf:lander-seo-aeo-aieo-discovery is active but does not currently pass evaluation",
+    "profiles.prf:mdwrk-editing-preview is active but does not currently pass evaluation"
+  ],
   "summary": {
     "counts": {
-      "features": 325,
+      "features": 409,
       "profiles": 6,
-      "tests": 88,
-      "claims": 57,
-      "evidence": 85,
-      "issues": 3,
+      "tests": 97,
+      "claims": 214,
+      "evidence": 97,
+      "issues": 4,
       "risks": 0,
-      "boundaries": 17,
-      "releases": 5,
-      "adrs": 72,
-      "specs": 90
+      "boundaries": 21,
+      "releases": 6,
+      "adrs": 76,
+      "specs": 97
     },
     "profile_status": {
       "passing": 6,
