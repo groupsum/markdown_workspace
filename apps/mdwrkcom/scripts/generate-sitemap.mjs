@@ -10,10 +10,12 @@ const syncOut = path.join(appRoot, '.tmp', 'public-discovery-sync');
 
 const artifacts = [
   'sitemap.xml',
+  'sitemap.xsl',
   'robots.txt',
   'llms.txt',
   'llms-full.txt',
   'content-index.json',
+  'semantic-index.json',
   'content-registry.json',
   'jsonld-graph.json',
   'cache-header-manifest.json',

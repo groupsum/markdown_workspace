@@ -11,12 +11,14 @@ const packageGeneratedRoot = path.join(workspaceRoot, 'packages', 'content', 'md
 
 const artifacts = [
   'content-index.json',
+  'semantic-index.json',
   'content-registry.json',
   'jsonld-graph.json',
   'llms-full.txt',
   'llms.txt',
   'robots.txt',
   'sitemap.xml',
+  'sitemap.xsl',
   'cache-header-manifest.json',
 ];
 

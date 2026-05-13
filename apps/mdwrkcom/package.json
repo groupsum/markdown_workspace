@@ -13,7 +13,7 @@
     "build:styled": "npm run build:deps && npm run validate:article-metadata && npm run validate:article-images && npm run validate:blog-faq && npm run validate:faq-layout && npm run validate:header-content && npm run validate:footer-content && npm run validate:home-content && npm run validate:compare-content && npm run validate:feature-content && npm run validate:syntax-themes && node ./scripts/generate-sitemap.mjs && vite build",
     "build:spa": "npm run build:styled",
     "build:deps": "npm --prefix ../.. run build:editor",
-    "typecheck:deps": "npm --prefix ../.. run build -w @mdwrk/markdown-renderer-core && npm --prefix ../.. run build -w @mdwrk/lander-core",
+    "typecheck:deps": "npm --prefix ../.. run build -w @mdwrk/markdown-renderer-core && npm --prefix ../.. run build -w @mdwrk/lander-core && npm --prefix ../.. run build -w @mdwrk/lander-seo",
     "validate:article-metadata": "node ./scripts/validate-article-metadata.mjs",
     "validate:article-images": "node ./scripts/validate-article-image-contract.mjs",
     "validate:blog-faq": "node ./scripts/validate-blog-faq-block.mjs",

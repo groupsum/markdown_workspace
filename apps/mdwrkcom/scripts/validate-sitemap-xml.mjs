@@ -12,6 +12,7 @@ const distRoot = path.resolve(landerRoot, outDir || 'dist-static');
 const read = (relativePath) => fs.readFileSync(path.join(distRoot, relativePath), 'utf8');
 
 const sitemap = read('sitemap.xml');
+const sitemapStylesheet = read('sitemap.xsl');
 const contentRegistry = JSON.parse(read('content-registry.json'));
 
 const fail = (message) => {
@@ -36,7 +37,12 @@ const urlsetMatch = sitemap.match(/<urlset\b([^>]*)>([\s\S]*)<\/urlset>\s*$/);
 
 try {
   assert.match(sitemap, xmlDeclaration, 'sitemap.xml must begin with an XML declaration');
+  assert.match(sitemap, /<\?xml-stylesheet\s+type="text\/xsl"\s+href="\/sitemap\.xsl"\s*\?>/, 'sitemap.xml must link the browser-readable table stylesheet');
   assert.ok(urlsetMatch, 'sitemap.xml must contain one <urlset> root element');
+  assert.match(sitemapStylesheet, /<table>/, 'sitemap.xsl must render sitemap.xml as a human-readable table');
+  assert.match(sitemapStylesheet, /<th scope="col">URL<\/th>/, 'sitemap.xsl must include the URL <th> label');
+  assert.match(sitemapStylesheet, /<th scope="col">Last modified<\/th>/, 'sitemap.xsl must include the Last modified <th> label');
+  assert.match(sitemapStylesheet, /<br \/>/, 'sitemap.xsl must include visible line breaks for human-readable URL records');
 } catch (error) {
   fail(error.message);
 }

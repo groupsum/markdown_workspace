@@ -1,1 +1,1 @@
-export const LANDER_SEO_VERSION = "0.1.0";
+export const LANDER_SEO_VERSION = "0.1.1";

@@ -42,6 +42,8 @@ export const mdwrkcomContentPack: MdwrkcomContentPackLayout = Object.freeze({
     "llms-full.txt",
     "robots.txt",
     "sitemap.xml",
+    "sitemap.xsl",
+    "semantic-index.json",
   ]),
 });
 

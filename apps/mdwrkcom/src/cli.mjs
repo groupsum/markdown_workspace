@@ -13,6 +13,16 @@ import {
   sha256Hex,
 } from '../../../packages/lander/lander-core/dist/cache/resource-policy.js';
 import {
+  buildContentIndex as buildLanderContentIndex,
+  buildContentRegistry as buildLanderContentRegistry,
+  buildJsonLdGraphArtifact as buildLanderJsonLdGraphArtifact,
+  buildLlmsFullTxt as buildLanderLlmsFullTxt,
+  buildRobotsTxtArtifact as buildLanderRobotsTxtArtifact,
+  buildSemanticIndex as buildLanderSemanticIndex,
+  buildSitemapStylesheet as buildLanderSitemapStylesheet,
+  buildSitemapXml as buildLanderSitemapXml,
+} from '../../../packages/lander/lander-seo/dist/index.js';
+import {
   defineCriticalCssProfile,
   renderCriticalCssStyle,
   renderDeferredStylesheetLink,
@@ -64,10 +74,12 @@ const AI_CRAWLER_POLICY = Object.freeze([
 
 const DISCOVERY_ARTIFACTS = Object.freeze([
   'sitemap.xml',
+  'sitemap.xsl',
   'robots.txt',
   'llms.txt',
   'llms-full.txt',
   'content-index.json',
+  'semantic-index.json',
   'content-registry.json',
   'jsonld-graph.json',
   'cache-header-manifest.json',
@@ -2580,7 +2592,7 @@ const contentTypeForPath = (filePath) => {
   if (normalized.endsWith('.css')) return 'text/css; charset=utf-8';
   if (normalized.endsWith('.js') || normalized.endsWith('.mjs')) return 'text/javascript; charset=utf-8';
   if (normalized.endsWith('.json')) return 'application/json; charset=utf-8';
-  if (normalized.endsWith('.xml')) return 'application/xml; charset=utf-8';
+  if (normalized.endsWith('.xml') || normalized.endsWith('.xsl')) return 'application/xml; charset=utf-8';
   if (normalized.endsWith('.txt') || normalized.endsWith('.md')) return 'text/plain; charset=utf-8';
   if (normalized.endsWith('.svg')) return 'image/svg+xml';
   if (normalized.endsWith('.png')) return 'image/png';
@@ -2605,6 +2617,81 @@ const buildCacheManifestArtifact = () => {
   const manifest = buildCacheHeaderManifest(inputs);
   writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
+};
+
+const buildLanderDiscoveryModel = (registry) => {
+  const pages = registry.entries.map(entry => {
+    const source = {
+      sourcePath: entry.sourcePath,
+      sourceHash: entry.sourceHash,
+      lastmod: entry.frontmatter.updatedAt,
+      text: entry.rendered.text,
+      headings: entry.rendered.headings,
+      links: entry.rendered.links,
+      tags: entry.frontmatter.tags,
+      locale: entry.frontmatter.locale,
+      translationOf: entry.frontmatter.translationOf,
+      localeGroup: entry.frontmatter.localeGroup,
+      contentType: entry.frontmatter.contentType,
+      intent: entry.frontmatter.intent,
+      subtitle: entry.frontmatter.subtitle,
+      llmsInclude: entry.frontmatter.llmsInclude,
+      alternates: alternateLinksFor(entry, registry),
+      jsonLdGraph: jsonLdFor(entry, registry)['@graph'],
+    };
+    const slug = normalizeRouteSlug(entry.frontmatter.slug);
+    return {
+      kind: entry.frontmatter.contentType || 'answer',
+      slug,
+      path: slug,
+      canonicalUrl: entry.frontmatter.canonical,
+      title: entry.frontmatter.title,
+      description: entry.frontmatter.description,
+      h1: entry.frontmatter.h1,
+      intro: entry.frontmatter.subtitle ?? entry.frontmatter.description,
+      sections: [],
+      faq: entry.frontmatter.faqs?.map(faq => ({ question: faq.question, answer: faq.answer })) ?? [],
+      seo: {
+        title: entry.frontmatter.title,
+        description: entry.frontmatter.description,
+        canonical: entry.frontmatter.canonical,
+        noindex: entry.frontmatter.noindex,
+      },
+      breadcrumbs: [],
+      internalLinks: entry.rendered.links.map(link => normalizeRouteSlug(link.href ?? link.url ?? link)).filter(Boolean),
+      wordCount: entry.rendered.wordCount,
+      componentIntents: [],
+      schemaIntents: [],
+      __mdwrkcomSource: source,
+    };
+  });
+  const pageByPath = new Map(pages.map(page => [page.path, page]));
+  const pageSources = Object.fromEntries(pages.map(page => [page.path, page.__mdwrkcomSource]));
+  for (const page of pages) delete page.__mdwrkcomSource;
+  return {
+    site: {
+      product: {
+        name: 'MdWrk',
+        slug: 'mdwrk',
+        tagline: 'Local-first Markdown workspace',
+        description: 'MdWrk is a local-first Markdown workspace with static, verifiable public documentation.',
+        category: 'Software',
+        canonicalUrl: siteUrl,
+      },
+      ai: {
+        llmsTxtTitle: 'MdWrk',
+        summary: 'MdWrk is a local-first Markdown workspace with static, verifiable public documentation.',
+        coreFacts: ['Local-first Markdown workspace', 'Static verifiable documentation', 'Portable discovery artifacts'],
+      },
+      pages,
+      pageByPath,
+      diagnostics: [],
+    },
+    options: {
+      crawlerPolicies: AI_CRAWLER_POLICY,
+      pageSources,
+    },
+  };
 };
 
 const detectBuiltStaticStylesheetHref = () => {
@@ -2636,49 +2723,18 @@ const build = () => {
     }
   }
 
-  writeFile(path.join(distRoot, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${indexable.map(entry => {
-    const alternates = alternateLinksFor(entry, registry);
-    const alternateRows = alternates.map(item => `    <xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`);
-    return [
-      '  <url>',
-      `    <loc>${escapeXml(entry.frontmatter.canonical)}</loc>`,
-      `    <lastmod>${entry.frontmatter.updatedAt}</lastmod>`,
-      ...alternateRows,
-      '  </url>',
-    ].join('\n');
-  }).join('\n\n')}\n</urlset>\n`);
+  const landerDiscovery = buildLanderDiscoveryModel(registry);
+  const landerContentRegistry = buildLanderContentRegistry(landerDiscovery.site, landerDiscovery.options);
+  const landerRegistryByCanonical = new Map(landerContentRegistry.map(entry => [entry.discovery.canonical, entry]));
+  writeFile(path.join(distRoot, 'sitemap.xml'), buildLanderSitemapXml(landerDiscovery.site, landerDiscovery.options));
+  writeFile(path.join(distRoot, 'sitemap.xsl'), buildLanderSitemapStylesheet(landerDiscovery.site));
   writeFile(path.join(distRoot, 'robots.txt'), [
     '# MdWrk governed crawler policy',
     '# Categories: search-inclusion, answer-retrieval, training-ingestion',
-    ...AI_CRAWLER_POLICY.flatMap(policy => [
-      `User-agent: ${policy.userAgent}`,
-      `# Category: ${policy.category}`,
-      `# Purpose: ${policy.purpose}`,
-      ...(policy.allow ?? []).map(value => `Allow: ${value}`),
-      ...(policy.disallow ?? []).map(value => `Disallow: ${value}`),
-      '',
-    ]),
-    `Sitemap: ${siteUrl}/sitemap.xml`,
-    '',
+    buildLanderRobotsTxtArtifact(landerDiscovery.site, landerDiscovery.options),
   ].join('\n'));
-  writeFile(path.join(distRoot, 'content-index.json'), JSON.stringify(indexable.map(entry => ({
-    slug: entry.frontmatter.slug,
-    url: entry.frontmatter.canonical,
-    title: entry.frontmatter.title,
-    description: entry.frontmatter.description,
-    h1: entry.frontmatter.h1,
-    subtitle: entry.frontmatter.subtitle,
-    intent: entry.frontmatter.intent,
-    contentType: entry.frontmatter.contentType,
-    locale: entry.frontmatter.locale,
-    translationOf: entry.frontmatter.translationOf,
-    localeGroup: entry.frontmatter.localeGroup,
-    updatedAt: entry.frontmatter.updatedAt,
-    tags: entry.frontmatter.tags,
-    llmsInclude: entry.frontmatter.llmsInclude,
-    markdownMirror: entry.frontmatter.llmsInclude ? `${entry.frontmatter.slug}index.md` : null,
-    jsonLdId: `${entry.frontmatter.canonical}#webpage`,
-  })), null, 2) + '\n');
+  writeFile(path.join(distRoot, 'content-index.json'), JSON.stringify(buildLanderContentIndex(landerDiscovery.site, landerDiscovery.options), null, 2) + '\n');
+  writeFile(path.join(distRoot, 'semantic-index.json'), JSON.stringify(buildLanderSemanticIndex(landerDiscovery.site, landerDiscovery.options), null, 2) + '\n');
   writeFile(path.join(distRoot, 'content-registry.json'), JSON.stringify(registry.entries.map(entry => ({
     sourcePath: entry.sourcePath,
     sourceHash: entry.sourceHash,
@@ -2695,13 +2751,10 @@ const build = () => {
       robots: entry.frontmatter.noindex ? 'noindex,follow' : 'index,follow',
       llms: !entry.frontmatter.noindex && entry.frontmatter.llmsInclude,
       markdownMirror: !entry.frontmatter.noindex && entry.frontmatter.llmsInclude,
-      jsonLdGraphIds: jsonLdFor(entry, registry)['@graph'].map(node => node['@id']).filter(Boolean),
+      jsonLdGraphIds: landerRegistryByCanonical.get(entry.frontmatter.canonical)?.discovery.jsonLdGraphIds ?? jsonLdFor(entry, registry)['@graph'].map(node => node['@id']).filter(Boolean),
     },
   })), null, 2) + '\n');
-  writeFile(path.join(distRoot, 'jsonld-graph.json'), JSON.stringify({
-    '@context': 'https://schema.org',
-    '@graph': registry.entries.flatMap(entry => jsonLdFor(entry, registry)['@graph']),
-  }, null, 2) + '\n');
+  writeFile(path.join(distRoot, 'jsonld-graph.json'), JSON.stringify(buildLanderJsonLdGraphArtifact(landerDiscovery.site, landerDiscovery.options), null, 2) + '\n');
   writeFile(path.join(distRoot, 'llms.txt'), [
     '# MdWrk',
     '',
@@ -2710,20 +2763,7 @@ const build = () => {
     ...llmsEligible.map(entry => `- [${entry.frontmatter.h1}](${entry.frontmatter.canonical}) - ${entry.frontmatter.description}`),
     '',
   ].join('\n'));
-  writeFile(path.join(distRoot, 'llms-full.txt'), [
-    '# MdWrk Full Content',
-    '',
-    ...llmsEligible.flatMap(entry => [
-      `## ${entry.frontmatter.h1}`,
-      '',
-      `URL: ${entry.frontmatter.canonical}`,
-      '',
-      entry.frontmatter.subtitle ?? entry.frontmatter.description,
-      '',
-      entry.rendered.text,
-      '',
-    ]),
-  ].join('\n'));
+  writeFile(path.join(distRoot, 'llms-full.txt'), buildLanderLlmsFullTxt(landerDiscovery.site, landerDiscovery.options));
   buildCacheManifestArtifact();
   console.log(`Built MdWrk static lander: ${registry.entries.length} pages -> ${path.relative(repoRoot, distRoot)}`);
 };
@@ -2792,7 +2832,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   if (staticHashedEntry && (staticHashedEntry.resourceClass !== 'immutable' || !/max-age=(?:[3-9]\d{6,}|[1-9]\d{7,})/.test(staticHashedEntry.cacheControl) || !/immutable/.test(staticHashedEntry.cacheControl))) {
     failures.push(`${staticHashedPath}: immutable cache policy must include at least 30 days and immutable`);
   }
-  for (const mutablePath of ['/sitemap.xml', '/robots.txt', '/llms.txt', '/llms-full.txt', '/content-index.json', '/content-registry.json', '/jsonld-graph.json']) {
+  for (const mutablePath of ['/sitemap.xml', '/sitemap.xsl', '/robots.txt', '/llms.txt', '/llms-full.txt', '/content-index.json', '/semantic-index.json', '/content-registry.json', '/jsonld-graph.json']) {
     const entry = cacheEntryByPath.get(mutablePath);
     if (!entry) failures.push(`cache-header-manifest.json: missing ${mutablePath}`);
     else if (entry.resourceClass !== 'mutable-revalidate' || entry.cacheControl !== 'no-cache') {

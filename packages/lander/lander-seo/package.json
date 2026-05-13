@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-seo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -28,7 +28,7 @@
     "build": "npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",
     "typecheck": "npm run build -w @mdwrk/lander-core && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run typecheck",
+    "test": "npm run build && node tests/run-smoke.mjs",
     "prepack": "npm run build"
   },
   "exports": {
