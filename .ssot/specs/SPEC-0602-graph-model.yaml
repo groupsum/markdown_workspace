@@ -1,4 +1,4 @@
-schema_version: "0.1.0"
+schema_version: "0.4.0"
 kind: "spec"
 id: "spc:0602"
 number: 602
@@ -13,8 +13,6 @@ supersedes: []
 superseded_by: []
 status_notes: []
 references: []
-spec_kind: "normative"
-adr_ids: []
 body: |-
   The authored registry is entity-centric JSON.
   The graph export is derived and consists of nodes and typed edges.
@@ -29,3 +27,5 @@ body: |-
   - `AFFECTS`
   - `PUBLISHES`
   - `INCLUDES`
+spec_kind: "normative"
+adr_ids: []

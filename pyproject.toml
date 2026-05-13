@@ -10,5 +10,5 @@ Repository = "https://github.com/groupsum/markdown_workspace"
 [dependency-groups]
 dev = [
     "markdown-it-py>=4.1.0",
-    "ssot-registry",
+    "ssot-registry==0.2.17",
 ]

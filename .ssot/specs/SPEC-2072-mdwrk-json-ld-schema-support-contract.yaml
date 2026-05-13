@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, and supported-type implementation gates that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts."
+summary: "This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, supported-type implementation gates, content-pack schema declarations, structured-data builders, lander rendering, and verification artifacts that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -28,13 +28,21 @@ status_notes:
     status: "draft"
     note: "Expanded JSON-LD schema support contract to require builder support, reusable lander component support, and mdwrkcom adoption tracking by type."
     at: "2026-05-13T05:47:36Z"
+  -
+    status: "draft"
+    note: "Updated to require content-pack declared schema intent through contract, core, lander-react, and mdwrkcom host output."
+    at: "2026-05-13T09:08:56Z"
+  -
+    status: "draft"
+    note: "Preserved existing JSON-LD graph obligations and appended content-pack schema intent requirements."
+    at: "2026-05-13T09:13:51Z"
 references: []
 body: |-
   # MdWrk JSON-LD Schema Graph Contract
   
   ## Scope
   
-  This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, and supported-type implementation gates that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts.
+  This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, supported-type implementation gates, content-pack schema declarations, structured-data builders, lander rendering, and verification artifacts that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts.
   
   ## Requirements
   
@@ -51,7 +59,7 @@ body: |-
   11. `SoftwareApplication` shall be supported for the MdWrk workspace product identity when the page describes the installable web application or PWA surface.
   12. `Article` shall be supported as the generic article fallback for long-form non-blog documentation or editorial pages when `BlogPosting` or `TechArticle` would overstate the content type.
   13. `TechArticle` shall be supported for technical documentation pages that explain setup, extension authoring, package usage, APIs, or operational behavior.
-  14. `SoftwareSourceCode` shall be supported for package and developer pages that describe reusable source packages, public repository surfaces, APIs, or module entry points.
+  14. `SoftwareSourceCode` shall be supported for package and developer pages that describe package entry points, APIs, modules, repository surfaces, or reusable source artifacts.
   15. Home page graphs shall include `WebPage`, `Organization`, `WebSite`, and `SoftwareApplication` when those entities describe stable MdWrk product and site identity.
   16. Product update and blog article graphs shall use `BlogPosting` as the primary content entity, connect it to `WebPage` with `mainEntity`, connect publisher or creator to `Organization`, and include `BreadcrumbList` and `FAQPage` only when applicable.
   17. Technical documentation graphs shall use `TechArticle` when the page teaches setup, API, package, extension, or operational behavior; otherwise they may use `WebPage` or `Article` as the primary entity.
@@ -64,13 +72,25 @@ body: |-
   24. New supported types are not implementation-complete until the builder layer and reusable lander layer are both covered by governed implementation and verification.
   25. When mdwrkcom uses a governed supported structured-data type, mdwrkcom shall import the lander-owned reusable component or composition surface rather than defining app-local ownership for that type.
   26. Validation shall fail closed when required fields for a supported type are missing, when JSON-LD claims content that is not visibly present, when a graph includes unrelated supported types only because they are globally supported, or when generated graph output diverges from canonical routes.
+  27. Supported JSON-LD types shall be tracked as one structured-data feature per type.
+  28. Supported JSON-LD types shall be tracked as one lander-react reusable component feature per type when a reusable component is required.
+  29. Schema support flow shall be `mdwrkcom-content-pack` schema declarations to `lander-content-contract` validation to `lander-core` compiled schema intents to `lander-react` JSON-LD rendering to mdwrkcom host output.
+  30. `@mdwrk/structured-data` shall remain framework-independent and own schema normalization, ID generation, graph assembly, and deterministic serialization helpers.
+  31. Content packs shall declare schema intent as portable data and shall not own schema serialization logic.
+  32. The content contract shall reject unsupported schema kinds, invalid references, and malformed schema payloads.
+  33. The core compiler shall return diagnostics for schema intent failures without depending on React.
+  34. A supported type is not complete until it is declarable in content, validated by contract, compiled by core, rendered by lander-react, tested, and adopted without app-local duplication or explicitly marked non-adopted.
+  35. Claims shall target T3 for every supported structured-data type.
   
   ## Acceptance
   
-  Feature and test rows for JSON-LD structured data, static content compilation, static artifact verification, metadata fallback images, excerpt-derived metadata, package or developer page schema output, social metadata parity, DCMI metadata parity, page-family graph validation, reusable lander structured-data component support, and mdwrkcom adoption must link to this SPEC when they exercise supported Schema.org types or graph relationships.
+  Feature and test rows for JSON-LD structured data, static content compilation, static artifact verification, metadata fallback images, excerpt-derived metadata, package or developer page schema output, social metadata parity, DCMI metadata parity, page-family graph validation, reusable lander structured-data component support, content-pack schema declaration, core schema-intent compilation, and mdwrkcom adoption must link to this SPEC when they exercise supported Schema.org types or graph relationships.
+  
+  The structured-data boundary shall close only when every supported JSON-LD type has package implementation, content declarability, contract validation, core compilation, lander-react rendering where applicable, mdwrkcom usage or explicit non-adoption, passing tests, T3 claims, and linked evidence.
 spec_kind: "normative"
 adr_ids:
   - "adr:1053"
   - "adr:1057"
   - "adr:1059"
   - "adr:1062"
+  - "adr:1063"

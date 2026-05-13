@@ -8,13 +8,25 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "Governed app, extension, and portable lander component source must use named component classes and tokenized CSS contracts for shell, pane, editor, preview, settings, action rail, workspace, extension, and governed structured-data reusable surfaces. Tailwind-style utility class tokens are out of bounds in governed component source roots."
+summary: "This SPEC governs CSS class surfaces, component ownership, and theme styling responsibilities for MdWrk application, extension, and portable lander components."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Updated for content-pack intent declarations, core render identifiers, and lander-react owned class surfaces."
+    at: "2026-05-13T09:09:05Z"
+  -
+    status: "draft"
+    note: "Preserved named-class policy and appended content-pack/core/lander-react class ownership constraints."
+    at: "2026-05-13T09:14:00Z"
 references: []
 body: |-
   # SPEC-2063: Component Class Surface Policy
+  
+  ## Scope
+  
+  This SPEC governs CSS class surfaces, component ownership, and theme styling responsibilities for MdWrk application, extension, and portable lander components.
   
   ## Requirements
   
@@ -26,12 +38,29 @@ body: |-
   
   Conformance evidence must include a repository test lane that scans governed component source for disallowed utility-token patterns and fails when new violations are introduced.
   
-  ## Evidence
+  1. Governed components shall expose stable, named class surfaces rather than relying on incidental DOM structure.
+  2. Component packages shall own the class names for their rendered surfaces.
+  3. Theme packages shall style owned class surfaces through documented tokens and component selectors.
+  4. Viewport and aspect-ratio breakpoints shall remain defined once in `client/public/css/base/viewports.css`.
+  5. Themes shall provide unique styling per viewport/aspect/device band without redefining the breakpoint contract.
+  6. App packages may compose governed components but shall not define parallel class systems for portable component surfaces.
+  7. Content packs may declare component intent but shall not define implementation class surfaces.
+  8. `@mdwrk/lander-content-contract` shall define portable component intent values, not CSS implementation details.
+  9. `@mdwrk/lander-core` shall compile component intent to stable render-model identifiers without importing CSS or React.
+  10. `@mdwrk/lander-react` shall own named class surfaces for portable lander components, including structured-data visible components.
+  11. `@mdwrk/lander-theme` shall own theme styling for lander-react class surfaces.
+  12. `apps/mdwrkcom` shall consume lander-react class surfaces and theme packages rather than creating app-local replacements for governed lander component classes.
+  13. App-local component or class forks are allowed only as explicitly tracked migration work with a removal path.
+  14. Tests shall fail when governed component class surfaces drift from documented package ownership.
+  15. Screenshot validation shall cover all views, modes, panes, modals, and themes affected by governed component class surfaces.
   
-  Evidence must cover governed source-root selection, disallowed utility-token detection, passing component class policy tests, representative app and extension component surfaces that remain on named class-name contracts, and representative lander-owned structured-data reusable surfaces that remain on the same policy.
+  ## Acceptance
+  
+  Evidence must cover governed source-root selection, disallowed utility-token detection, passing component class policy tests, representative app and extension component surfaces that remain on named class-name contracts, representative lander-owned structured-data reusable surfaces that remain on the same policy, content-pack intent, core render-model identifiers, lander-react output, theme styling, mdwrkcom hosting, tests, claims, and evidence without app-local duplication.
 spec_kind: "local-policy"
 adr_ids:
   - "adr:1040"
   - "adr:1048"
   - "adr:1049"
   - "adr:1062"
+  - "adr:1063"

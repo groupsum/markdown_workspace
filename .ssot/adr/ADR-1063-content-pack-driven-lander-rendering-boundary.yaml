@@ -1,0 +1,43 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1063"
+number: 1063
+slug: "content-pack-driven-lander-rendering-boundary"
+title: "Content Pack Driven Lander Rendering Boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk public lander rendering shall be driven by portable content-pack declarations instead of app-local React component assembly."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern content-pack-driven lander rendering through contract, core, and React renderer package boundaries."
+    at: "2026-05-13T09:08:23Z"
+references: []
+body: |-
+  # ADR-1063: Content Pack Driven Lander Rendering Boundary
+  
+  ## Decision
+  
+  MdWrk public lander rendering shall be driven by portable content-pack declarations instead of app-local React component assembly.
+  
+  `@mdwrk/mdwrkcom-content-pack` shall own MdWrk-specific page content, metadata, and declarations of desired lander surfaces as data. `@mdwrk/lander-content-contract` shall own the portable declaration schema for pages, sections, schema intents, and component intents. `@mdwrk/lander-core` shall validate and compile those declarations into a portable render model. `@mdwrk/lander-react` shall own React component implementations and map compiled render intent to JSX and JSON-LD output. `apps/mdwrkcom` shall host the compiled renderer and integrate build/runtime shell concerns, but shall not become the long-term owner of lander component trees or per-type structured-data component selection.
+  
+  ## Rationale
+  
+  The lander package family is intended to be portable. If mdwrkcom chooses concrete lander React components directly, product-specific app code becomes the implicit renderer and the content pack cannot serve as the durable source of page intent. That weakens package reuse, makes structured-data support harder to audit, and invites divergence between content, compiled page models, JSON-LD output, and visible components.
+  
+  A content-pack-driven flow keeps product truth in the content package, validates the shape through the content contract, centralizes normalization in lander-core, and keeps React implementation in lander-react. This also preserves the distinction between declaration of intent and component implementation.
+  
+  ## Consequences
+  
+  1. Content packs may declare page, section, visible component, and structured-data intent as portable data, not as React implementations.
+  2. `@mdwrk/lander-content-contract` must define the valid intent schema and diagnostics surface.
+  3. `@mdwrk/lander-core` must compile content-pack declarations into a render model that is independent of React.
+  4. `@mdwrk/lander-react` must render compiled intent and own component registries/mappings for visible and structured-data surfaces.
+  5. `apps/mdwrkcom` must import the compiled renderer flow and avoid app-local forks for governed lander components.
+  6. Structured-data component selection must come from compiled content/schema intent rather than per-page app code choosing type-specific React components.
+  7. Tests and SSOT feature rows must distinguish content-pack intent, contract schema, core compilation, React rendering, mdwrkcom hosting, and no-drift governance.

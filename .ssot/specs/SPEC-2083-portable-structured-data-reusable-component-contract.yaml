@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs reusable component and composition support for Schema.org JSON-LD types implemented for the portable public lander. It applies to `@mdwrk/structured-data`, `@mdwrk/lander-react`, and `apps/mdwrkcom` adoption of governed structured-data surfaces."
+summary: "This SPEC governs the reusable component obligations for every supported JSON-LD structured-data type across `@mdwrk/structured-data`, `@mdwrk/lander-react`, `@mdwrk/lander-core`, `@mdwrk/lander-content-contract`, `@mdwrk/mdwrkcom-content-pack`, and `apps/mdwrkcom`."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -16,13 +16,21 @@ status_notes:
     status: "draft"
     note: "Created to govern per-type reusable component ownership and adoption for structured-data surfaces."
     at: "2026-05-13T05:42:28Z"
+  -
+    status: "draft"
+    note: "Updated for content-pack-driven schema intent compilation and lander-react rendering."
+    at: "2026-05-13T09:08:46Z"
+  -
+    status: "draft"
+    note: "Preserved existing reusable component obligations and appended content-pack-driven schema intent flow."
+    at: "2026-05-13T09:13:42Z"
 references: []
 body: |-
   # SPEC-2083: Portable Structured Data Reusable Component Contract
   
   ## Scope
   
-  This SPEC governs reusable component and composition support for Schema.org JSON-LD types implemented for the portable public lander. It applies to `@mdwrk/structured-data`, `@mdwrk/lander-react`, and `apps/mdwrkcom` adoption of governed structured-data surfaces.
+  This SPEC governs the reusable component obligations for every supported JSON-LD structured-data type across `@mdwrk/structured-data`, `@mdwrk/lander-react`, `@mdwrk/lander-core`, `@mdwrk/lander-content-contract`, `@mdwrk/mdwrkcom-content-pack`, and `apps/mdwrkcom`.
   
   ## Requirements
   
@@ -38,13 +46,23 @@ body: |-
   10. Verification shall fail closed when mdwrkcom emits or visibly represents a governed structured-data type through app-local one-off implementations that bypass the lander-owned reusable surface.
   11. Verification shall fail closed when a type is marked supported but lacks the required builder support or required lander-owned reusable component or composition support.
   12. Browser screenshot validation shall include affected visible structured-data component surfaces for each shipped lander theme when a change alters those visible surfaces.
+  13. Every supported JSON-LD structured-data type shall have a typed builder or graph primitive in `@mdwrk/structured-data`.
+  14. Every supported JSON-LD structured-data type shall have a reusable React component or component adapter in `@mdwrk/lander-react`.
+  15. Reusable structured-data React components shall emit deterministic JSON-LD output through the structured-data package rather than maintaining independent schema serialization logic.
+  16. Structured-data component selection shall originate from content-pack schema declarations that conform to `@mdwrk/lander-content-contract` and are compiled by `@mdwrk/lander-core`.
+  17. `@mdwrk/lander-core` shall normalize schema intent into a portable render model without importing React.
+  18. `@mdwrk/lander-react` shall map compiled structured-data intent to JSON-LD graph output and the corresponding type-specific reusable component surface.
+  19. `apps/mdwrkcom` shall consume structured-data support through the content-pack, core compiler, and lander-react renderer flow instead of choosing per-type structured-data React components in page-local app code.
+  20. The content contract shall reject malformed schema intent, unknown schema kinds, and app-local implementation references.
+  21. Tests shall cover structured-data builder output, content-contract validation, lander-core schema intent compilation, lander-react render output, and mdwrkcom host adoption or explicit non-adoption for each supported type.
   
   ## Acceptance
   
-  Feature and test rows for structured-data rollout shall distinguish builder support, reusable lander component support, and mdwrkcom adoption status. Evidence shall include passing component-level validation, page-level JSON-LD validation, and screenshot coverage for visible structured-data surfaces when applicable.
+  The structured-data and lander-react boundaries shall expose a matrix with one row per supported JSON-LD type. Each row shall show structured-data implementation, lander-react reusable component implementation, content-pack declarability, core compilation, mdwrkcom usage or non-adoption, feature IDs, claim IDs, test IDs, and current evidence status.
 spec_kind: "normative"
 adr_ids:
   - "adr:1049"
   - "adr:1051"
   - "adr:1057"
   - "adr:1062"
+  - "adr:1063"
