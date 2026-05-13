@@ -8,22 +8,28 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "The lander shall implement and document the MdWrk editor, previewer, and rendered package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary."
+summary: "The lander shall implement and document the MdWrk editor, previewer, rendered markdown, and structured-data reusable package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Extended package-surface decision to explicitly include reusable structured-data surfaces."
+    at: "2026-05-13T05:42:54Z"
 references: []
 body: |-
   # ADR-1051: Lander Editor Previewer Rendered Package Surface
   
   ## Decision
   
-  The lander shall implement and document the MdWrk editor, previewer, and rendered package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary.
+  The lander shall implement and document the MdWrk editor, previewer, rendered markdown, and structured-data reusable package surfaces as first-class product scope. The public lander must present the split reusable package model rather than treating MdWrk as a single undifferentiated application binary.
   
   ## Rationale
   
-  This repository already ships reusable editor and renderer package families, and the lander is the public documentation and release surface that explains how those packages are consumed. Keeping that split explicit prevents the public site from collapsing package responsibilities into a vague client-only story.
+  This repository already ships reusable editor and renderer package families, a reusable structured-data builder layer, and a portable lander React layer that explains and composes those surfaces. Keeping that split explicit prevents the public site from collapsing package responsibilities into a vague client-only story or into app-local one-off implementations.
   
   ## Consequences
   
-  Lander navigation, docs, examples, and blog content may describe the editor package family, previewer and rendered markdown package family, workspace client composition, and how those surfaces are consumed together or independently. Future lander changes must preserve package-level language instead of obscuring the split architecture.
+  1. Lander navigation, docs, examples, and blog content may describe the editor package family, previewer and rendered markdown package family, structured-data builder layer, workspace client composition, and how those surfaces are consumed together or independently.
+  2. Future lander changes must preserve package-level language instead of obscuring the split architecture.
+  3. Structured-data reusable component and composition ownership belongs at the portable lander package layer when the surface is part of governed public lander behavior.

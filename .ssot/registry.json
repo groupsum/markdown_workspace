@@ -10385,6 +10385,1868 @@
         "tst:apps-mdwrkcom-static-cache-policy-ci"
       ],
       "requires": []
+    },
+    {
+      "id": "feat:structured-data.review",
+      "title": "Structured data Review type",
+      "description": "Implement Review JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.aggregate-rating",
+      "title": "Structured data AggregateRating type",
+      "description": "Implement AggregateRating JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.course-instance",
+      "title": "Structured data CourseInstance type",
+      "description": "Implement CourseInstance JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.book",
+      "title": "Structured data Book type",
+      "description": "Implement Book JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.read-action",
+      "title": "Structured data ReadAction type",
+      "description": "Implement ReadAction JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.claim-review",
+      "title": "Structured data ClaimReview type",
+      "description": "Implement ClaimReview JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.employer-aggregate-rating",
+      "title": "Structured data EmployerAggregateRating type",
+      "description": "Implement EmployerAggregateRating JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.monetary-amount-distribution",
+      "title": "Structured data MonetaryAmountDistribution type",
+      "description": "Implement MonetaryAmountDistribution JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.job-posting",
+      "title": "Structured data JobPosting type",
+      "description": "Implement JobPosting JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.local-business",
+      "title": "Structured data LocalBusiness type",
+      "description": "Implement LocalBusiness JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.member-program",
+      "title": "Structured data MemberProgram type",
+      "description": "Implement MemberProgram JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.math-solver",
+      "title": "Structured data MathSolver type",
+      "description": "Implement MathSolver JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.merchant-return-policy",
+      "title": "Structured data MerchantReturnPolicy type",
+      "description": "Implement MerchantReturnPolicy JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.offer-shipping-details",
+      "title": "Structured data OfferShippingDetails type",
+      "description": "Implement OfferShippingDetails JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.movie",
+      "title": "Structured data Movie type",
+      "description": "Implement Movie JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.product-group",
+      "title": "Structured data ProductGroup type",
+      "description": "Implement ProductGroup JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.recipe",
+      "title": "Structured data Recipe type",
+      "description": "Implement Recipe JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.speakable-specification",
+      "title": "Structured data SpeakableSpecification type",
+      "description": "Implement SpeakableSpecification JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.vacation-rental",
+      "title": "Structured data VacationRental type",
+      "description": "Implement VacationRental JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:structured-data.vehicle",
+      "title": "Structured data Vehicle type",
+      "description": "Implement Vehicle JSON-LD type support in @mdwrk/structured-data with typed inputs, stable @id handling, required content constraints, and package tests.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2069",
+        "spc:2072"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-shared-structured-data-tests-run-smoke.mjs"
+      ],
+      "requires": []
+    },
+    {
+      "id": "feat:lander-react.structured-data.web-page-reusable-component",
+      "title": "Lander-react reusable structured data WebPage component",
+      "description": "Implement the governed reusable WebPage component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.web-page"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.web-site-reusable-component",
+      "title": "Lander-react reusable structured data WebSite component",
+      "description": "Implement the governed reusable WebSite component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.web-site"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.organization-reusable-component",
+      "title": "Lander-react reusable structured data Organization component",
+      "description": "Implement the governed reusable Organization component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.organization"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.software-application-reusable-component",
+      "title": "Lander-react reusable structured data SoftwareApplication component",
+      "description": "Implement the governed reusable SoftwareApplication component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.software-application"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.web-application-reusable-component",
+      "title": "Lander-react reusable structured data WebApplication component",
+      "description": "Implement the governed reusable WebApplication component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.web-application"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.article-reusable-component",
+      "title": "Lander-react reusable structured data Article component",
+      "description": "Implement the governed reusable Article component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.article"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.tech-article-reusable-component",
+      "title": "Lander-react reusable structured data TechArticle component",
+      "description": "Implement the governed reusable TechArticle component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.tech-article"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.blog-posting-reusable-component",
+      "title": "Lander-react reusable structured data BlogPosting component",
+      "description": "Implement the governed reusable BlogPosting component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.blog-posting"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.breadcrumb-list-reusable-component",
+      "title": "Lander-react reusable structured data BreadcrumbList component",
+      "description": "Implement the governed reusable BreadcrumbList component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.breadcrumb-list"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.faq-page-reusable-component",
+      "title": "Lander-react reusable structured data FAQPage component",
+      "description": "Implement the governed reusable FAQPage component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "implemented",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "current",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.faq-page"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.qa-page-reusable-component",
+      "title": "Lander-react reusable structured data QAPage component",
+      "description": "Implement the governed reusable QAPage component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.qa-page"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.how-to-reusable-component",
+      "title": "Lander-react reusable structured data HowTo component",
+      "description": "Implement the governed reusable HowTo component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.how-to"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.item-list-reusable-component",
+      "title": "Lander-react reusable structured data ItemList component",
+      "description": "Implement the governed reusable ItemList component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.item-list"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.software-source-code-reusable-component",
+      "title": "Lander-react reusable structured data SoftwareSourceCode component",
+      "description": "Implement the governed reusable SoftwareSourceCode component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.software-source-code"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.product-reusable-component",
+      "title": "Lander-react reusable structured data Product component",
+      "description": "Implement the governed reusable Product component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.product"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.dataset-reusable-component",
+      "title": "Lander-react reusable structured data Dataset component",
+      "description": "Implement the governed reusable Dataset component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.dataset"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.event-reusable-component",
+      "title": "Lander-react reusable structured data Event component",
+      "description": "Implement the governed reusable Event component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.event"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.video-object-reusable-component",
+      "title": "Lander-react reusable structured data VideoObject component",
+      "description": "Implement the governed reusable VideoObject component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.video-object"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.image-object-reusable-component",
+      "title": "Lander-react reusable structured data ImageObject component",
+      "description": "Implement the governed reusable ImageObject component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.image-object"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.profile-page-reusable-component",
+      "title": "Lander-react reusable structured data ProfilePage component",
+      "description": "Implement the governed reusable ProfilePage component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.profile-page"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.review-reusable-component",
+      "title": "Lander-react reusable structured data Review component",
+      "description": "Implement the governed reusable Review component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.review"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.aggregate-rating-reusable-component",
+      "title": "Lander-react reusable structured data AggregateRating component",
+      "description": "Implement the governed reusable AggregateRating component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.aggregate-rating"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.course-reusable-component",
+      "title": "Lander-react reusable structured data Course component",
+      "description": "Implement the governed reusable Course component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.course"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.course-instance-reusable-component",
+      "title": "Lander-react reusable structured data CourseInstance component",
+      "description": "Implement the governed reusable CourseInstance component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.course-instance"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.discussion-forum-posting-reusable-component",
+      "title": "Lander-react reusable structured data DiscussionForumPosting component",
+      "description": "Implement the governed reusable DiscussionForumPosting component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.discussion-forum-posting"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.book-reusable-component",
+      "title": "Lander-react reusable structured data Book component",
+      "description": "Implement the governed reusable Book component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.book"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.read-action-reusable-component",
+      "title": "Lander-react reusable structured data ReadAction component",
+      "description": "Implement the governed reusable ReadAction component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.read-action"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.claim-review-reusable-component",
+      "title": "Lander-react reusable structured data ClaimReview component",
+      "description": "Implement the governed reusable ClaimReview component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.claim-review"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component",
+      "title": "Lander-react reusable structured data EmployerAggregateRating component",
+      "description": "Implement the governed reusable EmployerAggregateRating component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.employer-aggregate-rating"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component",
+      "title": "Lander-react reusable structured data MonetaryAmountDistribution component",
+      "description": "Implement the governed reusable MonetaryAmountDistribution component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.monetary-amount-distribution"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.job-posting-reusable-component",
+      "title": "Lander-react reusable structured data JobPosting component",
+      "description": "Implement the governed reusable JobPosting component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.job-posting"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.local-business-reusable-component",
+      "title": "Lander-react reusable structured data LocalBusiness component",
+      "description": "Implement the governed reusable LocalBusiness component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.local-business"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.member-program-reusable-component",
+      "title": "Lander-react reusable structured data MemberProgram component",
+      "description": "Implement the governed reusable MemberProgram component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.member-program"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.math-solver-reusable-component",
+      "title": "Lander-react reusable structured data MathSolver component",
+      "description": "Implement the governed reusable MathSolver component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.math-solver"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.merchant-return-policy-reusable-component",
+      "title": "Lander-react reusable structured data MerchantReturnPolicy component",
+      "description": "Implement the governed reusable MerchantReturnPolicy component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.merchant-return-policy"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.offer-shipping-details-reusable-component",
+      "title": "Lander-react reusable structured data OfferShippingDetails component",
+      "description": "Implement the governed reusable OfferShippingDetails component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.offer-shipping-details"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.movie-reusable-component",
+      "title": "Lander-react reusable structured data Movie component",
+      "description": "Implement the governed reusable Movie component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.movie"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.product-group-reusable-component",
+      "title": "Lander-react reusable structured data ProductGroup component",
+      "description": "Implement the governed reusable ProductGroup component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.product-group"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.recipe-reusable-component",
+      "title": "Lander-react reusable structured data Recipe component",
+      "description": "Implement the governed reusable Recipe component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.recipe"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.speakable-specification-reusable-component",
+      "title": "Lander-react reusable structured data SpeakableSpecification component",
+      "description": "Implement the governed reusable SpeakableSpecification component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.speakable-specification"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.vacation-rental-reusable-component",
+      "title": "Lander-react reusable structured data VacationRental component",
+      "description": "Implement the governed reusable VacationRental component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.vacation-rental"
+      ]
+    },
+    {
+      "id": "feat:lander-react.structured-data.vehicle-reusable-component",
+      "title": "Lander-react reusable structured data Vehicle component",
+      "description": "Implement the governed reusable Vehicle component or composition surface in @mdwrk/lander-react so mdwrkcom imports the lander-owned surface instead of defining app-local ownership for this structured-data type.",
+      "implementation_status": "absent",
+      "lifecycle": {
+        "stage": "active",
+        "replacement_feature_ids": [],
+        "note": null
+      },
+      "plan": {
+        "horizon": "next",
+        "slot": null,
+        "target_claim_tier": "T2",
+        "target_lifecycle_stage": "active"
+      },
+      "spec_ids": [
+        "spc:2063",
+        "spc:2072",
+        "spc:2083"
+      ],
+      "claim_ids": [
+        "clm:cross-cutting"
+      ],
+      "test_ids": [
+        "tst:packages-lander-lander-react-tests-run-smoke.mjs"
+      ],
+      "requires": [
+        "feat:structured-data.vehicle"
+      ]
     }
   ],
   "tests": [
@@ -11851,7 +13713,27 @@
         "feat:json-ld-video",
         "feat:schemaorg-vocabulary-baseline",
         "feat:json-ld-supported-type-gate",
-        "feat:json-ld-stable-entity-ids"
+        "feat:json-ld-stable-entity-ids",
+        "feat:structured-data.review",
+        "feat:structured-data.aggregate-rating",
+        "feat:structured-data.course-instance",
+        "feat:structured-data.book",
+        "feat:structured-data.read-action",
+        "feat:structured-data.claim-review",
+        "feat:structured-data.employer-aggregate-rating",
+        "feat:structured-data.monetary-amount-distribution",
+        "feat:structured-data.job-posting",
+        "feat:structured-data.local-business",
+        "feat:structured-data.member-program",
+        "feat:structured-data.math-solver",
+        "feat:structured-data.merchant-return-policy",
+        "feat:structured-data.offer-shipping-details",
+        "feat:structured-data.movie",
+        "feat:structured-data.product-group",
+        "feat:structured-data.recipe",
+        "feat:structured-data.speakable-specification",
+        "feat:structured-data.vacation-rental",
+        "feat:structured-data.vehicle"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -11905,7 +13787,49 @@
         "feat:lander.structured-data.video-object",
         "feat:lander.structured-data.web-page",
         "feat:lander.structured-data.web-site",
-        "feat:json-ld-stable-entity-ids"
+        "feat:json-ld-stable-entity-ids",
+        "feat:lander-react.structured-data.web-page-reusable-component",
+        "feat:lander-react.structured-data.web-site-reusable-component",
+        "feat:lander-react.structured-data.organization-reusable-component",
+        "feat:lander-react.structured-data.software-application-reusable-component",
+        "feat:lander-react.structured-data.web-application-reusable-component",
+        "feat:lander-react.structured-data.article-reusable-component",
+        "feat:lander-react.structured-data.tech-article-reusable-component",
+        "feat:lander-react.structured-data.blog-posting-reusable-component",
+        "feat:lander-react.structured-data.breadcrumb-list-reusable-component",
+        "feat:lander-react.structured-data.faq-page-reusable-component",
+        "feat:lander-react.structured-data.qa-page-reusable-component",
+        "feat:lander-react.structured-data.how-to-reusable-component",
+        "feat:lander-react.structured-data.item-list-reusable-component",
+        "feat:lander-react.structured-data.software-source-code-reusable-component",
+        "feat:lander-react.structured-data.product-reusable-component",
+        "feat:lander-react.structured-data.dataset-reusable-component",
+        "feat:lander-react.structured-data.event-reusable-component",
+        "feat:lander-react.structured-data.video-object-reusable-component",
+        "feat:lander-react.structured-data.image-object-reusable-component",
+        "feat:lander-react.structured-data.profile-page-reusable-component",
+        "feat:lander-react.structured-data.review-reusable-component",
+        "feat:lander-react.structured-data.aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.course-reusable-component",
+        "feat:lander-react.structured-data.course-instance-reusable-component",
+        "feat:lander-react.structured-data.discussion-forum-posting-reusable-component",
+        "feat:lander-react.structured-data.book-reusable-component",
+        "feat:lander-react.structured-data.read-action-reusable-component",
+        "feat:lander-react.structured-data.claim-review-reusable-component",
+        "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component",
+        "feat:lander-react.structured-data.job-posting-reusable-component",
+        "feat:lander-react.structured-data.local-business-reusable-component",
+        "feat:lander-react.structured-data.member-program-reusable-component",
+        "feat:lander-react.structured-data.math-solver-reusable-component",
+        "feat:lander-react.structured-data.merchant-return-policy-reusable-component",
+        "feat:lander-react.structured-data.offer-shipping-details-reusable-component",
+        "feat:lander-react.structured-data.movie-reusable-component",
+        "feat:lander-react.structured-data.product-group-reusable-component",
+        "feat:lander-react.structured-data.recipe-reusable-component",
+        "feat:lander-react.structured-data.speakable-specification-reusable-component",
+        "feat:lander-react.structured-data.vacation-rental-reusable-component",
+        "feat:lander-react.structured-data.vehicle-reusable-component"
       ],
       "claim_ids": [
         "clm:cross-cutting"
@@ -12854,7 +14778,69 @@
         "feat:lander-seo-sitemap-protocol",
         "feat:lander-seo-x-card-metadata",
         "feat:mdwrk-custom-parser-profile",
-        "feat:mdwrk-custom-previewer-profiles"
+        "feat:mdwrk-custom-previewer-profiles",
+        "feat:structured-data.review",
+        "feat:structured-data.aggregate-rating",
+        "feat:structured-data.course-instance",
+        "feat:structured-data.book",
+        "feat:structured-data.read-action",
+        "feat:structured-data.claim-review",
+        "feat:structured-data.employer-aggregate-rating",
+        "feat:structured-data.monetary-amount-distribution",
+        "feat:structured-data.job-posting",
+        "feat:structured-data.local-business",
+        "feat:structured-data.member-program",
+        "feat:structured-data.math-solver",
+        "feat:structured-data.merchant-return-policy",
+        "feat:structured-data.offer-shipping-details",
+        "feat:structured-data.movie",
+        "feat:structured-data.product-group",
+        "feat:structured-data.recipe",
+        "feat:structured-data.speakable-specification",
+        "feat:structured-data.vacation-rental",
+        "feat:structured-data.vehicle",
+        "feat:lander-react.structured-data.web-page-reusable-component",
+        "feat:lander-react.structured-data.web-site-reusable-component",
+        "feat:lander-react.structured-data.organization-reusable-component",
+        "feat:lander-react.structured-data.software-application-reusable-component",
+        "feat:lander-react.structured-data.web-application-reusable-component",
+        "feat:lander-react.structured-data.article-reusable-component",
+        "feat:lander-react.structured-data.tech-article-reusable-component",
+        "feat:lander-react.structured-data.blog-posting-reusable-component",
+        "feat:lander-react.structured-data.breadcrumb-list-reusable-component",
+        "feat:lander-react.structured-data.faq-page-reusable-component",
+        "feat:lander-react.structured-data.qa-page-reusable-component",
+        "feat:lander-react.structured-data.how-to-reusable-component",
+        "feat:lander-react.structured-data.item-list-reusable-component",
+        "feat:lander-react.structured-data.software-source-code-reusable-component",
+        "feat:lander-react.structured-data.product-reusable-component",
+        "feat:lander-react.structured-data.dataset-reusable-component",
+        "feat:lander-react.structured-data.event-reusable-component",
+        "feat:lander-react.structured-data.video-object-reusable-component",
+        "feat:lander-react.structured-data.image-object-reusable-component",
+        "feat:lander-react.structured-data.profile-page-reusable-component",
+        "feat:lander-react.structured-data.review-reusable-component",
+        "feat:lander-react.structured-data.aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.course-reusable-component",
+        "feat:lander-react.structured-data.course-instance-reusable-component",
+        "feat:lander-react.structured-data.discussion-forum-posting-reusable-component",
+        "feat:lander-react.structured-data.book-reusable-component",
+        "feat:lander-react.structured-data.read-action-reusable-component",
+        "feat:lander-react.structured-data.claim-review-reusable-component",
+        "feat:lander-react.structured-data.employer-aggregate-rating-reusable-component",
+        "feat:lander-react.structured-data.monetary-amount-distribution-reusable-component",
+        "feat:lander-react.structured-data.job-posting-reusable-component",
+        "feat:lander-react.structured-data.local-business-reusable-component",
+        "feat:lander-react.structured-data.member-program-reusable-component",
+        "feat:lander-react.structured-data.math-solver-reusable-component",
+        "feat:lander-react.structured-data.merchant-return-policy-reusable-component",
+        "feat:lander-react.structured-data.offer-shipping-details-reusable-component",
+        "feat:lander-react.structured-data.movie-reusable-component",
+        "feat:lander-react.structured-data.product-group-reusable-component",
+        "feat:lander-react.structured-data.recipe-reusable-component",
+        "feat:lander-react.structured-data.speakable-specification-reusable-component",
+        "feat:lander-react.structured-data.vacation-rental-reusable-component",
+        "feat:lander-react.structured-data.vehicle-reusable-component"
       ],
       "test_ids": [
         "tst:apps-client-hooks-useapp.test.tsx",
@@ -18032,7 +20018,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "432719b1cf03b9fc2c91d80e3605bb832baf3b05888ff04b59157af604efe139",
+      "content_sha256": "a666b67030df5f5760b67a0280ca1ff573b1da7a622230b1224ea203c89b9f59",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18151,7 +20137,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "84576e6e8887c49dfaa345606785dad89efd8f2567354f7f1e5cacc06c994513",
+      "content_sha256": "ddbd14f52aec241355287f7b9c4533818e8a6eaa6adcc4f664baea325f0a303a",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -18248,6 +20234,28 @@
           "status": "draft",
           "note": "Created mdwrkcom adoption decision for portable lander cache and critical CSS policy.",
           "at": "2026-05-08T03:22:33Z"
+        }
+      ]
+    },
+    {
+      "id": "adr:1062",
+      "number": 1062,
+      "slug": "portable-structured-data-reusable-component-ownership-boundary",
+      "title": "Portable Structured Data Reusable Component Ownership Boundary",
+      "path": ".ssot/adr/ADR-1062-portable-structured-data-reusable-component-ownership-boundary.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "bed6a5a84fbe27b0a2b97e9c9f2e500f99e23ad604e20983f7516241ca98ad38",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created to govern reusable lander ownership for structured-data components by supported type.",
+          "at": "2026-05-13T05:41:41Z"
         }
       ]
     }
@@ -19953,7 +21961,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "f3a75fbedc33e2a55cd4239e87aae7cc6d22d9e0bdea89bf228b304af2d76ed1",
+      "content_sha256": "c6d5c659a312bfa237773b91c58f8c2f6c5b1222fa164aa951540aef2ffcb7d2",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -19962,7 +21970,8 @@
       "adr_ids": [
         "adr:1040",
         "adr:1048",
-        "adr:1049"
+        "adr:1049",
+        "adr:1062"
       ]
     },
     {
@@ -20146,7 +22155,7 @@
       "managed": false,
       "immutable": false,
       "package_version": "0.2.11",
-      "content_sha256": "6dab426c6d3c60a6164af8f0b73436d34e3951978a5b0703dd7f13adde620e76",
+      "content_sha256": "8b897536b89ab0a17bc46b311e8a234a24e1f1ff90181b024768a7af64d7767a",
       "status": "draft",
       "supersedes": [],
       "superseded_by": [],
@@ -20165,13 +22174,19 @@
           "status": "draft",
           "note": "Added social and DCMI metadata parity to page-scoped JSON-LD graph validation.",
           "at": "2026-05-06T08:43:30Z"
+        },
+        {
+          "status": "draft",
+          "note": "Expanded JSON-LD schema support contract to require builder support, reusable lander component support, and mdwrkcom adoption tracking by type.",
+          "at": "2026-05-13T05:47:36Z"
         }
       ],
       "kind": "normative",
       "adr_ids": [
         "adr:1053",
         "adr:1057",
-        "adr:1059"
+        "adr:1059",
+        "adr:1062"
       ]
     },
     {
@@ -20446,6 +22461,35 @@
         "adr:1060",
         "adr:1061",
         "adr:1055"
+      ]
+    },
+    {
+      "id": "spc:2083",
+      "number": 2083,
+      "slug": "portable-structured-data-reusable-component-contract",
+      "title": "Portable Structured Data Reusable Component Contract",
+      "path": ".ssot/specs/SPEC-2083-portable-structured-data-reusable-component-contract.yaml",
+      "origin": "repo-local",
+      "managed": false,
+      "immutable": false,
+      "package_version": "0.2.11",
+      "content_sha256": "ea91934d800f36cf666419215d78f0e312c9bb2ba92e13e32b2c0f1df5956f28",
+      "status": "draft",
+      "supersedes": [],
+      "superseded_by": [],
+      "status_notes": [
+        {
+          "status": "draft",
+          "note": "Created to govern per-type reusable component ownership and adoption for structured-data surfaces.",
+          "at": "2026-05-13T05:42:28Z"
+        }
+      ],
+      "kind": "normative",
+      "adr_ids": [
+        "adr:1049",
+        "adr:1051",
+        "adr:1057",
+        "adr:1062"
       ]
     }
   ],

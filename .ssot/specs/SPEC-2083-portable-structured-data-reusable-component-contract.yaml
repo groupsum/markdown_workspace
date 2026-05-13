@@ -1,0 +1,50 @@
+schema_version: "0.2.0"
+kind: "spec"
+id: "spc:2083"
+number: 2083
+slug: "portable-structured-data-reusable-component-contract"
+title: "Portable Structured Data Reusable Component Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC governs reusable component and composition support for Schema.org JSON-LD types implemented for the portable public lander. It applies to `@mdwrk/structured-data`, `@mdwrk/lander-react`, and `apps/mdwrkcom` adoption of governed structured-data surfaces."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern per-type reusable component ownership and adoption for structured-data surfaces."
+    at: "2026-05-13T05:42:28Z"
+references: []
+body: |-
+  # SPEC-2083: Portable Structured Data Reusable Component Contract
+  
+  ## Scope
+  
+  This SPEC governs reusable component and composition support for Schema.org JSON-LD types implemented for the portable public lander. It applies to `@mdwrk/structured-data`, `@mdwrk/lander-react`, and `apps/mdwrkcom` adoption of governed structured-data surfaces.
+  
+  ## Requirements
+  
+  1. Each governed supported structured-data type shall have an explicit implementation state tracked across three layers: builder support in `@mdwrk/structured-data`, reusable component or composition support in `@mdwrk/lander-react`, and mdwrkcom adoption.
+  2. `@mdwrk/structured-data` shall own typed builders, schema helpers, and graph primitives for supported Schema.org JSON-LD types.
+  3. `@mdwrk/lander-react` shall own the reusable concrete component or composition surface corresponding to each governed supported structured-data type.
+  4. `apps/mdwrkcom` shall import governed structured-data components or composition helpers from `@mdwrk/lander-react` when mdwrkcom uses that type as part of public lander behavior.
+  5. `apps/mdwrkcom` shall not define app-local long-term ownership for governed supported structured-data type components when an equivalent lander-owned reusable surface is required.
+  6. Supported structured-data types with visible or materially represented content shall expose a lander-owned reusable component surface that preserves visible-content parity with the structured-data claims.
+  7. Supported structured-data types that are non-visual or primarily graph-compositional shall expose a lander-owned reusable composition helper or equivalent governed adoption surface.
+  8. Export naming, prop shape, and styling of lander-owned structured-data components shall follow governed component class and token policy rather than ad hoc app-local utility composition.
+  9. New supported structured-data types are not implementation-complete until the builder layer, reusable lander layer, and adoption or explicit non-adoption state are recorded and linked.
+  10. Verification shall fail closed when mdwrkcom emits or visibly represents a governed structured-data type through app-local one-off implementations that bypass the lander-owned reusable surface.
+  11. Verification shall fail closed when a type is marked supported but lacks the required builder support or required lander-owned reusable component or composition support.
+  12. Browser screenshot validation shall include affected visible structured-data component surfaces for each shipped lander theme when a change alters those visible surfaces.
+  
+  ## Acceptance
+  
+  Feature and test rows for structured-data rollout shall distinguish builder support, reusable lander component support, and mdwrkcom adoption status. Evidence shall include passing component-level validation, page-level JSON-LD validation, and screenshot coverage for visible structured-data surfaces when applicable.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1049"
+  - "adr:1051"
+  - "adr:1057"
+  - "adr:1062"

@@ -1,0 +1,43 @@
+schema_version: "0.2.0"
+kind: "adr"
+id: "adr:1062"
+number: 1062
+slug: "portable-structured-data-reusable-component-ownership-boundary"
+title: "Portable Structured Data Reusable Component Ownership Boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "For every governed Schema.org JSON-LD type that MdWrk supports on the public lander, the reusable concrete component or composition surface shall be owned by `@mdwrk/lander-react`."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern reusable lander ownership for structured-data components by supported type."
+    at: "2026-05-13T05:41:41Z"
+references: []
+body: |-
+  # ADR-1062: Portable Structured Data Reusable Component Ownership Boundary
+  
+  ## Decision
+  
+  For every governed Schema.org JSON-LD type that MdWrk supports on the public lander, the reusable concrete component or composition surface shall be owned by `@mdwrk/lander-react`.
+  
+  `@mdwrk/structured-data` shall remain the typed builder and graph-primitive layer. `@mdwrk/lander-react` shall own the reusable React component or composition layer that corresponds to supported structured-data types. `apps/mdwrkcom` shall import and use those lander-owned surfaces rather than defining app-local component ownership for governed structured-data types.
+  
+  When a supported type has a visible or materially represented UI surface, the reusable component shall live in `@mdwrk/lander-react`. When a supported type is non-visual or primarily compositional, `@mdwrk/lander-react` shall still own the canonical reusable composition helper that adopting apps consume.
+  
+  ## Rationale
+  
+  The repository already distinguishes between a portable builder layer in `@mdwrk/structured-data`, a portable lander React layer in `@mdwrk/lander-react`, and product-specific adoption in `apps/mdwrkcom`. Without an explicit ownership boundary, new structured-data support can drift into app-local implementations that duplicate JSX, styling policy, and semantic behavior, which weakens package reuse and makes supported-type rollout harder to audit.
+  
+  The user-facing requirement is stronger than "emit JSON-LD." Each supported type must also have a governed reusable surface that can be adopted consistently at the lander layer and then imported into mdwrkcom. That package split matches the existing public lander architecture and keeps structured-data support aligned with reusable package boundaries.
+  
+  ## Consequences
+  
+  1. New structured-data type support is not complete until builder support exists in `@mdwrk/structured-data` and reusable component or composition support exists in `@mdwrk/lander-react`.
+  2. `apps/mdwrkcom` shall adopt governed lander-owned structured-data components and shall not become the long-term ownership location for supported structured-data component implementations.
+  3. Component class naming, token policy, and lander UIX policy apply to the lander-owned structured-data components just like other governed reusable UI surfaces.
+  4. Feature, test, claim, and evidence rows for structured-data rollout shall track builder support, reusable component support, and mdwrkcom adoption separately.
+  5. Future products that consume the portable lander packages can inherit the same structured-data component surfaces without inheriting MdWrk-specific prose or app-local implementations.

@@ -16,6 +16,10 @@ status_notes:
     status: "draft"
     note: "Created page-scoped JSON-LD entity graph architecture decision."
     at: "2026-05-06T08:29:50Z"
+  -
+    status: "draft"
+    note: "Extended graph architecture decision with package-layered builder, reusable component, and app adoption responsibilities."
+    at: "2026-05-13T05:42:54Z"
 references: []
 body: |-
   # MdWrk JSON-LD Entity Graph Architecture
@@ -26,9 +30,11 @@ body: |-
   
   ## Context
   
-  MdWrk public pages emit Schema.org JSON-LD for search, answer-engine retrieval, AI-oriented discovery, and static deployment verification. The lander now needs a clear decision boundary between a useful page-scoped entity graph and an over-broad schema dump that marks up every supported type on every page.
+  MdWrk public pages emit Schema.org JSON-LD for search, answer-engine retrieval, AI-oriented discovery, and static deployment verification. The lander needs a clear decision boundary between a useful page-scoped entity graph and an over-broad schema dump that marks up every supported type on every page.
   
   Search and answer systems benefit when page entities are connected through stable identifiers, but the structured data must remain truthful to visible or materially represented page content. A global graph that includes every supported Schema.org type everywhere would dilute page meaning, increase maintenance risk, and risk unsupported or misleading claims.
+  
+  The repository also needs a clear implementation split between the builder layer, the reusable component or composition layer, and product-specific adoption.
   
   ## Decision
   
@@ -37,6 +43,8 @@ body: |-
   Each static page may emit a JSON-LD `@graph` containing only the entities that accurately describe that page, its visible content, its canonical route hierarchy, and stable MdWrk product or organization identity when relevant.
   
   The graph shall use stable canonical `@id` values and typed relationships such as `mainEntity`, `isPartOf`, `publisher`, `creator`, `breadcrumb`, `about`, and `mentions` to connect entities. The graph shall prefer the most specific supported Schema.org type that truthfully describes the page surface.
+  
+  `@mdwrk/structured-data` shall own typed Schema.org builders and graph primitives. `@mdwrk/lander-react` shall own the reusable lander-level component or composition surface for governed supported types. `apps/mdwrkcom` shall adopt those lander-owned surfaces rather than defining ad hoc app-local ownership for governed structured-data type implementations.
   
   Supported Schema.org types and page-family graph shapes are governed by the JSON-LD Schema Graph Contract SPEC. New Schema.org types require that SPEC to be updated before implementation.
   
@@ -47,3 +55,4 @@ body: |-
   3. The static compiler and generated `jsonld-graph.json` projection must preserve page-level truth and stable identifiers.
   4. Validation must fail closed when JSON-LD claims content that is not visible, materially represented, or governed as a supported schema type.
   5. SEO, AEO, and AiEO improvements are implemented through governed graph composition and evidence rather than ad hoc structured-data additions.
+  6. Supported-type rollout must remain package-layered: builder support, reusable lander component or composition support, and app adoption are separate deliverables.

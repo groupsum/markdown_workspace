@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "Governed app and extension component source must use named component classes and tokenized CSS contracts for shell, pane, editor, preview, settings, action rail, workspace, and extension surfaces. Tailwind-style utility class tokens are out of bounds in governed component source roots."
+summary: "Governed app, extension, and portable lander component source must use named component classes and tokenized CSS contracts for shell, pane, editor, preview, settings, action rail, workspace, extension, and governed structured-data reusable surfaces. Tailwind-style utility class tokens are out of bounds in governed component source roots."
 supersedes: []
 superseded_by: []
 status_notes: []
@@ -18,17 +18,20 @@ body: |-
   
   ## Requirements
   
-  Governed app and extension component source must use named component classes and tokenized CSS contracts for shell, pane, editor, preview, settings, action rail, workspace, and extension surfaces. Tailwind-style utility class tokens are out of bounds in governed component source roots.
+  Governed app, extension, and portable lander component source must use named component classes and tokenized CSS contracts for shell, pane, editor, preview, settings, action rail, workspace, extension, and governed structured-data reusable surfaces. Tailwind-style utility class tokens are out of bounds in governed component source roots.
   
-  Covered source roots must include app-owned component surfaces and first-party extension component surfaces that participate in the shared UIX shell. Disallowed patterns must include inline utility-token class fragments that bypass the governed class-name and token contract.
+  Covered source roots must include app-owned component surfaces, first-party extension component surfaces that participate in the shared UIX shell, and lander-owned reusable structured-data component or composition surfaces in `packages/lander/lander-react` when those surfaces are part of governed public behavior.
+  
+  Disallowed patterns must include inline utility-token class fragments that bypass the governed class-name and token contract.
   
   Conformance evidence must include a repository test lane that scans governed component source for disallowed utility-token patterns and fails when new violations are introduced.
   
   ## Evidence
   
-  Evidence must cover governed source-root selection, disallowed utility-token detection, passing component class policy tests, and representative app and extension component surfaces that remain on named class-name contracts.
+  Evidence must cover governed source-root selection, disallowed utility-token detection, passing component class policy tests, representative app and extension component surfaces that remain on named class-name contracts, and representative lander-owned structured-data reusable surfaces that remain on the same policy.
 spec_kind: "local-policy"
 adr_ids:
   - "adr:1040"
   - "adr:1048"
   - "adr:1049"
+  - "adr:1062"

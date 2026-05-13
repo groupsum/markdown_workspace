@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC governs the Schema.org JSON-LD types, entity relationships, and page-family graph shapes that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts."
+summary: "This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, and supported-type implementation gates that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts."
 supersedes: []
 superseded_by: []
 status_notes:
@@ -24,13 +24,17 @@ status_notes:
     status: "draft"
     note: "Added social and DCMI metadata parity to page-scoped JSON-LD graph validation."
     at: "2026-05-06T08:43:30Z"
+  -
+    status: "draft"
+    note: "Expanded JSON-LD schema support contract to require builder support, reusable lander component support, and mdwrkcom adoption tracking by type."
+    at: "2026-05-13T05:47:36Z"
 references: []
 body: |-
   # MdWrk JSON-LD Schema Graph Contract
   
   ## Scope
   
-  This SPEC governs the Schema.org JSON-LD types, entity relationships, and page-family graph shapes that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts.
+  This SPEC governs the Schema.org JSON-LD types, entity relationships, page-family graph shapes, and supported-type implementation gates that the MdWrk public lander may emit from static page metadata, article metadata, package metadata, and generated discovery artifacts.
   
   ## Requirements
   
@@ -56,13 +60,17 @@ body: |-
   20. Open Graph, X Card, and DCMI metadata shall remain consistent with the canonical page entity and shall not contradict JSON-LD descriptions.
   21. Generated `jsonld-graph.json` shall include only supported types and shall remain aligned with page-level JSON-LD blocks emitted in static HTML.
   22. The lander shall not emit unsupported Schema.org types by ad hoc page code; new types require this SPEC to be updated first and linked feature/test coverage to be added.
-  23. Validation shall fail closed when required fields for a supported type are missing, when JSON-LD claims content that is not visibly present, when a graph includes unrelated supported types only because they are globally supported, or when generated graph output diverges from canonical routes.
+  23. Supported-type implementation shall be tracked across builder support in `@mdwrk/structured-data`, reusable component or composition support in `@mdwrk/lander-react`, and mdwrkcom adoption state.
+  24. New supported types are not implementation-complete until the builder layer and reusable lander layer are both covered by governed implementation and verification.
+  25. When mdwrkcom uses a governed supported structured-data type, mdwrkcom shall import the lander-owned reusable component or composition surface rather than defining app-local ownership for that type.
+  26. Validation shall fail closed when required fields for a supported type are missing, when JSON-LD claims content that is not visibly present, when a graph includes unrelated supported types only because they are globally supported, or when generated graph output diverges from canonical routes.
   
   ## Acceptance
   
-  Feature and test rows for JSON-LD structured data, static content compilation, static artifact verification, metadata fallback images, excerpt-derived metadata, package/developer page schema output, social metadata parity, DCMI metadata parity, and page-family graph validation must link to this SPEC when they exercise supported Schema.org types or graph relationships.
+  Feature and test rows for JSON-LD structured data, static content compilation, static artifact verification, metadata fallback images, excerpt-derived metadata, package or developer page schema output, social metadata parity, DCMI metadata parity, page-family graph validation, reusable lander structured-data component support, and mdwrkcom adoption must link to this SPEC when they exercise supported Schema.org types or graph relationships.
 spec_kind: "normative"
 adr_ids:
   - "adr:1053"
   - "adr:1057"
   - "adr:1059"
+  - "adr:1062"
