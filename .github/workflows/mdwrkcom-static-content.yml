@@ -10,6 +10,7 @@ on:
       - apps/mdwrkcom/src/cli.mjs
       - apps/mdwrkcom/package.json
       - package.json
+      - package-lock.json
       - .github/workflows/mdwrkcom-static-content.yml
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - apps/mdwrkcom/src/cli.mjs
       - apps/mdwrkcom/package.json
       - package.json
+      - package-lock.json
       - .github/workflows/mdwrkcom-static-content.yml
   workflow_dispatch:
 
@@ -43,6 +45,11 @@ jobs:
 
       - name: Install MdWrk.com validator dependencies
         run: npm ci --ignore-scripts
+
+      - name: Build MdWrk.com workspace dependencies
+        run: |
+          npm run build:renderer
+          npm run build:lander:packages
 
       - name: Validate source, build dist, and verify artifact
         run: npm run ci:static -w @mdwrk/mdwrkcom
