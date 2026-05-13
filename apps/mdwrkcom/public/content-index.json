@@ -3203,60 +3203,6 @@
     "jsonLdId": "https://mdwrk.com/docs/extensions/theme-studio-and-host-surfaces/#webpage"
   },
   {
-    "slug": "/compare/obsidian/",
-    "url": "https://mdwrk.com/compare/obsidian/",
-    "title": "MdWrk Vs Obsidian | MdWrk Compares",
-    "description": "Compare MdWrk and Obsidian when you need local Markdown writing, preview, workspace management, extensions, and package-friendly developer surfaces.",
-    "h1": "MdWrk Vs Obsidian",
-    "intent": "compare mdwrk vs obsidian in MdWrk",
-    "contentType": "comparison",
-    "locale": "en",
-    "updatedAt": "2026-05-03",
-    "tags": [
-      "compare",
-      "Compares"
-    ],
-    "llmsInclude": true,
-    "markdownMirror": "/compare/obsidian/index.md",
-    "jsonLdId": "https://mdwrk.com/compare/obsidian/#webpage"
-  },
-  {
-    "slug": "/compare/typora/",
-    "url": "https://mdwrk.com/compare/typora/",
-    "title": "MdWrk Vs Typora | MdWrk Compares",
-    "description": "Compare MdWrk and Typora across Markdown authoring surfaces, workspace-oriented preview/editor flows, and minimal single-document writing apps.",
-    "h1": "MdWrk Vs Typora",
-    "intent": "compare mdwrk vs typora in MdWrk",
-    "contentType": "comparison",
-    "locale": "en",
-    "updatedAt": "2026-05-03",
-    "tags": [
-      "compare",
-      "Compares"
-    ],
-    "llmsInclude": true,
-    "markdownMirror": "/compare/typora/index.md",
-    "jsonLdId": "https://mdwrk.com/compare/typora/#webpage"
-  },
-  {
-    "slug": "/compare/code/",
-    "url": "https://mdwrk.com/compare/code/",
-    "title": "MdWrk Vs VS Code | MdWrk Compares",
-    "description": "Compare MdWrk and VS Code when you need Markdown editing in either a purpose-built writing workspace or a general developer IDE.",
-    "h1": "MdWrk Vs VS Code",
-    "intent": "compare mdwrk vs vs code in MdWrk",
-    "contentType": "comparison",
-    "locale": "en",
-    "updatedAt": "2026-05-03",
-    "tags": [
-      "compare",
-      "Compares"
-    ],
-    "llmsInclude": true,
-    "markdownMirror": "/compare/code/index.md",
-    "jsonLdId": "https://mdwrk.com/compare/code/#webpage"
-  },
-  {
     "slug": "/compare/marktext/",
     "url": "https://mdwrk.com/compare/marktext/",
     "title": "MdWrk Vs Marktext | MdWrk Compares",
@@ -3615,24 +3561,6 @@
     "llmsInclude": true,
     "markdownMirror": "/updates/responsive-authoring-and-export/index.md",
     "jsonLdId": "https://mdwrk.com/updates/responsive-authoring-and-export/#webpage"
-  },
-  {
-    "slug": "/updates/markdown-workspace-launch/",
-    "url": "https://mdwrk.com/updates/markdown-workspace-launch/",
-    "title": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow | MdWrk Product Updates",
-    "description": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
-    "h1": "Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow",
-    "subtitle": "Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
-    "intent": "read about meet the markdown workspace that turns writing, preview, and themes into one fast flow",
-    "contentType": "update",
-    "locale": "en",
-    "updatedAt": "2026-01-20",
-    "tags": [
-      "updates"
-    ],
-    "llmsInclude": true,
-    "markdownMirror": "/updates/markdown-workspace-launch/index.md",
-    "jsonLdId": "https://mdwrk.com/updates/markdown-workspace-launch/#webpage"
   },
   {
     "slug": "/updates/author/cobycloud/",

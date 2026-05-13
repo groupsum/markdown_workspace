@@ -13,27 +13,86 @@ import type {
 } from "@mdwrk/lander-content-contract";
 import type { CompiledLanderSite, CompiledPage } from "@mdwrk/lander-core";
 import {
+  aggregateRatingNode,
   articleNode,
   blogPostingNode,
+  bookNode,
   breadcrumbListSchema,
+  claimReviewNode,
+  courseInstanceNode,
+  courseNode,
   datasetNode,
+  discussionForumPostingNode,
+  employerAggregateRatingNode,
+  estimatedSalaryNode,
+  eventNode,
   faqPageSchema,
   howToNode,
   imageObjectSchema,
   itemListNode,
+  jobPostingNode,
   jsonLdGraph,
+  localBusinessNode,
+  loyaltyProgramNode,
+  mathSolverNode,
+  merchantReturnPolicyNode,
+  movieNode,
+  offerShippingDetailsNode,
   organizationNode,
   productNode,
+  productGroupNode,
+  qaPageSchema,
+  readActionNode,
+  recipeNode,
+  reviewNode,
   profilePageNode,
+  speakableSpecificationNode,
   softwareApplicationNode,
   softwareSourceCodeNode,
   stableId,
   techArticleNode,
   videoObjectNode,
+  vacationRentalNode,
+  vehicleListingNode,
   webApplicationNode,
   webPageSchema,
   webSiteSchema,
   type JsonLd,
+  type AggregateRatingInput,
+  type ArticleInput,
+  type BookInput,
+  type BreadcrumbListInput,
+  type ClaimReviewInput,
+  type CourseInput,
+  type CourseInstanceInput,
+  type DatasetInput,
+  type DiscussionForumPostingInput,
+  type EventInput,
+  type FaqPageInput,
+  type HowToInput,
+  type ImageObjectInput,
+  type ItemListInput,
+  type JobPostingInput,
+  type LocalBusinessInput,
+  type LoyaltyProgramInput,
+  type MathSolverInput,
+  type MovieInput,
+  type OrganizationInput,
+  type PolicyInput,
+  type ProductInput,
+  type ProductGroupInput,
+  type ProfilePageInput,
+  type QaPageInput,
+  type RecipeInput,
+  type ReviewInput,
+  type SoftwareApplicationInput,
+  type SoftwareSourceCodeInput,
+  type SpeakableInput,
+  type VacationRentalInput,
+  type VehicleInput,
+  type VideoObjectInput,
+  type WebPageInput,
+  type WebSiteInput,
 } from "@mdwrk/structured-data";
 import { LANDER_REACT_VERSION } from "./version.js";
 
@@ -70,6 +129,182 @@ export interface FaqPageProps {
 
 export function JsonLd({ graph }: { graph: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />;
+}
+
+function StructuredDataNode<T>({ data, build }: { data: T; build: (data: T) => JsonLd }) {
+  return <JsonLd graph={build(data)} />;
+}
+
+export function WebPageStructuredData({ data }: { data: WebPageInput }) {
+  return <StructuredDataNode data={data} build={webPageSchema} />;
+}
+
+export function WebSiteStructuredData({ data }: { data: WebSiteInput }) {
+  return <StructuredDataNode data={data} build={webSiteSchema} />;
+}
+
+export function OrganizationStructuredData({ data }: { data: OrganizationInput }) {
+  return <StructuredDataNode data={data} build={organizationNode} />;
+}
+
+export function SoftwareApplicationStructuredData({ data }: { data: SoftwareApplicationInput }) {
+  return <StructuredDataNode data={data} build={softwareApplicationNode} />;
+}
+
+export function WebApplicationStructuredData({ data }: { data: SoftwareApplicationInput }) {
+  return <StructuredDataNode data={data} build={webApplicationNode} />;
+}
+
+export function ArticleStructuredData({ data }: { data: ArticleInput }) {
+  return <StructuredDataNode data={data} build={articleNode} />;
+}
+
+export function TechArticleStructuredData({ data }: { data: ArticleInput }) {
+  return <StructuredDataNode data={data} build={techArticleNode} />;
+}
+
+export function BlogPostingStructuredData({ data }: { data: ArticleInput }) {
+  return <StructuredDataNode data={data} build={blogPostingNode} />;
+}
+
+export function BreadcrumbListStructuredData({ data }: { data: BreadcrumbListInput }) {
+  return <StructuredDataNode data={data} build={breadcrumbListSchema} />;
+}
+
+export function FAQPageStructuredData({ data }: { data: FaqPageInput }) {
+  return <StructuredDataNode data={data} build={faqPageSchema} />;
+}
+
+export function QAPageStructuredData({ data }: { data: QaPageInput }) {
+  return <StructuredDataNode data={data} build={qaPageSchema} />;
+}
+
+export function HowToStructuredData({ data }: { data: HowToInput }) {
+  return <StructuredDataNode data={data} build={howToNode} />;
+}
+
+export function ItemListStructuredData({ data }: { data: ItemListInput }) {
+  return <StructuredDataNode data={data} build={itemListNode} />;
+}
+
+export function SoftwareSourceCodeStructuredData({ data }: { data: SoftwareSourceCodeInput }) {
+  return <StructuredDataNode data={data} build={softwareSourceCodeNode} />;
+}
+
+export function ProductStructuredData({ data }: { data: ProductInput }) {
+  return <StructuredDataNode data={data} build={productNode} />;
+}
+
+export function DatasetStructuredData({ data }: { data: DatasetInput }) {
+  return <StructuredDataNode data={data} build={datasetNode} />;
+}
+
+export function EventStructuredData({ data }: { data: EventInput }) {
+  return <StructuredDataNode data={data} build={eventNode} />;
+}
+
+export function VideoObjectStructuredData({ data }: { data: VideoObjectInput }) {
+  return <StructuredDataNode data={data} build={videoObjectNode} />;
+}
+
+export function ImageObjectStructuredData({ data }: { data: ImageObjectInput }) {
+  return <StructuredDataNode data={data} build={imageObjectSchema} />;
+}
+
+export function ProfilePageStructuredData({ data }: { data: ProfilePageInput }) {
+  return <StructuredDataNode data={data} build={profilePageNode} />;
+}
+
+export function ReviewStructuredData({ data }: { data: ReviewInput }) {
+  return <StructuredDataNode data={data} build={reviewNode} />;
+}
+
+export function AggregateRatingStructuredData({ data }: { data: AggregateRatingInput }) {
+  return <StructuredDataNode data={data} build={aggregateRatingNode} />;
+}
+
+export function CourseStructuredData({ data }: { data: CourseInput }) {
+  return <StructuredDataNode data={data} build={courseNode} />;
+}
+
+export function CourseInstanceStructuredData({ data }: { data: CourseInstanceInput }) {
+  return <StructuredDataNode data={data} build={courseInstanceNode} />;
+}
+
+export function DiscussionForumPostingStructuredData({ data }: { data: DiscussionForumPostingInput }) {
+  return <StructuredDataNode data={data} build={discussionForumPostingNode} />;
+}
+
+export function BookStructuredData({ data }: { data: BookInput }) {
+  return <StructuredDataNode data={data} build={bookNode} />;
+}
+
+export function ReadActionStructuredData({ target }: { target: string | JsonLd }) {
+  return <JsonLd graph={readActionNode(target)} />;
+}
+
+export function ClaimReviewStructuredData({ data }: { data: ClaimReviewInput }) {
+  return <StructuredDataNode data={data} build={claimReviewNode} />;
+}
+
+export function EmployerAggregateRatingStructuredData({ data }: { data: AggregateRatingInput }) {
+  return <StructuredDataNode data={data} build={employerAggregateRatingNode} />;
+}
+
+export function MonetaryAmountDistributionStructuredData({
+  data,
+}: {
+  data: { name?: string; currency?: string; minValue?: number; maxValue?: number; unitText?: string };
+}) {
+  return <JsonLd graph={estimatedSalaryNode(data)} />;
+}
+
+export function JobPostingStructuredData({ data }: { data: JobPostingInput }) {
+  return <StructuredDataNode data={data} build={jobPostingNode} />;
+}
+
+export function LocalBusinessStructuredData({ data }: { data: LocalBusinessInput }) {
+  return <StructuredDataNode data={data} build={localBusinessNode} />;
+}
+
+export function MemberProgramStructuredData({ data }: { data: LoyaltyProgramInput }) {
+  return <StructuredDataNode data={data} build={loyaltyProgramNode} />;
+}
+
+export function MathSolverStructuredData({ data }: { data: MathSolverInput }) {
+  return <StructuredDataNode data={data} build={mathSolverNode} />;
+}
+
+export function MerchantReturnPolicyStructuredData({ data }: { data: PolicyInput }) {
+  return <StructuredDataNode data={data} build={merchantReturnPolicyNode} />;
+}
+
+export function OfferShippingDetailsStructuredData({ data }: { data: PolicyInput }) {
+  return <StructuredDataNode data={data} build={offerShippingDetailsNode} />;
+}
+
+export function MovieStructuredData({ data }: { data: MovieInput }) {
+  return <StructuredDataNode data={data} build={movieNode} />;
+}
+
+export function ProductGroupStructuredData({ data }: { data: ProductGroupInput }) {
+  return <StructuredDataNode data={data} build={productGroupNode} />;
+}
+
+export function RecipeStructuredData({ data }: { data: RecipeInput }) {
+  return <StructuredDataNode data={data} build={recipeNode} />;
+}
+
+export function SpeakableSpecificationStructuredData({ data }: { data: SpeakableInput }) {
+  return <StructuredDataNode data={data} build={speakableSpecificationNode} />;
+}
+
+export function VacationRentalStructuredData({ data }: { data: VacationRentalInput }) {
+  return <StructuredDataNode data={data} build={vacationRentalNode} />;
+}
+
+export function VehicleStructuredData({ data }: { data: VehicleInput }) {
+  return <StructuredDataNode data={data} build={vehicleListingNode} />;
 }
 
 const absoluteHref = (baseUrl: string, href: string): string =>

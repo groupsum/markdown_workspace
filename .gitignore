@@ -24,7 +24,8 @@ dist
 *.sln
 *.sw?
 *.zip
-/.tmp
+/.tmp/
+**/.tmp/**
 
 # Root-level generated media artifacts are repository clutter.
 # Keep screenshots and visual proof under artifacts/ instead.

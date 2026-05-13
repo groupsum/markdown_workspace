@@ -960,6 +960,7 @@ const buildRenderRegistry = (entries) => {
   const failures = [];
   const bySlug = new Map();
   const byContentType = new Map();
+  const byContentIdentity = new Map();
   const localeGroups = new Map();
   for (const entry of entries) {
     if (bySlug.has(entry.frontmatter.slug)) {
@@ -967,6 +968,12 @@ const buildRenderRegistry = (entries) => {
       continue;
     }
     bySlug.set(entry.frontmatter.slug, entry);
+    const contentIdentity = canonicalContentIdentityForSlug(entry.frontmatter.slug);
+    if (byContentIdentity.has(contentIdentity)) {
+      failures.push(`Duplicate canonical content identity ${contentIdentity} via ${byContentIdentity.get(contentIdentity).frontmatter.slug} and ${entry.frontmatter.slug}`);
+      continue;
+    }
+    byContentIdentity.set(contentIdentity, entry);
     if (entry.frontmatter.canonical.includes('?')) failures.push(`${entry.sourcePath}: canonical URL must not use locale query parameters`);
     if (/[?&](?:lang|locale|hl)=/i.test(entry.frontmatter.slug) || /[?&](?:lang|locale|hl)=/i.test(entry.frontmatter.canonical)) {
       failures.push(`${entry.sourcePath}: locale routing must not use query parameters`);
@@ -1083,6 +1090,32 @@ const toCompareRouteSlug = (slug) => `/compare/${String(slug)
   .replace(/^mdwrk-vs/i, '')
   .replace(/^vs-/, '')
   .replace(/^vscode$/, 'vs-code')}/`;
+
+const canonicalContentIdentityForSlug = (slug) => {
+  const normalizedSlug = String(slug ?? '').trim();
+  if (!normalizedSlug) return normalizedSlug;
+  if (normalizedSlug === '/updates/markdown-workspace-launch/') return '/updates/launch/';
+  if (normalizedSlug === '/compare/code/' || normalizedSlug === '/compare/mdwrk-vs-vscode-markdown/') {
+    return '/compare/mdwrk-vs-vscode-markdown/';
+  }
+  if (normalizedSlug === '/compare/obsidian/' || normalizedSlug === '/compare/mdwrk-vs-obsidian/') {
+    return '/compare/mdwrk-vs-obsidian/';
+  }
+  if (normalizedSlug === '/compare/typora/' || normalizedSlug === '/compare/mdwrk-vs-typora/') {
+    return '/compare/mdwrk-vs-typora/';
+  }
+  return normalizedSlug;
+};
+
+const legacyAliasSlugForContentSlug = (slug) => {
+  const normalizedSlug = String(slug ?? '').trim();
+  if (normalizedSlug === '/updates/launch/') return '/updates/markdown-workspace-launch/';
+  if (normalizedSlug === '/compare/mdwrk-vs-vscode-markdown/') return '/compare/code/';
+  if (normalizedSlug.startsWith('/compare/mdwrk-vs-')) {
+    return normalizedSlug.replace('/compare/mdwrk-vs-', '/compare/');
+  }
+  return null;
+};
 
 const toFeatureRouteSlug = (slug) => `/features/${String(slug)
   .replace(/^\/+|\/+$/g, '')
@@ -1378,9 +1411,12 @@ const readDataStaticEntries = () => {
 
 const readStaticRegistry = () => {
   const contentRegistry = readContentEntries();
+  const suppressedLegacySlugs = new Set(contentRegistry.entries
+    .map(entry => legacyAliasSlugForContentSlug(entry.frontmatter.slug))
+    .filter(Boolean));
   return buildRenderRegistry([
     ...contentRegistry.entries,
-    ...readDataStaticEntries(),
+    ...readDataStaticEntries().filter(entry => !suppressedLegacySlugs.has(entry.frontmatter.slug)),
   ]);
 };
 
