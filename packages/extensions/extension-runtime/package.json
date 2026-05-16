@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-runtime",
-  "version": "1.1.5",
+  "version": "1.2.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,9 +23,9 @@
   ],
   "description": "Runtime registry, loader, compatibility checks, activation lifecycle, and persisted state for MdWrk extensions.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.2",
-    "@mdwrk/extension-manifest": "^1.0.1",
-    "@mdwrk/theme-contract": "^1.1.1"
+    "@mdwrk/extension-host": "^1.0.5",
+    "@mdwrk/extension-manifest": "^1.0.3",
+    "@mdwrk/theme-contract": "^1.1.3"
   },
   "devDependencies": {},
   "scripts": {

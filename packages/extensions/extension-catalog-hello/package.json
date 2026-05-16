@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-catalog-hello",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,8 +23,8 @@
   ],
   "description": "Sample third-party external extension used to validate catalog discovery, installation, trust, and runtime activation.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.2",
-    "@mdwrk/extension-manifest": "^1.0.1"
+    "@mdwrk/extension-host": "^1.0.5",
+    "@mdwrk/extension-manifest": "^1.0.3"
   },
   "scripts": {
     "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host",

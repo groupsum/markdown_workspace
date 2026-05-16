@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-gemini-agent",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -23,10 +23,10 @@
   ],
   "description": "First-party Gemini workflow extension for MdWrk with conversation threads, Markdown preview, draft-based writeback, and a bundled operator view.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.2",
-    "@mdwrk/extension-manifest": "^1.0.1",
-    "@mdwrk/extension-runtime": "^1.1.1",
-    "@mdwrk/markdown-renderer-react": "^1.1.1"
+    "@mdwrk/extension-host": "^1.0.5",
+    "@mdwrk/extension-manifest": "^1.0.3",
+    "@mdwrk/extension-runtime": "^1.2.2",
+    "@mdwrk/markdown-renderer-react": "^1.1.6"
   },
   "peerDependencies": {
     "react": "^19.0.0",
