@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-language-pack-studio",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -16,8 +16,8 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.2",
-    "@mdwrk/extension-manifest": "^1.0.1",
+    "@mdwrk/extension-host": "^1.0.5",
+    "@mdwrk/extension-manifest": "^1.0.3",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {
@@ -25,7 +25,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@mdwrk/testing": "^1.0.1",
+    "@mdwrk/testing": "^1.0.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.8",

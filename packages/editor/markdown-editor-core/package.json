@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/markdown-editor-core",
-  "version": "1.1.3",
+  "version": "1.1.6",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -24,7 +24,7 @@
   "description": "Portable source-mode markdown editor state, selection transforms, command model, and undo/redo history for MdWrk.",
   "dependencies": {},
   "devDependencies": {
-    "@mdwrk/markdown-renderer-core": "^1.1.1",
+    "@mdwrk/markdown-renderer-core": "^1.1.6",
     "vitest": "^2.1.8"
   },
   "scripts": {

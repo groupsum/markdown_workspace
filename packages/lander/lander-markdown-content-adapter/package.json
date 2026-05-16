@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-markdown-content-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -21,8 +21,8 @@
   ],
   "description": "Markdown frontmatter and body adapter for portable lander content specs.",
   "dependencies": {
-    "@mdwrk/lander-content-contract": "^0.1.0",
-    "@mdwrk/lander-core": "^0.1.0"
+    "@mdwrk/lander-content-contract": "^0.1.2",
+    "@mdwrk/lander-core": "^0.1.2"
   },
   "scripts": {
     "build": "npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",

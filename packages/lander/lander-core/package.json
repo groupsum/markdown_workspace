@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -22,7 +22,7 @@
   ],
   "description": "Portable compiler and diagnostics for product landing site content.",
   "dependencies": {
-    "@mdwrk/lander-content-contract": "^0.1.0"
+    "@mdwrk/lander-content-contract": "^0.1.2"
   },
   "scripts": {
     "build": "npm run build -w @mdwrk/lander-content-contract && tsc -p tsconfig.json",
