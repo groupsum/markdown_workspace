@@ -234,6 +234,11 @@ assert.ok(faqMarkup.includes('Does the lander emit JSON-LD?'));
 const breadcrumbsMarkup = renderToStaticMarkup(React.createElement(BreadcrumbList, { items: page.breadcrumbs }));
 assert.ok(breadcrumbsMarkup.includes('MdWrk'));
 assert.ok(breadcrumbsMarkup.includes('Structured Data Package'));
+assert.ok(breadcrumbsMarkup.includes('class="lander-breadcrumbs"'));
+assert.ok(breadcrumbsMarkup.includes('class="lander-breadcrumbs__list"'));
+assert.ok(breadcrumbsMarkup.includes('class="lander-breadcrumbs__link"'));
+assert.ok(breadcrumbsMarkup.includes('class="lander-breadcrumbs__current"'));
+assert.ok(breadcrumbsMarkup.includes('aria-current="page"'));
 
 assert.equal(Object.keys(landerStructuredDataIntentRegistry).length, 42);
 assert.equal(landerStructuredDataIntentRegistry.WebPage.componentName, 'WebPageStructuredData');

@@ -86,6 +86,95 @@
   font-weight: 600;
 }
 
+.lander-breadcrumbs {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.25rem 0 0;
+  border: 1px solid var(--lander-border);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--lander-panel) 82%, transparent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--lander-shadow) 55%, transparent);
+  color: var(--lander-fg-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.lander-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0.375rem 0.625rem;
+  list-style: none;
+}
+
+.lander-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.lander-breadcrumbs__item + .lander-breadcrumbs__item::before {
+  content: "/";
+  margin: 0 0.45rem;
+  color: color-mix(in srgb, var(--lander-fg-muted) 52%, transparent);
+  font-weight: 700;
+}
+
+.lander-breadcrumbs__link,
+.lander-breadcrumbs__current {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  min-width: 0;
+  border-radius: 9999px;
+  padding: 0.125rem 0.375rem;
+  text-decoration: none;
+}
+
+.lander-breadcrumbs__link {
+  color: var(--lander-fg-muted);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.lander-breadcrumbs__link:hover,
+.lander-breadcrumbs__link:focus-visible {
+  background: var(--lander-accent-soft);
+  color: var(--lander-accent-strong);
+}
+
+.lander-breadcrumbs__link:focus-visible {
+  outline: 2px solid var(--lander-accent);
+  outline-offset: 2px;
+}
+
+.lander-breadcrumbs__current {
+  color: var(--lander-heading-fg);
+}
+
+[data-lander-theme="lander-dark"] .lander-breadcrumbs,
+[data-lander-theme="dark"] .lander-breadcrumbs,
+.dark .lander-breadcrumbs {
+  background: color-mix(in srgb, var(--lander-panel) 72%, transparent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--lander-shadow) 70%, transparent);
+}
+
+[data-lander-theme="lander-dark"] .lander-breadcrumbs__link:hover,
+[data-lander-theme="lander-dark"] .lander-breadcrumbs__link:focus-visible,
+[data-lander-theme="dark"] .lander-breadcrumbs__link:hover,
+[data-lander-theme="dark"] .lander-breadcrumbs__link:focus-visible,
+.dark .lander-breadcrumbs__link:hover,
+.dark .lander-breadcrumbs__link:focus-visible {
+  color: var(--lander-accent-strong);
+}
+
 .hero-copy.home-subtitle,
 .home-subtitle {
   display: block;

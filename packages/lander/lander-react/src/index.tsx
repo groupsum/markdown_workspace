@@ -127,6 +127,10 @@ export interface FaqPageProps {
   collapsible?: boolean;
 }
 
+function cx(...classes: Array<string | undefined>) {
+  return classes.filter(Boolean).join(" ");
+}
+
 export function JsonLd({ graph }: { graph: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />;
 }
@@ -787,7 +791,7 @@ export function SectionRenderer({ section }: { section: SectionSpec }) {
 
 export function BreadcrumbList({
   items,
-  className = "lander-page__muted",
+  className,
   label = "Breadcrumb",
   listClassName,
   itemClassName,
@@ -796,38 +800,25 @@ export function BreadcrumbList({
 }: BreadcrumbListProps) {
   if (!items.length) return null;
   return (
-    <nav aria-label={label} className={className}>
-      {listClassName ? (
-        <ol className={listClassName}>
-          {items.map((item, index) => {
-            const isLast = index === items.length - 1;
-            return (
-              <li key={`${item.href ?? item.label}-${index}`} className={itemClassName}>
-                {item.href && !isLast ? (
-                  <a href={item.href} className={linkClassName}>
-                    {item.label}
-                  </a>
-                ) : (
-                  <span className={currentClassName}>{item.label}</span>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      ) : (
-        items.map((item, index) => (
-          <React.Fragment key={`${item.href ?? item.label}-${index}`}>
-            {index > 0 ? " / " : null}
-            {item.href && index !== items.length - 1 ? (
-              <a href={item.href} className={linkClassName}>
-                {item.label}
-              </a>
-            ) : (
-              <span className={currentClassName}>{item.label}</span>
-            )}
-          </React.Fragment>
-        ))
-      )}
+    <nav aria-label={label} className={cx("lander-breadcrumbs", className)}>
+      <ol className={cx("lander-breadcrumbs__list", listClassName)}>
+        {items.map((item, index) => {
+          const isLast = index === items.length - 1;
+          return (
+            <li key={`${item.href ?? item.label}-${index}`} className={cx("lander-breadcrumbs__item", itemClassName)}>
+              {item.href && !isLast ? (
+                <a href={item.href} className={cx("lander-breadcrumbs__link", linkClassName)}>
+                  {item.label}
+                </a>
+              ) : (
+                <span className={cx("lander-breadcrumbs__current", currentClassName)} aria-current={isLast ? "page" : undefined}>
+                  {item.label}
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }
