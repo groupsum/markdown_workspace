@@ -1,0 +1,29 @@
+{
+  "name": "@mdwrk/example-page-template-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run build:lander:packages --prefix ../.. && tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "npm run typecheck"
+  },
+  "dependencies": {
+    "@mdwrk/lander-core": "^0.1.0",
+    "@mdwrk/lander-react": "^0.1.0",
+    "@mdwrk/page-template-demo-content-pack": "^0.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "license": "Apache-2.0",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}

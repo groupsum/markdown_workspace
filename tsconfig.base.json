@@ -151,6 +151,12 @@
       "@mdwrk/mdwrkcom-content-pack/*": [
         "packages/content/mdwrkcom-content-pack/dist/*"
       ],
+      "@mdwrk/page-template-demo-content-pack": [
+        "packages/content/page-template-demo-content-pack/dist/index.d.ts"
+      ],
+      "@mdwrk/page-template-demo-content-pack/*": [
+        "packages/content/page-template-demo-content-pack/dist/*"
+      ],
       "@mdwrk/extension-runtime": [
         "packages/extensions/extension-runtime/dist/index.d.ts"
       ],
