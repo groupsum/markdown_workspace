@@ -23,7 +23,7 @@ test('orders change requests by package owner dependency order', () => {
 test('maps repository paths to package owners', () => {
   assert.equal(packageOwnerForPath('packages/extensions/extension-runtime/src/index.ts').id, 'extensions');
   assert.equal(packageOwnerForPath('packages/lander/lander-core/src/index.ts').id, 'lander');
-  assert.equal(packageOwnerForPath('apps/mdwrkcom/src/cli.mjs').id, 'mdwrkcom');
+  assert.equal(packageOwnerForPath('packages/lander/lander-react/src/index.ts').id, 'lander');
   assert.equal(packageOwnerForPath('unknown/file.txt').id, 'unowned');
 });
 

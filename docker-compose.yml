@@ -28,19 +28,6 @@ services:
       <<: *common-env
     networks:
       - dockerwp
-  lander:
-    container_name: markdown_workspace_lander
-    build:
-      context: .
-      dockerfile: apps/mdwrkcom/Dockerfile
-      args:
-        <<: *common-env
-    restart: unless-stopped
-    environment:
-      <<: *common-env
-    networks:
-      - dockerwp
-
 networks:
   dockerwp:
     name: dockerwp

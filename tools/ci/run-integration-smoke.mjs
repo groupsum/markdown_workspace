@@ -12,7 +12,6 @@ export async function runIntegrationSmoke() {
   const workspaces = await loadWorkspacePackages();
   const byName = new Map(workspaces.map((workspacePackage) => [workspacePackage.packageJson.name, workspacePackage]));
   const client = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/client');
-  const lander = workspaces.find((workspacePackage) => workspacePackage.relativeDir === 'apps/mdwrkcom');
   const rendererExample = byName.get('@mdwrk/example-renderer-basic');
   const editorExample = byName.get('@mdwrk/example-editor-basic');
 
@@ -35,16 +34,6 @@ export async function runIntegrationSmoke() {
         client.packageJson.dependencies['@mdwrk/extension-theme-studio'],
     ),
     client?.packageJson.dependencies ?? null,
-  );
-
-  record(
-    'lander-depends-on-shared-renderer-packages',
-    Boolean(
-      lander?.packageJson.dependencies?.['@mdwrk/markdown-renderer-core'] &&
-        lander.packageJson.dependencies['@mdwrk/markdown-renderer-react'] &&
-        lander.packageJson.dependencies['@mdwrk/ui-tokens'],
-    ),
-    lander?.packageJson.dependencies ?? null,
   );
 
   record(

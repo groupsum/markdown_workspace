@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T21:52:55.631Z",
+  "generatedAt": "2026-05-18T18:32:55.153Z",
   "kind": "integration-smoke",
   "ok": true,
   "checks": [
@@ -7,38 +7,29 @@
       "name": "client-depends-on-runtime-and-first-party-extensions",
       "pass": true,
       "detail": {
-        "@mdwrk/extension-gemini-agent": "^1.1.1",
-        "@mdwrk/extension-host": "^1.0.2",
-        "@mdwrk/extension-language-pack-studio": "^1.0.3",
-        "@mdwrk/extension-manager": "^1.1.6",
-        "@mdwrk/extension-manifest": "^1.0.1",
-        "@mdwrk/extension-runtime": "^1.1.3",
-        "@mdwrk/i18n": "^1.2.1",
-        "@mdwrk/icons": "^1.0.1",
-        "@mdwrk/markdown-editor-react": "^1.1.1",
-        "@mdwrk/markdown-renderer-core": "^1.1.1",
-        "@mdwrk/markdown-renderer-react": "^1.1.1",
-        "@mdwrk/theme-contract": "^1.1.1",
-        "@mdwrk/ui-tokens": "^1.2.1",
+        "@mdwrk/extension-gemini-agent": "^1.2.2",
+        "@mdwrk/extension-git-ops": "^1.2.3",
+        "@mdwrk/extension-host": "^1.0.5",
+        "@mdwrk/extension-language-pack-studio": "^1.0.8",
+        "@mdwrk/extension-manager": "^1.2.2",
+        "@mdwrk/extension-manifest": "^1.0.3",
+        "@mdwrk/extension-runtime": "^1.2.2",
+        "@mdwrk/extension-workspace-files": "^1.2.3",
+        "@mdwrk/i18n": "^1.2.4",
+        "@mdwrk/icons": "^1.0.4",
+        "@mdwrk/markdown-edit-in-renderer-react": "^1.0.11",
+        "@mdwrk/markdown-editor-core": "^1.1.6",
+        "@mdwrk/markdown-editor-react": "^1.1.6",
+        "@mdwrk/markdown-renderer-core": "^1.1.6",
+        "@mdwrk/markdown-renderer-react": "^1.1.6",
+        "@mdwrk/theme-contract": "^1.1.4",
+        "@mdwrk/ui-tokens": "^1.2.5",
         "jszip": "^3.10.1",
         "lucide-react": "^0.475.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-syntax-highlighter": "^15.6.1",
-        "@mdwrk/extension-theme-studio": "^1.1.5"
-      }
-    },
-    {
-      "name": "lander-depends-on-shared-renderer-packages",
-      "pass": true,
-      "detail": {
-        "react": "^19.2.4",
-        "react-dom": "^19.2.4",
-        "react-router-dom": "^7.9.3",
-        "lucide-react": "^0.563.0",
-        "@mdwrk/markdown-renderer-core": "^1.1.1",
-        "@mdwrk/markdown-renderer-react": "^1.1.1",
-        "@mdwrk/ui-tokens": "^1.2.1"
+        "@mdwrk/extension-theme-studio": "^1.2.2"
       }
     },
     {

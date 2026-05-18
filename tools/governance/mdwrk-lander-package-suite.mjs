@@ -15,7 +15,7 @@ export const LANDER_PACKAGE_SUITE_WORKSPACES = [
   { name: '@mdwrk/lander-page-templates', path: 'packages/lander/lander-page-templates' },
   { name: '@mdwrk/lander-page-template-presets', path: 'packages/lander/lander-page-template-presets' },
   { name: '@mdwrk/lander-react', path: 'packages/lander/lander-react' },
-  { name: '@mdwrk/mdwrkcom-content-pack', path: 'packages/content/mdwrkcom-content-pack' },
+  { name: '@mdwrk/page-template-demo-content-pack', path: 'packages/content/page-template-demo-content-pack' },
 ];
 
 const REQUIRED_ROOT_SUITE_SCRIPTS = [
