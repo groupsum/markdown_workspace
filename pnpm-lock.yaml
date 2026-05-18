@@ -63,6 +63,9 @@ importers:
       '@mdwrk/markdown-edit-in-renderer-react':
         specifier: ^1.0.11
         version: link:../../packages/editor/markdown-edit-in-renderer-react
+      '@mdwrk/markdown-editor-core':
+        specifier: ^1.1.6
+        version: link:../../packages/editor/markdown-editor-core
       '@mdwrk/markdown-editor-react':
         specifier: ^1.1.6
         version: link:../../packages/editor/markdown-editor-react
@@ -472,6 +475,9 @@ importers:
       '@mdwrk/extension-manifest':
         specifier: ^1.0.3
         version: link:../../contracts/extension-manifest
+      '@mdwrk/extension-runtime':
+        specifier: ^1.2.2
+        version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
         version: 0.475.0(react@19.2.6)

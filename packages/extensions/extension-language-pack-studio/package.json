@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-language-pack-studio",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -18,6 +18,7 @@
   "dependencies": {
     "@mdwrk/extension-host": "^1.0.5",
     "@mdwrk/extension-manifest": "^1.0.3",
+    "@mdwrk/extension-runtime": "^1.2.2",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {
@@ -34,7 +35,7 @@
     "vitest": "^2.1.8"
   },
   "scripts": {
-    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host",
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host && npm run build -w @mdwrk/extension-runtime",
     "build": "npm run build:deps && tsc -p tsconfig.json",
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",

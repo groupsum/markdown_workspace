@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/mdwrkspace",
   "private": false,
-  "version": "1.4.28",
+  "version": "1.4.29",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -44,6 +44,7 @@
     "@mdwrk/i18n": "^1.2.4",
     "@mdwrk/icons": "^1.0.3",
     "@mdwrk/markdown-edit-in-renderer-react": "^1.0.11",
+    "@mdwrk/markdown-editor-core": "^1.1.6",
     "@mdwrk/markdown-editor-react": "^1.1.6",
     "@mdwrk/markdown-renderer-core": "^1.1.6",
     "@mdwrk/markdown-renderer-react": "^1.1.6",
