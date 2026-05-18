@@ -1,0 +1,44 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2099"
+number: 2099
+slug: "mdwrk-package-screenshot-evidence-contract"
+title: "MdWrk Package Screenshot Evidence Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This specification defines screenshot evidence requirements for MdWrk UI changes."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to specify screenshot evidence for MdWrk UI work."
+    at: "2026-05-18T15:56:48Z"
+references: []
+body: |-
+  # MdWrk Package Screenshot Evidence Contract
+
+  ## Purpose
+  This specification defines screenshot evidence requirements for MdWrk UI changes.
+
+  ## Scope
+  The contract applies to `apps/client`, `apps/desktop`, `apps/mdwrkcom`, first-party extensions, lander packages with rendered surfaces, and screenshot artifacts.
+
+  ## Requirements
+  1. UI changes shall produce screenshots for every affected theme, view, mode, pane, and modal.
+  2. Responsive work shall include the governed portrait, square/hybrid, landscape, wide, and ultra-wide aspect-ratio bands plus relevant width, height, touch, and precision classes.
+  3. Extension work shall screenshot panes, panels, settings views, toolbars, and diagnostics surfaces.
+  4. Lander and mdwrkcom work shall screenshot every affected page type, theme, responsive band, modal, and content mode.
+  5. Desktop-specific divergences from browser/PWA client behavior shall have separate screenshots.
+  6. Screenshot manifests shall be stored as reviewable artifacts and linked as SSOT evidence where the change is governed.
+
+  ## Verification
+  Passing evidence shall include screenshot manifest validation, artifact existence checks, and representative visual review outputs for every affected owner package.
+spec_kind: "governance"
+adr_ids:
+  - "adr:1068"
+  - "adr:1070"
+  - "adr:1031"
+  - "adr:1018"

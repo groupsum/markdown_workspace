@@ -107,6 +107,9 @@ for (const sourceSignal of [
 }
 
 assert.ok(sourceBase.includes('@keyframes lander-blob'), 'Base source must keep the pre-split lander blob animation.');
+assert.ok(sourceComponents.includes('will-change: transform'), 'Component source must keep first-viewport blob motion on composited transforms.');
+assert.ok(sourceComponents.includes('@media (prefers-reduced-motion: reduce)'), 'Component source must keep a reduced-motion override for first-viewport animations.');
+assert.ok(sourceComponents.includes('.privacy-badge-dot'), 'Component source must include the animated privacy badge in the reduced-motion policy.');
 assert.ok(sourceMarkdown.includes('.lander-markdown'), 'Markdown renderer source must keep the lander markdown scope.');
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body h2'), 'Markdown renderer source must theme lander markdown headings.');
 assert.ok(sourceMarkdown.includes('.lander-markdown .markdown-body p'), 'Markdown renderer source must theme lander markdown body text.');
@@ -159,5 +162,10 @@ assert.ok(css.includes('padding:.12rem .35rem') || css.includes('padding:0.12rem
 assert.ok(css.includes('padding:1rem 1.125rem'), 'Static stylesheet must pad fenced code text away from its border.');
 assert.ok(css.includes('list-style:disc'), 'Static stylesheet must render unordered markdown lists with bullets.');
 assert.ok(css.includes('list-style:decimal'), 'Static stylesheet must render ordered markdown lists with numerals.');
+assert.ok(css.includes('.hero-blob{will-change:transform}'), 'Static stylesheet must keep hero blob motion composited.');
+assert.ok(css.includes('@media (prefers-reduced-motion:reduce){.hero-blob,.privacy-badge-dot{animation:none}}'), 'Static stylesheet must disable first-viewport animations for reduced-motion users.');
+assert.ok(sourceCli.includes('critical-path-manifest.json'), 'Static renderer must emit the portable critical path manifest.');
+assert.ok(sourceCli.includes('staticRouteScriptFacts'), 'Static renderer must declare route-scoped script facts.');
+assert.ok(sourceCli.includes('validateLanderPerformanceBudget'), 'Static renderer must validate portable lander performance budgets.');
 
 console.log('Static style contract validation passed.');

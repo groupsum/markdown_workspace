@@ -28,7 +28,7 @@
     "build": "npm run build -w @mdwrk/lander-content-contract && tsc -p tsconfig.json",
     "typecheck": "npm run build -w @mdwrk/lander-content-contract && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
-    "test": "npm run build && node ./tests/run-smoke.mjs",
+    "test": "npm run build && node ./tests/run-smoke.mjs && node ./tests/performance-budget.test.mjs",
     "prepack": "npm run build"
   },
   "exports": {

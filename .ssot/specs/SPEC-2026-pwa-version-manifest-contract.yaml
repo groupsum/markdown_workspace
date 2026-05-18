@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "spec"
 id: "spc:2026"
 number: 2026
@@ -11,20 +11,25 @@ tags: []
 summary: "PWA version selection must default to latest, reuse valid saved selections, fall back when selected versions are missing or incompatible, and report update states consistently. Install, update, check, switch, auto-update, running version, selected version, installed version, latest version, and compatibility state must be visible in governed surfaces."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Extended by spc:2097 for retained PWA version and installed-state UI obligations."
+    at: "2026-05-18T15:58:49Z"
 references: []
 body: |-
   # SPEC-2026: PWA Version Manifest Contract
-  
+
   ## Requirements
-  
+
   PWA version selection must default to latest, reuse valid saved selections, fall back when selected versions are missing or incompatible, and report update states consistently. Install, update, check, switch, auto-update, running version, selected version, installed version, latest version, and compatibility state must be visible in governed surfaces.
-  
+
   ## Evidence
-  
+
   Evidence must cover version selection, compatibility fallback, update-ready state, failed or blocked precedence, and settings/status presentation.
 spec_kind: "normative"
 adr_ids:
   - "adr:1038"
   - "adr:1014"
   - "adr:1015"
+  - "adr:1070"

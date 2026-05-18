@@ -1,0 +1,86 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2094"
+number: 2094
+slug: "portable-lander-performance-budget-contract"
+title: "Portable Lander Performance Budget Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This specification defines measurable first-render performance budgets and validation requirements that every downstream lander implementation can inherit from the portable lander package family."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created portable downstream lander performance budget contract."
+    at: "2026-05-18T15:44:10Z"
+references: []
+body: |-
+  # Portable Lander Performance Budget Contract
+
+  ## Purpose
+
+  This specification defines measurable first-render performance budgets and validation requirements that every downstream lander implementation can inherit from the portable lander package family.
+
+  ## Scope
+
+  The contract applies to generated public lander route HTML, critical CSS, full stylesheet delivery, governed JavaScript, first-viewport animation, generated static assets, and validation outputs. It is portable and package-owned; product hosts may adapt it to deployment infrastructure but shall not redefine the governed budgets app-locally.
+
+  ## Budget Classes
+
+  Portable lander builds shall expose budget classes for at least:
+
+  1. critical CSS bytes emitted inline per route profile;
+  2. render-blocking stylesheet requests;
+  3. full stylesheet bytes and compression eligibility;
+  4. governed inline script bytes;
+  5. governed external script bytes;
+  6. route script inclusion facts;
+  7. first-viewport animation safety;
+  8. cache-header class and compression readiness for generated static assets.
+
+  ## Default Budgets
+
+  The default portable budget shall keep the complete generated stylesheet out of the initial render-blocking path when critical CSS is enabled.
+
+  The default portable budget shall require route HTML to emit no governed script unless the route profile, rendered component model, or content model requires the behavior.
+
+  The default portable budget shall require syntax highlighting behavior to be absent on routes without highlightable code blocks.
+
+  The default portable budget shall require demo-control behavior to be absent on routes without interactive demos.
+
+  The default portable budget shall require first-viewport animation to avoid layout, paint-heavy, filter, and non-composited property animation unless explicitly classified as temporary migration debt.
+
+  The default portable budget shall require generated CSS, JavaScript, XML, JSON, TXT, SVG, and HTML assets to be marked compression-eligible in the portable manifest when the media type is text-compatible.
+
+  ## Lighthouse And Lab Targets
+
+  Portable validation shall support lab target metadata for constrained mobile testing. The initial portable target shall include Lighthouse-style mobile throttling with first contentful paint, largest contentful paint, total blocking time, cumulative layout shift, and speed index observations.
+
+  The budget contract shall not make a single lab run the only source of truth. It shall record lab metrics as evidence inputs and fail closed on deterministic static violations such as render-blocking full stylesheet emission, unused governed scripts, missing compression eligibility, and forbidden first-viewport animation properties.
+
+  ## Host Adoption
+
+  Downstream hosts shall consume the portable budget output and map it into their CI, smoke tests, or deployment adapter checks. Hosts may add stricter budgets, but they shall not loosen portable defaults without an explicit governed profile decision.
+
+  mdwrkcom shall adopt this contract through its mdwrkcom cache header and critical-path profile. Other downstream landers shall inherit the same default behavior through lander-core, lander-theme, lander-react, and lander-seo package surfaces.
+
+  ## Validation
+
+  Portable validation shall fail when:
+
+  1. route HTML keeps the complete static stylesheet render-blocking while critical CSS is enabled;
+  2. route HTML emits governed JavaScript without a route requirement or migration classification;
+  3. syntax highlighting appears on routes without highlightable code blocks;
+  4. demo scripts appear on routes without demos;
+  5. first-viewport governed animation uses disallowed layout, paint-heavy, filter, or non-composited properties without migration classification;
+  6. generated text-compatible assets are missing compression eligibility metadata;
+  7. cache classes, critical CSS profile metadata, deferred stylesheet URLs, or script inclusion facts are missing from the manifest.
+
+  Passing evidence shall include static budget validation, representative generated route checks, and at least one deployed or host-adapter smoke path for cache/header behavior when a concrete host is in scope.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1060"
+  - "adr:1065"

@@ -59,6 +59,7 @@
   @apply absolute h-72 w-72 rounded-full opacity-10 blur-3xl;
   mix-blend-mode: multiply;
   animation: lander-blob 7s infinite;
+  will-change: transform;
 }
 
 .dark .hero-blob {
@@ -80,6 +81,13 @@
   @apply -bottom-8 left-20;
   background: #06b6d4;
   animation-delay: 4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob,
+  .privacy-badge-dot {
+    animation: none;
+  }
 }
 
 .hero-inner {

@@ -1,0 +1,43 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2098"
+number: 2098
+slug: "mdwrk-editor-command-focus-contract"
+title: "MdWrk Editor Command Focus Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This specification defines focus, selection, and command-integrity requirements for MdWrk editor packages."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to specify editor command focus and selection behavior."
+    at: "2026-05-18T15:56:43Z"
+references: []
+body: |-
+  # MdWrk Editor Command Focus Contract
+
+  ## Purpose
+  This specification defines focus, selection, and command-integrity requirements for MdWrk editor packages.
+
+  ## Scope
+  The contract applies to `@mdwrk/markdown-editor-core`, `@mdwrk/markdown-editor-react`, and `@mdwrk/markdown-edit-in-renderer-react`.
+
+  ## Requirements
+  1. Toolbar controls shall dispatch package commands instead of applying ad hoc DOM or React mutations.
+  2. Checkbox insertion shall create only the checkbox marker, preserve line and character focus, avoid jumping to the top of the document, and place the cursor after one whitespace.
+  3. Checkbox toolbar activation shall not trigger italic state.
+  4. Italic, underline, link, image, list, and indentation commands shall have isolated transforms and tests.
+  5. Multi-word selection shall be preserved through command dispatch where the command semantics require it.
+  6. Line-count bars shall align with editor content during vertical scroll.
+  7. Rendered-flow editing shall preserve preview/editor parity, inline image behavior, text wrapping, and keyboard focus.
+
+  ## Verification
+  Passing evidence shall include editor-core transform tests, editor-react focus and toolbar tests, edit-in-renderer parity tests, and app-level smoke coverage for affected toolbar flows.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1071"
+  - "adr:1035"

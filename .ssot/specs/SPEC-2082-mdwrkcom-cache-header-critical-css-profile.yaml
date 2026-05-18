@@ -3,65 +3,84 @@ kind: "spec"
 id: "spc:2082"
 number: 2082
 slug: "mdwrkcom-cache-header-critical-css-profile"
-title: "mdwrkcom Cache Header And Critical CSS Profile"
+title: "mdwrkcom Cache Header, Critical CSS, And Critical Path Profile"
 status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This specification defines the mdwrkcom adoption profile for the portable lander cache freshness and critical CSS contract."
+summary: "This specification defines the mdwrkcom adoption profile for the portable lander cache freshness, critical CSS, and critical-path performance contracts."
 supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created mdwrkcom cache header and critical CSS adoption profile."
     at: "2026-05-08T03:22:58Z"
+    note: "Created mdwrkcom cache header and critical CSS adoption profile."
+    status: "draft"
+  -
+    status: "draft"
+    note: "Expanded mdwrkcom adoption profile to critical-path validation and host compression adoption."
+    at: "2026-05-18T15:43:47Z"
 references: []
 body: |-
-  # mdwrkcom Cache Header And Critical CSS Profile
-  
+  # mdwrkcom Cache Header, Critical CSS, And Critical Path Profile
+
   ## Purpose
-  
-  This specification defines the mdwrkcom adoption profile for the portable lander cache freshness and critical CSS contract.
-  
+
+  This specification defines the mdwrkcom adoption profile for the portable lander cache freshness, critical CSS, and critical-path performance contracts.
+
   ## mdwrkcom Resource Classification
-  
+
   mdwrkcom generated assets under assets that use content-fingerprinted names shall be immutable. This includes the full static stylesheet once it is emitted through the portable fingerprinted asset pipeline.
-  
+
   mdwrkcom route HTML shall be mutable-revalidate. Route HTML includes the home page, docs, features, comparisons, packages, proof pages, legal pages, trust pages, updates, answers, and localized routes.
-  
+
   mdwrkcom discovery and machine-readable artifacts shall be mutable-revalidate unless the portable manifest explicitly fingerprints them. This includes root `sitemap.xml`, child `sitemaps/*.xml` files, `robots.txt`, `llms.txt`, `llms-full.txt`, `content-index.json`, `semantic-index.json`, `content-registry.json`, and `jsonld-graph.json`.
-  
+
   mdwrkcom shall not apply positive max-age to mutable-revalidate resources by default. mdwrkcom mutable resources shall provide ETag and Last-Modified metadata for efficient conditional requests.
-  
+
   ## Header Lookup Adoption
-  
+
   mdwrkcom shall consume the portable cache header lookup helper for generated resource paths. mdwrkcom validation shall compare generated artifacts against the helper output rather than maintaining an independent cache table.
-  
-  mdwrkcom deployment documentation and generated artifacts may adapt the helper output to static-host or CDN configuration, but those adapters shall remain downstream projections of the portable cache manifest.
-  
+
+  mdwrkcom deployment documentation and generated artifacts may adapt the helper output to nginx, CDN, static-host, or deployment-provider configuration, but those adapters shall remain downstream projections of the portable cache manifest.
+
+  mdwrkcom deployment adapters shall enable compression for eligible text assets where the deployment target supports it. CSS, JavaScript, XML, JSON, TXT, SVG, and HTML responses shall not rely on uncompressed transfer when the host can serve compressed variants.
+
   ## mdwrkcom Critical CSS Boundary
-  
+
   mdwrkcom critical CSS shall cover the first viewport only. The critical boundary includes root theme tokens required for first paint, document body background and foreground, skip/focus basics, header and navigation layout, home hero or route title layout, first-viewport typography, and contrast-critical token applications.
-  
+
   mdwrkcom critical CSS shall not include full markdown body styling, lower-page cards, accordions, footer sections, comparison tables, update archives, or other below-the-fold surfaces unless those surfaces are rendered in the first viewport for a specific route profile.
-  
+
   ## Deferred Stylesheet Delivery
-  
+
   mdwrkcom generated HTML shall use the portable deferred full stylesheet pattern for the complete static stylesheet. The full stylesheet shall be referenced by fingerprinted immutable URL and shall include a noscript fallback.
-  
+
+  The mdwrkcom host profile shall not reintroduce the complete static stylesheet as a render-blocking request when the critical CSS profile is enabled.
+
+  ## Script Inclusion Profile
+
+  mdwrkcom route HTML shall emit only the scripts required by the rendered route profile. Syntax highlighting shall be omitted from routes without code blocks. Demo-control scripts shall be omitted from routes without demos. Enhancement scripts shall expose route facts that static verification can inspect.
+
+  Any retained unconditional script shall be tracked as temporary migration debt or justified as required first-viewport behavior.
+
+  ## Motion Profile
+
+  mdwrkcom first-viewport animation shall comply with the portable lander motion contract. Governed first-viewport effects shall use transform and opacity when animated, shall avoid layout-shifting properties, and shall honor reduced-motion behavior.
+
   ## Content Pack Mirror
-  
+
   The mdwrkcom content pack shall mirror generated cache manifest and header metadata artifacts whenever mdwrkcom exports them. The content pack smoke test shall verify that mirrored generated artifacts match the mdwrkcom build output.
-  
+
   ## Validation
-  
+
   mdwrkcom CI shall validate that generated HTML does not keep the full static stylesheet as a render-blocking request when the critical CSS profile is enabled.
-  
+
   mdwrkcom CI shall validate that immutable assets have at least 30 days of cache freshness and that mutable-revalidate resources include ETag and Last-Modified metadata while avoiding default positive max-age.
-  
+
   mdwrkcom CI shall validate that root sitemap indexes, child sitemap URL sets, robots files, LLM files, JSON discovery artifacts, route HTML, and generated static assets are represented in cache metadata with the expected cache classes and headers.
-  
+
+  mdwrkcom CI shall validate route script inclusion facts, first-viewport animation constraints, and compression eligibility for static text assets. Deployed smoke tests shall verify representative route status, redirect behavior, cache headers, and compressed CSS delivery when the deployment target supports compression.
 spec_kind: "normative"
 adr_ids:
   - "adr:1060"

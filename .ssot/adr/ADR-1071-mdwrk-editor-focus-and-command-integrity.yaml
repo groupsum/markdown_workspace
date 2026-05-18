@@ -1,0 +1,31 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1071"
+number: 1071
+slug: "mdwrk-editor-focus-and-command-integrity"
+title: "MdWrk Editor Focus And Command Integrity"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Editor toolbar and command work includes checkbox insertion, italic isolation, focus retention, selection preservation, link conversion, image source editing, underlining, list continuation, line-count alignment, and rendered-flow editing. These behaviors are easy to break when toolbar buttons mutate DOM or React state directly."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern editor command focus and selection semantics."
+    at: "2026-05-18T15:56:21Z"
+references: []
+body: |-
+  # Context
+  Editor toolbar and command work includes checkbox insertion, italic isolation, focus retention, selection preservation, link conversion, image source editing, underlining, list continuation, line-count alignment, and rendered-flow editing. These behaviors are easy to break when toolbar buttons mutate DOM or React state directly.
+
+  # Decision
+  Editor commands must preserve focus, selection, and insertion semantics through package-owned command contracts. `@mdwrk/markdown-editor-core` owns source-mode transforms and command state. `@mdwrk/markdown-editor-react` owns React toolbar dispatch and textarea focus integration. `@mdwrk/markdown-edit-in-renderer-react` owns rendered-flow editing parity. Toolbar controls dispatch commands; they do not implement independent mutations.
+
+  # Boundaries
+  This decision does not prescribe one UI for every editor surface. It requires each UI to use the package command contracts and to prove focus/selection behavior through tests. Renderer packages own rendering and preview output; editor packages own authoring mutations.
+
+  # Consequences
+  Checkbox, italic, link, image, list, and line-alignment behavior can be tested at the correct package boundary. App-level regressions can be traced back to command dispatch, command transforms, or rendered-flow integration.

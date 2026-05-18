@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "spec"
 id: "spc:2007"
 number: 2007
@@ -13,13 +13,17 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Expanded UIX responsive design with chassis, zoom, accessibility, and responsive matrix obligations."
     at: "2026-04-21T09:20:22Z"
+    note: "Expanded UIX responsive design with chassis, zoom, accessibility, and responsive matrix obligations."
+    status: "draft"
+  -
+    at: "2026-05-08T02:16:10Z"
+    note: "Updated UIX responsive design contract with WCAG 2.1 AA contrast requirements."
+    status: "draft"
   -
     status: "draft"
-    note: "Updated UIX responsive design contract with WCAG 2.1 AA contrast requirements."
-    at: "2026-05-08T02:16:10Z"
+    note: "Extended by spc:2097 and spc:2099 for client chrome responsive behavior and screenshot evidence."
+    at: "2026-05-18T15:57:39Z"
 references: []
 body: |-
   # MdWrk UIX Responsive Design Specification
@@ -39,9 +43,9 @@ body: |-
   - Ultra-wide layouts must preserve readable pane widths and explicit aspect-ratio rules.
   - Command palettes, extension views, panes, iconized controls, and compact modes must remain interoperable.
   - UIX foreground/background color pairs used for user-facing text shall conform to WCAG 2.1 AA contrast thresholds.
-  
+
   ## WCAG 2.1 AA Contrast Requirements
-  
+
   - Normal text and images of text shall meet at least 4.5:1 contrast against their rendered background.
   - Large-scale text and images of large-scale text shall meet at least 3:1 contrast against their rendered background.
   - Incidental, inactive, decorative, and logo text follow the WCAG 2.1 SC 1.4.3 exceptions.
@@ -60,3 +64,4 @@ adr_ids:
   - "adr:1046"
   - "adr:1047"
   - "adr:1048"
+  - "adr:1070"

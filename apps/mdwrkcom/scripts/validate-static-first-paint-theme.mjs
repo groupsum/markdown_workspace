@@ -46,10 +46,23 @@ const samplePagePath = path.join(landerRoot, 'dist-static', 'docs', 'quickstart'
 if (validateGenerated) {
   assert.ok(existsSync(samplePagePath), 'Generated static page sample must exist before generated first-paint validation.');
   const html = readFileSync(samplePagePath, 'utf8');
+  const criticalPathManifestPath = path.join(landerRoot, 'dist-static', 'critical-path-manifest.json');
+  assert.ok(existsSync(criticalPathManifestPath), 'Generated critical path manifest must exist.');
+  const criticalPathManifest = JSON.parse(readFileSync(criticalPathManifestPath, 'utf8'));
+  const stylesheetHref = html.match(/<link rel="preload" href="([^"]+)" as="style"/)?.[1];
+  const quickstartRoute = criticalPathManifest.routes.find((route) => route.path === '/docs/quickstart/');
   const bootstrapIndex = html.indexOf("const key = 'mdwrk:lander-theme'");
   const criticalCssIndex = html.indexOf('data-lander-critical-css="mdwrkcom-static-shell"');
   const stylesheetIndex = html.indexOf('rel="preload"');
 
+  assert.equal(criticalPathManifest.version, 1, 'Generated critical path manifest must use schema version 1.');
+  assert.ok(quickstartRoute, 'Generated critical path manifest must include /docs/quickstart/.');
+  assert.equal(quickstartRoute.deferredStylesheetHref, stylesheetHref, 'Critical path manifest must track the generated static stylesheet href.');
+  assert.equal(quickstartRoute.renderBlockingStylesheets.length, 0, 'Docs routes must not introduce render-blocking stylesheets.');
+  assert.equal(quickstartRoute.scripts.some((script) => script.kind === 'demo-controls' && script.required), false, 'Docs routes must not require the home demo script.');
+  assert.ok(quickstartRoute.scripts.some((script) => script.kind === 'theme-bootstrap' && script.required), 'Docs routes must require the theme bootstrap script fact.');
+  assert.ok(quickstartRoute.scripts.some((script) => script.kind === 'theme-toggle' && script.required), 'Docs routes must require the theme toggle script fact.');
+  assert.ok(quickstartRoute.scripts.some((script) => script.kind === 'navigation' && script.required), 'Docs routes must require the navigation script fact.');
   assert.ok(bootstrapIndex > -1, 'Generated static page must include the theme bootstrap.');
   assert.ok(criticalCssIndex > -1, 'Generated static page must include critical CSS.');
   assert.ok(stylesheetIndex > -1, 'Generated static page must include deferred stylesheet preload.');

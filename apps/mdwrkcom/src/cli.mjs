@@ -27,6 +27,10 @@ import {
   renderCriticalCssStyle,
   renderDeferredStylesheetLink,
 } from '../../../packages/lander/lander-core/dist/critical-css/profile.js';
+import {
+  buildCriticalPathManifest,
+  validateLanderPerformanceBudget,
+} from '../../../packages/lander/lander-core/dist/performance/budget.js';
 
 const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -83,6 +87,7 @@ const DISCOVERY_ARTIFACTS = Object.freeze([
   'content-registry.json',
   'jsonld-graph.json',
   'cache-header-manifest.json',
+  'critical-path-manifest.json',
 ]);
 
 const CONTENT_TYPES = new Set([
@@ -322,6 +327,63 @@ const staticStylesheetTags = (href) => [
   renderCriticalCssStyle(mdwrkcomCriticalCssProfile),
   renderDeferredStylesheetLink(href),
 ].join('\n    ');
+
+const inlineScriptBytes = (script) => Buffer.byteLength(script, 'utf8');
+
+const staticRouteScriptFacts = (entry) => {
+  const isHome = entry.frontmatter.slug === '/';
+  const demoHasCode = isHome && /```[\w-]*/.test(homeDemoMarkdown);
+  return [
+    {
+      kind: 'theme-bootstrap',
+      required: true,
+      reason: 'first-paint lander theme selection before critical CSS',
+      inlineBytes: inlineScriptBytes(renderThemeBootstrap()),
+    },
+    {
+      kind: 'theme-toggle',
+      required: true,
+      reason: 'static lander exposes a visible theme toggle in the shared header',
+      inlineBytes: inlineScriptBytes(renderThemeToggleScript()),
+    },
+    {
+      kind: 'navigation',
+      required: true,
+      reason: 'static lander exposes a responsive menu toggle in the shared header',
+      inlineBytes: inlineScriptBytes(renderStaticNavbarScript()),
+    },
+    {
+      kind: 'demo-controls',
+      required: isHome,
+      reason: isHome ? 'home route includes the interactive markdown demo' : 'route has no interactive demo',
+      inlineBytes: isHome ? inlineScriptBytes(renderStaticDemoScript()) : 0,
+    },
+    {
+      kind: 'syntax-highlighting',
+      required: demoHasCode,
+      reason: demoHasCode ? 'home demo markdown includes highlightable code fences' : 'route has no highlightable client-side code demo',
+      inlineBytes: 0,
+    },
+  ];
+};
+
+const staticRouteMotionFacts = (entry) => entry.frontmatter.slug === '/'
+  ? [{
+      selector: '.hero-blob',
+      firstViewport: true,
+      animatedProperties: ['transform'],
+      reducedMotion: true,
+    }]
+  : [];
+
+const renderStaticPageScripts = (entry) => {
+  const scripts = [
+    renderThemeToggleScript(),
+    renderStaticNavbarScript(),
+  ];
+  if (entry.frontmatter.slug === '/') scripts.push(renderStaticDemoScript());
+  return scripts.join('\n    ');
+};
 
 const copyStaticStylesheet = () => {
   if (!fs.existsSync(staticStylesheetSource)) {
@@ -2559,9 +2621,7 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
         ${renderStaticFooter()}
       </div>
     </div>
-    ${renderThemeToggleScript()}
-    ${renderStaticNavbarScript()}
-    ${renderStaticDemoScript()}
+    ${renderStaticPageScripts(entry)}
   </body>
 </html>
 `;
@@ -2600,8 +2660,7 @@ const renderHtmlPage = (entry, registry, assetTags = '') => {
         ${renderStaticFooter()}
       </div>
     </div>
-    ${renderThemeToggleScript()}
-    ${renderStaticNavbarScript()}
+    ${renderStaticPageScripts(entry)}
   </body>
 </html>
 `;
@@ -2672,6 +2731,21 @@ const buildCacheManifestArtifact = () => {
     }));
   const manifest = buildCacheHeaderManifest(inputs);
   writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  return manifest;
+};
+
+const buildCriticalPathManifestArtifact = (registry, stylesheetHref) => {
+  const criticalCss = mdwrkcomCriticalCssProfile.css;
+  const manifest = buildCriticalPathManifest(registry.entries.map(entry => ({
+    path: entry.frontmatter.slug,
+    criticalCssProfileId: mdwrkcomCriticalCssProfile.id,
+    criticalCssBytes: Buffer.byteLength(criticalCss, 'utf8'),
+    deferredStylesheetHref: stylesheetHref,
+    renderBlockingStylesheets: [],
+    scripts: staticRouteScriptFacts(entry),
+    motion: staticRouteMotionFacts(entry),
+  })));
+  writeFile(path.join(distRoot, 'critical-path-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
 };
 
@@ -2822,6 +2896,7 @@ const build = () => {
     '',
   ].join('\n'));
   writeFile(path.join(distRoot, 'llms-full.txt'), buildLanderLlmsFullTxt(landerDiscovery.site, landerDiscovery.options));
+  buildCriticalPathManifestArtifact(registry, stylesheetHref);
   buildCacheManifestArtifact();
   console.log(`Built MdWrk static lander: ${registry.entries.length} pages -> ${path.relative(repoRoot, distRoot)}`);
 };
@@ -2942,6 +3017,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   const contentRegistry = readJsonArtifact('content-registry.json', failures) ?? [];
   const jsonLdGraph = readJsonArtifact('jsonld-graph.json', failures);
   const cacheManifest = readJsonArtifact('cache-header-manifest.json', failures);
+  const criticalPathManifest = readJsonArtifact('critical-path-manifest.json', failures);
   const indexUrls = normalizeUrlSet(Array.isArray(contentIndex) ? contentIndex.map(entry => entry.url) : []);
   const registryCanonicals = normalizeUrlSet(Array.isArray(contentRegistry) ? contentRegistry.map(entry => entry.discovery?.canonical) : []);
   const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
@@ -2972,7 +3048,7 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   if (staticHashedEntry && (staticHashedEntry.resourceClass !== 'immutable' || !/max-age=(?:[3-9]\d{6,}|[1-9]\d{7,})/.test(staticHashedEntry.cacheControl) || !/immutable/.test(staticHashedEntry.cacheControl))) {
     failures.push(`${staticHashedPath}: immutable cache policy must include at least 30 days and immutable`);
   }
-  for (const mutablePath of ['/sitemap.xml', '/sitemap.xsl', '/robots.txt', '/llms.txt', '/llms-full.txt', '/content-index.json', '/semantic-index.json', '/content-registry.json', '/jsonld-graph.json']) {
+  for (const mutablePath of ['/sitemap.xml', '/sitemap.xsl', '/robots.txt', '/llms.txt', '/llms-full.txt', '/content-index.json', '/semantic-index.json', '/content-registry.json', '/jsonld-graph.json', '/critical-path-manifest.json']) {
     const entry = cacheEntryByPath.get(mutablePath);
     if (!entry) failures.push(`cache-header-manifest.json: missing ${mutablePath}`);
     else if (entry.resourceClass !== 'mutable-revalidate' || entry.cacheControl !== 'no-cache') {
@@ -2989,6 +3065,33 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   for (const entry of cacheEntries) {
     if (entry.resourceClass !== 'no-store' && (!entry.headers?.ETag || !entry.headers?.['Last-Modified'])) {
       failures.push(`${entry.path}: cache manifest entry missing ETag or Last-Modified`);
+    }
+    const type = String(entry.contentType ?? '').toLowerCase();
+    if ((type.startsWith('text/') || ['application/json', 'application/xml', 'image/svg+xml'].some(prefix => type.startsWith(prefix))) && entry.compressionEligible !== true) {
+      failures.push(`${entry.path}: text-compatible cache manifest entry missing compression eligibility`);
+    }
+  }
+  if (!criticalPathManifest || criticalPathManifest.version !== 1) {
+    failures.push('critical-path-manifest.json: missing version 1 manifest');
+  } else {
+    const criticalRoutes = new Map((criticalPathManifest.routes ?? []).map(route => [route.path, route]));
+    for (const entry of registry.entries) {
+      const route = criticalRoutes.get(entry.frontmatter.slug);
+      if (!route) {
+        failures.push(`${entry.frontmatter.slug}: missing critical-path manifest route entry`);
+        continue;
+      }
+      if (route.deferredStylesheetHref !== staticHashedPath) failures.push(`${entry.frontmatter.slug}: critical-path manifest deferred stylesheet mismatch`);
+      const scripts = new Map((route.scripts ?? []).map(script => [script.kind, script]));
+      if (!scripts.get('theme-bootstrap')?.required) failures.push(`${entry.frontmatter.slug}: missing required theme-bootstrap script fact`);
+      if (!scripts.get('theme-toggle')?.required) failures.push(`${entry.frontmatter.slug}: missing required theme-toggle script fact`);
+      if (!scripts.get('navigation')?.required) failures.push(`${entry.frontmatter.slug}: missing required navigation script fact`);
+      const demoFact = scripts.get('demo-controls');
+      if (entry.frontmatter.slug === '/' && !demoFact?.required) failures.push('/: missing required demo-controls script fact');
+      if (entry.frontmatter.slug !== '/' && demoFact?.inlineBytes) failures.push(`${entry.frontmatter.slug}: demo script emitted without demo route requirement`);
+    }
+    for (const diagnostic of validateLanderPerformanceBudget({ manifest: criticalPathManifest, cacheManifest })) {
+      failures.push(`${diagnostic.path ?? 'critical-path-manifest.json'}: ${diagnostic.code}: ${diagnostic.message}`);
     }
   }
   for (const entry of indexable) {

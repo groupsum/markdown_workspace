@@ -16,29 +16,40 @@ status_notes:
     at: "2026-05-16T15:45:54Z"
     note: "Created to define mdwrkcom as a thin host and assign responsibilities across content pack and lander packages."
     status: "draft"
+  -
+    status: "draft"
+    note: "Clarified product hosts may adapt but not own portable performance policy."
+    at: "2026-05-18T15:43:48Z"
 references: []
 body: |-
   # SPEC-2087: Thin Product Host Responsibility Contract
+
   ## Scope
+
   This SPEC defines the allowed and forbidden responsibilities for `apps/mdwrkcom`, `@mdwrk/mdwrkcom-content-pack`, `@mdwrk/lander-content-contract`, `@mdwrk/lander-core`, `@mdwrk/lander-react`, `@mdwrk/lander-theme`, and `@mdwrk/lander-seo`.
+
   ## Requirements
+
   1. `apps/mdwrkcom` shall be a thin product host.
-  2. `apps/mdwrkcom` may own root bootstrap, application entrypoint wiring, build/static-output invocation, route adapter glue, deployment integration, environment configuration, product content-pack selection, and host smoke tests.
-  3. `apps/mdwrkcom` shall not own governed React components, reusable UI primitives, page templates, docs layouts, article shells, navigation widgets, table-of-contents components, markdown viewers, featured-media components, legal/blog/docs/feature page renderers, structured-data components, SEO discovery algorithms, or theme class/token policy.
+  2. `apps/mdwrkcom` may own root bootstrap, application entrypoint wiring, build/static-output invocation, route adapter glue, deployment integration, environment configuration, product content-pack selection, host-specific redirects, host-specific deployment adapters, and host smoke tests.
+  3. `apps/mdwrkcom` shall not own governed React components, reusable UI primitives, page templates, docs layouts, article shells, navigation widgets, table-of-contents components, markdown viewers, featured-media components, legal/blog/docs/feature page renderers, structured-data components, SEO discovery algorithms, theme class/token policy, cache classification policy, critical CSS policy, script inclusion policy, animation policy, or portable performance-budget policy.
   4. `apps/mdwrkcom` shall not contain long-lived governed component implementations under app-local component directories.
-  5. Any temporary app-local component retained during migration shall have an explicit feature, issue, or boundary row that marks it as migration debt and links to the reusable package target.
+  5. Any temporary app-local component or portable performance-policy behavior retained during migration shall have an explicit feature, issue, or boundary row that marks it as migration debt and links to the reusable package target.
   6. `@mdwrk/mdwrkcom-content-pack` shall own MdWrk-specific prose, assets, screenshots, metadata, page declarations, section declarations, route declarations, navigation intent, visible component intent, structured-data intent, and generated artifact mirrors where a separate SPEC requires mirroring.
-  7. `@mdwrk/mdwrkcom-content-pack` shall not own React implementations, CSS implementation policy, rendering algorithms, or discovery artifact generation algorithms.
+  7. `@mdwrk/mdwrkcom-content-pack` shall not own React implementations, CSS implementation policy, rendering algorithms, cache classification, critical CSS policy, script inclusion policy, animation policy, performance-budget policy, or discovery artifact generation algorithms.
   8. `@mdwrk/lander-content-contract` shall own portable schemas, validation diagnostics, and type contracts for product content packs.
-  9. `@mdwrk/lander-core` shall own content-pack validation, normalization, indexing, and compilation into portable render models.
+  9. `@mdwrk/lander-core` shall own content-pack validation, normalization, indexing, compilation into portable render models, cache metadata, header lookup, critical CSS profile evaluation, route-aware script inclusion facts, and portable performance-budget evaluation unless a narrower accepted ADR assigns ownership elsewhere.
   10. `@mdwrk/lander-core` shall not import React, emit JSX, or own visual component implementation.
   11. `@mdwrk/lander-react` shall own all governed lander React rendering and visual component implementations.
-  12. `@mdwrk/lander-theme` shall own portable lander theme tokens, semantic class contracts, and critical/static styling policy for governed lander surfaces.
+  12. `@mdwrk/lander-theme` shall own portable lander theme tokens, semantic class contracts, critical/static styling policy, reduced-motion defaults, and animation constraints for governed lander surfaces.
   13. `@mdwrk/lander-seo` shall own portable discovery artifact generation and validation algorithms.
   14. Validation shall fail closed when governed component implementation appears in `apps/mdwrkcom` without an explicit temporary migration classification.
-  15. Validation shall fail closed when a product content pack references app-local implementation identifiers instead of portable content-contract intent.
+  15. Validation shall fail closed when portable performance-policy behavior appears in `apps/mdwrkcom` without an explicit host-adapter classification or temporary migration classification.
+  16. Validation shall fail closed when a product content pack references app-local implementation identifiers instead of portable content-contract intent.
+
   ## Acceptance
-  Passing evidence shall include a no-app-local-governed-components validation gate, content-pack schema validation, lander-core compilation tests, lander-react rendering tests, mdwrkcom host smoke tests, and static artifact verification for affected pages.
+
+  Passing evidence shall include a no-app-local-governed-components validation gate, no-app-local-portable-performance-policy validation gate, content-pack schema validation, lander-core compilation tests, lander-core critical-path/cache tests, lander-react rendering tests, lander-theme motion/style tests, mdwrkcom host smoke tests, and static artifact verification for affected pages.
 spec_kind: "normative"
 adr_ids:
   - "adr:1063"

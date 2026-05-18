@@ -32,3 +32,23 @@ export const defaultDarkLanderTokens: LanderThemeTokens = {
   radius: "8px",
   maxWidth: "1120px",
 };
+
+export type LanderCompositedMotionProperty = "opacity" | "transform";
+
+export interface LanderFirstViewportMotionPolicy {
+  allowedAnimatedProperties: readonly LanderCompositedMotionProperty[];
+  reducedMotionRequired: boolean;
+}
+
+export const defaultFirstViewportMotionPolicy: LanderFirstViewportMotionPolicy = {
+  allowedAnimatedProperties: ["opacity", "transform"],
+  reducedMotionRequired: true,
+};
+
+export function isCompositedLanderMotionProperty(
+  property: string,
+): property is LanderCompositedMotionProperty {
+  return defaultFirstViewportMotionPolicy.allowedAnimatedProperties.includes(
+    property.trim().toLowerCase() as LanderCompositedMotionProperty,
+  );
+}

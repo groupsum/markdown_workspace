@@ -1,0 +1,31 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1069"
+number: 1069
+slug: "mdwrk-extension-hook-and-contribution-surface-ownership"
+title: "MdWrk Extension Hook And Contribution Surface Ownership"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "MdWrk extensions need common contribution surfaces for panes, panels, settings, view toolbars, icons, hooks, activation, diagnostics, and cross-plugin integration. Without a governed ownership boundary, each extension can define incompatible local conventions."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern extension hooks and contribution surfaces."
+    at: "2026-05-18T15:56:05Z"
+references: []
+body: |-
+  # Context
+  MdWrk extensions need common contribution surfaces for panes, panels, settings, view toolbars, icons, hooks, activation, diagnostics, and cross-plugin integration. Without a governed ownership boundary, each extension can define incompatible local conventions.
+
+  # Decision
+  Extension contribution surfaces are governed shared extension platform surfaces. `@mdwrk/extension-manifest` owns contribution metadata. `@mdwrk/extension-host` owns host-facing contracts. `@mdwrk/extension-runtime` owns activation, compatibility, persisted runtime state, and hook dispatch. First-party extensions consume these contracts and may not invent app-local pane or toolbar protocols.
+
+  # Boundaries
+  This decision does not require every extension to expose every contribution type. It requires exposed contributions to be declared through the shared contract and validated through conformance fixtures. Development-only extension defaults must not become production defaults unless explicitly governed.
+
+  # Consequences
+  Workspace extension behavior becomes portable, testable, and discoverable. Extension Manager, Workspace Files, Git Ops, Gemini Agent, Theme Studio, Language Pack Studio, and catalog fixtures can share validation and screenshot expectations.

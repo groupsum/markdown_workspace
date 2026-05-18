@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "adr"
 id: "adr:1035"
 number: 1035
@@ -11,24 +11,28 @@ tags: []
 summary: "MdWrk shall keep markdown editing semantics in framework-independent editor core packages. React editor components shall adapt the core model for rendering, input, keyboard handling, and selection reporting without redefining markdown transforms."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Extended by adr:1071 and spc:2098 for editor focus, selection, and command-integrity governance."
+    at: "2026-05-18T15:57:14Z"
 references: []
 body: |-
   # ADR-1035: Editor core transform model
-  
+
   ## Decision
-  
+
   MdWrk shall keep markdown editing semantics in framework-independent editor core packages. React editor components shall adapt the core model for rendering, input, keyboard handling, and selection reporting without redefining markdown transforms.
-  
+
   ## Scope
-  
+
   - Markdown commands for inline formatting, lists, indentation, and task items.
   - Selection normalization, line and column calculations, and selection metadata.
   - History state, undo, redo, and history limits.
   - React keyboard and component adapters.
-  
+
   ## Consequences
-  
+
   - Editor behavior remains portable across shells and UI surfaces.
   - Core transform tests become the primary evidence for authoring semantics.
   - React tests must prove adapter behavior without replacing core semantics.

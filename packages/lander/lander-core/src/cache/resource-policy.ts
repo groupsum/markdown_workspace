@@ -9,12 +9,14 @@ export interface LanderCacheResourceInput {
   resourceClass?: LanderCacheResourceClass;
   contentType?: string;
   lastModified?: Date | string;
+  compressionEligible?: boolean;
 }
 
 export interface LanderCacheManifestEntry {
   path: string;
   resourceClass: LanderCacheResourceClass;
   contentType?: string;
+  compressionEligible: boolean;
   etag: string;
   lastModified: string;
   cacheControl: string;
@@ -32,6 +34,16 @@ export interface LanderCacheHeaderLookupOptions {
 }
 
 const IMMUTABLE_MAX_AGE_SECONDS = 31_536_000;
+const TEXT_COMPATIBLE_TYPES = [
+  "text/",
+  "application/javascript",
+  "application/json",
+  "application/ld+json",
+  "application/manifest+json",
+  "application/xml",
+  "application/xhtml+xml",
+  "image/svg+xml",
+];
 
 export function normalizeCacheResourcePath(value: string): string {
   const path = String(value ?? "").trim().replace(/\\/g, "/").replace(/[?#].*$/, "");
@@ -82,11 +94,17 @@ export function cacheControlForResourceClass(resourceClass: LanderCacheResourceC
   }
 }
 
+export function isCompressionEligibleContentType(contentType: string | undefined): boolean {
+  const normalized = String(contentType ?? "").toLowerCase().split(";")[0].trim();
+  return TEXT_COMPATIBLE_TYPES.some((prefix) => normalized === prefix.replace(/\/$/, "") || normalized.startsWith(prefix));
+}
+
 export function buildCacheManifestEntry(input: LanderCacheResourceInput): LanderCacheManifestEntry {
   const resourceClass = input.resourceClass ?? inferCacheResourceClass(input.path);
   const cacheControl = cacheControlForResourceClass(resourceClass);
   const lastModified = formatHttpDate(input.lastModified);
   const etag = buildStrongEtag(input.content);
+  const compressionEligible = input.compressionEligible ?? isCompressionEligibleContentType(input.contentType);
   const headers: Record<string, string> = {
     "Cache-Control": cacheControl,
   };
@@ -101,6 +119,7 @@ export function buildCacheManifestEntry(input: LanderCacheResourceInput): Lander
     path: normalizeCacheResourcePath(input.path),
     resourceClass,
     contentType: input.contentType,
+    compressionEligible,
     etag,
     lastModified,
     cacheControl,

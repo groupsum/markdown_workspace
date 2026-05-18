@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "spec"
 id: "spc:2022"
 number: 2022
@@ -11,19 +11,24 @@ tags: []
 summary: "Editor core must own markdown command and transform semantics for bold, unordered lists, task lists, indentation, outdentation, list continuation, task-list termination, selection metadata, history, undo, redo, and roundtrip behavior."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Extended by spc:2098 for checkbox, selection, link, image, list, and line-count focus semantics."
+    at: "2026-05-18T15:58:05Z"
 references: []
 body: |-
   # SPEC-2022: Editor Core Command And Transform Contract
-  
+
   ## Requirements
-  
+
   Editor core must own markdown command and transform semantics for bold, unordered lists, task lists, indentation, outdentation, list continuation, task-list termination, selection metadata, history, undo, redo, and roundtrip behavior.
-  
+
   ## Evidence
-  
+
   Evidence must cover core command transforms, selection normalization, line and column calculations, history limits, undo/redo, and renderer/editor roundtrip behavior.
 spec_kind: "normative"
 adr_ids:
   - "adr:1035"
   - "adr:1012"
+  - "adr:1071"

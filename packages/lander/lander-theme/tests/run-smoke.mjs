@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import {
+  defaultFirstViewportMotionPolicy,
+  isCompositedLanderMotionProperty,
+} from "../dist/index.js";
 
 const css = readFileSync(resolve("src/styles/default.css"), "utf8");
 
@@ -21,3 +25,7 @@ assert.ok(css.includes("var(--lander-panel)"));
 assert.ok(css.includes("var(--lander-fg-muted)"));
 assert.ok(css.includes("var(--lander-heading-fg)"));
 assert.ok(css.includes("var(--lander-accent-soft)"));
+assert.deepEqual(defaultFirstViewportMotionPolicy.allowedAnimatedProperties, ["opacity", "transform"]);
+assert.equal(defaultFirstViewportMotionPolicy.reducedMotionRequired, true);
+assert.equal(isCompositedLanderMotionProperty("transform"), true);
+assert.equal(isCompositedLanderMotionProperty("left"), false);

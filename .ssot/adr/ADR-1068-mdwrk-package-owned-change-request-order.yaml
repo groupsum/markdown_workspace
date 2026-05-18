@@ -1,0 +1,31 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1068"
+number: 1068
+slug: "mdwrk-package-owned-change-request-order"
+title: "MdWrk Package Owned Change Request Order"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The MdWrk work backlog now spans package contracts, shared tokens, editor packages, renderer packages, extension packages, client and desktop apps, portable lander packages, mdwrkcom content packs, mdwrkcom hosting, documentation, screenshots, and SSOT proof. Executing these items as one mixed backlog makes ownership ambiguous and allows app changes to outrun contract and token decisions."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern package-owned MdWrk CR sequencing."
+    at: "2026-05-18T15:56:11Z"
+references: []
+body: |-
+  # Context
+  The MdWrk work backlog now spans package contracts, shared tokens, editor packages, renderer packages, extension packages, client and desktop apps, portable lander packages, mdwrkcom content packs, mdwrkcom hosting, documentation, screenshots, and SSOT proof. Executing these items as one mixed backlog makes ownership ambiguous and allows app changes to outrun contract and token decisions.
+
+  # Decision
+  MdWrk change requests shall be ordered by package ownership. Cross-package governance, ADR/SPEC linkage, versioning, and screenshot proof come first. Contracts and shared tokens come before package implementations. Editor and renderer package changes come before app adoption. Extension manifest and host contracts come before first-party extension changes. Portable lander contracts and packages come before mdwrkcom host adoption.
+
+  # Boundaries
+  The order is a governance and execution contract, not a release guarantee. A package may still ship independently when its dependencies are already satisfied. Cross-package work must name all owners explicitly and must not hide product-host obligations inside reusable package work.
+
+  # Consequences
+  Operators can convert backlog items into package-owned features, tests, claims, and evidence without losing traceability. Reviewers can reject work that skips prerequisite contracts, bypasses screenshot evidence, or places behavior in the wrong package.

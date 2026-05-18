@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "spec"
 id: "spc:2062"
 number: 2062
@@ -11,21 +11,25 @@ tags: []
 summary: "The editor view toolbar must expose editor, split, preview, authoring command, table insertion, undo, and redo controls through stable icon-button surfaces. Toolbar behavior must be governed across desktop, mobile portrait, mobile landscape, narrow heights, wide aspect ratios, and split-view scenarios."
 supersedes: []
 superseded_by: []
-status_notes: []
+status_notes:
+  -
+    status: "draft"
+    note: "Extended by spc:2097 for mobile toolbar placement relative to footer/status chrome."
+    at: "2026-05-18T15:57:56Z"
 references: []
 body: |-
   # SPEC-2062: Editor View Toolbar Responsive Behavior Contract
-  
+
   ## Requirements
-  
+
   The editor view toolbar must expose editor, split, preview, authoring command, table insertion, undo, and redo controls through stable icon-button surfaces. Toolbar behavior must be governed across desktop, mobile portrait, mobile landscape, narrow heights, wide aspect ratios, and split-view scenarios.
-  
+
   The toolbar must preserve hidden-button preferences, active states, disabled states, divider grouping, command dispatch, split-view eligibility, split resizing affordances, and overflow or scrolling behavior without changing the current file content except through explicit editor commands.
-  
+
   Split controls must respect viewport and orientation policy. Preview/editor mode controls must remain reachable in supported layouts. Compact and overflow states must preserve accessible labels or titles for icon-only controls.
-  
+
   ## Evidence
-  
+
   Evidence must cover responsive placement, active and disabled states, hidden controls, command dispatch, split eligibility, split resizing, overflow or scrolling behavior, and representative desktop/mobile/aspect-ratio viewing scenarios.
 spec_kind: "normative"
 adr_ids:
@@ -33,3 +37,4 @@ adr_ids:
   - "adr:1031"
   - "adr:1040"
   - "adr:1048"
+  - "adr:1070"

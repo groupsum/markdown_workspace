@@ -17,7 +17,9 @@ fs.writeFileSync(
 
 const {
   buildCacheHeaderManifest,
+  buildCriticalPathManifest,
   headersForCacheResource,
+  validateLanderPerformanceBudget,
   buildLlmsTxt,
   buildRobotsTxt,
   buildSitemap,
@@ -73,6 +75,7 @@ assert.equal(manifest.entries[0].resourceClass, 'immutable');
 assert.match(manifest.entries[0].headers['Cache-Control'], /immutable/);
 assert.equal(manifest.entries[1].resourceClass, 'mutable-revalidate');
 assert.equal(manifest.entries[1].headers['Cache-Control'], 'no-cache');
+assert.equal(manifest.entries[0].compressionEligible, true);
 assert.ok(manifest.entries.every(entry => entry.headers.ETag && entry.headers['Last-Modified']));
 assert.equal(headersForCacheResource(manifest, '/sitemap.xml')?.['Cache-Control'], 'no-cache');
 assert.equal(headersForCacheResource(manifest, '/missing'), undefined);
@@ -80,3 +83,21 @@ assert.equal(headersForCacheResource(manifest, '/missing'), undefined);
 const criticalCss = defineCriticalCssProfile({ id: 'example', css: 'body { color: #111; }' });
 assert.match(renderCriticalCssStyle(criticalCss), /data-lander-critical-css="example"/);
 assert.match(renderDeferredStylesheetLink('/assets/static.abcdef123456.css'), /rel="preload"/);
+
+const criticalPathManifest = buildCriticalPathManifest([
+  {
+    path: '/',
+    criticalCssProfileId: criticalCss.id,
+    criticalCssBytes: criticalCss.css.length,
+    deferredStylesheetHref: '/assets/static.abcdef123456.css',
+    scripts: [
+      { kind: 'theme-bootstrap', required: true, reason: 'first-paint theme selection', inlineBytes: 200 },
+      { kind: 'syntax-highlighting', required: false, reason: 'route has no code blocks', inlineBytes: 0 },
+    ],
+    motion: [
+      { selector: '.hero-blob', firstViewport: true, animatedProperties: ['transform', 'opacity'], reducedMotion: true },
+    ],
+  },
+]);
+assert.equal(criticalPathManifest.routes[0].path, '/');
+assert.deepEqual(validateLanderPerformanceBudget({ manifest: criticalPathManifest, cacheManifest: manifest }), []);

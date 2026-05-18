@@ -15,6 +15,7 @@ export { LANDER_CORE_VERSION };
 export type * from "./types.js";
 export * from "./cache/resource-policy.js";
 export * from "./critical-css/profile.js";
+export * from "./performance/budget.js";
 
 export function defineLanderSite<T extends LanderSite>(site: T): T {
   return site;
