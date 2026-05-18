@@ -21,12 +21,13 @@ The lander stack is intentionally modular. This index separates content contract
 - `@mdwrk/lander-theme` for default styles and tokens.
 - `@mdwrk/lander-react` for UI components and JSON-LD output.
 - `@mdwrk/lander-markdown-content-adapter` for frontmatter-driven markdown ingestion.
+- `@mdwrk/lander-page-templates` for reusable page recipes, semantic relationships, and PageSpec generation.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm install @mdwrk/lander-content-contract @mdwrk/lander-core @mdwrk/lander-seo @mdwrk/lander-theme @mdwrk/lander-react @mdwrk/lander-markdown-content-adapter
+npm install @mdwrk/lander-content-contract @mdwrk/lander-core @mdwrk/lander-seo @mdwrk/lander-theme @mdwrk/lander-react @mdwrk/lander-markdown-content-adapter @mdwrk/lander-page-templates
 ```
 
 ## Usage
@@ -38,6 +39,7 @@ Start with the content contract and core compiler, then add SEO, theming, markdo
 - [lander-theme](./lander-theme/README.md)
 - [lander-react](./lander-react/README.md)
 - [lander-markdown-content-adapter](./lander-markdown-content-adapter/README.md)
+- [lander-page-templates](./lander-page-templates/README.md)
 
 ## Related
 - [Content family](../content/README.md) - MdWrk content pack

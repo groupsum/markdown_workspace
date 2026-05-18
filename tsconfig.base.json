@@ -127,6 +127,12 @@
       "@mdwrk/lander-markdown-content-adapter/*": [
         "packages/lander/lander-markdown-content-adapter/dist/*"
       ],
+      "@mdwrk/lander-page-templates": [
+        "packages/lander/lander-page-templates/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-page-templates/*": [
+        "packages/lander/lander-page-templates/dist/*"
+      ],
       "@mdwrk/lander-react": [
         "packages/lander/lander-react/dist/index.d.ts"
       ],

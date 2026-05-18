@@ -1,0 +1,88 @@
+{
+  "name": "@mdwrk/lander-page-templates",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "lander",
+    "page-templates",
+    "content",
+    "portable"
+  ],
+  "description": "Portable page-template definitions and graph resolution for MdWrk lander sites.",
+  "dependencies": {
+    "@mdwrk/lander-content-contract": "^0.1.2"
+  },
+  "scripts": {
+    "build": "npm run build -w @mdwrk/lander-content-contract && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/lander-content-contract && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node ./tests/run-smoke.mjs",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    },
+    "./relationships": {
+      "types": "./dist/relationships/index.d.ts",
+      "import": "./dist/relationships/index.js"
+    },
+    "./page-spec": {
+      "types": "./dist/page-spec/index.d.ts",
+      "import": "./dist/page-spec/index.js"
+    },
+    "./domains": {
+      "types": "./dist/domains/index.d.ts",
+      "import": "./dist/domains/index.js"
+    },
+    "./domains/product": {
+      "types": "./dist/domains/product.d.ts",
+      "import": "./dist/domains/product.js"
+    },
+    "./domains/support": {
+      "types": "./dist/domains/support.d.ts",
+      "import": "./dist/domains/support.js"
+    },
+    "./domains/education": {
+      "types": "./dist/domains/education.d.ts",
+      "import": "./dist/domains/education.js"
+    },
+    "./domains/docs": {
+      "types": "./dist/domains/docs.d.ts",
+      "import": "./dist/domains/docs.js"
+    },
+    "./domains/package": {
+      "types": "./dist/domains/package.d.ts",
+      "import": "./dist/domains/package.js"
+    },
+    "./domains/trust": {
+      "types": "./dist/domains/trust.d.ts",
+      "import": "./dist/domains/trust.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}
