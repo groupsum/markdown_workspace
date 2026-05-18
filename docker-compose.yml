@@ -39,7 +39,11 @@ services:
     environment:
       <<: *common-env
     networks:
-      - dockerwp
+      dockerwp:
+        aliases:
+          - lander
+          - markdown_workspace_lander
+          - mdwrk-com
 
 networks:
   dockerwp:
