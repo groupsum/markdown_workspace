@@ -29,6 +29,7 @@ import {
 } from '../../../packages/lander/lander-core/dist/critical-css/profile.js';
 import {
   buildCriticalPathManifest,
+  defineSyntaxHighlightingRouteGate,
   validateLanderPerformanceBudget,
 } from '../../../packages/lander/lander-core/dist/performance/budget.js';
 
@@ -36,13 +37,22 @@ const require = createRequire(import.meta.url);
 const landerRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(landerRoot, '..', '..');
 const packageJson = JSON.parse(fs.readFileSync(path.join(landerRoot, 'package.json'), 'utf8'));
-const contentRoot = path.join(landerRoot, 'content');
-const dataRoot = path.join(landerRoot, 'data');
+const contentPackModule = await import('@mdwrk/mdwrkcom-content-pack').catch((error) => {
+  if (error?.code !== 'ERR_MODULE_NOT_FOUND') throw error;
+  return import('../../../packages/content/mdwrkcom-content-pack/dist/index.js');
+});
+const {
+  mdwrkcomContentPack,
+  resolveMdwrkcomContentPackUrl,
+} = contentPackModule;
+const resolveContentPackPath = (pathInPack) => fileURLToPath(resolveMdwrkcomContentPackUrl(pathInPack));
+const contentRoot = resolveContentPackPath(mdwrkcomContentPack.sourceContentRoot);
+const dataRoot = path.dirname(resolveContentPackPath(mdwrkcomContentPack.sitemapPath));
 const dataMarkdownRoot = path.join(dataRoot, 'markdown');
 const dataDocsRoot = path.join(dataMarkdownRoot, 'docs');
-const contentSitemapPath = path.join(dataRoot, 'content-sitemap.yaml');
+const contentSitemapPath = resolveContentPackPath(mdwrkcomContentPack.sitemapPath);
 const schemasRoot = path.join(landerRoot, 'schemas');
-const publicRoot = path.join(landerRoot, 'public');
+const publicRoot = resolveContentPackPath(mdwrkcomContentPack.publicAssetRoot);
 const staticStylesheetSource = path.join(landerRoot, 'styles', 'static.css');
 const schemaPath = path.join(schemasRoot, 'mdwrk.page.v1.schema.json');
 const siteUrl = (process.env.MDWRK_SITE_URL || process.env.VITE_SITE_URL || 'https://mdwrk.com').replace(/\/+$/, '');
@@ -332,7 +342,11 @@ const inlineScriptBytes = (script) => Buffer.byteLength(script, 'utf8');
 
 const staticRouteScriptFacts = (entry) => {
   const isHome = entry.frontmatter.slug === '/';
-  const demoHasCode = isHome && /```[\w-]*/.test(homeDemoMarkdown);
+  const syntaxGate = defineSyntaxHighlightingRouteGate({
+    routePath: entry.frontmatter.slug,
+    markdownSources: isHome ? [homeDemoMarkdown] : [],
+    inlineBytes: 0,
+  });
   return [
     {
       kind: 'theme-bootstrap',
@@ -358,12 +372,7 @@ const staticRouteScriptFacts = (entry) => {
       reason: isHome ? 'home route includes the interactive markdown demo' : 'route has no interactive demo',
       inlineBytes: isHome ? inlineScriptBytes(renderStaticDemoScript()) : 0,
     },
-    {
-      kind: 'syntax-highlighting',
-      required: demoHasCode,
-      reason: demoHasCode ? 'home demo markdown includes highlightable code fences' : 'route has no highlightable client-side code demo',
-      inlineBytes: 0,
-    },
+    syntaxGate.fact,
   ];
 };
 

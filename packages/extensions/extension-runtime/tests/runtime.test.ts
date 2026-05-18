@@ -7,6 +7,7 @@ import type {
   RegisteredCommand,
   RegisteredSettingsSection,
   RegisteredView,
+  RegisteredHook,
   RegisteredWorkspaceModule,
 } from "@mdwrk/extension-host";
 import type { ExtensionManifest } from "@mdwrk/extension-manifest";
@@ -150,6 +151,7 @@ const createHost = () => {
         "settings.read",
         "settings.write",
         "notification.publish",
+        "hook.register",
       ],
     },
   };
@@ -163,6 +165,7 @@ const createSink = () => {
   const rail: RegisteredActionRailItem[] = [];
   const settings: RegisteredSettingsSection[] = [];
   const workspaceModules: RegisteredWorkspaceModule[] = [];
+  const hooks: RegisteredHook[] = [];
 
   const sink: ExtensionRuntimeRegistrationSink = {
     registerCommand(_extensionId, command) {
@@ -185,9 +188,13 @@ const createSink = () => {
       settings.push(section);
       return { dispose() {} };
     },
+    registerHook(_extensionId, hook) {
+      hooks.push(hook);
+      return { dispose() {} };
+    },
   };
 
-  return { sink, commands, views, rail, settings, workspaceModules };
+  return { sink, commands, views, rail, settings, workspaceModules, hooks };
 };
 
 const createInstallableCatalogFixture = async () => {
@@ -420,6 +427,49 @@ describe("extension-runtime", () => {
 
     await runtime.start();
     expect(workspaceModules.map((module) => module.id)).toContain("workspace-module.module");
+  });
+
+  it("registers hooks through the runtime sink and snapshot", async () => {
+    const { host } = createHost();
+    const { sink, hooks } = createSink();
+    const storage = createInMemoryExtensionRuntimeStorage();
+    const runtime = createExtensionRuntime({ host, registrationSink: sink, storage });
+    const manifest = createManifest("hooked", {
+      capabilities: ["hook.register"],
+      contributions: {
+        commands: [],
+        views: [],
+        components: [],
+        actionRail: [],
+        settingsSections: [],
+        hooks: [
+          {
+            id: "hooked.before-save",
+            title: { defaultMessage: "Before Save" },
+            event: "workspace.beforeSave",
+            order: 10,
+          },
+        ],
+      },
+    });
+
+    runtime.registerBundledExtension({
+      manifest,
+      activation: "eager",
+      load: async () => ({
+        manifest,
+        async activate(context) {
+          context.registerHook({
+            ...manifest.contributions.hooks![0],
+            dispatch: async (payload) => payload,
+          });
+        },
+      }),
+    });
+
+    await runtime.start();
+    expect(hooks.map((hook) => hook.id)).toContain("hooked.before-save");
+    expect(runtime.get(manifest.id)?.hookIds).toContain("hooked.before-save");
   });
 
   it("persists extension config with namespaced keys", async () => {

@@ -18,6 +18,7 @@ Use it when you want icon references to stay semantic and package-safe instead o
 - A curated workspace icon id list.
 - Icon metadata that maps semantic ids to Lucide names and categories.
 - Shared icon definitions for apps, extensions, and docs-friendly catalogs.
+- Mobile action rail, settings, gesture, keyboard, layout, zoom, file, and extension icon identifiers.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.

@@ -825,6 +825,62 @@
     "componentIntentIds": []
   },
   {
+    "slug": "/docs/authoring/extension-contribution-surfaces/",
+    "url": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+    "title": "Extension Contribution Surfaces | MdWrk Docs",
+    "description": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions.",
+    "h1": "Extension Contribution Surfaces",
+    "intent": "learn extension contribution surfaces in MdWrk",
+    "contentType": "docs",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "docs",
+      "Authoring"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/extension-contribution-surfaces/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#webpage",
+    "path": "/docs/authoring/extension-contribution-surfaces/",
+    "wordCount": 130,
+    "headings": [
+      {
+        "depth": 2,
+        "id": "contribution-contract",
+        "text": "Contribution Contract"
+      },
+      {
+        "depth": 2,
+        "id": "runtime-hooks",
+        "text": "Runtime Hooks"
+      },
+      {
+        "depth": 2,
+        "id": "related-docs",
+        "text": "Related Docs"
+      }
+    ],
+    "links": [
+      {
+        "href": "/docs/authoring/extension-authoring-guide/",
+        "text": "Extension Authoring Guide",
+        "internal": true
+      },
+      {
+        "href": "/docs/extensions/extension-platform/",
+        "text": "Extension Platform",
+        "internal": true
+      },
+      {
+        "href": "/features/package-owned-documentation/",
+        "text": "Package-Owned Documentation",
+        "internal": true
+      }
+    ],
+    "schemaIntentIds": [],
+    "componentIntentIds": []
+  },
+  {
     "slug": "/docs/authoring/extensions/",
     "url": "https://mdwrk.com/docs/authoring/extensions/",
     "title": "Extension Authoring | MdWrk Docs",
@@ -2147,6 +2203,62 @@
     "componentIntentIds": []
   },
   {
+    "slug": "/features/editor-command-integrity/",
+    "url": "https://mdwrk.com/features/editor-command-integrity/",
+    "title": "Editor Command Integrity | MdWrk Features",
+    "description": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms.",
+    "h1": "Editor Command Integrity",
+    "intent": "understand editor command integrity in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/editor-command-integrity/index.md",
+    "jsonLdId": "https://mdwrk.com/features/editor-command-integrity/#webpage",
+    "path": "/features/editor-command-integrity/",
+    "wordCount": 123,
+    "headings": [
+      {
+        "depth": 2,
+        "id": "command-boundary",
+        "text": "Command Boundary"
+      },
+      {
+        "depth": 2,
+        "id": "focus-and-selection",
+        "text": "Focus And Selection"
+      },
+      {
+        "depth": 2,
+        "id": "related-docs",
+        "text": "Related Docs"
+      }
+    ],
+    "links": [
+      {
+        "href": "/features/view-toolbar/",
+        "text": "View Toolbar",
+        "internal": true
+      },
+      {
+        "href": "/features/text-wrap-previewer/",
+        "text": "Text Wrap Previewer",
+        "internal": true
+      },
+      {
+        "href": "/features/package-owned-documentation/",
+        "text": "Package-Owned Documentation",
+        "internal": true
+      }
+    ],
+    "schemaIntentIds": [],
+    "componentIntentIds": []
+  },
+  {
     "slug": "/features/extension-host/",
     "url": "https://mdwrk.com/features/extension-host/",
     "title": "Extension Host | MdWrk Features",
@@ -2606,6 +2718,62 @@
     "componentIntentIds": []
   },
   {
+    "slug": "/features/package-owned-documentation/",
+    "url": "https://mdwrk.com/features/package-owned-documentation/",
+    "title": "Package-owned Documentation | MdWrk Features",
+    "description": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior.",
+    "h1": "Package-owned Documentation",
+    "intent": "understand package-owned documentation in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/package-owned-documentation/index.md",
+    "jsonLdId": "https://mdwrk.com/features/package-owned-documentation/#webpage",
+    "path": "/features/package-owned-documentation/",
+    "wordCount": 157,
+    "headings": [
+      {
+        "depth": 2,
+        "id": "ownership-model",
+        "text": "Ownership Model"
+      },
+      {
+        "depth": 2,
+        "id": "change-request-trace",
+        "text": "Change Request Trace"
+      },
+      {
+        "depth": 2,
+        "id": "related-docs",
+        "text": "Related Docs"
+      }
+    ],
+    "links": [
+      {
+        "href": "/docs/authoring/extension-authoring-guide/",
+        "text": "Extension Authoring Guide",
+        "internal": true
+      },
+      {
+        "href": "/features/editor-command-integrity/",
+        "text": "Editor Command Integrity",
+        "internal": true
+      },
+      {
+        "href": "/features/screenshot-evidence/",
+        "text": "Screenshot Evidence",
+        "internal": true
+      }
+    ],
+    "schemaIntentIds": [],
+    "componentIntentIds": []
+  },
+  {
     "slug": "/features/privacy-first-markdown-editor/",
     "url": "https://mdwrk.com/features/privacy-first-markdown-editor/",
     "title": "Privacy-first Markdown Editor | MdWrk Features",
@@ -2778,6 +2946,62 @@
       {
         "href": "/docs/getting-started/configuration",
         "text": "Client Configuration",
+        "internal": true
+      }
+    ],
+    "schemaIntentIds": [],
+    "componentIntentIds": []
+  },
+  {
+    "slug": "/features/screenshot-evidence/",
+    "url": "https://mdwrk.com/features/screenshot-evidence/",
+    "title": "Screenshot Evidence | MdWrk Features",
+    "description": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals.",
+    "h1": "Screenshot Evidence",
+    "intent": "understand screenshot evidence in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/screenshot-evidence/index.md",
+    "jsonLdId": "https://mdwrk.com/features/screenshot-evidence/#webpage",
+    "path": "/features/screenshot-evidence/",
+    "wordCount": 118,
+    "headings": [
+      {
+        "depth": 2,
+        "id": "evidence-scope",
+        "text": "Evidence Scope"
+      },
+      {
+        "depth": 2,
+        "id": "manifest-requirements",
+        "text": "Manifest Requirements"
+      },
+      {
+        "depth": 2,
+        "id": "related-docs",
+        "text": "Related Docs"
+      }
+    ],
+    "links": [
+      {
+        "href": "/features/uix-responsive-contract/",
+        "text": "UIX Responsive Contract",
+        "internal": true
+      },
+      {
+        "href": "/features/package-owned-documentation/",
+        "text": "Package-Owned Documentation",
+        "internal": true
+      },
+      {
+        "href": "/features/view-toolbar/",
+        "text": "View Toolbar",
         "internal": true
       }
     ],

@@ -11,3 +11,7 @@ export function firstLinkForSlot(slots: ResolvedLinkSlots, slotId: string): Reso
 export function navItemsForSlot(slots: ResolvedLinkSlots, slotId: string): NavItem[] {
   return linksForSlot(slots, slotId).map((link) => ({ label: link.label, href: link.href }));
 }
+
+export function allLinksForRole(slots: ResolvedLinkSlots, role: ResolvedTemplateLink["role"]): ResolvedTemplateLink[] {
+  return Object.values(slots).flat().filter((link) => link.role === role);
+}

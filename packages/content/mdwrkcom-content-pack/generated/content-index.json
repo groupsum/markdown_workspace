@@ -358,6 +358,24 @@
     "jsonLdId": "https://mdwrk.com/docs/authoring/extension-authoring-guide/#webpage"
   },
   {
+    "slug": "/docs/authoring/extension-contribution-surfaces/",
+    "url": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+    "title": "Extension Contribution Surfaces | MdWrk Docs",
+    "description": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions.",
+    "h1": "Extension Contribution Surfaces",
+    "intent": "learn extension contribution surfaces in MdWrk",
+    "contentType": "docs",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "docs",
+      "Authoring"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/docs/authoring/extension-contribution-surfaces/index.md",
+    "jsonLdId": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#webpage"
+  },
+  {
     "slug": "/docs/authoring/extensions/",
     "url": "https://mdwrk.com/docs/authoring/extensions/",
     "title": "Extension Authoring | MdWrk Docs",
@@ -781,6 +799,24 @@
     "jsonLdId": "https://mdwrk.com/features/editor-basics/#webpage"
   },
   {
+    "slug": "/features/editor-command-integrity/",
+    "url": "https://mdwrk.com/features/editor-command-integrity/",
+    "title": "Editor Command Integrity | MdWrk Features",
+    "description": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms.",
+    "h1": "Editor Command Integrity",
+    "intent": "understand editor command integrity in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/editor-command-integrity/index.md",
+    "jsonLdId": "https://mdwrk.com/features/editor-command-integrity/#webpage"
+  },
+  {
     "slug": "/features/extension-host/",
     "url": "https://mdwrk.com/features/extension-host/",
     "title": "Extension Host | MdWrk Features",
@@ -953,6 +989,24 @@
     "jsonLdId": "https://mdwrk.com/features/offline-markdown-editor/#webpage"
   },
   {
+    "slug": "/features/package-owned-documentation/",
+    "url": "https://mdwrk.com/features/package-owned-documentation/",
+    "title": "Package-owned Documentation | MdWrk Features",
+    "description": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior.",
+    "h1": "Package-owned Documentation",
+    "intent": "understand package-owned documentation in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/package-owned-documentation/index.md",
+    "jsonLdId": "https://mdwrk.com/features/package-owned-documentation/#webpage"
+  },
+  {
     "slug": "/features/privacy-first-markdown-editor/",
     "url": "https://mdwrk.com/features/privacy-first-markdown-editor/",
     "title": "Privacy-first Markdown Editor | MdWrk Features",
@@ -1003,6 +1057,24 @@
     "llmsInclude": true,
     "markdownMirror": "/features/rendering-and-preview/index.md",
     "jsonLdId": "https://mdwrk.com/features/rendering-and-preview/#webpage"
+  },
+  {
+    "slug": "/features/screenshot-evidence/",
+    "url": "https://mdwrk.com/features/screenshot-evidence/",
+    "title": "Screenshot Evidence | MdWrk Features",
+    "description": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals.",
+    "h1": "Screenshot Evidence",
+    "intent": "understand screenshot evidence in MdWrk",
+    "contentType": "feature",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "features",
+      "Features"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/features/screenshot-evidence/index.md",
+    "jsonLdId": "https://mdwrk.com/features/screenshot-evidence/#webpage"
   },
   {
     "slug": "/features/text-wrap-previewer/",

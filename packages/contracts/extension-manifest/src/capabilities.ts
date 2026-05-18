@@ -14,6 +14,7 @@ export const EXTENSION_CAPABILITIES = [
   "actionRail.register",
   "view.register",
   "component.register",
+  "hook.register",
 ] as const;
 
 export type ExtensionCapability = typeof EXTENSION_CAPABILITIES[number];

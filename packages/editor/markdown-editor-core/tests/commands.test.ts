@@ -88,6 +88,28 @@ describe("builtin markdown editor commands", () => {
     expect(hashLink.selection).toEqual({ start: 15, end: 23, direction: "none" });
   });
 
+  it("wraps selected text as a markdown image and selects the URL", () => {
+    const result = applyBuiltinMarkdownCommand(
+      "image",
+      "Architecture diagram",
+      { start: 0, end: 12 },
+      { imageUrl: "./diagram.png" },
+    );
+    expect(result.value).toBe("![Architecture](./diagram.png) diagram");
+    expect(result.selection).toEqual({ start: 16, end: 29, direction: "none" });
+  });
+
+  it("updates existing markdown images without treating them as links", () => {
+    const result = applyBuiltinMarkdownCommand(
+      "image",
+      "Use [docs](guide.md) and ![logo](old.png)",
+      { start: 27, end: 31 },
+      { imageUrl: "./logo.svg" },
+    );
+    expect(result.value).toBe("Use [docs](guide.md) and ![logo](./logo.svg)");
+    expect(result.selection).toEqual({ start: 33, end: 43, direction: "none" });
+  });
+
   it("upgrades an existing list item into an unchecked task item", () => {
     const result = applyBuiltinMarkdownCommand("task-list", "- alpha", { start: 2, end: 2 });
     expect(result.value).toBe("- [ ] alpha");
@@ -96,6 +118,12 @@ describe("builtin markdown editor commands", () => {
   });
 
   it("keeps the cursor on the same content character when creating a task item", () => {
+    const result = applyBuiltinMarkdownCommand("task-list", "alpha", { start: 2, end: 2 });
+    expect(result.value).toBe("- [ ] alpha");
+    expect(result.selection).toEqual({ start: 8, end: 8, direction: "none" });
+  });
+
+  it("keeps checkbox command state isolated from italic state", () => {
     const result = applyBuiltinMarkdownCommand("task-list", "alpha", { start: 2, end: 2 });
     expect(result.value).toBe("- [ ] alpha");
     expect(result.selection).toEqual({ start: 8, end: 8, direction: "none" });

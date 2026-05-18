@@ -3,6 +3,7 @@ import extension from '../dist/index.js';
 
 const registeredViews = [];
 const registeredRailItems = [];
+const registeredHooks = [];
 const notifications = [];
 const storage = new Map([['greeting', 'Hello from integration test']]);
 
@@ -22,6 +23,10 @@ const context = {
     registeredRailItems.push(item);
     return { dispose() {} };
   },
+  registerHook(hook) {
+    registeredHooks.push(hook);
+    return { dispose() {} };
+  },
   host: {
     notifications: {
       async info(message) {
@@ -35,7 +40,10 @@ await extension.activate(context);
 
 assert.equal(registeredViews.length, 1);
 assert.equal(registeredRailItems.length, 1);
+assert.equal(registeredHooks.length, 1);
 assert.match(String(registeredViews[0].render()), /Hello from integration test/);
+assert.equal(registeredHooks[0].id, 'external.catalog-hello.before-save');
+assert.deepEqual(await registeredHooks[0].dispatch({ changed: true }), { changed: true });
 assert.ok(notifications.some((entry) => entry.includes('Catalog Hello')));
 
 console.log('extension-catalog-hello integration checks passed');

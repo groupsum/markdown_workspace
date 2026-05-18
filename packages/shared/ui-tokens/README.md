@@ -18,6 +18,7 @@ Use it when you need token values and names directly without importing the full 
 - Stable token names and defaults.
 - CSS custom-property lists for the shared UI contract.
 - Theme-facing aliases built on top of the theme contract package.
+- Mobile action rail, full-width expandable rail, toolbar/footer, editor-width, and lander-compatible defaults.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.

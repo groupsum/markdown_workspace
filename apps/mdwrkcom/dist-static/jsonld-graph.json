@@ -1973,6 +1973,106 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#webpage",
+      "url": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+      "name": "Extension Contribution Surfaces | MdWrk Docs",
+      "headline": "Extension Contribution Surfaces",
+      "description": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions.",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#primary"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#webpage"
+      },
+      "headline": "Extension Contribution Surfaces",
+      "name": "Extension Contribution Surfaces | MdWrk Docs",
+      "description": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions.",
+      "url": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What will I learn from Extension Contribution Surfaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who should read Extension Contribution Surfaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Read this page if you need practical MdWrk guidance for extension contribution surfaces, including the relevant workflow, product surface, and follow-up documentation paths."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Getting Started",
+          "item": "https://mdwrk.com/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Extension Contribution Surfaces",
+          "item": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/docs/authoring/extensions/#webpage",
       "url": "https://mdwrk.com/docs/authoring/extensions/",
       "name": "Extension Authoring | MdWrk Docs",
@@ -4257,6 +4357,106 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/editor-command-integrity/#webpage",
+      "url": "https://mdwrk.com/features/editor-command-integrity/",
+      "name": "Editor Command Integrity | MdWrk Features",
+      "headline": "Editor Command Integrity",
+      "description": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms.",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/features/editor-command-integrity/#primary"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mdwrk.com/features/editor-command-integrity/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/features/editor-command-integrity/#webpage"
+      },
+      "headline": "Editor Command Integrity",
+      "name": "Editor Command Integrity | MdWrk Features",
+      "description": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms.",
+      "url": "https://mdwrk.com/features/editor-command-integrity/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/editor-command-integrity/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What will I learn from Editor Command Integrity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who should read Editor Command Integrity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Read this page if you need practical MdWrk guidance for editor command integrity, including the relevant workflow, product surface, and follow-up documentation paths."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/editor-command-integrity/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Editor Command Integrity",
+          "item": "https://mdwrk.com/features/editor-command-integrity/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/features/extension-host/#webpage",
       "url": "https://mdwrk.com/features/extension-host/",
       "name": "Extension Host | MdWrk Features",
@@ -5257,6 +5457,106 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/package-owned-documentation/#webpage",
+      "url": "https://mdwrk.com/features/package-owned-documentation/",
+      "name": "Package-owned Documentation | MdWrk Features",
+      "headline": "Package-owned Documentation",
+      "description": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior.",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/features/package-owned-documentation/#primary"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mdwrk.com/features/package-owned-documentation/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/features/package-owned-documentation/#webpage"
+      },
+      "headline": "Package-owned Documentation",
+      "name": "Package-owned Documentation | MdWrk Features",
+      "description": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior.",
+      "url": "https://mdwrk.com/features/package-owned-documentation/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/package-owned-documentation/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What will I learn from Package-owned Documentation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who should read Package-owned Documentation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Read this page if you need practical MdWrk guidance for package-owned documentation, including the relevant workflow, product surface, and follow-up documentation paths."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/package-owned-documentation/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Package-owned Documentation",
+          "item": "https://mdwrk.com/features/package-owned-documentation/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/features/privacy-first-markdown-editor/#webpage",
       "url": "https://mdwrk.com/features/privacy-first-markdown-editor/",
       "name": "Privacy-first Markdown Editor | MdWrk Features",
@@ -5552,6 +5852,106 @@
           "position": 3,
           "name": "Rendering And Preview",
           "item": "https://mdwrk.com/features/rendering-and-preview/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mdwrk.com/features/screenshot-evidence/#webpage",
+      "url": "https://mdwrk.com/features/screenshot-evidence/",
+      "name": "Screenshot Evidence | MdWrk Features",
+      "headline": "Screenshot Evidence",
+      "description": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals.",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "image": "https://mdwrk.com/favicon.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/features/screenshot-evidence/#primary"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mdwrk.com/features/screenshot-evidence/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/features/screenshot-evidence/#webpage"
+      },
+      "headline": "Screenshot Evidence",
+      "name": "Screenshot Evidence | MdWrk Features",
+      "description": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals.",
+      "url": "https://mdwrk.com/features/screenshot-evidence/",
+      "image": "https://mdwrk.com/favicon.svg",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/features/screenshot-evidence/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What will I learn from Screenshot Evidence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who should read Screenshot Evidence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Read this page if you need practical MdWrk guidance for screenshot evidence, including the relevant workflow, product surface, and follow-up documentation paths."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/features/screenshot-evidence/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "MdWrk features",
+          "item": "https://mdwrk.com/features/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Screenshot Evidence",
+          "item": "https://mdwrk.com/features/screenshot-evidence/"
         }
       ]
     },

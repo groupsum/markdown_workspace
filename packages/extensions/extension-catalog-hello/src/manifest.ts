@@ -22,7 +22,7 @@ export const extensionCatalogHelloManifest: ExtensionManifest = {
   keywords: ["hello", "catalog", "sample"],
   icon: { kind: "svg", svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16v12H4z"/><path d="M9 10h6"/><path d="M9 14h6"/></svg>' },
   enabledByDefault: true,
-  capabilities: ["view.register", "actionRail.register", "notification.publish", "settings.read"],
+  capabilities: ["view.register", "actionRail.register", "notification.publish", "settings.read", "hook.register"],
   compatibility: {
     manifestVersion: 1,
     hostApi: "^1.0.0",
@@ -54,6 +54,15 @@ export const extensionCatalogHelloManifest: ExtensionManifest = {
         order: 160,
         group: "extensions",
         target: { kind: "view", viewId: "external.catalog-hello.view" },
+      },
+    ],
+    hooks: [
+      {
+        id: "external.catalog-hello.before-save",
+        title: { defaultMessage: "Catalog Hello before-save hook" },
+        description: { defaultMessage: "Demonstrates external catalog hook registration." },
+        event: "workspace.beforeSave",
+        order: 160,
       },
     ],
     settingsSections: [],

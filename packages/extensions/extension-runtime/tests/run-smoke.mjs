@@ -115,7 +115,7 @@ const createHost = () => {
         mode: 'test',
         hostVersion: '0.1.0',
         runtimeVersion: '1.0.0',
-        grantedCapabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish'],
+        grantedCapabilities: ['view.register', 'actionRail.register', 'settings.read', 'settings.write', 'notification.publish', 'hook.register'],
       },
     },
   };
@@ -127,18 +127,21 @@ const createSink = () => {
   const rail = [];
   const settings = [];
   const workspaceModules = [];
+  const hooks = [];
   return {
     commands,
     views,
     rail,
     settings,
     workspaceModules,
+    hooks,
     sink: {
       registerCommand(_extensionId, command) { commands.push(command); return { dispose() {} }; },
       registerView(_extensionId, view) { views.push(view); return { dispose() {} }; },
       registerWorkspaceModule(_extensionId, module) { workspaceModules.push(module); return { dispose() {} }; },
       registerActionRailItem(_extensionId, item) { rail.push(item); return { dispose() {} }; },
       registerSettingsSection(_extensionId, section) { settings.push(section); return { dispose() {} }; },
+      registerHook(_extensionId, hook) { hooks.push(hook); return { dispose() {} }; },
     },
   };
 };
@@ -328,6 +331,54 @@ assert.ok(invalidIssues.some((issue) => issue.path === 'displayName.defaultMessa
   assert.ok(rail.some((item) => item.id === `${manifest.id}.rail`));
   await runtime.deactivate(manifest.id);
   assert.equal(runtime.get(manifest.id)?.status, 'registered');
+}
+
+// hook contribution registration
+{
+  const { host } = createHost();
+  const { sink, hooks } = createSink();
+  const runtime = createExtensionRuntime({ host, registrationSink: sink, storage: createInMemoryExtensionRuntimeStorage() });
+  const manifest = createManifest('hook-smoke', {
+    capabilities: ['hook.register'],
+    contributions: {
+      commands: [],
+      views: [],
+      components: [],
+      actionRail: [],
+      settingsSections: [],
+      hooks: [
+        {
+          id: 'hook-smoke.before-save',
+          title: { defaultMessage: 'Before Save' },
+          description: { defaultMessage: 'Runs before workspace saves.' },
+          event: 'workspace.beforeSave',
+          order: 10,
+        },
+      ],
+    },
+  });
+
+  runtime.registerBundledExtension({
+    manifest,
+    activation: 'eager',
+    load: async () => ({
+      manifest,
+      async activate(context) {
+        context.registerHook({
+          ...manifest.contributions.hooks[0],
+          async dispatch(payload) {
+            return payload;
+          },
+        });
+      },
+    }),
+  });
+
+  await runtime.start();
+  assert.equal(runtime.get(manifest.id)?.status, 'active');
+  assert.ok(hooks.some((hook) => hook.id === 'hook-smoke.before-save'));
+  assert.ok(runtime.get(manifest.id)?.hookIds.includes('hook-smoke.before-save'));
+  assert.deepEqual(await hooks[0].dispatch({ changed: true }), { changed: true });
 }
 
 // config persistence

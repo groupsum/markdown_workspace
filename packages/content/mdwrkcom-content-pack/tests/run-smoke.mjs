@@ -8,6 +8,7 @@ import {
   mdwrkcomContentPack,
   mdwrkcomLanderRenderingIntent,
   resolveMdwrkcomContentPackPath,
+  resolveMdwrkcomContentPackUrl,
 } from '../dist/index.js';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -58,6 +59,8 @@ assert.deepEqual(
   ['FAQPage', 'ItemList', 'SoftwareApplication', 'SoftwareSourceCode', 'TechArticle', 'WebSite'],
 );
 assert.ok(resolveMdwrkcomContentPackPath('data/content-sitemap.yaml').endsWith('/data/content-sitemap.yaml'));
+assert.equal(resolveMdwrkcomContentPackUrl('content/pages/index.md').protocol, 'file:');
+assert.ok(resolveMdwrkcomContentPackUrl('content/pages/index.md').pathname.endsWith('/content/pages/index.md'));
 
 compareTrees(path.join(mdwrkcomRoot, 'content'), path.join(packageRoot, 'content'));
 compareTrees(path.join(mdwrkcomRoot, 'data'), path.join(packageRoot, 'data'));

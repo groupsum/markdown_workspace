@@ -262,6 +262,7 @@ export const MarkdownSourceEditor = React.forwardRef<MarkdownSourceEditorHandle,
       }
 
       const result = applyBuiltinMarkdownCommand(command, draftValueRef.current, selectionRef.current, {
+        ...options,
         indentUnit: options.indentUnit ?? indentUnit,
       });
       const snapshot = applyEditResult(result, { focus: true });

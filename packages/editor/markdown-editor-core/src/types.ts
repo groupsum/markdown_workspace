@@ -31,6 +31,7 @@ export type MarkdownEditorBuiltinCommandId =
   | "bullet-list"
   | "task-list"
   | "link"
+  | "image"
   | "front-matter"
   | "footnote"
   | "inline-math"
@@ -48,6 +49,8 @@ export interface MarkdownEditorCommandOptions {
   readonly indentUnit?: string;
   readonly linkText?: string;
   readonly linkUrl?: string;
+  readonly imageAlt?: string;
+  readonly imageUrl?: string;
 }
 
 export interface MarkdownEditorEditResult {

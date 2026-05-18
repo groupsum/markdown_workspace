@@ -1,6 +1,6 @@
 [
   {
-    "sourcePath": "content/pages/answers/does-mdwrk-require-a-server.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/does-mdwrk-require-a-server.md",
     "sourceHash": "20da69a8bdab0e4b2f8e716dcc7671a3694205ff7cfd1e59a4614ced6af68205",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/answers/how-do-mdwrk-theme-packs-work.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/how-do-mdwrk-theme-packs-work.md",
     "sourceHash": "5d50ae9e15e718539a2c85557b2882b8fad7c0910f6da3ef994b6ededb6aa489",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -108,7 +108,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/answers/how-does-mdwrk-store-markdown-locally.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/how-does-mdwrk-store-markdown-locally.md",
     "sourceHash": "3ef4af3e7f95132e06474e93b144c0055ce5f4dd517d6c469dbe90e6be1867ee",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -162,7 +162,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/answers/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/index.md",
     "sourceHash": "164bf5f1677fc92ed3fdd05ac3619fb44bd0923c78142fb147ca802d66510de2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -262,7 +262,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/answers/what-is-a-local-first-markdown-workspace.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/what-is-a-local-first-markdown-workspace.md",
     "sourceHash": "f2176b734647f6b1282dcf8398502aad7fb7ec7efcd8623ef7d1bdc2228f7394",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -316,7 +316,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/answers/what-is-an-offline-markdown-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/answers/what-is-an-offline-markdown-editor.md",
     "sourceHash": "f4a127d607370ae8ab57ee05e437a1991294b99e135277e44aaec98a8f156f99",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -370,7 +370,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/blog/launch.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/blog/launch.md",
     "sourceHash": "68092b7a758f53fe8e53ecc2da99391a371eb77d67d7900e7871a12716f6bfd5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -448,7 +448,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/compare/index.md",
     "sourceHash": "c22975ebd97f8070ac5fd24b808f925b8cca5f8abdf46e3453bebf8363c38795",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -538,7 +538,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/local-first-markdown-editors.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/compare/local-first-markdown-editors.md",
     "sourceHash": "cc4df840f4e8451c97ecf7fc44545c18d0650b0928a2533139983c7bdbb94705",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -587,7 +587,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/mdwrk-vs-obsidian.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/compare/mdwrk-vs-obsidian.md",
     "sourceHash": "5a582dfa10b0832c5126b86d697d211fd1a58852a1295f47ca4a264e7815583c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -636,7 +636,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/mdwrk-vs-typora.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/compare/mdwrk-vs-typora.md",
     "sourceHash": "ad821dadd7f62003a124cb8da1d69b3a85f22a8d001f9df70f68b9e022cee8b8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -685,7 +685,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/compare/mdwrk-vs-vscode-markdown.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/compare/mdwrk-vs-vscode-markdown.md",
     "sourceHash": "0e6eeedd4adbf885df9c73edc701a7ebcabf1abd876f7b43dc2af94a22ca7ba3",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -734,7 +734,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/docs/extensions.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/docs/extensions.md",
     "sourceHash": "7baacde4259b52fcc398f2e8a85173318b90ca0676f7a69dee8828679a07e5ed",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -810,7 +810,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/docs/quickstart.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/docs/quickstart.md",
     "sourceHash": "f7dd202848c52a961462511da773cc7ace79a30fb6933b96f996d8091a4530b9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -888,7 +888,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/docs/theme-packs.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/docs/theme-packs.md",
     "sourceHash": "f86a03270e1c9803707fef01f7e2997729bd0cdb57ae792d0867760c423ce018",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -964,7 +964,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/es/docs/quickstart.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/es/docs/quickstart.md",
     "sourceHash": "99cbcb76ca7b4a80390ff20eee22ebfe049107bce6bcda9d8a3207fbdc4f4b86",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1044,7 +1044,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/extension-runtime.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/extension-runtime.md",
     "sourceHash": "93d19eda7600e2d0ecb37c177db4291c90ad0789a1b9b1582e344a603a4d7099",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1097,7 +1097,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/github-sync.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/github-sync.md",
     "sourceHash": "7761293d34a04419eb3cd5973629348c3e8fed66f8ad2f84dd93f2da6140fb76",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1150,7 +1150,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/index.md",
     "sourceHash": "983846ed7b5e80170b2991175c7314e4b189c2dd6b68957a80a87f84c2d87b6c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1260,7 +1260,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/indexeddb-markdown-storage.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/indexeddb-markdown-storage.md",
     "sourceHash": "63969e39e9e15fb808acdb727013a20f0cc0cdd7cff2bf61bae235cf307450d0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1313,7 +1313,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/live-preview.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/live-preview.md",
     "sourceHash": "8f498118ea8263737300d68942f05182d3ca0a80754dd17160a6b40bc07275e4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1366,7 +1366,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/features/pwa-markdown-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/features/pwa-markdown-editor.md",
     "sourceHash": "427e31b8cc81ea4733ef0dc3f79268298aa04f014cc5c885d0cb48c9734db5ed",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1419,7 +1419,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/index.md",
     "sourceHash": "194a4f5516a35a1437b27e6f104d9f1143f9ef0b273566475d6268e1d08c66e9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1500,7 +1500,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/basic-markdown-syntax.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/basic-markdown-syntax.md",
     "sourceHash": "f98edefed08e6befb95eef6aecbcd25c12bda62c6b264ee76b5fec8e8f307c8b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1558,7 +1558,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/benefits.md",
     "sourceHash": "5ca1f9e30e517ca476e74c633c52961597ccde3f99cad9024c2c2f70edcedb66",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1616,7 +1616,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/best-practices.md",
     "sourceHash": "1a323938d60110fb72519e5e5b4db47494e518dacfb1c389cbaa798138bb8f4c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1674,7 +1674,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/checklist.md",
     "sourceHash": "8bacfc095a5f57eaf7ba8cd12d3c3e778fd130077ccb8cd99712c1c73f226099",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1732,7 +1732,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/examples.md",
     "sourceHash": "76580d65cc55c85349c685c4f3130b37dce287abc304899692d15515eb5d8d53",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1790,7 +1790,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/for-developers.md",
     "sourceHash": "3faec61715dd63dbe18e39328afec354398e2abb288bbbb6a17ae808bc2811bd",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1848,7 +1848,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/for-teams.md",
     "sourceHash": "88aadf2078ba9b6b1fcc0862500fc670042a5b11e33ef98f2a81f6ac8965747f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1906,7 +1906,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/use-cases.md",
     "sourceHash": "0a36ddbd4bb5acaf6b54df1473e1911de9886844e015e38fe95e2de1ce7fe68c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -1964,7 +1964,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/local-first-markdown-workspace/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/local-first-markdown-workspace/workflow.md",
     "sourceHash": "702dc47d7f1d4d8f2d22fd5c40898902b3142ad3ba3155bf714ddc334e244562",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2022,7 +2022,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/benefits.md",
     "sourceHash": "ba9eddfe9b6cbb2fb207bedae54373bdd54a5d34bde049f8a428f72ee4c96474",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2080,7 +2080,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/best-practices.md",
     "sourceHash": "69a6828745558c8d51fc148c7a7e1398ca7326f28638716b29b561596e0ac80e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2138,7 +2138,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/checklist.md",
     "sourceHash": "48cc889bb7acd233ef01628ceded4ba61b01dc6bacafa0928406ea64a0ddfcd8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2196,7 +2196,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/examples.md",
     "sourceHash": "4ea8afcc728bc65e5589222abf46347a1ed2a9bcd5e138244c22f2ee54d55783",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2254,7 +2254,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/for-developers.md",
     "sourceHash": "503fb141196d2a06c2869b72379442bf5b65c60537cac939f4a7ceb80d330aa9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2312,7 +2312,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/for-teams.md",
     "sourceHash": "9ff099111c4e02a621fcab9b61110ace8e67be15271c880a92a1341f5c700c23",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2370,7 +2370,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/use-cases.md",
     "sourceHash": "2ac3d42f3d745bdd9eb82a1450c9c118eaffa43525306e6d4c288610b1376918",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2428,7 +2428,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-blogging/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-blogging/workflow.md",
     "sourceHash": "186e08fc69dcfeeeec8ebfd12a4d8c863784ac8fae7c741b94f674a86cd508c7",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2486,7 +2486,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/benefits.md",
     "sourceHash": "79132b1cbf11893adf57117dc8d2e42fca7a6216050527a2dfc68ef73e045c70",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2544,7 +2544,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/best-practices.md",
     "sourceHash": "f7ab59927b052f679bdc1a4dfc229c035547556c96470d4365f2eef52386b18e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2602,7 +2602,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/checklist.md",
     "sourceHash": "fea6a578ccbb62f1b8a8288f6d6b30285db6237577e9aeb91f6d11fe1c1cc62f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2660,7 +2660,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/examples.md",
     "sourceHash": "4036aad079803f19150b71e5ce7a8cddb8b642969ee2c52caefc2ecb275b92c4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2718,7 +2718,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/for-developers.md",
     "sourceHash": "a6ca23d50af1ceae9f4a622fd2aa87d4dcd69b3fc37b3b95c21cac2bc94183a7",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2776,7 +2776,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/for-teams.md",
     "sourceHash": "61065f5052a3b6a1f509a89f250215c9e119b011aa9853f1795f1f6883d6efd5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2834,7 +2834,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/use-cases.md",
     "sourceHash": "7bc386fdd651090db69fe4d8f9e48b709f7b8dbc09b0f85f2b6437a00eb6ca65",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2892,7 +2892,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-documentation/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-documentation/workflow.md",
     "sourceHash": "11b151aa76fe89ec00460e9f7d9eb98b80e48828f52c69279b5f6c2d8fffaed8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -2950,7 +2950,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/benefits.md",
     "sourceHash": "eea1b119af7bf11cc3a0be02c275a9341bad8463b4f81a3c4a766404e5d2e8d4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3008,7 +3008,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/best-practices.md",
     "sourceHash": "4c1aeb2873b2ef91ec05d75304c48f9b5892b902efd29ca4eb6a68b3f19f10ad",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3066,7 +3066,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/checklist.md",
     "sourceHash": "bf63684c8a304291f08a1e738848284787bfa13857f6c81c176f84b8b820091b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3124,7 +3124,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/examples.md",
     "sourceHash": "9d25779b266e4c585a527710c0c52f86c9fb47e8c09feb77743b5930cf80dd2b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3182,7 +3182,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/for-developers.md",
     "sourceHash": "77e7e782114e4e856ff703860d82c6d753ec2e9498150ed0f66f1cd83bb70f43",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3240,7 +3240,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/for-teams.md",
     "sourceHash": "8e4fb360d561decb1384b5412605011cd12db0cd74eec704b6df26ed3cf047c0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3298,7 +3298,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/use-cases.md",
     "sourceHash": "fd3722bf38b172bc62927252ed0269c553388f576de40b9c2c232717bb3aaaa8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3356,7 +3356,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-editor/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-editor/workflow.md",
     "sourceHash": "34bca45906e21ae75182f81c8677b48a4c0f9e40fd15dbbd1702149e78785ede",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3414,7 +3414,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/benefits.md",
     "sourceHash": "7974bd7a668bece34f31f46f8df5303d58974997d55f4ba892c417698cb75615",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3472,7 +3472,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/best-practices.md",
     "sourceHash": "e2216fdcb9dc0e363ca33b832499ac1fd23d5dface2c25f9ddf8667835aeb0e4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3530,7 +3530,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/checklist.md",
     "sourceHash": "34e16613f2c656762ace3eea3798d4faa601699ff634ff0311a5113cb8b0d247",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3588,7 +3588,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/examples.md",
     "sourceHash": "7ef1f29da2842b7d3cc48153e75b5582b84cbbea76f92cef9b8e0a26438c7348",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3646,7 +3646,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/for-developers.md",
     "sourceHash": "693689693127270df3f64893ad76adf8992eff75348dfc849d4cce73ace4cfe5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3704,7 +3704,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/for-teams.md",
     "sourceHash": "443a5d577c6d906ee6b74ad6873caef2d57240784ac26d50e74269b394392ff5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3762,7 +3762,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/use-cases.md",
     "sourceHash": "ce5aeb34d001da0f273f36a63c93b381b1ac346da3faf0a1ff3f8d4fe3853afc",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3820,7 +3820,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-extension-workflows/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-extension-workflows/workflow.md",
     "sourceHash": "ccd66a9ba64ce23a7e810ebe3fe0924eb3f2fe115c7c60dd017d4f6a567bf907",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3878,7 +3878,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/benefits.md",
     "sourceHash": "6de540cfeeef4b71701179d8388d23a72d5a05c5e300bb6e3a3577966a680300",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3936,7 +3936,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/best-practices.md",
     "sourceHash": "fb143c178eb260a7073cc2a46bb31e29689ecab7502b027c0947513c529fcc36",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -3994,7 +3994,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/checklist.md",
     "sourceHash": "3edf15efdd1b81005a159234b4c8ead8d1dd7b811b560477a76e48b81b599a47",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4052,7 +4052,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/examples.md",
     "sourceHash": "2d4aef5c02988c08040c3d884114abd1c80238eea7d907567453323a6c76d899",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4110,7 +4110,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/for-developers.md",
     "sourceHash": "0bc9679fd2e44403d7e587cfef4cc9b5396d1b2821b2e39ff5e44315764d9e58",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4168,7 +4168,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/for-teams.md",
     "sourceHash": "14b89eb70df3208d35a3e692c4d187845d78ad290ca1655684ab7c09da20fbe5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4226,7 +4226,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/use-cases.md",
     "sourceHash": "605e779e891a4cda34f043e848fbad3ddb471659500689bbe75caebf8d0ade70",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4284,7 +4284,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-developers/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-developers/workflow.md",
     "sourceHash": "40bcc33c7e7b4fba332563210bf3874132bcebc0352b3a60f5be798b53f500bb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4342,7 +4342,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/benefits.md",
     "sourceHash": "098fe789a2e14beab01466487fc1d9f85132ed7ed915a56ef6af6a6cce957ad9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4400,7 +4400,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/best-practices.md",
     "sourceHash": "57aa96e8ba0d220c9770b95ab4d800787d391c1e5d0b40d38b8e37427aa10a91",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4458,7 +4458,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/checklist.md",
     "sourceHash": "7d37fb0b5807df670d9023ba5d32ebd62c3a3ee337e5059913ffaeeedbb74971",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4516,7 +4516,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/examples.md",
     "sourceHash": "7c369169e4aa3c04d4ff761ef80ac49f800b09d736dd705a4a3f82e0d2a0e5ec",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4574,7 +4574,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/for-developers.md",
     "sourceHash": "2504bc93dc45ff593decc002d49de2724b4d2c89d3df2aa8ee6b763d4f6ca3d5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4632,7 +4632,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/for-teams.md",
     "sourceHash": "b7768a7d8d850bd1ec4d247f4a7e409056876d15c533bb6ab0a975ad6a0d097f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4690,7 +4690,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/use-cases.md",
     "sourceHash": "1345b78d8852c52c3bd24595cc72f5556565239b417db0a52d00e00de2e64c72",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4748,7 +4748,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-for-teams/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-for-teams/workflow.md",
     "sourceHash": "0779b51dd28fe67c4c662ea52aede525dc4c4c044557f3bc02995a92a7e19893",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4806,7 +4806,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/benefits.md",
     "sourceHash": "92690954770354e573db529d4e29eaa593c095f15890f351d69b01a90316a3e2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4864,7 +4864,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/best-practices.md",
     "sourceHash": "35eb4ce7707b58879a95ef0451d793c46212ef9123eae4ef682506e48c6ffe1b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4922,7 +4922,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/checklist.md",
     "sourceHash": "e249fa755cfe91af5cfae963fc3f0a00d61b267d184d88ba4ae1524ef51ef710",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -4980,7 +4980,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/examples.md",
     "sourceHash": "8c3f8685137a33d62da09be2b819d5b9a9661bd9b27825803aacad49086e9f83",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5038,7 +5038,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/for-developers.md",
     "sourceHash": "305f13f217e76f99325f464e4260273270d477a35e1019f4283e0b830fc47b6a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5096,7 +5096,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/for-teams.md",
     "sourceHash": "966540211e79271a2c0c39fdaa6d8bd985109307fcd8fc7450aa8762f0a8ca4d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5154,7 +5154,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/use-cases.md",
     "sourceHash": "84a13f8a995d02fc7dcf1d0b27a76d1544c7af5c247a8b865287f41830711705",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5212,7 +5212,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-knowledge-base/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-knowledge-base/workflow.md",
     "sourceHash": "cac3f48d687130872ee4d7ca1201f1191bbc4778cf9efd645b02d6c596c6b62c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5270,7 +5270,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/benefits.md",
     "sourceHash": "a5f7a882105cb4706d2320a2b7d5cadd4fb9de14e83ead8bf3ed06fd84a7c2ae",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5328,7 +5328,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/best-practices.md",
     "sourceHash": "7c90d9b1fd7cde18d9ebb57f252d122401d6f9aa2fda69dc1368fc3db8e1d9e8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5386,7 +5386,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/checklist.md",
     "sourceHash": "9d7ad72ab2330aefe23b8674bbeb309cfaa70aa6f9e492bbd96d1c68bad026df",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5444,7 +5444,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/examples.md",
     "sourceHash": "8c16aa18638530ec4e2a43ef85ae6b62bf0fa3de6d6602303307d440ebc4b0af",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5502,7 +5502,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/for-developers.md",
     "sourceHash": "779acad8754a7680b2aa153036a3b80da81fd49b9d45ac7b49d4c7df20a4cea1",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5560,7 +5560,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/for-teams.md",
     "sourceHash": "601d857b78fc6c5659a8c2e656de5a593a00f26f4051ad16b98db63a1a2c2692",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5618,7 +5618,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/use-cases.md",
     "sourceHash": "5b0c086002ccfb962ec3225b815dfdede3920bbe8a211a5bbfe9a7ea8b3944fd",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5676,7 +5676,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-notes/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-notes/workflow.md",
     "sourceHash": "4019ffcf9bbd60151a0a96447b0913aa31c9dd732235e53219be184895c9b18e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5734,7 +5734,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/benefits.md",
     "sourceHash": "072d5933096c4aa30f5da60a5f8d06953e6fbeb071f6e1a8094aada650c3e7a0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5792,7 +5792,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/best-practices.md",
     "sourceHash": "60f44577f154af66200df92dbbaf80fd0ab305bb9f213cc79cbffa92de2d1c54",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5850,7 +5850,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/checklist.md",
     "sourceHash": "524053b40de3969f1664a7fa533dea09f82945dfacf0bfc5a1688f357d6a6f7d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5908,7 +5908,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/examples.md",
     "sourceHash": "65c3e20cf6f8511dfccdc0b414f8aed3423156ab51a970b78055c05234b69a6a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -5966,7 +5966,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/for-developers.md",
     "sourceHash": "5febf7e31442c5bd30e5969173b48ceebe5ad2352f4d642dac1b290b273a8319",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6024,7 +6024,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/for-teams.md",
     "sourceHash": "653e7710aa0bf4c1899cd850199a5948ed81389848d90350310aa0e330bc1fbf",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6082,7 +6082,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/use-cases.md",
     "sourceHash": "3094d321330943ee22ed3a43eaacc8a4bdb5f54bf4095a36d8affe4ca77a254f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6140,7 +6140,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-preview/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-preview/workflow.md",
     "sourceHash": "0576cd6cfb56887147085f13f5695b545ecf25c33360caee00f315be7231f5d2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6198,7 +6198,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/benefits.md",
     "sourceHash": "728acddaf68795d848acadc300bab83bc2a4456ac4ec063bbc5da428e1fb1a20",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6256,7 +6256,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/best-practices.md",
     "sourceHash": "580740fde5b48956dd366146daaea3c65a6bc17ba4159d132cd04b61b9e37ab1",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6314,7 +6314,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/checklist.md",
     "sourceHash": "ad4af9ab91c5efee155018069facf976dd8fe367c8685dc347de71099343c095",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6372,7 +6372,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/examples.md",
     "sourceHash": "ae727339cb0bb3e0244bb924a9d3e6c6a5b5c91f29177ba96cee5f111d322383",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6430,7 +6430,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/for-developers.md",
     "sourceHash": "bd07284d0c55037d44825c71069130c92bd11cd09bb1842e1e05803078bc4656",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6488,7 +6488,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/for-teams.md",
     "sourceHash": "afdf56fdf9986ccd358f4f90b25a69fa7976e453ba9452c94642b18cbe7b7dc4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6546,7 +6546,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/use-cases.md",
     "sourceHash": "6d5623a055ab6e101ffd910b013a4b3b7c10669c6f7188a1b35e0f37f84e7053",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6604,7 +6604,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-project-docs/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-project-docs/workflow.md",
     "sourceHash": "9dde0cfa10974fdbf983bbfc70f7174c96f5fc9976d95d722f3a372c2bb2c56a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6662,7 +6662,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/benefits.md",
     "sourceHash": "309e28876c32d967547f7085d98c3d32e76c77a5ae60c2922658661665d38bf2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6720,7 +6720,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/best-practices.md",
     "sourceHash": "4cffee8cc80070d3344e2fa4061a6566715cb3553b9e60c7478cb3baca439eaa",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6778,7 +6778,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/checklist.md",
     "sourceHash": "163dde785c03049226dc573da5b295090d6137783b3a940bb499c0bab04855c3",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6836,7 +6836,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/examples.md",
     "sourceHash": "66fd3758cb6c3c18a5066d3bddc49776d4cd807cfcb3e2ef029902a779c823bd",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6894,7 +6894,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/for-developers.md",
     "sourceHash": "32e3161fa8bf14238c6f2fcb234ca4339bf9ae8b3596e745e572e46b0425ee0e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -6952,7 +6952,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/for-teams.md",
     "sourceHash": "48337ee839bdfa11d2fb24744406380466c520ee6898aa706a0472fb18fb4f9d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7010,7 +7010,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/use-cases.md",
     "sourceHash": "ae59a283d78d9a6e49ecdd50af0fab74eecab8862e8e5aca597476da927554d8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7068,7 +7068,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-readme/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-readme/workflow.md",
     "sourceHash": "57b975f4cb167120fbd747be31a4ed45dce348022a3a9a66df6b8354e1e33f48",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7126,7 +7126,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/benefits.md",
     "sourceHash": "4294d4895dc60c52df8ecd42af074c5f2864a91e617adda2f9d6eaed52864e98",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7184,7 +7184,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/best-practices.md",
     "sourceHash": "c53410e03b581c6e6100ef3efac9b7374bf76bbdc19ea6b6f8a4eac9581e982f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7242,7 +7242,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/checklist.md",
     "sourceHash": "041972b7179ccb5ad295aa4be8582baadfec787318581fe886f2b97b1ff0e1cf",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7300,7 +7300,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/examples.md",
     "sourceHash": "23496b1f3bedd8e8fbb9f5d9ca52fd4e31440e545fdff9bd5eece253e215d2ea",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7358,7 +7358,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/for-developers.md",
     "sourceHash": "e6d701cb8b8c00ca02ca691716a211fe0aade1d33448779aadd06fe8256a4271",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7416,7 +7416,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/for-teams.md",
     "sourceHash": "361ca8b191711bc5d4a20ea1dd85a1a1079a5c2ef1b8603942a4cc0b39380b2a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7474,7 +7474,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/use-cases.md",
     "sourceHash": "b9be466b72dd1a78aa32902617a81a9fa8fbb8629facf387aca70fe4a21e09bb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7532,7 +7532,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-theme-packs/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-theme-packs/workflow.md",
     "sourceHash": "2f299ed14910608fe83256adcee557db7b833eae96650d770aa580475300f5a8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7590,7 +7590,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/benefits.md",
     "sourceHash": "54b352fede8e89e5d8684c2113ef2081822855f50f2fd9151afa7a0692f93601",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7648,7 +7648,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/best-practices.md",
     "sourceHash": "0ba84bb29073765a6b3352f13bc2e1de8ef90be8ffd74da58b7c0b79ee90a24c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7706,7 +7706,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/checklist.md",
     "sourceHash": "69d9b905081fea50c51054a24e3330e17a78a15c4d48c13360776ec12cf47f83",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7764,7 +7764,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/examples.md",
     "sourceHash": "abf463d4f29e0dddfe3d79ed6db03541e60a850b12f2927048220d014413f2bb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7822,7 +7822,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/for-developers.md",
     "sourceHash": "c98576780a467479d85fbfbb96b1640cb2b1f697ed5b2c5ece6b8faf5ddd72ed",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7880,7 +7880,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/for-teams.md",
     "sourceHash": "4a84c312cf9f91391a43649887a4ebdfea09b81b9282ab1d5dd9cdf0dadacae7",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7938,7 +7938,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/use-cases.md",
     "sourceHash": "213779ab71619b86b9c8c32458bbc7dd6ce86257a9b26df089bc896b06e87dd9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -7996,7 +7996,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/markdown-writing-workflow/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/markdown-writing-workflow/workflow.md",
     "sourceHash": "297ba5679abbde04f17836feb51f1dc6d475adc66ff5cc7f803cd1b2135eb493",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8054,7 +8054,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/benefits.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/benefits.md",
     "sourceHash": "3352063851a3cda149411e2156e0c365d518548edda1055961b96013b1060e77",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8112,7 +8112,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/best-practices.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/best-practices.md",
     "sourceHash": "78e385726e57d4f774f7c6bbaa6716c3d8a990974bd809997454d6dcd4f3df5f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8170,7 +8170,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/checklist.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/checklist.md",
     "sourceHash": "0e481a3104c0951a891912d3daa34c5fb5078e5b89eab277b3a460af0cb801a4",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8228,7 +8228,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/examples.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/examples.md",
     "sourceHash": "539e22caf4e7e69c44b516b7dba55b3f64b043a5d5420e606ea86214953a63ce",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8286,7 +8286,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/for-developers.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/for-developers.md",
     "sourceHash": "192e1b1a97df9dbb7053cb767f3474ad28bf79f7c599480f99abbc57f52b443c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8344,7 +8344,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/for-teams.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/for-teams.md",
     "sourceHash": "a44d077c16fe1d27b062a335bb2721c9f5af8cecfc3d09d013ebd2566848df6b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8402,7 +8402,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/use-cases.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/use-cases.md",
     "sourceHash": "55a5327a8d648f39d61a5622ed8b8f92ac0bb793a5b724177180d8395b5f84fe",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8460,7 +8460,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/generated/offline-markdown-editor/workflow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/generated/offline-markdown-editor/workflow.md",
     "sourceHash": "0a0a7f647da31e38a4eee7bc3ec2e6c323f932a67ca817bf9b4b028e2d12c7d0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8518,7 +8518,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/how-to-write-markdown.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/how-to-write-markdown.md",
     "sourceHash": "f3a8ff702815682ebb0d65b0f1c9c1008a3c5df6da59f165859aa776ebeca73f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8576,7 +8576,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/index.md",
     "sourceHash": "a62512c1646d63a681eee0f3e85579539250e0f833c27bcbc86c70754d57b04d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8696,7 +8696,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/markdown-vs-html.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/markdown-vs-html.md",
     "sourceHash": "f75dc268ecca441a437db4fd15b6fa76b79648afbf0cc65714def4309d92e860",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8754,7 +8754,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/what-is-a-markdown-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/what-is-a-markdown-editor.md",
     "sourceHash": "21f1459ac744aeeb0b3095e68cf1d858b491c9723412ffed572e91749eb3a1b6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8812,7 +8812,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/what-is-markdown-used-for.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/what-is-markdown-used-for.md",
     "sourceHash": "a5cd950f44745e5cae62381004b779ab1b82a3946d89fffbfc281e9da7784836",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8870,7 +8870,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/markdown/what-is-markdown.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/markdown/what-is-markdown.md",
     "sourceHash": "9a7be41c1848feb250734ef73c5ce3cfb4022ec8838c3e6bfc98961992b0d50f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8928,7 +8928,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/extension-runtime.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/extension-runtime.md",
     "sourceHash": "7534b3dcbb8c575adb8295d568f3411188ca2eb1ba9f6338998f10eb1c50fb04",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -8982,7 +8982,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/index.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/index.md",
     "sourceHash": "33c6a5708111b6e1680a28eb08f05ba178f5edba0c8be14bf7eadd1644e44d0e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9082,7 +9082,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/markdown-editor-react.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/markdown-editor-react.md",
     "sourceHash": "54f8a65297259cea39678690bc210647a6e9a388e944311ed5e954c731dea54b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9136,7 +9136,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/markdown-renderer-core.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/markdown-renderer-core.md",
     "sourceHash": "6b7ac8e95fce2f2d8fc14456a58ed607ad4959ffd8e441e42f9bc064d04881a0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9190,7 +9190,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/markdown-renderer-react.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/markdown-renderer-react.md",
     "sourceHash": "03ad6a47c1a1c9e4af8545454442ad80b50e1c8755376a72a68bce8a56e71560",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9244,7 +9244,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/packages/theme-contract.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/packages/theme-contract.md",
     "sourceHash": "4551cf7c64b0ea04c065e430b0faed6430d8c01078597bd6d8fbed0b1e0c1992",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9298,7 +9298,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/privacy.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/privacy.md",
     "sourceHash": "1c21b8b8d3a7deaf9dd5a0e8d5f1ec587053788f34c398608ed74b2dc2ce4ddb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9375,7 +9375,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/proof/browser-support.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/proof/browser-support.md",
     "sourceHash": "b5f631d0adfafdda71f72342c8ef23edba86d84cbcb3077d8ae0f8e61898123d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9424,7 +9424,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/proof/markdown-support.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/proof/markdown-support.md",
     "sourceHash": "264662afeb0862fe38fb09780108e2ef494f3052ae88b450287b9a7c76000a03",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9473,7 +9473,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/proof/package-surfaces.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/proof/package-surfaces.md",
     "sourceHash": "bd308761a24d1efe6d1934d19865a713f7f81329fed6263c7f7dd393d4927cfb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9522,7 +9522,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/security.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/security.md",
     "sourceHash": "395aec9e5ce7547060fb1e6147d46419a5bc7dfd304f2c99bc31c63300ac53ad",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9603,7 +9603,7 @@
     }
   },
   {
-    "sourcePath": "content/pages/trust/privacy-boundary.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/content/pages/trust/privacy-boundary.md",
     "sourceHash": "19821f72a5770e330ccbb258a16c5d624b51bd35160c9f8dc49f8bf4b16f0c7c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9749,7 +9749,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/installation.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/installation.md",
     "sourceHash": "56be7eeabe0b28c56b3c94757d362b1cfb0dd2183add1159ba682088353a939d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9848,7 +9848,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/browser-use.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/browser-use.md",
     "sourceHash": "48f822da59667c9fbcd3582482363aaf0b4401187efc36a34adf823f1a7fd19d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -9931,7 +9931,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/pwa-installation.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/pwa-installation.md",
     "sourceHash": "54d3de342209971706590792fb497dd8a2c3e759f586b51f5c722644ac52b6bd",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10019,7 +10019,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/local-setup.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/local-setup.md",
     "sourceHash": "6572342b4336aa5e7f4f917c9ca343cafc106b1f970edc6f40c55ba01e76ce9a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10107,7 +10107,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/standalone-modules.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/standalone-modules.md",
     "sourceHash": "107782ebbd8620e9e8c4f169810603d52098ccefa3094a6ce7bfa385063c1dcf",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10195,7 +10195,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/getting-started/configuration.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/getting-started/configuration.md",
     "sourceHash": "eaccc97dba493ec4a470337a3ee034870f1cdc21da25fcedf2c448998f142284",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10283,7 +10283,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/editor-basics.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/editor-basics.md",
     "sourceHash": "59923959d152dbe4a260639879233fa68ee1c4904ebae381690a14b3a24ed8ae",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10407,7 +10407,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/advanced-formatting.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/advanced-formatting.md",
     "sourceHash": "9748027e500fc5ba39bdaf8ebcdd2e0a05bbb91c788f8e833f91865b090f43a2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10546,7 +10546,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/rendering-and-preview.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/rendering-and-preview.md",
     "sourceHash": "cd5f125fee09e31fda02c2fe1de9a2bcb471744e890a90c7ada5df437a64a74a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10675,7 +10675,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/checkbox-autocomplete.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/checkbox-autocomplete.md",
     "sourceHash": "d968c2f756984399ea4a7d586ce09984a5b7d897bc6de94c9f1446c5eb8c1bfb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10774,7 +10774,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/text-wrap-previewer.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/text-wrap-previewer.md",
     "sourceHash": "e7b6f34722d98ce44147d34c3c5090f731879c60d74c534f6a0293ac38bfeabb",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10878,7 +10878,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/view-toolbar.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/view-toolbar.md",
     "sourceHash": "48d48c40b56793ad3effca8dd381983fd7c3a1aa9efd51c086bc2aa81efe92be",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -10982,7 +10982,96 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/offline-markdown-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/editor-command-integrity.md",
+    "sourceHash": "2b463c96b2ea1d9157f5cd19cdbb3bd5dbe399e03a0e7923a8409a93e42232f9",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/features/editor-command-integrity/",
+      "title": "Editor Command Integrity | MdWrk Features",
+      "description": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms.",
+      "h1": "Editor Command Integrity",
+      "entity": "MdWrk",
+      "intent": "understand editor command integrity in MdWrk",
+      "contentType": "feature",
+      "updatedAt": "2026-05-18",
+      "publishedAt": "2026-05-18",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What will I learn from Editor Command Integrity?",
+          "answer": "Editor command integrity documents how MdWrk toolbar actions preserve focus, selection, and isolated Markdown transforms."
+        },
+        {
+          "question": "Who should read Editor Command Integrity?",
+          "answer": "Read this page if you need practical MdWrk guidance for editor command integrity, including the relevant workflow, product surface, and follow-up documentation paths."
+        }
+      ],
+      "parent": "/",
+      "related": [],
+      "tags": [
+        "features",
+        "Features"
+      ],
+      "canonical": "https://mdwrk.com/features/editor-command-integrity/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Command Boundary MdWrk editor controls dispatch package commands through the editor package surface. Toolbar buttons should not apply ad hoc DOM mutations or React-only text changes. The core command boundary is split across: @mdwrk/markdown-editor-core for transforms @mdwrk/markdown-editor-react for command dispatch and focus handoff @mdwrk/markdown-edit-in-renderer-react for rendered-flow editing parity Focus And Selection Checkbox insertion creates only the checkbox marker, keeps focus in the editor, and places the cursor after one whitespace. Link and image commands are separate transforms, so applying a link must not rewrite existing image syntax and applying an image must not behave like an ordinary link. Italic, underline, task-list, list, indentation, link, and image commands need separate tests when their behavior changes. Related Docs View Toolbar Text Wrap Previewer Package-Owned Documentation",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "command-boundary",
+          "text": "Command Boundary"
+        },
+        {
+          "depth": 2,
+          "id": "focus-and-selection",
+          "text": "Focus And Selection"
+        },
+        {
+          "depth": 2,
+          "id": "related-docs",
+          "text": "Related Docs"
+        }
+      ],
+      "links": [
+        {
+          "href": "/features/view-toolbar/",
+          "text": "View Toolbar",
+          "internal": true
+        },
+        {
+          "href": "/features/text-wrap-previewer/",
+          "text": "Text Wrap Previewer",
+          "internal": true
+        },
+        {
+          "href": "/features/package-owned-documentation/",
+          "text": "Package-Owned Documentation",
+          "internal": true
+        }
+      ],
+      "wordCount": 123
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/features/editor-command-integrity/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/features/editor-command-integrity/#webpage",
+        "https://mdwrk.com/features/editor-command-integrity/#primary",
+        "https://mdwrk.com/features/editor-command-integrity/#faq",
+        "https://mdwrk.com/features/editor-command-integrity/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/offline-markdown-editor.md",
     "sourceHash": "9975c67d34b36172c54dffd497664f5dcbc9a3b5b69605b27e54dd6ea4d54353",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11076,7 +11165,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/local-first-markdown-workspace.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/local-first-markdown-workspace.md",
     "sourceHash": "f0750e92b0d0cc468f1f332fce28c4c7d63b3ec814c62227cf00c2261cfe0e3e",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11170,7 +11259,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/privacy-first-markdown-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/privacy-first-markdown-editor.md",
     "sourceHash": "e62945e37755de31f6db472798c6e1c804e8a2d28d5be8e792502edeef44b894",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11264,7 +11353,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/markdown-file-manager.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/markdown-file-manager.md",
     "sourceHash": "6fb1a80d328582c493addf6f2fde7cc3403d7be08ffa400b9044e118db16f804",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11358,7 +11447,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/markdown-preview-editor.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/markdown-preview-editor.md",
     "sourceHash": "0d2d4c7a73b507e6d3f755620421439c8b5c2673e6222d07c84e78f2891c9622",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11452,7 +11541,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/extension-host.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/extension-host.md",
     "sourceHash": "f694260f63155606e97a439ad1c346853975248047f4a22d54c72a42dc0fa08c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11546,7 +11635,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/desktop-app-boundary.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/desktop-app-boundary.md",
     "sourceHash": "6189898f66e9209aaf8b38f5ec879c86b44aa3579bf25ef8096c5523915ec4f5",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11645,7 +11734,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/theme-packs.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/theme-packs.md",
     "sourceHash": "8cee9e679fadae6efbd9d803d5254442ade6713871d8c77a0081f40f58c3303b",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11739,7 +11828,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/developer-documentation.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/developer-documentation.md",
     "sourceHash": "03698425730df31a0d9c67b7c25b7673409bdbdfcdaaa8017a4e7e559495bdb6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11833,7 +11922,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/markdown-profile-architecture.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/markdown-profile-architecture.md",
     "sourceHash": "7bc52f24c5d55ce9c2e0e4c71082992622f187897fad66e343e9249c7242a0d9",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -11932,7 +12021,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/product/uix-responsive-contract.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/uix-responsive-contract.md",
     "sourceHash": "ed3a1c0b9c1b667ebe87bb806bc96ec0706e1a9a6bc4cdfd9e3a27b11b1e40df",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12036,7 +12125,185 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/github-sync.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/package-owned-documentation.md",
+    "sourceHash": "3e4f982c72c199796c939364006c44fcb99762d197723ca46b0efd6d6c3631d0",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/features/package-owned-documentation/",
+      "title": "Package-owned Documentation | MdWrk Features",
+      "description": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior.",
+      "h1": "Package-owned Documentation",
+      "entity": "MdWrk",
+      "intent": "understand package-owned documentation in MdWrk",
+      "contentType": "feature",
+      "updatedAt": "2026-05-18",
+      "publishedAt": "2026-05-18",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What will I learn from Package-owned Documentation?",
+          "answer": "Package-owned documentation explains how MdWrk change requests stay attached to the package or package set that owns the runtime behavior."
+        },
+        {
+          "question": "Who should read Package-owned Documentation?",
+          "answer": "Read this page if you need practical MdWrk guidance for package-owned documentation, including the relevant workflow, product surface, and follow-up documentation paths."
+        }
+      ],
+      "parent": "/",
+      "related": [],
+      "tags": [
+        "features",
+        "Features"
+      ],
+      "canonical": "https://mdwrk.com/features/package-owned-documentation/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Ownership Model MdWrk change requests are documented by the package owner or explicit package set that owns the behavior. App-host work must name the app package and every reusable package that the app consumes. The documentation owner should match the implementation owner: app host behavior belongs to apps/client, apps/desktop, or apps/mdwrkcom reusable editor behavior belongs to @mdwrk/markdown-editor-core, @mdwrk/markdown-editor-react, or @mdwrk/markdown-edit-in-renderer-react extension contracts belong to @mdwrk/extension-manifest, @mdwrk/extension-host, and @mdwrk/extension-runtime lander content belongs to @mdwrk/mdwrkcom-content-pack portable lander rendering, SEO, and theme behavior belongs to the lander package family Change Request Trace Each durable documentation change should identify the feature, the owning package, the affected docs page, the executable validation, and the evidence artifact. A package-changing change request also needs the affected package version bumped by patch or minor. Documentation does not replace runtime tests. It records the package boundary and points to the behavior that the test suite verifies. Related Docs Extension Authoring Guide Editor Command Integrity Screenshot Evidence",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "ownership-model",
+          "text": "Ownership Model"
+        },
+        {
+          "depth": 2,
+          "id": "change-request-trace",
+          "text": "Change Request Trace"
+        },
+        {
+          "depth": 2,
+          "id": "related-docs",
+          "text": "Related Docs"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/authoring/extension-authoring-guide/",
+          "text": "Extension Authoring Guide",
+          "internal": true
+        },
+        {
+          "href": "/features/editor-command-integrity/",
+          "text": "Editor Command Integrity",
+          "internal": true
+        },
+        {
+          "href": "/features/screenshot-evidence/",
+          "text": "Screenshot Evidence",
+          "internal": true
+        }
+      ],
+      "wordCount": 157
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/features/package-owned-documentation/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/features/package-owned-documentation/#webpage",
+        "https://mdwrk.com/features/package-owned-documentation/#primary",
+        "https://mdwrk.com/features/package-owned-documentation/#faq",
+        "https://mdwrk.com/features/package-owned-documentation/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/product/screenshot-evidence.md",
+    "sourceHash": "31c0c7402e0984c295c6aa49102a796428f475262d6f32f514c8478bc4943c54",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/features/screenshot-evidence/",
+      "title": "Screenshot Evidence | MdWrk Features",
+      "description": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals.",
+      "h1": "Screenshot Evidence",
+      "entity": "MdWrk",
+      "intent": "understand screenshot evidence in MdWrk",
+      "contentType": "feature",
+      "updatedAt": "2026-05-18",
+      "publishedAt": "2026-05-18",
+      "author": "CobyCloud",
+      "displayAuthor": false,
+      "faqs": [
+        {
+          "question": "What will I learn from Screenshot Evidence?",
+          "answer": "Screenshot evidence documents the MdWrk expectation that UI changes carry reviewable visual artifacts for affected themes, views, modes, panes, and modals."
+        },
+        {
+          "question": "Who should read Screenshot Evidence?",
+          "answer": "Read this page if you need practical MdWrk guidance for screenshot evidence, including the relevant workflow, product surface, and follow-up documentation paths."
+        }
+      ],
+      "parent": "/",
+      "related": [],
+      "tags": [
+        "features",
+        "Features"
+      ],
+      "canonical": "https://mdwrk.com/features/screenshot-evidence/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Evidence Scope MdWrk UI work needs screenshot evidence for every affected view, mode, pane, modal, and theme. Responsive work also needs the governed aspect-ratio and viewport bands that apply to the changed surface. The screenshot evidence contract applies to: apps/client apps/desktop apps/mdwrkcom first-party extension panes and settings rendered lander pages and reusable lander package surfaces Manifest Requirements Screenshot evidence should be reviewable as files plus a manifest. The manifest should name the package owner, route or view, theme, mode, viewport band, and artifact path. When a change does not alter visible rendering, the validator should say so by checking an explicit non-visual contract instead of silently skipping visual proof. Related Docs UIX Responsive Contract Package-Owned Documentation View Toolbar",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "evidence-scope",
+          "text": "Evidence Scope"
+        },
+        {
+          "depth": 2,
+          "id": "manifest-requirements",
+          "text": "Manifest Requirements"
+        },
+        {
+          "depth": 2,
+          "id": "related-docs",
+          "text": "Related Docs"
+        }
+      ],
+      "links": [
+        {
+          "href": "/features/uix-responsive-contract/",
+          "text": "UIX Responsive Contract",
+          "internal": true
+        },
+        {
+          "href": "/features/package-owned-documentation/",
+          "text": "Package-Owned Documentation",
+          "internal": true
+        },
+        {
+          "href": "/features/view-toolbar/",
+          "text": "View Toolbar",
+          "internal": true
+        }
+      ],
+      "wordCount": 118
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/features/screenshot-evidence/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/features/screenshot-evidence/#webpage",
+        "https://mdwrk.com/features/screenshot-evidence/#primary",
+        "https://mdwrk.com/features/screenshot-evidence/#faq",
+        "https://mdwrk.com/features/screenshot-evidence/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/github-sync.md",
     "sourceHash": "4f9c26a4bbbf1bf4a66b89cdb2ee12f2e7d3840e1ea4312f774d09d6eabd3fec",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12114,7 +12381,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/authoring/authoring-overview.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/authoring-overview.md",
     "sourceHash": "44de6f578262e88b9e8735c64e180a95f738f5497873ca4b9291dd83437deb11",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12203,7 +12470,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/authoring/extensions.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/extensions.md",
     "sourceHash": "c5c85820271f5fe5d8a08f4af99ade9bc76857034463305c1229ee476ca4588d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12291,7 +12558,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/authoring/extension-authoring-guide.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/extension-authoring-guide.md",
     "sourceHash": "5cc9dea09ed8e3dd1db52ca74d066d76a11f590f94111d29501006a5c0387665",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12395,7 +12662,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/authoring/theme-packs.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/theme-packs.md",
     "sourceHash": "40667979c3327d86ca7ce98ead1b5c8eec5328b30d4ce93717b69a3049224e08",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12478,7 +12745,96 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/authoring/language-packs.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/extension-contribution-surfaces.md",
+    "sourceHash": "cb2f6c2065f33eba05cbe0f7423deeb86945593ef38e5516ab1d3c6438ae9755",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/docs/authoring/extension-contribution-surfaces/",
+      "title": "Extension Contribution Surfaces | MdWrk Docs",
+      "description": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions.",
+      "h1": "Extension Contribution Surfaces",
+      "entity": "MdWrk",
+      "intent": "learn extension contribution surfaces in MdWrk",
+      "contentType": "docs",
+      "updatedAt": "2026-05-18",
+      "publishedAt": "2026-05-18",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "faqs": [
+        {
+          "question": "What will I learn from Extension Contribution Surfaces?",
+          "answer": "Extension contribution surfaces document the shared manifest, host, runtime, hook, pane, toolbar, settings, diagnostics, and catalog contracts for MdWrk extensions."
+        },
+        {
+          "question": "Who should read Extension Contribution Surfaces?",
+          "answer": "Read this page if you need practical MdWrk guidance for extension contribution surfaces, including the relevant workflow, product surface, and follow-up documentation paths."
+        }
+      ],
+      "parent": "/docs/",
+      "related": [],
+      "tags": [
+        "docs",
+        "Authoring"
+      ],
+      "canonical": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "Contribution Contract MdWrk extension contribution surfaces are declared in the manifest, typed by the host contracts, and registered through the runtime. The contribution contract keeps extension packages from inventing local protocols for panes, toolbars, hooks, settings, or diagnostics. The governed surfaces include: panes and panels view toolbar items settings schemas and settings views hook registrations compatibility ranges permissions and trust disclosure diagnostics and recovery actions external catalog fixtures Runtime Hooks Runtime hooks are registered through the extension context and disposed with the rest of the extension activation state. A production default boundary should prevent development-only contribution defaults from leaking into release behavior. First-party extensions should use the shared contribution contract so Extension Manager and app hosts can render contribution metadata consistently. Related Docs Extension Authoring Guide Extension Platform Package-Owned Documentation",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "contribution-contract",
+          "text": "Contribution Contract"
+        },
+        {
+          "depth": 2,
+          "id": "runtime-hooks",
+          "text": "Runtime Hooks"
+        },
+        {
+          "depth": 2,
+          "id": "related-docs",
+          "text": "Related Docs"
+        }
+      ],
+      "links": [
+        {
+          "href": "/docs/authoring/extension-authoring-guide/",
+          "text": "Extension Authoring Guide",
+          "internal": true
+        },
+        {
+          "href": "/docs/extensions/extension-platform/",
+          "text": "Extension Platform",
+          "internal": true
+        },
+        {
+          "href": "/features/package-owned-documentation/",
+          "text": "Package-Owned Documentation",
+          "internal": true
+        }
+      ],
+      "wordCount": 130
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#webpage",
+        "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#primary",
+        "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#faq",
+        "https://mdwrk.com/docs/authoring/extension-contribution-surfaces/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/authoring/language-packs.md",
     "sourceHash": "2a9a56d5b925361d86664571522dde01738cc25a1e65ecd162b8491b3b1f424d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12561,7 +12917,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/extensions/extension-platform.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/extensions/extension-platform.md",
     "sourceHash": "0552a34025e52b8a2cddfc4087a5b62adb70b37dd4a2df22456a49f550c081d0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12639,7 +12995,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/extensions/theme-studio-and-host-surfaces.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/extensions/theme-studio-and-host-surfaces.md",
     "sourceHash": "39c0e773ee9f22d6f7707180d6970d8fe938df002732e0123b8ff859d2a6ba0c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12712,7 +13068,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-marktext.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/comparisons/mdwrk-vs-marktext.md",
     "sourceHash": "77fc51d7790f1aa77aba63a8a00294c19086e38d986bddbd737775417e2f8c37",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12796,7 +13152,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-zettlr.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/comparisons/mdwrk-vs-zettlr.md",
     "sourceHash": "1ec988c974ea24fca80ecb198a381b1a605b3a2caa454de3fb22e0ccac59c29a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12880,7 +13236,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-notion.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/comparisons/mdwrk-vs-notion.md",
     "sourceHash": "73f6d8341804a08adeb5e948ca569238569d456bc2b45e44a579f2a2c8289b3d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -12964,7 +13320,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-logseq.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/comparisons/mdwrk-vs-logseq.md",
     "sourceHash": "8247fcbb83aff2dc27d625418e5d08f9959163c1c1c1e66695cefa2b57f0ada2",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13048,7 +13404,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/comparisons/mdwrk-vs-standard-markdown-editors.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/comparisons/mdwrk-vs-standard-markdown-editors.md",
     "sourceHash": "629e99dfdce60519aec642e9fdc06f9a381f47a7a361f777995dbe574319fd1c",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13132,7 +13488,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-28.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/ui-refresh-1-3-28.md",
     "sourceHash": "d4704d4bb249b2a128420f016f5f09f0c4b8649a540bfe9c2a5a338e097fc23f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13200,7 +13556,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/docs/usage/ui-refresh-1-3-29.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/docs/usage/ui-refresh-1-3-29.md",
     "sourceHash": "22bdb5100e532c5d6457e3578f770e9515280d5d7d738ee698e53e6e3d488c14",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13400,7 +13756,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/structured-data-learning-map.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/structured-data-learning-map.md",
     "sourceHash": "5ffe00930492df75e4fdfc6babbde2ed8d46a17302776255d3b8fadf9ec94d20",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13501,7 +13857,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/package-dag-for-mdwrk-and-lander.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/package-dag-for-mdwrk-and-lander.md",
     "sourceHash": "4d1ca73054970bd0e89c2d9bae6940000e401b4d9a6f46b0900a4f1a4cb9cb64",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13627,7 +13983,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/settings-simplification-for-daily-flow.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/settings-simplification-for-daily-flow.md",
     "sourceHash": "e7424a5abebb75a4f7234c035d28af992837eea2198b7cc32abd001a47ba19c8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13726,7 +14082,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/docs-surface-realignment.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/docs-surface-realignment.md",
     "sourceHash": "ddc0ed329c1a26621d5025ca650e8126ce0095ab36b11486eab5f17c8100fd2d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13855,7 +14211,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/extension-host-rollout.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/extension-host-rollout.md",
     "sourceHash": "59f6e0884fdd389781e980460923284be71240f142211bd2247ff053b1a51575",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -13984,7 +14340,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/workspace-files-and-git-ops-packages.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/workspace-files-and-git-ops-packages.md",
     "sourceHash": "89596beac575e362a01f93fdc59090d66117c52d762ff76d50a15772a5eca748",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14083,7 +14439,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/desktop-release-and-android-verification.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/desktop-release-and-android-verification.md",
     "sourceHash": "2b1d760018ad07ea2c4e95239a9fddb8a83e5ddb78a26bc729c77d79ab1af732",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14177,7 +14533,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/retained-client-versions-and-desktop-shell.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/retained-client-versions-and-desktop-shell.md",
     "sourceHash": "22a47401393dce76438fb7de3726e3b10770c3f078e88b92b8de295181c6ea8d",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14276,7 +14632,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/screenshot-matrix-and-browser-sidebars.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/screenshot-matrix-and-browser-sidebars.md",
     "sourceHash": "6516d36d3c019f6a25123349b81b6edb2aa91b958a79637c2bad150127b0406f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14360,7 +14716,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/extension-compatibility-and-publish-gates.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/extension-compatibility-and-publish-gates.md",
     "sourceHash": "20070e44a76471d7da1dfd1159aade18411c29580ecb5083122c2e402432d77f",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14459,7 +14815,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/governed-releases-and-package-docs.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/governed-releases-and-package-docs.md",
     "sourceHash": "c3fa66aa9a59d95f656cdabf5c84b3083b67db78e0ef3be5ecc4965e59e4abd6",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14563,7 +14919,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/client-split-out-backstory.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/client-split-out-backstory.md",
     "sourceHash": "d5e63eaa3c80a720420073d241bdeeefdfeb19b3e38345933d4a9c5991a8f2ad",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14687,7 +15043,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/pwa-install-and-zoom-controls.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/pwa-install-and-zoom-controls.md",
     "sourceHash": "f2e058fa978ff5bffd9d0dd810d6b4783cfef7ff0889a106c1dfb674ca1884b8",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -14791,7 +15147,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/blog/responsive-authoring-and-export.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/blog/responsive-authoring-and-export.md",
     "sourceHash": "80e6acbff7c605647186f8cae79773bfd4aa9d95a8e001aeee31d0b3b7dda45a",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -15310,7 +15666,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/legal/privacy.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/legal/privacy.md",
     "sourceHash": "21bb32623e2bdb135dc0cda673943672e9285d48fedd76342496a00d81ae43c0",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
@@ -15384,7 +15740,7 @@
     }
   },
   {
-    "sourcePath": "data/markdown/legal/terms.md",
+    "sourcePath": "../../packages/content/mdwrkcom-content-pack/data/markdown/legal/terms.md",
     "sourceHash": "93287849b3cc217571b95fd1aeac9f9d8e0106519ec5964846cfe8ac5871bb62",
     "frontmatter": {
       "schema": "mdwrk.page.v1",

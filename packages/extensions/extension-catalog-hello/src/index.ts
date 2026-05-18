@@ -25,6 +25,13 @@ export const extensionCatalogHello: MarkdownWorkspaceExtension = {
       order: 160,
     });
 
+    context.registerHook({
+      ...context.manifest.contributions.hooks![0],
+      async dispatch(payload) {
+        return payload;
+      },
+    });
+
     await context.host.notifications.info(`Installed external extension '${context.manifest.displayName.defaultMessage}'.`);
   },
 };

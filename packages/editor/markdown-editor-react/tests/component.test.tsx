@@ -88,4 +88,22 @@ describe("MarkdownSourceEditor", () => {
     expect(editor.selectionStart).toBe(8);
     expect(editor.selectionEnd).toBe(8);
   });
+
+  it("passes command options through toolbar-safe imperative dispatch", async () => {
+    const ref = React.createRef<React.ElementRef<typeof MarkdownSourceEditor>>();
+    render(<MarkdownSourceEditor ref={ref} defaultValue="Read docs" />);
+    const editor = screen.getByTestId("markdown-source-editor") as HTMLTextAreaElement;
+    editor.focus();
+    editor.setSelectionRange(5, 9);
+    ref.current?.setSelection({ start: 5, end: 9 });
+
+    await act(async () => {
+      ref.current?.executeCommand("link", { linkUrl: "./guide.md" });
+    });
+
+    expect(document.activeElement).toBe(editor);
+    expect(editor.value).toBe("Read [docs](./guide.md)");
+    expect(editor.selectionStart).toBe(12);
+    expect(editor.selectionEnd).toBe(22);
+  });
 });

@@ -916,6 +916,15 @@ const checks = [
     },
   },
   {
+    id: "inline-image-text-wrap-contract",
+    description: "Rendered-flow editing keeps inline image surfaces bounded without forcing surrounding text out of flow",
+    test() {
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-surface img\s*\{[\s\S]*display:\s*inline;/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-surface img\s*\{[\s\S]*max-width:\s*min\(100%, 48rem\);/);
+      assert.match(defaultCss, /\.markdown-edit-in-renderer-surface p > img:only-child\s*\{[\s\S]*display:\s*block;/);
+    },
+  },
+  {
     id: "composition-overlay-follows-active-composition-range",
     description: "IME composition state uses package overlay without exposing the native textarea caret",
     async test() {

@@ -77,14 +77,38 @@ const checks = [
     },
   },
   {
+    id: 'task-list-format-isolation',
+    description: 'task-list command activates task state without leaking italic state',
+    test() {
+      const taskList = applyBuiltinMarkdownCommand('task-list', 'alpha', { start: 2, end: 2 });
+      const state = computeSelectionFormatState(taskList.value, taskList.selection);
+      assert.equal(state.taskList, true);
+      assert.equal(state.italic, false);
+    },
+  },
+  {
     id: 'optional-profile-commands',
     description: 'optional-profile commands emit structural Markdown syntax',
     test() {
       assert.equal(applyBuiltinMarkdownCommand('inline-math', 'E=mc2', { start: 0, end: 5 }).value, '$E=mc2$');
       assert.equal(applyBuiltinMarkdownCommand('link', 'MdWrk docs', { start: 0, end: 5 }).value, '[MdWrk](https://example.com) docs');
+      assert.equal(applyBuiltinMarkdownCommand('image', 'Diagram', { start: 0, end: 7 }, { imageUrl: './diagram.png' }).value, '![Diagram](./diagram.png)');
       assert.equal(applyBuiltinMarkdownCommand('superscript', '2', { start: 0, end: 1 }).value, '^2^');
       assert.equal(applyBuiltinMarkdownCommand('subscript', '2', { start: 0, end: 1 }).value, '~2~');
       assert.equal(applyBuiltinMarkdownCommand('citation', 'smith2024', { start: 0, end: 9 }).value, '[@smith2024]');
+    },
+  },
+  {
+    id: 'link-image-command-isolation',
+    description: 'link and image commands update only their own markdown ranges',
+    test() {
+      const link = applyBuiltinMarkdownCommand('link', 'Read [docs](old.md) and ![logo](logo.png)', { start: 8, end: 12 }, { linkUrl: './guide.md' });
+      assert.equal(link.value, 'Read [docs](./guide.md) and ![logo](logo.png)');
+      assert.deepEqual(link.selection, { start: 12, end: 22, direction: 'none' });
+
+      const image = applyBuiltinMarkdownCommand('image', 'Read [docs](./guide.md) and ![logo](logo.png)', { start: 30, end: 34 }, { imageUrl: './logo.svg' });
+      assert.equal(image.value, 'Read [docs](./guide.md) and ![logo](./logo.svg)');
+      assert.deepEqual(image.selection, { start: 36, end: 46, direction: 'none' });
     },
   },
   {

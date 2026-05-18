@@ -5,7 +5,9 @@ import {
 } from '../dist/cache/resource-policy.js';
 import {
   buildCriticalPathManifest,
+  countHighlightableCodeBlocks,
   defineRouteScriptFact,
+  defineSyntaxHighlightingRouteGate,
   routeRequiresScript,
   validateLanderPerformanceBudget,
 } from '../dist/performance/budget.js';
@@ -23,6 +25,26 @@ assert.equal(cacheManifest.entries.find((entry) => entry.path.endsWith('.js'))?.
 assert.equal(cacheManifest.entries.find((entry) => entry.path.endsWith('.json'))?.compressionEligible, true);
 assert.equal(cacheManifest.entries.find((entry) => entry.path.endsWith('.svg'))?.compressionEligible, true);
 assert.equal(cacheManifest.entries.find((entry) => entry.path.endsWith('.ico'))?.compressionEligible, false);
+
+assert.equal(countHighlightableCodeBlocks(['```ts\nconst value = 1;\n```', '```\nplain\n```']), 1);
+
+const docsSyntaxGate = defineSyntaxHighlightingRouteGate({
+  routePath: '/docs',
+  markdownSources: ['No fenced code here.'],
+  inlineBytes: 100,
+});
+assert.equal(docsSyntaxGate.required, false);
+assert.equal(docsSyntaxGate.highlightableCodeBlockCount, 0);
+assert.equal(docsSyntaxGate.fact.inlineBytes, 0);
+
+const codeSyntaxGate = defineSyntaxHighlightingRouteGate({
+  routePath: '/examples',
+  markdownSources: ['```tsx\nexport const Example = () => null;\n```'],
+  inlineBytes: 900,
+});
+assert.equal(codeSyntaxGate.required, true);
+assert.equal(codeSyntaxGate.highlightableCodeBlockCount, 1);
+assert.equal(codeSyntaxGate.fact.inlineBytes, 900);
 
 const manifest = buildCriticalPathManifest([
   {
@@ -43,6 +65,7 @@ const manifest = buildCriticalPathManifest([
         reason: 'docs route has no demo',
         inlineBytes: 0,
       }),
+      docsSyntaxGate.fact,
     ],
     motion: [
       {
@@ -60,6 +83,7 @@ assert.equal(docsRoute.path, '/docs');
 assert.equal(docsRoute.deferredStylesheetHref, '/assets/static.abcdef123456.css');
 assert.equal(routeRequiresScript(docsRoute, 'theme-bootstrap'), true);
 assert.equal(routeRequiresScript(docsRoute, 'demo-controls'), false);
+assert.equal(routeRequiresScript(docsRoute, 'syntax-highlighting'), false);
 assert.deepEqual(validateLanderPerformanceBudget({ manifest, cacheManifest }), []);
 
 const failingManifest = buildCriticalPathManifest([
@@ -71,6 +95,7 @@ const failingManifest = buildCriticalPathManifest([
     renderBlockingStylesheets: ['/assets/static.css'],
     scripts: [
       { kind: 'demo-controls', required: false, reason: 'not used here', inlineBytes: 1 },
+      { kind: 'syntax-highlighting', required: false, reason: 'not used here', inlineBytes: 1 },
       { kind: 'analytics', required: true, reason: 'third-party analytics', externalBytes: 1 },
     ],
     motion: [
@@ -110,6 +135,8 @@ assert.deepEqual(
     'motion.reducedMotion.missing',
     'resource.compressionMetadata.missing',
     'script.externalBytes.exceeded',
+    'script.syntaxHighlighting.unused',
+    'script.unusedGoverned',
     'script.unusedGoverned',
     'stylesheet.deferred.missing',
     'stylesheet.renderBlocking',

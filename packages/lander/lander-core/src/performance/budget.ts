@@ -63,6 +63,20 @@ export interface LanderPerformanceValidationInput {
   cacheManifest?: LanderCacheHeaderManifest;
 }
 
+export interface LanderSyntaxHighlightingRouteGateInput {
+  routePath: string;
+  markdownSources: readonly string[];
+  inlineBytes?: number;
+  externalBytes?: number;
+}
+
+export interface LanderSyntaxHighlightingRouteGate {
+  routePath: string;
+  required: boolean;
+  highlightableCodeBlockCount: number;
+  fact: LanderRouteScriptFact & { kind: "syntax-highlighting" };
+}
+
 export interface LanderPerformanceDiagnostic {
   level: "error" | "warning";
   code: string;
@@ -105,6 +119,37 @@ export function defineRouteScriptFact<T extends LanderRouteScriptFact>(fact: T):
   if (!fact.kind) throw new Error("Route script fact kind is required.");
   if (!fact.reason.trim()) throw new Error(`Route script fact ${fact.kind} requires a reason.`);
   return fact;
+}
+
+export function countHighlightableCodeBlocks(markdownSources: readonly string[]): number {
+  let count = 0;
+  for (const source of markdownSources) {
+    const text = String(source ?? "");
+    for (const match of text.matchAll(/^```([A-Za-z][\w-]*)\s*$/gm)) {
+      if (match[1]?.trim()) count += 1;
+    }
+  }
+  return count;
+}
+
+export function defineSyntaxHighlightingRouteGate(input: LanderSyntaxHighlightingRouteGateInput): LanderSyntaxHighlightingRouteGate {
+  const routePath = normalizeCacheResourcePath(input.routePath);
+  const highlightableCodeBlockCount = countHighlightableCodeBlocks(input.markdownSources);
+  const required = highlightableCodeBlockCount > 0;
+  return {
+    routePath,
+    required,
+    highlightableCodeBlockCount,
+    fact: defineRouteScriptFact({
+      kind: "syntax-highlighting",
+      required,
+      reason: required
+        ? `${routePath} has ${highlightableCodeBlockCount} highlightable code block${highlightableCodeBlockCount === 1 ? "" : "s"}`
+        : `${routePath} has no highlightable code blocks`,
+      inlineBytes: required ? (input.inlineBytes ?? 0) : 0,
+      externalBytes: required ? (input.externalBytes ?? 0) : 0,
+    }),
+  };
 }
 
 export function buildCriticalPathManifest(
@@ -155,6 +200,9 @@ export function validateLanderPerformanceBudget(input: LanderPerformanceValidati
       diagnostics.push({ level: "error", code: "stylesheet.deferred.missing", path: route.path, message: "Route is missing deferred stylesheet metadata." });
     }
     for (const script of route.scripts) {
+      if (script.kind === "syntax-highlighting" && !script.required && ((script.inlineBytes ?? 0) > 0 || (script.externalBytes ?? 0) > 0)) {
+        diagnostics.push({ level: "error", code: "script.syntaxHighlighting.unused", path: route.path, message: "Syntax highlighting script is emitted on a route without highlightable code blocks." });
+      }
       if (!script.required && ((script.inlineBytes ?? 0) > 0 || (script.externalBytes ?? 0) > 0)) {
         diagnostics.push({ level: "error", code: "script.unusedGoverned", path: route.path, message: `${script.kind} script is emitted without a route requirement.` });
       }

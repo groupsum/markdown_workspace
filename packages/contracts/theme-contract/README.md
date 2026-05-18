@@ -18,6 +18,7 @@ Use it when you need themes to remain compatible across multiple MdWrk surfaces 
 - Theme preset and draft shapes.
 - Stable token and class-name contracts.
 - Bridge metadata used to map token values into target surfaces.
+- Shared mobile rail, toolbar/footer, editor-width, and lander-compatible token names.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.

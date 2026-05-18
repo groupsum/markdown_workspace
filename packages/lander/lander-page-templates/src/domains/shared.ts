@@ -2,7 +2,7 @@ import type { PageKind, PageSpec, SchemaSpec } from "@mdwrk/lander-content-contr
 import { definePageTemplate } from "../define.js";
 import { defaultSections } from "../page-spec/sections.js";
 import { schemaIntentsFromKinds } from "../page-spec/schema-intents.js";
-import type { DomainTemplateData, LinkSlotDefinition, PageTemplate, TemplateDomain } from "../types.js";
+import type { DomainTemplateData, LinkSlotDefinition, PageTemplate, TemplateDomain, TemplateTopology } from "../types.js";
 
 export interface DomainPageTemplateOptions {
   id: string;
@@ -12,6 +12,7 @@ export interface DomainPageTemplateOptions {
   description: string;
   fallbackSchemaKinds?: SchemaSpec["kind"][];
   linkSlots?: LinkSlotDefinition[];
+  topology?: TemplateTopology;
 }
 
 export function createDomainPageTemplate(options: DomainPageTemplateOptions): PageTemplate<DomainTemplateData> {
@@ -22,6 +23,7 @@ export function createDomainPageTemplate(options: DomainPageTemplateOptions): Pa
     title: options.title,
     description: options.description,
     linkSlots: options.linkSlots,
+    topology: options.topology,
     buildPage: (context): PageSpec => ({
       kind: options.kind,
       slug: context.instance.slug,

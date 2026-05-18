@@ -18,6 +18,7 @@ fs.writeFileSync(
 const {
   buildCacheHeaderManifest,
   buildCriticalPathManifest,
+  defineSyntaxHighlightingRouteGate,
   headersForCacheResource,
   validateLanderPerformanceBudget,
   buildLlmsTxt,
@@ -92,7 +93,11 @@ const criticalPathManifest = buildCriticalPathManifest([
     deferredStylesheetHref: '/assets/static.abcdef123456.css',
     scripts: [
       { kind: 'theme-bootstrap', required: true, reason: 'first-paint theme selection', inlineBytes: 200 },
-      { kind: 'syntax-highlighting', required: false, reason: 'route has no code blocks', inlineBytes: 0 },
+      defineSyntaxHighlightingRouteGate({
+        routePath: '/',
+        markdownSources: ['Portable lander smoke page without code fences.'],
+        inlineBytes: 100,
+      }).fact,
     ],
     motion: [
       { selector: '.hero-blob', firstViewport: true, animatedProperties: ['transform', 'opacity'], reducedMotion: true },
@@ -100,4 +105,6 @@ const criticalPathManifest = buildCriticalPathManifest([
   },
 ]);
 assert.equal(criticalPathManifest.routes[0].path, '/');
+assert.equal(criticalPathManifest.routes[0].scripts.find((script) => script.kind === 'syntax-highlighting')?.required, false);
+assert.equal(criticalPathManifest.routes[0].scripts.find((script) => script.kind === 'syntax-highlighting')?.inlineBytes, 0);
 assert.deepEqual(validateLanderPerformanceBudget({ manifest: criticalPathManifest, cacheManifest: manifest }), []);

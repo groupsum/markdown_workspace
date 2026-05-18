@@ -7,6 +7,7 @@ import type {
   WorkspaceModuleContributionDescriptor,
   ExtensionIcon,
   ExtensionSettingsSchema,
+  HookContributionDescriptor,
 } from "@mdwrk/extension-manifest";
 
 export type ViewRenderer<Props = unknown> = (props: Props) => unknown;
@@ -41,4 +42,8 @@ export interface RegisteredActionRailItem extends ActionRailContributionDescript
   readonly tooltip?: string;
   readonly isActive?: () => boolean;
   readonly isDisabled?: () => boolean;
+}
+
+export interface RegisteredHook extends HookContributionDescriptor {
+  dispatch(payload: unknown): unknown | Promise<unknown>;
 }

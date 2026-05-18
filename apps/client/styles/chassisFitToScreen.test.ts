@@ -51,7 +51,8 @@ describe('chassis header and status bar fit-to-screen contract', () => {
     const responsiveCss = read('./base/chassis/responsive-small.css');
     const shellCss = read('./base/shell-structure.css');
 
-    expect(responsiveCss).toContain('--mobile-action-rail-flow: row-reverse;');
+    expect(responsiveCss).toContain('--mobile-action-rail-flow: var(--mobile-portrait-action-rail-flow);');
+    expect(responsiveCss).toContain('--mobile-action-rail-flow: var(--mobile-landscape-action-rail-flow);');
     expect(responsiveCss).toContain('flex-direction: var(--mobile-action-rail-flow);');
     expect(responsiveCss).toContain('.header-center .tab-bar');
     expect(responsiveCss).toContain('scroll-snap-type: x proximity;');
@@ -69,6 +70,21 @@ describe('chassis header and status bar fit-to-screen contract', () => {
     expect(shellCss).toContain(':root[data-theme] body.keyboard-open .chassis-scaler');
     expect(shellCss).toContain(':root[data-theme] body.keyboard-open .status-bar');
     expect(shellCss).not.toContain('body.keyboard-open :root[data-theme]');
+  });
+
+  it('publishes shared mobile rail and editor alignment tokens from the root contract', () => {
+    const rootCss = read('./base/root.css');
+    const editorCss = read('./base/ui-editor.css');
+
+    expect(rootCss).toContain('--mobile-action-rail-flow: row;');
+    expect(rootCss).toContain('--mobile-portrait-action-rail-flow: row-reverse;');
+    expect(rootCss).toContain('--mobile-landscape-action-rail-flow: column;');
+    expect(rootCss).toContain('--mobile-expandable-rail-width: var(--mobile-rail-expanded-width);');
+    expect(rootCss).toContain('--toolbar-footer-gap: var(--app-gap);');
+    expect(rootCss).toContain('--toolbar-footer-offset: 0px;');
+    expect(rootCss).toContain('--editor-content-width: 78ch;');
+    expect(rootCss).toContain('--lander-theme-compatible: 1;');
+    expect(editorCss).toContain('max-width: var(--editor-content-width);');
   });
 
   it('uses a mobile gesture settings tab while hiding the keyboard map tab on mobile', () => {

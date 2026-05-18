@@ -1,1 +1,1 @@
-export const THEME_CONTRACT_VERSION = "1.1.0-rc.1" as const;
+export const THEME_CONTRACT_VERSION = "1.1.4" as const;

@@ -10,6 +10,7 @@ import type {
   RegisteredActionRailItem,
   RegisteredCommand,
   RegisteredComponent,
+  RegisteredHook,
   RegisteredSettingsSection,
   RegisteredView,
   RegisteredWorkspaceModule,
@@ -36,6 +37,7 @@ export interface ExtensionContext {
   registerComponent(component: RegisteredComponent): Disposable;
   registerActionRailItem(item: RegisteredActionRailItem): Disposable;
   registerSettingsSection(section: RegisteredSettingsSection): Disposable;
+  registerHook(hook: RegisteredHook): Disposable;
   registerLocaleCatalog(catalog: ExtensionLocaleCatalog): Disposable;
   registerLocaleCatalogLoader(loader: ExtensionLocaleCatalogLoader): Disposable;
   registerService<T>(token: string, service: T): Disposable;

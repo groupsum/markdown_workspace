@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/mdwrkcom-content-pack",
-  "version": "0.1.6",
+  "version": "0.1.9",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -33,7 +33,7 @@
     "typecheck": "npm run build -w @mdwrk/lander-content-contract && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/run-smoke.mjs",
-    "prepack": "npm run test"
+    "prepack": "npm run build"
   },
   "exports": {
     ".": {

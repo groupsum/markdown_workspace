@@ -91,6 +91,14 @@ export interface SettingsSectionContributionDescriptor {
   readonly schemaPath?: string;
 }
 
+export interface HookContributionDescriptor {
+  readonly id: string;
+  readonly title: I18nLabel;
+  readonly description?: I18nLabel;
+  readonly event: string;
+  readonly order?: number;
+}
+
 export interface ExtensionContributions {
   readonly commands: readonly CommandContributionDescriptor[];
   readonly views: readonly ViewContributionDescriptor[];
@@ -98,4 +106,5 @@ export interface ExtensionContributions {
   readonly workspaceModules?: readonly WorkspaceModuleContributionDescriptor[];
   readonly actionRail: readonly ActionRailContributionDescriptor[];
   readonly settingsSections: readonly SettingsSectionContributionDescriptor[];
+  readonly hooks?: readonly HookContributionDescriptor[];
 }

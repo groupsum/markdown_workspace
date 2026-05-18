@@ -19,6 +19,7 @@ import type {
   HostWorkspaceApi,
   MarkdownWorkspaceExtension,
   RegisteredComponent,
+  RegisteredHook,
 } from "@mdwrk/extension-host";
 import { EXTENSION_HOST_API_VERSION } from "@mdwrk/extension-host";
 import {
@@ -70,6 +71,7 @@ interface RuntimeExtensionState {
   deactivationTask: Promise<void> | null;
   runtimeDisposables: Disposable[];
   components: Map<string, RegisteredComponent>;
+  hooks: Map<string, RegisteredHook>;
   services: Map<string, unknown>;
 }
 
@@ -308,6 +310,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       missingCapabilities,
       diagnostics: Object.freeze([...(state?.diagnostics ?? [])]),
       componentIds: Object.freeze(Array.from(state?.components.keys() ?? [])),
+      hookIds: Object.freeze(Array.from(state?.hooks.keys() ?? [])),
       serviceTokens: Object.freeze(Array.from(state?.services.keys() ?? [])),
       lastActivatedAt: state?.lastActivatedAt ?? null,
       lastError: state?.lastError ?? null,
@@ -345,6 +348,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       deactivationTask: null,
       runtimeDisposables: [],
       components: new Map(),
+      hooks: new Map(),
       services: new Map(),
     };
     states.set(entry.id, initial);
@@ -429,6 +433,21 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
       },
       registerSettingsSection(section) {
         return registerDisposable(options.registrationSink.registerSettingsSection(state.entry.id, section));
+      },
+      registerHook(hook) {
+        assertRegistrationCapability(state, "hook.register");
+        state.hooks.set(hook.id, hook);
+        const disposable = options.registrationSink.registerHook?.(state.entry.id, hook) ?? {
+          dispose() {
+            state.hooks.delete(hook.id);
+          },
+        };
+        return registerDisposable({
+          dispose() {
+            disposable.dispose();
+            state.hooks.delete(hook.id);
+          },
+        });
       },
       registerLocaleCatalog(catalog: ExtensionLocaleCatalog) {
         return registerDisposable(scopedHost.i18n.registerCatalog(state.entry.id, catalog));
@@ -539,6 +558,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
         }
         state.runtimeDisposables = [];
         state.components.clear();
+        state.hooks.clear();
         state.services.clear();
         state.activeContext = null;
         state.loadedModule = null;
@@ -572,6 +592,7 @@ export function createExtensionRuntime(options: ExtensionRuntimeOptions): Extens
         }
         state.runtimeDisposables = [];
         state.components.clear();
+        state.hooks.clear();
         state.services.clear();
         state.activeContext = null;
         state.loadedModule = null;

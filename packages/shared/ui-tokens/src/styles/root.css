@@ -52,6 +52,13 @@
   --line-number-gutter-width: calc(30px * var(--ui-scale));
   --mobile-rail-expanded-width: 100vw;
   --mobile-expandable-rail-width: var(--mobile-rail-expanded-width);
+  --mobile-action-rail-flow: row;
+  --mobile-portrait-action-rail-flow: row-reverse;
+  --mobile-landscape-action-rail-flow: column;
+  --toolbar-footer-gap: var(--app-gap);
+  --toolbar-footer-offset: 0px;
+  --editor-content-width: 78ch;
+  --lander-theme-compatible: 1;
   --file-indent-base: calc(12px * var(--ui-scale));
   --file-indent-unit: calc(12px * var(--ui-scale));
   --c-explorer-hover: rgba(0, 0, 0, 0.06);

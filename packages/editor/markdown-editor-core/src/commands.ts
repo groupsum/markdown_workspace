@@ -47,6 +47,8 @@ export function applyBuiltinMarkdownCommand(
       return applyTaskListSelection(value, selection);
     case "link":
       return applyLinkCommand(value, selection, options);
+    case "image":
+      return applyImageCommand(value, selection, options);
     case "front-matter": {
       const frontMatter = "---\ntitle: \n---\n\n";
       if (String(value).startsWith("---\n")) {
@@ -104,6 +106,17 @@ interface MarkdownLinkRange {
   readonly url: string;
 }
 
+interface MarkdownImageRange {
+  readonly start: number;
+  readonly end: number;
+  readonly altStart: number;
+  readonly altEnd: number;
+  readonly urlStart: number;
+  readonly urlEnd: number;
+  readonly alt: string;
+  readonly url: string;
+}
+
 function applyLinkCommand(
   value: string,
   selection: MarkdownEditorSelection,
@@ -142,8 +155,46 @@ function applyLinkCommand(
   };
 }
 
+function applyImageCommand(
+  value: string,
+  selection: MarkdownEditorSelection,
+  options: MarkdownEditorCommandOptions,
+): MarkdownEditorEditResult {
+  const normalized = normalizeSelection(selection, value.length);
+  const existingImage = findEditableMarkdownImage(value, normalized);
+  const url = options.imageUrl ?? existingImage?.url ?? "image.png";
+
+  if (existingImage) {
+    const alt = options.imageAlt ?? existingImage.alt;
+    const replacement = `![${alt}](${url})`;
+    const nextValue = `${value.slice(0, existingImage.start)}${replacement}${value.slice(existingImage.end)}`;
+    const urlStart = existingImage.start + alt.length + 4;
+    return {
+      value: nextValue,
+      selection: createSelection(urlStart, urlStart + url.length),
+      changed: nextValue !== value,
+    };
+  }
+
+  const selectedText = value.slice(normalized.start, normalized.end);
+  const alt = options.imageAlt ?? (selectedText || "image description");
+  const replacement = `![${alt}](${url})`;
+  const nextValue = `${value.slice(0, normalized.start)}${replacement}${value.slice(normalized.end)}`;
+  const altStart = normalized.start + 2;
+  const urlStart = normalized.start + alt.length + 4;
+  const shouldSelectAlt = normalized.start === normalized.end && options.imageAlt === undefined;
+
+  return {
+    value: nextValue,
+    selection: shouldSelectAlt
+      ? createSelection(altStart, altStart + alt.length)
+      : createSelection(urlStart, urlStart + url.length),
+    changed: nextValue !== value,
+  };
+}
+
 function findEditableMarkdownLink(value: string, selection: MarkdownEditorSelection): MarkdownLinkRange | undefined {
-  const linkPattern = /\[([^\]\n]+)\]\(([^)\n]*)\)/g;
+  const linkPattern = /(?<!!)\[([^\]\n]+)\]\(([^)\n]*)\)/g;
   for (const match of value.matchAll(linkPattern)) {
     const fullMatch = match[0];
     const index = match.index ?? 0;
@@ -164,6 +215,36 @@ function findEditableMarkdownLink(value: string, selection: MarkdownEditorSelect
         urlStart,
         urlEnd,
         text,
+        url,
+      };
+    }
+  }
+
+  return undefined;
+}
+
+function findEditableMarkdownImage(value: string, selection: MarkdownEditorSelection): MarkdownImageRange | undefined {
+  const imagePattern = /!\[([^\]\n]*)\]\(([^)\n]*)\)/g;
+  for (const match of value.matchAll(imagePattern)) {
+    const fullMatch = match[0];
+    const index = match.index ?? 0;
+    const alt = match[1] ?? "";
+    const url = match[2] ?? "";
+    const altStart = index + 2;
+    const altEnd = altStart + alt.length;
+    const urlStart = altEnd + 2;
+    const urlEnd = urlStart + url.length;
+    const imageEnd = index + fullMatch.length;
+
+    if (selectionTouchesRange(selection, index, imageEnd)) {
+      return {
+        start: index,
+        end: imageEnd,
+        altStart,
+        altEnd,
+        urlStart,
+        urlEnd,
+        alt,
         url,
       };
     }

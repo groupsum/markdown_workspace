@@ -17,6 +17,7 @@ import type {
   RegisteredActionRailItem,
   RegisteredCommand,
   RegisteredComponent,
+  RegisteredHook,
   RegisteredSettingsSection,
   RegisteredView,
   RegisteredWorkspaceModule,
@@ -72,6 +73,7 @@ export interface ExtensionRuntimeRegistrationSink {
   registerComponent?(extensionId: string, component: RegisteredComponent): Disposable;
   registerActionRailItem(extensionId: string, item: RegisteredActionRailItem): Disposable;
   registerSettingsSection(extensionId: string, section: RegisteredSettingsSection): Disposable;
+  registerHook?(extensionId: string, hook: RegisteredHook): Disposable;
 }
 
 export interface RuntimeExtensionCatalogEntry {
@@ -179,6 +181,7 @@ export interface ExtensionRuntimeExtensionSnapshot {
   readonly missingCapabilities: readonly ExtensionCapability[];
   readonly diagnostics: readonly DiagnosticRecord[];
   readonly componentIds: readonly string[];
+  readonly hookIds: readonly string[];
   readonly serviceTokens: readonly string[];
   readonly lastActivatedAt: number | null;
   readonly lastError: ExtensionRuntimeErrorRecord | null;

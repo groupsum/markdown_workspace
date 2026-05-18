@@ -93,6 +93,19 @@
   margin: 0.9em 0;
 }
 
+.markdown-edit-in-renderer-surface img {
+  display: inline;
+  max-width: min(100%, 48rem);
+  height: auto;
+  vertical-align: middle;
+  overflow-wrap: normal;
+}
+
+.markdown-edit-in-renderer-surface p > img:only-child {
+  display: block;
+  margin: 0.75em 0;
+}
+
 .markdown-edit-in-renderer-surface ul,
 .markdown-edit-in-renderer-surface ol {
   padding-left: 1.5rem;

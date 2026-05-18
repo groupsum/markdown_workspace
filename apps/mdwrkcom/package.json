@@ -1,7 +1,7 @@
 {
   "name": "@mdwrk/mdwrkcom",
   "private": true,
-  "version": "0.0.57",
+  "version": "0.0.60",
   "type": "module",
   "scripts": {
     "mdwrkcom": "node ./src/cli.mjs",
@@ -35,6 +35,7 @@
     "verify:static-performance": "node ./tests/run-static-performance-contract.mjs",
     "test:host-performance-adapter": "node ./tests/run-host-performance-adapter.test.mjs",
     "test:no-app-local-performance-policy": "node ./tests/run-no-app-local-performance-policy.mjs",
+    "test:page-screenshot-evidence": "node ../../tools/governance/validate-mdwrkcom-thin-host.mjs",
     "validate:static": "node ./src/cli.mjs validate",
     "test:lander-renderer-host": "node ./tests/run-lander-renderer-host-smoke.mjs",
     "build:static": "node ./src/cli.mjs build --out dist-static",
@@ -50,6 +51,7 @@
     "lint": "npm run typecheck"
   },
   "dependencies": {
+    "@mdwrk/mdwrkcom-content-pack": "^0.1.8",
     "@mdwrk/lander-content-contract": "^0.1.0",
     "@mdwrk/lander-core": "^0.1.0",
     "@mdwrk/lander-react": "^0.1.0",

@@ -42,19 +42,39 @@ export type TemplateRelationshipKind =
 
 export type LinkSlotCardinality = "one" | "many" | "optional_one" | "optional_many";
 export type TemplateDiagnosticLevel = "error" | "warning";
+export type RelationshipRole = "tree_child" | "navigation" | "semantic";
+export type ChildPolicy = "required" | "optional" | "terminal";
+
+export interface ChildSlotDefinition {
+  id: string;
+  relationship: TemplateRelationshipKind;
+  targetTemplateIds?: PageTemplateId[];
+  min?: number;
+  max?: number;
+  ordered?: boolean;
+}
+
+export interface TemplateTopology {
+  childPolicy: ChildPolicy;
+  childSlots?: ChildSlotDefinition[];
+}
 
 export interface LinkSlotDefinition {
   id: string;
   label?: string;
   relationship: TemplateRelationshipKind;
+  role?: RelationshipRole;
   targetTemplateIds?: PageTemplateId[];
   cardinality?: LinkSlotCardinality;
+  min?: number;
+  max?: number;
   ordered?: boolean;
 }
 
 export interface RelationshipRule {
   id: string;
   relationship: TemplateRelationshipKind;
+  role?: RelationshipRole;
   sourceTemplateIds?: PageTemplateId[];
   targetTemplateIds?: PageTemplateId[];
   minTargets?: number;
@@ -78,6 +98,7 @@ export interface PageTemplate<TData extends Record<string, unknown> = Record<str
   title: string;
   description?: string;
   linkSlots?: LinkSlotDefinition[];
+  topology?: TemplateTopology;
   rules?: RelationshipRule[];
   buildPage: (context: TemplateRenderContext<TData>) => PageSpec;
   schema?: (context: TemplateRenderContext<TData>) => SchemaSpec[];
@@ -101,6 +122,7 @@ export interface TemplateEdge {
   sourceId: PageInstanceId;
   targetId: PageInstanceId;
   relationship: TemplateRelationshipKind;
+  role?: RelationshipRole;
   slotId?: string;
   order?: number;
   label?: string;
@@ -111,6 +133,7 @@ export interface ResolvedTemplateLink {
   sourceId: PageInstanceId;
   targetId: PageInstanceId;
   relationship: TemplateRelationshipKind;
+  role: RelationshipRole;
   slotId: string;
   href: string;
   label: string;
@@ -119,12 +142,14 @@ export interface ResolvedTemplateLink {
 }
 
 export type ResolvedLinkSlots = Record<string, ResolvedTemplateLink[]>;
+export type IncomingLinkSlots = Record<string, ResolvedTemplateLink[]>;
 
 export interface TemplateNavigation {
   breadcrumbs: NavItem[];
   related: NavItem[];
   previous?: NavItem;
   next?: NavItem;
+  incoming: IncomingLinkSlots;
 }
 
 export interface TemplateBundle {

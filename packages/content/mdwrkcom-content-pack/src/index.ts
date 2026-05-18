@@ -56,6 +56,10 @@ export const mdwrkcomContentPack: MdwrkcomContentPackLayout = Object.freeze({
   ]),
 });
 
+export function resolveMdwrkcomContentPackUrl(pathInPack: string): URL {
+  return new URL(`../${pathInPack.replace(/^\/+/, "")}`, import.meta.url);
+}
+
 export const mdwrkcomLanderRenderingIntent: MdwrkcomLanderRenderingIntent = Object.freeze({
   contentPack: MDWRKCOM_CONTENT_PACK_NAME,
   contractPackage: "@mdwrk/lander-content-contract",
@@ -79,5 +83,5 @@ export const mdwrkcomLanderRenderingIntent: MdwrkcomLanderRenderingIntent = Obje
 });
 
 export function resolveMdwrkcomContentPackPath(pathInPack: string): string {
-  return new URL(`../${pathInPack.replace(/^\/+/, "")}`, import.meta.url).pathname;
+  return resolveMdwrkcomContentPackUrl(pathInPack).pathname;
 }

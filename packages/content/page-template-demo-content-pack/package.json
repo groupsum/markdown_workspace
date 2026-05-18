@@ -1,0 +1,52 @@
+{
+  "name": "@mdwrk/page-template-demo-content-pack",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "mdwrk",
+    "lander",
+    "content-pack",
+    "page-templates",
+    "demo"
+  ],
+  "description": "Example MdWrk content pack demonstrating page-template presets as authored starter content.",
+  "dependencies": {
+    "@mdwrk/lander-content-contract": "^0.1.2",
+    "@mdwrk/lander-page-template-presets": "^0.1.0",
+    "@mdwrk/lander-page-templates": "^0.1.0"
+  },
+  "scripts": {
+    "build": "npm run build -w @mdwrk/lander-page-template-presets && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/lander-page-template-presets && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node ./tests/run-smoke.mjs",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}
