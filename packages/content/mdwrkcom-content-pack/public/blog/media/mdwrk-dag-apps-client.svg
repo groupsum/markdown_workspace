@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1790" height="1102" viewBox="0 0 1790 1102" role="img" aria-labelledby="title desc">
+<title id="title">apps/client Package DAG</title>
+<desc id="desc">Dependency closure for apps/client (@mdwrk/mdwrkspace) Arrows and the dependency list both use consumer depends on dependency direction.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 z" fill="#475569"/></marker><filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/></filter></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="58" y="52" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="31" font-weight="800" fill="#0f172a">apps/client Package DAG</text>
+<text x="58" y="84" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#475569">Dependency closure for apps/client (@mdwrk/mdwrkspace)</text>
+<text x="58" y="112" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#334155">Read every arrow as: consumer depends on dependency.</text>
+<text x="1732" y="112" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#64748b">20 nodes / 61 direct edges</text>
+<g fill="none" stroke="#475569" stroke-width="1.45" stroke-opacity="0.42" marker-end="url(#arrow)">
+<path d="M 146 360 C 138 473.5, 229 473.5, 221 587"/><!-- @mdwrk/extension-gemini-agent depends on @mdwrk/extension-host -->
+<path d="M 146 360 C 142 547.5, 334 547.5, 330 735"/><!-- @mdwrk/extension-gemini-agent depends on @mdwrk/extension-manifest -->
+<path d="M 146 360 C 146 399.5, 330 399.5, 330 439"/><!-- @mdwrk/extension-gemini-agent depends on @mdwrk/extension-runtime -->
+<path d="M 146 360 C 150 399.5, 762 399.5, 766 439"/><!-- @mdwrk/extension-gemini-agent depends on @mdwrk/markdown-renderer-react -->
+<path d="M 246.5 360 C 254.5 473.5, 213 473.5, 221 587"/><!-- @mdwrk/extension-git-ops depends on @mdwrk/extension-host -->
+<path d="M 246.5 360 C 238.5 547.5, 338 547.5, 330 735"/><!-- @mdwrk/extension-git-ops depends on @mdwrk/extension-manifest -->
+<path d="M 246.5 360 C 242.5 399.5, 334 399.5, 330 439"/><!-- @mdwrk/extension-git-ops depends on @mdwrk/extension-runtime -->
+<path d="M 221 656 C 221 695.5, 330 695.5, 330 735"/><!-- @mdwrk/extension-host depends on @mdwrk/extension-manifest -->
+<path d="M 221 656 C 225 695.5, 762 695.5, 766 735"/><!-- @mdwrk/extension-host depends on @mdwrk/theme-contract -->
+<path d="M 347 360 C 355 473.5, 213 473.5, 221 587"/><!-- @mdwrk/extension-language-pack-studio depends on @mdwrk/extension-host -->
+<path d="M 347 360 C 339 547.5, 338 547.5, 330 735"/><!-- @mdwrk/extension-language-pack-studio depends on @mdwrk/extension-manifest -->
+<path d="M 347 360 C 343 473.5, 661 473.5, 657 587"/><!-- @mdwrk/extension-language-pack-studio depends on @mdwrk/testing -->
+<path d="M 447.5 360 C 447.5 473.5, 221 473.5, 221 587"/><!-- @mdwrk/extension-manager depends on @mdwrk/extension-host -->
+<path d="M 447.5 360 C 451.5 547.5, 326 547.5, 330 735"/><!-- @mdwrk/extension-manager depends on @mdwrk/extension-manifest -->
+<path d="M 447.5 360 C 455.5 399.5, 322 399.5, 330 439"/><!-- @mdwrk/extension-manager depends on @mdwrk/extension-runtime -->
+<path d="M 447.5 360 C 439.5 473.5, 665 473.5, 657 587"/><!-- @mdwrk/extension-manager depends on @mdwrk/testing -->
+<path d="M 330 508 C 326 547.5, 225 547.5, 221 587"/><!-- @mdwrk/extension-runtime depends on @mdwrk/extension-host -->
+<path d="M 330 508 C 330 621.5, 330 621.5, 330 735"/><!-- @mdwrk/extension-runtime depends on @mdwrk/extension-manifest -->
+<path d="M 330 508 C 334 621.5, 762 621.5, 766 735"/><!-- @mdwrk/extension-runtime depends on @mdwrk/theme-contract -->
+<path d="M 548 360 C 556 473.5, 213 473.5, 221 587"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/extension-host -->
+<path d="M 548 360 C 540 547.5, 338 547.5, 330 735"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/extension-manifest -->
+<path d="M 548 360 C 544 399.5, 334 399.5, 330 439"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/extension-runtime -->
+<path d="M 548 360 C 548 399.5, 548 399.5, 548 439"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/markdown-editor-react -->
+<path d="M 548 360 C 552 399.5, 762 399.5, 766 439"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/markdown-renderer-react -->
+<path d="M 548 360 C 556 473.5, 649 473.5, 657 587"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/testing -->
+<path d="M 548 360 C 540 547.5, 774 547.5, 766 735"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/theme-contract -->
+<path d="M 548 360 C 544 473.5, 879 473.5, 875 587"/><!-- @mdwrk/extension-theme-studio depends on @mdwrk/ui-tokens -->
+<path d="M 648.5 360 C 648.5 473.5, 221 473.5, 221 587"/><!-- @mdwrk/extension-workspace-files depends on @mdwrk/extension-host -->
+<path d="M 648.5 360 C 652.5 547.5, 326 547.5, 330 735"/><!-- @mdwrk/extension-workspace-files depends on @mdwrk/extension-manifest -->
+<path d="M 648.5 360 C 656.5 399.5, 322 399.5, 330 439"/><!-- @mdwrk/extension-workspace-files depends on @mdwrk/extension-runtime -->
+<path d="M 950 360 C 942 473.5, 447 473.5, 439 587"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/markdown-editor-core -->
+<path d="M 950 360 C 946 399.5, 552 399.5, 548 439"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/markdown-editor-react -->
+<path d="M 950 360 C 950 547.5, 548 547.5, 548 735"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/markdown-renderer-core -->
+<path d="M 950 360 C 954 399.5, 762 399.5, 766 439"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/markdown-renderer-react -->
+<path d="M 950 360 C 958 473.5, 649 473.5, 657 587"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/testing -->
+<path d="M 950 360 C 942 473.5, 883 473.5, 875 587"/><!-- @mdwrk/markdown-edit-in-renderer-react depends on @mdwrk/ui-tokens -->
+<path d="M 439 656 C 435 695.5, 552 695.5, 548 735"/><!-- @mdwrk/markdown-editor-core depends on @mdwrk/markdown-renderer-core -->
+<path d="M 548 508 C 548 547.5, 439 547.5, 439 587"/><!-- @mdwrk/markdown-editor-react depends on @mdwrk/markdown-editor-core -->
+<path d="M 548 508 C 552 547.5, 653 547.5, 657 587"/><!-- @mdwrk/markdown-editor-react depends on @mdwrk/testing -->
+<path d="M 548 508 C 556 547.5, 867 547.5, 875 587"/><!-- @mdwrk/markdown-editor-react depends on @mdwrk/ui-tokens -->
+<path d="M 766 508 C 758 621.5, 556 621.5, 548 735"/><!-- @mdwrk/markdown-renderer-react depends on @mdwrk/markdown-renderer-core -->
+<path d="M 766 508 C 762 547.5, 661 547.5, 657 587"/><!-- @mdwrk/markdown-renderer-react depends on @mdwrk/testing -->
+<path d="M 766 508 C 766 547.5, 875 547.5, 875 587"/><!-- @mdwrk/markdown-renderer-react depends on @mdwrk/ui-tokens -->
+<path d="M 548 212 C 552 251.5, 142 251.5, 146 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-gemini-agent -->
+<path d="M 548 212 C 556 251.5, 238.5 251.5, 246.5 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-git-ops -->
+<path d="M 548 212 C 540 399.5, 229 399.5, 221 587"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-host -->
+<path d="M 548 212 C 544 251.5, 351 251.5, 347 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-language-pack-studio -->
+<path d="M 548 212 C 548 251.5, 447.5 251.5, 447.5 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-manager -->
+<path d="M 548 212 C 552 473.5, 326 473.5, 330 735"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-manifest -->
+<path d="M 548 212 C 556 325.5, 322 325.5, 330 439"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-runtime -->
+<path d="M 548 212 C 540 251.5, 556 251.5, 548 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-theme-studio -->
+<path d="M 548 212 C 544 251.5, 652.5 251.5, 648.5 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/extension-workspace-files -->
+<path d="M 548 212 C 548 251.5, 749 251.5, 749 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/i18n -->
+<path d="M 548 212 C 552 251.5, 845.5 251.5, 849.5 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/icons -->
+<path d="M 548 212 C 556 251.5, 942 251.5, 950 291"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/markdown-edit-in-renderer-react -->
+<path d="M 548 212 C 540 325.5, 556 325.5, 548 439"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/markdown-editor-react -->
+<path d="M 548 212 C 544 473.5, 552 473.5, 548 735"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/markdown-renderer-core -->
+<path d="M 548 212 C 548 325.5, 766 325.5, 766 439"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/markdown-renderer-react -->
+<path d="M 548 212 C 552 473.5, 762 473.5, 766 735"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/theme-contract -->
+<path d="M 548 212 C 556 399.5, 867 399.5, 875 587"/><!-- @mdwrk/mdwrkspace depends on @mdwrk/ui-tokens -->
+<path d="M 875 656 C 867 695.5, 774 695.5, 766 735"/><!-- @mdwrk/ui-tokens depends on @mdwrk/theme-contract -->
+</g>
+<g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">
+<rect x="58" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="64" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="146" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="146" y="333.5" text-anchor="middle">extension-gemini-agent</text></g>
+<rect x="158.5" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="164.5" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="246.5" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="246.5" y="333.5" text-anchor="middle">extension-git-ops</text></g>
+<rect x="133" y="594" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="139" y="600" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="221" y="612.5" text-anchor="middle">@mdwrk/</text>
+<text x="221" y="629.5" text-anchor="middle">extension-host</text></g>
+<rect x="259" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="265" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="347" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="347" y="333.5" text-anchor="middle">extension-language-pack-studio</text></g>
+<rect x="359.5" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="365.5" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="447.5" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="447.5" y="333.5" text-anchor="middle">extension-manager</text></g>
+<rect x="242" y="742" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="248" y="748" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="330" y="760.5" text-anchor="middle">@mdwrk/</text>
+<text x="330" y="777.5" text-anchor="middle">extension-manifest</text></g>
+<rect x="242" y="446" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="248" y="452" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="330" y="464.5" text-anchor="middle">@mdwrk/</text>
+<text x="330" y="481.5" text-anchor="middle">extension-runtime</text></g>
+<rect x="460" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="466" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="548" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="548" y="333.5" text-anchor="middle">extension-theme-studio</text></g>
+<rect x="560.5" y="298" width="176" height="62" rx="9" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="566.5" y="304" width="164" height="50" rx="6" fill="none" stroke="#c7d2fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="648.5" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="648.5" y="333.5" text-anchor="middle">extension-workspace-files</text></g>
+<rect x="661" y="298" width="176" height="62" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="667" y="304" width="164" height="50" rx="6" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+<g fill="#0f172a"><text x="749" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="749" y="333.5" text-anchor="middle">i18n</text></g>
+<rect x="761.5" y="298" width="176" height="62" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="767.5" y="304" width="164" height="50" rx="6" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+<g fill="#0f172a"><text x="849.5" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="849.5" y="333.5" text-anchor="middle">icons</text></g>
+<rect x="862" y="298" width="176" height="62" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="868" y="304" width="164" height="50" rx="6" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="950" y="316.5" text-anchor="middle">@mdwrk/</text>
+<text x="950" y="333.5" text-anchor="middle">markdown-edit-in-renderer-react</text></g>
+<rect x="351" y="594" width="176" height="62" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="357" y="600" width="164" height="50" rx="6" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="439" y="612.5" text-anchor="middle">@mdwrk/</text>
+<text x="439" y="629.5" text-anchor="middle">markdown-editor-core</text></g>
+<rect x="460" y="446" width="176" height="62" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="466" y="452" width="164" height="50" rx="6" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="548" y="464.5" text-anchor="middle">@mdwrk/</text>
+<text x="548" y="481.5" text-anchor="middle">markdown-editor-react</text></g>
+<rect x="460" y="742" width="176" height="62" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="466" y="748" width="164" height="50" rx="6" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="548" y="760.5" text-anchor="middle">@mdwrk/</text>
+<text x="548" y="777.5" text-anchor="middle">markdown-renderer-core</text></g>
+<rect x="678" y="446" width="176" height="62" rx="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="684" y="452" width="164" height="50" rx="6" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+<g fill="#0f172a"><text x="766" y="464.5" text-anchor="middle">@mdwrk/</text>
+<text x="766" y="481.5" text-anchor="middle">markdown-renderer-react</text></g>
+<rect x="460" y="150" width="176" height="62" rx="9" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="466" y="156" width="164" height="50" rx="6" fill="none" stroke="#fed7aa" stroke-width="1"/>
+<g fill="#0f172a"><text x="548" y="168.5" text-anchor="middle">apps/client</text>
+<text x="548" y="185.5" text-anchor="middle">@mdwrk/mdwrkspace</text></g>
+<rect x="569" y="594" width="176" height="62" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="575" y="600" width="164" height="50" rx="6" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+<g fill="#0f172a"><text x="657" y="612.5" text-anchor="middle">@mdwrk/</text>
+<text x="657" y="629.5" text-anchor="middle">testing</text></g>
+<rect x="678" y="742" width="176" height="62" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="684" y="748" width="164" height="50" rx="6" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+<g fill="#0f172a"><text x="766" y="760.5" text-anchor="middle">@mdwrk/</text>
+<text x="766" y="777.5" text-anchor="middle">theme-contract</text></g>
+<rect x="787" y="594" width="176" height="62" rx="9" fill="#f8fafc" stroke="#334155" stroke-width="1.6" filter="url(#shadow)"/>
+<rect x="793" y="600" width="164" height="50" rx="6" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+<g fill="#0f172a"><text x="875" y="612.5" text-anchor="middle">@mdwrk/</text>
+<text x="875" y="629.5" text-anchor="middle">ui-tokens</text></g>
+</g>
+<rect x="1082" y="140" width="650" height="912" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="1106" y="176" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f172a">Direct dependency list</text>
+<text x="1106" y="202" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#475569">Left side = consumer. Right side = packages it depends on.</text>
+<text x="1106" y="236" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-gemini-agent</text>
+<text x="1120" y="256" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, extension-runtime,</text>
+<text x="1120" y="273" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">markdown-renderer-react</text>
+<text x="1106" y="302" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-git-ops</text>
+<text x="1120" y="322" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, extension-runtime</text>
+<text x="1106" y="351" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-host</text>
+<text x="1120" y="371" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-manifest, theme-contract</text>
+<text x="1106" y="400" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-language-pack-studio</text>
+<text x="1120" y="420" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, testing</text>
+<text x="1106" y="449" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-manager</text>
+<text x="1120" y="469" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, extension-runtime, testing</text>
+<text x="1106" y="498" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-runtime</text>
+<text x="1120" y="518" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, theme-contract</text>
+<text x="1106" y="547" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-theme-studio</text>
+<text x="1120" y="567" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, extension-runtime,</text>
+<text x="1120" y="584" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">markdown-editor-react, markdown-renderer-react, testing, theme-contract,</text>
+<text x="1120" y="601" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">ui-tokens</text>
+<text x="1106" y="630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">extension-workspace-files</text>
+<text x="1120" y="650" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-host, extension-manifest, extension-runtime</text>
+<text x="1106" y="679" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">markdown-edit-in-renderer-react</text>
+<text x="1120" y="699" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: markdown-editor-core, markdown-editor-react,</text>
+<text x="1120" y="716" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">markdown-renderer-core, markdown-renderer-react, testing, ui-tokens</text>
+<text x="1106" y="745" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">markdown-editor-core</text>
+<text x="1120" y="765" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: markdown-renderer-core</text>
+<text x="1106" y="794" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">markdown-editor-react</text>
+<text x="1120" y="814" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: markdown-editor-core, testing, ui-tokens</text>
+<text x="1106" y="843" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">markdown-renderer-react</text>
+<text x="1120" y="863" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: markdown-renderer-core, testing, ui-tokens</text>
+<text x="1106" y="892" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">mdwrkspace</text>
+<text x="1120" y="912" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: extension-gemini-agent, extension-git-ops, extension-host,</text>
+<text x="1120" y="929" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">extension-language-pack-studio, extension-manager, extension-manifest,</text>
+<text x="1120" y="946" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">extension-runtime, extension-theme-studio, extension-workspace-files,</text>
+<text x="1120" y="963" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">i18n, icons, markdown-edit-in-renderer-react, markdown-editor-react,</text>
+<text x="1120" y="980" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">markdown-renderer-core, markdown-renderer-react, theme-contract, ui-tokens</text>
+<text x="1106" y="1009" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#0f172a">ui-tokens</text>
+<text x="1120" y="1029" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">depends on: theme-contract</text>
+<text x="58" y="1068" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#64748b">Generated from package.json direct internal dependencies. Transitive relationships appear only through direct edges.</text>
+</svg>

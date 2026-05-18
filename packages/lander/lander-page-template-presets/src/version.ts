@@ -1,0 +1,1 @@
+export const LANDER_PAGE_TEMPLATE_PRESETS_VERSION = "0.1.0";

@@ -1,0 +1,203 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "SSOT Registry home" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]: SR
+        - generic [ref=e8]:
+          - generic [ref=e9]: SSOT Registry
+          - generic [ref=e10]: Governed single source of truth for software assurance.
+      - navigation "Primary navigation" [ref=e11]:
+        - link "Features" [ref=e12] [cursor=pointer]:
+          - /url: /content/features/
+        - link "Proof" [ref=e13] [cursor=pointer]:
+          - /url: /content/proofs/
+        - link "Packages" [ref=e14] [cursor=pointer]:
+          - /url: /content/packages/
+        - link "FAQ" [ref=e15] [cursor=pointer]:
+          - /url: /content/faq-qa/
+      - link "View GitHub" [ref=e16] [cursor=pointer]:
+        - /url: https://github.com/groupsum/ssot-registry
+  - main [ref=e17]:
+    - article [ref=e18]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: SSOT Registry
+        - heading "Govern software truth from decision to release." [level=1] [ref=e22]
+        - paragraph [ref=e23]: "Answer one release-review question clearly: what was intended, what changed, what proves it, and which canonical record says so."
+        - generic [ref=e24]:
+          - link "Browse Content" [ref=e25] [cursor=pointer]:
+            - /url: /content/
+          - link "View GitHub" [ref=e26] [cursor=pointer]:
+            - /url: https://github.com/groupsum/ssot-registry
+      - generic [ref=e27]:
+        - heading "A registry for the full assurance chain" [level=2] [ref=e28]
+        - generic [ref=e29]:
+          - article [ref=e30]:
+            - heading "Governed entity model" [level=3] [ref=e31]:
+              - link "Governed entity model" [ref=e32] [cursor=pointer]:
+                - /url: /content/features/
+            - paragraph [ref=e33]: Track ADRs, specs, features, issues, risks, profiles, tests, claims, evidence, boundaries, and releases with stable IDs in one canonical SSOT.
+          - article [ref=e34]:
+            - heading "Proof-linked claims" [level=3] [ref=e35]:
+              - link "Proof-linked claims" [ref=e36] [cursor=pointer]:
+                - /url: /content/proofs/
+            - paragraph [ref=e37]: Connect claims to required features, test rows, and evidence artifacts so certification can fail closed against the authority record.
+          - article [ref=e38]:
+            - heading "Boundary-driven release closure" [level=3] [ref=e39]:
+              - link "Boundary-driven release closure" [ref=e40] [cursor=pointer]:
+                - /url: /content/workflows/
+            - paragraph [ref=e41]: Freeze release scope, execute verification, certify claims, promote releases, and publish closure snapshots.
+      - generic [ref=e42]:
+        - heading "Canonical records and derived projections stay separate" [level=2] [ref=e43]
+        - table [ref=e44]:
+          - rowgroup [ref=e45]:
+            - row "Criteria Concern Authority rule Operator takeaway" [ref=e46]:
+              - columnheader "Criteria" [ref=e47]
+              - columnheader "Concern" [ref=e48]
+              - columnheader "Authority rule" [ref=e49]
+              - columnheader "Operator takeaway" [ref=e50]
+          - rowgroup [ref=e51]:
+            - row "Registry .ssot/registry.json Canonical machine-readable source for governed software assurance entities. Change registry state through SSOT workflows, then validate before review." [ref=e52]:
+              - rowheader "Registry" [ref=e53]
+              - cell ".ssot/registry.json" [ref=e54]
+              - cell "Canonical machine-readable source for governed software assurance entities." [ref=e55]
+              - cell "Change registry state through SSOT workflows, then validate before review." [ref=e56]
+            - row "ADRs and SPECs Canonical companion documents ADR and SPEC JSON documents carry governed decision and requirement detail. Sync companion documents so document metadata and registry links agree." [ref=e57]:
+              - rowheader "ADRs and SPECs" [ref=e58]
+              - cell "Canonical companion documents" [ref=e59]
+              - cell "ADR and SPEC JSON documents carry governed decision and requirement detail." [ref=e60]
+              - cell "Sync companion documents so document metadata and registry links agree." [ref=e61]
+            - row "Reports and site pages Derived projections The registry is the source of truth. ADR and SPEC JSON files are canonical companion documents. Reports, Markdown, CSV, DOT graphs, SQLite exports, validation output, discovery artifacts, and site pages are projections. They should be regenerated from the registry, not edited as competing authority. Regenerate projections from registry truth instead of editing them as competing authority." [ref=e62]:
+              - rowheader "Reports and site pages" [ref=e63]
+              - cell "Derived projections" [ref=e64]
+              - cell "The registry is the source of truth. ADR and SPEC JSON files are canonical companion documents. Reports, Markdown, CSV, DOT graphs, SQLite exports, validation output, discovery artifacts, and site pages are projections. They should be regenerated from the registry, not edited as competing authority." [ref=e65]
+              - cell "Regenerate projections from registry truth instead of editing them as competing authority." [ref=e66]
+      - generic [ref=e67]:
+        - heading "Frozen scope is not the same thing as shipment" [level=2] [ref=e68]
+        - paragraph [ref=e70]: "A boundary freezes scope: the feature and profile set that a delivery unit will be judged against. A release references that frozen boundary, then carries the claims and evidence used for certification, promotion, publication, or revocation. Scope and shipment stay separate so late changes cannot silently rewrite what was certified."
+      - generic [ref=e71]:
+        - heading "Learn SSOT Registry by the work you need to do" [level=2] [ref=e72]
+        - generic [ref=e73]:
+          - article [ref=e74]:
+            - heading "Start from the content hub" [level=3] [ref=e75]:
+              - link "Start from the content hub" [ref=e76] [cursor=pointer]:
+                - /url: /content/
+            - paragraph [ref=e77]: Browse SSOT Registry by features, proof, packages, and direct answers, then drill into the guide that matches your next operation.
+          - article [ref=e78]:
+            - heading "Answer real implementation questions" [level=3] [ref=e79]:
+              - link "Answer real implementation questions" [ref=e80] [cursor=pointer]:
+                - /url: /content/
+            - paragraph [ref=e81]: Every guide answers what, why, how, and when questions about the registry model, then points to practical CLI-backed next steps for the single source of truth.
+          - article [ref=e82]:
+            - heading "Queryable registry exports" [level=3] [ref=e83]:
+              - link "Queryable registry exports" [ref=e84] [cursor=pointer]:
+                - /url: /content/api-reference/
+            - paragraph [ref=e85]: Use registry export, graph export, validation reports, and conformance output when a reviewer needs machine-readable proof.
+      - generic [ref=e86]:
+        - heading "Proof surfaces stay visible" [level=2] [ref=e87]
+        - generic [ref=e88]:
+          - article [ref=e89]:
+            - heading "Registry validation" [level=3] [ref=e90]
+            - paragraph [ref=e91]: The CLI validates registry structure, links, status, and release readiness.
+            - paragraph [ref=e92]: verified
+          - article [ref=e93]:
+            - heading "Release boundaries" [level=3] [ref=e94]
+            - paragraph [ref=e95]: Frozen boundary snapshots preserve feature and profile scope as canonical authority for release review.
+            - paragraph [ref=e96]: supported
+          - article [ref=e97]:
+            - heading "Evidence traceability" [level=3] [ref=e98]
+            - paragraph [ref=e99]: Evidence rows point at concrete artifacts and link back to claims and tests in the SSOT canon.
+            - paragraph [ref=e100]: supported
+      - generic [ref=e101]:
+        - heading "Choose the package for the job" [level=2] [ref=e102]
+        - generic [ref=e103]:
+          - article [ref=e104]:
+            - heading "ssot-registry" [level=3] [ref=e105]:
+              - link "ssot-registry" [ref=e106] [cursor=pointer]:
+                - /url: https://pypi.org/project/ssot-registry/
+            - paragraph [ref=e107]: Umbrella package for operators who want the full SSOT Registry CLI and registry workflow bundle.
+            - code [ref=e108]: uv add ssot-registry
+          - article [ref=e109]:
+            - heading "ssot-core" [level=3] [ref=e110]:
+              - link "ssot-core" [ref=e111] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e112]: Runtime APIs, registry models, validation helpers, and canonical data operations for embedding SSOT behavior.
+            - code [ref=e113]: uv add ssot-core
+          - article [ref=e114]:
+            - heading "ssot-cli" [level=3] [ref=e115]:
+              - link "ssot-cli" [ref=e116] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e117]: Command surface for repo operators, CI jobs, and release workflows that mutate or inspect governed registry state.
+            - code [ref=e118]: uv add ssot-cli
+          - article [ref=e119]:
+            - heading "ssot-conformance" [level=3] [ref=e120]:
+              - link "ssot-conformance" [ref=e121] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e122]: Reusable conformance checks that turn expected registry behavior into repeatable proof and evidence inputs.
+            - code [ref=e123]: uv add ssot-conformance
+          - article [ref=e124]:
+            - heading "ssot-pack-contracts" [level=3] [ref=e125]:
+              - link "ssot-pack-contracts" [ref=e126] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e127]: Governance pack interoperability contracts for external ADR and SPEC content with manifests and reserved ranges.
+            - code [ref=e128]: uv add ssot-pack-contracts
+          - article [ref=e129]:
+            - heading "ssot-contracts" [level=3] [ref=e130]:
+              - link "ssot-contracts" [ref=e131] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e132]: Shared schemas, templates, and package metadata contracts used by registry tooling and generated surfaces.
+            - code [ref=e133]: uv add ssot-contracts
+          - article [ref=e134]:
+            - heading "ssot-views" [level=3] [ref=e135]:
+              - link "ssot-views" [ref=e136] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e137]: Derived reports, graph exports, Markdown, CSV, SQLite, and reviewer-facing projections generated from registry truth.
+            - code [ref=e138]: uv add ssot-views
+          - article [ref=e139]:
+            - heading "ssot-codegen" [level=3] [ref=e140]:
+              - link "ssot-codegen" [ref=e141] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e142]: Regeneration utilities for metadata and typed artifacts that should stay derived from canonical registry state.
+            - code [ref=e143]: uv add ssot-codegen
+          - article [ref=e144]:
+            - heading "ssot-tui" [level=3] [ref=e145]:
+              - link "ssot-tui" [ref=e146] [cursor=pointer]:
+                - /url: /content/packages/
+            - paragraph [ref=e147]: Read-oriented terminal browser for reviewers who need to inspect registry relationships without editing the source.
+            - code [ref=e148]: uv add ssot-tui
+      - generic [ref=e149]:
+        - heading "Package chooser" [level=2] [ref=e150]
+        - paragraph [ref=e152]: Install ssot-registry when you want the full operator bundle. Install ssot-core when you are embedding registry APIs. Install ssot-cli when automation needs commands such as ssot validate, ssot boundary freeze, and ssot release certify. Use ssot-contracts for schemas and templates, ssot-conformance for reusable checks, ssot-pack-contracts for governance pack interoperability, ssot-views for derived reports and graphs, ssot-codegen for regenerated metadata, and ssot-tui when reviewers need a read-oriented terminal browser.
+      - generic [ref=e153]:
+        - heading "How SSOT Registry work moves" [level=2] [ref=e154]
+        - paragraph [ref=e156]: A typical SSOT Registry workflow starts with ADRs and specs, targets features, links claims to tests and evidence, freezes a boundary, runs verification, certifies the release, promotes it, and publishes the final canonical state.
+      - region "Frequently Asked Questions" [ref=e157]:
+        - heading "Frequently Asked Questions" [level=2]
+        - generic [ref=e158]:
+          - article [ref=e159]:
+            - heading "What is the source of truth?" [level=3] [ref=e160]
+            - paragraph [ref=e162]: The registry JSON and its linked ADR, SPEC, feature, claim, test, evidence, boundary, and release entities are the SSOT, canonical source of truth, and authority record.
+          - article [ref=e163]:
+            - heading "Why use release boundaries?" [level=3] [ref=e164]
+            - paragraph [ref=e166]: Boundaries freeze the target set so certification evaluates the intended scope instead of whatever changed later.
+          - article [ref=e167]:
+            - heading "How do I start using SSOT Registry in a repo?" [level=3] [ref=e168]
+            - paragraph [ref=e170]: "Install the package, run `ssot init .`, add or sync ADRs and specs, create feature rows for targetable work, link tests and evidence, then run `ssot validate .` before relying on the registry."
+      - region "Frequently Asked Questions" [ref=e171]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e172]
+        - generic [ref=e173]:
+          - article [ref=e174]:
+            - heading "Can SSOT Registry publish release evidence?" [level=3] [ref=e175]
+            - paragraph [ref=e177]: Yes. Release rows can include claim and evidence membership, certification reports, promotion snapshots, publication snapshots, and the final canonical authority state.
+          - article [ref=e178]:
+            - heading "What can a release reviewer inspect?" [level=3] [ref=e179]
+            - paragraph [ref=e181]: A release reviewer can inspect the frozen boundary, feature targets, claim tiers, linked tests, evidence rows, certification report, promotion state, publication state, canon, and any blocking issues or risks.
+  - contentinfo [ref=e182]:
+    - paragraph [ref=e183]: Copyright 2026 Groupsum. SSOT Registry keeps software decisions, scope, proof, and release state inspectable.
+    - navigation "Footer links" [ref=e184]:
+      - link "Documentation" [ref=e185] [cursor=pointer]:
+        - /url: /content/
+      - link "GitHub" [ref=e186] [cursor=pointer]:
+        - /url: https://github.com/groupsum/ssot-registry
+      - link "PyPI" [ref=e187] [cursor=pointer]:
+        - /url: https://pypi.org/project/ssot-registry/

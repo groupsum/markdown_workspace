@@ -133,6 +133,12 @@
       "@mdwrk/lander-page-templates/*": [
         "packages/lander/lander-page-templates/dist/*"
       ],
+      "@mdwrk/lander-page-template-presets": [
+        "packages/lander/lander-page-template-presets/dist/index.d.ts"
+      ],
+      "@mdwrk/lander-page-template-presets/*": [
+        "packages/lander/lander-page-template-presets/dist/*"
+      ],
       "@mdwrk/lander-react": [
         "packages/lander/lander-react/dist/index.d.ts"
       ],

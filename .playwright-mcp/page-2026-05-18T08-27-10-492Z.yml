@@ -1,0 +1,243 @@
+- generic [ref=e3]:
+  - navigation "Main navigation" [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - link "Markdown" [ref=e16] [cursor=pointer]:
+            - /url: /markdown/
+        - listitem [ref=e17]:
+          - link "Features" [ref=e18] [cursor=pointer]:
+            - /url: /features/
+        - listitem [ref=e19]:
+          - link "Packages" [ref=e20] [cursor=pointer]:
+            - /url: /packages/
+        - listitem [ref=e21]:
+          - link "Compare" [ref=e22] [cursor=pointer]:
+            - /url: /compare/
+        - listitem [ref=e23]:
+          - link "Docs" [ref=e24] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e25]:
+          - link "Updates" [ref=e26] [cursor=pointer]:
+            - /url: /updates/
+        - listitem [ref=e27]:
+          - link "Privacy" [ref=e28] [cursor=pointer]:
+            - /url: /privacy/
+      - generic [ref=e29]:
+        - button "Toggle lander theme" [ref=e30] [cursor=pointer]:
+          - img [ref=e31]
+          - generic [ref=e33]: Lander Light
+        - link "Open MdWrk repository" [ref=e34] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e35]
+  - main [ref=e37]:
+    - generic [ref=e41]:
+      - link "Back to Updates" [ref=e42] [cursor=pointer]:
+        - /url: /updates/
+      - article [ref=e43]:
+        - generic [ref=e44]:
+          - navigation "Breadcrumbs" [ref=e45]:
+            - list [ref=e46]:
+              - listitem [ref=e47]:
+                - link "MdWrk" [ref=e48] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e49]:
+                - text: /
+                - link "Product Updates" [ref=e50] [cursor=pointer]:
+                  - /url: /updates/
+              - listitem [ref=e51]:
+                - text: /
+                - generic [ref=e52]: Package DAG Gives MdWrk Contributors a Clear Map from Shared Foundations to Lander Pages
+          - heading "Package DAG Gives MdWrk Contributors a Clear Map from Shared Foundations to Lander Pages" [level=1] [ref=e53]
+          - paragraph [ref=e54]: MdWrk adds a package dependency map that shows how shared packages, editor and renderer packages, lander packages, and mdwrkcom app entrypoints fit together.
+          - generic [ref=e55]:
+            - text: By
+            - link "CobyCloud" [ref=e56] [cursor=pointer]:
+              - /url: /updates/author/cobycloud/
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: The May 18 update adds a visual package DAG for MdWrk contributors. The graphic shows how shared foundations, the editor and renderer runtime, lander packages, packaged content, and app entrypoints relate to each other in the workspace.
+          - paragraph [ref=e60]:
+            - text: This map is useful because the MdWrk repo is intentionally split into focused package lanes. Shared packages provide reusable contracts and primitives. Editor, renderer, and extension packages build the writing workspace. Lander packages turn content, structured data, SEO helpers, React components, and themes into mdwrk.com. The app layer then consumes those packages through
+            - code [ref=e61]: apps/client
+            - text: ","
+            - code [ref=e62]: apps/mdwrkcom
+            - text: ", and"
+            - code [ref=e63]: apps/desktop
+            - text: .
+          - heading "Package DAG" [level=2] [ref=e64]
+          - paragraph [ref=e65]:
+            - img "MdWrk package DAG" [ref=e66]
+          - heading "What the graph shows" [level=2] [ref=e67]
+          - paragraph [ref=e68]: "The graph starts with shared foundations and contracts:"
+          - list [ref=e69]:
+            - listitem [ref=e70]:
+              - code [ref=e71]: "@mdwrk/theme-contract"
+              - text: ","
+              - code [ref=e72]: "@mdwrk/ui-tokens"
+              - text: ","
+              - code [ref=e73]: "@mdwrk/icons"
+              - text: ","
+              - code [ref=e74]: "@mdwrk/i18n"
+              - text: ","
+              - code [ref=e75]: "@mdwrk/testing"
+              - text: ", and"
+              - code [ref=e76]: "@mdwrk/structured-data"
+            - listitem [ref=e77]:
+              - code [ref=e78]: "@mdwrk/extension-manifest"
+              - text: and
+              - code [ref=e79]: "@mdwrk/extension-host"
+          - paragraph [ref=e80]: "Those packages support the MdWrk editor, renderer, and extension lane:"
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - code [ref=e83]: "@mdwrk/markdown-renderer-core"
+              - text: and
+              - code [ref=e84]: "@mdwrk/markdown-renderer-react"
+            - listitem [ref=e85]:
+              - code [ref=e86]: "@mdwrk/markdown-editor-core"
+              - text: ","
+              - code [ref=e87]: "@mdwrk/markdown-editor-react"
+              - text: ", and"
+              - code [ref=e88]: "@mdwrk/markdown-edit-in-renderer-react"
+            - listitem [ref=e89]:
+              - code [ref=e90]: "@mdwrk/extension-runtime"
+              - text: ","
+              - code [ref=e91]: "@mdwrk/extension-manager"
+              - text: ","
+              - code [ref=e92]: "@mdwrk/extension-theme-studio"
+              - text: ","
+              - code [ref=e93]: "@mdwrk/extension-language-pack-studio"
+              - text: ","
+              - code [ref=e94]: "@mdwrk/extension-workspace-files"
+              - text: ","
+              - code [ref=e95]: "@mdwrk/extension-git-ops"
+              - text: ", and"
+              - code [ref=e96]: "@mdwrk/extension-gemini-agent"
+          - paragraph [ref=e97]: "The lander lane stays separate and focused on the public site:"
+          - list [ref=e98]:
+            - listitem [ref=e99]:
+              - code [ref=e100]: "@mdwrk/lander-content-contract"
+            - listitem [ref=e101]:
+              - code [ref=e102]: "@mdwrk/lander-core"
+            - listitem [ref=e103]:
+              - code [ref=e104]: "@mdwrk/lander-react"
+            - listitem [ref=e105]:
+              - code [ref=e106]: "@mdwrk/lander-seo"
+            - listitem [ref=e107]:
+              - code [ref=e108]: "@mdwrk/lander-theme"
+            - listitem [ref=e109]:
+              - code [ref=e110]: "@mdwrk/lander-markdown-content-adapter"
+            - listitem [ref=e111]:
+              - code [ref=e112]: "@mdwrk/lander-page-templates"
+            - listitem [ref=e113]:
+              - code [ref=e114]: "@mdwrk/lander-page-template-presets"
+            - listitem [ref=e115]:
+              - code [ref=e116]: "@mdwrk/mdwrkcom-content-pack"
+          - paragraph [ref=e117]:
+            - text: The app entrypoints sit at the top of the graph.
+            - code [ref=e118]: apps/mdwrkcom
+            - text: consumes lander packages, renderer packages, structured data, and UI tokens.
+            - code [ref=e119]: apps/client
+            - text: consumes the editor, renderer, extension, shared UI, and contract packages.
+            - code [ref=e120]: apps/desktop
+            - text: remains the desktop shell entrypoint.
+          - heading "Why this matters" [level=2] [ref=e121]
+          - paragraph [ref=e122]:
+            - text: The DAG gives contributors a practical review map. A change to
+            - code [ref=e123]: "@mdwrk/structured-data"
+            - text: can be checked for its effect on
+            - code [ref=e124]: "@mdwrk/lander-react"
+            - text: and
+            - code [ref=e125]: apps/mdwrkcom
+            - text: . A change to
+            - code [ref=e126]: "@mdwrk/ui-tokens"
+            - text: can be reviewed through both the workspace client and the lander. A change to the extension runtime can be evaluated through the extension packages that depend on it before it reaches the client app.
+          - paragraph [ref=e127]: The same structure also keeps package ownership clear. Shared foundations stay small and reusable. Runtime packages stay focused on editing and rendering behavior. Lander packages stay focused on publishing, discovery, and reusable public-site content. App packages assemble those capabilities without hiding the dependency paths.
+          - heading "How to use it" [level=2] [ref=e128]
+          - paragraph [ref=e129]: Use the DAG when planning package work, reviewing pull requests, or deciding where a new capability belongs.
+          - list [ref=e130]:
+            - listitem [ref=e131]: Start with the package that owns the primitive or behavior.
+            - listitem [ref=e132]: Follow its outgoing dependency path to the packages that consume it.
+            - listitem [ref=e133]: Check the app entrypoint that exposes the behavior to users.
+            - listitem [ref=e134]: Keep new functionality in the lowest package lane that owns the domain cleanly.
+          - paragraph [ref=e135]: "For adjacent package context, continue with the MdWrk package and lander references:"
+          - list [ref=e136]:
+            - listitem [ref=e137]:
+              - link "Package Surfaces" [ref=e138] [cursor=pointer]:
+                - /url: /proof/package-surfaces
+            - listitem [ref=e139]:
+              - link "Quickstart" [ref=e140] [cursor=pointer]:
+                - /url: /docs/quickstart
+            - listitem [ref=e141]:
+              - link "Extension Host" [ref=e142] [cursor=pointer]:
+                - /url: /docs/extension-host
+      - region "Frequently Asked Questions" [ref=e143]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e144]
+        - generic [ref=e145]:
+          - group [ref=e146]:
+            - generic "What does this MdWrk update cover?" [ref=e147] [cursor=pointer]
+          - group [ref=e148]:
+            - generic "What should readers take away from this update?" [ref=e149] [cursor=pointer]
+      - region "Related Pages" [ref=e150]:
+        - heading "Related Pages" [level=2] [ref=e151]
+        - list [ref=e152]:
+          - listitem [ref=e153]:
+            - link "Getting Started" [ref=e154] [cursor=pointer]:
+              - /url: /docs/
+          - listitem [ref=e155]:
+            - link "Local-first Markdown Workspace" [ref=e156] [cursor=pointer]:
+              - /url: /features/local-first-markdown-workspace/
+          - listitem [ref=e157]:
+            - link "@mdwrk/markdown-renderer-core" [ref=e158] [cursor=pointer]:
+              - /url: /packages/markdown-renderer-core/
+  - contentinfo [ref=e159]:
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - link "MdWrk" [ref=e163] [cursor=pointer]:
+            - /url: /
+            - img [ref=e164]
+            - generic [ref=e168]: MdWrk
+          - paragraph [ref=e169]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - heading "Resources" [level=2] [ref=e172]
+            - list [ref=e173]:
+              - listitem [ref=e174]:
+                - link "Documentation" [ref=e175] [cursor=pointer]:
+                  - /url: /docs/
+              - listitem [ref=e176]:
+                - link "Updates" [ref=e177] [cursor=pointer]:
+                  - /url: /updates/
+              - listitem [ref=e178]:
+                - link "Live Demo" [ref=e179] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e180]:
+                - link "npm" [ref=e181] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e182]:
+            - heading "Follow" [level=2] [ref=e183]
+            - list [ref=e184]:
+              - listitem [ref=e185]:
+                - link "GitHub" [ref=e186] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e187]:
+                - link "X.com" [ref=e188] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e189]:
+                - link "Community" [ref=e190] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e191]:
+            - heading "Legal" [level=2] [ref=e192]
+            - list [ref=e193]:
+              - listitem [ref=e194]:
+                - link "Privacy" [ref=e195] [cursor=pointer]:
+                  - /url: /legal/privacy/
+              - listitem [ref=e196]:
+                - link "Terms" [ref=e197] [cursor=pointer]:
+                  - /url: /legal/terms/
+      - separator [ref=e198]
+      - generic [ref=e199]: © 2026 MdWrk. Designed for privacy.
