@@ -52,10 +52,11 @@ assert.deepEqual(homeRoute.motion, [
 
 const quickstartHtml = readHtml(path.join('docs', 'quickstart'));
 assert.match(quickstartHtml, new RegExp(`<link rel="preload" href="${staticCssEntry.path.replaceAll('/', '\\/')}" as="style"`));
-assert.doesNotMatch(quickstartHtml, /function setDemoMode/);
+assert.doesNotMatch(quickstartHtml, /data-static-demo-editor/);
 
 const homeHtml = readHtml('');
-assert.match(homeHtml, /function setDemoMode/);
+assert.match(homeHtml, /data-static-demo-editor/);
+assert.match(homeHtml, /data-static-demo-preview/);
 
 for (const entry of cacheManifest.entries) {
   const type = String(entry.contentType ?? '').toLowerCase();
