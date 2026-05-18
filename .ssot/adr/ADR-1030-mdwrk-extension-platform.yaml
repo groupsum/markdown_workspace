@@ -17,32 +17,32 @@ status_notes:
     note: "Expanded extension platform ADR with accessibility, import/install lifecycle, and shell surface obligations."
     status: "accepted"
   -
-    status: "accepted"
-    note: "Extended by adr:1069 and spc:2096 for shared extension hooks and contribution-surface ownership."
     at: "2026-05-18T15:57:21Z"
+    note: "Extended by adr:1069 and spc:2096 for shared extension hooks and contribution-surface ownership."
+    status: "accepted"
 references: []
 body: |-
   # ADR-1030: MdWrk extension platform and extension contracts
-
+  
   ## Decision
-
+  
   MdWrk extensions shall be governed by a shared platform contract plus per-extension SPECs. The shared contract covers manifest shape, compatibility, contribution points, settings, installation, disabling, removal, publishing, and runtime isolation. Each bundled extension gets its own SPEC so feature planning can target it independently.
-
+  
   ## Scope
-
+  
   - Extension runtime, manifest, host, catalog, and manager behavior.
   - Extension types and view modes.
   - Extension options and settings schema compatibility.
   - Import, install, publish, disable, remove, and compatibility checks.
   - Extension-specific requirements for Extension Manager, Gemini Agent, Theme Studio, Language Pack Studio, and Catalog Hello.
-
+  
   ## Consequences
-
+  
   - All extension features must link to either the shared extension SPEC or the relevant per-extension SPEC.
   - Agent extensions that use OIDC must use explicit auth boundaries and must not inherit Git credentials implicitly.
-
+  
   ## 2026 SSOT Coverage Update
-
+  
   Extension platform conformance shall include extension authoring, publishing, importing, installing, enabling, disabling, removing, settings retention, compatibility gates, runtime isolation, and capability permission checks.
-
+  
   Extension UI surfaces must meet shell accessibility requirements and must compose with shell view modes, command palette entries, action rail entries, pane layouts, and settings schemas instead of defining incompatible UI islands.

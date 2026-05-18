@@ -3579,6 +3579,24 @@
     "jsonLdId": "https://mdwrk.com/updates/launch/#webpage"
   },
   {
+    "slug": "/updates/package-dag-for-mdwrk-and-lander/",
+    "url": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+    "title": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect | MdWrk Product Updates",
+    "description": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+    "h1": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+    "subtitle": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+    "intent": "read about mdwrk package dependency maps show how apps, shared packages, and lander packages connect",
+    "contentType": "update",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "updates"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/updates/package-dag-for-mdwrk-and-lander/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#webpage"
+  },
+  {
     "slug": "/updates/pwa-install-and-zoom-controls/",
     "url": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/",
     "title": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk Product Updates",

@@ -1,0 +1,54 @@
+- main [ref=e2]:
+  - heading "MdWrk Sitemap" [level=1] [ref=e3]
+  - paragraph [ref=e4]: This is the machine-readable XML sitemap rendered as a human-readable table. Search engines read the XML nodes; browsers use this stylesheet for review.
+  - table [ref=e5]:
+    - rowgroup [ref=e6]:
+      - row "Sitemap Last modified" [ref=e7]:
+        - columnheader "Sitemap" [ref=e8]
+        - columnheader "Last modified" [ref=e9]
+    - rowgroup [ref=e10]:
+      - row "https://mdwrk.com/sitemaps/comparison.xml 2026-05-05" [ref=e11]:
+        - cell "https://mdwrk.com/sitemaps/comparison.xml" [ref=e12]:
+          - link "https://mdwrk.com/sitemaps/comparison.xml" [ref=e13] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/comparison.xml
+        - cell "2026-05-05" [ref=e14]
+      - row "https://mdwrk.com/sitemaps/docs.xml 2026-05-16" [ref=e15]:
+        - cell "https://mdwrk.com/sitemaps/docs.xml" [ref=e16]:
+          - link "https://mdwrk.com/sitemaps/docs.xml" [ref=e17] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/docs.xml
+        - cell "2026-05-16" [ref=e18]
+      - row "https://mdwrk.com/sitemaps/faq.xml 2026-05-05" [ref=e19]:
+        - cell "https://mdwrk.com/sitemaps/faq.xml" [ref=e20]:
+          - link "https://mdwrk.com/sitemaps/faq.xml" [ref=e21] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/faq.xml
+        - cell "2026-05-05" [ref=e22]
+      - row "https://mdwrk.com/sitemaps/feature.xml 2026-05-06" [ref=e23]:
+        - cell "https://mdwrk.com/sitemaps/feature.xml" [ref=e24]:
+          - link "https://mdwrk.com/sitemaps/feature.xml" [ref=e25] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/feature.xml
+        - cell "2026-05-06" [ref=e26]
+      - row "https://mdwrk.com/sitemaps/landing.xml 2026-05-04" [ref=e27]:
+        - cell "https://mdwrk.com/sitemaps/landing.xml" [ref=e28]:
+          - link "https://mdwrk.com/sitemaps/landing.xml" [ref=e29] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/landing.xml
+        - cell "2026-05-04" [ref=e30]
+      - row "https://mdwrk.com/sitemaps/package.xml 2026-05-05" [ref=e31]:
+        - cell "https://mdwrk.com/sitemaps/package.xml" [ref=e32]:
+          - link "https://mdwrk.com/sitemaps/package.xml" [ref=e33] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/package.xml
+        - cell "2026-05-05" [ref=e34]
+      - row "https://mdwrk.com/sitemaps/privacy.xml 2026-05-05" [ref=e35]:
+        - cell "https://mdwrk.com/sitemaps/privacy.xml" [ref=e36]:
+          - link "https://mdwrk.com/sitemaps/privacy.xml" [ref=e37] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/privacy.xml
+        - cell "2026-05-05" [ref=e38]
+      - row "https://mdwrk.com/sitemaps/security.xml 2026-05-04" [ref=e39]:
+        - cell "https://mdwrk.com/sitemaps/security.xml" [ref=e40]:
+          - link "https://mdwrk.com/sitemaps/security.xml" [ref=e41] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/security.xml
+        - cell "2026-05-04" [ref=e42]
+      - row "https://mdwrk.com/sitemaps/update.xml 2026-05-18" [ref=e43]:
+        - cell "https://mdwrk.com/sitemaps/update.xml" [ref=e44]:
+          - link "https://mdwrk.com/sitemaps/update.xml" [ref=e45] [cursor=pointer]:
+            - /url: https://mdwrk.com/sitemaps/update.xml
+        - cell "2026-05-18" [ref=e46]

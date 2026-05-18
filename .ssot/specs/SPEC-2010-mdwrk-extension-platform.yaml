@@ -17,19 +17,19 @@ status_notes:
     note: "Expanded extension platform spec with accessibility, lifecycle, permissions, settings, and shell surface requirements."
     status: "draft"
   -
-    status: "draft"
-    note: "Extended by spc:2096 for shared extension contribution surfaces and hook ownership."
     at: "2026-05-18T15:58:23Z"
+    note: "Extended by spc:2096 for shared extension contribution surfaces and hook ownership."
+    status: "draft"
 references: []
 body: |-
   # MdWrk Extension Platform Specification
-
+  
   ## Purpose
-
+  
   Define general extension creation, compatibility, options, lifecycle, publishing, installing, importing, disabling, and removal requirements.
-
+  
   ## Requirements
-
+  
   - Extensions must declare manifest metadata, compatibility, contribution points, capabilities, settings schema, and view modes.
   - Extension types must be explicit and host-rendered through stable contracts.
   - Publishing must produce versioned, integrity-checkable artifacts.
@@ -37,11 +37,11 @@ body: |-
   - Disabling must preserve settings unless removal explicitly deletes them.
   - Removing must clean runtime registration and leave user data according to the extension retention policy.
   - Extension options must be schema-driven and persist through namespaced settings.
-
+  
   ## 2026 SSOT Coverage Update
-
+  
   Extension platform requirements shall include manifest compatibility gates, capability permissions, runtime isolation, schema-driven settings, settings namespaces, retention on disable versus remove, publishing/import/install/remove/disable flows, and lifecycle evidence.
-
+  
   Extension UI surfaces must satisfy shell accessibility requirements and compose with command palette entries, action rail mappings, extension view modes, panes, compact states, and settings surfaces.
 spec_kind: "normative"
 adr_ids:

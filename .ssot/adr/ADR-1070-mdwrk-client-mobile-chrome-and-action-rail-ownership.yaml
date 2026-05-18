@@ -13,19 +13,19 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to govern client shell chrome and action rail ownership."
     at: "2026-05-18T15:56:16Z"
+    note: "Created to govern client shell chrome and action rail ownership."
+    status: "draft"
 references: []
 body: |-
   # Context
   The MdWrk client backlog contains mobile and desktop shell work around action rails, file tabs, headers, footers, status bars, virtual keyboards, panes, split views, toolbar placement, settings icons, and retained PWA versions. These behaviors cross themes and responsive bands, but they must still have one owning surface.
-
+  
   # Decision
   Client chrome behavior is owned by `@mdwrk/mdwrkspace` and governed by shared contracts and tokens. The client shell owns app header behavior, status/footer presentation, action rail placement, file tabs, workspace settings, pane layout, toolbar placement, installed PWA state, retained version display, and screenshot proof. Shared packages provide tokens, contracts, icon identifiers, and test helpers; they do not own client chrome behavior.
-
+  
   # Boundaries
   The desktop shell may adapt client output for native packaging but must not fork browser/PWA behavior. Themes may style the governed bands but must not redefine viewport and aspect-ratio breakpoints. Mobile landscape split panes remain side-by-side unless a later accepted decision changes the contract.
-
+  
   # Consequences
   Responsive regressions become client-shell defects with explicit token and screenshot evidence. Theme parity, mobile chrome, and desktop parity can be tested against one authoritative client contract.

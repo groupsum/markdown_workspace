@@ -13,23 +13,34 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to define typed domain bundles over the generic template graph core."
     at: "2026-05-18T06:35:30Z"
+    note: "Created to define typed domain bundles over the generic template graph core."
+    status: "draft"
+  -
+    status: "draft"
+    note: "Updated domain bundle contract with topology expectations and preset/domain split."
+    at: "2026-05-18T16:17:54Z"
 references: []
 body: |-
   # Scope
   This SPEC defines domain bundles for `@mdwrk/lander-page-templates`.
   
   # Requirements
-  Domain bundles must be typed specializations of the shared core contract, not replacements for it. A bundle may define template-kind unions, relationship-role unions, relationship-rule unions, default templates, schema defaults, and validation profiles for a domain.
+  Domain bundles must be typed specializations of the shared core contract, not replacements for it. A bundle may define template-kind unions, relationship-role unions, relationship-rule unions, default templates, schema defaults, topology expectations, and validation profiles for a domain.
   
-  Initial bundles should include product, docs, support, education, packages, comparison, trust, and marketing. Example relationships include home to legal/support/help pages, FAQ hub to QA pages, learning path to courses, course to modules, module to quizzes, package pages to docs/proof pages, and feature pages to proof/package/support pages.
+  Domain bundles define available template types and default slot expectations. Presets instantiate those templates into concrete starter graphs; bundles do not own downstream product copy.
   
-  Domain bundles must compose: a downstream content pack may combine product, support, trust, and education bundles in one template graph without changing core graph semantics.
+  Initial bundles should include product, docs, support, education, packages, comparison, trust, and marketing. Example relationships include home to legal/support/help pages, FAQ hub to Q&A pages, learning path to courses, course to modules, module to quizzes, package pages to docs/proof pages, and feature pages to proof/package/support pages.
+  
+  # Topology Expectations
+  Education bundles may define learning paths requiring courses, courses requiring modules, modules requiring lessons or quizzes depending on the bundle profile, and quizzes as terminal pages.
+  
+  Trust bundles may define privacy and terms pages as terminal pages. Support bundles may define Q&A detail pages as terminal pages. Product home templates may optionally accept feature, support, legal, proof, or package links.
+  
+  Domain bundles must compose: a downstream content pack may combine product, support, trust, education, docs, and package bundles in one template graph without changing core graph semantics.
   
   # Verification
-  Tests must prove that at least two independent domain bundles can be combined in one graph and that invalid cross-domain links fail unless an explicit shared relationship rule allows them.
+  Tests must prove that independent domain bundles can be combined in one graph, that terminal pages reject child edges, that required child policies fail when empty, that optional child policies may be empty, and that invalid cross-domain links fail unless an explicit shared relationship rule allows them.
 spec_kind: "normative"
 adr_ids:
   - "adr:1066"

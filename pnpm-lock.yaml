@@ -31,13 +31,13 @@ importers:
         specifier: ^1.2.2
         version: link:../../packages/extensions/extension-gemini-agent
       '@mdwrk/extension-git-ops':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../packages/extensions/extension-git-ops
       '@mdwrk/extension-host':
         specifier: ^1.0.5
         version: link:../../packages/contracts/extension-host
       '@mdwrk/extension-language-pack-studio':
-        specifier: ^1.0.6
+        specifier: ^1.0.8
         version: link:../../packages/extensions/extension-language-pack-studio
       '@mdwrk/extension-manager':
         specifier: ^1.2.2
@@ -52,7 +52,7 @@ importers:
         specifier: ^1.2.2
         version: link:../../packages/extensions/extension-theme-studio
       '@mdwrk/extension-workspace-files':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../packages/extensions/extension-workspace-files
       '@mdwrk/i18n':
         specifier: ^1.2.4

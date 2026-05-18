@@ -17,19 +17,19 @@ status_notes:
     note: "Created to define mdwrkcom as a thin host and assign responsibilities across content pack and lander packages."
     status: "draft"
   -
-    status: "draft"
-    note: "Clarified product hosts may adapt but not own portable performance policy."
     at: "2026-05-18T15:43:48Z"
+    note: "Clarified product hosts may adapt but not own portable performance policy."
+    status: "draft"
 references: []
 body: |-
   # SPEC-2087: Thin Product Host Responsibility Contract
-
+  
   ## Scope
-
+  
   This SPEC defines the allowed and forbidden responsibilities for `apps/mdwrkcom`, `@mdwrk/mdwrkcom-content-pack`, `@mdwrk/lander-content-contract`, `@mdwrk/lander-core`, `@mdwrk/lander-react`, `@mdwrk/lander-theme`, and `@mdwrk/lander-seo`.
-
+  
   ## Requirements
-
+  
   1. `apps/mdwrkcom` shall be a thin product host.
   2. `apps/mdwrkcom` may own root bootstrap, application entrypoint wiring, build/static-output invocation, route adapter glue, deployment integration, environment configuration, product content-pack selection, host-specific redirects, host-specific deployment adapters, and host smoke tests.
   3. `apps/mdwrkcom` shall not own governed React components, reusable UI primitives, page templates, docs layouts, article shells, navigation widgets, table-of-contents components, markdown viewers, featured-media components, legal/blog/docs/feature page renderers, structured-data components, SEO discovery algorithms, theme class/token policy, cache classification policy, critical CSS policy, script inclusion policy, animation policy, or portable performance-budget policy.
@@ -46,9 +46,9 @@ body: |-
   14. Validation shall fail closed when governed component implementation appears in `apps/mdwrkcom` without an explicit temporary migration classification.
   15. Validation shall fail closed when portable performance-policy behavior appears in `apps/mdwrkcom` without an explicit host-adapter classification or temporary migration classification.
   16. Validation shall fail closed when a product content pack references app-local implementation identifiers instead of portable content-contract intent.
-
+  
   ## Acceptance
-
+  
   Passing evidence shall include a no-app-local-governed-components validation gate, no-app-local-portable-performance-policy validation gate, content-pack schema validation, lander-core compilation tests, lander-core critical-path/cache tests, lander-react rendering tests, lander-theme motion/style tests, mdwrkcom host smoke tests, and static artifact verification for affected pages.
 spec_kind: "normative"
 adr_ids:

@@ -17,37 +17,37 @@ status_notes:
     note: "Created portable lander cache freshness and render-blocking boundary decision."
     status: "draft"
   -
-    status: "draft"
-    note: "Expanded to include portable critical-path performance ownership."
     at: "2026-05-18T15:43:25Z"
+    note: "Expanded to include portable critical-path performance ownership."
+    status: "draft"
 references: []
 body: |-
   # ADR-1060: Portable Lander Cache Freshness, Critical Path, And Performance Boundary
-
+  
   ## Decision
-
+  
   Portable lander output shall separate cache policy, render-blocking behavior, first-viewport performance budgets, script inclusion, and animation safety into reusable build capabilities rather than app-local one-off implementations.
-
+  
   The reusable lander packages shall expose cache policy as portable data and helper APIs. Downstream hosts shall be able to classify generated resources, export a cache manifest, and resolve intended headers for a resource path without copying mdwrkcom-specific server configuration.
-
+  
   The reusable lander shall classify generated resources into immutable, mutable-revalidate, and no-store cache classes. Immutable generated assets shall use fingerprinted URLs and may be served with long freshness lifetimes, including immutable content directives. Mutable route documents and mutable discovery artifacts shall generally avoid positive max-age and shall support validator-based revalidation through ETag and Last-Modified metadata.
-
+  
   Discovery artifacts, including root sitemap indexes, child sitemap URL sets, robots policy, LLM indexes, content indexes, content registries, semantic indexes, and JSON-LD graph outputs, shall participate in the cache manifest as mutable-revalidate resources unless a site profile explicitly fingerprints them.
-
+  
   The reusable lander shall support a critical CSS delivery boundary. Above-the-fold CSS may be inlined into generated documents, while the complete stylesheet may be loaded outside the initial render-blocking path through preload/deferred stylesheet activation with a noscript fallback.
-
+  
   The reusable lander shall also own the portable critical-path performance contract for downstream landers. That contract includes measurable CSS budgets, render-blocking request limits, route-aware JavaScript inclusion gates, non-composited animation restrictions, compression/header intent for generated static assets, and validation hooks that downstream landers can run without copying mdwrkcom implementation details.
-
+  
   Downstream product hosts shall adapt portable outputs to their deployment target. A host may own nginx, CDN, static-host, or framework adapter glue, but it shall consume the shared manifest, critical CSS profile, script-inclusion facts, and performance budget contract instead of maintaining a parallel performance policy.
-
+  
   ## Rationale
-
+  
   Chrome and web performance guidance reward efficient cache lifetimes for reusable subresources, while stale HTML and discovery resources can create correctness and indexing risk. The repo should avoid duplicating caching, critical CSS, script gating, and animation safety machinery across every public lander. The portable lander package should own the reusable mechanism; adopting sites should only provide route, artifact, first-viewport, and deployment-adapter decisions.
-
+  
   Downstream users need a quick implementation path. A portable cache manifest, performance-budget contract, route-aware script gating, and header lookup helpers let them wire nginx, CDN, static-host, framework middleware, or testkit assertions without reverse-engineering mdwrkcom build output.
-
+  
   ## Consequences
-
+  
   Portable lander builds must expose cache classification, content hashes, last-modified metadata, intended headers, critical CSS delivery hooks, script inclusion facts, performance budget metadata, and validation helpers. Sites that use the lander may configure their profile, but they must not fork the mechanism when the portable contract covers the use case.
-
+  
   Reusable package tests must cover resource classification, header lookup behavior, manifest entries, critical CSS/cache interactions, script inclusion gates, non-composited animation restrictions, and performance budget evaluation. Product hosts may adapt those outputs to their own deployment infrastructure, but deployment adapters shall consume the portable manifest and budget outputs instead of maintaining parallel cache or performance tables.

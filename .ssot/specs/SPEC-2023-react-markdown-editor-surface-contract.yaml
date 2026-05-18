@@ -13,19 +13,19 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Extended by spc:2098 for toolbar dispatch, focus retention, and React editor command isolation."
     at: "2026-05-18T15:58:14Z"
+    note: "Extended by spc:2098 for toolbar dispatch, focus retention, and React editor command isolation."
+    status: "draft"
 references: []
 body: |-
   # SPEC-2023: React Markdown Editor Surface Contract
-
+  
   ## Requirements
-
+  
   The React editor surface must adapt editor core behavior without redefining core markdown semantics. It must support controlled and uncontrolled rendering, optional line-number gutter display, selection format-state emission, keyboard shortcuts, indentation keys, list continuation, and task-list termination.
-
+  
   ## Evidence
-
+  
   Evidence must cover component rendering modes, gutter suppression, selection events, and keyboard behavior.
 spec_kind: "normative"
 adr_ids:

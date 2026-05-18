@@ -13,26 +13,26 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Referenced by spc:2097 for retained PWA version and installed-state client chrome obligations."
     at: "2026-05-18T15:57:30Z"
+    note: "Referenced by spc:2097 for retained PWA version and installed-state client chrome obligations."
+    status: "draft"
 references: []
 body: |-
   # ADR-1038: PWA version manifest and update-state model
-
+  
   ## Decision
-
+  
   MdWrk shall govern PWA version selection and update state through an explicit version manifest model. The shell shall expose running, selected, installed, latest, compatibility, and update-ready state through controlled settings and status surfaces.
-
+  
   ## Scope
-
+  
   - Default latest-version selection.
   - Saved version reuse and fallback when missing or incompatible.
   - Service worker update-ready, failed, and blocked state precedence.
   - PWA install, update, check, switch, and auto-update controls.
-
+  
   ## Consequences
-
+  
   - PWA version behavior becomes testable without relying only on browser installation state.
   - Status and settings surfaces must report version state consistently.
   - Persistence and shell specs must include version manifest behavior.

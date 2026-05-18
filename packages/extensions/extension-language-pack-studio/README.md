@@ -1,6 +1,6 @@
 # @mdwrk/extension-language-pack-studio
 
-**Language-pack authoring extension**
+First-party language-pack authoring extension for MdWrk hosts that need localization inspection, catalog editing, and language-pack workflow surfaces inside the extension system.
 
 <p align="center">
   <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-language-pack-studio/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_language_pack_studio_README&amp;left_text=hits" /></a>
@@ -9,25 +9,35 @@
   <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
 </p>
 
-This package provides the first-party extension for inspecting and shaping language-pack data inside MdWrk hosts.
+This package provides the bundled manifest, runtime entrypoint, workspace module, command registration, action-rail item, settings section, and sample-pack assets for MdWrk language-pack authoring.
 
 ## Why
-Use it when localization authoring should remain an extension concern instead of being hard-wired into the app shell.
+Use it when localization authoring should remain an extension concern instead of being hard-wired into the app shell. The package owns the studio extension boundary; the host still supplies catalog storage, workspace state, and persistence.
 
 ## What
-- Bundled extension entrypoints and language-pack helpers.
-- A first-party consumer of the i18n package family and host APIs.
-- A workspace authoring surface for localization-related workflows.
+- Bundled extension metadata for the language-pack studio surface.
+- A `createLanguagePackStudioBundledEntry` factory for registering the studio command, workspace module, action-rail placement, and settings.
+- Catalog loading helpers and sample packs for host integration and tests.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
 
 ```bash
-npm install @mdwrk/extension-language-pack-studio @mdwrk/i18n
+npm install @mdwrk/extension-language-pack-studio @mdwrk/extension-runtime
 ```
 
 ## Usage
-Load it as a bundled extension in a host with i18n and workspace capabilities.
+Load it from a host that already provides the MdWrk extension runtime, i18n services, and workspace state.
+
+```ts
+import { createLanguagePackStudioBundledEntry } from "@mdwrk/extension-language-pack-studio";
+
+const languagePackStudioEntry = createLanguagePackStudioBundledEntry({
+  controller: host.languagePackStudioController,
+});
+```
+
+The package also exposes `./manifest`, `./types`, `./version`, and `./bundled` subpath exports for hosts that load extension metadata separately from bundled entry registration.
 
 ## Related
 - [Packages index](../../README.md) - family and package navigation

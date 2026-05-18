@@ -8,24 +8,32 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to QA pages, and product pages to proof or package pages. URL strings alone do not preserve the meaning, cardinality, ordering, or validation requirements of those links."
+summary: "Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to Q&A pages, and product pages to proof or package pages. URL strings alone do not preserve meaning, direction, cardinality, ordering, topology, terminality, or validation requirements."
 supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to govern semantic relationships between reusable page templates."
     at: "2026-05-18T06:34:38Z"
+    note: "Created to govern semantic relationships between reusable page templates."
+    status: "draft"
+  -
+    status: "draft"
+    note: "Updated relationship decision with graph topology, terminality, and incoming context semantics."
+    at: "2026-05-18T16:17:34Z"
 references: []
 body: |-
   # Context
-  Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to QA pages, and product pages to proof or package pages. URL strings alone do not preserve the meaning, cardinality, ordering, or validation requirements of those links.
+  Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to Q&A pages, and product pages to proof or package pages. URL strings alone do not preserve meaning, direction, cardinality, ordering, topology, terminality, or validation requirements.
   
   # Decision
-  Represent page-template links as semantic template-graph edges. The core graph model is domain-neutral: template kinds, relationship roles, cardinality, page instances, edges, resolved link slots, validation, and schema intents. Domain bundles specialize the shared core with typed aliases and unions for education, support, product, documentation, trust, package, comparison, and marketing page systems.
+  Represent page-template links as explicit semantic template-graph edges between independent page instances. A parent page does not include child pages as embedded content; it links to them through resolved relationship slots.
+  
+  Graph relationships must distinguish tree-child topology from navigation links and general semantic links. Tree-child relationships shape sitemap branches and child-slot validation. Navigation relationships include parent, previous, next, breadcrumbs, and related navigation. Semantic relationships include legal, support, references, FAQ question, course module, module quiz, and other domain-specific meanings.
+  
+  Templates may declare topology constraints. A required child policy demands child slots that satisfy minimum counts. An optional child policy allows empty child slots while validating any provided children. A terminal policy rejects tree-child edges while still allowing navigation and semantic links such as parent, previous, next, related, support, and legal.
   
   # Boundaries
-  Templates declare allowed link slots and rendering intents. Downstream content packs instantiate pages and edges. The resolver converts edges into grouped links, breadcrumbs, ordered lists, related sections, next/previous navigation, and schema inputs. Missing required edges and unsupported relationships are validation failures.
+  Templates declare allowed slots, relationship roles, topology constraints, and rendering intents. Downstream content packs or preset packages instantiate pages and edges. The resolver converts edges into outgoing slots, incoming context, breadcrumbs, ordered lists, related sections, next/previous navigation, footer links, and schema inputs.
   
   # Consequences
-  Page-template packages can remain portable while downstream products get strongly typed, validated link structures instead of ad hoc page-to-page URLs.
+  Page-template packages remain portable while downstream products get strongly typed, validated page-to-page structures instead of ad hoc URL lists or ambiguous page containment.

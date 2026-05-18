@@ -13,19 +13,19 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to specify responsive client chrome behavior."
     at: "2026-05-18T15:56:37Z"
+    note: "Created to specify responsive client chrome behavior."
+    status: "draft"
 references: []
 body: |-
   # MdWrk Client Chrome Responsive Contract
-
+  
   ## Purpose
   This specification defines responsive client chrome behavior for `@mdwrk/mdwrkspace`.
-
+  
   ## Scope
   The contract applies to action rails, headers, footers, status bars, file tabs, settings icons, keyboard behavior, panes, split views, toolbars, PWA install state, retained version display, and screenshot proof.
-
+  
   ## Requirements
   1. The client shall own app chrome behavior across browser, installed PWA, mobile PWA, desktop PWA, and retained client versions.
   2. Viewport and aspect-ratio bands shall be centralized in `apps/client/styles/base/viewports.css`.
@@ -35,7 +35,7 @@ body: |-
   6. Status footer text such as persistence and saved-state indicators shall be governed and removable when autosave owns the behavior.
   7. Action rail placement, reversal, minimization, and overflow shall use shared tokens and screenshot evidence.
   8. PWA install controls shall reflect installed state and shall not remain visible after installation.
-
+  
   ## Verification
   Passing evidence shall include client build output, focused responsive tests, and screenshots covering all affected themes, viewports, modes, panes, and modals.
 spec_kind: "normative"

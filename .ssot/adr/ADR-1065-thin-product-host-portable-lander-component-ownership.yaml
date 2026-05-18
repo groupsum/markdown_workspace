@@ -17,31 +17,31 @@ status_notes:
     note: "Created to make mdwrkcom a componentless thin product host and assign governed lander UI ownership to reusable packages."
     status: "draft"
   -
-    status: "draft"
-    note: "Clarified thin hosts cannot own portable performance policy."
     at: "2026-05-18T15:43:57Z"
+    note: "Clarified thin hosts cannot own portable performance policy."
+    status: "draft"
 references: []
 body: |-
   # ADR-1065: Thin Product Host And Portable Lander Component Ownership
-
+  
   ## Decision
-
+  
   Product applications in the public lander family, including `apps/mdwrkcom`, shall be thin hosts. They shall not own or implement governed lander UI components or reusable performance policy.
-
+  
   `apps/mdwrkcom` may own product-host bootstrap code, build invocation glue, route/static-output integration, deployment integration, environment wiring, product content-pack selection, host-specific redirects, and product smoke tests. It shall not own reusable React components, page templates, docs layouts, article shells, navigation widgets, table-of-contents components, markdown viewers, structured-data components, discovery artifact algorithms, theme/class/token policy, cache classification policy, critical CSS policy, script inclusion policy, animation policy, or portable performance-budget policy for governed lander surfaces.
-
+  
   Product-specific content belongs in product content packs such as `@mdwrk/mdwrkcom-content-pack`. Portable declaration schemas belong in `@mdwrk/lander-content-contract`. Portable validation, normalization, indexing, render-model compilation, cache metadata, header lookup, critical CSS profile evaluation, route-aware script facts, and performance-budget evaluation belong in `@mdwrk/lander-core` unless a narrower accepted ADR assigns them elsewhere. Governed React rendering and visual component implementations belong in `@mdwrk/lander-react`. Lander styling contracts, semantic classes, token policy, reduced-motion defaults, and animation constraints belong in `@mdwrk/lander-theme`. Portable discovery artifact generation belongs in `@mdwrk/lander-seo`.
-
+  
   Product hosts may adapt portable outputs to concrete deployment runtimes. For example, mdwrkcom may map generated header intent into nginx configuration and post-deploy smoke checks. That host mapping remains an adapter of portable lander behavior, not an app-local source of truth for the behavior.
-
+  
   ## Rationale
-
+  
   The public lander package family is intended to be reusable by downstream product and documentation sites. If `apps/mdwrkcom` implements lander components or performance policy directly, mdwrkcom becomes an implicit non-reusable reference implementation and downstream landers cannot inherit the behavior.
-
+  
   A thin-host boundary keeps product truth in content data, keeps rendering and performance behavior in reusable packages, and makes package responsibility testable. It also prevents app-local React components, CSS rules, cache tables, or deployment-specific scripts from becoming shadow implementations of governed lander behavior.
-
+  
   ## Consequences
-
+  
   1. `apps/mdwrkcom` is a host/bootstrap package, not a component or portable performance-policy package.
   2. Governed lander UI and performance behavior currently implemented under `apps/mdwrkcom` must either move to reusable lander packages or be explicitly classified as temporary migration debt.
   3. `@mdwrk/lander-react` is the default owner for governed lander React components unless a narrower accepted ADR assigns ownership elsewhere.

@@ -1,0 +1,83 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1001"
+number: 1001
+slug: "lander-page-template-preset-authoring-topology-contract"
+title: "Lander Page Template Preset Authoring And Topology Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the preset authoring and topology contract for lander page-template presets."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define authored preset page maps, link maps, and template topology validation."
+    at: "2026-05-18T16:18:30Z"
+references: []
+body: |-
+  # Scope
+  This SPEC defines the preset authoring and topology contract for lander page-template presets.
+  
+  # Preset Authoring Contract
+  A preset is an authored starter graph. It must expose independently authored page seeds and explicit link maps.
+  
+  The authoring shape must support named page maps:
+  
+  ```ts
+  createProductSitePreset({
+    pages: {
+      home: PagePresetContent,
+      feature: PagePresetContent,
+      support: PagePresetContent,
+      privacy: PagePresetContent,
+      terms: PagePresetContent
+    },
+    links: {
+      home: {
+        children: [feature],
+        support: [support],
+        legal: [privacy, terms]
+      }
+    }
+  });
+  ```
+  
+  Every preset page must have its own content seed. Every preset page must become its own `PageInstance`. Named links must become `TemplateEdge` records. Presets must remain editable downstream before `buildPageSpecsFromGraph`.
+  
+  # Topology Contract
+  Templates may define child topology:
+  
+  ```ts
+  type ChildPolicy = required | optional | terminal;
+  type RelationshipRole = tree_child | navigation | semantic;
+  
+  interface ChildSlotDefinition {
+    id: string;
+    relationship: TemplateRelationshipKind;
+    targetTemplateIds?: PageTemplateId[];
+    min?: number;
+    max?: number;
+    ordered?: boolean;
+  }
+  
+  interface TemplateTopology {
+    childPolicy: ChildPolicy;
+    childSlots?: ChildSlotDefinition[];
+  }
+  ```
+  
+  Required child policies require child slots to satisfy minimum counts. Optional child policies allow empty child slots but validate any provided children. Terminal child policies reject tree-child edges while allowing navigation and semantic edges.
+  
+  # Incoming Context
+  Incoming context must be derived from graph edges. Presets must not maintain a parallel reverse-link source of truth.
+  
+  # Verification
+  Smoke tests must prove that authored page maps become independent PageInstances, named link maps become TemplateEdges, required child slots are enforced, optional child slots may be empty, terminal templates reject tree-child edges, and incoming context is derivable from graph edges.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1000"
+  - "adr:1066"
+  - "adr:1067"

@@ -6366,12 +6366,17 @@
     "markdownMirror": "/updates/index.md",
     "jsonLdId": "https://mdwrk.com/updates/#webpage",
     "path": "/updates/",
-    "wordCount": 549,
+    "wordCount": 582,
     "headings": [],
     "links": [
       {
         "href": "/updates/structured-data-learning-map/",
         "text": "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach",
+        "internal": true
+      },
+      {
+        "href": "/updates/package-dag-for-mdwrk-and-lander/",
+        "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
         "internal": true
       },
       {
@@ -6596,12 +6601,17 @@
     "markdownMirror": "/updates/archive/2026-05/index.md",
     "jsonLdId": "https://mdwrk.com/updates/archive/2026-05/#webpage",
     "path": "/updates/archive/2026-05/",
-    "wordCount": 98,
+    "wordCount": 131,
     "headings": [],
     "links": [
       {
         "href": "/updates/structured-data-learning-map/",
         "text": "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach",
+        "internal": true
+      },
+      {
+        "href": "/updates/package-dag-for-mdwrk-and-lander/",
+        "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
         "internal": true
       },
       {
@@ -6631,12 +6641,17 @@
     "markdownMirror": "/updates/author/cobycloud/index.md",
     "jsonLdId": "https://mdwrk.com/updates/author/cobycloud/#webpage",
     "path": "/updates/author/cobycloud/",
-    "wordCount": 548,
+    "wordCount": 581,
     "headings": [],
     "links": [
       {
         "href": "/updates/structured-data-learning-map/",
         "text": "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach",
+        "internal": true
+      },
+      {
+        "href": "/updates/package-dag-for-mdwrk-and-lander/",
+        "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
         "internal": true
       },
       {
@@ -7233,6 +7248,97 @@
       }
     ],
     "links": [],
+    "schemaIntentIds": [],
+    "componentIntentIds": []
+  },
+  {
+    "slug": "/updates/package-dag-for-mdwrk-and-lander/",
+    "url": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+    "title": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect | MdWrk Product Updates",
+    "description": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+    "h1": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+    "subtitle": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+    "intent": "read about mdwrk package dependency maps show how apps, shared packages, and lander packages connect",
+    "contentType": "update",
+    "locale": "en",
+    "updatedAt": "2026-05-18",
+    "tags": [
+      "updates"
+    ],
+    "llmsInclude": true,
+    "markdownMirror": "/updates/package-dag-for-mdwrk-and-lander/index.md",
+    "jsonLdId": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#webpage",
+    "path": "/updates/package-dag-for-mdwrk-and-lander/",
+    "wordCount": 434,
+    "headings": [
+      {
+        "depth": 2,
+        "id": "package-dag",
+        "text": "Package DAG"
+      },
+      {
+        "depth": 3,
+        "id": "appsclient",
+        "text": "apps/client"
+      },
+      {
+        "depth": 3,
+        "id": "appsmdwrkcom",
+        "text": "apps/mdwrkcom"
+      },
+      {
+        "depth": 3,
+        "id": "lander-packages",
+        "text": "Lander packages"
+      },
+      {
+        "depth": 2,
+        "id": "what-the-graph-shows",
+        "text": "What the graph shows"
+      },
+      {
+        "depth": 2,
+        "id": "why-this-matters",
+        "text": "Why this matters"
+      },
+      {
+        "depth": 2,
+        "id": "how-to-use-it",
+        "text": "How to use it"
+      }
+    ],
+    "links": [
+      {
+        "href": "/blog/media/mdwrk-dag-apps-client.svg",
+        "text": "apps/client package DAG",
+        "internal": true
+      },
+      {
+        "href": "/blog/media/mdwrk-dag-apps-mdwrkcom.svg",
+        "text": "apps/mdwrkcom package DAG",
+        "internal": true
+      },
+      {
+        "href": "/blog/media/mdwrk-dag-lander-packages.svg",
+        "text": "Lander package DAG",
+        "internal": true
+      },
+      {
+        "href": "/proof/package-surfaces",
+        "text": "Package Surfaces",
+        "internal": true
+      },
+      {
+        "href": "/docs/quickstart",
+        "text": "Quickstart",
+        "internal": true
+      },
+      {
+        "href": "/docs/extensions/extension-platform",
+        "text": "Extension Platform",
+        "internal": true
+      }
+    ],
     "schemaIntentIds": [],
     "componentIntentIds": []
   },

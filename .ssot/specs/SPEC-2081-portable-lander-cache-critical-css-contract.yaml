@@ -17,83 +17,83 @@ status_notes:
     note: "Created portable lander cache and critical CSS contract."
     status: "draft"
   -
-    status: "draft"
-    note: "Expanded portable cache and CSS contract to critical-path performance."
     at: "2026-05-18T15:43:45Z"
+    note: "Expanded portable cache and CSS contract to critical-path performance."
+    status: "draft"
 references: []
 body: |-
   # Portable Lander Cache, Critical CSS, And Critical Path Contract
-
+  
   ## Purpose
-
+  
   This specification defines the reusable cache freshness, validator, fingerprinted asset, header lookup, manifest, critical CSS delivery, and first-render critical-path contract for portable lander output.
-
+  
   ## Resource Classes
-
+  
   Portable lander builds shall classify generated resources as immutable, mutable-revalidate, or no-store.
-
+  
   Immutable resources are generated subresources whose URL changes when content changes. Immutable resources include fingerprinted CSS, JavaScript, image, font, and static asset files.
-
+  
   Mutable-revalidate resources are stable URLs whose content can change across builds. Mutable-revalidate resources include route HTML, root sitemap indexes, child sitemap URL sets, robots artifacts, LLM index artifacts, content indexes, semantic indexes, content registries, and JSON-LD graph artifacts unless a site profile explicitly fingerprints them.
-
+  
   No-store resources are personalized or sensitive responses. Static public landers should rarely emit this class, but the class is reserved for hosts that need it.
-
+  
   ## Cache Header Contract
-
+  
   Immutable resources shall support Cache-Control with public caching, at least 2592000 seconds of max-age, and immutable semantics when the host supports it. The preferred immutable max-age is 31536000 seconds.
-
+  
   Mutable-revalidate resources shall generally avoid positive max-age. They shall support Cache-Control: no-cache or an equivalent revalidation-required policy.
-
+  
   Mutable-revalidate resources shall provide ETag and Last-Modified metadata. Immutable resources should also provide ETag and Last-Modified metadata for diagnostics, range support, and host compatibility.
-
+  
   No-store resources shall use Cache-Control: no-store.
-
+  
   Generated static assets shall be compression-ready. The portable manifest shall expose enough media type and cache-class metadata for downstream adapters to enable gzip, Brotli, or host-native compression for text assets, including CSS, JavaScript, XML, JSON, TXT, SVG, and HTML where supported.
-
+  
   ## Header Lookup Contract
-
+  
   Reusable lander packages shall expose a portable cache header lookup helper. The helper shall accept a generated resource path or URL path and return intended headers derived from the cache manifest and resource classification rules.
-
+  
   The lookup helper shall normalize query strings and fragments away before lookup. It shall support root-relative paths and stable generated artifact paths. It shall not require mdwrkcom-specific routes, absolute workstation paths, Docker Compose ports, or server-specific configuration.
-
+  
   Downstream hosts may adapt the returned headers to nginx, CDN rules, static-host metadata, framework middleware, or tests, but they shall not need to reimplement classification rules to do so.
-
+  
   ## Fingerprinted Assets
-
+  
   Immutable resources shall use fingerprinted URLs derived from content or build-stable content hashes. Query-string versioning alone is not sufficient for the portable immutable asset contract.
-
+  
   The lander build shall expose the final fingerprinted URL to HTML emitters and manifest exporters.
-
+  
   ## Critical CSS Delivery
-
+  
   Portable lander builds shall support an inline critical CSS artifact containing only first-viewport CSS required to prevent unstyled or unstable initial render.
-
+  
   Portable lander builds shall support deferred full stylesheet delivery using preload activation or an equivalent non-render-blocking pattern. A noscript stylesheet fallback is required when JavaScript-based activation is used.
-
+  
   The full stylesheet shall remain available as an immutable fingerprinted asset unless a profile explicitly marks it mutable-revalidate.
-
+  
   Critical CSS shall be route-profile aware. A route profile may include root tokens, document base styles, header/navigation styles, first-viewport typography, first-viewport layout, focus/skip-link styles, and contrast-critical token applications. It shall not include lower-page markdown styling, archives, tables, cards, footers, or component states unless that surface appears in the first viewport for the route profile.
-
+  
   ## Critical Path And Script Inclusion
-
+  
   Portable lander builds shall classify inline scripts and generated script assets by route requirement. Theme bootstrap, deferred stylesheet activation, navigation interaction, demo controls, syntax highlighting, analytics, or enhancement scripts shall only be emitted when the route profile or content model requires them.
-
+  
   Syntax highlighting scripts shall not be emitted on routes that do not contain highlightable code blocks. Demo-control scripts shall not be emitted on routes that do not contain interactive demos. Navigation scripts shall be minimized to the behavior needed by the rendered navigation model.
-
+  
   Generated route HTML shall expose script inclusion facts for validation and downstream smoke tests. Validation shall fail when a route emits a governed script without a route requirement or explicit temporary migration classification.
-
+  
   ## Animation And Motion Contract
-
+  
   Portable lander theme output shall avoid first-viewport animations that require layout, paint-heavy, filter, or non-composited properties. First-viewport animation shall prefer transform and opacity, shall provide reduced-motion behavior, and shall not shift layout.
-
+  
   Theme packages may provide expressive styling per viewport band, but animation policy remains portable. Product hosts shall not override the policy with app-local animation behavior for governed lander surfaces.
-
+  
   ## Manifest Contract
-
+  
   Portable lander builds shall be able to emit a machine-readable cache and critical-path manifest. Each resource entry shall include path, cache class, content hash or validator hash, last modified timestamp, media type, compression eligibility, and intended headers. Each route entry shall include critical CSS profile, deferred stylesheet URL, script inclusion facts, and budget metadata when emitted by the build.
-
+  
   Root and child sitemap artifacts, robots files, LLM files, content indexes, semantic indexes, content registries, JSON-LD graph files, route HTML, and fingerprinted assets shall appear in the manifest when emitted by the build.
-
+  
   Validation shall fail when a generated file lacks a cache class, when immutable resources are not fingerprinted, when mutable-revalidate resources receive long positive max-age by default, when required validators are missing, when lookup helpers return headers that contradict the manifest, when a full stylesheet remains render-blocking with critical CSS enabled, when a route emits unused governed JavaScript, or when first-viewport governed animation violates the portable motion contract.
 spec_kind: "normative"
 adr_ids:

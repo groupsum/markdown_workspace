@@ -13,26 +13,26 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to specify shared extension contribution surfaces."
     at: "2026-05-18T15:56:32Z"
+    note: "Created to specify shared extension contribution surfaces."
+    status: "draft"
 references: []
 body: |-
   # MdWrk Extension Contribution Surface Contract
-
+  
   ## Purpose
   This specification defines shared extension contribution surfaces for MdWrk extensions.
-
+  
   ## Scope
   The contract applies to `@mdwrk/extension-manifest`, `@mdwrk/extension-host`, `@mdwrk/extension-runtime`, Extension Manager, Workspace Files, Git Ops, Gemini Agent, Theme Studio, Language Pack Studio, and external catalog fixtures.
-
+  
   ## Requirements
   1. Extension manifests shall declare panes, panels, settings views, view toolbars, icons, hooks, permissions, compatibility, activation requirements, and diagnostics when those surfaces are exposed.
   2. Extension host contracts shall provide stable types for contribution resolution and host rendering.
   3. Extension runtime shall enforce compatibility, activation lifecycle, persisted state, hook dispatch, and development-only default boundaries.
   4. First-party extensions shall consume shared pane and toolbar contracts instead of local protocols.
   5. External catalog fixtures shall exercise every governed contribution surface needed for conformance.
-
+  
   ## Verification
   Passing evidence shall include manifest validation, runtime activation tests, host contribution resolution tests, first-party extension smoke tests, and screenshot coverage for extension panes, panels, settings, and toolbars.
 spec_kind: "normative"

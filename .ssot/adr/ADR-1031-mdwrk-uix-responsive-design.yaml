@@ -17,33 +17,33 @@ status_notes:
     note: "Expanded UIX responsive boundary with chassis layout, zoom, accessibility, and responsive matrix obligations."
     status: "accepted"
   -
-    status: "accepted"
-    note: "Extended by adr:1070, spc:2097, and spc:2099 for client chrome, action rail, and screenshot evidence governance."
     at: "2026-05-18T15:57:06Z"
+    note: "Extended by adr:1070, spc:2097, and spc:2099 for client chrome, action rail, and screenshot evidence governance."
+    status: "accepted"
 references: []
 body: |-
   # ADR-1031: MdWrk UIX responsive design boundary
-
+  
   ## Decision
-
+  
   MdWrk UIX shall be governed by explicit responsive, device, orientation, and compaction contracts. Layout behavior must be specified through CSS tokens and stable class contracts rather than one-off component overrides.
-
+  
   ## Scope
-
+  
   - Interoperability across browser, PWA, and desktop shells.
   - Command palettes, panes, extension view modes, action rails, file rails, and status/header bars.
   - CSS layout class names and tokenized dimensions.
   - Aspect ratios, view sizes, breakpoints, ultra-wide behavior, portrait and landscape behavior.
   - Mobile half-screen behavior when the visual keyboard is active.
   - Iconized and compacted UI states.
-
+  
   ## Consequences
-
+  
   - Checklist UIX work items become targetable features linked to the responsive UIX SPEC.
   - Device-specific quirks must be encoded as named requirements and covered by responsive evidence.
-
+  
   ## 2026 SSOT Coverage Update
-
+  
   The UIX boundary shall govern the application chassis as named layout regions: header, status footer, action rail, sidebars, tab strip, editor panes, preview panes, modal layers, and extension views.
-
+  
   UIX conformance shall include responsive matrix behavior across browser, PWA, Electron desktop, Android where in scope, mobile portrait, mobile landscape, tablet, desktop, ultra-wide, and visual-keyboard modes. Zoom, accessibility, fixed chrome, pane-owned scrolling, and layout token behavior are part of the UIX contract.

@@ -8,28 +8,46 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context."
+summary: "This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context, navigation, topology validation, and PageSpec generation inputs."
 supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to define semantic page-template graph resolution."
     at: "2026-05-18T06:35:12Z"
+    note: "Created to define semantic page-template graph resolution."
+    status: "draft"
+  -
+    status: "draft"
+    note: "Updated relationship contract with roles, topology validation, and incoming context derivation."
+    at: "2026-05-18T16:17:44Z"
 references: []
 body: |-
   # Scope
-  This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context.
+  This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context, navigation, topology validation, and PageSpec generation inputs.
   
-  # Requirements
-  The resolver must locate page instances by id, validate each edge against the registered relationship rules, group outbound and inbound links by role, preserve deterministic ordering, and expose resolved links through role-keyed slots.
+  # Relationship Roles
+  The contract must support relationship roles for `tree_child`, `navigation`, and `semantic` relationships.
   
-  The resolver must support required and optional cardinalities: `zero_or_one`, `one`, `zero_or_many`, and `one_or_many`. Missing required relationships, duplicate singular relationships, unsupported template-kind pairs, unsupported roles, and broken page references must be validation failures.
+  Tree-child relationships shape sitemap tree branches and child slots. Navigation relationships include parent, previous, next, breadcrumb, and related navigation. Semantic relationships include legal, support, references, FAQ question, course module, module quiz, package API, and domain-specific associations.
   
-  Ordered relationships must sort by numeric `order` first and then by stable page id or slug. The resolver may derive breadcrumbs, previous links, next links, related links, footer links, and navigation groups from relationship roles and render intents, but those derivations must remain deterministic and inspectable.
+  # Outgoing Resolution
+  The resolver must locate page instances by id, validate each outgoing edge against registered relationship rules, group outbound links by slot id, preserve deterministic ordering, and expose resolved links through slot-keyed collections.
+  
+  Named link slots must preserve relationship kind, target instance id, target template id, href, label, and ordering metadata.
+  
+  # Incoming Context
+  The resolver must be able to derive incoming context from graph edges. Incoming context must not require authors to duplicate reverse links manually. A target page may derive parents, referring hubs, reverse references, or other incoming relationship context from graph edges.
+  
+  # Cardinality And Topology
+  The resolver must support required and optional cardinalities. Required child slots must satisfy their minimum counts. Optional child slots may be empty, but provided child edges must match allowed target templates and cardinality. Terminal templates must reject tree-child edges while allowing non-child navigation and semantic edges.
+  
+  # Validation
+  Missing required edges, duplicate singular edges, unsupported template-kind pairs, unsupported roles, broken page references, invalid terminal child edges, and invalid child target kinds must be validation failures.
+  
+  Ordered relationships must sort by numeric `order` first and then by stable page id or slug. Breadcrumbs, previous links, next links, related links, footer links, and navigation groups derived from relationship roles must remain deterministic and inspectable.
   
   # Verification
-  Tests must cover valid graphs, missing required edges, invalid target kinds, duplicate singular edges, ordered child edges, reciprocal relationships, and downstream PageSpec generation from resolved slots.
+  Tests must cover valid graphs, missing required child edges, optional empty child slots, invalid terminal child edges, invalid target kinds, duplicate singular edges, ordered child edges, incoming context derivation, reciprocal navigation, and downstream PageSpec generation from resolved slots.
 spec_kind: "normative"
 adr_ids:
   - "adr:1067"

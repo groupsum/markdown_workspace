@@ -1,0 +1,37 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1000"
+number: 1000
+slug: "page-template-presets-authored-starter-graphs"
+title: "Page Template Presets Are Authored Starter Graphs"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Page-template presets are useful only if they give operators a complete starter graph that can be edited downstream. A preset that merely says a home page includes support, legal, or feature pages creates ambiguity: every page must still have its own content, own route, own PageInstance, and explicit relationships to other pages."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern preset graph authoring and topology semantics."
+    at: "2026-05-18T16:18:18Z"
+references: []
+body: |-
+  # Context
+  Page-template presets are useful only if they give operators a complete starter graph that can be edited downstream. A preset that merely says a home page includes support, legal, or feature pages creates ambiguity: every page must still have its own content, own route, own PageInstance, and explicit relationships to other pages.
+  
+  # Decision
+  Page-template presets are authored starter graphs, not page containers or page includes.
+  
+  Each preset must produce independently authored page instances plus explicit semantic and topology edges. Every preset page must have its own content seed. Presets must expose a named page map and a named link map as the authoring surface. Named pages become PageInstances. Named links become TemplateEdges. Incoming context must be derivable from graph edges instead of being stored as a second source of truth.
+  
+  Presets may provide default content seeds, slugs, summaries, sections, schema kinds, and relationship maps, but downstream content packs may override or replace those values before PageSpec generation.
+  
+  Templates may define child topology constraints. Terminal pages reject tree-child edges but may retain parent, related, previous, next, support, legal, reference, and other non-child links.
+  
+  # Boundaries
+  The preset package composes templates and graph starters. It does not render pages, compile final sites, or own product-specific copy. The page-template package owns validation, resolution, topology rules, and PageSpec generation.
+  
+  # Consequences
+  Operators can start from product-site, FAQ hub, learning path, docs hub, package catalog, and trust-center presets without losing control over each page's content or relationship graph.

@@ -1,6 +1,6 @@
 # @mdwrk/mdwrkspace
 
-**MdWrk client application package**
+MdWrk browser client package for markdown authoring, previewing, extension hosting, theme switching, responsive workspace layout, and retained-version PWA delivery.
 
 <p align="center">
   <a href="https://github.com/groupsum/markdown_workspace/blob/master/apps/client/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.apps_client_README&amp;left_text=hits" /></a>
@@ -9,16 +9,16 @@
   <a href="../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
 </p>
 
-`@mdwrk/mdwrkspace` packages the MdWrk browser client: markdown editing, previewing, extension hosting, theme switching, responsive shell layout, and retained-version PWA delivery.
+`@mdwrk/mdwrkspace` packages the client surface that MdWrk uses in the browser and desktop shell. It includes the workspace chrome, editor and preview surfaces, bundled first-party extensions, responsive viewport contract, and the mount function used by embedders.
 
 ## Why
-Consumers evaluating the client need the product story first, then the shell contract and extension/runtime context. This README keeps the package approachable while still linking to the deeper architecture docs.
+Use it when you need the MdWrk client itself rather than one of the lower-level editor, renderer, theme, or extension packages. The package gives consumers the runnable workspace shell while keeping deeper architecture details linked to the repo docs.
 
 ## What
 - A workspace shell with header, action rail, explorer/sidebar, stage, and footer regions.
 - Built-in authoring, preview, theme, language, extension, and Git-adjacent surfaces.
 - A single viewport contract shared across all themes, with theme-specific styling layered on top.
-- A package-level surface that still cross-links to the repo docs for architecture detail.
+- A package-level `mountMdWrkSpace` entrypoint for embedding the client surface.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
@@ -28,7 +28,21 @@ npm install @mdwrk/mdwrkspace
 ```
 
 ## Usage
-Use the published package when you want the client surface itself, or run it from the workspace while iterating on the repo.
+Use the published package when you want the client surface itself.
+
+```ts
+import { mountMdWrkSpace } from "@mdwrk/mdwrkspace";
+
+const root = document.getElementById("root");
+
+if (!root) {
+  throw new Error("Missing MdWrk root element.");
+}
+
+const unmount = mountMdWrkSpace(root);
+```
+
+Run it from the workspace while iterating on the repo.
 
 ```bash
 npm install

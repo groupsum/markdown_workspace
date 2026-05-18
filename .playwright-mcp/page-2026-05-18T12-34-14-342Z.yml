@@ -1,0 +1,137 @@
+- generic [ref=e3]:
+  - navigation "Main navigation" [ref=e4]:
+    - generic [ref=e5]:
+      - link "MdWrk" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+        - generic [ref=e12]: MdWrk
+      - list [ref=e14]:
+        - listitem [ref=e15]:
+          - link "Markdown" [ref=e16] [cursor=pointer]:
+            - /url: /markdown/
+        - listitem [ref=e17]:
+          - link "Features" [ref=e18] [cursor=pointer]:
+            - /url: /features/
+        - listitem [ref=e19]:
+          - link "Packages" [ref=e20] [cursor=pointer]:
+            - /url: /packages/
+        - listitem [ref=e21]:
+          - link "Compare" [ref=e22] [cursor=pointer]:
+            - /url: /compare/
+        - listitem [ref=e23]:
+          - link "Docs" [ref=e24] [cursor=pointer]:
+            - /url: /docs/
+        - listitem [ref=e25]:
+          - link "Updates" [ref=e26] [cursor=pointer]:
+            - /url: /updates/
+        - listitem [ref=e27]:
+          - link "Privacy" [ref=e28] [cursor=pointer]:
+            - /url: /privacy/
+      - generic [ref=e29]:
+        - button "Toggle lander theme" [ref=e30]:
+          - img [ref=e31]
+          - generic [ref=e33]: Lander Light
+        - link "Open MdWrk repository" [ref=e34] [cursor=pointer]:
+          - /url: https://github.com/groupsum/markdown_workspace
+          - img [ref=e35]
+  - main [ref=e37]:
+    - generic [ref=e41]:
+      - article "May 2026" [ref=e42]:
+        - generic [ref=e43]:
+          - link "Back to Updates" [ref=e44] [cursor=pointer]:
+            - /url: /updates/
+          - heading "May 2026" [level=1] [ref=e45]
+          - paragraph [ref=e46]: Product Updates by Month
+        - generic [ref=e47]: Product Updates by Month
+        - generic [ref=e48]:
+          - article [ref=e49]:
+            - link "Read Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach":
+              - /url: /updates/structured-data-learning-map/
+            - link "May 18, 2026" [ref=e50] [cursor=pointer]:
+              - /url: /updates/archive/2026-05/
+              - time [ref=e51]: May 18, 2026
+            - heading "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach" [level=2] [ref=e52]:
+              - link "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach" [ref=e53] [cursor=pointer]:
+                - /url: /updates/structured-data-learning-map/
+            - paragraph [ref=e54]: MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
+            - link "CobyCloud" [ref=e55] [cursor=pointer]:
+              - /url: /updates/author/cobycloud/
+          - article [ref=e56]:
+            - link "Read Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use":
+              - /url: /updates/settings-simplification-for-daily-flow/
+            - link "May 1, 2026" [ref=e57] [cursor=pointer]:
+              - /url: /updates/archive/2026-05/
+              - time [ref=e58]: May 1, 2026
+            - heading "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [level=2] [ref=e59]:
+              - link "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use" [ref=e60] [cursor=pointer]:
+                - /url: /updates/settings-simplification-for-daily-flow/
+            - paragraph [ref=e61]: MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+            - link "CobyCloud" [ref=e62] [cursor=pointer]:
+              - /url: /updates/author/cobycloud/
+      - region "Frequently Asked Questions" [ref=e63]:
+        - heading "Frequently Asked Questions" [level=2] [ref=e64]
+        - generic [ref=e65]:
+          - group [ref=e66]:
+            - generic "What does this MdWrk update cover?" [ref=e67]
+          - group [ref=e68]:
+            - generic "What should readers take away from this update?" [ref=e69]
+      - region "Related Pages" [ref=e70]:
+        - heading "Related Pages" [level=2] [ref=e71]
+        - list [ref=e72]:
+          - listitem [ref=e73]:
+            - link "Getting Started" [ref=e74] [cursor=pointer]:
+              - /url: /docs/
+          - listitem [ref=e75]:
+            - link "Local-first Markdown Workspace" [ref=e76] [cursor=pointer]:
+              - /url: /features/local-first-markdown-workspace/
+          - listitem [ref=e77]:
+            - link "@mdwrk/markdown-renderer-core" [ref=e78] [cursor=pointer]:
+              - /url: /packages/markdown-renderer-core/
+  - contentinfo [ref=e79]:
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - link "MdWrk" [ref=e83] [cursor=pointer]:
+            - /url: /
+            - img [ref=e84]
+            - text: MdWrk
+          - paragraph [ref=e88]: The local-first Markdown workspace. Your data, your device, your rules.
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - heading "Resources" [level=2] [ref=e91]
+            - list [ref=e92]:
+              - listitem [ref=e93]:
+                - link "Documentation" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/
+              - listitem [ref=e95]:
+                - link "Updates" [ref=e96] [cursor=pointer]:
+                  - /url: /updates/
+              - listitem [ref=e97]:
+                - link "Live Demo" [ref=e98] [cursor=pointer]:
+                  - /url: https://app.mdwrk.com
+              - listitem [ref=e99]:
+                - link "npm" [ref=e100] [cursor=pointer]:
+                  - /url: https://www.npmjs.com/org/mdwrk
+          - generic [ref=e101]:
+            - heading "Follow" [level=2] [ref=e102]
+            - list [ref=e103]:
+              - listitem [ref=e104]:
+                - link "GitHub" [ref=e105] [cursor=pointer]:
+                  - /url: https://github.com/groupsum/markdown_workspace
+              - listitem [ref=e106]:
+                - link "X.com" [ref=e107] [cursor=pointer]:
+                  - /url: https://x.com/swarmauri
+              - listitem [ref=e108]:
+                - link "Community" [ref=e109] [cursor=pointer]:
+                  - /url: "#"
+          - generic [ref=e110]:
+            - heading "Legal" [level=2] [ref=e111]
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - link "Privacy" [ref=e114] [cursor=pointer]:
+                  - /url: /legal/privacy/
+              - listitem [ref=e115]:
+                - link "Terms" [ref=e116] [cursor=pointer]:
+                  - /url: /legal/terms/
+      - separator [ref=e117]
+      - generic [ref=e118]: © 2026 MdWrk. Designed for privacy.

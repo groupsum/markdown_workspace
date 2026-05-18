@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.134",
+  "version": "0.2.136",
   "packageManager": "pnpm@10.11.0",
   "workspaces": [
     "apps/*",
@@ -130,7 +130,8 @@
     "snapshot:release": "node ./tools/governance/write-release-snapshot.mjs",
     "validate:release-snapshots": "node ./tools/governance/validate-release-snapshots.mjs",
     "validate:governance-suite": "node ./tools/governance/validate-governance-suite.mjs",
-    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots && npm run validate:governance-suite"
+    "validate:mdwrk-package-cr-order": "node ./tools/governance/validate-mdwrk-package-cr-order.mjs",
+    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots && npm run validate:governance-suite && npm run validate:mdwrk-package-cr-order"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",

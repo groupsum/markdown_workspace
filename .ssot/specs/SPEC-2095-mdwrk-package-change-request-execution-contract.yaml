@@ -13,19 +13,19 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to specify package-owned MdWrk CR execution."
     at: "2026-05-18T15:56:27Z"
+    note: "Created to specify package-owned MdWrk CR execution."
+    status: "draft"
 references: []
 body: |-
   # MdWrk Package Change Request Execution Contract
-
+  
   ## Purpose
   This specification defines how package-owned MdWrk change requests are ordered, tracked, and verified.
-
+  
   ## Scope
   The contract applies to repo governance, package manifests, `.ssot` records, scoped `AGENTS.md` files, screenshot artifacts, `apps/client`, `apps/desktop`, `apps/mdwrkcom`, and all `packages/*` workspaces.
-
+  
   ## Requirements
   1. Each change request shall name the owning package or explicit owner set.
   2. Cross-package work shall list every owner and shall not hide app-host obligations inside reusable package scopes.
@@ -34,7 +34,7 @@ body: |-
   5. Every package-changing commit shall increment affected package versions by patch or minor only.
   6. UI work shall include screenshot evidence for every relevant theme, view, mode, pane, and modal.
   7. Validation shall run at the smallest package scope that proves the change and at the repo governance scope when SSOT, docs, generated artifacts, or root layout changes.
-
+  
   ## Verification
   Passing evidence shall include package-scoped test/build output, SSOT validation, screenshot manifests where UI changed, and a clear mapping from CR id to package-owned feature/test rows.
 spec_kind: "governance"
