@@ -1,0 +1,31 @@
+---
+schema: "mdwrk.page.v1"
+slug: "/markdown/markdown-writing-workflow/checklist/"
+title: "Markdown writing workflow Checklist | MdWrk"
+description: "A Markdown writing workflow checklist helps teams review authoring, preview, storage, portability, and publishing concerns before choosing or expanding a Markdown workflow."
+h1: "Markdown writing workflow checklist"
+entity: "MdWrk"
+intent: "Markdown writing workflow checklist"
+contentType: "docs"
+updatedAt: "2026-05-16"
+author: "CobyCloud"
+subtitle: "Use this checklist to evaluate Markdown writing workflow before treating it as a durable team workflow."
+parent: "/markdown/"
+related:
+  - "/markdown/"
+  - "/markdown/how-to-write-markdown/"
+  - "/answers/"
+faqs:
+  - question: "What should a Markdown writing workflow checklist cover?"
+    answer: "A checklist should cover source readability, preview quality, storage boundaries, collaboration expectations, and how the content will be published or reused."
+  - question: "Why use a checklist for Markdown writing workflow?"
+    answer: "A checklist makes evaluation repeatable and helps teams compare tools or workflow options using the same decision criteria."
+---
+
+A Markdown writing workflow checklist should test more than whether the feature or workflow exists. It should also test whether the Markdown source remains understandable, whether preview behaves predictably, and whether the storage model matches the team’s expectations.
+
+A clear Markdown workflow helps authors move from draft to published output without losing source portability. Teams should also check how the workflow interacts with version control, publishing, package reuse, and any extension or theme surfaces that might affect the final experience.
+
+Another useful checklist category is portability. If the workflow depends too heavily on private app state, hidden formatting rules, or one delivery target, the long-term benefits of Markdown become weaker.
+
+MdWrk is useful in this evaluation because it exposes local-first behavior, package surfaces, and proof-oriented public documentation that make these checklist questions easier to answer honestly.

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" data-lander-theme="lander-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const valid = new Set(['lander-light', 'lander-dark']);
+        const requested = new URLSearchParams(window.location.search).get('theme');
+        const stored = localStorage.getItem(key);
+        const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'lander-light' : 'lander-dark';
+        const requestedTheme = requested === 'dark' ? 'lander-dark' : requested === 'light' ? 'lander-light' : requested;
+        const theme = valid.has(requestedTheme) ? requestedTheme : valid.has(stored) ? stored : preferred;
+        document.documentElement.setAttribute('data-lander-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+      })();
+    </script>
+    <title>Markdown Formatting | MdWrk Features</title>
+    <meta name="description" content="MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.">
+    <link rel="canonical" href="https://mdwrk.com/features/advanced-formatting/">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="MdWrk">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MdWrk">
+    <meta property="og:title" content="Markdown Formatting | MdWrk Features">
+    <meta property="og:description" content="MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.">
+    <meta property="og:url" content="https://mdwrk.com/features/advanced-formatting/">
+    <meta property="og:image" content="https://mdwrk.com/favicon.svg">
+    <meta property="og:image:alt" content="Markdown Formatting">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Markdown Formatting | MdWrk Features">
+    <meta name="twitter:description" content="MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.">
+    <meta name="twitter:image" content="https://mdwrk.com/favicon.svg">
+    <meta name="twitter:image:alt" content="Markdown Formatting">
+    <meta name="DC.title" content="Markdown Formatting | MdWrk Features">
+    <meta name="DC.description" content="MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.">
+    <meta name="DC.identifier" content="https://mdwrk.com/features/advanced-formatting/">
+    <meta name="DC.language" content="en">
+    <meta name="DC.date" content="2026-05-03">
+    <meta name="DC.publisher" content="MdWrk">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mdwrk.com/features/advanced-formatting/#webpage","url":"https://mdwrk.com/features/advanced-formatting/","name":"Markdown Formatting | MdWrk Features","headline":"Markdown Formatting","description":"MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.","datePublished":"2026-05-03T00:00:00-05:00","dateModified":"2026-05-03T00:00:00-05:00","image":"https://mdwrk.com/favicon.svg","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"inLanguage":"en","isPartOf":{"@id":"https://mdwrk.com/#website"},"publisher":{"@id":"https://mdwrk.com/#organization"},"mainEntity":{"@id":"https://mdwrk.com/features/advanced-formatting/#primary"}},{"@type":"Article","@id":"https://mdwrk.com/features/advanced-formatting/#primary","mainEntityOfPage":{"@id":"https://mdwrk.com/features/advanced-formatting/#webpage"},"headline":"Markdown Formatting","name":"Markdown Formatting | MdWrk Features","description":"MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.","url":"https://mdwrk.com/features/advanced-formatting/","image":"https://mdwrk.com/favicon.svg","datePublished":"2026-05-03T00:00:00-05:00","dateModified":"2026-05-03T00:00:00-05:00","inLanguage":"en","author":{"@type":"Organization","@id":"https://mdwrk.com/updates/author/cobycloud/#author","name":"CobyCloud","url":"https://mdwrk.com/updates/author/cobycloud/"},"publisher":{"@id":"https://mdwrk.com/#organization"},"creator":{"@id":"https://mdwrk.com/#organization"}},{"@type":"FAQPage","@id":"https://mdwrk.com/features/advanced-formatting/#faq","mainEntity":[{"@type":"Question","name":"What will I learn from Markdown Formatting?","acceptedAnswer":{"@type":"Answer","text":"MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format."}},{"@type":"Question","name":"Who should read Markdown Formatting?","acceptedAnswer":{"@type":"Answer","text":"Read this page if you need practical MdWrk guidance for markdown formatting, including the relevant workflow, product surface, and follow-up documentation paths."}}]},{"@type":"BreadcrumbList","@id":"https://mdwrk.com/features/advanced-formatting/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"MdWrk","item":"https://mdwrk.com/"},{"@type":"ListItem","position":2,"name":"MdWrk features","item":"https://mdwrk.com/features/"},{"@type":"ListItem","position":3,"name":"Markdown Formatting","item":"https://mdwrk.com/features/advanced-formatting/"}]}]}</script>
+    <style data-lander-critical-css="mdwrkcom-static-shell">html{--static-bg:#f8fafc;--static-text:#102033;--static-muted:#344559;--static-panel:#ffffff;--static-panel-muted:#eff6ff;--static-border:rgba(15,23,42,.16);--static-accent:#4f46e5;background:var(--static-bg);color:var(--static-text);color-scheme:light}html[data-lander-theme="lander-dark"]{--static-bg:#020617;--static-text:#edf4ff;--static-muted:#94a3b8;--static-panel:#0f172a;--static-panel-muted:#111c32;--static-border:rgba(148,163,184,.18);--static-accent:#818cf8;background:var(--static-bg);color:var(--static-text);color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:var(--static-bg);color:var(--static-text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.app-shell{min-height:100vh;background:var(--static-bg);color:var(--static-text)}.navbar{display:flex;align-items:center;background:var(--static-bg);color:var(--static-text);border-bottom:1px solid var(--static-border)}.navbar-inner{display:flex;align-items:center;justify-content:space-between;width:min(100%,1180px);min-height:4rem;margin:0 auto;padding:.7rem 1rem;gap:1rem}.navbar-brand{display:inline-flex;align-items:center;min-width:0;gap:.75rem;color:var(--static-text);font-weight:800;text-decoration:none}.navbar-brand-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:2.5rem;height:2.5rem;border-radius:.65rem;background:var(--static-accent);color:#fff}.navbar-brand-icon{display:block;width:1.5rem;height:1.5rem;flex:0 0 auto}.navbar-brand-text{font-size:1.35rem;line-height:1;letter-spacing:0}.navbar-actions{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-left:auto}.navbar-theme-toggle,.navbar-menu-toggle,.navbar-github-link{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;min-width:2.5rem;height:2.5rem;padding:.5rem;color:var(--static-muted);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.65rem;text-decoration:none}.navbar-theme-icon,.navbar-menu-icon,.navbar-github-icon,.static-menu-close-icon{display:block;width:1.25rem;height:1.25rem;flex:0 0 auto}.navbar-menu-panel.is-closed{display:none}.navbar-menu-panel{position:absolute;top:4rem;left:1rem;right:1rem;z-index:20;padding:.75rem;background:var(--static-panel);border:1px solid var(--static-border);border-radius:.85rem;box-shadow:0 20px 60px rgba(2,6,23,.24)}.navbar-menu-list{display:flex;flex-direction:column;gap:.25rem;list-style:none;margin:0;padding:0}.navbar-link{display:block;padding:.65rem .75rem;color:var(--static-muted);border-radius:.55rem;text-decoration:none;font-size:.95rem;font-weight:700}.navbar-link.is-active{color:var(--static-text);background:var(--static-panel-muted)}.app-main{min-height:60vh}.hero-section,.docs-main{position:relative}.hero-inner,.docs-content-wrap{max-width:1120px;margin:0 auto;padding:clamp(2rem,5vw,4.5rem) 1rem}.hero-heading,.docs-title,.blog-post-title{margin:0;color:inherit;line-height:1.05;font-weight:800;letter-spacing:0}.hero-copy,.docs-description,.blog-post-description{max-width:66ch;color:var(--static-muted)}.hero-copy.home-subtitle{margin-left:auto;margin-right:auto;text-align:center}.lander-doc-shell{background:var(--static-bg);color:var(--static-text)}.docs-layout{display:block}.docs-sidebar,.docs-toc{display:none}.docs-content-wrap{max-width:960px;padding:clamp(1.5rem,4vw,3.5rem) 1rem}.docs-article-column{display:flex;min-width:0;flex-direction:column;gap:1rem}.locale-switcher-row{display:flex;width:100%;justify-content:flex-end}.locale-switcher{position:relative;width:max-content;max-width:100%;margin:0}.locale-switcher-summary{display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;padding:.35rem .75rem;color:var(--static-text);background:var(--static-panel-muted);border:1px solid var(--static-border);border-radius:.55rem;font-size:.8rem;font-weight:800;cursor:pointer;list-style:none}.locale-switcher-summary::-webkit-details-marker{display:none}.locale-switcher-current{text-transform:uppercase}.locale-switcher-menu{position:absolute;top:calc(100% + .4rem);right:0;z-index:25;display:grid;min-width:10rem;gap:.15rem;padding:.4rem;background:var(--static-panel);border:1px solid var(--static-border);border-radius:.65rem;box-shadow:0 18px 48px rgba(2,6,23,.24)}.locale-switcher:not([open]) .locale-switcher-menu{display:none}.locale-switcher-option{display:block;padding:.5rem .65rem;color:var(--static-muted);border-radius:.45rem;text-decoration:none;font-size:.82rem;font-weight:800}.locale-switcher-option[aria-current="page"]{color:var(--static-text);background:var(--static-panel-muted)}.lander-content-card,.docs-content-card{background:var(--static-panel);border:1px solid var(--static-border);border-radius:1rem;padding:clamp(1.25rem,4vw,2.5rem);box-shadow:0 20px 80px rgba(2,6,23,.18)}.docs-header{padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--static-border)}.lander-breadcrumbs{margin:0 0 .85rem;color:var(--static-muted);font-size:.78rem;font-weight:800;text-transform:uppercase}.lander-breadcrumbs-list{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}.docs-title{font-size:clamp(2rem,8vw,3.2rem)}.docs-subtitle{margin:.85rem 0 0;color:var(--static-muted);font-size:1.02rem;line-height:1.7}.lander-markdown .markdown-body{color:var(--static-text);font-size:1rem;line-height:1.75}.lander-markdown .markdown-body h2,.lander-markdown .markdown-body h3{margin:1.6rem 0 .75rem;color:var(--static-text);line-height:1.2}.lander-markdown .markdown-body p,.lander-markdown .markdown-body ul,.lander-markdown .markdown-body ol{margin:0 0 1rem}@media (min-width:768px){.navbar-menu-toggle{display:none}.navbar-menu-panel,.navbar-menu-panel.is-closed{display:block;position:static;margin-left:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}.navbar-actions{margin-left:.75rem}.navbar-menu-list{flex-direction:row;align-items:center;gap:.35rem}.navbar-link{padding:.5rem .65rem}}</style>
+    <link rel="preload" href="/assets/static.1ead6d228a0e7398.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/assets/static.1ead6d228a0e7398.css"></noscript>
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-shell">
+        <nav class="navbar" aria-label="Main navigation">
+          <div class="navbar-inner">
+            <a href="/" class="navbar-brand">
+              <div class="navbar-brand-mark"><svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg></div>
+              <span class="navbar-brand-text">MdWrk</span>
+            </a>
+            <div class="navbar-menu-panel is-closed" id="navbar-sticky">
+              <ul class="navbar-menu-list">
+                <li><a class="navbar-link is-inactive" href="/markdown/">Markdown</a></li>
+              <li><a class="navbar-link is-active" href="/features/">Features</a></li>
+              <li><a class="navbar-link is-inactive" href="/packages/">Packages</a></li>
+              <li><a class="navbar-link is-inactive" href="/compare/">Compare</a></li>
+              <li><a class="navbar-link is-inactive" href="/docs/">Docs</a></li>
+              <li><a class="navbar-link is-inactive" href="/updates/">Updates</a></li>
+              <li><a class="navbar-link is-inactive" href="/privacy/">Privacy</a></li>
+              </ul>
+            </div>
+            <div class="navbar-actions">
+              <button type="button" class="navbar-theme-toggle" data-static-theme-toggle aria-label="Toggle lander theme" title="Toggle lander theme">
+                <svg class="navbar-theme-icon static-theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+                <span class="sr-only" data-static-theme-label>Lander Theme</span>
+              </button>
+              <a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="navbar-github-link" aria-label="Open MdWrk repository" title="Open MdWrk repository">
+                <svg class="navbar-github-icon static-github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.8 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"></path>
+                </svg>
+              </a>
+              <button type="button" class="navbar-menu-toggle" data-static-menu-toggle aria-controls="navbar-sticky" aria-expanded="false" aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                <svg class="navbar-menu-icon static-menu-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12h16"></path>
+                  <path d="M4 6h16"></path>
+                  <path d="M4 18h16"></path>
+                </svg>
+                <svg class="navbar-menu-icon static-menu-close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </nav>
+        <main id="content" class="app-main">
+          <div class="lander-doc-shell docs-layout">
+
+            <section class="docs-main">
+              <div class="docs-content-wrap">
+                <div class="docs-article-column">
+
+
+                <article class="docs-content-card lander-content-card">
+                  <header class="docs-header">
+                    <nav class="lander-breadcrumbs" aria-label="Breadcrumbs">
+                    <ol class="lander-breadcrumbs-list">
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/">MdWrk</a></li>
+                      <li class="lander-breadcrumbs-item"><a class="lander-breadcrumbs-link" href="/features/">MdWrk features</a></li>
+                      <li class="lander-breadcrumbs-item"><span class="lander-breadcrumbs-current">Markdown Formatting</span></li>
+                    </ol>
+                  </nav>
+                    <h1 class="docs-title">Markdown Formatting</h1>
+
+
+                  </header>
+                  <aside class="docs-page-toc" aria-label="Article table of contents">
+              <div class="docs-page-toc-inner">
+                <h4 class="docs-toc-heading">On this page</h4>
+                <nav class="docs-toc-nav">
+                  <div class="docs-toc-item"><a href="#baseline-conformance" class="docs-toc-link" title="Baseline Conformance">Baseline Conformance</a></div>
+                  <div class="docs-toc-item"><a href="#what-the-renderer-guarantees" class="docs-toc-link" title="What the Renderer Guarantees">What the Renderer Guarantees</a></div>
+                  <div class="docs-toc-item"><a href="#optional-markdown-profiles" class="docs-toc-link" title="Optional Markdown Profiles">Optional Markdown Profiles</a></div>
+                  <div class="docs-toc-item"><a href="#in-scope-profiles" class="docs-toc-link docs-toc-link-child" title="In-Scope Profiles">In-Scope Profiles</a></div>
+                  <div class="docs-toc-item"><a href="#experimental-or-out-of-boundary-profiles" class="docs-toc-link docs-toc-link-child" title="Experimental or Out-of-Boundary Profiles">Experimental or Out-of-Boundary Profiles</a></div>
+                  <div class="docs-toc-item"><a href="#trusted-html-rule" class="docs-toc-link" title="Trusted HTML Rule">Trusted HTML Rule</a></div>
+                  <div class="docs-toc-item"><a href="#opinionated-mdwrk-authoring-extras" class="docs-toc-link" title="Opinionated MdWrk Authoring Extras">Opinionated MdWrk Authoring Extras</a></div>
+                  <div class="docs-toc-item"><a href="#toolbar-actions" class="docs-toc-link docs-toc-link-child" title="Toolbar Actions">Toolbar Actions</a></div>
+                  <div class="docs-toc-item"><a href="#keyboard-and-editing-behavior" class="docs-toc-link docs-toc-link-child" title="Keyboard and Editing Behavior">Keyboard and Editing Behavior</a></div>
+                  <div class="docs-toc-item"><a href="#table-builder" class="docs-toc-link docs-toc-link-child" title="Table Builder">Table Builder</a></div>
+                  <div class="docs-toc-item"><a href="#structured-inserts" class="docs-toc-link docs-toc-link-child" title="Structured Inserts">Structured Inserts</a></div>
+                  <div class="docs-toc-item"><a href="#practical-portability-guidance" class="docs-toc-link" title="Practical Portability Guidance">Practical Portability Guidance</a></div>
+                  <div class="docs-toc-item"><a href="#related-docs" class="docs-toc-link" title="Related Docs">Related Docs</a></div>
+                  <div class="docs-toc-item"><a href="#faq-heading" class="docs-toc-link" title="Frequently Asked Questions">Frequently Asked Questions</a></div>
+                </nav>
+              </div>
+            </aside>
+                  <div class="markdown-renderer-host lander-markdown">
+                    <div class="markdown-body" data-markdown-profile="gfm-default" data-markdown-html-handling="escape"><h2 class="md-h2" id="baseline-conformance">Baseline Conformance</h2><p class="md-p">The repository default remains <strong class="md-strong">CommonMark 0.31.2 + GFM 0.29-gfm</strong>.</p><p class="md-p">That means MdWrk treats standard Markdown as the primary portable surface for:</p><ul class="md-ul"><li class="md-li">headings</li><li class="md-li">paragraphs</li><li class="md-li">emphasis</li><li class="md-li">strong emphasis</li><li class="md-li">links</li><li class="md-li">images</li><li class="md-li">blockquotes</li><li class="md-li">thematic breaks</li><li class="md-li">inline code</li><li class="md-li">fenced code blocks</li><li class="md-li">ordered and unordered lists</li><li class="md-li">GitHub-style task lists</li><li class="md-li">GitHub-style tables</li><li class="md-li">strikethrough</li></ul><pre class="md-code-block md-code-surface" data-code-language="markdown"><code class="language-markdown"><span class="token keyword">#</span> Product Overview
+
+MdWrk keeps drafting local by default.
+
+<span class="token operator">&gt;</span> Preview and source stay aligned.
+
+<span class="token operator">-</span> local<span class="token operator">-</span>first editing
+<span class="token operator">-</span> portable Markdown output
+<span class="token operator">-</span> optional sync later
+
+| Surface | Status |
+| :<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span> | :<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span> |
+| Editor | Ready |
+| Preview | Ready |
+
+<span class="token operator">-</span> <span class="token operator">[x]</span> Draft
+<span class="token operator">-</span> <span class="token operator">[ ]</span> Publish</code></pre><h2 class="md-h2" id="what-the-renderer-guarantees">What the Renderer Guarantees</h2><p class="md-p">The same renderer family powers the MdWrk preview surface and this lander, so the formatting contract is shared across documentation and the client.</p><ul class="md-ul"><li class="md-li">Front matter is parsed into metadata and omitted from rendered body output.</li><li class="md-li">Heading extraction is available for table-of-contents and navigation surfaces.</li><li class="md-li">GFM task list items render as semantic checkbox rows.</li><li class="md-li">GFM tables render as semantic table markup.</li><li class="md-li">Fenced code blocks render into portable code block containers with a header/surface structure.</li><li class="md-li">HTML export and full HTML document generation preserve the same Markdown render contract.</li></ul><h2 class="md-h2" id="optional-markdown-profiles">Optional Markdown Profiles</h2><p class="md-p">MdWrk keeps the CommonMark plus GFM baseline on by default. Optional profiles can be enabled from the Markdown profile settings when a document needs more expressive syntax.</p><h3 class="md-h3" id="in-scope-profiles">In-Scope Profiles</h3><ul class="md-ul"><li class="md-li"><code class="md-inline-code">front-matter</code>: YAML-style metadata blocks are parsed into document metadata and removed from rendered body content.</li><li class="md-li"><code class="md-inline-code">footnotes</code>: Footnote references and definitions render into linked footnote sections.</li><li class="md-li"><code class="md-inline-code">definition-lists</code>: Definition list syntax renders into <code class="md-inline-code">dl</code>, <code class="md-inline-code">dt</code>, and <code class="md-inline-code">dd</code> structures.</li><li class="md-li"><code class="md-inline-code">math</code>: Inline and block math are structurally recognized. This checkpoint does not typeset equations with KaTeX or MathJax.</li><li class="md-li"><code class="md-inline-code">superscript</code>: Caret-based superscript syntax is supported when the profile is enabled.</li><li class="md-li"><code class="md-inline-code">subscript</code>: Tilde-based subscript syntax is supported when the profile is enabled.</li><li class="md-li"><code class="md-inline-code">smart-punctuation</code>: Smart punctuation transforms are available when explicitly enabled.</li></ul><h3 class="md-h3" id="experimental-or-out-of-boundary-profiles">Experimental or Out-of-Boundary Profiles</h3><ul class="md-ul"><li class="md-li"><code class="md-inline-code">citations</code>: Citation keys are recognized structurally, but bibliography resolution is still outside the certified formatting boundary.</li><li class="md-li"><code class="md-inline-code">markdown-in-html</code>: Markdown inside trusted HTML containers is available only when that profile is enabled and trusted HTML preview/export is also enabled.</li></ul><h2 class="md-h2" id="trusted-html-rule">Trusted HTML Rule</h2><p class="md-p">Trusted HTML is off by default.</p><p class="md-p">Use it only for content you trust. It exists so HTML-aware profiles such as <code class="md-inline-code">markdown-in-html</code> can pass through preview and export intentionally instead of silently broadening the parsing surface for every document.</p><h2 class="md-h2" id="opinionated-mdwrk-authoring-extras">Opinionated MdWrk Authoring Extras</h2><p class="md-p">MdWrk adds editor conveniences on top of portable Markdown. These tools write Markdown for you, but the saved document remains plain text.</p><h3 class="md-h3" id="toolbar-actions">Toolbar Actions</h3><p class="md-p">The editor toolbar currently exposes direct authoring controls for:</p><ul class="md-ul"><li class="md-li">bold</li><li class="md-li">italic</li><li class="md-li">strikethrough</li><li class="md-li">bullet lists</li><li class="md-li">task lists</li><li class="md-li">indent</li><li class="md-li">outdent</li><li class="md-li">inline math</li><li class="md-li">footnotes</li><li class="md-li">superscript</li><li class="md-li">subscript</li><li class="md-li">undo</li><li class="md-li">redo</li><li class="md-li">insert table</li></ul><p class="md-p">The toolbar also includes editor, split, and preview view controls so formatting and rendered output stay close together while you write.</p><h3 class="md-h3" id="keyboard-and-editing-behavior">Keyboard and Editing Behavior</h3><p class="md-p">MdWrk includes opinionated editing behaviors that speed up list-heavy writing:</p><ul class="md-ul"><li class="md-li"><code class="md-inline-code">Ctrl/Cmd+B</code> wraps the current selection in <code class="md-inline-code">**bold**</code></li><li class="md-li"><code class="md-inline-code">Ctrl/Cmd+I</code> wraps the current selection in <code class="md-inline-code">_italic_</code></li><li class="md-li"><code class="md-inline-code">Ctrl/Cmd+Shift+X</code> wraps the current selection in <code class="md-inline-code">~~strikethrough~~</code></li><li class="md-li"><code class="md-inline-code">Ctrl/Cmd+Z</code> and <code class="md-inline-code">Ctrl/Cmd+Shift+Z</code> drive undo and redo</li><li class="md-li"><code class="md-inline-code">Tab</code> indents the current line or selection</li><li class="md-li"><code class="md-inline-code">Shift+Tab</code> outdents the current line or selection</li><li class="md-li"><code class="md-inline-code">Enter</code> inside a list item continues the list automatically</li><li class="md-li"><code class="md-inline-code">Enter</code> on an empty bullet, ordered, or task-list item terminates that list item cleanly</li></ul><h3 class="md-h3" id="table-builder">Table Builder</h3><p class="md-p">MdWrk includes an opinionated table insertion control in the editor toolbar. It helps generate table scaffolding quickly instead of requiring you to hand-type the initial pipe layout.</p><p class="md-p">After insertion, the table remains ordinary Markdown:</p><pre class="md-code-block md-code-surface" data-code-language="markdown"><code class="language-markdown">| Column A | Column B |
+| :<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span> | :<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span> |
+| Value | Value |</code></pre><h3 class="md-h3" id="structured-inserts">Structured Inserts</h3><p class="md-p">Some current toolbar actions intentionally scaffold a known Markdown pattern instead of leaving the exact syntax to memory:</p><ul class="md-ul"><li class="md-li">footnote insertion adds a <code class="md-inline-code">[^1]</code> style reference marker</li><li class="md-li">inline math wraps the selection in <code class="md-inline-code">$...$</code></li><li class="md-li">superscript wraps the selection in <code class="md-inline-code">^...^</code></li><li class="md-li">subscript wraps the selection in <code class="md-inline-code">~...~</code></li></ul><p class="md-p">These are authoring conveniences, not a separate file format.</p><h2 class="md-h2" id="practical-portability-guidance">Practical Portability Guidance</h2><p class="md-p">Use the default CommonMark plus GFM surface when the same file needs to render well in MdWrk, GitHub, npm documentation, and other static Markdown tooling.</p><p class="md-p">Enable optional profiles only when the document actually needs them. This keeps the source more portable and reduces surprises when the file moves into another renderer.</p><h2 class="md-h2" id="related-docs">Related Docs</h2><ul class="md-ul"><li class="md-li"><a href="/features/editor-basics" class="md-link">Editor Basics</a></li><li class="md-li"><a href="/features/rendering-and-preview" class="md-link">Rendering And Preview</a></li><li class="md-li"><a href="/docs/getting-started/configuration" class="md-link">Client Configuration</a></li></ul></div>
+                  </div>
+                </article>
+
+                <section class="faq-section static-faq" aria-labelledby="faq-heading">
+                    <h2 id="faq-heading" class="faq-section-heading">Frequently Asked Questions</h2>
+                    <div class="faq-list"><details class="faq-accordion"><summary class="faq-summary">What will I learn from Markdown Formatting?</summary><div class="faq-content"><p>MdWrk uses a CommonMark plus GFM baseline, exposes optional formatting profiles for footnotes, math, and related syntax, and adds opinionated editor tools for faster authoring without locking documents into a proprietary format.</p></div></details>
+                      <details class="faq-accordion"><summary class="faq-summary">Who should read Markdown Formatting?</summary><div class="faq-content"><p>Read this page if you need practical MdWrk guidance for markdown formatting, including the relevant workflow, product surface, and follow-up documentation paths.</p></div></details></div>
+                  </section>
+                  <section class="related-section static-related" aria-labelledby="related-heading">
+                    <h2 id="related-heading" class="faq-section-heading">Related Pages</h2>
+                    <ul><li><a href="/features/local-first-markdown-workspace/">Local-first Markdown Workspace</a></li><li><a href="/features/offline-markdown-editor/">Offline Markdown Editor</a></li><li><a href="/features/indexeddb-markdown-storage/">IndexedDB Markdown storage</a></li></ul>
+                  </section>
+              </div>
+
+              </div>
+            </section>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="footer-inner">
+            <div class="footer-layout">
+              <div class="footer-brand-block">
+                <a href="/" class="footer-brand-link">
+                  <svg class="navbar-brand-icon static-navbar-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m2 2 20 20"></path>
+                <path d="M5.8 5.8A4.5 4.5 0 0 0 2 10.2c0 2.3 1.8 4.2 4 4.2h6"></path>
+                <path d="M10.9 4.2A5.8 5.8 0 0 1 18 10c2.2.2 4 2.1 4 4.4 0 .7-.2 1.4-.5 2"></path>
+              </svg>
+                  <span class="footer-brand-text">MdWrk</span>
+                </a>
+                <p class="footer-copy">The local-first Markdown workspace. Your data, your device, your rules.</p>
+              </div>
+              <div class="footer-nav-grid">
+                <div>
+                  <h2 class="footer-section-heading">Resources</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/docs/" class="footer-link">Documentation</a></li>
+                    <li><a href="/updates/" class="footer-link">Updates</a></li>
+                    <li><a href="https://app.mdwrk.com" target="_blank" rel="noopener noreferrer" class="footer-link">Live Demo</a></li>
+                    <li><a href="https://www.npmjs.com/org/mdwrk" target="_blank" rel="noopener noreferrer" class="footer-link">npm</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Follow</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="https://github.com/groupsum/markdown_workspace" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+                    <li><a href="https://x.com/swarmauri" target="_blank" rel="noopener noreferrer" class="footer-link">X.com</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">Community</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h2 class="footer-section-heading">Legal</h2>
+                  <ul class="footer-link-list">
+                    <li><a href="/legal/privacy/" class="footer-link">Privacy</a></li>
+                    <li><a href="/legal/terms/" class="footer-link">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-legal">&copy; 2026 MdWrk. Designed for privacy.</div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const key = 'mdwrk:lander-theme';
+        const button = document.querySelector('[data-static-theme-toggle]');
+        const label = document.querySelector('[data-static-theme-label]');
+        const apply = (theme) => {
+          document.documentElement.setAttribute('data-lander-theme', theme);
+          document.documentElement.classList.toggle('dark', theme === 'lander-dark');
+          localStorage.setItem(key, theme);
+          if (label) label.textContent = theme === 'lander-dark' ? 'Lander Dark' : 'Lander Light';
+        };
+        if (button) {
+          button.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-lander-theme') === 'lander-dark' ? 'lander-dark' : 'lander-light';
+            apply(current === 'lander-dark' ? 'lander-light' : 'lander-dark');
+          });
+          apply(document.documentElement.getAttribute('data-lander-theme') || 'lander-light');
+        }
+      })();
+    </script>
+    <script>
+      (() => {
+        const toggle = document.querySelector('[data-static-menu-toggle]');
+        const panel = document.getElementById('navbar-sticky');
+        if (!toggle || !panel) return;
+        const setExpanded = (expanded) => {
+          toggle.setAttribute('aria-expanded', String(expanded));
+          toggle.setAttribute('aria-label', expanded ? 'Close main menu' : 'Open main menu');
+          panel.classList.toggle('is-open', expanded);
+          panel.classList.toggle('is-closed', !expanded);
+        };
+        toggle.addEventListener('click', () => {
+          setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => setExpanded(false));
+        });
+        setExpanded(false);
+      })();
+    </script>
+  </body>
+</html>

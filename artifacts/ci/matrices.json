@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T18:33:08.439Z",
+  "generatedAt": "2026-04-13T01:46:07.624Z",
   "packageGroups": [
     {
       "name": "contracts",
@@ -47,11 +47,11 @@
       "test": "test:client"
     },
     {
-      "name": "@mdwrk/desktop",
-      "path": "apps/desktop",
-      "build": "build:desktop",
-      "lint": "lint:desktop",
-      "typecheck": "typecheck:desktop",
+      "name": "@mdwrk/lander",
+      "path": "apps/lander",
+      "build": "build:lander",
+      "lint": "lint:lander",
+      "typecheck": "typecheck:lander",
       "test": ""
     }
   ],
@@ -60,11 +60,6 @@
       "name": "@mdwrk/mdwrkspace",
       "path": "apps/client",
       "category": "app"
-    },
-    {
-      "name": "@mdwrk/page-template-demo-content-pack",
-      "path": "packages/content/page-template-demo-content-pack",
-      "category": "content"
     },
     {
       "name": "@mdwrk/extension-host",
@@ -80,11 +75,6 @@
       "name": "@mdwrk/theme-contract",
       "path": "packages/contracts/theme-contract",
       "category": "contract"
-    },
-    {
-      "name": "@mdwrk/markdown-edit-in-renderer-react",
-      "path": "packages/editor/markdown-edit-in-renderer-react",
-      "category": "editor"
     },
     {
       "name": "@mdwrk/markdown-editor-core",
@@ -104,11 +94,6 @@
     {
       "name": "@mdwrk/extension-gemini-agent",
       "path": "packages/extensions/extension-gemini-agent",
-      "category": "extension"
-    },
-    {
-      "name": "@mdwrk/extension-git-ops",
-      "path": "packages/extensions/extension-git-ops",
       "category": "extension"
     },
     {
@@ -132,51 +117,6 @@
       "category": "extension"
     },
     {
-      "name": "@mdwrk/extension-workspace-files",
-      "path": "packages/extensions/extension-workspace-files",
-      "category": "extension"
-    },
-    {
-      "name": "@mdwrk/lander-content-contract",
-      "path": "packages/lander/lander-content-contract",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-core",
-      "path": "packages/lander/lander-core",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-markdown-content-adapter",
-      "path": "packages/lander/lander-markdown-content-adapter",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-page-template-presets",
-      "path": "packages/lander/lander-page-template-presets",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-page-templates",
-      "path": "packages/lander/lander-page-templates",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-react",
-      "path": "packages/lander/lander-react",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-seo",
-      "path": "packages/lander/lander-seo",
-      "category": "lander"
-    },
-    {
-      "name": "@mdwrk/lander-theme",
-      "path": "packages/lander/lander-theme",
-      "category": "lander"
-    },
-    {
       "name": "@mdwrk/markdown-renderer-core",
       "path": "packages/renderer/markdown-renderer-core",
       "category": "renderer"
@@ -194,11 +134,6 @@
     {
       "name": "@mdwrk/icons",
       "path": "packages/shared/icons",
-      "category": "shared"
-    },
-    {
-      "name": "@mdwrk/structured-data",
-      "path": "packages/shared/structured-data",
       "category": "shared"
     },
     {
@@ -222,10 +157,6 @@
       "path": "packages/extensions/extension-gemini-agent"
     },
     {
-      "name": "@mdwrk/extension-git-ops",
-      "path": "packages/extensions/extension-git-ops"
-    },
-    {
       "name": "@mdwrk/extension-language-pack-studio",
       "path": "packages/extensions/extension-language-pack-studio"
     },
@@ -236,10 +167,6 @@
     {
       "name": "@mdwrk/extension-theme-studio",
       "path": "packages/extensions/extension-theme-studio"
-    },
-    {
-      "name": "@mdwrk/extension-workspace-files",
-      "path": "packages/extensions/extension-workspace-files"
     }
   ]
 }

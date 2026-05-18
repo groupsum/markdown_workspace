@@ -1,0 +1,57 @@
+{
+  "name": "@mdwrk/mdwrkcom-content-pack",
+  "version": "0.1.9",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "content",
+    "data",
+    "public",
+    "generated",
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "mdwrk",
+    "mdwrkcom",
+    "lander",
+    "content-pack",
+    "seo",
+    "aeo",
+    "aieo"
+  ],
+  "description": "MdWrk public lander content pack with source pages, markdown data, public assets, and generated discovery artifacts.",
+  "scripts": {
+    "build": "npm run build -w @mdwrk/lander-content-contract && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/lander-content-contract && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node ./tests/run-smoke.mjs",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./content/*": "./content/*",
+    "./data/*": "./data/*",
+    "./public/*": "./public/*",
+    "./generated/*": "./generated/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Jacob Stewart <jacob@swarmauri.com>",
+  "homepage": "https://mdwrk.com"
+}

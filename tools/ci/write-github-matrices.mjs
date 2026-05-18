@@ -41,9 +41,9 @@ export async function generateMatrices() {
       return {
         name: workspacePackage.packageJson.name,
         path: workspacePackage.relativeDir,
-        build: '',
-        lint: '',
-        typecheck: '',
+        build: 'build:mdwrkcom',
+        lint: 'lint:mdwrkcom',
+        typecheck: 'typecheck:mdwrkcom',
         test: '',
       };
     });

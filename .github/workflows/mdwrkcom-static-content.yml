@@ -1,0 +1,61 @@
+name: MdWrk.com Static Content
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - apps/mdwrkcom/content/**
+      - apps/mdwrkcom/schemas/**
+      - apps/mdwrkcom/src/cli.mjs
+      - apps/mdwrkcom/package.json
+      - package.json
+      - package-lock.json
+      - .github/workflows/mdwrkcom-static-content.yml
+  pull_request:
+    paths:
+      - apps/mdwrkcom/content/**
+      - apps/mdwrkcom/schemas/**
+      - apps/mdwrkcom/src/cli.mjs
+      - apps/mdwrkcom/package.json
+      - package.json
+      - package-lock.json
+      - .github/workflows/mdwrkcom-static-content.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mdwrkcom-static-content-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-build-verify:
+    name: Validate, build, and verify static MdWrk.com site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install MdWrk.com validator dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build MdWrk.com workspace dependencies
+        run: |
+          npm run build:renderer
+          npm run build:lander:packages
+
+      - name: Validate source, build dist, and verify artifact
+        run: npm run ci:static -w @mdwrk/mdwrkcom
+
+      - name: Upload static MdWrk.com site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdwrkcom-dist
+          path: apps/mdwrkcom/dist-static

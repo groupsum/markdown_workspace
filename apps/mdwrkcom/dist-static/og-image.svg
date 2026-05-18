@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MdWrk link preview</title>
+  <desc id="desc">MdWrk privacy-first Markdown workspace link preview image.</desc>
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="72" y="72" width="1056" height="486" rx="48" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="118" y="124" width="220" height="382" rx="24" fill="#1e293b"/>
+  <rect x="386" y="124" width="696" height="382" rx="24" fill="#f8fafc"/>
+  <path d="M436 192h170l92 126 92-126h170v236H854V312L744 450h-92L542 312v116H436V192Z" fill="#0f172a"/>
+  <path d="M256 228h-56l90 114 90-114h-56v-68h-68v68Z" fill="#4f46e5"/>
+  <rect x="158" y="388" width="156" height="18" rx="9" fill="#10b981"/>
+  <text x="436" y="500" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Privacy-first Markdown workspace</text>
+</svg>

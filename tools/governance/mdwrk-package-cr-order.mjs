@@ -27,6 +27,7 @@ export const PACKAGE_OWNER_ORDER = [
   { id: 'desktop', order: 70, prefixes: ['apps/desktop/'] },
   { id: 'lander', order: 80, prefixes: ['packages/lander/'] },
   { id: 'content', order: 90, prefixes: ['packages/content/'] },
+  { id: 'mdwrkcom', order: 100, prefixes: ['apps/mdwrkcom/'] },
   { id: 'examples', order: 110, prefixes: ['examples/'] },
   { id: 'docs', order: 120, prefixes: ['docs/'] },
   { id: 'governance', order: 130, prefixes: ['.ssot/', 'tools/governance/', 'AGENTS.md', 'package.json'] },
@@ -42,7 +43,10 @@ export const REQUIRED_AGENT_PATHS = [
   'packages/lander/lander-content-contract/AGENTS.md',
   'packages/lander/lander-react/AGENTS.md',
   'packages/lander/lander-theme/AGENTS.md',
+  'packages/content/mdwrkcom-content-pack/AGENTS.md',
   'apps/client/styles/AGENTS.md',
+  'apps/mdwrkcom/data/markdown/AGENTS.md',
+  'apps/mdwrkcom/styles/AGENTS.md',
   'docs/AGENTS.md',
 ];
 

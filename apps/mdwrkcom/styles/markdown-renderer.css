@@ -1,0 +1,485 @@
+@import url('@mdwrk/ui-tokens/styles/root.css');
+@import url('@mdwrk/markdown-editor-react/styles/default.css');
+@import url('@mdwrk/markdown-renderer-react/styles/default.css');
+
+:root,
+:root[data-lander-theme='lander-light'] {
+  --lander-app-bg: #f8fafc;
+  --lander-panel: #ffffff;
+  --lander-panel-muted: #eff6ff;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #ffffff;
+  --lander-fg: #0f172a;
+  --lander-fg-muted: #475569;
+  --lander-fg-subtle: #475569;
+  --lander-heading-fg: #0f172a;
+  --lander-border: rgba(15, 23, 42, 0.12);
+  --lander-border-strong: rgba(15, 23, 42, 0.2);
+  --lander-accent: #4f46e5;
+  --lander-accent-strong: #4338ca;
+  --lander-accent-alt: #0e7490;
+  --lander-accent-soft: rgba(79, 70, 229, 0.12);
+  --lander-success: #047857;
+  --lander-success-strong: #065f46;
+  --lander-selection-fg: #312e81;
+  --lander-markdown-link-visited: #3730a3;
+  --lander-markdown-code-bg: #eef2ff;
+  --lander-markdown-code-fg: #1e1b4b;
+  --lander-markdown-code-border: rgba(79, 70, 229, 0.18);
+  --lander-markdown-table-header-bg: #dbeafe;
+  --lander-markdown-table-header-fg: #1e293b;
+  --lander-markdown-table-row-alt: #f8fbff;
+  --lander-markdown-quote-bg: #eef4ff;
+  --lander-code-bg: #f8fafc;
+  --lander-code-fg: #1e293b;
+  --lander-code-border: rgba(71, 85, 105, 0.28);
+  --lander-inline-code-bg: #eef2ff;
+  --lander-inline-code-fg: #3730a3;
+  --lander-syntax-comment: #64748b;
+  --lander-syntax-keyword: #4338ca;
+  --lander-syntax-string: #047857;
+  --lander-syntax-number: #be123c;
+  --lander-syntax-function: #0369a1;
+  --lander-syntax-operator: #7c2d12;
+  --lander-syntax-tag: #7e22ce;
+  --lander-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root[data-lander-theme='lander-dark'] {
+  --lander-app-bg: #020617;
+  --lander-panel: #0f172a;
+  --lander-panel-muted: #111c32;
+  --lander-surface: var(--lander-panel);
+  --lander-nav-bg: #020617;
+  --lander-fg: #f8fafc;
+  --lander-fg-muted: #94a3b8;
+  --lander-fg-subtle: #94a3b8;
+  --lander-heading-fg: #ffffff;
+  --lander-border: rgba(148, 163, 184, 0.18);
+  --lander-border-strong: rgba(148, 163, 184, 0.32);
+  --lander-accent: #818cf8;
+  --lander-accent-strong: #a5b4fc;
+  --lander-accent-alt: #22d3ee;
+  --lander-accent-soft: rgba(129, 140, 248, 0.14);
+  --lander-success: #34d399;
+  --lander-success-strong: #6ee7b7;
+  --lander-selection-fg: #e0e7ff;
+  --lander-markdown-link-visited: #c7d2fe;
+  --lander-markdown-code-bg: #0b1220;
+  --lander-markdown-code-fg: #e2e8f0;
+  --lander-markdown-code-border: rgba(129, 140, 248, 0.22);
+  --lander-markdown-table-header-bg: #1e293b;
+  --lander-markdown-table-header-fg: #f8fafc;
+  --lander-markdown-table-row-alt: #0b1324;
+  --lander-markdown-quote-bg: #111c32;
+  --lander-code-bg: #020617;
+  --lander-code-fg: #f8fafc;
+  --lander-code-border: rgba(148, 163, 184, 0.32);
+  --lander-inline-code-bg: #1e1b4b;
+  --lander-inline-code-fg: #c7d2fe;
+  --lander-syntax-comment: #94a3b8;
+  --lander-syntax-keyword: #a5b4fc;
+  --lander-syntax-string: #6ee7b7;
+  --lander-syntax-number: #fda4af;
+  --lander-syntax-function: #7dd3fc;
+  --lander-syntax-operator: #fdba74;
+  --lander-syntax-tag: #d8b4fe;
+  --lander-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.lander-markdown {
+  max-width: none;
+  --fg-primary: var(--lander-fg);
+  --fg-secondary: color-mix(in srgb, var(--lander-fg) 82%, var(--lander-app-bg));
+  --fg-muted: var(--lander-fg-muted);
+  --bg-panel: var(--lander-panel);
+  --bg-inset: var(--lander-markdown-code-bg);
+  --border-color: var(--lander-border);
+  --accent: var(--lander-accent);
+  --table-header-bg: var(--lander-markdown-table-header-bg);
+  --table-header-fg: var(--lander-markdown-table-header-fg);
+  --table-row-primary-bg: color-mix(in srgb, var(--lander-panel) 94%, transparent);
+  --table-row-secondary-bg: var(--lander-markdown-table-row-alt);
+  --code-block-bg: var(--lander-markdown-code-bg);
+  --font-ui: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  --font-head: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: var(--lander-font-mono);
+}
+
+.lander-markdown .markdown-body {
+  background: transparent;
+  color: var(--lander-fg);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.lander-markdown .markdown-body p,
+.lander-markdown .markdown-body li,
+.lander-markdown .markdown-body dd,
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-p,
+.lander-markdown .markdown-body .md-li,
+.lander-markdown .markdown-body .md-table-cell {
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body p,
+.lander-markdown .markdown-body ul,
+.lander-markdown .markdown-body ol,
+.lander-markdown .markdown-body blockquote,
+.lander-markdown .markdown-body table,
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lander-markdown .markdown-body ul,
+.lander-markdown .markdown-body ol,
+.lander-markdown .markdown-body .md-ul,
+.lander-markdown .markdown-body .md-ol {
+  padding-left: 1.35rem;
+}
+
+.lander-markdown .markdown-body ul,
+.lander-markdown .markdown-body .md-ul {
+  list-style: disc;
+}
+
+.lander-markdown .markdown-body ol,
+.lander-markdown .markdown-body .md-ol {
+  list-style: decimal;
+}
+
+.lander-markdown .markdown-body li::marker {
+  color: var(--lander-accent);
+  font-weight: 700;
+}
+
+.lander-markdown .markdown-body li + li {
+  margin-top: 0.35rem;
+}
+
+.lander-markdown .markdown-body strong,
+.lander-markdown .markdown-body b {
+  color: var(--lander-heading-fg, var(--lander-fg));
+  font-weight: 800;
+}
+
+.lander-markdown .markdown-body em {
+  color: color-mix(in srgb, var(--lander-fg) 88%, var(--lander-fg-muted));
+}
+
+.lander-markdown .markdown-body h1,
+.lander-markdown .markdown-body h2,
+.lander-markdown .markdown-body h3,
+.lander-markdown .markdown-body h4,
+.lander-markdown .markdown-body h5,
+.lander-markdown .markdown-body h6,
+.lander-markdown h1,
+.lander-markdown .md-h1 {
+  color: var(--lander-heading-fg, var(--lander-fg));
+  font-family: "Sora", "Inter", "Segoe UI", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.lander-markdown .markdown-body h1,
+.lander-markdown .markdown-body .md-h1,
+.lander-markdown h1,
+.lander-markdown .md-h1 {
+  font-size: 2.25rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.lander-markdown .markdown-body h2,
+.lander-markdown .markdown-body .md-h2,
+.lander-markdown h2,
+.lander-markdown .md-h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.lander-markdown .markdown-body h3,
+.lander-markdown .markdown-body .md-h3,
+.lander-markdown h3,
+.lander-markdown .md-h3 {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
+}
+
+.lander-markdown .markdown-body h4,
+.lander-markdown .markdown-body .md-h4,
+.lander-markdown .markdown-body h5,
+.lander-markdown .markdown-body .md-h5,
+.lander-markdown .markdown-body h6,
+.lander-markdown .markdown-body .md-h6,
+.lander-markdown h4,
+.lander-markdown .md-h4,
+.lander-markdown h5,
+.lander-markdown .md-h5,
+.lander-markdown h6,
+.lander-markdown .md-h6 {
+  font-size: 1.05rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lander-markdown .markdown-body > :is(h1, h2, h3, h4, h5, h6, .md-h1, .md-h2, .md-h3, .md-h4, .md-h5, .md-h6):first-child {
+  margin-top: 0;
+}
+
+.lander-markdown .markdown-body a {
+  color: var(--lander-accent);
+}
+
+.lander-markdown .markdown-body a:visited {
+  color: var(--lander-markdown-link-visited);
+}
+
+.lander-markdown .markdown-body a:hover,
+.lander-markdown .markdown-body a:focus-visible {
+  color: var(--lander-accent-strong);
+}
+
+.lander-markdown .markdown-body :not(pre) > code,
+.lander-markdown .markdown-body .md-inline-code,
+.lander-markdown .md-inline-code,
+.lander-markdown :not(pre) > code {
+  background: var(--lander-inline-code-bg);
+  color: var(--lander-inline-code-fg);
+  border: 1px solid color-mix(in srgb, var(--lander-inline-code-fg) 24%, transparent);
+  border-radius: 0.35rem;
+  padding: 0.12rem 0.35rem;
+  font-weight: 600;
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block,
+.lander-markdown .markdown-body .md-code-surface,
+.lander-markdown .md-code-block,
+.lander-markdown .md-code-surface,
+.lander-markdown pre {
+  background: var(--lander-code-bg);
+  color: var(--lander-code-fg);
+  border: 1px solid var(--lander-code-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body pre code,
+.lander-markdown .markdown-body .md-code-surface pre,
+.lander-markdown .markdown-body .md-code-surface pre > code,
+.lander-markdown .markdown-body .md-code-surface > div {
+  overflow-x: auto !important;
+}
+
+.lander-markdown .markdown-body pre,
+.lander-markdown .markdown-body .md-code-block,
+.lander-markdown .md-code-block,
+.lander-markdown pre {
+  padding: 2.75rem 1.125rem 1rem;
+  position: relative;
+}
+
+.lander-markdown .markdown-body pre code,
+.lander-markdown .markdown-body .md-code-surface pre > code,
+.lander-markdown pre code {
+  display: block;
+  padding: 0;
+}
+
+.lander-markdown .markdown-body .md-code-surface > div {
+  padding: 1rem 1.125rem;
+}
+
+.lander-markdown .markdown-body .md-code-header,
+.lander-markdown .md-code-header {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.875rem;
+  z-index: 1;
+  border: 1px solid var(--lander-code-border);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--lander-code-bg) 86%, var(--lander-fg) 14%);
+  color: var(--lander-fg-subtle);
+  padding: 0.2rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lander-markdown .markdown-body .md-code-block[data-code-language]::before,
+.lander-markdown .md-code-block[data-code-language]::before {
+  content: attr(data-code-language);
+  position: absolute;
+  top: 0.75rem;
+  right: 0.875rem;
+  z-index: 1;
+  border: 1px solid var(--lander-code-border);
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--lander-code-bg) 86%, var(--lander-fg) 14%);
+  color: var(--lander-fg-subtle);
+  padding: 0.2rem 0.55rem;
+  font-family: var(--lander-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lander-markdown pre,
+.lander-markdown pre code,
+.lander-markdown .md-code-surface,
+.lander-markdown .md-code-surface code {
+  color: var(--lander-code-fg);
+}
+
+.lander-markdown .markdown-body blockquote {
+  background: var(--lander-markdown-quote-bg);
+  color: var(--lander-fg-muted);
+  border-left-color: var(--lander-accent);
+  border-left-width: 4px;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.lander-markdown .markdown-body blockquote p,
+.lander-markdown .markdown-body blockquote li {
+  color: var(--lander-fg-muted);
+}
+
+.lander-markdown .markdown-body table,
+.lander-markdown .markdown-body .md-table {
+  border-collapse: collapse;
+  border: 1px solid var(--lander-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.lander-markdown .markdown-body th,
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-table-header,
+.lander-markdown .markdown-body .md-table-cell {
+  border: 1px solid var(--lander-border);
+  padding: 0.75rem 0.875rem;
+}
+
+.lander-markdown .markdown-body th,
+.lander-markdown .markdown-body .md-table-header {
+  background: var(--lander-markdown-table-header-bg);
+  color: var(--lander-markdown-table-header-fg);
+}
+
+.lander-markdown .markdown-body td,
+.lander-markdown .markdown-body .md-table-cell {
+  color: var(--lander-fg);
+}
+
+.lander-markdown .markdown-body tbody tr:nth-child(even),
+.lander-markdown .markdown-body .md-table-body .md-table-row:nth-child(even) {
+  background: var(--lander-markdown-table-row-alt);
+}
+
+.lander-markdown .markdown-body tbody tr:nth-child(odd),
+.lander-markdown .markdown-body .md-table-body .md-table-row:nth-child(odd) {
+  background: color-mix(in srgb, var(--lander-panel) 96%, transparent);
+}
+
+.lander-markdown .token.comment,
+.lander-markdown .token.prolog,
+.lander-markdown .token.doctype,
+.lander-markdown .token.cdata,
+.lander-markdown .hljs-comment,
+.lander-markdown .hljs-quote {
+  color: var(--lander-syntax-comment);
+}
+
+.lander-markdown .token.keyword,
+.lander-markdown .token.atrule,
+.lander-markdown .token.selector,
+.lander-markdown .hljs-keyword,
+.lander-markdown .hljs-selector-tag,
+.lander-markdown .hljs-built_in {
+  color: var(--lander-syntax-keyword);
+}
+
+.lander-markdown .token.string,
+.lander-markdown .token.char,
+.lander-markdown .token.attr-value,
+.lander-markdown .hljs-string,
+.lander-markdown .hljs-regexp {
+  color: var(--lander-syntax-string);
+}
+
+.lander-markdown .token.number,
+.lander-markdown .token.boolean,
+.lander-markdown .token.constant,
+.lander-markdown .hljs-number,
+.lander-markdown .hljs-literal {
+  color: var(--lander-syntax-number);
+}
+
+.lander-markdown .token.function,
+.lander-markdown .token.class-name,
+.lander-markdown .hljs-title,
+.lander-markdown .hljs-title.function_,
+.lander-markdown .hljs-title.class_ {
+  color: var(--lander-syntax-function);
+}
+
+.lander-markdown .token.operator,
+.lander-markdown .token.punctuation,
+.lander-markdown .hljs-operator,
+.lander-markdown .hljs-punctuation {
+  color: var(--lander-syntax-operator);
+}
+
+.lander-markdown .token.tag,
+.lander-markdown .token.property,
+.lander-markdown .token.attr-name,
+.lander-markdown .hljs-tag,
+.lander-markdown .hljs-name,
+.lander-markdown .hljs-attr {
+  color: var(--lander-syntax-tag);
+}
+
+.lander-doc-shell,
+.lander-blog-shell {
+  background:
+    radial-gradient(circle at top left, var(--lander-accent-soft), transparent 32%),
+    linear-gradient(180deg, var(--lander-app-bg) 0%, var(--lander-panel-muted) 100%);
+}
+
+.lander-content-card {
+  background: color-mix(in srgb, var(--lander-panel) 92%, transparent);
+  border: 1px solid var(--lander-border);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+.lander-editor {
+  min-height: 100%;
+}
+
+.lander-editor .markdown-source-editor {
+  height: 100%;
+  min-height: 100%;
+  border: 0;
+}
