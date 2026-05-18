@@ -1,0 +1,28 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1073"
+number: 1073
+slug: "page-template-compiler-owns-graph-resolution"
+title: "Page Template Compiler Owns Graph Resolution"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Decision:"
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern compiler-owned link-slot and PageSpec generation behavior."
+    at: "2026-05-18T20:44:18Z"
+references: []
+body: |-
+  Decision:
+  The page-template compiler owns graph resolution for page-template content packs. Operators author pages, templates, frontmatter, and links; the compiler resolves parent-component link slots to target page instances, validates linked slugs and template compatibility, applies defaults, emits diagnostics, and generates PageSpec/content-pack artifacts.
+  
+  Rationale:
+  The authoring surface should be declarative. Requiring operators to hand-wire graph internals creates brittle content packs and duplicates package behavior downstream.
+  
+  Consequences:
+  Imperative graph APIs remain available for package authors and generators, but the compiler is the only authority for resolved relationships, navigation, schema defaults, and emitted PageSpec records.

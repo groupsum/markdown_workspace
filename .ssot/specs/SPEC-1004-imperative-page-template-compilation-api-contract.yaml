@@ -1,0 +1,30 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1004"
+number: 1004
+slug: "imperative-page-template-compilation-api-contract"
+title: "Imperative Page Template Compilation API Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the imperative page-template compilation API."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define code-driven page-template compilation parity."
+    at: "2026-05-18T20:45:32Z"
+references: []
+body: |-
+  This SPEC defines the imperative page-template compilation API.
+  
+  The public API shall accept product/site metadata, an array of source-page objects, optional template registries, optional preset/default registries, and compiler options. The API shall normalize source pages, resolve templates, resolve parent-component link slots to target pages, validate graph constraints, apply schema and section defaults, and emit compiled PageSpec records plus diagnostics.
+  
+  Imperative input must use the same normalized source model and compiler pipeline as Markdown/frontmatter input. Equivalent normalized input must produce equivalent diagnostics and PageSpec output.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1072"
+  - "adr:1075"
+  - "adr:1073"

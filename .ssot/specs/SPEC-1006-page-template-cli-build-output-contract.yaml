@@ -1,0 +1,30 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1006"
+number: 1006
+slug: "page-template-cli-build-output-contract"
+title: "Page Template CLI Build Output Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the page-template CLI build-time surface."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define compile, validate, and graph export CLI behavior."
+    at: "2026-05-18T20:45:53Z"
+references: []
+body: |-
+  This SPEC defines the page-template CLI build-time surface.
+  
+  The CLI shall support compile, validate, and graph/export flows over Markdown/frontmatter page directories and, where applicable, generated normalized source manifests. Compile shall emit generated content-pack TypeScript or JSON artifacts. Validate shall run the shared compiler diagnostics without writing content-pack output. Graph export shall persist resolved page nodes, link slots, relationship edges, and diagnostics for inspection.
+  
+  The CLI is a build-time adapter over the shared compiler. It must not implement separate graph semantics.
+spec_kind: "operational"
+adr_ids:
+  - "adr:1073"
+  - "adr:1074"
+  - "adr:1072"

@@ -182,6 +182,85 @@ export interface TemplateBuildResult {
   diagnostics: TemplateDiagnostic[];
 }
 
+export type PageTemplateSourceKind = "imperative" | "markdown";
+
+export interface PageTemplateSourcePage<TData extends Record<string, unknown> = Record<string, unknown>> {
+  id: PageInstanceId;
+  templateId: PageTemplateId;
+  slug: string;
+  title: string;
+  description: string;
+  data?: TData;
+  order?: number;
+  href?: string;
+  label?: string;
+  body?: string;
+  sourcePath?: string;
+}
+
+export interface PageTemplateSourceLink {
+  sourceId: PageInstanceId;
+  targetId: PageInstanceId;
+  relationship?: TemplateRelationshipKind;
+  role?: RelationshipRole;
+  slotId?: string;
+  order?: number;
+  label?: string;
+  sourcePath?: string;
+}
+
+export interface PageTemplateSourceDocument {
+  kind?: PageTemplateSourceKind;
+  id?: string;
+  templates?: PageTemplate[];
+  bundles?: TemplateBundle[];
+  rules?: RelationshipRule[];
+  pages: PageTemplateSourcePage[];
+  links?: PageTemplateSourceLink[];
+}
+
+export interface MarkdownPageTemplateSourceFile {
+  path?: string;
+  raw: string;
+}
+
+export interface MarkdownPageTemplateCompileInput {
+  files: MarkdownPageTemplateSourceFile[];
+  templates?: PageTemplate[];
+  bundles?: TemplateBundle[];
+  rules?: RelationshipRule[];
+  id?: string;
+}
+
+export interface CompiledPageTemplateRoute {
+  slug: string;
+  pageId: PageInstanceId;
+  templateId: PageTemplateId;
+  title: string;
+}
+
+export interface CompiledPageTemplateGraphManifest {
+  id?: string;
+  routes: CompiledPageTemplateRoute[];
+  edges: ResolvedTemplateLink[];
+  terminalPageIds: PageInstanceId[];
+}
+
+export interface PageTemplateCompileResult extends TemplateBuildResult {
+  graph: TemplateGraph;
+  manifest: CompiledPageTemplateGraphManifest;
+}
+
+export interface GeneratedPageTemplateContentPack {
+  packageName: string;
+  version: string;
+  graph: TemplateGraph;
+  pages: readonly PageSpec[];
+  diagnostics: readonly TemplateDiagnostic[];
+  routes: readonly CompiledPageTemplateRoute[];
+  manifest: CompiledPageTemplateGraphManifest;
+}
+
 export interface DomainTemplateData extends Record<string, unknown> {
   eyebrow?: string;
   intro?: string;

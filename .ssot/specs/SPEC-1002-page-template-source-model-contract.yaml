@@ -1,0 +1,40 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1002"
+number: 1002
+slug: "page-template-source-model-contract"
+title: "Page Template Source Model Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the normalized page-template source model consumed by all authoring adapters."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define the shared normalized source model for page-template authoring adapters."
+    at: "2026-05-18T20:45:07Z"
+references: []
+body: |-
+  This SPEC defines the normalized page-template source model consumed by all authoring adapters.
+  
+  A source page shall include template, slug, title, description, optional body, optional data, optional schema declarations, optional SEO metadata, and optional link-slot declarations. Markdown/frontmatter and imperative APIs must normalize into this model before graph resolution.
+  
+  Normative shape:
+  - template: stable page-template id.
+  - slug: canonical route path for the page instance.
+  - title and description: required crawlable metadata.
+  - body: optional Markdown body content.
+  - links: slot-keyed arrays of target page slugs or ids.
+  - data: template-specific structured values.
+  - schema: page-level schema intent overrides or additions.
+  - frontmatter: raw adapter metadata retained for diagnostics when applicable.
+  
+  The model is adapter-neutral. It must not encode Markdown-specific or TypeScript-specific behavior.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1072"
+  - "adr:1073"
+  - "adr:1066"

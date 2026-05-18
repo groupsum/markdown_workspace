@@ -1,6 +1,14 @@
 import type { PageSpec } from "@mdwrk/lander-content-contract";
 import { createProductSitePreset } from "@mdwrk/lander-page-template-presets";
-import { buildPageSpecsFromGraph, deriveTemplateNavigation, resolveLinkSlots } from "@mdwrk/lander-page-templates";
+import {
+  buildPageSpecsFromGraph,
+  compileMarkdownPageTemplates,
+  createGeneratedPageTemplateContentPack,
+  deriveTemplateNavigation,
+  productDomainBundle,
+  resolveLinkSlots,
+  trustDomainBundle,
+} from "@mdwrk/lander-page-templates";
 import { PAGE_TEMPLATE_DEMO_CONTENT_PACK_VERSION } from "./version.js";
 
 export { PAGE_TEMPLATE_DEMO_CONTENT_PACK_VERSION };
@@ -75,6 +83,74 @@ export const pageTemplateDemoPreset = createProductSitePreset({
 
 const compiled = buildPageSpecsFromGraph(pageTemplateDemoPreset.graph);
 
+export const pageTemplateDemoMarkdownFiles = Object.freeze([
+  {
+    path: "content/pages/demo-home.md",
+    raw: `---
+id: markdown-demo-home
+templateId: product.home
+slug: /demo-markdown/
+title: Acme Notebook
+description: A Markdown-authored product home page.
+summary: A notebook app demo compiled from Markdown frontmatter.
+links:
+  children: [markdown-demo-feature, markdown-demo-pricing]
+  legal: [markdown-demo-privacy]
+---
+## Template-authored product site
+
+The content pack owns the Markdown files while the compiler owns graph shape, links, schema, and PageSpec output.`,
+  },
+  {
+    path: "content/pages/demo-feature.md",
+    raw: `---
+id: markdown-demo-feature
+templateId: product.feature
+slug: /demo-markdown/offline-notes/
+title: Offline Notes
+description: Feature page compiled from Markdown frontmatter.
+summary: Keep notes available locally and ready for publishing.
+---
+Feature body owned by the Markdown page file.`,
+  },
+  {
+    path: "content/pages/demo-pricing.md",
+    raw: `---
+id: markdown-demo-pricing
+templateId: product.pricing
+slug: /demo-markdown/pricing/
+title: Simple Pricing
+description: Pricing page compiled from Markdown frontmatter.
+summary: Simple pricing content from a page file.
+---
+Pricing body owned by the Markdown page file.`,
+  },
+  {
+    path: "content/pages/demo-privacy.md",
+    raw: `---
+id: markdown-demo-privacy
+templateId: trust.privacy
+slug: /demo-markdown/privacy/
+title: Acme Notebook Privacy
+description: Privacy page compiled from Markdown frontmatter.
+summary: Privacy content from a page file.
+---
+Privacy body owned by the Markdown page file.`,
+  },
+]);
+
+export const pageTemplateDemoMarkdownCompiled = compileMarkdownPageTemplates({
+  id: "page-template-demo-markdown-content-pack",
+  bundles: [productDomainBundle, trustDomainBundle],
+  files: [...pageTemplateDemoMarkdownFiles],
+});
+
+export const pageTemplateDemoGeneratedContentPack = createGeneratedPageTemplateContentPack({
+  packageName: PAGE_TEMPLATE_DEMO_CONTENT_PACK_NAME,
+  version: PAGE_TEMPLATE_DEMO_CONTENT_PACK_VERSION,
+  compiled: pageTemplateDemoMarkdownCompiled,
+});
+
 export interface PageTemplateDemoContentPack {
   packageName: typeof PAGE_TEMPLATE_DEMO_CONTENT_PACK_NAME;
   version: typeof PAGE_TEMPLATE_DEMO_CONTENT_PACK_VERSION;
@@ -82,6 +158,7 @@ export interface PageTemplateDemoContentPack {
   domain: string;
   pages: readonly PageSpec[];
   diagnostics: Readonly<typeof compiled.diagnostics>;
+  generated: typeof pageTemplateDemoGeneratedContentPack;
 }
 
 export const pageTemplateDemoContentPack: PageTemplateDemoContentPack = Object.freeze({
@@ -91,6 +168,7 @@ export const pageTemplateDemoContentPack: PageTemplateDemoContentPack = Object.f
   domain: pageTemplateDemoPreset.domain,
   pages: Object.freeze(compiled.pages),
   diagnostics: Object.freeze(compiled.diagnostics),
+  generated: pageTemplateDemoGeneratedContentPack,
 });
 
 export function getPageTemplateDemoPage(slug: string): PageSpec | undefined {

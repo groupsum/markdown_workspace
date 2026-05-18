@@ -1,0 +1,30 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1003"
+number: 1003
+slug: "markdown-frontmatter-page-template-authoring-contract"
+title: "Markdown Frontmatter Page Template Authoring Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines Markdown/frontmatter authoring for page-template content packs."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define one-Markdown-file-per-page page-template authoring."
+    at: "2026-05-18T20:45:20Z"
+references: []
+body: |-
+  This SPEC defines Markdown/frontmatter authoring for page-template content packs.
+  
+  Each page may be represented by one Markdown file. YAML frontmatter shall provide template, slug, title, description, optional kind, optional schema, optional links, optional data, optional SEO metadata, and optional section overrides. The Markdown body supplies page content and may be mapped into default Markdown sections when no explicit section map is provided.
+  
+  The adapter must parse Markdown/frontmatter into the shared source model, preserve diagnostics with file path and field context, and delegate graph resolution to the shared compiler. Markdown authoring must not require operators to call createProductSitePreset, buildPageSpecsFromGraph, resolveLinkSlots, or deriveTemplateNavigation by hand.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1072"
+  - "adr:1074"
+  - "adr:1073"

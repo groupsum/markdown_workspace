@@ -1,0 +1,30 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1005"
+number: 1005
+slug: "page-template-compiler-diagnostics-contract"
+title: "Page Template Compiler Diagnostics Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines page-template compiler diagnostics."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define fail-closed page-template compiler diagnostics."
+    at: "2026-05-18T20:45:43Z"
+references: []
+body: |-
+  This SPEC defines page-template compiler diagnostics.
+  
+  The compiler shall produce structured diagnostics for missing linked slugs, duplicate slugs, unknown templates, invalid slots, incompatible relationship rules, missing required metadata, invalid schema intent declarations, unsupported frontmatter shapes, and unresolved preset/default references.
+  
+  Diagnostics shall be stable enough for CLI output, test assertions, editor integrations, and generated build reports. Diagnostics should include severity, code, message, source page slug or file, and field path when available.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1073"
+  - "adr:1066"
+  - "adr:1067"

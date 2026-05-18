@@ -1,0 +1,28 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1072"
+number: 1072
+slug: "page-template-authoring-inputs-are-adapters"
+title: "Page Template Authoring Inputs Are Adapters"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Decision:"
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern Markdown/frontmatter and imperative page-template authoring parity."
+    at: "2026-05-18T20:44:06Z"
+references: []
+body: |-
+  Decision:
+  Markdown/frontmatter files and imperative TypeScript definitions are supported authoring adapters for page-template content packs. Neither adapter owns graph semantics. Both inputs normalize into the shared page-template source model before template resolution, relationship validation, default application, diagnostics, and PageSpec emission.
+  
+  Rationale:
+  Operators need one Markdown file per page for normal content-pack authoring, while package authors, tests, generated catalogs, and CMS adapters need an imperative API. Supporting both inputs without a shared normalized model would create divergent graph behavior and incompatible diagnostics.
+  
+  Consequences:
+  The lander page-template suite must expose a shared compiler core. Markdown and imperative adapters must call the same compiler. Link slots, child-page relationships, schema defaults, and generated content-pack outputs must behave identically regardless of authoring input.

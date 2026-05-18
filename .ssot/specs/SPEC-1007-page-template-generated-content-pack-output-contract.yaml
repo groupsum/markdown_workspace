@@ -1,0 +1,30 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:1007"
+number: 1007
+slug: "page-template-generated-content-pack-output-contract"
+title: "Page Template Generated Content Pack Output Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines generated page-template content-pack output."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define generated content-pack artifacts from page-template compilation."
+    at: "2026-05-18T20:46:04Z"
+references: []
+body: |-
+  This SPEC defines generated page-template content-pack output.
+  
+  Generated output shall expose compiled PageSpec records, diagnostics, graph metadata, helper lookups by slug, and relationship/link-slot helpers useful to downstream apps. TypeScript output shall be importable by Vite and package builds. JSON output shall be suitable for CI reports and graph inspection.
+  
+  Generated output is derived from source pages and compiler resolution. It is not the canonical authoring source when Markdown/frontmatter files are present.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1073"
+  - "adr:1074"
+  - "adr:1075"

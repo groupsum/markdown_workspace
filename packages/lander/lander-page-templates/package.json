@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-page-templates",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -51,6 +51,10 @@
     "./page-spec": {
       "types": "./dist/page-spec/index.d.ts",
       "import": "./dist/page-spec/index.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler/index.d.ts",
+      "import": "./dist/compiler/index.js"
     },
     "./domains": {
       "types": "./dist/domains/index.d.ts",

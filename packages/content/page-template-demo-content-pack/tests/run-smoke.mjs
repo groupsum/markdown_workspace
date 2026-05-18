@@ -8,8 +8,17 @@ const {
   getPageTemplateDemoHomeNavigation,
   getPageTemplateDemoPage,
   pageTemplateDemoContentPack,
+  pageTemplateDemoGeneratedContentPack,
+  pageTemplateDemoMarkdownCompiled,
+  pageTemplateDemoMarkdownFiles,
   pageTemplateDemoPreset,
 } = await importShim();
+
+const coveredFeatures = new Set();
+function covers(featureId, assertion) {
+  assertion();
+  coveredFeatures.add(featureId);
+}
 
 async function importShim() {
   const testRoot = path.dirname(fileURLToPath(import.meta.url));
@@ -71,3 +80,42 @@ assert.deepEqual(
 assert.ok(getPageTemplateDemoPage("/demo/features/core/"));
 assert.ok(getPageTemplateDemoPage("/demo/pricing/"));
 assert.ok(getPageTemplateDemoPage("/demo/support/"));
+
+assert.equal(pageTemplateDemoMarkdownFiles.length, 4);
+assert.equal(pageTemplateDemoMarkdownCompiled.pages[0].slug, "/demo-markdown/");
+assert.deepEqual(pageTemplateDemoMarkdownCompiled.diagnostics.filter((item) => item.level === "error"), []);
+assert.equal(pageTemplateDemoGeneratedContentPack.packageName, "@mdwrk/page-template-demo-content-pack");
+assert.deepEqual(
+  pageTemplateDemoGeneratedContentPack.routes.map((route) => route.slug),
+  ["/demo-markdown/", "/demo-markdown/offline-notes/", "/demo-markdown/pricing/", "/demo-markdown/privacy/"],
+);
+assert.equal(pageTemplateDemoContentPack.generated.pages[0].title, "Acme Notebook");
+
+covers("feat:lander.page-templates.demo-dual-authoring", () => {
+  const presetKinds = new Set(pageTemplateDemoContentPack.pages.map((page) => page.kind));
+  const generatedKinds = new Set(pageTemplateDemoGeneratedContentPack.pages.map((page) => page.kind));
+  for (const kind of ["home", "feature", "pricing", "trust"]) {
+    assert.equal(presetKinds.has(kind), true);
+    assert.equal(generatedKinds.has(kind), true);
+  }
+  assert.equal(pageTemplateDemoPreset.graph.instances.length > pageTemplateDemoGeneratedContentPack.graph.instances.length, true);
+  assert.equal(pageTemplateDemoGeneratedContentPack.pages[0].schema.some((item) => item.kind === "SoftwareApplication"), true);
+});
+
+covers("feat:lander.page-templates.content-pack-filesystem-layout", () => {
+  assert.deepEqual(
+    pageTemplateDemoMarkdownFiles.map((file) => file.path),
+    [
+      "content/pages/demo-home.md",
+      "content/pages/demo-feature.md",
+      "content/pages/demo-pricing.md",
+      "content/pages/demo-privacy.md",
+    ],
+  );
+  assert.equal(pageTemplateDemoGeneratedContentPack.manifest.routes[0].pageId, "markdown-demo-home");
+});
+
+assert.deepEqual([...coveredFeatures].sort(), [
+  "feat:lander.page-templates.content-pack-filesystem-layout",
+  "feat:lander.page-templates.demo-dual-authoring",
+]);

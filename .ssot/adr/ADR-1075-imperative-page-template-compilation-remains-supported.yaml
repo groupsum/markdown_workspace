@@ -1,0 +1,28 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1075"
+number: 1075
+slug: "imperative-page-template-compilation-remains-supported"
+title: "Imperative Page Template Compilation Remains Supported"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Decision:"
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern imperative page-template compilation support."
+    at: "2026-05-18T20:44:39Z"
+references: []
+body: |-
+  Decision:
+  Imperative page-template compilation remains a supported public API. Tests, generated content, CMS adapters, package authors, and advanced build tools may provide source-page objects directly instead of Markdown files, but those objects must compile through the same normalized model and compiler pipeline as Markdown/frontmatter pages.
+  
+  Rationale:
+  Markdown is the preferred operator authoring surface, but the package suite still needs deterministic code-driven compilation for automation, test fixtures, generated indexes, and custom content systems.
+  
+  Consequences:
+  The imperative API must produce equivalent diagnostics and PageSpec output to Markdown compilation for equivalent normalized input. It must not expose a separate relationship model.

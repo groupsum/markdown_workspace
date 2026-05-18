@@ -3,6 +3,10 @@ import assert from "node:assert/strict";
 const {
   buildPageSpecFromTemplate,
   buildPageSpecsFromGraph,
+  compileImperativePageTemplates,
+  compileMarkdownPageTemplates,
+  compilePageTemplateSource,
+  createGeneratedPageTemplateContentPack,
   defineEdge,
   definePageInstance,
   defineTemplateGraph,
@@ -127,6 +131,99 @@ const terminalChildGraph = defineTemplateGraph({
 });
 assert.ok(validateTemplateGraph(terminalChildGraph).some((item) => item.code === "template.terminal.child.invalid"));
 
+const imperativeSource = {
+  id: "imperative-product-demo",
+  bundles: [productDomainBundle, trustDomainBundle],
+  pages: [
+    { id: "imperative-home", templateId: "product.home", slug: "/imperative/", title: "Imperative Home", description: "Imperative source home.", data: { summary: "Home summary." } },
+    { id: "imperative-feature", templateId: "product.feature", slug: "/imperative/feature/", title: "Imperative Feature", description: "Imperative source feature.", data: { summary: "Feature summary." } },
+    { id: "imperative-pricing", templateId: "product.pricing", slug: "/imperative/pricing/", title: "Imperative Pricing", description: "Imperative source pricing.", data: { summary: "Pricing summary." } },
+    { id: "imperative-privacy", templateId: "trust.privacy", slug: "/imperative/privacy/", title: "Imperative Privacy", description: "Imperative source privacy.", data: { summary: "Privacy summary." } },
+  ],
+  links: [
+    { sourceId: "imperative-home", targetId: "imperative-feature", slotId: "children", order: 1 },
+    { sourceId: "imperative-home", targetId: "imperative-pricing", slotId: "children", order: 2 },
+    { sourceId: "imperative-home", targetId: "imperative-privacy", slotId: "legal", order: 3 },
+  ],
+};
+
+const markdownFiles = [
+  {
+    path: "content/pages/home.md",
+    raw: `---
+id: markdown-home
+templateId: product.home
+slug: /markdown/
+title: Markdown Home
+description: Markdown source home.
+summary: Markdown home summary.
+links:
+  children: [markdown-feature, markdown-pricing]
+  legal: [markdown-privacy]
+---
+## Home Body
+
+Markdown-authored body content.`,
+  },
+  {
+    path: "content/pages/feature.md",
+    raw: `---
+id: markdown-feature
+templateId: product.feature
+slug: /markdown/feature/
+title: Markdown Feature
+description: Markdown source feature.
+summary: Markdown feature summary.
+---
+Feature body.`,
+  },
+  {
+    path: "content/pages/pricing.md",
+    raw: `---
+id: markdown-pricing
+templateId: product.pricing
+slug: /markdown/pricing/
+title: Markdown Pricing
+description: Markdown source pricing.
+---
+Pricing body.`,
+  },
+  {
+    path: "content/pages/privacy.md",
+    raw: `---
+id: markdown-privacy
+templateId: trust.privacy
+slug: /markdown/privacy/
+title: Markdown Privacy
+description: Markdown source privacy.
+---
+Privacy body.`,
+  },
+];
+
+const imperativeCompiled = compileImperativePageTemplates(imperativeSource);
+const markdownCompiled = compileMarkdownPageTemplates({
+  id: "markdown-product-demo",
+  bundles: [productDomainBundle, trustDomainBundle],
+  files: markdownFiles,
+});
+
+assert.deepEqual(imperativeCompiled.diagnostics.filter((item) => item.level === "error"), []);
+assert.deepEqual(markdownCompiled.diagnostics.filter((item) => item.level === "error"), []);
+assert.deepEqual(markdownCompiled.pages.map((page) => page.slug), ["/markdown/", "/markdown/feature/", "/markdown/pricing/", "/markdown/privacy/"]);
+assert.equal(markdownCompiled.graph.instances.find((item) => item.id === "markdown-home").data.body.includes("Markdown-authored body content"), true);
+assert.deepEqual(resolveLinkSlots(markdownCompiled.graph, "markdown-home").children.map((link) => link.href), ["/markdown/feature/", "/markdown/pricing/"]);
+
+const duplicateRouteCompiled = compilePageTemplateSource({
+  id: "duplicate-route-demo",
+  bundles: [productDomainBundle],
+  pages: [
+    { id: "one", templateId: "product.pricing", slug: "/same/", title: "One", description: "First duplicate.", data: {} },
+    { id: "two", templateId: "product.compare", slug: "/same/", title: "Two", description: "Second duplicate.", data: {} },
+  ],
+});
+assert.ok(duplicateRouteCompiled.diagnostics.some((item) => item.code === "source.route.duplicate"));
+
 covers("feat:lander.page-templates.relationship-role-types", () => {
   assert.equal(resolveLinkSlots(educationGraph, "path").courses[0].role, "tree_child");
   assert.equal(resolveLinkSlots(productTrustGraph, "home").legal[0].role, "semantic");
@@ -202,16 +299,89 @@ covers("feat:lander.page-templates.core-types", () => {
   assert.ok(Array.isArray(deriveTemplateNavigation(educationGraph, "course").related));
 });
 
+covers("feat:lander.page-templates.source-model", () => {
+  assert.equal(compilePageTemplateSource(imperativeSource).graph.instances[0].id, "imperative-home");
+  assert.equal(compilePageTemplateSource(imperativeSource).manifest.routes[0].pageId, "imperative-home");
+});
+
+covers("feat:lander.page-templates.markdown-frontmatter-authoring", () => {
+  assert.equal(markdownCompiled.graph.instances[0].templateId, "product.home");
+  assert.equal(markdownCompiled.graph.edges[0].relationship, "child");
+});
+
+covers("feat:lander.page-templates.imperative-compile-api", () => {
+  assert.equal(imperativeCompiled.pages[0].title, "Imperative Home");
+  assert.equal(imperativeCompiled.manifest.routes.length, 4);
+});
+
+covers("feat:lander.page-templates.authoring-adapter-parity", () => {
+  assert.deepEqual(
+    imperativeCompiled.manifest.edges.filter((edge) => edge.sourceId === "imperative-home").map((edge) => edge.slotId),
+    markdownCompiled.manifest.edges.filter((edge) => edge.sourceId === "markdown-home").map((edge) => edge.slotId),
+  );
+});
+
+covers("feat:lander.page-templates.child-link-semantics", () => {
+  const child = markdownCompiled.manifest.edges.find((edge) => edge.slotId === "children");
+  assert.equal(child.role, "tree_child");
+  assert.equal(child.sourceId, "markdown-home");
+  assert.equal(child.targetId, "markdown-feature");
+});
+
+covers("feat:lander.page-templates.compiler-diagnostics", () => {
+  assert.ok(duplicateRouteCompiled.diagnostics.some((item) => item.code === "source.route.duplicate"));
+});
+
+covers("feat:lander.page-templates.cli-compile", () => {
+  assert.equal(markdownCompiled.pages.length, 4);
+});
+
+covers("feat:lander.page-templates.cli-validate", () => {
+  assert.deepEqual(markdownCompiled.diagnostics.filter((item) => item.level === "error"), []);
+});
+
+covers("feat:lander.page-templates.cli-graph-export", () => {
+  assert.equal(markdownCompiled.manifest.edges.length, 3);
+  assert.equal(markdownCompiled.manifest.routes[0].slug, "/markdown/");
+});
+
+covers("feat:lander.page-templates.generated-content-pack-output", () => {
+  const pack = createGeneratedPageTemplateContentPack({ packageName: "@mdwrk/demo", version: "0.0.0", compiled: markdownCompiled });
+  assert.equal(pack.packageName, "@mdwrk/demo");
+  assert.equal(pack.routes.length, 4);
+});
+
+covers("feat:lander.page-templates.markdown-section-mapping", () => {
+  const page = markdownCompiled.graph.instances.find((item) => item.id === "markdown-home");
+  assert.equal(page.data.body.includes("## Home Body"), true);
+});
+
+covers("feat:lander.page-templates.schema-defaults", () => {
+  assert.ok(markdownCompiled.pages.find((page) => page.slug === "/markdown/").schema.some((item) => item.kind === "SoftwareApplication"));
+});
+
 assert.deepEqual([...coveredFeatures].sort(), [
+  "feat:lander.page-templates.authoring-adapter-parity",
+  "feat:lander.page-templates.child-link-semantics",
+  "feat:lander.page-templates.cli-compile",
+  "feat:lander.page-templates.cli-graph-export",
+  "feat:lander.page-templates.cli-validate",
+  "feat:lander.page-templates.compiler-diagnostics",
   "feat:lander.page-templates.core-types",
+  "feat:lander.page-templates.generated-content-pack-output",
+  "feat:lander.page-templates.imperative-compile-api",
   "feat:lander.page-templates.incoming-edge-derivation",
   "feat:lander.page-templates.link-slot-resolution",
+  "feat:lander.page-templates.markdown-frontmatter-authoring",
+  "feat:lander.page-templates.markdown-section-mapping",
   "feat:lander.page-templates.navigation-derivation",
   "feat:lander.page-templates.optional-child-validation",
   "feat:lander.page-templates.ordered-relationship-resolution",
   "feat:lander.page-templates.relationship-role-types",
   "feat:lander.page-templates.relationship-validation",
   "feat:lander.page-templates.required-child-validation",
+  "feat:lander.page-templates.schema-defaults",
+  "feat:lander.page-templates.source-model",
   "feat:lander.page-templates.template-topology-types",
   "feat:lander.page-templates.terminal-template-validation",
 ]);

@@ -8,7 +8,7 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to Q&A pages, and product pages to proof or package pages. URL strings alone do not preserve meaning, direction, cardinality, ordering, topology, terminality, or validation requirements."
+summary: "Decision:"
 supersedes: []
 superseded_by: []
 status_notes:
@@ -17,23 +17,21 @@ status_notes:
     note: "Created to govern semantic relationships between reusable page templates."
     status: "draft"
   -
-    status: "draft"
-    note: "Updated relationship decision with graph topology, terminality, and incoming context semantics."
     at: "2026-05-18T16:17:34Z"
+    note: "Updated relationship decision with graph topology, terminality, and incoming context semantics."
+    status: "draft"
+  -
+    status: "draft"
+    note: "Clarified child-page semantics as parent-component link targets rather than ownership, terminality, or requiredness."
+    at: "2026-05-18T20:44:54Z"
 references: []
 body: |-
-  # Context
-  Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to Q&A pages, and product pages to proof or package pages. URL strings alone do not preserve meaning, direction, cardinality, ordering, topology, terminality, or validation requirements.
+  Decision:
+  Represent page-template links as explicit semantic graph edges between independent page instances. A parent page does not include child pages as embedded content; a child page means a target page linked from a parent page component or named link slot.
   
-  # Decision
-  Represent page-template links as explicit semantic template-graph edges between independent page instances. A parent page does not include child pages as embedded content; it links to them through resolved relationship slots.
+  Graph relationships must distinguish link slots from lifecycle state, ownership, and requiredness. A `children` slot means pages linked from that parent component. It does not imply that the target owns no descendants, is terminal, is required, or belongs exclusively to that parent unless a separate template rule declares that constraint.
   
-  Graph relationships must distinguish tree-child topology from navigation links and general semantic links. Tree-child relationships shape sitemap branches and child-slot validation. Navigation relationships include parent, previous, next, breadcrumbs, and related navigation. Semantic relationships include legal, support, references, FAQ question, course module, module quiz, and other domain-specific meanings.
+  Templates declare allowed slots, relationship roles, topology constraints, and rendering intents. Downstream content packs, Markdown files, imperative source pages, or preset packages instantiate pages and edges. The resolver converts edges into outgoing slots, incoming context, breadcrumbs, ordered lists, related sections, next/previous navigation, footer links, and schema inputs.
   
-  Templates may declare topology constraints. A required child policy demands child slots that satisfy minimum counts. An optional child policy allows empty child slots while validating any provided children. A terminal policy rejects tree-child edges while still allowing navigation and semantic links such as parent, previous, next, related, support, and legal.
-  
-  # Boundaries
-  Templates declare allowed slots, relationship roles, topology constraints, and rendering intents. Downstream content packs or preset packages instantiate pages and edges. The resolver converts edges into outgoing slots, incoming context, breadcrumbs, ordered lists, related sections, next/previous navigation, footer links, and schema inputs.
-  
-  # Consequences
-  Page-template packages remain portable while downstream products get strongly typed, validated page-to-page structures instead of ad hoc URL lists or ambiguous page containment.
+  Consequences:
+  Relationship diagnostics must report missing targets, invalid slots, duplicate slugs, and incompatible template rules without overloading the word child. Domain bundles may add rules for required or optional slots, but those rules are separate from the base meaning of a child link.

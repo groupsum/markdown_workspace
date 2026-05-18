@@ -1,0 +1,28 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1074"
+number: 1074
+slug: "markdown-page-files-first-class-page-template-sources"
+title: "Markdown Page Files Are First-Class Page Template Sources"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Decision:"
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern Markdown/frontmatter page-template content-pack authoring."
+    at: "2026-05-18T20:44:29Z"
+references: []
+body: |-
+  Decision:
+  Markdown page files with YAML frontmatter are first-class page-template content-pack sources. A content pack may represent each page as one Markdown file whose frontmatter declares template, slug, title, description, schema, links, SEO, and template data while the Markdown body supplies page content.
+  
+  Rationale:
+  Content operators should author page-template packs as portable content, not as TypeScript graph code. Markdown frontmatter is inspectable, diffable, and compatible with existing MdWrk content workflows.
+  
+  Consequences:
+  The page-template suite must provide a Markdown/frontmatter adapter and CLI/build-time compilation path that normalizes Markdown pages into the shared source model and then delegates to the shared compiler.
