@@ -76,4 +76,4 @@ For adjacent package context, continue with the MdWrk package and lander referen
 
 - [Package Surfaces](/proof/package-surfaces)
 - [Quickstart](/docs/quickstart)
-- [Extension Host](/docs/extension-host)
+- [Extension Platform](/docs/extensions/extension-platform)
