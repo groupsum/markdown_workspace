@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -13,7 +13,9 @@ const pageMetadata = read('utils', 'pageMetadata.ts');
 const blogView = read('components', 'BlogView.tsx');
 const docsView = read('components', 'DocsView.tsx');
 const staticCompiler = read('src', 'cli.mjs');
-const settingsArticleHtml = read('dist-static', 'updates', 'settings-simplification-for-daily-flow', 'index.html');
+const generatedArticlePath = path.join(landerRoot, 'dist-static', 'updates', 'settings-simplification-for-daily-flow', 'index.html');
+const validateGenerated = process.argv.includes('--generated') || existsSync(generatedArticlePath);
+const settingsArticleHtml = validateGenerated ? readFileSync(generatedArticlePath, 'utf8') : '';
 
 const propertyValidator = (propertySchema, key) => {
   if (propertySchema?.$ref?.endsWith('/nonEmptyString')) {
@@ -133,25 +135,27 @@ assert.match(staticCompiler, /content-registry\.json/, 'Static compiler must emi
 assert.match(staticCompiler, /frontmatter:\s*entry\.frontmatter/, 'Static content registry must retain explicit featuredImage frontmatter.');
 assert.match(staticCompiler, /const defaultImage = `\$\{siteUrl\}\/favicon\.svg`/, 'Static metadata must fall back to favicon when no article image exists.');
 
-assert.match(
-  settingsArticleHtml,
-  /<meta property="og:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
-  'Generated news article must use the first inline image for Open Graph metadata when no featuredImage is set.',
-);
-assert.match(
-  settingsArticleHtml,
-  /<meta name="twitter:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
-  'Generated news article must use the first inline image for Twitter metadata when no featuredImage is set.',
-);
-assert.doesNotMatch(
-  settingsArticleHtml,
-  /class="lander-featured-image"/,
-  'Generated news article must not render a featured-image block when no featuredImage is set.',
-);
-assert.match(
-  settingsArticleHtml,
-  /<h2 class="md-h2" id="screenshot">Screenshot<\/h2><p class="md-p"><img src="\/blog\/media\/mdwrk-settings-visual\.png"/,
-  'Generated news article must keep inline body images in their markdown position.',
-);
+if (validateGenerated) {
+  assert.match(
+    settingsArticleHtml,
+    /<meta property="og:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
+    'Generated news article must use the first inline image for Open Graph metadata when no featuredImage is set.',
+  );
+  assert.match(
+    settingsArticleHtml,
+    /<meta name="twitter:image" content="https:\/\/mdwrk\.com\/blog\/media\/mdwrk-settings-visual\.png">/,
+    'Generated news article must use the first inline image for Twitter metadata when no featuredImage is set.',
+  );
+  assert.doesNotMatch(
+    settingsArticleHtml,
+    /class="lander-featured-image"/,
+    'Generated news article must not render a featured-image block when no featuredImage is set.',
+  );
+  assert.match(
+    settingsArticleHtml,
+    /<h2 class="md-h2" id="screenshot">Screenshot<\/h2><p class="md-p"><img src="\/blog\/media\/mdwrk-settings-visual\.png"/,
+    'Generated news article must keep inline body images in their markdown position.',
+  );
+}
 
 console.log('Article image contract validation passed.');

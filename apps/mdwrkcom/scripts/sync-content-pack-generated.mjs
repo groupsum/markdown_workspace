@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const landerRoot = path.resolve(__dirname, '..');
-const workspaceRoot = path.resolve(process.cwd(), '..', '..');
+const workspaceRoot = path.resolve(landerRoot, '..', '..');
 const distStaticRoot = path.join(landerRoot, 'dist-static');
 const packageGeneratedRoot = path.join(workspaceRoot, 'packages', 'content', 'mdwrkcom-content-pack', 'generated');
 

@@ -1,0 +1,35 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2091"
+number: 2091
+slug: "lander-page-template-relationship-resolution-contract"
+title: "Lander Page Template Relationship Resolution Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define semantic page-template graph resolution."
+    at: "2026-05-18T06:35:12Z"
+references: []
+body: |-
+  # Scope
+  This SPEC defines how `@mdwrk/lander-page-templates` resolves semantic page-template edges into template render context.
+  
+  # Requirements
+  The resolver must locate page instances by id, validate each edge against the registered relationship rules, group outbound and inbound links by role, preserve deterministic ordering, and expose resolved links through role-keyed slots.
+  
+  The resolver must support required and optional cardinalities: `zero_or_one`, `one`, `zero_or_many`, and `one_or_many`. Missing required relationships, duplicate singular relationships, unsupported template-kind pairs, unsupported roles, and broken page references must be validation failures.
+  
+  Ordered relationships must sort by numeric `order` first and then by stable page id or slug. The resolver may derive breadcrumbs, previous links, next links, related links, footer links, and navigation groups from relationship roles and render intents, but those derivations must remain deterministic and inspectable.
+  
+  # Verification
+  Tests must cover valid graphs, missing required edges, invalid target kinds, duplicate singular edges, ordered child edges, reciprocal relationships, and downstream PageSpec generation from resolved slots.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1067"

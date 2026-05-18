@@ -4,15 +4,16 @@ Product Updates by Month
 
 # May 2026
 
-MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 
+- [Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach](/updates/structured-data-learning-map/) - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 - [Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use](/updates/settings-simplification-for-daily-flow/) - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 
 ## Frequently Asked Questions
 
 ### What does this MdWrk update cover?
 
-MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 
 ### What should readers take away from this update?
 

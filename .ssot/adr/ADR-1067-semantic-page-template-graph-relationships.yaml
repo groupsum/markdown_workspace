@@ -1,0 +1,31 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1067"
+number: 1067
+slug: "semantic-page-template-graph-relationships"
+title: "Semantic Page Template Graph Relationships"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to QA pages, and product pages to proof or package pages. URL strings alone do not preserve the meaning, cardinality, ordering, or validation requirements of those links."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern semantic relationships between reusable page templates."
+    at: "2026-05-18T06:34:38Z"
+references: []
+body: |-
+  # Context
+  Page-template systems need links such as learning paths to courses, courses to modules, modules to quizzes, home pages to legal/support pages, FAQ hubs to QA pages, and product pages to proof or package pages. URL strings alone do not preserve the meaning, cardinality, ordering, or validation requirements of those links.
+  
+  # Decision
+  Represent page-template links as semantic template-graph edges. The core graph model is domain-neutral: template kinds, relationship roles, cardinality, page instances, edges, resolved link slots, validation, and schema intents. Domain bundles specialize the shared core with typed aliases and unions for education, support, product, documentation, trust, package, comparison, and marketing page systems.
+  
+  # Boundaries
+  Templates declare allowed link slots and rendering intents. Downstream content packs instantiate pages and edges. The resolver converts edges into grouped links, breadcrumbs, ordered lists, related sections, next/previous navigation, and schema inputs. Missing required edges and unsupported relationships are validation failures.
+  
+  # Consequences
+  Page-template packages can remain portable while downstream products get strongly typed, validated link structures instead of ad hoc page-to-page URLs.

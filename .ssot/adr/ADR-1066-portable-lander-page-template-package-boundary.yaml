@@ -1,0 +1,31 @@
+schema_version: "0.4.0"
+kind: "adr"
+id: "adr:1066"
+number: 1066
+slug: "portable-lander-page-template-package-boundary"
+title: "Portable Lander Page Template Package Boundary"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "The lander package family already separates content contracts, compilation, SEO, theme, markdown adaptation, React rendering, and product content packs. Reusable page recipes now need their own package boundary so products can author consistent page systems without embedding product-specific content in the rendering package."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to govern the reusable lander page-template package boundary."
+    at: "2026-05-18T06:34:12Z"
+references: []
+body: |-
+  # Context
+  The lander package family already separates content contracts, compilation, SEO, theme, markdown adaptation, React rendering, and product content packs. Reusable page recipes now need their own package boundary so products can author consistent page systems without embedding product-specific content in the rendering package.
+  
+  # Decision
+  Create `@mdwrk/lander-page-templates` under `packages/lander/lander-page-templates` as a portable package for reusable page-template definitions, template graph primitives, relationship resolution, validation, domain bundles, and PageSpec generation.
+  
+  # Boundaries
+  `@mdwrk/lander-react` owns reusable React rendering primitives and JSON-LD rendering components. `@mdwrk/lander-page-templates` owns typed page recipes and graph-to-PageSpec builders. Content packs and apps own concrete page instances, copy, slugs, assets, and semantic edges. The package must not depend on `apps/mdwrkcom` or any product-host implementation.
+  
+  # Consequences
+  Downstream sites can instantiate home, feature, answer, compare, trust, support, FAQ, education, package, and documentation page systems from reusable templates while preserving package/content ownership boundaries.

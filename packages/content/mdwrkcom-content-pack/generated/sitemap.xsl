@@ -26,6 +26,31 @@
         <main>
           <h1>MdWrk Sitemap</h1>
           <p>This is the machine-readable XML sitemap rendered as a human-readable table. Search engines read the XML nodes; browsers use this stylesheet for review.</p>
+          <xsl:choose>
+            <xsl:when test="sm:sitemapindex">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Sitemap</th>
+                    <th scope="col">Last modified</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <xsl:for-each select="sm:sitemapindex/sm:sitemap">
+                    <tr>
+                      <td>
+                        <a>
+                          <xsl:attribute name="href"><xsl:value-of select="sm:loc" /></xsl:attribute>
+                          <xsl:value-of select="sm:loc" />
+                        </a>
+                      </td>
+                      <td><xsl:value-of select="sm:lastmod" /></td>
+                    </tr>
+                  </xsl:for-each>
+                </tbody>
+              </table>
+            </xsl:when>
+            <xsl:otherwise>
           <table>
             <thead>
               <tr>
@@ -52,6 +77,8 @@
               </xsl:for-each>
             </tbody>
           </table>
+            </xsl:otherwise>
+          </xsl:choose>
         </main>
       </body>
     </html>

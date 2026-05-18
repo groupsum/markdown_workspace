@@ -13,13 +13,11 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to define the reusable discovery artifact builder contract."
     at: "2026-05-13T14:35:07Z"
+    note: "Created to define the reusable discovery artifact builder contract."
+    status: "draft"
 references: []
 body: |-
-  # SPEC-2085: Portable Lander Discovery Artifact Pipeline Contract
-  
   ## Scope
   
   This SPEC defines the reusable discovery artifact pipeline that shall be owned by `@mdwrk/lander-seo` for portable product landers. It applies to compiled lander sites produced by `@mdwrk/lander-core` and to product hosts such as `apps/mdwrkcom`.
@@ -27,23 +25,28 @@ body: |-
   ## Requirements
   
   1. `@mdwrk/lander-seo` shall expose a reusable discovery artifact builder that accepts a compiled lander site, page registry inputs, and generation options.
-  2. The builder shall produce sitemap XML, robots text, `llms.txt`, `llms-full.txt`, `content-index.json`, `semantic-index.json`, `content-registry.json`, `jsonld-graph.json`, cache header manifest inputs, and diagnostics.
-  3. Sitemap XML shall include indexable canonical pages and exclude noindex pages.
-  4. Robots text shall include the public sitemap URL and configured crawler policies without localhost, loopback, or explicit development port leakage.
-  5. `llms.txt` shall provide a concise discovery projection of site facts and indexable pages.
-  6. `llms-full.txt` shall include canonical page URLs and crawlable rendered page text for indexable pages.
-  7. `content-index.json` shall expose route, title, description, canonical URL, language, tags or topics when available, and summary text suitable for lightweight discovery.
-  8. `semantic-index.json` shall expose stable page identifiers, canonical URLs, page family, topic clusters, summaries, and related internal links suitable for retrieval-oriented consumers.
-  9. `content-registry.json` shall expose source path when known, slug, canonical URL, robots disposition, sitemap inclusion, language metadata, generated artifact membership, rendered text hash or content hash, and source package metadata when known.
-  10. `jsonld-graph.json` shall contain deterministic graph nodes for supported page, site, breadcrumb, FAQ, article, software, package, and product entities represented by compiled page intent.
-  11. Cache header manifest inputs shall classify discovery artifacts as mutable-revalidate unless a site profile explicitly fingerprints them.
-  12. The builder shall return diagnostics rather than silently emitting contradictory artifacts.
-  13. Artifact serialization shall be deterministic for the same compiled site and options.
-  14. The package shall expose enough lower-level helpers for hosts that need to write only a subset of artifacts.
+  2. The builder shall produce sitemap XML artifacts, robots text, `llms.txt`, `llms-full.txt`, `content-index.json`, `semantic-index.json`, `content-registry.json`, `jsonld-graph.json`, cache header manifest inputs, and diagnostics.
+  3. Sitemap XML artifacts shall use a root sitemap index at `/sitemap.xml`.
+  4. The root sitemap index shall contain only child sitemap locations and shall not contain page URL entries.
+  5. Child sitemap files shall be emitted as URL-set documents under a deterministic sitemap base path such as `/sitemaps/*.xml`.
+  6. Child sitemap URL sets shall include indexable canonical pages and exclude noindex pages.
+  7. Child sitemap grouping shall be deterministic for the same compiled site and options.
+  8. Hreflang and alternate URL entries shall be emitted in child URL-set sitemaps when locale metadata is present.
+  9. Robots text shall include the public root sitemap URL and configured crawler policies without localhost, loopback, or explicit development port leakage.
+  10. `llms.txt` shall provide a concise discovery projection of site facts and indexable pages.
+  11. `llms-full.txt` shall include canonical page URLs and crawlable rendered page text for indexable pages.
+  12. `content-index.json` shall expose route, title, description, canonical URL, language, tags or topics when available, and summary text suitable for lightweight discovery.
+  13. `semantic-index.json` shall expose stable page identifiers, canonical URLs, page family, topic clusters, summaries, and related internal links suitable for retrieval-oriented consumers.
+  14. `content-registry.json` shall expose source path when known, slug, canonical URL, robots disposition, sitemap inclusion, language metadata, generated artifact membership, rendered text hash or content hash, and source package metadata when known.
+  15. `jsonld-graph.json` shall contain deterministic graph nodes for supported page, site, breadcrumb, FAQ, article, software, package, and product entities represented by compiled page intent.
+  16. Cache header manifest inputs shall classify root and child sitemap artifacts as mutable-revalidate unless a site profile explicitly fingerprints them.
+  17. The builder shall return diagnostics rather than silently emitting contradictory artifacts.
+  18. Artifact serialization shall be deterministic for the same compiled site and options.
+  19. The package shall expose enough lower-level helpers for hosts that need to write only a subset of artifacts.
   
   ## Acceptance
   
-  Feature, test, claim, and evidence rows shall separately track each artifact family, deterministic serialization, crawler policy validation, index/registry agreement, JSON-LD graph coverage, and host adoption. Passing evidence shall include reusable package tests and at least one product host smoke test.
+  Feature, test, claim, and evidence rows shall separately track root sitemap index generation, child sitemap URL-set generation, deterministic serialization, cache manifest coverage, crawler policy validation, index and registry agreement, JSON-LD graph coverage, host adoption, and content-pack mirroring. Passing evidence shall include reusable package tests and at least one product host smoke test.
 spec_kind: "normative"
 adr_ids:
   - "adr:1064"

@@ -1,0 +1,13 @@
+.git
+node_modules
+**/node_modules
+dist
+**/dist
+**/dist-static
+**/dist_test
+.tmp
+**/.tmp
+.uv-cache
+.venv
+test-results
+artifacts

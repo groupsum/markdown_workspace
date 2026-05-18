@@ -1,0 +1,36 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2093"
+number: 2093
+slug: "lander-page-template-schema-and-pagespec-generation-contract"
+title: "Lander Page Template Schema And PageSpec Generation Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines how page-template instances become lander `PageSpec` records and structured-data intents."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define PageSpec and schema generation from page templates."
+    at: "2026-05-18T06:35:49Z"
+references: []
+body: |-
+  # Scope
+  This SPEC defines how page-template instances become lander `PageSpec` records and structured-data intents.
+  
+  # Requirements
+  Each template must accept typed input data and a resolved render context. The generated output must be an `@mdwrk/lander-content-contract` `PageSpec` with stable slug, title, description, h1, intro, sections, FAQ data when applicable, SEO metadata when provided, and schema intents.
+  
+  Templates may generate sections from resolved link slots, including card grids, ordered lists, comparison blocks, proof matrices, CTA bands, FAQ blocks, support/legal footer groups, breadcrumbs, and related-content groups. Template output must not embed product-app React components.
+  
+  Schema generation must be driven by the template kind, input data, and semantic relationships. Supported schema intents may include `WebPage`, `WebSite`, `Organization`, `FAQPage`, `QAPage`, `ItemList`, `Course`, `CourseInstance`, `HowTo`, `TechArticle`, `SoftwareSourceCode`, `Product`, and other structured-data kinds already supported by the lander stack.
+  
+  # Verification
+  Tests must prove that generated PageSpec records compile with `@mdwrk/lander-core`, render with `@mdwrk/lander-react`, and preserve schema intent data for JSON-LD graph rendering.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1066"
+  - "adr:1067"

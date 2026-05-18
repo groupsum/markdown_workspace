@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "adr"
 id: "adr:1061"
 number: 1061
@@ -18,18 +18,25 @@ status_notes:
     at: "2026-05-08T03:22:33Z"
 references: []
 body: |-
+  # ADR-1061: mdwrkcom Portable Lander Cache Policy Adoption
+  
   ## Decision
-
+  
   mdwrkcom shall adopt the portable lander cache freshness and critical CSS delivery model rather than implementing a mdwrkcom-only caching system.
-
+  
   mdwrkcom generated assets, including full CSS assets, shall use the reusable lander immutable asset pipeline when they can be content-fingerprinted. mdwrkcom route HTML and mutable discovery artifacts shall use the reusable mutable-revalidate policy, including ETag and Last-Modified metadata, while generally avoiding positive max-age.
-
+  
+  mdwrkcom shall consume reusable cache classification, cache manifest, and cache header lookup helpers from the portable lander packages. mdwrkcom-specific code may adapt those outputs to generated static artifacts, Docker image contents, or downstream deployment documentation, but it shall not own the generic cache algorithm.
+  
   mdwrkcom shall define its own critical CSS profile for the first viewport. That profile shall cover document tokens, body background and foreground, header and navigation, hero or route title layout, first-viewport typography, focus visibility, and contrast-critical basics. The mdwrkcom content pack shall receive the generated cache metadata artifacts needed for downstream hosts to preserve the same policy.
-
+  
   ## Rationale
-
+  
   mdwrkcom has site-specific route classes, discovery artifacts, and first-viewport content, but the caching and render-blocking mechanics are reusable lander concerns. Adopting the portable mechanism keeps the public site aligned with the package contract and keeps cache policy DRY across future lander consumers.
-
+  
+  Downstream content-pack consumers should not need mdwrkcom's local build scripts to understand intended cache behavior. Mirrored cache artifacts make the generated corpus portable with explicit freshness metadata.
+  
   ## Consequences
-
-  mdwrkcom implementation work should configure the portable lander profile, validate generated header metadata, and mirror cache artifacts into the content pack. mdwrkcom-specific code should remain thin and should not duplicate generic cache classification, fingerprinting, or deferred stylesheet machinery.
+  
+  mdwrkcom implementation work should configure the portable lander profile, validate generated header metadata, and mirror cache artifacts into the content pack. mdwrkcom-specific code should remain thin and should not duplicate generic cache classification, fingerprinting, header lookup, manifest export, or deferred stylesheet machinery.
+  

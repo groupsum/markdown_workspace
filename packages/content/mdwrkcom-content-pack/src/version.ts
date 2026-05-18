@@ -1,1 +1,1 @@
-export const MDWRKCOM_CONTENT_PACK_VERSION = "0.1.4";
+export const MDWRKCOM_CONTENT_PACK_VERSION = "0.1.6";

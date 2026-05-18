@@ -1,0 +1,36 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2092"
+number: 2092
+slug: "lander-page-template-domain-bundle-contract"
+title: "Lander Page Template Domain Bundle Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines domain bundles for `@mdwrk/lander-page-templates`."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define typed domain bundles over the generic template graph core."
+    at: "2026-05-18T06:35:30Z"
+references: []
+body: |-
+  # Scope
+  This SPEC defines domain bundles for `@mdwrk/lander-page-templates`.
+  
+  # Requirements
+  Domain bundles must be typed specializations of the shared core contract, not replacements for it. A bundle may define template-kind unions, relationship-role unions, relationship-rule unions, default templates, schema defaults, and validation profiles for a domain.
+  
+  Initial bundles should include product, docs, support, education, packages, comparison, trust, and marketing. Example relationships include home to legal/support/help pages, FAQ hub to QA pages, learning path to courses, course to modules, module to quizzes, package pages to docs/proof pages, and feature pages to proof/package/support pages.
+  
+  Domain bundles must compose: a downstream content pack may combine product, support, trust, and education bundles in one template graph without changing core graph semantics.
+  
+  # Verification
+  Tests must prove that at least two independent domain bundles can be combined in one graph and that invalid cross-domain links fail unless an explicit shared relationship rule allows them.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1066"
+  - "adr:1067"

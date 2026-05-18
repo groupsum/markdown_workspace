@@ -1,11 +1,12 @@
 # Product Updates
 
-MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 
 # Product Updates
 
-MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 
+- [Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach](/updates/structured-data-learning-map/) - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 - [Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use](/updates/settings-simplification-for-daily-flow/) - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
 - [Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience](/updates/docs-surface-realignment/) - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage.
 - [Launch Extensions on the Same Governed Host the MdWrk Client Uses](/updates/extension-host-rollout/) - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path.
@@ -24,7 +25,7 @@ MdWrk refines its settings UX with cleaner labels and a calmer navigation model,
 
 ### What do MdWrk Product Updates cover?
 
-MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.
+MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference.
 
 ### Where should readers start in MdWrk Product Updates?
 

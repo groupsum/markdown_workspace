@@ -1,0 +1,38 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2090"
+number: 2090
+slug: "lander-page-template-core-contract"
+title: "Lander Page Template Core Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the shared, domain-neutral API contract for `@mdwrk/lander-page-templates`."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    status: "draft"
+    note: "Created to define the generic page-template package API."
+    at: "2026-05-18T06:34:58Z"
+references: []
+body: |-
+  # Scope
+  This SPEC defines the shared, domain-neutral API contract for `@mdwrk/lander-page-templates`.
+  
+  # Requirements
+  The package must expose typed primitives for `PageTemplate`, `PageInstance`, `RelationshipRule`, `TemplateEdge`, `ResolvedTemplateLink`, `ResolvedLinkSlots`, `TemplateRenderContext`, `TemplateBundle`, and `TemplateGraph`.
+  
+  The package must expose helper functions for `definePageTemplate`, `definePageInstance`, `defineRelationship`, `defineEdge`, `defineTemplateBundle`, `defineTemplateGraph`, and `buildPageSpecFromTemplate`.
+  
+  The shared core must not encode education, support, legal, product, trust, package, comparison, marketing, or documentation-specific template kinds. Domain-specific packages and modules must specialize the core through typed aliases, unions, and bundles.
+  
+  Every page template must emit an `@mdwrk/lander-content-contract` `PageSpec` and must preserve compatibility with `@mdwrk/lander-core` and `@mdwrk/lander-react`.
+  
+  # Verification
+  Smoke tests must prove that a generic template can be authored, instantiated downstream, resolved through a graph, and converted into a valid `PageSpec` without importing a product app.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1066"
+  - "adr:1067"

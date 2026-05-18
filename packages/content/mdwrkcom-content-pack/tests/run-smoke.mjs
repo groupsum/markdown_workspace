@@ -16,13 +16,14 @@ const mdwrkcomRoot = path.join(repoRoot, 'apps', 'mdwrkcom');
 
 const hashFile = (filePath) => crypto.createHash('sha256').update(fs.readFileSync(filePath)).digest('hex');
 
-const collectFiles = (root, ignored = new Set()) => {
+const collectFiles = (root, ignored = new Set(), baseRoot = root) => {
   if (!fs.existsSync(root)) return [];
   return fs.readdirSync(root, { withFileTypes: true }).flatMap((entry) => {
     const entryPath = path.join(root, entry.name);
-    if (entry.isDirectory()) return collectFiles(entryPath, ignored);
+    const relativePath = path.relative(baseRoot, entryPath).replace(/\\/g, '/');
+    if (ignored.has(relativePath) || ignored.has(entry.name)) return [];
+    if (entry.isDirectory()) return collectFiles(entryPath, ignored, baseRoot);
     if (entry.name === 'AGENTS.md') return [];
-    if (ignored.has(path.relative(root, entryPath).replace(/\\/g, '/')) || ignored.has(entry.name)) return [];
     return [entryPath];
   });
 };

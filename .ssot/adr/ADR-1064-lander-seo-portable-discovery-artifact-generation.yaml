@@ -8,23 +8,23 @@ status: "draft"
 origin: "repo-local"
 decision_date: null
 tags: []
-summary: "`@mdwrk/lander-seo` shall become the reusable owner for portable lander discovery artifact generation and validation."
+summary: "`@mdwrk/lander-seo` shall be the reusable owner for portable lander discovery artifact generation and validation."
 supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to govern extraction of reusable discovery artifact generation from mdwrkcom into lander-seo."
     at: "2026-05-13T14:34:20Z"
+    note: "Created to govern extraction of reusable discovery artifact generation from mdwrkcom into lander-seo."
+    status: "draft"
 references: []
 body: |-
-  # ADR-1064: Lander SEO Owns Portable Discovery Artifact Generation
-  
   ## Decision
   
-  `@mdwrk/lander-seo` shall become the reusable owner for portable lander discovery artifact generation and validation.
+  `@mdwrk/lander-seo` shall be the reusable owner for portable lander discovery artifact generation and validation.
   
-  The package shall provide product-neutral builders for sitemap XML, robots policy, short and full LLM discovery files, content index JSON, semantic index JSON, content registry JSON, JSON-LD graph artifacts, cache header manifest inputs, and diagnostics. Product sites such as `apps/mdwrkcom` may host or invoke those builders, but they shall not remain the long-term owner of generic discovery artifact algorithms.
+  The package shall provide product-neutral builders for sitemap indexes, child sitemap URL sets, robots policy, short and full LLM discovery files, content index JSON, semantic index JSON, content registry JSON, JSON-LD graph artifacts, cache header manifest inputs, and diagnostics. Product sites such as `apps/mdwrkcom` may host or invoke those builders, but they shall not remain the long-term owner of generic discovery artifact algorithms.
+  
+  The public root `/sitemap.xml` shall be a sitemap index, not a page URL set. It shall contain only child sitemap locations. Page URLs shall live in child URL-set documents under a deterministic sitemap base path such as `/sitemaps/*.xml`.
   
   Product-specific content packs, including `@mdwrk/mdwrkcom-content-pack`, shall own product prose, source metadata, assets, sitemap inputs, and mirrored generated artifacts. They shall not own generic SEO/AEO/AiEO artifact generation logic.
   
@@ -32,12 +32,6 @@ body: |-
   
   The current public lander pipeline proves the discovery surface in mdwrkcom, but much of that behavior is reusable across product landers. Keeping generic artifact generation inside `apps/mdwrkcom` makes reuse by downstream documentation sites harder and blurs app, content-pack, SEO, and rendering boundaries.
   
+  Root sitemap indexes make the reusable contract scale across downstream product landers. A downstream site can emit one stable `/sitemap.xml` while splitting page URLs by page family, locale, package, content pack, or other governed grouping without changing crawler entry points.
+  
   Moving the reusable builders into `@mdwrk/lander-seo` preserves the existing package split: content packs own product truth, `@mdwrk/lander-core` owns compilation, `@mdwrk/lander-react` owns rendering and JSON-LD component output, and `@mdwrk/lander-seo` owns generated discovery artifacts and their validation gates.
-  
-  ## Consequences
-  
-  1. `@mdwrk/lander-seo` must expose reusable builder APIs for discovery artifacts, not only metadata and page scoring helpers.
-  2. `apps/mdwrkcom` must migrate generic discovery artifact generation out of app-local CLI code once the reusable package surface exists.
-  3. `@mdwrk/mdwrkcom-content-pack` must remain MdWrk-specific and mirror generated artifacts from the reusable pipeline when packaging the public corpus.
-  4. Product adopters may create their own content packs while reusing the same discovery artifact pipeline.
-  5. Verification shall fail closed when a product app reintroduces divergent generic sitemap, robots, LLM, content-index, semantic-index, registry, or JSON-LD graph generation.
