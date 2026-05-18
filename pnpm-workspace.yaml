@@ -1,0 +1,10 @@
+packages:
+  - "apps/*"
+  - "packages/contracts/*"
+  - "packages/renderer/*"
+  - "packages/editor/*"
+  - "packages/lander/*"
+  - "packages/content/*"
+  - "packages/extensions/*"
+  - "packages/shared/*"
+  - "examples/*"

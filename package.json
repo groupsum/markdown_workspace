@@ -1,8 +1,8 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.128",
-  "packageManager": "npm@10.9.2",
+  "version": "0.2.130",
+  "packageManager": "pnpm@10.11.0",
   "workspaces": [
     "apps/*",
     "packages/contracts/*",
@@ -16,7 +16,8 @@
   ],
   "engines": {
     "node": ">=20 <23",
-    "npm": ">=10"
+    "npm": ">=10",
+    "pnpm": ">=10"
   },
   "scripts": {
     "dev": "npm run dev:client",
@@ -85,6 +86,7 @@
     "ci:test": "npm run test && npm run test:integration && npm run test:e2e && npm run test:visual",
     "ci:workspace:verify": "npm run ci:lint && npm run ci:typecheck && npm run ci:build && npm run ci:test && npm run conformance",
     "ci:workspace:verify:publish": "npm run ci:lint && npm run ci:typecheck && npm run ci:build && npm run test && npm run conformance",
+    "ci:publish-packages": "node ./tools/release/verify-publish-packages.mjs",
     "ci:desktop:build": "node ./tools/ci/build-desktop-shell.mjs",
     "ci:desktop:release": "node ./tools/ci/release-desktop-shell.mjs",
     "ci:desktop:publish": "node ./tools/ci/publish-desktop-shell.mjs",

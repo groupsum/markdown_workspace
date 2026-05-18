@@ -21213,6 +21213,106 @@
     },
     {
       "@type": "WebPage",
+      "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#webpage",
+      "url": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+      "name": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect | MdWrk Product Updates",
+      "headline": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+      "description": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "image": "https://mdwrk.com/blog/media/mdwrk-package-dag.svg",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://mdwrk.com/#website"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#primary"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#primary",
+      "mainEntityOfPage": {
+        "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#webpage"
+      },
+      "headline": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+      "name": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect | MdWrk Product Updates",
+      "description": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+      "url": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+      "image": "https://mdwrk.com/blog/media/mdwrk-package-dag.svg",
+      "datePublished": "2026-05-18T00:00:00-05:00",
+      "dateModified": "2026-05-18T00:00:00-05:00",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://mdwrk.com/updates/author/cobycloud/#author",
+        "name": "CobyCloud",
+        "url": "https://mdwrk.com/updates/author/cobycloud/"
+      },
+      "publisher": {
+        "@id": "https://mdwrk.com/#organization"
+      },
+      "creator": {
+        "@id": "https://mdwrk.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does this MdWrk update cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should readers take away from this update?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "MdWrk",
+          "item": "https://mdwrk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Product Updates",
+          "item": "https://mdwrk.com/updates/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+          "item": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
       "@id": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/#webpage",
       "url": "https://mdwrk.com/updates/pwa-install-and-zoom-controls/",
       "name": "PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use | MdWrk Product Updates",

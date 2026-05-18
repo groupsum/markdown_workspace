@@ -8,6 +8,7 @@ const baseUrl = (process.argv[2] || process.env.MDWRK_SITE_URL || 'https://mdwrk
 
 const checks = [
   { path: '/', includes: ['MdWrk', '<h1'] },
+  { path: '/blog', includes: ['Product Updates', '<h1'], finalPath: '/updates/' },
   { path: '/sitemap.xml', includes: ['<sitemapindex', '/sitemaps/'] },
   { path: '/robots.txt', includes: ['Sitemap:'] },
   { path: '/llms.txt', includes: ['# MdWrk'] },
@@ -22,6 +23,9 @@ for (const check of checks) {
     const response = await fetch(url, { redirect: 'follow' });
     const body = await response.text();
     if (response.status !== 200) failures.push(`${url}: expected HTTP 200, received ${response.status}`);
+    if (check.finalPath && new URL(response.url).pathname !== check.finalPath) {
+      failures.push(`${url}: expected final path ${check.finalPath}, received ${new URL(response.url).pathname}`);
+    }
     for (const expected of check.includes) {
       if (!body.toLowerCase().includes(expected.toLowerCase())) {
         failures.push(`${url}: missing ${expected}`);

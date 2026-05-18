@@ -13269,7 +13269,7 @@
   },
   {
     "sourcePath": "data/markdown/blog",
-    "sourceHash": "8d76b97f853139c41a6c4a28db7e40a8887f84df768e077180204a2f711b104f",
+    "sourceHash": "fda30642d2d2f3bc9a21f045af11761f00c298c589c49f457cfaececd7203195",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/updates/",
@@ -13304,12 +13304,17 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "Product Updates MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
+      "text": "Product Updates MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect - Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "headings": [],
       "links": [
         {
           "href": "/updates/structured-data-learning-map/",
           "text": "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach",
+          "internal": true
+        },
+        {
+          "href": "/updates/package-dag-for-mdwrk-and-lander/",
+          "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
           "internal": true
         },
         {
@@ -13378,7 +13383,7 @@
           "internal": true
         }
       ],
-      "wordCount": 549
+      "wordCount": 582
     },
     "discovery": {
       "canonical": "https://mdwrk.com/updates/",
@@ -13492,6 +13497,132 @@
         "https://mdwrk.com/updates/structured-data-learning-map/#primary",
         "https://mdwrk.com/updates/structured-data-learning-map/#faq",
         "https://mdwrk.com/updates/structured-data-learning-map/#breadcrumbs"
+      ]
+    }
+  },
+  {
+    "sourcePath": "data/markdown/blog/package-dag-for-mdwrk-and-lander.md",
+    "sourceHash": "b6790c934436df7ddd405a3ad1b3eb2c1e84d8b7d81d84667471e1a5625102f1",
+    "frontmatter": {
+      "schema": "mdwrk.page.v1",
+      "slug": "/updates/package-dag-for-mdwrk-and-lander/",
+      "title": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect | MdWrk Product Updates",
+      "description": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+      "h1": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+      "subtitle": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together.",
+      "entity": "MdWrk",
+      "intent": "read about mdwrk package dependency maps show how apps, shared packages, and lander packages connect",
+      "contentType": "update",
+      "updatedAt": "2026-05-18",
+      "publishedAt": "2026-05-18",
+      "author": "CobyCloud",
+      "displayAuthor": true,
+      "featuredImage": "/blog/media/mdwrk-package-dag.svg",
+      "featuredImageAlt": "Top-down MdWrk package dependency map showing direct internal dependency arrows between apps, packages, and contracts",
+      "faqs": [
+        {
+          "question": "What does this MdWrk update cover?",
+          "answer": "Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together."
+        },
+        {
+          "question": "What should readers take away from this update?",
+          "answer": "This article explains the MdWrk product change, the workflow it affects, and where readers can continue in the related documentation."
+        }
+      ],
+      "parent": "/updates/",
+      "related": [],
+      "tags": [
+        "updates"
+      ],
+      "canonical": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+      "locale": "en",
+      "noindex": false,
+      "llmsInclude": true
+    },
+    "rendered": {
+      "text": "The May 18 update adds a visual package DAG for MdWrk contributors. The graph shows the direct internal dependency relationships between app entrypoints, package surfaces, and foundational contracts in the workspace. This map is useful because the MdWrk repo is intentionally split into focused package lanes. Shared packages provide reusable contracts and primitives. Editor, renderer, and extension packages build the writing workspace. Lander packages turn content, structured data, SEO helpers, React components, and themes into mdwrk.com. The app layer then consumes those packages through apps/client and apps/mdwrkcom. Package DAG The DAG set is split into focused images so each surface can be read without forcing unrelated package families into the same graph. apps/client apps/mdwrkcom Lander packages What the graph shows Each graph is top-down. The entrypoint or package roots sit at the top, the packages they consume sit below them, and foundational contracts sit near the bottom. Each arrow points from a consumer package to the internal package it depends on. The graph includes shared foundations and contracts: @mdwrk/theme-contract, @mdwrk/ui-tokens, @mdwrk/icons, @mdwrk/i18n, @mdwrk/testing, and @mdwrk/structured-data @mdwrk/extension-manifest and @mdwrk/extension-host Those packages support the MdWrk editor, renderer, and extension lane: @mdwrk/markdown-renderer-core and @mdwrk/markdown-renderer-react @mdwrk/markdown-editor-core, @mdwrk/markdown-editor-react, and @mdwrk/markdown-edit-in-renderer-react @mdwrk/extension-runtime, @mdwrk/extension-manager, @mdwrk/extension-theme-studio, @mdwrk/extension-language-pack-studio, @mdwrk/extension-workspace-files, @mdwrk/extension-git-ops, and @mdwrk/extension-gemini-agent The lander lane stays separate and focused on the public site: @mdwrk/lander-content-contract @mdwrk/lander-core @mdwrk/lander-react @mdwrk/lander-seo @mdwrk/lander-theme @mdwrk/lander-markdown-content-adapter @mdwrk/lander-page-templates @mdwrk/lander-page-template-presets @mdwrk/mdwrkcom-content-pack apps/mdwrkcom consumes lander packages, renderer packages, structured data, and UI tokens. apps/client consumes the editor, renderer, extension, shared UI, and contract packages. Why this matters The DAG gives contributors a practical review map. A change to @mdwrk/structured-data can be checked for its effect on @mdwrk/lander-react and apps/mdwrkcom. A change to @mdwrk/ui-tokens can be reviewed through both the workspace client and the lander. A change to the extension runtime can be evaluated through the extension packages that depend on it before it reaches the client app. The same structure also keeps package ownership clear. Shared foundations stay small and reusable. Runtime packages stay focused on editing and rendering behavior. Lander packages stay focused on publishing, discovery, and reusable public-site content. App packages assemble those capabilities without hiding the dependency paths. How to use it Use the DAG when planning package work, reviewing pull requests, or deciding where a new capability belongs. Start with the package that owns the primitive or behavior. Follow its outgoing dependency path to the packages that consume it. Check the app entrypoint that exposes the behavior to users. Keep new functionality in the lowest package lane that owns the domain cleanly. For adjacent package context, continue with the MdWrk package and lander references: Package Surfaces Quickstart Extension Host",
+      "headings": [
+        {
+          "depth": 2,
+          "id": "package-dag",
+          "text": "Package DAG"
+        },
+        {
+          "depth": 3,
+          "id": "appsclient",
+          "text": "apps/client"
+        },
+        {
+          "depth": 3,
+          "id": "appsmdwrkcom",
+          "text": "apps/mdwrkcom"
+        },
+        {
+          "depth": 3,
+          "id": "lander-packages",
+          "text": "Lander packages"
+        },
+        {
+          "depth": 2,
+          "id": "what-the-graph-shows",
+          "text": "What the graph shows"
+        },
+        {
+          "depth": 2,
+          "id": "why-this-matters",
+          "text": "Why this matters"
+        },
+        {
+          "depth": 2,
+          "id": "how-to-use-it",
+          "text": "How to use it"
+        }
+      ],
+      "links": [
+        {
+          "href": "/blog/media/mdwrk-dag-apps-client.svg",
+          "text": "apps/client package DAG",
+          "internal": true
+        },
+        {
+          "href": "/blog/media/mdwrk-dag-apps-mdwrkcom.svg",
+          "text": "apps/mdwrkcom package DAG",
+          "internal": true
+        },
+        {
+          "href": "/blog/media/mdwrk-dag-lander-packages.svg",
+          "text": "Lander package DAG",
+          "internal": true
+        },
+        {
+          "href": "/proof/package-surfaces",
+          "text": "Package Surfaces",
+          "internal": true
+        },
+        {
+          "href": "/docs/quickstart",
+          "text": "Quickstart",
+          "internal": true
+        },
+        {
+          "href": "/docs/extension-host",
+          "text": "Extension Host",
+          "internal": true
+        }
+      ],
+      "wordCount": 434
+    },
+    "discovery": {
+      "canonical": "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/",
+      "sitemap": true,
+      "robots": "index,follow",
+      "llms": true,
+      "markdownMirror": true,
+      "jsonLdGraphIds": [
+        "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#webpage",
+        "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#primary",
+        "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#faq",
+        "https://mdwrk.com/updates/package-dag-for-mdwrk-and-lander/#breadcrumbs"
       ]
     }
   },
@@ -14745,7 +14876,7 @@
   },
   {
     "sourcePath": "data/markdown/blog#author:cobycloud",
-    "sourceHash": "94f59a48294d99f8d9b7632cd5a1742670c7735fe37ec7c555aab939b635fdde",
+    "sourceHash": "f9796f10051646d52c962c89fde70b27fbcf561d9a8bdf45a5661cc7ba111833",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/updates/author/cobycloud/",
@@ -14780,12 +14911,17 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "CobyCloud MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
+      "text": "CobyCloud MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect - Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction. Explore the MdWrk Client, Packages, and Extensions Through a Sharper Docs Experience - The MdWrk site now presents a clearer path into the client, package family, and extension platform, with stronger navigation, sharper titles, and more direct routes into installation and usage. Launch Extensions on the Same Governed Host the MdWrk Client Uses - The MdWrk client now presents a governed extension platform with manifest, runtime, manager, theme, language, and workspace surfaces that teams can adopt with a clear authoring path. Workspace Files and Git Operations Packages Open a Larger Automation Surface for MdWrk - MdWrk expands its package platform with workspace-files and Git-operations modules, giving teams more room to automate file-aware and repository-aware workflows inside the client. Desktop Release Automation and Android Verification Sharpen MdWrk Cross-Platform Delivery - MdWrk refines desktop release automation, version-tag generation, and Android artifact verification, giving release teams a stronger cross-platform shipment story. Retained Client Versions and the Desktop Shell Expand How Teams Can Deploy MdWrk - MdWrk introduces retained client version delivery and a desktop shell track, giving teams more control over rollout pacing, install shape, and long-lived workspace adoption. Screenshot Matrix Coverage Helps MdWrk Prove Themes Across Viewports and Workflows - MdWrk expands browser sidebars and screenshot-matrix automation, giving the project stronger visual verification for themes, panes, settings, and extension workflows across the viewport contract. Extension Compatibility Gates Turn MdWrk Publishing into a Clear Quality Signal - MdWrk sharpens extension compatibility checks, persistence flows, and publish gates, helping teams ship installable extensions with stronger confidence and cleaner runtime expectations. Governed Releases, CI Evidence, and Package Docs Give MdWrk a Stronger Public Shape - MdWrk expands its release and documentation surface with package evidence, governance checks, and public docs that help teams understand package scope, delivery, and verification commands. Build with the Same MdWrk Editor and Renderer the Client Ships - MdWrk packages its editor and renderer as reusable modules, giving product teams a direct path to embed the same authoring and preview surfaces the client uses every day. PWA Install, Zoom Controls, and Preview Refinements Make MdWrk Ready for Daily Use - MdWrk gains PWA install support, zoom controls, preview refinements, and deployment rails that turn the workspace into a stronger everyday writing environment. Responsive Authoring, Keyboard Speed, and HTML Export Expand MdWrk in a Single Day - MdWrk expands quickly with responsive layout tuning, keyboard navigation, export actions, print flows, and richer markdown rendering, giving teams more range across screens and daily writing tasks. Meet the Markdown Workspace That Turns Writing, Preview, and Themes into One Fast Flow - Markdown Workspace opens with live writing, preview, themed presentation, and early export foundations that give teams a compelling browser-first markdown workflow from day one.",
       "headings": [],
       "links": [
         {
           "href": "/updates/structured-data-learning-map/",
           "text": "Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach",
+          "internal": true
+        },
+        {
+          "href": "/updates/package-dag-for-mdwrk-and-lander/",
+          "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
           "internal": true
         },
         {
@@ -14854,7 +14990,7 @@
           "internal": true
         }
       ],
-      "wordCount": 548
+      "wordCount": 581
     },
     "discovery": {
       "canonical": "https://mdwrk.com/updates/author/cobycloud/",
@@ -14872,7 +15008,7 @@
   },
   {
     "sourcePath": "data/markdown/blog#archive:2026-05",
-    "sourceHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "sourceHash": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
     "frontmatter": {
       "schema": "mdwrk.page.v1",
       "slug": "/updates/archive/2026-05/",
@@ -14907,7 +15043,7 @@
       "llmsInclude": true
     },
     "rendered": {
-      "text": "May 2026 MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
+      "text": "May 2026 MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. Structured Data Learning Map Makes the MdWrk Lander Pipeline Easier to Teach - MdWrk adds a developer-facing learning map that connects structured data builders, React JSON-LD components, and lander discovery helpers in one visual reference. MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect - Package dependency maps show how the app entrypoints, shared foundations, editor and renderer packages, and lander packages fit together. Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use - MdWrk refines its settings UX with cleaner labels and a calmer navigation model, helping users move from install to configuration with more momentum and less friction.",
       "headings": [],
       "links": [
         {
@@ -14916,12 +15052,17 @@
           "internal": true
         },
         {
+          "href": "/updates/package-dag-for-mdwrk-and-lander/",
+          "text": "MdWrk Package Dependency Maps Show How Apps, Shared Packages, and Lander Packages Connect",
+          "internal": true
+        },
+        {
           "href": "/updates/settings-simplification-for-daily-flow/",
           "text": "Settings Simplification Gives MdWrk a Faster Path from Installation to Daily Use",
           "internal": true
         }
       ],
-      "wordCount": 98
+      "wordCount": 131
     },
     "discovery": {
       "canonical": "https://mdwrk.com/updates/archive/2026-05/",
