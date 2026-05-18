@@ -71,6 +71,18 @@ jobs:
           docker rm -f markdown_workspace_lander || true
           docker-compose up -d --no-build --force-recreate --no-deps lander
 
+      - name: Reload local proxy manager
+        run: |
+          proxy_containers="$(docker ps --format '{{.Names}}' | grep -Ei '(^|[-_])(nginx-proxy-manager|npm|openresty|proxy)([-_]|$)' || true)"
+          if [ -n "${proxy_containers}" ]; then
+            printf '%s\n' "${proxy_containers}" | while IFS= read -r container_name; do
+              docker kill -s HUP "${container_name}" >/dev/null 2>&1 || docker restart "${container_name}" >/dev/null 2>&1 || true
+            done
+            echo "Proxy manager reload attempted."
+          else
+            echo "No local proxy manager container matched the safe reload pattern."
+          fi
+
       - name: Prune unused docker images after successful restart
         continue-on-error: true
         run: docker system prune -af
