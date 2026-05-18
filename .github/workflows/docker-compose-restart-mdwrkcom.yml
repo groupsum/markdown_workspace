@@ -73,10 +73,17 @@ jobs:
 
       - name: Reload local proxy manager
         run: |
-          proxy_containers="$(docker ps --format '{{.Names}}' | grep -Ei '(^|[-_])(nginx-proxy-manager|npm|openresty|proxy)([-_]|$)' || true)"
+          proxy_containers="$(
+            {
+              docker ps --filter ancestor=jc21/nginx-proxy-manager --format '{{.ID}}'
+              docker ps --filter label=com.docker.compose.project=nginx-proxy-manager --format '{{.ID}}'
+              docker ps --filter label=com.docker.compose.project=nginxproxymanager --format '{{.ID}}'
+              docker ps --format '{{.ID}} {{.Names}}' | grep -Ei '(^|[[:space:]])[^[:space:]]*[-_](nginx-proxy-manager|npm|openresty|proxy)([-_]|$)' | awk '{print $1}'
+            } | sort -u
+          )"
           if [ -n "${proxy_containers}" ]; then
-            printf '%s\n' "${proxy_containers}" | while IFS= read -r container_name; do
-              docker kill -s HUP "${container_name}" >/dev/null 2>&1 || docker restart "${container_name}" >/dev/null 2>&1 || true
+            printf '%s\n' "${proxy_containers}" | while IFS= read -r container_id; do
+              docker kill -s HUP "${container_id}" >/dev/null 2>&1 || docker restart "${container_id}" >/dev/null 2>&1 || true
             done
             echo "Proxy manager reload attempted."
           else
