@@ -4,6 +4,7 @@ import {
   isAbsoluteSchemaUrl,
   isSupportedSchemaOrgType,
   jsonLdGraph,
+  productSnippetNode,
   SUPPORTED_SCHEMA_ORG_TYPES,
 } from "../dist/index.js";
 import { expectedTypes, generatedGraph, legacyFaq, nodes } from "./fixtures.mjs";
@@ -21,4 +22,8 @@ export function runSmokeAssertions() {
   assert.ok(generatedGraph.some((entry) => entry["@type"] === "WebPage"));
   assert.ok(generatedGraph.some((entry) => entry["@type"] === "BlogPosting"));
   assert.ok(generatedGraph.some((entry) => entry["@type"] === "FAQPage"));
+  assert.throws(
+    () => productSnippetNode({ name: "Invalid Product Snippet", url: "https://example.test/product-snippet" }),
+    /requires offers, aggregateRating, or review/,
+  );
 }

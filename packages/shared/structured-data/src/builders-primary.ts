@@ -245,6 +245,9 @@ export function merchantListingNode(input: ProductInput): JsonLd {
 }
 
 export function productSnippetNode(input: ProductInput): JsonLd {
+  if (input.offers === undefined && input.aggregateRating === undefined && input.review === undefined) {
+    throw new Error("Product snippet structured data requires offers, aggregateRating, or review.");
+  }
   return productNode(input);
 }
 

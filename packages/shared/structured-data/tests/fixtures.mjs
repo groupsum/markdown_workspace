@@ -191,6 +191,7 @@ export const nodes = [
     name: "Example Product Snippet",
     url: "https://example.test/product-snippet",
     brand: organization,
+    aggregateRating: rating,
   }),
   datasetNode({
     name: "Example dataset",
