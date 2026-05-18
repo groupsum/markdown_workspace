@@ -15,6 +15,11 @@ const exists = (relativePath) => fs.existsSync(path.join(distRoot, relativePath)
 const englishQuickstart = read('docs/quickstart/index.html');
 const spanishQuickstart = read('es/docs/quickstart/index.html');
 const sitemap = read('sitemap.xml');
+const childSitemapCorpus = [...sitemap.matchAll(/<loc>https?:\/\/[^<]+(\/sitemaps\/[^<]+\.xml)<\/loc>/g)]
+  .map(match => match[1].replace(/^\/+/, ''))
+  .filter((relativePath) => exists(relativePath))
+  .map(read)
+  .join('\n');
 const contentIndex = JSON.parse(read('content-index.json'));
 
 const englishUrl = `${siteUrl}/docs/quickstart/`;
@@ -38,12 +43,13 @@ assert.match(spanishQuickstart, new RegExp(`rel="alternate" hreflang="es" href="
 assert.match(spanishQuickstart, new RegExp(`rel="alternate" hreflang="x-default" href="${escapeRegex(englishUrl)}"`), 'Spanish page must expose x-default');
 assert.match(spanishQuickstart, /class="locale-switcher/, 'Spanish page must expose a visible locale switcher');
 assert.match(englishQuickstart, /href="\/es\/docs\/quickstart\/" hreflang="es"/, 'English page must link the Spanish route visibly');
-assert.match(sitemap, /xmlns:xhtml="http:\/\/www\.w3\.org\/1999\/xhtml"/, 'Sitemap must declare xhtml alternate namespace');
-assert.match(sitemap, new RegExp(`<loc>${escapeRegex(englishUrl)}</loc>[\\s\\S]*hreflang="es" href="${escapeRegex(spanishUrl)}"`), 'English sitemap URL must include Spanish alternate');
-assert.match(sitemap, new RegExp(`<loc>${escapeRegex(spanishUrl)}</loc>[\\s\\S]*hreflang="x-default" href="${escapeRegex(englishUrl)}"`), 'Spanish sitemap URL must include x-default alternate');
+assert.match(sitemap, /<sitemapindex/, 'Root sitemap must be a sitemap index');
+assert.match(childSitemapCorpus, /xmlns:xhtml="http:\/\/www\.w3\.org\/1999\/xhtml"/, 'Child sitemaps must declare xhtml alternate namespace');
+assert.match(childSitemapCorpus, new RegExp(`<loc>${escapeRegex(englishUrl)}</loc>[\\s\\S]*hreflang="es" href="${escapeRegex(spanishUrl)}"`), 'English child sitemap URL must include Spanish alternate');
+assert.match(childSitemapCorpus, new RegExp(`<loc>${escapeRegex(spanishUrl)}</loc>[\\s\\S]*hreflang="x-default" href="${escapeRegex(englishUrl)}"`), 'Spanish child sitemap URL must include x-default alternate');
 assert.equal(contentIndex.find(page => page.slug === '/es/docs/quickstart/')?.locale, 'es', 'content index must expose localized page locale');
 assert.equal(contentIndex.find(page => page.slug === '/es/docs/quickstart/')?.translationOf, '/docs/quickstart/', 'content index must expose translation source');
 assert.ok(exists('es/docs/quickstart/index.md'), 'localized page must have a Markdown mirror');
-assert.equal(/[?&](locale|lang|hl)=/i.test(`${englishQuickstart}\n${spanishQuickstart}\n${sitemap}`), false, 'localized routes must not use query parameters');
+assert.equal(/[?&](locale|lang|hl)=/i.test(`${englishQuickstart}\n${spanishQuickstart}\n${sitemap}\n${childSitemapCorpus}`), false, 'localized routes must not use query parameters');
 
 console.log('MdWrk international SEO validation passed.');

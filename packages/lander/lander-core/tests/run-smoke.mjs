@@ -17,6 +17,7 @@ fs.writeFileSync(
 
 const {
   buildCacheHeaderManifest,
+  headersForCacheResource,
   buildLlmsTxt,
   buildRobotsTxt,
   buildSitemap,
@@ -73,6 +74,8 @@ assert.match(manifest.entries[0].headers['Cache-Control'], /immutable/);
 assert.equal(manifest.entries[1].resourceClass, 'mutable-revalidate');
 assert.equal(manifest.entries[1].headers['Cache-Control'], 'no-cache');
 assert.ok(manifest.entries.every(entry => entry.headers.ETag && entry.headers['Last-Modified']));
+assert.equal(headersForCacheResource(manifest, '/sitemap.xml')?.['Cache-Control'], 'no-cache');
+assert.equal(headersForCacheResource(manifest, '/missing'), undefined);
 
 const criticalCss = defineCriticalCssProfile({ id: 'example', css: 'body { color: #111; }' });
 assert.match(renderCriticalCssStyle(criticalCss), /data-lander-critical-css="example"/);

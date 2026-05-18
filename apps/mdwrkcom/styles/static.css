@@ -44,3 +44,4 @@
 .locale-switcher-option{display:block;border-radius:.45rem;padding:.5rem .65rem;color:var(--lander-fg-muted);font-size:.82rem;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:.08em}
 .locale-switcher-option:hover,.locale-switcher-option.is-current{background:var(--lander-panel-muted);color:var(--lander-accent)}
 @media (min-width:768px){.navbar-menu-panel{order:initial;margin-left:auto;margin-right:1rem}.navbar-actions{order:initial;margin-left:.75rem}}
+.docs-toc{width:18rem}.docs-page-toc{margin-bottom:2rem;border:1px solid var(--lander-border);border-radius:18px;padding:1.25rem;background:color-mix(in srgb,var(--lander-panel-muted) 72%,transparent)}.docs-page-toc-inner{min-width:0}

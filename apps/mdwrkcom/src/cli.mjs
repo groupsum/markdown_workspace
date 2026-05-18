@@ -19,8 +19,8 @@ import {
   buildLlmsFullTxt as buildLanderLlmsFullTxt,
   buildRobotsTxtArtifact as buildLanderRobotsTxtArtifact,
   buildSemanticIndex as buildLanderSemanticIndex,
+  buildSitemapFileSet as buildLanderSitemapFileSet,
   buildSitemapStylesheet as buildLanderSitemapStylesheet,
-  buildSitemapXml as buildLanderSitemapXml,
 } from '../../../packages/lander/lander-seo/dist/index.js';
 import {
   defineCriticalCssProfile,
@@ -2157,8 +2157,7 @@ const renderStaticFooter = () => {
         </footer>`;
 };
 
-const renderDocsSidebar = (registry, currentSlug) => {
-  const docs = registry.entries
+const docsNavigationEntries = (registry) => registry.entries
     .filter(item => item.frontmatter.contentType === 'docs' && item.frontmatter.slug.startsWith('/docs/') && item.frontmatter.slug !== '/docs/')
     .slice()
     .sort((a, b) => {
@@ -2168,6 +2167,27 @@ const renderDocsSidebar = (registry, currentSlug) => {
         || docItemRank(a.frontmatter.slug) - docItemRank(b.frontmatter.slug)
         || a.frontmatter.h1.localeCompare(b.frontmatter.h1);
     });
+
+const renderSectionSidebar = (registry, currentSlug) => {
+  const current = registry.bySlug.get(currentSlug);
+  const currentSection = current?.frontmatter.tags[1] || 'Documentation';
+  const docs = docsNavigationEntries(registry)
+    .filter(item => (item.frontmatter.tags[1] || 'Documentation') === currentSection);
+  return `<aside class="docs-sidebar" aria-label="${escapeAttribute(currentSection)} section navigation">
+          <div class="docs-sidebar-inner">
+            <h3 class="docs-sidebar-heading">${escapeHtml(currentSection)}</h3>
+            <nav class="docs-nav">
+              ${docs.map(item => `<a class="docs-nav-link ${item.frontmatter.slug === currentSlug ? 'is-active' : 'is-inactive'}" href="${item.frontmatter.slug}">
+                    ${item.frontmatter.slug === currentSlug ? '<span class="docs-nav-link-dot"></span>' : ''}
+                    <span class="docs-nav-link-label">${escapeHtml(item.frontmatter.h1)}</span>
+                  </a>`).join('\n              ')}
+            </nav>
+          </div>
+        </aside>`;
+};
+
+const renderDocsToc = (registry, currentSlug) => {
+  const docs = docsNavigationEntries(registry);
   const groups = new Map();
   for (const doc of docs) {
     const group = doc.frontmatter.tags[1] || 'Documentation';
@@ -2176,8 +2196,8 @@ const renderDocsSidebar = (registry, currentSlug) => {
     items.push(doc);
     groups.set(title, items);
   }
-  return `<aside class="docs-sidebar" aria-label="Documentation navigation">
-          <div class="docs-sidebar-inner">
+  return `<aside class="docs-toc" aria-label="Documentation index">
+          <div class="docs-toc-inner">
             <h3 class="docs-sidebar-heading">Documentation</h3>
             <nav class="docs-nav">
               ${Array.from(groups.entries()).sort(([groupA], [groupB]) => docSectionRank(groupA) - docSectionRank(groupB) || groupA.localeCompare(groupB)).map(([group, items]) => `<details class="docs-nav-item static-docs-nav-section" open>
@@ -2211,8 +2231,8 @@ const renderArticleToc = (entry) => {
     children.push({ title: 'Related Pages', href: '#related-heading', depth: 2 });
   }
   if (!children.length) return '';
-  return `<aside class="docs-toc" aria-label="Article table of contents">
-              <div class="docs-toc-inner">
+  return `<aside class="docs-page-toc" aria-label="Article table of contents">
+              <div class="docs-page-toc-inner">
                 <h4 class="docs-toc-heading">On this page</h4>
                 <nav class="docs-toc-nav">
                   ${children.map(item => `<div class="docs-toc-item"><a href="${escapeAttribute(item.href)}" class="docs-toc-link${item.depth > 2 ? ' docs-toc-link-child' : ''}" title="${escapeAttribute(item.title)}">${escapeHtml(item.title)}</a></div>`).join('\n                  ')}
@@ -2348,6 +2368,7 @@ const renderArticleCard = (entry, registry, leadingContent = '') => {
     ? 'blog-post-card'
     : 'docs-content-card';
   const visibleBreadcrumbs = renderVisibleBreadcrumbs(breadcrumbsFor(entry, registry));
+  const articleToc = !isBlogPost ? renderArticleToc(entry) : '';
   return `<div class="docs-article-column">
                 ${leadingContent}
                 ${isBlogPost ? '<a href="/updates/" class="blog-back-button">Back to Updates</a>' : ''}
@@ -2358,6 +2379,7 @@ const renderArticleCard = (entry, registry, leadingContent = '') => {
                     ${entry.frontmatter.subtitle ? `<p class="${articleClass === 'blog-post-card' ? 'blog-post-subtitle' : 'docs-subtitle'}">${escapeHtml(entry.frontmatter.subtitle)}</p>` : ''}
                     ${renderArticleMetadata(entry)}
                   </header>
+                  ${articleToc}
                   ${renderMarkdownHost(entry.rendered.html)}
                 </article>
                 ${entry.afterArticleHtml ?? ''}
@@ -2548,8 +2570,8 @@ const renderStaticHome = (entry, registry, assetTags = '') => {
 const renderHtmlPage = (entry, registry, assetTags = '') => {
   if (entry.frontmatter.slug === '/') return renderStaticHome(entry, registry, assetTags);
   const isDocs = entry.frontmatter.slug.startsWith('/docs/');
-  const sidebar = isDocs ? renderDocsSidebar(registry, entry.frontmatter.slug) : '';
-  const toc = renderArticleToc(entry);
+  const sidebar = isDocs ? renderSectionSidebar(registry, entry.frontmatter.slug) : '';
+  const toc = isDocs ? renderDocsToc(registry, entry.frontmatter.slug) : '';
   return `<!doctype html>
 <html lang="${escapeAttribute(hrefLangToHtmlLang(entry.frontmatter.locale))}" data-lander-theme="lander-light">
   <head>
@@ -2760,7 +2782,9 @@ const build = () => {
   const landerDiscovery = buildLanderDiscoveryModel(registry);
   const landerContentRegistry = buildLanderContentRegistry(landerDiscovery.site, landerDiscovery.options);
   const landerRegistryByCanonical = new Map(landerContentRegistry.map(entry => [entry.discovery.canonical, entry]));
-  writeFile(path.join(distRoot, 'sitemap.xml'), buildLanderSitemapXml(landerDiscovery.site, landerDiscovery.options));
+  for (const sitemapFile of buildLanderSitemapFileSet(landerDiscovery.site, landerDiscovery.options)) {
+    writeFile(path.join(distRoot, sitemapFile.path.replace(/^\/+/, '')), sitemapFile.xml);
+  }
   writeFile(path.join(distRoot, 'sitemap.xsl'), buildLanderSitemapStylesheet(landerDiscovery.site));
   writeFile(path.join(distRoot, 'robots.txt'), [
     '# MdWrk governed crawler policy',
@@ -2923,10 +2947,22 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
   const graphIds = normalizeUrlSet(Array.isArray(jsonLdGraph?.['@graph']) ? jsonLdGraph['@graph'].map(node => node['@id']) : []);
   const indexable = registry.entries.filter(entry => !entry.frontmatter.noindex);
   const llmsEligible = indexable.filter(entry => entry.frontmatter.llmsInclude);
+  const childSitemapPaths = [...sitemap.matchAll(/<loc>https?:\/\/[^<]+(\/sitemaps\/[^<]+\.xml)<\/loc>/g)]
+    .map(match => match[1])
+    .sort();
+  const childSitemaps = childSitemapPaths.map(resourcePath => {
+    const filePath = path.join(distRoot, resourcePath.replace(/^\/+/, ''));
+    if (!fs.existsSync(filePath)) failures.push(`missing dist${resourcePath}`);
+    return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
+  });
+  const childSitemapCorpus = childSitemaps.join('\n');
 
   for (const artifact of DISCOVERY_ARTIFACTS) {
     if (!fs.existsSync(path.join(distRoot, artifact))) failures.push(`missing dist/${artifact}`);
   }
+  if (!sitemap.includes('<sitemapindex')) failures.push('sitemap.xml must be a sitemap index');
+  if (/<url>/i.test(sitemap)) failures.push('sitemap.xml must not contain page URL records');
+  if (!childSitemapPaths.length) failures.push('sitemap.xml must reference child page sitemaps');
   const cacheEntries = Array.isArray(cacheManifest?.entries) ? cacheManifest.entries : [];
   const cacheEntryByPath = new Map(cacheEntries.map(entry => [entry.path, entry]));
   const staticHashedPath = detectBuiltStaticStylesheetHref();
@@ -2943,13 +2979,20 @@ const validateDiscoveryArtifacts = ({ registry, failures, sitemap, robots, llms 
       failures.push(`${mutablePath}: mutable artifact must use no-cache revalidation`);
     }
   }
+  for (const mutablePath of childSitemapPaths) {
+    const entry = cacheEntryByPath.get(mutablePath);
+    if (!entry) failures.push(`cache-header-manifest.json: missing ${mutablePath}`);
+    else if (entry.resourceClass !== 'mutable-revalidate' || entry.cacheControl !== 'no-cache') {
+      failures.push(`${mutablePath}: child sitemap must use no-cache revalidation`);
+    }
+  }
   for (const entry of cacheEntries) {
     if (entry.resourceClass !== 'no-store' && (!entry.headers?.ETag || !entry.headers?.['Last-Modified'])) {
       failures.push(`${entry.path}: cache manifest entry missing ETag or Last-Modified`);
     }
   }
   for (const entry of indexable) {
-    if (!sitemap.includes(`<loc>${escapeXml(entry.frontmatter.canonical)}</loc>`)) failures.push(`${entry.frontmatter.slug}: sitemap missing canonical URL`);
+    if (!childSitemapCorpus.includes(`<loc>${escapeXml(entry.frontmatter.canonical)}</loc>`)) failures.push(`${entry.frontmatter.slug}: child sitemap missing canonical URL`);
     if (!indexUrls.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-index missing canonical URL`);
     if (!registryCanonicals.has(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: content-registry missing canonical URL`);
     if (!graphIds.has(`${entry.frontmatter.canonical}#webpage`)) failures.push(`${entry.frontmatter.slug}: jsonld-graph missing WebPage id`);
@@ -2991,6 +3034,15 @@ const verify = () => {
     if (!fs.existsSync(path.join(distRoot, required))) failures.push(`missing dist/${required}`);
   }
   const sitemap = fs.existsSync(path.join(distRoot, 'sitemap.xml')) ? fs.readFileSync(path.join(distRoot, 'sitemap.xml'), 'utf8') : '';
+  const verifyChildSitemapPaths = [...sitemap.matchAll(/<loc>https?:\/\/[^<]+(\/sitemaps\/[^<]+\.xml)<\/loc>/g)]
+    .map(match => match[1])
+    .sort();
+  const childSitemapCorpus = verifyChildSitemapPaths
+    .map(resourcePath => {
+      const filePath = path.join(distRoot, resourcePath.replace(/^\/+/, ''));
+      return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : '';
+    })
+    .join('\n');
   const robots = fs.existsSync(path.join(distRoot, 'robots.txt')) ? fs.readFileSync(path.join(distRoot, 'robots.txt'), 'utf8') : '';
   const llms = fs.existsSync(path.join(distRoot, 'llms.txt')) ? fs.readFileSync(path.join(distRoot, 'llms.txt'), 'utf8') : '';
   const staticStylesheetPath = path.join(distRoot, 'assets', 'static.css');
@@ -3047,7 +3099,7 @@ const verify = () => {
       if (!html.includes(`rel="alternate" hreflang="${escapeAttribute(alternate.hreflang)}" href="${escapeAttribute(alternate.href)}"`)) {
         failures.push(`${entry.frontmatter.slug}: missing hreflang alternate ${alternate.hreflang}`);
       }
-      if (!sitemap.includes(`hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}"`)) {
+      if (!childSitemapCorpus.includes(`hreflang="${escapeXml(alternate.hreflang)}" href="${escapeXml(alternate.href)}"`)) {
         failures.push(`${entry.frontmatter.slug}: sitemap missing hreflang alternate ${alternate.hreflang}`);
       }
     }
@@ -3074,8 +3126,8 @@ const verify = () => {
     if (/quickstart|tutorial|how to|how-to|start using/i.test(`${entry.frontmatter.intent} ${entry.frontmatter.title}`) && !/<ol\b/i.test(html)) {
       failures.push(`${entry.frontmatter.slug}: tutorial/how-to page missing ordered steps`);
     }
-    if (!entry.frontmatter.noindex && !sitemap.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: missing from sitemap`);
-    if (entry.frontmatter.noindex && sitemap.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: noindex page appears in sitemap`);
+    if (!entry.frontmatter.noindex && !childSitemapCorpus.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: missing from child sitemap`);
+    if (entry.frontmatter.noindex && childSitemapCorpus.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: noindex page appears in child sitemap`);
     if (entry.frontmatter.llmsInclude && !entry.frontmatter.noindex) {
       if (!llms.includes(entry.frontmatter.canonical)) failures.push(`${entry.frontmatter.slug}: eligible page missing from llms.txt`);
       if (!fs.existsSync(mdPath)) failures.push(`${entry.frontmatter.slug}: missing Markdown mirror`);

@@ -67,6 +67,7 @@ export interface DiscoveryArtifactOptions {
   crawlerPolicies?: DiscoveryCrawlerPolicy[];
   pageSources?: Record<string, DiscoveryArtifactPageSource>;
   additionalCacheResources?: LanderCacheResourceInput[];
+  sitemapBasePath?: string;
 }
 
 export interface DiscoveryCrawlerPolicy {
@@ -133,6 +134,7 @@ export interface JsonLdGraphArtifact {
 export interface DiscoveryArtifacts {
   sitemapXml: string;
   sitemapXsl: string;
+  sitemapFiles: SitemapFile[];
   robotsTxt: string;
   llmsTxt: string;
   llmsFullTxt: string;
@@ -141,6 +143,14 @@ export interface DiscoveryArtifacts {
   contentRegistry: ContentRegistryEntry[];
   jsonLdGraph: JsonLdGraphArtifact;
   cacheHeaderManifest: LanderCacheHeaderManifest;
+}
+
+export interface SitemapFile {
+  path: string;
+  loc: string;
+  kind: "index" | "urlset";
+  xml: string;
+  entryCount: number;
 }
 
 export interface DiscoveryValidationResult {
@@ -183,12 +193,30 @@ const escapeXml = (value: string): string =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
+const slugifySitemapName = (value: string): string =>
+  String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "pages";
+
+const sitemapBasePath = (options: DiscoveryArtifactOptions): string => {
+  const raw = options.sitemapBasePath ?? "/sitemaps/";
+  const normalized = normalizeRouteSlug(raw);
+  return normalized === "/" ? "/sitemaps/" : normalized;
+};
+
 function sortedPages(site: CompiledLanderSite): CompiledPage[] {
   return [...site.pages].sort((left, right) => left.path.localeCompare(right.path));
 }
 
 export function buildSitemapXml(site: CompiledLanderSite, options: DiscoveryArtifactOptions = {}): string {
-  const urls = sortedPages(site)
+  return buildSitemapFileSet(site, options).find((file) => file.path === "/sitemap.xml")?.xml ?? "";
+}
+
+export function buildSitemapUrlsetXml(site: CompiledLanderSite, pages: CompiledPage[], options: DiscoveryArtifactOptions = {}): string {
+  const urls = [...pages]
+    .sort((left, right) => left.path.localeCompare(right.path))
     .filter((page) => page.seo?.noindex !== true)
     .map((page) => {
       const source = getPageSource(page, options);
@@ -209,6 +237,71 @@ export function buildSitemapXml(site: CompiledLanderSite, options: DiscoveryArti
     "</urlset>",
     "",
   ].join("\n");
+}
+
+export function buildSitemapIndexXml(site: CompiledLanderSite, files: SitemapFile[], options: DiscoveryArtifactOptions = {}): string {
+  const entries = files
+    .filter((file) => file.kind === "urlset" && file.entryCount > 0)
+    .map((file) => {
+      const childPages = sortedPages(site).filter((page) => sitemapGroupName(page, getPageSource(page, options)) === sitemapNameFromPath(file.path));
+      const lastmod = latestLastmod(childPages.map((page) => pageUpdatedAt(page, getPageSource(page, options))));
+      return [
+        "  <sitemap>",
+        `    <loc>${escapeXml(file.loc)}</loc>`,
+        ...(lastmod ? [`    <lastmod>${escapeXml(lastmod)}</lastmod>`] : []),
+        "  </sitemap>",
+      ].join("\n");
+    });
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    entries.join("\n\n"),
+    "</sitemapindex>",
+    "",
+  ].join("\n");
+}
+
+const sitemapGroupName = (page: CompiledPage, source: DiscoveryArtifactPageSource): string =>
+  slugifySitemapName(source.contentType ?? page.kind ?? "pages");
+
+const sitemapNameFromPath = (value: string): string =>
+  slugifySitemapName(value.replace(/^.*\/([^/]+)\.xml$/i, "$1"));
+
+const latestLastmod = (values: (string | undefined)[]): string | undefined =>
+  values.filter((value): value is string => Boolean(value)).sort().slice(-1)[0];
+
+export function buildSitemapFileSet(site: CompiledLanderSite, options: DiscoveryArtifactOptions = {}): SitemapFile[] {
+  const basePath = sitemapBasePath(options);
+  const baseUrl = site.product.canonicalUrl.replace(/\/+$/, "");
+  const groups = new Map<string, CompiledPage[]>();
+  for (const page of sortedPages(site).filter((candidate) => candidate.seo?.noindex !== true)) {
+    const group = sitemapGroupName(page, getPageSource(page, options));
+    groups.set(group, [...(groups.get(group) ?? []), page]);
+  }
+
+  const childFiles: SitemapFile[] = [...groups.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([group, pages]) => {
+      const resourcePath = `${basePath}${group}.xml`;
+      return {
+        path: resourcePath,
+        loc: `${baseUrl}${resourcePath}`,
+        kind: "urlset" as const,
+        xml: buildSitemapUrlsetXml(site, pages, options),
+        entryCount: pages.length,
+      };
+    });
+
+  const indexFile: SitemapFile = {
+    path: "/sitemap.xml",
+    loc: `${baseUrl}/sitemap.xml`,
+    kind: "index",
+    xml: buildSitemapIndexXml(site, childFiles, options),
+    entryCount: childFiles.length,
+  };
+
+  return [indexFile, ...childFiles];
 }
 
 export function buildSitemapStylesheet(site: CompiledLanderSite): string {
@@ -242,6 +335,31 @@ export function buildSitemapStylesheet(site: CompiledLanderSite): string {
     '        <main>',
     `          <h1>${productName} Sitemap</h1>`,
     '          <p>This is the machine-readable XML sitemap rendered as a human-readable table. Search engines read the XML nodes; browsers use this stylesheet for review.</p>',
+    '          <xsl:choose>',
+    '            <xsl:when test="sm:sitemapindex">',
+    '              <table>',
+    '                <thead>',
+    '                  <tr>',
+    '                    <th scope="col">Sitemap</th>',
+    '                    <th scope="col">Last modified</th>',
+    '                  </tr>',
+    '                </thead>',
+    '                <tbody>',
+    '                  <xsl:for-each select="sm:sitemapindex/sm:sitemap">',
+    '                    <tr>',
+    '                      <td>',
+    '                        <a>',
+    '                          <xsl:attribute name="href"><xsl:value-of select="sm:loc" /></xsl:attribute>',
+    '                          <xsl:value-of select="sm:loc" />',
+    '                        </a>',
+    '                      </td>',
+    '                      <td><xsl:value-of select="sm:lastmod" /></td>',
+    '                    </tr>',
+    '                  </xsl:for-each>',
+    '                </tbody>',
+    '              </table>',
+    '            </xsl:when>',
+    '            <xsl:otherwise>',
     '          <table>',
     '            <thead>',
     '              <tr>',
@@ -268,6 +386,8 @@ export function buildSitemapStylesheet(site: CompiledLanderSite): string {
     '              </xsl:for-each>',
     '            </tbody>',
     '          </table>',
+    '            </xsl:otherwise>',
+    '          </xsl:choose>',
     '        </main>',
     '      </body>',
     '    </html>',
@@ -442,7 +562,8 @@ export function buildContentRegistry(site: CompiledLanderSite, options: Discover
 }
 
 export function buildDiscoveryArtifacts(site: CompiledLanderSite, options: DiscoveryArtifactOptions = {}): DiscoveryArtifacts {
-  const sitemapXml = buildSitemapXml(site, options);
+  const sitemapFiles = buildSitemapFileSet(site, options);
+  const sitemapXml = sitemapFiles[0]?.xml ?? "";
   const sitemapXsl = buildSitemapStylesheet(site);
   const robotsTxt = buildRobotsTxtArtifact(site, options);
   const llmsTxt = buildLlmsTxt(site);
@@ -453,6 +574,9 @@ export function buildDiscoveryArtifacts(site: CompiledLanderSite, options: Disco
   const jsonLdGraph = buildJsonLdGraphArtifact(site, options);
   const cacheInputs: LanderCacheResourceInput[] = [
     { path: "/sitemap.xml", content: sitemapXml, contentType: "application/xml; charset=utf-8" },
+    ...sitemapFiles
+      .filter((file) => file.path !== "/sitemap.xml")
+      .map((file) => ({ path: file.path, content: file.xml, contentType: "application/xml; charset=utf-8" })),
     { path: "/sitemap.xsl", content: sitemapXsl, contentType: "application/xml; charset=utf-8" },
     { path: "/robots.txt", content: robotsTxt, contentType: "text/plain; charset=utf-8" },
     { path: "/llms.txt", content: llmsTxt, contentType: "text/plain; charset=utf-8" },
@@ -464,7 +588,7 @@ export function buildDiscoveryArtifacts(site: CompiledLanderSite, options: Disco
     ...(options.additionalCacheResources ?? []),
   ];
   const cacheHeaderManifest = options.generatedAt ? buildCacheHeaderManifest(cacheInputs, options.generatedAt) : buildCacheHeaderManifest(cacheInputs);
-  return { sitemapXml, sitemapXsl, robotsTxt, llmsTxt, llmsFullTxt, contentIndex, semanticIndex, contentRegistry, jsonLdGraph, cacheHeaderManifest };
+  return { sitemapXml, sitemapXsl, sitemapFiles, robotsTxt, llmsTxt, llmsFullTxt, contentIndex, semanticIndex, contentRegistry, jsonLdGraph, cacheHeaderManifest };
 }
 
 export function validateDiscoveryArtifacts(site: CompiledLanderSite, artifacts: DiscoveryArtifacts): DiscoveryValidationResult {
@@ -475,6 +599,8 @@ export function validateDiscoveryArtifacts(site: CompiledLanderSite, artifacts: 
   const cachePaths = new Set(artifacts.cacheHeaderManifest.entries.map((entry) => entry.path));
 
   if (!artifacts.sitemapXml.includes('<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>')) diagnostics.push("sitemap.xml missing sitemap.xsl stylesheet link");
+  if (!artifacts.sitemapXml.includes("<sitemapindex")) diagnostics.push("sitemap.xml must be a sitemap index");
+  if (/<url>/i.test(artifacts.sitemapXml)) diagnostics.push("sitemap.xml must not contain page <url> records");
   if (!artifacts.sitemapXsl.includes("<table>")) diagnostics.push("sitemap.xsl missing human-readable table");
   if (!artifacts.sitemapXsl.includes('<th scope="col">URL</th>')) diagnostics.push("sitemap.xsl missing URL table header");
   if (!artifacts.sitemapXsl.includes('<th scope="col">Last modified</th>')) diagnostics.push("sitemap.xsl missing Last modified table header");
@@ -483,12 +609,17 @@ export function validateDiscoveryArtifacts(site: CompiledLanderSite, artifacts: 
   for (const path of discoveryArtifactPaths) {
     if (!cachePaths.has(path)) diagnostics.push(`cache-header-manifest.json missing ${path}`);
   }
+  for (const file of artifacts.sitemapFiles.filter((entry) => entry.path !== "/sitemap.xml")) {
+    if (!cachePaths.has(file.path)) diagnostics.push(`cache-header-manifest.json missing ${file.path}`);
+    if (!artifacts.sitemapXml.includes(`<loc>${escapeXml(file.loc)}</loc>`)) diagnostics.push(`sitemap.xml missing child sitemap ${file.loc}`);
+  }
   for (const page of site.pages) {
+    const childSitemap = artifacts.sitemapFiles.find((file) => file.kind === "urlset" && file.xml.includes(`<loc>${escapeXml(page.canonicalUrl)}</loc>`));
     if (page.seo?.noindex === true) {
-      if (artifacts.sitemapXml.includes(page.canonicalUrl)) diagnostics.push(`${page.path}: noindex page appears in sitemap.xml`);
+      if (artifacts.sitemapFiles.some((file) => file.xml.includes(page.canonicalUrl))) diagnostics.push(`${page.path}: noindex page appears in sitemap files`);
       continue;
     }
-    if (!artifacts.sitemapXml.includes(`<loc>${escapeXml(page.canonicalUrl)}</loc>`)) diagnostics.push(`${page.path}: sitemap.xml missing canonical URL`);
+    if (!childSitemap) diagnostics.push(`${page.path}: child sitemap missing canonical URL`);
     if (!indexCanonicals.has(page.canonicalUrl)) diagnostics.push(`${page.path}: content-index.json missing canonical URL`);
     if (!registryCanonicals.has(page.canonicalUrl)) diagnostics.push(`${page.path}: content-registry.json missing canonical URL`);
     if (!graphIds.has(`${page.canonicalUrl}#webpage`)) diagnostics.push(`${page.path}: jsonld-graph.json missing WebPage id`);

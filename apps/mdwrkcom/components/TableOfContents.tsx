@@ -9,17 +9,21 @@ export interface TableOfContentsItem {
 interface TableOfContentsProps {
   items: TableOfContentsItem[];
   heading?: string;
+  variant?: 'rail' | 'inline';
 }
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
   items,
   heading = 'On this page',
+  variant = 'rail',
 }) => {
   if (items.length === 0) return null;
+  const className = variant === 'inline' ? 'docs-page-toc' : 'docs-toc';
+  const innerClassName = variant === 'inline' ? 'docs-page-toc-inner' : 'docs-toc-inner';
 
   return (
-    <aside className="docs-toc">
-      <div className="docs-toc-inner">
+    <aside className={className}>
+      <div className={innerClassName}>
         <h4 className="docs-toc-heading">{heading}</h4>
         <nav className="docs-toc-nav" aria-label={heading}>
           {items.map(item => (

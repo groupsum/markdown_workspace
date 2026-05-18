@@ -33,4 +33,16 @@ for (const artifact of artifacts) {
   fs.writeFileSync(target, fs.readFileSync(source));
 }
 
-console.log(`Synced ${artifacts.length} generated artifacts into packages/content/mdwrkcom-content-pack/generated.`);
+const sourceSitemapsRoot = path.join(distStaticRoot, 'sitemaps');
+if (fs.existsSync(sourceSitemapsRoot)) {
+  const targetSitemapsRoot = path.join(packageGeneratedRoot, 'sitemaps');
+  fs.rmSync(targetSitemapsRoot, { recursive: true, force: true });
+  fs.mkdirSync(targetSitemapsRoot, { recursive: true });
+  for (const entry of fs.readdirSync(sourceSitemapsRoot, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.xml')) {
+      fs.writeFileSync(path.join(targetSitemapsRoot, entry.name), fs.readFileSync(path.join(sourceSitemapsRoot, entry.name)));
+    }
+  }
+}
+
+console.log(`Synced ${artifacts.length} generated artifacts and child sitemaps into packages/content/mdwrkcom-content-pack/generated.`);

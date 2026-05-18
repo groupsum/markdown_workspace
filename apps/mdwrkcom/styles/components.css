@@ -986,7 +986,7 @@ time {
 }
 
 .docs-toc {
-  @apply hidden w-48 shrink-0;
+  @apply hidden w-72 shrink-0;
 }
 
 .docs-toc-inner {
@@ -1023,6 +1023,16 @@ time {
 
 .docs-toc-link:hover {
   color: var(--lander-accent);
+}
+
+.docs-page-toc {
+  @apply mb-8 rounded-[18px] border p-5;
+  background: color-mix(in srgb, var(--lander-panel-muted) 72%, transparent);
+  border-color: var(--lander-border);
+}
+
+.docs-page-toc-inner {
+  @apply min-w-0;
 }
 
 .blog-shell {

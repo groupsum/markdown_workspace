@@ -27,10 +27,14 @@ export interface LanderCacheHeaderManifest {
   entries: LanderCacheManifestEntry[];
 }
 
+export interface LanderCacheHeaderLookupOptions {
+  indexFile?: string;
+}
+
 const IMMUTABLE_MAX_AGE_SECONDS = 31_536_000;
 
 export function normalizeCacheResourcePath(value: string): string {
-  const path = String(value ?? "").trim().replace(/\\/g, "/");
+  const path = String(value ?? "").trim().replace(/\\/g, "/").replace(/[?#].*$/, "");
   if (!path) return "/";
   return path.startsWith("/") ? path : `/${path}`;
 }
@@ -112,6 +116,33 @@ export function buildCacheHeaderManifest(inputs: LanderCacheResourceInput[], gen
       .map(buildCacheManifestEntry)
       .sort((left, right) => left.path.localeCompare(right.path)),
   };
+}
+
+export function createCacheHeaderLookup(
+  manifest: LanderCacheHeaderManifest,
+  options: LanderCacheHeaderLookupOptions = {},
+): (requestPath: string) => Record<string, string> | undefined {
+  const indexFile = options.indexFile ?? "index.html";
+  const byPath = new Map(manifest.entries.map((entry) => [normalizeCacheResourcePath(entry.path), entry.headers]));
+
+  return (requestPath: string) => {
+    const normalized = normalizeCacheResourcePath(requestPath);
+    const direct = byPath.get(normalized);
+    if (direct) return { ...direct };
+    const indexPath = normalized.endsWith("/")
+      ? `${normalized}${indexFile}`
+      : `${normalized}/${indexFile}`;
+    const indexHeaders = byPath.get(normalizeCacheResourcePath(indexPath));
+    return indexHeaders ? { ...indexHeaders } : undefined;
+  };
+}
+
+export function headersForCacheResource(
+  manifest: LanderCacheHeaderManifest,
+  requestPath: string,
+  options: LanderCacheHeaderLookupOptions = {},
+): Record<string, string> | undefined {
+  return createCacheHeaderLookup(manifest, options)(requestPath);
 }
 
 function assertNever(value: never): never {

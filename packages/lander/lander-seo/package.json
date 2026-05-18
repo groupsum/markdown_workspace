@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/lander-seo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -22,7 +22,7 @@
   ],
   "description": "SEO, AEO, and AI-discovery utilities for portable product landing sites.",
   "dependencies": {
-    "@mdwrk/lander-core": "^0.1.2"
+    "@mdwrk/lander-core": "^0.1.3"
   },
   "scripts": {
     "build": "npm run build -w @mdwrk/lander-core && tsc -p tsconfig.json",

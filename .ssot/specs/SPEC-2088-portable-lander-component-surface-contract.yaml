@@ -1,0 +1,44 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2088"
+number: 2088
+slug: "portable-lander-component-surface-contract"
+title: "Portable Lander Component Surface Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines the governed lander component families that belong to `@mdwrk/lander-react` rather than product applications such as `apps/mdwrkcom`."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    at: "2026-05-16T15:45:59Z"
+    note: "Created to define governed lander component families owned by lander-react instead of product apps."
+    status: "draft"
+references: []
+body: |-
+  # SPEC-2088: Portable Lander Component Surface Contract
+  ## Scope
+  This SPEC defines the governed lander component families that belong to `@mdwrk/lander-react` rather than product applications such as `apps/mdwrkcom`.
+  ## Requirements
+  1. `@mdwrk/lander-react` shall own the reusable component registry for governed visible lander surfaces.
+  2. `@mdwrk/lander-react` shall own site shell rendering components needed by compiled lander output, including header, footer, skip-link, layout frame, and responsive rail regions.
+  3. `@mdwrk/lander-react` shall own documentation layout components, including docs index rail, section index rail, page table of contents, article content region, previous/next navigation, and docs landing/index views.
+  4. `@mdwrk/lander-react` shall distinguish page, section, and docs navigation concepts in component APIs and rendered accessibility labels.
+  5. `@mdwrk/lander-react` shall own article shell components for docs, blog, legal, feature, comparison, and reusable markdown-backed pages.
+  6. `@mdwrk/lander-react` shall own reusable markdown viewer and rendered article surfaces used by public lander pages.
+  7. `@mdwrk/lander-react` shall own featured media, image, author, tag, date, CTA, FAQ, breadcrumb, card/list, and page-summary components when those surfaces are governed lander behavior.
+  8. `@mdwrk/lander-react` shall own structured-data visible components and composition helpers required by supported JSON-LD types.
+  9. `@mdwrk/lander-react` component APIs shall accept portable compiled render-model data or content-contract-compatible declarations, not mdwrkcom-only implementation objects.
+  10. `@mdwrk/lander-react` shall not depend on `apps/mdwrkcom`.
+  11. Product applications shall consume `@mdwrk/lander-react` component surfaces through the compiled renderer flow rather than importing app-local component forks.
+  12. Component class names and styling hooks exposed by `@mdwrk/lander-react` shall align with `@mdwrk/lander-theme` and the governed class surface policy.
+  13. Each governed component family shall have feature, test, claim, and evidence rows that distinguish reusable implementation from product-host adoption.
+  ## Acceptance
+  Passing evidence shall include reusable React render tests for each governed component family, static mdwrkcom parity tests for host adoption, accessibility checks for navigation landmarks and labels, and no-drift checks proving product apps do not shadow the reusable component surface.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1051"
+  - "adr:1063"
+  - "adr:1065"

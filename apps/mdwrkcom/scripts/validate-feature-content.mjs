@@ -24,6 +24,13 @@ assert.match(featureView, /{ name: 'Features', path: '\/features\/' }/, 'Feature
 assert.match(featureView, /<MarkdownViewer content=\{articleContent\} \/>/, 'FeatureView must render feature article content.');
 
 assert.doesNotMatch(docsView, /featureDocs|featureDocsBySlug/, 'DocsView must not import feature content.');
+assert.match(docsView, /heading=\{currentSection\?\.title \|\| 'Section'\}/, 'DocsView left rail must render the current section index, not the whole docs tree.');
+assert.match(docsView, /ariaLabel=\{`\$\{currentSection\?\.title \|\| 'Section'\} section navigation`\}/, 'DocsView section rail must identify section navigation.');
+assert.match(docsView, /<aside className="docs-toc" aria-label="Documentation index">/, 'DocsView right rail must render the full docs index separately.');
+assert.match(docsView, /<TableOfContents items=\{tocItems\} heading="On this page" variant="inline" \/>/, 'DocsView page heading ToC must remain page-local and inline.');
+assert.match(staticCompiler, /const renderSectionSidebar = \(registry, currentSlug\) =>/, 'Static renderer must render a current-section index separately from docs navigation.');
+assert.match(staticCompiler, /const renderDocsToc = \(registry, currentSlug\) =>/, 'Static renderer must render the full docs index as its own rail.');
+assert.match(staticCompiler, /<aside class="docs-page-toc" aria-label="Article table of contents">/, 'Static renderer must keep article heading ToC page-local.');
 assert.match(navbar, /\{\s*id:\s*'\/features',\s*label:\s*'Features'\s*\}/, 'React header Features nav must point to the features index.');
 assert.doesNotMatch(navbar, /\/docs\/product|\/docs\/usage\/(?:editor-basics|rendering-and-preview|advanced-formatting)/, 'React header must not point feature navigation to docs routes.');
 

@@ -86,6 +86,7 @@ for (const className of [
   '.demo-preview-pane',
   '.privacy-section',
   '.docs-content-card',
+  '.docs-page-toc',
   '.faq-section',
   '.related-section',
   '.lander-page__hero',
@@ -133,6 +134,8 @@ assert.ok(css.includes('.navbar-actions{order:initial;margin-left:.75rem}'), 'St
 assert.ok(css.includes('justify-content:flex-end'), 'Static stylesheet must right-align navbar links.');
 assert.ok(css.includes('.locale-switcher-row{display:flex;width:100%;justify-content:flex-end}'), 'Static stylesheet must place locale switchers in a full-width right-aligned row.');
 assert.ok(css.includes('.docs-article-column>.locale-switcher-row{margin:0}'), 'Static stylesheet must keep locale switchers inside the docs article column as their own row.');
+assert.ok(css.includes('.docs-toc{width:18rem}'), 'Static stylesheet must keep the full docs index rail wide enough for grouped navigation.');
+assert.ok(css.includes('.docs-page-toc'), 'Static stylesheet must style page-local heading tables of contents separately from docs and section indexes.');
 assert.ok(css.includes('.locale-switcher-summary'), 'Static stylesheet must render locale selection as a dropdown summary.');
 assert.ok(css.includes('.locale-switcher-menu'), 'Static stylesheet must render locale links inside a dropdown menu.');
 assert.ok(css.includes('.locale-switcher-menu{position:absolute;top:calc(100% + .4rem);right:0'), 'Static stylesheet must anchor the locale dropdown menu to the right edge.');

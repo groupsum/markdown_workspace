@@ -48,7 +48,19 @@ for (const artifact of artifacts) {
   fs.copyFileSync(source, target);
 }
 
-const copiedSitemap = fs.readFileSync(path.join(publicRoot, 'sitemap.xml'), 'utf8');
-const urlCount = (copiedSitemap.match(/<url>/g) ?? []).length;
+const sourceSitemapsRoot = path.join(syncOut, 'sitemaps');
+if (fs.existsSync(sourceSitemapsRoot)) {
+  const targetSitemapsRoot = path.join(publicRoot, 'sitemaps');
+  fs.rmSync(targetSitemapsRoot, { recursive: true, force: true });
+  fs.mkdirSync(targetSitemapsRoot, { recursive: true });
+  for (const entry of fs.readdirSync(sourceSitemapsRoot, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.xml')) {
+      fs.copyFileSync(path.join(sourceSitemapsRoot, entry.name), path.join(targetSitemapsRoot, entry.name));
+    }
+  }
+}
 
-console.log(`Synced ${artifacts.length} discovery artifacts from static compiler into public/ (${urlCount} sitemap URLs).`);
+const copiedSitemap = fs.readFileSync(path.join(publicRoot, 'sitemap.xml'), 'utf8');
+const childSitemapCount = (copiedSitemap.match(/<sitemap>/g) ?? []).length;
+
+console.log(`Synced ${artifacts.length} discovery artifacts from static compiler into public/ (${childSitemapCount} child sitemaps).`);

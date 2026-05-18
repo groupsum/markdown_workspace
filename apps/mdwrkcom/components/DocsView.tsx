@@ -15,7 +15,7 @@ import {
 } from '../utils/pageMetadata';
 import { MarkdownViewer } from './MarkdownViewer';
 import { FeaturedImage } from './FeaturedImage';
-import { Book } from 'lucide-react';
+import { Book, ListTree } from 'lucide-react';
 import { SectionMenu, type SectionMenuItem } from './SectionMenu';
 import { TableOfContents, type TableOfContentsItem } from './TableOfContents';
 
@@ -137,6 +137,11 @@ export const DocsView: React.FC = () => {
 
   const activeSlug = slugParam || docs[0]?.slug;
   const currentDoc = (activeSlug && docsBySlug[activeSlug]) || docs[0];
+  const currentSection = sections.find(section => section.title === currentDoc?.section) || sections[0];
+  const sectionIndexItems: SectionMenuItem[] = (currentSection?.children ?? []).map(child => ({
+    ...child,
+    href: `/docs/${child.id}`,
+  }));
   const renderedContent = stripLegacyAeoSections(removeDuplicateLeadingHeading(currentDoc?.content || '# Document Not Found', currentDoc?.title));
   const articleContent = renderedContent;
   const excerpt = extractExcerpt(articleContent, currentDoc?.metadata.excerpt);
@@ -185,19 +190,11 @@ export const DocsView: React.FC = () => {
       <aside className="docs-sidebar">
         <div className="docs-sidebar-inner">
           <SectionMenu
-            items={docStructure.map(section => ({
-              ...section,
-              children: section.children?.map(child => ({
-                ...child,
-                href: `/docs/${child.id}`,
-              })),
-            }))}
+            items={sectionIndexItems}
             activeId={activeSlug}
-            expandedIds={expandedCategories}
-            onToggle={toggleCategory}
-            heading="Documentation"
-            icon={<Book className="docs-sidebar-icon" />}
-            ariaLabel="Documentation navigation"
+            heading={currentSection?.title || 'Section'}
+            icon={<ListTree className="docs-sidebar-icon" />}
+            ariaLabel={`${currentSection?.title || 'Section'} section navigation`}
           />
         </div>
       </aside>
@@ -236,11 +233,30 @@ export const DocsView: React.FC = () => {
                   alt={featuredImage.alt || currentDoc?.title || 'MdWrk document featured image'}
                 />
               ) : null}
+              {currentDoc?.metadata.toc === 'true' ? <TableOfContents items={tocItems} heading="On this page" variant="inline" /> : null}
               <MarkdownViewer content={articleContent} />
             </div>
           </div>
 
-          {currentDoc?.metadata.toc === 'true' ? <TableOfContents items={tocItems} /> : null}
+          <aside className="docs-toc" aria-label="Documentation index">
+            <div className="docs-toc-inner">
+              <SectionMenu
+                items={docStructure.map(section => ({
+                  ...section,
+                  children: section.children?.map(child => ({
+                    ...child,
+                    href: `/docs/${child.id}`,
+                  })),
+                }))}
+                activeId={activeSlug}
+                expandedIds={expandedCategories}
+                onToggle={toggleCategory}
+                heading="Docs"
+                icon={<Book className="docs-sidebar-icon" />}
+                ariaLabel="Documentation navigation"
+              />
+            </div>
+          </aside>
         </div>
       </main>
     </div>

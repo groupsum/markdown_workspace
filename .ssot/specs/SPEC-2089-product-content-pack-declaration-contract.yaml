@@ -1,0 +1,42 @@
+schema_version: "0.4.0"
+kind: "spec"
+id: "spc:2089"
+number: 2089
+slug: "product-content-pack-declaration-contract"
+title: "Product Content Pack Declaration Contract"
+status: "draft"
+origin: "repo-local"
+decision_date: null
+tags: []
+summary: "This SPEC defines how product content packs, including `@mdwrk/mdwrkcom-content-pack`, declare product-specific lander content without implementing UI components."
+supersedes: []
+superseded_by: []
+status_notes:
+  -
+    at: "2026-05-16T15:46:04Z"
+    note: "Created to define content-pack declarations as data without React component ownership."
+    status: "draft"
+references: []
+body: |-
+  # SPEC-2089: Product Content Pack Declaration Contract
+  ## Scope
+  This SPEC defines how product content packs, including `@mdwrk/mdwrkcom-content-pack`, declare product-specific lander content without implementing UI components.
+  ## Requirements
+  1. Product content packs shall declare product prose, metadata, assets, screenshots, route entries, page entries, section entries, navigation intent, visible component intent, structured-data intent, discovery metadata, and localization metadata as data.
+  2. Product content packs shall use schemas owned by `@mdwrk/lander-content-contract`.
+  3. Product content packs shall not export React components, JSX templates, app-local implementation references, CSS policy, or discovery artifact generation algorithms for governed lander surfaces.
+  4. Product content packs shall distinguish page declarations from section declarations.
+  5. Product content packs shall be able to declare section indexes independently from page-local tables of contents and whole-docs indexes.
+  6. Product content packs shall declare component intent through portable kinds and stable IDs, not through imports from product applications.
+  7. Product content packs shall declare structured-data intent in a form that `@mdwrk/lander-core` can normalize and `@mdwrk/lander-react` can render.
+  8. Product content packs shall keep product-specific asset references and source metadata separate from reusable rendering behavior.
+  9. Product content packs may mirror generated artifacts only when a governed pipeline specifies canonical mirroring behavior.
+  10. `@mdwrk/lander-core` shall reject content-pack declarations that reference app-local component implementations.
+  11. `@mdwrk/lander-core` shall preserve enough stable IDs for `@mdwrk/lander-react` to render deterministic navigation, article, media, CTA, FAQ, and structured-data surfaces.
+  12. Product host adoption shall be tested separately from content-pack declaration validity.
+  ## Acceptance
+  Passing evidence shall include schema validation for positive and negative content-pack cases, render-model compilation tests, mdwrkcom-content-pack mirror or adoption tests, and fail-closed tests for app-local implementation references.
+spec_kind: "normative"
+adr_ids:
+  - "adr:1063"
+  - "adr:1065"

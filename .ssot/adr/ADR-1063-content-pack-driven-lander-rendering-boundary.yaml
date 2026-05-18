@@ -1,4 +1,4 @@
-schema_version: "0.2.0"
+schema_version: "0.4.0"
 kind: "adr"
 id: "adr:1063"
 number: 1063
@@ -13,31 +13,30 @@ supersedes: []
 superseded_by: []
 status_notes:
   -
-    status: "draft"
-    note: "Created to govern content-pack-driven lander rendering through contract, core, and React renderer package boundaries."
     at: "2026-05-13T09:08:23Z"
+    note: "Created to govern content-pack-driven lander rendering through contract, core, and React renderer package boundaries."
+    status: "draft"
+  -
+    at: "2026-05-16T15:46:09Z"
+    note: "Amended to clarify that mdwrkcom hosting means host/bootstrap only, with no governed lander component ownership."
+    status: "draft"
 references: []
 body: |-
   # ADR-1063: Content Pack Driven Lander Rendering Boundary
-  
   ## Decision
-  
   MdWrk public lander rendering shall be driven by portable content-pack declarations instead of app-local React component assembly.
-  
   `@mdwrk/mdwrkcom-content-pack` shall own MdWrk-specific page content, metadata, and declarations of desired lander surfaces as data. `@mdwrk/lander-content-contract` shall own the portable declaration schema for pages, sections, schema intents, and component intents. `@mdwrk/lander-core` shall validate and compile those declarations into a portable render model. `@mdwrk/lander-react` shall own React component implementations and map compiled render intent to JSX and JSON-LD output. `apps/mdwrkcom` shall host the compiled renderer and integrate build/runtime shell concerns, but shall not become the long-term owner of lander component trees or per-type structured-data component selection.
-  
+  For this ADR, "host the compiled renderer" means host/bootstrap only. `apps/mdwrkcom` may wire entrypoints, routes, static build invocation, deployment integration, environment settings, and content-pack selection. It shall not implement governed lander UI components. Governed docs layouts, article shells, navigation widgets, page/section/docs table-of-contents components, markdown viewers, media components, visible structured-data components, and reusable page renderers belong in reusable lander packages, normally `@mdwrk/lander-react`.
   ## Rationale
-  
   The lander package family is intended to be portable. If mdwrkcom chooses concrete lander React components directly, product-specific app code becomes the implicit renderer and the content pack cannot serve as the durable source of page intent. That weakens package reuse, makes structured-data support harder to audit, and invites divergence between content, compiled page models, JSON-LD output, and visible components.
-  
   A content-pack-driven flow keeps product truth in the content package, validates the shape through the content contract, centralizes normalization in lander-core, and keeps React implementation in lander-react. This also preserves the distinction between declaration of intent and component implementation.
-  
+  The mdwrkcom application must remain thin enough that downstream product landers can reuse the same package surfaces. App-local React components are therefore treated as violations or temporary migration debt unless a narrower accepted ADR explicitly classifies them as host/bootstrap code.
   ## Consequences
-  
-  1. Content packs may declare page, section, visible component, and structured-data intent as portable data, not as React implementations.
+  1. Content packs may declare page, section, visible component, navigation, and structured-data intent as portable data, not as React implementations.
   2. `@mdwrk/lander-content-contract` must define the valid intent schema and diagnostics surface.
   3. `@mdwrk/lander-core` must compile content-pack declarations into a render model that is independent of React.
-  4. `@mdwrk/lander-react` must render compiled intent and own component registries/mappings for visible and structured-data surfaces.
+  4. `@mdwrk/lander-react` must render compiled intent and own component registries/mappings for visible, navigational, article, markdown, media, and structured-data surfaces.
   5. `apps/mdwrkcom` must import the compiled renderer flow and avoid app-local forks for governed lander components.
   6. Structured-data component selection must come from compiled content/schema intent rather than per-page app code choosing type-specific React components.
-  7. Tests and SSOT feature rows must distinguish content-pack intent, contract schema, core compilation, React rendering, mdwrkcom hosting, and no-drift governance.
+  7. Navigation and article rendering must distinguish page, section, and whole-docs concepts in portable data and reusable renderer APIs.
+  8. Tests and SSOT feature rows must distinguish content-pack intent, contract schema, core compilation, React rendering, mdwrkcom hosting, and no-drift governance.

@@ -8,7 +8,7 @@ const baseUrl = (process.argv[2] || process.env.MDWRK_SITE_URL || 'https://mdwrk
 
 const checks = [
   { path: '/', includes: ['MdWrk', '<h1'] },
-  { path: '/sitemap.xml', includes: ['<urlset'] },
+  { path: '/sitemap.xml', includes: ['<sitemapindex', '/sitemaps/'] },
   { path: '/robots.txt', includes: ['Sitemap:'] },
   { path: '/llms.txt', includes: ['# MdWrk'] },
   { path: '/docs/quickstart/', includes: ['Markdown'] },

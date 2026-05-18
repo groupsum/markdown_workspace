@@ -1,6 +1,27 @@
 import assert from 'node:assert/strict';
-import { compileLanderSite } from '../../lander-core/dist/index.js';
-import {
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const testRoot = path.dirname(fileURLToPath(import.meta.url));
+const seoDistRoot = path.resolve(testRoot, '..', 'dist');
+const seoDistIndex = path.join(seoDistRoot, 'index.js');
+const seoSmokeIndex = path.join(seoDistRoot, 'index.smoke.mjs');
+const coreDistIndex = path.resolve(testRoot, '..', '..', 'lander-core', 'dist', 'index.js').replace(/\\/g, '/');
+const contentContractDist = path.resolve(testRoot, '..', '..', 'lander-content-contract', 'dist', 'index.js').replace(/\\/g, '/');
+const coreSmokeIndex = path.resolve(testRoot, '..', '..', 'lander-core', 'dist', 'index.smoke.mjs');
+
+fs.writeFileSync(
+  coreSmokeIndex,
+  fs.readFileSync(coreDistIndex, 'utf8').replaceAll('"@mdwrk/lander-content-contract"', `"file:///${contentContractDist}"`),
+);
+fs.writeFileSync(
+  seoSmokeIndex,
+  fs.readFileSync(seoDistIndex, 'utf8').replaceAll('"@mdwrk/lander-core"', `"file:///${coreSmokeIndex.replace(/\\/g, '/')}"`),
+);
+
+const { compileLanderSite } = await import(`file:///${coreSmokeIndex.replace(/\\/g, '/')}`);
+const {
   buildAiSummary,
   buildContentIndex,
   buildContentRegistry,
@@ -9,11 +30,16 @@ import {
   buildLlmsFullTxt,
   buildPageMetadata,
   buildSemanticIndex,
+  buildSitemapFileSet,
   buildSitemapStylesheet,
   buildSitemapXml,
+  buildSitemapUrlsetXml,
   scoreSeoPage,
   validateDiscoveryArtifacts,
-} from '../dist/index.js';
+} = await import(`file:///${seoSmokeIndex.replace(/\\/g, '/')}`);
+
+fs.rmSync(coreSmokeIndex, { force: true });
+fs.rmSync(seoSmokeIndex, { force: true });
 
 const site = compileLanderSite({
   product: { name: 'Example', slug: 'example', tagline: 'Tagline', description: 'Description', category: 'Software', canonicalUrl: 'https://example.test' },
@@ -58,12 +84,19 @@ const options = {
 
 const sitemap = buildSitemapXml(site, options);
 assert.match(sitemap, /<\?xml-stylesheet type="text\/xsl" href="\/sitemap\.xsl"\?>/);
-assert.match(sitemap, /xmlns:xhtml=/);
-assert.match(sitemap, /<loc>https:\/\/example.test\/docs\/<\/loc>/);
+assert.match(sitemap, /<sitemapindex/);
+assert.doesNotMatch(sitemap, /<url>/);
+assert.match(sitemap, /<loc>https:\/\/example.test\/sitemaps\/answer\.xml<\/loc>/);
+const sitemapFiles = buildSitemapFileSet(site, options);
+const answerSitemap = sitemapFiles.find((file) => file.path === '/sitemaps/answer.xml')?.xml ?? '';
+assert.match(answerSitemap, /xmlns:xhtml=/);
+assert.match(answerSitemap, /<loc>https:\/\/example.test\/docs\/<\/loc>/);
+assert.match(buildSitemapUrlsetXml(site, site.pages, options), /<urlset/);
 assert.doesNotMatch(sitemap, /https:\/\/example.test\/draft\//);
 
 const sitemapXsl = buildSitemapStylesheet(site);
 assert.match(sitemapXsl, /<table>/);
+assert.match(sitemapXsl, /<th scope="col">Sitemap<\/th>/);
 assert.match(sitemapXsl, /<th scope="col">URL<\/th>/);
 assert.match(sitemapXsl, /<th scope="col">Last modified<\/th>/);
 assert.match(sitemapXsl, /<br \/>/);
@@ -88,6 +121,7 @@ assert.equal(contentRegistry.find((entry) => entry.discovery.canonical === 'http
 
 const artifacts = buildDiscoveryArtifacts(site, options);
 assert.equal(artifacts.cacheHeaderManifest.entries.find((entry) => entry.path === '/sitemap.xml')?.resourceClass, 'mutable-revalidate');
+assert.equal(artifacts.cacheHeaderManifest.entries.find((entry) => entry.path === '/sitemaps/answer.xml')?.resourceClass, 'mutable-revalidate');
 assert.equal(artifacts.cacheHeaderManifest.entries.find((entry) => entry.path === '/sitemap.xsl')?.resourceClass, 'mutable-revalidate');
 assert.equal(validateDiscoveryArtifacts(site, artifacts).ok, true);
 
