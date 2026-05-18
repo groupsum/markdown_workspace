@@ -67,7 +67,9 @@ jobs:
           VITE_NPM_PACKAGE_NAME: ${{ vars.VITE_NPM_PACKAGE_NAME || '@mdwrk/mdwrkspace' }}
           VITE_NPM_PACKAGE_PATH: ${{ vars.VITE_NPM_PACKAGE_PATH || 'mdwrk/mdwrkspace' }}
           VITE_NPM_ESM_CDN_URL: ${{ vars.VITE_NPM_ESM_CDN_URL || 'https://esm.sh/@mdwrk/mdwrkspace' }}
-        run: docker-compose up -d --no-build --force-recreate --no-deps lander
+        run: |
+          docker rm -f markdown_workspace_lander || true
+          docker-compose up -d --no-build --force-recreate --no-deps lander
 
       - name: Prune unused docker images after successful restart
         continue-on-error: true
